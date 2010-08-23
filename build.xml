@@ -129,7 +129,11 @@
     
     <!-- html minification: -->
     <!-- We'll remove comments for now and that's it.. -->
-    <replaceregexp match="&lt;!-- [\d\w\s\W]*?--&gt;" file="./publish/index.html" replace=" " flags="gm"/>
+    <replaceregexp match="&lt;!-- [\d\w\s\W]*?--&gt;" replace=" " flags="gm">
+      <fileset dir="./publish/">
+        <filename name="**/*.html"/> <!-- match all .html files within publish -->
+      </fileset>
+    </replaceregexp>
     <!-- In the future we'd like to integrate kangax's html minifier: github.com/lrbabe/html-minifier -->
     
     
