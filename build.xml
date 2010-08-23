@@ -20,10 +20,11 @@
     <copy todir="./publish">
       <fileset dir="./">
         <exclude name=".gitignore"/>
-        <exclude name="build.xml"/>
+        <exclude name="README.markdown"/>
         <exclude name="**/.git/**"/>
         <exclude name="**/build/**"/>
         <exclude name="**/test/**"/>
+        <exclude name="**/demo/**"/>
       </fileset>
     </copy>
   </target>
@@ -88,8 +89,8 @@
     <apply executable="jpegtran" osfamily="unix">
       <fileset dir="./publish/images/" includes="*.jpg"/>
       <arg value="-copy"/>
-      <!-- change this to 'none' in order to strip meta -->
-      <!--only do so if you own copyright to the image -->
+      <!-- change 'all to 'none' in order to strip metadata 
+            only do so if you own copyright to the image -->
       <arg value="all"/>
       <srcfile/>
       <targetfile/>
@@ -99,8 +100,8 @@
     <apply executable="jpegtran" osfamily="mac">
       <fileset dir="./publish/images/" includes="*.jpg"/>
       <arg value="-copy"/>
-      <!-- change this to 'none' in order to strip meta -->
-      <!--only do so if you own copyright to the image -->
+      <!-- change 'all to 'none' in order to strip metadata 
+            only do so if you own copyright to the image -->
       <arg value="all"/>
       <srcfile/>
       <targetfile/>
@@ -110,8 +111,8 @@
     <apply executable="build\tools\jpegtran.exe" osfamily="windows">
       <fileset dir="./publish/images/" includes="*.jpg"/>
       <arg value="-copy"/>
-      <!-- change this to 'none' in order to strip meta -->
-      <!--only do so if you own copyright to the image -->
+      <!-- change 'all to 'none' in order to strip metadata 
+            only do so if you own copyright to the image -->
       <arg value="all"/>
       <srcfile/>
       <targetfile/>
