@@ -1,0 +1,32 @@
+
+CAVEAT EMPTOR
+=============
+(known bugs, problems or limitations)
+
+
+Legend
+------
+ - Minor bug, limitation, or incompletely-implemented feature.
+ ! Bug that may lead to a behavior different than expected,
+   but without any serious consequence.
+!! Bug that may cause accidental data loss, security hazard,
+   or another serious consequence.
+ * Another problematic issue, that is not necessarily a bug.
+
+
+Version 0.6.4   14-mar-2010
+-------------
+ - Lossless image reductions are not completely implemented.
+   (This does NOT affect the integrity of PNG files.)
+   Here are the missing pieces:
+   - The color palette reductions are implemented only partially.
+   - The bit depth reductions below 8, for grayscale images, are
+     not implemented yet.
+
+ - TIFF support is limited to uncompressed, PNG-compatible
+   color spaces (grayscale, RGB and RGBA).
+
+ - Metadata is not imported from the external image formats.
+
+ - There is no support for pipes or streams.
+

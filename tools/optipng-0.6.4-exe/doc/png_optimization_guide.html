@@ -1,0 +1,634 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Author" content="Cosmin Truţa">
+  <title>A guide to PNG optimization</title>
+</head>
+<body>
+
+<h2>A guide to PNG optimization</h2>
+
+<h3>1. Background</h3>
+
+<h4>1.1 The PNG file format</h4>
+
+<p>
+The <a href="http://www.libpng.org/pub/png/">Portable Network Graphics</a>
+(<b><i>PNG</i></b>) is a format for storing compressed raster graphics. The
+compression engine is based on the <b><i>Deflate</i></b> method
+[<a href="http://www.ietf.org/rfc/rfc1951">RFC1951</a>],
+designed by
+<a href="http://www.pkware.com/">PKWare</a>
+and originally used in <b>PKZIP</b>.
+</p>
+
+<p>
+The PNG format is defined by the
+<a href="http://www.libpng.org/pub/png/spec/">PNG Specification</a>.
+This specification was developed by an ad-hoc group named the
+<a href="http://www.libpng.org/pub/png/">PNG Development Group</a>, and it is
+both an International Standard (published under the formal name
+ISO/IEC&nbsp;15948) and a W3C Recommendation.
+</p>
+
+<p>
+PNG was initially intended as a superior, patent-free replacement of GIF. The
+final outcome is a modern, extensible, reliable image format, capable to handle
+an impressive number of image types (from 1-bit black-and-white images up to
+48-bit RGB images with a full 16-bit alpha channel), and geared by a
+significantly stronger lossless compression engine (typically 5-25% better than
+GIF).
+</p>
+
+<p>
+Unlike other lossless compression schemes, PNG compression does not depend
+solely on the statistics of the input, but it may vary within wide limits,
+depending on the compressor's implementation. A good PNG encoder must be
+able to take informed decisions about the factors that affect the size of the
+output. The purpose of this article is to provide information about these
+factors, and to give advice on implementing efficient PNG encoders.
+</p>
+
+
+<h4>1.2 The PNG compression</h4>
+
+<p>
+The PNG compression works in a pipeline manner.
+</p>
+
+<p>
+In the first stage, the image pixels are passed through a lossless arithmetic
+transformation named <b><i>delta filtering</i></b>, or simply
+<b><i>filtering</i></b>, and sent further as a (filtered) byte sequence.
+Filtering does not compress or otherwise reduce the size of the data, but it
+makes the data more compressible.
+</p>
+
+<p>
+In the second stage, the filtered byte sequence is passed through the
+Ziv-Lempel algorithm (LZ77), producing LZ77 codes that are further compressed
+by the Huffman algorithm in the third and final stage. The combination of the
+last two stages is referred to as the <b><i>Deflate compression</i></b>, a
+widely-used, patent-free algorithm for universal, lossless data compression.
+The maximum size of the LZ77 sliding window in Deflate is 32768 bytes, and the
+LZ77 matches can be between 3 and 258 bytes long.
+</p>
+
+<p>
+A complete description of the PNG compression is beyond the scope of this
+guide. The PNG Specification describes the format completely, and provides
+a complete list of references to the underlying technologies.
+</p>
+
+
+<h3>2. Factors that affect the PNG file size</h3>
+
+<div>
+Like any other compression scheme, PNG compression depends on the statistics
+of the input data. In addition, it depends on the following PNG-specific
+parameters:
+</div>
+<ol>
+<li>
+  The PNG image type
+</li>
+<li>
+  The PNG delta filters
+</li>
+<li>
+  The strategy of searching LZ77 matches
+</li>
+<li>
+  The size of the Huffman buffers inside the Deflate encoder
+</li>
+</ol>
+
+<p>
+Depending on how these parameters are chosen by the implementation, PNG
+compression may vary within wide limits. The process of selecting the best
+configuration is computationally infeasible, but heuristics to select a
+satisfactory configuration are available. The problem of improving these
+heuristics constitutes an interesting subject for research.
+</p>
+
+
+<h4>2.1 The PNG image type</h4>
+
+<p>
+The type of a PNG image is defined in the <b><code>IHDR</code></b> image
+header. The image has a certain bit depth, up to 16 bits per sample, and a
+certain color type, from Grayscale to RGB+Alpha. If two PNG files of different
+types represent exactly the same image, each file can be regarded as a lossless
+transformation of the other. A lossless transformation can reduce the
+<i>uncompressed</i> stream, and such a transformation is named <b><i>image
+reduction</i></b>. In most cases, image reductions are capable of reducing the
+<i>compressed</i> stream (which is, in fact, our interest), as an indirect
+effect of reducing the size of the compressor's input.
+</p>
+
+<div>
+The possible image reductions are:
+</div>
+<ul>
+<li>
+  <i>Bit depth reduction</i>
+  <br>
+  The bit depth can be reduced to a minimum value that is acceptable for all
+  samples. For example, if all sample values in a 16-bit image have the form
+  (256+1)*<i>n</i>, (e.g. #0000, #2323, #FFFF), then the bit depth can be
+  reduced to 8, and the new sample values will become <i>n</i>, (e.g. #00, #23,
+  #FF).
+</li>
+<li>
+  <i>Color type reduction</i>
+  <br>
+  - If an RGB image has 256 distinct colors or less, it can be reencoded as a
+  Palette image.
+  <br>
+  - If an RGB or Palette image has only gray pixels, it can be reencoded as
+  Grayscale.
+  <br>
+  A color type reduction can also enable a bit depth reduction.
+</li>
+<li>
+  <i>Color palette reduction</i>
+  <br>
+  If the color palette contains redundant entries (i.e. duplicate entries that
+  indicate the same RGB value) or sterile entries (i.e. entries that do not
+  have a correspondent in the raw pixel data), these entries can be removed.
+  <br>
+  A color palette reduction can also enable a bit depth reduction.
+</li>
+<li>
+  <i>Alpha channel reduction</i>
+  <br>
+  If all pixels in a Grayscale+Alpha or an RGB+Alpha image are fully opaque
+  (i.e. all alpha components are equal to 2^<sup>bitdepth</sup>-1), or if the
+  transparency information can be stored entirely in a (much cheaper)
+  <b><code>tRNS</code></b> chunk, the alpha channel can be stripped.
+</li>
+</ul>
+
+<p>
+There are, however, a few cases when some image type reductions do not
+necessarily lead to the reduction of the compressed stream. The
+<a href="http://www.cs.toronto.edu/~cosmin/pngtech/">PNG-Tech</a> site contains
+experimental analyses of these possibilities; for example, see the article
+<a href="8bpp.html">8 bits per pixel in paletted images</a>.
+</p>
+
+<p>
+Interlacing, useful for a faster, progressive rendering, is another component
+of the PNG image type that affects compression. In an interlaced stream, the
+samples corresponding to neighboring pixels are stored far away, hence the data
+in it is less correlated and less compressible. Unlike JPEG, where interlacing
+may improve the compression slightly, the PNG interlacing degrades the
+compression significantly.
+</p>
+
+
+<h4>2.2 The PNG delta filters</h4>
+
+<p>
+The role of filtering can be illustrated in the following example. Assume the
+sequence 2, 3, 4, 5, 6, 7, 8, 9. Although it has much redundancy, the sequence
+is not compressible by a Ziv-Lempel compressor, nor by a Huffman compressor.
+However, if one makes a simple and reversible transformation, replacing each
+value with the numerical difference between it and the value to its left, the
+sequence becomes 2, 1, 1, 1, 1, 1, 1, 1, which is highly compressible.
+</p>
+
+<p>
+The PNG format employs five types of filters: <b><i>None</i></b>,
+<b><i>Left</i></b>, <b><i>Up</i></b>, <b><i>Average</i></b>, and
+<b><i>Paeth</i></b>. The first filter leaves the original data intact, and the
+other four are subtracting from each pixel a value that involves the
+neighbor pixels from the left, up, and/or the upper left.
+</p>
+
+<p>
+A certain filter is assigned to each row, and is applied to all pixels from
+that row. Therefore, an image can be delta-filtered in a huge number of
+possible configurations (5 ^ <sup><i>height</i></sup>), and each configuration
+leads to a different compressed output. Two different filter configurations may
+make a difference in the compressed file size by a couple of factors, so a
+careful choice of filters is of paramount importance.
+</p>
+
+<p>
+It is possible to apply a single filter to all rows, or to apply different
+filters to different rows. In the former case, the filtering process is
+<b><i>fixed</i></b>; in the latter, it is <b><i>adaptive</i></b>.
+</p>
+
+<div>
+While an exhaustive search is unfeasible, the PNG Specification suggests a
+heuristic filtering strategy:
+</div>
+<ul>
+<li>
+  If the image type is Palette, or the bit depth is smaller than 8, then
+  do not filter the image (i.e. use fixed filtering, with the filter
+  <i>None</i>).
+</li>
+<li>
+  (The other case) If the image type is Grayscale or RGB (with or without
+  Alpha), and the bit depth is not smaller than 8, then use adaptive filtering
+  as follows: <i>independently for each row</i>, apply all five filters and
+  select the filter that produces the smallest sum of absolute values per row.
+</li>
+</ul>
+
+<p>
+Cases where the above heuristics are less than optimal are shown on the
+<a href="http://www.cs.toronto.edu/~cosmin/pngtech/">PNG-Tech</a>
+site; for example, see
+<a href="better-filtering.html">Brute-force vs. heuristic filtering</a>.
+</p>
+
+
+<h4>2.3 The strategy of searching LZ77 matches</h4>
+
+<p>
+The Ziv-Lempel algorithm works under the assumption that contiguous sequences
+appear repeatedly in the input stream. If the sequence to be encoded matches
+one or more sequences already present in the sliding history window, the
+encoder sends a LZ77 pair (<i>distance</i>, <i>length</i>) that points to the
+<i>closest</i> match. In most LZ77 incarnations, including Deflate, smaller
+distance codes are encoded more concisely.
+</p>
+
+<p>
+In Deflate, in particular, the regular (non-matched) symbols, and the match
+lengths, are sent to the same Huffman coder, while the match distances are sent
+to a separate Huffman coder. If the LZ77 matches fall between the accepted
+boundaries (i.e. they are not shorter than 3 and not longer than 258), a greedy
+strategy will accept them as a replacement for the symbols to which they
+correspond.
+</p>
+
+<p>
+The greedy strategy is preferable when compressing text files, or many types of
+binary files, but it may be suboptimal when compressing filtered data, such as
+the byte strings that come from a PNG filter. Filtered data consist mostly of
+small values with a pseudo-random distribution. Therefore, in certain
+situations, it may be desirable to favor the encoding of individual symbols,
+even if matches that may replace these symbols exist.
+</p>
+
+<p>
+The
+<a href="http://www.zlib.org/">zlib Reference Library</a>
+is a reference implementation of Deflate, which is further used by the
+<a href="http://www.libpng.org/pub/png/libpng.html">PNG Reference Library</a>.
+By default, <b>zlib</b> selects the greedy strategy, but the user is able to
+specify his or her custom preference via the <code>strategy</code> parameter.
+This parameter can take one of the following values:
+<br>
+- <code>Z_DEFAULT_STRATEGY = 0</code>, the default greedy search strategy.
+<br>
+- <code>Z_FILTERED = 1</code>, a strategy in which the matches are accepted
+only if their length is 6 or bigger.
+<br>
+- <code>Z_HUFFMAN_ONLY = 2</code>, a fast strategy in which the Ziv-Lempel
+algorithm is entirely bypassed, and all the symbols from the input are encoded
+directly by the Huffman coder.
+<br>
+- <code>Z_RLE = 3</code> (appeared in the <b>zlib-1.2.x</b> series), a fast
+strategy in which the LZ77 algorithm is essentially reduced to the Run-Length
+Encoding algorithm. In other words, the matches are accepted only if their
+distance is 1. For example, the 10-symbol sequence "<code>aaaaaaaaaa</code>"
+can be LZ77-encoded as
+['<code>a</code>', (<i>distance</i>=1, <i>length</i>=9)];
+by removing <i>distance</i>=1 from the picture, this encoding can be regarded
+as a peculiar run-length encoding (which differs from the classic RLE by using
+<i>length</i>=9 instead of <i>count</i>=10).
+<br>
+The <code>strategy</code> parameter affects only the compression ratio. It does
+not affect the correctness of the compressed output, even if it is set to an
+inappropriate value.
+</p>
+
+<p>
+It was experimentally observed that the LZ77 search is occasionally capable of
+producing smaller PNGs if it is less exhaustive. The reason behind this act
+resides in the same category of "strategic searches" discussed here.
+Unfortunately, there is no known method of anticipating which search level
+(from the fastest and the least exhaustive, to the slowest and the most
+exhaustive) is better, other than assuming "the most exhaustive is better in
+most cases".
+</p>
+
+<p>
+Unfortunately, even a "filtered" strategy does not always produce better
+results than a "greedy" strategy on filtered input, and the only known method
+to obtain the best combination is by multiple trials. Experiments and
+measurements can, again, be found on the
+<a href="http://www.cs.toronto.edu/~cosmin/pngtech/">PNG-Tech</a>
+site; for example, see the original
+<a href="z_rle.html">Z_RLE strategy proposal</a>.
+</p>
+
+
+<h4>2.4 The size of Huffman buffers</h4>
+
+<p>
+As mentioned earlier, the entropy encoder inside the Deflate method is the
+static Huffman algorithm. The output of LZ77 is fed into a buffer which is
+occasionally flushed by sending a static Huffman tree followed by all the
+Huffman codes, to the output of Deflate. After this, both the buffer and the
+Huffman tree are reset, waiting for the subsequent LZ77 codes to come and
+refill the buffer.
+</p>
+
+<blockquote>
+The Deflate specification refers to <i>dynamic Huffman codes</i>. However, this
+is a misnomer, in which the term <i>dynamic</i> is used in contrast to the
+<i>fixed</i> Huffman codes. The fixed Huffman codes are simply built according
+to a predefined Huffman tree, without regard to the actual symbol frequencies.
+The dynamic Huffman codes referred to by the Deflate specification are NOT
+built by the dynamic Huffman algorithm, as defined, for example, by Faller,
+Gallager and Knuth (the FGK algorithm), or by Vitter (the V algorithm).
+The predefined Huffman tree was introduced in <b>PKZIP</b> as a fast
+compression alternative, but it produces poor results even on text, and it is
+almost useless in PNG compression. Still, a PNG stream that contains codes
+built by the fixed (predefined) Huffman tree, is a valid stream, and a
+compliant PNG reader must decode this stream correctly.
+</blockquote>
+
+<p>
+It is desirable to establish the buffer boundaries so that sequences conforming
+to the same probability model are fit in the same Huffman buffer. Methods for
+approaching these boundaries exist, but they are not used in the mainstream
+Deflate implementation(s). Instead, the buffers are flushed when a limit
+(typically, 16k LZ77 codes) is reached. This is, however, a fast approach, and
+the results are satisfactory.
+</p>
+
+<p>
+The size of Huffman buffers is indirectly determined by the encoder's memory
+(usage) level. For this reason, certain memory levels might be good for certain
+types of images.
+</p>
+
+
+<h3>3. PNG (lossless) optimization programs</h3>
+
+<p>
+The multitude of PNG encoding programs is listed at
+<a href="http://www.libpng.org/pub/png/pngapps.html">http://www.libpng.org/pub/png/pngapps.html</a>.
+Their performance varies as much as the range of possible compression ratios;
+the good encoders are at least applying the filtering heuristics, described
+briefly in the PNG Specification, and illustrated above.
+<br>
+Some programs gain extra compression by discarding some of the data in the
+input images (so these programs are <i>lossy</i>!)
+</p>
+
+<p>
+This section contains the small list of <b><i>PNG optimization programs</i></b>
+that show a particular concern towards obtaining a file size as small as
+possible. They work by performing repeated compression trials, applying various
+parameter sets, and selecting the parameter set that yields the smallest
+compressed output.
+</p>
+
+<ul>
+<li>
+  <p>
+  <b>pngrewrite</b> by Jason Summers, available at
+  <a href="http://www.pobox.com/~jason1/pngrewrite/">http://www.pobox.com/~jason1/pngrewrite</a>,
+  is an open-source program that performs lossless image reductions.
+  It works best in conjunction with <b>pngcrush</b> (see below); the user
+  should run <b>pngcrush</b> <i>after</i> <b>pngrewrite</b>.
+  </p>
+</li>
+<li>
+  <p>
+  <b>pngcrush</b> by Glenn Randers-Pehrson, available at
+  <a href="http://pmt.sourceforge.net/pngcrush/">http://pmt.sourceforge.net/pngcrush</a>,
+  is an open-source program that iterates over PNG filters and zlib (Deflate)
+  parameters, compresses the image repeatedly using each parameter
+  configuration, and chooses the configuration that yields the smallest
+  compressed (IDAT) output.
+  At the user's option, the program can explore few (below 10) or many (a
+  brute-force traversal over more than 100) configurations. The method of
+  selecting the parameters for "few" trials is particularly effective, and the
+  use of a brute-force traversal is generally not recommended.
+  </p>
+  <p>
+  In addition, <b>pngcrush</b> offers a multitude of extra features, such as
+  recovery of erroneous PNG files (e.g. files containing bad CRCs), and
+  chunk-level editing of PNG meta-data.
+  </p>
+</li>
+<li>
+  <p>
+  <b>OptiPNG</b> by Cosmin Truţa, available at
+  <a href="http://www.cs.toronto.edu/~cosmin/pngtech/optipng/">http://www.cs.toronto.edu/pngtech/optipng</a>,
+  is a newer open-source program, inspired from <b>pngcrush</b>, but designed
+  to be more flexible and to run faster.
+  Unlike <b>pngcrush</b>, <b>OptiPNG</b> performs the trials entirely in
+  memory, and writes only the final output file on the disk. Moreover, it
+  offers multiple optimization presets to the user, who can choose among a
+  range of options from "very few trials" to "very many trials" (in contrast to
+  the coarser "smart vs. brute" option offered by <b>pngcrush</b>).
+  </p>
+  <p>
+  It is important to mention that the achieved compression ratio is less and
+  less likely to improve when higher-level presets (trigerring more trials)
+  are being used. Even if the program is capable of searching automatically
+  over more than 200 configurations (and the advanced users have access to more
+  than 1000 configurations!), a preset that selects around 10 trials should be
+  satisfactory for most users. Furthermore, a preset that selects between
+  30-40 trials <i>should</i> be satisfactory for all users, for it is very,
+  very unlikely to be beaten significantly by any wider search. The rest of the
+  trial configurations are offered rather as a curiosity (but they were used in
+  the experimentation from which we concluded they are indeed useless!)
+  </p>
+</li>
+<li>
+  <p>
+  <b>AdvanceCOMP</b> by Andrea Mazzoleni is a set of tools for optimizing
+  ZIP/GZIP, PNG and MNG files, based on the powerful <b>7-Zip</b> deflation
+  engine. The name of the PNG optimization tool is <b>AdvPNG</b>. At the time
+  of this writing, <b>AdvPNG</b> does not perform image reductions, so the use
+  of <b>pngrewrite</b> or <b>OptiPNG</b> prior to optimiziation may be
+  necessary. However, given the effectivenes of <b>7-Zip</b> deflation,
+  <b>AdvanceCOMP</b> is a powerful contender.
+  </p>
+  <p>
+  The <b>AdvanceCOMP</b> tool set is a part of the <b>AdvanceMAME</b> project,
+  available at
+  <a href="http://advancemame.sourceforge.net/">http://advancemame.sourceforge.net</a>.
+  </p>
+</li>
+<li>
+  <p>
+  <b>PNGOut</b> by Ken Silverman, available at
+  <a href="http://advsys.net/ken/utils.htm">http://advsys.net/ken/utils.htm</a>,
+  is a freely-available compiled program (no source code), running on
+  Windows and Linux. According to our tests, the compression ratio achieved by
+  <b>PNGOut</b> is comparable to that of <b>AdvPNG</b>.
+  Unfortunately, due to the lack of information, we cannot say much about this
+  tool.
+  </p>
+  <p>
+  A nice GUI frontend for <b>PNGOut</b>, named <b>PNGGauntlet</b>, is
+  available at
+  <a href="http://www.numbera.com/software/pnggauntlet.aspx">http://www.numbera.com/software/pnggauntlet.aspx</a>.
+  </p>
+</li>
+</ul>
+
+
+<h3>4. An extra note on losslessness</h3>
+
+<p>
+What is lossless PNG optimization, after all? This is a straightforward
+question, whose answer is intuitive, yet not so straightforward.
+</p>
+
+<p>
+Losslessness in the strictest sense, where no information whatsoever is lost,
+can only be achieved by leaving the original file (<i>any</i> file) intact, or
+by transforming it (e.g. compressing it, encrypting it) in such a way that
+there is an inverse transformation which recovers it completely, bit by bit.
+</p>
+
+<p>
+In the case of PNG images, this condition of strict losslessness has little
+relevance to the casual graphics user, and is, therefore, too strong.
+There are instances where strict losslessness is required; for example, when
+handling certified PNG files whose integrity is guaranteed by an external
+checksum like <b>MD5</b> or <b>SHA</b>, or by a digital signature such as
+<b><code>dSIG</code></b>. Most of the time, however, it is desirable to relax
+the notion of PNG losslessness, to the extent of not losing any information
+that pertains to the <i>rendered image</i> and to the
+<i>semantic value of the metadata</i> that accompanies the image. This allows
+the user to concentrate on what is really important when it comes to preserving
+the contents of a PNG image, and enables the concept of PNG optimization tools.
+</p>
+
+<blockquote>
+A <b><i>lossless transform</i></b> of a PNG image file is a transform which
+fully preserves the <i>rendered</i> RGB triples (the RGB triples that come
+either directly, or from a palette index, or from a gray->RGB expansion), the
+<i>rendered</i> transparency (the alpha samples that come either directly, or
+from a <b><code>tRNS</code></b> chunk, or the implicit 100% opacity assumed due
+to the lack of any explicit transparency information), the <i>order of
+rendering</i> (sequential or interlaced), and the semantics contained by the
+ancillary chunks.
+</blockquote>
+
+<div>
+This definition allows the execution of the above-mentioned image reduction
+operations, and the recompression of <b><code>IDAT</code></b>. It also allows
+the alteration or the elimination of other pieces of information that are
+technically valid, but have no influence on any presentation of the image
+pixels:
+</div>
+<ul>
+<li>
+  The information that pertains to <b><i>Deflate</i></b> streams, either inside
+  <b><code>IDAT</code></b>, or in other compressed chunks like
+  <b><code>zTXt</code></b>, <b><code>iTXt</code></b> or
+  <b><code>iCCP</code></b>; e.g. the LZ77 window size, the type and size of
+  <b><i>Deflate</i></b> blocks, etc. (The only thing that matters is that the
+  decompressed byte sequence must remain the same.)
+</li>
+<li>
+  The order of palette entries inside a <b><code>PLTE</code></b> chunk. (When
+  changing this order, the information that depends on it, such as the
+  palette-encoded pixels or the <b><code>tRNS</code></b> information, must be
+  updated accordingly.)
+</li>
+<li>
+  RGB triples that do not correspond to any pixel in the actual image, but are
+  stored in a <b><code>tRNS</code></b> chunk.
+</li>
+<li>
+  Fully opaque <b><code>tRNS</code></b> entries in a palette image.
+</li>
+<li>
+  Gamma correction (<b><code>gAMA</code></b>) or significant bit
+  (<b><code>sBIT</code></b>) information inside an image that consists
+  exclusively of samples whose intensity is either minimum (0) or maximum
+  (2^<sup>bitdepth</sup>-1).
+</li>
+<li>
+  The fact that a textual comment is stored uncompressed in a
+  <b><code>tEXt</code></b> chunk, or compressed in a <b><code>zTXt</code></b>
+  chunk, or with no translation in an <b><code>iTXt</code></b> chunk.
+</li>
+<li>
+  Etcetera.
+</li>
+</ul>
+
+<p>
+If any of the discardable information is important in a particular application,
+and lossless PNG optimization is still desirable, it is recommended to store
+this information in ancillary chunks, rather than hack it inside critical
+chunks. For example, if sterile palette entries are necessary (e.g. for later
+editing stages), it is recommended to store them inside a suggested palette
+(<b><code>sPLT</code></b>) chunk, rather than keeping them inside
+<b><code>PLTE</code></b>.
+</p>
+
+
+<h3>5. Selective bibliography</h3>
+
+<p>
+Besides the discussed specifications, the references below provide essential
+information necessary to comprehend the contents of this article.
+</p>
+
+<ul>
+<li>
+  Thomas Boutell, Glenn Randers-Pehrson et al.
+  <i>Portable Network Graphics (PNG) Specification, Second Edition</i>.
+  ISO/IEC 15948:2003(E); W3C Recommendation 10 November 2003.
+</li>
+<li>
+  David A. Huffman.
+  A method for the construction of minimum redundancy codes.
+  In <i>Proceedings of the Institute of Radio Engineers</i>,
+  vol. 40, no. 9, pp. 1098-1101, September 1952.
+</li>
+<li>
+  Jacob Ziv and Abraham Lempel.
+  A universal algorithm for data compression.
+  <i>IEEE Transactions on Information Theory</i>,
+  vol. IT-23, no. 3, pp. 337-343, May 1977.
+  <br>
+  <font size="-1">
+  Due to a historical accident, the famous algorithm is better-known as the
+  "Lempel-Ziv (LZ) algorithm", even though the "Ziv-Lempel algorithm" is a
+  more legitimate name.
+  </font>
+</li>
+<li>
+  Greg Roelofs.
+  <i>PNG: The definitive guide</i>.
+  O'Reilly and Associates, 1999.
+</li>
+</ul>
+
+
+<hr>
+
+<address>
+<font size="-1">
+Copyright &copy; 2003-2008 Cosmin Truţa. Permission to distribute freely.
+<br>
+Appeared: 7&nbsp;Apr&nbsp;2003.
+<br>
+Last updated: 10&nbsp;May&nbsp;2008.
+</font>
+</address>
+
+</body>
+</html>
