@@ -1,68 +1,68 @@
 <?xml version="1.0"?>
-<project name="Sample Build" default="build" basedir=".">
-  <property file="tools/build.properties"/>
+<project name="Boilerplate Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
+  <property file="./build/build.properties"/>
   <property name="build.number" value="${build.number}"/>
   <target name="current-number">
     <echo>Current build number:${build.number}</echo>
   </target>
   <target name="rev">
-	<echo message="Rev the build number..."/>
-	<propertyfile  file="tools/build.properties">
+    <echo message="Rev the build number..."/>
+    <propertyfile file="./build.properties">
       <entry key="build.number" type="int" operation="+" value="1" pattern="000"/>
     </propertyfile>
   </target>
   <target name="clean">
-  	<echo message="Cleaning up previous build directory..."/>
-    <delete dir="publish/"/>
+    <echo message="Cleaning up previous build directory..."/>
+    <delete dir="./publish/"/>
   </target>
-  <target name="copy" depends="clean" >
+  <target name="copy" depends="clean">
     <echo message="Copying over new files..."/>
-    <copy todir="publish">
-      <fileset dir=".">
+    <copy todir="./publish">
+      <fileset dir="./">
         <exclude name=".gitignore"/>
         <exclude name="build.xml"/>
         <exclude name="**/.git/**"/>
-        <exclude name="**/tools/**"/>
+        <exclude name="**/build/**"/>
         <exclude name="**/test/**"/>
         <exclude name="**/demo/**"/>
       </fileset>
     </copy>
   </target>
   <target name="scripts" depends="copy">
-  	<echo message="Concatenating and minifying javascript"/>
-    <concat destfile="publish/js/${build.number}.js">
-      <fileset file="js/jquery-1.4.2.js" />
-      <fileset file="js/plugins.js" />
-      <fileset file="js/script.js" />
+    <echo message="Concatenating and minifying javascript"/>
+    <concat destfile="./publish/js/${build.number}.js">
+      <fileset file="./js/jquery-1.4.2.js"/>
+      <fileset file="./js/plugins.js"/>
+      <fileset file="./js/script.js"/>
     </concat>
     <apply executable="java" parallel="false">
       <fileset dir="publish/js/" includes="${build.number}.js"/>
       <arg line="-jar"/>
-      <arg path="tools/yuicompressor-2.4.2.jar"/>
+      <arg path="./build/tools/yuicompressor-2.4.2.jar"/>
       <srcfile/>
       <arg line="-o"/>
-      <mapper type="glob" from="${build.number}.js" to="publish/js/min-${build.number}.js"/>
+      <mapper type="glob" from="${build.number}.js" to="../publish/js/min-${build.number}.js"/>
       <targetfile/>
     </apply>
-    <delete file="publish/js/${build.number}.js"/>
+    <delete file="./publish/js/${build.number}.js"/>
   </target>
   <target name="css" depends="copy">
-  	<echo message="Minifying css..."/>
+    <echo message="Minifying css..."/>
     <apply executable="java" parallel="false">
       <fileset dir="publish/css/" includes="style.css"/>
       <arg line="-jar"/>
-      <arg path="tools/yuicompressor-2.4.2.jar"/>
+      <arg path="./build/tools/yuicompressor-2.4.2.jar"/>
       <srcfile/>
       <arg line="-o"/>
-      <mapper type="glob" from="style.css" to="publish/css/min-${build.number}.css"/>
+      <mapper type="glob" from="style.css" to="../publish/css/min-${build.number}.css"/>
       <targetfile/>
     </apply>
-    <replace token="css/style.css" value="css/min-${build.number}.css" file="publish/index.html" />
-    <delete file="publish/css/${build.number}.css"/>
+    <replace token="./css/style.css" value="./css/min-${build.number}.css" file="./publish/index.html"/>
+    <delete file="./publish/css/${build.number}.css"/>
   </target>
-  <target name="images" depends="copy">
+  <target name="imagespng" depends="copy">
     <echo message="Optimizing images"/>
-	<apply executable="optipng" osfamily="unix">
+    <apply executable="optipng" osfamily="unix">
       <arg value="-o7"/>
       <fileset dir="./publish/images">
         <exclude name="*.jpg"/>
@@ -74,36 +74,16 @@
         <exclude name="*.jpg"/>
       </fileset>
     </apply>
-    <apply executable="tools\optipng-0.6.4-exe\optipng.exe" osfamily="windows">
+    <apply executable="build\tools\optipng-0.6.4-exe\optipng.exe" osfamily="windows">
       <arg value="-o7"/>
       <fileset dir="./publish/images">
         <exclude name="*.jpg"/>
       </fileset>
     </apply>
+  </target>
+  <target name="imagesjpg" depends="copy">
     <echo message="Clean up those jpgs..."/>
-	<apply executable="jpegtran" osfamily="unix">
-	  <fileset dir="./publish/images/" includes="*.jpg"/>
-      <arg value="-copy"/>
-      <!-- change this to 'none' in order to strip meta -->
-      <!--only do so if you own copyright to the image -->
-      <arg value="all"/>
-      <srcfile/>
-      <targetfile/>
-	  <!-- you may want to flag optimized images. If so, do it here -->
-      <mapper type="glob" from="*.jpg" to="publish/images/*.jpg"/>
-    </apply>
-    <apply executable="jpegtran" osfamily="mac">
-	  <fileset dir="./publish/images/" includes="*.jpg"/>
-      <arg value="-copy"/>
-      <!-- change this to 'none' in order to strip meta -->
-      <!--only do so if you own copyright to the image -->
-      <arg value="all"/>
-      <srcfile/>
-      <targetfile/>
-      <!-- you may want to flag optimized images. If so, do it here -->
-      <mapper type="glob" from="*.jpg" to="publish/images/*.jpg"/>
-    </apply>
-    <apply executable="tools\jpegtran.exe" osfamily="windows">
+    <apply executable="jpegtran" osfamily="unix">
       <fileset dir="./publish/images/" includes="*.jpg"/>
       <arg value="-copy"/>
       <!-- change this to 'none' in order to strip meta -->
@@ -112,15 +92,37 @@
       <srcfile/>
       <targetfile/>
       <!-- you may want to flag optimized images. If so, do it here -->
-      <mapper type="glob" from="*.jpg" to="publish/images/*.jpg"/>
+      <mapper type="glob" from="*.jpg" to="./publish/images/*.jpg"/>
+    </apply>
+    <apply executable="jpegtran" osfamily="mac">
+      <fileset dir="./publish/images/" includes="*.jpg"/>
+      <arg value="-copy"/>
+      <!-- change this to 'none' in order to strip meta -->
+      <!--only do so if you own copyright to the image -->
+      <arg value="all"/>
+      <srcfile/>
+      <targetfile/>
+      <!-- you may want to flag optimized images. If so, do it here -->
+      <mapper type="glob" from="*.jpg" to="./publish/images/*.jpg"/>
+    </apply>
+    <apply executable="build\tools\jpegtran.exe" osfamily="windows">
+      <fileset dir="./publish/images/" includes="*.jpg"/>
+      <arg value="-copy"/>
+      <!-- change this to 'none' in order to strip meta -->
+      <!--only do so if you own copyright to the image -->
+      <arg value="all"/>
+      <srcfile/>
+      <targetfile/>
+      <!-- you may want to flag optimized images. If so, do it here -->
+      <mapper type="glob" from="*.jpg" to="./publish/images/*.jpg"/>
     </apply>
   </target>
   <target name="html" depends="scripts">
     <echo message="Clean up the html..."/>
-	<replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="publish/index.html" replace="&lt;script src='js/min-${build.number}.js\'&gt;&lt;/script&gt;" flags="m" ></replaceregexp>
-    <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="publish/index.html" replace=" " flags="m" ></replaceregexp>
-  <!--minification goes here, if you're into that kind of thing -->
+    <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./publish/index.html" replace="&lt;script src='js/min-${build.number}.js\'&gt;&lt;/script&gt;" flags="m"/>
+    <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="./publish/index.html" replace=" " flags="m"/>
+    <!-- html minification goes here, if you're into that kind of thing -->
   </target>
-  <target name="text" depends="current-number,clean,rev,copy,scripts,css,html" description="Concats files, runs YUI Compressor on them and makes magic happen." ></target>
-  <target name="build" depends="current-number,clean,rev,copy,scripts,css,images,html" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing." ></target>
+  <target name="text" depends="current-number,clean,rev,copy,scripts,css,html" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
+  <target name="build" depends="current-number,clean,rev,copy,scripts,css,imagespng,imagesjpg,html" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
 </project>
