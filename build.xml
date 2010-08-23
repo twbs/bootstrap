@@ -7,7 +7,7 @@
   </target>
   <target name="rev">
     <echo message="Rev the build number..."/>
-    <propertyfile file="./build.properties">
+    <propertyfile file="./build/build.properties">
       <entry key="build.number" type="int" operation="+" value="1" pattern="000"/>
     </propertyfile>
   </target>
@@ -24,41 +24,43 @@
         <exclude name="**/.git/**"/>
         <exclude name="**/build/**"/>
         <exclude name="**/test/**"/>
-        <exclude name="**/demo/**"/>
       </fileset>
     </copy>
   </target>
   <target name="scripts" depends="copy">
     <echo message="Concatenating and minifying javascript"/>
-    <concat destfile="./publish/js/${build.number}.js">
+    <concat destfile="./publish/js/script-${build.number}.js">
       <fileset file="./js/jquery-1.4.2.js"/>
       <fileset file="./js/plugins.js"/>
       <fileset file="./js/script.js"/>
     </concat>
     <apply executable="java" parallel="false">
-      <fileset dir="publish/js/" includes="${build.number}.js"/>
+      <fileset dir="publish/js/" includes="script-${build.number}.js"/>
       <arg line="-jar"/>
       <arg path="./build/tools/yuicompressor-2.4.2.jar"/>
       <srcfile/>
       <arg line="-o"/>
-      <mapper type="glob" from="${build.number}.js" to="../publish/js/min-${build.number}.js"/>
+      <mapper type="glob" from="script-${build.number}.js" to="../publish/js/script-${build.number}.min.js"/>
       <targetfile/>
     </apply>
-    <delete file="./publish/js/${build.number}.js"/>
+    <!-- <delete file="./publish/js/script-${build.number}.js"/> View source has a posse. -->
   </target>
   <target name="css" depends="copy">
     <echo message="Minifying css..."/>
+    <concat destfile="./publish/css/style-${build.number}.css">
+      <fileset file="./css/style.css"/>
+    </concat>
     <apply executable="java" parallel="false">
-      <fileset dir="publish/css/" includes="style.css"/>
+      <fileset dir="publish/css/" includes="style-${build.number}.css"/>
       <arg line="-jar"/>
       <arg path="./build/tools/yuicompressor-2.4.2.jar"/>
       <srcfile/>
       <arg line="-o"/>
-      <mapper type="glob" from="style.css" to="../publish/css/min-${build.number}.css"/>
+      <mapper type="glob" from="style-${build.number}.css" to="../publish/css/style-${build.number}.min.css"/>
       <targetfile/>
     </apply>
-    <replace token="./css/style.css" value="./css/min-${build.number}.css" file="./publish/index.html"/>
-    <delete file="./publish/css/${build.number}.css"/>
+    <replace token="style.css" value="style-${build.number}.min.css" file="./publish/index.html"/>
+    <!-- <delete file="./publish/css/style-${build.number}.css"/> -->
   </target>
   <target name="imagespng" depends="copy">
     <echo message="Optimizing images"/>
@@ -119,8 +121,9 @@
   </target>
   <target name="html" depends="scripts">
     <echo message="Clean up the html..."/>
-    <replaceregexp match="style\.css" file="./publish/index.html" replace="css/min-${build.number}.css" flags="m"/>
-    <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./publish/index.html" replace="&lt;script src='js/min-${build.number}.js\'&gt;&lt;/script&gt;" flags="m"/>
+    
+    <!-- style.css replacement handled as a replacetoken above -->
+    <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./publish/index.html" replace="&lt;script src='js/script-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m"/>
     <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="./publish/index.html" replace=" " flags="m"/>
     
     
