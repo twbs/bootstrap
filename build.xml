@@ -119,10 +119,11 @@
   </target>
   <target name="html" depends="scripts">
     <echo message="Clean up the html..."/>
+    <replaceregexp match="style\.css" file="./publish/index.html" replace="css/min-${build.number}.css" flags="m"/>
     <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./publish/index.html" replace="&lt;script src='js/min-${build.number}.js\'&gt;&lt;/script&gt;" flags="m"/>
     <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="./publish/index.html" replace=" " flags="m"/>
     <!-- html minification goes here, if you're into that kind of thing -->
   </target>
   <target name="text" depends="current-number,clean,rev,copy,scripts,css,html" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
-  <target name="build" depends="current-number,clean,rev,copy,scripts,css,imagespng,imagesjpg,html" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  <target name="build" depends="current-number,clean,rev,copy,scripts,css,html,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
 </project>
