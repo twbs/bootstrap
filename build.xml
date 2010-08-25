@@ -28,6 +28,15 @@
       </fileset>
     </copy>
   </target>
+  <target name="usemin" depends="copy">
+    <echo message="Switching to minified js files..."/>
+    
+    <!-- switch from a regular jquery to minified-->
+    <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" file="./publish/index.html" flags=""/>
+    <!-- switch any google CDN reference to minified -->
+    <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" file="./publish/index.html" flags=""/>
+   
+  </target>
   <target name="scripts" depends="copy">
     <echo message="Concatenating and minifying javascript"/>
     <concat destfile="./publish/js/script-${build.number}.js">
@@ -139,6 +148,6 @@
     
     
   </target>
-  <target name="text" depends="current-number,clean,rev,copy,scripts,css,html" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
-  <target name="build" depends="current-number,clean,rev,copy,scripts,css,html,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  <target name="text" depends="current-number,clean,rev,copy,usemin,scripts,css,html" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
+  <target name="build" depends="current-number,clean,rev,copy,usemin,scripts,css,html,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
 </project>
