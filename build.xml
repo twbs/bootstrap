@@ -144,6 +144,9 @@
         <filename name="**/*.html"/> <!-- match all .html files within publish -->
       </fileset>
     </replaceregexp>
+    <!-- any ! comments will go back to normal comments -->
+    <replaceregexp match="&lt;!--! " file="./publish/index.html" replace="&lt;!-- " flags=""/>
+    
     <!-- In the future we'd like to integrate kangax's html minifier: github.com/lrbabe/html-minifier -->
     
     
