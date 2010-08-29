@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <project name="Boilerplate Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
-  <property file="./build/build.properties"/>
+  <property file="build.properties"/>
   <property name="build.number" value="${build.number}"/>
   <target name="current-number">
     <echo>Current build number:${build.number}</echo>
   </target>
   <target name="rev">
     <echo message="Rev the build number..."/>
-    <propertyfile file="./build/build.properties">
+    <propertyfile file="build.properties">
       <entry key="build.number" type="int" operation="+" value="1" pattern="000"/>
     </propertyfile>
   </target>
@@ -45,7 +45,7 @@
       <fileset file="./js/script.js"/>
     </concat>
     <apply executable="java" parallel="false">
-      <fileset dir="publish/js/" includes="script-${build.number}.js"/>
+      <fileset dir="./publish/js/" includes="script-${build.number}.js"/>
       <arg line="-jar"/>
       <arg path="./build/tools/yuicompressor-2.4.2.jar"/>
       <srcfile/>
@@ -61,7 +61,7 @@
       <fileset file="./css/style.css"/>
     </concat>
     <apply executable="java" parallel="false">
-      <fileset dir="publish/css/" includes="style-${build.number}.css"/>
+      <fileset dir="./publish/css/" includes="style-${build.number}.css"/>
       <arg line="-jar"/>
       <arg path="./build/tools/yuicompressor-2.4.2.jar"/>
       <srcfile/>
@@ -86,7 +86,7 @@
         <exclude name="*.jpg"/>
       </fileset>
     </apply>
-    <apply executable="build\tools\optipng-0.6.4-exe\optipng.exe" osfamily="windows">
+    <apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
       <arg value="-o7"/>
       <fileset dir="./publish/images">
         <exclude name="*.jpg"/>
@@ -103,8 +103,8 @@
       <arg value="all"/>
       <srcfile/>
       <targetfile/>
-      <!-- you may want to flag optimized images. If so, do it here -->
-      <mapper type="glob" from="*.jpg" to="./publish/images/*.jpg"/>
+      <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
+      <mapper type="glob" from="*.jpg" to="../publish/images/*.jpg"/>
     </apply>
     <apply executable="jpegtran" osfamily="mac">
       <fileset dir="./publish/images/" includes="*.jpg"/>
@@ -114,10 +114,10 @@
       <arg value="all"/>
       <srcfile/>
       <targetfile/>
-      <!-- you may want to flag optimized images. If so, do it here -->
-      <mapper type="glob" from="*.jpg" to="./publish/images/*.jpg"/>
+      <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
+      <mapper type="glob" from="*.jpg" to="../publish/images/*.jpg"/>
     </apply>
-    <apply executable="build\tools\jpegtran.exe" osfamily="windows">
+    <apply executable="tools/jpegtran.exe" osfamily="windows">
       <fileset dir="./publish/images/" includes="*.jpg"/>
       <arg value="-copy"/>
       <!-- change 'all to 'none' in order to strip metadata 
@@ -125,8 +125,8 @@
       <arg value="all"/>
       <srcfile/>
       <targetfile/>
-      <!-- you may want to flag optimized images. If so, do it here -->
-      <mapper type="glob" from="*.jpg" to="./publish/images/*.jpg"/>
+      <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity"-->
+      <mapper type="glob" from="*.jpg" to="../publish/images/*.jpg"/>
     </apply>
   </target>
   <target name="html" depends="scripts">
@@ -147,10 +147,19 @@
     <!-- any ! comments will go back to normal comments -->
     <replaceregexp match="&lt;!--! " file="./publish/index.html" replace="&lt;!-- " flags=""/>
     
-    <!-- In the future we'd like to integrate kangax's html minifier: github.com/lrbabe/html-minifier -->
-    
-    
   </target>
-  <target name="text" depends="current-number,clean,rev,copy,usemin,scripts,css,html" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
-  <target name="build" depends="current-number,clean,rev,copy,usemin,scripts,css,html,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  <!-- separated as a task if you want to avoid HTML compression. For example, if you want to produce a build kit. -->
+  <target name="htmlcompress" depends="html">
+   <apply executable="java" parallel="false" force="true" dest="/test/">
+			<fileset dir="./publish/" includes="*.html"/>
+			<arg value="-jar"/>
+			<arg path="./build/tools/htmlcompressor-0.9.1.jar"/>
+			<srcfile/>
+			<arg line="--type html"/>
+			<mapper type="identity"/>
+			<targetfile/>
+		</apply>
+  </target>
+  <target name="text" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
+  <target name="build" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
 </project>
