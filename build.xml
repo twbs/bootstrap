@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<project name="Boilerplate Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
+<project name="Boilerplate Build" default="build" basedir="../">
+  <!-- one back since we're in build/ -->
   <property file="build.properties"/>
   <property name="build.number" value="${build.number}"/>
   <target name="current-number">
@@ -30,12 +31,10 @@
   </target>
   <target name="usemin" depends="copy">
     <echo message="Switching to minified js files..."/>
-    
     <!-- switch from a regular jquery to minified-->
     <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" file="./publish/index.html" flags=""/>
     <!-- switch any google CDN reference to minified -->
     <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" file="./publish/index.html" flags=""/>
-   
   </target>
   <target name="scripts" depends="copy">
     <echo message="Concatenating and minifying javascript"/>
@@ -131,34 +130,35 @@
   </target>
   <target name="html" depends="scripts">
     <echo message="Clean up the html..."/>
-    
     <!-- style.css replacement handled as a replacetoken above -->
     <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./publish/index.html" replace="&lt;script src='js/script-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m"/>
     <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="./publish/index.html" replace=" " flags="m"/>
-    
-    
     <!-- html minification: -->
     <!-- We'll remove comments for now and that's it.. -->
     <replaceregexp match="&lt;!-- [\d\w\s\W]*?--&gt;" replace=" " flags="gm">
       <fileset dir="./publish/">
-        <filename name="**/*.html"/> <!-- match all .html files within publish -->
+        <filename name="**/*.html"/>
+        <!-- match all .html files within publish -->
       </fileset>
     </replaceregexp>
     <!-- any ! comments will go back to normal comments -->
     <replaceregexp match="&lt;!--! " file="./publish/index.html" replace="&lt;!-- " flags=""/>
-    
   </target>
   <!-- separated as a task if you want to avoid HTML compression. For example, if you want to produce a build kit. -->
-  <target name="htmlcompress" depends="html">
-   <apply executable="java" parallel="false" force="true" dest="/test/">
-			<fileset dir="./publish/" includes="*.html"/>
-			<arg value="-jar"/>
-			<arg path="./build/tools/htmlcompressor-0.9.1.jar"/>
-			<srcfile/>
-			<arg line="--type html"/>
-			<mapper type="identity"/>
-			<targetfile/>
-		</apply>
+  <target name="htmlcompress" depends="html" >
+    <apply executable="java" parallel="false" force="true" dest="./publish/" >
+		<fileset dir="./publish/" includes="*.html"/>
+		<arg value="-jar"/>
+		<arg path="./build/tools/htmlcompressor-0.9.1.jar"/>
+		<arg value="--preserve-comments"/>
+		<arg line="--type html"/>
+		<arg line="--compress-js"/>
+		<arg line="--compress-css"/>
+		<srcfile/>
+		<arg value="-o"/>
+		<mapper type="glob" from="*.html" to="../publish/*.html"/>    
+		<targetfile/>
+    </apply>
   </target>
   <target name="text" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
   <target name="build" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
