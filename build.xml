@@ -1,21 +1,28 @@
 <?xml version="1.0"?>
-<project name="Boilerplate Build" default="build" basedir="../">
-  <!-- one back since we're in build/ -->
-  <property file="build.properties"/>
-  <property name="build.number" value="${build.number}"/>
+<project name="Boilerplate Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
+  <!-- load property files -->
+  <property file="./build/build.properties"/>
+  <property file="./build/default.properties"/>
+  
   <target name="current-number">
     <echo>Current build number:${build.number}</echo>
   </target>
+  
+  <!-- Increase the current build number by one and set build date -->
+  <!-- as per http://www.ibmpressbooks.com/articles/article.aspx?p=519946 -->
   <target name="rev">
     <echo message="Rev the build number..."/>
-    <propertyfile file="build.properties">
-      <entry key="build.number" type="int" operation="+" value="1" pattern="000"/>
+    <propertyfile file="./build/${html5boilerplate.build.info}" comment="Build Information File - DO NOT CHANGE">
+      <entry key="build.number" type="int" default="0000" operation="+" pattern="0000"/>
+      <entry key="build.date" type="date" value="now" pattern="dd.MM.yyyy HH:mm"/>
     </propertyfile>
   </target>
+  
   <target name="clean">
     <echo message="Cleaning up previous build directory..."/>
     <delete dir="./publish/"/>
   </target>
+  
   <target name="copy" depends="clean">
     <echo message="Copying over new files..."/>
     <copy todir="./publish">
@@ -29,13 +36,17 @@
       </fileset>
     </copy>
   </target>
+  
   <target name="usemin" depends="copy">
     <echo message="Switching to minified js files..."/>
+    
     <!-- switch from a regular jquery to minified-->
     <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" file="./publish/index.html" flags=""/>
     <!-- switch any google CDN reference to minified -->
     <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" file="./publish/index.html" flags=""/>
+   
   </target>
+  
   <target name="scripts" depends="copy">
     <echo message="Concatenating and minifying javascript"/>
     <concat destfile="./publish/js/script-${build.number}.js">
@@ -54,6 +65,7 @@
     </apply>
     <!-- <delete file="./publish/js/script-${build.number}.js"/> View source has a posse. -->
   </target>
+  
   <target name="css" depends="copy">
     <echo message="Minifying css..."/>
     <concat destfile="./publish/css/style-${build.number}.css">
@@ -71,6 +83,7 @@
     <replace token="style.css" value="style-${build.number}.min.css" file="./publish/index.html"/>
     <!-- <delete file="./publish/css/style-${build.number}.css"/> -->
   </target>
+  
   <target name="imagespng" depends="copy">
     <echo message="Optimizing images"/>
     <apply executable="optipng" osfamily="unix">
@@ -92,6 +105,7 @@
       </fileset>
     </apply>
   </target>
+  
   <target name="imagesjpg" depends="copy">
     <echo message="Clean up those jpgs..."/>
     <apply executable="jpegtran" osfamily="unix">
@@ -124,15 +138,17 @@
       <arg value="all"/>
       <srcfile/>
       <targetfile/>
-      <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity"-->
+      <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
       <mapper type="glob" from="*.jpg" to="../publish/images/*.jpg"/>
     </apply>
   </target>
+  
   <target name="html" depends="scripts">
     <echo message="Clean up the html..."/>
     <!-- style.css replacement handled as a replacetoken above -->
     <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./publish/index.html" replace="&lt;script src='js/script-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m"/>
     <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="./publish/index.html" replace=" " flags="m"/>
+
     <!-- html minification: -->
     <!-- We'll remove comments for now and that's it.. -->
     <replaceregexp match="&lt;!-- [\d\w\s\W]*?--&gt;" replace=" " flags="gm">
@@ -144,22 +160,25 @@
     <!-- any ! comments will go back to normal comments -->
     <replaceregexp match="&lt;!--! " file="./publish/index.html" replace="&lt;!-- " flags=""/>
   </target>
+  
   <!-- separated as a task if you want to avoid HTML compression. For example, if you want to produce a build kit. -->
   <target name="htmlcompress" depends="html" >
     <apply executable="java" parallel="false" force="true" dest="./publish/" >
-		<fileset dir="./publish/" includes="*.html"/>
-		<arg value="-jar"/>
-		<arg path="./build/tools/htmlcompressor-0.9.1.jar"/>
-		<arg value="--preserve-comments"/>
-		<arg line="--type html"/>
-		<arg line="--compress-js"/>
-		<arg line="--compress-css"/>
-		<srcfile/>
-		<arg value="-o"/>
-		<mapper type="glob" from="*.html" to="../publish/*.html"/>    
-		<targetfile/>
+      <fileset dir="./publish/" includes="*.html"/>
+      <arg value="-jar"/>
+      <arg path="./build/tools/htmlcompressor-0.9.1.jar"/>
+      <arg value="--preserve-comments"/>
+      <arg line="--type html"/>
+      <arg line="--compress-js"/>
+      <arg line="--compress-css"/>
+      <srcfile/>
+      <arg value="-o"/>
+      <mapper type="glob" from="*.html" to="../publish/*.html"/>    
+      <targetfile/>
     </apply>
   </target>
+  
   <target name="text" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
   <target name="build" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+
 </project>
