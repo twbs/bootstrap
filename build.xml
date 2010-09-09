@@ -30,6 +30,7 @@
         <exclude name=".gitignore"/>
         <exclude name="README.markdown"/>
         <exclude name="**/.git/**"/>
+        <exclude name="**/.svn/**"/>
         <exclude name="**/build/**"/>
         <exclude name="**/test/**"/>
         <exclude name="**/demo/**"/>
@@ -179,6 +180,7 @@
   </target>
   
   <target name="text" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
-  <target name="build" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  <target name="build" depends="current-number,clean,rev,copy,usemin,scripts,css,html,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  <target name="minify" depends="current-number,clean,rev,copy,usemin,scripts,css,html,htmlcompress,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
 
 </project>
