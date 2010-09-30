@@ -56,7 +56,10 @@
         <exclude name="**/${dir.build}/**"/>
         <exclude name="**/${dir.test}/**"/>
         <exclude name="**/${dir.demo}/**"/>
-		<exclude name="**/${file.exclude}/**"/>
+        <exclude name="**/${dir.js}/profiling/**"/>
+		    
+		    <!-- configurable excludes -->
+		    <exclude name="**/${file.exclude}/**"/>
       </fileset>
     </copy>
   </target> 
