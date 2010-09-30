@@ -139,7 +139,7 @@
 		  <arg line="--line-break"/>
 		  <arg line="4000"/>
 	      <arg line="-o"/>
-	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js}/*-min.js"/>
+	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js}/*.min.js"/>
 	      <targetfile/>
 	    </apply>
 	</target>
@@ -147,23 +147,23 @@
 	<!-- Concatenate JS library to main scripts (If set) -->
 	<target name="js.concat.scripts" if="build.concat.scripts">
 		<echo message="Concatenating library file with main script file"/>
- 		<concat destfile="./${dir.publish}/${dir.js}/scripts-all-${build.number}-min.js">
+ 		<concat destfile="./${dir.publish}/${dir.js}/scripts-all-${build.number}.min.js">
 			<fileset dir="./${dir.publish}/${dir.js}/">
-				<include name="libs-${build.number}-min.js"/>
-				<include name="scripts-${build.number}-min.js"/>
+				<include name="libs-${build.number}.min.js"/>
+				<include name="scripts-${build.number}.min.js"/>
 			</fileset>    	
 	    </concat>
 		
 		<echo message="Concatenating library file with main debug script file"/>
- 		<concat destfile="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug-min.js">
+ 		<concat destfile="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug.min.js">
 			<fileset dir="./${dir.publish}/${dir.js}/">
-				<include name="libs-${build.number}-min.js"/>
-				<include name="scripts-${build.number}-debug-min.js"/>
+				<include name="libs-${build.number}.min.js"/>
+				<include name="scripts-${build.number}-debug.min.js"/>
 			</fileset>    	
 	    </concat>
 		
-		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}-min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}-min.js"/>
-		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug-min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug-min.js"/>
+		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}.min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js"/>
+		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug.min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.min.js"/>
 	</target>
 	
 	<!-- JS, Handle minifyonly files -->
@@ -171,12 +171,12 @@
 		<echo message="Minifying helper JS files"/>
 		
 		<apply executable="java" parallel="false">
-	      <fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*-min.js, *.min.js"/>
+	      <fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*.min.js"/>
 	      <arg line="-jar"/>
 	      <arg path="./${dir.tools}/${tool.yuicompressor}"/>
 	      <srcfile/>
 	      <arg line="-o"/>
-	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.minifyonly}/*-${build.number}-min.js"/>
+	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.minifyonly}/*-${build.number}.min.js"/>
 	      <targetfile/>
 	    </apply>
 	</target>
@@ -194,14 +194,14 @@
 		<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
 
 		<delete includeemptydirs="true">
-			<fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*-min.js, *.min.js"/>
+			<fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*.min.js"/>
 		</delete>
 	</target>
 	
 	<!-- JS, Delete concatenated libs file (only if concat.scripts and delete.unoptimized are defined) -->
 	<target name="js.if.concat.scripts" if="build.delete.unoptimized, build.concat.scripts">
-		<delete file="./${dir.publish}/${dir.js}/libs-${build.number}-min.js"/>
-		<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}-min.js"/>
+		<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.min.js"/>
+		<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js"/>
 	</target>	
 	
   
@@ -285,7 +285,7 @@
   <target name="html" depends="scripts">
     <echo message="Clean up the html..."/>
     <!-- style.css replacement handled as a replacetoken above -->
-    <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./${dir.publish}/${file.index}" replace="&lt;script src='${dir.js}/script-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m"/>
+    <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./${dir.publish}/${file.index}" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m"/>
     <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="./${dir.publish}/${file.index}" replace=" " flags="m"/>
     
     <!-- any ! comments will go back to normal comments -->
