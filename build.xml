@@ -96,8 +96,8 @@
 	    <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.js">
 			<fileset dir="./${dir.publish}/">
 				<include name="**/${dir.js.main}/*.min.js"/>
+				<exclude name="**/${dir.js.mylibs}/*.js"/>
 				<exclude name="**/${dir.js.libs}/*.js"/>
-				<exclude name="**/${dir.js.minifyonly}/*.js"/>
 			</fileset>    	
 	    </concat>
 	</target>
@@ -112,7 +112,7 @@
 	<target name="js.libs.concat"  depends="js.all.min">
 		<echo message="Concatenating JS libraries"/>
 	    <concat destfile="./${dir.publish}/${dir.js}/libs-${build.number}.js">
-			<fileset dir="./${dir.publish}/${dir.js.libs}/">
+			<fileset dir="./${dir.publish}/${dir.js.mylibs}/">
 				<include name="**/*.min.js"/>
 			</fileset>    	
 	    </concat>
@@ -143,7 +143,7 @@
 	      <fileset dir="./${dir.publish}/${dir.js}">
 	        <include name="**/*.js"/>
   				<exclude name="**/*.min.js"/>
-  				<exclude name="**/${dir.js.minifyonly}/*.js"/>
+  				<exclude name="**/${dir.js.libs}/*.js"/>
 	      </fileset>
 	      <arg line="-jar"/>
 	      <arg path="./${dir.tools}/${tool.yuicompressor}"/>
@@ -167,28 +167,24 @@
 		<echo message="Minifying helper JS files"/>
 		
 		<apply executable="java" parallel="false">
-	      <fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*.min.js"/>
+	      <fileset dir="./${dir.publish}/${dir.js.libs}/" includes="*.js" excludes="*.min.js"/>
 	      <arg line="-jar"/>
 	      <arg path="./${dir.tools}/${tool.yuicompressor}"/>
 	      <srcfile/>
 	      <arg line="-o"/>
-	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.minifyonly}/*-${build.number}.min.js"/>
+	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.libs}/*-${build.number}.min.js"/>
 	      <targetfile/>
 	    </apply>
 	</target>
 	
 	
 	<!--
-                JS: Concat libs- and scripts- into a normal and a debug file.
+                JS: Concat mylibs- and scripts- into a normal and a debug file.
                     Then rename them to s/-all// 
                      
   -->
 	<target name="js.concat.scripts" if="build.concat.scripts">
-	  <!--
-	  <echo>Duplicate file because it's already minified</echo>
-	  <copy file="./${dir.publish}/${dir.js}/libs-${build.number}.js" tofile="./${dir.publish}/${dir.js}/libs-${build.number}.min.js"/>
-    <copy file="./${dir.publish}/${dir.js}/scripts-${build.number}.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js"/>
-    -->
+
     
 		<echo message="Concatenating library file with main script file"/>
  		<concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js">
@@ -232,7 +228,7 @@
     -->  
 
 		<delete includeemptydirs="true">
-			<fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*.min.js"/>
+			<fileset dir="./${dir.publish}/${dir.js.libs}/" includes="*.js" excludes="*.min.js"/>
 		</delete>
 	</target>
 	
