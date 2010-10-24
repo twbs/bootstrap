@@ -57,7 +57,7 @@
                      
   -->
   
-  <target name="copy" depends="clean">
+  <target name="copy" depends="clean, rev">
     <echo message="Copying over new files..."/>
     <copy todir="./${dir.publish}">
       <fileset dir="./">
@@ -92,11 +92,11 @@
                 JS: Concat primary scripts
                      
   -->
-	<target name="js.main.concat">
+	<target name="js.main.concat" depends="js.all.min">
 		<echo message="Concatenating JS scripts"/>
 	    <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.js">
-			<fileset dir="./${dir.publish}/${dir.js.main}/">
-				<include name="**/*.min.js"/>
+			<fileset dir="./${dir.publish}/">
+				<include name="**/${dir.js.main}/*.min.js"/>
 				<exclude name="**/${dir.js.libs}/*.js"/>
 				<exclude name="**/${dir.js.minifyonly}/*.js"/>
 			</fileset>    	
@@ -110,7 +110,7 @@
              
                      
   -->
-	<target name="js.libs.concat">
+	<target name="js.libs.concat"  depends="js.all.min">
 		<echo message="Concatenating JS libraries"/>
 	    <concat destfile="./${dir.publish}/${dir.js}/libs-${build.number}.js">
 			<fileset dir="./${dir.publish}/${dir.js.libs}/">
@@ -135,7 +135,7 @@
                 JS: Minify primary scripts and libraries
                      
   -->
-	<target name="js.all.min">
+	<target name="js.all.min" depends="copy">
 		<echo message="Minifying concatenated script- and library-file"/>
 		<apply executable="java" parallel="false">
 	      <fileset dir="./${dir.publish}/${dir.js}">
@@ -182,24 +182,33 @@
                      
   -->
 	<target name="js.concat.scripts" if="build.concat.scripts">
+	  <!--
+	  <echo>Duplicate file because it's already minified</echo>
+	  <copy file="./${dir.publish}/${dir.js}/libs-${build.number}.js" tofile="./${dir.publish}/${dir.js}/libs-${build.number}.min.js"/>
+    <copy file="./${dir.publish}/${dir.js}/scripts-${build.number}.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js"/>
+    -->
+    
 		<echo message="Concatenating library file with main script file"/>
- 		<concat destfile="./${dir.publish}/${dir.js}/scripts-all-${build.number}.min.js">
+ 		<concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js">
 			<fileset dir="./${dir.publish}/${dir.js}/">
-				<include name="libs-${build.number}.min.js"/>
-				<include name="scripts-${build.number}.min.js"/>
+				<include name="libs-${build.number}.js"/>
+				<include name="scripts-${build.number}.js"/>
 			</fileset>    	
 	    </concat>
 		
 		<echo message="Concatenating library file with main debug script file"/>
- 		<concat destfile="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug.min.js">
+ 		<concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.min.js">
 			<fileset dir="./${dir.publish}/${dir.js}/">
-				<include name="libs-${build.number}.min.js"/>
-				<include name="scripts-${build.number}-debug.min.js"/>
+				<include name="libs-${build.number}.js"/>
+				<include name="scripts-${build.number}-debug.js"/>
 			</fileset>    	
 	    </concat>
-		
+	    
+		<echo>About to rename scripts-all to scripts</echo>
+		<!--
 		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}.min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js"/>
 		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug.min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.min.js"/>
+		-->
 	</target>
   
 	
