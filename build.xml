@@ -38,10 +38,24 @@
     <echo>Current build number: ${build.number}</echo>
   </target>  
   
+  
+  
+	<!--
+            Wipe the old
+                     
+  -->
   <target name="clean">
     <echo message="Cleaning up previous build directory..."/>
     <delete dir="./${dir.publish}/"/>
   </target>
+  
+  
+  
+  
+	<!--
+            Copy in the new stuff
+                     
+  -->
   
   <target name="copy" depends="clean">
     <echo message="Copying over new files..."/>
@@ -64,6 +78,12 @@
     </copy>
   </target> 
   
+  
+  
+	<!--
+             HTML: switch to minified jquery in the html
+                     
+  -->
   <target name="usemin" depends="copy">
     <echo message="Switching to minified js files..."/>
     
@@ -74,30 +94,18 @@
    
   </target>
   
-  <target name="scripts" depends="copy">
-    <echo message="Concatenating and minifying javascript"/>
-    <concat destfile="./${dir.publish}/${dir.js}/script-${build.number}.js">
-      <fileset file="./${dir.js}/jquery-1.4.2.js"/>
-      <fileset file="./${dir.js}/plugins.js"/>
-      <fileset file="./${dir.js}/script.js"/>
-    </concat>
-    <apply executable="java" parallel="false">
-      <fileset dir="./${dir.publish}/${dir.js}/" includes="script-${build.number}.js"/>
-      <arg line="-jar"/>
-      <arg path="./${dir.build}/tools/yuicompressor-2.4.2.jar"/>
-      <srcfile/>
-      <arg line="-o"/>
-      <mapper type="glob" from="script-${build.number}.js" to="../${dir.publish}/${dir.js}/script-${build.number}.min.js"/>
-      <targetfile/>
-    </apply>
-    <!-- <delete file="./publish/js/script-${build.number}.js"/> View source has a posse. -->
-  </target>
+
   
-  
-  	<!-- Optimize javascript files -->
+  	<!-- Optimize javascript files 
+  	        .. i think we're gonna want to minify each individually before concating them.. ^pi
+  	-->
 	<target name="js.all" depends="js.main.concat,js.libs.concat,js.remove.console,js.all.min,js.concat.scripts,js.minifyonly.min,js.delete"></target>
 	
-  	<!-- Concatenate main JS files -->
+	
+	<!--
+                JS: Concat primary scripts
+                     
+  -->
 	<target name="js.main.concat">
 		<echo message="Concatenating JS scripts"/>
 	    <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.js">
@@ -106,12 +114,18 @@
 				<exclude name=".gitignore"/>
 				<exclude name="**/.git/**"/>
 				<exclude name="**/.svn/**"/>
+				<exclude name="**/${dir.js.libs}/*.js"/>
+				<exclude name="**/${dir.js.minifyonly}/*.js"/>
 			</fileset>    	
 	    </concat>
 	</target>
 	
 		
-	<!-- Concatenate JS library files -->
+	
+	<!--
+                JS: Concat library scripts
+                     
+  -->
 	<target name="js.libs.concat">
 		<echo message="Concatenating JS libraries"/>
 	    <concat destfile="./${dir.publish}/${dir.js}/libs-${build.number}.js">
@@ -128,14 +142,24 @@
 	<target name="js.remove.console" description="Comment out console.log lines">
 		<echo>Commenting out console.log lines</echo>
 		<copy file="${dir.publish}/${dir.js}/scripts-${build.number}.js" tofile="${dir.publish}/${dir.js}/scripts-${build.number}-debug.js"/>
-		<replaceregexp match="(console.log\(.*\))" replace="/\*\1\*/" flags="g" file="${dir.publish}/${dir.js}/scripts-${build.number}.js" />
+		<replaceregexp match="(console.log\(.*?\))" replace="/\*\1\*/" flags="g" file="${dir.publish}/${dir.js}/scripts-${build.number}.js" />
 	</target>	
 	
-	<!-- Minify concatenated scripts and library file -->
+	
+	
+	<!--
+                JS: Minify primary scripts
+                     
+  -->
 	<target name="js.all.min">
 		<echo message="Minifying concatenated script- and library-file"/>
 		<apply executable="java" parallel="false">
-	      <fileset dir="./${dir.publish}/${dir.js}/" includes="*.js"/>
+	      <fileset dir="./${dir.publish}/${dir.js}">
+	        <include name="**/*.js"/>
+  				<exclude name="**/*.min.js"/>
+  				<exclude name="**/${dir.js.libs}/*.js"/>
+  				<exclude name="**/${dir.js.minifyonly}/*.js"/>
+	      </fileset>
 	      <arg line="-jar"/>
 	      <arg path="./${dir.tools}/${tool.yuicompressor}"/>
 	      <srcfile/>
@@ -147,7 +171,12 @@
 	    </apply>
 	</target>
 	
-	<!-- Concatenate JS library to main scripts (If set) -->
+	
+	<!--
+                JS: Concat libs- and scripts- into a normal and a debug file.
+                    Then rename them to s/-all// 
+                     
+  -->
 	<target name="js.concat.scripts" if="build.concat.scripts">
 		<echo message="Concatenating library file with main script file"/>
  		<concat destfile="./${dir.publish}/${dir.js}/scripts-all-${build.number}.min.js">
@@ -169,7 +198,12 @@
 		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug.min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.min.js"/>
 	</target>
 	
-	<!-- JS, Handle minifyonly files -->
+	<!--
+                JS: Minify helper files. 
+                    these files do not get concat'd with anyone else.
+                    they will get a build number in their filename though
+                     
+  -->
 	<target name="js.minifyonly.min">
 		<echo message="Minifying helper JS files"/>
 		
@@ -184,11 +218,14 @@
 	    </apply>
 	</target>
 	
-	<!-- JS, Delete unoptimized files (If set) -->
+	<!--
+                JS: Delete unoptimized files (If set)
+                     
+  -->
 	<target name="js.delete" if="build.delete.unoptimized" depends="js.if.concat.scripts">
 		<echo message="Deleting unoptimized files"/>
 		
-		<delete dir="./${dir.publish}/${dir.js.main}/"/>
+		
 		<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.js"/>
 		
 		<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.js"/>
@@ -208,6 +245,12 @@
 	</target>	
 	
   
+  <!--
+                CSS: concat style.css into ... one file. :)
+                     run it through yui compressor for minification.
+                     replace the reference to it in index.html
+                     
+  -->
   <target name="css" depends="copy">
     <echo message="Minifying css..."/>
     <concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
@@ -216,7 +259,7 @@
     <apply executable="java" parallel="false">
       <fileset dir="./${dir.publish}/${dir.css}/" includes="style-${build.number}.css"/>
       <arg line="-jar"/>
-      <arg path="./${dir.build}/tools/yuicompressor-2.4.2.jar"/>
+      <arg path="./${dir.tools}/${tool.yuicompressor}"/>
       <srcfile/>
       <arg line="-o"/>
       <mapper type="glob" from="style-${build.number}.css" to="../${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
@@ -226,6 +269,9 @@
     <!-- <delete file="./publish/css/style-${build.number}.css"/> -->
   </target>
   
+  <!--
+                IMAGES: png
+  -->
   <target name="imagespng" depends="copy">
     <echo message="Optimizing images"/>
     <apply executable="optipng" osfamily="unix">
@@ -247,7 +293,10 @@
       </fileset>
     </apply>
   </target>
-  
+ 
+  <!--
+                IMAGES: jpg
+  -->  
   <target name="imagesjpg" depends="copy">
     <echo message="Clean up those jpgs..."/>
     <apply executable="jpegtran" osfamily="unix">
@@ -285,7 +334,14 @@
     </apply>
   </target>
   
-  <target name="html" depends="scripts">
+  
+  <!--
+          HTML: replaces scripts with single concat'd one.
+                removes profiling code
+                ! comments return to normal comments
+  -->
+  
+  <target name="html" depends="">
     <echo message="Clean up the html..."/>
     <!-- style.css replacement handled as a replacetoken above -->
     <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./${dir.publish}/${file.index}" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m"/>
@@ -296,7 +352,9 @@
     
   </target>
 
-
+  <!--
+            HTML Minification. There are three levels. htmlclean is default.
+  -->
   <target name="htmlbuildkit" depends="html" >
     <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
       <fileset dir="./${dir.publish}/" includes="*.html"/>
