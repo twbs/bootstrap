@@ -67,6 +67,7 @@
         <exclude name="README.markdown"/>
         <exclude name="**/.git/**"/>
         <exclude name="**/.svn/**"/>
+        <exclude name=".gitignore"/>
         <exclude name="**/${dir.build}/**"/>
         <exclude name="**/${dir.test}/**"/>
         <exclude name="**/${dir.demo}/**"/>
@@ -79,27 +80,12 @@
   </target> 
   
   
-  
-	<!--
-             HTML: switch to minified jquery in the html
-                     
-  -->
-  <target name="usemin" depends="copy">
-    <echo message="Switching to minified js files..."/>
-    
-    <!-- switch from a regular jquery to minified-->
-    <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" file="./${dir.publish}/${file.index}" flags=""/>
-    <!-- switch any google CDN reference to minified -->
-    <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" file="./${dir.publish}/${file.index}" flags=""/>
-   
-  </target>
-  
 
   
   	<!-- Optimize javascript files 
   	        .. i think we're gonna want to minify each individually before concating them.. ^pi
   	-->
-	<target name="js.all" depends="js.main.concat,js.libs.concat,js.remove.console,js.all.min,js.concat.scripts,js.minifyonly.min,js.delete"></target>
+	<target name="js.all" depends="js.all.min, js.main.concat, js.libs.concat, js.remove.console, js.concat.scripts, js.minifyonly.min, js.delete"></target>
 	
 	
 	<!--
@@ -110,10 +96,7 @@
 		<echo message="Concatenating JS scripts"/>
 	    <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.js">
 			<fileset dir="./${dir.publish}/${dir.js.main}/">
-				<include name="**/*.js"/>
-				<exclude name=".gitignore"/>
-				<exclude name="**/.git/**"/>
-				<exclude name="**/.svn/**"/>
+				<include name="**/*.min.js"/>
 				<exclude name="**/${dir.js.libs}/*.js"/>
 				<exclude name="**/${dir.js.minifyonly}/*.js"/>
 			</fileset>    	
@@ -124,13 +107,14 @@
 	
 	<!--
                 JS: Concat library scripts
+             
                      
   -->
 	<target name="js.libs.concat">
 		<echo message="Concatenating JS libraries"/>
 	    <concat destfile="./${dir.publish}/${dir.js}/libs-${build.number}.js">
 			<fileset dir="./${dir.publish}/${dir.js.libs}/">
-				<include name="**/*.js"/>
+				<include name="**/*.min.js"/>
 				<exclude name=".gitignore"/>
 				<exclude name="**/.git/**"/>
 				<exclude name="**/.svn/**"/>
@@ -138,7 +122,7 @@
 	    </concat>
 	</target>
 	
-	<!-- Comment out console.log commands -->
+	<!-- Comment out console.log commands from main scripts -->
 	<target name="js.remove.console" description="Comment out console.log lines">
 		<echo>Commenting out console.log lines</echo>
 		<copy file="${dir.publish}/${dir.js}/scripts-${build.number}.js" tofile="${dir.publish}/${dir.js}/scripts-${build.number}-debug.js"/>
@@ -148,7 +132,7 @@
 	
 	
 	<!--
-                JS: Minify primary scripts
+                JS: Minify primary scripts and libraries
                      
   -->
 	<target name="js.all.min">
@@ -157,7 +141,6 @@
 	      <fileset dir="./${dir.publish}/${dir.js}">
 	        <include name="**/*.js"/>
   				<exclude name="**/*.min.js"/>
-  				<exclude name="**/${dir.js.libs}/*.js"/>
   				<exclude name="**/${dir.js.minifyonly}/*.js"/>
 	      </fileset>
 	      <arg line="-jar"/>
@@ -167,6 +150,27 @@
 		  <arg line="4000"/>
 	      <arg line="-o"/>
 	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js}/*.min.js"/>
+	      <targetfile/>
+	  </apply>
+	</target>
+	
+	
+	<!--
+                JS: Minify helper files. 
+                    these files do not get concat'd with anyone else.
+                    they will get a build number in their filename though
+                     
+  -->
+	<target name="js.minifyonly.min">
+		<echo message="Minifying helper JS files"/>
+		
+		<apply executable="java" parallel="false">
+	      <fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*.min.js"/>
+	      <arg line="-jar"/>
+	      <arg path="./${dir.tools}/${tool.yuicompressor}"/>
+	      <srcfile/>
+	      <arg line="-o"/>
+	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.minifyonly}/*-${build.number}.min.js"/>
 	      <targetfile/>
 	    </apply>
 	</target>
@@ -197,26 +201,7 @@
 		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}.min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js"/>
 		<move file="./${dir.publish}/${dir.js}/scripts-all-${build.number}-debug.min.js" tofile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.min.js"/>
 	</target>
-	
-	<!--
-                JS: Minify helper files. 
-                    these files do not get concat'd with anyone else.
-                    they will get a build number in their filename though
-                     
-  -->
-	<target name="js.minifyonly.min">
-		<echo message="Minifying helper JS files"/>
-		
-		<apply executable="java" parallel="false">
-	      <fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*.min.js"/>
-	      <arg line="-jar"/>
-	      <arg path="./${dir.tools}/${tool.yuicompressor}"/>
-	      <srcfile/>
-	      <arg line="-o"/>
-	      <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.minifyonly}/*-${build.number}.min.js"/>
-	      <targetfile/>
-	    </apply>
-	</target>
+  
 	
 	<!--
                 JS: Delete unoptimized files (If set)
@@ -230,8 +215,10 @@
 		
 		<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.js"/>
 		
-		<delete dir="./${dir.publish}/${dir.js.lib}/"/>
+		<!-- 
+		<delete dir="./${dir.publish}/${dir.js.lib}/"/> 
 		<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
+    -->  
 
 		<delete includeemptydirs="true">
 			<fileset dir="./${dir.publish}/${dir.js.minifyonly}/" includes="*.js" excludes="*.min.js"/>
@@ -333,6 +320,23 @@
       <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
     </apply>
   </target>
+  
+  
+  
+	<!--
+             HTML: switch to minified jquery in the html
+                     
+  -->
+  <target name="usemin" depends="copy">
+    <echo message="Switching to minified js files..."/>
+    
+    <!-- switch from a regular jquery to minified-->
+    <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" file="./${dir.publish}/${file.index}" flags=""/>
+    <!-- switch any google CDN reference to minified -->
+    <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" file="./${dir.publish}/${file.index}" flags=""/>
+   
+  </target>
+  
   
   
   <!--
