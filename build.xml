@@ -342,6 +342,9 @@
     <!-- switch any google CDN reference to minified -->
     <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" file="./${dir.publish}/${file.index}" flags=""/>
    
+    <echo>kill off those versioning flags: ?v=2</echo>
+    <replaceregexp match='\?v=\d+">' replace='">' file="./${dir.publish}/${file.index}" flags=""/>
+   
   </target>
   
   
@@ -349,7 +352,6 @@
   <!--
           HTML: replaces scripts with single concat'd one.
                 removes profiling code
-                ! comments return to normal comments
   -->
   
   <target name="html" depends="">
