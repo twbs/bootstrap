@@ -273,23 +273,20 @@
     <echo message="Optimizing images"/>
     <apply executable="optipng" osfamily="unix">
       <arg value="-o7"/>
-      <fileset dir="./${dir.publish}/${dir.images}">
-        <exclude name="*.jpg"/>
-        <exclude name=".gitignore"/>
+      <fileset dir="./${dir.publish}/">
+        <include name="**/*.png"/>
       </fileset>
     </apply>
     <apply executable="optipng" osfamily="mac">
       <arg value="-o7"/>
-      <fileset dir="./${dir.publish}/${dir.images}">
-        <exclude name="*.jpg"/>
-        <exclude name=".gitignore"/>
+      <fileset dir="./${dir.publish}/">
+        <include name="**/*.png"/>
       </fileset>
     </apply>
     <apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
       <arg value="-o7"/>
-      <fileset dir="./${dir.publish}/${dir.images}">
-        <exclude name="*.jpg"/>
-        <exclude name=".gitignore"/>
+      <fileset dir="./${dir.publish}/">
+        <include name="**/*.png"/>
       </fileset>
     </apply>
   </target>
