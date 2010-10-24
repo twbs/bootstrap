@@ -6,11 +6,11 @@
 
 ##first run
 # $ cd  html5-boilerplate
-# $ sudo chmod a+x makep.sh && ./makep.sh
+# $ sudo chmod a+x createproject.sh && ./createproject.sh
 
 ##usage
-# $ cd  html5-boilerplate
-# $ ./makep.sh
+# $ cd  html5-boilerplate/build
+# $ ./createproject.sh
 
 echo "To create a new html5-boilerplate project, enter a new directory name:"
 
@@ -21,7 +21,7 @@ cd ..
 webroot=$PWD
 
 SRC=$webroot"/html5-boilerplate"
-DST=$webroot"/"$name
+DST=$webroot"/../"$name
 
 if [ -d "$DST" ]
 then
@@ -45,6 +45,9 @@ else
     #sucess message
     echo "Created Project: $DST"
     
+    # delete that temporary folder
+    rm -r $name
+    
     #move into new project
     cd $DST
     
@@ -52,18 +55,19 @@ else
     #the whole dir into the new project, along with the contents
     if [ -d "$DST/html5-boilerplate" ]
     then
-        sudo rm -r html5-boilerplate
+         rm -r html5-boilerplate
     fi        
     
-    if [ -e "$DST/makep.sh" ]
+    if [ -e "$DST/createproject.sh" ]
     then
-        sudo rm -r makep.sh
+         rm -r createproject.sh
     fi  
     
     if [ -e "$DST/.git" ]
     then
-        sudo rm -r .git
-    fi  
+         rm -rf .git
+    fi
+
 
 fi
 
