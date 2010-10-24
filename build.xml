@@ -83,9 +83,8 @@
 
   
   	<!-- Optimize javascript files 
-  	        .. i think we're gonna want to minify each individually before concating them.. ^pi
   	-->
-	<target name="js.all" depends="js.all.min, js.main.concat, js.libs.concat, js.remove.console, js.concat.scripts, js.minifyonly.min, js.delete"></target>
+	<target name="js.all" depends="js.remove.console, js.all.min, js.main.concat, js.libs.concat, js.concat.scripts, js.minifyonly.min, js.delete"></target>
 	
 	
 	<!--
@@ -115,9 +114,6 @@
 	    <concat destfile="./${dir.publish}/${dir.js}/libs-${build.number}.js">
 			<fileset dir="./${dir.publish}/${dir.js.libs}/">
 				<include name="**/*.min.js"/>
-				<exclude name=".gitignore"/>
-				<exclude name="**/.git/**"/>
-				<exclude name="**/.svn/**"/>
 			</fileset>    	
 	    </concat>
 	</target>
@@ -125,8 +121,14 @@
 	<!-- Comment out console.log commands from main scripts -->
 	<target name="js.remove.console" description="Comment out console.log lines">
 		<echo>Commenting out console.log lines</echo>
-		<copy file="${dir.publish}/${dir.js}/scripts-${build.number}.js" tofile="${dir.publish}/${dir.js}/scripts-${build.number}-debug.js"/>
-		<replaceregexp match="(console.log\(.*?\))" replace="/\*\1\*/" flags="g" file="${dir.publish}/${dir.js}/scripts-${build.number}.js" />
+
+		<replaceregexp match="(console.log\(.*\))" replace="/\*\1\*/" flags="g" >
+		  <fileset dir="./${dir.publish}/${dir.js}/">
+				<include name="**/*.js"/>
+				<exclude name="**/*.min.js"/>
+			</fileset>
+		</replaceregexp>  
+		
 	</target>	
 	
 	
