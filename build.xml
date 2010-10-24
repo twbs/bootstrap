@@ -358,8 +358,7 @@
     <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" file="./${dir.publish}/${file.index}" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m"/>
     <replaceregexp match="&lt;!-- yui profiler[\d\w\s\W]*?end profiling code --&gt;" file="./${dir.publish}/${file.index}" replace=" " flags="m"/>
     
-    <!-- any ! comments will go back to normal comments -->
-    <replaceregexp match="&lt;!--! " file="./${dir.publish}/${file.index}" replace="&lt;!-- " flags=""/>
+    <!--[! use comments like this one to avoid having them get minified -->
     
   </target>
 
