@@ -225,11 +225,14 @@
 		<!-- 
 		<delete dir="./${dir.publish}/${dir.js.lib}/"/> 
 		<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
-    -->  
+    
 
+     this guy probably COULD be on but I think it's better if we keep him off for now. ^pi
 		<delete includeemptydirs="true">
 			<fileset dir="./${dir.publish}/${dir.js.libs}/" includes="*.js" excludes="*.min.js"/>
 		</delete>
+		
+		-->  
 	</target>
 	
 	<!-- JS, Delete concatenated libs file (only if concat.scripts and delete.unoptimized are defined) -->
