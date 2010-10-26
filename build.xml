@@ -14,10 +14,13 @@
          htmlclean (default)  : minor html optimizations (extra quotes removed). inline script/style minified 
          htmlcompress         : html minification
   -->
-  <target name="text"     depends="clean,rev,current-number,copy,usemin,js.all,css,html,htmlclean" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
-  <target name="buildkit" depends="clean,rev,current-number,copy,usemin,js.all,css,html,htmlbuildkit,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
-  <target name="build"    depends="clean,rev,current-number,copy,usemin,js.all,css,html,htmlclean,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
-  <target name="minify"   depends="clean,rev,current-number,copy,usemin,js.all,css,html,htmlcompress,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  
+  <target name="basics"     depends="clean,rev,current-number,copy,usemin,js.all,css,html" description="Concats files, runs YUI Compressor on them and makes magic happen."/>
+  
+  <target name="text"     depends="basics,htmlclean"                        description="Concats files, runs YUI Compressor on them and makes magic happen."/>
+  <target name="buildkit" depends="basics,htmlbuildkit,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  <target name="build"    depends="basics,htmlclean,imagespng,imagesjpg"    description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
+  <target name="minify"   depends="basics,htmlcompress,imagespng,imagesjpg" description="Concats files, runs YUI Compressor, optimizes images. There is much rejoicing."/>
   
   
   
