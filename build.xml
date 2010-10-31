@@ -71,6 +71,8 @@
         <exclude name="**/.git/**"/>
         <exclude name="**/.svn/**"/>
         <exclude name=".gitignore"/>
+        <exclude name="*.conf*"/>
+        <exclude name="mime.types"/>
         <exclude name="**/${dir.build}/**"/>
         <exclude name="**/${dir.test}/**"/>
         <exclude name="**/${dir.demo}/**"/>
