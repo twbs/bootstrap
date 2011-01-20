@@ -379,7 +379,7 @@
     <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
       <fileset dir="./${dir.publish}/" includes="*.html"/>
       <arg value="-jar"/>
-      <arg path="./${dir.build}/tools/htmlcompressor-0.9.3.jar"/>
+      <arg path="./${dir.build}/tools/htmlcompressor-0.9.8.jar"/>
       <arg value="--preserve-comments"/>
       <arg line="--preserve-multi-spaces"/>
       <arg line="--type html"/>
@@ -396,7 +396,7 @@
     <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
       <fileset dir="./${dir.publish}/" includes="*.html"/>
       <arg value="-jar"/>
-      <arg path="./${dir.build}/tools/htmlcompressor-0.9.3.jar"/>
+      <arg path="./${dir.build}/tools/htmlcompressor-0.9.8.jar"/>
       <arg line="--type html"/>
       <arg line="--preserve-multi-spaces"/>
       <arg line="--remove-quotes"/>
@@ -413,7 +413,7 @@
     <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
       <fileset dir="./${dir.publish}/" includes="*.html"/>
       <arg value="-jar"/>
-      <arg path="./${dir.build}/tools/htmlcompressor-0.9.3.jar"/>
+      <arg path="./${dir.build}/tools/htmlcompressor-0.9.8.jar"/>
       <arg line="--type html"/>
       <arg line="--remove-quotes"/>
       <arg line="--compress-js"/>
