@@ -30,22 +30,13 @@
 	-->
 	<target name="basics">
 	<if>
-		<equals arg1="${env}" arg2="prod"/>
+		<equals arg1="${env}" arg2="dev"/>
 		<then>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
+			<!-- Build a dev environment -->
+			<echo message="Building a Development Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
 			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.libs.minify"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
 		</then>
 		
 		<elseif>
@@ -57,10 +48,10 @@
 				<antcall target="-clean"/>
 				<antcall target="-copy"/>
 				<antcall target="-usemin"/>
+				<antcall target="-js.all.minify"/>
 				<antcall target="-js.main.concat"/>
 				<antcall target="-js.mylibs.concat"/>
 				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.libs.minify"/>
 				<antcall target="-js.delete"/>
 				<antcall target="-css"/>
 				<antcall target="-html"/>
@@ -68,11 +59,20 @@
 		</elseif>
 		
 		<else>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
+			<!-- Build a production environment -->
+			<echo message="Building a Production Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>			
+			<antcall target="-copy"/>
+			<antcall target="-usemin"/>
+			<antcall target="-js.all.minify"/>
+			<antcall target="-js.main.concat"/>
+			<antcall target="-js.mylibs.concat"/>
+			<antcall target="-js.scripts.concat"/>
+			<antcall target="-js.delete"/>
+			<antcall target="-strip-console.log"/>
+			<antcall target="-css"/>
+			<antcall target="-html"/>
 		</else>
 	</if>
   </target>
@@ -80,23 +80,13 @@
   
 	<target name="text">
 	<if>
-		<equals arg1="${env}" arg2="prod"/>
+		<equals arg1="${env}" arg2="dev"/>
 		<then>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
+			<!-- Build a dev environment -->
+			<echo message="Building a Development Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
 			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.libs.minify"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlclean"/>
 		</then>
 		
 		<elseif>
@@ -108,10 +98,10 @@
 				<antcall target="-clean"/>
 				<antcall target="-copy"/>
 				<antcall target="-usemin"/>
+				<antcall target="-js.all.minify"/>
 				<antcall target="-js.main.concat"/>
 				<antcall target="-js.mylibs.concat"/>
 				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.libs.minify"/>
 				<antcall target="-js.delete"/>
 				<antcall target="-css"/>
 				<antcall target="-html"/>
@@ -120,11 +110,21 @@
 		</elseif>
 		
 		<else>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
+			<!-- Build a production environment -->
+			<echo message="Building a Production Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>			
+			<antcall target="-copy"/>
+			<antcall target="-usemin"/>
+			<antcall target="-js.all.minify"/>
+			<antcall target="-js.main.concat"/>
+			<antcall target="-js.mylibs.concat"/>
+			<antcall target="-js.scripts.concat"/>
+			<antcall target="-js.delete"/>
+			<antcall target="-strip-console.log"/>
+			<antcall target="-css"/>
+			<antcall target="-html"/>
+			<antcall target="-htmlclean"/>		
 		</else>
 	</if>
 	</target>
@@ -132,23 +132,13 @@
   
 	<target name="buildkit">
 	<if>
-		<equals arg1="${env}" arg2="prod"/>
+		<equals arg1="${env}" arg2="dev"/>
 		<then>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
+			<!-- Build a dev environment -->
+			<echo message="Building a Development Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.libs.minify"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlbuildkit"/>
+			<antcall target="-copy"/>	
 			<antcall target="-imagespng"/>
 			<antcall target="-imagesjpg"/>
 		</then>
@@ -162,10 +152,10 @@
 				<antcall target="-clean"/>
 				<antcall target="-copy"/>
 				<antcall target="-usemin"/>
+				<antcall target="-js.all.minify"/>
 				<antcall target="-js.main.concat"/>
 				<antcall target="-js.mylibs.concat"/>
-				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.libs.minify"/>
+				<antcall target="-js.scripts.concat"/>x
 				<antcall target="-js.delete"/>
 				<antcall target="-css"/>
 				<antcall target="-html"/>
@@ -176,13 +166,23 @@
 		</elseif>
 		
 		<else>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
+			<!-- Build a production environment -->
+			<echo message="Building a Production Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>	
+			<antcall target="-copy"/>
+			<antcall target="-usemin"/>
+			<antcall target="-js.all.minify"/>
+			<antcall target="-js.main.concat"/>
+			<antcall target="-js.mylibs.concat"/>
+			<antcall target="-js.scripts.concat"/>x
+			<antcall target="-js.delete"/>
+			<antcall target="-strip-console.log"/>
+			<antcall target="-css"/>
+			<antcall target="-html"/>
+			<antcall target="-htmlbuildkit"/>
 			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>			
+			<antcall target="-imagesjpg"/>	
 		</else>
 	</if>
   </target>
@@ -190,23 +190,13 @@
 	
 	<target name="build">
 	<if>
-		<equals arg1="${env}" arg2="prod"/>
+		<equals arg1="${env}" arg2="dev"/>
 		<then>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
+			<!-- Build a dev environment -->
+			<echo message="Building a Development Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.libs.minify"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlclean"/>
+			<antcall target="-copy"/>	
 			<antcall target="-imagespng"/>
 			<antcall target="-imagesjpg"/>
 		</then>
@@ -220,10 +210,10 @@
 				<antcall target="-clean"/>
 				<antcall target="-copy"/>
 				<antcall target="-usemin"/>
+				<antcall target="-js.all.minify"/>
 				<antcall target="-js.main.concat"/>
 				<antcall target="-js.mylibs.concat"/>
 				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.libs.minify"/>
 				<antcall target="-js.delete"/>
 				<antcall target="-css"/>
 				<antcall target="-html"/>
@@ -234,13 +224,23 @@
 		</elseif>
 		
 		<else>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
+			<!-- Build a production environment -->
+			<echo message="Building a Production Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>	
+			<antcall target="-copy"/>
+			<antcall target="-usemin"/>
+			<antcall target="-js.all.minify"/>
+			<antcall target="-js.main.concat"/>
+			<antcall target="-js.mylibs.concat"/>
+			<antcall target="-js.scripts.concat"/>
+			<antcall target="-js.delete"/>
+			<antcall target="-strip-console.log"/>
+			<antcall target="-css"/>
+			<antcall target="-html"/>
+			<antcall target="-htmlclean"/>
 			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>			
+			<antcall target="-imagesjpg"/>		
 		</else>
 	</if>
   </target>
@@ -248,23 +248,13 @@
 	
 	<target name="minify">
 	<if>
-		<equals arg1="${env}" arg2="prod"/>
+		<equals arg1="${env}" arg2="dev"/>
 		<then>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
+			<!-- Build a dev environment -->
+			<echo message="Building a Development Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.libs.minify"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlcompress"/>
+			<antcall target="-copy"/>	
 			<antcall target="-imagespng"/>
 			<antcall target="-imagesjpg"/>
 		</then>
@@ -278,10 +268,10 @@
 				<antcall target="-clean"/>
 				<antcall target="-copy"/>
 				<antcall target="-usemin"/>
+				<antcall target="-js.all.minify"/>
 				<antcall target="-js.main.concat"/>
 				<antcall target="-js.mylibs.concat"/>
 				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.libs.minify"/>
 				<antcall target="-js.delete"/>
 				<antcall target="-css"/>
 				<antcall target="-html"/>
@@ -292,13 +282,23 @@
 		</elseif>
 		
 		<else>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
+			<!-- Build a production environment -->
+			<echo message="Building a Production Environment..."/>
 			<antcall target="-rev"/>
 			<antcall target="-clean"/>
-			<antcall target="-copy"/>	
+			<antcall target="-copy"/>
+			<antcall target="-usemin"/>
+			<antcall target="-js.all.minify"/>
+			<antcall target="-js.main.concat"/>
+			<antcall target="-js.mylibs.concat"/>
+			<antcall target="-js.scripts.concat"/>
+			<antcall target="-js.delete"/>
+			<antcall target="-strip-console.log"/>
+			<antcall target="-css"/>
+			<antcall target="-html"/>
+			<antcall target="-htmlcompress"/>
 			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>			
+			<antcall target="-imagesjpg"/>	
 		</else>
 	</if>
   </target>
@@ -394,16 +394,16 @@
 	</target>
 	
 	
-	<target name="-js.all.min" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
+	<target name="-js.all.minify" depends="-js.libs.minify" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
 		<echo message="Minifying concatenated script- and library-file"/>
 		<apply executable="java" parallel="false">
 			<fileset dir="./${dir.publish}/${dir.js}">
 				<include name="**/*.js"/>
 				<exclude name="**/*.min.js"/>
-  				<exclude name="**/${dir.js.libs}/*.js"/>
+  			<exclude name="**/${dir.js.libs}/*.js"/>
 			</fileset>
 			<arg line="-jar"/>
-			<arg path="./${dir.tools}/${tool.yuicompressor}"/>
+			<arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
 			<srcfile/>
 			<arg line="--line-break"/>
 			<arg line="4000"/>
@@ -453,8 +453,8 @@
 				<equals arg1="${build.concat.scripts}" arg2="true"/>
 			</and>
 			<then>
-				<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.min.js"/>
-				<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js"/>
+				<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
+				<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.js"/>
 			</then>
 		</if>
 	</target>
