@@ -580,13 +580,9 @@
 	<!-- IMAGES -->
 	<target name="-imagespng" description="(PRIVATE) Optimizes .png images using optipng">
 		<echo message="Optimizing images"/>
+		
+		<!-- osfamily=unix is actually true on OS X as well -->
 		<apply executable="optipng" osfamily="unix">
-			<arg value="-o7"/>
-			<fileset dir="./${dir.publish}/">
-				<include name="**/*.png"/>
-			</fileset>
-		</apply>
-		<apply executable="optipng" osfamily="mac">
 			<arg value="-o7"/>
 			<fileset dir="./${dir.publish}/">
 				<include name="**/*.png"/>
@@ -613,15 +609,6 @@
 			</else>
 		</if>
 		<apply executable="jpegtran" osfamily="unix">
-			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
-			<arg value="-copy"/>
-			<arg value="${strip-meta-tags}"/>
-			<srcfile/>
-			<targetfile/>
-			<!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
-			<mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
-		</apply>
-		<apply executable="jpegtran" osfamily="mac">
 			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
 			<arg value="-copy"/>
 			<arg value="${strip-meta-tags}"/>
