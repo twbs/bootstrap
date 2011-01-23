@@ -474,7 +474,7 @@
 	
 	
 	<!-- HTML -->
-	<target name="-usemin" description="(PRIVATE) Replaces references to non-minified scripts">
+	<target name="-usemin" depends="-serverconfig" description="(PRIVATE) Replaces references to non-minified scripts">
 		<echo message="Switching to minified js files..."/>
     
 		<!-- switch from a regular jquery to minified -->
@@ -555,6 +555,12 @@
 		</apply>
 	</target>
   
+
+	<target name="-serverconfig" description="(PRIVATE) Upgrades expires headers">
+		<echo message="Upgrading expires header timeouts for js/css"/>
+		<replace file="./${dir.publish}/${file.serverconfig}" token="access plus 2 months" value="access plus 1 year"/>
+	</target>
+
 	
 	<!-- CSS -->
 	<target name="-css" depends="-load-build-info" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
