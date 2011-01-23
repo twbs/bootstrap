@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'gzipper';
+  src: url(yanone.eot);
+  src: local('gzipper'), 
+          url(yanone.ttf) format('truetype');
+}
+
+/* Thank you Paul Irish - http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/ */
+@font-face {
+	font-family: 'Graublau Web';
+	src: url('GraublauWeb.eot');
+	src: local('☺'),
+		url('GraublauWeb.otf') format('opentype');
+}
+
+
+.shit { border: 0; color: #ff0000;}

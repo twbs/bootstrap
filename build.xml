@@ -339,7 +339,7 @@
 	</target>
 	
 	
-	<target name="-copy">
+	<target name="-copy" depends="-load-build-info, -clean, -rev">
 	<!-- This is a private target -->
 	
 		<echo message="Copying over new files..."/>
@@ -563,23 +563,22 @@
 
 	
 	<!-- CSS -->
-	<target name="-css" depends="-load-build-info" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
+	<target name="-css" depends="-copy" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
 		<echo message="Minifying css..."/>
 		
 		<concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
 			<filelist dir="./${dir.publish}/${dir.css}" files="${stylesheet-files}"/>
 		</concat>
-		<apply executable="java" parallel="false">
+		<apply executable="php" parallel="false">
 			<fileset dir="./${dir.publish}/${dir.css}/" includes="style-${build.number}.css"/>
-			<arg line="-jar"/>
-			<arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+			<arg line="-f"/>
+			<arg path="./${dir.build.tools}/${tool.csscompressor}"/>
 			<srcfile/>
-			<arg line="-o"/>
-			<mapper type="glob" from="style-${build.number}.css" to="../${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
-			<targetfile/>
+			<redirector>
+				<outputmapper type="glob" from="style-${build.number}.css" to="./${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
+			</redirector>
 		</apply>
 		<replace token="style.css" value="style-${build.number}.min.css" dir="${dir.publish}" includes="${page-files}"/>
-		<!-- <delete file="./publish/css/style-${build.number}.css"/> -->
 	</target>
 	
 	
