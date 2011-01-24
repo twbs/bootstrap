@@ -339,7 +339,7 @@
 	</target>
 	
 	
-	<target name="-copy" depends="-load-build-info, -clean, -rev">
+	<target name="-copy" depends="-load-build-info">
 	<!-- This is a private target -->
 	
 		<echo message="Copying over new files..."/>
@@ -563,7 +563,7 @@
 
 	
 	<!-- CSS -->
-	<target name="-css" depends="-copy" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
+	<target name="-css" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
 		<echo message="Minifying css..."/>
 		
 		<concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
