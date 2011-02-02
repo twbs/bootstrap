@@ -155,7 +155,7 @@
 				<antcall target="-js.all.minify"/>
 				<antcall target="-js.main.concat"/>
 				<antcall target="-js.mylibs.concat"/>
-				<antcall target="-js.scripts.concat"/>x
+				<antcall target="-js.scripts.concat"/>
 				<antcall target="-js.delete"/>
 				<antcall target="-css"/>
 				<antcall target="-html"/>
@@ -175,7 +175,7 @@
 			<antcall target="-js.all.minify"/>
 			<antcall target="-js.main.concat"/>
 			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>x
+			<antcall target="-js.scripts.concat"/>
 			<antcall target="-js.delete"/>
 			<antcall target="-strip-console.log"/>
 			<antcall target="-css"/>
