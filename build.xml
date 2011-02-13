@@ -563,7 +563,7 @@
 
 	
 	<!-- CSS -->
-	<target name="-css" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
+	<target name="-css" depends="-load-build-info" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
 		<echo message="Minifying css..."/>
 		
 		<concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
