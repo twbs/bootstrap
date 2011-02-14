@@ -28,282 +28,338 @@
 	* BASE TARGETS									*
 	*************************************************
 	-->
-	<target name="basics">
-	<if>
-		<equals arg1="${env}" arg2="dev"/>
-		<then>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-		</then>
-		
-		<elseif>
-			<equals arg1="${env}" arg2="test"/>
-			<then>
-				<!-- Build a test environment -->
-				<echo message="Building a Test Environment..."/>
-				<antcall target="-rev"/>
-				<antcall target="-clean"/>
-				<antcall target="-copy"/>
-				<antcall target="-usemin"/>
-				<antcall target="-js.all.minify"/>
-				<antcall target="-js.main.concat"/>
-				<antcall target="-js.mylibs.concat"/>
-				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.delete"/>
-				<antcall target="-css"/>
-				<antcall target="-html"/>
-			</then>
-		</elseif>
-		
-		<else>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.all.minify"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-		</else>
-	</if>
-  </target>
+    <target name="basics">
+    <if>
+        <equals arg1="${env}" arg2="dev"/>
+        <then>
+            <!-- Build a dev environment -->
+            <echo message="Building a Development Environment..."/>
+            <antcall target="-basics.dev"/>
+        </then>
+
+        <elseif>
+            <equals arg1="${env}" arg2="test"/>
+            <then>
+                <!-- Build a test environment -->
+                <echo message="Building a Test Environment..."/>
+                <antcall target="-basics.test"/>
+            </then>
+        </elseif>
+
+        <else>
+            <!-- Build a production environment -->
+            <echo message="Building a Production Environment..."/>
+            <antcall target="-basics.production"/>
+        </else>
+    </if>
+    </target>
 
   
-	<target name="text">
-	<if>
-		<equals arg1="${env}" arg2="dev"/>
-		<then>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-		</then>
-		
-		<elseif>
-			<equals arg1="${env}" arg2="test"/>
-			<then>
-				<!-- Build a test environment -->
-				<echo message="Building a Test Environment..."/>
-				<antcall target="-rev"/>
-				<antcall target="-clean"/>
-				<antcall target="-copy"/>
-				<antcall target="-usemin"/>
-				<antcall target="-js.all.minify"/>
-				<antcall target="-js.main.concat"/>
-				<antcall target="-js.mylibs.concat"/>
-				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.delete"/>
-				<antcall target="-css"/>
-				<antcall target="-html"/>
-				<antcall target="-htmlclean"/>
-			</then>
-		</elseif>
-		
-		<else>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.all.minify"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlclean"/>		
-		</else>
-	</if>
-	</target>
+    <target name="text">
+    <if>
+        <equals arg1="${env}" arg2="dev"/>
+        <then>
+            <!-- Build a dev environment -->
+            <echo message="Building a Development Environment..."/>
+            <antcall target="-text.dev"/>
+        </then>
+
+        <elseif>
+            <equals arg1="${env}" arg2="test"/>
+            <then>
+                <!-- Build a test environment -->
+                <echo message="Building a Test Environment..."/>
+                <antcall target="-text.test"/>
+            </then>
+        </elseif>
+
+        <else>
+            <!-- Build a production environment -->
+            <echo message="Building a Production Environment..."/>
+            <antcall target="-text.production"/>
+        </else>
+    </if>
+    </target>
 
   
-	<target name="buildkit">
-	<if>
-		<equals arg1="${env}" arg2="dev"/>
-		<then>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>	
-			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>
-		</then>
-		
-		<elseif>
-			<equals arg1="${env}" arg2="test"/>
-			<then>
-				<!-- Build a test environment -->
-				<echo message="Building a Test Environment..."/>
-				<antcall target="-rev"/>
-				<antcall target="-clean"/>
-				<antcall target="-copy"/>
-				<antcall target="-usemin"/>
-				<antcall target="-js.all.minify"/>
-				<antcall target="-js.main.concat"/>
-				<antcall target="-js.mylibs.concat"/>
-				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.delete"/>
-				<antcall target="-css"/>
-				<antcall target="-html"/>
-				<antcall target="-htmlbuildkit"/>
-				<antcall target="-imagespng"/>
-				<antcall target="-imagesjpg"/>
-			</then>
-		</elseif>
-		
-		<else>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.all.minify"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlbuildkit"/>
-			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>	
-		</else>
-	</if>
-  </target>
+    <target name="buildkit">
+    <if>
+        <equals arg1="${env}" arg2="dev"/>
+        <then>
+            <!-- Build a dev environment -->
+            <echo message="Building a Development Environment..."/>
+            <antcall target="-buildkit.dev"/>
+        </then>
+
+        <elseif>
+            <equals arg1="${env}" arg2="test"/>
+            <then>
+                <!-- Build a test environment -->
+                <echo message="Building a Test Environment..."/>
+                <antcall target="-buildkit.test"/>
+            </then>
+        </elseif>
+
+        <else>
+            <!-- Build a production environment -->
+            <echo message="Building a Production Environment..."/>
+            <antcall target="-buildkit.production"/>
+        </else>
+    </if>
+    </target>
+    
+    
+    <target name="build">
+    <if>
+        <equals arg1="${env}" arg2="dev"/>
+        <then>
+            <!-- Build a dev environment -->
+            <echo message="Building a Development Environment..."/>
+            <antcall target="-build.dev" />
+        </then>
+
+        <elseif>
+            <equals arg1="${env}" arg2="test"/>
+            <then>
+                <!-- Build a test environment -->
+                <echo message="Building a Test Environment..."/>
+                <antcall target="-build.test" />
+            </then>
+        </elseif>
+
+        <else>
+            <!-- Build a production environment -->
+            <echo message="Building a Production Environment..."/>
+            <antcall target="-build.production" />
+        </else>
+    </if>
+    </target>
+
+    
+    <target name="minify">
+    <if>
+        <equals arg1="${env}" arg2="dev"/>
+        <then>
+            <!-- Build a dev environment -->
+            <echo message="Building a Development Environment..."/>
+            <antcall target="-minify.dev"/>
+        </then>
+
+        <elseif>
+            <equals arg1="${env}" arg2="test"/>
+            <then>
+                <!-- Build a test environment -->
+                <echo message="Building a Test Environment..."/>
+                <antcall target="-minify.test"/>
+            </then>
+        </elseif>
+
+        <else>
+            <!-- Build a production environment -->
+            <echo message="Building a Production Environment..."/>
+            <antcall target="-minify.production"/>
+        </else>
+    </if>
+    </target>
 	
 	
-	<target name="build">
-	<if>
-		<equals arg1="${env}" arg2="dev"/>
-		<then>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>	
-			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>
-		</then>
-		
-		<elseif>
-			<equals arg1="${env}" arg2="test"/>
-			<then>
-				<!-- Build a test environment -->
-				<echo message="Building a Test Environment..."/>
-				<antcall target="-rev"/>
-				<antcall target="-clean"/>
-				<antcall target="-copy"/>
-				<antcall target="-usemin"/>
-				<antcall target="-js.all.minify"/>
-				<antcall target="-js.main.concat"/>
-				<antcall target="-js.mylibs.concat"/>
-				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.delete"/>
-				<antcall target="-css"/>
-				<antcall target="-html"/>
-				<antcall target="-htmlclean"/>
-				<antcall target="-imagespng"/>
-				<antcall target="-imagesjpg"/>
-			</then>
-		</elseif>
-		
-		<else>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.all.minify"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlclean"/>
-			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>		
-		</else>
-	</if>
-  </target>
-  
-	
-	<target name="minify">
-	<if>
-		<equals arg1="${env}" arg2="dev"/>
-		<then>
-			<!-- Build a dev environment -->
-			<echo message="Building a Development Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>	
-			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>
-		</then>
-		
-		<elseif>
-			<equals arg1="${env}" arg2="test"/>
-			<then>
-				<!-- Build a test environment -->
-				<echo message="Building a Test Environment..."/>
-				<antcall target="-rev"/>
-				<antcall target="-clean"/>
-				<antcall target="-copy"/>
-				<antcall target="-usemin"/>
-				<antcall target="-js.all.minify"/>
-				<antcall target="-js.main.concat"/>
-				<antcall target="-js.mylibs.concat"/>
-				<antcall target="-js.scripts.concat"/>
-				<antcall target="-js.delete"/>
-				<antcall target="-css"/>
-				<antcall target="-html"/>
-				<antcall target="-htmlcompress"/>
-				<antcall target="-imagespng"/>
-				<antcall target="-imagesjpg"/>
-			</then>
-		</elseif>
-		
-		<else>
-			<!-- Build a production environment -->
-			<echo message="Building a Production Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.all.minify"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlcompress"/>
-			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>	
-		</else>
-	</if>
-  </target>
-	
-	
+	<!--
+	*************************************************
+	* BUILD TARGETS                                 *
+	*************************************************
+	-->
+
+    <!-- Target: basics -->
+    <target name="-basics.dev"
+            depends="-rev,
+                     -clean,
+                     -copy"/>
+
+    <target name="-basics.test"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -css,
+                     -html"/>
+
+    <target name="-basics.production"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -strip-console.log,
+                     -css,
+                     -html"/>
+
+    <!-- Target: text -->
+    <target name="-text.dev"
+            depends="-rev,
+                     -clean,
+                     -copy"/>
+
+    <target name="-text.test"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -css,
+                     -html,
+                     -htmlclean"/>
+
+    <target name="-text.production"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -strip-console.log,
+                     -css,
+                     -html,
+                     -htmlclean"/>
+
+    <!-- Target: buildkit -->
+    <target name="-buildkit.dev"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <target name="-buildkit.test"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -css,
+                     -html,
+                     -htmlbuildkit,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <target name="-buildkit.production"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -strip-console.log,
+                     -css,
+                     -html,
+                     -htmlbuildkit,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <!-- Target: build -->
+    <target name="-build.dev"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <target name="-build.test"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -css,
+                     -html,
+                     -htmlclean,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <target name="-build.production"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -strip-console.log,
+                     -css,
+                     -html,
+                     -htmlclean,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <!-- Target: minify -->
+    <target name="-minify.dev"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <target name="-minify.test"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -css,
+                     -html,
+                     -htmlcompress,
+                     -imagespng,
+                     -imagesjpg"/>
+
+    <target name="-minify.production"
+            depends="-rev,
+                     -clean,
+                     -copy,
+                     -usemin,
+                     -js.all.minify,
+                     -js.main.concat,
+                     -js.mylibs.concat,
+                     -js.scripts.concat,
+                     -js.delete,
+                     -strip-console.log,
+                     -css,
+                     -html,
+                     -htmlcompress,
+                     -imagespng,
+                     -imagesjpg"/>
+
 	<!--
 	*************************************************
 	* FUNCTION TARGETS								*
