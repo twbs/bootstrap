@@ -57,7 +57,12 @@ Class Cli
 			$arg = array_shift( $this->args );
 
 			if ( preg_match( $this->rcss, $arg ) ) {
-				$path = preg_match( $this->rprefix, $arg ) ? $arg : $this->cwd . $arg;
+				$pos = strrpos($arg, getcwd());
+				if ($pos === false) {
+					$path = $this->cwd . $arg;
+				} else {
+					$path = $arg;
+				}
 				$this->content .= file_get_contents( $path );
 			}
 			else if ( substr( $arg, 0, 2 ) == '--' ) {
