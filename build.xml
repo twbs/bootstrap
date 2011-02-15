@@ -403,7 +403,7 @@
 		<var name="excluded-files" value="${file.default.exclude}, ${file.exclude}"/>
 
 		<copy todir="./${dir.publish}">
-			<fileset dir="./" excludes="${excluded-files}"/>
+			<fileset dir="${dir.source}/" excludes="${excluded-files}"/>
 		</copy>	
 	</target>
 	
