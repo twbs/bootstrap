@@ -41,7 +41,7 @@ Class Cli
 	 */
 	public function __construct( $args = array() ) {
 		$this->args = $args;
-		$this->cwd = getcwd();
+		$this->cwd = getcwd() . DIRECTORY_SEPARATOR;
 		$this->read();
 		$this->render();
 	}
@@ -56,7 +56,7 @@ Class Cli
 			$arg = array_shift( $this->args );
 
 			if ( preg_match( $this->rcss, $arg ) ) {
-				$path = strpos( $arg, $this->cwd ) === false ? $this->cwd . '/' . $arg : $arg;
+				$path = strpos( $arg, $this->cwd ) === false ? $this->cwd . $arg : $arg;
 				$this->content .= file_get_contents( $path );
 			}
 			else if ( substr( $arg, 0, 2 ) == '--' ) {
