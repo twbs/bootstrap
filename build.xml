@@ -670,7 +670,7 @@
 			</else>
 		</if>
 		<apply executable="jpegtran" osfamily="unix">
-			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
+			<fileset dir="./${dir.images}" includes="*.jpg"/>
 			<arg value="-copy"/>
 			<arg value="${strip-meta-tags}"/>
 			<srcfile/>
@@ -679,7 +679,7 @@
 			<mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
 		</apply>
 		<apply executable="tools/jpegtran.exe" osfamily="windows">
-			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
+			<fileset dir="./${dir.images}" includes="*.jpg"/>
 			<arg value="-copy"/>
 			<arg value="${strip-meta-tags}"/>
 			<srcfile/>
