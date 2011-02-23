@@ -10,6 +10,8 @@
 		</classpath>
 	</taskdef>
   
+    <!-- load shell environment -->
+    <property environment="ENV" />
   
 	<!-- load property files -->
 	<property file="build/config/project.properties"/>
@@ -643,12 +645,30 @@
 		<echo message="Optimizing images"/>
 		
 		<!-- osfamily=unix is actually true on OS X as well -->
-		<apply executable="optipng" osfamily="unix">
-			<arg value="-o7"/>
-			<fileset dir="./${dir.publish}/">
-				<include name="**/*.png"/>
-			</fileset>
-		</apply>
+        <!-- On *nix's and OS X, check for optipng and give a helpful message if it's not installed -->
+        <if>
+            <and>
+                <os family="unix" />
+                <available file="optipng" filepath="${ENV.PATH}" />
+            </and>
+            <then>
+                <apply executable="optipng" osfamily="unix">
+                    <arg value="-o7"/>
+                    <fileset dir="./${dir.publish}/">
+                        <include name="**/*.png"/>
+                    </fileset>
+                </apply>
+            </then>
+            <elseif>
+                <os family="unix" />
+                <then>
+                    <echo message="*** optipng NOT INSTALLED. SKIPPING OPTIMIZATION OF PNGs." />
+                    <echo message="*** Install optipng to enable png optimization." />
+                    <echo message="*** For instructions see 'Dependencies' at: http://html5boilerplate.com/docs/#Build-script.md" />
+                </then>
+            </elseif>
+        </if>
+
 		<apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
 			<arg value="-o7"/>
 			<fileset dir="./${dir.publish}/">
@@ -669,15 +689,34 @@
 				<var name="strip-meta-tags" value="all"/>
 			</else>
 		</if>
-		<apply executable="jpegtran" osfamily="unix">
-			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
-			<arg value="-copy"/>
-			<arg value="${strip-meta-tags}"/>
-			<srcfile/>
-			<targetfile/>
-			<!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
-			<mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
-		</apply>
+
+        <!-- On *nix's and OS X, check for jpegtran and give a helpful message if it's not installed -->
+        <if>
+            <and>
+                <os family="unix" />
+                <available file="jpegtran" filepath="${ENV.PATH}" />
+            </and>
+            <then>
+                <apply executable="jpegtran" osfamily="unix">
+                    <fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
+                    <arg value="-copy"/>
+                    <arg value="${strip-meta-tags}"/>
+                    <srcfile/>
+                    <targetfile/>
+                    <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
+                    <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
+                </apply>
+            </then>
+            <elseif>
+                <os family="unix" />
+                <then>
+                    <echo message="*** jpegtran NOT INSTALLED. SKIPPING OPTIMIZATION OF JPEGs." />
+                    <echo message="*** Install jpegtran to enable jpeg optimization." />
+                    <echo message="*** For instructions see 'Dependencies' at: http://html5boilerplate.com/docs/#Build-script.md" />
+                </then>
+            </elseif>
+        </if>
+
 		<apply executable="tools/jpegtran.exe" osfamily="windows">
 			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
 			<arg value="-copy"/>
