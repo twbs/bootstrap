@@ -20,50 +20,50 @@ cd ..
 
 webroot=$PWD
 
-SRC=$webroot/html5-boilerplate
-DST=$webroot/../$name
+src=$webroot/html5-boilerplate
+dst=$webroot/../$name
 
-if [ -d "$DST" ]
+if [ -d "$dst" ]
 then
-    echo "$DST exists"
+    echo "$dst exists"
 else
     #create new project
     mkdir "$name"
 
     #sucess message
-    echo "Created Directory: $DST"
+    echo "Created Directory: $dst"
     
-    cd "$SRC"
+    cd "$src"
     
     #copy to new project directory
     #http://en.wikipedia.org/wiki/Cpio#Copy
     #http://cybertiggyr.com/cpio-howto/
     #http://www.cyberciti.biz/faq/how-do-i-use-cpio-command-under-linux/
-    find . -depth -print0 | cpio -0pdmv "$DST"
+    find . -depth -print0 | cpio -0pdmv "$dst"
     
 
     #sucess message
-    echo "Created Project: $DST"
+    echo "Created Project: $dst"
     
     # delete that temporary folder
     rm -r "$name"
     
     #move into new project
-    cd "$DST"
+    cd "$dst"
     
     #in Bourne Again Shell, the cpio was copying 
     #the whole dir into the new project, along with the contents
-    if [ -d "$DST/html5-boilerplate" ]
+    if [ -d "$dst/html5-boilerplate" ]
     then
          rm -r html5-boilerplate
     fi        
     
-    if [ -e "$DST/createproject.sh" ]
+    if [ -e "$dst/createproject.sh" ]
     then
          rm -r createproject.sh
     fi  
     
-    if [ -e "$DST/.git" ]
+    if [ -e "$dst/.git" ]
     then
          rm -rf .git
     fi
