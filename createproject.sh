@@ -23,7 +23,7 @@ webroot=$PWD
 src=$webroot/html5-boilerplate
 dst=$webroot/../$name
 
-if [ -d "$dst" ]
+if [[ -d $dst ]]
 then
     echo "$dst exists"
 else
@@ -53,17 +53,17 @@ else
     
     #in Bourne Again Shell, the cpio was copying 
     #the whole dir into the new project, along with the contents
-    if [ -d "$dst/html5-boilerplate" ]
+    if [[ -d $dst/html5-boilerplate ]]
     then
          rm -r html5-boilerplate
     fi        
     
-    if [ -e "$dst/createproject.sh" ]
+    if [[ -e $dst/createproject.sh ]]
     then
          rm -r createproject.sh
     fi  
     
-    if [ -e "$dst/.git" ]
+    if [[ -e $dst/.git ]]
     then
          rm -rf .git
     fi
