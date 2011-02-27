@@ -59,17 +59,17 @@ else
     #the whole dir into the new project, along with the contents
     if [[ -d $dst/html5-boilerplate ]]
     then
-         rm -r html5-boilerplate
+        rm -r html5-boilerplate
     fi        
     
     if [[ -e $dst/createproject.sh ]]
     then
-         rm -r createproject.sh
+        rm -r createproject.sh
     fi  
     
     if [[ -e $dst/.git ]]
     then
-         rm -rf .git
+        rm -rf .git
     fi
 
 
