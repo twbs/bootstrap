@@ -12,6 +12,8 @@
 # $ cd  html5-boilerplate/build
 # $ ./createproject.sh
 
+hash cpio >/dev/null 2>&1 || { echo "cpio not found, aborting." >&2; exit 1; }
+
 while [[ -z $name ]]
 do
     echo "To create a new html5-boilerplate project, enter a new directory name:"
