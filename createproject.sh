@@ -12,9 +12,11 @@
 # $ cd  html5-boilerplate/build
 # $ ./createproject.sh
 
-echo "To create a new html5-boilerplate project, enter a new directory name:"
-
-read name
+while [[ -z $name ]]
+do
+    echo "To create a new html5-boilerplate project, enter a new directory name:"
+    read name || exit
+done
 
 cd ..
 
