@@ -6,7 +6,7 @@
 
 ##first run
 # $ cd  html5-boilerplate/build
-# $ sudo chmod a+x createproject.sh && ./createproject.sh
+# $ chmod +x createproject.sh && ./createproject.sh
 
 ##usage
 # $ cd  html5-boilerplate/build
