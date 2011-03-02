@@ -548,6 +548,16 @@
 		<replaceregexp match='\?v=\d+">' replace='">' flags="">
 			<fileset dir="./${dir.publish}" includes="${page-files}"/>
 		</replaceregexp>
+		
+		<echo>remove favicon reference if it is pointing to the root</echo>
+		<replace token="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot;>" value="">
+			<fileset dir="./${dir.publish}" includes="${page-files}"/>
+		</replace>
+		<!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
+		<replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
+			<fileset dir="./${dir.publish}" includes="${page-files}"/>
+		</replace>
+		-->
 	</target>
 	
 	
