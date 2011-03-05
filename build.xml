@@ -1,35 +1,35 @@
 <?xml version="1.0"?>
 <project name="Boilerplate Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
-  
-  
-	<!-- Load in Ant-Contrib to give us access to some very useful tasks! -->
-	<!-- the .jar file is located in the tools directory -->
-	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
-		<classpath>
-			<pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
-		</classpath>
-	</taskdef>
-  
+
+
+    <!-- Load in Ant-Contrib to give us access to some very useful tasks! -->
+    <!-- the .jar file is located in the tools directory -->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
     <!-- load shell environment -->
     <property environment="ENV" />
-  
-	<!-- load property files -->
-	<property file="build/config/project.properties"/>
-	<property file="build/config/default.properties"/>
-  
-	<!-- merge the stylesheet properties -->
-	<var name="stylesheet-files" value="${file.stylesheets}, ${file.default.stylesheets}"/>
-	
-	<!-- merge the pages properties -->
-	<var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
-  
-	
-	<!--
-	*************************************************
-	* BASE TARGETS									*
-	*************************************************
-	-->
+    <!-- load property files -->
+    <property file="build/config/project.properties"/>
+    <property file="build/config/default.properties"/>
+
+    <!-- merge the stylesheet properties -->
+    <var name="stylesheet-files" value="${file.stylesheets}, ${file.default.stylesheets}"/>
+    
+    <!-- merge the pages properties -->
+    <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
+
+
+    
+    <!--
+    *************************************************
+    * BASE TARGETS                                  *
+    *************************************************
+    -->
     <target name="basics">
     <if>
         <equals arg1="${env}" arg2="dev"/>
@@ -56,7 +56,7 @@
     </if>
     </target>
 
-  
+
     <target name="text">
     <if>
         <equals arg1="${env}" arg2="dev"/>
@@ -83,7 +83,7 @@
     </if>
     </target>
 
-  
+
     <target name="buildkit">
     <if>
         <equals arg1="${env}" arg2="dev"/>
@@ -109,8 +109,8 @@
         </else>
     </if>
     </target>
-    
-    
+
+
     <target name="build">
     <if>
         <equals arg1="${env}" arg2="dev"/>
@@ -137,7 +137,7 @@
     </if>
     </target>
 
-    
+
     <target name="minify">
     <if>
         <equals arg1="${env}" arg2="dev"/>
@@ -163,13 +163,13 @@
         </else>
     </if>
     </target>
-	
-	
-	<!--
-	*************************************************
-	* BUILD TARGETS                                 *
-	*************************************************
-	-->
+    
+    
+    <!--
+    *************************************************
+    * BUILD TARGETS                                 *
+    *************************************************
+    -->
 
     <!-- Target: basics -->
     <target name="-basics.dev"
@@ -362,299 +362,299 @@
                      -imagespng,
                      -imagesjpg"/>
 
-	<!--
-	*************************************************
-	* FUNCTION TARGETS								*
-	*************************************************
-	-->
-	<target name="-load-build-info" description="(PRIVATE) Loads the build versioning information">
-		<property file="./${dir.build}/config/${build.version.info}"/>
-	</target>
-	
-	<target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
-	<!-- This is a private target -->
-	
-		<echo message="Cleaning up previous build directory..."/>
-		<delete dir="./${dir.publish}/"/>
-	</target>
-	
-	
-	<target name="-rev" description="(PRIVATE) Increase the current build number by one and set build date">
-	<!-- This is a private target -->
-	
-		<echo message="Increasing the build number..."/>
-		<propertyfile file="./${dir.build}/config/${build.version.info}" comment="Build Information File - DO NOT CHANGE">
-			<entry key="build.number" type="int" default="0000" operation="+" pattern="0000"/>
-			<entry key="build.date" type="date" value="now" pattern="dd.MM.yyyy HH:mm"/>
-		</propertyfile>
-		<property file="./${dir.build}/config/${build.version.info}"/>
-		<echo>Creating build ${build.number}</echo>
-	</target>
-	
-	
-	<target name="current-number" depends="-load-build-info" description="(PUBLIC) Returns the current build number">
-		<echo>Current build number: ${build.number}</echo>
-	</target>
-	
-	
-	<target name="-copy" depends="-load-build-info">
-	<!-- This is a private target -->
-	
-		<echo message="Copying over new files..."/>
-		<!-- combine the 2 exclude properties -->
-		<var name="excluded-files" value="${file.default.exclude}, ${file.exclude}"/>
-
-		<copy todir="./${dir.publish}">
-			<fileset dir="${dir.source}/" excludes="${excluded-files}"/>
-		</copy>	
-	</target>
-	
-	
-	<!-- JAVASCRIPT -->
-	<target name="-js.main.concat" depends="-load-build-info" description="(PRIVATE) Concatenates the JS files in dir.js">
-		<echo message="Concatenating Main JS scripts..."/>
-	    <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.js">
-			<fileset dir="./${dir.publish}/">
-				<include name="**/${dir.js.main}/*.min.js"/>
-				<exclude name="**/${dir.js.mylibs}/*.js"/>
-				<exclude name="**/${dir.js.libs}/*.js"/>
-			</fileset>    	
-	    </concat>
-	</target>
-	
-	
-	<target name="-js.mylibs.concat" depends="-load-build-info" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
-		<echo message="Concatenating JS libraries"/>
-	    <concat destfile="./${dir.publish}/${dir.js}/libs-${build.number}.js">
-			<fileset dir="./${dir.publish}/${dir.js.mylibs}/">
-				<include name="**/*.min.js"/>
-			</fileset>    	
-	    </concat>
-	</target>
-	
-	
-	<target name="-js.scripts.concat" depends="-load-build-info" if="build.concat.scripts">
-		<echo message="Concatenating library file with main script file"/>
- 		<concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js">
-			<fileset dir="./${dir.publish}/${dir.js}/">
-				<include name="libs-${build.number}.js"/>
-				<include name="scripts-${build.number}.js"/>
-			</fileset>    	
-	    </concat>
-		
-		<echo message="Concatenating library file with main debug script file"/>
- 		<concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.min.js">
-			<fileset dir="./${dir.publish}/${dir.js}/">
-				<include name="libs-${build.number}.js"/>
-				<include name="scripts-${build.number}-debug.js"/>
-			</fileset>    	
-	    </concat>
-	</target>
-	
-	
-	<target name="-js.all.minify" depends="-js.libs.minify" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
-		<echo message="Minifying concatenated script- and library-file"/>
-		<apply executable="java" parallel="false">
-			<fileset dir="./${dir.publish}/${dir.js}">
-				<include name="**/*.js"/>
-				<exclude name="**/*.min.js"/>
-  			<exclude name="**/${dir.js.libs}/*.js"/>
-			</fileset>
-			<arg line="-jar"/>
-			<arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
-			<srcfile/>
-			<arg line="--line-break"/>
-			<arg line="4000"/>
-			<arg line="-o"/>
-			<mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js}/*.min.js"/>
-			<targetfile/>
-		</apply>
-	</target>
-
-	
-	<target name="-js.libs.minify" depends="-load-build-info" description="(PRIVATE) Minifies the helper files in dir.js.libs">
-		<echo message="Minifying helper JS files..."/>
-		
-		<apply executable="java" parallel="false">
-			<fileset dir="./${dir.publish}/${dir.js.libs}/" includes="*.js" excludes="*.min.js"/>
-			<arg line="-jar"/>
-			<arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
-			<srcfile/>
-			<arg line="-o"/>
-			<mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.libs}/*-${build.number}.min.js"/>
-			<targetfile/>
-		</apply>
-	</target>
-	
-	
-	<target name="-js.delete" depends="-load-build-info" description="(PRIVATE) Deletes the unoptimized js files from build if set">
-		<if>
-			<equals arg1="${build.delete.unoptimized}" arg2="true"/>
-			<then>
-				<echo message="Deleting unoptimized files..."/>
-				<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.js"/>
-				<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.js"/>
-				<!-- 
-				<delete dir="./${dir.publish}/${dir.js.lib}/"/> 
-				<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
-				this guy probably COULD be on but I think it's better if we keep him off for now. ^pi
-				<delete includeemptydirs="true">
-				<fileset dir="./${dir.publish}/${dir.js.libs}/" includes="*.js" excludes="*.min.js"/>
-				</delete>
-				-->
-			</then>
-		</if>
-		
-		<if>
-			<and>
-				<equals arg1="${build.delete.unoptimized}" arg2="true"/>
-				<equals arg1="${build.concat.scripts}" arg2="true"/>
-			</and>
-			<then>
-				<delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
-				<delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.js"/>
-			</then>
-		</if>
-	</target>
-	
-	
-	<target name="-strip-console.log" description="(PRIVATE)Comments out any console.log statements">
-		<echo message="Commenting out console.log lines"/>
-
-
-		<replaceregexp match="(console.log\(.*\))" replace="/\*\1\*/" flags="g" >
-		  <fileset dir="./${dir.publish}/${dir.js}/">
-				<include name="**/*.js"/>
-				<exclude name="**/*.min.js"/>
-			</fileset>
-		</replaceregexp>  
-	</target>
-	
-	
-	<!-- HTML -->
-	<target name="-usemin" depends="-serverconfig" description="(PRIVATE) Replaces references to non-minified scripts">
-		<echo message="Switching to minified js files..."/>
+    <!--
+    *************************************************
+    * FUNCTION TARGETS                              *
+    *************************************************
+    -->
+    <target name="-load-build-info" description="(PRIVATE) Loads the build versioning information">
+        <property file="./${dir.build}/config/${build.version.info}"/>
+    </target>
     
-		<!-- switch from a regular jquery to minified -->
-		<replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" flags="">
-			<fileset dir="./${dir.publish}" includes="${page-files}"/>
-		</replaceregexp>
-		<!-- switch any google CDN reference to minified -->
-		<replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" flags="">
-			<fileset dir="./${dir.publish}" includes="${page-files}"/>
-		</replaceregexp>	
-   
-		<echo>kill off those versioning flags: ?v=2</echo>
-		<replaceregexp match='\?v=\d+">' replace='">' flags="">
-			<fileset dir="./${dir.publish}" includes="${page-files}"/>
-		</replaceregexp>
-		
-		<echo>remove favicon reference if it is pointing to the root</echo>
-		<replace token="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot;>" value="">
-			<fileset dir="./${dir.publish}" includes="${page-files}"/>
-		</replace>
-		<!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
-		<replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
-			<fileset dir="./${dir.publish}" includes="${page-files}"/>
-		</replace>
-		-->
-	</target>
-	
-	
-	<target name="-html" depends="-load-build-info" description="(PRIVATE) Very basic clean up of the HTML">
-		<echo message="Clean up the html..."/>
-		<!-- style.css replacement handled as a replacetoken above -->
-		<replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m">
-			<fileset dir="./${dir.publish}" includes="${page-files}"/>
-		</replaceregexp>
-		<!--[! use comments like this one to avoid having them get minified -->
-	</target>
-	
-	
-	<target name="-htmlclean">
-		<apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
-			<fileset dir="./${dir.publish}/" includes="${page-files}"/>
-			<arg value="-jar"/>
-			<arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
-			<arg line="--type html"/>
-			<arg line="--preserve-multi-spaces"/>
-			<arg line="--remove-quotes"/>
-			<arg line="--compress-js"/>
-			<arg line="--compress-css"/>
-			<srcfile/>
-			<arg value="-o"/>
-			<mapper type="glob" from="*.html" to="../${dir.publish}/*.html"/>    
-			<targetfile/>
-		</apply>
-	</target>
-	
-	
-	<target name="-htmlbuildkit">
-		<apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
-			<fileset dir="./${dir.publish}/" includes="${page-files}"/>
-			<arg value="-jar"/>
-			<arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
-			<arg value="--preserve-comments"/>
-			<arg line="--preserve-multi-spaces"/>
-			<arg line="--type html"/>
-			<arg line="--compress-js"/>
-			<arg line="--compress-css"/>
-			<srcfile/>
-			<arg value="-o"/>
-			<mapper type="glob" from="*.html" to="../${dir.publish}/*.html"/>    
-			<targetfile/>
-		</apply>
-	</target>
-	
-	
-	<target name="-htmlcompress">
-		<apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
-			<fileset dir="./${dir.publish}/" includes="${page-files}"/>
-			<arg value="-jar"/>
-			<arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
-			<arg line="--type html"/>
-			<arg line="--remove-quotes"/>
-			<arg line="--compress-js"/>
-			<arg line="--compress-css"/>
-			<srcfile/>
-			<arg value="-o"/>
-			<mapper type="glob" from="*.html" to="../${dir.publish}/*.html"/>    
-			<targetfile/>
-		</apply>
-	</target>
-  
+    <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
+    <!-- This is a private target -->
+    
+        <echo message="Cleaning up previous build directory..."/>
+        <delete dir="./${dir.publish}/"/>
+    </target>
+    
+    
+    <target name="-rev" description="(PRIVATE) Increase the current build number by one and set build date">
+    <!-- This is a private target -->
+    
+        <echo message="Increasing the build number..."/>
+        <propertyfile file="./${dir.build}/config/${build.version.info}" comment="Build Information File - DO NOT CHANGE">
+            <entry key="build.number" type="int" default="0000" operation="+" pattern="0000"/>
+            <entry key="build.date" type="date" value="now" pattern="dd.MM.yyyy HH:mm"/>
+        </propertyfile>
+        <property file="./${dir.build}/config/${build.version.info}"/>
+        <echo>Creating build ${build.number}</echo>
+    </target>
+    
+    
+    <target name="current-number" depends="-load-build-info" description="(PUBLIC) Returns the current build number">
+        <echo>Current build number: ${build.number}</echo>
+    </target>
+    
+    
+    <target name="-copy" depends="-load-build-info">
+    <!-- This is a private target -->
+    
+        <echo message="Copying over new files..."/>
+        <!-- combine the 2 exclude properties -->
+        <var name="excluded-files" value="${file.default.exclude}, ${file.exclude}"/>
 
-	<target name="-serverconfig" description="(PRIVATE) Upgrades expires headers">
-		<echo message="Upgrading expires header timeouts for js/css"/>
-		<replace file="./${dir.publish}/${file.serverconfig}" token="access plus 2 months" value="access plus 1 year"/>
-	</target>
+        <copy todir="./${dir.publish}">
+            <fileset dir="${dir.source}/" excludes="${excluded-files}"/>
+        </copy> 
+    </target>
+    
+    
+    <!-- JAVASCRIPT -->
+    <target name="-js.main.concat" depends="-load-build-info" description="(PRIVATE) Concatenates the JS files in dir.js">
+        <echo message="Concatenating Main JS scripts..."/>
+        <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.js">
+            <fileset dir="./${dir.publish}/">
+                <include name="**/${dir.js.main}/*.min.js"/>
+                <exclude name="**/${dir.js.mylibs}/*.js"/>
+                <exclude name="**/${dir.js.libs}/*.js"/>
+            </fileset>      
+        </concat>
+    </target>
+    
+    
+    <target name="-js.mylibs.concat" depends="-load-build-info" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
+        <echo message="Concatenating JS libraries"/>
+        <concat destfile="./${dir.publish}/${dir.js}/libs-${build.number}.js">
+            <fileset dir="./${dir.publish}/${dir.js.mylibs}/">
+                <include name="**/*.min.js"/>
+            </fileset>      
+        </concat>
+    </target>
+    
+    
+    <target name="-js.scripts.concat" depends="-load-build-info" if="build.concat.scripts">
+        <echo message="Concatenating library file with main script file"/>
+        <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}.min.js">
+            <fileset dir="./${dir.publish}/${dir.js}/">
+                <include name="libs-${build.number}.js"/>
+                <include name="scripts-${build.number}.js"/>
+            </fileset>      
+        </concat>
+        
+        <echo message="Concatenating library file with main debug script file"/>
+        <concat destfile="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.min.js">
+            <fileset dir="./${dir.publish}/${dir.js}/">
+                <include name="libs-${build.number}.js"/>
+                <include name="scripts-${build.number}-debug.js"/>
+            </fileset>      
+        </concat>
+    </target>
+    
+    
+    <target name="-js.all.minify" depends="-js.libs.minify" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
+        <echo message="Minifying concatenated script- and library-file"/>
+        <apply executable="java" parallel="false">
+            <fileset dir="./${dir.publish}/${dir.js}">
+                <include name="**/*.js"/>
+                <exclude name="**/*.min.js"/>
+            <exclude name="**/${dir.js.libs}/*.js"/>
+            </fileset>
+            <arg line="-jar"/>
+            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <srcfile/>
+            <arg line="--line-break"/>
+            <arg line="4000"/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js}/*.min.js"/>
+            <targetfile/>
+        </apply>
+    </target>
 
-	
-	<!-- CSS -->
-	<target name="-css" depends="-load-build-info" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
-		<echo message="Minifying css..."/>
-		
-		<concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
-			<filelist dir="./${dir.publish}/${dir.css}" files="${stylesheet-files}"/>
-		</concat>
-		<apply executable="php" parallel="false">
-			<fileset dir="./${dir.publish}/${dir.css}/" includes="style-${build.number}.css"/>
-			<arg line="-f"/>
-			<arg path="./${dir.build.tools}/${tool.csscompressor}"/>
-			<srcfile/>
-			<redirector>
-				<outputmapper type="glob" from="style-${build.number}.css" to="./${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
-			</redirector>
-		</apply>
-		<replace token="style.css" value="style-${build.number}.min.css" dir="${dir.publish}" includes="${page-files}"/>
-	</target>
-	
-	
-	<!-- IMAGES -->
-	<target name="-imagespng" description="(PRIVATE) Optimizes .png images using optipng">
-		<echo message="Optimizing images"/>
-		
-		<!-- osfamily=unix is actually true on OS X as well -->
+    
+    <target name="-js.libs.minify" depends="-load-build-info" description="(PRIVATE) Minifies the helper files in dir.js.libs">
+        <echo message="Minifying helper JS files..."/>
+        
+        <apply executable="java" parallel="false">
+            <fileset dir="./${dir.publish}/${dir.js.libs}/" includes="*.js" excludes="*.min.js"/>
+            <arg line="-jar"/>
+            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.js" to="../${dir.publish}/${dir.js.libs}/*-${build.number}.min.js"/>
+            <targetfile/>
+        </apply>
+    </target>
+    
+    
+    <target name="-js.delete" depends="-load-build-info" description="(PRIVATE) Deletes the unoptimized js files from build if set">
+        <if>
+            <equals arg1="${build.delete.unoptimized}" arg2="true"/>
+            <then>
+                <echo message="Deleting unoptimized files..."/>
+                <delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.js"/>
+                <delete file="./${dir.publish}/${dir.js}/scripts-${build.number}-debug.js"/>
+                <!--
+                <delete dir="./${dir.publish}/${dir.js.lib}/"/>
+                <delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
+                this guy probably COULD be on but I think it's better if we keep him off for now. ^pi
+                <delete includeemptydirs="true">
+                <fileset dir="./${dir.publish}/${dir.js.libs}/" includes="*.js" excludes="*.min.js"/>
+                </delete>
+                -->
+            </then>
+        </if>
+        
+        <if>
+            <and>
+                <equals arg1="${build.delete.unoptimized}" arg2="true"/>
+                <equals arg1="${build.concat.scripts}" arg2="true"/>
+            </and>
+            <then>
+                <delete file="./${dir.publish}/${dir.js}/libs-${build.number}.js"/>
+                <delete file="./${dir.publish}/${dir.js}/scripts-${build.number}.js"/>
+            </then>
+        </if>
+    </target>
+    
+    
+    <target name="-strip-console.log" description="(PRIVATE)Comments out any console.log statements">
+        <echo message="Commenting out console.log lines"/>
+
+
+        <replaceregexp match="(console.log\(.*\))" replace="/\*\1\*/" flags="g" >
+          <fileset dir="./${dir.publish}/${dir.js}/">
+                <include name="**/*.js"/>
+                <exclude name="**/*.min.js"/>
+            </fileset>
+        </replaceregexp>
+    </target>
+    
+    
+    <!-- HTML -->
+    <target name="-usemin" depends="-serverconfig" description="(PRIVATE) Replaces references to non-minified scripts">
+        <echo message="Switching to minified js files..."/>
+
+        <!-- switch from a regular jquery to minified -->
+        <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" flags="">
+            <fileset dir="./${dir.publish}" includes="${page-files}"/>
+        </replaceregexp>
+        <!-- switch any google CDN reference to minified -->
+        <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" flags="">
+            <fileset dir="./${dir.publish}" includes="${page-files}"/>
+        </replaceregexp>    
+
+        <echo>kill off those versioning flags: ?v=2</echo>
+        <replaceregexp match='\?v=\d+">' replace='">' flags="">
+            <fileset dir="./${dir.publish}" includes="${page-files}"/>
+        </replaceregexp>
+        
+        <echo>remove favicon reference if it is pointing to the root</echo>
+        <replace token="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot;>" value="">
+            <fileset dir="./${dir.publish}" includes="${page-files}"/>
+        </replace>
+        <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
+        <replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
+            <fileset dir="./${dir.publish}" includes="${page-files}"/>
+        </replace>
+        -->
+    </target>
+    
+    
+    <target name="-html" depends="-load-build-info" description="(PRIVATE) Very basic clean up of the HTML">
+        <echo message="Clean up the html..."/>
+        <!-- style.css replacement handled as a replacetoken above -->
+        <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m">
+            <fileset dir="./${dir.publish}" includes="${page-files}"/>
+        </replaceregexp>
+        <!--[! use comments like this one to avoid having them get minified -->
+    </target>
+    
+    
+    <target name="-htmlclean">
+        <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
+            <fileset dir="./${dir.publish}/" includes="${page-files}"/>
+            <arg value="-jar"/>
+            <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
+            <arg line="--type html"/>
+            <arg line="--preserve-multi-spaces"/>
+            <arg line="--remove-quotes"/>
+            <arg line="--compress-js"/>
+            <arg line="--compress-css"/>
+            <srcfile/>
+            <arg value="-o"/>
+            <mapper type="glob" from="*.html" to="../${dir.publish}/*.html"/>
+            <targetfile/>
+        </apply>
+    </target>
+    
+    
+    <target name="-htmlbuildkit">
+        <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
+            <fileset dir="./${dir.publish}/" includes="${page-files}"/>
+            <arg value="-jar"/>
+            <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
+            <arg value="--preserve-comments"/>
+            <arg line="--preserve-multi-spaces"/>
+            <arg line="--type html"/>
+            <arg line="--compress-js"/>
+            <arg line="--compress-css"/>
+            <srcfile/>
+            <arg value="-o"/>
+            <mapper type="glob" from="*.html" to="../${dir.publish}/*.html"/>
+            <targetfile/>
+        </apply>
+    </target>
+    
+    
+    <target name="-htmlcompress">
+        <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
+            <fileset dir="./${dir.publish}/" includes="${page-files}"/>
+            <arg value="-jar"/>
+            <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
+            <arg line="--type html"/>
+            <arg line="--remove-quotes"/>
+            <arg line="--compress-js"/>
+            <arg line="--compress-css"/>
+            <srcfile/>
+            <arg value="-o"/>
+            <mapper type="glob" from="*.html" to="../${dir.publish}/*.html"/>
+            <targetfile/>
+        </apply>
+    </target>
+
+
+    <target name="-serverconfig" description="(PRIVATE) Upgrades expires headers">
+        <echo message="Upgrading expires header timeouts for js/css"/>
+        <replace file="./${dir.publish}/${file.serverconfig}" token="access plus 2 months" value="access plus 1 year"/>
+    </target>
+
+    
+    <!-- CSS -->
+    <target name="-css" depends="-load-build-info" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
+        <echo message="Minifying css..."/>
+        
+        <concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
+            <filelist dir="./${dir.publish}/${dir.css}" files="${stylesheet-files}"/>
+        </concat>
+        <apply executable="php" parallel="false">
+            <fileset dir="./${dir.publish}/${dir.css}/" includes="style-${build.number}.css"/>
+            <arg line="-f"/>
+            <arg path="./${dir.build.tools}/${tool.csscompressor}"/>
+            <srcfile/>
+            <redirector>
+                <outputmapper type="glob" from="style-${build.number}.css" to="./${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
+            </redirector>
+        </apply>
+        <replace token="style.css" value="style-${build.number}.min.css" dir="${dir.publish}" includes="${page-files}"/>
+    </target>
+    
+    
+    <!-- IMAGES -->
+    <target name="-imagespng" description="(PRIVATE) Optimizes .png images using optipng">
+        <echo message="Optimizing images"/>
+        
+        <!-- osfamily=unix is actually true on OS X as well -->
         <!-- On *nix's and OS X, check for optipng and give a helpful message if it's not installed -->
         <if>
             <and>
@@ -680,26 +680,26 @@
             </elseif>
         </if>
 
-		<apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
-			<arg value="-o7"/>
-			<fileset dir="./${dir.publish}/">
-				<include name="**/*.png"/>
-			</fileset>
-		</apply>
-	</target>
- 
+        <apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
+            <arg value="-o7"/>
+            <fileset dir="./${dir.publish}/">
+                <include name="**/*.png"/>
+            </fileset>
+        </apply>
+    </target>
 
-	<target name="-imagesjpg" description="(PRIVATE) Optimizes .jpg images using jpegtan">
-		<echo message="Clean up those jpgs..."/>
-		<if>
-			<equals arg1="${images.strip.metadata}" arg2="true"/>
-			<then>
-				<var name="strip-meta-tags" value="none"/>
-			</then>
-			<else>
-				<var name="strip-meta-tags" value="all"/>
-			</else>
-		</if>
+
+    <target name="-imagesjpg" description="(PRIVATE) Optimizes .jpg images using jpegtan">
+        <echo message="Clean up those jpgs..."/>
+        <if>
+            <equals arg1="${images.strip.metadata}" arg2="true"/>
+            <then>
+                <var name="strip-meta-tags" value="none"/>
+            </then>
+            <else>
+                <var name="strip-meta-tags" value="all"/>
+            </else>
+        </if>
 
         <!-- On *nix's and OS X, check for jpegtran and give a helpful message if it's not installed -->
         <if>
@@ -728,15 +728,15 @@
             </elseif>
         </if>
 
-		<apply executable="tools/jpegtran.exe" osfamily="windows">
-			<fileset dir="./${dir.images}" includes="*.jpg"/>
-			<arg value="-copy"/>
-			<arg value="${strip-meta-tags}"/>
-			<srcfile/>
-			<targetfile/>
-			<!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
-			<mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
-		</apply>
-	</target>
-	
+        <apply executable="tools/jpegtran.exe" osfamily="windows">
+            <fileset dir="./${dir.images}" includes="*.jpg"/>
+            <arg value="-copy"/>
+            <arg value="${strip-meta-tags}"/>
+            <srcfile/>
+            <targetfile/>
+            <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
+            <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
+        </apply>
+    </target>
+    
 </project>
