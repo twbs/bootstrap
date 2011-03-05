@@ -646,6 +646,7 @@
                 <outputmapper type="glob" from="style-${build.number}.css" to="./${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
             </redirector>
         </apply>
+        
         <replace token="style.css" value="style-${build.number}.min.css" dir="${dir.publish}" includes="${page-files}"/>
     </target>
     
@@ -712,10 +713,12 @@
                     <fileset dir="./${dir.images}" includes="*.jpg"/>
                     <arg value="-copy"/>
                     <arg value="${strip-meta-tags}"/>
+                    <arg value="-optimize"/>
                     <srcfile/>
-                    <targetfile/>
+                    <redirector>
+                        <outputmapper type="glob" from="*.jpg" to="./${dir.publish}/${dir.images}/*.jpg"/>
+                    </redirector>
                     <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
-                    <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
                 </apply>
             </then>
             <elseif>
@@ -732,11 +735,14 @@
             <fileset dir="./${dir.images}" includes="*.jpg"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
+            <arg value="-optimize"/>
             <srcfile/>
+            <arg value=">"/>
             <targetfile/>
             <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
             <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
         </apply>
     </target>
+
     
 </project>
