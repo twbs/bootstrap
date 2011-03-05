@@ -663,6 +663,7 @@
             </and>
             <then>
                 <apply executable="optipng" osfamily="unix">
+                    <arg value="-quiet"/>
                     <arg value="-o7"/>
                     <fileset dir="./${dir.publish}/">
                         <include name="**/*.png"/>
