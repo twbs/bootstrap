@@ -33,7 +33,7 @@ Class CSSCompression_Cli
 	private $args = array();
 	private $options = array();
 	private $files = array();
-	private $imports = false;
+	private $imports = true;
 	private $mode = 'safe';
 	private $cwd = '';
 	private $content = '';
@@ -72,7 +72,7 @@ Class CSSCompression_Cli
 			$arg = array_shift( $this->args );
 
 			if ( preg_match( $this->rcss, $arg ) ) {
-				$path = strpos( $arg, $this->cwd ) === false ? $this->cwd . $arg : $arg;
+				$path = strpos( $arg, $this->cwd ) === false && $arg[0] != "/" ? $this->cwd . $arg : $arg;
 				$this->content .= $this->imports( $path );
 			}
 			else if ( substr( $arg, 0, 2 ) == '--' ) {
