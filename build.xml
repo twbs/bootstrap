@@ -81,6 +81,8 @@
             <antcall target="-text.production"/>
         </else>
     </if>
+    <!-- funky order due to jpegtran being a jerk. See comment at top of imagesjpg task -->
+    <antcall target="-jpgcopy"/>
     </target>
 
 
@@ -653,7 +655,9 @@
     
     <!-- IMAGES -->
     <target name="-imagespng" description="(PRIVATE) Optimizes .png images using optipng">
-        <echo message="Optimizing images"/>
+        <echo message="Optimizing images..."/>
+        <echo message="This part might take a while. But the rest of everything is already done."/>
+        <echo message="First, we run optipng on the .png files..."/>
         
         <!-- osfamily=unix is actually true on OS X as well -->
         <!-- On *nix's and OS X, check for optipng and give a helpful message if it's not installed -->
@@ -683,6 +687,7 @@
 
         <apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
             <arg value="-o7"/>
+            <arg value="-quiet"/>
             <fileset dir="./${dir.publish}/">
                 <include name="**/*.png"/>
             </fileset>
@@ -691,7 +696,12 @@
 
 
     <target name="-imagesjpg" description="(PRIVATE) Optimizes .jpg images using jpegtan">
-        <echo message="Clean up those jpgs..."/>
+        <echo message="Now, we clean up those jpgs..."/>
+        
+        <!-- jpegtran is a little weird in that it assumes a pre-existing file means it's already optimized.        -->
+        <!-- why? good question. To combat this, we skipped copying over the ${dir.images}/*.jpg earlier in the     -->
+        <!-- copy task. Now, we're using jpegtran to copy the files over while we crunch 'em.                       -->
+        
         <if>
             <equals arg1="${images.strip.metadata}" arg2="true"/>
             <then>
@@ -737,11 +747,19 @@
             <arg value="${strip-meta-tags}"/>
             <arg value="-optimize"/>
             <srcfile/>
-            <arg value=">"/>
             <targetfile/>
             <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
             <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
         </apply>
+    </target>
+
+    
+    <target name="-jpgcopy">
+        <echo message="Copying over the unmodified jpegs."/>
+        
+        <copy todir="./${dir.publish}/${dir.images}">
+            <fileset dir="${dir.source}/${dir.images}"  includes="*.jpg"/>
+        </copy> 
     </target>
 
     
