@@ -113,7 +113,7 @@ Class CSSCompression_Combine_BorderRadius
 			$pos = $match[ 0 ][ 1 ] + strlen( $replace ) - $colon - 1;
 			$replace = '';
 		}
-
+		
 		// Return converted val
 		return $val;
 	}
@@ -127,6 +127,7 @@ Class CSSCompression_Combine_BorderRadius
 		$pos = 0;
 		while ( preg_match( $regex['base'], $val, $match, PREG_OFFSET_CAPTURE, $pos ) ) {
 			$replace = '';
+			$colon = strlen( $match[ 1 ][ 0 ] );
 			$parts = preg_split( $this->rslash, trim( $match[ 2 ][ 0 ] ), 2 );
 			$positions = array(
 				'top-left' => 0,
@@ -199,7 +200,7 @@ Class CSSCompression_Combine_BorderRadius
 				}
 			}
 			$pos += strlen( $replace );
-			$val = substr_replace( $val, $replace, $match[ 0 ][ 1 ], strlen( $match[ 0 ][ 0 ] ) );
+			$val = substr_replace( $val, $replace, $match[ 0 ][ 1 ] + $colon, strlen( $match[ 0 ][ 0 ] ) - $colon );
 		}
 
 		return $val;
