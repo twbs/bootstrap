@@ -28,6 +28,7 @@ Class CSSCompression_Cli
 	 * @param (regex) rimporturl: Import statement in a url() wrapper
 	 * @param (regex) rimportstr: Import statement in a string wrapper
 	 * @param (regex) rabsolutepath: Absolute path checker for import urls
+	 * @param (regex) rfsabsolutepath: Matches absolute paths for the file system
 	 */
 	private $instance;
 	private $args = array();
@@ -46,6 +47,7 @@ Class CSSCompression_Cli
 	private $rimporturl = "/^@import url\(['\"]?(.*?)['\"]?\)/";
 	private $rimportstr = "/^@import ['\"](.*?)['\"]/";
 	private $rabsolutepath = "/^(https?:\/\/|\/)/";
+	private $rfsabsolutepath = "/^(\/|\~\/|\\\|[a-z]:(\\\|\/)?)/i";
 
 	/**
 	 * Run the compression across files passed to cli
@@ -71,10 +73,19 @@ Class CSSCompression_Cli
 		while ( count( $this->args ) ) {
 			$arg = array_shift( $this->args );
 
+			// Adding contents of css files
 			if ( preg_match( $this->rcss, $arg ) ) {
-				$path = strpos( $arg, $this->cwd ) === false && $arg[0] != "/" ? $this->cwd . $arg : $arg;
+				// Handle absolute path prefixing
+				if ( ! preg_match( $this->rfsabsolutepath, $arg ) && strpos( $arg, $this->cwd ) === false) {
+					$path = $this->cwd . $arg;
+				}
+				else {
+					$path = $arg;
+				}
+
 				$this->content .= $this->imports( $path );
 			}
+			// Longhand options
 			else if ( substr( $arg, 0, 2 ) == '--' ) {
 				$parts = explode( '=', $arg, 2 );
 				$name = substr( $parts[ 0 ], 2 );
@@ -102,6 +113,7 @@ Class CSSCompression_Cli
 					$this->options[ $name ] = $value;
 				}
 			}
+			// Shorthand options
 			else if ( substr( $arg, 0, 1 ) == '-' && strlen( $arg ) == 2 ) {
 				$char = substr( $arg, 1, 1 );
 
