@@ -245,14 +245,14 @@
     <target name="-buildkit.dev"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -imagespng,
                      -imagesjpg"/>
 
     <target name="-buildkit.test"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -268,7 +268,7 @@
     <target name="-buildkit.production"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -286,14 +286,14 @@
     <target name="-build.dev"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -imagespng,
                      -imagesjpg"/>
 
     <target name="-build.test"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -309,7 +309,7 @@
     <target name="-build.production"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -327,14 +327,14 @@
     <target name="-minify.dev"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -imagespng,
                      -imagesjpg"/>
 
     <target name="-minify.test"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -350,7 +350,7 @@
     <target name="-minify.production"
             depends="-rev,
                      -clean,
-                     -copy,
+                     -prodcopy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -408,6 +408,18 @@
 
         <copy todir="./${dir.publish}">
             <fileset dir="${dir.source}/" excludes="${excluded-files}"/>
+        </copy> 
+    </target>
+	
+    <target name="-prodcopy" depends="-load-build-info">
+    <!-- This is a private target -->
+    
+        <echo message="Copying over new files..."/>
+        <!-- combine the 2 exclude properties -->
+        <var name="prod-excluded-files" value="${file.default.exclude}, ${file.jpg.exclude}, ${file.exclude}"/>
+
+        <copy todir="./${dir.publish}">
+            <fileset dir="${dir.source}/" excludes="${prod-excluded-files}"/>
         </copy> 
     </target>
     
