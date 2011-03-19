@@ -732,7 +732,7 @@
             </and>
             <then>
                 <apply executable="jpegtran" osfamily="unix">
-                    <fileset dir="./${dir.images}" includes="*.jpg"/>
+                    <fileset dir="${dir.source}/${dir.images}" includes="*.jpg"/>
                     <arg value="-copy"/>
                     <arg value="${strip-meta-tags}"/>
                     <arg value="-optimize"/>
@@ -754,7 +754,7 @@
         </if>
 
         <apply executable="tools/jpegtran.exe" osfamily="windows">
-            <fileset dir="./${dir.images}" includes="*.jpg"/>
+            <fileset dir="${dir.source}/${dir.images}" includes="*.jpg"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
             <arg value="-optimize"/>
