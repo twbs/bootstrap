@@ -651,14 +651,15 @@
         <concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
             <filelist dir="./${dir.publish}/${dir.css}" files="${stylesheet-files}"/>
         </concat>
-        <apply executable="php" parallel="false">
+        
+        <apply executable="java" parallel="false">
             <fileset dir="./${dir.publish}/${dir.css}/" includes="style-${build.number}.css"/>
-            <arg line="-f"/>
-            <arg path="./${dir.build.tools}/${tool.csscompressor}"/>
+            <arg line="-jar"/>
+            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
-            <redirector>
-                <outputmapper type="glob" from="style-${build.number}.css" to="./${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
-            </redirector>
+            <arg line="-o"/>
+            <mapper type="glob" from="style-${build.number}.css" to="../${dir.publish}/${dir.css}/style-${build.number}.min.css"/>
+            <targetfile/>
         </apply>
         
         <replace token="style.css" value="style-${build.number}.min.css" dir="${dir.publish}" includes="${page-files}"/>
