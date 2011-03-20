@@ -550,16 +550,16 @@
         <echo message="Switching to minified js files..."/>
 
         <!-- switch from a regular jquery to minified -->
-        <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" flags="">
+        <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" flags="g">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>
         <!-- switch any google CDN reference to minified -->
-        <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" flags="">
+        <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" flags="g">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>    
 
         <echo>kill off those versioning flags: ?v=2</echo>
-        <replaceregexp match='\?v=\d+">' replace='">' flags="">
+        <replaceregexp match='\?v=\d+">' replace='">' flags="g">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>
         
