@@ -384,6 +384,20 @@
     <target name="-rev" description="(PRIVATE) Increase the current build number by one and set build date">
     <!-- This is a private target -->
     
+        <echo message="====================================================================="/>
+        <echo message="Welcome to the HTML5 Boilerplate Build Script!"/>
+        <echo message=" "/>
+        <echo message="We're going to get your site all ship-shape and ready for prime time."/>
+        <echo message=" "/>
+        <echo message="This should take somewhere between 15 seconds and a few minutes,"/>
+        <echo message="mostly depending on how many images we're going to compress."/>
+        <echo message=" "/>
+        <echo message="Feel free to come back or stay here and follow along."/>
+        <echo message="====================================================================="/>
+        <echo message=" "/>
+        <echo message=" "/>
+    
+    
         <echo message="Increasing the build number..."/>
         <propertyfile file="./${dir.build}/config/${build.version.info}" comment="Build Information File - DO NOT CHANGE">
             <entry key="build.number" type="int" default="0000" operation="+" pattern="0000"/>
@@ -409,6 +423,8 @@
         <copy todir="./${dir.publish}">
             <fileset dir="${dir.source}/" excludes="${excluded-files}"/>
         </copy> 
+        
+        <echo message="A copy of all non-dev files are now in: ./${dir.publish}."/>
     </target>
 	
     <target name="-prodcopy" depends="-load-build-info">
@@ -421,6 +437,8 @@
         <copy todir="./${dir.publish}">
             <fileset dir="${dir.source}/" excludes="${prod-excluded-files}"/>
         </copy> 
+        
+        <echo message="A copy of all non-dev files are now in: ./${dir.publish}."/>
     </target>
     
     
@@ -558,12 +576,12 @@
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>    
 
-        <echo>kill off those versioning flags: ?v=2</echo>
+        <echo>Kill off those versioning flags: ?v=2</echo>
         <replaceregexp match='\?v=\d+">' replace='">' flags="g">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>
         
-        <echo>remove favicon reference if it is pointing to the root</echo>
+        <echo>Remove favicon.ico reference if it is pointing to the root</echo>
         <replaceregexp match="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon\.ico&quot;&gt;" replace="">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replaceregexp>
@@ -576,7 +594,7 @@
     
     
     <target name="-html" depends="-load-build-info" description="(PRIVATE) Very basic clean up of the HTML">
-        <echo message="Clean up the html..."/>
+        <echo message="Update the HTML to reference our concatenated script file: scripts-${build.number}.min.js"/>
         <!-- style.css replacement handled as a replacetoken above -->
         <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m">
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
@@ -586,6 +604,10 @@
     
     
     <target name="-htmlclean">
+        <echo message="Run htmlcompressor on the HTML"/>
+        <echo message=" - maintaining whitespace"/>
+        <echo message=" - removing html comments"/>
+        <echo message=" - compressing inline style/script tag contents"/>
         <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
             <fileset dir="./${dir.publish}/" includes="${page-files}"/>
             <arg value="-jar"/>
@@ -604,6 +626,10 @@
     
     
     <target name="-htmlbuildkit">
+        <echo message="Run htmlcompressor on the HTML"/>
+        <echo message=" - maintaining whitespace"/>
+        <echo message=" - retain html comments"/>
+        <echo message=" - compressing inline style/script tag contents"/>
         <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
             <fileset dir="./${dir.publish}/" includes="${page-files}"/>
             <arg value="-jar"/>
@@ -622,6 +648,10 @@
     
     
     <target name="-htmlcompress">
+        <echo message="Run htmlcompressor on the HTML"/>
+        <echo message=" - removing unnecessary whitespace"/>
+        <echo message=" - removing html comments"/>
+        <echo message=" - compressing inline style/script tag contents"/>
         <apply executable="java" parallel="false" force="true" dest="./${dir.publish}/" >
             <fileset dir="./${dir.publish}/" includes="${page-files}"/>
             <arg value="-jar"/>
@@ -639,18 +669,20 @@
 
 
     <target name="-serverconfig" description="(PRIVATE) Upgrades expires headers">
-        <echo message="Upgrading expires header timeouts for js/css"/>
+        <echo message="Upgrading expires header timeouts for js/css to 1yr..."/>
         <replace file="./${dir.publish}/${file.serverconfig}" token="access plus 2 months" value="access plus 1 year"/>
     </target>
 
     
     <!-- CSS -->
     <target name="-css" depends="-load-build-info" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
-        <echo message="Minifying css..."/>
+        <echo message="Concatenating css..."/>
         
         <concat destfile="./${dir.publish}/${dir.css}/style-${build.number}.css">
             <filelist dir="./${dir.publish}/${dir.css}" files="${stylesheet-files}"/>
         </concat>
+        
+        <echo message="Minifying css..."/>
         
         <apply executable="java" parallel="false">
             <fileset dir="./${dir.publish}/${dir.css}/" includes="style-${build.number}.css"/>
@@ -662,6 +694,8 @@
             <targetfile/>
         </apply>
         
+        <echo message="Updating the HTML with the new css filename"/>
+        
         <replace token="style.css" value="style-${build.number}.min.css" dir="${dir.publish}" includes="${page-files}"/>
     </target>
     
@@ -669,7 +703,10 @@
     <!-- IMAGES -->
     <target name="-imagespng" description="(PRIVATE) Optimizes .png images using optipng">
         <echo message="Optimizing images..."/>
-        <echo message="This part might take a while. But the rest of everything is already done."/>
+        <echo message="This part might take a while. But everything else is already done."/>
+        <echo message=" "/>
+        
+        
         <echo message="First, we run optipng on the .png files..."/>
         
         <!-- osfamily=unix is actually true on OS X as well -->
