@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Generate a new project from your HTML5 Boilerplate repo clone
-#Created 2010-10-13, Rick Waldron
+#by: Rick Waldron & Michael Cetrulo
 
 
 ##first run
