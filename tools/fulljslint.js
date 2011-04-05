@@ -1,3 +1,5 @@
+/*global quit:false, readFile: false */
+
 // Rhino Edition
 
 
