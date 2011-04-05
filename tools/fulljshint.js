@@ -5853,17 +5853,32 @@ if (typeof exports == 'object' && exports)
     exports.JSHINT = JSHINT;
     
 
-/*jshint boss: true */
-
+// Command line integration via Rhino
 (function (args) {
-    var test,
-		i,
-		err,
-		name = args[0], input;
+    var name = args[0],
+        optstr = args[1], // arg1=val1,arg2=val2,...
+        opts = { rhino: true },
+        input;
 
     if (!name) {
         print('No files present in the fileset; Check your pattern match in build.xml');
-		quit(1);
+        quit(1);
+    }
+
+    if (optstr) {
+        optstr.split(',').forEach(function (arg) {
+            var o = arg.split('=');
+            opts[o[0]] = (function (ov) {
+                switch (ov) {
+                case 'true':
+                    return true;
+                case 'false':
+                    return false;
+                default:
+                    return ov;
+                }
+            })(o[1]);
+        });
     }
 
     input = readFile(name);
@@ -5872,24 +5887,14 @@ if (typeof exports == 'object' && exports)
         print('JSHint: Couldn\'t open file ' + name);
         quit(1);
     }
-	
-	test = JSHINT(
-		input, 
-		{ 
-			rhino: true 
-		}
-	);
-    if (!test) {
-        for (i = 0; err = JSHINT.errors[i]; i++) {
-            print(err.reason + ' (Error at line: ' + err.line + ', character: ' + err.character + ')');
+    if (!JSHINT(input, opts)) {
+        for (var i = 0, err; err = JSHINT.errors[i]; i++) {
+            print(err.reason + ' (line: ' + err.line + ', character: ' + err.character + ')');
             print('> ' + (err.evidence || '').replace(/^\s*(\S*(\s+\S+)*)\s*$/, "$1"));
             print('');
         }
         quit(1);
-    }else{
-		print("JSHint: No problems found");
-		quit();
-	}
+    }
 
     quit(0);
 }(arguments));

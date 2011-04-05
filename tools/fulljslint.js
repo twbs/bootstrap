@@ -6605,52 +6605,47 @@ loop:   for (;;) {
 
 
 // Command line integration via Rhino
-(function(a) {
-	var e,
-		i,
-		input,
-		test;
-	if(!a[0]){
-		print("No files present in the fileset; Check your pattern match in build.xml");
-		quit(1);
-	}
-	input=readFile(a[0]);
-	if(!input){
-		print("JSLint: Couldn't open file '"+a[0]+"'.");
-		quit(1);
-	}
-	test = JSLINT(
-		input,
-		{
-			predef:["$","jQuery","log"],
-			maxerr:100,
-			evil:true,
-			browser:true,
-			eqeqeq:true,
-			immed:true,
-			newcap:true,
-			nomen:true,
-			onevar:true,
-			es5:true,
-			rhino:true,
-			undef:true,
-			white:false,
-			devel:true
-		}
-	);
-	if(!test){
-		for(i=0;i<JSLINT.errors.length;i+=1) {
-			e=JSLINT.errors[i];
-			if(e) {
-				print('Error at line '+e.line+' character '+
-				e.character+': '+e.reason);
-				print((e.evidence||'').replace(/^\s*(\S*(\s+\S+)*)\s*$/,"$1"));
-				print('');
-			}
-		}
-		quit(2);
-	}else{
-		print("JSLint: No problems found in "+a[0]);
-		quit();
-	}
+(function (args) {
+    var name = args[0],
+        optstr = args[1], // arg1=val1,arg2=val2,...
+        opts = { rhino: true },
+        input;
+
+    if (!name) {
+        print('No files present in the fileset; Check your pattern match in build.xml');
+        quit(1);
+    }
+
+    if (optstr) {
+        optstr.split(',').forEach(function (arg) {
+            var o = arg.split('=');
+            opts[o[0]] = (function (ov) {
+                switch (ov) {
+                case 'true':
+                    return true;
+                case 'false':
+                    return false;
+                default:
+                    return ov;
+                }
+            })(o[1]);
+        });
+    }
+
+    input = readFile(name);
+
+    if (!input) {
+        print('JSLint: Couldn\'t open file ' + name);
+        quit(1);
+    }
+    if (!JSLINT(input, opts)) {
+        for (var i = 0, err; err = JSLINT.errors[i]; i++) {
+            print(err.reason + ' (line: ' + err.line + ', character: ' + err.character + ')');
+            print('> ' + (err.evidence || '').replace(/^\s*(\S*(\s+\S+)*)\s*$/, "$1"));
+            print('');
+        }
+        quit(1);
+    }
+
+    quit(0);
 }(arguments));
