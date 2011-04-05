@@ -6611,7 +6611,7 @@ loop:   for (;;) {
 		input,
 		test;
 	if(!a[0]){
-		print("Usage: No files present in the fileset");
+		print("No files present in the fileset; Check your pattern match in build.xml");
 		quit(1);
 	}
 	input=readFile(a[0]);
