@@ -670,7 +670,12 @@
 
     <target name="-serverconfig" description="(PRIVATE) Upgrades expires headers">
         <echo message="Upgrading expires header timeouts for js/css to 1yr..."/>
-        <replace file="./${dir.publish}/${file.serverconfig}" token="access plus 2 months" value="access plus 1 year"/>
+        <if>
+            <available file="./${dir.publish}/${file.serverconfig}"/>
+            <then>
+                <replace file="./${dir.publish}/${file.serverconfig}" token="access plus 2 months" value="access plus 1 year"/>
+            </then>
+        </if>
     </target>
 
     
