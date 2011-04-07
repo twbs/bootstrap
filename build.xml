@@ -432,7 +432,7 @@
     
         <echo message="Copying over new files..."/>
         <!-- combine the 2 exclude properties -->
-        <var name="prod-excluded-files" value="${file.default.exclude}, ${file.jpg.exclude}, ${file.exclude}"/>
+        <var name="prod-excluded-files" value="${file.default.exclude}, ${file.img.exclude}, ${file.exclude}"/>
 
         <copy todir="./${dir.publish}">
             <fileset dir="${dir.source}/" excludes="${prod-excluded-files}"/>
@@ -722,12 +722,14 @@
                 <available file="optipng" filepath="${ENV.PATH}" />
             </and>
             <then>
-                <apply executable="optipng" osfamily="unix">
+                <apply executable="optipng" dest="./${dir.publish}/${dir.images}/" osfamily="unix">
+                    <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
                     <arg value="-quiet"/>
                     <arg value="-o7"/>
-                    <fileset dir="./${dir.publish}/">
-                        <include name="**/*.png"/>
-                    </fileset>
+                    <arg value="-out"/>
+                    <targetfile/>
+                    <srcfile/>
+                    <mapper type="identity"/>
                 </apply>
             </then>
             <elseif>
@@ -740,12 +742,14 @@
             </elseif>
         </if>
 
-        <apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
-            <arg value="-o7"/>
+        <apply executable="tools/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
+            <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
             <arg value="-quiet"/>
-            <fileset dir="./${dir.publish}/">
-                <include name="**/*.png"/>
-            </fileset>
+            <arg value="-o7"/>
+            <arg value="-out"/>
+            <targetfile/>
+            <srcfile/>
+            <mapper type="identity"/>
         </apply>
     </target>
 
