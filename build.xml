@@ -607,6 +607,12 @@
                 <available file="optipng" filepath="${ENV.PATH}" />
             </and>
             <then>
+                <!-- work around https://sourceforge.net/tracker/?func=detail&aid=2671422&group_id=151404&atid=780916 -->
+                <apply executable="rm" dest="./${dir.publish}/${dir.images}/" osfamily="unix" addsourcefile="false">
+                    <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
+                    <targetfile/>
+                    <mapper type="identity"/>
+                </apply>
                 <apply executable="optipng" dest="./${dir.publish}/${dir.images}/" osfamily="unix">
                     <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
                     <arg value="-quiet"/>
@@ -627,6 +633,12 @@
             </elseif>
         </if>
 
+        <!-- work around https://sourceforge.net/tracker/?func=detail&aid=2671422&group_id=151404&atid=780916 -->
+        <apply executable="del" dest="./${dir.publish}/${dir.images}/" osfamily="windows" addsourcefile="false">
+            <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
+            <targetfile/>
+            <mapper type="identity"/>
+        </apply>
         <apply executable="tools/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
             <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
             <arg value="-quiet"/>
