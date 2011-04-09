@@ -384,7 +384,6 @@
         <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/">
                 <include name="${dir.js.main}/*.min.js"/>
-                <exclude name="${dir.js.main}/scripts-concat.min.js"/>
             </fileset>      
         </concat>
     </target>
@@ -426,6 +425,9 @@
             <fileset dir="./${dir.source}/${dir.js}">
                 <include name="**/*.js"/>
                 <exclude name="**/*.min.js"/>
+                <!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
+                <exclude name="scripts-concat.js"/>
+                <exclude name="libs-concat.js"/>
             </fileset>
             <arg line="-jar"/>
             <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
