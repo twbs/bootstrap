@@ -18,8 +18,8 @@
     <property file="build/config/default.properties"/>
 
     <!-- merge the stylesheet properties -->
-    <var name="stylesheet-files" value="${file.stylesheets}, ${file.default.stylesheets}"/>
-    
+    <var name="stylesheet-files" value="${file.default.stylesheets}, ${file.stylesheets}"/>
+
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
