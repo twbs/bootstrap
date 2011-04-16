@@ -691,16 +691,17 @@
                 <available file="jpegtran" filepath="${ENV.PATH}" />
             </and>
             <then>
-                <apply executable="jpegtran" osfamily="unix">
+                <apply executable="jpegtran" dest="./${dir.publish}/${dir.images}" osfamily="unix">
                     <fileset dir="${dir.source}/${dir.images}" includes="*.jpg"/>
                     <arg value="-copy"/>
                     <arg value="${strip-meta-tags}"/>
                     <arg value="-optimize"/>
+                    <arg value="-outfile"/>
+                    <targetfile/>
                     <srcfile/>
-                    <redirector>
-                        <outputmapper type="glob" from="*.jpg" to="./${dir.publish}/${dir.images}/*.jpg"/>
-                    </redirector>
+                    <mapper type="identity"/>
                     <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
+                    <!--<mapper type="glob" from="*.jpg" to="*.jpg"/>-->
                 </apply>
             </then>
             <elseif>
@@ -713,15 +714,17 @@
             </elseif>
         </if>
 
-        <apply executable="tools/jpegtran.exe" osfamily="windows">
+        <apply executable="tools/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
             <fileset dir="${dir.source}/${dir.images}" includes="*.jpg"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
             <arg value="-optimize"/>
-            <srcfile/>
+            <arg value="-outfile"/>
             <targetfile/>
+            <srcfile/>
+            <mapper type="identity"/>
             <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
-            <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
+            <!--<mapper type="glob" from="*.jpg" to="*.jpg"/>-->
         </apply>
     </target>
 
