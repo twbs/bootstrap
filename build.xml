@@ -181,23 +181,23 @@
 
     <target name="-basics.test"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
                      -js.mylibs.concat,
                      -js.scripts.concat,
-                     -css"/>
+                     -css,
+                     -copy"/>
 
     <target name="-basics.production"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
                      -js.mylibs.concat,
                      -js.scripts.concat,
-                     -css"/>
+                     -css,
+                     -copy"/>
 
     <!-- Target: text -->
     <target name="-text.dev"
@@ -206,36 +206,35 @@
 
     <target name="-text.test"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
                      -js.mylibs.concat,
                      -js.scripts.concat,
                      -css,
-                     -htmlclean"/>
+                     -htmlclean,
+                     -copy"/>
 
     <target name="-text.production"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
                      -js.mylibs.concat,
                      -js.scripts.concat,
                      -css,
-                     -htmlclean"/>
+                     -htmlclean,
+                     -copy"/>
 
     <!-- Target: buildkit -->
     <target name="-buildkit.dev"
             depends="-rev,
-                     -copy,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <target name="-buildkit.test"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -244,11 +243,11 @@
                      -css,
                      -htmlbuildkit,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <target name="-buildkit.production"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -257,18 +256,18 @@
                      -css,
                      -htmlbuildkit,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <!-- Target: build -->
     <target name="-build.dev"
             depends="-rev,
-                     -copy,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <target name="-build.test"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -277,11 +276,11 @@
                      -css,
                      -htmlclean,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <target name="-build.production"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -290,18 +289,18 @@
                      -css,
                      -htmlclean,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <!-- Target: minify -->
     <target name="-minify.dev"
             depends="-rev,
-                     -copy,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <target name="-minify.test"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -310,11 +309,11 @@
                      -css,
                      -htmlcompress,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <target name="-minify.production"
             depends="-rev,
-                     -copy,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -323,7 +322,8 @@
                      -css,
                      -htmlcompress,
                      -imagespng,
-                     -imagesjpg"/>
+                     -imagesjpg,
+                     -copy"/>
 
     <!--
     *************************************************
@@ -357,20 +357,37 @@
     
     </target>
     
+    <target name="-mkdirs">
+        <echo message="Creating directory structure..."/>
+
+        <mkdir dir="${dir.intermediate}"/>
+        <copy todir="${dir.intermediate}" includeEmptyDirs="true">
+            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                <type type="dir"/>
+            </fileset>
+        </copy>
+
+        <mkdir dir="${dir.publish}"/>
+        <copy todir="${dir.publish}" includeEmptyDirs="true">
+            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                <type type="dir"/>
+            </fileset>
+        </copy>
+    </target>
     
-    <target name="-copy">
+    <target name="-copy" depends="-mkdirs">
     <!-- This is a private target -->
     
         <echo message="Copying over new files..."/>
 
-        <copy todir="./${dir.publish}" includeEmptyDirs="true">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.img.exclude}, ${file.exclude}, ${file.js.exclude}, ${file.css.exclude} ${page-files}"/>
-        </copy> 
-
-        <mkdir dir="${dir.intermediate}"/>
-        <copy todir="${dir.intermediate}" includeEmptyDirs="true">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}">
-                <type type="dir"/>
+        <copy todir="./${dir.publish}">
+            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                <!-- exclude files that are superseded by optimized versions with different names -->
+                <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
+                <exclude name="${dir.js.main}/*.js"/>
+                <exclude name="${dir.js.libs}/**/*.js"/>
+                <exclude name="${dir.js.mylibs}/**/*.js"/>
+                <exclude name="${dir.css}/**/*.css"/>
             </fileset>
         </copy>
         
@@ -416,7 +433,7 @@
     </target>
     
     
-    <target name="-js.all.minify" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
+    <target name="-js.all.minify" depends="-mkdirs" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
         <echo message="Minifying scripts"/>
         <copy todir="${dir.intermediate}/${dir.js}">
             <fileset dir="${dir.source}/${dir.js}" includes="**/*.min.js"/>
@@ -567,7 +584,7 @@
 
 
     <!-- CSS -->
-    <target name="-css" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
+    <target name="-css" depends="-mkdirs" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
         <echo message="Concatenating css..."/>
         
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
@@ -594,7 +611,7 @@
     
     
     <!-- IMAGES -->
-    <target name="-imagespng" description="(PRIVATE) Optimizes .png images using optipng">
+    <target name="-imagespng" depends="-mkdirs" description="(PRIVATE) Optimizes .png images using optipng">
         <echo message="Optimizing images..."/>
         <echo message="This part might take a while. But everything else is already done."/>
         <echo message=" "/>
@@ -654,7 +671,7 @@
     </target>
 
 
-    <target name="-imagesjpg" description="(PRIVATE) Optimizes .jpg images using jpegtan">
+    <target name="-imagesjpg" depends="-mkdirs" description="(PRIVATE) Optimizes .jpg images using jpegtan">
         <echo message="Now, we clean up those jpgs..."/>
         
         <if>
@@ -709,7 +726,7 @@
     </target>
 
     
-    <target name="-imgcopy">
+    <target name="-imgcopy" depends="-mkdirs">
         <echo message="Copying over the unmodified images."/>
         
         <copy todir="./${dir.publish}/${dir.images}">
