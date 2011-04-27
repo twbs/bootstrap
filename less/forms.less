@@ -1,0 +1,361 @@
+/*
+  Forms
+  Base line styles for various input types, form layouts, and states
+*/
+
+
+
+/* Global form styles
+-------------------------------------------------- */
+
+form {
+  // Groups of fields with labels on top (legends)
+  fieldset {
+    margin-bottom: @baseline;
+    padding-top: @baseline;
+    legend {
+      display: block;
+      margin-left: 150px;
+      font-size: 20px;
+      line-height: 1;
+      color: @gray-dark;
+    }
+  }
+  // Parent element that clears floats and wraps labels and fields together
+  div.clearfix {
+    margin-bottom: @baseline;
+  }
+  // Set font for forms
+  label, input, select, textarea {
+    .sans-serif(normal,13px,normal);
+  }
+  // Float labels left
+  label {
+    padding-top: 6px;
+    font-size: 13px;
+    line-height: 18px;
+    float: left;
+    width: 130px;
+    text-align: right;
+  }
+  // Shift over the inside div to align all label's relevant content
+  div.input {
+    margin-left: 150px;
+  }
+  // Checkboxs and radio buttons
+  input[type=checkbox],
+  input[type=radio] {
+    cursor: pointer;
+  }
+  // Inputs, Textareas, Selects
+  input[type=text],
+  input[type=password],
+  textarea,
+  select,
+  .uneditable-input {
+    display: block;
+    width: 210px;
+    margin: 0;
+    padding: 4px;
+    font-size: 13px;
+    line-height: @baseline;
+    height: @baseline;
+    color: @gray;
+    border: 1px solid #bbb;
+    .border-radius(3px);
+  }
+  select,
+  input[type=file] {
+    height: @baseline * 1.5;
+    line-height: @baseline * 1.5;
+  }
+  textarea {
+    height: auto;
+  }
+  .uneditable-input {
+    background-color: #eee;
+    display: block;
+    border-color: #ccc;
+    .box-shadow(inset 0 1px 2px rgba(0,0,0,.075));
+  }
+  // Focus states
+  input[type=text], 
+  input[type=password], 
+  select, textarea {
+    @transition: border linear .2s, box-shadow linear .2s;
+    .transition(@transition);
+  }
+  input[type=text]:focus, 
+  input[type=password]:focus, 
+  textarea:focus {
+    outline: none;
+    border-color: rgba(82,168,236,.75);
+    .box-shadow(0 0 8px rgba(82,168,236,.5));
+  }
+  // Error styles
+  div.error {
+    background: lighten(@red, 57%);
+    padding: 10px 0;
+    margin: -10px 0 10px;
+    .border-radius(4px);
+    @error-text: desaturate(lighten(@red, 25%), 25%);
+    > label {
+      color: @red;
+    }
+    input[type=text], 
+    input[type=password], 
+    textarea {
+      border-color: @error-text;
+      .box-shadow(0 0 3px rgba(171,41,32,.25));
+      &:focus {
+        border-color: darken(@error-text, 10%);
+        .box-shadow(0 0 6px rgba(171,41,32,.5));
+      }
+    }
+    div.input-prepend,
+    div.input-append {
+      span.add-on {
+        background: lighten(@red, 50%);
+        border-color: @error-text;
+        color: darken(@error-text, 10%);
+      }
+    }
+  }
+  // Form element sizes
+  .input-mini, input.mini, textarea.mini, select.mini {
+    width: 60px;
+  }
+  .input-small, input.small, textarea.small, select.small {
+    width: 90px;
+  }
+  .input-medium, input.medium, textarea.medium, select.medium {
+    width: 150px;
+  }
+  .input-large, input.large, textarea.large, select.large {
+    width: 210px;
+  }
+  .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
+    width: 270px;
+  }
+  .input-xxlarge, input.xxlarge, textarea.xxlarge, select.xxlarge {
+    width: 530px;
+  }
+  textarea.xxlarge {
+    overflow-y: scroll;
+  }
+  // Turn off focus for disabled (read-only) form elements
+  input[readonly]:focus,
+  textarea[readonly]:focus,
+  input.disabled {
+    background: #f5f5f5;
+    border-color: #ddd;
+    .box-shadow(none);
+  }
+}
+
+// Actions (the buttons)
+div.actions {
+  background: #f5f5f5;
+  margin-top: @baseline;
+  margin-bottom: @baseline;
+  padding: (@baseline - 1) 20px @baseline 150px;
+  border-top: 1px solid #ddd;
+  .border-radius(0 0 3px 3px);
+  div.secondary-action {
+    float: right;
+    a {
+      line-height: 30px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Help Text
+.help-inline,
+.help-block {
+  font-size: 12px;
+  line-height: @baseline;
+  color: @gray-light;
+}
+.help-inline {
+  padding-left: 5px;
+}
+// Big blocks of help text
+.help-block {
+  display: block;
+  max-width: 600px;
+  h5, p, ol li {
+    color: @gray;
+  }
+  p, ol li {
+    font-size: 12px;
+  }
+  p {
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: @baseline;
+    color: @gray-light;
+  }
+  ol {
+    margin-bottom: 10px;
+    margin-left: 25px;
+  }
+}
+
+// Inline Fields (input fields that appear as inline objects
+div.inline-inputs {
+  color: @gray;
+  span, input[type=text] {
+    display: inline-block;
+  }
+  input.mini {
+    width: 60px;
+  }
+  input.small {
+    width: 90px;
+  }
+  span {
+    padding: 0 2px 0 1px;
+  }
+}
+
+// Allow us to put symbols and text within the input field for a cleaner look
+div.input-prepend,
+div.input-append {
+  input[type=text] {
+    .border-radius(0 3px 3px 0);
+  }
+  .add-on {
+    background: #f5f5f5;
+    float: left;
+    display: block;
+    width: auto;
+    min-width: 16px;
+    padding: 5px 4px 5px 5px;
+    color: @gray-light;
+    font-weight: normal;
+    line-height: 18px;
+    height: 18px;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    border: 1px solid #bbb;
+    border-right-width: 0;
+    .border-radius(3px 0 0 3px);
+  }
+  .active {
+    background: lighten(@green, 30);
+    border-color: @green;
+  }
+}
+div.input-append {
+  input[type=text] {
+    float: left;
+    .border-radius(3px 0 0 3px);
+  }
+  .add-on {
+    .border-radius(0 3px 3px 0);
+    border-right-width: 1px;
+    border-left-width: 0;
+  }
+}
+
+// Stacked options for forms (radio buttons or checkboxes)
+ul.inputs-list {
+  margin: 0 0 5px;
+  width: 100%;
+  li {
+    display: block;
+    padding: 0;
+    width: 100%;
+    label {
+      display: block;
+      float: none;
+      width: auto;
+      padding: 0;
+      line-height: @baseline;
+      text-align: left;
+      white-space: normal;
+      strong {
+        color: @gray;
+      }
+      small {
+        font-size: 12px;
+        font-weight: normal !important;
+      }
+    }
+    ul.inputs-list {
+      margin-left: 25px;
+      margin-bottom: 10px;
+      padding-top: 0;
+    }
+    &:first-child {
+      padding-top: 5px;
+    }
+  }
+  input[type=radio],
+  input[type=checkbox] {
+    margin-bottom: 0;
+  }
+}
+
+/* Disabled states for form elements, containing elements, and help text */
+div.disabled span {
+  color: #aaa;
+}
+div.disabled input[type=text],
+div.disabled input[type=passsword],
+div.disabled textarea {
+  background: #f5f5f5;
+}
+ul.options label.disabled,
+ul.options label.disabled span,
+ul.options label.disabled small,
+ul.options label.disabled strong {
+  color: #aaa !important;
+}
+
+
+// Stacked forms
+form.stacked-form {
+  h4, p {
+    margin: 0 0 2px;
+    color: rgba(0,0,0,.5);
+  }
+  fieldset {
+    margin: 0;
+    padding: 19px 0 0;
+    border-top-color: rgba(0,0,0,.1);
+  }
+  div.actions {
+    margin-left: 0;
+    padding: 19px 0 30px 180px;
+    border-top: 1px solid rgba(0,0,0,.1);
+  }
+  legend {
+    margin: 0;
+    padding: 0;
+  }
+  label {
+    display: block;
+    float: none;
+    width: auto;
+    font-weight: bold;
+    text-align: left;
+    line-height: 20px;
+    padding-top: 1px;
+  }
+  div.input {
+    margin: 0;
+  }
+  div.clearfix {
+    margin-bottom: 10px;
+  }
+  div.six.columns input, div.six.columns textarea, div.six.columns select {
+    width: 320px;
+  }
+  div.three.columns input, div.three.columns textarea, div.three.columns select {
+    width: 150px;
+  }
+}

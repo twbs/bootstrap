@@ -1,0 +1,201 @@
+/*
+  Bootstrap v1.1
+  Variables and mixins to bootstrap any new web development project. Modified from original version for Twitter Blueprint.
+*/
+
+
+/* Variables
+-------------------------------------------------- */
+
+// Links
+@link-color:        #0069d6;
+@link-hover-color:  darken(@link-color, 10);
+
+// Grays
+@white:             #fff;
+@gray-lighter:      #ccc;
+@gray-light:        #777;
+@gray:              #555;
+@gray-dark:         #333;
+@black:             #000;
+
+// Accent Colors
+@blue:              #08b5fb;
+@blue-dark:         #0069d6;
+@green:             #46a546;
+@red:               #9d261d;
+@yellow:            #ffc40d;
+@orange:            #f89406;
+@pink:              #c3325f;
+@purple:            #7a43b6;
+
+// Baseline grid
+@baseline:          20px;
+
+
+/* Mixins
+-------------------------------------------------- */
+
+// Clearfix for clearing floats like a boss
+.clearfix {
+  zoom: 1;
+	&:after {
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+    content: ".";
+	}
+}
+
+// Floats
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+
+// Input placeholder text
+.placeholder(@color: @gray-light) {
+  :-moz-placeholder {
+    color: @color;
+  }
+  ::-webkit-input-placeholder {
+    color: @color;
+  }
+}
+
+// Font Stacks
+.font(@weight: normal, @size: 14px, @lineheight: 20px) {
+  font-size: @size;
+  font-weight: @weight;
+  line-height: @lineheight;
+}
+.sans-serif(@weight: normal, @size: 14px, @lineheight: 20px) {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: @size;
+  font-weight: @weight;
+  line-height: @lineheight;
+}
+.serif(@weight: normal, @size: 14px, @lineheight: 20px) {
+  font-family: "Georgia", Times New Roman, Times, sans-serif;
+  font-size: @size;
+  font-weight: @weight;
+  line-height: @lineheight;
+}
+.monospace(@weight: normal, @size: 12px, @lineheight: 20px) {
+  font-family: "Monaco", Courier New, monospace;
+  font-size: @size;
+  font-weight: @weight;
+  line-height: @lineheight;
+}
+
+// Grid System
+@grid_columns: 16;
+@grid_column_width: 40px;
+@grid_gutter_width: 20px;
+.columns(@column_span: 1) {
+  display: inline;
+  float: left;
+  width: (@grid_column_width * @column_span) + (@grid_gutter_width * (@column_span - 1));
+  margin-left: @grid_gutter_width;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+// Border Radius
+.border-radius(@radius: 5px) {
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+// Drop shadows
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+// Transitions
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	transition: @transition;
+}
+
+// CSS3 Content Columns
+.content-columns(@column_count, @column_gap: 20px) {
+	-webkit-column-count: @count;
+	-webkit-column-gap: @gap;
+	-moz-column-count: @count;
+	-moz-column-gap: @gap;
+	column-count: @count;
+	column-gap: @gap;
+}
+
+// Buttons
+.button(@color: #f9f9f9, @padding: 4px 14px, @text_color: #555, @text_shadow: 0 1px 0 rgba(255,255,255,.75), @font_size: 13px, @border_color: rgba(0,0,0,.1), @rounded: 4px) {
+  display: inline-block;
+  #gradient > .vertical-three-colors(@color, @color, 0.25, darken(@color, 10%));
+  padding: @padding;
+  text-shadow: @text_shadow;
+  color: @text_color;
+  line-height: @baseline;
+  border: 1px solid @border_color;
+  border-bottom-color: fadein(@border_color, 15%);
+  .border-radius(@rounded);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+  cursor: pointer;
+  &:hover {
+    background-position: 0 -15px;
+    color: darken(@text_color, 10%);
+    text-decoration: none;
+  }
+}
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+#translucent {
+  .background(@color: @white, @alpha: 1) {
+    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+	}
+	.border(@color: @white, @alpha: 1) {
+		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+		background-clip: padding-box;
+	}
+}
+
+// Gradients
+#gradient {
+  .horizontal(@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+    background-image: -webkit-linear-gradient(right center, @startColor, @endColor);
+    background-image: -moz-linear-gradient(right center, @startColor, @endColor);
+    background-image: -o-linear-gradient(left,  @startColor,  @endColor);
+    background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+    filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=1)",@startColor,@endColor));
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=1))",@startColor,@endColor);
+  }
+  .vertical(@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background-image: -webkit-linear-gradient(@startColor, @endColor);
+    background-image: -moz-linear-gradient(@startColor, @endColor);
+    background-image: -o-linear-gradient(top,  @startColor,  @endColor);
+    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@startColor,@endColor));
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=0))",@startColor,@endColor);
+  }
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+    background-color: @endColor;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+    background-image: -webkit-linear-gradient(@startColor, color-stop(@colorStop, @midColor), @endColor);
+    background-image: -moz-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+  }
+}

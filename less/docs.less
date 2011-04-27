@@ -1,0 +1,79 @@
+// Give us some love
+header,
+section,
+footer,
+article,
+aside {
+  display: block;
+}
+#masthead {
+  margin-top: @baseline * -1;
+  #gradient > .vertical(darken(@blue-dark, 5%), darken(@blue, 7.5%));
+  div.inner {
+    background: transparent url(../img/grid-20px.png) 0 -1px;
+    padding: 40px 0;
+    .box-shadow(inset 0 10px 30px rgba(0,0,0,.25));
+  }
+  h1 {
+    margin-bottom: 0;
+  }
+  h1, p {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  }
+  p {
+    .font(300,20px,30px);
+    margin: 5px 0;
+  }
+  a.btn {
+    #gradient > .vertical(@purple, darken(@purple, 15%));
+    display: block;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    border: 0;
+    @shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.4);
+    .box-shadow(@shadow);
+  }
+  small {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    line-height: @baseline;
+    color: rgba(255,255,255,.5);
+    a {
+      color: #fff;
+    }
+  }
+}
+
+// Body
+#body {
+  padding: 0 0 40px;
+}
+
+// Show the grids
+.show-grid {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .column,
+  .columns {
+    background: rgba(0,0,0,.1);
+    text-align: center;
+    .border-radius(3px);
+    height: 30px;
+    line-height: 30px;
+  }
+  &:hover {
+    .column,
+    .columns {
+      background: rgba(0,0,0,.25);
+    }
+  }
+}
+
+// Break up sections
+section {
+  margin-bottom: 40px;
+}

@@ -1,0 +1,298 @@
+/*
+	Patterns.less
+	Repeatable UI elements outside the base styles provided from the scaffolding
+*/
+
+
+/* Top bar
+-------------------------------------------------- */
+
+body {
+  padding-top: 60px;
+  background-position: 0 40px;
+}
+div.topbar {
+  #gradient > .vertical(#333, #222);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 40px;
+  .box-shadow(0 1px 3px rgba(0,0,0,.5));
+  a {
+    color: #999;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+      background-color: rgba(255,255,255,.05);
+    }
+  }
+  a#logo,
+  ul li a {
+    float: left;
+    padding: 0 10px;
+    line-height: 40px;
+  }
+  // Logo
+  a#logo {
+    margin-left: -10px;
+    margin-right: 10px;
+    color: @gray-light;
+    font-size: 20px;
+    font-weight: 200;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    img {
+      float: left;
+      margin-top: 9px;
+      margin-right: 6px;
+    }
+    span {
+    }
+  }
+  // Nav items
+  ul {
+    float: left;
+    margin: 0;
+    li {
+      display: inline;
+      a {
+
+      }
+      &.active a {
+        color: #fff;
+        background-color: rgba(0,0,0,.5);
+      }
+    }
+  }
+}
+
+/* Page Headers
+-------------------------------------------------- */
+
+div.page-header {
+  margin-bottom: @baseline - 1;
+  border-bottom: 1px solid #ddd;
+  .border-radius(6px 6px 0 0);
+  .box-shadow(0 1px 0 rgba(255,255,255,.5));
+  h1 {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Error Styles
+-------------------------------------------------- */
+
+// One-liner alert bars
+div.alert-message {
+  #gradient > .vertical(transparent, rgba(0,0,0,0.15));
+  background-color: @gray-lighter;
+  margin-bottom: @baseline;
+  padding: 10px 15px 9px;
+  .border-radius(6px);
+  color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  p {
+    color: #fff;
+    margin-bottom: 0;
+    + p {
+      margin-top: 5px;
+    }
+  }
+  &.error {
+    background-color: lighten(@red, 25%);
+  }
+  &.warning {
+    background-color: lighten(@yellow, 15%);
+  }
+  &.success {
+    background-color: lighten(@green, 15%);
+  }
+  &.info {
+    background-color: lighten(@blue, 15%);
+  }
+  a.close {
+    float: right;
+    margin-top: -2px;
+    opacity: .5;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    .border-radius(3px);
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+}
+
+// Block-level Alerts
+div.block-message {
+  margin-bottom: @baseline;
+  padding: 14px 19px;
+  color: #333;
+  color: rgba(0,0,0,.8);
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+  .border-radius(6px);
+  p {
+    font-size: 13px;
+    line-height: 18px;
+    color: #333;
+    color: rgba(0,0,0,.8);
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  strong {
+    display: block;
+  }
+  a.close {
+    display: block;
+    color: #333;
+    color: rgba(0,0,0,.5);
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  }
+  &.error {
+    background: lighten(@red, 55%);
+    border: 1px solid lighten(@red, 50%);
+  }
+  &.warning {
+    background: lighten(@yellow, 35%);
+    border: 1px solid lighten(@yellow, 25%)
+  }
+  &.success {
+    background: lighten(@green, 45%);
+    border: 1px solid lighten(@green, 35%)
+  }
+  &.info {
+    background: lighten(@blue, 45%);
+    border: 1px solid lighten(@blue, 40%);
+  }
+}
+
+
+/* Navigation
+-------------------------------------------------- */
+
+// Common tab and pill styles
+ul.tabs,
+ul.pills {
+  margin: 0 0 20px;
+  padding: 0;
+  .clearfix();
+  li {
+    display: inline;
+    a {
+      display: inline;
+      float: left;
+      width: auto;
+    }
+  }
+}
+// Basic Tabs
+ul.tabs {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  li {
+    a {
+      margin-bottom: -1px;
+      margin-right: 2px;
+      padding: 0 15px;
+      line-height: (@baseline * 2) - 1;
+      .border-radius(3px 3px 0 0);
+      &:hover {
+        background: #f5f5f5;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+    &.active a {
+      background: #fff;
+      padding: 0 14px;
+      border: 1px solid #ccc;
+      border-bottom: 0;
+      color: @gray;
+    }
+  }
+}
+// Basic pill nav
+ul.pills {
+  li {
+    a {
+      margin: 5px 3px 5px 0;
+      padding: 0 15px;
+      text-shadow: 0 1px 1px #fff;
+      line-height: 30px;
+      .border-radius(15px);
+      &:hover {
+        background: @link-hover-color;
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(0,0,0,.25);
+      }
+    }
+    &.active a {
+      background: @link-color;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    }
+  }
+}
+
+
+/* Pagination
+-------------------------------------------------- */
+
+div.pagination {
+  height: @baseline * 2;
+  margin: @baseline 0;
+  ul {
+    float: left;
+    margin: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    .border-radius(3px);
+    .box-shadow(0 1px 2px rgba(0,0,0,.075);
+    li {
+      display: inline;
+      a {
+        display: inline;
+        float: left;
+        padding: 0 14px;
+        line-height: (@baseline * 2) - 2;
+        border-right: 1px solid rgba(0,0,0,.15);
+        text-decoration: none;
+      }
+      a:hover,
+      &.active a {
+        background-color: lighten(@blue, 45%);
+      }
+      &.disabled a,
+      &.disabled a:hover {
+        background-color: none;
+        color: @gray-light;
+      }
+      &.next a,
+      &:last-child a {
+        border: 0;
+      }
+    }
+  }
+}
+
+
+/* Wells
+-------------------------------------------------- */
+
+div.well {
+  background: #f5f5f5;
+  margin-bottom: 20px;
+  padding: 19px;
+  min-height: 20px;
+  border: 1px solid #ddd;
+  .border-radius(4px);
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075);
+}

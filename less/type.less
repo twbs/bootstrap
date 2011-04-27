@@ -1,0 +1,256 @@
+/*
+	Typography
+	Headings, body text, lists, code, and more for a versatile and durable typography system
+*/
+
+
+/* Body text
+-------------------------------------------------- */
+
+p {
+  .font(normal,14px,@baseline);
+  margin-bottom: @baseline;
+  small {
+    font-size: 12px;
+    color: @gray-light;
+  }
+}
+
+
+/* Headings
+-------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  color: @gray-dark;
+  small {
+    color: @gray-light;
+  }
+}
+h1 {
+  margin-bottom: @baseline;
+  font-size: 30px;
+  line-height: @baseline * 2;
+  small {
+    font-size: 18px;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: @baseline * 2;
+  small {
+    font-size: 14px;
+  }
+}
+h3, h4, h5, h6 {
+  line-height: @baseline * 2;
+}
+h3 {
+  font-size: 18px;
+  small {
+    font-size: 14px;
+  }
+}
+h4 {
+  font-size: 16px;
+  small {
+    font-size: 12px;
+  }
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 13px;
+  color: @gray-light;
+  text-transform: uppercase;
+}
+
+
+
+/* Colors
+-------------------------------------------------- */
+
+// Unordered and Ordered lists
+ul, ol {
+  margin: 0 0 @baseline 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+li {
+  line-height: @baseline;
+  color: @gray;
+}
+ul.unstyled {
+  list-style: none;
+  margin-left: 0;
+}
+
+// Description Lists
+dl {
+  margin-bottom: @baseline;
+  dt, dd {
+    line-height: @baseline;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: @baseline / 2;
+  }
+}
+
+
+/* Misc
+-------------------------------------------------- */
+
+// Labels
+span.label {
+  background-color: #ccc;
+  padding: 3px 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 1px rgba(0,0,0,.01);
+  text-transform: uppercase;
+  .border-radius(3px);
+  &.expired {
+    background-color: #f5f5f5;
+    color: #999;
+  }
+  &.pending {
+    background-color: #48489b;
+  }
+  &.declined {
+    background-color: #9b4848;
+  }
+  &.active,
+  &.approved {
+    background-color: #59bf59;
+  }
+  &.disabled {
+    background-color: #faa226;
+  }
+  &.scheduled {
+    background-color: #f5f5f5;
+    color: #59bf59;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  }
+}
+
+// Horizontal rules
+hr {
+  margin: 0 0 19px;
+  border: 0;
+  border-bottom: 1px solid #eee;
+}
+
+// Emphasis
+strong {
+  font-style: inherit;
+  font-weight: bold;
+  line-height: inherit;
+}
+em {
+  font-style: italic;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.muted {
+  color: @gray-lighter;
+}
+
+// Blockquotes
+blockquote {
+  margin-bottom: @baseline;
+  border-left: 5px solid #eee;
+  padding-left: 15px;
+  p {
+    .font(300,14px,@baseline);
+    margin-bottom: 0;
+  }
+  cite {
+    display: block;
+    .font(300,12px,@baseline);
+    color: @gray-light;
+    &:before {
+      content: '\2014 \00A0';
+    }
+  }
+}
+
+// Addresses
+address {
+  display: block;
+  line-height: @baseline;
+  margin-bottom: @baseline;
+}
+
+// Inline and block code styles
+code, pre {
+  padding: 0 3px 2px;
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+  font-size: 12px;
+  .border-radius(3px);
+}
+code {
+  background-color: lighten(@orange, 40%);
+  color: rgba(0,0,0,.75);
+  padding: 2px 3px;
+}
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: @baseline - 1;
+  margin: 0 0 @baseline;
+  line-height: @baseline;
+  font-size: 12px;
+  border: 1px solid rgba(0,0,0,.15);
+  .border-radius(3px);
+  white-space: pre-wrap;
+}
+// Code block styling from Chili
+pre.css, pre.html {
+  background-color: #fff;
+}
+pre ol {
+  background-color: lighten(@orange, 42%);
+  list-style: decimal;
+  margin: (@baseline - 1) * -1;
+  padding-left: 59px;
+  .border-radius(2px);
+  li {
+    background-color: #fff;
+    padding: 0 10px;
+    border-left: 1px solid rgba(0,0,0,.1);
+    border-left-color: lighten(@orange, 35%);
+    font-size: 11px;
+    line-height: @baseline;
+    color: @gray-light;
+    text-shadow: 0 1px 1px rgba(255,255,255,.5);
+    word-wrap: break-word;
+    &:hover {
+    }
+    &:first-child {
+      padding-top: 9px;
+    }
+    &:last-child {
+      padding-bottom: 9px;
+    }
+  }
+}
+// Language Styles
+span.html__tag_start,
+span.html__tag_end { color: #277ac1; font-weight: normal; }
+span.html__attr_name { color: #d78b41; }
+span.html__attr_value { color: #de4a3f; }

@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Baseline</title>
+
+    <!-- // Less.js at the ready! -->
+    <link rel="stylesheet/less" type="text/css" media="all" href="less/baseline.less" />
+    <script type="text/javascript" src="js/less-1.0.41.min.js"></script>
+
+    <!-- // jQuery! -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // Active state in top nav
+        $('div.topbar ul a').click(function() {
+          if ($(this).parents('li').hasClass('active')) {
+            $(this).parents('li').removeClass('active');
+          } else {
+            $(this).parents('li').siblings().removeClass('active');
+            $(this).parents('li').addClass('active');
+          }
+        });
+      });
+    </script>
+
+    <!-- Code Highlighting -->
+    <script type="text/javascript" src="js/jquery/chili/jquery.chili-2.2.js"></script>
+    <script type="text/javascript" src="js/jquery/chili/recipes.js"></script>
+    <script id="setup" type="text/javascript">
+    	ChiliBook.lineNumbers = true; 
+    </script>
+
+    <!-- Debug line-height -->
+<!--
+		<style>
+		  body {
+		    background: url(img/baseline-20px.png) repeat 0 0, url(img/grid-940px.png) repeat-y top center;
+		    background-color: #fff;
+		  }
+		</style>
+-->
+  </head>
+
+
+
+  <body>
+
+    <div class="topbar">
+      <div class="container fixed">
+        <h3><a id="logo" href="index.html">
+          <img src="img/twitter-logo-no-bird.png" alt="Twitter" /> <span>baseline</span>
+        </a></h3>
+        <ul>
+          <li class="active"><a href="#">Getting Started</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#navigation">Navigation</a></li>
+          <li><a href="#alerts">Alerts</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="masthead">
+      <div class="inner">
+        <div class="container">
+          <div class="row">
+            <div class="span11 columns">
+              <h1>Twitter Baseline</h1>
+              <p>Baseline is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.</p>
+            </div>
+            <div class="span5 columns">
+              <a href="" class="btn large primary">Download Zip &raquo;</a>
+              <small>
+                <a href="">Visit project page on Github &raquo;</a><br />
+                (Current version: 1.0.0)
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+
+
+
+<section>
+<div class="page-header">
+  <h1>Getting Started</h1>
+</div>
+<div class="row">
+  <div class="span4 columns">
+    <p>You can use Twitter Baseline in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.</p>
+  </div>
+  <div class="span12 columns">
+    <h3>1. Compiled CSS</h3>
+    <p>Use this option if you want all the styles of Baseline, but none of the extra power of LESS.</p>
+    <pre class="html">&lt;link type="text/css" href="css/Baseline.css" media="all" /&gt;</pre>
+    <h3>2. Run with LESS.js</h3>
+    <p>Use this option to make full use of Baseline's LESS variables, mixins, and nesting in CSS.</p>
+    <pre class="html">
+&lt;link rel="stylesheet/less" type="text/css" href="less/Baseline.less" media="all" /&gt;
+&lt;script type="text/javascript" src="js/less-1.0.41.min.js"&gt;&lt;/script&gt;</pre>
+  </div>
+</div>
+</section>
+
+
+<section>
+<div class="page-header">
+  <h1>Fully Bootstrapped <small>Supercharged CSS with variables, mixins, and functions</small></h1>
+</div>
+<div class="row">
+  <div class="span4 columns">
+    <p><a href="http://markdotto.com/bootstrap/">Bootstrap</a> is a super awesome pack of mixins and variables to be used in conjunction with LESS, a CSS preprocessor for faster and easier web development.</p>
+  </div>
+  <div class="span12 columns">
+    <h2>What's included</h2>
+    <p>Here's a rundown of what's included in Twitter Baseline as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
+    <h3>Color variables</h3>
+    <p>Variables in LESS are perfect for maintaining and updating your CSS. When you want to change a color value, update it in one spot and you're set.</p>
+    <pre class="css">
+// Links
+@link-color:        #0069d6;
+@link-hover-color:  darken(@link-color, 10);
+
+// Grays
+@white:             #fff;
+@gray-lighter:      #ccc;
+@gray-light:        #777;
+@gray:              #555;
+@gray-dark:         #333;
+@black:             #000;
+
+// Accent Colors
+@blue:              #08b5fb;
+@blue-dark:         #0069d6;
+@green:             #46a546;
+@red:               #9d261d;
+@yellow:            #ffc40d;
+@orange:            #f89406;
+@pink:              #c3325f;
+@purple:            #7a43b6;
+</pre>
+
+<h3>Two Comment Styles</h3>
+<pre class="css">
+// This is a comment
+/* No, this is a comment */
+</pre>
+
+<h3>Mixins up the wazoo</h3>
+<pre class="css">
+// Font Stacks
+.font(@weight: normal, @size: 14px, @lineheight: 20px) {
+  font-size: @size;
+  font-weight: @weight;
+  line-height: @lineheight;
+}
+.sans-serif(@weight: normal, @size: 14px, @lineheight: 20px) {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: @size;
+  font-weight: @weight;
+  line-height: @lineheight;
+}
+
+// Drop shadows
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+// Gradients
+#gradient {
+  .horizontal(@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+    background-image: -webkit-linear-gradient(right center, @startColor, @endColor);
+    background-image: -moz-linear-gradient(right center, @startColor, @endColor);
+    background-image: -o-linear-gradient(left,  @startColor,  @endColor);
+    background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+    filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=1)",@startColor,@endColor));
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=1))",@startColor,@endColor);
+  }
+  .vertical(@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background-image: -webkit-linear-gradient(@startColor, @endColor);
+    background-image: -moz-linear-gradient(@startColor, @endColor);
+    background-image: -o-linear-gradient(top,  @startColor,  @endColor);
+    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@startColor,@endColor));
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=0))",@startColor,@endColor);
+  }
+}
+</pre>
+
+<h3>Operations and grid system</h4>
+<pre class="css">
+@grid_columns: 16;
+@grid_column_width: 40px;
+@grid_gutter_width: 20px;
+.columns(@column_span: 1) {
+  display: inline;
+  float: left;
+  width: (@grid_column_width * @column_span) + (@grid_gutter_width * (@column_span - 1));
+  margin-left: @grid_gutter_width;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+</pre>
+  </div>
+</div>
+
+</section>
+
+
+
+<section>
+<div class="page-header">
+  <h1>Customizable Grid System <small>Rock the standard 940px or roll your own</small></h1>
+</div>
+<div class="row">
+  <div class="span4 columns">
+    <h2>Default Grid</h2>
+    <p>The default grid system provided as part of Baseline is a 940px wide 16-column grid. It's a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
+  </div>
+  <div class="span12 columns">
+<h3>Example grid markup</h3>
+<p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
+<pre class="html">
+&lt;div class="row"&gt;
+&lt;div class="span6 columns"&gt;
+...
+&lt;/div&gt;
+&lt;div class="span10 columns"&gt;
+...
+&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+</div>
+
+<div class="row show-grid" title="16 column layout">
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+  <div class="span1 column">1</div>
+</div>
+
+<div class="row show-grid" title="8 column layout">
+  <div class="span2 columns">2</div>
+  <div class="span2 columns">2</div>
+  <div class="span2 columns">2</div>
+  <div class="span2 columns">2</div>
+  <div class="span2 columns">2</div>
+  <div class="span2 columns">2</div>
+  <div class="span2 columns">2</div>
+  <div class="span2 columns">2</div>
+</div>
+
+<div class="row show-grid" title="Example uncommon layout">
+  <div class="span3 columns">3</div>
+  <div class="span3 columns">3</div>
+  <div class="span3 columns">3</div>
+  <div class="span3 columns">3</div>
+  <div class="span3 columns">3</div>
+  <div class="span1 column">1</div>
+</div>
+
+<div class="row show-grid" title="Four column layout">
+  <div class="span4 columns">4</div>
+  <div class="span4 columns">4</div>
+  <div class="span4 columns">4</div>
+  <div class="span4 columns">4</div>
+</div>
+
+<div class="row show-grid" title="Irregular three column layout">
+  <div class="span4 columns">4</div>
+  <div class="span6 columns">6</div>
+  <div class="span6 columns">6</div>
+</div>
+
+<div class="row show-grid" title="Half and half">
+  <div class="span8 columns">8</div>
+  <div class="span8 columns">8</div>
+</div>
+
+<div class="row show-grid" title="Example uncommon two-column layout">
+  <div class="span5 columns">5</div>
+  <div class="span11 columns">11</div>
+</div>
+
+<div class="row show-grid" title="Unnecessary single column layout">
+  <div class="span16 columns">16</div>
+</div>
+</section>
+
+
+
+
+<section>
+<div class="page-header" id="typography">
+  <h1>Typography <small>Headings, paragraphs, lists, and other inline type elements</small></h1>
+</div>
+<h2>Headings and paragraphs</h2>
+<p>A standard typographic hierarchy for structuring your webpages.</p>
+<div class="row">
+  <div class="span6 columns">
+    <h1>h1. Heading 1</h1>
+    <h2>h2. Heading 2</h2>
+    <h3>h3. Heading 3</h3>
+    <h4>h4. Heading 4</h4>
+    <h5>h5. Heading 5</h5>
+    <h6>h6. Heading 6</h6>    
+  </div>
+  <div class="span6 columns">
+    <h3>Example paragraph (body text)</h3>
+    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>    
+  </div>
+</div>
+<h2>Emphasis, addresses, &amp; abbreviations</h2>
+<p>
+  <code>&lt;strong&gt;</code>
+  <code>&lt;em&gt;</code>
+  <code>&lt;address&gt;</code>
+  <code>&lt;abbr&gt;</code>
+</p>
+<h4>When to use</h4>
+<p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to add visual distinction between a word or phrase and its surrounding copy. Use <code>&lt;strong&gt;</code> for plain old attention and <code>&lt;em&gt;</code> for <em>slick</em> attention and titles.</p>
+<h3>Emphasis in a paragraph</h3>
+<p><a href="">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+<h3>Addresses</h3>
+<p>The <code>address</code> element is used for&mdash;you guessed it!&mdash;addresses. Here's how it looks:</p>
+<address>
+	<strong>Twitter, Inc.</strong><br />
+	795 Folsom Ave, Suite 600<br />
+	San Francisco, CA 94107<br />
+	<abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+<p><strong>Note:</strong> Each line in an <code>address</code> must end with a line-break (<code>&lt;br /&gt;</code>) to properly structure the content as it is read in real life without any styles applied.</p>
+<h3>Abbreviations</h3>
+<p>For abbreviations and acronyms, use the <code>abbr</code> tag (<code>acronym</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
+
+<h2>Blockquotes</h2>
+<p>
+  <code>&lt;blockquote&gt;</code>
+  <code>&lt;p&gt;</code>
+  <code>&lt;cite&gt;</code>
+</p>
+<p>Be sure to wrap your <code>blockquote</code> around <code>paragraph</code> and <code>cite</code> tags. When citing a source, use the <code>cite</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
+<blockquote>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+	<cite>Dr. Julius Hibbert</cite>
+</blockquote>
+
+<h2>Lists</h2>
+<div class="row">
+  <div class="span4 columns">
+		<h4>Unordered <code>&lt;ul&gt;</code></h4>
+		<ul>
+			<li>Jeremy Bixby</li>
+			<li>Robert Dezure</li>
+			<li>Josh Washington</li>
+			<li>Anton Capresi</li>
+			<li>My Team Mates
+				<ul>
+					<li>George Castanza</li>
+					<li>Jerry Seinfeld</li>
+					<li>Cosmo Kramer</li>
+					<li>Elaine Bennis</li>
+					<li>Newman</li>
+				</ul>
+			</li>
+			<li>John Jacob</li>
+			<li>Paul Pierce</li>
+			<li>Kevin Garnett</li>
+		</ul>
+  </div>
+  <div class="span4 columns">
+		<h4>Unstyled <code>&lt;ul.unstyled&gt;</code></h4>
+		<ul class="unstyled">
+			<li>Jeremy Bixby</li>
+			<li>Robert Dezure</li>
+			<li>Josh Washington</li>
+			<li>Anton Capresi</li>
+			<li>My Team Mates
+				<ul>
+					<li>George Castanza</li>
+					<li>Jerry Seinfeld</li>
+					<li>Cosmo Kramer</li>
+					<li>Elaine Bennis</li>
+					<li>Newman</li>
+				</ul>
+			</li>
+			<li>John Jacob</li>
+			<li>Paul Pierce</li>
+			<li>Kevin Garnett</li>
+		</ul>
+  </div>
+  <div class="span4 columns">
+    <h4>Ordered lists <code>&lt;ol&gt;</code></h4>
+    <ol>
+    	<li>Jeremy Bixby</li>
+    	<li>Robert Dezure</li>
+    	<li>Josh Washington</li>
+    	<li>Anton Capresi</li>
+    	<li>My Team Mates
+    		<ol>
+    			<li>George Castanza</li>
+    			<li>Jerry Seinfeld</li>
+    			<li>Cosmo Kramer</li>
+    			<li>Elaine Bennis</li>
+    			<li>Newman</li>
+    		</ol>
+    	</li>
+    	<li>John Jacob</li>
+    	<li>Paul Pierce</li>
+    	<li>Kevin Garnett</li>
+    </ol>
+  </div>
+  <div class="span4 columns">
+    <h4>Description lists <code>dl</code></h4>
+    <dl>
+    	<dt>Description lists</dt>
+    	<dd>A description list is perfect for defining terms.</dd>
+    	<dt>Your mom</dt>
+    	<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+    	<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+    	<dt>And your dad</dt>
+    	<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+    </dl>
+  </div>
+</div>
+</section>
+
+
+
+<section>
+<div class="page-header" id="tables">
+  <h1>Tables <small>For, you guessed it, tabular data</small></h1>
+</div>
+
+<div class="row">
+  <div class="span4 columns">
+    <h2>Building tables</h2>
+    <p>
+      <code>&lt;table&gt;</code>
+      <code>&lt;thead&gt;</code>
+      <code>&lt;tbody&gt;</code>
+      <code>&lt;tr&gt;</code>
+      <code>&lt;th&gt;</code>
+      <code>&lt;td&gt;</code>
+      <code>&lt;colspan&gt;</code>
+      <code>&lt;caption&gt;</code>
+    </p>
+    <p>Tables are great&mdash;for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
+    <p>Always wrap your column headers in a <code>thead</code> such that hierarchy is <code>thead</code> > <code>tr</code> > <code>th</code>.</p>
+    <p>Similar to the column headers, all your table's body content should be wrapped in a <code>tbody</code> so your hierarchy is <code>tbody</code> > <code>tr</code> > <code>td</code>.</p>
+    </ul>
+  </div>
+  <div class="span12 columns">
+<h3>Example: Default table styles</h3>
+<p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
+<table>
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Language</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Your</td>
+			<td>Mom</td>
+			<td>English</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Joe</td>
+			<td>Sixpack</td>
+			<td>English</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Stu</td>
+			<td>Dent</td>
+			<td>Code</td>
+		</tr>
+	</tbody>
+</table>
+<pre class="html">
+&lt;table class="common-table"&gt;
+  ...
+&lt;/table&gt;</pre>
+
+<h3>Example: Zebra-striped</h3>
+<p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
+<table class="zebra-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Language</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Your</td>
+			<td>Mom</td>
+			<td>English</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Joe</td>
+			<td>Sixpack</td>
+			<td>English</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Stu</td>
+			<td>Dent</td>
+			<td>Code</td>
+		</tr>
+	</tbody>
+</table>
+<pre class="html">
+&lt;table class="common-table zebra-striped"&gt;
+...
+&lt;/table&gt;</pre>
+
+<h3>Example: Zebra-striped w/ TableSorter.js</h3>
+<p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column's header to change the sort.</strong></p>
+<script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table#sortTableExample").tablesorter( {sortList: [[1,0]]} );
+  });
+</script>
+<table class="zebra-striped" id="sortTableExample">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th class="yellow">First Name</th>
+			<th class="blue">Last Name</th>
+			<th class="green">Language</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Your</td>
+			<td>Mom</td>
+			<td>English</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Joe</td>
+			<td>Sixpack</td>
+			<td>English</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Stu</td>
+			<td>Dent</td>
+			<td>Code</td>
+		</tr>
+	</tbody>
+</table>
+<pre class="html">
+&lt;script type="text/javascript" src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+  $(document).ready(function() {
+    $("table#sortTableExample").tablesorter( {sortList: [[1,0]]} );
+  });
+&lt;/script&gt;
+&lt;table class="common-table zebra-striped"&gt;
+  ...
+&lt;/table&gt;</pre>
+  </div>
+</div>
+</section>
+
+
+
+<section>
+<! -- JS for the prepend and append boxes -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.add-on :checkbox').click(function() {
+      if ($(this).attr('checked')) {
+        $(this).parents('.add-on').addClass('active');
+      } else {
+        $(this).parents('.add-on').removeClass('active');
+      }
+    });
+  });
+</script>
+<div class="page-header" id="forms">
+  <h1>Forms and buttons</h1>
+</div>
+<p>All forms are given default styles to present them in a readable and scalable way.</p>
+<form>
+  <fieldset>
+    <legend>Example form legend</legend>
+    <div class="clearfix">
+      <label for="">X-Large Input</label>
+      <div class="input">
+        <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label for="">Select</label>
+      <div class="input">
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label for="">Select</label>
+      <div class="input">
+        <select class="medium">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label>Uneditable Input</label>
+      <div class="input">
+        <span class="uneditable-input">Some Value Here</span>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label for="disabledInput">Disabled Input</label>
+      <div class="input">
+        <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here... carry on." disabled />
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix error">
+      <label for="xlInput">X-Large Input</label>
+      <div class="input">
+        <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
+      </div>
+    </div> <!-- /clearfix -->
+  </fieldset>
+  <fieldset>
+    <legend>Example form legend</legend>
+    <div class="clearfix">
+      <label for="prependedInput">Prepended Text</label>
+      <div class="input">
+        <div class="input-prepend">
+          <span class="add-on">@</span>
+          <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
+        </div>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label for="prependedInput2">Prepended Checkbox</label>
+      <div class="input">
+        <div class="input-prepend">
+          <label class="add-on"><input type="checkbox" name="" id="" value="" /></label>
+          <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
+        </div>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label for="appendedInput">Appended Checkbox</label>
+      <div class="input">
+        <div class="input-append">
+          <input class="mini" id="appendedInput" name="appendedInput" size="16" type="text" />
+          <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
+        </div>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label for="xlInput">File Input</label>
+      <div class="input">
+        <input class="input-file" id="fileInput" name="fileInput" type="file" />
+      </div>
+    </div> <!-- /clearfix -->
+  </fieldset>
+  <fieldset>
+    <legend>Example form legend</legend>
+    <div class="clearfix">
+      <label id="optionsCheckboxes">List of Options</label>
+      <div class="input">
+        <ul class="inputs-list">
+          <li>
+            <label>
+              <input type="checkbox" name="optionsCheckboxes" value="option1" />
+              <span>Option one is this and that&mdash;be sure to include why it's great</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="optionsCheckboxes" value="option2" />
+              <span>Option two can also be checked and included in form results</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="optionsCheckboxes" value="option2" />
+              <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results</span>
+            </label>
+          </li>
+          <li>
+            <label class="disabled">
+              <input type="checkbox" name="optionsCheckboxes" value="option2" disabled />
+              <span>Option four cannot be checked as it is disabled.</span>
+            </label>
+          </li>
+        </ul>
+        <span class="help-block">
+          <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+        </span>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label>Date Range</label>
+      <div class="input">
+        <div class="inline-inputs">
+          <input class="small" type="text" value="May 1, 2011" />
+          <input class="mini" type="text" value="12:00am" />
+          to
+          <input class="small" type="text" value="May 8, 2011" />
+          <input class="mini" type="text" value="11:59pm" />
+          <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
+        </div>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label for="textarea">Textarea</label>
+      <div class="input">
+        <textarea class="xxlarge" id="textarea" name="textarea"></textarea>
+        <span class="help-block">
+          Block of help text to describe the field above if need be.
+        </span>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="clearfix">
+      <label id="optionsRadio">List of Options</label>
+      <div class="input">
+        <ul class="inputs-list">
+          <li>
+            <label>
+              <input type="checkbox" name="optionsCheckboxes" value="option1" />
+              <span>Option one is this and that&mdash;be sure to include why it's great</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="optionsCheckboxes" value="option2" />
+              <span>Option two can also be checked and included in form results</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div> <!-- /clearfix -->
+    <div class="actions">
+      <button type="submit" class="btn primary">Save Changes</button>
+      <button type="reset" class="btn">Cancel</button>
+    </div>
+  </fieldset>
+</form>
+
+<div class="row">
+  <div class="span4 columns">
+    <h2>Buttons</h2>
+    <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
+    <p>All buttons default to a light gray style, but a blue <code>.primary</code> class is available. Plus, rolling your own styles is easy peasy.</p>
+  </div>
+  <div class="span12 columns">
+    <h3>Example buttons</h3>
+    <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you'll want to apply these to only <code>a</code>, <code>button</code>, and select <code>input</code> elements. Here's how it looks:</p>
+    <div class="well" style="padding: 14px 19px;">
+    	<button type="submit" class="btn primary">Submit</button>
+    	<button type="submit" class="btn">Cancel</button>
+    </div>
+    <h3>Alternate sizes</h3>
+    <p>Fancy larger or smaller buttons? Have at it!</p>
+    <div class="well">
+      <a href="#" class="btn large primary">Primary action</a>
+      <a href="#" class="btn large">Action</a>
+    </div>
+    <div class="well" style="padding: 16px 19px;">
+      <a href="#" class="btn small primary">Primary action</a>
+      <a href="#" class="btn small">Action</a>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<section>
+<div class="page-header" id="navigation">
+  <h1>Navigation</h1>
+</div>
+
+<div class="row">
+  <div class="span4 columns">
+    <h3>Tabs or pills?</h3>
+    <p>Create simple secondary navigation with a <code>ul</code>. Swap between tabs or pills by adding the appropriate class.</p>
+    <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
+  </div>
+  <div class="span12 columns">
+<ul class="tabs">
+  <li class="active"><a href="">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+  <li><a href="">Settings</a></li>
+  <li><a href="">Contact</a></li>
+</ul>
+<pre class="html">
+&lt;ul class="tabs"&gt;
+  &lt;li class="active"&gt;&lt;a href=""&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<ul class="pills">
+  <li class="active"><a href="">Home</a></li>
+  <li><a href="">Profile</a></li>
+  <li><a href="">Messages</a></li>
+  <li><a href="">Settings</a></li>
+  <li><a href="">Contact</a></li>
+</ul>
+<pre class="html">
+&lt;ul class="pills"&gt;
+  &lt;li class="active"&gt;&lt;a href=""&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=""&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span4 columns">
+    <h3>Pagination</h3>
+    <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+  </div>
+  <div class="span12 columns">
+    <div class="pagination">
+      <ul>
+        <li class="prev disabled"><a href="">&larr; Previous</a></li>
+        <li class="active"><a href="">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href="">4</a></li>
+        <li><a href="">5</a></li>
+        <li class="next"><a href="">Next &rarr;</a></li>
+      </ul>
+    </div>
+    <div class="pagination">
+      <ul>
+        <li class="prev"><a href="">&larr; Previous</a></li>
+        <li class="active"><a href="">10</a></li>
+        <li><a href="">11</a></li>
+        <li><a href="">12</a></li>
+        <li class="disabled"><a href="">...</a></li>
+        <li><a href="">19</a></li>
+        <li><a href="">20</a></li>
+        <li><a href="">21</a></li>
+        <li class="next"><a href="">Next &rarr;</a></li>
+      </ul>
+    </div>
+    <div class="pagination">
+      <ul>
+        <li class="prev"><a href="">&larr; Previous</a></li>
+        <li><a href="">10</a></li>
+        <li><a href="">11</a></li>
+        <li><a href="">12</a></li>
+        <li><a href="">13</a></li>
+        <li><a href="">14</a></li>
+        <li class="active"><a href="">15</a></li>
+        <li><a href="">16</a></li>
+        <li><a href="">17</a></li>
+        <li><a href="">18</a></li>
+        <li><a href="">19</a></li>
+        <li><a href="">20</a></li>
+        <li class="next"><a href="">Next &rarr;</a></li>
+      </ul>
+    </div>
+<pre class="html">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li class="prev disabled"&gt;&lt;a href=""&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
+    &lt;li class="active"&gt;&lt;a href=""&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="next"&gt;&lt;a href=""&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+  </div>
+</div>
+
+</section>
+
+
+
+<section>
+  <div class="page-header" id="alerts">
+    <h1>Alerts &amp; Errors <small>Styles for success, warning, and error messages or alerts</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Basic alerts</h2>
+      <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
+    </div>
+    <div class="span12 columns">
+      <div class="alert-message error">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Oh snap!</strong> Change this and that and try again.</p>
+      </div>
+      <div class="alert-message warning">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Holy gaucamole!</strong> Best check yo self, you're not looking too good.</p>
+      </div>
+      <div class="alert-message success">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Well done!</strong> You successfully read this alert message.</p>
+      </div>
+      <div class="alert-message info">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it's not a huge priority just yet.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Block messages</h2>
+      <p>For messages that require a bit of explanation, we have paragraph style alerts. These are perfect for bubbling up longer error messages, warning a user of a pending action, or just presenting information for more emphasis on the page.</p>
+    </div>
+    <div class="span12 columns">
+      <div class="alert-message block-message error">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+        <p><a class="btn small" href="#">Take This Action</a> <a class="btn small" href="#">Or Do This</a></p>
+      </div>
+      <div class="alert-message block-message warning">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Holy gaucamole! This is a warning!</strong> Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+        <p><a class="btn small" href="#">Take This Action</a> <a class="btn small" href="#">Or Do This</a></p>
+      </div>
+      <div class="alert-message block-message success">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Well done!</strong> You successfully read this alert message. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum.</p>
+        <p><a class="btn small" href="#">Take This Action</a> <a class="btn small" href="#">Or Do This</a></p>
+      </div>
+      <div class="alert-message block-message info">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it's not a huge priority just yet.</p>
+        <p><a class="btn small" href="#">Take This Action</a> <a class="btn small" href="#">Or Do This</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+      <footer>
+        <p></p>
+      </footer>
+    </div>
+
+  </body>
+</html>
