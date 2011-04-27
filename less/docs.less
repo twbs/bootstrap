@@ -1,3 +1,10 @@
+body {
+  #gradient > .vertical-three-colors(#eee, #fff, 0.15, #fff);
+  background-attachment: fixed;
+  background-position: 0 40px;
+  position: relative;
+}
+
 // Give us some love
 header,
 section,
@@ -76,4 +83,31 @@ aside {
 // Break up sections
 section {
   margin-bottom: 40px;
+}
+
+// Hashgrid grid
+/**
+ * Grid
+ */
+#grid {
+  width: 980px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -490px;
+}
+#grid div.vert {
+  width: 39px;
+  border: solid darkturquoise;
+  border-width: 0 1px;
+  margin-right: 19px;
+}
+#grid div.vert.first-line {
+  margin-left: 19px;
+}
+#grid div.horiz {
+  height: 19px;
+  border-bottom: 1px dotted rgba(255,0,0,.25);
+  margin: 0;
+  padding: 0;
 }

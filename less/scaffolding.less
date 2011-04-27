@@ -7,7 +7,7 @@
 -------------------------------------------------- */
 
 div.row {
-  .clearfix;
+  .clearfix();
   div.span1   { .columns(1); }
   div.span2   { .columns(2); }
   div.span3   { .columns(3); }
@@ -34,8 +34,6 @@ html, body {
   background-color: #fff;
 }
 body {
-  #gradient > .vertical-three-colors(#eee, #fff, 0.25, #fff);
-  background-attachment: fixed;
   margin: 0;
   .sans-serif(normal,14px,20px);
   color: @gray;
