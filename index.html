@@ -326,9 +326,12 @@
 <div class="page-header" id="typography">
   <h1>Typography <small>Headings, paragraphs, lists, and other inline type elements</small></h1>
 </div>
-<h2>Headings and paragraphs</h2>
-<p>A standard typographic hierarchy for structuring your webpages.</p>
+
 <div class="row">
+  <div class="span4 columns">
+    <h2>Headings and copy</h2>
+    <p>A standard typographic hierarchy for structuring your webpages.</p>
+  </div>
   <div class="span6 columns">
     <h1>h1. Heading 1</h1>
     <h2>h2. Heading 2</h2>
@@ -342,40 +345,55 @@
     <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>    
   </div>
 </div>
-<h2>Emphasis, addresses, &amp; abbreviations</h2>
-<p>
-  <code>&lt;strong&gt;</code>
-  <code>&lt;em&gt;</code>
-  <code>&lt;address&gt;</code>
-  <code>&lt;abbr&gt;</code>
-</p>
-<h4>When to use</h4>
-<p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to add visual distinction between a word or phrase and its surrounding copy. Use <code>&lt;strong&gt;</code> for plain old attention and <code>&lt;em&gt;</code> for <em>slick</em> attention and titles.</p>
-<h3>Emphasis in a paragraph</h3>
-<p><a href="">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
-<h3>Addresses</h3>
-<p>The <code>address</code> element is used for&mdash;you guessed it!&mdash;addresses. Here's how it looks:</p>
-<address>
-	<strong>Twitter, Inc.</strong><br />
-	795 Folsom Ave, Suite 600<br />
-	San Francisco, CA 94107<br />
-	<abbr title="Phone">P:</abbr> (123) 456-7890
-</address>
-<p><strong>Note:</strong> Each line in an <code>address</code> must end with a line-break (<code>&lt;br /&gt;</code>) to properly structure the content as it is read in real life without any styles applied.</p>
-<h3>Abbreviations</h3>
-<p>For abbreviations and acronyms, use the <code>abbr</code> tag (<code>acronym</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
 
-<h2>Blockquotes</h2>
-<p>
-  <code>&lt;blockquote&gt;</code>
-  <code>&lt;p&gt;</code>
-  <code>&lt;cite&gt;</code>
-</p>
-<p>Be sure to wrap your <code>blockquote</code> around <code>paragraph</code> and <code>cite</code> tags. When citing a source, use the <code>cite</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
-<blockquote>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-	<cite>Dr. Julius Hibbert</cite>
-</blockquote>
+<div class="row">
+  <div class="span4 columns">
+    <h2>Misc. elements</h2>
+    <p>Using emphasis, addresses, &amp; abbreviations</p>
+    <p>
+      <code>&lt;strong&gt;</code>
+      <code>&lt;em&gt;</code>
+      <code>&lt;address&gt;</code>
+      <code>&lt;abbr&gt;</code>
+    </p>
+  </div>
+  <div class="span12 columns">
+    <h4>When to use</h4>
+    <p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to add visual distinction between a word or phrase and its surrounding copy. Use <code>&lt;strong&gt;</code> for plain old attention and <code>&lt;em&gt;</code> for <em>slick</em> attention and titles.</p>
+    <h3>Emphasis in a paragraph</h3>
+    <p><a href="">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+    <h3>Addresses</h3>
+    <p>The <code>address</code> element is used for&mdash;you guessed it!&mdash;addresses. Here's how it looks:</p>
+    <address>
+    	<strong>Twitter, Inc.</strong><br />
+    	795 Folsom Ave, Suite 600<br />
+    	San Francisco, CA 94107<br />
+    	<abbr title="Phone">P:</abbr> (123) 456-7890
+    </address>
+    <p><strong>Note:</strong> Each line in an <code>address</code> must end with a line-break (<code>&lt;br /&gt;</code>) to properly structure the content as it is read in real life without any styles applied.</p>
+    <h3>Abbreviations</h3>
+    <p>For abbreviations and acronyms, use the <code>abbr</code> tag (<code>acronym</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span4 columns">
+    <h2>Blockquotes</h2>
+    <p>
+      <code>&lt;blockquote&gt;</code>
+      <code>&lt;p&gt;</code>
+      <code>&lt;cite&gt;</code>
+    </p>
+  </div>
+  <div class="span12 columns">
+    <p>Be sure to wrap your <code>blockquote</code> around <code>paragraph</code> and <code>cite</code> tags. When citing a source, use the <code>cite</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
+    <blockquote>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+    	<cite>Dr. Julius Hibbert</cite>
+    </blockquote>
+  </div>
+</div>
+
 
 <h2>Lists</h2>
 <div class="row">
@@ -627,178 +645,185 @@
 <div class="page-header" id="forms">
   <h1>Forms and buttons</h1>
 </div>
-<p>All forms are given default styles to present them in a readable and scalable way.</p>
-<form>
-  <fieldset>
-    <legend>Example form legend</legend>
-    <div class="clearfix">
-      <label for="">X-Large Input</label>
-      <div class="input">
-        <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label for="">Select</label>
-      <div class="input">
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label for="">Select</label>
-      <div class="input">
-        <select class="medium">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label>Uneditable Input</label>
-      <div class="input">
-        <span class="uneditable-input">Some Value Here</span>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label for="disabledInput">Disabled Input</label>
-      <div class="input">
-        <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here... carry on." disabled />
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix error">
-      <label for="xlInput">X-Large Input</label>
-      <div class="input">
-        <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
-      </div>
-    </div> <!-- /clearfix -->
-  </fieldset>
-  <fieldset>
-    <legend>Example form legend</legend>
-    <div class="clearfix">
-      <label for="prependedInput">Prepended Text</label>
-      <div class="input">
-        <div class="input-prepend">
-          <span class="add-on">@</span>
-          <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
+
+<div class="row">
+  <div class="span4 columns">
+    <p>All forms are given default styles to present them in a readable and scalable way.</p>
+  </div>
+  <div class="span12 columns">
+  <form>
+    <fieldset>
+      <legend>Example form legend</legend>
+      <div class="clearfix">
+        <label for="">X-Large Input</label>
+        <div class="input">
+          <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
         </div>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label for="prependedInput2">Prepended Checkbox</label>
-      <div class="input">
-        <div class="input-prepend">
-          <label class="add-on"><input type="checkbox" name="" id="" value="" /></label>
-          <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label for="">Select</label>
+        <div class="input">
+          <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
         </div>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label for="appendedInput">Appended Checkbox</label>
-      <div class="input">
-        <div class="input-append">
-          <input class="mini" id="appendedInput" name="appendedInput" size="16" type="text" />
-          <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label for="">Select</label>
+        <div class="input">
+          <select class="medium">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
         </div>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label for="xlInput">File Input</label>
-      <div class="input">
-        <input class="input-file" id="fileInput" name="fileInput" type="file" />
-      </div>
-    </div> <!-- /clearfix -->
-  </fieldset>
-  <fieldset>
-    <legend>Example form legend</legend>
-    <div class="clearfix">
-      <label id="optionsCheckboxes">List of Options</label>
-      <div class="input">
-        <ul class="inputs-list">
-          <li>
-            <label>
-              <input type="checkbox" name="optionsCheckboxes" value="option1" />
-              <span>Option one is this and that&mdash;be sure to include why it's great</span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="optionsCheckboxes" value="option2" />
-              <span>Option two can also be checked and included in form results</span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="optionsCheckboxes" value="option2" />
-              <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results</span>
-            </label>
-          </li>
-          <li>
-            <label class="disabled">
-              <input type="checkbox" name="optionsCheckboxes" value="option2" disabled />
-              <span>Option four cannot be checked as it is disabled.</span>
-            </label>
-          </li>
-        </ul>
-        <span class="help-block">
-          <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
-        </span>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label>Date Range</label>
-      <div class="input">
-        <div class="inline-inputs">
-          <input class="small" type="text" value="May 1, 2011" />
-          <input class="mini" type="text" value="12:00am" />
-          to
-          <input class="small" type="text" value="May 8, 2011" />
-          <input class="mini" type="text" value="11:59pm" />
-          <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label>Uneditable Input</label>
+        <div class="input">
+          <span class="uneditable-input">Some Value Here</span>
         </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label for="disabledInput">Disabled Input</label>
+        <div class="input">
+          <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here... carry on." disabled />
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix error">
+        <label for="xlInput">X-Large Input</label>
+        <div class="input">
+          <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
+        </div>
+      </div> <!-- /clearfix -->
+    </fieldset>
+    <fieldset>
+      <legend>Example form legend</legend>
+      <div class="clearfix">
+        <label for="prependedInput">Prepended Text</label>
+        <div class="input">
+          <div class="input-prepend">
+            <span class="add-on">@</span>
+            <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
+          </div>
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label for="prependedInput2">Prepended Checkbox</label>
+        <div class="input">
+          <div class="input-prepend">
+            <label class="add-on"><input type="checkbox" name="" id="" value="" /></label>
+            <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
+          </div>
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label for="appendedInput">Appended Checkbox</label>
+        <div class="input">
+          <div class="input-append">
+            <input class="mini" id="appendedInput" name="appendedInput" size="16" type="text" />
+            <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
+          </div>
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label for="xlInput">File Input</label>
+        <div class="input">
+          <input class="input-file" id="fileInput" name="fileInput" type="file" />
+        </div>
+      </div> <!-- /clearfix -->
+    </fieldset>
+    <fieldset>
+      <legend>Example form legend</legend>
+      <div class="clearfix">
+        <label id="optionsCheckboxes">List of Options</label>
+        <div class="input">
+          <ul class="inputs-list">
+            <li>
+              <label>
+                <input type="checkbox" name="optionsCheckboxes" value="option1" />
+                <span>Option one is this and that&mdash;be sure to include why it's great</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="optionsCheckboxes" value="option2" />
+                <span>Option two can also be checked and included in form results</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="optionsCheckboxes" value="option2" />
+                <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results</span>
+              </label>
+            </li>
+            <li>
+              <label class="disabled">
+                <input type="checkbox" name="optionsCheckboxes" value="option2" disabled />
+                <span>Option four cannot be checked as it is disabled.</span>
+              </label>
+            </li>
+          </ul>
+          <span class="help-block">
+            <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+          </span>
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label>Date Range</label>
+        <div class="input">
+          <div class="inline-inputs">
+            <input class="small" type="text" value="May 1, 2011" />
+            <input class="mini" type="text" value="12:00am" />
+            to
+            <input class="small" type="text" value="May 8, 2011" />
+            <input class="mini" type="text" value="11:59pm" />
+            <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
+          </div>
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label for="textarea">Textarea</label>
+        <div class="input">
+          <textarea class="xxlarge" id="textarea" name="textarea"></textarea>
+          <span class="help-block">
+            Block of help text to describe the field above if need be.
+          </span>
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="clearfix">
+        <label id="optionsRadio">List of Options</label>
+        <div class="input">
+          <ul class="inputs-list">
+            <li>
+              <label>
+                <input type="checkbox" name="optionsCheckboxes" value="option1" />
+                <span>Option one is this and that&mdash;be sure to include why it's great</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="optionsCheckboxes" value="option2" />
+                <span>Option two can also be checked and included in form results</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div> <!-- /clearfix -->
+      <div class="actions">
+        <button type="submit" class="btn primary">Save Changes</button>
+        <button type="reset" class="btn">Cancel</button>
       </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label for="textarea">Textarea</label>
-      <div class="input">
-        <textarea class="xxlarge" id="textarea" name="textarea"></textarea>
-        <span class="help-block">
-          Block of help text to describe the field above if need be.
-        </span>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="clearfix">
-      <label id="optionsRadio">List of Options</label>
-      <div class="input">
-        <ul class="inputs-list">
-          <li>
-            <label>
-              <input type="checkbox" name="optionsCheckboxes" value="option1" />
-              <span>Option one is this and that&mdash;be sure to include why it's great</span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="optionsCheckboxes" value="option2" />
-              <span>Option two can also be checked and included in form results</span>
-            </label>
-          </li>
-        </ul>
-      </div>
-    </div> <!-- /clearfix -->
-    <div class="actions">
-      <button type="submit" class="btn primary">Save Changes</button>
-      <button type="reset" class="btn">Cancel</button>
-    </div>
-  </fieldset>
-</form>
+    </fieldset>
+  </form>
+  </div>
+</div>
 
 <div class="row">
   <div class="span4 columns">

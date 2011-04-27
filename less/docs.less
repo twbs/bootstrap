@@ -85,10 +85,7 @@ section {
   margin-bottom: 40px;
 }
 
-// Hashgrid grid
-/**
- * Grid
- */
+// Hashgrid.js grid
 #grid {
   width: 980px;
   position: absolute;
@@ -107,7 +104,10 @@ section {
 }
 #grid div.horiz {
   height: 19px;
-  border-bottom: 1px dotted rgba(255,0,0,.25);
+  border-bottom: 1px solid rgba(255,0,0,.1);
   margin: 0;
   padding: 0;
+  &:nth-child(5n) {
+    border-color: rgba(255,0,0,.25);
+  }
 }
