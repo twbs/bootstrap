@@ -1,3 +1,13 @@
+/*
+  Baseline's documentation styles
+  Special styles for presenting Baseline's documentation and examples
+*/
+
+
+/* Body and structure
+-------------------------------------------------- */
+
+// Give us a gradient background
 body {
   #gradient > .vertical-three-colors(#eee, #fff, 0.15, #fff);
   background-attachment: fixed;
@@ -5,7 +15,7 @@ body {
   position: relative;
 }
 
-// Give us some love
+// Give us some love on HTML5 elements (hardly use these in Basline thus far though)
 header,
 section,
 footer,
@@ -14,6 +24,13 @@ aside {
   display: block;
 }
 
+// Break up sections
+section {
+  padding-top: @baseline * 4;
+  margin-bottom: @baseline * -2;
+}
+
+// Blueprint-style header and footer
 #masthead,
 #footer {
   #gradient > .vertical(darken(@blue-dark, 5%), darken(@blue, 7.5%));
@@ -69,7 +86,10 @@ aside {
   }
 }
 
-// Show the grids
+
+/* Special grid styles
+-------------------------------------------------- */
+
 .show-grid {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -89,13 +109,10 @@ aside {
   }
 }
 
-// Break up sections
-section {
-  padding-top: @baseline * 4;
-  margin-bottom: @baseline * -2;
-}
 
-// Hashgrid.js grid
+/* Hashgrid.js grid (press G & H to view)
+-------------------------------------------------- */
+
 #grid {
   width: 980px;
   position: absolute;
@@ -119,5 +136,46 @@ section {
   padding: 0;
   &:nth-child(5n) {
     border-color: rgba(255,0,0,.25);
+  }
+}
+
+
+
+/* Render mini layout previews
+-------------------------------------------------- */
+
+div.mini-layout {
+  height: 340px;
+  margin-bottom: @baseline;
+  padding: 9px;
+  border: 1px solid rgba(0,0,0,.25);
+  .border-radius(6px);
+  .box-shadow(0 1px 3px rgba(0,0,0,.125));
+  // Default mini layout (fixed container)
+  div {
+    .border-radius(3px);
+    &.mini-layout-body {
+      background-color: rgba(141,192,219,.25);
+      margin: 0 auto;
+      width: 450px;
+      height: 340px;
+    }
+  }
+  // Fluid layout (sidebar)
+  &.fluid {
+    div.mini-layout-sidebar,
+    div.mini-layout-header,
+    div.mini-layout-body {
+      float: left;
+    }
+    div.mini-layout-sidebar {
+      background-color: rgba(141,192,219,.5);
+      width: 90px;
+      height: 340px;
+    }
+    div.mini-layout-body {
+      width: 400px;
+      margin-left: 10px;
+    }
   }
 }

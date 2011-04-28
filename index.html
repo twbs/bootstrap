@@ -12,19 +12,6 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="js/jquery/hashgrid.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        // Active state in top nav
-        $('div.topbar ul a').click(function() {
-          if ($(this).parents('li').hasClass('active')) {
-            $(this).parents('li').removeClass('active');
-          } else {
-            $(this).parents('li').siblings().removeClass('active');
-            $(this).parents('li').addClass('active');
-          }
-        });
-      });
-    </script>
 
     <!-- Code Highlighting -->
     <script type="text/javascript" src="js/jquery/chili/jquery.chili-2.2.js"></script>
@@ -54,7 +41,7 @@
           <img src="img/twitter-logo-no-bird.png" alt="Twitter" /> <span>baseline</span>
         </a></h3>
         <ul>
-          <li class="active"><a href="#">Getting Started</a></li>
+          <li><a href="#getting-started">Getting Started</a></li>
           <li><a href="#bootstrap">Bootstrap</a></li>
           <li><a href="#grid-system">Grid</a></li>
           <li><a href="#layouts">Layouts</a></li>
@@ -91,7 +78,7 @@
 
 
 
-<section>
+<section id="getting-started">
 <div class="page-header">
   <h1>Getting started</h1>
 </div>
@@ -338,10 +325,44 @@
   </div>
   <div class="row">
     <div class="span4 columns">
-      
+      <h2>Fixed layout</h2>
+      <p>A basic 940px wide, centered container layout for just about any site or page.</p>
     </div>
     <div class="span12 columns">
-      
+      <div class="mini-layout">
+        <div class="mini-layout-body"></div>
+      </div>
+<pre class="html">
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Fluid layout</h2>
+      <p>A flexible fluid or liquid page structure with min- and max-widths and a left-hand sidebar. Great for apps.</p>
+    </div>
+    <div class="span12 columns">
+      <div class="mini-layout fluid">
+        <div class="mini-layout-sidebar"></div>
+        <div class="mini-layout-body"></div>
+      </div>
+<pre class="html">
+&lt;body&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;div class="sidebar"&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class="content"&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
     </div>
   </div>
 </section>

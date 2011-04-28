@@ -11,6 +11,5 @@ http://twitter.com/mdo
 
 # Todos
 
-* Add the empty layout section in
 * Cross browser checks? Show this anywhere?
 * Write up brief section on browser support

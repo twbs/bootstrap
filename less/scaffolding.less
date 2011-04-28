@@ -41,10 +41,25 @@ body {
   .box-shadow(inset 0 1px 0 #fff);
 }
 
-// Containers
+// Container (centered, fixed-width layouts)
 div.container {
   width: 940px;
   margin: 0 auto;
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+div.container-fluid {
+  padding: 20px;
+  .clearfix();
+  div.sidebar {
+    float: left;
+    width: 220px;
+  }
+  div.content {
+    min-width: 700px;
+    max-width: 1180px;
+    margin-left: 240px;
+  }
 }
 
 
