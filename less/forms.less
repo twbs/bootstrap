@@ -4,11 +4,11 @@
 */
 
 
-
 /* Global form styles
 -------------------------------------------------- */
 
 form {
+  margin-bottom: @baseline;
   // Groups of fields with labels on top (legends)
   fieldset {
     margin-bottom: @baseline;
@@ -64,9 +64,11 @@ form {
     border: 1px solid #bbb;
     .border-radius(3px);
   }
-  select,
-  input[type=file] {
+  select {
     height: @baseline * 1.5;
+    line-height: @baseline * 1.5;
+  }
+  input[type=file] {
     line-height: @baseline * 1.5;
   }
   textarea {
@@ -300,42 +302,13 @@ ul.inputs-list {
   }
 }
 
-/* Disabled states for form elements, containing elements, and help text */
-div.disabled span {
-  color: #aaa;
-}
-div.disabled input[type=text],
-div.disabled input[type=passsword],
-div.disabled textarea {
-  background: #f5f5f5;
-}
-ul.options label.disabled,
-ul.options label.disabled span,
-ul.options label.disabled small,
-ul.options label.disabled strong {
-  color: #aaa !important;
-}
-
-
 // Stacked forms
-form.stacked-form {
-  h4, p {
-    margin: 0 0 2px;
-    color: rgba(0,0,0,.5);
-  }
+form.form-stacked {
   fieldset {
-    margin: 0;
-    padding: 19px 0 0;
-    border-top-color: rgba(0,0,0,.1);
-  }
-  div.actions {
-    margin-left: 0;
-    padding: 19px 0 30px 180px;
-    border-top: 1px solid rgba(0,0,0,.1);
-  }
+    padding-top: @baseline / 2;
+  }  
   legend {
-    margin: 0;
-    padding: 0;
+    margin-left: 0;
   }
   label {
     display: block;
@@ -346,16 +319,14 @@ form.stacked-form {
     line-height: 20px;
     padding-top: 1px;
   }
-  div.input {
-    margin: 0;
-  }
   div.clearfix {
-    margin-bottom: 10px;
+    margin-bottom: @baseline / 2;
+    div.input {
+      margin-left: 0;
+    }
   }
-  div.six.columns input, div.six.columns textarea, div.six.columns select {
-    width: 320px;
-  }
-  div.three.columns input, div.three.columns textarea, div.three.columns select {
-    width: 150px;
+  ul.inputs-list li label {
+    font-weight: normal;
+    padding-top: 0;
   }
 }

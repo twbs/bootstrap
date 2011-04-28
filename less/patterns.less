@@ -7,10 +7,6 @@
 /* Top bar
 -------------------------------------------------- */
 
-body {
-  padding-top: 60px;
-  background-position: 0 40px;
-}
 div.topbar {
   #gradient > .vertical(#333, #222);
   position: fixed;
@@ -33,6 +29,7 @@ div.topbar {
     float: left;
     padding: 0 10px;
     line-height: 40px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   }
   // Logo
   a#logo {
@@ -41,7 +38,6 @@ div.topbar {
     color: @gray-light;
     font-size: 20px;
     font-weight: 200;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     img {
       float: left;
       margin-top: 9px;
@@ -56,9 +52,6 @@ div.topbar {
     margin: 0;
     li {
       display: inline;
-      a {
-
-      }
       &.active a {
         color: #fff;
         background-color: rgba(0,0,0,.5);

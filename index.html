@@ -55,6 +55,9 @@
         </a></h3>
         <ul>
           <li class="active"><a href="#">Getting Started</a></li>
+          <li><a href="#bootstrap">Bootstrap</a></li>
+          <li><a href="#grid-system">Grid</a></li>
+          <li><a href="#layouts">Layouts</a></li>
           <li><a href="#typography">Typography</a></li>
           <li><a href="#tables">Tables</a></li>
           <li><a href="#forms">Forms</a></li>
@@ -64,13 +67,13 @@
       </div>
     </div>
 
-    <section id="masthead">
+    <div id="masthead">
       <div class="inner">
         <div class="container">
           <div class="row">
             <div class="span11 columns">
               <h1>Twitter Baseline</h1>
-              <p>Baseline is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.</p>
+              <p class="lead">Baseline is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.</p>
             </div>
             <div class="span5 columns">
               <a href="" class="btn large primary">Download Zip &raquo;</a>
@@ -82,7 +85,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <div class="container">
 
@@ -90,7 +93,7 @@
 
 <section>
 <div class="page-header">
-  <h1>Getting Started</h1>
+  <h1>Getting started</h1>
 </div>
 <div class="row">
   <div class="span4 columns">
@@ -99,30 +102,30 @@
   <div class="span12 columns">
     <h3>1. Compiled CSS</h3>
     <p>Use this option if you want all the styles of Baseline, but none of the extra power of LESS.</p>
-    <pre class="html">&lt;link type="text/css" href="css/Baseline.css" media="all" /&gt;</pre>
+    <pre class="html">&lt;link type="text/css" href="css/baseline.css" media="all" /&gt;</pre>
     <h3>2. Run with LESS.js</h3>
     <p>Use this option to make full use of Baseline's LESS variables, mixins, and nesting in CSS.</p>
     <pre class="html">
-&lt;link rel="stylesheet/less" type="text/css" href="less/Baseline.less" media="all" /&gt;
+&lt;link rel="stylesheet/less" type="text/css" href="less/baseline.less" media="all" /&gt;
 &lt;script type="text/javascript" src="js/less-1.0.41.min.js"&gt;&lt;/script&gt;</pre>
   </div>
 </div>
 </section>
 
 
-<section>
+<section id="bootstrap">
 <div class="page-header">
   <h1>Fully Bootstrapped <small>Supercharged CSS with variables, mixins, and functions</small></h1>
 </div>
 <div class="row">
   <div class="span4 columns">
-    <p><a href="http://markdotto.com/bootstrap/">Bootstrap</a> is a super awesome pack of mixins and variables to be used in conjunction with LESS, a CSS preprocessor for faster and easier web development.</p>
+    <p><a href="http://markdotto.com/bootstrap/">Bootstrap</a> is a super awesome pack of mixins and variables to be used in conjunction with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor for faster and easier web development, that we used to build Baseline.</p>
   </div>
   <div class="span12 columns">
     <h2>What's included</h2>
-    <p>Here's a rundown of what's included in Twitter Baseline as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
+    <p>Here are some of the highlights of what's included in Twitter Baseline as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
     <h3>Color variables</h3>
-    <p>Variables in LESS are perfect for maintaining and updating your CSS. When you want to change a color value, update it in one spot and you're set.</p>
+    <p>Variables in LESS are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you're set.</p>
     <pre class="css">
 // Links
 @link-color:        #0069d6;
@@ -145,15 +148,20 @@
 @orange:            #f89406;
 @pink:              #c3325f;
 @purple:            #7a43b6;
+
+// Baseline
+@baseline:          20px;
 </pre>
 
-<h3>Two Comment Styles</h3>
+<h3>Commenting</h3>
+<p>LESS also provides another style of commenting in addition to CSS's normal <code>/* ... */</code> syntax.</p>
 <pre class="css">
 // This is a comment
-/* No, this is a comment */
+/* This is also a comment */
 </pre>
 
 <h3>Mixins up the wazoo</h3>
+<p>Mixins are basically includes or partials for CSS, allowing you to combine a block of code into one. They're great for vendor prefixed properties like <code>box-shadow</code>, cross-browser gradients, font stacks, and more. Below is a sample of the mixins that are included with Bootstrap in Baseline.</p>
 <pre class="css">
 // Font Stacks
 .font(@weight: normal, @size: 14px, @lineheight: 20px) {
@@ -202,8 +210,10 @@
 }
 </pre>
 
-<h3>Operations and grid system</h4>
+<h3>Operations and grid system</h3>
+<p>Get fancy and perform some match to generate flexible and powerful mixins like the one below.</p>
 <pre class="css">
+// Roll your own grid system
 @grid_columns: 16;
 @grid_column_width: 40px;
 @grid_gutter_width: 20px;
@@ -224,26 +234,26 @@
 
 
 
-<section>
+<section id="grid-system">
 <div class="page-header">
-  <h1>Customizable Grid System <small>Rock the standard 940px or roll your own</small></h1>
+  <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
 </div>
 <div class="row">
   <div class="span4 columns">
-    <h2>Default Grid</h2>
+    <h2>Default grid</h2>
     <p>The default grid system provided as part of Baseline is a 940px wide 16-column grid. It's a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
   </div>
   <div class="span12 columns">
-<h3>Example grid markup</h3>
-<p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
+    <h3>Example grid markup</h3>
+    <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
 <pre class="html">
 &lt;div class="row"&gt;
-&lt;div class="span6 columns"&gt;
-...
-&lt;/div&gt;
-&lt;div class="span10 columns"&gt;
-...
-&lt;/div&gt;
+  &lt;div class="span6 columns"&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class="span10 columns"&gt;
+    ...
+  &lt;/div&gt;
 &lt;/div&gt;
 </pre>
   </div>
@@ -322,8 +332,24 @@
 
 
 
-<section>
-<div class="page-header" id="typography">
+<section id="layouts">
+  <div class="page-header">
+    <h1>Layouts <small>Basic templates to create webpages</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4 columns">
+      
+    </div>
+    <div class="span12 columns">
+      
+    </div>
+  </div>
+</section>
+
+
+
+<section id="typography">
+<div class="page-header">
   <h1>Typography <small>Headings, paragraphs, lists, and other inline type elements</small></h1>
 </div>
 
@@ -440,7 +466,7 @@
 		</ul>
   </div>
   <div class="span4 columns">
-    <h4>Ordered lists <code>&lt;ol&gt;</code></h4>
+    <h4>Ordered <code>&lt;ol&gt;</code></h4>
     <ol>
     	<li>Jeremy Bixby</li>
     	<li>Robert Dezure</li>
@@ -461,7 +487,7 @@
     </ol>
   </div>
   <div class="span4 columns">
-    <h4>Description lists <code>dl</code></h4>
+    <h4>Description <code>dl</code></h4>
     <dl>
     	<dt>Description lists</dt>
     	<dd>A description list is perfect for defining terms.</dd>
@@ -477,8 +503,8 @@
 
 
 
-<section>
-<div class="page-header" id="tables">
+<section id="tables">
+<div class="page-header">
   <h1>Tables <small>For, you guessed it, tabular data</small></h1>
 </div>
 
@@ -629,7 +655,7 @@
 
 
 
-<section>
+<section id="forms">
 <! -- JS for the prepend and append boxes -->
 <script type="text/javascript">
   $(document).ready(function(){
@@ -642,13 +668,14 @@
     });
   });
 </script>
-<div class="page-header" id="forms">
-  <h1>Forms and buttons</h1>
+<div class="page-header">
+  <h1>Forms</h1>
 </div>
 
 <div class="row">
   <div class="span4 columns">
-    <p>All forms are given default styles to present them in a readable and scalable way.</p>
+    <h2>Default styles</h2>
+    <p>All forms are given default styles to present them in a readable and scalable way. Styles are provided for text inputs, select lists, textareas, radio buttons and checkboxes, and buttons.</p>
   </div>
   <div class="span12 columns">
   <form>
@@ -825,6 +852,69 @@
   </div>
 </div>
 
+<br />
+
+<div class="row">
+  <div class="span4 columns">
+    <h2>Stacked forms</h2>
+    <p>Add <code>.form-stacked</code> to your form's HTML and you'll have labels on top of their fields instead of to their left. This works great if your forms are short or you have two columns of inputs for heavier forms.</p>
+  </div>
+  <div class="span12 columns">
+    <form action="" class="form-stacked">
+      <fieldset>
+        <legend>Example form legend</legend>
+        <div class="clearfix">
+          <label for="">X-Large Input</label>
+          <div class="input">
+            <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
+          </div>
+        </div> <!-- /clearfix -->
+        <div class="clearfix">
+          <label for="">Select</label>
+          <div class="input">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div> <!-- /clearfix -->
+      </fieldset>
+      <fieldset>
+        <legend>Example form legend</legend>
+        <div class="clearfix">
+          <label id="optionsCheckboxes">List of Options</label>
+          <div class="input">
+            <ul class="inputs-list">
+              <li>
+                <label>
+                  <input type="checkbox" name="optionsCheckboxes" value="option1" />
+                  <span>Option one is this and that&mdash;be sure to include why it's great</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" name="optionsCheckboxes" value="option2" />
+                  <span>Option two can also be checked and included in form results</span>
+                </label>
+              </li>
+            </ul>
+            <span class="help-block">
+              <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+            </span>
+          </div>
+        </div> <!-- /clearfix -->
+      </fieldset>
+      <div class="actions">
+        <button type="submit" class="btn primary">Save Changes</button>
+        <button type="reset" class="btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="row">
   <div class="span4 columns">
     <h2>Buttons</h2>
@@ -854,8 +944,8 @@
 
 
 
-<section>
-<div class="page-header" id="navigation">
+<section id="navigation">
+<div class="page-header">
   <h1>Navigation</h1>
 </div>
 
@@ -968,8 +1058,8 @@
 
 
 
-<section>
-  <div class="page-header" id="alerts">
+<section id="alerts">
+  <div class="page-header">
     <h1>Alerts &amp; Errors <small>Styles for success, warning, and error messages or alerts</small></h1>
   </div>
   <div class="row">
@@ -1028,9 +1118,15 @@
 
 
 
-      <footer>
-        <p></p>
-      </footer>
+      
+    </div> <!-- /container -->
+
+    <div id="footer">
+      <div class="inner">
+        <div class="container">
+          <p>Copyright and all that stuff.</p>
+        </div>
+      </div>
     </div>
 
   </body>

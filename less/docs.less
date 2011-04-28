@@ -13,22 +13,27 @@ article,
 aside {
   display: block;
 }
-#masthead {
-  margin-top: @baseline * -1;
+
+#masthead,
+#footer {
   #gradient > .vertical(darken(@blue-dark, 5%), darken(@blue, 7.5%));
   div.inner {
     background: transparent url(../img/grid-20px.png) 0 -1px;
     padding: 40px 0;
     .box-shadow(inset 0 10px 30px rgba(0,0,0,.25));
   }
+  h1, p, small {
+    color: #fff;
+    text-shadow: 0 2px 0 rgba(0,0,0,.25);
+  }
+}
+#masthead {
+  margin-top: @baseline * 2;
+  margin-bottom: @baseline * -2;
   h1 {
     margin-bottom: 0;
   }
-  h1, p {
-    color: #fff;
-    text-shadow: 0 1px 0 rgba(0,0,0,.25);
-  }
-  p {
+  p.lead {
     .font(300,20px,30px);
     margin: 5px 0;
   }
@@ -42,6 +47,7 @@ aside {
     border: 0;
     @shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.4);
     .box-shadow(@shadow);
+    .transition(all .2s linear);
   }
   small {
     display: block;
@@ -55,9 +61,9 @@ aside {
   }
 }
 
-// Body
-#body {
-  padding: 0 0 40px;
+// Page footer
+#footer {
+  margin-top: @baseline * 4;
 }
 
 // Show the grids
@@ -82,7 +88,8 @@ aside {
 
 // Break up sections
 section {
-  margin-bottom: 40px;
+  padding-top: @baseline * 4;
+  margin-bottom: @baseline * -2;
 }
 
 // Hashgrid.js grid
