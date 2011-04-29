@@ -125,11 +125,12 @@ div.topbar {
       @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
       .box-shadow(@shadow);
       .transition(none);
+      // Placeholder text gets special styles; can't be bundled together though for some reason
       &:-moz-placeholder {
-        color: #fff;
+        color: @gray-lighter;
       }
       &::-webkit-input-placeholder {
-        color: #fff;
+        color: @gray-lighter;
       }
       &:hover {
         background-color: #444;
@@ -196,12 +197,12 @@ div.topbar {
     li.menu {
       position: relative;
       a.menu {
-        span.menu-label:after {
+        &:after {
           width: 7px;
           height: 7px;
           display: inline-block;
-          background: transparent url(/images/sprite-icons.png) no-repeat scroll -79px -100px;
-          content:"&darr;";
+          background: transparent url(../img/dropdown-arrow.gif) no-repeat top center;
+          content: "&darr;";
           text-indent: -99999px;
           vertical-align: top;
           margin-top: 8px;
@@ -214,6 +215,7 @@ div.topbar {
         a:hover {
           background-color: lighten(#00a0d1,5);
           background-color: rgba(255,255,255,.1);
+          color: #fff;
         }
         ul {
           display: block;
