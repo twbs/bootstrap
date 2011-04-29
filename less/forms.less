@@ -64,11 +64,9 @@ form {
     border: 1px solid #bbb;
     .border-radius(3px);
   }
-  select {
-    height: @baseline * 1.5;
-    line-height: @baseline * 1.5;
-  }
+  select,
   input[type=file] {
+    height: @baseline * 1.5;
     line-height: @baseline * 1.5;
   }
   textarea {
@@ -317,7 +315,7 @@ form.form-stacked {
     font-weight: bold;
     text-align: left;
     line-height: 20px;
-    padding-top: 1px;
+    padding-top: 0;
   }
   div.clearfix {
     margin-bottom: @baseline / 2;
@@ -325,8 +323,14 @@ form.form-stacked {
       margin-left: 0;
     }
   }
-  ul.inputs-list li label {
-    font-weight: normal;
-    padding-top: 0;
+  ul.inputs-list {
+    margin-bottom: 0;
+    li {
+      padding-top: 0;
+      label {
+        font-weight: normal;
+        padding-top: 0;
+      }
+    }
   }
 }

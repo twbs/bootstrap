@@ -7,6 +7,7 @@
 /* Top bar
 -------------------------------------------------- */
 
+/*
 div.topbar {
   #gradient > .vertical(#333, #222);
   position: fixed;
@@ -19,12 +20,12 @@ div.topbar {
   a {
     color: #999;
     &:hover {
-      color: #fff;
+      color: @white;
       text-decoration: none;
       background-color: rgba(255,255,255,.05);
     }
   }
-  a#logo,
+  a.logo,
   ul li a {
     float: left;
     padding: 0 10px;
@@ -32,7 +33,7 @@ div.topbar {
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   }
   // Logo
-  a#logo {
+  a.logo {
     margin-left: -10px;
     margin-right: 10px;
     color: @gray-light;
@@ -43,7 +44,8 @@ div.topbar {
       margin-top: 9px;
       margin-right: 6px;
     }
-    span {
+    &:hover {
+      color: @white;
     }
   }
   // Nav items
@@ -55,6 +57,237 @@ div.topbar {
       &.active a {
         color: #fff;
         background-color: rgba(0,0,0,.5);
+      }
+    }
+  }
+}
+*/
+
+// Topbar for Branding and Nav
+div.topbar {
+  #gradient > .vertical(#333, #222);
+  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  overflow: visible;
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+  // Links get text shadow
+  a {
+    color: @gray-light;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    .transition(all linear .1s);
+  }
+  // Hover and active states for links
+  ul li a:hover,
+  ul li.active a,
+  a.logo:hover {
+    background-color: #333;
+    background-color: rgba(255,255,255,.15);
+    color: @white;
+    text-decoration: none;
+  }
+  // Logo
+  a.logo {
+    float: left;
+    display: block;
+    padding: 8px 20px 12px;
+    margin-left: -20px;
+    color: @white;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
+    img {
+      display: inline;
+      float: left;
+      margin-right: 6px;
+    }
+  }
+  // Search Form
+  form {
+    float: left;
+    margin: 4px 0 0 0;
+    opacity: 1;
+    position: relative;
+    input {
+      background-color: @gray-light;
+      background-color: rgba(255,255,255,.3);
+      .sans-serif(13px, normal, 1);
+      width: 220px;
+      padding: 4px 9px;
+      color: #fff;
+      color: rgba(255,255,255,.75);
+      border: 1px solid #111;
+      .border-radius(4px);
+      @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
+      .box-shadow(@shadow);
+      .transition(none);
+      &:-moz-placeholder {
+        color: #fff;
+      }
+      &::-webkit-input-placeholder {
+        color: #fff;
+      }
+      &:hover {
+        background-color: #444;
+        background-color: rgba(255,255,255,.5);
+        color: #fff;
+      }
+      &:focus,
+      &.focused {
+        outline: none;
+        background-color: #fff;
+        color: @gray-dark;
+        text-shadow: 0 1px 0 #fff;
+        border: 0;
+        padding: 5px 10px;
+        .box-shadow(0 0 3px rgba(0,0,0,.15));
+      }
+    }
+  }
+  // Navigation
+  ul {
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+    &.secondary-nav {
+      float: right;
+      margin-left: 10px;
+      margin-right: 0;
+    }
+    li {
+      display: block;
+      float: left;
+      font-size: 13px;
+      a {
+        display: block;
+        float: none;
+        padding: 10px 10px 11px;
+        line-height: 19px;
+        text-decoration: none;
+        &:hover {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+      &.active a {
+        background-color: #222;
+        background-color: rgba(0,0,0,.5);
+        font-weight: bold;
+      }
+      // Vertical rule
+      &.vr {
+        border-left: 1px solid #008db8;
+        border-right: 1px solid #00a0d1;
+        height: 26px;
+        margin: 6px 3px 1px 3px;
+      }
+    }
+    // Dropdowns
+    &.primary-nav li ul {
+      left: 0;
+    }
+    &.secondary-nav li ul {
+      right: 0;
+    }
+    li.menu {
+      position: relative;
+      a.menu {
+        span.menu-label:after {
+          width: 7px;
+          height: 7px;
+          display: inline-block;
+          background: transparent url(/images/sprite-icons.png) no-repeat scroll -79px -100px;
+          content:"&darr;";
+          text-indent: -99999px;
+          vertical-align: top;
+          margin-top: 8px;
+          margin-left: 4px;
+          opacity: .5;
+        }
+      }
+      &.open {
+        a.menu,
+        a:hover {
+          background-color: lighten(#00a0d1,5);
+          background-color: rgba(255,255,255,.1);
+        }
+        ul {
+          display: block;
+          li {
+            a {
+              background-color: transparent;
+              font-weight: normal;
+              &:hover {
+                background-color: rgba(255,255,255,.1);
+                color: #fff;
+              }
+            }
+            &.active a {
+              background-color: rgba(255,255,255,.1);
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    li ul {
+      background-color: #333;
+      float: left;
+      display: none;
+      position: absolute;
+      top: 40px;
+      min-width: 160px;
+      max-width: 220px;
+      _width: 160px;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 0;
+      text-align: left;
+      border: 0;
+      zoom: 1;
+      .border-radius(0 0 5px 5px);
+      .box-shadow(0 1px 2px rgba(0,0,0,0.6));
+      li {
+        float: none;
+        clear: both;
+        display: block;
+        background: none;
+        font-size: 12px;
+        a {
+          display: block;
+          padding: 6px 15px;
+          clear: both;
+          font-weight: normal;
+          line-height: 19px;
+          color: #bbb;
+          &:hover {
+            background-color: #333;
+            background-color: rgba(255,255,255,.25);
+            color: #fff;
+          }
+        }
+        // Dividers (basically an hr)
+        &.divider {
+          height: 1px;
+          overflow: hidden;
+          background: rgba(0,0,0,.2);
+          border-bottom: 1px solid rgba(255,255,255,.1);
+          margin: 5px 0;
+        }
+        // Section separaters
+        span {
+          clear: both;
+          display: block;
+          background: rgba(0,0,0,.2);
+          padding: 6px 15px;
+          cursor: default;
+          color: #666;
+          border-top: 1px solid rgba(0,0,0,.2);
+        }
       }
     }
   }

@@ -12,12 +12,38 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="js/jquery/hashgrid.js"></script>
+    <script type="text/javascript">
+      // Javascript to toggle the dropdowns
+      $(document).ready(function(){
+        // Dropdowns
+        $("body").bind("click", function(e) {
+          $("ul.menu-dropdown").hide();
+          $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
+        });
+        $("a.menu").click(function(e) {
+          var $target = $(this);
+          var $parent = $target.parent("li");
+          var $siblings = $target.siblings("ul.menu-dropdown");
+          var $parentSiblings = $parent.siblings("li");
+          if ($parent.hasClass("open")) {
+            $parent.removeClass("open");
+            $siblings.hide();
+          } else {
+            $parent.addClass("open");
+            $siblings.show();
+          }
+          $parentSiblings.children("ul.menu-dropdown").hide();
+          $parentSiblings.removeClass("open");
+          return false;
+        });
+      });
+    </script>
 
     <!-- Code Highlighting -->
     <script type="text/javascript" src="js/jquery/chili/jquery.chili-2.2.js"></script>
     <script type="text/javascript" src="js/jquery/chili/recipes.js"></script>
     <script id="setup" type="text/javascript">
-    	ChiliBook.lineNumbers = true; 
+    	ChiliBook.lineNumbers = true;
     </script>
 
     <!-- Debug line-height -->
@@ -37,7 +63,7 @@
 
     <div class="topbar">
       <div class="container fixed">
-        <h3><a id="logo" href="index.html">
+        <h3><a class="logo" href="index.html">
           <img src="img/twitter-logo-no-bird.png" alt="Twitter" /> <span>baseline</span>
         </a></h3>
         <ul>
@@ -385,11 +411,11 @@
     <h3>h3. Heading 3</h3>
     <h4>h4. Heading 4</h4>
     <h5>h5. Heading 5</h5>
-    <h6>h6. Heading 6</h6>    
+    <h6>h6. Heading 6</h6>
   </div>
   <div class="span6 columns">
     <h3>Example paragraph (body text)</h3>
-    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>    
+    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
   </div>
 </div>
 
@@ -966,13 +992,51 @@
 
 
 <section id="navigation">
-<div class="page-header">
-  <h1>Navigation</h1>
-</div>
+  <div class="page-header">
+    <h1>Navigation</h1>
+  </div>
+  <h2>Fixed topbar</h2>
+  <div class="topbar-wrapper">
+    <div class="topbar">
+      <div class="container fixed">
+        <h3><a class="logo" href="">Project Name</a></h3>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">Profile</a></li>
+          <li><a href="">Messages</a></li>
+          <li><a href="">Who to Follow</a></li>
+        </ul>
+        <form action="">
+          <input type="text" placeholder="Search" />
+        </form>
+        <ul class="nav secondary-nav">
+          <li class="menu">
+            <a href="#" class="menu">Username</a>
+            <ul class="menu-dropdown">
+              <li><a href="">Secondary link</a></li>
+              <li><a href="">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="">Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> <!-- topbar-wrapper -->
+  <div class="row">
+    <div class="span6 columns">
+      <p>Our topbar is a fixed bar that houses a website's logo or name, primary navigation, and search form.</p>
+    </div>
+    <div class="span6 columns">
+      <p>All elements are optional in the topbar, as is the entire topbar. Contents are configurable in that you can have a logo, nav, search, and a secondary nav&mdash;or any combination of that.</p>
+    </div>
+  </div>
+
+  <br />
 
 <div class="row">
   <div class="span4 columns">
-    <h3>Tabs or pills?</h3>
+    <h2>Tabs and pills</h2>
     <p>Create simple secondary navigation with a <code>ul</code>. Swap between tabs or pills by adding the appropriate class.</p>
     <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
   </div>
@@ -1014,7 +1078,7 @@
 
 <div class="row">
   <div class="span4 columns">
-    <h3>Pagination</h3>
+    <h2>Pagination</h2>
     <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
   </div>
   <div class="span12 columns">
@@ -1139,7 +1203,7 @@
 
 
 
-      
+
     </div> <!-- /container -->
 
     <div id="footer">
