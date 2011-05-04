@@ -32,6 +32,12 @@
 // Baseline grid
 @baseline:          20px;
 
+// Griditude
+@grid_columns:        16;
+@grid_column_width:   40px;
+@grid_gutter_width:   20px;
+@site_width:          (@grid_columns * @grid_column_width) + (@grid_gutter_width * (@grid_columns - 1));
+
 
 /* Mixins
 -------------------------------------------------- */
@@ -92,9 +98,10 @@
 }
 
 // Grid System
-@grid_columns: 16;
-@grid_column_width: 40px;
-@grid_gutter_width: 20px;
+.container {
+  width: @site_width;
+  margin: 0 auto;
+}
 .columns(@column_span: 1) {
   display: inline;
   float: left;
@@ -103,6 +110,9 @@
   &:first-child {
     margin-left: 0;
   }
+}
+.offset(@column_offset: 1) {
+  margin-left: (@grid_column_width * @column_offset) + (@grid_gutter_width * (@column_offset - 1)) !important;
 }
 
 // Border Radius

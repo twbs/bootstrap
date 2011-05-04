@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter Baseline</title>
+
+    <!-- // Less.js at the ready! -->
+    <link rel="stylesheet/less" type="text/css" media="all" href="less/baseline.less" />
+    <script type="text/javascript" src="js/less-1.0.41.min.js"></script>
+
+    <!-- // jQuery! -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="js/jquery/hashgrid.js"></script>
+    <script type="text/javascript">
+      // Javascript to toggle the dropdowns
+      $(document).ready(function(){
+        // Dropdowns
+        $("body").bind("click", function(e) {
+          $("ul.menu-dropdown").hide();
+          $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
+        });
+        $("a.menu").click(function(e) {
+          var $target = $(this);
+          var $parent = $target.parent("li");
+          var $siblings = $target.siblings("ul.menu-dropdown");
+          var $parentSiblings = $parent.siblings("li");
+          if ($parent.hasClass("open")) {
+            $parent.removeClass("open");
+            $siblings.hide();
+          } else {
+            $parent.addClass("open");
+            $siblings.show();
+          }
+          $parentSiblings.children("ul.menu-dropdown").hide();
+          $parentSiblings.removeClass("open");
+          return false;
+        });
+      });
+    </script>
+
+    <!-- Code Highlighting -->
+    <script type="text/javascript" src="js/jquery/chili/jquery.chili-2.2.js"></script>
+    <script type="text/javascript" src="js/jquery/chili/recipes.js"></script>
+    <script id="setup" type="text/javascript">
+    	ChiliBook.lineNumbers = true;
+    </script>
+
+    <!-- Debug line-height -->
+<!--
+		<style>
+		  body {
+		    background: url(img/baseline-10px.png) repeat 0 0, url(img/grid-940px.png) repeat-y top center;
+		    background-color: #fff;
+		  }
+		</style>
+-->
+  </head>
+
+
+
+  <body>
+
+    <div class="topbar">
+      <div class="container fixed">
+        <h3><a class="logo" href="index.html">
+          <img src="img/twitter-logo-no-bird.png" alt="Twitter" /> <span>baseline</span>
+        </a></h3>
+        <ul>
+          <li><a href="#getting-started">Getting Started</a></li>
+          <li><a href="#bootstrap">Bootstrap</a></li>
+          <li><a href="#grid-system">Grid</a></li>
+          <li><a href="#layouts">Layouts</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#navigation">Navigation</a></li>
+          <li><a href="#alerts">Alerts</a></li>
+        </ul>
+      </div>
+    </div>
+        
+    <div class="container">
+      <div class="page-header">
+        <h1>Typography</h1>
+      </div>
+      
+      <div class="row">
+        <div class="span5 columns">
+          <h2>Body Text</h2>
+          <p>Headings and paragraphs for writing to your heart's content.</p>
+      	  <h2>Heading 2</h2>
+      	  <p>Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      	  <h3>Heading 3</h3>
+      	  <p>Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      	  <h4>Heading 4</h4>
+      	  <p>Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      	  <h5>Heading 5</h5>
+      	  <p>Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      	  <h6>Heading 6</h6>
+      	  <p>Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        </div> <!-- /column -->
+        <div class="span5 columns">
+          <h2>Lists</h2>
+          <p>Includes unordered (bullets), ordered (numbers), and even definition (term and description).</p>
+          <h3>Unordered List</h3>
+          <p>For a list of items in which the order has no explicit meaning.</p>
+          <ul>
+            <li>Mattis</li>
+            <li>Tortor</li>
+            <li>Sollicitudin</li>
+            <li>Sit</li>
+            <li>Porta</li>
+          </ul>
+          <hr />
+          <h3>Ordered List</h3>
+          <p>For a list of items in which order does matter.</p>
+          <ol>
+            <li>Cras</li>
+            <li>Euismod</li>
+            <li>Quam</li>
+            <li>Egestas</li>
+            <li>Nibh</li>
+          </ol>
+          <hr />
+          <h3>Definition List</h3>
+          <p>For list terms and their definitions or descriptions.</p>
+          <dl>
+            <dt>Ullamcorper</dt>
+            <dd>Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</dd>
+            <dt>Porta</dt>
+            <dd>Nulla vitae elit libero, a pharetra augue.</dd>
+            <dt>Pharetra</dt>
+            <dd>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</dd>
+          </dl>
+        </div> <!-- /column -->
+        <div class="span6 columns">
+          <h2>Misc. Elements</h2>
+          <p>More elements that have special typographic styles, such as emphasis, address, abbr, and acronym.</p>
+          <h3>Emphasis in a Paragraph</h3>
+          <p><strong>Cum soluta nobis est eligendi optio cumque</strong> nihil impedit quo minus id quod maxime placeat facere possimus, <em>omnis voluptas assumenda est</em>, omnis dolor repellendus.</p>
+          <h3>Addresses</h3>
+          <p>The <code>address</code> element is used for&mdash;you guessed it!&mdash;addresses. Here's how it looks:</p>
+          <address>
+          	<strong>Twitter, Inc.</strong><br />
+          	795 Folsom Ave, Suite 600<br />
+          	San Francisco, CA 12345<br />
+          	<abbr title="Phone">P:</abbr> (408) 123-4567
+          </address>
+          <p><strong>Note:</strong> Each line in an <code>address</code> must have a line-break (<code>&lt;br /&gt;</code>) after it to properly structure the content as it is read in real life.</p>
+          <h3>Abbreviations &amp; Acronyms</h3>
+          <p>Acronyms are actually a subset of abbreviations, a shortern form of another word. The difference is that regular abbreviations are just shorthand notations for a word, while acronyms are strings of the first letter in a multi-word phrase.</p>
+          <p>Example acronyms include <acronym title="Hyper Text Markup Language">HTML</acronym> and <acronym title="Cascading Style Sheets">CSS</acronym>, while a great abbreviation is <abbr title="Professor">Prof.</abbr> (short for Professor).</p>
+        </div> <!-- /column -->
+      </div> <!-- /row -->
+
+    </div> <!-- /container -->
+
+    <div id="footer">
+      <div class="inner">
+        <div class="container">
+          <p>Copyright and all that stuff.</p>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
