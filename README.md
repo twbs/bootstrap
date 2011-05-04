@@ -13,3 +13,4 @@ http://twitter.com/mdo
 
 * Cross browser checks? Show this anywhere?
 * Write up brief section on browser support
+* LICENSE from legal

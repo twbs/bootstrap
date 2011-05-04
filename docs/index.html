@@ -5,59 +5,30 @@
     <title>Twitter Baseline</title>
 
     <!-- // Less.js at the ready! -->
-    <link rel="stylesheet/less" type="text/css" media="all" href="less/baseline.less" />
-    <script type="text/javascript" src="js/less-1.0.41.min.js"></script>
+    <link href="../baseline-1.0.0.css" rel="stylesheet" type="text/css">
 
     <!-- // jQuery! -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-    <script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
-    <script type="text/javascript" src="js/jquery/hashgrid.js"></script>
-    <script type="text/javascript">
-      // Javascript to toggle the dropdowns
-      $(document).ready(function(){
-        // Dropdowns
-        $("body").bind("click", function(e) {
-          $("ul.menu-dropdown").hide();
-          $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
-        });
-        $("a.menu").click(function(e) {
-          var $target = $(this);
-          var $parent = $target.parent("li");
-          var $siblings = $target.siblings("ul.menu-dropdown");
-          var $parentSiblings = $parent.siblings("li");
-          if ($parent.hasClass("open")) {
-            $parent.removeClass("open");
-            $siblings.hide();
-          } else {
-            $parent.addClass("open");
-            $siblings.show();
-          }
-          $parentSiblings.children("ul.menu-dropdown").hide();
-          $parentSiblings.removeClass("open");
-          return false;
-        });
-      });
-    </script>
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="assets/js/jquery/hashgrid.js"></script>
 
     <!-- Code Highlighting -->
-    <script type="text/javascript" src="js/jquery/chili/jquery.chili-2.2.js"></script>
-    <script type="text/javascript" src="js/jquery/chili/recipes.js"></script>
-    <script id="setup" type="text/javascript">
-    	ChiliBook.lineNumbers = true;
-    </script>
+    <script src="assets/js/jquery/chili/jquery.chili-2.2.js"></script>
+    <script src="assets/js/jquery/chili/recipes.js"></script>
+    <script id="setup">ChiliBook.lineNumbers = true;</script>
+
+    <script src="assets/js/application.js"></script>
 
     <!-- Debug line-height -->
-<!--
-		<style>
-		  body {
-		    background: url(img/baseline-10px.png) repeat 0 0, url(img/grid-940px.png) repeat-y top center;
-		    background-color: #fff;
-		  }
-		</style>
--->
+    <!--
+    		<style>
+    		  body {
+    		    background: url(assets/img/baseline-10px.png) repeat 0 0, url(assets/img/grid-940px.png) repeat-y top center;
+    		    background-color: #fff;
+    		  }
+    		</style>
+    -->
   </head>
-
-
 
   <body>
 
