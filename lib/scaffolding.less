@@ -1,0 +1,110 @@
+/*
+	Scaffolding
+	Basic and global styles for generating a grid system, structural layout, and page templates
+*/
+
+/* Baseline Grid System
+-------------------------------------------------- */
+
+div.row {
+  .clearfix();
+  div.span1   { .columns(1); }
+  div.span2   { .columns(2); }
+  div.span3   { .columns(3); }
+  div.span4   { .columns(4); }
+  div.span5   { .columns(5); }
+  div.span6   { .columns(6); }
+  div.span7   { .columns(7); }
+  div.span8   { .columns(8); }
+  div.span9   { .columns(9); }
+  div.span10  { .columns(10); }
+  div.span11  { .columns(11); }
+  div.span12  { .columns(12); }
+  div.span13  { .columns(13); }
+  div.span14  { .columns(14); }
+  div.span15  { .columns(15); }
+  div.span16  { .columns(16); }
+}
+
+
+/* Structural Layout
+-------------------------------------------------- */
+
+html, body {
+  background-color: #fff;
+}
+body {
+  margin: 0;
+  .sans-serif(normal,14px,20px);
+  color: @gray;
+  text-rendering: optimizeLegibility;
+  .box-shadow(inset 0 1px 0 #fff);
+}
+
+// Container (centered, fixed-width layouts)
+div.container {
+  width: 940px;
+  margin: 0 auto;
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+div.container-fluid {
+  padding: 20px;
+  .clearfix();
+  div.sidebar {
+    float: left;
+    width: 220px;
+  }
+  div.content {
+    min-width: 700px;
+    max-width: 1180px;
+    margin-left: 240px;
+  }
+}
+
+
+/* Base Styles
+-------------------------------------------------- */
+
+// Links
+a {
+  color: @link-color;
+  text-decoration: none;
+  line-height: inherit;
+  &:hover {
+    color: @link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+// Buttons
+.btn {
+  .button();
+  &.primary {
+    #gradient > .vertical(@blue, @blue-dark);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    &:hover {
+      color: #fff;
+    }
+  }
+  &.large {
+    font-size: 16px;
+    line-height: 30px;
+    .border-radius(6px);
+  }
+  &.small {
+    padding-right: 9px;
+    padding-left: 9px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+// Help Firefox not be a douche about adding extra padding to buttons
+button.btn,
+input[type=submit].btn {
+  &::-moz-focus-inner {
+  	padding: 0;
+  	border: 0;
+  }
+}
