@@ -4,20 +4,18 @@
     <meta charset="utf-8">
     <title>Twitter Baseline</title>
 
-    <!-- // Less.js at the ready! -->
+    <!-- some styles -->
     <link href="../baseline-1.0.0.css" rel="stylesheet" type="text/css">
     <link href="assets/css/docs.css" rel="stylesheet" type="text/css">
 
-    <!-- // jQuery! -->
+    <!-- some javascripts -->
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <script src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/jquery/hashgrid.js"></script>
-
-    <!-- Code Highlighting -->
+    <script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/jquery/chili/jquery.chili-2.2.js"></script>
     <script src="assets/js/jquery/chili/recipes.js"></script>
     <script id="setup">ChiliBook.lineNumbers = true;</script>
-
     <script src="assets/js/application.js"></script>
 
     <!-- Debug line-height -->
@@ -622,12 +620,6 @@
 
 <h3>Example: Zebra-striped w/ TableSorter.js</h3>
 <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column's header to change the sort.</strong></p>
-<script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("table#sortTableExample").tablesorter( {sortList: [[1,0]]} );
-  });
-</script>
 <table class="zebra-striped" id="sortTableExample">
 	<thead>
 		<tr>
@@ -675,18 +667,7 @@
 
 
 <section id="forms">
-<! -- JS for the prepend and append boxes -->
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.add-on :checkbox').click(function() {
-      if ($(this).attr('checked')) {
-        $(this).parents('.add-on').addClass('active');
-      } else {
-        $(this).parents('.add-on').removeClass('active');
-      }
-    });
-  });
-</script>
+
 <div class="page-header">
   <h1>Forms</h1>
 </div>
