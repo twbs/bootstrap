@@ -6,7 +6,7 @@
     <!-- the .jar file is located in the tools directory -->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
-            <pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
+			<pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
         </classpath>
     </taskdef>
 
@@ -452,7 +452,7 @@
             <arg line="--line-break"/>
             <arg line="4000"/>
             <arg line="-o"/>
-            <mapper type="glob" from="*.js" to="../${dir.intermediate}/${dir.js}/*.min.js"/>
+            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/${dir.js}/*.min.js"/>
             <targetfile/>
         </apply>
         <copy todir="${dir.publish}/${dir.js.libs}">
@@ -526,7 +526,7 @@
         <apply executable="java" parallel="false" dest="./${dir.publish}/" >
             <fileset dir="./${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
-            <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
+            <arg path="./${dir.build.tools}/${tool.htmlcompressor}"/>
             <arg line="--type html"/>
             <arg line="--preserve-multi-spaces"/>
             <arg line="--remove-quotes"/>
@@ -548,7 +548,7 @@
         <apply executable="java" parallel="false" dest="./${dir.publish}/" >
             <fileset dir="./${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
-            <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
+            <arg path="./${dir.build.tools}/${tool.htmlcompressor}"/>
             <arg value="--preserve-comments"/>
             <arg line="--preserve-multi-spaces"/>
             <arg line="--type html"/>
@@ -570,7 +570,7 @@
         <apply executable="java" parallel="false" dest="./${dir.publish}/" >
             <fileset dir="./${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
-            <arg path="./${dir.build}/tools/${tool.htmlcompressor}"/>
+            <arg path="./${dir.build.tools}/${tool.htmlcompressor}"/>
             <arg line="--type html"/>
             <arg line="--remove-quotes"/>
             <arg line="--compress-js"/>
@@ -600,7 +600,7 @@
             <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
             <arg line="-o"/>
-            <mapper type="merge" to="../${dir.intermediate}/${dir.css}/style-concat.min.css"/>
+            <mapper type="merge" to="${basedir}/${dir.intermediate}/${dir.css}/style-concat.min.css"/>
             <targetfile/>
         </apply>
 
@@ -661,7 +661,7 @@
             <targetfile/>
             <mapper type="identity"/>
         </apply>
-        <apply executable="tools/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
+        <apply executable="${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
             <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
             <arg value="-quiet"/>
             <arg value="-o7"/>
@@ -716,7 +716,7 @@
             </elseif>
         </if>
 
-        <apply executable="tools/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
+        <apply executable="${dir.build.tools}/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
             <fileset dir="${dir.source}/${dir.images}" includes="*.jpg"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
