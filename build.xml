@@ -168,6 +168,46 @@
     <target name="clean" depends="-clean"/>
     
     
+    
+    <!-- JSLint target, run separately -->
+	<target name="jslint">
+        <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
+			<fileset dir="./${dir.source}/">
+                <include name="**/${dir.js}/*.js"/>
+                <exclude name="**/*.min.js"/>
+            	<exclude name="**/${dir.js.libs}/"/>
+            	<exclude name="**/${dir.publish}/"/>
+		    </fileset> 
+			<arg value="-jar" />
+			<arg path="./${dir.build.tools}/${tool.rhino}" />
+			<arg path="./${dir.build.tools}/${tool.jslint}" />
+            <srcfile/>
+            <arg value="${tool.jslint.opts}" />
+        </apply>		
+		<echo>JSLint Successful</echo>
+	</target>     
+  
+  
+    <!-- JSHint target, run separately -->
+	<target name="jshint">
+        <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
+			<fileset dir="./${dir.source}/">
+                <include name="**/${dir.js}/*.js"/>
+                <exclude name="**/*.min.js"/>
+            	<exclude name="**/${dir.js.libs}/"/>
+            	<exclude name="**/${dir.publish}/"/>
+		    </fileset> 
+			<arg value="-jar" />
+			<arg path="./${dir.build.tools}/${tool.rhino}" />
+			<arg path="./${dir.build.tools}/${tool.jshint}" />
+            <srcfile/>
+			<arg value="${tool.jshint.opts}" />
+        </apply>		
+		<echo>JSHint Successful</echo>
+	</target>    
+       
+    
+    
     <!--
     *************************************************
     * BUILD TARGETS                                 *
