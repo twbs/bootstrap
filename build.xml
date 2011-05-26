@@ -4,7 +4,7 @@
 
     <!-- Load in Ant-Contrib to give us access to some very useful tasks! -->
     <!-- the .jar file is located in the tools directory -->
-    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+    <taskdef resource="net/sf/antcontrib/antcontrib.propertie>
         <classpath>
 			<pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
         </classpath>
