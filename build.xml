@@ -468,8 +468,16 @@
         </concat>
 
         <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.sha" />
+        <if>
+            <isset property="gae.js_dir" />
+            <then>
+                <property name="scripts.js" value="${gae.js_dir}/${scripts.sha}.js" />
+            </then>
+            <else>
         <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
-        <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${scripts.js}" />
+            </else>
+        </if>
+        <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${dir.js}/${scripts.sha}.js" />
     </target>
     
     
@@ -554,7 +562,21 @@
         <!--[! use comments like this one to avoid having them get minified -->
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
-        <replace token="href=&quot;${dir.css}/style.css&quot;" value="href=&quot;${style.css}&quot;" dir="${dir.intermediate}" includes="${page-files}"/>
+        <if>
+            <isset property="gae.css_dir" />
+            <then>
+                <replace token="href=&quot;${gae.css_dir}/style.css&quot;" value="href=&quot;${style.css}&quot;"
+                         dir="${dir.intermediate}" includes="${page-files}"/>
+                <replace token="href=&quot;/${gae.css_dir}/style.css&quot;" value="href=&quot;/${style.css}&quot;"
+                         dir="${dir.intermediate}" includes="${page-files}"/>
+            </then>
+            <else>
+                <replace token="href=&quot;${dir.css}/style.css&quot;" value="href=&quot;${style.css}&quot;"
+                         dir="${dir.intermediate}" includes="${page-files}"/>
+                <replace token="href=&quot;/${dir.css}/style.css&quot;" value="href=&quot;/${style.css}&quot;"
+                         dir="${dir.intermediate}" includes="${page-files}"/>
+            </else>
+        </if>
     </target>
     
     
@@ -645,8 +667,16 @@
         </apply>
 
         <checksum file="${dir.intermediate}/${dir.css}/style-concat.min.css" algorithm="sha" property="css.sha" />
+        <if>
+            <isset property="gae.css_dir" />
+            <then>
+                <property name="style.css" value="${gae.css_dir}/${css.sha}.css" />
+            </then>
+            <else>
         <property name="style.css" value="${dir.css}/${css.sha}.css" />
-        <copy file="${dir.intermediate}/${dir.css}/style-concat.min.css" tofile="${dir.publish}/${style.css}" />
+            </else>
+        </if>
+        <copy file="${dir.intermediate}/${dir.css}/style-concat.min.css" tofile="${dir.publish}/${dir.css}/${css.sha}.css" />
     </target>
     
     
