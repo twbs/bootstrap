@@ -669,12 +669,12 @@
             <then>
                 <!-- work around https://sourceforge.net/tracker/?func=detail&aid=2671422&group_id=151404&atid=780916 -->
                 <apply executable="rm" dest="./${dir.publish}/${dir.images}/" osfamily="unix" addsourcefile="false">
-                    <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
+                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
                     <targetfile/>
                     <mapper type="identity"/>
                 </apply>
                 <apply executable="optipng" dest="./${dir.publish}/${dir.images}/" osfamily="unix">
-                    <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
+                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
                     <arg value="-quiet"/>
                     <arg value="-o7"/>
                     <arg value="-out"/>
@@ -695,14 +695,14 @@
 
         <!-- work around https://sourceforge.net/tracker/?func=detail&aid=2671422&group_id=151404&atid=780916 -->
         <apply executable="cmd" dest="./${dir.publish}/${dir.images}/" osfamily="windows" addsourcefile="false">
-            <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
+            <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
 						<arg value="/c"/>
 						<arg value="del"/>
             <targetfile/>
             <mapper type="identity"/>
         </apply>
         <apply executable="${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
-            <fileset dir="./${dir.source}/${dir.images}/" includes="*.png"/>
+            <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
             <arg value="-quiet"/>
             <arg value="-o7"/>
             <arg value="-out"/>
@@ -734,7 +734,7 @@
             </and>
             <then>
                 <apply executable="jpegtran" dest="./${dir.publish}/${dir.images}" osfamily="unix">
-                    <fileset dir="${dir.source}/${dir.images}" includes="*.jpg"/>
+                    <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"/>
                     <arg value="-copy"/>
                     <arg value="${strip-meta-tags}"/>
                     <arg value="-optimize"/>
@@ -757,7 +757,7 @@
         </if>
 
         <apply executable="${dir.build.tools}/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
-            <fileset dir="${dir.source}/${dir.images}" includes="*.jpg"/>
+            <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
             <arg value="-optimize"/>
@@ -775,7 +775,7 @@
         <echo message="Copying over the unmodified images."/>
         
         <copy todir="./${dir.publish}/${dir.images}">
-            <fileset dir="${dir.source}/${dir.images}"  includes="*.jpg, *.png"/>
+            <fileset dir="${dir.source}/${dir.images}"  includes="**/*.jpg, **/*.png"/>
         </copy> 
     </target>
 
