@@ -803,7 +803,7 @@
         <echo message="Copying over the unmodified images."/>
         
         <copy todir="./${dir.publish}/${dir.images}">
-            <fileset dir="${dir.source}/${dir.images}"  includes="*.jpg, *.png"/>
+            <fileset dir="${dir.source}/${dir.images}"  includes="**/*.jpg, **/*.png"/>
         </copy> 
     </target>
 
