@@ -446,6 +446,8 @@
     
     
     <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
+        <mkdir dir="./${dir.intermediate}/${dir.js.mylibs}"/>
+
         <echo message="Concatenating JS libraries"/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
@@ -575,13 +577,13 @@
         <if>
             <isset property="gae.css_dir" />
             <then>
-                <replaceregexp match="href=[&quot;']([\/]?)${gae.css_dir}\/${file.main.stylesheet}[&quot;']"
+                <replaceregexp match="href=[&quot;']([\/]?)${gae.css_dir}\/style.css[&quot;']"
                                replace="href=&quot;\1${style.css}&quot;" flags="g">
                     <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
                 </replaceregexp>
             </then>
             <else>
-                <replaceregexp match="href=[&quot;']([\/]?)${dir.css}\/${file.main.stylesheet}[&quot;']"
+                <replaceregexp match="href=[&quot;']([\/]?)${dir.css}\/style.css[&quot;']"
                                replace="href=&quot;\1${style.css}&quot;" flags="g">
                     <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
                 </replaceregexp>
