@@ -4,7 +4,7 @@
 
     <!-- Load in Ant-Contrib to give us access to some very useful tasks! -->
     <!-- the .jar file is located in the tools directory -->
-    <taskdef resource="net/sf/antcontrib/antcontrib.propertie>
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
 			<pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
         </classpath>
@@ -424,9 +424,7 @@
             <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
                 <!-- exclude files that are superseded by optimized versions with different names -->
                 <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
-                <exclude name="${dir.js.main}/*.js"/>
-                <exclude name="${dir.js.libs}/**/*.js"/>
-                <exclude name="${dir.js.mylibs}/**/*.js"/>
+                <exclude name="${dir.js}/**/*.js"/>
                 <exclude name="${dir.css}/**/*.css"/>
             </fileset>
         </copy>
@@ -440,7 +438,8 @@
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/">
-                <include name="${dir.js.main}/*.min.js"/>
+                <include name="${dir.js.main}/plugins.js"/>
+                <include name="${dir.js.main}/script.js"/>
             </fileset>      
         </concat>
     </target>
@@ -451,7 +450,7 @@
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/">
-                <include name="**/*.min.js"/>
+                <include name="**/*.js"/>
             </fileset>      
         </concat>
     </target>
@@ -487,12 +486,12 @@
             <fileset dir="${dir.source}/${dir.js}" includes="**/*.min.js"/>
         </copy>
         <apply executable="java" parallel="false">
-            <fileset dir="./${dir.source}/${dir.js}">
+            <fileset dir="${dir.source}/${dir.js}">
                 <include name="**/*.js"/>
                 <exclude name="**/*.min.js"/>
                 <!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
-                <exclude name="scripts-concat.js"/>
-                <exclude name="libs-concat.js"/>
+                <!--<exclude name="scripts-concat.js"/>-->
+                <!--<exclude name="libs-concat.js"/>-->
             </fileset>
             <arg line="-jar"/>
             <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
@@ -500,11 +499,22 @@
             <arg line="--line-break"/>
             <arg line="4000"/>
             <arg line="-o"/>
-            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/${dir.js}/*.min.js"/>
+            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/${dir.js}/*.js"/>
             <targetfile/>
         </apply>
-        <copy todir="${dir.publish}/${dir.js.libs}">
-            <fileset dir="${dir.intermediate}/${dir.js.libs}" includes="**/*.js"/>
+
+        <!-- at this point all js files are minified with their original names -->
+
+        <copy todir="${dir.publish}/${dir.js}">
+            <fileset dir="${dir.intermediate}/${dir.js}">
+                <include name="**/*.js"/>
+                <exclude name="mylibs/**/*.js"/>
+                <exclude name="scripts-concat.js"/>
+                <exclude name="libs-concat.js"/>
+                <exclude name="scripts-concat.min.js"/>
+                <exclude name="plugins.js"/>
+                <exclude name="script.js"/>
+            </fileset>
         </copy>
     </target>
     
@@ -545,7 +555,7 @@
         </replaceregexp>
         
         <echo>Remove favicon.ico reference if it is pointing to the root</echo>
-        <replaceregexp match="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon\.ico&quot;&gt;" replace="">
+        <replaceregexp match="&lt;link rel=[&quot;']shortcut icon[&quot;'] href=[&quot;']/favicon\.ico[&quot;']&gt;" replace="">
             <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
@@ -565,16 +575,16 @@
         <if>
             <isset property="gae.css_dir" />
             <then>
-                <replace token="href=&quot;${gae.css_dir}/style.css&quot;" value="href=&quot;${style.css}&quot;"
-                         dir="${dir.intermediate}" includes="${page-files}"/>
-                <replace token="href=&quot;/${gae.css_dir}/style.css&quot;" value="href=&quot;/${style.css}&quot;"
-                         dir="${dir.intermediate}" includes="${page-files}"/>
+                <replaceregexp match="href=[&quot;']([\/]?)${gae.css_dir}\/${file.main.stylesheet}[&quot;']"
+                               replace="href=&quot;\1${style.css}&quot;" flags="g">
+                    <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+                </replaceregexp>
             </then>
             <else>
-                <replace token="href=&quot;${dir.css}/style.css&quot;" value="href=&quot;${style.css}&quot;"
-                         dir="${dir.intermediate}" includes="${page-files}"/>
-                <replace token="href=&quot;/${dir.css}/style.css&quot;" value="href=&quot;/${style.css}&quot;"
-                         dir="${dir.intermediate}" includes="${page-files}"/>
+                <replaceregexp match="href=[&quot;']([\/]?)${dir.css}\/${file.main.stylesheet}[&quot;']"
+                               replace="href=&quot;\1${style.css}&quot;" flags="g">
+                    <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+                </replaceregexp>
             </else>
         </if>
     </target>
@@ -677,6 +687,18 @@
             </else>
         </if>
         <copy file="${dir.intermediate}/${dir.css}/style-concat.min.css" tofile="${dir.publish}/${dir.css}/${css.sha}.css" />
+
+        <echo message="Minifying any unconcatenated css files..."/>
+
+        <apply executable="java" parallel="false">
+            <fileset dir="./${dir.source}/${dir.css}/" excludes="${stylesheet-files}" includes="**/*.css"/>
+            <arg line="-jar"/>
+            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.css" to="${basedir}/${dir.publish}/${dir.css}/*.css"/>
+            <targetfile/>
+        </apply>
     </target>
     
     
