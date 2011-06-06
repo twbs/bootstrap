@@ -753,7 +753,7 @@
                 <include name="**/*.png"/>
             </fileset>
         </delete>
-        <apply executable="${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
+        <apply executable="${basedir}/${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
             <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
             <arg value="-quiet"/>
             <arg value="-o7"/>
@@ -808,7 +808,7 @@
             </elseif>
         </if>
 
-        <apply executable="${dir.build.tools}/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
+        <apply executable="${basedir}/${dir.build.tools}/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
             <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
