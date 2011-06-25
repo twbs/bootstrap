@@ -492,9 +492,6 @@
             <fileset dir="${dir.source}/${dir.js}">
                 <include name="**/*.js"/>
                 <exclude name="**/*.min.js"/>
-                <!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
-                <!--<exclude name="scripts-concat.js"/>-->
-                <!--<exclude name="libs-concat.js"/>-->
             </fileset>
             <arg line="-jar"/>
             <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
@@ -559,37 +556,26 @@
         
         <echo>Remove favicon.ico reference if it is pointing to the root</echo>
         <replaceregexp match="&lt;link rel=[&quot;']shortcut icon[&quot;'] href=[&quot;']/favicon\.ico[&quot;']&gt;" replace="">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
         <replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replace>
         -->
 
         <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
         <!-- style.css replacement handled as a replacetoken above -->
         <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!--[! use comments like this one to avoid having them get minified -->
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
-        <if>
-            <isset property="gae.css_dir" />
-            <then>
-                <replaceregexp match="href=[&quot;']([\/]?)${gae.css_dir}\/style.css[&quot;']"
-                               replace="href=&quot;\1${style.css}&quot;" flags="g">
-                    <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
-                </replaceregexp>
-            </then>
-            <else>
-                <replaceregexp match="href=[&quot;']([\/]?)${dir.css}\/style.css[&quot;']"
-                               replace="href=&quot;\1${style.css}&quot;" flags="g">
-                    <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
-                </replaceregexp>
-            </else>
-        </if>
+
+        <replaceregexp match="&lt;!-- CSS concatenated [\d\w\s\W]*?!-- end CSS--&gt;" replace="&lt;link rel='stylesheet' href='${style.css}'&gt;" flags="m">
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+        </replaceregexp>
     </target>
     
     
@@ -662,17 +648,22 @@
     <target name="-css" depends="-mkdirs" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
         <echo message="Concatenating css..."/>
         
+        <fileset dir="${dir.source}/${dir.css}" includes="${stylesheet-files}" id="css.references"/>
+
+        <pathconvert pathsep="," property="css.list" refid="css.references"/>
+        <sortlist property="sorted.css.list" value="${css.list}" delimiter=","/>
+
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.css}/style-concat.css" overwrite="no">
-            <filelist dir="./${dir.source}/${dir.css}" files="${stylesheet-files}"/>
+        <concat destfile="${dir.intermediate}/${dir.css}/style-concat.css" overwrite="no">
+            <filelist files="${sorted.css.list}"/>
         </concat>
         
         <echo message="Minifying css..."/>
         
         <apply executable="java" parallel="false">
-            <fileset dir="./${dir.intermediate}/${dir.css}/" includes="style-concat.css"/>
+            <fileset dir="${dir.intermediate}/${dir.css}/" includes="style-concat.css"/>
             <arg line="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
             <arg line="-o"/>
             <mapper type="merge" to="${basedir}/${dir.intermediate}/${dir.css}/style-concat.min.css"/>
@@ -694,9 +685,9 @@
         <echo message="Minifying any unconcatenated css files..."/>
 
         <apply executable="java" parallel="false">
-            <fileset dir="./${dir.source}/${dir.css}/" excludes="${stylesheet-files}" includes="**/*.css"/>
+            <fileset dir="${dir.source}/${dir.css}/" excludes="${stylesheet-files}" includes="**/*.css"/>
             <arg line="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
             <arg line="-o"/>
             <mapper type="glob" from="*.css" to="${basedir}/${dir.publish}/${dir.css}/*.css"/>
