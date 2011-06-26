@@ -649,26 +649,25 @@
         <echo message="Concatenating imports..."/>
 
         <!-- copy source file to intermediate directory -->
-        <copy file="${dir.source}/${dir.css}/style.css" tofile="${dir.intermediate}/${dir.css}/style.css"/>
+        <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"/>
 
         <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
-        <replaceregexp match="^@import *url *\( *'?([^'^ ]*)'? *\) *([a-z]*).*$" replace="@media \2{ /* h5bp-import: \1 */ }" byline="true">
-            <fileset dir="${dir.intermediate}/${dir.css}" includes="style.css"/>
-        </replaceregexp>
+        <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
+                       match="^@import *url *\( *'?([^'^ ]*)'? *\) *([a-z]*).*$" 
+                       replace="@media \2{ /* h5bp-import: \1 */ }" byline="true" />
         
         <!-- replace imports with h5bp-import tags (part 2) -->
-        <replaceregexp match="^@media \{ (/\* .* \*/) \}.*$" replace="\1" byline="true">
-            <fileset dir="${dir.intermediate}/${dir.css}" includes="style.css"/>
-        </replaceregexp>
+        <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
+                       match="^@media \{ (/\* .* \*/) \}" replace="\1" byline="true" />
 
         <!-- copy skeleton to concat file -->
-        <copy file="${dir.intermediate}/${dir.css}/style.css"
+        <copy file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"
               tofile="${dir.intermediate}/${dir.css}/style-concat.css" overwrite="true"/>
 
         <!-- load the file into a property -->
-        <loadfile property="imports" srcfile="${dir.intermediate}/${dir.css}/style.css"/>
+        <loadfile property="imports" srcfile="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"/>
 
-        <var name="concat-files" value="style.css"/>
+        <var name="concat-files" value="${file.root.stylesheet}"/>
 
         <!-- go over the file line by line -->
         <ac:for delimiter="${line.separator}" param="import" list="${imports}" xmlns:ac="antlib:net.sf.antcontrib">
