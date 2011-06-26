@@ -646,18 +646,52 @@
 
     <!-- CSS -->
     <target name="-css" depends="-mkdirs" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
-        <echo message="Concatenating css..."/>
-        
-        <fileset dir="${dir.source}/${dir.css}" includes="${stylesheet-files}" id="css.references"/>
+        <echo message="Concatenating imports..."/>
 
-        <pathconvert pathsep="," property="css.list" refid="css.references"/>
-        <sortlist property="sorted.css.list" value="${css.list}" delimiter=","/>
+        <!-- copy source file to intermediate directory -->
+        <copy file="${dir.source}/${dir.css}/style.css" tofile="${dir.intermediate}/${dir.css}/style.css"/>
 
-        <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="${dir.intermediate}/${dir.css}/style-concat.css" overwrite="no">
-            <filelist files="${sorted.css.list}"/>
-        </concat>
+        <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
+        <replaceregexp match="^@import *url *\( *'?([^'^ ]*)'? *\) *([a-z]*).*$" replace="@media \2{ /* h5bp-import: \1 */ }" byline="true">
+            <fileset dir="${dir.intermediate}/${dir.css}" includes="style.css"/>
+        </replaceregexp>
         
+        <!-- replace imports with h5bp-import tags (part 2) -->
+        <replaceregexp match="^@media \{ (/\* .* \*/) \}.*$" replace="\1" byline="true">
+            <fileset dir="${dir.intermediate}/${dir.css}" includes="style.css"/>
+        </replaceregexp>
+
+        <!-- copy skeleton to concat file -->
+        <copy file="${dir.intermediate}/${dir.css}/style.css"
+              tofile="${dir.intermediate}/${dir.css}/style-concat.css" overwrite="true"/>
+
+        <!-- load the file into a property -->
+        <loadfile property="imports" srcfile="${dir.intermediate}/${dir.css}/style.css"/>
+
+        <var name="concat-files" value="style.css"/>
+
+        <!-- go over the file line by line -->
+        <ac:for delimiter="${line.separator}" param="import" list="${imports}" xmlns:ac="antlib:net.sf.antcontrib">
+            <sequential>
+                <!-- does this line contain an h5bp-import? -->
+                <propertyregex property="file.name" input="@{import}" regexp="/\* h5bp-import: (.*) \*/" select="\1" casesensitive="true" override="true" />
+
+                <if>
+                    <isset property="file.name"/>
+                    <then>
+                        <var name="concat-files" value="${file.name},${concat-files}"/>
+
+                        <!-- load the file into a variable -->
+                        <loadfile property="file.contents" srcFile="${dir.source}/${dir.css}/${file.name}"/>
+
+                        <!-- pop that file into the concatenated output file -->
+                        <replace file="${dir.intermediate}/${dir.css}/style-concat.css" token="/* h5bp-import: ${file.name} */" value="${file.contents}"/>
+
+                        <var name="file.contents" unset="true"/>
+                    </then>
+                </if>
+            </sequential>
+        </ac:for>
         <echo message="Minifying css..."/>
         
         <apply executable="java" parallel="false">
@@ -685,7 +719,7 @@
         <echo message="Minifying any unconcatenated css files..."/>
 
         <apply executable="java" parallel="false">
-            <fileset dir="${dir.source}/${dir.css}/" excludes="${stylesheet-files}" includes="**/*.css"/>
+            <fileset dir="${dir.source}/${dir.css}/" excludes="${concat-files}" includes="**/*.css"/>
             <arg line="-jar"/>
             <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
