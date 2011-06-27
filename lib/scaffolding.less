@@ -35,10 +35,9 @@ html, body {
 }
 body {
   margin: 0;
-  .sans-serif(normal,14px,20px);
+  #font > .sans-serif(normal,14px,20px);
   color: @gray;
   text-rendering: optimizeLegibility;
-  .box-shadow(inset 0 1px 0 #fff);
 }
 
 // Container (centered, fixed-width layouts)
@@ -68,11 +67,11 @@ div.container-fluid {
 
 // Links
 a {
-  color: @link-color;
+  color: @linkColor;
   text-decoration: none;
   line-height: inherit;
   &:hover {
-    color: @link-hover-color;
+    color: @linkColorHover;
     text-decoration: underline;
   }
 }
@@ -81,7 +80,7 @@ a {
 .btn {
   .button();
   &.primary {
-    #gradient > .vertical(@blue, @blue-dark);
+    #gradient > .vertical(@blue, darken(@blue, 15));
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     &:hover {

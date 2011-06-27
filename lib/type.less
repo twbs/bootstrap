@@ -8,11 +8,11 @@
 -------------------------------------------------- */
 
 p {
-  .font(normal,14px,@baseline);
+  #font > .shorthand(normal,14px,@baseline);
   margin-bottom: @baseline;
   small {
     font-size: 12px;
-    color: @gray-light;
+    color: @grayLight;
   }
 }
 
@@ -22,9 +22,9 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
-  color: @gray-dark;
+  color: @grayDark;
   small {
-    color: @gray-light;
+    color: @grayLight;
   }
 }
 h1 {
@@ -62,7 +62,7 @@ h5 {
 }
 h6 {
   font-size: 13px;
-  color: @gray-light;
+  color: @grayLight;
   text-transform: uppercase;
 }
 
@@ -167,7 +167,7 @@ em {
   line-height: inherit;
 }
 .muted {
-  color: @gray-lighter;
+  color: @grayLighter;
 }
 
 // Blockquotes
@@ -176,13 +176,13 @@ blockquote {
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
-    .font(300,14px,@baseline);
+    #font > .shorthand(300,14px,@baseline);
     margin-bottom: 0;
   }
   cite {
     display: block;
-    .font(300,12px,@baseline);
-    color: @gray-light;
+    #font > .shorthand(300,12px,@baseline);
+    color: @grayLight;
     &:before {
       content: '\2014 \00A0';
     }
@@ -236,7 +236,7 @@ pre ol {
     border-left-color: lighten(@orange, 35%);
     font-size: 11px;
     line-height: @baseline;
-    color: @gray-light;
+    color: @grayLight;
     text-shadow: 0 1px 1px rgba(255,255,255,.5);
     word-wrap: break-word;
     &:hover {

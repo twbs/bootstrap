@@ -36,7 +36,7 @@ div.topbar {
   a.logo {
     margin-left: -10px;
     margin-right: 10px;
-    color: @gray-light;
+    color: @grayLight;
     font-size: 20px;
     font-weight: 200;
     img {
@@ -77,7 +77,7 @@ div.topbar {
   .box-shadow(@shadow);
   // Links get text shadow
   a {
-    color: @gray-light;
+    color: @grayLight;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     .transition(all linear .1s);
   }
@@ -113,9 +113,9 @@ div.topbar {
     opacity: 1;
     position: relative;
     input {
-      background-color: @gray-light;
+      background-color: @grayLight;
       background-color: rgba(255,255,255,.3);
-      .sans-serif(13px, normal, 1);
+      #font > .sans-serif(13px, normal, 1);
       width: 220px;
       padding: 4px 9px;
       color: #fff;
@@ -127,10 +127,10 @@ div.topbar {
       .transition(none);
       // Placeholder text gets special styles; can't be bundled together though for some reason
       &:-moz-placeholder {
-        color: @gray-lighter;
+        color: @grayLighter;
       }
       &::-webkit-input-placeholder {
-        color: @gray-lighter;
+        color: @grayLighter;
       }
       &:hover {
         background-color: #444;
@@ -141,7 +141,7 @@ div.topbar {
       &.focused {
         outline: none;
         background-color: #fff;
-        color: @gray-dark;
+        color: @grayDark;
         text-shadow: 0 1px 0 #fff;
         border: 0;
         padding: 5px 10px;
@@ -315,7 +315,7 @@ div.page-header {
 // One-liner alert bars
 div.alert-message {
   #gradient > .vertical(transparent, rgba(0,0,0,0.15));
-  background-color: @gray-lighter;
+  background-color: @grayLighter;
   margin-bottom: @baseline;
   padding: 10px 15px 9px;
   .border-radius(6px);
@@ -457,14 +457,14 @@ ul.pills {
       line-height: 30px;
       .border-radius(15px);
       &:hover {
-        background: @link-hover-color;
+        background: @linkColorHover;
         color: #fff;
         text-decoration: none;
         text-shadow: 0 1px 1px rgba(0,0,0,.25);
       }
     }
     &.active a {
-      background: @link-color;
+      background: @linkColor;
       color: #fff;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
     }
@@ -501,7 +501,7 @@ div.pagination {
       &.disabled a,
       &.disabled a:hover {
         background-color: none;
-        color: @gray-light;
+        color: @grayLight;
       }
       &.next a,
       &:last-child a {

@@ -1,6 +1,6 @@
-// Javascript to toggle the dropdowns
 $(document).ready(function(){
 
+  // Example dropdown for topbar nav
   $("body").bind("click", function(e) {
     $("ul.menu-dropdown").hide();
     $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
@@ -22,10 +22,10 @@ $(document).ready(function(){
     return false;
   });
 
-  //table sort example
+  // table sort example
   $("#sortTableExample").tablesorter( {sortList: [[1,0]]} );
 
-  //add on
+  // add on
   $('.add-on :checkbox').click(function() {
     if ($(this).attr('checked')) {
       $(this).parents('.add-on').addClass('active');
@@ -35,7 +35,7 @@ $(document).ready(function(){
   });
 
 
-  //scroll spyer
+  // scroll spyer
   var activeTarget,
       $window = $(window),
       position = {},
