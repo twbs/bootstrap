@@ -1,7 +1,7 @@
 /*
-  Forms
-  Base line styles for various input types, form layouts, and states
-*/
+ * Forms.less
+ * Base line styles for various input types, form layouts, and states
+ */
 
 
 /* Global form styles
@@ -79,14 +79,14 @@ form {
     .box-shadow(inset 0 1px 2px rgba(0,0,0,.075));
   }
   // Focus states
-  input[type=text], 
-  input[type=password], 
+  input[type=text],
+  input[type=password],
   select, textarea {
     @transition: border linear .2s, box-shadow linear .2s;
     .transition(@transition);
   }
-  input[type=text]:focus, 
-  input[type=password]:focus, 
+  input[type=text]:focus,
+  input[type=password]:focus,
   textarea:focus {
     outline: none;
     border-color: rgba(82,168,236,.75);
@@ -102,8 +102,8 @@ form {
     > label {
       color: @red;
     }
-    input[type=text], 
-    input[type=password], 
+    input[type=text],
+    input[type=password],
     textarea {
       border-color: @error-text;
       .box-shadow(0 0 3px rgba(171,41,32,.25));
@@ -304,7 +304,7 @@ ul.inputs-list {
 form.form-stacked {
   fieldset {
     padding-top: @baseline / 2;
-  }  
+  }
   legend {
     margin-left: 0;
   }

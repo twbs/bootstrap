@@ -1,11 +1,11 @@
 /*
-  Master Stylesheet
-  This file is only for importing all required stylesheets for LESS to include and then compile.
-*/
+ * Master Stylesheet
+ * This file is only for importing all required stylesheets for LESS to include and then compile.
+ */
 /*
-  Global Reset
-	Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
-*/
+ * Reset.less
+ * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
+ */
 html, body {
   margin: 0;
   padding: 0;
@@ -88,9 +88,9 @@ aside {
   display: block;
 }
 /*
-  Preboot
-  Variables and mixins to pre-ignite any new web development project
-*/
+ * Preboot.less
+ * Variables and mixins to pre-ignite any new web development project
+ */
 /* Variables
 -------------------------------------------------- */
 /* Color Scheme
@@ -124,9 +124,9 @@ aside {
   content: ".";
 }
 /*
-	Scaffolding
-	Basic and global styles for generating a grid system, structural layout, and page templates
-*/
+ * Scaffolding
+ * Basic and global styles for generating a grid system, structural layout, and page templates
+ */
 /* Baseline Grid System
 -------------------------------------------------- */
 div.row {
@@ -411,9 +411,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border: 0;
 }
 /*
-	Typography
-	Headings, body text, lists, code, and more for a versatile and durable typography system
-*/
+ * Typography.less
+ * Headings, body text, lists, code, and more for a versatile and durable typography system
+ */
 /* Body text
 -------------------------------------------------- */
 p {
@@ -668,9 +668,9 @@ span.html__attr_value {
   color: #de4a3f;
 }
 /*
-  Forms
-  Base line styles for various input types, form layouts, and states
-*/
+ * Forms.less
+ * Base line styles for various input types, form layouts, and states
+ */
 /* Global form styles
 -------------------------------------------------- */
 form {
@@ -1006,8 +1006,9 @@ form.form-stacked ul.inputs-list li label {
   padding-top: 0;
 }
 /*
-  Tables
-*/
+ * Tables.less
+ * Tables for, you guessed it, tabular data
+ */
 /* Baseline styles
 -------------------------------------------------- */
 table {
@@ -1107,9 +1108,9 @@ table.zebra-striped th.headerSortUp.purple, table.zebra-striped th.headerSortDow
   background-color: #e2d5f0;
 }
 /*
-	Patterns.less
-	Repeatable UI elements outside the base styles provided from the scaffolding
-*/
+ * Patterns.less
+ * Repeatable UI elements outside the base styles provided from the scaffolding
+ */
 /* Top bar
 -------------------------------------------------- */
 div.topbar {
