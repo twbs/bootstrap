@@ -1260,7 +1260,6 @@ div.topbar ul li a:hover {
 div.topbar ul li.active a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
-  font-weight: bold;
 }
 div.topbar ul li.vr {
   border-left: 1px solid #008db8;

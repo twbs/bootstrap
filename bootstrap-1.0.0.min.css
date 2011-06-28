@@ -157,7 +157,7 @@ div.topbar form input:hover{background-color:#444;background-color:rgba(255, 255
 div.topbar form input:focus,div.topbar form input.focused{outline:none;background-color:#fff;color:#404040;text-shadow:0 1px 0 #fff;border:0;padding:5px 10px;-webkit-box-shadow:0 0 3px rgba(0, 0, 0, 0.15);-moz-box-shadow:0 0 3px rgba(0, 0, 0, 0.15);box-shadow:0 0 3px rgba(0, 0, 0, 0.15);}
 div.topbar ul{display:block;float:left;margin:0 10px 0 0;}div.topbar ul.secondary-nav{float:right;margin-left:10px;margin-right:0;}
 div.topbar ul li{display:block;float:left;font-size:13px;}div.topbar ul li a{display:block;float:none;padding:10px 10px 11px;line-height:19px;text-decoration:none;}div.topbar ul li a:hover{color:#fff;text-decoration:none;}
-div.topbar ul li.active a{background-color:#222;background-color:rgba(0, 0, 0, 0.5);font-weight:bold;}
+div.topbar ul li.active a{background-color:#222;background-color:rgba(0, 0, 0, 0.5);}
 div.topbar ul li.vr{border-left:1px solid #008db8;border-right:1px solid #00a0d1;height:26px;margin:6px 3px 1px 3px;}
 div.topbar ul.primary-nav li ul{left:0;}
 div.topbar ul.secondary-nav li ul{right:0;}
