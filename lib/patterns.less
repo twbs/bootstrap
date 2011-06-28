@@ -230,7 +230,7 @@ div.topbar {
           background: rgba(0,0,0,.2);
           padding: 6px 15px;
           cursor: default;
-          color: #666;
+          color: @gray;
           border-top: 1px solid rgba(0,0,0,.2);
         }
       }
@@ -244,10 +244,9 @@ div.topbar {
 div.page-header {
   margin-bottom: @baseline - 1;
   border-bottom: 1px solid #ddd;
-  .border-radius(6px 6px 0 0);
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
-    margin-bottom: 0;
+    margin-bottom: (@baseline / 2) - 1px;
   }
 }
 
@@ -260,11 +259,11 @@ div.alert-message {
   #gradient > .vertical(transparent, rgba(0,0,0,0.15));
   background-color: @grayLighter;
   margin-bottom: @baseline;
-  padding: 10px 15px 9px;
-  .border-radius(6px);
+  padding: 8px 15px;
   color: #fff;
-  border-bottom: 1px solid rgba(0,0,0,.25);
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border-bottom: 1px solid rgba(0,0,0,.25);
+  .border-radius(4px);
   p {
     color: #fff;
     margin-bottom: 0;
@@ -303,15 +302,13 @@ div.alert-message {
 // Block-level Alerts
 div.block-message {
   margin-bottom: @baseline;
-  padding: 14px 19px;
-  color: #333;
+  padding: 14px;
+  color: @grayDark;
   color: rgba(0,0,0,.8);
   text-shadow: 0 1px 0 rgba(255,255,255,.25);
   .border-radius(6px);
   p {
-    font-size: 13px;
-    line-height: 18px;
-    color: #333;
+    color: @grayDark;
     color: rgba(0,0,0,.8);
     margin-right: 30px;
     margin-bottom: 0;
@@ -324,7 +321,7 @@ div.block-message {
   }
   a.close {
     display: block;
-    color: #333;
+    color: @grayDark;
     color: rgba(0,0,0,.5);
     text-shadow: 0 1px 1px rgba(255,255,255,.75);
   }
@@ -368,7 +365,7 @@ ul.pills {
 // Basic Tabs
 ul.tabs {
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid @grayLight;
   li {
     a {
       margin-bottom: -1px;
@@ -377,12 +374,12 @@ ul.tabs {
       line-height: (@baseline * 2) - 1;
       .border-radius(3px 3px 0 0);
       &:hover {
-        background: #f5f5f5;
-        border-bottom: 1px solid #ccc;
+        background-color: @grayLighter;
+        border-bottom: 1px solid @grayLight;
       }
     }
     &.active a {
-      background: #fff;
+      background-color: #fff;
       padding: 0 14px;
       border: 1px solid #ccc;
       border-bottom: 0;
@@ -465,7 +462,7 @@ div.well {
   min-height: 20px;
   border: 1px solid #ddd;
   .border-radius(4px);
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075);
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05);
 }
 
 

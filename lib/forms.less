@@ -37,6 +37,7 @@ form {
     float: left;
     width: 130px;
     text-align: right;
+    color: @grayDark;
   }
   // Shift over the inside div to align all label's relevant content
   div.input {
@@ -53,7 +54,7 @@ form {
   textarea,
   select,
   .uneditable-input {
-    display: block;
+    display: inline-block;
     width: 210px;
     margin: 0;
     padding: 4px;
@@ -99,7 +100,9 @@ form {
     margin: -10px 0 10px;
     .border-radius(4px);
     @error-text: desaturate(lighten(@red, 25%), 25%);
-    > label {
+    > label,
+    span.help-inline,
+    span.help-block {
       color: @red;
     }
     input[type=text],

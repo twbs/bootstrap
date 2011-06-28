@@ -291,9 +291,9 @@ html, body {
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
-  line-height: 20px;
+  line-height: 18px;
   color: #808080;
   text-rendering: optimizeLegibility;
 }
@@ -343,7 +343,7 @@ a:hover {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   color: #333333;
   font-size: 13px;
-  line-height: 20px;
+  line-height: 18px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom-color: rgba(0, 0, 0, 0.25);
   -webkit-border-radius: 4px;
@@ -417,10 +417,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 /* Body text
 -------------------------------------------------- */
 p {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
-  line-height: 20px;
-  margin-bottom: 20px;
+  line-height: 18px;
+  margin-bottom: 18px;
 }
 p small {
   font-size: 12px;
@@ -446,16 +446,16 @@ h6 small {
   color: #b3b3b3;
 }
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-size: 30px;
-  line-height: 40px;
+  line-height: 36px;
 }
 h1 small {
   font-size: 18px;
 }
 h2 {
   font-size: 24px;
-  line-height: 40px;
+  line-height: 36px;
 }
 h2 small {
   font-size: 14px;
@@ -464,7 +464,7 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 40px;
+  line-height: 36px;
 }
 h3 {
   font-size: 18px;
@@ -489,7 +489,7 @@ h6 {
 /* Colors
 -------------------------------------------------- */
 ul, ol {
-  margin: 0 0 20px 25px;
+  margin: 0 0 18px 25px;
 }
 ul ul,
 ul ol,
@@ -504,7 +504,7 @@ ol {
   list-style: decimal;
 }
 li {
-  line-height: 20px;
+  line-height: 18px;
   color: #808080;
 }
 ul.unstyled {
@@ -512,52 +512,19 @@ ul.unstyled {
   margin-left: 0;
 }
 dl {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 dl dt, dl dd {
-  line-height: 20px;
+  line-height: 18px;
 }
 dl dt {
   font-weight: bold;
 }
 dl dd {
-  margin-left: 10px;
+  margin-left: 9px;
 }
 /* Misc
 -------------------------------------------------- */
-span.label {
-  background-color: #ccc;
-  padding: 3px 5px;
-  font-size: 10px;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
-  text-transform: uppercase;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-span.label.expired {
-  background-color: #f5f5f5;
-  color: #999;
-}
-span.label.pending {
-  background-color: #48489b;
-}
-span.label.declined {
-  background-color: #9b4848;
-}
-span.label.active, span.label.approved {
-  background-color: #59bf59;
-}
-span.label.disabled {
-  background-color: #faa226;
-}
-span.label.scheduled {
-  background-color: #f5f5f5;
-  color: #59bf59;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-}
 hr {
   margin: 0 0 19px;
   border: 0;
@@ -577,21 +544,21 @@ em {
   color: #e6e6e6;
 }
 blockquote {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   border-left: 5px solid #eee;
   padding-left: 15px;
 }
 blockquote p {
   font-size: 14px;
   font-weight: 300;
-  line-height: 20px;
+  line-height: 18px;
   margin-bottom: 0;
 }
 blockquote cite {
   display: block;
   font-size: 12px;
   font-weight: 300;
-  line-height: 20px;
+  line-height: 18px;
   color: #b3b3b3;
 }
 blockquote cite:before {
@@ -599,8 +566,8 @@ blockquote cite:before {
 }
 address {
   display: block;
-  line-height: 20px;
-  margin-bottom: 20px;
+  line-height: 18px;
+  margin-bottom: 18px;
 }
 code, pre {
   padding: 0 3px 2px;
@@ -618,54 +585,15 @@ code {
 pre {
   background-color: #f5f5f5;
   display: block;
-  padding: 19px;
-  margin: 0 0 20px;
-  line-height: 20px;
+  padding: 17px;
+  margin: 0 0 18px;
+  line-height: 18px;
   font-size: 12px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   white-space: pre-wrap;
-}
-pre.css, pre.html {
-  background-color: #fff;
-}
-pre ol {
-  background-color: #feeed6;
-  list-style: decimal;
-  margin: -19px;
-  padding-left: 59px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-pre ol li {
-  background-color: #fff;
-  padding: 0 10px;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #fddfb3;
-  font-size: 11px;
-  line-height: 20px;
-  color: #b3b3b3;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-  word-wrap: break-word;
-}
-pre ol li:first-child {
-  padding-top: 9px;
-}
-pre ol li:last-child {
-  padding-bottom: 9px;
-}
-span.html__tag_start, span.html__tag_end {
-  color: #277ac1;
-  font-weight: normal;
-}
-span.html__attr_name {
-  color: #d78b41;
-}
-span.html__attr_value {
-  color: #de4a3f;
 }
 /*
  * Forms.less
@@ -674,11 +602,11 @@ span.html__attr_value {
 /* Global form styles
 -------------------------------------------------- */
 form {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 form fieldset {
-  margin-bottom: 20px;
-  padding-top: 20px;
+  margin-bottom: 18px;
+  padding-top: 18px;
 }
 form fieldset legend {
   display: block;
@@ -688,7 +616,7 @@ form fieldset legend {
   color: #404040;
 }
 form div.clearfix {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 form label,
 form input,
@@ -706,6 +634,7 @@ form label {
   float: left;
   width: 130px;
   text-align: right;
+  color: #404040;
 }
 form div.input {
   margin-left: 150px;
@@ -718,13 +647,13 @@ form input[type=password],
 form textarea,
 form select,
 form .uneditable-input {
-  display: block;
+  display: inline-block;
   width: 210px;
   margin: 0;
   padding: 4px;
   font-size: 13px;
-  line-height: 20px;
-  height: 20px;
+  line-height: 18px;
+  height: 18px;
   color: #808080;
   border: 1px solid #bbb;
   -webkit-border-radius: 3px;
@@ -732,8 +661,8 @@ form .uneditable-input {
   border-radius: 3px;
 }
 form select, form input[type=file] {
-  height: 30px;
-  line-height: 30px;
+  height: 27px;
+  line-height: 27px;
 }
 form textarea {
   height: auto;
@@ -769,7 +698,7 @@ form div.error {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-form div.error > label {
+form div.error > label, form div.error span.help-inline, form div.error span.help-block {
   color: #9d261d;
 }
 form div.error input[type=text], form div.error input[type=password], form div.error textarea {
@@ -837,9 +766,9 @@ form input[readonly]:focus, form textarea[readonly]:focus, form input.disabled {
 }
 div.actions {
   background: #f5f5f5;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 19px 20px 20px 150px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 17px 20px 18px 150px;
   border-top: 1px solid #ddd;
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
@@ -856,7 +785,7 @@ div.actions div.secondary-action a:hover {
 }
 .help-inline, .help-block {
   font-size: 12px;
-  line-height: 20px;
+  line-height: 18px;
   color: #b3b3b3;
 }
 .help-inline {
@@ -875,7 +804,7 @@ div.actions div.secondary-action a:hover {
 .help-block p {
   margin-bottom: 0;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 18px;
   color: #b3b3b3;
 }
 .help-block ol {
@@ -952,7 +881,7 @@ ul.inputs-list li label {
   float: none;
   width: auto;
   padding: 0;
-  line-height: 20px;
+  line-height: 18px;
   text-align: left;
   white-space: normal;
 }
@@ -975,7 +904,7 @@ ul.inputs-list input[type=radio], ul.inputs-list input[type=checkbox] {
   margin-bottom: 0;
 }
 form.form-stacked fieldset {
-  padding-top: 10px;
+  padding-top: 9px;
 }
 form.form-stacked legend {
   margin-left: 0;
@@ -990,7 +919,7 @@ form.form-stacked label {
   padding-top: 0;
 }
 form.form-stacked div.clearfix {
-  margin-bottom: 10px;
+  margin-bottom: 9px;
 }
 form.form-stacked div.clearfix div.input {
   margin-left: 0;
@@ -1013,14 +942,15 @@ form.form-stacked ul.inputs-list li label {
 -------------------------------------------------- */
 table {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   padding: 0;
   text-align: left;
   border-collapse: separate;
+  font-size: 13px;
 }
 table th, table td {
   padding: 10px 10px 9px;
-  line-height: 20px;
+  line-height: 13.5px;
   vertical-align: middle;
   border-bottom: 1px solid #ddd;
 }
@@ -1364,23 +1294,20 @@ div.topbar ul li ul li span {
   background: rgba(0, 0, 0, 0.2);
   padding: 6px 15px;
   cursor: default;
-  color: #666;
+  color: #808080;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 /* Page Headers
 -------------------------------------------------- */
 div.page-header {
-  margin-bottom: 19px;
+  margin-bottom: 17px;
   border-bottom: 1px solid #ddd;
-  -webkit-border-radius: 6px 6px 0 0;
-  -moz-border-radius: 6px 6px 0 0;
-  border-radius: 6px 6px 0 0;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 div.page-header h1 {
-  margin-bottom: 0;
+  margin-bottom: 8px;
 }
 /* Error Styles
 -------------------------------------------------- */
@@ -1415,14 +1342,14 @@ div.alert-message {
   /* the standard */
 
   background-color: #e6e6e6;
-  margin-bottom: 20px;
-  padding: 10px 15px 9px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  margin-bottom: 18px;
+  padding: 8px 15px;
   color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 div.alert-message p {
   color: #fff;
@@ -1460,9 +1387,9 @@ div.alert-message a.close:hover {
   text-decoration: none;
 }
 div.block-message {
-  margin-bottom: 20px;
-  padding: 14px 19px;
-  color: #333;
+  margin-bottom: 18px;
+  padding: 14px;
+  color: #404040;
   color: rgba(0, 0, 0, 0.8);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   -webkit-border-radius: 6px;
@@ -1470,9 +1397,7 @@ div.block-message {
   border-radius: 6px;
 }
 div.block-message p {
-  font-size: 13px;
-  line-height: 18px;
-  color: #333;
+  color: #404040;
   color: rgba(0, 0, 0, 0.8);
   margin-right: 30px;
   margin-bottom: 0;
@@ -1485,7 +1410,7 @@ div.block-message strong {
 }
 div.block-message a.close {
   display: block;
-  color: #333;
+  color: #404040;
   color: rgba(0, 0, 0, 0.5);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
@@ -1529,23 +1454,23 @@ ul.tabs li a, ul.pills li a {
 }
 ul.tabs {
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #b3b3b3;
 }
 ul.tabs li a {
   margin-bottom: -1px;
   margin-right: 2px;
   padding: 0 15px;
-  line-height: 39px;
+  line-height: 35px;
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
 ul.tabs li a:hover {
-  background: #f5f5f5;
-  border-bottom: 1px solid #ccc;
+  background-color: #e6e6e6;
+  border-bottom: 1px solid #b3b3b3;
 }
 ul.tabs li.active a {
-  background: #fff;
+  background-color: #fff;
   padding: 0 14px;
   border: 1px solid #ccc;
   border-bottom: 0;
@@ -1574,8 +1499,8 @@ ul.pills li.active a {
 /* Pagination
 -------------------------------------------------- */
 div.pagination {
-  height: 40px;
-  margin: 20px 0;
+  height: 36px;
+  margin: 18px 0;
 }
 div.pagination ul {
   float: left;
@@ -1595,7 +1520,7 @@ div.pagination ul li a {
   display: inline;
   float: left;
   padding: 0 14px;
-  line-height: 38px;
+  line-height: 34px;
   border-right: 1px solid rgba(0, 0, 0, 0.15);
   text-decoration: none;
 }
@@ -1620,9 +1545,9 @@ div.well {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 /* Modals
 -------------------------------------------------- */

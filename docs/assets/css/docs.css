@@ -186,3 +186,44 @@ div.topbar-wrapper div.topbar {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+/* Code blocks
+-------------------------------------------------- */
+pre.css, pre.html {
+  background-color: #fff;
+}
+pre ol {
+  background-color: #feeed6;
+  list-style: decimal;
+  margin: -17px;
+  padding-left: 59px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+pre ol li {
+  background-color: #fff;
+  padding: 0 10px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #fddfb3;
+  font-size: 11px;
+  line-height: 18px;
+  color: #bbb;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  word-wrap: break-word;
+}
+pre ol li:first-child {
+  padding-top: 9px;
+}
+pre ol li:last-child {
+  padding-bottom: 9px;
+}
+span.html__tag_start, span.html__tag_end {
+  color: #277ac1;
+  font-weight: normal;
+}
+span.html__attr_name {
+  color: #d78b41;
+}
+span.html__attr_value {
+  color: #de4a3f;
+}
