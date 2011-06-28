@@ -5,6 +5,6 @@
 build:
 	@lessc ./lib/bootstrap.less > ./bootstrap-1.0.0.css
 	@lessc ./lib/bootstrap.less > ./bootstrap-1.0.0.min.css --compress
-	@echo "bootstrap successfully built!"
+	@echo "Bootstrap successfully built! - `date`"
 
 .PHONY: build
