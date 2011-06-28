@@ -7,62 +7,6 @@
 /* Top bar
 -------------------------------------------------- */
 
-/*
-div.topbar {
-  #gradient > .vertical(#333, #222);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  height: 40px;
-  .box-shadow(0 1px 3px rgba(0,0,0,.5));
-  a {
-    color: #999;
-    &:hover {
-      color: @white;
-      text-decoration: none;
-      background-color: rgba(255,255,255,.05);
-    }
-  }
-  a.logo,
-  ul li a {
-    float: left;
-    padding: 0 10px;
-    line-height: 40px;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  }
-  // Logo
-  a.logo {
-    margin-left: -10px;
-    margin-right: 10px;
-    color: @grayLight;
-    font-size: 20px;
-    font-weight: 200;
-    img {
-      float: left;
-      margin-top: 9px;
-      margin-right: 6px;
-    }
-    &:hover {
-      color: @white;
-    }
-  }
-  // Nav items
-  ul {
-    float: left;
-    margin: 0;
-    li {
-      display: inline;
-      &.active a {
-        color: #fff;
-        background-color: rgba(0,0,0,.5);
-      }
-    }
-  }
-}
-*/
-
 // Topbar for Branding and Nav
 div.topbar {
   #gradient > .vertical(#333, #222);
@@ -523,4 +467,29 @@ div.well {
   border: 1px solid #ddd;
   .border-radius(4px);
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+
+/* Modals
+-------------------------------------------------- */
+
+div.modal-backdrop {
+  background-color: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+div.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2000;
+  width: 620px;
+  height: 500px;
+  margin: -310px 0 0 -250px;
+  background-color: @white;
+  .border-radius(6px);
 }

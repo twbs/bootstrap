@@ -79,8 +79,6 @@ section {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#7a43b6', EndColorStr='#552e7e', GradientType=0))";
   display: block;
   margin-bottom: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
   text-align: center;
   border: 0;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.4);
