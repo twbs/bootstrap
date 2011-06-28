@@ -491,5 +491,22 @@ div.modal {
   height: 500px;
   margin: -310px 0 0 -250px;
   background-color: @white;
+  .modal-header {
+    border-bottom:1px solid #eee;
+    padding: 5px 20px;
+    h2 {
+      font-size: 20px;
+      font-weight: 200;
+    }
+    a.close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: #999;
+      line-height:10px;
+      font-size: 18px;
+    }
+  }
   .border-radius(6px);
+  .box-shadow(0 2px 6px rgba(0, 0, 0, 0.35))
 }

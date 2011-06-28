@@ -1667,4 +1667,23 @@ div.modal {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+div.modal .modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 5px 20px;
+}
+div.modal .modal-header h2 {
+  font-size: 20px;
+  font-weight: 200;
+}
+div.modal .modal-header a.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #999;
+  line-height: 10px;
+  font-size: 18px;
 }
