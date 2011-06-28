@@ -89,13 +89,19 @@ a {
   }
   &.large {
     font-size: 16px;
-    line-height: 30px;
+    line-height: 28px;
     .border-radius(6px);
   }
   &.small {
     padding-right: 9px;
     padding-left: 9px;
     font-size: 11px;
+  }
+  &:disabled,
+  &.disabled {
+    background-image: none;
+    .opacity(65);
+    cursor: default;
   }
 }
 // Help Firefox not be a douche about adding extra padding to buttons

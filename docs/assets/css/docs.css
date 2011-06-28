@@ -1,8 +1,8 @@
 /* Add additional stylesheets below
 -------------------------------------------------- */
 /*
-  Baseline's documentation styles
-  Special styles for presenting Baseline's documentation and examples
+  Bootstrap's documentation styles
+  Special styles for presenting Bootstrap's documentation and examples
 */
 /* Body and structure
 -------------------------------------------------- */
@@ -26,8 +26,8 @@ section {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#0056b0', EndColorStr='#049cd9', GradientType=0))";
 }
 #masthead div.inner, #footer div.inner {
-  background: transparent url(../img/grid-20px.png) 0 -1px;
-  padding: 40px 0;
+  background: transparent url(../img/grid-18px.png) 0 -1px;
+  padding: 36px 0;
   -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -49,9 +49,9 @@ section {
   margin-bottom: 0;
 }
 #masthead p.lead {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 30px;
+  line-height: 27px;
   margin: 0;
 }
 #masthead a.btn {
@@ -65,8 +65,9 @@ section {
   filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#7a43b6', EndColorStr='#552e7e', GradientType=0);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#7a43b6', EndColorStr='#552e7e', GradientType=0))";
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   text-align: center;
+  font-weight: bold;
   border: 0;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -79,8 +80,8 @@ section {
   display: block;
   text-align: center;
   font-size: 13px;
-  line-height: 20px;
-  color: rgba(255, 255, 255, 0.5);
+  line-height: 18px;
+  color: rgba(255,255,255,0.5);
 }
 #masthead small a {
   color: #fff;

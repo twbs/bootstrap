@@ -396,7 +396,7 @@ a:hover {
 }
 .btn.large {
   font-size: 16px;
-  line-height: 30px;
+  line-height: 28px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -405,6 +405,14 @@ a:hover {
   padding-right: 9px;
   padding-left: 9px;
   font-size: 11px;
+}
+.btn:disabled, .btn.disabled {
+  background-image: none;
+  filter: alpha(opacity=65);
+  -khtml-opacity: 0.65;
+  -moz-opacity: 0.65;
+  opacity: 0.65;
+  cursor: default;
 }
 button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
