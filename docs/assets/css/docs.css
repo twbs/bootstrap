@@ -90,6 +90,11 @@ section {
 }
 #footer p {
   margin-bottom: 0;
+  color: rgba(255,255,255,.8)
+}
+#footer p a {
+  color: #fff;
+  font-weight: bold;
 }
 /* Special grid styles
 -------------------------------------------------- */
