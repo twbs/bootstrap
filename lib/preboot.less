@@ -21,6 +21,7 @@
 
 // Accent Colors
 @blue:              #08b5fb;
+@blueDark:          #0069d6;
 @green:             #46a546;
 @red:               #9d261d;
 @yellow:            #ffc40d;
@@ -41,16 +42,16 @@
 /* Color Scheme
 -------------------------------------------------- */
 
-@baseColor:        @blue;                  // Set a base color
-@complement:       spin(@baseColor, 180);  // Determine a complementary color
-@split1:           spin(@baseColor, 158);  // Split complements
-@split2:           spin(@baseColor, -158);
-@triad1:           spin(@baseColor, 135);  // Triads colors
-@triad2:           spin(@baseColor, -135);
-@tetra1:           spin(@baseColor, 90);   // Tetra colors
-@tetra2:           spin(@baseColor, -90);
-@analog1:          spin(@baseColor, 22);   // Analogs colors
-@analog2:          spin(@baseColor, -22);
+@baseColor:         @blue;                  // Set a base color
+@complement:        spin(@baseColor, 180);  // Determine a complementary color
+@split1:            spin(@baseColor, 158);  // Split complements
+@split2:            spin(@baseColor, -158);
+@triad1:            spin(@baseColor, 135);  // Triads colors
+@triad2:            spin(@baseColor, -135);
+@tetra1:            spin(@baseColor, 90);   // Tetra colors
+@tetra2:            spin(@baseColor, -90);
+@analog1:           spin(@baseColor, 22);   // Analogs colors
+@analog2:           spin(@baseColor, -22);
 
 
 /* Mixins
@@ -160,6 +161,13 @@
 	transition: @transition;
 }
 
+// Background clipping
+.background-clip(@clip) {
+	-webkit-background-clip: @clip;
+	-moz-background-clip: @clip;
+	background-clip: @clip;
+}
+
 // CSS3 Content Columns
 .content-columns(@columnCount, @columnGap: 20px) {
 	-webkit-column-count: @columnCount;
@@ -171,16 +179,18 @@
 }
 
 // Buttons
-.button(@color: #f5f5f5, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @padding: 9px 15px 10px, @borderRadius: 6px) {
+.button(@color: #f5f5f5, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
   display: inline-block;
-  #gradient > .vertical(@color,darken(saturate(@color,10),10));
+  #gradient > .vertical-three-colors(@color, @color, 0.25, darken(@color, 10%));
   padding: @padding;
   text-shadow: @textShadow;
   color: @textColor;
   font-size: @fontSize;
   line-height: @baseline;
+  border: 1px solid @borderColor;
+  border-bottom-color: fadein(@borderColor, 15%);
   .border-radius(@borderRadius);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 -1px 0 rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.25);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.1);
   .box-shadow(@shadow);
   &:hover {
     background-position: 0 -15px;

@@ -7,21 +7,8 @@
 /* Body and structure
 -------------------------------------------------- */
 body {
-  background-color: #ffffff;
-  background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), color-stop(0.15, #ffffff), to(#ffffff));
-  background-image: -webkit-linear-gradient(#eeeeee, color-stop(0.15, #ffffff), #ffffff);
-  background-image: -moz-linear-gradient(#eeeeee, color-stop(#ffffff, 0.15), #ffffff);
-  background-attachment: fixed;
-  background-position: 0 40px;
+  background-color: #fff;
   position: relative;
-}
-header,
-section,
-footer,
-article,
-aside {
-  display: block;
 }
 section {
   padding-top: 80px;

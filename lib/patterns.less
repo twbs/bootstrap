@@ -487,20 +487,16 @@ div.modal {
   top: 50%;
   left: 50%;
   z-index: 2000;
-  width: 620px;
-  height: 500px;
-  margin: -310px 0 0 -250px;
+  width: 560px;
+  margin: -280px 0 0 -250px;
   background-color: @white;
   border: 1px solid rgba(0,0,0,.3);
   .border-radius(6px);
-  .box-shadow(0 2px 6px rgba(0, 0, 0, 0.35))
+  .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  .background-clip(padding);
   .modal-header {
-    border-bottom:1px solid #eee;
+    border-bottom: 1px solid #eee;
     padding: 5px 20px;
-    h2 {
-      font-size: 20px;
-      font-weight: 200;
-    }
     a.close {
       position: absolute;
       right: 10px;
@@ -508,6 +504,21 @@ div.modal {
       color: #999;
       line-height:10px;
       font-size: 18px;
+    }
+  }
+  .modal-body {
+    padding: 20px;
+  }
+  .modal-footer {
+    background-color: #eee;
+    padding: 14px 20px 15px;
+    border-top: 1px solid #ddd;
+    .border-radius(0 0 6px 6px);
+    .box-shadow(inset 0 1px 0 #fff);
+    .clearfix();
+    .btn {
+      float: right;
+      margin-left: 10px;
     }
   }
 }

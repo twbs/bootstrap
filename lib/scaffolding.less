@@ -80,7 +80,7 @@ a {
 .btn {
   .button();
   &.primary {
-    #gradient > .vertical(@blue, darken(@blue, 15));
+    #gradient > .vertical(@blue, @blueDark);
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     &:hover {
@@ -89,6 +89,7 @@ a {
   }
   &.large {
     font-size: 16px;
+    line-height: 30px;
     .border-radius(6px);
   }
   &.small {
