@@ -341,6 +341,9 @@ a:hover {
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  transition: 0.1s linear all;
 }
 .btn:hover {
   background-position: 0 -15px;
@@ -402,6 +405,11 @@ a:hover {
   -moz-opacity: 0.65;
   opacity: 0.65;
   cursor: default;
+}
+.btn:active {
+  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
@@ -818,7 +826,7 @@ div.input-prepend .add-on, div.input-append .add-on {
   display: block;
   width: auto;
   min-width: 16px;
-  padding: 5px 4px 5px 5px;
+  padding: 4px 4px 4px 5px;
   color: #b3b3b3;
   font-weight: normal;
   line-height: 18px;
