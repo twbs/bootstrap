@@ -3,7 +3,7 @@
  * This file is only for importing all required stylesheets for LESS to include and then compile.
  * 
  * Copyright 2011 Twitter, Inc
- * Open-sourced under Apatche License v2.0: http://www.apache.org/licenses/LICENSE-2.0
+ * Open-sourced under Apache License v2.0: http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built @twitter by @mdo and @fat, like bosses.
  */
@@ -145,7 +145,6 @@ div.row:after {
   content: ".";
 }
 div.row div.span1 {
-  display: inline;
   float: left;
   width: 40px;
   margin-left: 20px;
@@ -154,7 +153,6 @@ div.row div.span1:first-child {
   margin-left: 0;
 }
 div.row div.span2 {
-  display: inline;
   float: left;
   width: 100px;
   margin-left: 20px;
@@ -163,7 +161,6 @@ div.row div.span2:first-child {
   margin-left: 0;
 }
 div.row div.span3 {
-  display: inline;
   float: left;
   width: 160px;
   margin-left: 20px;
@@ -172,7 +169,6 @@ div.row div.span3:first-child {
   margin-left: 0;
 }
 div.row div.span4 {
-  display: inline;
   float: left;
   width: 220px;
   margin-left: 20px;
@@ -181,7 +177,6 @@ div.row div.span4:first-child {
   margin-left: 0;
 }
 div.row div.span5 {
-  display: inline;
   float: left;
   width: 280px;
   margin-left: 20px;
@@ -190,7 +185,6 @@ div.row div.span5:first-child {
   margin-left: 0;
 }
 div.row div.span6 {
-  display: inline;
   float: left;
   width: 340px;
   margin-left: 20px;
@@ -199,7 +193,6 @@ div.row div.span6:first-child {
   margin-left: 0;
 }
 div.row div.span7 {
-  display: inline;
   float: left;
   width: 400px;
   margin-left: 20px;
@@ -208,7 +201,6 @@ div.row div.span7:first-child {
   margin-left: 0;
 }
 div.row div.span8 {
-  display: inline;
   float: left;
   width: 460px;
   margin-left: 20px;
@@ -217,7 +209,6 @@ div.row div.span8:first-child {
   margin-left: 0;
 }
 div.row div.span9 {
-  display: inline;
   float: left;
   width: 520px;
   margin-left: 20px;
@@ -226,7 +217,6 @@ div.row div.span9:first-child {
   margin-left: 0;
 }
 div.row div.span10 {
-  display: inline;
   float: left;
   width: 580px;
   margin-left: 20px;
@@ -235,7 +225,6 @@ div.row div.span10:first-child {
   margin-left: 0;
 }
 div.row div.span11 {
-  display: inline;
   float: left;
   width: 640px;
   margin-left: 20px;
@@ -244,7 +233,6 @@ div.row div.span11:first-child {
   margin-left: 0;
 }
 div.row div.span12 {
-  display: inline;
   float: left;
   width: 700px;
   margin-left: 20px;
@@ -253,7 +241,6 @@ div.row div.span12:first-child {
   margin-left: 0;
 }
 div.row div.span13 {
-  display: inline;
   float: left;
   width: 760px;
   margin-left: 20px;
@@ -262,7 +249,6 @@ div.row div.span13:first-child {
   margin-left: 0;
 }
 div.row div.span14 {
-  display: inline;
   float: left;
   width: 820px;
   margin-left: 20px;
@@ -271,7 +257,6 @@ div.row div.span14:first-child {
   margin-left: 0;
 }
 div.row div.span15 {
-  display: inline;
   float: left;
   width: 880px;
   margin-left: 20px;
@@ -280,7 +265,6 @@ div.row div.span15:first-child {
   margin-left: 0;
 }
 div.row div.span16 {
-  display: inline;
   float: left;
   width: 940px;
   margin-left: 20px;
@@ -384,11 +368,11 @@ a:hover {
   background-image: -o-linear-gradient(#08b5fb, #0069d6);
   /* Opera 11.10 */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#08b5fb', endColorstr='#0069d6', GradientType=0);
-  /* IE6 & IE7 */
-
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#08b5fb', endColorstr='#0069d6', GradientType=0)";
   /* IE8+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#08b5fb', endColorstr='#0069d6', GradientType=0);
+  /* IE6 & IE7 */
 
   background-image: linear-gradient(#08b5fb, #0069d6);
   /* the standard */
@@ -808,22 +792,6 @@ div.actions div.secondary-action a:hover {
   display: block;
   max-width: 600px;
 }
-.help-block h5, .help-block p, .help-block ol li {
-  color: #808080;
-}
-.help-block p, .help-block ol li {
-  font-size: 12px;
-}
-.help-block p {
-  margin-bottom: 0;
-  font-size: 12px;
-  line-height: 18px;
-  color: #b3b3b3;
-}
-.help-block ol {
-  margin-bottom: 10px;
-  margin-left: 25px;
-}
 div.inline-inputs {
   color: #808080;
 }
@@ -903,7 +871,7 @@ ul.inputs-list li label strong {
 }
 ul.inputs-list li label small {
   font-size: 12px;
-  font-weight: normal !important;
+  font-weight: normal;
 }
 ul.inputs-list li ul.inputs-list {
   margin-left: 25px;
@@ -1000,7 +968,7 @@ table.zebra-striped th.header:hover {
   background-repeat: no-repeat;
 }
 table.zebra-striped th.actions:hover {
-  background-image: none !important;
+  background-image: none;
 }
 table.zebra-striped th.headerSortDown, table.zebra-striped th.headerSortDown:hover {
   background-position: right -25px;
@@ -1077,11 +1045,11 @@ div.topbar {
   background-image: -o-linear-gradient(#333333, #222222);
   /* Opera 11.10 */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
-  /* IE6 & IE7 */
-
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0)";
   /* IE8+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  /* IE6 & IE7 */
 
   background-image: linear-gradient(#333333, #222222);
   /* the standard */
@@ -1121,7 +1089,6 @@ div.topbar a.logo {
   line-height: 1;
 }
 div.topbar a.logo img {
-  display: inline;
   float: left;
   margin-right: 6px;
 }
@@ -1204,12 +1171,6 @@ div.topbar ul li a:hover {
 div.topbar ul li.active a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
-}
-div.topbar ul li.vr {
-  border-left: 1px solid #008db8;
-  border-right: 1px solid #00a0d1;
-  height: 26px;
-  margin: 6px 3px 1px 3px;
 }
 div.topbar ul.primary-nav li ul {
   left: 0;
@@ -1345,11 +1306,11 @@ div.alert-message {
   background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   /* Opera 11.10 */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0);
-  /* IE6 & IE7 */
-
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0)";
   /* IE8+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0);
+  /* IE6 & IE7 */
 
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   /* the standard */
@@ -1461,7 +1422,6 @@ ul.tabs li, ul.pills li {
   display: inline;
 }
 ul.tabs li a, ul.pills li a {
-  display: inline;
   float: left;
   width: auto;
 }
@@ -1530,7 +1490,6 @@ div.pagination ul li {
   display: inline;
 }
 div.pagination ul li a {
-  display: inline;
   float: left;
   padding: 0 14px;
   line-height: 34px;
