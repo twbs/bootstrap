@@ -34,12 +34,14 @@ section {
 }
 #masthead h1,
 #footer h1,
+#masthead h4,
+#footer h4,
 #masthead p,
 #footer p,
 #masthead small,
 #footer small {
   color: #fff;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
 }
 #masthead {
   margin-top: 40px;
@@ -85,6 +87,36 @@ section {
 }
 #masthead small a {
   color: #fff;
+}
+div.quick-start {
+  background-color: rgba(0,0,0,.25);
+  padding: 18px 20px;
+  margin: 27px 0 -36px;
+}
+div.quick-start h4,
+div.quick-start p,
+div.quick-start form {
+  float: left;
+}
+#masthead div.quick-start p {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 27px;
+  color: rgba(255,255,255,.5);
+}
+div.quick-start p a {
+  color: #fff;
+}
+div.quick-start form {
+  margin-bottom: 0;
+  padding: 0 10px;
+}
+div.quick-start form input {
+  width: 530px;
+  border: none;
+  padding: 3px 5px;
+  height: 21px;
+  line-height: 21px;
 }
 #footer {
   margin-top: 80px;

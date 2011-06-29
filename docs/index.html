@@ -25,8 +25,7 @@
           <img src="assets/img/twitter-logo-no-bird.png" alt="Twitter" /> <span>bootstrap</span>
         </a></h3>
         <ul>
-          <li><a href="#getting-started">Getting Started</a></li>
-          <li><a href="#preboot">Preboot</a></li>
+          <li><a href="#getting-started">Getting started</a></li>
           <li><a href="#grid-system">Grid</a></li>
           <li><a href="#layouts">Layouts</a></li>
           <li><a href="#typography">Typography</a></li>
@@ -35,6 +34,7 @@
           <li><a href="#navigation">Navigation</a></li>
           <li><a href="#alerts">Alerts</a></li>
           <li><a href="#modals">Modals</a></li>
+          <li><a href="#less">LESS</a></li>
         </ul>
       </div>
     </div>
@@ -56,6 +56,15 @@
             </div>
           </div>
         </div>
+        <div class="quick-start">
+          <div class="container">
+            <p>Copy and paste for a quick start:</p>
+            <form>
+              <input type="text" value='&lt;link type="text/css" href="http://twitter.github.com/bootstrap-1.0.0.css" media="all" /&gt;' />
+            </form>
+            <p><a href="">Using LESS?</a></p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -63,172 +72,22 @@
 
 
 
-<section id="getting-started">
+<section id="getting-started" style="display: none;">
 <div class="page-header">
   <h1>Getting started</h1>
 </div>
 <div class="row">
   <div class="span4 columns">
-    <p>You can use Twitter Bootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.</p>
+    <p>Using Twitter Bootstrap is uber easy: just drop in the compiled, minified CSS and you're ready to go.</p>
   </div>
   <div class="span12 columns">
-    <h3>1. Compiled CSS</h3>
+    <h3>Compiled CSS</h3>
     <p>Use this option if you want all the styles of Bootstrap in a <a href="../bootstrap-1.0.0.min.css">compiled and minified stylesheet</a>, but none of the extra power of LESS.</p>
     <pre class="html">&lt;link type="text/css" href="bootstrap-1.0.0.css" media="all" /&gt;</pre>
-    <h3>2. Run with LESS.js</h3>
-    <p>Use this option to make full use of Bootstrap's LESS variables, mixins, and nesting in CSS.</p>
-    <pre class="html">
-&lt;link rel="stylesheet/less" type="text/css" href="less/bootstrap.less" media="all" /&gt;
-&lt;script type="text/javascript" src="js/less-1.0.41.min.js"&gt;&lt;/script&gt;</pre>
+    <hr />
+    <p>Interested in running LESS on your project? No problem, <a href="#less">read how to use Bootstrap with LESS &raquo;</a></p>
   </div>
 </div>
-</section>
-
-
-<section id="preboot">
-<div class="page-header">
-  <h1>Fully Bootstrapped <small>Supercharged CSS with variables, mixins, and functions</small></h1>
-</div>
-<div class="row">
-  <div class="span4 columns">
-    <p><a href="http://markdotto.com/bootstrap/">Preboot</a> is a super awesome pack of mixins and variables to be used in conjunction with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor for faster and easier web development, that we used to build Bootstrap.</p>
-  </div>
-  <div class="span12 columns">
-    <h2>What's included</h2>
-    <p>Here are some of the highlights of what's included in Twitter Bootstrap as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
-    <h3>Color variables</h3>
-    <p>Variables in LESS are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you're set.</p>
-    <pre class="css">
-// Links
-@linkColor:         #8b59c2;
-@linkColorHover:    darken(@linkColor, 10);
-
-// Grays
-@black:             #000;
-@grayDark:          lighten(@black, 25%);
-@gray:              lighten(@black, 50%);
-@grayLight:         lighten(@black, 70%);
-@grayLighter:       lighten(@black, 90%);
-@white:             #fff;
-
-// Accent Colors
-@blue:              #08b5fb;
-@green:             #46a546;
-@red:               #9d261d;
-@yellow:            #ffc40d;
-@orange:            #f89406;
-@pink:              #c3325f;
-@purple:            #7a43b6;
-
-// Baseline
-@baseline:          20px;
-</pre>
-
-<h3>Commenting</h3>
-<p>LESS also provides another style of commenting in addition to CSS's normal <code>/* ... */</code> syntax.</p>
-<pre class="css">
-// This is a comment
-/* This is also a comment */
-</pre>
-
-<h3>Mixins up the wazoo</h3>
-<p>Mixins are basically includes or partials for CSS, allowing you to combine a block of code into one. They're great for vendor prefixed properties like <code>box-shadow</code>, cross-browser gradients, font stacks, and more. Below is a sample of the mixins that are included with Bootstrap.</p>
-<h4>Font stacks</h4>
-<pre class="css">
-#font {
-  .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-  .sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-  .serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
-    font-family: "Georgia", Times New Roman, Times, sans-serif;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-  .monospace(@weight: normal, @size: 12px, @lineHeight: 20px) {
-    font-family: "Monaco", Courier New, monospace;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-}
-</pre>
-<h4>Gradients</h4>
-<pre class="css">
-#gradient {
-  .horizontal (@startColor: #555, @endColor: #333) {
-    background-color: @endColor;
-    background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); // Konqueror
-    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); /* IE6 & IE7 */
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); /* IE8+ */
-    background-image: linear-gradient(left, @startColor, @endColor); // Le standard
-  }
-  .vertical (@startColor: #555, @endColor: #333) {
-    background-color: @endColor;
-    background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Konqueror */
-    background-image: -moz-linear-gradient(@startColor, @endColor); /* FF 3.6+ */
-    background-image: -ms-linear-gradient(@startColor, @endColor); /* IE10 */
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); /* Safari 4+, Chrome 2+ */
-    background-image: -webkit-linear-gradient(@startColor, @endColor); /* Safari 5.1+, Chrome 10+ */
-    background-image: -o-linear-gradient(@startColor, @endColor); /* Opera 11.10 */
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); /* IE6 & IE7 */
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); /* IE8+ */
-    background-image: linear-gradient(@startColor, @endColor); /* the standard */
-  }
-  .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
-    ...
-  }
-  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
-    ...
-  }
-}
-</pre>
-
-<h3>Operations and grid system</h3>
-<p>Get fancy and perform some match to generate flexible and powerful mixins like the one below.</p>
-<pre class="css">
-// Griditude
-@gridColumns:       16;
-@gridColumnWidth:   40px;
-@gridGutterWidth:   20px;
-
-// Grid System
-.container {
-  width: @siteWidth;
-  margin: 0 auto;
-  .clearfix();
-}
-.columns(@columnSpan: 1) {
-  display: inline;
-  float: left;
-  width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
-  margin-left: @gridGutterWidth;
-  &:first-child {
-    margin-left: 0;
-  }
-}
-.offset(@columnOffset: 1) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) !important;
-}
-</pre>
-  </div>
-</div>
-
 </section>
 
 
@@ -1218,6 +1077,160 @@
   </div>
 </section>
 
+
+
+<section id="preboot">
+<div class="page-header">
+  <h1>Using Bootstrap with LESS <small>Supercharge your CSS with variables, mixins, and functions</small></h1>
+</div>
+<div class="row">
+  <div class="span4 columns">
+    <p><a href="http://markdotto.com/bootstrap/">Preboot</a> is a super awesome pack of mixins and variables to be used in conjunction with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor for faster and easier web development, that we used to build Bootstrap.</p>
+  </div>
+  <div class="span12 columns">
+    <h2>How to use it</h2>
+    <p>Use this option to make full use of Bootstrap's LESS variables, mixins, and nesting in CSS via javascript in your browser.</p>
+    <pre class="html">
+&lt;link rel="stylesheet/less" type="text/css" href="less/bootstrap.less" media="all" /&gt;
+&lt;script type="text/javascript" src="js/less-1.0.41.min.js"&gt;&lt;/script&gt;</pre>
+<p>Not feeling the .js solution? <a href="http://incident57.com/less" target="_blank">Try the LESS Mac app</a> or <a href="http://lesscss.org/#-client-side-usage" target="_blank">use Node.js</a> to compile when you deploy your code.</p>
+
+    <h2>What's included</h2>
+    <p>Here are some of the highlights of what's included in Twitter Bootstrap as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
+    <h3>Color variables</h3>
+    <p>Variables in LESS are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you're set.</p>
+    <pre class="css">
+// Links
+@linkColor:         #8b59c2;
+@linkColorHover:    darken(@linkColor, 10);
+
+// Grays
+@black:             #000;
+@grayDark:          lighten(@black, 25%);
+@gray:              lighten(@black, 50%);
+@grayLight:         lighten(@black, 70%);
+@grayLighter:       lighten(@black, 90%);
+@white:             #fff;
+
+// Accent Colors
+@blue:              #08b5fb;
+@green:             #46a546;
+@red:               #9d261d;
+@yellow:            #ffc40d;
+@orange:            #f89406;
+@pink:              #c3325f;
+@purple:            #7a43b6;
+
+// Baseline
+@baseline:          20px;
+</pre>
+
+<h3>Commenting</h3>
+<p>LESS also provides another style of commenting in addition to CSS's normal <code>/* ... */</code> syntax.</p>
+<pre class="css">
+// This is a comment
+/* This is also a comment */
+</pre>
+
+<h3>Mixins up the wazoo</h3>
+<p>Mixins are basically includes or partials for CSS, allowing you to combine a block of code into one. They're great for vendor prefixed properties like <code>box-shadow</code>, cross-browser gradients, font stacks, and more. Below is a sample of the mixins that are included with Bootstrap.</p>
+<h4>Font stacks</h4>
+<pre class="css">
+#font {
+  .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+  .sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+  .serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
+    font-family: "Georgia", Times New Roman, Times, sans-serif;
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+  .monospace(@weight: normal, @size: 12px, @lineHeight: 20px) {
+    font-family: "Monaco", Courier New, monospace;
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+}
+</pre>
+<h4>Gradients</h4>
+<pre class="css">
+#gradient {
+  .horizontal (@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); // Konqueror
+    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); /* IE6 & IE7 */
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); /* IE8+ */
+    background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+  }
+  .vertical (@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Konqueror */
+    background-image: -moz-linear-gradient(@startColor, @endColor); /* FF 3.6+ */
+    background-image: -ms-linear-gradient(@startColor, @endColor); /* IE10 */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); /* Safari 4+, Chrome 2+ */
+    background-image: -webkit-linear-gradient(@startColor, @endColor); /* Safari 5.1+, Chrome 10+ */
+    background-image: -o-linear-gradient(@startColor, @endColor); /* Opera 11.10 */
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); /* IE6 & IE7 */
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); /* IE8+ */
+    background-image: linear-gradient(@startColor, @endColor); /* the standard */
+  }
+  .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
+    ...
+  }
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+    ...
+  }
+}
+</pre>
+
+<h3>Operations and grid system</h3>
+<p>Get fancy and perform some match to generate flexible and powerful mixins like the one below.</p>
+<pre class="css">
+// Griditude
+@gridColumns:       16;
+@gridColumnWidth:   40px;
+@gridGutterWidth:   20px;
+
+// Grid System
+.container {
+  width: @siteWidth;
+  margin: 0 auto;
+  .clearfix();
+}
+.columns(@columnSpan: 1) {
+  display: inline;
+  float: left;
+  width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
+  margin-left: @gridGutterWidth;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+.offset(@columnOffset: 1) {
+  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) !important;
+}
+</pre>
+  </div>
+</div>
+
+</section>
 
     </div> <!-- /container -->
 

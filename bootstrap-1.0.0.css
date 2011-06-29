@@ -429,7 +429,7 @@ p {
 }
 p small {
   font-size: 12px;
-  color: #b3b3b3;
+  color: #bfbfbf;
 }
 /* Headings
 -------------------------------------------------- */
@@ -448,7 +448,7 @@ h3 small,
 h4 small,
 h5 small,
 h6 small {
-  color: #b3b3b3;
+  color: #bfbfbf;
 }
 h1 {
   margin-bottom: 18px;
@@ -488,7 +488,7 @@ h5 {
 }
 h6 {
   font-size: 13px;
-  color: #b3b3b3;
+  color: #bfbfbf;
   text-transform: uppercase;
 }
 /* Colors
@@ -564,7 +564,7 @@ blockquote cite {
   font-size: 12px;
   font-weight: 300;
   line-height: 18px;
-  color: #b3b3b3;
+  color: #bfbfbf;
 }
 blockquote cite:before {
   content: '\2014 \00A0';
@@ -791,7 +791,7 @@ div.actions div.secondary-action a:hover {
 .help-inline, .help-block {
   font-size: 12px;
   line-height: 18px;
-  color: #b3b3b3;
+  color: #bfbfbf;
 }
 .help-inline {
   padding-left: 5px;
@@ -827,7 +827,7 @@ div.input-prepend .add-on, div.input-append .add-on {
   width: auto;
   min-width: 16px;
   padding: 4px 4px 4px 5px;
-  color: #b3b3b3;
+  color: #bfbfbf;
   font-weight: normal;
   line-height: 18px;
   height: 18px;
@@ -1074,7 +1074,7 @@ div.topbar {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 div.topbar a {
-  color: #b3b3b3;
+  color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   -webkit-transition: all linear 0.1s;
   -moz-transition: all linear 0.1s;
@@ -1102,12 +1102,12 @@ div.topbar a.logo img {
 }
 div.topbar form {
   float: left;
-  margin: 4px 0 0 0;
+  margin: 5px 0 0 0;
   opacity: 1;
   position: relative;
 }
 div.topbar form input {
-  background-color: #b3b3b3;
+  background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.3);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: normal;
@@ -1435,7 +1435,7 @@ ul.tabs li a, ul.pills li a {
 }
 ul.tabs {
   width: 100%;
-  border-bottom: 1px solid #b3b3b3;
+  border-bottom: 1px solid #bfbfbf;
 }
 ul.tabs li a {
   margin-bottom: -1px;
@@ -1448,7 +1448,7 @@ ul.tabs li a {
 }
 ul.tabs li a:hover {
   background-color: #e6e6e6;
-  border-bottom: 1px solid #b3b3b3;
+  border-bottom: 1px solid #bfbfbf;
 }
 ul.tabs li.active a {
   background-color: #fff;
@@ -1509,7 +1509,7 @@ div.pagination ul li a:hover, div.pagination ul li.active a {
 }
 div.pagination ul li.disabled a, div.pagination ul li.disabled a:hover {
   background-color: none;
-  color: #b3b3b3;
+  color: #bfbfbf;
 }
 div.pagination ul li.next a, div.pagination ul li:last-child a {
   border: 0;
