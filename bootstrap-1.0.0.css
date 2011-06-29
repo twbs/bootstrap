@@ -1,16 +1,17 @@
-/*
- * Master Stylesheet
- * This file is only for importing all required stylesheets for LESS to include and then compile.
- * 
+/*!=========================================================
+ * Bookstrap v0.0.1
+ *
  * Copyright 2011 Twitter, Inc
- * Open-sourced under Apache License v2.0: http://www.apache.org/licenses/LICENSE-2.0
+ * Open-sourced under Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built @twitter by @mdo and @fat, like bosses.
- */
-/*
- * Reset.less
- * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
- */
+ * ========================================================== */
+/* Reset.less
+ * Props to Eric Meyer (meyerweb.com) for his CSS reset file.
+ * We're using an adapted version here that cuts out some of
+ * the reset HTML elements we will never need here (dfn, samp, etc).
+ * ----------------------------------------------------------------- */
 html, body {
   margin: 0;
   padding: 0;
@@ -92,16 +93,9 @@ article,
 aside {
   display: block;
 }
-/*
- * Preboot.less
+/* Preboot.less
  * Variables and mixins to pre-ignite any new web development project
- */
-/* Variables
--------------------------------------------------- */
-/* Color Scheme
--------------------------------------------------- */
-/* Mixins
--------------------------------------------------- */
+ * ------------------------------------------------------------------ */
 .clearfix {
   zoom: 1;
 }
@@ -128,12 +122,9 @@ aside {
   clear: both;
   content: ".";
 }
-/*
- * Scaffolding
+/* Scaffolding.less
  * Basic and global styles for generating a grid system, structural layout, and page templates
- */
-/* Baseline Grid System
--------------------------------------------------- */
+ * ------------------------------------------------------------------------------------------- */
 div.row {
   zoom: 1;
 }
@@ -272,8 +263,6 @@ div.row div.span16 {
 div.row div.span16:first-child {
   margin-left: 0;
 }
-/* Structural Layout
--------------------------------------------------- */
 html, body {
   background-color: #fff;
 }
@@ -310,8 +299,6 @@ div.container-fluid div.content {
   max-width: 1180px;
   margin-left: 240px;
 }
-/* Base Styles
--------------------------------------------------- */
 a {
   color: #0069d6;
   text-decoration: none;
@@ -407,12 +394,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-/*
- * Typography.less
+/* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
- */
-/* Body text
--------------------------------------------------- */
+ * ---------------------------------------------------------------------------------------- */
 p {
   font-size: 13px;
   font-weight: normal;
@@ -423,8 +407,6 @@ p small {
   font-size: 12px;
   color: #b3b3b3;
 }
-/* Headings
--------------------------------------------------- */
 h1,
 h2,
 h3,
@@ -483,8 +465,6 @@ h6 {
   color: #b3b3b3;
   text-transform: uppercase;
 }
-/* Colors
--------------------------------------------------- */
 ul, ol {
   margin: 0 0 18px 25px;
 }
@@ -520,8 +500,6 @@ dl dt {
 dl dd {
   margin-left: 9px;
 }
-/* Misc
--------------------------------------------------- */
 hr {
   margin: 0 0 19px;
   border: 0;
@@ -592,12 +570,9 @@ pre {
   border-radius: 3px;
   white-space: pre-wrap;
 }
-/*
- * Forms.less
+/* Forms.less
  * Base styles for various input types, form layouts, and states
- */
-/* Global form styles
--------------------------------------------------- */
+ * ------------------------------------------------------------- */
 form {
   margin-bottom: 18px;
 }
@@ -915,12 +890,9 @@ form.form-stacked ul.inputs-list li label {
   font-weight: normal;
   padding-top: 0;
 }
-/*
- * Tables.less
+/* Tables.less
  * Tables for, you guessed it, tabular data
- */
-/* Baseline styles
--------------------------------------------------- */
+ * ---------------------------------------- */
 table {
   width: 100%;
   margin-bottom: 18px;
@@ -940,8 +912,6 @@ table th {
   font-weight: bold;
   border-bottom-width: 2px;
 }
-/* Zebra-striping
--------------------------------------------------- */
 table.zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f5f5f5;
 }
@@ -1018,12 +988,9 @@ table.zebra-striped th.purple {
 table.zebra-striped th.headerSortUp.purple, table.zebra-striped th.headerSortDown.purple {
   background-color: #e2d5f0;
 }
-/*
- * Patterns.less
+/* Patterns.less
  * Repeatable UI elements outside the base styles provided from the scaffolding
- */
-/* Top bar
--------------------------------------------------- */
+ * ---------------------------------------------------------------------------- */
 div.topbar {
   background-color: #222222;
   background-repeat: repeat-x;
@@ -1271,8 +1238,6 @@ div.topbar ul li ul li span {
   color: #808080;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
-/* Page Headers
--------------------------------------------------- */
 div.page-header {
   margin-bottom: 17px;
   border-bottom: 1px solid #ddd;
@@ -1283,8 +1248,6 @@ div.page-header {
 div.page-header h1 {
   margin-bottom: 8px;
 }
-/* Error Styles
--------------------------------------------------- */
 div.alert-message {
   background-color: rgba(0, 0, 0, 0.15);
   background-repeat: repeat-x;
@@ -1404,8 +1367,6 @@ div.block-message.info {
   background: #eaf9ff;
   border: 1px solid #d1f1fe;
 }
-/* Navigation
--------------------------------------------------- */
 ul.tabs, ul.pills {
   margin: 0 0 20px;
   padding: 0;
@@ -1469,8 +1430,6 @@ ul.pills li.active a {
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
-/* Pagination
--------------------------------------------------- */
 div.pagination {
   height: 36px;
   margin: 18px 0;
@@ -1506,8 +1465,6 @@ div.pagination ul li.disabled a, div.pagination ul li.disabled a:hover {
 div.pagination ul li.next a, div.pagination ul li:last-child a {
   border: 0;
 }
-/* Wells
--------------------------------------------------- */
 div.well {
   background: #f5f5f5;
   margin-bottom: 20px;
@@ -1521,8 +1478,6 @@ div.well {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-/* Modals
--------------------------------------------------- */
 div.modal-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
