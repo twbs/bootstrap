@@ -134,8 +134,14 @@
     margin-left: 0;
   }
 }
+.offsetMath(@extraSpace: 40px) {
+  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace !important;
+}
 .offset(@columnOffset: 1) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) !important;
+  .offsetMath(40px);
+  &:first-child {
+    .offsetMath(20px);
+  }
 }
 
 // Border Radius

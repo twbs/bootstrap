@@ -34,6 +34,11 @@ $(document).ready(function(){
       $(this).parents('.add-on').removeClass('active');
     }
   });
+  
+  // Disable certain links in docs
+  $('ul.tabs a, ul.pills a, .pagination a').click(function(e) {
+    e.preventDefault();
+  });
 
   // Copy code blocks in docs
   $(".copy-code").focus(function() {
