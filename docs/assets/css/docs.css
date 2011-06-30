@@ -27,38 +27,42 @@ section {
 }
 #masthead div.inner, #footer div.inner {
   background: transparent url(../img/grid-18px.png) top center;
-  padding: 45px 0 54px;
+  padding: 45px 0;
   -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 #masthead h1,
 #footer h1,
-#masthead h4,
-#footer h4,
 #masthead p,
-#footer p,
-#masthead small,
-#footer small {
+#footer p {
   color: #fff;
   text-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+#masthead p a,
+#footer p a {
+  color: #fff;
+  font-weight: bold;
 }
 #masthead {
   margin-top: 40px;
 }
+#masthead h1,
+#masthead p {
+  text-align: center;
+  margin-bottom: 9px;
+}
 #masthead h1 {
   font-size: 54px;
   line-height: 1;
-  text-align: center;
-  margin-bottom: 9px;
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+#masthead p {
+  font-weight: 300;
 }
 #masthead p.lead {
   font-size: 20px;
-  font-weight: 300;
   line-height: 27px;
-  text-align: center;
-  margin: 0;
 }
 
 div.quickstart {
@@ -79,6 +83,9 @@ div.quickstart {
 }
 div.quickstart div.row {
   margin: 0 -20px;
+  -webkit-box-shadow: 1px 0 0 #f9f9f9;
+  -moz-box-shadow: 1px 0 0 #f9f9f9;
+  box-shadow: 1px 0 0 #f9f9f9;
 }
 div.quickstart div.columns {
   width: 285px;
@@ -86,6 +93,9 @@ div.quickstart div.columns {
   margin-left: 0;
   padding: 17px 20px 26px;
   border-left: 1px solid #eee;
+  -webkit-box-shadow: inset 1px 0 0 #f9f9f9;
+  -moz-box-shadow: inset 1px 0 0 #f9f9f9;
+  box-shadow: inset 1px 0 0 #f9f9f9;
 }
 div.quickstart div.columns:last-child {
   border-right: 1px solid #eee;
@@ -120,10 +130,6 @@ div.quickstart form textarea {
 #footer p {
   margin-bottom: 0;
   color: rgba(255,255,255,.8)
-}
-#footer p a {
-  color: #fff;
-  font-weight: bold;
 }
 /* Special grid styles
 -------------------------------------------------- */
