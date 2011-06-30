@@ -1111,7 +1111,8 @@
 </div>
 <div class="row">
   <div class="span4 columns">
-    <p><a href="http://markdotto.com/bootstrap/">Preboot</a> is a super awesome pack of mixins and variables to be used in conjunction with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor for faster and easier web development, that we used to build Bootstrap.</p>
+    <p>Bootstrap was built with <a href="http://markdotto.com/bootstrap/">Preboot</a>, an open-source pack of mixins and variables to be used in conjunction with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor for faster and easier web development.</p>
+    <p>Check out how we used Preboot in Bootstrap and how you can make use of it should you choose to run LESS on your next project.</p>
   </div>
   <div class="span12 columns">
     <h2>How to use it</h2>
@@ -1200,22 +1201,22 @@
     background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); /* IE6 & IE7 */
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); /* IE8+ */
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); // IE8+
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE6 & IE7
     background-image: linear-gradient(left, @startColor, @endColor); // Le standard
   }
   .vertical (@startColor: #555, @endColor: #333) {
     background-color: @endColor;
     background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Konqueror */
-    background-image: -moz-linear-gradient(@startColor, @endColor); /* FF 3.6+ */
-    background-image: -ms-linear-gradient(@startColor, @endColor); /* IE10 */
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); /* Safari 4+, Chrome 2+ */
-    background-image: -webkit-linear-gradient(@startColor, @endColor); /* Safari 5.1+, Chrome 10+ */
-    background-image: -o-linear-gradient(@startColor, @endColor); /* Opera 11.10 */
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); /* IE6 & IE7 */
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); /* IE8+ */
-    background-image: linear-gradient(@startColor, @endColor); /* the standard */
+    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
+    background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); // IE8+
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE6 & IE7
+    background-image: linear-gradient(@startColor, @endColor); // The standard
   }
   .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
     ...
@@ -1227,7 +1228,7 @@
 </pre>
 
 <h3>Operations and grid system</h3>
-<p>Get fancy and perform some match to generate flexible and powerful mixins like the one below.</p>
+<p>Get fancy and perform some math to generate flexible and powerful mixins like the one below.</p>
 <pre class="css">
 // Griditude
 @gridColumns:       16;
@@ -1263,6 +1264,7 @@
     <div id="footer">
       <div class="inner">
         <div class="container">
+          <p class="right"><a href="#">Back to top</a></p>
           <p>
             Designed and built <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>, like bosses.<br />
             Open-sourced under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
