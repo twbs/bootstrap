@@ -27,7 +27,7 @@ section {
 }
 #masthead div.inner, #footer div.inner {
   background: transparent url(../img/grid-18px.png) top center;
-  padding: 54px 0;
+  padding: 45px 0 54px;
   -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -45,7 +45,6 @@ section {
 }
 #masthead {
   margin-top: 40px;
-  margin-bottom: -40px;
 }
 #masthead h1 {
   font-size: 54px;
@@ -94,17 +93,26 @@ section {
 }
 
 div.quickstart {
+  background-color: rgba(0,0,0,.03);
+  margin-bottom: -36px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #eee;
+}
+div.quickstart div.row {
+  margin: 0 -20px;
 /*   background-color: rgba(0,0,0,.1); */
-  margin-top: 36px;
 }
 div.quickstart div.columns {
 /*   background-color: rgba(0,0,0,.1); */
-  width: 280px;
+  width: 285px;
   height: 100px;
-  padding: 9px 10px;
+  margin-left: 0;
+  padding: 17px 20px 26px;
+  border-left: 1px solid #eee;
 }
 div.quickstart div.columns:last-child {
-  border-right: none;
+  border-right: 1px solid #eee;
+  width: 286px;
 /*   padding-right: 20px; */
 }
 div.quickstart h6,
@@ -112,16 +120,27 @@ div.quickstart p {
   line-height: 18px;
   text-align: center;
   margin-bottom: 9px;
+  color: #333;
 }
 div.quickstart h6 {
-  color: #fff;
+  color: #999;
 }
 div.quickstart form textarea {
+  display: block;
+  width: 275px;
+  height: 21px;
+  margin: 0 0 9px;
   line-height: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-color: #ddd;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+/*
   border: 0;
   display: block;
   width: 270px;
-  height: 21px;
   margin: 0 0 9px;
   padding: 3px 5px;
   background-color: rgba(0,0,0,.3);
@@ -129,11 +148,13 @@ div.quickstart form textarea {
   -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.15);
   box-shadow: inset 0 1px 3px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.15);
   color: #fff;
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.65);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+*/
 }
+/*
 div.quickstart form textarea:focus {
   background-color: #fff;
   color: #333;
@@ -141,6 +162,7 @@ div.quickstart form textarea:focus {
   -moz-box-shadow: 0 0 5px rgba(255,255,255,.25);
   box-shadow: 0 0 5px rgba(255,255,255,.25);
 }
+*/
 
 /*
 div.quick-start {
