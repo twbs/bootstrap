@@ -17,20 +17,20 @@ section {
 #masthead, #footer {
   background-color: #049cd9;
   background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#0056b0), to(#049cd9));
-  background-image: -webkit-linear-gradient(#0056b0, #049cd9);
-  background-image: -moz-linear-gradient(#0056b0, #049cd9);
-  background-image: -o-linear-gradient(top, #0056b0, #049cd9);
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#0056b0), to(#049cd9));
-  filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#0056b0', EndColorStr='#049cd9', GradientType=0);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#0056b0', EndColorStr='#049cd9', GradientType=0))";
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
+  background-image: -webkit-linear-gradient(#004D9F, #049cd9);
+  background-image: -moz-linear-gradient(#004D9F, #049cd9);
+  background-image: -o-linear-gradient(top, #004D9F, #049cd9);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
+  filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#004D9F', EndColorStr='#049cd9', GradientType=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#004D9F', EndColorStr='#049cd9', GradientType=0))";
 }
 #masthead div.inner, #footer div.inner {
   background: transparent url(../img/grid-18px.png) top center;
   padding: 45px 0;
-  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
-  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 #masthead h1,
 #footer h1,
@@ -89,7 +89,7 @@ div.quickstart div.row {
 }
 div.quickstart div.columns {
   width: 285px;
-  height: 100px;
+  height: 117px;
   margin-left: 0;
   padding: 17px 20px 26px;
   border-left: 1px solid #eee;
@@ -114,15 +114,11 @@ div.quickstart h6 {
 div.quickstart form textarea {
   display: block;
   width: 275px;
-  height: 21px;
+  height: auto;
   margin: 0 0 9px;
   line-height: 21px;
   white-space: nowrap;
   overflow: hidden;
-  border-color: #ddd;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
-  -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
-  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
 }
 #footer {
   margin-top: 80px;
@@ -130,6 +126,9 @@ div.quickstart form textarea {
 #footer p {
   margin-bottom: 0;
   color: rgba(255,255,255,.8)
+}
+#footer p.right {
+  float: right;
 }
 /* Special grid styles
 -------------------------------------------------- */

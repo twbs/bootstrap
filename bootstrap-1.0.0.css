@@ -1,11 +1,11 @@
 /*
- * Master Stylesheet
- * This file is only for importing all required stylesheets for LESS to include and then compile.
+ * Bootstrap v1.0.0
  *
  * Copyright 2011 Twitter, Inc
- * Open-sourced under Apache License v2.0: http://www.apache.org/licenses/LICENSE-2.0
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Designed and built @twitter by @mdo and @fat, like bosses.
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 /*
  * Reset.less
@@ -626,7 +626,7 @@ form .uneditable-input {
   line-height: 18px;
   height: 18px;
   color: #808080;
-  border: 1px solid #bbb;
+  border: 1px solid #ccc;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -653,13 +653,16 @@ form textarea {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 form input[type=text]:focus, form input[type=password]:focus, form textarea:focus {
   outline: none;
-  border-color: rgba(82, 168, 236, 0.75);
-  -webkit-box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
-  -moz-box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
-  box-shadow: 0 0 8px rgba(82, 168, 236, 0.5);
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 form div.error {
   background: #fae5e3;
