@@ -34,7 +34,6 @@ $(document).ready(function(){
     }
   });
 
-
   // Copy code blocks in docs
   $(".copy-code").focus(function() {
     $(this).select();

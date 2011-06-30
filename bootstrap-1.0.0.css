@@ -862,6 +862,9 @@ ul.inputs-list li:first-child {
 ul.inputs-list input[type=radio], ul.inputs-list input[type=checkbox] {
   margin-bottom: 0;
 }
+form.form-stacked {
+  padding-left: 20px;
+}
 form.form-stacked fieldset {
   padding-top: 9px;
 }
@@ -892,6 +895,10 @@ form.form-stacked ul.inputs-list li {
 form.form-stacked ul.inputs-list li label {
   font-weight: normal;
   padding-top: 0;
+}
+form.form-stacked div.actions {
+  margin-left: -20px;
+  padding-left: 20px;
 }
 /*
  * Tables.less
