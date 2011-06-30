@@ -1100,6 +1100,7 @@ div.topbar ul {
   display: block;
   float: left;
   margin: 0 10px 0 0;
+  position: relative;
 }
 div.topbar ul.secondary-nav {
   float: right;

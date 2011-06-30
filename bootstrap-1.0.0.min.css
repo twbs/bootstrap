@@ -141,7 +141,7 @@ div.topbar form{float:left;margin:5px 0 0 0;opacity:1;position:relative;}div.top
 div.topbar form input::-webkit-input-placeholder{color:#e6e6e6;}
 div.topbar form input:hover{background-color:#444;background-color:rgba(255, 255, 255, 0.5);color:#fff;}
 div.topbar form input:focus,div.topbar form input.focused{outline:none;background-color:#fff;color:#404040;text-shadow:0 1px 0 #fff;border:0;padding:5px 10px;-webkit-box-shadow:0 0 3px rgba(0, 0, 0, 0.15);-moz-box-shadow:0 0 3px rgba(0, 0, 0, 0.15);box-shadow:0 0 3px rgba(0, 0, 0, 0.15);}
-div.topbar ul{display:block;float:left;margin:0 10px 0 0;}div.topbar ul.secondary-nav{float:right;margin-left:10px;margin-right:0;}
+div.topbar ul{display:block;float:left;margin:0 10px 0 0;position:relative;}div.topbar ul.secondary-nav{float:right;margin-left:10px;margin-right:0;}
 div.topbar ul li{display:block;float:left;font-size:13px;}div.topbar ul li a{display:block;float:none;padding:10px 10px 11px;line-height:19px;text-decoration:none;}div.topbar ul li a:hover{color:#fff;text-decoration:none;}
 div.topbar ul li.active a{background-color:#222;background-color:rgba(0, 0, 0, 0.5);}
 div.topbar ul.primary-nav li ul{left:0;}
