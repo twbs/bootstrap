@@ -1015,7 +1015,7 @@ div.topbar {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   overflow: visible;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -1024,9 +1024,6 @@ div.topbar {
 div.topbar a {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -webkit-transition: all linear 0.1s;
-  -moz-transition: all linear 0.1s;
-  transition: all linear 0.1s;
 }
 div.topbar ul li a:hover, div.topbar ul li.active a, div.topbar a.logo:hover {
   background-color: #333;
