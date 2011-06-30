@@ -5,6 +5,7 @@ $(document).ready(function(){
     $("ul.menu-dropdown").hide();
     $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
   });
+
   $("a.menu").click(function(e) {
     var $target = $(this);
     var $parent = $target.parent("li");
