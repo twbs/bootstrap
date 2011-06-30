@@ -97,7 +97,7 @@
   <div class="span12 columns">
     <h3>Compiled CSS</h3>
     <p>Use this option if you want all the styles of Bootstrap in a <a href="../bootstrap-1.0.0.min.css">compiled and minified stylesheet</a>, but none of the extra power of LESS.</p>
-    <pre class="prettyprint">&lt;link type="text/css" href="bootstrap-1.0.0.css" media="all" /&gt;</pre>
+    <pre class="prettyprint linenums">&lt;link type="text/css" href="bootstrap-1.0.0.css" media="all" /&gt;</pre>
     <hr />
     <p>Interested in running LESS on your project? No problem, <a href="#less">read how to use Bootstrap with LESS &raquo;</a></p>
   </div>
@@ -118,7 +118,7 @@
   <div class="span12 columns">
     <h3>Example grid markup</h3>
     <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;div class="row"&gt;
   &lt;div class="span6 columns"&gt;
     ...
@@ -217,7 +217,7 @@
       <div class="mini-layout">
         <div class="mini-layout-body"></div>
       </div>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;body&gt;
   &lt;div class="container"&gt;
     ...
@@ -236,7 +236,7 @@
         <div class="mini-layout-sidebar"></div>
         <div class="mini-layout-body"></div>
       </div>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;body&gt;
   &lt;div class="container-fluid"&gt;
     &lt;div class="sidebar"&gt;
@@ -464,7 +464,7 @@
 		</tr>
 	</tbody>
 </table>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;table class="common-table"&gt;
   ...
 &lt;/table&gt;</pre>
@@ -501,7 +501,7 @@
 		</tr>
 	</tbody>
 </table>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;table class="common-table zebra-striped"&gt;
 ...
 &lt;/table&gt;</pre>
@@ -538,7 +538,7 @@
 		</tr>
 	</tbody>
 </table>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;script type="text/javascript" src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
   $(document).ready(function() {
@@ -908,7 +908,7 @@
   <li><a href="">Settings</a></li>
   <li><a href="">Contact</a></li>
 </ul>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
   &lt;li class="active"&gt;&lt;a href=""&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=""&gt;Profile&lt;/a&gt;&lt;/li&gt;
@@ -924,7 +924,7 @@
   <li><a href="">Settings</a></li>
   <li><a href="">Contact</a></li>
 </ul>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;ul class="pills"&gt;
   &lt;li class="active"&gt;&lt;a href=""&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=""&gt;Profile&lt;/a&gt;&lt;/li&gt;
@@ -983,7 +983,7 @@
         <li class="next"><a href="">Next &rarr;</a></li>
       </ul>
     </div>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
     &lt;li class="prev disabled"&gt;&lt;a href=""&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
@@ -1105,7 +1105,7 @@
   <div class="span12 columns">
     <h2>How to use it</h2>
     <p>Use this option to make full use of Bootstrap's LESS variables, mixins, and nesting in CSS via javascript in your browser.</p>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;link rel="stylesheet/less" type="text/css" href="less/bootstrap.less" media="all" /&gt;
 &lt;script type="text/javascript" src="js/less-1.0.41.min.js"&gt;&lt;/script&gt;</pre>
 <p>Not feeling the .js solution? <a href="http://incident57.com/less" target="_blank">Try the LESS Mac app</a> or <a href="http://lesscss.org/#-client-side-usage" target="_blank">use Node.js</a> to compile when you deploy your code.</p>
@@ -1114,7 +1114,7 @@
     <p>Here are some of the highlights of what's included in Twitter Bootstrap as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
     <h3>Color variables</h3>
     <p>Variables in LESS are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you're set.</p>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 // Links
 @linkColor:         #8b59c2;
 @linkColorHover:    darken(@linkColor, 10);
@@ -1142,7 +1142,7 @@
 
 <h3>Commenting</h3>
 <p>LESS also provides another style of commenting in addition to CSS's normal <code>/* ... */</code> syntax.</p>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 // This is a comment
 /* This is also a comment */
 </pre>
@@ -1150,7 +1150,7 @@
 <h3>Mixins up the wazoo</h3>
 <p>Mixins are basically includes or partials for CSS, allowing you to combine a block of code into one. They're great for vendor prefixed properties like <code>box-shadow</code>, cross-browser gradients, font stacks, and more. Below is a sample of the mixins that are included with Bootstrap.</p>
 <h4>Font stacks</h4>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 #font {
   .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
     font-size: @size;
@@ -1178,7 +1178,7 @@
 }
 </pre>
 <h4>Gradients</h4>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 #gradient {
   .horizontal (@startColor: #555, @endColor: #333) {
     background-color: @endColor;
@@ -1217,7 +1217,7 @@
 
 <h3>Operations and grid system</h3>
 <p>Get fancy and perform some math to generate flexible and powerful mixins like the one below.</p>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 // Griditude
 @gridColumns:       16;
 @gridColumnWidth:   40px;
