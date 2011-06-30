@@ -35,6 +35,15 @@ $(document).ready(function(){
   });
 
 
+  // Copy code blocks in docs
+  $(".copy-code").focus(function() {
+    $(this).select();
+  });
+  $(".copy-code").mouseup(function(e) {
+    e.preventDefault();
+  });
+
+
   // scroll spyer
   var activeTarget,
       $window = $(window),

@@ -89,7 +89,7 @@ div.quickstart div.row {
 }
 div.quickstart div.columns {
   width: 285px;
-  height: 100px;
+  height: 117px;
   margin-left: 0;
   padding: 17px 20px 26px;
   border-left: 1px solid #eee;
@@ -114,15 +114,11 @@ div.quickstart h6 {
 div.quickstart form textarea {
   display: block;
   width: 275px;
-  height: 21px;
+  height: auto;
   margin: 0 0 9px;
   line-height: 21px;
   white-space: nowrap;
   overflow: hidden;
-  border-color: #ddd;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
-  -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
-  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
 }
 #footer {
   margin-top: 80px;
