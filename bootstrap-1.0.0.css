@@ -1,17 +1,16 @@
 /*
  * Master Stylesheet
  * This file is only for importing all required stylesheets for LESS to include and then compile.
- * 
+ *
  * Copyright 2011 Twitter, Inc
  * Open-sourced under Apache License v2.0: http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built @twitter by @mdo and @fat, like bosses.
  */
-/* Reset.less
- * Props to Eric Meyer (meyerweb.com) for his CSS reset file.
- * We're using an adapted version here that cuts out some of
- * the reset HTML elements we will never need here (dfn, samp, etc).
- * ----------------------------------------------------------------- */
+/*
+ * Reset.less
+ * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
+ */
 html, body {
   margin: 0;
   padding: 0;
@@ -122,9 +121,12 @@ aside {
   clear: both;
   content: ".";
 }
-/* Scaffolding.less
+/*
+ * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
- * ------------------------------------------------------------------------------------------- */
+ */
+/* Baseline Grid System
+-------------------------------------------------- */
 div.row {
   zoom: 1;
 }
@@ -263,6 +265,8 @@ div.row div.span16 {
 div.row div.span16:first-child {
   margin-left: 0;
 }
+/* Structural Layout
+-------------------------------------------------- */
 html, body {
   background-color: #fff;
 }
@@ -299,6 +303,8 @@ div.container-fluid div.content {
   max-width: 1180px;
   margin-left: 240px;
 }
+/* Base Styles
+-------------------------------------------------- */
 a {
   color: #0069d6;
   text-decoration: none;
@@ -338,35 +344,17 @@ a:hover {
   text-decoration: none;
 }
 .btn.primary {
-  background-color: #0069d6;
+  background-color: #0064cd;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#08b5fb), to(#0069d6));
-  /* Konqueror */
-
-  background-image: -moz-linear-gradient(#08b5fb, #0069d6);
-  /* FF 3.6+ */
-
-  background-image: -ms-linear-gradient(#08b5fb, #0069d6);
-  /* IE10 */
-
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #08b5fb), color-stop(100%, #0069d6));
-  /* Safari 4+, Chrome 2+ */
-
-  background-image: -webkit-linear-gradient(#08b5fb, #0069d6);
-  /* Safari 5.1+, Chrome 10+ */
-
-  background-image: -o-linear-gradient(#08b5fb, #0069d6);
-  /* Opera 11.10 */
-
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#08b5fb', endColorstr='#0069d6', GradientType=0)";
-  /* IE8+ */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#08b5fb', endColorstr='#0069d6', GradientType=0);
-  /* IE6 & IE7 */
-
-  background-image: linear-gradient(#08b5fb, #0069d6);
-  /* the standard */
-
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+  background-image: -moz-linear-gradient(#049cdb, #0064cd);
+  background-image: -ms-linear-gradient(#049cdb, #0064cd);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+  background-image: -webkit-linear-gradient(#049cdb, #0064cd);
+  background-image: -o-linear-gradient(#049cdb, #0064cd);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0);
+  background-image: linear-gradient(#049cdb, #0064cd);
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -578,9 +566,12 @@ pre {
   border-radius: 3px;
   white-space: pre-wrap;
 }
-/* Forms.less
+/*
+ * Forms.less
  * Base styles for various input types, form layouts, and states
- * ------------------------------------------------------------- */
+ */
+/* Global form styles
+-------------------------------------------------- */
 form {
   margin-bottom: 18px;
 }
@@ -898,9 +889,12 @@ form.form-stacked ul.inputs-list li label {
   font-weight: normal;
   padding-top: 0;
 }
-/* Tables.less
+/*
+ * Tables.less
  * Tables for, you guessed it, tabular data
- * ---------------------------------------- */
+ */
+/* Baseline styles
+-------------------------------------------------- */
 table {
   width: 100%;
   margin-bottom: 18px;
@@ -920,6 +914,8 @@ table th {
   font-weight: bold;
   border-bottom-width: 2px;
 }
+/* Zebra-striping
+-------------------------------------------------- */
 table.zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f5f5f5;
 }
@@ -955,11 +951,11 @@ table.zebra-striped th.headerSortUp, table.zebra-striped th.headerSortUp:hover {
   background-position: right -65px;
 }
 table.zebra-striped th.blue {
-  color: #08b5fb;
-  border-bottom-color: #08b5fb;
+  color: #049cdb;
+  border-bottom-color: #049cdb;
 }
 table.zebra-striped th.headerSortUp.blue, table.zebra-striped th.headerSortDown.blue {
-  background-color: #d1f1fe;
+  background-color: #ade6fe;
 }
 table.zebra-striped th.green {
   color: #46a546;
@@ -1003,32 +999,14 @@ div.topbar {
   background-color: #222222;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
-  /* Konqueror */
-
   background-image: -moz-linear-gradient(#333333, #222222);
-  /* FF 3.6+ */
-
   background-image: -ms-linear-gradient(#333333, #222222);
-  /* IE10 */
-
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
-  /* Safari 4+, Chrome 2+ */
-
   background-image: -webkit-linear-gradient(#333333, #222222);
-  /* Safari 5.1+, Chrome 10+ */
-
   background-image: -o-linear-gradient(#333333, #222222);
-  /* Opera 11.10 */
-
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0)";
-  /* IE8+ */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
-  /* IE6 & IE7 */
-
   background-image: linear-gradient(#333333, #222222);
-  /* the standard */
-
   height: 40px;
   position: fixed;
   top: 0;
@@ -1260,32 +1238,14 @@ div.alert-message {
   background-color: rgba(0, 0, 0, 0.15);
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.15)));
-  /* Konqueror */
-
   background-image: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-  /* FF 3.6+ */
-
   background-image: -ms-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-  /* IE10 */
-
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.15)));
-  /* Safari 4+, Chrome 2+ */
-
   background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-  /* Safari 5.1+, Chrome 10+ */
-
   background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-  /* Opera 11.10 */
-
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0)";
-  /* IE8+ */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0);
-  /* IE6 & IE7 */
-
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-  /* the standard */
-
   background-color: #e6e6e6;
   margin-bottom: 18px;
   padding: 8px 15px;
@@ -1313,7 +1273,7 @@ div.alert-message.success {
   background-color: #74c474;
 }
 div.alert-message.info {
-  background-color: #53ccfc;
+  background-color: #30c0fb;
 }
 div.alert-message a.close {
   float: right;
@@ -1372,8 +1332,8 @@ div.block-message.success {
   border: 1px solid #bbe2bb;
 }
 div.block-message.info {
-  background: #eaf9ff;
-  border: 1px solid #d1f1fe;
+  background: #c7eefe;
+  border: 1px solid #ade6fe;
 }
 ul.tabs, ul.pills {
   margin: 0 0 20px;
@@ -1464,7 +1424,7 @@ div.pagination ul li a {
   text-decoration: none;
 }
 div.pagination ul li a:hover, div.pagination ul li.active a {
-  background-color: #eaf9ff;
+  background-color: #c7eefe;
 }
 div.pagination ul li.disabled a, div.pagination ul li.disabled a:hover {
   background-color: none;
@@ -1551,35 +1511,4 @@ div.modal .modal-footer:after {
 div.modal .modal-footer .btn {
   float: right;
   margin-left: 10px;
-}
-div.quickstart {
-  background-color: #f5f5f5;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f5f5f5));
-  /* Konqueror */
-
-  background-image: -moz-linear-gradient(#f9f9f9, #f5f5f5);
-  /* FF 3.6+ */
-
-  background-image: -ms-linear-gradient(#f9f9f9, #f5f5f5);
-  /* IE10 */
-
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f5f5f5));
-  /* Safari 4+, Chrome 2+ */
-
-  background-image: -webkit-linear-gradient(#f9f9f9, #f5f5f5);
-  /* Safari 5.1+, Chrome 10+ */
-
-  background-image: -o-linear-gradient(#f9f9f9, #f5f5f5);
-  /* Opera 11.10 */
-
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0)";
-  /* IE8+ */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0);
-  /* IE6 & IE7 */
-
-  background-image: linear-gradient(#f9f9f9, #f5f5f5);
-  /* the standard */
-
 }
