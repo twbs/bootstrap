@@ -26,8 +26,8 @@ section {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#0056b0', EndColorStr='#049cd9', GradientType=0))";
 }
 #masthead div.inner, #footer div.inner {
-  background: transparent url(../img/grid-18px.png) 0 -1px;
-  padding: 36px 0;
+  background: transparent url(../img/grid-18px.png) top center;
+  padding: 54px 0;
   -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -48,12 +48,16 @@ section {
   margin-bottom: -40px;
 }
 #masthead h1 {
-  margin-bottom: 0;
+  font-size: 54px;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 9px;
 }
 #masthead p.lead {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 27px;
+  text-align: center;
   margin: 0;
 }
 #masthead a.btn {
@@ -66,10 +70,10 @@ section {
   background-image: -khtml-gradient(linear, left top, left bottom, from(#7a43b6), to(#552e7e));
   filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#7a43b6', EndColorStr='#552e7e', GradientType=0);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#7a43b6', EndColorStr='#552e7e', GradientType=0))";
-  display: block;
+  padding-top: 5px;
+  padding-bottom: 4px;
   margin-bottom: 18px;
-  text-align: center;
-  font-weight: bold;
+  font-weight: normal;
   border: 0;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -88,10 +92,60 @@ section {
 #masthead small a {
   color: #fff;
 }
+
+div.quickstart {
+/*   background-color: rgba(0,0,0,.1); */
+  margin-top: 36px;
+}
+div.quickstart div.columns {
+/*   background-color: rgba(0,0,0,.1); */
+  width: 280px;
+  height: 100px;
+  padding: 9px 10px;
+}
+div.quickstart div.columns:last-child {
+  border-right: none;
+/*   padding-right: 20px; */
+}
+div.quickstart h6,
+div.quickstart p {
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 9px;
+}
+div.quickstart h6 {
+  color: #fff;
+}
+div.quickstart form textarea {
+  line-height: 21px;
+  border: 0;
+  display: block;
+  width: 270px;
+  height: 21px;
+  margin: 0 0 9px;
+  padding: 3px 5px;
+  background-color: rgba(0,0,0,.3);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.15);
+  -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.15);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.15);
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+div.quickstart form textarea:focus {
+  background-color: #fff;
+  color: #333;
+  -webkit-box-shadow: 0 0 5px rgba(255,255,255,.25);
+  -moz-box-shadow: 0 0 5px rgba(255,255,255,.25);
+  box-shadow: 0 0 5px rgba(255,255,255,.25);
+}
+
+/*
 div.quick-start {
-  background-color: rgba(0,0,0,.25);
-  padding: 18px 20px;
-  margin: 27px 0 -36px;
+  padding: 0 20px;
+  margin: 36px 0 0;
 }
 div.quick-start h4,
 div.quick-start p,
@@ -118,6 +172,7 @@ div.quick-start form input {
   height: 21px;
   line-height: 21px;
 }
+*/
 #footer {
   margin-top: 80px;
 }
