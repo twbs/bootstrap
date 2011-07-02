@@ -719,6 +719,12 @@ form .uneditable-input {
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
 }
+form :-moz-placeholder {
+  color: #bfbfbf;
+}
+form ::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
 form input[type=text],
 form input[type=password],
 form select,
@@ -875,7 +881,7 @@ div.input-prepend .add-on, div.input-append .add-on {
   height: 18px;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
-  border: 1px solid #bbb;
+  border: 1px solid #ccc;
   border-right-width: 0;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
