@@ -34,7 +34,7 @@ $(document).ready(function(){
       $(this).parents('.add-on').removeClass('active');
     }
   });
-  
+
   // Disable certain links in docs
   $('ul.tabs a, ul.pills a, .pagination a').click(function(e) {
     e.preventDefault();
@@ -84,4 +84,46 @@ $(document).ready(function(){
   processScroll();
 
   $window.scroll(processScroll);
+
+  // POSITION TWIPSIES
+  // =================
+  $('.twipsies.well a').each(function () {
+    var type = this.title
+      , $anchor = $(this)
+      , $twipsy = $('.twipsy.' + type)
+
+      , twipsy = {
+          width: $twipsy.width() + 10
+        , height: $twipsy.height() + 10
+        }
+
+      , anchor = {
+          position: $anchor.position()
+        , width: $anchor.width()
+        , height: $anchor.height()
+        }
+
+      , offset = {
+          above: {
+            top: anchor.position.top - twipsy.height
+          , left: anchor.position.left + (anchor.width/2) - (twipsy.width/2)
+          }
+        , below: {
+            top: anchor.position.top + anchor.height
+          , left: anchor.position.left + (anchor.width/2) - (twipsy.width/2)
+          }
+        , left: {
+            top: anchor.position.top + (anchor.height/2) - (twipsy.height/2)
+          , left: anchor.position.left - twipsy.width - 5
+          }
+        , right: {
+            top: anchor.position.top + (anchor.height/2) - (twipsy.height/2)
+          , left: anchor.position.left + anchor.width + 5
+          }
+      }
+
+    $twipsy.css(offset[type])
+
+  });
+
 });
