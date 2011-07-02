@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: {{ date }}
+ * Date: Sat Jul  2 11:50:18 PDT 2011
  */
 /*
  * Reset.less
@@ -1013,31 +1013,61 @@ table.zebra-striped tbody tr:hover td {
 }
 table.zebra-striped th.header {
   cursor: pointer;
-  padding-right: 20px;
+}
+table.zebra-striped th.header:after {
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+  float: right;
+  margin-top: 7px;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #000;
+  visibility: hidden;
+  -webkit-box-shadow: 0 1px 0 #ffffff;
+  -moz-box-shadow: 0 1px 0 #ffffff;
+  box-shadow: 0 1px 0 #ffffff;
+  filter: alpha(opacity=30);
+  -khtml-opacity: 0.3;
+  -moz-opacity: 0.3;
+  opacity: 0.3;
 }
 table.zebra-striped th.headerSortUp, table.zebra-striped th.headerSortDown {
-  background-image: url(assets/img/tablesorter-indicators.png);
-  background-position: right -23px;
-  background-repeat: no-repeat;
   background-color: rgba(141, 192, 219, 0.25);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
-table.zebra-striped th.header:hover {
-  background-image: url(assets/img/tablesorter-indicators.png);
-  background-position: right 15px;
-  background-repeat: no-repeat;
+table.zebra-striped th.header:hover:after {
+  visibility: visible;
 }
 table.zebra-striped th.actions:hover {
   background-image: none;
 }
-table.zebra-striped th.headerSortDown, table.zebra-striped th.headerSortDown:hover {
-  background-position: right -25px;
+table.zebra-striped th.headerSortDown:after, table.zebra-striped th.headerSortDown:hover:after {
+  visibility: visible;
+  filter: alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
 }
-table.zebra-striped th.headerSortUp, table.zebra-striped th.headerSortUp:hover {
-  background-position: right -65px;
+table.zebra-striped th.headerSortUp:after {
+  border-bottom: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000;
+  visibility: visible;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  filter: alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
 }
 table.zebra-striped th.blue {
   color: #049cdb;
@@ -1134,8 +1164,11 @@ div.topbar a.logo img {
 div.topbar form {
   float: left;
   margin: 5px 0 0 0;
-  opacity: 1;
   position: relative;
+  filter: alpha(opacity=100);
+  -khtml-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
 }
 div.topbar form input {
   background-color: #bfbfbf;
@@ -1222,16 +1255,21 @@ div.topbar ul li.menu {
   position: relative;
 }
 div.topbar ul li.menu a.menu:after {
-  width: 7px;
-  height: 7px;
+  width: 0px;
+  height: 0px;
   display: inline-block;
-  background: transparent url(assets/img/dropdown-arrow.gif) no-repeat top center;
   content: "&darr;";
   text-indent: -99999px;
   vertical-align: top;
   margin-top: 8px;
   margin-left: 4px;
-  opacity: .5;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 div.topbar ul li.menu.open a.menu, div.topbar ul li.menu.open a:hover {
   background-color: #00b4eb;
@@ -1365,18 +1403,24 @@ div.alert-message.info {
 div.alert-message a.close {
   float: right;
   margin-top: -2px;
-  opacity: .5;
   color: #fff;
   font-size: 20px;
   font-weight: bold;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
 div.alert-message a.close:hover {
-  opacity: 1;
   text-decoration: none;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 div.block-message {
   margin-bottom: 18px;

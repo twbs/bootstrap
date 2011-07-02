@@ -50,8 +50,8 @@ div.topbar {
   form {
     float: left;
     margin: 5px 0 0 0;
-    opacity: 1;
     position: relative;
+    .opacity(100);
     input {
       background-color: @grayLight;
       background-color: rgba(255,255,255,.3);
@@ -131,16 +131,18 @@ div.topbar {
       position: relative;
       a.menu {
         &:after {
-          width: 7px;
-          height: 7px;
+          width: 0px;
+          height: 0px;
           display: inline-block;
-          background: transparent url(assets/img/dropdown-arrow.gif) no-repeat top center;
           content: "&darr;";
           text-indent: -99999px;
           vertical-align: top;
           margin-top: 8px;
           margin-left: 4px;
-          opacity: .5;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 4px solid #fff;
+          .opacity(50);
         }
       }
       &.open {
@@ -276,15 +278,15 @@ div.alert-message {
   a.close {
     float: right;
     margin-top: -2px;
-    opacity: .5;
     color: #fff;
     font-size: 20px;
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    .opacity(50);
     .border-radius(3px);
     &:hover {
-      opacity: 1;
       text-decoration: none;
+      .opacity(50);
     }
   }
 }
