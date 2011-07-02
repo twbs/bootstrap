@@ -225,3 +225,20 @@ div.topbar-wrapper div.topbar {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+
+/* Popover docs
+-------------------------------------------------- */
+div.popover-well {
+  min-height: 160px;
+}
+div.popover-well div.popover {
+  display: block;
+}
+div.popover-well div.popover-wrapper {
+  width: 50%;
+  height: 160px;
+  float: left;
+}
+div.popover-well div.popover-menu-wrapper {
+  height: 80px;
+}

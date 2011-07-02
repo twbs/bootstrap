@@ -507,6 +507,45 @@ div.modal {
   }
 }
 
+
+// Popover Arrows
+// --------------
+
+#popoverArrow {
+  .above(@arrowWidth: 5px) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-top: @arrowWidth solid #000;
+  }
+  .left(@arrowWidth: 5px) {
+    top: 50%;
+    right: 0;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-left: @arrowWidth solid #000;
+  }
+  .below(@arrowWidth: 5px) {
+    top: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid #000;
+  }
+  .right(@arrowWidth: 5px) {
+    top: 50%;
+    left: 0;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid #000;
+  }
+}
+
 // Twipsy
 // ------
 
@@ -518,46 +557,10 @@ div.twipsy {
   font-size: 11px;
   z-index: 100000;
   .opacity(80);
-  &.above {
-    .twipsy-arrow {
-      bottom: 0;
-      left: 50%;
-      margin-left: -5px;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid #000;
-    }
-  }
-  &.left {
-    .twipsy-arrow {
-      top: 50%;
-      right: 0;
-      margin-top: -5px;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-left: 5px solid #000;
-    }
-  }
-  &.below {
-    .twipsy-arrow {
-      top: 0;
-      left: 50%;
-      margin-left: -5px;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-bottom: 5px solid #000;
-    }
-  }
-  &.right {
-    .twipsy-arrow {
-      top: 50%;
-      left: 0;
-      margin-top: -5px;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-right: 5px solid #000;
-    }
-  }
+  &.above .twipsy-arrow   { #popoverArrow > .above(); }
+  &.left .twipsy-arrow    { #popoverArrow > .left(); }
+  &.below .twipsy-arrow   { #popoverArrow > .below(); }
+  &.right .twipsy-arrow   { #popoverArrow > .right(); }
   .twipsy-inner {
     padding: 3px 8px;
     background-color: #000;
@@ -572,4 +575,114 @@ div.twipsy {
     width: 0;
     height: 0;
   }
+}
+
+
+// Popovers
+// --------
+
+.popover-wrapper {
+  position: relative;
+}
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: none;
+}
+.popover-border {
+  background: rgba(0,0,0,.8);
+  padding: 5px;
+  overflow: hidden;
+  .border-radius(6px);
+  .box-shadow(0 3px 6px rgba(0,0,0,.25));
+}
+.popover-title {
+  padding: 5px 15px 10px;
+  color: #fff;
+  line-height: 1;
+}
+.popover-inner {
+  background-color: #fff;
+  overflow: hidden;
+  padding: 15px;
+  width: 200px;
+  .border-radius(3px);
+  p, ul, ol {
+    margin-bottom: 0;
+  }
+}
+
+.popover2 {
+  padding: 5px;
+  .inner {
+    .border-radius(6px);
+    .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+    width: 280px;
+  }
+  &.above .arrow   { #popoverArrow > .above(); }
+  &.right .arrow   { #popoverArrow > .right(); }
+  &.below .arrow   { #popoverArrow > .below(); }
+  &.left .arrow   { #popoverArrow > .left(); }
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  .title {
+    #gradient > .vertical(#444, #222);
+    padding: 9px 15px;
+    color: #fff;
+    line-height: 1;
+    .border-radius(6px 6px 0 0);
+  }
+  .content {
+    background-color: @white;
+    padding: 14px;
+    border: 1px solid rgba(0,0,0,1);
+    border-top: 0;
+    .border-radius(0 0 6px 6px);
+    .background-clip(padding);
+    p, ul, ol {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Alt popover for menus
+.popover-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 10000;
+  background: none;
+}
+.popover-menu .popover-arrow {
+  width: 100%;
+  height: 14px;
+  background: url(/blueprint/images/popover-menu-bottom.png) no-repeat bottom center;
+}
+.popover-menu .popover-border {
+  margin: 0 0 -3px;
+  padding: 2px;
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(0,0,0,.5);
+  .border-radius(6px);
+  overflow: hidden;
+  .box-shadow(0 3px 6px rgba(0,0,0,.25));
+  -webkit-background-clip: padding;
+}
+.popover-menu .popover-inner {
+  background: #222;
+  padding: 7px;
+  .border-radius(4px);
+  width: 150px;
+}
+
+.popover-menu a {
+  color: #fff;
+  font-weight: bold;
+  padding: 5px 8px;
 }
