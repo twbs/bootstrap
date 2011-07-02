@@ -1,14 +1,29 @@
-# NOTE: you must have the less npm package installed globally to build!
-# To install less package run: $npm install less -g
-# watchr -e "watch('lib/.*\.less') { system 'make' }"
+DATE=$(shell DATE)
+BOOTSTRAP = ./bootstrap-1.0.0.css
+BOOTSTRAP_MIN = ./bootstrap-1.0.0.min.css
+BOOTSTRAP_LESS = ./lib/bootstrap.less
+LESS_COMPESSOR ?= `which lessc`
+WATCHR ?= `which watchr`
 
 build:
-	@lessc ./lib/bootstrap.less > ./bootstrap-1.0.0.css
-	@lessc ./lib/bootstrap.less > ./bootstrap-1.0.0.min.css --compress
-	@echo "Bootstrap successfully built! - `date`"
+	@@if test ! -z ${LESS_COMPESSOR}; then \
+		sed 's/@DATE/'"${DATE}"'/' ${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp; \
+		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP}; \
+		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP_MIN} --compress; \
+		rm -f ${BOOTSTRAP_LESS}.tmp; \
+		echo "Bootstrap successfully built! - `date`"; \
+	else \
+		echo "You must have the LESS compiler installed in order to build Bootstrap."; \
+		echo "You can install it by running: npm install less -g"; \
+	fi
 
 watch:
-	@echo "Watching less files for changes..."
-	@watchr -e "watch('lib/.*\.less') { system 'make' }"
+	@@if test ! -z ${LESS_COMPESSOR}; then \
+	  echo "Watching less files..."; \
+	  watchr -e "watch('lib/.*\.less') { system 'make' }"; \
+	else \
+		echo "You must have the WATCHR installed in order to build Bootstrap."; \
+		echo "You can install it by running: gem install watchr"; \
+	fi
 
-.PHONY: build
+.PHONY: build watch
