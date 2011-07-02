@@ -1128,8 +1128,11 @@ div.topbar a.logo img {
 div.topbar form {
   float: left;
   margin: 5px 0 0 0;
-  opacity: 1;
   position: relative;
+  filter: alpha(opacity=100);
+  -khtml-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
 }
 div.topbar form input {
   background-color: #bfbfbf;
@@ -1225,7 +1228,10 @@ div.topbar ul li.menu a.menu:after {
   vertical-align: top;
   margin-top: 8px;
   margin-left: 4px;
-  opacity: .5;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 div.topbar ul li.menu.open a.menu, div.topbar ul li.menu.open a:hover {
   background-color: #00b4eb;
@@ -1359,18 +1365,24 @@ div.alert-message.info {
 div.alert-message a.close {
   float: right;
   margin-top: -2px;
-  opacity: .5;
   color: #fff;
   font-size: 20px;
   font-weight: bold;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
 div.alert-message a.close:hover {
-  opacity: 1;
   text-decoration: none;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 div.block-message {
   margin-bottom: 18px;
