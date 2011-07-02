@@ -86,7 +86,7 @@ $(document).ready(function(){
   // Disable certain links in docs
   // =============================
 
-  $('ul.tabs a, ul.pills a, .pagination a').click(function(e) {
+  $('ul.tabs a, ul.pills a, .pagination a, .well .btn, .actions .btn, .alert-message .btn, a.close').click(function(e) {
     e.preventDefault();
   });
 
