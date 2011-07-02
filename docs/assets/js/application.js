@@ -1,55 +1,8 @@
 $(document).ready(function(){
 
-  // Example dropdown for topbar nav
-  $("body").bind("click", function(e) {
-    $("ul.menu-dropdown").hide();
-    $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
-  });
+  // scroll spy logic
+  // ================
 
-  $("a.menu").click(function(e) {
-    var $target = $(this);
-    var $parent = $target.parent("li");
-    var $siblings = $target.siblings("ul.menu-dropdown");
-    var $parentSiblings = $parent.siblings("li");
-    if ($parent.hasClass("open")) {
-      $parent.removeClass("open");
-      $siblings.hide();
-    } else {
-      $parent.addClass("open");
-      $siblings.show();
-    }
-    $parentSiblings.children("ul.menu-dropdown").hide();
-    $parentSiblings.removeClass("open");
-    return false;
-  });
-
-  // table sort example
-  $("#sortTableExample").tablesorter( {sortList: [[1,0]]} );
-
-  // add on
-  $('.add-on :checkbox').click(function() {
-    if ($(this).attr('checked')) {
-      $(this).parents('.add-on').addClass('active');
-    } else {
-      $(this).parents('.add-on').removeClass('active');
-    }
-  });
-
-  // Disable certain links in docs
-  $('ul.tabs a, ul.pills a, .pagination a').click(function(e) {
-    e.preventDefault();
-  });
-
-  // Copy code blocks in docs
-  $(".copy-code").focus(function() {
-    $(this).select();
-  });
-  $(".copy-code").mouseup(function(e) {
-    e.preventDefault();
-  });
-
-
-  // scroll spyer
   var activeTarget,
       $window = $(window),
       position = {},
@@ -85,8 +38,70 @@ $(document).ready(function(){
 
   $window.scroll(processScroll);
 
+
+  // Dropdown example for topbar nav
+  // ===============================
+
+  $("body").bind("click", function(e) {
+    $("ul.menu-dropdown").hide();
+    $('a.menu').parent("li").removeClass("open").children("ul.menu-dropdown").hide();
+  });
+
+  $("a.menu").click(function(e) {
+    var $target = $(this);
+    var $parent = $target.parent("li");
+    var $siblings = $target.siblings("ul.menu-dropdown");
+    var $parentSiblings = $parent.siblings("li");
+    if ($parent.hasClass("open")) {
+      $parent.removeClass("open");
+      $siblings.hide();
+    } else {
+      $parent.addClass("open");
+      $siblings.show();
+    }
+    $parentSiblings.children("ul.menu-dropdown").hide();
+    $parentSiblings.removeClass("open");
+    return false;
+  });
+
+
+  // table sort example
+  // ==================
+
+  $("#sortTableExample").tablesorter( {sortList: [[1,0]]} );
+
+
+  // add on logic
+  // ============
+
+  $('.add-on :checkbox').click(function() {
+    if ($(this).attr('checked')) {
+      $(this).parents('.add-on').addClass('active');
+    } else {
+      $(this).parents('.add-on').removeClass('active');
+    }
+  });
+
+
+  // Disable certain links in docs
+  // =============================
+
+  $('ul.tabs a, ul.pills a, .pagination a').click(function(e) {
+    e.preventDefault();
+  });
+
+  // Copy code blocks in docs
+  $(".copy-code").focus(function() {
+    $(this).select();
+  });
+  $(".copy-code").mouseup(function(e) {
+    e.preventDefault();
+  });
+
+
   // POSITION TWIPSIES
   // =================
+
   $('.twipsies.well a').each(function () {
     var type = this.title
       , $anchor = $(this)
