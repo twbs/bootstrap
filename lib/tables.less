@@ -44,32 +44,54 @@ table.zebra-striped {
   // Tablesorting styles w/ jQuery plugin
   th.header { // For tablesorter tables, make THs have a pointer on hover
     cursor: pointer;
-    padding-right: 20px;
+    &:after {
+      width: 0px;
+      height: 0px;
+      display: inline-block;
+      float: right;
+      margin-top:7px;
+      content: "&darr;";
+      text-indent: -99999px;
+      vertical-align: top;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid #000;
+      visibility:hidden;
+      .box-shadow(0 1px 0 #fff);
+      .opacity(30);
+    }
   }
   th.headerSortUp,
   th.headerSortDown { // Style the sorted column headers (THs)
-    background-image: url(assets/img/tablesorter-indicators.png);
-    background-position: right -23px;
-    background-repeat: no-repeat;
     background-color: rgba(141,192,219,.25);
     text-shadow: 0 1px 1px rgba(255,255,255,.75);
     .border-radius(3px 3px 0 0);
   }
   th.header:hover { // Style the ascending (reverse alphabetical) column header
-    background-image: url(assets/img/tablesorter-indicators.png);
-    background-position: right 15px;
-    background-repeat: no-repeat;
+    &:after {
+      visibility:visible;
+    }
   }
   th.actions:hover {
     background-image: none;
   }
   th.headerSortDown,
   th.headerSortDown:hover { // Style the descending (alphabetical) column header
-    background-position: right -25px;
+    &:after {
+      visibility:visible;
+      .opacity(60);
+    }
   }
-  th.headerSortUp,
-  th.headerSortUp:hover { // Style the ascending (reverse alphabetical) column header
-    background-position: right -65px;
+  th.headerSortUp { // Style the ascending (reverse alphabetical) column header
+    &:after {
+      border-bottom: none;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #000;
+      visibility:visible;
+      .box-shadow(none); //can't add boxshadow to downward facing arrow :(
+      .opacity(60);
+    }
   }
   // Blue Table Headings
   th.blue {

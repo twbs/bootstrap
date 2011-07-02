@@ -131,15 +131,17 @@ div.topbar {
       position: relative;
       a.menu {
         &:after {
-          width: 7px;
-          height: 7px;
+          width: 0px;
+          height: 0px;
           display: inline-block;
-          background: transparent url(assets/img/dropdown-arrow.gif) no-repeat top center;
           content: "&darr;";
           text-indent: -99999px;
           vertical-align: top;
           margin-top: 8px;
           margin-left: 4px;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 4px solid #fff;
           .opacity(50);
         }
       }
