@@ -401,7 +401,7 @@
     <target name="-invalid" description="(PRIVATE) Prevents deletion of current directory or other innocent directories from human error" depends="-check-publish-dir" if="publish-invalid">
       <fail message="Your dir.publish folder setting could delete your entire site or worse. Change it in project.properties"/>      
     </target>    
-    <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory" depends="-check-publish-dir" unless="publish-invalid">
+    <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
     <!-- This is a private target -->        
         <echo message="Cleaning up previous build directory..."/>
         <delete dir="./${dir.intermediate}/"/>
@@ -687,6 +687,13 @@
 
 
     <!-- CSS -->
+    <target name="-css-remove-concatenated-stylesheets">
+            <echo>Removing ${css_file} from html</echo>
+            <replaceregexp match="&lt;link.+href=&quot;.*${css_file}&quot;.*&gt;" replace="  ">
+                <fileset dir="${dir.publish}" includes="${page-files}"/>
+            </replaceregexp>       
+    </target>
+        
     <target name="-css" depends="-mkdirs" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
         <echo message="Concatenating css..."/>
         
@@ -730,6 +737,7 @@
             <mapper type="glob" from="*.css" to="${basedir}/${dir.publish}/${dir.css}/*.css"/>
             <targetfile/>
         </apply>
+        <foreach list="${file.stylesheets}" param="css_file" target="-css-remove-concatenated-stylesheets" />        
     </target>
     
     
