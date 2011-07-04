@@ -166,7 +166,7 @@
     </if>
     </target>
 
-    <target name="clean" depends="-clean, -invalid"/>
+    <target name="clean" depends="-clean"/>
     
     
     
