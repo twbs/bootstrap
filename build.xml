@@ -780,7 +780,7 @@
                     </fileset>
                 </delete>
                 <apply executable="optipng" dest="./${dir.publish}/${dir.images}/" osfamily="unix">
-                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
+                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                     <arg value="-quiet"/>
                     <arg value="-o7"/>
                     <arg value="-out"/>
@@ -806,7 +806,7 @@
             </fileset>
         </delete>
         <apply executable="${basedir}/${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
-            <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
+            <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
             <arg value="-quiet"/>
             <arg value="-o7"/>
             <arg value="-out"/>
@@ -819,7 +819,7 @@
 
     <target name="-imagesjpg" depends="-mkdirs" description="(PRIVATE) Optimizes .jpg images using jpegtan">
         <echo message="Now, we clean up those jpgs..."/>
-        
+
         <if>
             <equals arg1="${images.strip.metadata}" arg2="true"/>
             <then>
@@ -838,7 +838,7 @@
             </and>
             <then>
                 <apply executable="jpegtran" dest="./${dir.publish}/${dir.images}" osfamily="unix">
-                    <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"/>
+                    <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg" excludes="${images.bypass}, ${images.default.bypass}"/>
                     <arg value="-copy"/>
                     <arg value="${strip-meta-tags}"/>
                     <arg value="-optimize"/>
@@ -861,7 +861,7 @@
         </if>
 
         <apply executable="${basedir}/${dir.build.tools}/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
-            <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"/>
+            <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"  excludes="${images.bypass}, ${images.default.bypass}"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
             <arg value="-optimize"/>
@@ -874,14 +874,13 @@
         </apply>
     </target>
 
-    
+
     <target name="-imgcopy" depends="-mkdirs">
         <echo message="Copying over the unmodified images."/>
-        
+
         <copy todir="./${dir.publish}/${dir.images}">
             <fileset dir="${dir.source}/${dir.images}"  includes="**/*.jpg, **/*.png"/>
         </copy> 
     </target>
-
     
 </project>
