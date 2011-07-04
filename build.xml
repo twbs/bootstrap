@@ -179,13 +179,13 @@
     
     <!-- JSLint target, run separately -->
 	<target name="jslint">
-        <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
+      <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
 			<fileset dir="./${dir.source}/">
-                <include name="**/${dir.js}/*.js"/>
-                <exclude name="**/*.min.js"/>
-            	<exclude name="**/${dir.js.libs}/"/>
-            	<exclude name="**/${dir.publish}/"/>
-		    </fileset> 
+        <include name="**/${dir.js}/*.js"/>
+        <exclude name="**/*.min.js"/>
+        <exclude name="**/${dir.js.libs}/"/>
+        <exclude name="**/${dir.publish}/"/>
+		  </fileset> 
 			<arg value="-jar" />
 			<arg path="./${dir.build.tools}/${tool.rhino}" />
 			<arg path="./${dir.build.tools}/${tool.jslint}" />
@@ -198,13 +198,13 @@
   
     <!-- JSHint target, run separately -->
 	<target name="jshint">
-        <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
+      <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
 			<fileset dir="./${dir.source}/">
-                <include name="**/${dir.js}/*.js"/>
-                <exclude name="**/*.min.js"/>
-            	<exclude name="**/${dir.js.libs}/"/>
-            	<exclude name="**/${dir.publish}/"/>
-		    </fileset> 
+        <include name="**/${dir.js}/*.js"/>
+        <exclude name="**/*.min.js"/>
+        <exclude name="**/${dir.js.libs}/"/>
+        <exclude name="**/${dir.publish}/"/>
+		  </fileset> 
 			<arg value="-jar" />
 			<arg path="./${dir.build.tools}/${tool.rhino}" />
 			<arg path="./${dir.build.tools}/${tool.jshint}" />
@@ -393,21 +393,7 @@
     * FUNCTION TARGETS                              *
     *************************************************
     -->
-    
-    <target name="-check-publish-dir">
-      <condition property="publish-invalid">
-        <or>
-          <equals arg1="${dir.publish}" arg2="."/>
-          <equals arg1="${dir.publish}" arg2=".."/>        
-          <equals arg1="${dir.publish}" arg2="/"/>        
-          <equals arg1="${dir.publish}" arg2="./"/>        
-          <equals arg1="${dir.publish}" arg2="../"/>                  
-        </or>
-      </condition>            
-    </target>
-    <target name="-invalid" description="(PRIVATE) Prevents deletion of current directory or other innocent directories from human error" depends="-check-publish-dir" if="publish-invalid">
-      <fail message="Your dir.publish folder setting could delete your entire site or worse. Change it in project.properties"/>      
-    </target>    
+        
     <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
     <!-- This is a private target -->        
         <echo message="Cleaning up previous build directory..."/>
@@ -434,21 +420,35 @@
     
     </target>
     
-    <target name="-mkdirs" depends="-check-publish-dir, -invalid" unless="publish-invalid">
-        <echo message="Creating directory structure... ${dir.publish}"/>
+    <target name="-mkdirs">
+      <if>
+          <or>
+            <equals arg1="${dir.publish}" arg2="."/>            
+            <equals arg1="${dir.publish}" arg2=".."/>                      
+            <equals arg1="${dir.publish}" arg2="/"/>                      
+            <equals arg1="${dir.publish}" arg2="./"/>                      
+            <equals arg1="${dir.publish}" arg2="../"/>                      
+          </or>
+          <then>
+            <fail message="Your dir.publish folder is set to ${dir.publish} which could delete your entire site or worse. Change it in project.properties"/>      
+          </then>
+          <else>
+            <echo message="Creating directory structure... ${dir.publish}"/>
 
-        <mkdir dir="${dir.intermediate}"/>
-        <copy todir="${dir.intermediate}" includeEmptyDirs="true">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                <type type="dir"/>
-            </fileset>
-        </copy>
-          <mkdir dir="${dir.publish}"/>
-          <copy todir="${dir.publish}" includeEmptyDirs="true">
-              <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                  <type type="dir"/>
-              </fileset>
-          </copy>                      
+            <mkdir dir="${dir.intermediate}"/>
+            <copy todir="${dir.intermediate}" includeEmptyDirs="true">
+                <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                    <type type="dir"/>
+                </fileset>
+            </copy>
+              <mkdir dir="${dir.publish}"/>
+              <copy todir="${dir.publish}" includeEmptyDirs="true">
+                  <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                      <type type="dir"/>
+                  </fileset>
+              </copy>                      
+          </else>
+      </if>                  
     </target>
     
     <target name="-copy" depends="-mkdirs">
@@ -489,6 +489,8 @@
         <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/">
                 <include name="**/*.js"/>
+                <exclude name="${file.default.js.bypass}"/>
+                <exclude name="${file.js.bypass}"/>                
             </fileset>      
         </concat>
     </target>
@@ -520,13 +522,15 @@
     
     <target name="-js.all.minify" depends="-mkdirs" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
         <echo message="Minifying scripts"/>
-        <copy todir="${dir.intermediate}/${dir.js}">
-            <fileset dir="${dir.source}/${dir.js}" includes="**/*.min.js"/>
+        <copy todir="${dir.intermediate}/">
+            <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js, ${dir.js.mylibs}/${file.default.js.bypass}, ${dir.js.mylibs}/${file.js.bypass}"/>
         </copy>
         <apply executable="java" parallel="false">
-            <fileset dir="${dir.source}/${dir.js}">
-                <include name="**/*.js"/>
-                <exclude name="**/*.min.js"/>
+            <fileset dir="${dir.source}/">
+                <include name="${dir.js}/**/*.js"/>
+                <exclude name="${dir.js}/**/*.min.js"/>
+                <exclude name="${dir.js.mylibs}/${file.default.js.bypass}"/>
+                <exclude name="${dir.js.mylibs}/${file.js.bypass}"/>                
                 <!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
                 <!--<exclude name="scripts-concat.js"/>-->
                 <!--<exclude name="libs-concat.js"/>-->
@@ -537,22 +541,26 @@
             <arg line="--line-break"/>
             <arg line="4000"/>
             <arg line="-o"/>
-            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/${dir.js}/*.js"/>
+            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/*.js"/>
             <targetfile/>
         </apply>
 
         <!-- at this point all js files are minified with their original names -->
 
-        <copy todir="${dir.publish}/${dir.js}">
-            <fileset dir="${dir.intermediate}/${dir.js}">
-                <include name="**/*.js"/>
-                <exclude name="mylibs/**/*.js"/>
-                <exclude name="scripts-concat.js"/>
-                <exclude name="libs-concat.js"/>
-                <exclude name="scripts-concat.min.js"/>
-                <exclude name="plugins.js"/>
-                <exclude name="script.js"/>
-            </fileset>
+        <copy todir="${dir.publish}/">
+          <fileset dir="${dir.intermediate}/">
+              <include name="${dir.js}/**/*.js"/>
+              <exclude name="${dir.js.mylibs}/**/*.js"/>
+              <exclude name="${dir.js}/scripts-concat.js"/>
+              <exclude name="${dir.js}/libs-concat.js"/>
+              <exclude name="${dir.js}/scripts-concat.min.js"/>
+              <exclude name="${dir.js}/plugins.js"/>
+              <exclude name="${dir.js}/script.js"/>
+          </fileset>
+          <fileset dir="${dir.intermediate}/">
+            <include name="${dir.js.mylibs}/${file.default.js.bypass}"/>                                                
+            <include name="${dir.js.mylibs}/${file.js.bypass}"/>                                              
+          </fileset>
         </copy>
     </target>
     
