@@ -24,7 +24,14 @@
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
-
+<!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
+	<fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
+		<condition>
+			<not>
+				<contains string="${ant.version}" substring="1.8.2"/>
+			</not>
+		</condition>
+	</fail>
     
     <!--
     *************************************************
