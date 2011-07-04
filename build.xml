@@ -166,7 +166,7 @@
     </if>
     </target>
 
-    <target name="clean" depends="-clean"/>
+    <target name="clean" depends="-clean, -invalid"/>
     
     
     
@@ -386,9 +386,23 @@
     * FUNCTION TARGETS                              *
     *************************************************
     -->
-    <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
-    <!-- This is a private target -->
     
+    <target name="-check-publish-dir">
+      <condition property="publish-invalid">
+        <or>
+          <equals arg1="${dir.publish}" arg2="."/>
+          <equals arg1="${dir.publish}" arg2=".."/>        
+          <equals arg1="${dir.publish}" arg2="/"/>        
+          <equals arg1="${dir.publish}" arg2="./"/>        
+          <equals arg1="${dir.publish}" arg2="../"/>                  
+        </or>
+      </condition>            
+    </target>
+    <target name="-invalid" description="(PRIVATE) Prevents deletion of current directory or other innocent directories from human error" depends="-check-publish-dir" if="publish-invalid">
+      <fail message="Your dir.publish folder setting could delete your entire site or worse. Change it in project.properties"/>      
+    </target>    
+    <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory" depends="-check-publish-dir" unless="publish-invalid">
+    <!-- This is a private target -->        
         <echo message="Cleaning up previous build directory..."/>
         <delete dir="./${dir.intermediate}/"/>
         <delete dir="./${dir.publish}/"/>
@@ -413,8 +427,8 @@
     
     </target>
     
-    <target name="-mkdirs">
-        <echo message="Creating directory structure..."/>
+    <target name="-mkdirs" depends="-check-publish-dir, -invalid" unless="publish-invalid">
+        <echo message="Creating directory structure... ${dir.publish}"/>
 
         <mkdir dir="${dir.intermediate}"/>
         <copy todir="${dir.intermediate}" includeEmptyDirs="true">
@@ -422,13 +436,12 @@
                 <type type="dir"/>
             </fileset>
         </copy>
-
-        <mkdir dir="${dir.publish}"/>
-        <copy todir="${dir.publish}" includeEmptyDirs="true">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                <type type="dir"/>
-            </fileset>
-        </copy>
+          <mkdir dir="${dir.publish}"/>
+          <copy todir="${dir.publish}" includeEmptyDirs="true">
+              <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                  <type type="dir"/>
+              </fileset>
+          </copy>                      
     </target>
     
     <target name="-copy" depends="-mkdirs">
