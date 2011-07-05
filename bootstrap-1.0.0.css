@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jul  2 11:50:18 PDT 2011
+ * Date: Sat Jul  2 15:34:02 PDT 2011
  */
 /*
  * Reset.less
@@ -1131,7 +1131,7 @@ div.topbar {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 10000;
   overflow: visible;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -1649,7 +1649,7 @@ div.twipsy {
   visibility: visible;
   padding: 5px;
   font-size: 11px;
-  z-index: 100000;
+  z-index: 1000;
   filter: alpha(opacity=80);
   -khtml-opacity: 0.8;
   -moz-opacity: 0.8;
@@ -1710,7 +1710,7 @@ div.twipsy .twipsy-arrow {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 1000;
   display: none;
 }
 .popover-border {
@@ -1829,7 +1829,7 @@ div.twipsy .twipsy-arrow {
   top: 0;
   left: 0;
   display: none;
-  z-index: 10000;
+  z-index: 1000;
   background: none;
 }
 .popover-menu .popover-arrow {
