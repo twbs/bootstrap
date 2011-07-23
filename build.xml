@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <!DOCTYPE project>
 <project name="Boilerplate Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
 
@@ -705,7 +705,7 @@
     <target name="-css-remove-concatenated-stylesheets">
             <echo>Removing ${css_file} from html</echo>
             <replaceregexp match="&lt;link.+href=&quot;.*${css_file}&quot;.*&gt;" replace="  ">
-                <fileset dir="${dir.publish}" includes="${page-files}"/>
+                <fileset dir="${dir.intermediate}" includes="${page-files}"/>
             </replaceregexp>       
     </target>
         
