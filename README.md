@@ -1,9 +1,11 @@
 TWITTER BASELINE
-----------------
+================
+
 Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
 
 
-== Usage ==
+Usage
+-----
 
 You can use Twitter Bootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
 
@@ -19,12 +21,14 @@ Or if you prefer, the standard css way:
 For more info, refer to the docs!
 
 
-== Reporting bugs ==
+Reporting bugs
+--------------
 
 Please create an issue here on github! :P
 
 
-== AUTHORS ==
+AUTHORS
+-------
 
 **Mark Otto**
 http://twitter.com/mdo
@@ -33,7 +37,8 @@ http://twitter.com/mdo
 http://twitter.com/fat
 
 
-== Copyright and License ==
+Copyright and License
+---------------------
 
 Copyright 2011 Twitter, Inc.
 
