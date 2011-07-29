@@ -31,10 +31,14 @@ AUTHORS
 -------
 
 **Mark Otto**
-http://twitter.com/mdo
+
++ http://twitter.com/mdo
++ http://github.com/markdotto
 
 **Jacob Thornton**
-http://twitter.com/fat
+
++ http://twitter.com/fat
++ http://github.com/fat
 
 
 Copyright and License
