@@ -231,14 +231,24 @@ div.topbar-wrapper div.topbar {
 div.popover-well {
   min-height: 160px;
 }
+
 div.popover-well div.popover {
   display: block;
 }
+
 div.popover-well div.popover-wrapper {
   width: 50%;
   height: 160px;
   float: left;
+  margin-left: 55px;
+  position:relative;
 }
+
 div.popover-well div.popover-menu-wrapper {
   height: 80px;
+}
+
+img.large-bird {
+  margin: 5px 0 0 310px;
+  opacity:.1;
 }
