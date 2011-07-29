@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jul  2 15:34:02 PDT 2011
+ * Date: Thu Jul 28 17:49:29 PDT 2011
  */
 /*
  * Reset.less
@@ -1703,57 +1703,15 @@ div.twipsy .twipsy-arrow {
   width: 0;
   height: 0;
 }
-.popover-wrapper {
-  position: relative;
-}
 .popover {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1000;
+  padding: 5px;
   display: none;
 }
-.popover-border {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 5px;
-  overflow: hidden;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-}
-.popover-title {
-  padding: 5px 15px 10px;
-  color: #fff;
-  line-height: 1;
-}
-.popover-inner {
-  background-color: #fff;
-  overflow: hidden;
-  padding: 15px;
-  width: 200px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-.popover-inner p, .popover-inner ul, .popover-inner ol {
-  margin-bottom: 0;
-}
-.popover2 {
-  padding: 5px;
-}
-.popover2 .inner {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  width: 280px;
-}
-.popover2.above .arrow {
+.popover.above .arrow {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
@@ -1761,7 +1719,7 @@ div.twipsy .twipsy-arrow {
   border-right: 5px solid transparent;
   border-top: 5px solid #000000;
 }
-.popover2.right .arrow {
+.popover.right .arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
@@ -1769,7 +1727,7 @@ div.twipsy .twipsy-arrow {
   border-bottom: 5px solid transparent;
   border-right: 5px solid #000000;
 }
-.popover2.below .arrow {
+.popover.below .arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
@@ -1777,7 +1735,7 @@ div.twipsy .twipsy-arrow {
   border-right: 5px solid transparent;
   border-bottom: 5px solid #000000;
 }
-.popover2.left .arrow {
+.popover.left .arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
@@ -1785,82 +1743,42 @@ div.twipsy .twipsy-arrow {
   border-bottom: 5px solid transparent;
   border-left: 5px solid #000000;
 }
-.popover2 .arrow {
+.popover .arrow {
   position: absolute;
   width: 0;
   height: 0;
 }
-.popover2 .title {
-  background-color: #222222;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#444444), to(#222222));
-  background-image: -moz-linear-gradient(#444444, #222222);
-  background-image: -ms-linear-gradient(#444444, #222222);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #444444), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(#444444, #222222);
-  background-image: -o-linear-gradient(#444444, #222222);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#222222', GradientType=0)";
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#222222', GradientType=0);
-  background-image: linear-gradient(#444444, #222222);
-  padding: 9px 15px;
-  color: #fff;
-  line-height: 1;
-  -webkit-border-radius: 6px 6px 0 0;
-  -moz-border-radius: 6px 6px 0 0;
-  border-radius: 6px 6px 0 0;
+.popover .inner {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 3px;
+  overflow: hidden;
+  width: 280px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 }
-.popover2 .content {
+.popover .title {
+  background: #f5f5f5;
+  padding: 9px 15px;
+  line-height: 1;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid #eee;
+}
+.popover .content {
   background-color: #ffffff;
   padding: 14px;
-  border: 1px solid #000000;
-  border-top: 0;
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
   -webkit-background-clip: padding;
   -moz-background-clip: padding;
   background-clip: padding;
 }
-.popover2 .content p, .popover2 .content ul, .popover2 .content ol {
+.popover .content p, .popover .content ul, .popover .content ol {
   margin-bottom: 0;
-}
-.popover-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  z-index: 1000;
-  background: none;
-}
-.popover-menu .popover-arrow {
-  width: 100%;
-  height: 14px;
-  background: url(/blueprint/images/popover-menu-bottom.png) no-repeat bottom center;
-}
-.popover-menu .popover-border {
-  margin: 0 0 -3px;
-  padding: 2px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  overflow: hidden;
-  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-  -webkit-background-clip: padding;
-}
-.popover-menu .popover-inner {
-  background: #222;
-  padding: 7px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  width: 150px;
-}
-.popover-menu a {
-  color: #fff;
-  font-weight: bold;
-  padding: 5px 8px;
 }
