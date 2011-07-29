@@ -1,20 +1,20 @@
 TWITTER BASELINE
 ----------------
-Baseline is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
+Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
 
 
 == Usage ==
 
-You can use Twitter Baseline in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
+You can use Twitter Bootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
 
 Here's what the LESS version looks like:
 
-    <link rel="stylesheet/less" type="text/css" href="lib/global.less">
+    <link rel="stylesheet/less" type="text/css" href="lib/bootstrap.less">
     <script src="less.js" type="text/javascript"></script>
 
 Or if you prefer, the standard css way:
 
-    <link rel="stylesheet" type="text/css" href="baseline-1.0.0.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-1.0.0.css">
 
 For more info, refer to the docs!
 
@@ -28,6 +28,9 @@ Please create an issue here on github! :P
 
 **Mark Otto**
 http://twitter.com/mdo
+
+**Jacob Thornton**
+http://twitter.com/fat
 
 
 == Copyright and License ==
