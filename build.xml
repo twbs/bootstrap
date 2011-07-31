@@ -650,6 +650,7 @@
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
@@ -672,6 +673,7 @@
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
@@ -693,6 +695,7 @@
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
