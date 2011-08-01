@@ -5,12 +5,12 @@
 
     <!-- Load in Ant-Contrib to give us access to some very useful tasks! -->
     <!-- the .jar file is located in the tools directory -->
-    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
         <classpath>
             <pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
         </classpath>
     </taskdef>
-
+    
     <!-- load shell environment -->
     <property environment="ENV" />
 
@@ -32,7 +32,7 @@
             </not>
         </condition>
     </fail>
-    
+
     <!--
     *************************************************
     * BASE TARGETS                                  *
@@ -707,7 +707,7 @@
         <loadfile property="root" srcfile="${dir.source}/${dir.css}/${file.root.stylesheet}"/>
         <var name="curr.buffer" value=""/>
     
-        <ac:for delimiter="${line.separator}" param="currline" list="${root}" xmlns:ac="antlib:net.sf.antcontrib">
+        <for delimiter="${line.separator}" param="currline" list="${root}">
             <sequential>
                 <!-- does this line contain an h5bp-import? -->
                 <propertyregex property="export.name" input="@{currline}" regexp="^.*- h5bp-export: (.*) -.*$" select="\1" casesensitive="true" override="true" />
@@ -734,12 +734,12 @@
 
                     
                         <!-- insert import line into new root -->
-                        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value="@import(${curr.file});${line.separator}/* remove me */"/>
+                        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value="@import url(${curr.file});${line.separator}/* remove me */"/>
                     </then>
                 </if>
                 <var name="curr.buffer" value="${curr.buffer}@{currline}${line.separator}" />                                        
             </sequential>
-        </ac:for>
+        </for>
         <!-- one more time to write out the last file -->
         <if>
             <isset property="curr.file"/>
@@ -768,7 +768,7 @@
 
         <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
         <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
-                       match="^@import *url *\( *'?([^'^ ]*)'? *\) *([a-zA-Z, ]*);.*$" 
+                       match="^@import(?: url *)?\( *'?([^'^ ]*)'? *\) *([a-zA-Z, ]*);.*$" 
                        replace="@media \2{ /* h5bp-import: \1 */ }" byline="true" />
         
         <!-- replace imports with h5bp-import tags (part 2) -->
@@ -785,7 +785,7 @@
         <var name="concat-files" value="${file.root.stylesheet}"/>
 
         <!-- go over the file line by line -->
-        <ac:for delimiter="${line.separator}" param="import" list="${imports}" xmlns:ac="antlib:net.sf.antcontrib">
+        <for delimiter="${line.separator}" param="import" list="${imports}">
             <sequential>
                 <!-- does this line contain an h5bp-import? -->
                 <propertyregex property="file.name" input="@{import}" regexp="/\* h5bp-import: (.*) \*/" select="\1" casesensitive="true" override="true" />
@@ -805,7 +805,7 @@
                     </then>
                 </if>
             </sequential>
-        </ac:for>
+        </for>
         <echo message="Minifying css..."/>
         
         <apply executable="java" parallel="false">
