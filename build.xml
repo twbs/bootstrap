@@ -527,10 +527,7 @@
             <fileset dir="${dir.source}/" >
                 <include name="${dir.js}/**/*.js"/>
                 <exclude name="${dir.js}/**/*.min.js"/>
-				<exclude name="${dir.js.mylibs}/**/*.js"/>
-				<!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
-                <!--<exclude name="scripts-concat.js"/>-->
-                <!--<exclude name="libs-concat.js"/>-->
+                <exclude name="${dir.js.mylibs}/**/*.js"/>
             </fileset>
             <arg line="-jar"/>
             <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
@@ -599,37 +596,26 @@
         
         <echo>Remove favicon.ico reference if it is pointing to the root</echo>
         <replaceregexp match="&lt;link rel=[&quot;']shortcut icon[&quot;'] href=[&quot;']/favicon\.ico[&quot;']&gt;" replace="">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
         <replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replace>
         -->
 
         <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
         <!-- style.css replacement handled as a replacetoken above -->
         <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!--[! use comments like this one to avoid having them get minified -->
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
-        <if>
-            <isset property="gae.css_dir" />
-            <then>
-                <replaceregexp match="href=[&quot;']([\/]?)${gae.css_dir}\/style.css[&quot;']"
-                               replace="href=&quot;\1${style.css}&quot;" flags="g">
-                    <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
-                </replaceregexp>
-            </then>
-            <else>
-                <replaceregexp match="href=[&quot;']([\/]?)${dir.css}\/style.css[&quot;']"
-                               replace="href=&quot;\1${style.css}&quot;" flags="g">
-                    <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
-                </replaceregexp>
-            </else>
-        </if>
+
+        <replaceregexp match="&lt;!-- CSS concatenated [\d\w\s\W]*?!-- end CSS--&gt;" replace="&lt;link rel='stylesheet' href='${style.css}'&gt;" flags="m">
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+        </replaceregexp>
     </target>
     
     
@@ -702,6 +688,7 @@
 
 
     <!-- CSS -->
+
     <target name="-css-remove-concatenated-stylesheets">
             <echo>Removing ${css_file} from html</echo>
             <replaceregexp match="&lt;link.+href=&quot;.*${css_file}&quot;.*&gt;" replace="  ">
@@ -709,20 +696,122 @@
             </replaceregexp>       
     </target>
         
+
+    <target name="css-split" description="turns style.css into multiple files @imported together">
+        <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${file.root.stylesheet}.temp"/>
+        
+        <replaceregexp file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" 
+               match=".*" 
+               replace="/* remove me */" flags="s" />
+    
+        <loadfile property="root" srcfile="${dir.source}/${dir.css}/${file.root.stylesheet}"/>
+        <var name="curr.buffer" value=""/>
+    
+        <ac:for delimiter="${line.separator}" param="currline" list="${root}" xmlns:ac="antlib:net.sf.antcontrib">
+            <sequential>
+                <!-- does this line contain an h5bp-import? -->
+                <propertyregex property="export.name" input="@{currline}" regexp="^.*- h5bp-export: (.*) -.*$" select="\1" casesensitive="true" override="true" />
+
+                <if>
+                    <isset property="export.name"/>
+                    <then>
+                        <if>
+                            <isset property="curr.file"/>
+                            <then>
+                                <!-- create curr.file -->
+                                <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${curr.file}" overwrite="true"/>
+                                <!-- write the curr.buffer into the curr.file -->
+                                <replaceregexp file="${dir.source}/${dir.css}/${curr.file}" 
+                                       match=".*" 
+                                       replace="${curr.buffer}" flags="s" />
+                                
+                                <var name="curr.buffer" value=""/>
+                                <var name="curr.file" unset="true"/>
+                            </then>
+                        </if>
+                        <var name="curr.file" value="${export.name}"/>
+                        <var name="export.name" unset="true"/>
+
+                    
+                        <!-- insert import line into new root -->
+                        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value="@import(${curr.file});${line.separator}/* remove me */"/>
+                    </then>
+                </if>
+                <var name="curr.buffer" value="${curr.buffer}@{currline}${line.separator}" />                                        
+            </sequential>
+        </ac:for>
+        <!-- one more time to write out the last file -->
+        <if>
+            <isset property="curr.file"/>
+            <then>
+                <!-- create curr.file -->
+                <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${curr.file}" overwrite="true"/>
+                <!-- write the curr.buffer into the curr.file -->
+                <replaceregexp file="${dir.source}/${dir.css}/${curr.file}" 
+                       match=".*" 
+                       replace="${curr.buffer}" flags="s" />
+                
+                <var name="curr.buffer" value=""/>
+                <var name="curr.file" unset="true"/>
+            </then>
+        </if>
+        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value=""/>
+        <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${file.root.stylesheet}.orig" overwrite="false"/>
+        <move file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" tofile="${dir.source}/${dir.css}/${file.root.stylesheet}" overwrite="false"/>
+    </target>
+    
     <target name="-css" depends="-mkdirs" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
-        <echo message="Concatenating css..."/>
+        <echo message="Concatenating imports..."/>
+
+        <!-- copy source file to intermediate directory -->
+        <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"/>
+
+        <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
+        <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
+                       match="^@import *url *\( *'?([^'^ ]*)'? *\) *([a-zA-Z, ]*);.*$" 
+                       replace="@media \2{ /* h5bp-import: \1 */ }" byline="true" />
         
-        <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.css}/style-concat.css" overwrite="no">
-            <filelist dir="./${dir.source}/${dir.css}" files="${stylesheet-files}"/>
-        </concat>
-        
+        <!-- replace imports with h5bp-import tags (part 2) -->
+        <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
+                       match="^@media \{ (/\* .* \*/) \}" replace="\1" byline="true" />
+
+        <!-- copy skeleton to concat file -->
+        <copy file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"
+              tofile="${dir.intermediate}/${dir.css}/style-concat.css" overwrite="true"/>
+
+        <!-- load the file into a property -->
+        <loadfile property="imports" srcfile="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"/>
+
+        <var name="concat-files" value="${file.root.stylesheet}"/>
+
+        <!-- go over the file line by line -->
+        <ac:for delimiter="${line.separator}" param="import" list="${imports}" xmlns:ac="antlib:net.sf.antcontrib">
+            <sequential>
+                <!-- does this line contain an h5bp-import? -->
+                <propertyregex property="file.name" input="@{import}" regexp="/\* h5bp-import: (.*) \*/" select="\1" casesensitive="true" override="true" />
+
+                <if>
+                    <isset property="file.name"/>
+                    <then>
+                        <var name="concat-files" value="${file.name},${concat-files}"/>
+
+                        <!-- load the file into a variable -->
+                        <loadfile property="file.contents" srcFile="${dir.source}/${dir.css}/${file.name}"/>
+
+                        <!-- pop that file into the concatenated output file -->
+                        <replace file="${dir.intermediate}/${dir.css}/style-concat.css" token="/* h5bp-import: ${file.name} */" value="${file.contents}"/>
+
+                        <var name="file.contents" unset="true"/>
+                    </then>
+                </if>
+            </sequential>
+        </ac:for>
         <echo message="Minifying css..."/>
         
         <apply executable="java" parallel="false">
-            <fileset dir="./${dir.intermediate}/${dir.css}/" includes="style-concat.css"/>
+            <fileset dir="${dir.intermediate}/${dir.css}/" includes="style-concat.css"/>
             <arg line="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
             <arg line="-o"/>
             <mapper type="merge" to="${basedir}/${dir.intermediate}/${dir.css}/style-concat.min.css"/>
@@ -744,9 +833,9 @@
         <echo message="Minifying any unconcatenated css files..."/>
 
         <apply executable="java" parallel="false">
-            <fileset dir="./${dir.source}/${dir.css}/" excludes="${stylesheet-files}" includes="**/*.css"/>
+            <fileset dir="${dir.source}/${dir.css}/" excludes="${concat-files}" includes="**/*.css"/>
             <arg line="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
             <arg line="-o"/>
             <mapper type="glob" from="*.css" to="${basedir}/${dir.publish}/${dir.css}/*.css"/>
