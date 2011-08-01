@@ -7,7 +7,7 @@
     <!-- the .jar file is located in the tools directory -->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
-			<pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
+            <pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
         </classpath>
     </taskdef>
 
@@ -24,14 +24,14 @@
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
-<!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
-	<fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
-		<condition>
-			<not>
-				<contains string="${ant.version}" substring="1.8.2"/>
-			</not>
-		</condition>
-	</fail>
+    <!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
+    <fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
+        <condition>
+            <not>
+                <contains string="${ant.version}" substring="1.8.2"/>
+            </not>
+        </condition>
+    </fail>
     
     <!--
     *************************************************
@@ -178,41 +178,41 @@
     
     
     <!-- JSLint target, run separately -->
-	<target name="jslint">
+    <target name="jslint">
       <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
-			<fileset dir="./${dir.source}/">
+            <fileset dir="./${dir.source}/">
         <include name="**/${dir.js}/*.js"/>
         <exclude name="**/*.min.js"/>
         <exclude name="**/${dir.js.libs}/"/>
         <exclude name="**/${dir.publish}/"/>
-		  </fileset> 
-			<arg value="-jar" />
-			<arg path="./${dir.build.tools}/${tool.rhino}" />
-			<arg path="./${dir.build.tools}/${tool.jslint}" />
+          </fileset> 
+            <arg value="-jar" />
+            <arg path="./${dir.build.tools}/${tool.rhino}" />
+            <arg path="./${dir.build.tools}/${tool.jslint}" />
             <srcfile/>
             <arg value="${tool.jslint.opts}" />
-        </apply>		
-		<echo>JSLint Successful</echo>
-	</target>     
+        </apply>        
+        <echo>JSLint Successful</echo>
+    </target>     
   
   
     <!-- JSHint target, run separately -->
-	<target name="jshint">
+    <target name="jshint">
       <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
-			<fileset dir="./${dir.source}/">
+            <fileset dir="./${dir.source}/">
         <include name="**/${dir.js}/*.js"/>
         <exclude name="**/*.min.js"/>
         <exclude name="**/${dir.js.libs}/"/>
         <exclude name="**/${dir.publish}/"/>
-		  </fileset> 
-			<arg value="-jar" />
-			<arg path="./${dir.build.tools}/${tool.rhino}" />
-			<arg path="./${dir.build.tools}/${tool.jshint}" />
+          </fileset> 
+            <arg value="-jar" />
+            <arg path="./${dir.build.tools}/${tool.rhino}" />
+            <arg path="./${dir.build.tools}/${tool.jshint}" />
             <srcfile/>
-			<arg value="${tool.jshint.opts}" />
-        </apply>		
-		<echo>JSHint Successful</echo>
-	</target>    
+            <arg value="${tool.jshint.opts}" />
+        </apply>        
+        <echo>JSHint Successful</echo>
+    </target>    
        
     <!-- CSSLint target, run separately -->
     <target name="csslint">
@@ -487,8 +487,8 @@
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
-				includes="**/*.js" 
-				excludes="${file.js.bypass}"/>                
+                includes="**/*.js" 
+                excludes="${file.js.bypass}"/>                
                   
         </concat>
     </target>
@@ -542,7 +542,7 @@
         <!-- at this point all js files are minified with their original names -->
 
         <copy todir="${dir.publish}/">
-		  <fileset dir="${dir.intermediate}/">
+          <fileset dir="${dir.intermediate}/">
               <include name="${dir.js}/**/*.js"/>
               <exclude name="${dir.js.mylibs}/**/*.js"/>
               <exclude name="${dir.js}/scripts-concat.js"/>
@@ -552,10 +552,10 @@
               <exclude name="${dir.js}/script.js"/>
           </fileset>                                   
         </copy>
-		<copy todir="${dir.publish}/${dir.js.mylibs}/">
+        <copy todir="${dir.publish}/${dir.js.mylibs}/">
             <fileset dir="${dir.source}/${dir.js.mylibs}/"
-		  	includes="${file.js.bypass}"/>           
-		</copy>
+            includes="${file.js.bypass}"/>           
+        </copy>
     </target>
     
     
