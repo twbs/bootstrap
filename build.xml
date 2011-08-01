@@ -480,18 +480,16 @@
         </concat>
     </target>
     
-    
     <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
         <mkdir dir="./${dir.intermediate}/${dir.js.mylibs}"/>
 
         <echo message="Concatenating JS libraries"/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
-            <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/">
-                <include name="**/*.js"/>
-                <exclude name="${file.default.js.bypass}"/>
-                <exclude name="${file.js.bypass}"/>                
-            </fileset>      
+            <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
+				includes="**/*.js" 
+				excludes="${file.js.bypass}"/>                
+                  
         </concat>
     </target>
     
@@ -523,15 +521,14 @@
     <target name="-js.all.minify" depends="-mkdirs" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
         <echo message="Minifying scripts"/>
         <copy todir="${dir.intermediate}/">
-            <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js, ${dir.js.mylibs}/${file.default.js.bypass}, ${dir.js.mylibs}/${file.js.bypass}"/>
+            <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js"  />
         </copy>
         <apply executable="java" parallel="false">
-            <fileset dir="${dir.source}/">
+            <fileset dir="${dir.source}/" >
                 <include name="${dir.js}/**/*.js"/>
                 <exclude name="${dir.js}/**/*.min.js"/>
-                <exclude name="${dir.js.mylibs}/${file.default.js.bypass}"/>
-                <exclude name="${dir.js.mylibs}/${file.js.bypass}"/>                
-                <!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
+				<exclude name="${dir.js.mylibs}/**/*.js"/>
+				<!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
                 <!--<exclude name="scripts-concat.js"/>-->
                 <!--<exclude name="libs-concat.js"/>-->
             </fileset>
@@ -548,7 +545,7 @@
         <!-- at this point all js files are minified with their original names -->
 
         <copy todir="${dir.publish}/">
-          <fileset dir="${dir.intermediate}/">
+		  <fileset dir="${dir.intermediate}/">
               <include name="${dir.js}/**/*.js"/>
               <exclude name="${dir.js.mylibs}/**/*.js"/>
               <exclude name="${dir.js}/scripts-concat.js"/>
@@ -556,12 +553,12 @@
               <exclude name="${dir.js}/scripts-concat.min.js"/>
               <exclude name="${dir.js}/plugins.js"/>
               <exclude name="${dir.js}/script.js"/>
-          </fileset>
-          <fileset dir="${dir.intermediate}/">
-            <include name="${dir.js.mylibs}/${file.default.js.bypass}"/>                                                
-            <include name="${dir.js.mylibs}/${file.js.bypass}"/>                                              
-          </fileset>
+          </fileset>                                   
         </copy>
+		<copy todir="${dir.publish}/${dir.js.mylibs}/">
+            <fileset dir="${dir.source}/${dir.js.mylibs}/"
+		  	includes="${file.js.bypass}"/>           
+		</copy>
     </target>
     
     
