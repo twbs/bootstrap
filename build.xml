@@ -689,7 +689,7 @@
 
                     
                         <!-- insert import line into new root -->
-                        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value="@import(${curr.file});${line.separator}/* remove me */"/>
+                        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value="@import url(${curr.file});${line.separator}/* remove me */"/>
                     </then>
                 </if>
                 <var name="curr.buffer" value="${curr.buffer}@{currline}${line.separator}" />                                        
