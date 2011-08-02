@@ -762,14 +762,14 @@
     </target>
     
     <target name="-css" depends="-mkdirs" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
-        <echo message="Concatenating imports..."/>
+        <echo message="Concatenating any @imports..."/>
 
         <!-- copy source file to intermediate directory -->
         <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"/>
 
         <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
         <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
-                       match="^@import +url\( *'?([^'^ ]*)'? *\) *([a-zA-Z, ]*);.*$" 
+                        match="^@import +url\(['&quot;]?([^&quot;^'^ ]*)['&quot;]?\) *([a-zA-Z, ]*);.*$"
                        replace="@media \2{ /* h5bp-import: \1 */ }" byline="true" />
         
         <!-- replace imports with h5bp-import tags (part 2) -->
