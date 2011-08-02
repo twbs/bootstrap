@@ -710,11 +710,13 @@
         <for delimiter="${line.separator}" param="currline" list="${root}">
             <sequential>
                 <!-- does this line contain an h5bp-import? -->
-                <propertyregex property="export.name" input="@{currline}" regexp="^.*- h5bp-export: (.*) -.*$" select="\1" casesensitive="true" override="true" />
-
+                <propertyregex property="export.name" input="@{currline}" regexp="^.*==\|== +(.*) +==+$" select="\1" casesensitive="true" override="true" />
                 <if>
                     <isset property="export.name"/>
                     <then>
+	                    <propertyregex property="export.name" input="${export.name}" regexp=" " replace="." global="true" override="true" />
+                        <var name="export.name" value="${export.name}.css"/>           
+                    
                         <if>
                             <isset property="curr.file"/>
                             <then>
@@ -732,7 +734,6 @@
                         <var name="curr.file" value="${export.name}"/>
                         <var name="export.name" unset="true"/>
 
-                    
                         <!-- insert import line into new root -->
                         <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value="@import url(${curr.file});${line.separator}/* remove me */"/>
                     </then>
@@ -768,7 +769,7 @@
 
         <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
         <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
-                       match="^@import(?: url *)?\( *'?([^'^ ]*)'? *\) *([a-zA-Z, ]*);.*$" 
+                       match="^@import +url\( *'?([^'^ ]*)'? *\) *([a-zA-Z, ]*);.*$" 
                        replace="@media \2{ /* h5bp-import: \1 */ }" byline="true" />
         
         <!-- replace imports with h5bp-import tags (part 2) -->
