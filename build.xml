@@ -769,7 +769,7 @@
 
         <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
         <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
-                        match="^@import +url\(['&quot;]?([^&quot;^'^ ]*)['&quot;]?\) *([a-zA-Z, ]*);.*$"
+                        match="^@import +url\s*\(\s*['&quot;]?([^&quot;^'^ ]*\s*)['&quot;]?\).*$"
                        replace="@media \2{ /* h5bp-import: \1 */ }" byline="true" />
         
         <!-- replace imports with h5bp-import tags (part 2) -->
