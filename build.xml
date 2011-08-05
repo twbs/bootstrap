@@ -655,8 +655,9 @@
 							excludes="${file.css.bypass}"/>
 					</path>
 					<sequential>
-						<!-- <echo message="replacing @{file}"/> -->
-						<replaceregexp match=".+@{file}" replace="" file="${dir.intermediate}/${manifest}" />
+						<basename property="filename.@{file}" file="@{file}" />
+						<!-- <echo message="replacing ${filename.@{file}}"/> -->
+						<replaceregexp match=".+${filename.@{file}}" replace="" file="${dir.intermediate}/${manifest}" />
 					</sequential>
 				</for>
 				<replace token="# css files" value="# css files${line.separator}/${style.css}" file="${dir.intermediate}/${manifest}" />
@@ -673,8 +674,9 @@
 							excludes="${file.js.bypass}"/>
 					</path>
 					<sequential>
-						<!-- <echo message="replacing @{file}"/> -->
-						<replaceregexp match=".+@{file}" replace="" file="${dir.intermediate}/${manifest}" />
+						<basename property="filename.@{file}" file="@{file}" />
+						<!-- <echo message="replacing ${filename.@{file}}"/> -->
+						<replaceregexp match=".+${filename.@{file}}" replace="" file="${dir.intermediate}/${manifest}" />
 					</sequential>
 				</for>
 				<replace token="# js files" value="# js files${line.separator}/${scripts.js}" file="${dir.intermediate}/${manifest}" />
