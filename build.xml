@@ -23,7 +23,20 @@
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
+	<!-- manifest  -->
+	<var name="manifest" value="${file.manifest}" />
+	<var name="manifest-files-javascript" value="${manifest.files.javascripts}" />
+	<var name="manifest-files-stylesheet" value="${manifest.files.stylesheets}" />
+	<if>
+		<equals arg1="${manifest}" arg2="" />
+		<then>
+			<var name="clean-manifest" value="false" />
+		</then>
 
+		<else>
+			<var name="clean-manifest" value="true" />
+		</else>
+	</if>
     
     <!--
     *************************************************
@@ -590,6 +603,38 @@
             <fileset dir="./${dir.publish}" includes="${page-files}"/>
         </replace>
         -->
+
+		<!-- manifest -->
+		<if>
+			<equals arg1="${clean-manifest}" arg2="true" />
+			<then>
+				<!-- replace version -->
+		        <echo message="Updating the site.manifest with the build number"/>
+				<replaceregexp match='# version .+' replace='# version ${build.number}'>
+					<fileset dir="${dir.intermediate}" includes="${manifest}"/>
+				</replaceregexp>
+
+				<!-- replace stylesheet files -->
+		        <echo message="Updating the site.manifest with the new css filename: ${style.css}"/>
+				<for list="${manifest-files-stylesheet}" delimiter="," param="tocken" trim="true">
+					<sequential>
+						<replace token="@{tocken}" value="" dir="${dir.intermediate}" includes="${manifest}"/>
+					</sequential>
+				</for>
+				<replace token="# css files" value="# css files\n/${style.css}" dir="${dir.intermediate}" includes="${manifest}"/>
+
+
+				<!-- replace javascript files -->
+		        <echo message="Updating the site.manifest with the new js filename: ${scripts.js} and cleaning unconcatened files"/>
+ 					<for list="${manifest-files-javascript}" delimiter="," param="tocken" trim="true">
+					<sequential>
+						<replace token="@{tocken}" value="" dir="${dir.intermediate}" includes="${manifest}"/>
+					</sequential>
+				</for>
+				<replace token="# javascript files" value="# css files\n/${scripts.js}" dir="${dir.intermediate}" includes="${manifest}"/>
+			</then>
+		</if>
+		
     </target>
     
     
