@@ -24,6 +24,18 @@
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
+	<!-- manifest  -->
+	<var name="manifest" value="${file.manifest}"/>
+	<if>
+		<equals arg1="${manifest}" arg2="" />
+		<then>
+			<var name="clean-manifest" value="false" />
+		</then>
+		<else>
+			<var name="clean-manifest" value="true" />
+		</else>
+	</if>
+    
     <!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
     <fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
         <condition>
@@ -462,6 +474,7 @@
                 <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
                 <exclude name="${dir.js}/**/*.js"/>
                 <exclude name="${dir.css}/**/*.css"/>
+				<exclude name="${manifest}"/>
             </fileset>
         </copy>
         
@@ -604,7 +617,7 @@
         </replace>
         -->
 
-        <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
+		<echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
         <!-- style.css replacement handled as a replacetoken above -->
         <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
@@ -616,7 +629,66 @@
         <replaceregexp match="&lt;!-- CSS concatenated [\d\w\s\W]*?!-- end CSS--&gt;" replace="&lt;link rel='stylesheet' href='${style.css}'&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
-    </target>
+
+		<!-- manifest -->
+		<if>
+			<equals arg1="${clean-manifest}" arg2="true" />
+			<then>
+				<echo message="copying ${manifest} to /${dir.intermediate}"/>
+				<copy file="${dir.source}/${manifest}" tofile="${dir.intermediate}/${manifest}" />
+				
+				<echo message="manifest cleaning" />
+
+				<!-- update version -->
+				<echo message="Updating the site.manifest version date to today"/>
+				<tstamp>
+					<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss"/>
+				</tstamp>
+				<replaceregexp match="# version .+" replace="# version ${TODAY}" file="${dir.intermediate}/${manifest}"/>
+
+				<!-- replace stylesheet files -->
+		        <echo message="Updating the site.manifest with the new css filename: ${style.css}"/>
+				<for param="file">
+					<path>
+						<fileset dir="./${dir.intermediate}/${dir.css}/"
+                			includes="**/*.css" 
+							excludes="${file.css.bypass}"/>
+					</path>
+					<sequential>
+						<basename property="filename.@{file}" file="@{file}" />
+						<!-- <echo message="replacing ${filename.@{file}}"/> -->
+						<replaceregexp match=".+${filename.@{file}}" replace="" file="${dir.intermediate}/${manifest}" />
+					</sequential>
+				</for>
+				<replace token="# css files" value="# css files${line.separator}/${style.css}" file="${dir.intermediate}/${manifest}" />
+
+				<!-- replace javascript files -->
+		        <echo message="Updating the site.manifest with the new js filename: ${scripts.js}"/>
+ 				<for param="file">
+					<path>
+						<fileset dir="./${dir.intermediate}/${dir.js}/"
+                			includes="*.js" 
+							excludes="${file.js.bypass}"/>
+						<fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
+                			includes="**/*.js" 
+							excludes="${file.js.bypass}"/>
+					</path>
+					<sequential>
+						<basename property="filename.@{file}" file="@{file}" />
+						<!-- <echo message="replacing ${filename.@{file}}"/> -->
+						<replaceregexp match=".+${filename.@{file}}" replace="" file="${dir.intermediate}/${manifest}" />
+					</sequential>
+				</for>
+				<replace token="# js files" value="# js files${line.separator}/${scripts.js}" file="${dir.intermediate}/${manifest}" />
+        		
+				<echo message="copying ${manifest} to /${dir.publish}"/>
+				<copy file="${dir.intermediate}/${manifest}" tofile="${dir.publish}/${manifest}" />
+			</then>
+			<else>
+				<echo message="no manifest cleaning needed" />
+			</else>
+		</if>
+	</target>
     
     
     <target name="-htmlclean" depends="-usemin">
