@@ -657,12 +657,20 @@
                     <path>
                         <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
                             includes="${file.js.bypass}" />
+                    </path>
+                    <sequential>
+                        <basename property="filename.@{file}" file="@{file}" />
+                        <replaceregexp match="# js files" replace="# js files${line.separator}${dir.js.mylibs}/${filename.@{file}}" file="${dir.intermediate}/${manifest}" />
+                    </sequential>
+                </for>
+                <for param="file">
+                    <path>
                         <fileset dir="./${dir.intermediate}/${dir.js.libs}/"
                             includes="*.min.js"/>
                     </path>
                     <sequential>
                         <basename property="filename.@{file}" file="@{file}" />
-                        <replaceregexp match="# js files" replace="# js files${line.separator}${filename.@{file}}" file="${dir.intermediate}/${manifest}" />
+                        <replaceregexp match="# js files" replace="# js files${line.separator}${dir.js.libs}/${filename.@{file}}" file="${dir.intermediate}/${manifest}" />
                     </sequential>
                 </for>
                 <replace token="# js files" value="# js files${line.separator}${scripts.js}" file="${dir.intermediate}/${manifest}" />
