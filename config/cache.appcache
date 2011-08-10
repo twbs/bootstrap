@@ -1,0 +1,20 @@
+CACHE MANIFEST
+
+# version xxxxxxxxx
+
+CACHE:
+# html files
+index.html
+
+# css files
+
+
+
+# js files
+
+
+
+FALLBACK:
+
+NETWORK:
+*

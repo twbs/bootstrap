@@ -498,7 +498,7 @@
 
         <echo message="Concatenating JS libraries"/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
+        <concat destfile="./${dir.intermediate}/${dir.js}/mylibs-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
                 includes="**/*.js" 
                 excludes="${file.js.bypass}"/>                
@@ -512,7 +512,7 @@
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/${dir.js}/">
-                <include name="libs-concat.js"/>
+                <include name="mylibs-concat.js"/>
                 <include name="scripts-concat.js"/>
             </fileset>      
         </concat>
@@ -558,7 +558,7 @@
               <include name="${dir.js}/**/*.js"/>
               <exclude name="${dir.js.mylibs}/**/*.js"/>
               <exclude name="${dir.js}/scripts-concat.js"/>
-              <exclude name="${dir.js}/libs-concat.js"/>
+              <exclude name="${dir.js}/mylibs-concat.js"/>
               <exclude name="${dir.js}/scripts-concat.min.js"/>
               <exclude name="${dir.js}/plugins.js"/>
               <exclude name="${dir.js}/script.js"/>
@@ -618,7 +618,7 @@
 
         <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
         <!-- style.css replacement handled as a replacetoken above -->
-        <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
+        <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script defer src='${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!--[! use comments like this one to avoid having them get minified -->
@@ -633,13 +633,15 @@
         <if>
             <equals arg1="${clean-manifest}" arg2="true" />
             <then>
-                <echo message="copying ${manifest} to /${dir.intermediate}"/>
-                <copy file="${dir.source}/${manifest}" tofile="${dir.intermediate}/${manifest}" />
+                <echo message="copying a fresh ${dir.build}/config/${manifest} to /${dir.intermediate}"/>
+
+                <delete file="${dir.intermediate}/${manifest}"/>
+                <copy file="${dir.build}/config/${manifest}" tofile="${dir.intermediate}/${manifest}" />
                 
                 <echo message="manifest cleaning" />
 
                 <!-- update version -->
-                <echo message="Updating the site.manifest version date to today"/>
+                <echo message="Updating the site.manifest version date to today, current time"/>
                 <tstamp>
                     <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss"/>
                 </tstamp>
@@ -647,38 +649,23 @@
 
                 <!-- replace stylesheet files -->
                 <echo message="Updating the site.manifest with the new css filename: ${style.css}"/>
-                <for param="file">
-                    <path>
-                        <fileset dir="./${dir.intermediate}/${dir.css}/"
-                            includes="**/*.css" 
-                            excludes="${file.css.bypass}"/>
-                    </path>
-                    <sequential>
-                        <basename property="filename.@{file}" file="@{file}" />
-                        <!-- <echo message="replacing ${filename.@{file}}"/> -->
-                        <replaceregexp match=".+${filename.@{file}}" replace="" file="${dir.intermediate}/${manifest}" />
-                    </sequential>
-                </for>
-                <replace token="# css files" value="# css files${line.separator}/${style.css}" file="${dir.intermediate}/${manifest}" />
+                <replace token="# css files" value="# css files${line.separator}${style.css}" file="${dir.intermediate}/${manifest}" />
 
                 <!-- replace javascript files -->
                 <echo message="Updating the site.manifest with the new js filename: ${scripts.js}"/>
                 <for param="file">
                     <path>
-                        <fileset dir="./${dir.intermediate}/${dir.js}/"
-                            includes="*.js" 
-                            excludes="${file.js.bypass}"/>
                         <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
-                            includes="**/*.js" 
-                            excludes="${file.js.bypass}"/>
+                            includes="${file.js.bypass}" />
+                        <fileset dir="./${dir.intermediate}/${dir.js.libs}/"
+                            includes="*.min.js"/>
                     </path>
                     <sequential>
                         <basename property="filename.@{file}" file="@{file}" />
-                        <!-- <echo message="replacing ${filename.@{file}}"/> -->
-                        <replaceregexp match=".+${filename.@{file}}" replace="" file="${dir.intermediate}/${manifest}" />
+                        <replaceregexp match="# js files" replace="# js files${line.separator}${filename.@{file}}" file="${dir.intermediate}/${manifest}" />
                     </sequential>
                 </for>
-                <replace token="# js files" value="# js files${line.separator}/${scripts.js}" file="${dir.intermediate}/${manifest}" />
+                <replace token="# js files" value="# js files${line.separator}${scripts.js}" file="${dir.intermediate}/${manifest}" />
                 
                 <echo message="copying ${manifest} to /${dir.publish}"/>
                 <copy file="${dir.intermediate}/${manifest}" tofile="${dir.publish}/${manifest}" />
