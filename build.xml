@@ -623,7 +623,8 @@
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
 
-        <replaceregexp match="&lt;!-- CSS concatenated [\d\w\s\W]*?!-- end CSS--&gt;" replace="&lt;link rel='stylesheet' href='${style.css}'&gt;" flags="m">
+        <replaceregexp match="&lt;link rel=['&quot;]?stylesheet['&quot;]?\s+href=['&quot;]?(.*)/style.css(?:\?.*)?['&quot;]?\s*&gt;" 
+        	replace="&lt;link rel='stylesheet' href='\1/${style.css}'&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
 
@@ -906,7 +907,7 @@
                 <property name="style.css" value="${css.prefix}/${css.sha}.css" />
             </then>
             <else>
-                <property name="style.css" value="${dir.css}/${css.sha}.css" />
+                <property name="style.css" value="${css.sha}.css" />
             </else>
         </if>
         <copy file="${dir.intermediate}/${dir.css}/style-concat.min.css" tofile="${dir.publish}/${dir.css}/${css.sha}.css" />
