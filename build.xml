@@ -616,14 +616,14 @@
 
         <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
         <!-- style.css replacement handled as a replacetoken above -->
-        <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script defer src='${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
+        <replaceregexp match="&lt;!-- scripts concatenated[\d\w\s\W]*?(\(prefix: (.*)?\))? --&gt;[\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts)) --&gt;" replace="&lt;script defer src='\2${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!--[! use comments like this one to avoid having them get minified -->
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
 
-        <replaceregexp match="&lt;!-- CSS concatenated [\d\w\s\W]*?!-- end CSS--&gt;" replace="&lt;link rel='stylesheet' href='${style.css}'&gt;" flags="m">
+        <replaceregexp match="&lt;!-- CSS concatenated[\d\w\s\W]*?(\(prefix: (.*)?\))? --&gt;[\d\w\s\W]*?!-- end CSS --&gt;" replace="&lt;link rel=stylesheet href='\2${style.css}\'&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
 
