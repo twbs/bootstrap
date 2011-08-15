@@ -517,9 +517,9 @@
 
         <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.sha" />
         <if>
-            <isset property="gae.js_dir" />
+            <isset property="js.prefix" />
             <then>
-                <property name="scripts.js" value="${gae.js_dir}/${scripts.sha}.js" />
+                <property name="scripts.js" value="${js.prefix}/${scripts.sha}.js" />
             </then>
             <else>
                 <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
@@ -901,9 +901,9 @@
 
         <checksum file="${dir.intermediate}/${dir.css}/style-concat.min.css" algorithm="sha" property="css.sha" />
         <if>
-            <isset property="gae.css_dir" />
+            <isset property="css.prefix" />
             <then>
-                <property name="style.css" value="${gae.css_dir}/${css.sha}.css" />
+                <property name="style.css" value="${css.prefix}/${css.sha}.css" />
             </then>
             <else>
                 <property name="style.css" value="${dir.css}/${css.sha}.css" />
