@@ -516,15 +516,8 @@
         </concat>
 
         <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.sha" />
-        <if>
-            <isset property="js.prefix" />
-            <then>
-                <property name="scripts.js" value="${js.prefix}/${scripts.sha}.js" />
-            </then>
-            <else>
-                <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
-            </else>
-        </if>
+
+        <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
         <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${dir.js}/${scripts.sha}.js" />
     </target>
 
@@ -623,7 +616,7 @@
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
 
-        <replaceregexp match="&lt;link rel=['&quot;]?stylesheet['&quot;]?\s+href=['&quot;]?(.*)/style.css(?:\?.*)?['&quot;]?\s*&gt;" 
+        <replaceregexp match="&lt;link rel=['&quot;]?stylesheet['&quot;]?\s+href=['&quot;]?(.*)/?css/style.css(?:\?.*)?['&quot;]?\s*&gt;" 
         	replace="&lt;link rel='stylesheet' href='\1/${style.css}'&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
@@ -901,15 +894,7 @@
         </apply>
 
         <checksum file="${dir.intermediate}/${dir.css}/style-concat.min.css" algorithm="sha" property="css.sha" />
-        <if>
-            <isset property="css.prefix" />
-            <then>
-                <property name="style.css" value="${css.prefix}/${css.sha}.css" />
-            </then>
-            <else>
-                <property name="style.css" value="${css.sha}.css" />
-            </else>
-        </if>
+        <property name="style.css" value="${dir.css}/${css.sha}.css" />
         <copy file="${dir.intermediate}/${dir.css}/style-concat.min.css" tofile="${dir.publish}/${dir.css}/${css.sha}.css" />
 
         <echo message="Minifying any unconcatenated css files..."/>
