@@ -6,12 +6,11 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jul 29 13:03:43 PDT 2011
+ * Date: Tue Aug 16 22:54:18 PDT 2011
  */
-/*
- * Reset.less
+/* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
- */
+ * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 html, body {
   margin: 0;
   padding: 0;
@@ -125,9 +124,7 @@ aside {
 /*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
- */
-/* Baseline Grid System
--------------------------------------------------- */
+ * ------------------------------------------------------------------------------------------- */
 .row {
   zoom: 1;
 }
@@ -338,8 +335,6 @@ aside {
 .row .offset12:first-child {
   margin-left: 720px !important;
 }
-/* Structural Layout
--------------------------------------------------- */
 html, body {
   background-color: #fff;
 }
@@ -376,8 +371,6 @@ div.container-fluid div.content {
   max-width: 1180px;
   margin-left: 240px;
 }
-/* Base Styles
--------------------------------------------------- */
 a {
   color: #0069d6;
   text-decoration: none;
@@ -639,12 +632,9 @@ pre {
   border-radius: 3px;
   white-space: pre-wrap;
 }
-/*
- * Forms.less
+/* Forms.less
  * Base styles for various input types, form layouts, and states
- */
-/* Global form styles
--------------------------------------------------- */
+ * ------------------------------------------------------------- */
 form {
   margin-bottom: 18px;
 }
@@ -981,9 +971,7 @@ form.form-stacked div.actions {
 /*
  * Tables.less
  * Tables for, you guessed it, tabular data
- */
-/* Baseline styles
--------------------------------------------------- */
+ * ---------------------------------------- */
 table {
   width: 100%;
   margin-bottom: 18px;
@@ -1003,8 +991,6 @@ table th {
   font-weight: bold;
   border-bottom-width: 2px;
 }
-/* Zebra-striping
--------------------------------------------------- */
 table.zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
 }

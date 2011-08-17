@@ -26,7 +26,6 @@ Reporting bugs
 
 Please create an issue here on github! :P
 
-
 AUTHORS
 -------
 
