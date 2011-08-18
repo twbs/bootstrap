@@ -1,11 +1,11 @@
 /*
  * Tables.less
  * Tables for, you guessed it, tabular data
- */
+ * ---------------------------------------- */
 
 
-/* Baseline styles
--------------------------------------------------- */
+// BASELINE STYLES
+// ---------------
 
 table {
   width: 100%;
@@ -28,8 +28,8 @@ table {
 }
 
 
-/* Zebra-striping
--------------------------------------------------- */
+// ZEBRA-STRIPING
+// --------------
 
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 table.zebra-striped {
@@ -41,8 +41,9 @@ table.zebra-striped {
       background-color: #f5f5f5;
     }
   }
+
   // Tablesorting styles w/ jQuery plugin
-  th.header { // For tablesorter tables, make THs have a pointer on hover
+  th.header {
     cursor: pointer;
     &:after {
       width: 0px;
@@ -61,13 +62,17 @@ table.zebra-striped {
       .opacity(30);
     }
   }
+
+  // Style the sorted column headers (THs)
   th.headerSortUp,
-  th.headerSortDown { // Style the sorted column headers (THs)
+  th.headerSortDown {
     background-color: rgba(141,192,219,.25);
     text-shadow: 0 1px 1px rgba(255,255,255,.75);
     .border-radius(3px 3px 0 0);
   }
-  th.header:hover { // Style the ascending (reverse alphabetical) column header
+
+  // Style the ascending (reverse alphabetical) column header
+  th.header:hover {
     &:after {
       visibility:visible;
     }
@@ -75,14 +80,18 @@ table.zebra-striped {
   th.actions:hover {
     background-image: none;
   }
+
+  // Style the descending (alphabetical) column header
   th.headerSortDown,
-  th.headerSortDown:hover { // Style the descending (alphabetical) column header
+  th.headerSortDown:hover {
     &:after {
       visibility:visible;
       .opacity(60);
     }
   }
-  th.headerSortUp { // Style the ascending (reverse alphabetical) column header
+
+  // Style the ascending (reverse alphabetical) column header
+  th.headerSortUp {
     &:after {
       border-bottom: none;
       border-left: 4px solid transparent;
@@ -93,6 +102,7 @@ table.zebra-striped {
       .opacity(60);
     }
   }
+
   // Blue Table Headings
   th.blue {
     color: @blue;
@@ -101,6 +111,7 @@ table.zebra-striped {
   th.headerSortUp.blue, th.headerSortDown.blue {
     background-color: lighten(@blue, 40%);
   }
+
   // Green Table Headings
   th.green {
     color: @green;
@@ -109,36 +120,40 @@ table.zebra-striped {
   th.headerSortUp.green, th.headerSortDown.green { // backround color is 20% of border color
     background-color: lighten(@green, 40%);
   }
+
   // Red Table Headings
   th.red {
     color: @red;
     border-bottom-color: @red;
   }
-  th.headerSortUp.red, th.headerSortDown.red { // backround color is 20% of border color
+  th.headerSortUp.red, th.headerSortDown.red {
     background-color: lighten(@red, 50%);
   }
+
   // Yellow Table Headings
   th.yellow {
     color: @yellow;
     border-bottom-color: @yellow;
   }
-  th.headerSortUp.yellow, th.headerSortDown.yellow { // backround color is 20% of border color
+  th.headerSortUp.yellow, th.headerSortDown.yellow {
     background-color: lighten(@yellow, 40%);
   }
+
   // Orange Table Headings
   th.orange {
     color: @orange;
     border-bottom-color: @orange;
   }
-  th.headerSortUp.orange, th.headerSortDown.orange { // backround color is 20% of border color
+  th.headerSortUp.orange, th.headerSortDown.orange {
     background-color: lighten(@orange, 40%);
   }
+
   // Purple Table Headings
   th.purple {
     color: @purple;
     border-bottom-color: @purple;
   }
-  th.headerSortUp.purple, th.headerSortDown.purple { // backround color is 20% of border color
+  th.headerSortUp.purple, th.headerSortDown.purple {
     background-color: lighten(@purple, 40%);
   }
 }
