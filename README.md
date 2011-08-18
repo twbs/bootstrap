@@ -37,6 +37,7 @@ Mailing List
 Have a question? Ask on our mailing list!
 
 twitter-bootstrap@googlegroups.com
+
 http://groups.google.com/group/twitter-bootstrap
 
 Developers
