@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Aug 17 22:35:32 PDT 2011
+ * Date: Wed Aug 17 23:02:19 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -617,7 +617,7 @@ code, pre {
 code {
   background-color: #fee9cc;
   color: rgba(0, 0, 0, 0.75);
-  padding: 2px 3px;
+  padding: 1px 3px;
 }
 pre {
   background-color: #f5f5f5;
