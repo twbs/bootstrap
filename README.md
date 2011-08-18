@@ -28,6 +28,13 @@ Reporting bugs
 
 Please create an issue here on GitHub! :P
 
+
+Google Group
+------------
+
+http://groups.google.com/group/twitter-bootstrap
+
+
 AUTHORS
 -------
 
