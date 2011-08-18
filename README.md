@@ -23,15 +23,20 @@ Or if you prefer, the standard css way:
 For more info, refer to the docs!
 
 
-Reporting bugs
+Bug Tracker
 --------------
 
-Please create an issue here on GitHub! :P
+Have a bug? Please create an issue here on GitHub!
+
+https://github.com/twitter/bootstrap/issues
 
 
-Google Group
+Mailing List
 ------------
 
+Have a question? Ask on our mailing list!
+
+twitter-bootstrap@googlegroups.com
 http://groups.google.com/group/twitter-bootstrap
 
 Developers
