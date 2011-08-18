@@ -26,7 +26,7 @@ For more info, refer to the docs!
 Reporting bugs
 --------------
 
-Please create an issue here on github! :P
+Please create an issue here on GitHub! :P
 
 AUTHORS
 -------
