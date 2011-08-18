@@ -34,6 +34,18 @@ Google Group
 
 http://groups.google.com/group/twitter-bootstrap
 
+Developers
+----------
+
+We have included a makefile with convenience methods for working with the bootstrap library.
+
++ **build** - `make build`
+This will run the less compiler on the bootstrap lib and generate a bootstrap.css and bootstrap.min.css file.
+The lessc compiler is required for this command to run.
+
++ **watch** - `make watch`
+This is a convenience method for watching your less files and automatically building them whenever you save.
+Watchr is required for this command to run.
 
 AUTHORS
 -------
