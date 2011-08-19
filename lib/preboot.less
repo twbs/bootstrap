@@ -255,6 +255,9 @@
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
     background-image: -webkit-linear-gradient(@startColor, color-stop(@colorStop, @midColor), @endColor);
     background-image: -moz-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+    background-image: -ms-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+    background-image: -o-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+    background-image: linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
   }
 }
 
