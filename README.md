@@ -24,7 +24,7 @@ For more info, refer to the docs!
 
 
 Bug Tracker
---------------
+-----------
 
 Have a bug? Please create an issue here on GitHub!
 
@@ -40,6 +40,7 @@ twitter-bootstrap@googlegroups.com
 
 http://groups.google.com/group/twitter-bootstrap
 
+
 Developers
 ----------
 
@@ -52,6 +53,7 @@ The lessc compiler is required for this command to run.
 + **watch** - `make watch`
 This is a convenience method for watching your less files and automatically building them whenever you save.
 Watchr is required for this command to run.
+
 
 AUTHORS
 -------
