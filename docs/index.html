@@ -58,7 +58,7 @@
             <h6>Hotlink the CSS</h6>
             <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
             <form>
-              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.0.0.min.css"></textarea>
+              <textarea class="copy-code" rows="1">&lt;link type="text/css" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.0.0.min.css"></textarea>
             </form>
           </div>
           <div class="span5 columns">
@@ -288,15 +288,16 @@
     <p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to add visual distinction between a word or phrase and its surrounding copy. Use <code>&lt;strong&gt;</code> for plain old attention and <code>&lt;em&gt;</code> for <em>slick</em> attention and titles.</p>
     <h3>Emphasis in a paragraph</h3>
     <p><a href="">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+    <p><strong>Note:</strong> It's still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5, but they don't come with inherent styles anymore. <code>&lt;b&gt;</code> is meant to convey importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
     <h3>Addresses</h3>
-    <p>The <code>address</code> element is used for&mdash;you guessed it!&mdash;addresses. Here's how it looks:</p>
+    <p>The <code>address</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here's how it looks:</p>
     <address>
-    	<strong>Twitter, Inc.</strong><br />
-    	795 Folsom Ave, Suite 600<br />
-    	San Francisco, CA 94107<br />
-    	<abbr title="Phone">P:</abbr> (123) 456-7890
+      <strong>Twitter, Inc.</strong><br />
+      795 Folsom Ave, Suite 600<br />
+      San Francisco, CA 94107<br />
+      <abbr title="Phone">P:</abbr> (123) 456-7890
     </address>
-    <p><strong>Note:</strong> Each line in an <code>address</code> must end with a line-break (<code>&lt;br /&gt;</code>) to properly structure the content as it is read in real life without any styles applied.</p>
+    <p><strong>Note:</strong> Each line in an <code>address</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>p</code>) to properly structure the content.</p>
     <h3>Abbreviations</h3>
     <p>For abbreviations and acronyms, use the <code>abbr</code> tag (<code>acronym</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
   </div>
@@ -308,14 +309,14 @@
     <p>
       <code>&lt;blockquote&gt;</code>
       <code>&lt;p&gt;</code>
-      <code>&lt;cite&gt;</code>
+      <code>&lt;small&gt;</code>
     </p>
   </div>
   <div class="span12 columns">
-    <p>Be sure to wrap your <code>blockquote</code> around <code>paragraph</code> and <code>cite</code> tags. When citing a source, use the <code>cite</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
+    <p>Be sure to wrap your <code>blockquote</code> around <code>paragraph</code> and <code>small</code> tags. When citing a source, use the <code>small</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
     <blockquote>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-    	<cite>Dr. Julius Hibbert</cite>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+      <small>Dr. Julius Hibbert</small>
     </blockquote>
   </div>
 </div>
@@ -324,78 +325,78 @@
 <h2>Lists</h2>
 <div class="row">
   <div class="span4 columns">
-		<h4>Unordered <code>&lt;ul&gt;</code></h4>
-		<ul>
-			<li>Jeremy Bixby</li>
-			<li>Robert Dezure</li>
-			<li>Josh Washington</li>
-			<li>Anton Capresi</li>
-			<li>My Team Mates
-				<ul>
-					<li>George Castanza</li>
-					<li>Jerry Seinfeld</li>
-					<li>Cosmo Kramer</li>
-					<li>Elaine Bennis</li>
-					<li>Newman</li>
-				</ul>
-			</li>
-			<li>John Jacob</li>
-			<li>Paul Pierce</li>
-			<li>Kevin Garnett</li>
-		</ul>
+    <h4>Unordered <code>&lt;ul&gt;</code></h4>
+    <ul>
+      <li>Jeremy Bixby</li>
+      <li>Robert Dezure</li>
+      <li>Josh Washington</li>
+      <li>Anton Capresi</li>
+      <li>My Team Mates
+        <ul>
+          <li>George Castanza</li>
+          <li>Jerry Seinfeld</li>
+          <li>Cosmo Kramer</li>
+          <li>Elaine Bennis</li>
+          <li>Newman</li>
+        </ul>
+      </li>
+      <li>John Jacob</li>
+      <li>Paul Pierce</li>
+      <li>Kevin Garnett</li>
+    </ul>
   </div>
   <div class="span4 columns">
-		<h4>Unstyled <code>&lt;ul.unstyled&gt;</code></h4>
-		<ul class="unstyled">
-			<li>Jeremy Bixby</li>
-			<li>Robert Dezure</li>
-			<li>Josh Washington</li>
-			<li>Anton Capresi</li>
-			<li>My Team Mates
-				<ul>
-					<li>George Castanza</li>
-					<li>Jerry Seinfeld</li>
-					<li>Cosmo Kramer</li>
-					<li>Elaine Bennis</li>
-					<li>Newman</li>
-				</ul>
-			</li>
-			<li>John Jacob</li>
-			<li>Paul Pierce</li>
-			<li>Kevin Garnett</li>
-		</ul>
+    <h4>Unstyled <code>&lt;ul.unstyled&gt;</code></h4>
+    <ul class="unstyled">
+      <li>Jeremy Bixby</li>
+      <li>Robert Dezure</li>
+      <li>Josh Washington</li>
+      <li>Anton Capresi</li>
+      <li>My Team Mates
+        <ul>
+          <li>George Castanza</li>
+          <li>Jerry Seinfeld</li>
+          <li>Cosmo Kramer</li>
+          <li>Elaine Bennis</li>
+          <li>Newman</li>
+        </ul>
+      </li>
+      <li>John Jacob</li>
+      <li>Paul Pierce</li>
+      <li>Kevin Garnett</li>
+    </ul>
   </div>
   <div class="span4 columns">
     <h4>Ordered <code>&lt;ol&gt;</code></h4>
     <ol>
-    	<li>Jeremy Bixby</li>
-    	<li>Robert Dezure</li>
-    	<li>Josh Washington</li>
-    	<li>Anton Capresi</li>
-    	<li>My Team Mates
-    		<ol>
-    			<li>George Castanza</li>
-    			<li>Jerry Seinfeld</li>
-    			<li>Cosmo Kramer</li>
-    			<li>Elaine Bennis</li>
-    			<li>Newman</li>
-    		</ol>
-    	</li>
-    	<li>John Jacob</li>
-    	<li>Paul Pierce</li>
-    	<li>Kevin Garnett</li>
+      <li>Jeremy Bixby</li>
+      <li>Robert Dezure</li>
+      <li>Josh Washington</li>
+      <li>Anton Capresi</li>
+      <li>My Team Mates
+        <ol>
+          <li>George Castanza</li>
+          <li>Jerry Seinfeld</li>
+          <li>Cosmo Kramer</li>
+          <li>Elaine Bennis</li>
+          <li>Newman</li>
+        </ol>
+      </li>
+      <li>John Jacob</li>
+      <li>Paul Pierce</li>
+      <li>Kevin Garnett</li>
     </ol>
   </div>
   <div class="span4 columns">
     <h4>Description <code>dl</code></h4>
     <dl>
-    	<dt>Description lists</dt>
-    	<dd>A description list is perfect for defining terms.</dd>
-    	<dt>Euismod</dt>
-    	<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-    	<dd>Donec id elit non mi porta gravida at eget metus.</dd>
-    	<dt>Malesuada porta</dt>
-    	<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      <dt>Description lists</dt>
+      <dd>A description list is perfect for defining terms.</dd>
+      <dt>Euismod</dt>
+      <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+      <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+      <dt>Malesuada porta</dt>
+      <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
     </dl>
   </div>
 </div>
@@ -429,34 +430,34 @@
 <h3>Example: Default table styles</h3>
 <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
 <table>
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Language</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Some</td>
-			<td>One</td>
-			<td>English</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Joe</td>
-			<td>Sixpack</td>
-			<td>English</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Stu</td>
-			<td>Dent</td>
-			<td>Code</td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Some</td>
+      <td>One</td>
+      <td>English</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Joe</td>
+      <td>Sixpack</td>
+      <td>English</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Stu</td>
+      <td>Dent</td>
+      <td>Code</td>
+    </tr>
+  </tbody>
 </table>
 <pre class="prettyprint linenums">
 &lt;table class="common-table"&gt;
@@ -466,34 +467,34 @@
 <h3>Example: Zebra-striped</h3>
 <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
 <table class="zebra-striped">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Language</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Some</td>
-			<td>One</td>
-			<td>English</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Joe</td>
-			<td>Sixpack</td>
-			<td>English</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Stu</td>
-			<td>Dent</td>
-			<td>Code</td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Some</td>
+      <td>One</td>
+      <td>English</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Joe</td>
+      <td>Sixpack</td>
+      <td>English</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Stu</td>
+      <td>Dent</td>
+      <td>Code</td>
+    </tr>
+  </tbody>
 </table>
 <pre class="prettyprint linenums">
 &lt;table class="common-table zebra-striped"&gt;
@@ -503,34 +504,34 @@
 <h3>Example: Zebra-striped w/ TableSorter.js</h3>
 <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column's header to change the sort.</strong></p>
 <table class="zebra-striped" id="sortTableExample">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th class="yellow">First Name</th>
-			<th class="blue">Last Name</th>
-			<th class="green">Language</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Your</td>
-			<td>One</td>
-			<td>English</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Joe</td>
-			<td>Sixpack</td>
-			<td>English</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Stu</td>
-			<td>Dent</td>
-			<td>Code</td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th class="yellow">First Name</th>
+      <th class="blue">Last Name</th>
+      <th class="green">Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Your</td>
+      <td>One</td>
+      <td>English</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Joe</td>
+      <td>Sixpack</td>
+      <td>English</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Stu</td>
+      <td>Dent</td>
+      <td>Code</td>
+    </tr>
+  </tbody>
 </table>
 <pre class="prettyprint linenums">
 &lt;script type="text/javascript" src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
@@ -808,8 +809,8 @@
     <h3>Example buttons</h3>
     <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you'll want to apply these to only <code>a</code>, <code>button</code>, and select <code>input</code> elements. Here's how it looks:</p>
     <div class="well" style="padding: 14px 19px;">
-    	<button type="submit" class="btn primary">Submit</button>
-    	<button type="submit" class="btn">Cancel</button>
+      <button type="submit" class="btn primary">Submit</button>
+      <button type="submit" class="btn">Cancel</button>
     </div>
     <h3>Alternate sizes</h3>
     <p>Fancy larger or smaller buttons? Have at it!</p>
