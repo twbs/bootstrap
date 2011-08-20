@@ -92,10 +92,9 @@ $(document).ready(function(){
 
   // Copy code blocks in docs
   $(".copy-code").focus(function() {
-    $(this).select();
-  });
-  $(".copy-code").mouseup(function(e) {
-    e.preventDefault();
+    var el = this;
+    // push select to event loop for chrome :{o
+    setTimeout(function () { $(el).select(); }, 1);
   });
 
 
