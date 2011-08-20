@@ -25,30 +25,25 @@ div.topbar {
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   }
 
-  // Hover and active states for links
-  ul li a:hover,
-  ul li.active a,
-  a.logo:hover {
+  // Hover and active states
+  a:hover,
+  ul li.active a {
     background-color: #333;
-    background-color: rgba(255,255,255,.15);
+    background-color: rgba(255,255,255,.05);
     color: @white;
     text-decoration: none;
   }
 
-  // Logo
-  a.logo {
+  // Website name
+  h3 a {
     float: left;
     display: block;
     padding: 8px 20px 12px;
-    margin-left: -20px;
+    margin-left: -20px; // negative indent to left-align the text down the page
     color: @white;
     font-size: 20px;
     font-weight: 200;
     line-height: 1;
-    img {
-      float: left;
-      margin-right: 6px;
-    }
   }
 
   // Search Form
