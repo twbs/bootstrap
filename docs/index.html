@@ -77,25 +77,43 @@
             <p>Download, fork, pull, file issues, and more with the official Bootstrap repo on Github.</p>
             <p><a target="_blank" href="https://github.com/twitter/bootstrap" class="btn primary">Bootstrap on GitHub &raquo;</a></p>
           </div>
-        </div>
+        </div> <!-- /row -->
       </div>
     </div>
 
     <div class="container">
 
+<section id="about">
+  <div class="page-header">
+    <h1>About Bootstrap <small>Brief history, browser support, and more</small></h1>
+  </div>
+  <div class="row">
+    <div class="span6 columns">
+      <h2>History</h2>
+      <p>In the earlier days of Twitter, engineers used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented and development quickly accelerated during Twitter’s first Hackweek.</p>
+      <p>With the help and feedback of many engineers at Twitter, Bootstrap has grown significantly to encompass not only basic styles, but more elegant and durable front-end design patterns.</p>
+      <p>Read more on <a href="https://dev.twitter.com/blog/bootstrap-twitter">dev.twitter.com &rsaquo;</a></p>
+    </div>
+    <div class="span6 columns">
+      <h2>Browser support</h2>
+      <p>Bootstrap is tested and supported most thoroughly in modern browsers like Chrome, Safari, and Firefox. Full support for versions of Internet Explorer is in the works.</p>
+      <img src="assets/img/browsers.png" alt="Tested and supported in Chrome, Safari, and Firefox">
+    </div>
+  </div> <!-- /row -->
+</section>
 
 <section id="grid-system">
-<div class="page-header">
-  <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
-</div>
-<div class="row">
-  <div class="span4 columns">
-    <h2>Default grid</h2>
-    <p>The default grid system provided as part of Bootstrap is a 940px wide 16-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
+  <div class="page-header">
+    <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
   </div>
-  <div class="span12 columns">
-    <h3>Example grid markup</h3>
-    <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Default grid</h2>
+      <p>The default grid system provided as part of Bootstrap is a 940px wide 16-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
+    </div>
+    <div class="span12 columns">
+      <h3>Example grid markup</h3>
+      <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
   &lt;div class="span6 columns"&gt;
@@ -106,94 +124,82 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-  </div>
-</div>
-
-<div class="row show-grid" title="16 column layout">
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-</div>
-
-<div class="row show-grid" title="8 column layout">
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-</div>
-
-<div class="row show-grid" title="Example uncommon layout">
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span1 column">1</div>
-</div>
-
-<div class="row show-grid" title="Four column layout">
-  <div class="span4 columns">4</div>
-  <div class="span4 columns">4</div>
-  <div class="span4 columns">4</div>
-  <div class="span4 columns">4</div>
-</div>
-
-<div class="row show-grid" title="Irregular three column layout">
-  <div class="span4 columns">4</div>
-  <div class="span6 columns">6</div>
-  <div class="span6 columns">6</div>
-</div>
-
-<div class="row show-grid" title="Half and half">
-  <div class="span8 columns">8</div>
-  <div class="span8 columns">8</div>
-</div>
-
-<div class="row show-grid" title="Example uncommon two-column layout">
-  <div class="span5 columns">5</div>
-  <div class="span11 columns">11</div>
-</div>
-
-<div class="row show-grid" title="Unnecessary single column layout">
-  <div class="span16 columns">16</div>
-</div>
-
-<h4>Offsetting columns</h4>
-<div class="row show-grid">
-  <div class="span4 columns">4</div>
-  <div class="span8 columns offset4">8 offset 4</div>
-</div>
-<div class="row show-grid">
-  <div class="span4 columns offset4">4 offset 4</div>
-  <div class="span4 columns offset4">4 offset 4</div>
-</div>
-<div class="row show-grid">
-  <div class="span5 columns offset3">5 offset 3</div>
-  <div class="span5 columns offset3">5 offset 3</div>
-</div>
-<div class="row show-grid">
-  <div class="span10 columns offset6">10 offset 6</div>
-</div>
+    </div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="16 column layout">
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="8 column layout">
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Example uncommon layout">
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span1 column">1</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Four column layout">
+    <div class="span4 columns">4</div>
+    <div class="span4 columns">4</div>
+    <div class="span4 columns">4</div>
+    <div class="span4 columns">4</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Irregular three column layout">
+    <div class="span4 columns">4</div>
+    <div class="span6 columns">6</div>
+    <div class="span6 columns">6</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Half and half">
+    <div class="span8 columns">8</div>
+    <div class="span8 columns">8</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Example uncommon two-column layout">
+    <div class="span5 columns">5</div>
+    <div class="span11 columns">11</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Unnecessary single column layout">
+    <div class="span16 columns">16</div>
+  </div> <!-- /row -->
+  <h4>Offsetting columns</h4>
+  <div class="row show-grid">
+    <div class="span4 columns">4</div>
+    <div class="span8 columns offset4">8 offset 4</div>
+  </div> <!-- /row -->
+  <div class="row show-grid">
+    <div class="span4 columns offset4">4 offset 4</div>
+    <div class="span4 columns offset4">4 offset 4</div>
+  </div> <!-- /row -->
+  <div class="row show-grid">
+    <div class="span5 columns offset3">5 offset 3</div>
+    <div class="span5 columns offset3">5 offset 3</div>
+  </div> <!-- /row -->
+  <div class="row show-grid">
+    <div class="span10 columns offset6">10 offset 6</div>
+  </div> <!-- /row -->
 </section>
 
 

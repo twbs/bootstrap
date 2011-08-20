@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Aug 19 22:27:16 PDT 2011
+ * Date: Sat Aug 20 01:50:35 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -466,7 +466,7 @@ p {
   font-size: 13px;
   font-weight: normal;
   line-height: 18px;
-  margin-bottom: 18px;
+  margin-bottom: 9px;
 }
 p small {
   font-size: 11px;
@@ -629,6 +629,7 @@ pre {
   margin: 0 0 18px;
   line-height: 18px;
   font-size: 12px;
+  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
