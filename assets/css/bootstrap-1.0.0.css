@@ -6,12 +6,11 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jul 29 13:03:43 PDT 2011
+ * Date: Fri Aug 19 19:37:58 PDT 2011
  */
-/*
- * Reset.less
+/* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
- */
+ * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 html, body {
   margin: 0;
   padding: 0;
@@ -125,9 +124,7 @@ aside {
 /*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
- */
-/* Baseline Grid System
--------------------------------------------------- */
+ * ------------------------------------------------------------------------------------------- */
 .row {
   zoom: 1;
 }
@@ -338,8 +335,6 @@ aside {
 .row .offset12:first-child {
   margin-left: 720px !important;
 }
-/* Structural Layout
--------------------------------------------------- */
 html, body {
   background-color: #fff;
 }
@@ -376,8 +371,6 @@ div.container-fluid div.content {
   max-width: 1180px;
   margin-left: 240px;
 }
-/* Base Styles
--------------------------------------------------- */
 a {
   color: #0069d6;
   text-decoration: none;
@@ -394,6 +387,9 @@ a:hover {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(0.25, #ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(#ffffff, color-stop(0.25, #ffffff), #e6e6e6);
   background-image: -moz-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
+  background-image: -ms-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
+  background-image: -o-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
+  background-image: linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
   padding: 4px 14px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   color: #333333;
@@ -598,14 +594,14 @@ blockquote p {
   line-height: 18px;
   margin-bottom: 0;
 }
-blockquote cite {
+blockquote small, blockquote cite {
   display: block;
   font-size: 12px;
   font-weight: 300;
   line-height: 18px;
   color: #bfbfbf;
 }
-blockquote cite:before {
+blockquote small:before, blockquote cite:before {
   content: '\2014 \00A0';
 }
 address {
@@ -624,7 +620,7 @@ code, pre {
 code {
   background-color: #fee9cc;
   color: rgba(0, 0, 0, 0.75);
-  padding: 2px 3px;
+  padding: 1px 3px;
 }
 pre {
   background-color: #f5f5f5;
@@ -639,12 +635,9 @@ pre {
   border-radius: 3px;
   white-space: pre-wrap;
 }
-/*
- * Forms.less
+/* Forms.less
  * Base styles for various input types, form layouts, and states
- */
-/* Global form styles
--------------------------------------------------- */
+ * ------------------------------------------------------------- */
 form {
   margin-bottom: 18px;
 }
@@ -981,9 +974,7 @@ form.form-stacked div.actions {
 /*
  * Tables.less
  * Tables for, you guessed it, tabular data
- */
-/* Baseline styles
--------------------------------------------------- */
+ * ---------------------------------------- */
 table {
   width: 100%;
   margin-bottom: 18px;
@@ -1003,8 +994,6 @@ table th {
   font-weight: bold;
   border-bottom-width: 2px;
 }
-/* Zebra-striping
--------------------------------------------------- */
 table.zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
 }
