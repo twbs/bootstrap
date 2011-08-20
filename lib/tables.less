@@ -46,20 +46,13 @@ table.zebra-striped {
   th.header {
     cursor: pointer;
     &:after {
-      width: 0px;
-      height: 0px;
-      display: inline-block;
+      content: "";
       float: right;
-      margin-top:7px;
-      content: "&darr;";
-      text-indent: -99999px;
-      vertical-align: top;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-bottom: 4px solid #000;
-      visibility:hidden;
-      .box-shadow(0 1px 0 #fff);
-      .opacity(30);
+      margin-top: 7px;
+      border-width: 0 4px 4px;
+      border-style: solid;
+      border-color: #000 transparent;
+      visibility: hidden;
     }
   }
 
