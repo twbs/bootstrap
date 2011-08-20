@@ -57,6 +57,8 @@ form {
   // Inputs, Textareas, Selects
   input[type=text],
   input[type=password],
+  input[type=email],
+  input[type=url],
   textarea,
   select,
   .uneditable-input {
@@ -97,6 +99,8 @@ form {
   // Focus states
   input[type=text],
   input[type=password],
+  input[type=email],
+  input[type=url],
   select, textarea {
     @transition: border linear .2s, box-shadow linear .2s;
     .transition(@transition);
@@ -104,6 +108,8 @@ form {
   }
   input[type=text]:focus,
   input[type=password]:focus,
+  input[type=email]:focus,
+  input[type=url]:focus,
   textarea:focus {
     outline: none;
     border-color: rgba(82,168,236,.8);
@@ -125,6 +131,8 @@ form {
     }
     input[type=text],
     input[type=password],
+    input[type=email],
+    input[type=url],
     textarea {
       border-color: @error-text;
       .box-shadow(0 0 3px rgba(171,41,32,.25));
@@ -215,7 +223,10 @@ div.actions {
 // Inline Fields (input fields that appear as inline objects
 div.inline-inputs {
   color: @gray;
-  span, input[type=text] {
+  span,
+  input[type=text],
+  input[type=email],
+  input[type=url] {
     display: inline-block;
   }
   input.mini {
@@ -232,7 +243,9 @@ div.inline-inputs {
 // Allow us to put symbols and text within the input field for a cleaner look
 div.input-prepend,
 div.input-append {
-  input[type=text] {
+  input[type=text],
+  input[type=email],
+  input[type=url] {
     .border-radius(0 3px 3px 0);
   }
   .add-on {
@@ -258,7 +271,9 @@ div.input-append {
   }
 }
 div.input-append {
-  input[type=text] {
+  input[type=text],
+  input[type=email],
+  input[type=url] {
     float: left;
     .border-radius(3px 0 0 3px);
   }
