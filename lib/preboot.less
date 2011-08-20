@@ -54,15 +54,15 @@
 // MIXINS
 // ------
 
-// Clearfix for clearing floats like a boss
+// Clearfix for clearing floats like a boss h5bp.com/q
 .clearfix {
   zoom: 1;
+	&:before, &:after {
+    display: table;
+    content: "";
+	}
 	&:after {
-    display: block;
-    visibility: hidden;
-    height: 0;
     clear: both;
-    content: ".";
 	}
 }
 
