@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 11:56:11 PDT 2011
+ * Date: Sun Aug 21 11:57:22 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1249,7 +1249,7 @@ div.topbar ul li.menu a.menu:after {
   opacity: 0.5;
 }
 div.topbar ul li.menu.open a.menu, div.topbar ul li.menu.open a:hover {
-  background-color: 444;
+  background-color: #444;
   background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
