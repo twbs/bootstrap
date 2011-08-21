@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 20 20:18:13 PDT 2011
+ * Date: Sun Aug 21 15:46:59 EEST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -386,7 +386,7 @@ a:hover {
   background-repeat: no-repeat;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(0.25, #ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(#ffffff, color-stop(0.25, #ffffff), #e6e6e6);
-  background-image: -moz-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
+  background-image: -moz-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
   background-image: -ms-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
   background-image: -o-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
   background-image: linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
@@ -857,7 +857,10 @@ div.inline-inputs input.small {
 div.inline-inputs span {
   padding: 0 2px 0 1px;
 }
-div.input-prepend input[type=text], div.input-append input[type=text] {
+div.input-prepend input[type=text],
+div.input-append input[type=text],
+div.input-prepend input[type=password],
+div.input-append input[type=password] {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
@@ -885,7 +888,7 @@ div.input-prepend .active, div.input-append .active {
   background: #a9dba9;
   border-color: #46a546;
 }
-div.input-append input[type=text] {
+div.input-append input[type=text], div.input-append input[type=password] {
   float: left;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
