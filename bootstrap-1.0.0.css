@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 11:45:18 PDT 2011
+ * Date: Sun Aug 21 11:52:41 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -421,8 +421,8 @@ a:hover {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
   background-image: -webkit-linear-gradient(#049cdb, #0064cd);
   background-image: -o-linear-gradient(#049cdb, #0064cd);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0);
   background-image: linear-gradient(#049cdb, #0064cd);
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1093,6 +1093,7 @@ table.zebra-striped th.headerSortUp.purple, table.zebra-striped th.headerSortDow
  * Repeatable UI elements outside the base styles provided from the scaffolding
  * ---------------------------------------------------------------------------- */
 div.topbar {
+  background: #222;
   background-color: #222222;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
@@ -1101,9 +1102,11 @@ div.topbar {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
   background-image: -webkit-linear-gradient(#333333, #222222);
   background-image: -o-linear-gradient(#333333, #222222);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   background-image: linear-gradient(#333333, #222222);
+  filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
   height: 40px;
   position: fixed;
   top: 0;
@@ -1361,8 +1364,8 @@ div.alert-message {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.15)));
   background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0);
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   background-color: #e6e6e6;
   margin-bottom: 18px;
