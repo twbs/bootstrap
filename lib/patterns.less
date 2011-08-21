@@ -8,8 +8,6 @@
 
 // Topbar for Branding and Nav
 div.topbar {
-  background:#222;
-  #gradient > .vertical(#333, #222);
   height: 40px;
   position: fixed;
   top: 0;
@@ -17,8 +15,19 @@ div.topbar {
   right: 0;
   z-index: 10000;
   overflow: visible;
-  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  .box-shadow(@shadow);
+
+  // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+  .fill {
+    background:#222;
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    #gradient > .vertical(#333, #222);
+    @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+    .box-shadow(@shadow);
+  }
 
   // Links get text shadow
   a {
@@ -36,15 +45,18 @@ div.topbar {
   }
 
   // Website name
-  h3 a {
-    float: left;
-    display: block;
-    padding: 8px 20px 12px;
-    margin-left: -20px; // negative indent to left-align the text down the page
-    color: @white;
-    font-size: 20px;
-    font-weight: 200;
-    line-height: 1;
+  h3 {
+    position:relative;
+    a {
+      float: left;
+      display: block;
+      padding: 8px 20px 12px;
+      margin-left: -20px; // negative indent to left-align the text down the page
+      color: @white;
+      font-size: 20px;
+      font-weight: 200;
+      line-height: 1;
+    }
   }
 
   // Search Form
