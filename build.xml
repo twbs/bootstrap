@@ -532,11 +532,14 @@
                 <exclude name="${dir.js}/**/*.min.js"/>
             </fileset>
             <arg line="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
-            <srcfile/>
-            <arg line="--line-break"/>
-            <arg line="4000"/>
-            <arg line="-o"/>
+            <arg path="./${dir.build.tools}/compiler.jar"/>
+            <arg line="--js"/>
+			<srcfile/>
+			<arg line="--compilation_level" />
+			 <arg value="${scripts.compilation.level}" />
+			 <arg line="--warning_level" /> 
+			 <arg value="${scripts.compilation.warninglevel}" />
+			 <arg line="--js_output_file" />
             <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/*.js"/>
             <targetfile/>
         </apply>
