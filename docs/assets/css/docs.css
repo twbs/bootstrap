@@ -146,34 +146,6 @@ div.quickstart form textarea {
 .show-grid:hover .column, .show-grid:hover .columns {
   background: rgba(0, 0, 0, 0.25);
 }
-/* Hashgrid.js grid (press G & H to view)
--------------------------------------------------- */
-#grid {
-  width: 980px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  margin-left: -490px;
-}
-#grid div.vert {
-  background-color: rgba(0, 206, 209, 0.075);
-  width: 39px;
-  border: solid darkturquoise;
-  border-width: 0 1px;
-  margin-right: 19px;
-}
-#grid div.vert.first-line {
-  margin-left: 19px;
-}
-#grid div.horiz {
-  height: 19px;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.1);
-  margin: 0;
-  padding: 0;
-}
-#grid div.horiz:nth-child(5n) {
-  border-color: rgba(255, 0, 0, 0.25);
-}
 /* Render mini layout previews
 -------------------------------------------------- */
 div.mini-layout {
@@ -199,7 +171,9 @@ div.mini-layout div.mini-layout-body {
   width: 450px;
   height: 340px;
 }
-div.mini-layout.fluid div.mini-layout-sidebar, div.mini-layout.fluid div.mini-layout-header, div.mini-layout.fluid div.mini-layout-body {
+div.mini-layout.fluid div.mini-layout-sidebar,
+div.mini-layout.fluid div.mini-layout-header,
+div.mini-layout.fluid div.mini-layout-body {
   float: left;
 }
 div.mini-layout.fluid div.mini-layout-sidebar {

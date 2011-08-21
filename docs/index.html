@@ -878,7 +878,7 @@
   <h2>Fixed topbar</h2>
   <div class="topbar-wrapper" style="z-index: 5;">
     <div class="topbar">
-      <div class="container fixed">
+      <div class="container">
         <h3><a href="#">Project Name</a></h3>
         <ul>
           <li class="active"><a href="#">Home</a></li>
@@ -920,20 +920,20 @@
 
   <br />
 
-<div class="row">
-  <div class="span4 columns">
-    <h2>Tabs and pills</h2>
-    <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
-    <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
-  </div>
-  <div class="span12 columns">
-<ul class="tabs">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-  <li><a href="#">Settings</a></li>
-  <li><a href="#">Contact</a></li>
-</ul>
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Tabs and pills</h2>
+      <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
+      <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
+    </div>
+    <div class="span12 columns">
+      <ul class="tabs">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -943,13 +943,13 @@
   &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-<ul class="pills">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-  <li><a href="#">Settings</a></li>
-  <li><a href="#">Contact</a></li>
-</ul>
+      <ul class="pills">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="pills"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -959,56 +959,57 @@
   &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-  </div>
-</div>
+    </div>
+  </div> <!-- /row -->
 
-<div class="row">
-  <div class="span4 columns">
-    <h2>Pagination</h2>
-    <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
-  </div>
-  <div class="span12 columns">
-    <div class="pagination">
-      <ul>
-        <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li class="next"><a href="#">Next &rarr;</a></li>
-      </ul>
+  <!-- Pagination -->
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Pagination</h2>
+      <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
     </div>
-    <div class="pagination">
-      <ul>
-        <li class="prev"><a href="#">&larr; Previous</a></li>
-        <li class="active"><a href="#">10</a></li>
-        <li><a href="#">11</a></li>
-        <li><a href="#">12</a></li>
-        <li class="disabled"><a href="#">…</a></li>
-        <li><a href="#">19</a></li>
-        <li><a href="#">20</a></li>
-        <li><a href="#">21</a></li>
-        <li class="next"><a href="#">Next &rarr;</a></li>
-      </ul>
-    </div>
-    <div class="pagination">
-      <ul>
-        <li class="prev"><a href="#">&larr; Previous</a></li>
-        <li><a href="#">10</a></li>
-        <li><a href="#">11</a></li>
-        <li><a href="#">12</a></li>
-        <li><a href="#">13</a></li>
-        <li><a href="#">14</a></li>
-        <li class="active"><a href="#">15</a></li>
-        <li><a href="#">16</a></li>
-        <li><a href="#">17</a></li>
-        <li><a href="#">18</a></li>
-        <li><a href="#">19</a></li>
-        <li><a href="#">20</a></li>
-        <li class="next"><a href="#">Next &rarr;</a></li>
-      </ul>
-    </div>
+    <div class="span12 columns">
+      <div class="pagination">
+        <ul>
+          <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">Next &rarr;</a></li>
+        </ul>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&larr; Previous</a></li>
+          <li class="active"><a href="#">10</a></li>
+          <li><a href="#">11</a></li>
+          <li><a href="#">12</a></li>
+          <li class="disabled"><a href="#">…</a></li>
+          <li><a href="#">19</a></li>
+          <li><a href="#">20</a></li>
+          <li><a href="#">21</a></li>
+          <li class="next"><a href="#">Next &rarr;</a></li>
+        </ul>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&larr; Previous</a></li>
+          <li><a href="#">10</a></li>
+          <li><a href="#">11</a></li>
+          <li><a href="#">12</a></li>
+          <li><a href="#">13</a></li>
+          <li><a href="#">14</a></li>
+          <li class="active"><a href="#">15</a></li>
+          <li><a href="#">16</a></li>
+          <li><a href="#">17</a></li>
+          <li><a href="#">18</a></li>
+          <li><a href="#">19</a></li>
+          <li><a href="#">20</a></li>
+          <li class="next"><a href="#">Next &rarr;</a></li>
+        </ul>
+      </div>
 <pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
@@ -1022,8 +1023,8 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-  </div>
-</div>
+    </div>
+  </div> <!-- /row -->
 
 </section>
 
@@ -1033,6 +1034,7 @@
   <div class="page-header">
     <h1>Alerts &amp; Errors <small>Styles for success, warning, and error messages or alerts</small></h1>
   </div>
+  <!-- Basic alert messages -->
   <div class="row">
     <div class="span4 columns">
       <h2>Basic alerts</h2>
@@ -1056,7 +1058,8 @@
         <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
       </div>
     </div>
-  </div>
+  </div> <!-- /row -->
+  <!-- Block messages -->
   <div class="row">
     <div class="span4 columns">
       <h2>Block messages</h2>
@@ -1084,11 +1087,13 @@
         <p><a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a></p>
       </div>
     </div>
-  </div>
+  </div> <!-- /row -->
 </section>
 
 
 <section id="popovers">
+
+  <!-- Popovers, modals, and tooltips -->
   <div class="page-header">
     <h1>Popovers <small>Components for displaying content in modals, tooltips, and popovers</small></h1>
   </div>
@@ -1117,6 +1122,7 @@
     </div>
   </div> <!-- /row -->
 
+  <!-- Tooltips -->
   <div class="row">
     <div class="span4 columns">
       <h2>Tool Tips</h2>
@@ -1149,6 +1155,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     </div>
   </div> <!-- /row -->
 
+  <!-- Popovers -->
   <div class="row">
     <div class="span4 columns">
       <h2>Popovers</h2>
@@ -1171,7 +1178,6 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
       </div>
     </div>
   </div> <!-- /row -->
-
 
 </section>
 
