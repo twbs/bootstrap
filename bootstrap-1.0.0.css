@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Aug 19 20:19:39 PDT 2011
+ * Date: Sun 21 Aug 2011 00:57:56 BST
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -681,6 +681,18 @@ form input[type=checkbox], form input[type=radio] {
 }
 form input[type=text],
 form input[type=password],
+form input[type=email],
+form input[type=url],
+form input[type=tel],
+form input[type=number],
+form input[type=range],
+form input[type=search],
+form input[type=date],
+form input[type=time],
+form input[type=datetime],
+form input[type=datetime-local],
+form input[type=month],
+form input[type=week],
 form textarea,
 form select,
 form .uneditable-input {
@@ -720,6 +732,17 @@ form ::-webkit-input-placeholder {
 }
 form input[type=text],
 form input[type=password],
+form input[type=email],
+form input[type=url],
+form input[type=tel],
+form input[type=number],
+form input[type=search],
+form input[type=date],
+form input[type=time],
+form input[type=datetime],
+form input[type=datetime-local],
+form input[type=month],
+form input[type=week],
 form select,
 form textarea {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -729,7 +752,20 @@ form textarea {
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-form input[type=text]:focus, form input[type=password]:focus, form textarea:focus {
+form input[type=text]:focus,
+form input[type=password]:focus,
+form input[type=email]:focus,
+form input[type=url]:focus,
+form input[type=tel]:focus,
+form input[type=number]:focus,
+form input[type=search]:focus,
+form input[type=date]:focus,
+form input[type=time]:focus,
+form input[type=datetime]:focus,
+form input[type=datetime-local]:focus,
+form input[type=month]:focus,
+form input[type=week]:focus,
+form textarea:focus {
   outline: none;
   border-color: rgba(82, 168, 236, 0.8);
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
@@ -747,13 +783,39 @@ form div.error {
 form div.error > label, form div.error span.help-inline, form div.error span.help-block {
   color: #9d261d;
 }
-form div.error input[type=text], form div.error input[type=password], form div.error textarea {
+form div.error input[type=text],
+form div.error input[type=password],
+form div.error input[type=email],
+form div.error input[type=url],
+form div.error input[type=tel],
+form div.error input[type=number],
+form div.error input[type=search],
+form div.error input[type=date],
+form div.error input[type=time],
+form div.error input[type=datetime],
+form div.error input[type=datetime-local],
+form div.error input[type=month],
+form div.error input[type=week],
+form div.error textarea {
   border-color: #c87872;
   -webkit-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   -moz-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
 }
-form div.error input[type=text]:focus, form div.error input[type=password]:focus, form div.error textarea:focus {
+form div.error input[type=text]:focus,
+form div.error input[type=password]:focus,
+form div.error input[type=email]:focus,
+form div.error input[type=url]:focus,
+form div.error input[type=tel]:focus,
+form div.error input[type=number]:focus,
+form div.error input[type=search]:focus,
+form div.error input[type=date]:focus,
+form div.error input[type=time]:focus,
+form div.error input[type=datetime]:focus,
+form div.error input[type=datetime-local]:focus,
+form div.error input[type=month]:focus,
+form div.error input[type=week]:focus,
+form div.error textarea:focus {
   border-color: #b9554d;
   -webkit-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
@@ -844,7 +906,20 @@ div.actions div.secondary-action a:hover {
 div.inline-inputs {
   color: #808080;
 }
-div.inline-inputs span, div.inline-inputs input[type=text] {
+div.inline-inputs span,
+div.inline-inputs input[type=text],
+div.inline-inputs input[type=password],
+div.inline-inputs input[type=email],
+div.inline-inputs input[type=url],
+div.inline-inputs input[type=tel],
+div.inline-inputs input[type=number],
+div.inline-inputs input[type=search],
+div.inline-inputs input[type=date],
+div.inline-inputs input[type=time],
+div.inline-inputs input[type=datetime],
+div.inline-inputs input[type=datetime-local],
+div.inline-inputs input[type=month],
+div.inline-inputs input[type=week] {
   display: inline-block;
 }
 div.inline-inputs input.mini {
