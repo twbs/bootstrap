@@ -11,8 +11,7 @@ body {
   position: relative;
 }
 section {
-  padding-top: 80px;
-  margin-bottom: -40px;
+  padding-top: 60px;
 }
 #masthead, #footer {
   background-color: #049cd9;
@@ -29,8 +28,8 @@ section {
   background: transparent url(../img/grid-18px.png) top center;
   padding: 45px 0;
   -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 #masthead h1,
 #footer h1,
@@ -45,7 +44,7 @@ section {
   font-weight: bold;
 }
 #masthead {
-  margin-top: 40px;
+  margin-top: -20px;
 }
 #masthead h1,
 #masthead p {
@@ -77,15 +76,14 @@ div.quickstart {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0)";
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0);
   background-image: linear-gradient(#f9f9f9, #f5f5f5);
-  margin-bottom: -36px;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #eee;
 }
 div.quickstart div.row {
   margin: 0 -20px;
   -webkit-box-shadow: 1px 0 0 #f9f9f9;
-  -moz-box-shadow: 1px 0 0 #f9f9f9;
-  box-shadow: 1px 0 0 #f9f9f9;
+     -moz-box-shadow: 1px 0 0 #f9f9f9;
+          box-shadow: 1px 0 0 #f9f9f9;
 }
 div.quickstart div.columns {
   width: 285px;
@@ -94,8 +92,8 @@ div.quickstart div.columns {
   padding: 17px 20px 26px;
   border-left: 1px solid #eee;
   -webkit-box-shadow: inset 1px 0 0 #f9f9f9;
-  -moz-box-shadow: inset 1px 0 0 #f9f9f9;
-  box-shadow: inset 1px 0 0 #f9f9f9;
+     -moz-box-shadow: inset 1px 0 0 #f9f9f9;
+          box-shadow: inset 1px 0 0 #f9f9f9;
 }
 div.quickstart div.columns:last-child {
   border-right: 1px solid #eee;
@@ -133,14 +131,15 @@ div.quickstart form textarea {
 /* Special grid styles
 -------------------------------------------------- */
 .show-grid {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .show-grid .column, .show-grid .columns {
-  background: rgba(0, 0, 0, 0.1);
+  background-color: #eee;
   text-align: center;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
   height: 30px;
   line-height: 30px;
 }
@@ -181,19 +180,21 @@ div.mini-layout {
   height: 340px;
   margin-bottom: 20px;
   padding: 9px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
 }
 div.mini-layout div {
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
 }
 div.mini-layout div.mini-layout-body {
-  background-color: rgba(141, 192, 219, 0.25);
+  background-color: #dceaf4;
   margin: 0 auto;
   width: 450px;
   height: 340px;
@@ -202,7 +203,7 @@ div.mini-layout.fluid div.mini-layout-sidebar, div.mini-layout.fluid div.mini-la
   float: left;
 }
 div.mini-layout.fluid div.mini-layout-sidebar {
-  background-color: rgba(141, 192, 219, 0.5);
+  background-color: #bbd8e9;
   width: 90px;
   height: 340px;
 }
@@ -222,8 +223,9 @@ div.topbar-wrapper div.topbar {
   margin: 0 -20px;
   padding-left: 20px;
   padding-right: 20px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
 }
 
 /* Popover docs
@@ -241,7 +243,7 @@ div.popover-well div.popover-wrapper {
   height: 160px;
   float: left;
   margin-left: 55px;
-  position:relative;
+  position: relative;
 }
 
 div.popover-well div.popover-menu-wrapper {
@@ -250,5 +252,5 @@ div.popover-well div.popover-menu-wrapper {
 
 img.large-bird {
   margin: 5px 0 0 310px;
-  opacity:.1;
+  opacity: .1;
 }
