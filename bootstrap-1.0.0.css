@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 12:03:15 PDT 2011
+ * Date: Sun Aug 21 12:06:13 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -422,7 +422,6 @@ a:hover {
   background-image: -webkit-linear-gradient(#049cdb, #0064cd);
   background-image: -o-linear-gradient(#049cdb, #0064cd);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0)";
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0);
   background-image: linear-gradient(#049cdb, #0064cd);
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1103,7 +1102,6 @@ div.topbar {
   background-image: -webkit-linear-gradient(#333333, #222222);
   background-image: -o-linear-gradient(#333333, #222222);
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0)";
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   background-image: linear-gradient(#333333, #222222);
   height: 40px;
   position: fixed;
@@ -1364,7 +1362,6 @@ div.alert-message {
   background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0)";
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='transparent', endColorstr='rgba(0, 0, 0, 0.15)', GradientType=0);
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   background-color: #e6e6e6;
   margin-bottom: 18px;
