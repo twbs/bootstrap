@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 11:57:22 PDT 2011
+ * Date: Sun Aug 21 12:00:04 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1106,7 +1106,6 @@ div.topbar {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   background-image: linear-gradient(#333333, #222222);
   filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
   height: 40px;
   position: fixed;
   top: 0;
