@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 20 20:18:13 PDT 2011
+ * Date: Sat Aug 20 23:43:58 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -375,6 +375,7 @@ a {
   color: #0069d6;
   text-decoration: none;
   line-height: inherit;
+  font-weight: inherit;
 }
 a:hover {
   color: #0050a3;
@@ -386,7 +387,7 @@ a:hover {
   background-repeat: no-repeat;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(0.25, #ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(#ffffff, color-stop(0.25, #ffffff), #e6e6e6);
-  background-image: -moz-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
+  background-image: -moz-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
   background-image: -ms-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
   background-image: -o-linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
   background-image: linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
