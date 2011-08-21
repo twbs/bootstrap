@@ -291,6 +291,8 @@ div.page-header {
 // One-liner alert bars
 div.alert-message {
   #gradient > .vertical(transparent, rgba(0,0,0,0.15));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)"; // no gradient IE8+
+  filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";  // no gradient IE6 & IE7
   background-color: @grayLighter;
   margin-bottom: @baseline;
   padding: 8px 15px;
