@@ -25,30 +25,25 @@ div.topbar {
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   }
 
-  // Hover and active states for links
-  ul li a:hover,
-  ul li.active a,
-  a.logo:hover {
+  // Hover and active states
+  a:hover,
+  ul li.active a {
     background-color: #333;
-    background-color: rgba(255,255,255,.15);
+    background-color: rgba(255,255,255,.05);
     color: @white;
     text-decoration: none;
   }
 
-  // Logo
-  a.logo {
+  // Website name
+  h3 a {
     float: left;
     display: block;
     padding: 8px 20px 12px;
-    margin-left: -20px;
+    margin-left: -20px; // negative indent to left-align the text down the page
     color: @white;
     font-size: 20px;
     font-weight: 200;
     line-height: 1;
-    img {
-      float: left;
-      margin-right: 6px;
-    }
   }
 
   // Search Form
@@ -237,6 +232,28 @@ div.topbar {
         }
       }
     }
+  }
+}
+
+
+// PAGE HEADERS
+// ------------
+
+.hero-unit {
+  background-color: #f5f5f5;
+  margin-bottom: 30px;
+  padding: 60px;
+  .border-radius(6px);
+  h1 {
+    margin-bottom: 0;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: @baseline * 1.5;
   }
 }
 
@@ -458,12 +475,13 @@ div.pagination {
 // WELLS
 // -----
 
-div.well {
-  background: #f5f5f5;
+.well {
+  background-color: #f5f5f5;
   margin-bottom: 20px;
   padding: 19px;
   min-height: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,.05);
   .border-radius(4px);
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
 }

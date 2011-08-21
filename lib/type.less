@@ -8,9 +8,9 @@
 
 p {
   #font > .shorthand(normal,@basefont,@baseline);
-  margin-bottom: @baseline;
+  margin-bottom: @baseline / 2;
   small {
-    font-size: 11px;
+    font-size: @basefont - 2;
     color: @grayLight;
   }
 }
@@ -142,7 +142,7 @@ blockquote {
     #font > .shorthand(300,14px,@baseline);
     margin-bottom: 0;
   }
-  small, cite {
+  small {
     display: block;
     #font > .shorthand(300,12px,@baseline);
     color: @grayLight;
@@ -178,6 +178,7 @@ pre {
   margin: 0 0 @baseline;
   line-height: @baseline;
   font-size: 12px;
+  border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
   .border-radius(3px);
   white-space: pre-wrap;

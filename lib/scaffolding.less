@@ -51,7 +51,7 @@ html, body {
   background-color: #fff;
 }
 body {
-  margin: 0;
+  margin: 60px 0 0; // Add margin to the top of the page for the topbar
   #font > .sans-serif(normal,@basefont,@baseline);
   color: @gray;
   text-rendering: optimizeLegibility;
@@ -65,7 +65,7 @@ div.container {
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 div.container-fluid {
-  padding: 20px;
+  padding: 0 20px;
   .clearfix();
   div.sidebar {
     float: left;
