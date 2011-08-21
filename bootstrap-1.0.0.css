@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 20 01:50:35 PDT 2011
+ * Date: Sat Aug 20 18:40:26 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -339,7 +339,7 @@ html, body {
   background-color: #fff;
 }
 body {
-  margin: 0;
+  margin: 60px 0 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -352,7 +352,7 @@ div.container {
   margin: 0 auto;
 }
 div.container-fluid {
-  padding: 20px;
+  padding: 0 20px;
   zoom: 1;
 }
 div.container-fluid:before, div.container-fluid:after {
@@ -1323,6 +1323,25 @@ div.topbar ul li ul li span {
   color: #808080;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
+.hero-unit {
+  background-color: #f5f5f5;
+  margin-bottom: 30px;
+  padding: 60px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.hero-unit h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.hero-unit p {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 27px;
+}
 div.page-header {
   margin-bottom: 17px;
   border-bottom: 1px solid #ddd;
@@ -1541,12 +1560,13 @@ div.pagination ul li.disabled a, div.pagination ul li.disabled a:hover {
 div.pagination ul li.next a, div.pagination ul li:last-child a {
   border: 0;
 }
-div.well {
-  background: #f5f5f5;
+.well {
+  background-color: #f5f5f5;
   margin-bottom: 20px;
   padding: 19px;
   min-height: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

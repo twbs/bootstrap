@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Bootstrap, from Twitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -12,22 +14,29 @@
     <!-- Le styles -->
     <link href="../bootstrap-1.0.0.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
     <!-- Le javascript -->
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="assets/js/application.js"></script>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
-  <body onload="prettyPrint()">
+  <body onload="prettyPrint();">
 
     <div class="topbar">
-      <div class="container fixed">
+      <div class="container">
         <h3><a href="#">Bootstrap</a></h3>
         <ul>
           <li class="active"><a href="#masthead">Overview</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#grid-system">Grid</a></li>
           <li><a href="#layouts">Layouts</a></li>
           <li><a href="#typography">Typography</a></li>
@@ -49,7 +58,7 @@
             Bootstrap is a toolkit from Twitter designed to kickstart development of webapps and sites.<br />
             It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.<br />
           </p>
-          <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with only modern browsers in mind.</p>
+          <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with modern browsers in mind.</p>
         </div> <!-- /container -->
       </div>
     </div>
@@ -89,15 +98,30 @@
   </div>
   <div class="row">
     <div class="span6 columns">
-      <h2>History</h2>
+      <h3>History</h3>
       <p>In the earlier days of Twitter, engineers used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented and development quickly accelerated during Twitter’s first Hackweek.</p>
       <p>With the help and feedback of many engineers at Twitter, Bootstrap has grown significantly to encompass not only basic styles, but more elegant and durable front-end design patterns.</p>
       <p>Read more on <a href="https://dev.twitter.com/blog/bootstrap-twitter">dev.twitter.com &rsaquo;</a></p>
     </div>
-    <div class="span6 columns">
-      <h2>Browser support</h2>
-      <p>Bootstrap is tested and supported most thoroughly in modern browsers like Chrome, Safari, and Firefox. Full support for versions of Internet Explorer is in the works.</p>
-      <img src="assets/img/browsers.png" alt="Tested and supported in Chrome, Safari, and Firefox">
+    <div class="span5 columns">
+      <h3>Browser support</h3>
+      <p>Bootstrap is tested and supported in modern browsers like Chrome, Safari, and Firefox. Full support for some versions of Internet Explorer is in the works.</p>
+      <img src="assets/img/browsers.png" width="220px" height="48px" alt="Tested and supported in Chrome, Safari, and Firefox">
+      <ul>
+        <li>Latest Safari</li>
+        <li>Latest Google Chrome</li>
+        <li>Firefox v4</li>
+      </ul>
+    </div>
+    <div class="span5 columns">
+      <h3>What's included</h3>
+      <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
+      <ul>
+        <li>All original .less files</li>
+        <li>Fully compiled and minified CSS</li>
+        <li>Complete styleguide documentation</li>
+        <li>Example page template (more to come soon)</li>
+      </ul>
     </div>
   </div> <!-- /row -->
 </section>
@@ -298,16 +322,16 @@
     <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
     <p><strong>Note:</strong> It’s still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5, but they don’t come with inherent styles anymore. <code>&lt;b&gt;</code> is meant to convey importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
     <h3>Addresses</h3>
-    <p>The <code>address</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here’s how it looks:</p>
+    <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here’s how it looks:</p>
     <address>
       <strong>Twitter, Inc.</strong><br />
       795 Folsom Ave, Suite 600<br />
       San Francisco, CA 94107<br />
       <abbr title="Phone">P:</abbr> (123) 456-7890
     </address>
-    <p><strong>Note:</strong> Each line in an <code>address</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>p</code>) to properly structure the content.</p>
+    <p><strong>Note:</strong> Each line in an <code>&lt;address&gt;</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>&lt;p&gt;</code>) to properly structure the content.</p>
     <h3>Abbreviations</h3>
-    <p>For abbreviations and acronyms, use the <code>abbr</code> tag (<code>acronym</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
+    <p>For abbreviations and acronyms, use the <code>&lt;abbr&gt;</code> tag (<code>&lt;acronym&gt;</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
   </div>
 </div>
 
@@ -321,7 +345,7 @@
     </p>
   </div>
   <div class="span12 columns">
-    <p>Be sure to wrap your <code>blockquote</code> around <code>paragraph</code> and <code>small</code> tags. When citing a source, use the <code>small</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
+    <p>Be sure to wrap your <code>&lt;blockquote&gt;</code> around <code>&lt;p&gt;</code> and <code>&lt;small&gt;</code> tags. When citing a source, use the <code>&lt;small&gt;</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
     <blockquote>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua…</p>
       <small>Dr. Julius Hibbert</small>
@@ -430,8 +454,8 @@
       <code>&lt;caption&gt;</code>
     </p>
     <p>Tables are great&mdash;for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
-    <p>Always wrap your column headers in a <code>thead</code> such that hierarchy is <code>thead</code> > <code>tr</code> > <code>th</code>.</p>
-    <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>tbody</code> so your hierarchy is <code>tbody</code> > <code>tr</code> > <code>td</code>.</p>
+    <p>Always wrap your column headers in a <code>&lt;thead&gt;</code> such that hierarchy is <code>&lt;thead&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;th&gt;</code>.</p>
+    <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>&lt;tbody&gt;</code> so your hierarchy is <code>&lt;tbody&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;td&gt;</code>.</p>
     </ul>
   </div>
   <div class="span12 columns">
@@ -815,7 +839,7 @@
   </div>
   <div class="span12 columns">
     <h3>Example buttons</h3>
-    <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>a</code>, <code>button</code>, and select <code>input</code> elements. Here’s how it looks:</p>
+    <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
     <div class="well" style="padding: 14px 19px;">
       <button type="submit" class="btn primary">Submit</button>
       <button type="submit" class="btn">Cancel</button>
@@ -831,7 +855,7 @@
       <a href="#" class="btn small">Action</a>
     </div>
     <h3>Disabled state</h3>
-    <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>button</code> elements.</p>
+    <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
     <h4>Links</h4>
     <div class="well">
       <a href="#" class="btn large primary disabled">Primary action</a>
@@ -900,7 +924,7 @@
 <div class="row">
   <div class="span4 columns">
     <h2>Tabs and pills</h2>
-    <p>Create simple secondary navigation with a <code>ul</code>. Swap between tabs or pills by adding the appropriate class.</p>
+    <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
     <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
   </div>
   <div class="span12 columns">
@@ -1076,6 +1100,7 @@
     </div>
     <div class="span12 columns">
       <div class="well" style="background-color: rgba(0,0,0,0.5); border: none; padding: 40px;">
+        <!-- Modal -->
         <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1">
           <div class="modal-header">
             <h3>Modal Heading</h3>
@@ -1090,34 +1115,35 @@
           </div>
         </div>
       </div>
-    </div> <!-- /row -->
-    <div class="row">
-      <div class="span4 columns">
-        <h2>Tool Tips</h2>
-        <p>Twipsies are super useful for aiding a confused user and pointing them in the right direction.</p>
-      </div>
-      <div class="span12 columns">
-        <div class="twipsies well">
-          <div style="position: relative">
-            <p class="muted" style="margin-bottom: 0">
+    </div>
+  </div> <!-- /row -->
+
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Tool Tips</h2>
+      <p>Twipsies are super useful for aiding a confused user and pointing them in the right direction.</p>
+    </div>
+    <div class="span12 columns">
+      <div class="twipsies well">
+        <div style="position: relative">
+          <p class="muted" style="margin-bottom: 0">
 Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> veritatis aut iste perspiciatis iste voluptas natus illo quasi odit aut natus consequuntur consequuntur, aut natus illo voluptatem odit perspiciatis laudantium rem doloremque totam voluptas. <a href="#" title="right">Voluptasdicta</a> eaque beatae aperiam ut enim voluptatem explicabo explicabo, voluptas quia odit fugit accusantium totam totam architecto explicabo sit quasi fugit fugit, totam doloremque unde sunt <a href="#" title="left">sed</a> dicta quae accusantium fugit voluptas nemo voluptas voluptatem <a href="#" title="above">rem</a> quae aut veritatis quasi quae.
-            </p>
-            <div class="twipsy below">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">below!</div>
-            </div>
-            <div class="twipsy right">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">right!</div>
-            </div>
-            <div class="twipsy left">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">left!</div>
-            </div>
-            <div class="twipsy above">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">above!</div>
-            </div>
+          </p>
+          <div class="twipsy below">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">below!</div>
+          </div>
+          <div class="twipsy right">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">right!</div>
+          </div>
+          <div class="twipsy left">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">left!</div>
+          </div>
+          <div class="twipsy above">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">above!</div>
           </div>
         </div>
       </div>
@@ -1141,7 +1167,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
               </div>
             </div>
           </div>
-          <img class="large-bird" src="assets/img/bird.png">
+          <img class="large-bird" src="assets/img/bird.png" width="220px" height="48px">
         </div>
       </div>
     </div>

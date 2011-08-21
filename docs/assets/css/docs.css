@@ -44,7 +44,7 @@ section {
   font-weight: bold;
 }
 #masthead {
-  margin-top: 40px;
+  margin-top: -20px;
 }
 #masthead h1,
 #masthead p {
@@ -131,8 +131,8 @@ div.quickstart form textarea {
 /* Special grid styles
 -------------------------------------------------- */
 .show-grid {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .show-grid .column, .show-grid .columns {
   background-color: #eee;
