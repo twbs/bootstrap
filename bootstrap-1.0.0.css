@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 12:30:45 PDT 2011
+ * Date: Sun Aug 21 12:35:35 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1544,8 +1544,8 @@ div.pagination {
 div.pagination ul {
   float: left;
   margin: 0;
-  border: 1px solid #ddd;
-  border-right-color: rgba(0, 0, 0, 0.15);
+  border: 1px solid;
+  border-color: #dddddd rgba(0, 0, 0, 0.15) #dddddd #dddddd;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
