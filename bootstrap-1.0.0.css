@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 20 18:59:41 PDT 2011
+ * Date: Sat Aug 20 20:18:13 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -339,7 +339,7 @@ html, body {
   background-color: #fff;
 }
 body {
-  margin: 0;
+  margin: 60px 0 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -352,7 +352,7 @@ div.container {
   margin: 0 auto;
 }
 div.container-fluid {
-  padding: 20px;
+  padding: 0 20px;
   zoom: 1;
 }
 div.container-fluid:before, div.container-fluid:after {
@@ -466,7 +466,7 @@ p {
   font-size: 13px;
   font-weight: normal;
   line-height: 18px;
-  margin-bottom: 18px;
+  margin-bottom: 9px;
 }
 p small {
   font-size: 11px;
@@ -594,14 +594,14 @@ blockquote p {
   line-height: 18px;
   margin-bottom: 0;
 }
-blockquote small, blockquote cite {
+blockquote small {
   display: block;
   font-size: 12px;
   font-weight: 300;
   line-height: 18px;
   color: #bfbfbf;
 }
-blockquote small:before, blockquote cite:before {
+blockquote small:before {
   content: '\2014 \00A0';
 }
 address {
@@ -629,6 +629,7 @@ pre {
   margin: 0 0 18px;
   line-height: 18px;
   font-size: 12px;
+  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -1118,13 +1119,13 @@ div.topbar a {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-div.topbar ul li a:hover, div.topbar ul li.active a, div.topbar a.logo:hover {
+div.topbar a:hover, div.topbar ul li.active a {
   background-color: #333;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   text-decoration: none;
 }
-div.topbar a.logo {
+div.topbar h3 a {
   float: left;
   display: block;
   padding: 8px 20px 12px;
@@ -1133,10 +1134,6 @@ div.topbar a.logo {
   font-size: 20px;
   font-weight: 200;
   line-height: 1;
-}
-div.topbar a.logo img {
-  float: left;
-  margin-right: 6px;
 }
 div.topbar form {
   float: left;
@@ -1325,6 +1322,25 @@ div.topbar ul li ul li span {
   cursor: default;
   color: #808080;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.hero-unit {
+  background-color: #f5f5f5;
+  margin-bottom: 30px;
+  padding: 60px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.hero-unit h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.hero-unit p {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 27px;
 }
 div.page-header {
   margin-bottom: 17px;
@@ -1544,12 +1560,13 @@ div.pagination ul li.disabled a, div.pagination ul li.disabled a:hover {
 div.pagination ul li.next a, div.pagination ul li:last-child a {
   border: 0;
 }
-div.well {
-  background: #f5f5f5;
+.well {
+  background-color: #f5f5f5;
   margin-bottom: 20px;
   padding: 19px;
   min-height: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

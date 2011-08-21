@@ -2,29 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Twitter Bootstrap</title>
+    <title>Bootstrap, from Twitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <!-- Le styles -->
     <link href="../bootstrap-1.0.0.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
     <!-- Le javascript -->
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="assets/js/application.js"></script>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
-  <body onload="prettyPrint()">
+  <body onload="prettyPrint();">
 
     <div class="topbar">
-      <div class="container fixed">
-        <h3><a class="logo" href="#">
-          <!-- <img src="assets/img/twitter-logo-no-bird.png" alt="Twitter" /> --> <span>Bootstrap</span>
-        </a></h3>
+      <div class="container">
+        <h3><a href="#">Bootstrap</a></h3>
         <ul>
           <li class="active"><a href="#masthead">Overview</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#grid-system">Grid</a></li>
           <li><a href="#layouts">Layouts</a></li>
           <li><a href="#typography">Typography</a></li>
@@ -41,12 +53,12 @@
     <div id="masthead">
       <div class="inner">
         <div class="container">
-          <h1>Twitter Bootstrap</h1>
+          <h1>Bootstrap, from Twitter</h1>
           <p class="lead">
             Bootstrap is a toolkit from Twitter designed to kickstart development of webapps and sites.<br />
             It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.<br />
           </p>
-          <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with only modern browsers in mind.</p>
+          <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with modern browsers in mind.</p>
         </div> <!-- /container -->
       </div>
     </div>
@@ -74,25 +86,58 @@
             <p>Download, fork, pull, file issues, and more with the official Bootstrap repo on Github.</p>
             <p><a target="_blank" href="https://github.com/twitter/bootstrap" class="btn primary">Bootstrap on GitHub &raquo;</a></p>
           </div>
-        </div>
+        </div> <!-- /row -->
       </div>
     </div>
 
     <div class="container">
 
+<section id="about">
+  <div class="page-header">
+    <h1>About Bootstrap <small>Brief history, browser support, and more</small></h1>
+  </div>
+  <div class="row">
+    <div class="span6 columns">
+      <h3>History</h3>
+      <p>In the earlier days of Twitter, engineers used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented and development quickly accelerated during Twitter’s first Hackweek.</p>
+      <p>With the help and feedback of many engineers at Twitter, Bootstrap has grown significantly to encompass not only basic styles, but more elegant and durable front-end design patterns.</p>
+      <p>Read more on <a href="https://dev.twitter.com/blog/bootstrap-twitter">dev.twitter.com &rsaquo;</a></p>
+    </div>
+    <div class="span5 columns">
+      <h3>Browser support</h3>
+      <p>Bootstrap is tested and supported in modern browsers like Chrome, Safari, and Firefox. Full support for some versions of Internet Explorer is in the works.</p>
+      <img src="assets/img/browsers.png" width="220px" height="48px" alt="Tested and supported in Chrome, Safari, and Firefox">
+      <ul>
+        <li>Latest Safari</li>
+        <li>Latest Google Chrome</li>
+        <li>Firefox v4</li>
+      </ul>
+    </div>
+    <div class="span5 columns">
+      <h3>What's included</h3>
+      <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
+      <ul>
+        <li>All original .less files</li>
+        <li>Fully compiled and minified CSS</li>
+        <li>Complete styleguide documentation</li>
+        <li>Example page template (more to come soon)</li>
+      </ul>
+    </div>
+  </div> <!-- /row -->
+</section>
 
 <section id="grid-system">
-<div class="page-header">
-  <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
-</div>
-<div class="row">
-  <div class="span4 columns">
-    <h2>Default grid</h2>
-    <p>The default grid system provided as part of Bootstrap is a 940px wide 16-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
+  <div class="page-header">
+    <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
   </div>
-  <div class="span12 columns">
-    <h3>Example grid markup</h3>
-    <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Default grid</h2>
+      <p>The default grid system provided as part of Bootstrap is a 940px wide 16-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
+    </div>
+    <div class="span12 columns">
+      <h3>Example grid markup</h3>
+      <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
   &lt;div class="span6 columns"&gt;
@@ -103,94 +148,82 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-  </div>
-</div>
-
-<div class="row show-grid" title="16 column layout">
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-  <div class="span1 column">1</div>
-</div>
-
-<div class="row show-grid" title="8 column layout">
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-  <div class="span2 columns">2</div>
-</div>
-
-<div class="row show-grid" title="Example uncommon layout">
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span3 columns">3</div>
-  <div class="span1 column">1</div>
-</div>
-
-<div class="row show-grid" title="Four column layout">
-  <div class="span4 columns">4</div>
-  <div class="span4 columns">4</div>
-  <div class="span4 columns">4</div>
-  <div class="span4 columns">4</div>
-</div>
-
-<div class="row show-grid" title="Irregular three column layout">
-  <div class="span4 columns">4</div>
-  <div class="span6 columns">6</div>
-  <div class="span6 columns">6</div>
-</div>
-
-<div class="row show-grid" title="Half and half">
-  <div class="span8 columns">8</div>
-  <div class="span8 columns">8</div>
-</div>
-
-<div class="row show-grid" title="Example uncommon two-column layout">
-  <div class="span5 columns">5</div>
-  <div class="span11 columns">11</div>
-</div>
-
-<div class="row show-grid" title="Unnecessary single column layout">
-  <div class="span16 columns">16</div>
-</div>
-
-<h4>Offsetting columns</h4>
-<div class="row show-grid">
-  <div class="span4 columns">4</div>
-  <div class="span8 columns offset4">8 offset 4</div>
-</div>
-<div class="row show-grid">
-  <div class="span4 columns offset4">4 offset 4</div>
-  <div class="span4 columns offset4">4 offset 4</div>
-</div>
-<div class="row show-grid">
-  <div class="span5 columns offset3">5 offset 3</div>
-  <div class="span5 columns offset3">5 offset 3</div>
-</div>
-<div class="row show-grid">
-  <div class="span10 columns offset6">10 offset 6</div>
-</div>
+    </div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="16 column layout">
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+    <div class="span1 column">1</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="8 column layout">
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+    <div class="span2 columns">2</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Example uncommon layout">
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span3 columns">3</div>
+    <div class="span1 column">1</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Four column layout">
+    <div class="span4 columns">4</div>
+    <div class="span4 columns">4</div>
+    <div class="span4 columns">4</div>
+    <div class="span4 columns">4</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Irregular three column layout">
+    <div class="span4 columns">4</div>
+    <div class="span6 columns">6</div>
+    <div class="span6 columns">6</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Half and half">
+    <div class="span8 columns">8</div>
+    <div class="span8 columns">8</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Example uncommon two-column layout">
+    <div class="span5 columns">5</div>
+    <div class="span11 columns">11</div>
+  </div> <!-- /row -->
+  <div class="row show-grid" title="Unnecessary single column layout">
+    <div class="span16 columns">16</div>
+  </div> <!-- /row -->
+  <h4>Offsetting columns</h4>
+  <div class="row show-grid">
+    <div class="span4 columns">4</div>
+    <div class="span8 columns offset4">8 offset 4</div>
+  </div> <!-- /row -->
+  <div class="row show-grid">
+    <div class="span4 columns offset4">4 offset 4</div>
+    <div class="span4 columns offset4">4 offset 4</div>
+  </div> <!-- /row -->
+  <div class="row show-grid">
+    <div class="span5 columns offset3">5 offset 3</div>
+    <div class="span5 columns offset3">5 offset 3</div>
+  </div> <!-- /row -->
+  <div class="row show-grid">
+    <div class="span10 columns offset6">10 offset 6</div>
+  </div> <!-- /row -->
 </section>
 
 
@@ -256,7 +289,7 @@
     <h2>Headings and copy</h2>
     <p>A standard typographic hierarchy for structuring your webpages.</p>
   </div>
-  <div class="span6 columns">
+  <div class="span4 columns">
     <h1>h1. Heading 1</h1>
     <h2>h2. Heading 2</h2>
     <h3>h3. Heading 3</h3>
@@ -264,11 +297,10 @@
     <h5>h5. Heading 5</h5>
     <h6>h6. Heading 6</h6>
   </div>
-  <div class="span6 columns">
+  <div class="span8 columns">
     <h3>Example paragraph</h3>
     <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-    <h1>Example heading<small>Has sub-heading…</small></h1>
-    <p>You can also add subheadings with the <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code></p>
+    <h1>Example heading <small>Has sub-heading&hellip;</small></h1>
   </div>
 </div>
 
@@ -287,19 +319,19 @@
     <h4>When to use</h4>
     <p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to add visual distinction between a word or phrase and its surrounding copy. Use <code>&lt;strong&gt;</code> for plain old attention and <code>&lt;em&gt;</code> for <em>slick</em> attention and titles.</p>
     <h3>Emphasis in a paragraph</h3>
-    <p><a href="">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+    <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
     <p><strong>Note:</strong> It’s still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5, but they don’t come with inherent styles anymore. <code>&lt;b&gt;</code> is meant to convey importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
     <h3>Addresses</h3>
-    <p>The <code>address</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here’s how it looks:</p>
+    <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here’s how it looks:</p>
     <address>
       <strong>Twitter, Inc.</strong><br />
       795 Folsom Ave, Suite 600<br />
       San Francisco, CA 94107<br />
       <abbr title="Phone">P:</abbr> (123) 456-7890
     </address>
-    <p><strong>Note:</strong> Each line in an <code>address</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>p</code>) to properly structure the content.</p>
+    <p><strong>Note:</strong> Each line in an <code>&lt;address&gt;</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>&lt;p&gt;</code>) to properly structure the content.</p>
     <h3>Abbreviations</h3>
-    <p>For abbreviations and acronyms, use the <code>abbr</code> tag (<code>acronym</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
+    <p>For abbreviations and acronyms, use the <code>&lt;abbr&gt;</code> tag (<code>&lt;acronym&gt;</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
   </div>
 </div>
 
@@ -313,7 +345,7 @@
     </p>
   </div>
   <div class="span12 columns">
-    <p>Be sure to wrap your <code>blockquote</code> around <code>paragraph</code> and <code>small</code> tags. When citing a source, use the <code>small</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
+    <p>Be sure to wrap your <code>&lt;blockquote&gt;</code> around <code>&lt;p&gt;</code> and <code>&lt;small&gt;</code> tags. When citing a source, use the <code>&lt;small&gt;</code> element. The CSS will automatically preface a name with an em dash (&amp;mdash;).</p>
     <blockquote>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua…</p>
       <small>Dr. Julius Hibbert</small>
@@ -422,8 +454,8 @@
       <code>&lt;caption&gt;</code>
     </p>
     <p>Tables are great&mdash;for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
-    <p>Always wrap your column headers in a <code>thead</code> such that hierarchy is <code>thead</code> > <code>tr</code> > <code>th</code>.</p>
-    <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>tbody</code> so your hierarchy is <code>tbody</code> > <code>tr</code> > <code>td</code>.</p>
+    <p>Always wrap your column headers in a <code>&lt;thead&gt;</code> such that hierarchy is <code>&lt;thead&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;th&gt;</code>.</p>
+    <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>&lt;tbody&gt;</code> so your hierarchy is <code>&lt;tbody&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;td&gt;</code>.</p>
     </ul>
   </div>
   <div class="span12 columns">
@@ -807,7 +839,7 @@
   </div>
   <div class="span12 columns">
     <h3>Example buttons</h3>
-    <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>a</code>, <code>button</code>, and select <code>input</code> elements. Here’s how it looks:</p>
+    <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
     <div class="well" style="padding: 14px 19px;">
       <button type="submit" class="btn primary">Submit</button>
       <button type="submit" class="btn">Cancel</button>
@@ -823,7 +855,7 @@
       <a href="#" class="btn small">Action</a>
     </div>
     <h3>Disabled state</h3>
-    <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>button</code> elements.</p>
+    <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
     <h4>Links</h4>
     <div class="well">
       <a href="#" class="btn large primary disabled">Primary action</a>
@@ -848,12 +880,12 @@
   <div class="topbar-wrapper" style="z-index: 5;">
     <div class="topbar">
       <div class="container fixed">
-        <h3><a class="logo" href="">Project Name</a></h3>
+        <h3><a href="#">Project Name</a></h3>
         <ul>
-          <li class="active"><a href="">Home</a></li>
-          <li><a href="">Link</a></li>
-          <li><a href="">Link</a></li>
-          <li><a href="">Link</a></li>
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
         </ul>
         <form action="">
           <input type="text" placeholder="Search" />
@@ -862,10 +894,10 @@
           <li class="menu">
             <a href="#" class="menu">Dropdown</a>
             <ul class="menu-dropdown">
-              <li><a href="">Secondary link</a></li>
-              <li><a href="">Something else here</a></li>
+              <li><a href="#">Secondary link</a></li>
+              <li><a href="#">Something else here</a></li>
               <li class="divider"></li>
-              <li><a href="">Another link</a></li>
+              <li><a href="#">Another link</a></li>
             </ul>
           </li>
         </ul>
@@ -892,40 +924,40 @@
 <div class="row">
   <div class="span4 columns">
     <h2>Tabs and pills</h2>
-    <p>Create simple secondary navigation with a <code>ul</code>. Swap between tabs or pills by adding the appropriate class.</p>
+    <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
     <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
   </div>
   <div class="span12 columns">
 <ul class="tabs">
-  <li class="active"><a href="">Home</a></li>
-  <li><a href="">Profile</a></li>
-  <li><a href="">Messages</a></li>
-  <li><a href="">Settings</a></li>
-  <li><a href="">Contact</a></li>
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+  <li><a href="#">Settings</a></li>
+  <li><a href="#">Contact</a></li>
 </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
-  &lt;li class="active"&gt;&lt;a href=""&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Settings&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
 <ul class="pills">
-  <li class="active"><a href="">Home</a></li>
-  <li><a href="">Profile</a></li>
-  <li><a href="">Messages</a></li>
-  <li><a href="">Settings</a></li>
-  <li><a href="">Contact</a></li>
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+  <li><a href="#">Settings</a></li>
+  <li><a href="#">Contact</a></li>
 </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="pills"&gt;
-  &lt;li class="active"&gt;&lt;a href=""&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Settings&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=""&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
   </div>
@@ -939,55 +971,55 @@
   <div class="span12 columns">
     <div class="pagination">
       <ul>
-        <li class="prev disabled"><a href="">&larr; Previous</a></li>
-        <li class="active"><a href="">1</a></li>
-        <li><a href="">2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">4</a></li>
-        <li><a href="">5</a></li>
-        <li class="next"><a href="">Next &rarr;</a></li>
+        <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li class="next"><a href="#">Next &rarr;</a></li>
       </ul>
     </div>
     <div class="pagination">
       <ul>
-        <li class="prev"><a href="">&larr; Previous</a></li>
-        <li class="active"><a href="">10</a></li>
-        <li><a href="">11</a></li>
-        <li><a href="">12</a></li>
-        <li class="disabled"><a href="">…</a></li>
-        <li><a href="">19</a></li>
-        <li><a href="">20</a></li>
-        <li><a href="">21</a></li>
-        <li class="next"><a href="">Next &rarr;</a></li>
+        <li class="prev"><a href="#">&larr; Previous</a></li>
+        <li class="active"><a href="#">10</a></li>
+        <li><a href="#">11</a></li>
+        <li><a href="#">12</a></li>
+        <li class="disabled"><a href="#">…</a></li>
+        <li><a href="#">19</a></li>
+        <li><a href="#">20</a></li>
+        <li><a href="#">21</a></li>
+        <li class="next"><a href="#">Next &rarr;</a></li>
       </ul>
     </div>
     <div class="pagination">
       <ul>
-        <li class="prev"><a href="">&larr; Previous</a></li>
-        <li><a href="">10</a></li>
-        <li><a href="">11</a></li>
-        <li><a href="">12</a></li>
-        <li><a href="">13</a></li>
-        <li><a href="">14</a></li>
-        <li class="active"><a href="">15</a></li>
-        <li><a href="">16</a></li>
-        <li><a href="">17</a></li>
-        <li><a href="">18</a></li>
-        <li><a href="">19</a></li>
-        <li><a href="">20</a></li>
-        <li class="next"><a href="">Next &rarr;</a></li>
+        <li class="prev"><a href="#">&larr; Previous</a></li>
+        <li><a href="#">10</a></li>
+        <li><a href="#">11</a></li>
+        <li><a href="#">12</a></li>
+        <li><a href="#">13</a></li>
+        <li><a href="#">14</a></li>
+        <li class="active"><a href="#">15</a></li>
+        <li><a href="#">16</a></li>
+        <li><a href="#">17</a></li>
+        <li><a href="#">18</a></li>
+        <li><a href="#">19</a></li>
+        <li><a href="#">20</a></li>
+        <li class="next"><a href="#">Next &rarr;</a></li>
       </ul>
     </div>
 <pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
-    &lt;li class="prev disabled"&gt;&lt;a href=""&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
-    &lt;li class="active"&gt;&lt;a href=""&gt;1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=""&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=""&gt;3&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=""&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=""&gt;5&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="next"&gt;&lt;a href=""&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
+    &lt;li class="prev disabled"&gt;&lt;a href="#"&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
+    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="next"&gt;&lt;a href="#"&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
@@ -1068,6 +1100,7 @@
     </div>
     <div class="span12 columns">
       <div class="well" style="background-color: rgba(0,0,0,0.5); border: none; padding: 40px;">
+        <!-- Modal -->
         <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1">
           <div class="modal-header">
             <h3>Modal Heading</h3>
@@ -1077,39 +1110,40 @@
             <p>One fine body…</p>
           </div>
           <div class="modal-footer">
-            <a href="" class="btn primary">Primary</a>
-            <a href="" class="btn secondary">Secondary</a>
+            <a href="#" class="btn primary">Primary</a>
+            <a href="#" class="btn secondary">Secondary</a>
           </div>
         </div>
       </div>
-    </div> <!-- /row -->
-    <div class="row">
-      <div class="span4 columns">
-        <h2>Tool Tips</h2>
-        <p>Twipsies are super useful for aiding a confused user and pointing them in the right direction.</p>
-      </div>
-      <div class="span12 columns">
-        <div class="twipsies well">
-          <div style="position: relative">
-            <p class="muted" style="margin-bottom: 0">
+    </div>
+  </div> <!-- /row -->
+
+  <div class="row">
+    <div class="span4 columns">
+      <h2>Tool Tips</h2>
+      <p>Twipsies are super useful for aiding a confused user and pointing them in the right direction.</p>
+    </div>
+    <div class="span12 columns">
+      <div class="twipsies well">
+        <div style="position: relative">
+          <p class="muted" style="margin-bottom: 0">
 Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> veritatis aut iste perspiciatis iste voluptas natus illo quasi odit aut natus consequuntur consequuntur, aut natus illo voluptatem odit perspiciatis laudantium rem doloremque totam voluptas. <a href="#" title="right">Voluptasdicta</a> eaque beatae aperiam ut enim voluptatem explicabo explicabo, voluptas quia odit fugit accusantium totam totam architecto explicabo sit quasi fugit fugit, totam doloremque unde sunt <a href="#" title="left">sed</a> dicta quae accusantium fugit voluptas nemo voluptas voluptatem <a href="#" title="above">rem</a> quae aut veritatis quasi quae.
-            </p>
-            <div class="twipsy below">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">below!</div>
-            </div>
-            <div class="twipsy right">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">right!</div>
-            </div>
-            <div class="twipsy left">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">left!</div>
-            </div>
-            <div class="twipsy above">
-              <div class="twipsy-arrow"></div>
-              <div class="twipsy-inner">above!</div>
-            </div>
+          </p>
+          <div class="twipsy below">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">below!</div>
+          </div>
+          <div class="twipsy right">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">right!</div>
+          </div>
+          <div class="twipsy left">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">left!</div>
+          </div>
+          <div class="twipsy above">
+            <div class="twipsy-arrow"></div>
+            <div class="twipsy-inner">above!</div>
           </div>
         </div>
       </div>
@@ -1119,7 +1153,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
   <div class="row">
     <div class="span4 columns">
       <h2>Popovers</h2>
-      <p>Use popovers to provide subtextual information to a page without effecting layout.</p>
+      <p>Use popovers to provide subtextual information to a page without affecting layout.</p>
     </div>
     <div class="span12 columns">
       <div class="well popover-well">
@@ -1133,7 +1167,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
               </div>
             </div>
           </div>
-          <img class="large-bird" src="assets/img/bird.png">
+          <img class="large-bird" src="assets/img/bird.png" width="220px" height="48px">
         </div>
       </div>
     </div>
