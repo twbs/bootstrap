@@ -130,6 +130,7 @@ form.form-stacked legend{margin-left:0;}
 form.form-stacked label{display:block;float:none;width:auto;font-weight:bold;text-align:left;line-height:20px;padding-top:0;}
 form.form-stacked div.clearfix{margin-bottom:9px;}form.form-stacked div.clearfix div.input{margin-left:0;}
 form.form-stacked ul.inputs-list{margin-bottom:0;}form.form-stacked ul.inputs-list li{padding-top:0;}form.form-stacked ul.inputs-list li label{font-weight:normal;padding-top:0;}
+form.form-stacked div.error{padding-top:10px;padding-bottom:10px;padding-left:10px;margin-top:0;margin-left:-10px;}
 form.form-stacked div.actions{margin-left:-20px;padding-left:20px;}
 table{width:100%;margin-bottom:18px;padding:0;text-align:left;border-collapse:separate;font-size:13px;}table th,table td{padding:10px 10px 9px;line-height:13.5px;vertical-align:middle;border-bottom:1px solid #ddd;}
 table th{padding-top:9px;font-weight:bold;border-bottom-width:2px;}

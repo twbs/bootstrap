@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 20 23:46:35 PDT 2011
+ * Date: Sat Aug 20 23:56:06 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -968,6 +968,13 @@ form.form-stacked ul.inputs-list li {
 form.form-stacked ul.inputs-list li label {
   font-weight: normal;
   padding-top: 0;
+}
+form.form-stacked div.error {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-top: 0;
+  margin-left: -10px;
 }
 form.form-stacked div.actions {
   margin-left: -20px;
