@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 22 12:34:49 PDT 2011
+ * Date: Mon Aug 22 12:48:23 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1398,6 +1398,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 }
 .hero-unit {
   background-color: #f5f5f5;
+  margin-top: 60px;
   margin-bottom: 30px;
   padding: 60px;
   -webkit-border-radius: 6px;
@@ -1414,6 +1415,11 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   font-size: 18px;
   font-weight: 200;
   line-height: 27px;
+}
+footer {
+  margin-top: 17px;
+  padding-top: 17px;
+  border-top: 1px solid #eee;
 }
 .page-header {
   margin-bottom: 17px;
