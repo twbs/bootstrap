@@ -18,6 +18,8 @@ form {
       margin-left: 150px;
       font-size: 20px;
       line-height: 1;
+      *margin: 0 0 5px 145px; /* IE6-7 */
+      *line-height: 1.5; /* IE6-7 */
       color: @grayDark;
     }
   }
@@ -204,6 +206,8 @@ div.actions {
 }
 .help-inline {
   padding-left: 5px;
+  *position: relative; /* IE6-7 */
+  *top: -5px; /* IE6-7 */
 }
 
 // Big blocks of help text
@@ -257,6 +261,13 @@ div.input-append {
     border-color: @green;
   }
 }
+
+div.input-prepend {
+  .add-on {
+    *margin-top: 1px; /* IE6-7 */
+  }
+}
+
 div.input-append {
   input[type=text] {
     float: left;
