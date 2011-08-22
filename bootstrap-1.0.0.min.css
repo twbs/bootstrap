@@ -83,7 +83,7 @@ address{display:block;line-height:18px;margin-bottom:18px;}
 code,pre{padding:0 3px 2px;font-family:Monaco, Andale Mono, Courier New, monospace;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 code{background-color:#fee9cc;color:rgba(0, 0, 0, 0.75);padding:1px 3px;}
 pre{background-color:#f5f5f5;display:block;padding:17px;margin:0 0 18px;line-height:18px;font-size:12px;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre-wrap;}
-form{margin-bottom:18px;}form fieldset{margin-bottom:18px;padding-top:18px;}form fieldset legend{display:block;margin-left:150px;font-size:20px;line-height:1;color:#404040;}
+form{margin-bottom:18px;}form fieldset{margin-bottom:18px;padding-top:18px;}form fieldset legend{display:block;margin-left:150px;font-size:20px;line-height:1;*margin:0 0 5px 145px;*line-height:1.5;color:#404040;}
 form .clearfix{margin-bottom:18px;}
 form label,form input,form select,form textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:normal;}
 form label{padding-top:6px;font-size:13px;line-height:18px;float:left;width:130px;text-align:right;color:#404040;}
@@ -110,7 +110,7 @@ form textarea.xxlarge{overflow-y:scroll;}
 form input[readonly]:focus,form textarea[readonly]:focus,form input.disabled{background:#f5f5f5;border-color:#ddd;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 .actions{background:#f5f5f5;margin-top:18px;margin-bottom:18px;padding:17px 20px 18px 150px;border-top:1px solid #ddd;-webkit-border-radius:0 0 3px 3px;-moz-border-radius:0 0 3px 3px;border-radius:0 0 3px 3px;}.actions .secondary-action{float:right;}.actions .secondary-action a{line-height:30px;}.actions .secondary-action a:hover{text-decoration:underline;}
 .help-inline,.help-block{font-size:12px;line-height:18px;color:#bfbfbf;}
-.help-inline{padding-left:5px;}
+.help-inline{padding-left:5px;*position:relative;*top:-5px;}
 .help-block{display:block;max-width:600px;}
 .inline-inputs{color:#808080;}.inline-inputs span,.inline-inputs input[type=text]{display:inline-block;}
 .inline-inputs input.mini{width:60px;}
@@ -119,6 +119,7 @@ form input[readonly]:focus,form textarea[readonly]:focus,form input.disabled{bac
 .input-prepend input[type=text],.input-append input[type=text]{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
 .input-prepend .add-on,.input-append .add-on{background:#f5f5f5;float:left;display:block;width:auto;min-width:16px;padding:4px 4px 4px 5px;color:#bfbfbf;font-weight:normal;line-height:18px;height:18px;text-align:center;text-shadow:0 1px 0 #fff;border:1px solid #ccc;border-right-width:0;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-prepend .active,.input-append .active{background:#a9dba9;border-color:#46a546;}
+.input-prepend .add-on{*margin-top:1px;}
 .input-append input[type=text]{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-append .add-on{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;border-right-width:1px;border-left-width:0;}
 .inputs-list{margin:0 0 5px;width:100%;}.inputs-list li{display:block;padding:0;width:100%;}.inputs-list li label{display:block;float:none;width:auto;padding:0;line-height:18px;text-align:left;white-space:normal;}.inputs-list li label strong{color:#808080;}
