@@ -117,8 +117,14 @@ a {
     padding-left: 9px;
     font-size: 11px;
   }
-  &:disabled,
   &.disabled {
+    background-image: none;
+    .opacity(65);
+    cursor: default;
+  }
+
+  // this can't be included with the .disabled def because IE8 and below will drop it ;_;
+  &:disabled {
     background-image: none;
     .opacity(65);
     cursor: default;

@@ -857,6 +857,7 @@
     </div>
     <h3>Disabled state</h3>
     <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+    <p><strong>Note:</strong> If you're developing for older browsers like IE8 or below -- you're going to want to use the <code>.disabled</code> class for <code>&lt;button&gt;</code> elements as well.
     <h4>Links</h4>
     <div class="well">
       <a href="#" class="btn large primary disabled">Primary action</a>
@@ -864,8 +865,8 @@
     </div>
     <h4>Buttons</h4>
     <div class="well">
-      <button class="btn large primary" disabled>Primary action</button>
-      <button class="btn large" disabled>Action</button>
+      <button class="btn large primary disabled" disabled>Primary action</button>
+      <button class="btn large disabled" disabled>Action</button>
     </div>
   </div>
 </div>
