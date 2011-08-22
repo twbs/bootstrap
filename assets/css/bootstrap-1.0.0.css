@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 20:55:56 PDT 2011
+ * Date: Sun Aug 21 21:42:52 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -691,6 +691,12 @@ form fieldset legend {
   margin-left: 150px;
   font-size: 20px;
   line-height: 1;
+  *margin: 0 0 5px 145px;
+  /* IE6-7 */
+
+  *line-height: 1.5;
+  /* IE6-7 */
+
   color: #404040;
 }
 form .clearfix {
@@ -877,6 +883,12 @@ form input[readonly]:focus, form textarea[readonly]:focus, form input.disabled {
 }
 .help-inline {
   padding-left: 5px;
+  *position: relative;
+  /* IE6-7 */
+
+  *top: -5px;
+  /* IE6-7 */
+
 }
 .help-block {
   display: block;
@@ -924,6 +936,11 @@ form input[readonly]:focus, form textarea[readonly]:focus, form input.disabled {
 .input-prepend .active, .input-append .active {
   background: #a9dba9;
   border-color: #46a546;
+}
+.input-prepend .add-on {
+  *margin-top: 1px;
+  /* IE6-7 */
+
 }
 .input-append input[type=text] {
   float: left;
@@ -1625,9 +1642,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   margin: 0;
   border: 1px solid #ddd;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-right: 0\9;
-  /* IE8 and below don't support last child. TODO: clean this up;  */
-
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -1645,6 +1659,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   border-right: 1px solid;
   border-right-color: #ddd;
   border-right-color: rgba(0, 0, 0, 0.15);
+  *border-right-color: #ddd;
+  /* IE6-7 */
+
   text-decoration: none;
 }
 .pagination ul li a:hover, .pagination ul li.active a {
@@ -1654,7 +1671,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: none;
   color: #bfbfbf;
 }
-.pagination ul li.next a, .pagination ul li:last-child a {
+.pagination ul li.next a {
   border: 0;
 }
 .well {
@@ -1846,6 +1863,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .popover .inner {
   background-color: #333;
   background-color: rgba(0, 0, 0, 0.8);
+  *background-color: #333;
+  /* IE 6-7 */
+
   padding: 3px;
   overflow: hidden;
   width: 280px;
