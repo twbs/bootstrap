@@ -101,8 +101,8 @@ a {
     #gradient > .vertical(@blue, @blueDark);
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    border-bottom-color: darken(@blueDark, 15%);
-    border-bottom-color: fadein(rgba(0,0,0,.1), 15%);
+    border-color: @blueDark @blueDark darken(@blueDark, 15%);
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
     &:hover {
       color: #fff;
     }
