@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 21:42:07 PDT 2011
+ * Date: Sun Aug 21 21:42:52 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -121,6 +121,26 @@ aside {
 .container:after {
   clear: both;
 }
+/*.button(@color: #fff, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
+  display: inline-block;
+  #gradient > .vertical-three-colors(@color, @color, 0.25, darken(@color, 10%));
+  padding: @padding;
+  text-shadow: @textShadow;
+  color: @textColor;
+  font-size: @fontSize;
+  line-height: @baseline;
+  border: 1px solid;
+  border-color: #ccc #ccc #bbb;
+  border-color: borderColor borderColor fadein(@borderColor, 15%);
+  .border-radius(@borderRadius);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
+  &:hover {
+    background-position: 0 -15px;
+    color: @textColor;
+    text-decoration: none;
+  }
+}*/
 /*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
@@ -339,7 +359,7 @@ html, body {
   background-color: #fff;
 }
 body {
-  margin: 60px 0 0;
+  margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -375,6 +395,7 @@ a {
   color: #0069d6;
   text-decoration: none;
   line-height: inherit;
+  font-weight: inherit;
 }
 a:hover {
   color: #0050a3;
@@ -392,28 +413,24 @@ a:hover {
   background-image: linear-gradient(#ffffff, color-stop(#ffffff, 0.25), #e6e6e6);
   padding: 4px 14px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  color: #333333;
+  color: #333;
   font-size: 13px;
   line-height: 18px;
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
-  border-color: borderColor borderColor rgba(0, 0, 0, 0.25);
+  border: 1px solid #ccc;
+  border-bottom-color: #bbb;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  transition: 0.1s linear all;
 }
 .btn:hover {
   background-position: 0 -15px;
-  color: #333333;
+  color: #333;
   text-decoration: none;
 }
-.btn.primary {
+.primary {
   background-color: #0064cd;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
@@ -423,6 +440,20 @@ a:hover {
   background-image: -webkit-linear-gradient(#049cdb, #0064cd);
   background-image: -o-linear-gradient(#049cdb, #0064cd);
   background-image: linear-gradient(#049cdb, #0064cd);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid #004b9a;
+  border-bottom-color: #003f81;
+}
+.primary:hover {
+  color: #fff;
+}
+.btn {
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+}
+.btn.primary {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #0064cd #0064cd #003f81;
@@ -752,7 +783,7 @@ form input[type=text]:focus, form input[type=password]:focus, form textarea:focu
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-form .error {
+form div.error {
   background: #fae5e3;
   padding: 10px 0;
   margin: -10px 0 10px;
@@ -760,22 +791,22 @@ form .error {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-form .error > label, form .error span.help-inline, form .error span.help-block {
+form div.error > label, form div.error span.help-inline, form div.error span.help-block {
   color: #9d261d;
 }
-form .error input[type=text], form .error input[type=password], form .error textarea {
+form div.error input[type=text], form div.error input[type=password], form div.error textarea {
   border-color: #c87872;
   -webkit-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   -moz-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
 }
-form .error input[type=text]:focus, form .error input[type=password]:focus, form .error textarea:focus {
+form div.error input[type=text]:focus, form div.error input[type=password]:focus, form div.error textarea:focus {
   border-color: #b9554d;
   -webkit-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
 }
-form .error .input-prepend span.add-on, form .error .input-append span.add-on {
+form div.error .input-prepend span.add-on, form div.error .input-append span.add-on {
   background: #f4c8c5;
   border-color: #c87872;
   color: #b9554d;
@@ -993,6 +1024,13 @@ form.form-stacked .inputs-list li {
 form.form-stacked .inputs-list li label {
   font-weight: normal;
   padding-top: 0;
+}
+form.form-stacked div.error {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-top: 0;
+  margin-left: -10px;
 }
 form.form-stacked .actions {
   margin-left: -20px;
