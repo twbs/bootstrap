@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,7 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="../bootstrap-1.0.0.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-1.0.0.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
@@ -599,263 +600,8 @@
 <!-- Forms
 ================================================== -->
 <section id="forms">
-<<<<<<< HEAD
-
-<div class="page-header">
-  <h1>Forms</h1>
-</div>
-
-<div class="row">
-  <div class="span4 columns">
-    <h2>Default styles</h2>
-    <p>All forms are given default styles to present them in a readable and scalable way. Styles are provided for text inputs, select lists, textareas, radio buttons and checkboxes, and buttons.</p>
-  </div>
-  <div class="span12 columns">
-  <form>
-    <fieldset>
-      <legend>Example form legend</legend>
-      <div class="clearfix">
-        <label for="">X-Large Input</label>
-        <div class="input">
-          <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label for="">Select</label>
-        <div class="input">
-          <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label for="">Select</label>
-        <div class="input">
-          <select class="medium">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label>Uneditable Input</label>
-        <div class="input">
-          <span class="uneditable-input">Some Value Here</span>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label for="disabledInput">Disabled Input</label>
-        <div class="input">
-          <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here… carry on." disabled />
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix error">
-        <label for="xlInput">X-Large Input</label>
-        <div class="input">
-          <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
-          <span class="help-inline">Small snippet of help text</span>
-        </div>
-      </div> <!-- /clearfix -->
-    </fieldset>
-    <fieldset>
-      <legend>Example form legend</legend>
-      <div class="clearfix">
-        <label for="prependedInput">Prepended Text</label>
-        <div class="input">
-          <div class="input-prepend">
-            <span class="add-on">@</span>
-            <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
-          </div>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label for="prependedInput2">Prepended Checkbox</label>
-        <div class="input">
-          <div class="input-prepend">
-            <label class="add-on"><input type="checkbox" name="" id="" value="" /></label>
-            <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
-          </div>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label for="appendedInput">Appended Checkbox</label>
-        <div class="input">
-          <div class="input-append">
-            <input class="mini" id="appendedInput" name="appendedInput" size="16" type="text" />
-            <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
-          </div>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label for="xlInput">File Input</label>
-        <div class="input">
-          <input class="input-file" id="fileInput" name="fileInput" type="file" />
-        </div>
-      </div> <!-- /clearfix -->
-    </fieldset>
-    <fieldset>
-      <legend>Example form legend</legend>
-      <div class="clearfix">
-        <label id="optionsCheckboxes">List of Options</label>
-        <div class="input">
-          <ul class="inputs-list">
-            <li>
-              <label>
-                <input type="checkbox" name="optionsCheckboxes" value="option1" />
-                <span>Option one is this and that&mdash;be sure to include why it’s great</span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                <span>Option two can also be checked and included in form results</span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results</span>
-              </label>
-            </li>
-            <li>
-              <label class="disabled">
-                <input type="checkbox" name="optionsCheckboxes" value="option2" disabled />
-                <span>Option four cannot be checked as it is disabled.</span>
-              </label>
-            </li>
-          </ul>
-          <span class="help-block">
-            <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
-          </span>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label>Date Range</label>
-        <div class="input">
-          <div class="inline-inputs">
-            <input class="small" type="text" value="May 1, 2011" />
-            <input class="mini" type="text" value="12:00am" />
-            to
-            <input class="small" type="text" value="May 8, 2011" />
-            <input class="mini" type="text" value="11:59pm" />
-            <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
-          </div>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label for="textarea">Textarea</label>
-        <div class="input">
-          <textarea class="xxlarge" id="textarea" name="textarea"></textarea>
-          <span class="help-block">
-            Block of help text to describe the field above if need be.
-          </span>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="clearfix">
-        <label id="optionsRadio">List of Options</label>
-        <div class="input">
-          <ul class="inputs-list">
-            <li>
-              <label>
-                <input type="checkbox" name="optionsCheckboxes" value="option1" />
-                <span>Option one is this and that&mdash;be sure to include why it’s great</span>
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                <span>Option two can also be checked and included in form results</span>
-              </label>
-            </li>
-          </ul>
-        </div>
-      </div> <!-- /clearfix -->
-      <div class="actions">
-        <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
-      </div>
-    </fieldset>
-  </form>
-  </div>
-</div>
-
-<br />
-
-<div class="row">
-  <div class="span4 columns">
-    <h2>Stacked forms</h2>
-    <p>Add <code>.form-stacked</code> to your form’s HTML and you’ll have labels on top of their fields instead of to their left. This works great if your forms are short or you have two columns of inputs for heavier forms.</p>
-  </div>
-  <div class="span12 columns">
-    <form action="" class="form-stacked">
-      <fieldset>
-        <legend>Example form legend</legend>
-        <div class="clearfix">
-          <label for="">X-Large Input</label>
-          <div class="input">
-            <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
-          </div>
-        </div> <!-- /clearfix -->
-        <div class="clearfix">
-          <label for="">Select</label>
-          <div class="input">
-            <select>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-        </div> <!-- /clearfix -->
-      </fieldset>
-      <fieldset>
-        <legend>Example form legend</legend>
-        <div class="clearfix">
-          <label id="optionsCheckboxes">List of Options</label>
-          <div class="input">
-            <ul class="inputs-list">
-              <li>
-                <label>
-                  <input type="checkbox" name="optionsCheckboxes" value="option1" />
-                  <span>Option one is this and that&mdash;be sure to include why it’s great</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                  <span>Option two can also be checked and included in form results</span>
-                </label>
-              </li>
-            </ul>
-            <span class="help-block">
-              <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
-            </span>
-          </div>
-        </div> <!-- /clearfix -->
-      </fieldset>
-      <div class="actions">
-        <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span4 columns">
-    <h2>Buttons</h2>
-    <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
-    <p>All buttons default to a light gray style, but a blue <code>.primary</code> class is available. Plus, rolling your own styles is easy peasy.</p>
-=======
   <div class="page-header">
     <h1>Forms</h1>
->>>>>>> f169c99f726c250f0bb2f68ea4eedaaf3fbe15c0
   </div>
   <div class="row">
     <div class="span4 columns">
@@ -864,9 +610,6 @@
     </div>
     <div class="span12 columns">
       <form>
-<<<<<<< HEAD
-        <button type="submit" class="btn primary">Submit</button>&nbsp;<button type="submit" class="btn">Cancel</button>
-=======
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
@@ -1033,11 +776,9 @@
             </div>
           </div> <!-- /clearfix -->
           <div class="actions">
-            <button type="submit" class="btn primary">Save Changes</button>
-            <button type="reset" class="btn">Cancel</button>
+            <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
->>>>>>> f169c99f726c250f0bb2f68ea4eedaaf3fbe15c0
       </form>
     </div>
   </div> <!-- /row -->
@@ -1105,8 +846,7 @@
           </div> <!-- /clearfix -->
         </fieldset>
         <div class="actions">
-          <button type="submit" class="btn primary">Save Changes</button>
-          <button type="reset" class="btn">Cancel</button>
+          <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
         </div>
       </form>
     </div>
@@ -1118,19 +858,11 @@
       <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
       <p>All buttons default to a light gray style, but a blue <code>.primary</code> class is available. Plus, rolling your own styles is easy peasy.</p>
     </div>
-<<<<<<< HEAD
-    <h4>Buttons</h4>
-    <div class="well">
-      <form>
-        <button class="btn large primary disabled" disabled>Primary action</button>&nbsp;<button class="btn large disabled" disabled>Action</button>
-      </form>
-=======
     <div class="span12 columns">
       <h3>Example buttons</h3>
       <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
       <div class="well" style="padding: 14px 19px;">
-        <button type="submit" class="btn primary">Submit</button>
-        <button type="submit" class="btn">Cancel</button>
+        <button type="submit" class="btn primary">Submit</button>&nbsp;<button type="submit" class="btn">Cancel</button>
       </div>
       <h3>Alternate sizes</h3>
       <p>Fancy larger or smaller buttons? Have at it!</p>
@@ -1151,10 +883,8 @@
       </div>
       <h4>Buttons</h4>
       <div class="well">
-        <button class="btn large primary" disabled>Primary action</button>
-        <button class="btn large" disabled>Action</button>
+        <button class="btn large primary" disabled>Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
       </div>
->>>>>>> f169c99f726c250f0bb2f68ea4eedaaf3fbe15c0
     </div>
   </div> <!-- /row -->
 </section>
@@ -1637,8 +1367,6 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 </section>
 
     </div> <!-- /container -->
-
-
 
     <div id="footer">
       <div class="inner">
