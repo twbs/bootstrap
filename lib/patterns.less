@@ -261,7 +261,7 @@ div.topbar {
 // PAGE HEADERS
 // ------------
 
-div.page-header {
+.page-header {
   margin-bottom: @baseline - 1;
   border-bottom: 1px solid #ddd;
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
@@ -275,8 +275,7 @@ div.page-header {
 // ------------
 
 // One-liner alert bars
-div.alert-message {
-//  #gradient > .vertical(rgba(0,0,0,.01), rgba(0,0,0,0.15));
+.alert-message {
   background-color: @grayLighter;
   margin-bottom: @baseline;
   padding: 8px 15px;
@@ -323,7 +322,7 @@ div.alert-message {
 }
 
 // Block-level Alerts
-div.block-message {
+.block-message {
   margin-bottom: @baseline;
   padding: 14px;
   color: @grayDark;
@@ -365,8 +364,8 @@ div.block-message {
 // ----------
 
 // Common tab and pill styles
-ul.tabs,
-ul.pills {
+.tabs,
+.pills {
   margin: 0 0 20px;
   padding: 0;
   .clearfix();
@@ -380,7 +379,7 @@ ul.pills {
 }
 
 // Basic Tabs
-ul.tabs {
+.tabs {
   width: 100%;
   border-bottom: 1px solid @grayLight;
   li {
@@ -406,7 +405,7 @@ ul.tabs {
 }
 
 // Basic pill nav
-ul.pills {
+.pills {
   li {
     a {
       margin: 5px 3px 5px 0;
@@ -433,12 +432,13 @@ ul.pills {
 // PAGINATION
 // ----------
 
-div.pagination {
+.pagination {
   height: @baseline * 2;
   margin: @baseline 0;
   ul {
     float: left;
     margin: 0;
+    border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
     .border-radius(3px);
     .box-shadow(0 1px 2px rgba(0,0,0,.075);
@@ -448,6 +448,7 @@ div.pagination {
         float: left;
         padding: 0 14px;
         line-height: (@baseline * 2) - 2;
+        border-right: 1px solid #ddd;
         border-right: 1px solid rgba(0,0,0,.15);
         text-decoration: none;
       }
@@ -487,7 +488,7 @@ div.pagination {
 // MODALS
 // ------
 
-div.modal-backdrop {
+.modal-backdrop {
   background-color: rgba(0,0,0,.5);
   position: fixed;
   top: 0;
@@ -496,7 +497,7 @@ div.modal-backdrop {
   bottom: 0;
   z-index: 1000;
 }
-div.modal {
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -579,7 +580,7 @@ div.modal {
 // TWIPSY
 // ------
 
-div.twipsy {
+.twipsy {
   display: block;
   position: absolute;
   visibility: visible;
