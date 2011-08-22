@@ -145,43 +145,43 @@
 // Border Radius
 .border-radius(@radius: 5px) {
   -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
 }
 
 // Drop shadows
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
   -webkit-box-shadow: @shadow;
-  -moz-box-shadow: @shadow;
-  box-shadow: @shadow;
+     -moz-box-shadow: @shadow;
+          box-shadow: @shadow;
 }
 
 // Transitions
 .transition(@transition) {
 	-webkit-transition: @transition;
-	-moz-transition: @transition;
-	transition: @transition;
+	   -moz-transition: @transition;
+	        transition: @transition;
 }
 
 // Background clipping
 .background-clip(@clip) {
 	-webkit-background-clip: @clip;
-	-moz-background-clip: @clip;
-	background-clip: @clip;
+	   -moz-background-clip: @clip;
+	        background-clip: @clip;
 }
 
 // CSS3 Content Columns
 .content-columns(@columnCount, @columnGap: 20px) {
 	-webkit-column-count: @columnCount;
-	-webkit-column-gap: @columnGap;
-	-moz-column-count: @columnCount;
-	-moz-column-gap: @columnGap;
-	column-count: @columnCount;
-	column-gap: @columnGap;
+	   -moz-column-count: @columnCount;
+          column-count: @columnCount;
+  -webkit-column-gap: @columnGap;
+	   -moz-column-gap: @columnGap;
+          column-gap: @columnGap;
 }
 
 // Buttons
-.button(@color: #fff, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
+/*.button(@color: #fff, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
   display: inline-block;
   #gradient > .vertical-three-colors(@color, @color, 0.25, darken(@color, 10%));
   padding: @padding;
@@ -200,7 +200,7 @@
     color: @textColor;
     text-decoration: none;
   }
-}
+}*/
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
@@ -262,6 +262,6 @@
 .opacity(@opacity: 100) {
 	filter: e(%("alpha(opacity=%d)", @opacity));
 	-khtml-opacity: @opacity / 100;
-	-moz-opacity: @opacity / 100;
-	opacity: @opacity / 100;
+	  -moz-opacity: @opacity / 100;
+	       opacity: @opacity / 100;
 }
