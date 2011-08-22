@@ -246,15 +246,15 @@
     background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
     background-image: linear-gradient(@deg, @startColor, @endColor); // The standard
   }
-  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
     background-color: @endColor;
     background-repeat: no-repeat;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
-    background-image: -webkit-linear-gradient(@startColor, color-stop(@colorStop, @midColor), @endColor);
-    background-image: -moz-linear-gradient(@startColor, @midColor @colorStop*100%, @endColor);
-    background-image: -ms-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
-    background-image: -o-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
-    background-image: linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+    background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -moz-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -ms-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
   }
 }
 
