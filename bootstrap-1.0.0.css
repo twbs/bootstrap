@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 20:30:19 PDT 2011
+ * Date: Sun Aug 21 20:33:21 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -395,8 +395,9 @@ a:hover {
   color: #333333;
   font-size: 13px;
   line-height: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid;
+  border-color: #ccc #ccc #bbb;
+  border-color: borderColor borderColor rgba(0, 0, 0, 0.25);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -424,6 +425,8 @@ a:hover {
   background-image: linear-gradient(#049cdb, #0064cd);
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #0064cd #0064cd #003f81;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn.primary:hover {
   color: #fff;
@@ -440,7 +443,15 @@ a:hover {
   padding-left: 9px;
   font-size: 11px;
 }
-.btn:disabled, .btn.disabled {
+.btn.disabled {
+  background-image: none;
+  filter: alpha(opacity=65);
+  -khtml-opacity: 0.65;
+  -moz-opacity: 0.65;
+  opacity: 0.65;
+  cursor: default;
+}
+.btn:disabled {
   background-image: none;
   filter: alpha(opacity=65);
   -khtml-opacity: 0.65;
@@ -1104,6 +1115,18 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   right: 0;
   z-index: 10000;
   overflow: visible;
+}
+.topbar .fill {
+  background: #222;
+  background-color: #222222;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
+  background-image: -moz-linear-gradient(#333333, #222222);
+  background-image: -ms-linear-gradient(#333333, #222222);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(#333333, #222222);
+  background-image: -o-linear-gradient(#333333, #222222);
+  background-image: linear-gradient(#333333, #222222);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -1117,6 +1140,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   text-decoration: none;
+}
+.topbar h3 {
+  position: relative;
 }
 .topbar h3 a {
   float: left;
@@ -1138,7 +1164,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   opacity: 1;
 }
 .topbar form input {
-  background-color: #bfbfbf;
+  background-color: #444;
   background-color: rgba(255, 255, 255, 0.3);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: normal;
@@ -1166,7 +1192,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #e6e6e6;
 }
 .topbar form input:hover {
-  background-color: #444;
+  background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
   color: #fff;
 }
@@ -1239,7 +1265,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   opacity: 0.5;
 }
 .topbar ul li.menu.open a.menu, .topbar ul li.menu.open a:hover {
-  background-color: #333;
+  background-color: #444;
   background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
@@ -1303,6 +1329,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .topbar ul li ul li.divider {
   height: 1px;
   overflow: hidden;
+  background: #222;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 5px 0;
@@ -1346,6 +1373,17 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   margin-bottom: 8px;
 }
 .alert-message {
+  background-color: rgba(0, 0, 0, 0.15);
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.15)));
+  background-image: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
+  background-image: -ms-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0, 0, 0, 0.15)));
+  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
+  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
   background-color: #e6e6e6;
   margin-bottom: 18px;
   padding: 8px 15px;
@@ -1435,6 +1473,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   padding: 14px;
   color: #404040;
   color: rgba(0, 0, 0, 0.8);
+  *color: #404040;
+  /* IE 6-7 */
+
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -1443,6 +1484,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .block-message p {
   color: #404040;
   color: rgba(0, 0, 0, 0.8);
+  *color: #404040;
+  /* IE 6-7 */
+
   margin-right: 30px;
   margin-bottom: 0;
 }
@@ -1543,6 +1587,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   margin: 0;
   border: 1px solid #ddd;
   border: 1px solid rgba(0, 0, 0, 0.15);
+  border-right: 0\9;
+  /* IE8 and below don't support last child. TODO: clean this up;  */
+
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -1557,8 +1604,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   float: left;
   padding: 0 14px;
   line-height: 34px;
-  border-right: 1px solid #ddd;
-  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  border-right: 1px solid;
+  border-right-color: #ddd;
+  border-right-color: rgba(0, 0, 0, 0.15);
   text-decoration: none;
 }
 .pagination ul li a:hover, .pagination ul li.active a {

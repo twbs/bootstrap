@@ -16,8 +16,14 @@
   right: 0;
   z-index: 10000;
   overflow: visible;
-  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  .box-shadow(@shadow);
+
+  // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+  .fill {
+    background:#222;
+    #gradient > .vertical(#333, #222);
+    @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+    .box-shadow(@shadow);
+  }
 
   // Links get text shadow
   a {
@@ -35,15 +41,18 @@
   }
 
   // Website name
-  h3 a {
-    float: left;
-    display: block;
-    padding: 8px 20px 12px;
-    margin-left: -20px; // negative indent to left-align the text down the page
-    color: @white;
-    font-size: 20px;
-    font-weight: 200;
-    line-height: 1;
+  h3 {
+    position:relative;
+    a {
+      float: left;
+      display: block;
+      padding: 8px 20px 12px;
+      margin-left: -20px; // negative indent to left-align the text down the page
+      color: @white;
+      font-size: 20px;
+      font-weight: 200;
+      line-height: 1;
+    }
   }
 
   // Search Form
@@ -53,7 +62,7 @@
     position: relative;
     .opacity(100);
     input {
-      background-color: @grayLight;
+      background-color: #444;
       background-color: rgba(255,255,255,.3);
       #font > .sans-serif(13px, normal, 1);
       width: 220px;
@@ -75,7 +84,7 @@
       }
       // Hover states
       &:hover {
-        background-color: #444;
+        background-color: @grayLight;
         background-color: rgba(255,255,255,.5);
         color: #fff;
       }
@@ -153,7 +162,7 @@
       &.open {
         a.menu,
         a:hover {
-          background-color: #333;
+          background-color: #444;
           background-color: rgba(255,255,255,.1);
           color: #fff;
         }
@@ -217,6 +226,7 @@
         &.divider {
           height: 1px;
           overflow: hidden;
+          background: #222;
           background: rgba(0,0,0,.2);
           border-bottom: 1px solid rgba(255,255,255,.1);
           margin: 5px 0;
@@ -278,6 +288,10 @@
 
 // One-liner alert bars
 .alert-message {
+  // TODO: Ask cloudhead how to do this fancy filter elegantly. Less eval is returning strings with quotes ;_;
+  #gradient > .vertical(transparent, rgba(0,0,0,0.15));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
   background-color: @grayLighter;
   margin-bottom: @baseline;
   padding: 8px 15px;
@@ -329,11 +343,13 @@
   padding: 14px;
   color: @grayDark;
   color: rgba(0,0,0,.8);
+  *color: @grayDark; /* IE 6-7 */
   text-shadow: 0 1px 0 rgba(255,255,255,.25);
   .border-radius(6px);
   p {
     color: @grayDark;
     color: rgba(0,0,0,.8);
+    *color: @grayDark; /* IE 6-7 */
     margin-right: 30px;
     margin-bottom: 0;
   }
@@ -442,6 +458,7 @@
     margin: 0;
     border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
+    border-right: 0\9; /* IE8 and below don't support last child. TODO: clean this up;  */
     .border-radius(3px);
     .box-shadow(0 1px 2px rgba(0,0,0,.05);
     li {
@@ -450,8 +467,9 @@
         float: left;
         padding: 0 14px;
         line-height: (@baseline * 2) - 2;
-        border-right: 1px solid #ddd;
-        border-right: 1px solid rgba(0,0,0,.15);
+        border-right: 1px solid;
+        border-right-color: #ddd;
+        border-right-color: rgba(0,0,0,.15);
         text-decoration: none;
       }
       a:hover,
