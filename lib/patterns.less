@@ -338,11 +338,13 @@ div.block-message {
   padding: 14px;
   color: @grayDark;
   color: rgba(0,0,0,.8);
+  *color: @grayDark; /* IE 6-7 */
   text-shadow: 0 1px 0 rgba(255,255,255,.25);
   .border-radius(6px);
   p {
     color: @grayDark;
     color: rgba(0,0,0,.8);
+    *color: @grayDark; /* IE 6-7 */
     margin-right: 30px;
     margin-bottom: 0;
   }

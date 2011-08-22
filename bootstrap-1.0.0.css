@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 19:59:40 PDT 2011
+ * Date: Sun Aug 21 20:21:55 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1440,6 +1440,9 @@ div.block-message {
   padding: 14px;
   color: #404040;
   color: rgba(0, 0, 0, 0.8);
+  *color: #404040;
+  /* IE 6-7 */
+
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -1448,6 +1451,9 @@ div.block-message {
 div.block-message p {
   color: #404040;
   color: rgba(0, 0, 0, 0.8);
+  *color: #404040;
+  /* IE 6-7 */
+
   margin-right: 30px;
   margin-bottom: 0;
 }
