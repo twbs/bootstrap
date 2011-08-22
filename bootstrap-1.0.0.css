@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 17:28:43 PDT 2011
+ * Date: Sun Aug 21 20:06:59 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -978,13 +978,13 @@ table {
   width: 100%;
   margin-bottom: 18px;
   padding: 0;
-  text-align: left;
   border-collapse: separate;
   font-size: 13px;
 }
 table th, table td {
   padding: 10px 10px 9px;
   line-height: 13.5px;
+  text-align: left;
   vertical-align: middle;
   border-bottom: 1px solid #ddd;
 }
@@ -993,16 +993,16 @@ table th {
   font-weight: bold;
   border-bottom-width: 2px;
 }
-table.zebra-striped tbody tr:nth-child(odd) td {
+.zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
 }
-table.zebra-striped tbody tr:hover td {
+.zebra-striped tbody tr:hover td {
   background-color: #f5f5f5;
 }
-table.zebra-striped th.header {
+.zebra-striped .header {
   cursor: pointer;
 }
-table.zebra-striped th.header:after {
+.zebra-striped .header:after {
   content: "";
   float: right;
   margin-top: 7px;
@@ -1011,27 +1011,24 @@ table.zebra-striped th.header:after {
   border-color: #000 transparent;
   visibility: hidden;
 }
-table.zebra-striped th.headerSortUp, table.zebra-striped th.headerSortDown {
+.zebra-striped .headerSortUp, .zebra-striped .headerSortDown {
   background-color: rgba(141, 192, 219, 0.25);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
-table.zebra-striped th.header:hover:after {
+.zebra-striped .header:hover:after {
   visibility: visible;
 }
-table.zebra-striped th.actions:hover {
-  background-image: none;
-}
-table.zebra-striped th.headerSortDown:after, table.zebra-striped th.headerSortDown:hover:after {
+.zebra-striped .headerSortDown:after, .zebra-striped .headerSortDown:hover:after {
   visibility: visible;
   filter: alpha(opacity=60);
   -khtml-opacity: 0.6;
   -moz-opacity: 0.6;
   opacity: 0.6;
 }
-table.zebra-striped th.headerSortUp:after {
+.zebra-striped .headerSortUp:after {
   border-bottom: none;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
@@ -1045,46 +1042,46 @@ table.zebra-striped th.headerSortUp:after {
   -moz-opacity: 0.6;
   opacity: 0.6;
 }
-table.zebra-striped th.blue {
+table .blue {
   color: #049cdb;
   border-bottom-color: #049cdb;
 }
-table.zebra-striped th.headerSortUp.blue, table.zebra-striped th.headerSortDown.blue {
+table .headerSortUp.blue, table .headerSortDown.blue {
   background-color: #ade6fe;
 }
-table.zebra-striped th.green {
+table .green {
   color: #46a546;
   border-bottom-color: #46a546;
 }
-table.zebra-striped th.headerSortUp.green, table.zebra-striped th.headerSortDown.green {
+table .headerSortUp.green, table .headerSortDown.green {
   background-color: #cdeacd;
 }
-table.zebra-striped th.red {
+table .red {
   color: #9d261d;
   border-bottom-color: #9d261d;
 }
-table.zebra-striped th.headerSortUp.red, table.zebra-striped th.headerSortDown.red {
+table .headerSortUp.red, table .headerSortDown.red {
   background-color: #f4c8c5;
 }
-table.zebra-striped th.yellow {
+table .yellow {
   color: #ffc40d;
   border-bottom-color: #ffc40d;
 }
-table.zebra-striped th.headerSortUp.yellow, table.zebra-striped th.headerSortDown.yellow {
+table .headerSortUp.yellow, table .headerSortDown.yellow {
   background-color: #fff6d9;
 }
-table.zebra-striped th.orange {
+table .orange {
   color: #f89406;
   border-bottom-color: #f89406;
 }
-table.zebra-striped th.headerSortUp.orange, table.zebra-striped th.headerSortDown.orange {
+table .headerSortUp.orange, table .headerSortDown.orange {
   background-color: #fee9cc;
 }
-table.zebra-striped th.purple {
+table .purple {
   color: #7a43b6;
   border-bottom-color: #7a43b6;
 }
-table.zebra-striped th.headerSortUp.purple, table.zebra-striped th.headerSortDown.purple {
+table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: #e2d5f0;
 }
 /* Patterns.less
@@ -1338,17 +1335,17 @@ div.topbar ul li ul li span {
   font-weight: 200;
   line-height: 27px;
 }
-div.page-header {
+.page-header {
   margin-bottom: 17px;
   border-bottom: 1px solid #ddd;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-div.page-header h1 {
+.page-header h1 {
   margin-bottom: 8px;
 }
-div.alert-message {
+.alert-message {
   background-color: #e6e6e6;
   margin-bottom: 18px;
   padding: 8px 15px;
@@ -1359,14 +1356,14 @@ div.alert-message {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-div.alert-message p {
+.alert-message p {
   color: #fff;
   margin-bottom: 0;
 }
-div.alert-message p + p {
+.alert-message p + p {
   margin-top: 5px;
 }
-div.alert-message.error {
+.alert-message.error {
   background-color: #d83a2e;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#e4776f), to(#d83a2e));
@@ -1378,7 +1375,7 @@ div.alert-message.error {
   background-image: linear-gradient(#e4776f, #d83a2e);
   border-bottom-color: #b32b21;
 }
-div.alert-message.warning {
+.alert-message.warning {
   background-color: #ffd040;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffe38d), to(#ffd040));
@@ -1390,7 +1387,7 @@ div.alert-message.warning {
   background-image: linear-gradient(#ffe38d, #ffd040);
   border-bottom-color: #ffc40d;
 }
-div.alert-message.success {
+.alert-message.success {
   background-color: #62bc62;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#97d397), to(#62bc62));
@@ -1402,7 +1399,7 @@ div.alert-message.success {
   background-image: linear-gradient(#97d397, #62bc62);
   border-bottom-color: #46a546;
 }
-div.alert-message.info {
+.alert-message.info {
   background-color: #04aef4;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#62cffc), to(#04aef4));
@@ -1414,7 +1411,7 @@ div.alert-message.info {
   background-image: linear-gradient(#62cffc, #04aef4);
   border-bottom-color: #049cdb;
 }
-div.alert-message .close {
+.alert-message .close {
   float: right;
   margin-top: -2px;
   color: #000;
@@ -1426,14 +1423,14 @@ div.alert-message .close {
   -moz-opacity: 0.2;
   opacity: 0.2;
 }
-div.alert-message .close:hover {
+.alert-message .close:hover {
   text-decoration: none;
   filter: alpha(opacity=40);
   -khtml-opacity: 0.4;
   -moz-opacity: 0.4;
   opacity: 0.4;
 }
-div.block-message {
+.block-message {
   margin-bottom: 18px;
   padding: 14px;
   color: #404040;
@@ -1443,61 +1440,61 @@ div.block-message {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
-div.block-message p {
+.block-message p {
   color: #404040;
   color: rgba(0, 0, 0, 0.8);
   margin-right: 30px;
   margin-bottom: 0;
 }
-div.block-message ul {
+.block-message ul {
   margin-bottom: 0;
 }
-div.block-message strong {
+.block-message strong {
   display: block;
 }
-div.block-message.error {
+.block-message.error {
   background: #f8dcda;
   border: 1px solid #f4c8c5;
 }
-div.block-message.warning {
+.block-message.warning {
   background: #fff0c0;
   border: 1px solid #ffe38d;
 }
-div.block-message.success {
+.block-message.success {
   background: #dff1df;
   border: 1px solid #bbe2bb;
 }
-div.block-message.info {
+.block-message.info {
   background: #c7eefe;
   border: 1px solid #ade6fe;
 }
-ul.tabs, ul.pills {
+.tabs, .pills {
   margin: 0 0 20px;
   padding: 0;
   zoom: 1;
 }
-ul.tabs:before,
-ul.pills:before,
-ul.tabs:after,
-ul.pills:after {
+.tabs:before,
+.pills:before,
+.tabs:after,
+.pills:after {
   display: table;
   content: "";
 }
-ul.tabs:after, ul.pills:after {
+.tabs:after, .pills:after {
   clear: both;
 }
-ul.tabs li, ul.pills li {
+.tabs li, .pills li {
   display: inline;
 }
-ul.tabs li a, ul.pills li a {
+.tabs li a, .pills li a {
   float: left;
   width: auto;
 }
-ul.tabs {
+.tabs {
   width: 100%;
   border-bottom: 1px solid #bfbfbf;
 }
-ul.tabs li a {
+.tabs li a {
   margin-bottom: -1px;
   margin-right: 2px;
   padding: 0 15px;
@@ -1506,18 +1503,18 @@ ul.tabs li a {
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
-ul.tabs li a:hover {
+.tabs li a:hover {
   background-color: #e6e6e6;
   border-bottom: 1px solid #bfbfbf;
 }
-ul.tabs li.active a {
+.tabs li.active a {
   background-color: #fff;
   padding: 0 14px;
   border: 1px solid #ccc;
   border-bottom: 0;
   color: #808080;
 }
-ul.pills li a {
+.pills li a {
   margin: 5px 3px 5px 0;
   padding: 0 15px;
   text-shadow: 0 1px 1px #fff;
@@ -1526,24 +1523,25 @@ ul.pills li a {
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
-ul.pills li a:hover {
+.pills li a:hover {
   background: #0050a3;
   color: #fff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
-ul.pills li.active a {
+.pills li.active a {
   background: #0069d6;
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
-div.pagination {
+.pagination {
   height: 36px;
   margin: 18px 0;
 }
-div.pagination ul {
+.pagination ul {
   float: left;
   margin: 0;
+  border: 1px solid #ddd;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -1552,24 +1550,25 @@ div.pagination ul {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
 }
-div.pagination ul li {
+.pagination ul li {
   display: inline;
 }
-div.pagination ul li a {
+.pagination ul li a {
   float: left;
   padding: 0 14px;
   line-height: 34px;
+  border-right: 1px solid #ddd;
   border-right: 1px solid rgba(0, 0, 0, 0.15);
   text-decoration: none;
 }
-div.pagination ul li a:hover, div.pagination ul li.active a {
+.pagination ul li a:hover, .pagination ul li.active a {
   background-color: #c7eefe;
 }
-div.pagination ul li.disabled a, div.pagination ul li.disabled a:hover {
+.pagination ul li.disabled a, .pagination ul li.disabled a:hover {
   background-color: none;
   color: #bfbfbf;
 }
-div.pagination ul li.next a, div.pagination ul li:last-child a {
+.pagination ul li.next a, .pagination ul li:last-child a {
   border: 0;
 }
 .well {
@@ -1586,7 +1585,7 @@ div.pagination ul li.next a, div.pagination ul li:last-child a {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-div.modal-backdrop {
+.modal-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -1595,7 +1594,7 @@ div.modal-backdrop {
   bottom: 0;
   z-index: 1000;
 }
-div.modal {
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1614,11 +1613,11 @@ div.modal {
   -moz-background-clip: padding;
   background-clip: padding;
 }
-div.modal .modal-header {
+.modal .modal-header {
   border-bottom: 1px solid #eee;
   padding: 5px 20px;
 }
-div.modal .modal-header a.close {
+.modal .modal-header a.close {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -1626,10 +1625,10 @@ div.modal .modal-header a.close {
   line-height: 10px;
   font-size: 18px;
 }
-div.modal .modal-body {
+.modal .modal-body {
   padding: 20px;
 }
-div.modal .modal-footer {
+.modal .modal-footer {
   background-color: #f5f5f5;
   padding: 14px 20px 15px;
   border-top: 1px solid #ddd;
@@ -1641,18 +1640,18 @@ div.modal .modal-footer {
   box-shadow: inset 0 1px 0 #ffffff;
   zoom: 1;
 }
-div.modal .modal-footer:before, div.modal .modal-footer:after {
+.modal .modal-footer:before, .modal .modal-footer:after {
   display: table;
   content: "";
 }
-div.modal .modal-footer:after {
+.modal .modal-footer:after {
   clear: both;
 }
-div.modal .modal-footer .btn {
+.modal .modal-footer .btn {
   float: right;
   margin-left: 10px;
 }
-div.twipsy {
+.twipsy {
   display: block;
   position: absolute;
   visibility: visible;
@@ -1664,7 +1663,7 @@ div.twipsy {
   -moz-opacity: 0.8;
   opacity: 0.8;
 }
-div.twipsy.above .twipsy-arrow {
+.twipsy.above .twipsy-arrow {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
@@ -1672,7 +1671,7 @@ div.twipsy.above .twipsy-arrow {
   border-right: 5px solid transparent;
   border-top: 5px solid #000000;
 }
-div.twipsy.left .twipsy-arrow {
+.twipsy.left .twipsy-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
@@ -1680,7 +1679,7 @@ div.twipsy.left .twipsy-arrow {
   border-bottom: 5px solid transparent;
   border-left: 5px solid #000000;
 }
-div.twipsy.below .twipsy-arrow {
+.twipsy.below .twipsy-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
@@ -1688,7 +1687,7 @@ div.twipsy.below .twipsy-arrow {
   border-right: 5px solid transparent;
   border-bottom: 5px solid #000000;
 }
-div.twipsy.right .twipsy-arrow {
+.twipsy.right .twipsy-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
@@ -1696,7 +1695,7 @@ div.twipsy.right .twipsy-arrow {
   border-bottom: 5px solid transparent;
   border-right: 5px solid #000000;
 }
-div.twipsy .twipsy-inner {
+.twipsy .twipsy-inner {
   padding: 3px 8px;
   background-color: #000;
   color: white;
@@ -1707,7 +1706,7 @@ div.twipsy .twipsy-inner {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-div.twipsy .twipsy-arrow {
+.twipsy .twipsy-arrow {
   position: absolute;
   width: 0;
   height: 0;
