@@ -84,11 +84,11 @@ div.container-fluid {
 
 // Links
 a {
-  color: @linkColor;
+  color: @baseColor;
   text-decoration: none;
   line-height: inherit;
   &:hover {
-    color: @linkColorHover;
+    color: lighten(@baseColor,25%);
     text-decoration: underline;
   }
 }
