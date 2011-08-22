@@ -276,13 +276,13 @@ div.page-header {
 
 // One-liner alert bars
 div.alert-message {
-  #gradient > .vertical(transparent, rgba(0,0,0,0.15));
+//  #gradient > .vertical(rgba(0,0,0,.01), rgba(0,0,0,0.15));
   background-color: @grayLighter;
   margin-bottom: @baseline;
   padding: 8px 15px;
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border-bottom: 1px solid rgba(0,0,0,.25);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  border-bottom: 1px solid rgba(0,0,0,.3);
   .border-radius(4px);
   p {
     color: #fff;
@@ -292,29 +292,32 @@ div.alert-message {
     }
   }
   &.error {
-    background-color: lighten(@red, 25%);
+    #gradient > .vertical(lighten(@red, 30%), lighten(@red, 15%));
+    border-bottom-color: lighten(@red, 5%);
   }
   &.warning {
-    background-color: lighten(@yellow, 15%);
+    #gradient > .vertical(lighten(@yellow, 25%), lighten(@yellow, 10%));
+    border-bottom-color: @yellow;
   }
   &.success {
-    background-color: lighten(@green, 15%);
+    #gradient > .vertical(lighten(@green, 25%), lighten(@green, 10%));
+    border-bottom-color: @green;
   }
   &.info {
-    background-color: lighten(@blue, 15%);
+    #gradient > .vertical(lighten(@blue, 25%), lighten(@blue, 5%));
+    border-bottom-color: @blue;
   }
-  a.close {
+  .close {
     float: right;
     margin-top: -2px;
-    color: #fff;
+    color: #000;
     font-size: 20px;
     font-weight: bold;
-    text-shadow: 0 1px 0 rgba(0,0,0,.5);
-    .opacity(50);
-    .border-radius(3px);
+    text-shadow: 0 1px 0 rgba(255,255,255,1);
+    .opacity(20);
     &:hover {
       text-decoration: none;
-      .opacity(50);
+      .opacity(40);
     }
   }
 }
@@ -338,12 +341,6 @@ div.block-message {
   }
   strong {
     display: block;
-  }
-  a.close {
-    display: block;
-    color: @grayDark;
-    color: rgba(0,0,0,.5);
-    text-shadow: 0 1px 1px rgba(255,255,255,.75);
   }
   &.error {
     background: lighten(@red, 55%);
