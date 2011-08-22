@@ -257,3 +257,9 @@ img.large-bird {
   margin: 5px 0 0 310px;
   opacity: .1;
 }
+
+/* Pretty Print
+-------------------------------------------------- */
+PRE.prettyprint {
+  overflow: hidden;
+}
