@@ -7,7 +7,7 @@
 // ------
 
 // Topbar for Branding and Nav
-div.topbar {
+.topbar {
   #gradient > .vertical(#333, #222);
   height: 40px;
   position: fixed;
@@ -16,8 +16,14 @@ div.topbar {
   right: 0;
   z-index: 10000;
   overflow: visible;
-  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  .box-shadow(@shadow);
+
+  // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+  .fill {
+    background:#222;
+    #gradient > .vertical(#333, #222);
+    @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+    .box-shadow(@shadow);
+  }
 
   // Links get text shadow
   a {
@@ -35,15 +41,18 @@ div.topbar {
   }
 
   // Website name
-  h3 a {
-    float: left;
-    display: block;
-    padding: 8px 20px 12px;
-    margin-left: -20px; // negative indent to left-align the text down the page
-    color: @white;
-    font-size: 20px;
-    font-weight: 200;
-    line-height: 1;
+  h3 {
+    position:relative;
+    a {
+      float: left;
+      display: block;
+      padding: 8px 20px 12px;
+      margin-left: -20px; // negative indent to left-align the text down the page
+      color: @white;
+      font-size: 20px;
+      font-weight: 200;
+      line-height: 1;
+    }
   }
 
   // Search Form
@@ -53,7 +62,7 @@ div.topbar {
     position: relative;
     .opacity(100);
     input {
-      background-color: @grayLight;
+      background-color: #444;
       background-color: rgba(255,255,255,.3);
       #font > .sans-serif(13px, normal, 1);
       width: 220px;
@@ -73,11 +82,13 @@ div.topbar {
       &::-webkit-input-placeholder {
         color: @grayLighter;
       }
+      // Hover states
       &:hover {
-        background-color: #444;
+        background-color: @grayLight;
         background-color: rgba(255,255,255,.5);
         color: #fff;
       }
+      // Focus states (we use .focused since IE8 and down doesn't support :focus)
       &:focus,
       &.focused {
         outline: none;
@@ -151,7 +162,7 @@ div.topbar {
       &.open {
         a.menu,
         a:hover {
-          background-color: lighten(#00a0d1,5);
+          background-color: #444;
           background-color: rgba(255,255,255,.1);
           color: #fff;
         }
@@ -215,6 +226,7 @@ div.topbar {
         &.divider {
           height: 1px;
           overflow: hidden;
+          background: #222;
           background: rgba(0,0,0,.2);
           border-bottom: 1px solid rgba(255,255,255,.1);
           margin: 5px 0;
@@ -261,7 +273,7 @@ div.topbar {
 // PAGE HEADERS
 // ------------
 
-div.page-header {
+.page-header {
   margin-bottom: @baseline - 1;
   border-bottom: 1px solid #ddd;
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
@@ -275,14 +287,17 @@ div.page-header {
 // ------------
 
 // One-liner alert bars
-div.alert-message {
+.alert-message {
+  // TODO: Ask cloudhead how to do this fancy filter elegantly. Less eval is returning strings with quotes ;_;
   #gradient > .vertical(transparent, rgba(0,0,0,0.15));
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
   background-color: @grayLighter;
   margin-bottom: @baseline;
   padding: 8px 15px;
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border-bottom: 1px solid rgba(0,0,0,.25);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  border-bottom: 1px solid rgba(0,0,0,.3);
   .border-radius(4px);
   p {
     color: #fff;
@@ -292,44 +307,49 @@ div.alert-message {
     }
   }
   &.error {
-    background-color: lighten(@red, 25%);
+    #gradient > .vertical(lighten(@red, 30%), lighten(@red, 15%));
+    border-bottom-color: lighten(@red, 5%);
   }
   &.warning {
-    background-color: lighten(@yellow, 15%);
+    #gradient > .vertical(lighten(@yellow, 25%), lighten(@yellow, 10%));
+    border-bottom-color: @yellow;
   }
   &.success {
-    background-color: lighten(@green, 15%);
+    #gradient > .vertical(lighten(@green, 25%), lighten(@green, 10%));
+    border-bottom-color: @green;
   }
   &.info {
-    background-color: lighten(@blue, 15%);
+    #gradient > .vertical(lighten(@blue, 25%), lighten(@blue, 5%));
+    border-bottom-color: @blue;
   }
-  a.close {
+  .close {
     float: right;
     margin-top: -2px;
-    color: #fff;
+    color: #000;
     font-size: 20px;
     font-weight: bold;
-    text-shadow: 0 1px 0 rgba(0,0,0,.5);
-    .opacity(50);
-    .border-radius(3px);
+    text-shadow: 0 1px 0 rgba(255,255,255,1);
+    .opacity(20);
     &:hover {
       text-decoration: none;
-      .opacity(50);
+      .opacity(40);
     }
   }
 }
 
 // Block-level Alerts
-div.block-message {
+.block-message {
   margin-bottom: @baseline;
   padding: 14px;
   color: @grayDark;
   color: rgba(0,0,0,.8);
+  *color: @grayDark; /* IE 6-7 */
   text-shadow: 0 1px 0 rgba(255,255,255,.25);
   .border-radius(6px);
   p {
     color: @grayDark;
     color: rgba(0,0,0,.8);
+    *color: @grayDark; /* IE 6-7 */
     margin-right: 30px;
     margin-bottom: 0;
   }
@@ -338,12 +358,6 @@ div.block-message {
   }
   strong {
     display: block;
-  }
-  a.close {
-    display: block;
-    color: @grayDark;
-    color: rgba(0,0,0,.5);
-    text-shadow: 0 1px 1px rgba(255,255,255,.75);
   }
   &.error {
     background: lighten(@red, 55%);
@@ -368,8 +382,8 @@ div.block-message {
 // ----------
 
 // Common tab and pill styles
-ul.tabs,
-ul.pills {
+.tabs,
+.pills {
   margin: 0 0 20px;
   padding: 0;
   .clearfix();
@@ -383,7 +397,7 @@ ul.pills {
 }
 
 // Basic Tabs
-ul.tabs {
+.tabs {
   width: 100%;
   border-bottom: 1px solid @grayLight;
   li {
@@ -409,7 +423,7 @@ ul.tabs {
 }
 
 // Basic pill nav
-ul.pills {
+.pills {
   li {
     a {
       margin: 5px 3px 5px 0;
@@ -436,22 +450,26 @@ ul.pills {
 // PAGINATION
 // ----------
 
-div.pagination {
+.pagination {
   height: @baseline * 2;
   margin: @baseline 0;
   ul {
     float: left;
     margin: 0;
+    border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
+    border-right: 0\9; /* IE8 and below don't support last child. TODO: clean this up;  */
     .border-radius(3px);
-    .box-shadow(0 1px 2px rgba(0,0,0,.075));
+    .box-shadow(0 1px 2px rgba(0,0,0,.05);
     li {
       display: inline;
       a {
         float: left;
         padding: 0 14px;
         line-height: (@baseline * 2) - 2;
-        border-right: 1px solid rgba(0,0,0,.15);
+        border-right: 1px solid;
+        border-right-color: #ddd;
+        border-right-color: rgba(0,0,0,.15);
         text-decoration: none;
       }
       a:hover,
@@ -490,7 +508,7 @@ div.pagination {
 // MODALS
 // ------
 
-div.modal-backdrop {
+.modal-backdrop {
   background-color: rgba(0,0,0,.5);
   position: fixed;
   top: 0;
@@ -499,7 +517,7 @@ div.modal-backdrop {
   bottom: 0;
   z-index: 1000;
 }
-div.modal {
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -507,6 +525,7 @@ div.modal {
   width: 560px;
   margin: -280px 0 0 -250px;
   background-color: @white;
+  border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
@@ -582,7 +601,7 @@ div.modal {
 // TWIPSY
 // ------
 
-div.twipsy {
+.twipsy {
   display: block;
   position: absolute;
   visibility: visible;
@@ -631,7 +650,8 @@ div.twipsy {
     height: 0;
   }
   .inner {
-    background: rgba(0,0,0,.8);
+    background-color: #333;
+    background-color: rgba(0,0,0,.8);
     padding: 3px;
     overflow: hidden;
     width: 280px;
@@ -639,7 +659,7 @@ div.twipsy {
     .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   }
   .title {
-    background: #f5f5f5;
+    background-color: #f5f5f5;
     padding: 9px 15px;
     line-height: 1;
     .border-radius(3px 3px 0 0);
