@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 20:16:18 PDT 2011
+ * Date: Sun Aug 21 20:27:08 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -651,7 +651,7 @@ form fieldset legend {
   line-height: 1;
   color: #404040;
 }
-form div.clearfix {
+form .clearfix {
   margin-bottom: 18px;
 }
 form label,
@@ -735,7 +735,7 @@ form input[type=text]:focus, form input[type=password]:focus, form textarea:focu
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
 }
-form div.error {
+form .error {
   background: #fae5e3;
   padding: 10px 0;
   margin: -10px 0 10px;
@@ -743,22 +743,22 @@ form div.error {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-form div.error > label, form div.error span.help-inline, form div.error span.help-block {
+form .error > label, form .error span.help-inline, form .error span.help-block {
   color: #9d261d;
 }
-form div.error input[type=text], form div.error input[type=password], form div.error textarea {
+form .error input[type=text], form .error input[type=password], form .error textarea {
   border-color: #c87872;
   -webkit-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   -moz-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
 }
-form div.error input[type=text]:focus, form div.error input[type=password]:focus, form div.error textarea:focus {
+form .error input[type=text]:focus, form .error input[type=password]:focus, form .error textarea:focus {
   border-color: #b9554d;
   -webkit-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
 }
-form div.error div.input-prepend span.add-on, form div.error div.input-append span.add-on {
+form .error .input-prepend span.add-on, form .error .input-append span.add-on {
   background: #f4c8c5;
   border-color: #c87872;
   color: #b9554d;
@@ -809,7 +809,7 @@ form input[readonly]:focus, form textarea[readonly]:focus, form input.disabled {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-div.actions {
+.actions {
   background: #f5f5f5;
   margin-top: 18px;
   margin-bottom: 18px;
@@ -819,13 +819,13 @@ div.actions {
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
-div.actions div.secondary-action {
+.actions .secondary-action {
   float: right;
 }
-div.actions div.secondary-action a {
+.actions .secondary-action a {
   line-height: 30px;
 }
-div.actions div.secondary-action a:hover {
+.actions .secondary-action a:hover {
   text-decoration: underline;
 }
 .help-inline, .help-block {
@@ -840,27 +840,27 @@ div.actions div.secondary-action a:hover {
   display: block;
   max-width: 600px;
 }
-div.inline-inputs {
+.inline-inputs {
   color: #808080;
 }
-div.inline-inputs span, div.inline-inputs input[type=text] {
+.inline-inputs span, .inline-inputs input[type=text] {
   display: inline-block;
 }
-div.inline-inputs input.mini {
+.inline-inputs input.mini {
   width: 60px;
 }
-div.inline-inputs input.small {
+.inline-inputs input.small {
   width: 90px;
 }
-div.inline-inputs span {
+.inline-inputs span {
   padding: 0 2px 0 1px;
 }
-div.input-prepend input[type=text], div.input-append input[type=text] {
+.input-prepend input[type=text], .input-append input[type=text] {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
-div.input-prepend .add-on, div.input-append .add-on {
+.input-prepend .add-on, .input-append .add-on {
   background: #f5f5f5;
   float: left;
   display: block;
@@ -879,33 +879,33 @@ div.input-prepend .add-on, div.input-append .add-on {
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
 }
-div.input-prepend .active, div.input-append .active {
+.input-prepend .active, .input-append .active {
   background: #a9dba9;
   border-color: #46a546;
 }
-div.input-append input[type=text] {
+.input-append input[type=text] {
   float: left;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
 }
-div.input-append .add-on {
+.input-append .add-on {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
   border-right-width: 1px;
   border-left-width: 0;
 }
-ul.inputs-list {
+.inputs-list {
   margin: 0 0 5px;
   width: 100%;
 }
-ul.inputs-list li {
+.inputs-list li {
   display: block;
   padding: 0;
   width: 100%;
 }
-ul.inputs-list li label {
+.inputs-list li label {
   display: block;
   float: none;
   width: auto;
@@ -914,22 +914,22 @@ ul.inputs-list li label {
   text-align: left;
   white-space: normal;
 }
-ul.inputs-list li label strong {
+.inputs-list li label strong {
   color: #808080;
 }
-ul.inputs-list li label small {
+.inputs-list li label small {
   font-size: 12px;
   font-weight: normal;
 }
-ul.inputs-list li ul.inputs-list {
+.inputs-list li ul.inputs-list {
   margin-left: 25px;
   margin-bottom: 10px;
   padding-top: 0;
 }
-ul.inputs-list li:first-child {
+.inputs-list li:first-child {
   padding-top: 5px;
 }
-ul.inputs-list input[type=radio], ul.inputs-list input[type=checkbox] {
+.inputs-list input[type=radio], .inputs-list input[type=checkbox] {
   margin-bottom: 0;
 }
 form.form-stacked {
@@ -950,23 +950,23 @@ form.form-stacked label {
   line-height: 20px;
   padding-top: 0;
 }
-form.form-stacked div.clearfix {
+form.form-stacked .clearfix {
   margin-bottom: 9px;
 }
-form.form-stacked div.clearfix div.input {
+form.form-stacked .clearfix div.input {
   margin-left: 0;
 }
-form.form-stacked ul.inputs-list {
+form.form-stacked .inputs-list {
   margin-bottom: 0;
 }
-form.form-stacked ul.inputs-list li {
+form.form-stacked .inputs-list li {
   padding-top: 0;
 }
-form.form-stacked ul.inputs-list li label {
+form.form-stacked .inputs-list li label {
   font-weight: normal;
   padding-top: 0;
 }
-form.form-stacked div.actions {
+form.form-stacked .actions {
   margin-left: -20px;
   padding-left: 20px;
 }
