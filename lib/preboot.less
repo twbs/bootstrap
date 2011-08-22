@@ -20,7 +20,6 @@
 
 // Accent Colors
 @blue:              #049CDB;
-@blueDark:          #0064CD;
 @green:             #46a546;
 @red:               #9d261d;
 @yellow:            #ffc40d;
@@ -181,7 +180,7 @@
 }
 
 // Buttons
-.button(@color: #fff, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
+/*.button(@color: #fff, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
   display: inline-block;
   #gradient > .vertical-three-colors(@color, @color, 0.25, darken(@color, 10%));
   padding: @padding;
@@ -189,7 +188,7 @@
   color: @textColor;
   font-size: @fontSize;
   line-height: @baseline;
-  border: 1px solid @borderColor;
+  border: 1px solid darken(@color, 10%);
   border-bottom-color: fadein(@borderColor, 15%);
   .border-radius(@borderRadius);
   @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
@@ -199,7 +198,7 @@
     color: @textColor;
     text-decoration: none;
   }
-}
+}*/
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
