@@ -221,11 +221,11 @@ div.topbar-wrapper {
 div.topbar-wrapper div.topbar {
   position: absolute;
   margin: 0 -20px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 div.topbar-wrapper div.topbar .fill {
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
