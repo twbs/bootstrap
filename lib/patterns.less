@@ -7,7 +7,7 @@
 // ------
 
 // Topbar for Branding and Nav
-div.topbar {
+.topbar {
   #gradient > .vertical(#333, #222);
   height: 40px;
   position: fixed;
@@ -73,11 +73,13 @@ div.topbar {
       &::-webkit-input-placeholder {
         color: @grayLighter;
       }
+      // Hover states
       &:hover {
         background-color: #444;
         background-color: rgba(255,255,255,.5);
         color: #fff;
       }
+      // Focus states (we use .focused since IE8 and down doesn't support :focus)
       &:focus,
       &.focused {
         outline: none;
@@ -151,7 +153,7 @@ div.topbar {
       &.open {
         a.menu,
         a:hover {
-          background-color: lighten(#00a0d1,5);
+          background-color: #333;
           background-color: rgba(255,255,255,.1);
           color: #fff;
         }

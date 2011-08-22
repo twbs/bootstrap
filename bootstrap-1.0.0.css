@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 20:27:08 PDT 2011
+ * Date: Sun Aug 21 20:30:19 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1087,7 +1087,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 /* Patterns.less
  * Repeatable UI elements outside the base styles provided from the scaffolding
  * ---------------------------------------------------------------------------- */
-div.topbar {
+.topbar {
   background-color: #222222;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
@@ -1108,17 +1108,17 @@ div.topbar {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-div.topbar a {
+.topbar a {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-div.topbar a:hover, div.topbar ul li.active a {
+.topbar a:hover, .topbar ul li.active a {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   text-decoration: none;
 }
-div.topbar h3 a {
+.topbar h3 a {
   float: left;
   display: block;
   padding: 8px 20px 12px;
@@ -1128,7 +1128,7 @@ div.topbar h3 a {
   font-weight: 200;
   line-height: 1;
 }
-div.topbar form {
+.topbar form {
   float: left;
   margin: 5px 0 0 0;
   position: relative;
@@ -1137,7 +1137,7 @@ div.topbar form {
   -moz-opacity: 1;
   opacity: 1;
 }
-div.topbar form input {
+.topbar form input {
   background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.3);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1159,18 +1159,18 @@ div.topbar form input {
   -moz-transition: none;
   transition: none;
 }
-div.topbar form input:-moz-placeholder {
+.topbar form input:-moz-placeholder {
   color: #e6e6e6;
 }
-div.topbar form input::-webkit-input-placeholder {
+.topbar form input::-webkit-input-placeholder {
   color: #e6e6e6;
 }
-div.topbar form input:hover {
+.topbar form input:hover {
   background-color: #444;
   background-color: rgba(255, 255, 255, 0.5);
   color: #fff;
 }
-div.topbar form input:focus, div.topbar form input.focused {
+.topbar form input:focus, .topbar form input.focused {
   outline: none;
   background-color: #fff;
   color: #404040;
@@ -1181,47 +1181,47 @@ div.topbar form input:focus, div.topbar form input.focused {
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
-div.topbar ul {
+.topbar ul {
   display: block;
   float: left;
   margin: 0 10px 0 0;
   position: relative;
 }
-div.topbar ul.secondary-nav {
+.topbar ul.secondary-nav {
   float: right;
   margin-left: 10px;
   margin-right: 0;
 }
-div.topbar ul li {
+.topbar ul li {
   display: block;
   float: left;
   font-size: 13px;
 }
-div.topbar ul li a {
+.topbar ul li a {
   display: block;
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
   text-decoration: none;
 }
-div.topbar ul li a:hover {
+.topbar ul li a:hover {
   color: #fff;
   text-decoration: none;
 }
-div.topbar ul li.active a {
+.topbar ul li.active a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
 }
-div.topbar ul.primary-nav li ul {
+.topbar ul.primary-nav li ul {
   left: 0;
 }
-div.topbar ul.secondary-nav li ul {
+.topbar ul.secondary-nav li ul {
   right: 0;
 }
-div.topbar ul li.menu {
+.topbar ul li.menu {
   position: relative;
 }
-div.topbar ul li.menu a.menu:after {
+.topbar ul li.menu a.menu:after {
   width: 0px;
   height: 0px;
   display: inline-block;
@@ -1238,27 +1238,27 @@ div.topbar ul li.menu a.menu:after {
   -moz-opacity: 0.5;
   opacity: 0.5;
 }
-div.topbar ul li.menu.open a.menu, div.topbar ul li.menu.open a:hover {
-  background-color: #00b4eb;
+.topbar ul li.menu.open a.menu, .topbar ul li.menu.open a:hover {
+  background-color: #333;
   background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
-div.topbar ul li.menu.open ul {
+.topbar ul li.menu.open ul {
   display: block;
 }
-div.topbar ul li.menu.open ul li a {
+.topbar ul li.menu.open ul li a {
   background-color: transparent;
   font-weight: normal;
 }
-div.topbar ul li.menu.open ul li a:hover {
+.topbar ul li.menu.open ul li a:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
-div.topbar ul li.menu.open ul li.active a {
+.topbar ul li.menu.open ul li.active a {
   background-color: rgba(255, 255, 255, 0.1);
   font-weight: bold;
 }
-div.topbar ul li ul {
+.topbar ul li ul {
   background-color: #333;
   float: left;
   display: none;
@@ -1280,14 +1280,14 @@ div.topbar ul li ul {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
-div.topbar ul li ul li {
+.topbar ul li ul li {
   float: none;
   clear: both;
   display: block;
   background: none;
   font-size: 12px;
 }
-div.topbar ul li ul li a {
+.topbar ul li ul li a {
   display: block;
   padding: 6px 15px;
   clear: both;
@@ -1295,19 +1295,19 @@ div.topbar ul li ul li a {
   line-height: 19px;
   color: #bbb;
 }
-div.topbar ul li ul li a:hover {
+.topbar ul li ul li a:hover {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
-div.topbar ul li ul li.divider {
+.topbar ul li ul li.divider {
   height: 1px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 5px 0;
 }
-div.topbar ul li ul li span {
+.topbar ul li ul li span {
   clear: both;
   display: block;
   background: rgba(0, 0, 0, 0.2);
