@@ -441,7 +441,7 @@ div.topbar {
     border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
     .border-radius(3px);
-    .box-shadow(0 1px 2px rgba(0,0,0,.075);
+    .box-shadow(0 1px 2px rgba(0,0,0,.05);
     li {
       display: inline;
       a {
@@ -505,10 +505,11 @@ div.topbar {
   width: 560px;
   margin: -280px 0 0 -250px;
   background-color: @white;
+  border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
-  .background-clip(padding);
+  .background-clip(padding-box);
   .modal-header {
     border-bottom: 1px solid #eee;
     padding: 5px 20px;
@@ -647,7 +648,7 @@ div.topbar {
     background-color: @white;
     padding: 14px;
     .border-radius(0 0 3px 3px);
-    .background-clip(padding);
+    .background-clip(padding-box);
     p, ul, ol {
       margin-bottom: 0;
     }
