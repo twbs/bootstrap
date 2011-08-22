@@ -85,6 +85,13 @@ blockquote:before,
 blockquote:after {
   content: "";
 }
+button, input[type=submit], input[type=button] {
+	cursor: pointer;
+}
+button:active, input[type=submit]:active, input[type=button]:active {
+	position: relative;
+	top: 1px;
+}
 header,
 section,
 footer,
