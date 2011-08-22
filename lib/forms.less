@@ -18,12 +18,14 @@ form {
       margin-left: 150px;
       font-size: 20px;
       line-height: 1;
+      *margin: 0 0 5px 145px; /* IE6-7 */
+      *line-height: 1.5; /* IE6-7 */
       color: @grayDark;
     }
   }
 
   // Parent element that clears floats and wraps labels and fields together
-  div.clearfix {
+  .clearfix {
     margin-bottom: @baseline;
   }
 
@@ -112,7 +114,7 @@ form {
   }
 
   // Error styles
-  div.error {
+  .error {
     background: lighten(@red, 57%);
     padding: 10px 0;
     margin: -10px 0 10px;
@@ -133,8 +135,8 @@ form {
         .box-shadow(0 0 6px rgba(171,41,32,.5));
       }
     }
-    div.input-prepend,
-    div.input-append {
+    .input-prepend,
+    .input-append {
       span.add-on {
         background: lighten(@red, 50%);
         border-color: @error-text;
@@ -177,14 +179,14 @@ form {
 }
 
 // Actions (the buttons)
-div.actions {
+.actions {
   background: #f5f5f5;
   margin-top: @baseline;
   margin-bottom: @baseline;
   padding: (@baseline - 1) 20px @baseline 150px;
   border-top: 1px solid #ddd;
   .border-radius(0 0 3px 3px);
-  div.secondary-action {
+  .secondary-action {
     float: right;
     a {
       line-height: 30px;
@@ -204,6 +206,8 @@ div.actions {
 }
 .help-inline {
   padding-left: 5px;
+  *position: relative; /* IE6-7 */
+  *top: -5px; /* IE6-7 */
 }
 
 // Big blocks of help text
@@ -213,7 +217,7 @@ div.actions {
 }
 
 // Inline Fields (input fields that appear as inline objects
-div.inline-inputs {
+.inline-inputs {
   color: @gray;
   span, input[type=text] {
     display: inline-block;
@@ -230,8 +234,8 @@ div.inline-inputs {
 }
 
 // Allow us to put symbols and text within the input field for a cleaner look
-div.input-prepend,
-div.input-append {
+.input-prepend,
+.input-append {
   input[type=text] {
     .border-radius(0 3px 3px 0);
   }
@@ -257,7 +261,14 @@ div.input-append {
     border-color: @green;
   }
 }
-div.input-append {
+
+.input-prepend {
+  .add-on {
+    *margin-top: 1px; /* IE6-7 */
+  }
+}
+
+.input-append {
   input[type=text] {
     float: left;
     .border-radius(3px 0 0 3px);
@@ -270,7 +281,7 @@ div.input-append {
 }
 
 // Stacked options for forms (radio buttons or checkboxes)
-ul.inputs-list {
+.inputs-list {
   margin: 0 0 5px;
   width: 100%;
   li {
@@ -326,13 +337,13 @@ form.form-stacked {
     line-height: 20px;
     padding-top: 0;
   }
-  div.clearfix {
+  .clearfix {
     margin-bottom: @baseline / 2;
     div.input {
       margin-left: 0;
     }
   }
-  ul.inputs-list {
+  .inputs-list {
     margin-bottom: 0;
     li {
       padding-top: 0;
@@ -342,7 +353,7 @@ form.form-stacked {
       }
     }
   }
-  div.actions {
+  .actions {
     margin-left: -20px;
     padding-left: 20px;
   }

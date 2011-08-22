@@ -221,6 +221,9 @@ div.topbar-wrapper {
 div.topbar-wrapper div.topbar {
   position: absolute;
   margin: 0 -20px;
+}
+
+div.topbar-wrapper div.topbar .fill {
   padding-left: 20px;
   padding-right: 20px;
   -webkit-border-radius: 4px;
@@ -253,4 +256,10 @@ div.popover-well div.popover-menu-wrapper {
 img.large-bird {
   margin: 5px 0 0 310px;
   opacity: .1;
+}
+
+/* Pretty Print
+-------------------------------------------------- */
+PRE.prettyprint {
+  overflow: hidden;
 }
