@@ -98,9 +98,9 @@ form :-moz-placeholder{color:#bfbfbf;}
 form ::-webkit-input-placeholder{color:#bfbfbf;}
 form input[type=text],form input[type=password],form select,form textarea{-webkit-transition:border linear 0.2s,box-shadow linear 0.2s;-moz-transition:border linear 0.2s,box-shadow linear 0.2s;transition:border linear 0.2s,box-shadow linear 0.2s;-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);}
 form input[type=text]:focus,form input[type=password]:focus,form textarea:focus{outline:none;border-color:rgba(82, 168, 236, 0.8);-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);}
-form .error{background:#fae5e3;padding:10px 0;margin:-10px 0 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}form .error>label,form .error span.help-inline,form .error span.help-block{color:#9d261d;}
-form .error input[type=text],form .error input[type=password],form .error textarea{border-color:#c87872;-webkit-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);-moz-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);box-shadow:0 0 3px rgba(171, 41, 32, 0.25);}form .error input[type=text]:focus,form .error input[type=password]:focus,form .error textarea:focus{border-color:#b9554d;-webkit-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);-moz-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);box-shadow:0 0 6px rgba(171, 41, 32, 0.5);}
-form .error .input-prepend span.add-on,form .error .input-append span.add-on{background:#f4c8c5;border-color:#c87872;color:#b9554d;}
+form div.error{background:#fae5e3;padding:10px 0;margin:-10px 0 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}form div.error>label,form div.error span.help-inline,form div.error span.help-block{color:#9d261d;}
+form div.error input[type=text],form div.error input[type=password],form div.error textarea{border-color:#c87872;-webkit-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);-moz-box-shadow:0 0 3px rgba(171, 41, 32, 0.25);box-shadow:0 0 3px rgba(171, 41, 32, 0.25);}form div.error input[type=text]:focus,form div.error input[type=password]:focus,form div.error textarea:focus{border-color:#b9554d;-webkit-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);-moz-box-shadow:0 0 6px rgba(171, 41, 32, 0.5);box-shadow:0 0 6px rgba(171, 41, 32, 0.5);}
+form div.error .input-prepend span.add-on,form div.error .input-append span.add-on{background:#f4c8c5;border-color:#c87872;color:#b9554d;}
 form .input-mini,form input.mini,form textarea.mini,form select.mini{width:60px;}
 form .input-small,form input.small,form textarea.small,form select.small{width:90px;}
 form .input-medium,form input.medium,form textarea.medium,form select.medium{width:150px;}
@@ -132,7 +132,7 @@ form.form-stacked legend{margin-left:0;}
 form.form-stacked label{display:block;float:none;width:auto;font-weight:bold;text-align:left;line-height:20px;padding-top:0;}
 form.form-stacked .clearfix{margin-bottom:9px;}form.form-stacked .clearfix div.input{margin-left:0;}
 form.form-stacked .inputs-list{margin-bottom:0;}form.form-stacked .inputs-list li{padding-top:0;}form.form-stacked .inputs-list li label{font-weight:normal;padding-top:0;}
-form.form-stacked .error{padding-top:10px;padding-bottom:10px;padding-left:10px;margin-top:0;margin-left:-10px;}
+form.form-stacked div.error{padding-top:10px;padding-bottom:10px;padding-left:10px;margin-top:0;margin-left:-10px;}
 form.form-stacked .actions{margin-left:-20px;padding-left:20px;}
 table{width:100%;margin-bottom:18px;padding:0;border-collapse:separate;font-size:13px;}table th,table td{padding:10px 10px 9px;line-height:13.5px;text-align:left;vertical-align:middle;border-bottom:1px solid #ddd;}
 table th{padding-top:9px;font-weight:bold;border-bottom-width:2px;}
