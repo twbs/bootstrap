@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 21 21:42:52 PDT 2011
+ * Date: Sun Aug 21 22:13:24 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1154,15 +1154,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
  * Repeatable UI elements outside the base styles provided from the scaffolding
  * ---------------------------------------------------------------------------- */
 .topbar {
-  background-color: #222222;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
-  background-image: -moz-linear-gradient(#333333, #222222);
-  background-image: -ms-linear-gradient(#333333, #222222);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(#333333, #222222);
-  background-image: -o-linear-gradient(#333333, #222222);
-  background-image: linear-gradient(#333333, #222222);
   height: 40px;
   position: fixed;
   top: 0;
@@ -1707,6 +1698,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  *border: 1px solid #999;
+  /* IE6-7 */
+
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
