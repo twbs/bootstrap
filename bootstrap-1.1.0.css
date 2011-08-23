@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 22 21:47:27 PDT 2011
+ * Date: Mon Aug 22 21:51:03 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -910,7 +910,10 @@ form input[readonly]:focus, form textarea[readonly]:focus, form input.disabled {
 .inline-inputs span {
   padding: 0 2px 0 1px;
 }
-.input-prepend input[type=text], .input-append input[type=text] {
+.input-prepend input[type=text],
+.input-append input[type=text],
+.input-prepend input[type=password],
+.input-append input[type=password] {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
@@ -943,7 +946,7 @@ form input[readonly]:focus, form textarea[readonly]:focus, form input.disabled {
   /* IE6-7 */
 
 }
-.input-append input[type=text] {
+.input-append input[type=text], .input-append input[type=password] {
   float: left;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;

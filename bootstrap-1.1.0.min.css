@@ -117,11 +117,11 @@ form input[readonly]:focus,form textarea[readonly]:focus,form input.disabled{bac
 .inline-inputs input.mini{width:60px;}
 .inline-inputs input.small{width:90px;}
 .inline-inputs span{padding:0 2px 0 1px;}
-.input-prepend input[type=text],.input-append input[type=text]{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
+.input-prepend input[type=text],.input-append input[type=text],.input-prepend input[type=password],.input-append input[type=password]{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
 .input-prepend .add-on,.input-append .add-on{background:#f5f5f5;float:left;display:block;width:auto;min-width:16px;padding:4px 4px 4px 5px;color:#bfbfbf;font-weight:normal;line-height:18px;height:18px;text-align:center;text-shadow:0 1px 0 #fff;border:1px solid #ccc;border-right-width:0;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-prepend .active,.input-append .active{background:#a9dba9;border-color:#46a546;}
 .input-prepend .add-on{*margin-top:1px;}
-.input-append input[type=text]{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
+.input-append input[type=text],.input-append input[type=password]{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-append .add-on{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;border-right-width:1px;border-left-width:0;}
 .inputs-list{margin:0 0 5px;width:100%;}.inputs-list li{display:block;padding:0;width:100%;}.inputs-list li label{display:block;float:none;width:auto;padding:0;line-height:18px;text-align:left;white-space:normal;}.inputs-list li label strong{color:#808080;}
 .inputs-list li label small{font-size:12px;font-weight:normal;}
