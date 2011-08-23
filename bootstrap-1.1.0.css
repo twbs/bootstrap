@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 22 23:50:35 PDT 2011
+ * Date: @DATE
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -414,10 +414,10 @@ a:hover {
   color: #333;
   text-decoration: none;
 }
-.btn.primary, .btn.danger {
+.btn.primary, .btn.danger, .btn.green {
   color: #fff;
 }
-.btn.primary:hover, .btn.danger:hover {
+.btn.primary:hover, .btn.danger:hover, .btn.green:hover {
   color: #fff;
 }
 .btn.primary {
@@ -446,6 +446,20 @@ a:hover {
   background-image: linear-gradient(#d83a2e, #9d261d);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #9d261d #9d261d #5c1611;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn.green {
+  background-color: #46a546;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#74c474), to(#46a546));
+  background-image: -moz-linear-gradient(#74c474, #46a546);
+  background-image: -ms-linear-gradient(#74c474, #46a546);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #74c474), color-stop(100%, #46a546));
+  background-image: -webkit-linear-gradient(#74c474, #46a546);
+  background-image: -o-linear-gradient(#74c474, #46a546);
+  background-image: linear-gradient(#74c474, #46a546);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #46a546 #46a546 #2f6f2f;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn.large {
