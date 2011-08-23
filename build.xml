@@ -239,11 +239,11 @@
 
     <!-- Target: basics -->
     <target name="-basics.dev"
-            depends="-rev,
+            depends="-intro,
                      -copy"/>
 
     <target name="-basics.test"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -254,7 +254,7 @@
                      -copy"/>
 
     <target name="-basics.production"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -266,11 +266,11 @@
 
     <!-- Target: text -->
     <target name="-text.dev"
-            depends="-rev,
+            depends="-intro,
                      -copy"/>
 
     <target name="-text.test"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -282,7 +282,7 @@
                      -copy"/>
 
     <target name="-text.production"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -295,13 +295,13 @@
 
     <!-- Target: buildkit -->
     <target name="-buildkit.dev"
-            depends="-rev,
+            depends="-intro,
                      -imagespng,
                      -imagesjpg,
                      -copy"/>
 
     <target name="-buildkit.test"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -315,7 +315,7 @@
                      -copy"/>
 
     <target name="-buildkit.production"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -330,13 +330,13 @@
 
     <!-- Target: build -->
     <target name="-build.dev"
-            depends="-rev,
+            depends="-intro,
                      -imagespng,
                      -imagesjpg,
                      -copy"/>
 
     <target name="-build.test"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -350,7 +350,7 @@
                      -copy"/>
 
     <target name="-build.production"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -365,13 +365,13 @@
 
     <!-- Target: minify -->
     <target name="-minify.dev"
-            depends="-rev,
+            depends="-intro,
                      -imagespng,
                      -imagesjpg,
                      -copy"/>
 
     <target name="-minify.test"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -385,7 +385,7 @@
                      -copy"/>
 
     <target name="-minify.production"
-            depends="-rev,
+            depends="-intro,
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
@@ -412,7 +412,7 @@
     </target>
 
 
-    <target name="-rev" description="(PRIVATE) Increase the current build number by one and set build date">
+    <target name="-intro" description="(PRIVATE) Kindly inform the developer about the impending magic">
     <!-- This is a private target -->
 
         <echo message="====================================================================="/>
