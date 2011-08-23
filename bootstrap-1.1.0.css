@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 22 22:02:17 PDT 2011
+ * Date: Mon Aug 22 23:50:35 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -382,6 +382,7 @@ a:hover {
   text-decoration: underline;
 }
 .btn {
+  cursor: pointer;
   display: inline-block;
   background-color: #e6e6e6;
   background-repeat: no-repeat;
@@ -404,13 +405,22 @@ a:hover {
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  transition: 0.1s linear all;
 }
 .btn:hover {
   background-position: 0 -15px;
   color: #333;
   text-decoration: none;
 }
-.primary {
+.btn.primary, .btn.danger {
+  color: #fff;
+}
+.btn.primary:hover, .btn.danger:hover {
+  color: #fff;
+}
+.btn.primary {
   background-color: #0064cd;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
@@ -420,27 +430,23 @@ a:hover {
   background-image: -webkit-linear-gradient(#049cdb, #0064cd);
   background-image: -o-linear-gradient(#049cdb, #0064cd);
   background-image: linear-gradient(#049cdb, #0064cd);
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border: 1px solid #004b9a;
-  border-bottom-color: #003f81;
-}
-.primary:hover {
-  color: #fff;
-}
-.btn {
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-}
-.btn.primary {
-  color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #0064cd #0064cd #003f81;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.primary:hover {
-  color: #fff;
+.btn.danger {
+  background-color: #9d261d;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#d83a2e), to(#9d261d));
+  background-image: -moz-linear-gradient(#d83a2e, #9d261d);
+  background-image: -ms-linear-gradient(#d83a2e, #9d261d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d83a2e), color-stop(100%, #9d261d));
+  background-image: -webkit-linear-gradient(#d83a2e, #9d261d);
+  background-image: -o-linear-gradient(#d83a2e, #9d261d);
+  background-image: linear-gradient(#d83a2e, #9d261d);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #9d261d #9d261d #5c1611;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn.large {
   font-size: 16px;
@@ -469,7 +475,6 @@ a:hover {
   -moz-opacity: 0.65;
   opacity: 0.65;
   cursor: default;
-  color: #fff;
 }
 .btn:active {
   -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
