@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 22 21:31:21 PDT 2011
+ * Date: Mon Aug 22 21:47:27 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1727,7 +1727,7 @@ footer {
   border-bottom: 1px solid #eee;
   padding: 5px 20px;
 }
-.modal .modal-header a.close {
+.modal .modal-header .close {
   position: absolute;
   right: 10px;
   top: 10px;
