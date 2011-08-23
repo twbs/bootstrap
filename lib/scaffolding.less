@@ -124,7 +124,8 @@ a {
   }
   .transition(.1s linear all);
   &.primary,
-  &.danger {
+  &.danger,
+ 	&.green	{
     color: #fff;
     &:hover {
       color: #fff;
@@ -136,6 +137,9 @@ a {
   &.danger {
     .btnColor(lighten(@red, 15%), @red)
   }
+	&.green	{
+		.btnColor(lighten(@green, 15%), @green)
+	}
   &.large {
     font-size: 16px;
     line-height: 28px;
