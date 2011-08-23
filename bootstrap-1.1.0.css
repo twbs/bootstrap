@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 22 12:48:23 PDT 2011
+ * Date: Mon Aug 22 21:31:21 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1441,7 +1441,6 @@ footer {
   background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.15));
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.15));
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
   filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
   background-color: #e6e6e6;
   margin-bottom: 18px;
