@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Aug 23 20:13:44 PDT 2011
+ * Date: Wed Aug 24 15:54:36 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -297,11 +297,11 @@ a:hover {
   background-image: -ms-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
   background-image: -o-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
   background-image: linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
-  padding: 4px 14px;
+  padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   color: #333;
   font-size: 13px;
-  line-height: 18px;
+  line-height: normal;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   -webkit-border-radius: 4px;
@@ -319,10 +319,10 @@ a:hover {
   color: #333;
   text-decoration: none;
 }
-.btn.primary, .btn.danger {
-  color: #fff;
-}
-.btn.primary:hover, .btn.danger:hover {
+.btn.primary,
+.btn.danger,
+.btn.danger:hover,
+.btn.primary:hover {
   color: #fff;
 }
 .btn.primary {
@@ -353,38 +353,38 @@ a:hover {
   border-color: #9d261d #9d261d #5c1611;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.large {
-  font-size: 16px;
-  line-height: 28px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-.btn.small {
-  padding-right: 9px;
-  padding-left: 9px;
-  font-size: 11px;
-}
 .btn.disabled {
+  cursor: default;
   background-image: none;
   filter: alpha(opacity=65);
   -khtml-opacity: 0.65;
   -moz-opacity: 0.65;
   opacity: 0.65;
-  cursor: default;
 }
 .btn:disabled {
+  cursor: default;
   background-image: none;
   filter: alpha(opacity=65);
   -khtml-opacity: 0.65;
   -moz-opacity: 0.65;
   opacity: 0.65;
-  cursor: default;
 }
 .btn:active {
   -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn.large {
+  font-size: 16px;
+  line-height: normal;
+  padding: 9px 14px 9px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.btn.small {
+  padding: 7px 9px 7px;
+  font-size: 11px;
 }
 button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;

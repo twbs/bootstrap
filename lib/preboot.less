@@ -171,26 +171,12 @@
 }
 
 // Buttons
-// .button(@color: #fff, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
-//  display: inline-block;
-//  #gradient > .vertical-three-colors(@color, @color, 0.25, darken(@color, 10%));
-//  padding: @padding;
-//  text-shadow: @textShadow;
-//  color: @textColor;
-//  font-size: @fontSize;
-//  line-height: @baseline;
-//  border: 1px solid;
-//  border-color: #ccc #ccc #bbb;
-//  border-color: borderColor borderColor fadein(@borderColor, 15%);
-//  .border-radius(@borderRadius);
-//  @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-//  .box-shadow(@shadow);
-//  &:hover {
-//    background-position: 0 -15px;
-//    color: @textColor;
-//    text-decoration: none;
-//  }
-// }
+.btnColoring(@primaryColor, @secondaryColor) {
+  #gradient > .vertical(@primaryColor, @secondaryColor);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
