@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 22 23:50:35 PDT 2011
+ * Date: Tue Aug 23 20:13:44 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -127,6 +127,7 @@ aside {
  * ------------------------------------------------------------------------------------------- */
 .row {
   zoom: 1;
+  margin: 0 -20px;
 }
 .row:before, .row:after {
   display: table;
@@ -135,205 +136,109 @@ aside {
 .row:after {
   clear: both;
 }
-.row .span1 {
-  float: left;
-  width: 40px;
-  margin-left: 20px;
-}
-.row .span1:first-child {
-  margin-left: 0;
-}
-.row .span2 {
-  float: left;
-  width: 100px;
-  margin-left: 20px;
-}
-.row .span2:first-child {
-  margin-left: 0;
-}
-.row .span3 {
-  float: left;
-  width: 160px;
-  margin-left: 20px;
-}
-.row .span3:first-child {
-  margin-left: 0;
-}
-.row .span4 {
-  float: left;
-  width: 220px;
-  margin-left: 20px;
-}
-.row .span4:first-child {
-  margin-left: 0;
-}
-.row .span5 {
-  float: left;
-  width: 280px;
-  margin-left: 20px;
-}
-.row .span5:first-child {
-  margin-left: 0;
-}
-.row .span6 {
-  float: left;
-  width: 340px;
-  margin-left: 20px;
-}
-.row .span6:first-child {
-  margin-left: 0;
-}
-.row .span7 {
-  float: left;
-  width: 400px;
-  margin-left: 20px;
-}
-.row .span7:first-child {
-  margin-left: 0;
-}
-.row .span8 {
-  float: left;
-  width: 460px;
-  margin-left: 20px;
-}
-.row .span8:first-child {
-  margin-left: 0;
-}
-.row .span9 {
-  float: left;
-  width: 520px;
-  margin-left: 20px;
-}
-.row .span9:first-child {
-  margin-left: 0;
-}
-.row .span10 {
-  float: left;
-  width: 580px;
-  margin-left: 20px;
-}
-.row .span10:first-child {
-  margin-left: 0;
-}
-.row .span11 {
-  float: left;
-  width: 640px;
-  margin-left: 20px;
-}
-.row .span11:first-child {
-  margin-left: 0;
-}
-.row .span12 {
-  float: left;
-  width: 700px;
-  margin-left: 20px;
-}
-.row .span12:first-child {
-  margin-left: 0;
-}
-.row .span13 {
-  float: left;
-  width: 760px;
-  margin-left: 20px;
-}
-.row .span13:first-child {
-  margin-left: 0;
-}
-.row .span14 {
-  float: left;
-  width: 820px;
-  margin-left: 20px;
-}
-.row .span14:first-child {
-  margin-left: 0;
-}
-.row .span15 {
-  float: left;
-  width: 880px;
-  margin-left: 20px;
-}
-.row .span15:first-child {
-  margin-left: 0;
-}
+.row .span1,
+.row .span2,
+.row .span3,
+.row .span4,
+.row .span5,
+.row .span6,
+.row .span7,
+.row .span8,
+.row .span9,
+.row .span10,
+.row .span11,
+.row .span12,
+.row .span13,
+.row .span14,
+.row .span15,
 .row .span16 {
   float: left;
-  width: 940px;
   margin-left: 20px;
+  *display: inline;
 }
-.row .span16:first-child {
-  margin-left: 0;
+.row .span1 {
+  width: 40px;
+}
+.row .span2 {
+  width: 100px;
+}
+.row .span3 {
+  width: 160px;
+}
+.row .span4 {
+  width: 220px;
+}
+.row .span5 {
+  width: 280px;
+}
+.row .span6 {
+  width: 340px;
+}
+.row .span7 {
+  width: 400px;
+}
+.row .span8 {
+  width: 460px;
+}
+.row .span9 {
+  width: 520px;
+}
+.row .span10 {
+  width: 580px;
+}
+.row .span11 {
+  width: 640px;
+}
+.row .span12 {
+  width: 700px;
+}
+.row .span13 {
+  width: 760px;
+}
+.row .span14 {
+  width: 820px;
+}
+.row .span15 {
+  width: 880px;
+}
+.row .span16 {
+  width: 940px;
 }
 .row .offset1 {
-  margin-left: 80px !important;
-}
-.row .offset1:first-child {
-  margin-left: 60px !important;
+  margin-left: 80px;
 }
 .row .offset2 {
-  margin-left: 140px !important;
-}
-.row .offset2:first-child {
-  margin-left: 120px !important;
+  margin-left: 140px;
 }
 .row .offset3 {
-  margin-left: 200px !important;
-}
-.row .offset3:first-child {
-  margin-left: 180px !important;
+  margin-left: 200px;
 }
 .row .offset4 {
-  margin-left: 260px !important;
-}
-.row .offset4:first-child {
-  margin-left: 240px !important;
+  margin-left: 260px;
 }
 .row .offset5 {
-  margin-left: 320px !important;
-}
-.row .offset5:first-child {
-  margin-left: 300px !important;
+  margin-left: 320px;
 }
 .row .offset6 {
-  margin-left: 380px !important;
-}
-.row .offset6:first-child {
-  margin-left: 360px !important;
+  margin-left: 380px;
 }
 .row .offset7 {
-  margin-left: 440px !important;
-}
-.row .offset7:first-child {
-  margin-left: 420px !important;
+  margin-left: 440px;
 }
 .row .offset8 {
-  margin-left: 500px !important;
-}
-.row .offset8:first-child {
-  margin-left: 480px !important;
+  margin-left: 500px;
 }
 .row .offset9 {
-  margin-left: 500px !important;
-}
-.row .offset9:first-child {
-  margin-left: 480px !important;
+  margin-left: 500px;
 }
 .row .offset10 {
-  margin-left: 620px !important;
-}
-.row .offset10:first-child {
-  margin-left: 600px !important;
+  margin-left: 620px;
 }
 .row .offset11 {
-  margin-left: 680px !important;
-}
-.row .offset11:first-child {
-  margin-left: 660px !important;
+  margin-left: 680px;
 }
 .row .offset12 {
-  margin-left: 740px !important;
-}
-.row .offset12:first-child {
-  margin-left: 720px !important;
+  margin-left: 740px;
 }
 html, body {
   background-color: #fff;

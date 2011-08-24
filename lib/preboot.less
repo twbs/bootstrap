@@ -36,6 +36,7 @@
 @gridColumns:       16;
 @gridColumnWidth:   40px;
 @gridGutterWidth:   20px;
+@extraSpace:        40px;
 @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // Color Scheme
@@ -125,21 +126,10 @@
   .clearfix();
 }
 .columns(@columnSpan: 1) {
-  float: left;
   width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
-  margin-left: @gridGutterWidth;
-  &:first-child {
-    margin-left: 0;
-  }
-}
-.offsetMath(@extraSpace: 40px) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace !important;
 }
 .offset(@columnOffset: 1) {
-  .offsetMath(40px);
-  &:first-child {
-    .offsetMath(20px);
-  }
+  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
 }
 
 // Border Radius
