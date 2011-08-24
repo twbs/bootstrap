@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Di 23 Aug 2011 19:49:02 CEST
+ * Date: Mi 24 Aug 2011 13:33:48 CEST
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1459,6 +1459,10 @@ footer {
   background-image: linear-gradient(#e4776f, #d83a2e);
   border-bottom-color: #b32b21;
 }
+.alert-message.error p {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
 .alert-message.warning {
   background-color: #ffd040;
   background-repeat: repeat-x;
@@ -1545,6 +1549,14 @@ footer {
 .block-message.error {
   background: #f8dcda;
   border: 1px solid #f4c8c5;
+}
+.block-message.error p {
+  color: #404040;
+  color: rgba(0, 0, 0, 0.8);
+  *color: #404040;
+  /* IE 6-7 */
+
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .block-message.warning {
   background: #fff0c0;
