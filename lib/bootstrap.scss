@@ -6,18 +6,21 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ *
+ * Converted to Sass by @johnwlong.
+ *
  * Date: @DATE
  */
 
 // CSS Reset
-@import "reset.less";
+@import "reset.scss";
 
 // Core
-@import "preboot.less";
-@import "scaffolding.less";
+@import "preboot.scss";
+@import "scaffolding.scss";
 
 // Styled patterns and elements
-@import "type.less";
-@import "forms.less";
-@import "tables.less";
-@import "patterns.less";
+@import "type.scss";
+@import "forms.scss";
+@import "tables.scss";
+@import "patterns.scss";

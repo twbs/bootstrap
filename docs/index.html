@@ -1237,28 +1237,28 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <p>Variables in Less are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you’re set.</p>
 <pre class="prettyprint linenums">
 // Links
-@linkColor:         #8b59c2;
-@linkColorHover:    darken(@linkColor, 10);
+$linkColor:         #8b59c2;
+$linkColorHover:    darken($linkColor, 10);
 
 // Grays
-@black:             #000;
-@grayDark:          lighten(@black, 25%);
-@gray:              lighten(@black, 50%);
-@grayLight:         lighten(@black, 70%);
-@grayLighter:       lighten(@black, 90%);
-@white:             #fff;
+$black:             #000;
+$grayDark:          lighten($black, 25%);
+$gray:              lighten($black, 50%);
+$grayLight:         lighten($black, 70%);
+$grayLighter:       lighten($black, 90%);
+$white:             #fff;
 
 // Accent Colors
-@blue:              #08b5fb;
-@green:             #46a546;
-@red:               #9d261d;
-@yellow:            #ffc40d;
-@orange:            #f89406;
-@pink:              #c3325f;
-@purple:            #7a43b6;
+$blue:              #08b5fb;
+$green:             #46a546;
+$red:               #9d261d;
+$yellow:            #ffc40d;
+$orange:            #f89406;
+$pink:              #c3325f;
+$purple:            #7a43b6;
 
 // Baseline
-@baseline:          20px;
+$baseline:          20px;
 </pre>
 
 <h3>Commenting</h3>
@@ -1273,64 +1273,64 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 <h4>Font stacks</h4>
 <pre class="prettyprint linenums">
 #font {
-  .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
+  .shorthand($weight: normal, $size: 14px, $lineHeight: 20px) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
   }
-  .sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
+  .sans-serif($weight: normal, $size: 14px, $lineHeight: 20px) {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
   }
-  .serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
+  .serif($weight: normal, $size: 14px, $lineHeight: 20px) {
     font-family: "Georgia", Times New Roman, Times, sans-serif;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
   }
-  .monospace(@weight: normal, @size: 12px, @lineHeight: 20px) {
+  .monospace($weight: normal, $size: 12px, $lineHeight: 20px) {
     font-family: "Monaco", Courier New, monospace;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
   }
 }
 </pre>
 <h4>Gradients</h4>
 <pre class="prettyprint linenums">
 #gradient {
-  .horizontal (@startColor: #555, @endColor: #333) {
-    background-color: @endColor;
+  .horizontal ($startColor: #555, $endColor: #333) {
+    background-color: $endColor;
     background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); // Konqueror
-    background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); // IE8+
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE6 & IE7
-    background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+    background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
+    background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",$startColor,$endColor); // IE8+
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",$startColor,$endColor)); // IE6 & IE7
+    background-image: linear-gradient(left, $startColor, $endColor); // Le standard
   }
-  .vertical (@startColor: #555, @endColor: #333) {
-    background-color: @endColor;
+  .vertical ($startColor: #555, $endColor: #333) {
+    background-color: $endColor;
     background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
-    background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); // IE8+
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE6 & IE7
-    background-image: linear-gradient(@startColor, @endColor); // The standard
+    background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor)); // Konqueror
+    background-image: -moz-linear-gradient($startColor, $endColor); // FF 3.6+
+    background-image: -ms-linear-gradient($startColor, $endColor); // IE10
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient($startColor, $endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient($startColor, $endColor); // Opera 11.10
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",$startColor,$endColor); // IE8+
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",$startColor,$endColor)); // IE6 & IE7
+    background-image: linear-gradient($startColor, $endColor); // The standard
   }
-  .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
+  .directional ($startColor: #555, $endColor: #333, $deg: 45deg) {
     ...
   }
-  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+  .vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 0.5, $endColor: #c3325f) {
     ...
   }
 }
@@ -1340,27 +1340,27 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 <p>Get fancy and perform some math to generate flexible and powerful mixins like the one below.</p>
 <pre class="prettyprint linenums">
 // Griditude
-@gridColumns:       16;
-@gridColumnWidth:   40px;
-@gridGutterWidth:   20px;
+$gridColumns:       16;
+$gridColumnWidth:   40px;
+$gridGutterWidth:   20px;
 
 // Grid System
 .container {
-  width: @siteWidth;
+  width: $siteWidth;
   margin: 0 auto;
   .clearfix();
 }
-.columns(@columnSpan: 1) {
+.columns($columnSpan: 1) {
   display: inline;
   float: left;
-  width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
-  margin-left: @gridGutterWidth;
+  width: ($gridColumnWidth; * $columnSpan) + ($gridGutterWidth; * ($columnSpan; - 1));
+  margin-left: $gridGutterWidth;
   &:first-child {
     margin-left: 0;
   }
 }
-.offset(@columnOffset: 1) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) !important;
+.offset($columnOffset: 1) {
+  margin-left: ($gridColumnWidth; * $columnOffset) + ($gridGutterWidth; * ($columnOffset; - 1)) !important;
 }
 </pre>
   </div>

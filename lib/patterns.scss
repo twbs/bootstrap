@@ -1,4 +1,4 @@
-/* Patterns.less
+/* Patterns.scss
  * Repeatable UI elements outside the base styles provided from the scaffolding
  * ---------------------------------------------------------------------------- */
 
@@ -19,14 +19,14 @@
   // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
   .fill {
     background:#222;
-    #gradient > .vertical(#333, #222);
-    @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-    .box-shadow(@shadow);
+    @include vertical-gradient(#333, #222);
+    $shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+    @include box-shadow($shadow);
   }
 
   // Links get text shadow
   a {
-    color: @grayLight;
+    color: $grayLight;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   }
 
@@ -35,7 +35,7 @@
   ul li.active a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
-    color: @white;
+    color: $white;
     text-decoration: none;
   }
 
@@ -47,7 +47,7 @@
       display: block;
       padding: 8px 20px 12px;
       margin-left: -20px; // negative indent to left-align the text down the page
-      color: @white;
+      color: $white;
       font-size: 20px;
       font-weight: 200;
       line-height: 1;
@@ -59,31 +59,31 @@
     float: left;
     margin: 5px 0 0 0;
     position: relative;
-    .opacity(100);
+    @include opacity(100);
     input {
       background-color: #444;
       background-color: rgba(255,255,255,.3);
-      #font > .sans-serif(13px, normal, 1);
+      @include sans-serif-font(13px, normal, 1);
       width: 220px;
       padding: 4px 9px;
       color: #fff;
       color: rgba(255,255,255,.75);
       border: 1px solid #111;
-      .border-radius(4px);
-      @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
-      .box-shadow(@shadow);
-      .transition(none);
+      @include border-radius(4px);
+      $shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
+      @include box-shadow($shadow);
+      @include transition(none);
 
       // Placeholder text gets special styles; can't be bundled together though for some reason
       &:-moz-placeholder {
-        color: @grayLighter;
+        color: $grayLighter;
       }
       &::-webkit-input-placeholder {
-        color: @grayLighter;
+        color: $grayLighter;
       }
       // Hover states
       &:hover {
-        background-color: @grayLight;
+        background-color: $grayLight;
         background-color: rgba(255,255,255,.5);
         color: #fff;
       }
@@ -92,11 +92,11 @@
       &.focused {
         outline: none;
         background-color: #fff;
-        color: @grayDark;
+        color: $grayDark;
         text-shadow: 0 1px 0 #fff;
         border: 0;
         padding: 5px 10px;
-        .box-shadow(0 0 3px rgba(0,0,0,.15));
+        @include box-shadow(0 0 3px rgba(0,0,0,.15));
       }
     }
   }
@@ -155,7 +155,7 @@
           border-left: 4px solid transparent;
           border-right: 4px solid transparent;
           border-top: 4px solid #fff;
-          .opacity(50);
+          @include opacity(50);
         }
       }
       &.open {
@@ -201,8 +201,8 @@
       text-align: left;
       border: 0;
       zoom: 1;
-      .border-radius(0 0 5px 5px);
-      .box-shadow(0 1px 2px rgba(0,0,0,0.6));
+      @include border-radius(0 0 5px 5px);
+      @include box-shadow(0 1px 2px rgba(0,0,0,0.6));
       li {
         float: none;
         clear: both;
@@ -240,7 +240,7 @@
           background: rgba(0,0,0,.2);
           padding: 6px 15px;
           cursor: default;
-          color: @gray;
+          color: $gray;
           border-top: 1px solid rgba(0,0,0,.2);
         }
       }
@@ -257,7 +257,7 @@
   margin-top: 60px;
   margin-bottom: 30px;
   padding: 60px;
-  .border-radius(6px);
+  @include border-radius(6px);
   h1 {
     margin-bottom: 0;
     font-size: 60px;
@@ -267,12 +267,12 @@
   p {
     font-size: 18px;
     font-weight: 200;
-    line-height: @baseline * 1.5;
+    line-height: $baseline * 1.5;
   }
 }
 footer {
-  margin-top: @baseline - 1;
-  padding-top: @baseline - 1;
+  margin-top: $baseline - 1;
+  padding-top: $baseline - 1;
   border-top: 1px solid #eee;
 }
 
@@ -280,11 +280,11 @@ footer {
 // ------------
 
 .page-header {
-  margin-bottom: @baseline - 1;
+  margin-bottom: $baseline - 1;
   border-bottom: 1px solid #ddd;
-  .box-shadow(0 1px 0 rgba(255,255,255,.5));
+  @include box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
-    margin-bottom: (@baseline / 2) - 1px;
+    margin-bottom: ($baseline / 2) - 1px;
   }
 }
 
@@ -295,15 +295,15 @@ footer {
 // One-liner alert bars
 .alert-message {
   // TODO: Ask cloudhead how to do this fancy filter elegantly. Less eval is returning strings with quotes ;_;
-  #gradient > .vertical(transparent, rgba(0,0,0,0.15));
-  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
-  background-color: @grayLighter;
-  margin-bottom: @baseline;
+  @include vertical-gradient(transparent, rgba(0,0,0,0.15));
+  filter: quote("progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')");
+  background-color: $grayLighter;
+  margin-bottom: $baseline;
   padding: 8px 15px;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0,0,0,.3);
   border-bottom: 1px solid rgba(0,0,0,.3);
-  .border-radius(4px);
+  @include border-radius(4px);
   p {
     color: #fff;
     margin-bottom: 0;
@@ -312,20 +312,20 @@ footer {
     }
   }
   &.error {
-    #gradient > .vertical(lighten(@red, 30%), lighten(@red, 15%));
-    border-bottom-color: lighten(@red, 5%);
+    @include vertical-gradient(lighten($red, 30%), lighten($red, 15%));
+    border-bottom-color: lighten($red, 5%);
   }
   &.warning {
-    #gradient > .vertical(lighten(@yellow, 25%), lighten(@yellow, 10%));
-    border-bottom-color: @yellow;
+    @include vertical-gradient(lighten($yellow, 25%), lighten($yellow, 10%));
+    border-bottom-color: $yellow;
   }
   &.success {
-    #gradient > .vertical(lighten(@green, 25%), lighten(@green, 10%));
-    border-bottom-color: @green;
+    @include vertical-gradient(lighten($green, 25%), lighten($green, 10%));
+    border-bottom-color: $green;
   }
   &.info {
-    #gradient > .vertical(lighten(@blue, 25%), lighten(@blue, 5%));
-    border-bottom-color: @blue;
+    @include vertical-gradient(lighten($blue, 25%), lighten($blue, 5%));
+    border-bottom-color: $blue;
   }
   .close {
     float: right;
@@ -334,27 +334,27 @@ footer {
     font-size: 20px;
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(255,255,255,1);
-    .opacity(20);
+    @include opacity(20);
     &:hover {
       text-decoration: none;
-      .opacity(40);
+      @include opacity(40);
     }
   }
 }
 
 // Block-level Alerts
 .block-message {
-  margin-bottom: @baseline;
+  margin-bottom: $baseline;
   padding: 14px;
-  color: @grayDark;
+  color: $grayDark;
   color: rgba(0,0,0,.8);
-  *color: @grayDark; /* IE 6-7 */
+  *color: $grayDark; /* IE 6-7 */
   text-shadow: 0 1px 0 rgba(255,255,255,.25);
-  .border-radius(6px);
+  @include border-radius(6px);
   p {
-    color: @grayDark;
+    color: $grayDark;
     color: rgba(0,0,0,.8);
-    *color: @grayDark; /* IE 6-7 */
+    *color: $grayDark; /* IE 6-7 */
     margin-right: 30px;
     margin-bottom: 0;
   }
@@ -365,20 +365,20 @@ footer {
     display: block;
   }
   &.error {
-    background: lighten(@red, 55%);
-    border: 1px solid lighten(@red, 50%);
+    background: lighten($red, 55%);
+    border: 1px solid lighten($red, 50%);
   }
   &.warning {
-    background: lighten(@yellow, 35%);
-    border: 1px solid lighten(@yellow, 25%)
+    background: lighten($yellow, 35%);
+    border: 1px solid lighten($yellow, 25%)
   }
   &.success {
-    background: lighten(@green, 45%);
-    border: 1px solid lighten(@green, 35%)
+    background: lighten($green, 45%);
+    border: 1px solid lighten($green, 35%)
   }
   &.info {
-    background: lighten(@blue, 45%);
-    border: 1px solid lighten(@blue, 40%);
+    background: lighten($blue, 45%);
+    border: 1px solid lighten($blue, 40%);
   }
 }
 
@@ -391,7 +391,7 @@ footer {
 .pills {
   margin: 0 0 20px;
   padding: 0;
-  .clearfix();
+  @include clearfix();
   li {
     display: inline;
     a {
@@ -404,17 +404,17 @@ footer {
 // Basic Tabs
 .tabs {
   width: 100%;
-  border-bottom: 1px solid @grayLight;
+  border-bottom: 1px solid $grayLight;
   li {
     a {
       margin-bottom: -1px;
       margin-right: 2px;
       padding: 0 15px;
-      line-height: (@baseline * 2) - 1;
-      .border-radius(3px 3px 0 0);
+      line-height: ($baseline * 2) - 1;
+      @include border-radius(3px 3px 0 0);
       &:hover {
-        background-color: @grayLighter;
-        border-bottom: 1px solid @grayLight;
+        background-color: $grayLighter;
+        border-bottom: 1px solid $grayLight;
       }
     }
     &.active a {
@@ -422,7 +422,7 @@ footer {
       padding: 0 14px;
       border: 1px solid #ccc;
       border-bottom: 0;
-      color: @gray;
+      color: $gray;
     }
   }
 }
@@ -435,16 +435,16 @@ footer {
       padding: 0 15px;
       text-shadow: 0 1px 1px #fff;
       line-height: 30px;
-      .border-radius(15px);
+      @include border-radius(15px);
       &:hover {
-        background: @linkColorHover;
+        background: $linkColorHover;
         color: #fff;
         text-decoration: none;
         text-shadow: 0 1px 1px rgba(0,0,0,.25);
       }
     }
     &.active a {
-      background: @linkColor;
+      background: $linkColor;
       color: #fff;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
     }
@@ -456,21 +456,21 @@ footer {
 // ----------
 
 .pagination {
-  height: @baseline * 2;
-  margin: @baseline 0;
+  height: $baseline * 2;
+  margin: $baseline 0;
   ul {
     float: left;
     margin: 0;
     border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
-    .border-radius(3px);
-    .box-shadow(0 1px 2px rgba(0,0,0,.05));
+    @include border-radius(3px);
+    @include box-shadow(0 1px 2px rgba(0,0,0,.05));
     li {
       display: inline;
       a {
         float: left;
         padding: 0 14px;
-        line-height: (@baseline * 2) - 2;
+        line-height: ($baseline * 2) - 2;
         border-right: 1px solid;
         border-right-color: #ddd;
         border-right-color: rgba(0,0,0,.15);
@@ -479,12 +479,12 @@ footer {
       }
       a:hover,
       &.active a {
-        background-color: lighten(@blue, 45%);
+        background-color: lighten($blue, 45%);
       }
       &.disabled a,
       &.disabled a:hover {
         background-color: none;
-        color: @grayLight;
+        color: $grayLight;
       }
       &.next a {
         border: 0;
@@ -504,8 +504,8 @@ footer {
   min-height: 20px;
   border: 1px solid #eee;
   border: 1px solid rgba(0,0,0,.05);
-  .border-radius(4px);
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  @include border-radius(4px);
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
 }
 
 
@@ -528,13 +528,13 @@ footer {
   z-index: 2000;
   width: 560px;
   margin: -280px 0 0 -250px;
-  background-color: @white;
+  background-color: $white;
   border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
   *border: 1px solid #999; /* IE6-7 */
-  .border-radius(6px);
-  .box-shadow(0 3px 7px rgba(0,0,0,0.3));
-  .background-clip(padding-box);
+  @include border-radius(6px);
+  @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  @include background-clip(padding-box);
   .modal-header {
     border-bottom: 1px solid #eee;
     padding: 5px 20px;
@@ -554,9 +554,9 @@ footer {
     background-color: #f5f5f5;
     padding: 14px 20px 15px;
     border-top: 1px solid #ddd;
-    .border-radius(0 0 6px 6px);
-    .box-shadow(inset 0 1px 0 #fff);
-    .clearfix();
+    @include border-radius(0 0 6px 6px);
+    @include box-shadow(inset 0 1px 0 #fff);
+    @include clearfix;
     .btn {
       float: right;
       margin-left: 10px;
@@ -568,39 +568,37 @@ footer {
 // POPOVER ARROWS
 // --------------
 
-#popoverArrow {
-  .above(@arrowWidth: 5px) {
-    bottom: 0;
-    left: 50%;
-    margin-left: -@arrowWidth;
-    border-left: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid transparent;
-    border-top: @arrowWidth solid #000;
-  }
-  .left(@arrowWidth: 5px) {
-    top: 50%;
-    right: 0;
-    margin-top: -@arrowWidth;
-    border-top: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid transparent;
-    border-left: @arrowWidth solid #000;
-  }
-  .below(@arrowWidth: 5px) {
-    top: 0;
-    left: 50%;
-    margin-left: -@arrowWidth;
-    border-left: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid #000;
-  }
-  .right(@arrowWidth: 5px) {
-    top: 50%;
-    left: 0;
-    margin-top: -@arrowWidth;
-    border-top: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid #000;
-  }
+@mixin popover-arrow-above($arrowWidth: 5px) {
+  bottom: 0;
+  left: 50%;
+  margin-left: -$arrowWidth;
+  border-left: $arrowWidth solid transparent;
+  border-right: $arrowWidth solid transparent;
+  border-top: $arrowWidth solid #000;
+}
+@mixin popover-arrow-left($arrowWidth: 5px) {
+  top: 50%;
+  right: 0;
+  margin-top: -$arrowWidth;
+  border-top: $arrowWidth solid transparent;
+  border-bottom: $arrowWidth solid transparent;
+  border-left: $arrowWidth solid #000;
+}
+@mixin popover-arrow-below($arrowWidth: 5px) {
+  top: 0;
+  left: 50%;
+  margin-left: -$arrowWidth;
+  border-left: $arrowWidth solid transparent;
+  border-right: $arrowWidth solid transparent;
+  border-bottom: $arrowWidth solid #000;
+}
+@mixin popover-arrow-right($arrowWidth: 5px) {
+  top: 50%;
+  left: 0;
+  margin-top: -$arrowWidth;
+  border-top: $arrowWidth solid transparent;
+  border-bottom: $arrowWidth solid transparent;
+  border-right: $arrowWidth solid #000;
 }
 
 // TWIPSY
@@ -613,11 +611,11 @@ footer {
   padding: 5px;
   font-size: 11px;
   z-index: 1000;
-  .opacity(80);
-  &.above .twipsy-arrow   { #popoverArrow > .above(); }
-  &.left .twipsy-arrow    { #popoverArrow > .left(); }
-  &.below .twipsy-arrow   { #popoverArrow > .below(); }
-  &.right .twipsy-arrow   { #popoverArrow > .right(); }
+  @include opacity(80);
+  &.above .twipsy-arrow   { @include popover-arrow-above(); }
+  &.left .twipsy-arrow    { @include popover-arrow-left();  }
+  &.below .twipsy-arrow   { @include popover-arrow-below(); }
+  &.right .twipsy-arrow   { @include popover-arrow-right(); }
   .twipsy-inner {
     padding: 3px 8px;
     background-color: #000;
@@ -625,7 +623,7 @@ footer {
     text-align: center;
     max-width: 200px;
     text-decoration: none;
-    .border-radius(4px);
+    @include border-radius(4px);
   }
   .twipsy-arrow {
     position: absolute;
@@ -645,10 +643,10 @@ footer {
   z-index: 1000;
   padding: 5px;
   display: none;
-  &.above .arrow { #popoverArrow > .above(); }
-  &.right .arrow { #popoverArrow > .right(); }
-  &.below .arrow { #popoverArrow > .below(); }
-  &.left .arrow  { #popoverArrow > .left(); }
+  &.above .arrow { @include popover-arrow-above(); }
+  &.right .arrow { @include popover-arrow-right(); }
+  &.below .arrow { @include popover-arrow-below(); }
+  &.left .arrow  { @include popover-arrow-left();  }
   .arrow {
     position: absolute;
     width: 0;
@@ -661,21 +659,21 @@ footer {
     padding: 3px;
     overflow: hidden;
     width: 280px;
-    .border-radius(6px);
-    .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+    @include border-radius(6px);
+    @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
   }
   .title {
     background-color: #f5f5f5;
     padding: 9px 15px;
     line-height: 1;
-    .border-radius(3px 3px 0 0);
+    @include border-radius(3px 3px 0 0);
     border-bottom:1px solid #eee;
   }
   .content {
-    background-color: @white;
+    background-color: $white;
     padding: 14px;
-    .border-radius(0 0 3px 3px);
-    .background-clip(padding-box);
+    @include border-radius(0 0 3px 3px);
+    @include background-clip(padding-box);
     p, ul, ol {
       margin-bottom: 0;
     }

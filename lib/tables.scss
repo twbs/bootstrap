@@ -1,5 +1,5 @@
 /*
- * Tables.less
+ * Tables.scss
  * Tables for, you guessed it, tabular data
  * ---------------------------------------- */
 
@@ -9,13 +9,13 @@
 
 table {
   width: 100%;
-  margin-bottom: @baseline;
+  margin-bottom: $baseline;
   padding: 0;
   border-collapse: separate;
   font-size: 13px;
   th, td {
     padding: 10px 10px 9px;
-    line-height: @baseline * .75;
+    line-height: $baseline * .75;
     text-align: left;
     vertical-align: middle;
     border-bottom: 1px solid #ddd;
@@ -60,7 +60,7 @@ table {
   .headerSortDown {
     background-color: rgba(141,192,219,.25);
     text-shadow: 0 1px 1px rgba(255,255,255,.75);
-    .border-radius(3px 3px 0 0);
+    @include border-radius(3px 3px 0 0);
   }
   // Style the ascending (reverse alphabetical) column header
   .header:hover {
@@ -73,7 +73,7 @@ table {
   .headerSortDown:hover {
     &:after {
       visibility:visible;
-      .opacity(60);
+      @include opacity(60);
     }
   }
   // Style the ascending (reverse alphabetical) column header
@@ -84,8 +84,8 @@ table {
       border-right: 4px solid transparent;
       border-top: 4px solid #000;
       visibility:visible;
-      .box-shadow(none); //can't add boxshadow to downward facing arrow :(
-      .opacity(60);
+      @include box-shadow(none); //can't add boxshadow to downward facing arrow :(
+      @include opacity(60);
     }
   }
 }
@@ -93,56 +93,56 @@ table {
 table {
   // Blue Table Headings
   .blue {
-    color: @blue;
-    border-bottom-color: @blue;
+    color: $blue;
+    border-bottom-color: $blue;
   }
   .headerSortUp.blue,
   .headerSortDown.blue {
-    background-color: lighten(@blue, 40%);
+    background-color: lighten($blue, 40%);
   }
   // Green Table Headings
   .green {
-    color: @green;
-    border-bottom-color: @green;
+    color: $green;
+    border-bottom-color: $green;
   }
   .headerSortUp.green,
   .headerSortDown.green {
-    background-color: lighten(@green, 40%);
+    background-color: lighten($green, 40%);
   }
   // Red Table Headings
   .red {
-    color: @red;
-    border-bottom-color: @red;
+    color: $red;
+    border-bottom-color: $red;
   }
   .headerSortUp.red,
   .headerSortDown.red {
-    background-color: lighten(@red, 50%);
+    background-color: lighten($red, 50%);
   }
   // Yellow Table Headings
   .yellow {
-    color: @yellow;
-    border-bottom-color: @yellow;
+    color: $yellow;
+    border-bottom-color: $yellow;
   }
   .headerSortUp.yellow,
   .headerSortDown.yellow {
-    background-color: lighten(@yellow, 40%);
+    background-color: lighten($yellow, 40%);
   }
   // Orange Table Headings
   .orange {
-    color: @orange;
-    border-bottom-color: @orange;
+    color: $orange;
+    border-bottom-color: $orange;
   }
   .headerSortUp.orange,
   .headerSortDown.orange {
-    background-color: lighten(@orange, 40%);
+    background-color: lighten($orange, 40%);
   }
   // Purple Table Headings
   .purple {
-    color: @purple;
-    border-bottom-color: @purple;
+    color: $purple;
+    border-bottom-color: $purple;
   }
   .headerSortUp.purple,
   .headerSortDown.purple {
-    background-color: lighten(@purple, 40%);
+    background-color: lighten($purple, 40%);
   }
 }

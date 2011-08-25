@@ -1,4 +1,4 @@
-/* Typography.less
+/* Typography.scss
  * Headings, body text, lists, code, and more for a versatile and durable typography system
  * ---------------------------------------------------------------------------------------- */
 
@@ -7,11 +7,11 @@
 // ---------
 
 p {
-  #font > .shorthand(normal,@basefont,@baseline);
-  margin-bottom: @baseline / 2;
+  @include shorthand-font(normal,$basefont,$baseline);
+  margin-bottom: $baseline / 2;
   small {
-    font-size: @basefont - 2;
-    color: @grayLight;
+    font-size: $basefont - 2;
+    color: $grayLight;
   }
 }
 
@@ -21,28 +21,28 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
-  color: @grayDark;
+  color: $grayDark;
   small {
-    color: @grayLight;
+    color: $grayLight;
   }
 }
 h1 {
-  margin-bottom: @baseline;
+  margin-bottom: $baseline;
   font-size: 30px;
-  line-height: @baseline * 2;
+  line-height: $baseline * 2;
   small {
     font-size: 18px;
   }
 }
 h2 {
   font-size: 24px;
-  line-height: @baseline * 2;
+  line-height: $baseline * 2;
   small {
     font-size: 14px;
   }
 }
 h3, h4, h5, h6 {
-  line-height: @baseline * 2;
+  line-height: $baseline * 2;
 }
 h3 {
   font-size: 18px;
@@ -61,7 +61,7 @@ h5 {
 }
 h6 {
   font-size: 13px;
-  color: @grayLight;
+  color: $grayLight;
   text-transform: uppercase;
 }
 
@@ -71,7 +71,7 @@ h6 {
 
 // Unordered and Ordered lists
 ul, ol {
-  margin: 0 0 @baseline 25px;
+  margin: 0 0 $baseline 25px;
 }
 ul ul,
 ul ol,
@@ -86,8 +86,8 @@ ol {
   list-style: decimal;
 }
 li {
-  line-height: @baseline;
-  color: @gray;
+  line-height: $baseline;
+  color: $gray;
 }
 ul.unstyled {
   list-style: none;
@@ -96,15 +96,15 @@ ul.unstyled {
 
 // Description Lists
 dl {
-  margin-bottom: @baseline;
+  margin-bottom: $baseline;
   dt, dd {
-    line-height: @baseline;
+    line-height: $baseline;
   }
   dt {
     font-weight: bold;
   }
   dd {
-    margin-left: @baseline / 2;
+    margin-left: $baseline / 2;
   }
 }
 
@@ -130,22 +130,22 @@ em {
   line-height: inherit;
 }
 .muted {
-  color: @grayLighter;
+  color: $grayLighter;
 }
 
 // Blockquotes
 blockquote {
-  margin-bottom: @baseline;
+  margin-bottom: $baseline;
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
-    #font > .shorthand(300,14px,@baseline);
+    @include shorthand-font(300, 14px,$baseline);
     margin-bottom: 0;
   }
   small {
     display: block;
-    #font > .shorthand(300,12px,@baseline);
-    color: @grayLight;
+    @include shorthand-font(300,12px,$baseline);
+    color: $grayLight;
     &:before {
       content: '\2014 \00A0';
     }
@@ -155,8 +155,8 @@ blockquote {
 // Addresses
 address {
   display: block;
-  line-height: @baseline;
-  margin-bottom: @baseline;
+  line-height: $baseline;
+  margin-bottom: $baseline;
 }
 
 // Inline and block code styles
@@ -164,22 +164,22 @@ code, pre {
   padding: 0 3px 2px;
   font-family: Monaco, Andale Mono, Courier New, monospace;
   font-size: 12px;
-  .border-radius(3px);
+  @include border-radius(3px);
 }
 code {
-  background-color: lighten(@orange, 40%);
+  background-color: lighten($orange, 40%);
   color: rgba(0,0,0,.75);
   padding: 1px 3px;
 }
 pre {
   background-color: #f5f5f5;
   display: block;
-  padding: @baseline - 1;
-  margin: 0 0 @baseline;
-  line-height: @baseline;
+  padding: $baseline - 1;
+  margin: 0 0 $baseline;
+  line-height: $baseline;
   font-size: 12px;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
-  .border-radius(3px);
+  @include border-radius(3px);
   white-space: pre-wrap;
 }

@@ -1,4 +1,4 @@
-/* Forms.less
+/* Forms.scss
  * Base styles for various input types, form layouts, and states
  * ------------------------------------------------------------- */
 
@@ -7,12 +7,12 @@
 // -----------
 
 form {
-  margin-bottom: @baseline;
+  margin-bottom: $baseline;
 
   // Groups of fields with labels on top (legends)
   fieldset {
-    margin-bottom: @baseline;
-    padding-top: @baseline;
+    margin-bottom: $baseline;
+    padding-top: $baseline;
     legend {
       display: block;
       margin-left: 150px;
@@ -20,18 +20,18 @@ form {
       line-height: 1;
       *margin: 0 0 5px 145px; /* IE6-7 */
       *line-height: 1.5; /* IE6-7 */
-      color: @grayDark;
+      color: $grayDark;
     }
   }
 
   // Parent element that clears floats and wraps labels and fields together
   .clearfix {
-    margin-bottom: @baseline;
+    margin-bottom: $baseline;
   }
 
   // Set font for forms
   label, input, select, textarea {
-    #font > .sans-serif(normal,13px,normal);
+    @include sans-serif-font(normal,13px,normal);
   }
 
   // Float labels left
@@ -42,7 +42,7 @@ form {
     float: left;
     width: 130px;
     text-align: right;
-    color: @grayDark;
+    color: $grayDark;
   }
 
   // Shift over the inside div to align all label's relevant content
@@ -67,16 +67,16 @@ form {
     margin: 0;
     padding: 4px;
     font-size: 13px;
-    line-height: @baseline;
-    height: @baseline;
-    color: @gray;
+    line-height: $baseline;
+    height: $baseline;
+    color: $gray;
     border: 1px solid #ccc;
-    .border-radius(3px);
+    @include border-radius(3px);
   }
   select,
   input[type=file] {
-    height: @baseline * 1.5;
-    line-height: @baseline * 1.5;
+    height: $baseline * 1.5;
+    line-height: $baseline * 1.5;
   }
   textarea {
     height: auto;
@@ -85,62 +85,62 @@ form {
     background-color: #eee;
     display: block;
     border-color: #ccc;
-    .box-shadow(inset 0 1px 2px rgba(0,0,0,.075));
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,.075));
   }
 
   // Placeholder text gets special styles; can't be bundled together though for some reason
   :-moz-placeholder {
-    color: @grayLight;
+    color: $grayLight;
   }
   ::-webkit-input-placeholder {
-    color: @grayLight;
+    color: $grayLight;
   }
 
   // Focus states
   input[type=text],
   input[type=password],
   select, textarea {
-    @transition: border linear .2s, box-shadow linear .2s;
-    .transition(@transition);
-    .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
+    $transition: border linear .2s, box-shadow linear .2s;
+    @include transition($transition);
+    @include box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
   }
   input[type=text]:focus,
   input[type=password]:focus,
   textarea:focus {
     outline: none;
     border-color: rgba(82,168,236,.8);
-    @shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-    .box-shadow(@shadow);
+    $shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+    @include box-shadow($shadow);
   }
 
   // Error styles
   div.error {
-    background: lighten(@red, 57%);
+    background: lighten($red, 57%);
     padding: 10px 0;
     margin: -10px 0 10px;
-    .border-radius(4px);
-    @error-text: desaturate(lighten(@red, 25%), 25%);
+    @include border-radius(4px);
+    $error-text: desaturate(lighten($red, 25%), 25%);
     > label,
     span.help-inline,
     span.help-block {
-      color: @red;
+      color: $red;
     }
     input[type=text],
     input[type=password],
     textarea {
-      border-color: @error-text;
-      .box-shadow(0 0 3px rgba(171,41,32,.25));
+      border-color: $error-text;
+      @include box-shadow(0 0 3px rgba(171,41,32,.25));
       &:focus {
-        border-color: darken(@error-text, 10%);
-        .box-shadow(0 0 6px rgba(171,41,32,.5));
+        border-color: darken($error-text, 10%);
+        @include box-shadow(0 0 6px rgba(171,41,32,.5));
       }
     }
     .input-prepend,
     .input-append {
       span.add-on {
-        background: lighten(@red, 50%);
-        border-color: @error-text;
-        color: darken(@error-text, 10%);
+        background: lighten($red, 50%);
+        border-color: $error-text;
+        color: darken($error-text, 10%);
       }
     }
   }
@@ -174,18 +174,18 @@ form {
   input.disabled {
     background: #f5f5f5;
     border-color: #ddd;
-    .box-shadow(none);
+    @include box-shadow(none);
   }
 }
 
 // Actions (the buttons)
 .actions {
   background: #f5f5f5;
-  margin-top: @baseline;
-  margin-bottom: @baseline;
-  padding: (@baseline - 1) 20px @baseline 150px;
+  margin-top: $baseline;
+  margin-bottom: $baseline;
+  padding: ($baseline - 1) 20px $baseline 150px;
   border-top: 1px solid #ddd;
-  .border-radius(0 0 3px 3px);
+  @include border-radius(0 0 3px 3px);
   .secondary-action {
     float: right;
     a {
@@ -201,8 +201,8 @@ form {
 .help-inline,
 .help-block {
   font-size: 12px;
-  line-height: @baseline;
-  color: @grayLight;
+  line-height: $baseline;
+  color: $grayLight;
 }
 .help-inline {
   padding-left: 5px;
@@ -218,7 +218,7 @@ form {
 
 // Inline Fields (input fields that appear as inline objects
 .inline-inputs {
-  color: @gray;
+  color: $gray;
   span, input[type=text] {
     display: inline-block;
   }
@@ -238,7 +238,7 @@ form {
 .input-append {
   input[type=text],
   input[type=password] {
-    .border-radius(0 3px 3px 0);
+    @include border-radius(0 3px 3px 0);
   }
   .add-on {
     background: #f5f5f5;
@@ -247,7 +247,7 @@ form {
     width: auto;
     min-width: 16px;
     padding: 4px 4px 4px 5px;
-    color: @grayLight;
+    color: $grayLight;
     font-weight: normal;
     line-height: 18px;
     height: 18px;
@@ -255,11 +255,11 @@ form {
     text-shadow: 0 1px 0 #fff;
     border: 1px solid #ccc;
     border-right-width: 0;
-    .border-radius(3px 0 0 3px);
+    @include border-radius(3px 0 0 3px);
   }
   .active {
-    background: lighten(@green, 30);
-    border-color: @green;
+    background: lighten($green, 30);
+    border-color: $green;
   }
 }
 
@@ -273,10 +273,10 @@ form {
   input[type=text],
   input[type=password] {
     float: left;
-    .border-radius(3px 0 0 3px);
+    @include border-radius(3px 0 0 3px);
   }
   .add-on {
-    .border-radius(0 3px 3px 0);
+    @include border-radius(0 3px 3px 0);
     border-right-width: 1px;
     border-left-width: 0;
   }
@@ -295,11 +295,11 @@ form {
       float: none;
       width: auto;
       padding: 0;
-      line-height: @baseline;
+      line-height: $baseline;
       text-align: left;
       white-space: normal;
       strong {
-        color: @gray;
+        color: $gray;
       }
       small {
         font-size: 12px;
@@ -325,7 +325,7 @@ form {
 form.form-stacked {
   padding-left: 20px;
   fieldset {
-    padding-top: @baseline / 2;
+    padding-top: $baseline / 2;
   }
   legend {
     margin-left: 0;
@@ -340,7 +340,7 @@ form.form-stacked {
     padding-top: 0;
   }
   .clearfix {
-    margin-bottom: @baseline / 2;
+    margin-bottom: $baseline / 2;
     div.input {
       margin-left: 0;
     }
