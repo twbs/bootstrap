@@ -152,6 +152,7 @@ a {
     background-image: none;
     .opacity(65);
     cursor: default;
+    .box-shadow(none);
   }
 
   // this can't be included with the .disabled def because IE8 and below will drop it ;_;
@@ -159,10 +160,13 @@ a {
     background-image: none;
     .opacity(65);
     cursor: default;
-    color: #fff;
+    .box-shadow(none);
+    &.primary {
+      color: #fff;
+    }
   }
   &:active {
-    @shadow: inset 0 3px 7px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+    @shadow: inset 0 3px 7px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
     .box-shadow(@shadow);
   }
 }
