@@ -859,13 +859,17 @@
     <div class="span4 columns">
       <h2>Buttons</h2>
       <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
-      <p>All buttons default to a light gray style, but a blue <code>.primary</code> class and a red <code>.danger</code> class is available. Plus, rolling your own styles is easy peasy.</p>
+      <p>All buttons default to a light gray style, but a number of functional classes can be applied for different color styles. These classes include a blue <code>.primary</code> class, a light-blue <code>.info</code> class, a green <code>.success</code> class, and a red <code>.danger</code> class. Plus, rolling your own styles is easy peasy.</p>
     </div>
     <div class="span12 columns">
       <h3>Example buttons</h3>
       <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
       <div class="well" style="padding: 14px 19px;">
-        <button type="submit" class="btn primary">Submit</button>&nbsp;<button type="submit" class="btn">Cancel</button>&nbsp;<button class="btn danger">Delete</button>
+        <button class="btn primary">Primary</button>
+        <button class="btn">Default</button>
+        <button class="btn info">Info</button>
+        <button class="btn success">Success</button>
+        <button class="btn danger">Danger</button>
       </div>
       <h3>Alternate sizes</h3>
       <p>Fancy larger or smaller buttons? Have at it!</p>
@@ -1077,15 +1081,15 @@
         <a class="close" href="#">&times;</a>
         <p><strong>Oh snap!</strong> Change this and that and try again.</p>
       </div>
-      <div class="alert alert-error">
+      <div class="alert error">
         <a class="close" href="#">&times;</a>
         <p><strong>Holy gaucamole!</strong> Best check yo self, you’re not looking too good.</p>
       </div>
-      <div class="alert alert-success">
+      <div class="alert success">
         <a class="close" href="#">&times;</a>
         <p><strong>Well done!</strong> You successfully read this alert message.</p>
       </div>
-      <div class="alert alert-info">
+      <div class="alert info">
         <a class="close" href="#">&times;</a>
         <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
       </div>

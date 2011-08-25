@@ -170,14 +170,6 @@
           column-gap: @columnGap;
 }
 
-// Buttons
-.btnColoring(@primaryColor, @secondaryColor) {
-  #gradient > .vertical(@primaryColor, @secondaryColor);
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-}
-
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
   .background(@color: @white, @alpha: 1) {
@@ -187,6 +179,49 @@
 		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
 		background-clip: padding-box;
 	}
+}
+
+// Gradient Bar Colors for buttons and allerts
+.gradientBar(@primaryColor, @secondaryColor) {
+  #gradient > .vertical(@primaryColor, @secondaryColor);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+
+// Shared colors for buttons and alerts
+
+.btn,
+.alert {
+
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: @white
+  }
+
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover {
+    .gradientBar(#f56a66, #d6463e);
+  }
+
+  &.success,
+  &.success:hover {
+    .gradientBar(#62c462, #57a957);
+  }
+
+  &.info,
+  &.info:hover {
+    .gradientBar(#6bd0ee, #36b3d9);
+  }
+
 }
 
 // Gradients
