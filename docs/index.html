@@ -1069,22 +1069,23 @@
   <div class="row">
     <div class="span4 columns">
       <h2>Basic alerts</h2>
+      <p><code>div.alert</code></p>
       <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
     </div>
     <div class="span12 columns">
-      <div class="alert-message error">
+      <div class="alert">
         <a class="close" href="#">&times;</a>
         <p><strong>Oh snap!</strong> Change this and that and try again.</p>
       </div>
-      <div class="alert-message warning">
+      <div class="alert alert-error">
         <a class="close" href="#">&times;</a>
         <p><strong>Holy gaucamole!</strong> Best check yo self, you’re not looking too good.</p>
       </div>
-      <div class="alert-message success">
+      <div class="alert alert-success">
         <a class="close" href="#">&times;</a>
         <p><strong>Well done!</strong> You successfully read this alert message.</p>
       </div>
-      <div class="alert-message info">
+      <div class="alert alert-info">
         <a class="close" href="#">&times;</a>
         <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
       </div>
@@ -1094,28 +1095,37 @@
   <div class="row">
     <div class="span4 columns">
       <h2>Block messages</h2>
+      <p><code>div.alert.alert-block</code></p>
       <p>For messages that require a bit of explanation, we have paragraph style alerts. These are perfect for bubbling up longer error messages, warning a user of a pending action, or just presenting information for more emphasis on the page.</p>
     </div>
     <div class="span12 columns">
-      <div class="alert-message block-message error">
+      <div class="alert alert-block">
         <a class="close" href="#">&times;</a>
         <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-        <p><a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a></p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
       </div>
-      <div class="alert-message block-message warning">
+      <div class="alert alert-block error">
         <a class="close" href="#">&times;</a>
         <p><strong>Holy gaucamole! This is a warning!</strong> Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-        <p><a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a></p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
       </div>
-      <div class="alert-message block-message success">
+      <div class="alert alert-block success">
         <a class="close" href="#">&times;</a>
         <p><strong>Well done!</strong> You successfully read this alert message. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum.</p>
-        <p><a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a></p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
       </div>
-      <div class="alert-message block-message info">
+      <div class="alert alert-block info">
         <a class="close" href="#">&times;</a>
         <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
-        <p><a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a></p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
       </div>
     </div>
   </div> <!-- /row -->
@@ -1234,7 +1244,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
     <h2>What’s included</h2>
     <p>Here are some of the highlights of what’s included in Twitter Bootstrap as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
-    <h3>Color variables</h3>
+    <h3>Variables</h3>
     <p>Variables in Less are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you’re set.</p>
 <pre class="prettyprint linenums">
 // Links
@@ -1258,8 +1268,9 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 @pink:              #c3325f;
 @purple:            #7a43b6;
 
-// Baseline
-@baseline:          20px;
+// Baseline grid
+@basefont:          13px;
+@baseline:          18px;
 </pre>
 
 <h3>Commenting</h3>
@@ -1311,8 +1322,6 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); // IE8+
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE6 & IE7
     background-image: linear-gradient(left, @startColor, @endColor); // Le standard
   }
   .vertical (@startColor: #555, @endColor: #333) {
@@ -1324,14 +1333,12 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
-    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); // IE8+
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE6 & IE7
     background-image: linear-gradient(@startColor, @endColor); // The standard
   }
   .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
     ...
   }
-  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
     ...
   }
 }
@@ -1344,6 +1351,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 @gridColumns:       16;
 @gridColumnWidth:   40px;
 @gridGutterWidth:   20px;
+@siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // Grid System
 .container {
@@ -1352,16 +1360,10 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
   .clearfix();
 }
 .columns(@columnSpan: 1) {
-  display: inline;
-  float: left;
   width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
-  margin-left: @gridGutterWidth;
-  &:first-child {
-    margin-left: 0;
-  }
 }
 .offset(@columnOffset: 1) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) !important;
+  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
 }
 </pre>
   </div>

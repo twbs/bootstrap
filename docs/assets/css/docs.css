@@ -13,6 +13,9 @@ body {
 section {
   padding-top: 60px;
 }
+section > .row {
+  margin-bottom: 10px;
+}
 #masthead, #footer {
   background-color: #049cd9;
   background-repeat: no-repeat;
