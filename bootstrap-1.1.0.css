@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Aug 25 13:52:00 PDT 2011
+ * Date: Thu Aug 25 22:35:30 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -122,27 +122,27 @@ aside {
   clear: both;
 }
 .btn.danger,
-.alert.danger,
+.alert-message.danger,
 .btn.danger:hover,
-.alert.danger:hover,
+.alert-message.danger:hover,
 .btn.error,
-.alert.error,
+.alert-message.error,
 .btn.error:hover,
-.alert.error:hover,
+.alert-message.error:hover,
 .btn.success,
-.alert.success,
+.alert-message.success,
 .btn.success:hover,
-.alert.success:hover,
+.alert-message.success:hover,
 .btn.info,
-.alert.info,
+.alert-message.info,
 .btn.info:hover,
-.alert.info:hover {
+.alert-message.info:hover {
   color: #ffffff;
 }
 .btn.danger,
-.alert.danger,
+.alert-message.danger,
 .btn.error,
-.alert.error {
+.alert-message.error {
   background-color: #d6463e;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#f56a66), to(#d6463e));
@@ -156,7 +156,7 @@ aside {
   border-color: #d6463e #d6463e #a52a23;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.success, .alert.success {
+.btn.success, .alert-message.success {
   background-color: #57a957;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#62c462), to(#57a957));
@@ -170,7 +170,7 @@ aside {
   border-color: #57a957 #57a957 #3d773d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.info, .alert.info {
+.btn.info, .alert-message.info {
   background-color: #36b3d9;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#6bd0ee), to(#36b3d9));
@@ -1368,7 +1368,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-.alert {
+.alert-message {
   background-color: #eedc94;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#fceec1), to(#eedc94));
@@ -1394,23 +1394,23 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
-.alert h5 {
+.alert-message h5 {
   line-height: 18px;
 }
-.alert p {
+.alert-message p {
   margin-bottom: 0;
 }
-.alert div {
+.alert-message div {
   margin-top: 5px;
   margin-bottom: 2px;
   line-height: 28px;
 }
-.alert .btn {
+.alert-message .btn {
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
 }
-.alert .close {
+.alert-message .close {
   float: right;
   margin-top: -2px;
   color: #000000;
@@ -1422,7 +1422,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-opacity: 0.2;
   opacity: 0.2;
 }
-.alert .close:hover {
+.alert-message .close:hover {
   color: #000000;
   text-decoration: none;
   filter: alpha(opacity=40);
@@ -1430,7 +1430,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-opacity: 0.4;
   opacity: 0.4;
 }
-.alert.alert-block, .alert.alert-block:hover {
+.alert-message.block-message {
   background-image: none;
   background-color: #fdf5d9;
   padding: 14px;
@@ -1439,30 +1439,25 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.alert.alert-block p, .alert.alert-block:hover p {
+.alert-message.block-message p {
   margin-right: 30px;
 }
-.alert.alert-block .alert-actions, .alert.alert-block:hover .alert-actions {
+.alert-message.block-message .alert-actions {
   margin-top: 5px;
 }
-.alert.alert-block.error,
-.alert.alert-block:hover.error,
-.alert.alert-block.success,
-.alert.alert-block:hover.success,
-.alert.alert-block.info,
-.alert.alert-block:hover.info {
+.alert-message.block-message.error, .alert-message.block-message.success, .alert-message.block-message.info {
   color: #404040;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-.alert.alert-block.error, .alert.alert-block:hover.error {
+.alert-message.block-message.error {
   background-color: #fddfde;
   border-color: #fbc7c6;
 }
-.alert.alert-block.success, .alert.alert-block:hover.success {
+.alert-message.block-message.success {
   background-color: #d1eed1;
   border-color: #bfe7bf;
 }
-.alert.alert-block.info, .alert.alert-block:hover.info {
+.alert-message.block-message.info {
   background-color: #ddf4fb;
   border-color: #c6edf9;
 }
