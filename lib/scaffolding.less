@@ -9,6 +9,29 @@
 
 .row {
   .clearfix();
+  margin-left: -20px;
+
+  // Default columns
+  .span1,
+  .span2,
+  .span3,
+  .span4,
+  .span5,
+  .span6,
+  .span7,
+  .span8,
+  .span9,
+  .span10,
+  .span11,
+  .span12,
+  .span13,
+  .span14,
+  .span15,
+  .span16 {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+  }
 
   // Default columns
   .span1     { .columns(1); }
@@ -58,13 +81,13 @@ body {
 }
 
 // Container (centered, fixed-width layouts)
-div.container {
+.container {
   width: 940px;
   margin: 0 auto;
 }
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
-div.container-fluid {
+.container-fluid {
   padding: 0 20px;
   .clearfix();
   .sidebar {
@@ -95,16 +118,7 @@ a {
 }
 
 // Buttons
-.btnColor(@primaryColor, @secondaryColor) {
-  #gradient > .vertical(@primaryColor, @secondaryColor);
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-}
-
 .btn {
-  // .button(#1174C6);
-  cursor: pointer;
   display: inline-block;
   #gradient > .vertical-three-colors(#fff, #fff, 0.25, darken(#fff, 10%));
   padding: 4px 14px;
@@ -122,19 +136,30 @@ a {
     color: #333;
     text-decoration: none;
   }
-  .transition(.1s linear all);
-  &.primary,
-  &.danger {
+}
+.primary {
+  #gradient > .vertical(#049CDB, #0064CD);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border: 1px solid darken(#0064CD, 10%);
+  border-bottom-color: darken(#0064CD, 15%);
+  &:hover {
     color: #fff;
+  }
+}
+
+.btn {
+  //.button(#1174C6);
+  .transition(.1s linear all);
+  &.primary {
+    //#gradient > .vertical(@blue, @blueDark);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    border-color: @blueDark @blueDark darken(@blueDark, 15%);
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
     &:hover {
       color: #fff;
     }
-  }
-  &.primary {
-    .btnColor(@blue, @blueDark)
-  }
-  &.danger {
-    .btnColor(lighten(@red, 15%), @red)
   }
   &.large {
     font-size: 16px;
@@ -150,6 +175,7 @@ a {
     background-image: none;
     .opacity(65);
     cursor: default;
+    .box-shadow(none);
   }
 
   // this can't be included with the .disabled def because IE8 and below will drop it ;_;
@@ -157,9 +183,13 @@ a {
     background-image: none;
     .opacity(65);
     cursor: default;
+    .box-shadow(none);
+    &.primary {
+      color: #fff;
+    }
   }
   &:active {
-    @shadow: inset 0 3px 7px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+    @shadow: inset 0 3px 7px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
     .box-shadow(@shadow);
   }
 }

@@ -13,6 +13,9 @@ body {
 section {
   padding-top: 60px;
 }
+section > .row {
+  margin-bottom: 10px;
+}
 #masthead, #footer {
   background-color: #049cd9;
   background-repeat: no-repeat;
@@ -168,7 +171,7 @@ div.mini-layout div {
 div.mini-layout div.mini-layout-body {
   background-color: #dceaf4;
   margin: 0 auto;
-  width: 450px;
+  width: 340px;
   height: 340px;
 }
 div.mini-layout.fluid div.mini-layout-sidebar,
@@ -182,7 +185,7 @@ div.mini-layout.fluid div.mini-layout-sidebar {
   height: 340px;
 }
 div.mini-layout.fluid div.mini-layout-body {
-  width: 400px;
+  width: 300px;
   margin-left: 10px;
 }
 /* Topbar special styles
