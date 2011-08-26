@@ -170,14 +170,6 @@
           column-gap: @columnGap;
 }
 
-// Buttons
-.btnColoring(@primaryColor, @secondaryColor) {
-  #gradient > .vertical(@primaryColor, @secondaryColor);
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-}
-
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
   .background(@color: @white, @alpha: 1) {
@@ -187,6 +179,42 @@
 		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
 		background-clip: padding-box;
 	}
+}
+
+// Gradient Bar Colors for buttons and allerts
+.gradientBar(@primaryColor, @secondaryColor) {
+  #gradient > .vertical(@primaryColor, @secondaryColor);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+// Shared colors for buttons and alerts
+.btn,
+.alert-message {
+  // Set text color
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: @white
+  }
+  // Danger and error appear as red
+  &.danger,
+  &.error {
+    .gradientBar(#ee5f5b, #c43c35);
+  }
+  // Success appears as green
+  &.success {
+    .gradientBar(#62c462, #57a957);
+  }
+  // Info appears as a neutral blue
+  &.info {
+    .gradientBar(#5bc0de, #339bb9);
+  }
 }
 
 // Gradients
@@ -206,12 +234,12 @@
     background-color: @endColor;
     background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
-    background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
+    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
-    background-image: linear-gradient(@startColor, @endColor); // The standard
+    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(top, @startColor, @endColor); // The standard
   }
   .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
     background-color: @endColor;

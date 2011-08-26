@@ -12,7 +12,7 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="../bootstrap-1.1.0.css" rel="stylesheet">
+    <link href="../bootstrap-1.1.1.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
@@ -29,7 +29,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
-  <body onload="prettyPrint();">
+  <body>
 
     <!-- Topbar
     ================================================== -->
@@ -65,7 +65,7 @@
             It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.<br />
           </p>
           <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with modern browsers in mind.</p>
-        </div> <!-- /container -->
+        </div><!-- /container -->
       </div>
     </div>
 
@@ -78,7 +78,7 @@
             <h6>Hotlink the CSS</h6>
             <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
             <form>
-              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.0.min.css"></textarea>
+              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"></textarea>
             </form>
           </div>
           <div class="span5 columns">
@@ -94,7 +94,7 @@
             <p>Download, fork, pull, file issues, and more with the official Bootstrap repo on Github.</p>
             <p><a target="_blank" href="https://github.com/twitter/bootstrap" class="btn primary">Bootstrap on GitHub &raquo;</a></p>
           </div>
-        </div> <!-- /row -->
+        </div><!-- /row -->
       </div>
     </div>
 
@@ -137,7 +137,7 @@
         <li>Example page template (more to come soon)</li>
       </ul>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 </section>
 
 
@@ -167,7 +167,7 @@
 &lt;/div&gt;
 </pre>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="16 column layout">
     <div class="span1 column">1</div>
     <div class="span1 column">1</div>
@@ -185,7 +185,7 @@
     <div class="span1 column">1</div>
     <div class="span1 column">1</div>
     <div class="span1 column">1</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="8 column layout">
     <div class="span2 columns">2</div>
     <div class="span2 columns">2</div>
@@ -195,7 +195,7 @@
     <div class="span2 columns">2</div>
     <div class="span2 columns">2</div>
     <div class="span2 columns">2</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="Example uncommon layout">
     <div class="span3 columns">3</div>
     <div class="span3 columns">3</div>
@@ -203,45 +203,45 @@
     <div class="span3 columns">3</div>
     <div class="span3 columns">3</div>
     <div class="span1 column">1</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="Four column layout">
     <div class="span4 columns">4</div>
     <div class="span4 columns">4</div>
     <div class="span4 columns">4</div>
     <div class="span4 columns">4</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="Irregular three column layout">
     <div class="span4 columns">4</div>
     <div class="span6 columns">6</div>
     <div class="span6 columns">6</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="Half and half">
     <div class="span8 columns">8</div>
     <div class="span8 columns">8</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="Example uncommon two-column layout">
     <div class="span5 columns">5</div>
     <div class="span11 columns">11</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid" title="Unnecessary single column layout">
     <div class="span16 columns">16</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <h4>Offsetting columns</h4>
   <div class="row show-grid">
     <div class="span4 columns">4</div>
     <div class="span8 columns offset4">8 offset 4</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid">
     <div class="span4 columns offset4">4 offset 4</div>
     <div class="span4 columns offset4">4 offset 4</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid">
     <div class="span5 columns offset3">5 offset 3</div>
     <div class="span5 columns offset3">5 offset 3</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <div class="row show-grid">
     <div class="span10 columns offset6">10 offset 6</div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 </section>
 
 
@@ -253,13 +253,10 @@
     <h1>Layouts <small>Basic templates to create webpages</small></h1>
   </div>
 
-  <!-- Fixed layout -->
   <div class="row">
-    <div class="span4 columns">
+    <div class="span8 columns">
       <h2>Fixed layout</h2>
-      <p>A basic 940px wide, centered container layout for just about any site or page.</p>
-    </div>
-    <div class="span12 columns">
+      <p>The default and simple 940px-wide, centered layout for just about any website or page provided by a single <code>&lt;div.container&gt;</code>.</p>
       <div class="mini-layout">
         <div class="mini-layout-body"></div>
       </div>
@@ -270,16 +267,10 @@
   &lt;/div&gt;
 &lt;/body&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
-
-  <!-- Fluid layout -->
-  <div class="row">
-    <div class="span4 columns">
+    </div><!-- /col -->
+    <div class="span8 columns">
       <h2>Fluid layout</h2>
-      <p>A flexible fluid or liquid page structure with min- and max-widths and a left-hand sidebar. Great for apps.</p>
-    </div>
-    <div class="span12 columns">
+      <p>An alternative, flexible fluid page structure with min- and max-widths and a left-hand sidebar. Great for apps and docs.</p>
       <div class="mini-layout fluid">
         <div class="mini-layout-sidebar"></div>
         <div class="mini-layout-body"></div>
@@ -296,8 +287,8 @@
   &lt;/div&gt;
 &lt;/body&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
+    </div><!-- /col -->
+  </div><!-- /row -->
 </section>
 
 
@@ -312,8 +303,10 @@
   <!-- Headings & Paragraph Copy -->
   <div class="row">
     <div class="span4 columns">
-      <h2>Headings and copy</h2>
+      <h2>Headings &amp; copy</h2>
       <p>A standard typographic hierarchy for structuring your webpages.</p>
+      <p>The entire typographic grid is based on two Less variables in our preboot.less file: <code>@basefont</code> and <code>@baseline</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
+      <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
     </div>
     <div class="span4 columns">
       <h1>h1. Heading 1</h1>
@@ -347,7 +340,7 @@
       <p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to indicate additional importance or emphasis of a word or phrase relative to its surrounding copy. Use <code>&lt;strong&gt;</code> for importance and <code>&lt;em&gt;</code> for <em>stress</em> emphasis.</p>
       <h3>Emphasis in a paragraph</h3>
       <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
-      <p><strong>Note:</strong> It's still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5, but they don't come with inherent styles anymore. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance, while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+      <p><strong>Note:</strong> It's still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5 and they don't have to be styled bold and italic, respectively (although if there is a more semantic element, use it). <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance, while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
       <h3>Addresses</h3>
       <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here’s how it looks:</p>
       <address>
@@ -360,7 +353,7 @@
       <h3>Abbreviations</h3>
       <p>For abbreviations and acronyms, use the <code>&lt;abbr&gt;</code> tag (<code>&lt;acronym&gt;</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
   <!-- Blockquotes -->
   <div class="row">
@@ -380,7 +373,7 @@
         <small>Dr. Julius Hibbert</small>
       </blockquote>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
   <h2>Lists</h2>
   <div class="row">
@@ -449,7 +442,7 @@
         <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
       </dl>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 </section>
 
 
@@ -595,7 +588,7 @@
   ...
 &lt;/table&gt;</pre>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 </section>
 
 
@@ -616,15 +609,15 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
-            <label for="">X-Large Input</label>
+            <label for="xlInput">X-Large Input</label>
             <div class="input">
               <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="">Select</label>
+            <label for="normalSelect">Select</label>
             <div class="input">
-              <select>
+              <select name="normalSelect" id="normalSelect">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -632,11 +625,11 @@
                 <option>5</option>
               </select>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="">Select</label>
+            <label for="mediumSelect">Select</label>
             <div class="input">
-              <select class="medium">
+              <select class="medium" name="mediumSelect" id="mediumSelect">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -644,26 +637,26 @@
                 <option>5</option>
               </select>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label>Uneditable Input</label>
             <div class="input">
               <span class="uneditable-input">Some Value Here</span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="disabledInput">Disabled Input</label>
             <div class="input">
               <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here… carry on." disabled />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix error">
             <label for="xlInput">X-Large Input</label>
             <div class="input">
               <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <fieldset>
           <legend>Example form legend</legend>
@@ -675,7 +668,7 @@
                 <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="prependedInput2">Prepended Checkbox</label>
             <div class="input">
@@ -684,7 +677,7 @@
                 <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="appendedInput">Appended Checkbox</label>
             <div class="input">
@@ -693,13 +686,13 @@
                 <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="xlInput">File Input</label>
             <div class="input">
               <input class="input-file" id="fileInput" name="fileInput" type="file" />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <fieldset>
           <legend>Example form legend</legend>
@@ -736,7 +729,7 @@
                 <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
               </span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label>Date Range</label>
             <div class="input">
@@ -749,7 +742,7 @@
                 <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="textarea">Textarea</label>
             <div class="input">
@@ -758,7 +751,7 @@
                 Block of help text to describe the field above if need be.
               </span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label id="optionsRadio">List of Options</label>
             <div class="input">
@@ -777,14 +770,14 @@
                 </li>
               </ul>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="actions">
             <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
       </form>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
   <br />
 
@@ -798,15 +791,15 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
-            <label for="">X-Large Input</label>
+            <label for="xlInput">X-Large Input</label>
             <div class="input">
               <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="">Select</label>
+            <label for="stackedSelect">Select</label>
             <div class="input">
-              <select>
+              <select name="stackedSelect" id="stackedSelect">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -814,7 +807,7 @@
                 <option>5</option>
               </select>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <fieldset>
           <legend>Example form legend</legend>
@@ -824,7 +817,7 @@
               <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label id="optionsCheckboxes">List of Options</label>
             <div class="input">
@@ -846,26 +839,30 @@
                 <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
               </span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <div class="actions">
           <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
         </div>
       </form>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
   <div class="row">
     <div class="span4 columns">
       <h2>Buttons</h2>
       <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
-      <p>All buttons default to a light gray style, but a blue <code>.primary</code> class and a red <code>.danger</code> class is available. Plus, rolling your own styles is easy peasy.</p>
+      <p>All buttons default to a light gray style, but a number of functional classes can be applied for different color styles. These classes include a blue <code>.primary</code> class, a light-blue <code>.info</code> class, a green <code>.success</code> class, and a red <code>.danger</code> class. Plus, rolling your own styles is easy peasy.</p>
     </div>
     <div class="span12 columns">
       <h3>Example buttons</h3>
       <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
       <div class="well" style="padding: 14px 19px;">
-        <button type="submit" class="btn primary">Submit</button>&nbsp;<button type="submit" class="btn">Cancel</button>&nbsp;<button class="btn danger">Delete</button>
+        <button class="btn primary">Primary</button>
+        <button class="btn">Default</button>
+        <button class="btn info">Info</button>
+        <button class="btn success">Success</button>
+        <button class="btn danger">Danger</button>
       </div>
       <h3>Alternate sizes</h3>
       <p>Fancy larger or smaller buttons? Have at it!</p>
@@ -889,7 +886,7 @@
         <button class="btn large primary disabled" disabled>Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
       </div>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 </section>
 
 
@@ -928,9 +925,9 @@
             </li>
           </ul>
         </div>
-      </div> <!-- /fill -->
-    </div> <!-- /topbar -->
-  </div> <!-- topbar-wrapper -->
+      </div><!-- /fill -->
+    </div><!-- /topbar -->
+  </div><!-- /topbar-wrapper -->
 
   <div class="row">
     <div class="span5 columns">
@@ -946,6 +943,7 @@
       <p>As part of the main navigation, we’ve included the ability for you to add dropdowns to your nav. Check out the secondary nav above (right aligned) to see how it’s done.</p>
     </div>
   </div>
+  <p><strong>Note:</strong> When using the topbar on any page, be sure to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>body</code>.</p>
 
   <br />
 
@@ -989,7 +987,7 @@
 &lt;/ul&gt;
 </pre>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
   <!-- Pagination -->
   <div class="row">
@@ -1053,7 +1051,7 @@
 &lt;/div&gt;
 </pre>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
 </section>
 
@@ -1069,58 +1067,58 @@
   <div class="row">
     <div class="span4 columns">
       <h2>Basic alerts</h2>
-      <p><code>div.alert</code></p>
+      <p><code>div.alert-message</code></p>
       <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
     </div>
     <div class="span12 columns">
-      <div class="alert">
-        <a class="close" href="#">&times;</a>
-        <p><strong>Oh snap!</strong> Change this and that and try again.</p>
-      </div>
-      <div class="alert alert-error">
+      <div class="alert-message warning">
         <a class="close" href="#">&times;</a>
         <p><strong>Holy gaucamole!</strong> Best check yo self, you’re not looking too good.</p>
       </div>
-      <div class="alert alert-success">
+      <div class="alert-message error">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Oh snap!</strong> Change this and that and try again.</p>
+      </div>
+      <div class="alert-message success">
         <a class="close" href="#">&times;</a>
         <p><strong>Well done!</strong> You successfully read this alert message.</p>
       </div>
-      <div class="alert alert-info">
+      <div class="alert-message info">
         <a class="close" href="#">&times;</a>
         <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
       </div>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
   <!-- Block messages -->
   <div class="row">
     <div class="span4 columns">
       <h2>Block messages</h2>
-      <p><code>div.alert.alert-block</code></p>
+      <p><code>div.alert-message.block-message</code></p>
       <p>For messages that require a bit of explanation, we have paragraph style alerts. These are perfect for bubbling up longer error messages, warning a user of a pending action, or just presenting information for more emphasis on the page.</p>
     </div>
     <div class="span12 columns">
-      <div class="alert alert-block">
-        <a class="close" href="#">&times;</a>
-        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-        <div class="alert-actions">
-          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-        </div>
-      </div>
-      <div class="alert alert-block error">
+      <div class="alert-message block-message warning">
         <a class="close" href="#">&times;</a>
         <p><strong>Holy gaucamole! This is a warning!</strong> Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
         <div class="alert-actions">
           <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
         </div>
       </div>
-      <div class="alert alert-block success">
+      <div class="alert-message block-message error">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
+      </div>
+      <div class="alert-message block-message success">
         <a class="close" href="#">&times;</a>
         <p><strong>Well done!</strong> You successfully read this alert message. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum.</p>
         <div class="alert-actions">
           <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
         </div>
       </div>
-      <div class="alert alert-block info">
+      <div class="alert-message block-message info">
         <a class="close" href="#">&times;</a>
         <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
         <div class="alert-actions">
@@ -1128,7 +1126,7 @@
         </div>
       </div>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 </section>
 
 
@@ -1161,7 +1159,7 @@
         </div>
       </div>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
   <!-- Tooltips -->
   <div class="row">
@@ -1194,7 +1192,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         </div>
       </div>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 
   <!-- Popovers -->
   <div class="row">
@@ -1218,7 +1216,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         </div>
       </div>
     </div>
-  </div> <!-- /row -->
+  </div><!-- /row -->
 </section>
 
 
@@ -1239,7 +1237,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <p>Use this option to make full use of Bootstrap’s Less variables, mixins, and nesting in CSS via javascript in your browser.</p>
 <pre class="prettyprint linenums">
 &lt;link rel="stylesheet/less" href="less/bootstrap.less" media="all" /&gt;
-&lt;script src="js/less-1.0.41.min.js"&gt;&lt;/script&gt;</pre>
+&lt;script src="js/less-1.1.3.min.js"&gt;&lt;/script&gt;</pre>
 <p>Not feeling the .js solution? <a href="http://incident57.com/less" target="_blank">Try the Less Mac app</a> or <a href="http://lesscss.org/#-client-side-usage" target="_blank">use Node.js</a> to compile when you deploy your code.</p>
 
     <h2>What’s included</h2>
@@ -1371,7 +1369,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
 </section>
 
-    </div> <!-- /container -->
+    </div><!-- /container -->
 
     <div id="footer">
       <div class="inner">
