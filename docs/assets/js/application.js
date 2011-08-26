@@ -1,10 +1,22 @@
 $(document).ready(function(){
 
+  // Google code prettify
+  // ================
+
+  // cache $(window), as it is used in scroll spy logic later on
+  var $window = $(window);
+
+  $window.load(function() {
+    // prettyPrint cannot be set as the event handler to load directly; see
+    // http://google-code-prettify.googlecode.com/svn/trunk/README.html
+    prettyPrint();
+  });
+  
+
   // scroll spy logic
   // ================
 
   var activeTarget,
-      $window = $(window),
       position = {},
       nav = $('body > .topbar li a'),
       targets = nav.map(function () {
