@@ -301,11 +301,11 @@ footer {
   margin-bottom: @baseline;
   padding: 8px 15px;
   color: #fff;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  text-shadow: 0 -1px 0 rgba(255,255,255,.3);
   border-bottom: 1px solid rgba(0,0,0,.3);
   .border-radius(4px);
   p {
-    color: #fff;
+    color: #404040;
     margin-bottom: 0;
     + p {
       margin-top: 5px;
@@ -314,6 +314,10 @@ footer {
   &.error {
     #gradient > .vertical(lighten(@red, 30%), lighten(@red, 15%));
     border-bottom-color: lighten(@red, 5%);
+    p {
+      color: #fff;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+    }
   }
   &.warning {
     #gradient > .vertical(lighten(@yellow, 25%), lighten(@yellow, 10%));
@@ -367,6 +371,12 @@ footer {
   &.error {
     background: lighten(@red, 55%);
     border: 1px solid lighten(@red, 50%);
+    p {
+      color: @grayDark;
+      color: rgba(0,0,0,.8);
+      *color: @grayDark; /* IE 6-7 */
+      text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    }
   }
   &.warning {
     background: lighten(@yellow, 35%);
