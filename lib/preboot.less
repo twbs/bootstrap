@@ -188,11 +188,10 @@
   border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
 }
-
 // Shared colors for buttons and alerts
-
 .btn,
 .alert-message {
+  // Set text color
   &.danger,
   &.danger:hover,
   &.error,
@@ -203,18 +202,18 @@
   &.info:hover {
     color: @white
   }
-
+  // Danger and error appear as red
   &.danger,
   &.error {
-    .gradientBar(#f56a66, #d6463e);
+    .gradientBar(#ee5f5b, #c43c35);
   }
-
+  // Success appears as green
   &.success {
     .gradientBar(#62c462, #57a957);
   }
-
+  // Info appears as a neutral blue
   &.info {
-    .gradientBar(#6bd0ee, #36b3d9);
+    .gradientBar(#5bc0de, #339bb9);
   }
 }
 

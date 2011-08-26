@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Aug 25 22:44:09 PDT 2011
+ * Date: Thu Aug 25 22:51:24 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -143,17 +143,17 @@ aside {
 .alert-message.danger,
 .btn.error,
 .alert-message.error {
-  background-color: #d6463e;
+  background-color: #c43c35;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#f56a66), to(#d6463e));
-  background-image: -moz-linear-gradient(#f56a66, #d6463e);
-  background-image: -ms-linear-gradient(#f56a66, #d6463e);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f56a66), color-stop(100%, #d6463e));
-  background-image: -webkit-linear-gradient(#f56a66, #d6463e);
-  background-image: -o-linear-gradient(#f56a66, #d6463e);
-  background-image: linear-gradient(#f56a66, #d6463e);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ee5f5b), to(#c43c35));
+  background-image: -moz-linear-gradient(#ee5f5b, #c43c35);
+  background-image: -ms-linear-gradient(#ee5f5b, #c43c35);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee5f5b), color-stop(100%, #c43c35));
+  background-image: -webkit-linear-gradient(#ee5f5b, #c43c35);
+  background-image: -o-linear-gradient(#ee5f5b, #c43c35);
+  background-image: linear-gradient(#ee5f5b, #c43c35);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #d6463e #d6463e #a52a23;
+  border-color: #c43c35 #c43c35 #882a25;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn.success, .alert-message.success {
@@ -171,17 +171,17 @@ aside {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn.info, .alert-message.info {
-  background-color: #36b3d9;
+  background-color: #339bb9;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#6bd0ee), to(#36b3d9));
-  background-image: -moz-linear-gradient(#6bd0ee, #36b3d9);
-  background-image: -ms-linear-gradient(#6bd0ee, #36b3d9);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6bd0ee), color-stop(100%, #36b3d9));
-  background-image: -webkit-linear-gradient(#6bd0ee, #36b3d9);
-  background-image: -o-linear-gradient(#6bd0ee, #36b3d9);
-  background-image: linear-gradient(#6bd0ee, #36b3d9);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#5bc0de), to(#339bb9));
+  background-image: -moz-linear-gradient(#5bc0de, #339bb9);
+  background-image: -ms-linear-gradient(#5bc0de, #339bb9);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5bc0de), color-stop(100%, #339bb9));
+  background-image: -webkit-linear-gradient(#5bc0de, #339bb9);
+  background-image: -o-linear-gradient(#5bc0de, #339bb9);
+  background-image: linear-gradient(#5bc0de, #339bb9);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #36b3d9 #36b3d9 #1f85a4;
+  border-color: #339bb9 #339bb9 #22697d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 /*
