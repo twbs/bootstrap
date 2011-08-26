@@ -65,7 +65,7 @@
             It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.<br />
           </p>
           <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with modern browsers in mind.</p>
-        </div> <!-- /container -->
+        </div><!-- /container -->
       </div>
     </div>
 
@@ -303,8 +303,10 @@
   <!-- Headings & Paragraph Copy -->
   <div class="row">
     <div class="span4 columns">
-      <h2>Headings and copy</h2>
+      <h2>Headings &amp; copy</h2>
       <p>A standard typographic hierarchy for structuring your webpages.</p>
+      <p>The entire typographic grid is based on two Less variables in our preboot.less file: <code>@basefont</code> and <code>@baseline</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
+      <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
     </div>
     <div class="span4 columns">
       <h1>h1. Heading 1</h1>
@@ -611,7 +613,7 @@
             <div class="input">
               <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="normalSelect">Select</label>
             <div class="input">
@@ -623,7 +625,7 @@
                 <option>5</option>
               </select>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="mediumSelect">Select</label>
             <div class="input">
@@ -635,26 +637,26 @@
                 <option>5</option>
               </select>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label>Uneditable Input</label>
             <div class="input">
               <span class="uneditable-input">Some Value Here</span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="disabledInput">Disabled Input</label>
             <div class="input">
               <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here… carry on." disabled />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix error">
             <label for="xlInput">X-Large Input</label>
             <div class="input">
               <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <fieldset>
           <legend>Example form legend</legend>
@@ -666,7 +668,7 @@
                 <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="prependedInput2">Prepended Checkbox</label>
             <div class="input">
@@ -675,7 +677,7 @@
                 <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="appendedInput">Appended Checkbox</label>
             <div class="input">
@@ -684,13 +686,13 @@
                 <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="xlInput">File Input</label>
             <div class="input">
               <input class="input-file" id="fileInput" name="fileInput" type="file" />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <fieldset>
           <legend>Example form legend</legend>
@@ -727,7 +729,7 @@
                 <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
               </span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label>Date Range</label>
             <div class="input">
@@ -740,7 +742,7 @@
                 <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
               </div>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="textarea">Textarea</label>
             <div class="input">
@@ -749,7 +751,7 @@
                 Block of help text to describe the field above if need be.
               </span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label id="optionsRadio">List of Options</label>
             <div class="input">
@@ -768,7 +770,7 @@
                 </li>
               </ul>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="actions">
             <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
           </div>
@@ -793,7 +795,7 @@
             <div class="input">
               <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label for="stackedSelect">Select</label>
             <div class="input">
@@ -805,7 +807,7 @@
                 <option>5</option>
               </select>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <fieldset>
           <legend>Example form legend</legend>
@@ -815,7 +817,7 @@
               <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
           <div class="clearfix">
             <label id="optionsCheckboxes">List of Options</label>
             <div class="input">
@@ -837,7 +839,7 @@
                 <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
               </span>
             </div>
-          </div> <!-- /clearfix -->
+          </div><!-- /clearfix -->
         </fieldset>
         <div class="actions">
           <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
@@ -923,9 +925,9 @@
             </li>
           </ul>
         </div>
-      </div> <!-- /fill -->
-    </div> <!-- /topbar -->
-  </div> <!-- topbar-wrapper -->
+      </div><!-- /fill -->
+    </div><!-- /topbar -->
+  </div><!-- /topbar-wrapper -->
 
   <div class="row">
     <div class="span5 columns">
@@ -941,6 +943,7 @@
       <p>As part of the main navigation, we’ve included the ability for you to add dropdowns to your nav. Check out the secondary nav above (right aligned) to see how it’s done.</p>
     </div>
   </div>
+  <p><strong>Note:</strong> When using the topbar on any page, be sure to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>body</code>.</p>
 
   <br />
 
@@ -1366,7 +1369,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
 </section>
 
-    </div> <!-- /container -->
+    </div><!-- /container -->
 
     <div id="footer">
       <div class="inner">
