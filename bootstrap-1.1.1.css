@@ -740,7 +740,7 @@ fieldset legend {
 
   color: #404040;
 }
-.clearfix {
+form .clearfix {
   margin-bottom: 18px;
 }
 label,
