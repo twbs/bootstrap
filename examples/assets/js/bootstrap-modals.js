@@ -65,6 +65,7 @@
       this.$element = $(this.settings.content)
         .delegate('.close', 'click', function (e) { e.preventDefault(); that.close() })
         .appendTo(document.body)
+        .show()
 
       setTimeout(function () {
         that.$element.addClass('open')
