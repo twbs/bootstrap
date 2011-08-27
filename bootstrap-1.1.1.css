@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Aug 26 15:21:30 PDT 2011
+ * Date: Fri Aug 26 20:30:11 CDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1987,4 +1987,274 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .popover .content p, .popover .content ul, .popover .content ol {
   margin-bottom: 0;
+}
+/* Responsive.less
+ * Adjusted grid styles to handle some common screen sizes
+ * ------------------------------------------------------- */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .container {
+    width: 748px;
+  }
+  .row .span1 {
+    width: 28px;
+  }
+  .row .span2 {
+    width: 76px;
+  }
+  .row .span3 {
+    width: 124px;
+  }
+  .row .span4 {
+    width: 172px;
+  }
+  .row .span5 {
+    width: 220px;
+  }
+  .row .span6 {
+    width: 268px;
+  }
+  .row .span7 {
+    width: 316px;
+  }
+  .row .span8 {
+    width: 364px;
+  }
+  .row .span9 {
+    width: 412px;
+  }
+  .row .span10 {
+    width: 460px;
+  }
+  .row .span11 {
+    width: 508px;
+  }
+  .row .span12 {
+    width: 556px;
+  }
+  .row .span13 {
+    width: 604px;
+  }
+  .row .span14 {
+    width: 652px;
+  }
+  .row .span15 {
+    width: 700px;
+  }
+  .row .span16 {
+    width: 748px;
+  }
+  .row .offset1 {
+    margin-left: 68px !important;
+  }
+  .row .offset1:first-child {
+    margin-left: 48px !important;
+  }
+  .row .offset2 {
+    margin-left: 116px !important;
+  }
+  .row .offset2:first-child {
+    margin-left: 96px !important;
+  }
+  .row .offset3 {
+    margin-left: 164px !important;
+  }
+  .row .offset3:first-child {
+    margin-left: 144px !important;
+  }
+  .row .offset4 {
+    margin-left: 212px !important;
+  }
+  .row .offset4:first-child {
+    margin-left: 192px !important;
+  }
+  .row .offset5 {
+    margin-left: 260px !important;
+  }
+  .row .offset5:first-child {
+    margin-left: 240px !important;
+  }
+  .row .offset6 {
+    margin-left: 308px !important;
+  }
+  .row .offset6:first-child {
+    margin-left: 288px !important;
+  }
+  .row .offset7 {
+    margin-left: 356px !important;
+  }
+  .row .offset7:first-child {
+    margin-left: 336px !important;
+  }
+  .row .offset8 {
+    margin-left: 404px !important;
+  }
+  .row .offset8:first-child {
+    margin-left: 384px !important;
+  }
+  .row .offset9 {
+    margin-left: 404px !important;
+  }
+  .row .offset9:first-child {
+    margin-left: 384px !important;
+  }
+  .row .offset10 {
+    margin-left: 500px !important;
+  }
+  .row .offset10:first-child {
+    margin-left: 480px !important;
+  }
+  .row .offset11 {
+    margin-left: 548px !important;
+  }
+  .row .offset11:first-child {
+    margin-left: 528px !important;
+  }
+  .row .offset12 {
+    margin-left: 596px !important;
+  }
+  .row .offset12:first-child {
+    margin-left: 576px !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 300px;
+  }
+  .row .span1,
+  .row .span2,
+  .row .span3,
+  .row .span4,
+  .row .span5,
+  .row .span6,
+  .row .span7,
+  .row .span8,
+  .row .span9,
+  .row .span10,
+  .row .span11,
+  .row .span12,
+  .row .span13,
+  .row .span14,
+  .row .span15,
+  .row .span16 {
+    float: none;
+    width: 300px;
+    margin-left: 0;
+  }
+  .row .span1:first-child,
+  .row .span2:first-child,
+  .row .span3:first-child,
+  .row .span4:first-child,
+  .row .span5:first-child,
+  .row .span6:first-child,
+  .row .span7:first-child,
+  .row .span8:first-child,
+  .row .span9:first-child,
+  .row .span10:first-child,
+  .row .span11:first-child,
+  .row .span12:first-child,
+  .row .span13:first-child,
+  .row .span14:first-child,
+  .row .span15:first-child,
+  .row .span16:first-child {
+    margin-left: 0;
+  }
+  .row .offset1,
+  .row .offset2,
+  .row .offset3,
+  .row .offset4,
+  .row .offset5,
+  .row .offset6,
+  .row .offset7,
+  .row .offset8,
+  .row .offset9,
+  .row .offset10,
+  .row .offset11,
+  .row .offset12 {
+    margin-left: 0 !important;
+  }
+  .row .offset1:first-child,
+  .row .offset2:first-child,
+  .row .offset3:first-child,
+  .row .offset4:first-child,
+  .row .offset5:first-child,
+  .row .offset6:first-child,
+  .row .offset7:first-child,
+  .row .offset8:first-child,
+  .row .offset9:first-child,
+  .row .offset10:first-child,
+  .row .offset11:first-child,
+  .row .offset12:first-child {
+    margin-left: 0 !important;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container {
+    width: 420px;
+  }
+  .row .span1,
+  .row .span2,
+  .row .span3,
+  .row .span4,
+  .row .span5,
+  .row .span6,
+  .row .span7,
+  .row .span8,
+  .row .span9,
+  .row .span10,
+  .row .span11,
+  .row .span12,
+  .row .span13,
+  .row .span14,
+  .row .span15,
+  .row .span16 {
+    float: none;
+    width: 420px;
+    margin-left: 0;
+  }
+  .row .span1:first-child,
+  .row .span2:first-child,
+  .row .span3:first-child,
+  .row .span4:first-child,
+  .row .span5:first-child,
+  .row .span6:first-child,
+  .row .span7:first-child,
+  .row .span8:first-child,
+  .row .span9:first-child,
+  .row .span10:first-child,
+  .row .span11:first-child,
+  .row .span12:first-child,
+  .row .span13:first-child,
+  .row .span14:first-child,
+  .row .span15:first-child,
+  .row .span16:first-child {
+    margin-left: 0;
+  }
+  .row .offset1,
+  .row .offset2,
+  .row .offset3,
+  .row .offset4,
+  .row .offset5,
+  .row .offset6,
+  .row .offset7,
+  .row .offset8,
+  .row .offset9,
+  .row .offset10,
+  .row .offset11,
+  .row .offset12 {
+    margin-left: 0 !important;
+  }
+  .row .offset1:first-child,
+  .row .offset2:first-child,
+  .row .offset3:first-child,
+  .row .offset4:first-child,
+  .row .offset5:first-child,
+  .row .offset6:first-child,
+  .row .offset7:first-child,
+  .row .offset8:first-child,
+  .row .offset9:first-child,
+  .row .offset10:first-child,
+  .row .offset11:first-child,
+  .row .offset12:first-child {
+    margin-left: 0 !important;
+  }
 }
