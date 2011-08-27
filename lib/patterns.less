@@ -579,6 +579,15 @@ input[type=submit].btn {
 // MODALS
 // ------
 
+.modal-backdrop,
+.modal {
+  .transition(opacity .15s linear);
+  opacity: 0;
+  &.open {
+    opacity: 1;
+  }
+}
+
 .modal-backdrop {
   background-color: rgba(0,0,0,.5);
   position: fixed;

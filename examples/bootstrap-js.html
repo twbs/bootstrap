@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le javascript -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="assets/js/bootstrap-modals.js"></script>
+    <!-- <script src="assets/js/bootstrap-alerts.js"></script> -->
+    <!-- <script src="assets/js/bootstrap-tips.js"></script> -->
+    <!-- <script src="assets/js/bootstrap-popovers.js"></script> -->
+
+    <!-- Le styles -->
+    <link href="../bootstrap-1.1.1.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body style="padding-top: 60px">
+
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <h3><a href="#">Bootstrap JS</a></h3>
+          <ul>
+            <li class="active"><a href="#modal">Getting Started</a></li>
+            <li><a href="#modal">Modals</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    <!-- Using Javascript w/ Bootstrap
+    ================================================== -->
+
+    <section id="javascript">
+      <div class="page-header">
+        <h1>Using Javascript with Less <small>A love story.</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>This page illustrates how to integrate javascript with the Bootstrap library. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
+        </div>
+        <div class="span12 columns">
+          <h2>What is all this?</h2>
+          <p>With this example page, we've set out to make your interactive work with Bootstrap even more simple, offering several lightweight plugins for things like modals, tooltips, and other dynamic components. These plugins have been coded up to work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>, but we encourage you to extend and modify them to fit your development needs!</p>
+          <h2>Do I need these?</h2>
+          <p>The short answer is <strong>NO!</strong> These plugins were provided to help you understand how to integrate bootstrap with javascript and to give you a quick lightweight option for dropping something in and getting the basic functionality.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Modal
+    ================================================== -->
+
+    <section id="javascript">
+      <div class="page-header">
+        <h1>Modals <small>bootstrap-modals.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>Our Modal plugin is <strong>super</strong> slim! We took special care to only include the bare functionality that we require at twitter, however we look forward to seeing all the cool stuff you do with it!</p>
+        </div>
+        <div class="span12 columns">
+          <h2>Using bootstrap-modal</h2>
+          <pre class="prettyprint linenums">$('#modal-content').modal();</pre>
+          <h3>Options</h3>
+          <ul>
+            <li><strong>backdrop</strong> (<code>boolean</code>) - if true, it will include a modal-backdrop element.</li>
+            <li><strong>closeOnEscape</strong> (<code>boolean</code>) - if true, it will close the modal when escape key is pressed.</li>
+            <li><strong>content</strong> (<code>string</code>) - alternative way of supplying modal class with HTML content.</li>
+          </ul>
+          <h3>Methods</h3>
+          <h4>$.modal</h4>
+          <p>Returns an instance of the modal class. It accepts either a <code>string</code> or an options <code>object</code>.</p>
+<pre class="prettyprint linenums">
+// Accepts HTML string
+$.modal(modalHTML)
+
+// Accepts Options
+$.modal({
+  backdrop: true
+, content: modalHTML
+})</pre>
+          <h4>$().modal</h4>
+          <p>Returns an instance of the modal class. Accepts an optional options <code>object</code>.</p>
+<pre class="prettyprint linenums">
+$('#modal-content').modal({
+  closeOnEscape: true
+});</pre>
+          <h4>.toggle</h4>
+          <p>Returns an instance of the modal class. Toggle the modal open state.</p>
+          <pre class="prettyprint linenums">$('#modal-content').modal().toggle()</pre>
+          <h4>.open</h4>
+          <p>Returns an instance of the modal class. Opens the modal.</p>
+          <pre class="prettyprint linenums">$('#modal-content').modal().open()</pre>
+          <h4>.close</h4>
+          <p>Returns an instance of the modal class. Closes the modal.</p>
+          <pre class="prettyprint linenums">$('#modal-content').modal().close()</pre>
+          <h3>Demo</h3>
+
+          <!-- sample modal content -->
+          <div id="modal-from-dom" class="modal">
+            <div class="modal-header">
+              <h3>Modal Heading</h3>
+              <a href="#" class="close">&times;</a>
+            </div>
+            <div class="modal-body">
+              <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn primary">Primary</a>
+              <a href="#" class="btn secondary">Secondary</a>
+            </div>
+          </div>
+
+          <button id="modal-basic" class="btn">Basic Modal</button>
+          <button id="modal-options" class="btn">Modal Options</button>
+          <button id="modal-from-element" class="btn">Modal From Element</button>
+
+          <script>
+            $(function () {
+
+              var modalHTML =
+                  '<div class="modal">'
+                + '<div class="modal-header">'
+                + '<h3>Modal Heading</h3>'
+                + '<a href="#" class="close">&times;</a>'
+                + '</div>'
+                + '<div class="modal-body">'
+                + '<p>One fine body…</p>'
+                + '</div>'
+                + '<div class="modal-footer">'
+                + '<a href="#" class="btn primary">Primary</a>'
+                + '<a href="#" class="btn secondary">Secondary</a>'
+                + '</div>'
+                + '</div>'
+
+              var simpleModal = $.modal(modalHTML)
+                , optionModal = $.modal({
+                    backdrop: true
+                  , content: modalHTML
+                  , closeOnEscape: true
+                })
+                , domModal = $("#modal-from-dom").modal({
+                    backdrop: true
+                  , content: modalHTML
+                  , closeOnEscape: true
+                })
+
+              $('#modal-basic').click(function () {
+                simpleModal.toggle()
+              });
+
+              $('#modal-options').click(function () {
+                optionModal.toggle();
+              });
+
+              $('#modal-from-element').click(function () {
+                domModal.toggle();
+              })
+
+            })
+          </script>
+
+        </div>
+      </div>
+    </section>
+    </div>
+  </body>
+</html>
