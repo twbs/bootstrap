@@ -3,7 +3,7 @@
   /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
    * ======================================================= */
 
-  $.support.transition = (function(){
+  $.support.transition = (function () {
     var thisBody = document.body || document.documentElement
       , thisStyle = thisBody.style
       , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
@@ -18,13 +18,13 @@
     , transitionEnd
 
   // set CSS transition event type
-  if ($.support.transition) {
+  if ( $.support.transition ) {
     transitionEnd = "TransitionEnd"
-    if ($.browser.webkit) {
+    if ( $.browser.webkit ) {
     	transitionEnd = "webkitTransitionEnd"
-    } else if ($.browser.mozilla) {
+    } else if ( $.browser.mozilla ) {
     	transitionEnd = "transitionend"
-    } else if ($.browser.opera) {
+    } else if ( $.browser.opera ) {
     	transitionEnd = "oTransitionEnd"
     }
   }
@@ -33,7 +33,7 @@
  /* MODAL PUBLIC CLASS DEFINITION
   * ============================= */
 
-  var Modal = function (options) {
+  var Modal = function ( options ) {
     this.settings = {
       backdrop: false
     , closeOnEscape: false
@@ -106,11 +106,11 @@
 
     backdrop: function () {
       var that = this
-      if (this.isOpen && this.settings.backdrop) {
+      if ( this.isOpen && this.settings.backdrop ) {
         this.$backdrop = $('<div class="modal-backdrop" />')
           .click(function () { that.close() })
           .appendTo(document.body)
-      } else if (!this.isOpen && this.$backdrop){
+      } else if ( !this.isOpen && this.$backdrop ) {
         this.$backdrop.removeClass('open')
 
         function removeElement() {
@@ -126,13 +126,13 @@
 
   , onEscape: function () {
       var that = this
-      if (this.isOpen && this.settings.closeOnEscape) {
-        $window.bind('keyup.modal.escape', function (e) {
+      if ( this.isOpen && this.settings.closeOnEscape ) {
+        $window.bind('keyup.modal.escape', function ( e ) {
           if ( e.which == 27 ) {
             that.close()
           }
         })
-      } else if (!this.isOpen) {
+      } else if ( !this.isOpen ) {
         $window.unbind('keyup.modal.escape')
       }
     }
@@ -143,11 +143,11 @@
  /* MODAL PLUGIN DEFINITION
   * ======================= */
 
-  $.modal = function (options) {
+  $.modal = function ( options ) {
     return new Modal(options)
   }
 
-  $.fn.modal = function (options) {
+  $.fn.modal = function ( options ) {
     options = options || {}
     options.content = this
     return new Modal(options)
