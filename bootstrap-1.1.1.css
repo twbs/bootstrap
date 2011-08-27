@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Aug 26 22:42:50 PDT 2011
+ * Date: Sat Aug 27 00:02:34 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1790,6 +1790,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   opacity: 0;
 }
 .modal-backdrop.open, .modal.open {
+  display: block;
   opacity: 1;
 }
 .modal-backdrop {
@@ -1802,6 +1803,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   z-index: 1000;
 }
 .modal {
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
