@@ -59,7 +59,7 @@
       var that = this
       this.isOpen = true
 
-      _private.onEscape.call(this)
+      _private.escape.call(this)
       _private.backdrop.call(this)
 
       this.$element = $(this.settings.content)
@@ -80,7 +80,7 @@
 
       this.isOpen = false
 
-      _private.onEscape.call(this)
+      _private.escape.call(this)
       _private.backdrop.call(this)
 
       this.$element.removeClass('open')
@@ -125,7 +125,7 @@
       }
     }
 
-  , onEscape: function () {
+  , escape: function () {
       var that = this
       if ( this.isOpen && this.settings.closeOnEscape ) {
         $window.bind('keyup.modal.escape', function ( e ) {
