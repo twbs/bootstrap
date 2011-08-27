@@ -34,11 +34,7 @@
   * ============================= */
 
   var Modal = function ( options ) {
-    this.settings = {
-      backdrop: false
-    , closeOnEscape: false
-    , content: false
-    }
+    this.settings = $.extend({}, $.fn.modal.defaults)
 
     if ( typeof options == 'string' ) {
       this.settings.content = options
@@ -59,8 +55,8 @@
       var that = this
       this.isOpen = true
 
-      _private.escape.call(this)
-      _private.backdrop.call(this)
+      _.escape.call(this)
+      _.backdrop.call(this)
 
       this.$element = $(this.settings.content)
         .delegate('.close', 'click', function (e) { e.preventDefault(); that.close() })
@@ -68,8 +64,8 @@
         .show()
 
       setTimeout(function () {
-        that.$element.addClass('open')
-        that.$backdrop && that.$backdrop.addClass('open')
+        that.$element.addClass('show')
+        that.$backdrop && that.$backdrop.addClass('show')
       }, 1)
 
       return this
@@ -80,10 +76,10 @@
 
       this.isOpen = false
 
-      _private.escape.call(this)
-      _private.backdrop.call(this)
+      _.escape.call(this)
+      _.backdrop.call(this)
 
-      this.$element.removeClass('open')
+      this.$element.removeClass('show')
 
       function removeElement () {
         that.$element.remove()
@@ -103,7 +99,7 @@
  /* MODAL PRIVATE METHODS
   * ===================== */
 
-  var _private = {
+  var _ = {
 
     backdrop: function () {
       var that = this
@@ -112,7 +108,7 @@
           .click(function () { that.close() })
           .appendTo(document.body)
       } else if ( !this.isOpen && this.$backdrop ) {
-        this.$backdrop.removeClass('open')
+        this.$backdrop.removeClass('show')
 
         function removeElement() {
           that.$backdrop.remove()
@@ -144,14 +140,16 @@
  /* MODAL PLUGIN DEFINITION
   * ======================= */
 
-  $.modal = function ( options ) {
-    return new Modal(options)
-  }
-
   $.fn.modal = function ( options ) {
     options = options || {}
     options.content = this
     return new Modal(options)
+  }
+
+  $.fn.modal.defaults = {
+    backdrop: false
+  , closeOnEscape: false
+  , content: false
   }
 
 })( jQuery || ender )

@@ -13,9 +13,9 @@
 
     <!-- Le javascript -->
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-    <script src="assets/js/bootstrap-modals.js"></script>
-    <!-- <script src="assets/js/bootstrap-alerts.js"></script> -->
-    <!-- <script src="assets/js/bootstrap-tips.js"></script> -->
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-alerts.js"></script>
+    <script src="assets/js/bootstrap-twipsy.js"></script>
     <!-- <script src="assets/js/bootstrap-popovers.js"></script> -->
 
     <!-- Le styles -->
@@ -28,7 +28,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
-  <body style="padding-top: 60px">
+  <body style="padding: 60px 0">
 
     <!-- Topbar
     ================================================== -->
@@ -37,8 +37,10 @@
         <div class="container">
           <h3><a href="#">Bootstrap JS</a></h3>
           <ul>
-            <li class="active"><a href="#modal">Getting Started</a></li>
+            <li class="active"><a href="#javascript">Getting Started</a></li>
             <li><a href="#modal">Modals</a></li>
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#twipsy">Twipsy</a></li>
           </ul>
         </div>
       </div>
@@ -71,17 +73,18 @@
     <!-- Modal
     ================================================== -->
 
-    <section id="javascript">
+    <section id="modal">
       <div class="page-header">
-        <h1>Modals <small>bootstrap-modals.js</small></h1>
+        <h1>Modals <small>bootstrap-modal.js</small></h1>
       </div>
       <div class="row">
         <div class="span4 columns">
           <p>Our Modal plugin is <strong>super</strong> slim! We took special care to only include the bare functionality that we require at twitter, however we look forward to seeing all the cool stuff you do with it!</p>
+          <a href="assets/js/bootstrap-modal.js" class="btn primary">Download</a>
         </div>
         <div class="span12 columns">
           <h2>Using bootstrap-modal</h2>
-          <pre class="prettyprint linenums">$('#modal-content').modal();</pre>
+          <pre class="prettyprint linenums">$('#modal-content').modal(options)</pre>
           <h3>Options</h3>
           <ul>
             <li><strong>backdrop</strong> (<code>boolean</code>) - if true, it will include a modal-backdrop element.</li>
@@ -89,23 +92,12 @@
             <li><strong>content</strong> (<code>string</code>) - alternative way of supplying modal class with HTML content.</li>
           </ul>
           <h3>Methods</h3>
-          <h4>$.modal</h4>
-          <p>Returns an instance of the modal class. It accepts either a <code>string</code> or an options <code>object</code>.</p>
-<pre class="prettyprint linenums">
-// Accepts HTML string
-$.modal(modalHTML)
-
-// Accepts Options
-$.modal({
-  backdrop: true
-, content: modalHTML
-})</pre>
           <h4>$().modal</h4>
           <p>Returns an instance of the modal class. Accepts an optional options <code>object</code>.</p>
 <pre class="prettyprint linenums">
 $('#modal-content').modal({
   closeOnEscape: true
-});</pre>
+})</pre>
           <h4>.toggle</h4>
           <p>Returns an instance of the modal class. Toggle the modal open state.</p>
           <pre class="prettyprint linenums">$('#modal-content').modal().toggle()</pre>
@@ -118,7 +110,7 @@ $('#modal-content').modal({
           <h3>Demo</h3>
 
           <!-- sample modal content -->
-          <div id="modal-from-dom" style="display: none" class="modal">
+          <div id="modal-from-dom" class="modal hide">
             <div class="modal-header">
               <h3>Modal Heading</h3>
               <a href="#" class="close">&times;</a>
@@ -132,50 +124,17 @@ $('#modal-content').modal({
             </div>
           </div>
 
-          <button id="modal-basic" class="btn">Basic Modal</button>
-          <button id="modal-options" class="btn">Modal Options</button>
-          <button id="modal-from-element" class="btn">Modal From Element</button>
+          <button id="modal-from-element" class="btn">Launch Modal</button>
 
           <script>
             $(function () {
-
-              var modalHTML =
-                  '<div class="modal">'
-                + '<div class="modal-header">'
-                + '<h3>Modal Heading</h3>'
-                + '<a href="#" class="close">&times;</a>'
-                + '</div>'
-                + '<div class="modal-body">'
-                + '<p>One fine body…</p>'
-                + '</div>'
-                + '<div class="modal-footer">'
-                + '<a href="#" class="btn primary">Primary</a>'
-                + '<a href="#" class="btn secondary">Secondary</a>'
-                + '</div>'
-                + '</div>'
-
-              var simpleModal = $.modal(modalHTML)
-                , optionModal = $.modal({
-                    backdrop: true
-                  , content: modalHTML
-                  , closeOnEscape: true
-                })
-                , domModal = $("#modal-from-dom").modal({
-                    backdrop: true
-                  , content: modalHTML
-                  , closeOnEscape: true
-                })
-
-              $('#modal-basic').click(function () {
-                simpleModal.toggle()
-              });
-
-              $('#modal-options').click(function () {
-                optionModal.toggle();
-              });
+              var domModal = $("#modal-from-dom").modal({
+                backdrop: true
+              , closeOnEscape: true
+              })
 
               $('#modal-from-element').click(function () {
-                domModal.toggle();
+                domModal.toggle()
               })
 
             })
@@ -184,6 +143,110 @@ $('#modal-content').modal({
         </div>
       </div>
     </section>
+
+    <!-- Alerts
+    ================================================== -->
+
+    <section id="alerts">
+      <div class="page-header">
+        <h1>Alerts <small>bootstrap-alerts.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>The alert plugin is a super tiny class for adding close functionality to alerts.</p>
+          <a href="assets/js/bootstrap-alerts.js" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h2>Using bootstrap-alert</h2>
+          <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
+          <h3>Methods</h3>
+          <h4>$().alert</h4>
+          <p>Wraps all alerts with close functionality.</p>
+          <h3>Demo</h3>
+          <div class="alert-message show warning">
+            <a class="close" href="#">&times;</a>
+            <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
+          </div>
+          <div class="alert-message show block-message error">
+            <a class="close" href="#">&times;</a>
+            <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+            <div class="alert-actions">
+              <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+            </div>
+          </div>
+          <script>
+            $(function () {
+              $(".alert-message").alert()
+            })
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips
+    ================================================== -->
+
+    <section id="twipsy">
+      <div class="page-header">
+        <h1>Twipsy <small>bootstrap-twipsy.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for title storage!</p>
+          <a href="assets/js/bootstrap-twipsy.js" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h2>Using bootstrap-twipsy.js</h2>
+          <pre class="prettyprint linenums">$('#example').twipsy(options)</pre>
+          <h3>Options</h3>
+          <ul>
+            <li><strong>delayIn</strong> (<code>number</code>) - delay before showing tooltip (ms).</li>
+            <li><strong>delayOut</strong> (<code>number</code>) - delay before hiding tooltip (ms).</li>
+            <li><strong>fallback</strong> (<code>string</code>) - fallback text to use when no tooltip text.</li>
+            <li><strong>placement</strong> (<code>string</code>) - position of tooltip - above | below | left | right.</li>
+            <li><strong>html</strong> (<code>boolean</code>) - is tooltip content HTML?</li>
+            <li><strong>live</strong> (<code>boolean</code>) - use live event support?</li>
+            <li><strong>offset</strong> (<code>number</code>) - pixel offset of tooltip from element.</li>
+            <li><strong>title</strong> (<code>string|function</code>) - attribute/callback containing tooltip text.</li>
+            <li><strong>trigger</strong> (<code>string</code>) - how tooltip is triggered - hover | focus | manual.</li>
+          </ul>
+          <h3>Methods</h3>
+          <h4>$().twipsy</h4>
+          <p>Attaches a twipsy handler to an element collection.</p>
+          <h3>Demo</h3>
+          <p>Mustache next level keffiyeh you <a href="#" rel='twipsy' title='Some title text'>probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown you probably haven't heard of them before they sold out. Farm-to-table <a href="#" rel='twipsy' title='i <3 cardigans'>cardigans</a> seitan tofu, mcsweeney's fixie sustainable quinoa 8-bit american apparel terry richardson vinyl chambray. Fap beard stumptown, <a href="#" rel='twipsy' title='Another twipsy'>williamsburg</a> banh mi lomo thundercats. DIY tofu biodiesel marfa, four loko mcsweeney's master cleanse vegan chambray. Etsy fap ethical, wes anderson farm-to-table +1 whatever bicycle rights mixtape portland readymade letterpress artisan. Four loko artisan whatever keytar, scenester farm-to-table <a href="#" rel='twipsy' title='The last tip!'>PBR</a> banksy Austin freegan cred raw denim single-origin coffee viral.
+          </p>
+          <script>
+            $(function () {
+              $("a[rel=twipsy]").twipsy({
+                live: true
+              })
+            })
+          </script>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Section
+    ================================================== -->
+
+    <!--
+    <section id="section">
+      <div class="page-header">
+        <h1></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p></p>
+        </div>
+        <div class="span12 columns">
+          <h3></h3>
+          <p></p>
+        </div>
+      </div>
+    </section>
+    -->
     </div>
   </body>
 </html>

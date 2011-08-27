@@ -291,7 +291,6 @@ footer {
 // BUTTON STYLES
 // -------------
 
-
 // Base .btn styles
 .btn {
   // Button Base
@@ -422,7 +421,6 @@ input[type=submit].btn {
     padding: 14px;
     border-color: #fceec1;
     .box-shadow(none);
-
     p {
       margin-right: 30px;
     }
@@ -578,15 +576,6 @@ input[type=submit].btn {
 
 // MODALS
 // ------
-
-.modal-backdrop,
-.modal {
-  .transition(opacity .15s linear);
-  opacity: 0;
-  &.open {
-    opacity: 1;
-  }
-}
 
 .modal-backdrop {
   background-color: rgba(0,0,0,.5);
@@ -756,5 +745,20 @@ input[type=submit].btn {
     p, ul, ol {
       margin-bottom: 0;
     }
+  }
+}
+
+
+// Pattern Animations
+// ------------------
+
+.modal-backdrop,
+.modal,
+.twipsy,
+.alert-message {
+  .transition(opacity .15s linear);
+  opacity: 0;
+  &.show {
+    opacity: 1;
   }
 }
