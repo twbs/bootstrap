@@ -9,7 +9,7 @@
 
 .row {
   .clearfix();
-  margin-left: -20px;
+  margin-left: (-1 * @gridGutterWidth);
 
   // Default columns
   .span1,
@@ -30,7 +30,7 @@
   .span16 {
     display: inline;
     float: left;
-    margin-left: 20px;
+    margin-left: @gridGutterWidth;
   }
 
   // Default columns
@@ -198,7 +198,7 @@ a {
 button.btn,
 input[type=submit].btn {
   &::-moz-focus-inner {
-  	padding: 0;
-  	border: 0;
+    padding: 0;
+    border: 0;
   }
 }
