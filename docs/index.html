@@ -34,10 +34,10 @@
     <!-- Topbar
     ================================================== -->
     <div class="topbar">
-      <div class="fill">
+      <div class="wrapper">
         <div class="container">
           <h3><a href="#">Bootstrap</a></h3>
-          <ul>
+          <ul class="nav">
             <li class="active"><a href="#masthead">Overview</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#grid-system">Grid</a></li>
@@ -901,22 +901,31 @@
   <h2>Fixed topbar</h2>
   <div class="topbar-wrapper" style="z-index: 5;">
     <div class="topbar">
-      <div class="fill">
+      <div class="wrapper">
         <div class="container">
           <h3><a href="#">Project Name</a></h3>
-          <ul>
+          <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Secondary link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
           </ul>
           <form action="">
             <input type="text" placeholder="Search" />
           </form>
           <ul class="nav secondary-nav">
-            <li class="menu">
-              <a href="#" class="menu">Dropdown</a>
-              <ul class="menu-dropdown">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
                 <li><a href="#">Secondary link</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
@@ -960,6 +969,15 @@
         <li><a href="#">Messages</a></li>
         <li><a href="#">Settings</a></li>
         <li><a href="#">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Secondary link</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Another link</a></li>
+          </ul>
+        </li>
       </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
