@@ -1,4 +1,4 @@
-/* Based on the original tipsy by Jason Frame */
+/* Adapted from the original jQuery.tipsy by Jason Frame */
 
 (function( $ ) {
 
