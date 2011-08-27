@@ -8,174 +8,176 @@
 
 form {
   margin-bottom: @baseline;
+}
 
-  // Groups of fields with labels on top (legends)
-  fieldset {
-    margin-bottom: @baseline;
-    padding-top: @baseline;
-    legend {
-      display: block;
-      margin-left: 150px;
-      font-size: 20px;
-      line-height: 1;
-      *margin: 0 0 5px 145px; /* IE6-7 */
-      *line-height: 1.5; /* IE6-7 */
-      color: @grayDark;
-    }
-  }
-
-  // Parent element that clears floats and wraps labels and fields together
-  .clearfix {
-    margin-bottom: @baseline;
-  }
-
-  // Set font for forms
-  label, input, select, textarea {
-    #font > .sans-serif(normal,13px,normal);
-  }
-
-  // Float labels left
-  label {
-    padding-top: 6px;
-    font-size: 13px;
-    line-height: 18px;
-    float: left;
-    width: 130px;
-    text-align: right;
+// Groups of fields with labels on top (legends)
+fieldset {
+  margin-bottom: @baseline;
+  padding-top: @baseline;
+  legend {
+    display: block;
+    margin-left: 150px;
+    font-size: 20px;
+    line-height: 1;
+    *margin: 0 0 5px 145px; /* IE6-7 */
+    *line-height: 1.5; /* IE6-7 */
     color: @grayDark;
   }
+}
 
-  // Shift over the inside div to align all label's relevant content
-  div.input {
-    margin-left: 150px;
+// Parent element that clears floats and wraps labels and fields together
+.clearfix {
+  margin-bottom: @baseline;
+}
+
+// Set font for forms
+label,
+input,
+select,
+textarea {
+  #font > .sans-serif(normal,13px,normal);
+}
+
+// Float labels left
+label {
+  padding-top: 6px;
+  font-size: 13px;
+  line-height: 18px;
+  float: left;
+  width: 130px;
+  text-align: right;
+  color: @grayDark;
+}
+
+// Shift over the inside div to align all label's relevant content
+div.input {
+  margin-left: 150px;
+}
+
+// Checkboxs and radio buttons
+input[type=checkbox],
+input[type=radio] {
+  cursor: pointer;
+}
+
+// Inputs, Textareas, Selects
+input[type=text],
+input[type=password],
+textarea,
+select,
+.uneditable-input {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  line-height: @baseline;
+  height: @baseline;
+  color: @gray;
+  border: 1px solid #ccc;
+  .border-radius(3px);
+}
+select,
+input[type=file] {
+  height: @baseline * 1.5;
+  line-height: @baseline * 1.5;
+}
+textarea {
+  height: auto;
+}
+.uneditable-input {
+  background-color: #eee;
+  display: block;
+  border-color: #ccc;
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.075));
+}
+
+// Placeholder text gets special styles; can't be bundled together though for some reason
+:-moz-placeholder {
+  color: @grayLight;
+}
+::-webkit-input-placeholder {
+  color: @grayLight;
+}
+
+// Focus states
+input[type=text],
+input[type=password],
+select, textarea {
+  @transition: border linear .2s, box-shadow linear .2s;
+  .transition(@transition);
+  .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
+}
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(82,168,236,.8);
+  @shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+  .box-shadow(@shadow);
+}
+
+// Error styles
+form div.error {
+  background: lighten(@red, 57%);
+  padding: 10px 0;
+  margin: -10px 0 10px;
+  .border-radius(4px);
+  @error-text: desaturate(lighten(@red, 25%), 25%);
+  > label,
+  span.help-inline,
+  span.help-block {
+    color: @red;
   }
-
-  // Checkboxs and radio buttons
-  input[type=checkbox],
-  input[type=radio] {
-    cursor: pointer;
-  }
-
-  // Inputs, Textareas, Selects
   input[type=text],
   input[type=password],
-  textarea,
-  select,
-  .uneditable-input {
-    display: inline-block;
-    width: 210px;
-    margin: 0;
-    padding: 4px;
-    font-size: 13px;
-    line-height: @baseline;
-    height: @baseline;
-    color: @gray;
-    border: 1px solid #ccc;
-    .border-radius(3px);
-  }
-  select,
-  input[type=file] {
-    height: @baseline * 1.5;
-    line-height: @baseline * 1.5;
-  }
   textarea {
-    height: auto;
-  }
-  .uneditable-input {
-    background-color: #eee;
-    display: block;
-    border-color: #ccc;
-    .box-shadow(inset 0 1px 2px rgba(0,0,0,.075));
-  }
-
-  // Placeholder text gets special styles; can't be bundled together though for some reason
-  :-moz-placeholder {
-    color: @grayLight;
-  }
-  ::-webkit-input-placeholder {
-    color: @grayLight;
-  }
-
-  // Focus states
-  input[type=text],
-  input[type=password],
-  select, textarea {
-    @transition: border linear .2s, box-shadow linear .2s;
-    .transition(@transition);
-    .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
-  }
-  input[type=text]:focus,
-  input[type=password]:focus,
-  textarea:focus {
-    outline: none;
-    border-color: rgba(82,168,236,.8);
-    @shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-    .box-shadow(@shadow);
-  }
-
-  // Error styles
-  div.error {
-    background: lighten(@red, 57%);
-    padding: 10px 0;
-    margin: -10px 0 10px;
-    .border-radius(4px);
-    @error-text: desaturate(lighten(@red, 25%), 25%);
-    > label,
-    span.help-inline,
-    span.help-block {
-      color: @red;
+    border-color: @error-text;
+    .box-shadow(0 0 3px rgba(171,41,32,.25));
+    &:focus {
+      border-color: darken(@error-text, 10%);
+      .box-shadow(0 0 6px rgba(171,41,32,.5));
     }
-    input[type=text],
-    input[type=password],
-    textarea {
+  }
+  .input-prepend,
+  .input-append {
+    span.add-on {
+      background: lighten(@red, 50%);
       border-color: @error-text;
-      .box-shadow(0 0 3px rgba(171,41,32,.25));
-      &:focus {
-        border-color: darken(@error-text, 10%);
-        .box-shadow(0 0 6px rgba(171,41,32,.5));
-      }
-    }
-    .input-prepend,
-    .input-append {
-      span.add-on {
-        background: lighten(@red, 50%);
-        border-color: @error-text;
-        color: darken(@error-text, 10%);
-      }
+      color: darken(@error-text, 10%);
     }
   }
+}
 
-  // Form element sizes
-  .input-mini, input.mini, textarea.mini, select.mini {
-    width: 60px;
-  }
-  .input-small, input.small, textarea.small, select.small {
-    width: 90px;
-  }
-  .input-medium, input.medium, textarea.medium, select.medium {
-    width: 150px;
-  }
-  .input-large, input.large, textarea.large, select.large {
-    width: 210px;
-  }
-  .input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
-    width: 270px;
-  }
-  .input-xxlarge, input.xxlarge, textarea.xxlarge, select.xxlarge {
-    width: 530px;
-  }
-  textarea.xxlarge {
-    overflow-y: scroll;
-  }
+// Form element sizes
+.input-mini, input.mini, textarea.mini, select.mini {
+  width: 60px;
+}
+.input-small, input.small, textarea.small, select.small {
+  width: 90px;
+}
+.input-medium, input.medium, textarea.medium, select.medium {
+  width: 150px;
+}
+.input-large, input.large, textarea.large, select.large {
+  width: 210px;
+}
+.input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
+  width: 270px;
+}
+.input-xxlarge, input.xxlarge, textarea.xxlarge, select.xxlarge {
+  width: 530px;
+}
+textarea.xxlarge {
+  overflow-y: scroll;
+}
 
-  // Turn off focus for disabled (read-only) form elements
-  input[readonly]:focus,
-  textarea[readonly]:focus,
-  input.disabled {
-    background: #f5f5f5;
-    border-color: #ddd;
-    .box-shadow(none);
-  }
+// Turn off focus for disabled (read-only) form elements
+input[readonly]:focus,
+textarea[readonly]:focus,
+input.disabled {
+  background: #f5f5f5;
+  border-color: #ddd;
+  .box-shadow(none);
 }
 
 // Actions (the buttons)
@@ -262,13 +264,11 @@ form {
     border-color: @green;
   }
 }
-
 .input-prepend {
   .add-on {
     *margin-top: 1px; /* IE6-7 */
   }
 }
-
 .input-append {
   input[type=text],
   input[type=password] {
@@ -322,7 +322,7 @@ form {
 }
 
 // Stacked forms
-form.form-stacked {
+.form-stacked {
   padding-left: 20px;
   fieldset {
     padding-top: @baseline / 2;

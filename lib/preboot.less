@@ -36,6 +36,7 @@
 @gridColumns:       16;
 @gridColumnWidth:   40px;
 @gridGutterWidth:   20px;
+@extraSpace:        40px;
 @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // Color Scheme
@@ -125,21 +126,10 @@
   .clearfix();
 }
 .columns(@columnSpan: 1) {
-  float: left;
   width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
-  margin-left: @gridGutterWidth;
-  &:first-child {
-    margin-left: 0;
-  }
-}
-.offsetMath(@extraSpace: 40px) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace !important;
 }
 .offset(@columnOffset: 1) {
-  .offsetMath(40px);
-  &:first-child {
-    .offsetMath(20px);
-  }
+  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
 }
 
 // Border Radius
@@ -180,28 +170,6 @@
           column-gap: @columnGap;
 }
 
-// Buttons
-// .button(@color: #fff, @padding: 4px 14px, @textColor: #333, @textShadow: 0 1px 1px rgba(255,255,255,.75), @fontSize: 13px, @borderColor: rgba(0,0,0,.1), @borderRadius: 4px) {
-//  display: inline-block;
-//  #gradient > .vertical-three-colors(@color, @color, 0.25, darken(@color, 10%));
-//  padding: @padding;
-//  text-shadow: @textShadow;
-//  color: @textColor;
-//  font-size: @fontSize;
-//  line-height: @baseline;
-//  border: 1px solid;
-//  border-color: #ccc #ccc #bbb;
-//  border-color: borderColor borderColor fadein(@borderColor, 15%);
-//  .border-radius(@borderRadius);
-//  @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-//  .box-shadow(@shadow);
-//  &:hover {
-//    background-position: 0 -15px;
-//    color: @textColor;
-//    text-decoration: none;
-//  }
-// }
-
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
   .background(@color: @white, @alpha: 1) {
@@ -211,6 +179,42 @@
 		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
 		background-clip: padding-box;
 	}
+}
+
+// Gradient Bar Colors for buttons and allerts
+.gradientBar(@primaryColor, @secondaryColor) {
+  #gradient > .vertical(@primaryColor, @secondaryColor);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+// Shared colors for buttons and alerts
+.btn,
+.alert-message {
+  // Set text color
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: @white
+  }
+  // Danger and error appear as red
+  &.danger,
+  &.error {
+    .gradientBar(#ee5f5b, #c43c35);
+  }
+  // Success appears as green
+  &.success {
+    .gradientBar(#62c462, #57a957);
+  }
+  // Info appears as a neutral blue
+  &.info {
+    .gradientBar(#5bc0de, #339bb9);
+  }
 }
 
 // Gradients
@@ -230,12 +234,12 @@
     background-color: @endColor;
     background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
-    background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
+    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
-    background-image: linear-gradient(@startColor, @endColor); // The standard
+    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(top, @startColor, @endColor); // The standard
   }
   .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
     background-color: @endColor;

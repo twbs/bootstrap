@@ -288,100 +288,167 @@ footer {
   }
 }
 
+// BUTTON STYLES
+// -------------
+
+
+// Base .btn styles
+.btn {
+  // Button Base
+  cursor: pointer;
+  display: inline-block;
+  #gradient > .vertical-three-colors(#fff, #fff, 0.25, darken(#fff, 10%));
+  padding: 5px 14px 6px;
+  text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  color: #333;
+  font-size: 13px;
+  line-height: normal;
+  border: 1px solid #ccc;
+  border-bottom-color: #bbb;
+  .border-radius(4px);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
+
+  &:hover {
+    background-position: 0 -15px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  // Primary Button Type
+  &.primary {
+    color:#fff;
+    .gradientBar(@blue, @blueDark)
+  }
+
+   // Transitions
+  .transition(.1s linear all);
+
+  // Active and Disabled states
+  &.disabled {
+    cursor: default;
+    background-image: none;
+    .opacity(65);
+  }
+
+  &:disabled {
+    // disabled pseudo can't be included with .disabled
+    // def because IE8 and below will drop it ;_;
+    cursor: default;
+    background-image: none;
+    .opacity(65);
+  }
+
+  &:active {
+    @shadow: inset 0 3px 7px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+  }
+
+  // Button Sizes
+  &.large {
+    font-size: 16px;
+    line-height: normal;
+    padding: 9px 14px 9px;
+    .border-radius(6px);
+  }
+
+  &.small {
+    padding: 7px 9px 7px;
+    font-size: 11px;
+  }
+
+}
+
+// Help Firefox not be a jerk about adding extra padding to buttons
+button.btn,
+input[type=submit].btn {
+  &::-moz-focus-inner {
+  	padding: 0;
+  	border: 0;
+  }
+}
+
+
 
 // ERROR STYLES
 // ------------
 
-// One-liner alert bars
+// Base alert styles
 .alert-message {
-  // TODO: Ask cloudhead how to do this fancy filter elegantly. Less eval is returning strings with quotes ;_;
-  #gradient > .vertical(transparent, rgba(0,0,0,0.15));
-  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#15000000')";
-  background-color: @grayLighter;
+  .gradientBar(#fceec1, #eedc94); // warning by default
   margin-bottom: @baseline;
-  padding: 8px 15px;
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
-  border-bottom: 1px solid rgba(0,0,0,.3);
+  padding: 7px 14px;
+  color: @grayDark;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  border-width: 1px;
+  border-style: solid;
   .border-radius(4px);
+  .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+
+  // Remove extra margin from content
+  h5 {
+    line-height: @baseline;
+  }
   p {
-    color: #fff;
     margin-bottom: 0;
-    + p {
-      margin-top: 5px;
-    }
   }
-  &.error {
-    #gradient > .vertical(lighten(@red, 30%), lighten(@red, 15%));
-    border-bottom-color: lighten(@red, 5%);
+  div {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    line-height: 28px;
   }
-  &.warning {
-    #gradient > .vertical(lighten(@yellow, 25%), lighten(@yellow, 10%));
-    border-bottom-color: @yellow;
-  }
-  &.success {
-    #gradient > .vertical(lighten(@green, 25%), lighten(@green, 10%));
-    border-bottom-color: @green;
-  }
-  &.info {
-    #gradient > .vertical(lighten(@blue, 25%), lighten(@blue, 5%));
-    border-bottom-color: @blue;
+  .btn {
+    // Provide actions with buttons
+    .box-shadow(0 1px 0 rgba(255,255,255,.25));
   }
   .close {
     float: right;
     margin-top: -2px;
-    color: #000;
+    color: @black;
     font-size: 20px;
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(255,255,255,1);
     .opacity(20);
     &:hover {
+      color: @black;
       text-decoration: none;
       .opacity(40);
     }
   }
-}
 
-// Block-level Alerts
-.block-message {
-  margin-bottom: @baseline;
-  padding: 14px;
-  color: @grayDark;
-  color: rgba(0,0,0,.8);
-  *color: @grayDark; /* IE 6-7 */
-  text-shadow: 0 1px 0 rgba(255,255,255,.25);
-  .border-radius(6px);
-  p {
-    color: @grayDark;
-    color: rgba(0,0,0,.8);
-    *color: @grayDark; /* IE 6-7 */
-    margin-right: 30px;
-    margin-bottom: 0;
-  }
-  ul {
-    margin-bottom: 0;
-  }
-  strong {
-    display: block;
-  }
-  &.error {
-    background: lighten(@red, 55%);
-    border: 1px solid lighten(@red, 50%);
-  }
-  &.warning {
-    background: lighten(@yellow, 35%);
-    border: 1px solid lighten(@yellow, 25%)
-  }
-  &.success {
-    background: lighten(@green, 45%);
-    border: 1px solid lighten(@green, 35%)
-  }
-  &.info {
-    background: lighten(@blue, 45%);
-    border: 1px solid lighten(@blue, 40%);
+  &.block-message {
+    background-image: none;
+    background-color: lighten(#fceec1, 5%);
+    padding: 14px;
+    border-color: #fceec1;
+    .box-shadow(none);
+
+    p {
+      margin-right: 30px;
+    }
+    .alert-actions {
+      margin-top: 5px;
+    }
+    &.error,
+    &.success,
+    &.info {
+      color: @grayDark;
+      text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    }
+    &.error {
+      background-color: lighten(#f56a66, 25%);
+      border-color: lighten(#f56a66, 20%);
+    }
+    &.success {
+      background-color: lighten(#62c462, 30%);
+      border-color: lighten(#62c462, 25%);
+    }
+    &.info {
+      background-color: lighten(#6bd0ee, 25%);
+      border-color: lighten(#6bd0ee, 20%);
+    }
   }
 }
-
 
 // NAVIGATION
 // ----------
@@ -557,6 +624,7 @@ footer {
     .border-radius(0 0 6px 6px);
     .box-shadow(inset 0 1px 0 #fff);
     .clearfix();
+    margin-bottom: 0;
     .btn {
       float: right;
       margin-left: 10px;
