@@ -105,6 +105,8 @@
 
 // NAVIGATION
 // ----------
+
+// Topbar Nav
 // ul.nav for all topbar based navigation to avoid inheritance issues and over-specificity
 .nav {
   display: block;
@@ -112,11 +114,6 @@
   margin: 0 10px 0 0;
   position: relative;
   left: 0;
-  &.secondary-nav {
-    float: right;
-    margin-left: 10px;
-    margin-right: 0;
-  }
   li {
     display: block;
     float: left;
@@ -138,9 +135,42 @@
     }
   }
 
+  // Secondary (floated right) nav in topbar
+  &.secondary-nav {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+    .dropdown .dropdown-menu {
+      right: 0;
+    }
+  }
   // Dropdowns within the .nav
-  &.secondary-nav li .dropdown-menu {
-    right: 0;
+  .dropdown-toggle:hover,
+  .dropdown.open .dropdown-toggle {
+    background-color: #444;
+    background-color: rgba(255,255,255,.05);
+    *background-color: #444; // IE6-7
+  }
+  .dropdown-menu {
+    background-color: #333;
+    .dropdown-toggle {
+      color: #fff;
+      &.open {
+        background-color: rgba(255,255,255,.05);
+      }
+    }
+    li a {
+      color: #999;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      &:hover {
+        #gradient > .vertical(#292929,#191919);
+        color: #fff;
+      }
+    }
+    .divider {
+      background-color: #222;
+      border-color: #444;
+    }
   }
 }
 
@@ -223,12 +253,14 @@
 .dropdown.open {
   .dropdown-toggle {
     color: #fff;
+    background-color: #ccc;
     background-color: rgba(0,0,0,.3);
   }
   .dropdown-menu {
     display: block;
   }
 }
+
 
 // Tabs and Pills
 .tabs,

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Aug 26 20:37:39 PDT 2011
+ * Date: Fri Aug 26 23:07:21 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1303,11 +1303,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   position: relative;
   left: 0;
 }
-.nav.secondary-nav {
-  float: right;
-  margin-left: 10px;
-  margin-right: 0;
-}
 .nav li {
   display: block;
   float: left;
@@ -1328,8 +1323,47 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.nav.secondary-nav li .dropdown-menu {
+.nav.secondary-nav {
+  float: right;
+  margin-left: 10px;
+  margin-right: 0;
+}
+.nav.secondary-nav .dropdown .dropdown-menu {
   right: 0;
+}
+.nav .dropdown-toggle:hover, .nav .dropdown.open .dropdown-toggle {
+  background-color: #444;
+  background-color: rgba(255, 255, 255, 0.05);
+  *background-color: #444;
+}
+.nav .dropdown-menu {
+  background-color: #333;
+}
+.nav .dropdown-menu .dropdown-toggle {
+  color: #fff;
+}
+.nav .dropdown-menu .dropdown-toggle.open {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.nav .dropdown-menu li a {
+  color: #999;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+.nav .dropdown-menu li a:hover {
+  background-color: #191919;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#292929), to(#191919));
+  background-image: -moz-linear-gradient(top, #292929, #191919);
+  background-image: -ms-linear-gradient(top, #292929, #191919);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #292929), color-stop(100%, #191919));
+  background-image: -webkit-linear-gradient(top, #292929, #191919);
+  background-image: -o-linear-gradient(top, #292929, #191919);
+  background-image: linear-gradient(top, #292929, #191919);
+  color: #fff;
+}
+.nav .dropdown-menu .divider {
+  background-color: #222;
+  border-color: #444;
 }
 .dropdown {
   position: relative;
@@ -1417,6 +1451,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 }
 .dropdown.open .dropdown-toggle {
   color: #fff;
+  background-color: #ccc;
   background-color: rgba(0, 0, 0, 0.3);
 }
 .dropdown.open .dropdown-menu {
