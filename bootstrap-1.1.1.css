@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 27 21:50:03 PDT 2011
+ * Date: Sat Aug 27 21:59:00 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -635,13 +635,13 @@ ul.unstyled {
 dl {
   margin-bottom: 18px;
 }
-dl dt, dl dd {
+dt, dd {
   line-height: 18px;
 }
-dl dt {
+dt {
   font-weight: bold;
 }
-dl dd {
+dd {
   margin-left: 9px;
 }
 hr {
