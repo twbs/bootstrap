@@ -26,7 +26,7 @@
   , getTitle: function () {
       var title
       if (typeof this.options.title == 'string') {
-        title = this.options.title || this.$element.attr('data-title')
+        title = this.$element.attr('data-title') || this.options.title
       } else if (typeof this.options.title == 'function') {
         title = this.options.title.call(this.$element[0])
       }
@@ -36,7 +36,7 @@
   , getContent: function () {content
       var content
       if (typeof this.options.content == 'string') {
-        content = this.options.content || this.$element.attr('data-content')
+        content = this.$element.attr('data-content') || this.options.content
       } else if (typeof this.options.content == 'function') {
         content = this.options.content.call(this.$element[0])
       }
