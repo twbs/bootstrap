@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 27 13:05:58 PDT 2011
+ * Date: Sat Aug 27 16:19:56 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1896,6 +1896,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .modal-backdrop,
 .modal,
 .twipsy,
+.popover,
 .alert-message {
   -webkit-transition: opacity 0.15s linear;
   -moz-transition: opacity 0.15s linear;
@@ -1907,6 +1908,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .modal-backdrop.show,
 .modal.show,
 .twipsy.show,
+.popover.show,
 .alert-message.show {
   opacity: 1;
 }

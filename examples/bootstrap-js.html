@@ -16,7 +16,8 @@
     <script src="assets/js/bootstrap-modal.js"></script>
     <script src="assets/js/bootstrap-alerts.js"></script>
     <script src="assets/js/bootstrap-twipsy.js"></script>
-    <!-- <script src="assets/js/bootstrap-popovers.js"></script> -->
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <!-- <script src="assets/js/bootstrap-dropdown.js"></script> -->
 
     <!-- Le styles -->
     <link href="../bootstrap-1.1.1.css" rel="stylesheet">
@@ -41,6 +42,7 @@
             <li><a href="#modal">Modals</a></li>
             <li><a href="#alerts">Alerts</a></li>
             <li><a href="#twipsy">Twipsy</a></li>
+            <li><a href="#popover">Popover</a></li>
           </ul>
         </div>
       </div>
@@ -53,14 +55,14 @@
 
     <section id="javascript">
       <div class="page-header">
-        <h1>Using Javascript with Less <small>A love story.</small></h1>
+        <h1>Using Javascript with Bootstrap <small>A love story.</small></h1>
       </div>
       <div class="row">
         <div class="span4 columns">
           <p>This page illustrates how to integrate javascript with the Bootstrap library. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
         </div>
         <div class="span12 columns">
-          <h2>What is all this?</h2>
+          <h2>What is this all about?</h2>
           <p>With this example page, we've set out to make your interactive work with Bootstrap even more simple, offering several lightweight plugins for things like modals, tooltips, and other dynamic components. These plugins have been coded up to work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>, but we encourage you to extend and modify them to fit your development needs!</p>
           <h2>Do I need these?</h2>
           <p>The short answer is <strong>NO!</strong> These plugins were provided to help you understand how to integrate bootstrap with javascript and to give you a quick lightweight option for dropping something in and getting the basic functionality.
@@ -214,8 +216,10 @@ $('#modal-content').modal({
           <h4>$().twipsy</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
           <h3>Demo</h3>
-          <p>Mustache next level keffiyeh you <a href="#" rel='twipsy' title='Some title text'>probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown you probably haven't heard of them before they sold out. Farm-to-table <a href="#" rel='twipsy' title='i <3 cardigans'>cardigans</a> seitan tofu, mcsweeney's fixie sustainable quinoa 8-bit american apparel terry richardson vinyl chambray. Fap beard stumptown, <a href="#" rel='twipsy' title='Another twipsy'>williamsburg</a> banh mi lomo thundercats. DIY tofu biodiesel marfa, four loko mcsweeney's master cleanse vegan chambray. Etsy fap ethical, wes anderson farm-to-table +1 whatever bicycle rights mixtape portland readymade letterpress artisan. Four loko artisan whatever keytar, scenester farm-to-table <a href="#" rel='twipsy' title='The last tip!'>PBR</a> banksy Austin freegan cred raw denim single-origin coffee viral.
-          </p>
+          <div class="well">
+            <p class="muted">Tight pants next level keffiyeh <a href="#" rel='twipsy' title='Some title text'>you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
+            </p>
+          </div>
           <script>
             $(function () {
               $("a[rel=twipsy]").twipsy({
@@ -227,6 +231,49 @@ $('#modal-content').modal({
       </div>
     </section>
 
+    <!-- Popovers
+    ================================================== -->
+
+    <section id="popover">
+      <div class="page-header">
+        <h1>Popovers <small>bootstrap-popover.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
+          <a href="assets/js/bootstrap-popover.js" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h2>Using boostrap-popover.js</h2>
+          <pre class="prettyprint linenums">$('#example').popover(options)</pre>
+          <h3>Options</h3>
+          <ul>
+            <li><strong>delayIn</strong> (<code>number</code>) - delay before showing tooltip (ms).</li>
+            <li><strong>delayOut</strong> (<code>number</code>) - delay before hiding tooltip (ms).</li>
+            <li><strong>fallback</strong> (<code>string</code>) - fallback text to use when no tooltip text.</li>
+            <li><strong>placement</strong> (<code>string</code>) - position of tooltip - above | below | left | right.</li>
+            <li><strong>html</strong> (<code>boolean</code>) - is tooltip content HTML?</li>
+            <li><strong>live</strong> (<code>boolean</code>) - use live event support?</li>
+            <li><strong>offset</strong> (<code>number</code>) - pixel offset of tooltip from element.</li>
+            <li><strong>title</strong> (<code>string|function</code>) - text for title in popover. Alternatively you can specify a <code>data-title</code> attribute.</li>
+            <li><strong>content</strong> (<code>string|function</code>) - text for content in popover. Also you can specify a <code>data-content</code> attibute.</li>
+            <li><strong>trigger</strong> (<code>string</code>) - how tooltip is triggered - hover | focus | manual.</li>
+          </ul>
+          <h3>Methods</h3>
+          <h4>$().popover</h4>
+          <p>Initializes popovers for an element collection.</p>
+          <h3>Demo</h3>
+          <a href="#" class="btn" rel="popover" data-title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover</a>
+          <script>
+            $(function () {
+              $("a[rel=popover]").popover({
+                offset: 10
+              })
+            })
+          </script>
+        </div>
+      </div>
+    </section>
 
     <!-- Section
     ================================================== -->

@@ -44,18 +44,16 @@
   Twipsy.prototype = {
 
     show: function() {
-      var title = this.getTitle()
-        , pos
+      var pos
         , actualWidth
         , actualHeight
         , placement
         , $tip
         , tp
 
-      if (title && this.enabled) {
+      if (this.getTitle() && this.enabled) {
         $tip = this.tip()
-        $tip.find('.twipsy-inner')[this.options.html ? 'html' : 'text'](title)
-        $tip[0].className = 'twipsy'
+        this.setContent()
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
@@ -90,6 +88,12 @@
           .addClass(placement)
           .addClass('show')
       }
+    }
+
+  , setContent: function () {
+      var $tip = this.tip()
+      $tip.find('.twipsy-inner')[this.options.html ? 'html' : 'text'](this.getTitle())
+      $tip[0].className = 'twipsy'
     }
 
   , hide: function() {
@@ -174,10 +178,14 @@
    }
 
 
- /* MODAL PLUGIN DEFINITION
-  * ======================= */
+ /* TWIPSY PLUGIN DEFINITION
+  * ======================== */
 
-  $.fn.twipsy = function(options) {
+  $.fn.twipsy = function (options) {
+    $.fn.twipsy.initWith.call(this, options, Twipsy)
+  }
+
+  $.fn.twipsy.initWith = function (options, Constructor) {
 
     var twipsy
       , binder
@@ -200,7 +208,7 @@
       var twipsy = $.data(ele, 'twipsy')
 
       if (!twipsy) {
-        twipsy = new Twipsy(ele, $.fn.twipsy.elementOptions(ele, options))
+        twipsy = new Constructor(ele, $.fn.twipsy.elementOptions(ele, options))
         $.data(ele, 'twipsy', twipsy)
       }
 
@@ -252,6 +260,8 @@
 
     return this
   }
+
+  $.fn.twipsy.Twipsy = Twipsy
 
   $.fn.twipsy.defaults = {
     delayIn: 0
