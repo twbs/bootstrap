@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 27 20:35:25 PDT 2011
+ * Date: Sat Aug 27 20:43:25 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -280,108 +280,108 @@ table {
 .row:after {
   clear: both;
 }
-.row .span1,
-.row .span2,
-.row .span3,
-.row .span4,
-.row .span5,
-.row .span6,
-.row .span7,
-.row .span8,
-.row .span9,
-.row .span10,
-.row .span11,
-.row .span12,
-.row .span13,
-.row .span14,
-.row .span15,
-.row .span16 {
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6,
+.span7,
+.span8,
+.span9,
+.span10,
+.span11,
+.span12,
+.span13,
+.span14,
+.span15,
+.span16 {
   display: inline;
   float: left;
   margin-left: 20px;
 }
-.row .span1 {
+.span1 {
   width: 40px;
 }
-.row .span2 {
+.span2 {
   width: 100px;
 }
-.row .span3 {
+.span3 {
   width: 160px;
 }
-.row .span4 {
+.span4 {
   width: 220px;
 }
-.row .span5 {
+.span5 {
   width: 280px;
 }
-.row .span6 {
+.span6 {
   width: 340px;
 }
-.row .span7 {
+.span7 {
   width: 400px;
 }
-.row .span8 {
+.span8 {
   width: 460px;
 }
-.row .span9 {
+.span9 {
   width: 520px;
 }
-.row .span10 {
+.span10 {
   width: 580px;
 }
-.row .span11 {
+.span11 {
   width: 640px;
 }
-.row .span12 {
+.span12 {
   width: 700px;
 }
-.row .span13 {
+.span13 {
   width: 760px;
 }
-.row .span14 {
+.span14 {
   width: 820px;
 }
-.row .span15 {
+.span15 {
   width: 880px;
 }
-.row .span16 {
+.span16 {
   width: 940px;
 }
-.row .offset1 {
+.offset1 {
   margin-left: 80px;
 }
-.row .offset2 {
+.offset2 {
   margin-left: 140px;
 }
-.row .offset3 {
+.offset3 {
   margin-left: 200px;
 }
-.row .offset4 {
+.offset4 {
   margin-left: 260px;
 }
-.row .offset5 {
+.offset5 {
   margin-left: 320px;
 }
-.row .offset6 {
+.offset6 {
   margin-left: 380px;
 }
-.row .offset7 {
+.offset7 {
   margin-left: 440px;
 }
-.row .offset8 {
+.offset8 {
   margin-left: 500px;
 }
-.row .offset9 {
+.offset9 {
   margin-left: 560px;
 }
-.row .offset10 {
+.offset10 {
   margin-left: 620px;
 }
-.row .offset11 {
+.offset11 {
   margin-left: 680px;
 }
-.row .offset12 {
+.offset12 {
   margin-left: 740px;
 }
 html, body {
