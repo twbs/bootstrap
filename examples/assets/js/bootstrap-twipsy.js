@@ -2,33 +2,33 @@
 
 (function( $ ) {
 
-  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
-   * ======================================================= */
-
-  $.support.transition = (function () {
-    var thisBody = document.body || document.documentElement
-      , thisStyle = thisBody.style
-      , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-    return support
-  })()
-
-
- /* SHARED VARS
-  * =========== */
+ /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
+  * ======================================================= */
 
   var transitionEnd
 
-  // set CSS transition event type
-  if ( $.support.transition ) {
-    transitionEnd = "TransitionEnd"
-    if ( $.browser.webkit ) {
-    	transitionEnd = "webkitTransitionEnd"
-    } else if ( $.browser.mozilla ) {
-    	transitionEnd = "transitionend"
-    } else if ( $.browser.opera ) {
-    	transitionEnd = "oTransitionEnd"
+  $(function () {
+
+    $.support.transition = (function () {
+      var thisBody = document.body || document.documentElement
+        , thisStyle = thisBody.style
+        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
+      return support
+    })()
+
+    // set CSS transition event type
+    if ( $.support.transition ) {
+      transitionEnd = "TransitionEnd"
+      if ( $.browser.webkit ) {
+      	transitionEnd = "webkitTransitionEnd"
+      } else if ( $.browser.mozilla ) {
+      	transitionEnd = "transitionend"
+      } else if ( $.browser.opera ) {
+      	transitionEnd = "oTransitionEnd"
+      }
     }
-  }
+
+  })
 
 
  /* TWIPSY PUBLIC CLASS DEFINITION

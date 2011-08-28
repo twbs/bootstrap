@@ -1,33 +1,32 @@
 (function( $ ){
 
-  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
-   * ======================================================= */
+ /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
+  * ======================================================= */
 
-  $.support.transition = (function () {
-    var thisBody = document.body || document.documentElement
-      , thisStyle = thisBody.style
-      , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-    return support
-  })()
+  var transitionEnd
 
+  $(function () {
 
- /* SHARED VARS
-  * =========== */
+    $.support.transition = (function () {
+      var thisBody = document.body || document.documentElement
+        , thisStyle = thisBody.style
+        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
+      return support
+    })()
 
-  var $window = $('body')
-    , transitionEnd
-
-  // set CSS transition event type
-  if ( $.support.transition ) {
-    transitionEnd = "TransitionEnd"
-    if ( $.browser.webkit ) {
-    	transitionEnd = "webkitTransitionEnd"
-    } else if ( $.browser.mozilla ) {
-    	transitionEnd = "transitionend"
-    } else if ( $.browser.opera ) {
-    	transitionEnd = "oTransitionEnd"
+    // set CSS transition event type
+    if ( $.support.transition ) {
+      transitionEnd = "TransitionEnd"
+      if ( $.browser.webkit ) {
+      	transitionEnd = "webkitTransitionEnd"
+      } else if ( $.browser.mozilla ) {
+      	transitionEnd = "transitionend"
+      } else if ( $.browser.opera ) {
+      	transitionEnd = "oTransitionEnd"
+      }
     }
-  }
+
+  })
 
 
  /* MODAL PUBLIC CLASS DEFINITION
@@ -127,13 +126,13 @@
   , escape: function () {
       var that = this
       if ( this.isOpen && this.settings.closeOnEscape ) {
-        $window.bind('keyup.modal.escape', function ( e ) {
+        $(window).bind('keyup.modal.escape', function ( e ) {
           if ( e.which == 27 ) {
             that.close()
           }
         })
       } else if ( !this.isOpen ) {
-        $window.unbind('keyup.modal.escape')
+        $(window).unbind('keyup.modal.escape')
       }
     }
 

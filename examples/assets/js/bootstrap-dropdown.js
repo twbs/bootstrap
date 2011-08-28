@@ -7,7 +7,9 @@
     $('a.menu').parent('li').removeClass('open')
   }
 
-  $('body').bind("click", clearMenus)
+  $(function () {
+    $(window).bind("click", clearMenus)
+  })
 
   $.fn.dropdown = function ( options ) {
     return this.each(function () {
