@@ -14,7 +14,7 @@
  /* SHARED VARS
   * =========== */
 
-  var $window = $(window)
+  var $window = $('body')
     , transitionEnd
 
   // set CSS transition event type
