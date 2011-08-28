@@ -54,6 +54,11 @@
       if (this.getTitle() && this.enabled) {
         $tip = this.tip()
         this.setContent()
+
+        if (this.options.animate) {
+          $tip.addClass('fade')
+        }
+
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
@@ -86,7 +91,7 @@
         $tip
           .css(tp)
           .addClass(placement)
-          .addClass('show')
+          .addClass('in')
       }
     }
 
@@ -100,13 +105,13 @@
       var that = this
         , $tip = this.tip()
 
-      $tip.removeClass('show')
+      $tip.removeClass('in')
 
       function removeElement () {
         $tip.remove()
       }
 
-      $.support.transition ?
+      $.support.transition && this.$tip.hasClass('fade') ?
         $tip.bind(transitionEnd, removeElement) :
         removeElement()
     }
@@ -264,7 +269,8 @@
   $.fn.twipsy.Twipsy = Twipsy
 
   $.fn.twipsy.defaults = {
-    delayIn: 0
+    animate: true
+  , delayIn: 0
   , delayOut: 0
   , fallback: ''
   , placement: 'above'

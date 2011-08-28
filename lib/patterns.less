@@ -752,14 +752,10 @@ input[type=submit].btn {
 // Pattern Animations
 // ------------------
 
-.modal-backdrop,
-.modal,
-.twipsy,
-.popover,
-.alert-message {
+.fade {
   .transition(opacity .15s linear);
   opacity: 0;
-  &.show {
+  &.in {
     opacity: 1;
   }
 }

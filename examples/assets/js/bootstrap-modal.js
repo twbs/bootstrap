@@ -55,17 +55,19 @@
       var that = this
       this.isOpen = true
 
+      this.$element = $(this.settings.content)
+
       _.escape.call(this)
       _.backdrop.call(this)
 
-      this.$element = $(this.settings.content)
+      this.$element
         .delegate('.close', 'click', function (e) { e.preventDefault(); that.close() })
         .appendTo(document.body)
         .show()
 
       setTimeout(function () {
-        that.$element.addClass('show')
-        that.$backdrop && that.$backdrop.addClass('show')
+        that.$element.addClass('in')
+        that.$backdrop && that.$backdrop.addClass('in')
       }, 1)
 
       return this
@@ -79,14 +81,14 @@
       _.escape.call(this)
       _.backdrop.call(this)
 
-      this.$element.removeClass('show')
+      this.$element.removeClass('in')
 
       function removeElement () {
         that.$element.remove()
         that.$element = null
       }
 
-      $.support.transition ?
+      $.support.transition && this.$element.hasClass('fade') ?
         this.$element.bind(transitionEnd, removeElement) :
         removeElement()
 
@@ -103,19 +105,20 @@
 
     backdrop: function () {
       var that = this
+        , animate = this.$element.hasClass('fade') ? 'fade' : ''
       if ( this.isOpen && this.settings.backdrop ) {
-        this.$backdrop = $('<div class="modal-backdrop" />')
+        this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
           .click(function () { that.close() })
           .appendTo(document.body)
       } else if ( !this.isOpen && this.$backdrop ) {
-        this.$backdrop.removeClass('show')
+        this.$backdrop.removeClass('in')
 
         function removeElement() {
           that.$backdrop.remove()
           that.$backdrop = null
         }
 
-        $.support.transition ?
+        $.support.transition && this.$element.hasClass('fade')?
           this.$backdrop.bind(transitionEnd, removeElement) :
           removeElement()
       }

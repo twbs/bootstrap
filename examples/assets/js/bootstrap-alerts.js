@@ -51,11 +51,11 @@
         that.$element = null
       }
 
-      $.support.transition ?
+      $.support.transition && this.$element.hasClass('fade') ?
         this.$element.bind(transitionEnd, removeElement) :
         removeElement()
 
-      this.$element.removeClass('show')
+      this.$element.removeClass('in')
     }
 
   }

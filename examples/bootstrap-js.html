@@ -95,7 +95,7 @@
           </ul>
           <h3>Methods</h3>
           <h4>$().modal</h4>
-          <p>Returns an instance of the modal class. Accepts an optional options <code>object</code>.</p>
+          <p>Returns an instance of the modal class. Accepts an optional options <code>object</code>. If you want your modal to fade in and out, just add a <code>.fade</code> class to your <code>.modal</code> element (refer to the demo to see this in action).</p>
 <pre class="prettyprint linenums">
 $('#modal-content').modal({
   closeOnEscape: true
@@ -112,7 +112,7 @@ $('#modal-content').modal({
           <h3>Demo</h3>
 
           <!-- sample modal content -->
-          <div id="modal-from-dom" class="modal hide">
+          <div id="modal-from-dom" class="modal hide fade">
             <div class="modal-header">
               <h3>Modal Heading</h3>
               <a href="#" class="close">&times;</a>
@@ -163,13 +163,13 @@ $('#modal-content').modal({
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>Methods</h3>
           <h4>$().alert</h4>
-          <p>Wraps all alerts with close functionality.</p>
+          <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
           <h3>Demo</h3>
-          <div class="alert-message show warning">
+          <div class="alert-message warning fade in">
             <a class="close" href="#">&times;</a>
             <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
           </div>
-          <div class="alert-message show block-message error">
+          <div class="alert-message block-message error fade in">
             <a class="close" href="#">&times;</a>
             <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
             <div class="alert-actions">
@@ -202,6 +202,7 @@ $('#modal-content').modal({
           <pre class="prettyprint linenums">$('#example').twipsy(options)</pre>
           <h3>Options</h3>
           <ul>
+            <li><strong>animate</strong> (<code>boolean</code>) - apply a css fade transition to the tooltip.</li>
             <li><strong>delayIn</strong> (<code>number</code>) - delay before showing tooltip (ms).</li>
             <li><strong>delayOut</strong> (<code>number</code>) - delay before hiding tooltip (ms).</li>
             <li><strong>fallback</strong> (<code>string</code>) - fallback text to use when no tooltip text.</li>
@@ -248,6 +249,7 @@ $('#modal-content').modal({
           <pre class="prettyprint linenums">$('#example').popover(options)</pre>
           <h3>Options</h3>
           <ul>
+            <li><strong>animate</strong> (<code>boolean</code>) - apply a css fade transition to the popover.</li>
             <li><strong>delayIn</strong> (<code>number</code>) - delay before showing tooltip (ms).</li>
             <li><strong>delayOut</strong> (<code>number</code>) - delay before hiding tooltip (ms).</li>
             <li><strong>fallback</strong> (<code>string</code>) - fallback text to use when no tooltip text.</li>
