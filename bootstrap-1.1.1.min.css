@@ -19,7 +19,6 @@ button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:poin
 input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
 input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
 textarea{overflow:auto;vertical-align:top;}
-table{border-collapse:collapse;border-spacing:0;}
 .clearfix{zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";}
 .clearfix:after{clear:both;}
 .center-block{display:block;margin:0 auto;}
