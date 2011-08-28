@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 27 19:39:10 PDT 2011
+ * Date: Sat Aug 27 20:35:25 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -727,7 +727,7 @@ fieldset {
   margin-bottom: 18px;
   padding-top: 18px;
 }
-fieldset legend {
+legend {
   display: block;
   margin-left: 150px;
   font-size: 20px;
@@ -831,7 +831,7 @@ form div.error {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-form div.error > label, form div.error span.help-inline, form div.error span.help-block {
+form div.error > label, form div.error .help-inline, form div.error .help-block {
   color: #9d261d;
 }
 form div.error input[type=text], form div.error input[type=password], form div.error textarea {
@@ -846,7 +846,7 @@ form div.error input[type=text]:focus, form div.error input[type=password]:focus
   -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
 }
-form div.error .input-prepend span.add-on, form div.error .input-append span.add-on {
+form div.error .add-on {
   background: #f4c8c5;
   border-color: #c87872;
   color: #b9554d;
@@ -907,13 +907,13 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
-.actions .secondary-action {
+.secondary-action {
   float: right;
 }
-.actions .secondary-action a {
+.secondary-action a {
   line-height: 30px;
 }
-.actions .secondary-action a:hover {
+.secondary-action a:hover {
   text-decoration: underline;
 }
 .help-inline, .help-block {
@@ -1007,29 +1007,31 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
   padding: 0;
   width: 100%;
 }
+.inputs-list li:first-child {
+  padding-top: 5px;
+}
 .inputs-list li label {
+  line-height: 18px;
+}
+.inputs-list label {
   display: block;
   float: none;
   width: auto;
   padding: 0;
-  line-height: 18px;
   text-align: left;
   white-space: normal;
 }
-.inputs-list li label strong {
+.inputs-list label strong {
   color: #808080;
 }
-.inputs-list li label small {
+.inputs-list label small {
   font-size: 12px;
   font-weight: normal;
 }
-.inputs-list li ul.inputs-list {
+.inputs-list ul.inputs-list {
   margin-left: 25px;
   margin-bottom: 10px;
   padding-top: 0;
-}
-.inputs-list li:first-child {
-  padding-top: 5px;
 }
 .inputs-list input[type=radio], .inputs-list input[type=checkbox] {
   margin-bottom: 0;
@@ -1055,7 +1057,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
 .form-stacked .clearfix {
   margin-bottom: 9px;
 }
-.form-stacked .clearfix div.input {
+.form-stacked div.input {
   margin-left: 0;
 }
 .form-stacked .inputs-list {
@@ -1064,7 +1066,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
 .form-stacked .inputs-list li {
   padding-top: 0;
 }
-.form-stacked .inputs-list li label {
+.form-stacked .inputs-list label {
   font-weight: normal;
   padding-top: 0;
 }

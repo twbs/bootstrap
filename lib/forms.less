@@ -14,15 +14,16 @@ form {
 fieldset {
   margin-bottom: @baseline;
   padding-top: @baseline;
-  legend {
-    display: block;
-    margin-left: 150px;
-    font-size: 20px;
-    line-height: 1;
-    *margin: 0 0 5px 145px; /* IE6-7 */
-    *line-height: 1.5; /* IE6-7 */
-    color: @grayDark;
-  }
+}
+
+legend {
+  display: block;
+  margin-left: 150px;
+  font-size: 20px;
+  line-height: 1;
+  *margin: 0 0 5px 145px; /* IE6-7 */
+  *line-height: 1.5; /* IE6-7 */
+  color: @grayDark;
 }
 
 // Parent element that clears floats and wraps labels and fields together
@@ -124,8 +125,8 @@ form div.error {
   .border-radius(4px);
   @error-text: desaturate(lighten(@red, 25%), 25%);
   > label,
-  span.help-inline,
-  span.help-block {
+  .help-inline,
+  .help-block {
     color: @red;
   }
   input[type=text],
@@ -138,13 +139,10 @@ form div.error {
       .box-shadow(0 0 6px rgba(171,41,32,.5));
     }
   }
-  .input-prepend,
-  .input-append {
-    span.add-on {
-      background: lighten(@red, 50%);
-      border-color: @error-text;
-      color: darken(@error-text, 10%);
-    }
+  .add-on {
+    background: lighten(@red, 50%);
+    border-color: @error-text;
+    color: darken(@error-text, 10%);
   }
 }
 
@@ -188,13 +186,14 @@ input.disabled {
   padding: (@baseline - 1) 20px @baseline 150px;
   border-top: 1px solid #ddd;
   .border-radius(0 0 3px 3px);
-  .secondary-action {
-    float: right;
-    a {
-      line-height: 30px;
-      &:hover {
-        text-decoration: underline;
-      }
+}
+
+.secondary-action {
+  float: right;
+  a {
+    line-height: 30px;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
@@ -264,10 +263,8 @@ input.disabled {
     border-color: @green;
   }
 }
-.input-prepend {
-  .add-on {
-    *margin-top: 1px; /* IE6-7 */
-  }
+.input-prepend .add-on {
+  *margin-top: 1px; /* IE6-7 */
 }
 .input-append {
   input[type=text],
@@ -290,30 +287,34 @@ input.disabled {
     display: block;
     padding: 0;
     width: 100%;
-    label {
-      display: block;
-      float: none;
-      width: auto;
-      padding: 0;
-      line-height: @baseline;
-      text-align: left;
-      white-space: normal;
-      strong {
-        color: @gray;
-      }
-      small {
-        font-size: 12px;
-        font-weight: normal;
-      }
-    }
-    ul.inputs-list {
-      margin-left: 25px;
-      margin-bottom: 10px;
-      padding-top: 0;
-    }
     &:first-child {
       padding-top: 5px;
     }
+    label {
+      // cannot be factored out into the label block below because it must have
+      // greater priority than .form-stacked label, which is defined later on
+      line-height: @baseline;
+    }
+  }
+  label {
+    display: block;
+    float: none;
+    width: auto;
+    padding: 0;
+    text-align: left;
+    white-space: normal;
+    strong {
+      color: @gray;
+    }
+    small {
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
+  ul.inputs-list {
+    margin-left: 25px;
+    margin-bottom: 10px;
+    padding-top: 0;
   }
   input[type=radio],
   input[type=checkbox] {
@@ -341,18 +342,18 @@ input.disabled {
   }
   .clearfix {
     margin-bottom: @baseline / 2;
-    div.input {
-      margin-left: 0;
-    }
+  }
+  div.input {
+    margin-left: 0;
   }
   .inputs-list {
     margin-bottom: 0;
     li {
       padding-top: 0;
-      label {
-        font-weight: normal;
-        padding-top: 0;
-      }
+    }
+    label {
+      font-weight: normal;
+      padding-top: 0;
     }
   }
   div.error {
