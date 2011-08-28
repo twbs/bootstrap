@@ -1,3 +1,22 @@
+// Add the identify-function to create unique element ids if necessary
+// ===================================================================
+if(typeof jQuery.fn.identify == 'undefined')
+{
+	jQuery.fn.identify = function(){
+		var uid = 1;
+		return this.each(function(){
+			if($(this).attr('id')) return;
+			do
+			{ 
+				var id = 'anonymous_element_'+uid;
+				uid++;
+			}
+			while($('#'+id).length > 0);            
+			$(this).attr('id', id);            
+		});
+	};
+}
+
 $(document).ready(function(){
 
   // Google code prettify
@@ -13,10 +32,11 @@ $(document).ready(function(){
       $window = $(window),
       nav = $('body > .topbar li a'),
       targets = nav.map(function () {
-        return $(this).attr('href');
+        $(this).identify();
+		return $(this).attr('id');
       }),
       offsets = $.map(targets, function (id) {
-        return $(id).offset().top;
+        return $('#'+id).offset().top;
       });
 
 
