@@ -17,10 +17,11 @@
     <script src="assets/js/bootstrap-alerts.js"></script>
     <script src="assets/js/bootstrap-twipsy.js"></script>
     <script src="assets/js/bootstrap-popover.js"></script>
-    <!-- <script src="assets/js/bootstrap-dropdown.js"></script> -->
+    <script src="assets/js/bootstrap-dropdown.js"></script>
 
     <!-- Le styles -->
     <link href="../bootstrap-1.1.1.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-js.css" rel="stylesheet">
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -29,7 +30,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
-  <body style="padding: 60px 0">
+  <body>
 
     <!-- Topbar
     ================================================== -->
@@ -38,8 +39,9 @@
         <div class="container">
           <h3><a href="#">Bootstrap JS</a></h3>
           <ul>
-            <li class="active"><a href="#javascript">Getting Started</a></li>
+            <li><a href="#javascript">Getting Started</a></li>
             <li><a href="#modal">Modals</a></li>
+            <li><a href="#dropdown">Dropdown</a></li>
             <li><a href="#alerts">Alerts</a></li>
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
@@ -126,7 +128,7 @@ $('#modal-content').modal({
             </div>
           </div>
 
-          <button id="modal-from-element" class="btn">Launch Modal</button>
+          <button id="modal-from-element" class="btn danger">Launch Modal</button>
 
           <script>
             $(function () {
@@ -181,6 +183,72 @@ $('#modal-content').modal({
               $(".alert-message").alert()
             })
           </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dropdown
+    ================================================== -->
+
+    <section id="dropdown">
+      <div class="page-header">
+        <h1>Drop Down <small>bootstrap-dropdown.js</h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>This plugin is for adding dropdown to the bootstrap nav.</p>
+          <a href="assets/js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h2>Using boostrap-dropdown.js</h2>
+          <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
+          <h3>Method</h3>
+          <h4>$().dropdown</h4>
+          <p>
+          Activates menus for given topbar navigation.
+          </p>
+          <h3>Demo</h3>
+          <script>
+            $(function () {
+              $('#topbar-example').dropdown()
+            })
+          </script>
+          <div class="topbar-wrapper">
+            <div id="topbar-example" class="topbar">
+              <div class="fill">
+                <div class="container">
+                  <h3><a href="#">Project Name</a></h3>
+                  <ul>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                  </ul>
+                  <form action="">
+                    <input type="text" placeholder="Search" />
+                  </form>
+                  <ul class="nav secondary-nav">
+                    <li class="menu">
+                      <a href="#" class="menu">Dropdown 1</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="#">Secondary link</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Another link</a></li>
+                      </ul>
+                    </li>
+                    <li class="menu">
+                      <a href="#" class="menu">Dropdown 2</a>
+                      <ul class="menu-dropdown">
+                        <li><a href="#">Secondary link</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Another link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -265,7 +333,7 @@ $('#modal-content').modal({
           <h4>$().popover</h4>
           <p>Initializes popovers for an element collection.</p>
           <h3>Demo</h3>
-          <a href="#" class="btn" rel="popover" data-title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover</a>
+          <a href="#" class="btn danger" rel="popover" data-title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover</a>
           <script>
             $(function () {
               $("a[rel=popover]").popover({
@@ -277,25 +345,6 @@ $('#modal-content').modal({
       </div>
     </section>
 
-    <!-- Section
-    ================================================== -->
-
-    <!--
-    <section id="section">
-      <div class="page-header">
-        <h1></h1>
-      </div>
-      <div class="row">
-        <div class="span4 columns">
-          <p></p>
-        </div>
-        <div class="span12 columns">
-          <h3></h3>
-          <p></p>
-        </div>
-      </div>
-    </section>
-    -->
     </div>
   </body>
 </html>
