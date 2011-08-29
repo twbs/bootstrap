@@ -8,7 +8,7 @@
   }
 
   $(function () {
-    $(window).bind("click", clearMenus)
+    $('body').bind("click", clearMenus)
   })
 
   $.fn.dropdown = function ( options ) {
