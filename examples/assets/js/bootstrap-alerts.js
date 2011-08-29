@@ -45,6 +45,8 @@
     close: function () {
       var that = this
 
+      this.$element.removeClass('in')
+
       function removeElement () {
         that.$element.remove()
         that.$element = null
@@ -53,8 +55,6 @@
       $.support.transition && this.$element.hasClass('fade') ?
         this.$element.bind(transitionEnd, removeElement) :
         removeElement()
-
-      this.$element.removeClass('in')
     }
 
   }
