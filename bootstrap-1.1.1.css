@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Aug 28 17:41:37 PDT 2011
+ * Date: Sun Aug 28 17:45:46 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1683,7 +1683,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d,endColorstr=%d)", '#aa000000', '#aa000000'));*/
 
   background-color: #000;
-  opacity: .5;
   position: fixed;
   top: 0;
   left: 0;
@@ -1694,8 +1693,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .modal-backdrop.fade {
   opacity: 0;
 }
-.modal-backdrop.fade.in {
-  opacity: .5;
+.modal-backdrop, .modal-backdrop.fade.in {
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 .modal {
   position: fixed;

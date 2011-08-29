@@ -581,12 +581,8 @@ input[type=submit].btn {
 /*  background-color: rgba(0,0,0,.5);
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d,endColorstr=%d)", '#aa000000', '#aa000000'));*/
   background-color:#000;
-  opacity: .5;
   &.fade {
     opacity: 0;
-    &.in {
-      opacity: .5;
-    }
   }
   position: fixed;
   top: 0;
@@ -595,6 +591,10 @@ input[type=submit].btn {
   bottom: 0;
   z-index: 1000;
 }
+.modal-backdrop, .modal-backdrop.fade.in {
+  .opacity(50);
+}
+
 .modal {
   position: fixed;
   top: 50%;
