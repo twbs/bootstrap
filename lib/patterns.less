@@ -578,8 +578,12 @@ input[type=submit].btn {
 // ------
 
 .modal-backdrop {
-  background-color: rgba(0,0,0,.5);
-  filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d,endColorstr=%d)", '#aa000000', '#aa000000'));
+/*  background-color: rgba(0,0,0,.5);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d,endColorstr=%d)", '#aa000000', '#aa000000'));*/
+  background-color:#000;
+  &.fade.in {
+    opacity: .5;
+  }
   position: fixed;
   top: 0;
   left: 0;

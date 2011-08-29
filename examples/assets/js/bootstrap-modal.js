@@ -107,13 +107,10 @@
         , animate = this.$element.hasClass('fade') ? 'fade' : ''
       if ( this.isOpen && this.settings.backdrop ) {
         this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+          .click(function () { that.close() })
           .appendTo(document.body)
-        $('body').delegate('.modal-backdrop', 'click.modal.backdrop', function () {
-          that.close()
-        })
       } else if ( !this.isOpen && this.$backdrop ) {
         this.$backdrop.removeClass('in')
-        $('body').undelegate('click.modal.backdrop')
 
         function removeElement() {
           that.$backdrop.remove()
