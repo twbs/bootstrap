@@ -23,6 +23,24 @@ Or if you prefer, the standard css way:
 For more info, refer to the docs!
 
 
+Versioning
+----------
+
+For transparency and insight into our release cycle, and for striving to maintain backwards compatibility, Bootstrap will be maintained under the Semantic Versioning guidelines as much as possible.
+
+Releases will be numbered with the follow format:
+
+`<major>.<minor>.<patch>`
+
+And constructed with the following guidelines:
+
+* Breaking backwards compatibility bumps the major
+* New additions without breaking backwards compatibility bumpbs the minor
+* Bug fixes and misc changes bump the patch
+
+For more information on SemVer, please visit http://semver.org/.
+
+
 Bug Tracker
 -----------
 

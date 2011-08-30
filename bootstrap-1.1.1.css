@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Aug 27 15:29:10 PDT 2011
+ * Date: Mon Aug 29 21:26:39 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -358,7 +358,7 @@ table {
   margin-left: 500px;
 }
 .row .offset9 {
-  margin-left: 500px;
+  margin-left: 560px;
 }
 .row .offset10 {
   margin-left: 620px;
@@ -1202,7 +1202,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   z-index: 10000;
   overflow: visible;
 }
-.topbar .wrapper {
+.topbar .fill {
   background-color: #222;
   background-color: #222222;
   background-repeat: repeat-x;
@@ -1221,7 +1221,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-.topbar a:hover, .topbar ul li.active a {
+.topbar a:hover, .topbar ul .active a {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
@@ -1249,7 +1249,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-opacity: 1;
   opacity: 1;
 }
-.topbar form input {
+.topbar input {
   background-color: #444;
   background-color: rgba(255, 255, 255, 0.3);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1271,18 +1271,18 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-transition: none;
   transition: none;
 }
-.topbar form input:-moz-placeholder {
+.topbar input:-moz-placeholder {
   color: #e6e6e6;
 }
-.topbar form input::-webkit-input-placeholder {
+.topbar input::-webkit-input-placeholder {
   color: #e6e6e6;
 }
-.topbar form input:hover {
+.topbar input:hover {
   background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
   color: #fff;
 }
-.topbar form input:focus, .topbar form input.focused {
+.topbar input:focus, .topbar input.focused {
   outline: none;
   background-color: #fff;
   color: #404040;
@@ -1305,18 +1305,18 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   float: left;
   font-size: 13px;
 }
-.nav li a {
+.nav a {
   display: block;
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
   text-decoration: none;
 }
-.nav li a:hover {
+.nav a:hover {
   color: #fff;
   text-decoration: none;
 }
-.nav li.active a {
+.nav .active a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -1325,7 +1325,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   margin-left: 10px;
   margin-right: 0;
 }
-.nav.secondary-nav .dropdown .dropdown-menu {
+.nav.secondary-nav .dropdown-menu {
   right: 0;
 }
 .nav .dropdown-toggle:hover, .nav .dropdown.open .dropdown-toggle {
@@ -1414,7 +1414,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   display: block;
   background-color: none;
 }
-.dropdown-menu li a {
+.dropdown-menu a {
   display: block;
   padding: 4px 15px;
   clear: both;
@@ -1423,7 +1423,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #808080;
   text-shadow: 0 1px 0 #fff;
 }
-.dropdown-menu li a:hover {
+.dropdown-menu a:hover {
   background-color: #dddddd;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#eeeeee), to(#dddddd));
@@ -1439,7 +1439,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
 }
-.dropdown-menu li.divider {
+.dropdown-menu .divider {
   height: 1px;
   margin: 5px 0;
   overflow: hidden;
@@ -1520,7 +1520,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .tabs .dropdown.open .dropdown-toggle:after {
   border-top-color: #555;
 }
-.pills li a {
+.pills a {
   margin: 5px 3px 5px 0;
   padding: 0 15px;
   text-shadow: 0 1px 1px #fff;
@@ -1529,13 +1529,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
-.pills li a:hover {
+.pills a:hover {
   background: #0050a3;
   color: #fff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
-.pills li.active a {
+.pills .active a {
   background: #0069d6;
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
@@ -1769,10 +1769,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.pagination ul li {
+.pagination li {
   display: inline;
 }
-.pagination ul li a {
+.pagination a {
   float: left;
   padding: 0 14px;
   line-height: 34px;
@@ -1784,14 +1784,14 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
   text-decoration: none;
 }
-.pagination ul li a:hover, .pagination ul li.active a {
+.pagination a:hover, .pagination .active a {
   background-color: #c7eefe;
 }
-.pagination ul li.disabled a, .pagination ul li.disabled a:hover {
+.pagination .disabled a, .pagination .disabled a:hover {
   background-color: transparent;
   color: #bfbfbf;
 }
-.pagination ul li.next a {
+.pagination .next a {
   border: 0;
 }
 .well {
@@ -1840,11 +1840,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.modal .modal-header {
+.modal-header {
   border-bottom: 1px solid #eee;
   padding: 5px 20px;
 }
-.modal .modal-header .close {
+.modal-header .close {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -1852,10 +1852,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   line-height: 10px;
   font-size: 18px;
 }
-.modal .modal-body {
+.modal-body {
   padding: 20px;
 }
-.modal .modal-footer {
+.modal-footer {
   background-color: #f5f5f5;
   padding: 14px 20px 15px;
   border-top: 1px solid #ddd;
@@ -1869,14 +1869,14 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-bottom: 18px;
   margin-bottom: 0;
 }
-.modal .modal-footer:before, .modal .modal-footer:after {
+.modal-footer:before, .modal-footer:after {
   display: table;
   content: "";
 }
-.modal .modal-footer:after {
+.modal-footer:after {
   clear: both;
 }
-.modal .modal-footer .btn {
+.modal-footer .btn {
   float: right;
   margin-left: 10px;
 }
@@ -1924,7 +1924,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border-bottom: 5px solid transparent;
   border-right: 5px solid #000000;
 }
-.twipsy .twipsy-inner {
+.twipsy-inner {
   padding: 3px 8px;
   background-color: #000;
   color: white;
@@ -1935,7 +1935,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.twipsy .twipsy-arrow {
+.twipsy-arrow {
   position: absolute;
   width: 0;
   height: 0;

@@ -1,0 +1,57 @@
+/* Responsive.less
+ * Adjusted grid styles to handle some common screen sizes
+ * ------------------------------------------------------- */
+
+
+// MOBILE PORTRAIT & LANDSCAPE
+// ---------------------------
+// For devices narrower than 480px
+@media only screen and (max-width: 480px) {
+
+  // Remove fixed width of containers
+  .container {
+    width: auto;
+    padding: 0 10px;
+  }
+
+  // Undo the floating of columns
+  .row {
+    margin-left: 0;
+  }
+  .row [class^="span"] {
+    float: none;
+    width: 100%;
+    display: block;
+    margin-left: 0;
+  }
+
+  // Stack form elements instead of floating them
+  fieldset legend {
+    margin-left: 0;
+  }
+  label {
+    float: none;
+    width: auto;
+    text-align: left;
+  }
+  div.input {
+    margin-left: 0;
+    width: 100%;
+  }
+  .input-xxlarge,
+  input.xxlarge,
+  textarea.xxlarge,
+  select.xxlarge {
+    width: 80%;
+  }
+
+  // Adjust modal
+  .modal-backdrop {
+    padding: 10px;
+  }
+  .modal {
+    width: 100%;
+    margin: 0;
+    left: auto;
+  }
+}
