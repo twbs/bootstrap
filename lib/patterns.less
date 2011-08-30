@@ -17,7 +17,7 @@
   overflow: visible;
 
   // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-  .wrapper {
+  .fill {
     background-color: #222;
     #gradient > .vertical(#333, #222);
     @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
@@ -32,7 +32,7 @@
 
   // Hover and active states
   a:hover,
-  ul li.active a {
+  ul .active a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
     color: @white;
@@ -60,44 +60,44 @@
     margin: 5px 0 0 0;
     position: relative;
     .opacity(100);
-    input {
-      background-color: #444;
-      background-color: rgba(255,255,255,.3);
-      #font > .sans-serif(13px, normal, 1);
-      width: 220px;
-      padding: 4px 9px;
-      color: #fff;
-      color: rgba(255,255,255,.75);
-      border: 1px solid #111;
-      .border-radius(4px);
-      @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
-      .box-shadow(@shadow);
-      .transition(none);
+  }
+  input {
+    background-color: #444;
+    background-color: rgba(255,255,255,.3);
+    #font > .sans-serif(13px, normal, 1);
+    width: 220px;
+    padding: 4px 9px;
+    color: #fff;
+    color: rgba(255,255,255,.75);
+    border: 1px solid #111;
+    .border-radius(4px);
+    @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
+    .box-shadow(@shadow);
+    .transition(none);
 
-      // Placeholder text gets special styles; can't be bundled together though for some reason
-      &:-moz-placeholder {
-        color: @grayLighter;
-      }
-      &::-webkit-input-placeholder {
-        color: @grayLighter;
-      }
-      // Hover states
-      &:hover {
-        background-color: @grayLight;
-        background-color: rgba(255,255,255,.5);
-        color: #fff;
-      }
-      // Focus states (we use .focused since IE8 and down doesn't support :focus)
-      &:focus,
-      &.focused {
-        outline: none;
-        background-color: #fff;
-        color: @grayDark;
-        text-shadow: 0 1px 0 #fff;
-        border: 0;
-        padding: 5px 10px;
-        .box-shadow(0 0 3px rgba(0,0,0,.15));
-      }
+    // Placeholder text gets special styles; can't be bundled together though for some reason
+    &:-moz-placeholder {
+      color: @grayLighter;
+    }
+    &::-webkit-input-placeholder {
+      color: @grayLighter;
+    }
+    // Hover states
+    &:hover {
+      background-color: @grayLight;
+      background-color: rgba(255,255,255,.5);
+      color: #fff;
+    }
+    // Focus states (we use .focused since IE8 and down doesn't support :focus)
+    &:focus,
+    &.focused {
+      outline: none;
+      background-color: #fff;
+      color: @grayDark;
+      text-shadow: 0 1px 0 #fff;
+      border: 0;
+      padding: 5px 10px;
+      .box-shadow(0 0 3px rgba(0,0,0,.15));
     }
   }
 }
@@ -118,21 +118,21 @@
     display: block;
     float: left;
     font-size: 13px;
-    a {
-      display: block;
-      float: none;
-      padding: 10px 10px 11px;
-      line-height: 19px;
+  }
+  a {
+    display: block;
+    float: none;
+    padding: 10px 10px 11px;
+    line-height: 19px;
+    text-decoration: none;
+    &:hover {
+      color: #fff;
       text-decoration: none;
-      &:hover {
-        color: #fff;
-        text-decoration: none;
-      }
     }
-    &.active a {
-      background-color: #222;
-      background-color: rgba(0,0,0,.5);
-    }
+  }
+  .active a {
+    background-color: #222;
+    background-color: rgba(0,0,0,.5);
   }
 
   // Secondary (floated right) nav in topbar
@@ -140,7 +140,7 @@
     float: right;
     margin-left: 10px;
     margin-right: 0;
-    .dropdown .dropdown-menu {
+    .dropdown-menu {
       right: 0;
     }
   }
@@ -221,32 +221,32 @@
     float: none;
     display: block;
     background-color: none;
-    // Links within the dropdown menu
-    a {
-      display: block;
-      padding: 4px 15px;
-      clear: both;
-      font-weight: normal;
-      line-height: 18px;
-      color: @gray;
-      text-shadow: 0 1px 0 #fff;
-      // Hover state
-      &:hover {
-        #gradient > .vertical(#eeeeee, #dddddd);
-        color: @grayDark;
-        text-decoration: none;
-        @shadow: inset 0 1px 0 rgba(0,0,0,.025), inset 0 -1px rgba(0,0,0,.025);
-        .box-shadow(@shadow);
-      }
+  }
+  // Links within the dropdown menu
+  a {
+    display: block;
+    padding: 4px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: @gray;
+    text-shadow: 0 1px 0 #fff;
+    // Hover state
+    &:hover {
+      #gradient > .vertical(#eeeeee, #dddddd);
+      color: @grayDark;
+      text-decoration: none;
+      @shadow: inset 0 1px 0 rgba(0,0,0,.025), inset 0 -1px rgba(0,0,0,.025);
+      .box-shadow(@shadow);
     }
-    // Dividers (basically an hr) within the dropdown
-    &.divider {
-      height: 1px;
-      margin: 5px 0;
-      overflow: hidden;
-      background-color: #eee;
-      border-bottom: 1px solid #fff;
-    }
+  }
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #eee;
+    border-bottom: 1px solid #fff;
   }
 }
 // Open state for the dropdown
@@ -320,25 +320,23 @@
 
 // Basic pill nav
 .pills {
-  li {
-    a {
+  a {
       margin: 5px 3px 5px 0;
-      padding: 0 15px;
-      text-shadow: 0 1px 1px #fff;
-      line-height: 30px;
-      .border-radius(15px);
-      &:hover {
-        background: @linkColorHover;
-        color: #fff;
-        text-decoration: none;
-        text-shadow: 0 1px 1px rgba(0,0,0,.25);
-      }
-    }
-    &.active a {
-      background: @linkColor;
+    padding: 0 15px;
+    text-shadow: 0 1px 1px #fff;
+    line-height: 30px;
+    .border-radius(15px);
+    &:hover {
+      background: @linkColorHover;
       color: #fff;
+      text-decoration: none;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
     }
+  }
+  .active a {
+    background: @linkColor;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
   }
 }
 
@@ -370,6 +368,7 @@ footer {
   border-top: 1px solid #eee;
 }
 
+
 // PAGE HEADERS
 // ------------
 
@@ -382,9 +381,9 @@ footer {
   }
 }
 
+
 // BUTTON STYLES
 // -------------
-
 
 // Base .btn styles
 .btn {
@@ -424,7 +423,6 @@ footer {
     background-image: none;
     .opacity(65);
   }
-
   &:disabled {
     // disabled pseudo can't be included with .disabled
     // def because IE8 and below will drop it ;_;
@@ -432,7 +430,6 @@ footer {
     background-image: none;
     .opacity(65);
   }
-
   &:active {
     @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
     .box-shadow(@shadow);
@@ -445,12 +442,10 @@ footer {
     padding: 9px 14px 9px;
     .border-radius(6px);
   }
-
   &.small {
     padding: 7px 9px 7px;
     font-size: 11px;
   }
-
 }
 
 // Help Firefox not be a jerk about adding extra padding to buttons
@@ -461,7 +456,6 @@ input[type=submit].btn {
   	border: 0;
   }
 }
-
 
 
 // ERROR STYLES
@@ -558,31 +552,31 @@ input[type=submit].btn {
     border: 1px solid rgba(0,0,0,.15);
     .border-radius(3px);
     .box-shadow(0 1px 2px rgba(0,0,0,.05));
-    li {
-      display: inline;
-      a {
-        float: left;
-        padding: 0 14px;
-        line-height: (@baseline * 2) - 2;
-        border-right: 1px solid;
-        border-right-color: #ddd;
-        border-right-color: rgba(0,0,0,.15);
-        *border-right-color: #ddd; /* IE6-7 */
-        text-decoration: none;
-      }
-      a:hover,
-      &.active a {
-        background-color: lighten(@blue, 45%);
-      }
-      &.disabled a,
-      &.disabled a:hover {
-        background-color: transparent;
-        color: @grayLight;
-      }
-      &.next a {
-        border: 0;
-      }
-    }
+  }
+  li {
+    display: inline;
+  }
+  a {
+    float: left;
+    padding: 0 14px;
+    line-height: (@baseline * 2) - 2;
+    border-right: 1px solid;
+    border-right-color: #ddd;
+    border-right-color: rgba(0,0,0,.15);
+    *border-right-color: #ddd; /* IE6-7 */
+    text-decoration: none;
+  }
+  a:hover,
+  .active a {
+    background-color: lighten(@blue, 45%);
+  }
+  .disabled a,
+  .disabled a:hover {
+    background-color: transparent;
+    color: @grayLight;
+  }
+  .next a {
+    border: 0;
   }
 }
 
@@ -628,33 +622,33 @@ input[type=submit].btn {
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
-  .modal-header {
-    border-bottom: 1px solid #eee;
-    padding: 5px 20px;
-    .close {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      color: #999;
-      line-height:10px;
-      font-size: 18px;
-    }
+}
+.modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 5px 20px;
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #999;
+    line-height:10px;
+    font-size: 18px;
   }
-  .modal-body {
-    padding: 20px;
-  }
-  .modal-footer {
-    background-color: #f5f5f5;
-    padding: 14px 20px 15px;
-    border-top: 1px solid #ddd;
-    .border-radius(0 0 6px 6px);
-    .box-shadow(inset 0 1px 0 #fff);
-    .clearfix();
-    margin-bottom: 0;
-    .btn {
-      float: right;
-      margin-left: 10px;
-    }
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-footer {
+  background-color: #f5f5f5;
+  padding: 14px 20px 15px;
+  border-top: 1px solid #ddd;
+  .border-radius(0 0 6px 6px);
+  .box-shadow(inset 0 1px 0 #fff);
+  .clearfix();
+  margin-bottom: 0;
+  .btn {
+    float: right;
+    margin-left: 10px;
   }
 }
 
@@ -712,20 +706,20 @@ input[type=submit].btn {
   &.left .twipsy-arrow    { #popoverArrow > .left(); }
   &.below .twipsy-arrow   { #popoverArrow > .below(); }
   &.right .twipsy-arrow   { #popoverArrow > .right(); }
-  .twipsy-inner {
-    padding: 3px 8px;
-    background-color: #000;
-    color: white;
-    text-align: center;
-    max-width: 200px;
-    text-decoration: none;
-    .border-radius(4px);
-  }
-  .twipsy-arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
+}
+.twipsy-inner {
+  padding: 3px 8px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  max-width: 200px;
+  text-decoration: none;
+  .border-radius(4px);
+}
+.twipsy-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
 
