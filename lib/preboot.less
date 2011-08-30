@@ -137,6 +137,10 @@
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
           border-radius: @radius;
+// prevent bg color from leaking outside the border: http://bit.ly/dw1vx9 
+-webkit-background-clip: padding-box;
+   -moz-background-clip: padding;
+        background-clip: padding-box;
 }
 
 // Drop shadows
