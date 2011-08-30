@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 29 21:26:39 PDT 2011
+ * Date: Mon Aug 29 21:41:24 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -376,10 +376,10 @@ table {
   width: 620px;
 }
 .row .offset-one-third {
-  margin-left: 320px;
+  margin-left: 340px;
 }
 .row .offset-two-thirds {
-  margin-left: 640px;
+  margin-left: 660px;
 }
 html, body {
   background-color: #fff;
