@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Aug 29 21:41:24 PDT 2011
+ * Date: Tue Aug 30 08:27:42 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -166,10 +166,6 @@ input[type="search"]::-webkit-search-decoration {
 textarea {
   overflow: auto;
   vertical-align: top;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 /* Preboot.less
  * Variables and mixins to pre-ignite any new web development project
@@ -1989,8 +1985,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: #333;
   background-color: rgba(0, 0, 0, 0.8);
   *background-color: #333;
-  /* IE 6-7 */
-
   padding: 3px;
   overflow: hidden;
   width: 280px;
