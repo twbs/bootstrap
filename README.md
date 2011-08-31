@@ -18,7 +18,7 @@ Here's what the LESS version looks like:
 
 Or if you prefer, the standard css way:
 
-    <link rel="stylesheet" type="text/css" href="bootstrap-1.1.1.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-1.2.0.css">
 
 For more info, refer to the docs!
 
@@ -35,7 +35,7 @@ Releases will be numbered with the follow format:
 And constructed with the following guidelines:
 
 * Breaking backwards compatibility bumps the major
-* New additions without breaking backwards compatibility bumpbs the minor
+* New additions without breaking backwards compatibility bumps the minor
 * Bug fixes and misc changes bump the patch
 
 For more information on SemVer, please visit http://semver.org/.
