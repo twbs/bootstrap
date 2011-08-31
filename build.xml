@@ -1044,4 +1044,8 @@
         </copy>
     </target>
 
+	<!-- Import project.xml (put any custom build targets in this file so that they aren't overwritten when build.xml is updated) -->
+	<!-- See: https://github.com/paulirish/html5-boilerplate/issues/704 -->
+	<import file="./project.xml" />
+
 </project>
