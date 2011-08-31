@@ -61,7 +61,7 @@ table{border-collapse:collapse;border-spacing:0;}
 .row .offset11{margin-left:680px;}
 .row .offset12{margin-left:740px;}
 html,body{background-color:#fff;}
-body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:18px;color:#808080;text-rendering:optimizeLegibility;}
+body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:18px;color:#808080;}
 .container{width:940px;margin:0 auto;}
 .container-fluid{padding:0 20px;zoom:1;margin-bottom:18px;}.container-fluid:before,.container-fluid:after{display:table;content:"";}
 .container-fluid:after{clear:both;}

@@ -77,7 +77,11 @@ body {
   margin: 0;
   #font > .sans-serif(normal,@basefont,@baseline);
   color: @gray;
-  text-rendering: optimizeLegibility;
+
+  // The following line breaks text rendering on Android and degrades it on
+  // Windows:
+  //
+  // text-rendering: optimizeLegibility;
 }
 
 // Container (centered, fixed-width layouts)
