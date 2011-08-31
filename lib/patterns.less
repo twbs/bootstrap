@@ -147,9 +147,8 @@
   // Dropdowns within the .nav
   .dropdown-toggle:hover,
   .dropdown.open .dropdown-toggle {
-    background-color: #444;
+    background: #444;
     background-color: rgba(255,255,255,.05);
-    *background-color: #444; // IE6-7
   }
   .dropdown-menu {
     background-color: #333;
@@ -253,9 +252,8 @@
 .dropdown.open {
   .dropdown-toggle {
     color: #fff;
-    background-color: #ccc;
+    background: #ccc;
     background-color: rgba(0,0,0,.3);
-    *background-color: #ccc; /* ie6 -7 */
   }
   .dropdown-menu {
     display: block;
@@ -284,8 +282,8 @@
   border-bottom: 1px solid #ddd;
   > li {
     position: relative; // For the dropdowns mostly
+    top: 1px;
     > a {
-      margin-bottom: -1px;
       margin-right: 2px;
       padding: 0 15px;
       line-height: (@baseline * 2) - 1;
@@ -744,9 +742,8 @@ input[type=submit].btn {
     height: 0;
   }
   .inner {
-    background-color: #333;
+    background: #333;
     background-color: rgba(0,0,0,.8);
-    *background-color: #333; /* IE 6-7 */
     padding: 3px;
     overflow: hidden;
     width: 280px;
