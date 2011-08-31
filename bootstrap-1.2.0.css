@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Aug 30 23:37:26 PDT 2011
+ * Date: Wed Aug 31 10:55:48 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1222,9 +1222,8 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   right: 0;
 }
 .nav .dropdown-toggle:hover, .nav .dropdown.open .dropdown-toggle {
-  background-color: #444;
-  background-color: rgba(255, 255, 255, 0.05);
-  *background-color: #444;
+  background: #444;
+  background: rgba(255, 255, 255, 0.05);
 }
 .nav .dropdown-menu {
   background-color: #333;
@@ -1233,8 +1232,8 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #fff;
 }
 .nav .dropdown-menu .dropdown-toggle.open {
-  background-color: rgba(255, 255, 255, 0.05);
-  *background-color: #444;
+  background: #444;
+  background: rgba(255, 255, 255, 0.05);
 }
 .nav .dropdown-menu li a {
   color: #999;
@@ -1342,11 +1341,8 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 }
 .dropdown.open .dropdown-toggle {
   color: #fff;
-  background-color: #ccc;
-  background-color: rgba(0, 0, 0, 0.3);
-  *background-color: #ccc;
-  /* ie6 -7 */
-
+  background: #ccc;
+  background: rgba(0, 0, 0, 0.3);
 }
 .dropdown.open .dropdown-menu {
   display: block;
@@ -1883,11 +1879,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   height: 0;
 }
 .popover .inner {
-  background-color: #333;
-  background-color: rgba(0, 0, 0, 0.8);
-  *background-color: #333;
-  /* IE 6-7 */
-
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
   padding: 3px;
   overflow: hidden;
   width: 280px;
