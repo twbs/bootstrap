@@ -1,14 +1,36 @@
 /*
- * Scaffolding
+ * Scaffolding.scss
  * Basic and global styles for generating a grid system, structural layout, and page templates
  * ------------------------------------------------------------------------------------------- */
-
 
 // GRID SYSTEM
 // -----------
 
 .row {
-  @include clearfix;
+  @include clearfix();
+  margin-left: -20px;
+
+  // Default columns
+  .span1,
+  .span2,
+  .span3,
+  .span4,
+  .span5,
+  .span6,
+  .span7,
+  .span8,
+  .span9,
+  .span10,
+  .span11,
+  .span12,
+  .span13,
+  .span14,
+  .span15,
+  .span16 {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+  }
 
   // Default columns
   .span1     { @include columns(1); }
@@ -37,7 +59,7 @@
   .offset6   { @include offset(6); }
   .offset7   { @include offset(7); }
   .offset8   { @include offset(8); }
-  .offset9   { @include offset(8); }
+  .offset9   { @include offset(9); }
   .offset10  { @include offset(10); }
   .offset11  { @include offset(11); }
   .offset12  { @include offset(12); }
@@ -58,20 +80,20 @@ body {
 }
 
 // Container (centered, fixed-width layouts)
-div.container {
+.container {
   width: 940px;
   margin: 0 auto;
 }
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
-div.container-fluid {
+.container-fluid {
   padding: 0 20px;
   @include clearfix();
-  div.sidebar {
+  .sidebar {
     float: left;
     width: 220px;
   }
-  div.content {
+  .content {
     min-width: 700px;
     max-width: 1180px;
     margin-left: 240px;
@@ -95,18 +117,9 @@ a {
 }
 
 // Buttons
-@mixin btnColor($primaryColor, $secondaryColor) {
-  @include vertical-gradient($primaryColor, $secondaryColor);
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fade-in(rgba(0,0,0,.1), .15);
-}
-
 .btn {
-  // .button(#1174C6);
-  cursor: pointer;
   display: inline-block;
-  @include vertical-three-color-gradient(#fff, #fff, 0.25, darken(#fff, 10%));
+  @include vertical-three-colors-gradient(#fff, #fff, 0.25, darken(#fff, 10%));
   padding: 4px 14px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
@@ -122,19 +135,30 @@ a {
     color: #333;
     text-decoration: none;
   }
-  @include transition(.1s linear all);
-  &.primary,
-  &.danger {
+}
+.primary {
+  @include vertical-gradient(#049CDB, #0064CD);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border: 1px solid darken(#0064CD, 10%);
+  border-bottom-color: darken(#0064CD, 15%);
+  &:hover {
     color: #fff;
+  }
+}
+
+.btn {
+  //.button(#1174C6);
+  @include transition(.1s linear all);
+  &.primary {
+    //@include vertical-gradient($blue, $blueDark);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    border-color: $blueDark $blueDark darken($blueDark, 15%);
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
     &:hover {
       color: #fff;
     }
-  }
-  &.primary {
-    @include btnColor($blue, $blueDark)
-  }
-  &.danger {
-    @include btnColor(lighten($red, 15%), $red)
   }
   &.large {
     font-size: 16px;
@@ -150,6 +174,7 @@ a {
     background-image: none;
     @include opacity(65);
     cursor: default;
+    @include box-shadow(none);
   }
 
   // this can't be included with the .disabled def because IE8 and below will drop it ;_;
@@ -157,9 +182,13 @@ a {
     background-image: none;
     @include opacity(65);
     cursor: default;
+    @include box-shadow(none);
+    &.primary {
+      color: #fff;
+    }
   }
   &:active {
-    $shadow: inset 0 3px 7px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+    $shadow: inset 0 3px 7px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
     @include box-shadow($shadow);
   }
 }

@@ -130,7 +130,7 @@ em {
   line-height: inherit;
 }
 .muted {
-  color: $grayLighter;
+  color: $grayLight;
 }
 
 // Blockquotes
@@ -139,7 +139,7 @@ blockquote {
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
-    @include shorthand-font(300, 14px,$baseline);
+    @include shorthand-font(300,14px,$baseline);
     margin-bottom: 0;
   }
   small {
@@ -181,5 +181,8 @@ pre {
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
   @include border-radius(3px);
+  white-space: pre;
   white-space: pre-wrap;
+  word-wrap: break-word;
+
 }
