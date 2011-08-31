@@ -147,16 +147,17 @@
   // Dropdowns within the .nav
   .dropdown-toggle:hover,
   .dropdown.open .dropdown-toggle {
-    background: #444;
+    background-color: #444;
     background-color: rgba(255,255,255,.05);
+    *background-color: #444; // IE6-7
   }
   .dropdown-menu {
     background-color: #333;
     .dropdown-toggle {
       color: #fff;
       &.open {
-        background: #444;
         background-color: rgba(255,255,255,.05);
+        *background-color: #444;
       }
     }
     li a {
@@ -253,8 +254,9 @@
 .dropdown.open {
   .dropdown-toggle {
     color: #fff;
-    background: #ccc;
+    background-color: #ccc;
     background-color: rgba(0,0,0,.3);
+    *background-color: #ccc; /* ie6 -7 */
   }
   .dropdown-menu {
     display: block;
@@ -321,7 +323,7 @@
 // Basic pill nav
 .pills {
   a {
-    margin: 5px 3px 5px 0;
+      margin: 5px 3px 5px 0;
     padding: 0 15px;
     text-shadow: 0 1px 1px #fff;
     line-height: 30px;
@@ -743,8 +745,9 @@ input[type=submit].btn {
     height: 0;
   }
   .inner {
-    background: #333;
+    background-color: #333;
     background-color: rgba(0,0,0,.8);
+    *background-color: #333; /* IE 6-7 */
     padding: 3px;
     overflow: hidden;
     width: 280px;
