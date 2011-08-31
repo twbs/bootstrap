@@ -18,7 +18,7 @@ Here's what the LESS version looks like:
 
 Or if you prefer, the standard css way:
 
-    <link rel="stylesheet" type="text/css" href="bootstrap-1.1.1.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-1.2.0.css">
 
 For more info, refer to the docs!
 
