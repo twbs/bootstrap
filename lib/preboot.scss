@@ -128,6 +128,7 @@ $analog2:           spin($baseColor, -22);
     clear: both;
 	}
 }
+.clearfix { @include clearfix; }
 
 // Center-align a block level element
 @mixin center-block {
@@ -185,6 +186,7 @@ $analog2:           spin($baseColor, -22);
   margin: 0 auto;
   @include clearfix();
 }
+.container { @include container; }
 
 @mixin columns($columnSpan: 1) {
   width: ($gridColumnWidth * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1));

@@ -9,7 +9,7 @@
  *
  * Converted to Sass by @johnwlong.
  *
- * Date: mer 31 ago 2011, 18.21.40, CEST
+ * Date: Thu Sep  1 23:06:54 EDT 2011
  */
 /* Reset.scss
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -154,6 +154,30 @@ table {
 /* Preboot.scss
  * Variables and mixins to pre-ignite any new web development project
  * ------------------------------------------------------------------ */
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.container {
+  width: 940px;
+  margin: 0 auto;
+  zoom: 1;
+}
+.container:before, .container:after {
+  display: table;
+  content: "";
+}
+.container:after {
+  clear: both;
+}
+
 .btn.danger, .btn.danger:hover, .btn.error, .btn.error:hover, .btn.success, .btn.success:hover, .btn.info, .btn.info:hover,
 .alert-message.danger,
 .alert-message.danger:hover,
