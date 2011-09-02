@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep  1 22:52:35 PDT 2011
+ * Date: Thu Sep  1 22:54:55 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -166,10 +166,6 @@ input[type="search"]::-webkit-search-decoration {
 textarea {
   overflow: auto;
   vertical-align: top;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 /* Preboot.less
  * Variables and mixins to pre-ignite any new web development project
@@ -376,10 +372,10 @@ table {
   width: 620px;
 }
 .row .offset-one-third {
-  margin-left: 320px;
+  margin-left: 340px;
 }
 .row .offset-two-thirds {
-  margin-left: 640px;
+  margin-left: 660px;
 }
 html, body {
   background-color: #fff;
@@ -673,6 +669,7 @@ select,
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+/* mini reset for non-html5 file types */
 input[type=checkbox], input[type=radio] {
   width: auto;
   padding: 0;
