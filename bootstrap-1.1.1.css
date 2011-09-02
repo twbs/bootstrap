@@ -300,6 +300,9 @@ table {
   float: left;
   margin-left: 20px;
 }
+.row .off {
+  margin: 0 20px 0 0;
+}
 .row .span1 {
   width: 40px;
 }
