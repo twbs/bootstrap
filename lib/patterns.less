@@ -32,7 +32,7 @@
 
   // Hover and active states
   a:hover,
-  ul li.active a {
+  li.active a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
     color: @white;
@@ -60,44 +60,45 @@
     margin: 5px 0 0 0;
     position: relative;
     .opacity(100);
-    input {
-      background-color: #444;
-      background-color: rgba(255,255,255,.3);
-      #font > .sans-serif(13px, normal, 1);
-      width: 220px;
-      padding: 4px 9px;
-      color: #fff;
-      color: rgba(255,255,255,.75);
-      border: 1px solid #111;
-      .border-radius(4px);
-      @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
-      .box-shadow(@shadow);
-      .transition(none);
+  }
 
-      // Placeholder text gets special styles; can't be bundled together though for some reason
-      &:-moz-placeholder {
-        color: @grayLighter;
-      }
-      &::-webkit-input-placeholder {
-        color: @grayLighter;
-      }
-      // Hover states
-      &:hover {
-        background-color: @grayLight;
-        background-color: rgba(255,255,255,.5);
-        color: #fff;
-      }
-      // Focus states (we use .focused since IE8 and down doesn't support :focus)
-      &:focus,
-      &.focused {
-        outline: none;
-        background-color: #fff;
-        color: @grayDark;
-        text-shadow: 0 1px 0 #fff;
-        border: 0;
-        padding: 5px 10px;
-        .box-shadow(0 0 3px rgba(0,0,0,.15));
-      }
+  input {
+    background-color: #444;
+    background-color: rgba(255,255,255,.3);
+    #font > .sans-serif(13px, normal, 1);
+    width: 220px;
+    padding: 4px 9px;
+    color: #fff;
+    color: rgba(255,255,255,.75);
+    border: 1px solid #111;
+    .border-radius(4px);
+    @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
+    .box-shadow(@shadow);
+    .transition(none);
+
+    // Placeholder text gets special styles; can't be bundled together though for some reason
+    &:-moz-placeholder {
+      color: @grayLighter;
+    }
+    &::-webkit-input-placeholder {
+      color: @grayLighter;
+    }
+    // Hover states
+    &:hover {
+      background-color: @grayLight;
+      background-color: rgba(255,255,255,.5);
+      color: #fff;
+    }
+    // Focus states (we use .focused since IE8 and down doesn't support :focus)
+    &:focus,
+    &.focused {
+      outline: none;
+      background-color: #fff;
+      color: @grayDark;
+      text-shadow: 0 1px 0 #fff;
+      border: 0;
+      padding: 5px 10px;
+      .box-shadow(0 0 3px rgba(0,0,0,.15));
     }
   }
 
@@ -112,81 +113,16 @@
       margin-left: 10px;
       margin-right: 0;
     }
-    li {
-      display: block;
-      float: left;
-      font-size: 13px;
-      a {
-        display: block;
-        float: none;
-        padding: 10px 10px 11px;
-        line-height: 19px;
-        text-decoration: none;
-        &:hover {
-          color: #fff;
-          text-decoration: none;
-        }
-      }
-      &.active a {
-        background-color: #222;
-        background-color: rgba(0,0,0,.5);
-      }
-    }
 
     // Dropdowns
-    &.primary-nav li ul {
+    &.primary-nav ul {
       left: 0;
     }
-    &.secondary-nav li ul {
+    &.secondary-nav ul {
       right: 0;
     }
-    li.menu {
-      position: relative;
-      a.menu {
-        &:after {
-          width: 0px;
-          height: 0px;
-          display: inline-block;
-          content: "&darr;";
-          text-indent: -99999px;
-          vertical-align: top;
-          margin-top: 8px;
-          margin-left: 4px;
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-top: 4px solid #fff;
-          .opacity(50);
-        }
-      }
-      &.open {
-        a.menu,
-        a:hover {
-          background-color: #444;
-          background-color: rgba(255,255,255,.1);
-          *background-color: #444; /* IE6-7 */
-          color: #fff;
-        }
-        ul {
-          display: block;
-          li {
-            a {
-              background-color: transparent;
-              font-weight: normal;
-              &:hover {
-                background-color: rgba(255,255,255,.1);
-                *background-color: #444; /* IE6-7 */
-                color: #fff;
-              }
-            }
-            &.active a {
-              background-color: rgba(255,255,255,.1);
-              font-weight: bold;
-            }
-          }
-        }
-      }
-    }
-    li ul {
+
+    ul {
       background-color: #333;
       float: left;
       display: none;
@@ -203,48 +139,115 @@
       zoom: 1;
       .border-radius(0 0 5px 5px);
       .box-shadow(0 1px 2px rgba(0,0,0,0.6));
-      li {
-        float: none;
+      a {
+        display: block;
+        padding: 6px 15px;
+        clear: both;
+        font-weight: normal;
+        line-height: 19px;
+        color: #bbb;
+        &:hover {
+          background-color: #333;
+          background-color: rgba(255,255,255,.25);
+          color: #fff;
+        }
+      }
+
+      // Section separaters
+      span {
         clear: both;
         display: block;
-        background: none;
-        font-size: 12px;
+        background: rgba(0,0,0,.2);
+        padding: 6px 15px;
+        cursor: default;
+        color: @gray;
+        border-top: 1px solid rgba(0,0,0,.2);
+      }
+    }
+  }
+
+  li {
+    display: block;
+    float: left;
+    font-size: 13px;
+    a {
+      display: block;
+      float: none;
+      padding: 10px 10px 11px;
+      line-height: 19px;
+      text-decoration: none;
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    &.active a {
+      background-color: #222;
+      background-color: rgba(0,0,0,.5);
+    }
+    li {
+      float: none;
+      clear: both;
+      display: block;
+      background: none;
+      font-size: 12px;
+
+      // Dividers (basically an hr)
+      &.divider {
+        height: 1px;
+        overflow: hidden;
+        background: #222;
+        background: rgba(0,0,0,.2);
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        margin: 5px 0;
+      }
+    }
+  }
+
+  li.menu {
+    position: relative;
+    &.open {
+      a.menu,
+      a:hover {
+        background-color: #444;
+        background-color: rgba(255,255,255,.1);
+        *background-color: #444; /* IE6-7 */
+        color: #fff;
+      }
+      ul {
+        display: block;
+      }
+      li {
         a {
-          display: block;
-          padding: 6px 15px;
-          clear: both;
+          background-color: transparent;
           font-weight: normal;
-          line-height: 19px;
-          color: #bbb;
           &:hover {
-            background-color: #333;
-            background-color: rgba(255,255,255,.25);
+            background-color: rgba(255,255,255,.1);
+            *background-color: #444; /* IE6-7 */
             color: #fff;
           }
         }
-
-        // Dividers (basically an hr)
-        &.divider {
-          height: 1px;
-          overflow: hidden;
-          background: #222;
-          background: rgba(0,0,0,.2);
-          border-bottom: 1px solid rgba(255,255,255,.1);
-          margin: 5px 0;
-        }
-
-        // Section separaters
-        span {
-          clear: both;
-          display: block;
-          background: rgba(0,0,0,.2);
-          padding: 6px 15px;
-          cursor: default;
-          color: @gray;
-          border-top: 1px solid rgba(0,0,0,.2);
+        &.active a {
+          background-color: rgba(255,255,255,.1);
+          font-weight: bold;
         }
       }
     }
+  }
+
+  a.menu:after {
+    width: 0px;
+    height: 0px;
+    display: inline-block;
+    content: "&darr;";
+    text-indent: -99999px;
+    vertical-align: top;
+    margin-top: 8px;
+    margin-left: 4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #fff;
+    .opacity(50);
   }
 }
 
@@ -426,9 +429,6 @@ input[type=submit].btn {
     p {
       margin-right: 30px;
     }
-    .alert-actions {
-      margin-top: 5px;
-    }
     &.error,
     &.success,
     &.info {
@@ -448,6 +448,10 @@ input[type=submit].btn {
       border-color: lighten(#6bd0ee, 20%);
     }
   }
+
+  .alert-actions {
+    margin-top: 5px;
+  }
 }
 
 // NAVIGATION
@@ -461,10 +465,10 @@ input[type=submit].btn {
   .clearfix();
   li {
     display: inline;
-    a {
-      float: left;
-      width: auto;
-    }
+  }
+  a {
+    float: left;
+    width: auto;
   }
 }
 
@@ -472,49 +476,48 @@ input[type=submit].btn {
 .tabs {
   width: 100%;
   border-bottom: 1px solid @grayLight;
-  li {
-    a {
-      margin-bottom: -1px;
-      margin-right: 2px;
-      padding: 0 15px;
-      line-height: (@baseline * 2) - 1;
-      .border-radius(3px 3px 0 0);
-      &:hover {
-        background-color: @grayLighter;
-        border-bottom: 1px solid @grayLight;
-      }
+
+  a {
+    margin-bottom: -1px;
+    margin-right: 2px;
+    padding: 0 15px;
+    line-height: (@baseline * 2) - 1;
+    .border-radius(3px 3px 0 0);
+    &:hover {
+      background-color: @grayLighter;
+      border-bottom: 1px solid @grayLight;
     }
-    &.active a {
-      background-color: #fff;
-      padding: 0 14px;
-      border: 1px solid #ccc;
-      border-bottom: 0;
-      color: @gray;
-    }
+  }
+
+  li.active a {
+    background-color: #fff;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    color: @gray;
   }
 }
 
 // Basic pill nav
 .pills {
-  li {
-    a {
-      margin: 5px 3px 5px 0;
-      padding: 0 15px;
-      text-shadow: 0 1px 1px #fff;
-      line-height: 30px;
-      .border-radius(15px);
-      &:hover {
-        background: @linkColorHover;
-        color: #fff;
-        text-decoration: none;
-        text-shadow: 0 1px 1px rgba(0,0,0,.25);
-      }
-    }
-    &.active a {
-      background: @linkColor;
+  a {
+    margin: 5px 3px 5px 0;
+    padding: 0 15px;
+    text-shadow: 0 1px 1px #fff;
+    line-height: 30px;
+    .border-radius(15px);
+    &:hover {
+      background: @linkColorHover;
       color: #fff;
+      text-decoration: none;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
     }
+  }
+
+  li.active a {
+    background: @linkColor;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
   }
 }
 
@@ -532,30 +535,31 @@ input[type=submit].btn {
     border: 1px solid rgba(0,0,0,.15);
     .border-radius(3px);
     .box-shadow(0 1px 2px rgba(0,0,0,.05));
-    li {
-      display: inline;
-      a {
-        float: left;
-        padding: 0 14px;
-        line-height: (@baseline * 2) - 2;
-        border-right: 1px solid;
-        border-right-color: #ddd;
-        border-right-color: rgba(0,0,0,.15);
-        *border-right-color: #ddd; /* IE6-7 */
-        text-decoration: none;
-      }
-      a:hover,
-      &.active a {
-        background-color: lighten(@blue, 45%);
-      }
-      &.disabled a,
-      &.disabled a:hover {
-        background-color: transparent;
-        color: @grayLight;
-      }
-      &.next a {
-        border: 0;
-      }
+  }
+
+  li {
+    display: inline;
+    a {
+      float: left;
+      padding: 0 14px;
+      line-height: (@baseline * 2) - 2;
+      border-right: 1px solid;
+      border-right-color: #ddd;
+      border-right-color: rgba(0,0,0,.15);
+      *border-right-color: #ddd; /* IE6-7 */
+      text-decoration: none;
+    }
+    a:hover,
+    &.active a {
+      background-color: lighten(@blue, 45%);
+    }
+    &.disabled a,
+    &.disabled a:hover {
+      background-color: transparent;
+      color: @grayLight;
+    }
+    &.next a {
+      border: 0;
     }
   }
 }
@@ -602,33 +606,33 @@ input[type=submit].btn {
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
-  .modal-header {
-    border-bottom: 1px solid #eee;
-    padding: 5px 20px;
-    .close {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      color: #999;
-      line-height:10px;
-      font-size: 18px;
-    }
+}
+.modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 5px 20px;
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #999;
+    line-height:10px;
+    font-size: 18px;
   }
-  .modal-body {
-    padding: 20px;
-  }
-  .modal-footer {
-    background-color: #f5f5f5;
-    padding: 14px 20px 15px;
-    border-top: 1px solid #ddd;
-    .border-radius(0 0 6px 6px);
-    .box-shadow(inset 0 1px 0 #fff);
-    .clearfix();
-    margin-bottom: 0;
-    .btn {
-      float: right;
-      margin-left: 10px;
-    }
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-footer {
+  background-color: #f5f5f5;
+  padding: 14px 20px 15px;
+  border-top: 1px solid #ddd;
+  .border-radius(0 0 6px 6px);
+  .box-shadow(inset 0 1px 0 #fff);
+  .clearfix();
+  margin-bottom: 0;
+  .btn {
+    float: right;
+    margin-left: 10px;
   }
 }
 
@@ -686,20 +690,20 @@ input[type=submit].btn {
   &.left .twipsy-arrow    { #popoverArrow > .left(); }
   &.below .twipsy-arrow   { #popoverArrow > .below(); }
   &.right .twipsy-arrow   { #popoverArrow > .right(); }
-  .twipsy-inner {
-    padding: 3px 8px;
-    background-color: #000;
-    color: white;
-    text-align: center;
-    max-width: 200px;
-    text-decoration: none;
-    .border-radius(4px);
-  }
-  .twipsy-arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
+}
+.twipsy-inner {
+  padding: 3px 8px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  max-width: 200px;
+  text-decoration: none;
+  .border-radius(4px);
+}
+.twipsy-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
 
@@ -744,8 +748,8 @@ input[type=submit].btn {
     padding: 14px;
     .border-radius(0 0 3px 3px);
     .background-clip(padding-box);
-    p, ul, ol {
-      margin-bottom: 0;
-    }
+  }
+  p, ul, ol {
+    margin-bottom: 0;
   }
 }

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Aug 26 19:31:44 PDT 2011
+ * Date: Sat Aug 27 21:59:00 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -280,108 +280,108 @@ table {
 .row:after {
   clear: both;
 }
-.row .span1,
-.row .span2,
-.row .span3,
-.row .span4,
-.row .span5,
-.row .span6,
-.row .span7,
-.row .span8,
-.row .span9,
-.row .span10,
-.row .span11,
-.row .span12,
-.row .span13,
-.row .span14,
-.row .span15,
-.row .span16 {
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6,
+.span7,
+.span8,
+.span9,
+.span10,
+.span11,
+.span12,
+.span13,
+.span14,
+.span15,
+.span16 {
   display: inline;
   float: left;
   margin-left: 20px;
 }
-.row .span1 {
+.span1 {
   width: 40px;
 }
-.row .span2 {
+.span2 {
   width: 100px;
 }
-.row .span3 {
+.span3 {
   width: 160px;
 }
-.row .span4 {
+.span4 {
   width: 220px;
 }
-.row .span5 {
+.span5 {
   width: 280px;
 }
-.row .span6 {
+.span6 {
   width: 340px;
 }
-.row .span7 {
+.span7 {
   width: 400px;
 }
-.row .span8 {
+.span8 {
   width: 460px;
 }
-.row .span9 {
+.span9 {
   width: 520px;
 }
-.row .span10 {
+.span10 {
   width: 580px;
 }
-.row .span11 {
+.span11 {
   width: 640px;
 }
-.row .span12 {
+.span12 {
   width: 700px;
 }
-.row .span13 {
+.span13 {
   width: 760px;
 }
-.row .span14 {
+.span14 {
   width: 820px;
 }
-.row .span15 {
+.span15 {
   width: 880px;
 }
-.row .span16 {
+.span16 {
   width: 940px;
 }
-.row .offset1 {
+.offset1 {
   margin-left: 80px;
 }
-.row .offset2 {
+.offset2 {
   margin-left: 140px;
 }
-.row .offset3 {
+.offset3 {
   margin-left: 200px;
 }
-.row .offset4 {
+.offset4 {
   margin-left: 260px;
 }
-.row .offset5 {
+.offset5 {
   margin-left: 320px;
 }
-.row .offset6 {
+.offset6 {
   margin-left: 380px;
 }
-.row .offset7 {
+.offset7 {
   margin-left: 440px;
 }
-.row .offset8 {
+.offset8 {
   margin-left: 500px;
 }
-.row .offset9 {
+.offset9 {
   margin-left: 560px;
 }
-.row .offset10 {
+.offset10 {
   margin-left: 620px;
 }
-.row .offset11 {
+.offset11 {
   margin-left: 680px;
 }
-.row .offset12 {
+.offset12 {
   margin-left: 740px;
 }
 html, body {
@@ -635,13 +635,13 @@ ul.unstyled {
 dl {
   margin-bottom: 18px;
 }
-dl dt, dl dd {
+dt, dd {
   line-height: 18px;
 }
-dl dt {
+dt {
   font-weight: bold;
 }
-dl dd {
+dd {
   margin-left: 9px;
 }
 hr {
@@ -727,7 +727,7 @@ fieldset {
   margin-bottom: 18px;
   padding-top: 18px;
 }
-fieldset legend {
+legend {
   display: block;
   margin-left: 150px;
   font-size: 20px;
@@ -831,7 +831,7 @@ form div.error {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-form div.error > label, form div.error span.help-inline, form div.error span.help-block {
+form div.error > label, form div.error .help-inline, form div.error .help-block {
   color: #9d261d;
 }
 form div.error input[type=text], form div.error input[type=password], form div.error textarea {
@@ -846,7 +846,7 @@ form div.error input[type=text]:focus, form div.error input[type=password]:focus
   -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
 }
-form div.error .input-prepend span.add-on, form div.error .input-append span.add-on {
+form div.error .add-on {
   background: #f4c8c5;
   border-color: #c87872;
   color: #b9554d;
@@ -907,13 +907,13 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
 }
-.actions .secondary-action {
+.secondary-action {
   float: right;
 }
-.actions .secondary-action a {
+.secondary-action a {
   line-height: 30px;
 }
-.actions .secondary-action a:hover {
+.secondary-action a:hover {
   text-decoration: underline;
 }
 .help-inline, .help-block {
@@ -1007,29 +1007,31 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
   padding: 0;
   width: 100%;
 }
+.inputs-list li:first-child {
+  padding-top: 5px;
+}
 .inputs-list li label {
+  line-height: 18px;
+}
+.inputs-list label {
   display: block;
   float: none;
   width: auto;
   padding: 0;
-  line-height: 18px;
   text-align: left;
   white-space: normal;
 }
-.inputs-list li label strong {
+.inputs-list label strong {
   color: #808080;
 }
-.inputs-list li label small {
+.inputs-list label small {
   font-size: 12px;
   font-weight: normal;
 }
-.inputs-list li ul.inputs-list {
+.inputs-list ul.inputs-list {
   margin-left: 25px;
   margin-bottom: 10px;
   padding-top: 0;
-}
-.inputs-list li:first-child {
-  padding-top: 5px;
 }
 .inputs-list input[type=radio], .inputs-list input[type=checkbox] {
   margin-bottom: 0;
@@ -1055,7 +1057,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
 .form-stacked .clearfix {
   margin-bottom: 9px;
 }
-.form-stacked .clearfix div.input {
+.form-stacked div.input {
   margin-left: 0;
 }
 .form-stacked .inputs-list {
@@ -1064,7 +1066,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
 .form-stacked .inputs-list li {
   padding-top: 0;
 }
-.form-stacked .inputs-list li label {
+.form-stacked .inputs-list label {
   font-weight: normal;
   padding-top: 0;
 }
@@ -1090,22 +1092,22 @@ table {
   border-collapse: separate;
   font-size: 13px;
 }
-table th, table td {
+th, td {
   padding: 10px 10px 9px;
   line-height: 13.5px;
   text-align: left;
   vertical-align: middle;
   border-bottom: 1px solid #ddd;
 }
-table th {
+th {
   padding-top: 9px;
   font-weight: bold;
   border-bottom-width: 2px;
 }
-.zebra-striped tbody tr:nth-child(odd) td {
+.zebra-striped tr:nth-child(odd) td {
   background-color: #f9f9f9;
 }
-.zebra-striped tbody tr:hover td {
+.zebra-striped tr:hover td {
   background-color: #f5f5f5;
 }
 .zebra-striped .header {
@@ -1120,13 +1122,6 @@ table th {
   border-color: #000 transparent;
   visibility: hidden;
 }
-.zebra-striped .headerSortUp, .zebra-striped .headerSortDown {
-  background-color: rgba(141, 192, 219, 0.25);
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  -webkit-border-radius: 3px 3px 0 0;
-  -moz-border-radius: 3px 3px 0 0;
-  border-radius: 3px 3px 0 0;
-}
 .zebra-striped .header:hover:after {
   visibility: visible;
 }
@@ -1138,11 +1133,20 @@ table th {
   opacity: 0.6;
 }
 .zebra-striped .headerSortUp:after {
+  visibility: visible;
+}
+.headerSortUp, .headerSortDown {
+  background-color: rgba(141, 192, 219, 0.25);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+.headerSortUp:after {
   border-bottom: none;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #000;
-  visibility: visible;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -1155,42 +1159,42 @@ table .blue {
   color: #049cdb;
   border-bottom-color: #049cdb;
 }
-table .headerSortUp.blue, table .headerSortDown.blue {
-  background-color: #ade6fe;
-}
 table .green {
   color: #46a546;
   border-bottom-color: #46a546;
-}
-table .headerSortUp.green, table .headerSortDown.green {
-  background-color: #cdeacd;
 }
 table .red {
   color: #9d261d;
   border-bottom-color: #9d261d;
 }
-table .headerSortUp.red, table .headerSortDown.red {
-  background-color: #f4c8c5;
-}
 table .yellow {
   color: #ffc40d;
   border-bottom-color: #ffc40d;
-}
-table .headerSortUp.yellow, table .headerSortDown.yellow {
-  background-color: #fff6d9;
 }
 table .orange {
   color: #f89406;
   border-bottom-color: #f89406;
 }
-table .headerSortUp.orange, table .headerSortDown.orange {
-  background-color: #fee9cc;
-}
 table .purple {
   color: #7a43b6;
   border-bottom-color: #7a43b6;
 }
-table .headerSortUp.purple, table .headerSortDown.purple {
+.headerSortUp.blue, .headerSortDown.blue {
+  background-color: #ade6fe;
+}
+.headerSortUp.green, .headerSortDown.green {
+  background-color: #cdeacd;
+}
+.headerSortUp.red, .headerSortDown.red {
+  background-color: #f4c8c5;
+}
+.headerSortUp.yellow, .headerSortDown.yellow {
+  background-color: #fff6d9;
+}
+.headerSortUp.orange, .headerSortDown.orange {
+  background-color: #fee9cc;
+}
+.headerSortUp.purple, .headerSortDown.purple {
   background-color: #e2d5f0;
 }
 /* Patterns.less
@@ -1224,7 +1228,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-.topbar a:hover, .topbar ul li.active a {
+.topbar a:hover, .topbar li.active a {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
@@ -1252,7 +1256,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-opacity: 1;
   opacity: 1;
 }
-.topbar form input {
+.topbar input {
   background-color: #444;
   background-color: rgba(255, 255, 255, 0.3);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1274,18 +1278,18 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-transition: none;
   transition: none;
 }
-.topbar form input:-moz-placeholder {
+.topbar input:-moz-placeholder {
   color: #e6e6e6;
 }
-.topbar form input::-webkit-input-placeholder {
+.topbar input::-webkit-input-placeholder {
   color: #e6e6e6;
 }
-.topbar form input:hover {
+.topbar input:hover {
   background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
   color: #fff;
 }
-.topbar form input:focus, .topbar form input.focused {
+.topbar input:focus, .topbar input.focused {
   outline: none;
   background-color: #fff;
   color: #404040;
@@ -1307,79 +1311,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   margin-left: 10px;
   margin-right: 0;
 }
-.topbar ul li {
-  display: block;
-  float: left;
-  font-size: 13px;
-}
-.topbar ul li a {
-  display: block;
-  float: none;
-  padding: 10px 10px 11px;
-  line-height: 19px;
-  text-decoration: none;
-}
-.topbar ul li a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-.topbar ul li.active a {
-  background-color: #222;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.topbar ul.primary-nav li ul {
+.topbar ul.primary-nav ul {
   left: 0;
 }
-.topbar ul.secondary-nav li ul {
+.topbar ul.secondary-nav ul {
   right: 0;
 }
-.topbar ul li.menu {
-  position: relative;
-}
-.topbar ul li.menu a.menu:after {
-  width: 0px;
-  height: 0px;
-  display: inline-block;
-  content: "&darr;";
-  text-indent: -99999px;
-  vertical-align: top;
-  margin-top: 8px;
-  margin-left: 4px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #fff;
-  filter: alpha(opacity=50);
-  -khtml-opacity: 0.5;
-  -moz-opacity: 0.5;
-  opacity: 0.5;
-}
-.topbar ul li.menu.open a.menu, .topbar ul li.menu.open a:hover {
-  background-color: #444;
-  background-color: rgba(255, 255, 255, 0.1);
-  *background-color: #444;
-  /* IE6-7 */
-
-  color: #fff;
-}
-.topbar ul li.menu.open ul {
-  display: block;
-}
-.topbar ul li.menu.open ul li a {
-  background-color: transparent;
-  font-weight: normal;
-}
-.topbar ul li.menu.open ul li a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  *background-color: #444;
-  /* IE6-7 */
-
-  color: #fff;
-}
-.topbar ul li.menu.open ul li.active a {
-  background-color: rgba(255, 255, 255, 0.1);
-  font-weight: bold;
-}
-.topbar ul li ul {
+.topbar ul ul {
   background-color: #333;
   float: left;
   display: none;
@@ -1401,14 +1339,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
-.topbar ul li ul li {
-  float: none;
-  clear: both;
-  display: block;
-  background: none;
-  font-size: 12px;
-}
-.topbar ul li ul li a {
+.topbar ul ul a {
   display: block;
   padding: 6px 15px;
   clear: both;
@@ -1416,20 +1347,12 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   line-height: 19px;
   color: #bbb;
 }
-.topbar ul li ul li a:hover {
+.topbar ul ul a:hover {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.25);
   color: #fff;
 }
-.topbar ul li ul li.divider {
-  height: 1px;
-  overflow: hidden;
-  background: #222;
-  background: rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 5px 0;
-}
-.topbar ul li ul li span {
+.topbar ul ul span {
   clear: both;
   display: block;
   background: rgba(0, 0, 0, 0.2);
@@ -1437,6 +1360,87 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   cursor: default;
   color: #808080;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.topbar li {
+  display: block;
+  float: left;
+  font-size: 13px;
+}
+.topbar li a {
+  display: block;
+  float: none;
+  padding: 10px 10px 11px;
+  line-height: 19px;
+  text-decoration: none;
+}
+.topbar li a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.topbar li.active a {
+  background-color: #222;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.topbar li li {
+  float: none;
+  clear: both;
+  display: block;
+  background: none;
+  font-size: 12px;
+}
+.topbar li li.divider {
+  height: 1px;
+  overflow: hidden;
+  background: #222;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 5px 0;
+}
+.topbar li.menu {
+  position: relative;
+}
+.topbar li.menu.open a.menu, .topbar li.menu.open a:hover {
+  background-color: #444;
+  background-color: rgba(255, 255, 255, 0.1);
+  *background-color: #444;
+  /* IE6-7 */
+
+  color: #fff;
+}
+.topbar li.menu.open ul {
+  display: block;
+}
+.topbar li.menu.open li a {
+  background-color: transparent;
+  font-weight: normal;
+}
+.topbar li.menu.open li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  *background-color: #444;
+  /* IE6-7 */
+
+  color: #fff;
+}
+.topbar li.menu.open li.active a {
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+}
+.topbar a.menu:after {
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 8px;
+  margin-left: 4px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 .hero-unit {
   background-color: #f5f5f5;
@@ -1632,9 +1636,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .alert-message.block-message p {
   margin-right: 30px;
 }
-.alert-message.block-message .alert-actions {
-  margin-top: 5px;
-}
 .alert-message.block-message.error, .alert-message.block-message.success, .alert-message.block-message.info {
   color: #404040;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -1650,6 +1651,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .alert-message.block-message.info {
   background-color: #ddf4fb;
   border-color: #c6edf9;
+}
+.alert-message .alert-actions {
+  margin-top: 5px;
 }
 .tabs, .pills {
   margin: 0 0 20px;
@@ -1670,7 +1674,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .tabs li, .pills li {
   display: inline;
 }
-.tabs li a, .pills li a {
+.tabs a, .pills a {
   float: left;
   width: auto;
 }
@@ -1678,7 +1682,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   width: 100%;
   border-bottom: 1px solid #bfbfbf;
 }
-.tabs li a {
+.tabs a {
   margin-bottom: -1px;
   margin-right: 2px;
   padding: 0 15px;
@@ -1687,7 +1691,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
-.tabs li a:hover {
+.tabs a:hover {
   background-color: #e6e6e6;
   border-bottom: 1px solid #bfbfbf;
 }
@@ -1698,7 +1702,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border-bottom: 0;
   color: #808080;
 }
-.pills li a {
+.pills a {
   margin: 5px 3px 5px 0;
   padding: 0 15px;
   text-shadow: 0 1px 1px #fff;
@@ -1707,7 +1711,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
-.pills li a:hover {
+.pills a:hover {
   background: #0050a3;
   color: #fff;
   text-decoration: none;
@@ -1734,10 +1738,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.pagination ul li {
+.pagination li {
   display: inline;
 }
-.pagination ul li a {
+.pagination li a {
   float: left;
   padding: 0 14px;
   line-height: 34px;
@@ -1749,14 +1753,14 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
   text-decoration: none;
 }
-.pagination ul li a:hover, .pagination ul li.active a {
+.pagination li a:hover, .pagination li.active a {
   background-color: #c7eefe;
 }
-.pagination ul li.disabled a, .pagination ul li.disabled a:hover {
+.pagination li.disabled a, .pagination li.disabled a:hover {
   background-color: transparent;
   color: #bfbfbf;
 }
-.pagination ul li.next a {
+.pagination li.next a {
   border: 0;
 }
 .well {
@@ -1805,11 +1809,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.modal .modal-header {
+.modal-header {
   border-bottom: 1px solid #eee;
   padding: 5px 20px;
 }
-.modal .modal-header .close {
+.modal-header .close {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -1817,10 +1821,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   line-height: 10px;
   font-size: 18px;
 }
-.modal .modal-body {
+.modal-body {
   padding: 20px;
 }
-.modal .modal-footer {
+.modal-footer {
   background-color: #f5f5f5;
   padding: 14px 20px 15px;
   border-top: 1px solid #ddd;
@@ -1834,14 +1838,14 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-bottom: 18px;
   margin-bottom: 0;
 }
-.modal .modal-footer:before, .modal .modal-footer:after {
+.modal-footer:before, .modal-footer:after {
   display: table;
   content: "";
 }
-.modal .modal-footer:after {
+.modal-footer:after {
   clear: both;
 }
-.modal .modal-footer .btn {
+.modal-footer .btn {
   float: right;
   margin-left: 10px;
 }
@@ -1889,7 +1893,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border-bottom: 5px solid transparent;
   border-right: 5px solid #000000;
 }
-.twipsy .twipsy-inner {
+.twipsy-inner {
   padding: 3px 8px;
   background-color: #000;
   color: white;
@@ -1900,7 +1904,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.twipsy .twipsy-arrow {
+.twipsy-arrow {
   position: absolute;
   width: 0;
   height: 0;
@@ -1985,6 +1989,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.popover .content p, .popover .content ul, .popover .content ol {
+.popover p, .popover ul, .popover ol {
   margin-bottom: 0;
 }
