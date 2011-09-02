@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 09:52:17 PDT 2011
+ * Date: Fri Sep  2 11:52:53 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -658,10 +658,10 @@ select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
+  height: 18px;
   padding: 4px;
   font-size: 13px;
   line-height: 18px;
-  height: 18px;
   color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -671,14 +671,17 @@ select,
 /* mini reset for non-html5 file types */
 input[type=checkbox], input[type=radio] {
   width: auto;
-  padding: 0;
-  line-height: normal;
   height: auto;
+  padding: 0;
   margin: 3px 0;
+  line-height: normal;
+  border: none;
 }
 input[type=file] {
-  border: 0;
-  padding: 0;
+  background-color: #fff;
+  padding: initial;
+  border: initial;
+  line-height: initial;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;

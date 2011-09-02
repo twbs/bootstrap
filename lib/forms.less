@@ -67,10 +67,10 @@ select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
+  height: @baseline;
   padding: 4px;
   font-size: 13px;
   line-height: @baseline;
-  height: @baseline;
   color: @gray;
   border: 1px solid #ccc;
   .border-radius(3px);
@@ -80,15 +80,18 @@ select,
 input[type=checkbox],
 input[type=radio] {
   width: auto;
-  padding: 0;
-  line-height: normal;
   height: auto;
+  padding: 0;
   margin: 3px 0;
+  line-height: normal;
+  border: none;
 }
 
 input[type=file] {
-  border: 0;
-  padding: 0;
+  background-color: #fff;
+  padding: initial;
+  border: initial;
+  line-height: initial;
   .box-shadow(none);
 }
 
