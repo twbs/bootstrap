@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 09:48:25 PDT 2011
+ * Date: Fri Sep  2 09:52:17 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -404,11 +404,11 @@ body {
 .container-fluid:after {
   clear: both;
 }
-.container-fluid .sidebar {
+.container-fluid > .sidebar {
   float: left;
   width: 220px;
 }
-.container-fluid .content {
+.container-fluid > .content {
   min-width: 700px;
   max-width: 1180px;
   margin-left: 240px;
