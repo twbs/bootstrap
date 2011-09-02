@@ -95,8 +95,9 @@
 }
 
 // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-.topbar-inner, 
-.topbar .fill { // For backwards compatibility
+// For backwards compatability, include .topbar .fill
+.topbar-inner,
+.topbar .fill {
   background-color: #222;
   #gradient > .vertical(#333, #222);
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
@@ -243,6 +244,17 @@ a.menu:after,
     display: block;
     background-color: none;
   }
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #eee;
+    border-bottom: 1px solid #fff;
+  }
+}
+
+.topbar .dropdown-menu, .dropdown-menu {
   // Links within the dropdown menu
   a {
     display: block;
@@ -261,15 +273,8 @@ a.menu:after,
       .box-shadow(@shadow);
     }
   }
-  // Dividers (basically an hr) within the dropdown
-  .divider {
-    height: 1px;
-    margin: 5px 0;
-    overflow: hidden;
-    background-color: #eee;
-    border-bottom: 1px solid #fff;
-  }
 }
+
 // Open state for the dropdown
 // .open for backwards compatibility
 .open,
