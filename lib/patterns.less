@@ -429,8 +429,7 @@ footer {
   // Button Base
   cursor: pointer;
   display: inline-block;
-  //#gradient > .vertical-three-colors(#fff, #fff, 0.25, darken(#fff, 10%));
-  #gradient > .vertical(#ffffff, #eeeeee);
+  #gradient > .vertical-three-colors(#ffffff, #ffffff, 0.25, darken(#ffffff, 10%));
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
@@ -465,14 +464,16 @@ footer {
   &.disabled {
     cursor: default;
     background-image: none;
+    .reset-filter();
     .opacity(65);
     .box-shadow(none);
   }
-  &:disabled {
+  &[disabled] {
     // disabled pseudo can't be included with .disabled
     // def because IE8 and below will drop it ;_;
     cursor: default;
     background-image: none;
+    .reset-filter();
     .opacity(65);
     .box-shadow(none);
   }
