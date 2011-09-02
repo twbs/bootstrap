@@ -1,11 +1,16 @@
 $(document).ready(function(){
 
+  // Google code prettify
+  // ====================
+
+  prettyPrint();
+
   // scroll spy logic
   // ================
 
   var activeTarget,
-      $window = $(window),
       position = {},
+      $window = $(window),
       nav = $('body > .topbar li a'),
       targets = nav.map(function () {
         return $(this).attr('href');
