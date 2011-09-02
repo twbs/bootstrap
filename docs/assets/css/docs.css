@@ -24,9 +24,7 @@ section > .row {
   background-image: -moz-linear-gradient(#004D9F, #049cd9);
   background-image: -o-linear-gradient(top, #004D9F, #049cd9);
   background-image: -khtml-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
-
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0)\9; /* IE8 and down */
-
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0); /* IE8 and down */
 }
 #masthead div.inner, #footer div.inner {
   background: transparent url(../img/grid-18px.png) top center;
