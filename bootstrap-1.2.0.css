@@ -6,11 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
-<<<<<<< HEAD
- * Date: Fri Sep  2 00:31:17 PDT 2011
-=======
- * Date: Fri Sep  2 00:29:45 PDT 2011
->>>>>>> 5ef4519ca8ddf035a19d8f6dfff8745fdb380e32
+ * Date: Fri Sep  2 00:32:54 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1182,9 +1178,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
-<<<<<<< HEAD
-.topbar div > ul, .nav {
-=======
 .topbar-inner, .topbar .fill {
   background-color: #222;
   background-color: #222222;
@@ -1200,19 +1193,14 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-.topbar > ul, .nav {
->>>>>>> 5ef4519ca8ddf035a19d8f6dfff8745fdb380e32
+.topbar div > ul, .nav {
   display: block;
   float: left;
   margin: 0 10px 0 0;
   position: relative;
   left: 0;
 }
-<<<<<<< HEAD
-.topbar div > ul li, .nav li {
-=======
-.topbar > ul > li, .nav > li {
->>>>>>> 5ef4519ca8ddf035a19d8f6dfff8745fdb380e32
+.topbar div > ul > li, .nav > li {
   display: block;
   float: left;
 }
