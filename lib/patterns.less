@@ -224,6 +224,17 @@
     display: block;
     background-color: none;
   }
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #eee;
+    border-bottom: 1px solid #fff;
+  }
+}
+
+.topbar .dropdown-menu, .dropdown-menu {
   // Links within the dropdown menu
   a {
     display: block;
@@ -242,15 +253,8 @@
       .box-shadow(@shadow);
     }
   }
-  // Dividers (basically an hr) within the dropdown
-  .divider {
-    height: 1px;
-    margin: 5px 0;
-    overflow: hidden;
-    background-color: #eee;
-    border-bottom: 1px solid #fff;
-  }
 }
+
 // Open state for the dropdown
 .dropdown.open {
   .dropdown-toggle {
