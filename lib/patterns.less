@@ -55,7 +55,7 @@
   }
 
   // Search Form
-  form {
+  .search-form {
     float: left;
     margin: 5px 0 0 0;
     position: relative;
@@ -116,7 +116,7 @@
       display: block;
       float: left;
       font-size: 13px;
-      a {
+      > a {
         display: block;
         float: none;
         padding: 10px 10px 11px;
@@ -137,8 +137,10 @@
     &.primary-nav li ul {
       left: 0;
     }
-    &.secondary-nav li ul {
-      right: 0;
+    &.secondary-nav li {
+        ul, .menu-dropdown {
+            right: 0;
+        }
     }
     li.menu {
       position: relative;
@@ -166,8 +168,11 @@
           *background-color: #444; /* IE6-7 */
           color: #fff;
         }
+        .menu-dropdown, ul {
+            display: block;
+        }
+
         ul {
-          display: block;
           li {
             a {
               background-color: transparent;
@@ -186,7 +191,8 @@
         }
       }
     }
-    li ul {
+
+    ul, .menu-dropdown {
       background-color: #333;
       float: left;
       display: none;
