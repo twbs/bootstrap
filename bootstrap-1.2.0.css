@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Aug 31 10:55:48 PDT 2011
+ * Date: Thu Sep  1 22:52:35 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -657,8 +657,7 @@ div.input {
 input[type=checkbox], input[type=radio] {
   cursor: pointer;
 }
-input[type=text],
-input[type=password],
+input,
 textarea,
 select,
 .uneditable-input {
@@ -673,6 +672,24 @@ select,
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+}
+input[type=checkbox], input[type=radio] {
+  width: auto;
+  padding: 0;
+  line-height: normal;
+  height: auto;
+  margin: 3px 0;
+}
+input[type=file] {
+  border: 0;
+  padding: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+input[type=button], input[type=reset], input[type=submit] {
+  width: auto;
+  height: auto;
 }
 select, input[type=file] {
   height: 27px;
@@ -695,10 +712,7 @@ textarea {
 ::-webkit-input-placeholder {
   color: #bfbfbf;
 }
-input[type=text],
-input[type=password],
-select,
-textarea {
+input, select, textarea {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -706,7 +720,7 @@ textarea {
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-input[type=text]:focus, input[type=password]:focus, textarea:focus {
+input:focus, textarea:focus {
   outline: none;
   border-color: rgba(82, 168, 236, 0.8);
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
@@ -724,13 +738,13 @@ form div.error {
 form div.error > label, form div.error span.help-inline, form div.error span.help-block {
   color: #9d261d;
 }
-form div.error input[type=text], form div.error input[type=password], form div.error textarea {
+form div.error input, form div.error textarea {
   border-color: #c87872;
   -webkit-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   -moz-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
   box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
 }
-form div.error input[type=text]:focus, form div.error input[type=password]:focus, form div.error textarea:focus {
+form div.error input:focus, form div.error textarea:focus {
   border-color: #b9554d;
   -webkit-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
   -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
@@ -827,7 +841,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
 .inline-inputs {
   color: #808080;
 }
-.inline-inputs span, .inline-inputs input[type=text] {
+.inline-inputs span, .inline-inputs input {
   display: inline-block;
 }
 .inline-inputs input.mini {
@@ -839,10 +853,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
 .inline-inputs span {
   padding: 0 2px 0 1px;
 }
-.input-prepend input[type=text],
-.input-append input[type=text],
-.input-prepend input[type=password],
-.input-append input[type=password] {
+.input-prepend input, .input-append input {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
@@ -875,7 +886,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
   /* IE6-7 */
 
 }
-.input-append input[type=text], .input-append input[type=password] {
+.input-append input {
   float: left;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;

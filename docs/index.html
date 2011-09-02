@@ -763,21 +763,21 @@
               <ul class="inputs-list">
                 <li>
                   <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option1" />
+                    <input type="radio" checked name="optionsRadios" value="option1" />
                     <span>Option one is this and that&mdash;be sure to include why it’s great</span>
                   </label>
                 </li>
                 <li>
                   <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                    <span>Option two can also be checked and included in form results</span>
+                    <input type="radio" name="optionsRadios" value="option2" />
+                    <span>Option two can is something else and selecting it will deselect options 1</span>
                   </label>
                 </li>
               </ul>
             </div>
           </div><!-- /clearfix -->
           <div class="actions">
-            <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
+            <input type="submit" class="btn primary" value="Save Changes">&nbsp;<button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
       </form>
