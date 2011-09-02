@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 00:29:45 PDT 2011
+ * Date: Fri Sep  2 00:49:39 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1193,62 +1193,89 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-.topbar > ul, .nav {
+.topbar div > ul, .nav {
   display: block;
   float: left;
   margin: 0 10px 0 0;
   position: relative;
   left: 0;
 }
-.topbar > ul > li, .nav > li {
+.topbar div > ul > li, .nav > li {
   display: block;
   float: left;
 }
-.topbar > ul a, .nav a {
+.topbar div > ul a, .nav a {
   display: block;
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
   text-decoration: none;
 }
-.topbar > ul a:hover, .nav a:hover {
+.topbar div > ul a:hover, .nav a:hover {
   color: #fff;
   text-decoration: none;
 }
-.topbar > ul .active a, .nav .active a {
+.topbar div > ul .active a, .nav .active a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.topbar > ul.secondary-nav, .nav.secondary-nav {
+.topbar div > ul.secondary-nav, .nav.secondary-nav {
   float: right;
   margin-left: 10px;
   margin-right: 0;
 }
-.topbar > ul.secondary-nav .dropdown-menu, .nav.secondary-nav .dropdown-menu {
+.topbar div > ul.secondary-nav .dropdown-menu, .nav.secondary-nav .dropdown-menu {
   right: 0;
 }
-.topbar > ul .dropdown-toggle:hover,
+.topbar div > ul a.menu:hover,
+.nav a.menu:hover,
+.topbar div > ul li.open .menu,
+.nav li.open .menu,
+.topbar div > ul .dropdown-toggle:hover,
 .nav .dropdown-toggle:hover,
-.topbar > ul .dropdown.open .dropdown-toggle,
+.topbar div > ul .dropdown.open .dropdown-toggle,
 .nav .dropdown.open .dropdown-toggle {
   background: #444;
   background: rgba(255, 255, 255, 0.05);
 }
-.topbar > ul .dropdown-menu, .nav .dropdown-menu {
+.topbar div > ul .menu-dropdown,
+.nav .menu-dropdown,
+.topbar div > ul .dropdown-menu,
+.nav .dropdown-menu {
   background-color: #333;
 }
-.topbar > ul .dropdown-menu .dropdown-toggle, .nav .dropdown-menu .dropdown-toggle {
+.topbar div > ul .menu-dropdown a.menu,
+.nav .menu-dropdown a.menu,
+.topbar div > ul .dropdown-menu a.menu,
+.nav .dropdown-menu a.menu,
+.topbar div > ul .menu-dropdown .dropdown-toggle,
+.nav .menu-dropdown .dropdown-toggle,
+.topbar div > ul .dropdown-menu .dropdown-toggle,
+.nav .dropdown-menu .dropdown-toggle {
   color: #fff;
 }
-.topbar > ul .dropdown-menu .dropdown-toggle.open, .nav .dropdown-menu .dropdown-toggle.open {
+.topbar div > ul .menu-dropdown a.menu.open,
+.nav .menu-dropdown a.menu.open,
+.topbar div > ul .dropdown-menu a.menu.open,
+.nav .dropdown-menu a.menu.open,
+.topbar div > ul .menu-dropdown .dropdown-toggle.open,
+.nav .menu-dropdown .dropdown-toggle.open,
+.topbar div > ul .dropdown-menu .dropdown-toggle.open,
+.nav .dropdown-menu .dropdown-toggle.open {
   background: #444;
   background: rgba(255, 255, 255, 0.05);
 }
-.topbar > ul .dropdown-menu li a, .nav .dropdown-menu li a {
+.topbar div > ul .menu-dropdown li a,
+.nav .menu-dropdown li a,
+.topbar div > ul .dropdown-menu li a,
+.nav .dropdown-menu li a {
   color: #999;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
-.topbar > ul .dropdown-menu li a:hover, .nav .dropdown-menu li a:hover {
+.topbar div > ul .menu-dropdown li a:hover,
+.nav .menu-dropdown li a:hover,
+.topbar div > ul .dropdown-menu li a:hover,
+.nav .dropdown-menu li a:hover {
   background-color: #191919;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#292929), to(#191919));
@@ -1260,14 +1287,20 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-image: linear-gradient(top, #292929, #191919);
   color: #fff;
 }
-.topbar > ul .dropdown-menu .divider, .nav .dropdown-menu .divider {
+.topbar div > ul .menu-dropdown .divider,
+.nav .menu-dropdown .divider,
+.topbar div > ul .dropdown-menu .divider,
+.nav .dropdown-menu .divider {
   background-color: #222;
   border-color: #444;
 }
-.dropdown {
+.topbar ul .menu-dropdown li a, .topbar ul .dropdown-menu li a {
+  padding: 4px 15px;
+}
+li.menu, .dropdown {
   position: relative;
 }
-.dropdown-toggle:after {
+a.menu:after, .dropdown-toggle:after {
   width: 0;
   height: 0;
   display: inline-block;
@@ -1284,7 +1317,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-opacity: 0.5;
   opacity: 0.5;
 }
-.dropdown-menu {
+.menu-dropdown, .dropdown-menu {
   background-color: #fff;
   float: left;
   display: none;
@@ -1311,12 +1344,12 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.dropdown-menu li {
+.menu-dropdown li, .dropdown-menu li {
   float: none;
   display: block;
   background-color: none;
 }
-.dropdown-menu a {
+.menu-dropdown a, .dropdown-menu a {
   display: block;
   padding: 4px 15px;
   clear: both;
@@ -1325,7 +1358,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #808080;
   text-shadow: 0 1px 0 #fff;
 }
-.dropdown-menu a:hover {
+.menu-dropdown a:hover, .dropdown-menu a:hover {
   background-color: #dddddd;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#eeeeee), to(#dddddd));
@@ -1341,18 +1374,24 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
 }
-.dropdown-menu .divider {
+.menu-dropdown .divider, .dropdown-menu .divider {
   height: 1px;
   margin: 5px 0;
   overflow: hidden;
   background-color: #eee;
   border-bottom: 1px solid #fff;
 }
+.open .menu,
+.dropdown.open .menu,
+.open .dropdown-toggle,
 .dropdown.open .dropdown-toggle {
   color: #fff;
   background: #ccc;
   background: rgba(0, 0, 0, 0.3);
 }
+.open .menu-dropdown,
+.dropdown.open .menu-dropdown,
+.open .dropdown-menu,
 .dropdown.open .dropdown-menu {
   display: block;
 }

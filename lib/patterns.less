@@ -96,7 +96,7 @@
 
 // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
 .topbar-inner, 
-.topbar .fill { // For backwards compatability
+.topbar .fill { // For backwards compatibility
   background-color: #222;
   #gradient > .vertical(#333, #222);
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
@@ -109,8 +109,8 @@
 
 // Topbar Nav
 // ul.nav for all topbar based navigation to avoid inheritance issues and over-specificity
-// For backwards compatability, leave in .topbar > .ul
-.topbar > ul,
+// For backwards compatibility, leave in .topbar div > ul
+.topbar div > ul,
 .nav {
   display: block;
   float: left;
@@ -147,13 +147,20 @@
     }
   }
   // Dropdowns within the .nav
+  // a.menu:hover and li.open .menu for backwards compatibility
+  a.menu:hover,
+  li.open .menu,
   .dropdown-toggle:hover,
   .dropdown.open .dropdown-toggle {
     background: #444;
     background: rgba(255,255,255,.05);
   }
+  // .menu-dropdown for backwards compatibility
+  .menu-dropdown,
   .dropdown-menu {
     background-color: #333;
+    // a.menu for backwards compatibility
+    a.menu,
     .dropdown-toggle {
       color: #fff;
       &.open {
@@ -176,12 +183,22 @@
   }
 }
 
+// For backwards compatability with new dropdowns, redeclare dropdown link padding
+.topbar ul .menu-dropdown li a,
+.topbar ul .dropdown-menu li a {
+  padding: 4px 15px;
+}
+
 // Dropdown Menus
 // Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
+// li.menu for backwards compatibility
+li.menu,
 .dropdown {
   position: relative;
 }
 // The link that is clicked to toggle the dropdown
+// a.menu for backwards compatibility
+a.menu:after,
 .dropdown-toggle:after {
   width: 0;
   height: 0;
@@ -197,6 +214,8 @@
   .opacity(50);
 }
 // The dropdown menu (ul)
+// .menu-dropdown for backwards compatibility
+.menu-dropdown,
 .dropdown-menu {
   background-color: #fff;
   float: left;
@@ -252,12 +271,18 @@
   }
 }
 // Open state for the dropdown
+// .open for backwards compatibility
+.open,
 .dropdown.open {
+  // .menu for backwards compatibility
+  .menu,
   .dropdown-toggle {
     color: #fff;
     background: #ccc;
     background: rgba(0,0,0,.3);
   }
+  // .menu-dropdown for backwards compatibility
+  .menu-dropdown,
   .dropdown-menu {
     display: block;
   }
