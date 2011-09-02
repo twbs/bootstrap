@@ -6,7 +6,11 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
+<<<<<<< HEAD
  * Date: Fri Sep  2 00:31:17 PDT 2011
+=======
+ * Date: Fri Sep  2 00:29:45 PDT 2011
+>>>>>>> 5ef4519ca8ddf035a19d8f6dfff8745fdb380e32
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -387,7 +391,6 @@ body {
   font-weight: normal;
   line-height: 18px;
   color: #808080;
-  text-rendering: optimizeLegibility;
 }
 .container {
   width: 940px;
@@ -1103,21 +1106,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   z-index: 10000;
   overflow: visible;
 }
-.topbar .fill {
-  background-color: #222;
-  background-color: #222222;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-}
 .topbar a {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1194,17 +1182,39 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
+<<<<<<< HEAD
 .topbar div > ul, .nav {
+=======
+.topbar-inner, .topbar .fill {
+  background-color: #222;
+  background-color: #222222;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.topbar > ul, .nav {
+>>>>>>> 5ef4519ca8ddf035a19d8f6dfff8745fdb380e32
   display: block;
   float: left;
   margin: 0 10px 0 0;
   position: relative;
   left: 0;
 }
+<<<<<<< HEAD
 .topbar div > ul li, .nav li {
+=======
+.topbar > ul > li, .nav > li {
+>>>>>>> 5ef4519ca8ddf035a19d8f6dfff8745fdb380e32
   display: block;
   float: left;
-  font-size: 13px;
 }
 .topbar div > ul a, .nav a {
   display: block;
@@ -1534,6 +1544,9 @@ footer {
   -khtml-opacity: 0.65;
   -moz-opacity: 0.65;
   opacity: 0.65;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 .btn:disabled {
   cursor: default;
@@ -1542,6 +1555,9 @@ footer {
   -khtml-opacity: 0.65;
   -moz-opacity: 0.65;
   opacity: 0.65;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 .btn:active {
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
