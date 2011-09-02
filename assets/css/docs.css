@@ -24,8 +24,7 @@ section > .row {
   background-image: -moz-linear-gradient(#004D9F, #049cd9);
   background-image: -o-linear-gradient(top, #004D9F, #049cd9);
   background-image: -khtml-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
-  filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#004D9F', EndColorStr='#049cd9', GradientType=0);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#004D9F', EndColorStr='#049cd9', GradientType=0))";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0); /* IE8 and down */
 }
 #masthead div.inner, #footer div.inner {
   background: transparent url(../img/grid-18px.png) top center;
@@ -199,8 +198,7 @@ div.topbar-wrapper div.topbar {
   position: absolute;
   margin: 0 -20px;
 }
-
-div.topbar-wrapper div.topbar .fill {
+div.topbar-wrapper div.topbar .topbar-inner {
   padding-left: 20px;
   padding-right: 20px;
   -webkit-border-radius: 4px;
