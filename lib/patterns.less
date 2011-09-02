@@ -16,14 +16,6 @@
   z-index: 10000;
   overflow: visible;
 
-  // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-  .fill {
-    background-color: #222;
-    #gradient > .vertical(#333, #222);
-    @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-    .box-shadow(@shadow);
-  }
-
   // Links get text shadow
   a {
     color: @grayLight;
@@ -41,7 +33,7 @@
 
   // Website name
   h3 {
-    position:relative;
+    position: relative;
     a {
       float: left;
       display: block;
@@ -102,22 +94,31 @@
   }
 }
 
+// gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+.topbar-inner, 
+.topbar .fill { // For backwards compatability
+  background-color: #222;
+  #gradient > .vertical(#333, #222);
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+}
+
 
 // NAVIGATION
 // ----------
 
 // Topbar Nav
 // ul.nav for all topbar based navigation to avoid inheritance issues and over-specificity
+.topbar > ul, // For backwards compatability
 .nav {
   display: block;
   float: left;
   margin: 0 10px 0 0;
   position: relative;
   left: 0;
-  li {
+  > li {
     display: block;
     float: left;
-    font-size: 13px;
   }
   a {
     display: block;
@@ -430,6 +431,7 @@ footer {
     cursor: default;
     background-image: none;
     .opacity(65);
+    .box-shadow(none);
   }
   &:active {
     @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
