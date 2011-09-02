@@ -57,7 +57,6 @@
     background-color: #444;
     background-color: rgba(255,255,255,.3);
     #font > .sans-serif(13px, normal, 1);
-    width: 220px;
     padding: 4px 9px;
     color: #fff;
     color: rgba(255,255,255,.75);
@@ -143,6 +142,8 @@
     float: right;
     margin-left: 10px;
     margin-right: 0;
+    // backwards compatibility
+    .menu-dropdown,
     .dropdown-menu {
       right: 0;
     }
@@ -335,16 +336,22 @@ a.menu:after,
       color: @gray;
     }
   }
+  // first one for backwards compatibility
+  .menu-dropdown,
   .dropdown-menu {
     top: 35px;
     border-width: 1px;
     .border-radius(0 6px 6px 6px);
   }
+  // first one for backwards compatibility
+  a.menu:after,
   .dropdown-toggle:after {
     border-top-color: #999;
     margin-top: 15px;
     margin-left: 5px;
   }
+  // first one for backwards compatibility
+  li.open a.menu:after,
   .dropdown.open .dropdown-toggle:after {
     border-top-color: #555;
   }
@@ -450,6 +457,10 @@ footer {
   .transition(.1s linear all);
 
   // Active and Disabled states
+  &:active {
+    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+  }
   &.disabled {
     cursor: default;
     background-image: none;
@@ -463,10 +474,6 @@ footer {
     background-image: none;
     .opacity(65);
     .box-shadow(none);
-  }
-  &:active {
-    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
-    .box-shadow(@shadow);
   }
 
   // Button Sizes
