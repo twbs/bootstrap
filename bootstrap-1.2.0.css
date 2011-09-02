@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 12:35:18 PDT 2011
+ * Date: Fri Sep  2 12:46:27 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -677,6 +677,9 @@ input[type=checkbox], input[type=radio] {
   height: auto;
   padding: 0;
   margin: 3px 0;
+  *margin-top: 0;
+  /* IE6-7 */
+
   line-height: normal;
   border: none;
 }
@@ -1532,12 +1535,12 @@ footer {
   display: inline-block;
   background-color: #e6e6e6;
   background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(0.25, #ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
-  background-image: -moz-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
-  background-image: -ms-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
-  background-image: -o-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
-  background-image: linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
