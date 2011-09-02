@@ -450,6 +450,10 @@ footer {
   .transition(.1s linear all);
 
   // Active and Disabled states
+  &:active {
+    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+  }
   &.disabled {
     cursor: default;
     background-image: none;
@@ -463,10 +467,6 @@ footer {
     background-image: none;
     .opacity(65);
     .box-shadow(none);
-  }
-  &:active {
-    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
-    .box-shadow(@shadow);
   }
 
   // Button Sizes
