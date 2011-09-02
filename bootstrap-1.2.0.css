@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 00:54:51 PDT 2011
+ * Date: Fri Sep  2 00:57:14 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1224,7 +1224,10 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   margin-left: 10px;
   margin-right: 0;
 }
-.topbar div > ul.secondary-nav .dropdown-menu, .nav.secondary-nav .dropdown-menu {
+.topbar div > ul.secondary-nav .menu-dropdown,
+.nav.secondary-nav .menu-dropdown,
+.topbar div > ul.secondary-nav .dropdown-menu,
+.nav.secondary-nav .dropdown-menu {
   right: 0;
 }
 .topbar div > ul a.menu:hover,
