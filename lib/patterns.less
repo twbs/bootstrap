@@ -429,7 +429,7 @@ footer {
   // Button Base
   cursor: pointer;
   display: inline-block;
-  #gradient > .vertical-three-colors(#ffffff, #ffffff, 0.25, darken(#ffffff, 10%));
+  #gradient > .vertical-three-colors(#ffffff, #ffffff, 0.25, darken(#ffffff, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
@@ -489,6 +489,11 @@ footer {
     padding: 7px 9px 7px;
     font-size: 11px;
   }
+}
+// Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
+:root .alert-message,
+:root .btn {
+  border-radius: 0 \0;
 }
 
 // Help Firefox not be a jerk about adding extra padding to buttons
