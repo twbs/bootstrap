@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 22:09:40 PDT 2011
+ * Date: Fri Sep  2 22:56:14 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -444,6 +444,12 @@ a {
 a:hover {
   color: #0050a3;
   text-decoration: underline;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
 }
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
@@ -1159,6 +1165,10 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   font-weight: 200;
   line-height: 1;
 }
+.topbar p {
+  margin: 0;
+  line-height: 40px;
+}
 .topbar form {
   float: left;
   margin: 5px 0 0 0;
@@ -1460,6 +1470,7 @@ a.menu:after, .dropdown-toggle:after {
   display: block;
 }
 .tabs {
+  float: left;
   width: 100%;
   border-bottom: 1px solid #ddd;
 }
@@ -1524,7 +1535,6 @@ a.menu:after, .dropdown-toggle:after {
 }
 .hero-unit {
   background-color: #f5f5f5;
-  margin-top: 60px;
   margin-bottom: 30px;
   padding: 60px;
   -webkit-border-radius: 6px;
