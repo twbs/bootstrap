@@ -354,13 +354,25 @@
       <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
       <p><strong>Note:</strong> It's still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5 and they don't have to be styled bold and italic, respectively (although if there is a more semantic element, use it). <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance, while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
       <h3>Addresses</h3>
-      <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here’s how it looks:</p>
-      <address>
-        <strong>Twitter, Inc.</strong><br />
-        795 Folsom Ave, Suite 600<br />
-        San Francisco, CA 94107<br />
-        <abbr title="Phone">P:</abbr> (123) 456-7890
-      </address>
+      <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here are two examples of how it could be used:</p>
+
+      <div class="row">
+        <div class="span4">
+          <address>
+            <strong>Twitter, Inc.</strong><br />
+            795 Folsom Ave, Suite 600<br />
+            San Francisco, CA 94107<br />
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+          </address>
+        </div>
+        <div class="span4">
+          <address>
+            <strong>Full Name</strong><br />
+            <a mailto="">first.last@gmail.com</a>
+          </address>
+        </div>
+      </div>
+
       <p><strong>Note:</strong> Each line in an <code>&lt;address&gt;</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>&lt;p&gt;</code>) to properly structure the content.</p>
       <h3>Abbreviations</h3>
       <p>For abbreviations and acronyms, use the <code>&lt;abbr&gt;</code> tag (<code>&lt;acronym&gt;</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
