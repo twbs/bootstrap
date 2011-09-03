@@ -12,7 +12,7 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="../bootstrap-1.1.1.css" rel="stylesheet">
+    <link href="../bootstrap-1.2.0.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
@@ -34,10 +34,10 @@
     <!-- Topbar
     ================================================== -->
     <div class="topbar">
-      <div class="fill">
+      <div class="topbar-inner">
         <div class="container">
           <h3><a href="#">Bootstrap</a></h3>
-          <ul>
+          <ul class="nav">
             <li class="active"><a href="#masthead">Overview</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#grid-system">Grid</a></li>
@@ -78,7 +78,7 @@
             <h6>Hotlink the CSS</h6>
             <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
             <form>
-              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"></textarea>
+              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css"></textarea>
             </form>
           </div>
           <div class="span5 columns">
@@ -210,6 +210,15 @@
     <div class="span4 columns">4</div>
     <div class="span4 columns">4</div>
   </div><!-- /row -->
+  <div class="row show-grid" title="Default three column layout">
+    <div class="span-one-third column">1/3</div>
+    <div class="span-one-third column">1/3</div>
+    <div class="span-one-third column">1/3</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="One-third and two-thirds layout">
+    <div class="span-one-third column">1/3</div>
+    <div class="span-two-thirds column">2/3</div>
+  </div><!-- /row -->
   <div class="row show-grid" title="Irregular three column layout">
     <div class="span4 columns">4</div>
     <div class="span6 columns">6</div>
@@ -230,6 +239,9 @@
   <div class="row show-grid">
     <div class="span4 columns">4</div>
     <div class="span8 columns offset4">8 offset 4</div>
+  </div><!-- /row -->
+  <div class="row show-grid">
+    <div class="span-one-third columns offset-two-thirds">1/3 offset 2/3s</div>
   </div><!-- /row -->
   <div class="row show-grid">
     <div class="span4 columns offset4">4 offset 4</div>
@@ -651,9 +663,9 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix error">
-            <label for="xlInput">X-Large Input</label>
+            <label for="xlInput2">X-Large Input</label>
             <div class="input">
-              <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
+              <input class="xlarge error" id="xlInput2" name="xlInput2" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
             </div>
           </div><!-- /clearfix -->
@@ -688,7 +700,7 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="xlInput">File Input</label>
+            <label for="fileInput">File Input</label>
             <div class="input">
               <input class="input-file" id="fileInput" name="fileInput" type="file" />
             </div>
@@ -758,21 +770,21 @@
               <ul class="inputs-list">
                 <li>
                   <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option1" />
+                    <input type="radio" checked name="optionsRadios" value="option1" />
                     <span>Option one is this and that&mdash;be sure to include why it’s great</span>
                   </label>
                 </li>
                 <li>
                   <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                    <span>Option two can also be checked and included in form results</span>
+                    <input type="radio" name="optionsRadios" value="option2" />
+                    <span>Option two can is something else and selecting it will deselect options 1</span>
                   </label>
                 </li>
               </ul>
             </div>
           </div><!-- /clearfix -->
           <div class="actions">
-            <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
+            <input type="submit" class="btn primary" value="Save Changes">&nbsp;<button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
       </form>
@@ -791,9 +803,9 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
-            <label for="xlInput">X-Large Input</label>
+            <label for="xlInput3">X-Large Input</label>
             <div class="input">
-              <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
+              <input class="xlarge" id="xlInput3" name="xlInput3" size="30" type="text" />
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
@@ -812,9 +824,9 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix error">
-            <label for="xlInput">X-Large Input</label>
+            <label for="xlInput4">X-Large Input</label>
             <div class="input">
-              <input class="xlarge error" id="xlInput" name="xlInput" size="30" type="text" />
+              <input class="xlarge error" id="xlInput4" name="xlInput4" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
             </div>
           </div><!-- /clearfix -->
@@ -858,11 +870,7 @@
       <h3>Example buttons</h3>
       <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
       <div class="well" style="padding: 14px 19px;">
-        <button class="btn primary">Primary</button>
-        <button class="btn">Default</button>
-        <button class="btn info">Info</button>
-        <button class="btn success">Success</button>
-        <button class="btn danger">Danger</button>
+        <button class="btn primary">Primary</button>&nbsp;<button class="btn">Default</button>&nbsp;<button class="btn info">Info</button>&nbsp;<button class="btn success">Success</button>&nbsp;<button class="btn danger">Danger</button>
       </div>
       <h3>Alternate sizes</h3>
       <p>Fancy larger or smaller buttons? Have at it!</p>
@@ -883,7 +891,7 @@
       </div>
       <h4>Buttons</h4>
       <div class="well">
-        <button class="btn large primary disabled" disabled>Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
+        <button class="btn large primary disabled" disabled="disabled">Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
       </div>
     </div>
   </div><!-- /row -->
@@ -897,26 +905,34 @@
   <div class="page-header">
     <h1>Navigation</h1>
   </div>
-
   <h2>Fixed topbar</h2>
   <div class="topbar-wrapper" style="z-index: 5;">
     <div class="topbar">
-      <div class="fill">
+      <div class="topbar-inner">
         <div class="container">
           <h3><a href="#">Project Name</a></h3>
-          <ul>
+          <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Secondary link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
           </ul>
           <form action="">
             <input type="text" placeholder="Search" />
           </form>
           <ul class="nav secondary-nav">
-            <li class="menu">
-              <a href="#" class="menu">Dropdown</a>
-              <ul class="menu-dropdown">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
                 <li><a href="#">Secondary link</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
@@ -925,7 +941,7 @@
             </li>
           </ul>
         </div>
-      </div><!-- /fill -->
+      </div><!-- /topbar-inner -->
     </div><!-- /topbar -->
   </div><!-- /topbar-wrapper -->
 
@@ -960,6 +976,15 @@
         <li><a href="#">Messages</a></li>
         <li><a href="#">Settings</a></li>
         <li><a href="#">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Secondary link</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Another link</a></li>
+          </ul>
+        </li>
       </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
@@ -1073,7 +1098,7 @@
     <div class="span12 columns">
       <div class="alert-message warning">
         <a class="close" href="#">&times;</a>
-        <p><strong>Holy gaucamole!</strong> Best check yo self, you’re not looking too good.</p>
+        <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
       </div>
       <div class="alert-message error">
         <a class="close" href="#">&times;</a>
@@ -1099,7 +1124,7 @@
     <div class="span12 columns">
       <div class="alert-message block-message warning">
         <a class="close" href="#">&times;</a>
-        <p><strong>Holy gaucamole! This is a warning!</strong> Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+        <p><strong>Holy guacamole! This is a warning!</strong> Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
         <div class="alert-actions">
           <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
         </div>

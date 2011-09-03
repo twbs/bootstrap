@@ -5,6 +5,7 @@ $(document).ready(function(){
 
   prettyPrint();
 
+
   // scroll spy logic
   // ================
 
@@ -18,7 +19,6 @@ $(document).ready(function(){
       offsets = $.map(targets, function (id) {
         return $(id).offset().top;
       });
-
 
   function setButton(id) {
     nav.parent("li").removeClass('active');
@@ -48,10 +48,9 @@ $(document).ready(function(){
   // ===============================
 
   $("body").bind("click", function (e) {
-    $('a.menu').parent("li").removeClass("open");
+    $('.dropdown-toggle, .menu').parent("li").removeClass("open");
   });
-
-  $("a.menu").click(function (e) {
+  $(".dropdown-toggle, .menu").click(function (e) {
     var $li = $(this).parent("li").toggleClass('open');
     return false;
   });

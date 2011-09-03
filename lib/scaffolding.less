@@ -9,28 +9,14 @@
 
 .row {
   .clearfix();
-  margin-left: -20px;
+  margin-left: -1 * @gridGutterWidth;
 
-  // Default columns
-  .span1,
-  .span2,
-  .span3,
-  .span4,
-  .span5,
-  .span6,
-  .span7,
-  .span8,
-  .span9,
-  .span10,
-  .span11,
-  .span12,
-  .span13,
-  .span14,
-  .span15,
-  .span16 {
+  // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
+  // Credit to @dhg for the idea
+  [class^="span"] {
     display: inline;
     float: left;
-    margin-left: 20px;
+    margin-left: @gridGutterWidth;
   }
 
   // Default columns
@@ -64,6 +50,12 @@
   .offset10  { .offset(10); }
   .offset11  { .offset(11); }
   .offset12  { .offset(12); }
+
+  // Unique column sizes for 16-column grid
+  .span-one-third     { width: 300px; }
+  .span-two-thirds    { width: 620px; }
+  .offset-one-third   { margin-left: 340px; }
+  .offset-two-thirds  { margin-left: 660px; }
 }
 
 
@@ -77,7 +69,6 @@ body {
   margin: 0;
   #font > .sans-serif(normal,@basefont,@baseline);
   color: @gray;
-  text-rendering: optimizeLegibility;
 }
 
 // Container (centered, fixed-width layouts)
@@ -90,11 +81,12 @@ body {
 .container-fluid {
   padding: 0 20px;
   .clearfix();
-  .sidebar {
+  > .sidebar {
     float: left;
     width: 220px;
   }
-  .content {
+  // TODO in v2: rename this and .popover .content to be more specific
+  > .content {
     min-width: 700px;
     max-width: 1180px;
     margin-left: 240px;

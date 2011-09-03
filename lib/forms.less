@@ -61,29 +61,58 @@ input[type=radio] {
 }
 
 // Inputs, Textareas, Selects
-input[type=text],
-input[type=password],
+input,
 textarea,
 select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
+  height: @baseline;
   padding: 4px;
   font-size: 13px;
   line-height: @baseline;
-  height: @baseline;
   color: @gray;
   border: 1px solid #ccc;
   .border-radius(3px);
 }
+
+/* mini reset for non-html5 file types */
+input[type=checkbox],
+input[type=radio] {
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 3px 0;
+  *margin-top: 0; /* IE6-7 */
+  line-height: normal;
+  border: none;
+}
+
+input[type=file] {
+  background-color: #fff;
+  padding: initial;
+  border: initial;
+  line-height: initial;
+  .box-shadow(none);
+}
+
+input[type=button],
+input[type=reset],
+input[type=submit] {
+  width: auto;
+  height: auto;
+}
+
 select,
 input[type=file] {
   height: @baseline * 1.5;
   line-height: @baseline * 1.5;
 }
+
 textarea {
   height: auto;
 }
+
 .uneditable-input {
   background-color: #eee;
   display: block;
@@ -100,15 +129,13 @@ textarea {
 }
 
 // Focus states
-input[type=text],
-input[type=password],
+input,
 select, textarea {
   @transition: border linear .2s, box-shadow linear .2s;
   .transition(@transition);
   .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
 }
-input[type=text]:focus,
-input[type=password]:focus,
+input:focus,
 textarea:focus {
   outline: none;
   border-color: rgba(82,168,236,.8);
@@ -128,8 +155,7 @@ form div.error {
   span.help-block {
     color: @red;
   }
-  input[type=text],
-  input[type=password],
+  input,
   textarea {
     border-color: @error-text;
     .box-shadow(0 0 3px rgba(171,41,32,.25));
@@ -221,7 +247,7 @@ input.disabled {
 // Inline Fields (input fields that appear as inline objects
 .inline-inputs {
   color: @gray;
-  span, input[type=text] {
+  span, input {
     display: inline-block;
   }
   input.mini {
@@ -238,8 +264,7 @@ input.disabled {
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
 .input-append {
-  input[type=text],
-  input[type=password] {
+  input {
     .border-radius(0 3px 3px 0);
   }
   .add-on {
@@ -270,8 +295,7 @@ input.disabled {
   }
 }
 .input-append {
-  input[type=text],
-  input[type=password] {
+  input {
     float: left;
     .border-radius(3px 0 0 3px);
   }

@@ -16,14 +16,6 @@
   z-index: 10000;
   overflow: visible;
 
-  // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-  .fill {
-    background:#222;
-    #gradient > .vertical(#333, #222);
-    @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-    .box-shadow(@shadow);
-  }
-
   // Links get text shadow
   a {
     color: @grayLight;
@@ -32,7 +24,7 @@
 
   // Hover and active states
   a:hover,
-  ul li.active a {
+  ul .active a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
     color: @white;
@@ -41,7 +33,7 @@
 
   // Website name
   h3 {
-    position:relative;
+    position: relative;
     a {
       float: left;
       display: block;
@@ -60,191 +52,330 @@
     margin: 5px 0 0 0;
     position: relative;
     .opacity(100);
-    input {
-      background-color: #444;
-      background-color: rgba(255,255,255,.3);
-      #font > .sans-serif(13px, normal, 1);
-      width: 220px;
-      padding: 4px 9px;
-      color: #fff;
-      color: rgba(255,255,255,.75);
-      border: 1px solid #111;
-      .border-radius(4px);
-      @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
-      .box-shadow(@shadow);
-      .transition(none);
+  }
+  input {
+    background-color: #444;
+    background-color: rgba(255,255,255,.3);
+    #font > .sans-serif(13px, normal, 1);
+    padding: 4px 9px;
+    color: #fff;
+    color: rgba(255,255,255,.75);
+    border: 1px solid #111;
+    .border-radius(4px);
+    @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
+    .box-shadow(@shadow);
+    .transition(none);
 
-      // Placeholder text gets special styles; can't be bundled together though for some reason
-      &:-moz-placeholder {
-        color: @grayLighter;
-      }
-      &::-webkit-input-placeholder {
-        color: @grayLighter;
-      }
-      // Hover states
-      &:hover {
-        background-color: @grayLight;
-        background-color: rgba(255,255,255,.5);
-        color: #fff;
-      }
-      // Focus states (we use .focused since IE8 and down doesn't support :focus)
-      &:focus,
-      &.focused {
-        outline: none;
-        background-color: #fff;
-        color: @grayDark;
-        text-shadow: 0 1px 0 #fff;
-        border: 0;
-        padding: 5px 10px;
-        .box-shadow(0 0 3px rgba(0,0,0,.15));
-      }
+    // Placeholder text gets special styles; can't be bundled together though for some reason
+    &:-moz-placeholder {
+      color: @grayLighter;
+    }
+    &::-webkit-input-placeholder {
+      color: @grayLighter;
+    }
+    // Hover states
+    &:hover {
+      background-color: @grayLight;
+      background-color: rgba(255,255,255,.5);
+      color: #fff;
+    }
+    // Focus states (we use .focused since IE8 and down doesn't support :focus)
+    &:focus,
+    &.focused {
+      outline: none;
+      background-color: #fff;
+      color: @grayDark;
+      text-shadow: 0 1px 0 #fff;
+      border: 0;
+      padding: 5px 10px;
+      .box-shadow(0 0 3px rgba(0,0,0,.15));
     }
   }
+}
 
-  // Navigation
-  ul {
+// gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+// For backwards compatability, include .topbar .fill
+.topbar-inner,
+.topbar .fill {
+  background-color: #222;
+  #gradient > .vertical(#333, #222);
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+}
+
+
+// NAVIGATION
+// ----------
+
+// Topbar Nav
+// ul.nav for all topbar based navigation to avoid inheritance issues and over-specificity
+// For backwards compatibility, leave in .topbar div > ul
+.topbar div > ul,
+.nav {
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+  position: relative;
+  left: 0;
+  > li {
     display: block;
     float: left;
-    margin: 0 10px 0 0;
-    position: relative;
-    &.secondary-nav {
-      float: right;
-      margin-left: 10px;
-      margin-right: 0;
+  }
+  a {
+    display: block;
+    float: none;
+    padding: 10px 10px 11px;
+    line-height: 19px;
+    text-decoration: none;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
     }
-    li {
-      display: block;
-      float: left;
-      font-size: 13px;
-      a {
-        display: block;
-        float: none;
-        padding: 10px 10px 11px;
-        line-height: 19px;
-        text-decoration: none;
-        &:hover {
-          color: #fff;
-          text-decoration: none;
-        }
-      }
-      &.active a {
-        background-color: #222;
-        background-color: rgba(0,0,0,.5);
-      }
-    }
+  }
+  .active a {
+    background-color: #222;
+    background-color: rgba(0,0,0,.5);
+  }
 
-    // Dropdowns
-    &.primary-nav li ul {
-      left: 0;
-    }
-    &.secondary-nav li ul {
+  // Secondary (floated right) nav in topbar
+  &.secondary-nav {
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+    // backwards compatibility
+    .menu-dropdown,
+    .dropdown-menu {
       right: 0;
     }
-    li.menu {
-      position: relative;
-      a.menu {
-        &:after {
-          width: 0px;
-          height: 0px;
-          display: inline-block;
-          content: "&darr;";
-          text-indent: -99999px;
-          vertical-align: top;
-          margin-top: 8px;
-          margin-left: 4px;
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-top: 4px solid #fff;
-          .opacity(50);
-        }
-      }
+  }
+  // Dropdowns within the .nav
+  // a.menu:hover and li.open .menu for backwards compatibility
+  a.menu:hover,
+  li.open .menu,
+  .dropdown-toggle:hover,
+  .dropdown.open .dropdown-toggle {
+    background: #444;
+    background: rgba(255,255,255,.05);
+  }
+  // .menu-dropdown for backwards compatibility
+  .menu-dropdown,
+  .dropdown-menu {
+    background-color: #333;
+    // a.menu for backwards compatibility
+    a.menu,
+    .dropdown-toggle {
+      color: #fff;
       &.open {
-        a.menu,
-        a:hover {
-          background-color: #444;
-          background-color: rgba(255,255,255,.1);
-          *background-color: #444; /* IE6-7 */
-          color: #fff;
-        }
-        ul {
-          display: block;
-          li {
-            a {
-              background-color: transparent;
-              font-weight: normal;
-              &:hover {
-                background-color: rgba(255,255,255,.1);
-                *background-color: #444; /* IE6-7 */
-                color: #fff;
-              }
-            }
-            &.active a {
-              background-color: rgba(255,255,255,.1);
-              font-weight: bold;
-            }
-          }
-        }
+        background: #444;
+        background: rgba(255,255,255,.05);
       }
     }
-    li ul {
-      background-color: #333;
-      float: left;
-      display: none;
-      position: absolute;
-      top: 40px;
-      min-width: 160px;
-      max-width: 220px;
-      _width: 160px;
-      margin-left: 0;
-      margin-right: 0;
-      padding: 0;
-      text-align: left;
-      border: 0;
-      zoom: 1;
-      .border-radius(0 0 5px 5px);
-      .box-shadow(0 1px 2px rgba(0,0,0,0.6));
-      li {
-        float: none;
-        clear: both;
-        display: block;
-        background: none;
-        font-size: 12px;
-        a {
-          display: block;
-          padding: 6px 15px;
-          clear: both;
-          font-weight: normal;
-          line-height: 19px;
-          color: #bbb;
-          &:hover {
-            background-color: #333;
-            background-color: rgba(255,255,255,.25);
-            color: #fff;
-          }
-        }
-
-        // Dividers (basically an hr)
-        &.divider {
-          height: 1px;
-          overflow: hidden;
-          background: #222;
-          background: rgba(0,0,0,.2);
-          border-bottom: 1px solid rgba(255,255,255,.1);
-          margin: 5px 0;
-        }
-
-        // Section separaters
-        span {
-          clear: both;
-          display: block;
-          background: rgba(0,0,0,.2);
-          padding: 6px 15px;
-          cursor: default;
-          color: @gray;
-          border-top: 1px solid rgba(0,0,0,.2);
-        }
+    li a {
+      color: #999;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      &:hover {
+        #gradient > .vertical(#292929,#191919);
+        color: #fff;
       }
     }
+    .divider {
+      background-color: #222;
+      border-color: #444;
+    }
+  }
+}
+
+// For backwards compatability with new dropdowns, redeclare dropdown link padding
+.topbar ul .menu-dropdown li a,
+.topbar ul .dropdown-menu li a {
+  padding: 4px 15px;
+}
+
+// Dropdown Menus
+// Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
+// li.menu for backwards compatibility
+li.menu,
+.dropdown {
+  position: relative;
+}
+// The link that is clicked to toggle the dropdown
+// a.menu for backwards compatibility
+a.menu:after,
+.dropdown-toggle:after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 8px;
+  margin-left: 4px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+  .opacity(50);
+}
+// The dropdown menu (ul)
+// .menu-dropdown for backwards compatibility
+.menu-dropdown,
+.dropdown-menu {
+  background-color: #fff;
+  float: left;
+  display: none; // None by default, but block on "open" of the menu
+  position: absolute;
+  top: 40px;
+  min-width: 160px;
+  max-width: 220px;
+  _width: 160px;
+  margin-left: 0; // override default ul styles
+  margin-right: 0;
+  padding: 6px 0;
+  zoom: 1; // do we need this?
+  border-color: #999;
+  border-color: rgba(0,0,0,.2);
+  border-style: solid;
+  border-width: 0 1px 1px;
+  .border-radius(0 0 6px 6px);
+  .box-shadow(0 2px 4px rgba(0,0,0,.2));
+  .background-clip(padding-box);
+
+  // Unfloat any li's to make them stack
+  li {
+    float: none;
+    display: block;
+    background-color: none;
+  }
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #eee;
+    border-bottom: 1px solid #fff;
+  }
+}
+
+.topbar .dropdown-menu, .dropdown-menu {
+  // Links within the dropdown menu
+  a {
+    display: block;
+    padding: 4px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: @gray;
+    text-shadow: 0 1px 0 #fff;
+    // Hover state
+    &:hover {
+      #gradient > .vertical(#eeeeee, #dddddd);
+      color: @grayDark;
+      text-decoration: none;
+      @shadow: inset 0 1px 0 rgba(0,0,0,.025), inset 0 -1px rgba(0,0,0,.025);
+      .box-shadow(@shadow);
+    }
+  }
+}
+
+// Open state for the dropdown
+// .open for backwards compatibility
+.open,
+.dropdown.open {
+  // .menu for backwards compatibility
+  .menu,
+  .dropdown-toggle {
+    color: #fff;
+    background: #ccc;
+    background: rgba(0,0,0,.3);
+  }
+  // .menu-dropdown for backwards compatibility
+  .menu-dropdown,
+  .dropdown-menu {
+    display: block;
+  }
+}
+
+
+// Tabs and Pills
+.tabs,
+.pills {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  .clearfix();
+  > li {
+    float: left;
+    > a {
+      display: block;
+    }
+  }
+}
+
+// Basic Tabs
+.tabs {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  > li {
+    position: relative; // For the dropdowns mostly
+    top: 1px;
+    > a {
+      margin-right: 2px;
+      padding: 0 15px;
+      line-height: (@baseline * 2) - 1;
+      .border-radius(4px 4px 0 0);
+      &:hover {
+        background-color: #eee;
+        border-bottom: 1px solid #ddd;
+        text-decoration: none;
+      }
+    }
+    &.active > a {
+      background-color: #fff;
+      padding: 0 14px;
+      border: 1px solid #ddd;
+      border-bottom: 0;
+      color: @gray;
+    }
+  }
+  // first one for backwards compatibility
+  .menu-dropdown,
+  .dropdown-menu {
+    top: 35px;
+    border-width: 1px;
+    .border-radius(0 6px 6px 6px);
+  }
+  // first one for backwards compatibility
+  a.menu:after,
+  .dropdown-toggle:after {
+    border-top-color: #999;
+    margin-top: 15px;
+    margin-left: 5px;
+  }
+  // first one for backwards compatibility
+  li.open a.menu:after,
+  .dropdown.open .dropdown-toggle:after {
+    border-top-color: #555;
+  }
+}
+
+// Basic pill nav
+.pills {
+  a {
+      margin: 5px 3px 5px 0;
+    padding: 0 15px;
+    text-shadow: 0 1px 1px #fff;
+    line-height: 30px;
+    .border-radius(15px);
+    &:hover {
+      background: @linkColorHover;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    }
+  }
+  .active a {
+    background: @linkColor;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.25);
   }
 }
 
@@ -276,6 +407,7 @@ footer {
   border-top: 1px solid #eee;
 }
 
+
 // PAGE HEADERS
 // ------------
 
@@ -288,6 +420,7 @@ footer {
   }
 }
 
+
 // BUTTON STYLES
 // -------------
 
@@ -296,7 +429,7 @@ footer {
   // Button Base
   cursor: pointer;
   display: inline-block;
-  #gradient > .vertical-three-colors(#fff, #fff, 0.25, darken(#fff, 10%));
+  #gradient > .vertical-three-colors(#ffffff, #ffffff, 25%, darken(#ffffff, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
@@ -324,23 +457,25 @@ footer {
   .transition(.1s linear all);
 
   // Active and Disabled states
+  &:active {
+    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+  }
   &.disabled {
     cursor: default;
     background-image: none;
+    .reset-filter();
     .opacity(65);
+    .box-shadow(none);
   }
-
-  &:disabled {
+  &[disabled] {
     // disabled pseudo can't be included with .disabled
     // def because IE8 and below will drop it ;_;
     cursor: default;
     background-image: none;
+    .reset-filter();
     .opacity(65);
-  }
-
-  &:active {
-    @shadow: inset 0 3px 7px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
-    .box-shadow(@shadow);
+    .box-shadow(none);
   }
 
   // Button Sizes
@@ -350,12 +485,15 @@ footer {
     padding: 9px 14px 9px;
     .border-radius(6px);
   }
-
   &.small {
     padding: 7px 9px 7px;
     font-size: 11px;
   }
-
+}
+// Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
+:root .alert-message,
+:root .btn {
+  border-radius: 0 \0;
 }
 
 // Help Firefox not be a jerk about adding extra padding to buttons
@@ -366,7 +504,6 @@ input[type=submit].btn {
   	border: 0;
   }
 }
-
 
 
 // ERROR STYLES
@@ -418,6 +555,7 @@ input[type=submit].btn {
   &.block-message {
     background-image: none;
     background-color: lighten(#fceec1, 5%);
+    .reset-filter();
     padding: 14px;
     border-color: #fceec1;
     .box-shadow(none);
@@ -448,74 +586,6 @@ input[type=submit].btn {
   }
 }
 
-// NAVIGATION
-// ----------
-
-// Common tab and pill styles
-.tabs,
-.pills {
-  margin: 0 0 20px;
-  padding: 0;
-  .clearfix();
-  li {
-    display: inline;
-    a {
-      float: left;
-      width: auto;
-    }
-  }
-}
-
-// Basic Tabs
-.tabs {
-  width: 100%;
-  border-bottom: 1px solid @grayLight;
-  li {
-    a {
-      margin-bottom: -1px;
-      margin-right: 2px;
-      padding: 0 15px;
-      line-height: (@baseline * 2) - 1;
-      .border-radius(3px 3px 0 0);
-      &:hover {
-        background-color: @grayLighter;
-        border-bottom: 1px solid @grayLight;
-      }
-    }
-    &.active a {
-      background-color: #fff;
-      padding: 0 14px;
-      border: 1px solid #ccc;
-      border-bottom: 0;
-      color: @gray;
-    }
-  }
-}
-
-// Basic pill nav
-.pills {
-  li {
-    a {
-      margin: 5px 3px 5px 0;
-      padding: 0 15px;
-      text-shadow: 0 1px 1px #fff;
-      line-height: 30px;
-      .border-radius(15px);
-      &:hover {
-        background: @linkColorHover;
-        color: #fff;
-        text-decoration: none;
-        text-shadow: 0 1px 1px rgba(0,0,0,.25);
-      }
-    }
-    &.active a {
-      background: @linkColor;
-      color: #fff;
-      text-shadow: 0 1px 1px rgba(0,0,0,.25);
-    }
-  }
-}
-
 
 // PAGINATION
 // ----------
@@ -530,31 +600,31 @@ input[type=submit].btn {
     border: 1px solid rgba(0,0,0,.15);
     .border-radius(3px);
     .box-shadow(0 1px 2px rgba(0,0,0,.05));
-    li {
-      display: inline;
-      a {
-        float: left;
-        padding: 0 14px;
-        line-height: (@baseline * 2) - 2;
-        border-right: 1px solid;
-        border-right-color: #ddd;
-        border-right-color: rgba(0,0,0,.15);
-        *border-right-color: #ddd; /* IE6-7 */
-        text-decoration: none;
-      }
-      a:hover,
-      &.active a {
-        background-color: lighten(@blue, 45%);
-      }
-      &.disabled a,
-      &.disabled a:hover {
-        background-color: transparent;
-        color: @grayLight;
-      }
-      &.next a {
-        border: 0;
-      }
-    }
+  }
+  li {
+    display: inline;
+  }
+  a {
+    float: left;
+    padding: 0 14px;
+    line-height: (@baseline * 2) - 2;
+    border-right: 1px solid;
+    border-right-color: #ddd;
+    border-right-color: rgba(0,0,0,.15);
+    *border-right-color: #ddd; /* IE6-7 */
+    text-decoration: none;
+  }
+  a:hover,
+  .active a {
+    background-color: lighten(@blue, 45%);
+  }
+  .disabled a,
+  .disabled a:hover {
+    background-color: transparent;
+    color: @grayLight;
+  }
+  .next a {
+    border: 0;
   }
 }
 
@@ -608,33 +678,33 @@ input[type=submit].btn {
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
-  .modal-header {
-    border-bottom: 1px solid #eee;
-    padding: 5px 20px;
-    .close {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      color: #999;
-      line-height:10px;
-      font-size: 18px;
-    }
+}
+.modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 5px 20px;
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #999;
+    line-height:10px;
+    font-size: 18px;
   }
-  .modal-body {
-    padding: 20px;
-  }
-  .modal-footer {
-    background-color: #f5f5f5;
-    padding: 14px 20px 15px;
-    border-top: 1px solid #ddd;
-    .border-radius(0 0 6px 6px);
-    .box-shadow(inset 0 1px 0 #fff);
-    .clearfix();
-    margin-bottom: 0;
-    .btn {
-      float: right;
-      margin-left: 10px;
-    }
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-footer {
+  background-color: #f5f5f5;
+  padding: 14px 20px 15px;
+  border-top: 1px solid #ddd;
+  .border-radius(0 0 6px 6px);
+  .box-shadow(inset 0 1px 0 #fff);
+  .clearfix();
+  margin-bottom: 0;
+  .btn {
+    float: right;
+    margin-left: 10px;
   }
 }
 
@@ -692,20 +762,20 @@ input[type=submit].btn {
   &.left .twipsy-arrow    { #popoverArrow > .left(); }
   &.below .twipsy-arrow   { #popoverArrow > .below(); }
   &.right .twipsy-arrow   { #popoverArrow > .right(); }
-  .twipsy-inner {
-    padding: 3px 8px;
-    background-color: #000;
-    color: white;
-    text-align: center;
-    max-width: 200px;
-    text-decoration: none;
-    .border-radius(4px);
-  }
-  .twipsy-arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-  }
+}
+.twipsy-inner {
+  padding: 3px 8px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  max-width: 200px;
+  text-decoration: none;
+  .border-radius(4px);
+}
+.twipsy-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
 
@@ -729,9 +799,8 @@ input[type=submit].btn {
     height: 0;
   }
   .inner {
-    background-color: #333;
-    background-color: rgba(0,0,0,.8);
-    *background-color: #333; /* IE 6-7 */
+    background: #333;
+    background: rgba(0,0,0,.8);
     padding: 3px;
     overflow: hidden;
     width: 280px;
