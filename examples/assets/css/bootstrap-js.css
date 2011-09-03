@@ -1,0 +1,36 @@
+body {
+  padding-bottom: 60px;
+}
+/* Topbar special styles
+-------------------------------------------------- */
+div.topbar-wrapper {
+  position: relative;
+  height: 40px;
+  margin: 5px 0 15px;
+}
+div.topbar-wrapper div.topbar {
+  position: absolute;
+  margin: 0 -20px;
+}
+
+div.topbar-wrapper div.topbar .fill {
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+div.topbar-wrapper .container {
+  width: auto;
+}
+
+/* Pretty Print
+-------------------------------------------------- */
+PRE.prettyprint {
+  overflow: hidden;
+}
+
+section {
+  padding-top: 60px;
+}
