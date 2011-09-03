@@ -73,9 +73,7 @@ body {
 
 // Container (centered, fixed-width layouts)
 .container {
-  width: @siteWidth;
-  margin-left: auto;
-  margin-right: auto;
+  .fixed-container();
 }
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
@@ -103,6 +101,7 @@ body {
   display: block;
 }
 
+
 // BASE STYLES
 // -----------
 
@@ -116,4 +115,12 @@ a {
     color: @linkColorHover;
     text-decoration: underline;
   }
+}
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
 }

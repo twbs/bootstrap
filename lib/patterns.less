@@ -46,6 +46,15 @@
     }
   }
 
+  // Plain text in topbar
+  p {
+    margin: 0;
+    line-height: 40px;
+    a:hover {
+      background-color: transparent;
+    }
+  }
+
   // Search Form
   form {
     float: left;
@@ -312,6 +321,7 @@ a.menu:after,
 
 // Basic Tabs
 .tabs {
+  float: left;
   width: 100%;
   border-bottom: 1px solid #ddd;
   > li {
@@ -385,7 +395,6 @@ a.menu:after,
 
 .hero-unit {
   background-color: #f5f5f5;
-  margin-top: 60px;
   margin-bottom: 30px;
   padding: 60px;
   .border-radius(6px);
