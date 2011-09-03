@@ -262,3 +262,13 @@ button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner{padding:0;
 .popover .inner{background:#333;background:rgba(0, 0, 0, 0.8);padding:3px;overflow:hidden;width:280px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);-moz-box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);}
 .popover .title{background-color:#f5f5f5;padding:9px 15px;line-height:1;-webkit-border-radius:3px 3px 0 0;-moz-border-radius:3px 3px 0 0;border-radius:3px 3px 0 0;border-bottom:1px solid #eee;}
 .popover .content{background-color:#ffffff;padding:14px;-webkit-border-radius:0 0 3px 3px;-moz-border-radius:0 0 3px 3px;border-radius:0 0 3px 3px;-webkit-background-clip:padding-box;-moz-background-clip:padding-box;background-clip:padding-box;}.popover .content p,.popover .content ul,.popover .content ol{margin-bottom:0;}
+.btn.split{position:relative;padding:0px;margin-top:1px;}.btn.split a.menu{display:inline-block;padding:5px 14px;color:inherit;}.btn.split a.menu:hover{text-decoration:none;}
+.btn.split a.menu:after{width:0px;height:0px;display:inline-block;content:"&darr;";text-indent:-99999px;vertical-align:top;margin-top:6px;margin-left:4px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid #555;filter:alpha(opacity=50);-khtml-opacity:0.5;-moz-opacity:0.5;opacity:0.5;}
+.btn.split.large{padding:0px;}.btn.split.large a.menu{padding:9px 14px 9px;}
+.btn.split.large ul{top:37px;}
+.btn.split.small{padding:0px;}.btn.split.small a.menu{padding-right:9px;padding-left:9px;}
+.btn.split.small ul{top:23px;}
+.btn.split.open ul{display:block;}
+.btn.split ul{background-color:#eee;background-color:rgba(255, 255, 255, 0.9);display:none;position:absolute;top:26px;min-width:120px;max-width:220px;_width:160px;margin-left:0;margin-right:0;padding:0;text-align:left;border:1px solid #ddd;zoom:1;-webkit-border-radius:0 0 2px 2px;-moz-border-radius:0 0 2px 2px;border-radius:0 0 2px 2px;-webkit-box-shadow:1px 1px 2px rgba(0, 0, 0, 0.6);-moz-box-shadow:1px 1px 2px rgba(0, 0, 0, 0.6);box-shadow:1px 1px 2px rgba(0, 0, 0, 0.6);}.btn.split ul li{text-shadow:none;float:none;clear:both;display:block;background:none;font-size:12px;padding:2px 10px;margin:1px 3px;}.btn.split ul li:hover{background-color:#ddd;background-color:rgba(0, 0, 0, 0.1);color:#404040;}
+.btn.split ul li a{text-decoration:none;display:block;clear:both;font-weight:normal;line-height:19px;color:#808080;padding:0px;}.btn.split ul li a:hover{color:#404040;}
+.btn.split ul li.divider{overflow:hidden;background:#eee;background:rgba(0, 0, 0, 0.1);border-bottom:1px solid rgba(255, 255, 255, 0.1);margin:0;padding:0;}
