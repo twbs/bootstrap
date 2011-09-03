@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 15:07:03 PDT 2011
+ * Date: Fri Sep  2 20:59:16 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -182,7 +182,8 @@ textarea {
 }
 .center-block {
   display: block;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .container {
   width: 940px;
@@ -393,10 +394,12 @@ body {
 }
 .container {
   width: 940px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .container-fluid {
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   zoom: 1;
   margin-bottom: 18px;
 }

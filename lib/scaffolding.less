@@ -73,13 +73,15 @@ body {
 
 // Container (centered, fixed-width layouts)
 .container {
-  width: 940px;
-  margin: 0 auto;
+  width: @siteWidth;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   .clearfix();
   > .sidebar {
     float: left;
