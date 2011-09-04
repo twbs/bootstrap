@@ -19,34 +19,44 @@
 
 
 // Font face, size, weight, and more
-----------------------------------------
+// -------------------------------------
 @baseFontSize:          13px; // base font-size
 @baseLineHeight:        18px; // base line-height of elements (incrementally increases with font-size)
 
 
 // Link color
------------------
+// ---------------
 @linkColor:             #0069d6;
 // No need to specify a link hover color because we'll automatically do that for you in Preboot
 
 
+
+
+
+
+
+
+// COMING SOON...
+// --------------
+
+@baseFontFace:          "Helvetica";
+
+
 // Primary button color
---------------------------------
+// -----------------------------
 @primaryButtonColor:    #333;
 
 
 // Grid system
-------------------------------------
+// ---------------------------------
 // Griditude
 @gridColumns:       16;
 @gridColumnWidth:   40px;
 @gridGutterWidth:   20px;
-@siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 
 /*
 TODO:
-- move primary button color here
 - add ability to set app/site-wide base font-face (need better variables: @baseFontSize, @baseFontFace, @baseLineHeight, etc)
 - make form inputs and tables apply the new global type changes (currently statically set)
 - add new docs section for examples

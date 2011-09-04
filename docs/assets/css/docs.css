@@ -151,10 +151,8 @@ div.quickstart form textarea {
 }
 /* Render mini layout previews
 -------------------------------------------------- */
-div.mini-layout {
-  height: 340px;
-  margin-bottom: 20px;
-  padding: 9px;
+.diagram,
+.mini-layout {
   border: 1px solid #ccc;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
@@ -163,28 +161,36 @@ div.mini-layout {
      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
 }
-div.mini-layout div {
+.diagram {
+  padding: 4px;
+}
+.mini-layout {
+  height: 340px;
+  margin-bottom: 20px;
+  padding: 9px;
+}
+.mini-layout div {
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
 }
-div.mini-layout div.mini-layout-body {
+.mini-layout .mini-layout-body {
   background-color: #dceaf4;
   margin: 0 auto;
   width: 340px;
   height: 340px;
 }
-div.mini-layout.fluid div.mini-layout-sidebar,
-div.mini-layout.fluid div.mini-layout-header,
-div.mini-layout.fluid div.mini-layout-body {
+.mini-layout.fluid .mini-layout-sidebar,
+.mini-layout.fluid .mini-layout-header,
+.mini-layout.fluid .mini-layout-body {
   float: left;
 }
-div.mini-layout.fluid div.mini-layout-sidebar {
+.mini-layout.fluid .mini-layout-sidebar {
   background-color: #bbd8e9;
   width: 90px;
   height: 340px;
 }
-div.mini-layout.fluid div.mini-layout-body {
+.mini-layout.fluid .mini-layout-body {
   width: 300px;
   margin-left: 10px;
 }

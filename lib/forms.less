@@ -17,7 +17,7 @@ fieldset {
   legend {
     display: block;
     margin-left: 150px;
-    font-size: 20px;
+    font-size: @basefont * 1.5;
     line-height: 1;
     *margin: 0 0 5px 145px; /* IE6-7 */
     *line-height: 1.5; /* IE6-7 */
@@ -69,7 +69,7 @@ select,
   width: 210px;
   height: @baseline;
   padding: 4px;
-  font-size: 13px;
+  font-size: @basefont;
   line-height: @baseline;
   color: @gray;
   border: 1px solid #ccc;
@@ -253,7 +253,7 @@ textarea[readonly] {
 // Help Text
 .help-inline,
 .help-block {
-  font-size: 12px;
+  font-size: @basefont - 2;
   line-height: @baseline;
   color: @grayLight;
 }
@@ -351,7 +351,7 @@ textarea[readonly] {
         color: @gray;
       }
       small {
-        font-size: 12px;
+        font-size: @basefont - 2;
         font-weight: normal;
       }
     }

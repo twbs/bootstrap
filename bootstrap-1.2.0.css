@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Sep  3 15:53:45 PDT 2011
+ * Date: Sun Sep  4 14:02:46 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -282,6 +282,12 @@ textarea {
   Feel free to create and add new variables and mixins here. The goal is to make this your playground and keep the core files intact.
 */
 /*
+TODO:
+- add ability to set app/site-wide base font-face (need better variables: @baseFontSize, @baseFontFace, @baseLineHeight, etc)
+- make form inputs and tables apply the new global type changes (currently statically set)
+- add new docs section for examples
+- add new docs section for Theme.less
+*//*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
  * ------------------------------------------------------------------------------------------- */
@@ -683,7 +689,7 @@ fieldset {
 fieldset legend {
   display: block;
   margin-left: 150px;
-  font-size: 20px;
+  font-size: 19.5px;
   line-height: 1;
   *margin: 0 0 5px 145px;
   /* IE6-7 */
@@ -897,7 +903,7 @@ textarea[readonly] {
   text-decoration: underline;
 }
 .help-inline, .help-block {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 18px;
   color: #bfbfbf;
 }
@@ -997,7 +1003,7 @@ textarea[readonly] {
   color: #808080;
 }
 .inputs-list li label small {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: normal;
 }
 .inputs-list li ul.inputs-list {
