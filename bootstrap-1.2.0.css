@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 23:27:24 PDT 2011
+ * Date: Sat Sep  3 15:53:45 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -265,6 +265,22 @@ textarea {
   border-color: #339bb9 #339bb9 #22697d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
+/* Theme.less
+ * Customizable set of settings and tweaks for Bootstrap development
+ * ----------------------------------------------------------------- */
+/*
+  Why Theme.less?
+  ---------------
+  Theme is a layer that has been added to Bootstrap to simplify the customization process for developers and designers. The goal of Theme is to provide a single point of customization within Bootstrap so you don't have to modify the core files.
+
+  How to use it
+  -------------
+  We repeat the default variables' values here for easy replacement. Simply modify any of these values and recompile Bootstrap for a more customize look and feel.
+
+  Extending it
+  ------------
+  Feel free to create and add new variables and mixins here. The goal is to make this your playground and keep the core files intact.
+*/
 /*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
@@ -333,6 +349,30 @@ textarea {
 }
 .row .span16 {
   width: 940px;
+}
+.row .span17 {
+  width: 1000px;
+}
+.row .span18 {
+  width: 1060px;
+}
+.row .span19 {
+  width: 1120px;
+}
+.row .span20 {
+  width: 1180px;
+}
+.row .span21 {
+  width: 1240px;
+}
+.row .span22 {
+  width: 1300px;
+}
+.row .span23 {
+  width: 1360px;
+}
+.row .span24 {
+  width: 1420px;
 }
 .row .offset1 {
   margin-left: 80px;
