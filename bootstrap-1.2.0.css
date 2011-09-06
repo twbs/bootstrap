@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  2 15:07:03 PDT 2011
+ * Date: Sun Sep  4 14:02:46 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -182,19 +182,21 @@ textarea {
 }
 .center-block {
   display: block;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
-.container {
+.fixed-container {
   width: 940px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   zoom: 1;
   margin-bottom: 18px;
 }
-.container:before, .container:after {
+.fixed-container:before, .fixed-container:after {
   display: table;
   content: "";
 }
-.container:after {
+.fixed-container:after {
   clear: both;
 }
 .btn.danger,
@@ -263,7 +265,29 @@ textarea {
   border-color: #339bb9 #339bb9 #22697d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
+/* Theme.less
+ * Customizable set of settings and tweaks for Bootstrap development
+ * ----------------------------------------------------------------- */
 /*
+  Why Theme.less?
+  ---------------
+  Theme is a layer that has been added to Bootstrap to simplify the customization process for developers and designers. The goal of Theme is to provide a single point of customization within Bootstrap so you don't have to modify the core files.
+
+  How to use it
+  -------------
+  We repeat the default variables' values here for easy replacement. Simply modify any of these values and recompile Bootstrap for a more customize look and feel.
+
+  Extending it
+  ------------
+  Feel free to create and add new variables and mixins here. The goal is to make this your playground and keep the core files intact.
+*/
+/*
+TODO:
+- add ability to set app/site-wide base font-face (need better variables: @baseFontSize, @baseFontFace, @baseLineHeight, etc)
+- make form inputs and tables apply the new global type changes (currently statically set)
+- add new docs section for examples
+- add new docs section for Theme.less
+*//*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
  * ------------------------------------------------------------------------------------------- */
@@ -332,6 +356,30 @@ textarea {
 .row .span16 {
   width: 940px;
 }
+.row .span17 {
+  width: 1000px;
+}
+.row .span18 {
+  width: 1060px;
+}
+.row .span19 {
+  width: 1120px;
+}
+.row .span20 {
+  width: 1180px;
+}
+.row .span21 {
+  width: 1240px;
+}
+.row .span22 {
+  width: 1300px;
+}
+.row .span23 {
+  width: 1360px;
+}
+.row .span24 {
+  width: 1420px;
+}
 .row .offset1 {
   margin-left: 80px;
 }
@@ -393,10 +441,21 @@ body {
 }
 .container {
   width: 940px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+  margin-bottom: 18px;
+}
+.container:before, .container:after {
+  display: table;
+  content: "";
+}
+.container:after {
+  clear: both;
 }
 .container-fluid {
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   zoom: 1;
   margin-bottom: 18px;
 }
@@ -416,6 +475,12 @@ body {
   max-width: 1180px;
   margin-left: 240px;
 }
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
 a {
   color: #0069d6;
   text-decoration: none;
@@ -425,6 +490,12 @@ a {
 a:hover {
   color: #0050a3;
   text-decoration: underline;
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
 }
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
@@ -618,7 +689,7 @@ fieldset {
 fieldset legend {
   display: block;
   margin-left: 150px;
-  font-size: 20px;
+  font-size: 19.5px;
   line-height: 1;
   *margin: 0 0 5px 145px;
   /* IE6-7 */
@@ -704,12 +775,13 @@ textarea {
   height: auto;
 }
 .uneditable-input {
-  background-color: #eee;
+  background-color: #fff;
   display: block;
-  border-color: #ccc;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  border-color: #eee;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  cursor: not-allowed;
 }
 :-moz-placeholder {
   color: #bfbfbf;
@@ -720,12 +792,14 @@ textarea {
 input, select, textarea {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-input:focus, textarea:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: rgba(82, 168, 236, 0.8);
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
@@ -797,14 +871,17 @@ select.xxlarge {
   width: 530px;
 }
 textarea.xxlarge {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
-input[readonly]:focus, textarea[readonly]:focus, input.disabled {
-  background: #f5f5f5;
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: #f5f5f5;
   border-color: #ddd;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  cursor: not-allowed;
 }
 .actions {
   background: #f5f5f5;
@@ -826,7 +903,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
   text-decoration: underline;
 }
 .help-inline, .help-block {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 18px;
   color: #bfbfbf;
 }
@@ -926,7 +1003,7 @@ input[readonly]:focus, textarea[readonly]:focus, input.disabled {
   color: #808080;
 }
 .inputs-list li label small {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: normal;
 }
 .inputs-list li ul.inputs-list {
@@ -1134,6 +1211,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   font-weight: 200;
   line-height: 1;
 }
+.topbar p {
+  margin: 0;
+  line-height: 40px;
+}
+.topbar p a:hover {
+  background-color: transparent;
+}
 .topbar form {
   float: left;
   margin: 5px 0 0 0;
@@ -1162,6 +1246,8 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.25);
   -webkit-transition: none;
   -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
   transition: none;
 }
 .topbar input:-moz-placeholder {
@@ -1433,6 +1519,7 @@ a.menu:after, .dropdown-toggle:after {
   display: block;
 }
 .tabs {
+  float: left;
   width: 100%;
   border-bottom: 1px solid #ddd;
 }
@@ -1497,7 +1584,6 @@ a.menu:after, .dropdown-toggle:after {
 }
 .hero-unit {
   background-color: #f5f5f5;
-  margin-top: 60px;
   margin-bottom: 30px;
   padding: 60px;
   -webkit-border-radius: 6px;
@@ -1557,6 +1643,8 @@ footer {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -webkit-transition: 0.1s linear all;
   -moz-transition: 0.1s linear all;
+  -ms-transition: 0.1s linear all;
+  -o-transition: 0.1s linear all;
   transition: 0.1s linear all;
 }
 .btn:hover {
@@ -1701,8 +1789,14 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.alert-message.block-message p {
+.alert-message.block-message ul, .alert-message.block-message p {
   margin-right: 30px;
+}
+.alert-message.block-message ul {
+  margin-bottom: 0;
+}
+.alert-message.block-message li {
+  color: #404040;
 }
 .alert-message.block-message .alert-actions {
   margin-top: 5px;
@@ -1779,7 +1873,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #000;
   position: fixed;
   top: 0;
   left: 0;
@@ -1787,13 +1881,22 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   bottom: 0;
   z-index: 1000;
 }
+.modal-backdrop.fade {
+  opacity: 0;
+}
+.modal-backdrop, .modal-backdrop.fade.in {
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+}
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: 2000;
   width: 560px;
-  margin: -280px 0 0 -250px;
+  margin: -250px 0 0 -250px;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -1989,4 +2092,15 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .popover .content p, .popover .content ul, .popover .content ol {
   margin-bottom: 0;
+}
+.fade {
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -ms-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+  opacity: 0;
+}
+.fade.in {
+  opacity: 1;
 }

@@ -48,6 +48,7 @@
             <li><a href="#navigation">Navigation</a></li>
             <li><a href="#alerts">Alerts</a></li>
             <li><a href="#popovers">Popovers</a></li>
+            <li><a href="#javascript">Javascript</a></li>
             <li><a href="#less">Less</a></li>
           </ul>
         </div>
@@ -109,13 +110,13 @@
     <h1>About Bootstrap <small>Brief history, browser support, and more</small></h1>
   </div>
   <div class="row">
-    <div class="span6 columns">
+    <div class="span-one-third">
       <h3>History</h3>
       <p>In the earlier days of Twitter, engineers used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented and development quickly accelerated during Twitter’s first Hackweek.</p>
       <p>With the help and feedback of many engineers at Twitter, Bootstrap has grown significantly to encompass not only basic styles, but more elegant and durable front-end design patterns.</p>
       <p>Read more on <a href="https://dev.twitter.com/blog/bootstrap-twitter">dev.twitter.com &rsaquo;</a></p>
     </div>
-    <div class="span5 columns">
+    <div class="span-one-third">
       <h3>Browser support</h3>
       <p>Bootstrap is tested and supported in major modern browsers like Chrome, Safari, Internet Explorer, and Firefox.</p>
       <img src="assets/img/browsers.png" width="258px" height="48px" alt="Tested and supported in Chrome, Safari, Internet Explorer, and Firefox">
@@ -127,7 +128,7 @@
         <li>Opera 11</li>
       </ul>
     </div>
-    <div class="span5 columns">
+    <div class="span-one-third">
       <h3>What's included</h3>
       <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
       <ul>
@@ -136,6 +137,29 @@
         <li>Complete styleguide documentation</li>
         <li>Example page template (more to come soon)</li>
       </ul>
+    </div>
+  </div><!-- /row -->
+
+  <div class="row">
+    <div class="span12">
+      <h3>Quick-start examples</h3>
+      <p>Need some quick templates? Check out these basic examples we've put together:</p>
+
+      <div class="row">
+        <div class="span4">
+          <img src="assets/img/example-diagram-01.png" class="diagram" alt="Simple three-column layout with hero unit">
+        </div>
+        <div class="span4">
+          <img src="assets/img/example-diagram-02.png" class="diagram" alt="Fluid layout with static sidebar">
+        </div>
+        <div class="span4">
+          <img src="assets/img/example-diagram-03.png" class="diagram" alt="Simple hanging container for apps">
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <h3>Theming Bootstrap</h3>
+      <p>Starting with v1.3.0, Bootstrap comes equipped with a customizable Less file, Theme.less. It's designed to replace default values in the library and provide a one-stop-shop for adding-on.</p>
     </div>
   </div><!-- /row -->
 </section>
@@ -354,13 +378,25 @@
       <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
       <p><strong>Note:</strong> It's still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5 and they don't have to be styled bold and italic, respectively (although if there is a more semantic element, use it). <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance, while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
       <h3>Addresses</h3>
-      <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here’s how it looks:</p>
-      <address>
-        <strong>Twitter, Inc.</strong><br />
-        795 Folsom Ave, Suite 600<br />
-        San Francisco, CA 94107<br />
-        <abbr title="Phone">P:</abbr> (123) 456-7890
-      </address>
+      <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here are two examples of how it could be used:</p>
+
+      <div class="row">
+        <div class="span4">
+          <address>
+            <strong>Twitter, Inc.</strong><br />
+            795 Folsom Ave, Suite 600<br />
+            San Francisco, CA 94107<br />
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+          </address>
+        </div>
+        <div class="span4">
+          <address>
+            <strong>Full Name</strong><br />
+            <a mailto="">first.last@gmail.com</a>
+          </address>
+        </div>
+      </div>
+
       <p><strong>Note:</strong> Each line in an <code>&lt;address&gt;</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>&lt;p&gt;</code>) to properly structure the content.</p>
       <h3>Abbreviations</h3>
       <p>For abbreviations and acronyms, use the <code>&lt;abbr&gt;</code> tag (<code>&lt;acronym&gt;</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
@@ -621,7 +657,7 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
-            <label for="xlInput">X-Large Input</label>
+            <label for="xlInput">X-Large input</label>
             <div class="input">
               <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
             </div>
@@ -651,19 +687,25 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label>Uneditable Input</label>
+            <label>Uneditable input</label>
             <div class="input">
-              <span class="uneditable-input">Some Value Here</span>
+              <span class="uneditable-input">Some value here</span>
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="disabledInput">Disabled Input</label>
+            <label for="disabledInput">Disabled input</label>
             <div class="input">
               <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here… carry on." disabled />
             </div>
           </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="disabledInput">Disabled textarea</label>
+            <div class="input">
+              <textarea class="xxlarge" name="textarea" id="textarea" rows="3" disabled></textarea>
+            </div>
+          </div><!-- /clearfix -->
           <div class="clearfix error">
-            <label for="xlInput2">X-Large Input</label>
+            <label for="xlInput2">X-Large input</label>
             <div class="input">
               <input class="xlarge error" id="xlInput2" name="xlInput2" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
@@ -673,7 +715,7 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
-            <label for="prependedInput">Prepended Text</label>
+            <label for="prependedInput">Prepended text</label>
             <div class="input">
               <div class="input-prepend">
                 <span class="add-on">@</span>
@@ -682,7 +724,7 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="prependedInput2">Prepended Checkbox</label>
+            <label for="prependedInput2">Prepended checkbox</label>
             <div class="input">
               <div class="input-prepend">
                 <label class="add-on"><input type="checkbox" name="" id="" value="" /></label>
@@ -691,7 +733,7 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="appendedInput">Appended Checkbox</label>
+            <label for="appendedInput">Appended checkbox</label>
             <div class="input">
               <div class="input-append">
                 <input class="mini" id="appendedInput" name="appendedInput" size="16" type="text" />
@@ -700,7 +742,7 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label for="fileInput">File Input</label>
+            <label for="fileInput">File input</label>
             <div class="input">
               <input class="input-file" id="fileInput" name="fileInput" type="file" />
             </div>
@@ -709,7 +751,7 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
-            <label id="optionsCheckboxes">List of Options</label>
+            <label id="optionsCheckboxes">List of options</label>
             <div class="input">
               <ul class="inputs-list">
                 <li>
@@ -743,7 +785,7 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label>Date Range</label>
+            <label>Date range</label>
             <div class="input">
               <div class="inline-inputs">
                 <input class="small" type="text" value="May 1, 2011" />
@@ -758,14 +800,14 @@
           <div class="clearfix">
             <label for="textarea">Textarea</label>
             <div class="input">
-              <textarea class="xxlarge" id="textarea" name="textarea"></textarea>
+              <textarea class="xxlarge" id="textarea2" name="textarea2" rows="3"></textarea>
               <span class="help-block">
                 Block of help text to describe the field above if need be.
               </span>
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label id="optionsRadio">List of Options</label>
+            <label id="optionsRadio">List of options</label>
             <div class="input">
               <ul class="inputs-list">
                 <li>
@@ -784,7 +826,7 @@
             </div>
           </div><!-- /clearfix -->
           <div class="actions">
-            <input type="submit" class="btn primary" value="Save Changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+            <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
       </form>
@@ -803,7 +845,7 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix">
-            <label for="xlInput3">X-Large Input</label>
+            <label for="xlInput3">X-Large input</label>
             <div class="input">
               <input class="xlarge" id="xlInput3" name="xlInput3" size="30" type="text" />
             </div>
@@ -824,14 +866,14 @@
         <fieldset>
           <legend>Example form legend</legend>
           <div class="clearfix error">
-            <label for="xlInput4">X-Large Input</label>
+            <label for="xlInput4">X-Large input</label>
             <div class="input">
               <input class="xlarge error" id="xlInput4" name="xlInput4" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
-            <label id="optionsCheckboxes">List of Options</label>
+            <label id="optionsCheckboxes">List of options</label>
             <div class="input">
               <ul class="inputs-list">
                 <li>
@@ -854,7 +896,7 @@
           </div><!-- /clearfix -->
         </fieldset>
         <div class="actions">
-          <button type="submit" class="btn primary">Save Changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
+          <button type="submit" class="btn primary">Save changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
         </div>
       </form>
     </div>
@@ -1131,7 +1173,12 @@
       </div>
       <div class="alert-message block-message error">
         <a class="close" href="#">&times;</a>
-        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again.</p>
+        <ul>
+          <li>Duis mollis est non commodo luctus</li>
+          <li>Nisi erat porttitor ligula</li>
+          <li>Eget lacinia odio sem nec elit</li>
+        </ul>
         <div class="alert-actions">
           <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
         </div>
@@ -1244,6 +1291,38 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
   </div><!-- /row -->
 </section>
 
+
+<!-- Using Javascript w/ Bootstrap
+ ================================================== -->
+
+ <section id="javascript">
+   <div class="page-header">
+     <h1>Using Javascript with Bootstrap <small>An index of plugins to get you started</small></h1>
+   </div>
+   <div class="row">
+     <div class="span4 columns">
+       <p>Integrating javascript with the Bootstrap library is super easy. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
+     </div>
+     <div class="span12 columns">
+       <h2>Getting started</h2>
+       <p>We've set out to make your interactive work with Bootstrap even more simple, offering several lightweight plugins for things like modals, tooltips, and other dynamic components. These plugins have been coded up to work with either <a href="http://jquery.com/" target="_blank">jQuery</a> or <a href="http://ender.no.de" target="_blank">Ender</a>, but we encourage you to extend and modify them to fit your development needs!</p>
+       <h2>Do I need javascript?</h2>
+       <p>The short answer is <strong>no</strong>... of course not! However, for those who need it, we've provided the plugins below to help you understand how to integrate bootstrap with javascript and to give you a quick lightweight option for dropping something in and getting the basic functionality right away! For more information on these plugins and to see demos of them in action, please refer to our <a href="../examples/javascript.html">plugin documentation page</a>.
+         <dl>
+           <dt><a href="../examples/javascript.html#modal">bootstrap-modal.js</a></dt>
+           <dd>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</dd>
+           <dt><a href="../examples/javascript.html#alerts">bootstrap-alerts.js</a></dt>
+           <dd>The alert plugin is a super tiny class for adding close functionality to alerts.</dd>
+           <dt><a href="../examples/javascript.html#dropdowns">bootstrap-dropdown.js</a></dt>
+           <dd>This plugin is for adding dropdown to the bootstrap nav.</dd>
+           <dt><a href="../examples/javascript.html#twipsy">bootstrap-twipsy.js</a></dt>
+           <dd>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for title storage!</dd>
+           <dt><a href="../examples/javascript.html#popover">bootstrap-popover.js</a></dt>
+           <dd>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</dd>
+         </dl>
+       </p>
+     </div>
+   </div>
 
 
 <!-- Using Bootstrap w/ Less

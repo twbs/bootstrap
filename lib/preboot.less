@@ -70,7 +70,8 @@
 // Center-align a block level element
 .center-block {
 	display: block;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Sizing shortcuts
@@ -120,9 +121,10 @@
 }
 
 // Grid System
-.container {
+.fixed-container {
   width: @siteWidth;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   .clearfix();
 }
 .columns(@columnSpan: 1) {
@@ -150,6 +152,8 @@
 .transition(@transition) {
 	-webkit-transition: @transition;
 	   -moz-transition: @transition;
+ 	    -ms-transition: @transition;
+	     -o-transition: @transition;
 	        transition: @transition;
 }
 
