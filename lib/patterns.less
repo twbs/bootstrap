@@ -24,7 +24,7 @@
 
   // Hover and active states
   a:hover,
-  ul .active a {
+  ul .active > a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
     color: @white;
@@ -141,7 +141,7 @@
       text-decoration: none;
     }
   }
-  .active a {
+  .active > a {
     background-color: #222;
     background-color: rgba(0,0,0,.5);
   }
@@ -186,6 +186,9 @@
         #gradient > .vertical(#292929,#191919);
         color: #fff;
       }
+    }
+    .active a {
+      color: #fff;
     }
     .divider {
       background-color: #222;
@@ -359,6 +362,11 @@ a.menu:after,
     border-top-color: #999;
     margin-top: 15px;
     margin-left: 5px;
+  }
+  // first one for backwards compatibility
+  li.open.menu .menu,
+  .open.dropdown .dropdown-toggle {
+    border-color: #999;
   }
   // first one for backwards compatibility
   li.open a.menu:after,

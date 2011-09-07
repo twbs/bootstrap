@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Sep  4 14:02:46 PDT 2011
+ * Date: Tue Sep  6 21:46:15 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1192,7 +1192,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-.topbar a:hover, .topbar ul .active a {
+.topbar a:hover, .topbar ul .active > a {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
@@ -1310,7 +1310,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #fff;
   text-decoration: none;
 }
-.topbar div > ul .active a, .nav .active a {
+.topbar div > ul .active > a, .nav .active > a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -1384,6 +1384,12 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-image: -o-linear-gradient(top, #292929, #191919);
   background-image: linear-gradient(top, #292929, #191919);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#191919', GradientType=0);
+  color: #fff;
+}
+.topbar div > ul .menu-dropdown .active a,
+.nav .menu-dropdown .active a,
+.topbar div > ul .dropdown-menu .active a,
+.nav .dropdown-menu .active a {
   color: #fff;
 }
 .topbar div > ul .menu-dropdown .divider,
@@ -1558,6 +1564,9 @@ a.menu:after, .dropdown-toggle:after {
   border-top-color: #999;
   margin-top: 15px;
   margin-left: 5px;
+}
+.tabs li.open.menu .menu, .tabs .open.dropdown .dropdown-toggle {
+  border-color: #999;
 }
 .tabs li.open a.menu:after, .tabs .dropdown.open .dropdown-toggle:after {
   border-top-color: #555;
