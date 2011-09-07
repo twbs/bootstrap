@@ -11,14 +11,6 @@
   .clearfix();
   margin-left: -1 * @gridGutterWidth;
 
-  // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
-  // Credit to @dhg for the idea
-  [class^="span"] {
-    display: inline;
-    float: left;
-    margin-left: @gridGutterWidth;
-  }
-
   // Default columns
   .span1     { .columns(1); }
   .span2     { .columns(2); }
@@ -52,8 +44,8 @@
   .offset12  { .offset(12); }
 
   // Unique column sizes for 16-column grid
-  .span-one-third     { width: 300px; }
-  .span-two-thirds    { width: 620px; }
+  .span-one-third     { .columnMixin(); width: 300px; }
+  .span-two-thirds    { .columnMixin(); width: 620px; }
   .offset-one-third   { margin-left: 340px; }
   .offset-two-thirds  { margin-left: 660px; }
 }

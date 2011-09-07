@@ -125,7 +125,14 @@
   margin: 0 auto;
   .clearfix();
 }
+.columnMixin() {
+  display: inline;
+  float: left;
+  margin-left: @gridGutterWidth;
+}
+
 .columns(@columnSpan: 1) {
+  .columnMixin();
   width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
 }
 .offset(@columnOffset: 1) {
