@@ -41,7 +41,7 @@ $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gr
 
 // Color Scheme
 $baseColor:         $blue;                  // Set a base color
-$complement:        complement($baseColor, 180);  // Determine a complementary color
+$complement:        complement($baseColor);  // Determine a complementary color
 $split1:            adjust-hue($baseColor, 158);  // Split complements
 $split2:            adjust-hue($baseColor, -158);
 $triad1:            adjust-hue($baseColor, 135);  // Triads colors
