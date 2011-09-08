@@ -121,7 +121,7 @@
 }
 
 // Grid System
-.fixed-container {
+.fixed-container() {
   width: @siteWidth;
   margin-left: auto;
   margin-right: auto;
@@ -132,6 +132,17 @@
 }
 .offset(@columnOffset: 1) {
   margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
+}
+// Necessary grid styles for every column to make them appear next to each other horizontally
+.gridColumn() {
+  display: inline;
+  float: left;
+  margin-left: @gridGutterWidth;
+}
+// makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
+.makeColumn(@columnSpan: 1) {
+  .gridColumn();
+  .columns(@columnSpan);
 }
 
 // Border Radius

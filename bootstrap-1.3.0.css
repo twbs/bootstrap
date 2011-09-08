@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep  8 09:31:40 PDT 2011
+ * Date: Thu Sep  8 10:36:15 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -185,20 +185,6 @@ textarea {
   margin-left: auto;
   margin-right: auto;
 }
-.fixed-container {
-  width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-  zoom: 1;
-  margin-bottom: 18px;
-}
-.fixed-container:before, .fixed-container:after {
-  display: table;
-  content: "";
-}
-.fixed-container:after {
-  clear: both;
-}
 .btn.danger,
 .alert-message.danger,
 .btn.danger:hover,
@@ -293,7 +279,6 @@ TODO:
  * ------------------------------------------------------------------------------------------- */
 .row {
   zoom: 1;
-  margin-bottom: 18px;
   margin-left: -20px;
 }
 .row:before, .row:after {
@@ -303,7 +288,7 @@ TODO:
 .row:after {
   clear: both;
 }
-.row [class^="span"] {
+.row [class*="span"] {
   display: inline;
   float: left;
   margin-left: 20px;
@@ -444,7 +429,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .container:before, .container:after {
   display: table;
@@ -457,7 +441,6 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .container-fluid:before, .container-fluid:after {
   display: table;
@@ -699,7 +682,7 @@ fieldset legend {
 
   color: #404040;
 }
-.clearfix {
+form .clearfix {
   margin-bottom: 18px;
 }
 label,
@@ -1509,7 +1492,6 @@ a.menu:after, .dropdown-toggle:after {
   padding: 0;
   list-style: none;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .tabs:before,
 .pills:before,
@@ -1983,7 +1965,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
   zoom: 1;
-  margin-bottom: 18px;
   margin-bottom: 0;
 }
 .modal-footer:before, .modal-footer:after {
