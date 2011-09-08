@@ -131,6 +131,17 @@
 .offset(@columnOffset: 1) {
   margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
 }
+// every grid column mixin should have this included.
+.gridColumnMixin() {
+  display: inline;
+  float: left;
+  margin-left: @gridGutterWidth;
+}
+// makeColumn can be used to mark element as a column from LESS file without changing markup.
+.makeColumn(@colspan: 1) {
+  .gridColumnMixin();
+  .columns(@colspan);
+}
 
 // Border Radius
 .border-radius(@radius: 5px) {
