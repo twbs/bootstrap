@@ -60,6 +60,10 @@
         border-left: 1px solid #eee;
       }
 
+      .topbar .btn {
+        border: 0;
+      }
+
     </style>
 
     <!-- Le fav and touch icons -->
@@ -80,7 +84,11 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <p class="pull-right">Logged in as <a href="#">username</a></p>
+          <form action="" class="pull-right">
+            <input class="input-small" type="text" placeholder="Username">
+            <input class="input-small" type="password" placeholder="Password">
+            <button class="btn" type="submit">Sign in</button>
+          </form>
         </div>
       </div>
     </div>
