@@ -165,8 +165,9 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .form-stacked .inputs-list{margin-bottom:0;}.form-stacked .inputs-list li{padding-top:0;}.form-stacked .inputs-list li label{font-weight:normal;padding-top:0;}
 .form-stacked div.error{padding-top:10px;padding-bottom:10px;padding-left:10px;margin-top:0;margin-left:-10px;}
 .form-stacked .actions{margin-left:-20px;padding-left:20px;}
-table{width:100%;margin-bottom:18px;padding:0;border-collapse:separate;font-size:13px;}table th,table td{padding:10px 10px 9px;line-height:13.5px;text-align:left;vertical-align:middle;border-bottom:1px solid #ddd;}
-table th{padding-top:9px;font-weight:bold;border-bottom-width:2px;}
+table{width:100%;margin-bottom:18px;padding:0;border-collapse:collapse;font-size:13px;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;border:1px solid #ddd;}
+table th{padding-top:9px;font-weight:bold;vertical-align:middle;border-bottom-width:2px;}
+table td{vertical-align:top;}
 .zebra-striped tbody tr:nth-child(odd) td{background-color:#f9f9f9;}
 .zebra-striped tbody tr:hover td{background-color:#f5f5f5;}
 .zebra-striped .header{cursor:pointer;}.zebra-striped .header:after{content:"";float:right;margin-top:7px;border-width:0 4px 4px;border-style:solid;border-color:#000 transparent;visibility:hidden;}

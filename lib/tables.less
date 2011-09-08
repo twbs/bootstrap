@@ -11,19 +11,22 @@ table {
   width: 100%;
   margin-bottom: @baseline;
   padding: 0;
-  border-collapse: separate;
-  font-size: 13px;
+  border-collapse: collapse;
+  font-size: @basefont;
   th, td {
     padding: 10px 10px 9px;
-    line-height: @baseline * .75;
+    line-height: @baseline;
     text-align: left;
-    vertical-align: middle;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
   }
   th {
     padding-top: 9px;
     font-weight: bold;
+    vertical-align: middle;
     border-bottom-width: 2px;
+  }
+  td {
+    vertical-align: top;
   }
 }
 

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep  8 10:36:15 PDT 2011
+ * Date: Thu Sep  8 10:45:51 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1053,20 +1053,23 @@ table {
   width: 100%;
   margin-bottom: 18px;
   padding: 0;
-  border-collapse: separate;
+  border-collapse: collapse;
   font-size: 13px;
 }
 table th, table td {
   padding: 10px 10px 9px;
-  line-height: 13.5px;
+  line-height: 18px;
   text-align: left;
-  vertical-align: middle;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 table th {
   padding-top: 9px;
   font-weight: bold;
+  vertical-align: middle;
   border-bottom-width: 2px;
+}
+table td {
+  vertical-align: top;
 }
 .zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
