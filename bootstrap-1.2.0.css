@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Sep  7 14:29:44 PDT 2011
+ * Date: Wed Sep  7 17:17:28 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -279,100 +279,57 @@ textarea {
 .row:after {
   clear: both;
 }
-.row .span1 {
+.row [class^="span"] {
   display: inline;
   float: left;
   margin-left: 20px;
+}
+.row .span1 {
   width: 40px;
 }
 .row .span2 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 100px;
 }
 .row .span3 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 160px;
 }
 .row .span4 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 220px;
 }
 .row .span5 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 280px;
 }
 .row .span6 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 340px;
 }
 .row .span7 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 400px;
 }
 .row .span8 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 460px;
 }
 .row .span9 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 520px;
 }
 .row .span10 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 580px;
 }
 .row .span11 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 640px;
 }
 .row .span12 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 700px;
 }
 .row .span13 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 760px;
 }
 .row .span14 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 820px;
 }
 .row .span15 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 880px;
 }
 .row .span16 {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 940px;
 }
 .row .offset1 {
@@ -412,15 +369,9 @@ textarea {
   margin-left: 740px;
 }
 .row .span-one-third {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 300px;
 }
 .row .span-two-thirds {
-  display: inline;
-  float: left;
-  margin-left: 20px;
   width: 620px;
 }
 .row .offset-one-third {
