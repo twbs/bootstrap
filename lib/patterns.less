@@ -817,3 +817,124 @@ input[type=submit].btn {
     }
   }
 }
+
+// Split Button
+// ------------
+
+.btn.split {
+  position: relative;
+  padding: 0px;
+  margin-top:1px;
+
+  a.menu {
+    display: inline-block;
+    padding: 5px 14px;
+    color: inherit;
+    
+    &:hover{
+      text-decoration: none;
+    }
+    &:after {
+      width: 0px;
+      height: 0px;
+      display: inline-block;
+      content: "&darr;";
+      text-indent: -99999px;
+      vertical-align: top;
+      margin-top: 6px;
+      margin-left: 4px;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #555;
+      .opacity(50);
+    }
+  }
+  
+   
+  &.large {
+    padding: 0px;
+    a.menu {
+      padding: 9px 14px 9px
+    }
+    
+    ul {
+      top: 37px;
+    }
+  }
+  
+  &.small {
+    padding: 0px;
+    a.menu {
+      padding-right: 9px;
+      padding-left: 9px;
+    }
+    
+    ul {
+      top: 23px;
+    }
+  }
+   
+  &.open {
+   ul {
+      display: block;
+    }
+  }
+
+  ul {
+    background-color: #eee;
+    background-color: rgba(255,255,255,0.9);
+    display: none;
+    position: absolute;
+    top: 26px;
+    min-width: 120px;
+    max-width: 220px;
+    _width: 160px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    text-align: left;
+    border: 1px solid #ddd;
+    zoom: 1;
+    .border-radius(0 0 2px 2px);
+    .box-shadow(1px 1px 2px rgba(0,0,0,0.6));
+    li {
+      text-shadow: none;
+      float: none;
+      clear: both;
+      display: block;
+      background: none;
+      font-size: 12px;
+      padding: 2px 10px;
+      margin: 1px 3px;
+
+      &:hover {
+        background-color: #ddd;
+        background-color: rgba(0,0,0,.10);
+        color: @grayDark;
+      }
+
+      a {
+        text-decoration: none;
+        display: block;
+        clear: both;
+        font-weight: normal;
+        line-height: 19px;
+        color: @gray;
+        padding: 0px;
+        &:hover {
+          color: @grayDark;
+        }
+      }
+
+      // Dividers (basically an hr)
+      &.divider {
+        overflow: hidden;
+        background: #eee;
+        background: rgba(0,0,0,.1);
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+}

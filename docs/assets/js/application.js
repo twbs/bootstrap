@@ -49,12 +49,17 @@ $(document).ready(function(){
 
   $("body").bind("click", function (e) {
     $('.dropdown-toggle, .menu').parent("li").removeClass("open");
+    $(".btn.split").removeClass("open");
   });
   $(".dropdown-toggle, .menu").click(function (e) {
     var $li = $(this).parent("li").toggleClass('open');
     return false;
   });
-
+  $(".btn.split" ).not( ".disabled" ).find( "a.menu").click( function() {
+    $(".btn.split").not( $(this).parent( ".btn") ).removeClass("open");
+    $(this).parent("div").toggleClass('open');
+    return false;
+  });
 
   // table sort example
   // ==================
