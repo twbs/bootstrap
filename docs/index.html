@@ -196,22 +196,22 @@
     </div>
   </div><!-- /row -->
   <div class="row show-grid" title="16 column layout">
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
-    <div class="span1 column">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
   </div><!-- /row -->
   <div class="row show-grid" title="8 column layout">
     <div class="span2">2</div>
@@ -238,13 +238,13 @@
     <div class="span4">4</div>
   </div><!-- /row -->
   <div class="row show-grid" title="Default three column layout">
-    <div class="span-one-third column">1/3</div>
-    <div class="span-one-third column">1/3</div>
-    <div class="span-one-third column">1/3</div>
+    <div class="span-one-third">1/3</div>
+    <div class="span-one-third">1/3</div>
+    <div class="span-one-third">1/3</div>
   </div><!-- /row -->
   <div class="row show-grid" title="One-third and two-thirds layout">
-    <div class="span-one-third column">1/3</div>
-    <div class="span-two-thirds column">2/3</div>
+    <div class="span-one-third">1/3</div>
+    <div class="span-two-thirds">2/3</div>
   </div><!-- /row -->
   <div class="row show-grid" title="Irregular three column layout">
     <div class="span4">4</div>
@@ -262,25 +262,44 @@
   <div class="row show-grid" title="Unnecessary single column layout">
     <div class="span16">16</div>
   </div><!-- /row -->
-  <h4>Offsetting columns</h4>
+  <h3>Offsetting columns</h3>
   <div class="row show-grid">
     <div class="span4">4</div>
-    <div class="span8 columns offset4">8 offset 4</div>
+    <div class="span8 offset4">8 offset 4</div>
   </div><!-- /row -->
   <div class="row show-grid">
-    <div class="span-one-third columns offset-two-thirds">1/3 offset 2/3s</div>
+    <div class="span-one-third offset-two-thirds">1/3 offset 2/3s</div>
   </div><!-- /row -->
   <div class="row show-grid">
-    <div class="span4 columns offset4">4 offset 4</div>
-    <div class="span4 columns offset4">4 offset 4</div>
+    <div class="span4 offset4">4 offset 4</div>
+    <div class="span4 offset4">4 offset 4</div>
   </div><!-- /row -->
   <div class="row show-grid">
-    <div class="span5 columns offset3">5 offset 3</div>
-    <div class="span5 columns offset3">5 offset 3</div>
+    <div class="span5 offset3">5 offset 3</div>
+    <div class="span5 offset3">5 offset 3</div>
   </div><!-- /row -->
   <div class="row show-grid">
-    <div class="span10 columns offset6">10 offset 6</div>
+    <div class="span10 offset6">10 offset 6</div>
   </div><!-- /row -->
+
+  <h3>Nesting columns</h3>
+  <p>Nest your content if you must by creating a <code>.row</code> within an existing column.</p>
+  <div class="row show-grid">
+    <div class="span10">
+      Level 1 of column
+      <div class="row show-grid">
+        <div class="span5">
+          Level 2
+        </div>
+        <div class="span5">
+          Level 2
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      Level 1 of column
+    </div>
+  </div>
 </section>
 
 

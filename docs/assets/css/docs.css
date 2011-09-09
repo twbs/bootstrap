@@ -142,15 +142,21 @@ section > .row {
 }
 .show-grid [class*="span"] {
   background-color: #eee;
+  background-color: rgba(0,0,0,.1);
   text-align: center;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
-  height: 30px;
+  min-height: 30px;
   line-height: 30px;
 }
 .show-grid:hover [class*="span"] {
-  background: rgba(0, 0, 0, 0.25);
+  background-color: #ddd;
+  background-color: rgba(0,0,0,.2);
+}
+.show-grid .show-grid {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 /* Render mini layout previews
 -------------------------------------------------- */
