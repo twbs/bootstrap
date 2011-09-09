@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep  8 10:45:51 PDT 2011
+ * Date: Thu Sep  8 22:56:41 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -594,7 +594,6 @@ hr {
 strong {
   font-style: inherit;
   font-weight: bold;
-  line-height: inherit;
 }
 em {
   font-style: italic;
@@ -1053,23 +1052,52 @@ table {
   width: 100%;
   margin-bottom: 18px;
   padding: 0;
-  border-collapse: collapse;
+  border-collapse: separate;
   font-size: 13px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 table th, table td {
   padding: 10px 10px 9px;
   line-height: 18px;
   text-align: left;
-  border: 1px solid #ddd;
 }
 table th {
   padding-top: 9px;
   font-weight: bold;
   vertical-align: middle;
-  border-bottom-width: 2px;
+  border-bottom: 1px solid #ddd;
 }
 table td {
   vertical-align: top;
+}
+table th + th, table td + td {
+  border-left: 1px solid #ddd;
+}
+table tr + tr td {
+  border-top: 1px solid #ddd;
+}
+table tbody tr:first-child td:first-child {
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
+}
+table tbody tr:first-child td:last-child {
+  -webkit-border-radius: 0 4px 0 0;
+  -moz-border-radius: 0 4px 0 0;
+  border-radius: 0 4px 0 0;
+}
+table tbody tr:last-child td:first-child {
+  -webkit-border-radius: 0 0 0 4px;
+  -moz-border-radius: 0 0 0 4px;
+  border-radius: 0 0 0 4px;
+}
+table tbody tr:last-child td:last-child {
+  -webkit-border-radius: 0 0 4px 0;
+  -moz-border-radius: 0 0 4px 0;
+  border-radius: 0 0 4px 0;
 }
 .zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
@@ -1092,9 +1120,6 @@ table td {
 .zebra-striped .headerSortUp, .zebra-striped .headerSortDown {
   background-color: rgba(141, 192, 219, 0.25);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  -webkit-border-radius: 3px 3px 0 0;
-  -moz-border-radius: 3px 3px 0 0;
-  border-radius: 3px 3px 0 0;
 }
 .zebra-striped .header:hover:after {
   visibility: visible;
@@ -1745,7 +1770,31 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
+.close {
+  float: right;
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 13.5px;
+  text-shadow: 0 1px 0 #ffffff;
+  filter: alpha(opacity=20);
+  -khtml-opacity: 0.2;
+  -moz-opacity: 0.2;
+  opacity: 0.2;
+}
+.close:hover {
+  color: #000000;
+  text-decoration: none;
+  filter: alpha(opacity=40);
+  -khtml-opacity: 0.4;
+  -moz-opacity: 0.4;
+  opacity: 0.4;
+}
 .alert-message {
+  position: relative;
+  padding: 7px 15px;
+  margin-bottom: 18px;
+  color: #404040;
   background-color: #eedc94;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#fceec1), to(#eedc94));
@@ -1759,9 +1808,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #eedc94 #eedc94 #e4c652;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  margin-bottom: 18px;
-  padding: 7px 14px;
-  color: #404040;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   border-width: 1px;
   border-style: solid;
@@ -1787,26 +1833,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-.alert-message .close {
-  float: right;
-  margin-top: -2px;
-  color: #000000;
-  font-size: 20px;
-  font-weight: bold;
-  text-shadow: 0 1px 0 #ffffff;
-  filter: alpha(opacity=20);
-  -khtml-opacity: 0.2;
-  -moz-opacity: 0.2;
-  opacity: 0.2;
-}
-.alert-message .close:hover {
-  color: #000000;
-  text-decoration: none;
-  filter: alpha(opacity=40);
-  -khtml-opacity: 0.4;
-  -moz-opacity: 0.4;
-  opacity: 0.4;
 }
 .alert-message.block-message {
   background-image: none;
@@ -1942,24 +1968,19 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
+.modal .close {
+  margin-top: 7px;
+}
 .modal-header {
   border-bottom: 1px solid #eee;
-  padding: 5px 20px;
-}
-.modal-header .close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: #999;
-  line-height: 10px;
-  font-size: 18px;
+  padding: 5px 15px;
 }
 .modal-body {
-  padding: 20px;
+  padding: 15px;
 }
 .modal-footer {
   background-color: #f5f5f5;
-  padding: 14px 20px 15px;
+  padding: 14px 15px 15px;
   border-top: 1px solid #ddd;
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
