@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep  8 23:02:03 PDT 2011
+ * Date: Thu Sep  8 23:07:35 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1442,6 +1442,7 @@ a.menu:after, .dropdown-toggle:after {
   display: none;
   position: absolute;
   top: 40px;
+  z-index: 1000;
   min-width: 160px;
   max-width: 220px;
   _width: 160px;
