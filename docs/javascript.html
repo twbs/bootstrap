@@ -99,8 +99,8 @@ $('#modal-content').modal({
           <!-- sample modal content -->
           <div id="modal-from-dom" class="modal hide fade">
             <div class="modal-header">
-              <h3>Modal Heading</h3>
               <a href="#" class="close">&times;</a>
+              <h3>Modal Heading</h3>
             </div>
             <div class="modal-body">
               <p>One fine body…</p>
@@ -254,19 +254,17 @@ $('#modal-content').modal({
           <h3>Method</h3>
           <h4>$().tabs or $().pills</h4>
           <p>
-            Activates tab and pill functionality for a given container.
+            Activates tab and pill functionality for a given container. Tab links should reference id's in the document.
           </p>
-          <p>
-            <strong>Note:</strong> The controlled container is defined by a required <code>aria-controls</code> attribute added to your <code>.tabs</code> or <code>.pills</code>. The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls">aria-controls</a> attribute must reference an element's id.
 <pre class="prettyprint linenums">
-&lt;ul class="tabs" aria-controls="my-pill-content"&gt;
+&lt;ul class="tabs"&gt;
   &lt;li class="active"&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#messages"&gt;Messages&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class="pill-content" id="my-pill-content"&gt;
+&lt;div class="pill-content"&gt;
   &lt;div class="active" id="home"&gt;...&lt;/div&gt;
   &lt;div id="profile"&gt;...&lt;/div&gt;
   &lt;div id="messages"&gt;...&lt;/div&gt;

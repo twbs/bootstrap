@@ -11,17 +11,17 @@
       , $ul = $(e.liveFired)
       , $controlled
 
-    if (/^#/.test(href)) {
+    if (/^#\w+/.test(href)) {
       e.preventDefault()
 
       if ($this.hasClass('active')) {
         return
       }
 
-      $controlled = $('#' + $ul.attr('aria-controls'))
+      $href = $(href)
 
       activate($this.parent('li'), $ul)
-      activate($(href, $controlled), $controlled)
+      activate($href, $href.parent())
     }
   }
 
@@ -31,7 +31,7 @@
 
   $.fn.tabs = $.fn.pills = function () {
     return this.each(function () {
-      $(this).delegate('.tabs > li > a, .pills > li > a', 'click', tab)
+      $(this).delegate('.tabs > li > a, .pills > li > a, .dropdown-menu > li > a', 'click', tab)
     })
   }
 
