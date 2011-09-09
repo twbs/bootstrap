@@ -66,7 +66,7 @@ section > .row {
   line-height: 27px;
 }
 
-div.quickstart {
+.quickstart {
   background-color: #f5f5f5;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f5f5f5));
@@ -81,13 +81,16 @@ div.quickstart {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #eee;
 }
-div.quickstart div.row {
+.quickstart .container {
+  margin-bottom: 0;
+}
+.quickstart .row {
   margin: 0 -20px;
   -webkit-box-shadow: 1px 0 0 #f9f9f9;
      -moz-box-shadow: 1px 0 0 #f9f9f9;
           box-shadow: 1px 0 0 #f9f9f9;
 }
-div.quickstart div.columns {
+.quickstart [class*="span"] {
   width: 285px;
   height: 117px;
   margin-left: 0;
@@ -97,21 +100,21 @@ div.quickstart div.columns {
      -moz-box-shadow: inset 1px 0 0 #f9f9f9;
           box-shadow: inset 1px 0 0 #f9f9f9;
 }
-div.quickstart div.columns:last-child {
+.quickstart [class*="span"]:last-child {
   border-right: 1px solid #eee;
   width: 286px;
 }
-div.quickstart h6,
-div.quickstart p {
+.quickstart h6,
+.quickstart p {
   line-height: 18px;
   text-align: center;
   margin-bottom: 9px;
   color: #333;
 }
-div.quickstart h6 {
+.quickstart h6 {
   color: #999;
 }
-div.quickstart form textarea {
+.quickstart textarea {
   display: block;
   width: 275px;
   height: auto;
@@ -137,7 +140,7 @@ div.quickstart form textarea {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.show-grid .column, .show-grid .columns {
+.show-grid [class*="span"] {
   background-color: #eee;
   text-align: center;
   -webkit-border-radius: 3px;
@@ -146,7 +149,7 @@ div.quickstart form textarea {
   height: 30px;
   line-height: 30px;
 }
-.show-grid:hover .column, .show-grid:hover .columns {
+.show-grid:hover [class*="span"] {
   background: rgba(0, 0, 0, 0.25);
 }
 /* Render mini layout previews

@@ -13,10 +13,8 @@
 
   // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
   // Credit to @dhg for the idea
-  [class^="span"] {
-    display: inline;
-    float: left;
-    margin-left: @gridGutterWidth;
+  [class*="span"] {
+    .gridColumn();
   }
 
   // Default columns

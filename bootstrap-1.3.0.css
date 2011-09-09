@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Sep  6 21:46:15 PDT 2011
+ * Date: Thu Sep  8 10:45:51 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -185,20 +185,6 @@ textarea {
   margin-left: auto;
   margin-right: auto;
 }
-.fixed-container {
-  width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-  zoom: 1;
-  margin-bottom: 18px;
-}
-.fixed-container:before, .fixed-container:after {
-  display: table;
-  content: "";
-}
-.fixed-container:after {
-  clear: both;
-}
 .btn.danger,
 .alert-message.danger,
 .btn.danger:hover,
@@ -293,7 +279,6 @@ TODO:
  * ------------------------------------------------------------------------------------------- */
 .row {
   zoom: 1;
-  margin-bottom: 18px;
   margin-left: -20px;
 }
 .row:before, .row:after {
@@ -303,7 +288,7 @@ TODO:
 .row:after {
   clear: both;
 }
-.row [class^="span"] {
+.row [class*="span"] {
   display: inline;
   float: left;
   margin-left: 20px;
@@ -444,7 +429,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .container:before, .container:after {
   display: table;
@@ -457,7 +441,6 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .container-fluid:before, .container-fluid:after {
   display: table;
@@ -699,7 +682,7 @@ fieldset legend {
 
   color: #404040;
 }
-.clearfix {
+form .clearfix {
   margin-bottom: 18px;
 }
 label,
@@ -1070,20 +1053,23 @@ table {
   width: 100%;
   margin-bottom: 18px;
   padding: 0;
-  border-collapse: separate;
+  border-collapse: collapse;
   font-size: 13px;
 }
 table th, table td {
   padding: 10px 10px 9px;
-  line-height: 13.5px;
+  line-height: 18px;
   text-align: left;
-  vertical-align: middle;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 table th {
   padding-top: 9px;
   font-weight: bold;
+  vertical-align: middle;
   border-bottom-width: 2px;
+}
+table td {
+  vertical-align: top;
 }
 .zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
@@ -1226,6 +1212,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -khtml-opacity: 1;
   -moz-opacity: 1;
   opacity: 1;
+}
+.topbar form.pull-right {
+  float: right;
 }
 .topbar input {
   background-color: #444;
@@ -1506,7 +1495,6 @@ a.menu:after, .dropdown-toggle:after {
   padding: 0;
   list-style: none;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .tabs:before,
 .pills:before,
@@ -1590,6 +1578,38 @@ a.menu:after, .dropdown-toggle:after {
   background: #0069d6;
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+.breadcrumb {
+  margin: 0 0 18px;
+  padding: 7px 14px;
+  background-color: #f5f5f5;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
+  background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: linear-gradient(top, #ffffff, #f5f5f5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+.breadcrumb li {
+  display: inline;
+  text-shadow: 0 1px 0 #fff;
+}
+.breadcrumb .divider {
+  padding: 0 5px;
+  color: #bfbfbf;
+}
+.breadcrumb .active a {
+  color: #404040;
 }
 .hero-unit {
   background-color: #f5f5f5;
@@ -1948,7 +1968,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
   zoom: 1;
-  margin-bottom: 18px;
   margin-bottom: 0;
 }
 .modal-footer:before, .modal-footer:after {
