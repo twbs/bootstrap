@@ -111,6 +111,10 @@ section > .row {
   margin-bottom: 9px;
   color: #333;
 }
+.quickstart .current-version,
+.quickstart .current-version a {
+  color: #999;
+}
 .quickstart h6 {
   color: #999;
 }
