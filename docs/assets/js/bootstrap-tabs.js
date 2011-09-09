@@ -2,33 +2,36 @@
 
   function activate ( element, container ) {
     container.find('.active').removeClass('active')
-		element.addClass('active')
+    element.addClass('active')
   }
 
   function tab( e ) {
-    debugger
-		var $this = $(this)
-		  , href = $this.attr('href')
+    var $this = $(this)
+      , href = $this.attr('href')
+      , $ul = $(e.liveFired)
+      , $controlled
 
-		if (/^#/.test(href)) {
-			e.preventDefault()
+    if (/^#/.test(href)) {
+      e.preventDefault()
 
       if ($this.hasClass('active')) {
         return
       }
 
-      activate($this, $ul)
-      activate($(href), $content)
-		}
+      $controlled = $('#' + $ul.attr('aria-controls'))
+
+      activate($this.parent('li'), $ul)
+      activate($(href, $controlled), $controlled)
+    }
   }
 
 
- /* TABS PLUGIN DEFINITION
-  * ====================== */
+ /* TABS/PILLS PLUGIN DEFINITION
+  * ============================ */
 
-  $.fn.tabs = function ( content ) {
+  $.fn.tabs = $.fn.pills = function () {
     return this.each(function () {
-      $(this).delegate('> li > a', 'click', tab)
+      $(this).delegate('.tabs > li > a, .pills > li > a', 'click', tab)
     })
   }
 
