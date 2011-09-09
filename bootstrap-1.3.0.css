@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep  8 23:07:35 PDT 2011
+ * Date: Fri Sep  9 00:02:14 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -670,7 +670,7 @@ fieldset {
 }
 fieldset legend {
   display: block;
-  margin-left: 150px;
+  padding-left: 150px;
   font-size: 19.5px;
   line-height: 1;
   *margin: 0 0 5px 145px;
@@ -771,7 +771,7 @@ textarea {
 ::-webkit-input-placeholder {
   color: #bfbfbf;
 }
-input, select, textarea {
+input, textarea {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -781,12 +781,18 @@ input, select, textarea {
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-input:focus, select:focus, textarea:focus {
+input:focus, textarea:focus {
   outline: none;
   border-color: rgba(82, 168, 236, 0.8);
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
   -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+input[type=file]:focus, input[type=checkbox]:focus, select:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: 1px dotted #666;
 }
 form div.error {
   background: #fae5e3;
@@ -1442,7 +1448,7 @@ a.menu:after, .dropdown-toggle:after {
   display: none;
   position: absolute;
   top: 40px;
-  z-index: 1000;
+  z-index: 900;
   min-width: 160px;
   max-width: 220px;
   _width: 160px;
@@ -1713,6 +1719,9 @@ footer {
   color: #333;
   text-decoration: none;
 }
+.btn:focus {
+  outline: 1px dotted #666;
+}
 .btn.primary {
   color: #fff;
   background-color: #0064cd;
@@ -1759,7 +1768,7 @@ footer {
   box-shadow: none;
 }
 .btn.large {
-  font-size: 16px;
+  font-size: 15px;
   line-height: normal;
   padding: 9px 14px 9px;
   -webkit-border-radius: 6px;

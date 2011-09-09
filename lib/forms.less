@@ -16,7 +16,7 @@ fieldset {
   padding-top: @baseline;
   legend {
     display: block;
-    margin-left: 150px;
+    padding-left: 150px;
     font-size: @basefont * 1.5;
     line-height: 1;
     *margin: 0 0 5px 145px; /* IE6-7 */
@@ -41,8 +41,8 @@ textarea {
 // Float labels left
 label {
   padding-top: 6px;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: @basefont;
+  line-height: @baseline;
   float: left;
   width: 130px;
   text-align: right;
@@ -132,19 +132,23 @@ textarea {
 
 // Focus states
 input,
-select,
 textarea {
   @transition: border linear .2s, box-shadow linear .2s;
   .transition(@transition);
   .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
 }
 input:focus,
-select:focus,
 textarea:focus {
   outline: none;
   border-color: rgba(82,168,236,.8);
   @shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
   .box-shadow(@shadow);
+}
+input[type=file]:focus,
+input[type=checkbox]:focus,
+select:focus {
+  .box-shadow(none); // override for file inputs
+  outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
 }
 
 // Error styles

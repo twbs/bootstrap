@@ -491,7 +491,7 @@ footer {
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
-  font-size: 13px;
+  font-size: @basefont;
   line-height: normal;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
@@ -503,6 +503,11 @@ footer {
     background-position: 0 -15px;
     color: #333;
     text-decoration: none;
+  }
+
+  // Focus state for keyboard and accessibility
+  &:focus {
+    outline: 1px dotted #666;
   }
 
   // Primary Button Type
@@ -538,14 +543,14 @@ footer {
 
   // Button Sizes
   &.large {
-    font-size: 16px;
+    font-size: @basefont + 2px;
     line-height: normal;
     padding: 9px 14px 9px;
     .border-radius(6px);
   }
   &.small {
     padding: 7px 9px 7px;
-    font-size: 11px;
+    font-size: @basefont - 2px;
   }
 }
 // Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
