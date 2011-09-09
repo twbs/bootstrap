@@ -15,11 +15,13 @@
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
+    <script src="assets/js/application-scrollspy.js"></script>
     <script src="assets/js/bootstrap-modal.js"></script>
     <script src="assets/js/bootstrap-alerts.js"></script>
     <script src="assets/js/bootstrap-twipsy.js"></script>
     <script src="assets/js/bootstrap-popover.js"></script>
     <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-tabs.js"></script>
 
     <!-- Le styles -->
     <link href="../bootstrap-1.3.0.css" rel="stylesheet">
@@ -45,6 +47,7 @@
             <li><a href="#modal">Modals</a></li>
             <li><a href="#alerts">Alerts</a></li>
             <li><a href="#dropdown">Dropdown</a></li>
+            <li><a href="#tabs">Tabs</a></li>
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
           </ul>
@@ -228,6 +231,73 @@ $('#modal-content').modal({
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs
+    ================================================== -->
+
+    <section id="tabs">
+      <div class="page-header">
+        <h1>Tabs <small>bootstrap-tabs.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>This plugin adds quick, dynamic tab and pill functionality.</p>
+          <a href="assets/js/bootstrap-tabs.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h2>Using boostrap-tabs.js</h2>
+          <pre class="prettyprint linenums">$('.tabs').tabs()</pre>
+          <h3>Method</h3>
+          <h4>$().tabs or $().pills</h4>
+          <p>
+            Activates tab and pill functionality for a given container.
+          </p>
+          <p>
+            <strong>Note:</strong> The controlled container is defined by a required <code>aria-controls</code> attribute added to your <code>.tabs</code> or <code>.pills</code>. The <a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls">aria-controls</a> attribute must reference an element's id.
+<pre class="prettyprint linenums">
+&lt;ul class="tabs" aria-controls="my-pill-content"&gt;
+  &lt;li class="active"&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#messages"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="pill-content" id="my-pill-content"&gt;
+  &lt;div class="active" id="home"&gt;...&lt;/div&gt;
+  &lt;div id="profile"&gt;...&lt;/div&gt;
+  &lt;div id="messages"&gt;...&lt;/div&gt;
+  &lt;div id="settings"&gt;...&lt;/div&gt;
+&lt;/ul&gt;</pre>
+          </p>
+          <h3>Demo</h3>
+          <script>
+            $(function () {
+              $('.tabs').tabs()
+            })
+          </script>
+          <ul class="tabs" aria-controls="my-tab-content">
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#messages">Messages</a></li>
+            <li><a href="#settings">Settings</a></li>
+          </ul>
+          <div id="my-tab-content" class="tab-content">
+            <p class="active" id="home">
+Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+            </p>
+            <p id="profile">
+Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+            </p>
+            <p id="messages">
+Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.
+            </p>
+            <p id="settings">
+Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.
+            </p>
           </div>
         </div>
       </div>

@@ -222,6 +222,7 @@ div.topbar-wrapper div.topbar .topbar-inner {
   position: relative;
   height: 40px;
   margin: 5px 0 15px;
+  z-index: 1;
 }
 
 #bootstrap-js div.topbar-wrapper div.topbar {
