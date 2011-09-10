@@ -16,12 +16,12 @@
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="assets/js/application-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-alerts.js"></script>
-    <script src="assets/js/bootstrap-twipsy.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-tabs.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-alerts.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-tabs.js"></script>
 
     <!-- Le styles -->
     <link href="../bootstrap-1.3.0.css" rel="stylesheet">
@@ -45,11 +45,11 @@
           <h3><a href="#">Bootstrap JS</a></h3>
           <ul>
             <li><a href="#modal">Modals</a></li>
-            <li><a href="#alerts">Alerts</a></li>
             <li><a href="#dropdown">Dropdown</a></li>
             <li><a href="#tabs">Tabs</a></li>
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
+            <li><a href="#alerts">Alerts</a></li>
           </ul>
         </div>
       </div>
@@ -67,7 +67,7 @@
       <div class="row">
         <div class="span4 columns">
           <p>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</p>
-          <a href="assets/js/bootstrap-modal.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-modal.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span12 columns">
           <h2>Using bootstrap-modal</h2>
@@ -76,24 +76,25 @@
           <ul>
             <li><strong>backdrop</strong> (<code>boolean</code>) - if true, it will include a modal-backdrop element.</li>
             <li><strong>closeOnEscape</strong> (<code>boolean</code>) - if true, it will close the modal when escape key is pressed.</li>
-            <li><strong>content</strong> (<code>string</code>) - alternative way of supplying modal class with HTML content.</li>
           </ul>
           <h3>Methods</h3>
           <h4>$().modal</h4>
-          <p>Returns an instance of the modal class. Accepts an optional options <code>object</code>. If you want your modal to fade in and out, just add a <code>.fade</code> class to your <code>.modal</code> element (refer to the demo to see this in action).</p>
+          <p>Activates your content as a modal. Accepts an optional options <code>object</code>. If you want your modal to fade in and out, just add a <code>.fade</code> class to your <code>.modal</code> element (refer to the demo to see this in action).</p>
 <pre class="prettyprint linenums">
 $('#modal-content').modal({
   closeOnEscape: true
 })</pre>
-          <h4>.toggle</h4>
-          <p>Returns an instance of the modal class. Toggle the modal open state.</p>
-          <pre class="prettyprint linenums">$('#modal-content').modal().toggle()</pre>
-          <h4>.open</h4>
-          <p>Returns an instance of the modal class. Opens the modal.</p>
-          <pre class="prettyprint linenums">$('#modal-content').modal().open()</pre>
-          <h4>.close</h4>
-          <p>Returns an instance of the modal class. Closes the modal.</p>
-          <pre class="prettyprint linenums">$('#modal-content').modal().close()</pre>
+          <h3>Events</h3>
+          <p>Trigger events to make things happen!</p>
+          <h4>modal:toggle</h4>
+          <p> Toggle the modal open state.</p>
+          <pre class="prettyprint linenums">$('#modal-content').trigger('modal:toggle')</pre>
+          <h4>modal:open</h4>
+          <p>Opens the modal.</p>
+          <pre class="prettyprint linenums">$('#modal-content').trigger('modal:open')</pre>
+          <h4>modal:close</h4>
+          <p>Closes the modal.</p>
+          <pre class="prettyprint linenums">$('#modal-content').trigger('modal:close')</pre>
           <h3>Demo</h3>
 
           <!-- sample modal content -->
@@ -115,13 +116,14 @@ $('#modal-content').modal({
 
           <script>
             $(function () {
+
               var domModal = $("#modal-from-dom").modal({
                 backdrop: true
               , closeOnEscape: true
               })
 
               $('#modal-from-element').click(function () {
-                domModal.toggle()
+                domModal.trigger('modal:toggle')
               })
 
             })
@@ -131,44 +133,6 @@ $('#modal-content').modal({
       </div>
     </section>
 
-    <!-- Alerts
-    ================================================== -->
-
-    <section id="alerts">
-      <div class="page-header">
-        <h1>Alerts <small>bootstrap-alerts.js</small></h1>
-      </div>
-      <div class="row">
-        <div class="span4 columns">
-          <p>The alert plugin is a super tiny class for adding close functionality to alerts.</p>
-          <a href="assets/js/bootstrap-alerts.js" target="_blank" class="btn primary">Download</a>
-        </div>
-        <div class="span12 columns">
-          <h2>Using bootstrap-alert</h2>
-          <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
-          <h3>Methods</h3>
-          <h4>$().alert</h4>
-          <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
-          <h3>Demo</h3>
-          <div class="alert-message warning fade in">
-            <a class="close" href="#">&times;</a>
-            <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
-          </div>
-          <div class="alert-message block-message error fade in">
-            <a class="close" href="#">&times;</a>
-            <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-            <div class="alert-actions">
-              <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-            </div>
-          </div>
-          <script>
-            $(function () {
-              $(".alert-message").alert()
-            })
-          </script>
-        </div>
-      </div>
-    </section>
 
     <!-- Dropdown
     ================================================== -->
@@ -180,7 +144,7 @@ $('#modal-content').modal({
       <div class="row">
         <div class="span4 columns">
           <p>This plugin is for adding dropdowns to the bootstrap nav.</p>
-          <a href="assets/js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span12 columns">
           <h2>Using boostrap-dropdown.js</h2>
@@ -246,7 +210,7 @@ $('#modal-content').modal({
       <div class="row">
         <div class="span4 columns">
           <p>This plugin adds quick, dynamic tab and pill functionality.</p>
-          <a href="assets/js/bootstrap-tabs.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-tabs.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span12 columns">
           <h2>Using boostrap-tabs.js</h2>
@@ -311,7 +275,7 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
       <div class="row">
         <div class="span4 columns">
           <p>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for title storage!</p>
-          <a href="assets/js/bootstrap-twipsy.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-twipsy.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span12 columns">
           <h2>Using bootstrap-twipsy.js</h2>
@@ -358,7 +322,7 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
       <div class="row">
         <div class="span4 columns">
           <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
-          <a href="assets/js/bootstrap-popover.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-popover.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span12 columns">
           <h2>Using boostrap-popover.js</h2>
@@ -387,6 +351,46 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
               $("a[rel=popover]").popover({
                 offset: 10
               })
+            })
+          </script>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Alerts
+    ================================================== -->
+
+    <section id="alerts">
+      <div class="page-header">
+        <h1>Alerts <small>bootstrap-alerts.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>The alert plugin is a super tiny class for adding close functionality to alerts.</p>
+          <a href="../js/bootstrap-alerts.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h2>Using bootstrap-alert</h2>
+          <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
+          <h3>Methods</h3>
+          <h4>$().alert</h4>
+          <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
+          <h3>Demo</h3>
+          <div class="alert-message warning fade in">
+            <a class="close" href="#">&times;</a>
+            <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
+          </div>
+          <div class="alert-message block-message error fade in">
+            <a class="close" href="#">&times;</a>
+            <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+            <div class="alert-actions">
+              <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+            </div>
+          </div>
+          <script>
+            $(function () {
+              $(".alert-message").alert()
             })
           </script>
         </div>

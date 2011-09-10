@@ -4,7 +4,6 @@ table{border-collapse:collapse;border-spacing:0;}
 ol,ul{list-style:none;}
 q:before,q:after,blockquote:before,blockquote:after{content:"";}
 html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
-a:active{outline:none;-moz-outline-style:none;}
 a:focus{outline:thin dotted;}
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}

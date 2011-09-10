@@ -3,7 +3,7 @@ $(document).ready(function(){
   // Dropdown example for topbar nav
   // ===============================
 
-  $(".topbar").dropdown() // catch any dropdowns on the page
+  $('body').dropdown() // catch any dropdowns on the page
 
 
   // table sort example
