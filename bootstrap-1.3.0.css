@@ -1,12 +1,12 @@
 /*!
- * Bootstrap v1.2.0
+ * Bootstrap v1.3.0
  *
  * Copyright 2011 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  9 00:02:14 PDT 2011
+ * Date: Fri Sep  9 20:23:37 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1012,7 +1012,7 @@ textarea[readonly] {
   padding-top: 9px;
 }
 .form-stacked legend {
-  margin-left: 0;
+  padding-left: 0;
 }
 .form-stacked label {
   display: block;

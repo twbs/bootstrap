@@ -32,14 +32,18 @@
  /* MODAL PUBLIC CLASS DEFINITION
   * ============================= */
 
-  var Modal = function ( options ) {
+  var Modal = function ( content, options ) {
     this.settings = $.extend({}, $.fn.modal.defaults)
 
-    if ( typeof options == 'string' ) {
-      this.settings.content = options
-    } else if ( options ) {
+    if ( options ) {
       $.extend( this.settings, options )
     }
+
+    this.$element = $(content)
+      .bind('modal:open', $.proxy(this.open, this))
+      .bind('modal:close', $.proxy(this.close, this))
+      .bind('modal:toggle', $.proxy(this.toggle, this))
+      .delegate('.close', 'click', $.proxy(this.close, this))
 
     return this
   }
@@ -54,13 +58,10 @@
       var that = this
       this.isOpen = true
 
-      this.$element = $(this.settings.content)
-
       _.escape.call(this)
       _.backdrop.call(this)
 
       this.$element
-        .delegate('.close', 'click', function (e) { e.preventDefault(); that.close() })
         .appendTo(document.body)
         .show()
 
@@ -72,7 +73,9 @@
       return this
     }
 
-  , close: function () {
+  , close: function (e) {
+      e && e.preventDefault()
+
       var that = this
 
       this.isOpen = false
@@ -83,8 +86,8 @@
       this.$element.removeClass('in')
 
       function removeElement () {
-        that.$element.remove()
-        that.$element = null
+        that.$element.unbind(transitionEnd)
+        that.$element.detach()
       }
 
       $.support.transition && this.$element.hasClass('fade') ?
@@ -144,14 +147,16 @@
 
   $.fn.modal = function ( options ) {
     options = options || {}
-    options.content = this
-    return new Modal(options)
+    return this.each(function () {
+      return new Modal(this, options)
+    })
   }
+
+  $.fn.modal.Modal = Modal
 
   $.fn.modal.defaults = {
     backdrop: false
   , closeOnEscape: false
-  , content: false
   }
 
 })( jQuery || ender )
