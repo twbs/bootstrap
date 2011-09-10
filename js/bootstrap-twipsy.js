@@ -187,35 +187,34 @@
   * ======================== */
 
   $.fn.twipsy = function (options) {
-    $.fn.twipsy.initWith.call(this, options, Twipsy)
+    $.fn.twipsy.initWith.call(this, options, Twipsy, 'twipsy')
     return this
   }
 
-  $.fn.twipsy.initWith = function (options, Constructor) {
-
+  $.fn.twipsy.initWith = function (options, Constructor, name) {
     var twipsy
       , binder
       , eventIn
       , eventOut
 
     if (options === true) {
-      return this.data('twipsy')
+      return this.data(name)
     } else if (typeof options == 'string') {
-      twipsy = this.data('twipsy')
+      twipsy = this.data(name)
       if (twipsy) {
         twipsy[options]()
       }
       return this
     }
 
-    options = $.extend({}, $.fn.twipsy.defaults, options)
+    options = $.extend({}, $.fn[name].defaults, options)
 
     function get(ele) {
-      var twipsy = $.data(ele, 'twipsy')
+      var twipsy = $.data(ele, name)
 
       if (!twipsy) {
         twipsy = new Constructor(ele, $.fn.twipsy.elementOptions(ele, options))
-        $.data(ele, 'twipsy', twipsy)
+        $.data(ele, name, twipsy)
       }
 
       return twipsy
@@ -264,8 +263,8 @@
       this[binder](eventIn, enter)[binder](eventOut, leave)
     }
 
-    this.bind('twipsy:show', enter)
-    this.bind('twipsy:hide', leave)
+    this.bind(name + ':show', enter)
+    this.bind(name + ':hide', leave)
 
     return this
   }
