@@ -263,7 +263,10 @@
   <div class="row show-grid" title="Unnecessary single column layout">
     <div class="span16">16</div>
   </div><!-- /row -->
-  <h3>Offsetting columns</h3>
+
+  <br>
+
+  <h2>Offsetting columns</h2>
   <div class="row show-grid">
     <div class="span4">4</div>
     <div class="span8 offset4">8 offset 4</div>
@@ -283,22 +286,73 @@
     <div class="span10 offset6">10 offset 6</div>
   </div><!-- /row -->
 
-  <h3>Nesting columns</h3>
-  <p>Nest your content if you must by creating a <code>.row</code> within an existing column.</p>
-  <div class="row show-grid">
-    <div class="span10">
-      Level 1 of column
+  <br>
+
+  <div class="row">
+    <div class="span4">
+      <h2>Nesting columns</h2>
+      <p>Nest your content if you must by creating a <code>.row</code> within an existing column.</p>
+    </div>
+    <div class="span12">
+      <h4>Example of nested columns</h4>
       <div class="row show-grid">
-        <div class="span5">
-          Level 2
-        </div>
-        <div class="span5">
-          Level 2
+        <div class="span12">
+          Level 1 of column
+          <div class="row show-grid">
+            <div class="span6">
+              Level 2
+            </div>
+            <div class="span6">
+              Level 2
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="span6">
-      Level 1 of column
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="span4">
+      <h2>Roll your own grid</h2>
+      <p>Built into Bootstrap are a handful of variables for customizing the default 940px grid system. With a bit of customization, you can modify the size of columns, their gutters, and the container they reside in.</p>
+    </div>
+    <div class="span12">
+      <h3>Inside the grid</h3>
+      <p>The variables needed to modify the grid system currently all reside in <code>preboot.less</code>.</p>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Default value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@gridColumns</code></td>
+            <td>16</td>
+            <td>The number of columns within the grid</td>
+          </tr>
+          <tr>
+            <td><code>@gridColumnWidth</code></td>
+            <td>40px</td>
+            <td>The width of each column within the grid</td>
+          </tr>
+          <tr>
+            <td><code>@gridGutterWidth</code></td>
+            <td>20px</td>
+            <td>The negative space between each column</td>
+          </tr>
+          <tr>
+            <td><code>@siteWidth</code></td>
+            <td><em>Computed sum of all columns and gutters</em></td>
+            <td>We use some basic match to count the number of columns and gutters and set the width of the <code>.fixed-container()</code> mixin.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p></p>
     </div>
   </div>
 </section>
