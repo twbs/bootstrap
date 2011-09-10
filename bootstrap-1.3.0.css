@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Sep 10 13:04:12 PDT 2011
+ * Date: Sat Sep 10 13:17:50 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1215,10 +1215,10 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #ffffff;
   text-decoration: none;
 }
-.topbar h3 {
+.topbar .brand, .topbar h3 {
   position: relative;
 }
-.topbar h3 a {
+.topbar .brand a, .topbar h3 a {
   float: left;
   display: block;
   padding: 8px 20px 12px;

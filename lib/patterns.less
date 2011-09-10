@@ -32,6 +32,8 @@
   }
 
   // Website name
+  // h3 left for backwards compatibility
+  .brand,
   h3 {
     position: relative;
     a {
@@ -107,7 +109,7 @@
 }
 
 // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-// For backwards compatability, include .topbar .fill
+// For backwards compatibility, include .topbar .fill
 .topbar-inner,
 .topbar .fill {
   background-color: #222;
@@ -201,7 +203,7 @@
   }
 }
 
-// For backwards compatability with new dropdowns, redeclare dropdown link padding
+// For backwards compatibility with new dropdowns, redeclare dropdown link padding
 .topbar ul .menu-dropdown li a,
 .topbar ul .dropdown-menu li a {
   padding: 4px 15px;
