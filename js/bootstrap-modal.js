@@ -66,7 +66,7 @@
         .show()
 
       setTimeout(function () {
-        that.$element.addClass('in')
+        that.$element.addClass('in').trigger('modal:shown')
         that.$backdrop && that.$backdrop.addClass('in')
       }, 1)
 
@@ -86,8 +86,10 @@
       this.$element.removeClass('in')
 
       function removeElement () {
-        that.$element.unbind(transitionEnd)
-        that.$element.detach()
+        that.$element
+          .unbind(transitionEnd)
+          .detach()
+          .trigger('modal:hidden')
       }
 
       $.support.transition && this.$element.hasClass('fade') ?
