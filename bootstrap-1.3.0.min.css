@@ -4,6 +4,7 @@ table{border-collapse:collapse;border-spacing:0;}
 ol,ul{list-style:none;}
 q:before,q:after,blockquote:before,blockquote:after{content:"";}
 html{overflow-y:scroll;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+a:active{outline:none;-moz-outline-style:none;}
 a:focus{outline:thin dotted;}
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
@@ -115,7 +116,7 @@ fieldset{margin-bottom:18px;padding-top:18px;}fieldset legend{display:block;padd
 form .clearfix{margin-bottom:18px;}
 label,input,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:normal;}
 label{padding-top:6px;font-size:13px;line-height:18px;float:left;width:130px;text-align:right;color:#404040;}
-div.input{margin-left:150px;}
+form .input{margin-left:150px;}
 input[type=checkbox],input[type=radio]{cursor:pointer;}
 input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:18px;padding:4px;font-size:13px;line-height:18px;color:#808080;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;}

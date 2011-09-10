@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  9 21:42:21 PDT 2011
+ * Date: Sat Sep 10 12:59:54 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -90,6 +90,10 @@ html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+}
+a:active {
+  outline: none;
+  -moz-outline-style: none;
 }
 a:focus {
   outline: thin dotted;
@@ -702,7 +706,7 @@ label {
   text-align: right;
   color: #404040;
 }
-div.input {
+form .input {
   margin-left: 150px;
 }
 input[type=checkbox], input[type=radio] {
