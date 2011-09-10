@@ -34,10 +34,11 @@
   var Alert = function ( content ) {
     var that = this
     this.$element = $(content)
-    this.$element.delegate('.close', 'click', function (e) {
-      e.preventDefault()
-      that.close()
-    })
+      .bind('alert:hide', $.proxy(this.close, this))
+      .delegate('.close', 'click', function (e) {
+        e.preventDefault()
+        that.close()
+      })
   }
 
   Alert.prototype = {

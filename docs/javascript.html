@@ -85,9 +85,9 @@ $('#modal-content').modal({
   closeOnEscape: true
 })</pre>
           <h3>Events</h3>
-          <p>Trigger events to make things happen!</p>
+          <p>Bootstraps modal class makes use of custom events. You can use <code>trigger</code> to make things happen manually or <code>bind</code> to listen for things happening.</p>
           <h4>modal:toggle</h4>
-          <p> Toggle the modal open state.</p>
+          <p>Toggle the modal open state.</p>
           <pre class="prettyprint linenums">$('#modal-content').trigger('modal:toggle')</pre>
           <h4>modal:show</h4>
           <p>Opens the modal.</p>
@@ -95,8 +95,21 @@ $('#modal-content').modal({
           <h4>modal:hide</h4>
           <p>Closes the modal.</p>
           <pre class="prettyprint linenums">$('#modal-content').trigger('modal:hide')</pre>
+          <h4>modal:shown</h4>
+          <p>Fired when the modal has been made visible.</p>
+  <pre class="prettyprint linenums">
+$('#modal-content')
+  .bind('modal:shown', function () {
+    // do something here...
+  })</pre>
+          <h4>modal:hidden</h4>
+          <p>Fired when the modal has become hidden</p>
+<pre class="prettyprint linenums">
+$('#modal-content')
+  .bind('modal:hidden', function () {
+    $(this).remove() // cleanup jQuery plugin data on hide
+  })</pre>
           <h3>Demo</h3>
-
           <!-- sample modal content -->
           <div id="modal-from-dom" class="modal hide fade">
             <div class="modal-header">
@@ -235,6 +248,8 @@ $('#modal-content').modal({
   &lt;div id="settings"&gt;...&lt;/div&gt;
 &lt;/ul&gt;</pre>
           </p>
+          <p><strong>note:</strong> To manually activate a tab just fire a click event on one of the tabs.</p>
+          <pre class="prettyprint linenums">$('.tabs a[href="#messages"]').click()</pre>
           <h3>Demo</h3>
           <script>
             $(function () {
@@ -296,6 +311,14 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
           <h3>Methods</h3>
           <h4>$().twipsy</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
+          <h3>Events</h3>
+          <p>You can manually control twipsies by firing events on the controlling element.</p>
+          <h4>twipsy:show</h4>
+          <p>Reveals an elements twipsy.</p>
+          <pre class="prettyprint linenums">$('#element').trigger('twipsy:show')</pre>
+          <h4>twipsy:hide</h4>
+          <p>Hides an elements twipsy.</p>
+          <pre class="prettyprint linenums">$('#element').trigger('twipsy:hide')</pre>
           <h3>Demo</h3>
           <div class="well">
             <p class="muted">Tight pants next level keffiyeh <a href="#" rel='twipsy' title='Some title text'>you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
@@ -344,8 +367,16 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
           <h3>Methods</h3>
           <h4>$().popover</h4>
           <p>Initializes popovers for an element collection.</p>
+          <h3>Events</h3>
+          <p>You can manually control popovers by firing events on the controlling element.</p>
+          <h4>popover:show</h4>
+          <p>Reveals an elements popover.</p>
+          <pre class="prettyprint linenums">$('#element').trigger('popover:show')</pre>
+          <h4>popover:hide</h4>
+          <p>Hides an elements popover.</p>
+          <pre class="prettyprint linenums">$('#element').trigger('popover:hide')</pre>
           <h3>Demo</h3>
-          <a href="#" class="btn danger" rel="popover" data-title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover</a>
+          <a href="#" class="btn danger" rel="popover" data-title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
           <script>
             $(function () {
               $("a[rel=popover]").popover({
@@ -376,6 +407,11 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
           <h3>Methods</h3>
           <h4>$().alert</h4>
           <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
+          <h3>Events</h3>
+          <p>You can manually control alerts by firing events on them.</p>
+          <h4>alert:close</h4>
+          <p>Closes an alert.</p>
+          <pre class="prettyprint linenums">$(".alert-message").trigger('alert:close')</pre>
           <h3>Demo</h3>
           <div class="alert-message warning fade in">
             <a class="close" href="#">&times;</a>
