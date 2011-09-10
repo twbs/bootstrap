@@ -59,9 +59,10 @@
 
   $.fn.popover = function (options) {
     if (typeof options == 'object') options = $.extend({}, $.fn.popover.defaults, options)
-    $.fn.twipsy.initWith.call(this, options, Popover)
+    $.fn.twipsy.initWith.call(this, options, Popover, 'popover')
+    return this
   }
 
-  $.fn.popover.defaults = $.extend({}, $.fn.twipsy.defaults, { content: '', placement: 'right'})
+  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, { content: 'content', placement: 'right'})
 
 })( jQuery || ender )
