@@ -160,7 +160,7 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .inputs-list li:first-child{padding-top:5px;}
 .inputs-list input[type=radio],.inputs-list input[type=checkbox]{margin-bottom:0;}
 .form-stacked{padding-left:20px;}.form-stacked fieldset{padding-top:9px;}
-.form-stacked legend{margin-left:0;}
+.form-stacked legend{padding-left:0;}
 .form-stacked label{display:block;float:none;width:auto;font-weight:bold;text-align:left;line-height:20px;padding-top:0;}
 .form-stacked .clearfix{margin-bottom:9px;}.form-stacked .clearfix div.input{margin-left:0;}
 .form-stacked .inputs-list{margin-bottom:0;}.form-stacked .inputs-list li{padding-top:0;}.form-stacked .inputs-list li label{font-weight:normal;padding-top:0;}
