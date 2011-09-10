@@ -9,18 +9,21 @@ To get started -- checkout http://twitter.github.com/bootstrap!
 Usage
 -----
 
-You can use Twitter Bootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
+You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new project and start cranking.
 
-Here's what the LESS version looks like:
-
-    <link rel="stylesheet/less" type="text/css" href="lib/bootstrap.less">
-    <script src="less.js" type="text/javascript"></script>
-
-Or if you prefer, the standard css way:
+Because SASS always outputs standard css, just link to the final output like normal:
 
     <link rel="stylesheet" type="text/css" href="bootstrap-1.1.1.css">
 
 For more info, refer to the docs!
+
+
+Basic modification
+------------------
+
+You can learn more about SASS at http://sass-lang.com
+
+SASS runs as a local GEM on your system. You can run "sass --watch lib/bootstrap.scss:bootstrap-1.1.1.css" 
 
 
 Versioning
