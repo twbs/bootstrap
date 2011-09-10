@@ -40,10 +40,10 @@
     }
 
     this.$element = $(content)
-      .bind('modal:open', $.proxy(this.open, this))
-      .bind('modal:close', $.proxy(this.close, this))
+      .bind('modal:show', $.proxy(this.show, this))
+      .bind('modal:hide', $.proxy(this.hide, this))
       .bind('modal:toggle', $.proxy(this.toggle, this))
-      .delegate('.close', 'click', $.proxy(this.close, this))
+      .delegate('.close', 'click', $.proxy(this.hide, this))
 
     return this
   }
@@ -51,12 +51,12 @@
   Modal.prototype = {
 
     toggle: function () {
-      return this[!this.isOpen ? 'open' : 'close']()
+      return this[!this.isShown ? 'show' : 'hide']()
     }
 
-  , open: function () {
+  , show: function () {
       var that = this
-      this.isOpen = true
+      this.isShown = true
 
       _.escape.call(this)
       _.backdrop.call(this)
@@ -73,12 +73,12 @@
       return this
     }
 
-  , close: function (e) {
+  , hide: function (e) {
       e && e.preventDefault()
 
       var that = this
 
-      this.isOpen = false
+      this.isShown = false
 
       _.escape.call(this)
       _.backdrop.call(this)
@@ -108,11 +108,11 @@
     backdrop: function () {
       var that = this
         , animate = this.$element.hasClass('fade') ? 'fade' : ''
-      if ( this.isOpen && this.settings.backdrop ) {
+      if ( this.isShown && this.settings.backdrop ) {
         this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-          .click(function () { that.close() })
+          .click($.proxy(this.hide, this))
           .appendTo(document.body)
-      } else if ( !this.isOpen && this.$backdrop ) {
+      } else if ( !this.isShown && this.$backdrop ) {
         this.$backdrop.removeClass('in')
 
         function removeElement() {
@@ -128,13 +128,13 @@
 
   , escape: function () {
       var that = this
-      if ( this.isOpen && this.settings.closeOnEscape ) {
+      if ( this.isShown && this.settings.closeOnEscape ) {
         $('body').bind('keyup.modal.escape', function ( e ) {
           if ( e.which == 27 ) {
-            that.close()
+            that.hide()
           }
         })
-      } else if ( !this.isOpen ) {
+      } else if ( !this.isShown ) {
         $('body').unbind('keyup.modal.escape')
       }
     }
@@ -156,7 +156,7 @@
 
   $.fn.modal.defaults = {
     backdrop: false
-  , closeOnEscape: false
+  , hideOnEscape: false
   }
 
 })( jQuery || ender )

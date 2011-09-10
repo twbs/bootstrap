@@ -188,6 +188,7 @@
 
   $.fn.twipsy = function (options) {
     $.fn.twipsy.initWith.call(this, options, Twipsy)
+    return this
   }
 
   $.fn.twipsy.initWith = function (options, Constructor) {
@@ -262,6 +263,9 @@
       eventOut = options.trigger == 'hover' ? 'mouseleave' : 'blur'
       this[binder](eventIn, enter)[binder](eventOut, leave)
     }
+
+    this.bind('twipsy:show', enter)
+    this.bind('twipsy:hide', leave)
 
     return this
   }
