@@ -352,7 +352,13 @@
           </tr>
         </tbody>
       </table>
-      <p>Modifying the grid means changing these values and recompiling.</p>
+      <h3>Now to customize</h3>
+      <p>Modifying the grid means changing the three <code>@grid-*</code> variables and recompiling the Less files.</p>
+      <p>Bootstrap comes equipped to handle a grid system with up to 24 columns; the default is just 16. Here's how your grid variables would look customized to a 24-column grid.</p>
+      <pre class="prettyprint">@gridColumns:       24;
+@gridColumnWidth:   20px;
+@gridGutterWidth:   20px;</pre>
+      <p>Once recompiled, you'll be set!</p>
     </div>
   </div>
 </section>
