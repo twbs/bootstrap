@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Sep 10 14:46:06 PDT 2011
+ * Date: Sat Sep 10 15:29:50 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -176,6 +176,8 @@ textarea {
 .clearfix:before, .clearfix:after {
   display: table;
   content: "";
+  zoom: 1;
+  *display: inline;
 }
 .clearfix:after {
   clear: both;
@@ -284,6 +286,8 @@ TODO:
 .row:before, .row:after {
   display: table;
   content: "";
+  zoom: 1;
+  *display: inline;
 }
 .row:after {
   clear: both;
@@ -433,11 +437,14 @@ body {
 .container:before, .container:after {
   display: table;
   content: "";
+  zoom: 1;
+  *display: inline;
 }
 .container:after {
   clear: both;
 }
 .container-fluid {
+  position: relative;
   padding-left: 20px;
   padding-right: 20px;
   zoom: 1;
@@ -445,6 +452,8 @@ body {
 .container-fluid:before, .container-fluid:after {
   display: table;
   content: "";
+  zoom: 1;
+  *display: inline;
 }
 .container-fluid:after {
   clear: both;
@@ -457,6 +466,16 @@ body {
   min-width: 700px;
   max-width: 1180px;
   margin-left: 240px;
+  zoom: 1;
+}
+.container-fluid > .content:before, .container-fluid > .content:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.container-fluid > .content:after {
+  clear: both;
 }
 .hide {
   display: none;
@@ -645,7 +664,7 @@ code {
 pre {
   background-color: #f5f5f5;
   display: block;
-  padding: 17px;
+  padding: 8.5px;
   margin: 0 0 18px;
   line-height: 18px;
   font-size: 12px;
@@ -1534,6 +1553,8 @@ a.menu:after, .dropdown-toggle:after {
 .pills:after {
   display: table;
   content: "";
+  zoom: 1;
+  *display: inline;
 }
 .tabs:after, .pills:after {
   clear: both;
@@ -2011,6 +2032,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .modal-footer:before, .modal-footer:after {
   display: table;
   content: "";
+  zoom: 1;
+  *display: inline;
 }
 .modal-footer:after {
   clear: both;
@@ -2174,4 +2197,27 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .fade.in {
   opacity: 1;
+}
+.label {
+  padding: 1px 3px 2px;
+  background-color: #bfbfbf;
+  font-size: 9.75px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.label.important {
+  background-color: #c43c35;
+}
+.label.warning {
+  background-color: #f89406;
+}
+.label.success {
+  background-color: #46a546;
+}
+.label.notice {
+  background-color: #62cffc;
 }

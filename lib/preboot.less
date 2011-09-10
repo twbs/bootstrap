@@ -58,9 +58,12 @@
 // Clearfix for clearing floats like a boss h5bp.com/q
 .clearfix {
   zoom: 1;
-	&:before, &:after {
+	&:before,
+  &:after {
     display: table;
     content: "";
+    zoom: 1;
+    *display: inline;
 	}
 	&:after {
     clear: both;
