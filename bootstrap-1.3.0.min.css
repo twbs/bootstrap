@@ -196,7 +196,7 @@ table .purple{color:#7a43b6;border-bottom-color:#7a43b6;}
 table .headerSortUp.purple,table .headerSortDown.purple{background-color:#e2d5f0;}
 .topbar{height:40px;position:fixed;top:0;left:0;right:0;z-index:10000;overflow:visible;}.topbar a{color:#bfbfbf;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);}
 .topbar a:hover,.topbar ul .active>a{background-color:#333;background-color:rgba(255, 255, 255, 0.05);color:#ffffff;text-decoration:none;}
-.topbar h3{position:relative;}.topbar h3 a{float:left;display:block;padding:8px 20px 12px;margin-left:-20px;color:#ffffff;font-size:20px;font-weight:200;line-height:1;}
+.topbar .brand,.topbar h3{position:relative;}.topbar .brand a,.topbar h3 a{float:left;display:block;padding:8px 20px 12px;margin-left:-20px;color:#ffffff;font-size:20px;font-weight:200;line-height:1;}
 .topbar p{margin:0;line-height:40px;}.topbar p a:hover{background-color:transparent;}
 .topbar form{float:left;margin:5px 0 0 0;position:relative;filter:alpha(opacity=100);-khtml-opacity:1;-moz-opacity:1;opacity:1;}
 .topbar form.pull-right{float:right;}
