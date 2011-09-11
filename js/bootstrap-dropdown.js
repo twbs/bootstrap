@@ -36,8 +36,11 @@
   $.fn.dropdown = function ( options ) {
     return this.each(function () {
       $(this).delegate(selector, 'click', function (e) {
+        var li = $(this).parent('li')
+          , isActive = li.hasClass('open')
+
         clearMenus()
-        $(this).parent('li').toggleClass('open')
+        !isActive && li.toggleClass('open')
         return false
       })
     })
