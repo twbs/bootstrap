@@ -48,10 +48,13 @@ $(document).ready(function(){
   // ===============================
 
   $("body").bind("click", function (e) {
-    $('.dropdown-toggle, .menu').parent("li").removeClass("open");
+    $('.dropdown-toggle, .menu').parent("li,div").removeClass("open");
   });
   $(".dropdown-toggle, .menu").click(function (e) {
-    var $li = $(this).parent("li").toggleClass('open');
+    $('.dropdown-toggle, .menu').not( this ).parent("li,div").removeClass("open");
+    
+    var $li = $(this).parent("li,div").toggleClass('open');
+      
     return false;
   });
 
