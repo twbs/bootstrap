@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Sep 10 22:27:15 PDT 2011
+ * Date: Sat Sep 10 22:46:48 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2237,6 +2237,17 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .media-grid {
   margin-left: -20px;
+  margin-bottom: 0;
+  zoom: 1;
+}
+.media-grid:before, .media-grid:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.media-grid:after {
+  clear: both;
 }
 .media-grid li {
   display: inline;
