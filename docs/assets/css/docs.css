@@ -270,6 +270,9 @@ section > .row {
 
 /* Topbar in js docs
 ------------------------- */
+#bootstrap-js .topbar-wrapper {
+  z-index: 1;
+}
 #bootstrap-js .topbar-wrapper .topbar {
   position: absolute;
   margin: 0 -20px;
