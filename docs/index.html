@@ -1695,7 +1695,10 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         <tr>
           <td>Node with makefile</td>
           <td>
-
+            <p>Install the less command line compiler with npm by running the following command:</p>
+            <pre>$ npm install lessc</pre>
+            <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
+            <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
           </td>
         </tr>
           <td>Javascript</td>
@@ -1711,7 +1714,9 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         <tr>
           <td>Command line</td>
           <td>
-
+            <p>If you already have the less command line tool installed you can simply run the following command:</p>
+              <pre>$ lessc ./lib/bootstrap.less > bootstrap-1.3.0.css</pre>
+            <p>Be sure to include the <code>--compress</code> flag in that command if you're trying to save some bytes!
           </td>
         </tr>
         <tr>
