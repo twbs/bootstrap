@@ -343,30 +343,33 @@ textarea[readonly] {
     display: block;
     padding: 0;
     width: 100%;
-    label {
-      display: block;
-      float: none;
-      width: auto;
-      padding: 0;
-      line-height: @baseline;
-      text-align: left;
-      white-space: normal;
-      strong {
-        color: @gray;
-      }
-      small {
-        font-size: @basefont - 2;
-        font-weight: normal;
-      }
+  }
+  label {
+    display: block;
+    float: none;
+    width: auto;
+    padding: 0;
+    line-height: @baseline;
+    text-align: left;
+    white-space: normal;
+    strong {
+      color: @gray;
     }
-    ul.inputs-list {
-      margin-left: 25px;
-      margin-bottom: 10px;
-      padding-top: 0;
+    small {
+      font-size: @basefont - 2;
+      font-weight: normal;
     }
-    &:first-child {
-      padding-top: 5px;
-    }
+  }
+  .inputs-list {
+    margin-left: 25px;
+    margin-bottom: 10px;
+    padding-top: 0;
+  }
+  &:first-child {
+    padding-top: 6px;
+  }
+  li + li {
+    padding-top: 2px;
   }
   input[type=radio],
   input[type=checkbox] {

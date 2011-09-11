@@ -61,7 +61,7 @@
 
     <!-- Masthead (blueprinty thing)
     ================================================== -->
-    <div id="masthead">
+    <header class="jumbotron masthead">
       <div class="inner">
         <div class="container">
           <h1>Bootstrap, from Twitter</h1>
@@ -72,7 +72,7 @@
           <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with modern browsers in mind.</p>
         </div><!-- /container -->
       </div>
-    </div>
+    </header>
 
     <!-- Quickstart options
     ================================================== -->
@@ -1516,13 +1516,14 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
    </div>
    <div class="row">
      <div class="span4">
+       <h2>Getting started</h2>
        <p>Integrating javascript with the Bootstrap library is super easy. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
+       <hr>
+       <p><a class="btn primary" href="./javascript.html">Skip to Bootstrap plugins &raquo;</a></p>
      </div>
      <div class="span12">
-       <h2>Getting started</h2>
-       <p>We've set out to make your interactive work with Bootstrap even more simple, offering several lightweight plugins for things like modals, tooltips, and other dynamic components. These plugins have been coded up to work with either <a href="http://jquery.com/" target="_blank">jQuery</a> or <a href="http://ender.no.de" target="_blank">Ender</a>, but we encourage you to extend and modify them to fit your development needs!</p>
-       <h2>Do I need javascript?</h2>
-       <p>The short answer is <strong>no</strong>... of course not! However, for those who need it, we've provided the plugins below to help you understand how to integrate bootstrap with javascript and to give you a quick lightweight option for dropping something in and getting the basic functionality right away! For more information on these plugins and to see demos of them in action, please refer to our <a href="./javascript.html">plugin documentation page</a>.</p>
+      <h3>What's included</h3>
+       <p>Bring some of Bootstrap's primary components to life with new custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>. We encourage you to extend and modify them to fit your specific development needs.</p>
        <table class="zebra-striped">
          <thead>
            <tr>
@@ -1557,6 +1558,10 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
            </tr>
          </tbody>
        </table>
+       <h3>Is javascript necessary?</h3>
+       <p><strong>Nope!</strong> Bootstrap is designed first and foremost to be a CSS library. This javascript provides a basic interactive layer on top of the included styles.</p>
+       <p>However, for those who do need javascript, we've provided the plugins above to help you understand how to integrate Bootstrap with javascript and to give you a quick, lightweight option for the basic functionality right away.</p>
+       <p>For more information and to see some live demos, please refer to our <a href="./javascript.html">plugin documentation page</a>.</p>
      </div>
    </div>
 
@@ -1709,19 +1714,19 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
 </section>
 
+
+
     </div><!-- /container -->
 
-    <div id="footer">
-      <div class="inner">
-        <div class="container">
-          <p class="right"><a href="#">Back to top</a></p>
-          <p>
-            Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br />
-            Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
-          </p>
-        </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>
+          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br />
+          Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+        </p>
       </div>
-    </div>
+    </footer>
 
   </body>
 </html>
