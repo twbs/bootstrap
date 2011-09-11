@@ -48,15 +48,16 @@ $(document).ready(function(){
   // POSITION STATIC TWIPSIES
   // ========================
 
-  $(".twipsies a").each(function () {
-     $(this)
-      .twipsy({
-        live: false
-      , placement: $(this).attr('title')
-      , trigger: 'manual'
-      , offset: 2
+  $(window).load(function () {
+    $(".twipsies a").each(function () {
+       $(this)
+        .twipsy({
+          live: false
+        , placement: $(this).attr('title')
+        , trigger: 'manual'
+        , offset: 2
+        })
+        .trigger('twipsy:show')
       })
-      .trigger('twipsy:show')
-    })
-
+  })
 });
