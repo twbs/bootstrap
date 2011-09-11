@@ -753,6 +753,11 @@ input[type=submit].btn {
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
   .close { margin-top: 7px; }
+  &.fade {
+    .transition(e('opacity .3s linear, top .3s ease-out'));
+    top: -25%;
+  }
+  &.fade.in { top: 50%; }
 }
 .modal-header {
   border-bottom: 1px solid #eee;

@@ -59,16 +59,17 @@
       this.isShown = true
 
       _.escape.call(this)
-      _.backdrop.call(this)
+      _.backdrop.call(this, function () {
+        that.$element
+          .appendTo(document.body)
+          .show()
 
-      this.$element
-        .appendTo(document.body)
-        .show()
-
-      setTimeout(function () {
-        that.$element.addClass('in').trigger('modal:shown')
-        that.$backdrop && that.$backdrop.addClass('in')
-      }, 1)
+        setTimeout(function () {
+          that.$element
+            .addClass('in')
+            .trigger('modal:shown')
+        }, 1)
+      })
 
       return this
     }
@@ -81,7 +82,6 @@
       this.isShown = false
 
       _.escape.call(this)
-      _.backdrop.call(this)
 
       this.$element.removeClass('in')
 
@@ -89,6 +89,8 @@
         that.$element
           .detach()
           .trigger('modal:hidden')
+
+        _.backdrop.call(that)
       }
 
       $.support.transition && this.$element.hasClass('fade') ?
@@ -106,13 +108,20 @@
 
   var _ = {
 
-    backdrop: function () {
+    backdrop: function ( callback ) {
       var that = this
         , animate = this.$element.hasClass('fade') ? 'fade' : ''
       if ( this.isShown && this.settings.backdrop ) {
         this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
           .click($.proxy(this.hide, this))
           .appendTo(document.body)
+
+        setTimeout(function () {
+          that.$backdrop && that.$backdrop.addClass('in')
+          $.support.transition && that.$backdrop.hasClass('fade') ?
+            that.$backdrop.one(transitionEnd, callback) :
+            callback()
+        })
       } else if ( !this.isShown && this.$backdrop ) {
         this.$backdrop.removeClass('in')
 
