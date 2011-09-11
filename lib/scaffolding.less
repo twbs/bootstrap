@@ -4,6 +4,75 @@
  * ------------------------------------------------------------------------------------------- */
 
 
+// STRUCTURAL LAYOUT
+// -----------------
+
+html, body {
+  background-color: #fff;
+}
+body {
+  margin: 0;
+  #font > .sans-serif(normal,@basefont,@baseline);
+  color: @grayDark;
+}
+
+// Container (centered, fixed-width layouts)
+.container {
+  .fixed-container();
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.container-fluid {
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  .clearfix();
+  > .sidebar {
+    float: left;
+    width: 220px;
+  }
+  // TODO in v2: rename this and .popover .content to be more specific
+  > .content {
+    min-width: 700px;
+    max-width: 1180px;
+    margin-left: 240px;
+    .clearfix();
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+
+// BASE STYLES
+// -----------
+
+// Links
+a {
+  color: @linkColor;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+  &:hover {
+    color: @linkColorHover;
+    text-decoration: underline;
+  }
+}
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+
 // GRID SYSTEM
 // -----------
 
@@ -64,73 +133,4 @@
   .span-two-thirds    { width: 620px; }
   .offset-one-third   { margin-left: 340px; }
   .offset-two-thirds  { margin-left: 660px; }
-}
-
-
-// STRUCTURAL LAYOUT
-// -----------------
-
-html, body {
-  background-color: #fff;
-}
-body {
-  margin: 0;
-  #font > .sans-serif(normal,@basefont,@baseline);
-  color: @gray;
-}
-
-// Container (centered, fixed-width layouts)
-.container {
-  .fixed-container();
-}
-
-// Fluid layouts (left aligned, with sidebar, min- & max-width content)
-.container-fluid {
-  position: relative;
-  padding-left: 20px;
-  padding-right: 20px;
-  .clearfix();
-  > .sidebar {
-    float: left;
-    width: 220px;
-  }
-  // TODO in v2: rename this and .popover .content to be more specific
-  > .content {
-    min-width: 700px;
-    max-width: 1180px;
-    margin-left: 240px;
-    .clearfix();
-  }
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
-
-// BASE STYLES
-// -----------
-
-// Links
-a {
-  color: @linkColor;
-  text-decoration: none;
-  line-height: inherit;
-  font-weight: inherit;
-  &:hover {
-    color: @linkColorHover;
-    text-decoration: underline;
-  }
-}
-
-// Quick floats
-.pull-right {
-  float: right;
-}
-.pull-left {
-  float: left;
 }
