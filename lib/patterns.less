@@ -292,8 +292,8 @@ a.menu:after,
   .dropdown-menu {
     display: block;
   }
+  z-index: 100;
 }
-
 
 // Tabs and Pills
 .tabs,
@@ -425,7 +425,7 @@ footer {
 // -------------
 
 // Base .btn styles
-.btn {
+.btn, .dropdown .btn.dropdown-toggle {
   // Button Base
   cursor: pointer;
   display: inline-block;
@@ -502,6 +502,91 @@ input[type=submit].btn {
   &::-moz-focus-inner {
   	padding: 0;
   	border: 0;
+  }
+}
+
+// Dropdown Buttons
+div.dropdown {
+  display: inline-block;
+  
+  &.open .btn.dropdown-toggle {
+    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+    background-position: 0 -15px;
+    color: #333;
+    .border-radius(4px 4px 0px 0px);
+    &.danger,
+    &.error,
+    &.success,
+    &.info,
+    &.primary {
+      color: @white;
+      + .dropdown-menu { 
+        margin: -1px;
+      }
+    }
+  }
+
+  .btn.dropdown-toggle + .dropdown-menu {
+    top: 27px;
+    border-width: 1px;
+    .border-radius(0 6px 6px 6px);
+  }
+  
+  .btn.large.dropdown-toggle + .dropdown-menu {
+    top: 37px;
+  }
+  
+  .btn.large.dropdown-toggle:after {
+    margin-top: 8px;
+  }
+
+  .btn.dropdown-toggle:after {
+    margin-top: 6px;
+    border-top: 4px solid #333;
+    
+    &.danger,
+    &.error,
+    &.success,
+    &.info, {
+      border-top: 4px solid #333;
+    }
+  }
+  
+  // Menu Color Mixins, abstracts colors of menus
+  .menu-color(@background, @foreground: #fff) {
+  	@highlight: darken( @background, 10% );
+    
+    .gradientBar(@background, @background);
+    
+    li a {
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      &:hover {
+        color: #fff;
+        #gradient > .vertical(@highlight, @highlight);
+      }
+    }
+    .divider {
+      background-color: @highlight;
+      border-color: @background;
+    }
+  }
+  
+  // COLORS 
+  .primary + .dropdown-menu {
+    .menu-color( @blueDark );
+  }
+  .danger,.error {
+     + .dropdown-menu {
+       .menu-color( #c43c35 );
+     }
+   }
+  .success + .dropdown-menu {
+    .menu-color( #57a957 );
+  }
+  .info + .dropdown-menu {
+    .menu-color( #339bb9 );
   }
 }
 
