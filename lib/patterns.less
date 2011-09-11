@@ -725,9 +725,7 @@ input[type=submit].btn {
 
 .modal-backdrop {
   background-color:#000;
-  &.fade {
-    opacity: 0;
-  }
+  &.fade { opacity: 0; }
   position: fixed;
   top: 0;
   left: 0;
@@ -737,7 +735,7 @@ input[type=submit].btn {
 }
 
 .modal-backdrop, .modal-backdrop.fade.in {
-  .opacity(50);
+  .opacity(70);
 }
 
 .modal {
@@ -754,9 +752,12 @@ input[type=submit].btn {
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
-  .close {
-    margin-top: 7px;
+  .close { margin-top: 7px; }
+  &.fade {
+    .transition(e('opacity .25s linear, top .25s ease-out'));
+    top:-50%;
   }
+  &.fade.in { top: 50%;}
 }
 .modal-header {
   border-bottom: 1px solid #eee;
