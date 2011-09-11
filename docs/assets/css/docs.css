@@ -312,6 +312,13 @@ img.large-bird {
   opacity: .1;
 }
 
+/* Media grid images
+--------------------------------------------------- */
+.media-grid img {
+  height: 150px;
+  width: 210px;
+}
+
 
 /* Pretty Print
 -------------------------------------------------- */
