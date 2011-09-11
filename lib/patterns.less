@@ -735,7 +735,7 @@ input[type=submit].btn {
 }
 
 .modal-backdrop, .modal-backdrop.fade.in {
-  .opacity(70);
+  .opacity(80);
 }
 
 .modal {
@@ -753,11 +753,6 @@ input[type=submit].btn {
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
   .close { margin-top: 7px; }
-  &.fade {
-    .transition(e('opacity .25s linear, top .25s ease-out'));
-    top:-50%;
-  }
-  &.fade.in { top: 50%;}
 }
 .modal-header {
   border-bottom: 1px solid #eee;

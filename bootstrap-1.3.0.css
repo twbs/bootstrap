@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Sep 10 18:12:41 PDT 2011
+ * Date: Sat Sep 10 18:24:47 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1977,10 +1977,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   opacity: 0;
 }
 .modal-backdrop, .modal-backdrop.fade.in {
-  filter: alpha(opacity=70);
-  -khtml-opacity: 0.7;
-  -moz-opacity: 0.7;
-  opacity: 0.7;
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
 }
 .modal {
   position: fixed;
@@ -2007,17 +2007,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .modal .close {
   margin-top: 7px;
-}
-.modal.fade {
-  -webkit-transition: opacity .25s linear, top .25s ease-out;
-  -moz-transition: opacity .25s linear, top .25s ease-out;
-  -ms-transition: opacity .25s linear, top .25s ease-out;
-  -o-transition: opacity .25s linear, top .25s ease-out;
-  transition: opacity .25s linear, top .25s ease-out;
-  top: -50%;
-}
-.modal.fade.in {
-  top: 50%;
 }
 .modal-header {
   border-bottom: 1px solid #eee;
