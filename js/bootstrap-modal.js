@@ -59,6 +59,7 @@
       this.isShown = true
 
       _.escape.call(this)
+
       _.backdrop.call(this, function () {
         that.$element
           .appendTo(document.body)
@@ -133,6 +134,8 @@
         $.support.transition && this.$element.hasClass('fade')?
           this.$backdrop.one(transitionEnd, removeElement) :
           removeElement()
+      } else {
+        callback()
       }
     }
 

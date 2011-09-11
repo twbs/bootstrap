@@ -15,12 +15,12 @@
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
-    <script src="assets/js/application-scrollspy.js"></script>
     <script src="../js/bootstrap-modal.js"></script>
     <script src="../js/bootstrap-alerts.js"></script>
     <script src="../js/bootstrap-twipsy.js"></script>
     <script src="../js/bootstrap-popover.js"></script>
     <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="../js/bootstrap-tabs.js"></script>
 
     <!-- Le styles -->
@@ -46,6 +46,7 @@
           <ul>
             <li><a href="#modal">Modals</a></li>
             <li><a href="#dropdown">Dropdown</a></li>
+            <li><a href="#scrollspy">ScrollSpy</a></li>
             <li><a href="#tabs">Tabs</a></li>
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
@@ -152,7 +153,7 @@ $('#modal-content')
 
     <section id="dropdown">
       <div class="page-header">
-        <h1>Drop Down <small>bootstrap-dropdown.js</small></h1>
+        <h1>Dropdown <small>bootstrap-dropdown.js</small></h1>
       </div>
       <div class="row">
         <div class="span4 columns">
@@ -209,6 +210,43 @@ $('#modal-content')
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- ScrollSpy
+    ================================================== -->
+
+    <section id="scrollspy">
+      <div class="page-header">
+        <h1>ScrollSpy <small>bootstrap-scrollspy.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>This plugin is for adding the scrollspy (auto updating nav) interaction to the bootstrap topbar.</p>
+          <a href="../js/bootstrap-scrollspy.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h2>Using boostrap-scrollspy.js</h2>
+          <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
+          <h3>Method</h3>
+          <h4>$().scrollspy</h4>
+          <p>
+          Auto activates navigation buttons by users scroll position.
+          </p>
+          <pre class="prettyprint linenums">$('body > .topbar').scrollSpy()</pre>
+          <p>
+            <strong>Note:</strong> Topbar anchor tags must have resolvable id targets like <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code>.
+          </p>
+          <h3>Events</h3>
+          <h4>scrollspy:refresh</h4>
+          <p>The scrollspy caches nav buttons and anchor locations. If you need to update the cache (because you have dynamic content) just trigger the <code>scrollspy:refresh</code> event.</p>
+          <pre class="prettyprint linenums">$('body > .topbar').trigger('scrollspy:refresh')</pre>
+          <h3>Demo</h3>
+          <p>Peep the topbar navigation homie!</p>
+          <script>$(function () {
+            $('body > .topbar').scrollSpy()
+          })</script>
         </div>
       </div>
     </section>
