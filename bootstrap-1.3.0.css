@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Sep 11 19:59:57 PDT 2011
+ * Date: Sun Sep 11 20:23:28 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1015,20 +1015,22 @@ textarea[readonly] {
   border-radius: 0 3px 3px 0;
 }
 .input-prepend .add-on, .input-append .add-on {
-  background: #f5f5f5;
+  position: relative;
+  z-index: 2;
   float: left;
   display: block;
   width: auto;
   min-width: 16px;
+  height: 18px;
   padding: 4px 4px 4px 5px;
-  color: #bfbfbf;
+  margin-right: -1px;
   font-weight: normal;
   line-height: 18px;
-  height: 18px;
+  color: #bfbfbf;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
+  background-color: #f5f5f5;
   border: 1px solid #ccc;
-  border-right-width: 0;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
@@ -1052,8 +1054,8 @@ textarea[readonly] {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
-  border-right-width: 1px;
-  border-left-width: 0;
+  margin-right: 0;
+  margin-left: -1px;
 }
 .inputs-list {
   margin: 0 0 5px;
@@ -1433,6 +1435,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .topbar div > ul.secondary-nav .dropdown-menu,
 .nav.secondary-nav .dropdown-menu {
   right: 0;
+  border: 0;
 }
 .topbar div > ul a.menu:hover,
 .nav a.menu:hover,

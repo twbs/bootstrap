@@ -327,20 +327,22 @@ textarea[readonly] {
     .border-radius(0 3px 3px 0);
   }
   .add-on {
-    background: #f5f5f5;
+    position: relative;
+    z-index: 2;
     float: left;
     display: block;
     width: auto;
     min-width: 16px;
+    height: 18px;
     padding: 4px 4px 4px 5px;
-    color: @grayLight;
+    margin-right: -1px;
     font-weight: normal;
     line-height: 18px;
-    height: 18px;
+    color: @grayLight;
     text-align: center;
     text-shadow: 0 1px 0 #fff;
+    background-color: #f5f5f5;
     border: 1px solid #ccc;
-    border-right-width: 0;
     .border-radius(3px 0 0 3px);
   }
   .active {
@@ -360,8 +362,8 @@ textarea[readonly] {
   }
   .add-on {
     .border-radius(0 3px 3px 0);
-    border-right-width: 1px;
-    border-left-width: 0;
+    margin-right: 0;
+    margin-left: -1px;
   }
 }
 
