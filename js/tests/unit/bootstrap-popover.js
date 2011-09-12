@@ -14,20 +14,20 @@ $(function () {
 
       test("should render popover element", function () {
         $.support.transition = false
-        var popover = $('<a href="#" data-title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
+        var popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
           .appendTo('#qunit-runoff')
           .popover()
-          .trigger('popover:show')
+          .popover('show')
 
         ok($('.popover').length, 'popover was inserted')
-        popover.trigger('popover:hide')
+        popover.popover('hide')
         ok(!$(".popover").length, 'popover removed')
         $('#qunit-runoff').empty()
       })
 
       test("should store popover instance in popover data object", function () {
         $.support.transition = false
-        var popover = $('<a href="#" data-title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
+        var popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
           .popover()
 
         ok(!!popover.data('popover'), 'popover instance exists')
@@ -38,32 +38,37 @@ $(function () {
         var popover = $('<a href="#">@fat</a>')
           .appendTo('#qunit-runoff')
           .popover({
-            title: '@fat'
-          , content: 'loves writing tests （╯°□°）╯︵ ┻━┻'
+            title: function () {
+              return '@fat'
+            }
+          , content: function () {
+              return 'loves writing tests （╯°□°）╯︵ ┻━┻'
+            }
           })
-          .trigger('popover:show')
+
+        popover.popover('show')
 
         ok($('.popover').length, 'popover was inserted')
         equals($('.popover .title').text(), '@fat', 'title correctly inserted')
         equals($('.popover .content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
 
-        popover.trigger('popover:hide')
+        popover.popover('hide')
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-runoff').empty()
       })
 
       test("should get title and content from attributes", function () {
         $.support.transition = false
-        var popover = $('<a href="#" data-title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+        var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
           .appendTo('#qunit-runoff')
           .popover()
-          .trigger('popover:show')
+          .popover('show')
 
         ok($('.popover').length, 'popover was inserted')
         equals($('.popover .title').text(), '@mdo', 'title correctly inserted')
         equals($('.popover .content').text(), "loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻", 'content correctly inserted')
 
-        popover.trigger('popover:hide')
+        popover.popover('hide')
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-runoff').empty()
       })

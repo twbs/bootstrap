@@ -39,7 +39,7 @@
 
     <!-- Topbar
     ================================================== -->
-    <div class="topbar" data-scrollspy>
+    <div class="topbar" data-scrollspy="x" >
       <div class="fill">
         <div class="container">
           <h3><a href="#">Bootstrap JS</a></h3>
@@ -120,7 +120,7 @@
             </tbody>
           </table>
           <h3>Markup</h3>
-          <p>You can activate modals on your page easily without having to write a single line of javascript. Just give an element a <code>data-controls-modal</code> which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as data attributes as well.</p>
+          <p>You can activate modals on your page easily without having to write a single line of javascript. Just give an element a <code>data-controls-modal</code> attribute which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as data attributes as well.</p>
 <pre class="prettyprint linenums">
 &lt;a class="btn" data-controls-modal="my-modal" data-backdrop="true" &gt;Launch Modal&lt;/a&gt;
 </pre>
@@ -146,19 +146,11 @@ $('#my-modal').modal({
           <pre class="prettyprint linenums">$('#my-modal').modal(true)</pre>
           <p><span class="label notice">Notice</span> Alternatively, this can be retrieved with <code>$().data('modal')</code>.</p>
           <h3>Events</h3>
-          <p>Bootstrap's modal class exposes a few events for hooking into modal functionality. The include:</p>
-
-          <!-- <ul>
-           <li><strong>show</strong> - This event fires immediately when the <code>show</code> instance method is called.</li>
-           <li><strong>shown</strong> - This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</li>
-           <li><strong>hide</strong> - This event is fired immediately when the <code>hide</code> instance method has been called.</li>
-           <li><strong>hidden</strong> - This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</li>
-          </ul> -->
-
+          <p>Bootstrap's modal class exposes a few events for hooking into modal functionality. </p>
           <table class="zebra-striped">
             <thead>
              <tr>
-               <th style="width: 150px;">Name</th>
+               <th style="width: 150px;">Event</th>
                <th>Description</th>
              </tr>
             </thead>
@@ -229,7 +221,7 @@ $('#my-modal').bind('hidden', function () {
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="dropdown" data-dropdown&gt;
+  &lt;li class="dropdown" data-dropdown="x" &gt;
     &lt;a href="#" class="dropdown-toggle"&gt;Dropdown&lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       &lt;li&gt;&lt;a href="#"&gt;Secondary link&lt;/a&gt;&lt;/li&gt;
@@ -247,7 +239,7 @@ $('#my-modal').bind('hidden', function () {
           </p>
           <h3>Demo</h3>
           <div class="topbar-wrapper">
-            <div id="topbar-example" class="topbar" data-dropdown>
+            <div id="topbar-example" class="topbar" data-dropdown="x">
               <div class="topbar-inner">
                 <div class="container">
                   <h3><a href="#">Project Name</a></h3>
@@ -303,20 +295,20 @@ $('#my-modal').bind('hidden', function () {
           <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
           <h3>Markup</h3>
           <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.topbar</code>.
-          <pre class="prettyprint linenums">&lt;div class="topbar" data-scrollspy &gt;...&lt;/div&gt;</pre>
+          <pre class="prettyprint linenums">&lt;div class="topbar" data-scrollspy="x" &gt;...&lt;/div&gt;</pre>
           <h3>Methods</h3>
           <h4>$().scrollspy()</h4>
           <p>
           Auto activates navigation buttons by users scroll position.
           </p>
           <pre class="prettyprint linenums">$('body > .topbar').scrollSpy()</pre>
-           <p><span class="label notice">Notice</span> Topbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> might correspond to a <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
+           <p><span class="label notice">Notice</span> Topbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
           </p>
           <h4>.scrollspy('refresh')</h4>
-          <p>The scrollspy caches nav buttons and section coordinates for performance. If you need to update this cache (likely if you have dynamic content) just call this refresh method. If you used the data attribute to define your scrollspy, just call refresh on the body like below.</p>
+          <p>The scrollspy caches nav buttons and section coordinates for performance. If you need to update this cache (likely if you have dynamic content) just call this refresh method. If you used the data attribute to define your scrollspy, just call refresh on the body.</p>
           <pre class="prettyprint linenums">$('body').scrollspy('refresh')</pre>
           <h3>Demo</h3>
-          <p>Look at the topbar navigation on this page.</p>
+          <p>Checkout the the topbar navigation on this page.</p>
         </div>
       </div>
     </section>
@@ -338,7 +330,7 @@ $('#my-modal').bind('hidden', function () {
           <pre class="prettyprint linenums">$('.tabs').tabs()</pre>
           <h3>Markup</h3>
           <p>You can activate a tab or pill navigation without writing any javascript by simply giving them a <code>data-tabs</code> or <code>data-pills</code> attribute.</p>
-          <pre class="prettyprint linenums"> &lt;ul class="tabs" data-tabs &gt;...&lt;/ul&gt;</pre>
+          <pre class="prettyprint linenums"> &lt;ul class="tabs" data-tabs="x" &gt;...&lt;/ul&gt;</pre>
           <h3>Methods</h3>
           <h4>$().tabs or $().pills</h4>
           <p>
@@ -366,7 +358,7 @@ $('#my-modal').bind('hidden', function () {
 &lt;/script&gt;</pre>
           </p>
           <h3>Demo</h3>
-          <ul class="tabs" data-tabs >
+          <ul class="tabs" data-tabs="x" >
             <li class="active"><a href="#home">Home</a></li>
             <li><a href="#profile">Profile</a></li>
             <li><a href="#messages">Messages</a></li>
@@ -648,11 +640,11 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
           <p>Closes an alert.</p>
           <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
           <h3>Demo</h3>
-          <div class="alert-message warning fade in" data-alert >
+          <div class="alert-message warning fade in" data-alert="x" >
             <a class="close" href="#">&times;</a>
             <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
           </div>
-          <div class="alert-message block-message error fade in" data-alert >
+          <div class="alert-message block-message error fade in" data-alert="x" >
             <a class="close" href="#">&times;</a>
             <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
             <div class="alert-actions">
