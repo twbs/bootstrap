@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Sep 11 20:23:28 PDT 2011
+ * Date: Sun Sep 11 20:46:26 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -272,8 +272,6 @@ textarea {
 /*
 TODO:
 - add ability to set app/site-wide base font-face (need better variables: @baseFontSize, @baseFontFace, @baseLineHeight, etc)
-- make form inputs and tables apply the new global type changes (currently statically set)
-- add new docs section for examples
 - add new docs section for Theme.less
 *//*
  * Scaffolding
@@ -352,7 +350,7 @@ a {
   font-weight: inherit;
 }
 a:hover {
-  color: #0050a3;
+  color: #00438a;
   text-decoration: underline;
 }
 .pull-right {
@@ -1695,7 +1693,7 @@ a.menu:after, .dropdown-toggle:after {
   border-radius: 15px;
 }
 .pills a:hover {
-  background: #0050a3;
+  background: #00438a;
   color: #fff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
