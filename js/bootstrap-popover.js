@@ -24,6 +24,7 @@
     this.$element = $(element)
     this.options = options
     this.enabled = true
+    this.fixTitle()
   }
 
   /* NOTE: POPOVER EXTENDS BOOTSTRAP-TWIPSY.js
@@ -38,22 +39,13 @@
       $tip[0].className = 'popover'
     }
 
-  , fixTitle: function () {}
+  , getContent: function () {
+      var contentvar
+       , $e = this.$element
+       , o = this.options
 
-  , getTitle: function () {
-      var title
-      if (typeof this.options.title == 'string') {
-        title = this.$element.attr('data-title') || this.options.title
-      } else if (typeof this.options.title == 'function') {
-        title = this.options.title.call(this.$element[0])
-      }
-      return title
-    }
-
-  , getContent: function () {content
-      var content
       if (typeof this.options.content == 'string') {
-        content = this.$element.attr('data-content') || this.options.content
+        content = $e.attr(o.content)
       } else if (typeof this.options.content == 'function') {
         content = this.options.content.call(this.$element[0])
       }
@@ -80,6 +72,6 @@
     return this
   }
 
-  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, { content: 'content', placement: 'right'})
+  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, { content: 'data-content', placement: 'right'})
 
 })( jQuery || ender )

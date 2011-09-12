@@ -51,7 +51,7 @@ $(document).ready(function(){
         , trigger: 'manual'
         , offset: 2
         })
-        .trigger('twipsy:show')
+        .twipsy('show')
       })
   })
 });

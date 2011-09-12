@@ -51,30 +51,25 @@
  /* ALERT CLASS DEFINITION
   * ====================== */
 
-  var Alert = function ( content ) {
-    var that = this
+  var Alert = function ( content, selector ) {
     this.$element = $(content)
-      .bind('alert:hide', $.proxy(this.close, this))
-      .delegate('.close', 'click', function (e) {
-        e.preventDefault()
-        that.close()
-      })
+      .delegate(selector || '.close', 'click', this.close)
   }
 
   Alert.prototype = {
 
-    close: function () {
-      var that = this
+    close: function (e) {
+      var $element = $(this).parent('.alert-message')
 
-      this.$element.removeClass('in')
+      e && e.preventDefault()
+      $element.removeClass('in')
 
       function removeElement () {
-        that.$element.remove()
-        that.$element = null
+        $element.remove()
       }
 
-      $.support.transition && this.$element.hasClass('fade') ?
-        this.$element.bind(transitionEnd, removeElement) :
+      $.support.transition && $element.hasClass('fade') ?
+        $element.bind(transitionEnd, removeElement) :
         removeElement()
     }
 
@@ -85,9 +80,25 @@
   * ======================= */
 
   $.fn.alert = function ( options ) {
+
+    if ( options === true ) {
+      return this.data('alert')
+    }
+
     return this.each(function () {
-      new Alert(this)
+      var $this = $(this)
+
+      if ( typeof options == 'string' ) {
+        return $this.data('alert')[options]()
+      }
+
+      $(this).data('alert', new Alert( this ))
+
     })
   }
+
+  $(function () {
+    new Alert($('body'), '.alert-message[data-alert] .close')
+  })
 
 })( jQuery || ender )

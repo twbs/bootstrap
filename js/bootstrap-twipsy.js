@@ -282,9 +282,6 @@
       this[binder](eventIn, enter)[binder](eventOut, leave)
     }
 
-    this.bind(name + ':show', enter)
-    this.bind(name + ':hide', leave)
-
     return this
   }
 
