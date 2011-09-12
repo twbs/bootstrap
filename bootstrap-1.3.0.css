@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Sep 11 18:08:25 PDT 2011
+ * Date: Sun Sep 11 18:43:05 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -374,129 +374,129 @@ a:hover {
 .row:after {
   clear: both;
 }
-.row [class*="span"] {
+[class*="span"] {
   display: inline;
   float: left;
   margin-left: 20px;
 }
-.row .span1 {
+.span1 {
   width: 40px;
 }
-.row .span2 {
+.span2 {
   width: 100px;
 }
-.row .span3 {
+.span3 {
   width: 160px;
 }
-.row .span4 {
+.span4 {
   width: 220px;
 }
-.row .span5 {
+.span5 {
   width: 280px;
 }
-.row .span6 {
+.span6 {
   width: 340px;
 }
-.row .span7 {
+.span7 {
   width: 400px;
 }
-.row .span8 {
+.span8 {
   width: 460px;
 }
-.row .span9 {
+.span9 {
   width: 520px;
 }
-.row .span10 {
+.span10 {
   width: 580px;
 }
-.row .span11 {
+.span11 {
   width: 640px;
 }
-.row .span12 {
+.span12 {
   width: 700px;
 }
-.row .span13 {
+.span13 {
   width: 760px;
 }
-.row .span14 {
+.span14 {
   width: 820px;
 }
-.row .span15 {
+.span15 {
   width: 880px;
 }
-.row .span16 {
+.span16 {
   width: 940px;
 }
-.row .span17 {
+.span17 {
   width: 1000px;
 }
-.row .span18 {
+.span18 {
   width: 1060px;
 }
-.row .span19 {
+.span19 {
   width: 1120px;
 }
-.row .span20 {
+.span20 {
   width: 1180px;
 }
-.row .span21 {
+.span21 {
   width: 1240px;
 }
-.row .span22 {
+.span22 {
   width: 1300px;
 }
-.row .span23 {
+.span23 {
   width: 1360px;
 }
-.row .span24 {
+.span24 {
   width: 1420px;
 }
-.row .offset1 {
+.offset1 {
   margin-left: 80px;
 }
-.row .offset2 {
+.offset2 {
   margin-left: 140px;
 }
-.row .offset3 {
+.offset3 {
   margin-left: 200px;
 }
-.row .offset4 {
+.offset4 {
   margin-left: 260px;
 }
-.row .offset5 {
+.offset5 {
   margin-left: 320px;
 }
-.row .offset6 {
+.offset6 {
   margin-left: 380px;
 }
-.row .offset7 {
+.offset7 {
   margin-left: 440px;
 }
-.row .offset8 {
+.offset8 {
   margin-left: 500px;
 }
-.row .offset9 {
+.offset9 {
   margin-left: 560px;
 }
-.row .offset10 {
+.offset10 {
   margin-left: 620px;
 }
-.row .offset11 {
+.offset11 {
   margin-left: 680px;
 }
-.row .offset12 {
+.offset12 {
   margin-left: 740px;
 }
-.row .span-one-third {
+.span-one-third {
   width: 300px;
 }
-.row .span-two-thirds {
+.span-two-thirds {
   width: 620px;
 }
-.row .offset-one-third {
+.offset-one-third {
   margin-left: 340px;
 }
-.row .offset-two-thirds {
+.offset-two-thirds {
   margin-left: 660px;
 }
 /* Typography.less
@@ -882,6 +882,70 @@ select.xxlarge {
 }
 textarea.xxlarge {
   overflow-y: auto;
+}
+input.span1, textarea.span1, select.span1 {
+  width: 30px;
+  margin-left: 0;
+}
+input.span2, textarea.span2, select.span2 {
+  width: 90px;
+  margin-left: 0;
+}
+input.span3, textarea.span3, select.span3 {
+  width: 150px;
+  margin-left: 0;
+}
+input.span4, textarea.span4, select.span4 {
+  width: 210px;
+  margin-left: 0;
+}
+input.span5, textarea.span5, select.span5 {
+  width: 270px;
+  margin-left: 0;
+}
+input.span6, textarea.span6, select.span6 {
+  width: 330px;
+  margin-left: 0;
+}
+input.span7, textarea.span7, select.span7 {
+  width: 390px;
+  margin-left: 0;
+}
+input.span8, textarea.span8, select.span8 {
+  width: 450px;
+  margin-left: 0;
+}
+input.span9, textarea.span9, select.span9 {
+  width: 510px;
+  margin-left: 0;
+}
+input.span10, textarea.span10, select.span10 {
+  width: 570px;
+  margin-left: 0;
+}
+input.span11, textarea.span11, select.span11 {
+  width: 630px;
+  margin-left: 0;
+}
+input.span12, textarea.span12, select.span12 {
+  width: 690px;
+  margin-left: 0;
+}
+input.span13, textarea.span13, select.span13 {
+  width: 750px;
+  margin-left: 0;
+}
+input.span14, textarea.span14, select.span14 {
+  width: 810px;
+  margin-left: 0;
+}
+input.span15, textarea.span15, select.span15 {
+  width: 870px;
+  margin-left: 0;
+}
+input.span16, textarea.span16, select.span16 {
+  width: 930px;
+  margin-left: 0;
 }
 input[disabled],
 select[disabled],

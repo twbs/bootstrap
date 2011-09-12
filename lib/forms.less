@@ -184,6 +184,7 @@ form div.error {
 }
 
 // Form element sizes
+// TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
 .input-mini,
 input.mini,
 textarea.mini,
@@ -222,6 +223,34 @@ select.xxlarge {
 }
 textarea.xxlarge {
   overflow-y: auto;
+}
+
+// Grid style input sizes
+// This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
+.formColumns(@columnSpan: 1) {
+  width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
+  margin-left: 0;
+}
+input,
+textarea,
+select {
+  // Default columns
+  &.span1     { .formColumns(1); }
+  &.span2     { .formColumns(2); }
+  &.span3     { .formColumns(3); }
+  &.span4     { .formColumns(4); }
+  &.span5     { .formColumns(5); }
+  &.span6     { .formColumns(6); }
+  &.span7     { .formColumns(7); }
+  &.span8     { .formColumns(8); }
+  &.span9     { .formColumns(9); }
+  &.span10    { .formColumns(10); }
+  &.span11    { .formColumns(11); }
+  &.span12    { .formColumns(12); }
+  &.span13    { .formColumns(13); }
+  &.span14    { .formColumns(14); }
+  &.span15    { .formColumns(15); }
+  &.span16    { .formColumns(16); }
 }
 
 // Disabled and read-only inputs
