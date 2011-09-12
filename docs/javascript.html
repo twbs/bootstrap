@@ -606,9 +606,13 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
           <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
           <script>
             $(function () {
-              $("a[rel=popover]").popover({
-                offset: 10
-              })
+              $("a[rel=popover]")
+                .popover({
+                  offset: 10
+                })
+                .click(function(e) {
+                  e.preventDefault()
+                })
             })
           </script>
         </div>
