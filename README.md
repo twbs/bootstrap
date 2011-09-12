@@ -56,7 +56,7 @@ https://github.com/twitter/bootstrap/issues
 Twitter account
 ---------------
 
-Keep up to date on announcements and more by following Bootstrap on Twitter, @TwBootstrap.
+Keep up to date on announcements and more by following Bootstrap on Twitter, <a href="http://twitter.com/TwBootstrap">@TwBootstrap</a>.
 
 
 Mailing list
