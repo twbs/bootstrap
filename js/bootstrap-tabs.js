@@ -49,10 +49,14 @@
  /* TABS/PILLS PLUGIN DEFINITION
   * ============================ */
 
-  $.fn.tabs = $.fn.pills = function () {
+  $.fn.tabs = $.fn.pills = function ( selector ) {
     return this.each(function () {
-      $(this).delegate('.tabs > li > a, .pills > li > a, .dropdown-menu > li > a', 'click', tab)
+      $(this).delegate(selector || '.tabs li > a, .pills > li > a', 'click', tab)
     })
   }
+
+  $(function () {
+    $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
+  })
 
 })( jQuery || ender )

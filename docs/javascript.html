@@ -39,7 +39,7 @@
 
     <!-- Topbar
     ================================================== -->
-    <div class="topbar">
+    <div class="topbar" data-scrollspy>
       <div class="fill">
         <div class="container">
           <h3><a href="#">Bootstrap JS</a></h3>
@@ -82,49 +82,110 @@
       </div>
       <div class="row">
         <div class="span4 columns">
-          <p>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</p>
+          <p>Our Modal plugin is a super slim take on the traditional modal js plugin, taking special care to include only the bare functionality that we require here at twitter.</p>
           <a href="../js/bootstrap-modal.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span12 columns">
           <h3>Using bootstrap-modal</h3>
-          <pre class="prettyprint linenums">$('#modal-content').modal(options)</pre>
+          <pre class="prettyprint linenums">$('#my-modal').modal(options)</pre>
           <h3>Options</h3>
-          <ul>
-            <li><strong>backdrop</strong> (<code>boolean</code>) - if true, it will include a modal-backdrop element.</li>
-            <li><strong>closeOnEscape</strong> (<code>boolean</code>) - if true, it will close the modal when escape key is pressed.</li>
-          </ul>
-          <h3>Methods</h3>
-          <h4>$().modal</h4>
-          <p>Activates your content as a modal. Accepts an optional options <code>object</code>. If you want your modal to fade in and out, just add a <code>.fade</code> class to your <code>.modal</code> element (refer to the demo to see this in action).</p>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 50px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>backdrop</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td>Includes a modal-backdrop element</td>
+             </tr>
+             <tr>
+               <td>keyboard</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td>Closes the modal when escape key is pressed</td>
+             </tr>
+             <tr>
+               <td>show</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td>Opens modal on class initialization</td>
+             </tr>
+            </tbody>
+          </table>
+          <h3>Markup</h3>
+          <p>You can activate modals on your page easily without having to write a single line of javascript. Just give an element a <code>data-controls-modal</code> which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as data attributes as well.</p>
 <pre class="prettyprint linenums">
-$('#modal-content').modal({
+&lt;a class="btn" data-controls-modal="my-modal" data-backdrop="true" &gt;Launch Modal&lt;/a&gt;
+</pre>
+          <p><span class="label notice">Notice</span> If you want your modal to animate in and out, just add a <code>.fade</code> class to your <code>.modal</code> element (refer to the demo to see this in action).</p>
+          <h3>Methods</h3>
+          <h4>.modal(options)</h4>
+          <p>Activates your content as a modal. Accepts an optional options <code>object</code>.
+<pre class="prettyprint linenums">
+$('#my-modal').modal({
   closeOnEscape: true
 })</pre>
+          <h4>.modal('toggle')</h4>
+          <p>Manually toggles a modal.</p>
+          <pre class="prettyprint linenums">$('#my-modal').modal('toggle')</pre>
+          <h4>.modal('show')</h4>
+          <p>Manually opens a modal.</p>
+          <pre class="prettyprint linenums">$('#my-modal').modal('show')</pre>
+          <h4>.modal('hide')</h4>
+          <p>Manually hides a modal.</p>
+          <pre class="prettyprint linenums">$('#my-modal').modal('hide')</pre>
+          <h4>.modal(true)</h4>
+          <p>Returns a modals modal class instance.</p>
+          <pre class="prettyprint linenums">$('#my-modal').modal('hide')</pre>
+          <p><span class="label notice">Notice</span> Alternatively, this can be retrieved with <code>$().data('modal')</code>.</p>
           <h3>Events</h3>
-          <p>Bootstraps modal class makes use of custom events. You can use <code>trigger</code> to make things happen manually or <code>bind</code> to listen for things happening.</p>
-          <h4>modal:toggle</h4>
-          <p>Toggle the modal open state.</p>
-          <pre class="prettyprint linenums">$('#modal-content').trigger('modal:toggle')</pre>
-          <h4>modal:show</h4>
-          <p>Opens the modal.</p>
-          <pre class="prettyprint linenums">$('#modal-content').trigger('modal:show')</pre>
-          <h4>modal:hide</h4>
-          <p>Closes the modal.</p>
-          <pre class="prettyprint linenums">$('#modal-content').trigger('modal:hide')</pre>
-          <h4>modal:shown</h4>
-          <p>Fired when the modal has been made visible.</p>
-  <pre class="prettyprint linenums">
-$('#modal-content')
-  .bind('modal:shown', function () {
-    // do something here...
-  })</pre>
-          <h4>modal:hidden</h4>
-          <p>Fired when the modal has become hidden</p>
+          <p>Bootstrap's modal class exposes a few events for hooking into modal functionality. The include:</p>
+
+          <!-- <ul>
+           <li><strong>show</strong> - This event fires immediately when the <code>show</code> instance method is called.</li>
+           <li><strong>shown</strong> - This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</li>
+           <li><strong>hide</strong> - This event is fired immediately when the <code>hide</code> instance method has been called.</li>
+           <li><strong>hidden</strong> - This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</li>
+          </ul> -->
+
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Name</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>show</td>
+               <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>shown</td>
+               <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</td>
+             </tr>
+             <tr>
+               <td>hide</td>
+               <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+             </tr>
+             <tr>
+               <td>hidden</td>
+               <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
+             </tr>
+            </tbody>
+          </table>
+
 <pre class="prettyprint linenums">
-$('#modal-content')
-  .bind('modal:hidden', function () {
-    $(this).remove() // cleanup jQuery plugin data on hide
-  })</pre>
+$('#my-modal').bind('hidden', function () {
+  // do something ...
+})</pre>
           <h3>Demo</h3>
           <!-- sample modal content -->
           <div id="modal-from-dom" class="modal hide fade">
@@ -141,22 +202,7 @@ $('#modal-content')
             </div>
           </div>
 
-          <button id="modal-from-element" class="btn danger">Launch Modal</button>
-
-          <script>
-            $(function () {
-
-              var domModal = $("#modal-from-dom").modal({
-                backdrop: true
-              , closeOnEscape: true
-              })
-
-              $('#modal-from-element').click(function () {
-                domModal.trigger('modal:toggle')
-              })
-
-            })
-          </script>
+          <button data-controls-modal="modal-from-dom" data-backdrop="true" data-keyboard="true" class="btn danger">Launch Modal</button>
 
         </div>
       </div>
@@ -178,19 +224,30 @@ $('#modal-content')
         <div class="span12 columns">
           <h3>Using boostrap-dropdown.js</h3>
           <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
-          <h3>Method</h3>
-          <h4>$().dropdown</h4>
+          <h3>Markup</h3>
+          <p>To quickly add dropdown functionality to any nav element, use the <code>data-dropdown</code> attribute. Any valid bootstrap dropdown will automatically be activated.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="tabs"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown" data-dropdown&gt;
+    &lt;a href="#" class="dropdown-toggle"&gt;Dropdown&lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Secondary link&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider"&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Another link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+          <p><span class="label notice">Notice</span> If your ui has several dropdowns, consider adding the <code>data-dropdown</code> attribute to a more significant container element like <code>.tabs</code> or <code>.topbar</code>.
+          <h3>Methods</h3>
+          <h4>$().dropdown()</h4>
           <p>
-          Activates menus for given topbar or tabbed navigation.
+          A programatic api for activating menus for a given topbar or tabbed navigation.
           </p>
           <h3>Demo</h3>
-          <script>
-            $(function () {
-              $('#topbar-example').dropdown()
-            })
-          </script>
           <div class="topbar-wrapper">
-            <div id="topbar-example" class="topbar">
+            <div id="topbar-example" class="topbar" data-dropdown>
               <div class="topbar-inner">
                 <div class="container">
                   <h3><a href="#">Project Name</a></h3>
@@ -244,24 +301,22 @@ $('#modal-content')
         <div class="span12 columns">
           <h2>Using boostrap-scrollspy.js</h2>
           <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
-          <h3>Method</h3>
-          <h4>$().scrollspy</h4>
+          <h3>Markup</h3>
+          <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.topbar</code>.
+          <pre class="prettyprint linenums">&lt;div class="topbar" data-scrollspy &gt;...&lt;/div&gt;</pre>
+          <h3>Methods</h3>
+          <h4>$().scrollspy()</h4>
           <p>
           Auto activates navigation buttons by users scroll position.
           </p>
           <pre class="prettyprint linenums">$('body > .topbar').scrollSpy()</pre>
-          <p>
-            <strong>Note:</strong> Topbar anchor tags must have resolvable id targets like <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code>.
+           <p><span class="label notice">Notice</span> Topbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> might correspond to a <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
           </p>
-          <h3>Events</h3>
-          <h4>scrollspy:refresh</h4>
-          <p>The scrollspy caches nav buttons and anchor locations. If you need to update the cache (because you have dynamic content) just trigger the <code>scrollspy:refresh</code> event.</p>
-          <pre class="prettyprint linenums">$('body > .topbar').trigger('scrollspy:refresh')</pre>
+          <h4>.scrollspy('refresh')</h4>
+          <p>The scrollspy caches nav buttons and section coordinates for performance. If you need to update this cache (likely if you have dynamic content) just call this refresh method. If you used the data attribute to define your scrollspy, just call refresh on the body like below.</p>
+          <pre class="prettyprint linenums">$('body').scrollspy('refresh')</pre>
           <h3>Demo</h3>
-          <p>Peep the topbar navigation homie!</p>
-          <script>$(function () {
-            $('body > .topbar').scrollSpy()
-          })</script>
+          <p>Look at the topbar navigation on this page.</p>
         </div>
       </div>
     </section>
@@ -281,7 +336,10 @@ $('#modal-content')
         <div class="span12 columns">
           <h3>Using boostrap-tabs.js</h3>
           <pre class="prettyprint linenums">$('.tabs').tabs()</pre>
-          <h3>Method</h3>
+          <h3>Markup</h3>
+          <p>You can activate a tab or pill navigation without writing any javascript by simply giving them a <code>data-tabs</code> or <code>data-pills</code> attribute.</p>
+          <pre class="prettyprint linenums"> &lt;ul class="tabs" data-tabs &gt;...&lt;/ul&gt;</pre>
+          <h3>Methods</h3>
           <h4>$().tabs or $().pills</h4>
           <p>
             Activates tab and pill functionality for a given container. Tab links should reference id's in the document.
@@ -301,15 +359,8 @@ $('#modal-content')
   &lt;div id="settings"&gt;...&lt;/div&gt;
 &lt;/ul&gt;</pre>
           </p>
-          <p><strong>note:</strong> To manually activate a tab just fire a click event on one of the tabs.</p>
-          <pre class="prettyprint linenums">$('.tabs a[href="#messages"]').click()</pre>
           <h3>Demo</h3>
-          <script>
-            $(function () {
-              $('.tabs').tabs()
-            })
-          </script>
-          <ul class="tabs" aria-controls="my-tab-content">
+          <ul class="tabs" data-tabs >
             <li class="active"><a href="#home">Home</a></li>
             <li><a href="#profile">Profile</a></li>
             <li><a href="#messages">Messages</a></li>
@@ -349,18 +400,78 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
           <h3>Using bootstrap-twipsy.js</h3>
           <pre class="prettyprint linenums">$('#example').twipsy(options)</pre>
           <h3>Options</h3>
-          <ul>
-            <li><strong>animate</strong> (<code>boolean</code>) - apply a css fade transition to the tooltip.</li>
-            <li><strong>delayIn</strong> (<code>number</code>) - delay before showing tooltip (ms).</li>
-            <li><strong>delayOut</strong> (<code>number</code>) - delay before hiding tooltip (ms).</li>
-            <li><strong>fallback</strong> (<code>string</code>) - fallback text to use when no tooltip text.</li>
-            <li><strong>placement</strong> (<code>string</code>) - position of tooltip - above | below | left | right.</li>
-            <li><strong>html</strong> (<code>boolean</code>) - is tooltip content HTML?</li>
-            <li><strong>live</strong> (<code>boolean</code>) - use live event support?</li>
-            <li><strong>offset</strong> (<code>number</code>) - pixel offset of tooltip from element.</li>
-            <li><strong>title</strong> (<code>string|function</code>) - attribute/callback containing tooltip text.</li>
-            <li><strong>trigger</strong> (<code>string</code>) - how tooltip is triggered - hover | focus | manual.</li>
-          </ul>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 100px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>animate</td>
+               <td>boolean</td>
+               <td>true</td>
+               <td>apply a css fade transition to the tooltip</td>
+             </tr>
+             <tr>
+               <td>delayIn</td>
+               <td>number</td>
+               <td>0</td>
+               <td>delay before showing tooltip (ms)</td>
+             </tr>
+             <tr>
+               <td>delayOut</td>
+               <td>number</td>
+               <td>0</td>
+               <td>delay before hiding tooltip (ms)</td>
+             </tr>
+             <tr>
+               <td>fallback</td>
+               <td>string</td>
+               <td>''</td>
+               <td>text to use when no tooltip title is present</td>
+             </tr>
+             <tr>
+               <td>placement</td>
+               <td>string</td>
+               <td>'above'</td>
+               <td>how to position the tooltip - above | below | left | right</td>
+             </tr>
+             <tr>
+               <td>html</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td>allows html content within tooltip</td>
+             </tr>
+             <tr>
+               <td>live</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td>use event delegation instead of individual event handlers</td>
+             </tr>
+             <tr>
+               <td>offset</td>
+               <td>number</td>
+               <td>0</td>
+               <td>pixel offset of tooltip from target element</td>
+             </tr>
+             <tr>
+               <td>title</td>
+               <td>string | function</td>
+               <td>''</td>
+               <td>attribute or method for retrieving title text</td>
+             </tr>
+             <tr>
+               <td>trigger</td>
+               <td>string</td>
+               <td>'hover'</td>
+               <td>how tooltip is triggered - hover | focus | manual</td>
+             </tr>
+            </tbody>
+          </table>
           <h3>Methods</h3>
           <h4>$().twipsy</h4>
           <p>Attaches a twipsy handler to an element collection.</p>

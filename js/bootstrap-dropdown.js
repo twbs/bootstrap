@@ -20,22 +20,23 @@
 
 (function( $ ){
 
-  var selector = 'a.menu, .dropdown-toggle'
+  var d = 'a.menu, .dropdown-toggle'
 
   function clearMenus() {
-    $(selector).parent('li').removeClass('open')
+    $(d).parent('li').removeClass('open')
   }
 
   $(function () {
-    $('body').bind("click", clearMenus)
+    $('html').bind("click", clearMenus)
+    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
   })
 
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
-  $.fn.dropdown = function ( options ) {
+  $.fn.dropdown = function ( selector ) {
     return this.each(function () {
-      $(this).delegate(selector, 'click', function (e) {
+      $(this).delegate(selector || d, 'click', function (e) {
         var li = $(this).parent('li')
           , isActive = li.hasClass('open')
 
