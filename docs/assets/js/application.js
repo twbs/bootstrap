@@ -1,11 +1,5 @@
 $(document).ready(function(){
 
-  // Dropdown example for topbar nav
-  // ===============================
-
-  $('body').dropdown() // catch any dropdowns on the page
-
-
   // Scrollspy
   // =========
 
