@@ -13,12 +13,16 @@ You can use Twitter Bootstrap in one of two ways: just drop the compiled CSS int
 
 Here's what the LESS version looks like:
 
-    <link rel="stylesheet/less" type="text/css" href="lib/bootstrap.less">
-    <script src="less.js" type="text/javascript"></script>
+``` html
+<link rel="stylesheet/less" type="text/css" href="lib/bootstrap.less">
+<script src="less.js" type="text/javascript"></script>
+```
 
 Or if you prefer, the standard css way:
 
-    <link rel="stylesheet" type="text/css" href="bootstrap-1.2.0.css">
+``` html
+<link rel="stylesheet" type="text/css" href="bootstrap-1.2.0.css">
+```
 
 For more info, refer to the docs!
 
