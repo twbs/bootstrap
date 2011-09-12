@@ -1,11 +1,5 @@
 $(document).ready(function(){
 
-  // Scrollspy
-  // =========
-
-  $('body > .topbar').scrollSpy()
-
-
   // table sort example
   // ==================
 
