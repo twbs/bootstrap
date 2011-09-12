@@ -19,9 +19,9 @@ fieldset {
     padding-left: 150px;
     font-size: @basefont * 1.5;
     line-height: 1;
-    *margin: 0 0 5px 145px; /* IE6-7 */
-    *line-height: 1.5; /* IE6-7 */
     color: @grayDark;
+    *padding: 0 0 5px 145px; /* IE6-7 */
+    *line-height: 1.5; /* IE6-7 */
   }
 }
 
@@ -105,8 +105,9 @@ input[type=submit] {
 
 select,
 input[type=file] {
-  height: @baseline * 1.5;
+  height: @baseline * 1.5; // In IE7, the height of the select element cannot be changed by height, only font-size
   line-height: @baseline * 1.5;
+  *margin-top: 4px; /* For IE7, add top margin to align select with labels */
 }
 
 textarea {
@@ -183,6 +184,7 @@ form div.error {
 }
 
 // Form element sizes
+// TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
 .input-mini,
 input.mini,
 textarea.mini,
@@ -221,6 +223,34 @@ select.xxlarge {
 }
 textarea.xxlarge {
   overflow-y: auto;
+}
+
+// Grid style input sizes
+// This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
+.formColumns(@columnSpan: 1) {
+  width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
+  margin-left: 0;
+}
+input,
+textarea,
+select {
+  // Default columns
+  &.span1     { .formColumns(1); }
+  &.span2     { .formColumns(2); }
+  &.span3     { .formColumns(3); }
+  &.span4     { .formColumns(4); }
+  &.span5     { .formColumns(5); }
+  &.span6     { .formColumns(6); }
+  &.span7     { .formColumns(7); }
+  &.span8     { .formColumns(8); }
+  &.span9     { .formColumns(9); }
+  &.span10    { .formColumns(10); }
+  &.span11    { .formColumns(11); }
+  &.span12    { .formColumns(12); }
+  &.span13    { .formColumns(13); }
+  &.span14    { .formColumns(14); }
+  &.span15    { .formColumns(15); }
+  &.span16    { .formColumns(16); }
 }
 
 // Disabled and read-only inputs

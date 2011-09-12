@@ -40,7 +40,7 @@
     <div class="topbar">
       <div class="topbar-inner">
         <div class="container">
-          <h3><a href="#">Bootstrap</a></h3>
+          <a class="brand" href="#">Bootstrap</a>
           <ul class="nav">
             <li class="active"><a href="#overview">Overview</a></li>
             <li><a href="#about">About</a></li>
@@ -151,18 +151,17 @@
     <div class="span12">
       <h3>Quick-start examples</h3>
       <p>Need some quick templates? Check out these basic examples we've put together:</p>
-
-      <div class="row">
-        <div class="span4">
-          <a href="../examples/hero.html"><img src="assets/img/example-diagram-01.png" class="diagram" alt="Simple three-column layout with hero unit"></a>
-        </div>
-        <div class="span4">
-          <a href="../examples/fluid.html"><img src="assets/img/example-diagram-02.png" class="diagram" alt="Fluid layout with static sidebar"></a>
-        </div>
-        <div class="span4">
-          <a href="../examples/container-app.html"><img src="assets/img/example-diagram-03.png" class="diagram" alt="Simple hanging container for apps"></a>
-        </div>
-      </div>
+      <ul class="media-grid">
+        <li>
+          <a href="../examples/hero.html"><img src="assets/img/example-diagram-01.png" alt="Simple three-column layout with hero unit"></a>
+        </li>
+        <li>
+          <a href="../examples/fluid.html"><img src="assets/img/example-diagram-02.png" alt="Fluid layout with static sidebar"></a>
+        </li>
+        <li>
+          <a href="../examples/container-app.html"><img src="assets/img/example-diagram-03.png" alt="Simple hanging container for apps"></a>
+        </li>
+      </ul>
     </div>
     <div class="span4">
       <h3>Theming Bootstrap</h3>
@@ -717,59 +716,59 @@
       <h4>Large</h4>
       <ul class="media-grid">
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/330x230" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/330x230" alt="">
           </a>
         </li>
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/330x230" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/330x230" alt="">
           </a>
         </li>
       </ul>
       <h4>Medium</h4>
       <ul class="media-grid">
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/210x150" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
           </a>
         </li>
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/210x150" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
           </a>
         </li>
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/210x150" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
           </a>
         </li>
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/210x150" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
           </a>
         </li>
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/210x150" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
           </a>
         </li>
       </ul>
       <h4>Small</h4>
       <ul class="media-grid">
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/90x90" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
           </a>
         </li>
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/90x90" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
           </a>
         </li>
         <li>
-          <a class="thumbnail" href="#">
-            <img src="http://placehold.it/90x90" alt="">
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
           </a>
         </li>
       </ul>
@@ -1188,9 +1187,32 @@
 
   <div class="row">
     <div class="span4">
+      <h2>Form field sizes</h2>
+      <p>Customize any form <code>input</code>, <code>select</code>, or <code>textarea</code> width by adding just a few classes to your markup.</p>
+      <p>As of v1.3.0, we have added the grid-based sizing classes for form elements. <strong>Please use the these over the existing <code>.mini</code>, <code>.small</code>, etc classes.</strong></p>
+    </div>
+    <div class="span12">
+      <form action="">
+        <div class="clearfix"><input class="span2" id="" name="" type="text" placeholder=".span2" /></div>
+        <div class="clearfix"><input class="span3" id="" name="" type="text" placeholder=".span3" /></div>
+        <div class="clearfix"><input class="span4" id="" name="" type="text" placeholder=".span4" /></div>
+        <div class="clearfix"><input class="span5" id="" name="" type="text" placeholder=".span5" /></div>
+        <div class="clearfix"><input class="span6" id="" name="" type="text" placeholder=".span6" /></div>
+        <div class="clearfix"><input class="span7" id="" name="" type="text" placeholder=".span7" /></div>
+        <div class="clearfix"><input class="span8" id="" name="" type="text" placeholder=".span8" /></div>
+        <div class="clearfix"><input class="span9" id="" name="" type="text" placeholder=".span9" /></div>
+        <div class="clearfix"><input class="span10" id="" name="" type="text" placeholder=".span10" /></div>
+        <div class="clearfix"><input class="span11" id="" name="" type="text" placeholder=".span11" /></div>
+        <div class="clearfix"><input class="span12" id="" name="" type="text" placeholder=".span12" /></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
       <h2>Buttons</h2>
       <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
-      <p>All buttons default to a light gray style, but a number of functional classes can be applied for different color styles. These classes include a blue <code>.primary</code> class, a light-blue <code>.info</code> class, a green <code>.success</code> class, and a red <code>.danger</code> class. Plus, rolling your own styles is easy peasy.</p>
+      <p>All buttons default to a light gray style, but a number of functional classes can be applied for different color styles. These classes include a blue <code>.primary</code> class, a light-blue <code>.info</code> class, a green <code>.success</code> class, and a red <code>.danger</code> class.</p>
     </div>
     <div class="span12">
       <h3>Example buttons</h3>
@@ -1764,7 +1786,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <h2>Compiling Less</h2>
     <p>After modifying the <code>.less</code> files in /lib/, you'll need to recompile them in order to regenerate the bootstrap-*.*.*.css and bootstrap-*.*.*.min.css files. If you're submitting a pull request to GitHub, you must always recompile.</p>
     <h3>Ways to compile</h3>
-    <table>
+    <table class="zebra-striped">
       <thead>
         <tr>
           <th style="width: 120px;">Method</th>
@@ -1772,7 +1794,6 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         </tr>
       </thead>
       <tbody>
-        <tr>
         <tr>
           <td>Node with makefile</td>
           <td>
@@ -1784,7 +1805,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         </tr>
           <td>Javascript</td>
           <td>
-            <p><a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and your Bootstrap code) in the <code>head</code>.</p>
+            <p><a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>head</code>.</p>
 <pre class="prettyprint">
 &lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
 &lt;script src="/path/to/less.js"&gt;&lt;/script&gt;
@@ -1795,9 +1816,9 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         <tr>
           <td>Command line</td>
           <td>
-            <p>If you already have the less command line tool installed you can simply run the following command:</p>
+            <p>If you already have the less command line tool installed, simply run the following command:</p>
               <pre>$ lessc ./lib/bootstrap.less > bootstrap-1.3.0.css</pre>
-            <p>Be sure to include the <code>--compress</code> flag in that command if you're trying to save some bytes!
+            <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
           </td>
         </tr>
         <tr>

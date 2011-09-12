@@ -33,19 +33,19 @@
 
   // Website name
   // h3 left for backwards compatibility
-  .brand,
   h3 {
     position: relative;
-    a {
-      float: left;
-      display: block;
-      padding: 8px 20px 12px;
-      margin-left: -20px; // negative indent to left-align the text down the page
-      color: @white;
-      font-size: 20px;
-      font-weight: 200;
-      line-height: 1;
-    }
+  }
+  h3 a,
+  .brand {
+    float: left;
+    display: block;
+    padding: 8px 20px 12px;
+    margin-left: -20px; // negative indent to left-align the text down the page
+    color: @white;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
   }
 
   // Plain text in topbar
@@ -941,19 +941,19 @@ input[type=submit].btn {
   li {
     display: inline;
   }
-  .thumbnail {
+  a {
     float: left;
     padding: 4px;
     margin: 0 0 20px 20px;
     border: 1px solid #ddd;
     .border-radius(4px);
     .box-shadow(0 1px 1px rgba(0,0,0,.075));
+    img {
+      display: block;
+    }
     &:hover {
       border-color: @linkColor;
       .box-shadow(0 1px 4px rgba(0,105,214,.25));
     }
-  }
-  img {
-    display: block;
   }
 }
