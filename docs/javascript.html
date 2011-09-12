@@ -142,8 +142,8 @@ $('#my-modal').modal({
           <p>Manually hides a modal.</p>
           <pre class="prettyprint linenums">$('#my-modal').modal('hide')</pre>
           <h4>.modal(true)</h4>
-          <p>Returns a modals modal class instance.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal('hide')</pre>
+          <p>Returns an elements modal class instance.</p>
+          <pre class="prettyprint linenums">$('#my-modal').modal(true)</pre>
           <p><span class="label notice">Notice</span> Alternatively, this can be retrieved with <code>$().data('modal')</code>.</p>
           <h3>Events</h3>
           <p>Bootstrap's modal class exposes a few events for hooking into modal functionality. The include:</p>
@@ -357,7 +357,13 @@ $('#my-modal').bind('hidden', function () {
   &lt;div id="profile"&gt;...&lt;/div&gt;
   &lt;div id="messages"&gt;...&lt;/div&gt;
   &lt;div id="settings"&gt;...&lt;/div&gt;
-&lt;/ul&gt;</pre>
+&lt;/ul&gt;
+
+&lt;script&gt;
+  $(function () {
+    $('.tabs').tabs()
+  })
+&lt;/script&gt;</pre>
           </p>
           <h3>Demo</h3>
           <ul class="tabs" data-tabs >
@@ -461,7 +467,7 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
              <tr>
                <td>title</td>
                <td>string | function</td>
-               <td>''</td>
+               <td>'title'</td>
                <td>attribute or method for retrieving title text</td>
              </tr>
              <tr>
@@ -473,16 +479,18 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
             </tbody>
           </table>
           <h3>Methods</h3>
-          <h4>$().twipsy</h4>
+          <h4>$().twipsy(options)</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
-          <h3>Events</h3>
-          <p>You can manually control twipsies by firing events on the controlling element.</p>
-          <h4>twipsy:show</h4>
+          <h4>.twipsy('show')</h4>
           <p>Reveals an elements twipsy.</p>
-          <pre class="prettyprint linenums">$('#element').trigger('twipsy:show')</pre>
-          <h4>twipsy:hide</h4>
+          <pre class="prettyprint linenums">$('#element').twipsy('show')</pre>
+          <h4>.twipsy('hide')</h4>
           <p>Hides an elements twipsy.</p>
-          <pre class="prettyprint linenums">$('#element').trigger('twipsy:hide')</pre>
+          <pre class="prettyprint linenums">$('#element').twipsy('hide')</pre>
+          <h4>.twipsy(true)</h4>
+          <p>Returns an elements twipsy class instance.</p>
+          <pre class="prettyprint linenums">$('#element').twipsy(true)</pre>
+          <p><span class="label notice">Notice</span> Alternatively, this can be retrieved with <code>$().data('twipsy')</code>.</p>
           <h3>Demo</h3>
           <div class="well">
             <p class="muted">Tight pants next level keffiyeh <a href="#" rel='twipsy' title='Some title text'>you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
@@ -515,32 +523,95 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
           <h3>Using boostrap-popover.js</h3>
           <pre class="prettyprint linenums">$('#example').popover(options)</pre>
           <h3>Options</h3>
-          <ul>
-            <li><strong>animate</strong> (<code>boolean</code>) - apply a css fade transition to the popover.</li>
-            <li><strong>delayIn</strong> (<code>number</code>) - delay before showing tooltip (ms).</li>
-            <li><strong>delayOut</strong> (<code>number</code>) - delay before hiding tooltip (ms).</li>
-            <li><strong>fallback</strong> (<code>string</code>) - fallback text to use when no tooltip text.</li>
-            <li><strong>placement</strong> (<code>string</code>) - position of tooltip - above | below | left | right.</li>
-            <li><strong>html</strong> (<code>boolean</code>) - is tooltip content HTML?</li>
-            <li><strong>live</strong> (<code>boolean</code>) - use live event support?</li>
-            <li><strong>offset</strong> (<code>number</code>) - pixel offset of tooltip from element.</li>
-            <li><strong>title</strong> (<code>string|function</code>) - text for title in popover. Alternatively you can specify a <code>data-title</code> attribute.</li>
-            <li><strong>content</strong> (<code>string|function</code>) - text for content in popover. Also you can specify a <code>data-content</code> attibute.</li>
-            <li><strong>trigger</strong> (<code>string</code>) - how tooltip is triggered - hover | focus | manual.</li>
-          </ul>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 100px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>animate</td>
+               <td>boolean</td>
+               <td>true</td>
+               <td>apply a css fade transition to the tooltip</td>
+             </tr>
+             <tr>
+               <td>delayIn</td>
+               <td>number</td>
+               <td>0</td>
+               <td>delay before showing tooltip (ms)</td>
+             </tr>
+             <tr>
+               <td>delayOut</td>
+               <td>number</td>
+               <td>0</td>
+               <td>delay before hiding tooltip (ms)</td>
+             </tr>
+             <tr>
+               <td>fallback</td>
+               <td>string</td>
+               <td>''</td>
+               <td>text to use when no tooltip title is present</td>
+             </tr>
+             <tr>
+               <td>placement</td>
+               <td>string</td>
+               <td>'right'</td>
+               <td>how to position the tooltip - above | below | left | right</td>
+             </tr>
+             <tr>
+               <td>html</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td>allows html content within tooltip</td>
+             </tr>
+             <tr>
+               <td>live</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td>use event delegation instead of individual event handlers</td>
+             </tr>
+             <tr>
+               <td>offset</td>
+               <td>number</td>
+               <td>0</td>
+               <td>pixel offset of tooltip from target element</td>
+             </tr>
+             <tr>
+               <td>title</td>
+               <td>string | function</td>
+               <td>'title'</td>
+               <td>attribute or method for retrieving title text</td>
+             </tr>
+             <tr>
+               <td>content</td>
+               <td>string | function</td>
+               <td>'data-content'</td>
+               <td>attribute or method for retrieving content text</td>
+             </tr>
+             <tr>
+               <td>trigger</td>
+               <td>string</td>
+               <td>'hover'</td>
+               <td>how tooltip is triggered - hover | focus | manual</td>
+             </tr>
+            </tbody>
+          </table>
           <h3>Methods</h3>
-          <h4>$().popover</h4>
+          <h4>$().popover(options)</h4>
           <p>Initializes popovers for an element collection.</p>
-          <h3>Events</h3>
-          <p>You can manually control popovers by firing events on the controlling element.</p>
-          <h4>popover:show</h4>
+          <h4>.popover('show')</h4>
           <p>Reveals an elements popover.</p>
-          <pre class="prettyprint linenums">$('#element').trigger('popover:show')</pre>
-          <h4>popover:hide</h4>
+          <pre class="prettyprint linenums">$('#element').popover('show')</pre>
+          <h4>.popover('hide')</h4>
           <p>Hides an elements popover.</p>
-          <pre class="prettyprint linenums">$('#element').trigger('popover:hide')</pre>
+          <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
           <h3>Demo</h3>
-          <a href="#" class="btn danger" rel="popover" data-title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
+          <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
           <script>
             $(function () {
               $("a[rel=popover]").popover({
@@ -568,31 +639,26 @@ Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seita
         <div class="span12 columns">
           <h3>Using bootstrap-alerts.js</h3>
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
+          <h3>Markup</h3>
+          <p>Just add a <code>data-alert</code> attribute to your alert messages to automatically give them close functionality.</p>
           <h3>Methods</h3>
-          <h4>$().alert</h4>
+          <h4>$().alert()</h4>
           <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
-          <h3>Events</h3>
-          <p>You can manually control alerts by firing events on them.</p>
-          <h4>alert:close</h4>
+          <h4>.alert('close')</h4>
           <p>Closes an alert.</p>
-          <pre class="prettyprint linenums">$(".alert-message").trigger('alert:close')</pre>
+          <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
           <h3>Demo</h3>
-          <div class="alert-message warning fade in">
+          <div class="alert-message warning fade in" data-alert >
             <a class="close" href="#">&times;</a>
             <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
           </div>
-          <div class="alert-message block-message error fade in">
+          <div class="alert-message block-message error fade in" data-alert >
             <a class="close" href="#">&times;</a>
             <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
             <div class="alert-actions">
               <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
             </div>
           </div>
-          <script>
-            $(function () {
-              $(".alert-message").alert()
-            })
-          </script>
         </div>
       </div>
     </section>
