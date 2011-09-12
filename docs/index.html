@@ -940,6 +940,23 @@
       <form>
         <fieldset>
           <legend>Example form legend</legend>
+
+          <table>
+            <thead>
+              <tr>
+                <th>1</th>
+                <th>2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+
+
           <div class="clearfix">
             <label for="xlInput">X-Large input</label>
             <div class="input">
@@ -1764,7 +1781,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <h2>Compiling Less</h2>
     <p>After modifying the <code>.less</code> files in /lib/, you'll need to recompile them in order to regenerate the bootstrap-*.*.*.css and bootstrap-*.*.*.min.css files. If you're submitting a pull request to GitHub, you must always recompile.</p>
     <h3>Ways to compile</h3>
-    <table>
+    <table class="zebra-striped">
       <thead>
         <tr>
           <th style="width: 120px;">Method</th>
