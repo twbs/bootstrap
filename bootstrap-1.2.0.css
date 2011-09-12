@@ -1353,6 +1353,7 @@ a.menu:after, .dropdown-toggle:after {
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
   background-clip: padding-box;
+  z-index: 999;
 }
 .menu-dropdown li, .dropdown-menu li {
   float: none;
