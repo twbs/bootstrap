@@ -1785,13 +1785,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 11000;
 }
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 2000;
+  z-index: 12000;
   width: 560px;
   margin: -280px 0 0 -250px;
   background-color: #ffffff;
