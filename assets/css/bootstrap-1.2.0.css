@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep  9 20:48:32 PDT 2011
+ * Date: Mon Sep 12 09:25:40 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -188,7 +188,6 @@ textarea {
   width: 940px;
   margin: 0 auto;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .container:before, .container:after {
   display: table;
@@ -269,7 +268,6 @@ textarea {
  * ------------------------------------------------------------------------------------------- */
 .row {
   zoom: 1;
-  margin-bottom: 18px;
   margin-left: -20px;
 }
 .row:before, .row:after {
@@ -398,7 +396,6 @@ body {
 .container-fluid {
   padding: 0 20px;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .container-fluid:before, .container-fluid:after {
   display: table;
@@ -628,7 +625,7 @@ fieldset legend {
 
   color: #404040;
 }
-.clearfix {
+form .clearfix {
   margin-bottom: 18px;
 }
 label,
@@ -1414,7 +1411,6 @@ a.menu:after, .dropdown-toggle:after {
   padding: 0;
   list-style: none;
   zoom: 1;
-  margin-bottom: 18px;
 }
 .tabs:before,
 .pills:before,
@@ -1836,7 +1832,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
   zoom: 1;
-  margin-bottom: 18px;
   margin-bottom: 0;
 }
 .modal-footer:before, .modal-footer:after {
