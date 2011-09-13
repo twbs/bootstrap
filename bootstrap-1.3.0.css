@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Sep 12 20:05:37 PDT 2011
+ * Date: Mon Sep 12 22:15:45 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -178,7 +178,7 @@ textarea {
  * Basic and global styles for generating a grid system, structural layout, and page templates
  * ------------------------------------------------------------------------------------------- */
 html, body {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 body {
   margin: 0;
@@ -654,7 +654,7 @@ input[type=checkbox], input[type=radio] {
   border: none;
 }
 input[type=file] {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: initial;
   border: initial;
   line-height: initial;
@@ -677,7 +677,7 @@ textarea {
   height: auto;
 }
 .uneditable-input {
-  background-color: #fff;
+  background-color: #ffffff;
   display: block;
   border-color: #eee;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
@@ -782,66 +782,98 @@ textarea.xxlarge {
   overflow-y: auto;
 }
 input.span1, textarea.span1, select.span1 {
+  display: inline-block;
+  float: none;
   width: 30px;
   margin-left: 0;
 }
 input.span2, textarea.span2, select.span2 {
+  display: inline-block;
+  float: none;
   width: 90px;
   margin-left: 0;
 }
 input.span3, textarea.span3, select.span3 {
+  display: inline-block;
+  float: none;
   width: 150px;
   margin-left: 0;
 }
 input.span4, textarea.span4, select.span4 {
+  display: inline-block;
+  float: none;
   width: 210px;
   margin-left: 0;
 }
 input.span5, textarea.span5, select.span5 {
+  display: inline-block;
+  float: none;
   width: 270px;
   margin-left: 0;
 }
 input.span6, textarea.span6, select.span6 {
+  display: inline-block;
+  float: none;
   width: 330px;
   margin-left: 0;
 }
 input.span7, textarea.span7, select.span7 {
+  display: inline-block;
+  float: none;
   width: 390px;
   margin-left: 0;
 }
 input.span8, textarea.span8, select.span8 {
+  display: inline-block;
+  float: none;
   width: 450px;
   margin-left: 0;
 }
 input.span9, textarea.span9, select.span9 {
+  display: inline-block;
+  float: none;
   width: 510px;
   margin-left: 0;
 }
 input.span10, textarea.span10, select.span10 {
+  display: inline-block;
+  float: none;
   width: 570px;
   margin-left: 0;
 }
 input.span11, textarea.span11, select.span11 {
+  display: inline-block;
+  float: none;
   width: 630px;
   margin-left: 0;
 }
 input.span12, textarea.span12, select.span12 {
+  display: inline-block;
+  float: none;
   width: 690px;
   margin-left: 0;
 }
 input.span13, textarea.span13, select.span13 {
+  display: inline-block;
+  float: none;
   width: 750px;
   margin-left: 0;
 }
 input.span14, textarea.span14, select.span14 {
+  display: inline-block;
+  float: none;
   width: 810px;
   margin-left: 0;
 }
 input.span15, textarea.span15, select.span15 {
+  display: inline-block;
+  float: none;
   width: 870px;
   margin-left: 0;
 }
 input.span16, textarea.span16, select.span16 {
+  display: inline-block;
+  float: none;
   width: 930px;
   margin-left: 0;
 }
@@ -926,7 +958,7 @@ textarea[readonly] {
   line-height: 18px;
   color: #bfbfbf;
   text-align: center;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px 0 0 3px;
@@ -1245,7 +1277,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   font-weight: 13px;
   line-height: 1;
   padding: 4px 9px;
-  color: #fff;
+  color: #ffffff;
   color: rgba(255, 255, 255, 0.75);
   border: 1px solid #111;
   -webkit-border-radius: 4px;
@@ -1269,13 +1301,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .topbar input:hover {
   background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
+  color: #ffffff;
 }
 .topbar input:focus, .topbar input.focused {
   outline: none;
-  background-color: #fff;
+  background-color: #ffffff;
   color: #404040;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
   border: 0;
   padding: 5px 10px;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
@@ -1317,7 +1349,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   text-decoration: none;
 }
 .topbar div > ul a:hover, .nav a:hover {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
 }
 .topbar div > ul .active > a, .nav .active > a {
@@ -1361,7 +1393,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .nav .menu-dropdown .dropdown-toggle,
 .topbar div > ul .dropdown-menu .dropdown-toggle,
 .nav .dropdown-menu .dropdown-toggle {
-  color: #fff;
+  color: #ffffff;
 }
 .topbar div > ul .menu-dropdown a.menu.open,
 .nav .menu-dropdown a.menu.open,
@@ -1395,13 +1427,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-image: -o-linear-gradient(top, #292929, #191919);
   background-image: linear-gradient(top, #292929, #191919);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#191919', GradientType=0);
-  color: #fff;
+  color: #ffffff;
 }
 .topbar div > ul .menu-dropdown .active a,
 .nav .menu-dropdown .active a,
 .topbar div > ul .dropdown-menu .active a,
 .nav .dropdown-menu .active a {
-  color: #fff;
+  color: #ffffff;
 }
 .topbar div > ul .menu-dropdown .divider,
 .nav .menu-dropdown .divider,
@@ -1427,14 +1459,14 @@ a.menu:after, .dropdown-toggle:after {
   margin-left: 4px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 4px solid #fff;
+  border-top: 4px solid #ffffff;
   filter: alpha(opacity=50);
   -khtml-opacity: 0.5;
   -moz-opacity: 0.5;
   opacity: 0.5;
 }
 .menu-dropdown, .dropdown-menu {
-  background-color: #fff;
+  background-color: #ffffff;
   float: left;
   display: none;
   position: absolute;
@@ -1471,7 +1503,7 @@ a.menu:after, .dropdown-toggle:after {
   margin: 5px 0;
   overflow: hidden;
   background-color: #eee;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
 }
 .topbar .dropdown-menu a, .dropdown-menu a {
   display: block;
@@ -1480,7 +1512,7 @@ a.menu:after, .dropdown-toggle:after {
   font-weight: normal;
   line-height: 18px;
   color: #808080;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
 }
 .topbar .dropdown-menu a:hover, .dropdown-menu a:hover {
   background-color: #dddddd;
@@ -1503,7 +1535,7 @@ a.menu:after, .dropdown-toggle:after {
 .dropdown.open .menu,
 .open .dropdown-toggle,
 .dropdown.open .dropdown-toggle {
-  color: #fff;
+  color: #ffffff;
   background: #ccc;
   background: rgba(0, 0, 0, 0.3);
 }
@@ -1560,7 +1592,7 @@ a.menu:after, .dropdown-toggle:after {
   text-decoration: none;
 }
 .tabs > li.active > a {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 0 14px;
   border: 1px solid #ddd;
   border-bottom: 0;
@@ -1587,7 +1619,7 @@ a.menu:after, .dropdown-toggle:after {
 .pills a {
   margin: 5px 3px 5px 0;
   padding: 0 15px;
-  text-shadow: 0 1px 1px #fff;
+  text-shadow: 0 1px 1px #ffffff;
   line-height: 30px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -1595,13 +1627,13 @@ a.menu:after, .dropdown-toggle:after {
 }
 .pills a:hover {
   background: #00438a;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 .pills .active a {
   background: #0069d6;
-  color: #fff;
+  color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 .tab-content > *, .pill-content > * {
@@ -1633,7 +1665,7 @@ a.menu:after, .dropdown-toggle:after {
 }
 .breadcrumb li {
   display: inline;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 1px 0 #ffffff;
 }
 .breadcrumb .divider {
   padding: 0 5px;
@@ -1782,7 +1814,7 @@ footer {
   outline: 1px dotted #666;
 }
 .btn.primary {
-  color: #fff;
+  color: #ffffff;
   background-color: #0064cd;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
@@ -2007,7 +2039,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border-color: rgba(0, 0, 0, 0.15);
 }
 .modal-backdrop {
-  background-color: #000;
+  background-color: #000000;
   position: fixed;
   top: 0;
   left: 0;
@@ -2146,7 +2178,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .twipsy-inner {
   padding: 3px 8px;
-  background-color: #000;
+  background-color: #000000;
   color: white;
   text-align: center;
   max-width: 200px;

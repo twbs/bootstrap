@@ -29,8 +29,8 @@ section > .row {
   padding: 45px 0;
   -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
      -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-}
+/*          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+*/}
 .jumbotron h1,
 .jumbotron p {
   margin-bottom: 9px;
@@ -103,8 +103,8 @@ section > .row {
   border-top: 1px solid #e5e5e5;
   -webkit-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
      -moz-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
-          box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
-}
+/*          box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+*/}
 .footer p {
   color: #555;
 }
