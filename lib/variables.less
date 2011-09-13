@@ -1,0 +1,60 @@
+/* Variables.less
+ * Variables to customize the look and feel of Bootstrap
+ * ----------------------------------------------------- */
+
+
+// Links
+@linkColor:         #0069d6;
+@linkColorHover:    darken(@linkColor, 15);
+
+// Grays
+@black:             #000;
+@grayDark:          lighten(@black, 25%);
+@gray:              lighten(@black, 50%);
+@grayLight:         lighten(@black, 75%);
+@grayLighter:       lighten(@black, 90%);
+@white:             #fff;
+
+// Accent Colors
+@blue:              #049CDB;
+@blueDark:          #0064CD;
+@green:             #46a546;
+@red:               #9d261d;
+@yellow:            #ffc40d;
+@orange:            #f89406;
+@pink:              #c3325f;
+@purple:            #7a43b6;
+
+// Baseline grid
+@basefont:          13px;
+@baseline:          18px;
+
+// Griditude
+// Modify the grid styles in mixins.less
+@gridColumns:       16;
+@gridColumnWidth:   40px;
+@gridGutterWidth:   20px;
+@extraSpace:        (@gridGutterWidth * 2); // For our grid calculations
+@siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Color Scheme
+// Use this to roll your own color schemes if you like (unused by Bootstrap by default)
+@baseColor:         @blue;                  // Set a base color
+@complement:        spin(@baseColor, 180);  // Determine a complementary color
+@split1:            spin(@baseColor, 158);  // Split complements
+@split2:            spin(@baseColor, -158);
+@triad1:            spin(@baseColor, 135);  // Triads colors
+@triad2:            spin(@baseColor, -135);
+@tetra1:            spin(@baseColor, 90);   // Tetra colors
+@tetra2:            spin(@baseColor, -90);
+@analog1:           spin(@baseColor, 22);   // Analogs colors
+@analog2:           spin(@baseColor, -22);
+
+
+
+// More variables coming soon:
+// - @basefont to @baseFontSize
+// - @baseline to @baseLineHeight
+// - @baseFontFamily
+// - @primaryButtonColor
+// - anything else? File an issue on GitHub

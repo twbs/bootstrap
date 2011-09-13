@@ -488,6 +488,35 @@ footer {
 // BUTTON STYLES
 // -------------
 
+// Shared colors for buttons and alerts
+.btn,
+.alert-message {
+  // Set text color
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: @white
+  }
+  // Danger and error appear as red
+  &.danger,
+  &.error {
+    .gradientBar(#ee5f5b, #c43c35);
+  }
+  // Success appears as green
+  &.success {
+    .gradientBar(#62c462, #57a957);
+  }
+  // Info appears as a neutral blue
+  &.info {
+    .gradientBar(#5bc0de, #339bb9);
+  }
+}
+
 // Base .btn styles
 .btn {
   // Button Base
