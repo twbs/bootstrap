@@ -23,6 +23,7 @@ section > .row {
 -------------------------------------------------- */
 .jumbotron {
   padding-top: 40px;
+  overflow: hidden;
 }
 .jumbotron .inner {
   background: transparent url(../img/grid-18px.png) top center;
