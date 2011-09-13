@@ -7,10 +7,10 @@ WATCHR ?= `which watchr`
 
 build:
 	@@if test ! -z ${LESS_COMPESSOR}; then \
-		sed 's/@DATE/'"${DATE}"'/' ${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp; \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP}; \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP_MIN} --compress; \
-		rm -f ${BOOTSTRAP_LESS}.tmp; \
+		sed 's/@DATE/'"${DATE}"'/' ${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp && \
+		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP} && \
+		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP_MIN} --compress && \
+		rm -f ${BOOTSTRAP_LESS}.tmp && \
 		echo "Bootstrap successfully built! - `date`"; \
 	else \
 		echo "You must have the LESS compiler installed in order to build Bootstrap."; \
