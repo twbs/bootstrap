@@ -309,6 +309,21 @@
           </div>
         </div>
       </div>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span12"&gt;
+    Level 1 of column
+    &lt;div class="row"&gt;
+      &lt;div class="span6"&gt;
+        Level 2
+      &lt;/div&gt;
+      &lt;div class="span6"&gt;
+        Level 2
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
     </div>
   </div>
 
@@ -356,7 +371,7 @@
       <h3>Now to customize</h3>
       <p>Modifying the grid means changing the three <code>@grid-*</code> variables and recompiling the Less files.</p>
       <p>Bootstrap comes equipped to handle a grid system with up to 24 columns; the default is just 16. Here's how your grid variables would look customized to a 24-column grid.</p>
-      <pre class="prettyprint">@gridColumns:       24;
+      <pre class="prettyprint linenums">@gridColumns:       24;
 @gridColumnWidth:   20px;
 @gridGutterWidth:   20px;</pre>
       <p>Once recompiled, you'll be set!</p>
@@ -504,6 +519,12 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
         <small>Dr. Julius Hibbert</small>
       </blockquote>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.&lt;/p&gt;
+  &lt;small&gt;Dr. Julius Hibbert&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
     </div>
   </div><!-- /row -->
 
@@ -771,6 +792,22 @@
           </a>
         </li>
       </ul>
+      <h4>Coding them</h4>
+      <p>Media grids are easy to use and rather simple on the markup side. Their dimensions are purely based on the size of the images included.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="media-grid"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
     </div>
   </div><!-- /row -->
 </section>
@@ -1386,6 +1423,14 @@
         <li><a href="#">Another one</a> <span class="divider">/</span></li>
         <li class="active">You are here</li>
       </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="breadcrumb"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Middle page&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Another one&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;You are here&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
     </div>
   </div>
 
@@ -1404,7 +1449,7 @@
           <li><a href="#">3</a></li>
           <li><a href="#">4</a></li>
           <li><a href="#">5</a></li>
-          <li class="next"><a href="#">Next &rarr;</a></li>
+          <li class="next"><a href="#">Next &raquo;</a></li>
         </ul>
       </div>
       <div class="pagination">
@@ -1417,7 +1462,7 @@
           <li><a href="#">19</a></li>
           <li><a href="#">20</a></li>
           <li><a href="#">21</a></li>
-          <li class="next"><a href="#">Next &rarr;</a></li>
+          <li class="next"><a href="#">Next &raquo;</a></li>
         </ul>
       </div>
       <div class="pagination">
@@ -1434,7 +1479,7 @@
           <li><a href="#">18</a></li>
           <li><a href="#">19</a></li>
           <li><a href="#">20</a></li>
-          <li class="next"><a href="#">Next &rarr;</a></li>
+          <li class="next"><a href="#">Next &raquo;</a></li>
         </ul>
       </div>
 <pre class="prettyprint linenums">
@@ -1467,8 +1512,9 @@
   <div class="row">
     <div class="span4">
       <h2>Basic alerts</h2>
-      <p><code>div.alert-message</code></p>
+      <p><code>.alert-message</code></p>
       <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
+      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript &raquo;</a></p>
     </div>
     <div class="span12">
       <div class="alert-message warning">
@@ -1487,14 +1533,23 @@
         <a class="close" href="#">&times;</a>
         <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
       </div>
+
+      <h4>Example code</h4>
+<pre class="prettyprint linenums">
+&lt;div class="alert-message warning"&gt;
+  &lt;a class="close" href="#"&gt;&times;&lt;/a&gt;
+  &lt;p&gt;&lt;strong&gt;Holy guacamole!&lt;/strong&gt; Best check yo self, you’re not looking too good.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
     </div>
   </div><!-- /row -->
   <!-- Block messages -->
   <div class="row">
     <div class="span4">
       <h2>Block messages</h2>
-      <p><code>div.alert-message.block-message</code></p>
+      <p><code>.alert-message.block-message</code></p>
       <p>For messages that require a bit of explanation, we have paragraph style alerts. These are perfect for bubbling up longer error messages, warning a user of a pending action, or just presenting information for more emphasis on the page.</p>
+      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript &raquo;</a></p>
     </div>
     <div class="span12">
       <div class="alert-message block-message warning">
@@ -1530,6 +1585,17 @@
           <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
         </div>
       </div>
+
+      <h4>Example code</h4>
+<pre class="prettyprint linenums">
+&lt;div class="alert-message block-message warning"&gt;
+  &lt;a class="close" href="#"&gt;&times;&lt;/a&gt;
+  &lt;p&gt;&lt;strong&gt;Holy guacamole! This is a warning!&lt;/strong&gt; Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.&lt;/p&gt;
+  &lt;div class="alert-actions"&gt;
+    &lt;a class="btn small" href="#"&gt;Take this action&lt;/a&gt; &lt;a class="btn small" href="#"&gt;Or do this&lt;/a>
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
     </div>
   </div><!-- /row -->
 </section>
@@ -1545,6 +1611,7 @@
     <div class="span4">
       <h2>Modals</h2>
       <p>Modals&mdash;dialogs or lightboxes&mdash;are great for contextual actions in situations where it’s important that the background context be maintained.</p>
+      <p><a class="btn js-btn" href="./javascript.html#modal">Get the javascript &raquo;</a></p>
     </div>
     <div class="span12">
       <div class="well" style="background-color: #888; border: none; padding: 40px;">
@@ -1571,6 +1638,7 @@
     <div class="span4">
       <h2>Tooltips</h2>
       <p>Twipsies are super useful for aiding a confused user and pointing them in the right direction.</p>
+      <p><a class="btn js-btn" href="./javascript.html#twipsy">Get the javascript &raquo;</a></p>
     </div>
     <div class="span12">
       <div class="twipsies well">
@@ -1588,6 +1656,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <div class="span4">
       <h2>Popovers</h2>
       <p>Use popovers to provide subtextual information to a page without affecting layout.</p>
+      <p><a class="btn js-btn" href="./javascript.html#popover">Get the javascript &raquo;</a></p>
     </div>
     <div class="span12">
       <div class="well popover-well">
@@ -1614,14 +1683,13 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
  <section id="javascript">
    <div class="page-header">
-     <h1>Using Javascript with Bootstrap <small>An index of plugins to get you started</small></h1>
+     <h1>Using javascript with Bootstrap <small>An index of plugins to get you started</small></h1>
    </div>
    <div class="row">
      <div class="span4">
        <h2>Getting started</h2>
        <p>Integrating javascript with the Bootstrap library is super easy. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
-       <hr>
-       <p><a class="btn primary" href="./javascript.html">Skip to Bootstrap plugins &raquo;</a></p>
+       <p><a class="btn primary" href="./javascript.html">View javascript docs &raquo;</a></p>
      </div>
      <div class="span12">
       <h3>What's included</h3>
@@ -1805,7 +1873,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
           <td>Javascript</td>
           <td>
             <p><a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>head</code>.</p>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
 &lt;script src="/path/to/less.js"&gt;&lt;/script&gt;
 </pre>

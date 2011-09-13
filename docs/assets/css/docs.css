@@ -213,7 +213,7 @@ section > .row {
           box-shadow: 0 1px 2px rgba(0,0,0,.075);
 }
 .mini-layout {
-  height: 340px;
+  height: 240px;
   margin-bottom: 20px;
   padding: 9px;
 }
@@ -225,8 +225,8 @@ section > .row {
 .mini-layout .mini-layout-body {
   background-color: #dceaf4;
   margin: 0 auto;
-  width: 340px;
-  height: 340px;
+  width: 240px;
+  height: 240px;
 }
 .mini-layout.fluid .mini-layout-sidebar,
 .mini-layout.fluid .mini-layout-header,
@@ -236,7 +236,7 @@ section > .row {
 .mini-layout.fluid .mini-layout-sidebar {
   background-color: #bbd8e9;
   width: 90px;
-  height: 340px;
+  height: 240px;
 }
 .mini-layout.fluid .mini-layout-body {
   width: 300px;
