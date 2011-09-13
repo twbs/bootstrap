@@ -153,7 +153,6 @@ form div.error {
   padding: 10px 0;
   margin: -10px 0 10px;
   .border-radius(4px);
-  @error-text: desaturate(lighten(@red, 25%), 25%);
   > label,
   span.help-inline,
   span.help-block {
@@ -174,6 +173,28 @@ form div.error {
       background: lighten(@red, 50%);
       border-color: @error-text;
       color: darken(@error-text, 10%);
+    }
+  }
+}
+
+// Required Style
+form div.required {
+  .border-radius(4px);
+  input,
+  textarea {
+    border-color: @required-text;
+    .box-shadow(0 0 3px rgba(171,41,32,.25));
+    &:focus {
+      border-color: darken(@required-text, 10%);
+      .box-shadow(0 0 6px rgba(171,41,32,.5));
+    }
+  }
+  .input-prepend,
+  .input-append {
+    span.add-on {
+      background: lighten(@red, 50%);
+      border-color: @required-text;
+      color: darken(@required-text, 10%);
     }
   }
 }
