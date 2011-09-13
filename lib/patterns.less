@@ -23,7 +23,9 @@
   }
 
   // Hover and active states
-  a:hover,
+  // h3 for backwards compatibility
+  h3 a:hover,
+  .brand a:hover,
   ul .active > a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
@@ -54,6 +56,7 @@
     line-height: 40px;
     a:hover {
       background-color: transparent;
+      color: @white;
     }
   }
 
@@ -485,6 +488,35 @@ footer {
 // BUTTON STYLES
 // -------------
 
+// Shared colors for buttons and alerts
+.btn,
+.alert-message {
+  // Set text color
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: @white
+  }
+  // Danger and error appear as red
+  &.danger,
+  &.error {
+    .gradientBar(#ee5f5b, #c43c35);
+  }
+  // Success appears as green
+  &.success {
+    .gradientBar(#62c462, #57a957);
+  }
+  // Info appears as a neutral blue
+  &.info {
+    .gradientBar(#5bc0de, #339bb9);
+  }
+}
+
 // Base .btn styles
 .btn {
   // Button Base
@@ -729,14 +761,15 @@ input[type=submit].btn {
 // ------
 
 .modal-backdrop {
-  background-color:#000;
-  &.fade { opacity: 0; }
+  background-color: #000;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10000;
+  // Fade for backdrop
+  &.fade { opacity: 0; }
 }
 
 .modal-backdrop, .modal-backdrop.fade.in {
