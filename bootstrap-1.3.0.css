@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Sep 12 22:15:45 PDT 2011
+ * Date: Tue Sep 13 09:06:02 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -93,6 +93,9 @@ html {
 }
 a:focus {
   outline: thin dotted;
+}
+a:hover, a:active {
+  outline: 0;
 }
 article,
 aside,
