@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Sep 13 14:40:47 PDT 2011
+ * Date: Tue Sep 13 22:22:48 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -941,6 +941,21 @@ textarea[readonly] {
 }
 .inline-inputs span {
   padding: 0 2px 0 1px;
+}
+.input-prepend, .input-append {
+  zoom: 1;
+}
+.input-prepend:before,
+.input-append:before,
+.input-prepend:after,
+.input-append:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.input-prepend:after, .input-append:after {
+  clear: both;
 }
 .input-prepend input, .input-append input {
   -webkit-border-radius: 0 3px 3px 0;
