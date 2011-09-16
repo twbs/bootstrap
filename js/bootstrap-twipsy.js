@@ -26,7 +26,7 @@
 
   var transitionEnd
 
-  $(function () {
+  $(document).ready(function () {
 
     $.support.transition = (function () {
       var thisBody = document.body || document.documentElement

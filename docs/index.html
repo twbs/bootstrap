@@ -12,7 +12,7 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="../bootstrap-1.3.0.css" rel="stylesheet">
+    <link href="../bootstrap.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
@@ -37,7 +37,7 @@
 
     <!-- Topbar
     ================================================== -->
-    <div class="topbar" data-scrollspy="x" >
+    <div class="topbar" data-scrollspy="scrollspy" >
       <div class="topbar-inner">
         <div class="container">
           <a class="brand" href="#">Bootstrap</a>
@@ -84,7 +84,7 @@
             <h6>Hotlink the CSS</h6>
             <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
             <form>
-              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.3.0.min.css"></textarea>
+              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.min.css"></textarea>
             </form>
           </div>
           <div class="span5">
@@ -128,7 +128,7 @@
     <div class="span-one-third">
       <h3>Browser support</h3>
       <p>Bootstrap is tested and supported in major modern browsers like Chrome, Safari, Internet Explorer, and Firefox.</p>
-      <img src="assets/img/browsers.png" width="258px" height="48px" alt="Tested and supported in Chrome, Safari, Internet Explorer, and Firefox">
+      <img src="assets/img/browsers.png" alt="Tested and supported in Chrome, Safari, Internet Explorer, and Firefox">
       <ul>
         <li>Latest Safari</li>
         <li>Latest Google Chrome</li>
@@ -143,7 +143,7 @@
       <ul>
         <li><span class="label">New in 1.3</span> <a href="./javascript.html">Javascript plugins</a></li>
         <li>All original .less files</li>
-        <li>Fully <a href="../bootstrap-1.3.0.css">compiled</a> and <a href="../bootstrap-1.3.0.min.css">minified</a> CSS</li>
+        <li>Fully <a href="../bootstrap.css">compiled</a> and <a href="../bootstrap.min.css">minified</a> CSS</li>
         <li>Complete styleguide documentation</li>
         <li>Three example pages with different layouts</li>
       </ul>
@@ -1303,7 +1303,7 @@
   </div>
   <h2>Fixed topbar</h2>
   <div class="topbar-wrapper" style="z-index: 5;">
-    <div class="topbar" data-dropdown="x" >
+    <div class="topbar" data-dropdown="dropdown" >
       <div class="topbar-inner">
         <div class="container">
           <h3><a href="#">Project Name</a></h3>
@@ -1372,7 +1372,7 @@
         <li><a href="#">Messages</a></li>
         <li><a href="#">Settings</a></li>
         <li><a href="#">Contact</a></li>
-        <li class="dropdown" data-dropdown="x">
+        <li class="dropdown" data-dropdown="dropdown">
           <a href="#" class="dropdown-toggle">Dropdown</a>
           <ul class="dropdown-menu">
             <li><a href="#">Secondary link</a></li>
@@ -1682,7 +1682,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
               </div>
             </div>
           </div>
-          <img class="large-bird" src="assets/img/bird.png" width="220px" height="145px">
+          <img class="large-bird" src="assets/img/bird.png" >
         </div>
       </div>
     </div>
@@ -1896,7 +1896,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
           <td>Command line</td>
           <td>
             <p>If you already have the less command line tool installed, simply run the following command:</p>
-              <pre>$ lessc ./lib/bootstrap.less > bootstrap-1.3.0.css</pre>
+              <pre>$ lessc ./lib/bootstrap.less > bootstrap.css</pre>
             <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
           </td>
         </tr>
