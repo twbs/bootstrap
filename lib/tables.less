@@ -11,6 +11,8 @@ table {
   width: 100%;
   margin-bottom: @baseline;
   padding: 0;
+  border-collapse: separate; // Done so we can round those corners!
+  *border-collapse: collapse; /* IE7, collapse table to remove spacing */
   font-size: @basefont;
   border: 1px solid #ddd;
   .border-radius(4px);

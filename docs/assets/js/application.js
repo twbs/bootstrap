@@ -20,6 +20,7 @@ $(document).ready(function(){
 
   // Disable certain links in docs
   // =============================
+  // Please do not carry these styles over to your projects, it's merely here to prevent button clicks form taking you away from your spot on page
 
   $('ul.tabs a, ul.pills a, .pagination a, .well .btn, .actions .btn, .alert-message .btn, a.close').click(function (e) {
     e.preventDefault()
