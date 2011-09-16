@@ -38,6 +38,7 @@ $(document).ready(function(){
   // ========================
 
   $(window).bind( 'load resize', function () {
+    $('body > .topbar').scrollSpy()
     $(".twipsies a").each(function () {
        $(this)
         .twipsy({
