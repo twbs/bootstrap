@@ -28,6 +28,7 @@ fieldset {
 // Parent element that clears floats and wraps labels and fields together
 form .clearfix {
   margin-bottom: @baseline;
+  .clearfix()
 }
 
 // Set font for forms
@@ -325,7 +326,6 @@ textarea[readonly] {
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
 .input-append {
-  .clearfix();
   input {
     .border-radius(0 3px 3px 0);
   }
