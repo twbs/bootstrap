@@ -273,6 +273,8 @@ textarea {
 .row:before, .row:after {
   display: table;
   content: "";
+  zoom: 1;
+  *display: inline;
 }
 .row:after {
   clear: both;
