@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep 15 22:36:03 PDT 2011
+ * Date: Thu Sep 15 22:40:45 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1092,7 +1092,6 @@ table {
   width: 100%;
   margin-bottom: 18px;
   padding: 0;
-  border-collapse: separate;
   font-size: 13px;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
