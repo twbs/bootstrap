@@ -74,4 +74,4 @@
 
   $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, { content: 'data-content', placement: 'right'})
 
-})( jQuery || ender )
+})( window.jQuery || window.ender )

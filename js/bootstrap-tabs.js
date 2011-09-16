@@ -59,4 +59,4 @@
     $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
   })
 
-})( jQuery || ender )
+})( window.jQuery || window.ender )

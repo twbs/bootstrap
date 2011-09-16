@@ -101,4 +101,4 @@
     new Alert($('body'), '.alert-message[data-alert] .close')
   })
 
-})( jQuery || ender )
+})( window.jQuery || window.ender )

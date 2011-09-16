@@ -304,4 +304,4 @@
     return $.metadata ? $.extend({}, options, $(ele).metadata()) : options
   }
 
-})( jQuery || ender )
+})( window.jQuery || window.ender )

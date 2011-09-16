@@ -47,4 +47,4 @@
     })
   }
 
-})( jQuery || ender )
+})( window.jQuery || window.ender )
