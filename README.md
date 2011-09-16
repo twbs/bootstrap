@@ -21,7 +21,7 @@ Here's what the LESS version looks like:
 Or if you prefer, the standard css way:
 
 ``` html
-    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
 ```
 
 For more info, refer to the docs!
