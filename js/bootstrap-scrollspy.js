@@ -98,7 +98,7 @@
     return this
   }
 
-  $(function () {
+  $(document).ready(function () {
     $('body').scrollSpy('[data-scrollspy] li > a')
   })
 

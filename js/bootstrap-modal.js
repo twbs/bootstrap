@@ -25,7 +25,7 @@
 
   var transitionEnd
 
-  $(function () {
+  $(document).ready(function () {
 
     $.support.transition = (function () {
       var thisBody = document.body || document.documentElement
@@ -216,7 +216,7 @@
  /* MODAL DATA- IMPLEMENTATION
   * ========================== */
 
-  $(function () {
+  $(document).ready(function () {
     $('body').delegate('[data-controls-modal]', 'click', function (e) {
       e.preventDefault()
       var $this = $(this).data('show', true)

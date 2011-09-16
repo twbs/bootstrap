@@ -25,7 +25,7 @@
 
    var transitionEnd
 
-   $(function () {
+   $(document).ready(function () {
 
      $.support.transition = (function () {
        var thisBody = document.body || document.documentElement
@@ -97,7 +97,7 @@
     })
   }
 
-  $(function () {
+  $(document).ready(function () {
     new Alert($('body'), '.alert-message[data-alert] .close')
   })
 
