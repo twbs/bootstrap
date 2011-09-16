@@ -342,22 +342,22 @@ a.menu:after,
     position: relative; // For the dropdowns mostly
     top: 1px;
     > a {
-      margin-right: 2px;
       padding: 0 15px;
-      line-height: (@baseline * 2) - 1;
+      margin-right: 2px;
+      line-height: @baseline * 2;
+      border: 1px solid transparent;
       .border-radius(4px 4px 0 0);
       &:hover {
-        background-color: #eee;
-        border-bottom: 1px solid #ddd;
         text-decoration: none;
+        background-color: #eee;
+        border-color: #eee #eee #ddd;
       }
     }
     &.active > a {
-      background-color: @white;
-      padding: 0 14px;
-      border: 1px solid #ddd;
-      border-bottom: 0;
       color: @gray;
+      background-color: @white;
+      border: 1px solid #ddd;
+      border-bottom-color: transparent;
     }
   }
   // first one for backwards compatibility
