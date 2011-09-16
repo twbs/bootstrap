@@ -641,6 +641,11 @@ input[type=submit].btn {
   .border-radius(4px);
   .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
 
+  // Adjust close icon
+  .close {
+    *margin-top: 3px; /* IE7 spacing */
+  }
+
   // Remove extra margin from content
   h5 {
     line-height: @baseline;
@@ -915,8 +920,8 @@ input[type=submit].btn {
     height: 0;
   }
   .inner {
-    background: #333;
-    background: rgba(0,0,0,.8);
+    background-color: @black;
+    background-color: rgba(0,0,0,.8);
     padding: 3px;
     overflow: hidden;
     width: 280px;

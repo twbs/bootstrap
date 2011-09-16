@@ -185,7 +185,6 @@ section > .row {
 }
 .show-grid [class*="span"] {
   background: #eee;
-  background: rgba(0,0,0,.1);
   text-align: center;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
@@ -195,11 +194,13 @@ section > .row {
 }
 .show-grid:hover [class*="span"] {
   background: #ddd;
-  background: rgba(0,0,0,.2);
 }
 .show-grid .show-grid {
   margin-top: 0;
   margin-bottom: 0;
+}
+.show-grid .show-grid [class*="span"] {
+  background-color: #ccc;
 }
 
 
