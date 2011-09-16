@@ -104,9 +104,9 @@ $analog2:           adjust-hue($baseColor, -22);
 // Opacity
 @mixin opacity($opacity: 100) {
   filter: alpha(opacity=$opacity);
-	-khtml-opacity: $opacity / 100;
-	  -moz-opacity: $opacity / 100;
-	       opacity: $opacity / 100;
+  -khtml-opacity: $opacity / 100;
+    -moz-opacity: $opacity / 100;
+         opacity: $opacity / 100;
 }
 
 // Gradient Bar Colors for buttons and allerts
@@ -120,29 +120,29 @@ $analog2:           adjust-hue($baseColor, -22);
 // Clearfix for clearing floats like a boss h5bp.com/q
 @mixin clearfix {
   zoom: 1;
-	&:before, &:after {
+  &:before, &:after {
     display: table;
     content: "";
-	}
-	&:after {
+  }
+  &:after {
     clear: both;
-	}
+  }
 }
 .clearfix { @include clearfix; }
 
 // Center-align a block level element
 @mixin center-block {
-	display: block;
+  display: block;
   margin: 0 auto;
 }
 
 // Sizing shortcuts
 @mixin size($height: 5px, $width: 5px) {
-	height: $height;
-	width: $width;
+  height: $height;
+  width: $width;
 }
 @mixin square($size: 5px) {
-	@include size($size, $size);
+  @include size($size, $size);
 }
 
 // Input placeholder text
@@ -212,37 +212,35 @@ $analog2:           adjust-hue($baseColor, -22);
 
 // Transitions
 @mixin transition($transition) {
-	-webkit-transition: $transition;
-	   -moz-transition: $transition;
-	        transition: $transition;
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+          transition: $transition;
 }
 
 // Background clipping
 @mixin background-clip($clip) {
-	-webkit-background-clip: $clip;
-	   -moz-background-clip: $clip;
-	        background-clip: $clip;
+  -webkit-background-clip: $clip;
+     -moz-background-clip: $clip;
+          background-clip: $clip;
 }
 
 // CSS3 Content Columns
 @mixin content-columns($columnCount, $columnGap: 20px) {
-	-webkit-column-count: $columnCount;
-	   -moz-column-count: $columnCount;
+  -webkit-column-count: $columnCount;
+     -moz-column-count: $columnCount;
           column-count: $columnCount;
   -webkit-column-gap: $columnGap;
-	   -moz-column-gap: $columnGap;
+     -moz-column-gap: $columnGap;
           column-gap: $columnGap;
 }
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
-#translucent {
-  @mixin background($color: $white, $alpha: 1) {
-    background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
-	}
-	@mixin border($color: $white, $alpha: 1) {
-		border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
-		background-clip: padding-box;
-	}
+@mixin translucent-background($color: $white, $alpha: 1) {
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+}
+@mixin translucent-border($color: $white, $alpha: 1) {
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+  background-clip: padding-box;
 }
 
 // Shared colors for buttons and alerts
