@@ -22,6 +22,7 @@ section > .row {
 /* Jumbotrons
 -------------------------------------------------- */
 .jumbotron {
+  min-width: 940px;
   padding-top: 40px;
 }
 .jumbotron .inner {
@@ -98,6 +99,7 @@ section > .row {
 -------------------------------------------------- */
 .footer {
   background-color: #eee;
+  min-width: 940px;
   padding: 30px 0;
   text-shadow: 0 1px 0 #fff;
   border-top: 1px solid #e5e5e5;
