@@ -1,3 +1,4 @@
+VERSION=1.2.0
 DATE=$(shell DATE)
 BOOTSTRAP = ./bootstrap.css
 BOOTSTRAP_MIN = ./bootstrap.min.css
@@ -7,10 +8,10 @@ WATCHR ?= `which watchr`
 
 build:
 	@@if test ! -z ${LESS_COMPESSOR}; then \
-		sed 's/@DATE/'"${DATE}"'/' ${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp && \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP} && \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP_MIN} --compress && \
-		rm -f ${BOOTSTRAP_LESS}.tmp && \
+		sed -e 's/@VERSION/'"v${VERSION}"'/' -e 's/@DATE/'"${DATE}"'/' <${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp; \
+		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP}; \
+		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP_MIN} --compress; \
+		rm -f ${BOOTSTRAP_LESS}.tmp; \
 		echo "Bootstrap successfully built! - `date`"; \
 	else \
 		echo "You must have the LESS compiler installed in order to build Bootstrap."; \

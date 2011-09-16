@@ -6,7 +6,11 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
+<<<<<<< HEAD:bootstrap.css
  * Date: Fri Sep 16 10:51:22 PDT 2011
+=======
+ * Date: Mon Sep 12 09:25:40 PDT 2011
+>>>>>>> 427a001c476569684027567e5a7cec89058185ad:bootstrap-1.2.0.css
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -266,7 +270,11 @@ a:hover {
 .row:after {
   clear: both;
 }
+<<<<<<< HEAD:bootstrap.css
 [class*="span"] {
+=======
+.row [class*="span"] {
+>>>>>>> 427a001c476569684027567e5a7cec89058185ad:bootstrap-1.2.0.css
   display: inline;
   float: left;
   margin-left: 20px;
@@ -391,6 +399,54 @@ a:hover {
 .offset-two-thirds {
   margin-left: 660px;
 }
+<<<<<<< HEAD:bootstrap.css
+=======
+html, body {
+  background-color: #fff;
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #808080;
+}
+.container {
+  width: 940px;
+  margin: 0 auto;
+}
+.container-fluid {
+  padding: 0 20px;
+  zoom: 1;
+}
+.container-fluid:before, .container-fluid:after {
+  display: table;
+  content: "";
+}
+.container-fluid:after {
+  clear: both;
+}
+.container-fluid > .sidebar {
+  float: left;
+  width: 220px;
+}
+.container-fluid > .content {
+  min-width: 700px;
+  max-width: 1180px;
+  margin-left: 240px;
+}
+a {
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+a:hover {
+  color: #0050a3;
+  text-decoration: underline;
+}
+>>>>>>> 427a001c476569684027567e5a7cec89058185ad:bootstrap-1.2.0.css
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
  * ---------------------------------------------------------------------------------------- */
