@@ -24,6 +24,7 @@ body {
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {
   position: relative;
+  min-width: 940px;
   padding-left: 20px;
   padding-right: 20px;
   .clearfix();
@@ -33,19 +34,8 @@ body {
   }
   // TODO in v2: rename this and .popover .content to be more specific
   > .content {
-    float: left;
-    min-width: 700px;
-    max-width: 1180px;
-    margin-left: 20px;
+    margin-left: 240px;
   }
-}
-
-// Toggling content
-.hide {
-  display: none;
-}
-.show {
-  display: block;
 }
 
 
@@ -70,6 +60,14 @@ a {
 }
 .pull-left {
   float: left;
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
 }
 
 

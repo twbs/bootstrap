@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep 16 11:24:41 PDT 2011
+ * Date: Fri Sep 16 14:07:03 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -208,6 +208,7 @@ body {
 }
 .container-fluid {
   position: relative;
+  min-width: 940px;
   padding-left: 20px;
   padding-right: 20px;
   zoom: 1;
@@ -226,16 +227,7 @@ body {
   width: 220px;
 }
 .container-fluid > .content {
-  float: left;
-  min-width: 700px;
-  max-width: 1180px;
-  margin-left: 20px;
-}
-.hide {
-  display: none;
-}
-.show {
-  display: block;
+  margin-left: 240px;
 }
 a {
   color: #0069d6;
@@ -252,6 +244,12 @@ a:hover {
 }
 .pull-left {
   float: left;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
 }
 .row {
   zoom: 1;
