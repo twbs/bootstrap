@@ -89,7 +89,7 @@
             that.$element
               .addClass('in')
               .trigger('shown')
-          }, 1)
+          }, 0)
         })
 
         return this
@@ -133,15 +133,19 @@
       , animate = this.$element.hasClass('fade') ? 'fade' : ''
     if ( this.isShown && this.settings.backdrop ) {
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .click($.proxy(this.hide, this))
         .appendTo(document.body)
+
+      if ( this.settings.backdrop != 'static' ) {
+        this.$backdrop.click($.proxy(this.hide, this))
+      }
 
       setTimeout(function () {
         that.$backdrop && that.$backdrop.addClass('in')
         $.support.transition && that.$backdrop.hasClass('fade') ?
           that.$backdrop.one(transitionEnd, callback) :
           callback()
-      })
+      }, 0)
+
     } else if ( !this.isShown && this.$backdrop ) {
       this.$backdrop.removeClass('in')
 
