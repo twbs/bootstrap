@@ -36,7 +36,7 @@ then
     echo "$dst exists"
 else
     #create new project
-    mkdir -- "$dst" || exit 1
+    mkdir -p -- "$dst" || exit 1
 
     #success message
     echo "Created Directory: $dst"
