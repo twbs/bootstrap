@@ -101,15 +101,9 @@
             <tbody>
              <tr>
                <td>backdrop</td>
-               <td>boolean</td>
+               <td>boolean, string</td>
                <td>false</td>
-               <td>Includes a modal-backdrop element</td>
-             </tr>
-             <tr>
-               <td>backdropClickHides</td>
-               <td>boolean</td>
-               <td>true</td>
-               <td>A click on the modal-backdrop element hides the modal</td>
+               <td>Includes a modal-backdrop element. Set backdrop to <code>"static"</code> if you do not want the modal closed when the backdrop is clicked.</td>
              </tr>
              <tr>
                <td>keyboard</td>
@@ -128,7 +122,7 @@
           <h3>Markup</h3>
           <p>You can activate modals on your page easily without having to write a single line of javascript. Just give an element a <code>data-controls-modal</code> attribute which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as data attributes as well.</p>
 <pre class="prettyprint linenums">
-&lt;a class="btn" data-controls-modal="my-modal" data-backdrop="true" &gt;Launch Modal&lt;/a&gt;
+&lt;a class="btn" data-controls-modal="my-modal" data-backdrop="static" &gt;Launch Modal&lt;/a&gt;
 </pre>
           <p><span class="label notice">Notice</span> If you want your modal to animate in and out, just add a <code>.fade</code> class to your <code>.modal</code> element (refer to the demo to see this in action).</p>
           <h3>Methods</h3>
@@ -464,7 +458,7 @@ $('#my-modal').bind('hidden', function () {
              </tr>
              <tr>
                <td>title</td>
-               <td>string | function</td>
+               <td>string, function</td>
                <td>'title'</td>
                <td>attribute or method for retrieving title text</td>
              </tr>
@@ -581,13 +575,13 @@ $('#my-modal').bind('hidden', function () {
              </tr>
              <tr>
                <td>title</td>
-               <td>string | function</td>
+               <td>string, function</td>
                <td>'title'</td>
                <td>attribute or method for retrieving title text</td>
              </tr>
              <tr>
                <td>content</td>
-               <td>string | function</td>
+               <td>string, function</td>
                <td>'data-content'</td>
                <td>attribute or method for retrieving content text</td>
              </tr>

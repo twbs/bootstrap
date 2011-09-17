@@ -137,7 +137,7 @@ $(function () {
         $.support.transition = false
         var div = $("<div id='modal-test'></div>")
         div
-          .modal({backdrop:true, backdropClickHides:false})
+          .modal({backdrop: 'static'})
           .modal("show")
           .bind("shown", function () {
             equal($('.modal-backdrop').length, 1, 'modal backdrop inserted into dom')
