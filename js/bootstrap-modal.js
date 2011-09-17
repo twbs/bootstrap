@@ -133,8 +133,10 @@
       , animate = this.$element.hasClass('fade') ? 'fade' : ''
     if ( this.isShown && this.settings.backdrop ) {
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .click($.proxy(this.hide, this))
-        .appendTo(document.body)
+      if ( this.settings.backdropClickHides ) {
+          this.$backdrop.click($.proxy(this.hide, this))
+      }
+      this.$backdrop.appendTo(document.body)
 
       setTimeout(function () {
         that.$backdrop && that.$backdrop.addClass('in')
@@ -208,6 +210,7 @@
 
   $.fn.modal.defaults = {
     backdrop: false
+  , backdropClickHides: true
   , keyboard: false
   , show: true
   }
