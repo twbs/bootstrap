@@ -86,4 +86,66 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should add backdrop when desired", function () {
+        stop()
+        $.support.transition = false
+        var div = $("<div id='modal-test'></div>")
+        div
+          .modal({backdrop:true})
+          .modal("show")
+          .bind("shown", function () {
+            equal($('.modal-backdrop').length, 1, 'modal backdrop inserted into dom')
+            start()
+            div.remove()
+            $('.modal-backdrop').remove()
+          })
+      })
+
+      test("should not add backdrop when not desired", function () {
+        stop()
+        $.support.transition = false
+        var div = $("<div id='modal-test'></div>")
+        div
+          .modal({backdrop:false})
+          .modal("show")
+          .bind("shown", function () {
+            equal($('.modal-backdrop').length, 0, 'modal backdrop not inserted into dom')
+            start()
+            div.remove()
+          })
+      })
+
+      test("should close backdrop when clicked", function () {
+        stop()
+        $.support.transition = false
+        var div = $("<div id='modal-test'></div>")
+        div
+          .modal({backdrop:true})
+          .modal("show")
+          .bind("shown", function () {
+            equal($('.modal-backdrop').length, 1, 'modal backdrop inserted into dom')
+            $('.modal-backdrop').click()
+            equal($('.modal-backdrop').length, 0, 'modal backdrop removed from dom')
+            start()
+            div.remove()
+          })
+      })
+
+      test("should not close backdrop when click disabled", function () {
+        stop()
+        $.support.transition = false
+        var div = $("<div id='modal-test'></div>")
+        div
+          .modal({backdrop:true, backdropClickHides:false})
+          .modal("show")
+          .bind("shown", function () {
+            equal($('.modal-backdrop').length, 1, 'modal backdrop inserted into dom')
+            $('.modal-backdrop').click()
+            equal($('.modal-backdrop').length, 1, 'modal backdrop still in dom')
+            start()
+            div.remove()
+            $('.modal-backdrop').remove()
+          })
+      })
 })
