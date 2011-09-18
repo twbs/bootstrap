@@ -292,21 +292,21 @@ $('#my-modal').bind('hidden', function () {
         </div>
         <div class="span12 columns">
           <h2>Using boostrap-scrollspy.js</h2>
-          <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
+          <pre class="prettyprint linenums">$('#topbar').scrollSpy()</pre>
           <h3>Markup</h3>
           <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.topbar</code>.
           <pre class="prettyprint linenums">&lt;div class="topbar" data-scrollspy="scrollspy" &gt;...&lt;/div&gt;</pre>
           <h3>Methods</h3>
-          <h4>$().scrollspy()</h4>
+          <h4>$().scrollSpy()</h4>
           <p>
           Auto activates navigation buttons by users scroll position.
           </p>
           <pre class="prettyprint linenums">$('body > .topbar').scrollSpy()</pre>
            <p><span class="label notice">Notice</span> Topbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
           </p>
-          <h4>.scrollspy('refresh')</h4>
+          <h4>.scrollSpy('refresh')</h4>
           <p>The scrollspy caches nav buttons and section coordinates for performance. If you need to update this cache (likely if you have dynamic content) just call this refresh method. If you used the data attribute to define your scrollspy, just call refresh on the body.</p>
-          <pre class="prettyprint linenums">$('body').scrollspy('refresh')</pre>
+          <pre class="prettyprint linenums">$('body').scrollSpy('refresh')</pre>
           <h3>Demo</h3>
           <p>Checkout the the topbar navigation on this page.</p>
         </div>
