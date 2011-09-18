@@ -20,7 +20,7 @@
 
 (function( $ ){
 
-  var d = 'a.menu, .dropdown-toggle'
+  var d = '.dropdown-toggle'
 
   function clearMenus() {
     $(d).parent('li').removeClass('open')
@@ -28,7 +28,7 @@
 
   $(function () {
     $('html').bind("click", clearMenus)
-    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
+    $('body').dropdown( '[data-dropdown] .dropdown-toggle' )
   })
 
   /* DROPDOWN PLUGIN DEFINITION

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Sep 16 14:07:03 PDT 2011
+ * Date: Sat Sep 17 17:21:25 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1238,16 +1238,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-.topbar h3 a:hover, .topbar .brand a:hover, .topbar ul .active > a {
+.topbar .brand a:hover, .topbar ul .active > a {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   text-decoration: none;
 }
-.topbar h3 {
-  position: relative;
-}
-.topbar h3 a, .topbar .brand {
+.topbar .brand {
   float: left;
   display: block;
   padding: 8px 20px 12px;
@@ -1322,7 +1319,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
-.topbar-inner, .topbar .fill {
+.topbar-inner {
   background-color: #222;
   background-color: #222222;
   background-repeat: repeat-x;
@@ -1338,92 +1335,59 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-.topbar div > ul, .nav {
+.nav {
   display: block;
   float: left;
   margin: 0 10px 0 0;
   position: relative;
   left: 0;
 }
-.topbar div > ul > li, .nav > li {
+.nav > li {
   display: block;
   float: left;
 }
-.topbar div > ul a, .nav a {
+.nav a {
   display: block;
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
   text-decoration: none;
 }
-.topbar div > ul a:hover, .nav a:hover {
+.nav a:hover {
   color: #ffffff;
   text-decoration: none;
 }
-.topbar div > ul .active > a, .nav .active > a {
+.nav .active > a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.topbar div > ul.secondary-nav, .nav.secondary-nav {
+.nav.secondary-nav {
   float: right;
   margin-left: 10px;
   margin-right: 0;
 }
-.topbar div > ul.secondary-nav .menu-dropdown,
-.nav.secondary-nav .menu-dropdown,
-.topbar div > ul.secondary-nav .dropdown-menu,
 .nav.secondary-nav .dropdown-menu {
   right: 0;
   border: 0;
 }
-.topbar div > ul a.menu:hover,
-.nav a.menu:hover,
-.topbar div > ul li.open .menu,
-.nav li.open .menu,
-.topbar div > ul .dropdown-toggle:hover,
-.nav .dropdown-toggle:hover,
-.topbar div > ul .dropdown.open .dropdown-toggle,
-.nav .dropdown.open .dropdown-toggle {
+.nav .dropdown-toggle:hover, .nav .dropdown.open .dropdown-toggle {
   background: #444;
   background: rgba(255, 255, 255, 0.05);
 }
-.topbar div > ul .menu-dropdown,
-.nav .menu-dropdown,
-.topbar div > ul .dropdown-menu,
 .nav .dropdown-menu {
   background-color: #333;
 }
-.topbar div > ul .menu-dropdown a.menu,
-.nav .menu-dropdown a.menu,
-.topbar div > ul .dropdown-menu a.menu,
-.nav .dropdown-menu a.menu,
-.topbar div > ul .menu-dropdown .dropdown-toggle,
-.nav .menu-dropdown .dropdown-toggle,
-.topbar div > ul .dropdown-menu .dropdown-toggle,
 .nav .dropdown-menu .dropdown-toggle {
   color: #ffffff;
 }
-.topbar div > ul .menu-dropdown a.menu.open,
-.nav .menu-dropdown a.menu.open,
-.topbar div > ul .dropdown-menu a.menu.open,
-.nav .dropdown-menu a.menu.open,
-.topbar div > ul .menu-dropdown .dropdown-toggle.open,
-.nav .menu-dropdown .dropdown-toggle.open,
-.topbar div > ul .dropdown-menu .dropdown-toggle.open,
 .nav .dropdown-menu .dropdown-toggle.open {
   background: #444;
   background: rgba(255, 255, 255, 0.05);
 }
-.topbar div > ul .menu-dropdown li a,
-.nav .menu-dropdown li a,
-.topbar div > ul .dropdown-menu li a,
 .nav .dropdown-menu li a {
   color: #999;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
-.topbar div > ul .menu-dropdown li a:hover,
-.nav .menu-dropdown li a:hover,
-.topbar div > ul .dropdown-menu li a:hover,
 .nav .dropdown-menu li a:hover {
   background-color: #191919;
   background-repeat: repeat-x;
@@ -1437,26 +1401,20 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#191919', GradientType=0);
   color: #ffffff;
 }
-.topbar div > ul .menu-dropdown .active a,
-.nav .menu-dropdown .active a,
-.topbar div > ul .dropdown-menu .active a,
 .nav .dropdown-menu .active a {
   color: #ffffff;
 }
-.topbar div > ul .menu-dropdown .divider,
-.nav .menu-dropdown .divider,
-.topbar div > ul .dropdown-menu .divider,
 .nav .dropdown-menu .divider {
   background-color: #222;
   border-color: #444;
 }
-.topbar ul .menu-dropdown li a, .topbar ul .dropdown-menu li a {
+.topbar ul .dropdown-menu li a {
   padding: 4px 15px;
 }
-li.menu, .dropdown {
+.dropdown {
   position: relative;
 }
-a.menu:after, .dropdown-toggle:after {
+.dropdown-toggle:after {
   width: 0;
   height: 0;
   display: inline-block;
@@ -1473,7 +1431,7 @@ a.menu:after, .dropdown-toggle:after {
   -moz-opacity: 0.5;
   opacity: 0.5;
 }
-.menu-dropdown, .dropdown-menu {
+.dropdown-menu {
   background-color: #ffffff;
   float: left;
   display: none;
@@ -1501,12 +1459,12 @@ a.menu:after, .dropdown-toggle:after {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.menu-dropdown li, .dropdown-menu li {
+.dropdown-menu li {
   float: none;
   display: block;
   background-color: none;
 }
-.menu-dropdown .divider, .dropdown-menu .divider {
+.dropdown-menu .divider {
   height: 1px;
   margin: 5px 0;
   overflow: hidden;
@@ -1539,17 +1497,11 @@ a.menu:after, .dropdown-toggle:after {
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
 }
-.open .menu,
-.dropdown.open .menu,
-.open .dropdown-toggle,
 .dropdown.open .dropdown-toggle {
   color: #ffffff;
   background: #ccc;
   background: rgba(0, 0, 0, 0.3);
 }
-.open .menu-dropdown,
-.dropdown.open .menu-dropdown,
-.open .dropdown-menu,
 .dropdown.open .dropdown-menu {
   display: block;
 }
@@ -1606,22 +1558,22 @@ a.menu:after, .dropdown-toggle:after {
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
-.tabs .menu-dropdown, .tabs .dropdown-menu {
+.tabs .dropdown-menu {
   top: 35px;
   border-width: 1px;
   -webkit-border-radius: 0 6px 6px 6px;
   -moz-border-radius: 0 6px 6px 6px;
   border-radius: 0 6px 6px 6px;
 }
-.tabs a.menu:after, .tabs .dropdown-toggle:after {
+.tabs .dropdown-toggle:after {
   border-top-color: #999;
   margin-top: 15px;
   margin-left: 5px;
 }
-.tabs li.open.menu .menu, .tabs .open.dropdown .dropdown-toggle {
+.tabs .open.dropdown .dropdown-toggle {
   border-color: #999;
 }
-.tabs li.open a.menu:after, .tabs .dropdown.open .dropdown-toggle:after {
+.tabs .dropdown.open .dropdown-toggle:after {
   border-top-color: #555;
 }
 .tab-content {
