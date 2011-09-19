@@ -56,13 +56,15 @@
     this.settings = $.extend({}, $.fn.modal.defaults)
     this.$element = $(content)
       .delegate('.close', 'click.modal', $.proxy(this.hide, this))
+    
+    if ( !options ) {
+      options = {}
+    }
+    
+    $.extend( this.settings, options )
 
-    if ( options ) {
-      $.extend( this.settings, options )
-
-      if ( options.show ) {
-        this.show()
-      }
+    if ( this.settings.show ) {
+      this.show()
     }
 
     return this
