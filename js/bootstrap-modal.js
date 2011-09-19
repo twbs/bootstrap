@@ -172,13 +172,13 @@
   function escape() {
     var that = this
     if ( this.isShown && this.settings.keyboard ) {
-      $(window).bind('keyup.modal', function ( e ) {
+      $(document).bind('keyup.modal', function ( e ) {
         if ( e.which == 27 ) {
           that.hide()
         }
       })
     } else if ( !this.isShown ) {
-      $(window).unbind('keyup.modal')
+      $(document).unbind('keyup.modal')
     }
   }
 
