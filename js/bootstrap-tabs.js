@@ -28,7 +28,7 @@
   function tab( e ) {
     var $this = $(this)
       , href = $this.attr('href')
-      , $ul = $(e.liveFired)
+      , $ul = $this.closest('ul')
       , $controlled
 
     if (/^#\w+/.test(href)) {
