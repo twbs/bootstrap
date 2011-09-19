@@ -18,7 +18,7 @@
  * =========================================================== */
 
 
-(function( $ ) {
+!function( $ ) {
 
   var Popover = function ( element, options ) {
     this.$element = $(element)
@@ -74,4 +74,4 @@
 
   $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, { content: 'data-content', placement: 'right'})
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender )

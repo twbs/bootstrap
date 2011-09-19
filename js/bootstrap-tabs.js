@@ -18,7 +18,7 @@
  * ======================================================== */
 
 
-(function( $ ){
+!function( $ ){
 
   function activate ( element, container ) {
     container.find('.active').removeClass('active')
@@ -59,4 +59,4 @@
     $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
   })
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender )

@@ -18,7 +18,7 @@
  * ============================================================ */
 
 
-(function( $ ){
+!function( $ ){
 
   var d = 'a.menu, .dropdown-toggle'
 
@@ -47,4 +47,4 @@
     })
   }
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender )

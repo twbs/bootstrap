@@ -18,7 +18,7 @@
  * ========================================================= */
 
 
-(function( $ ){
+!function( $ ){
 
  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
   * ======================================================= */
@@ -228,4 +228,4 @@
     })
   })
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender )

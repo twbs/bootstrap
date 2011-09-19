@@ -19,7 +19,7 @@
  * ========================================================== */
 
 
-(function( $ ) {
+!function( $ ) {
 
  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
   * ======================================================= */
@@ -304,4 +304,4 @@
     return $.metadata ? $.extend({}, options, $(ele).metadata()) : options
   }
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender )
