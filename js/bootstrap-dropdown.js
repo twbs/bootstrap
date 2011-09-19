@@ -27,8 +27,9 @@
   }
 
   $(function () {
-    $('html').bind("click", clearMenus)
-    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
+    $('html').bind("click", clearMenus);
+    $('.dropdown-menu, .menu-dropdown').css({maxHeight: $(document).height() * 0.8});
+    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' );
   })
 
   /* DROPDOWN PLUGIN DEFINITION
