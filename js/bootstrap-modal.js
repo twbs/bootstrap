@@ -23,162 +23,154 @@
  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
   * ======================================================= */
 
-  var transitionEnd
+  var transitionEnd;
 
   $(document).ready(function () {
 
     $.support.transition = (function () {
-      var thisBody = document.body || document.documentElement
-        , thisStyle = thisBody.style
-        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-      return support
-    })()
+      var thisBody = document.body || document.documentElement,
+        thisStyle = thisBody.style,
+        support = (thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined);
+      return support;
+    })();
 
     // set CSS transition event type
     if ( $.support.transition ) {
-      transitionEnd = "TransitionEnd"
+      transitionEnd = "TransitionEnd";
       if ( $.browser.webkit ) {
-      	transitionEnd = "webkitTransitionEnd"
+      	transitionEnd = "webkitTransitionEnd";
       } else if ( $.browser.mozilla ) {
-      	transitionEnd = "transitionend"
+      	transitionEnd = "transitionend";
       } else if ( $.browser.opera ) {
-      	transitionEnd = "oTransitionEnd"
+      	transitionEnd = "oTransitionEnd";
       }
     }
 
-  })
+  });
 
 
  /* MODAL PUBLIC CLASS DEFINITION
   * ============================= */
 
   var Modal = function ( content, options ) {
-    this.settings = $.extend({}, $.fn.modal.defaults)
-    this.$element = $(content)
-      .delegate('.close', 'click.modal', $.proxy(this.hide, this))
+    this.settings = $.extend({}, $.fn.modal.defaults);
+    this.$element = $(content).
+      delegate('.close', 'click.modal', $.proxy(this.hide, this));
 
     if ( options ) {
-      $.extend( this.settings, options )
+      $.extend( this.settings, options );
 
       if ( options.show ) {
-        this.show()
+        this.show();
       }
     }
 
-    return this
-  }
+    return this;
+  };
 
   Modal.prototype = {
 
       toggle: function () {
-        return this[!this.isShown ? 'show' : 'hide']()
+        return this[!this.isShown ? 'show' : 'hide']();
       }
 
     , show: function () {
-        var that = this
-        this.isShown = true
-        this.$element.trigger('show')
+        var that = this;
+        this.isShown = true;
+        this.$element.trigger('show');
 
-        escape.call(this)
+        escape.call(this);
         backdrop.call(this, function () {
-          that.$element
-            .appendTo(document.body)
-            .show()
+          that.$element.appendTo(document.body).show();
 
           if ($.support.transition && that.$element.hasClass('fade')) {
-            that.$backdrop[0].offsetWidth // force reflow
+            that.$backdrop[0].offsetWidth; // force reflow
           }
 
-          that.$element
-            .addClass('in')
-            .trigger('shown')
-        })
+          that.$element.addClass('in').trigger('shown');
+        });
 
-        return this
+        return this;
       }
 
     , hide: function (e) {
-        e && e.preventDefault()
+        e && e.preventDefault();
 
-        var that = this
-        this.isShown = false
+        var that = this;
+        this.isShown = false;
 
-        escape.call(this)
+        escape.call(this);
 
-        this.$element
-          .trigger('hide')
-          .removeClass('in')
+        this.$element.trigger('hide').removeClass('in');
 
         function removeElement () {
-          that.$element
-            .hide()
-            .trigger('hidden')
+          that.$element.hide().trigger('hidden');
 
-          backdrop.call(that)
+          backdrop.call(that);
         }
 
         $.support.transition && this.$element.hasClass('fade') ?
           this.$element.one(transitionEnd, removeElement) :
-          removeElement()
+          removeElement();
 
-        return this
+        return this;
       }
 
-  }
+  };
 
 
  /* MODAL PRIVATE METHODS
   * ===================== */
 
   function backdrop ( callback ) {
-    var that = this
-      , animate = this.$element.hasClass('fade') ? 'fade' : ''
+    var that = this,
+      animate = this.$element.hasClass('fade') ? 'fade' : '';
     if ( this.isShown && this.settings.backdrop ) {
-      var doAnimate = $.support.transition && animate
+      var doAnimate = $.support.transition && animate;
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .appendTo(document.body)
+      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />').
+        appendTo(document.body);
 
       if ( this.settings.backdrop != 'static' ) {
-        this.$backdrop.click($.proxy(this.hide, this))
+        this.$backdrop.click($.proxy(this.hide, this));
       }
 
       if ( doAnimate ) {
-        that.$backdrop[0].offsetWidth // force reflow
+        that.$backdrop[0].offsetWidth; // force reflow
       }
 
-      that.$backdrop && that.$backdrop.addClass('in')
+      that.$backdrop && that.$backdrop.addClass('in');
 
       doAnimate ?
         that.$backdrop.one(transitionEnd, callback) :
-        callback()
+        callback();
 
     } else if ( !this.isShown && this.$backdrop ) {
-      this.$backdrop.removeClass('in')
+      this.$backdrop.removeClass('in');
 
       function removeElement() {
-        that.$backdrop.remove()
-        that.$backdrop = null
+        that.$backdrop.remove();
+        that.$backdrop = null;
       }
 
       $.support.transition && this.$element.hasClass('fade')?
         this.$backdrop.one(transitionEnd, removeElement) :
-        removeElement()
+        removeElement();
     } else if ( callback ) {
-       callback()
+       callback();
     }
   }
 
   function escape() {
-    var that = this
+    var that = this;
     if ( this.isShown && this.settings.keyboard ) {
       $(document).bind('keyup.modal', function ( e ) {
         if ( e.which == 27 ) {
-          that.hide()
+          that.hide();
         }
-      })
+      });
     } else if ( !this.isShown ) {
-      $(document).unbind('keyup.modal')
+      $(document).unbind('keyup.modal');
     }
   }
 
@@ -187,41 +179,41 @@
   * ======================= */
 
   $.fn.modal = function ( options ) {
-    var modal = this.data('modal')
+    var modal = this.data('modal');
 
     if (!modal) {
 
       if (typeof options == 'string') {
         options = {
           show: /show|toggle/.test(options)
-        }
+        };
       }
 
       return this.each(function () {
-        $(this).data('modal', new Modal(this, options))
-      })
+        $(this).data('modal', new Modal(this, options));
+      });
     }
 
     if ( options === true ) {
-      return modal
+      return modal;
     }
 
     if ( typeof options == 'string' ) {
-      modal[options]()
+      modal[options]();
     } else if ( modal ) {
-      modal.toggle()
+      modal.toggle();
     }
 
-    return this
-  }
+    return this;
+  };
 
-  $.fn.modal.Modal = Modal
+  $.fn.modal.Modal = Modal;
 
   $.fn.modal.defaults = {
-    backdrop: false
-  , keyboard: false
-  , show: true
-  }
+    backdrop: false,
+    keyboard: false,
+    show: true
+  };
 
 
  /* MODAL DATA- IMPLEMENTATION
@@ -229,10 +221,10 @@
 
   $(document).ready(function () {
     $('body').delegate('[data-controls-modal]', 'click', function (e) {
-      e.preventDefault()
-      var $this = $(this).data('show', true)
-      $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
-    })
-  })
+      e.preventDefault();
+      var $this = $(this).data('show', true);
+      $('#' + $this.attr('data-controls-modal')).modal( $this.data() );
+    });
+  });
 
-}( window.jQuery || window.ender )
+}( window.jQuery || window.ender );

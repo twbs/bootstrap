@@ -21,27 +21,27 @@
 !function( $ ){
 
   function activate ( element, container ) {
-    container.find('.active').removeClass('active')
-    element.addClass('active')
+    container.find('.active').removeClass('active');
+    element.addClass('active');
   }
 
   function tab( e ) {
-    var $this = $(this)
-      , href = $this.attr('href')
-      , $ul = $this.closest('ul')
-      , $controlled
+    var $this = $(this),
+      href = $this.attr('href'),
+      $ul = $this.closest('ul'),
+      $controlled;
 
     if (/^#\w+/.test(href)) {
-      e.preventDefault()
+      e.preventDefault();
 
       if ($this.hasClass('active')) {
-        return
+        return;
       }
 
-      $href = $(href)
+      $href = $(href);
 
-      activate($this.parent('li'), $ul)
-      activate($href, $href.parent())
+      activate($this.parent('li'), $ul);
+      activate($href, $href.parent());
     }
   }
 
@@ -51,12 +51,12 @@
 
   $.fn.tabs = $.fn.pills = function ( selector ) {
     return this.each(function () {
-      $(this).delegate(selector || '.tabs li > a, .pills > li > a', 'click', tab)
-    })
-  }
+      $(this).delegate(selector || '.tabs li > a, .pills > li > a', 'click', tab);
+    });
+  };
 
   $(document).ready(function () {
-    $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
-  })
+    $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a');
+  });
 
-}( window.jQuery || window.ender )
+}( window.jQuery || window.ender );
