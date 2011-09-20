@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../css/page.css" />
     <link rel="stylesheet" href="../css/sections.css" media="screen and (min-width: 601px)" />
     <link rel="stylesheet" href="../css/sections-fluid.css" media="screen and (min-width: 601px) and (max-width: 960px)" />
+    <link rel="stylesheet" href="../docs/assets/js/google-code-prettify/prettify.css" />
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -29,6 +30,16 @@
         max-width: 100%;
       }
     </style>
+
+    <!-- Le javascript -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="../docs/assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../docs/assets/js/bootstrap-twipsy.js"></script>
+    <script src="../docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../docs/assets/js/application.js"></script>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -411,6 +422,102 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media -->
+          <div class="section" id="media">
+            <div class="content">
+              <div class="page-header">
+                <h1>Media <small>Displaying images and videos</small></h1>
+              </div>
+            </div>
+            <div class="subsection">
+              <div class="content">
+                <h2>Media grid</h2>
+                <p>Display thumbnails of varying sizes on pages with a low HTML footprint and minimal styles.</p>
+              </div>
+            </div>
+            <div class="subsection complex">
+              <div class="content">
+                <h3>Example thumbnails</h3>
+                <p>Thumbnails in the <code>.media-grid</code> can be any size, but they work best when mapped directly to the built-in Bootstrap grid system. Image widths like 90, 210, and 330 combine with a few pixels of padding to equal the <code>.span2</code>, <code>.span4</code>, and <code>.span6</code> column sizes.</p>
+                <h4>Large</h4>
+                <ul class="media-grid">
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/330x230" alt="">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/330x230" alt="">
+                    </a>
+                  </li>
+                </ul>
+                <h4>Medium</h4>
+                <ul class="media-grid">
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+                    </a>
+                  </li>
+                </ul>
+                <h4>Small</h4>
+                <ul class="media-grid">
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/90x90" alt="">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/90x90" alt="">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img class="thumbnail" src="http://placehold.it/90x90" alt="">
+                    </a>
+                  </li>
+                </ul>
+                <h4>Coding them</h4>
+                <p>Media grids are easy to use and rather simple on the markup side. Their dimensions are purely based on the size of the images included.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="media-grid"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
               </div>
             </div>
           </div>
