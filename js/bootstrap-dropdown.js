@@ -22,8 +22,15 @@
 
   var d = 'a.menu, .dropdown-toggle'
 
-  function clearMenus() {
-    $(d).parent('li').removeClass('open')
+  function clearMenus(e) {
+    var _parent = $(d).parent('li')
+    if (e != undefined) {
+      var srcEl = e.srcElement
+        , isInput = $(srcEl).hasClass('no-close')
+        , insideParent = _parent.has(srcEl).length > 0
+      if (isInput && insideParent) return
+    }
+    _parent.removeClass('open')
   }
 
   $(function () {
@@ -40,7 +47,7 @@
         var li = $(this).parent('li')
           , isActive = li.hasClass('open')
 
-        clearMenus()
+        clearMenus(e)
         !isActive && li.toggleClass('open')
         return false
       })
@@ -48,3 +55,4 @@
   }
 
 }( window.jQuery || window.ender )
+
