@@ -30,7 +30,7 @@ body {
 /* main page divisions
 ----------------------------------------------- */
 .page {
-
+	padding: 15px;
 }
 .division { /* default division class */
 
