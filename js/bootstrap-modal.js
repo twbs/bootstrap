@@ -86,7 +86,7 @@
             .show()
 
           if ($.support.transition && that.$element.hasClass('fade')) {
-            that.$backdrop[0].offsetWidth // force reflow
+            that.$element[0].offsetWidth // force reflow
           }
 
           that.$element
@@ -144,13 +144,13 @@
       }
 
       if ( doAnimate ) {
-        that.$backdrop[0].offsetWidth // force reflow
+        this.$backdrop[0].offsetWidth // force reflow
       }
 
-      that.$backdrop && that.$backdrop.addClass('in')
+      this.$backdrop.addClass('in')
 
       doAnimate ?
-        that.$backdrop.one(transitionEnd, callback) :
+        this.$backdrop.one(transitionEnd, callback) :
         callback()
 
     } else if ( !this.isShown && this.$backdrop ) {
