@@ -522,6 +522,152 @@
             </div>
           </div>
 
+          <!-- Tables -->
+          <div class="section" id="tables">
+            <div class="content">
+              <div class="page-header">
+                <h1>Tables <small>For, you guessed it, tabular data</small></h1>
+              </div>
+            </div>
+            <div class="subsection">
+              <div class="content">
+                <h2>Building tables</h2>
+                <p>
+                  <code>&lt;table&gt;</code>
+                  <code>&lt;thead&gt;</code>
+                  <code>&lt;tbody&gt;</code>
+                  <code>&lt;tr&gt;</code>
+                  <code>&lt;th&gt;</code>
+                  <code>&lt;td&gt;</code>
+                  <code>&lt;colspan&gt;</code>
+                  <code>&lt;caption&gt;</code>
+                </p>
+                <p>Tables are great&mdash;for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
+                <p>Always wrap your column headers in a <code>&lt;thead&gt;</code> such that hierarchy is <code>&lt;thead&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;th&gt;</code>.</p>
+                <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>&lt;tbody&gt;</code> so your hierarchy is <code>&lt;tbody&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;td&gt;</code>.</p>
+              </div>
+            </div>
+            <div class="subsection complex">
+              <div class="content">
+                <h3>Example: Default table styles</h3>
+                <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Language</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Some</td>
+                      <td>One</td>
+                      <td>English</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Joe</td>
+                      <td>Sixpack</td>
+                      <td>English</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Stu</td>
+                      <td>Dent</td>
+                      <td>Code</td>
+                    </tr>
+                  </tbody>
+                </table>
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  ...
+&lt;/table&gt;</pre>
+                <h3>Example: Zebra-striped</h3>
+                <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
+                <table class="zebra-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Language</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Some</td>
+                      <td>One</td>
+                      <td>English</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Joe</td>
+                      <td>Sixpack</td>
+                      <td>English</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Stu</td>
+                      <td>Dent</td>
+                      <td>Code</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
+<pre class="prettyprint linenums">
+&lt;table class="zebra-striped"&gt;
+...
+&lt;/table&gt;</pre>
+                <h3>Example: Zebra-striped w/ TableSorter.js</h3>
+                <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
+                <table class="zebra-striped" id="sortTableExample">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th class="yellow">First Name</th>
+                      <th class="blue">Last Name</th>
+                      <th class="green">Language</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Your</td>
+                      <td>One</td>
+                      <td>English</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Joe</td>
+                      <td>Sixpack</td>
+                      <td>English</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Stu</td>
+                      <td>Dent</td>
+                      <td>Code</td>
+                    </tr>
+                  </tbody>
+                </table>
+<pre class="prettyprint linenums">
+&lt;script src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
+&lt;script &gt;
+  $(function() {
+    $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
+  });
+&lt;/script&gt;
+&lt;table class="zebra-striped"&gt;
+  ...
+&lt;/table&gt;</pre>
+              </div>
+            </div>
+          </div>
+
           <!-- Foo -->
           <div class="section" id="foo">
             <div class="content">
