@@ -40,7 +40,7 @@
     }
 
   , getContent: function () {
-      var contentvar
+      var content
        , $e = this.$element
        , o = this.options
 
