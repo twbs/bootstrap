@@ -42,7 +42,7 @@
   , getContent: function () {
       var content,
        $e = this.$element,
-       o = this.options
+       o = this.options;
 
       if (typeof this.options.content == 'string') {
         content = $e.attr(o.content);
