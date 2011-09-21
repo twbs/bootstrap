@@ -101,6 +101,34 @@ img {
 
 /*
 --------------------------------------------------
+Large and Medium Screens (above 750 pixels wide)
+-------------------------------------------------- */
+
+@media only screen and (min-width: 750px) {
+
+  .masthead h1 br {
+    display: none;
+  }
+
+}
+
+
+/*
+--------------------------------------------------
+Medium Screens (below 960 pixels wide)
+-------------------------------------------------- */
+
+@media only screen and (max-width: 960px) {
+
+  .masthead .lead br {
+    display: none;
+  }
+
+}
+
+
+/*
+--------------------------------------------------
 Narrow Screens (300 pixels wide)
 -------------------------------------------------- */
 
