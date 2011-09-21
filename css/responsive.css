@@ -12,30 +12,30 @@ date:       21 September 2011
 /* body
 ----------------------------------------------- */
 body {
-padding-top: 60px;
+  padding-top: 60px;
 }
 
 
 /* fluid images
 ----------------------------------------------- */
 img {
-max-width: 100%;
+  max-width: 100%;
 }
 
 
 /* spacing
 ----------------------------------------------- */
 .section {
-margin-top: 60px;
+  margin-top: 60px;
 }
 .section .section {
-margin-top: 30px;
+  margin-top: 30px;
 }
 .display-grids .section {
-margin-top: 0;
+  margin-top: 0;
 }
 .display-grids .content {
-padding: 15px;
+  padding: 15px;
 }
 
 
@@ -46,15 +46,22 @@ Narrow Screens (300 pixels wide)
 
 @media only screen and (max-width: 600px) {
 
-	body {
-		padding-top: 0;
-	}
+
+  /* body
+  ----------------------------------------------- */
+  body {
+    padding-top: 0;
+  }
+
+
+  /* topbar navigation
+  ----------------------------------------------- */
   .topbar {
-  	height: auto;
-  	position: static;
+    height: auto;
+    position: static;
   }
   .topbar .container {
-  	width: auto;
+    width: auto;
   }
   .topbar .brand {
     float: left;
@@ -65,20 +72,49 @@ Narrow Screens (300 pixels wide)
     background: #000;
   }
   .topbar div > ul {
-  	margin: 0;
+    margin: 0;
   }
   .topbar .nav > li {
     float: left;
     width: 33.33333%;
     margin: 0;
   }
-	.section:first-child {
-		margin-top: 15px;
-	}
-	h1 small {
-		display: block;
-		margin-top: .3em;
-		line-height: 1.25em;
-	}
+  .section:first-child {
+    margin-top: 15px;
+  }
+
+
+  /* headings
+  ----------------------------------------------- */
+  h1 small {
+    display: block;
+    margin-top: .3em;
+    line-height: 1.25em;
+  }
+
+
+  /* pagination
+  ----------------------------------------------- */
+  .pagination {
+    height: auto;
+  }
+  .pagination ul {
+    float: none;
+  }
+
+
+  /* clearing
+  ----------------------------------------------- */
+  .pagination ul:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .pagination ul {
+    zoom: 1;
+    display: block;
+  }
 
 }
