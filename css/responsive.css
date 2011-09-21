@@ -58,6 +58,7 @@ img {
 /* quickstart
 ----------------------------------------------- */
 .quickstart .section {
+  padding-top: 0;
   margin-top: 0;
   margin-left: -1px;
   margin-right: -1px;
