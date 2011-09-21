@@ -73,6 +73,16 @@ img {
 }
 
 
+/* footer
+----------------------------------------------- */
+.footer {
+  min-width: 0;
+}
+.footer .content {
+  padding: 0 30px;
+}
+
+
 /*
 --------------------------------------------------
 Narrow Screens (300 pixels wide)
@@ -185,5 +195,14 @@ Narrow Screens (300 pixels wide)
     clear: both;
     visibility: hidden;
   }
+
+
+  /* footer
+  ----------------------------------------------- */
+  .footer .pull-right {
+    float: none;
+    text-align: right;
+  }
+
 
 }
