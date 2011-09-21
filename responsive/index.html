@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/page.css" />
     <link rel="stylesheet" href="../css/sections.css" media="screen and (min-width: 601px)" />
     <link rel="stylesheet" href="../css/sections-fluid.css" media="screen and (min-width: 601px) and (max-width: 960px)" />
+    <link rel="stylesheet" href="../css/display-grids.css" />
     <link rel="stylesheet" href="../docs/assets/js/google-code-prettify/prettify.css" />
     <style type="text/css">
       body {
@@ -30,6 +31,12 @@
       }
       .section .section {
         margin-top: 30px;
+      }
+      .display-grids .section {
+        margin-top: 0;
+      }
+      .display-grids .content {
+        padding: 15px;
       }
     </style>
 
@@ -1242,7 +1249,7 @@
 
           <!-- Alerts & Messages
           ================================================== -->
-          <div class="section" id="alerts-and-messages">
+          <div class="section" id="alerts">
             <div class="content">
               <div class="page-header">
                 <h1>Alerts &amp; Errors <small>Styles for success, warning, and error messages or alerts</small></h1>
@@ -1445,105 +1452,587 @@
           </div>
 
 
-          <!-- Foo -->
-          <div class="section" id="foo">
+          <!-- Grid System
+          ================================================== -->
+          <div class="section" id="grid-system">
             <div class="content">
-              <h2>Foo</h2>
-            </div>
-            <div class="subsection">
-              <div class="content">
+              <div class="page-header">
+                <h1>Grid System <small>A responsive grid system from the Markup Library</small></h1>
               </div>
             </div>
-            <div class="subsection complex">
+
+            <!-- Responsive Grid -->
+            <div class="section" id="responsive-grid">
+              <div class="subsection">
+                <div class="content">
+                  <h2>Responsive grid</h2>
+                  <p>A grid system by <a href="http://mongrl.com/">Craig Zheng</a> designed for <a href="http://publicculture.org/">publicculture.org</a> and <a href="http://symphony-cms.com/">symphony-cms.com</a>. Adapted by <a href="http://domain7.com/team/stephen-bau/">Stephen Bau</a> for the <a href="http://markuplibrary.org/">Markup Library</a>.</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <h3>Sections Grid System</h3>
+                  <ol>
+                    <li><code>class="section"</code> basically designates a 'row', within which any
+number of <code>class="subsection"</code> elements represent 'columns'</li>
+                    <li>The 'column' widths are specified with another class: either
+<code>fragment</code>, <code>simple</code>, <code>compound</code> or <code>complex</code> (semantic nomenclature I
+borrowed right from English grammar).</li>
+                  </ol>
+                  <p>So we end up with something like this:</p>
+<pre class="prettyprint linenums">
+&lt;div class="section"&gt;
+  &lt;div class="subsection simple"&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class="subsection compound"&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class="subsection simple"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<p>Which gives you a half-width column in the middle with two
+quarter-width columns on either side. Of course, you could dispense
+with the DIVs if you don't need them and just apply those classes to
+any other block-level elements. The CSS looks like this:
+</p>
+<pre class="prettyprint linenums">/* 3-column grid */
+.thirds .subsection,
+.thirds .simple {
+	width: 33.3333%;
+}
+.thirds .fragment {
+	width: 16.6666%;
+}
+.thirds .compound {
+	width: 66.6666%;
+}
+
+/* 4-column grid (default) */
+.fragment {
+	width: 12.5%;
+}
+.simple {
+	width: 25%;
+}
+.compound {
+	width: 50%;
+}
+.complex {
+	width: 75%;
+}
+
+/* 5-column grid */
+.fifths .subsection,
+.fifths .simple {
+	width: 20%;
+}
+.fifths .fragment {
+	width: 10%;
+}
+.fifths .compound {
+	width: 40%;
+}
+.fifths .complex {
+	width: 60%;
+}
+.fifths .compound-complex {
+	width: 80%;
+}
+</pre>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="sections display-grids">
+            <h2 class="content">5-Column Grid</h2>
+            <div class="section">
               <div class="content">
+                <p>.content</p>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection compound-complex">
+                <div class="content">
+                  <p>.compound-complex</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection compound-complex">
+                <div class="content">
+                  <p>.compound-complex</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <p>.complex</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection complex">
+                <div class="content">
+                  <p>.complex</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <p>.complex</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <p>.complex</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section fifths">
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="content">4-Column Grid</h2>
+            <div class="section">
+              <div class="content">
+                <p>.content</p>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <p>.complex</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection complex">
+                <div class="content">
+                  <p>.complex</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+            </div>
+            <div class="section">
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+            </div>
+            
+            <h2 class="content">3-Column Grid</h2>
+            <div class="section thirds">
+              <div class="content">
+                <p>.content</p>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection compound">
+                <div class="content">
+                  <p>.compound</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection simple">
+                <div class="content">
+                  <p>.simple</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
+              </div>
+              <div class="subsection fragment">
+                <div class="content">
+                  <p>.fragment</p>
+                </div>
               </div>
             </div>
           </div>
-
 
           <hr />
-          <div class="section overview fourths">
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-            <div class="subsection fragment">
-              <div class="content">
-                <h6>Heading</h6>
-                <ul>
-                  <li>Lorem</li>
-                  <li>ipsum</li>
-                  <li>dolor</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+
           <div class="notes section">
             <div class="content">
               <div class="well">
@@ -1552,37 +2041,45 @@
               </div>
             </div>
           </div>
+
           <hr />
+
         </div>
       </div>
       <div class="site-info">
         <div class="attribution area">
           <div class="content">
             <p>&copy; Company 2011</p>
-            <p>A page template contributed for use in the
+            <p><a href="http://twitter.github.com/bootstrap/">Bootstrap, from Twitter</a> is being adapted as a toolkit for responsive web design and development for the
               <a href="http://markuplibrary.org/">Markup Library</a> by
               <a href="http://www.domain7.com/team/stephen-bau/">Stephen Bau</a>.
-              A visual demonstration of the grid system can be viewed at
-              <a href="grids/">markuplibrary.org/templates/grids/</a>.
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="topbar">
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar" data-scrollspy="scrollspy" >
       <div class="topbar-inner">
         <div class="container">
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Bootstrap</a>
           <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="#about">About</a></li>
+            <li><a href="#typography">Type</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#tables">Tables</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#navigation">Navigation</a></li>
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#popovers">Popovers</a></li>
+            <li><a href="#grid-system">Grid</a></li>
           </ul>
-          <p class="pull-right">Logged in as <a href="#">username</a></p>
         </div>
       </div>
     </div>
+
 
   </body>
 </html>
