@@ -93,6 +93,13 @@ Narrow Screens (300 pixels wide)
   }
 
 
+  /* tabs
+  ----------------------------------------------- */
+  .tabs {
+    float: none;
+  }
+
+
   /* pagination
   ----------------------------------------------- */
   .pagination {
@@ -105,16 +112,18 @@ Narrow Screens (300 pixels wide)
 
   /* clearing
   ----------------------------------------------- */
+  .tabs,
+  .pagination ul {
+    zoom: 1;
+    display: block;
+  }
+  .tabs:after,
   .pagination ul:after {
     content: ".";
     display: block;
     height: 0;
     clear: both;
     visibility: hidden;
-  }
-  .pagination ul {
-    zoom: 1;
-    display: block;
   }
 
 }
