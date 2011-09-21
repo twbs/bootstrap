@@ -13,6 +13,7 @@
 
     <!-- Le styles -->
     <link rel="stylesheet" href="../bootstrap.css" />
+    <link rel="stylesheet" href="../docs/assets/css/docs.css" />
     <link rel="stylesheet" href="../css/page.css" />
     <link rel="stylesheet" href="../css/sections.css" media="screen and (min-width: 601px)" />
     <link rel="stylesheet" href="../css/sections-fluid.css" media="screen and (min-width: 601px) and (max-width: 960px)" />
@@ -1003,10 +1004,49 @@
 
           </div>
 
-          <!-- Foo -->
-          <div class="section" id="foo">
+          <!-- Navigation
+          ================================================== -->
+          <div class="section" id="navigation">
             <div class="content">
-              <h2>Foo</h2>
+              <h2>Fixed topbar</h2>
+              <div class="topbar-wrapper" style="z-index: 5;">
+                <div class="topbar" data-dropdown="dropdown" >
+                  <div class="topbar-inner">
+                    <div class="container">
+                      <h3><a href="#">Project Name</a></h3>
+                      <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle">Dropdown</a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Secondary link</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Another link</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <form class="pull-left" action="">
+                        <input type="text" placeholder="Search" />
+                      </form>
+                      <ul class="nav secondary-nav">
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle">Dropdown</a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Secondary link</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Another link</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div><!-- /topbar-inner -->
+                </div><!-- /topbar -->
+              </div><!-- /topbar-wrapper -->
             </div>
             <div class="subsection">
               <div class="content">
