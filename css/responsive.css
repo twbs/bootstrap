@@ -11,9 +11,6 @@ date:       21 September 2011
 
 /* body
 ----------------------------------------------- */
-body {
-  padding-top: 60px;
-}
 
 
 /* fluid images
@@ -38,6 +35,14 @@ img {
   padding: 15px;
 }
 
+.jumbotron {
+  min-width: 0;
+}
+.jumbotron .container {
+  width: auto;
+  padding: 0 30px;
+}
+
 
 /*
 --------------------------------------------------
@@ -51,6 +56,16 @@ Narrow Screens (300 pixels wide)
   ----------------------------------------------- */
   body {
     padding-top: 0;
+  }
+
+
+  /* topbar navigation
+  ----------------------------------------------- */
+  .jumbotron {
+    padding-top: 0;
+  }
+  .jumbotron h1 {
+    font-size: 2.5em;
   }
 
 
