@@ -9,10 +9,6 @@ date:       21 September 2011
 ----------------------------------------------- */
 
 
-/* body
------------------------------------------------ */
-
-
 /* fluid images
 ----------------------------------------------- */
 img {
@@ -34,13 +30,14 @@ img {
 /* spacing
 ----------------------------------------------- */
 .section {
-  margin-top: 60px;
+  padding-top: 60px;
 }
 .section .section {
-  margin-top: 30px;
+  padding-top: 0;
+  padding-bottom: 15px;
 }
 .display-grids .section {
-  margin-top: 0;
+  padding-top: 0;
 }
 .display-grids .content {
   padding: 15px;
@@ -165,7 +162,7 @@ Narrow Screens (300 pixels wide)
     margin: 0;
   }
   .section:first-child {
-    margin-top: 15px;
+    padding-top: 15px;
   }
 
 
