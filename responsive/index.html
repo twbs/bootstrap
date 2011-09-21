@@ -1002,55 +1002,237 @@
           <!-- Navigation
           ================================================== -->
           <div class="section" id="navigation">
-            <div class="content">
-              <h2>Fixed topbar</h2>
-              <div class="topbar-wrapper" style="z-index: 5;">
-                <div class="topbar" data-dropdown="dropdown" >
-                  <div class="topbar-inner">
-                    <div class="container">
-                      <h3><a href="#">Project Name</a></h3>
-                      <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle">Dropdown</a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Secondary link</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Another link</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                      <form class="pull-left" action="">
-                        <input type="text" placeholder="Search" />
-                      </form>
-                      <ul class="nav secondary-nav">
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle">Dropdown</a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Secondary link</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Another link</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div><!-- /topbar-inner -->
-                </div><!-- /topbar -->
-              </div><!-- /topbar-wrapper -->
-            </div>
-            <div class="subsection">
+
+            <!-- Fixed topbar -->
+            <div class="section thirds" id="fixed-topbar">
               <div class="content">
+                <h2>Fixed topbar</h2>
+                <div class="topbar-wrapper" style="z-index: 5;">
+                  <div class="topbar" data-dropdown="dropdown" >
+                    <div class="topbar-inner">
+                      <div class="container">
+                        <h3><a href="#">Project Name</a></h3>
+                        <ul class="nav">
+                          <li class="active"><a href="#">Home</a></li>
+                          <li><a href="#">Link</a></li>
+                          <li><a href="#">Link</a></li>
+                          <li><a href="#">Link</a></li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">Dropdown</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Secondary link</a></li>
+                              <li><a href="#">Something else here</a></li>
+                              <li class="divider"></li>
+                              <li><a href="#">Another link</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <form class="pull-left" action="">
+                          <input type="text" placeholder="Search" />
+                        </form>
+                        <ul class="nav secondary-nav">
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">Dropdown</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Secondary link</a></li>
+                              <li><a href="#">Something else here</a></li>
+                              <li class="divider"></li>
+                              <li><a href="#">Another link</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div><!-- /topbar-inner -->
+                  </div><!-- /topbar -->
+                </div><!-- /topbar-wrapper -->
+              </div>
+              <div class="subsection">
+                <div class="content">
+                  <h4>What is it</h4>
+                  <p>Our topbar is a fixed bar that houses a website’s logo or name, primary navigation, and search form.</p>
+                </div>
+              </div>
+              <div class="subsection">
+                <div class="content">
+                  <h4>Customizable</h4>
+                  <p>All elements within, and the entire topbar as well, are optional. You can choose to include a logo/name, nav, search, and a secondary nav&mdash;or any combination of that.</p>
+                </div>
+              </div>
+              <div class="subsection">
+                <div class="content">
+                  <h4>Dropdowns included</h4>
+                  <p>As part of the main navigation, we’ve included the ability for you to add dropdowns to your nav. Check out the secondary nav above (right aligned) to see how it’s done. Dropdowns <code>li</code> tags also support <code>.active</code> for showing current page selection.</p>
+                </div>
+              </div>
+              <div class="content">
+                <p><strong>Note:</strong> When using the topbar on any page, be sure to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>body</code>.</p>
               </div>
             </div>
-            <div class="subsection complex">
-              <div class="content">
+
+            <!-- Tabs and pills -->
+            <div class="section" id="tabs-and-pills">
+              <div class="subsection">
+                <div class="content">
+                  <h2>Tabs and pills</h2>
+                  <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
+                  <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <ul class="tabs">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li class="dropdown" data-dropdown="dropdown">
+                      <a href="#" class="dropdown-toggle">Dropdown</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Secondary link</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Another link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="tabs"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+                  <ul class="pills">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="pills"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+                </div>
               </div>
             </div>
+
+            <!-- Breadcrumbs -->
+            <div class="section" id="breadcrumbs">
+              <div class="subsection">
+                <div class="content">
+                  <h2>Breadcrumbs</h2>
+                  <p>Breadcrumb navigation is used as a way to show users where they are within an app or a site, but not for primary navigation.</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <ul class="breadcrumb">
+                    <li class="active">Home</li>
+                  </ul>
+                  <ul class="breadcrumb">
+                    <li><a href="#">Home</a> <span class="divider">/</span></li>
+                    <li class="active">Middle page</li>
+                  </ul>
+                  <ul class="breadcrumb">
+                    <li><a href="#">Home</a> <span class="divider">/</span></li>
+                    <li><a href="#">Middle page</a> <span class="divider">/</span></li>
+                    <li class="active">Another one</li>
+                  </ul>
+                  <ul class="breadcrumb">
+                    <li><a href="#">Home</a> <span class="divider">/</span></li>
+                    <li><a href="#">Middle page</a> <span class="divider">/</span></li>
+                    <li><a href="#">Another one</a> <span class="divider">/</span></li>
+                    <li class="active">You are here</li>
+                  </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="breadcrumb"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Middle page&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Another one&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;You are here&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Pagination -->
+            <div class="section" id="pagination">
+              <div class="subsection">
+                <div class="content">
+                  <h2>Pagination</h2>
+                  <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+                </div>
+              </div>
+              <div class="subsection complex">
+                <div class="content">
+                  <div class="pagination">
+                    <ul>
+                      <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+                      <li class="active"><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li class="next"><a href="#">Next &raquo;</a></li>
+                    </ul>
+                  </div>
+                  <div class="pagination">
+                    <ul>
+                      <li class="prev"><a href="#">&larr; Previous</a></li>
+                      <li class="active"><a href="#">10</a></li>
+                      <li><a href="#">11</a></li>
+                      <li><a href="#">12</a></li>
+                      <li class="disabled"><a href="#">…</a></li>
+                      <li><a href="#">19</a></li>
+                      <li><a href="#">20</a></li>
+                      <li><a href="#">21</a></li>
+                      <li class="next"><a href="#">Next &raquo;</a></li>
+                    </ul>
+                  </div>
+                  <div class="pagination">
+                    <ul>
+                      <li class="prev"><a href="#">&larr; Previous</a></li>
+                      <li><a href="#">10</a></li>
+                      <li><a href="#">11</a></li>
+                      <li><a href="#">12</a></li>
+                      <li><a href="#">13</a></li>
+                      <li><a href="#">14</a></li>
+                      <li class="active"><a href="#">15</a></li>
+                      <li><a href="#">16</a></li>
+                      <li><a href="#">17</a></li>
+                      <li><a href="#">18</a></li>
+                      <li><a href="#">19</a></li>
+                      <li><a href="#">20</a></li>
+                      <li class="next"><a href="#">Next &raquo;</a></li>
+                    </ul>
+                  </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li class="prev disabled"&gt;&lt;a href="#"&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
+    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="next"&gt;&lt;a href="#"&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+                </div>
+              </div>
+            </div>
+  
           </div>
 
           <!-- Foo -->
