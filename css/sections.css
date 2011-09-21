@@ -40,9 +40,16 @@ any other block-level elements. The CSS looks like this:
 	width: 960px;
 	margin: 0 auto;
 }
+.section:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 .section {
-	overflow: hidden;
-	clear: both;
+  zoom: 1;
+  display: block;
 }
 .subsection {
 	float: left;
