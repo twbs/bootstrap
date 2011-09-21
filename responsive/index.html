@@ -50,6 +50,7 @@
           <ul class="nav">
             <li class="active"><a href="#about">About</a></li>
             <li><a href="#grid-system">Grid</a></li>
+            <li><a href="#layout">Layout</a></li>
             <li><a href="#typography">Type</a></li>
             <li><a href="#media">Media</a></li>
             <li><a href="#tables">Tables</a></li>
@@ -757,6 +758,58 @@ any other block-level elements. The CSS looks like this:
               <div class="subsection fragment">
                 <div class="content">
                   <p>.fragment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layout
+          ================================================== -->
+          <div class="section" id="layout">
+            <div class="content">
+              <div class="page-header">
+                <h1>Layouts <small>Basic templates to create webpages</small></h1>
+              </div>
+            </div>
+
+            <!-- Fixed layout -->
+            <div class="section">
+              <div class="subsection compound" id="fixed-layout">
+                <div class="content">
+                  <h2>Fixed layout</h2>
+                  <p>The default and simple 940px-wide, centered layout for just about any website or page provided by a single <code>&lt;div.container&gt;</code>.</p>
+                  <div class="mini-layout">
+                    <div class="mini-layout-body"></div>
+                  </div>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
+                </div>
+              </div>
+              <div class="subsection compound" id="fluid-layout">
+                <div class="content">
+                  <h2>Fluid layout</h2>
+                  <p>An alternative, flexible fluid page structure with min- and max-widths and a left-hand sidebar. Great for apps and docs.</p>
+                  <div class="mini-layout fluid">
+                    <div class="mini-layout-sidebar"></div>
+                    <div class="mini-layout-body"></div>
+                  </div>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;div class="sidebar"&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class="content"&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
                 </div>
               </div>
             </div>
