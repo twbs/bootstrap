@@ -1,0 +1,84 @@
+/*
+-----------------------------------------------
+Responsive CSS
+-----------------------------------------------
+Site Name
+file:       css/responsive.css
+author:     Stephen Bau
+date:       21 September 2011
+----------------------------------------------- */
+
+
+/* body
+----------------------------------------------- */
+body {
+padding-top: 60px;
+}
+
+
+/* fluid images
+----------------------------------------------- */
+img {
+max-width: 100%;
+}
+
+
+/* spacing
+----------------------------------------------- */
+.section {
+margin-top: 60px;
+}
+.section .section {
+margin-top: 30px;
+}
+.display-grids .section {
+margin-top: 0;
+}
+.display-grids .content {
+padding: 15px;
+}
+
+
+/*
+--------------------------------------------------
+Narrow Screens (300 pixels wide)
+-------------------------------------------------- */
+
+@media only screen and (max-width: 600px) {
+
+	body {
+		padding-top: 0;
+	}
+  .topbar {
+  	height: auto;
+  	position: static;
+  }
+  .topbar .container {
+  	width: auto;
+  }
+  .topbar .brand {
+    float: left;
+    width: 94%;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: 0;
+    background: #000;
+  }
+  .topbar div > ul {
+  	margin: 0;
+  }
+  .topbar .nav > li {
+    float: left;
+    width: 33.33333%;
+    margin: 0;
+  }
+	.section:first-child {
+		margin-top: 15px;
+	}
+	h1 small {
+		display: block;
+		margin-top: .3em;
+		line-height: 1.25em;
+	}
+
+}
