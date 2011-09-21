@@ -159,7 +159,7 @@ Narrow Screens (300 pixels wide)
   }
   .topbar .nav > li {
     float: left;
-    width: 33.33333%;
+    width: 25%;
     margin: 0;
   }
   .section:first-child {
