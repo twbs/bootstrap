@@ -124,6 +124,45 @@ Medium Screens (below 960 pixels wide)
     display: none;
   }
 
+  /* topbar navigation
+  ----------------------------------------------- */
+  .topbar {
+    height: auto;
+    position: static;
+  }
+  .topbar .container {
+    width: auto;
+  }
+  .topbar .brand {
+    float: left;
+    width: 94%;
+    padding-left: 3%;
+    padding-right: 3%;
+    background: #000;
+  }
+  .topbar div > ul {
+    margin: 0;
+  }
+  .topbar .nav {
+    float: none;
+  }
+  .topbar .nav > li {
+    float: left;
+    width: 16.6666666%;
+    margin: 0;
+  }
+  .section:first-child {
+    padding-top: 15px;
+  }
+  .jumbotron {
+    padding-top: 0;
+  }
+  .quickstart .section {
+    padding-top: 0;
+    margin: 0;
+    border: none;
+  }
+
 }
 
 
@@ -139,6 +178,15 @@ Narrow Screens (300 pixels wide)
   ----------------------------------------------- */
   body {
     padding-top: 0;
+  }
+
+
+  /* topbar
+  ----------------------------------------------- */
+  .topbar .nav > li {
+    float: left;
+    width: 25%;
+    margin: 0;
   }
 
 
@@ -165,33 +213,6 @@ Narrow Screens (300 pixels wide)
   .quickstart .section {
     padding-bottom: 15px;
     border: none;
-  }
-
-
-  /* topbar navigation
-  ----------------------------------------------- */
-  .topbar {
-    height: auto;
-    position: static;
-  }
-  .topbar .container {
-    width: auto;
-  }
-  .topbar .brand {
-    float: left;
-    width: 100%;
-    background: #000;
-  }
-  .topbar div > ul {
-    margin: 0;
-  }
-  .topbar .nav > li {
-    float: left;
-    width: 25%;
-    margin: 0;
-  }
-  .section:first-child {
-    padding-top: 15px;
   }
 
 
