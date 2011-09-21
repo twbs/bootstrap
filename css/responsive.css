@@ -35,12 +35,41 @@ img {
   padding: 15px;
 }
 
+
+/* masthead
+----------------------------------------------- */
 .jumbotron {
   min-width: 0;
 }
 .jumbotron .container {
   width: auto;
   padding: 0 30px;
+}
+
+
+/* quickstart
+----------------------------------------------- */
+.quickstart .section {
+  margin-top: 0;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.quickstart .subsection {
+  padding-top: 15px;
+}
+.quickstart .subsection:nth-child(2) {
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.quickstart textarea {
+  width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 
@@ -59,13 +88,29 @@ Narrow Screens (300 pixels wide)
   }
 
 
-  /* topbar navigation
+  /* masthead
   ----------------------------------------------- */
   .jumbotron {
     padding-top: 0;
   }
   .jumbotron h1 {
     font-size: 2.5em;
+  }
+
+
+  /* quickstart
+  ----------------------------------------------- */
+  .quickstart h6,
+  .quickstart p {
+    text-align: left;
+  }
+  .quickstart .content {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .quickstart .section {
+    padding-bottom: 15px;
+    border: none;
   }
 
 
