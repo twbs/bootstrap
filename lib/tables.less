@@ -11,19 +11,43 @@ table {
   width: 100%;
   margin-bottom: @baseline;
   padding: 0;
-  border-collapse: separate;
-  font-size: 13px;
+  border-collapse: separate; // Done so we can round those corners!
+  *border-collapse: collapse; /* IE7, collapse table to remove spacing */
+  font-size: @basefont;
+  border: 1px solid #ddd;
+  .border-radius(4px);
   th, td {
     padding: 10px 10px 9px;
-    line-height: @baseline * .75;
+    line-height: @baseline;
     text-align: left;
-    vertical-align: middle;
-    border-bottom: 1px solid #ddd;
   }
   th {
     padding-top: 9px;
     font-weight: bold;
-    border-bottom-width: 2px;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+  }
+  td {
+    vertical-align: top;
+  }
+  th + th,
+  td + td {
+    border-left: 1px solid #ddd;
+  }
+  tr + tr td {
+    border-top: 1px solid #ddd;
+  }
+  tbody tr:first-child td:first-child {
+    .border-radius(4px 0 0 0);
+  }
+  tbody tr:first-child td:last-child {
+    .border-radius(0 4px 0 0);
+  }
+  tbody tr:last-child td:first-child {
+    .border-radius(0 0 0 4px);
+  }
+  tbody tr:last-child td:last-child {
+    .border-radius(0 0 4px 0);
   }
 }
 
@@ -60,7 +84,6 @@ table {
   .headerSortDown {
     background-color: rgba(141,192,219,.25);
     text-shadow: 0 1px 1px rgba(255,255,255,.75);
-    .border-radius(3px 3px 0 0);
   }
   // Style the ascending (reverse alphabetical) column header
   .header:hover {
