@@ -20,6 +20,17 @@ img {
 }
 
 
+/* topbar
+----------------------------------------------- */
+.topbar .container {
+  width: 960px;
+}
+.topbar .brand {
+  margin-left: 0;
+  padding: 8px 15px 12px;
+}
+
+
 /* spacing
 ----------------------------------------------- */
 .section {
@@ -70,6 +81,13 @@ img {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+
+/* tabs
+----------------------------------------------- */
+.tabs {
+  float: none;
 }
 
 
@@ -135,10 +153,7 @@ Narrow Screens (300 pixels wide)
   }
   .topbar .brand {
     float: left;
-    width: 94%;
-    padding-left: 3%;
-    padding-right: 3%;
-    margin-left: 0;
+    width: 100%;
     background: #000;
   }
   .topbar div > ul {
