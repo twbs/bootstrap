@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Sep 18 14:19:52 PDT 2011
+ * Date: Thu Sep 22 12:52:42 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1140,10 +1140,10 @@ table tbody tr:last-child td:last-child {
 .zebra-striped tbody tr:hover td {
   background-color: #f5f5f5;
 }
-.zebra-striped .header {
+table .header {
   cursor: pointer;
 }
-.zebra-striped .header:after {
+table .header:after {
   content: "";
   float: right;
   margin-top: 7px;
@@ -1152,21 +1152,21 @@ table tbody tr:last-child td:last-child {
   border-color: #000 transparent;
   visibility: hidden;
 }
-.zebra-striped .headerSortUp, .zebra-striped .headerSortDown {
+table .headerSortUp, table .headerSortDown {
   background-color: rgba(141, 192, 219, 0.25);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
-.zebra-striped .header:hover:after {
+table .header:hover:after {
   visibility: visible;
 }
-.zebra-striped .headerSortDown:after, .zebra-striped .headerSortDown:hover:after {
+table .headerSortDown:after, table .headerSortDown:hover:after {
   visibility: visible;
   filter: alpha(opacity=60);
   -khtml-opacity: 0.6;
   -moz-opacity: 0.6;
   opacity: 0.6;
 }
-.zebra-striped .headerSortUp:after {
+table .headerSortUp:after {
   border-bottom: none;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
