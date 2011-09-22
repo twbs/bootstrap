@@ -26,6 +26,10 @@ $(document).ready(function(){
     e.preventDefault()
   })
 
+  // radios and toggles
+  $('.radio .btn').radio()
+  $('.toggle.btn').toggleBtn();
+
   // Copy code blocks in docs
   $(".copy-code").focus(function () {
     var el = this;

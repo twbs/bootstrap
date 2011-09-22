@@ -22,6 +22,7 @@
     <script src="../js/bootstrap-dropdown.js"></script>
     <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="../js/bootstrap-tabs.js"></script>
+    <script src="../js/bootstrap-radiotoggle.js"></script>
 
     <!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
@@ -52,6 +53,7 @@
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
             <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#radiotoggle">Radios &amp; Toggles</a></li>
           </ul>
         </div>
       </div>
@@ -657,6 +659,73 @@ $('#my-modal').bind('hidden', function () {
           </div>
         </div>
       </div>
+    </section>
+    
+    <section id="radiotoggle">
+        <div class="page-header">
+            <h1>Radios and Toggles <small>radiotoggle.js</small></h1>
+        </div>
+        <div class="row">
+            <div class="span4">
+                <p>This plugin adds interaction to radio and toggle button groups.</p>
+              <a href="../js/bootstrap-radiotoggle.js" target="_blank" class="btn primary">Download</a>
+            </div>
+            <div class="span12">
+                <h3>Using bootstrap-radiotoggle.js</h3>
+                <pre class="prettyprint linenums">
+$('.radio .btn').radio()
+
+$('.toggle.btn').toggleBtn();</pre>
+                <h3>Markup</h3>
+                <p>For radio buttons:</p>
+                <pre class="prettyprint linenums">
+&lt;div class="btngroup radio"&gt;
+  &lt;a class="btn left"&gt;Left&lt;/a&gt;
+  &lt;a class="btn middle"&gt;Middle&lt;/a&gt;
+  &lt;a class="btn right"&gt;Right&lt;/a&gt;
+&lt;/div&gt;</pre>
+                <p>For toggle buttons:</p>
+                <pre class="prettyprint linenums">
+&lt;div class="btngroup"&gt;
+  &lt;a class="btn toggle left"&gt;Left&lt;/a&gt;
+  &lt;a class="btn toggle right"&gt;Right&lt;/a&gt;
+&lt;/div&gt;</pre>
+                <p>Toggles need not be in a button group:</p>
+                <pre class="prettyprint linenums">
+&lt;a class="btn toggle"&gt;Toggle&lt;/a&gt;</pre>
+                <h3>Methods</h3>
+                <h4>$().radio()</h4>
+                <p>Adds radio button functionality to selected buttons.</p>
+                <h4>$().toggleBtn()</h4>
+                <p>Adds toggle button functionality to selected buttons.</p>
+                <h3>Demo</h3>
+                <div class="well">
+                    <div class="radio btngroup">
+                        <a class="btn left active" href="#">Left</a>
+                        <a class="btn middle" href="#">Middle</a>
+                        <a class="btn right" href="#">Right</a>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="btngroup">
+                        <a class="btn toggle left active" href="#">Left</a>
+                        <a class="btn toggle middle" href="#">Middle</a>
+                        <a class="btn toggle right" href="#">Right</a>
+                    </div>
+                    
+                    <a class="btn toggle" href="#">Toggle</a>
+                </div>
+                <script>
+                $('.radio .btn').radio()
+                $('.toggle.btn').toggleBtn();
+                
+                // for demonstration purposes only
+                $('#radiotoggle .btn[href=#]').click(function (e) { 
+                    e.preventDefault()
+                });
+                </script>
+            </div>
+        </div>
     </section>
 
 
