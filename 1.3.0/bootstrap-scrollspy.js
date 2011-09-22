@@ -102,4 +102,4 @@
     $('body').scrollSpy('[data-scrollspy] li > a')
   })
 
-}( window.jQuery || window.ender )
+}( window.jQuery || window.ender );
