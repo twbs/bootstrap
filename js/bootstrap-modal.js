@@ -101,7 +101,7 @@
         e && e.preventDefault()
 
         if (! this.isShown) {
-            return
+            return this
         }
 
         var that = this
