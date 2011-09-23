@@ -100,7 +100,9 @@
     , hide: function (e) {
         e && e.preventDefault()
 
-        if (! this.isShown) return
+        if (! this.isShown) {
+            return
+        }
 
         var that = this
         this.isShown = false
