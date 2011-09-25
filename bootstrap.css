@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun 25 Sep 2011 13:52:22 PDT
+ * Date: Sun 25 Sep 2011 16:29:58 PDT
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1925,18 +1925,17 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   display: inline-block;
   vertical-align: bottom;
 }
-.btn.left, .btn.middle, .btn.right {
+.btngroup .btn {
   float: left;
-}
-.btn.left {
-  border-right: none;
-  border-radius: 4px 0 0 4px;
-}
-.btn.middle {
-  border-right: none;
   border-radius: 0;
 }
-.btn.right {
+.btngroup .btn:nth-child(n+2) {
+  border-left: none;
+}
+.btngroup .btn:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.btngroup .btn:last-child {
   border-radius: 0px 4px 4px 0px;
 }
 .close {

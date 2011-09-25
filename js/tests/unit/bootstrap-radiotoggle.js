@@ -27,7 +27,7 @@ $(function () {
     
     test("should activate focused radio on click (radio)", function () {
         var radioHTML = '<div class="btngroup radio">'
-        + '<a class="btn left">One</a><a class="btn right active">Two</a>'
+        + '<a class="btn">One</a><a class="btn active">Two</a>'
         + '</div>'
         , radio = $(radioHTML).find('a').radio()
         

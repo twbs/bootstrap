@@ -623,25 +623,22 @@ input[type=submit].btn {
     .gradientBar(@blue, @blueDark)
 }
 
-// Left, right and centre classes for button groups
+// Classes for button groups
 .btngroup {
     display: inline-block;
     vertical-align: bottom;
 }
-.btn.left,
-.btn.middle,
-.btn.right {
+.btngroup .btn {
     float: left;
-}
-.btn.left {
-    border-right: none;
-    border-radius: 4px 0 0 4px;
-}
-.btn.middle {
-    border-right: none;
     border-radius: 0;
 }
-.btn.right {
+.btngroup .btn:nth-child(n+2) {
+    border-left: none;
+}
+.btngroup .btn:first-child {
+    border-radius: 4px 0 0 4px;
+}
+.btngroup .btn:last-child {
     border-radius: 0px 4px 4px 0px;
 }
 
