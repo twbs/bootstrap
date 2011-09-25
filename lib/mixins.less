@@ -1,66 +1,17 @@
-/* Preboot.less
- * Variables and mixins to pre-ignite any new web development project
- * ------------------------------------------------------------------ */
+/* Variables.less
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * ----------------------------------------------------------------- */
 
-
-// VARIABLES
-// ---------
-
-// Links
-@linkColor:         #0069d6;
-@linkColorHover:    darken(@linkColor, 10);
-
-// Grays
-@black:             #000;
-@grayDark:          lighten(@black, 25%);
-@gray:              lighten(@black, 50%);
-@grayLight:         lighten(@black, 75%);
-@grayLighter:       lighten(@black, 90%);
-@white:             #fff;
-
-// Accent Colors
-@blue:              #049CDB;
-@blueDark:          #0064CD;
-@green:             #46a546;
-@red:               #9d261d;
-@yellow:            #ffc40d;
-@orange:            #f89406;
-@pink:              #c3325f;
-@purple:            #7a43b6;
-
-// Baseline grid
-@basefont:          13px;
-@baseline:          18px;
-
-// Griditude
-@gridColumns:       16;
-@gridColumnWidth:   40px;
-@gridGutterWidth:   20px;
-@extraSpace:        (@gridGutterWidth * 2); // For our grid calculations
-@siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
-
-// Color Scheme
-@baseColor:         @blue;                  // Set a base color
-@complement:        spin(@baseColor, 180);  // Determine a complementary color
-@split1:            spin(@baseColor, 158);  // Split complements
-@split2:            spin(@baseColor, -158);
-@triad1:            spin(@baseColor, 135);  // Triads colors
-@triad2:            spin(@baseColor, -135);
-@tetra1:            spin(@baseColor, 90);   // Tetra colors
-@tetra2:            spin(@baseColor, -90);
-@analog1:           spin(@baseColor, 22);   // Analogs colors
-@analog2:           spin(@baseColor, -22);
-
-
-// MIXINS
-// ------
 
 // Clearfix for clearing floats like a boss h5bp.com/q
-.clearfix {
+.clearfix() {
   zoom: 1;
-	&:before, &:after {
+	&:before,
+  &:after {
     display: table;
     content: "";
+    zoom: 1;
+    *display: inline;
 	}
 	&:after {
     clear: both;
@@ -68,9 +19,10 @@
 }
 
 // Center-align a block level element
-.center-block {
+.center-block() {
 	display: block;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Sizing shortcuts
@@ -120,9 +72,10 @@
 }
 
 // Grid System
-.container {
+.fixed-container() {
   width: @siteWidth;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   .clearfix();
 }
 .columns(@columnSpan: 1) {
@@ -130,6 +83,17 @@
 }
 .offset(@columnOffset: 1) {
   margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
+}
+// Necessary grid styles for every column to make them appear next to each other horizontally
+.gridColumn() {
+  display: inline;
+  float: left;
+  margin-left: @gridGutterWidth;
+}
+// makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
+.makeColumn(@columnSpan: 1) {
+  .gridColumn();
+  .columns(@columnSpan);
 }
 
 // Border Radius
@@ -150,6 +114,8 @@
 .transition(@transition) {
 	-webkit-transition: @transition;
 	   -moz-transition: @transition;
+ 	    -ms-transition: @transition;
+	     -o-transition: @transition;
 	        transition: @transition;
 }
 
@@ -187,34 +153,6 @@
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-}
-// Shared colors for buttons and alerts
-.btn,
-.alert-message {
-  // Set text color
-  &.danger,
-  &.danger:hover,
-  &.error,
-  &.error:hover,
-  &.success,
-  &.success:hover,
-  &.info,
-  &.info:hover {
-    color: @white
-  }
-  // Danger and error appear as red
-  &.danger,
-  &.error {
-    .gradientBar(#ee5f5b, #c43c35);
-  }
-  // Success appears as green
-  &.success {
-    .gradientBar(#62c462, #57a957);
-  }
-  // Info appears as a neutral blue
-  &.info {
-    .gradientBar(#5bc0de, #339bb9);
-  }
 }
 
 // Gradients

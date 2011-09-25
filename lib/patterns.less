@@ -23,8 +23,10 @@
   }
 
   // Hover and active states
-  a:hover,
-  ul .active a {
+  // h3 for backwards compatibility
+  h3 a:hover,
+  .brand a:hover,
+  ul .active > a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
     color: @white;
@@ -32,17 +34,29 @@
   }
 
   // Website name
+  // h3 left for backwards compatibility
   h3 {
     position: relative;
-    a {
-      float: left;
-      display: block;
-      padding: 8px 20px 12px;
-      margin-left: -20px; // negative indent to left-align the text down the page
+  }
+  h3 a,
+  .brand {
+    float: left;
+    display: block;
+    padding: 8px 20px 12px;
+    margin-left: -20px; // negative indent to left-align the text down the page
+    color: @white;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
+  }
+
+  // Plain text in topbar
+  p {
+    margin: 0;
+    line-height: 40px;
+    a:hover {
+      background-color: transparent;
       color: @white;
-      font-size: 20px;
-      font-weight: 200;
-      line-height: 1;
     }
   }
 
@@ -53,12 +67,16 @@
     position: relative;
     .opacity(100);
   }
+  // Todo: remove from v2.0 when ready, added for legacy
+  form.pull-right {
+    float: right;
+  }
   input {
     background-color: #444;
     background-color: rgba(255,255,255,.3);
     #font > .sans-serif(13px, normal, 1);
     padding: 4px 9px;
-    color: #fff;
+    color: @white;
     color: rgba(255,255,255,.75);
     border: 1px solid #111;
     .border-radius(4px);
@@ -77,15 +95,15 @@
     &:hover {
       background-color: @grayLight;
       background-color: rgba(255,255,255,.5);
-      color: #fff;
+      color: @white;
     }
     // Focus states (we use .focused since IE8 and down doesn't support :focus)
     &:focus,
     &.focused {
-      outline: none;
-      background-color: #fff;
+      outline: 0;
+      background-color: @white;
       color: @grayDark;
-      text-shadow: 0 1px 0 #fff;
+      text-shadow: 0 1px 0 @white;
       border: 0;
       padding: 5px 10px;
       .box-shadow(0 0 3px rgba(0,0,0,.15));
@@ -94,7 +112,7 @@
 }
 
 // gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-// For backwards compatability, include .topbar .fill
+// For backwards compatibility, include .topbar .fill
 .topbar-inner,
 .topbar .fill {
   background-color: #222;
@@ -128,11 +146,11 @@
     line-height: 19px;
     text-decoration: none;
     &:hover {
-      color: #fff;
+      color: @white;
       text-decoration: none;
     }
   }
-  .active a {
+  .active > a {
     background-color: #222;
     background-color: rgba(0,0,0,.5);
   }
@@ -146,6 +164,7 @@
     .menu-dropdown,
     .dropdown-menu {
       right: 0;
+      border: 0;
     }
   }
   // Dropdowns within the .nav
@@ -164,7 +183,7 @@
     // a.menu for backwards compatibility
     a.menu,
     .dropdown-toggle {
-      color: #fff;
+      color: @white;
       &.open {
         background: #444;
         background: rgba(255,255,255,.05);
@@ -175,8 +194,11 @@
       text-shadow: 0 1px 0 rgba(0,0,0,.5);
       &:hover {
         #gradient > .vertical(#292929,#191919);
-        color: #fff;
+        color: @white;
       }
+    }
+    .active a {
+      color: @white;
     }
     .divider {
       background-color: #222;
@@ -185,7 +207,7 @@
   }
 }
 
-// For backwards compatability with new dropdowns, redeclare dropdown link padding
+// For backwards compatibility with new dropdowns, redeclare dropdown link padding
 .topbar ul .menu-dropdown li a,
 .topbar ul .dropdown-menu li a {
   padding: 4px 15px;
@@ -212,18 +234,19 @@ a.menu:after,
   margin-left: 4px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 4px solid #fff;
+  border-top: 4px solid @white;
   .opacity(50);
 }
 // The dropdown menu (ul)
 // .menu-dropdown for backwards compatibility
 .menu-dropdown,
 .dropdown-menu {
-  background-color: #fff;
+  background-color: @white;
   float: left;
   display: none; // None by default, but block on "open" of the menu
   position: absolute;
   top: 40px;
+  z-index: 900;
   min-width: 160px;
   max-width: 220px;
   _width: 160px;
@@ -251,7 +274,7 @@ a.menu:after,
     margin: 5px 0;
     overflow: hidden;
     background-color: #eee;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid @white;
   }
 }
 
@@ -264,7 +287,7 @@ a.menu:after,
     font-weight: normal;
     line-height: 18px;
     color: @gray;
-    text-shadow: 0 1px 0 #fff;
+    text-shadow: 0 1px 0 @white;
     // Hover state
     &:hover {
       #gradient > .vertical(#eeeeee, #dddddd);
@@ -283,7 +306,7 @@ a.menu:after,
   // .menu for backwards compatibility
   .menu,
   .dropdown-toggle {
-    color: #fff;
+    color: @white;
     background: #ccc;
     background: rgba(0,0,0,.3);
   }
@@ -312,28 +335,29 @@ a.menu:after,
 
 // Basic Tabs
 .tabs {
+  float: left;
   width: 100%;
   border-bottom: 1px solid #ddd;
   > li {
     position: relative; // For the dropdowns mostly
     top: 1px;
     > a {
-      margin-right: 2px;
       padding: 0 15px;
-      line-height: (@baseline * 2) - 1;
+      margin-right: 2px;
+      line-height: @baseline * 2;
+      border: 1px solid transparent;
       .border-radius(4px 4px 0 0);
       &:hover {
-        background-color: #eee;
-        border-bottom: 1px solid #ddd;
         text-decoration: none;
+        background-color: #eee;
+        border-color: #eee #eee #ddd;
       }
     }
     &.active > a {
-      background-color: #fff;
-      padding: 0 14px;
-      border: 1px solid #ddd;
-      border-bottom: 0;
       color: @gray;
+      background-color: @white;
+      border: 1px solid #ddd;
+      border-bottom-color: transparent;
     }
   }
   // first one for backwards compatibility
@@ -351,10 +375,18 @@ a.menu:after,
     margin-left: 5px;
   }
   // first one for backwards compatibility
+  li.open.menu .menu,
+  .open.dropdown .dropdown-toggle {
+    border-color: #999;
+  }
+  // first one for backwards compatibility
   li.open a.menu:after,
   .dropdown.open .dropdown-toggle:after {
     border-top-color: #555;
   }
+}
+.tab-content {
+  clear: both;
 }
 
 // Basic pill nav
@@ -362,20 +394,56 @@ a.menu:after,
   a {
       margin: 5px 3px 5px 0;
     padding: 0 15px;
-    text-shadow: 0 1px 1px #fff;
+    text-shadow: 0 1px 1px @white;
     line-height: 30px;
     .border-radius(15px);
     &:hover {
       background: @linkColorHover;
-      color: #fff;
+      color: @white;
       text-decoration: none;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
     }
   }
   .active a {
     background: @linkColor;
-    color: #fff;
+    color: @white;
     text-shadow: 0 1px 1px rgba(0,0,0,.25);
+  }
+}
+
+.tab-content > *,
+.pill-content > * {
+  display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display:block;
+}
+
+
+// BREADCRUMBS
+// -----------
+
+.breadcrumb {
+  margin: 0 0 @baseline;
+  padding: 7px 14px;
+  #gradient > .vertical(#ffffff, #f5f5f5);
+  border: 1px solid #ddd;
+  .border-radius(3px);
+  .box-shadow(inset 0 1px 0 @white);
+  li {
+    display: inline;
+    text-shadow: 0 1px 0 @white;
+  }
+  .divider {
+    padding: 0 5px;
+    color: @grayLight;
+  }
+  a {
+  }
+  .active a {
+    color: @grayDark;
   }
 }
 
@@ -385,7 +453,6 @@ a.menu:after,
 
 .hero-unit {
   background-color: #f5f5f5;
-  margin-top: 60px;
   margin-bottom: 30px;
   padding: 60px;
   .border-radius(6px);
@@ -424,6 +491,35 @@ footer {
 // BUTTON STYLES
 // -------------
 
+// Shared colors for buttons and alerts
+.btn,
+.alert-message {
+  // Set text color
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: @white
+  }
+  // Danger and error appear as red
+  &.danger,
+  &.error {
+    .gradientBar(#ee5f5b, #c43c35);
+  }
+  // Success appears as green
+  &.success {
+    .gradientBar(#62c462, #57a957);
+  }
+  // Info appears as a neutral blue
+  &.info {
+    .gradientBar(#5bc0de, #339bb9);
+  }
+}
+
 // Base .btn styles
 .btn {
   // Button Base
@@ -433,7 +529,7 @@ footer {
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
-  font-size: 13px;
+  font-size: @basefont;
   line-height: normal;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
@@ -447,9 +543,14 @@ footer {
     text-decoration: none;
   }
 
+  // Focus state for keyboard and accessibility
+  &:focus {
+    outline: 1px dotted #666;
+  }
+
   // Primary Button Type
   &.primary {
-    color:#fff;
+    color: @white;
     .gradientBar(@blue, @blueDark)
   }
 
@@ -480,14 +581,14 @@ footer {
 
   // Button Sizes
   &.large {
-    font-size: 16px;
+    font-size: @basefont + 2px;
     line-height: normal;
     padding: 9px 14px 9px;
     .border-radius(6px);
   }
   &.small {
     padding: 7px 9px 7px;
-    font-size: 11px;
+    font-size: @basefont - 2px;
   }
 }
 // Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
@@ -506,20 +607,44 @@ input[type=submit].btn {
 }
 
 
+// CLOSE ICONS
+// -----------
+.close {
+  float: right;
+  color: @black;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: @baseline * .75;
+  text-shadow: 0 1px 0 rgba(255,255,255,1);
+  .opacity(20);
+  &:hover {
+    color: @black;
+    text-decoration: none;
+    .opacity(40);
+  }
+}
+
+
 // ERROR STYLES
 // ------------
 
 // Base alert styles
 .alert-message {
-  .gradientBar(#fceec1, #eedc94); // warning by default
+  position: relative;
+  padding: 7px 15px;
   margin-bottom: @baseline;
-  padding: 7px 14px;
   color: @grayDark;
+  .gradientBar(#fceec1, #eedc94); // warning by default
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   border-width: 1px;
   border-style: solid;
   .border-radius(4px);
   .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+
+  // Adjust close icon
+  .close {
+    *margin-top: 3px; /* IE7 spacing */
+  }
 
   // Remove extra margin from content
   h5 {
@@ -537,20 +662,6 @@ input[type=submit].btn {
     // Provide actions with buttons
     .box-shadow(0 1px 0 rgba(255,255,255,.25));
   }
-  .close {
-    float: right;
-    margin-top: -2px;
-    color: @black;
-    font-size: 20px;
-    font-weight: bold;
-    text-shadow: 0 1px 0 rgba(255,255,255,1);
-    .opacity(20);
-    &:hover {
-      color: @black;
-      text-decoration: none;
-      .opacity(40);
-    }
-  }
 
   &.block-message {
     background-image: none;
@@ -559,9 +670,14 @@ input[type=submit].btn {
     padding: 14px;
     border-color: #fceec1;
     .box-shadow(none);
-
-    p {
+    ul, p {
       margin-right: 30px;
+    }
+    ul {
+      margin-bottom: 0;
+    }
+    li {
+      color: @grayDark;
     }
     .alert-actions {
       margin-top: 5px;
@@ -642,6 +758,10 @@ input[type=submit].btn {
   border: 1px solid rgba(0,0,0,.05);
   .border-radius(4px);
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
 }
 
 
@@ -649,21 +769,28 @@ input[type=submit].btn {
 // ------
 
 .modal-backdrop {
-  background-color: rgba(0,0,0,.5);
+  background-color: @black;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 10000;
+  // Fade for backdrop
+  &.fade { opacity: 0; }
 }
+
+.modal-backdrop, .modal-backdrop.fade.in {
+  .opacity(80);
+}
+
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 2000;
+  z-index: 11000;
   width: 560px;
-  margin: -280px 0 0 -250px;
+  margin: -250px 0 0 -250px;
   background-color: @white;
   border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
@@ -671,33 +798,31 @@ input[type=submit].btn {
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
+  .close { margin-top: 7px; }
+  &.fade {
+    .transition(e('opacity .3s linear, top .3s ease-out'));
+    top: -25%;
+  }
+  &.fade.in { top: 50%; }
 }
 .modal-header {
   border-bottom: 1px solid #eee;
-  padding: 5px 20px;
-  .close {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    color: #999;
-    line-height:10px;
-    font-size: 18px;
-  }
+  padding: 5px 15px;
 }
 .modal-body {
-  padding: 20px;
+  padding: 15px;
 }
 .modal-footer {
   background-color: #f5f5f5;
-  padding: 14px 20px 15px;
+  padding: 14px 15px 15px;
   border-top: 1px solid #ddd;
   .border-radius(0 0 6px 6px);
-  .box-shadow(inset 0 1px 0 #fff);
+  .box-shadow(inset 0 1px 0 @white);
   .clearfix();
   margin-bottom: 0;
   .btn {
     float: right;
-    margin-left: 10px;
+    margin-left: 5px;
   }
 }
 
@@ -712,7 +837,7 @@ input[type=submit].btn {
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
-    border-top: @arrowWidth solid #000;
+    border-top: @arrowWidth solid @black;
   }
   .left(@arrowWidth: 5px) {
     top: 50%;
@@ -720,7 +845,7 @@ input[type=submit].btn {
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
-    border-left: @arrowWidth solid #000;
+    border-left: @arrowWidth solid @black;
   }
   .below(@arrowWidth: 5px) {
     top: 0;
@@ -728,7 +853,7 @@ input[type=submit].btn {
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid #000;
+    border-bottom: @arrowWidth solid @black;
   }
   .right(@arrowWidth: 5px) {
     top: 50%;
@@ -736,7 +861,7 @@ input[type=submit].btn {
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid #000;
+    border-right: @arrowWidth solid @black;
   }
 }
 
@@ -751,6 +876,9 @@ input[type=submit].btn {
   font-size: 11px;
   z-index: 1000;
   .opacity(80);
+  &.fade.in {
+    .opacity(80);
+  }
   &.above .twipsy-arrow   { #popoverArrow > .above(); }
   &.left .twipsy-arrow    { #popoverArrow > .left(); }
   &.below .twipsy-arrow   { #popoverArrow > .below(); }
@@ -758,7 +886,7 @@ input[type=submit].btn {
 }
 .twipsy-inner {
   padding: 3px 8px;
-  background-color: #000;
+  background-color: @black;
   color: white;
   text-align: center;
   max-width: 200px;
@@ -792,8 +920,8 @@ input[type=submit].btn {
     height: 0;
   }
   .inner {
-    background: #333;
-    background: rgba(0,0,0,.8);
+    background-color: @black;
+    background-color: rgba(0,0,0,.8);
     padding: 3px;
     overflow: hidden;
     width: 280px;
@@ -814,6 +942,64 @@ input[type=submit].btn {
     .background-clip(padding-box);
     p, ul, ol {
       margin-bottom: 0;
+    }
+  }
+}
+
+
+// PATTERN ANIMATIONS
+// ------------------
+
+.fade {
+  .transition(opacity .15s linear);
+  opacity: 0;
+  &.in {
+    opacity: 1;
+  }
+}
+
+
+// LABELS
+// ------
+
+.label {
+  padding: 1px 3px 2px;
+  background-color: @grayLight;
+  font-size: @basefont * .75;
+  font-weight: bold;
+  color: @white;
+  text-transform: uppercase;
+  .border-radius(3px);
+  &.important { background-color: #c43c35; }
+  &.warning   { background-color: @orange; }
+  &.success   { background-color: @green; }
+  &.notice    { background-color: lighten(@blue, 25%); }
+}
+
+
+// MEDIA GRIDS
+// -----------
+
+.media-grid {
+  margin-left: -20px;
+  margin-bottom: 0;
+  .clearfix();
+  li {
+    display: inline;
+  }
+  a {
+    float: left;
+    padding: 4px;
+    margin: 0 0 20px 20px;
+    border: 1px solid #ddd;
+    .border-radius(4px);
+    .box-shadow(0 1px 1px rgba(0,0,0,.075));
+    img {
+      display: block;
+    }
+    &:hover {
+      border-color: @linkColor;
+      .box-shadow(0 1px 4px rgba(0,105,214,.25));
     }
   }
 }

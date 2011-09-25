@@ -21,7 +21,7 @@ Here's what the LESS version looks like:
 Or if you prefer, the standard css way:
 
 ``` html
-<link rel="stylesheet" type="text/css" href="bootstrap-1.2.0.css">
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
 ```
 
 For more info, refer to the docs!
@@ -45,7 +45,7 @@ And constructed with the following guidelines:
 For more information on SemVer, please visit http://semver.org/.
 
 
-Bug Tracker
+Bug tracker
 -----------
 
 Have a bug? Please create an issue here on GitHub!
@@ -53,7 +53,13 @@ Have a bug? Please create an issue here on GitHub!
 https://github.com/twitter/bootstrap/issues
 
 
-Mailing List
+Twitter account
+---------------
+
+Keep up to date on announcements and more by following Bootstrap on Twitter, <a href="http://twitter.com/TwBootstrap">@TwBootstrap</a>.
+
+
+Mailing list
 ------------
 
 Have a question? Ask on our mailing list!
@@ -77,7 +83,7 @@ This is a convenience method for watching your less files and automatically buil
 Watchr is required for this command to run.
 
 
-AUTHORS
+Authors
 -------
 
 **Mark Otto**
@@ -91,7 +97,7 @@ AUTHORS
 + http://github.com/fat
 
 
-Copyright and License
+Copyright and license
 ---------------------
 
 Copyright 2011 Twitter, Inc.

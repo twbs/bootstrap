@@ -16,18 +16,19 @@ fieldset {
   padding-top: @baseline;
   legend {
     display: block;
-    margin-left: 150px;
-    font-size: 20px;
+    padding-left: 150px;
+    font-size: @basefont * 1.5;
     line-height: 1;
-    *margin: 0 0 5px 145px; /* IE6-7 */
-    *line-height: 1.5; /* IE6-7 */
     color: @grayDark;
+    *padding: 0 0 5px 145px; /* IE6-7 */
+    *line-height: 1.5; /* IE6-7 */
   }
 }
 
 // Parent element that clears floats and wraps labels and fields together
-.clearfix {
+form .clearfix {
   margin-bottom: @baseline;
+  .clearfix()
 }
 
 // Set font for forms
@@ -41,8 +42,8 @@ textarea {
 // Float labels left
 label {
   padding-top: 6px;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: @basefont;
+  line-height: @baseline;
   float: left;
   width: 130px;
   text-align: right;
@@ -50,7 +51,7 @@ label {
 }
 
 // Shift over the inside div to align all label's relevant content
-div.input {
+form .input {
   margin-left: 150px;
 }
 
@@ -69,7 +70,7 @@ select,
   width: 210px;
   height: @baseline;
   padding: 4px;
-  font-size: 13px;
+  font-size: @basefont;
   line-height: @baseline;
   color: @gray;
   border: 1px solid #ccc;
@@ -89,7 +90,7 @@ input[type=radio] {
 }
 
 input[type=file] {
-  background-color: #fff;
+  background-color: @white;
   padding: initial;
   border: initial;
   line-height: initial;
@@ -105,19 +106,27 @@ input[type=submit] {
 
 select,
 input[type=file] {
-  height: @baseline * 1.5;
+  height: @baseline * 1.5; // In IE7, the height of the select element cannot be changed by height, only font-size
   line-height: @baseline * 1.5;
+  *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+}
+
+// Make multiple select elements height not fixed
+select[multiple] {
+  height: inherit;
 }
 
 textarea {
   height: auto;
 }
 
+// For text that needs to appear as an input but should not be an input
 .uneditable-input {
-  background-color: #eee;
+  background-color: @white;
   display: block;
-  border-color: #ccc;
-  .box-shadow(inset 0 1px 2px rgba(0,0,0,.075));
+  border-color: #eee;
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
+  cursor: not-allowed;
 }
 
 // Placeholder text gets special styles; can't be bundled together though for some reason
@@ -130,21 +139,27 @@ textarea {
 
 // Focus states
 input,
-select, textarea {
+textarea {
   @transition: border linear .2s, box-shadow linear .2s;
   .transition(@transition);
   .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
 }
 input:focus,
 textarea:focus {
-  outline: none;
+  outline: 0;
   border-color: rgba(82,168,236,.8);
   @shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
   .box-shadow(@shadow);
 }
+input[type=file]:focus,
+input[type=checkbox]:focus,
+select:focus {
+  .box-shadow(none); // override for file inputs
+  outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
+}
 
 // Error styles
-form div.error {
+form div.clearfix.error {
   background: lighten(@red, 57%);
   padding: 10px 0;
   margin: -10px 0 10px;
@@ -175,35 +190,87 @@ form div.error {
 }
 
 // Form element sizes
-.input-mini, input.mini, textarea.mini, select.mini {
+// TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
+.input-mini,
+input.mini,
+textarea.mini,
+select.mini {
   width: 60px;
 }
-.input-small, input.small, textarea.small, select.small {
+.input-small,
+input.small,
+textarea.small,
+select.small {
   width: 90px;
 }
-.input-medium, input.medium, textarea.medium, select.medium {
+.input-medium,
+input.medium,
+textarea.medium,
+select.medium {
   width: 150px;
 }
-.input-large, input.large, textarea.large, select.large {
+.input-large,
+input.large,
+textarea.large,
+select.large {
   width: 210px;
 }
-.input-xlarge, input.xlarge, textarea.xlarge, select.xlarge {
+.input-xlarge,
+input.xlarge,
+textarea.xlarge,
+select.xlarge {
   width: 270px;
 }
-.input-xxlarge, input.xxlarge, textarea.xxlarge, select.xxlarge {
+.input-xxlarge,
+input.xxlarge,
+textarea.xxlarge,
+select.xxlarge {
   width: 530px;
 }
 textarea.xxlarge {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
-// Turn off focus for disabled (read-only) form elements
-input[readonly]:focus,
-textarea[readonly]:focus,
-input.disabled {
-  background: #f5f5f5;
+// Grid style input sizes
+// This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
+.formColumns(@columnSpan: 1) {
+  display: inline-block;
+  float: none;
+  width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
+  margin-left: 0;
+}
+input,
+textarea,
+select {
+  // Default columns
+  &.span1     { .formColumns(1); }
+  &.span2     { .formColumns(2); }
+  &.span3     { .formColumns(3); }
+  &.span4     { .formColumns(4); }
+  &.span5     { .formColumns(5); }
+  &.span6     { .formColumns(6); }
+  &.span7     { .formColumns(7); }
+  &.span8     { .formColumns(8); }
+  &.span9     { .formColumns(9); }
+  &.span10    { .formColumns(10); }
+  &.span11    { .formColumns(11); }
+  &.span12    { .formColumns(12); }
+  &.span13    { .formColumns(13); }
+  &.span14    { .formColumns(14); }
+  &.span15    { .formColumns(15); }
+  &.span16    { .formColumns(16); }
+}
+
+// Disabled and read-only inputs
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: #f5f5f5;
   border-color: #ddd;
-  .box-shadow(none);
+  cursor: not-allowed;
 }
 
 // Actions (the buttons)
@@ -228,7 +295,7 @@ input.disabled {
 // Help Text
 .help-inline,
 .help-block {
-  font-size: 12px;
+  font-size: @basefont - 2;
   line-height: @baseline;
   color: @grayLight;
 }
@@ -268,20 +335,22 @@ input.disabled {
     .border-radius(0 3px 3px 0);
   }
   .add-on {
+    position: relative;
     background: #f5f5f5;
+    border: 1px solid #ccc;
+    z-index: 2;
     float: left;
     display: block;
     width: auto;
     min-width: 16px;
+    height: 18px;
     padding: 4px 4px 4px 5px;
-    color: @grayLight;
+    margin-right: -1px;
     font-weight: normal;
     line-height: 18px;
-    height: 18px;
+    color: @grayLight;
     text-align: center;
-    text-shadow: 0 1px 0 #fff;
-    border: 1px solid #ccc;
-    border-right-width: 0;
+    text-shadow: 0 1px 0 @white;
     .border-radius(3px 0 0 3px);
   }
   .active {
@@ -301,8 +370,8 @@ input.disabled {
   }
   .add-on {
     .border-radius(0 3px 3px 0);
-    border-right-width: 1px;
-    border-left-width: 0;
+    margin-right: 0;
+    margin-left: -1px;
   }
 }
 
@@ -314,30 +383,33 @@ input.disabled {
     display: block;
     padding: 0;
     width: 100%;
-    label {
-      display: block;
-      float: none;
-      width: auto;
-      padding: 0;
-      line-height: @baseline;
-      text-align: left;
-      white-space: normal;
-      strong {
-        color: @gray;
-      }
-      small {
-        font-size: 12px;
-        font-weight: normal;
-      }
+  }
+  label {
+    display: block;
+    float: none;
+    width: auto;
+    padding: 0;
+    line-height: @baseline;
+    text-align: left;
+    white-space: normal;
+    strong {
+      color: @gray;
     }
-    ul.inputs-list {
-      margin-left: 25px;
-      margin-bottom: 10px;
-      padding-top: 0;
+    small {
+      font-size: @basefont - 2;
+      font-weight: normal;
     }
-    &:first-child {
-      padding-top: 5px;
-    }
+  }
+  .inputs-list {
+    margin-left: 25px;
+    margin-bottom: 10px;
+    padding-top: 0;
+  }
+  &:first-child {
+    padding-top: 6px;
+  }
+  li + li {
+    padding-top: 2px;
   }
   input[type=radio],
   input[type=checkbox] {
@@ -352,7 +424,7 @@ input.disabled {
     padding-top: @baseline / 2;
   }
   legend {
-    margin-left: 0;
+    padding-left: 0;
   }
   label {
     display: block;
@@ -379,7 +451,7 @@ input.disabled {
       }
     }
   }
-  div.error {
+  div.clearfix.error {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
