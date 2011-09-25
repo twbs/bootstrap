@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun 25 Sep 2011 13:47:19 PDT
+ * Date: Sun 25 Sep 2011 13:52:22 PDT
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1889,16 +1889,16 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border: 0;
 }
 .toggle.active {
-  background-color: #e6e6e6;
+  background-color: #bfbfbf;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#e6e6e6), to(#e6e6e6));
-  background-image: -moz-linear-gradient(top, #e6e6e6, #e6e6e6);
-  background-image: -ms-linear-gradient(top, #e6e6e6, #e6e6e6);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e6e6e6), color-stop(100%, #e6e6e6));
-  background-image: -webkit-linear-gradient(top, #e6e6e6, #e6e6e6);
-  background-image: -o-linear-gradient(top, #e6e6e6, #e6e6e6);
-  background-image: linear-gradient(top, #e6e6e6, #e6e6e6);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#e6e6e6', GradientType=0);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#bfbfbf), to(#bfbfbf));
+  background-image: -moz-linear-gradient(top, #bfbfbf, #bfbfbf);
+  background-image: -ms-linear-gradient(top, #bfbfbf, #bfbfbf);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bfbfbf), color-stop(100%, #bfbfbf));
+  background-image: -webkit-linear-gradient(top, #bfbfbf, #bfbfbf);
+  background-image: -o-linear-gradient(top, #bfbfbf, #bfbfbf);
+  background-image: linear-gradient(top, #bfbfbf, #bfbfbf);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bfbfbf', endColorstr='#bfbfbf', GradientType=0);
   color: #333;
   text-decoration: none;
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
