@@ -53,7 +53,7 @@
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
             <li><a href="#alerts">Alerts</a></li>
-            <li><a href="#radiotoggle">Radios &amp; Toggles</a></li>
+            <li><a href="#radiotoggle">Toggles</a></li>
           </ul>
         </div>
       </div>
@@ -663,11 +663,11 @@ $('#my-modal').bind('hidden', function () {
     
     <section id="radiotoggle">
         <div class="page-header">
-            <h1>Radios and Toggles <small>radiotoggle.js</small></h1>
+            <h1>Toggles <small>radiotoggle.js</small></h1>
         </div>
         <div class="row">
             <div class="span4">
-                <p>This plugin adds interaction to radio and toggle button groups.</p>
+                <p>Toggle buttons and radio buttons in button groups.</p>
               <a href="../js/bootstrap-radiotoggle.js" target="_blank" class="btn primary">Download</a>
             </div>
             <div class="span12">
@@ -675,7 +675,7 @@ $('#my-modal').bind('hidden', function () {
                 <pre class="prettyprint linenums">
 $('.radio .btn').radio()
 
-$('.toggle.btn').toggleBtn();</pre>
+$('.toggle.btn').toggleBtn()</pre>
                 <h3>Markup</h3>
                 <p>For radio buttons:</p>
                 <pre class="prettyprint linenums">
@@ -717,7 +717,7 @@ $('.toggle.btn').toggleBtn();</pre>
                 </div>
                 <script>
                 $('.radio .btn').radio()
-                $('.toggle.btn').toggleBtn();
+                $('.toggle.btn').toggleBtn()
                 
                 // for demonstration purposes only
                 $('#radiotoggle .btn[href=#]').click(function (e) { 
