@@ -1,0 +1,170 @@
+/*
+ * Tables.less
+ * Tables for, you guessed it, tabular data
+ * ---------------------------------------- */
+
+
+// BASELINE STYLES
+// ---------------
+
+table {
+  width: 100%;
+  margin-bottom: @baseline;
+  padding: 0;
+  border-collapse: separate; // Done so we can round those corners!
+  *border-collapse: collapse; /* IE7, collapse table to remove spacing */
+  font-size: @basefont;
+  border: 1px solid #ddd;
+  .border-radius(4px);
+  th, td {
+    padding: 10px 10px 9px;
+    line-height: @baseline;
+    text-align: left;
+  }
+  th {
+    padding-top: 9px;
+    font-weight: bold;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+  }
+  td {
+    vertical-align: top;
+  }
+  th + th,
+  td + td {
+    border-left: 1px solid #ddd;
+  }
+  tr + tr td {
+    border-top: 1px solid #ddd;
+  }
+  tbody tr:first-child td:first-child {
+    .border-radius(4px 0 0 0);
+  }
+  tbody tr:first-child td:last-child {
+    .border-radius(0 4px 0 0);
+  }
+  tbody tr:last-child td:first-child {
+    .border-radius(0 0 0 4px);
+  }
+  tbody tr:last-child td:last-child {
+    .border-radius(0 0 4px 0);
+  }
+}
+
+
+// ZEBRA-STRIPING
+// --------------
+
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.zebra-striped {
+  tbody {
+    tr:nth-child(odd) td {
+      background-color: #f9f9f9;
+    }
+    tr:hover td {
+      background-color: #f5f5f5;
+    }
+  }
+}
+
+table {
+  // Tablesorting styles w/ jQuery plugin
+  .header {
+    cursor: pointer;
+    &:after {
+      content: "";
+      float: right;
+      margin-top: 7px;
+      border-width: 0 4px 4px;
+      border-style: solid;
+      border-color: #000 transparent;
+      visibility: hidden;
+    }
+  }
+  // Style the sorted column headers (THs)
+  .headerSortUp,
+  .headerSortDown {
+    background-color: rgba(141,192,219,.25);
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  }
+  // Style the ascending (reverse alphabetical) column header
+  .header:hover {
+    &:after {
+      visibility:visible;
+    }
+  }
+  // Style the descending (alphabetical) column header
+  .headerSortDown,
+  .headerSortDown:hover {
+    &:after {
+      visibility:visible;
+      .opacity(60);
+    }
+  }
+  // Style the ascending (reverse alphabetical) column header
+  .headerSortUp {
+    &:after {
+      border-bottom: none;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #000;
+      visibility:visible;
+      .box-shadow(none); //can't add boxshadow to downward facing arrow :(
+      .opacity(60);
+    }
+  }
+  // Blue Table Headings
+  .blue {
+    color: @blue;
+    border-bottom-color: @blue;
+  }
+  .headerSortUp.blue,
+  .headerSortDown.blue {
+    background-color: lighten(@blue, 40%);
+  }
+  // Green Table Headings
+  .green {
+    color: @green;
+    border-bottom-color: @green;
+  }
+  .headerSortUp.green,
+  .headerSortDown.green {
+    background-color: lighten(@green, 40%);
+  }
+  // Red Table Headings
+  .red {
+    color: @red;
+    border-bottom-color: @red;
+  }
+  .headerSortUp.red,
+  .headerSortDown.red {
+    background-color: lighten(@red, 50%);
+  }
+  // Yellow Table Headings
+  .yellow {
+    color: @yellow;
+    border-bottom-color: @yellow;
+  }
+  .headerSortUp.yellow,
+  .headerSortDown.yellow {
+    background-color: lighten(@yellow, 40%);
+  }
+  // Orange Table Headings
+  .orange {
+    color: @orange;
+    border-bottom-color: @orange;
+  }
+  .headerSortUp.orange,
+  .headerSortDown.orange {
+    background-color: lighten(@orange, 40%);
+  }
+  // Purple Table Headings
+  .purple {
+    color: @purple;
+    border-bottom-color: @purple;
+  }
+  .headerSortUp.purple,
+  .headerSortDown.purple {
+    background-color: lighten(@purple, 40%);
+  }
+}

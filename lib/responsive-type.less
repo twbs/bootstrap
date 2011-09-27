@@ -1,0 +1,187 @@
+/* Typography.less
+ * Headings, body text, lists, code, and more for a versatile and durable typography system
+ * ---------------------------------------------------------------------------------------- */
+
+
+// BODY TEXT
+// ---------
+
+p {
+  #font > .shorthand(normal,@basefont,@baseline);
+  margin-bottom: @baseline / 2;
+  small {
+    font-size: @basefont - 2;
+    color: @grayLight;
+  }
+}
+
+
+// HEADINGS
+// --------
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: @grayDark;
+  small {
+    color: @grayLight;
+  }
+}
+h1 {
+  margin-bottom: @baseline;
+  font-size: 30px;
+  line-height: @baseline * 2;
+  small {
+    font-size: 18px;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: @baseline * 2;
+  small {
+    font-size: 14px;
+  }
+}
+h3, h4, h5, h6 {
+  line-height: @baseline * 2;
+}
+h3 {
+  font-size: 18px;
+  small {
+    font-size: 14px;
+  }
+}
+h4 {
+  font-size: 16px;
+  small {
+    font-size: 12px;
+  }
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 13px;
+  color: @grayLight;
+  text-transform: uppercase;
+}
+
+
+// COLORS
+// ------
+
+// Unordered and Ordered lists
+ul, ol {
+  margin: 0 0 @baseline 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+li {
+  line-height: @baseline;
+  color: @gray;
+}
+ul.unstyled {
+  list-style: none;
+  margin-left: 0;
+}
+
+// Description Lists
+dl {
+  margin-bottom: @baseline;
+  dt, dd {
+    line-height: @baseline;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: @baseline / 2;
+  }
+}
+
+// MISC
+// ----
+
+// Horizontal rules
+hr {
+  margin: 20px 0 19px;
+  border: 0;
+  border-bottom: 1px solid #eee;
+}
+
+// Emphasis
+strong {
+  font-style: inherit;
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.muted {
+  color: @grayLight;
+}
+
+// Blockquotes
+blockquote {
+  margin-bottom: @baseline;
+  border-left: 5px solid #eee;
+  padding-left: 15px;
+  p {
+    #font > .shorthand(300,14px,@baseline);
+    margin-bottom: 0;
+  }
+  small {
+    display: block;
+    #font > .shorthand(300,12px,@baseline);
+    color: @grayLight;
+    &:before {
+      content: '\2014 \00A0';
+    }
+  }
+}
+
+// Addresses
+address {
+  display: block;
+  line-height: @baseline;
+  margin-bottom: @baseline;
+}
+
+// Inline and block code styles
+code, pre {
+  padding: 0 3px 2px;
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+  font-size: 12px;
+  .border-radius(3px);
+}
+code {
+  background-color: lighten(@orange, 40%);
+  color: rgba(0,0,0,.75);
+  padding: 1px 3px;
+}
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: (@baseline - 1) / 2;
+  margin: 0 0 @baseline;
+  line-height: @baseline;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  .border-radius(3px);
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+}
