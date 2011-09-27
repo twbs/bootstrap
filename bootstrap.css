@@ -1881,62 +1881,6 @@ footer {
   padding: 7px 9px 7px;
   font-size: 11px;
 }
-.btn.icon:before {
-  content: "";
-  position: relative;
-  top: 2px;
-  float: left;
-  width: 12px;
-  height: 12px;
-  margin: 0 0.75em 0 -0.25em;
-  background: url(img/icons.png) 0 99px no-repeat;
-}
-.btn.icon.right:before {
-  float: right;
-  margin: 0 -0.25em 0 0.5em;
-}
-.btn.icon.arrowup:before {
-  background-position: 0px 0px;
-}
-.btn.icon.arrowup.secondary:before {
-  background-position: -12px 0px;
-}
-.btn.icon.arrowdown:before {
-  background-position: 0px -12px;
-}
-.btn.icon.arrowdown.secondary:before {
-  background-position: -12px -12px;
-}
-.btn.icon.arrowleft:before {
-  background-position: 0px -24px;
-}
-.btn.icon.arrowleft.secondary:before {
-  background-position: -12px -24px;
-}
-.btn.icon.arrowright:before {
-  background-position: 0px -36px;
-}
-.btn.icon.arrowright.secondary:before {
-  background-position: -12px -36px;
-}
-.btn.icon.approve:before {
-  background-position: 0px -48px;
-}
-.btn.icon.approve.secondary:before {
-  background-position: -12px -48px;
-}
-.btn.icon.add:before {
-  background-position: 0px -60px;
-}
-.btn.icon.add.secondary:before {
-  background-position: -12px -60px;
-}
-.btn.icon.remove:before {
-  background-position: 0px -72px;
-}
-.btn.icon.remove.secondary:before {
-  background-position: -12px -72px;
-}
 :root .alert-message, :root .btn {
   border-radius: 0 \0;
 }

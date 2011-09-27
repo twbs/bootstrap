@@ -315,24 +315,3 @@ img.large-bird {
 pre.prettyprint {
   overflow: hidden;
 }
-
-/* Icon Buttons Grid
--------------------------------------------------- */
-.icon-grid {
-    margin-left: 0px;
-}
-
-.icon-grid li {
-    background-color: #F5F5F5;
-    display: block;
-    float: left;
-    margin: 5px;    
-    padding: 15px 10px;
-    text-align: center;   
-}
-
-.icon-grid li code {
-    display: block;
-    margin-bottom: 15px;
-    padding: 12px 3px;
-}
