@@ -42,6 +42,10 @@ img {
 .display-grids .content {
   padding: 15px;
 }
+.section .display-grids .section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 
 /* masthead
