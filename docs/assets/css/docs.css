@@ -329,10 +329,12 @@ pre.prettyprint {
     margin: 5px;    
     padding: 15px 10px;
     text-align: center;   
+    min-width: 110px;
 }
 
 .icon-grid li code {
     display: block;
     margin-bottom: 15px;
     padding: 12px 3px;
+    font-size: 11px;
 }

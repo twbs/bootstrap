@@ -1,12 +1,12 @@
 /*!
- * Bootstrap v1.3.0
+ * Bootstrap @VERSION
  *
  * Copyright 2011 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Sep 18 14:19:52 PDT 2011
+ * Date: @DATE
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2080,6 +2080,96 @@ footer {
 }
 .btn.icon.user.alternative:before {
   background-position: -12px -360px;
+}
+.btn.icon.upload:before {
+  background-position: 0px -372px;
+}
+.btn.icon.upload.alternative:before {
+  background-position: -12px -372px;
+}
+.btn.icon.transfer:before {
+  background-position: 0px -384px;
+}
+.btn.icon.transfer.alternative:before {
+  background-position: -12px -384px;
+}
+.btn.icon.stop:before {
+  background-position: 0px -396px;
+}
+.btn.icon.stop.alternative:before {
+  background-position: -12px -396px;
+}
+.btn.icon.movie:before {
+  background-position: 0px -408px;
+}
+.btn.icon.movie.alternative:before {
+  background-position: -12px -408px;
+}
+.btn.icon.pause:before {
+  background-position: 0px -420px;
+}
+.btn.icon.pause.alternative:before {
+  background-position: -12px -420px;
+}
+.btn.icon.play:before {
+  background-position: 0px -432px;
+}
+.btn.icon.play.alternative:before {
+  background-position: -12px -432px;
+}
+.btn.icon.new-window:before {
+  background-position: 0px -444px;
+}
+.btn.icon.new-window.alternative:before {
+  background-position: -12px -444px;
+}
+.btn.icon.link:before {
+  background-position: 0px -456px;
+}
+.btn.icon.link.alternative:before {
+  background-position: -12px -456px;
+}
+.btn.icon.iinfo:before {
+  background-position: 0px -468px;
+}
+.btn.icon.iinfo.alternative:before {
+  background-position: -12px -468px;
+}
+.btn.icon.image:before {
+  background-position: 0px -480px;
+}
+.btn.icon.image.alternative:before {
+  background-position: -12px -480px;
+}
+.btn.icon.folder:before {
+  background-position: 0px -492px;
+}
+.btn.icon.folder.alternative:before {
+  background-position: -12px -492px;
+}
+.btn.icon.fullscreen:before {
+  background-position: 0px -504px;
+}
+.btn.icon.fullscreen.alternative:before {
+  background-position: -12px -504px;
+}
+.btn.icon.fullexit:before {
+  background-position: 0px -516px;
+}
+.btn.icon.fullexit.alternative:before {
+  background-position: -12px -516px;
+}
+.btn.icon.share:before {
+  background-position: 0px -528px;
+}
+.btn.icon.share.alternative:before {
+  background-position: -12px -528px;
+}
+.btn.icon.undo:before {
+  background-position: 0px -540px;
+}
+.btn.icon.undo.alternative:before {
+  background-position: -12px -540px;
 }
 :root .alert-message, :root .btn {
   border-radius: 0 \0;

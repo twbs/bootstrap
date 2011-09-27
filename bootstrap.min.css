@@ -334,6 +334,36 @@ footer{margin-top:17px;padding-top:17px;border-top:1px solid #eee;}
 .btn.icon.favorite.alternative:before{background-position:-12px -348px;}
 .btn.icon.user:before{background-position:0px -360px;}
 .btn.icon.user.alternative:before{background-position:-12px -360px;}
+.btn.icon.upload:before{background-position:0px -372px;}
+.btn.icon.upload.alternative:before{background-position:-12px -372px;}
+.btn.icon.transfer:before{background-position:0px -384px;}
+.btn.icon.transfer.alternative:before{background-position:-12px -384px;}
+.btn.icon.stop:before{background-position:0px -396px;}
+.btn.icon.stop.alternative:before{background-position:-12px -396px;}
+.btn.icon.movie:before{background-position:0px -408px;}
+.btn.icon.movie.alternative:before{background-position:-12px -408px;}
+.btn.icon.pause:before{background-position:0px -420px;}
+.btn.icon.pause.alternative:before{background-position:-12px -420px;}
+.btn.icon.play:before{background-position:0px -432px;}
+.btn.icon.play.alternative:before{background-position:-12px -432px;}
+.btn.icon.new-window:before{background-position:0px -444px;}
+.btn.icon.new-window.alternative:before{background-position:-12px -444px;}
+.btn.icon.link:before{background-position:0px -456px;}
+.btn.icon.link.alternative:before{background-position:-12px -456px;}
+.btn.icon.iinfo:before{background-position:0px -468px;}
+.btn.icon.iinfo.alternative:before{background-position:-12px -468px;}
+.btn.icon.image:before{background-position:0px -480px;}
+.btn.icon.image.alternative:before{background-position:-12px -480px;}
+.btn.icon.folder:before{background-position:0px -492px;}
+.btn.icon.folder.alternative:before{background-position:-12px -492px;}
+.btn.icon.fullscreen:before{background-position:0px -504px;}
+.btn.icon.fullscreen.alternative:before{background-position:-12px -504px;}
+.btn.icon.fullexit:before{background-position:0px -516px;}
+.btn.icon.fullexit.alternative:before{background-position:-12px -516px;}
+.btn.icon.share:before{background-position:0px -528px;}
+.btn.icon.share.alternative:before{background-position:-12px -528px;}
+.btn.icon.undo:before{background-position:0px -540px;}
+.btn.icon.undo.alternative:before{background-position:-12px -540px;}
 :root .alert-message,:root .btn{border-radius:0 \0;}
 button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner{padding:0;border:0;}
 .close{float:right;color:#000000;font-size:20px;font-weight:bold;line-height:13.5px;text-shadow:0 1px 0 #ffffff;filter:alpha(opacity=20);-khtml-opacity:0.2;-moz-opacity:0.2;opacity:0.2;}.close:hover{color:#000000;text-decoration:none;filter:alpha(opacity=40);-khtml-opacity:0.4;-moz-opacity:0.4;opacity:0.4;}
