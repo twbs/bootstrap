@@ -2171,6 +2171,12 @@ footer {
 .btn.icon.undo.alternative:before {
   background-position: -12px -540px;
 }
+.btn.icon.quote:before {
+  background-position: 0px -552px;
+}
+.btn.icon.quote.alternative:before {
+  background-position: -12px -552px;
+}
 :root .alert-message, :root .btn {
   border-radius: 0 \0;
 }

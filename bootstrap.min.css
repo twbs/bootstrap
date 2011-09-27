@@ -364,6 +364,8 @@ footer{margin-top:17px;padding-top:17px;border-top:1px solid #eee;}
 .btn.icon.share.alternative:before{background-position:-12px -528px;}
 .btn.icon.undo:before{background-position:0px -540px;}
 .btn.icon.undo.alternative:before{background-position:-12px -540px;}
+.btn.icon.quote:before{background-position:0px -552px;}
+.btn.icon.quote.alternative:before{background-position:-12px -552px;}
 :root .alert-message,:root .btn{border-radius:0 \0;}
 button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner{padding:0;border:0;}
 .close{float:right;color:#000000;font-size:20px;font-weight:bold;line-height:13.5px;text-shadow:0 1px 0 #ffffff;filter:alpha(opacity=20);-khtml-opacity:0.2;-moz-opacity:0.2;opacity:0.2;}.close:hover{color:#000000;text-decoration:none;filter:alpha(opacity=40);-khtml-opacity:0.4;-moz-opacity:0.4;opacity:0.4;}
