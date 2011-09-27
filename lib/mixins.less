@@ -215,3 +215,15 @@
 	  -moz-opacity: @opacity / 100;
 	       opacity: @opacity / 100;
 }
+
+
+// Icon Buttons
+
+.iconSprite(@iconSprite: 0, @alternativeIconSprite: 1, @index: 0, @iconWidth: 12px, @iconHeight: 12px) {
+      &:before {
+          background-position: -@iconSprite*@iconWidth -@index*@iconHeight;
+      }
+      &.alternative:before {
+          background-position: -@alternativeIconSprite*@iconWidth -@index*@iconHeight;
+      }
+}

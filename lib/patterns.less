@@ -590,7 +590,121 @@ footer {
     padding: 7px 9px 7px;
     font-size: @basefont - 2px;
   }
+  
+  // Button Icons
+  &.icon {
+      &:before {
+        content: "";
+        position: relative; 
+        top: 2px; 
+        float:left;
+        width: @iconWidth; 
+        height: @iconHeight; 
+        margin: 0 0.75em 0 -0.25em; 
+        background: url(img/icons.png) 0 99px no-repeat;
+      }
+      &.right:before {
+          float:right; 
+          margin: 0 -0.25em 0 0.5em;
+      }
+      
+      // Icons
+      &.arrowup {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 0, @iconWidth, @iconHeight);
+      }
+      &.arrowdown {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 1, @iconWidth, @iconHeight);
+      }
+      &.arrowleft {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 2, @iconWidth, @iconHeight);
+      }
+      &.arrowright {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 3, @iconWidth, @iconHeight);
+      }
+      &.approve {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 4, @iconWidth, @iconHeight);
+      }
+      &.remove {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 5, @iconWidth, @iconHeight);
+      }
+      &.log {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 6, @iconWidth, @iconHeight);
+      }
+      &.calendar {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 7, @iconWidth, @iconHeight);
+      }
+      &.chat {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 8, @iconWidth, @iconHeight);
+      }
+      &.clock {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 9, @iconWidth, @iconHeight);
+      }
+      &.settings {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 10, @iconWidth, @iconHeight);
+      }
+      &.comment {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 11, @iconWidth, @iconHeight);
+      }
+      &.fork {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 12, @iconWidth, @iconHeight);
+      }
+      &.like {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 13, @iconWidth, @iconHeight);
+      }
+      &.home {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 14, @iconWidth, @iconHeight);
+      }
+      &.key {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 15, @iconWidth, @iconHeight);
+      }
+      &.lock {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 16, @iconWidth, @iconHeight);
+      }
+      &.unlock {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 17, @iconWidth, @iconHeight);
+      }
+      &.loop {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 18, @iconWidth, @iconHeight);
+      }
+      &.search {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 19, @iconWidth, @iconHeight);
+      }
+      &.mail {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 20, @iconWidth, @iconHeight);
+      }
+      &.move {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 21, @iconWidth, @iconHeight);
+      }
+      &.edit {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 22, @iconWidth, @iconHeight);
+      }
+      &.pin {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 23, @iconWidth, @iconHeight);
+      }
+      &.add {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 24, @iconWidth, @iconHeight);
+      }
+      &.reload {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 25, @iconWidth, @iconHeight);
+      }
+      &.rss {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 26, @iconWidth, @iconHeight);
+      }
+      &.tag {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 27, @iconWidth, @iconHeight);
+      }
+      &.trash {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 28, @iconWidth, @iconHeight);
+      }
+      &.favorite {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 29, @iconWidth, @iconHeight);
+      }
+      &.user {
+          .iconSprite(@defaultIconSprite, @alternativeIconSprite, 30, @iconWidth, @iconHeight);
+      }
+  }
 }
+
 // Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
 :root .alert-message,
 :root .btn {
