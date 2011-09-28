@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep 22 12:52:42 PDT 2011
+ * Date: Wed Sep 28 11:10:12 ART 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1577,6 +1577,9 @@ a.menu:after, .dropdown-toggle:after {
 .tabs > li > a, .pills > li > a {
   display: block;
 }
+.tabs.vertical > li, .pills.vertical > li {
+  float: none;
+}
 .tabs {
   float: left;
   width: 100%;
@@ -1606,6 +1609,42 @@ a.menu:after, .dropdown-toggle:after {
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
+.tabs.vertical {
+  border-right: 1px solid #ddd;
+  border-bottom-color: transparent;
+  width: 24.5%;
+  margin-top: 6px;
+}
+.tabs.vertical > li > a {
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+  margin-bottom: 2px;
+  margin-right: 0;
+}
+.tabs.vertical > li > a:hover {
+  border-color: #ddd #eee #ddd #ddd;
+}
+.tabs.vertical > li.active > a {
+  border: 1px solid #ddd;
+  border-right-color: transparent;
+}
+.tabs.vertical  + .tab-content {
+  zoom: 1;
+  clear: none;
+  display: table;
+  padding: 15px;
+  width: 75%;
+}
+.tabs.vertical  + .tab-content:before, .tabs.vertical  + .tab-content:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.tabs.vertical  + .tab-content:after {
+  clear: both;
+}
 .tabs .menu-dropdown, .tabs .dropdown-menu {
   top: 35px;
   border-width: 1px;
@@ -1627,6 +1666,18 @@ a.menu:after, .dropdown-toggle:after {
 .tab-content {
   clear: both;
 }
+.tabs-container {
+  zoom: 1;
+}
+.tabs-container:before, .tabs-container:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.tabs-container:after {
+  clear: both;
+}
 .pills a {
   margin: 5px 3px 5px 0;
   padding: 0 15px;
@@ -1646,6 +1697,33 @@ a.menu:after, .dropdown-toggle:after {
   background: #0069d6;
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+.pills.vertical {
+  width: 25%;
+  float: left;
+}
+.pills.vertical a {
+  margin: 5px 3px 5px 3px;
+}
+.pills.vertical  + .tab-content {
+  zoom: 1;
+  clear: none;
+  float: left;
+  display: table;
+  padding: 15px;
+  width: 75%;
+}
+.pills.vertical  + .tab-content:before, .pills.vertical  + .tab-content:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.pills.vertical  + .tab-content:after {
+  clear: both;
+}
+.pills.vertical:parent {
+  clear: both;
 }
 .tab-content > *, .pill-content > * {
   display: none;
