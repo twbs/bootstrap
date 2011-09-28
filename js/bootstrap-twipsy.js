@@ -30,9 +30,10 @@
 
   var transitionEnd
 
+  !$.support && ($.support = {})
+
   $(document).ready(function () {
 
-    !$.support && ($.support = {})
     $.support.transition = (function () {
       var thisBody = document.body || document.documentElement
         , thisStyle = thisBody.style
