@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep 29 01:47:26 PDT 2011
+ * Date: Thu Sep 29 02:20:34 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1725,6 +1725,62 @@ footer {
 button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
+}
+.btn-toolbar {
+  zoom: 1;
+}
+.btn-toolbar:before, .btn-toolbar:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.btn-toolbar:after {
+  clear: both;
+}
+.btn-toolbar .btn-group {
+  float: left;
+  margin-right: 10px;
+}
+.btn-group {
+  zoom: 1;
+}
+.btn-group:before, .btn-group:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+.btn-group:after {
+  clear: both;
+}
+.btn-group .btn {
+  position: relative;
+  float: left;
+  margin-left: -1px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.btn-group .btn:first-child {
+  margin-left: 0;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+}
+.btn-group .btn:last-child {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
+.btn-group .btn:hover, .btn-group .btn:focus, .btn-group .btn:active {
+  z-index: 2;
 }
 .close {
   float: right;
