@@ -3,8 +3,8 @@
  * ------------------------------------------------------------- */
 
 
-// FORM STYLES
-// -----------
+// GENERAL STYLES
+// --------------
 
 form {
   margin-bottom: @baseline;
@@ -189,47 +189,17 @@ form div.clearfix.error {
   }
 }
 
-// Form element sizes
-// TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
-.input-mini,
-input.mini,
-textarea.mini,
-select.mini {
-  width: 60px;
-}
-.input-small,
-input.small,
-textarea.small,
-select.small {
-  width: 90px;
-}
-.input-medium,
-input.medium,
-textarea.medium,
-select.medium {
-  width: 150px;
-}
-.input-large,
-input.large,
-textarea.large,
-select.large {
-  width: 210px;
-}
-.input-xlarge,
-input.xlarge,
-textarea.xlarge,
-select.xlarge {
-  width: 270px;
-}
-.input-xxlarge,
-input.xxlarge,
-textarea.xxlarge,
-select.xxlarge {
-  width: 530px;
-}
-textarea.xxlarge {
-  overflow-y: auto;
-}
+
+// INPUT SIZES
+// -----------
+
+// General classes for quick sizes
+.input-mini       { width: 60px; }
+.input-small      { width: 90px; }
+.input-medium     { width: 150px; }
+.input-large      { width: 210px; }
+.input-xlarge     { width: 270px; }
+.input-xxlarge    { width: 530px; }
 
 // Grid style input sizes
 // This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
@@ -260,6 +230,10 @@ select {
   &.span15    { .formColumns(15); }
   &.span16    { .formColumns(16); }
 }
+
+
+// INPUT STATES
+// ------------
 
 // Disabled and read-only inputs
 input[disabled],
@@ -292,7 +266,10 @@ textarea[readonly] {
   }
 }
 
-// Help Text
+
+// HELP TEXT
+// ---------
+
 .help-inline,
 .help-block {
   font-size: @basefont - 2;
@@ -311,7 +288,10 @@ textarea[readonly] {
   max-width: 600px;
 }
 
-// Inline Fields (input fields that appear as inline objects
+
+// INLINE FIELDS
+// ---------
+
 .inline-inputs {
   color: @gray;
   span, input {
@@ -327,6 +307,10 @@ textarea[readonly] {
     padding: 0 2px 0 1px;
   }
 }
+
+
+// INPUTS GROUPS
+// -------------
 
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
@@ -375,6 +359,10 @@ textarea[readonly] {
   }
 }
 
+
+// LISTS OF CONTROLS
+// -----------------
+
 // Stacked options for forms (radio buttons or checkboxes)
 .inputs-list {
   margin: 0 0 5px;
@@ -417,7 +405,10 @@ textarea[readonly] {
   }
 }
 
-// Stacked forms
+
+// STACKED FORMS
+// -------------
+
 .form-stacked {
   padding-left: 20px;
   fieldset {

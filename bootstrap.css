@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Sep 28 19:05:53 PDT 2011
+ * Date: Wed Sep 28 19:14:58 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -747,44 +747,23 @@ form div.clearfix.error .input-prepend span.add-on, form div.clearfix.error .inp
   border-color: #c87872;
   color: #b9554d;
 }
-.input-mini,
-input.mini,
-textarea.mini,
-select.mini {
+.input-mini {
   width: 60px;
 }
-.input-small,
-input.small,
-textarea.small,
-select.small {
+.input-small {
   width: 90px;
 }
-.input-medium,
-input.medium,
-textarea.medium,
-select.medium {
+.input-medium {
   width: 150px;
 }
-.input-large,
-input.large,
-textarea.large,
-select.large {
+.input-large {
   width: 210px;
 }
-.input-xlarge,
-input.xlarge,
-textarea.xlarge,
-select.xlarge {
+.input-xlarge {
   width: 270px;
 }
-.input-xxlarge,
-input.xxlarge,
-textarea.xxlarge,
-select.xxlarge {
+.input-xxlarge {
   width: 530px;
-}
-textarea.xxlarge {
-  overflow-y: auto;
 }
 input.span1, textarea.span1, select.span1 {
   display: inline-block;
