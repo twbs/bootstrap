@@ -161,6 +161,7 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .input-prepend .add-on{*margin-top:1px;}
 .input-append input{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-append .add-on{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;margin-right:0;margin-left:-1px;}
+.form-search .search-query{-webkit-border-radius:14px;-moz-border-radius:14px;border-radius:14px;}
 .control-group{margin-bottom:18px;}
 .control-group>label{font-weight:bold;}
 .form-horizontal .control-group>label{float:left;width:130px;padding-top:5px;text-align:right;}
