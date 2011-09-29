@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep 29 01:39:48 PDT 2011
+ * Date: Thu Sep 29 01:42:34 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -951,16 +951,6 @@ textarea[readonly] {
 .form-horizontal .form-actions {
   padding-left: 150px;
 }
-.radial-test {
-  background-color: #009900;
-  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(#990000), to(#009900));
-  background-image: -webkit-radial-gradient(circle, #990000, #009900);
-  background-image: -moz-radial-gradient(circle, #990000, #009900);
-  background-image: -ms-radial-gradient(circle, #990000, #009900);
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 940px;
-}
 /*
  * Tables.less
  * Tables for, you guessed it, tabular data
@@ -1307,14 +1297,20 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   text-indent: -99999px;
   vertical-align: top;
   margin-top: 8px;
-  margin-left: 4px;
+  margin-left: 6px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #ffffff;
-  filter: alpha(opacity=50);
-  -khtml-opacity: 0.5;
-  -moz-opacity: 0.5;
-  opacity: 0.5;
+  filter: alpha(opacity=30);
+  -khtml-opacity: 0.3;
+  -moz-opacity: 0.3;
+  opacity: 0.3;
+}
+.dropdown:hover .dropdown-toggle:after {
+  filter: alpha(opacity=100);
+  -khtml-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
 }
 .dropdown-menu {
   background-color: #ffffff;

@@ -205,11 +205,14 @@
   text-indent: -99999px;
   vertical-align: top;
   margin-top: 8px;
-  margin-left: 4px;
+  margin-left: 6px;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid @white;
-  .opacity(50);
+  .opacity(30);
+}
+.dropdown:hover .dropdown-toggle:after {
+  .opacity(100);
 }
 // The dropdown menu (ul)
 .dropdown-menu {
