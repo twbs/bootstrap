@@ -201,6 +201,15 @@
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
   }
+  .radial (@centerColor: #555, @outsideColor:#333)  {
+    background-color: @centerColor;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@centerColor), to(@outsideColor));
+    background-image: -webkit-radial-gradient(circle, @centerColor, @outsideColor);
+    background-image: -moz-radial-gradient(circle, @centerColor, @outsideColor);
+    background-image: -ms-radial-gradient(circle, @centerColor, @outsideColor);
+    /* Opera cannot do radial gradients yet */
+  }
 }
 
 // Reset filters for IE
