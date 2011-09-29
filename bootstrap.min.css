@@ -81,10 +81,9 @@ h1,h2,h3,h4,h5,h6{font-weight:bold;color:#333333;}h1 small,h2 small,h3 small,h4 
 h1{margin-bottom:18px;font-size:30px;line-height:36px;}h1 small{font-size:18px;}
 h2{font-size:24px;line-height:36px;}h2 small{font-size:14px;}
 h3{line-height:36px;font-size:18px;}h3 small{font-size:14px;}
-h4,h5,h6{line-height:18px;}
-h4{font-size:16px;}h4 small{font-size:12px;}
-h5{font-size:14px;}
-h6{font-size:13px;color:#777777;text-transform:uppercase;}
+h4{font-size:16px;line-height:36px;}h4 small{font-size:12px;}
+h5{font-size:14px;line-height:18px;}
+h6{font-size:13px;line-height:18px;color:#777777;text-transform:uppercase;}
 ul,ol{margin:0 0 18px 25px;}
 ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
 ul{list-style:disc;}
