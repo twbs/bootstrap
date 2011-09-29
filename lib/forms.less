@@ -6,29 +6,20 @@
 // GENERAL STYLES
 // --------------
 
+// Make all forms have space below them
 form {
   margin-bottom: @baseline;
 }
 
 // Groups of fields with labels on top (legends)
-fieldset {
-  margin-bottom: @baseline;
-  padding-top: @baseline;
-  legend {
-    display: block;
-    padding-left: 150px;
-    font-size: @basefont * 1.5;
-    line-height: 1;
-    color: @grayDark;
-    *padding: 0 0 5px 145px; /* IE6-7 */
-    *line-height: 1.5; /* IE6-7 */
-  }
-}
-
-// Parent element that clears floats and wraps labels and fields together
-form .clearfix {
-  margin-bottom: @baseline;
-  .clearfix()
+legend {
+  display: block;
+  width: 100%;
+  margin-bottom: @baseline * 1.5;
+  font-size: @basefont * 1.5;
+  line-height: @baseline * 2;
+  color: @grayDark;
+  border-bottom: 1px solid #eee;
 }
 
 // Set font for forms
@@ -36,23 +27,14 @@ label,
 input,
 select,
 textarea {
-  #font > .sans-serif(normal,13px,normal);
+  #font > .sans-serif(normal,@basefont,@baseline);
 }
 
-// Float labels left
+// Identify controls by their labels
 label {
-  padding-top: 6px;
-  font-size: @basefont;
-  line-height: @baseline;
-  float: left;
-  width: 130px;
-  text-align: right;
+  display: block;
+  margin-bottom: 5px;
   color: @grayDark;
-}
-
-// Shift over the inside div to align all label's relevant content
-form .input {
-  margin-left: 150px;
 }
 
 // Checkboxs and radio buttons
@@ -77,7 +59,7 @@ select,
   .border-radius(3px);
 }
 
-/* mini reset for non-html5 file types */
+/* Mini reset for unique input types */
 input[type=checkbox],
 input[type=radio] {
   width: auto;
@@ -89,6 +71,7 @@ input[type=radio] {
   border: none;
 }
 
+// Reset the file input to browser defaults
 input[type=file] {
   background-color: @white;
   padding: initial;
@@ -97,6 +80,7 @@ input[type=file] {
   .box-shadow(none);
 }
 
+// Help out input buttons
 input[type=button],
 input[type=reset],
 input[type=submit] {
@@ -120,24 +104,11 @@ textarea {
   height: auto;
 }
 
-// For text that needs to appear as an input but should not be an input
-.uneditable-input {
-  background-color: @white;
-  display: block;
-  border-color: #eee;
-  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
-  cursor: not-allowed;
-}
 
-// Placeholder text gets special styles; can't be bundled together though for some reason
-:-moz-placeholder {
-  color: @grayLight;
-}
-::-webkit-input-placeholder {
-  color: @grayLight;
-}
 
-// Focus states
+// FOCUS STATE
+// -----------
+
 input,
 textarea {
   @transition: border linear .2s, box-shadow linear .2s;
@@ -158,36 +129,6 @@ select:focus {
   outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
 }
 
-// Error styles
-form div.clearfix.error {
-  background: lighten(@red, 57%);
-  padding: 10px 0;
-  margin: -10px 0 10px;
-  .border-radius(4px);
-  @error-text: desaturate(lighten(@red, 25%), 25%);
-  > label,
-  span.help-inline,
-  span.help-block {
-    color: @red;
-  }
-  input,
-  textarea {
-    border-color: @error-text;
-    .box-shadow(0 0 3px rgba(171,41,32,.25));
-    &:focus {
-      border-color: darken(@error-text, 10%);
-      .box-shadow(0 0 6px rgba(171,41,32,.5));
-    }
-  }
-  .input-prepend,
-  .input-append {
-    span.add-on {
-      background: lighten(@red, 50%);
-      border-color: @error-text;
-      color: darken(@error-text, 10%);
-    }
-  }
-}
 
 
 // INPUT SIZES
@@ -232,8 +173,9 @@ select {
 }
 
 
-// INPUT STATES
-// ------------
+
+// DISABLED STATE
+// --------------
 
 // Disabled and read-only inputs
 input[disabled],
@@ -247,36 +189,89 @@ textarea[readonly] {
   cursor: not-allowed;
 }
 
-// Actions (the buttons)
-.actions {
-  background: #f5f5f5;
-  margin-top: @baseline;
-  margin-bottom: @baseline;
-  padding: (@baseline - 1) 20px @baseline 150px;
-  border-top: 1px solid #ddd;
-  .border-radius(0 0 3px 3px);
-  .secondary-action {
-    float: right;
-    a {
-      line-height: 30px;
-      &:hover {
-        text-decoration: underline;
-      }
+
+
+// ERROR STATE
+// -----------
+
+// Set color of error text
+@error-text: desaturate(lighten(@red, 25%), 25%);
+
+// Style the background of control-groups with errors
+.has-error {
+  background: lighten(@red, 55%);
+  padding: (@baseline / 2) 0;
+  margin: -10px 0 10px;
+  .border-radius(4px);
+  > label,
+  span.help-inline,
+  span.help-block {
+    color: @red;
+  }
+  input,
+  textarea,
+  select {
+    border-color: @error-text;
+    .box-shadow(0 0 3px rgba(171,41,32,.25));
+    &:focus {
+      border-color: darken(@error-text, 10%);
+      .box-shadow(0 0 6px rgba(171,41,32,.5));
+    }
+  }
+  .input-prepend,
+  .input-append {
+    span.add-on {
+      background: lighten(@red, 50%);
+      border-color: @error-text;
+      color: darken(@error-text, 10%);
     }
   }
 }
 
 
+
+// FORM ACTIONS
+// ------------
+
+.form-actions {
+  padding: (@baseline - 1) 20px @baseline;
+  margin-top: @baseline;
+  margin-bottom: @baseline;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+}
+
+
+// For text that needs to appear as an input but should not be an input
+.uneditable-input {
+  background-color: @white;
+  display: block;
+  border-color: #eee;
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
+  cursor: not-allowed;
+}
+
+// Placeholder text gets special styles; can't be bundled together though for some reason
+:-moz-placeholder {
+  color: @grayLight;
+}
+::-webkit-input-placeholder {
+  color: @grayLight;
+}
+
+
+
 // HELP TEXT
 // ---------
 
-.help-inline,
-.help-block {
-  font-size: @basefont - 2;
-  line-height: @baseline;
+.help-text {
+  margin-top: 5px;
+  margin-bottom: 0;
   color: @grayLight;
 }
+
 .help-inline {
+  display: inline;
   padding-left: 5px;
   *position: relative; /* IE6-7 */
   *top: -5px; /* IE6-7 */
@@ -290,7 +285,7 @@ textarea[readonly] {
 
 
 // INLINE FIELDS
-// ---------
+// -------------
 
 .inline-inputs {
   color: @gray;
@@ -309,8 +304,8 @@ textarea[readonly] {
 }
 
 
-// INPUTS GROUPS
-// -------------
+// INPUT GROUPS
+// ------------
 
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
@@ -360,97 +355,49 @@ textarea[readonly] {
 }
 
 
-// LISTS OF CONTROLS
+
+
+// HORIZONTAL & VERTICAL FORMS
+// ---------------------------
+
+
+// Common properties
 // -----------------
 
-// Stacked options for forms (radio buttons or checkboxes)
-.inputs-list {
-  margin: 0 0 5px;
-  width: 100%;
-  li {
-    display: block;
-    padding: 0;
-    width: 100%;
-  }
-  label {
-    display: block;
-    float: none;
-    width: auto;
-    padding: 0;
-    line-height: @baseline;
-    text-align: left;
-    white-space: normal;
-    strong {
-      color: @gray;
-    }
-    small {
-      font-size: @basefont - 2;
-      font-weight: normal;
-    }
-  }
-  .inputs-list {
-    margin-left: 25px;
-    margin-bottom: 10px;
-    padding-top: 0;
-  }
-  &:first-child {
-    padding-top: 6px;
-  }
-  li + li {
-    padding-top: 2px;
-  }
-  input[type=radio],
-  input[type=checkbox] {
-    margin-bottom: 0;
-  }
+// Margin to space out fieldsets
+.control-group {
+  margin-bottom: @baseline;
+}
+
+// Bold the labels so they stand out
+.control-group > label {
+  font-weight: bold;
+}
+
+// Lists of controls (checkboxes and radios)
+.control-list {
 }
 
 
-// STACKED FORMS
-// -------------
+// Horizontal-specific styles
+// --------------------------
 
-.form-stacked {
-  padding-left: 20px;
-  fieldset {
-    padding-top: @baseline / 2;
-  }
-  legend {
-    padding-left: 0;
-  }
-  label {
-    display: block;
-    float: none;
-    width: auto;
-    font-weight: bold;
-    text-align: left;
-    line-height: 20px;
-    padding-top: 0;
-  }
-  .clearfix {
-    margin-bottom: @baseline / 2;
-    div.input {
-      margin-left: 0;
-    }
-  }
-  .inputs-list {
-    margin-bottom: 0;
-    li {
-      padding-top: 0;
-      label {
-        font-weight: normal;
-        padding-top: 0;
-      }
-    }
-  }
-  div.clearfix.error {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    margin-top: 0;
-    margin-left: -10px;
-  }
-  .actions {
-    margin-left: -20px;
-    padding-left: 20px;
-  }
+// Float the labels left
+.form-horizontal .control-group > label {
+  float: left;
+  width: 130px;
+  padding-top: 5px;
+  text-align: right;
+}
+// Move over all input controls and content
+.form-horizontal .controls {
+  margin-left: 150px;
+}
+// Move the options list down to align with labels
+.form-horizontal .control-list {
+  padding-top: 6px; // has to be padding because margin collaspes
+}
+// Move over buttons in .form-actions to align with .controls
+.form-horizontal .form-actions {
+  padding-left: 150px;
 }

@@ -885,330 +885,197 @@
     <h1>Forms</h1>
   </div>
   <div class="row">
+    <div class="span-one-third">
+      <h3>Four types of forms</h3>
+      <p>With 2.0, we now have four types of forms to choose from:</p>
+      <ul>
+        <li>Search form for a super-rounded input and optional button</li>
+        <li>Inline form for a series of elements on one line</li>
+        <li>Horizontal form for left-aligned labels</li>
+        <li>Vertical form for stacked labels and inputs</li>
+      </ul>
+    </div>
+    <div class="span-one-third">
+      <h3></h3>
+    </div>
+  </div>
+  <div class="row">
     <div class="span4">
-      <h2>Default styles</h2>
-      <p>All forms are given default styles to present them in a readable and scalable way. Styles are provided for text inputs, select lists, textareas, radio buttons and checkboxes, and buttons.</p>
+      <h2>Search form</h2>
     </div>
     <div class="span12">
-      <form>
-        <fieldset>
-          <legend>Example form legend</legend>
-          <div class="clearfix">
-            <label for="xlInput">X-Large input</label>
-            <div class="input">
-              <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="normalSelect">Select</label>
-            <div class="input">
-              <select name="normalSelect" id="normalSelect">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="mediumSelect">Select</label>
-            <div class="input">
-              <select class="medium" name="mediumSelect" id="mediumSelect">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="multiSelect">Multiple select</label>
-            <div class="input">
-              <select class="medium" multiple="multiple" name="multiSelect" id="multiSelect">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label>Uneditable input</label>
-            <div class="input">
-              <span class="uneditable-input">Some value here</span>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="disabledInput">Disabled input</label>
-            <div class="input">
-              <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here… carry on." disabled />
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="disabledInput">Disabled textarea</label>
-            <div class="input">
-              <textarea class="xxlarge" name="textarea" id="textarea" rows="3" disabled></textarea>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix error">
-            <label for="xlInput2">X-Large input</label>
-            <div class="input">
-              <input class="xlarge error" id="xlInput2" name="xlInput2" size="30" type="text" />
-              <span class="help-inline">Small snippet of help text</span>
-            </div>
-          </div><!-- /clearfix -->
-        </fieldset>
-        <fieldset>
-          <legend>Example form legend</legend>
-          <div class="clearfix">
-            <label for="prependedInput">Prepended text</label>
-            <div class="input">
-              <div class="input-prepend">
-                <span class="add-on">@</span>
-                <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
-              </div>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="prependedInput2">Prepended checkbox</label>
-            <div class="input">
-              <div class="input-prepend">
-                <label class="add-on"><input type="checkbox" name="" id="" value="" /></label>
-                <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
-              </div>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="appendedInput">Appended checkbox</label>
-            <div class="input">
-              <div class="input-append">
-                <input class="mini" id="appendedInput" name="appendedInput" size="16" type="text" />
-                <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
-              </div>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="fileInput">File input</label>
-            <div class="input">
-              <input class="input-file" id="fileInput" name="fileInput" type="file" />
-            </div>
-          </div><!-- /clearfix -->
-        </fieldset>
-        <fieldset>
-          <legend>Example form legend</legend>
-          <div class="clearfix">
-            <label id="optionsCheckboxes">List of options</label>
-            <div class="input">
-              <ul class="inputs-list">
-                <li>
-                  <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option1" />
-                    <span>Option one is this and that&mdash;be sure to include why it’s great</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                    <span>Option two can also be checked and included in form results</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                    <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results</span>
-                  </label>
-                </li>
-                <li>
-                  <label class="disabled">
-                    <input type="checkbox" name="optionsCheckboxes" value="option2" disabled />
-                    <span>Option four cannot be checked as it is disabled.</span>
-                  </label>
-                </li>
-              </ul>
-              <span class="help-block">
-                <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
-              </span>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label>Date range</label>
-            <div class="input">
-              <div class="inline-inputs">
-                <input class="small" type="text" value="May 1, 2011" />
-                <input class="mini" type="text" value="12:00am" />
-                to
-                <input class="small" type="text" value="May 8, 2011" />
-                <input class="mini" type="text" value="11:59pm" />
-                <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
-              </div>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="textarea">Textarea</label>
-            <div class="input">
-              <textarea class="xxlarge" id="textarea2" name="textarea2" rows="3"></textarea>
-              <span class="help-block">
-                Block of help text to describe the field above if need be.
-              </span>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label id="optionsRadio">List of options</label>
-            <div class="input">
-              <ul class="inputs-list">
-                <li>
-                  <label>
-                    <input type="radio" checked name="optionsRadios" value="option1" />
-                    <span>Option one is this and that&mdash;be sure to include why it’s great</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="radio" name="optionsRadios" value="option2" />
-                    <span>Option two can is something else and selecting it will deselect options 1</span>
-                  </label>
-                </li>
-              </ul>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="actions">
-            <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+      <div class="well">
+        <form class="form-search">
+          <input type="text" class="search-query">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div><!--/well-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Inline form</h2>
+    </div>
+    <div class="span12">
+      <div class="well">
+        <form class="form-inline">
+          <h4>Some directional text</h4>
+          <p>And maybe some kind of optional supporting text right here.</p>
+          <input type="text" class="input-medium">
+          <input type="text" class="input-medium">
+          <input type="text" class="input-medium">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div><!--/well-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Horizontal form</h2>
+    </div>
+    <div class="span12">
+      <form class="form-horizontal">
+        <legend>Example form</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="input01">Text input</label>
+          <div class="controls">
+            <input type="text" class="xlarge" name="input01">
+            <p class="help-text">Help text here. Be sure to fill this out like so, or else!</p>
           </div>
         </fieldset>
-      </form>
-    </div>
-  </div><!-- /row -->
-
-  <br />
-
-  <div class="row">
-    <div class="span4">
-      <h2>Stacked forms</h2>
-      <p>Add <code>.form-stacked</code> to your form’s HTML and you’ll have labels on top of their fields instead of to their left. This works great if your forms are short or you have two columns of inputs for heavier forms.</p>
-    </div>
-    <div class="span12">
-      <form action="" class="form-stacked">
-        <fieldset>
-          <legend>Example form legend</legend>
-          <div class="clearfix">
-            <label for="xlInput3">X-Large input</label>
-            <div class="input">
-              <input class="xlarge" id="xlInput3" name="xlInput3" size="30" type="text" />
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label for="stackedSelect">Select</label>
-            <div class="input">
-              <select name="stackedSelect" id="stackedSelect">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div><!-- /clearfix -->
+        <fieldset class="control-group">
+          <label class="control-label" for="select01">Select list</label>
+          <div class="controls">
+            <select name="select01">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
         </fieldset>
-        <fieldset>
-          <legend>Example form legend</legend>
-          <div class="clearfix error">
-            <label for="xlInput4">X-Large input</label>
-            <div class="input">
-              <input class="xlarge error" id="xlInput4" name="xlInput4" size="30" type="text" />
-              <span class="help-inline">Small snippet of help text</span>
-            </div>
-          </div><!-- /clearfix -->
-          <div class="clearfix">
-            <label id="optionsCheckboxes">List of options</label>
-            <div class="input">
-              <ul class="inputs-list">
-                <li>
-                  <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option1" />
-                    <span>Option one is this and that&mdash;be sure to include why it’s great</span>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                    <span>Option two can also be checked and included in form results</span>
-                  </label>
-                </li>
-              </ul>
-              <span class="help-block">
-                <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
-              </span>
-            </div>
-          </div><!-- /clearfix -->
+        <fieldset class="control-group">
+          <label class="control-label" for="multiSelect">Multi-select</label>
+          <div class="controls">
+            <select multiple="multiple" name="multiSelect">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
         </fieldset>
-        <div class="actions">
-          <button type="submit" class="btn primary">Save changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div><!-- /row -->
-
-  <div class="row">
-    <div class="span4">
-      <h2>Form field sizes</h2>
-      <p>Customize any form <code>input</code>, <code>select</code>, or <code>textarea</code> width by adding just a few classes to your markup.</p>
-      <p>As of v1.3.0, we have added the grid-based sizing classes for form elements. <strong>Please use the these over the existing <code>.mini</code>, <code>.small</code>, etc classes.</strong></p>
-    </div>
-    <div class="span12">
-      <form action="">
-        <div class="clearfix"><input class="span2" id="" name="" type="text" placeholder=".span2" /></div>
-        <div class="clearfix"><input class="span3" id="" name="" type="text" placeholder=".span3" /></div>
-        <div class="clearfix"><input class="span4" id="" name="" type="text" placeholder=".span4" /></div>
-        <div class="clearfix"><input class="span5" id="" name="" type="text" placeholder=".span5" /></div>
-        <div class="clearfix"><input class="span6" id="" name="" type="text" placeholder=".span6" /></div>
-        <div class="clearfix"><input class="span7" id="" name="" type="text" placeholder=".span7" /></div>
-        <div class="clearfix"><input class="span8" id="" name="" type="text" placeholder=".span8" /></div>
-        <div class="clearfix"><input class="span9" id="" name="" type="text" placeholder=".span9" /></div>
-        <div class="clearfix"><input class="span10" id="" name="" type="text" placeholder=".span10" /></div>
-        <div class="clearfix"><input class="span11" id="" name="" type="text" placeholder=".span11" /></div>
-        <div class="clearfix"><input class="span12" id="" name="" type="text" placeholder=".span12" /></div>
+        <legend>Example form</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="fileInput">File input</label>
+          <div class="controls">
+            <input class="input-file" id="fileInput" name="fileInput" type="file" />
+          </div>
+        </fieldset>
+        <fieldset class="control-group has-error">
+          <label class="control-label" for="inputError">Input with error</label>
+          <div class="controls">
+            <input type="text" name="inputError">
+          </div>
+        </fieldset>
+        <fieldset class="control-group has-error">
+          <label class="control-label" for="textareaError">Textarea with error</label>
+          <div class="controls">
+            <textarea class="input-xxlarge" rows="3"></textarea>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="optionsCheckboxes">Checkboxes</label>
+          <div class="controls">
+            <div class="control-list">
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option1">
+                Option one is this and that&mdash;be sure to include why it’s great
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option2">
+                Option two can also be checked and included in form results
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option3">
+                Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option4">
+                Option four cannot be checked as it is disabled
+              </label>
+            </div>
+            <p class="help-text"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="optionsRadios">Radio buttons</label>
+          <div class="controls">
+            <div class="control-list">
+              <label>
+                <input type="radio" checked name="optionsRadios" value="option1" />
+                <span>Option one is this and that&mdash;be sure to include why it’s great</span>
+              </label>
+              <label>
+                <input type="radio" name="optionsRadios" value="option2" />
+                <span>Option two can is something else and selecting it will deselect options 1</span>
+              </label>
+            </div>
+            <p class="help-text"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
+          </div>
+        </fieldset>
+        <fieldset class="form-actions">
+          <button type="submit" class="btn primary">Save changes</button>
+          <button type="reset" class="btn">Cancel</button>
+        </fieldset>
       </form>
     </div>
   </div>
-
   <div class="row">
     <div class="span4">
-      <h2>Buttons</h2>
-      <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
-      <p>All buttons default to a light gray style, but a number of functional classes can be applied for different color styles. These classes include a blue <code>.primary</code> class, a light-blue <code>.info</code> class, a green <code>.success</code> class, and a red <code>.danger</code> class.</p>
+      <h2>Vertical form</h2>
     </div>
     <div class="span12">
-      <h3>Example buttons</h3>
-      <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
-      <div class="well" style="padding: 14px 19px;">
-        <button class="btn primary">Primary</button>&nbsp;<button class="btn">Default</button>&nbsp;<button class="btn info">Info</button>&nbsp;<button class="btn success">Success</button>&nbsp;<button class="btn danger">Danger</button>
-      </div>
-      <h3>Alternate sizes</h3>
-      <p>Fancy larger or smaller buttons? Have at it!</p>
-      <div class="well">
-        <a href="#" class="btn large primary">Primary action</a>
-        <a href="#" class="btn large">Action</a>
-      </div>
-      <div class="well" style="padding: 16px 19px;">
-        <a href="#" class="btn small primary">Primary action</a>
-        <a href="#" class="btn small">Action</a>
-      </div>
-      <h3>Disabled state</h3>
-      <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
-      <h4>Links</h4>
-      <div class="well">
-        <a href="#" class="btn large primary disabled">Primary action</a>
-        <a href="#" class="btn large disabled">Action</a>
-      </div>
-      <h4>Buttons</h4>
-      <div class="well">
-        <button class="btn large primary disabled" disabled="disabled">Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
-      </div>
+      <form class="form-vertical">
+        <legend>Example form</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="input01">Label</label>
+          <div class="controls">
+            <input type="text" class="xlarge" name="input01">
+            <p class="help-text">Be sure to fill this out like so, or else!</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="select01">Label</label>
+          <div class="controls">
+            <select name="select01"></select>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="input02">Label</label>
+          <div class="controls">
+            <div class="control-list">
+              <label class="checkbox">
+                <input type="checkbox"> Something something something something something
+              </label>
+              <label class="checkbox">
+                <input type="checkbox"> Something something something something
+              </label>
+              <label class="checkbox">
+                <input type="checkbox"> Something something something
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-actions">
+          <button type="submit" class="btn primary">Save changes</button>
+          <button type="reset" class="btn">Cancel</button>
+        </fieldset>
+      </form>
     </div>
-  </div><!-- /row -->
+  </div>
 </section>
 
 
@@ -1378,6 +1245,7 @@
       <h2>Tabs and pills</h2>
       <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
       <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
+      <p><a class="btn js-btn" href="./javascript.html#tabs">Get the javascript &raquo;</a></p>
     </div>
     <div class="span12">
       <ul class="tabs">
@@ -1929,6 +1797,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 </section>
 
 
+<div class="radial-test"></div>
 
     </div><!-- /container -->
 

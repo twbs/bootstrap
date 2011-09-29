@@ -310,8 +310,16 @@ img.large-bird {
   opacity: .1;
 }
 
+
 /* Pretty Print
 -------------------------------------------------- */
 pre.prettyprint {
   overflow: hidden;
+}
+
+
+/* Wells
+-------------------------------------------------- */
+.well form {
+  margin-bottom: 0;
 }

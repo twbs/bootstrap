@@ -6,32 +6,32 @@
 // Clearfix for clearing floats like a boss h5bp.com/q
 .clearfix() {
   zoom: 1;
-	&:before,
+  &:before,
   &:after {
     display: table;
     content: "";
     zoom: 1;
     *display: inline;
-	}
-	&:after {
+  }
+  &:after {
     clear: both;
-	}
+  }
 }
 
 // Center-align a block level element
 .center-block() {
-	display: block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 // Sizing shortcuts
 .size(@height: 5px, @width: 5px) {
-	height: @height;
-	width: @width;
+  height: @height;
+  width: @width;
 }
 .square(@size: 5px) {
-	.size(@size, @size);
+  .size(@size, @size);
 }
 
 // Input placeholder text
@@ -112,27 +112,40 @@
 
 // Transitions
 .transition(@transition) {
-	-webkit-transition: @transition;
-	   -moz-transition: @transition;
- 	    -ms-transition: @transition;
-	     -o-transition: @transition;
-	        transition: @transition;
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+      -ms-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+
+// Transform for scale and rotate
+// translate, rotate, scale -- need to finalize
+.rotation(@degrees: 5deg) {
+  -webkit-transform: rotate(@degrees);
+     -moz-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+.scale(@value: 1.5) {
+  -webkit-transform: scale(@value);
+     -moz-transform: scale(@value);
+          transform: scale(@value);
 }
 
 // Background clipping
 .background-clip(@clip) {
-	-webkit-background-clip: @clip;
-	   -moz-background-clip: @clip;
-	        background-clip: @clip;
+  -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
+          background-clip: @clip;
 }
 
 // CSS3 Content Columns
 .content-columns(@columnCount, @columnGap: 20px) {
-	-webkit-column-count: @columnCount;
-	   -moz-column-count: @columnCount;
+  -webkit-column-count: @columnCount;
+     -moz-column-count: @columnCount;
           column-count: @columnCount;
   -webkit-column-gap: @columnGap;
-	   -moz-column-gap: @columnGap;
+     -moz-column-gap: @columnGap;
           column-gap: @columnGap;
 }
 
@@ -140,11 +153,11 @@
 #translucent {
   .background(@color: @white, @alpha: 1) {
     background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-	}
-	.border(@color: @white, @alpha: 1) {
-		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-		background-clip: padding-box;
-	}
+  }
+  .border(@color: @white, @alpha: 1) {
+    border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+    background-clip: padding-box;
+  }
 }
 
 // Gradient Bar Colors for buttons and allerts
@@ -157,9 +170,8 @@
 
 // Gradients
 #gradient {
-  .horizontal (@startColor: #555, @endColor: #333) {
+  .horizontal(@startColor: #555, @endColor: #333) {
     background-color: @endColor;
-    background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); // Konqueror
     background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
     background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
@@ -167,11 +179,11 @@
     background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
     background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+    background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down
   }
-  .vertical (@startColor: #555, @endColor: #333) {
+  .vertical(@startColor: #555, @endColor: #333) {
     background-color: @endColor;
-    background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
     background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
     background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
@@ -179,9 +191,10 @@
     background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
     background-image: linear-gradient(top, @startColor, @endColor); // The standard
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
+    background-repeat: repeat-x;
+   filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
   }
-  .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
+  .directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
     background-color: @endColor;
     background-repeat: repeat-x;
     background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
@@ -192,14 +205,23 @@
   }
   .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
     background-color: @endColor;
-    background-repeat: no-repeat;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
     background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
     background-image: -ms-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+  .radial(@centerColor: #555, @outsideColor: #333)  {
+    background-color: @outsideColor;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@centerColor), to(@outsideColor));
+    background-image: -webkit-radial-gradient(circle, @centerColor, @outsideColor);
+    background-image: -moz-radial-gradient(circle, @centerColor, @outsideColor);
+    background-image: -ms-radial-gradient(circle, @centerColor, @outsideColor);
+    background-repeat: no-repeat;
+    // Opera cannot do radial gradients yet
   }
 }
 
@@ -210,8 +232,8 @@
 
 // Opacity
 .opacity(@opacity: 100) {
-	filter: e(%("alpha(opacity=%d)", @opacity));
-	-khtml-opacity: @opacity / 100;
-	  -moz-opacity: @opacity / 100;
-	       opacity: @opacity / 100;
+  filter: e(%("alpha(opacity=%d)", @opacity));
+  -khtml-opacity: @opacity / 100;
+    -moz-opacity: @opacity / 100;
+         opacity: @opacity / 100;
 }
