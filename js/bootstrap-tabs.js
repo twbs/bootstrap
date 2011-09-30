@@ -30,11 +30,12 @@
       , href = $this.attr('href')
       , $ul = $this.closest('ul')
       , $controlled
+      , current = $ul.find('.active a').attr('href')
 
     if (/^#\w+/.test(href)) {
       e.preventDefault()
 
-      if ($this.hasClass('active')) {
+      if ($this.parent('li').hasClass('active')) {
         return
       }
 
@@ -42,6 +43,7 @@
 
       activate($this.parent('li'), $ul)
       activate($href, $href.parent())
+      $this.trigger("changed", {from:current, to:href})
     }
   }
 
