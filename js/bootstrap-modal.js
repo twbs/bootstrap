@@ -81,17 +81,23 @@
 
         escape.call(this)
         backdrop.call(this, function () {
+          var transition = $.support.transition && that.$element.hasClass('fade')
+
           that.$element
             .appendTo(document.body)
             .show()
 
-          if ($.support.transition && that.$element.hasClass('fade')) {
+          if (transition) {
             that.$element[0].offsetWidth // force reflow
           }
 
           that.$element
             .addClass('in')
-            .trigger('shown')
+
+          transition ?
+            that.$element.one(transitionEnd, function () { that.$element.trigger('shown') }) :
+            that.$element.trigger('shown')
+
         })
 
         return this
