@@ -21,7 +21,7 @@
 !function( $ ){
 
   function activate ( element, container ) {
-    container.find('.active').removeClass('active')
+    container.find('> .active').removeClass('active')
     element.addClass('active')
   }
 
