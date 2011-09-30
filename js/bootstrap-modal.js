@@ -220,7 +220,7 @@
   $.fn.modal.defaults = {
     backdrop: false
   , keyboard: false
-  , show: true
+  , show: false
   }
 
 
