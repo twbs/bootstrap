@@ -357,6 +357,26 @@ $('#my-modal').bind('hidden', function () {
   })
 &lt;/script&gt;</pre>
           </p>
+					<h3>Events</h3>
+					<table class="zebra-striped">
+					  <thead>
+					   <tr>
+					     <th style="width: 150px;">Event</th>
+					     <th>Description</th>
+					   </tr>
+					  </thead>
+					  <tbody>
+					   <tr>
+					     <td>changed</td>
+					     <td>This event fires when the tabs are changed. The event provides an additional parameter which holds id of the previous tab and the id of the new current tab. This information is stored in an object with two properties called from and to, e.g. <code>{to: '#home', from: '#profile'}</code>. This event allows you load and change content of the tabs on request.</td>
+					   </tr>
+					  </tbody>
+					</table>
+
+					<pre class="prettyprint linenums">
+$('#.tabs').bind('changed', function (e, c) {
+  // do something with c.from and c.to ...
+})</pre>
           <h3>Demo</h3>
           <ul class="tabs" data-tabs="tabs" >
             <li class="active"><a href="#home">Home</a></li>
