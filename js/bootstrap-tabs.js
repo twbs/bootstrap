@@ -27,10 +27,9 @@
 
   function tab( e ) {
     var $this = $(this)
-      , href = $this.attr('href')
       , $ul = $this.closest('ul')
-      , $controlled
-      , current = $ul.find('.active a').attr('href')
+      , href = $this.attr('href')
+      , previous
 
     if (/^#\w+/.test(href)) {
       e.preventDefault()
@@ -39,11 +38,16 @@
         return
       }
 
+      previous = $ul.find('.active a')[0]
       $href = $(href)
 
       activate($this.parent('li'), $ul)
       activate($href, $href.parent())
-      $this.trigger("change", { from: current, to: href })
+
+      $this.trigger({
+        type: 'change'
+      , relatedTarget: previous
+      })
     }
   }
 

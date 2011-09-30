@@ -51,21 +51,27 @@ $(function () {
           + '<li class="active"><a href="#home">Home</a></li>'
           + '<li><a href="#profile">Profile</a></li>'
           + '</ul>')
-          , changeCount = 0
-          , from
-          , to;
+          , $target
+          , count = 0
+          , relatedTarget
+          , target
 
-        $tabsHTML.tabs().bind( "change", function (e, c){
-          from = c.from;
-          to = c.to;
-          changeCount++
-        })
+        $tabsHTML
+          .tabs()
+          .bind( "change", function (e) {
+            target = e.target
+            relatedTarget = e.relatedTarget
+            count++
+          })
 
-        $tabsHTML.tabs().find('a').last().click()
+        $target = $tabsHTML
+          .find('a')
+          .last()
+          .click()
 
-        equals(from, "#home")
-        equals(to, "#profile")
-        equals(changeCount, 1)
+        equals(relatedTarget, $tabsHTML.find('a').first()[0])
+        equals(target, $target[0])
+        equals(count, 1)
       })
 
 })

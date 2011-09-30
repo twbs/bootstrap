@@ -368,14 +368,15 @@ $('#my-modal').bind('hidden', function () {
 					  <tbody>
 					   <tr>
 					     <td>change</td>
-					     <td>This event fires on tab change. The event provides an additional parameter which holds the id of the previous tab and the id of the new current tab. This information is stored in an object with two properties called from and to, e.g. <code>{ to: '#home', from: '#profile' }</code>.</td>
+					     <td>This event fires on tab change. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab respectively.</td>
 					   </tr>
 					  </tbody>
 					</table>
 
 					<pre class="prettyprint linenums">
-$('#.tabs').bind('changed', function (e, c) {
-  // do something with c.from and c.to ...
+$('#.tabs').bind('change', function (e) {
+  e.target // activated tab
+  e.relatedTarget // previous tab
 })</pre>
           <h3>Demo</h3>
           <ul class="tabs" data-tabs="tabs" >
