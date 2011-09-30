@@ -60,7 +60,7 @@
     if ( options ) {
       $.extend( this.settings, options )
 
-      if ( options.show ) {
+      if ( this.settings.show ) {
         this.show()
       }
     }
