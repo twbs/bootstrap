@@ -45,8 +45,8 @@ $(function () {
 
         $("#qunit-runoff").empty()
       })
-      
-      test( "should trigger changed event on activate", function () {
+
+      test( "should trigger change event on activate", function () {
         var $tabsHTML = $('<ul class="tabs">'
           + '<li class="active"><a href="#home">Home</a></li>'
           + '<li><a href="#profile">Profile</a></li>'
@@ -54,13 +54,13 @@ $(function () {
           , changeCount = 0
           , from
           , to;
-          
-        $tabsHTML.tabs().bind( "changed", function (e, c){
+
+        $tabsHTML.tabs().bind( "change", function (e, c){
           from = c.from;
           to = c.to;
           changeCount++
         })
-        
+
         $tabsHTML.tabs().find('a').last().click()
 
         equals(from, "#home")

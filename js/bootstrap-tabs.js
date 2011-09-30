@@ -43,7 +43,7 @@
 
       activate($this.parent('li'), $ul)
       activate($href, $href.parent())
-      $this.trigger("changed", {from:current, to:href})
+      $this.trigger("change", { from: current, to: href })
     }
   }
 
