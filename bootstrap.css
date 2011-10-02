@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Sep 21 19:39:25 CEST 2011
+ * Date: Sun Oct  2 14:51:12 CEST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1927,6 +1927,9 @@ div.dropdown.open .btn.dropdown-toggle.success + .dropdown-menu,
 div.dropdown.open .btn.dropdown-toggle.info + .dropdown-menu,
 div.dropdown.open .btn.dropdown-toggle.primary + .dropdown-menu {
   margin: -1px;
+}
+div.dropdown .btn.dropdown-toggle {
+  overflow: hidden;
 }
 div.dropdown .btn.dropdown-toggle + .dropdown-menu {
   top: 27px;
