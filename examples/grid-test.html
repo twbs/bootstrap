@@ -4,18 +4,37 @@
     <meta charset="utf-8">
     <title>Bootstrap, grid test</title>
     
-    <link href="../docs/assets/css/docs.css" rel="stylesheet">
+    <!-- <link href="../docs/assets/css/docs.css" rel="stylesheet"> -->
+    <style>
+      section > .row {
+        margin-bottom: 10px;
+        }
+      .show-grid [class*="span"] {
+        background: #EEE;
+        text-align: center;
+        min-height: 30px;
+        line-height: 30px;
+        }
+        
+        .show-grid [class*="span"] [class*="span"] {
+          background: #ccc;
+          }
+    </style>
     <link rel="stylesheet/less" type="text/css" href="../lib/responsive-bootstrap.less">
     <script src="../js/less.min.js"></script>
   </head>
 
   <body>
-    <div class="container">
+    <div class="responsive">
       <!-- Grid system
       ================================================== -->
       <section id="grid-system">
         <h1>Grid System</h1>
-        <div class="row show-grid" title="16 column layout">
+        <!--
+          Note: anything smaller than 1/4 width columns doesn't work well in fluid layouts 
+          due to sub-pixel rounding issues.
+        -->
+        <!-- <div class="row show-grid" title="16 column layout">
           <div class="span1">1</div>
           <div class="span1">1</div>
           <div class="span1">1</div>
@@ -32,7 +51,7 @@
           <div class="span1">1</div>
           <div class="span1">1</div>
           <div class="span1">1</div>
-        </div><!-- /row -->
+        </div>
         <div class="row show-grid" title="8 column layout">
           <div class="span2">2</div>
           <div class="span2">2</div>
@@ -42,7 +61,7 @@
           <div class="span2">2</div>
           <div class="span2">2</div>
           <div class="span2">2</div>
-        </div><!-- /row -->
+        </div>
         <div class="row show-grid" title="Example uncommon layout">
           <div class="span3">3</div>
           <div class="span3">3</div>
@@ -50,7 +69,7 @@
           <div class="span3">3</div>
           <div class="span3">3</div>
           <div class="span1 column">1</div>
-        </div><!-- /row -->
+        </div>-->
         <div class="row show-grid" title="Four column layout">
           <div class="span4">4</div>
           <div class="span4">4</div>
@@ -131,6 +150,139 @@
           </div>
         </div>
       </section>
+      
+      
+      <!-- OOCSS grid test -->
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size2of5">2/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5">2/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5">2/5</div>
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5">2/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size3of5 secondToLastUnit">3/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size3of5 lastUnit">3/5</div>
+      </div>
+      <div class="line">
+      	<div class="size3of5">3/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size3of5 lastUnit">3/5</div>
+      </div>
+      <div class="line">
+      	<div class="size3of5 secondToLastUnit">3/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size4of5 lastUnit">4/5</div>
+      </div>
+      <div class="line">
+      	<div class="size4of5 secondToLastUnit">4/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of2 secondToLastUnit">1/2</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size1of2 lastUnit">1/2</div>
+      </div>
+      <div class="line">
+      	<div class="size1of2">1/2</div>
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size3of4 lastUnit">3/4</div>
+      </div>
+      <div class="line">
+      	<div class="size3of4 secondToLastUnit">3/4</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of3">1/3</div>
+      	<div class="size1of3 secondToLastUnit">1/3</div>
+      	<div class="size1of3 lastUnit">1/3</div>
+      </div>
+      <div class="line">
+      	<div class="size1of3 secondToLastUnit">1/3</div>
+      	<div class="size2of3 lastUnit">2/3</div>
+      </div>
+      <div class="line">
+      	<div class="size2of3 secondToLastUnit">2/3</div>
+      	<div class="size1of3 lastUnit">1/3</div>
+      </div>
+      <div class="line">
+      	<div class="size1of2 secondToLastUnit">1/2</div>
+      	<div class="size1of2 lastUnit">1/2</div>
+      </div>
+      <div class="line">
+      	<div class="size1of1">1/1</div>
+      </div>
+
+      
+      
+      
     </div><!-- .container -->
 
   </body>
