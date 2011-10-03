@@ -37,6 +37,9 @@
   $.fn.dropdown = function ( selector ) {
     return this.each(function () {
       $(this).delegate(selector || d, 'click', function (e) {
+        if ($(this).hasClass('disabled')) {
+          return false;
+        }
         var p = $(this).parent('li,.dropdown')
           , isActive = p.hasClass('open')
 
