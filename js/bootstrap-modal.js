@@ -57,12 +57,10 @@
     this.$element = $(content)
       .delegate('.close', 'click.modal', $.proxy(this.hide, this))
 
-    if ( options ) {
-      $.extend( this.settings, options )
+    $.extend( this.settings, options )
 
-      if ( this.settings.show ) {
-        this.show()
-      }
+    if ( this.settings.show ) {
+      this.show()
     }
 
     return this
