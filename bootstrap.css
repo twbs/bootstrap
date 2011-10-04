@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep 22 12:52:42 PDT 2011
+ * Date: вторник,  4 октября 2011 г. 01:46:50 (PDT)
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -173,7 +173,7 @@ textarea {
 /* Variables.less
  * Variables to customize the look and feel of Bootstrap
  * ----------------------------------------------------- */
-/* Variables.less
+/* Mixins.less
  * Snippets of reusable CSS to develop faster and keep code readable
  * ----------------------------------------------------------------- */
 /*
@@ -1113,6 +1113,9 @@ table th + th, table td + td {
 }
 table tr + tr td {
   border-top: 1px solid #ddd;
+}
+table table tr td {
+  border: none;
 }
 table tbody tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
@@ -2306,10 +2309,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   font-weight: bold;
   color: #ffffff;
   text-transform: uppercase;
+  white-space: nowrap;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  white-space: nowrap;
 }
 .label.important {
   background-color: #c43c35;
