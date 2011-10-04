@@ -167,12 +167,12 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .input-append input{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-append .add-on{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;margin-right:0;margin-left:-1px;}
 .inputs-list{margin:0 0 5px;width:100%;}.inputs-list li{display:block;padding:0;width:100%;}
-.inputs-list label{display:block;float:none;width:auto;padding:0;line-height:18px;text-align:left;white-space:normal;}.inputs-list label strong{color:#808080;}
+.inputs-list label{display:block;float:none;width:auto;padding:0;margin-left:20px;line-height:18px;text-align:left;white-space:normal;}.inputs-list label strong{color:#808080;}
 .inputs-list label small{font-size:11px;font-weight:normal;}
 .inputs-list .inputs-list{margin-left:25px;margin-bottom:10px;padding-top:0;}
 .inputs-list:first-child{padding-top:6px;}
 .inputs-list li+li{padding-top:2px;}
-.inputs-list input[type=radio],.inputs-list input[type=checkbox]{margin-bottom:0;}
+.inputs-list input[type=radio],.inputs-list input[type=checkbox]{margin-bottom:0;margin-left:-20px;float:left;}
 .form-stacked{padding-left:20px;}.form-stacked fieldset{padding-top:9px;}
 .form-stacked legend{padding-left:0;}
 .form-stacked label{display:block;float:none;width:auto;font-weight:bold;text-align:left;line-height:20px;padding-top:0;}

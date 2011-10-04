@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct  3 22:00:55 PDT 2011
+ * Date: Mon Oct  3 22:26:41 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -974,6 +974,7 @@ textarea[readonly] {
   float: none;
   width: auto;
   padding: 0;
+  margin-left: 20px;
   line-height: 18px;
   text-align: left;
   white-space: normal;
@@ -998,6 +999,8 @@ textarea[readonly] {
 }
 .inputs-list input[type=radio], .inputs-list input[type=checkbox] {
   margin-bottom: 0;
+  margin-left: -20px;
+  float: left;
 }
 .form-stacked {
   padding-left: 20px;
