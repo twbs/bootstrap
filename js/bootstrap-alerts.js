@@ -88,11 +88,14 @@
     return this.each(function () {
       var $this = $(this)
 
-      if ( typeof options == 'string' ) {
+      if ( typeof options == 'string' && typeof Alert.prototype[options] == 'function') {
         return $this.data('alert')[options]()
       }
 
-      $(this).data('alert', new Alert( this ))
+      if (typeof options == 'string')
+        $(this).data('alert', new Alert( this , options ))
+      else
+        $(this).data('alert', new Alert( this ))
 
     })
   }
