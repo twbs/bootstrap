@@ -155,12 +155,23 @@
 .rotation(@degrees: 5deg) {
   -webkit-transform: rotate(@degrees);
      -moz-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees);
+       -o-transform: rotate(@degrees);
           transform: rotate(@degrees);
 }
 .scale(@value: 1.5) {
   -webkit-transform: scale(@value);
      -moz-transform: scale(@value);
+      -ms-transform: scale(@value);
+       -o-transform: scale(@value);
           transform: scale(@value);
+}
+.translate(@x: 0, @y: 0) {
+  -webkit-transform: translate(@x, @y);
+     -moz-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y);
+       -o-transform: translate(@x, @y);
+          transform: translate(@x, @y);
 }
 
 // Background clipping
