@@ -71,6 +71,8 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-tabs.js"></script>
   </head>
 
   <body>
@@ -102,6 +104,34 @@
         <div class="row">
           <div class="span10">
             <h2>Main content</h2>
+            <div class="tabs-container">
+              <ul class="pills vertical" data-pills="pills">
+                <li class="active"><a href="#first-pill">Pill 1</a></li>
+                <li><a href="#second-pill">Pill 2</a></li>
+                <li><a href="#third-pill">Pill 3</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="active" id="first-pill">
+                  <p>First pill's content goes in here.</p>
+                </div>
+                <div id="second-pill">Second pill's content goes in here.</div>
+                <div id="third-pill">Third pill's content goes in here.</div>
+              </div>
+            </div>
+            <div class="tabs-container">
+              <ul class="tabs vertical" data-tabs="tabs">
+                <li class="active"><a href="#first-tab">Tab 1</a></li>
+                <li><a href="#second-tab">Tab 2</a></li>
+                <li><a href="#third-tab">Tab 3</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="active" id="first-tab">
+                  <p>First tab's content goes in here.</p>
+                </div>
+                <div id="second-tab">Second tab's content goes in here.</div>
+                <div id="third-tab">Third tab's content goes in here.</div>
+              </div>
+            </div>
           </div>
           <div class="span4">
             <h3>Secondary content</h3>

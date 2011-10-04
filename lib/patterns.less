@@ -331,6 +331,11 @@ a.menu:after,
       display: block;
     }
   }
+  &.vertical {
+    > li {
+      float: none;
+    }
+  }
 }
 
 // Basic Tabs
@@ -358,6 +363,33 @@ a.menu:after,
       background-color: @white;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
+    }
+  }
+  &.vertical {
+    border-right: 1px solid #ddd;
+    border-bottom-color: transparent;
+    width: 24.5%;
+    margin-top: 6px;
+    > li {
+      > a {
+        .border-radius(4px 0 0 4px);
+        margin-bottom: 2px;
+        margin-right: 0;
+        &:hover {
+          border-color: #ddd #eee #ddd #ddd;
+        }
+      }
+      &.active > a {
+        border: 1px solid #ddd;
+        border-right-color: transparent;
+      }
+    }
+    & + .tab-content {
+      .clearfix();
+      clear: none;
+      display: table;
+      padding: 15px;
+      width: 75%;
     }
   }
   // first one for backwards compatibility
@@ -389,10 +421,14 @@ a.menu:after,
   clear: both;
 }
 
+.tabs-container {
+  .clearfix();
+}
+
 // Basic pill nav
 .pills {
   a {
-      margin: 5px 3px 5px 0;
+    margin: 5px 3px 5px 0;
     padding: 0 15px;
     text-shadow: 0 1px 1px @white;
     line-height: 30px;
@@ -408,6 +444,24 @@ a.menu:after,
     background: @linkColor;
     color: @white;
     text-shadow: 0 1px 1px rgba(0,0,0,.25);
+  }
+  &.vertical {
+    width: 25%;
+    float: left;
+    a {
+      margin: 5px 3px 5px 3px;
+    }
+    & + .tab-content {
+      .clearfix();
+      clear: none;
+      float: left;
+      display: table;
+      padding: 15px;
+      width: 75%;
+    }
+    &:parent {
+      clear: both;
+    }
   }
 }
 
