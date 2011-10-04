@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct  3 23:49:59 PDT 2011
+ * Date: Tue Oct  4 00:58:05 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2336,15 +2336,15 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .label {
   padding: 1px 3px 2px;
-  background-color: #bfbfbf;
   font-size: 9.75px;
   font-weight: bold;
   color: #ffffff;
   text-transform: uppercase;
+  white-space: nowrap;
+  background-color: #bfbfbf;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  white-space: nowrap;
 }
 .label.important {
   background-color: #c43c35;
