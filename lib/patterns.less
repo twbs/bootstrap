@@ -646,6 +646,18 @@ input[type=submit].btn {
     *margin-top: 3px; /* IE7 spacing */
   }
 
+  // Make links same color as text and stand out more
+  a {
+    font-weight: bold;
+    color: @grayDark;
+  }
+  &.danger p a,
+  &.error p a,
+  &.success p a,
+  &.info p a {
+    color: @white;
+  }
+
   // Remove extra margin from content
   h5 {
     line-height: @baseline;
@@ -700,6 +712,14 @@ input[type=submit].btn {
       background-color: lighten(#6bd0ee, 25%);
       border-color: lighten(#6bd0ee, 20%);
     }
+    // Change link color back
+    &.danger p a,
+    &.error p a,
+    &.success p a,
+    &.info p a {
+      color: @grayDark;
+    }
+
   }
 }
 
