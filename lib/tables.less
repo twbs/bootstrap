@@ -52,6 +52,34 @@ table {
 }
 
 
+// TABLE CELL SIZES
+// ----------------
+
+// This is a duplication of the main grid .columns() mixin, but subtracts 20px to account for input padding and border
+.tableColumns(@columnSpan: 1) {
+  width: ((@gridColumnWidth - 20) * @columnSpan) + ((@gridColumnWidth - 20) * (@columnSpan - 1));
+}
+table {
+  // Default columns
+  .span1     { .tableColumns(1); }
+  .span2     { .tableColumns(2); }
+  .span3     { .tableColumns(3); }
+  .span4     { .tableColumns(4); }
+  .span5     { .tableColumns(5); }
+  .span6     { .tableColumns(6); }
+  .span7     { .tableColumns(7); }
+  .span8     { .tableColumns(8); }
+  .span9     { .tableColumns(9); }
+  .span10    { .tableColumns(10); }
+  .span11    { .tableColumns(11); }
+  .span12    { .tableColumns(12); }
+  .span13    { .tableColumns(13); }
+  .span14    { .tableColumns(14); }
+  .span15    { .tableColumns(15); }
+  .span16    { .tableColumns(16); }
+}
+
+
 // ZEBRA-STRIPING
 // --------------
 

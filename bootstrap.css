@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct  3 21:43:20 PDT 2011
+ * Date: Mon Oct  3 22:00:55 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -264,7 +264,7 @@ a:hover {
 .row:after {
   clear: both;
 }
-[class*="span"] {
+.row > [class*="span"] {
   display: inline;
   float: left;
   margin-left: 20px;
@@ -341,40 +341,40 @@ a:hover {
 .span24 {
   width: 1420px;
 }
-.offset1 {
+.row  > .offset1 {
   margin-left: 80px;
 }
-.offset2 {
+.row  > .offset2 {
   margin-left: 140px;
 }
-.offset3 {
+.row  > .offset3 {
   margin-left: 200px;
 }
-.offset4 {
+.row  > .offset4 {
   margin-left: 260px;
 }
-.offset5 {
+.row  > .offset5 {
   margin-left: 320px;
 }
-.offset6 {
+.row  > .offset6 {
   margin-left: 380px;
 }
-.offset7 {
+.row  > .offset7 {
   margin-left: 440px;
 }
-.offset8 {
+.row  > .offset8 {
   margin-left: 500px;
 }
-.offset9 {
+.row  > .offset9 {
   margin-left: 560px;
 }
-.offset10 {
+.row  > .offset10 {
   margin-left: 620px;
 }
-.offset11 {
+.row  > .offset11 {
   margin-left: 680px;
 }
-.offset12 {
+.row  > .offset12 {
   margin-left: 740px;
 }
 .span-one-third {
@@ -788,99 +788,67 @@ textarea.xxlarge {
 }
 input.span1, textarea.span1, select.span1 {
   display: inline-block;
-  float: none;
   width: 30px;
-  margin-left: 0;
 }
 input.span2, textarea.span2, select.span2 {
   display: inline-block;
-  float: none;
   width: 90px;
-  margin-left: 0;
 }
 input.span3, textarea.span3, select.span3 {
   display: inline-block;
-  float: none;
   width: 150px;
-  margin-left: 0;
 }
 input.span4, textarea.span4, select.span4 {
   display: inline-block;
-  float: none;
   width: 210px;
-  margin-left: 0;
 }
 input.span5, textarea.span5, select.span5 {
   display: inline-block;
-  float: none;
   width: 270px;
-  margin-left: 0;
 }
 input.span6, textarea.span6, select.span6 {
   display: inline-block;
-  float: none;
   width: 330px;
-  margin-left: 0;
 }
 input.span7, textarea.span7, select.span7 {
   display: inline-block;
-  float: none;
   width: 390px;
-  margin-left: 0;
 }
 input.span8, textarea.span8, select.span8 {
   display: inline-block;
-  float: none;
   width: 450px;
-  margin-left: 0;
 }
 input.span9, textarea.span9, select.span9 {
   display: inline-block;
-  float: none;
   width: 510px;
-  margin-left: 0;
 }
 input.span10, textarea.span10, select.span10 {
   display: inline-block;
-  float: none;
   width: 570px;
-  margin-left: 0;
 }
 input.span11, textarea.span11, select.span11 {
   display: inline-block;
-  float: none;
   width: 630px;
-  margin-left: 0;
 }
 input.span12, textarea.span12, select.span12 {
   display: inline-block;
-  float: none;
   width: 690px;
-  margin-left: 0;
 }
 input.span13, textarea.span13, select.span13 {
   display: inline-block;
-  float: none;
   width: 750px;
-  margin-left: 0;
 }
 input.span14, textarea.span14, select.span14 {
   display: inline-block;
-  float: none;
   width: 810px;
-  margin-left: 0;
 }
 input.span15, textarea.span15, select.span15 {
   display: inline-block;
-  float: none;
   width: 870px;
-  margin-left: 0;
 }
 input.span16, textarea.span16, select.span16 {
   display: inline-block;
-  float: none;
   width: 930px;
-  margin-left: 0;
 }
 input[disabled],
 select[disabled],
@@ -1133,6 +1101,54 @@ table tbody tr:last-child td:last-child {
   -webkit-border-radius: 0 0 4px 0;
   -moz-border-radius: 0 0 4px 0;
   border-radius: 0 0 4px 0;
+}
+table .span1 {
+  width: 20px;
+}
+table .span2 {
+  width: 60px;
+}
+table .span3 {
+  width: 100px;
+}
+table .span4 {
+  width: 140px;
+}
+table .span5 {
+  width: 180px;
+}
+table .span6 {
+  width: 220px;
+}
+table .span7 {
+  width: 260px;
+}
+table .span8 {
+  width: 300px;
+}
+table .span9 {
+  width: 340px;
+}
+table .span10 {
+  width: 380px;
+}
+table .span11 {
+  width: 420px;
+}
+table .span12 {
+  width: 460px;
+}
+table .span13 {
+  width: 500px;
+}
+table .span14 {
+  width: 540px;
+}
+table .span15 {
+  width: 580px;
+}
+table .span16 {
+  width: 620px;
 }
 .zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
@@ -2342,7 +2358,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .media-grid a {
   float: left;
   padding: 4px;
-  margin: 0 0 20px 20px;
+  margin: 0 0 18px 20px;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
