@@ -46,25 +46,25 @@
 
 // Font Stacks
 #font {
-  .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
+  .shorthand(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
+  .sans-serif(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
+  .serif(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
     font-family: "Georgia", Times New Roman, Times, serif;
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .monospace(@weight: normal, @size: 12px, @lineHeight: 20px) {
-    font-family: "Monaco", Courier New, monospace;
+  .monospace(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
+    font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;

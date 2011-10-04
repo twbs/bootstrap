@@ -313,7 +313,7 @@
     > a {
       padding: 0 15px;
       margin-right: 2px;
-      line-height: @baseline * 2;
+      line-height: @baseLineHeight * 2;
       border: 1px solid transparent;
       .border-radius(4px 4px 0 0);
       &:hover {
@@ -387,7 +387,7 @@
 // -----------
 
 .breadcrumb {
-  margin: 0 0 @baseline;
+  margin: 0 0 @baseLineHeight;
   padding: 7px 14px;
   #gradient > .vertical(#ffffff, #f5f5f5);
   border: 1px solid #ddd;
@@ -424,12 +424,12 @@
   p {
     font-size: 18px;
     font-weight: 200;
-    line-height: @baseline * 1.5;
+    line-height: @baseLineHeight * 1.5;
   }
 }
 footer {
-  margin-top: @baseline - 1;
-  padding-top: @baseline - 1;
+  margin-top: @baseLineHeight - 1;
+  padding-top: @baseLineHeight - 1;
   border-top: 1px solid #eee;
 }
 
@@ -438,11 +438,11 @@ footer {
 // ------------
 
 .page-header {
-  margin-bottom: @baseline - 1;
+  margin-bottom: @baseLineHeight - 1;
   border-bottom: 1px solid #ddd;
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
-    margin-bottom: (@baseline / 2) - 1px;
+    margin-bottom: (@baseLineHeight / 2) - 1px;
   }
 }
 
@@ -488,7 +488,7 @@ footer {
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
-  font-size: @basefont;
+  font-size: @baseFontSize;
   line-height: normal;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
@@ -540,14 +540,14 @@ footer {
 
   // Button Sizes
   &.large {
-    font-size: @basefont + 2px;
+    font-size: @baseFontSize + 2px;
     line-height: normal;
     padding: 9px 14px 9px;
     .border-radius(6px);
   }
   &.small {
     padding: 7px 9px 7px;
-    font-size: @basefont - 2px;
+    font-size: @baseFontSize - 2px;
   }
 }
 // Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
@@ -621,7 +621,7 @@ input[type=submit].btn {
   color: @black;
   font-size: 20px;
   font-weight: bold;
-  line-height: @baseline * .75;
+  line-height: @baseLineHeight * .75;
   text-shadow: 0 1px 0 rgba(255,255,255,1);
   .opacity(20);
   &:hover {
@@ -639,7 +639,7 @@ input[type=submit].btn {
 .alert-message {
   position: relative;
   padding: 7px 15px;
-  margin-bottom: @baseline;
+  margin-bottom: @baseLineHeight;
   color: @grayDark;
   .gradientBar(#fceec1, #eedc94); // warning by default
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -655,7 +655,7 @@ input[type=submit].btn {
 
   // Remove extra margin from content
   h5 {
-    line-height: @baseline;
+    line-height: @baseLineHeight;
   }
   p {
     margin-bottom: 0;
@@ -715,8 +715,8 @@ input[type=submit].btn {
 // ----------
 
 .pagination {
-  height: @baseline * 2;
-  margin: @baseline 0;
+  height: @baseLineHeight * 2;
+  margin: @baseLineHeight 0;
   ul {
     float: left;
     margin: 0;
@@ -731,7 +731,7 @@ input[type=submit].btn {
   a {
     float: left;
     padding: 0 14px;
-    line-height: (@baseline * 2) - 2;
+    line-height: (@baseLineHeight * 2) - 2;
     border-right: 1px solid;
     border-right-color: #ddd;
     border-right-color: rgba(0,0,0,.15);
@@ -972,7 +972,7 @@ input[type=submit].btn {
 .label {
   padding: 1px 3px 2px;
   background-color: @grayLight;
-  font-size: @basefont * .75;
+  font-size: @baseFontSize * .75;
   font-weight: bold;
   color: @white;
   text-transform: uppercase;

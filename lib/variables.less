@@ -3,19 +3,27 @@
  * ----------------------------------------------------- */
 
 
-// Links
+// LINK COLORS
+// -----------
+
 @linkColor:         #0069d6;
 @linkColorHover:    darken(@linkColor, 15);
 
-// Grays
+
+// GRAYS
+// -----
+
 @black:             #000;
-@grayDark:          #333;
-@gray:              #555;
-@grayLight:         #777;
-@grayLighter:       #ccc;
+@grayDark:          lighten(@black, 25%);
+@gray:              lighten(@black, 50%);
+@grayLight:         lighten(@black, 75%);
+@grayLighter:       lighten(@black, 90%);
 @white:             #fff;
 
-// Accent Colors
+
+// ACCENT COLORS
+// -------------
+
 @blue:              #049CDB;
 @blueDark:          #0064CD;
 @green:             #46a546;
@@ -25,11 +33,10 @@
 @pink:              #c3325f;
 @purple:            #7a43b6;
 
-// Baseline grid
-@basefont:          13px;
-@baseline:          18px;
 
-// Griditude
+// GRID
+// ----
+
 // Modify the grid styles in mixins.less
 @gridColumns:       16;
 @gridColumnWidth:   40px;
@@ -37,7 +44,10 @@
 @extraSpace:        (@gridGutterWidth * 2); // For our grid calculations
 @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
-// Color Scheme
+
+// COLOR SCHEME
+// ------------
+
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)
 @baseColor:         @blue;                  // Set a base color
 @complement:        spin(@baseColor, 180);  // Determine a complementary color
@@ -51,10 +61,13 @@
 @analog2:           spin(@baseColor, -22);
 
 
+// THEME VARIABLES
+// ---------------
 
-// More variables coming soon:
-// - @basefont to @baseFontSize
-// - @baseline to @baseLineHeight
-// - @baseFontFamily
-// - @primaryButtonColor
-// - anything else? File an issue on GitHub
+// Typography
+@baseFontSize:          13px;
+@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@baseLineHeight:        18px;
+
+// Visuals
+@primaryButtonColor:    @blue;

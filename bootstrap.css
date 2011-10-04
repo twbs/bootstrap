@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep 29 02:20:34 PDT 2011
+ * Date: Tue Oct  4 00:16:55 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -187,9 +187,8 @@ body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
-  font-weight: normal;
   line-height: 18px;
-  color: #333333;
+  color: #404040;
 }
 .container {
   width: 940px;
@@ -393,14 +392,14 @@ a:hover {
  * Headings, body text, lists, code, and more for a versatile and durable typography system
  * ---------------------------------------------------------------------------------------- */
 p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
-  font-weight: normal;
   line-height: 18px;
   margin-bottom: 9px;
 }
 p small {
   font-size: 11px;
-  color: #777777;
+  color: #bfbfbf;
 }
 h1,
 h2,
@@ -409,7 +408,7 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-  color: #333333;
+  color: #404040;
 }
 h1 small,
 h2 small,
@@ -417,7 +416,7 @@ h3 small,
 h4 small,
 h5 small,
 h6 small {
-  color: #777777;
+  color: #bfbfbf;
 }
 h1 {
   margin-bottom: 18px;
@@ -455,7 +454,7 @@ h5 {
 h6 {
   font-size: 13px;
   line-height: 18px;
-  color: #777777;
+  color: #bfbfbf;
   text-transform: uppercase;
 }
 ul, ol {
@@ -475,7 +474,7 @@ ol {
 }
 li {
   line-height: 18px;
-  color: #555555;
+  color: #808080;
 }
 ul.unstyled {
   list-style: none;
@@ -508,7 +507,7 @@ em {
   line-height: inherit;
 }
 .muted {
-  color: #777777;
+  color: #bfbfbf;
 }
 blockquote {
   margin-bottom: 18px;
@@ -526,7 +525,7 @@ blockquote small {
   font-size: 12px;
   font-weight: 300;
   line-height: 18px;
-  color: #777777;
+  color: #bfbfbf;
 }
 blockquote small:before {
   content: '\2014 \00A0';
@@ -538,7 +537,7 @@ address {
 }
 code, pre {
   padding: 0 3px 2px;
-  font-family: Monaco, Andale Mono, Courier New, monospace;
+  font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
   font-size: 12px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -577,7 +576,7 @@ legend {
   margin-bottom: 27px;
   font-size: 19.5px;
   line-height: 36px;
-  color: #333333;
+  color: #404040;
   border-bottom: 1px solid #eee;
 }
 label,
@@ -592,7 +591,7 @@ textarea {
 label {
   display: block;
   margin-bottom: 5px;
-  color: #333333;
+  color: #404040;
 }
 input[type=checkbox], input[type=radio] {
   cursor: pointer;
@@ -607,7 +606,7 @@ select,
   padding: 4px;
   font-size: 13px;
   line-height: 18px;
-  color: #555555;
+  color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -843,15 +842,15 @@ textarea[readonly] {
   cursor: not-allowed;
 }
 :-moz-placeholder {
-  color: #777777;
+  color: #bfbfbf;
 }
 ::-webkit-input-placeholder {
-  color: #777777;
+  color: #bfbfbf;
 }
 .help-text {
   margin-top: 5px;
   margin-bottom: 0;
-  color: #777777;
+  color: #bfbfbf;
 }
 .help-inline {
   display: inline;
@@ -868,7 +867,7 @@ textarea[readonly] {
   max-width: 600px;
 }
 .inline-inputs {
-  color: #555555;
+  color: #808080;
 }
 .inline-inputs span, .inline-inputs input {
   display: inline-block;
@@ -901,7 +900,7 @@ textarea[readonly] {
   margin-right: -1px;
   font-weight: normal;
   line-height: 18px;
-  color: #777777;
+  color: #bfbfbf;
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
   -webkit-border-radius: 3px 0 0 3px;
@@ -1115,7 +1114,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   overflow: visible;
 }
 .topbar a {
-  color: #777777;
+  color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .topbar .brand a:hover, .topbar ul .active > a {
@@ -1178,20 +1177,20 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   transition: none;
 }
 .topbar input:-moz-placeholder {
-  color: #cccccc;
+  color: #e6e6e6;
 }
 .topbar input::-webkit-input-placeholder {
-  color: #cccccc;
+  color: #e6e6e6;
 }
 .topbar input:hover {
-  background-color: #777777;
+  background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
   color: #ffffff;
 }
 .topbar input:focus, .topbar input.focused {
   outline: 0;
   background-color: #ffffff;
-  color: #333333;
+  color: #404040;
   text-shadow: 0 1px 0 #ffffff;
   border: 0;
   padding: 5px 10px;
@@ -1363,7 +1362,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   clear: both;
   font-weight: normal;
   line-height: 18px;
-  color: #555555;
+  color: #808080;
   text-shadow: 0 1px 0 #ffffff;
 }
 .topbar .dropdown-menu a:hover, .dropdown-menu a:hover {
@@ -1377,7 +1376,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-image: linear-gradient(top, #eeeeee, #dddddd);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#dddddd', GradientType=0);
-  color: #333333;
+  color: #404040;
   text-decoration: none;
   -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
@@ -1439,7 +1438,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   border-color: #eee #eee #ddd;
 }
 .tabs > li.active > a {
-  color: #555555;
+  color: #808080;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
@@ -1518,10 +1517,10 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 }
 .breadcrumb .divider {
   padding: 0 5px;
-  color: #777777;
+  color: #bfbfbf;
 }
 .breadcrumb .active a {
-  color: #333333;
+  color: #404040;
 }
 .hero-unit {
   background-color: #f5f5f5;
@@ -1806,7 +1805,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   position: relative;
   padding: 7px 15px;
   margin-bottom: 18px;
-  color: #333333;
+  color: #404040;
   background-color: #eedc94;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#fceec1), to(#eedc94));
   background-image: -moz-linear-gradient(top, #fceec1, #eedc94);
@@ -1868,13 +1867,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-bottom: 0;
 }
 .alert-message.block-message li {
-  color: #333333;
+  color: #404040;
 }
 .alert-message.block-message .alert-actions {
   margin-top: 5px;
 }
 .alert-message.block-message.error, .alert-message.block-message.success, .alert-message.block-message.info {
-  color: #333333;
+  color: #404040;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .alert-message.block-message.error {
@@ -1925,7 +1924,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .pagination .disabled a, .pagination .disabled a:hover {
   background-color: transparent;
-  color: #777777;
+  color: #bfbfbf;
 }
 .pagination .next a {
   border: 0;
@@ -2195,7 +2194,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .label {
   padding: 1px 3px 2px;
-  background-color: #777777;
+  background-color: #bfbfbf;
   font-size: 9.75px;
   font-weight: bold;
   color: #ffffff;

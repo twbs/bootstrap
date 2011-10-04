@@ -7,10 +7,12 @@
 // ---------
 
 p {
-  #font > .shorthand(normal,@basefont,@baseline);
-  margin-bottom: @baseline / 2;
+  font-family: @baseFontFamily;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  margin-bottom: @baseLineHeight / 2;
   small {
-    font-size: @basefont - 2;
+    font-size: @baseFontSize - 2;
     color: @grayLight;
   }
 }
@@ -27,22 +29,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 h1 {
-  margin-bottom: @baseline;
+  margin-bottom: @baseLineHeight;
   font-size: 30px;
-  line-height: @baseline * 2;
+  line-height: @baseLineHeight * 2;
   small {
     font-size: 18px;
   }
 }
 h2 {
   font-size: 24px;
-  line-height: @baseline * 2;
+  line-height: @baseLineHeight * 2;
   small {
     font-size: 14px;
   }
 }
 h3 {
-  line-height: @baseline * 2;
+  line-height: @baseLineHeight * 2;
   font-size: 18px;
   small {
     font-size: 14px;
@@ -50,18 +52,18 @@ h3 {
 }
 h4 {
   font-size: 16px;
-  line-height: @baseline * 2;
+  line-height: @baseLineHeight * 2;
   small {
     font-size: 12px;
   }
 }
 h5 {
   font-size: 14px;
-  line-height: @baseline;
+  line-height: @baseLineHeight;
 }
 h6 {
   font-size: 13px;
-  line-height: @baseline;
+  line-height: @baseLineHeight;
   color: @grayLight;
   text-transform: uppercase;
 }
@@ -72,7 +74,7 @@ h6 {
 
 // Unordered and Ordered lists
 ul, ol {
-  margin: 0 0 @baseline 25px;
+  margin: 0 0 @baseLineHeight 25px;
 }
 ul ul,
 ul ol,
@@ -87,7 +89,7 @@ ol {
   list-style: decimal;
 }
 li {
-  line-height: @baseline;
+  line-height: @baseLineHeight;
   color: @gray;
 }
 ul.unstyled {
@@ -97,15 +99,15 @@ ul.unstyled {
 
 // Description Lists
 dl {
-  margin-bottom: @baseline;
+  margin-bottom: @baseLineHeight;
   dt, dd {
-    line-height: @baseline;
+    line-height: @baseLineHeight;
   }
   dt {
     font-weight: bold;
   }
   dd {
-    margin-left: @baseline / 2;
+    margin-left: @baseLineHeight / 2;
   }
 }
 
@@ -135,16 +137,16 @@ em {
 
 // Blockquotes
 blockquote {
-  margin-bottom: @baseline;
+  margin-bottom: @baseLineHeight;
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
-    #font > .shorthand(300,14px,@baseline);
+    #font > .shorthand(300,14px,@baseLineHeight);
     margin-bottom: 0;
   }
   small {
     display: block;
-    #font > .shorthand(300,12px,@baseline);
+    #font > .shorthand(300,12px,@baseLineHeight);
     color: @grayLight;
     &:before {
       content: '\2014 \00A0';
@@ -155,14 +157,14 @@ blockquote {
 // Addresses
 address {
   display: block;
-  line-height: @baseline;
-  margin-bottom: @baseline;
+  line-height: @baseLineHeight;
+  margin-bottom: @baseLineHeight;
 }
 
 // Inline and block code styles
 code, pre {
   padding: 0 3px 2px;
-  font-family: Monaco, Andale Mono, Courier New, monospace;
+  font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
   font-size: 12px;
   .border-radius(3px);
 }
@@ -174,9 +176,9 @@ code {
 pre {
   background-color: #f5f5f5;
   display: block;
-  padding: (@baseline - 1) / 2;
-  margin: 0 0 @baseline;
-  line-height: @baseline;
+  padding: (@baseLineHeight - 1) / 2;
+  margin: 0 0 @baseLineHeight;
+  line-height: @baseLineHeight;
   font-size: 12px;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
