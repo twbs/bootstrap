@@ -114,6 +114,7 @@ input[type=file] {
 // Make multiple select elements height not fixed
 select[multiple] {
   height: inherit;
+  background-color: @white; // Fixes Chromium bug of unreadable items
 }
 
 textarea {

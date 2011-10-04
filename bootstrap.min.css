@@ -117,7 +117,7 @@ input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3
 input[type=file]{background-color:#ffffff;padding:initial;border:initial;line-height:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 input[type=button],input[type=reset],input[type=submit]{width:auto;height:auto;}
 select,input[type=file]{height:27px;line-height:27px;*margin-top:4px;}
-select[multiple]{height:inherit;}
+select[multiple]{height:inherit;background-color:#ffffff;}
 textarea{height:auto;}
 .uneditable-input{background-color:#ffffff;display:block;border-color:#eee;-webkit-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);-moz-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);cursor:not-allowed;}
 :-moz-placeholder{color:#bfbfbf;}

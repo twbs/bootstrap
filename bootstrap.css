@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Oct  4 00:58:05 PDT 2011
+ * Date: Tue Oct  4 01:16:04 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -677,6 +677,7 @@ select, input[type=file] {
 }
 select[multiple] {
   height: inherit;
+  background-color: #ffffff;
 }
 textarea {
   height: auto;
