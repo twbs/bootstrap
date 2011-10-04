@@ -159,10 +159,10 @@ select:focus {
 }
 
 // Error styles
-form div.clearfix.error {
+form .clearfix.error {
   background: lighten(@red, 57%);
   padding: 10px 0;
-  margin: -10px 0 10px;
+  margin: 10px 0;
   .border-radius(4px);
   @error-text: desaturate(lighten(@red, 25%), 25%);
   > label,
