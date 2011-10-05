@@ -195,7 +195,6 @@ $('#my-modal').bind('hidden', function () {
           </div>
 
           <button data-controls-modal="modal-from-dom" data-backdrop="true" data-keyboard="true" class="btn danger">Launch Modal</button>
-
         </div>
       </div>
     </section>
@@ -659,6 +658,26 @@ $('#.tabs').bind('change', function (e) {
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>Markup</h3>
           <p>Just add a <code>data-alert</code> attribute to your alert messages to automatically give them close functionality.</p>
+          <h3>Options</h3>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 100px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>selector</td>
+               <td>string</td>
+               <td>'.close'</td>
+               <td>What selector to target for closing an alert.</td>
+             </tr>
+            </tbody>
+          </table>
+
           <h3>Methods</h3>
           <h4>$().alert()</h4>
           <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
