@@ -12,7 +12,7 @@
     <![endif]-->
 
     <!-- Le javascript -->
-    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="../js/bootstrap-modal.js"></script>
@@ -182,7 +182,7 @@ $('#my-modal').bind('hidden', function () {
           <!-- sample modal content -->
           <div id="modal-from-dom" class="modal hide fade">
             <div class="modal-header">
-              <a href="#" class="close js-dismiss">&times;</a>
+              <a href="#" class="close" data-modal-dismiss="true" >&times;</a>
               <h3>Modal Heading</h3>
             </div>
             <div class="modal-body">
@@ -190,12 +190,10 @@ $('#my-modal').bind('hidden', function () {
             </div>
             <div class="modal-footer">
               <a href="#" class="btn primary">Save changes</a>
-              <a href="#" class="btn js-dismiss">Close</a>
+              <a href="#" class="btn" data-modal-dismiss="true" >Close</a>
             </div>
           </div>
-
           <button data-controls-modal="modal-from-dom" data-backdrop="true" data-keyboard="true" class="btn danger">Launch Modal</button>
-
         </div>
       </div>
     </section>
@@ -221,7 +219,7 @@ $('#my-modal').bind('hidden', function () {
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="dropdown" data-dropdown="dropdown" &gt;
+  &lt;li class="dropdown" data-dropdown="true" &gt;
     &lt;a href="#" class="dropdown-toggle"&gt;Dropdown&lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       &lt;li&gt;&lt;a href="#"&gt;Secondary link&lt;/a&gt;&lt;/li&gt;
@@ -231,7 +229,6 @@ $('#my-modal').bind('hidden', function () {
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</pre>
-          <p><span class="label notice">Notice</span> If your ui has several dropdowns, consider adding the <code>data-dropdown</code> attribute to a more significant container element like <code>.tabs</code> or <code>.topbar</code>.
           <h3>Methods</h3>
           <h4>$().dropdown()</h4>
           <p>
@@ -239,7 +236,7 @@ $('#my-modal').bind('hidden', function () {
           </p>
           <h3>Demo</h3>
           <div class="topbar-wrapper">
-            <div id="topbar-example" class="topbar" data-dropdown="dropdown">
+            <div id="topbar-example" class="topbar">
               <div class="topbar-inner">
                 <div class="container">
                   <a class="brand" href="#">Project Name</a>
@@ -252,7 +249,7 @@ $('#my-modal').bind('hidden', function () {
                   </form>
                   <ul class="nav secondary-nav">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle">Dropdown 1</a>
+                      <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 1</a>
                       <ul class="dropdown-menu">
                         <li><a href="#">Secondary link</a></li>
                         <li><a href="#">Something else here</a></li>
@@ -261,7 +258,7 @@ $('#my-modal').bind('hidden', function () {
                       </ul>
                     </li>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle">Dropdown 2</a>
+                      <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 2</a>
                       <ul class="dropdown-menu">
                         <li><a href="#">Secondary link</a></li>
                         <li><a href="#">Something else here</a></li>
@@ -645,11 +642,11 @@ $('#my-modal').bind('hidden', function () {
           <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
           <h3>Demo</h3>
           <div class="alert-message warning fade in" data-alert="alert" >
-            <a class="close" href="#">&times;</a>
+            <a class="close" data-alert-dismiss="true" href="#">&times;</a>
             <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
           </div>
           <div class="alert-message block-message error fade in" data-alert="alert" >
-            <a class="close" href="#">&times;</a>
+            <a class="close" data-alert-dismiss="true" href="#">&times;</a>
             <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
             <div class="alert-actions">
               <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
