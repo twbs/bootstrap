@@ -20,23 +20,14 @@
 
 (function( $ ){
 
-  var d = '.dropdown-toggle'
-
-  function clearMenus() {
-    $(d).parent('li').removeClass('open')
-  }
-
-  $(function () {
-    $('html').bind("click", clearMenus)
-    $('body').dropdown( '[data-dropdown] .dropdown-toggle' )
-  })
+  var d = '[data-dropdown]'
 
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
-  $.fn.dropdown = function ( selector ) {
+  $.fn.dropdown = function () {
     return this.each(function () {
-      $(this).delegate(selector || d, 'click', function (e) {
+      $(this).delegate(d, 'click', function (e) {
         var li = $(this).parent('li')
           , isActive = li.hasClass('open')
 
@@ -46,5 +37,17 @@
       })
     })
   }
+
+  /* APPLY TO STANDARD DROPDOWN ELEMENTS
+   * =================================== */
+
+  function clearMenus() {
+    $(d).parent('li').removeClass('open')
+  }
+
+  $(function () {
+    $('html').bind("click", clearMenus)
+    $('body').dropdown()
+  })
 
 })( window.jQuery || window.ender )
