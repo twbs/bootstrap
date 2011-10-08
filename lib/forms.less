@@ -77,7 +77,12 @@ select,
   .border-radius(3px);
 }
 
-/* mini reset for non-html5 file types */
+// remove padding from select
+select {
+  padding: initial;
+}
+
+// mini reset for non-html5 file types
 input[type=checkbox],
 input[type=radio] {
   width: auto;
@@ -239,8 +244,7 @@ textarea.xxlarge {
   width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
 }
 input,
-textarea,
-select {
+textarea {
   // Default columns
   &.span1     { .formColumns(1); }
   &.span2     { .formColumns(2); }
