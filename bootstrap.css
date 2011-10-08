@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Oct  4 21:26:21 PDT 2011
+ * Date: 
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -230,13 +230,13 @@ body {
   margin-left: 240px;
 }
 a {
-  color: #0069d6;
+  color: #30c0fb;
   text-decoration: none;
   line-height: inherit;
   font-weight: inherit;
 }
 a:hover {
-  color: #00438a;
+  color: #049cdb;
   text-decoration: underline;
 }
 .pull-right {
@@ -708,10 +708,10 @@ input, textarea {
 }
 input:focus, textarea:focus {
   outline: 0;
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  border-color: #30c0fb;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px #30c0fb;
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px #30c0fb;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px #30c0fb;
 }
 input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   -webkit-box-shadow: none;
@@ -1637,13 +1637,13 @@ a.menu:after, .dropdown-toggle:after {
   border-radius: 15px;
 }
 .pills a:hover {
-  background: #00438a;
+  background: #049cdb;
   color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 .pills .active a {
-  background: #0069d6;
+  background: #30c0fb;
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
@@ -1826,18 +1826,18 @@ footer {
 }
 .btn.primary {
   color: #ffffff;
-  background-color: #0064cd;
+  background-color: #62cffc;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
-  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
-  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -o-linear-gradient(top, #049cdb, #0064cd);
-  background-image: linear-gradient(top, #049cdb, #0064cd);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#62cffc));
+  background-image: -moz-linear-gradient(top, #049cdb, #62cffc);
+  background-image: -ms-linear-gradient(top, #049cdb, #62cffc);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #62cffc));
+  background-image: -webkit-linear-gradient(top, #049cdb, #62cffc);
+  background-image: -o-linear-gradient(top, #049cdb, #62cffc);
+  background-image: linear-gradient(top, #049cdb, #62cffc);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#62cffc', GradientType=0);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #0064cd #0064cd #003f81;
+  border-color: #62cffc #62cffc #17b8fb;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn:active {
@@ -2356,7 +2356,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   display: block;
 }
 .media-grid a:hover {
-  border-color: #0069d6;
+  border-color: #30c0fb;
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);

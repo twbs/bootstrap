@@ -551,7 +551,7 @@ footer {
   // Primary Button Type
   &.primary {
     color: @white;
-    .gradientBar(@blue, @blueDark)
+    .gradientBar(@baseColor, lighten(@baseColor, 25%));
   }
 
    // Transitions
@@ -733,7 +733,7 @@ input[type=submit].btn {
   }
   a:hover,
   .active a {
-    background-color: lighten(@blue, 45%);
+    background-color: lighten(@baseColor, 45%);
   }
   .disabled a,
   .disabled a:hover {
