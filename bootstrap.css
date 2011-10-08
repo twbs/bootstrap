@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Oct  7 23:55:26 PDT 2011
+ * Date: Sat Oct  8 00:14:02 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1056,15 +1056,8 @@ table {
   width: 100%;
   margin-bottom: 18px;
   padding: 0;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  /* IE7, collapse table to remove spacing */
-
   font-size: 13px;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-collapse: collapse;
 }
 table th, table td {
   padding: 10px 10px 9px;
@@ -1079,32 +1072,47 @@ table th {
 }
 table td {
   vertical-align: top;
-}
-table th + th, table td + td {
-  border-left: 1px solid #ddd;
-}
-table tr td {
   border-top: 1px solid #ddd;
 }
-table tr:first-child td {
+table tbody th {
+  border-bottom: 0;
+  vertical-align: top;
+}
+.bordered-table {
+  border: 1px solid #ddd;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  /* IE7, collapse table to remove spacing */
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.bordered-table th + th, .bordered-table td + td, .bordered-table th + td {
+  border-left: 1px solid #ddd;
+}
+.bordered-table tr td {
+  border-top: 1px solid #ddd;
+}
+.bordered-table tr:first-child td {
   border-top: 0;
 }
-table tbody tr:first-child td:first-child {
+.bordered-table tbody tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
   -moz-border-radius: 4px 0 0 0;
   border-radius: 4px 0 0 0;
 }
-table tbody tr:first-child td:last-child {
+.bordered-table tbody tr:first-child td:last-child {
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
   border-radius: 0 4px 0 0;
 }
-table tbody tr:last-child td:first-child {
+.bordered-table tbody tr:last-child td:first-child {
   -webkit-border-radius: 0 0 0 4px;
   -moz-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
 }
-table tbody tr:last-child td:last-child {
+.bordered-table tbody tr:last-child td:last-child {
   -webkit-border-radius: 0 0 4px 0;
   -moz-border-radius: 0 0 4px 0;
   border-radius: 0 0 4px 0;
@@ -1157,10 +1165,10 @@ table .span15 {
 table .span16 {
   width: 620px;
 }
-.zebra-striped tbody tr:nth-child(odd) td {
+.zebra-striped tbody tr:nth-child(odd) td, .zebra-striped tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
-.zebra-striped tbody tr:hover td {
+.zebra-striped tbody tr:hover td, .zebra-striped tbody tr:hover th {
   background-color: #f5f5f5;
 }
 table .header {
