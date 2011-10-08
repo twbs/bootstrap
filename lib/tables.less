@@ -34,8 +34,11 @@ table {
   td + td {
     border-left: 1px solid #ddd;
   }
-  tr + tr td {
+  tr td {
     border-top: 1px solid #ddd;
+  }
+  tr:first-child td {
+    border-top: 0;
   }
   tbody tr:first-child td:first-child {
     .border-radius(4px 0 0 0);
