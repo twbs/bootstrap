@@ -8,7 +8,7 @@
 
 p {
   #font > .shorthand(normal,@basefont,@baseLineHeight);
-  margin-bottom: @baseLineHeight / 2;
+  margin-bottom: @baseMarginHeight / 2;
   small {
     font-size: @basefont - 2;
     color: @grayLight;
@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 h1 {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
   font-size: 30px;
   line-height: @baseLineHeight * 2;
   small {
@@ -71,7 +71,7 @@ h6 {
 
 // Unordered and Ordered lists
 ul, ol {
-  margin: 0 0 @baseLineHeight 25px;
+  margin: 0 0 @baseMarginHeight 25px;
 }
 ul ul,
 ul ol,
@@ -96,7 +96,7 @@ ul.unstyled {
 
 // Description Lists
 dl {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
   dt, dd {
     line-height: @baseLineHeight;
   }
@@ -104,7 +104,7 @@ dl {
     font-weight: bold;
   }
   dd {
-    margin-left: @baseLineHeight / 2;
+    margin-left: @baseMarginHeight / 2;
   }
 }
 
@@ -134,7 +134,7 @@ em {
 
 // Blockquotes
 blockquote {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
@@ -155,7 +155,7 @@ blockquote {
 address {
   display: block;
   line-height: @baseLineHeight;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
 }
 
 // Inline and block code styles
@@ -173,8 +173,8 @@ code {
 pre {
   background-color: #f5f5f5;
   display: block;
-  padding: (@baseLineHeight - 1) / 2;
-  margin: 0 0 @baseLineHeight;
+  padding: (@basePaddingHeight - 1) / 2;
+  margin: 0 0 @baseMarginHeight;
   line-height: @baseLineHeight;
   font-size: 12px;
   border: 1px solid #ccc;

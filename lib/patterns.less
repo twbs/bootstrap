@@ -426,7 +426,7 @@ a.menu:after,
 // -----------
 
 .breadcrumb {
-  margin: 0 0 @baseLineHeight;
+  margin: 0 0 @baseMarginHeight;
   padding: 7px 14px;
   #gradient > .vertical(#ffffff, #f5f5f5);
   border: 1px solid #ddd;
@@ -469,8 +469,8 @@ a.menu:after,
   }
 }
 footer {
-  margin-top: @baseLineHeight - 1;
-  padding-top: @baseLineHeight - 1;
+  margin-top: @baseMarginHeight - 1;
+  padding-top: @basePaddingHeight - 1;
   border-top: 1px solid #eee;
 }
 
@@ -479,11 +479,11 @@ footer {
 // ------------
 
 .page-header {
-  margin-bottom: @baseLineHeight - 1;
+  margin-bottom: @baseMarginHeight - 1;
   border-bottom: 1px solid #ddd;
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
-    margin-bottom: (@baseLineHeight / 2) - 1px;
+    margin-bottom: (@baseMarginHeight / 2) - 1px;
   }
 }
 
@@ -632,7 +632,7 @@ input[type=submit].btn {
 .alert-message {
   position: relative;
   padding: 7px 15px;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
   color: @grayDark;
   .gradientBar(#fceec1, #eedc94); // warning by default
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -708,8 +708,8 @@ input[type=submit].btn {
 // ----------
 
 .pagination {
-  height: @baseLineHeight * 2;
-  margin: @baseLineHeight 0;
+  height: @baseHeight * 2;
+  margin: @baseMarginHeight 0;
   ul {
     float: left;
     margin: 0;

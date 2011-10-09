@@ -440,7 +440,7 @@
     <div class="span4">
       <h2>Headings &amp; copy</h2>
       <p>A standard typographic hierarchy for structuring your webpages.</p>
-      <p>The entire typographic grid is based on two Less variables in our preboot.less file: <code>@basefont</code> and <code>@baseline</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
+      <p>The entire typographic grid is based on two Less variables in our preboot.less file: <code>@basefont</code> and <code>margin-bottom: @baseMarginHeight;</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
       <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
     </div>
     <div class="span4">
@@ -1799,7 +1799,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
 // Baseline grid
 @basefont:          13px;
-@baseline:          18px;
+margin-bottom: @baseMarginHeight;:          18px;
 </pre>
 
 <h3>Commenting</h3>
