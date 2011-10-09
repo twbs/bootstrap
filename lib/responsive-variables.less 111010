@@ -27,7 +27,7 @@
 
 // Baseline grid
 @basefont:          13px;
-@baseline:          18px;
+@baseLineHeight:          18px;
 
 // Griditude
 // Modify the grid styles in mixins.less
@@ -54,7 +54,7 @@
 
 // More variables coming soon:
 // - @basefont to @baseFontSize
-// - @baseline to @baseLineHeight
+// - @baseLineHeight to @baseLineHeightHeight
 // - @baseFontFamily
 // - @primaryButtonColor
 // - anything else? File an issue on GitHub

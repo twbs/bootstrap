@@ -7,13 +7,13 @@
 // -----------
 
 form {
-  margin-bottom: @baseline;
+  margin-bottom: @baseLineHeight;
 }
 
 // Groups of fields with labels on top (legends)
 fieldset {
-  margin-bottom: @baseline;
-  padding-top: @baseline;
+  margin-bottom: @baseLineHeight;
+  padding-top: @baseLineHeight;
   legend {
     display: block;
     padding-left: 150px;
@@ -27,7 +27,7 @@ fieldset {
 
 // Parent element that clears floats and wraps labels and fields together
 form .clearfix {
-  margin-bottom: @baseline;
+  margin-bottom: @baseLineHeight;
   .clearfix()
 }
 
@@ -43,7 +43,7 @@ textarea {
 label {
   padding-top: 6px;
   font-size: @basefont;
-  line-height: @baseline;
+  line-height: @baseLineHeight;
   float: left;
   width: 130px;
   text-align: right;
@@ -68,10 +68,10 @@ select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
-  height: @baseline;
+  height: @baseLineHeight;
   padding: 4px;
   font-size: @basefont;
-  line-height: @baseline;
+  line-height: @baseLineHeight;
   color: @gray;
   border: 1px solid #ccc;
   .border-radius(3px);
@@ -106,8 +106,8 @@ input[type=submit] {
 
 select,
 input[type=file] {
-  height: @baseline * 1.5; // In IE7, the height of the select element cannot be changed by height, only font-size
-  line-height: @baseline * 1.5;
+  height: @baseLineHeight * 1.5; // In IE7, the height of the select element cannot be changed by height, only font-size
+  line-height: @baseLineHeight * 1.5;
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
 }
 
@@ -276,9 +276,9 @@ textarea[readonly] {
 // Actions (the buttons)
 .actions {
   background: #f5f5f5;
-  margin-top: @baseline;
-  margin-bottom: @baseline;
-  padding: (@baseline - 1) 20px @baseline 150px;
+  margin-top: @baseLineHeight;
+  margin-bottom: @baseLineHeight;
+  padding: (@baseLineHeight - 1) 20px @baseLineHeight 150px;
   border-top: 1px solid #ddd;
   .border-radius(0 0 3px 3px);
   .secondary-action {
@@ -296,7 +296,7 @@ textarea[readonly] {
 .help-inline,
 .help-block {
   font-size: @basefont - 2;
-  line-height: @baseline;
+  line-height: @baseLineHeight;
   color: @grayLight;
 }
 .help-inline {
@@ -389,7 +389,7 @@ textarea[readonly] {
     float: none;
     width: auto;
     padding: 0;
-    line-height: @baseline;
+    line-height: @baseLineHeight;
     text-align: left;
     white-space: normal;
     strong {
@@ -421,7 +421,7 @@ textarea[readonly] {
 .form-stacked {
   padding-left: 20px;
   fieldset {
-    padding-top: @baseline / 2;
+    padding-top: @baseLineHeight / 2;
   }
   legend {
     padding-left: 0;
@@ -436,7 +436,7 @@ textarea[readonly] {
     padding-top: 0;
   }
   .clearfix {
-    margin-bottom: @baseline / 2;
+    margin-bottom: @baseLineHeight / 2;
     div.input {
       margin-left: 0;
     }
