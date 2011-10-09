@@ -150,7 +150,7 @@ a {
 
 .unit{float:left; margin-left: @gridGutterWidth;text-align: center;}
 .unitRight{float:right;}
-.size1of1{float:none; .unit}
+.size1of1{float:none; .width-less-margin(100%);.unit}
 .size1of2{.width-less-margin(50%); .unit}
 .size1of3{.width-less-margin(33.33333%); .unit}
 .size2of3{.width-less-margin(66.66666%); .unit}
@@ -163,6 +163,6 @@ a {
 .lastUnit{float:none;width:auto;_position:relative;margin-left:0;_left:-3px;_margin-right:-3px;}
 .secondToLastUnit{margin-right: @gridGutterWidth;}
 
-// rules for testing purposes only
+// rules for test display purposes only
 .unit{background: #eee;min-height:30px;line-height:30px;}
-.line{margin-top: 20px}
+.line{margin-top: 10px}
