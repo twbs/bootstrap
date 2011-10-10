@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct  9 22:07:57 CEST 2011
+ * Date: Mon Oct 10 07:44:23 CEST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1912,23 +1912,19 @@ div.dropdown.open .btn.dropdown-toggle {
 }
 div.dropdown .btn.dropdown-toggle {
   overflow: hidden;
-  padding-right: 6px;
 }
 div.dropdown .btn.dropdown-toggle + .dropdown-menu {
-  top: 27px;
+  top: 29px;
   border-width: 1px;
-  -webkit-border-radius: 0 6px 6px 6px;
-  -moz-border-radius: 0 6px 6px 6px;
-  border-radius: 0 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
 }
 div.dropdown .btn.dropdown-toggle.large + .dropdown-menu {
-  top: 37px;
+  top: 39px;
 }
-div.dropdown .btn.large.dropdown-toggle {
-  padding-right: 7px;
-}
-div.dropdown .btn.small.dropdown-toggle {
-  padding-right: 6px;
+div.dropdown .btn.dropdown-toggle, div.dropdown .btn.large.dropdown-toggle, div.dropdown .btn.small.dropdown-toggle {
+  padding-right: 11px;
 }
 div.dropdown .btn.dropdown-toggle:after {
   filter: alpha(opacity=80);
@@ -1936,7 +1932,7 @@ div.dropdown .btn.dropdown-toggle:after {
   -moz-opacity: 0.8;
   opacity: 0.8;
   margin-top: 6px;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 div.dropdown .btn.small.dropdown-toggle:after {
   margin-top: 4px;

@@ -619,31 +619,28 @@ div.dropdown {
   
   .btn.dropdown-toggle {
     overflow: hidden;
-    padding-right: 6px;
     
     + .dropdown-menu {
-      top: 27px;
+      top: 29px;
       border-width: 1px;
-      .border-radius(0 6px 6px 6px);
+      .border-radius(6px 6px 6px 6px);
     }
     
     &.large + .dropdown-menu {
-      top: 37px;
+      top: 39px;
     }
   }
   
-  .btn.large.dropdown-toggle {
-    padding-right: 7px;
-  }
-  
+  .btn.dropdown-toggle,
+  .btn.large.dropdown-toggle, 
   .btn.small.dropdown-toggle {
-    padding-right: 6px;
+    padding-right: 11px;
   }
   
   .btn.dropdown-toggle:after {
     .opacity(80);
     margin-top: 6px;
-    margin-left: 8px;
+    margin-left: 10px;
   }
   
   .btn.small.dropdown-toggle:after {
