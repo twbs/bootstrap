@@ -278,7 +278,8 @@ a.menu:after,
   }
 }
 
-.topbar .dropdown-menu, .dropdown-menu {
+.topbar .dropdown-menu,
+.dropdown-menu {
   // Links within the dropdown menu
   a {
     display: block;
@@ -289,7 +290,8 @@ a.menu:after,
     color: @gray;
     text-shadow: 0 1px 0 @white;
     // Hover state
-    &:hover {
+    &:hover,
+    &.hover {
       #gradient > .vertical(#eeeeee, #dddddd);
       color: @grayDark;
       text-decoration: none;
