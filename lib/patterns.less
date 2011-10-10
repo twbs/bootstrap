@@ -54,53 +54,52 @@
   }
 
   // Search Form
-  form {
-    float: left;
-    margin: 5px 0 0 0;
+  .form-search {
     position: relative;
-    .opacity(100);
+    margin-top: 5px;
+    margin-bottom: 0;
+    input {
+      background-color: #444;
+      background-color: rgba(255,255,255,.3);
+      #font > .sans-serif(13px, normal, 1);
+      padding: 4px 9px;
+      color: @white;
+      color: rgba(255,255,255,.75);
+      border: 1px solid #111;
+      .border-radius(4px);
+      @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
+      .box-shadow(@shadow);
+      .transition(none);
+
+      // Placeholder text gets special styles; can't be bundled together though for some reason
+      &:-moz-placeholder {
+        color: @grayLighter;
+      }
+      &::-webkit-input-placeholder {
+        color: @grayLighter;
+      }
+      // Hover states
+      &:hover {
+        background-color: @grayLight;
+        background-color: rgba(255,255,255,.5);
+        color: @white;
+      }
+      // Focus states (we use .focused since IE8 and down doesn't support :focus)
+      &:focus,
+      &.focused {
+        outline: 0;
+        background-color: @white;
+        color: @grayDark;
+        text-shadow: 0 1px 0 @white;
+        border: 0;
+        padding: 5px 10px;
+        .box-shadow(0 0 3px rgba(0,0,0,.15));
+      }
+    }
   }
   // Todo: remove from v2.0 when ready, added for legacy
-  form.pull-right {
+  .pull-right {
     float: right;
-  }
-  input {
-    background-color: #444;
-    background-color: rgba(255,255,255,.3);
-    #font > .sans-serif(13px, normal, 1);
-    padding: 4px 9px;
-    color: @white;
-    color: rgba(255,255,255,.75);
-    border: 1px solid #111;
-    .border-radius(4px);
-    @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
-    .box-shadow(@shadow);
-    .transition(none);
-
-    // Placeholder text gets special styles; can't be bundled together though for some reason
-    &:-moz-placeholder {
-      color: @grayLighter;
-    }
-    &::-webkit-input-placeholder {
-      color: @grayLighter;
-    }
-    // Hover states
-    &:hover {
-      background-color: @grayLight;
-      background-color: rgba(255,255,255,.5);
-      color: @white;
-    }
-    // Focus states (we use .focused since IE8 and down doesn't support :focus)
-    &:focus,
-    &.focused {
-      outline: 0;
-      background-color: @white;
-      color: @grayDark;
-      text-shadow: 0 1px 0 @white;
-      border: 0;
-      padding: 5px 10px;
-      .box-shadow(0 0 3px rgba(0,0,0,.15));
-    }
   }
 }
 

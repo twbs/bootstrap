@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Oct  4 01:15:08 PDT 2011
+ * Date: Sun Oct  9 21:12:03 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -205,28 +205,37 @@ body {
 .container:after {
   clear: both;
 }
-.container-fluid {
+.fluid-container {
   position: relative;
   min-width: 940px;
   padding-left: 20px;
   padding-right: 20px;
   zoom: 1;
 }
-.container-fluid:before, .container-fluid:after {
+.fluid-container:before, .fluid-container:after {
   display: table;
   content: "";
   zoom: 1;
   *display: inline;
 }
-.container-fluid:after {
+.fluid-container:after {
   clear: both;
 }
-.container-fluid > .sidebar {
-  float: left;
+.fluid-sidebar-left, .fluid-sidebar-right {
   width: 220px;
 }
-.container-fluid > .content {
+.fluid-sidebar-left {
+  float: left;
+}
+.fluid-sidebar-right {
+  float: right;
+}
+.fluid-content {
   margin-left: 240px;
+}
+.fluid-container.reverse .fluid-content {
+  margin-left: 0;
+  margin-right: 240px;
 }
 a {
   color: #0069d6;
@@ -1142,19 +1151,12 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: transparent;
   color: #ffffff;
 }
-.topbar form {
-  float: left;
-  margin: 5px 0 0 0;
+.topbar .form-search {
   position: relative;
-  filter: alpha(opacity=100);
-  -khtml-opacity: 1;
-  -moz-opacity: 1;
-  opacity: 1;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
-.topbar form.pull-right {
-  float: right;
-}
-.topbar input {
+.topbar .form-search input {
   background-color: #444;
   background-color: rgba(255, 255, 255, 0.3);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1177,18 +1179,18 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -o-transition: none;
   transition: none;
 }
-.topbar input:-moz-placeholder {
+.topbar .form-search input:-moz-placeholder {
   color: #e6e6e6;
 }
-.topbar input::-webkit-input-placeholder {
+.topbar .form-search input::-webkit-input-placeholder {
   color: #e6e6e6;
 }
-.topbar input:hover {
+.topbar .form-search input:hover {
   background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
   color: #ffffff;
 }
-.topbar input:focus, .topbar input.focused {
+.topbar .form-search input:focus, .topbar .form-search input.focused {
   outline: 0;
   background-color: #ffffff;
   color: #404040;
@@ -1198,6 +1200,9 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+.topbar .pull-right {
+  float: right;
 }
 .topbar-inner {
   background-color: #222;
