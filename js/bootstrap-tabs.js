@@ -18,30 +18,36 @@
  * ======================================================== */
 
 
-(function( $ ){
+!function( $ ){
 
   function activate ( element, container ) {
-    container.find('.active').removeClass('active')
+    container.find('> .active').removeClass('active')
     element.addClass('active')
   }
 
   function tab( e ) {
     var $this = $(this)
+      , $ul = $this.closest('ul')
       , href = $this.attr('href')
-      , $ul = $(e.liveFired)
-      , $controlled
+      , previous
 
     if (/^#\w+/.test(href)) {
       e.preventDefault()
 
-      if ($this.hasClass('active')) {
+      if ($this.parent('li').hasClass('active')) {
         return
       }
 
+      previous = $ul.find('.active a')[0]
       $href = $(href)
 
       activate($this.parent('li'), $ul)
       activate($href, $href.parent())
+
+      $this.trigger({
+        type: 'change'
+      , relatedTarget: previous
+      })
     }
   }
 
@@ -59,4 +65,4 @@
     $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
   })
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender );

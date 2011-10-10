@@ -53,7 +53,7 @@
 
   var Alert = function ( content, selector ) {
     this.$element = $(content)
-      .delegate(selector || '.close', 'click', this.close)
+      .delegate('[data-alert-dismiss]', 'click', this.close)
   }
 
   Alert.prototype = {
@@ -62,6 +62,8 @@
       var $element = $(this).parent('.alert-message')
 
       e && e.preventDefault()
+      e && e.stopPropagation()
+
       $element.removeClass('in')
 
       function removeElement () {
@@ -98,7 +100,7 @@
   }
 
   $(document).ready(function () {
-    new Alert($('body'), '.alert-message[data-alert] .close')
+    new Alert($('body'))
   })
 
 })( window.jQuery || window.ender )
