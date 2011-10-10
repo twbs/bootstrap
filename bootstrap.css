@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct  9 22:02:13 PDT 2011
+ * Date: Sun Oct  9 22:31:28 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -722,93 +722,59 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   box-shadow: none;
   outline: 1px dotted #666;
 }
-form .clearfix.error, form .clearfix.warning, form .clearfix.success {
-  padding: 10px 0;
-  margin: 10px 0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-form .clearfix.error > label,
-form .clearfix.warning > label,
-form .clearfix.success > label,
-form .clearfix.error .help-inline,
-form .clearfix.warning .help-inline,
-form .clearfix.success .help-inline,
-form .clearfix.error .help-block,
-form .clearfix.warning .help-block,
-form .clearfix.success .help-block {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-form .clearfix.error input,
-form .clearfix.warning input,
-form .clearfix.success input,
-form .clearfix.error textarea,
-form .clearfix.warning textarea,
-form .clearfix.success textarea {
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-form .clearfix.error {
-  background-color: #fce6e6;
-}
-form .clearfix.error > label, form .clearfix.error .help-inline, form .clearfix.error .help-block {
-  color: #ce1a15;
+form .clearfix.error > label, form .clearfix.error .help-block, form .clearfix.error .help-inline {
+  color: #ee5f5b;
 }
 form .clearfix.error input, form .clearfix.error textarea {
+  color: #ee5f5b;
   border-color: #ee5f5b;
 }
 form .clearfix.error input:focus, form .clearfix.error textarea:focus {
-  border-color: #ee5f5b;
-  -webkit-box-shadow: 0 0 6px #ee5f5b;
-  -moz-box-shadow: 0 0 6px #ee5f5b;
-  box-shadow: 0 0 6px #ee5f5b;
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
 }
 form .clearfix.error .input-prepend .add-on, form .clearfix.error .input-append .add-on {
-  background-color: #ffffff;
-  border-color: #ee5f5b;
   color: #ee5f5b;
+  background-color: #fce6e6;
+  border-color: #ee5f5b;
 }
-form .clearfix.warning {
-  background-color: #fdf5d9;
-}
-form .clearfix.warning > label, form .clearfix.warning .help-inline, form .clearfix.warning .help-block {
-  color: #b58c09;
+form .clearfix.warning > label, form .clearfix.warning .help-block, form .clearfix.warning .help-inline {
+  color: #ccae64;
 }
 form .clearfix.warning input, form .clearfix.warning textarea {
-  border-color: #f7d360;
+  color: #ccae64;
+  border-color: #ccae64;
 }
 form .clearfix.warning input:focus, form .clearfix.warning textarea:focus {
-  border-color: #e6b20b;
-  -webkit-box-shadow: 0 0 6px #f7d360;
-  -moz-box-shadow: 0 0 6px #f7d360;
-  box-shadow: 0 0 6px #f7d360;
+  border-color: #be9a3f;
+  -webkit-box-shadow: 0 0 6px #e5d6b1;
+  -moz-box-shadow: 0 0 6px #e5d6b1;
+  box-shadow: 0 0 6px #e5d6b1;
 }
 form .clearfix.warning .input-prepend .add-on, form .clearfix.warning .input-append .add-on {
-  background-color: #ffffff;
-  border-color: #fceec1;
-  color: #fceec1;
+  color: #ccae64;
+  background-color: #d2b877;
+  border-color: #ccae64;
 }
-form .clearfix.success {
-  background-color: #d1eed1;
-}
-form .clearfix.success > label, form .clearfix.success .help-inline, form .clearfix.success .help-block {
-  color: #348c34;
+form .clearfix.success > label, form .clearfix.success .help-block, form .clearfix.success .help-inline {
+  color: #57a957;
 }
 form .clearfix.success input, form .clearfix.success textarea {
-  border-color: #42b142;
+  color: #57a957;
+  border-color: #57a957;
 }
 form .clearfix.success input:focus, form .clearfix.success textarea:focus {
-  border-color: #348c34;
-  -webkit-box-shadow: 0 0 6px #62c462;
-  -moz-box-shadow: 0 0 6px #62c462;
-  box-shadow: 0 0 6px #62c462;
+  border-color: #458845;
+  -webkit-box-shadow: 0 0 6px #9acc9a;
+  -moz-box-shadow: 0 0 6px #9acc9a;
+  box-shadow: 0 0 6px #9acc9a;
 }
 form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-append .add-on {
-  background-color: #ffffff;
-  border-color: #62c462;
-  color: #62c462;
+  color: #57a957;
+  background-color: #bcddbc;
+  border-color: #57a957;
 }
 .input-mini,
 input.mini,
@@ -943,7 +909,7 @@ textarea[readonly] {
   text-decoration: underline;
 }
 .help-inline, .help-block {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 18px;
   color: #bfbfbf;
 }

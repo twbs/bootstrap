@@ -168,101 +168,43 @@ select:focus {
 // FORM FIELD FEEDBACK STATES
 // --------------------------
 
-// Common styles
-form .clearfix.error,
-form .clearfix.warning,
-form .clearfix.success {
-  padding: 10px 0;
-  margin: 10px 0;
-  .border-radius(4px);
-  // Make text a little nicer
+// Mixin for form field states
+.formFieldState(@textColor: #555, @backgroundColor: #f5f5f5) {
+  // Set the text color
   > label,
-  .help-inline,
-  .help-block {
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  .help-block,
+  .help-inline {
+    color: @textColor;
   }
-  // Make inputs look a bit sunken
+  // Style inputs accordingly
   input,
   textarea {
-    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.5);
-       -moz-box-shadow: 0 1px 0 rgba(255,255,255,.5);
-            box-shadow: 0 1px 0 rgba(255,255,255,.5);
+    color: @textColor;
+    border-color: @textColor;
+    &:focus {
+      border-color: darken(@textColor, 10%);
+      .box-shadow(0 0 6px lighten(@textColor, 20%);
+    }
+  }
+  // Give a small background color for input-prepend/-append
+  .input-prepend .add-on,
+  .input-append .add-on {
+    color: @textColor;
+    background-color: @backgroundColor;
+    border-color: @textColor;
   }
 }
-
 // Error
-@formErrorColor: #ee5f5b;
 form .clearfix.error {
-  background-color: lighten(@formErrorColor, 30%);
-  > label,
-  .help-inline,
-  .help-block {
-    color: darken(@formErrorColor, 20%);
-  }
-  input,
-  textarea {
-    border-color: @formErrorColor;
-    &:focus {
-      border-color: @formErrorColor;
-      .box-shadow(0 0 6px @formErrorColor);
-    }
-  }
-  .input-prepend .add-on,
-  .input-append .add-on {
-    background-color: lighten(@formErrorColor, 50%);
-    border-color: @formErrorColor;
-    color: @formErrorColor;
-  }
+  .formFieldState(#ee5f5b, lighten(#ee5f5b, 30%));
 }
-
 // Warning
-@formWarningColor: #fceec1;
 form .clearfix.warning {
-  background-color: lighten(@formWarningColor, 5%);
-  > label,
-  .help-inline,
-  .help-block {
-    color: darken(@formWarningColor, 50%);
-  }
-  input,
-  textarea {
-    border-color: darken(@formWarningColor, 20%);
-    &:focus {
-      border-color: darken(@formWarningColor, 40%);
-      .box-shadow(0 0 6px darken(@formWarningColor, 20%));
-    }
-  }
-  .input-prepend .add-on,
-  .input-append .add-on {
-    background-color: lighten(@formWarningColor, 50%);
-    border-color: @formWarningColor;
-    color: @formWarningColor;
-  }
+  .formFieldState(#CCAE64, lighten(#CCAE64, 5%));
 }
-
 // Success
-@formSuccessColor: #62c462;
 form .clearfix.success {
-  background-color: lighten(@formSuccessColor, 30%);
-  > label,
-  .help-inline,
-  .help-block {
-    color: darken(@formSuccessColor, 20%);
-  }
-  input,
-  textarea {
-    border-color: darken(@formSuccessColor, 10%);
-    &:focus {
-      border-color: darken(@formSuccessColor, 20%);
-      .box-shadow(0 0 6px @formSuccessColor);
-    }
-  }
-  .input-prepend .add-on,
-  .input-append .add-on {
-    background-color: lighten(@formSuccessColor, 50%);
-    border-color: @formSuccessColor;
-    color: @formSuccessColor;
-  }
+  .formFieldState(#57a957, lighten(#57a957, 30%));
 }
 
 
@@ -367,9 +309,10 @@ textarea[readonly] {
 }
 
 // Help Text
+// TODO: Do we need to set basefont and baseline here?
 .help-inline,
 .help-block {
-  font-size: @basefont - 2;
+  font-size: @basefont;
   line-height: @baseline;
   color: @grayLight;
 }
