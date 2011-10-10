@@ -164,36 +164,107 @@ select:focus {
   outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
 }
 
-// Error styles
-form .clearfix.error {
-  background: lighten(@red, 57%);
+
+// FORM FIELD FEEDBACK STATES
+// --------------------------
+
+// Common styles
+form .clearfix.error,
+form .clearfix.warning,
+form .clearfix.success {
   padding: 10px 0;
   margin: 10px 0;
   .border-radius(4px);
-  @error-text: desaturate(lighten(@red, 25%), 25%);
+  // Make text a little nicer
   > label,
-  span.help-inline,
-  span.help-block {
-    color: @red;
+  .help-inline,
+  .help-block {
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  }
+  // Make inputs look a bit sunken
+  input,
+  textarea {
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.5);
+       -moz-box-shadow: 0 1px 0 rgba(255,255,255,.5);
+            box-shadow: 0 1px 0 rgba(255,255,255,.5);
+  }
+}
+
+// Error
+@formErrorColor: #ee5f5b;
+form .clearfix.error {
+  background-color: lighten(@formErrorColor, 30%);
+  > label,
+  .help-inline,
+  .help-block {
+    color: darken(@formErrorColor, 20%);
   }
   input,
   textarea {
-    border-color: @error-text;
-    .box-shadow(0 0 3px rgba(171,41,32,.25));
+    border-color: @formErrorColor;
     &:focus {
-      border-color: darken(@error-text, 10%);
-      .box-shadow(0 0 6px rgba(171,41,32,.5));
+      border-color: @formErrorColor;
+      .box-shadow(0 0 6px @formErrorColor);
     }
   }
-  .input-prepend,
-  .input-append {
-    span.add-on {
-      background: lighten(@red, 50%);
-      border-color: @error-text;
-      color: darken(@error-text, 10%);
-    }
+  .input-prepend .add-on,
+  .input-append .add-on {
+    background-color: lighten(@formErrorColor, 50%);
+    border-color: @formErrorColor;
+    color: @formErrorColor;
   }
 }
+
+// Warning
+@formWarningColor: #fceec1;
+form .clearfix.warning {
+  background-color: lighten(@formWarningColor, 5%);
+  > label,
+  .help-inline,
+  .help-block {
+    color: darken(@formWarningColor, 50%);
+  }
+  input,
+  textarea {
+    border-color: darken(@formWarningColor, 20%);
+    &:focus {
+      border-color: darken(@formWarningColor, 40%);
+      .box-shadow(0 0 6px darken(@formWarningColor, 20%));
+    }
+  }
+  .input-prepend .add-on,
+  .input-append .add-on {
+    background-color: lighten(@formWarningColor, 50%);
+    border-color: @formWarningColor;
+    color: @formWarningColor;
+  }
+}
+
+// Success
+@formSuccessColor: #62c462;
+form .clearfix.success {
+  background-color: lighten(@formSuccessColor, 30%);
+  > label,
+  .help-inline,
+  .help-block {
+    color: darken(@formSuccessColor, 20%);
+  }
+  input,
+  textarea {
+    border-color: darken(@formSuccessColor, 10%);
+    &:focus {
+      border-color: darken(@formSuccessColor, 20%);
+      .box-shadow(0 0 6px @formSuccessColor);
+    }
+  }
+  .input-prepend .add-on,
+  .input-append .add-on {
+    background-color: lighten(@formSuccessColor, 50%);
+    border-color: @formSuccessColor;
+    color: @formSuccessColor;
+  }
+}
+
 
 // Form element sizes
 // TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
