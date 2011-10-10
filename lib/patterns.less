@@ -362,6 +362,9 @@ a.menu:after,
       border-bottom-color: transparent;
     }
   }
+}
+// Dropdowns in tabs
+.tabs {
   // first one for backwards compatibility
   .menu-dropdown,
   .dropdown-menu {
@@ -387,37 +390,38 @@ a.menu:after,
     border-top-color: #555;
   }
 }
-.tab-content {
-  clear: both;
-}
 
 // Basic pill nav
 .pills {
   a {
-      margin: 5px 3px 5px 0;
+    margin: 5px 3px 5px 0;
     padding: 0 15px;
-    text-shadow: 0 1px 1px @white;
     line-height: 30px;
+    text-shadow: 0 1px 1px @white;
     .border-radius(15px);
     &:hover {
-      background: @linkColorHover;
       color: @white;
       text-decoration: none;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
+      background-color: @linkColorHover;
     }
   }
   .active a {
-    background: @linkColor;
     color: @white;
     text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    background-color: @linkColor;
   }
 }
 
+// For js-enabled tabbed areas
+.tab-content,
+.pill-content {
+  clear: both;
+}
 .tab-content > *,
 .pill-content > * {
   display: none;
 }
-
 .tab-content > .active,
 .pill-content > .active {
   display:block;
@@ -428,8 +432,8 @@ a.menu:after,
 // -----------
 
 .breadcrumb {
-  margin: 0 0 @baseline;
   padding: 7px 14px;
+  margin: 0 0 @baseline;
   #gradient > .vertical(#ffffff, #f5f5f5);
   border: 1px solid #ddd;
   .border-radius(3px);
