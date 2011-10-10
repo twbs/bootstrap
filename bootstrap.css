@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct  9 22:31:28 PDT 2011
+ * Date: Sun Oct  9 22:37:55 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -723,10 +723,10 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   outline: 1px dotted #666;
 }
 form .clearfix.error > label, form .clearfix.error .help-block, form .clearfix.error .help-inline {
-  color: #ee5f5b;
+  color: #b94a48;
 }
 form .clearfix.error input, form .clearfix.error textarea {
-  color: #ee5f5b;
+  color: #b94a48;
   border-color: #ee5f5b;
 }
 form .clearfix.error input:focus, form .clearfix.error textarea:focus {
@@ -736,15 +736,15 @@ form .clearfix.error input:focus, form .clearfix.error textarea:focus {
   box-shadow: 0 0 6px #f8b9b7;
 }
 form .clearfix.error .input-prepend .add-on, form .clearfix.error .input-append .add-on {
-  color: #ee5f5b;
+  color: #b94a48;
   background-color: #fce6e6;
-  border-color: #ee5f5b;
+  border-color: #b94a48;
 }
 form .clearfix.warning > label, form .clearfix.warning .help-block, form .clearfix.warning .help-inline {
-  color: #ccae64;
+  color: #c09853;
 }
 form .clearfix.warning input, form .clearfix.warning textarea {
-  color: #ccae64;
+  color: #c09853;
   border-color: #ccae64;
 }
 form .clearfix.warning input:focus, form .clearfix.warning textarea:focus {
@@ -754,15 +754,15 @@ form .clearfix.warning input:focus, form .clearfix.warning textarea:focus {
   box-shadow: 0 0 6px #e5d6b1;
 }
 form .clearfix.warning .input-prepend .add-on, form .clearfix.warning .input-append .add-on {
-  color: #ccae64;
+  color: #c09853;
   background-color: #d2b877;
-  border-color: #ccae64;
+  border-color: #c09853;
 }
 form .clearfix.success > label, form .clearfix.success .help-block, form .clearfix.success .help-inline {
-  color: #57a957;
+  color: #468847;
 }
 form .clearfix.success input, form .clearfix.success textarea {
-  color: #57a957;
+  color: #468847;
   border-color: #57a957;
 }
 form .clearfix.success input:focus, form .clearfix.success textarea:focus {
@@ -772,9 +772,9 @@ form .clearfix.success input:focus, form .clearfix.success textarea:focus {
   box-shadow: 0 0 6px #9acc9a;
 }
 form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-append .add-on {
-  color: #57a957;
+  color: #468847;
   background-color: #bcddbc;
-  border-color: #57a957;
+  border-color: #468847;
 }
 .input-mini,
 input.mini,

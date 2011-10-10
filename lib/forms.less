@@ -169,7 +169,7 @@ select:focus {
 // --------------------------
 
 // Mixin for form field states
-.formFieldState(@textColor: #555, @backgroundColor: #f5f5f5) {
+.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
   // Set the text color
   > label,
   .help-block,
@@ -180,10 +180,10 @@ select:focus {
   input,
   textarea {
     color: @textColor;
-    border-color: @textColor;
+    border-color: @borderColor;
     &:focus {
-      border-color: darken(@textColor, 10%);
-      .box-shadow(0 0 6px lighten(@textColor, 20%);
+      border-color: darken(@borderColor, 10%);
+      .box-shadow(0 0 6px lighten(@borderColor, 20%);
     }
   }
   // Give a small background color for input-prepend/-append
@@ -196,15 +196,15 @@ select:focus {
 }
 // Error
 form .clearfix.error {
-  .formFieldState(#ee5f5b, lighten(#ee5f5b, 30%));
+  .formFieldState(#b94a48, #ee5f5b, lighten(#ee5f5b, 30%));
 }
 // Warning
 form .clearfix.warning {
-  .formFieldState(#CCAE64, lighten(#CCAE64, 5%));
+  .formFieldState(#c09853, #ccae64, lighten(#CCAE64, 5%));
 }
 // Success
 form .clearfix.success {
-  .formFieldState(#57a957, lighten(#57a957, 30%));
+  .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
 }
 
 
