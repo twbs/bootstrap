@@ -9,7 +9,7 @@
   // ---------
 
   p {
-    #font > .shorthand(normal,@basefont,@baseLineHeight);
+    #font > .shorthand(normal,1em,@baseLineHeight);
     margin-bottom: @baseMarginHeight / 2;
     small {
       font-size: @basefont - 2;
@@ -32,7 +32,10 @@
     margin-bottom: @baseMarginHeight;
     font-size: 2.30769230769231em; // 30/13
     // line-height: @baseLineHeight * 2;
-    line-height: 1.2em; // 36/30-
+    // line-height: 1.2em; // 36/30
+    line-height: (@baseLineHeight * 2) / 2.30769230769231em;
+    // margin-bottom: 0.6em; // 18/30
+    margin-bottom: @baseMarginHeight / 2.30769230769231em;
     small {
       font-size: 1.38461538461538em; // 18/13
       line-height: 2em; // 36/18
@@ -126,9 +129,9 @@
 
   // Horizontal rules
   hr {
-    margin: 20px 0 19px;
+    margin: 1.53846153846154em 0 1.46153846153846em; // 20/13 & 19/13
     border: 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 0.07692307692308em solid #eee; // 1/13
   }
 
   // Emphasis
