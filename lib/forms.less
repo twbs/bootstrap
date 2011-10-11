@@ -254,7 +254,7 @@ textarea.xxlarge {
 // This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
 .formColumns(@columnSpan: 1) {
   display: inline-block;
-  width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
 }
 input,
 textarea {
