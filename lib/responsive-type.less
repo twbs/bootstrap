@@ -20,58 +20,34 @@
 
   // HEADINGS
   // --------
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    color: @grayDark;
-    small {
-      color: @grayLight;
-    }
-  }
+  
   h1 {
-    margin-bottom: @baseMarginHeight;
-    font-size: 2.30769230769231em; // 30/13
-    // line-height: @baseLineHeight * 2;
-    // line-height: 1.2em; // 36/30
-    line-height: (@baseLineHeight * 2) / 2.30769230769231em;
-    // margin-bottom: 0.6em; // 18/30
-    margin-bottom: @baseMarginHeight / 2.30769230769231em;
+    .large-type(2.30769230769231em); // 30/13
+    margin-bottom: @baseMarginHeight / 2.30769230769231em; // 30/13
     small {
-      font-size: 1.38461538461538em; // 18/13
-      line-height: 2em; // 36/18
+      .large-type(1.38461538461538em);// 18/13
     }
   }
   h2 {
-    font-size: 1.84615384615385em; // 24/13
-    // line-height: @baseLineHeight * 2;
-    line-height: 1.5em; // 36/24
+    .large-type(1.84615384615385em); // 24/13
     small {
-      font-size: 1.07692307692308em; // 14/13
-      line-height: 2.57142857142857em; // 36/14
+      .large-type(1.07692307692308em); // 14/13
     }
   }
-  // h3, h4, h5, h6 {
-  //   line-height: @baseLineHeight * 2;
-  // }
   h3 {
-    font-size: 1.38461538461538em; // 18/13
-    line-height: 2em; // 36/18
+    .large-type(1.38461538461538em); // 18/13
     small {
-      font-size: 1.07692307692308em; // 14/13
-      line-height: 2.57142857142857em; // 36/14
+      .large-type(1.07692307692308em); // 14/13
     }
   }
   h4 {
-    font-size: 1.23076923076923em; // 16/13
-    line-height: 2.25em; // 36/16
+    .large-type(1.23076923076923em); // 16/13
     small {
-      font-size: 0.92307692307692em; // 12/13
-      line-height: 3em; // 36/12
+      .large-type(0.92307692307692em); // 12/13
     }
   }
   h5 {
-    font-size: 1.07692307692308em; // 14/13
-    line-height: 2.57142857142857em; // 36/14
+    .large-type(1.07692307692308em); // 14/13
   }
   h6 {
     font-size: 1em; // 13/13

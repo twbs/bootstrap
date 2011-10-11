@@ -215,3 +215,11 @@
 	  -moz-opacity: @opacity / 100;
 	       opacity: @opacity / 100;
 }
+
+// Responsive Web Design
+
+// Large Type: used for responsive type larger than the @@basefont size
+.large-type(@fontSize: 1em){
+  font-size: @fontSize;
+  line-height: (@baseLineHeight * 2) / @fontSize;
+}
