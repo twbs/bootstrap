@@ -39,8 +39,8 @@
 
     <!-- Topbar
     ================================================== -->
-    <div class="topbar" data-scrollspy="scrollspy">
-      <div class="topbar-inner">
+    <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
+      <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="#">Bootstrap JS</a>
           <ul class="nav">
@@ -235,39 +235,37 @@ $('#my-modal').bind('hidden', function () {
           A programatic api for activating menus for a given topbar or tabbed navigation.
           </p>
           <h3>Demo</h3>
-          <div class="topbar-wrapper">
-            <div id="topbar-example" class="topbar">
-              <div class="topbar-inner">
-                <div class="container">
-                  <a class="brand" href="#">Project Name</a>
-                  <ul class="nav">
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                  </ul>
-                  <form action="">
-                    <input type="text" placeholder="Search" />
-                  </form>
-                  <ul class="nav secondary-nav">
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 1</a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Secondary link</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Another link</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 2</a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Secondary link</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Another link</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
+          <div id="topbar-example" class="navbar navbar-static">
+            <div class="navbar-inner">
+              <div class="container" style="width: auto;">
+                <a class="brand" href="#">Project Name</a>
+                <ul class="nav">
+                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Link</a></li>
+                </ul>
+                <form action="" class="search-form navbar-search">
+                  <input type="text" placeholder="Search">
+                </form>
+                <ul class="nav secondary-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 1</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Secondary link</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Another link</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 2</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Secondary link</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Another link</a></li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

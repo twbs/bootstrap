@@ -37,24 +37,24 @@
 
     <!-- Topbar
     ================================================== -->
-    <div class="topbar" data-scrollspy="scrollspy">
-      <div class="topbar-inner">
+    <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
+      <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="#">Bootstrap</a>
           <ul class="nav">
             <li class="active"><a href="#overview">Overview</a></li>
             <li><a href="#about">About</a></li>
 
-            <li class="dropdown" data-dropdown="dropdown">
-              <a href="#" class="dropdown-toggle">Scaffolding</a>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-dropdown="true">Scaffolding</a>
               <ul class="dropdown-menu">
                 <li><a href="#grid-system">Grid</a></li>
                 <li><a href="#layouts">Layouts</a></li>
               </ul>
             </li>
 
-            <li class="dropdown" data-dropdown="dropdown">
-              <a href="#" class="dropdown-toggle">CSS</a>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-dropdown="true">CSS</a>
               <ul class="dropdown-menu">
                 <li><a href="#typography">Type</a></li>
                 <li><a href="#tables">Tables</a></li>
@@ -62,8 +62,8 @@
               </ul>
             </li>
 
-            <li class="dropdown" data-dropdown="dropdown">
-              <a href="#" class="dropdown-toggle">Patterns</a>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-dropdown="true">Patterns</a>
               <ul class="dropdown-menu">
                 <li><a href="#media">Media</a></li>
                 <li><a href="#navigation">Navigation</a></li>
@@ -1258,44 +1258,42 @@
     <h1>Navigation</h1>
   </div>
   <h2>Fixed topbar</h2>
-  <div class="topbar-wrapper" style="z-index: 5;">
-    <div class="topbar" data-dropdown="dropdown" >
-      <div class="topbar-inner">
-        <div class="container">
-          <a class="brand" href="#">Project Name</a>
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle">Dropdown</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Secondary link</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Another link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="form-search pull-left" action="">
-            <input type="text" placeholder="Search" />
-          </form>
-          <ul class="nav secondary-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle">Dropdown</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Secondary link</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Another link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div><!-- /topbar-inner -->
-    </div><!-- /topbar -->
-  </div><!-- /topbar-wrapper -->
+  <div class="navbar navbar-static" data-dropdown="dropdown">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Project Name</a>
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Secondary link</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Another link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="form-search navbar-search pull-left" action="">
+          <input type="text" placeholder="Search">
+        </form>
+        <ul class="nav secondary-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Secondary link</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Another link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /topbar-inner -->
+  </div><!-- /topbar -->
 
   <div class="row">
     <div class="span5">

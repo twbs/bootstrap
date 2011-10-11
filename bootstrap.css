@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct  9 21:24:37 PDT 2011
+ * Date: Tue Oct 11 09:43:00 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1114,26 +1114,37 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 /* Patterns.less
  * Repeatable UI elements outside the base styles provided from the scaffolding
  * ---------------------------------------------------------------------------- */
-.topbar {
+.navbar {
   height: 40px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10000;
   overflow: visible;
 }
-.topbar a {
+.navbar-inner {
+  background-color: #222222;
+  background-color: #222222;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.navbar a {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-.topbar .brand a:hover, .topbar ul .active > a {
-  background-color: #333;
+.navbar .brand a:hover, .navbar ul .active > a {
+  background-color: #333333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   text-decoration: none;
 }
-.topbar .brand {
+.navbar .brand {
   float: left;
   display: block;
   padding: 8px 20px 12px;
@@ -1143,20 +1154,21 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   font-weight: 200;
   line-height: 1;
 }
-.topbar p {
+.navbar p {
   margin: 0;
   line-height: 40px;
 }
-.topbar p a:hover {
+.navbar p a:hover {
   background-color: transparent;
   color: #ffffff;
 }
-.topbar .form-search {
+.navbar-search {
   position: relative;
   margin-top: 5px;
   margin-bottom: 0;
+  float: left;
 }
-.topbar .form-search input {
+.navbar-search input {
   background-color: #444;
   background-color: rgba(255, 255, 255, 0.3);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1179,18 +1191,18 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -o-transition: none;
   transition: none;
 }
-.topbar .form-search input:-moz-placeholder {
+.navbar-search input:-moz-placeholder {
   color: #e6e6e6;
 }
-.topbar .form-search input::-webkit-input-placeholder {
+.navbar-search input::-webkit-input-placeholder {
   color: #e6e6e6;
 }
-.topbar .form-search input:hover {
+.navbar-search input:hover {
   background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
   color: #ffffff;
 }
-.topbar .form-search input:focus, .topbar .form-search input.focused {
+.navbar-search input:focus, .navbar-search input.focused {
   outline: 0;
   background-color: #ffffff;
   color: #404040;
@@ -1201,24 +1213,24 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
-.topbar .pull-right {
-  float: right;
+.navbar-static {
+  margin-bottom: 18px;
 }
-.topbar-inner {
-  background-color: #222;
-  background-color: #222222;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+.navbar-static .navbar-inner {
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
 }
 .nav {
   display: block;
