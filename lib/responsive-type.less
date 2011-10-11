@@ -25,25 +25,25 @@
     .large-type(2.30769230769231em); // 30/13
     margin-bottom: @baseMarginHeight / 2.30769230769231em; // 30/13
     small {
-      .large-type(1.38461538461538em);// 18/13
+      font-size: 0.6em; // 18/30
     }
   }
   h2 {
     .large-type(1.84615384615385em); // 24/13
     small {
-      .large-type(1.07692307692308em); // 14/13
+      font-size: 0.58333333333333em; // 14/24
     }
   }
   h3 {
     .large-type(1.38461538461538em); // 18/13
     small {
-      .large-type(1.07692307692308em); // 14/13
+      font-size: 0.77777777777778em; // 14/18
     }
   }
   h4 {
     .large-type(1.23076923076923em); // 16/13
     small {
-      .large-type(0.92307692307692em); // 12/13
+      font-size: 0.75em; // 12/16
     }
   }
   h5 {
@@ -64,26 +64,6 @@
   // TODO: revisit if this em calculation actually makes sense here.
   ul, ol {
     margin: 0 0 @baseMarginHeight 1.92307692307692em; // 25/13
-  }
-  ul ul,
-  ul ol,
-  ol ol,
-  ol ul {
-    margin-bottom: 0;
-  }
-  ul {
-    list-style: disc;
-  }
-  ol {
-    list-style: decimal;
-  }
-  li {
-    line-height: @baseLineHeight;
-    color: @gray;
-  }
-  ul.unstyled {
-    list-style: none;
-    margin-left: 0;
   }
 
   // Description Lists
@@ -108,20 +88,6 @@
     margin: 1.53846153846154em 0 1.46153846153846em; // 20/13 & 19/13
     border: 0;
     border-bottom: 0.07692307692308em solid #eee; // 1/13
-  }
-
-  // Emphasis
-  strong {
-    font-style: inherit;
-    font-weight: bold;
-  }
-  em {
-    font-style: italic;
-    font-weight: inherit;
-    line-height: inherit;
-  }
-  .muted {
-    color: @grayLight;
   }
 
   // Blockquotes
