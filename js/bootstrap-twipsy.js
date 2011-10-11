@@ -64,11 +64,10 @@
 
     show: function() {
       var pos
-        , actualWidth
-        , actualHeight
         , placement
         , $tip
         , tp
+        , dimensions
 
       if (this.getTitle() && this.enabled) {
         $tip = this.tip()
@@ -88,31 +87,56 @@
         , height: this.$element[0].offsetHeight
         })
 
-        actualWidth = $tip[0].offsetWidth
-        actualHeight = $tip[0].offsetHeight
-
         placement = maybeCall(this.options.placement, this, [ $tip[0], this.$element[0] ])
 
-        switch (placement) {
-          case 'below':
-            tp = {top: pos.top + pos.height + this.options.offset, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'above':
-            tp = {top: pos.top - actualHeight - this.options.offset, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'left':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth - this.options.offset}
-            break
-          case 'right':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width + this.options.offset}
-            break
+        dimensions = {
+          ele: pos
+        , popup: {
+            width: $tip[0].offsetWidth
+          , height: $tip[0].offsetHeight
+          }
         }
+
+        tp = this.getPlacement(placement, dimensions)
 
         $tip
           .css(tp)
           .addClass(placement)
           .addClass('in')
       }
+    }
+
+  , getPlacement: function(placement, dim) {
+      var tp
+
+      switch (placement) {
+        case 'below':
+          tp = {
+            top: dim.ele.top + dim.ele.height + this.options.offset
+          , left: dim.ele.left + dim.ele.width / 2 - dim.popup.width / 2
+          }
+          break
+        case 'above':
+          tp = {
+            top: dim.ele.top - dim.popup.height - this.options.offset
+          , left: dim.ele.left + dim.ele.width / 2 - dim.popup.width / 2
+          }
+          break
+        case 'left':
+          tp = {
+            top: dim.ele.top + dim.ele.height / 2 - dim.popup.height / 2
+          , left: dim.ele.left - dim.popup.width - this.options.offset
+          }
+          break
+        case 'right':
+          tp = {
+            top: dim.ele.top + dim.ele.height / 2 - dim.popup.height / 2
+          , left: dim.ele.left + dim.ele.width + this.options.offset
+          }
+          break
+      }
+
+      return tp
     }
 
   , setContent: function () {
