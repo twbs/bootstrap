@@ -320,10 +320,13 @@ a.menu:after,
 }
 
 
-// Tabs and Pills
+// TABS AND PILLS
+// --------------
+
+// Common styles
 .tabs,
 .pills {
-  margin: 0 0 20px;
+  margin: 0 0 @baseline;
   padding: 0;
   list-style: none;
   .clearfix();
@@ -335,14 +338,14 @@ a.menu:after,
   }
 }
 
-// Basic Tabs
+// Tabs
 .tabs {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
   > li {
     position: relative; // For the dropdowns mostly
-    top: 1px;
+    margin-bottom: -1px;
     > a {
       padding: 0 15px;
       margin-right: 2px;
@@ -355,14 +358,66 @@ a.menu:after,
         border-color: #eee #eee #ddd;
       }
     }
-    &.active > a {
-      color: @gray;
-      background-color: @white;
-      border: 1px solid #ddd;
-      border-bottom-color: transparent;
-    }
+  }
+  // Active state, and it's :hover to override normal :hover
+  .active > a,
+  .active > a:hover {
+    color: @gray;
+    background-color: @white;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
   }
 }
+
+.tabbable {
+  margin-bottom: @baseline;
+
+  // Tabs on top
+  .tabs {
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+  .tab-content {
+    padding: 19px;
+    border: 1px solid #ddd;
+  }
+
+  // Tabs on bottom
+  &.tabs-bottom .tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+  }
+  &.tabs-bottom .tabs > li > a {
+    .border-radius(0 0 4px 4px);
+    &:hover {
+      border-bottom-color: transparent;
+      border-top-color: #ddd;
+    }
+  }
+  &.tabs-bottom .tabs > .active > a,
+  &.tabs-bottom .tabs > .active > a:hover {
+    border-color: transparent #ddd #ddd #ddd;
+  }
+
+  // Tabs on left
+  &.tabs-left .tabs {
+    float: left;
+  }
+  &.tabs-left .tabs > li {
+    float: none;
+  }
+
+  // Tabs on right
+  &.tabs-right .tabs {
+    float: right;
+  }
+  &.tabs-right .tabs > li {
+    float: none;
+  }
+}
+
+
 // Dropdowns in tabs
 .tabs {
   // first one for backwards compatibility
@@ -391,7 +446,7 @@ a.menu:after,
   }
 }
 
-// Basic pill nav
+// Pills
 .pills {
   a {
     margin: 5px 3px 5px 0;
@@ -412,26 +467,23 @@ a.menu:after,
     background-color: @linkColor;
   }
 }
+
 // Stacked pills
-.pills-vertical {
-  > li {
-    float: none;
-  }
+.pills-vertical > li {
+  float: none;
 }
 
-
-// For js-enabled tabbed areas
+// Tabbable areas
 .tab-content,
 .pill-content {
-  clear: both;
 }
-.tab-content > *,
-.pill-content > * {
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
   display: none;
 }
 .tab-content > .active,
 .pill-content > .active {
-  display:block;
+  display: block;
 }
 
 

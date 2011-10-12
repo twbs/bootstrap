@@ -1448,6 +1448,7 @@
     </div>
     <div class="span12">
       <h3>Basic tabs example</h3>
+      <p>Tabs can be used as regular navigation (loading external pages in the same tab) or as tabbable content areas for swapping out panes of content. We have a <a href="./javascript.html#tabs">tabs plugin</a> that can be used to integrate the latter.</p>
       <ul class="tabs">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
@@ -1475,24 +1476,136 @@
 </pre>
       <h3>Alternate tabs</h3>
       <p>You can also use tabs that are stacked on either side of an element, or on the bottom.</p>
-      <ul class="tabs tabs-left">
-        <li class="active"><a href="#">Active link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Linky link</a></li>
-        <li><a href="#">What up link</a></li>
-      </ul>
-      <ul class="tabs tabs-right">
-        <li class="active"><a href="#">Active link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Linky link</a></li>
-        <li><a href="#">What up link</a></li>
-      </ul>
-      <ul class="tabs tabs-bottom">
-        <li class="active"><a href="#">Active link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Linky link</a></li>
-        <li><a href="#">What up link</a></li>
-      </ul>
+      <div class="row">
+        <div class="span3">
+          <div class="clearfix">
+            <ul class="tabs tabs-left">
+              <li class="active"><a href="#">Active link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Linky link</a></li>
+              <li><a href="#">What up link</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="clearfix">
+            <ul class="tabs tabs-right">
+              <li class="active"><a href="#">Active link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Linky link</a></li>
+              <li><a href="#">What up link</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="clearfix">
+            <ul class="tabs tabs-bottom">
+              <li class="active"><a href="#">Active link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Linky link</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h3>Tabbable tabs</h3>
+      <p>As mentioned above, you can bring your tabs to life with a simple plugin. Here we have integrated all four variations of the tabs&mdash;default (top), right, bottom, left&mdash;with example tab areas.</p>
+
+      <div class="tabbable">
+        <ul class="tabs" data-tabs="tabs">
+          <li class="active"><a href="#1">Section 1</a></li>
+          <li><a href="#2">Section 2</a></li>
+          <li><a href="#3">Section 3</a></li>
+          <li><a href="#4">Section 4</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <p>Oh hai #1!</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <p>Oh hai #2!</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <p>Oh hai #3!</p>
+          </div>
+          <div class="tab-pane" id="4">
+            <p>Oh hai #4!</p>
+          </div>
+        </div>
+      </div>
+
+       <div class="row">
+        <div class="span6">
+          <div class="tabbable tabs-left">
+            <ul class="tabs" data-tabs="tabs">
+              <li class="active"><a href="#1">Section 1</a></li>
+              <li><a href="#2">Section 2</a></li>
+              <li><a href="#3">Section 3</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent2">
+              <div class="tab-pane active" id="1">
+                <h4>Section 1</h4>
+                <p>Oh hai!</p>
+              </div>
+              <div class="tab-pane" id="2">
+                <h4>Section 2</h4>
+                <p>Oh hai!</p>
+              </div>
+              <div class="tab-pane" id="3">
+                <h4>Section 3</h4>
+                <p>Oh hai!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="tabbable tabs-right">
+            <ul class="tabs" data-tabs="tabs">
+              <li class="active"><a href="#1">Section 1</a></li>
+              <li><a href="#2">Section 2</a></li>
+              <li><a href="#3">Section 3</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent3">
+              <div class="tab-pane active" id="1">
+                <h4>Section 1</h4>
+                <p>Oh hai!</p>
+              </div>
+              <div class="tab-pane" id="2">
+                <h4>Section 2</h4>
+                <p>Oh hai!</p>
+              </div>
+              <div class="tab-pane" id="3">
+                <h4>Section 3</h4>
+                <p>Oh hai!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabbable tabs-bottom">
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <p>Oh hai #1!</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <p>Oh hai #2!</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <p>Oh hai #3!</p>
+          </div>
+          <div class="tab-pane" id="4">
+            <p>Oh hai #4!</p>
+          </div>
+        </div>
+        <ul class="tabs" data-tabs="tabs">
+          <li class="active"><a href="#1">Section 1</a></li>
+          <li><a href="#2">Section 2</a></li>
+          <li><a href="#3">Section 3</a></li>
+          <li><a href="#4">Section 4</a></li>
+        </ul>
+      </div>
+
+
       <p>In addition to tabs, we have pills! Though a bit more limited in functionality, they share much of the same markup.</p>
       <hr>
       <h3>Basic pills example</h3>

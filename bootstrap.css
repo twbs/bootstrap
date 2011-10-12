@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Oct 11 21:49:21 PDT 2011
+ * Date: Tue Oct 11 23:12:13 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1616,7 +1616,7 @@ a.menu:after, .dropdown-toggle:after {
   display: block;
 }
 .tabs, .pills {
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   padding: 0;
   list-style: none;
   zoom: 1;
@@ -1640,13 +1640,13 @@ a.menu:after, .dropdown-toggle:after {
   display: block;
 }
 .tabs {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
 }
 .tabs > li {
   position: relative;
-  top: 1px;
+  margin-bottom: -1px;
 }
 .tabs > li > a {
   padding: 0 15px;
@@ -1662,11 +1662,51 @@ a.menu:after, .dropdown-toggle:after {
   background-color: #eee;
   border-color: #eee #eee #ddd;
 }
-.tabs > li.active > a {
+.tabs .active > a, .tabs .active > a:hover {
   color: #808080;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
+  cursor: default;
+}
+.tabbable {
+  margin-bottom: 18px;
+}
+.tabbable .tabs {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+.tabbable .tab-content {
+  padding: 19px;
+  border: 1px solid #ddd;
+}
+.tabbable.tabs-bottom .tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+}
+.tabbable.tabs-bottom .tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+.tabbable.tabs-bottom .tabs > li > a:hover {
+  border-bottom-color: transparent;
+  border-top-color: #ddd;
+}
+.tabbable.tabs-bottom .tabs > .active > a, .tabbable.tabs-bottom .tabs > .active > a:hover {
+  border-color: transparent #ddd #ddd #ddd;
+}
+.tabbable.tabs-left .tabs {
+  float: left;
+}
+.tabbable.tabs-left .tabs > li {
+  float: none;
+}
+.tabbable.tabs-right .tabs {
+  float: right;
+}
+.tabbable.tabs-right .tabs > li {
+  float: none;
 }
 .tabs .menu-dropdown, .tabs .dropdown-menu {
   top: 35px;
@@ -1709,10 +1749,7 @@ a.menu:after, .dropdown-toggle:after {
 .pills-vertical > li {
   float: none;
 }
-.tab-content, .pill-content {
-  clear: both;
-}
-.tab-content > *, .pill-content > * {
+.tab-content > .tab-pane, .pill-content > .pill-pane {
   display: none;
 }
 .tab-content > .active, .pill-content > .active {
