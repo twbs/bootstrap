@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Oct 11 19:31:11 PDT 2011
+ * Date: Tue Oct 11 23:51:38 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1478,13 +1478,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   display: block;
 }
 .tabs {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
 }
 .tabs > li {
   position: relative;
-  top: 1px;
+  margin-bottom: -1px;
 }
 .tabs > li > a {
   padding: 0 15px;
@@ -1503,13 +1503,56 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: #eee;
   border-color: #eee #eee #ddd;
 }
-.tabs > li.active > a {
+.tabs .active > a, .tabs .active > a:hover {
   color: #808080;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
+  cursor: default;
 }
-.tabs .dropdown-menu {
+.tabbable {
+  margin-bottom: 18px;
+}
+.tabbable .tabs {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+.tabbable .tab-content {
+  padding: 19px;
+  border: 1px solid #ddd;
+}
+.tabbable.tabs-bottom .tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+}
+.tabbable.tabs-bottom .tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+.tabbable.tabs-bottom .tabs > li > a:hover {
+  border-bottom-color: transparent;
+  border-top-color: #ddd;
+}
+.tabbable.tabs-bottom .tabs > .active > a, .tabbable.tabs-bottom .tabs > .active > a:hover {
+  border-color: transparent #ddd #ddd #ddd;
+}
+.tabbable.tabs-left .tabs {
+  float: left;
+}
+.tabbable.tabs-left .tabs > li {
+  float: none;
+}
+.tabbable.tabs-right .tabs {
+  float: right;
+}
+.tabbable.tabs-right .tabs > li {
+  float: none;
+}
+.tabs .menu-dropdown, .tabs .dropdown-menu {
   top: 35px;
   border-width: 1px;
   -webkit-border-radius: 0 6px 6px 6px;
@@ -1519,25 +1562,22 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-background-clip: padding;
   background-clip: padding-box;
 }
-.tabs .dropdown-toggle:after {
+.tabs a.menu:after, .tabs .dropdown-toggle:after {
   border-top-color: #999;
   margin-top: 15px;
   margin-left: 5px;
 }
-.tabs .open.dropdown .dropdown-toggle {
+.tabs li.open.menu .menu, .tabs .open.dropdown .dropdown-toggle {
   border-color: #999;
 }
-.tabs .dropdown.open .dropdown-toggle:after {
+.tabs li.open a.menu:after, .tabs .dropdown.open .dropdown-toggle:after {
   border-top-color: #555;
-}
-.tab-content {
-  clear: both;
 }
 .pills a {
   margin: 5px 3px 5px 0;
   padding: 0 15px;
-  text-shadow: 0 1px 1px #ffffff;
   line-height: 30px;
+  text-shadow: 0 1px 1px #ffffff;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -1546,17 +1586,20 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-clip: padding-box;
 }
 .pills a:hover {
-  background: #00438a;
   color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #00438a;
 }
 .pills .active a {
-  background: #0069d6;
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #0069d6;
 }
-.tab-content > *, .pill-content > * {
+.pills-vertical > li {
+  float: none;
+}
+.tab-content > .tab-pane, .pill-content > .pill-pane {
   display: none;
 }
 .tab-content > .active, .pill-content > .active {
