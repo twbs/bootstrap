@@ -370,54 +370,6 @@ a.menu:after,
   }
 }
 
-.tabbable {
-  margin-bottom: @baseline;
-
-  // Tabs on top
-  .tabs {
-    margin-bottom: 0;
-    border-bottom: 0;
-  }
-  .tab-content {
-    padding: 19px;
-    border: 1px solid #ddd;
-  }
-
-  // Tabs on bottom
-  &.tabs-bottom .tabs > li {
-    margin-top: -1px;
-    margin-bottom: 0;
-  }
-  &.tabs-bottom .tabs > li > a {
-    .border-radius(0 0 4px 4px);
-    &:hover {
-      border-bottom-color: transparent;
-      border-top-color: #ddd;
-    }
-  }
-  &.tabs-bottom .tabs > .active > a,
-  &.tabs-bottom .tabs > .active > a:hover {
-    border-color: transparent #ddd #ddd #ddd;
-  }
-
-  // Tabs on left
-  &.tabs-left .tabs {
-    float: left;
-  }
-  &.tabs-left .tabs > li {
-    float: none;
-  }
-
-  // Tabs on right
-  &.tabs-right .tabs {
-    float: right;
-  }
-  &.tabs-right .tabs > li {
-    float: none;
-  }
-}
-
-
 // Dropdowns in tabs
 .tabs {
   // first one for backwards compatibility
