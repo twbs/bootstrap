@@ -1,0 +1,215 @@
+/* Mixins.scss
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * ----------------------------------------------------------------- */
+
+// Clearfix for clearing floats like a boss h5bp.com/q
+@mixin clearfix {
+  zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    zoom: 1;
+    *display: inline;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.clearfix { @include clearfix; }
+
+// Center-align a block level element
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Sizing shortcuts
+@mixin size($height: 5px, $width: 5px) {
+  height: $height;
+  width: $width;
+}
+@mixin square($size: 5px) {
+  @include size($size, $size);
+}
+
+// Input placeholder text
+@mixin placeholder($color: $grayLight) {
+  :-moz-placeholder {
+    color: $color;
+  }
+  ::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+// Font Stacks
+@mixin shorthand-font($weight: normal, $size: 14px, $lineHeight: 20px) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+@mixin sans-serif-font($weight: normal, $size: 14px, $lineHeight: 20px) {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+@mixin serif-font($weight: normal, $size: 14px, $lineHeight: 20px) {
+  font-family: "Georgia", Times New Roman, Times, serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+@mixin monospace-font($weight: normal, $size: 12px, $lineHeight: 20px) {
+  font-family: "Monaco", Courier New, monospace;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+
+// Grid System
+@mixin fixed-container {
+  width: $siteWidth;
+  margin-left: auto;
+  margin-right: auto;
+  @include clearfix();
+}
+.fixed-container { @include fixed-container; }
+@mixin columns($columnSpan: 1) {
+  width: ($gridColumnWidth * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1));
+}
+@mixin offset($columnOffset: 1) {
+  margin-left: ($gridColumnWidth * $columnOffset) + ($gridGutterWidth * ($columnOffset - 1)) + $extraSpace;
+}
+// Necessary grid styles for every column to make them appear next to each other horizontally
+@mixin gridColumn() {
+  display: inline;
+  float: left;
+  margin-left: $gridGutterWidth;
+}
+// makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
+@mixin makeColumn($columnSpan: 1) {
+  @include gridColumn();
+  @include columns($columnSapn);
+}
+
+// Border Radius
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// Drop shadows
+@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+// Transitions
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+// Background clipping
+@mixin background-clip($clip) {
+  -webkit-background-clip: $clip;
+     -moz-background-clip: $clip;
+          background-clip: $clip;
+}
+
+// CSS3 Content Columns
+@mixin content-columns($columnCount, $columnGap: 20px) {
+  -webkit-column-count: $columnCount;
+     -moz-column-count: $columnCount;
+          column-count: $columnCount;
+  -webkit-column-gap: $columnGap;
+     -moz-column-gap: $columnGap;
+          column-gap: $columnGap;
+}
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+@mixin translucent-background($color: $white, $alpha: 1) {
+  background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+}
+@mixin translucent-border($color: $white, $alpha: 1) {
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+  background-clip: padding-box;
+}
+
+// Gradients
+@mixin horizontal-gradient ($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
+  background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+  background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient(left, $startColor, $endColor); // Le standard
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
+}
+
+@mixin vertical-gradient ($startColor: #555, $endColor: #333) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor)); // Konqueror
+  background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+  background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient(top, $startColor, $endColor); // The standard
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
+}
+
+@mixin directional-gradient ($startColor: #555, $endColor: #333, $deg: 45deg) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient($deg, $startColor, $endColor); // FF 3.6+
+  background-image: -ms-linear-gradient($deg, $startColor, $endColor); // IE10
+  background-image: -webkit-linear-gradient($deg, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient($deg, $startColor, $endColor); // The standard
+}
+
+@mixin vertical-three-colors-gradient($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: $endColor;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+  background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: -moz-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: -ms-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
+}
+
+// Gradient Bar Colors for buttons and allerts
+@mixin gradientBar($primaryColor, $secondaryColor) {
+  @include vertical-gradient($primaryColor, $secondaryColor);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) opacify(rgba(0,0,0,.1), .15);
+}
+
+// Reset filters for IE
+@mixin reset-filter() {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+// Opacity
+@mixin opacity($opacity: 100) {
+  filter: alpha(opacity=$opacity);
+  -khtml-opacity: $opacity / 100;
+    -moz-opacity: $opacity / 100;
+         opacity: $opacity / 100;
+}

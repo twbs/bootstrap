@@ -3,101 +3,49 @@
  * Basic and global styles for generating a grid system, structural layout, and page templates
  * ------------------------------------------------------------------------------------------- */
 
-// GRID SYSTEM
-// -----------
-
-.row {
-  @include clearfix();
-  margin-left: -20px;
-
-  // Default columns
-  .span1,
-  .span2,
-  .span3,
-  .span4,
-  .span5,
-  .span6,
-  .span7,
-  .span8,
-  .span9,
-  .span10,
-  .span11,
-  .span12,
-  .span13,
-  .span14,
-  .span15,
-  .span16 {
-    display: inline;
-    float: left;
-    margin-left: 20px;
-  }
-
-  // Default columns
-  .span1     { @include columns(1); }
-  .span2     { @include columns(2); }
-  .span3     { @include columns(3); }
-  .span4     { @include columns(4); }
-  .span5     { @include columns(5); }
-  .span6     { @include columns(6); }
-  .span7     { @include columns(7); }
-  .span8     { @include columns(8); }
-  .span9     { @include columns(9); }
-  .span10    { @include columns(10); }
-  .span11    { @include columns(11); }
-  .span12    { @include columns(12); }
-  .span13    { @include columns(13); }
-  .span14    { @include columns(14); }
-  .span15    { @include columns(15); }
-  .span16    { @include columns(16); }
-
-  // Offset column options
-  .offset1   { @include offset(1); }
-  .offset2   { @include offset(2); }
-  .offset3   { @include offset(3); }
-  .offset4   { @include offset(4); }
-  .offset5   { @include offset(5); }
-  .offset6   { @include offset(6); }
-  .offset7   { @include offset(7); }
-  .offset8   { @include offset(8); }
-  .offset9   { @include offset(9); }
-  .offset10  { @include offset(10); }
-  .offset11  { @include offset(11); }
-  .offset12  { @include offset(12); }
-}
-
 
 // STRUCTURAL LAYOUT
 // -----------------
 
 html, body {
-  background-color: #fff;
+  background-color: $white;
 }
 body {
   margin: 0;
   @include sans-serif-font(normal,$basefont,$baseline);
   color: $gray;
-  text-rendering: optimizeLegibility;
 }
 
 // Container (centered, fixed-width layouts)
 .container {
-  width: 940px;
-  margin: 0 auto;
+  @include fixed-container();
 }
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {
-  padding: 0 20px;
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
   @include clearfix();
-  .sidebar {
+  > .sidebar {
     float: left;
     width: 220px;
   }
-  .content {
+  // TODO in v2: rename this and .popover .content to be more specific
+  > .content {
+    float: left;
     min-width: 700px;
     max-width: 1180px;
-    margin-left: 240px;
+    margin-left: 20px;
   }
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
 }
 
 
@@ -116,88 +64,74 @@ a {
   }
 }
 
-// Buttons
-.btn {
-  display: inline-block;
-  @include vertical-three-colors-gradient(#fff, #fff, 0.25, darken(#fff, 10%));
-  padding: 4px 14px;
-  text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  color: #333;
-  font-size: 13px;
-  line-height: $baseline;
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
-  @include border-radius(4px);
-  $shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  @include box-shadow($shadow);
-  &:hover {
-    background-position: 0 -15px;
-    color: #333;
-    text-decoration: none;
-  }
+// Quick floats
+.pull-right {
+  float: right;
 }
-.primary {
-  @include vertical-gradient(#049CDB, #0064CD);
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border: 1px solid darken(#0064CD, 10%);
-  border-bottom-color: darken(#0064CD, 15%);
-  &:hover {
-    color: #fff;
-  }
+.pull-left {
+  float: left;
 }
 
-.btn {
-  //.button(#1174C6);
-  @include transition(.1s linear all);
-  &.primary {
-    //@include vertical-gradient($blue, $blueDark);
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    border-color: $blueDark $blueDark darken($blueDark, 15%);
-    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-    &:hover {
-      color: #fff;
-    }
-  }
-  &.large {
-    font-size: 16px;
-    line-height: 28px;
-    @include border-radius(6px);
-  }
-  &.small {
-    padding-right: 9px;
-    padding-left: 9px;
-    font-size: 11px;
-  }
-  &.disabled {
-    background-image: none;
-    @include opacity(65);
-    cursor: default;
-    @include box-shadow(none);
-  }
 
-  // this can't be included with the .disabled def because IE8 and below will drop it ;_;
-  &:disabled {
-    background-image: none;
-    @include opacity(65);
-    cursor: default;
-    @include box-shadow(none);
-    &.primary {
-      color: #fff;
-    }
-  }
-  &:active {
-    $shadow: inset 0 3px 7px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-    @include box-shadow($shadow);
-  }
+// GRID SYSTEM
+// -----------
+// To customize the grid system, bring up the variables.scss file and change the column count, size, and gutter there
+
+.row {
+  @include clearfix();
+  margin-left: -1 * $gridGutterWidth;
 }
 
-// Help Firefox not be a jerk about adding extra padding to buttons
-button.btn,
-input[type=submit].btn {
-  &::-moz-focus-inner {
-  	padding: 0;
-  	border: 0;
-  }
+// Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
+// Credit to @dhg for the idea
+[class*="span"] {
+  @include gridColumn();
 }
+
+// Default columns
+.span1     { @include columns(1); }
+.span2     { @include columns(2); }
+.span3     { @include columns(3); }
+.span4     { @include columns(4); }
+.span5     { @include columns(5); }
+.span6     { @include columns(6); }
+.span7     { @include columns(7); }
+.span8     { @include columns(8); }
+.span9     { @include columns(9); }
+.span10    { @include columns(10); }
+.span11    { @include columns(11); }
+.span12    { @include columns(12); }
+.span13    { @include columns(13); }
+.span14    { @include columns(14); }
+.span15    { @include columns(15); }
+.span16    { @include columns(16); }
+
+// For option 24-column grid
+.span17    { @include columns(17); }
+.span18    { @include columns(18); }
+.span19    { @include columns(19); }
+.span20    { @include columns(20); }
+.span21    { @include columns(21); }
+.span22    { @include columns(22); }
+.span23    { @include columns(23); }
+.span24    { @include columns(24); }
+
+// Offset column options
+.offset1   { @include offset(1); }
+.offset2   { @include offset(2); }
+.offset3   { @include offset(3); }
+.offset4   { @include offset(4); }
+.offset5   { @include offset(5); }
+.offset6   { @include offset(6); }
+.offset7   { @include offset(7); }
+.offset8   { @include offset(8); }
+.offset9   { @include offset(9); }
+.offset10  { @include offset(10); }
+.offset11  { @include offset(11); }
+.offset12  { @include offset(12); }
+
+// Unique column sizes for 16-column grid
+.span-one-third     { width: 300px; }
+.span-two-thirds    { width: 620px; }
+.offset-one-third   { margin-left: 340px; }
+.offset-two-thirds  { margin-left: 660px; }
