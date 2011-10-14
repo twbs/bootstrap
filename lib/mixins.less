@@ -71,20 +71,6 @@
   }
 }
 
-// Font face generator
-.font-face(@fontFamily, @fileName, @style, @weight) {
-  @font-face {
-    font-family: @fontFamily;
-    font-style: @style;
-    font-weight: @weight;
-    src: url('@{fileName}.eot');
-    src: url('@{fileName}.eot?#iefix') format('embedded-opentype'),
-         url('@{fileName}.woff') format('woff'),
-         url('@{fileName}.ttf') format('truetype'),
-         url('@{fileName}.svg#@{fontFamily}') format('svg');
-  }
-}
-
 // Grid System
 .fixed-container() {
   width: @siteWidth;
@@ -115,6 +101,9 @@
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
           border-radius: @radius;
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
 }
 .border-radius-custom(@topLeft, @topRight, @bottomRight, @bottomLeft) {
   -webkit-border-top-left-radius: @topLeft;
