@@ -23,13 +23,25 @@ src=$(git rev-parse --show-toplevel) || {
   exit 1
 }
 
-# get a name for new project
+if [ $# -eq 1 ]
+then
+    # get a name for new project from command line arguments
+    name="$1"
+fi
+
+# get a name for new project from input
 while [[ -z $name ]]
 do
     echo "To create a new html5-boilerplate project, enter a new directory name:"
     read name || exit
 done
-dst=$src/../$name
+
+if [[ "$name" = /* ]]
+then
+    dst=$name
+else
+    dst=$src/../$name
+fi
 
 if [[ -d $dst ]]
 then
