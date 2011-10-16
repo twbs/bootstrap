@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct 16 11:34:52 PDT 2011
+ * Date: Sun Oct 16 12:11:34 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2380,83 +2380,60 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     margin-left: 768px;
   }
 }
+/*
+// LARGE DESKTOP & UP
+// ------------------
+
 @media (min-width: 1170px) {
+
+  // Reset grid variables
+  @gridColumns:       12;
+  @gridColumnWidth:   70px;
+  @gridGutterWidth:   30px;
+  @siteWidth:         1170px;
+
+  // Bring grid mixins to recalculate widths
+  .columns(@columnSpan: 1) {
+    width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
+  }
+  .offset(@columnOffset: 1) {
+    margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @gridGutterWidth;
+  }
+
   .container {
-    width: 1170px;
+    width: @siteWidth;
   }
   [class*="span"] {
-    margin-left: 30px;
+    margin-left: @gridGutterWidth;
   }
-  .span1 {
-    width: 70px;
-  }
-  .span2 {
-    width: 170px;
-  }
-  .span3 {
-    width: 270px;
-  }
-  .span4 {
-    width: 370px;
-  }
-  .span5 {
-    width: 470px;
-  }
-  .span6 {
-    width: 570px;
-  }
-  .span7 {
-    width: 670px;
-  }
-  .span8 {
-    width: 770px;
-  }
-  .span9 {
-    width: 870px;
-  }
-  .span10 {
-    width: 970px;
-  }
-  .span11 {
-    width: 1070px;
-  }
-  .span12 {
-    width: 1170px;
-  }
-  .offset1 {
-    margin-left: 100px;
-  }
-  .offset2 {
-    margin-left: 200px;
-  }
-  .offset3 {
-    margin-left: 300px;
-  }
-  .offset4 {
-    margin-left: 400px;
-  }
-  .offset5 {
-    margin-left: 500px;
-  }
-  .offset6 {
-    margin-left: 600px;
-  }
-  .offset7 {
-    margin-left: 700px;
-  }
-  .offset8 {
-    margin-left: 800px;
-  }
-  .offset9 {
-    margin-left: 900px;
-  }
-  .offset10 {
-    margin-left: 1000px;
-  }
-  .offset11 {
-    margin-left: 1100px;
-  }
-  .offset12 {
-    margin-left: 1200px;
-  }
+
+  // Default columns
+  .span1     { .columns(1); }
+  .span2     { .columns(2); }
+  .span3     { .columns(3); }
+  .span4     { .columns(4); }
+  .span5     { .columns(5); }
+  .span6     { .columns(6); }
+  .span7     { .columns(7); }
+  .span8     { .columns(8); }
+  .span9     { .columns(9); }
+  .span10    { .columns(10); }
+  .span11    { .columns(11); }
+  .span12    { .columns(12); }
+
+  // Offset column options
+  .offset1   { .offset(1); }
+  .offset2   { .offset(2); }
+  .offset3   { .offset(3); }
+  .offset4   { .offset(4); }
+  .offset5   { .offset(5); }
+  .offset6   { .offset(6); }
+  .offset7   { .offset(7); }
+  .offset8   { .offset(8); }
+  .offset9   { .offset(9); }
+  .offset10  { .offset(10); }
+  .offset11  { .offset(11); }
+  .offset12  { .offset(12); }
+
 }
+*/
