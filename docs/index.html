@@ -75,40 +75,40 @@
       </div>
     </div>
 
-    <!-- Masthead (blueprinty thing)
-    ================================================== -->
-    <header class="jumbotron masthead" id="overview">
-      <div class="inner">
-        <h1>Bootstrap, from Twitter</h1>
-        <p class="lead">
-          Bootstrap is a toolkit from Twitter designed to kickstart development of webapps and sites.<br>
-          It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.<br>
-        </p>
-        <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with modern browsers in mind.</p>
-      </div>
-    </header>
+  <div class="container">
 
-    <!-- Quickstart options
-    ================================================== -->
-    <div class="quickstart">
-      <div class="container">
+    <div id="overview">
+      <!-- Masthead (blueprinty thing)
+      ================================================== -->
+      <header class="jumbotron masthead">
+        <div class="inner">
+          <h1>Bootstrap, from Twitter</h1>
+          <a href="#" class="btn btn-large pull-right">Download on GitHub</a>
+          <p class="lead">Bootstrap is a frontend toolkit from Twitter designed to kickstart web development, complete with core HTML, CSS, and JS for grids, type, forms, navigation, and many more components.</p>
+          <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed with modern browsers in mind.</p>
+        </div>
+      </header>
+
+      <!-- Quickstart options
+      ================================================== -->
+      <div class="quickstart" style="display: none;">
         <div class="row">
-          <div class="span5">
+          <div class="span4">
             <h6>Hotlink the CSS</h6>
             <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
             <form>
               <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.min.css"></textarea>
             </form>
           </div>
-          <div class="span5">
+          <div class="span4">
             <h6>Use it with Less</h6>
             <p>A fan of using Less? No problem, just clone the repo and add these lines:</p>
             <form>
               <textarea class="copy-code" rows="2">&lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
-&lt;script src="/path/to/less.js"&gt;&lt;/script&gt;</textarea>
+  &lt;script src="/path/to/less.js"&gt;&lt;/script&gt;</textarea>
             </form>
           </div>
-          <div class="span5">
+          <div class="span4">
             <h6>Fork on GitHub</h6>
             <p>Download, fork, pull, file issues, and more with the official Bootstrap repo on Github.</p>
             <p><a target="_blank" href="https://github.com/twitter/bootstrap" class="btn primary">Bootstrap on GitHub &raquo;</a></p>
@@ -116,51 +116,40 @@
           </div>
         </div><!-- /row -->
       </div>
-    </div>
 
-    <div class="container">
+      <!-- About Bootstrap
+      ================================================== -->
+      <div class="row">
+        <div class="span4">
+          <h2>Built for and by nerds</h2>
+          <p>Engineers at Twitter have historically used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented. With the help of many awesome folks, Bootstrap has grown significantly.</p>
+          <p>Read more on <a href="https://dev.twitter.com/blog/bootstrap-twitter">dev.twitter.com &rsaquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Cross-everything</h2>
+          <p>Bootstrap is tested and supported in major modern browsers like Chrome, Safari, Internet Explorer, and Firefox.</p>
+          <img src="assets/img/browsers.png" alt="Tested and supported in Chrome, Safari, Internet Explorer, and Firefox">
+          <ul>
+            <li>Latest Safari</li>
+            <li>Latest Google Chrome</li>
+            <li>Firefox 4+</li>
+            <li>Internet Explorer 7+</li>
+            <li>Opera 11</li>
+          </ul>
+        </div>
+        <div class="span4">
+          <h2>What's included</h2>
+          <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
+          <ul>
+            <li><span class="label">New in 1.3</span> <a href="./javascript.html">Javascript plugins</a></li>
+            <li>All original .less files</li>
+            <li>Fully <a href="../bootstrap.css">compiled</a> and <a href="../bootstrap.min.css">minified</a> CSS</li>
+            <li>Complete styleguide documentation</li>
+            <li>Three example pages with different layouts</li>
+          </ul>
+        </div>
+      </div><!-- /row -->
 
-
-
-<!-- About Bootstrap
-================================================== -->
-<section id="about">
-  <div class="page-header">
-    <h1>About Bootstrap <small>Brief history, browser support, and more</small></h1>
-  </div>
-  <div class="row">
-    <div class="span-one-third">
-      <h3>History</h3>
-      <p>Engineers at Twitter have historically used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented. With the help of many awesome folks, Bootstrap has grown significantly.</p>
-      <p>Read more on <a href="https://dev.twitter.com/blog/bootstrap-twitter">dev.twitter.com &rsaquo;</a></p>
-    </div>
-    <div class="span-one-third">
-      <h3>Browser support</h3>
-      <p>Bootstrap is tested and supported in major modern browsers like Chrome, Safari, Internet Explorer, and Firefox.</p>
-      <img src="assets/img/browsers.png" alt="Tested and supported in Chrome, Safari, Internet Explorer, and Firefox">
-      <ul>
-        <li>Latest Safari</li>
-        <li>Latest Google Chrome</li>
-        <li>Firefox 4+</li>
-        <li>Internet Explorer 7+</li>
-        <li>Opera 11</li>
-      </ul>
-    </div>
-    <div class="span-one-third">
-      <h3>What's included</h3>
-      <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
-      <ul>
-        <li><span class="label">New in 1.3</span> <a href="./javascript.html">Javascript plugins</a></li>
-        <li>All original .less files</li>
-        <li>Fully <a href="../bootstrap.css">compiled</a> and <a href="../bootstrap.min.css">minified</a> CSS</li>
-        <li>Complete styleguide documentation</li>
-        <li>Three example pages with different layouts</li>
-      </ul>
-    </div>
-  </div><!-- /row -->
-
-  <div class="row">
-    <div class="span12">
       <h3>Quick-start examples</h3>
       <p>Need some quick templates? Check out these basic examples we've put together:</p>
       <ul class="media-grid">
@@ -174,10 +163,8 @@
           <a href="../examples/container-app.html"><img src="assets/img/example-diagram-03.png" alt="Simple hanging container for apps"></a>
         </li>
       </ul>
-    </div>
-  </div><!-- /row -->
-</section>
 
+    </div><!-- /#overview -->
 
 
 <!-- Grid system
@@ -187,11 +174,11 @@
     <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
   </div>
   <div class="row">
-    <div class="span4">
+    <div class="span3">
       <h2>Default grid</h2>
       <p>The default grid system provided as part of Bootstrap is a 940px wide 16-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
     </div>
-    <div class="span12">
+    <div class="span9">
       <h3>Example grid markup</h3>
       <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
 <pre class="prettyprint linenums">
@@ -206,7 +193,7 @@
 </pre>
     </div>
   </div><!-- /row -->
-  <div class="row show-grid" title="16 column layout">
+  <div class="row show-grid">
     <div class="span1">1</div>
     <div class="span1">1</div>
     <div class="span1">1</div>
@@ -219,60 +206,23 @@
     <div class="span1">1</div>
     <div class="span1">1</div>
     <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="8 column layout">
-    <div class="span2">2</div>
-    <div class="span2">2</div>
-    <div class="span2">2</div>
-    <div class="span2">2</div>
-    <div class="span2">2</div>
-    <div class="span2">2</div>
-    <div class="span2">2</div>
-    <div class="span2">2</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="Example uncommon layout">
-    <div class="span3">3</div>
-    <div class="span3">3</div>
-    <div class="span3">3</div>
-    <div class="span3">3</div>
-    <div class="span3">3</div>
-    <div class="span1 column">1</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="Four column layout">
+  </div>
+  <div class="row show-grid">
     <div class="span4">4</div>
     <div class="span4">4</div>
     <div class="span4">4</div>
+  </div>
+  <div class="row show-grid">
     <div class="span4">4</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="Default three column layout">
-    <div class="span-one-third">1/3</div>
-    <div class="span-one-third">1/3</div>
-    <div class="span-one-third">1/3</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="One-third and two-thirds layout">
-    <div class="span-one-third">1/3</div>
-    <div class="span-two-thirds">2/3</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="Irregular three column layout">
-    <div class="span4">4</div>
+    <div class="span8">8</div>
+  </div>
+  <div class="row show-grid">
     <div class="span6">6</div>
     <div class="span6">6</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="Half and half">
-    <div class="span8">8</div>
-    <div class="span8">8</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="Example uncommon two-column layout">
-    <div class="span5">5</div>
-    <div class="span11">11</div>
-  </div><!-- /row -->
-  <div class="row show-grid" title="Unnecessary single column layout">
-    <div class="span16">16</div>
-  </div><!-- /row -->
+  </div>
+  <div class="row show-grid">
+    <div class="span12">12</div>
+  </div>
 
   <br>
 
@@ -282,18 +232,11 @@
     <div class="span8 offset4">8 offset 4</div>
   </div><!-- /row -->
   <div class="row show-grid">
-    <div class="span-one-third offset-two-thirds">1/3 offset 2/3s</div>
+    <div class="span3 offset3">3 offset 3</div>
+    <div class="span3 offset3">3 offset 3</div>
   </div><!-- /row -->
   <div class="row show-grid">
-    <div class="span4 offset4">4 offset 4</div>
-    <div class="span4 offset4">4 offset 4</div>
-  </div><!-- /row -->
-  <div class="row show-grid">
-    <div class="span5 offset3">5 offset 3</div>
-    <div class="span5 offset3">5 offset 3</div>
-  </div><!-- /row -->
-  <div class="row show-grid">
-    <div class="span10 offset6">10 offset 6</div>
+    <div class="span8 offset4">8 offset 4</div>
   </div><!-- /row -->
 
   <br>
@@ -978,7 +921,7 @@
         <fieldset class="control-group has-error">
           <label class="control-label" for="textareaError">Textarea with error</label>
           <div class="controls">
-            <textarea class="input-xxlarge" rows="3"></textarea>
+            <textarea class="input-xlarge" rows="3"></textarea>
           </div>
         </fieldset>
         <fieldset class="control-group">
@@ -2009,17 +1952,17 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
 </section>
 
-    </div><!-- /container -->
 
     <footer class="footer">
-      <div class="container">
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>
-          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br>
-          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-        </p>
-      </div>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>
+        Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br>
+        Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+      </p>
     </footer>
+
+    </div><!-- /container -->
+
 
   </body>
 </html>

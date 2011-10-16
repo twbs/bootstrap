@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Oct 15 17:19:53 PDT 2011
+ * Date: Sun Oct 16 02:59:54 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -261,7 +261,6 @@ a:hover {
 }
 .row {
   zoom: 1;
-  margin-left: -20px;
 }
 .row:before, .row:after {
   display: table;
@@ -277,125 +276,77 @@ a:hover {
   float: left;
   margin-left: 20px;
 }
+.row > [class*="span"]:first-child {
+  margin-left: 0;
+}
 .span1 {
-  width: 40px;
+  width: 60px;
 }
 .span2 {
-  width: 100px;
+  width: 140px;
 }
 .span3 {
-  width: 160px;
-}
-.span4 {
   width: 220px;
 }
-.span5 {
-  width: 280px;
-}
-.span6 {
-  width: 340px;
-}
-.span7 {
-  width: 400px;
-}
-.span8 {
-  width: 460px;
-}
-.span9 {
-  width: 520px;
-}
-.span10 {
-  width: 580px;
-}
-.span11 {
-  width: 640px;
-}
-.span12 {
-  width: 700px;
-}
-.span13 {
-  width: 760px;
-}
-.span14 {
-  width: 820px;
-}
-.span15 {
-  width: 880px;
-}
-.span16 {
-  width: 940px;
-}
-.span17 {
-  width: 1000px;
-}
-.span18 {
-  width: 1060px;
-}
-.span19 {
-  width: 1120px;
-}
-.span20 {
-  width: 1180px;
-}
-.span21 {
-  width: 1240px;
-}
-.span22 {
-  width: 1300px;
-}
-.span23 {
-  width: 1360px;
-}
-.span24 {
-  width: 1420px;
-}
-.offset1 {
-  margin-left: 80px;
-}
-.offset2 {
-  margin-left: 140px;
-}
-.offset3 {
-  margin-left: 200px;
-}
-.offset4 {
-  margin-left: 260px;
-}
-.offset5 {
-  margin-left: 320px;
-}
-.offset6 {
-  margin-left: 380px;
-}
-.offset7 {
-  margin-left: 440px;
-}
-.offset8 {
-  margin-left: 500px;
-}
-.offset9 {
-  margin-left: 560px;
-}
-.offset10 {
-  margin-left: 620px;
-}
-.offset11 {
-  margin-left: 680px;
-}
-.offset12 {
-  margin-left: 740px;
-}
-.span-one-third {
+.span4 {
   width: 300px;
 }
-.span-two-thirds {
+.span5 {
+  width: 380px;
+}
+.span6 {
+  width: 460px;
+}
+.span7 {
+  width: 540px;
+}
+.span8 {
   width: 620px;
 }
-.offset-one-third {
+.span9 {
+  width: 700px;
+}
+.span10 {
+  width: 780px;
+}
+.span11 {
+  width: 860px;
+}
+.span12 {
+  width: 940px;
+}
+.offset1 {
+  margin-left: 100px;
+}
+.offset2 {
+  margin-left: 180px;
+}
+.offset3 {
+  margin-left: 260px;
+}
+.offset4 {
   margin-left: 340px;
 }
-.offset-two-thirds {
+.offset5 {
+  margin-left: 420px;
+}
+.offset6 {
+  margin-left: 500px;
+}
+.offset7 {
+  margin-left: 580px;
+}
+.offset8 {
   margin-left: 660px;
+}
+.offset9 {
+  margin-left: 740px;
+}
+.offset10 {
+  margin-left: 820px;
+}
+.offset11 {
+  margin-left: 900px;
 }
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
@@ -551,9 +502,6 @@ code, pre {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 code {
   background-color: #fee9cc;
@@ -572,9 +520,6 @@ pre {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -626,9 +571,6 @@ select,
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 /* Mini reset for unique input types */
 input[type=checkbox], input[type=radio] {
@@ -713,97 +655,97 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
 input.span1, textarea.span1, select.span1 {
   display: inline-block;
   float: none;
-  width: 30px;
+  width: 50px;
   margin-left: 0;
 }
 input.span2, textarea.span2, select.span2 {
   display: inline-block;
   float: none;
-  width: 90px;
+  width: 150px;
   margin-left: 0;
 }
 input.span3, textarea.span3, select.span3 {
   display: inline-block;
   float: none;
-  width: 150px;
+  width: 250px;
   margin-left: 0;
 }
 input.span4, textarea.span4, select.span4 {
   display: inline-block;
   float: none;
-  width: 210px;
+  width: 350px;
   margin-left: 0;
 }
 input.span5, textarea.span5, select.span5 {
   display: inline-block;
   float: none;
-  width: 270px;
+  width: 450px;
   margin-left: 0;
 }
 input.span6, textarea.span6, select.span6 {
   display: inline-block;
   float: none;
-  width: 330px;
+  width: 550px;
   margin-left: 0;
 }
 input.span7, textarea.span7, select.span7 {
   display: inline-block;
   float: none;
-  width: 390px;
+  width: 650px;
   margin-left: 0;
 }
 input.span8, textarea.span8, select.span8 {
   display: inline-block;
   float: none;
-  width: 450px;
+  width: 750px;
   margin-left: 0;
 }
 input.span9, textarea.span9, select.span9 {
   display: inline-block;
   float: none;
-  width: 510px;
+  width: 850px;
   margin-left: 0;
 }
 input.span10, textarea.span10, select.span10 {
   display: inline-block;
   float: none;
-  width: 570px;
+  width: 950px;
   margin-left: 0;
 }
 input.span11, textarea.span11, select.span11 {
   display: inline-block;
   float: none;
-  width: 630px;
+  width: 1050px;
   margin-left: 0;
 }
 input.span12, textarea.span12, select.span12 {
   display: inline-block;
   float: none;
-  width: 690px;
+  width: 1150px;
   margin-left: 0;
 }
 input.span13, textarea.span13, select.span13 {
   display: inline-block;
   float: none;
-  width: 750px;
+  width: 1250px;
   margin-left: 0;
 }
 input.span14, textarea.span14, select.span14 {
   display: inline-block;
   float: none;
-  width: 810px;
+  width: 1350px;
   margin-left: 0;
 }
 input.span15, textarea.span15, select.span15 {
   display: inline-block;
   float: none;
-  width: 870px;
+  width: 1450px;
   margin-left: 0;
 }
 input.span16, textarea.span16, select.span16 {
   display: inline-block;
   float: none;
-  width: 930px;
+  width: 1550px;
   margin-left: 0;
 }
 input[disabled],
@@ -823,9 +765,6 @@ textarea[readonly] {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .has-error > label, .has-error span.help-inline, .has-error span.help-block {
   color: #9d261d;
@@ -907,9 +846,6 @@ textarea[readonly] {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .input-prepend .add-on, .input-append .add-on {
   position: relative;
@@ -931,9 +867,6 @@ textarea[readonly] {
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .input-prepend .active, .input-append .active {
   background: #a9dba9;
@@ -949,17 +882,11 @@ textarea[readonly] {
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .input-append .add-on {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   margin-right: 0;
   margin-left: -1px;
 }
@@ -967,9 +894,6 @@ textarea[readonly] {
   -webkit-border-radius: 14px;
   -moz-border-radius: 14px;
   border-radius: 14px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .control-group {
   margin-bottom: 18px;
@@ -1009,9 +933,6 @@ table {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 table th, table td {
   padding: 10px 10px 9px;
@@ -1037,33 +958,21 @@ table tbody tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
   -moz-border-radius: 4px 0 0 0;
   border-radius: 4px 0 0 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 table tbody tr:first-child td:last-child {
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
   border-radius: 0 4px 0 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 table tbody tr:last-child td:first-child {
   -webkit-border-radius: 0 0 0 4px;
   -moz-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 table tbody tr:last-child td:last-child {
   -webkit-border-radius: 0 0 4px 0;
   -moz-border-radius: 0 0 4px 0;
   border-radius: 0 0 4px 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .zebra-striped tbody tr:nth-child(odd) td {
   background-color: #f9f9f9;
@@ -1263,9 +1172,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .navbar-fixed {
   position: fixed;
@@ -1397,9 +1303,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -1494,9 +1397,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
   border-radius: 4px 4px 0 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .tabs > li > a:hover {
   text-decoration: none;
@@ -1529,9 +1429,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .tabbable.tabs-bottom .tabs > li > a:hover {
   border-bottom-color: transparent;
@@ -1558,9 +1455,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 0 6px 6px 6px;
   -moz-border-radius: 0 6px 6px 6px;
   border-radius: 0 6px 6px 6px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .tabs a.menu:after, .tabs .dropdown-toggle:after {
   border-top-color: #999;
@@ -1581,9 +1475,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .pills a:hover {
   color: #ffffff;
@@ -1622,9 +1513,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: inset 0 1px 0 #ffffff;
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
@@ -1647,9 +1535,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .hero-unit h1 {
   margin-bottom: 0;
@@ -1765,9 +1650,6 @@ footer {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1837,9 +1719,6 @@ footer {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .btn.small {
   padding: 7px 9px 7px;
@@ -1887,9 +1766,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .btn-group .btn:first-child {
   margin-left: 0;
@@ -1955,9 +1831,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -2033,9 +1906,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -2075,9 +1945,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -2120,9 +1987,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -2158,9 +2022,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: inset 0 1px 0 #ffffff;
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
@@ -2240,9 +2101,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .twipsy-arrow {
   position: absolute;
@@ -2303,9 +2161,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -2317,9 +2172,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 3px 3px 0 0;
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   border-bottom: 1px solid #eee;
 }
 .popover .content {
@@ -2328,9 +2180,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
   background-clip: padding-box;
@@ -2359,9 +2208,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
 }
 .label.important {
   background-color: #c43c35;
@@ -2400,9 +2246,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -2420,5 +2263,184 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
  * For phone and tablet devices
  * ------------------------------------------------------------- */
 @media (max-width: 480px) {
-  
+  .container {
+    width: auto;
+    padding: 0 10px;
+  }
+  [class*="span"] {
+    float: none;
+    display: block;
+    width: auto;
+  }
+}
+@media (min-width: 480px) and (max-width: 768px) {
+  .container {
+    width: auto;
+    padding: 0 10px;
+  }
+  [class*="span"] {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 940px) {
+  .container {
+    width: 748px;
+  }
+  .span1 {
+    width: 28px;
+  }
+  .span2 {
+    width: 76px;
+  }
+  .span3 {
+    width: 124px;
+  }
+  .span4 {
+    width: 172px;
+  }
+  .span5 {
+    width: 220px;
+  }
+  .span6 {
+    width: 268px;
+  }
+  .span7 {
+    width: 316px;
+  }
+  .span8 {
+    width: 364px;
+  }
+  .span9 {
+    width: 412px;
+  }
+  .span10 {
+    width: 460px;
+  }
+  .span11 {
+    width: 508px;
+  }
+  .span12 {
+    width: 556px;
+  }
+  .offset1 {
+    margin-left: 68px;
+  }
+  .offset2 {
+    margin-left: 116px;
+  }
+  .offset3 {
+    margin-left: 164px;
+  }
+  .offset4 {
+    margin-left: 212px;
+  }
+  .offset5 {
+    margin-left: 260px;
+  }
+  .offset6 {
+    margin-left: 308px;
+  }
+  .offset7 {
+    margin-left: 356px;
+  }
+  .offset8 {
+    margin-left: 404px;
+  }
+  .offset9 {
+    margin-left: 452px;
+  }
+  .offset10 {
+    margin-left: 500px;
+  }
+  .offset11 {
+    margin-left: 548px;
+  }
+  .offset12 {
+    margin-left: 596px;
+  }
+}
+@media (min-width: 1170px) {
+  .container {
+    width: 1170px;
+  }
+  [class*="span"] {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+  }
+  .span1 {
+    width: 70px;
+  }
+  .span2 {
+    width: 170px;
+  }
+  .span3 {
+    width: 270px;
+  }
+  .span4 {
+    width: 370px;
+  }
+  .span5 {
+    width: 470px;
+  }
+  .span6 {
+    width: 570px;
+  }
+  .span7 {
+    width: 670px;
+  }
+  .span8 {
+    width: 770px;
+  }
+  .span9 {
+    width: 870px;
+  }
+  .span10 {
+    width: 970px;
+  }
+  .span11 {
+    width: 1070px;
+  }
+  .span12 {
+    width: 1170px;
+  }
+  .offset1 {
+    margin-left: 130px;
+  }
+  .offset2 {
+    margin-left: 230px;
+  }
+  .offset3 {
+    margin-left: 330px;
+  }
+  .offset4 {
+    margin-left: 430px;
+  }
+  .offset5 {
+    margin-left: 530px;
+  }
+  .offset6 {
+    margin-left: 630px;
+  }
+  .offset7 {
+    margin-left: 730px;
+  }
+  .offset8 {
+    margin-left: 830px;
+  }
+  .offset9 {
+    margin-left: 930px;
+  }
+  .offset10 {
+    margin-left: 1030px;
+  }
+  .offset11 {
+    margin-left: 1130px;
+  }
+  .offset12 {
+    margin-left: 1230px;
+  }
 }
