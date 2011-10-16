@@ -231,7 +231,7 @@ section > .row {
 .mini-layout .mini-layout-body {
   background-color: #dceaf4;
   margin: 0 auto;
-  width: 240px;
+  width: 70%;
   height: 240px;
 }
 .mini-layout.fluid .mini-layout-sidebar,
@@ -241,11 +241,11 @@ section > .row {
 }
 .mini-layout.fluid .mini-layout-sidebar {
   background-color: #bbd8e9;
-  width: 90px;
+  width: 20%;
   height: 240px;
 }
 .mini-layout.fluid .mini-layout-body {
-  width: 300px;
+  width: 60%;
   margin-left: 10px;
 }
 
@@ -328,23 +328,22 @@ pre.prettyprint {
 }
 
 
+.browser-support {
+  max-width: 100%;
+}
+
 /* Responsive Docs
 -------------------------------------------------- */
-
-/* Tablet to Medium Desktop
-------------------------- */
+@media (max-width: 480px) {
+  .large-bird {
+    display: none;
+  }
+}
 
 @media (min-width: 768px) and (max-width: 900px) {
-
   .footer,
   .jumbotron {
     min-width: 748px;
   }
-  .jumbotron .inner h1,
-  .jumbotron .inner p {
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-
 }
 

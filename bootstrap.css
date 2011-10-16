@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct 16 03:14:23 PDT 2011
+ * Date: Sun Oct 16 11:34:52 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -388,13 +388,13 @@ h1 small {
 }
 h2 {
   font-size: 24px;
-  line-height: 36px;
+  line-height: 27px;
 }
 h2 small {
   font-size: 14px;
 }
 h3 {
-  line-height: 36px;
+  line-height: 27px;
   font-size: 18px;
 }
 h3 small {
@@ -2269,6 +2269,26 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     float: none;
     display: block;
     width: auto;
+    margin: 0;
+  }
+  .modal {
+    width: auto;
+    margin: 0;
+  }
+  .form-horizontal .control-group > label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+  }
+  .form-horizontal .controls {
+    margin-left: 0;
+  }
+  .form-horizontal .control-list {
+    padding-top: 0;
+  }
+  .form-horizontal .form-actions {
+    padding-left: 0;
   }
 }
 @media (min-width: 480px) and (max-width: 768px) {
@@ -2288,76 +2308,76 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     width: 748px;
   }
   .span1 {
-    width: 28px;
+    width: 44px;
   }
   .span2 {
-    width: 76px;
+    width: 108px;
   }
   .span3 {
-    width: 124px;
-  }
-  .span4 {
     width: 172px;
   }
+  .span4 {
+    width: 236px;
+  }
   .span5 {
-    width: 220px;
+    width: 300px;
   }
   .span6 {
-    width: 268px;
-  }
-  .span7 {
-    width: 316px;
-  }
-  .span8 {
     width: 364px;
   }
+  .span7 {
+    width: 428px;
+  }
+  .span8 {
+    width: 492px;
+  }
   .span9 {
-    width: 412px;
-  }
-  .span10 {
-    width: 460px;
-  }
-  .span11 {
-    width: 508px;
-  }
-  .span12 {
     width: 556px;
   }
+  .span10 {
+    width: 620px;
+  }
+  .span11 {
+    width: 684px;
+  }
+  .span12 {
+    width: 748px;
+  }
   .offset1 {
-    margin-left: 68px;
+    margin-left: 64px;
   }
   .offset2 {
-    margin-left: 116px;
+    margin-left: 128px;
   }
   .offset3 {
-    margin-left: 164px;
+    margin-left: 192px;
   }
   .offset4 {
-    margin-left: 212px;
+    margin-left: 256px;
   }
   .offset5 {
-    margin-left: 260px;
+    margin-left: 320px;
   }
   .offset6 {
-    margin-left: 308px;
+    margin-left: 384px;
   }
   .offset7 {
-    margin-left: 356px;
+    margin-left: 448px;
   }
   .offset8 {
-    margin-left: 404px;
+    margin-left: 512px;
   }
   .offset9 {
-    margin-left: 452px;
+    margin-left: 576px;
   }
   .offset10 {
-    margin-left: 500px;
+    margin-left: 640px;
   }
   .offset11 {
-    margin-left: 548px;
+    margin-left: 704px;
   }
   .offset12 {
-    margin-left: 596px;
+    margin-left: 768px;
   }
 }
 @media (min-width: 1170px) {
