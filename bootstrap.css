@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct 16 02:59:54 PDT 2011
+ * Date: Sun Oct 16 03:07:49 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -316,37 +316,37 @@ a:hover {
   width: 940px;
 }
 .offset1 {
-  margin-left: 100px;
+  margin-left: 80px;
 }
 .offset2 {
-  margin-left: 180px;
+  margin-left: 160px;
 }
 .offset3 {
-  margin-left: 260px;
+  margin-left: 240px;
 }
 .offset4 {
-  margin-left: 340px;
+  margin-left: 320px;
 }
 .offset5 {
-  margin-left: 420px;
+  margin-left: 400px;
 }
 .offset6 {
-  margin-left: 500px;
+  margin-left: 480px;
 }
 .offset7 {
-  margin-left: 580px;
+  margin-left: 560px;
 }
 .offset8 {
-  margin-left: 660px;
+  margin-left: 640px;
 }
 .offset9 {
-  margin-left: 740px;
+  margin-left: 720px;
 }
 .offset10 {
-  margin-left: 820px;
+  margin-left: 800px;
 }
 .offset11 {
-  margin-left: 900px;
+  margin-left: 880px;
 }
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
@@ -2367,9 +2367,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     width: 1170px;
   }
   [class*="span"] {
-    display: inline;
-    float: left;
-    margin-left: 20px;
+    margin-left: 30px;
   }
   .span1 {
     width: 70px;
@@ -2408,39 +2406,39 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     width: 1170px;
   }
   .offset1 {
-    margin-left: 130px;
+    margin-left: 100px;
   }
   .offset2 {
-    margin-left: 230px;
+    margin-left: 200px;
   }
   .offset3 {
-    margin-left: 330px;
+    margin-left: 300px;
   }
   .offset4 {
-    margin-left: 430px;
+    margin-left: 400px;
   }
   .offset5 {
-    margin-left: 530px;
+    margin-left: 500px;
   }
   .offset6 {
-    margin-left: 630px;
+    margin-left: 600px;
   }
   .offset7 {
-    margin-left: 730px;
+    margin-left: 700px;
   }
   .offset8 {
-    margin-left: 830px;
+    margin-left: 800px;
   }
   .offset9 {
-    margin-left: 930px;
+    margin-left: 900px;
   }
   .offset10 {
-    margin-left: 1030px;
+    margin-left: 1000px;
   }
   .offset11 {
-    margin-left: 1130px;
+    margin-left: 1100px;
   }
   .offset12 {
-    margin-left: 1230px;
+    margin-left: 1200px;
   }
 }
