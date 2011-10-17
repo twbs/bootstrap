@@ -21,7 +21,7 @@ section > .row {
   margin-bottom: 10px;
 }
 
-/* Tweak topbar brand link to be super sleek
+/* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 .navbar .brand {
   float: right;
@@ -237,18 +237,18 @@ section > .row {
 }
 
 
-/* Topbar special styles
+/* Navbar special styles
 -------------------------------------------------- */
-.topbar-wrapper {
+.navbar-wrapper {
   position: relative;
   height: 40px;
   margin: 5px 0 15px;
 }
-.topbar-wrapper .topbar {
+.navbar-wrapper .navbar {
   position: absolute;
   margin: 0 -20px;
 }
-.topbar-wrapper .topbar .topbar-inner {
+.navbar-wrapper .navbar .navbar-inner {
   padding-left: 20px;
   padding-right: 20px;
   -webkit-border-radius: 4px;
@@ -256,23 +256,23 @@ section > .row {
           border-radius: 4px;
 }
 
-/* Topbar in js docs
+/* Navbar in js docs
 ------------------------- */
-#bootstrap-js .topbar-wrapper {
+#bootstrap-js .navbar-wrapper {
   z-index: 1;
 }
-#bootstrap-js .topbar-wrapper .topbar {
+#bootstrap-js .navbar-wrapper .navbar {
   position: absolute;
   margin: 0 -20px;
 }
-#bootstrap-js .topbar-wrapper .topbar .topbar-inner {
+#bootstrap-js .navbar-wrapper .navbar .navbar-inner {
   padding-left: 20px;
   padding-right: 20px;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
 }
-#bootstrap-js .topbar-wrapper .container {
+#bootstrap-js .navbar-wrapper .container {
   width: auto;
 }
 
