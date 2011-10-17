@@ -63,9 +63,9 @@ a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:
 .offset10{margin-left:820px;}
 .offset11{margin-left:900px;}
 p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;margin-bottom:9px;}p small{font-size:11px;color:#bfbfbf;}
-h1,h2,h3,h4,h5,h6{font-weight:bold;color:#404040;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{color:#bfbfbf;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;color:#404040;text-rendering:optimizelegibility;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{color:#bfbfbf;}
 h1{font-size:30px;line-height:36px;}h1 small{font-size:18px;}
-h2{font-size:24px;line-height:36px;}h2 small{font-size:14px;}
+h2{font-size:24px;line-height:36px;}h2 small{font-size:18px;}
 h3{line-height:27px;font-size:18px;}h3 small{font-size:14px;}
 h4{font-size:16px;line-height:36px;}h4 small{font-size:12px;}
 h5{font-size:14px;line-height:18px;}
@@ -83,6 +83,7 @@ hr{margin:20px 0 19px;border:0;border-bottom:1px solid #eee;}
 strong{font-style:inherit;font-weight:bold;}
 em{font-style:italic;font-weight:inherit;line-height:inherit;}
 .muted{color:#bfbfbf;}
+abbr{font-size:90%;text-transform:uppercase;border-bottom:1px dotted #ddd;cursor:help;}
 blockquote{margin-bottom:18px;border-left:5px solid #eee;padding-left:15px;}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;}
 blockquote small{display:block;font-size:12px;font-weight:300;line-height:18px;color:#bfbfbf;}blockquote small:before{content:'\2014 \00A0';}
 address{display:block;line-height:18px;margin-bottom:18px;}

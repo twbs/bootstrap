@@ -24,6 +24,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: @grayDark;
+  text-rendering: optimizelegibility;
   small {
     color: @grayLight;
   }
@@ -39,7 +40,7 @@ h2 {
   font-size: 24px;
   line-height: @baseLineHeight * 2;
   small {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 h3 {
@@ -132,6 +133,14 @@ em {
 }
 .muted {
   color: @grayLight;
+}
+
+// Abbreviations and acronyms
+abbr {
+  font-size: 90%;
+  text-transform: uppercase;
+  border-bottom: 1px dotted #ddd;
+  cursor: help;
 }
 
 // Blockquotes

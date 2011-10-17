@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct 17 12:44:52 PDT 2011
+ * Date: Mon Oct 17 14:16:58 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -367,6 +367,7 @@ h5,
 h6 {
   font-weight: bold;
   color: #404040;
+  text-rendering: optimizelegibility;
 }
 h1 small,
 h2 small,
@@ -388,7 +389,7 @@ h2 {
   line-height: 36px;
 }
 h2 small {
-  font-size: 14px;
+  font-size: 18px;
 }
 h3 {
   line-height: 27px;
@@ -465,6 +466,12 @@ em {
 }
 .muted {
   color: #bfbfbf;
+}
+abbr {
+  font-size: 90%;
+  text-transform: uppercase;
+  border-bottom: 1px dotted #ddd;
+  cursor: help;
 }
 blockquote {
   margin-bottom: 18px;

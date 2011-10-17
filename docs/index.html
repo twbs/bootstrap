@@ -406,90 +406,130 @@
     <h1>Typography <small>Headings, paragraphs, lists, and other inline type elements</small></h1>
   </div>
 
+  <h2>Headings &amp; body copy</h2>
+
   <!-- Headings & Paragraph Copy -->
   <div class="row">
     <div class="span4">
-      <h2>Headings &amp; copy</h2>
-      <p>A standard typographic hierarchy for structuring your webpages.</p>
+      <h3>Typographic scale</h3>
       <p>The entire typographic grid is based on two Less variables in our preboot.less file: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
       <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
     </div>
     <div class="span4">
-      <h1>h1. Heading 1</h1>
-      <h2>h2. Heading 2</h2>
-      <h3>h3. Heading 3</h3>
-      <h4>h4. Heading 4</h4>
-      <h5>h5. Heading 5</h5>
-      <h6>h6. Heading 6</h6>
+      <h3>Example body text</h3>
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
     </div>
     <div class="span4">
-      <h3>Example paragraph</h3>
-      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-      <h1>Example heading <small>Has sub-heading&hellip;</small></h1>
+      <div class="well">
+        <h1>h1. Heading 1</h1>
+        <h2>h2. Heading 2</h2>
+        <h3>h3. Heading 3</h3>
+        <h4>h4. Heading 4</h4>
+        <h5>h5. Heading 5</h5>
+        <h6>h6. Heading 6</h6>
+      </div>
     </div>
   </div>
 
   <!-- Misc Elements -->
+  <h2>Emphasis, address, and abbreviation</h2>
+  <table class="zebra-striped">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <code>&lt;strong&gt;</code>
+        </td>
+        <td>
+          For emphasizing a snippet of text with <strong>important</strong>
+        </td>
+        <td>
+          <span class="muted">None</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;em&gt;</code>
+        </td>
+        <td>
+          For emphasizing a snippet of text with <em>stress</em>
+        </td>
+        <td>
+          <span class="muted">None</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;abbr&gt;</code>
+        </td>
+        <td>
+          Wraps abbreviations and acronyms to show the expanded version on hover
+        </td>
+        <td>
+          Include optional <code>title</code> for expanded text
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;address&gt;</code>
+        </td>
+        <td>
+          For contact information for its nearest ancestor or the entire body of work
+        </td>
+        <td>
+          Preserve formatting by ending all lines with <code>&lt;br&gt;</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
   <div class="row">
-    <div class="span3">
-      <h2>Misc. elements</h2>
-      <p>Using emphasis, addresses, &amp; abbreviations</p>
-      <p>
-        <code>&lt;strong&gt;</code>
-        <code>&lt;em&gt;</code>
-        <code>&lt;address&gt;</code>
-        <code>&lt;abbr&gt;</code>
-      </p>
-    </div>
-    <div class="span9">
-      <h3>When to use</h3>
-      <p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to indicate additional importance or emphasis of a word or phrase relative to its surrounding copy. Use <code>&lt;strong&gt;</code> for importance and <code>&lt;em&gt;</code> for <em>stress</em> emphasis.</p>
-      <h3>Emphasis in a paragraph</h3>
+    <div class="span4">
+      <h3>Using emphasis</h3>
       <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
-      <p><strong>Note:</strong> It's still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5 and they don't have to be styled bold and italic, respectively (although if there is a more semantic element, use it). <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance, while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
-      <h3>Addresses</h3>
-      <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here are two examples of how it could be used:</p>
-
-      <div class="row">
-        <div class="span4">
-          <address>
-            <strong>Twitter, Inc.</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            <abbr title="Phone">P:</abbr> (123) 456-7890
-          </address>
-        </div>
-        <div class="span4">
-          <address>
-            <strong>Full Name</strong><br>
-            <a mailto="">first.last@gmail.com</a>
-          </address>
-        </div>
-      </div>
-
-      <p><strong>Note:</strong> Each line in an <code>&lt;address&gt;</code> must end with a line-break (<code>&lt;br&gt;</code>) or be wrapped in a block-level tag (e.g., <code>&lt;p&gt;</code>) to properly structure the content.</p>
-      <h3>Abbreviations</h3>
-      <p>For abbreviations and acronyms, use the <code>&lt;abbr&gt;</code> tag (<code>&lt;acronym&gt;</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
+      <p><strong>Note:</strong> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5, but their usage has changed a bit. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
     </div>
-  </div><!-- /row -->
+    <div class="span4">
+      <h3>Example addresses</h3>
+      <p>Here are two examples of how the <code>&lt;address&gt;</code> tag can be used:</p>
+      <address>
+        <strong>Twitter, Inc.</strong><br>
+        795 Folsom Ave, Suite 600<br>
+        San Francisco, CA 94107<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+      </address>
+      <address>
+        <strong>Full Name</strong><br>
+        <a mailto="#">first.last@gmail.com</a>
+      </address>
+    </div>
+    <div class="span4">
+      <h3>Example abbreviations</h3>
+      <p>Abbreviations are styled with uppercase text and a light dotted bottom border. They also have a help cursor on hover so users have extra indication something will be shown on hover.</p>
+      <p><abbr title="HyperText Markup Language">HTML</abbr> is the best thing since sliced bread.</p>
+      <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+    </div>
+  </div>
+
 
   <!-- Blockquotes -->
+  <h2>Blockquotes</h2>
   <div class="row">
-    <div class="span3">
-      <h2>Blockquotes</h2>
-      <p>
-        <code>&lt;blockquote&gt;</code>
-        <code>&lt;p&gt;</code>
-        <code>&lt;small&gt;</code>
-      </p>
-    </div>
-    <div class="span9">
-      <h3>How to quote</h3>
+    <div class="span5">
       <p>To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around <code>&lt;p&gt;</code> and <code>&lt;small&gt;</code> tags. Use the <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it.</p>
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
         <small>Dr. Julius Hibbert</small>
       </blockquote>
+    </div>
+    <div class="span7">
 <pre class="prettyprint linenums">
 &lt;blockquote&gt;
   &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.&lt;/p&gt;
@@ -497,8 +537,9 @@
 &lt;/blockquote&gt;
 </pre>
     </div>
-  </div><!-- /row -->
+  </div>
 
+  <!-- Lists -->
   <h2>Lists</h2>
   <div class="row">
     <div class="span3">
@@ -522,7 +563,7 @@
       </ul>
     </div>
     <div class="span3">
-      <h4>Unstyled <code>&lt;.unstyled&gt;</code></h4>
+      <h4>Unstyled <code>&lt;ul.unstyled&gt;</code></h4>
       <ul class="unstyled">
         <li>Lorem ipsum dolor sit amet</li>
         <li>Consectetur adipiscing elit</li>
@@ -570,120 +611,96 @@
 
 
   <!-- Code -->
-  <div class="row">
-    <div class="span3">
-      <h2>Code</h2>
-      <p>
-        <code>&lt;code&gt;</code>
-        <code>&lt;pre&gt;</code>
-      </p>
-      <p>Pimp your code in style with two simple tags. For even more awesomeness through javascript, drop in Google's code prettify library and you're set.</p>
-    </div>
-    <div class="span9">
-      <h3>Presenting code</h3>
-      <p>Code, blocks of or just snippets inline, can be displayed with style just by wrapping in the right tag. For blocks of code spanning multiple lines, use the <code>&lt;pre&gt;</code> element. For inline code, use the <code>&lt;code&gt;</code> element.</p>
-      <table class="zebra-striped">
-        <thead>
-          <tr>
-            <th style="width: 190px;">Element</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>&lt;code&gt;</code></td>
-            <td>In a line of text like this, your wrapped code will look like this <code>&lt;html&gt;</code> element.</td>
-          </tr>
-          <tr>
-            <td><code>&lt;pre&gt;</code></td>
-            <td>
+
+  <h2>Code <small>Inline and block</small></h2>
+  <table class="zebra-striped">
+    <thead>
+      <tr>
+        <th style="width: 190px;">Element</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>&lt;code&gt;</code></td>
+        <td>In a line of text like this, your wrapped code will look like this <code>&lt;html&gt;</code> element.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;pre&gt;</code></td>
+        <td>
 <pre>&lt;div&gt;
   &lt;h1&gt;Heading&lt;/h1&gt;
   &lt;p&gt;Something right here...&lt;/p&gt;
 &lt;/div&gt;</pre>
-              <p><strong>Note:</strong> Be sure to keep code within <code>pre</code> tags as close to the left as possible; it will render all tabs.</p>
-            </td>
-          </tr>
-          <tr>
-            <td><code>&lt;pre class="prettyprint"&gt;</code></td>
-            <td>
-              <p>Using the google-code-prettify library, you're blocks of code get a slightly different visual style and automatic syntax highlighting.</p>
+          <p><strong>Note:</strong> Be sure to keep code within <code>pre</code> tags as close to the left as possible; it will render all tabs.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><code>&lt;pre class="prettyprint"&gt;</code></td>
+        <td>
+          <p>Using the google-code-prettify library, you're blocks of code get a slightly different visual style and automatic syntax highlighting.</p>
 <pre class="prettyprint">&lt;div&gt;
   &lt;h1&gt;Heading&lt;/h1&gt;
   &lt;p&gt;Something right here...&lt;/p&gt;
 &lt;/div&gt;</pre>
-              <p><a href="http://code.google.com/p/google-code-prettify/">Download google-code-prettify</a> and view the readme for <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">how to use</a>.</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div><!-- /row -->
+          <p><a href="http://code.google.com/p/google-code-prettify/">Download google-code-prettify</a> and view the readme for <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">how to use</a>.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
   <!-- Labels -->
-  <div class="row">
-    <div class="span3">
-      <h2>Inline labels</h2>
-      <p>
-        <code>&lt;span class="label"&gt;</code>
-      </p>
-      <p>Call attention to or flag any phrase in your body text.</p>
-    </div>
-    <div class="span9">
-      <h3>Label anything</h3>
-      <p>Ever needed one of those fancy <span class="label success">New!</span> or <span class="label important">Important</span> flags when writing code? Well, now you have them. Here's what's included by default:</p>
-      <table class="zebra-striped">
-        <thead>
-          <tr>
-            <th style="width: 50%;">Label</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
-            </td>
-            <td>
-              <span class="label">Default</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>&lt;span class="label success"&gt;New&lt;/span&gt;</code>
-            </td>
-            <td>
-              <span class="label success">New</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>&lt;span class="label warning"&gt;Warning&lt;/span&gt;</code>
-            </td>
-            <td>
-              <span class="label warning">Warning</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>&lt;span class="label important"&gt;Important&lt;/span&gt;</code>
-            </td>
-            <td>
-              <span class="label important">Important</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>&lt;span class="label notice"&gt;Notice&lt;/span&gt;</code>
-            </td>
-            <td>
-              <span class="label notice">Notice</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div><!-- /row -->
+  <h2>Inline labels <small>for special attention</small></h2>
+  <table class="zebra-striped">
+    <thead>
+      <tr>
+        <th style="width: 190px;">Labels</th>
+        <th>Markup</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="label">Default</span>
+        </td>
+        <td>
+          <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label success">New</span>
+        </td>
+        <td>
+          <code>&lt;span class="label success"&gt;New&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label warning">Warning</span>
+        </td>
+        <td>
+          <code>&lt;span class="label warning"&gt;Warning&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label important">Important</span>
+        </td>
+        <td>
+          <code>&lt;span class="label important"&gt;Important&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label notice">Notice</span>
+        </td>
+        <td>
+          <code>&lt;span class="label notice"&gt;Notice&lt;/span&gt;</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 </section>
 
