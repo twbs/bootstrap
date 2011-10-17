@@ -37,33 +37,33 @@ section > .row {
 -------------------------------------------------- */
 .jumbotron {
   position: relative;
-}
-.jumbotron h1,
-.jumbotron p {
-  margin-bottom: 10px;
   text-shadow: 0 1px 0 #fff;
 }
 .jumbotron h1 {
-  font-size: 90px;
-  line-height: 1;
   margin-right: 40%;
+  margin-bottom: 10px;
+  font-size: 90px;
   letter-spacing: -1px;
+  line-height: 1;
 }
 .jumbotron p {
-  font-weight: 300;
   margin-right: 32%;
-}
-.jumbotron .lead {
   margin-bottom: 20px;
   font-size: 25px;
+  font-weight: 300;
   line-height: 36px;
 }
 .jumbotron .btn {
   font-size: 20px;
   padding: 14px 24px;
+  margin-right: 5px;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
+}
+.jumbotron .download-info {
+  font-size: 16px;
+  color: #999;
 }
 
 /* Benefits list in masthead */
@@ -133,9 +133,9 @@ section > .row {
   list-style: none;
   text-align: center;
   background-color: #eee;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
 }
 .quick-links li {
   display: inline;
@@ -164,71 +164,6 @@ section > .row {
 }
 .footer p {
   color: #555;
-}
-
-
-/* Quickstart section for getting le code
--------------------------------------------------- */
-.quickstart {
-  background-color: #f5f5f5;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f5f5f5));
-  background-image: -moz-linear-gradient(#f9f9f9, #f5f5f5);
-  background-image: -ms-linear-gradient(#f9f9f9, #f5f5f5);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f5f5f5));
-  background-image: -webkit-linear-gradient(#f9f9f9, #f5f5f5);
-  background-image: -o-linear-gradient(#f9f9f9, #f5f5f5);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0)";
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0);
-  background-image: linear-gradient(#f9f9f9, #f5f5f5);
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #eee;
-}
-.quickstart .container {
-  margin-bottom: 0;
-}
-.quickstart .row {
-  margin: 0 -20px;
-  -webkit-box-shadow: 1px 0 0 #f9f9f9;
-     -moz-box-shadow: 1px 0 0 #f9f9f9;
-          box-shadow: 1px 0 0 #f9f9f9;
-}
-.quickstart [class*="span"] {
-  width: 285px;
-  height: 117px;
-  margin-left: 0;
-  padding: 17px 20px 26px;
-  border-left: 1px solid #eee;
-  -webkit-box-shadow: inset 1px 0 0 #f9f9f9;
-     -moz-box-shadow: inset 1px 0 0 #f9f9f9;
-          box-shadow: inset 1px 0 0 #f9f9f9;
-}
-.quickstart [class*="span"]:last-child {
-  border-right: 1px solid #eee;
-  width: 286px;
-}
-.quickstart h6,
-.quickstart p {
-  line-height: 18px;
-  text-align: center;
-  margin-bottom: 9px;
-  color: #333;
-}
-.quickstart .current-version,
-.quickstart .current-version a {
-  color: #999;
-}
-.quickstart h6 {
-  color: #999;
-}
-.quickstart textarea {
-  display: block;
-  width: 275px;
-  height: auto;
-  margin: 0 0 9px;
-  line-height: 21px;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 
@@ -387,8 +322,28 @@ pre.prettyprint {
 /* Responsive Docs
 -------------------------------------------------- */
 @media (max-width: 480px) {
+
+  body > .navbar-fixed .nav {
+    display: none;
+  }
+
   .large-bird {
     display: none;
+  }
+
+  .jumbotron h1 {
+    font-size: 36px;
+    margin-right: 0;
+  }
+  .jumbotron p {
+    margin-right: 0;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .jumbotron .benefits {
+    position: relative;
+    width: auto;
+    margin: 36px 0;
   }
 }
 
