@@ -82,7 +82,7 @@
   width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
 }
 .offset(@columnOffset: 1) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
+  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @gridGutterWidth;
 }
 // Necessary grid styles for every column to make them appear next to each other horizontally
 .gridColumn() {
@@ -101,9 +101,6 @@
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
           border-radius: @radius;
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
 }
 .border-radius-custom(@topLeft, @topRight, @bottomRight, @bottomLeft) {
   -webkit-border-top-left-radius: @topLeft;
