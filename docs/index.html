@@ -638,8 +638,12 @@
       <tr>
         <td><code>&lt;pre class="prettyprint"&gt;</code></td>
         <td>
-          <p>Using the google-code-prettify library, you're blocks of code get a slightly different visual style and automatic syntax highlighting.</p>
+          <p>Using the google-code-prettify library, you're blocks of code get a slightly different visual style and automatic syntax highlighting. You can also add an additional class to add line numbers.</p>
 <pre class="prettyprint">&lt;div&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Something right here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+<pre class="prettyprint linenums">&lt;div&gt;
   &lt;h1&gt;Heading&lt;/h1&gt;
   &lt;p&gt;Something right here...&lt;/p&gt;
 &lt;/div&gt;</pre>
@@ -712,130 +716,204 @@
   <div class="page-header">
     <h1>Tables <small>For, you guessed it, tabular data</small></h1>
   </div>
-  <!-- Table structure -->
+
+  <h2>Table markup</h2>
   <div class="row">
-    <div class="span3">
-      <h2>Building tables</h2>
-      <p>
-        <code>&lt;table&gt;</code>
-        <code>&lt;thead&gt;</code>
-        <code>&lt;tbody&gt;</code>
-        <code>&lt;tr&gt;</code>
-        <code>&lt;th&gt;</code>
-        <code>&lt;td&gt;</code>
-        <code>&lt;colspan&gt;</code>
-        <code>&lt;caption&gt;</code>
-      </p>
-      <p>Tables are great&mdash;for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
-      <p>Always wrap your column headers in a <code>&lt;thead&gt;</code> such that hierarchy is <code>&lt;thead&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;th&gt;</code>.</p>
-      <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>&lt;tbody&gt;</code> so your hierarchy is <code>&lt;tbody&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;td&gt;</code>.</p>
-    </div>
-    <div class="span9">
-      <h3>Example: Default table styles</h3>
-      <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
-      <table>
+    <div class="span8">
+      <table class="zebra-striped">
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Language</th>
+            <th>Tag</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td>Some</td>
-            <td>One</td>
-            <td>English</td>
+            <td>
+              <code>&lt;table&gt;</code>
+            </td>
+            <td>
+              Wrapping element for displaying data in a tabular format
+            </td>
           </tr>
           <tr>
-            <td>2</td>
-            <td>Joe</td>
-            <td>Sixpack</td>
-            <td>English</td>
+            <td>
+              <code>&lt;thead&gt;</code>
+            </td>
+            <td>
+              Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
+            </td>
           </tr>
           <tr>
-            <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>Code</td>
+            <td>
+              <code>&lt;tbody&gt;</code>
+            </td>
+            <td>
+              Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;tr&gt;</code>
+            </td>
+            <td>
+              Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a single row
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;td&gt;</code>
+            </td>
+            <td>
+              Default table cell
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;th&gt;</code>
+            </td>
+            <td>
+              Special table cell for column (or row, depending on scope and placement) labels<br>
+              Must be used within a <code>&lt;thead&gt;</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;caption&gt;</code>
+            </td>
+            <td>
+              Description or summary of what the table holds, especially useful for screen readers
+            </td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="span4">
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+    </div>
+  </div>
+
+  <h2>Example tables</h2>
+  <h3>1. Default table styles</h3>
+  <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Some</td>
+        <td>One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
 <pre class="prettyprint linenums">
 &lt;table&gt;
   ...
 &lt;/table&gt;</pre>
-      <h3>Example: Zebra-striped</h3>
-      <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
-      <table class="zebra-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Language</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Some</td>
-            <td>One</td>
-            <td>English</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Joe</td>
-            <td>Sixpack</td>
-            <td>English</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>Code</td>
-          </tr>
-        </tbody>
-      </table>
-      <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
+  <h3>2. Zebra-striped</h3>
+  <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
+  <table class="zebra-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Some</td>
+        <td>One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
 <pre class="prettyprint linenums">
 &lt;table class="zebra-striped"&gt;
 ...
 &lt;/table&gt;</pre>
-      <h3>Example: Zebra-striped w/ TableSorter.js</h3>
-      <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
-      <table class="zebra-striped" id="sortTableExample">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th class="yellow">First Name</th>
-            <th class="blue">Last Name</th>
-            <th class="green">Language</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Your</td>
-            <td>One</td>
-            <td>English</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Joe</td>
-            <td>Sixpack</td>
-            <td>English</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>Code</td>
-          </tr>
-        </tbody>
-      </table>
+  <h3>3. Zebra-striped w/ TableSorter.js</h3>
+  <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
+  <table class="zebra-striped" id="sortTableExample">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th class="yellow">First Name</th>
+        <th class="blue">Last Name</th>
+        <th class="green">Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Your</td>
+        <td>One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
 <pre class="prettyprint linenums">
 &lt;script src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
 &lt;script &gt;
@@ -846,8 +924,7 @@
 &lt;table class="zebra-striped"&gt;
   ...
 &lt;/table&gt;</pre>
-    </div>
-  </div><!-- /row -->
+
 </section>
 
 
