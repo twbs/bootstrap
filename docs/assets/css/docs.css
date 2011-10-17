@@ -9,8 +9,10 @@
 -------------------------------------------------- */
 body {
   position: relative;
-  padding-top: 100px;
+  padding-top: 90px;
   background-color: #fff;
+  background-image: url(../img/grid-18px-masked.png);
+  background-repeat: repeat-x;
 }
 section {
   padding-top: 60px;
@@ -35,9 +37,6 @@ section > .row {
 -------------------------------------------------- */
 .jumbotron {
   position: relative;
-  padding-bottom: 58px;
-  margin-bottom: 50px;
-  border-bottom: 2px solid #eee;
 }
 .jumbotron h1,
 .jumbotron p {
@@ -57,23 +56,22 @@ section > .row {
 .jumbotron .lead {
   margin-bottom: 20px;
   font-size: 25px;
-  line-height: 35px;
-}
-.jumbotron p a {
-  font-weight: bold;
+  line-height: 36px;
 }
 .jumbotron .btn {
   font-size: 20px;
-  padding: 12px 24px;
+  padding: 14px 24px;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
+
+/* Benefits list in masthead */
 .benefits {
   width: 250px;
   position: absolute;
   right: 0;
-  bottom: 60px;
+  bottom: 0;
 }
 .benefits ul {
   list-style: none;
@@ -82,7 +80,7 @@ section > .row {
 .benefits li {
   font-size: 16px;
   font-weight: 300;
-  line-height: 40px;
+  line-height: 35px;
   color: #555;
 }
 .benefits li + li {
@@ -124,6 +122,37 @@ section > .row {
 }
 .subhead p a {
   font-weight: normal;
+}
+
+
+/* Quick links
+-------------------------------------------------- */
+.quick-links {
+  padding: 5px 20px;
+  margin: 60px 0;
+  list-style: none;
+  text-align: center;
+  background-color: #eee;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.quick-links li {
+  display: inline;
+  margin: 0 5px;
+  line-height: 30px;
+}
+.quick-links .divider {
+  color: #999;
+}
+.quick-links strong {
+  font-weight: normal;
+  color: #999;
+}
+.quick-links .tweet-btn,
+.quick-links .follow-btn {
+  position: relative;
+  top: 5px;
 }
 
 
