@@ -37,12 +37,6 @@ label {
   color: @grayDark;
 }
 
-// Checkboxs and radio buttons
-input[type=checkbox],
-input[type=radio] {
-  cursor: pointer;
-}
-
 // Inputs, Textareas, Selects
 input,
 textarea,
@@ -69,11 +63,13 @@ input[type=radio] {
   *margin-top: 0; /* IE6-7 */
   line-height: normal;
   border: none;
+  cursor: pointer;
 }
 
 // Reset the file input to browser defaults
 input[type=file] {
   background-color: @white;
+  background-color: initial;
   padding: initial;
   border: initial;
   line-height: initial;

@@ -66,7 +66,7 @@ a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:
 p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;margin-bottom:9px;}p small{font-size:11px;color:#bfbfbf;}
 h1,h2,h3,h4,h5,h6{font-weight:bold;color:#404040;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{color:#bfbfbf;}
 h1{margin-bottom:18px;font-size:30px;line-height:36px;}h1 small{font-size:18px;}
-h2{font-size:24px;line-height:27px;}h2 small{font-size:14px;}
+h2{font-size:24px;line-height:36px;}h2 small{font-size:14px;}
 h3{line-height:27px;font-size:18px;}h3 small{font-size:14px;}
 h4{font-size:16px;line-height:36px;}h4 small{font-size:12px;}
 h5{font-size:14px;line-height:18px;}
@@ -75,7 +75,7 @@ ul,ol{margin:0 0 18px 25px;}
 ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
 ul{list-style:disc;}
 ol{list-style:decimal;}
-li{line-height:18px;color:#808080;}
+li{line-height:18px;color:#404040;}
 ul.unstyled{list-style:none;margin-left:0;}
 dl{margin-bottom:18px;}dl dt,dl dd{line-height:18px;}
 dl dt{font-weight:bold;}
@@ -94,10 +94,9 @@ form{margin-bottom:18px;}
 legend{display:block;width:100%;margin-bottom:27px;font-size:19.5px;line-height:36px;color:#404040;border-bottom:1px solid #eee;}
 label,input,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:18px;}
 label{display:block;margin-bottom:5px;color:#404040;}
-input[type=checkbox],input[type=radio]{cursor:pointer;}
 input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:18px;padding:4px;font-size:13px;line-height:18px;color:#808080;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;}
-input[type=file]{background-color:#ffffff;padding:initial;border:initial;line-height:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
+input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;cursor:pointer;}
+input[type=file]{background-color:#ffffff;background-color:initial;padding:initial;border:initial;line-height:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 input[type=button],input[type=reset],input[type=submit]{width:auto;height:auto;}
 select,input[type=file]{height:27px;line-height:27px;*margin-top:4px;}
 select[multiple]{background-color:#ffffff;height:inherit;}

@@ -9,7 +9,7 @@
 -------------------------------------------------- */
 body {
   position: relative;
-  padding-top: 40px;
+  padding-top: 100px;
   background-color: #fff;
 }
 section {
@@ -19,65 +19,88 @@ section > .row {
   margin-bottom: 10px;
 }
 
+/* Tweak topbar brand link to be super sleek
+-------------------------------------------------- */
+.navbar .brand {
+  float: right;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+.navbar .brand:hover {
+  text-decoration: none;
+}
 
 /* Jumbotrons
 -------------------------------------------------- */
-.jumbotron,
-.jumbotron .inner {
-  -webkit-border-radius: 0 0 6px 6px;
-     -moz-border-radius: 0 0 6px 6px;
-          border-radius: 0 0 6px 6px;
-}
 .jumbotron {
-  margin-bottom: 40px;
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.25);
-     -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.25);
-          box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.25);
-}
-.jumbotron .inner {
-  background: transparent url(../img/grid-18px.png) top center;
-  padding: 36px 60px;
-  -webkit-box-shadow: inset 0 -15px 30px rgba(0,0,0,.1);
-     -moz-box-shadow: inset 0 -15px 30px rgba(0,0,0,.1);
-          box-shadow: inset 0 -15px 30px rgba(0,0,0,.1);
+  position: relative;
+  padding-bottom: 58px;
+  margin-bottom: 50px;
+  border-bottom: 2px solid #eee;
 }
 .jumbotron h1,
 .jumbotron p {
-  margin-bottom: 9px;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  margin-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
 }
 .jumbotron h1 {
-  font-size: 54px;
+  font-size: 90px;
   line-height: 1;
-  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  margin-right: 40%;
+  letter-spacing: -1px;
 }
 .jumbotron p {
   font-weight: 300;
-  margin-right: 25%;
+  margin-right: 32%;
 }
 .jumbotron .lead {
-  font-size: 20px;
-  line-height: 27px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  line-height: 35px;
 }
 .jumbotron p a {
-  color: #fff;
   font-weight: bold;
 }
+.jumbotron .btn {
+  font-size: 20px;
+  padding: 12px 24px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+.benefits {
+  width: 250px;
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+}
+.benefits ul {
+  list-style: none;
+  margin: 0;
+}
+.benefits li {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 40px;
+  color: #555;
+}
+.benefits li + li {
+  border-top: 1px solid #f5f5f5;
+}
+.benefits h4 {
+  color: #555;
+}
+.benefits span {
+  position: relative;
+  top: -2px;
+  padding-right: 5px;
+  color: #999;
+}
+
 
 /* Specific jumbotrons
 ------------------------- */
-/* main docs page */
-.masthead {
-  background-color: #004d9f;
-  background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#048ccd), to(#004d9f));
-  background-image: -webkit-linear-gradient(#048ccd, #004d9f);
-  background-image: -moz-linear-gradient(#048ccd, #004d9f);
-  background-image: -o-linear-gradient(top, #048ccd, #004d9f);
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#048ccd), to(#004d9f));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#048ccd', endColorstr='#004d9f', GradientType=0); /* IE8 and down */
-}
 /* supporting docs pages */
 .subhead {
   background-color: #767d80;

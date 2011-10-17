@@ -16,16 +16,6 @@
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <!-- Le javascript -->
-    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/application.js"></script>
-
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/ico/favicon.ico">
     <link rel="apple-touch-icon" href="assets/ico/bootstrap-apple-57x57.png">
@@ -49,6 +39,7 @@
               <ul class="dropdown-menu">
                 <li><a href="#grid-system">Grid</a></li>
                 <li><a href="#layouts">Layouts</a></li>
+                <li><a href="#responsive">Resposive</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -62,14 +53,17 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-dropdown="true">Patterns</a>
               <ul class="dropdown-menu">
-                <li><a href="#media">Media</a></li>
                 <li><a href="#navigation">Navigation</a></li>
+                <li><a href="#media">Media</a></li>
                 <li><a href="#alerts">Alerts</a></li>
                 <li><a href="#popovers">Popovers</a></li>
+                <li><a href="#autocomplete">Autocomplete</a></li>
+                <li><a href="#accordion">Accordion</a></li>
+                <li><a href="#datepicker">Datepicker</a></li>
               </ul>
             </li>
             <li><a href="#javascript">Javascript</a></li>
-            <li><a href="#less">Less</a></li>
+            <li><a href="#less">Using Less</a></li>
           </ul>
         </div>
       </div>
@@ -82,10 +76,21 @@
       ================================================== -->
       <header class="jumbotron masthead">
         <div class="inner">
+          <div class="benefits pull-right">
+            <h4>Feature highlights</h4>
+            <ul>
+              <li><span>&times;</span> Built on LESS</li>
+              <li><span>&times;</span> Complete styleguide</li>
+              <li><span>&times;</span> Fully responsive design</li>
+              <li><span>&times;</span> Small footprint (7kb gzipped)</li>
+              <li><span>&times;</span> Support for IE7 and up</li>
+              <li><span>&times;</span> Custom jQuery plugins</li>
+              <li><span>&times;</span> Dozens of components</li>
+            </ul>
+          </div>
           <h1>Bootstrap, from Twitter</h1>
-          <a href="#" class="btn btn-large pull-right">Download on GitHub</a>
           <p class="lead">Bootstrap is a frontend toolkit from Twitter designed to kickstart web development, complete with core HTML, CSS, and JS for grids, type, forms, navigation, and many more components.</p>
-          <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed with modern browsers in mind.</p>
+          <a href="#" class="btn primary btn-large">Download on GitHub</a>
         </div>
       </header>
 
@@ -163,6 +168,19 @@
           <a href="../examples/container-app.html"><img src="assets/img/example-diagram-03.png" alt="Simple hanging container for apps"></a>
         </li>
       </ul>
+
+<!--
+      Quick links:
+      GitHub
+      Twitter
+      Roadmap
+      Changelog
+
+      Authors:
+      @mdo
+      @fat
+
+ -->
 
     </div><!-- /#overview -->
 
@@ -1963,6 +1981,17 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
 
     </div><!-- /container -->
 
+
+
+    <!-- Le javascript -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/application.js"></script>
 
   </body>
 </html>
