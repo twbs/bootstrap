@@ -17,19 +17,16 @@ body {
 section {
   padding-top: 60px;
 }
-section > .row {
-  margin-bottom: 10px;
-}
 
 /* Tweak topbar brand link to be super sleek
 -------------------------------------------------- */
-.navbar .brand {
+body > .navbar-fixed .brand {
   float: right;
   font-weight: bold;
   color: #000;
   text-shadow: 0 1px 0 rgba(255,255,255,.1);
 }
-.navbar .brand:hover {
+body > .navbar-fixed .brand:hover {
   text-decoration: none;
 }
 
@@ -136,6 +133,9 @@ section > .row {
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+     -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+          box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
 }
 .quick-links li {
   display: inline;
@@ -171,10 +171,10 @@ section > .row {
 -------------------------------------------------- */
 .show-grid {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .show-grid [class*="span"] {
-  background: #eee;
+  background-color: #eee;
   text-align: center;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;

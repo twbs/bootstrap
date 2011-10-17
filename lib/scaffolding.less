@@ -85,6 +85,7 @@ a {
 // -----------
 // To customize the grid system, bring up the variables.less file and change the column count, size, and gutter there
 .row {
+  margin-left: -@gridGutterWidth;
   .clearfix();
 }
 
@@ -92,10 +93,6 @@ a {
 // Credit to @dhg for the idea
 [class*="span"] {
   .gridColumn();
-}
-// Kill the margin on the first column
-.row > [class*="span"]:first-child {
-  margin-left: 0;
 }
 
 // Default columns
