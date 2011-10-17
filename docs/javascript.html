@@ -11,18 +11,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le javascript -->
-    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-modal.js"></script>
-    <script src="../js/bootstrap-alerts.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tabs.js"></script>
-
     <!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
@@ -42,7 +30,7 @@
     <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">Bootstrap JS</a>
+          <a class="brand" href="./index.html">Bootstrap</a>
           <ul class="nav">
             <li><a href="#overview">Overview</a></li>
             <li><a href="#modal">Modals</a></li>
@@ -57,21 +45,14 @@
       </div>
     </div>
 
+  <div class="container">
     <!-- Masthead (blueprinty thing)
     ================================================== -->
     <header class="jumbotron subhead" id="overview">
-      <div class="inner">
-        <div class="container">
-          <h1>Javascript for Bootstrap</h1>
-          <p class="lead">
-            Bring Bootstrap's components to life with new, custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>.
-          </p>
-          <p><a href="./index.html">&larr; Back to Bootstrap home</a></p>
-        </div><!-- /container -->
-      </div>
+      <h1>Javascript for Bootstrap</h1>
+      <p class="lead">Bring Bootstrap's components to life with custom plugins for <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>.</p>
     </header>
 
-    <div class="container">
 
     <!-- Modal
     ================================================== -->
@@ -81,11 +62,11 @@
         <h1>Modals <small>bootstrap-modal.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>Our Modal plugin is a super slim take on the traditional modal js plugin, taking special care to include only the bare functionality that we require here at twitter.</p>
           <a href="../js/bootstrap-modal.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using bootstrap-modal</h3>
           <pre class="prettyprint linenums">$('#my-modal').modal(options)</pre>
           <h3>Options</h3>
@@ -207,11 +188,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Dropdown <small>bootstrap-dropdown.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</p>
           <a href="../js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using boostrap-dropdown.js</h3>
           <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
           <h3>Markup</h3>
@@ -244,7 +225,7 @@ $('#my-modal').bind('hidden', function () {
                   <li><a href="#">Link</a></li>
                 </ul>
                 <form class="form-search navbar-search pull-left" action="">
-                  <input type="text" class="search-query" placeholder="Search">
+                  <input type="text" class="search-query span2" placeholder="Search">
                 </form>
                 <ul class="nav secondary-nav">
                   <li class="dropdown">
@@ -281,11 +262,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>ScrollSpy <small>bootstrap-scrollspy.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>This plugin is for adding the scrollspy (auto updating nav) interaction to the bootstrap topbar.</p>
           <a href="../js/bootstrap-scrollspy.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h2>Using boostrap-scrollspy.js</h2>
           <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
           <h3>Markup</h3>
@@ -316,11 +297,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Tabs <small>bootstrap-tabs.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>This plugin adds quick, dynamic tab and pill functionality.</p>
           <a href="../js/bootstrap-tabs.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using boostrap-tabs.js</h3>
           <pre class="prettyprint linenums">$('.tabs').tabs()</pre>
           <h3>Markup</h3>
@@ -387,11 +368,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Twipsy <small>bootstrap-twipsy.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for title storage!</p>
           <a href="../js/bootstrap-twipsy.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using bootstrap-twipsy.js</h3>
           <pre class="prettyprint linenums">$('#example').twipsy(options)</pre>
           <h3>Options</h3>
@@ -504,11 +485,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Popovers <small>bootstrap-popover.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
           <a href="../js/bootstrap-popover.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using boostrap-popover.js</h3>
           <pre class="prettyprint linenums">$('#example').popover(options)</pre>
           <h3>Options</h3>
@@ -625,11 +606,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Alerts <small>bootstrap-alerts.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>The alert plugin is a super tiny class for adding close functionality to alerts.</p>
           <a href="../js/bootstrap-alerts.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using bootstrap-alerts.js</h3>
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>Markup</h3>
@@ -657,17 +638,28 @@ $('#my-modal').bind('hidden', function () {
     </section>
 
 
-    </div><!-- /container -->
-
-    <footer class="footer">
-      <div class="container">
+      <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>
           Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br />
           Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
         </p>
-      </div>
-    </footer>
+      </footer>
+
+    </div><!-- /container -->
+
+
+    <!-- Le javascript -->
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-alerts.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tabs.js"></script>
 
   </body>
 </html>

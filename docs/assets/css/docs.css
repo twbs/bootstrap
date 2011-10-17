@@ -98,27 +98,15 @@ body > .navbar-fixed .brand:hover {
 ------------------------- */
 /* supporting docs pages */
 .subhead {
-  background-color: #767d80;
-  background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#565d60), to(#767d80));
-  background-image: -webkit-linear-gradient(#565d60, #767d80);
-  background-image: -moz-linear-gradient(#565d60, #767d80);
-  background-image: -o-linear-gradient(top, #565d60, #767d80);
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#565d60), to(#767d80));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#565d60', endColorstr='#767d80', GradientType=0); /* IE8 and down */
-}
-.subhead .inner {
-  padding: 36px 0 27px;
+  padding-bottom: 18px;
+  border-bottom: 3px solid #eee;
 }
 .subhead h1,
 .subhead p {
-  text-align: left;
+  margin-right: 0;
 }
 .subhead h1 {
   font-size: 40px;
-}
-.subhead p a {
-  font-weight: normal;
 }
 
 
