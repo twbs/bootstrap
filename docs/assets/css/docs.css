@@ -346,19 +346,3 @@ h2 + table {
     min-width: 748px;
   }
 }
-
-
-
-.supported-devices {
-  margin-bottom: 9px;
-  color: #777;
-}
-.supported-devices strong {
-  display: block;
-  font-size: 14px;
-  line-height: 18px;
-}
-.supported-devices small {
-  font-size: 12px;
-}
-

@@ -413,33 +413,55 @@
     </div>
     <div class="span8">
       <h2>Supported devices</h2>
-      <table class="supported-devices">
+      <p>Bootstrap supports a handful of media queries to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>Layout width</th>
+            <th>Column width</th>
+            <th>Gutter width</th>
+          </tr>
+        </thead>
         <tbody>
           <tr>
-            <td>
-              <strong>Under 480px</strong>
-              <small>Smartphones</small>
-            </td>
-            <td>
-              <strong>480px to 768px</strong>
-              <small>Portrait tablet</small>
-            </td>
-            <td>
-              <strong>768px to 940px</strong>
-              <small>Landscape tablet</small>
-            </td>
-            <td>
-              <strong>940px and up</strong>
-              <small>Default</small>
-            </td>
-            <td>
-              <strong>1170px and up</strong>
-              <small>Large screens</small>
-            </td>
+            <td>Smartphones</td>
+            <td>480px and below</td>
+            <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
+          </tr>
+          <tr>
+            <td>Portrait tablets</td>
+            <td>480px to 768px</td>
+            <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
+          </tr>
+          <tr>
+            <td>Landscape tablets</td>
+            <td>768px to 940px</td>
+            <td>44px</td>
+            <td>20px</td>
+          </tr>
+          <tr>
+            <td>Default</td>
+            <td>940px and up</td>
+            <td>60px</td>
+            <td>20px</td>
+          </tr>
+          <tr>
+            <td>Large display</td>
+            <td>1210px and up</td>
+            <td>70px</td>
+            <td>30px</td>
           </tr>
         </tbody>
       </table>
-      <p>With these media queries, Bootstrap provides developers with the core tools necessary to develop responsively on the web for the world's most common devices and resolutions.</p>
+
+      <h3>What they do</h3>
+      <p>Media queries allow for custom CSS based on a number of conditions&mdash;ratios, widths, display type, etc&mdash;but usually focuses around <code>min-width</code> and <code>max-width</code>.</p>
+      <ul>
+        <li>Modify the width of column in our grid</li>
+        <li>Stack elements instead of float wherever necessary</li>
+        <li>Resize headings and text to be more appropriate for devices</li>
+      </ul>
     </div>
   </div>
 
@@ -448,7 +470,7 @@
   <!-- Media query code -->
   <h2>Using the media queries</h2>
   <div class="row">
-    <div class="span4">
+    <div class="span5">
       <p>Bootstrap doesn't automatically include these media queries, but understanding and adding them is very easy and requires minimal setup. You have a few options for including the responsive features of Bootstrap:</p>
       <ol>
         <li>Use the compiled responsive version, bootstrap.reponsive.css</li>
@@ -457,7 +479,7 @@
       </ol>
       <p><strong>Why not just include it?</strong> Truth be told, not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it.</p>
     </div>
-    <div class="span8">
+    <div class="span7">
 <pre class="prettyprint linenums">
   // Landscape phones and down
   @media (max-width: 480px) { ... }
