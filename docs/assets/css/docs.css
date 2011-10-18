@@ -309,7 +309,7 @@ pre.prettyprint {
 
 /* Make tables spaced out a bit more */
 h2 + table {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 /* Responsive Docs
@@ -345,5 +345,20 @@ h2 + table {
   .jumbotron {
     min-width: 748px;
   }
+}
+
+
+
+.supported-devices {
+  margin-bottom: 9px;
+  color: #777;
+}
+.supported-devices strong {
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+}
+.supported-devices small {
+  font-size: 12px;
 }
 

@@ -399,6 +399,86 @@
 
 
 
+
+<!-- Responsive design
+================================================== -->
+<section id="responsive">
+  <div class="page-header">
+    <h1>Responsive design <small>Media queries for various devices and resolutions</small></h1>
+  </div>
+  <!-- Supported devices -->
+  <div class="row">
+    <div class="span4">
+      <img src="assets/img/responsive-illustrations.png" alt="Responsive devices">
+    </div>
+    <div class="span8">
+      <h2>Supported devices</h2>
+      <table class="supported-devices">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Under 480px</strong>
+              <small>Smartphones</small>
+            </td>
+            <td>
+              <strong>480px to 768px</strong>
+              <small>Portrait tablet</small>
+            </td>
+            <td>
+              <strong>768px to 940px</strong>
+              <small>Landscape tablet</small>
+            </td>
+            <td>
+              <strong>940px and up</strong>
+              <small>Default</small>
+            </td>
+            <td>
+              <strong>1170px and up</strong>
+              <small>Large screens</small>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>With these media queries, Bootstrap provides developers with the core tools necessary to develop responsively on the web for the world's most common devices and resolutions.</p>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- Media query code -->
+  <h2>Using the media queries</h2>
+  <div class="row">
+    <div class="span4">
+      <p>Bootstrap doesn't automatically include these media queries, but understanding and adding them is very easy and requires minimal setup. You have a few options for including the responsive features of Bootstrap:</p>
+      <ol>
+        <li>Use the compiled responsive version, bootstrap.reponsive.css</li>
+        <li>Add @import "responsive.less" and recompile Bootstrap</li>
+        <li>Compile responsive.less as a separate file and include that</li>
+      </ol>
+      <p><strong>Why not just include it?</strong> Truth be told, not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it.</p>
+    </div>
+    <div class="span8">
+<pre class="prettyprint linenums">
+  // Landscape phones and down
+  @media (max-width: 480px) { ... }
+
+  // Landscape phone to portrait tablet
+  @media (min-width: 480px) and (max-width: 768px) { ... }
+
+  // Portrait tablet to landscape and desktop
+  @media (min-width: 768px) and (max-width: 940px) { ... }
+
+  // Large desktop
+  @media (min-width: 1210px) { .. }
+</pre>
+    </div>
+  </div>
+
+</section>
+
+
+
+
 <!-- Typography
 ================================================== -->
 <section id="typography">

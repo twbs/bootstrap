@@ -70,7 +70,7 @@ h3{line-height:27px;font-size:18px;}h3 small{font-size:14px;}
 h4{font-size:16px;line-height:36px;}h4 small{font-size:12px;}
 h5{font-size:14px;line-height:18px;}
 h6{font-size:13px;line-height:18px;color:#bfbfbf;text-transform:uppercase;}
-ul,ol{margin:0 0 18px 25px;}
+ul,ol{margin:0 0 9px 25px;}
 ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
 ul{list-style:disc;}
 ol{list-style:decimal;}
