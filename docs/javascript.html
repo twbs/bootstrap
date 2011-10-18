@@ -25,7 +25,7 @@
 
   <body id="bootstrap-js">
 
-    <!-- Topbar
+    <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
       <div class="navbar-inner">
@@ -189,12 +189,12 @@ $('#my-modal').bind('hidden', function () {
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</p>
+          <p>This plugin is for adding dropdown interaction to the Bootstrap navbar or tabbed navigations.</p>
           <a href="../js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
           <h3>Using boostrap-dropdown.js</h3>
-          <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
+          <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
           <h3>Markup</h3>
           <p>To quickly add dropdown functionality to any nav element, use the <code>data-dropdown</code> attribute. Any valid bootstrap dropdown will automatically be activated.</p>
 <pre class="prettyprint linenums">
@@ -213,10 +213,10 @@ $('#my-modal').bind('hidden', function () {
           <h3>Methods</h3>
           <h4>$().dropdown()</h4>
           <p>
-          A programatic api for activating menus for a given topbar or tabbed navigation.
+          A programatic api for activating menus for a given navbar or tabbed navigation.
           </p>
           <h3>Demo</h3>
-          <div id="topbar-example" class="navbar navbar-static">
+          <div id="navbar-example" class="navbar navbar-static">
             <div class="navbar-inner">
               <div class="container" style="width: auto;">
                 <a class="brand" href="#">Project Name</a>
@@ -263,28 +263,28 @@ $('#my-modal').bind('hidden', function () {
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>This plugin is for adding the scrollspy (auto updating nav) interaction to the bootstrap topbar.</p>
+          <p>This plugin is for adding the scrollspy (auto updating nav) interaction to the bootstrap navbar.</p>
           <a href="../js/bootstrap-scrollspy.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
           <h2>Using boostrap-scrollspy.js</h2>
-          <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
+          <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
           <h3>Markup</h3>
-          <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.topbar</code>.
-          <pre class="prettyprint linenums">&lt;div class="topbar" data-scrollspy="scrollspy" &gt;...&lt;/div&gt;</pre>
+          <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.navbar</code>.
+          <pre class="prettyprint linenums">&lt;div class="navbar" data-scrollspy="scrollspy" &gt;...&lt;/div&gt;</pre>
           <h3>Methods</h3>
           <h4>$().scrollspy()</h4>
           <p>
           Auto activates navigation buttons by users scroll position.
           </p>
-          <pre class="prettyprint linenums">$('body > .topbar').scrollSpy()</pre>
-           <p><span class="label notice">Notice</span> Topbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
+          <pre class="prettyprint linenums">$('body > .navbar').scrollSpy()</pre>
+           <p><span class="label notice">Notice</span> Navbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
           </p>
           <h4>.scrollspy('refresh')</h4>
           <p>The scrollspy caches nav buttons and section coordinates for performance. If you need to update this cache (likely if you have dynamic content) just call this refresh method. If you used the data attribute to define your scrollspy, just call refresh on the body.</p>
           <pre class="prettyprint linenums">$('body').scrollspy('refresh')</pre>
           <h3>Demo</h3>
-          <p>Checkout the the topbar navigation on this page.</p>
+          <p>Checkout the the navbar navigation on this page.</p>
         </div>
       </div>
     </section>
