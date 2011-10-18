@@ -307,6 +307,11 @@ pre.prettyprint {
   max-width: 100%;
 }
 
+/* Make tables spaced out a bit more */
+h2 + table {
+  margin-top: 10px;
+}
+
 /* Responsive Docs
 -------------------------------------------------- */
 @media (max-width: 480px) {
