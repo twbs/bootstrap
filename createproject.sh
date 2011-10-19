@@ -6,11 +6,25 @@
 
 ##first run
 # $ cd  html5-boilerplate/build
-# $ chmod +x createproject.sh && ./createproject.sh
+# $ chmod +x createproject.sh && ./createproject.sh [new_project]
 
 ##usage
 # $ cd  html5-boilerplate/build
-# $ ./createproject.sh
+# $ ./createproject.sh [new_project]
+
+#
+# If [new_project] is not specified the user we will prompted to enter it.
+#
+# The format of [new_project] should ideally be lowercase letters with no
+# spaces as it represents the directory name that your new project will live
+# in.
+#
+# If the new project is specified as just a name ( "foo" ) then the path
+# will be a sibling to html5-boilerplate's directory.
+#
+# If the new project is specified with an absolute path ( "/home/user/foo" )
+# that path will be used.
+#
 
 # find project root (also ensure script is ran from within repo)
 src=$(git rev-parse --show-toplevel) || {
