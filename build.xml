@@ -682,6 +682,18 @@
                 </for>
                 <replace token="# js files" value="# js files${line.separator}${scripts.js}" file="${dir.intermediate}/${file.manifest}" />
 
+                <!-- add image files -->
+                <echo message="Updating the site.manifest with the images"/>
+                <for param="file">
+                    <path>
+                        <fileset dir="./${dir.source}/${dir.images}/" includes="**/*"/>
+                    </path>
+                    <sequential>
+                        <basename property="filename.@{file}" file="@{file}" />
+                        <replaceregexp match="# image files" replace="# image files${line.separator}${dir.images}/${filename.@{file}}" file="${dir.intermediate}/${file.manifest}" />
+                    </sequential>
+                </for>
+
                 <echo message="copying ${file.manifest} to /${dir.publish}"/>
                 <copy file="${dir.intermediate}/${file.manifest}" tofile="${dir.publish}/${file.manifest}" />
 
