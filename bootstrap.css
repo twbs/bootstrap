@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct 10 14:31:07 CDT 2011
+ * Date: wo 19 okt 2011 20:46:20 CEST
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1678,9 +1678,16 @@ a.menu:after, .dropdown-toggle:after {
   display: inline;
   text-shadow: 0 1px 0 #ffffff;
 }
-.breadcrumb .divider {
+.breadcrumb li:after {
+  content: " /";
   padding: 0 5px;
   color: #bfbfbf;
+}
+.breadcrumb li.active:after {
+  content: '';
+}
+.breadcrumb .divider {
+  display: none;
 }
 .breadcrumb .active a {
   color: #404040;
