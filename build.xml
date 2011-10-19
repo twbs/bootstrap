@@ -430,7 +430,7 @@
 
     </target>
 
-    <target name="-mkdirs">
+    <target name="-mkdirs" depends="-clean">
       <if>
           <or>
             <equals arg1="${dir.publish}" arg2="."/>
