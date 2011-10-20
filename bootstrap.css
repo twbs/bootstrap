@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Oct 19 23:10:57 PDT 2011
+ * Date: Wed Oct 19 23:49:47 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -201,7 +201,6 @@ body {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .container:after {
   clear: both;
@@ -217,13 +216,14 @@ body {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .container-fluid:after {
   clear: both;
 }
 .container-fluid > .sidebar {
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 20px;
   width: 220px;
 }
 .container-fluid > .content {
@@ -259,7 +259,6 @@ a:hover {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .row:after {
   clear: both;
@@ -598,7 +597,6 @@ form .clearfix:before, form .clearfix:after {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 form .clearfix:after {
   clear: both;
@@ -1612,7 +1610,6 @@ a.menu:after, .dropdown-toggle:after {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .tabs:after, .pills:after {
   clear: both;
@@ -2199,7 +2196,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .modal-footer:after {
   clear: both;
@@ -2398,7 +2394,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .media-grid:after {
   clear: both;
