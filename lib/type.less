@@ -24,12 +24,12 @@ p {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: @grayDark;
+  text-rendering: optimizelegibility;
   small {
     color: @grayLight;
   }
 }
 h1 {
-  margin-bottom: @baseLineHeight;
   font-size: 30px;
   line-height: @baseLineHeight * 2;
   small {
@@ -40,11 +40,11 @@ h2 {
   font-size: 24px;
   line-height: @baseLineHeight * 2;
   small {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 h3 {
-  line-height: @baseLineHeight * 2;
+  line-height: @baseLineHeight * 1.5;
   font-size: 18px;
   small {
     font-size: 14px;
@@ -74,7 +74,7 @@ h6 {
 
 // Unordered and Ordered lists
 ul, ol {
-  margin: 0 0 @baseLineHeight 25px;
+  margin: 0 0 @baseLineHeight / 2 25px;
 }
 ul ul,
 ul ol,
@@ -90,7 +90,7 @@ ol {
 }
 li {
   line-height: @baseLineHeight;
-  color: @gray;
+  color: @grayDark;
 }
 ul.unstyled {
   list-style: none;
@@ -133,6 +133,14 @@ em {
 }
 .muted {
   color: @grayLight;
+}
+
+// Abbreviations and acronyms
+abbr {
+  font-size: 90%;
+  text-transform: uppercase;
+  border-bottom: 1px dotted #ddd;
+  cursor: help;
 }
 
 // Blockquotes

@@ -3,34 +3,41 @@
  * ---------------------------------------------------------------------------- */
 
 
-// TOPBAR
-// ------
+// NAVBAR (FIXED AND STATIC)
+// -------------------------
 
-// Topbar for Branding and Nav
-.topbar {
-  height: 40px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10000;
+// Navbar variables
+@navBarHeight: 40px;
+@navBarBgStart: #333;
+@navBarBgEnd: #222;
+
+// Common styles
+.navbar {
+  height: @navBarHeight;
   overflow: visible;
-
-  // Links get text shadow
+}
+// gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+.navbar-inner {
+  background-color: @navBarBgEnd;
+  #gradient > .vertical(@navBarBgStart, @navBarBgEnd);
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+}
+// Text and links
+.navbar {
+  // Links get text-shadow
   a {
     color: @grayLight;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   }
-
   // Hover and active states
   .brand a:hover,
   ul .active > a {
-    background-color: #333;
+    background-color: @navBarBgStart;
     background-color: rgba(255,255,255,.05);
     color: @white;
     text-decoration: none;
   }
-
   // Website or project name
   .brand {
     float: left;
@@ -42,7 +49,6 @@
     font-weight: 200;
     line-height: 1;
   }
-
   // Plain text in topbar
   p {
     margin: 0;
@@ -52,19 +58,15 @@
       color: @white;
     }
   }
+}
 
-  // Search Form
-  form {
-    float: left;
-    margin: 5px 0 0 0;
-    position: relative;
-    .opacity(100);
-  }
-  // Todo: remove from v2.0 when ready, added for legacy
-  form.pull-right {
-    float: right;
-  }
-  input {
+// Navbar search
+.navbar-search {
+  position: relative;
+  margin-top: 6px;
+  margin-bottom: 0;
+  float: left;
+  .search-query {
     background-color: #444;
     background-color: rgba(255,255,255,.3);
     #font > .sans-serif(13px, normal, 1);
@@ -72,8 +74,7 @@
     color: @white;
     color: rgba(255,255,255,.75);
     border: 1px solid #111;
-    .border-radius(4px);
-    @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.25);
+    @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15);
     .box-shadow(@shadow);
     .transition(none);
 
@@ -104,19 +105,32 @@
   }
 }
 
-// gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-.topbar-inner {
-  background-color: #222;
-  #gradient > .vertical(#333, #222);
-  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  .box-shadow(@shadow);
+
+// Static navbar
+.navbar-static {
+  margin-bottom: @baseLineHeight;
 }
+.navbar-static .navbar-inner {
+  padding-left:  20px;
+  padding-right: 20px;
+  .border-radius(4px);
+}
+
+// Fixed navbar
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+
 
 
 // NAVIGATION
 // ----------
 
-// Topbar Nav
+// Nav for navbar and topbar
 // ul.nav for all topbar based navigation to avoid inheritance issues and over-specificity
 .nav {
   display: block;
@@ -302,14 +316,14 @@
   }
 }
 
-// Basic Tabs
+// Tabs
 .tabs {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
   > li {
     position: relative; // For the dropdowns mostly
-    top: 1px;
+    margin-bottom: -1px;
     > a {
       padding: 0 15px;
       margin-right: 2px;
@@ -322,61 +336,129 @@
         border-color: #eee #eee #ddd;
       }
     }
-    &.active > a {
-      color: @gray;
-      background-color: @white;
-      border: 1px solid #ddd;
+  }
+  // Active state, and it's :hover to override normal :hover
+  .active > a,
+  .active > a:hover {
+    color: @gray;
+    background-color: @white;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+}
+
+.tabbable {
+  margin-bottom: @baseLineHeight;
+
+  // Tabs on top
+  .tabs {
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+  .tab-content {
+    padding: 19px;
+    border: 1px solid #ddd;
+  }
+
+  // Tabs on bottom
+  &.tabs-bottom .tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+  }
+  &.tabs-bottom .tabs > li > a {
+    .border-radius(0 0 4px 4px);
+    &:hover {
       border-bottom-color: transparent;
+      border-top-color: #ddd;
     }
   }
+  &.tabs-bottom .tabs > .active > a,
+  &.tabs-bottom .tabs > .active > a:hover {
+    border-color: transparent #ddd #ddd #ddd;
+  }
+
+  // Tabs on left
+  &.tabs-left .tabs {
+    float: left;
+  }
+  &.tabs-left .tabs > li {
+    float: none;
+  }
+
+  // Tabs on right
+  &.tabs-right .tabs {
+    float: right;
+  }
+  &.tabs-right .tabs > li {
+    float: none;
+  }
+}
+
+
+// Dropdowns in tabs
+.tabs {
+  // first one for backwards compatibility
+  .menu-dropdown,
   .dropdown-menu {
     top: 35px;
     border-width: 1px;
     .border-radius(0 6px 6px 6px);
   }
+  // first one for backwards compatibility
+  a.menu:after,
   .dropdown-toggle:after {
     border-top-color: #999;
     margin-top: 15px;
     margin-left: 5px;
   }
+  // first one for backwards compatibility
+  li.open.menu .menu,
   .open.dropdown .dropdown-toggle {
     border-color: #999;
   }
+  // first one for backwards compatibility
+  li.open a.menu:after,
   .dropdown.open .dropdown-toggle:after {
     border-top-color: #555;
   }
 }
-.tab-content {
-  clear: both;
-}
 
-// Basic pill nav
+// Pills
 .pills {
   a {
     margin: 5px 3px 5px 0;
     padding: 0 15px;
-    text-shadow: 0 1px 1px @white;
     line-height: 30px;
+    text-shadow: 0 1px 1px @white;
     .border-radius(15px);
     &:hover {
-      background: @linkColorHover;
       color: @white;
       text-decoration: none;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
+      background-color: @linkColorHover;
     }
   }
   .active a {
-    background: @linkColor;
     color: @white;
     text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    background-color: @linkColor;
   }
 }
 
-.tab-content > *,
-.pill-content > * {
-  display: none;
+// Stacked pills
+.pills-vertical > li {
+  float: none;
 }
 
+// Tabbable areas
+.tab-content,
+.pill-content {
+}
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
 .tab-content > .active,
 .pill-content > .active {
   display: block;
@@ -438,11 +520,11 @@ footer {
 // ------------
 
 .page-header {
-  margin-bottom: @baseLineHeight - 1;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: @baseLineHeight * 1.5;
+  border-bottom: 1px solid #eee;
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
-    margin-bottom: (@baseLineHeight / 2) - 1px;
+    margin-bottom: @baseLineHeight * .75;
   }
 }
 

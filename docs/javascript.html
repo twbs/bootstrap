@@ -11,18 +11,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le javascript -->
-    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-modal.js"></script>
-    <script src="../js/bootstrap-alerts.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tabs.js"></script>
-
     <!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
@@ -37,12 +25,12 @@
 
   <body id="bootstrap-js">
 
-    <!-- Topbar
+    <!-- Navbar
     ================================================== -->
-    <div class="topbar" data-scrollspy="scrollspy">
-      <div class="topbar-inner">
+    <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
+      <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">Bootstrap JS</a>
+          <a class="brand" href="./index.html">Bootstrap</a>
           <ul class="nav">
             <li><a href="#overview">Overview</a></li>
             <li><a href="#modal">Modals</a></li>
@@ -57,21 +45,14 @@
       </div>
     </div>
 
+  <div class="container">
     <!-- Masthead (blueprinty thing)
     ================================================== -->
     <header class="jumbotron subhead" id="overview">
-      <div class="inner">
-        <div class="container">
-          <h1>Javascript for Bootstrap</h1>
-          <p class="lead">
-            Bring Bootstrap's components to life with new, custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>.
-          </p>
-          <p><a href="./index.html">&larr; Back to Bootstrap home</a></p>
-        </div><!-- /container -->
-      </div>
+      <h1>Javascript for Bootstrap</h1>
+      <p class="lead">Bring Bootstrap's components to life with custom plugins for <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>.</p>
     </header>
 
-    <div class="container">
 
     <!-- Modal
     ================================================== -->
@@ -81,11 +62,11 @@
         <h1>Modals <small>bootstrap-modal.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>Our Modal plugin is a super slim take on the traditional modal js plugin, taking special care to include only the bare functionality that we require here at twitter.</p>
           <a href="../js/bootstrap-modal.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using bootstrap-modal</h3>
           <pre class="prettyprint linenums">$('#my-modal').modal(options)</pre>
           <h3>Options</h3>
@@ -207,13 +188,13 @@ $('#my-modal').bind('hidden', function () {
         <h1>Dropdown <small>bootstrap-dropdown.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
-          <p>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</p>
+        <div class="span3 columns">
+          <p>This plugin is for adding dropdown interaction to the Bootstrap navbar or tabbed navigations.</p>
           <a href="../js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using boostrap-dropdown.js</h3>
-          <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
+          <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
           <h3>Markup</h3>
           <p>To quickly add dropdown functionality to any nav element, use the <code>data-dropdown</code> attribute. Any valid bootstrap dropdown will automatically be activated.</p>
 <pre class="prettyprint linenums">
@@ -232,42 +213,40 @@ $('#my-modal').bind('hidden', function () {
           <h3>Methods</h3>
           <h4>$().dropdown()</h4>
           <p>
-          A programatic api for activating menus for a given topbar or tabbed navigation.
+          A programatic api for activating menus for a given navbar or tabbed navigation.
           </p>
           <h3>Demo</h3>
-          <div class="topbar-wrapper">
-            <div id="topbar-example" class="topbar">
-              <div class="topbar-inner">
-                <div class="container">
-                  <a class="brand" href="#">Project Name</a>
-                  <ul class="nav">
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                  </ul>
-                  <form action="">
-                    <input type="text" placeholder="Search" />
-                  </form>
-                  <ul class="nav secondary-nav">
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 1</a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Secondary link</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Another link</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 2</a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">Secondary link</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Another link</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
+          <div id="navbar-example" class="navbar navbar-static">
+            <div class="navbar-inner">
+              <div class="container" style="width: auto;">
+                <a class="brand" href="#">Project Name</a>
+                <ul class="nav">
+                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Link</a></li>
+                </ul>
+                <form class="form-search navbar-search pull-left" action="">
+                  <input type="text" class="search-query span2" placeholder="Search">
+                </form>
+                <ul class="nav secondary-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 1</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Secondary link</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Another link</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 2</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Secondary link</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Another link</a></li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -283,29 +262,29 @@ $('#my-modal').bind('hidden', function () {
         <h1>ScrollSpy <small>bootstrap-scrollspy.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
-          <p>This plugin is for adding the scrollspy (auto updating nav) interaction to the bootstrap topbar.</p>
+        <div class="span3 columns">
+          <p>This plugin is for adding the scrollspy (auto updating nav) interaction to the bootstrap navbar.</p>
           <a href="../js/bootstrap-scrollspy.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h2>Using boostrap-scrollspy.js</h2>
-          <pre class="prettyprint linenums">$('#topbar').dropdown()</pre>
+          <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
           <h3>Markup</h3>
-          <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.topbar</code>.
-          <pre class="prettyprint linenums">&lt;div class="topbar" data-scrollspy="scrollspy" &gt;...&lt;/div&gt;</pre>
+          <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.navbar</code>.
+          <pre class="prettyprint linenums">&lt;div class="navbar" data-scrollspy="scrollspy" &gt;...&lt;/div&gt;</pre>
           <h3>Methods</h3>
           <h4>$().scrollspy()</h4>
           <p>
           Auto activates navigation buttons by users scroll position.
           </p>
-          <pre class="prettyprint linenums">$('body > .topbar').scrollSpy()</pre>
-           <p><span class="label notice">Notice</span> Topbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
+          <pre class="prettyprint linenums">$('body > .navbar').scrollSpy()</pre>
+           <p><span class="label notice">Notice</span> Navbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
           </p>
           <h4>.scrollspy('refresh')</h4>
           <p>The scrollspy caches nav buttons and section coordinates for performance. If you need to update this cache (likely if you have dynamic content) just call this refresh method. If you used the data attribute to define your scrollspy, just call refresh on the body.</p>
           <pre class="prettyprint linenums">$('body').scrollspy('refresh')</pre>
           <h3>Demo</h3>
-          <p>Checkout the the topbar navigation on this page.</p>
+          <p>Checkout the the navbar navigation on this page.</p>
         </div>
       </div>
     </section>
@@ -318,11 +297,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Tabs <small>bootstrap-tabs.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>This plugin adds quick, dynamic tab and pill functionality.</p>
           <a href="../js/bootstrap-tabs.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using boostrap-tabs.js</h3>
           <pre class="prettyprint linenums">$('.tabs').tabs()</pre>
           <h3>Markup</h3>
@@ -355,24 +334,26 @@ $('#my-modal').bind('hidden', function () {
 &lt;/script&gt;</pre>
           </p>
           <h3>Demo</h3>
-          <ul class="tabs" data-tabs="tabs" >
-            <li class="active"><a href="#home">Home</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#messages">Messages</a></li>
-            <li><a href="#settings">Settings</a></li>
-          </ul>
-          <div id="my-tab-content" class="tab-content">
-            <div class="active" id="home">
-              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-            </div>
-            <div id="profile">
-              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-            </div>
-            <div id="messages">
-              <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
-            </div>
-            <div id="settings">
-              <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
+          <div class="tabbable">
+            <ul class="tabs" data-tabs="tabs">
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#profile">Profile</a></li>
+              <li><a href="#messages">Messages</a></li>
+              <li><a href="#settings">Settings</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane active" id="home">
+                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+              </div>
+              <div class="tab-pane" id="profile">
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+              </div>
+              <div class="tab-pane" id="messages">
+                <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
+              </div>
+              <div class="tab-pane" id="settings">
+                <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -387,11 +368,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Twipsy <small>bootstrap-twipsy.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for title storage!</p>
           <a href="../js/bootstrap-twipsy.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using bootstrap-twipsy.js</h3>
           <pre class="prettyprint linenums">$('#example').twipsy(options)</pre>
           <h3>Options</h3>
@@ -504,11 +485,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Popovers <small>bootstrap-popover.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
           <a href="../js/bootstrap-popover.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using boostrap-popover.js</h3>
           <pre class="prettyprint linenums">$('#example').popover(options)</pre>
           <h3>Options</h3>
@@ -625,11 +606,11 @@ $('#my-modal').bind('hidden', function () {
         <h1>Alerts <small>bootstrap-alerts.js</small></h1>
       </div>
       <div class="row">
-        <div class="span4 columns">
+        <div class="span3 columns">
           <p>The alert plugin is a super tiny class for adding close functionality to alerts.</p>
           <a href="../js/bootstrap-alerts.js" target="_blank" class="btn primary">Download</a>
         </div>
-        <div class="span12 columns">
+        <div class="span9 columns">
           <h3>Using bootstrap-alerts.js</h3>
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>Markup</h3>
@@ -657,17 +638,28 @@ $('#my-modal').bind('hidden', function () {
     </section>
 
 
-    </div><!-- /container -->
-
-    <footer class="footer">
-      <div class="container">
+      <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>
           Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br />
           Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
         </p>
-      </div>
-    </footer>
+      </footer>
+
+    </div><!-- /container -->
+
+
+    <!-- Le javascript -->
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-alerts.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tabs.js"></script>
 
   </body>
 </html>

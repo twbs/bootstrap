@@ -71,20 +71,6 @@
   }
 }
 
-// Font face generator
-.font-face(@fontFamily, @fileName, @style, @weight) {
-  @font-face {
-    font-family: @fontFamily;
-    font-style: @style;
-    font-weight: @weight;
-    src: url('@{fileName}.eot');
-    src: url('@{fileName}.eot?#iefix') format('embedded-opentype'),
-         url('@{fileName}.woff') format('woff'),
-         url('@{fileName}.ttf') format('truetype'),
-         url('@{fileName}.svg#@{fontFamily}') format('svg');
-  }
-}
-
 // Grid System
 .fixed-container() {
   width: @siteWidth;
@@ -92,12 +78,13 @@
   margin-right: auto;
   .clearfix();
 }
-.columns(@columnSpan: 1) {
-  width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
+.columns(@columns: 1) {
+  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
-.offset(@columnOffset: 1) {
-  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
+.offset(@columns: 1) {
+  margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
 }
+
 // Necessary grid styles for every column to make them appear next to each other horizontally
 .gridColumn() {
   display: inline;
