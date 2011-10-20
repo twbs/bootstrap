@@ -1,7 +1,7 @@
-/* ============================================================
- * bootstrap-dropdown.js v2.0.0
- * http://twitter.github.com/bootstrap/javascript.html#dropdown
- * ============================================================
+/* =============================================================
+ * bootstrap-accordion.js v2.0.0
+ * http://twitter.github.com/bootstrap/javascript.html#accordion
+ * =============================================================
  * Copyright 2011 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,26 +17,25 @@
  * limitations under the License.
  * ============================================================ */
 
-
 (function( $ ){
 
-  /* APPLY TO STANDARD DROPDOWN ELEMENTS
-   * =================================== */
-  var selector = '[data-dropdown]'
+  var Accordion = function ( element, options ) {}
 
-  function clearMenus() {
-    $(selector).parent('li').removeClass('open')
+  Accordion.prototype = {}
+
+  /* ALERT PLUGIN DEFINITION
+   * ======================= */
+
+  $.fn.accordion = function ( options ) {
+
+    if ( options === true ) {
+     return this.data('accordion')
+    }
+
+    return this.each(function () {
+      new Accordion(this, options)
+    })
   }
 
-  $(function () {
-    $('html').bind("click", clearMenus)
-    $('body').delegate(selector, 'click', function (e) {
-      var li = $(this).parent('li')
-        , isActive = li.hasClass('open')
-      clearMenus()
-      !isActive && li.toggleClass('open')
-      return false
-    })
-  })
 
 })( window.jQuery || window.ender )
