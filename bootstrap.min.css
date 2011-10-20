@@ -185,12 +185,10 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .form-stacked div.clearfix.error{padding-top:10px;padding-bottom:10px;padding-left:10px;margin-top:0;margin-left:-10px;}
 .form-stacked .actions{margin-left:-20px;padding-left:20px;}
 table{width:100%;margin-bottom:18px;padding:0;font-size:13px;border-collapse:collapse;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;}
-table th{padding-top:9px;font-weight:bold;vertical-align:middle;border-bottom:1px solid #ddd;}
+table th{padding-top:9px;font-weight:bold;vertical-align:middle;}
 table td{vertical-align:top;border-top:1px solid #ddd;}
-table tbody th{border-bottom:0;vertical-align:top;}
+table tbody th{border-top:1px solid #ddd;vertical-align:top;}
 .bordered-table{border:1px solid #ddd;border-collapse:separate;*border-collapse:collapse;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.bordered-table th+th,.bordered-table td+td,.bordered-table th+td{border-left:1px solid #ddd;}
-.bordered-table tr td{border-top:1px solid #ddd;}
-.bordered-table tr:first-child td{border-top:0;}
 .bordered-table thead tr:first-child th:first-child,.bordered-table tbody tr:first-child td:first-child{-webkit-border-radius:4px 0 0 0;-moz-border-radius:4px 0 0 0;border-radius:4px 0 0 0;}
 .bordered-table thead tr:first-child th:last-child,.bordered-table tbody tr:first-child td:last-child{-webkit-border-radius:0 4px 0 0;-moz-border-radius:0 4px 0 0;border-radius:0 4px 0 0;}
 .bordered-table tbody tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;}

@@ -22,7 +22,6 @@ table {
     padding-top: 9px;
     font-weight: bold;
     vertical-align: middle;
-    border-bottom: 1px solid #ddd;
   }
   td {
     vertical-align: top;
@@ -30,7 +29,7 @@ table {
   }
   // When scoped to row, fix th in tbody
   tbody th {
-    border-bottom: 0;
+    border-top: 1px solid #ddd;
     vertical-align: top;
   }
 }
@@ -48,12 +47,6 @@ table {
   td + td,
   th + td {
     border-left: 1px solid #ddd;
-  }
-  tr td {
-    border-top: 1px solid #ddd;
-  }
-  tr:first-child td {
-    border-top: 0;
   }
   thead tr:first-child th:first-child,
   tbody tr:first-child td:first-child {

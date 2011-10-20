@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Oct 19 22:26:03 PDT 2011
+ * Date: Wed Oct 19 23:10:57 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1087,14 +1087,13 @@ table th {
   padding-top: 9px;
   font-weight: bold;
   vertical-align: middle;
-  border-bottom: 1px solid #ddd;
 }
 table td {
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
 table tbody th {
-  border-bottom: 0;
+  border-top: 1px solid #ddd;
   vertical-align: top;
 }
 .bordered-table {
@@ -1109,12 +1108,6 @@ table tbody th {
 }
 .bordered-table th + th, .bordered-table td + td, .bordered-table th + td {
   border-left: 1px solid #ddd;
-}
-.bordered-table tr td {
-  border-top: 1px solid #ddd;
-}
-.bordered-table tr:first-child td {
-  border-top: 0;
 }
 .bordered-table thead tr:first-child th:first-child, .bordered-table tbody tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
