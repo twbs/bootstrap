@@ -75,30 +75,7 @@
 
   }
 
-  /* SCROLLSPY PLUGIN DEFINITION
-   * =========================== */
-
-  $.fn.scrollSpy = function( options ) {
-    var scrollspy = this.data('scrollspy')
-
-    if (!scrollspy) {
-      return this.each(function () {
-        $(this).data('scrollspy', new ScrollSpy( this, options ))
-      })
-    }
-
-    if ( options === true ) {
-      return scrollspy
-    }
-
-    if ( typeof options == 'string' ) {
-      scrollspy[options]()
-    }
-
-    return this
-  }
-
-  $(document).ready(function () {
+  $(function () {
     $('body').scrollSpy('[data-scrollspy] li > a')
   })
 

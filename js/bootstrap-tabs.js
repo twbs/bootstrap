@@ -55,14 +55,8 @@
  /* TABS/PILLS PLUGIN DEFINITION
   * ============================ */
 
-  $.fn.tabs = $.fn.pills = function ( selector ) {
-    return this.each(function () {
-      $(this).delegate(selector || '.tabs li > a, .pills > li > a', 'click', tab)
-    })
-  }
-
-  $(document).ready(function () {
-    $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
+  $(function () {
+    $('body').delegate('ul[data-tabs] > li > a, ul[data-pills] > li > a', 'click', tab)
   })
 
 }( window.jQuery || window.ender );
