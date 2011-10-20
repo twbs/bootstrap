@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-accordion.js v1.3.0
+ * bootstrap-accordion.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#accordion
  * =============================================================
  * Copyright 2011 Twitter, Inc.

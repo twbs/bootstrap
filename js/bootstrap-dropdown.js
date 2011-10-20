@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrap-dropdown.js v1.3.0
+ * bootstrap-dropdown.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#dropdown
  * ============================================================
  * Copyright 2011 Twitter, Inc.
@@ -22,6 +22,7 @@
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */
+  var selector = '[data-dropdown]'
 
   function clearMenus() {
     $(selector).parent('li').removeClass('open')
@@ -29,7 +30,7 @@
 
   $(function () {
     $('html').bind("click", clearMenus)
-    $('body').delegate('[data-dropdown]', 'click', function (e) {
+    $('body').delegate(selector, 'click', function (e) {
       var li = $(this).parent('li')
         , isActive = li.hasClass('open')
       clearMenus()
