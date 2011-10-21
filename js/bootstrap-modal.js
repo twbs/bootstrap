@@ -55,7 +55,7 @@
   var Modal = function ( content, options ) {
     this.settings = $.extend({}, $.fn.modal.defaults)
     this.$element = $(content)
-      .delegate('.close', 'click.modal', $.proxy(this.hide, this))
+      .delegate('.js-dismiss', 'click.modal', $.proxy(this.hide, this))
 
     if ( options ) {
       $.extend( this.settings, options )
