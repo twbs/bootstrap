@@ -191,10 +191,12 @@
   padding: 4px 15px;
 }
 
+
 // Dropdown Menus
 // Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 // The link that is clicked to toggle the dropdown
 .dropdown-toggle:after {
@@ -211,6 +213,49 @@
   border-top: 4px solid @white;
   .opacity(50);
 }
+
+// Define different toggle styles (colors, borders, margin and padding) for dropdown buttons 
+.btn.dropdown-toggle,
+.btn.large.dropdown-toggle, 
+.btn.small.dropdown-toggle {
+  padding-right: 11px;
+}
+
+.btn.dropdown-toggle:after {
+  .opacity(80);
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+.btn.small.dropdown-toggle:after {
+  margin-top: 4px;
+}
+
+.btn.danger.dropdown-toggle:after,
+.btn.info.dropdown-toggle:after,
+.btn.primary.dropdown-toggle:after,
+.btn.success.dropdown-toggle:after, {
+  border-top-color: @white;
+}
+
+.btn.dropdown-toggle:after {
+  border-top-color: #999;
+}
+
+.btn.dropdown-toggle {
+  overflow: hidden;
+  
+  + .dropdown-menu {
+    top: 29px;
+    border-width: 1px;
+    .border-radius(6px 6px 6px 6px);
+  }
+  
+  &.large + .dropdown-menu {
+    top: 39px;
+  }
+}
+
 // The dropdown menu (ul)
 .dropdown-menu {
   background-color: @white;
@@ -271,13 +316,24 @@
   }
 }
 
-// Open state for the dropdown
-.dropdown.open {
+// Open state for the dropdown, inside an li (in tabs or topbars)
+li.dropdown.open {
   .dropdown-toggle {
     color: @white;
     background: #ccc;
     background: rgba(0,0,0,.3);
   }
+}
+// Open state for dropdown buttons, inside an div.
+div.dropdown.open {
+  .dropdown-toggle {
+    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+    background-position: 0 -15px;
+  }
+}
+// Common Open state styles
+.dropdown.open {
   .dropdown-menu {
     display: block;
   }
@@ -410,21 +466,6 @@
 .hero-unit {
   background-color: #f5f5f5;
   margin-bottom: 30px;
-  padding: 60px;
-  .border-radius(6px);
-  h1 {
-    margin-bottom: 0;
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-  p {
-    font-size: 18px;
-    font-weight: 200;
-    line-height: @baseline * 1.5;
-  }
-}
-footer {
   margin-top: @baseline - 1;
   padding-top: @baseline - 1;
   border-top: 1px solid #eee;
@@ -449,7 +490,6 @@ footer {
 
 // Shared colors for buttons and alerts
 .btn,
-.dropdown .btn.dropdown-toggle,
 .alert-message {
   // Set text color
   &.danger,
@@ -478,7 +518,7 @@ footer {
 }
 
 // Base .btn styles
-.btn, .dropdown .btn.dropdown-toggle {
+.btn {
   // Button Base
   cursor: pointer;
   display: inline-block;
@@ -560,58 +600,6 @@ input[type=submit].btn {
   &::-moz-focus-inner {
   	padding: 0;
   	border: 0;
-  }
-}
-
-// Dropdown Buttons
-div.dropdown {
-  display: inline-block;
-  
-  &.open .btn.dropdown-toggle {
-    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
-    .box-shadow(@shadow);
-    background-position: 0 -15px;
-  }
-  
-  .btn.dropdown-toggle {
-    overflow: hidden;
-    
-    + .dropdown-menu {
-      top: 29px;
-      border-width: 1px;
-      .border-radius(6px 6px 6px 6px);
-    }
-    
-    &.large + .dropdown-menu {
-      top: 39px;
-    }
-  }
-  
-  .btn.dropdown-toggle,
-  .btn.large.dropdown-toggle, 
-  .btn.small.dropdown-toggle {
-    padding-right: 11px;
-  }
-  
-  .btn.dropdown-toggle:after {
-    .opacity(80);
-    margin-top: 6px;
-    margin-left: 10px;
-  }
-  
-  .btn.small.dropdown-toggle:after {
-    margin-top: 4px;
-  }
-  
-  .btn.danger.dropdown-toggle:after,
-  .btn.info.dropdown-toggle:after,
-  .btn.primary.dropdown-toggle:after,
-  .btn.success.dropdown-toggle:after, {
-    border-top-color: @white;
-  }
-  
-  .btn.dropdown-toggle:after {
-    border-top-color: #999;
   }
 }
 

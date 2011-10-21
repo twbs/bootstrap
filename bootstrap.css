@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Oct 21 08:38:46 CEST 2011
+ * Date: Fri Oct 21 14:51:54 CEST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1392,6 +1392,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 }
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 .dropdown-toggle:after {
   width: 0;
@@ -1409,6 +1410,42 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -khtml-opacity: 0.5;
   -moz-opacity: 0.5;
   opacity: 0.5;
+}
+.btn.dropdown-toggle, .btn.large.dropdown-toggle, .btn.small.dropdown-toggle {
+  padding-right: 11px;
+}
+.btn.dropdown-toggle:after {
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+.btn.small.dropdown-toggle:after {
+  margin-top: 4px;
+}
+.btn.danger.dropdown-toggle:after,
+.btn.info.dropdown-toggle:after,
+.btn.primary.dropdown-toggle:after,
+.btn.success.dropdown-toggle:after {
+  border-top-color: #ffffff;
+}
+.btn.dropdown-toggle:after {
+  border-top-color: #999;
+}
+.btn.dropdown-toggle {
+  overflow: hidden;
+}
+.btn.dropdown-toggle + .dropdown-menu {
+  top: 29px;
+  border-width: 1px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+}
+.btn.dropdown-toggle.large + .dropdown-menu {
+  top: 39px;
 }
 .dropdown-menu {
   background-color: #ffffff;
@@ -1476,13 +1513,19 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
 }
-.dropdown.open {
-  z-index: 100;
-}
-.dropdown.open .dropdown-toggle {
+li.dropdown.open .dropdown-toggle {
   color: #ffffff;
   background: #ccc;
   background: rgba(0, 0, 0, 0.3);
+}
+div.dropdown.open .dropdown-toggle {
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-position: 0 -15px;
+}
+.dropdown.open {
+  z-index: 100;
 }
 .dropdown.open .dropdown-menu {
   display: block;
@@ -1622,23 +1665,6 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .hero-unit {
   background-color: #f5f5f5;
   margin-bottom: 30px;
-  padding: 60px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-.hero-unit p {
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 27px;
-}
-footer {
   margin-top: 17px;
   padding-top: 17px;
   border-top: 1px solid #eee;
@@ -1654,36 +1680,26 @@ footer {
   margin-bottom: 8px;
 }
 .btn.danger,
-.dropdown .btn.dropdown-toggle.danger,
 .alert-message.danger,
 .btn.danger:hover,
-.dropdown .btn.dropdown-toggle.danger:hover,
 .alert-message.danger:hover,
 .btn.error,
-.dropdown .btn.dropdown-toggle.error,
 .alert-message.error,
 .btn.error:hover,
-.dropdown .btn.dropdown-toggle.error:hover,
 .alert-message.error:hover,
 .btn.success,
-.dropdown .btn.dropdown-toggle.success,
 .alert-message.success,
 .btn.success:hover,
-.dropdown .btn.dropdown-toggle.success:hover,
 .alert-message.success:hover,
 .btn.info,
-.dropdown .btn.dropdown-toggle.info,
 .alert-message.info,
 .btn.info:hover,
-.dropdown .btn.dropdown-toggle.info:hover,
 .alert-message.info:hover {
   color: #ffffff;
 }
 .btn.danger,
-.dropdown .btn.dropdown-toggle.danger,
 .alert-message.danger,
 .btn.error,
-.dropdown .btn.dropdown-toggle.error,
 .alert-message.error {
   background-color: #c43c35;
   background-repeat: repeat-x;
@@ -1699,7 +1715,7 @@ footer {
   border-color: #c43c35 #c43c35 #882a25;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.success, .dropdown .btn.dropdown-toggle.success, .alert-message.success {
+.btn.success, .alert-message.success {
   background-color: #57a957;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#62c462), to(#57a957));
@@ -1714,7 +1730,7 @@ footer {
   border-color: #57a957 #57a957 #3d773d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.info, .dropdown .btn.dropdown-toggle.info, .alert-message.info {
+.btn.info, .alert-message.info {
   background-color: #339bb9;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#5bc0de), to(#339bb9));
@@ -1729,7 +1745,7 @@ footer {
   border-color: #339bb9 #339bb9 #22697d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn, .dropdown .btn.dropdown-toggle {
+.btn {
   cursor: pointer;
   display: inline-block;
   background-color: #e6e6e6;
@@ -1760,15 +1776,15 @@ footer {
   -o-transition: 0.1s linear all;
   transition: 0.1s linear all;
 }
-.btn:hover, .dropdown .btn.dropdown-toggle:hover {
+.btn:hover {
   background-position: 0 -15px;
   color: #333;
   text-decoration: none;
 }
-.btn:focus, .dropdown .btn.dropdown-toggle:focus {
+.btn:focus {
   outline: 1px dotted #666;
 }
-.btn.primary, .dropdown .btn.dropdown-toggle.primary {
+.btn.primary {
   color: #ffffff;
   background-color: #0064cd;
   background-repeat: repeat-x;
@@ -1784,12 +1800,12 @@ footer {
   border-color: #0064cd #0064cd #003f81;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn:active, .dropdown .btn.dropdown-toggle:active {
+.btn:active {
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.btn.disabled, .dropdown .btn.dropdown-toggle.disabled {
+.btn.disabled {
   cursor: default;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -1801,7 +1817,7 @@ footer {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.btn[disabled], .dropdown .btn.dropdown-toggle[disabled] {
+.btn[disabled] {
   cursor: default;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -1813,7 +1829,7 @@ footer {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.btn.large, .dropdown .btn.dropdown-toggle.large {
+.btn.large {
   font-size: 15px;
   line-height: normal;
   padding: 9px 14px 9px;
@@ -1821,7 +1837,7 @@ footer {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
-.btn.small, .dropdown .btn.dropdown-toggle.small {
+.btn.small {
   padding: 7px 9px 7px;
   font-size: 11px;
 }
@@ -1831,51 +1847,6 @@ footer {
 button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
-}
-div.dropdown {
-  display: inline-block;
-}
-div.dropdown.open .btn.dropdown-toggle {
-  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
-  background-position: 0 -15px;
-}
-div.dropdown .btn.dropdown-toggle {
-  overflow: hidden;
-}
-div.dropdown .btn.dropdown-toggle + .dropdown-menu {
-  top: 29px;
-  border-width: 1px;
-  -webkit-border-radius: 6px 6px 6px 6px;
-  -moz-border-radius: 6px 6px 6px 6px;
-  border-radius: 6px 6px 6px 6px;
-}
-div.dropdown .btn.dropdown-toggle.large + .dropdown-menu {
-  top: 39px;
-}
-div.dropdown .btn.dropdown-toggle, div.dropdown .btn.large.dropdown-toggle, div.dropdown .btn.small.dropdown-toggle {
-  padding-right: 11px;
-}
-div.dropdown .btn.dropdown-toggle:after {
-  filter: alpha(opacity=80);
-  -khtml-opacity: 0.8;
-  -moz-opacity: 0.8;
-  opacity: 0.8;
-  margin-top: 6px;
-  margin-left: 10px;
-}
-div.dropdown .btn.small.dropdown-toggle:after {
-  margin-top: 4px;
-}
-div.dropdown .btn.danger.dropdown-toggle:after,
-div.dropdown .btn.info.dropdown-toggle:after,
-div.dropdown .btn.primary.dropdown-toggle:after,
-div.dropdown .btn.success.dropdown-toggle:after {
-  border-top-color: #ffffff;
-}
-div.dropdown .btn.dropdown-toggle:after {
-  border-top-color: #999;
 }
 .close {
   float: right;
