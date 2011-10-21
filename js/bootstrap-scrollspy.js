@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-scrollspy.js v1.3.0
+ * bootstrap-scrollspy.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#scrollspy
  * =============================================================
  * Copyright 2011 Twitter, Inc.
@@ -22,14 +22,14 @@
 
   var $window = $(window)
 
-  function ScrollSpy( topbar, selector ) {
-    var processScroll = $.proxy(this.processScroll, this)
-    this.$topbar = $(topbar)
-    this.selector = selector || 'li > a'
+  function ScrollSpy() {
+    var process = $.proxy(this.process, this)
+    this.$topbar = $('body')
+    this.selector = '[data-scrollspy] li > a'
     this.refresh()
-    this.$topbar.delegate(this.selector, 'click', processScroll)
-    $window.scroll(processScroll)
-    this.processScroll()
+    this.$topbar.delegate(this.selector, 'click', process)
+    $window.scroll(process)
+    this.process()
   }
 
   ScrollSpy.prototype = {
@@ -45,7 +45,7 @@
         })
       }
 
-    , processScroll: function () {
+    , process: function () {
         var scrollTop = $window.scrollTop() + 10
           , offsets = this.offsets
           , targets = this.targets
@@ -56,50 +56,34 @@
           activeTarget != targets[i]
             && scrollTop >= offsets[i]
             && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
-            && this.activateButton( targets[i] )
+            && this.activate( targets[i] )
         }
       }
 
-    , activateButton: function (target) {
+    , activate: function (target) {
+        var active
+
         this.activeTarget = target
 
         this.$topbar
           .find(this.selector).parent('.active')
           .removeClass('active')
 
-        this.$topbar
+        active = this.$topbar
           .find(this.selector + '[href="' + target + '"]')
           .parent('li')
           .addClass('active')
+
+        if ( active.parent('.dropdown-menu') )  {
+          active.closest('li.dropdown').addClass('active')
+        }
+
       }
 
   }
 
-  /* SCROLLSPY PLUGIN DEFINITION
-   * =========================== */
-
-  $.fn.scrollSpy = function( options ) {
-    var scrollspy = this.data('scrollspy')
-
-    if (!scrollspy) {
-      return this.each(function () {
-        $(this).data('scrollspy', new ScrollSpy( this, options ))
-      })
-    }
-
-    if ( options === true ) {
-      return scrollspy
-    }
-
-    if ( typeof options == 'string' ) {
-      scrollspy[options]()
-    }
-
-    return this
-  }
-
-  $(document).ready(function () {
-    $('body').scrollSpy('[data-scrollspy] li > a')
+  $(function () {
+    new ScrollSpy()
   })
 
 }( window.jQuery || window.ender )

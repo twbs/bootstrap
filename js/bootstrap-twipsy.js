@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-twipsy.js v1.3.0
+ * bootstrap-twipsy.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#twipsy
  * Adapted from the original jQuery.tipsy by Jason Frame
  * ==========================================================
@@ -20,35 +20,6 @@
 
 
 !function( $ ) {
-
- /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
-  * ======================================================= */
-
-  var transitionEnd
-
-  $(document).ready(function () {
-
-    $.support.transition = (function () {
-      var thisBody = document.body || document.documentElement
-        , thisStyle = thisBody.style
-        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-      return support
-    })()
-
-    // set CSS transition event type
-    if ( $.support.transition ) {
-      transitionEnd = "TransitionEnd"
-      if ( $.browser.webkit ) {
-      	transitionEnd = "webkitTransitionEnd"
-      } else if ( $.browser.mozilla ) {
-      	transitionEnd = "transitionend"
-      } else if ( $.browser.opera ) {
-      	transitionEnd = "oTransitionEnd"
-      }
-    }
-
-  })
-
 
  /* TWIPSY PUBLIC CLASS DEFINITION
   * ============================== */
@@ -131,7 +102,7 @@
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
-        $tip.bind(transitionEnd, removeElement) :
+        $tip.bind($.support.transition.end, removeElement) :
         removeElement()
     }
 
