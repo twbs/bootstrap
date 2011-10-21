@@ -31,10 +31,16 @@ table {
     vertical-align: top;
   }
   th + th,
+  th + td,
   td + td {
     border-left: 1px solid #ddd;
   }
-  tr + tr td {
+  tr + tr th,
+  tr + tr td,
+  tfoot th,
+  tfoot td,
+  tbody + tbody tr:first-child th,
+  tbody + tbody tr:first-child td {
     border-top: 1px solid #ddd;
   }
   tbody tr:first-child td:first-child {
