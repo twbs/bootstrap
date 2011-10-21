@@ -92,7 +92,7 @@
 
           transition ?
             that.$element.one(transitionEnd, function () { that.$element.trigger('shown') }) :
-            that.$element.trigger('shown', this.settings)
+            that.$element.trigger('shown', that.settings)
 
         })
 
@@ -118,7 +118,7 @@
         function removeElement () {
           that.$element
             .hide()
-            .trigger('hidden', this.settings)
+            .trigger('hidden', that.settings)
 
           backdrop.call(that)
         }
