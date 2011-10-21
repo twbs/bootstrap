@@ -175,7 +175,7 @@
     <div class="span12">
       <h3>Example grid markup</h3>
       <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
-<pre class="prettyprint linenums">
+<pre class="prettyprint prettyprint-dark linenums">
 &lt;div class="row"&gt;
   &lt;div class="span6"&gt;
     ...
@@ -327,7 +327,7 @@
     <div class="span12">
       <h3>Inside the grid</h3>
       <p>The variables needed to modify the grid system currently all reside in <code>variables.less</code>.</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th>Variable</th>
@@ -601,7 +601,7 @@
     <div class="span12">
       <h3>Presenting code</h3>
       <p>Code, blocks of or just snippets inline, can be displayed with style just by wrapping in the right tag. For blocks of code spanning multiple lines, use the <code>&lt;pre&gt;</code> element. For inline code, use the <code>&lt;code&gt;</code> element.</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th style="width: 190px;">Element</th>
@@ -651,7 +651,7 @@
     <div class="span12">
       <h3>Label anything</h3>
       <p>Ever needed one of those fancy <span class="label success">New!</span> or <span class="label important">Important</span> flags when writing code? Well, now you have them. Here's what's included by default:</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th style="width: 50%;">Label</th>
@@ -903,7 +903,7 @@
 &lt;/table&gt;</pre>
       <h3>Example: Zebra-striped</h3>
       <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th>#</th>
@@ -949,7 +949,7 @@
       <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
 <pre class="prettyprint linenums">
 &lt;table class="zebra-striped"&gt;
-...
+  ...
 &lt;/table&gt;</pre>
       <h3>Example: Zebra-striped w/ TableSorter.js</h3>
       <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
@@ -1763,43 +1763,43 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
      <div class="span12">
       <h3>What's included</h3>
        <p>Bring some of Bootstrap's primary components to life with new custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>. We encourage you to extend and modify them to fit your specific development needs.</p>
-       <table class="zebra-striped">
-         <thead>
-           <tr>
-             <th style="width: 150px;">File</th>
-             <th>Description</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
-             <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#alerts">bootstrap-alerts.js</a></td>
-             <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#dropdowns">bootstrap-dropdown.js</a></td>
-             <td>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
-             <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap topbar.</td>
-           </tr>
-           <tr>
+        <table class="bordered-table zebra-striped">
+          <thead>
+            <tr>
+              <th style="width: 150px;">File</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
+              <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#alerts">bootstrap-alerts.js</a></td>
+              <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#dropdowns">bootstrap-dropdown.js</a></td>
+              <td>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
+              <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap topbar.</td>
+            </tr>
+            <tr>
              <td><a href="./javascript.html#tabs">bootstrap-tabs.js</a></td>
-             <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
-             <td>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for local title storage!</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
-             <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
-           </tr>
-         </tbody>
+              <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
+              <td>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for local title storage!</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
+              <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
+            </tr>
+          </tbody>
        </table>
        <h3>Is javascript necessary?</h3>
        <p><strong>Nope!</strong> Bootstrap is designed first and foremost to be a CSS library. This javascript provides a basic interactive layer on top of the included styles.</p>
@@ -1922,7 +1922,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <h2>Compiling Less</h2>
     <p>After modifying the <code>.less</code> files in /lib/, you'll need to recompile them in order to regenerate the bootstrap-*.*.*.css and bootstrap-*.*.*.min.css files. If you're submitting a pull request to GitHub, you must always recompile.</p>
     <h3>Ways to compile</h3>
-    <table class="zebra-striped">
+    <table class="bordered-table zebra-striped">
       <thead>
         <tr>
           <th style="width: 120px;">Method</th>
