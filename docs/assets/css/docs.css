@@ -340,9 +340,17 @@ h2 + table {
   }
 }
 
-@media (min-width: 768px) and (max-width: 900px) {
-  .footer,
-  .jumbotron {
-    min-width: 748px;
+@media (min-width: 768px) and (max-width: 940px) {
+
+  /* Scale down the jumbotron content */
+  .jumbotron h1 {
+    font-size: 72px;
+  }
+
+  /* Provide enough space on right-hand side for benefits list */
+  .jumbotron h1,
+  .jumbotron p {
+    margin-right: 40%;
   }
 }
+
