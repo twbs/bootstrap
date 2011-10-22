@@ -73,7 +73,7 @@
     , show: function () {
         var that = this
         this.isShown = true
-        this.$element.trigger('show')
+        this.$element.trigger('show', this.settings)
 
         escape.call(this)
         backdrop.call(this, function () {
@@ -92,7 +92,7 @@
 
           transition ?
             that.$element.one(transitionEnd, function () { that.$element.trigger('shown') }) :
-            that.$element.trigger('shown')
+            that.$element.trigger('shown', that.settings)
 
         })
 
@@ -112,13 +112,13 @@
         escape.call(this)
 
         this.$element
-          .trigger('hide')
+          .trigger('hide', this.settings)
           .removeClass('in')
 
         function removeElement () {
           that.$element
             .hide()
-            .trigger('hidden')
+            .trigger('hidden', that.settings)
 
           backdrop.call(that)
         }
