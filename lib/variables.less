@@ -26,17 +26,25 @@
 @purple:            #7a43b6;
 
 // Baseline grid
-@basefont:          13px;
-@baseLineHeight:    18px;
-@baseHeight:        @baseMarginHeight;
-@baseMarginHeight:  @baseMarginHeight;
-@basePaddingHeight: @baseMarginHeight;
+// Fixed width: use the next two lines for fixed width layouts
+// @basefont:          13px;
+// @baseLineHeight:    18px;
+// Resoponsive design: or use the next two line for responsive layouts
+@basefont:          81.25%; // 13/16
+@baseLineHeight:    1.38461538461538em; // 18/13
+@baseHeight:        @baseLineHeight;
+@baseMarginHeight:  @baseLineHeight;
+@basePaddingHeight: @baseLineHeight;
 
 // Griditude
 // Modify the grid styles in mixins.less
 @gridColumns:       16;
-@gridColumnWidth:   40px;
-@gridGutterWidth:   20px;
+// Fixed width: use the next two lines for fixed width layouts
+// @gridColumnWidth:   40px; 
+// @gridGutterWidth:   20px; 
+// Resoponsive design: or use the next two line for responsive layouts
+@gridColumnWidth:   4.166666666667%; // 40 / 960 * 100
+@gridGutterWidth:   2.083333333333%; // 20 / 960 * 100
 @extraSpace:        (@gridGutterWidth * 2); // For our grid calculations
 @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 

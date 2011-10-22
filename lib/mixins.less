@@ -71,6 +71,13 @@
   }
 }
 
+// Large Type
+// Makes sure type larger than the base font size plays nice with responsive design
+.large-type(@fontSize: 1em){
+  font-size: @fontSize;
+  line-height: (@baseLineHeight * 2) / @fontSize;
+}
+
 // Grid System
 .fixed-container() {
   width: @siteWidth;

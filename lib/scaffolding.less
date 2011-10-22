@@ -77,7 +77,8 @@ a {
 
 .row {
   .clearfix();
-  margin-left: -1 * @gridGutterWidth;
+  width: 102.127659574468%; // 960/940
+  margin-left: -2.040816326531%; // -20/980 
 }
 
 // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
@@ -129,7 +130,35 @@ a {
 .offset12  { .offset(12); }
 
 // Unique column sizes for 16-column grid
-.span-one-third     { width: 300px; }
-.span-two-thirds    { width: 620px; }
-.offset-one-third   { margin-left: 340px; }
-.offset-two-thirds  { margin-left: 660px; }
+.span-one-third     { width: 31.25%; } // 300 / 960 * 100
+.span-two-thirds    { width: 64.583333333333%; } // 620 / 960 * 100
+.offset-one-third   { margin-left: 35.416666666667%; } // 340 / 960 * 100
+.offset-two-thirds  { margin-left: 68.75%; } // 660 / 960 * 100
+
+// OOCSS grid experiment
+// TODO: get the actual values and remove this mixin
+.width-less-margin(@width: 100%) {
+	width: @width - @gridGutterWidth;
+}
+
+.line,.lastUnit{overflow:hidden; *overflow:visible;*zoom:1;}
+.line{.row}
+
+.unit{float:left; margin-left: @gridGutterWidth;}
+.unitRight{float:right;}
+.size1of1{float:none; .width-less-margin(100%);.unit}
+.size1of2{.width-less-margin(50%); .unit}
+.size1of3{.width-less-margin(33.33333%); .unit}
+.size2of3{.width-less-margin(66.66666%); .unit}
+.size1of4{.width-less-margin(25%); .unit}
+.size3of4{.width-less-margin(75%); .unit}
+.size1of5{.width-less-margin(20%); .unit}
+.size2of5{.width-less-margin(40%); .unit}
+.size3of5{.width-less-margin(60%); .unit}
+.size4of5{.width-less-margin(80%); .unit}
+.lastUnit{float:none;width:auto;_position:relative;margin-left:0;_left:-3px;_margin-right:-3px;}
+.secondToLastUnit{margin-right: @gridGutterWidth;}
+
+// rules for test display purposes only
+.unit{background: #eee;min-height:30px;line-height:30px;text-align: center;}
+.line{margin-top: 10px}

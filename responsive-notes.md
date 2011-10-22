@@ -5,17 +5,19 @@ Files that remain the same:
 Files converted:
 
 * responsive-bootstrap.less
-* responsive-variables.less (removed all non-modified rule sets)
-* responsive-scaffolding.less (removed all non-modified rule sets)
-* responsive-type.less (removed all non-modified rule sets)
+X * responsive-variables.less (removed all non-modified rule sets)
+X * responsive-scaffolding.less (removed all non-modified rule sets)
+    - TODO in file (near end)
+X * responsive-type.less (removed all non-modified rule sets)
+X * responsive-forms.less (mostly done, suspect the rest will workout once other files are updated)
 
 Files added to:
 
-* responsive-mixins.less
+X * responsive-mixins.less
 
 Files to convert:
 
-* responsive-forms.less (mostly done, suspect the rest will workout once other files are updated)
+
 * responsive-tables.less
 * responsive-patterns.less
 * responsive-mixins.less
