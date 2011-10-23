@@ -6,11 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
-<<<<<<< HEAD
- * Date: Sat Oct 22 15:49:12 PDT 2011
-=======
- * Date: Fri Oct 21 11:54:44 CDT 2011
->>>>>>> 2e09ffe3832106fab60dc01cc3159c13029bdf68
+ * Date: Sat Oct 22 22:49:01 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -520,7 +516,7 @@ pre {
   background-color: #f5f5f5;
   display: block;
   padding: 8.5px;
-  margin: 0 0 18px;
+  margin: 0 0 9px;
   line-height: 18px;
   font-size: 12px;
   border: 1px solid #ccc;
@@ -530,7 +526,7 @@ pre {
   border-radius: 3px;
   white-space: pre;
   white-space: pre-wrap;
-  word-wrap: break-word;
+  word-break: break-all;
 }
 /* Forms.less
  * Base styles for various input types, form layouts, and states
@@ -2270,7 +2266,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 @media (max-width: 480px) {
   .container {
     width: auto;
-    padding: 0 10px;
+    padding: 0 15px;
   }
   .row {
     margin-left: 0;

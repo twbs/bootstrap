@@ -21,6 +21,8 @@ section {
 /* Tweak topbar brand link to be super sleek
 -------------------------------------------------- */
 body > .navbar-fixed .brand {
+  padding-right: 0;
+  padding-left: 0;
   float: right;
   font-weight: bold;
   color: #000;
@@ -316,16 +318,24 @@ h2 + table {
 -------------------------------------------------- */
 @media (max-width: 480px) {
 
+  /* Hide the nav for now */
   body > .navbar-fixed .nav {
     display: none;
   }
 
-  .large-bird {
-    display: none;
+  /* Change up some type stuff */
+  h1 small {
+    display: block;
+    line-height: 20px;
   }
 
+  /* Adjust the jumbotron */
+  .jumbotron h1,
+  .jumbotron p {
+    margin-right: 0;
+  }
   .jumbotron h1 {
-    font-size: 36px;
+    font-size: 45px;
     margin-right: 0;
   }
   .jumbotron p {
@@ -338,6 +348,20 @@ h2 + table {
     width: auto;
     margin: 36px 0;
   }
+  .jumbotron .btn {
+    font-size: 18px;
+    padding: 10px 14px;
+  }
+
+  /* Popovers */
+  .large-bird {
+    display: none;
+  }
+  .popover-well .popover-wrapper {
+    margin-left: 0;
+  }
+
+
 }
 
 @media (min-width: 768px) and (max-width: 940px) {
