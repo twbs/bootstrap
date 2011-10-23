@@ -250,7 +250,8 @@ table .headerSortUp.purple,table .headerSortDown.purple{background-color:#e2d5f0
 .topbar div>ul .menu-dropdown .active a,.nav .menu-dropdown .active a,.topbar div>ul .dropdown-menu .active a,.nav .dropdown-menu .active a{color:#ffffff;}
 .topbar div>ul .menu-dropdown .divider,.nav .menu-dropdown .divider,.topbar div>ul .dropdown-menu .divider,.nav .dropdown-menu .divider{background-color:#222;border-color:#444;}
 .topbar ul .menu-dropdown li a,.topbar ul .dropdown-menu li a{padding:4px 15px;}
-li.menu,.dropdown{position:relative;display:inline-block;}
+li.menu,.dropdown{position:relative;}
+.dropdown{display:inline-block;}
 a.menu:after,.dropdown-toggle:after{width:0;height:0;display:inline-block;content:"&darr;";text-indent:-99999px;vertical-align:top;margin-top:8px;margin-left:4px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid #ffffff;filter:alpha(opacity=50);-khtml-opacity:0.5;-moz-opacity:0.5;opacity:0.5;}
 .btn.dropdown-toggle,.btn.large.dropdown-toggle,.btn.small.dropdown-toggle{padding-right:11px;}
 .btn.dropdown-toggle:after{filter:alpha(opacity=80);-khtml-opacity:0.8;-moz-opacity:0.8;opacity:0.8;margin-top:6px;margin-left:10px;}
