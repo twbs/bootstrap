@@ -26,7 +26,7 @@
   $.fn.dropdown = function ( selector ) {
     return this.each(function () {
       $(this).delegate(selector || d, 'click', function (e) {
-        var li = $(this).parent('li')
+        var li = $(this).parent('li,.dropdown')
           , isActive = li.hasClass('open')
 
         clearMenus()
@@ -42,7 +42,7 @@
   var d = 'a.menu, .dropdown-toggle'
 
   function clearMenus() {
-    $(d).parent('li').removeClass('open')
+    $(d).parent('li,.dropdown').removeClass('open')
   }
 
   $(function () {

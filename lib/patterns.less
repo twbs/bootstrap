@@ -219,6 +219,7 @@
 li.menu,
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 // The link that is clicked to toggle the dropdown
 // a.menu for backwards compatibility
@@ -237,6 +238,49 @@ a.menu:after,
   border-top: 4px solid @white;
   .opacity(50);
 }
+
+// Define different toggle styles (colors, borders, margin and padding) for dropdown buttons 
+.btn.dropdown-toggle,
+.btn.large.dropdown-toggle, 
+.btn.small.dropdown-toggle {
+  padding-right: 11px;
+}
+
+.btn.dropdown-toggle:after {
+  .opacity(80);
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+.btn.small.dropdown-toggle:after {
+  margin-top: 4px;
+}
+
+.btn.danger.dropdown-toggle:after,
+.btn.info.dropdown-toggle:after,
+.btn.primary.dropdown-toggle:after,
+.btn.success.dropdown-toggle:after, {
+  border-top-color: @white;
+}
+
+.btn.dropdown-toggle:after {
+  border-top-color: #999;
+}
+
+.btn.dropdown-toggle {
+  overflow: hidden;
+  
+  + .dropdown-menu {
+    top: 29px;
+    border-width: 1px;
+    .border-radius(6px 6px 6px 6px);
+  }
+  
+  &.large + .dropdown-menu {
+    top: 38px;
+  }
+}
+
 // The dropdown menu (ul)
 // .menu-dropdown for backwards compatibility
 .menu-dropdown,
@@ -301,22 +345,28 @@ a.menu:after,
   }
 }
 
-// Open state for the dropdown
-// .open for backwards compatibility
-.open,
-.dropdown.open {
-  // .menu for backwards compatibility
-  .menu,
+// Open state for the dropdown, inside an li (in tabs or topbars)
+li.dropdown.open {
   .dropdown-toggle {
     color: @white;
     background: #ccc;
     background: rgba(0,0,0,.3);
   }
-  // .menu-dropdown for backwards compatibility
-  .menu-dropdown,
+}
+// Open state for dropdown buttons, inside an div.
+div.dropdown.open {
+  .dropdown-toggle {
+    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+    background-position: 0 -15px;
+  }
+}
+// Common open state styles
+.dropdown.open {
   .dropdown-menu {
     display: block;
   }
+  z-index: 100;
 }
 
 
