@@ -28,6 +28,11 @@
       $(this).delegate(selector || d, 'click', function (e) {
         var li = $(this).parent('li,.dropdown')
           , isActive = li.hasClass('open')
+          , isDisabled = $(this).hasClass('disabled')
+        
+        if (isDisabled) {
+          return false
+        }
 
         clearMenus()
         !isActive && li.toggleClass('open')
