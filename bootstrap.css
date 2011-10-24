@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct 10 14:31:07 CDT 2011
+ * Date: Sun Oct 23 19:13:26 CDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2033,8 +2033,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: transparent;
   color: #bfbfbf;
 }
-.pagination .next a {
-  border: 0;
+.pagination li:first-child a {
+  border-left: 0;
+}
+.pagination li:last-child a {
+  border-right: 0;
 }
 .well {
   background-color: #f5f5f5;
