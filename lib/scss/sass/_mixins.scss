@@ -163,7 +163,7 @@
     background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
     background-image: linear-gradient(left, $startColor, $endColor); // Le standard
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$startColor', endColorstr='$endColor', GradientType=1); // IE9 and down
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
   }
 @mixin vertical-gradient ($startColor: #555, $endColor: #333) {
   background-color: $endColor;
@@ -175,7 +175,7 @@
   background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient(top, $startColor, $endColor); // The standard
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$startColor', endColorstr='$endColor', GradientType=0); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
 }
 @mixin directional-gradient ($startColor: #555, $endColor: #333, $deg: 45deg) {
   background-color: $endColor;
@@ -195,7 +195,7 @@
   background-image: -ms-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$startColor', endColorstr='$endColor', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
 }
 
 // Reset filters for IE
