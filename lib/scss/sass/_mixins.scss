@@ -80,9 +80,11 @@
 @mixin columns($columnSpan: 1) {
   width: ($gridColumnWidth * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1));
 }
+
 @mixin offset($columnOffset: 1) {
   margin-left: ($gridColumnWidth * $columnOffset) + ($gridGutterWidth * ($columnOffset - 1)) + $extraSpace;
 }
+
 // Necessary grid styles for every column to make them appear next to each other horizontally
 @mixin gridColumn() {
   display: inline;
