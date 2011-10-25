@@ -1,0 +1,136 @@
+/*
+ * Scaffolding
+ * Basic and global styles for generating a grid system, structural layout, and page templates
+ * ------------------------------------------------------------------------------------------- */
+
+
+// STRUCTURAL LAYOUT
+// -----------------
+
+html, body {
+  background-color: $white;
+}
+body {
+  margin: 0;
+  @include font-sans-serif(normal,$basefont,$baseline);
+  color: $grayDark;
+}
+
+// Container (centered, fixed-width layouts)
+.container {
+  @include fixed-container();
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.container-fluid {
+  position: relative;
+  min-width: 940px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @include clearfix();
+  > .sidebar {
+    float: left;
+    width: 220px;
+  }
+  // TODO in v2: rename this and .popover .content to be more specific
+  > .content {
+    margin-left: 240px;
+  }
+}
+
+
+// BASE STYLES
+// -----------
+
+// Links
+a {
+  color: $linkColor;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+  &:hover {
+    color: $linkColorHover;
+    text-decoration: underline;
+  }
+}
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+
+// GRID SYSTEM
+// -----------
+// To customize the grid system, bring up the variables.less file and change the column count, size, and gutter there
+
+.row {
+  @include clearfix();
+  margin-left: -1 * $gridGutterWidth;
+}
+
+// Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
+// Credit to $dhg for the idea
+[class*="span"] {
+  @include gridColumn();
+}
+
+// Default columns
+.span1     { @include columns(1); }
+.span2     { @include columns(2); }
+.span3     { @include columns(3); }
+.span4     { @include columns(4); }
+.span5     { @include columns(5); }
+.span6     { @include columns(6); }
+.span7     { @include columns(7); }
+.span8     { @include columns(8); }
+.span9     { @include columns(9); }
+.span10    { @include columns(10); }
+.span11    { @include columns(11); }
+.span12    { @include columns(12); }
+.span13    { @include columns(13); }
+.span14    { @include columns(14); }
+.span15    { @include columns(15); }
+.span16    { @include columns(16); }
+
+// For optional 24-column grid
+.span17    { @include columns(17); }
+.span18    { @include columns(18); }
+.span19    { @include columns(19); }
+.span20    { @include columns(20); }
+.span21    { @include columns(21); }
+.span22    { @include columns(22); }
+.span23    { @include columns(23); }
+.span24    { @include columns(24); }
+
+// Offset column options
+.offset1   { @include offset(1); }
+.offset2   { @include offset(2); }
+.offset3   { @include offset(3); }
+.offset4   { @include offset(4); }
+.offset5   { @include offset(5); }
+.offset6   { @include offset(6); }
+.offset7   { @include offset(7); }
+.offset8   { @include offset(8); }
+.offset9   { @include offset(9); }
+.offset10  { @include offset(10); }
+.offset11  { @include offset(11); }
+.offset12  { @include offset(12); }
+
+// Unique column sizes for 16-column grid
+.span-one-third     { width: 300px; }
+.span-two-thirds    { width: 620px; }
+.offset-one-third   { margin-left: 340px; }
+.offset-two-thirds  { margin-left: 660px; }
