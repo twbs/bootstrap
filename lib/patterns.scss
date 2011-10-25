@@ -499,9 +499,9 @@ footer {
   &.danger:hover,
   &.error,
   &.error:hover,
-  &.success
+  &.success,
   &.success:hover,
-  &.info
+  &.info,
   &.info:hover {
     color: $white;
   }
@@ -525,7 +525,7 @@ footer {
   // Button Base
   cursor: pointer;
   display: inline-block;
-  @include vertical-three-colors-gradient(#fff, #fff, 0.25, darken(#fff, 10%));
+  @include vertical-three-colors-gradient(#fff, #fff, 25%, darken(#fff, 10%));
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
