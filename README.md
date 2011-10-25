@@ -24,6 +24,8 @@ Or if you prefer, the standard css way:
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 ```
 
+You can find a SCSS/SASS version in the lib/scss folder.
+
 For more info, refer to the docs!
 
 
