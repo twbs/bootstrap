@@ -40,15 +40,15 @@ $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gr
 // Color Scheme
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)
 $baseColor:         $blue;                  // Set a base color
-$complement:        spin($baseColor, 180);  // Determine a complementary color
-$split1:            spin($baseColor, 158);  // Split complements
-$split2:            spin($baseColor, -158);
-$triad1:            spin($baseColor, 135);  // Triads colors
-$triad2:            spin($baseColor, -135);
-$tetra1:            spin($baseColor, 90);   // Tetra colors
-$tetra2:            spin($baseColor, -90);
-$analog1:           spin($baseColor, 22);   // Analogs colors
-$analog2:           spin($baseColor, -22);
+$complement:        adjust-hue($baseColor, 180);  // Determine a complementary color
+$split1:            adjust-hue($baseColor, 158); // Split complements
+$split2:            adjust-hue($baseColor, -158);
+$triad1:            adjust-hue($baseColor, 135); // Triads colors
+$triad2:            adjust-hue($baseColor, -135);
+$tetra1:            adjust-hue($baseColor, 90); // Tetra colors
+$tetra2:            adjust-hue($baseColor, -90);
+$analog1:           adjust-hue($baseColor, 22); // Analogs colors
+$analog2:           adjust-hue($baseColor, -22);
 
 
 
