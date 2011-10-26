@@ -221,10 +221,6 @@ li.menu,
   position: relative;
 }
 
-.dropdown {
-  display: inline-block;
-}
-
 // The link that is clicked to toggle the dropdown
 // a.menu for backwards compatibility
 a.menu:after,
@@ -241,48 +237,6 @@ a.menu:after,
   border-right: 4px solid transparent;
   border-top: 4px solid @white;
   .opacity(50);
-}
-
-// Define different toggle styles (colors, borders, margin and padding) for dropdown buttons 
-.btn.dropdown-toggle,
-.btn.large.dropdown-toggle, 
-.btn.small.dropdown-toggle {
-  padding-right: 11px;
-}
-
-.btn.dropdown-toggle:after {
-  .opacity(80);
-  margin-top: 6px;
-  margin-left: 10px;
-}
-
-.btn.small.dropdown-toggle:after {
-  margin-top: 4px;
-}
-
-.btn.danger.dropdown-toggle:after,
-.btn.info.dropdown-toggle:after,
-.btn.primary.dropdown-toggle:after,
-.btn.success.dropdown-toggle:after, {
-  border-top-color: @white;
-}
-
-.btn.dropdown-toggle:after {
-  border-top-color: #999;
-}
-
-.btn.dropdown-toggle {
-  overflow: hidden;
-  
-  + .dropdown-menu {
-    top: 29px;
-    border-width: 1px;
-    .border-radius(6px 6px 6px 6px);
-  }
-  
-  &.large + .dropdown-menu {
-    top: 38px;
-  }
 }
 
 // The dropdown menu (ul)
@@ -350,27 +304,70 @@ a.menu:after,
 }
 
 // Open state for the dropdown, inside an li (in tabs or topbars)
-li.dropdown.open {
+.dropdown.open {
   .dropdown-toggle {
     color: @white;
     background: #ccc;
     background: rgba(0,0,0,.3);
   }
-}
-// Open state for dropdown buttons, inside an div.
-div.dropdown.open {
-  .dropdown-toggle {
-    @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
-    .box-shadow(@shadow);
-    background-position: 0 -15px;
-  }
-}
-// Common open state styles
-.dropdown.open {
+
+  // Common open state styles
   .dropdown-menu {
     display: block;
   }
   z-index: 100;
+}
+
+
+// BUTTON DROPDOWNS
+// ----------------
+
+// Wrap the buttons in linline-block for same-line rendering
+.btn-dropdown {
+  display: inline-block;
+}
+
+// Define different toggle styles (colors, borders, margin and padding) for dropdown buttons
+.btn-dropdown .dropdown-toggle {
+  padding-right: 11px;
+}
+
+// Position the dropdown arrow properly
+.btn-dropdown .dropdown-toggle:after {
+  margin-top: 6px;
+  margin-left: 10px;
+  border-top-color: #999;
+  .opacity(80);
+}
+// Give less margin for the small buttons dropdown arrow
+.btn-dropdown .small.dropdown-toggle:after {
+  margin-top: 4px;
+}
+
+// Change the dropdown arrow for all colored buttons
+.btn-dropdown .danger.dropdown-toggle:after,
+.btn-dropdown .info.dropdown-toggle:after,
+.btn-dropdown .primary.dropdown-toggle:after,
+.btn-dropdown .success.dropdown-toggle:after, {
+  border-top-color: @white;
+}
+
+// Open state for dropdown buttons, inside a div
+.btn-dropdown.open .dropdown-toggle {
+  @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
+  background-position: 0 -15px;
+}
+
+// Positioning and border adjustments
+.btn-dropdown .dropdown-menu {
+  top: 29px;
+  border-width: 1px;
+  .border-radius(4px);
+}
+// Change position for large buttons
+.btn-dropdown .large + .dropdown-menu {
+  top: 38px;
 }
 
 
