@@ -17,11 +17,11 @@
 
 /* Specify class=linenums on a pre to get line numbering */
 .linenums {
-  margin: 0 0 0 40px;
+  margin: 0;
 }
 /* IE indents via margin-left */
 .linenums li {
-  margin-left: -5px;
+  margin-left: 40px;
   padding: 0 5px;
   color: rgba(0,0,0,.15);
   line-height: 20px;
