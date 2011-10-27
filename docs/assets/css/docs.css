@@ -15,7 +15,7 @@ body {
   background-repeat: repeat-x;
 }
 
-/* Tweak topbar brand link to be super sleek
+/* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 body > .navbar-fixed .brand {
   padding-right: 0;
@@ -27,6 +27,12 @@ body > .navbar-fixed .brand {
 }
 body > .navbar-fixed .brand:hover {
   text-decoration: none;
+}
+
+/* Space out sub-sections more
+-------------------------------------------------- */
+.page-header {
+  margin-top: 36px;
 }
 
 /* Jumbotrons
@@ -92,12 +98,12 @@ body > .navbar-fixed .brand:hover {
   color: #999;
 }
 
-
 /* Specific jumbotrons
 ------------------------- */
 /* supporting docs pages */
 .subhead {
   padding-bottom: 14px;
+  margin-bottom: 45px;
   border-bottom: 3px solid #e5e5e5;
 }
 .subhead h1,
@@ -224,46 +230,6 @@ body > .navbar-fixed .brand:hover {
 }
 
 
-/* Topbar special styles
--------------------------------------------------- */
-.topbar-wrapper {
-  position: relative;
-  height: 40px;
-  margin: 5px 0 15px;
-}
-.topbar-wrapper .topbar {
-  position: absolute;
-  margin: 0 -20px;
-}
-.topbar-wrapper .topbar .topbar-inner {
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-}
-
-/* Topbar in js docs
-------------------------- */
-#bootstrap-js .topbar-wrapper {
-  z-index: 1;
-}
-#bootstrap-js .topbar-wrapper .topbar {
-  position: absolute;
-  margin: 0 -20px;
-}
-#bootstrap-js .topbar-wrapper .topbar .topbar-inner {
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-}
-#bootstrap-js .topbar-wrapper .container {
-  width: auto;
-}
-
-
 /* Popover docs
 -------------------------------------------------- */
 .popover-well {
@@ -288,15 +254,13 @@ img.large-bird {
 }
 
 
-/* Pretty Print
+/* Misc
 -------------------------------------------------- */
+
 pre.prettyprint {
   overflow: hidden;
 }
 
-
-/* Wells
--------------------------------------------------- */
 .well form {
   margin-bottom: 0;
 }
@@ -310,6 +274,7 @@ pre.prettyprint {
 h2 + table {
   margin-top: 5px;
 }
+
 
 /* Responsive Docs
 -------------------------------------------------- */
@@ -384,6 +349,7 @@ h2 + table {
   }
 
 }
+
 
 @media (min-width: 768px) and (max-width: 940px) {
 
