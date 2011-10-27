@@ -351,6 +351,21 @@ h2 + table {
 }
 
 
+@media (min-width: 480px) and (max-width: 768px) {
+
+  /* Scale down the jumbotron content */
+  .jumbotron h1 {
+    font-size: 54px;
+  }
+
+  .jumbotron h1,
+  .jumbotron p {
+    margin-right: 40%;
+  }
+
+}
+
+
 @media (min-width: 768px) and (max-width: 940px) {
 
   /* Scale down the jumbotron content */
