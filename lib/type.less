@@ -149,12 +149,12 @@ blockquote {
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
-    #font > .shorthand(300,14px,@baseLineHeight);
+    #font > .shorthand(300,16px,@baseLineHeight * 1.25);
     margin-bottom: 0;
   }
   small {
     display: block;
-    #font > .shorthand(300,12px,@baseLineHeight);
+    line-height: @baseLineHeight;
     color: @grayLight;
     &:before {
       content: '\2014 \00A0';

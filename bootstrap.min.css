@@ -84,8 +84,8 @@ strong{font-style:inherit;font-weight:bold;}
 em{font-style:italic;font-weight:inherit;line-height:inherit;}
 .muted{color:#bfbfbf;}
 abbr{font-size:90%;text-transform:uppercase;border-bottom:1px dotted #ddd;cursor:help;}
-blockquote{margin-bottom:18px;border-left:5px solid #eee;padding-left:15px;}blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0;}
-blockquote small{display:block;font-size:12px;font-weight:300;line-height:18px;color:#bfbfbf;}blockquote small:before{content:'\2014 \00A0';}
+blockquote{margin-bottom:18px;border-left:5px solid #eee;padding-left:15px;}blockquote p{font-size:16px;font-weight:300;line-height:22.5px;margin-bottom:0;}
+blockquote small{display:block;line-height:18px;color:#bfbfbf;}blockquote small:before{content:'\2014 \00A0';}
 address{display:block;line-height:18px;margin-bottom:18px;}
 code,pre{padding:0 3px 2px;font-family:Menlo, Monaco, Andale Mono, Courier New, monospace;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 code{background-color:#fee9cc;color:rgba(0, 0, 0, 0.75);padding:1px 3px;}

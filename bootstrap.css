@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Oct 22 22:49:01 PDT 2011
+ * Date: Wed Oct 26 21:03:54 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -479,15 +479,13 @@ blockquote {
   padding-left: 15px;
 }
 blockquote p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
-  line-height: 18px;
+  line-height: 22.5px;
   margin-bottom: 0;
 }
 blockquote small {
   display: block;
-  font-size: 12px;
-  font-weight: 300;
   line-height: 18px;
   color: #bfbfbf;
 }

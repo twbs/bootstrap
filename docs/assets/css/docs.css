@@ -328,10 +328,18 @@ h2 + table {
     display: block;
     line-height: 20px;
   }
+  /* More space between sections */
+  h2 {
+    margin-top: 27px;
+  }
+  h3 {
+    margin-top: 18px;
+  }
 
   /* Adjust the jumbotron */
   .jumbotron h1,
   .jumbotron p {
+    text-align: center;
     margin-right: 0;
   }
   .jumbotron h1 {
@@ -349,8 +357,15 @@ h2 + table {
     margin: 36px 0;
   }
   .jumbotron .btn {
+    display: block;
     font-size: 18px;
     padding: 10px 14px;
+    margin: 0 auto 10px;
+  }
+
+  /* Don't space out quick links so much */
+  .quick-links {
+    margin: 40px 0 0;
   }
 
   /* Popovers */
@@ -361,6 +376,15 @@ h2 + table {
     margin-left: 0;
   }
 
+  /* Space out the show-grid examples */
+  .show-grid [class*="span"] {
+    margin-bottom: 5px;
+  }
+
+  /* Unfloat the back to top link in footer */
+  .footer .pull-right {
+    float: none;
+  }
 
 }
 
