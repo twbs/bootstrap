@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Oct 26 21:19:44 PDT 2011
+ * Date: Wed Oct 26 21:28:20 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1635,7 +1635,7 @@ a.menu:after, .dropdown-toggle:after {
 .tabs > li > a {
   padding: 0 15px;
   margin-right: 2px;
-  line-height: 36px;
+  line-height: 34px;
   border: 1px solid transparent;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
