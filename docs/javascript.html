@@ -27,7 +27,24 @@
 
     <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
+    <div class="navbar navbar-fixed">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <ul class="nav">
+            <li><a href="./index.html">Overview</a></li>
+            <li><a href="./scaffolding.html">Scaffolding</a></li>
+            <li><a href="./base-css.html">Base CSS</a></li>
+            <li><a href="./components.html">Components</a></li>
+            <li class="active"><a href="./javascript.html">Javascript plugins</a></li>
+            <li><a href="./less.html">Using LESS</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<!--
+     <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="./index.html">Bootstrap</a>
@@ -44,14 +61,78 @@
         </div>
       </div>
     </div>
+ -->
 
-  <div class="container">
-    <!-- Masthead (blueprinty thing)
-    ================================================== -->
-    <header class="jumbotron subhead" id="overview">
-      <h1>Javascript for Bootstrap</h1>
-      <p class="lead">Bring Bootstrap's components to life with custom plugins for <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>.</p>
-    </header>
+    <div class="container">
+      <!-- Masthead
+      ================================================== -->
+      <header class="jumbotron subhead" id="overview">
+        <h1>Javascript for Bootstrap</h1>
+        <p class="lead">Bring Bootstrap's components to life with custom plugins for <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a></p>
+      </header>
+
+
+<!-- Using Javascript w/ Bootstrap
+ ================================================== -->
+
+ <section id="javascript">
+   <div class="page-header">
+     <h1>Using javascript with Bootstrap <small>An index of plugins to get you started</small></h1>
+   </div>
+   <div class="row">
+     <div class="span3">
+       <h2>Getting started</h2>
+       <p>Integrating javascript with the Bootstrap library is super easy. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
+       <p><a class="btn primary" href="./javascript.html">View javascript docs &raquo;</a></p>
+     </div>
+     <div class="span9">
+      <h3>What's included</h3>
+       <p>Bring some of Bootstrap's primary components to life with new custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>. We encourage you to extend and modify them to fit your specific development needs.</p>
+       <table class="zebra-striped">
+         <thead>
+           <tr>
+             <th style="width: 150px;">File</th>
+             <th>Description</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
+             <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#alerts">bootstrap-alerts.js</a></td>
+             <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#dropdowns">bootstrap-dropdown.js</a></td>
+             <td>This plugin is for adding dropdown interaction to the bootstrap navbar or tabbed navigations.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
+             <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap navbar.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#tabs">bootstrap-tabs.js</a></td>
+             <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
+             <td>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for local title storage!</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
+             <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
+           </tr>
+         </tbody>
+       </table>
+       <h3>Is javascript necessary?</h3>
+       <p><strong>Nope!</strong> Bootstrap is designed first and foremost to be a CSS library. This javascript provides a basic interactive layer on top of the included styles.</p>
+       <p>However, for those who do need javascript, we've provided the plugins above to help you understand how to integrate Bootstrap with javascript and to give you a quick, lightweight option for the basic functionality right away.</p>
+       <p>For more information and to see some live demos, please refer to our <a href="./javascript.html">plugin documentation page</a>.</p>
+     </div>
+   </div>
+</section>
 
 
     <!-- Modal
@@ -638,28 +719,27 @@ $('#my-modal').bind('hidden', function () {
     </section>
 
 
+      <!-- Footer
+      ================================================== -->
       <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>
-          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br />
-          Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
+          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br>
+          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
         </p>
       </footer>
-
     </div><!-- /container -->
 
-
     <!-- Le javascript -->
-    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-modal.js"></script>
-    <script src="../js/bootstrap-alerts.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-transitions.js"></script>
     <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
     <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tabs.js"></script>
-
+    <script src="assets/js/application.js"></script>
   </body>
 </html>

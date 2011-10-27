@@ -14,9 +14,6 @@ body {
   background-image: url(../img/grid-18px-masked.png);
   background-repeat: repeat-x;
 }
-section {
-  padding-top: 60px;
-}
 
 /* Tweak topbar brand link to be super sleek
 -------------------------------------------------- */
@@ -40,7 +37,7 @@ body > .navbar-fixed .brand:hover {
 }
 .jumbotron h1 {
   margin-right: 40%;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
   font-size: 90px;
   letter-spacing: -1px;
   line-height: 1;
@@ -100,15 +97,15 @@ body > .navbar-fixed .brand:hover {
 ------------------------- */
 /* supporting docs pages */
 .subhead {
-  padding-bottom: 18px;
-  border-bottom: 3px solid #eee;
+  padding-bottom: 14px;
+  border-bottom: 3px solid #e5e5e5;
 }
 .subhead h1,
 .subhead p {
   margin-right: 0;
 }
 .subhead h1 {
-  font-size: 40px;
+  font-size: 45px;
 }
 
 

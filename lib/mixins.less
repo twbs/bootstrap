@@ -162,10 +162,17 @@
 }
 
 // Background clipping
+// Heads up: FF 3.6 and under need padding instead of padding-box
 .background-clip(@clip) {
   -webkit-background-clip: @clip;
      -moz-background-clip: @clip;
           background-clip: @clip;
+}
+
+// Resize anything
+.resizable(@direction: both) {
+  resize: @direction; // Options: horizontal, vertical, both
+  overflow: auto; // Safari fix
 }
 
 // CSS3 Content Columns
