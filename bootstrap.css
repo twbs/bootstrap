@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Oct 20 09:12:21 PDT 2011
+ * Date: Wed Oct 26 21:19:44 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1093,6 +1093,9 @@ table td {
 table tbody th {
   border-top: 1px solid #ddd;
   vertical-align: top;
+}
+.condensed-table th, .condensed-table td {
+  padding: 5px 5px 4px;
 }
 .bordered-table {
   border: 1px solid #ddd;
