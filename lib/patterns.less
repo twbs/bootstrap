@@ -435,10 +435,25 @@ a.menu:after,
   li {
     display: inline;
     text-shadow: 0 1px 0 @white;
+    // The preferred selector would be &:not(:last-child):after 
+    // Unfortunately IE<9 doesn't support the :not selector
+    // therefore we generate the divider as content in the after pseudo element and
+    // use the active class to hide it for the last child.
+    &:after {
+        content: @breadcrumbDivider;
+        padding: 0 5px;
+        color: @grayLight;
+    }
+    &.active:after{
+        content: '';
+    }
   }
+  // .divider For backwards compatibility
+  // The divider is now a pseudo element, hide any old explicitly coded instances.
+  // TODO: only hide in case :after pseudo element is not supported
+  // unclear how to accomplish it in pure CSS.
   .divider {
-    padding: 0 5px;
-    color: @grayLight;
+    display: none;
   }
   a {
   }
