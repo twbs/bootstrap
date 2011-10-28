@@ -172,9 +172,13 @@ body > .navbar-fixed .brand:hover {
 .marketing p {
   margin-right: 10px;
 }
-.marketing img {
+.marketing .icon {
   float: left;
   margin: 7px 10px 0 0;
+}
+.marketing .small-icon {
+  float: left;
+  margin: 4px 5px 0 0;
 }
 
 
