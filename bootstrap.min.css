@@ -183,8 +183,8 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 table{width:100%;margin-bottom:18px;padding:0;border-collapse:separate;*border-collapse:collapse;font-size:13px;border:1px solid #ddd;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;}
 table th{padding-top:9px;font-weight:bold;vertical-align:middle;border-bottom:1px solid #ddd;}
 table td{vertical-align:top;}
-table th+th,table td+td{border-left:1px solid #ddd;}
-table tr+tr td{border-top:1px solid #ddd;}
+table th+th,table th+td,table td+td{border-left:1px solid #ddd;}
+table tr+tr th,table tr+tr td,table tfoot th,table tfoot td,table tbody+tbody tr:first-child th,table tbody+tbody tr:first-child td{border-top:1px solid #ddd;}
 table tbody tr:first-child td:first-child{-webkit-border-radius:4px 0 0 0;-moz-border-radius:4px 0 0 0;border-radius:4px 0 0 0;}
 table tbody tr:first-child td:last-child{-webkit-border-radius:0 4px 0 0;-moz-border-radius:0 4px 0 0;border-radius:0 4px 0 0;}
 table tbody tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;}
