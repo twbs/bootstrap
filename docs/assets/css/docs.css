@@ -5,6 +5,7 @@
   Special styles for presenting Bootstrap's documentation and examples
 */
 
+
 /* Body and structure
 -------------------------------------------------- */
 body {
@@ -14,6 +15,7 @@ body {
   background-image: url(../img/grid-18px-masked.png);
   background-repeat: repeat-x;
 }
+
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
@@ -29,11 +31,13 @@ body > .navbar-fixed .brand:hover {
   text-decoration: none;
 }
 
+
 /* Space out sub-sections more
 -------------------------------------------------- */
 .page-header {
   margin-top: 36px;
 }
+
 
 /* Jumbotrons
 -------------------------------------------------- */
@@ -119,7 +123,7 @@ body > .navbar-fixed .brand:hover {
 -------------------------------------------------- */
 .quick-links {
   padding: 5px 20px;
-  margin: 60px 0;
+  margin: 45px 0;
   list-style: none;
   text-align: center;
   background-color: #eee;
@@ -149,13 +153,40 @@ body > .navbar-fixed .brand:hover {
 }
 
 
+/* Marketing section of Overview
+-------------------------------------------------- */
+.marketing .row {
+  margin-bottom: 18px;
+}
+.marketing h1 {
+  margin-bottom: 18px;
+}
+.marketing h2,
+.marketing h3 {
+  font-weight: 300;
+  color: #000;
+}
+.marketing h2 {
+  margin-bottom: 9px;
+}
+.marketing p {
+  margin-right: 10px;
+}
+.marketing img {
+  float: left;
+  margin: 7px 10px 0 0;
+}
+
+
 /* Footer
 -------------------------------------------------- */
 .footer {
-  padding: 30px 0;
+  margin-top: 45px;
+  padding: 35px 0 36px;
   border-top: 1px solid #e5e5e5;
 }
 .footer p {
+  margin-bottom: 0;
   color: #555;
 }
 
