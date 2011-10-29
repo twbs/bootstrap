@@ -21,3 +21,13 @@ Files to convert:
 * responsive-tables.less
 * responsive-patterns.less
 * responsive-mixins.less
+
+
+PER FILE NOTES
+
+mixins.less
+.size() & .square() don't appear to be used anywhere in the project. Why are they around?
+
+Added mixin .large-type()
+
+
