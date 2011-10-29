@@ -13,7 +13,7 @@ X * responsive-forms.less (mostly done, suspect the rest will workout once other
 
 Files added to:
 
-X * responsive-mixins.less
+* X responsive-mixins.less
 
 Files to convert:
 

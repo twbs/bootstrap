@@ -13,16 +13,16 @@ table {
   padding: 0;
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapse; /* IE7, collapse table to remove spacing */
-  font-size: @basefont;
+  font-size: 1em;
   border: 1px solid #ddd;
-  .border-radius(4px);
+  .border-radius(0.30769230769231em); // 4/13
   th, td {
-    padding: 10px 10px 9px;
+    padding: 0.76923076923077em 0.76923076923077em 0.69230769230769em; // 10/13 & 9/13
     line-height: @baseLineHeight;
     text-align: left;
   }
   th {
-    padding-top: 9px;
+    padding-top: 0.69230769230769em; // 9/13
     font-weight: bold;
     vertical-align: middle;
     border-bottom: 1px solid #ddd;
@@ -38,16 +38,16 @@ table {
     border-top: 1px solid #ddd;
   }
   tbody tr:first-child td:first-child {
-    .border-radius(4px 0 0 0);
+    .border-radius(0.30769230769231em 0 0 0); // 4/13
   }
   tbody tr:first-child td:last-child {
-    .border-radius(0 4px 0 0);
+    .border-radius(0 0.30769230769231em 0 0); // 4/13
   }
   tbody tr:last-child td:first-child {
-    .border-radius(0 0 0 4px);
+    .border-radius(0 0 0 0.30769230769231em); // 4/13
   }
   tbody tr:last-child td:last-child {
-    .border-radius(0 0 4px 0);
+    .border-radius(0 0 0.30769230769231em 0); // 4/13
   }
 }
 
@@ -74,8 +74,8 @@ table {
     &:after {
       content: "";
       float: right;
-      margin-top: 7px;
-      border-width: 0 4px 4px;
+      margin-top: 0.46153846153846em; // 7/13
+      border-width: 0 0.30769230769231em 0.30769230769231em; // 4/13
       border-style: solid;
       border-color: #000 transparent;
       visibility: hidden;
@@ -105,9 +105,9 @@ table {
   .headerSortUp {
     &:after {
       border-bottom: none;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 4px solid #000;
+      border-left: 0.30769230769231em solid transparent;
+      border-right: 0.30769230769231em solid transparent;
+      border-top: 0.30769230769231em solid #000;
       visibility:visible;
       .box-shadow(none); //can't add boxshadow to downward facing arrow :(
       .opacity(60);
