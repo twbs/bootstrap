@@ -348,11 +348,6 @@ h2 + table {
     font-size: 18px;
     line-height: 24px;
   }
-  .jumbotron .benefits {
-    position: relative;
-    width: auto;
-    margin: 36px 0;
-  }
   .jumbotron .btn {
     display: block;
     font-size: 18px;
@@ -363,6 +358,23 @@ h2 + table {
   /* Don't space out quick links so much */
   .quick-links {
     margin: 40px 0 0;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  /* Hide the nav for now */
+  body > .navbar-fixed .nav {
+    display: none;
+  }
+
+  /* Adjust the jumbotron */
+  .jumbotron .benefits {
+    position: relative;
+    width: auto;
+    margin: 36px 0;
   }
 
   /* Popovers */
@@ -395,7 +407,7 @@ h2 + table {
 
   .jumbotron h1,
   .jumbotron p {
-    margin-right: 40%;
+    margin-right: 0;
   }
 
 }
