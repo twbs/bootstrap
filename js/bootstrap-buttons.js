@@ -36,15 +36,27 @@
       $el.removeClass(d).removeAttr(d)
   }
 
-  $.fn.button = function(state) {
-    var d = 'disabled'
+  function toggle(el) {
+    $(el).toggleClass('active')
+  }
+
+  $.fn.button = function(options) {
     return this.each(function () {
-      state && setState(this, state)
+      if (options == 'toggle') {
+        return toggle(this)
+      }
+      options && setState(this, options)
     })
   }
 
   $.fn.button.defaults = {
     loadingText: 'loading...'
   }
+
+  $(function () {
+    $('body').delegate('.btn[data-toggle]', 'click', function () {
+      $(this).button('toggle')
+    })
+  })
 
 }( window.jQuery || window.ender );

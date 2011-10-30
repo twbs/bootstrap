@@ -20,6 +20,8 @@
 
 !function( $ ) {
 
+ "use strict"
+
   var Popover = function ( element, options ) {
     this.$element = $(element)
     this.options = options

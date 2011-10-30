@@ -314,7 +314,7 @@ $('#my-modal').bind('hidden', function () {
       </div>
     </section>
 
-    <!-- Tabs
+    <!-- Buttons
     ================================================== -->
 
     <section id="buttons">
@@ -329,10 +329,11 @@ $('#my-modal').bind('hidden', function () {
         <div class="span12 columns">
           <h3>Using bootstrap-buttons.js</h3>
           <pre class="prettyprint linenums">$('.tabs').button()</pre>
-          <h3>Markup</h3>
-          <p>You can leverage bootstraps button toggle helper without writing any javascript by using the <code>data-toggle</code> attribute.</p>
-          <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="toggle" &gt;...&lt;/button&gt;</pre>
           <h3>Methods</h3>
+          <h4>$().button('toggle')</h4>
+          <p>Toggles push state. Gives btn the look that it's been activated.</p>
+          <p><span class="label notice">Notice</span> You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
+          <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="toggle" &gt;...&lt;/button&gt;</pre>
           <h4>$().button('loading')</h4>
           <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
           </p>
@@ -346,7 +347,8 @@ $('#my-modal').bind('hidden', function () {
   $('.btn').button('complete')
 &lt;/scrip&gt;</pre>
           <h3>Demo</h3>
-          <button id="fat-btn" class="btn danger">Click me</button>
+          <button id="fat-btn" data-loading-text="foo" class="btn danger">Loading Demo</button>
+          <button class="btn" data-toggle="toggle">Toggle Demo</button>
           <script>
             $(function() {
               var btn = $('#fat-btn').click(function () {
@@ -442,22 +444,22 @@ $('#.tabs').bind('change', function (e) {
             </li>
           </ul>
           <div id="my-tab-content" class="tab-content">
-            <div class="active" id="home">
+            <div class="active tab-pane" id="home">
               <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
             </div>
-            <div id="profile">
+            <div class="tab-pane" id="profile">
               <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
             </div>
-            <div id="messages">
+            <div class="tab-pane" id="messages">
               <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
             </div>
-            <div id="settings">
+            <div class="tab-pane" id="settings">
               <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
             </div>
-            <div id="fat">
+            <div class="tab-pane" id="fat">
               <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
             </div>
-            <div id="mdo">
+            <div class="tab-pane" id="mdo">
               <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
             </div>
           </div>

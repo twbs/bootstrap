@@ -20,6 +20,8 @@
 
 !function( $ ){
 
+  "use strict"
+
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 

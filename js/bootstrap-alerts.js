@@ -20,6 +20,8 @@
 
 !function( $ ){
 
+  "use strict"
+
   /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
    * ======================================================= */
 

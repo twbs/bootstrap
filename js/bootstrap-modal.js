@@ -20,6 +20,8 @@
 
 !function( $ ){
 
+  "use strict"
+
  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
   * ======================================================= */
 
@@ -115,17 +117,9 @@
           .trigger('hide')
           .removeClass('in')
 
-        function removeElement () {
-          that.$element
-            .hide()
-            .trigger('hidden')
-
-          backdrop.call(that)
-        }
-
         $.support.transition && this.$element.hasClass('fade') ?
-          this.$element.one(transitionEnd, removeElement) :
-          removeElement()
+          this.$element.one(transitionEnd, $.proxy(hideModal, this)) :
+          hideModal.call(this)
 
         return this
       }
@@ -135,6 +129,14 @@
 
  /* MODAL PRIVATE METHODS
   * ===================== */
+
+  function hideModal (that) {
+    this.$element
+      .hide()
+      .trigger('hidden')
+
+    backdrop.call(this)
+  }
 
   function backdrop ( callback ) {
     var that = this
@@ -162,17 +164,18 @@
     } else if ( !this.isShown && this.$backdrop ) {
       this.$backdrop.removeClass('in')
 
-      function removeElement() {
-        that.$backdrop.remove()
-        that.$backdrop = null
-      }
-
       $.support.transition && this.$element.hasClass('fade')?
-        this.$backdrop.one(transitionEnd, removeElement) :
-        removeElement()
+        this.$backdrop.one(transitionEnd, $.proxy(removeBackdrop, this)) :
+        removeBackdrop.call(this)
+
     } else if ( callback ) {
        callback()
     }
+  }
+
+  function removeBackdrop() {
+    this.$backdrop.remove()
+    this.$backdrop = null
   }
 
   function escape() {
