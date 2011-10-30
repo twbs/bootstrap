@@ -22,6 +22,7 @@
     <script src="../js/bootstrap-dropdown.js"></script>
     <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="../js/bootstrap-tabs.js"></script>
+    <script src="../js/bootstrap-buttons.js"></script>
 
     <!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
@@ -48,6 +49,7 @@
             <li><a href="#modal">Modals</a></li>
             <li><a href="#dropdown">Dropdown</a></li>
             <li><a href="#scrollspy">ScrollSpy</a></li>
+            <li><a href="#buttons">Buttons</a></li>
             <li><a href="#tabs">Tabs</a></li>
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
@@ -311,6 +313,54 @@ $('#my-modal').bind('hidden', function () {
         </div>
       </div>
     </section>
+
+    <!-- Tabs
+    ================================================== -->
+
+    <section id="buttons">
+      <div class="page-header">
+        <h1>Buttons <small>bootstrap-buttons.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>This plugin offers additional functionality for managing button state.</p>
+          <a href="../js/bootstrap-buttons.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h3>Using bootstrap-buttons.js</h3>
+          <pre class="prettyprint linenums">$('.tabs').button()</pre>
+          <h3>Markup</h3>
+          <p>You can leverage bootstraps button toggle helper without writing any javascript by using the <code>data-toggle</code> attribute.</p>
+          <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="toggle" &gt;...&lt;/button&gt;</pre>
+          <h3>Methods</h3>
+          <h4>$().button('loading')</h4>
+          <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
+          </p>
+           <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+           <h4>$().button('reset')</h4>
+           <p>Resets button state - swaps text to original text.</p>
+           <h4>$().button(string)</h4>
+           <p>Resets button state - swaps text to any data defined text state.</p>
+<pre class="prettyprint linenums">&lt;button class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
+&lt;script&gt;
+  $('.btn').button('complete')
+&lt;/scrip&gt;</pre>
+          <h3>Demo</h3>
+          <button id="fat-btn" class="btn danger">Click me</button>
+          <script>
+            $(function() {
+              var btn = $('#fat-btn').click(function () {
+                btn.button('loading')
+                setTimeout(function () {
+                  btn.button('reset')
+                }, 3000)
+              })
+            })
+          </script>
+        </div>
+      </div>
+    </section>
+
 
     <!-- Tabs
     ================================================== -->
