@@ -555,6 +555,8 @@ $('#.tabs').bind('change', function (e) {
              </tr>
             </tbody>
           </table>
+          <p><span class="label notice">Notice</span> Individual twipsy instance options can alternatively be specified through the use of data attributes.</code></p>
+          <pre class="prettyprint linenums">&lt;a href="#" data-placement="below" rel='twipsy' title='Some title text'&gt;text&lt;/a&gt;</pre>
           <h3>Methods</h3>
           <h4>$().twipsy(options)</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
@@ -669,7 +671,7 @@ $('#.tabs').bind('change', function (e) {
                <td>content</td>
                <td>string, function</td>
                <td>'data-content'</td>
-               <td>attribute or method for retrieving content text</td>
+               <td>a string or method for retrieving content text. if none are provided, content will be sourced from a data-content attribute.</td>
              </tr>
              <tr>
                <td>trigger</td>
@@ -679,6 +681,8 @@ $('#.tabs').bind('change', function (e) {
              </tr>
             </tbody>
           </table>
+          <p><span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.</code></p>
+          <pre class="prettyprint linenums">&lt;a data-placement="below" href="#" class="btn danger" rel="popover"&gt;text&lt;/a&gt;</pre>
           <h3>Methods</h3>
           <h4>$().popover(options)</h4>
           <p>Initializes popovers for an element collection.</p>

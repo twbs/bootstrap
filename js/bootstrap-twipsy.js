@@ -299,7 +299,7 @@
   }
 
   $.fn.twipsy.elementOptions = function(ele, options) {
-    return $.metadata ? $.extend({}, options, $(ele).metadata()) : options
+    return $.extend({}, options, $(ele).data())
   }
 
 }( window.jQuery || window.ender );
