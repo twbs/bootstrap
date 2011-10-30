@@ -72,7 +72,7 @@
         , $tip
         , tp
 
-      if (this.getTitle() && this.enabled) {
+      if (this.hasContent() && this.enabled) {
         $tip = this.tip()
         this.setContent()
 
@@ -145,6 +145,10 @@
       }
     }
 
+  , hasContent: function () {
+      return this.getTitle()
+    }
+
   , getTitle: function() {
       var title
         , $e = this.$element
@@ -165,7 +169,7 @@
 
   , tip: function() {
       if (!this.$tip) {
-        this.$tip = $('<div class="twipsy" />').html('<div class="twipsy-arrow"></div><div class="twipsy-inner"></div>')
+        this.$tip = $('<div class="twipsy" />').html(this.options.template)
       }
       return this.$tip
     }
@@ -296,6 +300,7 @@
   , offset: 0
   , title: 'title'
   , trigger: 'hover'
+  , template: '<div class="twipsy-arrow"></div><div class="twipsy-inner"></div>'
   }
 
   $.fn.twipsy.elementOptions = function(ele, options) {

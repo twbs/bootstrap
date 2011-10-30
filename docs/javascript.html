@@ -553,6 +553,12 @@ $('#.tabs').bind('change', function (e) {
                <td>'hover'</td>
                <td>how tooltip is triggered - hover | focus | manual</td>
              </tr>
+             <tr>
+               <td>template</td>
+               <td>string</td>
+               <td>[default markup]</td>
+               <td>The html template used for rendering a twipsy.</td>
+             </tr>
             </tbody>
           </table>
           <p><span class="label notice">Notice</span> Individual twipsy instance options can alternatively be specified through the use of data attributes.</code></p>
@@ -679,6 +685,12 @@ $('#.tabs').bind('change', function (e) {
                <td>'hover'</td>
                <td>how tooltip is triggered - hover | focus | manual</td>
              </tr>
+             <tr>
+               <td>template</td>
+               <td>string</td>
+               <td>[default markup]</td>
+               <td>The html template used for rendering a popover.</td>
+             </tr>
             </tbody>
           </table>
           <p><span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.</code></p>
@@ -693,7 +705,7 @@ $('#.tabs').bind('change', function (e) {
           <p>Hides an elements popover.</p>
           <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
           <h3>Demo</h3>
-          <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
+          <a href="#" class="btn danger" rel="popover" title="A title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
           <script>
             $(function () {
               $("a[rel=popover]")
