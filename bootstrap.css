@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Oct 28 18:57:30 PDT 2011
+ * Date: Sat Oct 29 17:08:31 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -813,67 +813,99 @@ textarea.xxlarge {
 }
 input.span1, textarea.span1 {
   display: inline-block;
+  float: none;
   width: 30px;
+  margin-left: 0;
 }
 input.span2, textarea.span2 {
   display: inline-block;
+  float: none;
   width: 90px;
+  margin-left: 0;
 }
 input.span3, textarea.span3 {
   display: inline-block;
+  float: none;
   width: 150px;
+  margin-left: 0;
 }
 input.span4, textarea.span4 {
   display: inline-block;
+  float: none;
   width: 210px;
+  margin-left: 0;
 }
 input.span5, textarea.span5 {
   display: inline-block;
+  float: none;
   width: 270px;
+  margin-left: 0;
 }
 input.span6, textarea.span6 {
   display: inline-block;
+  float: none;
   width: 330px;
+  margin-left: 0;
 }
 input.span7, textarea.span7 {
   display: inline-block;
+  float: none;
   width: 390px;
+  margin-left: 0;
 }
 input.span8, textarea.span8 {
   display: inline-block;
+  float: none;
   width: 450px;
+  margin-left: 0;
 }
 input.span9, textarea.span9 {
   display: inline-block;
+  float: none;
   width: 510px;
+  margin-left: 0;
 }
 input.span10, textarea.span10 {
   display: inline-block;
+  float: none;
   width: 570px;
+  margin-left: 0;
 }
 input.span11, textarea.span11 {
   display: inline-block;
+  float: none;
   width: 630px;
+  margin-left: 0;
 }
 input.span12, textarea.span12 {
   display: inline-block;
+  float: none;
   width: 690px;
+  margin-left: 0;
 }
 input.span13, textarea.span13 {
   display: inline-block;
+  float: none;
   width: 750px;
+  margin-left: 0;
 }
 input.span14, textarea.span14 {
   display: inline-block;
+  float: none;
   width: 810px;
+  margin-left: 0;
 }
 input.span15, textarea.span15 {
   display: inline-block;
+  float: none;
   width: 870px;
+  margin-left: 0;
 }
 input.span16, textarea.span16 {
   display: inline-block;
+  float: none;
   width: 930px;
+  margin-left: 0;
 }
 input[disabled],
 select[disabled],

@@ -21,24 +21,33 @@
 !function( $ ){
 
   function activate ( element, container ) {
-    container.find('> .active').removeClass('active')
+    container
+      .find('> .active')
+      .removeClass('active')
+      .find('> .dropdown-menu > .active')
+      .removeClass('active')
+
     element.addClass('active')
+
+    if ( element.parent('.dropdown-menu') ) {
+      element.closest('li.dropdown').addClass('active')
+    }
   }
 
   function tab( e ) {
     var $this = $(this)
-      , $ul = $this.closest('ul')
+      , $ul = $this.closest('ul:not(.dropdown-menu)')
       , href = $this.attr('href')
       , previous
 
-    if (/^#\w+/.test(href)) {
+    if ( /^#\w+/.test(href) ) {
       e.preventDefault()
 
-      if ($this.parent('li').hasClass('active')) {
+      if ( $this.parent('li').hasClass('active') ) {
         return
       }
 
-      previous = $ul.find('.active a')[0]
+      previous = $ul.find('.active a').last()[0]
       $href = $(href)
 
       activate($this.parent('li'), $ul)
