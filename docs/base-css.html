@@ -227,15 +227,17 @@
   <h3>Example blockquotes</h3>
   <div class="row">
     <div class="span6">
+      <p>Default blockquotes are styled as such:</p>
       <blockquote>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-        <small>Someone famous</small>
+        <small>Someone famous in <cite title="">Body of work</cite></small>
       </blockquote>
     </div>
     <div class="span6">
+      <p>To float your blockquote to the right, add <code>class="pull-right"</code>:</p>
       <blockquote class="pull-right">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-        <small>Someone famous</small>
+        <small>Someone famous in <cite title="">Body of work</cite></small>
       </blockquote>
     </div>
   </div>
@@ -513,6 +515,45 @@
 </pre>
     </div>
   </div>
+
+  <h2>Table options</h2>
+  <table class="striped-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Default</td>
+        <td class="muted">None</td>
+        <td>Only horizontal lines between rows</td>
+      </tr>
+      <tr>
+        <td>Bordered</td>
+        <td>
+          <code>.bordered-table</code>
+        </td>
+        <td>Rounds corners and adds outter border</td>
+      </tr>
+      <tr>
+        <td>Zebra-stripe</td>
+        <td>
+          <code>.striped-table</code>
+        </td>
+        <td>Adds light gray background color to odd rows (1, 3, 5, etc)</td>
+      </tr>
+      <tr>
+        <td>Condensed</td>
+        <td>
+          <code>.condensed-table</code>
+        </td>
+        <td>Cuts padding in half, from 10px to 5px, within all <code>td</code> and <code>th</code> elements</td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2>Example tables</h2>
   <h3>1. Default table styles</h3>
