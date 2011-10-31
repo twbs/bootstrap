@@ -164,7 +164,6 @@ body > .navbar-fixed .brand:hover {
 .marketing h2,
 .marketing h3 {
   font-weight: 300;
-  color: #000;
 }
 .marketing h2 {
   margin-bottom: 9px;
@@ -175,6 +174,7 @@ body > .navbar-fixed .brand:hover {
 .marketing .icon {
   float: left;
   margin: 7px 10px 0 0;
+  opacity: .8;
 }
 .marketing .small-icon {
   float: left;
@@ -299,7 +299,6 @@ pre.prettyprint {
 .well form {
   margin-bottom: 0;
 }
-
 
 .browser-support {
   max-width: 100%;

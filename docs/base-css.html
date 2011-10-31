@@ -92,8 +92,8 @@
     <thead>
       <tr>
         <th>Element</th>
-        <th>Description</th>
         <th>Usage</th>
+        <th>Optional</th>
       </tr>
     </thead>
     <tbody>
@@ -175,23 +175,71 @@
 
   <!-- Blockquotes -->
   <h2>Blockquotes</h2>
+  <table class="bordered-table">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Usage</th>
+        <th>Optional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <code>&lt;blockquote&gt;</code>
+        </td>
+        <td>
+          Block-level element for quoting content from another source
+        </td>
+        <td>
+          <p>Add <code>cite</code> attribute for source URL</p>
+          Use <code>.pull-left</code> and <code>.pull-right</code> classes for floated options
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;small&gt;</code>
+        </td>
+        <td>
+          Optional element for adding a user-facing citation, typically an author with title of work
+        </td>
+        <td>
+          Place the <code>&lt;cite&gt;</code> around the title or name of source
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <div class="row">
-    <div class="span5">
-      <p>To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around <code>&lt;p&gt;</code> and <code>&lt;small&gt;</code> tags. Use the <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it.</p>
-      <blockquote>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-        <small>Someone famous</small>
-      </blockquote>
+    <div class="span4">
+      <p>To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
+      <p>Include an optional <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it for styling purposes.</p>
     </div>
-    <div class="span7">
+    <div class="span8">
 <pre class="prettyprint linenums">
 &lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.&lt;/p&gt;
-  &lt;small&gt;Dr. Julius Hibbert&lt;/small&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.&lt;/p&gt;
+  &lt;small&gt;Someone famous&lt;/small&gt;
 &lt;/blockquote&gt;
 </pre>
     </div>
+  </div><!--/row-->
+
+  <h3>Example blockquotes</h3>
+  <div class="row">
+    <div class="span6">
+      <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
+        <small>Someone famous</small>
+      </blockquote>
+    </div>
+    <div class="span6">
+      <blockquote class="pull-right">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
+        <small>Someone famous</small>
+      </blockquote>
+    </div>
   </div>
+
 
   <!-- Lists -->
   <h2>Lists</h2>

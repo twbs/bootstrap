@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Oct 28 18:37:59 PDT 2011
+ * Date: Sun Oct 30 20:12:53 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -489,6 +489,12 @@ blockquote small {
 }
 blockquote small:before {
   content: '\2014 \00A0';
+}
+blockquote.pull-right {
+  float: right;
+}
+blockquote.pull-right p, blockquote.pull-right small {
+  text-align: right;
 }
 address {
   display: block;
