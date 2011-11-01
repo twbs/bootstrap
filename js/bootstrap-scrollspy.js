@@ -20,6 +20,8 @@
 
 !function ( $ ) {
 
+  "use strict"
+
   var $window = $(window)
 
   function ScrollSpy( topbar, selector ) {

@@ -22,6 +22,7 @@
     <script src="../js/bootstrap-dropdown.js"></script>
     <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="../js/bootstrap-tabs.js"></script>
+    <script src="../js/bootstrap-buttons.js"></script>
 
     <!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
@@ -48,6 +49,7 @@
             <li><a href="#modal">Modals</a></li>
             <li><a href="#dropdown">Dropdown</a></li>
             <li><a href="#scrollspy">ScrollSpy</a></li>
+            <li><a href="#buttons">Buttons</a></li>
             <li><a href="#tabs">Tabs</a></li>
             <li><a href="#twipsy">Twipsy</a></li>
             <li><a href="#popover">Popover</a></li>
@@ -195,7 +197,6 @@ $('#my-modal').bind('hidden', function () {
           </div>
 
           <button data-controls-modal="modal-from-dom" data-backdrop="true" data-keyboard="true" class="btn danger">Launch Modal</button>
-
         </div>
       </div>
     </section>
@@ -313,6 +314,56 @@ $('#my-modal').bind('hidden', function () {
       </div>
     </section>
 
+    <!-- Buttons
+    ================================================== -->
+
+    <section id="buttons">
+      <div class="page-header">
+        <h1>Buttons <small>bootstrap-buttons.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>This plugin offers additional functionality for managing button state.</p>
+          <a href="../js/bootstrap-buttons.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h3>Using bootstrap-buttons.js</h3>
+          <pre class="prettyprint linenums">$('.tabs').button()</pre>
+          <h3>Methods</h3>
+          <h4>$().button('toggle')</h4>
+          <p>Toggles push state. Gives btn the look that it's been activated.</p>
+          <p><span class="label notice">Notice</span> You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
+          <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="toggle" &gt;...&lt;/button&gt;</pre>
+          <h4>$().button('loading')</h4>
+          <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
+          </p>
+           <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+           <h4>$().button('reset')</h4>
+           <p>Resets button state - swaps text to original text.</p>
+           <h4>$().button(string)</h4>
+           <p>Resets button state - swaps text to any data defined text state.</p>
+<pre class="prettyprint linenums">&lt;button class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
+&lt;script&gt;
+  $('.btn').button('complete')
+&lt;/scrip&gt;</pre>
+          <h3>Demo</h3>
+          <button id="fat-btn" data-loading-text="foo" class="btn danger">Loading Demo</button>
+          <button class="btn" data-toggle="toggle">Toggle Demo</button>
+          <script>
+            $(function() {
+              var btn = $('#fat-btn').click(function () {
+                btn.button('loading')
+                setTimeout(function () {
+                  btn.button('reset')
+                }, 3000)
+              })
+            })
+          </script>
+        </div>
+      </div>
+    </section>
+
+
     <!-- Tabs
     ================================================== -->
 
@@ -384,19 +435,32 @@ $('#.tabs').bind('change', function (e) {
             <li><a href="#profile">Profile</a></li>
             <li><a href="#messages">Messages</a></li>
             <li><a href="#settings">Settings</a></li>
+            <li class="dropdown" data-dropdown="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#fat">@fat</a></li>
+                <li><a href="#mdo">@mdo</a></li>
+              </ul>
+            </li>
           </ul>
           <div id="my-tab-content" class="tab-content">
-            <div class="active" id="home">
+            <div class="active tab-pane" id="home">
               <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
             </div>
-            <div id="profile">
+            <div class="tab-pane" id="profile">
               <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
             </div>
-            <div id="messages">
+            <div class="tab-pane" id="messages">
               <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
             </div>
-            <div id="settings">
+            <div class="tab-pane" id="settings">
               <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
+            </div>
+            <div class="tab-pane" id="fat">
+              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+            </div>
+            <div class="tab-pane" id="mdo">
+              <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
             </div>
           </div>
         </div>
@@ -489,8 +553,16 @@ $('#.tabs').bind('change', function (e) {
                <td>'hover'</td>
                <td>how tooltip is triggered - hover | focus | manual</td>
              </tr>
+             <tr>
+               <td>template</td>
+               <td>string</td>
+               <td>[default markup]</td>
+               <td>The html template used for rendering a twipsy.</td>
+             </tr>
             </tbody>
           </table>
+          <p><span class="label notice">Notice</span> Individual twipsy instance options can alternatively be specified through the use of data attributes.</code></p>
+          <pre class="prettyprint linenums">&lt;a href="#" data-placement="below" rel='twipsy' title='Some title text'&gt;text&lt;/a&gt;</pre>
           <h3>Methods</h3>
           <h4>$().twipsy(options)</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
@@ -605,7 +677,7 @@ $('#.tabs').bind('change', function (e) {
                <td>content</td>
                <td>string, function</td>
                <td>'data-content'</td>
-               <td>attribute or method for retrieving content text</td>
+               <td>a string or method for retrieving content text. if none are provided, content will be sourced from a data-content attribute.</td>
              </tr>
              <tr>
                <td>trigger</td>
@@ -613,8 +685,16 @@ $('#.tabs').bind('change', function (e) {
                <td>'hover'</td>
                <td>how tooltip is triggered - hover | focus | manual</td>
              </tr>
+             <tr>
+               <td>template</td>
+               <td>string</td>
+               <td>[default markup]</td>
+               <td>The html template used for rendering a popover.</td>
+             </tr>
             </tbody>
           </table>
+          <p><span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.</code></p>
+          <pre class="prettyprint linenums">&lt;a data-placement="below" href="#" class="btn danger" rel="popover"&gt;text&lt;/a&gt;</pre>
           <h3>Methods</h3>
           <h4>$().popover(options)</h4>
           <p>Initializes popovers for an element collection.</p>
@@ -625,7 +705,7 @@ $('#.tabs').bind('change', function (e) {
           <p>Hides an elements popover.</p>
           <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
           <h3>Demo</h3>
-          <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
+          <a href="#" class="btn danger" rel="popover" title="A title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
           <script>
             $(function () {
               $("a[rel=popover]")
@@ -659,6 +739,26 @@ $('#.tabs').bind('change', function (e) {
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>Markup</h3>
           <p>Just add a <code>data-alert</code> attribute to your alert messages to automatically give them close functionality.</p>
+          <h3>Options</h3>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 100px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>selector</td>
+               <td>string</td>
+               <td>'.close'</td>
+               <td>What selector to target for closing an alert.</td>
+             </tr>
+            </tbody>
+          </table>
+
           <h3>Methods</h3>
           <h4>$().alert()</h4>
           <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>

@@ -20,6 +20,8 @@
 
 !function( $ ) {
 
+ "use strict"
+
   var Popover = function ( element, options ) {
     this.$element = $(element)
     this.options = options
@@ -39,13 +41,17 @@
       $tip[0].className = 'popover'
     }
 
+  , hasContent: function () {
+      return this.getTitle() || this.getContent()
+    }
+
   , getContent: function () {
       var content
        , $e = this.$element
        , o = this.options
 
       if (typeof this.options.content == 'string') {
-        content = $e.attr(o.content)
+        content = this.options.content
       } else if (typeof this.options.content == 'function') {
         content = this.options.content.call(this.$element[0])
       }
@@ -55,7 +61,7 @@
   , tip: function() {
       if (!this.$tip) {
         this.$tip = $('<div class="popover" />')
-          .html('<div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div>')
+          .html(this.options.template)
       }
       return this.$tip
     }
@@ -72,6 +78,9 @@
     return this
   }
 
-  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, { content: 'data-content', placement: 'right'})
+  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, {
+    placement: 'right'
+  , template: '<div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div>'
+  })
 
 }( window.jQuery || window.ender );
