@@ -88,7 +88,7 @@
 
   <!-- Misc Elements -->
   <h2>Emphasis, address, and abbreviation</h2>
-  <table class="zebra-striped">
+  <table class="bordered-table striped-table">
     <thead>
       <tr>
         <th>Element</th>
@@ -175,7 +175,7 @@
 
   <!-- Blockquotes -->
   <h2>Blockquotes</h2>
-  <table class="bordered-table">
+  <table class="bordered-table striped-table">
     <thead>
       <tr>
         <th>Element</th>
@@ -321,7 +321,7 @@
   <!-- Code -->
 
   <h2>Code <small>Inline and block</small></h2>
-  <table class="zebra-striped">
+  <table class="bordered-table striped-table">
     <thead>
       <tr>
         <th style="width: 190px;">Element</th>
@@ -363,7 +363,7 @@
 
   <!-- Labels -->
   <h2>Inline labels <small>for special attention</small></h2>
-  <table class="zebra-striped">
+  <table class="bordered-table striped-table">
     <thead>
       <tr>
         <th style="width: 190px;">Labels</th>
@@ -428,7 +428,7 @@
   <h2>Table markup</h2>
   <div class="row">
     <div class="span8">
-      <table class="zebra-striped">
+      <table class="bordered-table striped-table">
         <thead>
           <tr>
             <th>Tag</th>
@@ -517,7 +517,7 @@
   </div>
 
   <h2>Table options</h2>
-  <table class="striped-table">
+  <table class="bordered-table striped-table">
     <thead>
       <tr>
         <th>Name</th>
@@ -592,9 +592,9 @@
 &lt;table&gt;
   ...
 &lt;/table&gt;</pre>
-  <h3>2. Zebra-striped</h3>
-  <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
-  <table class="zebra-striped">
+  <h3>2. Striped table</h3>
+  <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.striped-table</code> class.</p>
+  <table class="striped-table">
     <thead>
       <tr>
         <th>#</th>
@@ -626,12 +626,12 @@
   </table>
   <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
 <pre class="prettyprint linenums">
-&lt;table class="zebra-striped"&gt;
+&lt;table class="striped-table"&gt;
 ...
 &lt;/table&gt;</pre>
-  <h3>3. Zebra-striped w/ TableSorter.js</h3>
+  <h3>3. Striped table w/ TableSorter.js</h3>
   <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
-  <table class="zebra-striped" id="sortTableExample">
+  <table class="striped-table" id="sortTableExample">
     <thead>
       <tr>
         <th>#</th>
@@ -668,7 +668,7 @@
     $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
   });
 &lt;/script&gt;
-&lt;table class="zebra-striped"&gt;
+&lt;table class="striped-table"&gt;
   ...
 &lt;/table&gt;</pre>
 
@@ -682,19 +682,49 @@
   <div class="page-header">
     <h1>Forms</h1>
   </div>
+
+  <h2>Four types of forms</h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Vertical (default)</th>
+        <td><code>.vertical-form</code> <span class="muted">(not required)</span></td>
+        <td>Stacked, left-aligned labels over controls</td>
+      </tr>
+      <tr>
+        <th>Horiztonal</th>
+        <td><code>.horizontal-form</code></td>
+        <td>Float left, right-aligned labels on same line as controls</td>
+      </tr>
+      <tr>
+        <th>Inline</th>
+        <td><code>.inline-form</code></td>
+        <td>Left-aligned label and inline-block controls for compact style</td>
+      </tr>
+      <tr>
+        <th>Search</th>
+        <td><code>.search-form</code></td>
+        <td>Extra-rounded text input for a typical search aesthetic</td>
+      </tr>
+    </tbody>
+  </table>
+
+
   <div class="row">
     <div class="span4">
-      <h3>Four types of forms</h3>
-      <p>With 2.0, we now have four types of forms to choose from:</p>
-      <ul>
-        <li>Search form for a super-rounded input and optional button</li>
-        <li>Inline form for a series of elements on one line</li>
-        <li>Horizontal form for left-aligned labels</li>
-        <li>Vertical form for stacked labels and inputs</li>
-      </ul>
+      <h3>Why four types</h3>
+      <p>With Bootstrap 2, we completely recoded our forms to allow for simple base styles and improved namespacing on labels and controls. To address the many uses of forms, we've included some base styles to help get you started.</p>
     </div>
     <div class="span4">
-      <h3></h3>
+      <h3>Vertical or horizontal</h3>
+      <p>Our default form styles are now vertical, not horizontal. This makes it easier to customize bare-bones forms, as well as forms in tricker situations like sign-up, modals, etc. <strong>They share the same exact markup; just swap the class.</strong></p>
     </div>
   </div><!-- /row -->
   <div class="row">
@@ -875,79 +905,123 @@
     </div>
   </div><!-- /row -->
 
-  <div class="row">
-    <div class="span3">
-      <h2>Buttons</h2>
-      <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
-      <p>All buttons default to a light gray style, but a number of functional classes can be applied for different color styles. These classes include a blue <code>.primary</code> class, a light-blue <code>.info</code> class, a green <code>.success</code> class, and a red <code>.danger</code> class.</p>
-    </div>
-    <div class="span9">
-      <h3>Example buttons</h3>
-      <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
-      <div class="well" style="padding: 14px 19px;">
-        <button class="btn primary">Primary</button>&nbsp;<button class="btn">Default</button>&nbsp;<button class="btn info">Info</button>&nbsp;<button class="btn success">Success</button>&nbsp;<button class="btn danger">Danger</button>
-      </div>
-      <h3>Alternate sizes</h3>
-      <p>Fancy larger or smaller buttons? Have at it!</p>
-      <div class="well">
-        <a href="#" class="btn large primary">Primary action</a>
-        <a href="#" class="btn large">Action</a>
-      </div>
-      <div class="well" style="padding: 16px 19px;">
-        <a href="#" class="btn small primary">Primary action</a>
-        <a href="#" class="btn small">Action</a>
-      </div>
-      <h3>Disabled state</h3>
-      <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
-      <h4>Links</h4>
-      <div class="well">
-        <a href="#" class="btn large primary disabled">Primary action</a>
-        <a href="#" class="btn large disabled">Action</a>
-      </div>
-      <h4>Buttons</h4>
-      <div class="well">
-        <button class="btn large primary disabled" disabled="disabled">Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
-      </div>
-    </div>
-  </div><!-- /row -->
+
+
+  <h2>Buttons</h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Preview</th>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Default</th>
+        <td><a class="btn" href="#">Button</a></td>
+        <td><code>.btn</code></td>
+        <td>Standard gray button with gradient</td>
+      </tr>
+      <tr>
+        <th>Primary</th>
+        <td><a class="btn primary" href="#">Button</a></td>
+        <td><code>.primary</code></td>
+        <td>Makes button blue for more visual weight to indicate the primary action in a set of buttons</td>
+      </tr>
+      <tr>
+        <th>Info</th>
+        <td><a class="btn info" href="#">Button</a></td>
+        <td><code>.info</code></td>
+        <td>Used as an alternate to the default styles</td>
+      </tr>
+      <tr>
+        <th>Success</th>
+        <td><a class="btn success" href="#">Button</a></td>
+        <td><code>.success</code></td>
+        <td>Used to indicate a successful or positive action will be taken</td>
+      </tr>
+      <tr>
+        <th>Danger</th>
+        <td><a class="btn danger" href="#">Button</a></td>
+        <td><code>.danger</code></td>
+        <td>Used to indicate a dangerous or potentially negative action will be taken</td>
+      </tr>
+    </tbody>
+  </table>
 
   <div class="row">
-    <div class="span3">
-      <h2>Button groups</h2>
+    <div class="span4">
+      <h3>Buttons for actions</h3>
+      <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.</p>
     </div>
-    <div class="span9">
-      <h3>Example</h3>
-      <div class="well">
-        <div class="btn-group">
-          <a class="btn" href="#">Left</a>
-          <a class="btn" href="#">Middle</a>
-          <a class="btn" href="#">Right</a>
-        </div>
+    <div class="span4">
+      <h3>For anchors and forms</h3>
+      <p>Button styles can be applied to anything with the <code>.btn</code> applied. However, typically you’ll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
+    </div>
+    <div class="span4">
+      <p><strong>Note:</strong> All buttons must include the <code>.btn</code> class. Button styles should be applied to <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> elements for consistency.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <h3>Multiple sizes</h3>
+      <p>Fancy larger or smaller buttons? Have at it!</p>
+      <p>
+        <a href="#" class="btn large primary">Primary action</a>
+        <a href="#" class="btn large">Action</a>
+      </p>
+      <p>
+        <a href="#" class="btn small primary">Primary action</a>
+        <a href="#" class="btn small">Action</a>
+      </p>
+    </div>
+    <div class="span8">
+      <h3>Disabled state</h3>
+      <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+      <p>
+        <a href="#" class="btn large primary disabled">Primary action</a>
+        <a href="#" class="btn large disabled">Action</a>
+      </p>
+      <p>
+        <button class="btn large primary disabled" disabled="disabled">Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
+      </p>
+    </div>
+  </div>
+
+  <h2>Button groups</h2>
+
+  <div class="well">
+    <div class="btn-group">
+      <a class="btn" href="#">Left</a>
+      <a class="btn" href="#">Middle</a>
+      <a class="btn" href="#">Right</a>
+    </div>
+  </div>
+  <div class="well">
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <a class="btn" href="#">1</a>
+        <a class="btn" href="#">2</a>
+        <a class="btn" href="#">3</a>
+        <a class="btn" href="#">4</a>
+        <a class="btn" href="#">5</a>
       </div>
-      <div class="well">
-        <div class="btn-toolbar">
-          <div class="btn-group">
-            <a class="btn" href="#">1</a>
-            <a class="btn" href="#">2</a>
-            <a class="btn" href="#">3</a>
-            <a class="btn" href="#">4</a>
-            <a class="btn" href="#">5</a>
-          </div>
-          <div class="btn-group">
-            <a class="btn" href="#">6</a>
-            <a class="btn" href="#">7</a>
-            <a class="btn" href="#">8</a>
-          </div>
-          <div class="btn-group">
-            <a class="btn" href="#">9</a>
-          </div>
-          <div class="btn-group">
-            <a class="btn" href="#">10</a>
-          </div>
-        </div>
+      <div class="btn-group">
+        <a class="btn" href="#">6</a>
+        <a class="btn" href="#">7</a>
+        <a class="btn" href="#">8</a>
+      </div>
+      <div class="btn-group">
+        <a class="btn" href="#">9</a>
+      </div>
+      <div class="btn-group">
+        <a class="btn" href="#">10</a>
       </div>
     </div>
-  </div><!-- /row -->
+  </div>
 
 </section>
 

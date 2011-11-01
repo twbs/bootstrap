@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Oct 30 20:12:53 PDT 2011
+ * Date: Mon Oct 31 19:36:50 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -927,17 +927,10 @@ textarea[readonly] {
  * ---------------------------------------- */
 table {
   width: 100%;
-  margin-bottom: 18px;
   padding: 0;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  /* IE7, collapse table to remove spacing */
-
+  margin-bottom: 18px;
   font-size: 13px;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-collapse: collapse;
 }
 table th, table td {
   padding: 10px 10px 9px;
@@ -948,47 +941,109 @@ table th {
   padding-top: 9px;
   font-weight: bold;
   vertical-align: middle;
-  border-bottom: 1px solid #ddd;
 }
 table td {
   vertical-align: top;
-}
-table th + th, table td + td {
-  border-left: 1px solid #ddd;
-}
-table tr + tr td {
   border-top: 1px solid #ddd;
 }
-table tbody tr:first-child td:first-child {
+table tbody th {
+  border-top: 1px solid #ddd;
+  vertical-align: top;
+}
+.condensed-table th, .condensed-table td {
+  padding: 5px 5px 4px;
+}
+.bordered-table {
+  border: 1px solid #ddd;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  /* IE7, collapse table to remove spacing */
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.bordered-table th + th, .bordered-table td + td, .bordered-table th + td {
+  border-left: 1px solid #ddd;
+}
+.bordered-table thead:first-child tr:first-child th:first-child, .bordered-table tbody:first-child tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
   -moz-border-radius: 4px 0 0 0;
   border-radius: 4px 0 0 0;
 }
-table tbody tr:first-child td:last-child {
+.bordered-table thead:first-child tr:first-child th:last-child, .bordered-table tbody:first-child tr:first-child td:last-child {
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
   border-radius: 0 4px 0 0;
 }
-table tbody tr:last-child td:first-child {
+.bordered-table tbody tr:last-child td:first-child {
   -webkit-border-radius: 0 0 0 4px;
   -moz-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
 }
-table tbody tr:last-child td:last-child {
+.bordered-table tbody tr:last-child td:last-child {
   -webkit-border-radius: 0 0 4px 0;
   -moz-border-radius: 0 0 4px 0;
   border-radius: 0 0 4px 0;
 }
-.zebra-striped tbody tr:nth-child(odd) td {
+table .span1 {
+  width: 40px;
+}
+table .span2 {
+  width: 120px;
+}
+table .span3 {
+  width: 200px;
+}
+table .span4 {
+  width: 280px;
+}
+table .span5 {
+  width: 360px;
+}
+table .span6 {
+  width: 440px;
+}
+table .span7 {
+  width: 520px;
+}
+table .span8 {
+  width: 600px;
+}
+table .span9 {
+  width: 680px;
+}
+table .span10 {
+  width: 760px;
+}
+table .span11 {
+  width: 840px;
+}
+table .span12 {
+  width: 920px;
+}
+table .span13 {
+  width: 1000px;
+}
+table .span14 {
+  width: 1080px;
+}
+table .span15 {
+  width: 1160px;
+}
+table .span16 {
+  width: 1240px;
+}
+.striped-table tbody tr:nth-child(odd) td, .striped-table tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
-.zebra-striped tbody tr:hover td {
+.striped-table tbody tr:hover td, .striped-table tbody tr:hover th {
   background-color: #f5f5f5;
 }
-.zebra-striped .header {
+table .header {
   cursor: pointer;
 }
-.zebra-striped .header:after {
+table .header:after {
   content: "";
   float: right;
   margin-top: 7px;
@@ -997,21 +1052,21 @@ table tbody tr:last-child td:last-child {
   border-color: #000 transparent;
   visibility: hidden;
 }
-.zebra-striped .headerSortUp, .zebra-striped .headerSortDown {
+table .headerSortUp, table .headerSortDown {
   background-color: rgba(141, 192, 219, 0.25);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
 }
-.zebra-striped .header:hover:after {
+table .header:hover:after {
   visibility: visible;
 }
-.zebra-striped .headerSortDown:after, .zebra-striped .headerSortDown:hover:after {
+table .headerSortDown:after, table .headerSortDown:hover:after {
   visibility: visible;
   filter: alpha(opacity=60);
   -khtml-opacity: 0.6;
   -moz-opacity: 0.6;
   opacity: 0.6;
 }
-.zebra-striped .headerSortUp:after {
+table .headerSortUp:after {
   border-bottom: none;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
