@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct 31 23:21:58 PDT 2011
+ * Date: Mon Oct 31 23:27:57 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1815,6 +1815,10 @@ footer {
 .alert-message.info:hover {
   color: #ffffff;
 }
+.btn .close, .alert-message .close {
+  font-family: Arial, sans-serif;
+  line-height: 18px;
+}
 .btn.danger,
 .alert-message.danger,
 .btn.error,
@@ -1973,10 +1977,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   font-weight: bold;
   line-height: 13.5px;
   text-shadow: 0 1px 0 #ffffff;
-  filter: alpha(opacity=20);
-  -khtml-opacity: 0.2;
-  -moz-opacity: 0.2;
-  opacity: 0.2;
+  filter: alpha(opacity=25);
+  -khtml-opacity: 0.25;
+  -moz-opacity: 0.25;
+  opacity: 0.25;
 }
 .close:hover {
   color: #000000;
@@ -2015,9 +2019,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .alert-message .close {
-  *margin-top: 3px;
-  /* IE7 spacing */
-
+  margin-top: 1px;
+  *margin-top: 0;
 }
 .alert-message a {
   font-weight: bold;

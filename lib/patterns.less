@@ -520,6 +520,11 @@ footer {
   &.info:hover {
     color: @white
   }
+  // Sets the close button to the middle of message
+  .close{
+    font-family: Arial, sans-serif;
+    line-height: 18px;
+  }
   // Danger and error appear as red
   &.danger,
   &.error {
@@ -632,7 +637,7 @@ input[type=submit].btn {
   font-weight: bold;
   line-height: @baseline * .75;
   text-shadow: 0 1px 0 rgba(255,255,255,1);
-  .opacity(20);
+  .opacity(25);
   &:hover {
     color: @black;
     text-decoration: none;
@@ -659,7 +664,8 @@ input[type=submit].btn {
 
   // Adjust close icon
   .close {
-    *margin-top: 3px; /* IE7 spacing */
+    margin-top: 1px;
+    *margin-top: 0; // For IE7
   }
 
   // Make links same color as text and stand out more
