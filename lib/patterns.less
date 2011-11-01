@@ -378,34 +378,48 @@
     border-color: transparent #ddd #ddd #ddd;
   }
 
-  // Tabs on left
-  &.tabs-left {
+  // Tabs on left and right
+  &.tabs-left,
+  &.tabs-right {
     .clearfix();
-
-    .tab-content {
-      float: left;
-    }
     .tabs {
-      float: left;
-
+      // Give a fixed width to avoid floating .tab-con
+      width: 100px;
+      // Unfloat them so they stack
       > li {
         float: none;
         margin-bottom: -1px;
+        > a {
+          margin-bottom: 2px;
+          &:hover {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  // Tabs on left
+  &.tabs-left {
+    .tab-content {
+      margin-left: 100px;
+    }
+    .tabs {
+      float: left;
+      > li {
         margin-right: -1px;
         > a {
           margin-right: 0;
-          margin-bottom: 2px;
           .border-radius(4px 0 0 4px);
 
           &:hover {
-            border-color: transparent;
             border-right-color: #ddd;
           }
         }
       }
-
-      > .active > a,
-      > .active > a:hover {
+      // Active state
+      .active > a,
+      .active > a:hover {
         border-color: #ddd;
         border-right-color: transparent;
       }
@@ -414,32 +428,25 @@
 
   // Tabs on right
   &.tabs-right {
-    .clearfix();
-
     .tab-content {
-      float: right;
+      margin-right: 100px;
     }
     .tabs {
       float: right;
-
       > li {
-        float: none;
-        margin-bottom: -1px;
         margin-left: -1px;
         > a {
           margin-left: 0;
-          margin-bottom: 2px;
-          .border-radius(4px 0 0 4px);
+          .border-radius(0 4px 4px 0);
 
           &:hover {
-            border-color: transparent;
             border-left-color: #ddd;
           }
         }
       }
-
-      > .active > a,
-      > .active > a:hover {
+      // Active state
+      .active > a,
+      .active > a:hover {
         border-color: #ddd;
         border-left-color: transparent;
       }
