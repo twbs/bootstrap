@@ -89,8 +89,7 @@
             that.$element[0].offsetWidth // force reflow
           }
 
-          that.$element
-            .addClass('in')
+          that.$element.addClass('in')
 
           transition ?
             that.$element.one(transitionEnd, function () { that.$element.trigger('shown') }) :
@@ -118,7 +117,7 @@
           .removeClass('in')
 
         $.support.transition && this.$element.hasClass('fade') ?
-          this.$element.one(transitionEnd, $.proxy(hideModal, this)) :
+          hideWithTransition.call(this) :
           hideModal.call(this)
 
         return this
@@ -129,6 +128,20 @@
 
  /* MODAL PRIVATE METHODS
   * ===================== */
+
+  function hideWithTransition() {
+    // firefox drops transitionEnd events :{o
+    var that = this
+      , timeout = setTimeout(function () {
+          that.$element.unbind(transitionEnd)
+          hideModal.call(that)
+        }, 500)
+
+    this.$element.one(transitionEnd, function () {
+      clearTimeout(timeout)
+      hideModal.call(that)
+    })
+  }
 
   function hideModal (that) {
     this.$element
