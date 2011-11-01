@@ -112,6 +112,7 @@ input[type=submit] {
 select,
 input[type=file] {
   height: @baseline * 1.5; // In IE7, the height of the select element cannot be changed by height, only font-size
+  *height: auto; // Reset for IE7
   line-height: @baseline * 1.5;
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
 }
