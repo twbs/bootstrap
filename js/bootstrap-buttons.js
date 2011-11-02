@@ -30,14 +30,19 @@
     data.resetText || $el.data('resetText', $el.html())
 
     $el.html( data[state] || $.fn.button.defaults[state] )
-
+    
+    el.className = el.className.replace(/\b(\sstate-.*)?\b/g, '')
+	  $el.addClass('state-'+state)
+	
     state == 'loadingText' ?
       $el.addClass(d).attr(d, d) :
       $el.removeClass(d).removeAttr(d)
   }
 
   function toggle(el) {
-    $(el).toggleClass('active')
+   	var $el = $(el)
+   	$el.toggleClass('active')
+   	$el.hasClass('active') ? setState(el, 'active') : setState(el, 'reset')
   }
 
   $.fn.button = function(options) {
