@@ -79,9 +79,14 @@
         backdrop.call(this, function () {
           var transition = $.support.transition && that.$element.hasClass('fade')
 
-          that.$element
-            .appendTo(document.body)
-            .show()
+          if($('#'+that.$element.attr('id')).length==0){ //Only append the new element if it don't exist already
+           that.$element
+              .appendTo(document.body)
+              .show()  
+          }else{
+        	  that.$element
+              .show()  
+          }
 
           if (transition) {
             that.$element[0].offsetWidth // force reflow
