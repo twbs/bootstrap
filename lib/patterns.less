@@ -872,6 +872,12 @@ input[type=submit].btn {
   }
 }
 
+// Fix the stacking of these components when in modals
+.modal .popover,
+.modal .twipsy {
+  z-index: 12000;
+}
+
 
 // POPOVER ARROWS
 // --------------
@@ -920,7 +926,7 @@ input[type=submit].btn {
   visibility: visible;
   padding: 5px;
   font-size: 11px;
-  z-index: 12000;
+  z-index: 1000;
   .opacity(80);
   &.fade.in {
     .opacity(80);
@@ -953,7 +959,7 @@ input[type=submit].btn {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 12000;
+  z-index: 1000;
   padding: 5px;
   display: none;
   &.above .arrow { #popoverArrow > .above(); }
