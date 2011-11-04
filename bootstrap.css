@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct 31 21:46:38 PDT 2011
+ * Date: 
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -874,8 +874,8 @@ textarea[readonly] {
   border-radius: 3px 0 0 3px;
 }
 .input-prepend .active, .input-append .active {
-  background: #a9dba9;
-  border-color: #46a546;
+  background: #bcddbc;
+  border-color: #57a957;
 }
 .input-prepend .add-on {
   *margin-top: 1px;
@@ -1088,11 +1088,11 @@ table .headerSortUp.blue, table .headerSortDown.blue {
   background-color: #ade6fe;
 }
 table .green {
-  color: #46a546;
-  border-bottom-color: #46a546;
+  color: #57a957;
+  border-bottom-color: #57a957;
 }
 table .headerSortUp.green, table .headerSortDown.green {
-  background-color: #cdeacd;
+  background-color: #deeede;
 }
 table .red {
   color: #9d261d;
@@ -1695,7 +1695,19 @@ footer {
 .btn.info,
 .alert-message.info,
 .btn.info:hover,
-.alert-message.info:hover {
+.alert-message.info:hover,
+.btn.brown,
+.alert-message.brown,
+.btn.brown:hover,
+.alert-message.brown:hover,
+.btn.purple,
+.alert-message.purple,
+.btn.purple:hover,
+.alert-message.purple:hover,
+.btn.blue,
+.alert-message.blue,
+.btn.blue:hover,
+.alert-message.blue:hover {
   color: #ffffff;
 }
 .btn.danger,
@@ -1744,6 +1756,51 @@ footer {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5bc0de', endColorstr='#339bb9', GradientType=0);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #339bb9 #339bb9 #22697d;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn.brown, .alert-message.brown {
+  background-color: #b3774d;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c7a383), to(#b3774d));
+  background-image: -moz-linear-gradient(top, #c7a383, #b3774d);
+  background-image: -ms-linear-gradient(top, #c7a383, #b3774d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c7a383), color-stop(100%, #b3774d));
+  background-image: -webkit-linear-gradient(top, #c7a383, #b3774d);
+  background-image: -o-linear-gradient(top, #c7a383, #b3774d);
+  background-image: linear-gradient(top, #c7a383, #b3774d);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c7a383', endColorstr='#b3774d', GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #b3774d #b3774d #7e5336;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn.purple, .alert-message.purple {
+  background-color: #7a43b6;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#bb91ff), to(#7a43b6));
+  background-image: -moz-linear-gradient(top, #bb91ff, #7a43b6);
+  background-image: -ms-linear-gradient(top, #bb91ff, #7a43b6);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bb91ff), color-stop(100%, #7a43b6));
+  background-image: -webkit-linear-gradient(top, #bb91ff, #7a43b6);
+  background-image: -o-linear-gradient(top, #bb91ff, #7a43b6);
+  background-image: linear-gradient(top, #bb91ff, #7a43b6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bb91ff', endColorstr='#7a43b6', GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #7a43b6 #7a43b6 #552e7e;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn.blue, .alert-message.blue {
+  background-color: #049cdb;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#63afff), to(#049cdb));
+  background-image: -moz-linear-gradient(top, #63afff, #049cdb);
+  background-image: -ms-linear-gradient(top, #63afff, #049cdb);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #63afff), color-stop(100%, #049cdb));
+  background-image: -webkit-linear-gradient(top, #63afff, #049cdb);
+  background-image: -o-linear-gradient(top, #63afff, #049cdb);
+  background-image: linear-gradient(top, #63afff, #049cdb);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#63afff', endColorstr='#049cdb', GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #049cdb #049cdb #036690;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn {
@@ -2334,7 +2391,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: #f89406;
 }
 .label.success {
-  background-color: #46a546;
+  background-color: #57a957;
 }
 .label.notice {
   background-color: #62cffc;
