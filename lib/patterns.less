@@ -1058,3 +1058,120 @@ input[type=submit].btn {
     }
   }
 }
+
+
+// DATE PICKER
+// -----------
+.datepicker {
+    background-color: @white;
+    border-color: #999;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    .border-radius(4px);
+    .box-shadow(0 2px 4px rgba(0,0,0,.2));
+    .background-clip(padding-box);
+    display: none; // None by default, shown in javascript.
+    position: absolute;
+    z-index: 900;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 18px;
+    padding-bottom: 0.25em;
+
+    width: 17.75em;
+
+    .nav {
+        font-weight: bold;
+        width: 100%;
+        padding: 0.5em 0;
+        background-color: #f5f5f5;
+        color: @gray;
+        border-bottom: 1px solid #ddd;
+        .box-shadow(inset 0 1px 0 @white);
+        .clearfix();
+
+        span {
+            display: block;
+            float: left;
+            text-align: center;
+            height: 28px;
+            line-height: 28px;
+            position: relative;
+        }
+        .bg {
+            width: 100%;
+            background-color: #ff6;
+            height: 28px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            .border-radius(4px);
+        }
+        .fg {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    .button {
+        font-size: 0.8em;
+        cursor: pointer;
+        padding: 0 0.5em;
+        .border-radius(4px);
+
+        &:hover {
+            background-color: @gray;
+            color: @white;
+        }
+    }
+    .months {
+        float: left;
+        margin-left: 0.5em;
+        .name {
+            width: 6em;
+            padding: 0;
+        }
+    }
+    .years {
+        float: right;
+        margin-right: 0.5em;
+        .name {
+            width: 3em;
+            padding: 0;
+        }
+    }
+    .dow, .days div {
+        float: left;
+        width: 2.5em;
+        padding: 0.5em 0;
+        text-align: center;
+    }
+
+    .dow {
+        font-weight: bold;
+        color: @gray;
+    }
+    .calendar {
+        padding: 0.25em;
+    }
+    .days div {
+        cursor: pointer;
+        .border-radius(4px);
+        &:hover {
+            background-color: @blueDark;
+            color: @white;
+        }
+    }
+    .selected {
+        background-color: @grayLight;
+        color: @white;
+    }
+    .overlap {
+        color: @grayLight;
+    }
+    .today {
+        background-color: #fee9cc;
+    }
+}

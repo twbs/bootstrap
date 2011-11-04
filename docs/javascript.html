@@ -23,6 +23,7 @@
     <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="../js/bootstrap-tabs.js"></script>
     <script src="../js/bootstrap-buttons.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
 
     <!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
@@ -48,6 +49,7 @@
             <li><a href="#overview">Overview</a></li>
             <li><a href="#modal">Modals</a></li>
             <li><a href="#dropdown">Dropdown</a></li>
+            <li><a href="#datepicker">DatePicker</a></li>
             <li><a href="#scrollspy">ScrollSpy</a></li>
             <li><a href="#buttons">Buttons</a></li>
             <li><a href="#tabs">Tabs</a></li>
@@ -279,7 +281,77 @@ $('#my-modal').bind('hidden', function () {
       </div>
     </section>
 
-   <!-- ScrollSpy
+    <!-- DatePicker
+    ================================================== -->
+    
+    <section id="datepicker">
+      <div class="page-header">
+        <h1>DatePicker <small>bootstrap-datepicker.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <p>The datepicker plugin is a customizable calendar-based date entry widget.</p>
+          <a href="../js/bootstrap-datepicker.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span12 columns">
+          <h3>Using bootstrap-datepicker.js</h3>
+          <pre class="prettyprint linenums">$("#date").datepicker(options)</pre>
+          <h3>Options</h3>
+          <table class="zebra-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>type</th>
+                <th>default</th>
+                <th>description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>monthNames</td>
+                <td>array of strings</td>
+                <td>January, February, March, April, May, June, July, August, September, October, November, December</td>
+                <td>Full month names to be used in navigation header. Can be overriden for localization.</td>
+              </tr>
+              <tr>
+                <td>shortMonthNames</td>
+                <td>array of strings</td>
+                <td>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</td>
+                <td>Short month names to be used in parsing and formatting dates. Can be overriden for localization.</td>
+              </tr>
+              <tr>
+                <td>shortDayNames</td>
+                <td>array of strings</td>
+                <td>Sun, Mon, Tue, Wed, Thu, Fri, Sat</td>
+                <td>Short day names to be used in calendar header cells. Can be overriden for localization.</td>
+              </tr>
+              <tr>
+                <td>startOfWeek</td>
+                <td>int</td>
+                <td>1</td>
+                <td>Weekday to start the calendar on.<br>1 &rarr; Sun, 2 &rarr; Mon, etc.</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Markup</h3>
+          <p>Just add a <code>data-datepicker</code> attribute to your input field to automatically give them datepicker functionality.</p>
+          <pre class="prettyprint linenums">&lt;input type="text" value="5 May 2013" data-datepicker="datepicker" /&gt;</pre>
+          <p>If you want to customize datepickers, you can use the javascript method below.</p>
+          <h3>Methods</h3>
+          <h4>.datepicker(options)</h4>
+          <p>Enables an input field as a datepicker. Accepts an optional options <code>object</code>.
+<pre class="prettyprint linenums">
+$('#date').datepicker({
+  startOfWeek: 2
+})</pre>
+          <h3>Demo</h3>
+          <input data-datepicker="datepicker" class="small" type="text" value="13 Apr 2010" />
+          <span class="help-block">Click to show. Try using arrow keys for navigation.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ScrollSpy
     ================================================== -->
 
     <section id="scrollspy">
