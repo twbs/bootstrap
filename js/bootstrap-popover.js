@@ -36,8 +36,8 @@
 
     setContent: function () {
       var $tip = this.tip()
-      $tip.find('.title')[this.options.html ? 'html' : 'text'](this.getTitle())
-      $tip.find('.content p')[this.options.html ? 'html' : 'text'](this.getContent())
+      $tip.find(this.options.titleSelector)[this.options.html ? 'html' : 'text'](this.getTitle())
+      $tip.find(this.options.contentSelector)[this.options.html ? 'html' : 'text'](this.getContent())
       $tip[0].className = 'popover'
     }
 
@@ -81,6 +81,8 @@
   $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, {
     placement: 'right'
   , template: '<div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div>'
+  , titleSelector: '.title'
+  , contentSelector: '.content p'
   })
 
 }( window.jQuery || window.ender );
