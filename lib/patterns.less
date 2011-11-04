@@ -602,7 +602,13 @@ footer {
   &.success,
   &.success:hover,
   &.info,
-  &.info:hover {
+  &.info:hover,
+  &.brown,
+  &.brown:hover,
+  &.purple,
+  &.purple:hover,
+  &.blue,
+  &.blue:hover {
     color: @white
   }
   // Danger and error appear as red
@@ -612,11 +618,21 @@ footer {
   }
   // Success appears as green
   &.success {
-    .gradientBar(#62c462, #57a957);
+    .gradientBar(@greenLight, @green);
   }
   // Info appears as a neutral blue
   &.info {
     .gradientBar(#5bc0de, #339bb9);
+  }
+  
+  &.brown {
+    .gradientBar(@brownLight, @brown);
+  }
+  &.purple {
+    .gradientBar(@purpleLight, @purple);
+  }
+  &.blue {
+    .gradientBar(@blueLight, @blue);
   }
 }
 
@@ -841,8 +857,8 @@ input[type=submit].btn {
       border-color: lighten(#f56a66, 20%);
     }
     &.success {
-      background-color: lighten(#62c462, 30%);
-      border-color: lighten(#62c462, 25%);
+      background-color: lighten(@greenLight, 30%);
+      border-color: lighten(@greenLight, 25%);
     }
     &.info {
       background-color: lighten(#6bd0ee, 25%);
