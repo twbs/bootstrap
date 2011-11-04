@@ -19,7 +19,14 @@
  * ========================================================== */
 
 
-!function( $ ) {
+(function (factory){
+  if( typeof define === 'function' && define.amd){
+    //AMD
+    define(['jquery'], factory);
+  }else{
+    factory(this.jQuery || this.ender );
+  }
+}(function($){
 
   "use strict"
 
@@ -307,4 +314,4 @@
     return $.extend({}, options, $(ele).data())
   }
 
-}( window.jQuery || window.ender );
+}));
