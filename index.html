@@ -12,19 +12,9 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="1.3.0/bootstrap.css" rel="stylesheet">
+    <link href="1.4.0/bootstrap.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-
-    <!-- Le javascript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="1.3.0/bootstrap-dropdown.js"></script>
-    <script src="1.3.0/bootstrap-twipsy.js"></script>
-    <script src="1.3.0/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/application.js"></script>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/ico/favicon.ico">
@@ -37,7 +27,7 @@
 
     <!-- Topbar
     ================================================== -->
-    <div class="topbar" >
+    <div class="topbar" data-scrollspy="scrollspy" >
       <div class="topbar-inner">
         <div class="container">
           <a class="brand" href="#">Bootstrap</a>
@@ -84,7 +74,7 @@
             <h6>Hotlink the CSS</h6>
             <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
             <form>
-              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css"></textarea>
+              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css"></textarea>
             </form>
           </div>
           <div class="span5">
@@ -99,7 +89,7 @@
             <h6>Fork on GitHub</h6>
             <p>Download, fork, pull, file issues, and more with the official Bootstrap repo on Github.</p>
             <p><a target="_blank" href="https://github.com/twitter/bootstrap" class="btn primary">Bootstrap on GitHub &raquo;</a></p>
-            <p class="current-version">Currently <a href="https://github.com/twitter/bootstrap/wiki/Changelog">v1.3.0</a></p>
+            <p class="current-version">Currently <a href="https://github.com/twitter/bootstrap/wiki/Changelog">v1.4.0</a></p>
           </div>
         </div><!-- /row -->
       </div>
@@ -141,9 +131,9 @@
       <h3>What's included</h3>
       <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
       <ul>
-        <li><span class="label">New in 1.3</span> <a href="./javascript.html">Javascript plugins</a></li>
+        <li><a href="./javascript.html">Javascript plugins</a></li>
         <li>All original .less files</li>
-        <li>Fully <a href="1.3.0/bootstrap.css">compiled</a> and <a href="1.3.0/bootstrap.min.css">minified</a> CSS</li>
+        <li>Fully <a href="1.4.0/bootstrap.css">compiled</a> and <a href="1.4.0/bootstrap.min.css">minified</a> CSS</li>
         <li>Complete styleguide documentation</li>
         <li>Three example pages with different layouts</li>
       </ul>
@@ -337,7 +327,7 @@
     <div class="span12">
       <h3>Inside the grid</h3>
       <p>The variables needed to modify the grid system currently all reside in <code>variables.less</code>.</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th>Variable</th>
@@ -611,7 +601,7 @@
     <div class="span12">
       <h3>Presenting code</h3>
       <p>Code, blocks of or just snippets inline, can be displayed with style just by wrapping in the right tag. For blocks of code spanning multiple lines, use the <code>&lt;pre&gt;</code> element. For inline code, use the <code>&lt;code&gt;</code> element.</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th style="width: 190px;">Element</th>
@@ -621,7 +611,7 @@
         <tbody>
           <tr>
             <td><code>&lt;code&gt;</code></td>
-            <td>In a line of text like this, your wrapped code will look like this <code>&gt;html&lt;</code> element.</td>
+            <td>In a line of text like this, your wrapped code will look like this <code>&lt;html&gt;</code> element.</td>
           </tr>
           <tr>
             <td><code>&lt;pre&gt;</code></td>
@@ -630,7 +620,7 @@
   &lt;h1&gt;Heading&lt;/h1&gt;
   &lt;p&gt;Something right here...&lt;/p&gt;
 &lt;/div&gt;</pre>
-              <p><strong>Note:</strong> Be sure to keep code within <code>pre</code> tags as close to the left as possible; it will render all tabs.</p>
+              <p><strong>Note:</strong> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
             </td>
           </tr>
           <tr>
@@ -661,7 +651,7 @@
     <div class="span12">
       <h3>Label anything</h3>
       <p>Ever needed one of those fancy <span class="label success">New!</span> or <span class="label important">Important</span> flags when writing code? Well, now you have them. Here's what's included by default:</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th style="width: 50%;">Label</th>
@@ -875,9 +865,78 @@
 &lt;table&gt;
   ...
 &lt;/table&gt;</pre>
+      <h3>Example: Condensed table</h3>
+      <p>For tables that require more data in tighter spaces, use the condensed flavor that cuts padding in half. It can also be used in conjunction with borders and zebra-stripes, just like the default table styles.</p>
+      <table class="condensed-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>Some</td>
+            <td>One</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>Joe</td>
+            <td>Sixpack</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>Code</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Example: Bordered table</h3>
+      <p>Make your tables look just a wee bit sleeker by rounding their corners and adding borders on all sides.</p>
+      <table class="bordered-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>Some</td>
+            <td>One</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>Joe</td>
+            <td>Sixpack</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>Code</td>
+          </tr>
+        </tbody>
+      </table>
+<pre class="prettyprint linenums">
+&lt;table class="bordered-table"&gt;
+  ...
+&lt;/table&gt;</pre>
       <h3>Example: Zebra-striped</h3>
       <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
-      <table class="zebra-striped">
+      <table class="bordered-table zebra-striped">
         <thead>
           <tr>
             <th>#</th>
@@ -905,12 +964,25 @@
             <td>Dent</td>
             <td>Code</td>
           </tr>
+          <tr>
+            <td colspan="4">
+              span 4 columns
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              span 2 columns
+            </td>
+            <td colspan="2">
+              span 2 columns
+            </td>
+          </tr>
         </tbody>
       </table>
       <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
 <pre class="prettyprint linenums">
 &lt;table class="zebra-striped"&gt;
-...
+  ...
 &lt;/table&gt;</pre>
       <h3>Example: Zebra-striped w/ TableSorter.js</h3>
       <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
@@ -1008,7 +1080,7 @@
           <div class="clearfix">
             <label for="multiSelect">Multiple select</label>
             <div class="input">
-              <select class="medium" multiple="multiple" name="multiSelect" id="multiSelect">
+              <select class="medium" size="5" multiple="multiple" name="multiSelect" id="multiSelect">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -1036,10 +1108,24 @@
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix error">
-            <label for="xlInput2">X-Large input</label>
+            <label for="errorInput">Input with error</label>
             <div class="input">
-              <input class="xlarge error" id="xlInput2" name="xlInput2" size="30" type="text" />
+              <input class="xlarge error" id="errorInput" name="errorInput" size="30" type="text" />
               <span class="help-inline">Small snippet of help text</span>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix success">
+            <label for="successInput">Input with success</label>
+            <div class="input">
+              <input class="xlarge error" id="successInput" name="successInput" size="30" type="text" />
+              <span class="help-inline">Success!</span>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix warning">
+            <label for="warningInput">Input with warning</label>
+            <div class="input">
+              <input class="xlarge error" id="warningInput" name="warningInput" size="30" type="text" />
+              <span class="help-inline">Ruh roh!</span>
             </div>
           </div><!-- /clearfix -->
         </fieldset>
@@ -1052,6 +1138,7 @@
                 <span class="add-on">@</span>
                 <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
               </div>
+              <span class="help-block">Here's some help text</span>
             </div>
           </div><!-- /clearfix -->
           <div class="clearfix">
@@ -1100,7 +1187,7 @@
                 <li>
                   <label>
                     <input type="checkbox" name="optionsCheckboxes" value="option2" />
-                    <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results</span>
+                    <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results. Let's make it super long so that everyone can see how it wraps, too.</span>
                   </label>
                 </li>
                 <li>
@@ -1124,7 +1211,7 @@
                 to
                 <input class="small" type="text" value="May 8, 2011" />
                 <input class="mini" type="text" value="11:59pm" />
-                <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
+                <span class="help-block">All times are shown as Pacific Standard Time (GMT -08:00).</span>
               </div>
             </div>
           </div><!-- /clearfix -->
@@ -1366,6 +1453,8 @@
       <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
     </div>
     <div class="span12">
+      <h3>Basic tabs example</h3>
+      <p>Tabs can be used as regular navigation (loading external pages in the same tab) or as tabbable content areas for swapping out panes of content. We have a <a href="./javascript.html#tabs">tabs plugin</a> that can be used to integrate the latter.</p>
       <ul class="tabs">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
@@ -1391,6 +1480,7 @@
   &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
+      <h3>Basic pills example</h3>
       <ul class="pills">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
@@ -1461,7 +1551,7 @@
           <li><a href="#">3</a></li>
           <li><a href="#">4</a></li>
           <li><a href="#">5</a></li>
-          <li class="next"><a href="#">Next &raquo;</a></li>
+          <li class="next"><a href="#">Next &rarr;</a></li>
         </ul>
       </div>
       <div class="pagination">
@@ -1474,7 +1564,7 @@
           <li><a href="#">19</a></li>
           <li><a href="#">20</a></li>
           <li><a href="#">21</a></li>
-          <li class="next"><a href="#">Next &raquo;</a></li>
+          <li class="next"><a href="#">Next &rarr;</a></li>
         </ul>
       </div>
       <div class="pagination">
@@ -1491,7 +1581,7 @@
           <li><a href="#">18</a></li>
           <li><a href="#">19</a></li>
           <li><a href="#">20</a></li>
-          <li class="next"><a href="#">Next &raquo;</a></li>
+          <li class="next"><a href="#">Next &rarr;</a></li>
         </ul>
       </div>
 <pre class="prettyprint linenums">
@@ -1518,7 +1608,7 @@
 ================================================== -->
 <section id="alerts">
   <div class="page-header">
-    <h1>Alerts &amp; Errors <small>Styles for success, warning, and error messages or alerts</small></h1>
+    <h1>Alerts &amp; Errors <small>Styles for success, warning, error, and info messages</small></h1>
   </div>
   <!-- Basic alert messages -->
   <div class="row">
@@ -1531,19 +1621,19 @@
     <div class="span12">
       <div class="alert-message warning">
         <a class="close" href="#">&times;</a>
-        <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
+        <p><strong>Holy guacamole!</strong> Best check yo self, you’re not <a href="#">looking too good</a>.</p>
       </div>
       <div class="alert-message error">
         <a class="close" href="#">&times;</a>
-        <p><strong>Oh snap!</strong> Change this and that and try again.</p>
+        <p><strong>Oh snap!</strong> Change this and that and <a href="#">try again</a>.</p>
       </div>
       <div class="alert-message success">
         <a class="close" href="#">&times;</a>
-        <p><strong>Well done!</strong> You successfully read this alert message.</p>
+        <p><strong>Well done!</strong> You successfully <a href="#">read this</a> alert message.</p>
       </div>
       <div class="alert-message info">
         <a class="close" href="#">&times;</a>
-        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
+        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not <a href="#">a huge priority</a> just yet.</p>
       </div>
 
       <h4>Example code</h4>
@@ -1573,7 +1663,7 @@
       </div>
       <div class="alert-message block-message error">
         <a class="close" href="#">&times;</a>
-        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again.</p>
+        <p><strong>Oh snap! You got an error!</strong> Change this and that and <a href="#">try again</a>.</p>
         <ul>
           <li>Duis mollis est non commodo luctus</li>
           <li>Nisi erat porttitor ligula</li>
@@ -1706,43 +1796,47 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
      <div class="span12">
       <h3>What's included</h3>
        <p>Bring some of Bootstrap's primary components to life with new custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>. We encourage you to extend and modify them to fit your specific development needs.</p>
-       <table class="zebra-striped">
-         <thead>
-           <tr>
-             <th style="width: 150px;">File</th>
-             <th>Description</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
-             <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#alerts">bootstrap-alerts.js</a></td>
-             <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#dropdown">bootstrap-dropdown.js</a></td>
-             <td>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
-             <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap topbar.</td>
-           </tr>
-           <tr>
+        <table class="bordered-table zebra-striped">
+          <thead>
+            <tr>
+              <th style="width: 150px;">File</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
+              <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#alerts">bootstrap-alerts.js</a></td>
+              <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#dropdowns">bootstrap-dropdown.js</a></td>
+              <td>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
+              <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap topbar.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#buttons">bootstrap-buttons.js</a></td>
+              <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap topbar.</td>
+            </tr>
+            <tr>
              <td><a href="./javascript.html#tabs">bootstrap-tabs.js</a></td>
-             <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
-             <td>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for local title storage!</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
-             <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="./javascript.html#twipsy">bootstrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
-           </tr>
-         </tbody>
+              <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
+              <td>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for local title storage!</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
+              <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
+            </tr>
+          </tbody>
        </table>
        <h3>Is javascript necessary?</h3>
        <p><strong>Nope!</strong> Bootstrap is designed first and foremost to be a CSS library. This javascript provides a basic interactive layer on top of the included styles.</p>
@@ -1865,7 +1959,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <h2>Compiling Less</h2>
     <p>After modifying the <code>.less</code> files in /lib/, you'll need to recompile them in order to regenerate the bootstrap-*.*.*.css and bootstrap-*.*.*.min.css files. If you're submitting a pull request to GitHub, you must always recompile.</p>
     <h3>Ways to compile</h3>
-    <table class="zebra-striped">
+    <table class="bordered-table zebra-striped">
       <thead>
         <tr>
           <th style="width: 120px;">Method</th>
@@ -1877,7 +1971,7 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
           <td>Node with makefile</td>
           <td>
             <p>Install the less command line compiler with npm by running the following command:</p>
-            <pre>$ npm install less</pre>
+            <pre>$ npm install lessc</pre>
             <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
             <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
           </td>
@@ -1927,6 +2021,17 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
         </p>
       </div>
     </footer>
+
+
+    <!-- Le javascript -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="1.4.0/bootstrap-dropdown.js"></script>
+    <script src="1.4.0/bootstrap-twipsy.js"></script>
+    <script src="1.4.0/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/application.js"></script>
 
   </body>
 </html>
