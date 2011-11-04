@@ -234,6 +234,20 @@
 
     <script type="text/javascript">
       $(document).ready(function($){
+
+        function addCommas(nStr) {
+          nStr += '';
+          x = nStr.split('.');
+          x1 = x[0];
+          x2 = x.length > 1 ? '.' + x[1] : '';
+          var rgx = /(\d+)(\d{3})/;
+          while (rgx.test(x1)) {
+              x1 = x1.replace(rgx, '$1' + ',' + '$2');
+          }
+          return x1 + x2;
+        }
+
+        // GITHUB
         window.repoCallback = function (obj) {
 
           // Variables
@@ -241,8 +255,8 @@
           var forks = obj['repository']['forks'];
 
           // Echo out the counts in correct elements
-          $('.github-watchers .count').html(watchers);
-          $('.github-forks .count').html(forks);
+          $('.github-watchers .count').html(addCommas(watchers));
+          $('.github-forks .count').html(addCommas(forks));
 
           // Debug log
           // console.log("Watchers:" + watchers);
