@@ -314,12 +314,6 @@ $('#my-modal').bind('hidden', function () {
                 <td>Full month names to be used in navigation header. Can be overriden for localization.</td>
               </tr>
               <tr>
-                <td>shortMonthNames</td>
-                <td>array of strings</td>
-                <td>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</td>
-                <td>Short month names to be used in parsing and formatting dates. Can be overriden for localization.</td>
-              </tr>
-              <tr>
                 <td>shortDayNames</td>
                 <td>array of strings</td>
                 <td>Sun, Mon, Tue, Wed, Thu, Fri, Sat</td>
@@ -335,7 +329,7 @@ $('#my-modal').bind('hidden', function () {
           </table>
           <h3>Markup</h3>
           <p>Just add a <code>data-datepicker</code> attribute to your input field to automatically give them datepicker functionality.</p>
-          <pre class="prettyprint linenums">&lt;input type="text" value="5 May 2013" data-datepicker="datepicker" /&gt;</pre>
+          <pre class="prettyprint linenums">&lt;input type="text" value="2013-05-13" data-datepicker="datepicker" /&gt;</pre>
           <p>If you want to customize datepickers, you can use the javascript method below.</p>
           <h3>Methods</h3>
           <h4>.datepicker(options)</h4>
@@ -345,7 +339,7 @@ $('#date').datepicker({
   startOfWeek: 2
 })</pre>
           <h3>Demo</h3>
-          <input data-datepicker="datepicker" class="small" type="text" value="13 Apr 2010" />
+          <input data-datepicker="datepicker" class="small" type="text" value="2011-11-13" />
           <span class="help-block">Click to show. Try using arrow keys for navigation.</span>
         </div>
       </div>

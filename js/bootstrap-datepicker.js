@@ -24,9 +24,6 @@
  * - Browser support!
  * - Make datepicker contents unselectable to prevent errant clicks from
  *   confusing users.
- * - When running on iOS 5 webkit, update datepicker elements to use input
- *   type="date" instead of this. If there are other mobile platforms with the
- *   ability to enable native datepickers, do that too.
  * - Ensure all reset styling is in place to make the look consistent even in
  *   hostile CSS environments.
  * - Markup and CSS cleanup.
@@ -51,16 +48,31 @@
 
   function DatePicker( element, options ) {
     this.$el = $(element);
-    $.extend(this, $.fn.datepicker.defaults, options );
-    this.$el.data('datepicker', this);
-    this.init();
+    this.proxy('show').proxy('ahead').proxy('hide').proxy('keyHandler').proxy('selectDate');
+
+    if(!this.detectNative()) {
+      $.extend(this, $.fn.datepicker.defaults, options );
+      this.$el.data('datepicker', this);
+      this.init();
+    }
   }
 
   DatePicker.prototype = {
 
-      init: function() {
-        this.proxy('show').proxy('ahead').proxy('hide').proxy('keyHandler').proxy('selectDate');
+      detectNative: function(el) {
+        // Attempt to activate the native datepicker, if there is a known good
+        // one. If successful, return true.
+        if(navigator.userAgent.match(/(iPad|iPhone); CPU(\ iPhone)? OS 5_\d/i)) {
+          // jQuery will only change the input type of a detached element.
+          var $marker = $('<span>').insertBefore(this.$el);
+          this.$el.detach().attr('type', 'date').insertAfter($marker);
+          $marker.remove();
+          return true;
+        }
+        return false;
+      }
 
+    , init: function() {
         var $months = this.nav('months', 1);
         var $years = this.nav('years', 12);
 
@@ -240,18 +252,26 @@
       }
 
     , parse: function(s) {
-        // Parse a string into a Date.
-        var ms = Date.parse(s);
-        if(ms) {
-          return new Date(ms);
+        // Parse a partial RFC 3339 string into a Date.
+        var m;
+        if ((m = s.match(/^(\d{4,4})-(\d{2,2})-(\d{2,2})$/))) {
+          return new Date(m[1], m[2] - 1, m[3]);
         } else {
           return null;
         }
       }
 
     , format: function(date) {
-        // Format a Date into a string.
-        return date.getDate() + " " + this.shortMonthNames[date.getMonth()] + " " + date.getFullYear();
+        // Format a Date into a string as specified by RFC 3339.
+        var month = (date.getMonth() + 1).toString(),
+            dom = date.getDate().toString();
+        if (month.length === 1) {
+          month = '0' + month;
+        }
+        if (dom.length === 1) {
+          dom = '0' + dom;
+        }
+        return date.getFullYear() + '-' + month + "-" + dom;
       }
 
     , ahead: function(months, days) {
@@ -315,8 +335,6 @@
   $.fn.datepicker.defaults = {
     monthNames: ["January", "February", "March", "April", "May", "June",
                  "July", "August", "September", "October", "November", "December"]
-  , shortMonthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
   , shortDayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
   , startOfWeek: 1
   };
