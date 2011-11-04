@@ -17,7 +17,14 @@
  * limitations under the License.
  * ============================================================ */
 
-!function( $ ){
+(function (factory){
+  if( typeof define === 'function' && define.amd){
+    //AMD
+    define(['jquery'], factory);
+  }else{
+    factory(this.jQuery || this.ender );
+  }
+}(function($){
 
   "use strict"
 
@@ -59,4 +66,4 @@
     })
   })
 
-}( window.jQuery || window.ender );
+}));

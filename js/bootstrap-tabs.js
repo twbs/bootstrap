@@ -18,7 +18,14 @@
  * ======================================================== */
 
 
-!function( $ ){
+(function (factory){
+  if( typeof define === 'function' && define.amd){
+    //AMD
+    define(['jquery'], factory);
+  }else{
+    factory(this.jQuery || this.ender );
+  }
+}(function($){
 
   "use strict"
 
@@ -77,4 +84,4 @@
     $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
   })
 
-}( window.jQuery || window.ender );
+}));

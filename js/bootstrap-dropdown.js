@@ -18,7 +18,14 @@
  * ============================================================ */
 
 
-!function( $ ){
+(function (factory){
+  if( typeof define === 'function' && define.amd){
+    //AMD
+    define(['jquery'], factory);
+  }else{
+    factory(this.jQuery || this.ender );
+  }
+}(function($){
 
   "use strict"
 
@@ -52,4 +59,4 @@
     $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
   })
 
-}( window.jQuery || window.ender );
+}));
