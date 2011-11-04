@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-twipsy.js v1.3.0
+ * bootstrap-twipsy.js v1.4.0
  * http://twitter.github.com/bootstrap/javascript.html#twipsy
  * Adapted from the original jQuery.tipsy by Jason Frame
  * ==========================================================
