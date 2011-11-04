@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Nov  4 13:34:33 PDT 2011
+ * Date: Fri Nov  4 13:44:15 PDT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1725,7 +1725,10 @@ a.menu:after, .dropdown-toggle:after {
 .pills-vertical > li {
   float: none;
 }
-.tab-content > .tab-pane, .pill-content > .pill-pane {
+.tab-content > .tab-pane,
+.pill-content > .pill-pane,
+.tab-content > div,
+.pill-content > div {
   display: none;
 }
 .tab-content > .active, .pill-content > .active {
