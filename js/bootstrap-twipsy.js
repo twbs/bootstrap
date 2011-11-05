@@ -64,7 +64,17 @@
 
   Twipsy.prototype = {
 
-    show: function() {
+    toggle: function() {
+        var $tip = this.tip();
+		
+        if ($tip.hasClass('in')) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    }
+	
+    , show: function() {
       var pos
         , actualWidth
         , actualHeight
