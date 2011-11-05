@@ -12,26 +12,25 @@ body {
   position: relative;
 }
 section {
-  padding-top: 60px;
+  padding-top: 4.61538461538462em; /* 60/13 */
 }
 section > .row {
-  margin-bottom: 10px;
+  margin-bottom: 0.76923076923077em; /* 10/13 */
 }
 
 
 /* Jumbotrons
 -------------------------------------------------- */
 .jumbotron {
-  min-width: 940px;
-  padding-top: 40px;
+  /*min-width: 940px;*/
+  padding-top: 3.07692307692308em; /* 40/13 */
 }
 .jumbotron .inner {
   background: transparent url(../img/grid-18px.png) top center;
-  padding: 45px 0;
+  padding: 3.46153846153846em 0; /* 45/13 */
   -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
      -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-/*          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-*/}
+}
 .jumbotron h1,
 .jumbotron p {
   margin-bottom: 9px;
@@ -40,7 +39,7 @@ section > .row {
   text-shadow: 0 1px 1px rgba(0,0,0,.3);
 }
 .jumbotron h1 {
-  font-size: 54px;
+  font-size: 4.15384615384615em; /* 54/13 */
   line-height: 1;
   text-shadow: 0 1px 2px rgba(0,0,0,.5);
 }
@@ -48,8 +47,8 @@ section > .row {
   font-weight: 300;
 }
 .jumbotron .lead {
-  font-size: 20px;
-  line-height: 27px;
+  font-size: 1.53846153846154em; /* 20/13 */
+  line-height: 1.35em; /* 27/20 */
 }
 .jumbotron p a {
   color: #fff;
@@ -81,14 +80,14 @@ section > .row {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#565d60', endColorstr='#767d80', GradientType=0); /* IE8 and down */
 }
 .subhead .inner {
-  padding: 36px 0 27px;
+  padding: 2.76923076923077em 0 2.07692307692308em; /* 36/13 & 27/13 */
 }
 .subhead h1,
 .subhead p {
   text-align: left;
 }
 .subhead h1 {
-  font-size: 40px;
+  font-size: 3.07692307692308em; /* 40/13 */
 }
 .subhead p a {
   font-weight: normal;
@@ -99,8 +98,8 @@ section > .row {
 -------------------------------------------------- */
 .footer {
   background-color: #eee;
-  min-width: 940px;
-  padding: 30px 0;
+  /*min-width: 940px;*/
+  padding: 2.30769230769231em 0; /* 30/13 */
   text-shadow: 0 1px 0 #fff;
   border-top: 1px solid #e5e5e5;
   -webkit-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
@@ -133,24 +132,26 @@ section > .row {
   margin-bottom: 0;
 }
 .quickstart .row {
-  margin: 0 -20px;
+  margin: 0 -1.53846153846154em; /* 20/13 */
   -webkit-box-shadow: 1px 0 0 #f9f9f9;
      -moz-box-shadow: 1px 0 0 #f9f9f9;
           box-shadow: 1px 0 0 #f9f9f9;
 }
+
+/* commenting out the width and border on the next two rulesets to simplify responsive design layout, should revisit later. */
 .quickstart [class*="span"] {
-  width: 285px;
+  /*width: 285px;*/
   height: 117px;
   margin-left: 0;
-  padding: 17px 20px 26px;
-  border-left: 1px solid #eee;
+  padding: 1.30769230769231em 1.53846153846154em 2em; /* 17/13, 20/13 & 26/13 */
+  /*border-left: 1px solid #eee;*/
   -webkit-box-shadow: inset 1px 0 0 #f9f9f9;
      -moz-box-shadow: inset 1px 0 0 #f9f9f9;
           box-shadow: inset 1px 0 0 #f9f9f9;
 }
 .quickstart [class*="span"]:last-child {
-  border-right: 1px solid #eee;
-  width: 286px;
+  /*border-right: 1px solid #eee;
+    width: 286px;*/
 }
 .quickstart h6,
 .quickstart p {
@@ -168,7 +169,7 @@ section > .row {
 }
 .quickstart textarea {
   display: block;
-  width: 275px;
+  width: 100%;
   height: auto;
   margin: 0 0 9px;
   line-height: 21px;

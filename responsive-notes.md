@@ -10,17 +10,12 @@ Files converted:
     - TODO in file (near end)
 * responsive-type.less (removed all non-modified rule sets)
 * responsive-forms.less (mostly done, suspect the rest will workout once other files are updated)
-* responsive-mixins.less (added a class)
+* responsive-mixins.less (added a mixin)
 * responsive-tables.less
-
-Files added to:
-
-
 
 Files to convert:
 
 * responsive-patterns.less
-* responsive-mixins.less
 
 
 PER-FILE NOTES

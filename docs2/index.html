@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <!-- <link href="../bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet/less" type="text/css" href="../lib/bootstrap.less">
+    <script src="../js/less.min.js"></script>
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/ico/bootstrap-apple-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/bootstrap-apple-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/bootstrap-apple-114x114.png">
+  </head>
+
+  <body>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <ul class="nav">
+            <li class="active"><a href="./index.html">Overview</a></li>
+            <li><a href="./scaffolding.html">Scaffolding</a></li>
+            <li><a href="./base-css.html">Base CSS</a></li>
+            <li><a href="./components.html">Components</a></li>
+            <li><a href="./javascript.html">Javascript plugins</a></li>
+            <li><a href="./less.html">Using LESS</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div id="overview">
+
+        <!-- Masthead
+        ================================================== -->
+        <header class="jumbotron masthead">
+          <div class="inner">
+            <h1>Bootstrap,<br> from Twitter</h1>
+            <p class="lead">Bootstrap is a responsive frontend toolkit from Twitter designed to kickstart web development, complete with core HTML, CSS, and JS for grids, type, forms, navigation, and many more components.</p>
+            <p class="download-info">
+              <a href="#" class="btn primary btn-large">Download on GitHub</a>
+              Currently v2.0.0
+            </p>
+            <div class="benefits">
+              <h4>Feature highlights</h4>
+              <ul>
+                <li><span>&times;</span> Built on LESS</li>
+                <li><span>&times;</span> Complete styleguide docs</li>
+                <li><span>&times;</span> Fully responsive design</li>
+                <li><span>&times;</span> Small footprint (7kb gzipped)</li>
+                <li><span>&times;</span> Support for IE7 and up</li>
+                <li><span>&times;</span> Custom jQuery plugins</li>
+                <li><span>&times;</span> Dozens of components</li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <ul class="quick-links">
+          <li><strong>Quick links</strong></li>
+          <li><a href="https://github.com/twitter/bootstrap/">GitHub</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki/Roadmap">Roadmap</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki/Changelog">Changelog</a></li>
+          <li class="divider">&middot;</li>
+          <li><strong>Authors</strong></li>
+          <li><a href="http://twitter.com/mdo">@mdo</a></li>
+          <li><a href="http://twitter.com/fat">@fat</a></li>
+          <li class="divider">&middot;</li>
+          <li class="follow-btn">
+            <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-width="145px" data-link-color="#0069D6" data-show-count="false">Follow @twbootstrap</a><script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+          </li>
+          <li class="tweet-btn">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+          </li>
+        </ul>
+
+
+        <div class="marketing">
+          <div class="row">
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_042_group.png">
+              <h2>Built for and by nerds</h2>
+              <p>Like you, we love building awesome products on the web. We love it so much, we decided to help people just like us do it easier, better, and faster. Bootstrap is built for you.</p>
+            </div>
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_079_podium.png">
+              <h2>For all skill levels</h2>
+              <p>Bootstrap is designed to help people of all skill level&mdash;designer or developer, huge nerd or early beginner. Use it as a complete kit or use to start something more complex.</p>
+            </div>
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_163_iphone.png">
+              <h2>Cross-everything</h2>
+              <p>Originally built with only modern browsers in mind, Bootstrap has evolved to include support for all major browsers (even IE7!) and, with Bootstrap 2, tablets and smartphones, too.</p>
+            </div>
+          </div><!--/row-->
+          <div class="row">
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_155_show_thumbnails.png">
+              <h2>12-column grid</h2>
+              <p>Grid systems aren't everything, but having a durable and flexible one at the core of your work can make development much simpler. Use our built-in grid classes or roll your own.</p>
+            </div>
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_214_resize_small.png">
+              <h2>Responsive design</h2>
+              <p>With Bootstrap 2, we've gone fully responsive. Our components are flexible enough to scale according to whatever resolution or device you're using to provide a consistent experience, no matter what.</p>
+            </div>
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_266_book_open.png">
+              <h2>Styleguide docs</h2>
+              <p>Unlike other front-end toolkits, Bootstrap was designed first and foremost as a styleguide to document not only our features, but best practices and living, coded examples.</p>
+            </div>
+          </div><!--/row-->
+          <div class="row">
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_082_roundabout.png">
+              <h2>Growing library</h2>
+              <p>Despite being only 7kb (gzipped), Bootstrap is one of the most complete front-end toolkits out there with dozens of fully functional components ready to be put to use.</p>
+            </div>
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_009_magic.png">
+              <h2>Custom jQuery plugins</h2>
+              <p>What good is an awesome design component without easy-to-use, proper, and extensible interactions? With Bootstrap, you get custom-built jQuery plugins to bring your projects to life.</p>
+            </div>
+            <div class="span4">
+              <img class="icon" src="assets/img/glyphicons/glyphicons_155_show_thumbnails.png">
+              <h2>Built on LESS</h2>
+              <p>Where vanilla CSS falters, LESS excels. Variables, nesting, operations, and mixins in LESS makes coding CSS faster and more efficient with minimal overhead.</p>
+            </div>
+          </div><!--/row-->
+          <div class="row">
+            <div class="span3">
+              <img class="small-icon" src="assets/img/icon-html5.png">
+              <h3>HTML5</h3>
+              <p>Built to support new HTML5 elements and syntax.</p>
+            </div>
+            <div class="span3">
+              <img class="small-icon" src="assets/img/icon-css3.png">
+              <h3>CSS3</h3>
+              <p>Progressively enhanced components for ultimate style.</p>
+            </div>
+            <div class="span3">
+              <img class="small-icon" src="assets/img/icon-github.png">
+              <h3>Open-source</h3>
+              <p>Built for and maintained by the community via <a href="https://github.com">GitHub</a>.</p>
+            </div>
+            <div class="span3">
+              <img class="small-icon" src="assets/img/icon-twitter.png">
+              <h3>Made at Twitter</h3>
+              <p>Brought to you by experienced engineers and designers.</p>
+            </div>
+          </div><!--/row-->
+        </div>
+
+
+
+
+<!--         <h3>Quick-start examples</h3>
+        <p>Need some quick templates? Check out these basic examples we've put together:</p>
+        <ul class="media-grid">
+          <li>
+            <a href="../examples/hero.html"><img src="assets/img/example-diagram-01.png" alt="Simple three-column layout with hero unit"></a>
+          </li>
+          <li>
+            <a href="../examples/fluid.html"><img src="assets/img/example-diagram-02.png" alt="Fluid layout with static sidebar"></a>
+          </li>
+          <li>
+            <a href="../examples/container-app.html"><img src="assets/img/example-diagram-03.png" alt="Simple hanging container for apps"></a>
+          </li>
+        </ul>
+ -->
+      </div><!-- /#overview -->
+
+
+      <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </footer>
+    </div><!-- /container -->
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../js/bootstrap-transitions.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/application.js"></script>
+  </body>
+</html>

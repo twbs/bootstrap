@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../bootstrap.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/ico/bootstrap-apple-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/bootstrap-apple-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/bootstrap-apple-114x114.png">
+  </head>
+
+  <body>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <ul class="nav">
+            <li><a href="./index.html">Overview</a></li>
+            <li><a href="./scaffolding.html">Scaffolding</a></li>
+            <li class="active"><a href="./base-css.html">Base CSS</a></li>
+            <li><a href="./components.html">Components</a></li>
+            <li><a href="./javascript.html">Javascript</a></li>
+            <li><a href="./less.html">Using LESS</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Masthead
+      ================================================== -->
+      <header class="jumbotron subhead" id="overview">
+        <h1>Base CSS</h1>
+        <p class="lead">The core typography, form, and table styles of Bootstrap</p>
+      </header>
+
+
+<!-- Typography
+================================================== -->
+<section id="typography">
+  <div class="page-header">
+    <h1>Typography <small>Headings, paragraphs, lists, and other inline type elements</small></h1>
+  </div>
+
+  <h2>Headings &amp; body copy</h2>
+
+  <!-- Headings & Paragraph Copy -->
+  <div class="row">
+    <div class="span4">
+      <h3>Typographic scale</h3>
+      <p>The entire typographic grid is based on two Less variables in our preboot.less file: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
+      <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
+    </div>
+    <div class="span4">
+      <h3>Example body text</h3>
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
+    </div>
+    <div class="span4">
+      <div class="well">
+        <h1>h1. Heading 1</h1>
+        <h2>h2. Heading 2</h2>
+        <h3>h3. Heading 3</h3>
+        <h4>h4. Heading 4</h4>
+        <h5>h5. Heading 5</h5>
+        <h6>h6. Heading 6</h6>
+      </div>
+    </div>
+  </div>
+
+  <!-- Misc Elements -->
+  <h2>Emphasis, address, and abbreviation</h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Usage</th>
+        <th>Optional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <code>&lt;strong&gt;</code>
+        </td>
+        <td>
+          For emphasizing a snippet of text with <strong>important</strong>
+        </td>
+        <td>
+          <span class="muted">None</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;em&gt;</code>
+        </td>
+        <td>
+          For emphasizing a snippet of text with <em>stress</em>
+        </td>
+        <td>
+          <span class="muted">None</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;abbr&gt;</code>
+        </td>
+        <td>
+          Wraps abbreviations and acronyms to show the expanded version on hover
+        </td>
+        <td>
+          Include optional <code>title</code> for expanded text
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;address&gt;</code>
+        </td>
+        <td>
+          For contact information for its nearest ancestor or the entire body of work
+        </td>
+        <td>
+          Preserve formatting by ending all lines with <code>&lt;br&gt;</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="span4">
+      <h3>Using emphasis</h3>
+      <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+      <p><strong>Note:</strong> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5, but their usage has changed a bit. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+    </div>
+    <div class="span4">
+      <h3>Example addresses</h3>
+      <p>Here are two examples of how the <code>&lt;address&gt;</code> tag can be used:</p>
+      <address>
+        <strong>Twitter, Inc.</strong><br>
+        795 Folsom Ave, Suite 600<br>
+        San Francisco, CA 94107<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+      </address>
+      <address>
+        <strong>Full Name</strong><br>
+        <a mailto="#">first.last@gmail.com</a>
+      </address>
+    </div>
+    <div class="span4">
+      <h3>Example abbreviations</h3>
+      <p>Abbreviations are styled with uppercase text and a light dotted bottom border. They also have a help cursor on hover so users have extra indication something will be shown on hover.</p>
+      <p><abbr title="HyperText Markup Language">HTML</abbr> is the best thing since sliced bread.</p>
+      <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+    </div>
+  </div>
+
+
+  <!-- Blockquotes -->
+  <h2>Blockquotes</h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Usage</th>
+        <th>Optional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <code>&lt;blockquote&gt;</code>
+        </td>
+        <td>
+          Block-level element for quoting content from another source
+        </td>
+        <td>
+          <p>Add <code>cite</code> attribute for source URL</p>
+          Use <code>.pull-left</code> and <code>.pull-right</code> classes for floated options
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <code>&lt;small&gt;</code>
+        </td>
+        <td>
+          Optional element for adding a user-facing citation, typically an author with title of work
+        </td>
+        <td>
+          Place the <code>&lt;cite&gt;</code> around the title or name of source
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="span4">
+      <p>To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
+      <p>Include an optional <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it for styling purposes.</p>
+    </div>
+    <div class="span8">
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.&lt;/p&gt;
+  &lt;small&gt;Someone famous&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
+    </div>
+  </div><!--/row-->
+
+  <h3>Example blockquotes</h3>
+  <div class="row">
+    <div class="span6">
+      <p>Default blockquotes are styled as such:</p>
+      <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
+        <small>Someone famous in <cite title="">Body of work</cite></small>
+      </blockquote>
+    </div>
+    <div class="span6">
+      <p>To float your blockquote to the right, add <code>class="pull-right"</code>:</p>
+      <blockquote class="pull-right">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
+        <small>Someone famous in <cite title="">Body of work</cite></small>
+      </blockquote>
+    </div>
+  </div>
+
+
+  <!-- Lists -->
+  <h2>Lists</h2>
+  <div class="row">
+    <div class="span3">
+      <h4>Unordered</h4>
+      <p><code>&lt;ul&gt;</code></p>
+      <ul>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <h4>Unstyled</h4>
+      <p><code>&lt;ul class="unstyled"&gt;</code></p>
+      <ul class="unstyled">
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <h4>Ordered</h4>
+      <p><code>&lt;ol&gt;</code></p>
+      <ol>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit</li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ol>
+    </div>
+    <div class="span3">
+      <h4>Description</h4>
+      <p><code>&lt;dl&gt;</code></p>
+      <dl>
+        <dt>Description lists</dt>
+        <dd>A description list is perfect for defining terms.</dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      </dl>
+    </div>
+  </div><!-- /row -->
+
+
+  <!-- Code -->
+
+  <h2>Code <small>Inline and block</small></h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th style="width: 190px;">Element</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>&lt;code&gt;</code></td>
+        <td>In a line of text like this, your wrapped code will look like this <code>&lt;html&gt;</code> element.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;pre&gt;</code></td>
+        <td>
+<pre>&lt;div&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Something right here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+          <p><strong>Note:</strong> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><code>&lt;pre class="prettyprint"&gt;</code></td>
+        <td>
+          <p>Using the google-code-prettify library, you're blocks of code get a slightly different visual style and automatic syntax highlighting. You can also add an additional class to add line numbers.</p>
+<pre class="prettyprint">&lt;div&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Something right here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+<pre class="prettyprint linenums">&lt;div&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Something right here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+          <p><a href="http://code.google.com/p/google-code-prettify/">Download google-code-prettify</a> and view the readme for <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">how to use</a>.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Labels -->
+  <h2>Inline labels <small>for special attention</small></h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th style="width: 190px;">Labels</th>
+        <th>Markup</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="label">Default</span>
+        </td>
+        <td>
+          <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label success">New</span>
+        </td>
+        <td>
+          <code>&lt;span class="label success"&gt;New&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label warning">Warning</span>
+        </td>
+        <td>
+          <code>&lt;span class="label warning"&gt;Warning&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label important">Important</span>
+        </td>
+        <td>
+          <code>&lt;span class="label important"&gt;Important&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label notice">Notice</span>
+        </td>
+        <td>
+          <code>&lt;span class="label notice"&gt;Notice&lt;/span&gt;</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+
+
+
+<!-- Tables
+================================================== -->
+<section id="tables">
+  <div class="page-header">
+    <h1>Tables <small>For, you guessed it, tabular data</small></h1>
+  </div>
+
+  <h2>Table markup</h2>
+  <div class="row">
+    <div class="span8">
+      <table class="bordered-table striped-table">
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>&lt;table&gt;</code>
+            </td>
+            <td>
+              Wrapping element for displaying data in a tabular format
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;thead&gt;</code>
+            </td>
+            <td>
+              Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;tbody&gt;</code>
+            </td>
+            <td>
+              Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;tr&gt;</code>
+            </td>
+            <td>
+              Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a single row
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;td&gt;</code>
+            </td>
+            <td>
+              Default table cell
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;th&gt;</code>
+            </td>
+            <td>
+              Special table cell for column (or row, depending on scope and placement) labels<br>
+              Must be used within a <code>&lt;thead&gt;</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;caption&gt;</code>
+            </td>
+            <td>
+              Description or summary of what the table holds, especially useful for screen readers
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="span4">
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+    </div>
+  </div>
+
+  <h2>Table options</h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Default</td>
+        <td class="muted">None</td>
+        <td>Only horizontal lines between rows</td>
+      </tr>
+      <tr>
+        <td>Bordered</td>
+        <td>
+          <code>.bordered-table</code>
+        </td>
+        <td>Rounds corners and adds outter border</td>
+      </tr>
+      <tr>
+        <td>Zebra-stripe</td>
+        <td>
+          <code>.striped-table</code>
+        </td>
+        <td>Adds light gray background color to odd rows (1, 3, 5, etc)</td>
+      </tr>
+      <tr>
+        <td>Condensed</td>
+        <td>
+          <code>.condensed-table</code>
+        </td>
+        <td>Cuts padding in half, from 10px to 5px, within all <code>td</code> and <code>th</code> elements</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Example tables</h2>
+  <h3>1. Default table styles</h3>
+  <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Some</td>
+        <td>One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  ...
+&lt;/table&gt;</pre>
+  <h3>2. Striped table</h3>
+  <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.striped-table</code> class.</p>
+  <table class="striped-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Some</td>
+        <td>One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
+<pre class="prettyprint linenums">
+&lt;table class="striped-table"&gt;
+...
+&lt;/table&gt;</pre>
+  <h3>3. Striped table w/ TableSorter.js</h3>
+  <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
+  <table class="striped-table" id="sortTableExample">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th class="yellow">First Name</th>
+        <th class="blue">Last Name</th>
+        <th class="green">Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Your</td>
+        <td>One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
+<pre class="prettyprint linenums">
+&lt;script src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
+&lt;script &gt;
+  $(function() {
+    $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
+  });
+&lt;/script&gt;
+&lt;table class="striped-table"&gt;
+  ...
+&lt;/table&gt;</pre>
+
+</section>
+
+
+
+<!-- Forms
+================================================== -->
+<section id="forms">
+  <div class="page-header">
+    <h1>Forms</h1>
+  </div>
+
+  <h2>Four types of forms</h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Vertical (default)</th>
+        <td><code>.vertical-form</code> <span class="muted">(not required)</span></td>
+        <td>Stacked, left-aligned labels over controls</td>
+      </tr>
+      <tr>
+        <th>Horiztonal</th>
+        <td><code>.horizontal-form</code></td>
+        <td>Float left, right-aligned labels on same line as controls</td>
+      </tr>
+      <tr>
+        <th>Inline</th>
+        <td><code>.inline-form</code></td>
+        <td>Left-aligned label and inline-block controls for compact style</td>
+      </tr>
+      <tr>
+        <th>Search</th>
+        <td><code>.search-form</code></td>
+        <td>Extra-rounded text input for a typical search aesthetic</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="row">
+    <div class="span4">
+      <h3>Why four types</h3>
+      <p>With Bootstrap 2, we completely recoded our forms to allow for simple base styles and improved namespacing on labels and controls. To address the many uses of forms, we've included some base styles to help get you started.</p>
+    </div>
+    <div class="span4">
+      <h3>Vertical or horizontal</h3>
+      <p>Our default form styles are now vertical, not horizontal. This makes it easier to customize bare-bones forms, as well as forms in tricker situations like sign-up, modals, etc. <strong>They share the same exact markup; just swap the class.</strong></p>
+    </div>
+  </div><!-- /row -->
+  <div class="row">
+    <div class="span3">
+      <h2>Search form</h2>
+    </div>
+    <div class="span9">
+      <div class="well">
+        <form class="form-search">
+          <input type="text" class="search-query">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div><!--/well-->
+    </div>
+  </div><!-- /row -->
+  <div class="row">
+    <div class="span3">
+      <h2>Inline form</h2>
+    </div>
+    <div class="span9">
+      <div class="well">
+        <form class="form-inline">
+          <h4>Some directional text</h4>
+          <p>And maybe some kind of optional supporting text right here.</p>
+          <input type="text" class="input-medium">
+          <input type="text" class="input-medium">
+          <input type="text" class="input-medium">
+          <button type="submit" class="btn">Search</button>
+        </form>
+      </div><!--/well-->
+    </div>
+  </div><!-- /row -->
+  <div class="row">
+    <div class="span3">
+      <h2>Horizontal form</h2>
+    </div>
+    <div class="span9">
+      <form class="form-horizontal">
+        <legend>Example form</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="input01">Text input</label>
+          <div class="controls">
+            <input type="text" class="xlarge" name="input01">
+            <p class="help-text">Help text here. Be sure to fill this out like so, or else!</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="select01">Select list</label>
+          <div class="controls">
+            <select name="select01">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="multiSelect">Multi-select</label>
+          <div class="controls">
+            <select multiple="multiple" name="multiSelect">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </fieldset>
+        <legend>Example form</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="fileInput">File input</label>
+          <div class="controls">
+            <input class="input-file" id="fileInput" name="fileInput" type="file">
+          </div>
+        </fieldset>
+        <fieldset class="control-group has-error">
+          <label class="control-label" for="inputError">Input with error</label>
+          <div class="controls">
+            <input type="text" name="inputError">
+          </div>
+        </fieldset>
+        <fieldset class="control-group has-error">
+          <label class="control-label" for="textareaError">Textarea with error</label>
+          <div class="controls">
+            <textarea class="input-xlarge" rows="3"></textarea>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="optionsCheckboxes">Checkboxes</label>
+          <div class="controls">
+            <div class="control-list">
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option1">
+                Option one is this and that&mdash;be sure to include why it’s great
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option2">
+                Option two can also be checked and included in form results
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option3">
+                Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option4">
+                Option four cannot be checked as it is disabled
+              </label>
+            </div>
+            <p class="help-text"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="optionsRadios">Radio buttons</label>
+          <div class="controls">
+            <div class="control-list">
+              <label>
+                <input type="radio" checked name="optionsRadios" value="option1">
+                <span>Option one is this and that&mdash;be sure to include why it’s great</span>
+              </label>
+              <label>
+                <input type="radio" name="optionsRadios" value="option2">
+                <span>Option two can is something else and selecting it will deselect options 1</span>
+              </label>
+            </div>
+            <p class="help-text"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
+          </div>
+        </fieldset>
+        <fieldset class="form-actions">
+          <button type="submit" class="btn primary">Save changes</button>
+          <button type="reset" class="btn">Cancel</button>
+        </fieldset>
+      </form>
+    </div>
+  </div><!-- /row -->
+  <div class="row">
+    <div class="span3">
+      <h2>Vertical form</h2>
+    </div>
+    <div class="span9">
+      <form class="form-vertical">
+        <legend>Example form</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="input01">Label</label>
+          <div class="controls">
+            <input type="text" class="xlarge" name="input01">
+            <p class="help-text">Be sure to fill this out like so, or else!</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="select01">Label</label>
+          <div class="controls">
+            <select name="select01"></select>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="input02">Label</label>
+          <div class="controls">
+            <div class="control-list">
+              <label class="checkbox">
+                <input type="checkbox"> Something something something something something
+              </label>
+              <label class="checkbox">
+                <input type="checkbox"> Something something something something
+              </label>
+              <label class="checkbox">
+                <input type="checkbox"> Something something something
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-actions">
+          <button type="submit" class="btn primary">Save changes</button>
+          <button type="reset" class="btn">Cancel</button>
+        </fieldset>
+      </form>
+    </div>
+  </div><!-- /row -->
+
+
+
+  <h2>Buttons</h2>
+  <table class="bordered-table striped-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Preview</th>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Default</th>
+        <td><a class="btn" href="#">Button</a></td>
+        <td><code>.btn</code></td>
+        <td>Standard gray button with gradient</td>
+      </tr>
+      <tr>
+        <th>Primary</th>
+        <td><a class="btn primary" href="#">Button</a></td>
+        <td><code>.primary</code></td>
+        <td>Makes button blue for more visual weight to indicate the primary action in a set of buttons</td>
+      </tr>
+      <tr>
+        <th>Info</th>
+        <td><a class="btn info" href="#">Button</a></td>
+        <td><code>.info</code></td>
+        <td>Used as an alternate to the default styles</td>
+      </tr>
+      <tr>
+        <th>Success</th>
+        <td><a class="btn success" href="#">Button</a></td>
+        <td><code>.success</code></td>
+        <td>Used to indicate a successful or positive action will be taken</td>
+      </tr>
+      <tr>
+        <th>Danger</th>
+        <td><a class="btn danger" href="#">Button</a></td>
+        <td><code>.danger</code></td>
+        <td>Used to indicate a dangerous or potentially negative action will be taken</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="span4">
+      <h3>Buttons for actions</h3>
+      <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.</p>
+    </div>
+    <div class="span4">
+      <h3>For anchors and forms</h3>
+      <p>Button styles can be applied to anything with the <code>.btn</code> applied. However, typically you’ll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
+    </div>
+    <div class="span4">
+      <p><strong>Note:</strong> All buttons must include the <code>.btn</code> class. Button styles should be applied to <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> elements for consistency.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <h3>Multiple sizes</h3>
+      <p>Fancy larger or smaller buttons? Have at it!</p>
+      <p>
+        <a href="#" class="btn large primary">Primary action</a>
+        <a href="#" class="btn large">Action</a>
+      </p>
+      <p>
+        <a href="#" class="btn small primary">Primary action</a>
+        <a href="#" class="btn small">Action</a>
+      </p>
+    </div>
+    <div class="span8">
+      <h3>Disabled state</h3>
+      <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+      <p>
+        <a href="#" class="btn large primary disabled">Primary action</a>
+        <a href="#" class="btn large disabled">Action</a>
+      </p>
+      <p>
+        <button class="btn large primary disabled" disabled="disabled">Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
+      </p>
+    </div>
+  </div>
+
+  <h2>Button groups</h2>
+  <div class="well">
+    <div class="btn-group">
+      <a class="btn" href="#">Left</a>
+      <a class="btn" href="#">Middle</a>
+      <a class="btn" href="#">Right</a>
+    </div>
+  </div>
+  <div class="well">
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <a class="btn" href="#">1</a>
+        <a class="btn" href="#">2</a>
+        <a class="btn" href="#">3</a>
+        <a class="btn" href="#">4</a>
+        <a class="btn" href="#">5</a>
+      </div>
+      <div class="btn-group">
+        <a class="btn" href="#">6</a>
+        <a class="btn" href="#">7</a>
+        <a class="btn" href="#">8</a>
+      </div>
+      <div class="btn-group">
+        <a class="btn" href="#">9</a>
+      </div>
+      <div class="btn-group">
+        <a class="btn" href="#">10</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+      <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>
+          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br>
+          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+        </p>
+      </footer>
+    </div><!-- /container -->
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../js/bootstrap-transitions.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/application.js"></script>
+  </body>
+</html>
