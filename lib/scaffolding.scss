@@ -7,13 +7,11 @@
 // STRUCTURAL LAYOUT
 // -----------------
 
-html, body {
-  background-color: $white;
-}
 body {
+  background-color: $white;
   margin: 0;
   @include sans-serif-font(normal,$basefont,$baseline);
-  color: $gray;
+  color: $grayDark;
 }
 
 // Container (centered, fixed-width layouts)
@@ -24,28 +22,20 @@ body {
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {
   position: relative;
+  min-width: 940px;
   padding-left: 20px;
   padding-right: 20px;
   @include clearfix();
   > .sidebar {
-    float: left;
+    position: absolute;
+    top: 0;
+    left: 20px;
     width: 220px;
   }
   // TODO in v2: rename this and .popover .content to be more specific
   > .content {
-    float: left;
-    min-width: 700px;
-    max-width: 1180px;
-    margin-left: 20px;
+    margin-left: 240px;
   }
-}
-
-// Toggling content
-.hide {
-  display: none;
-}
-.show {
-  display: block;
 }
 
 
@@ -72,6 +62,14 @@ a {
   float: left;
 }
 
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
 
 // GRID SYSTEM
 // -----------
@@ -84,7 +82,7 @@ a {
 
 // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
 // Credit to @dhg for the idea
-[class*="span"] {
+.row > [class*="span"] {
   @include gridColumn();
 }
 
@@ -117,19 +115,20 @@ a {
 .span24    { @include columns(24); }
 
 // Offset column options
-.offset1   { @include offset(1); }
-.offset2   { @include offset(2); }
-.offset3   { @include offset(3); }
-.offset4   { @include offset(4); }
-.offset5   { @include offset(5); }
-.offset6   { @include offset(6); }
-.offset7   { @include offset(7); }
-.offset8   { @include offset(8); }
-.offset9   { @include offset(9); }
-.offset10  { @include offset(10); }
-.offset11  { @include offset(11); }
-.offset12  { @include offset(12); }
-
+.row {
+  > .offset1   { @include offset(1); }
+  > .offset2   { @include offset(2); }
+  > .offset3   { @include offset(3); }
+  > .offset4   { @include offset(4); }
+  > .offset5   { @include offset(5); }
+  > .offset6   { @include offset(6); }
+  > .offset7   { @include offset(7); }
+  > .offset8   { @include offset(8); }
+  > .offset9   { @include offset(9); }
+  > .offset10  { @include offset(10); }
+  > .offset11  { @include offset(11); }
+  > .offset12  { @include offset(12); }
+}
 // Unique column sizes for 16-column grid
 .span-one-third     { width: 300px; }
 .span-two-thirds    { width: 620px; }

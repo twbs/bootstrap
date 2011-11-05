@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-alerts.js v1.3.0
+ * bootstrap-alerts.js v1.4.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
  * Copyright 2011 Twitter, Inc.
@@ -18,7 +18,9 @@
  * ========================================================== */
 
 
-(function( $ ){
+!function( $ ){
+
+  "use strict"
 
   /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
    * ======================================================= */
@@ -38,11 +40,11 @@
      if ( $.support.transition ) {
        transitionEnd = "TransitionEnd"
        if ( $.browser.webkit ) {
-       	transitionEnd = "webkitTransitionEnd"
+        transitionEnd = "webkitTransitionEnd"
        } else if ( $.browser.mozilla ) {
-       	transitionEnd = "transitionend"
+        transitionEnd = "transitionend"
        } else if ( $.browser.opera ) {
-       	transitionEnd = "oTransitionEnd"
+        transitionEnd = "oTransitionEnd"
        }
      }
 
@@ -51,9 +53,10 @@
  /* ALERT CLASS DEFINITION
   * ====================== */
 
-  var Alert = function ( content, selector ) {
+  var Alert = function ( content, options ) {
+    this.settings = $.extend({}, $.fn.alert.defaults, options)
     this.$element = $(content)
-      .delegate(selector || '.close', 'click', this.close)
+      .delegate(this.settings.selector, 'click', this.close)
   }
 
   Alert.prototype = {
@@ -92,13 +95,19 @@
         return $this.data('alert')[options]()
       }
 
-      $(this).data('alert', new Alert( this ))
+      $(this).data('alert', new Alert( this, options ))
 
     })
   }
 
+  $.fn.alert.defaults = {
+    selector: '.close'
+  }
+
   $(document).ready(function () {
-    new Alert($('body'), '.alert-message[data-alert] .close')
+    new Alert($('body'), {
+      selector: '.alert-message[data-alert] .close'
+    })
   })
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender );

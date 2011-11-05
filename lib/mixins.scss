@@ -10,7 +10,6 @@
     display: table;
     content: "";
     zoom: 1;
-    *display: inline;
   }
   &:after {
     clear: both;
@@ -92,7 +91,7 @@
 // makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
 @mixin makeColumn($columnSpan: 1) {
   @include gridColumn();
-  @include columns($columnSapn);
+  @include columns($columnSpan);
 }
 
 // Border Radius
@@ -133,6 +132,12 @@
   -webkit-column-gap: $columnGap;
      -moz-column-gap: $columnGap;
           column-gap: $columnGap;
+}
+
+// Make any element resizable for prototyping
+@mixin resizable($direction: both) {
+  resize: $direction; // Options are horizontal, vertical, both
+  overflow: auto; // Safari fix
 }
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)

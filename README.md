@@ -13,7 +13,7 @@ You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new
 
 Because SASS always outputs standard css, just link to the final output like normal:
 
-    <link rel="stylesheet" type="text/css" href="bootstrap-1.3.0.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-1.4.0.css">
 
 For more info, refer to the docs!
 

@@ -17,39 +17,46 @@
  * limitations under the License.
  * ============================================================ */
 
-
 !function( $ ){
 
   "use strict"
 
-  /* DROPDOWN PLUGIN DEFINITION
-   * ========================== */
+  function setState(el, state) {
+    var d = 'disabled'
+      , $el = $(el)
+      , data = $el.data()
 
-  $.fn.dropdown = function ( selector ) {
+    state = state + 'Text'
+    data.resetText || $el.data('resetText', $el.html())
+
+    $el.html( data[state] || $.fn.button.defaults[state] )
+
+    state == 'loadingText' ?
+      $el.addClass(d).attr(d, d) :
+      $el.removeClass(d).removeAttr(d)
+  }
+
+  function toggle(el) {
+    $(el).toggleClass('active')
+  }
+
+  $.fn.button = function(options) {
     return this.each(function () {
-      $(this).delegate(selector || d, 'click', function (e) {
-        var li = $(this).parent('li')
-          , isActive = li.hasClass('open')
-
-        clearMenus()
-        !isActive && li.toggleClass('open')
-        return false
-      })
+      if (options == 'toggle') {
+        return toggle(this)
+      }
+      options && setState(this, options)
     })
   }
 
-  /* APPLY TO STANDARD DROPDOWN ELEMENTS
-   * =================================== */
-
-  var d = 'a.menu, .dropdown-toggle'
-
-  function clearMenus() {
-    $(d).parent('li').removeClass('open')
+  $.fn.button.defaults = {
+    loadingText: 'loading...'
   }
 
   $(function () {
-    $('html').bind("click", clearMenus)
-    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
+    $('body').delegate('.btn[data-toggle]', 'click', function () {
+      $(this).button('toggle')
+    })
   })
 
 }( window.jQuery || window.ender );

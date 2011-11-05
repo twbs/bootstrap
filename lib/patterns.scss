@@ -25,7 +25,7 @@
   // Hover and active states
   // h3 for backwards compatibility
   h3 a:hover,
-  .brand a:hover,
+  .brand:hover,
   ul .active > a {
     background-color: #333;
     background-color: rgba(255,255,255,.05);
@@ -278,7 +278,8 @@ a.menu:after,
   }
 }
 
-.topbar .dropdown-menu, .dropdown-menu {
+.topbar .dropdown-menu,
+.dropdown-menu {
   // Links within the dropdown menu
   a {
     display: block;
@@ -289,7 +290,8 @@ a.menu:after,
     color: $gray;
     text-shadow: 0 1px 0 $white;
     // Hover state
-    &:hover {
+    &:hover, 
+    &.hover {
       @include vertical-gradient(#eeeeee, #dddddd);
       color: $grayDark;
       text-decoration: none;
@@ -318,10 +320,13 @@ a.menu:after,
 }
 
 
-// Tabs and Pills
+// TABS AND PILLS
+//---------------
+
+// Common styles
 .tabs,
 .pills {
-  margin: 0 0 20px;
+  margin: 0 0 $baseline;
   padding: 0;
   list-style: none;
   @include clearfix();
@@ -333,18 +338,18 @@ a.menu:after,
   }
 }
 
-// Basic Tabs
+// Tabs
 .tabs {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
   > li {
     position: relative; // For the dropdowns mostly
-    top: 1px;
+    margin-bottom: -1px;
     > a {
       padding: 0 15px;
       margin-right: 2px;
-      line-height: $baseline * 2;
+      line-height: ($baseline * 2) - 2;
       border: 1px solid transparent;
       @include border-radius(4px 4px 0 0);
       &:hover {
@@ -353,13 +358,20 @@ a.menu:after,
         border-color: #eee #eee #ddd;
       }
     }
-    &.active > a {
-      color: $gray;
-      background-color: $white;
-      border: 1px solid #ddd;
-      border-bottom-color: transparent;
-    }
   }
+  // Active state, and it's :hover to override normal :hover
+  .active > a,
+  .active > a:hover {
+    color: $gray;
+    background-color: $white;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+}
+
+// Dropdowns in tabs
+.tabs {
   // first one for backwards compatibility
   .menu-dropdown,
   .dropdown-menu {
@@ -385,40 +397,47 @@ a.menu:after,
     border-top-color: #555;
   }
 }
-.tab-content {
-  clear: both;
-}
 
-// Basic pill nav
+// Pills
 .pills {
   a {
     margin: 5px 3px 5px 0;
     padding: 0 15px;
-    text-shadow: 0 1px 1px $white;
     line-height: 30px;
+    text-shadow: 0 1px 1px $white;
     @include border-radius(15px);
     &:hover {
-      background: $linkColorHover;
       color: $white;
       text-decoration: none;
       text-shadow: 0 1px 1px rgba(0,0,0,.25);
+      background-color: $linkColorHover;
     }
   }
   .active a {
-    background: $linkColor;
     color: $white;
     text-shadow: 0 1px 1px rgba(0,0,0,.25);
+    background-color: $linkColor;
   }
 }
 
-.tab-content > *,
-.pill-content > * {
-  display: none;
+// Stacked pills
+.pills-vertical > li {
+  float: none;
 }
 
+// Tabbable areas
+.tab-content,
+.pill-content {
+}
+.tab-content > .tab-pane,
+.pill-content > .pill-pane,
+.tab-content > div,
+.pill-content > div {
+  display: none;
+}
 .tab-content > .active,
 .pill-content > .active {
-  display:block;
+  display: block;
 }
 
 
@@ -426,8 +445,8 @@ a.menu:after,
 // -----------
 
 .breadcrumb {
-  margin: 0 0 $baseline;
   padding: 7px 14px;
+  margin: 0 0 $baseline;
   @include vertical-gradient(#ffffff, #f5f5f5);
   border: 1px solid #ddd;
   @include border-radius(3px);
@@ -439,8 +458,6 @@ a.menu:after,
   .divider {
     padding: 0 5px;
     color: $grayLight;
-  }
-  a {
   }
   .active a {
     color: $grayDark;
@@ -505,6 +522,11 @@ footer {
   &.info:hover {
     color: $white;
   }
+  // Sets the close button to the middle of message
+  .close {
+    font-family: Arial, sans-serif;
+    line-height: 18px;
+  }
   // Danger and error appear as red
   &.danger,
   &.error {
@@ -558,6 +580,7 @@ footer {
   @include transition(.1s linear all);
 
   // Active and Disabled states
+  &.active,
   &:active {
     $shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
     @include box-shadow($shadow);
@@ -616,7 +639,7 @@ input[type=submit].btn {
   font-weight: bold;
   line-height: $baseline * .75;
   text-shadow: 0 1px 0 rgba(255,255,255,1);
-  @include opacity(20);
+  @include opacity(25);
   &:hover {
     color: $black;
     text-decoration: none;
@@ -643,9 +666,22 @@ input[type=submit].btn {
 
   // Adjust close icon
   .close {
-    *margin-top: 3px; /* IE7 spacing */
+    margin-top: 1px;
+    *margin-top: 0; // For IE7
   }
-
+  
+  // Make links same color as text and stand out more
+  a {
+    font-weight: bold;
+    color: $grayDark;
+  }
+  &.danger p a,
+  &.error p a,
+  &.success p a,
+  &.info p a {
+    color: $white;
+  }
+ 
   // Remove extra margin from content
   h5 {
     line-height: $baseline;
@@ -700,6 +736,14 @@ input[type=submit].btn {
       background-color: lighten(#6bd0ee, 25%);
       border-color: lighten(#6bd0ee, 20%);
     }
+    // Change link color back
+    &.danger p a,
+    &.error p a,
+    &.success p a,
+    &.info p a {
+      color: $grayDark;
+    }
+
   }
 }
 
@@ -780,7 +824,8 @@ input[type=submit].btn {
   &.fade { opacity: 0; }
 }
 
-.modal-backdrop, .modal-backdrop.fade.in {
+.modal-backdrop,
+.modal-backdrop.fade.in {
   @include opacity(80);
 }
 
@@ -790,7 +835,7 @@ input[type=submit].btn {
   left: 50%;
   z-index: 11000;
   width: 560px;
-  margin: -250px 0 0 -250px;
+  margin: -250px 0 0 -280px;
   background-color: $white;
   border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
@@ -810,7 +855,10 @@ input[type=submit].btn {
   padding: 5px 15px;
 }
 .modal-body {
-    padding: 20px;
+    padding: 15px;
+}
+.modal-body form {
+  margin-bottom: 0;
 }
 .modal-footer {
   background-color: #f5f5f5;
@@ -824,6 +872,12 @@ input[type=submit].btn {
     float: right;
     margin-left: 5px;
   }
+}
+
+// Fix the stacking of these components when in modals
+.modal .popover,
+.modal .twipsy {
+  z-index: 12000;
 }
 
 
@@ -920,8 +974,8 @@ input[type=submit].btn {
     height: 0;
   }
   .inner {
-    background-color: $black;
-    background-color: rgba(0,0,0,.8);
+    background: $black;
+    background: rgba(0,0,0,.8);
     padding: 3px;
     overflow: hidden;
     width: 280px;
@@ -963,11 +1017,12 @@ input[type=submit].btn {
 
 .label {
   padding: 1px 3px 2px;
-  background-color: $grayLight;
   font-size: $basefont * .75;
   font-weight: bold;
   color: $white;
   text-transform: uppercase;
+  white-space: nowrap;
+  background-color: $grayLight;
   @include border-radius(3px);
   &.important { background-color: #c43c35; }
   &.warning   { background-color: $orange; }
@@ -980,7 +1035,7 @@ input[type=submit].btn {
 // -----------
 
 .media-grid {
-  margin-left: -20px;
+  margin-left: -$gridGutterWidth;
   margin-bottom: 0;
   @include clearfix();
   li {
@@ -989,7 +1044,7 @@ input[type=submit].btn {
   a {
     float: left;
     padding: 4px;
-    margin: 0 0 20px 20px;
+    margin: 0 0 $baseline $gridGutterWidth;
     border: 1px solid #ddd;
     @include border-radius(4px);
     @include box-shadow(0 1px 1px rgba(0,0,0,.075));
