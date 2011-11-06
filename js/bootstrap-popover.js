@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-popover.js v1.3.0
+ * bootstrap-popover.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#popover
  * ===========================================================
  * Copyright 2011 Twitter, Inc.
@@ -61,7 +61,6 @@
     }
 
   })
-
 
  /* POPOVER PLUGIN DEFINITION
   * ======================= */

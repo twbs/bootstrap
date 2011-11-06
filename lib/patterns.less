@@ -3,42 +3,42 @@
  * ---------------------------------------------------------------------------- */
 
 
-// TOPBAR
-// ------
+// NAVBAR (FIXED AND STATIC)
+// -------------------------
 
-// Topbar for Branding and Nav
-.topbar {
-  height: 3.07692307692308em; // 40/13
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10000;
+// Navbar variables
+@navBarHeight: 3.07692307692308em; // 40/13
+@navBarBgStart: #333;
+@navBarBgEnd: #222;
+
+// Common styles
+.navbar {
+  height: @navBarHeight;
   overflow: visible;
-
-  // Links get text shadow
+}
+// gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+.navbar-inner {
+  background-color: @navBarBgEnd;
+  #gradient > .vertical(@navBarBgStart, @navBarBgEnd);
+  @shadow: 0 0.07692307692308em 0.23076923076923em rgba(0,0,0,.25), inset 0 -0.07692307692308em 0 rgba(0,0,0,.1); // 1/13 3/13
+  .box-shadow(@shadow);
+}
+// Text and links
+.navbar {
+  // Links get text-shadow
   a {
     color: @grayLight;
     text-shadow: 0 -0.07692307692308em 0 rgba(0,0,0,.25); // -1/13
   }
-
   // Hover and active states
-  // h3 for backwards compatibility
-  h3 a:hover,
   .brand a:hover,
   ul .active > a {
-    background-color: #333;
+    background-color: @navBarBgStart;
     background-color: rgba(255,255,255,.05);
     color: @white;
     text-decoration: none;
   }
-
-  // Website name
-  // h3 left for backwards compatibility
-  h3 {
-    position: relative;
-  }
-  h3 a,
+  // Website or project name
   .brand {
     float: left;
     display: block;
@@ -50,7 +50,6 @@
     font-weight: 200;
     line-height: 1;
   }
-
   // Plain text in topbar
   p {
     margin: 0;
@@ -60,19 +59,15 @@
       color: @white;
     }
   }
+}
 
-  // Search Form
-  form {
-    float: left;
-    margin: 0.38461538461538em 0 0 0; // 5/13
-    position: relative;
-    .opacity(100);
-  }
-  // Todo: remove from v2.0 when ready, added for legacy
-  form.pull-right {
-    float: right;
-  }
-  input {
+// Navbar search
+.navbar-search {
+  position: relative;
+  margin-top: 0.46153846153846em; // 6/13
+  margin-bottom: 0;
+  float: left;
+  .search-query {
     background-color: #444;
     background-color: rgba(255,255,255,.3);
     #font > .sans-serif(1em, normal, 1);
@@ -80,7 +75,6 @@
     color: @white;
     color: rgba(255,255,255,.75);
     border: 1px solid #111;
-    .border-radius(0.30769230769231em); // 4/13
     @shadow: inset 0 0.07692307692308em 0.15384615384615em rgba(0,0,0,.1), 0 0.07692307692308em 0 rgba(255,255,255,.25); // 1/13 2/13
     .box-shadow(@shadow);
     .transition(none);
@@ -112,24 +106,33 @@
   }
 }
 
-// gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
-// For backwards compatibility, include .topbar .fill
-.topbar-inner,
-.topbar .fill {
-  background-color: #222;
-  #gradient > .vertical(#333, #222);
-  @shadow: 0 0.07692307692308em 0.23076923076923em rgba(0,0,0,.25), inset 0 -0.07692307692308em 0 rgba(0,0,0,.1); // 1/13 3/13
-  .box-shadow(@shadow);
+
+// Static navbar
+.navbar-static {
+  margin-bottom: @baseLineHeight;
 }
+.navbar-static .navbar-inner {
+  padding-left: 1.53846153846154em; // 20/13
+  padding-right: 1.53846153846154em; // 20/13
+  .border-radius(0.30769230769231em); // 4/13
+}
+
+// Fixed navbar
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+
 
 
 // NAVIGATION
 // ----------
 
-// Topbar Nav
+// Nav for navbar and topbar
 // ul.nav for all topbar based navigation to avoid inheritance issues and over-specificity
-// For backwards compatibility, leave in .topbar div > ul
-.topbar div > ul,
 .nav {
   display: block;
   float: left;
@@ -161,28 +164,19 @@
     float: right;
     margin-left: 0.76923076923077em; // 10/13
     margin-right: 0;
-    // backwards compatibility
-    .menu-dropdown,
     .dropdown-menu {
       right: 0;
       border: 0;
     }
   }
   // Dropdowns within the .nav
-  // a.menu:hover and li.open .menu for backwards compatibility
-  a.menu:hover,
-  li.open .menu,
   .dropdown-toggle:hover,
   .dropdown.open .dropdown-toggle {
     background: #444;
     background: rgba(255,255,255,.05);
   }
-  // .menu-dropdown for backwards compatibility
-  .menu-dropdown,
   .dropdown-menu {
     background-color: #333;
-    // a.menu for backwards compatibility
-    a.menu,
     .dropdown-toggle {
       color: @white;
       &.open {
@@ -208,22 +202,16 @@
   }
 }
 
-// For backwards compatibility with new dropdowns, redeclare dropdown link padding
-.topbar ul .menu-dropdown li a,
 .topbar ul .dropdown-menu li a {
   padding: 0.30769230769231em 1.15384615384615em; // 4/13 15/13
 }
 
 // Dropdown Menus
 // Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
-// li.menu for backwards compatibility
-li.menu,
 .dropdown {
   position: relative;
 }
 // The link that is clicked to toggle the dropdown
-// a.menu for backwards compatibility
-a.menu:after,
 .dropdown-toggle:after {
   width: 0;
   height: 0;
@@ -236,11 +224,12 @@ a.menu:after,
   border-left: 0.30769230769231em solid transparent; // 4/13
   border-right: 0.30769230769231em solid transparent; // 4/13
   border-top: 0.30769230769231em solid @white; // 4/13
-  .opacity(50);
+  .opacity(30);
+}
+.dropdown:hover .dropdown-toggle:after {
+  .opacity(100);
 }
 // The dropdown menu (ul)
-// .menu-dropdown for backwards compatibility
-.menu-dropdown,
 .dropdown-menu {
   background-color: @white;
   float: left;
@@ -301,18 +290,12 @@ a.menu:after,
 }
 
 // Open state for the dropdown
-// .open for backwards compatibility
-.open,
 .dropdown.open {
-  // .menu for backwards compatibility
-  .menu,
   .dropdown-toggle {
     color: @white;
     background: #ccc;
     background: rgba(0,0,0,.3);
   }
-  // .menu-dropdown for backwards compatibility
-  .menu-dropdown,
   .dropdown-menu {
     display: block;
   }
@@ -334,14 +317,14 @@ a.menu:after,
   }
 }
 
-// Basic Tabs
+// Tabs
 .tabs {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
   > li {
     position: relative; // For the dropdowns mostly
-    top: 1px;
+    margin-bottom: -1px;
     > a {
       padding: 0 1.15384615384615em; // 15/13
       margin-right: 0.15384615384615em; // 2/13
@@ -354,13 +337,127 @@ a.menu:after,
         border-color: #eee #eee #ddd;
       }
     }
-    &.active > a {
-      color: @gray;
-      background-color: @white;
-      border: 1px solid #ddd;
+  }
+  // Active state, and it's :hover to override normal :hover
+  .active > a,
+  .active > a:hover {
+    color: @gray;
+    background-color: @white;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+}
+
+.tabbable {
+  margin-bottom: @baseLineHeight;
+
+  // Tabs on top
+  .tabs {
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+  .tab-content {
+    padding: 19px;
+    border: 1px solid #ddd;
+  }
+
+  // Tabs on bottom
+  &.tabs-bottom .tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+  }
+  &.tabs-bottom .tabs > li > a {
+    .border-radius(0 0 4px 4px);
+    &:hover {
       border-bottom-color: transparent;
+      border-top-color: #ddd;
     }
   }
+  &.tabs-bottom .tabs > .active > a,
+  &.tabs-bottom .tabs > .active > a:hover {
+    border-color: transparent #ddd #ddd #ddd;
+  }
+
+  // Tabs on left and right
+  &.tabs-left,
+  &.tabs-right {
+    .clearfix();
+    .tabs {
+      // Give a fixed width to avoid floating .tab-con
+      width: 100px;
+      // Unfloat them so they stack
+      > li {
+        float: none;
+        margin-bottom: -1px;
+        > a {
+          margin-bottom: 2px;
+          &:hover {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  // Tabs on left
+  &.tabs-left {
+    .tab-content {
+      margin-left: 100px;
+    }
+    .tabs {
+      float: left;
+      > li {
+        margin-right: -1px;
+        > a {
+          margin-right: 0;
+          .border-radius(4px 0 0 4px);
+
+          &:hover {
+            border-right-color: #ddd;
+          }
+        }
+      }
+      // Active state
+      .active > a,
+      .active > a:hover {
+        border-color: #ddd;
+        border-right-color: transparent;
+      }
+    }
+  }
+
+  // Tabs on right
+  &.tabs-right {
+    .tab-content {
+      margin-right: 100px;
+    }
+    .tabs {
+      float: right;
+      > li {
+        margin-left: -1px;
+        > a {
+          margin-left: 0;
+          .border-radius(0 4px 4px 0);
+
+          &:hover {
+            border-left-color: #ddd;
+          }
+        }
+      }
+      // Active state
+      .active > a,
+      .active > a:hover {
+        border-color: #ddd;
+        border-left-color: transparent;
+      }
+    }
+  }
+}
+
+
+// Dropdowns in tabs
+.tabs {
   // first one for backwards compatibility
   .menu-dropdown,
   .dropdown-menu {
@@ -386,40 +483,45 @@ a.menu:after,
     border-top-color: #555;
   }
 }
-.tab-content {
-  clear: both;
-}
 
-// Basic pill nav
+// Pills
 .pills {
   a {
-      margin: 0.38461538461538em 3px 0.38461538461538em 0; // 5/13 3/13
+    margin: 0.38461538461538em 3px 0.38461538461538em 0; // 5/13 3/13
     padding: 0 1.15384615384615em; // 15/13
     text-shadow: 0 0.07692307692308em 0.07692307692308em @white; // 1/13
     line-height: 2.30769230769231em; // 30/13
     .border-radius(1.15384615384615em); // 15/13
     &:hover {
-      background: @linkColorHover;
       color: @white;
       text-decoration: none;
-      text-shadow: 0 0.07692307692308em 0.07692307692308em rgba(0,0,0,.25);
+      text-shadow: 0 0.07692307692308em 0.07692307692308em rgba(0,0,0,.25); // 1/13
+      background-color: @linkColorHover;
     }
   }
   .active a {
-    background: @linkColor;
     color: @white;
-    text-shadow: 0 0.07692307692308em 0.07692307692308em rgba(0,0,0,.25);
+    text-shadow: 0 0.07692307692308em 0.07692307692308em rgba(0,0,0,.25); // 1/13
+    background-color: @linkColor;
   }
 }
 
-.tab-content > *,
-.pill-content > * {
-  display: none;
+// Stacked pills
+.pills-vertical > li {
+  float: none;
 }
 
+// Tabbable areas
+.tab-content,
+.pill-content {
+}
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
 .tab-content > .active,
 .pill-content > .active {
-  display:block;
+  display: block;
 }
 
 
@@ -440,8 +542,6 @@ a.menu:after,
   .divider {
     padding: 0 0.38461538461538em; // 5/13
     color: @grayLight;
-  }
-  a {
   }
   .active a {
     color: @grayDark;
@@ -480,11 +580,15 @@ footer {
 // ------------
 
 .page-header {
-  margin-bottom: @baseMarginHeight - 0.07692307692308em; // 1/13
+  margin-bottom: @baseMarginHeight * 1.5;
+  // keeping this around till I test responsiveness
+  // margin-bottom: @baseMarginHeight - 0.07692307692308em; // 1/13
   border-bottom: 1px solid #ddd;
   .box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
-    margin-bottom: 0.26666666666667em; // 8/30
+    // keeping this around till I test responsiveness
+    //margin-bottom: 0.26666666666667em; // 8/30
+    margin-bottom: @baseLineHeight * .75;
   }
 }
 
@@ -582,14 +686,14 @@ footer {
 
   // Button Sizes
   &.large {
-    font-size: 1em + 0.15384615384615em; // @basefont & 2/13 (15px)
+    font-size: 1em + 0.15384615384615em; // @basefontsize & 2/13 (15px)
     line-height: normal;
     padding: 0.6em 0.93333333333333em 0.6em; // 9/15, 14/15 & 9/15
     .border-radius(0.4em); // 6/15
   }
   &.small {
     padding: 0.63636363636364em 0.81818181818182em 0.63636363636364em; // 7/11, 9/11 & 7/11
-    font-size: 1em - 0.15384615384615em; // @basefont & 2/13 (11px)
+    font-size: 1em - 0.15384615384615em; // @basefontsize & 2/13 (11px)
   }
 }
 // Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
@@ -606,6 +710,54 @@ input[type=submit].btn {
   	border: 0;
   }
 }
+
+// Button groups
+// -------------
+
+// Group multiple button groups together for a toolbar
+.btn-toolbar {
+  .clearfix();
+  .btn-group {
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+// Clear the float
+.btn-group {
+  .clearfix();
+}
+// Float them, remove border radius, then re-add to first and last elements
+.btn-group .btn {
+  position: relative;
+  float: left;
+  margin-left: -1px;
+  .border-radius(0);
+  &:first-child {
+    margin-left: 0;
+       -webkit-border-top-left-radius: 4px;
+           -moz-border-radius-topleft: 4px;
+               border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+        -moz-border-radius-bottomleft: 4px;
+            border-bottom-left-radius: 4px;
+  }
+  &:last-child {
+       -webkit-border-top-right-radius: 4px;
+           -moz-border-radius-topright: 4px;
+               border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomright: 4px;
+            border-bottom-right-radius: 4px;
+  }
+}
+// On hover/focus/active, bring the proper btn to front
+.btn-group .btn:hover,
+.btn-group .btn:focus,
+.btn-group .btn:active {
+  z-index: 2;
+}
+
 
 
 // CLOSE ICONS
@@ -974,7 +1126,7 @@ input[type=submit].btn {
 .label {
   padding: 1px 3px 2px;
   background-color: @grayLight;
-  font-size: 1em * .75; // @basefont
+  font-size: 1em * .75; // @baseFontSize
   font-weight: bold;
   color: @white;
   text-transform: uppercase;

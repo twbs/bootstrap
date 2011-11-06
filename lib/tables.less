@@ -9,15 +9,13 @@
 
 table {
   width: 100%;
-  margin-bottom: @baseMarginHeight;
   padding: 0;
-  border-collapse: separate; // Done so we can round those corners!
-  *border-collapse: collapse; /* IE7, collapse table to remove spacing */
+  margin-bottom: @baseMarginHeight;
   font-size: 1em;
-  border: 1px solid #ddd;
-  .border-radius(0.30769230769231em); // 4/13
-  th, td {
-    padding: 0.76923076923077em 0.76923076923077em 0.69230769230769em; // 10/13 & 9/13
+  border-collapse: collapse;
+  th,
+  td {
+    padding: 0.76923076923077em 0.76923076923077em 0.69230769230769em; // 10/13, 10/13 & 9/13
     line-height: @baseLineHeight;
     text-align: left;
   }
@@ -25,23 +23,50 @@ table {
     padding-top: 0.69230769230769em; // 9/13
     font-weight: bold;
     vertical-align: middle;
-    border-bottom: 1px solid #ddd;
   }
   td {
     vertical-align: top;
-  }
-  th + th,
-  td + td {
-    border-left: 1px solid #ddd;
-  }
-  tr + tr td {
     border-top: 1px solid #ddd;
   }
-  tbody tr:first-child td:first-child {
+  // When scoped to row, fix th in tbody
+  tbody th {
+    border-top: 1px solid #ddd;
+    vertical-align: top;
+  }
+}
+
+
+// CONDENSED VERSION
+// -----------------
+
+.condensed-table {
+  th,
+  td {
+    padding: 5px 5px 4px;
+  }
+}
+
+
+// BORDERED VERSION
+// ----------------
+
+.bordered-table {
+  border: 1px solid #ddd;
+  border-collapse: separate; // Done so we can round those corners!
+  *border-collapse: collapse; /* IE7, collapse table to remove spacing */
+  .border-radius(4px);
+  th + th,
+  td + td,
+  th + td {
+    border-left: 1px solid #ddd;
+  }
+  thead:first-child tr:first-child th:first-child,
+  tbody:first-child tr:first-child td:first-child {
     .border-radius(0.30769230769231em 0 0 0); // 4/13
   }
-  tbody tr:first-child td:last-child {
-    .border-radius(0 0.30769230769231em 0 0); // 4/13
+  thead:first-child tr:first-child th:last-child,
+  tbody:first-child tr:first-child td:last-child {
+    .border-radius(0.30769230769231em 0 0 0); // 4/13
   }
   tbody tr:last-child td:first-child {
     .border-radius(0 0 0 0.30769230769231em); // 4/13
@@ -52,20 +77,53 @@ table {
 }
 
 
+// ----------------
+
+// This is a duplication of the main grid .columns() mixin, but subtracts 20px to account for input padding and border
+.tableColumns(@columnSpan: 1) {
+  width: ((@gridColumnWidth - 20) * @columnSpan) + ((@gridColumnWidth - 20) * (@columnSpan - 1));
+}
+table {
+  // Default columns
+  .span1     { .tableColumns(1); }
+  .span2     { .tableColumns(2); }
+  .span3     { .tableColumns(3); }
+  .span4     { .tableColumns(4); }
+  .span5     { .tableColumns(5); }
+  .span6     { .tableColumns(6); }
+  .span7     { .tableColumns(7); }
+  .span8     { .tableColumns(8); }
+  .span9     { .tableColumns(9); }
+  .span10    { .tableColumns(10); }
+  .span11    { .tableColumns(11); }
+  .span12    { .tableColumns(12); }
+  .span13    { .tableColumns(13); }
+  .span14    { .tableColumns(14); }
+  .span15    { .tableColumns(15); }
+  .span16    { .tableColumns(16); }
+}
+
+
 // ZEBRA-STRIPING
 // --------------
 
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
-.zebra-striped {
+.striped-table {
   tbody {
-    tr:nth-child(odd) td {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
       background-color: #f9f9f9;
     }
-    tr:hover td {
+    tr:hover td,
+    tr:hover th {
       background-color: #f5f5f5;
     }
   }
 }
+
+
+// TABLESORTER
+// -----------
 
 table {
   // Tablesorting styles w/ jQuery plugin

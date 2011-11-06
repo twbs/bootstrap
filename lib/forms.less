@@ -3,32 +3,23 @@
  * ------------------------------------------------------------- */
 
 
-// FORM STYLES
-// -----------
+// GENERAL STYLES
+// --------------
 
+// Make all forms have space below them
 form {
   margin-bottom: @baseMarginHeight;
 }
 
 // Groups of fields with labels on top (legends)
-fieldset {
-  margin-bottom: @baseMarginHeight;
-  padding-top: @baseMarginHeight;
-  legend {
-    display: block;
-    padding-left: 7.69230769230769em; // 150/19.5
-    font-size: 1em * 1.5;
-    line-height: 1;
-    color: @grayDark;
-    *padding: 0 0 5px 145px; /* IE6-7 */
-    *line-height: 1.5; /* IE6-7 */
-  }
-}
-
-// Parent element that clears floats and wraps labels and fields together
-form .clearfix {
-  margin-bottom: @baseMarginHeight;
-  .clearfix()
+legend {
+  display: block;
+  width: 100%;
+  margin-bottom: @baseMarginHeight * 1.5;
+  font-size: @baseFontSize * 1.5;
+  line-height: @baseLineHeight * 2;
+  color: @grayDark;
+  border-bottom: 1px solid #eee;
 }
 
 // Set font for forms
@@ -36,29 +27,14 @@ label,
 input,
 select,
 textarea {
-  #font > .sans-serif(normal,1em,normal);
+  #font > .sans-serif();
 }
 
-// Float labels left
+// Identify controls by their labels
 label {
-  padding-top: 0.46153846153846em; // 6/13
-  font-size: 1em;
-  line-height: @baseLineHeight;
-  float: left;
-  width: 10em; // 130/13
-  text-align: right;
+  display: block;
+  margin-bottom: 0.38461538461538em; // 5/13
   color: @grayDark;
-}
-
-// Shift over the inside div to align all label's relevant content
-form .input {
-  margin-left: 11.5384615384615em; // 150/13
-}
-
-// Checkboxs and radio buttons
-input[type=checkbox],
-input[type=radio] {
-  cursor: pointer;
 }
 
 // Inputs, Textareas, Selects
@@ -77,7 +53,7 @@ select,
   .border-radius(3px);
 }
 
-/* mini reset for non-html5 file types */
+/* Mini reset for unique input types */
 input[type=checkbox],
 input[type=radio] {
   width: auto;
@@ -87,16 +63,20 @@ input[type=radio] {
   *margin-top: 0; /* IE6-7 */
   line-height: normal;
   border: none;
+  cursor: pointer;
 }
 
+// Reset the file input to browser defaults
 input[type=file] {
   background-color: @white;
+  background-color: initial;
   padding: initial;
   border: initial;
   line-height: initial;
   .box-shadow(none);
 }
 
+// Help out input buttons
 input[type=button],
 input[type=reset],
 input[type=submit] {
@@ -113,6 +93,7 @@ input[type=file] {
 
 // Make multiple select elements height not fixed
 select[multiple] {
+  background-color: @white; // Fixes Chromium bug?
   height: inherit;
 }
 
@@ -120,24 +101,10 @@ textarea {
   height: auto;
 }
 
-// For text that needs to appear as an input but should not be an input
-.uneditable-input {
-  background-color: @white;
-  display: block;
-  border-color: #eee;
-  .box-shadow(inset 0 0.07692307692308em 0.15384615384615em rgba(0,0,0,.025)); // 1/13 & 2/13
-  cursor: not-allowed;
-}
 
-// Placeholder text gets special styles; can't be bundled together though for some reason
-:-moz-placeholder {
-  color: @grayLight;
-}
-::-webkit-input-placeholder {
-  color: @grayLight;
-}
+// FOCUS STATE
+// -----------
 
-// Focus states
 input,
 textarea {
   @transition: border linear .2s, box-shadow linear .2s;
@@ -158,78 +125,17 @@ select:focus {
   outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
 }
 
-// Error styles
-form div.clearfix.error {
-  background: lighten(@red, 57%);
-  padding: 0.76923076923077em 0; // 10/13
-  margin: -0.76923076923077em 0 0.76923076923077em; // 10/13
-  .border-radius(4px);
-  @error-text: desaturate(lighten(@red, 25%), 25%);
-  > label,
-  span.help-inline,
-  span.help-block {
-    color: @red;
-  }
-  input,
-  textarea {
-    border-color: @error-text;
-    .box-shadow(0 0 0.23076923076923em rgba(171,41,32,.25)); // 3/13
-    &:focus {
-      border-color: darken(@error-text, 10%);
-      .box-shadow(0 0 0.46153846153846em rgba(171,41,32,.5)); // 6/13
-    }
-  }
-  .input-prepend,
-  .input-append {
-    span.add-on {
-      background: lighten(@red, 50%);
-      border-color: @error-text;
-      color: darken(@error-text, 10%);
-    }
-  }
-}
 
-// Form element sizes
-// TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
-.input-mini,
-input.mini,
-textarea.mini,
-select.mini {
-  width: 4.61538461538462em; // 60/13
-}
-.input-small,
-input.small,
-textarea.small,
-select.small {
-  width: 6.92307692307692em; // 90/13
-}
-.input-medium,
-input.medium,
-textarea.medium,
-select.medium {
-  width: 11.5384615384615em; // 150/13
-}
-.input-large,
-input.large,
-textarea.large,
-select.large {
-  width: 16.1538461538461em; // 210/13
-}
-.input-xlarge,
-input.xlarge,
-textarea.xlarge,
-select.xlarge {
-  width: 20.7692307692308em; // 270/13
-}
-.input-xxlarge,
-input.xxlarge,
-textarea.xxlarge,
-select.xxlarge {
-  width: 40.7692307692308em; // 530/13
-}
-textarea.xxlarge {
-  overflow-y: auto;
-}
+// INPUT SIZES
+// -----------
+
+// General classes for quick sizes
+.input-mini       { width: 4.61538461538462em; } // 60/13
+.input-small      { width: 6.92307692307692em; } // 90/13
+.input-medium     { width: 11.5384615384615em; } // 150/13
+.input-large      { width: 16.1538461538461em; } // 210/13
+.input-xlarge     { width: 20.7692307692308em; } // 270/13
+.input-xxlarge    { width: 40.7692307692308em; } // 530/13
 
 // Grid style input sizes
 // This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
@@ -261,6 +167,11 @@ select {
   &.span16    { .formColumns(16); }
 }
 
+
+
+// DISABLED STATE
+// --------------
+
 // Disabled and read-only inputs
 input[disabled],
 select[disabled],
@@ -273,37 +184,89 @@ textarea[readonly] {
   cursor: not-allowed;
 }
 
-// Actions (the buttons)
-.actions {
-  background: #f5f5f5;
-  margin-top: @baseMarginHeight;
-  margin-bottom: @baseMarginHeight;
-  padding: (@basePaddingHeight - 1) 0.02127659574468em @basePaddingHeight 0.15957446808511em; // 20/940 & 150/940
-  border-top: 1px solid #ddd;
-  .border-radius(0 0 3px 3px);
-  .secondary-action {
-    float: right;
-    a {
-      line-height: 2.30769230769231em; // 30/13
-      &:hover {
-        text-decoration: underline;
-      }
+
+// ERROR STATE
+// -----------
+
+// Set color of error text
+@error-text: desaturate(lighten(@red, 25%), 25%);
+
+// Style the background of control-groups with errors
+.has-error {
+  background: lighten(@red, 55%);
+  padding: 0.76923076923077em 0; // 10/13
+  margin: -0.76923076923077em 0 0.76923076923077em; // 10/13
+  .border-radius(0.30769230769231em); // 4/13
+  > label,
+  span.help-inline,
+  span.help-block {
+    color: @red;
+  }
+  input,
+  textarea,
+  select {
+    border-color: @error-text;
+    .box-shadow(0 0 0.23076923076923em rgba(171,41,32,.25)); // 3/13
+    &:focus {
+      border-color: darken(@error-text, 10%);
+      .box-shadow(0 0 0.46153846153846em rgba(171,41,32,.5)); // 6/13
+    }
+  }
+  .input-prepend,
+  .input-append {
+    span.add-on {
+      background: lighten(@red, 50%);
+      border-color: @error-text;
+      color: darken(@error-text, 10%);
     }
   }
 }
 
 
-// Help Text
-.help-inline,
-.help-block {
-  font-size: 1em - 0.15384615384615em; // 2/13
-  line-height: @baseLineHeight;
+// FORM ACTIONS
+// ------------
+
+.form-actions {
+  padding: (@basePaddingHeight - 1) 0.02127659574468em @basePaddingHeight 0.15957446808511em; // 20/940 & 150/940
+  margin-top: @baseLineHeight;
+  margin-bottom: @baseLineHeight;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+}
+
+
+// For text that needs to appear as an input but should not be an input
+.uneditable-input {
+  background-color: @white;
+  display: block;
+  border-color: #eee;
+  .box-shadow(inset 0 0.07692307692308em 0.15384615384615em rgba(0,0,0,.025)); // 1/13 & 2/13
+  cursor: not-allowed;
+}
+
+// Placeholder text gets special styles; can't be bundled together though for some reason
+:-moz-placeholder {
   color: @grayLight;
 }
+::-webkit-input-placeholder {
+  color: @grayLight;
+}
+
+
+// HELP TEXT
+// ---------
+
+.help-text {
+  margin-top: 0.38461538461538em; // 5/13
+  margin-bottom: 0;
+  color: @grayLight;
+}
+
 .help-inline {
+  display: inline;
   padding-left: 0.38461538461538em; // 5/13
   *position: relative; /* IE6-7 */
-  *top: -5px; /* IE6-7 */
+  *top: 0.38461538461538em; /* IE6-7 */ // 5/13
 }
 
 // Big blocks of help text
@@ -312,7 +275,10 @@ textarea[readonly] {
   max-width: 46.1538461538462em; // 600/13
 }
 
-// Inline Fields (input fields that appear as inline objects
+
+// INLINE FIELDS
+// -------------
+
 .inline-inputs {
   color: @gray;
   span, input {
@@ -328,6 +294,10 @@ textarea[readonly] {
     padding: 0 0.15384615384615em 0 0.07692307692308em; // 2/13 & 1/13
   }
 }
+
+
+// INPUT GROUPS
+// ------------
 
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
@@ -376,90 +346,58 @@ textarea[readonly] {
   }
 }
 
-// Stacked options for forms (radio buttons or checkboxes)
-.inputs-list {
-  margin: 0 0 0.38461538461538em; // 5/13
-  width: 100%;
-  li {
-    display: block;
-    padding: 0;
-    width: 100%;
-  }
-  label {
-    display: block;
-    float: none;
-    width: auto;
-    padding: 0;
-    line-height: @baseLineHeight;
-    text-align: left;
-    white-space: normal;
-    strong {
-      color: @gray;
-    }
-    small {
-      font-size: 1em - 0.15384615384615em; // 2/13
-      font-weight: normal;
-    }
-  }
-  .inputs-list {
-    margin-left: 1.92307692307692em; // 25/13
-    margin-bottom: 0.76923076923077em; // 10/13
-    padding-top: 0;
-  }
-  &:first-child {
-    padding-top: 0.46153846153846em; // 6/13
-  }
-  li + li {
-    padding-top: 0.15384615384615em; // 2/13
-  }
-  input[type=radio],
-  input[type=checkbox] {
-    margin-bottom: 0;
-  }
+
+
+// SEARCH FORM
+// -----------
+
+.form-search .search-query {
+  .border-radius(1.07692307692308em); // 14/13
 }
-// Stacked forms
-.form-stacked {
-  padding-left: 1.53846153846154em; // 20/13
-  fieldset {
-    padding-top: @basePaddingHeight / 2;
-  }
-  legend {
-    padding-left: 0;
-  }
-  label {
-    display: block;
-    float: none;
-    width: auto;
-    font-weight: bold;
-    text-align: left;
-    line-height: 1.53846153846154em; // 20/13
-    padding-top: 0;
-  }
-  .clearfix {
-    margin-bottom: @baseMarginHeight / 2;
-    div.input {
-      margin-left: 0;
-    }
-  }
-  .inputs-list {
-    margin-bottom: 0;
-    li {
-      padding-top: 0;
-      label {
-        font-weight: normal;
-        padding-top: 0;
-      }
-    }
-  }
-  div.clearfix.error {
-    padding-top: 0.76923076923077em; // 10/13
-    padding-bottom: 0.76923076923077em; // 10/13
-    padding-left: 0.76923076923077em; // 10/13
-    margin-top: 0;
-    margin-left: -0.76923076923077em; // 10/13
-  }
-  .actions {
-    margin-left: -1.53846153846154em; // 20/13
-    padding-left: 1.53846153846154em; // 20/13
-  }
+
+
+
+// HORIZONTAL & VERTICAL FORMS
+// ---------------------------
+
+
+// Common properties
+// -----------------
+
+// Margin to space out fieldsets
+.control-group {
+  margin-bottom: @baseLineHeight;
+}
+
+// Bold the labels so they stand out
+.control-group > label {
+  font-weight: bold;
+}
+
+// Lists of controls (checkboxes and radios)
+.control-list {
+}
+
+
+// Horizontal-specific styles
+// --------------------------
+
+// Float the labels left
+.form-horizontal .control-group > label {
+  float: left;
+  width: 10em; // 130/13
+  padding-top: 0.38461538461538em; // 5/13
+  text-align: right;
+}
+// Move over all input controls and content
+.form-horizontal .controls {
+  margin-left: 11.5384615384615em; // 150/13
+}
+// Move the options list down to align with labels
+.form-horizontal .control-list {
+  padding-top: 0.46153846153846em; // has to be padding because margin collaspes (6/13)
+}
+// Move over buttons in .form-actions to align with .controls
+.form-horizontal .form-actions {
+  padding-left: 11.5384615384615em; // 150/13
 }
