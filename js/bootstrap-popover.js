@@ -51,10 +51,11 @@
        , o = this.options
 
       if (typeof this.options.content == 'string') {
-        content = this.options.content
+        content = $e.attr(this.options.content)
       } else if (typeof this.options.content == 'function') {
         content = this.options.content.call(this.$element[0])
       }
+
       return content
     }
 
@@ -80,7 +81,10 @@
 
   $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, {
     placement: 'right'
+  , content: 'data-content'
   , template: '<div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div>'
   })
+
+  $.fn.twipsy.rejectAttrOptions.push( 'content' )
 
 }( window.jQuery || window.ender );
