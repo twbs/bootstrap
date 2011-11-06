@@ -973,20 +973,22 @@
             <elseif>
                 <os family="windows" />
                 <!-- work around https://sourceforge.net/tracker/?func=detail&aid=2671422&group_id=151404&atid=780916 -->
-                <delete>
-                    <fileset dir="./${dir.publish}/${dir.images}/">
-                        <include name="**/*.png"/>
-                    </fileset>
-                </delete>
-                <apply executable="${basedir}/${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
-                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
-                    <arg value="-quiet"/>
-                    <arg value="-o7"/>
-                    <arg value="-out"/>
-                    <targetfile/>
-                    <srcfile/>
-                    <mapper type="identity"/>
-                </apply>
+                <then>
+                    <delete>
+                        <fileset dir="./${dir.publish}/${dir.images}/">
+                            <include name="**/*.png"/>
+                        </fileset>
+                    </delete>
+                    <apply executable="${basedir}/${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
+                        <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
+                        <arg value="-quiet"/>
+                        <arg value="-o7"/>
+                        <arg value="-out"/>
+                        <targetfile/>
+                        <srcfile/>
+                        <mapper type="identity"/>
+                    </apply>
+                </then>
             </elseif>
         </if>
     </target>
