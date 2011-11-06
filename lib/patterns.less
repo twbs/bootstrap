@@ -326,6 +326,10 @@ a.menu:after,
 .btn-dropdown {
   display: inline-block;
   *display: inline;
+  
+  .dropdown-menu {
+     *left: 0px;
+  }
 }
 
 // Define different toggle styles (colors, borders, margin and padding) for dropdown buttons
@@ -370,6 +374,12 @@ a.menu:after,
 // Change position for large buttons
 .btn-dropdown .large + .dropdown-menu {
   top: 38px;
+}
+
+// Change position for small buttons
+.btn-dropdown .small + .dropdown-menu {
+  top: 30px;
+  *top: 31px;
 }
 
 
