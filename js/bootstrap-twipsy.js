@@ -168,10 +168,7 @@
     }
 
   , tip: function() {
-      if (!this.$tip) {
-        this.$tip = $('<div class="twipsy" />').html(this.options.template)
-      }
-      return this.$tip
+      return this.$tip = this.$tip || $('<div class="twipsy" />').html(this.options.template)
     }
 
   , validate: function() {
@@ -192,6 +189,10 @@
 
   , toggleEnabled: function() {
       this.enabled = !this.enabled
+    }
+
+  , toggle: function () {
+      this[this.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
   }
