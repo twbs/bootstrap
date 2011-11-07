@@ -305,8 +305,18 @@
   , contentSelector: '.twipsy-inner'
   }
 
+  $.fn.twipsy.rejectAttrOptions = [ 'title' ]
+
   $.fn.twipsy.elementOptions = function(ele, options) {
-    return $.extend({}, options, $(ele).data())
+    var data = $(ele).data()
+      , rejects = $.fn.twipsy.rejectAttrOptions
+      , i = rejects.length
+
+    while (i--) {
+      delete data[rejects[i]]
+    }
+
+    return $.extend({}, options, data)
   }
 
 }( window.jQuery || window.ender );
