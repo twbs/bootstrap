@@ -78,22 +78,4 @@ $(function () {
         $('#qunit-runoff').empty()
       })
 
-      test("should allow arbitrary template html with content selector options", function() {
-        $.support.transition = false
-        var twipsy = $('<a href="#" rel="twipsy" title="<b>@fat</b>"></a>')
-          .appendTo('#qunit-runoff')
-          .twipsy({
-                html: true
-              , contentSelector: 'h1'
-              , template: '<div><h1>Funky Twipsy!</h1><p class="funky"><b>@rvagg was here</b></p></div>'
-            })
-          .twipsy('show')
-
-        ok($('.twipsy h1').length, 'h1 tag was inserted')
-        ok($('.twipsy p>b').length, 'p > b tags were inserted')
-        ok($('.twipsy h1>b').length, 'h1 tag was customised')
-        twipsy.twipsy('hide')
-        ok(!$(".twipsy").length, 'twipsy removed')
-        $('#qunit-runoff').empty()
-      })
 })

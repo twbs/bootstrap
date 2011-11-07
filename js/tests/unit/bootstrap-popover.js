@@ -78,7 +78,7 @@ $(function () {
         var expectedTitle = 'Gotta make you understand'
           , popover = $('<a href="#">@rvagg</a>')
               .attr('title', expectedTitle)
-              .data('content', '<p><b>Never gonna give you up</b>,</p><p>Never gonna let you down</p>')
+              .attr('data-content', '<p><b>Never gonna give you up</b>,</p><p>Never gonna let you down</p>')
               .appendTo('#qunit-runoff')
               .popover({
                     html: true

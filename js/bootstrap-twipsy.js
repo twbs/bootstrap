@@ -119,7 +119,7 @@
 
   , setContent: function () {
       var $tip = this.tip()
-      $tip.find(this.options.contentSelector)[this.options.html ? 'html' : 'text'](this.getTitle())
+      $tip.find('.twipsy-inner')[this.options.html ? 'html' : 'text'](this.getTitle())
       $tip[0].className = 'twipsy'
     }
 
@@ -302,7 +302,6 @@
   , title: 'title'
   , trigger: 'hover'
   , template: '<div class="twipsy-arrow"></div><div class="twipsy-inner"></div>'
-  , contentSelector: '.twipsy-inner'
   }
 
   $.fn.twipsy.rejectAttrOptions = [ 'title' ]
