@@ -21,7 +21,9 @@ For more info, refer to the docs!
 Basic modification
 ------------------
 
-You can learn more about SASS at http://sass-lang.com
+You can learn more about SASS at:
+
+    http://sass-lang.com
 
 SASS runs as a local GEM on your system. You can run "sass --watch lib/bootstrap.scss:bootstrap-1.3.0.css" 
 
@@ -65,18 +67,17 @@ http://groups.google.com/group/twitter-bootstrap
 Developers
 ----------
 
-We have included a makefile with convenience methods for working with the bootstrap library.
+We have included a Rakefile with convenience methods for working with the bootstrap library.
 
-+ **build** - `make build`
++ **build** - `rake build`
 This will run the less compiler on the bootstrap lib and generate a bootstrap.css and bootstrap.min.css file.
 The lessc compiler is required for this command to run.
 
-+ **watch** - `make watch`
-This is a convenience method for watching your less files and automatically building them whenever you save.
-Watchr is required for this command to run.
++ **watch** - `rake watch`
+This is a convenience method for watching your Sass files and automatically building them whenever you save.
 
 
-AUTHORS
+Authors
 -------
 
 **Mark Otto**
@@ -88,6 +89,24 @@ AUTHORS
 
 + http://twitter.com/fat
 + http://github.com/fat
+
+
+Sass Conversion
+---------------
+
+The Twitter Bootstrap was lovingly converted to CSS by:
+
+**John W. Long**
+
++ http://twitter.com/johnwlong
++ http://github.com/jlong
+
+**Jeremy Hinegardner**
+
++ http://twitter.com/copiousfreetime
++ http://github.com/copiousfreetime
+
+And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 
 
 Copyright and License
