@@ -75,6 +75,9 @@
 
   $(document).ready(function () {
     $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
+    if (window.location.hash) {
+        $("ul[data-tabs] li > a[href='" + window.location.hash + "'], ul[data-pills] > li > a[href='" + window.location.hash + "']").click()
+    }
   })
 
 }( window.jQuery || window.ender );
