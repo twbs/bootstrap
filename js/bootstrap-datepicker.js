@@ -35,15 +35,16 @@
 
 !function ( $ ) { 
 
-  var selector = '[data-datepicker]';
+  var selector = '[data-datepicker]',
+      all = [];
 
   function clearDatePickers(except) {
-    $(selector).each(function() {
-      var dp = $(this).data('datepicker');
-      if(dp != except) {
-        dp.hide();
+    var ii;
+    for(ii = 0; ii < all.length; ii++) {
+      if(all[ii] != except) {
+        all[ii].hide();
       }
-    });
+    }
   }
 
   function DatePicker( element, options ) {
@@ -53,6 +54,7 @@
     if(!this.detectNative()) {
       $.extend(this, $.fn.datepicker.defaults, options );
       this.$el.data('datepicker', this);
+      all.push(this);
       this.init();
     }
   }
