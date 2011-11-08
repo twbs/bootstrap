@@ -73,27 +73,4 @@ $(function () {
         $('#qunit-runoff').empty()
       })
 
-      test("should allow arbitrary template html with title and content selector options", function() {
-        $.support.transition = false
-        var expectedTitle = 'Gotta make you understand'
-          , popover = $('<a href="#">@rvagg</a>')
-              .attr('title', expectedTitle)
-              .attr('data-content', '<p><b>Never gonna give you up</b>,</p><p>Never gonna let you down</p>')
-              .appendTo('#qunit-runoff')
-              .popover({
-                    html: true
-                  , titleSelector: 'h1'
-                  , contentSelector: '.rick > .roll'
-                  , template: '<div class="rick"><h1></h1><div class="roll"></div></div>'
-                })
-              .popover('show')
-
-        ok($('.popover > div > h1').length, 'h1 tag was inserted')
-        ok($('.popover > div > h1').text() === expectedTitle)
-        ok($('.popover > .rick > .roll > p').length === 2, 'p > b tags were inserted')
-        popover.popover('hide')
-        ok(!$('.popover').length, 'popover was removed')
-        $('#qunit-runoff').empty()
-      })
-
 })
