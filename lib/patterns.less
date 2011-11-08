@@ -1077,14 +1077,14 @@ input[type=submit].btn {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 18px;
-    padding-bottom: 0.25em;
+    padding-bottom: 4px;
 
-    width: 17.75em;
+    width: 218px;
 
     .nav {
         font-weight: bold;
         width: 100%;
-        padding: 0.5em 0;
+        padding: 4px 0;
         background-color: #f5f5f5;
         color: @gray;
         border-bottom: 1px solid #ddd;
@@ -1116,9 +1116,9 @@ input[type=submit].btn {
         }
     }
     .button {
-        font-size: 0.8em;
+        font-size: 10px;
         cursor: pointer;
-        padding: 0 0.5em;
+        padding: 0 4px;
         .border-radius(4px);
 
         &:hover {
@@ -1128,33 +1128,32 @@ input[type=submit].btn {
     }
     .months {
         float: left;
-        margin-left: 0.5em;
+        margin-left: 4px;
         .name {
-            width: 6em;
+            width: 72px;
             padding: 0;
         }
     }
     .years {
         float: right;
-        margin-right: 0.5em;
+        margin-right: 4px;
         .name {
-            width: 3em;
+            width: 36px;
             padding: 0;
         }
     }
     .dow, .days div {
         float: left;
-        width: 2.5em;
-        padding: 0.5em 0;
+        width: 30px;
+        line-height: 25px;
         text-align: center;
     }
-
     .dow {
         font-weight: bold;
         color: @gray;
     }
     .calendar {
-        padding: 0.25em;
+        padding: 4px;
     }
     .days div {
         cursor: pointer;
@@ -1164,14 +1163,14 @@ input[type=submit].btn {
             color: @white;
         }
     }
-    .selected {
-        background-color: @grayLight;
-        color: @white;
-    }
     .overlap {
         color: @grayLight;
     }
     .today {
         background-color: #fee9cc;
+    }
+    .selected {
+        background-color: @grayLight;
+        color: @white;
     }
 }
