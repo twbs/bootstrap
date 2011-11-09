@@ -255,7 +255,7 @@
       var $this = $(this).data('show', true)
       if ($(this).attr("data-backdrop") && $(this).attr("data-backdrop") != "false")
          $(this).data("backdrop", $(this).attr("data-backdrop"))
-		 $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
+      $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
     })
   })
 
