@@ -253,7 +253,9 @@
     $('body').delegate('[data-controls-modal]', 'click', function (e) {
       e.preventDefault()
       var $this = $(this).data('show', true)
-      $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
+      if ($(this).attr("data-backdrop") && $(this).attr("data-backdrop") != "false")
+         $(this).data("backdrop", $(this).attr("data-backdrop"))
+		 $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
     })
   })
 
