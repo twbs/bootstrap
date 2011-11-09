@@ -1120,6 +1120,7 @@ table th {
 table td {
   vertical-align: top;
   border-top: 1px solid #ddd;
+  empty-cells: show;
 }
 table tbody th {
   border-top: 1px solid #ddd;
