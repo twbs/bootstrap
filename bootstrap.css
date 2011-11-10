@@ -2089,6 +2089,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: #ddf4fb;
   border-color: #c6edf9;
 }
+.alert-message.block-message.white {
+  background-color: #fff;
+  border-color: #ddd;
+}
 .alert-message.block-message.danger p a,
 .alert-message.block-message.error p a,
 .alert-message.block-message.success p a,
