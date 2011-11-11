@@ -102,6 +102,13 @@
           border-radius: @radius;
 }
 
+// Border Radius Multiple
+.border-radius(@rtl: 5px, @rtr: 5px, @rbl: 5px, @rbr: 5px) {
+  -webkit-border-radius: @rtl @rtr @rbl @rbr;
+     -moz-border-radius: @rtl @rtr @rbl @rbr;
+          border-radius: @rtl @rtr @rbl @rbr;
+}
+
 // Drop shadows
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
   -webkit-box-shadow: @shadow;
