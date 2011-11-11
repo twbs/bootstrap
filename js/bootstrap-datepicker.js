@@ -110,9 +110,9 @@
 
     , nav: function( c, months ) {
         var $subnav = $('<div>' +
-                          '<span class="prev button">&#9664;</span>' +
+                          '<span class="prev button">&larr;</span>' +
                           '<span class="name"></span>' +
-                          '<span class="next button">&#9654;</span>' +
+                          '<span class="next button">&rarr;</span>' +
                         '</div>').addClass(c)
         $('.prev', $subnav).click($.proxy(function() { this.ahead(-months, 0) }, this));
         $('.next', $subnav).click($.proxy(function() { this.ahead(months, 0) }, this));

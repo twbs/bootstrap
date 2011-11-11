@@ -2486,13 +2486,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 18px;
-  padding-bottom: 0.25em;
-  width: 17.75em;
+  padding-bottom: 4px;
+  width: 218px;
 }
 .datepicker .nav {
   font-weight: bold;
   width: 100%;
-  padding: 0.5em 0;
+  padding: 4px 0;
   background-color: #f5f5f5;
   color: #808080;
   border-bottom: 1px solid #ddd;
@@ -2536,9 +2536,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   left: 0;
 }
 .datepicker .button {
-  font-size: 0.8em;
   cursor: pointer;
-  padding: 0 0.5em;
+  padding: 0 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -2549,24 +2548,24 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .datepicker .months {
   float: left;
-  margin-left: 0.5em;
+  margin-left: 4px;
 }
 .datepicker .months .name {
-  width: 6em;
+  width: 72px;
   padding: 0;
 }
 .datepicker .years {
   float: right;
-  margin-right: 0.5em;
+  margin-right: 4px;
 }
 .datepicker .years .name {
-  width: 3em;
+  width: 36px;
   padding: 0;
 }
 .datepicker .dow, .datepicker .days div {
   float: left;
-  width: 2.5em;
-  padding: 0.5em 0;
+  width: 30px;
+  line-height: 25px;
   text-align: center;
 }
 .datepicker .dow {
@@ -2574,7 +2573,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   color: #808080;
 }
 .datepicker .calendar {
-  padding: 0.25em;
+  padding: 4px;
 }
 .datepicker .days div {
   cursor: pointer;
@@ -2586,13 +2585,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: #0064cd;
   color: #ffffff;
 }
-.datepicker .selected {
-  background-color: #bfbfbf;
-  color: #ffffff;
-}
 .datepicker .overlap {
   color: #bfbfbf;
 }
 .datepicker .today {
   background-color: #fee9cc;
+}
+.datepicker .selected {
+  background-color: #bfbfbf;
+  color: #ffffff;
 }
