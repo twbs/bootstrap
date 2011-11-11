@@ -89,7 +89,7 @@
         this.$picker = $('<div>')
           .click(function(e) { e.stopPropagation() })
           // Use this to prevent accidental text selection.
-          .bind('mousedown', function(e) { e.preventDefault() })
+          .mousedown(function(e) { e.preventDefault() })
           .addClass('datepicker')
           .append($nav, $calendar)
           .insertAfter(this.$el);
@@ -210,12 +210,12 @@
           left: offset.left
         }).show();
 
-        $('html').keydown(this.keyHandler);
+        $('html').on('keydown', this.keyHandler);
       }
 
     , hide: function() {
         this.$picker.hide();
-        $('html').unbind('keydown', this.keyHandler);
+        $('html').off('keydown', this.keyHandler);
       }
 
     , keyHandler: function(e) {
