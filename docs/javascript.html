@@ -325,6 +325,18 @@ $('#my-modal').bind('hidden', function () {
                 <td>1</td>
                 <td>Weekday to start the calendar on.<br>1 &rarr; Sun, 2 &rarr; Mon, etc.</td>
               </tr>
+              <tr>
+                <td>parse</td>
+                <td>function</td>
+                <td>RFC3339-compatible, e.g. <code>2011-04-17</code></td>
+                <td>Used to convert a string into a javascript Date object.</td>
+              </tr>
+              <tr>
+                <td>format</td>
+                <td>function</td>
+                <td>RFC3339-compatible</td>
+                <td>Used to convert a javascript Date object into a string.</td>
+              </tr>
             </tbody>
           </table>
           <h3>Markup</h3>

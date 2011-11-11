@@ -19,17 +19,6 @@
  * Contributed by Scott Torborg - github.com/storborg
  * Loosely based on jquery.date_input.js by Jon Leighton, heavily updated and
  * rewritten to match bootstrap javascript approach and add UI features.
- * 
- * TODO
- * - Browser support!
- * - Make datepicker contents unselectable to prevent errant clicks from
- *   confusing users.
- * - Ensure all reset styling is in place to make the look consistent even in
- *   hostile CSS environments.
- * - Markup and CSS cleanup.
- * - Better hover style on buttons. Perhaps a well?
- * - Add ability to pass in format and parse functions to customize date format
- *   used in input element.
  * =========================================================== */
 
 
@@ -51,8 +40,10 @@
     this.$el = $(element);
     this.proxy('show').proxy('ahead').proxy('hide').proxy('keyHandler').proxy('selectDate');
 
-    if(!this.detectNative()) {
-      $.extend(this, $.fn.datepicker.defaults, options );
+    var options = $.extend({}, $.fn.datepicker.defaults, options );
+
+    if((!!options.parse) || (!!options.format) || !this.detectNative()) {
+      $.extend(this, options);
       this.$el.data('datepicker', this);
       all.push(this);
       this.init();
@@ -63,7 +54,9 @@
 
       detectNative: function(el) {
         // Attempt to activate the native datepicker, if there is a known good
-        // one. If successful, return true.
+        // one. If successful, return true. Note that input type="date"
+        // requires that the string be RFC3339, so if the format/parse methods
+        // have been overridden, this won't be used.
         if(navigator.userAgent.match(/(iPad|iPhone); CPU(\ iPhone)? OS 5_\d/i)) {
           // jQuery will only change the input type of a detached element.
           var $marker = $('<span>').insertBefore(this.$el);
