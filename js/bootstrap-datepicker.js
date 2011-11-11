@@ -318,7 +318,7 @@
         return this.findClosest((this.startOfWeek - 1) % 7,
                                 new Date(date.getFullYear(), date.getMonth() + 1, 0),
                                 1);
-      },
+      }
   };
   
   /* DATEPICKER PLUGIN DEFINITION
