@@ -95,6 +95,7 @@
 
         this.$picker = $('<div>')
           .click(function(e) { e.stopPropagation() })
+          .bind('selectstart', function(e) { e.preventDefault() })
           .addClass('datepicker')
           .append($nav, $calendar)
           .insertAfter(this.$el);
