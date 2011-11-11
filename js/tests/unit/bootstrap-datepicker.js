@@ -59,12 +59,62 @@ $(function () {
         equal(el.val(), '1986-09-19');
       })
 
-      test("advance to next month", function () {
+      test("click new date in adjacent month", function () {
         var el = $('<input type="text" value="1986-09-30" />'),
             fixture = $('#qunit-fixture').append(el);
         el.datepicker().click();
         var picker = fixture.find('.datepicker');
+        // Overlapping day 3 should be in the next month of October.
+        picker.find('.overlap:contains(3)').click();
+
+        // Datepicker should still be visible.
+        ok(picker.is(':visible'));
+        equal(picker.find('.months .name').text(), 'October');
+        equal(picker.find('.selected').text(), '3');
+
+        picker.find(':contains(19)').click();
+        equal(el.val(), '1986-10-19');
+      })
+
+      test("month and year button navigation", function () {
+        var el = $('<input type="text" value="1986-09-30" />'),
+            fixture = $('#qunit-fixture').append(el);
+        el.datepicker().click();
+        var picker = fixture.find('.datepicker');
+
         picker.find('.months .next').click();
         equal(picker.find('.months .name').text(), 'October');
+        equal(picker.find('.years .name').text(), '1986');
+
+        picker.find('.years .next').click();
+        equal(picker.find('.months .name').text(), 'October');
+        equal(picker.find('.years .name').text(), '1987');
+
+        picker.find('.months .prev').click();
+        equal(picker.find('.months .name').text(), 'September');
+        equal(picker.find('.years .name').text(), '1987');
+
+        picker.find('.years .prev').click().click().click();
+        equal(picker.find('.years .name').text(), '1984');
+      })
+
+      test("keyboard navigation", function () {
+        var el = $('<input type="text" value="1986-09-30" />'),
+            fixture = $('#qunit-fixture').append(el);
+        el.datepicker().click();
+        var picker = fixture.find('.datepicker');
+
+        // Arrow up goes back one week.
+        $('body').trigger($.Event('keydown', { keyCode: 38 }));
+        equal(picker.find('.selected').text(), '23');
+
+        // Arrow right goes forward one day.
+        $('body').trigger($.Event('keydown', { keyCode: 39 }));
+        equal(picker.find('.selected').text(), '24');
+
+        // Enter selects.
+        $('body').trigger($.Event('keydown', { keyCode: 13 }));
+
+        equal(el.val(), '1986-09-24');
       })
 })
