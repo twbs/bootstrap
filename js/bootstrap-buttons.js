@@ -26,12 +26,12 @@
       , $el = $(el)
       , data = $el.data()
 
-    state = state + 'Text'
-    data.resetText || $el.data('resetText', $el.html())
+    state = state + '-text'
+    $el.data('reset-text') || $el.data('reset-text', $el.html())
 
-    $el.html( data[state] || $.fn.button.defaults[state] )
+    $el.html( $el.data(state) || $.fn.button.defaults[state] )
 
-    state == 'loadingText' ?
+    state == 'loading-text' ?
       $el.addClass(d).attr(d, d) :
       $el.removeClass(d).removeAttr(d)
   }
