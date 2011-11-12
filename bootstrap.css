@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Oct 31 21:46:38 PDT 2011
+ * Date: Mon Nov  7 21:14:04 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -763,33 +763,59 @@ textarea[readonly] {
   border-color: #ddd;
   cursor: not-allowed;
 }
-.has-error {
-  background: #f8dcda;
-  padding: 9px 0;
-  margin: -10px 0 10px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+form .clearfix.error > label, form .clearfix.error .help-block, form .clearfix.error .help-inline {
+  color: #b94a48;
 }
-.has-error > label, .has-error span.help-inline, .has-error span.help-block {
-  color: #9d261d;
+form .clearfix.error input, form .clearfix.error textarea {
+  color: #b94a48;
+  border-color: #ee5f5b;
 }
-.has-error input, .has-error textarea, .has-error select {
-  border-color: #c87872;
-  -webkit-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
-  -moz-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
-  box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
+form .clearfix.error input:focus, form .clearfix.error textarea:focus {
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
 }
-.has-error input:focus, .has-error textarea:focus, .has-error select:focus {
-  border-color: #b9554d;
-  -webkit-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
-  -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
-  box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
+form .clearfix.error .input-prepend .add-on, form .clearfix.error .input-append .add-on {
+  color: #b94a48;
+  background-color: #fce6e6;
+  border-color: #b94a48;
 }
-.has-error .input-prepend span.add-on, .has-error .input-append span.add-on {
-  background: #f4c8c5;
-  border-color: #c87872;
-  color: #b9554d;
+form .clearfix.warning > label, form .clearfix.warning .help-block, form .clearfix.warning .help-inline {
+  color: #c09853;
+}
+form .clearfix.warning input, form .clearfix.warning textarea {
+  color: #c09853;
+  border-color: #ccae64;
+}
+form .clearfix.warning input:focus, form .clearfix.warning textarea:focus {
+  border-color: #be9a3f;
+  -webkit-box-shadow: 0 0 6px #e5d6b1;
+  -moz-box-shadow: 0 0 6px #e5d6b1;
+  box-shadow: 0 0 6px #e5d6b1;
+}
+form .clearfix.warning .input-prepend .add-on, form .clearfix.warning .input-append .add-on {
+  color: #c09853;
+  background-color: #d2b877;
+  border-color: #c09853;
+}
+form .clearfix.success > label, form .clearfix.success .help-block, form .clearfix.success .help-inline {
+  color: #468847;
+}
+form .clearfix.success input, form .clearfix.success textarea {
+  color: #468847;
+  border-color: #57a957;
+}
+form .clearfix.success input:focus, form .clearfix.success textarea:focus {
+  border-color: #458845;
+  -webkit-box-shadow: 0 0 6px #9acc9a;
+  -moz-box-shadow: 0 0 6px #9acc9a;
+  box-shadow: 0 0 6px #9acc9a;
+}
+form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-append .add-on {
+  color: #468847;
+  background-color: #bcddbc;
+  border-color: #468847;
 }
 .form-actions {
   padding: 17px 20px 18px;
@@ -2376,6 +2402,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
 }
 /* Responsive.less
  * For phone and tablet devices

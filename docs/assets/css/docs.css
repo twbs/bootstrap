@@ -54,9 +54,10 @@ body > .navbar-fixed .brand:hover {
   float: left;
   padding: 1px 5px 1px 4px;
   font-size: 11px;
-  font-weight: normal;
+  font-weight: bold;
   line-height: 16px;
-  color: #555;
+  color: #666;
+  text-shadow: 0 1px 0 #fff;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
@@ -67,7 +68,7 @@ body > .navbar-fixed .brand:hover {
 .github-btn .github-ico {
   float: left;
   margin-right: 4px;
-  opacity: .75;
+  opacity: .65;
 }
 .github-btn .count {
   display: inline-block;
