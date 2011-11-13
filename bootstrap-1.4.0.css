@@ -1,5 +1,5 @@
 /*
- * Bootstrap v1.3.0
+ * Bootstrap v1.4.0
  *
  * Copyright 2011 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -9,7 +9,7 @@
  *
  * Converted to Sass by @johnwlong.
  *
- * Date: Tue  8 Nov 2011 13:42:25 PST
+ * Date: So 13 Nov 2011 16:45:58 CET
  */
 /* Reset.scss
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -425,11 +425,10 @@ a:hover {
   width: 620px;
 }
 
-.offset-one-third {
+.row > .offset-one-third {
   margin-left: 340px;
 }
-
-.offset-two-thirds {
+.row > .offset-two-thirds {
   margin-left: 660px;
 }
 
@@ -1168,7 +1167,7 @@ textarea[readonly] {
   padding-top: 0;
 }
 .inputs-list:first-child {
-  padding-top: 5px;
+  padding-top: 6px;
 }
 .inputs-list li + li {
   padding-top: 2px;
@@ -1187,7 +1186,7 @@ textarea[readonly] {
   padding-top: 9px;
 }
 .form-stacked legend {
-  margin-left: 0;
+  padding-left: 0;
 }
 .form-stacked label {
   display: block;

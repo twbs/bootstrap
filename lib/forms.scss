@@ -417,7 +417,7 @@ textarea[readonly] {
     padding-top: 0;
   }
   &:first-child {
-    padding-top: 5px;
+    padding-top: 6px;
   }
   li + li {
     padding-top: 2px;
@@ -437,7 +437,7 @@ textarea[readonly] {
     padding-top: $baseline / 2;
   }
   legend {
-    margin-left: 0;
+    padding-left: 0;
   }
   label {
     display: block;
