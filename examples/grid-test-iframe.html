@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, grid test</title>
+    <!-- <link href="../bootstrap.css" rel="stylesheet"> -->
+    <link href="../bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      
+      iframe {
+        margin: auto;
+        border: 1px solid #333;;
+        padding: 0;
+        width: 100%;
+        display: block;
+      }
+      
+      .size_test { float: left; margin: 0 10px 20px 10px; padding: 0;}
+      .size_title{background:#333; padding-left: 10px; padding-right: 10px; border-radius: 5px; color: #fff; margin-bottom: 10px;}
+      /* These match the sizes in response.less */
+      #phone, #phone iframe {max-width: 480px; min-height: 4288px;}
+      #phone_to_tablet, #phone_to_tablet iframe {min-width: 480px; max-width: 768px; min-height: 4196px;}
+      #tablet_to_desktop, #tablet_to_desktop iframe{min-width: 768px; max-width: 940px; min-height: 2060px; clear: left;}
+      #desktop, #desktop iframe {min-width: 940px; max-width: 1210px; min-height: 2146px;}
+      #large_desktop, #large_desktop iframe {min-width: 1210px; min-height: 2298px;}
+      
+    </style>
+  </head>
+
+  
+  <body>
+    <div class="container">
+      <h1>Grid Test</h1>
+      <p>Grid tests wrapped in an iframe to force a the grid width. This is useful for testing responsive design.</p>
+      <ul>
+        <li><a haref="#phone">UP TO LANDSCAPE PHONE</a></li>
+        <li><a href="#phone_to_tablet">LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET</a></li>
+        <li><a href="#tablet_to_desktop">PORTRAIT TABLET TO DEFAULT DESKTOP</a></li>
+        <li><a href="#desktop">MEDIUM DESKTOP</a></li>
+        <li><a href="#large_desktop">LARGE DESKTOP & UP</a></li>
+      </ul>
+    
+      <div class="size_test" id="phone">
+        <h4 class="size_title">UP TO LANDSCAPE PHONE</h4>
+        <iframe src="grid-test.html" scrolling="no"></iframe>
+      </div>
+      <div class="size_test" id="phone_to_tablet">
+        <h4 class="size_title">LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET</h4>
+        <iframe src="grid-test.html" scrolling="no"></iframe>
+      </div>
+      <div class="size_test" id="tablet_to_desktop">
+        <h4 class="size_title">PORTRAIT TABLET TO DEFAULT DESKTOP</h4>
+        <iframe src="grid-test.html" scrolling="no"></iframe>
+      </div>
+      <div class="size_test" id="desktop">
+        <h4 class="size_title">MEDIUM DESKTOP</h4>
+        <iframe src="grid-test.html" scrolling="no"></iframe>
+      </div>
+      <div class="size_test" id="large_desktop">
+        <h4 class="size_title">LARGE DESKTOP & UP</h4>
+        <iframe src="grid-test.html" scrolling="no"></iframe>
+      </div>
+    </div>
+  </body>
+</html>

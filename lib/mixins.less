@@ -26,12 +26,12 @@
 }
 
 // Sizing shortcuts
-.size(@height: 5px, @width: 5px) {
-  height: @height;
-  width: @width;
+.size(@height: 0.38461538461538em, @width: 0.38461538461538em) { // 5/13
+	height: @height;
+	width: @width;
 }
-.square(@size: 5px) {
-  .size(@size, @size);
+.square(@size: 0.38461538461538em) { // 5/13
+	.size(@size, @size);
 }
 
 // Input placeholder text
@@ -46,29 +46,37 @@
 
 // Font Stacks
 #font {
-  .shorthand(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
+
+  .shorthand(@weight: normal, @size: 1em, @lineHeight: @baseLineHeight) {
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .sans-serif(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
+  .sans-serif(@weight: normal, @size: 1em, @lineHeight: inherit) { 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .serif(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
+  .serif(@weight: normal, @size: 1em, @lineHeight: @baseLineHeight) {
     font-family: "Georgia", Times New Roman, Times, serif;
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .monospace(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
+  .monospace(@weight: normal, @size: 1em, @lineHeight: @baseLineHeight) {
     font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
+}
+
+// Large Type
+// Makes sure type larger than the base font size plays nice with responsive design
+.large-type(@fontSize: 1em){
+  font-size: @fontSize;
+  line-height: (@baseLineHeight * 2) / @fontSize;
 }
 
 // Grid System
@@ -98,7 +106,7 @@
 }
 
 // Border Radius
-.border-radius(@radius: 5px) {
+.border-radius(@radius: 0.38461538461538em) { // 5/13 (this might be fine left as px)
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
           border-radius: @radius;
@@ -122,7 +130,7 @@
 }
 
 // Drop shadows
-.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) { 
   -webkit-box-shadow: @shadow;
      -moz-box-shadow: @shadow;
           box-shadow: @shadow;
@@ -176,9 +184,9 @@
 }
 
 // CSS3 Content Columns
-.content-columns(@columnCount, @columnGap: 20px) {
-  -webkit-column-count: @columnCount;
-     -moz-column-count: @columnCount;
+.content-columns(@columnCount, @columnGap: 1.53846153846154em) { // 20/13
+	-webkit-column-count: @columnCount;
+	   -moz-column-count: @columnCount;
           column-count: @columnCount;
   -webkit-column-gap: @columnGap;
      -moz-column-gap: @columnGap;
@@ -196,7 +204,7 @@
   }
 }
 
-// Gradient Bar Colors for buttons and allerts
+// Gradient Bar Colors for buttons and alerts
 .gradientBar(@primaryColor, @secondaryColor) {
   #gradient > .vertical(@primaryColor, @secondaryColor);
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);

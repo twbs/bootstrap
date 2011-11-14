@@ -39,8 +39,8 @@
 
 // Modify the grid styles in mixins.less
 @gridColumns:       12;
-@gridColumnWidth:   60px;
-@gridGutterWidth:   20px;
+@gridColumnWidth:   6.25%; // 60 / 960 * 100
+@gridGutterWidth:   2.083333333333%; // 20 / 960 * 100
 @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 
@@ -48,9 +48,14 @@
 // ---------------
 
 // Typography
-@baseFontSize:          13px;
+@baseFontSize:          81.25%; // 13/16
 @baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@baseLineHeight:        18px;
+@baseLineHeight:        1.38461538461538em; // 18/13
+
+// Box Model Heights
+@baseHeight:        @baseLineHeight;
+@baseMarginHeight:  @baseLineHeight;
+@basePaddingHeight: @baseLineHeight;
 
 // Visuals
 @primaryButtonColor:    @blue;

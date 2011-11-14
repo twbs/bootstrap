@@ -30,7 +30,7 @@ $(function(){
   $(".copy-code").focus(function () {
     var el = this;
     // push select to event loop for chrome :{o
-    setTimeout(function () { $(el).select(); }, 1);
+    setTimeout(function () { $(el).select(); }, 0);
   });
 
 

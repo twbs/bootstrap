@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, grid test</title>
+    <link href="../bootstrap.css" rel="stylesheet">
+    <!-- <link href="../docs/assets/css/docs.css" rel="stylesheet"> -->
+    <style>
+      .show-grid [class*="span"], [class*="size"] {
+        background: #EEE;
+        text-align: center;
+        min-height: 30px;
+        line-height: 30px;
+        margin-bottom: 10px;
+      }
+      .show-grid [class*="span"] [class*="span"], .show-grid [class*="size"] [class*="size"] {background: #ccc;}
+      /*.line div{background: #eee;min-height:30px;line-height:30px;text-align: center;}*/
+    </style>
+    
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Grid system
+      ================================================== -->
+      <section id="grid-system">
+        <h1>Column Grid System</h1>
+        <!--
+          Note: anything smaller than 1/4 width columns doesn't work well in fluid layouts 
+          due to sub-pixel rounding issues.
+        -->
+        <!-- <div class="row show-grid" title="16 column layout">
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+        </div>
+        <div class="row show-grid" title="8 column layout">
+          <div class="span2">2</div>
+          <div class="span2">2</div>
+          <div class="span2">2</div>
+          <div class="span2">2</div>
+          <div class="span2">2</div>
+          <div class="span2">2</div>
+          <div class="span2">2</div>
+          <div class="span2">2</div>
+        </div>
+        <div class="row show-grid" title="Example uncommon layout">
+          <div class="span3">3</div>
+          <div class="span3">3</div>
+          <div class="span3">3</div>
+          <div class="span3">3</div>
+          <div class="span3">3</div>
+          <div class="span1 column">1</div>
+        </div>-->
+        <div class="row show-grid" title="Four column layout">
+          <div class="span4">4</div>
+          <div class="span4">4</div>
+          <div class="span4">4</div>
+        </div><!-- /row -->
+        <div class="row show-grid" title="Irregular three column layout">
+          <div class="span4">4</div>
+          <div class="span8">8</div>
+        </div><!-- /row -->
+        <div class="row show-grid" title="Half and half">
+          <div class="span6">6</div>
+          <div class="span6">6</div>
+        </div><!-- /row -->
+        <div class="row show-grid" title="Unnecessary single column layout">
+          <div class="span12">12</div>
+        </div><!-- /row -->
+
+        <br>
+
+        <h2>Offsetting columns</h2>
+        <div class="row show-grid">
+          <div class="span4">4</div>
+          <div class="span4 offset4">4 offset 4</div>
+        </div><!-- /row -->
+        <div class="row show-grid">
+          <div class="span3 offset3">3 offset 3</div>
+          <div class="span3 offset3">3 offset 3</div>
+        </div><!-- /row -->
+        <div class="row show-grid">
+          <div class="span8 offset4">8 offset 4</div>
+        </div><!-- /row -->
+
+
+        <div class="row">
+          <div class="span4">
+            <h2>Nesting columns</h2>
+            <p>Nest your content if you must by creating a <code>.row</code> within an existing column.</p>
+          </div>
+          <div class="span12">
+            <h4>Example of nested columns</h4>
+            <div class="row show-grid">
+              <div class="span12">
+                Level 1 of column
+                <div class="row show-grid">
+                  <div class="span6">
+                    Level 2
+                  </div>
+                  <div class="span6">
+                    Level 2
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+      </section>
+      
+      
+      <!-- OOCSS grid test -->
+      <h1>Fractional Grid System</h1>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size2of5">2/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5">2/5</div>
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5">2/5</div>
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5">2/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size3of5 secondToLastUnit">3/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5">1/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size3of5 lastUnit">3/5</div>
+      </div>
+      <div class="line">
+      	<div class="size3of5">3/5</div>
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size2of5 secondToLastUnit">2/5</div>
+      	<div class="size3of5 lastUnit">3/5</div>
+      </div>
+      <div class="line">
+      	<div class="size3of5 secondToLastUnit">3/5</div>
+      	<div class="size2of5 lastUnit">2/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of5 secondToLastUnit">1/5</div>
+      	<div class="size4of5 lastUnit">4/5</div>
+      </div>
+      <div class="line">
+      	<div class="size4of5 secondToLastUnit">4/5</div>
+      	<div class="size1of5 lastUnit">1/5</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of2 secondToLastUnit">1/2</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4">1/4</div>
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size1of2 lastUnit">1/2</div>
+      </div>
+      <div class="line">
+      	<div class="size1of2">1/2</div>
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of4 secondToLastUnit">1/4</div>
+      	<div class="size3of4 lastUnit">3/4</div>
+      </div>
+      <div class="line">
+      	<div class="size3of4 secondToLastUnit">3/4</div>
+      	<div class="size1of4 lastUnit">1/4</div>
+      </div>
+      <div class="line">
+      	<div class="size1of3">1/3</div>
+      	<div class="size1of3 secondToLastUnit">1/3</div>
+      	<div class="size1of3 lastUnit">1/3</div>
+      </div>
+      <div class="line">
+      	<div class="size1of3 secondToLastUnit">1/3</div>
+      	<div class="size2of3 lastUnit">2/3</div>
+      </div>
+      <div class="line">
+      	<div class="size2of3 secondToLastUnit">2/3</div>
+      	<div class="size1of3 lastUnit">1/3</div>
+      </div>
+      <div class="line">
+      	<div class="size1of2 secondToLastUnit">1/2</div>
+      	<div class="size1of2 lastUnit">1/2</div>
+      </div>
+      <div class="line">
+      	<div class="size1of1">1/1</div>
+      </div>
+      
+          <h2>Nesting columns</h2>
+          <p>Nest your content if you must by creating a <code>.line</code> within an existing column.</p>
+          <h4>Example of nested columns</h4>
+          
+          
+          <div class="line show-grid">
+            <div class="size1of1">
+              Level 1 of column
+              <div class="line">
+                <div class="size1of2">Level 2</div>
+                <div class="size1of2">Level 2</div>
+              </div>
+            </div>
+          </div>
+
+      
+      <h1>Typography</h1>
+      <p>The following text blocks should give you a taste of how the responsive type looks like.</p>
+      <h1>H1 Responsive Text Sample <small>small text</small></h1>
+      <h2>H2 Responsive Text Sample <small>small text</small></h2>
+      <h3>H3 Responsive Text Sample <small>small text</small></h3>
+      <h4>H4 Responsive Text Sample <small>small text</small></h4>
+      <h5>H5 Responsive Text Sample</h5>
+      <h6>H6 Responsive Text Sample</h6>
+      <p>P Responsive Text Sample</p>
+      <hr />
+      <ul>
+        <li>UL LI Responsive Text Sample</li>
+        <li>UL LI Responsive Text Sample</li>
+      </ul>
+      <ol>
+        <li>OL LI Responsive Text Sample</li>
+        <li>OL LI Responsive Text Sample</li>
+      </ol>
+      <pre>PRE Responsive Text Sample</pre>
+    </div><!-- .responsive -->
+
+  </body>
+</html>

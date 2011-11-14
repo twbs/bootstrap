@@ -45,4 +45,4 @@
     $('body').delegate('[data-alert-dismiss]', 'click', close)
   })
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender );

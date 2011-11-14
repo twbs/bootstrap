@@ -83,7 +83,8 @@ a {
 // -----------
 // To customize the grid system, bring up the variables.less file and change the column count, size, and gutter there
 .row {
-  margin-left: -@gridGutterWidth;
+  margin-left: -2.040816326531%; // -20/980 
+  width: 102.127659574468%; // 960/940
   .clearfix();
 }
 
@@ -119,3 +120,27 @@ a {
 .offset9   { .offset(9); }
 .offset10  { .offset(10); }
 .offset11  { .offset(11); }
+
+
+// Fractional Grid 
+// (modified from OOCSS grid. http://oocss.org/)
+.width-less-margin(@width: 100%) {width: @width - @gridGutterWidth;}
+
+.line,.lastUnit{overflow:hidden; *overflow:visible;*zoom:1;}
+.line{.row}
+
+.unit{float:left; margin-left: @gridGutterWidth;}
+.unitRight{float:right;}
+.size1of1{float:none; .width-less-margin(100%);.unit}
+.size1of2{.width-less-margin(50%); .unit}
+.size1of3{.width-less-margin(33.33333%); .unit}
+.size2of3{.width-less-margin(66.66666%); .unit}
+.size1of4{.width-less-margin(25%); .unit}
+.size3of4{.width-less-margin(75%); .unit}
+.size1of5{.width-less-margin(20%); .unit}
+.size2of5{.width-less-margin(40%); .unit}
+.size3of5{.width-less-margin(60%); .unit}
+.size4of5{.width-less-margin(80%); .unit}
+.lastUnit{float:none;width:auto;_position:relative;margin-left:0;_left:-3px;_margin-right:-3px;}
+.secondToLastUnit{margin-right: @gridGutterWidth;}
+

@@ -18,7 +18,7 @@
  * ============================================================ */
 
 
-(function( $ ){
+!function( $ ){
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */
@@ -39,4 +39,4 @@
     })
   })
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender );

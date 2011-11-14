@@ -8,11 +8,11 @@
 
 p {
   font-family: @baseFontFamily;
-  font-size: @baseFontSize;
+  font-size: 1em;
   line-height: @baseLineHeight;
-  margin-bottom: @baseLineHeight / 2;
+  margin-bottom: @baseMarginHeight / 2;
   small {
-    font-size: @baseFontSize - 2;
+    font-size: 1em - 0.15384615384615em; // 2/13
     color: @grayLight;
   }
 }
@@ -30,40 +30,35 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 h1 {
-  font-size: 30px;
-  line-height: @baseLineHeight * 2;
+  .large-type(2.30769230769231em); // 30/13
   small {
-    font-size: 18px;
+    font-size: 0.6em; // 18/30
   }
 }
 h2 {
-  font-size: 24px;
-  line-height: @baseLineHeight * 2;
+  .large-type(1.84615384615385em); // 24/13
   small {
-    font-size: 18px;
+    font-size: 0.75em; // 18/24
   }
 }
 h3 {
-  line-height: @baseLineHeight * 1.5;
-  font-size: 18px;
+  .large-type(1.38461538461538em); // 18/13
   small {
-    font-size: 14px;
+    font-size: 0.77777777777778em; // 14/18
   }
 }
 h4 {
-  font-size: 16px;
-  line-height: @baseLineHeight * 2;
+  .large-type(1.23076923076923em); // 16/13
   small {
-    font-size: 12px;
+    font-size: 0.75em; // 12/16
   }
 }
 h5 {
-  font-size: 14px;
-  line-height: @baseLineHeight;
+  .large-type(1.07692307692308em); // 14/13
 }
 h6 {
-  font-size: 13px;
-  line-height: @baseLineHeight;
+  font-size: 1em; // 13/13
+  line-height: 2.76923076923077em; // 36/13
   color: @grayLight;
   text-transform: uppercase;
 }
@@ -74,7 +69,7 @@ h6 {
 
 // Unordered and Ordered lists
 ul, ol {
-  margin: 0 0 @baseLineHeight / 2 25px;
+  margin: 0 0 @baseMarginHeight 1.92307692307692em; // 25/13
 }
 ul ul,
 ul ol,
@@ -99,7 +94,7 @@ ul.unstyled {
 
 // Description Lists
 dl {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
   dt, dd {
     line-height: @baseLineHeight;
   }
@@ -107,7 +102,7 @@ dl {
     font-weight: bold;
   }
   dd {
-    margin-left: @baseLineHeight / 2;
+    margin-left: @baseMarginHeight / 2;
   }
 }
 
@@ -116,9 +111,9 @@ dl {
 
 // Horizontal rules
 hr {
-  margin: 20px 0 19px;
+  margin: 1.53846153846154em 0 1.46153846153846em; // 20/13 & 19/13
   border: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 0.07692307692308em solid #eee; // 1/13
 }
 
 // Emphasis
@@ -145,11 +140,11 @@ abbr {
 
 // Blockquotes
 blockquote {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
   border-left: 5px solid #eee;
-  padding-left: 15px;
+  padding-left: 1.15384615384615em; // 15/13
   p {
-    #font > .shorthand(300,16px,@baseLineHeight * 1.25);
+    #font > .shorthand(300,1.23076923076923em,@baseLineHeight); // 16/13
     margin-bottom: 0;
   }
   small {
@@ -175,28 +170,28 @@ blockquote {
 address {
   display: block;
   line-height: @baseLineHeight;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseMarginHeight;
 }
 
 // Inline and block code styles
 code, pre {
-  padding: 0 3px 2px;
+  padding: 0 0.23076923076923em 0.15384615384615em; // 3/13 & 2/13
   font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
-  font-size: 12px;
-  .border-radius(3px);
+  font-size: 0.92307692307692em; // 12/13
+  .border-radius(0.23076923076923em); // 3/13
 }
 code {
   background-color: lighten(@orange, 40%);
   color: rgba(0,0,0,.75);
-  padding: 1px 3px;
+  padding: 0.07692307692308em 0.23076923076923em; // 1/13 & 3/13
 }
 pre {
   background-color: #f5f5f5;
   display: block;
-  padding: (@baseLineHeight - 1) / 2;
-  margin: 0 0 @baseLineHeight / 2;
+  padding: (@basePaddingHeight - 1) / 2;
+  margin: 0 0 @baseMarginHeight / 2;
   line-height: @baseLineHeight;
-  font-size: 12px;
+  font-size: 0.92307692307692em; // 12/13
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
   .border-radius(3px);
