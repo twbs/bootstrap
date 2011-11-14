@@ -3,30 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Bootstrap, grid test</title>
-    
+    <link href="../bootstrap.css" rel="stylesheet">
     <!-- <link href="../docs/assets/css/docs.css" rel="stylesheet"> -->
     <style>
-      section > .row {margin-bottom: 10px;}
-      .show-grid [class*="span"] {
+      .show-grid [class*="span"], [class*="size"] {
         background: #EEE;
         text-align: center;
         min-height: 30px;
         line-height: 30px;
+        margin-bottom: 10px;
       }
-      .show-grid [class*="span"] [class*="span"] {background: #ccc;}
-      .unit{background: #eee;min-height:30px;line-height:30px;text-align: center;}
-      .line{margin-top: 10px}
+      .show-grid [class*="span"] [class*="span"], .show-grid [class*="size"] [class*="size"] {background: #ccc;}
+      /*.line div{background: #eee;min-height:30px;line-height:30px;text-align: center;}*/
     </style>
-    <link rel="stylesheet/less" type="text/css" href="../lib/bootstrap.less">
-    <script src="../js/less.min.js"></script>
+    
   </head>
 
-  <body class="responsive">
-    <div>
+  <body>
+    <div class="container">
       <!-- Grid system
       ================================================== -->
       <section id="grid-system">
-        <h1>Grid System</h1>
+        <h1>Column Grid System</h1>
         <!--
           Note: anything smaller than 1/4 width columns doesn't work well in fluid layouts 
           due to sub-pixel rounding issues.
@@ -71,32 +69,17 @@
           <div class="span4">4</div>
           <div class="span4">4</div>
           <div class="span4">4</div>
-          <div class="span4">4</div>
-        </div><!-- /row -->
-        <div class="row show-grid" title="Default three column layout">
-          <div class="span-one-third">1/3</div>
-          <div class="span-one-third">1/3</div>
-          <div class="span-one-third">1/3</div>
-        </div><!-- /row -->
-        <div class="row show-grid" title="One-third and two-thirds layout">
-          <div class="span-one-third">1/3</div>
-          <div class="span-two-thirds">2/3</div>
         </div><!-- /row -->
         <div class="row show-grid" title="Irregular three column layout">
           <div class="span4">4</div>
-          <div class="span6">6</div>
-          <div class="span6">6</div>
+          <div class="span8">8</div>
         </div><!-- /row -->
         <div class="row show-grid" title="Half and half">
-          <div class="span8">8</div>
-          <div class="span8">8</div>
-        </div><!-- /row -->
-        <div class="row show-grid" title="Example uncommon two-column layout">
-          <div class="span5">5</div>
-          <div class="span11">11</div>
+          <div class="span6">6</div>
+          <div class="span6">6</div>
         </div><!-- /row -->
         <div class="row show-grid" title="Unnecessary single column layout">
-          <div class="span16">16</div>
+          <div class="span12">12</div>
         </div><!-- /row -->
 
         <br>
@@ -104,24 +87,16 @@
         <h2>Offsetting columns</h2>
         <div class="row show-grid">
           <div class="span4">4</div>
+          <div class="span4 offset4">4 offset 4</div>
+        </div><!-- /row -->
+        <div class="row show-grid">
+          <div class="span3 offset3">3 offset 3</div>
+          <div class="span3 offset3">3 offset 3</div>
+        </div><!-- /row -->
+        <div class="row show-grid">
           <div class="span8 offset4">8 offset 4</div>
         </div><!-- /row -->
-        <div class="row show-grid">
-          <div class="span-one-third offset-two-thirds">1/3 offset 2/3s</div>
-        </div><!-- /row -->
-        <div class="row show-grid">
-          <div class="span4 offset4">4 offset 4</div>
-          <div class="span4 offset4">4 offset 4</div>
-        </div><!-- /row -->
-        <div class="row show-grid">
-          <div class="span5 offset3">5 offset 3</div>
-          <div class="span5 offset3">5 offset 3</div>
-        </div><!-- /row -->
-        <div class="row show-grid">
-          <div class="span10 offset6">10 offset 6</div>
-        </div><!-- /row -->
 
-        <br>
 
         <div class="row">
           <div class="span4">
@@ -150,7 +125,7 @@
       
       
       <!-- OOCSS grid test -->
-      <h1>Grid System</h1>
+      <h1>Fractional Grid System</h1>
       <div class="line">
       	<div class="size1of5">1/5</div>
       	<div class="size1of5">1/5</div>
@@ -277,6 +252,21 @@
       <div class="line">
       	<div class="size1of1">1/1</div>
       </div>
+      
+          <h2>Nesting columns</h2>
+          <p>Nest your content if you must by creating a <code>.line</code> within an existing column.</p>
+          <h4>Example of nested columns</h4>
+          
+          
+          <div class="line show-grid">
+            <div class="size1of1">
+              Level 1 of column
+              <div class="line">
+                <div class="size1of2">Level 2</div>
+                <div class="size1of2">Level 2</div>
+              </div>
+            </div>
+          </div>
 
       
       <h1>Typography</h1>
