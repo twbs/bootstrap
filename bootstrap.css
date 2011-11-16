@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Nov 16 00:28:10 PST 2011
+ * Date: Wed Nov 16 20:16:33 CET 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -606,7 +606,8 @@ textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
-  line-height: normal;
+  line-height: 18px;
+  color: #808080;
 }
 label {
   padding-top: 6px;
@@ -631,9 +632,6 @@ select,
   width: 210px;
   height: 18px;
   padding: 4px;
-  font-size: 13px;
-  line-height: 18px;
-  color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
