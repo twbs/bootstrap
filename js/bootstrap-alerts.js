@@ -94,9 +94,11 @@
 
     return this.each(function () {
       var $this = $(this)
+        , data
 
       if ( typeof options == 'string' ) {
-        var data = $this.data('alert')
+
+        data = $this.data('alert')
 
         if (typeof data == 'object') {
           return data[options].call( $this )
