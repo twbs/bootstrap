@@ -36,7 +36,8 @@ label,
 input,
 select,
 textarea {
-  #font > .sans-serif(normal,13px,normal);
+  #font > .sans-serif(normal,@basefont,@baseline);
+  color: @gray;
 }
 
 // Float labels left
@@ -70,9 +71,6 @@ select,
   width: 210px;
   height: @baseline;
   padding: 4px;
-  font-size: @basefont;
-  line-height: @baseline;
-  color: @gray;
   border: 1px solid #ccc;
   .border-radius(3px);
 }
