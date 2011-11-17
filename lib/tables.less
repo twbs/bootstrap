@@ -7,7 +7,7 @@
 // BASELINE STYLES
 // ---------------
 
-table {
+table.bootstrap {
   width: 100%;
   padding: 0;
   margin-bottom: @baseLineHeight;
@@ -83,7 +83,7 @@ table {
 .tableColumns(@columnSpan: 1) {
   width: ((@gridColumnWidth - 20) * @columnSpan) + ((@gridColumnWidth - 20) * (@columnSpan - 1));
 }
-table {
+table.bootstrap {
   // Default columns
   .span1     { .tableColumns(1); }
   .span2     { .tableColumns(2); }
@@ -125,7 +125,7 @@ table {
 // TABLESORTER
 // -----------
 
-table {
+table.bootstrap {
   // Tablesorting styles w/ jQuery plugin
   .header {
     cursor: pointer;
