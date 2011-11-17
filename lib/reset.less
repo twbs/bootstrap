@@ -75,9 +75,9 @@ audio:not([controls]) {
 // Source: http://github.com/necolas/normalize.css
 sub,
 sup {
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
 sup {
@@ -91,8 +91,8 @@ sub {
 // -------------------------
 // Source: http://github.com/necolas/normalize.css
 img {
-    border: 0;
-    -ms-interpolation-mode: bicubic;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
 }
 
 // Forms
@@ -104,20 +104,20 @@ button,
 input,
 select,
 textarea {
-  font-size: 100%;
   margin: 0;
+  font-size: 100%;
   vertical-align: baseline;
   *vertical-align: middle;
 }
 button,
 input {
-  line-height: normal; // FF3/4 have !important on line-height in UA stylesheet
   *overflow: visible; // Inner spacing ie IE6/7
+  line-height: normal; // FF3/4 have !important on line-height in UA stylesheet
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner { // Inner padding and border oddities in FF3/4
-  border: 0;
   padding: 0;
+  border: 0;
 }
 button,
 input[type="button"],

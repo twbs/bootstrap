@@ -9,9 +9,9 @@
   &:before,
   &:after {
     display: table;
+    *display: inline;
     content: "";
     zoom: 1;
-    *display: inline;
   }
   &:after {
     clear: both;
@@ -27,8 +27,8 @@
 
 // Sizing shortcuts
 .size(@height: 5px, @width: 5px) {
-  height: @height;
   width: @width;
+  height: @height;
 }
 .square(@size: 5px) {
   .size(@size, @size);
@@ -197,14 +197,16 @@
   }
   .border(@color: @white, @alpha: 1) {
     border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-    background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding;
+            background-clip: padding-box;
   }
 }
 
 // Gradient Bar Colors for buttons and alerts
 .gradientBar(@primaryColor, @secondaryColor) {
-  #gradient > .vertical(@primaryColor, @secondaryColor);
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  #gradient > .vertical(@primaryColor, @secondaryColor);
   border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
 }
@@ -274,7 +276,6 @@
 // Opacity
 .opacity(@opacity: 100) {
   filter: e(%("alpha(opacity=%d)", @opacity));
-  -khtml-opacity: @opacity / 100;
     -moz-opacity: @opacity / 100;
          opacity: @opacity / 100;
 }

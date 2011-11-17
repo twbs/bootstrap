@@ -6,8 +6,8 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  padding: 5px;
   display: none;
+  padding: 5px;
   &.above .arrow { #popoverArrow > .above(); }
   &.right .arrow { #popoverArrow > .right(); }
   &.below .arrow { #popoverArrow > .below(); }
@@ -18,24 +18,24 @@
     height: 0;
   }
   .inner {
+    padding: 3px;
+    width: 280px;
+    overflow: hidden;
     background-color: @black;
     background-color: rgba(0,0,0,.8);
-    padding: 3px;
-    overflow: hidden;
-    width: 280px;
     .border-radius(6px);
     .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   }
   .title {
-    background-color: #f5f5f5;
     padding: 9px 15px;
     line-height: 1;
-    .border-radius(3px 3px 0 0);
+    background-color: #f5f5f5;
     border-bottom:1px solid #eee;
+    .border-radius(3px 3px 0 0);
   }
   .content {
-    background-color: @white;
     padding: 14px;
+    background-color: @white;
     .border-radius(0 0 3px 3px);
     .background-clip(padding-box);
     p, ul, ol {

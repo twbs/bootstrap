@@ -7,10 +7,10 @@
 // ---------
 
 p {
+  margin-bottom: @baseLineHeight / 2;
   font-family: @baseFontFamily;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
-  margin-bottom: @baseLineHeight / 2;
   small {
     font-size: @baseFontSize - 2;
     color: @grayLight;
@@ -93,8 +93,8 @@ li {
   color: @grayDark;
 }
 ul.unstyled {
-  list-style: none;
   margin-left: 0;
+  list-style: none;
 }
 
 // Description Lists
@@ -145,12 +145,12 @@ abbr {
 
 // Blockquotes
 blockquote {
+  padding-left: 15px;
   margin-bottom: @baseLineHeight;
   border-left: 5px solid #eee;
-  padding-left: 15px;
   p {
-    #font > .shorthand(300,16px,@baseLineHeight * 1.25);
     margin-bottom: 0;
+    #font > .shorthand(300,16px,@baseLineHeight * 1.25);
   }
   small {
     display: block;
@@ -174,8 +174,8 @@ blockquote {
 // Addresses
 address {
   display: block;
-  line-height: @baseLineHeight;
   margin-bottom: @baseLineHeight;
+  line-height: @baseLineHeight;
 }
 
 // Inline and block code styles
@@ -188,16 +188,16 @@ pre {
   .border-radius(3px);
 }
 code {
-  background-color: lighten(@orange, 40%);
   padding: 1px 3px;
+  background-color: lighten(@orange, 40%);
 }
 pre {
-  background-color: #f5f5f5;
   display: block;
   padding: (@baseLineHeight - 1) / 2;
   margin: 0 0 @baseLineHeight / 2;
-  line-height: @baseLineHeight;
   font-size: 12px;
+  line-height: @baseLineHeight;
+  background-color: #f5f5f5;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
   .border-radius(3px);

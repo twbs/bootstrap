@@ -69,11 +69,11 @@ input[type=radio] {
 
 // Reset the file input to browser defaults
 input[type=file] {
+  padding: initial;
+  line-height: initial;
+  border: initial;
   background-color: @white;
   background-color: initial;
-  padding: initial;
-  border: initial;
-  line-height: initial;
   .box-shadow(none);
 }
 
@@ -89,14 +89,14 @@ input[type=submit] {
 select,
 input[type=file] {
   height: @baseLineHeight * 1.5; // In IE7, the height of the select element cannot be changed by height, only font-size
-  line-height: @baseLineHeight * 1.5;
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+  line-height: @baseLineHeight * 1.5;
 }
 
 // Make multiple select elements height not fixed
 select[multiple] {
-  background-color: @white; // Fixes Chromium bug?
   height: inherit;
+  background-color: @white; // Fixes Chromium bug?
 }
 
 textarea {
@@ -110,16 +110,16 @@ textarea {
 
 input,
 textarea {
+  .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
   @transition: border linear .2s, box-shadow linear .2s;
   .transition(@transition);
-  .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
 }
 input:focus,
 textarea:focus {
-  outline: 0;
   border-color: rgba(82,168,236,.8);
   @shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
   .box-shadow(@shadow);
+  outline: 0;
 }
 input[type=file]:focus,
 input[type=checkbox]:focus,
@@ -248,8 +248,8 @@ form .clearfix.success {
 
 // For text that needs to appear as an input but should not be an input
 .uneditable-input {
-  background-color: @white;
   display: block;
+  background-color: @white;
   border-color: #eee;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
   cursor: not-allowed;
@@ -275,10 +275,10 @@ form .clearfix.success {
 }
 
 .help-inline {
-  display: inline;
-  padding-left: 5px;
   *position: relative; /* IE6-7 */
   *top: -5px; /* IE6-7 */
+  display: inline;
+  padding-left: 5px;
 }
 
 // Big blocks of help text
@@ -321,25 +321,25 @@ form .clearfix.success {
   }
   .add-on {
     position: relative;
-    background: #f5f5f5;
-    border: 1px solid #ccc;
     z-index: 2;
     float: left;
     display: block;
     width: auto;
     min-width: 16px;
     height: @baseLineHeight;
-    padding: 4px 4px 4px 5px;
     margin-right: -1px;
+    padding: 4px 4px 4px 5px;
     font-weight: normal;
     line-height: @baseLineHeight;
     color: @grayLight;
     text-align: center;
     text-shadow: 0 1px 0 @white;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
     .border-radius(3px 0 0 3px);
   }
   .active {
-    background: lighten(@green, 30);
+    background-color: lighten(@green, 30);
     border-color: @green;
   }
 }
@@ -354,9 +354,9 @@ form .clearfix.success {
     .border-radius(3px 0 0 3px);
   }
   .add-on {
-    .border-radius(0 3px 3px 0);
     margin-right: 0;
     margin-left: -1px;
+    .border-radius(0 3px 3px 0);
   }
 }
 

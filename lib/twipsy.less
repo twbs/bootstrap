@@ -2,12 +2,12 @@
 // ------
 
 .twipsy {
-  display: block;
   position: absolute;
+  z-index: 1000;
+  display: block;
   visibility: visible;
   padding: 5px;
   font-size: 11px;
-  z-index: 1000;
   .opacity(80);
   &.fade.in {
     .opacity(80);
@@ -18,12 +18,12 @@
   &.right .twipsy-arrow   { #popoverArrow > .right(); }
 }
 .twipsy-inner {
+  max-width: 200px;
   padding: 3px 8px;
-  background-color: @black;
   color: white;
   text-align: center;
-  max-width: 200px;
   text-decoration: none;
+  background-color: @black;
   .border-radius(4px);
 }
 .twipsy-arrow {

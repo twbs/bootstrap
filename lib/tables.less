@@ -130,32 +130,32 @@ table {
   .header {
     cursor: pointer;
     &:after {
-      content: "";
       float: right;
       margin-top: 7px;
       border-width: 0 4px 4px;
       border-style: solid;
       border-color: #000 transparent;
+      content: "";
       visibility: hidden;
     }
   }
   // Style the sorted column headers (THs)
   .headerSortUp,
   .headerSortDown {
-    background-color: rgba(141,192,219,.25);
     text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    background-color: rgba(141,192,219,.25);
   }
   // Style the ascending (reverse alphabetical) column header
   .header:hover {
     &:after {
-      visibility:visible;
+      visibility: visible;
     }
   }
   // Style the descending (alphabetical) column header
   .headerSortDown,
   .headerSortDown:hover {
     &:after {
-      visibility:visible;
+      visibility: visible;
       .opacity(60);
     }
   }
