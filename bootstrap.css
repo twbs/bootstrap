@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Nov 17 00:36:27 PST 2011
+ * Date: Thu Nov 17 00:48:46 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -657,97 +657,145 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
 .input-xxlarge {
   width: 530px;
 }
-input.span1, textarea.span1, select.span1 {
+input.span1,
+textarea.span1,
+select.span1,
+.uneditable-input.span1 {
   display: inline-block;
   float: none;
   width: 50px;
   margin-left: 0;
 }
-input.span2, textarea.span2, select.span2 {
+input.span2,
+textarea.span2,
+select.span2,
+.uneditable-input.span2 {
   display: inline-block;
   float: none;
   width: 150px;
   margin-left: 0;
 }
-input.span3, textarea.span3, select.span3 {
+input.span3,
+textarea.span3,
+select.span3,
+.uneditable-input.span3 {
   display: inline-block;
   float: none;
   width: 250px;
   margin-left: 0;
 }
-input.span4, textarea.span4, select.span4 {
+input.span4,
+textarea.span4,
+select.span4,
+.uneditable-input.span4 {
   display: inline-block;
   float: none;
   width: 350px;
   margin-left: 0;
 }
-input.span5, textarea.span5, select.span5 {
+input.span5,
+textarea.span5,
+select.span5,
+.uneditable-input.span5 {
   display: inline-block;
   float: none;
   width: 450px;
   margin-left: 0;
 }
-input.span6, textarea.span6, select.span6 {
+input.span6,
+textarea.span6,
+select.span6,
+.uneditable-input.span6 {
   display: inline-block;
   float: none;
   width: 550px;
   margin-left: 0;
 }
-input.span7, textarea.span7, select.span7 {
+input.span7,
+textarea.span7,
+select.span7,
+.uneditable-input.span7 {
   display: inline-block;
   float: none;
   width: 650px;
   margin-left: 0;
 }
-input.span8, textarea.span8, select.span8 {
+input.span8,
+textarea.span8,
+select.span8,
+.uneditable-input.span8 {
   display: inline-block;
   float: none;
   width: 750px;
   margin-left: 0;
 }
-input.span9, textarea.span9, select.span9 {
+input.span9,
+textarea.span9,
+select.span9,
+.uneditable-input.span9 {
   display: inline-block;
   float: none;
   width: 850px;
   margin-left: 0;
 }
-input.span10, textarea.span10, select.span10 {
+input.span10,
+textarea.span10,
+select.span10,
+.uneditable-input.span10 {
   display: inline-block;
   float: none;
   width: 950px;
   margin-left: 0;
 }
-input.span11, textarea.span11, select.span11 {
+input.span11,
+textarea.span11,
+select.span11,
+.uneditable-input.span11 {
   display: inline-block;
   float: none;
   width: 1050px;
   margin-left: 0;
 }
-input.span12, textarea.span12, select.span12 {
+input.span12,
+textarea.span12,
+select.span12,
+.uneditable-input.span12 {
   display: inline-block;
   float: none;
   width: 1150px;
   margin-left: 0;
 }
-input.span13, textarea.span13, select.span13 {
+input.span13,
+textarea.span13,
+select.span13,
+.uneditable-input.span13 {
   display: inline-block;
   float: none;
   width: 1250px;
   margin-left: 0;
 }
-input.span14, textarea.span14, select.span14 {
+input.span14,
+textarea.span14,
+select.span14,
+.uneditable-input.span14 {
   display: inline-block;
   float: none;
   width: 1350px;
   margin-left: 0;
 }
-input.span15, textarea.span15, select.span15 {
+input.span15,
+textarea.span15,
+select.span15,
+.uneditable-input.span15 {
   display: inline-block;
   float: none;
   width: 1450px;
   margin-left: 0;
 }
-input.span16, textarea.span16, select.span16 {
+input.span16,
+textarea.span16,
+select.span16,
+.uneditable-input.span16 {
   display: inline-block;
   float: none;
   width: 1550px;
