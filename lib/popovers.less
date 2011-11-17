@@ -1,0 +1,45 @@
+// POPOVERS
+// --------
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 5px;
+  display: none;
+  &.above .arrow { #popoverArrow > .above(); }
+  &.right .arrow { #popoverArrow > .right(); }
+  &.below .arrow { #popoverArrow > .below(); }
+  &.left .arrow  { #popoverArrow > .left(); }
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  .inner {
+    background-color: @black;
+    background-color: rgba(0,0,0,.8);
+    padding: 3px;
+    overflow: hidden;
+    width: 280px;
+    .border-radius(6px);
+    .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  }
+  .title {
+    background-color: #f5f5f5;
+    padding: 9px 15px;
+    line-height: 1;
+    .border-radius(3px 3px 0 0);
+    border-bottom:1px solid #eee;
+  }
+  .content {
+    background-color: @white;
+    padding: 14px;
+    .border-radius(0 0 3px 3px);
+    .background-clip(padding-box);
+    p, ul, ol {
+      margin-bottom: 0;
+    }
+  }
+}

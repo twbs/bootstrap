@@ -628,9 +628,45 @@
   <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
 <pre class="prettyprint linenums">
 &lt;table class="striped-table"&gt;
-...
+  ...
 &lt;/table&gt;</pre>
-  <h3>3. Striped table w/ TableSorter.js</h3>
+  <h3>3. Condensed table</h3>
+  <p>Make your tables more compact by adding the <code>.condensed-table</code> class to cut table cell padding in half (from 10px to 5px).</p>
+  <table class="condensed-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Some</td>
+        <td>One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
+<pre class="prettyprint linenums">
+&lt;table class="condensed-table"&gt;
+  ...
+&lt;/table&gt;</pre>
+  <h3>4. Striped table w/ TableSorter.js</h3>
   <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
   <table class="striped-table" id="sortTableExample">
     <thead>
@@ -734,7 +770,7 @@
     </div>
     <div class="span9">
       <div class="well">
-        <form class="form-search">
+        <form class="search-form">
           <input type="text" class="search-query">
           <button type="submit" class="btn">Search</button>
         </form>
@@ -747,7 +783,7 @@
     </div>
     <div class="span9">
       <div class="well">
-        <form class="form-inline">
+        <form class="inline-form">
           <h4>Some directional text</h4>
           <p>And maybe some kind of optional supporting text right here.</p>
           <input type="text" class="input-medium">
@@ -763,7 +799,7 @@
       <h2>Horizontal form</h2>
     </div>
     <div class="span9">
-      <form class="form-horizontal">
+      <form class="horizontal-form">
         <legend>Example form</legend>
         <fieldset class="control-group">
           <label class="control-label" for="input01">Text input</label>
@@ -867,7 +903,7 @@
       <h2>Vertical form</h2>
     </div>
     <div class="span9">
-      <form class="form-vertical">
+      <form class="vertical-form">
         <legend>Example form</legend>
         <fieldset class="control-group">
           <label class="control-label" for="input01">Label</label>

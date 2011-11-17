@@ -139,7 +139,7 @@
 
 // Transform for scale and rotate
 // translate, rotate, scale -- need to finalize
-.rotation(@degrees: 5deg) {
+.rotate(@degrees: 5deg) {
   -webkit-transform: rotate(@degrees);
      -moz-transform: rotate(@degrees);
       -ms-transform: rotate(@degrees);
@@ -272,4 +272,41 @@
   -khtml-opacity: @opacity / 100;
     -moz-opacity: @opacity / 100;
          opacity: @opacity / 100;
+}
+
+// Popover arrows
+// For tipsies and popovers
+#popoverArrow {
+  .above(@arrowWidth: 5px) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-top: @arrowWidth solid @black;
+  }
+  .left(@arrowWidth: 5px) {
+    top: 50%;
+    right: 0;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-left: @arrowWidth solid @black;
+  }
+  .below(@arrowWidth: 5px) {
+    top: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid @black;
+  }
+  .right(@arrowWidth: 5px) {
+    top: 50%;
+    left: 0;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid @black;
+  }
 }

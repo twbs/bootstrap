@@ -39,6 +39,45 @@ body > .navbar-fixed .brand:hover {
 }
 
 
+/* Github buttons
+-------------------------------------------------- */
+.github-btn + .github-btn {
+  margin-left: 10px;
+}
+.github-btn {
+  display: inline-block;
+  height: 20px;
+  overflow: hidden;
+}
+.github-btn .btn,
+.github-btn .count {
+  float: left;
+  padding: 1px 5px 1px 4px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 16px;
+  color: #666;
+  text-shadow: 0 1px 0 #fff;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+.github-btn .btn {
+  box-shadow: none;
+}
+.github-btn .github-ico {
+  float: left;
+  margin-right: 4px;
+  opacity: .65;
+}
+.github-btn .count {
+  display: inline-block;
+  margin-left: 2px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+
 /* Jumbotrons
 -------------------------------------------------- */
 .jumbotron {
@@ -59,7 +98,7 @@ body > .navbar-fixed .brand:hover {
   font-weight: 300;
   line-height: 36px;
 }
-.jumbotron .btn {
+.jumbotron .btn-large {
   font-size: 20px;
   padding: 14px 24px;
   margin-right: 5px;
@@ -146,6 +185,7 @@ body > .navbar-fixed .brand:hover {
   font-weight: normal;
   color: #999;
 }
+.quick-links .github-btn,
 .quick-links .tweet-btn,
 .quick-links .follow-btn {
   position: relative;

@@ -1,0 +1,33 @@
+// TWIPSY
+// ------
+
+.twipsy {
+  display: block;
+  position: absolute;
+  visibility: visible;
+  padding: 5px;
+  font-size: 11px;
+  z-index: 1000;
+  .opacity(80);
+  &.fade.in {
+    .opacity(80);
+  }
+  &.above .twipsy-arrow   { #popoverArrow > .above(); }
+  &.left .twipsy-arrow    { #popoverArrow > .left(); }
+  &.below .twipsy-arrow   { #popoverArrow > .below(); }
+  &.right .twipsy-arrow   { #popoverArrow > .right(); }
+}
+.twipsy-inner {
+  padding: 3px 8px;
+  background-color: @black;
+  color: white;
+  text-align: center;
+  max-width: 200px;
+  text-decoration: none;
+  .border-radius(4px);
+}
+.twipsy-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
