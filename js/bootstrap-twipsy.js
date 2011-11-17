@@ -222,10 +222,12 @@
     if (options === true) {
       return this.data(name)
     } else if (typeof options == 'string') {
-      twipsy = this.data(name)
-      if (twipsy) {
-        twipsy[options]()
-      }
+      this.each(function(){
+        twipsy = $.data(this, name)
+        if (twipsy) {
+          twipsy[options]()
+        }
+      })
       return this
     }
 
