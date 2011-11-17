@@ -812,97 +812,97 @@ select.xxlarge {
 textarea.xxlarge {
   overflow-y: auto;
 }
-input.span1, textarea.span1 {
+input.span1, textarea.span1, .input-span1 input, .textarea-span1 textarea {
   display: inline-block;
   float: none;
   width: 30px;
   margin-left: 0;
 }
-input.span2, textarea.span2 {
+input.span2, textarea.span2, .input-span2 input, .textarea-span2 textarea {
   display: inline-block;
   float: none;
   width: 90px;
   margin-left: 0;
 }
-input.span3, textarea.span3 {
+input.span3, textarea.span3, .input-span3 input, .textarea-span3 textarea {
   display: inline-block;
   float: none;
   width: 150px;
   margin-left: 0;
 }
-input.span4, textarea.span4 {
+input.span4, textarea.span4, .input-span4 input, .textarea-span4 textarea {
   display: inline-block;
   float: none;
   width: 210px;
   margin-left: 0;
 }
-input.span5, textarea.span5 {
+input.span5, textarea.span5, .input-span5 input, .textarea-span5 textarea {
   display: inline-block;
   float: none;
   width: 270px;
   margin-left: 0;
 }
-input.span6, textarea.span6 {
+input.span6, textarea.span6, .input-span6 input, .textarea-span6 textarea {
   display: inline-block;
   float: none;
   width: 330px;
   margin-left: 0;
 }
-input.span7, textarea.span7 {
+input.span7, textarea.span7, .input-span7 input, .textarea-span7 textarea {
   display: inline-block;
   float: none;
   width: 390px;
   margin-left: 0;
 }
-input.span8, textarea.span8 {
+input.span8, textarea.span8, .input-span8 input, .textarea-span8 textarea {
   display: inline-block;
   float: none;
   width: 450px;
   margin-left: 0;
 }
-input.span9, textarea.span9 {
+input.span9, textarea.span9, .input-span9 input, .textarea-span9 textarea {
   display: inline-block;
   float: none;
   width: 510px;
   margin-left: 0;
 }
-input.span10, textarea.span10 {
+input.span10, textarea.span10, .input-span10 input, .textarea-span10 textarea {
   display: inline-block;
   float: none;
   width: 570px;
   margin-left: 0;
 }
-input.span11, textarea.span11 {
+input.span11, textarea.span11, .input-span11 input, .textarea-span11 textarea {
   display: inline-block;
   float: none;
   width: 630px;
   margin-left: 0;
 }
-input.span12, textarea.span12 {
+input.span12, textarea.span12, .input-span12 input, .textarea-span12 textarea {
   display: inline-block;
   float: none;
   width: 690px;
   margin-left: 0;
 }
-input.span13, textarea.span13 {
+input.span13, textarea.span13, .input-span13 input, .textarea-span13 textarea {
   display: inline-block;
   float: none;
   width: 750px;
   margin-left: 0;
 }
-input.span14, textarea.span14 {
+input.span14, textarea.span14, .input-span14 input, .textarea-span14 textarea {
   display: inline-block;
   float: none;
   width: 810px;
   margin-left: 0;
 }
-input.span15, textarea.span15 {
+input.span15, textarea.span15, .input-span15 input, .textarea-span15 textarea {
   display: inline-block;
   float: none;
   width: 870px;
   margin-left: 0;
 }
-input.span16, textarea.span16 {
+input.span16, textarea.span16, .input-span16 input, .textarea-span16 textarea {
   display: inline-block;
   float: none;
   width: 930px;
