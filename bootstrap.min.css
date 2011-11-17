@@ -153,13 +153,13 @@ form .clearfix.success .input-prepend .add-on,form .clearfix.success .input-appe
 .input-prepend .add-on{*margin-top:1px;}
 .input-append input{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-append .add-on{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;margin-right:0;margin-left:-1px;}
-.form-search .search-query{-webkit-border-radius:14px;-moz-border-radius:14px;border-radius:14px;}
+.search-form .search-query{-webkit-border-radius:14px;-moz-border-radius:14px;border-radius:14px;}
 .control-group{margin-bottom:18px;}
 .control-group>label{font-weight:bold;}
-.form-horizontal .control-group>label{float:left;width:130px;padding-top:5px;text-align:right;}
-.form-horizontal .controls{margin-left:150px;}
-.form-horizontal .control-list{padding-top:6px;}
-.form-horizontal .form-actions{padding-left:150px;}
+.horizontal-form .control-group>label{float:left;width:130px;padding-top:5px;text-align:right;}
+.horizontal-form .controls{margin-left:150px;}
+.horizontal-form .control-list{padding-top:6px;}
+.horizontal-form .form-actions{padding-left:150px;}
 table{width:100%;padding:0;margin-bottom:18px;font-size:13px;border-collapse:collapse;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;}
 table th{padding-top:9px;font-weight:bold;vertical-align:middle;}
 table td{vertical-align:top;border-top:1px solid #ddd;}

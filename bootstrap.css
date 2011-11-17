@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Nov 16 23:58:14 PST 2011
+ * Date: Thu Nov 17 00:05:35 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -921,7 +921,7 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
   margin-right: 0;
   margin-left: -1px;
 }
-.form-search .search-query {
+.search-form .search-query {
   -webkit-border-radius: 14px;
   -moz-border-radius: 14px;
   border-radius: 14px;
@@ -932,19 +932,19 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
 .control-group > label {
   font-weight: bold;
 }
-.form-horizontal .control-group > label {
+.horizontal-form .control-group > label {
   float: left;
   width: 130px;
   padding-top: 5px;
   text-align: right;
 }
-.form-horizontal .controls {
+.horizontal-form .controls {
   margin-left: 150px;
 }
-.form-horizontal .control-list {
+.horizontal-form .control-list {
   padding-top: 6px;
 }
-.form-horizontal .form-actions {
+.horizontal-form .form-actions {
   padding-left: 150px;
 }
 /*

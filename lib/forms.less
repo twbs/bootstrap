@@ -364,7 +364,7 @@ form .clearfix.success {
 // SEARCH FORM
 // -----------
 
-.form-search .search-query {
+.search-form .search-query {
   .border-radius(14px);
 }
 
@@ -388,22 +388,24 @@ form .clearfix.success {
 // Horizontal-specific styles
 // --------------------------
 
-// Float the labels left
-.form-horizontal .control-group > label {
-  float: left;
-  width: 130px;
-  padding-top: 5px;
-  text-align: right;
-}
-// Move over all input controls and content
-.form-horizontal .controls {
-  margin-left: 150px;
-}
-// Move the options list down to align with labels
-.form-horizontal .control-list {
-  padding-top: 6px; // has to be padding because margin collaspes
-}
-// Move over buttons in .form-actions to align with .controls
-.form-horizontal .form-actions {
-  padding-left: 150px;
+.horizontal-form {
+  // Float the labels left
+  .control-group > label {
+    float: left;
+    width: 130px;
+    padding-top: 5px;
+    text-align: right;
+  }
+  // Move over all input controls and content
+  .controls {
+    margin-left: 150px;
+  }
+  // Move the options list down to align with labels
+  .control-list {
+    padding-top: 6px; // has to be padding because margin collaspes
+  }
+  // Move over buttons in .form-actions to align with .controls
+  .form-actions {
+    padding-left: 150px;
+  }
 }
