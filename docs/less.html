@@ -95,15 +95,208 @@
       <!-- VARIABLES
       ================================================== -->
       <div class="page-header" id="variables">
-        <h1>Variables</h1>
+        <h1>Variables <small>from variables.less</small></h1>
       </div>
 
+      <div class="row">
+        <div class="span3">
+          <h3>Hyperlinks</h3>
+        </div>
+        <div class="span9">
+          <table class="bordered-table striped-table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Value</th>
+                <th>Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>@linkColor</code></td>
+                <td>#0069d6</td>
+                <td>Default link text color</td>
+              </tr>
+              <tr>
+                <td><code>@linkColorHover</code></td>
+                <td><code>darken(@linkColor, 15)</code></td>
+                <td>Default link text hover color</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span3">
+          <h3>Grayscale colors</h3>
+        </div>
+        <div class="span9">
+          <table class="bordered-table striped-table">
+            <tbody>
+              <tr>
+                <td><code>@black</code></td>
+                <td>#000</td>
+                <td>Black</td>
+              </tr>
+              <tr>
+                <td><code>@grayDark</code></td>
+                <td><code>lighten(@black, 25%)</code></td>
+                <td>Dark gray</td>
+              </tr>
+              <tr>
+                <td><code>@gray</code></td>
+                <td><code>lighten(@black, 50%)</code></td>
+                <td>Medium gray</td>
+              </tr>
+              <tr>
+                <td><code>@grayLight</code></td>
+                <td><code>lighten(@black, 75%)</code></td>
+                <td>Light gray</td>
+              </tr>
+              <tr>
+                <td><code>@grayLighter</code></td>
+                <td><code>lighten(@black, 90%)</code></td>
+                <td>Lighter gray</td>
+              </tr>
+              <tr>
+                <td><code>@white</code></td>
+                <td>#fff</td>
+                <td>White</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span3">
+          <h3>Accent colors</h3>
+        </div>
+        <div class="span9">
+          <table class="bordered-table striped-table">
+            <tbody>
+              <tr>
+                <td><code>@blue</code></td>
+                <td>#049CDB</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@green</code></td>
+                <td>#46a546</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@red</code></td>
+                <td>#9d261d</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@yellow</code></td>
+                <td>#ffc40d</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@orange</code></td>
+                <td>#f89406</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@pink</code></td>
+                <td>#c3325f</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@purple</code></td>
+                <td>#7a43b6</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span3">
+          <h3>Grid system</h3>
+        </div>
+        <div class="span9">
+          <table class="bordered-table striped-table">
+            <tbody>
+              <tr>
+                <td><code>@gridColumns</code></td>
+                <td>12</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@gridColumnWidth</code></td>
+                <td>60px</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@gridGutterWidth</code></td>
+                <td>20px</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@siteWidth</code></td>
+                <td><code>(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1))</code></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span3">
+          <h3>Typography</h3>
+        </div>
+        <div class="span9">
+          <table class="bordered-table striped-table">
+            <tbody>
+              <tr>
+                <td><code>@baseFontSize</code></td>
+                <td>13px</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@baseFontFamily</code></td>
+                <td><code>"Helvetica Neue", Helvetica, Arial, sans-serif</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>@baseLineHeight</code></td>
+                <td>18px</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span3">
+          <h3>Visuals</h3>
+        </div>
+        <div class="span9">
+          <table class="bordered-table striped-table">
+            <tbody>
+              <tr>
+                <td><code>@primaryButtonColor</code></td>
+                <td><code>@blue</code></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
 
       <!-- MIXINS
       ================================================== -->
       <div class="page-header" id="mixins">
-        <h1>Mixins</h1>
+        <h1>Mixins <small>from mixins.less</small></h1>
       </div>
 
 

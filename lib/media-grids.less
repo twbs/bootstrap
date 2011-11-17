@@ -1,0 +1,26 @@
+// MEDIA GRIDS
+// -----------
+
+.media-grid {
+  margin-left: -20px;
+  margin-bottom: 0;
+  .clearfix();
+  li {
+    display: inline;
+  }
+  a {
+    float: left;
+    padding: 4px;
+    margin: 0 0 20px 20px;
+    border: 1px solid #ddd;
+    .border-radius(4px);
+    .box-shadow(0 1px 1px rgba(0,0,0,.075));
+    img {
+      display: block;
+    }
+    &:hover {
+      border-color: @linkColor;
+      .box-shadow(0 1px 4px rgba(0,105,214,.25));
+    }
+  }
+}
