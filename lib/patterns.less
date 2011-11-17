@@ -755,7 +755,11 @@ input[type=submit].btn {
   height: @baseline * 2;
   margin: @baseline 0;
   ul {
-    float: left;
+    display: -moz-inline-box; /* FF2 or lower */
+    display: inline-block;
+    /* IE6/7 inline-block hack */
+    *display: inline;
+    *zoom: 1;
     margin: 0;
     border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
@@ -787,6 +791,10 @@ input[type=submit].btn {
   .next a {
     border: 0;
   }
+}
+
+.pagination.center {
+  text-align: center;
 }
 
 
