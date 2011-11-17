@@ -46,28 +46,33 @@
 
 // Font Stacks
 #font {
-  .shorthand(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
+  #family {
+    .serif() {
+      font-family: "Georgia", Times New Roman, Times, serif;
+    }
+    .sans-serif() {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .monospace() {
+      font-family: "Menlo", Monaco, Courier New, monospace;
+    }
+  }
+  .shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .sans-serif(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
+  .serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+    #font > #family > .serif;
+    #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .serif(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
-    font-family: "Georgia", Times New Roman, Times, serif;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
+  .sans-serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+    #font > #family > .sans-serif;
+    #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .monospace(@weight: normal, @size: @baseFontSize, @lineHeight: @baseLineHeight) {
-    font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
+  .monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+    #font > #family > .monospace;
+    #font > .shorthand(@size, @weight, @lineHeight);
   }
 }
 
