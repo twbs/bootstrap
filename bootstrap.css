@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Nov 17 00:48:46 PST 2011
+ * Date: Thu Nov 17 00:52:01 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -503,15 +503,15 @@ address {
 }
 code, pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
+  font-family: "Menlo", Monaco, Courier New, monospace;
   font-size: 12px;
+  color: #404040;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
 code {
   background-color: #fee9cc;
-  color: rgba(0, 0, 0, 0.75);
   padding: 1px 3px;
 }
 pre {
@@ -529,6 +529,10 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   word-break: break-all;
+}
+pre code {
+  padding: 0;
+  background-color: transparent;
 }
 /* Forms.less
  * Base styles for various input types, form layouts, and states

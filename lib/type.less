@@ -179,15 +179,16 @@ address {
 }
 
 // Inline and block code styles
-code, pre {
+code,
+pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
+  #font > #family > .monospace;
   font-size: 12px;
+  color: @grayDark;
   .border-radius(3px);
 }
 code {
   background-color: lighten(@orange, 40%);
-  color: rgba(0,0,0,.75);
   padding: 1px 3px;
 }
 pre {
@@ -203,4 +204,10 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   word-break: break-all;
+
+  // Account for some code outputs that place code tags in pre tags
+  code {
+    padding: 0;
+    background-color: transparent;
+  }
 }
