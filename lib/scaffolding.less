@@ -8,12 +8,12 @@
 // -----------------
 
 body {
-  background-color: @white;
   margin: 0;
   font-family: @baseFontFamily;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @grayDark;
+  background-color: @white;
 }
 
 // Container (centered, fixed-width layouts)
@@ -52,10 +52,10 @@ body {
 
 // Links
 a {
+  font-weight: inherit;
+  line-height: inherit;
   color: @linkColor;
   text-decoration: none;
-  line-height: inherit;
-  font-weight: inherit;
   &:hover {
     color: @linkColorHover;
     text-decoration: underline;
