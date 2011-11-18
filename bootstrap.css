@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Nov  6 19:50:14 CET 2011
+ * Date: Fri Nov 18 19:15:52 CET 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1594,11 +1594,11 @@ a.menu:after, .dropdown-toggle:after {
 .dropdown.open .dropdown-menu {
   display: block;
 }
-.btn-dropdown {
+.btn-dropdown, .btn-split {
   display: inline-block;
   *display: inline;
 }
-.btn-dropdown .dropdown-menu {
+.btn-dropdown .dropdown-menu, .btn-split .dropdown-menu {
   *left: 0px;
 }
 .btn-dropdown .dropdown-toggle {
@@ -1642,6 +1642,19 @@ a.menu:after, .dropdown-toggle:after {
 .btn-dropdown .small + .dropdown-menu {
   top: 30px;
   *top: 31px;
+}
+.btn-split .btn:first-child {
+  padding-right: 8px;
+  -webkit-border-radius: 4px 0px 0px 4px;
+  -moz-border-radius: 4px 0px 0px 4px;
+  border-radius: 4px 0px 0px 4px;
+}
+.btn-split .btn:nth-child(2) {
+  padding-left: 4px;
+  padding-right: 8px;
+  -webkit-border-radius: 0px 4px 4px 0px;
+  -moz-border-radius: 0px 4px 4px 0px;
+  border-radius: 0px 4px 4px 0px;
 }
 .tabs, .pills {
   margin: 0 0 18px;

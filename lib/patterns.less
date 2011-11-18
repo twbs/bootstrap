@@ -323,7 +323,7 @@ a.menu:after,
 // ----------------
 
 // Wrap the buttons in linline-block for same-line rendering
-.btn-dropdown {
+.btn-dropdown, .btn-split {
   display: inline-block;
   *display: inline;
   
@@ -382,6 +382,19 @@ a.menu:after,
   *top: 31px;
 }
 
+// SPLIT BUTTONS
+// Unround right corners for first part of btn
+.btn-split .btn:first-child {
+  padding-right: 8px;
+  .border-radius(4px 0px 0px 4px)
+}
+
+// Unround left corners for second part of btn
+.btn-split .btn:nth-child(2) {
+  padding-left: 4px;
+  padding-right: 8px;
+  .border-radius(0px 4px 4px 0px)
+}
 
 // TABS AND PILLS
 // --------------
