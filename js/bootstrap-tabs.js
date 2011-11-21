@@ -20,6 +20,8 @@
 
 !function( $ ){
 
+  "use strict"
+
   function activate ( element, container ) {
     container
       .find('> .active')
@@ -39,6 +41,7 @@
       , $ul = $this.closest('ul:not(.dropdown-menu)')
       , href = $this.attr('href')
       , previous
+      , $href
 
     if ( /^#\w+/.test(href) ) {
       e.preventDefault()
@@ -64,8 +67,14 @@
  /* TABS/PILLS PLUGIN DEFINITION
   * ============================ */
 
-  $(function () {
-    $('body').delegate('ul[data-tabs] > li > a, ul[data-pills] > li > a', 'click', tab)
+  $.fn.tabs = $.fn.pills = function ( selector ) {
+    return this.each(function () {
+      $(this).delegate(selector || '.tabs li > a, .pills > li > a', 'click', tab)
+    })
+  }
+
+  $(document).ready(function () {
+    $('body').tabs('ul[data-tabs] li > a, ul[data-pills] > li > a')
   })
 
 }( window.jQuery || window.ender );

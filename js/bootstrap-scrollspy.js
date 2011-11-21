@@ -20,33 +20,34 @@
 
 !function ( $ ) {
 
-  var $window = $(window)
-
   function ScrollSpy() {
     var process = $.proxy(this.process, this)
-    this.$topbar = $('body')
-    this.selector = '[data-scrollspy] li > a'
+    this.selector = '.nav li > a'
+
+    this.$body = $('body').delegate(this.selector, 'click', process)
+    this.$scrollElement = $('[data-spy="scroll"]').bind('scroll', process)
+
     this.refresh()
-    this.$topbar.delegate(this.selector, 'click', process)
-    $window.scroll(process)
     this.process()
   }
 
   ScrollSpy.prototype = {
 
       refresh: function () {
-        this.targets = this.$topbar.find(this.selector).map(function () {
-          var href = $(this).attr('href')
-          return /^#\w/.test(href) && $(href).length ? href : null
-        })
+        this.targets = this.$body
+          .find(this.selector)
+          .map(function () {
+            var href = $(this).attr('href')
+            return /^#\w/.test(href) && $(href).length ? href : null
+          })
 
         this.offsets = $.map(this.targets, function (id) {
-          return $(id).offset().top
+          return $(id).position().top
         })
       }
 
     , process: function () {
-        var scrollTop = $window.scrollTop() + 10
+        var scrollTop = this.$scrollElement.scrollTop() + 10
           , offsets = this.offsets
           , targets = this.targets
           , activeTarget = this.activeTarget
@@ -65,11 +66,11 @@
 
         this.activeTarget = target
 
-        this.$topbar
+        this.$body
           .find(this.selector).parent('.active')
           .removeClass('active')
 
-        active = this.$topbar
+        active = this.$body
           .find(this.selector + '[href="' + target + '"]')
           .parent('li')
           .addClass('active')
@@ -82,8 +83,6 @@
 
   }
 
-  $(function () {
-    new ScrollSpy()
-  })
+  $(function () { new ScrollSpy() })
 
 }( window.jQuery || window.ender )

@@ -20,13 +20,15 @@
 
 !function( $ ){
 
+  "use strict"
+
  /* MODAL PUBLIC CLASS DEFINITION
   * ============================= */
 
   var Modal = function ( content, options ) {
     this.settings = $.extend({}, $.fn.modal.defaults, options)
     this.$element = $(content)
-      .delegate('[data-modal-dismiss]', 'click', $.proxy(this.hide, this))
+      .delegate('.close', 'click.modal', $.proxy(this.hide, this))
 
     if ( this.settings.show ) {
       this.show()
@@ -47,7 +49,24 @@
         this.$element.trigger('show')
 
         escape.call(this)
-        backdrop.call(this)
+        backdrop.call(this, function () {
+          var transition = $.support.transition && that.$element.hasClass('fade')
+
+          that.$element
+            .appendTo(document.body)
+            .show()
+
+          if (transition) {
+            that.$element[0].offsetWidth // force reflow
+          }
+
+          that.$element.addClass('in')
+
+          transition ?
+            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
+            that.$element.trigger('shown')
+
+        })
 
         return this
       }
@@ -68,17 +87,9 @@
           .trigger('hide')
           .removeClass('in')
 
-        function removeElement () {
-          that.$element
-            .hide()
-            .trigger('hidden')
-
-          backdrop.call(that)
-        }
-
         $.support.transition && this.$element.hasClass('fade') ?
-          this.$element.one($.support.transition.end, removeElement) :
-          removeElement()
+          hideWithTransition.call(this) :
+          hideModal.call(this)
 
         return this
       }
@@ -89,11 +100,30 @@
  /* MODAL PRIVATE METHODS
   * ===================== */
 
-  function backdrop () {
+  function hideWithTransition() {
+    var that = this
+      , timeout = setTimeout(function () {
+          that.$element.unbind($.support.transition.end)
+          hideModal.call(that)
+        }, 500)
+
+    this.$element.one($.support.transition.end, function () {
+      clearTimeout(timeout)
+      hideModal.call(that)
+    })
+  }
+
+  function hideModal (that) {
+    this.$element
+      .hide()
+      .trigger('hidden')
+
+    backdrop.call(this)
+  }
+
+  function backdrop ( callback ) {
     var that = this
       , animate = this.$element.hasClass('fade') ? 'fade' : ''
-      , callback = $.proxy(show, this)
-
     if ( this.isShown && this.settings.backdrop ) {
       var doAnimate = $.support.transition && animate
 
@@ -117,37 +147,18 @@
     } else if ( !this.isShown && this.$backdrop ) {
       this.$backdrop.removeClass('in')
 
-      function removeElement() {
-        that.$backdrop.remove()
-        that.$backdrop = null
-      }
-
       $.support.transition && this.$element.hasClass('fade')?
-        this.$backdrop.one($.support.transition.end, removeElement) :
-        removeElement()
+        this.$backdrop.one($.support.transition.end, $.proxy(removeBackdrop, this)) :
+        removeBackdrop.call(this)
+
     } else if ( callback ) {
        callback()
     }
   }
 
-  function show() {
-    var transition = $.support.transition && that.$element.hasClass('fade')
-      , that = this
-
-    this.$element
-      .appendTo(document.body)
-      .show()
-
-    if (transition) {
-      this.$element[0].offsetWidth // force reflow
-    }
-
-    this.$element
-      .addClass('in')
-
-    transition ?
-      this.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
-      this.$element.trigger('shown')
+  function removeBackdrop() {
+    this.$backdrop.remove()
+    this.$backdrop = null
   }
 
   function escape() {
@@ -199,19 +210,19 @@
   $.fn.modal.Modal = Modal
 
   $.fn.modal.defaults = {
-    backdrop: false
-  , keyboard: false
-  , show: false
+    backdrop: true
+  , keyboard: true
+  , show: true
   }
 
 
- /* MODAL DATA-IMPLEMENTATION
-  * ========================= */
+ /* MODAL DATA- IMPLEMENTATION
+  * ========================== */
 
-  $(function () {
+  $(document).ready(function () {
     $('body').delegate('[data-controls-modal]', 'click', function (e) {
       e.preventDefault()
-      var $this = $(this).data('show', true)
+      var $this = $(this)
       $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
     })
   })

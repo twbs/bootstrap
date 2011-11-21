@@ -1,6 +1,6 @@
 /* ============================================================
- * bootstrap-dropdown.js v2.0.0
- * http://twitter.github.com/bootstrap/javascript.html#dropdown
+ * bootstrap-buttons.js v2.0.0
+ * http://twitter.github.com/bootstrap/javascript.html#buttons
  * ============================================================
  * Copyright 2011 Twitter, Inc.
  *
@@ -17,50 +17,46 @@
  * limitations under the License.
  * ============================================================ */
 
-
 !function( $ ){
 
   "use strict"
 
-  /* SIMPLE DROPDOWN LOGIC
-   * ===================== */
+  function setState(el, state) {
+    var d = 'disabled'
+      , $el = $(el)
+      , data = $el.data()
 
-  var s = '[data-toggle="dropdown"]'
+    state = state + 'Text'
+    data.resetText || $el.data('resetText', $el.html())
 
-  function clearMenus() {
-    $(s).parent('li').removeClass('open')
+    $el.html( data[state] || $.fn.button.defaults[state] )
+
+    state == 'loadingText' ?
+      $el.addClass(d).attr(d, d) :
+      $el.removeClass(d).removeAttr(d)
   }
 
-  function toggle(e) {
-    var li = $(this).parent('li')
-      , isActive = li.hasClass('open')
-
-    clearMenus()
-    !isActive && li.toggleClass('open')
-
-    return false
+  function toggle(el) {
+    $(el).toggleClass('active')
   }
 
-
-  /* DROPDOWN PLUGIN DEFINITION
-   * ========================== */
-
-  $.fn.dropdown = function ( selector ) {
+  $.fn.button = function(options) {
     return this.each(function () {
-      var args = ['click', toggle]
-        , $this = $(this)
-      selector && args.unshift(selector)
-      $this[selector ? 'delegate' : 'bind'].apply($this, args)
+      if (options == 'toggle') {
+        return toggle(this)
+      }
+      options && setState(this, options)
     })
   }
 
-
-  /* APPLY TO STANDARD DROPDOWN ELEMENTS
-   * =================================== */
+  $.fn.button.defaults = {
+    loadingText: 'loading...'
+  }
 
   $(function () {
-    $('html').bind("click", clearMenus)
-    $('body').dropdown(s)
+    $('body').delegate('.btn[data-toggle]', 'click', function () {
+      $(this).button('toggle')
+    })
   })
 
 }( window.jQuery || window.ender );

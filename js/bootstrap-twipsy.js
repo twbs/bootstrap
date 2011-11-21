@@ -18,8 +18,9 @@
  * limitations under the License.
  * ========================================================== */
 
-
 !function( $ ) {
+
+  "use strict"
 
  /* TWIPSY PUBLIC CLASS DEFINITION
   * ============================== */
@@ -41,7 +42,7 @@
         , $tip
         , tp
 
-      if (this.getTitle() && this.enabled) {
+      if (this.hasContent() && this.enabled) {
         $tip = this.tip()
         this.setContent()
 
@@ -61,7 +62,8 @@
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
-        placement = _.maybeCall(this.options.placement, this.$element[0])
+
+        placement = maybeCall(this.options.placement, this, [ $tip[0], this.$element[0] ])
 
         switch (placement) {
           case 'below':
@@ -87,7 +89,7 @@
 
   , setContent: function () {
       var $tip = this.tip()
-      $tip.find('.twipsy-inner')[this.options.html ? 'html' : 'text'](this.getTitle())
+      $tip.find('.twipsy-inner').html(this.getTitle())
       $tip[0].className = 'twipsy'
     }
 
@@ -102,7 +104,7 @@
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
-        $tip.bind($.support.transition.end, removeElement) :
+        $tip.bind( $.support.transition.end, removeElement) :
         removeElement()
     }
 
@@ -111,6 +113,10 @@
       if ($e.attr('title') || typeof($e.attr('data-original-title')) != 'string') {
         $e.attr('data-original-title', $e.attr('title') || '').removeAttr('title')
       }
+    }
+
+  , hasContent: function () {
+      return this.getTitle()
     }
 
   , getTitle: function() {
@@ -128,14 +134,11 @@
 
         title = ('' + title).replace(/(^\s*|\s*$)/, "")
 
-        return title || o.fallback
+        return title
     }
 
   , tip: function() {
-      if (!this.$tip) {
-        this.$tip = $('<div class="twipsy" />').html('<div class="twipsy-arrow"></div><div class="twipsy-inner"></div>')
-      }
-      return this.$tip
+      return this.$tip = this.$tip || $('<div class="twipsy" />').html(this.options.template)
     }
 
   , validate: function() {
@@ -158,20 +161,19 @@
       this.enabled = !this.enabled
     }
 
+  , toggle: function () {
+      this[this.tip().hasClass('in') ? 'hide' : 'show']()
+    }
+
   }
 
 
  /* TWIPSY PRIVATE METHODS
   * ====================== */
 
-   var _ = {
-
-     maybeCall: function ( thing, ctx ) {
-       return (typeof thing == 'function') ? (thing.call(ctx)) : thing
-     }
-
+   function maybeCall ( thing, ctx, args ) {
+     return typeof thing == 'function' ? thing.apply(ctx, args) : thing
    }
-
 
  /* TWIPSY PLUGIN DEFINITION
   * ======================== */
@@ -187,17 +189,21 @@
       , eventIn
       , eventOut
 
-    if (options === true) {
-      return this.data(name)
-    } else if (typeof options == 'string') {
-      twipsy = this.data(name)
-      if (twipsy) {
-        twipsy[options]()
-      }
-      return this
+    if (typeof options == 'string') {
+      return this.each(function (){
+        twipsy = $.data(this, name)
+        if (twipsy) twipsy[options]()
+      })
     }
 
     options = $.extend({}, $.fn[name].defaults, options)
+
+    if (options.delay && typeof options.delay == 'number') {
+      options.delay = {
+        show: options.delay
+      , hide: options.delay
+      }
+    }
 
     function get(ele) {
       var twipsy = $.data(ele, name)
@@ -214,7 +220,7 @@
       var twipsy = get(this)
       twipsy.hoverState = 'in'
 
-      if (options.delayIn == 0) {
+      if (!options.delay || !options.delay.show) {
         twipsy.show()
       } else {
         twipsy.fixTitle()
@@ -222,21 +228,21 @@
           if (twipsy.hoverState == 'in') {
             twipsy.show()
           }
-        }, options.delayIn)
+        }, options.delay.show)
       }
     }
 
     function leave() {
       var twipsy = get(this)
       twipsy.hoverState = 'out'
-      if (options.delayOut == 0) {
+      if (!options.delay || !options.delay.hide) {
         twipsy.hide()
       } else {
         setTimeout(function() {
           if (twipsy.hoverState == 'out') {
             twipsy.hide()
           }
-        }, options.delayOut)
+        }, options.delay.hide)
       }
     }
 
@@ -260,19 +266,27 @@
 
   $.fn.twipsy.defaults = {
     animate: true
-  , delayIn: 0
-  , delayOut: 0
-  , fallback: ''
+  , delay: 0
   , placement: 'above'
-  , html: false
   , live: false
   , offset: 0
-  , title: 'title'
   , trigger: 'hover'
+  , title: 'title'
+  , template: '<div class="twipsy-arrow"></div><div class="twipsy-inner"></div>'
   }
 
+  $.fn.twipsy.rejectAttrOptions = [ 'title' ]
+
   $.fn.twipsy.elementOptions = function(ele, options) {
-    return $.metadata ? $.extend({}, options, $(ele).metadata()) : options
+    var data = $(ele).data()
+      , rejects = $.fn.twipsy.rejectAttrOptions
+      , i = rejects.length
+
+    while (i--) {
+      delete data[rejects[i]]
+    }
+
+    return $.extend({}, options, data)
   }
 
 }( window.jQuery || window.ender );
