@@ -7,7 +7,7 @@ LESS_COMPRESSOR ?= `which lessc`
 UGLIFY_JS ?= `which uglifyjs`
 WATCHR ?= `which watchr`
 
-build: uglify
+build:
 	@@if test ! -z ${LESS_COMPRESSOR}; then \
 		sed -e 's/@VERSION/'"v${VERSION}"'/' -e 's/@DATE/'"${DATE}"'/' <${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp; \
 		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP}; \
@@ -19,7 +19,7 @@ build: uglify
 		echo "You can install it by running: npm install less -g"; \
 	fi
 
-uglify:
+js/min:
 	@@if test ! -z ${UGLIFY_JS}; then \
 		mkdir -p js/min; \
 		uglifyjs -o js/min/bootstrap-alerts.min.js    js/bootstrap-alerts.js;\
