@@ -36,8 +36,12 @@
 
     setContent: function () {
       var $tip = this.tip()
-      $tip.find('.title')['html'](this.getTitle())
-      $tip.find('.content > *')['html'](this.getContent())
+        , title = this.getTitle()
+        , content = this.getContent()
+
+      $tip.find('.title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
+      $tip.find('.content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
+
       $tip[0].className = 'popover'
     }
 
