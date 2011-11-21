@@ -1,0 +1,18 @@
+/* =========================================================
+ * bootstrap-modal.js v1.4.0
+ * http://twitter.github.com/bootstrap/javascript.html#modal
+ * =========================================================
+ * Copyright 2011 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */!function(a){function d(){var a=this,c=setTimeout(function(){a.$element.unbind(b),e.call(a)},500);this.$element.one(b,function(){clearTimeout(c),e.call(a)})}function e(a){this.$element.hide().trigger("hidden"),f.call(this)}function f(c){var d=this,e=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.settings.backdrop){var f=a.support.transition&&e;this.$backdrop=a('<div class="modal-backdrop '+e+'" />').appendTo(document.body),this.settings.backdrop!="static"&&this.$backdrop.click(a.proxy(this.hide,this)),f&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),f?this.$backdrop.one(b,c):c()}else!this.isShown&&this.$backdrop?(this.$backdrop.removeClass("in"),a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one(b,a.proxy(g,this)):g.call(this)):c&&c()}function g(){this.$backdrop.remove(),this.$backdrop=null}function h(){var b=this;this.isShown&&this.settings.keyboard?a(document).bind("keyup.modal",function(a){a.which==27&&b.hide()}):this.isShown||a(document).unbind("keyup.modal")}"use strict";var b;a(document).ready(function(){a.support.transition=function(){var a=document.body||document.documentElement,b=a.style,c=b.transition!==undefined||b.WebkitTransition!==undefined||b.MozTransition!==undefined||b.MsTransition!==undefined||b.OTransition!==undefined;return c}(),a.support.transition&&(b="TransitionEnd",a.browser.webkit?b="webkitTransitionEnd":a.browser.mozilla?b="transitionend":a.browser.opera&&(b="oTransitionEnd"))});var c=function(b,c){return this.settings=a.extend({},a.fn.modal.defaults,c),this.$element=a(b).delegate(".close","click.modal",a.proxy(this.hide,this)),this.settings.show&&this.show(),this};c.prototype={toggle:function(){return this[this.isShown?"hide":"show"]()},show:function(){var c=this;return this.isShown=!0,this.$element.trigger("show"),h.call(this),f.call(this,function(){var d=a.support.transition&&c.$element.hasClass("fade");c.$element.appendTo(document.body).show(),d&&c.$element[0].offsetWidth,c.$element.addClass("in"),d?c.$element.one(b,function(){c.$element.trigger("shown")}):c.$element.trigger("shown")}),this},hide:function(b){b&&b.preventDefault();if(!this.isShown)return this;var c=this;return this.isShown=!1,h.call(this),this.$element.trigger("hide").removeClass("in"),a.support.transition&&this.$element.hasClass("fade")?d.call(this):e.call(this),this}},a.fn.modal=function(b){var d=this.data("modal");return d?b===!0?d:(typeof b=="string"?d[b]():d&&d.toggle(),this):(typeof b=="string"&&(b={show:/show|toggle/.test(b)}),this.each(function(){a(this).data("modal",new c(this,b))}))},a.fn.modal.Modal=c,a.fn.modal.defaults={backdrop:!1,keyboard:!1,show:!1},a(document).ready(function(){a("body").delegate("[data-controls-modal]","click",function(b){b.preventDefault();var c=a(this).data("show",!0);a("#"+c.attr("data-controls-modal")).modal(c.data())})})}(window.jQuery||window.ender);
