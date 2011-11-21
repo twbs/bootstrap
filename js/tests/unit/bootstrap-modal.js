@@ -87,6 +87,52 @@ $(function () {
          .modal("toggle")
      })
 
+     test("should not .close modal when closing an .alert-message in the modal", function () {
+       stop()
+       $.support.transition = false
+       var div = $('<div id="modal-test"><span class="close"></span>'
+          + '<div class="alert-message warning fade in">'
+          + '<a class="close" id="close-alert" href="#">×</a>'
+          + '<p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>'
+          + '</div>'
+          + '</div>')
+       div
+         .modal()
+         .bind("shown", function () {
+           ok($('#modal-test').is(":visible"), 'modal visible')
+           ok($('#modal-test').length, 'modal insterted into dom')
+           div.find('#close-alert').click()
+           ok($('#modal-test').is(":visible"), 'modal visible')
+           start()
+           div.remove()
+         })
+         .modal('show')
+     })
+
+     test("should .close modal even if it have an .alert-message in it", function () {
+       stop()
+       $.support.transition = false
+       var div = $('<div id="modal-test"><span class="close" id="close-modal"></span>'
+          + '<div class="alert-message warning fade in">'
+          + '<a class="close" href="#">×</a>'
+          + '<p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>'
+          + '</div>'
+          + '</div>')
+       div
+         .modal()
+         .bind("shown", function () {
+           ok($('#modal-test').is(":visible"), 'modal visible')
+           ok($('#modal-test').length, 'modal insterted into dom')
+           div.find('#close-modal').click()
+         })
+         .bind("hidden", function() {
+           ok(!$('#modal-test').is(":visible"), 'modal hidden')
+           start()
+           div.remove()
+         })
+         .modal("toggle")
+     })
+
      test("should add backdrop when desired", function () {
        stop()
        $.support.transition = false
