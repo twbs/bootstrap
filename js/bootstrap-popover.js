@@ -55,7 +55,12 @@
        , o = this.options
 
       if (typeof this.options.content == 'string') {
-        content = $e.attr(this.options.content)
+        var cval = $e.attr(this.options.content)
+        if (cval[0] === '#') {
+          content = $(cval).html()
+        } else {
+          content = $e.attr(this.options.content)
+        }
       } else if (typeof this.options.content == 'function') {
         content = this.options.content.call(this.$element[0])
       }
