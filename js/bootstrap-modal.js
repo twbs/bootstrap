@@ -22,35 +22,6 @@
 
   "use strict"
 
- /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
-  * ======================================================= */
-
-  var transitionEnd
-
-  $(document).ready(function () {
-
-    $.support.transition = (function () {
-      var thisBody = document.body || document.documentElement
-        , thisStyle = thisBody.style
-        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-      return support
-    })()
-
-    // set CSS transition event type
-    if ( $.support.transition ) {
-      transitionEnd = "TransitionEnd"
-      if ( $.browser.webkit ) {
-        transitionEnd = "webkitTransitionEnd"
-      } else if ( $.browser.mozilla ) {
-        transitionEnd = "transitionend"
-      } else if ( $.browser.opera ) {
-        transitionEnd = "oTransitionEnd"
-      }
-    }
-
-  })
-
-
  /* MODAL PUBLIC CLASS DEFINITION
   * ============================= */
 
@@ -92,7 +63,7 @@
           that.$element.addClass('in')
 
           transition ?
-            that.$element.one(transitionEnd, function () { that.$element.trigger('shown') }) :
+            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
             that.$element.trigger('shown')
 
         })
@@ -130,14 +101,13 @@
   * ===================== */
 
   function hideWithTransition() {
-    // firefox drops transitionEnd events :{o
     var that = this
       , timeout = setTimeout(function () {
-          that.$element.unbind(transitionEnd)
+          that.$element.unbind($.support.transition.end)
           hideModal.call(that)
         }, 500)
 
-    this.$element.one(transitionEnd, function () {
+    this.$element.one($.support.transition.end, function () {
       clearTimeout(timeout)
       hideModal.call(that)
     })
@@ -171,14 +141,14 @@
       this.$backdrop.addClass('in')
 
       doAnimate ?
-        this.$backdrop.one(transitionEnd, callback) :
+        this.$backdrop.one($.support.transition.end, callback) :
         callback()
 
     } else if ( !this.isShown && this.$backdrop ) {
       this.$backdrop.removeClass('in')
 
       $.support.transition && this.$element.hasClass('fade')?
-        this.$backdrop.one(transitionEnd, $.proxy(removeBackdrop, this)) :
+        this.$backdrop.one($.support.transition.end, $.proxy(removeBackdrop, this)) :
         removeBackdrop.call(this)
 
     } else if ( callback ) {
@@ -240,9 +210,9 @@
   $.fn.modal.Modal = Modal
 
   $.fn.modal.defaults = {
-    backdrop: false
-  , keyboard: false
-  , show: false
+    backdrop: true
+  , keyboard: true
+  , show: true
   }
 
 
@@ -252,7 +222,7 @@
   $(document).ready(function () {
     $('body').delegate('[data-controls-modal]', 'click', function (e) {
       e.preventDefault()
-      var $this = $(this).data('show', true)
+      var $this = $(this)
       $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
     })
   })

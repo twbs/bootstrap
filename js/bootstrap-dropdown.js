@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrap-dropdown.js v1.4.0
+ * bootstrap-dropdown.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#dropdown
  * ============================================================
  * Copyright 2011 Twitter, Inc.
@@ -22,34 +22,45 @@
 
   "use strict"
 
+  /* SIMPLE DROPDOWN LOGIC
+   * ===================== */
+
+  var s = '[data-toggle="dropdown"]'
+
+  function clearMenus() {
+    $(s).parent('li').removeClass('open')
+  }
+
+  function toggle(e) {
+    var li = $(this).parent('li')
+      , isActive = li.hasClass('open')
+
+    clearMenus()
+    !isActive && li.toggleClass('open')
+
+    return false
+  }
+
+
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
   $.fn.dropdown = function ( selector ) {
     return this.each(function () {
-      $(this).delegate(selector || d, 'click', function (e) {
-        var li = $(this).parent('li')
-          , isActive = li.hasClass('open')
-
-        clearMenus()
-        !isActive && li.toggleClass('open')
-        return false
-      })
+      var args = ['click', toggle]
+        , $this = $(this)
+      selector && args.unshift(selector)
+      $this[selector ? 'delegate' : 'bind'].apply($this, args)
     })
   }
+
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */
 
-  var d = 'a.menu, .dropdown-toggle'
-
-  function clearMenus() {
-    $(d).parent('li').removeClass('open')
-  }
-
   $(function () {
     $('html').bind("click", clearMenus)
-    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
+    $('body').dropdown(s)
   })
 
 }( window.jQuery || window.ender );

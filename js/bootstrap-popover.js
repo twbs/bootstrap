@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-popover.js v1.4.0
+ * bootstrap-popover.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#popover
  * ===========================================================
  * Copyright 2011 Twitter, Inc.
@@ -36,8 +36,8 @@
 
     setContent: function () {
       var $tip = this.tip()
-      $tip.find('.title')[this.options.html ? 'html' : 'text'](this.getTitle())
-      $tip.find('.content > *')[this.options.html ? 'html' : 'text'](this.getContent())
+      $tip.find('.title')['html'](this.getTitle())
+      $tip.find('.content > *')['html'](this.getContent())
       $tip[0].className = 'popover'
     }
 

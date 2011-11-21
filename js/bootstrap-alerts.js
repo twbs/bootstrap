@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-alerts.js v1.4.0
+ * bootstrap-alerts.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
  * Copyright 2011 Twitter, Inc.
@@ -21,34 +21,6 @@
 !function( $ ){
 
   "use strict"
-
-  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
-   * ======================================================= */
-
-   var transitionEnd
-
-   $(document).ready(function () {
-
-     $.support.transition = (function () {
-       var thisBody = document.body || document.documentElement
-         , thisStyle = thisBody.style
-         , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-       return support
-     })()
-
-     // set CSS transition event type
-     if ( $.support.transition ) {
-       transitionEnd = "TransitionEnd"
-       if ( $.browser.webkit ) {
-        transitionEnd = "webkitTransitionEnd"
-       } else if ( $.browser.mozilla ) {
-        transitionEnd = "transitionend"
-       } else if ( $.browser.opera ) {
-        transitionEnd = "oTransitionEnd"
-       }
-     }
-
-   })
 
  /* ALERT CLASS DEFINITION
   * ====================== */
@@ -76,7 +48,7 @@
       }
 
       $.support.transition && $element.hasClass('fade') ?
-        $element.bind(transitionEnd, removeElement) :
+        $element.bind($.support.transition.end, removeElement) :
         removeElement()
     }
 
@@ -87,10 +59,6 @@
   * ======================= */
 
   $.fn.alert = function ( options ) {
-
-    if ( options === true ) {
-      return this.data('alert')
-    }
 
     return this.each(function () {
       var $this = $(this)
@@ -112,13 +80,11 @@
   }
 
   $.fn.alert.defaults = {
-    selector: '.close'
+    selector: '[data-dismiss="alert"]'
   }
 
-  $(document).ready(function () {
-    new Alert($('body'), {
-      selector: '.alert-message[data-alert] .close'
-    })
+  $(function () {
+    new Alert( $('body') )
   })
 
 }( window.jQuery || window.ender );

@@ -304,6 +304,13 @@ body > .navbar-fixed .brand:hover {
   margin-left: 10px;
 }
 
+/* scrollspy docs */
+
+.scrollspy-example {
+  overflow: auto;
+  height: 200px;
+  position: relative;
+}
 
 /* Popover docs
 -------------------------------------------------- */
