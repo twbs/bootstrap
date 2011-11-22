@@ -162,9 +162,7 @@
           title = o.title.call($e[0])
         }
 
-        title = ('' + title).replace(/(^\s*|\s*$)/, "")
-
-        return title || o.fallback
+        return title ? ('' + title).replace(/(^\s*|\s*$)/, "") : o.fallback
     }
 
   , tip: function() {
