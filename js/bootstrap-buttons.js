@@ -25,11 +25,12 @@
     var d = 'disabled'
       , $el = $(el)
       , data = $el.data()
+      , input_type = $el.is('input') ? 'val' : 'html'
 
     state = state + 'Text'
-    data.resetText || $el.data('resetText', $el.html())
+    data.resetText || $el.data('resetText', $el[ input_type ]() )
 
-    $el.html( data[state] || $.fn.button.defaults[state] )
+    $el[ input_type ]( data[state] || $.fn.button.defaults[state] )
 
     setTimeout(function () {
       state == 'loadingText' ?
