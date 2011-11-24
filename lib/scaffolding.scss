@@ -87,47 +87,16 @@ a {
 }
 
 // Default columns
-.span1     { @include columns(1); }
-.span2     { @include columns(2); }
-.span3     { @include columns(3); }
-.span4     { @include columns(4); }
-.span5     { @include columns(5); }
-.span6     { @include columns(6); }
-.span7     { @include columns(7); }
-.span8     { @include columns(8); }
-.span9     { @include columns(9); }
-.span10    { @include columns(10); }
-.span11    { @include columns(11); }
-.span12    { @include columns(12); }
-.span13    { @include columns(13); }
-.span14    { @include columns(14); }
-.span15    { @include columns(15); }
-.span16    { @include columns(16); }
-
 // For option 24-column grid
-.span17    { @include columns(17); }
-.span18    { @include columns(18); }
-.span19    { @include columns(19); }
-.span20    { @include columns(20); }
-.span21    { @include columns(21); }
-.span22    { @include columns(22); }
-.span23    { @include columns(23); }
-.span24    { @include columns(24); }
+@for $i from 1 through 24 {
+  .span#{$i}     { @include columns($i); }
+}
 
 // Offset column options
 .row {
-  > .offset1   { @include offset(1); }
-  > .offset2   { @include offset(2); }
-  > .offset3   { @include offset(3); }
-  > .offset4   { @include offset(4); }
-  > .offset5   { @include offset(5); }
-  > .offset6   { @include offset(6); }
-  > .offset7   { @include offset(7); }
-  > .offset8   { @include offset(8); }
-  > .offset9   { @include offset(9); }
-  > .offset10  { @include offset(10); }
-  > .offset11  { @include offset(11); }
-  > .offset12  { @include offset(12); }
+  @for $i from 1 through 12 {
+    > .offset#{$i}    { @include offset($i); }
+  }
 }
 // Unique column sizes for 16-column grid
 .span-one-third     { width: 300px; }
