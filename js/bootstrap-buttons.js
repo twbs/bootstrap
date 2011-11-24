@@ -25,26 +25,36 @@
     var d = 'disabled'
       , $el = $(el)
       , data = $el.data()
+      , val = $el.is('input') ? 'val' : 'html'
 
     state = state + 'Text'
-    data.resetText || $el.data('resetText', $el.html())
+    data.resetText || $el.data('resetText', $el[val]())
 
-    $el.html( data[state] || $.fn.button.defaults[state] )
+    $el[val]( data[state] || $.fn.button.defaults[state] )
 
-    state == 'loadingText' ?
-      $el.addClass(d).attr(d, d) :
-      $el.removeClass(d).removeAttr(d)
+    setTimeout(function () {
+      state == 'loadingText' ?
+        $el.addClass(d).attr(d, d) :
+        $el.removeClass(d).removeAttr(d)
+    }, 0)
   }
 
   function toggle(el) {
-    $(el).toggleClass('active')
+    var $el = $(el)
+      , $parent = $el.parent('[data-toggle="buttons-radio"]')
+
+    if ($parent) {
+      $parent
+        .find('.active')
+        .removeClass('active')
+    }
+
+    $el.toggleClass('active')
   }
 
   $.fn.button = function(options) {
     return this.each(function () {
-      if (options == 'toggle') {
-        return toggle(this)
-      }
+      if (options == 'toggle') return toggle(this)
       options && setState(this, options)
     })
   }
@@ -54,8 +64,8 @@
   }
 
   $(function () {
-    $('body').delegate('.btn[data-toggle]', 'click', function () {
-      $(this).button('toggle')
+    $('body').delegate('[data-toggle^=button]', 'click', function (e) {
+      $(e.srcElement).button('toggle')
     })
   })
 

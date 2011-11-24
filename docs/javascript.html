@@ -26,7 +26,6 @@
     <!-- Le javascript -->
     <!-- placed up here so that the inline demos can be next to their markup -->
     <script src="http://code.jquery.com/jquery-1.7.js"></script>
-    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="../js/bootstrap-transitions.js"></script>
@@ -37,6 +36,7 @@
     <script src="../js/bootstrap-tabs.js"></script>
     <script src="../js/bootstrap-twipsy.js"></script>
     <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-buttons.js"></script>
     <script>
       $(function () {
 
@@ -138,6 +138,10 @@
              <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
              <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
            </tr>
+           <tr>
+              <td><a href="./javascript.html#buttons">bootstrap-buttons.js</a></td>
+              <td>This plugin offers additional functionality for managing button state.</td>
+            </tr>
          </tbody>
        </table>
        <h3>Is javascript necessary?</h3>
@@ -734,6 +738,112 @@ $('.tabs a').bind('change', function (e) {
               <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+     <!-- Buttons
+    ================================================== -->
+
+    <section id="buttons">
+      <div class="page-header">
+        <h1>Buttons <small>bootstrap-buttons.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>This plugin offers additional functionality for managing button state.</p>
+          <a href="../js/bootstrap-buttons.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-buttons.js</h3>
+          <pre class="prettyprint linenums">$('.tabs').button()</pre>
+            <h3>Markup</h3>
+          <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
+<pre class="prettyprint linenums">
+&lt;!-- Add data-toggle="button" to activate toggling on a single button --&gt;
+&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
+
+&lt;!-- Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group --&gt;
+&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Add data-toggle="buttons-radio" for radio style toggling on btn-group --&gt;
+&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+          <h3>Methods</h3>
+          <h4>$().button('toggle')</h4>
+          <p>Toggles push state. Gives btn the look that it's been activated.</p>
+          <p><span class="label notice">Notice</span> You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
+          <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="button" &gt;...&lt;/button&gt;</pre>
+          <h4>$().button('loading')</h4>
+          <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
+          </p>
+           <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+           <h4>$().button('reset')</h4>
+           <p>Resets button state - swaps text to original text.</p>
+           <h4>$().button(string)</h4>
+           <p>Resets button state - swaps text to any data defined text state.</p>
+<pre class="prettyprint linenums">&lt;button class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
+&lt;script&gt;
+  $('.btn').button('complete')
+&lt;/scrip&gt;</pre>
+          <h3>Demo</h3>
+          <table class="striped-table">
+            <tbody>
+             <tr>
+               <td>Stateful</td>
+               <td>
+                  <button id="fat-btn" data-loading-text="loading..." class="btn">
+                    Loading State
+                  </button>
+                  <script>
+                    $(function() {
+                      var btn = $('#fat-btn').click(function () {
+                        btn.button('loading')
+                        setTimeout(function () {
+                          btn.button('reset')
+                        }, 3000)
+                      })
+                    })
+                  </script>
+                </td>
+             </tr>
+             <tr>
+               <td>Single Toggle</td>
+               <td>
+                  <button class="btn" data-toggle="button">Single Toggle</button>
+                </td>
+             </tr>
+             <tr>
+               <td>Checkbox</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-checkbox">
+                    <button class="btn">Left</button>
+                    <button class="btn">Middle</button>
+                    <button class="btn">Right</button>
+                  </div>
+               </td>
+             </tr>
+             <tr>
+               <td>Radio</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-radio">
+                    <button class="btn">Left</button>
+                    <button class="btn">Middle</button>
+                    <button class="btn">Right</button>
+                  </div>
+               </td>
+             </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
