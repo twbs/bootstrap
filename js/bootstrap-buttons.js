@@ -27,9 +27,9 @@
       , data = $el.data()
 
     state = state + 'Text'
-    data.resetText || $el.data('resetText', $el.html())
+    data.resetText || $el.data('resetText', $el[ $el.is('input') ? 'val' : 'html' ]() )
 
-    $el.html( data[state] || $.fn.button.defaults[state] )
+    $el[ $el.is('input') ? 'val' : 'html' ]( data[state] || $.fn.button.defaults[state] )
 
     setTimeout(function () {
       state == 'loadingText' ?
