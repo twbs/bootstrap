@@ -29,8 +29,12 @@
     state = state + 'Text'
     data.resetText || $el.data('resetText', $el.html())
 
-    $el.html( data[state] || $.fn.button.defaults[state] )
-
+    if(!$el.is('input[type=submit]')){
+	  	$el.html( data[state] || $.fn.button.defaults[state] )
+	  }else{
+		  $el.val( data[state] || $.fn.button.defaults[state] )
+	  }
+  
     setTimeout(function () {
       state == 'loadingText' ?
         $el.addClass(d).attr(d, d) :
