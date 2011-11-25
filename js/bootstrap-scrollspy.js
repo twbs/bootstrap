@@ -99,7 +99,7 @@
     })
   }
 
-  $.fn.alert.ScrollSpy = ScrollSpy
+  $.fn.scrollspy.ScrollSpy = ScrollSpy
 
 
  /* SCROLLSPY DATA-API
