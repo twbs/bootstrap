@@ -192,8 +192,10 @@
   $(document).ready(function () {
     $('body').delegate('[data-toggle="modal"]', 'click.modal.data-api', function ( e ) {
       var $this = $(this)
+        , target = $this.attr('data-target')
+        , option = $(target).data('modal') ? 'toggle' : $this.data()
       e.preventDefault()
-      $($this.attr('data-target')).modal($this.data())
+      $(target).modal(option)
     })
   })
 
