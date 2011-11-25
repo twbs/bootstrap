@@ -26,7 +26,7 @@
   * ====================== */
 
   var dismiss = '[data-dismiss="alert"]'
-    , Alert = function ( el, close ) {
+    , Alert = function ( el ) {
         $(el).delegate(dismiss, 'click', this.close)
       }
 
@@ -36,7 +36,6 @@
       var $element = $(this)
 
       $element = $element.hasClass('alert-message') ? $element : $element.parent()
-
       e && e.preventDefault()
       $element.removeClass('in')
 
@@ -55,12 +54,12 @@
  /* ALERT PLUGIN DEFINITION
   * ======================= */
 
-  $.fn.alert = function ( options ) {
+  $.fn.alert = function ( option ) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('alert')
       if (!data) $this.data('alert', (data = new Alert(this)))
-      if (typeof options == 'string') data[options].call($this)
+      if (typeof option == 'string') data[option].call($this)
     })
   }
 

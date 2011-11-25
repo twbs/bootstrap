@@ -24,45 +24,56 @@
  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
 
-  var Button
-
-  function setState(el, state) {
-    var d = 'disabled'
-      , $el = $(el)
-      , data = $el.data()
-      , val = $el.is('input') ? 'val' : 'html'
-
-    state = state + 'Text'
-    data.resetText || $el.data('resetText', $el[val]())
-
-    $el[val]( data[state] || $.fn.button.defaults[state] )
-
-    setTimeout(function () {
-      state == 'loadingText' ?
-        $el.addClass(d).attr(d, d) :
-        $el.removeClass(d).removeAttr(d)
-    }, 0)
+  var Button = function (element, options) {
+    this.$element = $(element)
+    this.settings = $.extend({}, $.fn.button.defaults, options)
   }
 
-  function toggle(el) {
-    var $el = $(el)
-      , $parent = $el.parent('[data-toggle="buttons-radio"]')
+  Button.prototype = {
 
-    $parent && $parent
-      .find('.active')
-      .removeClass('active')
+      setState: function (state) {
+        var d = 'disabled'
+          , $el = this.$element
+          , data = $el.data()
+          , val = $el.is('input') ? 'val' : 'html'
 
-    $el.toggleClass('active')
+        state = state + 'Text'
+        data.resetText || $el.data('resetText', $el[val]())
+
+        $el[val](data[state] || this.settings[state])
+
+        // push to event loop to allow forms to submit
+        setTimeout(function () {
+          state == 'loadingText' ?
+            $el.addClass(d).attr(d, d) :
+            $el.removeClass(d).removeAttr(d)
+        }, 0)
+      }
+
+    , toggle: function () {
+        var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
+
+        $parent && $parent
+          .find('.active')
+          .removeClass('active')
+
+        this.$element.toggleClass('active')
+      }
+
   }
 
 
  /* BUTTON PLUGIN DEFINITION
   * ======================== */
 
-  $.fn.button = function(options) {
+  $.fn.button = function ( option ) {
     return this.each(function () {
-      if (options == 'toggle') return toggle(this)
-      options && setState(this, options)
+      var $this = $(this)
+        , data = $this.data('button')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('button', (data = new Button(this, options)))
+      if (option == 'toggle') data.toggle()
+      else if (option) data.setState(option)
     })
   }
 

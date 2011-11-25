@@ -22,35 +22,42 @@
 
   "use strict"
 
-  /* SIMPLE DROPDOWN LOGIC
-   * ===================== */
+ /* DROPDOWN CLASS DEFINITION
+  * ========================= */
 
-  var s = '[data-toggle="dropdown"]'
+  var toggle = '[data-toggle="dropdown"]'
+    , Dropdown = function ( element ) {
+        $(element).bind('click', this.toggle)
+      }
 
-  function clearMenus() {
-    $(s).parent('li').removeClass('open')
+  Dropdown.prototype = {
+
+    toggle: function ( e ) {
+      var li = $(this).parent('li')
+        , isActive = li.hasClass('open')
+
+      clearMenus()
+      !isActive && li.toggleClass('open')
+
+      return false
+    }
+
   }
 
-  function toggle(e) {
-    var li = $(this).parent('li')
-      , isActive = li.hasClass('open')
-
-    clearMenus()
-    !isActive && li.toggleClass('open')
-
-    return false
+  function clearMenus() {
+    $(toggle).parent('li').removeClass('open')
   }
 
 
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
-  $.fn.dropdown = function ( selector ) {
+  $.fn.dropdown = function ( option ) {
     return this.each(function () {
-      var args = ['click', toggle]
-        , $this = $(this)
-      selector && args.unshift(selector)
-      $this[selector ? 'delegate' : 'bind'].apply($this, args)
+      var $this = $(this)
+        , data = $this.data('dropdown')
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
     })
   }
 
@@ -59,8 +66,8 @@
    * =================================== */
 
   $(function () {
-    $('html').bind("click.dropdown.data-api", clearMenus)
-    $('body').dropdown(s)
+    $('html').bind('click.dropdown.data-api', clearMenus)
+    $('body').delegate(toggle, 'click.dropdown.data-api', Dropdown.prototype.toggle)
   })
 
 }( window.jQuery || window.ender );
