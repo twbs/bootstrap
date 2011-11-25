@@ -59,7 +59,7 @@
    * =================================== */
 
   $(function () {
-    $('html').bind("click", clearMenus)
+    $('html').bind("click.dropdown.data-api", clearMenus)
     $('body').dropdown(s)
   })
 

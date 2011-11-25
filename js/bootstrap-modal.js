@@ -194,10 +194,6 @@
       })
     }
 
-    if ( options === true ) {
-      return modal
-    }
-
     if ( typeof options == 'string' ) {
       modal[options]()
     } else if ( modal ) {
@@ -220,7 +216,7 @@
   * ========================== */
 
   $(document).ready(function () {
-    $('body').delegate('[data-controls-modal]', 'click', function (e) {
+    $('body').delegate('[data-controls-modal]', 'click.modal.data-api', function (e) {
       e.preventDefault()
       var $this = $(this)
       $('#' + $this.attr('data-controls-modal')).modal( $this.data() )

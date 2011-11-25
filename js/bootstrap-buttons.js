@@ -21,6 +21,11 @@
 
   "use strict"
 
+ /* BUTTON PUBLIC CLASS DEFINITION
+  * ============================== */
+
+  var Button
+
   function setState(el, state) {
     var d = 'disabled'
       , $el = $(el)
@@ -43,14 +48,16 @@
     var $el = $(el)
       , $parent = $el.parent('[data-toggle="buttons-radio"]')
 
-    if ($parent) {
-      $parent
-        .find('.active')
-        .removeClass('active')
-    }
+    $parent && $parent
+      .find('.active')
+      .removeClass('active')
 
     $el.toggleClass('active')
   }
+
+
+ /* BUTTON PLUGIN DEFINITION
+  * ======================== */
 
   $.fn.button = function(options) {
     return this.each(function () {
@@ -63,8 +70,14 @@
     loadingText: 'loading...'
   }
 
+  $.fn.button.Button = Button
+
+
+ /* BUTTON DATA-API
+  * =============== */
+
   $(function () {
-    $('body').delegate('[data-toggle^=button]', 'click', function (e) {
+    $('body').delegate('[data-toggle^=button]', 'click.button.data-api', function (e) {
       $(e.srcElement).button('toggle')
     })
   })

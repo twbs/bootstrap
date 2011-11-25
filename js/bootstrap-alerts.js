@@ -25,25 +25,22 @@
  /* ALERT CLASS DEFINITION
   * ====================== */
 
-  var Alert = function ( content, options ) {
-    if (options == 'close') return this.close.call(content)
-    this.settings = $.extend({}, $.fn.alert.defaults, options)
-    this.$element = $(content)
-      .delegate(this.settings.selector, 'click', this.close)
-  }
+  var dismiss = '[data-dismiss="alert"]'
+    , Alert = function ( el, close ) {
+        $(el).delegate(dismiss, 'click', this.close)
+      }
 
   Alert.prototype = {
 
-    close: function (e) {
+    close: function ( e ) {
       var $element = $(this)
-        , className = 'alert-message'
 
-      $element = $element.hasClass(className) ? $element : $element.parent()
+      $element = $element.hasClass('alert-message') ? $element : $element.parent()
 
       e && e.preventDefault()
       $element.removeClass('in')
 
-      function removeElement () {
+      function removeElement() {
         $element.remove()
       }
 
@@ -59,32 +56,22 @@
   * ======================= */
 
   $.fn.alert = function ( options ) {
-
     return this.each(function () {
       var $this = $(this)
-        , data
-
-      if ( typeof options == 'string' ) {
-
-        data = $this.data('alert')
-
-        if (typeof data == 'object') {
-          return data[options].call( $this )
-        }
-
-      }
-
-      $(this).data('alert', new Alert( this, options ))
-
+        , data = $this.data('alert')
+      if (!data) $this.data('alert', (data = new Alert(this)))
+      if (typeof options == 'string') data[options].call($this)
     })
   }
 
-  $.fn.alert.defaults = {
-    selector: '[data-dismiss="alert"]'
-  }
+  $.fn.alert.Alert = Alert
+
+
+ /* ALERT DATA-API
+  * ============== */
 
   $(function () {
-    new Alert( $('body') )
+    $('body').delegate(dismiss, 'click.alert.data-api', Alert.prototype.close)
   })
 
 }( window.jQuery || window.ender );
