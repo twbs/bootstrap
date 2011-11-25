@@ -17,15 +17,19 @@
  * limitations under the License.
  * ============================================================== */
 
-
 !function ( $ ) {
 
-  function ScrollSpy() {
+  "use strict"
+
+  /* SCROLLSPY CLASS DEFINITION
+   * ========================== */
+
+  function ScrollSpy( element ) {
     var process = $.proxy(this.process, this)
     this.selector = '.nav li > a'
 
-    this.$body = $('body').delegate(this.selector, 'click', process)
-    this.$scrollElement = $('[data-spy="scroll"]').bind('scroll', process)
+    this.$body = $('body').delegate(this.selector, 'click.scroll.data-api', process)
+    this.$scrollElement = $(element).bind('scroll.scroll.data-api', process)
 
     this.refresh()
     this.process()
@@ -78,11 +82,29 @@
         if ( active.parent('.dropdown-menu') )  {
           active.closest('li.dropdown').addClass('active')
         }
-
       }
 
   }
 
-  $(function () { new ScrollSpy() })
+
+ /* SCROLLSPY PLUGIN DEFINITION
+  * =========================== */
+
+  $.fn.scrollspy = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('scrollspy')
+      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.alert.ScrollSpy = ScrollSpy
+
+
+ /* SCROLLSPY DATA-API
+  * ============== */
+
+  $(function () { $('[data-spy="scroll"]').scrollspy() })
 
 }( window.jQuery || window.ender )
