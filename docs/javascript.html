@@ -255,9 +255,9 @@ $('#my-modal').bind('hidden', function () {
 })</pre>
           <h3>Demo</h3>
           <!-- sample modal content -->
-          <div id="modal-from-dom" class="modal hide fade">
+          <div id="myModal" class="modal hide fade">
             <div class="modal-header">
-              <a href="#" class="close" data-modal-dismiss="true" >&times;</a>
+              <a href="#" class="close" data-dismiss="modal" >&times;</a>
               <h3>Modal Heading</h3>
             </div>
             <div class="modal-body">
@@ -265,10 +265,11 @@ $('#my-modal').bind('hidden', function () {
             </div>
             <div class="modal-footer">
               <a href="#" class="btn primary">Save changes</a>
-              <a href="#" class="btn" data-modal-dismiss="true" >Close</a>
+              <a href="#" class="btn" data-dismiss="modal" >Close</a>
             </div>
           </div>
-          <button data-toggle="modal" data-target="modal-from-dom" class="btn danger">
+
+          <button data-toggle="modal" data-target="#myModal" class="btn danger">
             Launch Modal
           </button>
         </div>
