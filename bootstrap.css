@@ -6,11 +6,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Nov 20 20:05:48 PST 2011
+ * Date: Fri Nov 25 21:33:58 PST 2011
  */
-/* Reset.less
- * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
- * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 html, body {
   margin: 0;
   padding: 0;
@@ -170,16 +167,6 @@ textarea {
   overflow: auto;
   vertical-align: top;
 }
-/* Variables.less
- * Variables to customize the look and feel of Bootstrap
- * ----------------------------------------------------- */
-/* Mixins.less
- * Snippets of reusable CSS to develop faster and keep code readable
- * ----------------------------------------------------------------- */
-/*
- * Scaffolding
- * Basic and global styles for generating a grid system, structural layout, and page templates
- * ------------------------------------------------------------------------------------------- */
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -344,9 +331,6 @@ a:hover {
 .offset11 {
   margin-left: 900px;
 }
-/* Typography.less
- * Headings, body text, lists, code, and more for a versatile and durable typography system
- * ---------------------------------------------------------------------------------------- */
 p {
   margin-bottom: 9px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -534,9 +518,6 @@ pre code {
   padding: 0;
   background-color: transparent;
 }
-/* Forms.less
- * Base styles for various input types, form layouts, and states
- * ------------------------------------------------------------- */
 form {
   margin-bottom: 18px;
 }
@@ -999,10 +980,6 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
 .horizontal-form .form-actions {
   padding-left: 150px;
 }
-/*
- * Tables.less
- * Tables for, you guessed it, tabular data
- * ---------------------------------------- */
 table {
   width: 100%;
   padding: 0;
@@ -1198,9 +1175,6 @@ table .purple {
 table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: #e2d5f0;
 }
-/* Patterns.less
- * Repeatable UI elements outside the base styles provided from the scaffolding
- * ---------------------------------------------------------------------------- */
 .navbar {
   height: 40px;
   overflow: visible;
@@ -1643,7 +1617,7 @@ footer {
   border-color: #0064cd #0064cd #003f81;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn:active {
+.btn.active, .btn:active {
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1878,6 +1852,19 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .fade.in {
   opacity: 1;
+}
+.collapse {
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -ms-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  height: 0;
+}
+.collapse.in {
+  height: auto;
 }
 .label {
   padding: 1px 3px 2px;
@@ -2444,9 +2431,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
 }
-/* Responsive.less
- * For phone and tablet devices
- * ------------------------------------------------------------- */
 @media (max-width: 480px) {
   .container {
     width: auto;

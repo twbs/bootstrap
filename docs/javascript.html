@@ -26,7 +26,6 @@
     <!-- Le javascript -->
     <!-- placed up here so that the inline demos can be next to their markup -->
     <script src="http://code.jquery.com/jquery-1.7.js"></script>
-    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="../js/bootstrap-transitions.js"></script>
@@ -37,9 +36,10 @@
     <script src="../js/bootstrap-tabs.js"></script>
     <script src="../js/bootstrap-twipsy.js"></script>
     <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-buttons.js"></script>
+    <script src="../js/bootstrap-collapse.js"></script>
     <script>
       $(function () {
-
         // twipsy demo
         $("a[rel=twipsy]").twipsy({
           live: true
@@ -138,6 +138,14 @@
              <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
              <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
            </tr>
+           <tr>
+              <td><a href="./javascript.html#buttons">bootstrap-buttons.js</a></td>
+              <td>This plugin offers additional functionality for managing button state.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#collapse">bootstrap-collapse.js</a></td>
+              <td>The collapse plugin offers simple, generic collapsible element support for making accordions and other collapsible ui components.</td>
+            </tr>
          </tbody>
        </table>
        <h3>Is javascript necessary?</h3>
@@ -163,7 +171,7 @@
         </div>
         <div class="span9 columns">
           <h3>Using bootstrap-modal</h3>
-          <pre class="prettyprint linenums">$('#my-modal').modal(options)</pre>
+          <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
           <h3>Options</h3>
           <table class="striped-table">
             <thead>
@@ -196,27 +204,27 @@
             </tbody>
           </table>
           <h3>Markup</h3>
-          <p>You can activate modals on your page easily without having to write a single line of javascript. Just give an element a <code>data-controls-modal</code> attribute which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as data attributes.</p>
+          <p>You can activate modals on your page easily without having to write a single line of javascript. Just set <code>data-toggle="modal"</code> on a controller element with a <code>data-target="#foo"</code> which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as additoinal data attributes.</p>
 <pre class="prettyprint linenums">
-&lt;a class="btn" data-controls-modal="my-modal" data-backdrop="true" &gt;Launch Modal&lt;/a&gt;
+&lt;a class="btn" data-toggle="modal" data-target="#myModal" &gt;Launch Modal&lt;/a&gt;
 </pre>
           <p><span class="label notice">Notice</span> If you want your modal to animate in and out, just add a <code>.fade</code> class to the <code>.modal</code> element (refer to the demo to see this in action).</p>
           <h3>Methods</h3>
           <h4>.modal(options)</h4>
           <p>Activates your content as a modal. Accepts an optional options <code>object</code>.
 <pre class="prettyprint linenums">
-$('#my-modal').modal({
+$('#myModal').modal({
   keyboard: false
 })</pre>
           <h4>.modal('toggle')</h4>
           <p>Manually toggles a modal.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal('toggle')</pre>
+          <pre class="prettyprint linenums">$('#myModal').modal('toggle')</pre>
           <h4>.modal('show')</h4>
           <p>Manually opens a modal.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal('show')</pre>
+          <pre class="prettyprint linenums">$('#myModal').modal('show')</pre>
           <h4>.modal('hide')</h4>
           <p>Manually hides a modal.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal('hide')</pre>
+          <pre class="prettyprint linenums">$('#myModal').modal('hide')</pre>
           <h3>Events</h3>
           <p>Bootstrap's modal class exposes a few events for hooking into modal functionality. </p>
           <table class="striped-table">
@@ -247,14 +255,14 @@ $('#my-modal').modal({
           </table>
 
 <pre class="prettyprint linenums">
-$('#my-modal').bind('hidden', function () {
+$('#myModal').bind('hidden', function () {
   // do something ...
 })</pre>
           <h3>Demo</h3>
           <!-- sample modal content -->
-          <div id="modal-from-dom" class="modal hide fade">
+          <div id="myModal" class="modal hide fade">
             <div class="modal-header">
-              <a href="#" class="close" data-modal-dismiss="true" >&times;</a>
+              <a href="#" class="close" data-dismiss="modal" >&times;</a>
               <h3>Modal Heading</h3>
             </div>
             <div class="modal-body">
@@ -262,10 +270,13 @@ $('#my-modal').bind('hidden', function () {
             </div>
             <div class="modal-footer">
               <a href="#" class="btn primary">Save changes</a>
-              <a href="#" class="btn" data-modal-dismiss="true" >Close</a>
+              <a href="#" class="btn" data-dismiss="modal" >Close</a>
             </div>
           </div>
-          <button data-controls-modal="modal-from-dom" class="btn danger">Launch Modal</button>
+
+          <button data-toggle="modal" data-target="#myModal" class="btn danger">
+            Launch Modal
+          </button>
         </div>
       </div>
     </section>
@@ -369,7 +380,7 @@ $('#my-modal').bind('hidden', function () {
             Scroll the area below and watch the navigation update. The dropdown sub items will be highlighted as well. Try it!</p>
           <p>
 
-          <div id="navbar-example" class="navbar navbar-static">
+          <div id="navbarExample" class="navbar navbar-static">
             <div class="navbar-inner">
               <div class="container" style="width: auto;">
                 <a class="brand" href="#">Project Name</a>
@@ -390,7 +401,7 @@ $('#my-modal').bind('hidden', function () {
             </div>
           </div>
 
-          <div data-spy="scroll" class="scrollspy-example">
+          <div data-spy="scroll" data-target="#navbarExample" class="scrollspy-example">
             <h4 id="fat">@fat</h4>
             <p>
             Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
@@ -498,7 +509,7 @@ $('.tabs a').bind('change', function (e) {
               </ul>
             </li>
           </ul>
-          <div id="my-tab-content" class="tab-content">
+          <div id="myTabContent" class="tab-content">
             <div class="active tab-pane" id="home">
               <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
             </div>
@@ -738,6 +749,253 @@ $('.tabs a').bind('change', function (e) {
       </div>
     </section>
 
+
+     <!-- Buttons
+    ================================================== -->
+
+    <section id="buttons">
+      <div class="page-header">
+        <h1>Buttons <small>bootstrap-buttons.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>This plugin offers additional functionality for managing button state.</p>
+          <a href="../js/bootstrap-buttons.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-buttons.js</h3>
+          <pre class="prettyprint linenums">$('.tabs').button()</pre>
+            <h3>Markup</h3>
+          <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
+<pre class="prettyprint linenums">
+&lt;!-- Add data-toggle="button" to activate toggling on a single button --&gt;
+&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
+
+&lt;!-- Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group --&gt;
+&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Add data-toggle="buttons-radio" for radio style toggling on btn-group --&gt;
+&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+          <h3>Methods</h3>
+          <h4>$().button('toggle')</h4>
+          <p>Toggles push state. Gives btn the look that it's been activated.</p>
+          <p><span class="label notice">Notice</span> You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
+          <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="button" &gt;...&lt;/button&gt;</pre>
+          <h4>$().button('loading')</h4>
+          <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
+          </p>
+           <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+           <h4>$().button('reset')</h4>
+           <p>Resets button state - swaps text to original text.</p>
+           <h4>$().button(string)</h4>
+           <p>Resets button state - swaps text to any data defined text state.</p>
+<pre class="prettyprint linenums">&lt;button class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
+&lt;script&gt;
+  $('.btn').button('complete')
+&lt;/scrip&gt;</pre>
+          <h3>Demo</h3>
+          <table class="striped-table">
+            <tbody>
+             <tr>
+               <td>Stateful</td>
+               <td>
+                  <button id="fat-btn" data-loading-text="loading..." class="btn">
+                    Loading State
+                  </button>
+                  <script>
+                    $(function() {
+                      var btn = $('#fat-btn').click(function () {
+                        btn.button('loading')
+                        setTimeout(function () {
+                          btn.button('reset')
+                        }, 3000)
+                      })
+                    })
+                  </script>
+                </td>
+             </tr>
+             <tr>
+               <td>Single Toggle</td>
+               <td>
+                  <button class="btn" data-toggle="button">Single Toggle</button>
+                </td>
+             </tr>
+             <tr>
+               <td>Checkbox</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-checkbox">
+                    <button class="btn">Left</button>
+                    <button class="btn">Middle</button>
+                    <button class="btn">Right</button>
+                  </div>
+               </td>
+             </tr>
+             <tr>
+               <td>Radio</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-radio">
+                    <button class="btn">Left</button>
+                    <button class="btn">Middle</button>
+                    <button class="btn">Right</button>
+                  </div>
+               </td>
+             </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Collapse
+    ================================================== -->
+
+    <section id="collapse">
+      <div class="page-header">
+        <h1>collapse <small>bootstrap-collapse.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>The collapse plugin offers simple, flexible collapsible element support for making accordions and other collapsible ui components.</p>
+          <a href="../js/bootstrap-collapsible.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-collapse.js</h3>
+          <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
+          <h3>Options</h3>
+          <table class="striped-table">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 50px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>parent</td>
+               <td>selector</td>
+               <td>false</td>
+               <td>If selector then all collapsible elements under the specified parent will be closed when this collasabile item is shown. (similar to traditional accordion behavior)</td>
+             </tr>
+             <tr>
+               <td>toggle</td>
+               <td>boolean</td>
+               <td>true</td>
+               <td>Toggles the collapsible element on invocation</td>
+             </tr>
+            </tbody>
+          </table>
+          <h3>Markup</h3>
+          <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+          <pre class="prettyprint linenums">
+&lt;button class="btn danger" data-toggle="collapse" data-target="#demo"&gt;
+  simple collapsible
+&lt;/button&gt;
+
+&lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;</pre>
+         <p><span class="label notice">Notice</span> To add accordion like group management to a collapsible control just add the additional data attribute <code>data-parent="#selector"</code>. Refer to the demo below to see this in action.</p>
+          <h3>Methods</h3>
+          <h4>.collapse(options)</h4>
+          <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
+<pre class="prettyprint linenums">
+$('#myCollapsible').collapse({
+  toggle: false
+})</pre>
+          <h4>.collapse('toggle')</h4>
+          <p>Toggles a collapsible element to shown or hidden.</p>
+          <h4>.collapse('show')</h4>
+          <p>Shows a collapsible element.</p>
+          <h4>.collapse('hide')</h4>
+          <p>Hides a collapsible element.</p>
+          <h3>Events</h3>
+          <p>
+            Bootstrap's collapse class exposes a few events for hooking into collapse functionality.
+          </p>
+          <table class="striped-table">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>show</td>
+               <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>shown</td>
+               <td>This event is fired when a collapse element has been made visible to the user (will wait for css transitions to complete).</td>
+             </tr>
+             <tr>
+               <td>hide</td>
+               <td>
+                This event is fired immediately when the <code>hide</code> method has been called.
+               </td>
+             </tr>
+             <tr>
+               <td>hidden</td>
+               <td>This event is fired when a collapse element has been hidden from the user (will wait for css transitions to complete).</td>
+             </tr>
+            </tbody>
+          </table>
+
+<pre class="prettyprint linenums">
+$('#myCollapsible').bind('hidden', function () {
+  // do something ...
+})</pre>
+          <h3>Demo</h3>
+
+            <!-- single collapse -->
+            <p>
+              <button class="btn danger" data-toggle="collapse" data-target="#collapseDemoWrap">
+                simple collapsible
+              </button>
+            </p>
+
+            <div id="collapseDemoWrap" class="collapse">
+              <!-- group collapse -->
+              <dl id="accordion" >
+                <dt data-toggle="collapse" data-target="#collapseOne" data-parent="#accordion">
+                  <a href="#">Collapsible Group Item #1</a>
+                </dt>
+                <dd id="collapseOne" class="collapse in">
+                  <p>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </p>
+                </dd>
+                <dt data-toggle="collapse"  data-target="#collapseTwo" data-parent="#accordion" >
+                  <a href="#">Collapsible Group Item #2</a>
+                </dt>
+                <dd id="collapseTwo" class="collapse">
+                  <p>
+                  Blog +1 eiusmod, williamsburg chambray craft beer brooklyn. Trust fund squid whatever, sunt hoodie skateboard mustache 3 wolf moon art party wes anderson ad leggings officia. Skateboard keytar incididunt gluten-free retro sartorial, single-origin coffee et viral. Art party blog sunt, readymade fugiat 8-bit aesthetic ex echo park fanny pack keytar. Thundercats sustainable labore, mustache adipisicing tattooed dolore aute occaecat velit 8-bit raw denim letterpress. In occaecat freegan, next level single-origin coffee chambray excepteur nihil duis exercitation adipisicing ex sartorial twee squid. You probably haven't heard of them fugiat ea retro eiusmod quis cosby sweater, +1 fap sapiente biodiesel banksy.
+                  </p>
+                </dd>
+                <dt data-toggle="collapse" data-target="#collapseThree" data-parent="#accordion" >
+                  <a href="#">Collapsible Group Item #3</a>
+                </dt>
+                <dd id="collapseThree" class="collapse">
+                  <p>
+                  Tempor gentrify pariatur nihil salvia, irony synth incididunt odio commodo brunch aute. Four loko est vice echo park wes anderson jean shorts, tempor ea vero locavore. Seitan DIY dolore readymade williamsburg viral. Dolor fap master cleanse delectus, ad butcher labore duis vice mollit cillum exercitation eu banh mi. Austin banksy 3 wolf moon locavore sed, helvetica next level VHS you probably haven't heard of them ethical odio. Incididunt locavore minim, do seitan consequat qui thundercats labore before they sold out retro laborum. Esse twee readymade laboris fap vice, voluptate DIY.
+                  </p>
+                </dd>
+              </dl>
+            </div>
+        </div>
+      </div>
+    </section>
 
       <!-- Footer
       ================================================== -->
