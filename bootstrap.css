@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Nov 24 13:45:21 PST 2011
+ * Date: Fri Nov 25 12:09:37 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1878,6 +1878,32 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .fade.in {
   opacity: 1;
+}
+.collapse {
+  position: relative;
+  overflow: hidden;
+}
+.collapse.height {
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -ms-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
+  height: 0;
+}
+.collapse.height.in {
+  height: auto;
+}
+.collapse.width {
+  -webkit-transition: width 0.35s ease;
+  -moz-transition: width 0.35s ease;
+  -ms-transition: width 0.35s ease;
+  -o-transition: width 0.35s ease;
+  transition: width 0.35s ease;
+  width: 0;
+}
+.collapse.width.in {
+  width: auto;
 }
 .label {
   padding: 1px 3px 2px;

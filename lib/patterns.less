@@ -631,14 +631,6 @@ input[type=submit].btn {
 }
 
 
-
-
-
-
-
-
-
-
 // PATTERN ANIMATIONS
 // ------------------
 
@@ -647,6 +639,21 @@ input[type=submit].btn {
   opacity: 0;
   &.in {
     opacity: 1;
+  }
+}
+
+.collapse {
+  position:relative;
+  overflow:hidden;
+  &.height {
+    .transition(height .35s ease);
+    height: 0;
+    &.in { height: auto; }
+  }
+  &.width {
+    .transition(width .35s ease);
+    width: 0;
+    &.in { width: auto; }
   }
 }
 
