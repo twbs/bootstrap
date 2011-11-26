@@ -26,10 +26,10 @@
 
   function ScrollSpy( element ) {
     var process = $.proxy(this.process, this)
-    this.selector = '.nav li > a'
 
-    this.$body = $('body').delegate(this.selector, 'click.scroll.data-api', process)
     this.$scrollElement = $(element).bind('scroll.scroll.data-api', process)
+    this.selector = (this.$scrollElement.attr('data-target') || '') + ' .nav li > a'
+    this.$body = $('body').delegate(this.selector, 'click.scroll.data-api', process)
 
     this.refresh()
     this.process()
