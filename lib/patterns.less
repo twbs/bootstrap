@@ -1,6 +1,6 @@
-/* Patterns.less
- * Repeatable UI elements outside the base styles provided from the scaffolding
- * ---------------------------------------------------------------------------- */
+// Patterns.less
+// Repeatable UI elements outside the base styles provided from the scaffolding
+// ----------------------------------------------------------------------------
 
 
 // NAVBAR (FIXED AND STATIC)
@@ -643,18 +643,11 @@ input[type=submit].btn {
 }
 
 .collapse {
+  .transition(height .35s ease);
   position:relative;
   overflow:hidden;
-  &.height {
-    .transition(height .35s ease);
-    height: 0;
-    &.in { height: auto; }
-  }
-  &.width {
-    .transition(width .35s ease);
-    width: 0;
-    &.in { width: auto; }
-  }
+  height: 0;
+  &.in { height: auto; }
 }
 
 
