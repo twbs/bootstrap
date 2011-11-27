@@ -259,16 +259,18 @@
     }
 
     function leave() {
-      var twipsy = get(this)
-      twipsy.hoverState = 'out'
-      if (options.delayOut == 0) {
-        twipsy.hide()
-      } else {
-        setTimeout(function() {
-          if (twipsy.hoverState == 'out') {
-            twipsy.hide()
-          }
-        }, options.delayOut)
+      if (!options.stay) {
+        var twipsy = get(this)
+        twipsy.hoverState = 'out'
+        if (options.delayOut == 0) {
+          twipsy.hide()
+        } else {
+          setTimeout(function() {
+            if (twipsy.hoverState == 'out') {
+              twipsy.hide()
+            }
+          }, options.delayOut)
+        }
       }
     }
 
@@ -294,6 +296,7 @@
     animate: true
   , delayIn: 0
   , delayOut: 0
+  , stay: false
   , fallback: ''
   , placement: 'above'
   , html: false
