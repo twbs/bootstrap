@@ -74,7 +74,7 @@ select,
   line-height: @baseline;
   color: @gray;
   border: 1px solid #ccc;
-  .border-radius(3px);
+  .border-radius(@borderRadiusForms);
 }
 
 // remove padding from select
@@ -299,7 +299,7 @@ textarea[readonly] {
   margin-bottom: @baseline;
   padding: (@baseline - 1) 20px @baseline 150px;
   border-top: 1px solid #ddd;
-  .border-radius(0 0 3px 3px);
+  .border-radius(0 0 @borderRadiusForms @borderRadiusForms);
   .secondary-action {
     float: right;
     a {
@@ -343,7 +343,7 @@ textarea[readonly] {
 .input-prepend,
 .input-append {
   input {
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @borderRadiusForms @borderRadiusForms 0);
   }
   .add-on {
     position: relative;
@@ -362,7 +362,7 @@ textarea[readonly] {
     color: @grayLight;
     text-align: center;
     text-shadow: 0 1px 0 @white;
-    .border-radius(3px 0 0 3px);
+    .border-radius(@borderRadiusForms 0 0 @borderRadiusForms);
   }
   .active {
     background: lighten(@green, 30);
@@ -377,10 +377,10 @@ textarea[readonly] {
 .input-append {
   input {
     float: left;
-    .border-radius(3px 0 0 3px);
+    .border-radius(@borderRadiusForms 0 0 @borderRadiusForms);
   }
   .add-on {
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @borderRadiusForms @borderRadiusForms 0);
     margin-right: 0;
     margin-left: -1px;
   }
