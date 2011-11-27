@@ -82,22 +82,11 @@
           <li><a href="https://github.com/twitter/bootstrap/wiki/Changelog">Changelog</a></li>
           <li class="divider">&middot;</li>
           <li>
-            <span class="github-btn github-watchers">
-              <a href="https://github.com/twitter/bootstrap" class="btn">
-                <img class="github-ico" src="assets/img/github-16px.png">
-                Watch
-              </a>
-              <span class="count"></span>
-            </span>
-            <span class="github-btn github-forks">
-              <a href="https://github.com/twitter/bootstrap" class="btn">
-                <img class="github-ico" src="assets/img/github-16px.png">
-                Fork
-              </a>
-              <span class="count"></span>
-            </span>
+            <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
           </li>
-
+          <li>
+            <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="94px" height="20px"></iframe>
+          </li>
 <!--
           <li><strong>Authors</strong></li>
           <li><a href="http://twitter.com/mdo">@mdo</a></li>
@@ -190,23 +179,6 @@
           </div><!--/row-->
         </div>
 
-
-
-
-<!--         <h3>Quick-start examples</h3>
-        <p>Need some quick templates? Check out these basic examples we've put together:</p>
-        <ul class="media-grid">
-          <li>
-            <a href="../examples/hero.html"><img src="assets/img/example-diagram-01.png" alt="Simple three-column layout with hero unit"></a>
-          </li>
-          <li>
-            <a href="../examples/fluid.html"><img src="assets/img/example-diagram-02.png" alt="Fluid layout with static sidebar"></a>
-          </li>
-          <li>
-            <a href="../examples/container-app.html"><img src="assets/img/example-diagram-03.png" alt="Simple hanging container for apps"></a>
-          </li>
-        </ul>
- -->
       </div><!-- /#overview -->
 
 
@@ -231,42 +203,6 @@
     <script src="../js/bootstrap-twipsy.js"></script>
     <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="assets/js/application.js"></script>
-
-
-    <script type="text/javascript">
-      $(document).ready(function($){
-
-        function addCommas(nStr) {
-          nStr += '';
-          x = nStr.split('.');
-          x1 = x[0];
-          x2 = x.length > 1 ? '.' + x[1] : '';
-          var rgx = /(\d+)(\d{3})/;
-          while (rgx.test(x1)) {
-              x1 = x1.replace(rgx, '$1' + ',' + '$2');
-          }
-          return x1 + x2;
-        }
-
-        // GITHUB
-        window.repoCallback = function (obj) {
-
-          // Variables
-          var watchers = obj['repository']['watchers'];
-          var forks = obj['repository']['forks'];
-
-          // Echo out the counts in correct elements
-          $('.github-watchers .count').html(addCommas(watchers));
-          $('.github-forks .count').html(addCommas(forks));
-
-          // Debug log
-          // console.log("Watchers:" + watchers);
-          // console.log("Forks:" + forks);
-        }
-        $.ajax("http://github.com/api/v2/json/repos/show/twitter/bootstrap?callback=repoCallback", {dataType: "jsonp"});
-      });
-
-    </script>
 
   </body>
 </html>
