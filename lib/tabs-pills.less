@@ -46,10 +46,12 @@
 }
 
 .tabsOffsetLeft(@columnOffset: 2) {
+  margin: 0;
   margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1));
 }
 
 .tabsOffsetRight(@columnOffset: 2) {
+  margin: 0;
   margin-right: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1));
 }
 
@@ -175,6 +177,31 @@
     .active > a,
     .active > a:hover {
       border-color: transparent #ddd #ddd #ddd;
+    }
+  }
+
+  // Borders
+  &.bordered-tabbable {
+    > .tab-content,
+    > .tabs.pull-left + .tab-content,
+    > .tabs.pull-right + .tab-content {
+      border-width: 1px;
+      padding: 20px;
+    }
+    > .tabs {
+      border-width: 0px;
+    }
+    .tab-content {
+      .border-radius(4px 4px 0 0);
+    }
+    > .tabs + .tab-content {
+      .border-radius(0 0 4px 4px);
+    }
+    > .tabs.pull-left + .tab-content {
+      .border-radius(0 4px 0 4px);
+    }
+    > .tabs.pull-right + .tab-content {
+      .border-radius(4px 0 4px 0);
     }
   }
 }
