@@ -163,7 +163,7 @@ code, pre {
   padding: 0 3px 2px;
   font-family: Monaco, Andale Mono, Courier New, monospace;
   font-size: 12px;
-  .border-radius(3px);
+  .border-radius(@borderRadiusBoxes / 2);
 }
 code {
   background-color: lighten(@orange, 40%);
@@ -179,7 +179,7 @@ pre {
   font-size: 12px;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.15);
-  .border-radius(3px);
+  .border-radius(@borderRadiusBoxes / 2);
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;

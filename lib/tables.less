@@ -53,7 +53,7 @@ table {
   border: 1px solid #ddd;
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapse; /* IE7, collapse table to remove spacing */
-  .border-radius(4px);
+  .border-radius(@borderRadiusTables);
   th + th,
   td + td,
   th + td {
@@ -61,17 +61,17 @@ table {
   }
   thead tr:first-child th:first-child,
   tbody tr:first-child td:first-child {
-    .border-radius(4px 0 0 0);
+    .border-radius(@borderRadiusTables 0 0 0);
   }
   thead tr:first-child th:last-child,
   tbody tr:first-child td:last-child {
-    .border-radius(0 4px 0 0);
+    .border-radius(0 @borderRadiusTables 0 0);
   }
   tbody tr:last-child td:first-child {
-    .border-radius(0 0 0 4px);
+    .border-radius(0 0 0 @borderRadiusTables);
   }
   tbody tr:last-child td:last-child {
-    .border-radius(0 0 4px 0);
+    .border-radius(0 0 @borderRadiusTables 0);
   }
 }
 
