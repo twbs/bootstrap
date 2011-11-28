@@ -65,9 +65,9 @@ All events should have an infinitive and past participle form. The infinitive is
 
 Data attributes should take the following form:
 
--data-*(verb)* - defines main interaction
--data-target || href^=# - defined on controller element (if element interacts with an element other than self)
--data-*(noun)* - defines options for element invocation
+- data-*(verb)* - defines main interaction
+- data-target || href^=# - defined on controller element (if element interacts with an element other than self)
+- data-*(noun)* - defines options for element invocation
 
 examples:
 
