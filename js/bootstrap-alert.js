@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-alerts.js v2.0.0
+ * bootstrap-alert.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
  * Copyright 2011 Twitter, Inc.

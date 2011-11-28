@@ -42,8 +42,14 @@
   , show: function () {
       var dimension = this.dimension()
         , scroll = $.camelCase(['scroll', dimension].join('-'))
+        , actives = this.$parent && this.$parent.find('.in')
+        , hasData
 
-      this.$parent && this.$parent.find('.in').collapse('hide')
+      if (actives && actives.length) {
+        hasData = actives.data('collapse')
+        actives.collapse('hide')
+        hasData || actives.data('collapse', null)
+      }
 
       this.$element[dimension](0)
       this.transition('addClass', 'show', 'shown')
