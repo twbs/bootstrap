@@ -144,9 +144,11 @@
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
   .background(@color: @white, @alpha: 1) {
+    background-color: @color;
     background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
   }
   .border(@color: @white, @alpha: 1) {
+    border-color: @color;
     border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
     background-clip: padding-box;
   }
