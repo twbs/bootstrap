@@ -73,4 +73,4 @@
     $('body').delegate(dismiss, 'click.alert.data-api', Alert.prototype.close)
   })
 
-}( window.jQuery || window.ender );
+}( window.jQuery || window.ender )

@@ -93,4 +93,4 @@
     })
   })
 
-}( window.jQuery || window.ender );
+}( window.jQuery || window.ender )

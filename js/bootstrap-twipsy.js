@@ -289,4 +289,4 @@
     return $.extend({}, options, data)
   }
 
-}( window.jQuery || window.ender );
+}( window.jQuery || window.ender )

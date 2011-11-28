@@ -70,4 +70,4 @@
     $('body').delegate(toggle, 'click.dropdown.data-api', Dropdown.prototype.toggle)
   })
 
-}( window.jQuery || window.ender );
+}( window.jQuery || window.ender )
