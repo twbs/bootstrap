@@ -1,4 +1,4 @@
-2.0 BOOTSTRAP JS PHILSOPHY
+## 2.0 BOOTSTRAP JS PHILSOPHY
 These are the highlevel design rules which guide the developement of Bootstrap's js plugins.
 
 ---
@@ -57,7 +57,6 @@ All events should have an infinitive and past participle form. The infinitive is
 
     show | shown
     hide | hidden
-    change | changed
 
 ---
 
@@ -66,15 +65,15 @@ All events should have an infinitive and past participle form. The infinitive is
 
 Data attributes should take the following form:
 
-data-*(verb)* - defines main interaction
-data-target - defined on controller element (if element interacts with an element other than self)
-data-*(noun)* - defines options for element invocation
+- data-*(verb)* - defines main interaction
+- data-target || href^=# - defined on controller element (if element interacts with an element other than self)
+- data-*(noun)* - defines options for element invocation
 
 examples:
 
     // control other targets
     data-toggle="modal" data-target="#foo"
-    data-toggle="view" data-target="#foo"
+    data-toggle="collapse" data-target="#foo" data-parent="#foo"
 
     // defined on element they control
     data-spy="scroll"
