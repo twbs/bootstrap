@@ -1,13 +1,13 @@
-## 2.0 BOOTSTRAP JS PHILSOPHY
-These are the highlevel design rules which guide the developement of Bootstrap's js plugins.
+## 2.0 BOOTSTRAP JS PHILOSOPHY
+These are the high-level design rules which guide the development of Bootstrap's JS plugins.
 
 ---
 
 ### DATA-ATTRIBUTE API
 
-We believe you should be able to use all plugins provided by bootstrap purely through the markup api without writing a single line of javascript.
+We believe you should be able to use all plugins provided by Bootstrap purely through the markup API without writing a single line of javascript.
 
-We acknoledge that this isn't always the most performant and sometimes it may be desirable to turn this functionality off altogether. Therefore, as of 2.0 we provide the ability to disable the data attribute api by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
+We acknowledge that this isn't always the most performant and sometimes it may be desirable to turn this functionality off altogether. Therefore, as of 2.0 we provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
 
     $('body').unbind('.data-api')
 
@@ -19,13 +19,13 @@ To target a specific plugin, just include the plugins name as a namespace along 
 
 ### PROGRAMATIC API
 
-We also believe you should be able to use all plugins provided by bootstrap purely through the JS api.
+We also believe you should be able to use all plugins provided by Bootstrap purely through the JS API.
 
-All pubilc APIs should be a single, chainable method, and return the collection acted upon.
+All public APIs should be a single, chainable method, and return the collection acted upon.
 
     $(".btn.danger").button("toggle").addClass("fat")
 
-All methods should accept an optional options object, a string which targets a particular method, or null which innitiates the default behavior:
+All methods should accept an optional options object, a string which targets a particular method, or null which initiates the default behavior:
 
     $("#myModal").modal() // initialized with defaults
 
@@ -39,7 +39,7 @@ All plugins should have a default object which can be modified to effect all ins
 
     $.fn.modal.defaults = { … }
 
-An options definiton should take the following form:
+An options definition should take the following form:
 
     *noun*: *adjective* - describes or modifies a quality of an instance
 
