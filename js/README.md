@@ -57,7 +57,6 @@ All events should have an infinitive and past participle form. The infinitive is
 
     show | shown
     hide | hidden
-    change | changed
 
 ---
 
