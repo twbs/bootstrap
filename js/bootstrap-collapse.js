@@ -117,9 +117,9 @@
   $(function () {
     $('body').delegate('[data-toggle=collapse]', 'click.collapse.data-api', function ( e ) {
       var $this = $(this)
-        , target = $this.attr('data-target')
+        , target = $this.attr('data-target') || $this.attr('href')
         , option = $(target).data('collapse') ? 'toggle' : $this.data()
-      e.preventDefault()
+        e.preventDefault()
       $(target).collapse(option)
     })
   })

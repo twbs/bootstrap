@@ -67,14 +67,14 @@ All events should have an infinitive and past participle form. The infinitive is
 Data attributes should take the following form:
 
 data-*(verb)* - defines main interaction
-data-target - defined on controller element (if element interacts with an element other than self)
+data-target || href^=# - defined on controller element (if element interacts with an element other than self)
 data-*(noun)* - defines options for element invocation
 
 examples:
 
     // control other targets
     data-toggle="modal" data-target="#foo"
-    data-toggle="view" data-target="#foo"
+    data-toggle="collapse" data-target="#foo" data-parent="#foo"
 
     // defined on element they control
     data-spy="scroll"
