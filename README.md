@@ -18,7 +18,7 @@ Here's what the LESS version looks like:
 <script src="less.js" type="text/javascript"></script>
 ```
 
-Or if you prefer, the standard css way:
+Or if you prefer, the standard CSS way:
 
 ``` html
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
@@ -72,7 +72,7 @@ http://groups.google.com/group/twitter-bootstrap
 Developers
 ----------
 
-We have included a makefile with convenience methods for working with the bootstrap library.
+We have included a makefile with convenience methods for working with the Bootstrap library.
 
 + **build** - `make build`
 This will run the less compiler on the bootstrap lib and generate a bootstrap.css and bootstrap.min.css file.
