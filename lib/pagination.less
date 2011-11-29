@@ -15,7 +15,8 @@
   li {
     display: inline;
   }
-  a {
+  a,
+  .static {
     float: left;
     padding: 0 14px;
     line-height: (@baseLineHeight * 2) - 2;
@@ -26,15 +27,26 @@
     *border-right-color: #ddd; /* IE6-7 */
   }
   a:hover,
-  .active a {
+  .active a,
+  .active .static {
     background-color: lighten(@blue, 45%);
   }
-  .disabled a,
-  .disabled a:hover {
-    color: @grayLight;
-    background-color: transparent;
+  .static {
+    color: @linkColor;
+    cursor: default;
   }
-  .next a {
-    border: 0;
+  .disabled {
+    a,
+    a:hover,
+    .static {
+      color: @grayLight;
+      background-color: transparent;
+    }
+  }
+  .next {
+    a,
+    .static {
+      border: 0;
+    }
   }
 }

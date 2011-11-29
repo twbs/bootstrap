@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Nov 20 20:05:48 PST 2011
+ * Date: Tue Nov 29 19:21:53 CET 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2153,7 +2153,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .pagination li {
   display: inline;
 }
-.pagination a {
+.pagination a, .pagination .static {
   float: left;
   padding: 0 14px;
   line-height: 34px;
@@ -2165,14 +2165,18 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   /* IE6-7 */
 
 }
-.pagination a:hover, .pagination .active a {
+.pagination a:hover, .pagination .active a, .pagination .active .static {
   background-color: #c7eefe;
 }
-.pagination .disabled a, .pagination .disabled a:hover {
+.pagination .static {
+  color: #0069d6;
+  cursor: default;
+}
+.pagination .disabled a, .pagination .disabled a:hover, .pagination .disabled .static {
   color: #bfbfbf;
   background-color: transparent;
 }
-.pagination .next a {
+.pagination .next a, .pagination .next .static {
   border: 0;
 }
 .modal-backdrop {
