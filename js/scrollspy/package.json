@@ -1,0 +1,18 @@
+{
+  "author": "Twitter",
+  "name": "bootstrap-scrollspy",
+  "description": "Ender integration of bootstrap scrollspy",
+  "version": "1.4.0",
+  "keywords": ["bootstrap", "ender", "scroll"],
+  "homepage": "http://twitter.github.com/bootstrap/javascript.html#scrollspy",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twitter/bootstrap.git"
+  },
+  "main": "./bootstrap-scrollspy.js",
+  "ender": "noop",
+  "dependencies": {
+      "jQuery": "*"
+  },
+  "devDependencies": {}
+}

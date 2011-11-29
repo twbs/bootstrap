@@ -1,0 +1,18 @@
+{
+  "author": "Twitter",
+  "name": "bootstrap-twipsy",
+  "description": "Ender integration of bootstrap twipsy",
+  "version": "1.4.0",
+  "keywords": ["bootstrap", "ender", "twipsy"],
+  "homepage": "http://twitter.github.com/bootstrap/javascript.html#twipsy",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twitter/bootstrap.git"
+  },
+  "main": "./bootstrap-twipsy.js",
+  "ender": "noop",
+  "dependencies": {
+      "jQuery": "*"
+  },
+  "devDependencies": {}
+}
