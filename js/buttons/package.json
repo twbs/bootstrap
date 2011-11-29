@@ -1,0 +1,18 @@
+{
+  "author": "Twitter",
+  "name": "bootstrap-buttons",
+  "description": "Ender integration of bootstrap buttons",
+  "version": "1.4.0",
+  "keywords": ["bootstrap", "ender", "button"],
+  "homepage": "http://twitter.github.com/bootstrap/javascript.html#buttons",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twitter/bootstrap.git"
+  },
+  "main": "./bootstrap-buttons.js",
+  "ender": "noop",
+  "dependencies": {
+      "jQuery": "*"
+  },
+  "devDependencies": {}
+}

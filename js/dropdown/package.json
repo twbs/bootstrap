@@ -1,0 +1,18 @@
+{
+  "author": "Twitter",
+  "name": "bootstrap-dropdown",
+  "description": "Ender integration of bootstrap dropdown",
+  "version": "1.4.0",
+  "keywords": ["bootstrap", "ender", "dropdown"],
+  "homepage": "http://twitter.github.com/bootstrap/javascript.html#dropdown",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twitter/bootstrap.git"
+  },
+  "main": "./bootstrap-dropdown.js",
+  "ender": "noop",
+  "dependencies": {
+      "jQuery": "*"
+  },
+  "devDependencies": {}
+}

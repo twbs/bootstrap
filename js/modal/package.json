@@ -1,0 +1,18 @@
+{
+  "author": "Twitter",
+  "name": "bootstrap-modal",
+  "description": "Ender integration of bootstrap modal",
+  "version": "1.4.0",
+  "keywords": ["bootstrap", "ender", "modal"],
+  "homepage": "http://twitter.github.com/bootstrap/javascript.html#modal",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twitter/bootstrap.git"
+  },
+  "main": "./bootstrap-modal.js",
+  "ender": "noop",
+  "dependencies": {
+      "jQuery": "*"
+  },
+  "devDependencies": {}
+}

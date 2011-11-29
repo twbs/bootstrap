@@ -1,0 +1,18 @@
+{
+  "author": "Twitter",
+  "name": "bootstrap-alerts",
+  "description": "Ender integration of bootstrap alerts",
+  "version": "1.4.0",
+  "keywords": ["bootstrap", "ender", "alerts"],
+  "homepage": "http://twitter.github.com/bootstrap/javascript.html#alerts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twitter/bootstrap.git"
+  },
+  "main": "./bootstrap-alerts.js",
+  "ender": "noop",
+  "dependencies": {
+      "jQuery": "*"
+  },
+  "devDependencies": {}
+}

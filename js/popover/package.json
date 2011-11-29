@@ -1,0 +1,18 @@
+{
+  "author": "Twitter",
+  "name": "bootstrap-popover",
+  "description": "Ender integration of bootstrap popover",
+  "version": "1.4.0",
+  "keywords": ["bootstrap", "ender", "popover"],
+  "homepage": "http://twitter.github.com/bootstrap/javascript.html#popover",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twitter/bootstrap.git"
+  },
+  "main": "./bootstrap-popover.js",
+  "ender": "noop",
+  "dependencies": {
+      "jQuery": "*"
+  },
+  "devDependencies": {}
+}
