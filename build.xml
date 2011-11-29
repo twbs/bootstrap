@@ -698,7 +698,7 @@
                 <copy file="${dir.intermediate}/${file.manifest}" tofile="${dir.publish}/${file.manifest}" />
 
                 <echo>Add manifest attribute to HTML: </echo>
-                <replaceregexp match="&lt;html (.*?)>\s*?&lt;!--&lt;!\[endif" replace='&lt;html \1 manifest="${file.manifest}"> &lt;!--&lt;![endif' flags="g">
+                <replaceregexp match="&lt;html (.*?)>" replace='&lt;html \1 manifest="${file.manifest}">' flags="g">
                     <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
                 </replaceregexp>
 
