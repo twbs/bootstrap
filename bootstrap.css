@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Nov 30 00:39:32 PST 2011
+ * Date: Wed Nov 30 00:54:47 PST 2011
  */
 html, body {
   margin: 0;
@@ -2129,6 +2129,49 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .step-nav .dot:hover, .step-nav .active .dot {
   background-color: #404040;
+}
+.subnav {
+  position: relative;
+  background-color: #eeeeee;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#f5f5f5), to(#eeeeee));
+  background-image: -moz-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: -ms-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: -o-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: linear-gradient(top, #f5f5f5, #eeeeee);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.subnav a {
+  padding: 10px 15px;
+  color: #0069d6;
+  text-shadow: 0 1px 0 #fff;
+  border-left: 1px solid #f9f9f9;
+  border-right: 1px solid #e5e5e5;
+}
+.subnav a:hover {
+  color: #00438a;
+  background-color: #eee;
+}
+.subnav li:first-child a {
+  border-left: 0;
+  -webkit-border-radius: 6px 0 0 6px;
+  -moz-border-radius: 6px 0 0 6px;
+  border-radius: 6px 0 0 6px;
+}
+.subnav li:last-child a {
+  border-right: 0;
+  -webkit-border-radius: 0 6px 6px 0;
+  -moz-border-radius: 0 6px 6px 0;
+  border-radius: 0 6px 6px 0;
+}
+.subnav ul .active > a {
+  color: #404040;
+  background-color: #eee;
 }
 .breadcrumb {
   padding: 7px 14px;
