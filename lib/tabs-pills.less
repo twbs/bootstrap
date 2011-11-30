@@ -216,3 +216,78 @@
 .pill-content > .active {
   display: block;
 }
+
+
+// Step nav
+.step-nav {
+  position: relative; // for prev/next links
+  margin: 0 0 @baseLineHeight;
+  list-style: none;
+  line-height: 30px;
+  text-align: center;
+  background-color: #f5f5f5;
+  .border-radius(15px);
+  li {
+    display: inline;
+    color: @grayLight;
+  }
+  // prev/next links
+  .prev,
+  .next {
+    position: absolute;
+    top: 6px;
+  }
+  .prev {
+    left: 15px;
+  }
+  .next {
+    right: 15px;
+  }
+  // indicators for each step/page/item/etc
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    text-indent: -999em;
+    background-color: @grayLight;
+    .border-radius(5px);
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.25));
+  }
+  .dot:hover,
+  .active .dot {
+    background-color: @grayDark;
+  }
+}
+
+
+// Subnav
+// STILL A WIP
+.subnav {
+  position: relative;
+  #gradient > .vertical(#f5f5f5, #eeeeee);
+  .border-radius(6px);
+  a {
+    padding: 10px 15px;
+    color: @linkColor;
+    text-shadow: 0 1px 0 #fff;
+    border-left: 1px solid #f9f9f9;
+    border-right: 1px solid #e5e5e5;
+    &:hover {
+      color: @linkColorHover;
+      background-color: #eee;
+    }
+  }
+  li:first-child a {
+    border-left: 0;
+    .border-radius(6px 0 0 6px);
+  }
+  li:last-child a {
+    border-right: 0;
+    .border-radius(0 6px 6px 0);
+  }
+  ul .active > a {
+    color: @grayDark;
+    background-color: #eee;
+  }
+}
