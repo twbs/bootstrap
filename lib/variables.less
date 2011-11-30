@@ -39,8 +39,8 @@
 
 // Modify the grid styles in mixins.less
 @gridColumns:       12;
-@gridColumnWidth:   60px;
-@gridGutterWidth:   20px;
+@gridColumnWidth:   3.75em;
+@gridGutterWidth:   1.25em;
 @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 
@@ -48,9 +48,14 @@
 // ---------------
 
 // Typography
-@baseFontSize:          13px;
+@baseFontSize:          1em;
 @baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@baseLineHeight:        18px;
+@baseLineHeight:        1.5em;
 
 // Visuals
 @primaryButtonColor:    @blue;
+
+// Navbar variables
+@navBarHeight: 2.5em;
+@navBarBgStart: #333;
+@navBarBgEnd: #222;

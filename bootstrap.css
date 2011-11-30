@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Nov 25 21:33:58 PST 2011
+ * Date: 
  */
 html, body {
   margin: 0;
@@ -170,13 +170,13 @@ textarea {
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 1em;
+  line-height: 1.5em;
   color: #404040;
   background-color: #ffffff;
 }
 .container {
-  width: 940px;
+  width: 58.75em;
   margin-left: auto;
   margin-right: auto;
   zoom: 1;
@@ -245,7 +245,7 @@ a:hover {
   display: block;
 }
 .row {
-  margin-left: -20px;
+  margin-left: -1.25em;
   zoom: 1;
 }
 .row:before, .row:after {
@@ -260,85 +260,85 @@ a:hover {
 [class*="span"] {
   display: inline;
   float: left;
-  margin-left: 20px;
+  margin-left: 1.25em;
 }
 .span1 {
-  width: 60px;
+  width: 3.75em;
 }
 .span2 {
-  width: 140px;
+  width: 8.75em;
 }
 .span3 {
-  width: 220px;
+  width: 13.75em;
 }
 .span4 {
-  width: 300px;
+  width: 18.75em;
 }
 .span5 {
-  width: 380px;
+  width: 23.75em;
 }
 .span6 {
-  width: 460px;
+  width: 28.75em;
 }
 .span7 {
-  width: 540px;
+  width: 33.75em;
 }
 .span8 {
-  width: 620px;
+  width: 38.75em;
 }
 .span9 {
-  width: 700px;
+  width: 43.75em;
 }
 .span10 {
-  width: 780px;
+  width: 48.75em;
 }
 .span11 {
-  width: 860px;
+  width: 53.75em;
 }
 .span12 {
-  width: 940px;
+  width: 58.75em;
 }
 .offset1 {
-  margin-left: 100px;
+  margin-left: 6.25em;
 }
 .offset2 {
-  margin-left: 180px;
+  margin-left: 11.25em;
 }
 .offset3 {
-  margin-left: 260px;
+  margin-left: 16.25em;
 }
 .offset4 {
-  margin-left: 340px;
+  margin-left: 21.25em;
 }
 .offset5 {
-  margin-left: 420px;
+  margin-left: 26.25em;
 }
 .offset6 {
-  margin-left: 500px;
+  margin-left: 31.25em;
 }
 .offset7 {
-  margin-left: 580px;
+  margin-left: 36.25em;
 }
 .offset8 {
-  margin-left: 660px;
+  margin-left: 41.25em;
 }
 .offset9 {
-  margin-left: 740px;
+  margin-left: 46.25em;
 }
 .offset10 {
-  margin-left: 820px;
+  margin-left: 51.25em;
 }
 .offset11 {
-  margin-left: 900px;
+  margin-left: 56.25em;
 }
 p {
-  margin-bottom: 9px;
+  margin-bottom: 0.75em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 1em;
+  line-height: 1.5em;
 }
 p small {
-  font-size: 11px;
+  font-size: -1em;
   color: #bfbfbf;
 }
 h1,
@@ -361,20 +361,20 @@ h6 small {
 }
 h1 {
   font-size: 30px;
-  line-height: 36px;
+  line-height: 3em;
 }
 h1 small {
   font-size: 18px;
 }
 h2 {
   font-size: 24px;
-  line-height: 36px;
+  line-height: 3em;
 }
 h2 small {
   font-size: 18px;
 }
 h3 {
-  line-height: 27px;
+  line-height: 2.25em;
   font-size: 18px;
 }
 h3 small {
@@ -382,23 +382,23 @@ h3 small {
 }
 h4 {
   font-size: 16px;
-  line-height: 36px;
+  line-height: 3em;
 }
 h4 small {
   font-size: 12px;
 }
 h5 {
   font-size: 14px;
-  line-height: 18px;
+  line-height: 1.5em;
 }
 h6 {
   font-size: 13px;
-  line-height: 18px;
+  line-height: 1.5em;
   color: #bfbfbf;
   text-transform: uppercase;
 }
 ul, ol {
-  margin: 0 0 9px 25px;
+  margin: 0 0 0.75em 25px;
 }
 ul ul,
 ul ol,
@@ -413,7 +413,7 @@ ol {
   list-style: decimal;
 }
 li {
-  line-height: 18px;
+  line-height: 1.5em;
   color: #404040;
 }
 ul.unstyled {
@@ -421,16 +421,16 @@ ul.unstyled {
   list-style: none;
 }
 dl {
-  margin-bottom: 18px;
+  margin-bottom: 1.5em;
 }
 dl dt, dl dd {
-  line-height: 18px;
+  line-height: 1.5em;
 }
 dl dt {
   font-weight: bold;
 }
 dl dd {
-  margin-left: 9px;
+  margin-left: 0.75em;
 }
 hr {
   margin: 20px 0 19px;
@@ -457,18 +457,18 @@ abbr {
 }
 blockquote {
   padding-left: 15px;
-  margin-bottom: 18px;
+  margin-bottom: 1.5em;
   border-left: 5px solid #eee;
 }
 blockquote p {
   margin-bottom: 0;
   font-size: 300;
   font-weight: 16px;
-  line-height: 22.5px;
+  line-height: 1.875em;
 }
 blockquote small {
   display: block;
-  line-height: 18px;
+  line-height: 1.5em;
   color: #bfbfbf;
 }
 blockquote small:before {
@@ -482,8 +482,8 @@ blockquote.pull-right p, blockquote.pull-right small {
 }
 address {
   display: block;
-  margin-bottom: 18px;
-  line-height: 18px;
+  margin-bottom: 1.5em;
+  line-height: 1.5em;
 }
 code, pre {
   padding: 0 3px 2px;
@@ -500,10 +500,10 @@ code {
 }
 pre {
   display: block;
-  padding: 8.5px;
-  margin: 0 0 9px;
+  padding: 0.25em;
+  margin: 0 0 0.75em;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 1.5em;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -519,14 +519,14 @@ pre code {
   background-color: transparent;
 }
 form {
-  margin-bottom: 18px;
+  margin-bottom: 1.5em;
 }
 legend {
   display: block;
   width: 100%;
-  margin-bottom: 27px;
-  font-size: 19.5px;
-  line-height: 36px;
+  margin-bottom: 2.25em;
+  font-size: 1.5em;
+  line-height: 3em;
   color: #404040;
   border-bottom: 1px solid #eee;
 }
@@ -536,8 +536,8 @@ select,
 textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: normal;
-  font-weight: 13px;
-  line-height: 18px;
+  font-weight: 1em;
+  line-height: 1.5em;
 }
 label {
   display: block;
@@ -550,10 +550,10 @@ select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
-  height: 18px;
+  height: 1.5em;
   padding: 4px;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 1em;
+  line-height: 1.5em;
   color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -588,11 +588,11 @@ input[type=button], input[type=reset], input[type=submit] {
   height: auto;
 }
 select, input[type=file] {
-  height: 27px;
+  height: 2.25em;
   *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
 
-  line-height: 27px;
+  line-height: 2.25em;
 }
 select[multiple] {
   height: inherit;
@@ -648,7 +648,7 @@ select.span1,
 .uneditable-input.span1 {
   display: inline-block;
   float: none;
-  width: 50px;
+  width: -6.25em;
   margin-left: 0;
 }
 input.span2,
@@ -657,7 +657,7 @@ select.span2,
 .uneditable-input.span2 {
   display: inline-block;
   float: none;
-  width: 150px;
+  width: -18.75em;
   margin-left: 0;
 }
 input.span3,
@@ -666,7 +666,7 @@ select.span3,
 .uneditable-input.span3 {
   display: inline-block;
   float: none;
-  width: 250px;
+  width: -31.25em;
   margin-left: 0;
 }
 input.span4,
@@ -675,7 +675,7 @@ select.span4,
 .uneditable-input.span4 {
   display: inline-block;
   float: none;
-  width: 350px;
+  width: -43.75em;
   margin-left: 0;
 }
 input.span5,
@@ -684,7 +684,7 @@ select.span5,
 .uneditable-input.span5 {
   display: inline-block;
   float: none;
-  width: 450px;
+  width: -56.25em;
   margin-left: 0;
 }
 input.span6,
@@ -693,7 +693,7 @@ select.span6,
 .uneditable-input.span6 {
   display: inline-block;
   float: none;
-  width: 550px;
+  width: -68.75em;
   margin-left: 0;
 }
 input.span7,
@@ -702,7 +702,7 @@ select.span7,
 .uneditable-input.span7 {
   display: inline-block;
   float: none;
-  width: 650px;
+  width: -81.25em;
   margin-left: 0;
 }
 input.span8,
@@ -711,7 +711,7 @@ select.span8,
 .uneditable-input.span8 {
   display: inline-block;
   float: none;
-  width: 750px;
+  width: -93.75em;
   margin-left: 0;
 }
 input.span9,
@@ -720,7 +720,7 @@ select.span9,
 .uneditable-input.span9 {
   display: inline-block;
   float: none;
-  width: 850px;
+  width: -106.25em;
   margin-left: 0;
 }
 input.span10,
@@ -729,7 +729,7 @@ select.span10,
 .uneditable-input.span10 {
   display: inline-block;
   float: none;
-  width: 950px;
+  width: -118.75em;
   margin-left: 0;
 }
 input.span11,
@@ -738,7 +738,7 @@ select.span11,
 .uneditable-input.span11 {
   display: inline-block;
   float: none;
-  width: 1050px;
+  width: -131.25em;
   margin-left: 0;
 }
 input.span12,
@@ -747,7 +747,7 @@ select.span12,
 .uneditable-input.span12 {
   display: inline-block;
   float: none;
-  width: 1150px;
+  width: -143.75em;
   margin-left: 0;
 }
 input.span13,
@@ -756,7 +756,7 @@ select.span13,
 .uneditable-input.span13 {
   display: inline-block;
   float: none;
-  width: 1250px;
+  width: -156.25em;
   margin-left: 0;
 }
 input.span14,
@@ -765,7 +765,7 @@ select.span14,
 .uneditable-input.span14 {
   display: inline-block;
   float: none;
-  width: 1350px;
+  width: -168.75em;
   margin-left: 0;
 }
 input.span15,
@@ -774,7 +774,7 @@ select.span15,
 .uneditable-input.span15 {
   display: inline-block;
   float: none;
-  width: 1450px;
+  width: -181.25em;
   margin-left: 0;
 }
 input.span16,
@@ -783,7 +783,7 @@ select.span16,
 .uneditable-input.span16 {
   display: inline-block;
   float: none;
-  width: 1550px;
+  width: -193.75em;
   margin-left: 0;
 }
 input[disabled],
@@ -851,9 +851,9 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
   border-color: #468847;
 }
 .form-actions {
-  padding: 17px 20px 18px;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  padding: 0.5em 20px 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
 }
@@ -918,11 +918,11 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
   display: block;
   width: auto;
   min-width: 16px;
-  height: 18px;
+  height: 1.5em;
   margin-right: -1px;
   padding: 4px 4px 4px 5px;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 1.5em;
   color: #bfbfbf;
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
@@ -960,7 +960,7 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
   border-radius: 14px;
 }
 .control-group {
-  margin-bottom: 18px;
+  margin-bottom: 1.5em;
 }
 .control-group > label {
   font-weight: bold;
@@ -983,13 +983,13 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
 table {
   width: 100%;
   padding: 0;
-  margin-bottom: 18px;
-  font-size: 13px;
+  margin-bottom: 1.5em;
+  font-size: 1em;
   border-collapse: collapse;
 }
 table th, table td {
   padding: 10px 10px 9px;
-  line-height: 18px;
+  line-height: 1.5em;
   text-align: left;
 }
 table th {
@@ -1042,52 +1042,52 @@ table tbody th {
   border-radius: 0 0 4px 0;
 }
 table .span1 {
-  width: 40px;
+  width: -16.25em;
 }
 table .span2 {
-  width: 120px;
+  width: -48.75em;
 }
 table .span3 {
-  width: 200px;
+  width: -81.25em;
 }
 table .span4 {
-  width: 280px;
+  width: -113.75em;
 }
 table .span5 {
-  width: 360px;
+  width: -146.25em;
 }
 table .span6 {
-  width: 440px;
+  width: -178.75em;
 }
 table .span7 {
-  width: 520px;
+  width: -211.25em;
 }
 table .span8 {
-  width: 600px;
+  width: -243.75em;
 }
 table .span9 {
-  width: 680px;
+  width: -276.25em;
 }
 table .span10 {
-  width: 760px;
+  width: -308.75em;
 }
 table .span11 {
-  width: 840px;
+  width: -341.25em;
 }
 table .span12 {
-  width: 920px;
+  width: -373.75em;
 }
 table .span13 {
-  width: 1000px;
+  width: -406.25em;
 }
 table .span14 {
-  width: 1080px;
+  width: -438.75em;
 }
 table .span15 {
-  width: 1160px;
+  width: -471.25em;
 }
 table .span16 {
-  width: 1240px;
+  width: -503.75em;
 }
 .striped-table tbody tr:nth-child(odd) td, .striped-table tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
@@ -1176,8 +1176,13 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   background-color: #e2d5f0;
 }
 .navbar {
-  height: 40px;
+  height: 2.5em;
   overflow: visible;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10000;
 }
 .navbar-inner {
   background-color: #222222;
@@ -1272,7 +1277,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   outline: 0;
 }
 .navbar-static {
-  margin-bottom: 18px;
+  margin-bottom: 1.5em;
 }
 .navbar-static .navbar-inner {
   padding-left: 20px;
@@ -1479,22 +1484,22 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .hero-unit p {
   font-size: 18px;
   font-weight: 200;
-  line-height: 27px;
+  line-height: 2.25em;
 }
 footer {
-  padding-top: 17px;
-  margin-top: 17px;
+  padding-top: 0.5em;
+  margin-top: 0.5em;
   border-top: 1px solid #eee;
 }
 .page-header {
-  margin-bottom: 27px;
+  margin-bottom: 2.25em;
   border-bottom: 1px solid #eee;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .page-header h1 {
-  margin-bottom: 13.5px;
+  margin-bottom: 1.125em;
 }
 .btn.danger,
 .alert-message.danger,
@@ -1565,7 +1570,7 @@ footer {
 .btn {
   display: inline-block;
   padding: 5px 14px 6px;
-  font-size: 13px;
+  font-size: 1em;
   line-height: normal;
   color: #333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
@@ -1646,7 +1651,7 @@ footer {
 }
 .btn.large {
   padding: 9px 14px 9px;
-  font-size: 15px;
+  font-size: 3em;
   line-height: normal;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -1654,7 +1659,7 @@ footer {
 }
 .btn.small {
   padding: 7px 9px 7px;
-  font-size: 11px;
+  font-size: -1em;
 }
 :root .alert-message, :root .btn {
   border-radius: 0 \0;
@@ -1723,7 +1728,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   float: right;
   font-size: 20px;
   font-weight: bold;
-  line-height: 13.5px;
+  line-height: 1.125em;
   color: #000000;
   text-shadow: 0 1px 0 #ffffff;
   filter: alpha(opacity=20);
@@ -1740,7 +1745,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .alert-message {
   position: relative;
   padding: 7px 15px;
-  margin-bottom: 18px;
+  margin-bottom: 1.5em;
   color: #404040;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1771,7 +1776,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 
 }
 .alert-message h5 {
-  line-height: 18px;
+  line-height: 1.5em;
 }
 .alert-message p {
   margin-bottom: 0;
@@ -1868,7 +1873,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .label {
   padding: 1px 3px 2px;
-  font-size: 9.75px;
+  font-size: 0.75em;
   font-weight: bold;
   color: #ffffff;
   text-transform: uppercase;
@@ -1925,7 +1930,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .tabs > li > a {
   padding: 0 15px;
   margin-right: 2px;
-  line-height: 36px;
+  line-height: 3em;
   border: 1px solid transparent;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
@@ -1944,7 +1949,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   cursor: default;
 }
 .tabbable {
-  margin-bottom: 18px;
+  margin-bottom: 1.5em;
 }
 .tabbable .tabs {
   margin-bottom: 0;
@@ -2091,7 +2096,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .breadcrumb {
   padding: 7px 14px;
-  margin: 0 0 18px;
+  margin: 0 0 1.5em;
   background-color: #f5f5f5;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
   background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
@@ -2122,8 +2127,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   color: #404040;
 }
 .pagination {
-  height: 36px;
-  margin: 18px 0;
+  height: 3em;
+  margin: 1.5em 0;
 }
 .pagination ul {
   float: left;
@@ -2143,7 +2148,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .pagination a {
   float: left;
   padding: 0 14px;
-  line-height: 34px;
+  line-height: 1em;
   text-decoration: none;
   border-right: 1px solid;
   border-right-color: #ddd;
