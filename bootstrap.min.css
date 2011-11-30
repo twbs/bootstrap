@@ -89,7 +89,8 @@ blockquote.pull-right{float:right;}blockquote.pull-right p,blockquote.pull-right
 address{display:block;margin-bottom:18px;line-height:18px;}
 code,pre{padding:0 3px 2px;font-family:"Menlo",Monaco,Courier New,monospace;font-size:12px;color:#404040;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 code{padding:1px 3px;background-color:#fee9cc;}
-pre{display:block;padding:8.5px;margin:0 0 9px;font-size:12px;line-height:18px;background-color:#f5f5f5;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre;white-space:pre-wrap;word-break:break-all;}pre code{padding:0;background-color:transparent;}
+pre{display:block;padding:8.5px;margin:0 0 9px;font-size:12px;line-height:18px;background-color:#f5f5f5;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre;white-space:pre-wrap;word-break:break-all;}pre.prettyprint{margin-bottom:18px;}
+pre code{padding:0;background-color:transparent;}
 form{margin-bottom:18px;}
 legend{display:block;width:100%;margin-bottom:27px;font-size:19.5px;line-height:36px;color:#404040;border-bottom:1px solid #eee;}
 label,input,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:normal;font-weight:13px;line-height:18px;}

@@ -205,6 +205,11 @@ pre {
   white-space: pre-wrap;
   word-break: break-all;
 
+  // Make prettyprint styles more spaced out for readability
+  &.prettyprint {
+    margin-bottom: @baseLineHeight;
+  }
+
   // Account for some code outputs that place code tags in pre tags
   code {
     padding: 0;
