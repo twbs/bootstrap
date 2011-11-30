@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Nov 29 22:35:45 PST 2011
+ * Date: Tue Nov 29 22:53:00 PST 2011
  */
 html, body {
   margin: 0;
@@ -796,56 +796,56 @@ textarea[readonly] {
   border-color: #ddd;
   cursor: not-allowed;
 }
-form .clearfix.error > label, form .clearfix.error .help-block, form .clearfix.error .help-inline {
+.control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
   color: #b94a48;
 }
-form .clearfix.error input, form .clearfix.error textarea {
+.control-group.error input, .control-group.error textarea {
   color: #b94a48;
   border-color: #ee5f5b;
 }
-form .clearfix.error input:focus, form .clearfix.error textarea:focus {
+.control-group.error input:focus, .control-group.error textarea:focus {
   border-color: #e9322d;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
   -moz-box-shadow: 0 0 6px #f8b9b7;
   box-shadow: 0 0 6px #f8b9b7;
 }
-form .clearfix.error .input-prepend .add-on, form .clearfix.error .input-append .add-on {
+.control-group.error .input-prepend .add-on, .control-group.error .input-append .add-on {
   color: #b94a48;
   background-color: #fce6e6;
   border-color: #b94a48;
 }
-form .clearfix.warning > label, form .clearfix.warning .help-block, form .clearfix.warning .help-inline {
+.control-group.warning > label, .control-group.warning .help-block, .control-group.warning .help-inline {
   color: #c09853;
 }
-form .clearfix.warning input, form .clearfix.warning textarea {
+.control-group.warning input, .control-group.warning textarea {
   color: #c09853;
   border-color: #ccae64;
 }
-form .clearfix.warning input:focus, form .clearfix.warning textarea:focus {
+.control-group.warning input:focus, .control-group.warning textarea:focus {
   border-color: #be9a3f;
   -webkit-box-shadow: 0 0 6px #e5d6b1;
   -moz-box-shadow: 0 0 6px #e5d6b1;
   box-shadow: 0 0 6px #e5d6b1;
 }
-form .clearfix.warning .input-prepend .add-on, form .clearfix.warning .input-append .add-on {
+.control-group.warning .input-prepend .add-on, .control-group.warning .input-append .add-on {
   color: #c09853;
   background-color: #d2b877;
   border-color: #c09853;
 }
-form .clearfix.success > label, form .clearfix.success .help-block, form .clearfix.success .help-inline {
+.control-group.success > label, .control-group.success .help-block, .control-group.success .help-inline {
   color: #468847;
 }
-form .clearfix.success input, form .clearfix.success textarea {
+.control-group.success input, .control-group.success textarea {
   color: #468847;
   border-color: #57a957;
 }
-form .clearfix.success input:focus, form .clearfix.success textarea:focus {
+.control-group.success input:focus, .control-group.success textarea:focus {
   border-color: #458845;
   -webkit-box-shadow: 0 0 6px #9acc9a;
   -moz-box-shadow: 0 0 6px #9acc9a;
   box-shadow: 0 0 6px #9acc9a;
 }
-form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-append .add-on {
+.control-group.success .input-prepend .add-on, .control-group.success .input-append .add-on {
   color: #468847;
   background-color: #bcddbc;
   border-color: #468847;
