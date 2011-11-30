@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Nov 25 21:33:58 PST 2011
+ * Date: Tue Nov 29 11:11:41 CST 2011
  */
 html, body {
   margin: 0;
@@ -657,7 +657,7 @@ select.span2,
 .uneditable-input.span2 {
   display: inline-block;
   float: none;
-  width: 150px;
+  width: 130px;
   margin-left: 0;
 }
 input.span3,
@@ -666,7 +666,7 @@ select.span3,
 .uneditable-input.span3 {
   display: inline-block;
   float: none;
-  width: 250px;
+  width: 210px;
   margin-left: 0;
 }
 input.span4,
@@ -675,7 +675,7 @@ select.span4,
 .uneditable-input.span4 {
   display: inline-block;
   float: none;
-  width: 350px;
+  width: 290px;
   margin-left: 0;
 }
 input.span5,
@@ -684,7 +684,7 @@ select.span5,
 .uneditable-input.span5 {
   display: inline-block;
   float: none;
-  width: 450px;
+  width: 370px;
   margin-left: 0;
 }
 input.span6,
@@ -693,7 +693,7 @@ select.span6,
 .uneditable-input.span6 {
   display: inline-block;
   float: none;
-  width: 550px;
+  width: 450px;
   margin-left: 0;
 }
 input.span7,
@@ -702,7 +702,7 @@ select.span7,
 .uneditable-input.span7 {
   display: inline-block;
   float: none;
-  width: 650px;
+  width: 530px;
   margin-left: 0;
 }
 input.span8,
@@ -711,7 +711,7 @@ select.span8,
 .uneditable-input.span8 {
   display: inline-block;
   float: none;
-  width: 750px;
+  width: 610px;
   margin-left: 0;
 }
 input.span9,
@@ -720,7 +720,7 @@ select.span9,
 .uneditable-input.span9 {
   display: inline-block;
   float: none;
-  width: 850px;
+  width: 690px;
   margin-left: 0;
 }
 input.span10,
@@ -729,7 +729,7 @@ select.span10,
 .uneditable-input.span10 {
   display: inline-block;
   float: none;
-  width: 950px;
+  width: 770px;
   margin-left: 0;
 }
 input.span11,
@@ -738,7 +738,7 @@ select.span11,
 .uneditable-input.span11 {
   display: inline-block;
   float: none;
-  width: 1050px;
+  width: 850px;
   margin-left: 0;
 }
 input.span12,
@@ -747,7 +747,7 @@ select.span12,
 .uneditable-input.span12 {
   display: inline-block;
   float: none;
-  width: 1150px;
+  width: 930px;
   margin-left: 0;
 }
 input.span13,
@@ -756,7 +756,7 @@ select.span13,
 .uneditable-input.span13 {
   display: inline-block;
   float: none;
-  width: 1250px;
+  width: 1010px;
   margin-left: 0;
 }
 input.span14,
@@ -765,7 +765,7 @@ select.span14,
 .uneditable-input.span14 {
   display: inline-block;
   float: none;
-  width: 1350px;
+  width: 1090px;
   margin-left: 0;
 }
 input.span15,
@@ -774,7 +774,7 @@ select.span15,
 .uneditable-input.span15 {
   display: inline-block;
   float: none;
-  width: 1450px;
+  width: 1170px;
   margin-left: 0;
 }
 input.span16,
@@ -783,7 +783,7 @@ select.span16,
 .uneditable-input.span16 {
   display: inline-block;
   float: none;
-  width: 1550px;
+  width: 1250px;
   margin-left: 0;
 }
 input[disabled],
