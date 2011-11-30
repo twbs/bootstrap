@@ -38,7 +38,7 @@ $(function () {
         	transitionEnd = "oTransitionEnd"
         }
         return transitionEnd
-      })()
+      }())
     }
   })()
 

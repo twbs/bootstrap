@@ -18,25 +18,56 @@
  * ============================================================ */
 
 
-(function( $ ){
+!function( $ ){
+
+  "use strict"
+
+ /* DROPDOWN CLASS DEFINITION
+  * ========================= */
+
+  var toggle = '[data-toggle="dropdown"]'
+    , Dropdown = function ( element ) {
+        $(element).bind('click', this.toggle)
+      }
+
+  Dropdown.prototype = {
+
+    toggle: function ( e ) {
+      var li = $(this).parent('li')
+        , isActive = li.hasClass('open')
+
+      clearMenus()
+      !isActive && li.toggleClass('open')
+
+      return false
+    }
+
+  }
+
+  function clearMenus() {
+    $(toggle).parent('li').removeClass('open')
+  }
+
+
+  /* DROPDOWN PLUGIN DEFINITION
+   * ========================== */
+
+  $.fn.dropdown = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('dropdown')
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */
-  var selector = '[data-dropdown]'
-
-  function clearMenus() {
-    $(selector).parent('li').removeClass('open')
-  }
 
   $(function () {
-    $('html').bind("click", clearMenus)
-    $('body').delegate(selector, 'click', function (e) {
-      var li = $(this).parent('li')
-        , isActive = li.hasClass('open')
-      clearMenus()
-      !isActive && li.toggleClass('open')
-      return false
-    })
+    $('html').bind('click.dropdown.data-api', clearMenus)
+    $('body').delegate(toggle, 'click.dropdown.data-api', Dropdown.prototype.toggle)
   })
 
-})( window.jQuery || window.ender )
+}( window.jQuery || window.ender )

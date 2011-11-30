@@ -1,7 +1,6 @@
-/* Forms.less
- * Base styles for various input types, form layouts, and states
- * ------------------------------------------------------------- */
-
+// Forms.less
+// Base styles for various input types, form layouts, and states
+// -------------------------------------------------------------
 
 
 // GENERAL STYLES
@@ -146,7 +145,7 @@ select:focus {
 .formColumns(@columnSpan: 1) {
   display: inline-block;
   float: none;
-  width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
   margin-left: 0;
 }
 input,

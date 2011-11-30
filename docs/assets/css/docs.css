@@ -330,6 +330,13 @@ body > .navbar-fixed .brand:hover {
   margin-left: 10px;
 }
 
+/* scrollspy docs */
+
+.scrollspy-example {
+  overflow: auto;
+  height: 200px;
+  position: relative;
+}
 
 /* Popover docs
 -------------------------------------------------- */
@@ -492,3 +499,19 @@ h2 + table {
   }
 }
 
+#accordion dt a{
+  display:block;
+  padding: 9px 15px;
+  line-height: 1;
+  background-color: whiteSmoke;
+  border: 1px solid #EEE;
+  border-top-color: #fff;
+}
+
+#accordion dt:first-child a {
+  border-top-color:#eee;
+}
+
+#accordion dd p {
+  padding: 10px;
+}

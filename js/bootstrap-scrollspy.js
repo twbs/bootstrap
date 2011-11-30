@@ -17,36 +17,43 @@
  * limitations under the License.
  * ============================================================== */
 
-
 !function ( $ ) {
 
-  var $window = $(window)
+  "use strict"
 
-  function ScrollSpy() {
+  /* SCROLLSPY CLASS DEFINITION
+   * ========================== */
+
+  function ScrollSpy( element ) {
     var process = $.proxy(this.process, this)
-    this.$topbar = $('body')
-    this.selector = '[data-scrollspy] li > a'
+
+    this.$scrollElement = $(element).bind('scroll.scroll.data-api', process)
+    this.selector = (this.$scrollElement.attr('data-target')
+      || this.$scrollElement.attr('href')
+      || '') + ' .nav li > a'
+    this.$body = $('body').delegate(this.selector, 'click.scroll.data-api', process)
+
     this.refresh()
-    this.$topbar.delegate(this.selector, 'click', process)
-    $window.scroll(process)
     this.process()
   }
 
   ScrollSpy.prototype = {
 
       refresh: function () {
-        this.targets = this.$topbar.find(this.selector).map(function () {
-          var href = $(this).attr('href')
-          return /^#\w/.test(href) && $(href).length ? href : null
-        })
+        this.targets = this.$body
+          .find(this.selector)
+          .map(function () {
+            var href = $(this).attr('href')
+            return /^#\w/.test(href) && $(href).length ? href : null
+          })
 
         this.offsets = $.map(this.targets, function (id) {
-          return $(id).offset().top
+          return $(id).position().top
         })
       }
 
     , process: function () {
-        var scrollTop = $window.scrollTop() + 10
+        var scrollTop = this.$scrollElement.scrollTop() + 10
           , offsets = this.offsets
           , targets = this.targets
           , activeTarget = this.activeTarget
@@ -65,11 +72,11 @@
 
         this.activeTarget = target
 
-        this.$topbar
+        this.$body
           .find(this.selector).parent('.active')
           .removeClass('active')
 
-        active = this.$topbar
+        active = this.$body
           .find(this.selector + '[href="' + target + '"]')
           .parent('li')
           .addClass('active')
@@ -77,13 +84,29 @@
         if ( active.parent('.dropdown-menu') )  {
           active.closest('li.dropdown').addClass('active')
         }
-
       }
 
   }
 
-  $(function () {
-    new ScrollSpy()
-  })
+
+ /* SCROLLSPY PLUGIN DEFINITION
+  * =========================== */
+
+  $.fn.scrollspy = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('scrollspy')
+      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.scrollspy.ScrollSpy = ScrollSpy
+
+
+ /* SCROLLSPY DATA-API
+  * ============== */
+
+  $(function () { $('[data-spy="scroll"]').scrollspy() })
 
 }( window.jQuery || window.ender )

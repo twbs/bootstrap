@@ -22,6 +22,40 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <!-- Le javascript -->
+    <!-- placed up here so that the inline demos can be next to their markup -->
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../js/bootstrap-transition.js"></script>
+    <script src="../js/bootstrap-alert.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-button.js"></script>
+    <script src="../js/bootstrap-collapse.js"></script>
+    <script>
+      $(function () {
+        // twipsy demo
+        $("a[rel=twipsy]").twipsy({
+          live: true
+        })
+
+        //popover demo
+        $("a[rel=popover]")
+          .popover({
+            offset: 10
+          })
+          .click(function(e) {
+            e.preventDefault()
+          })
+      })
+    </script>
+
   </head>
 
   <body id="bootstrap-js">
@@ -43,26 +77,6 @@
         </div>
       </div>
     </div>
-
-<!--
-     <div class="navbar navbar-fixed" data-scrollspy="scrollspy">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <ul class="nav">
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#modal">Modals</a></li>
-            <li><a href="#dropdown">Dropdown</a></li>
-            <li><a href="#scrollspy">ScrollSpy</a></li>
-            <li><a href="#tabs">Tabs</a></li>
-            <li><a href="#twipsy">Twipsy</a></li>
-            <li><a href="#popover">Popover</a></li>
-            <li><a href="#alerts">Alerts</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
- -->
 
     <div class="container">
       <!-- Masthead
@@ -101,11 +115,11 @@
              <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
            </tr>
            <tr>
-             <td><a href="./javascript.html#alerts">bootstrap-alerts.js</a></td>
+             <td><a href="./javascript.html#alert">bootstrap-alert.js</a></td>
              <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
            </tr>
            <tr>
-             <td><a href="./javascript.html#dropdowns">bootstrap-dropdown.js</a></td>
+             <td><a href="./javascript.html#dropdown">bootstrap-dropdown.js</a></td>
              <td>This plugin is for adding dropdown interaction to the bootstrap navbar or tabbed navigations.</td>
            </tr>
            <tr>
@@ -113,7 +127,7 @@
              <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap navbar.</td>
            </tr>
            <tr>
-             <td><a href="./javascript.html#tabs">bootstrap-tabs.js</a></td>
+             <td><a href="./javascript.html#tabs">bootstrap-tab.js</a></td>
              <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
            </tr>
            <tr>
@@ -124,6 +138,14 @@
              <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
              <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
            </tr>
+           <tr>
+              <td><a href="./javascript.html#button">bootstrap-button.js</a></td>
+              <td>This plugin offers additional functionality for managing button state.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#collapse">bootstrap-collapse.js</a></td>
+              <td>The collapse plugin offers simple, generic collapsible element support for making accordions and other collapsible ui components.</td>
+            </tr>
          </tbody>
        </table>
        <h3>Is javascript necessary?</h3>
@@ -149,7 +171,7 @@
         </div>
         <div class="span9 columns">
           <h3>Using bootstrap-modal</h3>
-          <pre class="prettyprint linenums">$('#my-modal').modal(options)</pre>
+          <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
           <h3>Options</h3>
           <table class="striped-table">
             <thead>
@@ -164,49 +186,45 @@
              <tr>
                <td>backdrop</td>
                <td>boolean</td>
-               <td>false</td>
+               <td>true</td>
                <td>Includes a modal-backdrop element</td>
              </tr>
              <tr>
                <td>keyboard</td>
                <td>boolean</td>
-               <td>false</td>
+               <td>true</td>
                <td>Closes the modal when escape key is pressed</td>
              </tr>
              <tr>
                <td>show</td>
                <td>boolean</td>
-               <td>false</td>
+               <td>true</td>
                <td>Opens modal on class initialization</td>
              </tr>
             </tbody>
           </table>
           <h3>Markup</h3>
-          <p>You can activate modals on your page easily without having to write a single line of javascript. Just give an element a <code>data-controls-modal</code> attribute which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as data attributes as well.</p>
+          <p>You can activate modals on your page easily without having to write a single line of javascript. Just set <code>data-toggle="modal"</code> on a controller element with a <code>data-target="#foo"</code> or <code>href="#foo"</code> which corresponds to a modal element id, and when clicked, it will launch your modal. To add modal options, just include them as additoinal data attributes.</p>
 <pre class="prettyprint linenums">
-&lt;a class="btn" data-controls-modal="my-modal" data-backdrop="true" &gt;Launch Modal&lt;/a&gt;
+&lt;a class="btn" data-toggle="modal" href="#myModal" &gt;Launch Modal&lt;/a&gt;
 </pre>
-          <p><span class="label notice">Notice</span> If you want your modal to animate in and out, just add a <code>.fade</code> class to your <code>.modal</code> element (refer to the demo to see this in action).</p>
+          <p><span class="label notice">Notice</span> If you want your modal to animate in and out, just add a <code>.fade</code> class to the <code>.modal</code> element (refer to the demo to see this in action).</p>
           <h3>Methods</h3>
           <h4>.modal(options)</h4>
           <p>Activates your content as a modal. Accepts an optional options <code>object</code>.
 <pre class="prettyprint linenums">
-$('#my-modal').modal({
-  closeOnEscape: true
+$('#myModal').modal({
+  keyboard: false
 })</pre>
           <h4>.modal('toggle')</h4>
           <p>Manually toggles a modal.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal('toggle')</pre>
+          <pre class="prettyprint linenums">$('#myModal').modal('toggle')</pre>
           <h4>.modal('show')</h4>
           <p>Manually opens a modal.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal('show')</pre>
+          <pre class="prettyprint linenums">$('#myModal').modal('show')</pre>
           <h4>.modal('hide')</h4>
           <p>Manually hides a modal.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal('hide')</pre>
-          <h4>.modal(true)</h4>
-          <p>Returns an elements modal class instance.</p>
-          <pre class="prettyprint linenums">$('#my-modal').modal(true)</pre>
-          <p><span class="label notice">Notice</span> Alternatively, this can be retrieved with <code>$().data('modal')</code>.</p>
+          <pre class="prettyprint linenums">$('#myModal').modal('hide')</pre>
           <h3>Events</h3>
           <p>Bootstrap's modal class exposes a few events for hooking into modal functionality. </p>
           <table class="striped-table">
@@ -237,14 +255,14 @@ $('#my-modal').modal({
           </table>
 
 <pre class="prettyprint linenums">
-$('#my-modal').bind('hidden', function () {
+$('#myModal').bind('hidden', function () {
   // do something ...
 })</pre>
           <h3>Demo</h3>
           <!-- sample modal content -->
-          <div id="modal-from-dom" class="modal hide fade">
+          <div id="myModal" class="modal hide fade">
             <div class="modal-header">
-              <a href="#" class="close" data-modal-dismiss="true" >&times;</a>
+              <a href="#" class="close" data-dismiss="modal" >&times;</a>
               <h3>Modal Heading</h3>
             </div>
             <div class="modal-body">
@@ -252,10 +270,13 @@ $('#my-modal').bind('hidden', function () {
             </div>
             <div class="modal-footer">
               <a href="#" class="btn primary">Save changes</a>
-              <a href="#" class="btn" data-modal-dismiss="true" >Close</a>
+              <a href="#" class="btn" data-dismiss="modal" >Close</a>
             </div>
           </div>
-          <button data-controls-modal="modal-from-dom" data-backdrop="true" data-keyboard="true" class="btn danger">Launch Modal</button>
+
+          <a data-toggle="modal" href="#myModal" class="btn danger">
+            Launch Modal
+          </a>
         </div>
       </div>
     </section>
@@ -275,14 +296,14 @@ $('#my-modal').bind('hidden', function () {
         </div>
         <div class="span9 columns">
           <h3>Using boostrap-dropdown.js</h3>
-          <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
+          <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
           <h3>Markup</h3>
-          <p>To quickly add dropdown functionality to any nav element, use the <code>data-dropdown</code> attribute. Any valid bootstrap dropdown will automatically be activated.</p>
+          <p>To quickly add dropdown functionality to any element just add <code>data-toggle="dropdown"</code>. Any valid bootstrap dropdown will automatically be activated.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="dropdown" data-dropdown="true" &gt;
-    &lt;a href="#" class="dropdown-toggle"&gt;Dropdown&lt;/a&gt;
+  &lt;li class="dropdown"&gt;
+    &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Dropdown&lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       &lt;li&gt;&lt;a href="#"&gt;Secondary link&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
@@ -310,7 +331,7 @@ $('#my-modal').bind('hidden', function () {
                 </form>
                 <ul class="nav secondary-nav">
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 1</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 1</a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Secondary link</a></li>
                       <li><a href="#">Something else here</a></li>
@@ -319,7 +340,7 @@ $('#my-modal').bind('hidden', function () {
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-dropdown="true">Dropdown 2</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2</a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Secondary link</a></li>
                       <li><a href="#">Something else here</a></li>
@@ -351,21 +372,60 @@ $('#my-modal').bind('hidden', function () {
           <h2>Using boostrap-scrollspy.js</h2>
           <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
           <h3>Markup</h3>
-          <p>To easily add scrollspy behavior to your nav, just add the <code>data-scrollspy</code> attribute to the <code>.navbar</code>.
-          <pre class="prettyprint linenums">&lt;div class="navbar" data-scrollspy="scrollspy" &gt;...&lt;/div&gt;</pre>
-          <h3>Methods</h3>
-          <h4>$().scrollspy()</h4>
-          <p>
-          Auto activates navigation buttons by users scroll position.
-          </p>
-          <pre class="prettyprint linenums">$('body > .navbar').scrollSpy()</pre>
+          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body).
+          <pre class="prettyprint linenums">&lt;body data-spy="scroll" &gt;...&lt;/body&gt;</pre>
            <p><span class="label notice">Notice</span> Navbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
-          </p>
-          <h4>.scrollspy('refresh')</h4>
-          <p>The scrollspy caches nav buttons and section coordinates for performance. If you need to update this cache (likely if you have dynamic content) just call this refresh method. If you used the data attribute to define your scrollspy, just call refresh on the body.</p>
-          <pre class="prettyprint linenums">$('body').scrollspy('refresh')</pre>
           <h3>Demo</h3>
-          <p>Checkout the the navbar navigation on this page.</p>
+          <p>
+            Scroll the area below and watch the navigation update. The dropdown sub items will be highlighted as well. Try it!</p>
+          <p>
+
+          <div id="navbarExample" class="navbar navbar-static">
+            <div class="navbar-inner">
+              <div class="container" style="width: auto;">
+                <a class="brand" href="#">Project Name</a>
+                <ul class="nav">
+                  <li><a href="#fat">@fat</a></li>
+                  <li><a href="#mdo">@mdo</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#one">one</a></li>
+                      <li><a href="#two">two</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#three">three</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div data-spy="scroll" data-target="#navbarExample" class="scrollspy-example">
+            <h4 id="fat">@fat</h4>
+            <p>
+            Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+            </p>
+            <h4 id="mdo">@mdo</h4>
+            <p>
+            Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.
+            </p>
+            <h4 id="one">one</h4>
+            <p>
+            Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.
+            </p>
+            <h4 id="two">two</h4>
+            <p>
+            In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.
+            </p>
+            <h4 id="three">three</h4>
+            <p>
+            Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
+            </p>
+            <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -375,23 +435,28 @@ $('#my-modal').bind('hidden', function () {
 
     <section id="tabs">
       <div class="page-header">
-        <h1>Tabs <small>bootstrap-tabs.js</small></h1>
+        <h1>Tabs <small>bootstrap-tab.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
           <p>This plugin adds quick, dynamic tab and pill functionality.</p>
-          <a href="../js/bootstrap-tabs.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-tab.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
-          <h3>Using boostrap-tabs.js</h3>
-          <pre class="prettyprint linenums">$('.tabs').tabs()</pre>
+          <h3>Using boostrap-tab.js</h3>
+          <pre class="prettyprint linenums">$('#myTab').tab('show')</pre>
           <h3>Markup</h3>
-          <p>You can activate a tab or pill navigation without writing any javascript by simply giving them a <code>data-tabs</code> or <code>data-pills</code> attribute.</p>
-          <pre class="prettyprint linenums"> &lt;ul class="tabs" data-tabs="tabs" &gt;...&lt;/ul&gt;</pre>
+          <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="tabs"&gt;
+  &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#profile" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://twitter.com/fat"&gt;twitter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
           <h3>Methods</h3>
-          <h4>$().tabs or $().pills</h4>
+          <h4>$().tab</h4>
           <p>
-            Activates tab and pill functionality for a given container. Tab links should reference id's in the document.
+            Activates tab functionality for a given element controller. Tab should have either a `data-target` or an `href` referencing a node in the dom.
           </p>
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
@@ -410,31 +475,67 @@ $('#my-modal').bind('hidden', function () {
 
 &lt;script&gt;
   $(function () {
-    $('.tabs').tabs()
+    $('.tabs a:last').tab('show')
   })
 &lt;/script&gt;</pre>
           </p>
+          <h3>Events</h3>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>show</td>
+               <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+            </tr>
+            <tr>
+               <td>show</td>
+               <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+             </tr>
+            </tbody>
+          </table>
+
+          <pre class="prettyprint linenums">
+$('a[data-toggle="tab"]').bind('shown', function (e) {
+  e.target // activated tab
+  e.relatedTarget // previous tab
+})</pre>
           <h3>Demo</h3>
-          <div class="tabbable">
-            <ul class="tabs" data-tabs="tabs">
-              <li class="active"><a href="#home">Home</a></li>
-              <li><a href="#profile">Profile</a></li>
-              <li><a href="#messages">Messages</a></li>
-              <li><a href="#settings">Settings</a></li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane active" id="home">
-                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-              </div>
-              <div class="tab-pane" id="profile">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-              </div>
-              <div class="tab-pane" id="messages">
-                <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
-              </div>
-              <div class="tab-pane" id="settings">
-                <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
-              </div>
+          <ul id="tab" class="tabs">
+            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+            <li><a href="#profile" data-toggle="tab">Profile</a></li>
+            <li><a href="#messages" data-toggle="tab">Messages</a></li>
+            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
+                <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="active tab-pane" id="home">
+              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+            </div>
+            <div class="tab-pane" id="profile">
+              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+            </div>
+            <div class="tab-pane" id="messages">
+              <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
+            </div>
+            <div class="tab-pane" id="settings">
+              <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
+            </div>
+            <div class="tab-pane" id="dropdown1">
+              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+            </div>
+            <div class="tab-pane" id="dropdown2">
+              <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
             </div>
           </div>
         </div>
@@ -474,34 +575,10 @@ $('#my-modal').bind('hidden', function () {
                <td>apply a css fade transition to the tooltip</td>
              </tr>
              <tr>
-               <td>delayIn</td>
-               <td>number</td>
-               <td>0</td>
-               <td>delay before showing tooltip (ms)</td>
-             </tr>
-             <tr>
-               <td>delayOut</td>
-               <td>number</td>
-               <td>0</td>
-               <td>delay before hiding tooltip (ms)</td>
-             </tr>
-             <tr>
-               <td>fallback</td>
-               <td>string</td>
-               <td>''</td>
-               <td>text to use when no tooltip title is present</td>
-             </tr>
-             <tr>
                <td>placement</td>
                <td>string</td>
                <td>'above'</td>
                <td>how to position the tooltip - above | below | left | right</td>
-             </tr>
-             <tr>
-               <td>html</td>
-               <td>boolean</td>
-               <td>false</td>
-               <td>allows html content within tooltip</td>
              </tr>
              <tr>
                <td>live</td>
@@ -516,19 +593,26 @@ $('#my-modal').bind('hidden', function () {
                <td>pixel offset of tooltip from target element</td>
              </tr>
              <tr>
-               <td>title</td>
-               <td>string | function</td>
-               <td>'title'</td>
-               <td>attribute or method for retrieving title text</td>
-             </tr>
-             <tr>
                <td>trigger</td>
                <td>string</td>
                <td>'hover'</td>
                <td>how tooltip is triggered - hover | focus | manual</td>
              </tr>
+             <tr>
+               <td>delay</td>
+               <td>number | object</td>
+               <td>0</td>
+               <td>
+                <p>delay showing/hiding the tooltip (ms)</p>
+                <p>If a number is supplied, delay is applied to both hide/show</p>
+                <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+               </td>
+             </tr>
             </tbody>
           </table>
+          <p><span class="label notice">Notice</span> Individual twipsy instance options can alternatively be specified through the use of data attributes.</code></p>
+          <h3>Markup</h3>
+          For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just set the live flag to true, however we recommend you know what you are doing if you do that. :)
           <h3>Methods</h3>
           <h4>$().twipsy(options)</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
@@ -538,22 +622,11 @@ $('#my-modal').bind('hidden', function () {
           <h4>.twipsy('hide')</h4>
           <p>Hides an elements twipsy.</p>
           <pre class="prettyprint linenums">$('#element').twipsy('hide')</pre>
-          <h4>.twipsy(true)</h4>
-          <p>Returns an elements twipsy class instance.</p>
-          <pre class="prettyprint linenums">$('#element').twipsy(true)</pre>
-          <p><span class="label notice">Notice</span> Alternatively, this can be retrieved with <code>$().data('twipsy')</code>.</p>
           <h3>Demo</h3>
           <div class="well">
             <p class="muted">Tight pants next level keffiyeh <a href="#" rel='twipsy' title='Some title text'>you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
             </p>
           </div>
-          <script>
-            $(function () {
-              $("a[rel=twipsy]").twipsy({
-                live: true
-              })
-            })
-          </script>
         </div>
       </div>
     </section>
@@ -591,34 +664,16 @@ $('#my-modal').bind('hidden', function () {
                <td>apply a css fade transition to the tooltip</td>
              </tr>
              <tr>
-               <td>delayIn</td>
-               <td>number</td>
+               <td>delay</td>
+               <td>number | object</td>
                <td>0</td>
-               <td>delay before showing tooltip (ms)</td>
-             </tr>
-             <tr>
-               <td>delayOut</td>
-               <td>number</td>
-               <td>0</td>
-               <td>delay before hiding tooltip (ms)</td>
-             </tr>
-             <tr>
-               <td>fallback</td>
-               <td>string</td>
-               <td>''</td>
-               <td>text to use when no tooltip title is present</td>
+               <td>delay before showing/hiding the tooltip (ms)</td>
              </tr>
              <tr>
                <td>placement</td>
                <td>string</td>
                <td>'right'</td>
-               <td>how to position the tooltip - above | below | left | right</td>
-             </tr>
-             <tr>
-               <td>html</td>
-               <td>boolean</td>
-               <td>false</td>
-               <td>allows html content within tooltip</td>
+               <td>how to position the popover - above | below | left | right</td>
              </tr>
              <tr>
                <td>live</td>
@@ -633,18 +688,6 @@ $('#my-modal').bind('hidden', function () {
                <td>pixel offset of tooltip from target element</td>
              </tr>
              <tr>
-               <td>title</td>
-               <td>string | function</td>
-               <td>'title'</td>
-               <td>attribute or method for retrieving title text</td>
-             </tr>
-             <tr>
-               <td>content</td>
-               <td>string | function</td>
-               <td>'data-content'</td>
-               <td>attribute or method for retrieving content text</td>
-             </tr>
-             <tr>
                <td>trigger</td>
                <td>string</td>
                <td>'hover'</td>
@@ -652,6 +695,11 @@ $('#my-modal').bind('hidden', function () {
              </tr>
             </tbody>
           </table>
+          <p><span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.</code></p>
+          <h3>Markup</h3>
+          <p>
+          For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just set the live flag to true, however we recommend you know what you are doing if you do that. :)
+          </p>
           <h3>Methods</h3>
           <h4>$().popover(options)</h4>
           <p>Initializes popovers for an element collection.</p>
@@ -663,28 +711,17 @@ $('#my-modal').bind('hidden', function () {
           <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
           <h3>Demo</h3>
           <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
-          <script>
-            $(function () {
-              $("a[rel=popover]")
-                .popover({
-                  offset: 10
-                })
-                .click(function(e) {
-                  e.preventDefault()
-                })
-            })
-          </script>
         </div>
       </div>
     </section>
 
 
-    <!-- Alerts
+    <!-- Alert
     ================================================== -->
 
-    <section id="alerts">
+    <section id="alert">
       <div class="page-header">
-        <h1>Alerts <small>bootstrap-alerts.js</small></h1>
+        <h1>Alert <small>bootstrap-alert.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
@@ -695,7 +732,8 @@ $('#my-modal').bind('hidden', function () {
           <h3>Using bootstrap-alerts.js</h3>
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>Markup</h3>
-          <p>Just add a <code>data-alert</code> attribute to your alert messages to automatically give them close functionality.</p>
+          <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
+          <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
           <h3>Methods</h3>
           <h4>$().alert()</h4>
           <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
@@ -703,12 +741,12 @@ $('#my-modal').bind('hidden', function () {
           <p>Closes an alert.</p>
           <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
           <h3>Demo</h3>
-          <div class="alert-message warning fade in" data-alert="alert" >
-            <a class="close" data-alert-dismiss="true" href="#">&times;</a>
+          <div class="alert-message warning fade in">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
             <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
           </div>
-          <div class="alert-message block-message error fade in" data-alert="alert" >
-            <a class="close" data-alert-dismiss="true" href="#">&times;</a>
+          <div class="alert-message block-message error fade in">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
             <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
             <div class="alert-actions">
               <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
@@ -718,6 +756,259 @@ $('#my-modal').bind('hidden', function () {
       </div>
     </section>
 
+
+     <!-- Button
+    ================================================== -->
+
+    <section id="button">
+      <div class="page-header">
+        <h1>Button <small>bootstrap-button.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>This plugin offers additional functionality for managing button state.</p>
+          <a href="../js/bootstrap-button.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-button.js</h3>
+          <pre class="prettyprint linenums">$('.tabs').button()</pre>
+            <h3>Markup</h3>
+          <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
+<pre class="prettyprint linenums">
+&lt;!-- Add data-toggle="button" to activate toggling on a single button --&gt;
+&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
+
+&lt;!-- Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group --&gt;
+&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Add data-toggle="buttons-radio" for radio style toggling on btn-group --&gt;
+&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+          <h3>Methods</h3>
+          <h4>$().button('toggle')</h4>
+          <p>Toggles push state. Gives btn the look that it's been activated.</p>
+          <p><span class="label notice">Notice</span> You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.</p>
+          <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="button" &gt;...&lt;/button&gt;</pre>
+          <h4>$().button('loading')</h4>
+          <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
+          </p>
+           <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+           <h4>$().button('reset')</h4>
+           <p>Resets button state - swaps text to original text.</p>
+           <h4>$().button(string)</h4>
+           <p>Resets button state - swaps text to any data defined text state.</p>
+<pre class="prettyprint linenums">&lt;button class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
+&lt;script&gt;
+  $('.btn').button('complete')
+&lt;/scrip&gt;</pre>
+          <h3>Demo</h3>
+          <table class="striped-table">
+            <tbody>
+             <tr>
+               <td>Stateful</td>
+               <td>
+                  <button id="fat-btn" data-loading-text="loading..." class="btn">
+                    Loading State
+                  </button>
+                  <script>
+                    $(function() {
+                      var btn = $('#fat-btn').click(function () {
+                        btn.button('loading')
+                        setTimeout(function () {
+                          btn.button('reset')
+                        }, 3000)
+                      })
+                    })
+                  </script>
+                </td>
+             </tr>
+             <tr>
+               <td>Single Toggle</td>
+               <td>
+                  <button class="btn" data-toggle="button">Single Toggle</button>
+                </td>
+             </tr>
+             <tr>
+               <td>Checkbox</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-checkbox">
+                    <button class="btn">Left</button>
+                    <button class="btn">Middle</button>
+                    <button class="btn">Right</button>
+                  </div>
+               </td>
+             </tr>
+             <tr>
+               <td>Radio</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-radio">
+                    <button class="btn">Left</button>
+                    <button class="btn">Middle</button>
+                    <button class="btn">Right</button>
+                  </div>
+               </td>
+             </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Collapse
+    ================================================== -->
+
+    <section id="collapse">
+      <div class="page-header">
+        <h1>collapse <small>bootstrap-collapse.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>The collapse plugin offers simple, flexible collapsible element support for making accordions and other collapsible ui components.</p>
+          <a href="../js/bootstrap-collapsible.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-collapse.js</h3>
+          <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
+          <h3>Options</h3>
+          <table class="striped-table">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 50px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>parent</td>
+               <td>selector</td>
+               <td>false</td>
+               <td>If selector then all collapsible elements under the specified parent will be closed when this collasabile item is shown. (similar to traditional accordion behavior)</td>
+             </tr>
+             <tr>
+               <td>toggle</td>
+               <td>boolean</td>
+               <td>true</td>
+               <td>Toggles the collapsible element on invocation</td>
+             </tr>
+            </tbody>
+          </table>
+          <h3>Markup</h3>
+          <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+          <pre class="prettyprint linenums">
+&lt;button class="btn danger" data-toggle="collapse" data-target="#demo"&gt;
+  simple collapsible
+&lt;/button&gt;
+
+&lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;</pre>
+         <p><span class="label notice">Notice</span> To add accordion like group management to a collapsible control just add the additional data attribute <code>data-parent="#selector"</code>. Refer to the demo below to see this in action.</p>
+          <h3>Methods</h3>
+          <h4>.collapse(options)</h4>
+          <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
+<pre class="prettyprint linenums">
+$('#myCollapsible').collapse({
+  toggle: false
+})</pre>
+          <h4>.collapse('toggle')</h4>
+          <p>Toggles a collapsible element to shown or hidden.</p>
+          <h4>.collapse('show')</h4>
+          <p>Shows a collapsible element.</p>
+          <h4>.collapse('hide')</h4>
+          <p>Hides a collapsible element.</p>
+          <h3>Events</h3>
+          <p>
+            Bootstrap's collapse class exposes a few events for hooking into collapse functionality.
+          </p>
+          <table class="striped-table">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>show</td>
+               <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>shown</td>
+               <td>This event is fired when a collapse element has been made visible to the user (will wait for css transitions to complete).</td>
+             </tr>
+             <tr>
+               <td>hide</td>
+               <td>
+                This event is fired immediately when the <code>hide</code> method has been called.
+               </td>
+             </tr>
+             <tr>
+               <td>hidden</td>
+               <td>This event is fired when a collapse element has been hidden from the user (will wait for css transitions to complete).</td>
+             </tr>
+            </tbody>
+          </table>
+
+<pre class="prettyprint linenums">
+$('#myCollapsible').bind('hidden', function () {
+  // do something ...
+})</pre>
+          <h3>Demo</h3>
+
+            <!-- single collapse -->
+            <p>
+              <button class="btn danger" data-toggle="collapse" data-target="#collapseDemoWrap">
+                simple collapsible
+              </button>
+            </p>
+
+            <div id="collapseDemoWrap" class="collapse">
+              <!-- group collapse -->
+              <dl id="accordion" >
+                <dt>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    Collapsible Group Item #1
+                  </a>
+                </dt>
+                <dd id="collapseOne" class="collapse in">
+                  <p>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </p>
+                </dd>
+                <dt>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    Collapsible Group Item #2
+                  </a>
+                </dt>
+                <dd id="collapseTwo" class="collapse">
+                  <p>
+                  Blog +1 eiusmod, williamsburg chambray craft beer brooklyn. Trust fund squid whatever, sunt hoodie skateboard mustache 3 wolf moon art party wes anderson ad leggings officia. Skateboard keytar incididunt gluten-free retro sartorial, single-origin coffee et viral. Art party blog sunt, readymade fugiat 8-bit aesthetic ex echo park fanny pack keytar. Thundercats sustainable labore, mustache adipisicing tattooed dolore aute occaecat velit 8-bit raw denim letterpress. In occaecat freegan, next level single-origin coffee chambray excepteur nihil duis exercitation adipisicing ex sartorial twee squid. You probably haven't heard of them fugiat ea retro eiusmod quis cosby sweater, +1 fap sapiente biodiesel banksy.
+                  </p>
+                </dd>
+                <dt>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    Collapsible Group Item #3
+                  </a>
+                </dt>
+                <dd id="collapseThree" class="collapse">
+                  <p>
+                  Tempor gentrify pariatur nihil salvia, irony synth incididunt odio commodo brunch aute. Four loko est vice echo park wes anderson jean shorts, tempor ea vero locavore. Seitan DIY dolore readymade williamsburg viral. Dolor fap master cleanse delectus, ad butcher labore duis vice mollit cillum exercitation eu banh mi. Austin banksy 3 wolf moon locavore sed, helvetica next level VHS you probably haven't heard of them ethical odio. Incididunt locavore minim, do seitan consequat qui thundercats labore before they sold out retro laborum. Esse twee readymade laboris fap vice, voluptate DIY.
+                  </p>
+                </dd>
+              </dl>
+            </div>
+        </div>
+      </div>
+    </section>
 
       <!-- Footer
       ================================================== -->
@@ -729,17 +1020,5 @@ $('#my-modal').bind('hidden', function () {
         </p>
       </footer>
     </div><!-- /container -->
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-transitions.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/application.js"></script>
   </body>
 </html>

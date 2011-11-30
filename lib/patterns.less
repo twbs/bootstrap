@@ -1,6 +1,6 @@
-/* Patterns.less
- * Repeatable UI elements outside the base styles provided from the scaffolding
- * ---------------------------------------------------------------------------- */
+// Patterns.less
+// Repeatable UI elements outside the base styles provided from the scaffolding
+// ----------------------------------------------------------------------------
 
 
 // NAVBAR (FIXED AND STATIC)
@@ -415,6 +415,7 @@ footer {
   .transition(.1s linear all);
 
   // Active and Disabled states
+  &.active,
   &:active {
     @shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
     .box-shadow(@shadow);
@@ -630,14 +631,6 @@ input[type=submit].btn {
 }
 
 
-
-
-
-
-
-
-
-
 // PATTERN ANIMATIONS
 // ------------------
 
@@ -647,6 +640,14 @@ input[type=submit].btn {
   &.in {
     opacity: 1;
   }
+}
+
+.collapse {
+  .transition(height .35s ease);
+  position:relative;
+  overflow:hidden;
+  height: 0;
+  &.in { height: auto; }
 }
 
 
