@@ -32,7 +32,9 @@
 
   Alert.prototype = {
 
-    close: function ( e ) {
+    constructor: Alert
+
+  , close: function ( e ) {
       var $element = $(this)
 
       $element = $element.hasClass('alert-message') ? $element : $element.parent()

@@ -31,7 +31,9 @@
 
   Button.prototype = {
 
-      setState: function (state) {
+      constructor: Button
+
+    , setState: function (state) {
         var d = 'disabled'
           , $el = this.$element
           , data = $el.data()

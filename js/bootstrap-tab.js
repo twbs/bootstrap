@@ -31,7 +31,9 @@
 
   Tab.prototype = {
 
-    show: function () {
+    constructor: Tab
+
+  , show: function () {
       var $this = this.element
         , $ul = $this.closest('ul:not(.dropdown-menu)')
         , href = $this.attr('data-target') || $this.attr('href')
