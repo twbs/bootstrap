@@ -4,45 +4,41 @@
 // ----------------------------------------
 
 
+
 // BASELINE STYLES
 // ---------------
 
 table {
   width: 100%;
-  padding: 0;
   margin-bottom: @baseLineHeight;
-  font-size: @baseFontSize;
-  border-collapse: collapse;
-  th,
-  td {
-    padding: 10px 10px 9px;
-    line-height: @baseLineHeight;
-    text-align: left;
-  }
-  th {
-    padding-top: 9px;
-    font-weight: bold;
-    vertical-align: middle;
-  }
-  td {
-    vertical-align: top;
-    border-top: 1px solid #ddd;
-  }
-  // When scoped to row, fix th in tbody
-  tbody th {
-    border-top: 1px solid #ddd;
-    vertical-align: top;
-  }
+}
+th,
+td {
+  padding: 8px;
+  line-height: @baseLineHeight;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  font-weight: bold;
+  vertical-align: bottom;
+}
+td {
+  vertical-align: top;
+}
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 
-// CONDENSED VERSION
-// -----------------
+// CONDENSED TABLE W/ HALF PADDING
+// -------------------------------
 
 .condensed-table {
   th,
   td {
-    padding: 5px 5px 4px;
+    padding: 4px 5px;
   }
 }
 
@@ -53,13 +49,14 @@ table {
 .bordered-table {
   border: 1px solid #ddd;
   border-collapse: separate; // Done so we can round those corners!
-  *border-collapse: collapse; /* IE7, collapse table to remove spacing */
   .border-radius(4px);
   th + th,
   td + td,
-  th + td {
+  th + td,
+  td + th {
     border-left: 1px solid #ddd;
   }
+  // For first th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:first-child,
   tbody:first-child tr:first-child td:first-child {
     .border-radius(4px 0 0 0);
@@ -68,15 +65,34 @@ table {
   tbody:first-child tr:first-child td:last-child {
     .border-radius(0 4px 0 0);
   }
-  tbody tr:last-child td:first-child {
+  // For first th or td in the first row in the first thead or tbody
+  thead:last-child tr:last-child th:first-child,
+  tbody:last-child tr:last-child td:first-child {
     .border-radius(0 0 0 4px);
   }
-  tbody tr:last-child td:last-child {
+  thead:last-child tr:last-child th:last-child,
+  tbody:last-child tr:last-child td:last-child {
     .border-radius(0 0 4px 0);
   }
 }
 
 
+// ZEBRA-STRIPING
+// --------------
+
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.striped-table {
+  tbody {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+
+
+/*
 // ----------------
 
 // This is a duplication of the main grid .columns() mixin, but subtracts 20px to account for input padding and border
@@ -101,24 +117,6 @@ table {
   .span14    { .tableColumns(14); }
   .span15    { .tableColumns(15); }
   .span16    { .tableColumns(16); }
-}
-
-
-// ZEBRA-STRIPING
-// --------------
-
-// Default zebra-stripe styles (alternating gray and transparent backgrounds)
-.striped-table {
-  tbody {
-    tr:nth-child(odd) td,
-    tr:nth-child(odd) th {
-      background-color: #f9f9f9;
-    }
-    tr:hover td,
-    tr:hover th {
-      background-color: #f5f5f5;
-    }
-  }
 }
 
 
@@ -225,4 +223,4 @@ table {
   .headerSortDown.purple {
     background-color: lighten(@purple, 40%);
   }
-}
+}*/
