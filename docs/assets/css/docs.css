@@ -39,45 +39,6 @@ body > .navbar-fixed .brand:hover {
 }
 
 
-/* Github buttons
--------------------------------------------------- */
-.github-btn + .github-btn {
-  margin-left: 10px;
-}
-.github-btn {
-  display: inline-block;
-  height: 20px;
-  overflow: hidden;
-}
-.github-btn .btn,
-.github-btn .count {
-  float: left;
-  padding: 1px 5px 1px 4px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 16px;
-  color: #666;
-  text-shadow: 0 1px 0 #fff;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-.github-btn .btn {
-  box-shadow: none;
-}
-.github-btn .github-ico {
-  float: left;
-  margin-right: 4px;
-  opacity: .65;
-}
-.github-btn .count {
-  display: inline-block;
-  margin-left: 2px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-
 /* Jumbotrons
 -------------------------------------------------- */
 .jumbotron {
@@ -304,13 +265,6 @@ body > .navbar-fixed .brand:hover {
   margin-left: 10px;
 }
 
-/* scrollspy docs */
-
-.scrollspy-example {
-  overflow: auto;
-  height: 200px;
-  position: relative;
-}
 
 /* Popover docs
 -------------------------------------------------- */
@@ -473,19 +427,3 @@ h2 + table {
   }
 }
 
-#accordion dt a{
-  display:block;
-  padding: 9px 15px;
-  line-height: 1;
-  background-color: whiteSmoke;
-  border: 1px solid #EEE;
-  border-top-color: #fff;
-}
-
-#accordion dt:first-child a {
-  border-top-color:#eee;
-}
-
-#accordion dd p {
-  padding: 10px;
-}

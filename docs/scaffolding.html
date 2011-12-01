@@ -50,8 +50,17 @@
       ================================================== -->
       <header class="jumbotron subhead" id="overview">
         <h1>Scaffolding</h1>
-        <p class="lead">Responsive 12-column grid and fixed- and fluid-width layouts</p>
+        <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
       </header>
+
+      <!-- Work in progress sub nav for docs -->
+      <div class="navbar subnav docked-top">
+        <ul class="nav">
+          <li class="active"><a href="#">Grid system</a></li>
+          <li><a href="#">Layouts</a></li>
+          <li><a href="#">Responsive</a></li>
+        </ul>
+      </div>
 
 
 
@@ -162,7 +171,7 @@
   </div>
 
   <h2>Grid customization</h2>
-  <table class="striped-table">
+  <table class="bordered-table striped-table">
     <thead>
       <tr>
         <th>Variable</th>
@@ -173,12 +182,12 @@
     <tbody>
       <tr>
         <td><code>@gridColumns</code></td>
-        <td>16</td>
+        <td>12</td>
         <td>The number of columns within the grid</td>
       </tr>
       <tr>
         <td><code>@gridColumnWidth</code></td>
-        <td>40px</td>
+        <td>60px</td>
         <td>The width of each column within the grid</td>
       </tr>
       <tr>
@@ -274,7 +283,7 @@
     <div class="span8">
       <h2>Supported devices</h2>
       <p>Bootstrap supports a handful of media queries to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
-      <table class="striped-table">
+      <table class="bordered-table striped-table">
         <thead>
           <tr>
             <th>Label</th>
