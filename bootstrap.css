@@ -257,45 +257,76 @@ a:hover {
 .row:after {
   clear: both;
 }
-[class*="span"] {
+.span1 {
   display: inline;
   float: left;
   margin-left: 20px;
-}
-.span1 {
   width: 60px;
 }
 .span2 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 140px;
 }
 .span3 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 220px;
 }
 .span4 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 300px;
 }
 .span5 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 380px;
 }
 .span6 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 460px;
 }
 .span7 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 540px;
 }
 .span8 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 620px;
 }
 .span9 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 700px;
 }
 .span10 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 780px;
 }
 .span11 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 860px;
 }
 .span12 {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   width: 940px;
 }
 .offset1 {
@@ -2431,12 +2462,27 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
 }
+footer.menu {
+  margin-left: -20px;
+  zoom: 1;
+}
+footer.menu:before, footer.menu:after {
+  display: table;
+  *display: inline;
+  content: "";
+  zoom: 1;
+}
+footer.menu:after {
+  clear: both;
+}
 footer.menu > ul {
-  display: block;
+  margin: 0px;
   padding-bottom: 20px;
   list-style: none;
-  width: 140px;
+  display: inline;
   float: left;
+  margin-left: 20px;
+  width: 140px;
 }
 footer.menu > ul > li:first-child {
   text-weight: bold;
