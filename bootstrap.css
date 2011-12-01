@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Nov 30 22:05:44 PST 2011
+ * Date: Thu Dec  1 15:13:07 CST 2011
  */
 html, body {
   margin: 0;
@@ -2565,6 +2565,14 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   }
 }
 @media (min-width: 768px) and (max-width: 940px) {
+  .row {
+    margin-left: -20px;
+  }
+  [class*="span"] {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+  }
   .container {
     width: 748px;
   }

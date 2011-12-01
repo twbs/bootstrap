@@ -93,6 +93,16 @@
   .offset(@columnOffset: 1) {
     margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @gridGutterWidth;
   }
+  
+  .row {
+    margin-left: -@gridGutterWidth;
+  }
+
+  [class*="span"] {
+    display: inline;
+    float: left;
+    margin-left: @gridGutterWidth;
+  }
 
   // 16cols at 30px wide with 16px gutters
   .container {
