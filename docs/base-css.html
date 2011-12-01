@@ -50,7 +50,7 @@
       ================================================== -->
       <header class="jumbotron subhead" id="overview">
         <h1>Base CSS</h1>
-        <p class="lead">The core typography, form, and table styles of Bootstrap</p>
+        <p class="lead">On top of the scaffolding, basic HTML elements are styled and enhanced with extensible classes to provide a fresh, consistent look and feel.</p>
       </header>
 
 
@@ -519,7 +519,7 @@
 
   <h2>Table options</h2>
   <table class="bordered-table striped-table">
-    <thead>
+  <thead>
       <tr>
         <th>Name</th>
         <th>Class</th>
@@ -551,7 +551,7 @@
         <td>
           <code>.condensed-table</code>
         </td>
-        <td>Cuts padding in half, from 10px to 5px, within all <code>td</code> and <code>th</code> elements</td>
+        <td>Cuts vertical padding in half, from 8px to 4px, within all <code>td</code> and <code>th</code> elements</td>
       </tr>
     </tbody>
   </table>
@@ -630,7 +630,49 @@
 &lt;table class="striped-table"&gt;
   ...
 &lt;/table&gt;</pre>
-  <h3>3. Condensed table</h3>
+  <h3>3. Bordered table</h3>
+  <p>Add borders around the entire table and between each row, plus a bit of rounded corners for aesthetic purposes.</p>
+  <p><span class="label">Note</span> Bordered tables do not work well with <code>rowspan</code> due to somewhat hacky CSS applied to the tables. Sorry about that!</p>
+  <table class="bordered-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td colspan="2">Some One</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      </tr>
+        <td>Joe</td>
+        <td>Sixpack</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stu</td>
+        <td>Dent</td>
+        <td>Code</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
+<pre class="prettyprint linenums">
+&lt;table class="striped-table"&gt;
+  ...
+&lt;/table&gt;</pre>
+  <h3>4. Condensed table</h3>
   <p>Make your tables more compact by adding the <code>.condensed-table</code> class to cut table cell padding in half (from 10px to 5px).</p>
   <table class="condensed-table">
     <thead>
@@ -666,7 +708,7 @@
 &lt;table class="condensed-table"&gt;
   ...
 &lt;/table&gt;</pre>
-  <h3>4. Striped table w/ TableSorter.js</h3>
+  <h3>5. Striped table w/ TableSorter.js</h3>
   <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
   <table class="striped-table" id="sortTableExample">
     <thead>

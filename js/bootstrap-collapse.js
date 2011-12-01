@@ -34,7 +34,9 @@
 
   Collapse.prototype = {
 
-    dimension: function () {
+    constructor: Collapse
+
+  , dimension: function () {
       var hasWidth = this.$element.hasClass('width')
       return hasWidth ? 'width' : 'height'
     }

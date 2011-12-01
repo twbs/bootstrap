@@ -145,7 +145,7 @@ select:focus {
 .formColumns(@columnSpan: 1) {
   display: inline-block;
   float: none;
-  width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
   margin-left: 0;
 }
 input,
@@ -220,15 +220,15 @@ textarea[readonly] {
   }
 }
 // Error
-form .clearfix.error {
+.control-group.error {
   .formFieldState(#b94a48, #ee5f5b, lighten(#ee5f5b, 30%));
 }
 // Warning
-form .clearfix.warning {
+.control-group.warning {
   .formFieldState(#c09853, #ccae64, lighten(#CCAE64, 5%));
 }
 // Success
-form .clearfix.success {
+.control-group.success {
   .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
 }
 
