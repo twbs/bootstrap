@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Nov 30 22:05:44 PST 2011
+ * Date: Fri Dec  2 11:32:48 PST 2011
  */
 html, body {
   margin: 0;
@@ -1312,6 +1312,14 @@ table {
 .nav .active > a {
   background-color: #222;
   background-color: rgba(0, 0, 0, 0.5);
+}
+.nav .divider {
+  height: 40px;
+  width: 1px;
+  margin: 0 5px;
+  overflow: hidden;
+  background-color: #222;
+  border-right: 1px solid #444;
 }
 .nav.secondary-nav {
   float: right;
