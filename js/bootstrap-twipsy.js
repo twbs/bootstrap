@@ -34,7 +34,9 @@
 
   Twipsy.prototype = {
 
-    show: function() {
+    constructor: Twipsy
+
+  , show: function() {
       var pos
         , actualWidth
         , actualHeight
@@ -183,7 +185,7 @@
     return this
   }
 
-  $.fn.twipsy.initWith = function (options, Constructor, name) {
+  $.fn.twipsy.initWith = function (options, Base, name) {
     var twipsy
       , binder
       , eventIn
@@ -209,7 +211,7 @@
       var twipsy = $.data(ele, name)
 
       if (!twipsy) {
-        twipsy = new Constructor(ele, $.fn.twipsy.elementOptions(ele, options))
+        twipsy = new Base(ele, $.fn.twipsy.elementOptions(ele, options))
         $.data(ele, name, twipsy)
       }
 

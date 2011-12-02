@@ -39,71 +39,6 @@ body > .navbar-fixed .brand:hover {
 }
 
 
-/* Github buttons
--------------------------------------------------- */
-.github-btn {
-  display: inline-block;
-  height: 20px;
-  overflow: hidden;
-}
-.github-btn .gh-btn,
-.github-btn .gh-count,
-.github-btn .gh-ico {
-  float: left;
-}
-.github-btn .gh-btn,
-.github-btn .gh-count {
-  padding: 1px 5px 1px 4px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 16px;
-  color: #666;
-  text-shadow: 0 1px 0 #fff;
-  cursor: pointer;
-}
-.github-btn .gh-btn {
-  background-color: #e6e6e6;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
-  background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
-  background-repeat: no-repeat;
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
-}
-.github-btn .gh-btn:hover {
-  color: #333;
-  text-decoration: none;
-  background-position: 0 -10px;
-}
-.github-btn .gh-btn:active {
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15);
-     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15);
-          box-shadow: inset 0 2px 4px rgba(0,0,0,.15);
-}
-.github-btn .gh-ico {
-  margin-right: 4px;
-  opacity: .65;
-}
-.github-btn .gh-btn:hover .gh-ico {
-  opacity: .75;
-}
-.github-btn .gh-count {
-  display: inline-block;
-  margin-left: 2px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-
 /* Jumbotrons
 -------------------------------------------------- */
 .jumbotron {
@@ -330,13 +265,6 @@ body > .navbar-fixed .brand:hover {
   margin-left: 10px;
 }
 
-/* scrollspy docs */
-
-.scrollspy-example {
-  overflow: auto;
-  height: 200px;
-  position: relative;
-}
 
 /* Popover docs
 -------------------------------------------------- */
@@ -499,19 +427,3 @@ h2 + table {
   }
 }
 
-#accordion dt a{
-  display:block;
-  padding: 9px 15px;
-  line-height: 1;
-  background-color: whiteSmoke;
-  border: 1px solid #EEE;
-  border-top-color: #fff;
-}
-
-#accordion dt:first-child a {
-  border-top-color:#eee;
-}
-
-#accordion dd p {
-  padding: 10px;
-}
