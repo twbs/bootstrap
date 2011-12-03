@@ -2533,19 +2533,19 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     width: auto;
     margin: 0;
   }
-  .form-horizontal .control-group > label {
+  .horizontal-form .control-group > label {
     float: none;
     width: auto;
     padding-top: 0;
     text-align: left;
   }
-  .form-horizontal .controls {
+  .horizontal-form .controls {
     margin-left: 0;
   }
-  .form-horizontal .control-list {
+  .horizontal-form .control-list {
     padding-top: 0;
   }
-  .form-horizontal .form-actions {
+  .horizontal-form .form-actions {
     padding-left: 0;
   }
 }
