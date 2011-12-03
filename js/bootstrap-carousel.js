@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-alert.js v2.0.0
+ * bootstrap-carousel.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
  * Copyright 2011 Twitter, Inc.
@@ -22,41 +22,22 @@
 
   "use strict"
 
- /* ALERT CLASS DEFINITION
-  * ====================== */
+ /* CAROUSEL CLASS DEFINITION
+  * ========================= */
 
-  var dismiss = '[data-dismiss="alert"]'
-    , Alert = function ( el ) {
-        $(el).delegate(dismiss, 'click', this.close)
-      }
+  var Carousel = function ( el ) {
+    $(el).delegate(dismiss, 'click', this.close)
+  }
 
-  Alert.prototype = {
-
-    constructor: Alert
-
-  , close: function ( e ) {
-      var $element = $(this)
-
-      $element = $element.hasClass('alert-message') ? $element : $element.parent()
-      e && e.preventDefault()
-      $element.removeClass('in')
-
-      function removeElement() {
-        $element.remove()
-      }
-
-      $.support.transition && $element.hasClass('fade') ?
-        $element.bind($.support.transition.end, removeElement) :
-        removeElement()
-    }
+  Carousel.prototype = {
 
   }
 
 
- /* ALERT PLUGIN DEFINITION
-  * ======================= */
+ /* CAROUSEL PLUGIN DEFINITION
+  * ========================== */
 
-  $.fn.alert = function ( option ) {
+  $.fn.carousel = function ( option ) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('alert')
@@ -65,14 +46,14 @@
     })
   }
 
-  $.fn.alert.Alert = Alert
+  $.fn.carousel.Carousel = Carousel
 
 
- /* ALERT DATA-API
-  * ============== */
+ /* CAROUSEL DATA-API
+  * ================= */
 
-  $(function () {
-    $('body').delegate(dismiss, 'click.alert.data-api', Alert.prototype.close)
-  })
+  // $(function () {
+  //   $('body').delegate(dismiss, 'click.alert.data-api', Alert.prototype.close)
+  // })
 
 }( window.jQuery || window.ender )

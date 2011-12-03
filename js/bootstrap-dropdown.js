@@ -32,7 +32,9 @@
 
   Dropdown.prototype = {
 
-    toggle: function ( e ) {
+    constructor: Dropdown
+
+  , toggle: function ( e ) {
       var li = $(this).parent('li')
         , isActive = li.hasClass('open')
 

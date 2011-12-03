@@ -39,7 +39,9 @@
 
   ScrollSpy.prototype = {
 
-      refresh: function () {
+      constructor: ScrollSpy
+
+    , refresh: function () {
         this.targets = this.$body
           .find(this.selector)
           .map(function () {
