@@ -111,11 +111,39 @@
 
 // Transitions
 .transition(@transition) {
-     -webkit-transition: @transition;
-        -moz-transition: @transition;
-         -ms-transition: @transition;
-          -o-transition: @transition;
+     -webkit-transition: ~`"@{transition}".replace(/transform/gi, "-webkit-transform")`;
+        -moz-transition: ~`"@{transition}".replace(/transform/gi, "-moz-transform")`;
+         -ms-transition: ~`"@{transition}".replace(/transform/gi, "-ms-transform")`;
+          -o-transition: ~`"@{transition}".replace(/transform/gi, "-o-transform")`;
              transition: @transition;
+}
+.transition-property(@property) {
+     -webkit-transition-property: ~`"@{property}".replace(/transform/gi, "-webkit-transform")`;
+        -moz-transition-property: ~`"@{property}".replace(/transform/gi, "-moz-transform")`;
+         -ms-transition-property: ~`"@{property}".replace(/transform/gi, "-ms-transform")`;
+          -o-transition-property: ~`"@{property}".replace(/transform/gi, "-o-transform")`;
+             transition-property: @property;
+}
+.transition-duration(@duration) {
+     -webkit-transition-duration: @duration;
+        -moz-transition-duration: @duration;
+         -ms-transition-duration: @duration;
+          -o-transition-duration: @duration;
+             transition-duration: @duration;
+}
+.transition-timing-function(@func) {
+     -webkit-transition-timing-function: @func;
+        -moz-transition-timing-function: @func;
+         -ms-transition-timing-function: @func;
+          -o-transition-timing-function: @func;
+             transition-timing-function: @func;
+}
+.transition-delay(@delay) {
+     -webkit-transition-delay: @delay;
+        -moz-transition-delay: @delay;
+         -ms-transition-delay: @delay;
+          -o-transition-delay: @delay;
+             transition-delay: @delay;
 }
 
 // Background clipping
@@ -219,4 +247,20 @@
   -khtml-opacity: @opacity / 100;
     -moz-opacity: @opacity / 100;
          opacity: @opacity / 100;
+}
+
+// Transforms
+.transform-origin(@x: 50%, @y: 50%){
+-webkit-transform-origin: @x @y;
+   -moz-transform-origin: @x @y;
+	-ms-transform-origin: @x @y;
+	 -o-transform-origin: @x @y;
+		transform-origin: @x @y;
+}
+.transform(@typeAmount: scale(1,1)){
+-webkit-transform: @typeAmount;
+   -moz-transform: @typeAmount;
+	-ms-transform: @typeAmount;
+	 -o-transform: @typeAmount;
+		transform: @typeAmount;
 }
