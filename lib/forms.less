@@ -83,6 +83,7 @@ select {
 }
 
 // mini reset for non-html5 file types
+input[type=image],
 input[type=checkbox],
 input[type=radio] {
   width: auto;
@@ -92,6 +93,10 @@ input[type=radio] {
   *margin-top: 0; /* IE6-7 */
   line-height: normal;
   border: none;
+}
+
+input[type=image] {
+  .box-shadow(none);
 }
 
 input[type=file] {
