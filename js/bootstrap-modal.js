@@ -34,7 +34,9 @@
 
   Modal.prototype = {
 
-      toggle: function () {
+      constructor: Modal
+
+    , toggle: function () {
         return this[!this.isShown ? 'show' : 'hide']()
       }
 
