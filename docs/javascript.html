@@ -25,7 +25,18 @@
 
     <!-- Le javascript -->
     <!-- placed up here so that the inline demos can be next to their markup -->
-    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+
+    <script type="text/javascript">
+      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
+      $(document).ready(function() {
+        $('.nav .active a').click(function(e) {
+          e.preventDefault();
+          $(this).parent().siblings().toggle();
+        });
+      });
+    </script>
+
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="../js/bootstrap-transition.js"></script>
