@@ -12,7 +12,7 @@ audio:not([controls]){display:none;}
 sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline;}
 sup{top:-0.5em;}
 sub{bottom:-0.25em;}
-img{border:0;-ms-interpolation-mode:bicubic;}
+img{max-width:100%;height:auto;border:0;-ms-interpolation-mode:bicubic;}
 button,input,select,textarea{margin:0;font-size:100%;vertical-align:baseline;*vertical-align:middle;}
 button,input{*overflow:visible;line-height:normal;}
 button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}

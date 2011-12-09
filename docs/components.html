@@ -687,9 +687,9 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <script type="text/javascript">
       // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
       $(document).ready(function() {
-        $('.nav .active a').click(function(e) {
+        $('.nav .active').click(function(e) {
           e.preventDefault();
-          $(this).parent().siblings().toggle();
+          $(this).siblings().toggle();
         });
       });
     </script>
