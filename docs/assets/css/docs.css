@@ -315,11 +315,6 @@ h2 + table {
 -------------------------------------------------- */
 @media (max-width: 480px) {
 
-  /* Hide the nav for now */
-  body > .navbar-fixed .nav {
-    display: none;
-  }
-
   /* Change up some type stuff */
   h1 small {
     display: block;
@@ -365,11 +360,6 @@ h2 + table {
 
 @media (max-width: 768px) {
 
-  /* Hide the nav for now */
-  body > .navbar-fixed .nav {
-    display: none;
-  }
-
   /* Adjust the jumbotron */
   .jumbotron .benefits {
     position: relative;
@@ -393,6 +383,9 @@ h2 + table {
   /* Unfloat the back to top link in footer */
   .footer .pull-right {
     float: none;
+  }
+  .footer p {
+    margin-bottom: 9px;
   }
 
 }
@@ -423,7 +416,7 @@ h2 + table {
   /* Provide enough space on right-hand side for benefits list */
   .jumbotron h1,
   .jumbotron p {
-    margin-right: 40%;
+    margin-right: 20%;
   }
 }
 

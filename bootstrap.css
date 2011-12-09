@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Nov 30 00:54:47 PST 2011
+ * Date: Fri Dec  9 11:23:25 PST 2011
  */
 html, body {
   margin: 0;
@@ -1175,7 +1175,6 @@ table {
   }
 }*/
 .navbar {
-  height: 40px;
   overflow: visible;
 }
 .navbar-inner {
@@ -2131,7 +2130,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: #404040;
 }
 .subnav {
-  position: relative;
   background-color: #eeeeee;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#f5f5f5), to(#eeeeee));
   background-image: -moz-linear-gradient(top, #f5f5f5, #eeeeee);
@@ -2142,12 +2140,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-image: linear-gradient(top, #f5f5f5, #eeeeee);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff, 0 0 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 1px 0 #ffffff, 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1px 0 #ffffff, 0 0 5px rgba(0, 0, 0, 0.5);
 }
 .subnav a {
-  padding: 10px 15px;
+  padding: 8px 10px;
+  font-size: 12px;
   color: #0069d6;
   text-shadow: 0 1px 0 #fff;
   border-left: 1px solid #f9f9f9;
@@ -2515,44 +2514,35 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
 }
+.hidden {
+  display: none;
+  visibility: hidden;
+}
 @media (max-width: 480px) {
-  .container {
-    width: auto;
-    padding: 0 15px;
-  }
-  .row {
-    margin-left: 0;
-  }
-  [class*="span"] {
-    float: none;
-    display: block;
-    width: auto;
-    margin: 0;
-  }
   .modal {
     width: auto;
     margin: 0;
   }
-  .form-horizontal .control-group > label {
+  .horizontal-form .control-group > label {
     float: none;
     width: auto;
     padding-top: 0;
     text-align: left;
   }
-  .form-horizontal .controls {
+  .horizontal-form .controls {
     margin-left: 0;
   }
-  .form-horizontal .control-list {
+  .horizontal-form .control-list {
     padding-top: 0;
   }
-  .form-horizontal .form-actions {
+  .horizontal-form .form-actions {
     padding-left: 0;
   }
 }
-@media (min-width: 480px) and (max-width: 768px) {
+@media (max-width: 768px) {
   .container {
     width: auto;
-    padding: 0 10px;
+    padding: 0 20px;
   }
   .row {
     margin-left: 0;
@@ -2562,6 +2552,55 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     display: block;
     width: auto;
     margin: 0;
+  }
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 180px;
+    padding-top: 40px;
+    list-style: none;
+  }
+  .nav, .nav > li:last-child a {
+    -webkit-border-radius: 0 0 4px 0;
+    -moz-border-radius: 0 0 4px 0;
+    border-radius: 0 0 4px 0;
+  }
+  .nav > li {
+    float: none;
+    display: none;
+  }
+  .nav > li > a {
+    float: none;
+    background-color: #222;
+  }
+  .nav > .active {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .navbar ul .active > a {
+    background-color: transparent;
+  }
+  .nav > .active a:after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-top: 8px;
+    margin-left: 6px;
+    text-indent: -99999px;
+    vertical-align: top;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #ffffff;
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+    content: "&darr;";
+  }
+  .nav > .active a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
   }
 }
 @media (min-width: 768px) and (max-width: 940px) {
@@ -2641,60 +2680,83 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     margin-left: 768px;
   }
 }
-/*
-// LARGE DESKTOP & UP
-// ------------------
-
 @media (min-width: 1210px) {
-
-  // Reset grid variables
-  @gridColumns:       12;
-  @gridColumnWidth:   70px;
-  @gridGutterWidth:   30px;
-  @siteWidth:         1170px;
-
-  // Bring grid mixins to recalculate widths
-  .columns(@columnSpan: 1) {
-    width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
-  }
-  .offset(@columnOffset: 1) {
-    margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @gridGutterWidth;
-  }
-
   .container {
-    width: @siteWidth;
+    width: 1170px;
   }
   [class*="span"] {
-    margin-left: @gridGutterWidth;
+    margin-left: 30px;
   }
-
-  // Default columns
-  .span1     { .columns(1); }
-  .span2     { .columns(2); }
-  .span3     { .columns(3); }
-  .span4     { .columns(4); }
-  .span5     { .columns(5); }
-  .span6     { .columns(6); }
-  .span7     { .columns(7); }
-  .span8     { .columns(8); }
-  .span9     { .columns(9); }
-  .span10    { .columns(10); }
-  .span11    { .columns(11); }
-  .span12    { .columns(12); }
-
-  // Offset column options
-  .offset1   { .offset(1); }
-  .offset2   { .offset(2); }
-  .offset3   { .offset(3); }
-  .offset4   { .offset(4); }
-  .offset5   { .offset(5); }
-  .offset6   { .offset(6); }
-  .offset7   { .offset(7); }
-  .offset8   { .offset(8); }
-  .offset9   { .offset(9); }
-  .offset10  { .offset(10); }
-  .offset11  { .offset(11); }
-  .offset12  { .offset(12); }
-
+  .span1 {
+    width: 70px;
+  }
+  .span2 {
+    width: 170px;
+  }
+  .span3 {
+    width: 270px;
+  }
+  .span4 {
+    width: 370px;
+  }
+  .span5 {
+    width: 470px;
+  }
+  .span6 {
+    width: 570px;
+  }
+  .span7 {
+    width: 670px;
+  }
+  .span8 {
+    width: 770px;
+  }
+  .span9 {
+    width: 870px;
+  }
+  .span10 {
+    width: 970px;
+  }
+  .span11 {
+    width: 1070px;
+  }
+  .span12 {
+    width: 1170px;
+  }
+  .offset1 {
+    margin-left: 100px;
+  }
+  .offset2 {
+    margin-left: 200px;
+  }
+  .offset3 {
+    margin-left: 300px;
+  }
+  .offset4 {
+    margin-left: 400px;
+  }
+  .offset5 {
+    margin-left: 500px;
+  }
+  .offset6 {
+    margin-left: 600px;
+  }
+  .offset7 {
+    margin-left: 700px;
+  }
+  .offset8 {
+    margin-left: 800px;
+  }
+  .offset9 {
+    margin-left: 900px;
+  }
+  .offset10 {
+    margin-left: 1000px;
+  }
+  .offset11 {
+    margin-left: 1100px;
+  }
+  .offset12 {
+    margin-left: 1200px;
+  }
 }
-*/
