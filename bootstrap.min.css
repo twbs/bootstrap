@@ -78,7 +78,7 @@ ul.unstyled{margin-left:0;list-style:none;}
 dl{margin-bottom:18px;}dl dt,dl dd{line-height:18px;}
 dl dt{font-weight:bold;}
 dl dd{margin-left:9px;}
-hr{margin:20px 0 19px;border:0;border-bottom:1px solid #eee;}
+hr{margin:27px 0;border:0;border-top:1px solid #e5e5e5;border-bottom:1px solid #fff;}
 strong{font-style:inherit;font-weight:bold;}
 em{font-style:italic;font-weight:inherit;line-height:inherit;}
 .muted{color:#bfbfbf;}

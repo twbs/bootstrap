@@ -160,7 +160,10 @@ body > .navbar-fixed .brand:hover {
   margin-bottom: 18px;
 }
 .marketing h1 {
-  margin-bottom: 18px;
+  margin: 36px 0 27px;
+  font-size: 36px;
+  font-weight: 300;
+  text-align: center;
 }
 .marketing h2,
 .marketing h3 {
@@ -308,6 +311,11 @@ pre.prettyprint {
 /* Make tables spaced out a bit more */
 h2 + table {
   margin-top: 5px;
+}
+
+/* Example sites showcase */
+.example-sites img {
+  width: 290px;
 }
 
 
