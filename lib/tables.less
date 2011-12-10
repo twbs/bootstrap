@@ -50,11 +50,20 @@ tbody tr:last-child td {
   border: 1px solid #ddd;
   border-collapse: separate; // Done so we can round those corners!
   .border-radius(4px);
+  th,
+  td {
+    border-bottom: 0px;
+    border-top: 1px solid #ddd;
+  }
   th + th,
   td + td,
   th + td,
   td + th {
     border-left: 1px solid #ddd;
+  }
+  thead:first-child tr:first-child th,
+  tbody:first-child tr:first-child td {
+    border-top: 0px;
   }
   // For first th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:first-child,
