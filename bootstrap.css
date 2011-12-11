@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Dec  9 14:39:08 PST 2011
+ * Date: Sat Dec 10 22:20:18 PST 2011
  */
 html, body {
   margin: 0;
@@ -2062,7 +2062,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .tabs li.open a.menu:after, .tabs .dropdown.open .dropdown-toggle:after {
   border-top-color: #555;
 }
-.pills a {
+.pills > a {
   padding: 0 15px;
   margin: 5px 3px 5px 0;
   line-height: 30px;
@@ -2071,13 +2071,13 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
-.pills a:hover {
+.pills > a:hover {
   color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #00438a;
 }
-.pills .active a {
+.pills .active > a {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #0069d6;
