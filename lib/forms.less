@@ -117,8 +117,9 @@ input[type=file] {
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
 }
 
-// Make multiple select elements height not fixed
-select[multiple] {
+// Make multiple or sized select elements height not fixed
+select[multiple],
+select[size] {
   height: inherit;
   background-color: @white; // Fixes Chromium bug of unreadable items
 }
