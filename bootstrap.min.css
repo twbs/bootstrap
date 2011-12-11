@@ -190,6 +190,7 @@ tbody tr:last-child th,tbody tr:last-child td{border-bottom:0;}
 .nav{position:relative;left:0;display:block;float:left;margin:0 10px 0 0;}.nav>li{display:block;float:left;}
 .nav a{display:block;float:none;padding:10px 10px 11px;line-height:19px;text-decoration:none;}.nav a:hover{color:#ffffff;text-decoration:none;}
 .nav .active>a{background-color:#222;background-color:rgba(0, 0, 0, 0.5);}
+.nav .divider{height:40px;width:1px;margin:0 5px;overflow:hidden;background-color:#222;border-right:1px solid #444;}
 .nav.secondary-nav{float:right;margin-left:10px;margin-right:0;}.nav.secondary-nav .dropdown-menu{right:0;border:0;}
 .nav .dropdown-toggle:hover,.nav .dropdown.open .dropdown-toggle{background:#444;background:rgba(255, 255, 255, 0.05);}
 .nav .dropdown-menu{background-color:#333;}.nav .dropdown-menu .dropdown-toggle{color:#ffffff;}.nav .dropdown-menu .dropdown-toggle.open{background:#444;background:rgba(255, 255, 255, 0.05);}
