@@ -323,6 +323,11 @@ h2 + table {
 -------------------------------------------------- */
 @media (max-width: 480px) {
 
+  /* Reduce padding above jumbotron */
+  body {
+    padding-top: 70px;
+  }
+
   /* Change up some type stuff */
   h1 small {
     display: block;
@@ -361,6 +366,21 @@ h2 + table {
   /* Don't space out quick links so much */
   .quick-links {
     margin: 40px 0 0;
+  }
+  /* hide the bullets on mobile since our horizontal space is limited */
+  .quick-links .divider {
+    display: none;
+  }
+
+  /* center example sites */
+  .example-sites {
+    margin-left: 0;
+  }
+  .example-sites a {
+    float: none;
+    display: block;
+    max-width: 300px;
+    margin: 0 auto 18px;
   }
 
 }

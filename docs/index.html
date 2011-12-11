@@ -54,7 +54,7 @@
         <header class="jumbotron masthead">
           <div class="inner">
             <h1>Bootstrap,<br> from Twitter</h1>
-            <p class="lead">Bootstrap is a responsive frontend toolkit from Twitter designed to kickstart web development, complete with core HTML, CSS, and JS for grids, type, forms, navigation, and many more components.</p>
+            <p class="lead">Bootstrap is a responsive frontend toolkit from Twitter designed to kickstart web development, featuring HTML, CSS, and JS for dozens of base elements and common design components.</p>
             <p class="download-info">
               <a href="https://github.com/twitter/bootstrap/" class="btn primary btn-large">Download on GitHub</a>
               <a href="./scaffolding.html" class="btn btn-large">Get started &rarr;</a>
@@ -236,6 +236,15 @@
     <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 
     <script type="text/javascript">
+      // When ready...
+      window.addEventListener("load",function() {
+        // Set a timeout...
+        setTimeout(function(){
+          // Hide the address bar!
+          window.scrollTo(0, 1);
+        }, 0);
+      });
+
       // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
       $(document).ready(function() {
         $('.nav .active').click(function(e) {
