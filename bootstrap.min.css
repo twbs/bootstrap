@@ -96,11 +96,12 @@ legend{display:block;width:100%;margin-bottom:27px;font-size:19.5px;line-height:
 label,input,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:normal;font-weight:13px;line-height:18px;}
 label{display:block;margin-bottom:5px;color:#404040;}
 input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:18px;padding:4px;font-size:13px;line-height:18px;color:#808080;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;cursor:pointer;}
+input[type=image],input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;cursor:pointer;}
 input[type=file]{padding:initial;line-height:initial;border:initial;background-color:#ffffff;background-color:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 input[type=button],input[type=reset],input[type=submit]{width:auto;height:auto;}
 select,input[type=file]{height:27px;*margin-top:4px;line-height:27px;}
 select[multiple]{height:inherit;background-color:#ffffff;}
+input[type=image]{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 textarea{height:auto;}
 input,textarea{-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-webkit-transition:border linear 0.2s,box-shadow linear 0.2s;-moz-transition:border linear 0.2s,box-shadow linear 0.2s;-ms-transition:border linear 0.2s,box-shadow linear 0.2s;-o-transition:border linear 0.2s,box-shadow linear 0.2s;transition:border linear 0.2s,box-shadow linear 0.2s;}
 input:focus,textarea:focus{border-color:rgba(82, 168, 236, 0.8);-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);outline:0;}
