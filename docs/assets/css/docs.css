@@ -24,8 +24,6 @@ body > .navbar-fixed .brand {
   padding-left: 0;
   float: right;
   font-weight: bold;
-  color: #000;
-  text-shadow: 0 1px 0 rgba(255,255,255,.1);
 }
 body > .navbar-fixed .brand:hover {
   text-decoration: none;
