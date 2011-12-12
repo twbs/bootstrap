@@ -382,6 +382,12 @@ h2 + table {
     max-width: 300px;
     margin: 0 auto 18px;
   }
+
+  table code {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 }
 
 
