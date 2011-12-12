@@ -63,7 +63,7 @@
       <div class="row">
         <div class="span4">
           <h3>Why LESS?</h3>
-          <p>Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by Alexis Sellier. It makes developing systems-based CSS faster, easier, and more fun.</p>
+          <p>Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
         </div>
         <div class="span4">
           <h3>What's included?</h3>
@@ -72,7 +72,7 @@
         <div class="span4">
           <h3>Learn more</h3>
           <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
-          <p>Visit the official website at http://lesscss.org to learn more.</p>
+          <p>Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.</p>
         </div>
       </div>
       <div class="row">
@@ -98,11 +98,7 @@
         <h1>Variables <small>from variables.less</small></h1>
       </div>
 
-      <div class="row">
-        <div class="span3">
           <h3>Hyperlinks</h3>
-        </div>
-        <div class="span9">
           <table class="bordered-table striped-table">
             <thead>
               <tr>
@@ -124,92 +120,70 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
 
       <div class="row">
-        <div class="span3">
+        <div class="span6">
           <h3>Grayscale colors</h3>
-        </div>
-        <div class="span9">
           <table class="bordered-table striped-table">
             <tbody>
               <tr>
                 <td><code>@black</code></td>
                 <td>#000</td>
-                <td>Black</td>
               </tr>
               <tr>
                 <td><code>@grayDark</code></td>
                 <td><code>lighten(@black, 25%)</code></td>
-                <td>Dark gray</td>
               </tr>
               <tr>
                 <td><code>@gray</code></td>
                 <td><code>lighten(@black, 50%)</code></td>
-                <td>Medium gray</td>
               </tr>
               <tr>
                 <td><code>@grayLight</code></td>
                 <td><code>lighten(@black, 75%)</code></td>
-                <td>Light gray</td>
               </tr>
               <tr>
                 <td><code>@grayLighter</code></td>
                 <td><code>lighten(@black, 90%)</code></td>
-                <td>Lighter gray</td>
               </tr>
               <tr>
                 <td><code>@white</code></td>
                 <td>#fff</td>
-                <td>White</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="span3">
+        <div class="span6">
           <h3>Accent colors</h3>
-        </div>
-        <div class="span9">
           <table class="bordered-table striped-table">
             <tbody>
               <tr>
                 <td><code>@blue</code></td>
                 <td>#049CDB</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@green</code></td>
                 <td>#46a546</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@red</code></td>
                 <td>#9d261d</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@yellow</code></td>
                 <td>#ffc40d</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@orange</code></td>
                 <td>#f89406</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@pink</code></td>
                 <td>#c3325f</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@purple</code></td>
                 <td>#7a43b6</td>
-                <td></td>
               </tr>
             </tbody>
           </table>
@@ -217,48 +191,36 @@
       </div>
 
       <div class="row">
-        <div class="span3">
+        <div class="span6">
           <h3>Grid system</h3>
-        </div>
-        <div class="span9">
           <table class="bordered-table striped-table">
             <tbody>
               <tr>
                 <td><code>@gridColumns</code></td>
                 <td>12</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@gridColumnWidth</code></td>
                 <td>60px</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@gridGutterWidth</code></td>
                 <td>20px</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@siteWidth</code></td>
                 <td><code>(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1))</code></td>
-                <td></td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="span3">
+        <div class="span6">
           <h3>Typography</h3>
-        </div>
-        <div class="span9">
           <table class="bordered-table striped-table">
             <tbody>
               <tr>
                 <td><code>@baseFontSize</code></td>
                 <td>13px</td>
-                <td></td>
               </tr>
               <tr>
                 <td><code>@baseFontFamily</code></td>
@@ -268,7 +230,6 @@
               <tr>
                 <td><code>@baseLineHeight</code></td>
                 <td>18px</td>
-                <td></td>
               </tr>
             </tbody>
           </table>
@@ -431,7 +392,7 @@
     <h2 id="compiling">Compiling Less</h2>
     <p>After modifying the <code>.less</code> files in /lib/, you'll need to recompile them in order to regenerate the bootstrap-*.*.*.css and bootstrap-*.*.*.min.css files. If you're submitting a pull request to GitHub, you must always recompile.</p>
     <h3>Ways to compile</h3>
-    <table class="striped-table">
+    <table class="bordered-table striped-table">
       <thead>
         <tr>
           <th style="width: 120px;">Method</th>
@@ -467,11 +428,23 @@
           </td>
         </tr>
         <tr>
-          <td>Mac app</td>
+          <td><a href="http://incident57.com/less/" target="_blank">Unofficial Mac app</a></td>
           <td>
             <p><a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.</p>
             <p>If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.</p>
           </td>
+        </tr>
+        <tr>
+          <td><a href="http://crunchapp.net/" target="_blank">Crunch</a></td>
+          <td>Crunch is a great looking LESS editor and compiler built on Adobe Air.</td>
+        </tr>
+        <tr>
+          <td><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></td>
+          <td>Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.</td>
+        </tr>
+        <tr>
+          <td><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></td>
+          <td>Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.</td>
         </tr>
       </tbody>
     </table>
@@ -485,16 +458,26 @@
       ================================================== -->
       <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>
-          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br>
-          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-        </p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
     </div><!-- /container -->
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+
+    <script type="text/javascript">
+      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
+      $(document).ready(function() {
+        $('.nav .active').click(function(e) {
+          e.preventDefault();
+          $(this).siblings().toggle();
+        });
+      });
+    </script>
+
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>

@@ -53,15 +53,6 @@
         <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
       </header>
 
-      <!-- Work in progress sub nav for docs -->
-      <div class="navbar subnav docked-top">
-        <ul class="nav">
-          <li class="active"><a href="#">Grid system</a></li>
-          <li><a href="#">Layouts</a></li>
-          <li><a href="#">Responsive</a></li>
-        </ul>
-      </div>
-
 
 
 <!-- Grid system
@@ -183,22 +174,22 @@
       <tr>
         <td><code>@gridColumns</code></td>
         <td>12</td>
-        <td>The number of columns within the grid</td>
+        <td>Number of columns</td>
       </tr>
       <tr>
         <td><code>@gridColumnWidth</code></td>
         <td>60px</td>
-        <td>The width of each column within the grid</td>
+        <td>Width of each column</td>
       </tr>
       <tr>
         <td><code>@gridGutterWidth</code></td>
         <td>20px</td>
-        <td>The negative space between each column</td>
+        <td>Negative space between columns</td>
       </tr>
       <tr>
         <td><code>@siteWidth</code></td>
         <td><em>Computed sum of all columns and gutters</em></td>
-        <td>We use some basic match to count the number of columns and gutters and set the width of the <code>.fixed-container()</code> mixin.</td>
+        <td>Counts number of columns and gutters to set width of the <code>.fixed-container()</code> mixin</td>
       </tr>
     </tbody>
   </table>
@@ -372,16 +363,26 @@
       ================================================== -->
       <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>
-          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br>
-          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-        </p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
     </div><!-- /container -->
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+
+    <script type="text/javascript">
+      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
+      $(document).ready(function() {
+        $('.nav .active').click(function(e) {
+          e.preventDefault();
+          $(this).siblings().toggle();
+        });
+      });
+    </script>
+
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
