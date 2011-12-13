@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Dec 12 09:51:27 PST 2011
+ * Date: Tue Dec 13 19:09:22 CET 2011
  */
 html, body {
   margin: 0;
@@ -1021,11 +1021,18 @@ tbody tr:last-child th, tbody tr:last-child td {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+.bordered-table th, .bordered-table td {
+  border-bottom: 0px;
+  border-top: 1px solid #ddd;
+}
 .bordered-table th + th,
 .bordered-table td + td,
 .bordered-table th + td,
 .bordered-table td + th {
   border-left: 1px solid #ddd;
+}
+.bordered-table thead:first-child tr:first-child th, .bordered-table tbody:first-child tr:first-child td {
+  border-top: 0px;
 }
 .bordered-table thead:first-child tr:first-child th:first-child, .bordered-table tbody:first-child tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
