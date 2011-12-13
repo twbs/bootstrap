@@ -30,7 +30,7 @@ uglify:
 		uglifyjs -o js/min/bootstrap-popover.js js/bootstrap-popover.js;\
 		uglifyjs -o js/min/bootstrap-scrollspy.js js/bootstrap-scrollspy.js;\
 		uglifyjs -o js/min/bootstrap-tab.js js/bootstrap-tab.js;\
-		uglifyjs -o js/min/bootstrap-transition.js js/bootstrap-transition.js;\
+		uglifyjs -o js/min/bootstrap-transitions.js js/bootstrap-transitions.js;\
 		uglifyjs -o js/min/bootstrap-twipsy.js js/bootstrap-twipsy.js;\
 	else \
 		echo "You must have the UGLIFYJS minifier installed in order to minify Bootstrap's js."; \
