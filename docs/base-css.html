@@ -655,6 +655,7 @@
         <td>English</td>
       </tr>
       </tr>
+        <td>3</td>
         <td>Joe</td>
         <td>Sixpack</td>
         <td>English</td>
@@ -667,9 +668,8 @@
       </tr>
     </tbody>
   </table>
-  <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
 <pre class="prettyprint linenums">
-&lt;table class="striped-table"&gt;
+&lt;table class="bordered-table"&gt;
   ...
 &lt;/table&gt;</pre>
   <h3>4. Condensed table</h3>
@@ -990,40 +990,34 @@
   <table class="bordered-table striped-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Preview</th>
+        <th>Button</th>
         <th>Class</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th>Default</th>
-        <td><a class="btn" href="#">Button</a></td>
+        <td><a class="btn" href="#">Default</a></td>
         <td><code>.btn</code></td>
         <td>Standard gray button with gradient</td>
       </tr>
       <tr>
-        <th>Primary</th>
-        <td><a class="btn primary" href="#">Button</a></td>
+        <td><a class="btn primary" href="#">Primary</a></td>
         <td><code>.primary</code></td>
         <td>Makes button blue for more visual weight to indicate the primary action in a set of buttons</td>
       </tr>
       <tr>
-        <th>Info</th>
-        <td><a class="btn info" href="#">Button</a></td>
+        <td><a class="btn info" href="#">Info</a></td>
         <td><code>.info</code></td>
         <td>Used as an alternate to the default styles</td>
       </tr>
       <tr>
-        <th>Success</th>
-        <td><a class="btn success" href="#">Button</a></td>
+        <td><a class="btn success" href="#">Success</a></td>
         <td><code>.success</code></td>
         <td>Used to indicate a successful or positive action will be taken</td>
       </tr>
       <tr>
-        <th>Danger</th>
-        <td><a class="btn danger" href="#">Button</a></td>
+        <td><a class="btn danger" href="#">Danger</a></td>
         <td><code>.danger</code></td>
         <td>Used to indicate a dangerous or potentially negative action will be taken</td>
       </tr>
@@ -1108,16 +1102,26 @@
       ================================================== -->
       <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>
-          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br>
-          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-        </p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
     </div><!-- /container -->
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+
+    <script type="text/javascript">
+      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
+      $(document).ready(function() {
+        $('.nav .active').click(function(e) {
+          e.preventDefault();
+          $(this).siblings().toggle();
+        });
+      });
+    </script>
+
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>

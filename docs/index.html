@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Bootstrap, from Twitter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -53,10 +54,10 @@
         <header class="jumbotron masthead">
           <div class="inner">
             <h1>Bootstrap,<br> from Twitter</h1>
-            <p class="lead">Bootstrap is a responsive frontend toolkit from Twitter designed to kickstart web development, complete with core HTML, CSS, and JS for grids, type, forms, navigation, and many more components.</p>
+            <p class="lead">Bootstrap is a responsive frontend toolkit from Twitter designed to kickstart web development, featuring HTML, CSS, and JS for dozens of base elements and common design components.</p>
             <p class="download-info">
               <a href="https://github.com/twitter/bootstrap/" class="btn primary btn-large">Download on GitHub</a>
-              <a href="./scaffolding.html" class="btn btn-large">Get started</a>
+              <a href="./scaffolding.html" class="btn btn-large">Get started &rarr;</a>
               Currently v2.0.0
             </p>
 
@@ -105,6 +106,43 @@
 
 
         <div class="marketing">
+          <h1>Built with Bootstrap</h1>
+          <ul class="media-grid example-sites">
+            <li>
+              <a href="http://kippt.com/" target="_blank">
+                <img src="assets/img/example-sites/kippt.png" alt="Kippt">
+              </a>
+            </li>
+            <li>
+              <a href="http://www.fleetio.com/" target="_blank">
+                <img src="assets/img/example-sites/fleetio.png" alt="Fleetio">
+              </a>
+            </li>
+            <li>
+              <a href="http://www.jshint.com/" target="_blank">
+                <img src="assets/img/example-sites/jshint.png" alt="JS Hint">
+              </a>
+            </li>
+<!--
+            <li>
+              <a href="http://bartop.co/" target="_blank">
+                <img src="assets/img/example-sites/bartop.png" alt="Bartop.co">
+              </a>
+            </li>
+            <li>
+              <a href="http://railwayjs.com/" target="_blank">
+                <img src="assets/img/example-sites/railwayjs.png" alt="RailwayJS">
+              </a>
+            </li>
+            <li>
+              <a href="http://www.totalwireframe.com/" target="_blank">
+                <img src="assets/img/example-sites/totalwireframe.png" alt="Total Wireframe">
+              </a>
+            </li>
+ -->
+          </ul>
+
+          <h1>Designed for everyone, everywhere</h1>
           <div class="row">
             <div class="span4">
               <img class="icon" src="assets/img/glyphicons/glyphicons_042_group.png">
@@ -151,7 +189,7 @@
               <p>What good is an awesome design component without easy-to-use, proper, and extensible interactions? With Bootstrap, you get custom-built jQuery plugins to bring your projects to life.</p>
             </div>
             <div class="span4">
-              <img class="icon" src="assets/img/glyphicons/glyphicons_155_show_thumbnails.png">
+              <img class="icon" src="assets/img/less-small.png">
               <h2>Built on LESS</h2>
               <p>Where vanilla CSS falters, LESS excels. Variables, nesting, operations, and mixins in LESS makes coding CSS faster and more efficient with minimal overhead.</p>
             </div>
@@ -175,7 +213,7 @@
             <div class="span3">
               <img class="small-icon" src="assets/img/icon-twitter.png">
               <h3>Made at Twitter</h3>
-              <p>Brought to you by experienced engineers and designers.</p>
+              <p>Brought to you by an experienced <a href="http://twitter.com/fat">engineer</a> and <a href="http://twitter.com/mdo">designer</a>.</p>
             </div>
           </div><!--/row-->
         </div>
@@ -196,6 +234,26 @@
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+
+    <script type="text/javascript">
+      // When ready...
+      window.addEventListener("load",function() {
+        // Set a timeout...
+        setTimeout(function(){
+          // Hide the address bar!
+          window.scrollTo(0, 1);
+        }, 0);
+      });
+
+      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
+      $(document).ready(function() {
+        $('.nav .active').click(function(e) {
+          e.preventDefault();
+          $(this).siblings().toggle();
+        });
+      });
+    </script>
+
     <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>

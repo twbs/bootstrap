@@ -53,7 +53,8 @@ select,
   .border-radius(3px);
 }
 
-/* Mini reset for unique input types */
+// Mini reset for unique input types
+input[type=image],
 input[type=checkbox],
 input[type=radio] {
   width: auto;
@@ -96,6 +97,11 @@ input[type=file] {
 select[multiple] {
   height: inherit;
   background-color: @white; // Fixes Chromium bug?
+}
+
+// Remove shadow from image inputs
+input[type=image] {
+  .box-shadow(none);
 }
 
 textarea {
