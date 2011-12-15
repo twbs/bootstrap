@@ -632,7 +632,6 @@
 &lt;/table&gt;</pre>
   <h3>3. Bordered table</h3>
   <p>Add borders around the entire table and between each row, plus a bit of rounded corners for aesthetic purposes.</p>
-  <p><span class="label">Note</span> Bordered tables do not work well with <code>rowspan</code> due to somewhat hacky CSS applied to the tables. Sorry about that!</p>
   <table class="bordered-table">
     <thead>
       <tr>
@@ -658,13 +657,12 @@
         <td>3</td>
         <td>Joe</td>
         <td>Sixpack</td>
-        <td>English</td>
+        <td rowspan="2">Code</td>
       </tr>
       <tr>
         <td>3</td>
         <td>Stu</td>
         <td>Dent</td>
-        <td>Code</td>
       </tr>
     </tbody>
   </table>
