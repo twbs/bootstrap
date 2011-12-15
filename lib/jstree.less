@@ -1,7 +1,3 @@
-.jstree a {
-    border: 1px solid white;
-}
-
 /* for the admin interface */
 form .aligned ul {
     padding-left: 0;
@@ -15,4 +11,16 @@ form .aligned ul {
 
 .jstree {
     height: 300px;
+    padding-top: 1px;
+}
+
+.jstree a {
+    padding: 3px 4px !important;
+}
+
+.jstree .selected > a {
+    #gradient > .vertical(lighten(@yellow, 10%), @yellow);
+    /*background-color: @yellow;*/
+    border: 1px dashed @gray;
+    margin: -1px !important;
 }
