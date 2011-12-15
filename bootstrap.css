@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Dec 12 09:51:27 PST 2011
+ * Date: Tue Dec 13 20:09:55 CET 2011
  */
 html, body {
   margin: 0;
@@ -1958,103 +1958,222 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   cursor: default;
 }
 .tabbable {
+  zoom: 1;
   margin-bottom: 18px;
 }
-.tabbable .tabs {
-  margin-bottom: 0;
-  border-bottom: 0;
-}
-.tabbable .tab-content {
-  padding: 19px;
-  border: 1px solid #ddd;
-}
-.tabbable.tabs-bottom .tabs > li {
-  margin-top: -1px;
-  margin-bottom: 0;
-}
-.tabbable.tabs-bottom .tabs > li > a {
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
-}
-.tabbable.tabs-bottom .tabs > li > a:hover {
-  border-bottom-color: transparent;
-  border-top-color: #ddd;
-}
-.tabbable.tabs-bottom .tabs > .active > a, .tabbable.tabs-bottom .tabs > .active > a:hover {
-  border-color: transparent #ddd #ddd #ddd;
-}
-.tabbable.tabs-left, .tabbable.tabs-right {
-  zoom: 1;
-}
-.tabbable.tabs-left:before,
-.tabbable.tabs-right:before,
-.tabbable.tabs-left:after,
-.tabbable.tabs-right:after {
+.tabbable:before, .tabbable:after {
   display: table;
   *display: inline;
   content: "";
   zoom: 1;
 }
-.tabbable.tabs-left:after, .tabbable.tabs-right:after {
+.tabbable:after {
   clear: both;
 }
-.tabbable.tabs-left .tabs, .tabbable.tabs-right .tabs {
-  width: 100px;
+.tabbable > .tab-content {
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0;
+  padding: 0 0 18px 0;
 }
-.tabbable.tabs-left .tabs > li, .tabbable.tabs-right .tabs > li {
+.tabbable > .tabs + .tab-content {
+  padding: 18px 0 0 0;
+}
+.tabbable > .tabs {
+  margin: 0;
+}
+.tabbable > .tabs.pull-left, .tabbable > .tabs.pull-right {
+  width: 140px;
+}
+.tabbable > .tabs.pull-left.span1, .tabbable > .tabs.pull-right.span1 {
+  width: 60px;
+}
+.tabbable > .tabs.pull-left.span2, .tabbable > .tabs.pull-right.span2 {
+  width: 140px;
+}
+.tabbable > .tabs.pull-left.span3, .tabbable > .tabs.pull-right.span3 {
+  width: 220px;
+}
+.tabbable > .tabs.pull-left.span4, .tabbable > .tabs.pull-right.span4 {
+  width: 300px;
+}
+.tabbable > .tabs.pull-left.span5, .tabbable > .tabs.pull-right.span5 {
+  width: 380px;
+}
+.tabbable > .tabs.pull-left.span6, .tabbable > .tabs.pull-right.span6 {
+  width: 460px;
+}
+.tabbable > .tabs.pull-left.span7, .tabbable > .tabs.pull-right.span7 {
+  width: 540px;
+}
+.tabbable > .tabs.pull-left.span8, .tabbable > .tabs.pull-right.span8 {
+  width: 620px;
+}
+.tabbable > .tabs.pull-left {
+  border-width: 0 1px 0 0;
+  text-align: right;
+}
+.tabbable > .tabs.pull-left > li {
   float: none;
-  margin-bottom: -1px;
-}
-.tabbable.tabs-left .tabs > li > a, .tabbable.tabs-right .tabs > li > a {
+  margin-right: -1px;
   margin-bottom: 2px;
 }
-.tabbable.tabs-left .tabs > li > a:hover, .tabbable.tabs-right .tabs > li > a:hover {
-  border-color: transparent;
-}
-.tabbable.tabs-left .tab-content {
-  margin-left: 100px;
-}
-.tabbable.tabs-left .tabs {
-  float: left;
-}
-.tabbable.tabs-left .tabs > li {
-  margin-right: -1px;
-}
-.tabbable.tabs-left .tabs > li > a {
+.tabbable > .tabs.pull-left > li > a {
   margin-right: 0;
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
+  padding: 7px 15px 7px 7px;
+  line-height: normal;
 }
-.tabbable.tabs-left .tabs > li > a:hover {
-  border-right-color: #ddd;
+.tabbable > .tabs.pull-left > li > a:hover {
+  border-color: #eee #ddd #eee #eee;
 }
-.tabbable.tabs-left .tabs .active > a, .tabbable.tabs-left .tabs .active > a:hover {
-  border-color: #ddd;
-  border-right-color: transparent;
+.tabbable > .tabs.pull-left .active > a, .tabbable > .tabs.pull-left .active > a:hover {
+  border-color: #ddd transparent #ddd #ddd;
 }
-.tabbable.tabs-right .tab-content {
-  margin-right: 100px;
+.tabbable > .tabs.pull-left + .tab-content {
+  margin: 0;
+  margin-left: 140px;
+  padding: 0 0 0 20px;
+  border-width: 0 0 0 1px;
 }
-.tabbable.tabs-right .tabs {
+.tabbable > .tabs.pull-left.span1 + .tab-content {
+  margin: 0;
+  margin-left: 60px;
+}
+.tabbable > .tabs.pull-left.span2 + .tab-content {
+  margin: 0;
+  margin-left: 140px;
+}
+.tabbable > .tabs.pull-left.span3 + .tab-content {
+  margin: 0;
+  margin-left: 220px;
+}
+.tabbable > .tabs.pull-left.span4 + .tab-content {
+  margin: 0;
+  margin-left: 300px;
+}
+.tabbable > .tabs.pull-left.span5 + .tab-content {
+  margin: 0;
+  margin-left: 380px;
+}
+.tabbable > .tabs.pull-left.span6 + .tab-content {
+  margin: 0;
+  margin-left: 460px;
+}
+.tabbable > .tabs.pull-left.span7 + .tab-content {
+  margin: 0;
+  margin-left: 540px;
+}
+.tabbable > .tabs.pull-left.span8 + .tab-content {
+  margin: 0;
+  margin-left: 620px;
+}
+.tabbable > .tabs.pull-right {
+  border-width: 0 0 0 1px;
   float: right;
 }
-.tabbable.tabs-right .tabs > li {
+.tabbable > .tabs.pull-right > li {
+  float: none;
   margin-left: -1px;
+  margin-bottom: 2px;
 }
-.tabbable.tabs-right .tabs > li > a {
-  margin-left: 0;
+.tabbable > .tabs.pull-right > li > a {
+  margin-right: 0;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+  padding: 7px 7px 7px 15px;
+  line-height: normal;
+}
+.tabbable > .tabs.pull-right > li > a:hover {
+  border-color: #eee #eee #eee #ddd;
+}
+.tabbable > .tabs.pull-right .active > a, .tabbable > .tabs.pull-right .active > a:hover {
+  border-color: #ddd #ddd #ddd transparent;
+}
+.tabbable > .tabs.pull-right + .tab-content {
+  margin: 0;
+  margin-right: 140px;
+  padding: 0 20px 0 0;
+  border-width: 0 1px 0 0;
+}
+.tabbable > .tabs.pull-right.span1 + .tab-content {
+  margin: 0;
+  margin-right: 60px;
+}
+.tabbable > .tabs.pull-right.span2 + .tab-content {
+  margin: 0;
+  margin-right: 140px;
+}
+.tabbable > .tabs.pull-right.span3 + .tab-content {
+  margin: 0;
+  margin-right: 220px;
+}
+.tabbable > .tabs.pull-right.span4 + .tab-content {
+  margin: 0;
+  margin-right: 300px;
+}
+.tabbable > .tabs.pull-right.span5 + .tab-content {
+  margin: 0;
+  margin-right: 380px;
+}
+.tabbable > .tabs.pull-right.span6 + .tab-content {
+  margin: 0;
+  margin-right: 460px;
+}
+.tabbable > .tabs.pull-right.span7 + .tab-content {
+  margin: 0;
+  margin-right: 540px;
+}
+.tabbable > .tabs.pull-right.span8 + .tab-content {
+  margin: 0;
+  margin-right: 620px;
+}
+.tabbable > .tab-content + .tabs {
+  border-width: 1px 0 0 0;
+}
+.tabbable > .tab-content + .tabs > li {
+  margin-top: -1px;
+}
+.tabbable > .tab-content + .tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+.tabbable > .tab-content + .tabs > li > a:hover {
+  border-color: #ddd #eee #eee #eee;
+}
+.tabbable > .tab-content + .tabs .active > a, .tabbable > .tab-content + .tabs .active > a:hover {
+  border-color: transparent #ddd #ddd #ddd;
+}
+.tabbable.bordered-tabbable > .tab-content, .tabbable.bordered-tabbable > .tabs.pull-left + .tab-content, .tabbable.bordered-tabbable > .tabs.pull-right + .tab-content {
+  border-width: 1px;
+  padding: 20px;
+}
+.tabbable.bordered-tabbable > .tabs {
+  border-width: 0px;
+}
+.tabbable.bordered-tabbable .tab-content {
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+.tabbable.bordered-tabbable > .tabs + .tab-content {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+.tabbable.bordered-tabbable > .tabs.pull-left + .tab-content {
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
 }
-.tabbable.tabs-right .tabs > li > a:hover {
-  border-left-color: #ddd;
-}
-.tabbable.tabs-right .tabs .active > a, .tabbable.tabs-right .tabs .active > a:hover {
-  border-color: #ddd;
-  border-left-color: transparent;
+.tabbable.bordered-tabbable > .tabs.pull-right + .tab-content {
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
 }
 .tabs .menu-dropdown, .tabs .dropdown-menu {
   top: 35px;

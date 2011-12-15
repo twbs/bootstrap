@@ -248,7 +248,7 @@
 &lt;/ul&gt;
 </pre>
       <h3>Tabbable tabs</h3>
-      <p>As mentioned above, you can bring your tabs to life with a simple plugin. Here we have integrated all four variations of the tabs&mdash;default (top), right, bottom, left&mdash;with example tab areas.</p>
+      <p>As mentioned above, you can bring your tabs to life with a simple plugin. In a <code>.tabbable</code>, you can place the tabs above or below the content.</p>
 
       <div class="tabbable">
         <ul class="tabs" data-tabs="tabs">
@@ -272,56 +272,8 @@
           </div>
         </div>
       </div>
-
-       <div class="row">
-        <div class="span4">
-          <div class="tabbable tabs-left">
-            <ul class="tabs" data-tabs="tabs">
-              <li class="active"><a href="#1">Section 1</a></li>
-              <li><a href="#2">Section 2</a></li>
-              <li><a href="#3">Section 3</a></li>
-            </ul>
-            <div class="tab-content" id="myTabContent2">
-              <div class="tab-pane active" id="1">
-                <h4>Section 1</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="2">
-                <h4>Section 2</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="3">
-                <h4>Section 3</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="span4 offset1">
-          <div class="tabbable tabs-right">
-            <ul class="tabs" data-tabs="tabs">
-              <li class="active"><a href="#1">Section 1</a></li>
-              <li><a href="#2">Section 2</a></li>
-              <li><a href="#3">Section 3</a></li>
-            </ul>
-            <div class="tab-content" id="myTabContent3">
-              <div class="tab-pane active" id="1">
-                <h4>Section 1</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="2">
-                <h4>Section 2</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="3">
-                <h4>Section 3</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <hr>
+      
       <div class="tabbable tabs-bottom">
         <div class="tab-content">
           <div class="tab-pane active" id="1">
@@ -344,8 +296,151 @@
           <li><a href="#4">Section 4</a></li>
         </ul>
       </div>
+      
+      <h3>Vertical tabs</h3>
+      <p>Alternatively you can place the tabs on the left side using <code>.pull-left</code> or on the right using <code>.pull-right</code>.
+      <div class="tabbable">
+        <ul class="tabs pull-left" data-tabs="tabs">
+          <li class="active"><a href="#1">Section 1</a></li>
+          <li><a href="#2">Yes, this is section two</a></li>
+          <li><a href="#3">Section 3</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent2">
+          <div class="tab-pane active" id="1">
+            <h4>Section 1</h4>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <h4>Section 2</h4>
+            <p>I'm section 2.</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <h4>Section 3</h4>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+      
+      <div class="tabbable">
+        <ul class="tabs pull-right span3" data-tabs="tabs">
+          <li><a href="#1">Section 1</a></li>
+          <li class="active"><a href="#2">Yes, this is section two</a></li>
+          <li><a href="#3">Section 3</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent3">
+          <div class="tab-pane" id="1">
+            <h4>Section 1</h4>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+          </div>
+          <div class="tab-pane active" id="2">
+            <h4>Section 2</h4>
+            <p>I'm section 2.</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <h4>Section 3</h4>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+          </div>
+        </div>
+      </div>
 
+      <h3>Bordered tabbables</h3>
+      <p>Do you like borders around your tab pages? Simply add the class <code>.bordered-tabbable</code>.</p>
+      <div class="tabbable bordered-tabbable">
+        <ul class="tabs" data-tabs="tabs">
+          <li class="active"><a href="#1">Section 1</a></li>
+          <li><a href="#2">Section 2</a></li>
+          <li><a href="#3">Section 3</a></li>
+          <li><a href="#4">Section 4</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <p>Oh hai #1!</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <p>Oh hai #2!</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <p>Oh hai #3!</p>
+          </div>
+          <div class="tab-pane" id="4">
+            <p>Oh hai #4!</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="tabbable bordered-tabbable">
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <p>Oh hai #1!</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <p>Oh hai #2!</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <p>Oh hai #3!</p>
+          </div>
+          <div class="tab-pane" id="4">
+            <p>Oh hai #4!</p>
+          </div>
+        </div>
+        <ul class="tabs" data-tabs="tabs">
+          <li class="active"><a href="#1">Section 1</a></li>
+          <li><a href="#2">Section 2</a></li>
+          <li><a href="#3">Section 3</a></li>
+          <li><a href="#4">Section 4</a></li>
+        </ul>
+      </div>
+      
+      <div class="row">
+        <div class="span4">
+          <div class="tabbable bordered-tabbable">
+            <ul class="tabs pull-left" data-tabs="tabs">
+              <li class="active"><a href="#1">Section 1</a></li>
+              <li><a href="#2">Section 2</a></li>
+              <li><a href="#3">Section 3</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent2">
+              <div class="tab-pane active" id="1">
+                <h4>Section 1</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="2">
+                <h4>Section 2</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="3">
+                <h4>Section 3</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="span4 offset1">
+          <div class="tabbable bordered-tabbable">
+            <ul class="tabs pull-right" data-tabs="tabs">
+              <li class="active"><a href="#1">Section 1</a></li>
+              <li><a href="#2">Section 2</a></li>
+              <li><a href="#3">Section 3</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent3">
+              <div class="tab-pane active" id="1">
+                <h4>Section 1</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="2">
+                <h4>Section 2</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="3">
+                <h4>Section 3</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <p>In addition to tabs, we have pills! Though a bit more limited in functionality, they share much of the same markup.</p>
       <hr>
       <h3>Basic pills example</h3>

@@ -45,108 +45,163 @@
   }
 }
 
+.tabsOffsetLeft(@columnOffset: 2) {
+  margin: 0;
+  margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1));
+}
+
+.tabsOffsetRight(@columnOffset: 2) {
+  margin: 0;
+  margin-right: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1));
+}
+
 .tabbable {
+  .clearfix;
   margin-bottom: @baseLineHeight;
+  > .tab-content {
+    border-color: #ddd;
+    border-style: solid;
+    border-width: 0;
+    padding: 0 0 @baseLineHeight 0;
+  }
+  > .tabs + .tab-content {
+    padding: @baseLineHeight 0 0 0;
+  }
 
-  // Tabs on top
-  .tabs {
-    margin-bottom: 0;
-    border-bottom: 0;
-  }
-  .tab-content {
-    padding: 19px;
-    border: 1px solid #ddd;
-  }
-
-  // Tabs on bottom
-  &.tabs-bottom .tabs > li {
-    margin-top: -1px;
-    margin-bottom: 0;
-  }
-  &.tabs-bottom .tabs > li > a {
-    .border-radius(0 0 4px 4px);
-    &:hover {
-      border-bottom-color: transparent;
-      border-top-color: #ddd;
+  > .tabs {
+    margin: 0;
+    &.pull-left,
+    &.pull-right {
+      .columns(2);
+      &.span1    { .columns(1); }
+      &.span2    { .columns(2); }
+      &.span3    { .columns(3); }
+      &.span4    { .columns(4); }
+      &.span5    { .columns(5); }
+      &.span6    { .columns(6); }
+      &.span7    { .columns(7); }
+      &.span8    { .columns(8); }
     }
-  }
-  &.tabs-bottom .tabs > .active > a,
-  &.tabs-bottom .tabs > .active > a:hover {
-    border-color: transparent #ddd #ddd #ddd;
-  }
 
-  // Tabs on left and right
-  &.tabs-left,
-  &.tabs-right {
-    .clearfix();
-    .tabs {
-      // Give a fixed width to avoid floating .tab-con
-      width: 100px;
-      // Unfloat them so they stack
+    // Left tabs
+    &.pull-left {
+      border-width: 0 1px 0 0;
+      text-align: right;
       > li {
         float: none;
-        margin-bottom: -1px;
-        > a {
-          margin-bottom: 2px;
-          &:hover {
-            border-color: transparent;
-          }
-        }
-      }
-    }
-  }
-
-  // Tabs on left
-  &.tabs-left {
-    .tab-content {
-      margin-left: 100px;
-    }
-    .tabs {
-      float: left;
-      > li {
         margin-right: -1px;
+        margin-bottom: 2px;
         > a {
           margin-right: 0;
           .border-radius(4px 0 0 4px);
-
+          padding: 7px 15px 7px 7px;
+          line-height: normal;
           &:hover {
-            border-right-color: #ddd;
+            border-color: #eee #ddd #eee #eee;
           }
         }
       }
-      // Active state
       .active > a,
       .active > a:hover {
-        border-color: #ddd;
-        border-right-color: transparent;
+        border-color: #ddd transparent #ddd #ddd;
       }
+      
+      // Tab content for left tabs
+      + .tab-content {
+        .tabsOffsetLeft(2);
+        padding: 0 0 0 20px;
+        border-width: 0 0 0 1px;
+      }
+      &.span1 + .tab-content    { .tabsOffsetLeft(1); }
+      &.span2 + .tab-content    { .tabsOffsetLeft(2); }
+      &.span3 + .tab-content    { .tabsOffsetLeft(3); }
+      &.span4 + .tab-content    { .tabsOffsetLeft(4); }
+      &.span5 + .tab-content    { .tabsOffsetLeft(5); }
+      &.span6 + .tab-content    { .tabsOffsetLeft(6); }
+      &.span7 + .tab-content    { .tabsOffsetLeft(7); }
+      &.span8 + .tab-content    { .tabsOffsetLeft(8); }
+    }
+
+    // Right tabs
+    &.pull-right {
+      border-width: 0 0 0 1px;
+      float: right;
+      > li {
+        float: none;
+        margin-left: -1px;
+        margin-bottom: 2px;
+        > a {
+          margin-right: 0;
+          .border-radius(0 4px 4px 0);
+          padding: 7px 7px 7px 15px;
+          line-height: normal;
+          &:hover {
+            border-color: #eee #eee #eee #ddd;
+          }
+        }
+      }
+      .active > a,
+      .active > a:hover {
+        border-color: #ddd #ddd #ddd transparent;
+      }
+
+      // Tab content for right tabs
+      + .tab-content {
+        .tabsOffsetRight(2);
+        padding: 0 20px 0 0;
+        border-width: 0 1px 0 0;
+      }
+      &.span1 + .tab-content    { .tabsOffsetRight(1); }
+      &.span2 + .tab-content    { .tabsOffsetRight(2); }
+      &.span3 + .tab-content    { .tabsOffsetRight(3); }
+      &.span4 + .tab-content    { .tabsOffsetRight(4); }
+      &.span5 + .tab-content    { .tabsOffsetRight(5); }
+      &.span6 + .tab-content    { .tabsOffsetRight(6); }
+      &.span7 + .tab-content    { .tabsOffsetRight(7); }
+      &.span8 + .tab-content    { .tabsOffsetRight(8); }
     }
   }
 
-  // Tabs on right
-  &.tabs-right {
-    .tab-content {
-      margin-right: 100px;
-    }
-    .tabs {
-      float: right;
-      > li {
-        margin-left: -1px;
-        > a {
-          margin-left: 0;
-          .border-radius(0 4px 4px 0);
-
-          &:hover {
-            border-left-color: #ddd;
-          }
+  // Bottom tabs
+  > .tab-content + .tabs {
+    border-width: 1px 0 0 0;
+    > li {
+      margin-top: -1px;
+      > a {
+        .border-radius(0 0 4px 4px);
+        &:hover {
+          border-color: #ddd #eee #eee #eee;
         }
       }
-      // Active state
-      .active > a,
-      .active > a:hover {
-        border-color: #ddd;
-        border-left-color: transparent;
-      }
+    }
+    .active > a,
+    .active > a:hover {
+      border-color: transparent #ddd #ddd #ddd;
+    }
+  }
+
+  // Borders
+  &.bordered-tabbable {
+    > .tab-content,
+    > .tabs.pull-left + .tab-content,
+    > .tabs.pull-right + .tab-content {
+      border-width: 1px;
+      padding: 20px;
+    }
+    > .tabs {
+      border-width: 0px;
+    }
+    .tab-content {
+      .border-radius(4px 4px 0 0);
+    }
+    > .tabs + .tab-content {
+      .border-radius(0 0 4px 4px);
+    }
+    > .tabs.pull-left + .tab-content {
+      .border-radius(0 4px 4px 0);
+    }
+    > .tabs.pull-right + .tab-content {
+      .border-radius(4px 0  0 4px);
     }
   }
 }
