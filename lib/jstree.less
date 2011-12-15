@@ -1,26 +1,23 @@
-/* for the admin interface */
-form .aligned ul {
-    padding-left: 0;
-    margin-left: 0;
-    clear: left;
-}
-
 .jstree-default.jstree-focused {
     background-color: transparent !important;
 }
 
 .jstree {
-    height: 300px;
+    max-height: @jstreeHeight;
+    overflow: auto;
+}
+
+.sidebar .jstree {
+    height: @jstreeHeight;
     padding-top: 1px;
+    .selected > a {
+        #gradient > .vertical(lighten(@yellow, 10%), @yellow);
+        border: 1px dashed @gray;
+        margin: -1px !important;
+    }
 }
 
 .jstree a {
-    padding: 3px 4px !important;
-}
-
-.jstree .selected > a {
-    #gradient > .vertical(lighten(@yellow, 10%), @yellow);
-    /*background-color: @yellow;*/
-    border: 1px dashed @gray;
-    margin: -1px !important;
+    padding: 2px 4px !important;
+    border: 1px solid transparent;
 }
