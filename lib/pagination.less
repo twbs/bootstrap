@@ -5,7 +5,8 @@
   height: @baseLineHeight * 2;
   margin: @baseLineHeight 0;
   ul {
-    float: left;
+    display: inline-block;
+    *display: inline; *zoom: 1; //IE7 inline-block hack
     margin: 0;
     border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
@@ -37,4 +38,8 @@
   .next a {
     border: 0;
   }
+}
+
+pagination.center {
+  text-align: center;
 }
