@@ -318,6 +318,12 @@ h2 + table {
   width: 290px;
 }
 
+.scrollspy-example {
+  height: 200px;
+  overflow: auto;
+  position: relative;
+}
+
 
 /* Responsive Docs
 -------------------------------------------------- */
