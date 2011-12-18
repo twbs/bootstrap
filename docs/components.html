@@ -216,10 +216,10 @@
       <div class="container" style="width: auto;">
         <a class="brand" href="#">Project Name</a>
         <ul class="nav">
-          <li class="active"><a href="#" >Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="#">Link</a></li>
-          <li><a href="#sub1" data-toggle="tab">Link</a></li>
-          <li><a href="#sub2" data-toggle="tab">Link</a></li>
+          <li class="active"><a href="#sub1" data-toggle="tab">Link</a></li>
+          <li><a href="#sub2">Link</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Dropdown</a>
             <ul class="dropdown-menu">
@@ -232,21 +232,19 @@
         </ul>
 			</div>
 			<div class="sub container" style="width: auto;">
-		 		<ul class="nav" id="sub1">
-		 			<li><a href="#">Sub Home Link</a></li>
-		 			<li><a href="#">Sub Home Link</a></li>
-		 			<li><a href="#">Sub Home Link</a></li>
-		 			<li><a href="#">Sub Home Link</a></li>
+		 		<ul class="nav active" id="sub1">
+		 			<li><a href="#">Sub Link</a></li>
+		 			<li><a href="#">Sub Link</a></li>
+		 			<li><a href="#">Sub Link</a></li>
+		 			<li><a href="#">Sub Link</a></li>
 		 		</ul>
-				<ul class="nav" id="sub2">
-			 	 	<li><a href="#">Sub 2 Link</a></li>
-			 	 	<li><a href="#">Sub 2 Link</a></li>
-			 	 	<li><a href="#">Sub 2 Link</a></li>
-			 	 	<li><a href="#">Sub 2 Link</a></li>
-			 	</ul>
 			</div>
 	  </div><!-- /navbar-inner -->
 	</div><!-- /navbar -->
+  
+  <p>Works with the <a href="file://localhost/Users/Kasper/Dropbox/Code/bootstrap/docs/javascript.html#tabs">bootstrap-tab.js</a> plugin.</p>
+
+
 	<p><strong>Note:</strong> When using the navbar on any page, be sure to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>&lt;body&gt;</code>.</p>
 
   <br>
@@ -739,7 +737,6 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> verita
     <script src="../js/bootstrap-dropdown.js"></script>
     <script src="../js/bootstrap-twipsy.js"></script>
     <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tab.js"></script>
     <script src="assets/js/application.js"></script>
   </body>
 </html>
