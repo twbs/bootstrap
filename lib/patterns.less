@@ -31,7 +31,8 @@
   }
   // Hover and active states
   .brand a:hover,
-  ul .active > a {
+  ul .active > a,
+  .sub {
     color: @white;
     text-decoration: none;
     background-color: @navBarBgStart;
@@ -206,6 +207,19 @@
       background-color: #222;
       border-color: #444;
     }
+  }
+}
+
+.sub {
+  .border-radius(4px 4px 0 0); 
+  @shadow: 0px 1px 5px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+   .box-shadow(@shadow);
+   
+  > .nav {
+    display: none;
+  }
+  > .active {
+    display: block;
   }
 }
 
