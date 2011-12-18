@@ -68,6 +68,8 @@
 
       $element = $element.hasClass(className) ? $element : $element.parent()
 
+      $element.trigger('close')
+
       e && e.preventDefault()
       $element.removeClass('in')
 
@@ -78,6 +80,8 @@
       $.support.transition && $element.hasClass('fade') ?
         $element.bind(transitionEnd, removeElement) :
         removeElement()
+
+      $element.trigger('closed')
     }
 
   }
