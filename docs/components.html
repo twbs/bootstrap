@@ -58,94 +58,145 @@
 ================================================== -->
 <section id="media">
   <div class="page-header">
-    <h1>Media <small>Displaying images and videos</small></h1>
+    <h1>Thumbnails <small>Grids of images, videos, text, and more</small></h1>
   </div>
-  <!-- Table structure -->
+
   <div class="row">
-    <div class="span3">
-      <h2>Media grid</h2>
-      <p>Display thumbnails of varying sizes on pages with a low HTML footprint and minimal styles.</p>
+    <div class="span6">
+      <h2>Default thumbnails</h2>
+      <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
+      <ul class="thumbnails">
+        <li class="span3">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+        <li class="span3">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+        <li class="span3">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+        <li class="span3">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="span9">
-      <h3>Example thumbnails</h3>
-      <p>Thumbnails in the <code>.media-grid</code> can be any size, but they work best when mapped directly to the built-in Bootstrap grid system. Image widths like 90, 210, and 330 combine with a few pixels of padding to equal the <code>.span2</code>, <code>.span4</code>, and <code>.span6</code> column sizes.</p>
-      <h4>Large</h4>
-      <ul class="media-grid">
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/330x230" alt="">
-          </a>
+    <div class="span6">
+      <h2>Highly customizable</h2>
+      <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
+      <ul class="thumbnails">
+        <li class="span3">
+          <div class="thumbnail">
+            <img src="http://placehold.it/210x150" alt="">
+            <div class="caption">
+              <h5>Thumbnail label</h5>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a href="#" class="btn primary">Action</a> <a href="#" class="btn">Action</a></p>
+            </div>
+          </div>
         </li>
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/330x230" alt="">
-          </a>
-        </li>
-      </ul>
-      <h4>Medium</h4>
-      <ul class="media-grid">
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
-          </a>
+        <li class="span3">
+          <div class="thumbnail">
+            <img src="http://placehold.it/210x150" alt="">
+            <div class="caption">
+              <h5>Thumbnail label</h5>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a href="#" class="btn primary">Action</a> <a href="#" class="btn">Action</a></p>
+            </div>
+          </div>
         </li>
       </ul>
-      <h4>Small</h4>
-      <ul class="media-grid">
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
-          </a>
-        </li>
-      </ul>
-      <h4>Coding them</h4>
-      <p>Media grids are easy to use and rather simple on the markup side. Their dimensions are purely based on the size of the images included.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <h3>Why use thumbnails</h3>
+      <p>Thumbnails (previously <code>.media-grid</code> up until v1.4) are great for grids of photos or videos, image search results, retail products, portfolios, and much more. They can be links or static content.</p>
+    </div>
+    <div class="span4">
+      <h3>Simple, flexible markup</h3>
+      <p>Thumbnail markup is simple&mdash;a <code>ul</code> with any number of <code>li</code> elements is all that is required. It's also super flexible, allowing for any type of content with just a bit more markup to wrap your contents.</p>
+    </div>
+    <div class="span4">
+      <h3>Uses grid column sizes</h3>
+      <p>Lastly, the thumbnails component uses existing grid system classes&mdash;like <code>.span2</code> or <code>.span3</code>&mdash;for control of thumbnail dimensions.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <h2>The markup</h2>
+      <p>As mentioned previously, the required markup for thumbnails is light and straightforward. Here's a look at the default setup <strong>for linked images</strong>:</p>
 <pre class="prettyprint linenums">
-&lt;ul class="media-grid"&gt;
-  &lt;li&gt;
-    &lt;a href="#"&gt;
-      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
+&lt;ul class="thumbnails"&gt;
+  &lt;li class="span3"&gt;
+    &lt;a href="#" class="thumbnail"&gt;
+      &lt;img src="http://placehold.it/210x150" alt=""&gt;
     &lt;/a&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#"&gt;
-      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
-    &lt;/a&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+      <p>For custom HTML content in thumbnails, the markup changes slightly. To allow block level content anywhere, we swap the <code>&lt;a&gt;</code> for a <code>&lt;div&gt;</code> like so:</p>
+<pre class="prettyprint linenums">
+&lt;ul class="thumbnails"&gt;
+  &lt;li class="span3"&gt;
+    &lt;div class="thumbnail"&gt;
+      &lt;img src="http://placehold.it/210x150" alt=""&gt;
+      &lt;h5&gt;Thumbnail label&lt;/h5&gt;
+      &lt;p&gt;Thumbnail caption right here...&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/li&gt;
+  ...
 &lt;/ul&gt;
 </pre>
     </div>
-  </div><!-- /row -->
+    <div class="span6">
+      <h2>More examples</h2>
+      <p>Explore all your options with the various grid classes available to you. You can also mix and match different sizes.</p>
+      <ul class="thumbnails">
+        <li class="span4">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/290x230" alt="">
+          </a>
+        </li>
+        <li class="span2">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/130x100" alt="">
+          </a>
+        </li>
+        <li class="span2">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/130x100" alt="">
+          </a>
+        </li>
+        <li class="span2">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/130x100" alt="">
+          </a>
+        </li>
+        <li class="span2">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/130x100" alt="">
+          </a>
+        </li>
+        <li class="span2">
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/130x100" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </section>
 
 

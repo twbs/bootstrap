@@ -64,34 +64,34 @@
 
   <h2>Default 940px grid</h2>
   <div class="row show-grid">
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
-    <div class="span1">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
+    <div class="span1" title="60px">1</div>
   </div>
   <div class="row show-grid">
-    <div class="span4">4</div>
-    <div class="span4">4</div>
-    <div class="span4">4</div>
+    <div class="span4" title="300px">4</div>
+    <div class="span4" title="300px">4</div>
+    <div class="span4" title="300px">4</div>
   </div>
   <div class="row show-grid">
-    <div class="span4">4</div>
-    <div class="span8">8</div>
+    <div class="span4" title="300px">4</div>
+    <div class="span8" title="620px">8</div>
   </div>
   <div class="row show-grid">
-    <div class="span6">6</div>
-    <div class="span6">6</div>
+    <div class="span6" title="460px">6</div>
+    <div class="span6" title="460px">6</div>
   </div>
   <div class="row show-grid">
-    <div class="span12">12</div>
+    <div class="span12" title="940px">12</div>
   </div>
 
   <div class="row">
@@ -379,6 +379,17 @@
         $('.nav .active').click(function(e) {
           e.preventDefault();
           $(this).siblings().toggle();
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+      // Show grid dimensions on hover
+      $(document).ready(function() {
+        $('.show-grid > div').hover(function() {
+          var width = $(this).width();
+          $(this).attr('title', width);
+          $(this).twipsy();
         });
       });
     </script>

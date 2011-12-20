@@ -93,10 +93,14 @@ input[type=file] {
   line-height: @baseLineHeight * 1.5;
 }
 
+// Chrome on Linux needs background color
+select {
+  background-color: @white;
+}
+
 // Make multiple select elements height not fixed
 select[multiple] {
   height: inherit;
-  background-color: @white; // Fixes Chromium bug?
 }
 
 // Remove shadow from image inputs

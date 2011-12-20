@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter: Upgrading from v1.4 to v2.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../bootstrap.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/ico/bootstrap-apple-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/bootstrap-apple-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/bootstrap-apple-114x114.png">
+  </head>
+
+  <body>
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <ul class="nav">
+            <li><a href="./index.html">Overview</a></li>
+            <li><a href="./scaffolding.html">Scaffolding</a></li>
+            <li><a href="./base-css.html">Base CSS</a></li>
+            <li><a href="./components.html">Components</a></li>
+            <li><a href="./javascript.html">Javascript plugins</a></li>
+            <li class="active"><a href="./less.html">Using LESS</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Masthead
+      ================================================== -->
+      <header class="jumbotron subhead" id="overview">
+        <h1>Upgrading to Bootstrap 2</h1>
+        <p class="lead">Learn about significant changes and additions since v1.4 with this handy guide.</p>
+      </header>
+
+
+<h2>Rough outline</h2>
+<ul>
+  <li>Docs completely overhauled
+    <ul>
+      <li>Responsive thanks to new grid system</li>
+      <li>Now less marketing and more information</li>
+      <li>Extensive use of tables to share classes and elements of most components</li>
+      <li>Broken down into several pages for easier consumption</li>
+    </ul>
+  </li>
+  <li>Updated grid system, now only 12 columns
+    <ul>
+      <li>Same great classes, but now only 12 columns</li>
+      <li>Responsive approach means your projects virtually work out of the box on smartphones, tablets, and more</li>
+    </ul>
+  </li>
+  <li>New thumbnails (previously media grids)
+    <ul>
+      <li><code>.media-grid</code> class has been changed to <code>.thumbnails</code></li>
+      <li>Individual thumbnails now require <code>.thumbnail</code> class</li>
+    </ul>
+  </li>
+  <li>Updated forms
+    <ul>
+      <li>Default form style is now stacked to use less CSS and add flexibility</li>
+      <li>Exact same markup is required for vertical or horizontal forms&mdash;just swap the classes</li>
+      <li>New form defaults for search, inline, vertical, and horizontal</li>
+    </ul>
+  </li>
+  <li>Updated tables
+    <ul>
+      <li>Table classes made more consistent</li>
+      <li>Removed unused table color options (too much code for such little impact)</li>
+    </ul>
+  </li>
+  <li>Typography
+    <ul>
+      <li>Right-aligned option for blockquotes if float: right;</li>
+    </ul>
+  </li>
+  <li>Buttons
+    <ul>
+      <li>Added button bar options</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li></li>
+    </ul>
+  </li>
+</ul>
+
+<!--
+
+
+
+-->
+
+
+
+
+
+      <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </footer>
+    </div><!-- /container -->
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+
+    <script type="text/javascript">
+      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
+      $(document).ready(function() {
+        $('.nav .active').click(function(e) {
+          e.preventDefault();
+          $(this).siblings().toggle();
+        });
+      });
+    </script>
+
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="../js/bootstrap-transitions.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/application.js"></script>
+  </body>
+</html>

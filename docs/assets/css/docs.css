@@ -25,7 +25,7 @@ body > .navbar-fixed .brand {
   float: right;
   font-weight: bold;
   color: #000;
-  text-shadow: 0 1px 0 rgba(255,255,255,.1);
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
 }
 body > .navbar-fixed .brand:hover {
   text-decoration: none;
@@ -449,7 +449,7 @@ h2 + table {
   /* Provide enough space on right-hand side for benefits list */
   .jumbotron h1,
   .jumbotron p {
-    margin-right: 20%;
+    margin-right: 40%;
   }
 }
 
