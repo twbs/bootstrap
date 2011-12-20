@@ -131,8 +131,8 @@ a {
 }
 
 // Unique column sizes for 16-column grid
-.span-one-third     { width: 300px; }
-.span-two-thirds    { width: 620px; }
+.span-one-third     { width: (@siteWidth / 3) - @gridGutterWidth; }
+.span-two-thirds    { width: ((@siteWidth / 3) - @gridGutterWidth) * 2; }
 .row {
   > .offset-one-third   { margin-left: 340px; }
   > .offset-two-thirds  { margin-left: 660px; }
