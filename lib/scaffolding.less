@@ -131,8 +131,8 @@ a {
 }
 
 // Unique column sizes for 16-column grid
-.span-one-third     { width: (@siteWidth / 3) - @gridGutterWidth; }
-.span-two-thirds    { width: ((@siteWidth / 3) - @gridGutterWidth) * 2; }
+.span-one-third     { width: (((@gridColumns / 3) * @gridColumnWidth) + (((@gridColumns / 3) - 1) * @gridGutterWidth)); }
+.span-two-thirds    { width: (((@gridColumns / 3) * @gridColumnWidth) + (((@gridColumns / 3) - 1) * @gridGutterWidth)) * 2; }
 .row {
   > .offset-one-third   { margin-left: 340px; }
   > .offset-two-thirds  { margin-left: 660px; }
