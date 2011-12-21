@@ -1,0 +1,14 @@
+{% load bootstrap_tags %}
+
+<form action="" method="post">
+  <fieldset>
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    <div class="actions">
+      <input type="submit" value="{{ submit_value }}" class="btn primary" />
+      <button type="reset" class="btn">Clear</button>
+    </div>
+  </fieldset>
+</form>
