@@ -103,7 +103,7 @@
     })
   }
 
-  $.fn.scrollspy.ScrollSpy = ScrollSpy
+  $.fn.scrollspy.Constructor = ScrollSpy
 
 
  /* SCROLLSPY DATA-API

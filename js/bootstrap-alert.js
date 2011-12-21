@@ -35,18 +35,22 @@
     constructor: Alert
 
   , close: function ( e ) {
-      var $element = $(this)
+      var $this = $(this)
+        , selector = $this.attr('data-target') || $this.attr('href')
+        , $parent = $(selector)
 
-      $element = $element.hasClass('alert-message') ? $element : $element.parent()
       e && e.preventDefault()
-      $element.removeClass('in')
+
+      $parent.length || ($parent = $this.hasClass('alert-message') ? $this : $this.parent())
+
+      $parent.removeClass('in')
 
       function removeElement() {
-        $element.remove()
+        $parent.remove()
       }
 
-      $.support.transition && $element.hasClass('fade') ?
-        $element.on($.support.transition.end, removeElement) :
+      $.support.transition && $parent.hasClass('fade') ?
+        $parent.on($.support.transition.end, removeElement) :
         removeElement()
     }
 
@@ -65,7 +69,7 @@
     })
   }
 
-  $.fn.alert.Alert = Alert
+  $.fn.alert.Constructor = Alert
 
 
  /* ALERT DATA-API

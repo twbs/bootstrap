@@ -247,7 +247,7 @@
     })
   }
 
-  $.fn.twipsy.Twipsy = Twipsy
+  $.fn.twipsy.Constructor = Twipsy
 
   $.fn.twipsy.defaults = {
     animate: true

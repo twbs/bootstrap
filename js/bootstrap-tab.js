@@ -107,7 +107,7 @@
     })
   }
 
-  $.fn.tab.Tab = Tab
+  $.fn.tab.Constructor = Tab
 
 
  /* TAB DATA-API

@@ -35,11 +35,15 @@
     constructor: Dropdown
 
   , toggle: function ( e ) {
-      var li = $(this).parent('li')
-        , isActive = li.hasClass('open')
+      var $this = $(this)
+        , selector = $this.attr('data-target') || $this.attr('href')
+        , $parent = $(selector)
+
+      $parent.length || ($parent = $this.parent())
 
       clearMenus()
-      !isActive && li.toggleClass('open')
+
+      !$parent.hasClass('open') && $parent.toggleClass('open')
 
       return false
     }
@@ -47,7 +51,7 @@
   }
 
   function clearMenus() {
-    $(toggle).parent('li').removeClass('open')
+    $(toggle).parent().removeClass('open')
   }
 
 
@@ -62,6 +66,8 @@
       if (typeof option == 'string') data[option].call($this)
     })
   }
+
+  $.fn.dropdown.Constructor = Dropdown
 
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS

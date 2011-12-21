@@ -29,7 +29,7 @@
   /* NOTE: POPOVER EXTENDS BOOTSTRAP-TWIPSY.js
      ========================================= */
 
-  Popover.prototype = $.extend({}, $.fn.twipsy.Twipsy.prototype, {
+  Popover.prototype = $.extend({}, $.fn.twipsy.Constructor.prototype, {
 
     constructor: Popover
 
@@ -84,7 +84,7 @@
     })
   }
 
-  $.fn.popover.Popover = Popover
+  $.fn.popover.Constructor = Popover
 
   $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, {
     placement: 'right'

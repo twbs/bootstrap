@@ -175,17 +175,16 @@
         , options = typeof option == 'object' && option
       if (!data) $this.data('modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
-      else if (data.options.show) data.show()
+      else data.show()
     })
   }
 
   $.fn.modal.defaults = {
       backdrop: true
     , keyboard: true
-    , show: true
   }
 
-  $.fn.modal.Modal = Modal
+  $.fn.modal.Constructor = Modal
 
 
  /* MODAL DATA-API
@@ -194,10 +193,11 @@
   $(function () {
     $('body').on('click.modal.data-api', '[data-toggle="modal"]', function ( e ) {
       var $this = $(this)
-        , target = $this.attr('data-target') || $this.attr('href')
-        , option = $(target).data('modal') ? 'toggle' : $this.data()
+        , $target = $($this.attr('data-target') || $this.attr('href'))
+        , option = $target.data('modal') ? 'toggle' : $.extend({}, $target.data(), $this.data())
+
       e.preventDefault()
-      $(target).modal(option)
+      $target.modal(option)
     })
   })
 

@@ -83,7 +83,7 @@
     loadingText: 'loading...'
   }
 
-  $.fn.button.Button = Button
+  $.fn.button.Constructor = Button
 
 
  /* BUTTON DATA-API

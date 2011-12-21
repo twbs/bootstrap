@@ -46,6 +46,6 @@
     })
   }
 
-  $.fn.carousel.Carousel = Carousel
+  $.fn.carousel.Constructor = Carousel
 
 }( window.jQuery )

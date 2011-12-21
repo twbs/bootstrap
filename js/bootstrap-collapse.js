@@ -116,7 +116,7 @@
     toggle: true
   }
 
-  $.fn.collapse.Collapse = Collapse
+  $.fn.collapse.Constructor = Collapse
 
 
  /* COLLAPSIBLE DATA-API
