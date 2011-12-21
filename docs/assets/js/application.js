@@ -1,5 +1,36 @@
 $(function(){
 
+  // Hide the Mobile Safari address bar once loaded
+  // ==============================================
+
+  window.addEventListener("load",function() {
+    // Set a timeout...
+    setTimeout(function(){
+      // Hide the address bar!
+      window.scrollTo(0, 1);
+    }, 0);
+  });
+
+
+  // Docs topbar nav
+  // ===============
+
+  $('.nav .active').click(function(e) {
+    e.preventDefault();
+    $(this).siblings().toggle();
+  });
+
+
+  // Show grid dimensions on hover
+  // =============================
+
+  $('.show-grid > div').hover(function() {
+    var width = $(this).width();
+    $(this).attr('title', width);
+    $(this).twipsy();
+  });
+
+
   // table sort example
   // ==================
 

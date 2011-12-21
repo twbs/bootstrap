@@ -401,7 +401,7 @@ footer {
   cursor: pointer;
 
   &:hover {
-    color: #333;
+    color: @grayDark;
     text-decoration: none;
     background-position: 0 -15px;
   }
@@ -414,6 +414,7 @@ footer {
   // Primary Button Type
   &.primary {
     color: @white;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     .gradientBar(@blue, @blueDark)
   }
 

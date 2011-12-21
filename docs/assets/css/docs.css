@@ -317,6 +317,11 @@ h2 + table {
 .example-sites img {
   width: 290px;
 }
+.built-with {
+  margin: -18px 0 27px;
+  color: #999;
+  text-align: center;
+}
 
 .scrollspy-example {
   height: 200px;
