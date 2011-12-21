@@ -1,8 +1,12 @@
-<div class="clearfix {{ wrapper_class }}">
-  {{ label }}
-  <div class="input">
-    {{ input }}
-    <span class="help-inline">{{ errors }}</span>
-    <span class="help-block">{{ help_text|safe }}</span>
+{% if hidden %}
+  {{ input }}
+{% else %}
+  <div class="clearfix {{ wrapper_class }}">
+    {{ label }}
+    <div class="input">
+      {{ input }}
+      <span class="help-inline">{{ errors }}</span>
+      <span class="help-block">{{ help_text|safe }}</span>
+    </div>
   </div>
-</div>
+{% endif %}
