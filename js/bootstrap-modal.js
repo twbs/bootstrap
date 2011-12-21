@@ -96,7 +96,7 @@
   function hideWithTransition() {
     var that = this
       , timeout = setTimeout(function () {
-          that.$element.unbind($.support.transition.end)
+          that.$element.off($.support.transition.end)
           hideModal.call(that)
         }, 500)
 
@@ -156,11 +156,11 @@
   function escape() {
     var that = this
     if (this.isShown && this.options.keyboard) {
-      $(document).bind('keyup.dismiss.modal', function ( e ) {
+      $(document).on('keyup.dismiss.modal', function ( e ) {
         e.which == 27 && that.hide()
       })
     } else if (!this.isShown) {
-      $(document).unbind('keyup.dismiss.modal')
+      $(document).off('keyup.dismiss.modal')
     }
   }
 

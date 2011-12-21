@@ -9,11 +9,11 @@ We believe you should be able to use all plugins provided by Bootstrap purely th
 
 We acknowledge that this isn't always the most performant and sometimes it may be desirable to turn this functionality off altogether. Therefore, as of 2.0 we provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
 
-    $('body').unbind('.data-api')
+    $('body').off('.data-api')
 
 To target a specific plugin, just include the plugins name as a namespace along with the data-api namespace like this:
 
-    $('body').unbind('.alert.data-api')
+    $('body').off('.alert.data-api')
 
 ---
 

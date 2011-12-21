@@ -167,7 +167,7 @@
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
-        $tip.bind( $.support.transition.end, removeElement) :
+        $tip.on($.support.transition.end, removeElement) :
         removeElement()
     }
 
@@ -196,7 +196,7 @@
     }
 
   , tip: function () {
-      return this.$tip = this.$tip || $('<div class="twipsy" />').html(this.options.template)
+      return this.$tip = this.$tip || $(this.options.template)
     }
 
   , validate: function () {
@@ -256,7 +256,7 @@
   , placement: 'above'
   , trigger: 'hover'
   , title: ''
-  , template: '<div class="twipsy-arrow"></div><div class="twipsy-inner"></div>'
+  , template: '<div class="twipsy"><div class="twipsy-arrow"></div><div class="twipsy-inner"></div></div>'
   }
 
 }( window.jQuery )

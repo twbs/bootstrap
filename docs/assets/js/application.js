@@ -37,7 +37,7 @@ $(function(){
   // POSITION STATIC TWIPSIES
   // ========================
 
-  $(window).bind( 'load resize', function () {
+  $(window).on('load resize', function () {
     $(".twipsies a").each(function () {
        $(this)
         .twipsy({

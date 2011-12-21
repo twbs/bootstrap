@@ -27,7 +27,7 @@
   function ScrollSpy( element ) {
     var process = $.proxy(this.process, this)
 
-    this.$scrollElement = $(element).bind('scroll.scroll.data-api', process)
+    this.$scrollElement = $(element).on('scroll.scroll.data-api', process)
     this.selector = (this.$scrollElement.attr('data-target')
       || this.$scrollElement.attr('href')
       || '') + ' .nav li > a'

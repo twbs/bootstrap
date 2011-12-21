@@ -52,26 +52,45 @@
       $href = $(href)
 
       this.activate($this.parent('li'), $ul)
-      this.activate($href, $href.parent())
-
-      $this.trigger({
-        type: 'shown'
-      , relatedTarget: previous
+      this.activate($href, $href.parent(), function () {
+        $this.trigger({
+          type: 'shown'
+        , relatedTarget: previous
+        })
       })
     }
 
-  , activate: function ( element, container ) {
-      container
-        .find('> .active')
-        .removeClass('active')
-        .find('> .dropdown-menu > .active')
-        .removeClass('active')
+  , activate: function ( element, container, callback) {
+      var $active = container.find('> .active')
+        , transition = callback
+            && $.support.transition
+            && $active.hasClass('fade')
 
-      element.addClass('active')
+      function next() {
+        $active
+          .removeClass('active')
+          .find('> .dropdown-menu > .active')
+          .removeClass('active')
 
-      if ( element.parent('.dropdown-menu') ) {
-        element.closest('li.dropdown').addClass('active')
+        element.addClass('active')
+
+        if (transition) {
+          element[0].offsetWidth // reflow for transition
+          element.addClass('in')
+        }
+
+        if ( element.parent('.dropdown-menu') ) {
+          element.closest('li.dropdown').addClass('active')
+        }
+
+        callback && callback()
       }
+
+      transition ?
+        $active.one($.support.transition.end, next) :
+        next()
+
+      $active.removeClass('in')
     }
   }
 

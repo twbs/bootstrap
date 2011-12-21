@@ -93,7 +93,7 @@
       ================================================== -->
       <header class="jumbotron subhead" id="overview">
         <h1>Javascript for Bootstrap</h1>
-        <p class="lead">Bring Bootstrap's components to life with 12 custom, flexible <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.
+        <p class="lead">Bring Bootstrap's components to life &mdash; now with 12 custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.
       </header>
 
 
@@ -121,36 +121,40 @@
          </thead>
          <tbody>
            <tr>
-             <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
-             <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
+             <td><a href="./javascript.html#transition">bootstrap-transition.js</a></td>
+             <td>The transition plugin is required for adding animation to other bootstrap plugins. Include this plugin (only once) when sliding in modals or fading out alerts.</td>
            </tr>
            <tr>
-             <td><a href="./javascript.html#alert">bootstrap-alert.js</a></td>
-             <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
+             <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
+             <td>Our Modal plugin is a super slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require here at twitter.</td>
            </tr>
            <tr>
              <td><a href="./javascript.html#dropdown">bootstrap-dropdown.js</a></td>
-             <td>This plugin is for adding dropdown interaction to the bootstrap navbar or tabbed navigations.</td>
+             <td>This plugin is for adding generic dropdown interactions to things like navigation top bars and tabs.</td>
            </tr>
            <tr>
              <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
-             <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap navbar.</td>
+             <td>The ScrollSpy plugin is for automatically updating nav targets based on scroll position.</td>
            </tr>
            <tr>
              <td><a href="./javascript.html#tab">bootstrap-tab.js</a></td>
-             <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
-           </tr>
+             <td>This plugin adds quick, dynamic tab and pill functionality for transitioning through local content.</td>
            <tr>
              <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
-             <td>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for local title storage!</td>
+             <td>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, data-attributes for local title storage, and now jquery 1.7's new event api!</td>
            </tr>
            <tr>
              <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
              <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
            </tr>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#alert">bootstrap-alert.js</a></td>
+             <td>The alert plugin is a tiny class for adding close functionality to alerts.</td>
+           </tr>
            <tr>
               <td><a href="./javascript.html#button">bootstrap-button.js</a></td>
-              <td>This plugin offers additional functionality for managing button state.</td>
+              <td>This plugin offers additional functionality for managing button state in single buttons and button sets.</td>
             </tr>
             <tr>
               <td><a href="./javascript.html#collapse">bootstrap-collapse.js</a></td>
@@ -161,7 +165,6 @@
        <h3>Is javascript necessary?</h3>
        <p><strong>Nope!</strong> Bootstrap is designed first and foremost to be a CSS library. This javascript provides a basic interactive layer on top of the included styles.</p>
        <p>However, for those who do need javascript, we've provided the plugins above to help you understand how to integrate Bootstrap with javascript and to give you a quick, lightweight option for the basic functionality right away.</p>
-       <p>For more information and to see some live demos, please refer to our <a href="./javascript.html">plugin documentation page</a>.</p>
      </div>
    </div>
 </section>
@@ -265,7 +268,7 @@ $('#myModal').modal({
           </table>
 
 <pre class="prettyprint linenums">
-$('#myModal').bind('hidden', function () {
+$('#myModal').on('hidden', function () {
   // do something ...
 })</pre>
           <h3>Demo</h3>
@@ -301,7 +304,7 @@ $('#myModal').bind('hidden', function () {
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>This plugin is for adding dropdown interaction to the Bootstrap navbar or tabbed navigations.</p>
+          <p>This plugin is for adding generic dropdown interactions to things like navigation top bars and tabs.</p>
           <a href="../js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
@@ -375,7 +378,7 @@ $('#myModal').bind('hidden', function () {
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>This plugin is for adding the scrollspy (auto updating nav) interaction to the bootstrap navbar.</p>
+          <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position.</p>
           <a href="../js/bootstrap-scrollspy.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
@@ -449,7 +452,7 @@ $('#myModal').bind('hidden', function () {
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>This plugin adds quick, dynamic tab and pill functionality.</p>
+          <p>This plugin adds quick, dynamic tab and pill functionality for transitioning through local content.</p>
           <a href="../js/bootstrap-tab.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
@@ -510,7 +513,7 @@ $('#myModal').bind('hidden', function () {
           </table>
 
           <pre class="prettyprint linenums">
-$('a[data-toggle="tab"]').bind('shown', function (e) {
+$('a[data-toggle="tab"]').on('shown', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })</pre>
@@ -529,22 +532,22 @@ $('a[data-toggle="tab"]').bind('shown', function (e) {
             </li>
           </ul>
           <div id="myTabContent" class="tab-content">
-            <div class="active tab-pane" id="home">
+            <div class="tab-pane fade in active" id="home">
               <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
             </div>
-            <div class="tab-pane" id="profile">
+            <div class="tab-pane fade" id="profile">
               <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
             </div>
-            <div class="tab-pane" id="messages">
+            <div class="tab-pane fade" id="messages">
               <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
             </div>
-            <div class="tab-pane" id="settings">
+            <div class="tab-pane fade" id="settings">
               <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
             </div>
-            <div class="tab-pane" id="dropdown1">
+            <div class="tab-pane fade" id="dropdown1">
               <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
             </div>
-            <div class="tab-pane" id="dropdown2">
+            <div class="tab-pane fade" id="dropdown2">
               <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
             </div>
           </div>
@@ -561,7 +564,7 @@ $('a[data-toggle="tab"]').bind('shown', function (e) {
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for title storage!</p>
+          <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, data-attributes for local title storage, and now jquery 1.7's new event api!</p>
           <a href="../js/bootstrap-twipsy.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
@@ -591,16 +594,16 @@ $('a[data-toggle="tab"]').bind('shown', function (e) {
                <td>how to position the tooltip - above | below | left | right</td>
              </tr>
              <tr>
-               <td>live</td>
-               <td>boolean</td>
+               <td>selector</td>
+               <td>string</td>
                <td>false</td>
-               <td>use event delegation instead of individual event handlers</td>
+               <td>If a selector is provided, twipsy objects will be delegated to the specified targets.</td>
              </tr>
              <tr>
-               <td>offset</td>
-               <td>number</td>
-               <td>0</td>
-               <td>pixel offset of tooltip from target element</td>
+               <td>title</td>
+               <td>string | function</td>
+               <td>''</td>
+               <td>default title value if `title` tag isn't present</td>
              </tr>
              <tr>
                <td>trigger</td>
@@ -622,7 +625,8 @@ $('a[data-toggle="tab"]').bind('shown', function (e) {
           </table>
           <p><span class="label notice">Notice</span> Individual twipsy instance options can alternatively be specified through the use of data attributes.</code></p>
           <h3>Markup</h3>
-          For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just set the live flag to true, however we recommend you know what you are doing if you do that. :)
+          <p>
+          For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
           <h3>Methods</h3>
           <h4>$().twipsy(options)</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
@@ -674,28 +678,16 @@ $('a[data-toggle="tab"]').bind('shown', function (e) {
                <td>apply a css fade transition to the tooltip</td>
              </tr>
              <tr>
-               <td>delay</td>
-               <td>number | object</td>
-               <td>0</td>
-               <td>delay before showing/hiding the tooltip (ms)</td>
-             </tr>
-             <tr>
                <td>placement</td>
                <td>string</td>
                <td>'right'</td>
                <td>how to position the popover - above | below | left | right</td>
              </tr>
              <tr>
-               <td>live</td>
-               <td>boolean</td>
+               <td>selector</td>
+               <td>string</td>
                <td>false</td>
-               <td>use event delegation instead of individual event handlers</td>
-             </tr>
-             <tr>
-               <td>offset</td>
-               <td>number</td>
-               <td>0</td>
-               <td>pixel offset of tooltip from target element</td>
+               <td>if a selector is provided, twipsy objects will be delegated to the specified targets</td>
              </tr>
              <tr>
                <td>trigger</td>
@@ -703,12 +695,34 @@ $('a[data-toggle="tab"]').bind('shown', function (e) {
                <td>'hover'</td>
                <td>how tooltip is triggered - hover | focus | manual</td>
              </tr>
+             <tr>
+               <td>title</td>
+               <td>string | function</td>
+               <td>''</td>
+               <td>default title value if `title` attribute isn't present</td>
+             </tr>
+             <tr>
+               <td>content</td>
+               <td>string | function</td>
+               <td>''</td>
+               <td>default content value if `data-content` attribute isn't present</td>
+             </tr>
+             <tr>
+               <td>delay</td>
+               <td>number | object</td>
+               <td>0</td>
+               <td>
+                <p>delay showing/hiding the popover (ms)</p>
+                <p>If a number is supplied, delay is applied to both hide/show</p>
+                <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+               </td>
+             </tr>
             </tbody>
           </table>
           <p><span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.</code></p>
           <h3>Markup</h3>
           <p>
-          For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just set the live flag to true, however we recommend you know what you are doing if you do that. :)
+          For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just specify a the selector option.
           </p>
           <h3>Methods</h3>
           <h4>$().popover(options)</h4>
@@ -969,7 +983,7 @@ $('#myCollapsible').collapse({
           </table>
 
 <pre class="prettyprint linenums">
-$('#myCollapsible').bind('hidden', function () {
+$('#myCollapsible').on('hidden', function () {
   // do something ...
 })</pre>
           <h3>Demo</h3>

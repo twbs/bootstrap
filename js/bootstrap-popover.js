@@ -63,8 +63,7 @@
 
   , tip: function() {
       if (!this.$tip) {
-        this.$tip = $('<div class="popover" />')
-          .html(this.options.template)
+        this.$tip = $(this.options.template)
       }
       return this.$tip
     }
@@ -90,7 +89,7 @@
   $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, {
     placement: 'right'
   , content: ''
-  , template: '<div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div>'
+  , template: '<div class="popover"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
   })
 
 }( window.jQuery )
