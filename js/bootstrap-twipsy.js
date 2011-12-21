@@ -109,7 +109,7 @@
         $tip = this.tip()
         this.setContent()
 
-        if (this.options.animate) {
+        if (this.options.animation) {
           $tip.addClass('fade')
         }
 
@@ -250,7 +250,7 @@
   $.fn.twipsy.Constructor = Twipsy
 
   $.fn.twipsy.defaults = {
-    animate: true
+    animation: true
   , delay: 0
   , selector: false
   , placement: 'above'

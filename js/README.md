@@ -83,9 +83,9 @@ Each plugin stores a copy of the invoked class on an object. This class instance
 
 Data attributes should take the following form:
 
-- data-*(verb)* - defines main interaction
+- data-{{verb}}={{plugin}} - defines main interaction
 - data-target || href^=# - defined on "control" element (if element controls an element other than self)
-- data-*(noun)* - defines class instance options
+- data-{{noun}} - defines class instance options
 
 examples:
 
