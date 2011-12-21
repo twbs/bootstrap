@@ -387,7 +387,7 @@ h2 + table {
   .example-sites {
     margin-left: 0;
   }
-  .example-sites a {
+  .example-sites > li {
     float: none;
     display: block;
     max-width: 300px;
