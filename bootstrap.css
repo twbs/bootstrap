@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Dec 20 22:11:42 PST 2011
+ * Date: Wed Dec 21 13:29:41 PST 2011
  */
 html, body {
   margin: 0;
@@ -600,9 +600,11 @@ select, input[type=file] {
 
   line-height: 27px;
 }
+select {
+  background-color: #ffffff;
+}
 select[multiple] {
   height: inherit;
-  background-color: #ffffff;
 }
 input[type=image] {
   -webkit-box-shadow: none;
@@ -2516,27 +2518,28 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .popover .content p, .popover .content ul, .popover .content ol {
   margin-bottom: 0;
 }
-.media-grid {
+.thumbnails {
   margin-left: -20px;
   margin-bottom: 0;
+  list-style: none;
   zoom: 1;
 }
-.media-grid:before, .media-grid:after {
+.thumbnails:before, .thumbnails:after {
   display: table;
   *display: inline;
   content: "";
   zoom: 1;
 }
-.media-grid:after {
+.thumbnails:after {
   clear: both;
 }
-.media-grid li {
-  display: inline;
-}
-.media-grid a {
+.thumbnails > li {
   float: left;
-  padding: 4px;
   margin: 0 0 20px 20px;
+}
+.thumbnail {
+  display: block;
+  line-height: 1;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -2545,14 +2548,18 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
 }
-.media-grid a img {
-  display: block;
-}
-.media-grid a:hover {
+a.thumbnail:hover {
   border-color: #0069d6;
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+.thumbnail > img {
+  display: block;
+  margin: 4px;
+}
+.thumbnail .caption {
+  padding: 9px;
 }
 .hidden {
   display: none;
