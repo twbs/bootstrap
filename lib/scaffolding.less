@@ -25,25 +25,25 @@ body {
 .fluid-container {
   position: relative;
   min-width: 940px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: @gridGutterWidth;
+  padding-right: @gridGutterWidth;
   .clearfix();
 }
 // Sidebars (left and right options)
 .fluid-sidebar-left,
 .fluid-sidebar-right {
-  width: 220px;
+  width: @sidebarWidth;
 }
 .fluid-sidebar-left   { float: left; }
 .fluid-sidebar-right  { float: right; }
 // The main content area
 .fluid-content {
-  margin-left: 240px;
+  margin-left: @sidebarWidth;
 }
 // Reverse layout for sidebar on right
 .fluid-container.reverse .fluid-content {
   margin-left: 0;
-  margin-right: 240px;
+  margin-right: (@sidebarWidth + @gridGutterWidth);
 }
 
 
