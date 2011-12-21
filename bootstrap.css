@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Dec 20 19:08:51 PST 2011
+ * Date: Tue Dec 20 22:11:42 PST 2011
  */
 html, body {
   margin: 0;
@@ -2364,6 +2364,18 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-opacity: 0.8;
   opacity: 0.8;
 }
+.twipsy.above {
+  margin-top: -2px;
+}
+.twipsy.right {
+  margin-left: 2px;
+}
+.twipsy.below {
+  margin-top: 2px;
+}
+.twipsy.left {
+  margin-left: -2px;
+}
 .twipsy.above .twipsy-arrow {
   bottom: 0;
   left: 50%;
@@ -2419,6 +2431,18 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   z-index: 1000;
   display: none;
   padding: 5px;
+}
+.popover.above {
+  margin-top: -5px;
+}
+.popover.right {
+  margin-left: 5px;
+}
+.popover.below {
+  margin-top: 5px;
+}
+.popover.left {
+  margin-left: -5px;
 }
 .popover.above .arrow {
   bottom: 0;
