@@ -79,7 +79,7 @@
  /* TAB PLUGIN DEFINITION
   * ===================== */
 
-  $.fn.tab = function (option) {
+  $.fn.tab = function ( option ) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('tab')
@@ -94,11 +94,11 @@
  /* TAB DATA-API
   * ============ */
 
-  $(document).ready(function () {
-    $('body').delegate('[data-toggle="tab"], [data-toggle="pill"]', 'click.tab.data-api', function (e) {
+  $(function () {
+    $('body').on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
       e.preventDefault()
       $(this).tab('show')
     })
   })
 
-}( window.jQuery || window.ender )
+}( window.jQuery )

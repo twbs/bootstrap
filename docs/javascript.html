@@ -25,7 +25,8 @@
 
     <!-- Le javascript -->
     <!-- placed up here so that the inline demos can be next to their markup -->
-    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
+    <script src="../js/tests/vendor/jquery.js"></script>
 
     <script type="text/javascript">
       // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
@@ -52,15 +53,13 @@
     <script>
       $(function () {
         // twipsy demo
-        $("a[rel=twipsy]").twipsy({
-          live: true
+        $('.twipsy-demo.well').twipsy({
+          selector: "a[rel=twipsy]"
         })
 
         //popover demo
         $("a[rel=popover]")
-          .popover({
-            offset: 10
-          })
+          .popover()
           .click(function(e) {
             e.preventDefault()
           })
@@ -94,7 +93,7 @@
       ================================================== -->
       <header class="jumbotron subhead" id="overview">
         <h1>Javascript for Bootstrap</h1>
-        <p class="lead">Bring Bootstrap's components to life with flexible, custom javascript plugins for many of our custom components that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>.</p>
+        <p class="lead">Bring Bootstrap's components to life with 12 custom, flexible <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.
       </header>
 
 
@@ -112,7 +111,7 @@
      </div>
      <div class="span9">
       <h3>What's included</h3>
-       <p>Bring some of Bootstrap's primary components to life with new custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>. We encourage you to extend and modify them to fit your specific development needs.</p>
+       <p>Bring some of Bootstrap's primary components to life with custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins. We encourage you to extend and modify them to fit your specific development needs.</p>
        <table class="striped-table">
          <thead>
            <tr>
@@ -138,7 +137,7 @@
              <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap navbar.</td>
            </tr>
            <tr>
-             <td><a href="./javascript.html#tabs">bootstrap-tab.js</a></td>
+             <td><a href="./javascript.html#tab">bootstrap-tab.js</a></td>
              <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
            </tr>
            <tr>
@@ -444,9 +443,9 @@ $('#myModal').bind('hidden', function () {
     <!-- Tabs
     ================================================== -->
 
-    <section id="tabs">
+    <section id="tab">
       <div class="page-header">
-        <h1>Tabs <small>bootstrap-tab.js</small></h1>
+        <h1>Tab <small>bootstrap-tab.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
@@ -467,7 +466,7 @@ $('#myModal').bind('hidden', function () {
           <h3>Methods</h3>
           <h4>$().tab</h4>
           <p>
-            Activates tab functionality for a given element controller. Tab should have either a `data-target` or an `href` referencing a node in the dom.
+            Activates a tab element and content container. Tab should have either a `data-target` or an `href` targeting a container node in the dom.
           </p>
 <pre class="prettyprint linenums">
 &lt;ul class="tabs"&gt;
@@ -504,7 +503,7 @@ $('#myModal').bind('hidden', function () {
                <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
             </tr>
             <tr>
-               <td>show</td>
+               <td>shown</td>
                <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
              </tr>
             </tbody>
@@ -634,8 +633,8 @@ $('a[data-toggle="tab"]').bind('shown', function (e) {
           <p>Hides an elements twipsy.</p>
           <pre class="prettyprint linenums">$('#element').twipsy('hide')</pre>
           <h3>Demo</h3>
-          <div class="well">
-            <p class="muted">Tight pants next level keffiyeh <a href="#" rel='twipsy' title='Some title text'>you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
+          <div class="twipsy-demo well">
+            <p class="muted">Tight pants next level keffiyeh <a href="#" rel='twipsy' title="first twipsy">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
             </p>
           </div>
         </div>

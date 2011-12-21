@@ -68,8 +68,8 @@
    * =================================== */
 
   $(function () {
-    $('html').bind('click.dropdown.data-api', clearMenus)
-    $('body').delegate(toggle, 'click.dropdown.data-api', Dropdown.prototype.toggle)
+    $('html').on('click.dropdown.data-api', clearMenus)
+    $('body').on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
   })
 
-}( window.jQuery || window.ender )
+}( window.jQuery )

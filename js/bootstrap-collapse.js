@@ -23,13 +23,13 @@
 
   var Collapse = function ( element, options ) {
   	this.$element = $(element)
-    this.settings = $.extend({}, $.fn.collapse.defaults, options)
+    this.options = $.extend({}, $.fn.collapse.defaults, options)
 
-    if (this.settings["parent"]) {
-      this.$parent = $(this.settings["parent"])
+    if (this.options["parent"]) {
+      this.$parent = $(this.options["parent"])
     }
 
-    this.settings.toggle && this.toggle()
+    this.options.toggle && this.toggle()
   }
 
   Collapse.prototype = {
@@ -123,13 +123,13 @@
   * ==================== */
 
   $(function () {
-    $('body').delegate('[data-toggle=collapse]', 'click.collapse.data-api', function ( e ) {
+    $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
       var $this = $(this)
         , target = $this.attr('data-target') || $this.attr('href')
         , option = $(target).data('collapse') ? 'toggle' : $this.data()
-        e.preventDefault()
+      e.preventDefault()
       $(target).collapse(option)
     })
   })
 
-})( window.jQuery || window.ender )
+})( window.jQuery )

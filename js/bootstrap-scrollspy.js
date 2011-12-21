@@ -31,7 +31,7 @@
     this.selector = (this.$scrollElement.attr('data-target')
       || this.$scrollElement.attr('href')
       || '') + ' .nav li > a'
-    this.$body = $('body').delegate(this.selector, 'click.scroll.data-api', process)
+    this.$body = $('body').on('click.scroll.data-api', this.selector, process)
 
     this.refresh()
     this.process()
@@ -111,4 +111,4 @@
 
   $(function () { $('[data-spy="scroll"]').scrollspy() })
 
-}( window.jQuery || window.ender )
+}( window.jQuery )

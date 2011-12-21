@@ -21,7 +21,7 @@ To target a specific plugin, just include the plugins name as a namespace along 
 
 We also believe you should be able to use all plugins provided by Bootstrap purely through the JS API.
 
-All public APIs should be a single, chainable method, and return the collection acted upon.
+All public APIs should be single, chainable methods, and return the collection acted upon.
 
     $(".btn.danger").button("toggle").addClass("fat")
 
@@ -73,7 +73,7 @@ examples:
 
     // control other targets
     data-toggle="modal" data-target="#foo"
-    data-toggle="collapse" data-target="#foo" data-parent="#foo"
+    data-toggle="collapse" data-target="#foo" data-parent="#bar"
 
     // defined on element they control
     data-spy="scroll"

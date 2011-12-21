@@ -27,7 +27,7 @@
 
   var dismiss = '[data-dismiss="alert"]'
     , Alert = function ( el ) {
-        $(el).delegate(dismiss, 'click', this.close)
+        $(el).on('click', dismiss, this.close)
       }
 
   Alert.prototype = {
@@ -72,7 +72,7 @@
   * ============== */
 
   $(function () {
-    $('body').delegate(dismiss, 'click.alert.data-api', Alert.prototype.close)
+    $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
   })
 
-}( window.jQuery || window.ender )
+}( window.jQuery )
