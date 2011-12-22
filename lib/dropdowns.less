@@ -1,0 +1,94 @@
+// Dropdown Menus
+// Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
+.dropdown {
+  position: relative;
+}
+// The link that is clicked to toggle the dropdown
+.dropdown-toggle:after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-top: 8px;
+  margin-left: 6px;
+  text-indent: -99999px;
+  vertical-align: top;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid @white;
+  .opacity(30);
+  content: "&darr;";
+}
+.dropdown:hover .dropdown-toggle:after {
+  .opacity(100);
+}
+// The dropdown menu (ul)
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  z-index: 900;
+  float: left;
+  display: none; // None by default, but block on "open" of the menu
+  min-width: 160px;
+  max-width: 220px;
+  _width: 160px;
+  padding: 6px 0;
+  margin-left: 0; // override default ul styles
+  margin-right: 0;
+  background-color: @white;
+  border-color: #999;
+  border-color: rgba(0,0,0,.2);
+  border-style: solid;
+  border-width: 0 1px 1px;
+  .border-radius(0 0 6px 6px);
+  .box-shadow(0 2px 4px rgba(0,0,0,.2));
+  .background-clip(padding-box);
+  zoom: 1; // do we need this?
+
+  // Unfloat any li's to make them stack
+  li {
+    float: none;
+    display: block;
+    background-color: none;
+  }
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #eee;
+    border-bottom: 1px solid @white;
+  }
+}
+
+.topbar .dropdown-menu, .dropdown-menu {
+  // Links within the dropdown menu
+  a {
+    display: block;
+    padding: 4px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: @gray;
+    text-shadow: 0 1px 0 @white;
+    // Hover state
+    &:hover {
+      color: @grayDark;
+      text-decoration: none;
+      #gradient > .vertical(#eeeeee, #dddddd);
+      @shadow: inset 0 1px 0 rgba(0,0,0,.025), inset 0 -1px rgba(0,0,0,.025);
+      .box-shadow(@shadow);
+    }
+  }
+}
+
+// Open state for the dropdown
+.dropdown.open {
+  .dropdown-toggle {
+    color: @white;
+    background: #ccc;
+    background: rgba(0,0,0,.3);
+  }
+  .dropdown-menu {
+    display: block;
+  }
+}

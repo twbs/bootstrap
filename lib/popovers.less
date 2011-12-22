@@ -8,10 +8,14 @@
   z-index: 1000;
   display: none;
   padding: 5px;
+  &.above { margin-top:  -5px; }
+  &.right { margin-left:  5px; }
+  &.below { margin-top:   5px; }
+  &.left  { margin-left: -5px; }
   &.above .arrow { #popoverArrow > .above(); }
   &.right .arrow { #popoverArrow > .right(); }
   &.below .arrow { #popoverArrow > .below(); }
-  &.left .arrow  { #popoverArrow > .left(); }
+  &.left .arrow  { #popoverArrow > .left();  }
   .arrow {
     position: absolute;
     width: 0;

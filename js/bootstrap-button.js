@@ -24,16 +24,16 @@
  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
 
-  var Button = function (element, options) {
+  var Button = function ( element, options ) {
     this.$element = $(element)
-    this.settings = $.extend({}, $.fn.button.defaults, options)
+    this.options = $.extend({}, $.fn.button.defaults, options)
   }
 
   Button.prototype = {
 
       constructor: Button
 
-    , setState: function (state) {
+    , setState: function ( state ) {
         var d = 'disabled'
           , $el = this.$element
           , data = $el.data()
@@ -42,7 +42,7 @@
         state = state + 'Text'
         data.resetText || $el.data('resetText', $el[val]())
 
-        $el[val](data[state] || this.settings[state])
+        $el[val](data[state] || this.options[state])
 
         // push to event loop to allow forms to submit
         setTimeout(function () {
@@ -83,16 +83,16 @@
     loadingText: 'loading...'
   }
 
-  $.fn.button.Button = Button
+  $.fn.button.Constructor = Button
 
 
  /* BUTTON DATA-API
   * =============== */
 
   $(function () {
-    $('body').delegate('[data-toggle^=button]', 'click.button.data-api', function (e) {
+    $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
       $(e.srcElement).button('toggle')
     })
   })
 
-}( window.jQuery || window.ender )
+}( window.jQuery )

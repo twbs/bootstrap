@@ -15,14 +15,12 @@ $(function () {
       test("should render popover element", function () {
         $.support.transition = false
         var popover = $('<a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a>')
-          .appendTo('#qunit-runoff')
-          .popover()
+          .appendTo('#qunit-fixture')
           .popover('show')
 
         ok($('.popover').length, 'popover was inserted')
         popover.popover('hide')
         ok(!$(".popover").length, 'popover removed')
-        $('#qunit-runoff').empty()
       })
 
       test("should store popover instance in popover data object", function () {
@@ -36,7 +34,7 @@ $(function () {
       test("should get title and content from options", function () {
         $.support.transition = false
         var popover = $('<a href="#">@fat</a>')
-          .appendTo('#qunit-runoff')
+          .appendTo('#qunit-fixture')
           .popover({
             title: function () {
               return '@fat'
@@ -54,13 +52,13 @@ $(function () {
 
         popover.popover('hide')
         ok(!$('.popover').length, 'popover was removed')
-        $('#qunit-runoff').empty()
+        $('#qunit-fixture').empty()
       })
 
       test("should get title and content from attributes", function () {
         $.support.transition = false
         var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
-          .appendTo('#qunit-runoff')
+          .appendTo('#qunit-fixture')
           .popover()
           .popover('show')
 
@@ -70,7 +68,7 @@ $(function () {
 
         popover.popover('hide')
         ok(!$('.popover').length, 'popover was removed')
-        $('#qunit-runoff').empty()
+        $('#qunit-fixture').empty()
       })
 
 })
