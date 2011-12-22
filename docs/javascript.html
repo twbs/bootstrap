@@ -23,49 +23,6 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-    <!-- Le javascript -->
-    <!-- placed up here so that the inline demos can be next to their markup -->
-    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
-    <script src="../js/tests/vendor/jquery.js"></script>
-
-    <script type="text/javascript">
-      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
-      $(document).ready(function() {
-        $('.nav .active').click(function(e) {
-          e.preventDefault();
-          $(this).siblings().toggle();
-        });
-      });
-    </script>
-
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-transition.js"></script>
-    <script src="../js/bootstrap-alert.js"></script>
-    <script src="../js/bootstrap-modal.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tab.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
-    <script src="../js/bootstrap-button.js"></script>
-    <script src="../js/bootstrap-collapse.js"></script>
-    <script>
-      $(function () {
-        // twipsy demo
-        $('.twipsy-demo.well').twipsy({
-          selector: "a[rel=twipsy]"
-        })
-
-        //popover demo
-        $("a[rel=popover]")
-          .popover()
-          .click(function(e) {
-            e.preventDefault()
-          })
-      })
-    </script>
-
   </head>
 
   <body id="bootstrap-js">
@@ -839,16 +796,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                   <button id="fat-btn" data-loading-text="loading..." class="btn">
                     Loading State
                   </button>
-                  <script>
-                    $(function() {
-                      var btn = $('#fat-btn').click(function () {
-                        btn.button('loading')
-                        setTimeout(function () {
-                          btn.button('reset')
-                        }, 3000)
-                      })
-                    })
-                  </script>
                 </td>
              </tr>
              <tr>
@@ -1040,5 +987,47 @@ $('#myCollapsible').on('hidden', function () {
         <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
     </div><!-- /container -->
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
+    <script src="../js/tests/vendor/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="../js/bootstrap-transition.js"></script>
+    <script src="../js/bootstrap-alert.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-button.js"></script>
+    <script src="../js/bootstrap-collapse.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script>
+      $(function () {
+        // twipsy demo
+        $('.twipsy-demo.well').twipsy({
+          selector: "a[rel=twipsy]"
+        })
+
+        //popover demo
+        $("a[rel=popover]")
+          .popover()
+          .click(function(e) {
+            e.preventDefault()
+          })
+
+        $('#fat-btn')
+          .click(function () {
+            var btn = $(this)
+            btn.button('loading')
+            setTimeout(function () {
+              btn.button('reset')
+            }, 3000)
+          })
+      })
+    </script>
   </body>
 </html>

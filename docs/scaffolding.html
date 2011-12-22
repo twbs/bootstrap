@@ -64,34 +64,34 @@
 
   <h2>Default 940px grid</h2>
   <div class="row show-grid">
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
-    <div class="span1" title="60px">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
   </div>
   <div class="row show-grid">
-    <div class="span4" title="300px">4</div>
-    <div class="span4" title="300px">4</div>
-    <div class="span4" title="300px">4</div>
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+    <div class="span4">4</div>
   </div>
   <div class="row show-grid">
-    <div class="span4" title="300px">4</div>
-    <div class="span8" title="620px">8</div>
+    <div class="span4">4</div>
+    <div class="span8">8</div>
   </div>
   <div class="row show-grid">
-    <div class="span6" title="460px">6</div>
-    <div class="span6" title="460px">6</div>
+    <div class="span6">6</div>
+    <div class="span6">6</div>
   </div>
   <div class="row show-grid">
-    <div class="span12" title="940px">12</div>
+    <div class="span12">12</div>
   </div>
 
   <div class="row">
@@ -358,7 +358,6 @@
 </section>
 
 
-
       <!-- Footer
       ================================================== -->
       <footer class="footer">
@@ -371,36 +370,11 @@
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-
-    <script type="text/javascript">
-      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
-      $(document).ready(function() {
-        $('.nav .active').click(function(e) {
-          e.preventDefault();
-          $(this).siblings().toggle();
-        });
-      });
-    </script>
-
-    <script type="text/javascript">
-      // Show grid dimensions on hover
-      $(document).ready(function() {
-        $('.show-grid > div').hover(function() {
-          var width = $(this).width();
-          $(this).attr('title', width);
-          $(this).twipsy();
-        });
-      });
-    </script>
-
-    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
+    <script src="../js/tests/vendor/jquery.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-transitions.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-transition.js"></script>
     <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="assets/js/application.js"></script>
   </body>
 </html>
