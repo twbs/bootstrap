@@ -26,10 +26,9 @@
   * ====================== */
 
   var Modal = function ( content, options ) {
-    this.settings = $.extend({}, $.fn.modal.defaults, options)
+    this.options = $.extend({}, $.fn.modal.defaults, options)
     this.$element = $(content)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-    this.settings.show && this.show()
   }
 
   Modal.prototype = {
@@ -97,7 +96,7 @@
   function hideWithTransition() {
     var that = this
       , timeout = setTimeout(function () {
-          that.$element.unbind($.support.transition.end)
+          that.$element.off($.support.transition.end)
           hideModal.call(that)
         }, 500)
 
@@ -107,7 +106,7 @@
     })
   }
 
-  function hideModal (that) {
+  function hideModal( that ) {
     this.$element
       .hide()
       .trigger('hidden')
@@ -115,17 +114,17 @@
     backdrop.call(this)
   }
 
-  function backdrop ( callback ) {
+  function backdrop( callback ) {
     var that = this
       , animate = this.$element.hasClass('fade') ? 'fade' : ''
 
-    if (this.isShown && this.settings.backdrop) {
+    if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
 
-      if (this.settings.backdrop != 'static') {
+      if (this.options.backdrop != 'static') {
         this.$backdrop.click($.proxy(this.hide, this))
       }
 
@@ -156,12 +155,12 @@
 
   function escape() {
     var that = this
-    if (this.isShown && this.settings.keyboard) {
-      $(document).bind('keyup.dismiss.modal', function ( e ) {
+    if (this.isShown && this.options.keyboard) {
+      $(document).on('keyup.dismiss.modal', function ( e ) {
         e.which == 27 && that.hide()
       })
     } else if (!this.isShown) {
-      $(document).unbind('keyup.dismiss.modal')
+      $(document).off('keyup.dismiss.modal')
     }
   }
 
@@ -176,29 +175,30 @@
         , options = typeof option == 'object' && option
       if (!data) $this.data('modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
+      else data.show()
     })
   }
 
   $.fn.modal.defaults = {
       backdrop: true
     , keyboard: true
-    , show: true
   }
 
-  $.fn.modal.Modal = Modal
+  $.fn.modal.Constructor = Modal
 
 
  /* MODAL DATA-API
   * ============== */
 
-  $(document).ready(function () {
-    $('body').delegate('[data-toggle="modal"]', 'click.modal.data-api', function ( e ) {
+  $(function () {
+    $('body').on('click.modal.data-api', '[data-toggle="modal"]', function ( e ) {
       var $this = $(this)
-        , target = $this.attr('data-target') || $this.attr('href')
-        , option = $(target).data('modal') ? 'toggle' : $this.data()
+        , $target = $($this.attr('data-target') || $this.attr('href'))
+        , option = $target.data('modal') ? 'toggle' : $.extend({}, $target.data(), $this.data())
+
       e.preventDefault()
-      $(target).modal(option)
+      $target.modal(option)
     })
   })
 
-}( window.jQuery || window.ender )
+}( window.jQuery )

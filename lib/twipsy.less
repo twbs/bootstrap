@@ -9,9 +9,11 @@
   padding: 5px;
   font-size: 11px;
   .opacity(0);
-  &.in {
-    .opacity(80);
-  }
+  &.in { .opacity(80); }
+  &.above { margin-top:  -2px; }
+  &.right { margin-left:  2px; }
+  &.below { margin-top:   2px; }
+  &.left  { margin-left: -2px; }
   &.above .twipsy-arrow   { #popoverArrow > .above(); }
   &.left .twipsy-arrow    { #popoverArrow > .left(); }
   &.below .twipsy-arrow   { #popoverArrow > .below(); }

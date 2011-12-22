@@ -25,8 +25,8 @@
  /* CAROUSEL CLASS DEFINITION
   * ========================= */
 
-  var Carousel = function ( el ) {
-    $(el).delegate(dismiss, 'click', this.close)
+  var Carousel = function () {
+
   }
 
   Carousel.prototype = {
@@ -40,20 +40,12 @@
   $.fn.carousel = function ( option ) {
     return this.each(function () {
       var $this = $(this)
-        , data = $this.data('alert')
-      if (!data) $this.data('alert', (data = new Alert(this)))
+        , data = $this.data('carousel')
+      if (!data) $this.data('carousel', (data = new Carousel(this)))
       if (typeof option == 'string') data[option].call($this)
     })
   }
 
-  $.fn.carousel.Carousel = Carousel
+  $.fn.carousel.Constructor = Carousel
 
-
- /* CAROUSEL DATA-API
-  * ================= */
-
-  // $(function () {
-  //   $('body').delegate(dismiss, 'click.alert.data-api', Alert.prototype.close)
-  // })
-
-}( window.jQuery || window.ender )
+}( window.jQuery )

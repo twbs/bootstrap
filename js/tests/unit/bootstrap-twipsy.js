@@ -29,53 +29,23 @@ $(function () {
       test("should place tooltips relative to placement option", function () {
         $.support.transition = false
         var twipsy = $('<a href="#" rel="twipsy" title="Another twipsy"></a>')
-          .appendTo('#qunit-runoff')
+          .appendTo('#qunit-fixture')
           .twipsy({placement: 'below'})
           .twipsy('show')
 
         ok($(".twipsy").hasClass('fade below in'), 'has correct classes applied')
         twipsy.twipsy('hide')
-        ok(!$(".twipsy").length, 'twipsy removed')
-        $('#qunit-runoff').empty()
       })
 
-      test("should add a fallback in cases where elements have no title tag", function () {
-        $.support.transition = false
-        var twipsy = $('<a href="#" rel="twipsy"></a>')
-          .appendTo('#qunit-runoff')
-          .twipsy({fallback: '@fat'})
-          .twipsy('show')
-
-        equals($(".twipsy").text(), "@fat", 'has correct default text')
-        twipsy.twipsy('hide')
-        ok(!$(".twipsy").length, 'twipsy removed')
-        $('#qunit-runoff').empty()
-      })
-
-      test("should not allow html entities", function () {
+      test("should always allow html entities", function () {
         $.support.transition = false
         var twipsy = $('<a href="#" rel="twipsy" title="<b>@fat</b>"></a>')
-          .appendTo('#qunit-runoff')
-          .twipsy()
-          .twipsy('show')
-
-        ok(!$('.twipsy b').length, 'b tag was not inserted')
-        twipsy.twipsy('hide')
-        ok(!$(".twipsy").length, 'twipsy removed')
-        $('#qunit-runoff').empty()
-      })
-
-      test("should allow html entities if html option set to true", function () {
-        $.support.transition = false
-        var twipsy = $('<a href="#" rel="twipsy" title="<b>@fat</b>"></a>')
-          .appendTo('#qunit-runoff')
-          .twipsy({html: true})
+          .appendTo('#qunit-fixture')
           .twipsy('show')
 
         ok($('.twipsy b').length, 'b tag was inserted')
         twipsy.twipsy('hide')
         ok(!$(".twipsy").length, 'twipsy removed')
-        $('#qunit-runoff').empty()
       })
 
 })
