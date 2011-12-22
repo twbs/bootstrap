@@ -1,8 +1,8 @@
 VERSION=1.4.0
 DATE=$(shell DATE)
-BOOTSTRAP = ./bootstrap.css
-BOOTSTRAP_MIN = ./bootstrap.min.css
-BOOTSTRAP_LESS = ./lib/bootstrap.less
+BOOTSTRAP = ./static/css/bootstrap.css
+BOOTSTRAP_MIN = ./static/css/bootstrap.min.css
+BOOTSTRAP_LESS = ./static/less/bootstrap.less
 LESS_COMPRESSOR ?= `which lessc`
 UGLIFY_JS ?= `which uglifyjs`
 WATCHR ?= `which watchr`
@@ -21,15 +21,15 @@ build:
 
 js/min:
 	@@if test ! -z ${UGLIFY_JS}; then \
-		mkdir -p js/min; \
-		uglifyjs -o js/min/bootstrap-alerts.min.js    js/bootstrap-alerts.js;\
-		uglifyjs -o js/min/bootstrap-buttons.min.js   js/bootstrap-buttons.js;\
-		uglifyjs -o js/min/bootstrap-dropdown.min.js  js/bootstrap-dropdown.js;\
-		uglifyjs -o js/min/bootstrap-modal.min.js     js/bootstrap-modal.js;\
-		uglifyjs -o js/min/bootstrap-popover.min.js   js/bootstrap-popover.js;\
-		uglifyjs -o js/min/bootstrap-scrollspy.min.js js/bootstrap-scrollspy.js;\
-		uglifyjs -o js/min/bootstrap-tabs.min.js      js/bootstrap-tabs.js;\
-		uglifyjs -o js/min/bootstrap-twipsy.min.js    js/bootstrap-twipsy.js;\
+		mkdir -p static/js/min; \
+		uglifyjs -o static/js/min/bootstrap-alerts.min.js    static/js/bootstrap-alerts.js;\
+		uglifyjs -o static/js/min/bootstrap-buttons.min.js   static/js/bootstrap-buttons.js;\
+		uglifyjs -o static/js/min/bootstrap-dropdown.min.js  static/js/bootstrap-dropdown.js;\
+		uglifyjs -o static/js/min/bootstrap-modal.min.js     static/js/bootstrap-modal.js;\
+		uglifyjs -o static/js/min/bootstrap-popover.min.js   static/js/bootstrap-popover.js;\
+		uglifyjs -o static/js/min/bootstrap-scrollspy.min.js static/js/bootstrap-scrollspy.js;\
+		uglifyjs -o static/js/min/bootstrap-tabs.min.js      static/js/bootstrap-tabs.js;\
+		uglifyjs -o static/js/min/bootstrap-twipsy.min.js    static/js/bootstrap-twipsy.js;\
 	else \
 		echo "You must have the UGLIFYJS minifier installed in order to minify Bootstrap's js."; \
 		echo "You can install it by running: npm install uglify-js -g"; \
