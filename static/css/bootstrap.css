@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Dec  7 20:14:59 EST 2011
+ * Date: Wed Dec 21 17:00:45 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -188,6 +188,10 @@ body {
   font-weight: normal;
   line-height: 18px;
   color: #404040;
+  padding-top: 40px;
+}
+body.padded {
+  padding-top: 60px;
 }
 .container {
   width: 940px;
@@ -2465,4 +2469,71 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+.attributes dt {
+  float: left;
+  width: 115px;
+  color: #999;
+  font-weight: normal;
+}
+.attributes dd {
+  margin-left: 120px;
+}
+.attributes ul {
+  margin: 0;
+}
+iframe {
+  border: none;
+}
+.jstree-default.jstree-focused {
+  background-color: transparent !important;
+}
+.jstree {
+  max-height: 300px;
+  overflow: auto;
+}
+.sidebar .jstree {
+  height: 300px;
+  padding-top: 1px;
+}
+.sidebar .jstree .selected > a {
+  background-color: #ffc40d;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffd040), to(#ffc40d));
+  background-image: -moz-linear-gradient(top, #ffd040, #ffc40d);
+  background-image: -ms-linear-gradient(top, #ffd040, #ffc40d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffd040), color-stop(100%, #ffc40d));
+  background-image: -webkit-linear-gradient(top, #ffd040, #ffc40d);
+  background-image: -o-linear-gradient(top, #ffd040, #ffc40d);
+  background-image: linear-gradient(top, #ffd040, #ffc40d);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd040', endColorstr='#ffc40d', GradientType=0);
+  margin: -1px !important;
+}
+.jstree a {
+  padding: 2px 4px !important;
+  border: 1px solid transparent;
+}
+.library a .jstree-icon {
+  background: transparent url('../images/bookcase.png') no-repeat scroll top left !important;
+}
+.collect a .jstree-icon {
+  background: transparent url('../images/folder.png') no-repeat scroll top left !important;
+}
+.pointcloud a .jstree-icon {
+  display: none;
+  background: transparent url('../images/pointcloud2.png') no-repeat scroll top left !important;
+}
+.raster a .jstree-icon {
+  display: none;
+  background: transparent url('../images/raster.png') no-repeat scroll top left !important;
+}
+.vector a .jstree-icon {
+  display: none;
+  background: transparent url('../images/vector.png') no-repeat scroll top left !important;
+}
+.aoi-parent a .jstree-icon {
+  background: transparent url('../images/window.png') no-repeat scroll top left !important;
+}
+.aoi a .jstree-icon {
+  display: none;
 }
