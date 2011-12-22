@@ -92,10 +92,4 @@
   , template: '<div class="popover"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
   })
 
-<<<<<<< HEAD
-  $.fn.twipsy.rejectAttrOptions.push( 'content' )
-
-}( window.jQuery || window.ender )
-=======
 }( window.jQuery )
->>>>>>> upstream/2.0-wip
