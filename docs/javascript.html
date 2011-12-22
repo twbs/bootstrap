@@ -750,6 +750,30 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.alert('close')</h4>
           <p>Closes an alert.</p>
           <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
+          <h3>Events</h3>
+          <p>Bootstrap's alert class exposes a few events for hooking into alert functionality. </p>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>close</td>
+               <td>This event fires immediately when the <code>close</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>closed</td>
+               <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
+             </tr>
+            </tbody>
+          </table>
+<pre class="prettyprint linenums">
+$('#my-alert').bind('closed', function () {
+  // do something ...
+})</pre>
           <h3>Demo</h3>
           <div class="alert-message warning fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
