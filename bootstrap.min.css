@@ -146,10 +146,6 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .help-text{margin-top:5px;margin-bottom:0;color:#bfbfbf;}
 .help-inline{*position:relative;*top:-5px;display:inline;padding-left:5px;}
 .help-block{display:block;max-width:600px;}
-.inline-inputs{color:#808080;}.inline-inputs span,.inline-inputs input{display:inline-block;}
-.inline-inputs input.mini{width:60px;}
-.inline-inputs input.small{width:90px;}
-.inline-inputs span{padding:0 2px 0 1px;}
 .input-prepend,.input-append{overflow:hidden;}.input-prepend input,.input-append input{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
 .input-prepend .add-on,.input-append .add-on{position:relative;z-index:2;float:left;display:block;width:auto;min-width:16px;height:18px;margin-right:-1px;padding:4px 4px 4px 5px;font-weight:normal;line-height:18px;color:#bfbfbf;text-align:center;text-shadow:0 1px 0 #ffffff;background-color:#f5f5f5;border:1px solid #ccc;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-prepend .active,.input-append .active{background-color:#a9dba9;border-color:#46a546;}

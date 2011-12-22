@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Dec 21 19:30:30 CST 2011
+ * Date: Wed Dec 21 19:31:39 CST 2011
  */
 html, body {
   margin: 0;
@@ -903,21 +903,6 @@ textarea[readonly] {
 .help-block {
   display: block;
   max-width: 600px;
-}
-.inline-inputs {
-  color: #808080;
-}
-.inline-inputs span, .inline-inputs input {
-  display: inline-block;
-}
-.inline-inputs input.mini {
-  width: 60px;
-}
-.inline-inputs input.small {
-  width: 90px;
-}
-.inline-inputs span {
-  padding: 0 2px 0 1px;
 }
 .input-prepend, .input-append {
   overflow: hidden;
