@@ -1,12 +1,12 @@
 /*!
- * Bootstrap v1.4.0
+ * Bootstrap @VERSION
  *
  * Copyright 2011 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Dec 21 17:00:45 PST 2011
+ * Date: @DATE
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2536,4 +2536,27 @@ iframe {
 }
 .aoi a .jstree-icon {
   display: none;
+}
+div.dataTables_length label {
+  width: 460px;
+  float: left;
+  text-align: left;
+}
+div.dataTables_length select {
+  width: 75px;
+}
+div.dataTables_filter label {
+  float: right;
+  width: 460px;
+}
+div.dataTables_info {
+  padding-top: 8px;
+}
+div.dataTables_paginate {
+  float: right;
+  margin: 0;
+}
+table.dataTable {
+  margin: 1em 0;
+  clear: both;
 }
