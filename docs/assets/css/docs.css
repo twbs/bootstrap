@@ -315,7 +315,12 @@ h2 + table {
 
 /* Example sites showcase */
 .example-sites img {
-  width: 290px;
+  max-width: 290px;
+}
+.built-with {
+  margin: -18px 0 27px;
+  color: #999;
+  text-align: center;
 }
 
 .scrollspy-example {
@@ -382,11 +387,14 @@ h2 + table {
   .example-sites {
     margin-left: 0;
   }
-  .example-sites a {
+  .example-sites > li {
     float: none;
     display: block;
     max-width: 300px;
     margin: 0 auto 18px;
+  }
+  .example-sites img {
+    max-width: 270px;
   }
 
   table code {

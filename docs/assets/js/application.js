@@ -4,6 +4,18 @@ $(function(){
   // IT'S ALL JUST JUNK FOR OUR DOCS!
   // ++++++++++++++++++++++++++++++++++++++++++
 
+  // Hide the Mobile Safari address bar once loaded
+  // ==============================================
+
+  // Set a timeout...
+  setTimeout(function(){
+    // Hide the address bar!
+    window.scrollTo(0, 1);
+  }, 0);
+
+  // table sort example
+  // ==================
+
   // make code pretty
   prettyPrint && prettyPrint()
 

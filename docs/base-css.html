@@ -762,6 +762,43 @@
     <h1>Forms</h1>
   </div>
 
+<!--
+
+Types of forms
+  default (stacked)
+  horizontal (change the class)
+  search
+  inline
+Form elements
+  form
+  fieldset
+  legend
+  label
+  input
+    text (password, email, etc)
+    radio
+    checkbox
+  textarea
+    rows
+  select
+    single
+    multiple
+    size
+Custom form elements
+  Input prepend and append (for @ and $)
+  checkbox and radio lists
+Explaining the default Bootstrap form structure
+  Bulletproofing our forms means adding a bit of extra structure and providing more classes for customization and event handling
+  Form vertical and horizontal forms, we require a wrapping element.
+    we suggest a fieldset
+    but could be anthing so long as it uses the proper class
+Form states
+  warning
+  error
+  success
+
+-->
+
   <h2>Four types of forms</h2>
   <table class="bordered-table striped-table">
     <thead>
@@ -842,12 +879,22 @@
     </div>
     <div class="span9">
       <form class="horizontal-form">
-        <legend>Example form</legend>
+        <legend>Example form section</legend>
         <fieldset class="control-group">
           <label class="control-label" for="input01">Text input</label>
           <div class="controls">
             <input type="text" class="xlarge" name="input01">
             <p class="help-text">Help text here. Be sure to fill this out like so, or else!</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="prependedInput">Prepended text</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on">@</span>
+              <input class="input-small" id="prependedInput" name="prependedInput" size="16" type="text">
+            </div>
+            <span class="help-block">Here's some help text</span>
           </div>
         </fieldset>
         <fieldset class="control-group">
@@ -874,23 +921,44 @@
             </select>
           </div>
         </fieldset>
-        <legend>Example form</legend>
+        <legend>Example form section</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="textarea">Textarea</label>
+          <div class="controls">
+            <textarea class="input-xlarge" name="textarea" id="textarea" rows="3"></textarea>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="fileInput">Disabled input</label>
+          <div class="controls">
+            <input class="input-xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here... carry on." disabled>
+          </div>
+        </fieldset>
         <fieldset class="control-group">
           <label class="control-label" for="fileInput">File input</label>
           <div class="controls">
             <input class="input-file" id="fileInput" name="fileInput" type="file">
           </div>
         </fieldset>
-        <fieldset class="control-group has-error">
+        <fieldset class="control-group warning">
+          <label class="control-label" for="inputError">Input with warning</label>
+          <div class="controls">
+            <input type="text" name="inputError">
+            <span class="help-inline">Something may have gone wrong</span>
+          </div>
+        </fieldset>
+        <fieldset class="control-group error">
           <label class="control-label" for="inputError">Input with error</label>
           <div class="controls">
             <input type="text" name="inputError">
+            <span class="help-inline">Please correct the error</span>
           </div>
         </fieldset>
-        <fieldset class="control-group has-error">
-          <label class="control-label" for="textareaError">Textarea with error</label>
+        <fieldset class="control-group success">
+          <label class="control-label" for="inputError">Input with success</label>
           <div class="controls">
-            <textarea class="input-xlarge" rows="3"></textarea>
+            <input type="text" name="inputError">
+            <span class="help-inline">Woohoo!</span>
           </div>
         </fieldset>
         <fieldset class="control-group">
@@ -1110,8 +1178,7 @@
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
-    <script src="../js/tests/vendor/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="assets/js/application.js"></script>
