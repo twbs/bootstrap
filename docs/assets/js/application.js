@@ -17,7 +17,7 @@ $(function(){
   // ==================
 
   // make code pretty
-  prettyPrint && prettyPrint()
+  window.prettyPrint && prettyPrint()
 
   // table sort example
   if ($.fn.tableSorter) {
