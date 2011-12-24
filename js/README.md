@@ -49,7 +49,7 @@ examples:
 
     backdrop: true
     keyboard: false
-    placement: 'above'
+    placement: 'top'
 
 ---
 
