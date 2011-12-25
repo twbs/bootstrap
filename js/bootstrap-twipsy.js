@@ -164,13 +164,20 @@
 
       $tip.removeClass('in')
 
-      function removeElement () {
-        $tip.remove()
+      function removeWithAnimation() {
+        var timeout = setTimeout(function () {
+          $tip.off($.support.transition.end).remove()
+        }, 500)
+
+        $tip.one($.support.transition.end, function () {
+          clearTimeout(timeout)
+          $tip.remove()
+        })
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
-        $tip.on($.support.transition.end, removeElement) :
-        removeElement()
+        removeWithAnimation() :
+        $tip.remove()
     }
 
   , fixTitle: function () {
