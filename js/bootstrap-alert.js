@@ -39,6 +39,8 @@
         , selector = $this.attr('data-target') || $this.attr('href')
         , $parent = $(selector)
 
+      $parent.trigger('close')
+
       e && e.preventDefault()
 
       $parent.length || ($parent = $this.hasClass('alert-message') ? $this : $this.parent())
@@ -47,6 +49,8 @@
 
       function removeElement() {
         $parent.remove()
+
+        $parent.trigger('closed')
       }
 
       $.support.transition && $parent.hasClass('fade') ?
