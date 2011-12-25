@@ -125,10 +125,7 @@
           .css({ top: 0, left: 0, display: 'block' })
           .prependTo(inside ? this.$element : document.body)
 
-        pos = $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
-          width: this.$element[0].offsetWidth
-        , height: this.$element[0].offsetHeight
-        })
+        pos = this.getPosition(inside)
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
@@ -185,6 +182,13 @@
 
   , hasContent: function () {
       return this.getTitle()
+    }
+
+  , getPosition: function (inside) {
+      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
+        width: this.$element[0].offsetWidth
+      , height: this.$element[0].offsetHeight
+      })
     }
 
   , getTitle: function () {
