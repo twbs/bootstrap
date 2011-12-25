@@ -125,10 +125,7 @@
           .css({ top: 0, left: 0, display: 'block' })
           .prependTo(inside ? this.$element : document.body)
 
-        pos = $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
-          width: this.$element[0].offsetWidth
-        , height: this.$element[0].offsetHeight
-        })
+        pos = this.getPosition(inside)
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
@@ -167,13 +164,20 @@
 
       $tip.removeClass('in')
 
-      function removeElement () {
-        $tip.remove()
+      function removeWithAnimation() {
+        var timeout = setTimeout(function () {
+          $tip.off($.support.transition.end).remove()
+        }, 500)
+
+        $tip.one($.support.transition.end, function () {
+          clearTimeout(timeout)
+          $tip.remove()
+        })
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
-        $tip.on($.support.transition.end, removeElement) :
-        removeElement()
+        removeWithAnimation() :
+        $tip.remove()
     }
 
   , fixTitle: function () {
@@ -185,6 +189,13 @@
 
   , hasContent: function () {
       return this.getTitle()
+    }
+
+  , getPosition: function (inside) {
+      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
+        width: this.$element[0].offsetWidth
+      , height: this.$element[0].offsetHeight
+      })
     }
 
   , getTitle: function () {
