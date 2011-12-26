@@ -317,23 +317,23 @@ button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner{padding:0;
 .modal-footer:after{clear:both;}
 .modal-footer .btn{float:right;margin-left:5px;}
 .twipsy{position:absolute;z-index:1000;display:block;visibility:visible;padding:5px;font-size:11px;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;}.twipsy.in{filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
-.twipsy.above{margin-top:-2px;}
+.twipsy.top{margin-top:-2px;}
 .twipsy.right{margin-left:2px;}
-.twipsy.below{margin-top:2px;}
+.twipsy.bottom{margin-top:2px;}
 .twipsy.left{margin-left:-2px;}
-.twipsy.above .twipsy-arrow{bottom:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #000000;}
+.twipsy.top .twipsy-arrow{bottom:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #000000;}
 .twipsy.left .twipsy-arrow{top:50%;right:0;margin-top:-5px;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:5px solid #000000;}
-.twipsy.below .twipsy-arrow{top:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #000000;}
+.twipsy.bottom .twipsy-arrow{top:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #000000;}
 .twipsy.right .twipsy-arrow{top:50%;left:0;margin-top:-5px;border-top:5px solid transparent;border-bottom:5px solid transparent;border-right:5px solid #000000;}
 .twipsy-inner{max-width:200px;padding:3px 8px;color:white;text-align:center;text-decoration:none;background-color:#000000;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
 .twipsy-arrow{position:absolute;width:0;height:0;}
-.popover{position:absolute;top:0;left:0;z-index:1000;display:none;padding:5px;}.popover.above{margin-top:-5px;}
+.popover{position:absolute;top:0;left:0;z-index:1000;display:none;padding:5px;}.popover.top{margin-top:-5px;}
 .popover.right{margin-left:5px;}
-.popover.below{margin-top:5px;}
+.popover.bottom{margin-top:5px;}
 .popover.left{margin-left:-5px;}
-.popover.above .arrow{bottom:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #000000;}
+.popover.top .arrow{bottom:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #000000;}
 .popover.right .arrow{top:50%;left:0;margin-top:-5px;border-top:5px solid transparent;border-bottom:5px solid transparent;border-right:5px solid #000000;}
-.popover.below .arrow{top:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #000000;}
+.popover.bottom .arrow{top:0;left:50%;margin-left:-5px;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #000000;}
 .popover.left .arrow{top:50%;right:0;margin-top:-5px;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:5px solid #000000;}
 .popover .arrow{position:absolute;width:0;height:0;}
 .popover .inner{padding:3px;width:280px;overflow:hidden;background-color:#000000;background-color:rgba(0, 0, 0, 0.8);-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);-moz-box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);}

@@ -23,38 +23,6 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-    <!-- Le javascript -->
-    <!-- placed up here so that the inline demos can be next to their markup -->
-    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
-    <script src="../js/tests/vendor/jquery.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script>$(function () { prettyPrint() })</script>
-    <script src="../js/bootstrap-transition.js"></script>
-    <script src="../js/bootstrap-alert.js"></script>
-    <script src="../js/bootstrap-modal.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tab.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
-    <script src="../js/bootstrap-button.js"></script>
-    <script src="../js/bootstrap-collapse.js"></script>
-    <script>
-      $(function () {
-        // twipsy demo
-        $('.twipsy-demo.well').twipsy({
-          selector: "a[rel=twipsy]"
-        })
-
-        //popover demo
-        $("a[rel=popover]")
-          .popover()
-          .click(function(e) {
-            e.preventDefault()
-          })
-      })
-    </script>
-
   </head>
 
   <body id="bootstrap-js">
@@ -576,8 +544,8 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <tr>
                <td>placement</td>
                <td>string</td>
-               <td>'above'</td>
-               <td>how to position the tooltip - above | below | left | right</td>
+               <td>'top'</td>
+               <td>how to position the tooltip - top | bottom | left | right</td>
              </tr>
              <tr>
                <td>selector</td>
@@ -667,7 +635,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                <td>placement</td>
                <td>string</td>
                <td>'right'</td>
-               <td>how to position the popover - above | below | left | right</td>
+               <td>how to position the popover - top | bottom | left | right</td>
              </tr>
              <tr>
                <td>selector</td>
@@ -750,6 +718,30 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.alert('close')</h4>
           <p>Closes an alert.</p>
           <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
+          <h3>Events</h3>
+          <p>Bootstrap's alert class exposes a few events for hooking into alert functionality. </p>
+          <table class="zebra-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>close</td>
+               <td>This event fires immediately when the <code>close</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>closed</td>
+               <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
+             </tr>
+            </tbody>
+          </table>
+<pre class="prettyprint linenums">
+$('#my-alert').bind('closed', function () {
+  // do something ...
+})</pre>
           <h3>Demo</h3>
           <div class="alert-message warning fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -828,16 +820,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                   <button id="fat-btn" data-loading-text="loading..." class="btn">
                     Loading State
                   </button>
-                  <script>
-                    $(function() {
-                      var btn = $('#fat-btn').click(function () {
-                        btn.button('loading')
-                        setTimeout(function () {
-                          btn.button('reset')
-                        }, 3000)
-                      })
-                    })
-                  </script>
                 </td>
              </tr>
              <tr>
@@ -1029,5 +1011,47 @@ $('#myCollapsible').on('hidden', function () {
         <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
     </div><!-- /container -->
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
+    <script src="../js/tests/vendor/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="../js/bootstrap-transition.js"></script>
+    <script src="../js/bootstrap-alert.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+    <script src="../js/bootstrap-twipsy.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-button.js"></script>
+    <script src="../js/bootstrap-collapse.js"></script>
+    <script src="assets/js/application.js"></script>
+    <script>
+      $(function () {
+        // twipsy demo
+        $('.twipsy-demo.well').twipsy({
+          selector: "a[rel=twipsy]"
+        })
+
+        //popover demo
+        $("a[rel=popover]")
+          .popover()
+          .click(function(e) {
+            e.preventDefault()
+          })
+
+        $('#fat-btn')
+          .click(function () {
+            var btn = $(this)
+            btn.button('loading')
+            setTimeout(function () {
+              btn.button('reset')
+            }, 3000)
+          })
+      })
+    </script>
   </body>
 </html>

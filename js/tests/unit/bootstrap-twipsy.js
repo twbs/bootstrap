@@ -30,10 +30,10 @@ $(function () {
         $.support.transition = false
         var twipsy = $('<a href="#" rel="twipsy" title="Another twipsy"></a>')
           .appendTo('#qunit-fixture')
-          .twipsy({placement: 'below'})
+          .twipsy({placement: 'bottom'})
           .twipsy('show')
 
-        ok($(".twipsy").hasClass('fade below in'), 'has correct classes applied')
+        ok($(".twipsy").hasClass('fade bottom in'), 'has correct classes applied')
         twipsy.twipsy('hide')
       })
 
