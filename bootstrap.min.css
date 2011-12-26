@@ -125,15 +125,15 @@ textarea{height:auto;}
 input,textarea{-webkit-transition:border linear 0.2s,box-shadow linear 0.2s;-moz-transition:border linear 0.2s,box-shadow linear 0.2s;-ms-transition:border linear 0.2s,box-shadow linear 0.2s;-o-transition:border linear 0.2s,box-shadow linear 0.2s;transition:border linear 0.2s,box-shadow linear 0.2s;-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);}
 input:focus,textarea:focus{outline:0;border-color:rgba(82, 168, 236, 0.8);-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);}
 input[type=file]:focus,input[type=checkbox]:focus,select:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;outline:1px dotted #666;}
-form .clearfix.error>label,form .clearfix.error .help-block,form .clearfix.error .help-inline{color:#b94a48;}
-form .clearfix.error input,form .clearfix.error textarea{color:#b94a48;border-color:#ee5f5b;}form .clearfix.error input:focus,form .clearfix.error textarea:focus{border-color:#e9322d;-webkit-box-shadow:0 0 6px #f8b9b7;-moz-box-shadow:0 0 6px #f8b9b7;box-shadow:0 0 6px #f8b9b7;}
-form .clearfix.error .input-prepend .add-on,form .clearfix.error .input-append .add-on{color:#b94a48;background-color:#fce6e6;border-color:#b94a48;}
-form .clearfix.warning>label,form .clearfix.warning .help-block,form .clearfix.warning .help-inline{color:#c09853;}
-form .clearfix.warning input,form .clearfix.warning textarea{color:#c09853;border-color:#ccae64;}form .clearfix.warning input:focus,form .clearfix.warning textarea:focus{border-color:#be9a3f;-webkit-box-shadow:0 0 6px #e5d6b1;-moz-box-shadow:0 0 6px #e5d6b1;box-shadow:0 0 6px #e5d6b1;}
-form .clearfix.warning .input-prepend .add-on,form .clearfix.warning .input-append .add-on{color:#c09853;background-color:#d2b877;border-color:#c09853;}
-form .clearfix.success>label,form .clearfix.success .help-block,form .clearfix.success .help-inline{color:#468847;}
-form .clearfix.success input,form .clearfix.success textarea{color:#468847;border-color:#57a957;}form .clearfix.success input:focus,form .clearfix.success textarea:focus{border-color:#458845;-webkit-box-shadow:0 0 6px #9acc9a;-moz-box-shadow:0 0 6px #9acc9a;box-shadow:0 0 6px #9acc9a;}
-form .clearfix.success .input-prepend .add-on,form .clearfix.success .input-append .add-on{color:#468847;background-color:#bcddbc;border-color:#468847;}
+form .error>label,form .error .help-block,form .error .help-inline{color:#b94a48;}
+form .error input,form .error textarea{color:#b94a48;border-color:#ee5f5b;}form .error input:focus,form .error textarea:focus{border-color:#e9322d;-webkit-box-shadow:0 0 6px #f8b9b7;-moz-box-shadow:0 0 6px #f8b9b7;box-shadow:0 0 6px #f8b9b7;}
+form .error .input-prepend .add-on,form .error .input-append .add-on{color:#b94a48;background-color:#fce6e6;border-color:#b94a48;}
+form .warning>label,form .warning .help-block,form .warning .help-inline{color:#c09853;}
+form .warning input,form .warning textarea{color:#c09853;border-color:#ccae64;}form .warning input:focus,form .warning textarea:focus{border-color:#be9a3f;-webkit-box-shadow:0 0 6px #e5d6b1;-moz-box-shadow:0 0 6px #e5d6b1;box-shadow:0 0 6px #e5d6b1;}
+form .warning .input-prepend .add-on,form .warning .input-append .add-on{color:#c09853;background-color:#d2b877;border-color:#c09853;}
+form .success>label,form .success .help-block,form .success .help-inline{color:#468847;}
+form .success input,form .success textarea{color:#468847;border-color:#57a957;}form .success input:focus,form .success textarea:focus{border-color:#458845;-webkit-box-shadow:0 0 6px #9acc9a;-moz-box-shadow:0 0 6px #9acc9a;box-shadow:0 0 6px #9acc9a;}
+form .success .input-prepend .add-on,form .success .input-append .add-on{color:#468847;background-color:#bcddbc;border-color:#468847;}
 .input-mini,input.mini,textarea.mini,select.mini{width:60px;}
 .input-small,input.small,textarea.small,select.small{width:90px;}
 .input-medium,input.medium,textarea.medium,select.medium{width:150px;}
@@ -181,7 +181,7 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .form-stacked label{display:block;float:none;width:auto;font-weight:bold;text-align:left;line-height:20px;padding-top:0;}
 .form-stacked .clearfix{margin-bottom:9px;}.form-stacked .clearfix div.input{margin-left:0;}
 .form-stacked .inputs-list{margin-bottom:0;}.form-stacked .inputs-list li{padding-top:0;}.form-stacked .inputs-list li label{font-weight:normal;padding-top:0;}
-.form-stacked div.clearfix.error{padding-top:10px;padding-bottom:10px;padding-left:10px;margin-top:0;margin-left:-10px;}
+.form-stacked div.error{padding-top:10px;padding-bottom:10px;padding-left:10px;margin-top:0;margin-left:-10px;}
 .form-stacked .actions{margin-left:-20px;padding-left:20px;}
 table{width:100%;margin-bottom:18px;padding:0;font-size:13px;border-collapse:collapse;}table th,table td{padding:10px 10px 9px;line-height:18px;text-align:left;}
 table th{padding-top:9px;font-weight:bold;vertical-align:middle;}
