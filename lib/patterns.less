@@ -883,6 +883,80 @@ input[type=submit].btn {
 }
 
 
+// BORDERED ARROWS
+// ---------------
+
+#borderArrow {
+  .below(@arrowWidth: 5px, @borderWidth: 1px, @borderColor: black, @innerColor: white) {
+    position: absolute;
+    left: 50%;
+    bottom: -@arrowWidth;
+    border-top: @arrowWidth solid @borderColor;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;    
+    .inner { 
+      @innerWidth: @arrowWidth - @borderWidth;
+      position: absolute;
+      bottom: @borderWidth;
+      margin-left: -@innerWidth;
+      border-top: @innerWidth solid @innerColor;
+      border-left: @innerWidth solid transparent;
+      border-right: @innerWidth solid transparent;
+    }
+  }
+  .above(@arrowWidth: 5px, @borderWidth: 1px, @borderColor: black, @innerColor: white) {
+    position: absolute;
+    left: 50%;
+    top: -@arrowWidth;
+    border-bottom: @arrowWidth solid @borderColor;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;    
+    .inner { 
+      @innerWidth: @arrowWidth - @borderWidth;
+      position: absolute;
+      top: @borderWidth;
+      margin-left: -@innerWidth;
+      border-bottom: @innerWidth solid @innerColor;
+      border-left: @innerWidth solid transparent;
+      border-right: @innerWidth solid transparent;
+    }
+  }
+  .right(@arrowWidth: 5px, @borderWidth: 1px, @borderColor: black, @innerColor: white) {
+    position: absolute;
+    top: 50%;
+    right: -@arrowWidth;
+    border-left: @arrowWidth solid @borderColor;
+    border-bottom: @arrowWidth solid transparent;
+    border-top: @arrowWidth solid transparent;    
+    .inner { 
+      @innerWidth: @arrowWidth - @borderWidth;
+      position: absolute;
+      right: @borderWidth;
+      margin-top: -@innerWidth;
+      border-left: @innerWidth solid @innerColor;
+      border-bottom: @innerWidth solid transparent;
+      border-top: @innerWidth solid transparent;
+    }
+  }
+  .left(@arrowWidth: 5px, @borderWidth: 1px, @borderColor: black, @innerColor: white) {
+    position: absolute;
+    top: 50%;
+    left: -@arrowWidth;
+    border-right: @arrowWidth solid @borderColor;
+    border-bottom: @arrowWidth solid transparent;
+    border-top: @arrowWidth solid transparent;    
+    .inner { 
+      @innerWidth: @arrowWidth - @borderWidth;
+      position: absolute;
+      left: @borderWidth;
+      margin-top: -@innerWidth;
+      border-right: @innerWidth solid @innerColor;
+      border-bottom: @innerWidth solid transparent;
+      border-top: @innerWidth solid transparent;
+    }
+  }
+}
+
 // POPOVER ARROWS
 // --------------
 
