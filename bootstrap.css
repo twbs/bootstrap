@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Dec 25 20:18:31 PST 2011
+ * Date: Sun Dec 25 20:44:38 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -719,56 +719,56 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   box-shadow: none;
   outline: 1px dotted #666;
 }
-form .clearfix.error > label, form .clearfix.error .help-block, form .clearfix.error .help-inline {
+form .error > label, form .error .help-block, form .error .help-inline {
   color: #b94a48;
 }
-form .clearfix.error input, form .clearfix.error textarea {
+form .error input, form .error textarea {
   color: #b94a48;
   border-color: #ee5f5b;
 }
-form .clearfix.error input:focus, form .clearfix.error textarea:focus {
+form .error input:focus, form .error textarea:focus {
   border-color: #e9322d;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
   -moz-box-shadow: 0 0 6px #f8b9b7;
   box-shadow: 0 0 6px #f8b9b7;
 }
-form .clearfix.error .input-prepend .add-on, form .clearfix.error .input-append .add-on {
+form .error .input-prepend .add-on, form .error .input-append .add-on {
   color: #b94a48;
   background-color: #fce6e6;
   border-color: #b94a48;
 }
-form .clearfix.warning > label, form .clearfix.warning .help-block, form .clearfix.warning .help-inline {
+form .warning > label, form .warning .help-block, form .warning .help-inline {
   color: #c09853;
 }
-form .clearfix.warning input, form .clearfix.warning textarea {
+form .warning input, form .warning textarea {
   color: #c09853;
   border-color: #ccae64;
 }
-form .clearfix.warning input:focus, form .clearfix.warning textarea:focus {
+form .warning input:focus, form .warning textarea:focus {
   border-color: #be9a3f;
   -webkit-box-shadow: 0 0 6px #e5d6b1;
   -moz-box-shadow: 0 0 6px #e5d6b1;
   box-shadow: 0 0 6px #e5d6b1;
 }
-form .clearfix.warning .input-prepend .add-on, form .clearfix.warning .input-append .add-on {
+form .warning .input-prepend .add-on, form .warning .input-append .add-on {
   color: #c09853;
   background-color: #d2b877;
   border-color: #c09853;
 }
-form .clearfix.success > label, form .clearfix.success .help-block, form .clearfix.success .help-inline {
+form .success > label, form .success .help-block, form .success .help-inline {
   color: #468847;
 }
-form .clearfix.success input, form .clearfix.success textarea {
+form .success input, form .success textarea {
   color: #468847;
   border-color: #57a957;
 }
-form .clearfix.success input:focus, form .clearfix.success textarea:focus {
+form .success input:focus, form .success textarea:focus {
   border-color: #458845;
   -webkit-box-shadow: 0 0 6px #9acc9a;
   -moz-box-shadow: 0 0 6px #9acc9a;
   box-shadow: 0 0 6px #9acc9a;
 }
-form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-append .add-on {
+form .success .input-prepend .add-on, form .success .input-append .add-on {
   color: #468847;
   background-color: #bcddbc;
   border-color: #468847;
@@ -1085,7 +1085,7 @@ textarea[readonly] {
   font-weight: normal;
   padding-top: 0;
 }
-.form-stacked div.clearfix.error {
+.form-stacked div.error {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
