@@ -46,7 +46,8 @@
     if ( /^#\w+/.test(href) ) {
       e.preventDefault()
 
-      if ( $this.parent('li').hasClass('active') ) {
+      if ( $this.parent('li').hasClass('active') 
+          || $this.parent('li').hasClass('disabled') ) {
         return
       }
 
