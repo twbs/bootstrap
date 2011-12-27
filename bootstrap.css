@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Dec 27 12:39:01 CST 2011
+ * Date: Tue Dec 27 15:23:07 CST 2011
  */
 html, body {
   margin: 0;
@@ -602,6 +602,7 @@ select, input[type=file] {
 }
 select {
   background-color: #ffffff;
+  vertical-align: middle;
 }
 select[multiple] {
   height: inherit;
@@ -904,17 +905,12 @@ textarea[readonly] {
   display: block;
   max-width: 600px;
 }
-.input-prepend, .input-append {
-  overflow: hidden;
-}
 .input-prepend input, .input-append input {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
 .input-prepend .add-on, .input-append .add-on {
-  position: relative;
-  z-index: 2;
   float: left;
   display: block;
   width: auto;
@@ -2573,6 +2569,16 @@ a.thumbnail:hover {
   }
   .horizontal-form .form-actions {
     padding-left: 0;
+  }
+  .modal {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+  .modal .close {
+    padding: 10px;
   }
 }
 @media (max-width: 768px) {

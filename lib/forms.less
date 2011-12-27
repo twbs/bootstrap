@@ -96,6 +96,7 @@ input[type=file] {
 // Chrome on Linux and Mobile Safari need background-color
 select {
   background-color: @white;
+  vertical-align: middle;
 }
 
 // Make multiple select elements height not fixed
@@ -304,13 +305,10 @@ textarea[readonly] {
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
 .input-append {
-  overflow: hidden;
   input {
     .border-radius(0 3px 3px 0);
   }
   .add-on {
-    position: relative;
-    z-index: 2;
     float: left;
     display: block;
     width: auto;
