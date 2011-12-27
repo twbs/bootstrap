@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Dec 27 16:25:12 CST 2011
+ * Date: Tue Dec 27 17:02:48 CST 2011
  */
 html, body {
   margin: 0;
@@ -491,7 +491,7 @@ address {
 }
 code, pre {
   padding: 0 3px 2px;
-  font-family: "Menlo", Monaco, Courier New, monospace;
+  font-family: Menlo, Monaco, Courier New, monospace;
   font-size: 12px;
   color: #404040;
   -webkit-border-radius: 3px;
@@ -905,6 +905,21 @@ textarea[readonly] {
   display: block;
   max-width: 600px;
 }
+.input-prepend, .input-append {
+  zoom: 1;
+}
+.input-prepend:before,
+.input-append:before,
+.input-prepend:after,
+.input-append:after {
+  display: table;
+  *display: inline;
+  content: "";
+  zoom: 1;
+}
+.input-prepend:after, .input-append:after {
+  clear: both;
+}
 .input-prepend input, .input-append input {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -985,7 +1000,7 @@ th, td {
   padding: 8px;
   line-height: 18px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 th {
   font-weight: bold;
@@ -993,9 +1008,6 @@ th {
 }
 td {
   vertical-align: top;
-}
-tbody tr:last-child th, tbody tr:last-child td {
-  border-bottom: 0;
 }
 .condensed-table th, .condensed-table td {
   padding: 4px 5px;

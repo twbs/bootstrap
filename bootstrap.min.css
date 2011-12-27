@@ -87,7 +87,7 @@ blockquote{padding-left:15px;margin-bottom:18px;border-left:5px solid #eee;}bloc
 blockquote small{display:block;line-height:18px;color:#bfbfbf;}blockquote small:before{content:'\2014 \00A0';}
 blockquote.pull-right{float:right;}blockquote.pull-right p,blockquote.pull-right small{text-align:right;}
 address{display:block;margin-bottom:18px;line-height:18px;}
-code,pre{padding:0 3px 2px;font-family:"Menlo",Monaco,Courier New,monospace;font-size:12px;color:#404040;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+code,pre{padding:0 3px 2px;font-family:Menlo, Monaco, Courier New, monospace;font-size:12px;color:#404040;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 code{padding:1px 3px;background-color:#fee9cc;}
 pre{display:block;padding:8.5px;margin:0 0 9px;font-size:12px;line-height:18px;background-color:#f5f5f5;border:1px solid #ccc;border:1px solid rgba(0, 0, 0, 0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre;white-space:pre-wrap;word-break:break-all;}pre.prettyprint{margin-bottom:18px;}
 pre code{padding:0;background-color:transparent;}
@@ -146,6 +146,8 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .help-text{margin-top:5px;margin-bottom:0;color:#bfbfbf;}
 .help-inline{*position:relative;*top:-5px;display:inline;padding-left:5px;}
 .help-block{display:block;max-width:600px;}
+.input-prepend,.input-append{zoom:1;}.input-prepend:before,.input-append:before,.input-prepend:after,.input-append:after{display:table;*display:inline;content:"";zoom:1;}
+.input-prepend:after,.input-append:after{clear:both;}
 .input-prepend input,.input-append input{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
 .input-prepend .add-on,.input-append .add-on{float:left;display:block;width:auto;min-width:16px;height:18px;margin-right:-1px;padding:4px 4px 4px 5px;font-weight:normal;line-height:18px;color:#bfbfbf;text-align:center;text-shadow:0 1px 0 #ffffff;background-color:#f5f5f5;border:1px solid #ccc;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-prepend .active,.input-append .active{background-color:#a9dba9;border-color:#46a546;}
@@ -160,10 +162,9 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .horizontal-form .control-list{padding-top:6px;}
 .horizontal-form .form-actions{padding-left:150px;}
 table{width:100%;margin-bottom:18px;}
-th,td{padding:8px;line-height:18px;text-align:left;border-bottom:1px solid #ddd;}
+th,td{padding:8px;line-height:18px;text-align:left;border-top:1px solid #ddd;}
 th{font-weight:bold;vertical-align:bottom;}
 td{vertical-align:top;}
-tbody tr:last-child th,tbody tr:last-child td{border-bottom:0;}
 .condensed-table th,.condensed-table td{padding:4px 5px;}
 .bordered-table{border:1px solid #ddd;border-collapse:separate;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.bordered-table th+th,.bordered-table td+td,.bordered-table th+td,.bordered-table td+th{border-left:1px solid #ddd;}
 .bordered-table thead:first-child tr:first-child th:first-child,.bordered-table tbody:first-child tr:first-child td:first-child{-webkit-border-radius:4px 0 0 0;-moz-border-radius:4px 0 0 0;border-radius:4px 0 0 0;}
