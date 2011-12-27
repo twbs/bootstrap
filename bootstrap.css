@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Dec 26 17:12:29 CST 2011
+ * Date: Tue Dec 27 12:39:01 CST 2011
  */
 html, body {
   margin: 0;
@@ -1214,6 +1214,9 @@ table {
 .navbar p a:hover {
   color: #ffffff;
   background-color: transparent;
+}
+.navbar .btn {
+  margin-top: 5px;
 }
 .navbar-search {
   position: relative;
