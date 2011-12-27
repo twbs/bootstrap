@@ -42,7 +42,7 @@ watch:
 	  echo "Watching less files..."; \
 	  watchr -e "watch('lib/.*\.less') { system 'make' }"; \
 	else \
-		echo "You must have the watchr installed in order to watch Bootstrap less files."; \
+		echo "You must have the watchr installed in order to watch Bootstrap Less files."; \
 		echo "You can install it by running: gem install watchr"; \
 	fi
 
