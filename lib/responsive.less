@@ -43,6 +43,18 @@
   .horizontal-form .form-actions {
     padding-left: 0;
   }
+
+  // Modals
+  .modal {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    .close {
+      padding: 10px;
+    }
+  }
 }
 
 
@@ -60,7 +72,7 @@
     margin-left: 0;
   }
   // Make all columns even
-  [class*="span"] {
+  .row > [class*="span"] {
     float: none;
     display: block;
     width: auto;

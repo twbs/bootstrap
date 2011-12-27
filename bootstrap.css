@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Dec 24 22:30:43 PST 2011
+ * Date: Tue Dec 27 16:25:12 CST 2011
  */
 html, body {
   margin: 0;
@@ -602,8 +602,9 @@ select, input[type=file] {
 }
 select {
   background-color: #ffffff;
+  vertical-align: middle;
 }
-select[multiple] {
+select[multiple], select[size] {
   height: inherit;
 }
 input[type=image] {
@@ -904,32 +905,12 @@ textarea[readonly] {
   display: block;
   max-width: 600px;
 }
-.inline-inputs {
-  color: #808080;
-}
-.inline-inputs span, .inline-inputs input {
-  display: inline-block;
-}
-.inline-inputs input.mini {
-  width: 60px;
-}
-.inline-inputs input.small {
-  width: 90px;
-}
-.inline-inputs span {
-  padding: 0 2px 0 1px;
-}
-.input-prepend, .input-append {
-  overflow: hidden;
-}
 .input-prepend input, .input-append input {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
 .input-prepend .add-on, .input-append .add-on {
-  position: relative;
-  z-index: 2;
   float: left;
   display: block;
   width: auto;
@@ -1206,10 +1187,6 @@ table {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-.navbar a {
-  color: #bfbfbf;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
 .navbar .brand a:hover, .navbar ul .active > a {
   color: #ffffff;
   text-decoration: none;
@@ -1233,6 +1210,9 @@ table {
 .navbar p a:hover {
   color: #ffffff;
   background-color: transparent;
+}
+.navbar .btn {
+  margin-top: 5px;
 }
 .navbar-search {
   position: relative;
@@ -1315,7 +1295,9 @@ table {
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
+  color: #bfbfbf;
   text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .nav a:hover {
   color: #ffffff;
@@ -1382,104 +1364,6 @@ table {
 }
 .topbar ul .dropdown-menu li a {
   padding: 4px 15px;
-}
-.dropdown {
-  position: relative;
-}
-.dropdown-toggle:after {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-top: 8px;
-  margin-left: 6px;
-  text-indent: -99999px;
-  vertical-align: top;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #ffffff;
-  filter: alpha(opacity=30);
-  -moz-opacity: 0.3;
-  opacity: 0.3;
-  content: "&darr;";
-}
-.dropdown:hover .dropdown-toggle:after {
-  filter: alpha(opacity=100);
-  -moz-opacity: 1;
-  opacity: 1;
-}
-.dropdown-menu {
-  position: absolute;
-  top: 40px;
-  z-index: 900;
-  float: left;
-  display: none;
-  min-width: 160px;
-  max-width: 220px;
-  _width: 160px;
-  padding: 6px 0;
-  margin-left: 0;
-  margin-right: 0;
-  background-color: #ffffff;
-  border-color: #999;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: solid;
-  border-width: 0 1px 1px;
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
-  background-clip: padding-box;
-  zoom: 1;
-}
-.dropdown-menu li {
-  float: none;
-  display: block;
-  background-color: none;
-}
-.dropdown-menu .divider {
-  height: 1px;
-  margin: 5px 0;
-  overflow: hidden;
-  background-color: #eee;
-  border-bottom: 1px solid #ffffff;
-}
-.topbar .dropdown-menu a, .dropdown-menu a {
-  display: block;
-  padding: 4px 15px;
-  clear: both;
-  font-weight: normal;
-  line-height: 18px;
-  color: #808080;
-  text-shadow: 0 1px 0 #ffffff;
-}
-.topbar .dropdown-menu a:hover, .dropdown-menu a:hover {
-  color: #404040;
-  text-decoration: none;
-  background-color: #dddddd;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#eeeeee), to(#dddddd));
-  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
-  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: linear-gradient(top, #eeeeee, #dddddd);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#dddddd', GradientType=0);
-  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
-  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
-  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
-}
-.dropdown.open .dropdown-toggle {
-  color: #ffffff;
-  background: #ccc;
-  background: rgba(0, 0, 0, 0.3);
-}
-.dropdown.open .dropdown-menu {
-  display: block;
 }
 .hero-unit {
   padding: 60px;
@@ -2327,7 +2211,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin: 18px 0;
 }
 .pagination ul {
-  float: left;
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
   margin: 0;
   border: 1px solid #ddd;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -2362,6 +2250,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .pagination .next a {
   border: 0;
+}
+.pagination.centered {
+  text-align: center;
 }
 .modal-backdrop {
   position: fixed;
@@ -2686,6 +2577,16 @@ a.thumbnail:hover {
   .horizontal-form .form-actions {
     padding-left: 0;
   }
+  .modal {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+  .modal .close {
+    padding: 10px;
+  }
 }
 @media (max-width: 768px) {
   .container {
@@ -2695,7 +2596,7 @@ a.thumbnail:hover {
   .row {
     margin-left: 0;
   }
-  [class*="span"] {
+  .row > [class*="span"] {
     float: none;
     display: block;
     width: auto;
