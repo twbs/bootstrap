@@ -417,6 +417,24 @@ input[type=submit].btn {
         -moz-border-radius-bottomright: 4px;
             border-bottom-right-radius: 4px;
   }
+  // Reset corners for large buttons
+  &.large:first-child {
+    margin-left: 0;
+       -webkit-border-top-left-radius: 6px;
+           -moz-border-radius-topleft: 6px;
+               border-top-left-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+        -moz-border-radius-bottomleft: 6px;
+            border-bottom-left-radius: 6px;
+  }
+  &.large:last-child {
+       -webkit-border-top-right-radius: 6px;
+           -moz-border-radius-topright: 6px;
+               border-top-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+        -moz-border-radius-bottomright: 6px;
+            border-bottom-right-radius: 6px;
+  }
 }
 // On hover/focus/active, bring the proper btn to front
 .btn-group .btn:hover,
