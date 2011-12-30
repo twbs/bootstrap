@@ -527,9 +527,7 @@
             <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js"  />
         </copy>
         <apply executable="java" parallel="false">
-            <fileset dir="${dir.source}/" >
-                <include name="${dir.js}/**/*.js"/>
-                <exclude name="${dir.js}/**/*.min.js"/>
+            <fileset dir="${dir.source}/" excludes="${dir.js.mylibs}/${file.js.bypass}, ${dir.js}/**/*.min.js" includes="${dir.js}/**/*.js">
             </fileset>
             <arg line="-jar"/>
             <arg path="./${dir.build.tools}/closure-compiler-v1346.jar"/>
