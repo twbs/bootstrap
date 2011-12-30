@@ -711,10 +711,10 @@
         <echo message=" - maintaining whitespace"/>
         <echo message=" - removing html comments"/>
         <echo message=" - compressing inline style/script tag contents"/>
-        <apply executable="java" parallel="false" dest="./${dir.publish}/" >
-            <fileset dir="./${dir.intermediate}/" includes="${page-files}"/>
+        <apply executable="java" parallel="false">
+            <fileset dir="${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.htmlcompressor}"/>
+            <arg path="${dir.build.tools}/${tool.htmlcompressor}"/>
             <arg line="--preserve-multi-spaces"/>
             <arg line="--remove-quotes"/>
             <arg line="--compress-js"/>
@@ -723,7 +723,7 @@
             <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
-            <mapper type="glob" from="*" to="../${dir.publish}/*"/>
+            <mapper type="glob" from="*" to="${basedir}/${dir.publish}/*"/>
             <targetfile/>
         </apply>
     </target>
@@ -734,10 +734,10 @@
         <echo message=" - maintaining whitespace"/>
         <echo message=" - retain html comments"/>
         <echo message=" - compressing inline style/script tag contents"/>
-        <apply executable="java" parallel="false" dest="./${dir.publish}/" >
-            <fileset dir="./${dir.intermediate}/" includes="${page-files}"/>
+        <apply executable="java" parallel="false">
+            <fileset dir="${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.htmlcompressor}"/>
+            <arg path="${dir.build.tools}/${tool.htmlcompressor}"/>
             <arg value="--preserve-comments"/>
             <arg line="--preserve-multi-spaces"/>
             <arg line="--compress-js"/>
@@ -746,7 +746,7 @@
             <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
-            <mapper type="glob" from="*" to="../${dir.publish}/*"/>
+            <mapper type="glob" from="*" to="${basedir}/${dir.publish}/*"/>
             <targetfile/>
         </apply>
     </target>
@@ -757,10 +757,10 @@
         <echo message=" - removing unnecessary whitespace"/>
         <echo message=" - removing html comments"/>
         <echo message=" - compressing inline style/script tag contents"/>
-        <apply executable="java" parallel="false" dest="./${dir.publish}/" >
-            <fileset dir="./${dir.intermediate}/" includes="${page-files}"/>
+        <apply executable="java" parallel="false">
+            <fileset dir="${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.htmlcompressor}"/>
+            <arg path="${dir.build.tools}/${tool.htmlcompressor}"/>
             <arg line="--remove-quotes"/>
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
@@ -768,7 +768,7 @@
             <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
-            <mapper type="glob" from="*" to="../${dir.publish}/*"/>
+            <mapper type="glob" from="*" to="${basedir}/${dir.publish}/*"/>
             <targetfile/>
         </apply>
     </target>
