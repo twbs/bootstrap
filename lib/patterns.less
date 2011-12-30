@@ -1029,10 +1029,11 @@ input[type=submit].btn {
   background-color: @grayLight;
   .border-radius(3px);
   text-shadow: none;
-  &.important { background-color: #c43c35; }
-  &.warning   { background-color: @orange; }
+  &.important { background-color: @red; }
+  &.warning   { background-color: @yellow; }
   &.success   { background-color: @green; }
   &.notice    { background-color: lighten(@blue, 25%); }
+  &.num       { color: @blueDark; background-color: lighten(@blue, 25%); float: right; }
 }
 
 
