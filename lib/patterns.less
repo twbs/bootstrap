@@ -349,9 +349,9 @@ a.menu:after,
     > a {
       padding: 0 15px;
       margin-right: 2px;
-      line-height: (@baseline * 2) - 2;
+      line-height: (@baseline * 1.5);
       border: 1px solid transparent;
-      .border-radius(4px 4px 0 0);
+      .border-radius(@tabsBorderRadius @tabsBorderRadius 0 0);
       &:hover {
         text-decoration: none;
         background-color: #eee;
@@ -377,35 +377,35 @@ a.menu:after,
   .dropdown-menu {
     top: 35px;
     border-width: 1px;
-    .border-radius(0 6px 6px 6px);
+    .border-radius(0 4px 4px 4px);
   }
   // first one for backwards compatibility
   a.menu:after,
   .dropdown-toggle:after {
-    border-top-color: #999;
-    margin-top: 15px;
+    border-top-color: @blueDark;
+    margin-top: 10px;
     margin-left: 5px;
   }
   // first one for backwards compatibility
   li.open.menu .menu,
   .open.dropdown .dropdown-toggle {
-    border-color: #999;
+    border-color: @blueDark;
   }
   // first one for backwards compatibility
   li.open a.menu:after,
   .dropdown.open .dropdown-toggle:after {
-    border-top-color: #555;
+    border-top-color: @blue;
   }
 }
 
 // Pills
 .pills {
   a {
-    margin: 5px 3px 5px 0;
-    padding: 0 15px;
-    line-height: 30px;
+    margin: 3px 3px 3px 0;
+    padding: 0 10px;
+    line-height: 20px;
     text-shadow: 0 1px 1px @white;
-    .border-radius(15px);
+    .border-radius(@pillsBorderRadius);
     &:hover {
       color: @white;
       text-decoration: none;
@@ -456,8 +456,7 @@ a.menu:after,
     text-shadow: 0 1px 0 @white;
   }
   .divider {
-    padding: 0 5px;
-    color: @grayLight;
+    padding: 0 2px;
   }
   .active a {
     color: @grayDark;
@@ -780,7 +779,7 @@ input[type=submit].btn {
   }
   a:hover,
   .active a {
-    background-color: lighten(@blue, 45%);
+    background-color: @blueLighter;
   }
   .disabled a,
   .disabled a:hover {
@@ -843,8 +842,8 @@ input[type=submit].btn {
   border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
   *border: 1px solid #999; /* IE6-7 */
-  .border-radius(6px);
-  .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  .border-radius(8px);
+  .box-shadow(0 0 0px 8px rgba(82, 82, 82, 0.7));
   .background-clip(padding-box);
   .close { margin-top: 7px; }
   &.fade {
