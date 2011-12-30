@@ -89,7 +89,6 @@
             <antcall target="-text.production"/>
         </else>
     </if>
-    <antcall target="-imgcopy"/>
     </target>
 
 
@@ -1051,14 +1050,6 @@
         </apply>
     </target>
 
-
-    <target name="-imgcopy" depends="-mkdirs">
-        <echo message="Copying over the unmodified images."/>
-
-        <copy todir="./${dir.publish}/${dir.images}">
-            <fileset dir="${dir.source}/${dir.images}"  includes="**/*.jpg, **/*.png"/>
-        </copy>
-    </target>
 
 	<!-- Import project.xml (put any custom build targets in this file so that they aren't overwritten when build.xml is updated) -->
 	<!-- See: https://github.com/h5bp/html5-boilerplate/issues/704 -->
