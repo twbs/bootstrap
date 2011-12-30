@@ -74,8 +74,8 @@ select,
   font-size: @basefont;
   line-height: @baseline;
   color: @gray;
-  border: 1px solid #ccc;
-  .border-radius(3px);
+  border: 1px solid @formBorderColor;
+  .border-radius(@formBorderRadius);
 }
 
 // remove padding from select
@@ -171,7 +171,7 @@ select:focus {
 // --------------------------
 
 // Mixin for form field states
-.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: @grayWhite) {
+.formFieldState(@textColor: #555, @borderColor: @formBorderColor, @backgroundColor: @grayWhite) {
   // Set the text color
   > label,
   .help-block,
@@ -193,20 +193,20 @@ select:focus {
   .input-append .add-on {
     color: @textColor;
     background-color: @backgroundColor;
-    border-color: @textColor;
+    border-color: darken(@borderColor, 10%);
   }
 }
 // Error
 form .clearfix.error {
-  .formFieldState(#b94a48, #ee5f5b, lighten(#ee5f5b, 30%));
+  .formFieldState(@red, @red, @redLight);
 }
 // Warning
 form .clearfix.warning {
-  .formFieldState(#c09853, #ccae64, lighten(#CCAE64, 5%));
+  .formFieldState(@yellow, @yellow, @yellowLight);
 }
 // Success
 form .clearfix.success {
-  .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
+  .formFieldState(@green, @green, @green);
 }
 
 
@@ -300,7 +300,7 @@ textarea[readonly] {
   margin-bottom: @baseline;
   padding: (@baseline - 1) 20px @baseline 150px;
   border-top: 1px solid #ddd;
-  .border-radius(0 0 3px 3px);
+  .border-radius(0 0 @formBorderRadius @formBorderRadius);
   .secondary-action {
     float: right;
     a {
@@ -344,12 +344,12 @@ textarea[readonly] {
 .input-prepend,
 .input-append {
   input {
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @formBorderRadius @formBorderRadius 0);
   }
   .add-on {
     position: relative;
     background: @grayWhite;
-    border: 1px solid #ccc;
+    border: 1px solid @formBorderColor;
     z-index: 2;
     float: left;
     display: block;
@@ -363,7 +363,7 @@ textarea[readonly] {
     color: @grayLight;
     text-align: center;
     text-shadow: 0 1px 0 @white;
-    .border-radius(3px 0 0 3px);
+    .border-radius(@formBorderRadius 0 0 @formBorderRadius);
   }
   .active {
     background: lighten(@green, 30);
@@ -378,10 +378,10 @@ textarea[readonly] {
 .input-append {
   input {
     float: left;
-    .border-radius(3px 0 0 3px);
+    .border-radius(@formBorderRadius 0 0 @formBorderRadius);
   }
   .add-on {
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @formBorderRadius @formBorderRadius 0);
     margin-right: 0;
     margin-left: -1px;
   }
