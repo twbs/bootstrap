@@ -20,23 +20,25 @@ p {
 // --------
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
   color: @grayDark;
   small {
     color: @grayLight;
-    display: block;
+    &.block {
+        display: block;
+    }
   }
 }
 h1 {
   margin-bottom: @baseline;
-  font-size: 30px;
+  font-size: 24px;
   line-height: @baseline * 2;
   small {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 h2 {
-  font-size: 24px;
+  font-size: 20px;
+  letter-spacing: -0.03em;
   line-height: @baseline * 2;
   small {
     font-size: 14px;
@@ -46,9 +48,10 @@ h3, h4, h5, h6 {
   line-height: @baseline * 2;
 }
 h3 {
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: bold;
   small {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 h4 {
