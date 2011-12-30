@@ -512,15 +512,15 @@ footer {
 .btn,
 .alert-message {
   // Set text color
+  &.success,
+  &.success:hover,
   &.danger,
   &.danger:hover,
   &.error,
   &.error:hover,
-  &.success,
-  &.success:hover,
   &.info,
   &.info:hover {
-    color: @white
+    color: @grayDark;
   }
   // Sets the close button to the middle of message
   .close{
@@ -530,15 +530,16 @@ footer {
   // Danger and error appear as red
   &.danger,
   &.error {
-    .gradientBar(#ee5f5b, #c43c35);
+    .gradientBar(#ffebe8, #ffebe8);
   }
-  // Success appears as green
+  // Success (now blue)
   &.success {
-    .gradientBar(#62c462, #57a957);
+    .gradientBar(#eceff6, #eceff6);
+    border-color: #d4dae8;
   }
-  // Info appears as a neutral blue
+  // Info (now yellow)
   &.info {
-    .gradientBar(#5bc0de, #339bb9);
+    .gradientBar(#fff9d7, #fff9d7);
   }
 }
 
@@ -657,8 +658,8 @@ input[type=submit].btn {
   padding: 7px 15px;
   margin-bottom: @baseline;
   color: @grayDark;
-  .gradientBar(#fceec1, #eedc94); // warning by default
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  .gradientBar(#f7f7f7, #f7f7f7); // warning by default
+  text-shadow: none;
   border-width: 1px;
   border-style: solid;
   .border-radius(4px);
@@ -674,12 +675,15 @@ input[type=submit].btn {
   a {
     font-weight: bold;
     color: @grayDark;
+    text-shadow: none;
   }
-  &.danger p a,
-  &.error p a,
-  &.success p a,
-  &.info p a {
-    color: @white;
+  strong {
+    text-shadow: none;
+  }
+  &.error,
+  &.success,
+  &.info {
+      text-shadow: none;
   }
 
   // Remove extra margin from content
@@ -701,10 +705,10 @@ input[type=submit].btn {
 
   &.block-message {
     background-image: none;
-    background-color: lighten(#fceec1, 5%);
     .reset-filter();
     padding: 14px;
-    border-color: #fceec1;
+    background-color: #f7f7f7;
+    border-color: #cccccc;
     .box-shadow(none);
     ul, p {
       margin-right: 30px;
@@ -722,19 +726,18 @@ input[type=submit].btn {
     &.success,
     &.info {
       color: @grayDark;
-      text-shadow: 0 1px 0 rgba(255,255,255,.5);
     }
     &.error {
-      background-color: lighten(#f56a66, 25%);
-      border-color: lighten(#f56a66, 20%);
+      background-color: #ffebe8;
+      border-color: #dd3c10;
     }
     &.success {
-      background-color: lighten(#62c462, 30%);
-      border-color: lighten(#62c462, 25%);
+      background-color: #eceff6;
+      border-color: #d4dae8;
     }
     &.info {
-      background-color: lighten(#6bd0ee, 25%);
-      border-color: lighten(#6bd0ee, 20%);
+      background-color: #fff9d7;
+      border-color: #e2c822;
     }
     // Change link color back
     &.danger p a,

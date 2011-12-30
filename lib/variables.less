@@ -4,38 +4,47 @@
 
 
 // Links
-@linkColor:         #0069d6;
-@linkColorHover:    darken(@linkColor, 15);
+@linkColor:         #3b5998;
+@linkColorHover:    #3b5998;
 
 // Grays
 @black:             #000;
-@grayDark:          lighten(@black, 25%);
-@gray:              lighten(@black, 50%);
-@grayLight:         lighten(@black, 75%);
-@grayLighter:       lighten(@black, 90%);
+@grayDark:          #333;
+@gray:              #666;
+@grayLight:         #999;
+@grayLighter:       #f7f7f7;
 @white:             #fff;
 
 // Accent Colors
-@blue:              #049CDB;
-@blueDark:          #0064CD;
-@green:             #46a546;
-@red:               #9d261d;
-@yellow:            #ffc40d;
-@orange:            #f89406;
-@pink:              #c3325f;
-@purple:            #7a43b6;
+@blue:              #d4dae8;
+@blueDark:          #3b5998;
+@green:             #46a546; /*unmodified*/
+@red:               #dd3c10;
+@yellow:            #e2c822;
+@orange:            #f89406; /*unmodified*/
+@pink:              #c3325f; /*unmodified*/
+@purple:            #7a43b6; /*unmodified*/
 
 // Baseline grid
-@basefont:          13px;
-@baseline:          18px;
+@basefont:          11px;
+@baseline:          14px;
 
 // Griditude
 // Modify the grid styles in mixins.less
-@gridColumns:       16;
-@gridColumnWidth:   40px;
+@gridColumns:       12;
+@gridColumnWidth:   25px;
 @gridGutterWidth:   20px;
 @extraSpace:        (@gridGutterWidth * 2); // For our grid calculations
 @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// check if we can use this
+.container-canvas {
+    @gridColumns:       12;
+    @gridColumnWidth:   45px;
+    @gridGutterWidth:   20px;
+    @extraSpace:        (@gridGutterWidth * 2); // For our grid calculations
+    @siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+}
 
 // Color Scheme
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)
