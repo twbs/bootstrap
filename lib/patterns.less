@@ -531,7 +531,7 @@ footer {
   &.error {
     .gradientBar(@redLight, @redLight);
   }
-  // Success (now blue)
+  // Success (now blue, only for alert-message)
   &.success {
     .gradientBar(@blueLighter, @blueLighter);
     border-color: @blueLight;
@@ -574,6 +574,26 @@ footer {
   &.primary {
     color: @white;
     .gradientBar(@blue, @blueDark)
+  }
+  
+  // Success (green, only for btn)
+  &.success {
+    .gradientBar(@greenLight, @greenLight);
+    border-color: @green @green @greenDark;
+  }
+  // danger & error red (only btn)
+  &.danger,
+  &.error {
+    .gradientBar(@red, @red);
+    border-color: darken(@red, 5%) darken(@red, 5%) darken(@red, 20%);
+  }
+  &.success,
+  &.danger,
+  &.error {
+    color: @white;
+    &:hover {
+        color: @white;
+    }
   }
 
    // Transitions

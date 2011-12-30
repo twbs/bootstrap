@@ -63,19 +63,13 @@
 ================================================== -->
 <section id="grid-system">
   <div class="page-header">
-    <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
+    <h1>Grid system <small>Rock the standard 520px or roll your own</small></h1>
   </div>
-  <div class="row">
-    <div class="span4">
-      <h2>Default grid</h2>
-      <p>The default grid system provided as part of Bootstrap is a 940px wide 16-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
-    </div>
-    <div class="span12">
-      <h3>Example grid markup</h3>
-      <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
+  <h2>Default grid</h2>
+  <p>The default grid system provided as part of FBootstrap is a 520px wide 12-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
+  <h3>Example grid markup</h3>
+  <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
 <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"row"</span><span class="tag">&gt;</span></li><li class="L1"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"span6"</span><span class="tag">&gt;</span></li><li class="L2"><span class="pln">    ...</span></li><li class="L3"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L4"><span class="pln">  </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"span10"</span><span class="tag">&gt;</span></li><li class="L5"><span class="pln">    ...</span></li><li class="L6"><span class="pln">  </span><span class="tag">&lt;/div&gt;</span></li><li class="L7"><span class="tag">&lt;/div&gt;</span></li></ol></pre>
-    </div>
-  </div><!-- /row -->
   <div class="row show-grid" title="12 column layout">
     <div class="span1">1</div>
     <div class="span1">1</div>
@@ -240,13 +234,11 @@
   </div>
 
   <!-- Headings & Paragraph Copy -->
+  <h2>Headings &amp; copy</h2>
+  <p>A standard typographic hierarchy for structuring your webpages.</p>
+  <p>The entire typographic grid is based on two Less variables in our variables.less file: <code>@basefont</code> and <code>@baseline</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
+  <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
   <div class="row">
-    <div class="span4">
-      <h2>Headings &amp; copy</h2>
-      <p>A standard typographic hierarchy for structuring your webpages.</p>
-      <p>The entire typographic grid is based on two Less variables in our variables.less file: <code>@basefont</code> and <code>@baseline</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
-      <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
-    </div>
     <div class="span4">
       <h1>h1. Heading 1</h1>
       <h2>h2. Heading 2</h2>
@@ -532,11 +524,9 @@
     <h1>Media <small>Displaying images and videos</small></h1>
   </div>
   <!-- Table structure -->
+  <h2>Media grid</h2>
+  <p>Display thumbnails of varying sizes on pages with a low HTML footprint and minimal styles.</p>
   <div class="row">
-    <div class="span4">
-      <h2>Media grid</h2>
-      <p>Display thumbnails of varying sizes on pages with a low HTML footprint and minimal styles.</p>
-    </div>
     <div class="span12">
       <h3>Example thumbnails</h3>
       <p>Thumbnails in the <code>.media-grid</code> can be any size, but they work best when mapped directly to the built-in Bootstrap grid system. Image widths like 90, 210, and 330 combine with a few pixels of padding to equal the <code>.span2</code>, <code>.span4</code>, and <code>.span6</code> column sizes.</p>
@@ -630,23 +620,21 @@
     <h1>Tables <small>For, you guessed it, tabular data</small></h1>
   </div>
   <!-- Table structure -->
+  <h2>Building tables</h2>
+  <p>
+    <code>&lt;table&gt;</code>
+    <code>&lt;thead&gt;</code>
+    <code>&lt;tbody&gt;</code>
+    <code>&lt;tr&gt;</code>
+    <code>&lt;th&gt;</code>
+    <code>&lt;td&gt;</code>
+    <code>&lt;colspan&gt;</code>
+    <code>&lt;caption&gt;</code>
+  </p>
+  <p>Tables are great—for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
+  <p>Always wrap your column headers in a <code>&lt;thead&gt;</code> such that hierarchy is <code>&lt;thead&gt;</code> &gt; <code>&lt;tr&gt;</code> &gt; <code>&lt;th&gt;</code>.</p>
+  <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>&lt;tbody&gt;</code> so your hierarchy is <code>&lt;tbody&gt;</code> &gt; <code>&lt;tr&gt;</code> &gt; <code>&lt;td&gt;</code>.</p>
   <div class="row">
-    <div class="span4">
-      <h2>Building tables</h2>
-      <p>
-        <code>&lt;table&gt;</code>
-        <code>&lt;thead&gt;</code>
-        <code>&lt;tbody&gt;</code>
-        <code>&lt;tr&gt;</code>
-        <code>&lt;th&gt;</code>
-        <code>&lt;td&gt;</code>
-        <code>&lt;colspan&gt;</code>
-        <code>&lt;caption&gt;</code>
-      </p>
-      <p>Tables are great—for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
-      <p>Always wrap your column headers in a <code>&lt;thead&gt;</code> such that hierarchy is <code>&lt;thead&gt;</code> &gt; <code>&lt;tr&gt;</code> &gt; <code>&lt;th&gt;</code>.</p>
-      <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>&lt;tbody&gt;</code> so your hierarchy is <code>&lt;tbody&gt;</code> &gt; <code>&lt;tr&gt;</code> &gt; <code>&lt;td&gt;</code>.</p>
-    </div>
     <div class="span12">
       <h3>Example: Default table styles</h3>
       <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
@@ -839,11 +827,10 @@
   <div class="page-header">
     <h1>Forms</h1>
   </div>
+
+  <h2>Default styles</h2>
+  <p>All forms are given default styles to present them in a readable and scalable way. Styles are provided for text inputs, select lists, textareas, radio buttons and checkboxes, and buttons.</p>
   <div class="row">
-    <div class="span4">
-      <h2>Default styles</h2>
-      <p>All forms are given default styles to present them in a readable and scalable way. Styles are provided for text inputs, select lists, textareas, radio buttons and checkboxes, and buttons.</p>
-    </div>
     <div class="span12">
       <form>
         <fieldset>
@@ -1190,12 +1177,10 @@
     <h1>Navigation</h1>
   </div>
 
+  <h2>Tabs and pills</h2>
+  <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
+  <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
   <div class="row">
-    <div class="span4">
-      <h2>Tabs and pills</h2>
-      <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
-      <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
-    </div>
     <div class="span12">
       <h3>Basic tabs example</h3>
       <p>Tabs can be used as regular navigation (loading external pages in the same tab) or as tabbable content areas for swapping out panes of content. We have a <a href="./javascript.html#tabs">tabs plugin</a> that can be used to integrate the latter.</p>
@@ -1315,13 +1300,11 @@
     <h1>Alerts &amp; Errors <small>Styles for success, warning, error, and info messages</small></h1>
   </div>
   <!-- Basic alert messages -->
+  <h2>Basic alerts</h2>
+  <p><code>.alert-message</code></p>
+  <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
+  <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript »</a></p>
   <div class="row">
-    <div class="span4">
-      <h2>Basic alerts</h2>
-      <p><code>.alert-message</code></p>
-      <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
-      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript »</a></p>
-    </div>
     <div class="span12">
       <div class="alert-message warning">
         <a class="close" href="#">×</a>
@@ -1401,12 +1384,10 @@
   <div class="page-header">
     <h1>Popovers <small>Components for displaying content in modals, tooltips, and popovers</small></h1>
   </div>
+  <h2>Modals</h2>
+  <p>Modals—dialogs or lightboxes—are great for contextual actions in situations where it’s important that the background context be maintained.</p>
+  <p><a class="btn js-btn" href="./javascript.html#modal">Get the javascript »</a></p>
   <div class="row">
-    <div class="span4">
-      <h2>Modals</h2>
-      <p>Modals—dialogs or lightboxes—are great for contextual actions in situations where it’s important that the background context be maintained.</p>
-      <p><a class="btn js-btn" href="./javascript.html#modal">Get the javascript »</a></p>
-    </div>
     <div class="span12">
       <div class="well" style="background-color: #888; border: none; padding: 40px;">
         <!-- Modal -->
@@ -1478,12 +1459,10 @@ Lorem ipsum dolar sit amet illo error <a href="#" data-original-title="below">ip
    <div class="page-header">
      <h1>Using javascript with Bootstrap <small>An index of plugins to get you started</small></h1>
    </div>
+   <h2>Getting started</h2>
+   <p>Integrating javascript with the Bootstrap library is super easy. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
+   <p><a class="btn primary" href="./javascript.html">View javascript docs »</a></p>
    <div class="row">
-     <div class="span4">
-       <h2>Getting started</h2>
-       <p>Integrating javascript with the Bootstrap library is super easy. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
-       <p><a class="btn primary" href="./javascript.html">View javascript docs »</a></p>
-     </div>
      <div class="span12">
       <h3>What's included</h3>
        <p>Bring some of Bootstrap's primary components to life with new custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>. We encourage you to extend and modify them to fit your specific development needs.</p>
