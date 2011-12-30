@@ -170,7 +170,7 @@ select:focus {
 // --------------------------
 
 // Mixin for form field states
-.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: @grayWhite) {
   // Set the text color
   > label,
   .help-block,
@@ -287,14 +287,14 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  background-color: #f5f5f5;
+  background-color: @grayWhite;
   border-color: #ddd;
   cursor: not-allowed;
 }
 
 // Actions (the buttons)
 .actions {
-  background: #f5f5f5;
+  background: @grayWhite;
   margin-top: @baseline;
   margin-bottom: @baseline;
   padding: (@baseline - 1) 20px @baseline 150px;
@@ -347,7 +347,7 @@ textarea[readonly] {
   }
   .add-on {
     position: relative;
-    background: #f5f5f5;
+    background: @grayWhite;
     border: 1px solid #ccc;
     z-index: 2;
     float: left;
