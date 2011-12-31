@@ -1,13 +1,14 @@
 FACEBOOTSTRAP
 =================
 
-Facebootstrap is a toolkit for kickstarting CSS for the development of facebook apps.
+Facebootstrap is a toolkit for kickstarting the development of facebook apps.
+
 It is based on Twitter's excellent Bootstrap.
 Just as this, it includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
-However, these are all styled in colors reminiscing facebook's UI.
-There are two 12-column grids included, one for 520px (fan-page), the other one for 760px (standalone app).
 
-To get started -- checkout http://ckrack.github.com/facebootstrap!
+However, these are all styled in colors reminiscing facebook's UI.
+
+There are two 12-column grids included, one for 520px (fan-page), the other one for 760px (standalone app).
 
 
 Usage
