@@ -91,7 +91,7 @@
 
   $(function () {
     $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
-      $(e.srcElement).button('toggle')
+      $(e.target).button('toggle')
     })
   })
 
