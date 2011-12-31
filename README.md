@@ -1,7 +1,7 @@
 FACEBOOTSTRAP
 =================
 
-Facebootstrap is a toolkit for kickstarting the development of facebook apps.
+Facebootstrap is a toolkit for kickstarting the development of facebook iframe apps.
 
 It is based on Twitter's excellent Bootstrap.
 Just as this, it includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
@@ -9,6 +9,7 @@ Just as this, it includes base CSS styles for typography, forms, buttons, tables
 However, these are all styled in colors reminiscing facebook's UI.
 
 There are two 12-column grids included, one for 520px (fan-page), the other one for 760px (standalone app).
+Put your content in a ```<div class="container">``` or a ```<div class="container canvas">```
 
 
 Usage
@@ -29,7 +30,8 @@ Or if you prefer, the standard css way:
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 ```
 
-For more info, refer to the bootstrap docs @ http://twitter.github.com/bootstrap!
+For more info, refer to the bootstrap docs @ http://twitter.github.com/bootstrap
+The usage is identical.
 
 
 Bug tracker
@@ -40,15 +42,13 @@ Have a bug? Please create an issue here on GitHub!
 https://github.com/ckrack/facebootstrap/issues
 
 
-Twitter account
----------------
-
-Keep up to date on announcements and more by following me on Twitter, <a href="http://twitter.com/clmnsk">@clmnsk</a>.
-
-
-
 Authors
 -------
+
+**Clemens Krack (Facebootstrap)**
+
++ http://twitter.com/clmnsk
++ http://github.com/ckrack
 
 **Mark Otto (Bootstrap)**
 
@@ -60,10 +60,6 @@ Authors
 + http://twitter.com/fat
 + http://github.com/fat
 
-**Clemens Krack (Facebootstrap)**
-
-+ http://twitter.com/clmnsk
-+ http://github.com/ckrack
 
 License
 ---------------------
