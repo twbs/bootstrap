@@ -1,1 +1,1 @@
-# EXAMPLES- split docs from examples- create a fanpage example- create a canvas app example# JAVASCRIPT- strip unneeded parts# README- write a readme, concerning the FBootstrap parts
+# EXAMPLES- split docs from examples- create a fanpage example- create a canvas app example# JAVASCRIPT- strip unneeded parts

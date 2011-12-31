@@ -50,17 +50,17 @@ Keep up to date on announcements and more by following me on Twitter, <a href="h
 Authors
 -------
 
-**Mark Otto**
+**Mark Otto (Bootstrap)**
 
 + http://twitter.com/mdo
 + http://github.com/markdotto
 
-**Jacob Thornton**
+**Jacob Thornton (Bootstrap)**
 
 + http://twitter.com/fat
 + http://github.com/fat
 
-**Clemens Krack**
+**Clemens Krack (Facebootstrap)**
 
 + http://twitter.com/clmnsk
 + http://github.com/ckrack
@@ -69,5 +69,6 @@ License
 ---------------------
 
 Copyright 2011 Twitter, Inc.
+Copyright 2011 C. Krack
 
 Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
