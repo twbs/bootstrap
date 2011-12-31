@@ -1,12 +1,12 @@
 /*!
- * Bootstrap v2.0.0
+ * Bootstrap @VERSION
  *
  * Copyright 2011 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Dec 27 17:38:27 CST 2011
+ * Date: @DATE
  */
 html, body {
   margin: 0;
@@ -2274,6 +2274,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: #c7eefe;
 }
 .pagination .disabled a, .pagination .disabled a:hover {
+  cursor: default;
   color: #bfbfbf;
   background-color: transparent;
 }
