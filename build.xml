@@ -239,7 +239,7 @@
     <!-- Target: basics -->
     <target name="-basics.dev"
             depends="-intro,
-                     -copy"/>
+                     -copyall"/>
 
     <target name="-basics.test"
             depends="-intro,
@@ -266,7 +266,7 @@
     <!-- Target: text -->
     <target name="-text.dev"
             depends="-intro,
-                     -copy"/>
+                     -copyall"/>
 
     <target name="-text.test"
             depends="-intro,
@@ -297,7 +297,7 @@
             depends="-intro,
                      -imagespng,
                      -imagesjpg,
-                     -copy"/>
+                     -copyall"/>
 
     <target name="-buildkit.test"
             depends="-intro,
@@ -332,7 +332,7 @@
             depends="-intro,
                      -imagespng,
                      -imagesjpg,
-                     -copy"/>
+                     -copyall"/>
 
     <target name="-build.test"
             depends="-intro,
@@ -367,7 +367,7 @@
             depends="-intro,
                      -imagespng,
                      -imagesjpg,
-                     -copy"/>
+                     -copyall"/>
 
     <target name="-minify.test"
             depends="-intro,
@@ -471,6 +471,20 @@
                 <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
                 <exclude name="${dir.js}/**/*.js"/>
                 <exclude name="${dir.css}/**/*.css"/>
+                <exclude name="${file.manifest}"/>
+            </fileset>
+        </copy>
+
+        <echo message="A copy of all new non-dev files are now in: ./${dir.publish}."/>
+    </target>
+
+    <target name="-copyall" depends="-mkdirs">
+    <!-- This is a private target -->
+	<!-- Copies all files, including .css and .js files for when you aren't minifying-->
+        <echo message="Copying over all files..."/>
+
+        <copy todir="./${dir.publish}">
+            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
                 <exclude name="${file.manifest}"/>
             </fileset>
         </copy>
