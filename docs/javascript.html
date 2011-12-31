@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Facebootstrap by Clemens Krack, based on Bootstrap, from Twitter</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -25,7 +25,8 @@
     <script src="../js/bootstrap-buttons.js"></script>
 
     <!-- Le styles -->
-    <link href="../bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet/less" href="../lib/bootstrap.less">
+    <script src="../js/less-1.1.5.min.js"></script>
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
@@ -42,7 +43,7 @@
     ================================================== -->
     <div class="topbar" data-scrollspy="scrollspy" >
       <div class="fill">
-        <div class="container">
+        <div class="container canvas">
           <h3><a href="#">Bootstrap JS</a></h3>
           <ul>
             <li><a href="#overview">Overview</a></li>
@@ -63,7 +64,7 @@
     ================================================== -->
     <header class="jumbotron subhead" id="overview">
       <div class="inner">
-        <div class="container">
+        <div class="container canvas">
           <h1>Javascript for Bootstrap</h1>
           <p class="lead">
             Bring Bootstrap's components to life with new, custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>.
@@ -73,7 +74,7 @@
       </div>
     </header>
 
-    <div class="container">
+    <div class="container canvas">
 
     <!-- Modal
     ================================================== -->
@@ -595,6 +596,7 @@ $('.tabs a').bind('change', function (e) {
     <!-- Popovers
     ================================================== -->
 
+
     <section id="popover">
       <div class="page-header">
         <h1>Popovers <small>bootstrap-popover.js</small></h1>
@@ -720,6 +722,7 @@ $('.tabs a').bind('change', function (e) {
         </div>
       </div>
     </section>
+
 
 
     <!-- Alerts
