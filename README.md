@@ -1,15 +1,19 @@
-TWITTER BOOTSTRAP
+FACEBOOTSTRAP
 =================
 
-Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
+Facebootstrap is a toolkit for kickstarting CSS for the development of facebook apps.
+It is based on Twitter's excellent Bootstrap.
+Just as this, it includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
+However, these are all styled in colors reminiscing facebook's UI.
+There are two 12-column grids included, one for 520px (fan-page), the other one for 760px (standalone app).
 
-To get started -- checkout http://twitter.github.com/bootstrap!
+To get started -- checkout http://ckrack.github.com/facebootstrap!
 
 
 Usage
 -----
 
-You can use Twitter Bootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
+You can use Facebootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
 
 Here's what the LESS version looks like:
 
@@ -24,25 +28,7 @@ Or if you prefer, the standard css way:
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 ```
 
-For more info, refer to the docs!
-
-
-Versioning
-----------
-
-For transparency and insight into our release cycle, and for striving to maintain backwards compatibility, Bootstrap will be maintained under the Semantic Versioning guidelines as much as possible.
-
-Releases will be numbered with the follow format:
-
-`<major>.<minor>.<patch>`
-
-And constructed with the following guidelines:
-
-* Breaking backwards compatibility bumps the major
-* New additions without breaking backwards compatibility bumps the minor
-* Bug fixes and misc changes bump the patch
-
-For more information on SemVer, please visit http://semver.org/.
+For more info, refer to the bootstrap docs @ http://twitter.github.com/bootstrap!
 
 
 Bug tracker
@@ -50,37 +36,14 @@ Bug tracker
 
 Have a bug? Please create an issue here on GitHub!
 
-https://github.com/twitter/bootstrap/issues
+https://github.com/ckrack/facebootstrap/issues
 
 
 Twitter account
 ---------------
 
-Keep up to date on announcements and more by following Bootstrap on Twitter, <a href="http://twitter.com/TwBootstrap">@TwBootstrap</a>.
+Keep up to date on announcements and more by following me on Twitter, <a href="http://twitter.com/clmnsk">@clmnsk</a>.
 
-
-Mailing list
-------------
-
-Have a question? Ask on our mailing list!
-
-twitter-bootstrap@googlegroups.com
-
-http://groups.google.com/group/twitter-bootstrap
-
-
-Developers
-----------
-
-We have included a makefile with convenience methods for working with the bootstrap library.
-
-+ **build** - `make build`
-This will run the less compiler on the bootstrap lib and generate a bootstrap.css and bootstrap.min.css file.
-The lessc compiler is required for this command to run.
-
-+ **watch** - `make watch`
-This is a convenience method for watching your less files and automatically building them whenever you save.
-Watchr is required for this command to run.
 
 
 Authors
@@ -96,6 +59,9 @@ Authors
 + http://twitter.com/fat
 + http://github.com/fat
 
+**Clemens Krack**
++ http://twitter.com/clmnsk
++ http://github.com/ckrack
 
 License
 ---------------------

@@ -1,1 +1,1 @@
-# GRID- Create a 520px wide grid- Create a 760px wide grid- implement a fluid grid for fluid width canvas apps# EXAMPLES- create a fanpage example- create a canvas app example# STYLING- update the base styles# JAVASCRIPT- strip unneeded parts
+# EXAMPLES- split docs from examples- create a fanpage example- create a canvas app example# JAVASCRIPT- strip unneeded parts# README- write a readme, concerning the FBootstrap parts
