@@ -1080,45 +1080,6 @@ form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-app
   background-color: #3b6e22;
   border-color: #264716;
 }
-.input-mini,
-input.mini,
-textarea.mini,
-select.mini {
-  width: 60px;
-}
-.input-small,
-input.small,
-textarea.small,
-select.small {
-  width: 90px;
-}
-.input-medium,
-input.medium,
-textarea.medium,
-select.medium {
-  width: 150px;
-}
-.input-large,
-input.large,
-textarea.large,
-select.large {
-  width: 210px;
-}
-.input-xlarge,
-input.xlarge,
-textarea.xlarge,
-select.xlarge {
-  width: 270px;
-}
-.input-xxlarge,
-input.xxlarge,
-textarea.xxlarge,
-select.xxlarge {
-  width: 530px;
-}
-textarea.xxlarge {
-  overflow-y: auto;
-}
 input.span1, textarea.span1 {
   display: inline-block;
   float: none;
@@ -1214,6 +1175,63 @@ input.span16, textarea.span16 {
   float: none;
   width: 690px;
   margin-left: 0;
+}
+.input-mini,
+input.mini,
+textarea.mini,
+select.mini {
+  display: inline-block;
+  float: none;
+  width: 15px;
+  margin-left: 0;
+}
+.input-small,
+input.small,
+textarea.small,
+select.small {
+  display: inline-block;
+  float: none;
+  width: 60px;
+  margin-left: 0;
+}
+.input-medium,
+input.medium,
+textarea.medium,
+select.medium {
+  display: inline-block;
+  float: none;
+  width: 105px;
+  margin-left: 0;
+}
+.input-large,
+input.large,
+textarea.large,
+select.large {
+  display: inline-block;
+  float: none;
+  width: 150px;
+  margin-left: 0;
+}
+.input-xlarge,
+input.xlarge,
+textarea.xlarge,
+select.xlarge {
+  display: inline-block;
+  float: none;
+  width: 240px;
+  margin-left: 0;
+}
+.input-xxlarge,
+input.xxlarge,
+textarea.xxlarge,
+select.xxlarge {
+  display: inline-block;
+  float: none;
+  width: 330px;
+  margin-left: 0;
+}
+textarea.xxlarge {
+  overflow-y: auto;
 }
 input[disabled],
 select[disabled],
