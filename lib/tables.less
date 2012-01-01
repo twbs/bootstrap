@@ -16,7 +16,7 @@ td {
   padding: 8px;
   line-height: @baseLineHeight;
   text-align: left;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 th {
   font-weight: bold;
@@ -24,6 +24,10 @@ th {
 }
 td {
   vertical-align: top;
+}
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: 0;
 }
 }
 
