@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Dec 30 16:01:05 PST 2011
+ * Date: Mon Jan  2 15:56:33 BRST 2012
  */
 html, body {
   margin: 0;
@@ -1225,6 +1225,9 @@ table {
 }
 .navbar .btn {
   margin-top: 5px;
+}
+.navbar form {
+  margin-bottom: 0;
 }
 .navbar-search {
   position: relative;
