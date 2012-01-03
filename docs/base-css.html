@@ -646,25 +646,24 @@
       <tr>
         <td>1</td>
         <td colspan="2">Some One</td>
-        <td>English</td>
+        <td>HTML</td>
       </tr>
       <tr>
         <td>2</td>
         <td>Joe</td>
         <td>Sixpack</td>
-        <td>English</td>
+        <td rowspan="2">Javascript</td>
       </tr>
       </tr>
         <td>3</td>
         <td>Joe</td>
         <td>Sixpack</td>
-        <td>English</td>
       </tr>
       <tr>
         <td>3</td>
         <td>Stu</td>
         <td>Dent</td>
-        <td>Code</td>
+        <td>CSS</td>
       </tr>
     </tbody>
   </table>
@@ -894,7 +893,17 @@ Form states
               <span class="add-on">@</span>
               <input class="input-small" id="prependedInput" name="prependedInput" size="16" type="text">
             </div>
-            <span class="help-block">Here's some help text</span>
+            <p class="help-block">Here's some help text</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="appendedInput">Appended text</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="input-small" id="appendedInput" name="appendedInput" size="16" type="text">
+              <span class="add-on">.00</span>
+            </div>
+            <p class="help-block">Here's more help text</p>
           </div>
         </fieldset>
         <fieldset class="control-group">

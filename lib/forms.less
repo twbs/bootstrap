@@ -93,13 +93,15 @@ input[type=file] {
   line-height: @baseLineHeight * 1.5;
 }
 
-// Chrome on Linux needs background color
+// Chrome on Linux and Mobile Safari need background-color
 select {
   background-color: @white;
+  vertical-align: middle;
 }
 
 // Make multiple select elements height not fixed
-select[multiple] {
+select[multiple],
+select[size] {
   height: inherit;
 }
 
@@ -218,7 +220,7 @@ textarea[readonly] {
     border-color: @borderColor;
     &:focus {
       border-color: darken(@borderColor, 10%);
-      .box-shadow(0 0 6px lighten(@borderColor, 20%);
+      .box-shadow(0 0 6px lighten(@borderColor, 20%));
     }
   }
   // Give a small background color for input-prepend/-append
@@ -298,40 +300,17 @@ textarea[readonly] {
 
 
 
-// INLINE FIELDS
-// -------------
-
-.inline-inputs {
-  color: @gray;
-  span, input {
-    display: inline-block;
-  }
-  input.mini {
-    width: 60px;
-  }
-  input.small {
-    width: 90px;
-  }
-  span {
-    padding: 0 2px 0 1px;
-  }
-}
-
-
-
 // INPUT GROUPS
 // ------------
 
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
 .input-append {
-  overflow: hidden;
+  .clearfix(); // Clear the float to prevent wrapping
   input {
     .border-radius(0 3px 3px 0);
   }
   .add-on {
-    position: relative;
-    z-index: 2;
     float: left;
     display: block;
     width: auto;

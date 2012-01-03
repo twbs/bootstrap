@@ -25,6 +25,12 @@
   margin-right: auto;
 }
 
+// IE7 inline-block
+.ie7-inline-block() {
+  *display: inline; /* IE7 inline-block hack */
+  *zoom: 1;
+}
+
 // Sizing shortcuts
 .size(@height: 5px, @width: 5px) {
   width: @width;
@@ -48,13 +54,13 @@
 #font {
   #family {
     .serif() {
-      font-family: "Georgia", Times New Roman, Times, serif;
+      font-family: Georgia, "Times New Roman", Times, serif;
     }
     .sans-serif() {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
     .monospace() {
-      font-family: "Menlo", Monaco, Courier New, monospace;
+      font-family: Menlo, Monaco, Courier New, monospace;
     }
   }
   .shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {

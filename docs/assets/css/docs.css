@@ -22,6 +22,7 @@ body {
 body > .navbar-fixed .brand {
   padding-right: 0;
   padding-left: 0;
+  margin-left: 20px;
   float: right;
   font-weight: bold;
   color: #000;
