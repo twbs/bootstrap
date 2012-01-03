@@ -33,14 +33,40 @@ a.thumbnail:hover {
   padding: 9px;
 }
 
-// carousel
 .carousel {
+
   position: relative;
 
-  .item { display: none; }
-  .active { display: block; }
+  .carousel-inner {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .item {
+    display: none;
+    position: relative;
+    .transition(.25s linear left);
+  }
+
+  .active, .next, .prev { display: block; }
+
+  .next, .prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .next { left: 100%; }
+  .prev { left: -100%; }
+  .next.left, .prev.right { left: 0% }
+
+  .active.left { left: -100% }
+  .active.right { left: 100% }
 
   .nav {
+    width: auto;
+    .border-radius(0);
     height: 50px;
     position: absolute;
     top: 50%;

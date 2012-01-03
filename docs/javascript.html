@@ -1026,26 +1026,28 @@ $('#myCollapsible').on('hidden', function () {
 <pre class="prettyprint linenums">
 &lt;div class="thumbnail carousel"&gt;
 
-  &lt;!-- navigation --&gt;
-  &lt;a class="nav" href="#myCarousel" data-show="next"&gt;&amp;lt;&lt;/a&gt;
-  &lt;a class="nav" href="#myCarousel" data-show="previous"&gt;&amp;gt;&lt;/a&gt;
-
   &lt;!-- items --&gt;
-  &lt;div class="item active"&gt;
-    &lt;img src="http://placehold.it/1100x350"&gt;
-    &lt;div class="caption"&gt;
-      &lt;h5&gt;Thumbnail label&lt;/h5&gt;
-      &lt;p&gt;Cras justo odio, dapibus ac facilisis in, egestas eget quam. &lt;/p&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="item active"&gt;
+      &lt;img src="http://placehold.it/1100x350"&gt;
+      &lt;div class="caption"&gt;
+        &lt;h5&gt;Thumbnail label&lt;/h5&gt;
+        &lt;p&gt;Cras justo odio, dapibus ac facilisis in, egestas eget quam. &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="item"&gt;
+      &lt;img src="http://placehold.it/1100x350"&gt;
+      &lt;div class="caption"&gt;
+        &lt;h5&gt;Thumbnail label&lt;/h5&gt;
+        &lt;p&gt;Donec id elit non mi porta gravida at eget metus.&lt;/p&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class="item"&gt;
-    &lt;img src="http://placehold.it/1100x350"&gt;
-    &lt;div class="caption"&gt;
-      &lt;h5&gt;Thumbnail label&lt;/h5&gt;
-      &lt;p&gt;Donec id elit non mi porta gravida at eget metus.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+  &lt;!-- navigation --&gt;
+  &lt;a class="nav" href="#myCarousel" data-slide="next"&gt;&amp;lt;&lt;/a&gt;
+  &lt;a class="nav" href="#myCarousel" data-slide="prev"&gt;&amp;gt;&lt;/a&gt;
 
 &lt;/div&gt;
 </pre>
@@ -1053,34 +1055,36 @@ $('#myCollapsible').on('hidden', function () {
 
           <!-- carousel -->
 
-          <div id="myCarousel" class="thumbnail carousel">
+          <div id="myCarousel" class="thumbnail carousel slide">
 
-           <a class="left nav" href="#myCarousel" data-show="next">&laquo;</a>
-           <a class="right nav" href="#myCarousel" data-show="previous">&raquo;</a>
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="http://placehold.it/1100x400" alt="">
+                <div class="caption">
+                  <h5>First Thumbnail label</h5>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
 
-            <div class="item active">
-              <img src="http://placehold.it/1100x350" alt="">
-              <div class="caption">
-                <h5>Thumbnail label</h5>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <div class="item">
+                <img src="http://placehold.it/1100x400" alt="">
+                <div class="caption">
+                  <h5>Second Thumbnail label</h5>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+
+              <div class="item">
+                <img src="http://placehold.it/1100x400" alt="">
+                <div class="caption">
+                  <h5>Third Thumbnail label</h5>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
               </div>
             </div>
 
-            <div class="item">
-              <img src="http://placehold.it/1100x350" alt="">
-              <div class="caption">
-                <h5>Thumbnail label</h5>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              </div>
-            </div>
-
-            <div class="item">
-              <img src="http://placehold.it/1100x350" alt="">
-              <div class="caption">
-                <h5>Thumbnail label</h5>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              </div>
-            </div>
+            <a class="left nav" href="#myCarousel" data-slide="prev">&laquo;</a>
+            <a class="right nav" href="#myCarousel" data-slide="next">&raquo;</a>
 
           </div>
 
@@ -1139,9 +1143,6 @@ $('#myCollapsible').on('hidden', function () {
               btn.button('reset')
             }, 3000)
           })
-
-        // carousel demo
-        $('.carousel').carousel()
       })
     </script>
   </body>

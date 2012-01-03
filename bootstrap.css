@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Jan  2 19:12:52 PST 2012
+ * Date: Mon Jan  2 22:30:09 PST 2012
  */
 html, body {
   margin: 0;
@@ -2587,13 +2587,48 @@ a.thumbnail:hover {
 .carousel {
   position: relative;
 }
+.carousel .carousel-inner {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
 .carousel .item {
   display: none;
+  position: relative;
+  -webkit-transition: 0.25s linear left;
+  -moz-transition: 0.25s linear left;
+  -ms-transition: 0.25s linear left;
+  -o-transition: 0.25s linear left;
+  transition: 0.25s linear left;
 }
-.carousel .active {
+.carousel .active, .carousel .next, .carousel .prev {
   display: block;
 }
+.carousel .next, .carousel .prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.carousel .next {
+  left: 100%;
+}
+.carousel .prev {
+  left: -100%;
+}
+.carousel .next.left, .carousel .prev.right {
+  left: 0%;
+}
+.carousel .active.left {
+  left: -100%;
+}
+.carousel .active.right {
+  left: 100%;
+}
 .carousel .nav {
+  width: auto;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
   height: 50px;
   position: absolute;
   top: 50%;
