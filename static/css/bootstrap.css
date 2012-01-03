@@ -2489,11 +2489,11 @@ iframe {
   background-color: transparent !important;
 }
 .jstree {
-  max-height: 94%;
+  max-height: 300px;
   overflow: auto;
 }
 .sidebar .jstree {
-  height: 94%;
+  height: 300px;
   padding-top: 1px;
   margin-bottom: -6em;
 }
