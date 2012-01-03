@@ -34,7 +34,7 @@
   Carousel.prototype = {
 
     cycle: function () {
-      this.interval = setInterval($.proxy(this.next, this), 5000)
+      this.interval = setInterval($.proxy(this.next, this), this.options.interval)
       return this
     }
 
@@ -100,7 +100,7 @@
   }
 
   $.fn.carousel.defaults = {
-      interval: 5000
+    interval: 5000
   }
 
   $.fn.carousel.Constructor = Carousel
