@@ -343,7 +343,7 @@ a.thumbnail:hover{border-color:#0069d6;-webkit-box-shadow:0 1px 4px rgba(0, 105,
 .thumbnail>img{display:block;max-width:100%;}
 .thumbnail .caption{padding:9px;}
 .carousel{position:relative;}.carousel .carousel-inner{overflow:hidden;width:100%;position:relative;}
-.carousel .item{display:none;position:relative;-webkit-transition:0.25s linear left;-moz-transition:0.25s linear left;-ms-transition:0.25s linear left;-o-transition:0.25s linear left;transition:0.25s linear left;}
+.carousel .item{display:none;position:relative;-webkit-transition:0.6s ease-in-out left;-moz-transition:0.6s ease-in-out left;-ms-transition:0.6s ease-in-out left;-o-transition:0.6s ease-in-out left;transition:0.6s ease-in-out left;}
 .carousel .active,.carousel .next,.carousel .prev{display:block;}
 .carousel .next,.carousel .prev{position:absolute;top:0;width:100%;}
 .carousel .next{left:100%;}
