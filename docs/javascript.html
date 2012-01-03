@@ -724,7 +724,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
           <h3>Events</h3>
           <p>Bootstrap's alert class exposes a few events for hooking into alert functionality. </p>
-          <table class="zebra-striped">
+          <table class="bordered-table striped-table">
             <thead>
              <tr>
                <th style="width: 150px;">Event</th>
@@ -1021,29 +1021,32 @@ $('#myCollapsible').on('hidden', function () {
         <div class="span9 columns">
           <h3>Using bootstrap-carousel.js</h3>
           <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
-            <h3>Markup</h3>
+          <h3>Options</h3>
+          <table class="bordered-table striped-table">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 50px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>interval</td>
+               <td>number</td>
+               <td>5000</td>
+               <td>The amount of type to delay between automatically cycling an item.</td>
+             </tr>
+            </tbody>
+          </table>
+          <h3>Markup</h3>
           <p>Data attributes are integral to the carousel plugin. Check out the example code below for the various markup types.</p>
 <pre class="prettyprint linenums">
 &lt;div class="thumbnail carousel"&gt;
 
   &lt;!-- items --&gt;
-  &lt;div class="carousel-inner"&gt;
-    &lt;div class="item active"&gt;
-      &lt;img src="http://placehold.it/1100x350"&gt;
-      &lt;div class="caption"&gt;
-        &lt;h5&gt;Thumbnail label&lt;/h5&gt;
-        &lt;p&gt;Cras justo odio, dapibus ac facilisis in, egestas eget quam. &lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class="item"&gt;
-      &lt;img src="http://placehold.it/1100x350"&gt;
-      &lt;div class="caption"&gt;
-        &lt;h5&gt;Thumbnail label&lt;/h5&gt;
-        &lt;p&gt;Donec id elit non mi porta gravida at eget metus.&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+  &lt;div class="carousel-inner"&gt;…&lt;/div&gt;
 
   &lt;!-- navigation --&gt;
   &lt;a class="nav" href="#myCarousel" data-slide="next"&gt;&amp;lt;&lt;/a&gt;
@@ -1051,6 +1054,21 @@ $('#myCollapsible').on('hidden', function () {
 
 &lt;/div&gt;
 </pre>
+<h3>Methods</h3>
+<h4>.carousel(options)</h4>
+<p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
+<pre class="prettyprint linenums">
+$('.myCarousel').carousel({
+  interval: 2000
+})</pre>
+<h4>.carousel('cycle')</h4>
+<p>Cycles through the carousel items from left to right.</p>
+<h4>.carousel('pause')</h4>
+<p>Stops the carousel from cycling through items.</p>
+<h4>.carousel('prev')</h4>
+<p>Cycles to the previous item.</p>
+<h4>.carousel('next')</h4>
+<p>Cycles to the next item.</p>
           <h3>Demo</h3>
 
           <!-- carousel -->
@@ -1143,6 +1161,9 @@ $('#myCollapsible').on('hidden', function () {
               btn.button('reset')
             }, 3000)
           })
+
+        // carousel demo
+        $('#myCarousel').carousel()
       })
     </script>
   </body>

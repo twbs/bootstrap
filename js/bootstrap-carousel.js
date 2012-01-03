@@ -25,34 +25,41 @@
  /* CAROUSEL CLASS DEFINITION
   * ========================= */
 
-  var Carousel = function (element) {
+  var Carousel = function (element, options) {
     this.$element = $(element)
+    this.options = $.extend({}, $.fn.carousel.defaults, options)
+    this.options.slide && this.slide(this.options.slide)
   }
 
   Carousel.prototype = {
 
     cycle: function () {
       this.interval = setInterval($.proxy(this.next, this), 5000)
+      return this
     }
 
   , pause: function () {
       clearInterval(this.interval)
+      return this
     }
 
   , next: function () {
-      this.slide('next')
+      return this.slide('next')
     }
 
   , prev: function () {
-      this.slide('prev')
+      return this.slide('prev')
     }
 
   , slide: function (type) {
       var $active = this.$element.find('.active')
         , $next = $active[type]()
+        , isCycling = this.interval
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
+
+      isCycling && this.pause()
 
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
@@ -69,6 +76,10 @@
           $active.removeClass(['active', direction].join(' '))
         })
       }
+
+      isCycling && this.cycle()
+
+      return this
     }
 
   }
@@ -81,9 +92,15 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('carousel')
-      if (!data) $this.data('carousel', (data = new Carousel(this)))
-      if (typeof option == 'string') data[option]()
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('carousel', (data = new Carousel(this, options)))
+      if (typeof option == 'string' || (option = options.slide)) data[option]()
+      else data.cycle()
     })
+  }
+
+  $.fn.carousel.defaults = {
+      interval: 5000
   }
 
   $.fn.carousel.Constructor = Carousel
@@ -96,8 +113,8 @@
     $('body').on('click.carousel.data-api', '[data-slide]', function ( e ) {
       var $this = $(this)
         , $target = $($this.attr('data-target') || $this.attr('href'))
-
-      $target.carousel($this.attr('data-slide'))
+        , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
+      $target.carousel(options)
     })
   })
 
