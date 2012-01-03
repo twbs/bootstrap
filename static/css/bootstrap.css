@@ -2489,12 +2489,13 @@ iframe {
   background-color: transparent !important;
 }
 .jstree {
-  max-height: 300px;
+  max-height: 94%;
   overflow: auto;
 }
 .sidebar .jstree {
-  height: 300px;
+  height: 94%;
   padding-top: 1px;
+  margin-bottom: -6em;
 }
 .sidebar .jstree .selected > a {
   background-color: #ffc40d;
@@ -2564,7 +2565,8 @@ table.dataTable {
   position: fixed;
   left: 0;
   bottom: 0;
-  margin: 1em;
+  height: 6em;
+  padding-left: 1em;
 }
 .sticky-footer-padding {
   padding-bottom: 4em;
