@@ -25,11 +25,28 @@
  /* CAROUSEL CLASS DEFINITION
   * ========================= */
 
-  var Carousel = function () {
-
+  var Carousel = function (element) {
+    this.$element = $(element)
+    this.cycle()
   }
 
   Carousel.prototype = {
+
+    cycle: function () {
+      this.interval = setInterval($.proxy(this.right, this), 500)
+    }
+
+  , pause: function () {
+      clearInterval(this.interval)
+    }
+
+  , right: function () {
+
+    }
+
+  , left: function () {
+
+    }
 
   }
 

@@ -117,6 +117,10 @@
               <td><a href="./javascript.html#collapse">bootstrap-collapse.js</a></td>
               <td>The collapse plugin offers simple, generic collapsible element support for making accordions and other collapsible ui components.</td>
             </tr>
+            <tr>
+              <td><a href="./javascript.html#collapse">bootstrap-carousel.js</a></td>
+              <td>Carousel add</td>
+            </tr>
          </tbody>
        </table>
        <h3>Is javascript necessary?</h3>
@@ -1002,6 +1006,61 @@ $('#myCollapsible').on('hidden', function () {
       </div>
     </section>
 
+     <!-- Carousel
+    ================================================== -->
+
+    <section id="carousel">
+      <div class="page-header">
+        <h1>Carousel <small>bootstrap-carousel.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>The carousel plugin creates a carousel douh..</p>
+          <a href="../js/bootstrap-carousel.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-carousel.js</h3>
+          <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
+            <h3>Markup</h3>
+          <p>Data attributes are integral to the carousel plugin. Check out the example code below for the various markup types.</p>
+          <pre class="prettyprint linenums"></pre>
+          <h3>Demo</h3>
+
+          <!-- carousel -->
+          <div class="thumbnail carousel">
+
+            <div class="item active">
+              <img src="http://placehold.it/1100x350" alt="">
+              <div class="caption">
+                <h5>Thumbnail label</h5>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              </div>
+            </div>
+
+            <div class="item active">
+              <img src="http://placehold.it/1100x350" alt="">
+              <div class="caption">
+                <h5>Thumbnail label</h5>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <img src="http://placehold.it/1100x350" alt="">
+              <div class="caption">
+                <h5>Thumbnail label</h5>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </section>
+
       <!-- Footer
       ================================================== -->
       <footer class="footer">
@@ -1028,6 +1087,7 @@ $('#myCollapsible').on('hidden', function () {
     <script src="../js/bootstrap-popover.js"></script>
     <script src="../js/bootstrap-button.js"></script>
     <script src="../js/bootstrap-collapse.js"></script>
+    <script src="../js/bootstrap-carousel.js"></script>
     <script src="assets/js/application.js"></script>
     <script>
       $(function () {
@@ -1036,13 +1096,14 @@ $('#myCollapsible').on('hidden', function () {
           selector: "a[rel=twipsy]"
         })
 
-        //popover demo
+        // popover demo
         $("a[rel=popover]")
           .popover()
           .click(function(e) {
             e.preventDefault()
           })
 
+        // button state demo
         $('#fat-btn')
           .click(function () {
             var btn = $(this)
@@ -1051,6 +1112,9 @@ $('#myCollapsible').on('hidden', function () {
               btn.button('reset')
             }, 3000)
           })
+
+        // carousel demo
+        $('.carousel').carousel()
       })
     </script>
   </body>

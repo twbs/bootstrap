@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Dec 24 22:30:43 PST 2011
+ * Date: Sun Dec 25 21:24:32 PST 2011
  */
 html, body {
   margin: 0;
@@ -2385,6 +2385,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   top: 50%;
   left: 50%;
   z-index: 11000;
+  max-height: 500px;
+  overflow: auto;
   width: 560px;
   margin: -250px 0 0 -250px;
   background-color: #ffffff;
@@ -2661,6 +2663,12 @@ a.thumbnail:hover {
 }
 .thumbnail .caption {
   padding: 9px;
+}
+.carousel .item {
+  display: none;
+}
+.carousel .active {
+  display: block;
 }
 .hidden {
   display: none;
