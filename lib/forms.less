@@ -290,6 +290,9 @@ textarea[readonly] {
   background-color: #f5f5f5;
   border-color: #ddd;
   cursor: not-allowed;
+  &:focus {
+    .box-shadow(none);
+  }
 }
 
 // Actions (the buttons)
