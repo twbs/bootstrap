@@ -25,11 +25,17 @@
     var d = 'disabled'
       , $el = $(el)
       , data = $el.data()
+      , isSubmit = $el.is("input") && $el.attr("type") == "submit"
+      , text = data[state] || $.fn.button.defaults[state] 
 
     state = state + 'Text'
-    data.resetText || $el.data('resetText', $el.html())
+    data.resetText || $el.data('resetText', isSubmit ? $el.attr('value') : $el.html())
 
-    $el.html( data[state] || $.fn.button.defaults[state] )
+    if (isSubmit) {
+      $el.attr("value", text)
+    } else {
+      $el.html(text)
+    }
 
     setTimeout(function () {
       state == 'loadingText' ?

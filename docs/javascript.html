@@ -349,12 +349,20 @@ $('#my-modal').bind('hidden', function () {
           <h3>Demo</h3>
           <button id="fat-btn" data-loading-text="loading..." class="btn danger">Loading Demo</button>
           <button class="btn" data-toggle="toggle">Toggle Demo</button>
+          <input id="submit-btn" data-loading-text="loading..." class="btn" type="submit" value="Form submit button" />
           <script>
             $(function() {
               var btn = $('#fat-btn').click(function () {
                 btn.button('loading')
                 setTimeout(function () {
                   btn.button('reset')
+                }, 3000)
+              });
+
+              var submitBtn = $('#submit-btn').click(function () {
+                submitBtn.button('loading')
+                setTimeout(function () {
+                  submitBtn.button('reset')
                 }, 3000)
               })
             })
