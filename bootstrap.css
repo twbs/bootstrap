@@ -721,6 +721,18 @@ h5 small.block,
 h6 small.block {
   display: block;
 }
+h1 .tab,
+h2 .tab,
+h3 .tab,
+h4 .tab,
+h5 .tab,
+h6 .tab {
+  border-bottom: 1px solid #999999;
+  border-top: 1px solid #e2e2e2;
+  margin-bottom: 8px;
+  padding: 3px 6px;
+  background: #f2f2f2;
+}
 h1 {
   margin-bottom: 14px;
   font-size: 24px;

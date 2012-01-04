@@ -906,37 +906,37 @@ input[type=submit].btn {
 // --------------
 
 #popoverArrow {
-  .above(@arrowWidth: 5px) {
+  .above(@arrowWidth: 5px, @arrowColor: @black) {
     bottom: 0;
     left: 50%;
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
-    border-top: @arrowWidth solid @black;
+    border-top: @arrowWidth solid @arrowColor;
   }
-  .left(@arrowWidth: 5px) {
+  .left(@arrowWidth: 5px, @arrowColor: @black) {
     top: 50%;
     right: 0;
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
-    border-left: @arrowWidth solid @black;
+    border-left: @arrowWidth solid @arrowColor;
   }
-  .below(@arrowWidth: 5px) {
+  .below(@arrowWidth: 5px, @arrowColor: @black) {
     top: 0;
     left: 50%;
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid @black;
+    border-bottom: @arrowWidth solid @arrowColor;
   }
-  .right(@arrowWidth: 5px) {
+  .right(@arrowWidth: 5px, @arrowColor: @black) {
     top: 50%;
     left: 0;
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid @black;
+    border-right: @arrowWidth solid @arrowColor;
   }
 }
 
@@ -985,36 +985,37 @@ input[type=submit].btn {
   z-index: 1000;
   padding: 5px;
   display: none;
-  &.above .arrow { #popoverArrow > .above(); }
-  &.right .arrow { #popoverArrow > .right(); }
-  &.below .arrow { #popoverArrow > .below(); }
-  &.left .arrow  { #popoverArrow > .left(); }
+  &.above .arrow { #popoverArrow > .above(9px, @white); }
+  &.right .arrow { #popoverArrow > .right(9px, @white); }
+  &.below .arrow { #popoverArrow > .below(9px, @white); }
+  &.left .arrow  { #popoverArrow > .left(9px, @white); }
+  
   .arrow {
     position: absolute;
     width: 0;
     height: 0;
   }
   .inner {
-    background: @black;
-    background: rgba(0,0,0,.8);
     padding: 3px;
     overflow: hidden;
     width: 280px;
-    .border-radius(6px);
+    .border-radius(0);
     .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+    border: 1px solid #8C8C8C;
+    border: 1px solid rgba(0, 0, 0, .45);
+    border-bottom: 1px solid #666;
+    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
   }
   .title {
-    background-color: @grayWhite;
-    padding: 9px 15px;
+    padding: 5px 10px;
     line-height: 1;
-    .border-radius(3px 3px 0 0);
     border-bottom:1px solid #eee;
   }
   .content {
     background-color: @white;
-    padding: 14px;
-    .border-radius(0 0 3px 3px);
-    .background-clip(padding-box);
+    padding: 10px;
     p, ul, ol {
       margin-bottom: 0;
     }

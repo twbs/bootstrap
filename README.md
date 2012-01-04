@@ -1,10 +1,10 @@
-FACEBOOTSTRAP
+FBOOTSTRAPP
 =================
 
-Facebootstrap is a toolkit for kickstarting the development of facebook iframe apps.
+Fbootstrapp is a toolkit for kickstarting the development of facebook iframe apps.
 
 It is based on Twitter's excellent Bootstrap.
-Just as this, it includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
+Just as that, it includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
 
 However, these are all styled in colors reminiscing facebook's UI.
 
@@ -15,7 +15,7 @@ Put your content in a ```<div class="container">``` or a ```<div class="containe
 Usage
 -----
 
-You can use Facebootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
+You can use Fbootstrapp in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
 
 Here's what the LESS version looks like:
 
@@ -45,7 +45,7 @@ https://github.com/ckrack/facebootstrap/issues
 Authors
 -------
 
-**Clemens Krack (Facebootstrap)**
+**Clemens Krack (Fbootstrapp)**
 
 + http://twitter.com/clmnsk
 + http://github.com/ckrack
