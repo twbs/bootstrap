@@ -39,7 +39,7 @@ Bug tracker
 
 Have a bug? Please create an issue here on GitHub!
 
-https://github.com/ckrack/facebootstrap/issues
+https://github.com/ckrack/fbootstrapp/issues
 
 
 Authors
