@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan  5 15:46:10 PST 2012
+ * Date: Thu Jan  5 15:48:31 PST 2012
  */
 html, body {
   margin: 0;
@@ -2223,6 +2223,7 @@ i {
 .pagination .disabled a, .pagination .disabled a:hover {
   color: #999999;
   background-color: transparent;
+  cursor: default;
 }
 .pagination .next a {
   border: 0;

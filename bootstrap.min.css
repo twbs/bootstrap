@@ -354,7 +354,7 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .pagination li{display:inline;}
 .pagination a{float:left;padding:0 14px;line-height:34px;text-decoration:none;border-right:1px solid;border-right-color:#ddd;border-right-color:rgba(0, 0, 0, 0.15);*border-right-color:#ddd;}
 .pagination a:hover,.pagination .active a{background-color:#c7eefe;}
-.pagination .disabled a,.pagination .disabled a:hover{color:#999999;background-color:transparent;}
+.pagination .disabled a,.pagination .disabled a:hover{color:#999999;background-color:transparent;cursor:default;}
 .pagination .next a{border:0;}
 .pagination.centered{text-align:center;}
 .modal-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:10000;background-color:#000000;}.modal-backdrop.fade{opacity:0;}
