@@ -104,6 +104,9 @@ select{background-color:#ffffff;vertical-align:middle;}
 select[multiple],select[size]{height:inherit;}
 input[type=image]{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 textarea{height:auto;}
+.radio,.checkbox{padding-left:18px;}
+.radio input[type=radio],.checkbox input[type=checkbox]{float:left;margin-left:-18px;}
+.controls>.radio:first-child,.controls>.checkbox:first-child{padding-top:6px;}
 input,textarea{-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1);-webkit-transition:border linear 0.2s,box-shadow linear 0.2s;-moz-transition:border linear 0.2s,box-shadow linear 0.2s;-ms-transition:border linear 0.2s,box-shadow linear 0.2s;-o-transition:border linear 0.2s,box-shadow linear 0.2s;transition:border linear 0.2s,box-shadow linear 0.2s;}
 input:focus,textarea:focus{border-color:rgba(82, 168, 236, 0.8);-webkit-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);-moz-box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.1),0 0 8px rgba(82, 168, 236, 0.6);outline:0;}
 input[type=file]:focus,input[type=checkbox]:focus,select:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;outline:1px dotted #666;}
@@ -159,7 +162,6 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .control-group>label{font-weight:bold;}
 .horizontal-form .control-group>label{float:left;width:130px;padding-top:5px;text-align:right;}
 .horizontal-form .controls{margin-left:150px;}
-.horizontal-form .controls>.radio:first-child,.horizontal-form .controls>.checkbox:first-child{padding-top:6px;}
 .horizontal-form .form-actions{padding-left:150px;}
 table{width:100%;margin-bottom:18px;}
 th,td{padding:8px;line-height:18px;text-align:left;border-top:1px solid #ddd;}

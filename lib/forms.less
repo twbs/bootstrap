@@ -116,6 +116,28 @@ textarea {
 
 
 
+// CHECKBOXES & RADIOS
+// -------------------
+
+// Indent the labels to position radios/checkboxes as hanging
+.radio,
+.checkbox {
+  padding-left: 18px;
+}
+.radio input[type=radio],
+.checkbox input[type=checkbox] {
+  float: left;
+  margin-left: -18px;
+}
+
+// Move the options list down to align with labels
+.controls > .radio:first-child,
+.controls > .checkbox:first-child {
+  padding-top: 6px; // has to be padding because margin collaspes
+}
+
+
+
 // FOCUS STATE
 // -----------
 
@@ -389,11 +411,6 @@ textarea[readonly] {
   // Move over all input controls and content
   .controls {
     margin-left: 150px;
-  }
-  // Move the options list down to align with labels
-  .controls > .radio:first-child,
-  .controls > .checkbox:first-child {
-    padding-top: 6px; // has to be padding because margin collaspes
   }
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
