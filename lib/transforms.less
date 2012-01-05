@@ -1,0 +1,128 @@
+/* Transforms.less
+ * Shorthands for CSS functions defining transformations
+ * See https://developer.mozilla.org/en/CSS/transform-function
+ * ----------------------------------------------------------------- */
+
+// TRANSFORM
+// ---------
+
+.transform(@transform) {
+     -webkit-transform: @transform;
+        -moz-transform: @transform;
+         -ms-transform: @transform;
+          -o-transform: @transform;
+             transform: @transform;
+}
+
+.transform-origin(@transform) {
+     -webkit-transform-origin: @transform;
+        -moz-transform-origin: @transform;
+         -ms-transform-origin: @transform;
+          -o-transform-origin: @transform;
+             transform-origin: @transform;
+}
+
+// MATRIX
+// ------
+
+.matrix(@a, @b, @c, @d, @tx, @ty) {
+	@transform: matrix(@a, @b, @c, @d, @tx, @ty);
+	.transform(@transform);
+}
+
+// ROTATE
+// ------
+
+.rotate(@factor) {
+	@transform: rotate(@factor);
+	.transform(@transform);
+}
+
+.rotate3d(@x, @y, @z, @a) {
+	@transform: rotate3d(@x, @y, @z, @a);
+	.transform(@transform);
+}
+
+.rotateX(@factor) {
+	@transform: rotateX(@factor);
+	.transform(@transform);
+}
+
+.rotateY(@factor) {
+	@transform: rotateY(@factor);
+	.transform(@transform);
+}
+
+.rotateZ(@factor) {
+	@transform: rotateZ(@factor);
+	.transform(@transform);
+}
+
+// SCALE
+// -----
+
+.scale(@factor) {
+	@transform: scale(@factor);
+	.transform(@transform);
+}
+
+.scale3d(@x, @y, @z) {
+	@transform: scale3d(@x, @y, @z);
+	.transform(@transform);
+}
+
+.scaleX(@factor) {
+	@transform: scaleX(@factor);
+	.transform(@transform);
+}
+
+.scaleY(@factor) {
+	@transform: scaleY(@factor);
+	.transform(@transform);
+}
+
+.scaleZ(@factor) {
+	@transform: scaleZ(@factor);
+	.transform(@transform);
+}
+
+// SKEW
+// ----
+
+.skew(@deg) {
+	@transform: skew(@deg);
+	.transform(@transform);
+}
+
+.skewX(@deg) {
+	@transform: skewX(@deg);
+	.transform(@transform);
+}
+
+.skewY(@deg) {
+	@transform: skewY(@deg);
+	.transform(@transform);
+}
+
+// TRANSLATE
+// ---------
+
+.translate3d(@x, @y: 0, @z: 0) {
+	@transform: translate3d(@x, @y, @z);
+	.transform(@transform);
+}
+
+.translateX(@factor) {
+	@transform: translateX(@factor);
+	.transform(@transform);
+}
+
+.translateY(@factor) {
+	@transform: translateY(@factor);
+	.transform(@transform);
+}
+
+.translateZ(@factor) {
+	@transform: translateZ(@factor);
+	.transform(@transform);
+}
