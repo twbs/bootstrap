@@ -19,24 +19,38 @@
 // Grid system and page structure
 @import "scaffolding.less";
 
-// Styled patterns and elements
+// Base CSS
 @import "type.less";
 @import "forms.less";
 @import "tables.less";
 
-// Temp catchall for what's missing thus far
-@import "patterns.less";
-
+// Components: common
 @import "sprites.less";
 @import "dropdowns.less";
+@import "wells.less";
+@import "component-animations.less";
+@import "close.less";
+
+// Components: Nav
+@import "navbar.less";
 @import "tabs-pills.less";
+@import "sidenav.less";
 @import "breadcrumbs.less";
 @import "pagination.less";
+
+// Components: Popovers
 @import "modals.less";
 @import "twipsy.less";
 @import "popovers.less";
-@import "sidenav.less";
+
+// Components: Buttons & Alerts
+@import "buttons.less";
+@import "button-groups.less";
+@import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Misc
 @import "thumbnails.less";
+@import "labels.less";
 
 // Responsive
 @import "responsive.less";

@@ -391,7 +391,8 @@ textarea[readonly] {
     margin-left: 150px;
   }
   // Move the options list down to align with labels
-  .control-list {
+  .controls > .radio:first-child,
+  .controls > .checkbox:first-child {
     padding-top: 6px; // has to be padding because margin collaspes
   }
   // Move over buttons in .form-actions to align with .controls
