@@ -464,12 +464,12 @@
     <!-- This is a private target -->
 
         <echo message="Copying over new files..."/>
-
         <copy todir="./${dir.publish}">
             <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
                 <!-- exclude files that are superseded by optimized versions with different names -->
                 <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
                 <exclude name="${dir.js}/**/*.js"/>
+                <exclude name="${dir.js.modules}"/>
                 <exclude name="${dir.css}/**/*.css"/>
                 <exclude name="${file.manifest}"/>
             </fileset>
@@ -532,13 +532,35 @@
         <propertyregex property="scripts.sha" input="${scripts.fullsha}" regexp=".{${hash.length}}" select="\0" />
         <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
         <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${dir.js}/${scripts.sha}.js" />
+		
+		<!-- cachebust modules directory name -->
+        <!-- Concatinate only to generate checksum. Concatinated file not actually published. -->
+        <if>
+            <available file="./${dir.intermediate}/${dir.js.modules}"/>
+            <then>
+				<concat destfile="./${dir.intermediate}/${dir.js.modules}/_all.js" overwrite="no">
+					<fileset dir="./${dir.intermediate}/${dir.js.modules}/">
+						<include name="*.js"/>
+					</fileset>
+				</concat>
+				<if>
+					<available file="./${dir.intermediate}/${dir.js.modules}/_all.js"/>
+					<then>
+						<checksum file="${dir.intermediate}/${dir.js.modules}/_all.js" algorithm="sha" property="modules.fullsha" />
+						<propertyregex property="modules.sha" input="${modules.fullsha}" regexp=".{${hash.length}}" select="\0" />
+						<property name="modules.js.dir" value="${dir.js}/${modules.sha}" />
+						<move file="${dir.publish}/${dir.js.modules}/" tofile="${dir.publish}/${dir.js}/${modules.sha}/" />
+					</then>
+				</if>
+			</then>
+		</if>
     </target>
 
 
     <target name="-js.all.minify" depends="-mkdirs" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
         <echo message="Minifying scripts"/>
         <copy todir="${dir.intermediate}/">
-            <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js"  />
+            <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js"/>
         </copy>
         <apply executable="java" parallel="false">
             <fileset dir="${dir.source}/" excludes="${dir.js.mylibs}/${file.js.bypass}, ${dir.js}/**/*.min.js" includes="${dir.js}/**/*.js">
@@ -628,6 +650,12 @@
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!--[! use comments like this one to avoid having them get minified -->
+
+        <echo message="Update the HTML to reference our name-mangled modules directory"/>
+        <replaceregexp match="&lt;script.*src=['&quot;]?${dir.js.modules}/(.*)['&quot;]\s*&gt;"
+        	replace="&lt;script defer src='${modules.js.dir}/\1'&gt;" flags="mg">
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+        </replaceregexp>
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
 
