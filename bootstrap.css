@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan  5 01:33:17 PST 2012
+ * Date: Thu Jan  5 01:36:56 PST 2012
  */
 html, body {
   margin: 0;
@@ -491,7 +491,7 @@ address {
 }
 code, pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, Courier New, monospace;
+  font-family: Menlo, Monaco, "Courier New", monospace;
   font-size: 12px;
   color: #404040;
   -webkit-border-radius: 3px;
@@ -2587,6 +2587,8 @@ i {
   top: 50%;
   left: 50%;
   z-index: 11000;
+  max-height: 500px;
+  overflow: auto;
   width: 560px;
   margin: -250px 0 0 -250px;
   background-color: #ffffff;
@@ -2907,6 +2909,71 @@ a.thumbnail:hover {
 }
 .thumbnail .caption {
   padding: 9px;
+}
+.carousel {
+  position: relative;
+}
+.carousel .carousel-inner {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.carousel .item {
+  display: none;
+  position: relative;
+  -webkit-transition: 0.6s ease-in-out left;
+  -moz-transition: 0.6s ease-in-out left;
+  -ms-transition: 0.6s ease-in-out left;
+  -o-transition: 0.6s ease-in-out left;
+  transition: 0.6s ease-in-out left;
+}
+.carousel .active, .carousel .next, .carousel .prev {
+  display: block;
+}
+.carousel .next, .carousel .prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.carousel .next {
+  left: 100%;
+}
+.carousel .prev {
+  left: -100%;
+}
+.carousel .next.left, .carousel .prev.right {
+  left: 0%;
+}
+.carousel .active.left {
+  left: -100%;
+}
+.carousel .active.right {
+  left: 100%;
+}
+.carousel .nav {
+  width: auto;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  margin: -25px 0 0;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 42px;
+  left: 5px;
+  font-weight: 100;
+  padding: 0 15px;
+}
+.carousel .nav.right {
+  right: 5px;
+  left: auto;
+}
+.carousel .nav:hover {
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.8);
 }
 .hidden {
   display: none;
