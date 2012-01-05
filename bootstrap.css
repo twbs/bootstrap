@@ -2662,38 +2662,78 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   display: none;
 }
 .popover.above .arrow {
-  bottom: 0;
+  bottom: -4px;
   left: 50%;
-  margin-left: -9px;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 9px solid #ffffff;
+  margin-left: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(0, 0, 0, 0.3);
 }
 .popover.right .arrow {
   top: 50%;
-  left: 0;
-  margin-top: -9px;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-right: 9px solid #ffffff;
+  left: -4px;
+  margin-top: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid rgba(0, 0, 0, 0.3);
 }
 .popover.below .arrow {
-  top: 0;
+  top: -4px;
   left: 50%;
-  margin-left: -9px;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-bottom: 9px solid #ffffff;
+  margin-left: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.3);
 }
 .popover.left .arrow {
   top: 50%;
-  right: 0;
-  margin-top: -9px;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-left: 9px solid #ffffff;
+  right: -4px;
+  margin-top: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(0, 0, 0, 0.3);
 }
-.popover .arrow {
+.popover.above:after {
+  bottom: 0;
+  left: 50%;
+  margin-left: -11px;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 11px solid #ffffff;
+  content: ' ';
+}
+.popover.right:after {
+  top: 50%;
+  left: 0;
+  margin-top: -11px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-right: 11px solid #ffffff;
+  content: ' ';
+}
+.popover.below:after {
+  top: 0;
+  left: 50%;
+  margin-left: -11px;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid #ffffff;
+  content: ' ';
+}
+.popover.left:after {
+  top: 50%;
+  right: -2px;
+  margin-top: -11px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 11px solid #ffffff;
+  content: ' ';
+}
+.popover .arrow,
+.popover.above:after,
+.popover.right:after,
+.popover.below:after,
+.popover.left:after {
   position: absolute;
   width: 0;
   height: 0;
