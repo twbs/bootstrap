@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan  5 15:42:23 PST 2012
+ * Date: Thu Jan  5 15:46:10 PST 2012
  */
 html, body {
   margin: 0;
@@ -1486,7 +1486,7 @@ i {
   filter: alpha(opacity=30);
   -moz-opacity: 0.3;
   opacity: 0.3;
-  content: "&darr;";
+  content: "\2193";
 }
 .dropdown:hover .dropdown-toggle:after {
   filter: alpha(opacity=100);
