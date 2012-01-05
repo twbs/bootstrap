@@ -75,6 +75,7 @@
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
         this.setContent()
+        this.addCustomClass()
 
         if (this.options.animate) {
           $tip.addClass('fade')
@@ -122,6 +123,12 @@
       $tip.find('.twipsy-inner')[this.options.html ? 'html' : 'text'](this.getTitle())
       $tip[0].className = 'twipsy'
     }
+
+  , addCustomClass: function() {
+    if (this.options.class) {
+      this.tip().addClass(this.options.class)
+    }
+  }
 
   , hide: function() {
       var that = this

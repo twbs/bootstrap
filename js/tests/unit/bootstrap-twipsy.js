@@ -78,4 +78,13 @@ $(function () {
         $('#qunit-runoff').empty()
       })
 
+      test("should apply the class if specified", function() {
+        var twipsy = $('<a href="#" rel="twipsy" title="Another twipsy"></a>').twipsy({ class: 'test-class' })
+        twipsy.twipsy('show')
+        ok($('.twipsy').hasClass('test-class'), 'has the specified class applied')
+        twipsy.twipsy('hide')
+        ok(!$(".twipsy").length, 'twipsy removed')
+        $('#qunit-runoff').empty()
+      })
+
 })
