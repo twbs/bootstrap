@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan  5 14:10:04 PST 2012
+ * Date: Thu Jan  5 15:42:23 PST 2012
  */
 html, body {
   margin: 0;
@@ -401,7 +401,7 @@ h6 {
   text-transform: uppercase;
 }
 ul, ol {
-  margin: 13px 0 14px 25px;
+  margin: 0 0 9px 25px;
 }
 ul ul,
 ul ol,
@@ -417,7 +417,7 @@ ol {
 }
 li {
   line-height: 18px;
-  color: #333333;
+  color: #555555;
 }
 ul.unstyled {
   margin-left: 0;
@@ -2503,6 +2503,7 @@ i {
 .alert-message.info,
 .btn.info:hover,
 .alert-message.info:hover {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
 }
 .btn.danger,

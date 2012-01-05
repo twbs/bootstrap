@@ -202,6 +202,28 @@ body > .navbar-fixed .brand:hover {
   margin-bottom: 0;
   color: #555;
 }
+.footer dl {
+  margin-bottom: 0;
+}
+.footer dl dt {
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+}
+.footer dl dd + dt {
+  margin-top: 18px;
+}
+.footer dl dd {
+  margin-left: 0;
+  font-size: 12px;
+}
+.footer dl a {
+  color: #999;
+}
+.footer dl a:hover {
+  color: #555;
+}
+
 
 
 /* Special grid styles
