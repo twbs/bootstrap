@@ -172,27 +172,26 @@
   li.open .menu,
   .dropdown-toggle:hover,
   .dropdown.open .dropdown-toggle {
-    background: #444;
+    background: @blueDark;
     background: rgba(255,255,255,.05);
   }
   // .menu-dropdown for backwards compatibility
   .menu-dropdown,
   .dropdown-menu {
-    background-color: #333;
+    background-color: @blueDark;
     // a.menu for backwards compatibility
     a.menu,
     .dropdown-toggle {
       color: @white;
       &.open {
-        background: #444;
+        background: @blue;
         background: rgba(255,255,255,.05);
       }
     }
     li a {
-      color: #999;
-      text-shadow: 0 1px 0 rgba(0,0,0,.5);
+      color: @white;
+      //text-shadow: 0 1px 0 rgba(0,0,0,.5);
       &:hover {
-        #gradient > .vertical(#292929,#191919);
         color: @white;
       }
     }
@@ -200,8 +199,8 @@
       color: @white;
     }
     .divider {
-      background-color: #222;
-      border-color: #444;
+      background-color: @blueDark;
+      border-color: @blue;
     }
   }
 }
@@ -244,7 +243,7 @@ a.menu:after,
   float: left;
   display: none; // None by default, but block on "open" of the menu
   position: absolute;
-  top: 38px;
+  top: 36px;
   z-index: 900;
   min-width: 160px;
   max-width: 220px;
@@ -253,10 +252,10 @@ a.menu:after,
   margin-right: 0;
   padding: 6px 0;
   zoom: 1; // do we need this?
-  border-color: #999;
+  border-color: @blue;
   border-color: rgba(0,0,0,.2);
   border-style: solid;
-  border-width: 0 1px 1px;
+  border-width: 1px 1px 1px;
   .border-radius(0 0 6px 6px);
   .box-shadow(0 2px 4px rgba(0,0,0,.2));
   .background-clip(padding-box);
@@ -286,13 +285,12 @@ a.menu:after,
     clear: both;
     font-weight: normal;
     line-height: 18px;
-    color: @gray;
-    text-shadow: 0 1px 0 @white;
+    color: @blue;
     // Hover state
     &:hover,
     &.hover {
-      #gradient > .vertical(#eeeeee, #dddddd);
-      color: @grayDark;
+      background-color: @blue;
+      color: @white;
       text-decoration: none;
       @shadow: inset 0 1px 0 rgba(0,0,0,.025), inset 0 -1px rgba(0,0,0,.025);
       .box-shadow(@shadow);
@@ -308,8 +306,7 @@ a.menu:after,
   .menu,
   .dropdown-toggle {
     color: @white;
-    background: #ccc;
-    background: rgba(0,0,0,.3);
+    background: @blue;
   }
   // .menu-dropdown for backwards compatibility
   .menu-dropdown,
@@ -374,7 +371,7 @@ a.menu:after,
   // first one for backwards compatibility
   .menu-dropdown,
   .dropdown-menu {
-    top: 35px;
+    top: 25px;
     border-width: 1px;
     .border-radius(0 4px 4px 4px);
   }
@@ -951,15 +948,15 @@ input[type=submit].btn {
   &.fade.in {
     .opacity(80);
   }
-  &.above .twipsy-arrow   { #popoverArrow > .above(); }
-  &.left .twipsy-arrow    { #popoverArrow > .left(); }
-  &.below .twipsy-arrow   { #popoverArrow > .below(); }
-  &.right .twipsy-arrow   { #popoverArrow > .right(); }
+  &.above .twipsy-arrow   { #popoverArrow > .above(5px, @blueDark); }
+  &.left .twipsy-arrow    { #popoverArrow > .left(5px, @blueDark); }
+  &.below .twipsy-arrow   { #popoverArrow > .below(5px, @blueDark); }
+  &.right .twipsy-arrow   { #popoverArrow > .right(5px, @blueDark); }
 }
 .twipsy-inner {
   padding: 3px 8px;
-  background-color: @black;
-  color: white;
+  background-color: @blueDark;
+  color: @white;
   text-align: center;
   max-width: 200px;
   text-decoration: none;

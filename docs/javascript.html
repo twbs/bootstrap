@@ -13,6 +13,8 @@
 
     <!-- Le javascript -->
     <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <!-- fall back to local if necessary -->
+    <script>!window.jQuery && document.write(unescape('%3Cscript src="../js/jquery-1.4.2.min.js"%3E%3C/script%3E'))</script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script>$(function () { prettyPrint() })</script>
     <script src="../js/bootstrap-modal.js"></script>
@@ -23,6 +25,11 @@
     <script src="../js/bootstrap-scrollspy.js"></script>
     <script src="../js/bootstrap-tabs.js"></script>
     <script src="../js/bootstrap-buttons.js"></script>
+    
+    <script>
+        // kill less cache
+        localStorage.clear();
+    </script>
 
     <!-- Le styles -->
     <link rel="stylesheet/less" href="../lib/bootstrap.less">
@@ -792,6 +799,7 @@ $('.tabs a').bind('change', function (e) {
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>
           Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br />
+          Forked by <a href="http://twitter.com/clmnsk">@clmnsk</a>.<br>
           Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>.
         </p>
       </div>
