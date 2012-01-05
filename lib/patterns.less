@@ -900,33 +900,33 @@ input[type=submit].btn {
 // --------------
 
 #popoverArrow {
-  .above(@arrowWidth: 5px, @arrowColor: @black) {
-    bottom: 0;
+  .above(@arrowWidth: 5px, @arrowColor: @black, @offset: 0) {
+    bottom: @offset;
     left: 50%;
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
     border-top: @arrowWidth solid @arrowColor;
   }
-  .left(@arrowWidth: 5px, @arrowColor: @black) {
+  .left(@arrowWidth: 5px, @arrowColor: @black, @offset: 0) {
     top: 50%;
-    right: 0;
+    right: @offset;
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
     border-left: @arrowWidth solid @arrowColor;
   }
-  .below(@arrowWidth: 5px, @arrowColor: @black) {
-    top: 0;
+  .below(@arrowWidth: 5px, @arrowColor: @black, @offset: 0) {
+    top: @offset;
     left: 50%;
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid @arrowColor;
   }
-  .right(@arrowWidth: 5px, @arrowColor: @black) {
+  .right(@arrowWidth: 5px, @arrowColor: @black, @offset: 0) {
     top: 50%;
-    left: 0;
+    left: @offset;
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
@@ -971,6 +971,44 @@ input[type=submit].btn {
 
 // POPOVERS
 // --------
+#popoverdouble {
+  .above(@arrowWidth: 5px, @arrowColor: @black) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-top: @arrowWidth solid @arrowColor;
+    content: ' ';
+  }
+  .left(@arrowWidth: 5px, @arrowColor: @black, @offset: 0px) {
+    top: 50%;
+    right: @offset;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-left: @arrowWidth solid @arrowColor;
+    content: ' ';
+  }
+  .below(@arrowWidth: 5px, @arrowColor: @black) {
+    top: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    border-left: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid @arrowColor;
+    content: ' ';
+  }
+  .right(@arrowWidth: 5px, @arrowColor: @black) {
+    top: 50%;
+    left: 0;
+    margin-top: -@arrowWidth;
+    border-top: @arrowWidth solid transparent;
+    border-bottom: @arrowWidth solid transparent;
+    border-right: @arrowWidth solid @arrowColor;
+    content: ' ';
+  }
+}
 
 .popover {
   position: absolute;
@@ -979,12 +1017,22 @@ input[type=submit].btn {
   z-index: 1000;
   padding: 5px;
   display: none;
-  &.above .arrow { #popoverArrow > .above(9px, @white); }
-  &.right .arrow { #popoverArrow > .right(9px, @white); }
-  &.below .arrow { #popoverArrow > .below(9px, @white); }
-  &.left .arrow  { #popoverArrow > .left(9px, @white); }
   
-  .arrow {
+  &.above .arrow { #popoverArrow > .above(10px, rgba(0,0,0,0.3), -4px); }
+  &.right .arrow { #popoverArrow > .right(10px, rgba(0,0,0,0.3), -4px); }
+  &.below .arrow { #popoverArrow > .below(10px, rgba(0,0,0,0.3), -4px); }
+  &.left  .arrow { #popoverArrow >  .left(10px, rgba(0,0,0,0.3), -4px); }
+  
+  &.above:after { #popoverdouble > .above(11px, @white, -2px); }
+  &.right:after { #popoverdouble > .right(11px, @white, -2px); }
+  &.below:after { #popoverdouble > .below(11px, @white, -2px); }
+  &.left:after  { #popoverdouble >  .left(11px, @white, -2px); }
+  
+  .arrow,
+  &.above:after,
+  &.right:after,
+  &.below:after,
+  &.left:after {
     position: absolute;
     width: 0;
     height: 0;
