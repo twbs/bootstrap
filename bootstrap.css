@@ -1798,14 +1798,14 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .nav .dropdown-toggle:hover,
 .topbar div > ul .dropdown.open .dropdown-toggle,
 .nav .dropdown.open .dropdown-toggle {
-  background: #444;
+  background: #3b5998;
   background: rgba(255, 255, 255, 0.05);
 }
 .topbar div > ul .menu-dropdown,
 .nav .menu-dropdown,
 .topbar div > ul .dropdown-menu,
 .nav .dropdown-menu {
-  background-color: #333;
+  background-color: #3b5998;
 }
 .topbar div > ul .menu-dropdown a.menu,
 .nav .menu-dropdown a.menu,
@@ -1825,30 +1825,19 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .nav .menu-dropdown .dropdown-toggle.open,
 .topbar div > ul .dropdown-menu .dropdown-toggle.open,
 .nav .dropdown-menu .dropdown-toggle.open {
-  background: #444;
+  background: #627aad;
   background: rgba(255, 255, 255, 0.05);
 }
 .topbar div > ul .menu-dropdown li a,
 .nav .menu-dropdown li a,
 .topbar div > ul .dropdown-menu li a,
 .nav .dropdown-menu li a {
-  color: #999;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 .topbar div > ul .menu-dropdown li a:hover,
 .nav .menu-dropdown li a:hover,
 .topbar div > ul .dropdown-menu li a:hover,
 .nav .dropdown-menu li a:hover {
-  background-color: #191919;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#292929), to(#191919));
-  background-image: -moz-linear-gradient(top, #292929, #191919);
-  background-image: -ms-linear-gradient(top, #292929, #191919);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #292929), color-stop(100%, #191919));
-  background-image: -webkit-linear-gradient(top, #292929, #191919);
-  background-image: -o-linear-gradient(top, #292929, #191919);
-  background-image: linear-gradient(top, #292929, #191919);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#292929', endColorstr='#191919', GradientType=0);
   color: #ffffff;
 }
 .topbar div > ul .menu-dropdown .active a,
@@ -1861,8 +1850,8 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .nav .menu-dropdown .divider,
 .topbar div > ul .dropdown-menu .divider,
 .nav .dropdown-menu .divider {
-  background-color: #222;
-  border-color: #444;
+  background-color: #3b5998;
+  border-color: #627aad;
 }
 .topbar ul .menu-dropdown li a, .topbar ul .dropdown-menu li a {
   padding: 4px 15px;
@@ -1892,7 +1881,7 @@ a.menu:after, .dropdown-toggle:after {
   float: left;
   display: none;
   position: absolute;
-  top: 38px;
+  top: 36px;
   z-index: 900;
   min-width: 160px;
   max-width: 220px;
@@ -1901,10 +1890,10 @@ a.menu:after, .dropdown-toggle:after {
   margin-right: 0;
   padding: 6px 0;
   zoom: 1;
-  border-color: #999;
+  border-color: #627aad;
   border-color: rgba(0, 0, 0, 0.2);
   border-style: solid;
-  border-width: 0 1px 1px;
+  border-width: 1px 1px 1px;
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
@@ -1933,24 +1922,14 @@ a.menu:after, .dropdown-toggle:after {
   clear: both;
   font-weight: normal;
   line-height: 18px;
-  color: #666666;
-  text-shadow: 0 1px 0 #ffffff;
+  color: #627aad;
 }
 .topbar .dropdown-menu a:hover,
 .dropdown-menu a:hover,
 .topbar .dropdown-menu a.hover,
 .dropdown-menu a.hover {
-  background-color: #dddddd;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#eeeeee), to(#dddddd));
-  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
-  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: linear-gradient(top, #eeeeee, #dddddd);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#dddddd', GradientType=0);
-  color: #333333;
+  background-color: #627aad;
+  color: #ffffff;
   text-decoration: none;
   -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
@@ -1961,8 +1940,7 @@ a.menu:after, .dropdown-toggle:after {
 .open .dropdown-toggle,
 .dropdown.open .dropdown-toggle {
   color: #ffffff;
-  background: #ccc;
-  background: rgba(0, 0, 0, 0.3);
+  background: #627aad;
 }
 .open .menu-dropdown,
 .dropdown.open .menu-dropdown,
@@ -2024,7 +2002,7 @@ a.menu:after, .dropdown-toggle:after {
   cursor: default;
 }
 .tabs .menu-dropdown, .tabs .dropdown-menu {
-  top: 35px;
+  top: 25px;
   border-width: 1px;
   -webkit-border-radius: 0 4px 4px 4px;
   -moz-border-radius: 0 4px 4px 4px;
@@ -2633,7 +2611,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-left: -5px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #000000;
+  border-top: 5px solid #3b5998;
 }
 .twipsy.left .twipsy-arrow {
   top: 50%;
@@ -2641,7 +2619,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-top: -5px;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-left: 5px solid #000000;
+  border-left: 5px solid #3b5998;
 }
 .twipsy.below .twipsy-arrow {
   top: 0;
@@ -2649,7 +2627,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-left: -5px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid #000000;
+  border-bottom: 5px solid #3b5998;
 }
 .twipsy.right .twipsy-arrow {
   top: 50%;
@@ -2657,12 +2635,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-top: -5px;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-right: 5px solid #000000;
+  border-right: 5px solid #3b5998;
 }
 .twipsy-inner {
   padding: 3px 8px;
-  background-color: #000000;
-  color: white;
+  background-color: #3b5998;
+  color: #ffffff;
   text-align: center;
   max-width: 200px;
   text-decoration: none;
