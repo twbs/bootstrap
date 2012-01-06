@@ -593,6 +593,9 @@
 &lt;table&gt;
   ...
 &lt;/table&gt;</pre>
+
+  <br>
+
   <h3>2. Striped table</h3>
   <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.striped-table</code> class.</p>
   <table class="striped-table">
@@ -630,6 +633,9 @@
 &lt;table class="striped-table"&gt;
   ...
 &lt;/table&gt;</pre>
+
+  <br>
+
   <h3>3. Bordered table</h3>
   <p>Add borders around the entire table and between each row, plus a bit of rounded corners for aesthetic purposes.</p>
   <p><span class="label">Note</span> Bordered tables do not work well with <code>rowspan</code> due to somewhat hacky CSS applied to the tables. Sorry about that!</p>
@@ -671,6 +677,9 @@
 &lt;table class="bordered-table"&gt;
   ...
 &lt;/table&gt;</pre>
+
+  <br>
+
   <h3>4. Condensed table</h3>
   <p>Make your tables more compact by adding the <code>.condensed-table</code> class to cut table cell padding in half (from 10px to 5px).</p>
   <table class="condensed-table">
@@ -707,6 +716,9 @@
 &lt;table class="condensed-table"&gt;
   ...
 &lt;/table&gt;</pre>
+
+  <br>
+
   <h3>5. Striped table w/ TableSorter.js</h3>
   <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
   <table class="striped-table" id="sortTableExample">
@@ -760,54 +772,32 @@
   <div class="page-header">
     <h1>Forms</h1>
   </div>
-
-<!--
-
-Types of forms
-  default (stacked)
-  horizontal (change the class)
-  search
-  inline
-Form elements
-  form
-  fieldset
-  legend
-  label
-  input
-    text (password, email, etc)
-    radio
-    checkbox
-  textarea
-    rows
-  select
-    single
-    multiple
-    size
-Custom form elements
-  Input prepend and append (for @ and $)
-  checkbox and radio lists
-Explaining the default Bootstrap form structure
-  Bulletproofing our forms means adding a bit of extra structure and providing more classes for customization and event handling
-  Form vertical and horizontal forms, we require a wrapping element.
-    we suggest a fieldset
-    but could be anthing so long as it uses the proper class
-Form states
-  warning
-  error
-  success
--->
-
-<div class="row">
-  <div class="span4">
-    <h3>Flexible markup and styles</h3>
-    <p>The best part about forms in Bootstrap is that all your inputs and controls look great no matter how you build them in your markup. No superfluous HTML is required, but we provide the patterns for those who require it.</p>
+  <div class="row">
+    <div class="span4">
+      <h2>Flexible HTML and CSS</h2>
+      <p>The best part about forms in Bootstrap is that all your inputs and controls look great no matter how you build them in your markup. No superfluous HTML is required, but we provide the patterns for those who require it.</p>
+      <p>More complicated layouts come with succinct and scalable classes for easy styling and event binding, so you're covered at every step.</p>
+    </div>
+    <div class="span4">
+      <h2>Four layouts included</h2>
+      <p>Bootstrap comes with support for four types of form layouts:</p>
+      <ul>
+        <li>Vertical (default)</li>
+        <li>Search</li>
+        <li>Inline</li>
+        <li>Horizontal</li>
+      </ul>
+      <p>Different types of form layouts require some changes to markup, but the controls themselves remain and behave the same.</p>
+    </div>
+    <div class="span4">
+      <h2>Control states and more</h2>
+      <p>Bootstrap's forms include styles for all the base form controls like input, textarea, and select you'd expect. But it also comes with a number of custom components like appended and prepended inputs and support for lists of checkboxes.</p>
+      <p>States like error, warning, and success are included for each type of form control. Also included are styles for disabled controls.</p>
+    </div>
   </div>
-  <div class="span4">
-  </div>
-</div>
-
   
   <h2>Four types of forms</h2>
+  <p>Bootstrap provides simple markup and styles for four styles of common web forms.</p>
   <table class="bordered-table striped-table">
     <thead>
       <tr>
@@ -823,7 +813,7 @@ Form states
         <td>Stacked, left-aligned labels over controls</td>
       </tr>
       <tr>
-        <th>Horiztonal</th>
+        <th>Horizontal</th>
         <td><code>.horizontal-form</code></td>
         <td>Float left, right-aligned labels on same line as controls</td>
       </tr>
@@ -841,78 +831,60 @@ Form states
   </table>
 
 
+  <h2>Example forms <small>using just form controls, no extra markup</small></h2>
   <div class="row">
     <div class="span4">
-      <h3>Why four types</h3>
-      <p>With Bootstrap 2, we completely recoded our forms to allow for simple base styles and improved namespacing on labels and controls. To address the many uses of forms, we've included some base styles to help get you started.</p>
+      <h3>Basic form</h3>
+      <p>With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.</p>
+      <form class="well">
+        <label>Label name</label>
+        <input type="text" class="span3" placeholder="Type something...">
+        <label class="checkbox">
+          <input type="checkbox"> Check me out
+        </label>
+        <button type="submit" class="btn">Submit</button>
+      </form>
     </div>
     <div class="span4">
-      <h3>Vertical or horizontal</h3>
-      <p>Our default form styles are now vertical, not horizontal. This makes it easier to customize bare-bones forms, as well as forms in tricker situations like sign-up, modals, etc. <strong>They share the same exact markup; just swap the class.</strong></p>
+      <h3>Search form</h3>
+      <p>Reflecting default WebKit styles, just add <code>.search-form</code> for extra rounded search fields.</p>
+      <form class="well search-form">
+        <input type="text" class="input-medium search-query">
+        <button type="submit" class="btn">Search</button>
+      </form>
+    </div>
+    <div class="span4">
+      <h3>Inline form</h3>
+      <p>Inputs are block level to start. For <code>.inline-form</code> and <code>.horizontal-form</code>, we use inline-block.</p>
+      <form class="well search-form">
+        <input type="text" class="input-small" placeholder="Email">
+        <input type="password" class="input-small" placeholder="Password">
+        <button type="submit" class="btn">Go</button>
+      </form>
     </div>
   </div><!-- /row -->
+
+  <br>
+
+  <h2>Horizontal forms</h2>
   <div class="row">
-    <div class="span3">
-      <h2>Search form</h2>
-    </div>
-    <div class="span9">
-      <div class="well">
-        <form class="search-form">
-          <input type="text" class="search-query">
-          <button type="submit" class="btn">Search</button>
-        </form>
-      </div><!--/well-->
-    </div>
-  </div><!-- /row -->
-  <div class="row">
-    <div class="span3">
-      <h2>Inline form</h2>
-    </div>
-    <div class="span9">
-      <div class="well">
-        <form class="inline-form">
-          <h4>Some directional text</h4>
-          <p>And maybe some kind of optional supporting text right here.</p>
-          <input type="text" class="input-medium">
-          <input type="text" class="input-medium">
-          <input type="text" class="input-medium">
-          <button type="submit" class="btn">Search</button>
-        </form>
-      </div><!--/well-->
-    </div>
-  </div><!-- /row -->
-  <div class="row">
-    <div class="span3">
-      <h2>Horizontal form</h2>
-    </div>
-    <div class="span9">
+    <div class="span8">
       <form class="horizontal-form">
-        <legend>Example form section</legend>
+        <legend>Controls Bootstrap supports</legend>
         <fieldset class="control-group">
           <label class="control-label" for="input01">Text input</label>
           <div class="controls">
             <input type="text" class="xlarge" name="input01">
-            <p class="help-text">Help text here. Be sure to fill this out like so, or else!</p>
+            <p class="help-block">In addition to freeform text, any HTML5 text-based input appears like so.</p>
           </div>
         </fieldset>
         <fieldset class="control-group">
-          <label class="control-label" for="prependedInput">Prepended text</label>
+          <label class="control-label" for="optionsCheckbox">Checkbox</label>
           <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">@</span>
-              <input class="input-small" id="prependedInput" name="prependedInput" size="16" type="text">
-            </div>
-            <p class="help-block">Here's some help text</p>
-          </div>
-        </fieldset>
-        <fieldset class="control-group">
-          <label class="control-label" for="appendedInput">Appended text</label>
-          <div class="controls">
-            <div class="input-append">
-              <input class="input-small" id="appendedInput" name="appendedInput" size="16" type="text">
-              <span class="add-on">.00</span>
-            </div>
-            <p class="help-block">Here's more help text</p>
+            <label class="checkbox">
+              <input type="checkbox" name="optionsCheckbox" value="option1">
+              Option one is this and that&mdash;be sure to include why it’s great
+            </label>
           </div>
         </fieldset>
         <fieldset class="control-group">
@@ -939,23 +911,69 @@ Form states
             </select>
           </div>
         </fieldset>
-        <legend>Example form section</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="fileInput">File input</label>
+          <div class="controls">
+            <input class="input-file" id="fileInput" name="fileInput" type="file">
+          </div>
+        </fieldset>
         <fieldset class="control-group">
           <label class="control-label" for="textarea">Textarea</label>
           <div class="controls">
             <textarea class="input-xlarge" name="textarea" id="textarea" rows="3"></textarea>
           </div>
         </fieldset>
+        <fieldset class="form-actions">
+          <button type="submit" class="btn primary">Save changes</button>
+          <button type="reset" class="btn">Cancel</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="span4">
+      <div class="form-docs">
+        <h3>What's included</h3>
+        <p>Shown on the left are all the default form controls we support. Here's the bulleted list:</p>
+        <ul>
+          <li>text inputs (text, password, email, etc)</li>
+          <li>checkbox</li>
+          <li>radio</li>
+          <li>select</li>
+          <li>multiple select</li>
+          <li>file input</li>
+          <li>textarea</li>
+        </ul>
+        <hr>
+        <h3>New defaults with v2.0</h3>
+        <p>Up to v1.4, Bootstrap's default form styles used the horizontal layout. With Bootstrap 2, we removed that constraint to have smarter, more scalable defaults for any form.</p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="span8">
+      <form class="horizontal-form">
+        <legend>Form control states</legend>
         <fieldset class="control-group">
-          <label class="control-label" for="fileInput">Disabled input</label>
+          <label class="control-label" for="focusedInput">Focused input</label>
           <div class="controls">
-            <input class="input-xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here... carry on." disabled>
+            <input class="input-xlarge focused" id="focusedInput" name="focusedInput" type="text" value="This is focused...">
           </div>
         </fieldset>
         <fieldset class="control-group">
-          <label class="control-label" for="fileInput">File input</label>
+          <label class="control-label" for="disabledInput">Disabled input</label>
           <div class="controls">
-            <input class="input-file" id="fileInput" name="fileInput" type="file">
+            <input class="input-xlarge disabled" id="disabledInput" name="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="optionsCheckbox">Disabled checkbox</label>
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" name="optionsCheckbox" value="option1" disabled>
+              This is a disabled checkbox
+            </label>
           </div>
         </fieldset>
         <fieldset class="control-group warning">
@@ -979,6 +997,54 @@ Form states
             <span class="help-inline">Woohoo!</span>
           </div>
         </fieldset>
+        <fieldset class="form-actions">
+          <button type="submit" class="btn primary">Save changes</button>
+          <button type="reset" class="btn">Cancel</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="span4">
+      <div class="form-docs">
+        <h3>Redesigned browser states</h3>
+        <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in it's place for <code>:focus</code>.</p>
+        <hr>
+        <h3>Form validation</h3>
+        <p>It also includes validation styles for errors, warnings, and success. To use, add the a class to the surrounding <code>.control-group</code>.</p>
+<pre class="prettyprint">
+&lt;fieldset class="control-group error"&gt;
+  ...
+&lt;/fieldset&gt;
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="span8">
+      <form class="horizontal-form">
+        <legend>Extending form controls</legend>
+        <fieldset class="control-group">
+          <label class="control-label" for="prependedInput">Prepended text</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on">@</span>
+              <input class="input-small" id="prependedInput" name="prependedInput" size="16" type="text">
+            </div>
+            <p class="help-block">Here's some help text</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="appendedInput">Appended text</label>
+          <div class="controls">
+            <div class="input-append">
+              <input class="input-small" id="appendedInput" name="appendedInput" size="16" type="text">
+              <span class="add-on">.00</span>
+            </div>
+            <p class="help-block">Here's more help text</p>
+          </div>
+        </fieldset>
         <fieldset class="control-group">
           <label class="control-label" for="optionsCheckboxes">Checkboxes</label>
           <div class="controls">
@@ -994,10 +1060,6 @@ Form states
               <input type="checkbox" name="optionsCheckboxes" value="option3">
               Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results
             </label>
-            <label class="checkbox">
-              <input type="checkbox" name="optionsCheckboxes" value="option4">
-              Option four cannot be checked as it is disabled
-            </label>
             <p class="help-text"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
           </div>
         </fieldset>
@@ -1010,49 +1072,7 @@ Form states
             </label>
             <label class="radio">
               <input type="radio" name="optionsRadios" value="option2">
-              Option two can is something else and selecting it will deselect options 1
-            </label>
-            <p class="help-text"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
-          </div>
-        </fieldset>
-        <fieldset class="form-actions">
-          <button type="submit" class="btn primary">Save changes</button>
-          <button type="reset" class="btn">Cancel</button>
-        </fieldset>
-      </form>
-    </div>
-  </div><!-- /row -->
-  <div class="row">
-    <div class="span3">
-      <h2>Vertical form</h2>
-    </div>
-    <div class="span9">
-      <form class="vertical-form">
-        <legend>Example form</legend>
-        <fieldset class="control-group">
-          <label class="control-label" for="input01">Label</label>
-          <div class="controls">
-            <input type="text" class="xlarge" name="input01">
-            <p class="help-text">Be sure to fill this out like so, or else!</p>
-          </div>
-        </fieldset>
-        <fieldset class="control-group">
-          <label class="control-label" for="select01">Label</label>
-          <div class="controls">
-            <select name="select01"></select>
-          </div>
-        </fieldset>
-        <fieldset class="control-group">
-          <label class="control-label" for="input02">Label</label>
-          <div class="controls">
-            <label class="checkbox">
-              <input type="checkbox"> Something something something something something
-            </label>
-            <label class="checkbox">
-              <input type="checkbox"> Something something something something
-            </label>
-            <label class="checkbox">
-              <input type="checkbox"> Something something something
+              Option two can is something else and selecting it will deselect option one
             </label>
           </div>
         </fieldset>
@@ -1062,11 +1082,24 @@ Form states
         </fieldset>
       </form>
     </div>
+    <div class="span4">
+      <div class="form-docs">
+        <h3>Prepend &amp; append inputs</h3>
+        <p>Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.</p>
+        <hr>
+        <h3>Checkboxes and radios</h3>
+        <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
+      </div>
+    </div>
   </div><!-- /row -->
+</section>
 
 
 
-  <h2>Buttons</h2>
+<section id="buttons">
+  <div class="page-header">
+    <h1>Buttons</h1>
+  </div>
   <table class="bordered-table striped-table">
     <thead>
       <tr>
@@ -1084,7 +1117,7 @@ Form states
       <tr>
         <td><a class="btn primary" href="#">Primary</a></td>
         <td><code>.primary</code></td>
-        <td>Makes button blue for more visual weight to indicate the primary action in a set of buttons</td>
+        <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
       </tr>
       <tr>
         <td><a class="btn info" href="#">Info</a></td>
@@ -1094,12 +1127,12 @@ Form states
       <tr>
         <td><a class="btn success" href="#">Success</a></td>
         <td><code>.success</code></td>
-        <td>Used to indicate a successful or positive action will be taken</td>
+        <td>Indicates a successful or positive action</td>
       </tr>
       <tr>
         <td><a class="btn danger" href="#">Danger</a></td>
         <td><code>.danger</code></td>
-        <td>Used to indicate a dangerous or potentially negative action will be taken</td>
+        <td>Indicates a dangerous or potentially negative action</td>
       </tr>
     </tbody>
   </table>
@@ -1296,6 +1329,9 @@ Form states
         <i class="asterisk"></i>
       </div>
     </div>
+    <div class="span2">
+      <p class="muted">Light red background color is only used to show the dimensions of the icons in the docs.</p>
+    </div>
   </div>
 
   <br>
@@ -1328,7 +1364,38 @@ Form states
   </div>
 
   <h3>Examples</h3>
-  <p><a class="btn" href="#"><i class="check"></i> Button</a></p>
+  <div class="row">
+    <div class="span4">
+      <p>Use them in buttons, or in button groups for a toolbar style presentation.</p>
+      <p>
+        <a class="btn" href="#"><i class="refresh"></i> Refresh</a>
+        <a class="btn" href="#"><i class="cog"></i> Settings</a>
+      </p>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <a class="btn" href="#"><i class="font"></i></a>
+          <a class="btn" href="#"><i class="bold"></i></a>
+          <a class="btn" href="#"><i class="italic"></i></a>
+        </div>
+        <div class="btn-group">
+          <a class="btn" href="#"><i class="align-left"></i></a>
+          <a class="btn" href="#"><i class="align-center"></i></a>
+          <a class="btn" href="#"><i class="align-right"></i></a>
+          <a class="btn" href="#"><i class="align-justify"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="span3">
+      <p>Or, use them in navigation.</p>
+      <div class="well side-nav">
+        <ul class="nav-group">
+          <li class="active"><a class="nav-item" href="#"><i class="home"></i> Home</a></li>
+          <li><a class="nav-item" href="#"><i class="book"></i> Library</a></li>
+          <li><a class="nav-item" href="#"><i class="cog"></i> Settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 

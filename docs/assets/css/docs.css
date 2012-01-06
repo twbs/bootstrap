@@ -36,11 +36,13 @@ body > .navbar-fixed .brand:hover {
 /* Space out sub-sections more
 -------------------------------------------------- */
 .page-header {
-  margin: 36px 0 18px;
+  margin: 45px 0 18px;
   border-bottom: 1px solid #eee;
 }
 .page-header h1 {
-  margin-bottom: 9px;
+  margin-bottom: 17px;
+  font-size: 36px;
+  line-height: 1;
 }
 
 
@@ -327,10 +329,6 @@ pre.prettyprint {
   overflow: hidden;
 }
 
-.well form {
-  margin-bottom: 0;
-}
-
 .browser-support {
   max-width: 100%;
 }
@@ -355,6 +353,40 @@ h2 + table {
   overflow: auto;
   position: relative;
 }
+
+/* Remove bottom margin on example forms in wells */
+form.well {
+  margin-bottom: 0;
+}
+
+/* Tighten up spacing */
+.well hr {
+  margin: 18px 0;
+}
+
+/* Form docs for horizontal forms */
+.form-docs {
+  padding-left: 10px;
+}
+.form-docs h3,
+.form-docs p,
+.form-docs li {
+  color: #777;
+}
+.form-docs hr {
+  margin: 18px 0;
+}
+
+/* Fake the :focus state to demo it */
+.focused {
+  border-color: rgba(82,168,236,.8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+     -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+          box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+  outline: 0;
+}
+
+
 
 /* Icons
 ------------------------- */

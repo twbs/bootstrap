@@ -42,10 +42,11 @@ input,
 textarea,
 select,
 .uneditable-input {
-  display: inline-block;
+  display: block;
   width: 210px;
   height: @baseLineHeight;
   padding: 4px;
+  margin-bottom: 9px;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
@@ -177,7 +178,6 @@ select:focus {
 // Grid style input sizes
 // This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
 .formColumns(@columnSpan: 1) {
-  display: inline-block;
   float: none;
   width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
   margin-left: 0;
@@ -221,6 +221,7 @@ textarea[readonly] {
   border-color: #ddd;
   cursor: not-allowed;
 }
+
 
 
 
@@ -289,10 +290,10 @@ textarea[readonly] {
 }
 
 // Placeholder text gets special styles; can't be bundled together though for some reason
-:-moz-placeholder {
+input:-moz-placeholder {
   color: @grayLight;
 }
-::-webkit-input-placeholder {
+input::-webkit-input-placeholder {
   color: @grayLight;
 }
 
@@ -301,7 +302,7 @@ textarea[readonly] {
 // HELP TEXT
 // ---------
 
-.help-text {
+.help-block {
   margin-top: 5px;
   margin-bottom: 0;
   color: @grayLight;
@@ -314,12 +315,6 @@ textarea[readonly] {
   padding-left: 5px;
 }
 
-// Big blocks of help text
-.help-block {
-  display: block;
-  max-width: 600px;
-}
-
 
 
 // INPUT GROUPS
@@ -328,6 +323,7 @@ textarea[readonly] {
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
 .input-append {
+  margin-bottom: 5px;
   .clearfix(); // Clear the float to prevent wrapping
   input {
     .border-radius(0 3px 3px 0);
@@ -377,6 +373,8 @@ textarea[readonly] {
 // -----------
 
 .search-form .search-query {
+  padding-left: 14px;
+  padding-right: 14px;
   .border-radius(14px);
 }
 
@@ -387,6 +385,18 @@ textarea[readonly] {
 
 // Common properties
 // -----------------
+
+.search-form,
+.inline-form,
+.horizontal-form {
+  input,
+  textarea,
+  select,
+  .uneditable-input {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+}
 
 // Margin to space out fieldsets
 .control-group {
