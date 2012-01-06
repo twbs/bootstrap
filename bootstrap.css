@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan  5 21:43:09 PST 2012
+ * Date: Thu Jan  5 22:37:16 PST 2012
  */
 html, body {
   margin: 0;
@@ -1644,7 +1644,7 @@ i {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-.navbar .brand a:hover, .navbar ul .active > a {
+.navbar .brand:hover, .navbar ul .active > a {
   color: #ffffff;
   text-decoration: none;
   background-color: #333333;

@@ -638,7 +638,6 @@
 
   <h3>3. Bordered table</h3>
   <p>Add borders around the entire table and between each row, plus a bit of rounded corners for aesthetic purposes.</p>
-  <p><span class="label">Note</span> Bordered tables do not work well with <code>rowspan</code> due to somewhat hacky CSS applied to the tables. Sorry about that!</p>
   <table class="bordered-table">
     <thead>
       <tr>
@@ -1177,37 +1176,52 @@
     </div>
   </div>
 
-  <h2>Button groups</h2>
-  <div class="well">
-    <div class="btn-group">
-      <a class="btn" href="#">Left</a>
-      <a class="btn" href="#">Middle</a>
-      <a class="btn" href="#">Right</a>
-    </div>
-  </div>
-  <div class="well">
-    <div class="btn-toolbar">
-      <div class="btn-group">
-        <a class="btn" href="#">1</a>
-        <a class="btn" href="#">2</a>
-        <a class="btn" href="#">3</a>
-        <a class="btn" href="#">4</a>
-        <a class="btn" href="#">5</a>
-      </div>
-      <div class="btn-group">
-        <a class="btn" href="#">6</a>
-        <a class="btn" href="#">7</a>
-        <a class="btn" href="#">8</a>
-      </div>
-      <div class="btn-group">
-        <a class="btn" href="#">9</a>
-      </div>
-      <div class="btn-group">
-        <a class="btn" href="#">10</a>
-      </div>
-    </div>
-  </div>
+  <br>
 
+  <div class="row">
+    <div class="span4">
+      <h2>Button groups</h2>
+      <p>Use button groups to join multiple buttons together as one composite component. Button groups can be built with not only <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements, but also radios and checkboxes.</p>
+      <p>You can also combine sets of button groups into a toolbar for more complex projects.</p>
+      <p><a class="btn js-btn" href="./javascript.html#buttons">Get the javascript &raquo;</a></p>
+      <p class="muted">Heads up: CSS for button groups is in a separate file, button-groups.less.</p>
+    </div>
+    <div class="span8">
+      <h3>Linked button group</h3>
+      <p>Using the standard <code>&lt;a class="btn" href="#"&gt;...&lt;/a&gt;</code> markup, simply add all the buttons you need.</p>
+      <div class="well" style="padding: 10px; margin-bottom: 9px;">
+        <div class="btn-group">
+          <a class="btn" href="#">Left</a>
+          <a class="btn" href="#">Middle</a>
+          <a class="btn" href="#">Right</a>
+        </div>
+      </div>
+      <p>Level up one more time by wrapping multiple instances of <code>&lt;div class="btn-group"&gt;</code> with <code>&lt;div class="btn-toolbar"&gt;</code>.</p>
+      <div class="well" style="padding: 10px;">
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn" href="#">1</a>
+            <a class="btn" href="#">2</a>
+            <a class="btn" href="#">3</a>
+            <a class="btn" href="#">4</a>
+            <a class="btn" href="#">5</a>
+          </div>
+          <div class="btn-group">
+            <a class="btn" href="#">6</a>
+            <a class="btn" href="#">7</a>
+            <a class="btn" href="#">8</a>
+          </div>
+          <div class="btn-group">
+            <a class="btn" href="#">9</a>
+          </div>
+          <div class="btn-group">
+            <a class="btn" href="#">10</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
 </section>
 
 
