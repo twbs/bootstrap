@@ -155,7 +155,7 @@
   , setContent: function () {
       var $tip = this.tip()
       $tip.find('.twipsy-inner').html(this.getTitle())
-      $tip[0].className = 'twipsy'
+      $tip.removeClass('fade in top bottom left right')
     }
 
   , hide: function () {

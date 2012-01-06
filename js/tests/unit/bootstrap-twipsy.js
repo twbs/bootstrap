@@ -48,4 +48,15 @@ $(function () {
         ok(!$(".twipsy").length, 'twipsy removed')
       })
 
+      test("should respect custom classes", function () {
+        var twipsy = $('<a href="#" rel="twipsy" title="Another twipsy"></a>')
+          .appendTo('#qunit-fixture')
+          .twipsy({ template: '<div class="twipsy some-class"><div class="twipsy-arrow"/><div class="twipsy-inner"/></div>'})
+          .twipsy('show')
+
+        ok($('.twipsy').hasClass('some-class'), 'custom class is present')
+        twipsy.twipsy('hide')
+        ok(!$(".twipsy").length, 'twipsy removed')
+      })
+
 })
