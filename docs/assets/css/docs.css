@@ -36,7 +36,13 @@ body > .navbar-fixed .brand:hover {
 /* Space out sub-sections more
 -------------------------------------------------- */
 .page-header {
-  margin-top: 36px;
+  margin: 45px 0 18px;
+  border-bottom: 1px solid #eee;
+}
+.page-header h1 {
+  margin-bottom: 17px;
+  font-size: 36px;
+  line-height: 1;
 }
 
 
@@ -171,7 +177,7 @@ body > .navbar-fixed .brand:hover {
   font-weight: 300;
 }
 .marketing h2 {
-  margin-bottom: 9px;
+  font-size: 22px;
 }
 .marketing p {
   margin-right: 10px;
@@ -198,6 +204,28 @@ body > .navbar-fixed .brand:hover {
   margin-bottom: 0;
   color: #555;
 }
+.footer dl {
+  margin-bottom: 0;
+}
+.footer dl dt {
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+}
+.footer dl dd + dt {
+  margin-top: 18px;
+}
+.footer dl dd {
+  margin-left: 0;
+  font-size: 12px;
+}
+.footer dl a {
+  color: #999;
+}
+.footer dl a:hover {
+  color: #555;
+}
+
 
 
 /* Special grid styles
@@ -301,10 +329,6 @@ pre.prettyprint {
   overflow: hidden;
 }
 
-.well form {
-  margin-bottom: 0;
-}
-
 .browser-support {
   max-width: 100%;
 }
@@ -328,6 +352,58 @@ h2 + table {
   height: 200px;
   overflow: auto;
   position: relative;
+}
+
+/* Remove bottom margin on example forms in wells */
+form.well {
+  margin-bottom: 0;
+}
+
+/* Tighten up spacing */
+.well hr {
+  margin: 18px 0;
+}
+
+/* Form docs for horizontal forms */
+.form-docs {
+  padding-left: 10px;
+}
+.form-docs h3,
+.form-docs p,
+.form-docs li {
+  color: #777;
+}
+.form-docs hr {
+  margin: 18px 0;
+}
+
+/* Fake the :focus state to demo it */
+.focused {
+  border-color: rgba(82,168,236,.8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+     -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+          box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+  outline: 0;
+}
+
+
+
+/* Icons
+------------------------- */
+.the-icons {
+  
+}
+.the-icons i {
+  display: block;
+  margin-bottom: 5px;
+  background-color: rgba(255,0,0,.25);
+}
+.the-icons i:after {
+  display: block;
+  content: attr(class);
+  font-style: normal;
+  margin-left: 20px;
+  width: 100px;
 }
 
 

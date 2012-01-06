@@ -1,0 +1,83 @@
+// ALERT STYLES
+// ------------
+
+// Base alert styles
+.alert-message {
+  position: relative;
+  padding: 7px 15px;
+  margin-bottom: @baseLineHeight;
+  color: @grayDark;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  .gradientBar(#fceec1, #eedc94); // warning by default
+  border-width: 1px;
+  border-style: solid;
+  .border-radius(4px);
+  .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+
+  // Adjust close icon
+  .close {
+    *margin-top: 3px; /* IE7 spacing */
+  }
+
+  // Remove extra margin from content
+  h5 {
+    line-height: @baseLineHeight;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  div {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    line-height: 28px;
+  }
+  .btn {
+    // Provide actions with buttons
+    .box-shadow(0 1px 0 rgba(255,255,255,.25));
+  }
+
+  &.error,
+  &.success,
+  &.info {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  }
+
+  &.block-message {
+    padding: 14px;
+    background-image: none;
+    background-color: lighten(#fceec1, 5%);
+    .reset-filter(); // undo gradient for IE9
+    border-color: #fceec1;
+    .box-shadow(none);
+    ul, p {
+      margin-right: 30px;
+    }
+    ul {
+      margin-bottom: 0;
+    }
+    li {
+      color: @grayDark;
+    }
+    .alert-actions {
+      margin-top: 5px;
+    }
+    &.error,
+    &.success,
+    &.info {
+      color: @grayDark;
+      text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    }
+    &.error {
+      background-color: lighten(#f56a66, 25%);
+      border-color: lighten(#f56a66, 20%);
+    }
+    &.success {
+      background-color: lighten(#62c462, 30%);
+      border-color: lighten(#62c462, 25%);
+    }
+    &.info {
+      background-color: lighten(#6bd0ee, 25%);
+      border-color: lighten(#6bd0ee, 20%);
+    }
+  }
+}
