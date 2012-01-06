@@ -2488,14 +2488,8 @@ iframe {
 .jstree-default.jstree-focused {
   background-color: transparent !important;
 }
-.jstree {
-  max-height: 300px;
-  overflow: auto;
-}
 .sidebar .jstree {
-  height: 300px;
   padding-top: 1px;
-  margin-bottom: -6em;
 }
 .sidebar .jstree .selected > a {
   background-color: #ffc40d;
@@ -2561,13 +2555,10 @@ table.dataTable {
   margin: 1em 0;
   clear: both;
 }
-.sticky-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+.sidebar .sticky-footer {
+  float: left;
   height: 6em;
-  padding-left: 1em;
 }
-.sticky-footer-padding {
-  padding-bottom: 4em;
+.sidebar .expanding {
+  overflow: auto;
 }
