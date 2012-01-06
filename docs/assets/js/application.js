@@ -4,6 +4,7 @@ $(function(){
   // IT'S ALL JUST JUNK FOR OUR DOCS!
   // ++++++++++++++++++++++++++++++++++++++++++
 
+
   // Hide the Mobile Safari address bar once loaded
   // ==============================================
 
@@ -12,6 +13,16 @@ $(function(){
     // Hide the address bar!
     window.scrollTo(0, 1);
   }, 0);
+
+
+  // Docs topbar nav
+  // ===============
+
+  $('.nav .active').on('click', function (e) {
+    e.preventDefault()
+    $(this).siblings().toggle()
+  });
+
 
   // table sort example
   // ==================
