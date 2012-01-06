@@ -1,5 +1,5 @@
 VERSION=1.4.0
-DATE=$(shell DATE)
+DATE=$(shell date)
 BOOTSTRAP = ./bootstrap.css
 BOOTSTRAP_MIN = ./bootstrap.min.css
 BOOTSTRAP_LESS = ./lib/bootstrap.less
