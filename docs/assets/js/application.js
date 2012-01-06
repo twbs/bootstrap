@@ -15,15 +15,6 @@ $(function(){
   // }, 0);
 
 
-  // Docs topbar nav
-  // ===============
-
-  $('.nav .active').on('click', function (e) {
-    e.preventDefault()
-    $(this).siblings().toggle()
-  });
-
-
   // table sort example
   // ==================
 
