@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 04:20:37 PST 2012
+ * Date: Sat Jan  7 04:26:09 PST 2012
  */
 html, body {
   margin: 0;
@@ -823,6 +823,16 @@ textarea[readonly] {
   color: #468847;
   background-color: #bcddbc;
   border-color: #468847;
+}
+input:invalid, textarea:invalid, select:invalid {
+  color: #b94a48;
+  border-color: #ee5f5b;
+}
+input:invalid:focus, textarea:invalid:focus, select:invalid:focus {
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
 }
 .form-actions {
   padding: 17px 20px 18px;
