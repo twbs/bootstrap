@@ -1009,8 +1009,9 @@
         <hr>
         <h3>Form validation</h3>
         <p>It also includes validation styles for errors, warnings, and success. To use, add the a class to the surrounding <code>.control-group</code>.</p>
-<pre class="prettyprint">
-&lt;fieldset class="control-group error"&gt;
+<pre class="prettyprint linenums">
+&lt;fieldset
+  class="control-group error"&gt;
   ...
 &lt;/fieldset&gt;
 </pre>
@@ -1024,6 +1025,15 @@
     <div class="span8">
       <form class="horizontal-form">
         <legend>Extending form controls</legend>
+        <fieldset class="control-group">
+          <label class="control-label">Form sizes</label>
+          <div class="controls docs-input-sizes">
+            <input class="span2" type="text" name="" placeholder=".span2">
+            <input class="span3" type="text" name="" placeholder=".span3">
+            <input class="span4" type="text" name="" placeholder=".span4">
+            <p class="help-block">Use the same <code>.span*</code> classes from the grid system for input sizes.</p>
+          </div>
+        </fieldset>
         <fieldset class="control-group">
           <label class="control-label" for="prependedInput">Prepended text</label>
           <div class="controls">
@@ -1042,6 +1052,20 @@
               <span class="add-on">.00</span>
             </div>
             <p class="help-block">Here's more help text</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
+          <div class="controls">
+            <label class="checkbox inline">
+              <input type="checkbox" name="inlineCheckbox1" value="option1"> 1
+            </label>
+            <label class="checkbox inline">
+              <input type="checkbox" name="inlineCheckbox1" value="option1"> 2
+            </label>
+            <label class="checkbox inline">
+              <input type="checkbox" name="inlineCheckbox1" value="option1"> 3
+            </label>
           </div>
         </fieldset>
         <fieldset class="control-group">
@@ -1088,6 +1112,7 @@
         <hr>
         <h3>Checkboxes and radios</h3>
         <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
+        <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
       </div>
     </div>
   </div><!-- /row -->

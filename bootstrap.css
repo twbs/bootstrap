@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan  5 23:24:01 PST 2012
+ * Date: Sat Jan  7 01:08:05 PST 2012
  */
 html, body {
   margin: 0;
@@ -382,20 +382,20 @@ h3 {
 h3 small {
   font-size: 14px;
 }
+h4, h5, h6 {
+  line-height: 18px;
+}
 h4 {
-  font-size: 16px;
-  line-height: 36px;
+  font-size: 14px;
 }
 h4 small {
   font-size: 12px;
 }
 h5 {
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 12px;
 }
 h6 {
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 11px;
   color: #999999;
   text-transform: uppercase;
 }
@@ -601,8 +601,10 @@ select, input[type=file] {
   line-height: 27px;
 }
 select {
-  background-color: #ffffff;
+  width: 220px;
+  padding: 0;
   vertical-align: middle;
+  background-color: #ffffff;
 }
 select[multiple], select[size] {
   height: inherit;
@@ -625,10 +627,17 @@ textarea {
 .controls > .radio:first-child, .controls > .checkbox:first-child {
   padding-top: 6px;
 }
+.radio.inline, .checkbox.inline {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
+  margin-left: 10px;
+}
 input, textarea {
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -637,9 +646,9 @@ input, textarea {
 }
 input:focus, textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
   outline: 0;
 }
 input[type=file]:focus, input[type=checkbox]:focus, select:focus {
@@ -666,133 +675,84 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
 .input-xxlarge {
   width: 530px;
 }
-input.span1,
-textarea.span1,
-select.span1,
-.uneditable-input.span1 {
+input[class*="span"],
+select[class*="span"],
+textarea[class*="span"],
+.uneditable-input[class*="span"] {
   float: none;
+  margin-left: 0;
+}
+input.span1, textarea.span1, .uneditable-input.span1 {
   width: 50px;
-  margin-left: 0;
 }
-input.span2,
-textarea.span2,
-select.span2,
-.uneditable-input.span2 {
-  float: none;
+input.span2, textarea.span2, .uneditable-input.span2 {
   width: 130px;
-  margin-left: 0;
 }
-input.span3,
-textarea.span3,
-select.span3,
-.uneditable-input.span3 {
-  float: none;
+input.span3, textarea.span3, .uneditable-input.span3 {
   width: 210px;
-  margin-left: 0;
 }
-input.span4,
-textarea.span4,
-select.span4,
-.uneditable-input.span4 {
-  float: none;
+input.span4, textarea.span4, .uneditable-input.span4 {
   width: 290px;
-  margin-left: 0;
 }
-input.span5,
-textarea.span5,
-select.span5,
-.uneditable-input.span5 {
-  float: none;
+input.span5, textarea.span5, .uneditable-input.span5 {
   width: 370px;
-  margin-left: 0;
 }
-input.span6,
-textarea.span6,
-select.span6,
-.uneditable-input.span6 {
-  float: none;
+input.span6, textarea.span6, .uneditable-input.span6 {
   width: 450px;
-  margin-left: 0;
 }
-input.span7,
-textarea.span7,
-select.span7,
-.uneditable-input.span7 {
-  float: none;
+input.span7, textarea.span7, .uneditable-input.span7 {
   width: 530px;
-  margin-left: 0;
 }
-input.span8,
-textarea.span8,
-select.span8,
-.uneditable-input.span8 {
-  float: none;
+input.span8, textarea.span8, .uneditable-input.span8 {
   width: 610px;
-  margin-left: 0;
 }
-input.span9,
-textarea.span9,
-select.span9,
-.uneditable-input.span9 {
-  float: none;
+input.span9, textarea.span9, .uneditable-input.span9 {
   width: 690px;
-  margin-left: 0;
 }
-input.span10,
-textarea.span10,
-select.span10,
-.uneditable-input.span10 {
-  float: none;
+input.span10, textarea.span10, .uneditable-input.span10 {
   width: 770px;
-  margin-left: 0;
 }
-input.span11,
-textarea.span11,
-select.span11,
-.uneditable-input.span11 {
-  float: none;
+input.span11, textarea.span11, .uneditable-input.span11 {
   width: 850px;
-  margin-left: 0;
 }
-input.span12,
-textarea.span12,
-select.span12,
-.uneditable-input.span12 {
-  float: none;
+input.span12, textarea.span12, .uneditable-input.span12 {
   width: 930px;
-  margin-left: 0;
 }
-input.span13,
-textarea.span13,
-select.span13,
-.uneditable-input.span13 {
-  float: none;
-  width: 1010px;
-  margin-left: 0;
+select.span1 {
+  width: 70px;
 }
-input.span14,
-textarea.span14,
-select.span14,
-.uneditable-input.span14 {
-  float: none;
-  width: 1090px;
-  margin-left: 0;
+select.span2 {
+  width: 150px;
 }
-input.span15,
-textarea.span15,
-select.span15,
-.uneditable-input.span15 {
-  float: none;
-  width: 1170px;
-  margin-left: 0;
+select.span3 {
+  width: 230px;
 }
-input.span16,
-textarea.span16,
-select.span16,
-.uneditable-input.span16 {
-  float: none;
-  width: 1250px;
-  margin-left: 0;
+select.span4 {
+  width: 310px;
+}
+select.span5 {
+  width: 390px;
+}
+select.span6 {
+  width: 470px;
+}
+select.span7 {
+  width: 550px;
+}
+select.span8 {
+  width: 630px;
+}
+select.span9 {
+  width: 710px;
+}
+select.span10 {
+  width: 790px;
+}
+select.span11 {
+  width: 870px;
+}
+select.span12 {
+  width: 950px;
 }
 input[disabled],
 select[disabled],
@@ -1672,6 +1632,13 @@ i {
 .navbar .btn {
   margin-top: 5px;
 }
+.navbar-form {
+  margin-bottom: 0;
+}
+.navbar-form input, .navbar-form select {
+  display: inline-block;
+  margin-bottom: 0;
+}
 .navbar-search {
   position: relative;
   float: left;
@@ -1735,7 +1702,7 @@ i {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10000;
+  z-index: 999;
 }
 .nav {
   position: relative;
@@ -2111,18 +2078,21 @@ i {
 }
 .side-nav .nav-label, .side-nav .nav-item {
   display: block;
-  padding: 3px 16px;
+  padding: 3px 15px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .side-nav .nav-label {
   font-size: 11px;
   line-height: 18px;
-  color: #333333;
+  color: #999999;
   text-transform: uppercase;
 }
 .side-nav .nav-group {
-  margin: 0 -1px;
+  margin: 0;
   list-style: none;
+}
+.side-nav .nav-group + .nav-label {
+  margin-top: 9px;
 }
 .side-nav .nav-item {
   font-weight: bold;
@@ -2136,16 +2106,16 @@ i {
 .side-nav .active .nav-item {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-  background-color: #aaaaaa;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#cccccc), to(#aaaaaa));
-  background-image: -moz-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: -ms-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cccccc), color-stop(100%, #aaaaaa));
-  background-image: -webkit-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: -o-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: linear-gradient(top, #cccccc, #aaaaaa);
+  background-color: #999999;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#cccccc), to(#999999));
+  background-image: -moz-linear-gradient(top, #cccccc, #999999);
+  background-image: -ms-linear-gradient(top, #cccccc, #999999);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cccccc), color-stop(100%, #999999));
+  background-image: -webkit-linear-gradient(top, #cccccc, #999999);
+  background-image: -o-linear-gradient(top, #cccccc, #999999);
+  background-image: linear-gradient(top, #cccccc, #999999);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#aaaaaa', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#999999', GradientType=0);
   -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
@@ -3142,6 +3112,9 @@ a.thumbnail:hover {
 
   .container {
     width: @siteWidth;
+  }
+  .row {
+    margin-left: @gridGutterWidth * -1;
   }
   [class*="span"] {
     margin-left: @gridGutterWidth;
