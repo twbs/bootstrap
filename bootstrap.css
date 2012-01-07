@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 04:34:04 PST 2012
+ * Date: Sat Jan  7 12:21:05 PST 2012
  */
 html, body {
   margin: 0;
@@ -1102,6 +1102,44 @@ table .span12 {
   width: 924px;
   margin-left: 0;
 }
+table .header {
+  cursor: pointer;
+}
+table .header:after {
+  content: "";
+  float: right;
+  margin-top: 7px;
+  border-width: 0 4px 4px;
+  border-style: solid;
+  border-color: #000 transparent;
+  visibility: hidden;
+}
+table .headerSortUp, table .headerSortDown {
+  background-color: rgba(141, 192, 219, 0.25);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+table .header:hover:after {
+  visibility: visible;
+}
+table .headerSortDown:after, table .headerSortDown:hover:after {
+  visibility: visible;
+  filter: alpha(opacity=60);
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+}
+table .headerSortUp:after {
+  border-bottom: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000;
+  visibility: visible;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  filter: alpha(opacity=60);
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+}
 i {
   background-image: url(docs/assets/img/glyphicons-halflings-sprite.png);
   background-position: 0 0;
@@ -1891,23 +1929,22 @@ i {
   border-color: #ddd;
   border-left-color: transparent;
 }
-.tabs .menu-dropdown, .tabs .dropdown-menu {
-  top: 35px;
+.tabs .dropdown-menu {
+  top: 37px;
   border-width: 1px;
-  -webkit-border-radius: 0 6px 6px 6px;
-  -moz-border-radius: 0 6px 6px 6px;
-  border-radius: 0 6px 6px 6px;
 }
-.tabs a.menu:after, .tabs .dropdown-toggle:after {
-  border-top-color: #999;
+.tabs .dropdown-toggle .caret {
   margin-top: 15px;
   margin-left: 5px;
 }
-.tabs li.open.menu .menu, .tabs .open.dropdown .dropdown-toggle {
+.tabs .open .dropdown-toggle {
   border-color: #999;
 }
-.tabs li.open a.menu:after, .tabs .dropdown.open .dropdown-toggle:after {
-  border-top-color: #555;
+.tabs .open .dropdown-toggle .caret {
+  border-top-color: #fff;
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  opacity: 1;
 }
 .pills > li > a {
   padding: 0 15px;

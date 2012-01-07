@@ -1486,7 +1486,7 @@
     <div class="span4">
       <h3>How to use</h3>
       <p>With v2.0.0, the <code>&lt;i&gt;</code> tag is essentially dedicated to iconography. To use the icons, you can place the follow code wherever you like one to appear:</p>
-<pre class="prettyprint">
+<pre class="prettyprint linenums">
 &lt;i class="chevron-left"&gt;&lt;/i&gt;
 </pre>
       <p>There are over 100 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right class and you're set. You can find the full list in sprites.less or right here in this document.</p>
@@ -1554,11 +1554,13 @@
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script src="assets/js/jquery.tablesorter.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="assets/js/application.js"></script>
     <script src="../js/bootstrap-dropdown.js"></script>
     <script>
       $(function () {
+        $("#sortTableExample").tablesorter({ sortList: [[1,0]] });
         $('.dropdown-toggle').dropdown();
       })
     </script>
