@@ -83,7 +83,7 @@
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
-          .prependTo(document.body)
+          .prependTo($(this.options.parentContainer))
 
         pos = $.extend({}, this.$element.offset(), {
           width: this.$element[0].offsetWidth
@@ -301,6 +301,7 @@
   , offset: 0
   , title: 'title'
   , trigger: 'hover'
+  , parentContainer: 'body'
   , template: '<div class="twipsy-arrow"></div><div class="twipsy-inner"></div>'
   }
 
