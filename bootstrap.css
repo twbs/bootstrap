@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 01:08:05 PST 2012
+ * Date: Sat Jan  7 01:22:18 PST 2012
  */
 html, body {
   margin: 0;
@@ -678,7 +678,7 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
-.uneditable-input[class*="span"] {
+.uneditable-input {
   float: none;
   margin-left: 0;
 }
@@ -871,10 +871,16 @@ input::-webkit-input-placeholder {
 .input-prepend:after, .input-append:after {
   clear: both;
 }
-.input-prepend input, .input-append input {
+.input-prepend input,
+.input-append input,
+.input-prepend .uneditable-input,
+.input-append .uneditable-input {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
+}
+.input-prepend .uneditable-input, .input-append .uneditable-input {
+  border-left-color: #ccc;
 }
 .input-prepend .add-on, .input-append .add-on {
   float: left;
@@ -904,11 +910,14 @@ input::-webkit-input-placeholder {
   /* IE6-7 */
 
 }
-.input-append input {
+.input-append input, .input-append .uneditable-input {
   float: left;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
+}
+.input-append .uneditable-input {
+  border-right-color: #ccc;
 }
 .input-append .add-on {
   margin-right: 0;

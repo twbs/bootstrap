@@ -31,7 +31,7 @@ ol.linenums {
   margin: 0 0 0 33px; /* IE indents via margin-left */
 } 
 ol.linenums li {
-  padding-left: 7px;
+  padding-left: 12px;
   color: #bebec5;
   line-height: 18px;
   text-shadow: 0 1px 0 #fff;

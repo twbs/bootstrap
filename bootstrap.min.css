@@ -119,7 +119,7 @@ input[type=file]:focus,input[type=checkbox]:focus,select:focus{-webkit-box-shado
 .input-large{width:210px;}
 .input-xlarge{width:270px;}
 .input-xxlarge{width:530px;}
-input[class*="span"],select[class*="span"],textarea[class*="span"],.uneditable-input[class*="span"]{float:none;margin-left:0;}
+input[class*="span"],select[class*="span"],textarea[class*="span"],.uneditable-input{float:none;margin-left:0;}
 input.span1,textarea.span1,.uneditable-input.span1{width:50px;}
 input.span2,textarea.span2,.uneditable-input.span2{width:130px;}
 input.span3,textarea.span3,.uneditable-input.span3{width:210px;}
@@ -162,11 +162,13 @@ input::-webkit-input-placeholder{color:#999999;}
 .help-inline{*position:relative;*top:-5px;display:inline;padding-left:5px;}
 .input-prepend,.input-append{margin-bottom:5px;zoom:1;}.input-prepend:before,.input-append:before,.input-prepend:after,.input-append:after{display:table;*display:inline;content:"";zoom:1;}
 .input-prepend:after,.input-append:after{clear:both;}
-.input-prepend input,.input-append input{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
+.input-prepend input,.input-append input,.input-prepend .uneditable-input,.input-append .uneditable-input{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
+.input-prepend .uneditable-input,.input-append .uneditable-input{border-left-color:#ccc;}
 .input-prepend .add-on,.input-append .add-on{float:left;display:block;width:auto;min-width:16px;height:18px;margin-right:-1px;padding:4px 4px 4px 5px;font-weight:normal;line-height:18px;color:#999999;text-align:center;text-shadow:0 1px 0 #ffffff;background-color:#f5f5f5;border:1px solid #ccc;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
 .input-prepend .active,.input-append .active{background-color:#a9dba9;border-color:#46a546;}
 .input-prepend .add-on{*margin-top:1px;}
-.input-append input{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
+.input-append input,.input-append .uneditable-input{float:left;-webkit-border-radius:3px 0 0 3px;-moz-border-radius:3px 0 0 3px;border-radius:3px 0 0 3px;}
+.input-append .uneditable-input{border-right-color:#ccc;}
 .input-append .add-on{margin-right:0;margin-left:-1px;-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
 .search-query{padding-left:14px;padding-right:14px;margin-bottom:0;-webkit-border-radius:14px;-moz-border-radius:14px;border-radius:14px;}
 .search-form input,.inline-form input,.horizontal-form input,.search-form textarea,.inline-form textarea,.horizontal-form textarea,.search-form select,.inline-form select,.horizontal-form select,.search-form .uneditable-input,.inline-form .uneditable-input,.horizontal-form .uneditable-input{display:inline-block;margin-bottom:0;}
