@@ -929,42 +929,81 @@ Lorem ipsum dolar sit amet illo error <a href="#" title="bottom">ipsum</a> verit
 ================================================== -->
       <section id="progresss">
         <div class="page-header">
-          <h1>Progress bars <small>... for indicating progress</small></h1>
+          <h1>Progress bars <small>For loading, redirecting, or action status</small></h1>
         </div>
+
+        <h2>Examples and markup</h2>
         <div class="row">
-          <div class="span3">
-            <h2>Basic bars</h2>
-            <p>Default look of progress bars. Absolute minimum.</p>
-          </div>
-          <div class="span9">
+          <div class="span4">
+            <h3>Basic</h3>
+            <p>Default progress bar with a vertical gradient.</p>
             <div class="progress">
-              <div class="bar" style="width: 50%;"></div>
+              <div class="bar" style="width: 60%;"></div>
             </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress"&gt;
+  &lt;div class="bar"
+       style="width: 60%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
           </div>
-        </div>
-        <div class="row">
-          <div class="span3">
-            <h2>Striped bars</h2>
-            <p>Bars with stripes painted.</p>
-          </div>
-          <div class="span9">
+          <div class="span4">
+            <h3>Striped</h3>
+            <p>Uses a gradient to create a striped effect.</p>
             <div class="progress info striped">
               <div class="bar" style="width: 20%;"></div>
             </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress info
+     striped"&gt;
+  &lt;div class="bar"
+       style="width: 20%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
           </div>
-        </div>
-        <div class="row">
-          <div class="span3">
-            <h2>Active state</h2>
-            <p>Animated stripes! <small>Not on Opera, though :(</small></p>
-          </div>
-          <div class="span3">
+          <div class="span4">
+            <h3>Animated</h3>
+            <p>Takes the striped example and animates it.</p>
             <div class="progress danger active striped">
               <div class="bar" style="width: 45%"></div>
             </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress danger
+     striped active"&gt;
+  &lt;div class="bar"
+       style="width: 40%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
           </div>
         </div>
+
+        <h2>Options and browser support</h2>
+        <div class="row">
+          <div class="span4">
+            <h3>Additional colors</h3>
+            <p>Progress bars utilize some of the same classes as buttons and alert messages for quick styling.</p>
+            <ul>
+              <li><code>.info</code></li>
+              <li><code>.success</code></li>
+              <li><code>.danger</code></li>
+            </ul>
+            <p>Alternatively, you can customize the LESS files and roll your own colors and sizes.</p>
+          </div>
+          <div class="span4">
+            <h3>Behavior</h3>
+            <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
+            <p>If you use the <code>.active</code> class, your <code>.striped</code> progress bars will animate the stripes left to right.</p>
+          </div>
+          <div class="span4">
+            <h3>Browser support</h3>
+            <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all theire effects. These features are not supported in IE7-8 or older versions of Firefox.</p>
+            <p>Opera does not support animations at this time.</p>
+          </div>
+        </div>
+
       </section>
+
+
 
       <!-- Footer
       ================================================== -->
