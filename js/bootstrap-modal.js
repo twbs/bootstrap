@@ -40,7 +40,7 @@
     if ( $.support.transition ) {
       transitionEnd = "TransitionEnd"
       if ( $.browser.webkit ) {
-      	transitionEnd = "webkitTransitionEnd"
+        transitionEnd = "webkitTransitionEnd"
       } else if ( $.browser.mozilla ) {
       	transitionEnd = "transitionend"
       } else if ( $.browser.opera ) {
@@ -113,12 +113,12 @@
         escape.call(this)
 
         this.$element
-          .trigger('hide')
+          .trigger('hide', e)
           .removeClass('in')
 
         $.support.transition && this.$element.hasClass('fade') ?
-          hideWithTransition.call(this) :
-          hideModal.call(this)
+          hideWithTransition.call(this, e) :
+          hideModal.call(this, e)
 
         return this
       }
@@ -129,24 +129,24 @@
  /* MODAL PRIVATE METHODS
   * ===================== */
 
-  function hideWithTransition() {
+  function hideWithTransition(e) {
     // firefox drops transitionEnd events :{o
     var that = this
       , timeout = setTimeout(function () {
           that.$element.unbind(transitionEnd)
-          hideModal.call(that)
+          hideModal.call(that, e)
         }, 500)
 
     this.$element.one(transitionEnd, function () {
       clearTimeout(timeout)
-      hideModal.call(that)
+      hideModal.call(that, e)
     })
   }
 
-  function hideModal (that) {
+  function hideModal (e) {
     this.$element
       .hide()
-      .trigger('hidden')
+      .trigger('hidden', e)
 
     backdrop.call(this)
   }
