@@ -303,7 +303,7 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .navbar-search .search-query:focus,.navbar-search .search-query.focused{padding:5px 10px;color:#333333;text-shadow:0 1px 0 #ffffff;background-color:#ffffff;border:0;-webkit-box-shadow:0 0 3px rgba(0, 0, 0, 0.15);-moz-box-shadow:0 0 3px rgba(0, 0, 0, 0.15);box-shadow:0 0 3px rgba(0, 0, 0, 0.15);outline:0;}
 .navbar-static{margin-bottom:18px;}
 .navbar-static .navbar-inner{padding-left:20px;padding-right:20px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
-.navbar-fixed{position:fixed;top:0;right:0;left:0;z-index:10000;}
+.navbar-fixed{position:fixed;top:0;right:0;left:0;z-index:999;}
 .nav{position:relative;left:0;display:block;float:left;margin:0 10px 0 0;}.nav>li{display:block;float:left;}
 .nav a{display:block;float:none;padding:10px 10px 11px;line-height:19px;color:#999999;text-decoration:none;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);}.nav a:hover{color:#ffffff;text-decoration:none;}
 .nav .active>a{background-color:#222;background-color:rgba(0, 0, 0, 0.5);}
