@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 04:06:22 PST 2012
+ * Date: Sat Jan  7 04:15:19 PST 2012
  */
 html, body {
   margin: 0;
@@ -2234,7 +2234,7 @@ i {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 11000;
+  z-index: 1030;
   max-height: 500px;
   overflow: auto;
   width: 560px;
@@ -2304,7 +2304,7 @@ i {
 }
 .twipsy {
   position: absolute;
-  z-index: 1000;
+  z-index: 1050;
   display: block;
   visibility: visible;
   padding: 5px;
@@ -2382,7 +2382,7 @@ i {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1020;
+  z-index: 1040;
   display: none;
   padding: 5px;
 }

@@ -235,7 +235,14 @@ $('#myModal').on('hidden', function () {
               <h3>Modal Heading</h3>
             </div>
             <div class="modal-body">
-              <p>One fine body…</p>
+              <h4>Text in a modal</h4>
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+
+              <h4>Popover in a modal</h4>
+              <p>This <a href="#" class="btn" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
+
+              <h4>Twipsy tooltips in a modal</h4>
+              <p><a href="#" class="twipsy-test" title="Tooltip">This link</a> and <a href="#" class="twipsy-test" title="Tooltip">that link</a> should have Twipsy tooltips on hover.</p>
             </div>
             <div class="modal-footer">
               <a href="#" class="btn primary">Save changes</a>
@@ -1144,6 +1151,7 @@ $('.myCarousel').carousel({
         $('.twipsy-demo.well').twipsy({
           selector: "a[rel=twipsy]"
         })
+        $('.twipsy-test').twipsy()
 
         // popover demo
         $("a[rel=popover]")

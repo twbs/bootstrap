@@ -7,7 +7,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindexPopover;
+  z-index: @zindexModalBackdrop;
   background-color: @black;
   // Fade for backdrop
   &.fade { opacity: 0; }
@@ -22,7 +22,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 11000;
+  z-index: @zindexModal;
   max-height: 500px;
   overflow: auto;
   width: 560px;
