@@ -32,15 +32,15 @@ body {
 
 // Sidebars (left and right options)
 .fluid-sidebar {
-  width: 220px;
+  width: @fluidSidebarWidth;
   margin: 0 20px 18px;
 }
-.sidebar-left   { padding-left: 260px; }
-.sidebar-right  { padding-right: 260px; }
+.sidebar-left   { padding-left: @fluidSidebarWidth + 40; }
+.sidebar-right  { padding-right: @fluidSidebarWidth + 40; }
 
 // Float the sidebars accordingly
-.sidebar-left .fluid-sidebar   { float: left; margin-left: -240px; }
-.sidebar-right .fluid-sidebar  { float: right; margin-right: -240px; }
+.sidebar-left .fluid-sidebar   { float: left; margin-left: (@fluidSidebarWidth + 20) * -1; }
+.sidebar-right .fluid-sidebar  { float: right; margin-right: (@fluidSidebarWidth + 20) * -1; }
 
 // The main content area
 .fluid-content {
