@@ -3,22 +3,24 @@
 .dropdown {
   position: relative;
 }
-// The link that is clicked to toggle the dropdown
-.dropdown-toggle:after {
+// Dropdown arrow/caret
+.caret {
   display: inline-block;
   width: 0;
   height: 0;
-  margin-top: 8px;
-  margin-left: 6px;
   text-indent: -99999px;
   vertical-align: top;
-  border-left: 4px solid transparent;
+  border-left:  4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 4px solid @white;
+  border-top:   4px solid #000;
   .opacity(30);
   content: "\2193";
 }
-.dropdown:hover .dropdown-toggle:after {
+.dropdown .caret {
+  margin-top: 8px;
+  margin-left: 2px;
+}
+.dropdown:hover .caret {
   .opacity(100);
 }
 // The dropdown menu (ul)
@@ -27,55 +29,49 @@
   top: 40px;
   z-index: 900;
   float: left;
-  display: none; // None by default, but block on "open" of the menu
+  display: none; // none by default, but block on "open" of the menu
   min-width: 160px;
   max-width: 220px;
   _width: 160px;
-  padding: 6px 0;
-  margin-left: 0; // override default ul styles
-  margin-right: 0;
+  padding: 5px 0;
+  margin: 0; // override default ul
+  list-style: none;
   background-color: @white;
   border-color: #999;
-  border-color: rgba(0,0,0,.2);
+  border-color: rgba(0,0,0,.1);
   border-style: solid;
-  border-width: 0 1px 1px;
-  .border-radius(0 0 6px 6px);
-  .box-shadow(0 2px 4px rgba(0,0,0,.2));
-  .background-clip(padding-box);
+  border-width: 1px;
+  .border-radius(0 0 5px 5px);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
   zoom: 1; // do we need this?
 
-  // Unfloat any li's to make them stack
-  li {
-    float: none;
-    display: block;
-    background-color: none;
-  }
   // Dividers (basically an hr) within the dropdown
   .divider {
     height: 1px;
-    margin: 5px 0;
+    margin: 5px 1px;
     overflow: hidden;
-    background-color: #eee;
+    background-color: #e5e5e5;
     border-bottom: 1px solid @white;
   }
-}
 
-.topbar .dropdown-menu, .dropdown-menu {
   // Links within the dropdown menu
   a {
     display: block;
-    padding: 4px 15px;
+    padding: 2px 15px;
     clear: both;
     font-weight: normal;
     line-height: 18px;
     color: @gray;
-    text-shadow: 0 1px 0 @white;
     // Hover state
     &:hover {
-      color: @grayDark;
+      color: #fff;
       text-decoration: none;
-      #gradient > .vertical(#eeeeee, #dddddd);
-      @shadow: inset 0 1px 0 rgba(0,0,0,.025), inset 0 -1px rgba(0,0,0,.025);
+      text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+      #gradient > .vertical(@blue, @blueDark);
+      @shadow: inset 0 1px 0 rgba(0,0,0,.075), inset 0 -1px rgba(0,0,0,.075);
       .box-shadow(@shadow);
     }
   }
