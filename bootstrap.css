@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 04:15:19 PST 2012
+ * Date: Sat Jan  7 04:20:37 PST 2012
  */
 html, body {
   margin: 0;
@@ -2255,9 +2255,6 @@ i {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.modal .close {
-  margin-top: 7px;
-}
 .modal.fade {
   -webkit-transition: opacity .3s linear, top .3s ease-out;
   -moz-transition: opacity .3s linear, top .3s ease-out;
@@ -2272,6 +2269,9 @@ i {
 .modal-header {
   padding: 5px 15px;
   border-bottom: 1px solid #eee;
+}
+.modal-header .close {
+  margin-top: 7px;
 }
 .modal-body {
   padding: 15px;

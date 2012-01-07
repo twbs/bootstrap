@@ -34,7 +34,6 @@
   .border-radius(6px);
   .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   .background-clip(padding-box);
-  .close { margin-top: 7px; }
   &.fade {
     .transition(e('opacity .3s linear, top .3s ease-out'));
     top: -25%;
@@ -44,6 +43,8 @@
 .modal-header {
   padding: 5px 15px;
   border-bottom: 1px solid #eee;
+  // Close icon
+  .close { margin-top: 7px; }
 }
 .modal-body {
   padding: 15px;
