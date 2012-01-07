@@ -41,9 +41,7 @@
 
       $parent.length || ($parent = $this.parent())
 
-      clearMenus()
-
-      !$parent.hasClass('open') && $parent.toggleClass('open')
+      $parent.toggleClass('open')
 
       return false
     }
