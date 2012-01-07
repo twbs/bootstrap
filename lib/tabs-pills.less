@@ -154,29 +154,16 @@
 
 // Dropdowns in tabs
 .tabs {
-  // first one for backwards compatibility
-  .menu-dropdown,
   .dropdown-menu {
-    top: 35px;
+    top: 36px;
     border-width: 1px;
-    .border-radius(0 6px 6px 6px);
   }
-  // first one for backwards compatibility
-  a.menu:after,
-  .dropdown-toggle:after {
-    border-top-color: #999;
+  .dropdown-toggle .caret {
     margin-top: 15px;
     margin-left: 5px;
   }
-  // first one for backwards compatibility
-  li.open.menu .menu,
-  .open.dropdown .dropdown-toggle {
+  .open .dropdown-toggle {
     border-color: #999;
-  }
-  // first one for backwards compatibility
-  li.open a.menu:after,
-  .dropdown.open .dropdown-toggle:after {
-    border-top-color: #555;
   }
 }
 
