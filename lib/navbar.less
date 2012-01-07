@@ -53,6 +53,16 @@
   }
 }
 
+// Navbar forms
+.navbar-form {
+  margin-bottom: 0; // remove default bottom margin
+  input,
+  select {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+}
+
 // Navbar search
 .navbar-search {
   position: relative;
@@ -115,7 +125,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10000;
+  z-index: @zindexFixedNavbar;
 }
 
 

@@ -1009,8 +1009,9 @@
         <hr>
         <h3>Form validation</h3>
         <p>It also includes validation styles for errors, warnings, and success. To use, add the a class to the surrounding <code>.control-group</code>.</p>
-<pre class="prettyprint">
-&lt;fieldset class="control-group error"&gt;
+<pre class="prettyprint linenums">
+&lt;fieldset
+  class="control-group error"&gt;
   ...
 &lt;/fieldset&gt;
 </pre>
@@ -1025,11 +1026,20 @@
       <form class="horizontal-form">
         <legend>Extending form controls</legend>
         <fieldset class="control-group">
+          <label class="control-label">Form sizes</label>
+          <div class="controls docs-input-sizes">
+            <input class="span2" type="text" name="" placeholder=".span2">
+            <input class="span3" type="text" name="" placeholder=".span3">
+            <input class="span4" type="text" name="" placeholder=".span4">
+            <p class="help-block">Use the same <code>.span*</code> classes from the grid system for input sizes.</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
           <label class="control-label" for="prependedInput">Prepended text</label>
           <div class="controls">
             <div class="input-prepend">
               <span class="add-on">@</span>
-              <input class="input-small" id="prependedInput" name="prependedInput" size="16" type="text">
+              <input class="span2" id="prependedInput" name="prependedInput" size="16" type="text">
             </div>
             <p class="help-block">Here's some help text</p>
           </div>
@@ -1038,10 +1048,24 @@
           <label class="control-label" for="appendedInput">Appended text</label>
           <div class="controls">
             <div class="input-append">
-              <input class="input-small" id="appendedInput" name="appendedInput" size="16" type="text">
+              <input class="span2" id="appendedInput" name="appendedInput" size="16" type="text">
               <span class="add-on">.00</span>
             </div>
             <p class="help-block">Here's more help text</p>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
+          <div class="controls">
+            <label class="checkbox inline">
+              <input type="checkbox" name="inlineCheckbox1" value="option1"> 1
+            </label>
+            <label class="checkbox inline">
+              <input type="checkbox" name="inlineCheckbox1" value="option1"> 2
+            </label>
+            <label class="checkbox inline">
+              <input type="checkbox" name="inlineCheckbox1" value="option1"> 3
+            </label>
           </div>
         </fieldset>
         <fieldset class="control-group">
@@ -1088,6 +1112,7 @@
         <hr>
         <h3>Checkboxes and radios</h3>
         <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
+        <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
       </div>
     </div>
   </div><!-- /row -->
@@ -1178,17 +1203,12 @@
 
   <br>
 
+  <h2>Button groups <small>Join buttons for more toolbar-like functionality</small></h2>
   <div class="row">
     <div class="span4">
-      <h2>Button groups</h2>
-      <p>Use button groups to join multiple buttons together as one composite component. Just build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. Button groups can also function as radios and checkboxes (see <a href="./javascript.html#buttons">the Javascript docs</a> for that).</p>
-      <p>You can also combine sets of button groups into a toolbar for more complex projects.</p>
-      <p><a class="btn js-btn" href="./javascript.html#buttons">Get the javascript &raquo;</a></p>
-      <p class="muted">Heads up: CSS for button groups is in a separate file, button-groups.less.</p>
-    </div>
-    <div class="span8">
-      <h3>Linked button group</h3>
-      <p>Using the standard <code>&lt;a class="btn" href="#"&gt;...&lt;/a&gt;</code> markup, simply add all the buttons you need.</p>
+      <h3>Button groups</h3>
+      <p>Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.</p>
+      <p>You can also combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex projects.</p>
       <div class="well" style="padding: 10px; margin-bottom: 9px;">
         <div class="btn-group">
           <a class="btn" href="#">Left</a>
@@ -1196,7 +1216,6 @@
           <a class="btn" href="#">Right</a>
         </div>
       </div>
-      <p>Level up one more time by wrapping multiple instances of <code>&lt;div class="btn-group"&gt;</code> with <code>&lt;div class="btn-toolbar"&gt;</code>.</p>
       <div class="well" style="padding: 10px;">
         <div class="btn-toolbar">
           <div class="btn-group">
@@ -1204,24 +1223,132 @@
             <a class="btn" href="#">2</a>
             <a class="btn" href="#">3</a>
             <a class="btn" href="#">4</a>
-            <a class="btn" href="#">5</a>
           </div>
           <div class="btn-group">
+            <a class="btn" href="#">5</a>
             <a class="btn" href="#">6</a>
             <a class="btn" href="#">7</a>
+          </div>
+          <div class="btn-group">
             <a class="btn" href="#">8</a>
-          </div>
-          <div class="btn-group">
-            <a class="btn" href="#">9</a>
-          </div>
-          <div class="btn-group">
-            <a class="btn" href="#">10</a>
           </div>
         </div>
       </div>
+
+    </div>
+    <div class="span4">
+      <h3>Example markup</h3>
+      <p>Here's how the HTML looks for a standard button group built with anchor tag buttons:</p>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
+  &lt;a class="btn" href="#"&gt;2&lt;/a&gt;
+  &lt;a class="btn" href="#"&gt;3&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+      <p>And with a toolbar for multiple groups:</p>
+<pre class="prettyprint linenums">
+&lt;div class="btn-toolbar"&gt;
+  &lt;div class="btn-group"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Checkbox and radio flavors</h3>
+      <p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.</p>
+      <p><a class="btn js-btn" href="./javascript.html#buttons">Get the javascript &raquo;</a></p>
+      <hr>
+      <h4 class="muted">Heads up</h4>
+      <p class="muted">CSS for button groups is in a separate file, button-groups.less.</p>
     </div>
   </div>
-    
+  
+  <br>
+  <h2>Button dropdowns <small>Built on button groups to provide contextual menus</small></h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Split button dropdowns</h3>
+      <p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.</p>
+      <div class="well" style="padding: 10px; margin-bottom: 9px;">
+        <div class="btn-toolbar" style="margin-bottom: 9px;">
+          <div class="btn-group">
+            <a class="btn" href="#">Action</a>
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->        
+          <div class="btn-group">
+            <a class="btn primary" href="#">Action</a>
+            <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->     
+          <div class="btn-group">
+            <a class="btn danger" href="#">Danger</a>
+            <a class="btn danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+        </div>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn success" href="#">Success</a>
+            <a class="btn success dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+          <div class="btn-group">
+            <a class="btn info" href="#">Info</a>
+            <a class="btn info dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+        </div>
+      </div> <!-- /well -->
+    </div>
+    <div class="span8">
+      <h3>Example markup</h3>
+      <p>Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.</p>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn" href="#"&gt;Action&lt;/a&gt;
+  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
 </section>
 
 
@@ -1429,5 +1556,11 @@
     <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="assets/js/application.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script>
+      $(function () {
+        $('.dropdown-toggle').dropdown();
+      })
+    </script>
   </body>
 </html>

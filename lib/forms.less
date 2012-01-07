@@ -96,8 +96,10 @@ input[type=file] {
 
 // Chrome on Linux and Mobile Safari need background-color
 select {
-  background-color: @white;
+  width: 220px; // default input width + 10px of padding that doesn't get applied
+  padding: 0;
   vertical-align: middle;
+  background-color: @white;
 }
 
 // Make multiple select elements height not fixed
@@ -137,6 +139,17 @@ textarea {
   padding-top: 6px; // has to be padding because margin collaspes
 }
 
+// Radios and checkboxes on same line
+.radio.inline,
+.checkbox.inline {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+  margin-left: 10px; // space out consecutive inline controls
+}
+
 
 
 // FOCUS STATE
@@ -144,14 +157,14 @@ textarea {
 
 input,
 textarea {
-  .box-shadow(inset 0 1px 3px rgba(0,0,0,.1));
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.1));
   @transition: border linear .2s, box-shadow linear .2s;
   .transition(@transition);
 }
 input:focus,
 textarea:focus {
   border-color: rgba(82,168,236,.8);
-  @shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
+  @shadow: inset 0 1px 1px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
   .box-shadow(@shadow);
   outline: 0;
 }
@@ -176,33 +189,52 @@ select:focus {
 .input-xxlarge    { width: 530px; }
 
 // Grid style input sizes
-// This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
-.formColumns(@columnSpan: 1) {
+input[class*="span"],
+select[class*="span"],
+textarea[class*="span"],
+.uneditable-input {
   float: none;
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
   margin-left: 0;
+}
+
+// This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
+.inputColumns(@columnSpan: 1) {
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
 }
 input,
 textarea,
-select,
 .uneditable-input {
   // Default columns
-  &.span1     { .formColumns(1); }
-  &.span2     { .formColumns(2); }
-  &.span3     { .formColumns(3); }
-  &.span4     { .formColumns(4); }
-  &.span5     { .formColumns(5); }
-  &.span6     { .formColumns(6); }
-  &.span7     { .formColumns(7); }
-  &.span8     { .formColumns(8); }
-  &.span9     { .formColumns(9); }
-  &.span10    { .formColumns(10); }
-  &.span11    { .formColumns(11); }
-  &.span12    { .formColumns(12); }
-  &.span13    { .formColumns(13); }
-  &.span14    { .formColumns(14); }
-  &.span15    { .formColumns(15); }
-  &.span16    { .formColumns(16); }
+  &.span1     { .inputColumns(1); }
+  &.span2     { .inputColumns(2); }
+  &.span3     { .inputColumns(3); }
+  &.span4     { .inputColumns(4); }
+  &.span5     { .inputColumns(5); }
+  &.span6     { .inputColumns(6); }
+  &.span7     { .inputColumns(7); }
+  &.span8     { .inputColumns(8); }
+  &.span9     { .inputColumns(9); }
+  &.span10    { .inputColumns(10); }
+  &.span11    { .inputColumns(11); }
+  &.span12    { .inputColumns(12); }
+}
+
+.selectColumns(@columnSpan: 1) {
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) + 10;
+}
+select {
+  &.span1     { .selectColumns(1); }
+  &.span2     { .selectColumns(2); }
+  &.span3     { .selectColumns(3); }
+  &.span4     { .selectColumns(4); }
+  &.span5     { .selectColumns(5); }
+  &.span6     { .selectColumns(6); }
+  &.span7     { .selectColumns(7); }
+  &.span8     { .selectColumns(8); }
+  &.span9     { .selectColumns(9); }
+  &.span10    { .selectColumns(10); }
+  &.span11    { .selectColumns(11); }
+  &.span12    { .selectColumns(12); }
 }
 
 
@@ -325,8 +357,12 @@ input::-webkit-input-placeholder {
 .input-append {
   margin-bottom: 5px;
   .clearfix(); // Clear the float to prevent wrapping
-  input {
+  input,
+  .uneditable-input {
     .border-radius(0 3px 3px 0);
+  }
+  .uneditable-input {
+    border-left-color: #ccc;
   }
   .add-on {
     float: left;
@@ -356,9 +392,13 @@ input::-webkit-input-placeholder {
   }
 }
 .input-append {
-  input {
+  input,
+  .uneditable-input {
     float: left;
     .border-radius(3px 0 0 3px);
+  }
+  .uneditable-input {
+    border-right-color: #ccc;    
   }
   .add-on {
     margin-right: 0;

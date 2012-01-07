@@ -22,6 +22,7 @@
   .modal {
     width: auto;
     margin: 0;
+    &.fade.in { top: auto; }
   }
 
   // Remove the horizontal form styles
@@ -204,6 +205,9 @@
 
   .container {
     width: @siteWidth;
+  }
+  .row {
+    margin-left: @gridGutterWidth * -1;
   }
   [class*="span"] {
     margin-left: @gridGutterWidth;
