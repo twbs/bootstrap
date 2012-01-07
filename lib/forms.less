@@ -192,7 +192,7 @@ select:focus {
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
-.uneditable-input[class*="span"] {
+.uneditable-input {
   float: none;
   margin-left: 0;
 }
@@ -357,8 +357,12 @@ input::-webkit-input-placeholder {
 .input-append {
   margin-bottom: 5px;
   .clearfix(); // Clear the float to prevent wrapping
-  input {
+  input,
+  .uneditable-input {
     .border-radius(0 3px 3px 0);
+  }
+  .uneditable-input {
+    border-left-color: #ccc;
   }
   .add-on {
     float: left;
@@ -388,9 +392,13 @@ input::-webkit-input-placeholder {
   }
 }
 .input-append {
-  input {
+  input,
+  .uneditable-input {
     float: left;
     .border-radius(3px 0 0 3px);
+  }
+  .uneditable-input {
+    border-right-color: #ccc;    
   }
   .add-on {
     margin-right: 0;

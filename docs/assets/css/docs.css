@@ -402,7 +402,8 @@ pre.prettyprint {
 }
 
 /* Make tables spaced out a bit more */
-h2 + table {
+h2 + table,
+h2 + .row {
   margin-top: 5px;
 }
 

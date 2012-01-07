@@ -29,21 +29,23 @@ body {
   padding-right: 20px;
   .clearfix();
 }
+
 // Sidebars (left and right options)
-.fluid-sidebar-left,
-.fluid-sidebar-right {
-  width: 220px;
+.fluid-sidebar {
+  width: @fluidSidebarWidth;
+  margin: 0 20px 18px;
 }
-.fluid-sidebar-left   { float: left; }
-.fluid-sidebar-right  { float: right; }
+.sidebar-left   { padding-left: @fluidSidebarWidth + 40; }
+.sidebar-right  { padding-right: @fluidSidebarWidth + 40; }
+
+// Float the sidebars accordingly
+.sidebar-left .fluid-sidebar   { float: left; margin-left: (@fluidSidebarWidth + 20) * -1; }
+.sidebar-right .fluid-sidebar  { float: right; margin-right: (@fluidSidebarWidth + 20) * -1; }
+
 // The main content area
 .fluid-content {
-  margin-left: 240px;
-}
-// Reverse layout for sidebar on right
-.fluid-container.reverse .fluid-content {
-  margin-left: 0;
-  margin-right: 240px;
+  float: left;
+  width: 100%;
 }
 
 
