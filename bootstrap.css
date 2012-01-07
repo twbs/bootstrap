@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan  6 23:58:33 PST 2012
+ * Date: Sat Jan  7 00:24:46 PST 2012
  */
 html, body {
   margin: 0;
@@ -627,6 +627,7 @@ textarea {
 }
 .radio.inline, .checkbox.inline {
   display: inline-block;
+  margin-bottom: 0;
 }
 .radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
   margin-left: 10px;
@@ -1679,6 +1680,10 @@ i {
   margin-top: 5px;
 }
 .navbar-form {
+  margin-bottom: 0;
+}
+.navbar-form input, .navbar-form select {
+  display: inline-block;
   margin-bottom: 0;
 }
 .navbar-search {
