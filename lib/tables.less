@@ -93,15 +93,16 @@ td {
 
 
 
-/*
-// ----------------
+// TABLE CELL SIZING
+// -----------------
 
-// This is a duplication of the main grid .columns() mixin, but subtracts 20px to account for input padding and border
+// Change the columns
 .tableColumns(@columnSpan: 1) {
-  width: ((@gridColumnWidth - 20) * @columnSpan) + ((@gridColumnWidth - 20) * (@columnSpan - 1));
+  float: none;
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16;
+  margin-left: 0;
 }
 table {
-  // Default columns
   .span1     { .tableColumns(1); }
   .span2     { .tableColumns(2); }
   .span3     { .tableColumns(3); }
@@ -114,114 +115,4 @@ table {
   .span10    { .tableColumns(10); }
   .span11    { .tableColumns(11); }
   .span12    { .tableColumns(12); }
-  .span13    { .tableColumns(13); }
-  .span14    { .tableColumns(14); }
-  .span15    { .tableColumns(15); }
-  .span16    { .tableColumns(16); }
 }
-
-
-// TABLESORTER
-// -----------
-
-table {
-  // Tablesorting styles w/ jQuery plugin
-  .header {
-    cursor: pointer;
-    &:after {
-      float: right;
-      margin-top: 7px;
-      border-width: 0 4px 4px;
-      border-style: solid;
-      border-color: #000 transparent;
-      content: "";
-      visibility: hidden;
-    }
-  }
-  // Style the sorted column headers (THs)
-  .headerSortUp,
-  .headerSortDown {
-    text-shadow: 0 1px 1px rgba(255,255,255,.75);
-    background-color: rgba(141,192,219,.25);
-  }
-  // Style the ascending (reverse alphabetical) column header
-  .header:hover {
-    &:after {
-      visibility: visible;
-    }
-  }
-  // Style the descending (alphabetical) column header
-  .headerSortDown,
-  .headerSortDown:hover {
-    &:after {
-      visibility: visible;
-      .opacity(60);
-    }
-  }
-  // Style the ascending (reverse alphabetical) column header
-  .headerSortUp {
-    &:after {
-      border-bottom: none;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 4px solid #000;
-      visibility:visible;
-      .box-shadow(none); //can't add boxshadow to downward facing arrow :(
-      .opacity(60);
-    }
-  }
-  // Blue Table Headings
-  .blue {
-    color: @blue;
-    border-bottom-color: @blue;
-  }
-  .headerSortUp.blue,
-  .headerSortDown.blue {
-    background-color: lighten(@blue, 40%);
-  }
-  // Green Table Headings
-  .green {
-    color: @green;
-    border-bottom-color: @green;
-  }
-  .headerSortUp.green,
-  .headerSortDown.green {
-    background-color: lighten(@green, 40%);
-  }
-  // Red Table Headings
-  .red {
-    color: @red;
-    border-bottom-color: @red;
-  }
-  .headerSortUp.red,
-  .headerSortDown.red {
-    background-color: lighten(@red, 50%);
-  }
-  // Yellow Table Headings
-  .yellow {
-    color: @yellow;
-    border-bottom-color: @yellow;
-  }
-  .headerSortUp.yellow,
-  .headerSortDown.yellow {
-    background-color: lighten(@yellow, 40%);
-  }
-  // Orange Table Headings
-  .orange {
-    color: @orange;
-    border-bottom-color: @orange;
-  }
-  .headerSortUp.orange,
-  .headerSortDown.orange {
-    background-color: lighten(@orange, 40%);
-  }
-  // Purple Table Headings
-  .purple {
-    color: @purple;
-    border-bottom-color: @purple;
-  }
-  .headerSortUp.purple,
-  .headerSortDown.purple {
-    background-color: lighten(@purple, 40%);
-  }
-}*/

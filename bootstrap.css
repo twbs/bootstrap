@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 04:26:09 PST 2012
+ * Date: Sat Jan  7 04:34:04 PST 2012
  */
 html, body {
   margin: 0;
@@ -1042,138 +1042,66 @@ td {
 .striped-table tbody tr:nth-child(odd) td, .striped-table tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
-/*
-// ----------------
-
-// This is a duplication of the main grid .columns() mixin, but subtracts 20px to account for input padding and border
-.tableColumns(@columnSpan: 1) {
-  width: ((@gridColumnWidth - 20) * @columnSpan) + ((@gridColumnWidth - 20) * (@columnSpan - 1));
+table .span1 {
+  float: none;
+  width: 44px;
+  margin-left: 0;
 }
-table {
-  // Default columns
-  .span1     { .tableColumns(1); }
-  .span2     { .tableColumns(2); }
-  .span3     { .tableColumns(3); }
-  .span4     { .tableColumns(4); }
-  .span5     { .tableColumns(5); }
-  .span6     { .tableColumns(6); }
-  .span7     { .tableColumns(7); }
-  .span8     { .tableColumns(8); }
-  .span9     { .tableColumns(9); }
-  .span10    { .tableColumns(10); }
-  .span11    { .tableColumns(11); }
-  .span12    { .tableColumns(12); }
-  .span13    { .tableColumns(13); }
-  .span14    { .tableColumns(14); }
-  .span15    { .tableColumns(15); }
-  .span16    { .tableColumns(16); }
+table .span2 {
+  float: none;
+  width: 124px;
+  margin-left: 0;
 }
-
-
-// TABLESORTER
-// -----------
-
-table {
-  // Tablesorting styles w/ jQuery plugin
-  .header {
-    cursor: pointer;
-    &:after {
-      float: right;
-      margin-top: 7px;
-      border-width: 0 4px 4px;
-      border-style: solid;
-      border-color: #000 transparent;
-      content: "";
-      visibility: hidden;
-    }
-  }
-  // Style the sorted column headers (THs)
-  .headerSortUp,
-  .headerSortDown {
-    text-shadow: 0 1px 1px rgba(255,255,255,.75);
-    background-color: rgba(141,192,219,.25);
-  }
-  // Style the ascending (reverse alphabetical) column header
-  .header:hover {
-    &:after {
-      visibility: visible;
-    }
-  }
-  // Style the descending (alphabetical) column header
-  .headerSortDown,
-  .headerSortDown:hover {
-    &:after {
-      visibility: visible;
-      .opacity(60);
-    }
-  }
-  // Style the ascending (reverse alphabetical) column header
-  .headerSortUp {
-    &:after {
-      border-bottom: none;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 4px solid #000;
-      visibility:visible;
-      .box-shadow(none); //can't add boxshadow to downward facing arrow :(
-      .opacity(60);
-    }
-  }
-  // Blue Table Headings
-  .blue {
-    color: @blue;
-    border-bottom-color: @blue;
-  }
-  .headerSortUp.blue,
-  .headerSortDown.blue {
-    background-color: lighten(@blue, 40%);
-  }
-  // Green Table Headings
-  .green {
-    color: @green;
-    border-bottom-color: @green;
-  }
-  .headerSortUp.green,
-  .headerSortDown.green {
-    background-color: lighten(@green, 40%);
-  }
-  // Red Table Headings
-  .red {
-    color: @red;
-    border-bottom-color: @red;
-  }
-  .headerSortUp.red,
-  .headerSortDown.red {
-    background-color: lighten(@red, 50%);
-  }
-  // Yellow Table Headings
-  .yellow {
-    color: @yellow;
-    border-bottom-color: @yellow;
-  }
-  .headerSortUp.yellow,
-  .headerSortDown.yellow {
-    background-color: lighten(@yellow, 40%);
-  }
-  // Orange Table Headings
-  .orange {
-    color: @orange;
-    border-bottom-color: @orange;
-  }
-  .headerSortUp.orange,
-  .headerSortDown.orange {
-    background-color: lighten(@orange, 40%);
-  }
-  // Purple Table Headings
-  .purple {
-    color: @purple;
-    border-bottom-color: @purple;
-  }
-  .headerSortUp.purple,
-  .headerSortDown.purple {
-    background-color: lighten(@purple, 40%);
-  }
-}*/
+table .span3 {
+  float: none;
+  width: 204px;
+  margin-left: 0;
+}
+table .span4 {
+  float: none;
+  width: 284px;
+  margin-left: 0;
+}
+table .span5 {
+  float: none;
+  width: 364px;
+  margin-left: 0;
+}
+table .span6 {
+  float: none;
+  width: 444px;
+  margin-left: 0;
+}
+table .span7 {
+  float: none;
+  width: 524px;
+  margin-left: 0;
+}
+table .span8 {
+  float: none;
+  width: 604px;
+  margin-left: 0;
+}
+table .span9 {
+  float: none;
+  width: 684px;
+  margin-left: 0;
+}
+table .span10 {
+  float: none;
+  width: 764px;
+  margin-left: 0;
+}
+table .span11 {
+  float: none;
+  width: 844px;
+  margin-left: 0;
+}
+table .span12 {
+  float: none;
+  width: 924px;
+  margin-left: 0;
+}
 i {
   background-image: url(docs/assets/img/glyphicons-halflings-sprite.png);
   background-position: 0 0;

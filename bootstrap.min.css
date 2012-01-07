@@ -191,6 +191,18 @@ td{vertical-align:top;}
 .bordered-table thead:last-child tr:last-child th:first-child,.bordered-table tbody:last-child tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;}
 .bordered-table thead:last-child tr:last-child th:last-child,.bordered-table tbody:last-child tr:last-child td:last-child{-webkit-border-radius:0 0 4px 0;-moz-border-radius:0 0 4px 0;border-radius:0 0 4px 0;}
 .striped-table tbody tr:nth-child(odd) td,.striped-table tbody tr:nth-child(odd) th{background-color:#f9f9f9;}
+table .span1{float:none;width:44px;margin-left:0;}
+table .span2{float:none;width:124px;margin-left:0;}
+table .span3{float:none;width:204px;margin-left:0;}
+table .span4{float:none;width:284px;margin-left:0;}
+table .span5{float:none;width:364px;margin-left:0;}
+table .span6{float:none;width:444px;margin-left:0;}
+table .span7{float:none;width:524px;margin-left:0;}
+table .span8{float:none;width:604px;margin-left:0;}
+table .span9{float:none;width:684px;margin-left:0;}
+table .span10{float:none;width:764px;margin-left:0;}
+table .span11{float:none;width:844px;margin-left:0;}
+table .span12{float:none;width:924px;margin-left:0;}
 i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);background-position:0 0;background-repeat:no-repeat;display:inline-block;vertical-align:text-top;width:14px;height:14px;}
 .glass{background-position:0 0;}
 .music{background-position:-24px 0;}
