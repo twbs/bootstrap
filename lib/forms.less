@@ -137,6 +137,16 @@ textarea {
   padding-top: 6px; // has to be padding because margin collaspes
 }
 
+// Radios and checkboxes on same line
+.radio.inline,
+.checkbox.inline {
+  display: inline-block;
+}
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+  margin-left: 10px;
+}
+
 
 
 // FOCUS STATE

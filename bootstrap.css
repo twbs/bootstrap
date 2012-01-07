@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan  5 23:24:01 PST 2012
+ * Date: Fri Jan  6 23:58:33 PST 2012
  */
 html, body {
   margin: 0;
@@ -382,20 +382,20 @@ h3 {
 h3 small {
   font-size: 14px;
 }
+h4, h5, h6 {
+  line-height: 18px;
+}
 h4 {
-  font-size: 16px;
-  line-height: 36px;
+  font-size: 14px;
 }
 h4 small {
   font-size: 12px;
 }
 h5 {
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 12px;
 }
 h6 {
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 11px;
   color: #999999;
   text-transform: uppercase;
 }
@@ -624,6 +624,12 @@ textarea {
 }
 .controls > .radio:first-child, .controls > .checkbox:first-child {
   padding-top: 6px;
+}
+.radio.inline, .checkbox.inline {
+  display: inline-block;
+}
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
+  margin-left: 10px;
 }
 input, textarea {
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1672,6 +1678,9 @@ i {
 .navbar .btn {
   margin-top: 5px;
 }
+.navbar-form {
+  margin-bottom: 0;
+}
 .navbar-search {
   position: relative;
   float: left;
@@ -2111,18 +2120,21 @@ i {
 }
 .side-nav .nav-label, .side-nav .nav-item {
   display: block;
-  padding: 3px 16px;
+  padding: 3px 15px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .side-nav .nav-label {
   font-size: 11px;
   line-height: 18px;
-  color: #333333;
+  color: #999999;
   text-transform: uppercase;
 }
 .side-nav .nav-group {
-  margin: 0 -1px;
+  margin: 0;
   list-style: none;
+}
+.side-nav .nav-group + .nav-label {
+  margin-top: 9px;
 }
 .side-nav .nav-item {
   font-weight: bold;
@@ -2136,16 +2148,16 @@ i {
 .side-nav .active .nav-item {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-  background-color: #aaaaaa;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#cccccc), to(#aaaaaa));
-  background-image: -moz-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: -ms-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cccccc), color-stop(100%, #aaaaaa));
-  background-image: -webkit-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: -o-linear-gradient(top, #cccccc, #aaaaaa);
-  background-image: linear-gradient(top, #cccccc, #aaaaaa);
+  background-color: #999999;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#cccccc), to(#999999));
+  background-image: -moz-linear-gradient(top, #cccccc, #999999);
+  background-image: -ms-linear-gradient(top, #cccccc, #999999);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cccccc), color-stop(100%, #999999));
+  background-image: -webkit-linear-gradient(top, #cccccc, #999999);
+  background-image: -o-linear-gradient(top, #cccccc, #999999);
+  background-image: linear-gradient(top, #cccccc, #999999);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#aaaaaa', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#999999', GradientType=0);
   -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.05);

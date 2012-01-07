@@ -8,18 +8,21 @@
 .side-nav .nav-label,
 .side-nav .nav-item {
   display: block;
-  padding: 3px 16px;
+  padding: 3px 15px;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
 .side-nav .nav-label {
   font-size: 11px;
   line-height: @baseLineHeight;
-  color: @grayDark;
+  color: @grayLight;
   text-transform: uppercase;
 }
 .side-nav .nav-group {
-  margin: 0 -1px;
+  margin: 0; // clear default ul margins
   list-style: none;
+}
+.side-nav .nav-group + .nav-label {
+  margin-top: 9px;
 }
 
 .side-nav .nav-item {
@@ -34,7 +37,7 @@
 .side-nav .active .nav-item {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0,0,0,.3);
-  #gradient > .vertical(#ccc, #aaa);
+  #gradient > .vertical(#ccc, #999);
   @shadow: inset 0 1px 0 rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.05);
   .box-shadow(@shadow);
 }
