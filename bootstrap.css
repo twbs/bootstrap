@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 03:52:42 PST 2012
+ * Date: Sat Jan  7 03:57:28 PST 2012
  */
 html, body {
   margin: 0;
@@ -2961,6 +2961,9 @@ a.thumbnail:hover {
   .modal {
     width: auto;
     margin: 0;
+  }
+  .modal.fade.in {
+    top: auto;
   }
   .horizontal-form .control-group > label {
     float: none;
