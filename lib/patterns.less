@@ -368,6 +368,15 @@ a.menu:after,
     border-bottom-color: transparent;
     cursor: default;
   }
+  // Disabled state
+  .disabled > a,
+  .disabled > a:hover {
+    color: @grayLight;
+    background-color: @white;
+    border: 1px solid transparent;
+    border-bottom-color: #ddd;
+    cursor: default;
+  }
 }
 
 // Dropdowns in tabs
@@ -417,6 +426,14 @@ a.menu:after,
     color: @white;
     text-shadow: 0 1px 1px rgba(0,0,0,.25);
     background-color: @linkColor;
+  }
+  .disabled a,
+  .disabled a:hover {
+    color: @grayLight;
+    text-decoration: none;
+    text-shadow: none;
+    background-color: transparent;
+    cursor: default;
   }
 }
 

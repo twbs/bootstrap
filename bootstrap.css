@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Dec 25 20:18:31 PST 2011
+ * Date: Mon Dec 26 16:17:34 GMT 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -1684,6 +1684,13 @@ a.menu:after, .dropdown-toggle:after {
   border-bottom-color: transparent;
   cursor: default;
 }
+.tabs .disabled > a, .tabs .disabled > a:hover {
+  color: #bfbfbf;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-bottom-color: #ddd;
+  cursor: default;
+}
 .tabs .menu-dropdown, .tabs .dropdown-menu {
   top: 35px;
   border-width: 1px;
@@ -1721,6 +1728,13 @@ a.menu:after, .dropdown-toggle:after {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #0069d6;
+}
+.pills .disabled a, .pills .disabled a:hover {
+  color: #bfbfbf;
+  text-decoration: none;
+  text-shadow: none;
+  background-color: transparent;
+  cursor: default;
 }
 .pills-vertical > li {
   float: none;
