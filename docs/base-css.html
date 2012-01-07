@@ -556,211 +556,285 @@
     </tbody>
   </table>
 
+
   <h2>Example tables</h2>
+
   <h3>1. Default table styles</h3>
-  <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Some</td>
-        <td>One</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Joe</td>
-        <td>Sixpack</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Stu</td>
-        <td>Dent</td>
-        <td>Code</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="span4">
+      <p>Tables are automatically styled with only the a few borders to ensure readability and maintain structure. No classes are required.</p>
 <pre class="prettyprint linenums">
 &lt;table&gt;
   ...
 &lt;/table&gt;</pre>
+    </div>
+    <div class="span8">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>CSS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>Javascript</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>HTML</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <br>
 
   <h3>2. Striped table</h3>
-  <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.striped-table</code> class.</p>
-  <table class="striped-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Some</td>
-        <td>One</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Joe</td>
-        <td>Sixpack</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Stu</td>
-        <td>Dent</td>
-        <td>Code</td>
-      </tr>
-    </tbody>
-  </table>
-  <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
-<pre class="prettyprint linenums">
+  <div class="row">
+    <div class="span4">
+      <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.striped-table</code> class.</p>
+      <p class="muted"><strong>Note:</strong> Sprited tables use the <code>:nth-child</code> CSS selector and is not available in IE7-IE8.</p>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
 &lt;table class="striped-table"&gt;
   ...
 &lt;/table&gt;</pre>
+    </div>
+    <div class="span8">
+      <table class="striped-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>CSS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>Javascript</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>HTML</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <br>
 
   <h3>3. Bordered table</h3>
-  <p>Add borders around the entire table and between each row, plus a bit of rounded corners for aesthetic purposes.</p>
-  <table class="bordered-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td colspan="2">Some One</td>
-        <td>HTML</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Joe</td>
-        <td>Sixpack</td>
-        <td rowspan="2">Javascript</td>
-      </tr>
-      </tr>
-        <td>3</td>
-        <td>Joe</td>
-        <td>Sixpack</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Stu</td>
-        <td>Dent</td>
-        <td>CSS</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="span4">
+      <p>Add borders around the entire table and rounded corners for aesthetic purposes.</p>
 <pre class="prettyprint linenums">
 &lt;table class="bordered-table"&gt;
   ...
 &lt;/table&gt;</pre>
+    </div>
+    <div class="span8">
+      <table class="bordered-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td colspan="2">Mark Otto</td>
+            <td>CSS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td rowspan="2">Javascript</td>
+          </tr>
+          </tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Brosef</td>
+            <td>Stalin</td>
+            <td>HTML</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <br>
 
   <h3>4. Condensed table</h3>
-  <p>Make your tables more compact by adding the <code>.condensed-table</code> class to cut table cell padding in half (from 10px to 5px).</p>
-  <table class="condensed-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Some</td>
-        <td>One</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Joe</td>
-        <td>Sixpack</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Stu</td>
-        <td>Dent</td>
-        <td>Code</td>
-      </tr>
-    </tbody>
-  </table>
-<pre class="prettyprint linenums">
+  <div class="row">
+    <div class="span4">
+      <p>Make your tables more compact by adding the <code>.condensed-table</code> class to cut table cell padding in half (from 10px to 5px).</p>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
 &lt;table class="condensed-table"&gt;
   ...
 &lt;/table&gt;</pre>
+    </div>
+    <div class="span8">
+      <table class="condensed-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>CSS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>Javascript</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>HTML</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <br>
+
 
   <h3>5. Striped table w/ TableSorter.js</h3>
-  <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
-  <table class="striped-table" id="sortTableExample">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th class="yellow">First Name</th>
-        <th class="blue">Last Name</th>
-        <th class="green">Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Your</td>
-        <td>One</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Joe</td>
-        <td>Sixpack</td>
-        <td>English</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Stu</td>
-        <td>Dent</td>
-        <td>Code</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="span4">
+      <p>Include the <a href="http://jquery.com">jQuery</a> <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin and automaically get clear styles for sorted columns.</p>
 <pre class="prettyprint linenums">
-&lt;script src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.tablesorter.js"&gt;&lt;/script&gt;
 &lt;script &gt;
   $(function() {
-    $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
+    $("table#sortTableExample")
+    .tablesorter({
+      sortList: [[1,0]]
+    });
   });
 &lt;/script&gt;
 &lt;table class="striped-table"&gt;
   ...
 &lt;/table&gt;</pre>
-
+    </div>
+    <div class="span8">
+      <table class="striped-table tablesorter-example">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="yellow">First Name</th>
+            <th class="blue">Last Name</th>
+            <th class="green">Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>CSS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>Javascript</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>HTML</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Brosef</td>
+            <td>Stalin</td>
+            <td>HTML</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Styles for the Tablesorter, zebra striping, borders, and condensing may all compound in any variation to fit your needs.</p>
+      <table class="striped-table bordered-table condensed-table tablesorter-example">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="yellow">First Name</th>
+            <th class="blue">Last Name</th>
+            <th class="green">Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>CSS</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>Javascript</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>HTML</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Brosef</td>
+            <td>Stalin</td>
+            <td>HTML</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 
@@ -1560,7 +1634,7 @@
     <script src="../js/bootstrap-dropdown.js"></script>
     <script>
       $(function () {
-        $("#sortTableExample").tablesorter({ sortList: [[1,0]] });
+        $(".tablesorter-example").tablesorter({ sortList: [[1,0]] });
         $('.dropdown-toggle').dropdown();
       })
     </script>
