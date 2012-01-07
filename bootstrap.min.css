@@ -25,11 +25,12 @@ body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:
 .container:after{clear:both;}
 .fluid-container{position:relative;min-width:940px;padding-left:20px;padding-right:20px;zoom:1;}.fluid-container:before,.fluid-container:after{display:table;*display:inline;content:"";zoom:1;}
 .fluid-container:after{clear:both;}
-.fluid-sidebar-left,.fluid-sidebar-right{width:220px;}
-.fluid-sidebar-left{float:left;}
-.fluid-sidebar-right{float:right;}
-.fluid-content{margin-left:240px;}
-.fluid-container.reverse .fluid-content{margin-left:0;margin-right:240px;}
+.fluid-sidebar{width:220px;margin:0 20px 18px;}
+.sidebar-left{padding-left:260px;}
+.sidebar-right{padding-right:260px;}
+.sidebar-left .fluid-sidebar{float:left;margin-left:-240px;}
+.sidebar-right .fluid-sidebar{float:right;margin-right:-240px;}
+.fluid-content{float:left;width:100%;}
 a{font-weight:inherit;line-height:inherit;color:#0088cc;text-decoration:none;}a:hover{color:#005580;text-decoration:underline;}
 .pull-right{float:right;}
 .pull-left{float:left;}

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 01:22:18 PST 2012
+ * Date: Sat Jan  7 01:58:07 PST 2012
  */
 html, body {
   margin: 0;
@@ -209,21 +209,27 @@ body {
 .fluid-container:after {
   clear: both;
 }
-.fluid-sidebar-left, .fluid-sidebar-right {
+.fluid-sidebar {
   width: 220px;
+  margin: 0 20px 18px;
 }
-.fluid-sidebar-left {
+.sidebar-left {
+  padding-left: 260px;
+}
+.sidebar-right {
+  padding-right: 260px;
+}
+.sidebar-left .fluid-sidebar {
   float: left;
+  margin-left: -240px;
 }
-.fluid-sidebar-right {
+.sidebar-right .fluid-sidebar {
   float: right;
+  margin-right: -240px;
 }
 .fluid-content {
-  margin-left: 240px;
-}
-.fluid-container.reverse .fluid-content {
-  margin-left: 0;
-  margin-right: 240px;
+  float: left;
+  width: 100%;
 }
 a {
   font-weight: inherit;
