@@ -21,10 +21,22 @@ pre.prettyprint {
   padding: 8px;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+  -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+     -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+          box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
 }
 
 /* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin: 0 0 0 40px; } /* IE indents via margin-left */
-ol.linenums li { color: #bebec5; line-height: 18px; text-shadow: 0 1px 0 #fff; }
+ol.linenums {
+  margin: 0 0 0 33px; /* IE indents via margin-left */
+} 
+ol.linenums li {
+  padding-left: 7px;
+  color: #bebec5;
+  line-height: 18px;
+  text-shadow: 0 1px 0 #fff;
+}
 /* Alternate shading for lines */
-li.L1, li.L3, li.L5, li.L7, li.L9 {  }
+li.L1, li.L3, li.L5, li.L7, li.L9 {
+  
+}
