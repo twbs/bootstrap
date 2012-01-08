@@ -69,16 +69,17 @@
     line-height: 18px;
     color: @gray;
   }
+}
 
-  // Hover state
-  &.typeahead .active a, a:hover {
-    color: #fff;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    #gradient > .vertical(@linkColor, darken(@linkColor, 5%));
-    @shadow: inset 0 1px 0 rgba(0,0,0,.075), inset 0 -1px rgba(0,0,0,.075);
-    .box-shadow(@shadow);
-  }
+// Hover & Active states
+.dropdown-menu a:hover,
+.dropdown-menu .active > a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  #gradient > .vertical(@linkColor, darken(@linkColor, 5%));
+  @shadow: inset 0 1px 0 rgba(0,0,0,.075), inset 0 -1px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
 }
 
 // Open state for the dropdown
@@ -91,4 +92,10 @@
   .dropdown-menu {
     display: block;
   }
+}
+
+// Typeahead
+.typeahead {
+  margin-top: 2px; // give it some space to breathe
+  .border-radius(4px);
 }

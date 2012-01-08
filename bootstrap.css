@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan  8 01:45:29 PST 2012
+ * Date: Sun Jan  8 01:50:02 PST 2012
  */
 html, body {
   margin: 0;
@@ -1489,7 +1489,7 @@ i {
   line-height: 18px;
   color: #555555;
 }
-.dropdown-menu.typeahead .active a, .dropdown-menu a:hover {
+.dropdown-menu a:hover, .dropdown-menu .active > a {
   color: #fff;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1514,6 +1514,12 @@ i {
 }
 .dropdown.open .dropdown-menu {
   display: block;
+}
+.typeahead {
+  margin-top: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 .well {
   min-height: 20px;
