@@ -305,7 +305,8 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .dropdown:hover .caret,.open.dropdown .caret{filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}
 .dropdown-menu{position:absolute;top:40px;z-index:1000;float:left;display:none;min-width:160px;max-width:220px;_width:160px;padding:5px 0;margin:0;list-style:none;background-color:#ffffff;border-color:#999;border-color:rgba(0, 0, 0, 0.1);border-style:solid;border-width:1px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;-webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);-moz-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;zoom:1;}.dropdown-menu .divider{height:1px;margin:5px 1px;overflow:hidden;background-color:#e5e5e5;border-bottom:1px solid #ffffff;}
 .dropdown-menu a{display:block;padding:2px 15px;clear:both;font-weight:normal;line-height:18px;color:#555555;}
-.dropdown-menu a:hover,.dropdown-menu .active>a{color:#fff;text-decoration:none;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);background-color:#0077b3;background-image:-khtml-gradient(linear, left top, left bottom, from(#0088cc), to(#0077b3));background-image:-moz-linear-gradient(top, #0088cc, #0077b3);background-image:-ms-linear-gradient(top, #0088cc, #0077b3);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #0088cc), color-stop(100%, #0077b3));background-image:-webkit-linear-gradient(top, #0088cc, #0077b3);background-image:-o-linear-gradient(top, #0088cc, #0077b3);background-image:linear-gradient(top, #0088cc, #0077b3);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0077b3', GradientType=0);-webkit-box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);-moz-box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);}
+.dropdown-menu li>a:hover{color:#fff;text-decoration:none;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);background-color:#0077b3;background-image:-khtml-gradient(linear, left top, left bottom, from(#0088cc), to(#0077b3));background-image:-moz-linear-gradient(top, #0088cc, #0077b3);background-image:-ms-linear-gradient(top, #0088cc, #0077b3);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #0088cc), color-stop(100%, #0077b3));background-image:-webkit-linear-gradient(top, #0088cc, #0077b3);background-image:-o-linear-gradient(top, #0088cc, #0077b3);background-image:linear-gradient(top, #0088cc, #0077b3);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0077b3', GradientType=0);-webkit-box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);-moz-box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);}
+.dropdown-menu .active>a,.dropdown-menu .active>a:hover{color:#fff;background-color:#999;background-image:none;}
 .dropdown.open .dropdown-toggle{color:#ffffff;background:#ccc;background:rgba(0, 0, 0, 0.3);}
 .dropdown.open .dropdown-menu{display:block;}
 .typeahead{margin-top:2px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
@@ -356,7 +357,7 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .tabs{border-bottom:1px solid #ddd;}
 .tabs>li{margin-bottom:-1px;}
 .tabs>li>a{padding-top:9px;padding-bottom:9px;border:1px solid transparent;-webkit-border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;border-radius:4px 4px 0 0;}.tabs>li>a:hover{border-color:#eee #eee #ddd;}
-.tabs .active>a,.tabs .active>a:hover{color:#555555;background-color:#ffffff;border:1px solid #ddd;border-bottom-color:transparent;cursor:default;}
+.tabs>.active>a,.tabs>.active>a:hover{color:#555555;background-color:#ffffff;border:1px solid #ddd;border-bottom-color:transparent;cursor:default;}
 .pills>li>a{padding-top:8px;padding-bottom:8px;margin-top:2px;margin-bottom:2px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 .pills .active>a,.pills .active>a:hover{color:#ffffff;background-color:#0088cc;}
 .nav.stacked>li{float:none;}
@@ -372,8 +373,10 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .pills .dropdown-menu{-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
 .tabs .dropdown-toggle .caret,.pills .dropdown-toggle .caret{border-top-color:#0088cc;margin-top:6px;}
 .tabs .dropdown-toggle:hover .caret,.pills .dropdown-toggle:hover .caret{border-top-color:#005580;}
-.tabs .open .dropdown-toggle,.pills .open .dropdown-toggle{background-color:#999;border-color:#999;}
-.nav .open .caret,.nav .open a:hover .caret{border-top-color:#fff;filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}
+.tabs .active .dropdown-toggle .caret,.pills .active .dropdown-toggle .caret{border-top-color:#333;}
+.nav>.dropdown.active>a:hover{color:#000;cursor:pointer;}
+.tabs .open .dropdown-toggle,.pills .open .dropdown-toggle,.nav>.open.active>a:hover{color:#fff;background-color:#999;border-color:#999;}
+.nav .open .caret,.nav .open.active .caret,.nav .open a:hover .caret{border-top-color:#fff;filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}
 .tabs.stacked .open>a:hover{border-color:#999;}
 .tabbable{zoom:1;}.tabbable:before,.tabbable:after{display:table;*display:inline;content:"";zoom:1;}
 .tabbable:after{clear:both;}

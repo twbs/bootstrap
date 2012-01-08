@@ -71,15 +71,22 @@
   }
 }
 
-// Hover & Active states
-.dropdown-menu a:hover,
-.dropdown-menu .active > a {
+// Hover state
+.dropdown-menu li > a:hover {
   color: #fff;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   #gradient > .vertical(@linkColor, darken(@linkColor, 5%));
   @shadow: inset 0 1px 0 rgba(0,0,0,.075), inset 0 -1px rgba(0,0,0,.075);
   .box-shadow(@shadow);
+}
+
+// Active state
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+  color: #fff;
+  background-color: #999;
+  background-image: none; // remove the gradient
 }
 
 // Open state for the dropdown
