@@ -175,21 +175,25 @@
 // ---------
 
 // Position the menu
-.nav .dropdown-menu {
+.pills .dropdown-menu,
+.tabs .dropdown-menu {
   top: 33px;
   border-width: 1px;
 }
 .pills .dropdown-menu {
   .border-radius(4px);
 }
-.nav .dropdown-toggle .caret {
+.tabs .dropdown-toggle .caret,
+.pills .dropdown-toggle .caret {
   border-top-color: @linkColor;
   margin-top: 6px;
 }
-.nav .dropdown-toggle:hover .caret {
+.tabs .dropdown-toggle:hover .caret,
+.pills .dropdown-toggle:hover .caret {
   border-top-color: @linkColorHover;
 }
-.nav .open .dropdown-toggle {
+.tabs .open .dropdown-toggle,
+.pills .open .dropdown-toggle {
   background-color: #999;
   border-color: #999;
 }

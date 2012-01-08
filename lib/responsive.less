@@ -67,20 +67,12 @@
       .opacity(100);
       content: "&darr;";
     }
-
     .nav:hover > li {
       display: block;
     }
     .nav:hover > li > a:hover {
       background-color: #333;
     }
-  }
-
-  // Resize modals
-  .modal {
-    width: auto;
-    margin: 0;
-    &.fade.in { top: auto; }
   }
 
   // Remove the horizontal form styles
@@ -110,10 +102,12 @@
     left: 20px;
     right: 20px;
     width: auto;
-    .close {
-      padding: 10px;
-    }
+    &.fade.in { top: auto; }
   }
+  .modal-header .close {
+    padding: 10px;
+  }
+
 }
 
 

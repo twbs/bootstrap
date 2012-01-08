@@ -39,8 +39,14 @@ body {
 .sidebar-right  { padding-right: @fluidSidebarWidth + 40; }
 
 // Float the sidebars accordingly
-.sidebar-left .fluid-sidebar   { float: left; margin-left: (@fluidSidebarWidth + 20) * -1; }
-.sidebar-right .fluid-sidebar  { float: right; margin-right: (@fluidSidebarWidth + 20) * -1; }
+.sidebar-left .fluid-sidebar {
+  float: left;
+  margin-left: (@fluidSidebarWidth + 20) * -1;
+}
+.sidebar-right .fluid-sidebar {
+  float: right;
+  margin-right: (@fluidSidebarWidth + 20) * -1;
+}
 
 // The main content area
 .fluid-content {
