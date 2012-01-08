@@ -368,11 +368,11 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .tabs.stacked>li>a:hover{border-color:#ddd;z-index:2;}
 .pills.stacked>li>a{margin-bottom:3px;}
 .pills.stacked>li:last-child>a{margin-bottom:1px;}
-.nav .dropdown-menu{top:33px;border-width:1px;}
+.pills .dropdown-menu,.tabs .dropdown-menu{top:33px;border-width:1px;}
 .pills .dropdown-menu{-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
 .tabs .dropdown-toggle .caret,.pills .dropdown-toggle .caret{border-top-color:#0088cc;margin-top:6px;}
 .tabs .dropdown-toggle:hover .caret,.pills .dropdown-toggle:hover .caret{border-top-color:#005580;}
-.nav .open .dropdown-toggle{background-color:#999;border-color:#999;}
+.tabs .open .dropdown-toggle,.pills .open .dropdown-toggle{background-color:#999;border-color:#999;}
 .nav .open .caret,.nav .open a:hover .caret{border-top-color:#fff;filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}
 .tabs.stacked .open>a:hover{border-color:#999;}
 .tabbable{zoom:1;}.tabbable:before,.tabbable:after{display:table;*display:inline;content:"";zoom:1;}
