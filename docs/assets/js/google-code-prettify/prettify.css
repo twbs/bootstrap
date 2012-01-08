@@ -6,21 +6,13 @@
 .kwd, .linenums .tag { color: #1e347b; }
 .typ, .atn, .dec, .var { color: teal; }
 .pln { color: #48484c; }
-pre.prettyprint {
-  background-color: #fefbf3;
-  padding: 9px;
-  margin-bottom: 9px;
-}
 
-pre.prettyprint {
-  color: #ccc;
-  background-color: #252525;
-}
-
-pre.prettyprint {
+.prettyprint {
   padding: 8px;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+}
+.prettyprint.linenums {
   -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
      -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
           box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;

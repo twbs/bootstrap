@@ -54,6 +54,549 @@
       </header>
 
 
+
+<!-- Nav, Tabs, & Pills
+================================================== -->
+<section id="tabsAndPills">
+  <div class="page-header">
+    <h1>Nav, tabs, and pills <small>Highly customizable list-style navigation</small></h1>
+  </div>
+
+  <h2>Lightweight defaults <small>Same markup, different classes</small></h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Powerful base class</h3>
+      <p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.</p>
+      <h3>Why tabs and pills</h3>
+      <p>Tabs and pills in Bootstrap are built on a <code>&lt;ul&gt;</code> with the same core HTML, a list of links. Swap between tabs or pills with only a class.</p>
+      <p>Both options are great for sub-sections of content or navigating between pages of related content.</p>
+    </div>
+    <div class="span4">
+      <h3>Basic tabs</h3>
+      <p>Take a regular <code>&lt;ul&gt;</code> of links and add <code>.tabs</code>:</p>
+      <ul class="nav tabs">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="nav tabs"&gt;
+  &lt;li class="active"&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Basic pills</h3>
+      <p>Take that same HTML, but use <code>.pills</code> instead:</p>
+      <ul class="nav pills">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="nav pills"&gt;
+  &lt;li class="active"&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div>
+
+  <h2>Stackable <small>Make tabs or pills vertical</small></h2>
+  <div class="row">
+    <div class="span4">
+      <h3>How to stack 'em</h3>
+      <p>As tabs and pills are horizontal by default, just add a second class, <code>.stacked</code>, to make them appear vertically stacked.</p>
+    </div>
+    <div class="span4">
+      <h3>Stacked tabs</h3>
+      <ul class="nav tabs stacked">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="nav tabs stacked"&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Stacked pills</h3>
+      <ul class="nav pills stacked">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="nav pills stacked"&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div>
+
+  <h2>Dropdowns <small>For advanced nav components</small></h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Rich menus made easy</h3>
+      <p>Dropdown menus in Bootstrap tabs and pills are super easy and require only a little extra HTML and a lightweight jQuery plugin.</p>
+      <p>Head over to the Javascript page to read the docs on <a href="./javascript.html#tabs">initializing dropdowns</a> in Bootstrap.</p>
+    </div>
+    <div class="span4">
+      <h3>Tabs with dropdowns</h3>
+      <ul class="nav tabs">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="nav tabs"&gt;
+  &lt;li class="dropdown"&gt;
+    &lt;a class="dropdown-toggle" 
+       data-toggle="dropdown"
+       href="#"&gt;
+        Dropdown
+        &lt;b class="caret"&gt;&lt;/b&gt;
+      &lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;!-- links --&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Pills with dropdowns</h3>
+      <ul class="nav pills">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="nav pills"&gt;
+  &lt;li class="dropdown"&gt;
+    &lt;a class="dropdown-toggle" 
+       data-toggle="dropdown"
+       href="#"&gt;
+        Dropdown
+        &lt;b class="caret"&gt;&lt;/b&gt;
+      &lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;!-- links --&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div>
+
+  <h2>Nav lists <small>Build simple stacked navs, great for sidebars</small></h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Application-style navigation</h3>
+      <p>Nav lists provide a simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.</p>
+      <p>Structurally, they're built on the same core nav styles as tabs and pills, so usage and customization are straightforward.</p>
+    </div>
+    <div class="span4">
+      <h3>Example sidebar navigation</h3>
+      <div class="well" style="padding: 8px 0;">
+        <ul class="nav list">
+          <li class="nav-header">List header</li>
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Applications</a></li>
+          <li class="nav-header">Another list header</li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </div> <!-- /well -->
+    </div>
+    <div class="span4">
+      <h3>Simple markup</h3>
+<pre class="prettyprint linenums">
+&lt;ul class="nav list"&gt;
+  &lt;li class="nav-header"&gt;
+    List header
+  &lt;/li&gt;
+  &lt;li class="active"&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Library&lt;/a&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+      <h3>Tabbable tabs</h3>
+      <p>As mentioned above, you can bring your tabs to life with a simple plugin. Here we have integrated all four variations of the tabs&mdash;default (top), right, bottom, left&mdash;with example tab areas.</p>
+
+      <div class="tabbable">
+        <ul class="tabs">
+          <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
+          <li><a href="#2" data-toggle="tab">Section 2</a></li>
+          <li><a href="#3" data-toggle="tab">Section 3</a></li>
+          <li><a href="#4" data-toggle="tab">Section 4</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="1">
+            <p>Oh hai #1!</p>
+          </div>
+          <div class="tab-pane" id="2">
+            <p>Oh hai #2!</p>
+          </div>
+          <div class="tab-pane" id="3">
+            <p>Oh hai #3!</p>
+          </div>
+          <div class="tab-pane" id="4">
+            <p>Oh hai #4!</p>
+          </div>
+        </div>
+      </div>
+
+       <div class="row">
+        <div class="span4">
+          <div class="tabbable tabs-left">
+            <ul class="tabs">
+              <li class="active"><a href="#5" data-toggle="tab">Section 1</a></li>
+              <li><a href="#6" data-toggle="tab">Section 2</a></li>
+              <li><a href="#7" data-toggle="tab">Section 3</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent2">
+              <div class="tab-pane active" id="5">
+                <h4>Section 1</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="6">
+                <h4>Section 2</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="7">
+                <h4>Section 3</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="span4 offset1">
+          <div class="tabbable tabs-right">
+            <ul class="tabs">
+              <li class="active"><a href="#8" data-toggle="tab">Section 1</a></li>
+              <li><a href="#9" data-toggle="tab">Section 2</a></li>
+              <li><a href="#10" data-toggle="tab">Section 3</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent3">
+              <div class="tab-pane active" id="8">
+                <h4>Section 1</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="9">
+                <h4>Section 2</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+              <div class="tab-pane" id="10">
+                <h4>Section 3</h4>
+                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabbable tabs-bottom">
+        <div class="tab-content">
+          <div class="tab-pane active" id="11">
+            <p>Oh hai #1!</p>
+          </div>
+          <div class="tab-pane" id="12">
+            <p>Oh hai #2!</p>
+          </div>
+          <div class="tab-pane" id="13">
+            <p>Oh hai #3!</p>
+          </div>
+          <div class="tab-pane" id="14">
+            <p>Oh hai #4!</p>
+          </div>
+        </div>
+        <ul class="tabs">
+          <li class="active"><a href="#11" data-toggle="tab">Section 1</a></li>
+          <li><a href="#12" data-toggle="tab">Section 2</a></li>
+          <li><a href="#13" data-toggle="tab">Section 3</a></li>
+          <li><a href="#14" data-toggle="tab">Section 4</a></li>
+        </ul>
+      </div>
+
+</section>
+
+
+
+<!-- Navbar
+================================================== -->
+<section id="navbar">
+  <div class="page-header">
+    <h1>Navbar</h1>
+  </div>
+  <h2>Static navbar example</h2>
+  <p>An example of a static (not fixed to the top) navbar with project name, navigation, and search form.</p>
+  <div class="navbar navbar-static">
+    <div class="navbar-inner">
+      <div class="container" style="width: auto;">
+        <a class="brand" href="#">Project name</a>
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Secondary link</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Another link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-search pull-left" action="">
+          <input type="text" class="search-query span2" placeholder="Search">
+        </form>
+        <ul class="nav secondary-nav">
+          <li class="vertical-divider"></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Secondary link</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Another link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+
+  <div class="row">
+    <div class="span8">
+      <h3>Navbar scaffolding</h3>
+      <p>The navbar requires only a few divs to structure it well for static or fixed display.</p>
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-static"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;div class="container" style="width: auto;"&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+      <p>To make the navbar fixed, swamp the <code>.navbar-static</code> class for <code>.navbar-fixed</code>. In your CSS, you will also need to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>&lt;body&gt;</code>.</p>
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-fixed"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+      <h3>Brand name</h3>
+      <p>A simple link to show your brand or project name only requires an anchor tag.</p>
+<pre class="prettyprint linenums">
+&lt;a class="brand" href="#"&gt;
+  Project name
+&lt;/a&gt;
+</pre>
+      <h3>Search form</h3>
+      <p>Search forms receive custom styles in the navbar with the <code>.navbar-search</code> class. Include <code>.pull-left</code> or <code>.pull-right</code> on the <code>form</code> to align it.</p>
+<pre class="prettyprint linenums">
+&lt;form class="navbar-search"&gt;
+  &lt;input type="text" class="search-query pull-left" placeholder="Search"&gt;
+&lt;/form&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Nav links</h3>
+      <p>Nav items are simple to add via unordered lists.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav"&gt;
+  &lt;li class="active"&gt;
+    &lt;a href="#">Home&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+      <p>Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdowns">our javascript plugin</a>.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav"&gt;
+  &lt;li class="dropdown"&gt;
+    &lt;a href="#"
+          class="dropdown-toggle"
+          data-toggle="dropdown">
+          Account
+    &lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- Breadcrumbs
+================================================== -->
+<section id="breadcrumbs">
+  <div class="page-header">
+    <h1>Breadcrumbs <small></small></h1>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <h3>Why use them</h3>
+      <p>Breadcrumb navigation is used as a way to show users where they are within an app or a site, but not for primary navigation. Keep their use sparse and succinct to be most effective.</p>
+
+      <h3>Examples</h3>
+      <p>A single example shown as it might be displayed across multiple pages.</p>
+      <ul class="breadcrumb">
+        <li class="active">Home</li>
+      </ul>
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li class="active">Library</li>
+      </ul>
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li><a href="#">Library</a> <span class="divider">/</span></li>
+        <li class="active">Data</li>
+      </ul>
+    </div>
+    <div class="span6">
+      <h3>Markup</h3>
+      <p>HTML is your standard unordered list with links.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="breadcrumb"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Library&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="active"&gt;
+    &lt;a href="#"&gt;Data&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- Pagination
+================================================== -->
+<section id="carousel">
+  <div class="page-header">
+    <h1>Pagination <small></small></h1>
+  </div>
+
+  <div class="row">
+    <div class="span3">
+      <h2>Pagination</h2>
+      <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+    </div>
+    <div class="span9">
+      <div class="pagination">
+        <ul>
+          <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li class="next"><a href="#">Next &rarr;</a></li>
+        </ul>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&larr;</a></li>
+          <li class="active"><a href="#">10</a></li>
+          <li><a href="#">11</a></li>
+          <li class="disabled"><a href="#">…</a></li>
+          <li><a href="#">20</a></li>
+          <li><a href="#">21</a></li>
+          <li class="next"><a href="#">&rarr;</a></li>
+        </ul>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&larr;</a></li>
+          <li><a href="#">10</a></li>
+          <li><a href="#">11</a></li>
+          <li class="active"><a href="#">12</a></li>
+          <li><a href="#">13</a></li>
+          <li><a href="#">14</a></li>
+          <li class="next"><a href="#">&rarr;</a></li>
+        </ul>
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li class="prev disabled"&gt;&lt;a href="#"&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
+    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="next"&gt;&lt;a href="#"&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+
+</section>
+
+
+
 <!-- Media
 ================================================== -->
 <section id="media">
@@ -218,510 +761,6 @@
   <div class="page-header">
     <h1>Carousel <small></small></h1>
   </div>
-
-</section>
-
-
-
-<!-- Side nav
-================================================== -->
-<section id="sidenav">
-  <div class="page-header">
-    <h1>Side nav <small>for lists of links</small></h1>
-  </div>
-
-  <div class="row">
-    <div class="span3">
-      <h3>Examples</h3>
-      <p>Side navs can be just links, links with headings, and links with icons.</p>
-      <div class="well side-nav">
-        <ul class="nav-group">
-          <li class="active"><a class="nav-item" href="#">Home</a></li>
-          <li><a class="nav-item" href="#">Library</a></li>
-          <li><a class="nav-item" href="#">Help</a></li>
-        </ul>
-        <h6 class="nav-label">Your account</h6>
-        <ul class="nav-group">
-          <li><a class="nav-item" href="#">Profile</a></li>
-          <li><a class="nav-item" href="#">Settings</a></li>
-        </ul>
-        <h6 class="nav-label">Your account</h6>
-        <ul class="nav-group">
-          <li><a class="nav-item" href="#"><i class="home"></i> Home</a></li>
-          <li><a class="nav-item" href="#"><i class="book"></i> Library</a></li>
-          <li><a class="nav-item" href="#"><i class="user"></i> Profile</a></li>
-          <li><a class="nav-item" href="#"><i class="cog"></i> Settings</a></li>
-          <li><a class="nav-item" href="#"><i class="time"></i> Help</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="span3">
-      <h3>Why use it</h3>
-      <p></p>
-    </div>
-    <div class="span6">
-      <h3>Markup</h3>
-      <p>Marking up a side nav is at the core just writing an unordered list of links.</p>
-<pre class="prettyprint linenums">
-  &lt;ul class="nav-group"&gt;
-    &lt;li class="active"&gt;
-      &lt;a class="nav-item" href="#"&gt;Home&lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;&lt;a class="nav-item" href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a class="nav-item" href="#"&gt;Help&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-</pre>
-      <p>Bootstrap also makes it easy to expand a regular list of links with multiple groups and headings.</p>
-<pre class="prettyprint linenums">
-  &lt;h6 class="nav-label"&gt;&lt;/h6&gt;
-  &lt;ul class="nav-group"&gt;
-    ...
-  &lt;/ul&gt;
-  &lt;h6 class="nav-label"&gt;&lt;/h6&gt;
-  &lt;ul class="nav-group"&gt;
-    ...
-  &lt;/ul&gt;
-</pre>
-    </div>
-  </div>
-  
-</section>
-
-
-
-<!-- Navbar
-================================================== -->
-<section id="navbar">
-  <div class="page-header">
-    <h1>Navbar</h1>
-  </div>
-  <h2>Static navbar example</h2>
-  <p>An example of a static (not fixed to the top) navbar with project name, navigation, and search form.</p>
-  <div class="navbar navbar-static">
-    <div class="navbar-inner">
-      <div class="container" style="width: auto;">
-        <a class="brand" href="#">Project name</a>
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Secondary link</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Another link</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="navbar-search pull-left" action="">
-          <input type="text" class="search-query span2" placeholder="Search">
-        </form>
-        <ul class="nav secondary-nav">
-          <li class="vertical-divider"></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Secondary link</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Another link</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div><!-- /navbar-inner -->
-  </div><!-- /navbar -->
-
-  <div class="row">
-    <div class="span8">
-      <h3>Navbar scaffolding</h3>
-      <p>The navbar requires only a few divs to structure it well for static or fixed display.</p>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-static"&gt;
-  &lt;div class="navbar-inner"&gt;
-    &lt;div class="container" style="width: auto;"&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
-      <p>To make the navbar fixed, swamp the <code>.navbar-static</code> class for <code>.navbar-fixed</code>. In your CSS, you will also need to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>&lt;body&gt;</code>.</p>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed"&gt;
-  ...
-&lt;/div&gt;
-</pre>
-      <br>
-      <h3>Brand name</h3>
-      <p>A simple link to show your brand or project name only requires an anchor tag.</p>
-<pre class="prettyprint linenums">
-&lt;a class="brand" href="#"&gt;
-  Project name
-&lt;/a&gt;
-</pre>
-      <br>
-      <h3>Search form</h3>
-      <p>Search forms receive custom styles in the navbar with the <code>.navbar-search</code> class. Include <code>.pull-left</code> or <code>.pull-right</code> on the <code>form</code> to align it.</p>
-<pre class="prettyprint linenums">
-&lt;form class="navbar-search"&gt;
-  &lt;input type="text" class="search-query pull-left" placeholder="Search"&gt;
-&lt;/form&gt;
-</pre>
-    </div>
-    <div class="span4">
-      <h3>Nav links</h3>
-      <p>Nav items are simple to add via unordered lists.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#">Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-      <p>Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdowns">our javascript plugin</a>.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a href="#"
-          class="dropdown-toggle"
-          data-toggle="dropdown">
-          Account
-    &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-    </div>
-  </div>
-
-</section>
-
-
-
-<!-- Tabs & Pills
-================================================== -->
-<section id="tabsAndPills">
-  <div class="page-header">
-    <h1>Tabs and pills <small></small></h1>
-  </div>
-
-  <div class="row">
-    <div class="span3">
-      <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
-      <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
-    </div>
-    <div class="span9">
-      <h3>Basic tabs example</h3>
-      <p>Tabs can be used as regular navigation (loading external pages in the same tab) or as tabbable content areas for swapping out panes of content. We have a <a href="./javascript.html#tabs">tabs plugin</a> that can be used to integrate the latter.</p>
-      <ul class="tabs">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Contact</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Secondary link</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Another link</a></li>
-          </ul>
-        </li>
-      </ul>
-<pre class="prettyprint linenums">
-&lt;ul class="tabs"&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-      <h3>Tabbable tabs</h3>
-      <p>As mentioned above, you can bring your tabs to life with a simple plugin. Here we have integrated all four variations of the tabs&mdash;default (top), right, bottom, left&mdash;with example tab areas.</p>
-
-      <div class="tabbable">
-        <ul class="tabs">
-          <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
-          <li><a href="#2" data-toggle="tab">Section 2</a></li>
-          <li><a href="#3" data-toggle="tab">Section 3</a></li>
-          <li><a href="#4" data-toggle="tab">Section 4</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="1">
-            <p>Oh hai #1!</p>
-          </div>
-          <div class="tab-pane" id="2">
-            <p>Oh hai #2!</p>
-          </div>
-          <div class="tab-pane" id="3">
-            <p>Oh hai #3!</p>
-          </div>
-          <div class="tab-pane" id="4">
-            <p>Oh hai #4!</p>
-          </div>
-        </div>
-      </div>
-
-       <div class="row">
-        <div class="span4">
-          <div class="tabbable tabs-left">
-            <ul class="tabs">
-              <li class="active"><a href="#5" data-toggle="tab">Section 1</a></li>
-              <li><a href="#6" data-toggle="tab">Section 2</a></li>
-              <li><a href="#7" data-toggle="tab">Section 3</a></li>
-            </ul>
-            <div class="tab-content" id="myTabContent2">
-              <div class="tab-pane active" id="5">
-                <h4>Section 1</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="6">
-                <h4>Section 2</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="7">
-                <h4>Section 3</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="span4 offset1">
-          <div class="tabbable tabs-right">
-            <ul class="tabs">
-              <li class="active"><a href="#8" data-toggle="tab">Section 1</a></li>
-              <li><a href="#9" data-toggle="tab">Section 2</a></li>
-              <li><a href="#10" data-toggle="tab">Section 3</a></li>
-            </ul>
-            <div class="tab-content" id="myTabContent3">
-              <div class="tab-pane active" id="8">
-                <h4>Section 1</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="9">
-                <h4>Section 2</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="10">
-                <h4>Section 3</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tabbable tabs-bottom">
-        <div class="tab-content">
-          <div class="tab-pane active" id="11">
-            <p>Oh hai #1!</p>
-          </div>
-          <div class="tab-pane" id="12">
-            <p>Oh hai #2!</p>
-          </div>
-          <div class="tab-pane" id="13">
-            <p>Oh hai #3!</p>
-          </div>
-          <div class="tab-pane" id="14">
-            <p>Oh hai #4!</p>
-          </div>
-        </div>
-        <ul class="tabs">
-          <li class="active"><a href="#11" data-toggle="tab">Section 1</a></li>
-          <li><a href="#12" data-toggle="tab">Section 2</a></li>
-          <li><a href="#13" data-toggle="tab">Section 3</a></li>
-          <li><a href="#14" data-toggle="tab">Section 4</a></li>
-        </ul>
-      </div>
-
-
-      <p>In addition to tabs, we have pills! Though a bit more limited in functionality, they share much of the same markup.</p>
-      <hr>
-      <h3>Basic pills example</h3>
-      <ul class="pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-<pre class="prettyprint linenums">
-&lt;ul class="pills"&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-      <h3>Vertical pill nav</h3>
-      <p>With a pill-style nav, you can also stack the list items to have a simple sidebar. We don't offer left or right aligned versions here because that's easy enough to customize based on your own needs</p>
-      <ul class="pills pills-vertical span4">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-  </div><!-- /row -->
-
-</section>
-
-
-
-<!-- Breadcrumbs
-================================================== -->
-<section id="breadcrumbs">
-  <div class="page-header">
-    <h1>Breadcrumbs <small></small></h1>
-  </div>
-
-  <div class="row">
-    <div class="span6">
-      <h3>Why use them</h3>
-      <p>Breadcrumb navigation is used as a way to show users where they are within an app or a site, but not for primary navigation. Keep their use sparse and succinct to be most effective.</p>
-
-      <h3>Examples</h3>
-      <p>A single example shown as it might be displayed across multiple pages.</p>
-      <ul class="breadcrumb">
-        <li class="active">Home</li>
-      </ul>
-      <ul class="breadcrumb">
-        <li><a href="#">Home</a> <span class="divider">/</span></li>
-        <li class="active">Library</li>
-      </ul>
-      <ul class="breadcrumb">
-        <li><a href="#">Home</a> <span class="divider">/</span></li>
-        <li><a href="#">Library</a> <span class="divider">/</span></li>
-        <li class="active">Data</li>
-      </ul>
-    </div>
-    <div class="span6">
-      <h3>Markup</h3>
-      <p>HTML is your standard unordered list with links.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="breadcrumb"&gt;
-  &lt;li&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#"&gt;Library&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;
-  &lt;/li&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Data&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-    </div>
-  </div>
-
-</section>
-
-
-
-<!-- Step nav
-==================================================
-
-COMMENTED OUT AND NOT SUPPORTED AT THIS TIME.
-
-<section id="stepNav">
-  <div class="page-header">
-    <h1>Step nav <small></small></h1>
-  </div>
-  <div class="row">
-    <div class="span3">
-      <p>Placeholder for now!</p>
-    </div>
-    <div class="span9">
-      <br>
-      <ul class="step-nav">
-        <li class="prev"><a href="#">&laquo; Overview</a></li>
-        <li class="active"><a class="dot" href="#">1</a></li>
-        <li><a class="dot" href="#">2</a></li>
-        <li><a class="dot" href="#">3</a></li>
-        <li><a class="dot" href="#">4</a></li>
-        <li><a class="dot" href="#">5</a></li>
-        <li class="next"><a href="#">Base CSS &raquo;</a></li>
-      </ul>
-      <br>
-      <br>
-    </div>
-  </div>
-</section>
--->
-
-
-
-<!-- Pagination
-================================================== -->
-<section id="carousel">
-  <div class="page-header">
-    <h1>Pagination <small></small></h1>
-  </div>
-
-  <div class="row">
-    <div class="span3">
-      <h2>Pagination</h2>
-      <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
-    </div>
-    <div class="span9">
-      <div class="pagination">
-        <ul>
-          <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li class="next"><a href="#">Next &rarr;</a></li>
-        </ul>
-      </div>
-      <div class="pagination">
-        <ul>
-          <li class="prev"><a href="#">&larr;</a></li>
-          <li class="active"><a href="#">10</a></li>
-          <li><a href="#">11</a></li>
-          <li class="disabled"><a href="#">…</a></li>
-          <li><a href="#">20</a></li>
-          <li><a href="#">21</a></li>
-          <li class="next"><a href="#">&rarr;</a></li>
-        </ul>
-      </div>
-      <div class="pagination">
-        <ul>
-          <li class="prev"><a href="#">&larr;</a></li>
-          <li><a href="#">10</a></li>
-          <li><a href="#">11</a></li>
-          <li class="active"><a href="#">12</a></li>
-          <li><a href="#">13</a></li>
-          <li><a href="#">14</a></li>
-          <li class="next"><a href="#">&rarr;</a></li>
-        </ul>
-      </div>
-<pre class="prettyprint linenums">
-&lt;div class="pagination"&gt;
-  &lt;ul&gt;
-    &lt;li class="prev disabled"&gt;&lt;a href="#"&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
-    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="next"&gt;&lt;a href="#"&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
-    </div>
-  </div><!-- /row -->
 
 </section>
 

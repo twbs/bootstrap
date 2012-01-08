@@ -1,0 +1,327 @@
+// NAVIGATIONS
+// -----------
+
+
+
+// BASE CLASS
+// ----------
+
+.nav {
+  margin-left: 0;
+  margin-bottom: @baseLineHeight;
+  list-style: none;
+}
+
+// Make links block level
+.nav > li > a {
+  display: block;
+}
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+
+
+// NAV LIST
+// --------
+
+.nav.list {
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-bottom: 0;
+}
+.nav.list > li > a,
+.nav.list .nav-header {
+  display: block;
+  padding: 3px 15px;
+  margin-left:  -15px;
+  margin-right: -15px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.nav.list .nav-header {
+  font-size: 11px;
+  font-weight: bold;
+  line-height: @baseLineHeight;
+  color: @grayLight;
+  text-transform: uppercase;
+}
+.nav.list > li + .nav-header {
+  margin-top: 9px;
+}
+.nav.list .active > a {
+  color: @white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  background-color: @linkColor;
+}
+
+
+
+// TABS AND PILLS
+// -------------
+
+// Common styles
+.tabs,
+.pills {
+  .clearfix();
+}
+.tabs > li,
+.pills > li {
+  float: left;
+}
+.tabs > li > a,
+.pills > li > a {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 2px;
+  line-height: 14px; // keeps the overall height an even number
+}
+
+// TABS
+// ----
+
+// Give the tabs something to sit on
+.tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+// Make the list-items overlay the bottom border
+.tabs > li {
+  margin-bottom: -1px;
+}
+
+// Actual tabs (as links)
+.tabs > li > a {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border: 1px solid transparent;
+  .border-radius(4px 4px 0 0);
+  &:hover {
+    border-color: #eee #eee #ddd;
+  }
+}
+// Active state, and it's :hover to override normal :hover
+.tabs .active > a,
+.tabs .active > a:hover {
+  color: @gray;
+  background-color: @white;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
+
+// PILLS
+// -----
+
+// Links rendered as pills
+.pills > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  .border-radius(5px);
+}
+
+// Active state
+.pills .active > a,
+.pills .active > a:hover {
+  color: @white;
+  background-color: @linkColor;
+}
+
+
+
+// STACKED NAV
+// -----------
+
+// Stacked tabs and pills
+.nav.stacked > li {
+  float: none;
+}
+.nav.stacked > li > a {
+  margin-right: 0; // no need for the gap between nav items
+}
+
+// Tabs
+.tabs.stacked {
+  border-bottom: 0;
+}
+.tabs.stacked > li > a {
+  border: 1px solid #ddd;
+  .border-radius(0);
+}
+.tabs.stacked > li:first-child > a {
+  .border-radius(4px 4px 0 0);
+}
+.tabs.stacked > li:last-child > a {
+  .border-radius(0 0 4px 4px);
+}
+.tabs.stacked > li > a:hover {
+  border-color: #ddd;
+  z-index: 2;
+}
+
+// Pills
+.pills.stacked > li > a {
+  margin-bottom: 3px;
+}
+.pills.stacked > li:last-child > a {
+  margin-bottom: 1px; // decrease margin to match sizing of stacked tabs
+}
+
+
+
+// DROPDOWNS
+// ---------
+
+// Position the menu
+.tabs .dropdown-menu,
+.pills .dropdown-menu {
+  top: 33px;
+  border-width: 1px;
+}
+.pills .dropdown-menu {
+  .border-radius(4px);
+}
+.tabs .dropdown-toggle .caret,
+.pills .dropdown-toggle .caret {
+  margin-top: 6px;
+}
+.tabs .open .dropdown-toggle,
+.pills .open .dropdown-toggle {
+  background-color: #999;
+  border-color: #999;
+}
+.tabs .open .caret,
+.pills .open .caret {
+  border-top-color: #fff;
+  .opacity(100);
+}
+
+
+
+// TABBABLE
+// --------
+
+.tabbable {
+  margin-bottom: @baseLineHeight;
+
+  // Tabs on top
+  .tabs {
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+  .tab-content {
+    padding: 19px;
+    border: 1px solid #ddd;
+  }
+
+  // Tabs on bottom
+  &.tabs-bottom .tabs > li {
+    margin-top: -1px;
+    margin-bottom: 0;
+  }
+  &.tabs-bottom .tabs > li > a {
+    .border-radius(0 0 4px 4px);
+    &:hover {
+      border-bottom-color: transparent;
+      border-top-color: #ddd;
+    }
+  }
+  &.tabs-bottom .tabs > .active > a,
+  &.tabs-bottom .tabs > .active > a:hover {
+    border-color: transparent #ddd #ddd #ddd;
+  }
+
+  // Tabs on left and right
+  &.tabs-left,
+  &.tabs-right {
+    .clearfix();
+    .tabs {
+      // Give a fixed width to avoid floating .tab-con
+      width: 100px;
+      // Unfloat them so they stack
+      > li {
+        float: none;
+        margin-bottom: -1px;
+        > a {
+          margin-bottom: 2px;
+          &:hover {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  // Tabs on left
+  &.tabs-left {
+    .tab-content {
+      margin-left: 100px;
+    }
+    .tabs {
+      float: left;
+      > li {
+        margin-right: -1px;
+        > a {
+          margin-right: 0;
+          .border-radius(4px 0 0 4px);
+
+          &:hover {
+            border-right-color: #ddd;
+          }
+        }
+      }
+      // Active state
+      .active > a,
+      .active > a:hover {
+        border-color: #ddd;
+        border-right-color: transparent;
+      }
+    }
+  }
+
+  // Tabs on right
+  &.tabs-right {
+    .tab-content {
+      margin-right: 100px;
+    }
+    .tabs {
+      float: right;
+      > li {
+        margin-left: -1px;
+        > a {
+          margin-left: 0;
+          .border-radius(0 4px 4px 0);
+
+          &:hover {
+            border-left-color: #ddd;
+          }
+        }
+      }
+      // Active state
+      .active > a,
+      .active > a:hover {
+        border-color: #ddd;
+        border-left-color: transparent;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+// Tabbable areas
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
