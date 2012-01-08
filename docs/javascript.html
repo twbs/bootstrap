@@ -50,89 +50,77 @@
       ================================================== -->
       <header class="jumbotron subhead" id="overview">
         <h1>Javascript for Bootstrap</h1>
-        <p class="lead">Bring Bootstrap's components to life &mdash; now with 12 custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.
+        <p class="lead">Bring Bootstrap's components to life&mdash;now with 12 custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.
       </header>
 
 
-<!-- Using Javascript w/ Bootstrap
- ================================================== -->
 
- <section id="javascript">
-   <div class="page-header">
-     <h1>Using javascript with Bootstrap <small>An index of plugins to get you started</small></h1>
-   </div>
-   <div class="row">
-     <div class="span3">
-       <h2>Getting started</h2>
-       <p>Integrating javascript with the Bootstrap library is super easy. Here we go over the basics and provide you with some awesome plugins to get you started!</p>
-     </div>
-     <div class="span9">
-      <h3>What's included</h3>
-       <p>Bring some of Bootstrap's primary components to life with custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins. We encourage you to extend and modify them to fit your specific development needs.</p>
-       <table class="bordered-table striped-table">
-         <thead>
-           <tr>
-             <th style="width: 150px;">File</th>
-             <th>Description</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <td><a href="./javascript.html#transition">bootstrap-transition.js</a></td>
-             <td>The transition plugin is required for adding animation to other bootstrap plugins. Include this plugin (only once) when sliding in modals or fading out alerts.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
-             <td>Our Modal plugin is a super slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require here at twitter.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#dropdown">bootstrap-dropdown.js</a></td>
-             <td>This plugin is for adding generic dropdown interactions to things like navigation top bars and tabs.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
-             <td>The ScrollSpy plugin is for automatically updating nav targets based on scroll position.</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#tab">bootstrap-tab.js</a></td>
-             <td>This plugin adds quick, dynamic tab and pill functionality for transitioning through local content.</td>
-           <tr>
-             <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
-             <td>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, data-attributes for local title storage, and now jquery 1.7's new event api!</td>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
-             <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">bootstrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
-           </tr>
-           </tr>
-           <tr>
-             <td><a href="./javascript.html#alert">bootstrap-alert.js</a></td>
-             <td>The alert plugin is a tiny class for adding close functionality to alerts.</td>
-           </tr>
-           <tr>
-              <td><a href="./javascript.html#button">bootstrap-button.js</a></td>
-              <td>This plugin offers additional functionality for managing button state in single buttons and button sets.</td>
-            </tr>
-            <tr>
-              <td><a href="./javascript.html#collapse">bootstrap-collapse.js</a></td>
-              <td>The collapse plugin offers simple, generic collapsible element support for making accordions and other collapsible ui components.</td>
-            </tr>
-            <tr>
-              <td><a href="./javascript.html#carousel">bootstrap-carousel.js</a></td>
-              <td>A plugin for rotating through elements. A merry-go-round.</td>
-            </tr>
-            <tr>
-              <td><a href="./javascript.html#typeahead">bootstrap-typeahead.js</a></td>
-              <td>A basic, easily extended plugin for quickly creating elegant typeaheads.</td>
-            </tr>
-         </tbody>
-       </table>
-       <h3>Is javascript necessary?</h3>
-       <p><strong>Nope!</strong> Bootstrap is designed first and foremost to be a CSS library. This javascript provides a basic interactive layer on top of the included styles.</p>
-       <p>However, for those who do need javascript, we've provided the plugins above to help you understand how to integrate Bootstrap with javascript and to give you a quick, lightweight option for the basic functionality right away.</p>
-     </div>
-   </div>
-</section>
+      <!-- Using Javascript w/ Bootstrap
+      ================================================== -->
+
+      <section id="javascript">
+        <div class="page-header">
+          <h1>jQuery plugins <small>A dozen Bootstrap plugins to get you started</small></h1>
+        </div>
+      <div class="row">
+        <div class="span3">
+          <h3><a href="#transition">Transitions</a> <small class="muted">*</small></h3>
+          <p>For simple transition effects, include bootstrap-transition.js once to slide in modals or fade out alert messages.</p>
+          <p class="muted"><strong>*</strong> Required for animation in plugins</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#modal">Modals</a></h3>
+          <p>A streamlined, but flexible, take on the traditional javascript modal plugin with only the minimum required functionality and smart defaults.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#dropdown">Dropdowns</a></h3>
+          <p>Add dropdown menus to nearly anything in Bootstrap with this simple plugin. Bootstrap features full dropdown menu support on in the navbar, tabs, and pills.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#scrollspy">Scrollspy</a></h3>
+          <p>Use scrollspy to automatically update the links in your navbar to show the current active link based on scroll position.</p>
+        </div>
+      </div> <!-- /row -->
+      <div class="row">
+        <div class="span3">
+          <h3><a href="#tab">Togglable tabs</a></h3>
+          <p>Use this plugin to make tabs and pills more useful by allowing them to toggle through tabbable panes of local content.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#twipsy">Twipsy tooltips</a></h3>
+          <p>A new take on the jQuery Tipsy plugin, Twipsy uses CSS3 animations, data attributes for titles, and the new event API in jQuery 1.7.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#popover">Popovers</a> <small class="muted">*</small></h3>
+          <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
+          <p class="muted"><strong>*</strong> Requires <a href="#twipsy">Twipsy</a> to be included</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#alert">Alert messages</a></h3>
+          <p>The alert plugin is a tiny class for adding close functionality to alerts.</p>
+        </div>
+      </div> <!-- /row -->
+      <div class="row">
+        <div class="span3">
+          <h3><a href="#button">Buttons</a></h3>
+          <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#button">Collapse</a></h3>
+          <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#button">Carousel</a></h3>
+          <p>Create a merry-go-round of any content you wish to provide an interactive slideshow of content.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="#button">Typeahead</a></h3>
+          <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
+        </div>
+      </div> <!-- /row -->
+      <hr>
+      <p class="muted"><span class="label warning">Note:</span> All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
+    </section>
 
 
     <!-- Modal
