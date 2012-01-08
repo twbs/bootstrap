@@ -88,8 +88,8 @@
       if (!self.options.delay || !self.options.delay.hide) {
         self.hide()
       } else {
+        self.hoverState = 'out'
         setTimeout(function() {
-          self.hoverState = 'out'
           if (self.hoverState == 'out') {
             self.hide()
           }
@@ -123,7 +123,7 @@
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
-          .prependTo(inside ? this.$element : document.body)
+          .appendTo(inside ? this.$element : document.body)
 
         pos = this.getPosition(inside)
 
