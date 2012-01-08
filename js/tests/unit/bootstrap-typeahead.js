@@ -52,6 +52,22 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should show matching items when query entered", function () {
+        var $input = $('<input />').typeahead({
+              data: ['aaa', 'aab', 'aac', 'ABA', 'aBb', 'Abc']
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('Ab')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 4, 'has 4 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        typeahead.$menu.remove()
+      })
+
       test("should hide menu when query entered", function () {
         stop()
         var $input = $('<input />').typeahead({
