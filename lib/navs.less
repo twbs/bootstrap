@@ -211,12 +211,24 @@
 .tabbable {
   .clearfix();
 }
+
 // Remove border on bottom, left, right
 .tabs-below .tabs,
 .tabs-right .tabs,
 .tabs-left .tabs {
   border-bottom: 0;
 }
+
+// Show/hide tabbable areas
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
 
 // BOTTOM
 // ------
@@ -290,100 +302,3 @@
 .tabs-right .tabs .active > a:hover {
   border-color: #ddd #ddd #ddd transparent;
 }
-
-
-/*
-.tabbable {
-
-  // Tabs on left and right
-  &.tabs-left,
-  &.tabs-right {
-    .clearfix();
-    .tabs {
-      // Give a fixed width to avoid floating .tab-con
-      width: 100px;
-      // Unfloat them so they stack
-      > li {
-        float: none;
-        margin-bottom: -1px;
-        > a {
-          margin-bottom: 2px;
-          &:hover {
-            border-color: transparent;
-          }
-        }
-      }
-    }
-  }
-
-  // Tabs on left
-  &.tabs-left {
-    .tab-content {
-      margin-left: 100px;
-    }
-    .tabs {
-      float: left;
-      > li {
-        margin-right: -1px;
-        > a {
-          margin-right: 0;
-          .border-radius(4px 0 0 4px);
-
-          &:hover {
-            border-right-color: #ddd;
-          }
-        }
-      }
-      // Active state
-      .active > a,
-      .active > a:hover {
-        border-color: #ddd;
-        border-right-color: transparent;
-      }
-    }
-  }
-
-  // Tabs on right
-  &.tabs-right {
-    .tab-content {
-      margin-right: 100px;
-    }
-    .tabs {
-      float: right;
-      > li {
-        margin-left: -1px;
-        > a {
-          margin-left: 0;
-          .border-radius(0 4px 4px 0);
-
-          &:hover {
-            border-left-color: #ddd;
-          }
-        }
-      }
-      // Active state
-      .active > a,
-      .active > a:hover {
-        border-color: #ddd;
-        border-left-color: transparent;
-      }
-    }
-  }
-}
-*/
-
-
-
-
-
-
-// Tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content > .active,
-.pill-content > .active {
-  display: block;
-}
-
