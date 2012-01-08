@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan  8 01:56:47 PST 2012
+ * Date: Sun Jan  8 02:15:22 PST 2012
  */
 html, body {
   margin: 0;
@@ -1925,7 +1925,7 @@ i {
 .pills.stacked > li:last-child > a {
   margin-bottom: 1px;
 }
-.tabs .dropdown-menu, .pills .dropdown-menu {
+.nav .dropdown-menu {
   top: 33px;
   border-width: 1px;
 }
@@ -1934,18 +1934,25 @@ i {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.tabs .dropdown-toggle .caret, .pills .dropdown-toggle .caret {
+.nav .dropdown-toggle .caret {
+  border-top-color: #0088cc;
   margin-top: 6px;
 }
-.tabs .open .dropdown-toggle, .pills .open .dropdown-toggle {
+.nav .dropdown-toggle:hover .caret {
+  border-top-color: #005580;
+}
+.nav .open .dropdown-toggle {
   background-color: #999;
   border-color: #999;
 }
-.tabs .open .caret, .pills .open .caret {
+.nav .open .caret, .nav .open a:hover .caret {
   border-top-color: #fff;
   filter: alpha(opacity=100);
   -moz-opacity: 1;
   opacity: 1;
+}
+.tabs.stacked .open > a:hover {
+  border-color: #999;
 }
 .tabbable {
   zoom: 1;
