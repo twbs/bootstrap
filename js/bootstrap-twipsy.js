@@ -123,7 +123,7 @@
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
-          .prependTo(inside ? this.$element : document.body)
+          .appendTo(inside ? this.$element : document.body)
 
         pos = this.getPosition(inside)
 
