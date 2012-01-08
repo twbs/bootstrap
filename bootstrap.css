@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 20:56:31 PST 2012
+ * Date: Sat Jan  7 21:10:08 PST 2012
  */
 html, body {
   margin: 0;
@@ -1790,38 +1790,6 @@ i {
   left: auto;
   right: 13px;
 }
-/*  // Dropdowns within the .nav
-  .dropdown-toggle:hover,
-  .dropdown.open .dropdown-toggle {
-    background: #444;
-    background: rgba(255,255,255,.05);
-  }
-  .dropdown-menu {
-    background-color: #333;
-    .dropdown-toggle {
-      color: @white;
-      &.open {
-        background: #444;
-        background: rgba(255,255,255,.05);
-      }
-    }
-    li a {
-      padding: 4px 15px;
-      color: #999;
-      text-shadow: 0 1px 0 rgba(0,0,0,.5);
-      &:hover {
-        #gradient > .vertical(#292929,#191919);
-        color: @white;
-      }
-    }
-    .active a {
-      color: @white;
-    }
-    .divider {
-      background-color: #222;
-      border-color: #444;
-    }
-  }*/
 .nav {
   margin-left: 0;
   margin-bottom: 18px;
