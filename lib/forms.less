@@ -20,6 +20,7 @@ legend {
   line-height: @baseLineHeight * 2;
   color: @grayDark;
   border-bottom: 1px solid #eee;
+  -webkit-margin-collapse: separate;
 }
 
 // Set font for forms
@@ -297,6 +298,19 @@ textarea[readonly] {
 // Success
 .control-group.success {
   .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
+}
+
+// HTML5 invalid states
+// Shares styles with the .control-group.error above
+input:invalid,
+textarea:invalid,
+select:invalid {
+  color: #b94a48;
+  border-color: #ee5f5b;
+  &:focus {
+    border-color: darken(#ee5f5b, 10%);
+    .box-shadow(0 0 6px lighten(#ee5f5b, 20%));    
+  }
 }
 
 

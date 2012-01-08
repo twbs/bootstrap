@@ -121,6 +121,10 @@
               <td><a href="./javascript.html#carousel">bootstrap-carousel.js</a></td>
               <td>A plugin for rotating through elements. A merry-go-round.</td>
             </tr>
+            <tr>
+              <td><a href="./javascript.html#typeahead">bootstrap-typeahead.js</a></td>
+              <td>A basic, easily extended plugin for quickly creating elegant typeaheads.</td>
+            </tr>
          </tbody>
        </table>
        <h3>Is javascript necessary?</h3>
@@ -281,7 +285,7 @@ $('#myModal').on('hidden', function () {
 &lt;ul class="tabs"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li id="secondary" class="dropdown"&gt;
-    &lt;a href="#secondary" class="dropdown-toggle" data-toggle="dropdown"&gt;Dropdown &lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;a href="#secondary" class="dropdown-toggle" data-toggle="dropdown"&gt;Dropdown &lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
     &lt;ul class="dropdown-menu"&gt;
       &lt;li&gt;&lt;a href="#"&gt;Secondary link&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
@@ -307,23 +311,15 @@ $('#myModal').on('hidden', function () {
                 <form class="form-search navbar-search pull-left" action="">
                   <input type="text" class="search-query span2" placeholder="Search">
                 </form>
-                <ul class="nav secondary-nav">
+                <ul class="nav pull-right">
                   <li id="fat-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 1 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 1 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Secondary link</a></li>
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
                       <li><a href="#">Something else here</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Another link</a></li>
-                    </ul>
-                  </li>
-                  <li id="mdo-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Secondary link</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Another link</a></li>
+                      <li><a href="#">Separated link</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -876,7 +872,7 @@ $('#my-alert').bind('closed', function () {
       <div class="row">
         <div class="span3 columns">
           <p>The collapse plugin offers simple, flexible collapsible element support for making accordions and other collapsible ui components.</p>
-          <a href="../js/bootstrap-collapsible.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-collapse.js" target="_blank" class="btn primary">Download</a>
         </div>
         <div class="span9 columns">
           <h3>Using bootstrap-collapse.js</h3>
@@ -1117,6 +1113,54 @@ $('.myCarousel').carousel({
       </div>
     </section>
 
+ <!-- Typeahead
+    ================================================== -->
+
+    <section id="typeahead">
+      <div class="page-header">
+        <h1>Typeahead <small>bootstrap-typeahead.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>A basic, easily extended plugin for quickly creating elegant typeaheads.</p>
+          <a href="../js/bootstrap-carousel.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-typeahead.js</h3>
+          <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
+
+          <h3>Options</h3>
+          <table class="bordered-table striped-table">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 50px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>items</td>
+               <td>number</td>
+               <td>8</td>
+               <td>The max number of items to display in the dropdown.</td>
+             </tr>
+            </tbody>
+          </table>
+
+          <h3>Markup</h3>
+          <p>Add data attributes to register an element with typeahead functionality.</p>
+<pre class="prettyprint linenums">
+&lt;input type="text" data-provide="typeahead" /&gt;
+</pre>
+          <h3>Demo</h3>
+          <input type="text" data-provide="typeahead" data-items="4" data-data='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+        </div>
+      </div>
+    </section>
+
+
       <!-- Footer
       ================================================== -->
       <footer class="footer">
@@ -1144,6 +1188,7 @@ $('.myCarousel').carousel({
     <script src="../js/bootstrap-button.js"></script>
     <script src="../js/bootstrap-collapse.js"></script>
     <script src="../js/bootstrap-carousel.js"></script>
+    <script src="../js/bootstrap-typeahead.js"></script>
     <script src="assets/js/application.js"></script>
     <script>
       $(function () {
