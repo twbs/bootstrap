@@ -222,9 +222,12 @@
       <h3>Application-style navigation</h3>
       <p>Nav lists provide a simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.</p>
       <p>Structurally, they're built on the same core nav styles as tabs and pills, so usage and customization are straightforward.</p>
+      <h4>With icons</h4>
+      <p>Nav lists are also easy to equip with icons. Add the proper <code>&lt;i&gt;</code> tag with class and you're set.</p>
     </div>
     <div class="span4">
-      <h3>Example sidebar navigation</h3>
+      <h3>Example nav list</h3>
+      <p>Take a list of links and add <code>class="nav list"</code>:</p>
       <div class="well" style="padding: 8px 0;">
         <ul class="nav list">
           <li class="nav-header">List header</li>
@@ -237,9 +240,6 @@
           <li><a href="#">Help</a></li>
         </ul>
       </div> <!-- /well -->
-    </div>
-    <div class="span4">
-      <h3>Simple markup</h3>
 <pre class="prettyprint linenums">
 &lt;ul class="nav list"&gt;
   &lt;li class="nav-header"&gt;
@@ -250,6 +250,34 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;a href="#"&gt;Library&lt;/a&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Example with icons</h3>
+      <p>Same example, but with <code>&lt;i&gt;</code> tags for icons.</p>
+      <div class="well" style="padding: 8px 0;">
+        <ul class="nav list">
+          <li class="nav-header">List header</li>
+          <li class="active"><a href="#"><i class="home"></i> Home</a></li>
+          <li><a href="#"><i class="book"></i> Library</a></li>
+          <li><a href="#"><i class="pencil"></i> Applications</a></li>
+          <li class="nav-header">Another list header</li>
+          <li><a href="#"><i class="user"></i> Profile</a></li>
+          <li><a href="#"><i class="cog"></i> Settings</a></li>
+          <li><a href="#"><i class="flag"></i> Help</a></li>
+        </ul>
+      </div> <!-- /well -->
+<pre class="prettyprint linenums">
+&lt;ul class="nav list"&gt;
+  ...
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;i class="book"&gt;&lt;/i&gt;
+      Library
+    &lt;/a&gt;
   &lt;/li&gt;
   ...
 &lt;/ul&gt;
