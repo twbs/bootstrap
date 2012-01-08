@@ -350,7 +350,7 @@ $('#myModal').on('hidden', function () {
                   <li><a href="#fat">@fat</a></li>
                   <li><a href="#mdo">@mdo</a></li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                       <li><a href="#one">one</a></li>
                       <li><a href="#two">two</a></li>
@@ -1046,21 +1046,42 @@ $('#myCollapsible').on('hidden', function () {
 
 &lt;/div&gt;
 </pre>
-<h3>Methods</h3>
-<h4>.carousel(options)</h4>
-<p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
-<pre class="prettyprint linenums">
-$('.myCarousel').carousel({
-  interval: 2000
-})</pre>
-<h4>.carousel('cycle')</h4>
-<p>Cycles through the carousel items from left to right.</p>
-<h4>.carousel('pause')</h4>
-<p>Stops the carousel from cycling through items.</p>
-<h4>.carousel('prev')</h4>
-<p>Cycles to the previous item.</p>
-<h4>.carousel('next')</h4>
-<p>Cycles to the next item.</p>
+          <h3>Methods</h3>
+          <h4>.carousel(options)</h4>
+          <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
+          <pre class="prettyprint linenums">
+          $('.myCarousel').carousel({
+            interval: 2000
+          })</pre>
+          <h4>.carousel('cycle')</h4>
+          <p>Cycles through the carousel items from left to right.</p>
+          <h4>.carousel('pause')</h4>
+          <p>Stops the carousel from cycling through items.</p>
+          <h4>.carousel('prev')</h4>
+          <p>Cycles to the previous item.</p>
+          <h4>.carousel('next')</h4>
+          <p>Cycles to the next item.</p>
+          <h3>Events</h3>
+          <p>Bootstrap's modal class exposes a few events for hooking into modal functionality. </p>
+          <table class="bordered-table striped-table">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>slide</td>
+               <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
+             </tr>
+             <tr>
+               <td>slid</td>
+               <td>This event is fired when the carousel has completed it's slide transition.</td>
+             </tr>
+             </tr>
+            </tbody>
+          </table>
           <h3>Demo</h3>
 
           <!-- carousel -->
