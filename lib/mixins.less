@@ -95,6 +95,14 @@
   .columns(@columnSpan);
 }
 
+// Border shorthand
+.border(@top: 1px, @right: 1px, @bottom: 1px, @left: 1px, @color: #000, @type: solid) {
+  border-top: @top @type @color;
+  border-right: @right @type @color;
+  border-bottom: @bottom @type @color;
+  border-left: @left @type @color;
+}
+
 // Border Radius
 .border-radius(@radius: 5px) {
   -webkit-border-radius: @radius;
