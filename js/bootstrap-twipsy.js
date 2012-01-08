@@ -88,8 +88,8 @@
       if (!self.options.delay || !self.options.delay.hide) {
         self.hide()
       } else {
+        self.hoverState = 'out'
         setTimeout(function() {
-          self.hoverState = 'out'
           if (self.hoverState == 'out') {
             self.hide()
           }
