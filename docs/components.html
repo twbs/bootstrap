@@ -222,9 +222,12 @@
       <h3>Application-style navigation</h3>
       <p>Nav lists provide a simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.</p>
       <p>Structurally, they're built on the same core nav styles as tabs and pills, so usage and customization are straightforward.</p>
+      <h4>With icons</h4>
+      <p>Nav lists are also easy to equip with icons. Add the proper <code>&lt;i&gt;</code> tag with class and you're set.</p>
     </div>
     <div class="span4">
-      <h3>Example sidebar navigation</h3>
+      <h3>Example nav list</h3>
+      <p>Take a list of links and add <code>class="nav list"</code>:</p>
       <div class="well" style="padding: 8px 0;">
         <ul class="nav list">
           <li class="nav-header">List header</li>
@@ -237,9 +240,6 @@
           <li><a href="#">Help</a></li>
         </ul>
       </div> <!-- /well -->
-    </div>
-    <div class="span4">
-      <h3>Simple markup</h3>
 <pre class="prettyprint linenums">
 &lt;ul class="nav list"&gt;
   &lt;li class="nav-header"&gt;
@@ -255,6 +255,34 @@
 &lt;/ul&gt;
 </pre>
     </div>
+    <div class="span4">
+      <h3>Example with icons</h3>
+      <p>Same example, but with <code>&lt;i&gt;</code> tags for icons.</p>
+      <div class="well" style="padding: 8px 0;">
+        <ul class="nav list">
+          <li class="nav-header">List header</li>
+          <li class="active"><a href="#"><i class="home"></i> Home</a></li>
+          <li><a href="#"><i class="book"></i> Library</a></li>
+          <li><a href="#"><i class="pencil"></i> Applications</a></li>
+          <li class="nav-header">Another list header</li>
+          <li><a href="#"><i class="user"></i> Profile</a></li>
+          <li><a href="#"><i class="cog"></i> Settings</a></li>
+          <li><a href="#"><i class="flag"></i> Help</a></li>
+        </ul>
+      </div> <!-- /well -->
+<pre class="prettyprint linenums">
+&lt;ul class="nav list"&gt;
+  ...
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;i class="book"&gt;&lt;/i&gt;
+      Library
+    &lt;/a&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+    </div>
   </div>
 
 
@@ -262,23 +290,13 @@
   <div class="row">
     <div class="span4">
       <h3>What's included</h3>
-      <p>Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles:</p>
-      <ul>
-        <li>top (default)</li>
-        <li>right</li>
-        <li>bottom</li>
-        <li>left</li>
-      </ul>
+      <p>Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles: top (default), right, bottom, and left.</p>
       <p>Changing between them is easy and only requires changing very little markup.</p>
-      <hr>
-      <h3>Custom jQuery plugin</h3>
-      <p>All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life on the javascript docs page.</p>
-      <p><a class="btn" href="./javascript.html/#tabs">Get the javascript &rarr;</a></p>
     </div>
-    <div class="span8">
+    <div class="span4">
       <h3>Tabbable example</h3>
       <p>To make tabs tabbable, wrap the <code>.tabs</code> in another div with class <code>.tabbable</code>.</p>
-      <div class="tabbable">
+      <div class="tabbable" style="margin-bottom: 9px;">
         <ul class="nav tabs">
           <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
           <li><a href="#2" data-toggle="tab">Section 2</a></li>
@@ -296,9 +314,16 @@
           </div>
         </div>
       </div> <!-- /tabbable -->
-      <hr>
-      <h3>Straightforward markup</h3>
-      <p>Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.</p>
+    </div>
+    <div class="span4">
+      <h3>Custom jQuery plugin</h3>
+      <p>All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life on the javascript docs page.</p>
+      <p><a class="btn" href="./javascript.html/#tabs">Get the javascript &rarr;</a></p>
+    </div>
+  </div>
+    
+  <h3>Straightforward markup</h3>
+  <p>Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.</p>
 <pre class="prettyprint linenums">
 &lt;div class="tabbable"&gt;
   &lt;ul class="nav tabs"&gt;
@@ -315,8 +340,6 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
 
   <h3>Tabbable in any direction</h3>
   <div class="row">
@@ -803,28 +826,6 @@
         </li>
       </ul>
     </div>
-  </div>
-
-</section>
-
-
-
-<!-- Autocomplete
-================================================== -->
-<section id="autocomplete">
-  <div class="page-header">
-    <h1>Autocomplete <small></small></h1>
-  </div>
-
-</section>
-
-
-
-<!-- Carousel
-================================================== -->
-<section id="carousel">
-  <div class="page-header">
-    <h1>Carousel <small></small></h1>
   </div>
 
 </section>
