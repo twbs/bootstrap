@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan  8 02:15:22 PST 2012
+ * Date: Sun Jan  8 02:30:05 PST 2012
  */
 html, body {
   margin: 0;
@@ -3054,7 +3054,7 @@ a.thumbnail:hover {
     width: auto;
     margin: 0;
   }
-  .nav {
+  .navbar .nav {
     position: absolute;
     top: 0;
     left: 0;
@@ -3062,29 +3062,32 @@ a.thumbnail:hover {
     padding-top: 40px;
     list-style: none;
   }
-  .nav, .nav > li:last-child a {
+  .navbar .nav, .navbar .nav > li:last-child a {
     -webkit-border-radius: 0 0 4px 0;
     -moz-border-radius: 0 0 4px 0;
     border-radius: 0 0 4px 0;
   }
-  .nav > li {
+  .navbar .nav > li {
     float: none;
     display: none;
   }
-  .nav > li > a {
+  .navbar .nav > li > a {
     float: none;
     background-color: #222;
   }
-  .nav > .active {
+  .navbar .nav > .active {
     display: block;
     position: absolute;
     top: 0;
     left: 0;
   }
-  .navbar ul .active > a {
+  .navbar .nav > .active > a {
     background-color: transparent;
   }
-  .nav > .active a:after {
+  .navbar .nav > .active > a:hover {
+    background-color: #333;
+  }
+  .navbar .nav > .active > a:after {
     display: inline-block;
     width: 0;
     height: 0;
@@ -3100,8 +3103,11 @@ a.thumbnail:hover {
     opacity: 1;
     content: "&darr;";
   }
-  .nav > .active a:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+  .navbar .nav:hover > li {
+    display: block;
+  }
+  .navbar .nav:hover > li > a:hover {
+    background-color: #333;
   }
 }
 @media (min-width: 768px) and (max-width: 940px) {
