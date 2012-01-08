@@ -811,6 +811,9 @@ $('#my-alert').bind('closed', function () {
           <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
           </p>
            <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+          <p>
+            <span class="label notice">Notice</span> Firefox persists the disabled state across page loads. A workaround for this is to use: <code>autocomplete="off"</code>. More info can be found <a href="https://github.com/twitter/bootstrap/issues/793">here</a>.
+          </p>
            <h4>$().button('reset')</h4>
            <p>Resets button state - swaps text to original text.</p>
            <h4>$().button(string)</h4>
