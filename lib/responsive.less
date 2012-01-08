@@ -18,67 +18,6 @@
 // ---------------------
 
 @media (max-width: 480px) {
-  // Resize modals
-  .modal {
-    width: auto;
-    margin: 0;
-    &.fade.in { top: auto; }
-  }
-
-  // Remove the horizontal form styles
-  .horizontal-form .control-group > label {
-    float: none;
-    width: auto;
-    padding-top: 0;
-    text-align: left;
-  }
-  // Move over all input controls and content
-  .horizontal-form .controls {
-    margin-left: 0;
-  }
-  // Move the options list down to align with labels
-  .horizontal-form .control-list {
-    padding-top: 0; // has to be padding because margin collaspes
-  }
-  // Move over buttons in .form-actions to align with .controls
-  .horizontal-form .form-actions {
-    padding-left: 0;
-  }
-
-  // Modals
-  .modal {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    width: auto;
-    .close {
-      padding: 10px;
-    }
-  }
-}
-
-
-// LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
-// --------------------------------------------------
-
-@media (max-width: 768px) {
-  // Remove width from containers
-  .container {
-    width: auto;
-    padding: 0 20px;
-  }
-  // Undo negative margin on rows
-  .row {
-    margin-left: 0;
-  }
-  // Make all columns even
-  .row > [class*="span"] {
-    float: none;
-    display: block;
-    width: auto;
-    margin: 0;
-  }
 
   // Make the nav work for small devices
   .navbar {
@@ -135,6 +74,77 @@
     .nav:hover > li > a:hover {
       background-color: #333;
     }
+  }
+
+  // Resize modals
+  .modal {
+    width: auto;
+    margin: 0;
+    &.fade.in { top: auto; }
+  }
+
+  // Remove the horizontal form styles
+  .horizontal-form .control-group > label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+  }
+  // Move over all input controls and content
+  .horizontal-form .controls {
+    margin-left: 0;
+  }
+  // Move the options list down to align with labels
+  .horizontal-form .control-list {
+    padding-top: 0; // has to be padding because margin collaspes
+  }
+  // Move over buttons in .form-actions to align with .controls
+  .horizontal-form .form-actions {
+    padding-left: 0;
+  }
+
+  // Modals
+  .modal {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    .close {
+      padding: 10px;
+    }
+  }
+}
+
+
+// LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+// --------------------------------------------------
+
+@media (max-width: 768px) {
+  
+  // Unfix the navbar
+  .navbar-fixed {
+    position: absolute;
+  }
+  .navbar-fixed .nav {
+    float: none;
+  }
+
+  // Remove width from containers
+  .container {
+    width: auto;
+    padding: 0 20px;
+  }
+  // Undo negative margin on rows
+  .row {
+    margin-left: 0;
+  }
+  // Make all columns even
+  .row > [class*="span"] {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
   }
 
 }

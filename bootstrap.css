@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan  8 02:30:05 PST 2012
+ * Date: Sun Jan  8 02:58:37 PST 2012
  */
 html, body {
   margin: 0;
@@ -3007,53 +3007,6 @@ a.thumbnail:hover {
   visibility: hidden;
 }
 @media (max-width: 480px) {
-  .modal {
-    width: auto;
-    margin: 0;
-  }
-  .modal.fade.in {
-    top: auto;
-  }
-  .horizontal-form .control-group > label {
-    float: none;
-    width: auto;
-    padding-top: 0;
-    text-align: left;
-  }
-  .horizontal-form .controls {
-    margin-left: 0;
-  }
-  .horizontal-form .control-list {
-    padding-top: 0;
-  }
-  .horizontal-form .form-actions {
-    padding-left: 0;
-  }
-  .modal {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    width: auto;
-  }
-  .modal .close {
-    padding: 10px;
-  }
-}
-@media (max-width: 768px) {
-  .container {
-    width: auto;
-    padding: 0 20px;
-  }
-  .row {
-    margin-left: 0;
-  }
-  .row > [class*="span"] {
-    float: none;
-    display: block;
-    width: auto;
-    margin: 0;
-  }
   .navbar .nav {
     position: absolute;
     top: 0;
@@ -3108,6 +3061,59 @@ a.thumbnail:hover {
   }
   .navbar .nav:hover > li > a:hover {
     background-color: #333;
+  }
+  .modal {
+    width: auto;
+    margin: 0;
+  }
+  .modal.fade.in {
+    top: auto;
+  }
+  .horizontal-form .control-group > label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+  }
+  .horizontal-form .controls {
+    margin-left: 0;
+  }
+  .horizontal-form .control-list {
+    padding-top: 0;
+  }
+  .horizontal-form .form-actions {
+    padding-left: 0;
+  }
+  .modal {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+  .modal .close {
+    padding: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-fixed {
+    position: absolute;
+  }
+  .navbar-fixed .nav {
+    float: none;
+  }
+  .container {
+    width: auto;
+    padding: 0 20px;
+  }
+  .row {
+    margin-left: 0;
+  }
+  .row > [class*="span"] {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
   }
 }
 @media (min-width: 768px) and (max-width: 940px) {
