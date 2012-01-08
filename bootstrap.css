@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan  7 21:10:08 PST 2012
+ * Date: Sat Jan  7 22:06:30 PST 2012
  */
 html, body {
   margin: 0;
@@ -1948,104 +1948,160 @@ i {
   opacity: 1;
 }
 .tabbable {
-  margin-bottom: 18px;
-}
-.tabbable .tabs {
-  margin-bottom: 0;
-  border-bottom: 0;
-}
-.tabbable .tab-content {
-  padding: 19px;
-  border: 1px solid #ddd;
-}
-.tabbable.tabs-bottom .tabs > li {
-  margin-top: -1px;
-  margin-bottom: 0;
-}
-.tabbable.tabs-bottom .tabs > li > a {
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
-}
-.tabbable.tabs-bottom .tabs > li > a:hover {
-  border-bottom-color: transparent;
-  border-top-color: #ddd;
-}
-.tabbable.tabs-bottom .tabs > .active > a, .tabbable.tabs-bottom .tabs > .active > a:hover {
-  border-color: transparent #ddd #ddd #ddd;
-}
-.tabbable.tabs-left, .tabbable.tabs-right {
   zoom: 1;
 }
-.tabbable.tabs-left:before,
-.tabbable.tabs-right:before,
-.tabbable.tabs-left:after,
-.tabbable.tabs-right:after {
+.tabbable:before, .tabbable:after {
   display: table;
   *display: inline;
   content: "";
   zoom: 1;
 }
-.tabbable.tabs-left:after, .tabbable.tabs-right:after {
+.tabbable:after {
   clear: both;
 }
-.tabbable.tabs-left .tabs, .tabbable.tabs-right .tabs {
-  width: 100px;
+.tabs-below .tabs, .tabs-right .tabs, .tabs-left .tabs {
+  border-bottom: 0;
 }
-.tabbable.tabs-left .tabs > li, .tabbable.tabs-right .tabs > li {
+.tabs-below .tabs {
+  border-top: 1px solid #ddd;
+}
+.tabs-below .tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+}
+.tabs-below .tabs > li > a {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+.tabs-below .tabs > li > a:hover {
+  border-bottom-color: transparent;
+  border-top-color: #ddd;
+}
+.tabs-below .tabs .active > a, .tabs-below .tabs .active > a:hover {
+  border-color: transparent #ddd #ddd #ddd;
+}
+.tabs-left .tabs > li, .tabs-right .tabs > li {
   float: none;
-  margin-bottom: -1px;
 }
-.tabbable.tabs-left .tabs > li > a, .tabbable.tabs-right .tabs > li > a {
-  margin-bottom: 2px;
-}
-.tabbable.tabs-left .tabs > li > a:hover, .tabbable.tabs-right .tabs > li > a:hover {
-  border-color: transparent;
-}
-.tabbable.tabs-left .tab-content {
-  margin-left: 100px;
-}
-.tabbable.tabs-left .tabs {
-  float: left;
-}
-.tabbable.tabs-left .tabs > li {
-  margin-right: -1px;
-}
-.tabbable.tabs-left .tabs > li > a {
+.tabs-left .tabs > li > a, .tabs-right .tabs > li > a {
+  min-width: 74px;
   margin-right: 0;
+  margin-bottom: 3px;
+}
+.tabs-left .tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+.tabs-left .tabs > li > a {
+  margin-right: -1px;
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
 }
-.tabbable.tabs-left .tabs > li > a:hover {
-  border-right-color: #ddd;
+.tabs-left .tabs > li > a:hover {
+  border-color: #eee #ddd #eee #eee;
 }
-.tabbable.tabs-left .tabs .active > a, .tabbable.tabs-left .tabs .active > a:hover {
-  border-color: #ddd;
-  border-right-color: transparent;
+.tabs-left .tabs .active > a, .tabs-left .tabs .active > a:hover {
+  border-color: #ddd transparent #ddd #ddd;
 }
-.tabbable.tabs-right .tab-content {
-  margin-right: 100px;
-}
-.tabbable.tabs-right .tabs {
+.tabs-right .tabs {
   float: right;
+  margin-left: 19px;
+  border-left: 1px solid #ddd;
 }
-.tabbable.tabs-right .tabs > li {
+.tabs-right .tabs > li > a {
   margin-left: -1px;
-}
-.tabbable.tabs-right .tabs > li > a {
-  margin-left: 0;
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
 }
-.tabbable.tabs-right .tabs > li > a:hover {
-  border-left-color: #ddd;
+.tabs-right .tabs > li > a:hover {
+  border-color: #eee #eee #eee #ddd;
 }
-.tabbable.tabs-right .tabs .active > a, .tabbable.tabs-right .tabs .active > a:hover {
-  border-color: #ddd;
-  border-left-color: transparent;
+.tabs-right .tabs .active > a, .tabs-right .tabs .active > a:hover {
+  border-color: #ddd #ddd #ddd transparent;
 }
+/*
+.tabbable {
+
+  // Tabs on left and right
+  &.tabs-left,
+  &.tabs-right {
+    .clearfix();
+    .tabs {
+      // Give a fixed width to avoid floating .tab-con
+      width: 100px;
+      // Unfloat them so they stack
+      > li {
+        float: none;
+        margin-bottom: -1px;
+        > a {
+          margin-bottom: 2px;
+          &:hover {
+            border-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  // Tabs on left
+  &.tabs-left {
+    .tab-content {
+      margin-left: 100px;
+    }
+    .tabs {
+      float: left;
+      > li {
+        margin-right: -1px;
+        > a {
+          margin-right: 0;
+          .border-radius(4px 0 0 4px);
+
+          &:hover {
+            border-right-color: #ddd;
+          }
+        }
+      }
+      // Active state
+      .active > a,
+      .active > a:hover {
+        border-color: #ddd;
+        border-right-color: transparent;
+      }
+    }
+  }
+
+  // Tabs on right
+  &.tabs-right {
+    .tab-content {
+      margin-right: 100px;
+    }
+    .tabs {
+      float: right;
+      > li {
+        margin-left: -1px;
+        > a {
+          margin-left: 0;
+          .border-radius(0 4px 4px 0);
+
+          &:hover {
+            border-left-color: #ddd;
+          }
+        }
+      }
+      // Active state
+      .active > a,
+      .active > a:hover {
+        border-color: #ddd;
+        border-left-color: transparent;
+      }
+    }
+  }
+}
+*/
 .tab-content > .tab-pane, .pill-content > .pill-pane {
   display: none;
 }

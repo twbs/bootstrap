@@ -203,36 +203,97 @@
 // TABBABLE
 // --------
 
+
+// COMMON STYLES
+// ------------- 
+
+// Clear any floats
+.tabbable {
+  .clearfix();
+}
+// Remove border on bottom, left, right
+.tabs-below .tabs,
+.tabs-right .tabs,
+.tabs-left .tabs {
+  border-bottom: 0;
+}
+
+// BOTTOM
+// ------
+
+.tabs-below .tabs {
+  border-top: 1px solid #ddd;
+}
+.tabs-below .tabs > li {
+  margin-top: -1px;
+  margin-bottom: 0;
+}
+.tabs-below .tabs > li > a {
+  .border-radius(0 0 4px 4px);
+  &:hover {
+    border-bottom-color: transparent;
+    border-top-color: #ddd;
+  }
+}
+.tabs-below .tabs .active > a,
+.tabs-below .tabs .active > a:hover {
+  border-color: transparent #ddd #ddd #ddd;
+}
+
+// LEFT & RIGHT
+// ------------
+
+// Common styles
+.tabs-left .tabs > li,
+.tabs-right .tabs > li {
+  float: none;
+}
+.tabs-left .tabs > li > a,
+.tabs-right .tabs > li > a {
+  min-width: 74px;
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+
+// Tabs on the left
+.tabs-left .tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+.tabs-left .tabs > li > a {
+  margin-right: -1px;
+  .border-radius(4px 0 0 4px);
+}
+.tabs-left .tabs > li > a:hover {
+  border-color: #eee #ddd #eee #eee;
+}
+.tabs-left .tabs .active > a,
+.tabs-left .tabs .active > a:hover {
+  border-color: #ddd transparent #ddd #ddd;
+}
+
+// Tabs on the right
+.tabs-right .tabs {
+  float: right;
+  margin-left: 19px;
+  border-left: 1px solid #ddd;
+}
+.tabs-right .tabs > li > a {
+  margin-left: -1px;
+  .border-radius(0 4px 4px 0);
+}
+.tabs-right .tabs > li > a:hover {
+  border-color: #eee #eee #eee #ddd;
+}
+.tabs-right .tabs .active > a,
+.tabs-right .tabs .active > a:hover {
+  border-color: #ddd #ddd #ddd transparent;
+}
+
+
 /*
 .tabbable {
-  margin-bottom: @baseLineHeight;
-
-  // Tabs on top
-  .tabs {
-    margin-bottom: 0;
-    border-bottom: 0;
-  }
-  .tab-content {
-    padding: 19px;
-    border: 1px solid #ddd;
-  }
-
-  // Tabs on bottom
-  &.tabs-bottom .tabs > li {
-    margin-top: -1px;
-    margin-bottom: 0;
-  }
-  &.tabs-bottom .tabs > li > a {
-    .border-radius(0 0 4px 4px);
-    &:hover {
-      border-bottom-color: transparent;
-      border-top-color: #ddd;
-    }
-  }
-  &.tabs-bottom .tabs > .active > a,
-  &.tabs-bottom .tabs > .active > a:hover {
-    border-color: transparent #ddd #ddd #ddd;
-  }
 
   // Tabs on left and right
   &.tabs-left,

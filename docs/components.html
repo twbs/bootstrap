@@ -258,7 +258,7 @@
   </div>
 
 
-  <h2>Tabbable tabs</h2>
+  <h2>Tabbable nav <small>Bring tabs to life via javascript</small></h2>
   <div class="row">
     <div class="span4">
       <h3>What's included</h3>
@@ -270,116 +270,128 @@
         <li>left</li>
       </ul>
       <p>Changing between them is easy and only requires changing very little markup.</p>
+      <hr>
+      <h3>Custom jQuery plugin</h3>
+      <p>All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life on the javascript docs page.</p>
+      <p><a class="btn" href="./javascript.html/#tabs">Get the javascript &rarr;</a></p>
     </div>
-    <div class="span4">
-    </div>
-    <div class="span4">
-    </div>
-  </div>
-
-
-
-
-
-
-
-      <h3>Tabbable tabs</h3>
-      <p>As mentioned above, you can bring your tabs to life with a simple plugin. Here we have integrated all four variations of the tabs&mdash;default (top), right, bottom, left&mdash;with example tab areas.</p>
-
+    <div class="span8">
+      <h3>Tabbable example</h3>
+      <p>To make tabs tabbable, wrap the <code>.tabs</code> in another div with class <code>.tabbable</code>.</p>
       <div class="tabbable">
-        <ul class="tabs">
+        <ul class="nav tabs">
           <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
           <li><a href="#2" data-toggle="tab">Section 2</a></li>
           <li><a href="#3" data-toggle="tab">Section 3</a></li>
-          <li><a href="#4" data-toggle="tab">Section 4</a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="1">
-            <p>Oh hai #1!</p>
+            <p>I'm in Section 1.</p>
           </div>
           <div class="tab-pane" id="2">
-            <p>Oh hai #2!</p>
+            <p>Howdy, I'm in Section 2.</p>
           </div>
           <div class="tab-pane" id="3">
-            <p>Oh hai #3!</p>
-          </div>
-          <div class="tab-pane" id="4">
-            <p>Oh hai #4!</p>
+            <p>What up girl, this is Section 3.</p>
           </div>
         </div>
-      </div>
+      </div> <!-- /tabbable -->
+      <hr>
+      <h3>Straightforward markup</h3>
+      <p>Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.</p>
+<pre class="prettyprint linenums">
+&lt;div class="tabbable"&gt;
+  &lt;ul class="nav tabs"&gt;
+    &lt;li class="active"&gt;&lt;a href="#1" data-toggle="tab"&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#2" data-toggle="tab"&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="tab-content"&gt;
+    &lt;div class="tab-pane active" id="1"&gt;
+      &lt;p&gt;I'm in Section 1.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-pane" id="2"&gt;
+      &lt;p&gt;Howdy, I'm in Section 2.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
 
-       <div class="row">
-        <div class="span4">
-          <div class="tabbable tabs-left">
-            <ul class="tabs">
-              <li class="active"><a href="#5" data-toggle="tab">Section 1</a></li>
-              <li><a href="#6" data-toggle="tab">Section 2</a></li>
-              <li><a href="#7" data-toggle="tab">Section 3</a></li>
-            </ul>
-            <div class="tab-content" id="myTabContent2">
-              <div class="tab-pane active" id="5">
-                <h4>Section 1</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="6">
-                <h4>Section 2</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="7">
-                <h4>Section 3</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="span4 offset1">
-          <div class="tabbable tabs-right">
-            <ul class="tabs">
-              <li class="active"><a href="#8" data-toggle="tab">Section 1</a></li>
-              <li><a href="#9" data-toggle="tab">Section 2</a></li>
-              <li><a href="#10" data-toggle="tab">Section 3</a></li>
-            </ul>
-            <div class="tab-content" id="myTabContent3">
-              <div class="tab-pane active" id="8">
-                <h4>Section 1</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="9">
-                <h4>Section 2</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-              <div class="tab-pane" id="10">
-                <h4>Section 3</h4>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius blandit sit amet non magna. Vestibulum id ligula porta felis euismod semper.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="tabbable tabs-bottom">
+  <h3>Tabbable in any direction</h3>
+  <div class="row">
+<!--
+    <div class="span4">
+      <p>Swap the order of your HTML&mdash;placing <code>.tabs</code> after <code>.tab-content</code>&mdash;for tabs on the bottom.</p>
+    </div>
+-->   
+    <div class="span4">
+      <h4>Tabs on the bottom</h4>
+      <p>Flip the order of the HTML and add a class to put tabs on the bottom.</p>
+      <div class="tabbable tabs-below">
         <div class="tab-content">
-          <div class="tab-pane active" id="11">
-            <p>Oh hai #1!</p>
+          <div class="tab-pane active" id="A">
+            <p>I'm in Section A.</p>
           </div>
-          <div class="tab-pane" id="12">
-            <p>Oh hai #2!</p>
+          <div class="tab-pane" id="B">
+            <p>Howdy, I'm in Section B.</p>
           </div>
-          <div class="tab-pane" id="13">
-            <p>Oh hai #3!</p>
-          </div>
-          <div class="tab-pane" id="14">
-            <p>Oh hai #4!</p>
+          <div class="tab-pane" id="C">
+            <p>What up girl, this is Section C.</p>
           </div>
         </div>
-        <ul class="tabs">
-          <li class="active"><a href="#11" data-toggle="tab">Section 1</a></li>
-          <li><a href="#12" data-toggle="tab">Section 2</a></li>
-          <li><a href="#13" data-toggle="tab">Section 3</a></li>
-          <li><a href="#14" data-toggle="tab">Section 4</a></li>
+        <ul class="nav tabs">
+          <li class="active"><a href="#A" data-toggle="tab">Section 1</a></li>
+          <li><a href="#B" data-toggle="tab">Section 2</a></li>
+          <li><a href="#C" data-toggle="tab">Section 3</a></li>
         </ul>
-      </div>
+      </div> <!-- /tabbable -->
+    </div>
+    <div class="span4">
+      <h4>Tabs on the left</h4>
+      <p>Swap the class to put tabs on the left.</p>
+      <div class="tabbable tabs-left">
+        <ul class="nav tabs">
+          <li class="active"><a href="#lA" data-toggle="tab">Section 1</a></li>
+          <li><a href="#lB" data-toggle="tab">Section 2</a></li>
+          <li><a href="#lC" data-toggle="tab">Section 3</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="lA">
+            <p>I'm in Section A.</p>
+          </div>
+          <div class="tab-pane" id="lB">
+            <p>Howdy, I'm in Section B.</p>
+          </div>
+          <div class="tab-pane" id="lC">
+            <p>What up girl, this is Section C.</p>
+          </div>
+        </div>
+      </div> <!-- /tabbable -->
+    </div>
+    <div class="span4">
+      <h4>Tabs on the right</h4>
+      <p>Swap the class to put tabs on the right.</p>
+      <div class="tabbable tabs-right">
+        <ul class="nav tabs">
+          <li class="active"><a href="#rA" data-toggle="tab">Section 1</a></li>
+          <li><a href="#rB" data-toggle="tab">Section 2</a></li>
+          <li><a href="#rC" data-toggle="tab">Section 3</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="rA">
+            <p>I'm in Section A.</p>
+          </div>
+          <div class="tab-pane" id="rB">
+            <p>Howdy, I'm in Section B.</p>
+          </div>
+          <div class="tab-pane" id="rC">
+            <p>What up girl, this is Section C.</p>
+          </div>
+        </div>
+      </div> <!-- /tabbable -->
+    </div>
+  </div>
 
 </section>
 
