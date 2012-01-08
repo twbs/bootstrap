@@ -34,80 +34,102 @@
 
     constructor: Typeahead
 
-  , matcher: function(item, query) {
+  , matcher: function (item, query) {
       return ~item.indexOf(query)
     }
 
-  , select: function(event) {
-      this.$element.val($(event.target).attr('data-value'))
-      this.hide()
+  , select: function () {
+      var val = this.$menu.find('.active').attr('data-value')
+      this.$element.val(val)
+      return this.hide()
     }
 
   , show: function () {
-      this.shown = true
+      var pos = $.extend({}, this.$element.offset(), {
+        height: this.$element[0].offsetHeight
+      })
+
+      this.$menu.css({
+        top: pos.top + pos.height
+      , left: pos.left
+      })
+
       this.$menu.show()
+      this.shown = true
       return this
     }
 
   , hide: function () {
-      this.shown = false
       this.$menu.hide()
+      this.shown = false
       return this
     }
 
   , lookup: function (event) {
       var query = this.$element.val()
         , that = this
+        , items
 
-      var items = this.data.filter(function (item) {
-        if (that.matcher(item, query)) {
-          return item
-        }
+      if (!query) {
+        return this.shown ? this.hide() : this
+      }
+
+      items = this.data.filter(function (item) {
+        if (that.matcher(item, query)) return item
       })
 
       if (!items.length) {
         return this.shown ? this.hide() : this
       }
 
-      return this.render(items).show()
+      return this.render(items.slice(0, this.options.items)).show()
     }
 
-  , render: function(items) {
+  , render: function (items) {
       var that = this
 
       items = $(items).map(function (i, item) {
-        return $(that.options.item)
-          .text(item)
-          .attr('data-value', item)[0]
+        i = $(that.options.item).attr('data-value', item)
+        i.find('a').text(item)
+        return i[0]
       })
 
       items.first().addClass('active')
-
-      this.$menu.append(items)
-
+      this.$menu.html(items)
       return this
     }
 
   , next: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
-        , next = active.next() || $(this.$menu.find('li')[0])
+        , next = active.next()
+
+      if (!next.length) {
+        next = $(this.$menu.find('li')[0])
+      }
 
       next.addClass('active')
     }
 
   , prev: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
-        , next = active.prev() || this.$menu.find('li').last()
+        , prev = active.prev()
 
-      next.addClass('active')
+      if (!prev.length) {
+        prev = this.$menu.find('li').last()
+      }
+
+      prev.addClass('active')
     }
 
-  , keyup: function () {
-      event
-        .stopPropagation()
-        .preventDefault()
+  , keyup: function (e) {
+      e.stopPropagation()
+      e.preventDefault()
 
-      switch(event.keyCode) {
+      switch(e.keyCode) {
+        case 40: // down arrow
+        case 38: // up arrow
+          break
+
         case 9: // tab
         case 13: // enter
           this.select()
@@ -120,51 +142,68 @@
         default:
           this.lookup()
       }
+
   }
 
-  , keypress: function (event) {
-      event.stopPropagation()
-      switch(event.keyCode) {
+  , keypress: function (e) {
+      e.stopPropagation()
+
+      switch(e.keyCode) {
         case 9: // tab
         case 13: // enter
         case 27: // escape
-          event.preventDefault()
+          e.preventDefault()
           break
 
         case 38: // up arrow
+          e.preventDefault()
           this.prev()
-          event.preventDefault()
           break
 
         case 40: // down arrow
+          e.preventDefault()
           this.next()
-          event.preventDefault()
           break
       }
-  }
+    }
+
+  , blur: function (e) {
+      var that = this
+      e.stopPropagation()
+      e.preventDefault()
+      setTimeout(function () { that.hide() }, 150)
+    }
+
+  , click: function (e) {
+      e.stopPropagation()
+      e.preventDefault()
+      this.select()
+    }
+
+  , mouseenter: function (e) {
+      this.$menu.find('.active').removeClass('active')
+      $(e.currentTarget).addClass('active')
+    }
 
   , listen: function () {
       this.$element
-        .on('focus', this.show)
-        .on('blur', $.proxy(this.hide, this))
+        .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
-        .on('keyup', this.keyup)
-        .on('change', $.proxy(this.lookup, this))
+        .on('keyup',    $.proxy(this.keyup, this))
 
       if ($.browser.webkit || $.browser.msie) {
-        this.$element.on('keydown', this.keypress)
+        this.$element.on('keydown', $.proxy(this.keypress, this))
       }
 
       this.$menu
-        .on('click', '* > *', $.proxy(this.select, this))
-        .on('mouseenter', function () {
-          /* remove selected class, add to mouseover */
-        })
+        .on('click', $.proxy(this.click, this))
+        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
   }
 
+
   /* TYPEAHEAD PLUGIN DEFINITION
-  * ============================== */
+   * =========================== */
 
   $.fn.typeahead = function ( option ) {
     return this.each(function () {
@@ -177,14 +216,24 @@
   }
 
   $.fn.typeahead.defaults = {
-    data: null
-  , items: 8
-  , empty: false
-  , noresults: false
-  , menu: '<ul class="dropdown-menu"></ul>'
-  , item: '<li></li>'
+    items: 8
+  , menu: '<ul class="typeahead dropdown-menu"></ul>'
+  , item: '<li><a href="#"></a></li>'
   }
 
   $.fn.typeahead.Constructor = Typeahead
+
+
+ /* TYPEAHEAD DATA-API
+  * ================== */
+
+  $(function () {
+    $('body').on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
+      var $this = $(this)
+      if ($this.data('typeahead')) return
+      e.preventDefault()
+      $this.typeahead($this.data())
+    })
+  })
 
 }( window.jQuery )

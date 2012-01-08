@@ -13,11 +13,9 @@ $(function () {
       test("should listen to an input", function () {
         var $input = $('<input />')
         $input.typeahead()
-        ok($input.data('events').focus, 'has a focus event')
         ok($input.data('events').blur, 'has a blur event')
         ok($input.data('events').keypress, 'has a keypress event')
         ok($input.data('events').keyup, 'has a keyup event')
-        ok($input.data('events').change, 'has a change event')
         if ($.browser.webkit || $.browser.msie) {
           ok($input.data('events').keydown, 'has a keydown event')
         } else {
@@ -44,7 +42,8 @@ $(function () {
             })
           , typeahead = $input.data('typeahead')
 
-        $input.val('a').change()
+        $input.val('a')
+        typeahead.lookup()
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
@@ -54,12 +53,14 @@ $(function () {
       })
 
       test("should hide menu when query entered", function () {
+        stop()
         var $input = $('<input />').typeahead({
               data: ['aa', 'ab', 'ac']
             })
           , typeahead = $input.data('typeahead')
 
-        $input.val('a').change()
+        $input.val('a')
+        typeahead.lookup()
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
@@ -67,7 +68,10 @@ $(function () {
 
         $input.blur()
 
-        ok(!typeahead.$menu.is(":visible"), "typeahead is no longer visible")
+        setTimeout(function () {
+          ok(!typeahead.$menu.is(":visible"), "typeahead is no longer visible")
+          start()
+        }, 200)
 
         typeahead.$menu.remove()
       })
@@ -78,7 +82,8 @@ $(function () {
             })
           , typeahead = $input.data('typeahead')
 
-        $input.val('a').change()
+        $input.val('a')
+        typeahead.lookup()
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
@@ -110,9 +115,10 @@ $(function () {
             })
           , typeahead = $input.data('typeahead')
 
-        $input.val('a').change()
+        $input.val('a')
+        typeahead.lookup()
 
-        $(typeahead.$menu.find('li')[2]).trigger('click')
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
 
         equals($input.val(), 'ac', 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')

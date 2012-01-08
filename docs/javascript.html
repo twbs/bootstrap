@@ -23,48 +23,6 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-    <!-- Le javascript -->
-    <!-- placed up here so that the inline demos can be next to their markup -->
-    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
-
-    <script type="text/javascript">
-      // NOT FINAL BY ANY MEANS, JUST MAH JANK CODE BRO
-      $(document).ready(function() {
-        $('.nav .active').click(function(e) {
-          e.preventDefault();
-          $(this).siblings().toggle();
-        });
-      });
-    </script>
-
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script src="../js/bootstrap-transition.js"></script>
-    <script src="../js/bootstrap-alert.js"></script>
-    <script src="../js/bootstrap-modal.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tab.js"></script>
-    <script src="../js/bootstrap-twipsy.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
-    <script src="../js/bootstrap-button.js"></script>
-    <script>
-      $(function () {
-        // twipsy demo
-        $("a[rel=twipsy]").twipsy({
-          live: true
-        })
-
-        //popover demo
-        $("a[rel=popover]")
-          .popover({
-            offset: 10
-          })
-          .click(function(e) {
-            e.preventDefault()
-          })
-      })
-    </script>
-
   </head>
 
   <body id="bootstrap-js">
@@ -162,6 +120,10 @@
             <tr>
               <td><a href="./javascript.html#carousel">bootstrap-carousel.js</a></td>
               <td>A plugin for rotating through elements. A merry-go-round.</td>
+            </tr>
+            <tr>
+              <td><a href="./javascript.html#typeahead">bootstrap-typeahead.js</a></td>
+              <td>A basic, easily extended plugin for quickly creating elegant typeaheads.</td>
             </tr>
          </tbody>
        </table>
@@ -1151,6 +1113,54 @@ $('.myCarousel').carousel({
       </div>
     </section>
 
+ <!-- Typeahead
+    ================================================== -->
+
+    <section id="typeahead">
+      <div class="page-header">
+        <h1>Typeahead <small>bootstrap-typeahead.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <p>A basic, easily extended plugin for quickly creating elegant typeaheads.</p>
+          <a href="../js/bootstrap-carousel.js" target="_blank" class="btn primary">Download</a>
+        </div>
+        <div class="span9 columns">
+          <h3>Using bootstrap-typeahead.js</h3>
+          <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
+
+          <h3>Options</h3>
+          <table class="bordered-table striped-table">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 50px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>items</td>
+               <td>number</td>
+               <td>8</td>
+               <td>The max number of items to display in the dropdown.</td>
+             </tr>
+            </tbody>
+          </table>
+
+          <h3>Markup</h3>
+          <p>Add data attributes to register an element with typeahead functionality.</p>
+<pre class="prettyprint linenums">
+&lt;input type="text" data-provide="typeahead" /&gt;
+</pre>
+          <h3>Demo</h3>
+          <input type="text" data-provide="typeahead" data-items="4" data-data='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+        </div>
+      </div>
+    </section>
+
+
       <!-- Footer
       ================================================== -->
       <footer class="footer">
@@ -1178,6 +1188,7 @@ $('.myCarousel').carousel({
     <script src="../js/bootstrap-button.js"></script>
     <script src="../js/bootstrap-collapse.js"></script>
     <script src="../js/bootstrap-carousel.js"></script>
+    <script src="../js/bootstrap-typeahead.js"></script>
     <script src="assets/js/application.js"></script>
     <script>
       $(function () {
