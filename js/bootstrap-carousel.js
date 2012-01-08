@@ -44,10 +44,12 @@
     }
 
   , next: function () {
+      if (this.sliding) return
       return this.slide('next')
     }
 
   , prev: function () {
+      if (this.sliding) return
       return this.slide('prev')
     }
 
@@ -59,21 +61,29 @@
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
 
+      this.sliding = true
+
       isCycling && this.pause()
 
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
       if (!$.support.transition && this.$element.hasClass('slide')) {
+        this.$element.trigger('slide')
         $active.removeClass('active')
         $next.addClass('active')
+        this.$element.trigger('slid')
+        this.sliding = false
       } else {
         $next.addClass(type)
         $next[0].offsetWidth // force reflow
         $active.addClass(direction)
         $next.addClass(direction)
+        this.$element.trigger('slide')
         this.$element.one($.support.transition.end, function () {
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
+          that.$element.trigger('slid')
+          that.sliding = false
         })
       }
 
