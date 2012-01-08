@@ -133,54 +133,116 @@
 // NAVIGATION
 // ----------
 
-// Nav for navbar and topbar
-// ul.nav for all topbar based navigation to avoid inheritance issues and over-specificity
 .navbar .nav {
   position: relative;
   left: 0;
   display: block;
   float: left;
   margin: 0 10px 0 0;
-  > li {
-    display: block;
-    float: left;
-  }
-  a {
-    float: none;
-    padding: 10px 10px 11px;
-    line-height: 19px;
-    color: @grayLight;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    &:hover {
-      color: @white;
-      text-decoration: none;
-    }
-  }
-  .active > a {
-    background-color: #222;
-    background-color: rgba(0,0,0,.5);
-  }
-  // Dividers (basically a vertical hr)
-  .vertical-divider {
-    height: 40px;
-    width: 1px;
-    margin: 0 5px;
-    overflow: hidden;
-    background-color: #222;
-    border-right: 1px solid #444;
-  }
+}
+.navbar .nav.pull-right {
+  float: right; // redeclare due to specificity
+}
+.navbar .nav > li {
+  display: block;
+  float: left;
+}
 
-  // Secondary (floated right) nav in topbar
-  &.secondary-nav {
-    float: right;
-    margin-left: 10px;
-    margin-right: 0;
-    .dropdown-menu {
-      right: 0;
-      border: 0;
-    }
+// Links
+.navbar .nav > li > a {
+  float: none;
+  padding: 10px 10px 11px;
+  line-height: 19px;
+  color: @grayLight;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+// Hover
+.navbar .nav > li > a:hover {
+  background-color: transparent;
+  color: @white;
+  text-decoration: none;
+}
+
+// Active nav items
+.navbar .nav .active > a {
+  background-color: #222;
+  background-color: rgba(0,0,0,.5);
+}
+
+// Dividers (basically a vertical hr)
+.navbar .vertical-divider {
+  height: 40px;
+  width: 1px;
+  margin: 0 5px;
+  overflow: hidden;
+  background-color: #222;
+  border-right: 1px solid #444;
+}
+
+// Secondary (floated right) nav in topbar
+.navbar .nav.pull-right {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+
+
+// Dropdown menus
+// --------------
+
+// Menu position and menu carets
+.navbar .dropdown-menu {
+  top: 42px;
+  .border-radius(4px);
+  &:before {
+    content: '';
+    display: inline-block;
+    border-left:   7px solid transparent;
+    border-right:  7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-bottom-color: rgba(0,0,0,.1);
+    position: absolute;
+    top: -7px;
+    left: 12px;
   }
+  &:after {
+    content: '';
+    display: inline-block;
+    border-left:   6px solid transparent;
+    border-right:  6px solid transparent;
+    border-bottom: 6px solid #fff;
+    position: absolute;
+    top: -6px;
+    left: 13px;
+  }
+}
+
+// Dropdown toggle caret
+.navbar .dropdown-toggle .caret,
+.navbar .open.dropdown .caret {
+  border-top-color: #fff;
+}
+
+// Remove background color from open dropdown
+.navbar .open .dropdown-toggle {
+  background-color: transparent;
+}
+
+// Right aligned menus need alt position
+.navbar .nav.pull-right .dropdown-menu {
+  right: 0;
+  &:before {
+    left: auto;
+    right: 12px;
+  }
+  &:after {
+    left: auto;
+    right: 13px;
+  }
+}
+
+
 /*  // Dropdowns within the .nav
   .dropdown-toggle:hover,
   .dropdown.open .dropdown-toggle {
@@ -213,4 +275,3 @@
       border-color: #444;
     }
   }*/
-}
