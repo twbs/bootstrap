@@ -57,54 +57,48 @@
 
       <!-- Using Javascript w/ Bootstrap
       ================================================== -->
-
       <section id="javascript">
         <div class="page-header">
           <h1>jQuery plugins <small>A dozen Bootstrap plugins to get you started</small></h1>
         </div>
       <div class="row">
         <div class="span3">
-          <h3><a href="./javascript.html#transition">Transitions</a> <small class="muted">*</small></h3>
-          <p>For simple transition effects, include bootstrap-transition.js once to slide in modals or fade out alert messages.</p>
-          <p class="muted"><strong>*</strong> Required for animation in plugins</p>
-        </div>
-        <div class="span3">
-          <h3><a href="./javascript.html#modal">Modals</a></h3>
+          <h3><a href="./javascript.html#modals">Modals</a></h3>
           <p>A streamlined, but flexible, take on the traditional javascript modal plugin with only the minimum required functionality and smart defaults.</p>
         </div>
         <div class="span3">
-          <h3><a href="./javascript.html#dropdown">Dropdowns</a></h3>
+          <h3><a href="./javascript.html#dropdowns">Dropdowns</a></h3>
           <p>Add dropdown menus to nearly anything in Bootstrap with this simple plugin. Bootstrap features full dropdown menu support on in the navbar, tabs, and pills.</p>
         </div>
         <div class="span3">
           <h3><a href="./javascript.html#scrollspy">Scrollspy</a></h3>
           <p>Use scrollspy to automatically update the links in your navbar to show the current active link based on scroll position.</p>
         </div>
-      </div> <!-- /row -->
-      <div class="row">
         <div class="span3">
-          <h3><a href="./javascript.html#tab">Togglable tabs</a></h3>
+          <h3><a href="./javascript.html#tabs">Togglable tabs</a></h3>
           <p>Use this plugin to make tabs and pills more useful by allowing them to toggle through tabbable panes of local content.</p>
         </div>
+      </div> <!-- /row -->
+      <div class="row">
         <div class="span3">
           <h3><a href="./javascript.html#twipsy">Twipsy tooltips</a></h3>
           <p>A new take on the jQuery Tipsy plugin, Twipsy uses CSS3 animations, data attributes for titles, and the new event API in jQuery 1.7.</p>
         </div>
         <div class="span3">
-          <h3><a href="./javascript.html#popover">Popovers</a> <small class="muted">*</small></h3>
+          <h3><a href="./javascript.html#popovers">Popovers</a> <small class="muted">*</small></h3>
           <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
           <p class="muted"><strong>*</strong> Requires <a href="#twipsy">Twipsy</a> to be included</p>
         </div>
         <div class="span3">
-          <h3><a href="./javascript.html#alert">Alert messages</a></h3>
+          <h3><a href="./javascript.html#alerts">Alert messages</a></h3>
           <p>The alert plugin is a tiny class for adding close functionality to alerts.</p>
+        </div>
+        <div class="span3">
+          <h3><a href="./javascript.html#buttons">Buttons</a></h3>
+          <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
         </div>
       </div> <!-- /row -->
       <div class="row">
-        <div class="span3">
-          <h3><a href="./javascript.html#button">Buttons</a></h3>
-          <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
-        </div>
         <div class="span3">
           <h3><a href="./javascript.html#collapse">Collapse</a></h3>
           <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
@@ -117,26 +111,78 @@
           <h3><a href="./javascript.html#typeahead">Typeahead</a></h3>
           <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
         </div>
+        <div class="span3">
+          <h3><a href="./javascript.html#transitions">Transitions</a> <small class="muted">*</small></h3>
+          <p>For simple transition effects, include bootstrap-transition.js once to slide in modals or fade out alert messages.</p>
+          <p class="muted"><strong>*</strong> Required for animation in plugins</p>
+        </div>
       </div> <!-- /row -->
       <hr>
       <p class="muted"><span class="label warning">Note:</span> All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
     </section>
 
 
+
     <!-- Modal
     ================================================== -->
-
-    <section id="modal">
+    <section id="modals">
       <div class="page-header">
         <h1>Modals <small>bootstrap-modal.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>Our Modal plugin is a super slim take on the traditional modal js plugin, taking special care to include only the bare functionality that we require here at twitter.</p>
-          <a href="../js/bootstrap-modal.js" target="_blank" class="btn primary">Download</a>
+          <h3>About modals</h3>
+          <p>A streamlined, but flexible, take on the traditional javascript modal plugin with only the minimum required functionality and smart defaults.</p>
+          <a href="../js/bootstrap-modal.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-modal</h3>
+          <h2>Static example</h2>
+          <p>Below is a statically rendered modal.</p>
+          <div class="well" style="background-color: #888; border: none;">
+            <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1">
+              <div class="modal-header">
+                <a href="#" class="close js-dismiss">&times;</a>
+                <h3>Modal header</h3>
+              </div>
+              <div class="modal-body">
+                <p>One fine body…</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn primary">Save changes</a>
+                <a href="#" class="btn">Close</a>
+              </div>
+            </div>
+          </div> <!-- /well -->
+
+          <h2>Live demo</h2>
+          <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+          <!-- sample modal content -->
+          <div id="myModal" class="modal hide fade">
+            <div class="modal-header">
+              <a href="#" class="close" data-dismiss="modal" >&times;</a>
+              <h3>Modal Heading</h3>
+            </div>
+            <div class="modal-body">
+              <h4>Text in a modal</h4>
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+
+              <h4>Popover in a modal</h4>
+              <p>This <a href="#" class="btn" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
+
+              <h4>Twipsy tooltips in a modal</h4>
+              <p><a href="#" class="twipsy-test" title="Tooltip">This link</a> and <a href="#" class="twipsy-test" title="Tooltip">that link</a> should have Twipsy tooltips on hover.</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn primary">Save changes</a>
+              <a href="#" class="btn" data-dismiss="modal" >Close</a>
+            </div>
+          </div>
+          <a data-toggle="modal" href="#myModal" class="btn primary large">Launch demo modal</a>
+
+          <hr>
+
+          <h2>Using bootstrap-modal</h2>
+          <p>Call the modal via javascript:</p>
           <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
           <h3>Options</h3>
           <table class="bordered-table striped-table">
@@ -168,6 +214,22 @@
           <p>Also, to add options to your modal instance, just include them as additional data attributes on either the control element or the modal markup itself.</p>
 <pre class="prettyprint linenums">
 &lt;a class="btn" data-toggle="modal" href="#myModal" &gt;Launch Modal&lt;/a&gt;
+</pre>
+
+<pre class="prettyprint linenums">
+&lt;div class="modal"&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;a href="#" class="close js-dismiss"&gt;&times;&lt;/a&gt;
+    &lt;h3&gt;Modal header&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-body"&gt;
+    &lt;p&gt;One fine body…&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-footer"&gt;
+    &lt;a href="#" class="btn primary"&gt;Save changes&lt;/a&gt;
+    &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </pre>
           <p><span class="label notice">Notice</span> If you want your modal to animate in and out, just add a <code>.fade</code> class to the <code>.modal</code> element (refer to the demo to see this in action).</p>
           <h3>Methods</h3>
@@ -219,89 +281,56 @@ $('#myModal').modal({
 $('#myModal').on('hidden', function () {
   // do something ...
 })</pre>
-          <h3>Demo</h3>
-          <!-- sample modal content -->
-          <div id="myModal" class="modal hide fade">
-            <div class="modal-header">
-              <a href="#" class="close" data-dismiss="modal" >&times;</a>
-              <h3>Modal Heading</h3>
-            </div>
-            <div class="modal-body">
-              <h4>Text in a modal</h4>
-              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
-
-              <h4>Popover in a modal</h4>
-              <p>This <a href="#" class="btn" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
-
-              <h4>Twipsy tooltips in a modal</h4>
-              <p><a href="#" class="twipsy-test" title="Tooltip">This link</a> and <a href="#" class="twipsy-test" title="Tooltip">that link</a> should have Twipsy tooltips on hover.</p>
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="btn primary">Save changes</a>
-              <a href="#" class="btn" data-dismiss="modal" >Close</a>
-            </div>
-          </div>
-
-          <a data-toggle="modal" href="#myModal" class="btn danger">
-            Launch Modal
-          </a>
         </div>
       </div>
     </section>
 
 
+
     <!-- Dropdown
     ================================================== -->
-
-    <section id="dropdown">
+    <section id="dropdowns">
       <div class="page-header">
-        <h1>Dropdown <small>bootstrap-dropdown.js</small></h1>
+        <h1>Dropdowns <small>bootstrap-dropdown.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>This plugin is for adding generic dropdown interactions to things like navigation top bars and tabs.</p>
-          <a href="../js/bootstrap-dropdown.js" target="_blank" class="btn primary">Download</a>
+          <h3>About dropdowns</h3>
+          <p>Add dropdown menus to nearly anything in Bootstrap with this simple plugin. Bootstrap features full dropdown menu support on in the navbar, tabs, and pills.</p>
+          <a href="../js/bootstrap-dropdown.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-dropdown.js</h3>
-          <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
-          <h3>Markup</h3>
-          <p>To quickly add dropdown functionality to any element just add <code>data-toggle="dropdown"</code> and any valid bootstrap dropdown will automatically be activated.</p>
-          <p><span class="label notice">Notice</span> For added control and flexibility, optionally specify a <code>data-target="#fat"</code> or <code>href="#fat"</code> - this allows you to target specific dropdowns.</p>
-
-<pre class="prettyprint linenums">
-&lt;ul class="tabs"&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li id="secondary" class="dropdown"&gt;
-    &lt;a href="#secondary" class="dropdown-toggle" data-toggle="dropdown"&gt;Dropdown &lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Secondary link&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="divider"&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Another link&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</pre>
-          <h3>Methods</h3>
-          <h4>$().dropdown()</h4>
-          <p>
-          A programatic api for activating menus for a given navbar or tabbed navigation.
-          </p>
-          <h3>Demo</h3>
+          <h2>Examples</h2>
+          <p>Click on the dropdown nav links in the navbar and pills below to test dropdowns.</p>
           <div id="navbar-example" class="navbar navbar-static">
             <div class="navbar-inner">
               <div class="container" style="width: auto;">
                 <a class="brand" href="#">Project Name</a>
                 <ul class="nav">
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Separated link</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Separated link</a></li>
+                    </ul>
+                  </li>
                 </ul>
-                <form class="form-search navbar-search pull-left" action="">
-                  <input type="text" class="search-query span2" placeholder="Search">
-                </form>
                 <ul class="nav pull-right">
                   <li id="fat-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 1 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Action</a></li>
                       <li><a href="#">Another action</a></li>
@@ -313,14 +342,82 @@ $('#myModal').on('hidden', function () {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> <!-- /navbar-example -->
+
+          <ul class="nav pills">
+            <li class="active"><a href="#">Regular link</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">Dropdown <b class="caret"></b></a>
+              <ul id="menu1" class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">Dropdown 2 <b class="caret"></b></a>
+              <ul id="menu2" class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#menu3">Dropdown 3 <b class="caret"></b></a>
+              <ul id="menu3" class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul> <!-- /tabs -->
+
+          <hr>
+
+          <h2>Using bootstrap-dropdown.js</h2>
+          <p>Call the dropdowns via javascript:</p>
+          <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
+          <h3>Markup</h3>
+          <p>To quickly add dropdown functionality to any element just add <code>data-toggle="dropdown"</code> and any valid bootstrap dropdown will automatically be activated.</p>
+          <p><span class="label notice">Notice</span> For added control and flexibility, optionally specify a <code>data-target="#fat"</code> or <code>href="#fat"</code> - this allows you to target specific dropdowns.</p>
+
+<pre class="prettyprint linenums">
+&lt;ul class="nav pills"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown"&gt;
+    &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
+      Dropdown
+      &lt;b class="caret"&gt;&lt;/b&gt;
+    &lt;/a&gt;
+    &lt;ul id="menu1" class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider"&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;</pre>
+          <h3>Methods</h3>
+          <h4>$().dropdown()</h4>
+          <p>
+          A programatic api for activating menus for a given navbar or tabbed navigation.
+          </p>
         </div>
       </div>
     </section>
 
+
+
    <!-- ScrollSpy
     ================================================== -->
-
     <section id="scrollspy">
       <div class="page-header">
         <h1>ScrollSpy <small>bootstrap-scrollspy.js</small></h1>
@@ -328,20 +425,11 @@ $('#myModal').on('hidden', function () {
       <div class="row">
         <div class="span3 columns">
           <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position.</p>
-          <a href="../js/bootstrap-scrollspy.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-scrollspy.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h2>Using bootstrap-scrollspy.js</h2>
-          <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
-          <h3>Markup</h3>
-          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body).
-          <pre class="prettyprint linenums">&lt;body data-spy="scroll" &gt;...&lt;/body&gt;</pre>
-           <p><span class="label notice">Notice</span> Navbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
-          <h3>Demo</h3>
-          <p>
-            Scroll the area below and watch the navigation update. The dropdown sub items will be highlighted as well. Try it!</p>
-          <p>
-
+          <h2>Example navbar with scrollspy</h2>
+          <p>Scroll the area below and watch the navigation update. The dropdown sub items will be highlighted as well. Try it!</p>
           <div id="navbarExample" class="navbar navbar-static">
             <div class="navbar-inner">
               <div class="container" style="width: auto;">
@@ -362,7 +450,6 @@ $('#myModal').on('hidden', function () {
               </div>
             </div>
           </div>
-
           <div data-spy="scroll" data-target="#navbarExample" class="scrollspy-example">
             <h4 id="fat">@fat</h4>
             <p>
@@ -387,25 +474,70 @@ $('#myModal').on('hidden', function () {
             <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
             </p>
           </div>
-
+          <hr>
+          <h2>Using bootstrap-scrollspy.js</h2>
+          <p>Call the scrollspy via javascript:</p>
+          <pre class="prettyprint linenums">$('#navbar').dropdown()</pre>
+          <h3>Markup</h3>
+          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body).
+          <pre class="prettyprint linenums">&lt;body data-spy="scroll" &gt;...&lt;/body&gt;</pre>
+           <p><span class="label notice">Notice</span> Navbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
         </div>
       </div>
     </section>
 
+
+
     <!-- Tabs
     ================================================== -->
-
     <section id="tab">
       <div class="page-header">
-        <h1>Tab <small>bootstrap-tab.js</small></h1>
+        <h1>Togglable tabs <small>bootstrap-tab.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
           <p>This plugin adds quick, dynamic tab and pill functionality for transitioning through local content.</p>
-          <a href="../js/bootstrap-tab.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-tab.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-tab.js</h3>
+          <h2>Example tabs</h2>
+          <p>Click the tabs below to toggle between hidden panes, even via dropdown menus.</p>
+          <ul id="tab" class="nav tabs">
+            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+            <li><a href="#profile" data-toggle="tab">Profile</a></li>
+            <li><a href="#messages" data-toggle="tab">Messages</a></li>
+            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
+                <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="home">
+              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+            </div>
+            <div class="tab-pane fade" id="profile">
+              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+            </div>
+            <div class="tab-pane fade" id="messages">
+              <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
+            </div>
+            <div class="tab-pane fade" id="settings">
+              <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
+            </div>
+            <div class="tab-pane fade" id="dropdown1">
+              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+            </div>
+            <div class="tab-pane fade" id="dropdown2">
+              <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+            </div>
+          </div>
+          <hr>
+          <h2>Using bootstrap-tab.js</h2>
+          <p>Enable tabbable tabs via javascript:</p>
           <pre class="prettyprint linenums">$('#myTab').tab('show')</pre>
           <h3>Markup</h3>
           <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element.</p>
@@ -413,7 +545,8 @@ $('#myModal').on('hidden', function () {
 &lt;ul class="tabs"&gt;
   &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#profile" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="http://twitter.com/fat"&gt;twitter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#messages" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#ettings" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
           <h3>Methods</h3>
           <h4>$().tab</h4>
@@ -428,7 +561,7 @@ $('#myModal').on('hidden', function () {
   &lt;li&gt;&lt;a href="#settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class="pill-content"&gt;
+&lt;div class="tab-content"&gt;
   &lt;div class="active" id="home"&gt;...&lt;/div&gt;
   &lt;div id="profile"&gt;...&lt;/div&gt;
   &lt;div id="messages"&gt;...&lt;/div&gt;
@@ -466,59 +599,34 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })</pre>
-          <h3>Demo</h3>
-
-          <ul id="tab" class="nav tabs">
-            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-            <li><a href="#profile" data-toggle="tab">Profile</a></li>
-            <li><a href="#messages" data-toggle="tab">Messages</a></li>
-            <li><a href="#settings" data-toggle="tab">Settings</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
-                <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade in active" id="home">
-              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-            </div>
-            <div class="tab-pane fade" id="profile">
-              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-            </div>
-            <div class="tab-pane fade" id="messages">
-              <p>Banksy do proident, brooklyn photo booth delectus sunt artisan sed organic exercitation eiusmod four loko. Quis tattooed iphone esse aliqua. Master cleanse vero fixie mcsweeney's. Ethical portland aute, irony food truck pitchfork lomo eu anim. Aesthetic blog DIY, ethical beard leggings tofu consequat whatever cardigan nostrud. Helvetica you probably haven't heard of them carles, marfa veniam occaecat lomo before they sold out in shoreditch scenester sustainable thundercats. Consectetur tofu craft beer, mollit brunch fap echo park pitchfork mustache dolor.</p>
-            </div>
-            <div class="tab-pane fade" id="settings">
-              <p>Sunt qui biodiesel mollit officia, fanny pack put a bird on it thundercats seitan squid ad wolf bicycle rights blog. Et aute readymade farm-to-table carles 8-bit, nesciunt nulla etsy adipisicing organic ea. Master cleanse mollit high life, next level Austin nesciunt american apparel twee mustache adipisicing reprehenderit hoodie portland irony. Aliqua tofu quinoa +1 commodo eiusmod. High life williamsburg cupidatat twee homo leggings. Four loko vinyl DIY consectetur nisi, marfa retro keffiyeh vegan. Fanny pack viral retro consectetur gentrify fap.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown1">
-              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-            </div>
-            <div class="tab-pane fade" id="dropdown2">
-              <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-            </div>
-          </div>
-        </div>
+       </div>
       </div>
     </section>
 
+
+
     <!-- Twipsy
     ================================================== -->
-
     <section id="twipsy">
       <div class="page-header">
         <h1>Twipsy <small>bootstrap-twipsy.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
+          <h3>About Twipsy tooltips</h3>
           <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, data-attributes for local title storage, and now jquery 1.7's new event api!</p>
-          <a href="../js/bootstrap-twipsy.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-twipsy.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-twipsy.js</h3>
+          <h2>Example use of Twipsy</h2>
+          <p>Hover over the links below to see tooltips:</p>
+          <div class="twipsy-demo well">
+            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" rel='twipsy' title="first twipsy">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
+            </p>
+          </div>
+          <hr>
+          <h2>Using bootstrap-twipsy.js</h2>
+          <p>Trigger the Twipsy tooltips via javascript:</p>
           <pre class="prettyprint linenums">$('#example').twipsy(options)</pre>
           <h3>Options</h3>
           <table class="bordered-table striped-table">
@@ -575,8 +683,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           </table>
           <p><span class="label notice">Notice</span> Individual twipsy instance options can alternatively be specified through the use of data attributes.</code></p>
           <h3>Markup</h3>
-          <p>
-          For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
+          <p>For performance reasons, the Twipsy and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
           <h3>Methods</h3>
           <h4>$().twipsy(options)</h4>
           <p>Attaches a twipsy handler to an element collection.</p>
@@ -586,29 +693,34 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.twipsy('hide')</h4>
           <p>Hides an elements twipsy.</p>
           <pre class="prettyprint linenums">$('#element').twipsy('hide')</pre>
-          <h3>Demo</h3>
-          <div class="twipsy-demo well">
-            <p class="muted">Tight pants next level keffiyeh <a href="#" rel='twipsy' title="first twipsy">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='twipsy' title='Another twipsy'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='twipsy' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='twipsy' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
-            </p>
-          </div>
         </div>
       </div>
     </section>
 
+
+
     <!-- Popovers
     ================================================== -->
-
-    <section id="popover">
+    <section id="popovers">
       <div class="page-header">
         <h1>Popovers <small>bootstrap-popover.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">bootstrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
-          <a href="../js/bootstrap-popover.js" target="_blank" class="btn primary">Download</a>
+          <h3>About popovers</h3>
+          <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
+          <p class="muted"><strong>*</strong> Requires <a href="#twipsy">Twipsy</a> to be included</p>
+          <a href="../js/bootstrap-popover.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-popover.js</h3>
+          <h2>Example hover popover</h2>
+          <p>Hover over the button to trigger the popover.</p>
+          <div class="well">
+            <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
+          </div>
+          <hr>
+          <h2>Using bootstrap-popover.js</h2>
+          <p>Enable popovers via javascript:</p>
           <pre class="prettyprint linenums">$('#example').popover(options)</pre>
           <h3>Options</h3>
           <table class="bordered-table striped-table">
@@ -683,27 +795,41 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.popover('hide')</h4>
           <p>Hides an elements popover.</p>
           <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
-          <h3>Demo</h3>
-          <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
         </div>
       </div>
     </section>
 
 
+
     <!-- Alert
     ================================================== -->
-
     <section id="alert">
       <div class="page-header">
-        <h1>Alert <small>bootstrap-alert.js</small></h1>
+        <h1>Alert messages <small>bootstrap-alert.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>The alert plugin is a super tiny class for adding close functionality to alerts.</p>
-          <a href="../js/bootstrap-alerts.js" target="_blank" class="btn primary">Download</a>
+          <h3>About alerts</h3>
+          <p>The alert plugin is a tiny class for adding close functionality to alerts.</p>
+          <a href="../js/bootstrap-alerts.js" target="_blank" class="btn">Download</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-alerts.js</h3>
+          <h2>Example alerts</h2>
+          <p>The alerts plugin works on regular alert messages, and block messages.</p>
+          <div class="alert-message warning fade in">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
+          </div>
+          <div class="alert-message block-message error fade in">
+            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+            <div class="alert-actions">
+              <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+            </div>
+          </div>
+          <hr>
+          <h2>Using bootstrap-alerts.js</h2>
+          <p>Enable dismissal of an alert via javascript:</p>
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>Markup</h3>
           <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
@@ -738,37 +864,68 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 $('#my-alert').bind('closed', function () {
   // do something ...
 })</pre>
-          <h3>Demo</h3>
-          <div class="alert-message warning fade in">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
-          </div>
-          <div class="alert-message block-message error fade in">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-            <div class="alert-actions">
-              <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
 
-    <!-- Button
-    ================================================== -->
 
+    <!-- Buttons
+    ================================================== -->
     <section id="button">
       <div class="page-header">
-        <h1>Button <small>bootstrap-button.js</small></h1>
+        <h1>Buttons <small>bootstrap-button.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>This plugin offers additional functionality for managing button state.</p>
-          <a href="../js/bootstrap-button.js" target="_blank" class="btn primary">Download</a>
+          <h3>About</h3>
+          <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
+          <a href="../js/bootstrap-button.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-button.js</h3>
+          <h2>Example uses</h2>
+          <p>Use the buttons plugin for states and toggles.</p>
+          <table class="bordered-table striped-table">
+            <tbody>
+             <tr>
+               <td>Stateful</td>
+               <td>
+                  <button id="fat-btn" data-loading-text="loading..." class="btn primary">
+                    Loading State
+                  </button>
+                </td>
+             </tr>
+             <tr>
+               <td>Single toggle</td>
+               <td>
+                  <button class="btn primary" data-toggle="button">Single Toggle</button>
+                </td>
+             </tr>
+             <tr>
+               <td>Checkbox</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-checkbox">
+                    <button class="btn primary">Left</button>
+                    <button class="btn primary">Middle</button>
+                    <button class="btn primary">Right</button>
+                  </div>
+               </td>
+             </tr>
+             <tr>
+               <td>Radio</td>
+               <td>
+                  <div class="btn-group" data-toggle="buttons-radio">
+                    <button class="btn primary">Left</button>
+                    <button class="btn primary">Middle</button>
+                    <button class="btn primary">Right</button>
+                  </div>
+               </td>
+             </tr>
+            </tbody>
+          </table>
+          <hr>
+          <h2>Using bootstrap-button.js</h2>
+          <p>Enable buttons via javascript:</p>
           <pre class="prettyprint linenums">$('.tabs').button()</pre>
             <h3>Markup</h3>
           <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
@@ -810,64 +967,62 @@ $('#my-alert').bind('closed', function () {
 &lt;script&gt;
   $('.btn').button('complete')
 &lt;/script&gt;</pre>
-          <h3>Demo</h3>
-          <table class="bordered-table striped-table">
-            <tbody>
-             <tr>
-               <td>Stateful</td>
-               <td>
-                  <button id="fat-btn" data-loading-text="loading..." class="btn">
-                    Loading State
-                  </button>
-                </td>
-             </tr>
-             <tr>
-               <td>Single Toggle</td>
-               <td>
-                  <button class="btn" data-toggle="button">Single Toggle</button>
-                </td>
-             </tr>
-             <tr>
-               <td>Checkbox</td>
-               <td>
-                  <div class="btn-group" data-toggle="buttons-checkbox">
-                    <button class="btn">Left</button>
-                    <button class="btn">Middle</button>
-                    <button class="btn">Right</button>
-                  </div>
-               </td>
-             </tr>
-             <tr>
-               <td>Radio</td>
-               <td>
-                  <div class="btn-group" data-toggle="buttons-radio">
-                    <button class="btn">Left</button>
-                    <button class="btn">Middle</button>
-                    <button class="btn">Right</button>
-                  </div>
-               </td>
-             </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
 
 
+
     <!-- Collapse
     ================================================== -->
-
     <section id="collapse">
       <div class="page-header">
-        <h1>collapse <small>bootstrap-collapse.js</small></h1>
+        <h1>Collapse <small>bootstrap-collapse.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>The collapse plugin offers simple, flexible collapsible element support for making accordions and other collapsible ui components.</p>
-          <a href="../js/bootstrap-collapse.js" target="_blank" class="btn primary">Download</a>
+          <h3>About</h3>
+          <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
+          <a href="../js/bootstrap-collapse.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-collapse.js</h3>
+          <h2>Example accordion</h2>
+          <p>Using the collapse plugin, we built a simple accordion style widget:</p>
+          <dl id="accordion">
+            <dt>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                Collapsible Group Item #1
+              </a>
+            </dt>
+            <dd id="collapseOne" class="collapse in">
+              <p>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              </p>
+            </dd>
+            <dt>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                Collapsible Group Item #2
+              </a>
+            </dt>
+            <dd id="collapseTwo" class="collapse">
+              <p>
+              Blog +1 eiusmod, williamsburg chambray craft beer brooklyn. Trust fund squid whatever, sunt hoodie skateboard mustache 3 wolf moon art party wes anderson ad leggings officia. Skateboard keytar incididunt gluten-free retro sartorial, single-origin coffee et viral. Art party blog sunt, readymade fugiat 8-bit aesthetic ex echo park fanny pack keytar. Thundercats sustainable labore, mustache adipisicing tattooed dolore aute occaecat velit 8-bit raw denim letterpress. In occaecat freegan, next level single-origin coffee chambray excepteur nihil duis exercitation adipisicing ex sartorial twee squid. You probably haven't heard of them fugiat ea retro eiusmod quis cosby sweater, +1 fap sapiente biodiesel banksy.
+              </p>
+            </dd>
+            <dt>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                Collapsible Group Item #3
+              </a>
+            </dt>
+            <dd id="collapseThree" class="collapse">
+              <p>
+              Tempor gentrify pariatur nihil salvia, irony synth incididunt odio commodo brunch aute. Four loko est vice echo park wes anderson jean shorts, tempor ea vero locavore. Seitan DIY dolore readymade williamsburg viral. Dolor fap master cleanse delectus, ad butcher labore duis vice mollit cillum exercitation eu banh mi. Austin banksy 3 wolf moon locavore sed, helvetica next level VHS you probably haven't heard of them ethical odio. Incididunt locavore minim, do seitan consequat qui thundercats labore before they sold out retro laborum. Esse twee readymade laboris fap vice, voluptate DIY.
+              </p>
+            </dd>
+          </dl>
+          <hr>
+          <h2>Using bootstrap-collapse.js</h2>
+          <p>Enable via javascript:</p>
           <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
           <h3>Options</h3>
           <table class="bordered-table striped-table">
@@ -953,68 +1108,57 @@ $('#myCollapsible').collapse({
 $('#myCollapsible').on('hidden', function () {
   // do something ...
 })</pre>
-          <h3>Demo</h3>
-
-            <!-- single collapse -->
-            <p>
-              <button class="btn danger" data-toggle="collapse" data-target="#collapseDemoWrap">
-                simple collapsible
-              </button>
-            </p>
-
-            <div id="collapseDemoWrap" class="collapse">
-              <!-- group collapse -->
-              <dl id="accordion" >
-                <dt>
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                    Collapsible Group Item #1
-                  </a>
-                </dt>
-                <dd id="collapseOne" class="collapse in">
-                  <p>
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </p>
-                </dd>
-                <dt>
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                    Collapsible Group Item #2
-                  </a>
-                </dt>
-                <dd id="collapseTwo" class="collapse">
-                  <p>
-                  Blog +1 eiusmod, williamsburg chambray craft beer brooklyn. Trust fund squid whatever, sunt hoodie skateboard mustache 3 wolf moon art party wes anderson ad leggings officia. Skateboard keytar incididunt gluten-free retro sartorial, single-origin coffee et viral. Art party blog sunt, readymade fugiat 8-bit aesthetic ex echo park fanny pack keytar. Thundercats sustainable labore, mustache adipisicing tattooed dolore aute occaecat velit 8-bit raw denim letterpress. In occaecat freegan, next level single-origin coffee chambray excepteur nihil duis exercitation adipisicing ex sartorial twee squid. You probably haven't heard of them fugiat ea retro eiusmod quis cosby sweater, +1 fap sapiente biodiesel banksy.
-                  </p>
-                </dd>
-                <dt>
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                    Collapsible Group Item #3
-                  </a>
-                </dt>
-                <dd id="collapseThree" class="collapse">
-                  <p>
-                  Tempor gentrify pariatur nihil salvia, irony synth incididunt odio commodo brunch aute. Four loko est vice echo park wes anderson jean shorts, tempor ea vero locavore. Seitan DIY dolore readymade williamsburg viral. Dolor fap master cleanse delectus, ad butcher labore duis vice mollit cillum exercitation eu banh mi. Austin banksy 3 wolf moon locavore sed, helvetica next level VHS you probably haven't heard of them ethical odio. Incididunt locavore minim, do seitan consequat qui thundercats labore before they sold out retro laborum. Esse twee readymade laboris fap vice, voluptate DIY.
-                  </p>
-                </dd>
-              </dl>
-            </div>
         </div>
       </div>
     </section>
 
+
+
      <!-- Carousel
     ================================================== -->
-
     <section id="carousel">
       <div class="page-header">
         <h1>Carousel <small>bootstrap-carousel.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
+          <h3>About</h3>
           <p>A generic plugin for cycling through elements. A merry-go-round.</p>
-          <a href="../js/bootstrap-carousel.js" target="_blank" class="btn primary">Download</a>
+          <a href="../js/bootstrap-carousel.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-carousel.js</h3>
+          <h2>Example carousel</h2>
+          <p>Watch the slideshow below.</p>
+          <div id="myCarousel" class="thumbnail carousel slide">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="http://placehold.it/1100x400" alt="">
+                <div class="caption">
+                  <h5>First Thumbnail label</h5>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="http://placehold.it/1100x400" alt="">
+                <div class="caption">
+                  <h5>Second Thumbnail label</h5>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="http://placehold.it/1100x400" alt="">
+                <div class="caption">
+                  <h5>Third Thumbnail label</h5>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+            </div>
+            <a class="left nav" href="#myCarousel" data-slide="prev">&laquo;</a>
+            <a class="right nav" href="#myCarousel" data-slide="next">&raquo;</a>
+          </div>
+          <hr>
+          <h2>Using bootstrap-carousel.js</h2>
+          <p>Call via javascript:</p>
           <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
           <h3>Options</h3>
           <table class="bordered-table striped-table">
@@ -1085,63 +1229,34 @@ $('#myCollapsible').on('hidden', function () {
              </tr>
             </tbody>
           </table>
-          <h3>Demo</h3>
-
-          <!-- carousel -->
-
-          <div id="myCarousel" class="thumbnail carousel slide">
-
-            <div class="carousel-inner">
-              <div class="item active">
-                <img src="http://placehold.it/1100x400" alt="">
-                <div class="caption">
-                  <h5>First Thumbnail label</h5>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <img src="http://placehold.it/1100x400" alt="">
-                <div class="caption">
-                  <h5>Second Thumbnail label</h5>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <img src="http://placehold.it/1100x400" alt="">
-                <div class="caption">
-                  <h5>Third Thumbnail label</h5>
-                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>
-              </div>
-            </div>
-
-            <a class="left nav" href="#myCarousel" data-slide="prev">&laquo;</a>
-            <a class="right nav" href="#myCarousel" data-slide="next">&raquo;</a>
-
-          </div>
-
         </div>
       </div>
     </section>
 
- <!-- Typeahead
-    ================================================== -->
 
+
+    <!-- Typeahead
+    ================================================== -->
     <section id="typeahead">
       <div class="page-header">
         <h1>Typeahead <small>bootstrap-typeahead.js</small></h1>
       </div>
       <div class="row">
         <div class="span3 columns">
-          <p>A basic, easily extended plugin for quickly creating elegant typeaheads.</p>
-          <a href="../js/bootstrap-typeahead.js" target="_blank" class="btn primary">Download</a>
+          <h3>About</h3>
+          <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
+          <a href="../js/bootstrap-typeahead.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
-          <h3>Using bootstrap-typeahead.js</h3>
+          <h2>Example</h2>
+          <p>Start typing in the field below to show the typeahead results.</p>
+          <div class="well">
+            <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-data='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+          </div>
+          <hr>
+          <h2>Using bootstrap-typeahead.js</h2>
+          <p>Call the typeahead via javascript:</p>
           <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
-
           <h3>Options</h3>
           <table class="bordered-table striped-table">
             <thead>
@@ -1167,11 +1282,10 @@ $('#myCollapsible').on('hidden', function () {
 <pre class="prettyprint linenums">
 &lt;input type="text" data-provide="typeahead"&gt;
 </pre>
-          <h3>Demo</h3>
-          <input type="text" data-provide="typeahead" data-items="4" data-data='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
         </div>
       </div>
     </section>
+
 
 
       <!-- Footer
