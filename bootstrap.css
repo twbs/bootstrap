@@ -2902,7 +2902,7 @@ a.thumbnail:hover {
 .progress .bar {
   width: 0%;
   height: 18px;
-  margin: ;
+  margin: 0;
   background-color: #0480be;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#149bdf), to(#0480be));
   background-image: -moz-linear-gradient(top, #149bdf, #0480be);
