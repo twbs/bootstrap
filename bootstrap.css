@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan  8 15:38:44 PST 2012
+ * Date: Sun Jan  8 19:32:37 PST 2012
  */
 html, body {
   margin: 0;
@@ -2525,9 +2525,9 @@ i {
   padding: 9px 14px 9px;
   font-size: 15px;
   line-height: normal;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 .btn.small {
   padding: 7px 9px 7px;
