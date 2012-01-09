@@ -10,7 +10,7 @@
 .navbar {
   overflow: visible;
 }
-// gradient is applied to it's own element because overflow visible is not honored by ie when filter is present
+// gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
   background-color: @navBarBgEnd;
   #gradient > .vertical(@navBarBgStart, @navBarBgEnd);
@@ -20,12 +20,9 @@
 // Text and links
 .navbar {
   // Hover and active states
-  .brand:hover,
-  ul .active > a {
+  .brand:hover {
     color: @white;
     text-decoration: none;
-    background-color: @navBarBgStart;
-    background-color: rgba(255,255,255,.05);
   }
   // Website or project name
   .brand {
@@ -166,6 +163,8 @@
 
 // Active nav items
 .navbar .nav .active > a {
+  color: @white;
+  text-decoration: none;
   background-color: #222;
   background-color: rgba(0,0,0,.5);
 }

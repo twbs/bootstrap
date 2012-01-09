@@ -101,8 +101,8 @@
   }
 }
 // Active state, and it's :hover to override normal :hover
-.tabs .active > a,
-.tabs .active > a:hover {
+.tabs > .active > a,
+.tabs > .active > a:hover {
   color: @gray;
   background-color: @white;
   border: 1px solid #ddd;
@@ -175,27 +175,61 @@
 // ---------
 
 // Position the menu
-.tabs .dropdown-menu,
-.pills .dropdown-menu {
+.pills .dropdown-menu,
+.tabs .dropdown-menu {
   top: 33px;
   border-width: 1px;
 }
 .pills .dropdown-menu {
   .border-radius(4px);
 }
+
+// Default dropdown links
+// -------------------------
+// Make carets use linkColor to start
 .tabs .dropdown-toggle .caret,
 .pills .dropdown-toggle .caret {
+  border-top-color: @linkColor;
   margin-top: 6px;
 }
+.tabs .dropdown-toggle:hover .caret,
+.pills .dropdown-toggle:hover .caret {
+  border-top-color: @linkColorHover;
+}
+
+// Active dropdown links
+// -------------------------
+.tabs .active .dropdown-toggle .caret,
+.pills .active .dropdown-toggle .caret {
+  border-top-color: #333;
+}
+
+// Active:hover dropdown links
+// -------------------------
+.nav > .dropdown.active > a:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+// Open dropdowns
+// -------------------------
 .tabs .open .dropdown-toggle,
-.pills .open .dropdown-toggle {
+.pills .open .dropdown-toggle,
+.nav > .open.active > a:hover {
+  color: #fff;
   background-color: #999;
   border-color: #999;
 }
-.tabs .open .caret,
-.pills .open .caret {
+.nav .open .caret,
+.nav .open.active .caret,
+.nav .open a:hover .caret {
   border-top-color: #fff;
   .opacity(100);
+}
+
+// Dropdowns in stacked tabs
+.tabs.stacked .open > a:hover {
+  border-color: #999;
 }
 
 
