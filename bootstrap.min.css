@@ -179,6 +179,7 @@ table{width:100%;margin-bottom:18px;}
 th,td{padding:8px;line-height:18px;text-align:left;border-top:1px solid #ddd;}
 th{font-weight:bold;vertical-align:bottom;}
 td{vertical-align:top;}
+tbody+tbody{border-top:2px solid #ddd;}
 .condensed-table th,.condensed-table td{padding:4px 5px;}
 .bordered-table{border:1px solid #ddd;border-collapse:separate;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.bordered-table th+th,.bordered-table td+td,.bordered-table th+td,.bordered-table td+th{border-left:1px solid #ddd;}
 .bordered-table thead:first-child tr:first-child th,.bordered-table tbody:first-child tr:first-child td{border-top:0;}
