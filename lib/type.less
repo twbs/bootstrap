@@ -11,7 +11,7 @@ p {
   margin-bottom: @baseline / 2;
   small {
     font-size: @basefont - 2;
-    color: @grayLight;
+    color: @lightGrayColor;
   }
 }
 
@@ -21,9 +21,9 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
-  color: @grayDark;
+  color: @darkerGrayColor;
   small {
-    color: @grayLight;
+    color: @lightGrayColor;
   }
 }
 h1 {
@@ -61,7 +61,7 @@ h5 {
 }
 h6 {
   font-size: 13px;
-  color: @grayLight;
+  color: @lightGrayColor;
   text-transform: uppercase;
 }
 
@@ -87,7 +87,7 @@ ol {
 }
 li, dt, dd {
   line-height: @baseline;
-  color: @gray;
+  color: @darkGrayColor;
 }
 ul.unstyled {
   list-style: none;
@@ -126,7 +126,7 @@ em {
   line-height: inherit;
 }
 .muted {
-  color: @grayLight;
+  color: @lightGrayColor;
 }
 
 // Blockquotes
@@ -141,7 +141,7 @@ blockquote {
   small {
     display: block;
     #font > .shorthand(300,12px,@baseline);
-    color: @grayLight;
+    color: @lightGrayColor;
     &:before {
       content: '\2014 \00A0';
     }
@@ -163,7 +163,7 @@ code, pre {
   .border-radius(3px);
 }
 code {
-  background-color: lighten(@orange, 40%);
+  background-color: lighten(@orangeColor, 40%);
   color: rgba(0,0,0,.75);
   padding: 1px 3px;
 }

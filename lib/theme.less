@@ -1,42 +1,42 @@
 // Hyperlinks, tab text, active pill background, pill text, breadcrumb text,
 // and pagination text.
 // Default Value: #0069d6 (Blue)
-@accentColor:           #0069d6;
+@mainColor:           #0069d6;
 
 // Hyperlink hover, tab hover text, pill hover background, breadcrumb hover
 // text, pagination hover text
-// Default Value: darken(@accentColor, 15)
-@darkAccentColor:       darken(@accentColor, 15);
+// Default Value: darken(@mainColor, 15)
+@darkMainColor:       darken(@mainColor, 15);
 
 // Tooltips, popover borders, and arrows.
 // Default Value: #000 (Black)
-@darkBorderColor:       #000; 
+@blackColor:            #000; 
 
 // Dark text and block message button text.
 // Default Value: lighten(@darkBorderColor, 25%);
-@darkerTextColor:       lighten(@darkBorderColor, 25%);
+@darkerGrayColor:       lighten(@blackColor, 25%);
 
 // Lists, input text, and current breadcrumb text.
 // Default Value: lighten(@darkBorderColor, 50%);
-@darkTextColor:         lighten(@darkBorderColor, 50%);
+@darkGrayColor:         lighten(@blackColor, 50%);
 
 // Topbar links, H6 headings, sub-headings (h1..6 > small), disabled input
-// text, and help text.
+// text, default inline label background and help text.
 // Default Value: lighten(@darkBorderColor, 75%);
-@lightTextColor:        lighten(@darkBorderColor, 75%);
+@lightGrayColor:        lighten(@blackColor, 75%);
 
-// Topbar input text.
+// Topbar input text, form actions background, and disabled input background.
 // Default Value: lighten(@darkBorderColor, 90%);
-@lighterTextColor:      lighten(@darkBorderColor, 90%);
+@lighterGrayColor:      lighten(@blackColor, 90%);
 
-// Background, topbar title, topbar active link, inline labels, multiple
+// Background, topbar title, topbar active link, inline label text, multiple
 // select background, disabled input background, file input background,
 // colored button text (primary, info, success, and danger), active tab
 // background, active pill text, inactive pill text shadow, breadcrumb text
 // shadow, basic alerts text (error, success, and info only), modal
 // background, and popover background.
 // Default Value: #fff (White)
-@lightBackgroundColor:  #fff;
+@whiteColor:            #fff;
 
 // Topbar light color.
 // Default Value: #333 (Dark Grey)
@@ -47,7 +47,7 @@
 @topbarDarkColor:       #222;
 
 // Blue table headings, primary button light background, and notice inline
-// labels.
+// label background.
 // Default Value: #049cdb (Cyan)
 @cyanColor:             #049cdb;
 
@@ -55,21 +55,22 @@
 // Default Value: #0064cd (Blue)
 @blueColor:             #0064cd;
 
-// Green table headings, success inline labels, and appended checkbox
-// background.
+// Green table headings, success inline label background, appended checkbox
+// background, and inputs with success.
 // Default Value: #46a546 (Green)
 @greenColor:            #46a546;
 
-// Red table headings.
+// Red table headings, important inline label background, and inputs with
+// errors.
 // Default Value: #9d261d (Red)
 @redColor:              #9d261d;
 
-// Yellow table headings.
+// Yellow table headings and inputs with warnings.
 // Default Value: #ffc40d (Yellow)
 @yellowColor:           #ffc40d;
 
-// Orange table headings, warning inline labels, and code highlighting
-// (<code/>).
+// Orange table headings, warning inline label background, and code
+// highlighting (<code/>).
 // Default Value: #f89406 (Orange)
 @orangeColor:           #f89406;
 
