@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 11 09:43:04 PST 2012
+ * Date: Wed Jan 11 21:59:22 PST 2012
  */
 html, body {
   margin: 0;
@@ -2214,7 +2214,7 @@ i {
   float: right;
   margin-left: 5px;
 }
-.twipsy {
+.tooltip {
   position: absolute;
   z-index: 1020;
   display: block;
@@ -2225,24 +2225,24 @@ i {
   -moz-opacity: 0;
   opacity: 0;
 }
-.twipsy.in {
+.tooltip.in {
   filter: alpha(opacity=80);
   -moz-opacity: 0.8;
   opacity: 0.8;
 }
-.twipsy.top {
+.tooltip.top {
   margin-top: -2px;
 }
-.twipsy.right {
+.tooltip.right {
   margin-left: 2px;
 }
-.twipsy.bottom {
+.tooltip.bottom {
   margin-top: 2px;
 }
-.twipsy.left {
+.tooltip.left {
   margin-left: -2px;
 }
-.twipsy.top .twipsy-arrow {
+.tooltip.top .tooltip-arrow {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
@@ -2250,7 +2250,7 @@ i {
   border-right: 5px solid transparent;
   border-top: 5px solid #000000;
 }
-.twipsy.left .twipsy-arrow {
+.tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
@@ -2258,7 +2258,7 @@ i {
   border-bottom: 5px solid transparent;
   border-left: 5px solid #000000;
 }
-.twipsy.bottom .twipsy-arrow {
+.tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
@@ -2266,7 +2266,7 @@ i {
   border-right: 5px solid transparent;
   border-bottom: 5px solid #000000;
 }
-.twipsy.right .twipsy-arrow {
+.tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
@@ -2274,7 +2274,7 @@ i {
   border-bottom: 5px solid transparent;
   border-right: 5px solid #000000;
 }
-.twipsy-inner {
+.tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
   color: white;
@@ -2285,7 +2285,7 @@ i {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.twipsy-arrow {
+.tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
@@ -2624,6 +2624,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+.btn-group.open .dropdown-menu.large {
+  top: 40px;
 }
 .btn-group.open .dropdown-toggle {
   background-image: none;

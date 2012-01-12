@@ -156,11 +156,13 @@
           break
 
         case 38: // up arrow
+          if (!this.shown) return
           e.preventDefault()
           this.prev()
           break
 
         case 40: // down arrow
+          if (!this.shown) return
           e.preventDefault()
           this.next()
           break
