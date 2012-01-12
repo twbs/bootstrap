@@ -1,12 +1,12 @@
 // Hyperlinks, tab text, active pill background, pill text, breadcrumb text,
 // and pagination text.
 // Default Value: #0069d6 (Blue)
-@mainColor:           #0069d6;
+@mainColor:           #26902c; // *CHANGED*
 
 // Hyperlink hover, tab hover text, pill hover background, breadcrumb hover
 // text, pagination hover text
 // Default Value: darken(@mainColor, 15)
-@darkMainColor:       darken(@mainColor, 15);
+@darkMainColor:       darken(@mainColor, 10); // *CHANGED*
 
 // Tooltips, popover borders, and arrows.
 // Default Value: #000 (Black)
@@ -23,7 +23,7 @@
 // Topbar links, H6 headings, sub-headings (h1..6 > small), disabled input
 // text, default inline label background and help text.
 // Default Value: lighten(@darkBorderColor, 75%);
-@lightGrayColor:        lighten(@blackColor, 75%);
+@lightGrayColor:        lighten(@blackColor, 85%); // *CHANGED*
 
 // Topbar input text, form actions background, and disabled input background.
 // Default Value: lighten(@darkBorderColor, 90%);
@@ -40,20 +40,20 @@
 
 // Topbar light color.
 // Default Value: #333 (Dark Grey)
-@topbarLightColor:      #333;
+@topbarLightColor:      @mainColor; // *CHANGED*
 
 // Topbar dark color.
 // Default Value: #222 (Darker Grey)
-@topbarDarkColor:       #222;
+@topbarDarkColor:       darken(@darkMainColor, 5%); // *CHANGED*
 
 // Blue table headings, primary button light background, and notice inline
 // label background.
 // Default Value: #049cdb (Cyan)
-@cyanColor:             #049cdb;
+@cyanColor:             @mainColor; // *CHANGED*
 
 // Primary button dark background.
 // Default Value: #0064cd (Blue)
-@blueColor:             #0064cd;
+@blueColor:             @darkMainColor; // *CHANGED*
 
 // Green table headings, success inline label background, appended checkbox
 // background, and inputs with success.

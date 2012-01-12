@@ -151,7 +151,7 @@
     }
   }
   .active > a {
-    background-color: #222;
+    background-color: darken(@topbarDarkColor, 5%);
     background-color: rgba(0,0,0,.5);
   }
 
@@ -173,27 +173,27 @@
   li.open .menu,
   .dropdown-toggle:hover,
   .dropdown.open .dropdown-toggle {
-    background: #444;
+    background: lighten(@topbarDarkColor, 5%);
     background: rgba(255,255,255,.05);
   }
   // .menu-dropdown for backwards compatibility
   .menu-dropdown,
   .dropdown-menu {
-    background-color: #333;
+    background-color: darken(@topbarLightColor, 5%);
     // a.menu for backwards compatibility
     a.menu,
     .dropdown-toggle {
       color: @whiteColor;
       &.open {
-        background: #444;
+        background: @topbarLightColor;
         background: rgba(255,255,255,.05);
       }
     }
     li a {
-      color: #999;
+      color: @lightGrayColor;
       text-shadow: 0 1px 0 rgba(0,0,0,.5);
       &:hover {
-        #gradient > .vertical(#292929,#191919);
+        #gradient > .vertical(@topbarDarkColor, darken(@topbarDarkColor, 8%));
         color: @whiteColor;
       }
     }
@@ -201,8 +201,8 @@
       color: @whiteColor;
     }
     .divider {
-      background-color: #222;
-      border-color: #444;
+      background-color: @topbarDarkColor;
+      border-color: @topbarLightColor;
     }
   }
 }
