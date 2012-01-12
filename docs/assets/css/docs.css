@@ -466,7 +466,7 @@ form.well {
 /* Icons
 ------------------------- */
 .the-icons {
-  
+
 }
 .the-icons i {
   display: block;
@@ -479,6 +479,13 @@ form.well {
   font-style: normal;
   margin-left: 20px;
   width: 100px;
+}
+
+#javascript input[type='checkbox'] {
+display: inline;
+margin-left: 6px;
+position: relative;
+top: -1px;
 }
 
 

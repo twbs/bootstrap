@@ -48,18 +48,18 @@ $(function(){
     setTimeout(function () { $(el).select() }, 0)
   })
 
-  if ($.fn.twipsy) {
+  if ($.fn.tooltip) {
 
     // position static twipsies for components page
     if ($(".twipsies a").length) {
       $(window).on('load resize', function () {
         $(".twipsies a").each(function () {
           $(this)
-            .twipsy({
+            .tooltip({
               placement: $(this).attr('title')
             , trigger: 'manual'
             })
-            .twipsy('show')
+            .tooltip('show')
           })
       })
     }
@@ -67,7 +67,7 @@ $(function(){
     // add tipsies to grid for scaffolding
     if ($('#grid-system').length) {
 
-      $('#grid-system').twipsy({
+      $('#grid-system').tooltip({
           selector: '.show-grid > div'
         , title: function () { return $(this).width() + 'px' }
       })
@@ -75,4 +75,79 @@ $(function(){
     }
   }
 
+  // javascript build logic
+
+  var inputs = $("#javascript input")
+
+  // toggle all plugin checkboxes
+  $('#selectAll').on('click', function (e) {
+    e.preventDefault()
+    inputs.attr('checked', !inputs.is(':checked'))
+  })
+
+  // handle build button dropdown
+  var buildTypes = $('#javascriptBuilder .dropdown-menu li').on('click', function () {
+    buildTypes.removeClass('active')
+    $(this).addClass('active')
+  })
+
+  // request built javascript
+  $('#javascriptBuild').on('click', function () {
+
+    var names = $("#javascript input:checked")
+      .map(function () { return this.value })
+      .toArray()
+
+    if (names[names.length - 1] == 'bootstrap-transition.js') {
+      names.unshift(names.pop())
+    }
+
+    $.ajax({
+      type: 'POST'
+    , dataType: 'jsonpi'
+    , params: {
+        branch: '2.0-wip'
+      , dir: 'js'
+      , filenames: names
+      , compress: buildTypes.first().hasClass('active')
+      }
+    , url: "http://bootstrap.herokuapp.com"
+    })
+  })
+
 })
+
+
+// Modified from the original jsonpi https://github.com/benvinegar/jquery-jsonpi
+// by the talented Ben Vinegar
+!function($) {
+    $.ajaxTransport('jsonpi', function(opts, originalOptions, jqXHR) {
+        var url = opts.url;
+
+        return {
+            send: function(_, completeCallback) {
+                var name = 'jQuery_iframe_' + jQuery.now(),
+                    iframe, form;
+
+                iframe = $('<iframe>')
+                    .attr('name', name)
+                    .appendTo('head');
+
+                form = $('<form>')
+                    .attr('method', opts.type) // GET or POST
+                    .attr('action', url)
+                    .attr('target', name);
+
+                $.each(opts.params, function(k, v) {
+                    $('<input>')
+                        .attr('type', 'hidden')
+                        .attr('name', k)
+                        .attr('value', v)
+                        .appendTo(form);
+                });
+
+                form.appendTo('body').submit();
+            }
+       };
+    });
+}(jQuery);

@@ -1,9 +1,9 @@
-// TWIPSY
-// ------
+// TOOLTIP
+// ------=
 
-.twipsy {
+.tooltip {
   position: absolute;
-  z-index: @zindexTwipsy;
+  z-index: @zindexTooltip;
   display: block;
   visibility: visible;
   padding: 5px;
@@ -14,12 +14,12 @@
   &.right  { margin-left:  2px; }
   &.bottom { margin-top:   2px; }
   &.left   { margin-left: -2px; }
-  &.top .twipsy-arrow    { #popoverArrow > .top(); }
-  &.left .twipsy-arrow   { #popoverArrow > .left(); }
-  &.bottom .twipsy-arrow { #popoverArrow > .bottom(); }
-  &.right .twipsy-arrow  { #popoverArrow > .right(); }
+  &.top .tooltip-arrow    { #popoverArrow > .top(); }
+  &.left .tooltip-arrow   { #popoverArrow > .left(); }
+  &.bottom .tooltip-arrow { #popoverArrow > .bottom(); }
+  &.right .tooltip-arrow  { #popoverArrow > .right(); }
 }
-.twipsy-inner {
+.tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
   color: white;
@@ -28,7 +28,7 @@
   background-color: @black;
   .border-radius(4px);
 }
-.twipsy-arrow {
+.tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
