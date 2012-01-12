@@ -115,8 +115,8 @@
 // For backwards compatibility, include .topbar .fill
 .topbar-inner,
 .topbar .fill {
-  background-color: #222;
-  #gradient > .vertical(#333, #222);
+  background-color: @topbarDarkColor;
+  #gradient > .vertical(@topbarLightColor, @topbarDarkColor);
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
   .box-shadow(@shadow);
 }
@@ -977,7 +977,7 @@ input[type=submit].btn {
   }
   .inner {
     background: @black;
-    background: rgba(0,0,0,.8);
+    background: hsla(hue(@black), saturation(@black), lightness(@black), 0.8);
     padding: 3px;
     overflow: hidden;
     width: 280px;
