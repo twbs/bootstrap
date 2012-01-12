@@ -8,15 +8,16 @@
 // BASELINE STYLES
 // ---------------
 
-table.bootstrap {
+table {
   width: 100%;
   margin-bottom: @baseLineHeight;
+}
 th,
 td {
   padding: 8px;
   line-height: @baseLineHeight;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
 th {
   font-weight: bold;
@@ -25,19 +26,23 @@ th {
 td {
   vertical-align: top;
 }
-tbody tr:last-child th,
-tbody tr:last-child td {
-  border-bottom: 0;
+
+// Remove top border from thead by default
+thead:first-child tr th,
+thead:first-child tr td {
+  border-top: 0;
 }
+
+// Account for multiple tbody instances
 tbody + tbody {
   border-top: 2px solid #ddd;
 }
-}
+
 
 // CONDENSED TABLE W/ HALF PADDING
 // -------------------------------
 
-table.condensed-table {
+.condensed-table {
   th,
   td {
     padding: 4px 5px;
@@ -48,7 +53,7 @@ table.condensed-table {
 // BORDERED VERSION
 // ----------------
 
-table.bordered-table {
+.bordered-table {
   border: 1px solid #ddd;
   border-collapse: separate; // Done so we can round those corners!
   .border-radius(4px);
@@ -60,7 +65,8 @@ table.bordered-table {
   }
   // Prevent a double border
   thead:first-child tr:first-child th,
-  tbody:first-child tr:first-child td {
+  tbody:first-child tr:first-child td,
+  tbody:first-child tr:first-child th {
     border-top: 0;
   }
   // For first th or td in the first row in the first thead or tbody
@@ -88,7 +94,7 @@ table.bordered-table {
 // --------------
 
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
-table.striped-table {
+.striped-table {
   tbody {
     tr:nth-child(odd) td,
     tr:nth-child(odd) th {
@@ -108,9 +114,7 @@ table.striped-table {
   width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16;
   margin-left: 0;
 }
-
-table.bootstrap {
-  // Default columns
+table {
   .span1     { .tableColumns(1); }
   .span2     { .tableColumns(2); }
   .span3     { .tableColumns(3); }
@@ -131,7 +135,7 @@ table.bootstrap {
 // -----------
 // Support for the tablesorter jQuerdy plugin
 
-table.bootstrap {
+table {
   // Tablesorting styles w/ jQuery plugin
   .header {
     cursor: pointer;
