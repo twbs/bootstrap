@@ -1,12 +1,12 @@
 /*!
- * Bootstrap v1.3.0
+ * Bootstrap v1.4.0
  *
  * Copyright 2011 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Sep 22 12:52:42 PDT 2011
+ * Date: Sun Dec 25 20:18:31 PST 2011
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -173,17 +173,15 @@ textarea {
 /* Variables.less
  * Variables to customize the look and feel of Bootstrap
  * ----------------------------------------------------- */
-/* Variables.less
+/* Mixins.less
  * Snippets of reusable CSS to develop faster and keep code readable
  * ----------------------------------------------------------------- */
 /*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
  * ------------------------------------------------------------------------------------------- */
-html, body {
-  background-color: #ffffff;
-}
 body {
+  background-color: #ffffff;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -201,7 +199,6 @@ body {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .container:after {
   clear: both;
@@ -217,13 +214,14 @@ body {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .container-fluid:after {
   clear: both;
 }
 .container-fluid > .sidebar {
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 20px;
   width: 220px;
 }
 .container-fluid > .content {
@@ -259,12 +257,11 @@ a:hover {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .row:after {
   clear: both;
 }
-[class*="span"] {
+.row > [class*="span"] {
   display: inline;
   float: left;
   margin-left: 20px;
@@ -341,40 +338,40 @@ a:hover {
 .span24 {
   width: 1420px;
 }
-.offset1 {
+.row > .offset1 {
   margin-left: 80px;
 }
-.offset2 {
+.row > .offset2 {
   margin-left: 140px;
 }
-.offset3 {
+.row > .offset3 {
   margin-left: 200px;
 }
-.offset4 {
+.row > .offset4 {
   margin-left: 260px;
 }
-.offset5 {
+.row > .offset5 {
   margin-left: 320px;
 }
-.offset6 {
+.row > .offset6 {
   margin-left: 380px;
 }
-.offset7 {
+.row > .offset7 {
   margin-left: 440px;
 }
-.offset8 {
+.row > .offset8 {
   margin-left: 500px;
 }
-.offset9 {
+.row > .offset9 {
   margin-left: 560px;
 }
-.offset10 {
+.row > .offset10 {
   margin-left: 620px;
 }
-.offset11 {
+.row > .offset11 {
   margin-left: 680px;
 }
-.offset12 {
+.row > .offset12 {
   margin-left: 740px;
 }
 .span-one-third {
@@ -383,10 +380,10 @@ a:hover {
 .span-two-thirds {
   width: 620px;
 }
-.offset-one-third {
+.row > .offset-one-third {
   margin-left: 340px;
 }
-.offset-two-thirds {
+.row > .offset-two-thirds {
   margin-left: 660px;
 }
 /* Typography.less
@@ -598,7 +595,6 @@ form .clearfix:before, form .clearfix:after {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 form .clearfix:after {
   clear: both;
@@ -643,7 +639,9 @@ select,
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-/* mini reset for non-html5 file types */
+select {
+  padding: initial;
+}
 input[type=checkbox], input[type=radio] {
   width: auto;
   height: auto;
@@ -670,6 +668,7 @@ input[type=button], input[type=reset], input[type=submit] {
 }
 select, input[type=file] {
   height: 27px;
+  *height: auto;
   line-height: 27px;
   *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
@@ -677,6 +676,7 @@ select, input[type=file] {
 }
 select[multiple] {
   height: inherit;
+  background-color: #ffffff;
 }
 textarea {
   height: auto;
@@ -719,33 +719,59 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   box-shadow: none;
   outline: 1px dotted #666;
 }
-form div.clearfix.error {
-  background: #fae5e3;
-  padding: 10px 0;
-  margin: -10px 0 10px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+form .clearfix.error > label, form .clearfix.error .help-block, form .clearfix.error .help-inline {
+  color: #b94a48;
 }
-form div.clearfix.error > label, form div.clearfix.error span.help-inline, form div.clearfix.error span.help-block {
-  color: #9d261d;
+form .clearfix.error input, form .clearfix.error textarea {
+  color: #b94a48;
+  border-color: #ee5f5b;
 }
-form div.clearfix.error input, form div.clearfix.error textarea {
-  border-color: #c87872;
-  -webkit-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
-  -moz-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
-  box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
+form .clearfix.error input:focus, form .clearfix.error textarea:focus {
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
 }
-form div.clearfix.error input:focus, form div.clearfix.error textarea:focus {
-  border-color: #b9554d;
-  -webkit-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
-  -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
-  box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
+form .clearfix.error .input-prepend .add-on, form .clearfix.error .input-append .add-on {
+  color: #b94a48;
+  background-color: #fce6e6;
+  border-color: #b94a48;
 }
-form div.clearfix.error .input-prepend span.add-on, form div.clearfix.error .input-append span.add-on {
-  background: #f4c8c5;
-  border-color: #c87872;
-  color: #b9554d;
+form .clearfix.warning > label, form .clearfix.warning .help-block, form .clearfix.warning .help-inline {
+  color: #c09853;
+}
+form .clearfix.warning input, form .clearfix.warning textarea {
+  color: #c09853;
+  border-color: #ccae64;
+}
+form .clearfix.warning input:focus, form .clearfix.warning textarea:focus {
+  border-color: #be9a3f;
+  -webkit-box-shadow: 0 0 6px #e5d6b1;
+  -moz-box-shadow: 0 0 6px #e5d6b1;
+  box-shadow: 0 0 6px #e5d6b1;
+}
+form .clearfix.warning .input-prepend .add-on, form .clearfix.warning .input-append .add-on {
+  color: #c09853;
+  background-color: #d2b877;
+  border-color: #c09853;
+}
+form .clearfix.success > label, form .clearfix.success .help-block, form .clearfix.success .help-inline {
+  color: #468847;
+}
+form .clearfix.success input, form .clearfix.success textarea {
+  color: #468847;
+  border-color: #57a957;
+}
+form .clearfix.success input:focus, form .clearfix.success textarea:focus {
+  border-color: #458845;
+  -webkit-box-shadow: 0 0 6px #9acc9a;
+  -moz-box-shadow: 0 0 6px #9acc9a;
+  box-shadow: 0 0 6px #9acc9a;
+}
+form .clearfix.success .input-prepend .add-on, form .clearfix.success .input-append .add-on {
+  color: #468847;
+  background-color: #bcddbc;
+  border-color: #468847;
 }
 .input-mini,
 input.mini,
@@ -786,97 +812,97 @@ select.xxlarge {
 textarea.xxlarge {
   overflow-y: auto;
 }
-input.span1, textarea.span1, select.span1 {
+input.span1, textarea.span1 {
   display: inline-block;
   float: none;
   width: 30px;
   margin-left: 0;
 }
-input.span2, textarea.span2, select.span2 {
+input.span2, textarea.span2 {
   display: inline-block;
   float: none;
   width: 90px;
   margin-left: 0;
 }
-input.span3, textarea.span3, select.span3 {
+input.span3, textarea.span3 {
   display: inline-block;
   float: none;
   width: 150px;
   margin-left: 0;
 }
-input.span4, textarea.span4, select.span4 {
+input.span4, textarea.span4 {
   display: inline-block;
   float: none;
   width: 210px;
   margin-left: 0;
 }
-input.span5, textarea.span5, select.span5 {
+input.span5, textarea.span5 {
   display: inline-block;
   float: none;
   width: 270px;
   margin-left: 0;
 }
-input.span6, textarea.span6, select.span6 {
+input.span6, textarea.span6 {
   display: inline-block;
   float: none;
   width: 330px;
   margin-left: 0;
 }
-input.span7, textarea.span7, select.span7 {
+input.span7, textarea.span7 {
   display: inline-block;
   float: none;
   width: 390px;
   margin-left: 0;
 }
-input.span8, textarea.span8, select.span8 {
+input.span8, textarea.span8 {
   display: inline-block;
   float: none;
   width: 450px;
   margin-left: 0;
 }
-input.span9, textarea.span9, select.span9 {
+input.span9, textarea.span9 {
   display: inline-block;
   float: none;
   width: 510px;
   margin-left: 0;
 }
-input.span10, textarea.span10, select.span10 {
+input.span10, textarea.span10 {
   display: inline-block;
   float: none;
   width: 570px;
   margin-left: 0;
 }
-input.span11, textarea.span11, select.span11 {
+input.span11, textarea.span11 {
   display: inline-block;
   float: none;
   width: 630px;
   margin-left: 0;
 }
-input.span12, textarea.span12, select.span12 {
+input.span12, textarea.span12 {
   display: inline-block;
   float: none;
   width: 690px;
   margin-left: 0;
 }
-input.span13, textarea.span13, select.span13 {
+input.span13, textarea.span13 {
   display: inline-block;
   float: none;
   width: 750px;
   margin-left: 0;
 }
-input.span14, textarea.span14, select.span14 {
+input.span14, textarea.span14 {
   display: inline-block;
   float: none;
   width: 810px;
   margin-left: 0;
 }
-input.span15, textarea.span15, select.span15 {
+input.span15, textarea.span15 {
   display: inline-block;
   float: none;
   width: 870px;
   margin-left: 0;
 }
-input.span16, textarea.span16, select.span16 {
+input.span16, textarea.span16 {
   display: inline-block;
   float: none;
   width: 930px;
@@ -912,7 +938,7 @@ textarea[readonly] {
   text-decoration: underline;
 }
 .help-inline, .help-block {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 18px;
   color: #bfbfbf;
 }
@@ -931,15 +957,6 @@ textarea[readonly] {
 }
 .inline-inputs {
   color: #808080;
-}
-.inline-inputs span, .inline-inputs input {
-  display: inline-block;
-}
-.inline-inputs input.mini {
-  width: 60px;
-}
-.inline-inputs input.small {
-  width: 90px;
 }
 .inline-inputs span {
   padding: 0 2px 0 1px;
@@ -1006,6 +1023,7 @@ textarea[readonly] {
   float: none;
   width: auto;
   padding: 0;
+  margin-left: 20px;
   line-height: 18px;
   text-align: left;
   white-space: normal;
@@ -1030,6 +1048,8 @@ textarea[readonly] {
 }
 .inputs-list input[type=radio], .inputs-list input[type=checkbox] {
   margin-bottom: 0;
+  margin-left: -20px;
+  float: left;
 }
 .form-stacked {
   padding-left: 20px;
@@ -1084,15 +1104,8 @@ table {
   width: 100%;
   margin-bottom: 18px;
   padding: 0;
-  border-collapse: separate;
-  *border-collapse: collapse;
-  /* IE7, collapse table to remove spacing */
-
   font-size: 13px;
-  border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-collapse: collapse;
 }
 table th, table td {
   padding: 10px 10px 9px;
@@ -1103,41 +1116,103 @@ table th {
   padding-top: 9px;
   font-weight: bold;
   vertical-align: middle;
-  border-bottom: 1px solid #ddd;
 }
 table td {
   vertical-align: top;
-}
-table th + th, table td + td {
-  border-left: 1px solid #ddd;
-}
-table tr + tr td {
   border-top: 1px solid #ddd;
 }
-table tbody tr:first-child td:first-child {
+table tbody th {
+  border-top: 1px solid #ddd;
+  vertical-align: top;
+}
+.condensed-table th, .condensed-table td {
+  padding: 5px 5px 4px;
+}
+.bordered-table {
+  border: 1px solid #ddd;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  /* IE7, collapse table to remove spacing */
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.bordered-table th + th, .bordered-table td + td, .bordered-table th + td {
+  border-left: 1px solid #ddd;
+}
+.bordered-table thead tr:first-child th:first-child, .bordered-table tbody tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
   -moz-border-radius: 4px 0 0 0;
   border-radius: 4px 0 0 0;
 }
-table tbody tr:first-child td:last-child {
+.bordered-table thead tr:first-child th:last-child, .bordered-table tbody tr:first-child td:last-child {
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
   border-radius: 0 4px 0 0;
 }
-table tbody tr:last-child td:first-child {
+.bordered-table tbody tr:last-child td:first-child {
   -webkit-border-radius: 0 0 0 4px;
   -moz-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
 }
-table tbody tr:last-child td:last-child {
+.bordered-table tbody tr:last-child td:last-child {
   -webkit-border-radius: 0 0 4px 0;
   -moz-border-radius: 0 0 4px 0;
   border-radius: 0 0 4px 0;
 }
-.zebra-striped tbody tr:nth-child(odd) td {
+table .span1 {
+  width: 20px;
+}
+table .span2 {
+  width: 60px;
+}
+table .span3 {
+  width: 100px;
+}
+table .span4 {
+  width: 140px;
+}
+table .span5 {
+  width: 180px;
+}
+table .span6 {
+  width: 220px;
+}
+table .span7 {
+  width: 260px;
+}
+table .span8 {
+  width: 300px;
+}
+table .span9 {
+  width: 340px;
+}
+table .span10 {
+  width: 380px;
+}
+table .span11 {
+  width: 420px;
+}
+table .span12 {
+  width: 460px;
+}
+table .span13 {
+  width: 500px;
+}
+table .span14 {
+  width: 540px;
+}
+table .span15 {
+  width: 580px;
+}
+table .span16 {
+  width: 620px;
+}
+.zebra-striped tbody tr:nth-child(odd) td, .zebra-striped tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
-.zebra-striped tbody tr:hover td {
+.zebra-striped tbody tr:hover td, .zebra-striped tbody tr:hover th {
   background-color: #f5f5f5;
 }
 table .header {
@@ -1238,7 +1313,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   color: #bfbfbf;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-.topbar h3 a:hover, .topbar .brand a:hover, .topbar ul .active > a {
+.topbar h3 a:hover, .topbar .brand:hover, .topbar ul .active > a {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
@@ -1522,7 +1597,10 @@ a.menu:after, .dropdown-toggle:after {
   color: #808080;
   text-shadow: 0 1px 0 #ffffff;
 }
-.topbar .dropdown-menu a:hover, .dropdown-menu a:hover {
+.topbar .dropdown-menu a:hover,
+.dropdown-menu a:hover,
+.topbar .dropdown-menu a.hover,
+.dropdown-menu a.hover {
   background-color: #dddddd;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#eeeeee), to(#dddddd));
@@ -1554,7 +1632,7 @@ a.menu:after, .dropdown-toggle:after {
   display: block;
 }
 .tabs, .pills {
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   padding: 0;
   list-style: none;
   zoom: 1;
@@ -1566,7 +1644,6 @@ a.menu:after, .dropdown-toggle:after {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .tabs:after, .pills:after {
   clear: both;
@@ -1578,18 +1655,18 @@ a.menu:after, .dropdown-toggle:after {
   display: block;
 }
 .tabs {
-  float: left;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-color: #ddd;
+  border-style: solid;
+  border-width: 0 0 1px;
 }
 .tabs > li {
   position: relative;
-  top: 1px;
+  margin-bottom: -1px;
 }
 .tabs > li > a {
   padding: 0 15px;
   margin-right: 2px;
-  line-height: 36px;
+  line-height: 34px;
   border: 1px solid transparent;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
@@ -1600,11 +1677,12 @@ a.menu:after, .dropdown-toggle:after {
   background-color: #eee;
   border-color: #eee #eee #ddd;
 }
-.tabs > li.active > a {
+.tabs .active > a, .tabs .active > a:hover {
   color: #808080;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
+  cursor: default;
 }
 .tabs .menu-dropdown, .tabs .dropdown-menu {
   top: 35px;
@@ -1624,38 +1702,41 @@ a.menu:after, .dropdown-toggle:after {
 .tabs li.open a.menu:after, .tabs .dropdown.open .dropdown-toggle:after {
   border-top-color: #555;
 }
-.tab-content {
-  clear: both;
-}
 .pills a {
   margin: 5px 3px 5px 0;
   padding: 0 15px;
-  text-shadow: 0 1px 1px #ffffff;
   line-height: 30px;
+  text-shadow: 0 1px 1px #ffffff;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
 .pills a:hover {
-  background: #00438a;
   color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #00438a;
 }
 .pills .active a {
-  background: #0069d6;
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #0069d6;
 }
-.tab-content > *, .pill-content > * {
+.pills-vertical > li {
+  float: none;
+}
+.tab-content > .tab-pane,
+.pill-content > .pill-pane,
+.tab-content > div,
+.pill-content > div {
   display: none;
 }
 .tab-content > .active, .pill-content > .active {
   display: block;
 }
 .breadcrumb {
-  margin: 0 0 18px;
   padding: 7px 14px;
+  margin: 0 0 18px;
   background-color: #f5f5f5;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
@@ -1736,6 +1817,10 @@ footer {
 .btn.info:hover,
 .alert-message.info:hover {
   color: #ffffff;
+}
+.btn .close, .alert-message .close {
+  font-family: Arial, sans-serif;
+  line-height: 18px;
 }
 .btn.danger,
 .alert-message.danger,
@@ -1840,7 +1925,7 @@ footer {
   border-color: #0064cd #0064cd #003f81;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn:active {
+.btn.active, .btn:active {
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1895,10 +1980,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   font-weight: bold;
   line-height: 13.5px;
   text-shadow: 0 1px 0 #ffffff;
-  filter: alpha(opacity=20);
-  -khtml-opacity: 0.2;
-  -moz-opacity: 0.2;
-  opacity: 0.2;
+  filter: alpha(opacity=25);
+  -khtml-opacity: 0.25;
+  -moz-opacity: 0.25;
+  opacity: 0.25;
 }
 .close:hover {
   color: #000000;
@@ -1937,9 +2022,18 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .alert-message .close {
-  *margin-top: 3px;
-  /* IE7 spacing */
-
+  margin-top: 1px;
+  *margin-top: 0;
+}
+.alert-message a {
+  font-weight: bold;
+  color: #404040;
+}
+.alert-message.danger p a,
+.alert-message.error p a,
+.alert-message.success p a,
+.alert-message.info p a {
+  color: #ffffff;
 }
 .alert-message h5 {
   line-height: 18px;
@@ -1994,6 +2088,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .alert-message.block-message.info {
   background-color: #ddf4fb;
   border-color: #c6edf9;
+}
+.alert-message.block-message.danger p a,
+.alert-message.block-message.error p a,
+.alert-message.block-message.success p a,
+.alert-message.block-message.info p a {
+  color: #404040;
 }
 .pagination {
   height: 36px;
@@ -2077,8 +2177,10 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   top: 50%;
   left: 50%;
   z-index: 11000;
+  max-height: 500px;
+  overflow: auto;
   width: 560px;
-  margin: -250px 0 0 -250px;
+  margin: -250px 0 0 -280px;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -2116,6 +2218,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .modal-body {
   padding: 15px;
 }
+.modal-body form {
+  margin-bottom: 0;
+}
 .modal-footer {
   background-color: #f5f5f5;
   padding: 14px 15px 15px;
@@ -2133,7 +2238,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .modal-footer:after {
   clear: both;
@@ -2141,6 +2245,9 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .modal-footer .btn {
   float: right;
   margin-left: 5px;
+}
+.modal .popover, .modal .twipsy {
+  z-index: 12000;
 }
 .twipsy {
   display: block;
@@ -2254,8 +2361,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   height: 0;
 }
 .popover .inner {
-  background-color: #000000;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: #000000;
+  background: rgba(0, 0, 0, 0.8);
   padding: 3px;
   overflow: hidden;
   width: 280px;
@@ -2301,14 +2408,16 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .label {
   padding: 1px 3px 2px;
-  background-color: #bfbfbf;
   font-size: 9.75px;
   font-weight: bold;
   color: #ffffff;
   text-transform: uppercase;
+  white-space: nowrap;
+  background-color: #bfbfbf;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  text-shadow: none;
 }
 .label.important {
   background-color: #c43c35;
@@ -2331,7 +2440,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   display: table;
   content: "";
   zoom: 1;
-  *display: inline;
 }
 .media-grid:after {
   clear: both;
@@ -2342,7 +2450,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .media-grid a {
   float: left;
   padding: 4px;
-  margin: 0 0 20px 20px;
+  margin: 0 0 18px 20px;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

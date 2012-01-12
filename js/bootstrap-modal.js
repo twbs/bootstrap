@@ -1,5 +1,5 @@
 /* =========================================================
- * bootstrap-modal.js v1.3.0
+ * bootstrap-modal.js v1.4.0
  * http://twitter.github.com/bootstrap/javascript.html#modal
  * =========================================================
  * Copyright 2011 Twitter, Inc.
@@ -19,6 +19,8 @@
 
 
 !function( $ ){
+
+  "use strict"
 
  /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
   * ======================================================= */
@@ -53,16 +55,12 @@
   * ============================= */
 
   var Modal = function ( content, options ) {
-    this.settings = $.extend({}, $.fn.modal.defaults)
+    this.settings = $.extend({}, $.fn.modal.defaults, options)
     this.$element = $(content)
       .delegate('.close', 'click.modal', $.proxy(this.hide, this))
 
-    if ( options ) {
-      $.extend( this.settings, options )
-
-      if ( options.show ) {
-        this.show()
-      }
+    if ( this.settings.show ) {
+      this.show()
     }
 
     return this
@@ -81,17 +79,22 @@
 
         escape.call(this)
         backdrop.call(this, function () {
+          var transition = $.support.transition && that.$element.hasClass('fade')
+
           that.$element
             .appendTo(document.body)
             .show()
 
-          if ($.support.transition && that.$element.hasClass('fade')) {
+          if (transition) {
             that.$element[0].offsetWidth // force reflow
           }
 
-          that.$element
-            .addClass('in')
-            .trigger('shown')
+          that.$element.addClass('in')
+
+          transition ?
+            that.$element.one(transitionEnd, function () { that.$element.trigger('shown') }) :
+            that.$element.trigger('shown')
+
         })
 
         return this
@@ -99,6 +102,10 @@
 
     , hide: function (e) {
         e && e.preventDefault()
+
+        if ( !this.isShown ) {
+          return this
+        }
 
         var that = this
         this.isShown = false
@@ -109,17 +116,9 @@
           .trigger('hide')
           .removeClass('in')
 
-        function removeElement () {
-          that.$element
-            .hide()
-            .trigger('hidden')
-
-          backdrop.call(that)
-        }
-
         $.support.transition && this.$element.hasClass('fade') ?
-          this.$element.one(transitionEnd, removeElement) :
-          removeElement()
+          hideWithTransition.call(this) :
+          hideModal.call(this)
 
         return this
       }
@@ -129,6 +128,28 @@
 
  /* MODAL PRIVATE METHODS
   * ===================== */
+
+  function hideWithTransition() {
+    // firefox drops transitionEnd events :{o
+    var that = this
+      , timeout = setTimeout(function () {
+          that.$element.unbind(transitionEnd)
+          hideModal.call(that)
+        }, 500)
+
+    this.$element.one(transitionEnd, function () {
+      clearTimeout(timeout)
+      hideModal.call(that)
+    })
+  }
+
+  function hideModal (that) {
+    this.$element
+      .hide()
+      .trigger('hidden')
+
+    backdrop.call(this)
+  }
 
   function backdrop ( callback ) {
     var that = this
@@ -156,17 +177,18 @@
     } else if ( !this.isShown && this.$backdrop ) {
       this.$backdrop.removeClass('in')
 
-      function removeElement() {
-        that.$backdrop.remove()
-        that.$backdrop = null
-      }
-
       $.support.transition && this.$element.hasClass('fade')?
-        this.$backdrop.one(transitionEnd, removeElement) :
-        removeElement()
+        this.$backdrop.one(transitionEnd, $.proxy(removeBackdrop, this)) :
+        removeBackdrop.call(this)
+
     } else if ( callback ) {
        callback()
     }
+  }
+
+  function removeBackdrop() {
+    this.$backdrop.remove()
+    this.$backdrop = null
   }
 
   function escape() {
@@ -220,7 +242,7 @@
   $.fn.modal.defaults = {
     backdrop: false
   , keyboard: false
-  , show: true
+  , show: false
   }
 
 

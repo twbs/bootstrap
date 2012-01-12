@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-popover.js v1.3.0
+ * bootstrap-popover.js v1.4.0
  * http://twitter.github.com/bootstrap/javascript.html#popover
  * ===========================================================
  * Copyright 2011 Twitter, Inc.
@@ -20,6 +20,8 @@
 
 !function( $ ) {
 
+ "use strict"
+
   var Popover = function ( element, options ) {
     this.$element = $(element)
     this.options = options
@@ -35,8 +37,12 @@
     setContent: function () {
       var $tip = this.tip()
       $tip.find('.title')[this.options.html ? 'html' : 'text'](this.getTitle())
-      $tip.find('.content p')[this.options.html ? 'html' : 'text'](this.getContent())
+      $tip.find('.content > *')[this.options.html ? 'html' : 'text'](this.getContent())
       $tip[0].className = 'popover'
+    }
+
+  , hasContent: function () {
+      return this.getTitle() || this.getContent()
     }
 
   , getContent: function () {
@@ -45,17 +51,18 @@
        , o = this.options
 
       if (typeof this.options.content == 'string') {
-        content = $e.attr(o.content)
+        content = $e.attr(this.options.content)
       } else if (typeof this.options.content == 'function') {
         content = this.options.content.call(this.$element[0])
       }
+
       return content
     }
 
   , tip: function() {
       if (!this.$tip) {
         this.$tip = $('<div class="popover" />')
-          .html('<div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div>')
+          .html(this.options.template)
       }
       return this.$tip
     }
@@ -72,6 +79,12 @@
     return this
   }
 
-  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, { content: 'data-content', placement: 'right'})
+  $.fn.popover.defaults = $.extend({} , $.fn.twipsy.defaults, {
+    placement: 'right'
+  , content: 'data-content'
+  , template: '<div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div>'
+  })
+
+  $.fn.twipsy.rejectAttrOptions.push( 'content' )
 
 }( window.jQuery || window.ender );

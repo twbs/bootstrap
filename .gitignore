@@ -1,2 +1,4 @@
+*~
 .DS_Store
-.svn*
+thumbs.db
+js/min

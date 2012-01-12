@@ -77,7 +77,12 @@ select,
   .border-radius(3px);
 }
 
-/* mini reset for non-html5 file types */
+// remove padding from select
+select {
+  padding: initial;
+}
+
+// mini reset for non-html5 file types
 input[type=checkbox],
 input[type=radio] {
   width: auto;
@@ -107,6 +112,7 @@ input[type=submit] {
 select,
 input[type=file] {
   height: @baseline * 1.5; // In IE7, the height of the select element cannot be changed by height, only font-size
+  *height: auto; // Reset for IE7
   line-height: @baseline * 1.5;
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
 }
@@ -114,6 +120,7 @@ input[type=file] {
 // Make multiple select elements height not fixed
 select[multiple] {
   height: inherit;
+  background-color: @white; // Fixes Chromium bug of unreadable items
 }
 
 textarea {
@@ -158,36 +165,49 @@ select:focus {
   outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
 }
 
-// Error styles
-form div.clearfix.error {
-  background: lighten(@red, 57%);
-  padding: 10px 0;
-  margin: -10px 0 10px;
-  .border-radius(4px);
-  @error-text: desaturate(lighten(@red, 25%), 25%);
+
+// FORM FIELD FEEDBACK STATES
+// --------------------------
+
+// Mixin for form field states
+.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+  // Set the text color
   > label,
-  span.help-inline,
-  span.help-block {
-    color: @red;
+  .help-block,
+  .help-inline {
+    color: @textColor;
   }
+  // Style inputs accordingly
   input,
   textarea {
-    border-color: @error-text;
-    .box-shadow(0 0 3px rgba(171,41,32,.25));
+    color: @textColor;
+    border-color: @borderColor;
     &:focus {
-      border-color: darken(@error-text, 10%);
-      .box-shadow(0 0 6px rgba(171,41,32,.5));
+      border-color: darken(@borderColor, 10%);
+      .box-shadow(0 0 6px lighten(@borderColor, 20%));
     }
   }
-  .input-prepend,
-  .input-append {
-    span.add-on {
-      background: lighten(@red, 50%);
-      border-color: @error-text;
-      color: darken(@error-text, 10%);
-    }
+  // Give a small background color for input-prepend/-append
+  .input-prepend .add-on,
+  .input-append .add-on {
+    color: @textColor;
+    background-color: @backgroundColor;
+    border-color: @textColor;
   }
 }
+// Error
+form .clearfix.error {
+  .formFieldState(#b94a48, #ee5f5b, lighten(#ee5f5b, 30%));
+}
+// Warning
+form .clearfix.warning {
+  .formFieldState(#c09853, #ccae64, lighten(#CCAE64, 5%));
+}
+// Success
+form .clearfix.success {
+  .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
+}
+
 
 // Form element sizes
 // TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
@@ -236,12 +256,11 @@ textarea.xxlarge {
 .formColumns(@columnSpan: 1) {
   display: inline-block;
   float: none;
-  width: ((@gridColumnWidth - 10) * @columnSpan) + ((@gridColumnWidth - 10) * (@columnSpan - 1));
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
   margin-left: 0;
 }
 input,
-textarea,
-select {
+textarea {
   // Default columns
   &.span1     { .formColumns(1); }
   &.span2     { .formColumns(2); }
@@ -293,9 +312,10 @@ textarea[readonly] {
 }
 
 // Help Text
+// TODO: Do we need to set basefont and baseline here?
 .help-inline,
 .help-block {
-  font-size: @basefont - 2;
+  font-size: @basefont;
   line-height: @baseline;
   color: @grayLight;
 }
@@ -314,15 +334,6 @@ textarea[readonly] {
 // Inline Fields (input fields that appear as inline objects
 .inline-inputs {
   color: @gray;
-  span, input {
-    display: inline-block;
-  }
-  input.mini {
-    width: 60px;
-  }
-  input.small {
-    width: 90px;
-  }
   span {
     padding: 0 2px 0 1px;
   }
@@ -389,6 +400,7 @@ textarea[readonly] {
     float: none;
     width: auto;
     padding: 0;
+    margin-left: 20px;
     line-height: @baseline;
     text-align: left;
     white-space: normal;
@@ -414,6 +426,8 @@ textarea[readonly] {
   input[type=radio],
   input[type=checkbox] {
     margin-bottom: 0;
+    margin-left: -20px;
+    float: left;
   }
 }
 

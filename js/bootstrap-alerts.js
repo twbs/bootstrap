@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-alerts.js v1.3.0
+ * bootstrap-alerts.js v1.4.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
  * Copyright 2011 Twitter, Inc.
@@ -20,6 +20,8 @@
 
 !function( $ ){
 
+  "use strict"
+
   /* CSS TRANSITION SUPPORT (https://gist.github.com/373874)
    * ======================================================= */
 
@@ -38,11 +40,11 @@
      if ( $.support.transition ) {
        transitionEnd = "TransitionEnd"
        if ( $.browser.webkit ) {
-       	transitionEnd = "webkitTransitionEnd"
+        transitionEnd = "webkitTransitionEnd"
        } else if ( $.browser.mozilla ) {
-       	transitionEnd = "transitionend"
+        transitionEnd = "transitionend"
        } else if ( $.browser.opera ) {
-       	transitionEnd = "oTransitionEnd"
+        transitionEnd = "oTransitionEnd"
        }
      }
 
@@ -51,15 +53,20 @@
  /* ALERT CLASS DEFINITION
   * ====================== */
 
-  var Alert = function ( content, selector ) {
+  var Alert = function ( content, options ) {
+    if (options == 'close') return this.close.call(content)
+    this.settings = $.extend({}, $.fn.alert.defaults, options)
     this.$element = $(content)
-      .delegate(selector || '.close', 'click', this.close)
+      .delegate(this.settings.selector, 'click', this.close)
   }
 
   Alert.prototype = {
 
     close: function (e) {
-      var $element = $(this).parent('.alert-message')
+      var $element = $(this)
+        , className = 'alert-message'
+
+      $element = $element.hasClass(className) ? $element : $element.parent()
 
       e && e.preventDefault()
       $element.removeClass('in')
@@ -87,18 +94,31 @@
 
     return this.each(function () {
       var $this = $(this)
+        , data
 
       if ( typeof options == 'string' ) {
-        return $this.data('alert')[options]()
+
+        data = $this.data('alert')
+
+        if (typeof data == 'object') {
+          return data[options].call( $this )
+        }
+
       }
 
-      $(this).data('alert', new Alert( this ))
+      $(this).data('alert', new Alert( this, options ))
 
     })
   }
 
+  $.fn.alert.defaults = {
+    selector: '.close'
+  }
+
   $(document).ready(function () {
-    new Alert($('body'), '.alert-message[data-alert] .close')
+    new Alert($('body'), {
+      selector: '.alert-message[data-alert] .close'
+    })
   })
 
 }( window.jQuery || window.ender );

@@ -7,10 +7,8 @@
 // STRUCTURAL LAYOUT
 // -----------------
 
-html, body {
-  background-color: @white;
-}
 body {
+  background-color: @white;
   margin: 0;
   #font > .sans-serif(normal,@basefont,@baseline);
   color: @grayDark;
@@ -29,7 +27,9 @@ body {
   padding-right: 20px;
   .clearfix();
   > .sidebar {
-    float: left;
+    position: absolute;
+    top: 0;
+    left: 20px;
     width: 220px;
   }
   // TODO in v2: rename this and .popover .content to be more specific
@@ -77,12 +77,12 @@ a {
 
 .row {
   .clearfix();
-  margin-left: -1 * @gridGutterWidth;
+  margin-left: -@gridGutterWidth;
 }
 
 // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
 // Credit to @dhg for the idea
-[class*="span"] {
+.row > [class*="span"] {
   .gridColumn();
 }
 
@@ -115,21 +115,25 @@ a {
 .span24    { .columns(24); }
 
 // Offset column options
-.offset1   { .offset(1); }
-.offset2   { .offset(2); }
-.offset3   { .offset(3); }
-.offset4   { .offset(4); }
-.offset5   { .offset(5); }
-.offset6   { .offset(6); }
-.offset7   { .offset(7); }
-.offset8   { .offset(8); }
-.offset9   { .offset(9); }
-.offset10  { .offset(10); }
-.offset11  { .offset(11); }
-.offset12  { .offset(12); }
+.row {
+  > .offset1   { .offset(1); }
+  > .offset2   { .offset(2); }
+  > .offset3   { .offset(3); }
+  > .offset4   { .offset(4); }
+  > .offset5   { .offset(5); }
+  > .offset6   { .offset(6); }
+  > .offset7   { .offset(7); }
+  > .offset8   { .offset(8); }
+  > .offset9   { .offset(9); }
+  > .offset10  { .offset(10); }
+  > .offset11  { .offset(11); }
+  > .offset12  { .offset(12); }
+}
 
 // Unique column sizes for 16-column grid
 .span-one-third     { width: 300px; }
 .span-two-thirds    { width: 620px; }
-.offset-one-third   { margin-left: 340px; }
-.offset-two-thirds  { margin-left: 660px; }
+.row {
+  > .offset-one-third   { margin-left: 340px; }
+  > .offset-two-thirds  { margin-left: 660px; }
+}

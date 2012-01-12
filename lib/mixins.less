@@ -1,4 +1,4 @@
-/* Variables.less
+/* Mixins.less
  * Snippets of reusable CSS to develop faster and keep code readable
  * ----------------------------------------------------------------- */
 
@@ -6,32 +6,31 @@
 // Clearfix for clearing floats like a boss h5bp.com/q
 .clearfix() {
   zoom: 1;
-	&:before,
+  &:before,
   &:after {
     display: table;
     content: "";
     zoom: 1;
-    *display: inline;
-	}
-	&:after {
+  }
+  &:after {
     clear: both;
-	}
+  }
 }
 
 // Center-align a block level element
 .center-block() {
-	display: block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 // Sizing shortcuts
 .size(@height: 5px, @width: 5px) {
-	height: @height;
-	width: @width;
+  height: @height;
+  width: @width;
 }
 .square(@size: 5px) {
-	.size(@size, @size);
+  .size(@size, @size);
 }
 
 // Input placeholder text
@@ -112,39 +111,45 @@
 
 // Transitions
 .transition(@transition) {
-	-webkit-transition: @transition;
-	   -moz-transition: @transition;
- 	    -ms-transition: @transition;
-	     -o-transition: @transition;
-	        transition: @transition;
+     -webkit-transition: @transition;
+        -moz-transition: @transition;
+         -ms-transition: @transition;
+          -o-transition: @transition;
+             transition: @transition;
 }
 
 // Background clipping
 .background-clip(@clip) {
-	-webkit-background-clip: @clip;
-	   -moz-background-clip: @clip;
-	        background-clip: @clip;
+  -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
+          background-clip: @clip;
 }
 
 // CSS3 Content Columns
 .content-columns(@columnCount, @columnGap: 20px) {
-	-webkit-column-count: @columnCount;
-	   -moz-column-count: @columnCount;
+  -webkit-column-count: @columnCount;
+     -moz-column-count: @columnCount;
           column-count: @columnCount;
   -webkit-column-gap: @columnGap;
-	   -moz-column-gap: @columnGap;
+     -moz-column-gap: @columnGap;
           column-gap: @columnGap;
+}
+
+// Make any element resizable for prototyping
+.resizable(@direction: both) {
+  resize: @direction; // Options are horizontal, vertical, both
+  overflow: auto; // Safari fix
 }
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
   .background(@color: @white, @alpha: 1) {
     background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-	}
-	.border(@color: @white, @alpha: 1) {
-		border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-		background-clip: padding-box;
-	}
+  }
+  .border(@color: @white, @alpha: 1) {
+    border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+    background-clip: padding-box;
+  }
 }
 
 // Gradient Bar Colors for buttons and allerts
@@ -210,8 +215,8 @@
 
 // Opacity
 .opacity(@opacity: 100) {
-	filter: e(%("alpha(opacity=%d)", @opacity));
-	-khtml-opacity: @opacity / 100;
-	  -moz-opacity: @opacity / 100;
-	       opacity: @opacity / 100;
+  filter: e(%("alpha(opacity=%d)", @opacity));
+  -khtml-opacity: @opacity / 100;
+    -moz-opacity: @opacity / 100;
+         opacity: @opacity / 100;
 }
