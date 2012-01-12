@@ -1,8 +1,8 @@
-/* ==========================================================
- * bootstrap-twipsy.js v2.0.0
- * http://twitter.github.com/bootstrap/javascript.html#twipsy
+/* ===========================================================
+ * bootstrap-tooltip.js v2.0.0
+ * http://twitter.github.com/bootstrap/javascript.html#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
- * ==========================================================
+ * ===========================================================
  * Copyright 2011 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,16 +22,16 @@
 
   "use strict"
 
- /* TWIPSY PUBLIC CLASS DEFINITION
-  * ============================== */
+ /* TOOLTIP PUBLIC CLASS DEFINITION
+  * =============================== */
 
-  var Twipsy = function ( element, options ) {
-    this.init('twipsy', element, options)
+  var Tooltip = function ( element, options ) {
+    this.init('tooltip', element, options)
   }
 
-  Twipsy.prototype = {
+  Tooltip.prototype = {
 
-    constructor: Twipsy
+    constructor: Tooltip
 
   , init: function ( type, element, options ) {
       var eventIn
@@ -154,7 +154,7 @@
 
   , setContent: function () {
       var $tip = this.tip()
-      $tip.find('.twipsy-inner').html(this.getTitle())
+      $tip.find('.tooltip-inner').html(this.getTitle())
       $tip.removeClass('fade in top bottom left right')
     }
 
@@ -242,29 +242,29 @@
   }
 
 
- /* TWIPSY PLUGIN DEFINITION
-  * ======================== */
+ /* TOOLTIP PLUGIN DEFINITION
+  * ========================= */
 
-  $.fn.twipsy = function ( option ) {
+  $.fn.tooltip = function ( option ) {
     return this.each(function () {
       var $this = $(this)
-        , data = $this.data('twipsy')
+        , data = $this.data('tooltip')
         , options = typeof option == 'object' && option
-      if (!data) $this.data('twipsy', (data = new Twipsy(this, options)))
+      if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
 
-  $.fn.twipsy.Constructor = Twipsy
+  $.fn.tooltip.Constructor = Tooltip
 
-  $.fn.twipsy.defaults = {
+  $.fn.tooltip.defaults = {
     animation: true
   , delay: 0
   , selector: false
   , placement: 'top'
   , trigger: 'hover'
   , title: ''
-  , template: '<div class="twipsy"><div class="twipsy-arrow"></div><div class="twipsy-inner"></div></div>'
+  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   }
 
 }( window.jQuery )
