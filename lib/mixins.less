@@ -118,6 +118,24 @@
              transition: @transition;
 }
 
+// Transform Rotate
+.rotate(@deg:90deg){
+   -webkit-transform: rotate(@deg);
+      -moz-transform: rotate(@deg);
+        -o-transform: rotate(@deg);
+       -ms-transform: rotate(@deg);
+           transform: rotate(@deg);
+}
+
+// Transform Scale
+.scale(@scal_x: 1, @scale_y: 1){
+  -webkit-transform: scale(@scale_x @scale_y);
+     -moz-transform: scale(@scale_x @scale_y);
+       -o-transform: scale(@scale_x @scale_y);
+      -ms-transform: scale(@scale_x @scale_y);
+          transform: scale(@scale_x @scale_y);
+}
+
 // Background clipping
 .background-clip(@clip) {
   -webkit-background-clip: @clip;
@@ -133,6 +151,32 @@
   -webkit-column-gap: @columnGap;
      -moz-column-gap: @columnGap;
           column-gap: @columnGap;
+}
+
+// user selectable
+.unselectable(){
+      -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+   -webkit-user-select: none;
+        -o-user-select: none;
+           user-select: none;
+}
+
+.selectable(){
+      -moz-user-select: text;
+    -khtml-user-select: text;
+   -webkit-user-select: text;
+        -o-user-select: text;
+           user-select: text;
+}
+
+// display inline-block
+.inlineBlock(){
+    display: inline-block;
+    /* IE7 inline-block hack */
+    zoom: 1; 
+    *display: inline;
+    /* end IE7 inline-block hack */
 }
 
 // Make any element resizable for prototyping
