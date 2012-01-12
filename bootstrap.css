@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 11 21:59:22 PST 2012
+ * Date: Thu Jan 12 10:18:57 PST 2012
  */
 html, body {
   margin: 0;
@@ -459,8 +459,8 @@ blockquote {
 }
 blockquote p {
   margin-bottom: 0;
-  font-size: 300;
-  font-weight: 16px;
+  font-size: 16px;
+  font-weight: 300;
   line-height: 22.5px;
 }
 blockquote small {

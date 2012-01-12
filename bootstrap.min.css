@@ -81,7 +81,7 @@ strong{font-style:inherit;font-weight:bold;}
 em{font-style:italic;font-weight:inherit;line-height:inherit;}
 .muted{color:#999999;}
 abbr{font-size:90%;text-transform:uppercase;border-bottom:1px dotted #ddd;cursor:help;}
-blockquote{padding-left:15px;margin-bottom:18px;border-left:5px solid #eee;}blockquote p{margin-bottom:0;font-size:300;font-weight:16px;line-height:22.5px;}
+blockquote{padding-left:15px;margin-bottom:18px;border-left:5px solid #eee;}blockquote p{margin-bottom:0;font-size:16px;font-weight:300;line-height:22.5px;}
 blockquote small{display:block;line-height:18px;color:#999999;}blockquote small:before{content:'\2014 \00A0';}
 blockquote.pull-right{float:right;padding-left:0;padding-right:15px;border-left:0;border-right:5px solid #eee;}blockquote.pull-right p,blockquote.pull-right small{text-align:right;}
 address{display:block;margin-bottom:18px;line-height:18px;}
