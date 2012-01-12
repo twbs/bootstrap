@@ -8,10 +8,10 @@
 // -----------------
 
 body {
-  background-color: @white;
+  background-color: @whiteColor;
   margin: 0;
   #font > .sans-serif(normal,@basefont,@baseline);
-  color: @grayDark;
+  color: @darkerGrayColor;
 }
 
 // Container (centered, fixed-width layouts)
@@ -44,12 +44,12 @@ body {
 
 // Links
 a {
-  color: @linkColor;
+  color: @mainColor;
   text-decoration: none;
   line-height: inherit;
   font-weight: inherit;
   &:hover {
-    color: @linkColorHover;
+    color: @darkMainColor;
     text-decoration: underline;
   }
 }
