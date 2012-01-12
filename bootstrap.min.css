@@ -301,9 +301,9 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .caret{display:inline-block;width:0;height:0;text-indent:-99999px;vertical-align:top;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid #000;filter:alpha(opacity=30);-moz-opacity:0.3;opacity:0.3;content:"\2193";}
 .dropdown .caret{margin-top:8px;margin-left:2px;}
 .dropdown:hover .caret,.open.dropdown .caret{filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}
-.dropdown-menu{position:absolute;top:40px;z-index:1000;float:left;display:none;min-width:160px;max-width:220px;_width:160px;padding:5px 0;margin:0;list-style:none;background-color:#ffffff;border-color:#999;border-color:rgba(0, 0, 0, 0.1);border-style:solid;border-width:1px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;-webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);-moz-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;zoom:1;}.dropdown-menu .divider{height:1px;margin:5px 1px;overflow:hidden;background-color:#e5e5e5;border-bottom:1px solid #ffffff;}
-.dropdown-menu a{display:block;padding:2px 15px;clear:both;font-weight:normal;line-height:18px;color:#555555;}
-.dropdown-menu li>a:hover{color:#fff;text-decoration:none;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);background-color:#0077b3;background-image:-khtml-gradient(linear, left top, left bottom, from(#0088cc), to(#0077b3));background-image:-moz-linear-gradient(top, #0088cc, #0077b3);background-image:-ms-linear-gradient(top, #0088cc, #0077b3);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #0088cc), color-stop(100%, #0077b3));background-image:-webkit-linear-gradient(top, #0088cc, #0077b3);background-image:-o-linear-gradient(top, #0088cc, #0077b3);background-image:linear-gradient(top, #0088cc, #0077b3);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0077b3', GradientType=0);-webkit-box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);-moz-box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);box-shadow:inset 0 1px 0 rgba(0, 0, 0, 0.075),inset 0 -1px rgba(0, 0, 0, 0.075);}
+.dropdown-menu{position:absolute;top:40px;z-index:1000;float:left;display:none;min-width:160px;max-width:220px;_width:160px;padding:4px 0;margin:0;list-style:none;background-color:#ffffff;border-color:#999;border-color:rgba(0, 0, 0, 0.2);border-style:solid;border-width:1px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;-webkit-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);-moz-box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);box-shadow:0 5px 10px rgba(0, 0, 0, 0.2);-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;zoom:1;}.dropdown-menu .divider{height:1px;margin:5px 1px;overflow:hidden;background-color:#e5e5e5;border-bottom:1px solid #ffffff;}
+.dropdown-menu a{display:block;padding:2px 15px;clear:both;font-weight:normal;line-height:18px;color:#555555;white-space:nowrap;}
+.dropdown-menu li>a:hover{color:#fff;text-decoration:none;background-color:#0088cc;}
 .dropdown-menu .active>a,.dropdown-menu .active>a:hover{color:#fff;background-color:#999;background-image:none;}
 .dropdown.open .dropdown-toggle{color:#ffffff;background:#ccc;background:rgba(0, 0, 0, 0.3);}
 .dropdown.open .dropdown-menu{display:block;}
@@ -334,10 +334,12 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .navbar .nav .active>a{color:#ffffff;text-decoration:none;background-color:#222;background-color:rgba(0, 0, 0, 0.5);}
 .navbar .vertical-divider{height:40px;width:1px;margin:0 5px;overflow:hidden;background-color:#222;border-right:1px solid #444;}
 .navbar .nav.pull-right{margin-left:10px;margin-right:0;}
-.navbar .dropdown-menu{top:42px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.navbar .dropdown-menu:before{content:'';display:inline-block;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #ccc;border-bottom-color:rgba(0, 0, 0, 0.1);position:absolute;top:-7px;left:12px;}
-.navbar .dropdown-menu:after{content:'';display:inline-block;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #fff;position:absolute;top:-6px;left:13px;}
+.navbar .dropdown-menu{top:41px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.navbar .dropdown-menu:before{content:'';display:inline-block;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #ccc;border-bottom-color:rgba(0, 0, 0, 0.2);position:absolute;top:-7px;left:9px;}
+.navbar .dropdown-menu:after{content:'';display:inline-block;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #fff;position:absolute;top:-6px;left:10px;}
 .navbar .dropdown-toggle .caret,.navbar .open.dropdown .caret{border-top-color:#fff;}
-.navbar .open .dropdown-toggle{background-color:transparent;}
+.navbar .nav .active .caret{filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}
+.navbar .nav .open>.dropdown-toggle,.navbar .nav .active>.dropdown-toggle,.navbar .nav .open.active>.dropdown-toggle{background-color:transparent;}
+.navbar .nav .active>.dropdown-toggle:hover{color:#fff;}
 .navbar .nav.pull-right .dropdown-menu{right:0;}.navbar .nav.pull-right .dropdown-menu:before{left:auto;right:12px;}
 .navbar .nav.pull-right .dropdown-menu:after{left:auto;right:13px;}
 .nav{margin-left:0;margin-bottom:18px;list-style:none;}
