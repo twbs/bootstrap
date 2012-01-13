@@ -2226,6 +2226,9 @@ i {
   -moz-opacity: 0.8;
   opacity: 0.8;
 }
+.tooltip.fixed {
+  position: fixed;
+}
 .tooltip.top {
   margin-top: -2px;
 }
@@ -2293,6 +2296,9 @@ i {
   z-index: 1010;
   display: none;
   padding: 5px;
+}
+.popover.fixed {
+  position: fixed;
 }
 .popover.top {
   margin-top: -5px;

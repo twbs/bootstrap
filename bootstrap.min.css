@@ -417,6 +417,7 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .modal-footer:after{clear:both;}
 .modal-footer .btn{float:right;margin-left:5px;}
 .tooltip{position:absolute;z-index:1020;display:block;visibility:visible;padding:5px;font-size:11px;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;}.tooltip.in{filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
+.tooltip.fixed{position:fixed;}
 .tooltip.top{margin-top:-2px;}
 .tooltip.right{margin-left:2px;}
 .tooltip.bottom{margin-top:2px;}
@@ -427,7 +428,9 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-top:5px solid transparent;border-bottom:5px solid transparent;border-right:5px solid #000000;}
 .tooltip-inner{max-width:200px;padding:3px 8px;color:white;text-align:center;text-decoration:none;background-color:#000000;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
 .tooltip-arrow{position:absolute;width:0;height:0;}
-.popover{position:absolute;top:0;left:0;z-index:1010;display:none;padding:5px;}.popover.top{margin-top:-5px;}
+.popover{position:absolute;top:0;left:0;z-index:1010;display:none;padding:5px;}
+.popover.fixed{position:fixed;}
+.popover.top{margin-top:-5px;}
 .popover.right{margin-left:5px;}
 .popover.bottom{margin-top:5px;}
 .popover.left{margin-left:-5px;}
