@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Qui 12 Jan 2012 23:49:03 BRST
+ * Date: Sex 13 Jan 2012 00:01:30 BRST
  */
 html, body {
   margin: 0;
@@ -2822,7 +2822,7 @@ a.thumbnail:hover {
 .carousel .active.right {
   left: 100%;
 }
-.carousel .nav {
+.carousel a.nav {
   width: auto;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -2839,11 +2839,11 @@ a.thumbnail:hover {
   font-weight: 100;
   padding: 0 15px;
 }
-.carousel .nav.right {
+.carousel a.nav.right {
   right: 5px;
   left: auto;
 }
-.carousel .nav:hover {
+.carousel a.nav:hover {
   text-decoration: none;
   background: rgba(0, 0, 0, 0.8);
 }

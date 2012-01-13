@@ -499,8 +499,8 @@ a.thumbnail:hover{border-color:#0088cc;-webkit-box-shadow:0 1px 4px rgba(0, 105,
 .carousel .next.left,.carousel .prev.right{left:0%;}
 .carousel .active.left{left:-100%;}
 .carousel .active.right{left:100%;}
-.carousel .nav{width:auto;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;height:50px;position:absolute;top:50%;margin:-25px 0 0;cursor:pointer;background:rgba(0, 0, 0, 0.7);color:white;font-size:42px;left:5px;font-weight:100;padding:0 15px;}.carousel .nav.right{right:5px;left:auto;}
-.carousel .nav:hover{text-decoration:none;background:rgba(0, 0, 0, 0.8);}
+.carousel a.nav{width:auto;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;height:50px;position:absolute;top:50%;margin:-25px 0 0;cursor:pointer;background:rgba(0, 0, 0, 0.7);color:white;font-size:42px;left:5px;font-weight:100;padding:0 15px;}.carousel a.nav.right{right:5px;left:auto;}
+.carousel a.nav:hover{text-decoration:none;background:rgba(0, 0, 0, 0.8);}
 .label{padding:1px 3px 2px;font-size:9.75px;font-weight:bold;color:#ffffff;text-transform:uppercase;background-color:#999999;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}.label.important{background-color:#c43c35;}
 .label.warning{background-color:#f89406;}
 .label.success{background-color:#46a546;}
