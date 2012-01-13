@@ -114,6 +114,10 @@
           $tip.addClass('fade')
         }
 
+        if (this.options.fixed) {
+          $tip.addClass('fixed')
+        }
+
         placement = typeof this.options.placement == 'function' ?
           thing.call(this, $tip[0], this.$element[0]) :
           this.options.placement
@@ -259,6 +263,7 @@
 
   $.fn.tooltip.defaults = {
     animation: true
+  , fixed: true
   , delay: 0
   , selector: false
   , placement: 'top'
