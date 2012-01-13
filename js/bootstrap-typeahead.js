@@ -1,6 +1,6 @@
 /* =============================================================
  * bootstrap-typeahead.js v2.0.0
- * http://twitter.github.com/bootstrap/javascript.html#collapsible
+ * http://twitter.github.com/bootstrap/javascript.html
  * =============================================================
  * Copyright 2011 Twitter, Inc.
  *
