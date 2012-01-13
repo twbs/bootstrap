@@ -170,12 +170,13 @@
   * ======================= */
 
   $.fn.modal = function ( option ) {
+    var args = arguments
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('modal')
         , options = typeof option == 'object' && option
       if (!data) $this.data('modal', (data = new Modal(this, options)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option == 'string') data[option].apply(data, Array.prototype.slice.call(args, 1))
       else data.show()
     })
   }

@@ -61,11 +61,12 @@
    * ========================== */
 
   $.fn.dropdown = function ( option ) {
+    var args = arguments
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('dropdown')
       if (!data) $this.data('dropdown', (data = new Dropdown(this)))
-      if (typeof option == 'string') data[option].call($this)
+      if (typeof option == 'string') data[option].apply(data, Array.prototype.slice.call(args, 1))
     })
   }
 
