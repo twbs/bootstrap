@@ -115,7 +115,7 @@
         }
 
         placement = typeof this.options.placement == 'function' ?
-          thing.call(this, $tip[0], this.$element[0]) :
+          this.options.placement.call(this, $tip[0], this.$element[0]) :
           this.options.placement
 
         inside = /in/.test(placement)
