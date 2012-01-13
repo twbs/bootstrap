@@ -114,10 +114,6 @@
           $tip.addClass('fade')
         }
 
-        if (this.options.fixed) {
-          $tip.addClass('fixed')
-        }
-
         placement = typeof this.options.placement == 'function' ?
           thing.call(this, $tip[0], this.$element[0]) :
           this.options.placement
@@ -130,6 +126,12 @@
           .appendTo(inside ? this.$element : document.body)
 
         pos = this.getPosition(inside)
+
+        if (this.options.fixed) {
+          $tip.addClass('fixed')
+          pos.top -= window.scrollY;
+          pos.left -= window.scrollX;
+        }
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
