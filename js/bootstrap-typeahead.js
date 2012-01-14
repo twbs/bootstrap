@@ -35,7 +35,7 @@
     constructor: Typeahead
 
   , matcher: function (item, query) {
-      return ~item.indexOf(query)
+      return item.toLowerCase().indexOf(query) !== -1
     }
 
   , select: function () {
