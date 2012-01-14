@@ -35,8 +35,11 @@ body > .navbar-fixed .brand:hover {
 
 /* Space out sub-sections more
 -------------------------------------------------- */
+section {
+  padding-top: 60px;
+}
 .page-header {
-  margin: 45px 0 18px;
+  margin: 18px 0;
   border-bottom: 1px solid #eee;
 }
 .page-header h1 {

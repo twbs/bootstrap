@@ -63,7 +63,7 @@
   // Links within the dropdown menu
   a {
     display: block;
-    padding: 2px 15px;
+    padding: 3px 15px;
     clear: both;
     font-weight: normal;
     line-height: 18px;
@@ -73,18 +73,12 @@
 }
 
 // Hover state
-.dropdown-menu li > a:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: @linkColor;
-}
-
-// Active state
+.dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: #fff;
-  background-color: #999;
-  background-image: none; // remove the gradient
+  text-decoration: none;
+  background-color: @linkColor;
 }
 
 // Open state for the dropdown
