@@ -94,10 +94,6 @@
       return scrollspy
     }
 
-    if (offsetTop === true ) {
-      return scrollspy
-    }
-
     if ( typeof options == 'string' ) {
       scrollspy[options]()
     }
