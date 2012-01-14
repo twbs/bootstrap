@@ -108,7 +108,7 @@
   }
 
   $(document).ready(function () {
-    $('body').scrollSpy('[data-scrollspy] li > a', 300)
+    $('body').scrollSpy('[data-scrollspy] li > a', 10)
   })
 
 }( window.jQuery || window.ender );
