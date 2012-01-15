@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan 14 17:11:53 PST 2012
+ * Date: Sat Jan 14 20:53:46 PST 2012
  */
 html, body {
   margin: 0;
@@ -2082,7 +2082,8 @@ i {
   /* IE7 inline-block hack */
 
   *zoom: 1;
-  margin: 0;
+  margin-left: 0;
+  margin-bottom: 0;
   border: 1px solid #ddd;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 3px;
@@ -2100,26 +2101,58 @@ i {
   padding: 0 14px;
   line-height: 34px;
   text-decoration: none;
-  border-right: 1px solid;
-  border-right-color: #ddd;
-  border-right-color: rgba(0, 0, 0, 0.15);
-  *border-right-color: #ddd;
-  /* IE6-7 */
-
+  border-right: 1px solid #ddd;
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
 }
 .pagination a:hover, .pagination .active a {
-  background-color: #c7eefe;
+  background-color: #f5f5f5;
 }
 .pagination .disabled a, .pagination .disabled a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
-.pagination .next a {
+.pagination li:last-child a {
   border: 0;
 }
-.pagination.centered {
+.pagination-centered {
   text-align: center;
+}
+.pagination-right {
+  text-align: right;
+}
+.pager {
+  margin-left: 0;
+  margin-bottom: 18px;
+  list-style: none;
+  text-align: center;
+  zoom: 1;
+}
+.pager:before, .pager:after {
+  display: table;
+  *display: inline;
+  content: "";
+  zoom: 1;
+}
+.pager:after {
+  clear: both;
+}
+.pager li {
+  display: inline;
+}
+.pager a {
+  display: inline-block;
+  padding: 6px 15px;
+  background-color: #f5f5f5;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.pager .next a {
+  float: right;
+}
+.pager .previous a {
+  float: left;
 }
 .modal-backdrop {
   position: fixed;

@@ -4,44 +4,46 @@
 .pagination {
   height: @baseLineHeight * 2;
   margin: @baseLineHeight 0;
-  ul {
-    display: inline-block;
-    .ie7-inline-block();
-    margin: 0;
-    border: 1px solid #ddd;
-    border: 1px solid rgba(0,0,0,.15);
-    .border-radius(3px);
-    .box-shadow(0 1px 2px rgba(0,0,0,.05));
-  }
-  li {
+ }
+.pagination ul {
+  display: inline-block;
+  .ie7-inline-block();
+  margin-left: 0;
+  margin-bottom: 0;
+  border: 1px solid #ddd;
+  border: 1px solid rgba(0,0,0,.15);
+  .border-radius(3px);
+  .box-shadow(0 1px 2px rgba(0,0,0,.05));
+}
+.pagination li {
     display: inline;
   }
-  a {
-    float: left;
-    padding: 0 14px;
-    line-height: (@baseLineHeight * 2) - 2;
-    text-decoration: none;
-    border-right: 1px solid;
-    border-right-color: #ddd;
-    border-right-color: rgba(0,0,0,.15);
-    *border-right-color: #ddd; /* IE6-7 */
-  }
-  a:hover,
-  .active a {
-    background-color: lighten(@blue, 45%);
-  }
-  .disabled a,
-  .disabled a:hover {
-    color: @grayLight;
-    background-color: transparent;
-    cursor: default;
-  }
-  .next a {
-    border: 0;
-  }
+.pagination a {
+  float: left;
+  padding: 0 14px;
+  line-height: (@baseLineHeight * 2) - 2;
+  text-decoration: none;
+  border-right: 1px solid #ddd;
+  border-right: 1px solid rgba(0,0,0,.15);
+}
+.pagination a:hover,
+.pagination .active a {
+  background-color: #f5f5f5;
+}
+.pagination .disabled a,
+.pagination .disabled a:hover {
+  color: @grayLight;
+  background-color: transparent;
+  cursor: default;
+}
+.pagination li:last-child a {
+  border: 0;
+}
 
-  // Centered
-  &.centered {
-    text-align: center;
-  }
+// Centered
+.pagination-centered {
+  text-align: center;
+}
+.pagination-right {
+  text-align: right;
 }

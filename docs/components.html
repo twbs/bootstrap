@@ -847,63 +847,127 @@
 ================================================== -->
 <section id="pagination">
   <div class="page-header">
-    <h1>Pagination <small></small></h1>
+    <h1>Pagination <small>Two options for paging through content</small></h1>
   </div>
 
+  <h2>Multi-page pagination</h2>
   <div class="row">
-    <div class="span3">
-      <h2>Pagination</h2>
-      <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+    <div class="span4">
+      <h3>When to use</h3>
+      <p>Ultra simplistic and minimally styled pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+      <h3>Stateful page links</h3>
+      <p>Links are customizable and work in a number of circumstances with the right class. <code>.disabled</code> for unclickable links and <code>.active</code> for current page.</p>
+      <h3>Flexible alignment</h3>
+      <p>Add either of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.</p>
     </div>
-    <div class="span9">
+    <div class="span4">
+      <h3>Examples</h3>
+      <p>The default pagination component is flexible and works in a number of variations.</p>
       <div class="pagination">
         <ul>
-          <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+          <li class="disabled"><a href="#">&larr; Prev</a></li>
           <li class="active"><a href="#">1</a></li>
           <li><a href="#">2</a></li>
           <li><a href="#">3</a></li>
           <li><a href="#">4</a></li>
-          <li class="next"><a href="#">Next &rarr;</a></li>
+          <li><a href="#">Next &rarr;</a></li>
         </ul>
       </div>
       <div class="pagination">
         <ul>
-          <li class="prev"><a href="#">&larr;</a></li>
-          <li class="active"><a href="#">10</a></li>
-          <li><a href="#">11</a></li>
-          <li class="disabled"><a href="#">…</a></li>
-          <li><a href="#">20</a></li>
-          <li><a href="#">21</a></li>
-          <li class="next"><a href="#">&rarr;</a></li>
-        </ul>
-      </div>
-      <div class="pagination">
-        <ul>
-          <li class="prev"><a href="#">&larr;</a></li>
+          <li><a href="#">&larr;</a></li>
           <li><a href="#">10</a></li>
           <li><a href="#">11</a></li>
           <li class="active"><a href="#">12</a></li>
           <li><a href="#">13</a></li>
           <li><a href="#">14</a></li>
-          <li class="next"><a href="#">&rarr;</a></li>
+          <li><a href="#">&rarr;</a></li>
         </ul>
       </div>
+      <div class="pagination">
+        <ul>
+          <li><a href="#">&larr;</a></li>
+          <li class="active"><a href="#">10</a></li>
+          <li><a href="#">11</a></li>
+          <li class="disabled"><a href="#">…</a></li>
+          <li><a href="#">20</a></li>
+          <li><a href="#">21</a></li>
+          <li><a href="#">&rarr;</a></li>
+        </ul>
+      </div>
+      <div class="pagination pagination-centered">
+        <ul>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="span4">
+      <h3>Markup</h3>
+      <p>Wrapped in a <code>&lt;div&gt;</code>, pagination is just a <code>&lt;ul&gt;</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
-    &lt;li class="prev disabled"&gt;&lt;a href="#"&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
-    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li>
+    &lt;li class="active"&gt;
+      &lt;a href="#"&gt;1&lt;/a&gt;
+    &lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="next"&gt;&lt;a href="#"&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
+    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li>
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
     </div>
   </div><!-- /row -->
 
+  <h2>Pager <small>For quick previous and next links</small></h2>
+  <div class="row">
+    <div class="span4">
+      <h3>About pager</h3>
+      <p>The pager component is a set of links for simple pagination implemenations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.</p>
+    </div>
+    <div class="span4">
+      <h3>Default example</h3>
+      <p>By default, the pager centers links.</p>
+      <ul class="pager">
+        <li><a href="#">Previous</a></li>
+        <li><a href="#">Next</a></li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="pager"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Previous&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Next&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Aligned links</h3>
+      <p>Alternatively, you can align each link to the sides:</p>
+      <ul class="pager">
+        <li class="previous"><a href="#">&larr; Older</a></li>
+        <li class="next"><a href="#">Newer &rarr;</a></li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="pager"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Newer &amp;rarr;&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
 </section>
 
 
