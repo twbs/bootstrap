@@ -172,9 +172,9 @@ input::-webkit-input-placeholder{color:#999999;}
 .form-search input,.form-inline input,.form-horizontal input,.form-search textarea,.form-inline textarea,.form-horizontal textarea,.form-search select,.form-inline select,.form-horizontal select,.form-search .uneditable-input,.form-inline .uneditable-input,.form-horizontal .uneditable-input{display:inline-block;margin-bottom:0;}
 .form-search label,.form-inline label{display:inline-block;}
 .control-group{margin-bottom:18px;}
-.form-horizontal .control-group>label{float:left;width:120px;padding-top:5px;text-align:right;}
-.form-horizontal .controls{margin-left:140px;}
-.form-horizontal .form-actions{padding-left:140px;}
+.form-horizontal .control-group>label{float:left;width:140px;padding-top:5px;text-align:right;}
+.form-horizontal .controls{margin-left:160px;}
+.form-horizontal .form-actions{padding-left:160px;}
 table{width:100%;margin-bottom:18px;}
 th,td{padding:8px;line-height:18px;text-align:left;border-top:1px solid #ddd;}
 th{font-weight:bold;vertical-align:bottom;}

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 15 11:41:37 PST 2012
+ * Date: Sun Jan 15 12:53:17 PST 2012
  */
 html, body {
   margin: 0;
@@ -965,15 +965,15 @@ input::-webkit-input-placeholder {
 }
 .form-horizontal .control-group > label {
   float: left;
-  width: 120px;
+  width: 140px;
   padding-top: 5px;
   text-align: right;
 }
 .form-horizontal .controls {
-  margin-left: 140px;
+  margin-left: 160px;
 }
 .form-horizontal .form-actions {
-  padding-left: 140px;
+  padding-left: 160px;
 }
 table {
   width: 100%;
