@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 15 12:53:17 PST 2012
+ * Date: Sun Jan 15 13:11:42 PST 2012
  */
 html, body {
   margin: 0;
@@ -418,13 +418,13 @@ ul.unstyled {
 dl {
   margin-bottom: 18px;
 }
-dl dt, dl dd {
+dt, dd {
   line-height: 18px;
 }
-dl dt {
+dt {
   font-weight: bold;
 }
-dl dd {
+dd {
   margin-left: 9px;
 }
 hr {

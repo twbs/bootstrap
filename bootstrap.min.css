@@ -73,9 +73,10 @@ ul{list-style:disc;}
 ol{list-style:decimal;}
 li{line-height:18px;}
 ul.unstyled{margin-left:0;list-style:none;}
-dl{margin-bottom:18px;}dl dt,dl dd{line-height:18px;}
-dl dt{font-weight:bold;}
-dl dd{margin-left:9px;}
+dl{margin-bottom:18px;}
+dt,dd{line-height:18px;}
+dt{font-weight:bold;}
+dd{margin-left:9px;}
 hr{margin:18px 0;border:0;border-top:1px solid #e5e5e5;border-bottom:1px solid #fff;}
 strong{font-style:inherit;font-weight:bold;}
 em{font-style:italic;font-weight:inherit;line-height:inherit;}
