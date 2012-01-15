@@ -1132,7 +1132,7 @@
       <h3>Rewritten base class</h3>
       <p>With Bootstrap 2, we've simplified the base class: <code>.alert</code> instead of <code>.alert-message</code>. We've also reduced the minimum required markup&mdash;no <code>&lt;p&gt;</code> is required by default, just the outter <code>&lt;div&gt;</code>.</p>
       <h3>Single alert message</h3>
-      <p>For a more durable component with less code, we've removed the differentiating look for block alerts, messages that com with more padding and typically more text. The class also has changed to <code>.block-alert</code>.</p>
+      <p>For a more durable component with less code, we've removed the differentiating look for block alerts, messages that com with more padding and typically more text. The class also has changed to <code>.alert-block</code>.</p>
       <hr>
       <h3>Goes great with javascript</h3>
       <p>Bootstrap comes with a great jQuery plugin that supports alert messages, making dismissing them quick and easy.</p>
@@ -1151,14 +1151,14 @@
   &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you’re not looking too good.
 &lt;/div&gt;
 </pre>
-      <p>Easily extend the standard alert message with two optional classes: <code>.block-alert</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.</p>
-      <div class="alert block-alert">
+      <p>Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.</p>
+      <div class="alert alert-block">
         <a class="close">&times;</a>
         <h4 class="alert-heading">Warning!</h4>
         <p>Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="alert block-alert"&gt;
+&lt;div class="alert alert-block"&gt;
   &lt;a class="close"&gt;&times;&lt;/a&gt;
   &lt;h4 class="alert-heading"&gt;Warning!&lt;/h4&gt;
   Best check yo self, you’re not...
@@ -1171,36 +1171,36 @@
   <div class="row">
     <div class="span4">
       <h3>Error or danger</h3>
-      <div class="alert error-alert">
+      <div class="alert alert-error">
         <a class="close">&times;</a>
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="alert error-alert"&gt;
+&lt;div class="alert alert-error"&gt;
   ...
 &lt;/div&gt;
 </pre>
     </div>
     <div class="span4">
       <h3>Success</h3>
-      <div class="alert success-alert">
+      <div class="alert alert-success">
         <a class="close">&times;</a>
         <strong>Well done!</strong> You successfully read this important alert message.
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="alert success-alert"&gt;
+&lt;div class="alert alert-success"&gt;
   ...
 &lt;/div&gt;
 </pre>
     </div>
     <div class="span4">
       <h3>Information</h3>
-      <div class="alert info-alert">
+      <div class="alert alert-info">
         <a class="close">&times;</a>
         <strong>Heads up!</strong> This alert needs your attention, but it’s not super important.
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="alert info-alert"&gt;
+&lt;div class="alert alert-info"&gt;
   ...
 &lt;/div&gt;
 </pre>
