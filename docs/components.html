@@ -1058,101 +1058,90 @@
 ================================================== -->
 <section id="alerts">
   <div class="page-header">
-    <h1>Alerts &amp; Errors <small>Styles for success, warning, and error messages or alerts</small></h1>
+    <h1>Alerts <small>Styles for success, warning, and error messages</small></h1>
   </div>
-  <!-- Basic alert messages -->
-  <div class="row">
-    <div class="span3">
-      <h2>Basic alerts</h2>
-      <p><code>.alert-message</code></p>
-      <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
-      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript &raquo;</a></p>
-    </div>
-    <div class="span9">
-      <div class="alert-message warning">
-        <a class="close">&times;</a>
-        <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
-      </div>
-      <div class="alert-message error">
-        <a class="close">&times;</a>
-        <p><strong>Oh snap!</strong> Change this and that and try again.</p>
-      </div>
-      <div class="alert-message success">
-        <a class="close">&times;</a>
-        <p><strong>Well done!</strong> You successfully read this alert message.</p>
-      </div>
-      <div class="alert-message info">
-        <a class="close">&times;</a>
-        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
-      </div>
 
-      <h4>Example code</h4>
+  <h2>Lightweight defaults</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Rewritten base class</h3>
+      <p>With Bootstrap 2, we've simplified the base class: <code>.alert</code> instead of <code>.alert-message</code>. We've also reduced the minimum required markup&mdash;no <code>&lt;p&gt;</code> is required by default, just the outter <code>&lt;div&gt;</code>.</p>
+      <h3>Single alert message</h3>
+      <p>For a more durable component with less code, we've removed the differentiating look for block alerts, messages that com with more padding and typically more text. The class also has changed to <code>.block-alert</code>.</p>
+      <hr>
+      <h3>Goes great with javascript</h3>
+      <p>Bootstrap comes with a great jQuery plugin that supports alert messages, making dismissing them quick and easy.</p>
+      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the plugin &raquo;</a></p>
+    </div>
+    <div class="span8">
+      <h3>Example alerts</h3>
+      <p>Wrap your message and an optional close icon in a div with simple class.</p>
+      <div class="alert">
+        <a class="close">&times;</a>
+        <strong>Warning!</strong> Best check yo self, you’re not looking too good.
+      </div>
 <pre class="prettyprint linenums">
-&lt;div class="alert-message warning"&gt;
+&lt;div class="alert"&gt;
   &lt;a class="close"&gt;&times;&lt;/a&gt;
-  &lt;p&gt;&lt;strong&gt;Holy guacamole!&lt;/strong&gt; Best check yo self, you’re not looking too good.&lt;/p&gt;
+  &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you’re not looking too good.
+&lt;/div&gt;
+</pre>
+      <p>Easily extend the standard alert message with two optional classes: <code>.block-alert</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.</p>
+      <div class="alert block-alert">
+        <a class="close">&times;</a>
+        <h4 class="alert-heading">Warning!</h4>
+        <p>Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="alert block-alert"&gt;
+  &lt;a class="close"&gt;&times;&lt;/a&gt;
+  &lt;h4 class="alert-heading"&gt;Warning!&lt;/h4&gt;
+  Best check yo self, you’re not...
 &lt;/div&gt;
 </pre>
     </div>
-  </div><!-- /row -->
+  </div>
 
-  <br>
-
-  <!-- Block messages -->
+  <h2>Contextual alternatives <small>Add optional classes to change an alert's connotation</small></h2>
   <div class="row">
-    <div class="span3">
-      <h2>Block messages</h2>
-      <p><code>&lt;div class="alert-message block-message"&gt;</code></p>
-      <p>For messages that require a bit of explanation, we have paragraph style alerts. These are perfect for bubbling up longer error messages, warning a user of a pending action, or just presenting information for more emphasis on the page.</p>
-      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript &raquo;</a></p>
-    </div>
-    <div class="span9">
-      <div class="alert-message block-message warning">
+    <div class="span4">
+      <h3>Error or danger</h3>
+      <div class="alert error-alert">
         <a class="close">&times;</a>
-        <p><strong>Holy guacamole! This is a warning!</strong> Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-        <div class="alert-actions">
-          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-        </div>
+        <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </div>
-      <div class="alert-message block-message error">
-        <a class="close">&times;</a>
-        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again.</p>
-        <ul>
-          <li>Duis mollis est non commodo luctus</li>
-          <li>Nisi erat porttitor ligula</li>
-          <li>Eget lacinia odio sem nec elit</li>
-        </ul>
-        <div class="alert-actions">
-          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-        </div>
-      </div>
-      <div class="alert-message block-message success">
-        <a class="close">&times;</a>
-        <p><strong>Well done!</strong> You successfully read this alert message. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum.</p>
-        <div class="alert-actions">
-          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-        </div>
-      </div>
-      <div class="alert-message block-message info">
-        <a class="close">&times;</a>
-        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
-        <div class="alert-actions">
-          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-        </div>
-      </div>
-
-      <h4>Example code</h4>
 <pre class="prettyprint linenums">
-&lt;div class="alert-message block-message warning"&gt;
-  &lt;a class="close"&gt;&times;&lt;/a&gt;
-  &lt;p&gt;&lt;strong&gt;Holy guacamole! This is a warning!&lt;/strong&gt; Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.&lt;/p&gt;
-  &lt;div class="alert-actions"&gt;
-    &lt;a class="btn small" href="#"&gt;Take this action&lt;/a&gt; &lt;a class="btn small" href="#"&gt;Or do this&lt;/a>
-  &lt;/div&gt;
+&lt;div class="alert error-alert"&gt;
+  ...
 &lt;/div&gt;
 </pre>
     </div>
-  </div><!-- /row -->
+    <div class="span4">
+      <h3>Success</h3>
+      <div class="alert success-alert">
+        <a class="close">&times;</a>
+        <strong>Well done!</strong> You successfully read this important alert message.
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="alert success-alert"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+    </div>
+    <div class="span4">
+      <h3>Information</h3>
+      <div class="alert info-alert">
+        <a class="close">&times;</a>
+        <strong>Heads up!</strong> This alert needs your attention, but it’s not super important.
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="alert info-alert"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
+
 </section>
 
 

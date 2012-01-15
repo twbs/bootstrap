@@ -2,13 +2,10 @@
 // -------------
 
 // Shared colors for buttons and alerts
-.btn,
-.alert-message {
+.btn {
   // Set text color
   &.danger,
   &.danger:hover,
-  &.error,
-  &.error:hover,
   &.success,
   &.success:hover,
   &.info,
@@ -17,8 +14,7 @@
     color: @white
   }
   // Danger and error appear as red
-  &.danger,
-  &.error {
+  &.danger {
     .gradientBar(#ee5f5b, #c43c35);
   }
   // Success appears as green
