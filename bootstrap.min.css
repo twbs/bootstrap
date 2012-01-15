@@ -406,6 +406,7 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .pagination li{display:inline;}
 .pagination a{float:left;padding:0 14px;line-height:34px;text-decoration:none;border-right:1px solid #ddd;border-right:1px solid rgba(0, 0, 0, 0.15);}
 .pagination a:hover,.pagination .active a{background-color:#f5f5f5;}
+.pagination .active a{color:#999999;}
 .pagination .disabled a,.pagination .disabled a:hover{color:#999999;background-color:transparent;cursor:default;}
 .pagination li:last-child a{border:0;}
 .pagination-centered{text-align:center;}
