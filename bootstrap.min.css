@@ -170,6 +170,7 @@ input::-webkit-input-placeholder{color:#999999;}
 .input-append .add-on{margin-right:0;margin-left:-1px;-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
 .search-query{padding-left:14px;padding-right:14px;margin-bottom:0;-webkit-border-radius:14px;-moz-border-radius:14px;border-radius:14px;}
 .search-form input,.inline-form input,.horizontal-form input,.search-form textarea,.inline-form textarea,.horizontal-form textarea,.search-form select,.inline-form select,.horizontal-form select,.search-form .uneditable-input,.inline-form .uneditable-input,.horizontal-form .uneditable-input{display:inline-block;margin-bottom:0;}
+.search-form label,.inline-form label{display:inline-block;}
 .control-group{margin-bottom:18px;}
 .control-group>label{font-weight:bold;}
 .horizontal-form .control-group>label{float:left;width:130px;padding-top:5px;text-align:right;}
