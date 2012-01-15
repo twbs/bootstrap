@@ -45,8 +45,12 @@
     }
   }
   // Buttons in navbar
-  .btn {
+  .btn,
+  .btn-group {
     margin-top: 5px; // make buttons vertically centered in navbar
+  }
+  .btn-group .btn {
+    margin-top: 0;
   }
 }
 
@@ -218,8 +222,8 @@
 }
 
 // Dropdown toggle caret
-.navbar .dropdown-toggle .caret,
-.navbar .open.dropdown .caret {
+.navbar .nav .dropdown-toggle .caret,
+.navbar .nav .open.dropdown .caret {
   border-top-color: #fff;
 }
 .navbar .nav .active .caret {

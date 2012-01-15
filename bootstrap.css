@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan 14 16:56:39 PST 2012
+ * Date: Sat Jan 14 17:11:53 PST 2012
  */
 html, body {
   margin: 0;
@@ -1611,8 +1611,11 @@ i {
   color: #ffffff;
   background-color: transparent;
 }
-.navbar .btn {
+.navbar .btn, .navbar .btn-group {
   margin-top: 5px;
+}
+.navbar .btn-group .btn {
+  margin-top: 0;
 }
 .navbar-form {
   margin-bottom: 0;
@@ -1758,7 +1761,7 @@ i {
   top: -6px;
   left: 10px;
 }
-.navbar .dropdown-toggle .caret, .navbar .open.dropdown .caret {
+.navbar .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
   border-top-color: #fff;
 }
 .navbar .nav .active .caret {
