@@ -1461,7 +1461,7 @@ jQuery.support = (function() {
 	// Check if div with explicit width and no margin-right incorrectly
 	// gets computed margin-right based on width of container. For more
 	// info see bug #3333
-	// Fails in WebKit before Feb 2011 nightlies
+	// Fails in WebKit before Feb 2012 nightlies
 	// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
 	if ( window.getComputedStyle ) {
 		marginDiv = document.createElement( "div" );
@@ -3837,7 +3837,7 @@ jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblcl
 
 /*!
  * Sizzle CSS Selector Engine
- *  Copyright 2011, The Dojo Foundation
+ *  Copyright 2012, The Dojo Foundation
  *  Released under the MIT, BSD, and GPL Licenses.
  *  More information: http://sizzlejs.com/
  */
