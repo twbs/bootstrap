@@ -24,11 +24,12 @@
 
   var $window = $(window)
 
-  function ScrollSpy( topbar, selector ) {
+  function ScrollSpy( topbar, selector, offsetTop) {
     var processScroll = $.proxy(this.processScroll, this)
     this.$topbar = $(topbar)
     this.selector = selector || 'li > a'
     this.refresh()
+    this.offsetTop = offsetTop || 10
     this.$topbar.delegate(this.selector, 'click', processScroll)
     $window.scroll(processScroll)
     this.processScroll()
@@ -48,7 +49,7 @@
       }
 
     , processScroll: function () {
-        var scrollTop = $window.scrollTop() + 10
+        var scrollTop = $window.scrollTop() + this.offsetTop
           , offsets = this.offsets
           , targets = this.targets
           , activeTarget = this.activeTarget
@@ -80,12 +81,12 @@
   /* SCROLLSPY PLUGIN DEFINITION
    * =========================== */
 
-  $.fn.scrollSpy = function( options ) {
+  $.fn.scrollSpy = function( options, offsetTop ) {
     var scrollspy = this.data('scrollspy')
 
     if (!scrollspy) {
       return this.each(function () {
-        $(this).data('scrollspy', new ScrollSpy( this, options ))
+        $(this).data('scrollspy', new ScrollSpy( this, options, offsetTop))
       })
     }
 
@@ -97,11 +98,13 @@
       scrollspy[options]()
     }
 
+
+
     return this
   }
 
   $(document).ready(function () {
-    $('body').scrollSpy('[data-scrollspy] li > a')
+    $('body').scrollSpy('[data-scrollspy] li > a', 10)
   })
 
 }( window.jQuery || window.ender );
