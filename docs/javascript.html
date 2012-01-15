@@ -906,16 +906,17 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         <div class="span9 columns">
           <h2>Example alerts</h2>
           <p>The alerts plugin works on regular alert messages, and block messages.</p>
-          <div class="alert-message warning fade in">
+          <div class="alert fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
             <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
           </div>
-          <div class="alert-message block-message error fade in">
+          <div class="alert alert-block alert-error fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <p><strong>Oh snap! You got an error!</strong> Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-            <div class="alert-actions">
-              <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
-            </div>
+            <h4 class="alert-heading">Oh snap! You got an error!</h4>
+            <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+            <p>
+              <a class="btn danger small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+            </p>
           </div>
           <hr>
           <h2>Using bootstrap-alerts.js</h2>
