@@ -130,6 +130,7 @@ section {
 /* Quick links
 -------------------------------------------------- */
 .quick-links {
+  min-height: 30px;
   padding: 5px 20px;
   margin: 45px 0;
   list-style: none;
@@ -141,11 +142,11 @@ section {
   -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
      -moz-box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
           box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+  overflow: hidden;
 }
 .quick-links li {
   display: inline;
   margin: 0 5px;
-  line-height: 30px;
 }
 .quick-links .divider {
   color: #999;
@@ -258,7 +259,7 @@ section {
       -ms-box-sizing: border-box; /* IE8 */
           box-sizing: border-box; /* CSS3 spec*/
   /* Hacks for IE7 to make this work just okay enough to function */
-  *width: 90%;
+  *width: 270px;
   *height: 24px;
 }
 
@@ -386,7 +387,7 @@ section {
 .popover-well .popover-menu-wrapper {
   height: 80px;
 }
-img.large-bird {
+.large-bird {
   margin: 5px 0 0 310px;
   opacity: .1;
 }
@@ -467,9 +468,6 @@ form.well {
 
 /* Icons
 ------------------------- */
-.the-icons {
-
-}
 .the-icons i {
   display: block;
   margin-bottom: 5px;
@@ -483,11 +481,11 @@ form.well {
   width: 100px;
 }
 
-#javascript input[type='checkbox'] {
-display: inline;
-margin-left: 6px;
-position: relative;
-top: -1px;
+#javascript input[type=checkbox] {
+  position: relative;
+  top: -1px;
+  display: inline;
+  margin-left: 6px;
 }
 
 

@@ -21,6 +21,7 @@
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
+  *margin-top: 7px;
 }
 .dropdown:hover .caret,
 .open.dropdown .caret {
@@ -40,7 +41,7 @@
   margin: 0; // override default ul
   list-style: none;
   background-color: @white;
-  border-color: #999;
+  border-color: #ccc;
   border-color: rgba(0,0,0,.2);
   border-style: solid;
   border-width: 1px;
@@ -50,6 +51,8 @@
      -moz-background-clip: padding;
           background-clip: padding-box;
   zoom: 1; // do we need this?
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
 
   // Dividers (basically an hr) within the dropdown
   .divider {
