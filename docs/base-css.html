@@ -150,7 +150,7 @@
 
   <!-- Misc Elements -->
   <h2>Emphasis, address, and abbreviation</h2>
-  <table class="bordered-table striped-table">
+  <table class="table-bordered table-striped">
     <thead>
       <tr>
         <th>Element</th>
@@ -237,7 +237,7 @@
 
   <!-- Blockquotes -->
   <h2>Blockquotes</h2>
-  <table class="bordered-table striped-table">
+  <table class="table-bordered table-striped">
     <thead>
       <tr>
         <th>Element</th>
@@ -383,7 +383,7 @@
   <!-- Code -->
 
   <h2>Code <small>Inline and block</small></h2>
-  <table class="bordered-table striped-table">
+  <table class="table-bordered table-striped">
     <thead>
       <tr>
         <th style="width: 190px;">Element</th>
@@ -425,7 +425,7 @@
 
   <!-- Labels -->
   <h2>Inline labels <small>for special attention</small></h2>
-  <table class="bordered-table striped-table">
+  <table class="table-bordered table-striped">
     <thead>
       <tr>
         <th style="width: 190px;">Labels</th>
@@ -490,7 +490,7 @@
   <h2>Table markup</h2>
   <div class="row">
     <div class="span8">
-      <table class="bordered-table striped-table">
+      <table class="table-bordered table-striped">
         <thead>
           <tr>
             <th>Tag</th>
@@ -579,7 +579,7 @@
   </div>
 
   <h2>Table options</h2>
-  <table class="bordered-table striped-table">
+  <table class="table-bordered table-striped">
   <thead>
       <tr>
         <th>Name</th>
@@ -596,21 +596,21 @@
       <tr>
         <td>Bordered</td>
         <td>
-          <code>.bordered-table</code>
+          <code>.table-bordered</code>
         </td>
         <td>Rounds corners and adds outter border</td>
       </tr>
       <tr>
         <td>Zebra-stripe</td>
         <td>
-          <code>.striped-table</code>
+          <code>.table-striped</code>
         </td>
         <td>Adds light gray background color to odd rows (1, 3, 5, etc)</td>
       </tr>
       <tr>
         <td>Condensed</td>
         <td>
-          <code>.condensed-table</code>
+          <code>.table-condensed</code>
         </td>
         <td>Cuts vertical padding in half, from 8px to 4px, within all <code>td</code> and <code>th</code> elements</td>
       </tr>
@@ -667,15 +667,15 @@
   <h3>2. Striped table</h3>
   <div class="row">
     <div class="span4">
-      <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.striped-table</code> class.</p>
+      <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.table-striped</code> class.</p>
       <p class="muted"><strong>Note:</strong> Sprited tables use the <code>:nth-child</code> CSS selector and is not available in IE7-IE8.</p>
 <pre class="prettyprint linenums" style="margin-bottom: 18px;">
-&lt;table class="striped-table"&gt;
+&lt;table class="table-striped"&gt;
   ...
 &lt;/table&gt;</pre>
     </div>
     <div class="span8">
-      <table class="striped-table">
+      <table class="table-striped">
         <thead>
           <tr>
             <th>#</th>
@@ -714,12 +714,12 @@
     <div class="span4">
       <p>Add borders around the entire table and rounded corners for aesthetic purposes.</p>
 <pre class="prettyprint linenums">
-&lt;table class="bordered-table"&gt;
+&lt;table class="table-bordered"&gt;
   ...
 &lt;/table&gt;</pre>
     </div>
     <div class="span8">
-      <table class="bordered-table">
+      <table class="table-bordered">
         <thead>
           <tr>
             <th>#</th>
@@ -760,14 +760,14 @@
   <h3>4. Condensed table</h3>
   <div class="row">
     <div class="span4">
-      <p>Make your tables more compact by adding the <code>.condensed-table</code> class to cut table cell padding in half (from 10px to 5px).</p>
+      <p>Make your tables more compact by adding the <code>.table-condensed</code> class to cut table cell padding in half (from 10px to 5px).</p>
 <pre class="prettyprint linenums" style="margin-bottom: 18px;">
-&lt;table class="condensed-table"&gt;
+&lt;table class="table-condensed"&gt;
   ...
 &lt;/table&gt;</pre>
     </div>
     <div class="span8">
-      <table class="condensed-table">
+      <table class="table-condensed">
         <thead>
           <tr>
             <th>#</th>
@@ -816,12 +816,12 @@
     });
   });
 &lt;/script&gt;
-&lt;table class="striped-table"&gt;
+&lt;table class="table-striped"&gt;
   ...
 &lt;/table&gt;</pre>
     </div>
     <div class="span8">
-      <table class="striped-table tablesorter-example">
+      <table class="table-striped tablesorter-example">
         <thead>
           <tr>
             <th>#</th>
@@ -858,7 +858,7 @@
         </tbody>
       </table>
       <p>Styles for the Tablesorter, zebra striping, borders, and condensing may all compound in any variation to fit your needs.</p>
-      <table class="striped-table bordered-table condensed-table tablesorter-example">
+      <table class="table-striped table-bordered table-condensed tablesorter-example">
         <thead>
           <tr>
             <th>#</th>
@@ -932,7 +932,7 @@
 
   <h2>Four types of forms</h2>
   <p>Bootstrap provides simple markup and styles for four styles of common web forms.</p>
-  <table class="bordered-table striped-table">
+  <table class="table-bordered table-striped">
     <thead>
       <tr>
         <th>Name</th>
@@ -948,17 +948,17 @@
       </tr>
       <tr>
         <th>Horizontal</th>
-        <td><code>.horizontal-form</code></td>
+        <td><code>.form-horizontal</code></td>
         <td>Float left, right-aligned labels on same line as controls</td>
       </tr>
       <tr>
         <th>Inline</th>
-        <td><code>.inline-form</code></td>
+        <td><code>.form-inline</code></td>
         <td>Left-aligned label and inline-block controls for compact style</td>
       </tr>
       <tr>
         <th>Search</th>
-        <td><code>.search-form</code></td>
+        <td><code>.form-search</code></td>
         <td>Extra-rounded text input for a typical search aesthetic</td>
       </tr>
     </tbody>
@@ -981,16 +981,16 @@
     </div>
     <div class="span4">
       <h3>Search form</h3>
-      <p>Reflecting default WebKit styles, just add <code>.search-form</code> for extra rounded search fields.</p>
-      <form class="well search-form">
+      <p>Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.</p>
+      <form class="well form-search">
         <input type="text" class="input-medium search-query">
         <button type="submit" class="btn">Search</button>
       </form>
     </div>
     <div class="span4">
       <h3>Inline form</h3>
-      <p>Inputs are block level to start. For <code>.inline-form</code> and <code>.horizontal-form</code>, we use inline-block.</p>
-      <form class="well search-form">
+      <p>Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.</p>
+      <form class="well form-search">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
         <button type="submit" class="btn">Go</button>
@@ -1003,7 +1003,7 @@
   <h2>Horizontal forms</h2>
   <div class="row">
     <div class="span8">
-      <form class="horizontal-form">
+      <form class="form-horizontal">
         <legend>Controls Bootstrap supports</legend>
         <fieldset class="control-group">
           <label class="control-label" for="input01">Text input</label>
@@ -1087,7 +1087,7 @@
 
   <div class="row">
     <div class="span8">
-      <form class="horizontal-form">
+      <form class="form-horizontal">
         <legend>Form control states</legend>
         <fieldset class="control-group">
           <label class="control-label" for="focusedInput">Focused input</label>
@@ -1158,7 +1158,7 @@
 
   <div class="row">
     <div class="span8">
-      <form class="horizontal-form">
+      <form class="form-horizontal">
         <legend>Extending form controls</legend>
         <fieldset class="control-group">
           <label class="control-label">Form sizes</label>
@@ -1259,7 +1259,7 @@
   <div class="page-header">
     <h1>Buttons</h1>
   </div>
-  <table class="bordered-table striped-table">
+  <table class="table-bordered table-striped">
     <thead>
       <tr>
         <th>Button</th>
@@ -1517,13 +1517,13 @@
     </div>
     <div class="span3">
       <p>Or, use them in navigation.</p>
-      <div class="well side-nav">
-        <ul class="nav-group">
-          <li class="active"><a class="nav-item" href="#"><i class="home"></i> Home</a></li>
-          <li><a class="nav-item" href="#"><i class="book"></i> Library</a></li>
-          <li><a class="nav-item" href="#"><i class="cog"></i> Settings</a></li>
+      <div class="well" style="padding: 8px 0;">
+        <ul class="nav list">
+          <li class="active"><a href="#"><i class="home"></i> Home</a></li>
+          <li><a href="#"><i class="book"></i> Library</a></li>
+          <li><a href="#"><i class="pencil"></i> Applications</a></li>
         </ul>
-      </div>
+      </div> <!-- /well -->
     </div>
   </div>
 </section>

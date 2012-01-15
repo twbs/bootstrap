@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sat Jan 14 20:53:46 PST 2012
+ * Date: Sat Jan 14 21:26:13 PST 2012
  */
 html, body {
   margin: 0;
@@ -942,22 +942,22 @@ input::-webkit-input-placeholder {
   -moz-border-radius: 14px;
   border-radius: 14px;
 }
-.search-form input,
-.inline-form input,
-.horizontal-form input,
-.search-form textarea,
-.inline-form textarea,
-.horizontal-form textarea,
-.search-form select,
-.inline-form select,
-.horizontal-form select,
-.search-form .uneditable-input,
-.inline-form .uneditable-input,
-.horizontal-form .uneditable-input {
+.form-search input,
+.form-inline input,
+.form-horizontal input,
+.form-search textarea,
+.form-inline textarea,
+.form-horizontal textarea,
+.form-search select,
+.form-inline select,
+.form-horizontal select,
+.form-search .uneditable-input,
+.form-inline .uneditable-input,
+.form-horizontal .uneditable-input {
   display: inline-block;
   margin-bottom: 0;
 }
-.search-form label, .inline-form label {
+.form-search label, .form-inline label {
   display: inline-block;
 }
 .control-group {
@@ -966,16 +966,16 @@ input::-webkit-input-placeholder {
 .control-group > label {
   font-weight: bold;
 }
-.horizontal-form .control-group > label {
+.form-horizontal .control-group > label {
   float: left;
   width: 130px;
   padding-top: 5px;
   text-align: right;
 }
-.horizontal-form .controls {
+.form-horizontal .controls {
   margin-left: 150px;
 }
-.horizontal-form .form-actions {
+.form-horizontal .form-actions {
   padding-left: 150px;
 }
 table {
@@ -1001,46 +1001,46 @@ thead:first-child tr th, thead:first-child tr td {
 tbody + tbody {
   border-top: 2px solid #ddd;
 }
-.condensed-table th, .condensed-table td {
+.table-condensed th, .table-condensed td {
   padding: 4px 5px;
 }
-.bordered-table {
+.table-bordered {
   border: 1px solid #ddd;
   border-collapse: separate;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.bordered-table th + th,
-.bordered-table td + td,
-.bordered-table th + td,
-.bordered-table td + th {
+.table-bordered th + th,
+.table-bordered td + td,
+.table-bordered th + td,
+.table-bordered td + th {
   border-left: 1px solid #ddd;
 }
-.bordered-table thead:first-child tr:first-child th, .bordered-table tbody:first-child tr:first-child th, .bordered-table tbody:first-child tr:first-child td {
+.table-bordered thead:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child td {
   border-top: 0;
 }
-.bordered-table thead:first-child tr:first-child th:first-child, .bordered-table tbody:first-child tr:first-child td:first-child {
+.table-bordered thead:first-child tr:first-child th:first-child, .table-bordered tbody:first-child tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
   -moz-border-radius: 4px 0 0 0;
   border-radius: 4px 0 0 0;
 }
-.bordered-table thead:first-child tr:first-child th:last-child, .bordered-table tbody:first-child tr:first-child td:last-child {
+.table-bordered thead:first-child tr:first-child th:last-child, .table-bordered tbody:first-child tr:first-child td:last-child {
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
   border-radius: 0 4px 0 0;
 }
-.bordered-table thead:last-child tr:last-child th:first-child, .bordered-table tbody:last-child tr:last-child td:first-child {
+.table-bordered thead:last-child tr:last-child th:first-child, .table-bordered tbody:last-child tr:last-child td:first-child {
   -webkit-border-radius: 0 0 0 4px;
   -moz-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
 }
-.bordered-table thead:last-child tr:last-child th:last-child, .bordered-table tbody:last-child tr:last-child td:last-child {
+.table-bordered thead:last-child tr:last-child th:last-child, .table-bordered tbody:last-child tr:last-child td:last-child {
   -webkit-border-radius: 0 0 4px 0;
   -moz-border-radius: 0 0 4px 0;
   border-radius: 0 0 4px 0;
 }
-.striped-table tbody tr:nth-child(odd) td, .striped-table tbody tr:nth-child(odd) th {
+.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
 }
 table .span1 {
@@ -3071,19 +3071,19 @@ a.thumbnail:hover {
   .navbar .nav:hover > li > a:hover {
     background-color: #333;
   }
-  .horizontal-form .control-group > label {
+  .form-horizontal .control-group > label {
     float: none;
     width: auto;
     padding-top: 0;
     text-align: left;
   }
-  .horizontal-form .controls {
+  .form-horizontal .controls {
     margin-left: 0;
   }
-  .horizontal-form .control-list {
+  .form-horizontal .control-list {
     padding-top: 0;
   }
-  .horizontal-form .form-actions {
+  .form-horizontal .form-actions {
     padding-left: 0;
   }
   .modal {
