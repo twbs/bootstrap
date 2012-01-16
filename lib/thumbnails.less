@@ -3,7 +3,6 @@
 
 .thumbnails {
   margin-left: -20px;
-  margin-bottom: 0;
   list-style: none;
   .clearfix();
 }
@@ -31,56 +30,4 @@ a.thumbnail:hover {
 }
 .thumbnail .caption {
   padding: 9px;
-}
-
-.carousel {
-
-  position: relative;
-
-  .carousel-inner {
-    overflow: hidden;
-    width: 100%;
-    position: relative;
-  }
-
-  .item {
-    display: none;
-    position: relative;
-    .transition(.6s ease-in-out left);
-  }
-
-  .active, .next, .prev { display: block; }
-
-  .active { left: 0 }
-
-  .next, .prev {
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-  .next { left: 100%; }
-  .prev { left: -100%; }
-  .next.left, .prev.right { left: 0% }
-
-  .active.left { left: -100% }
-  .active.right { left: 100% }
-
-  .nav {
-    width: auto;
-    .border-radius(0);
-    height: 50px;
-    position: absolute;
-    top: 50%;
-    margin: -25px 0 0;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 42px;
-    left: 5px;
-    font-weight: 100;
-    padding: 0 15px;
-    &.right { right: 5px; left: auto; }
-    &:hover { text-decoration: none; background: rgba(0, 0, 0, 0.8); }
-  }
 }

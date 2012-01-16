@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 15 13:11:42 PST 2012
+ * Date: Sun Jan 15 16:27:00 PST 2012
  */
 html, body {
   margin: 0;
@@ -2084,8 +2084,6 @@ i {
   *zoom: 1;
   margin-left: 0;
   margin-bottom: 0;
-  border: 1px solid #ddd;
-  border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -2101,8 +2099,8 @@ i {
   padding: 0 14px;
   line-height: 34px;
   text-decoration: none;
-  border-right: 1px solid #ddd;
-  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
+  border-left-width: 0;
 }
 .pagination a:hover, .pagination .active a {
   background-color: #f5f5f5;
@@ -2115,8 +2113,16 @@ i {
   background-color: transparent;
   cursor: default;
 }
+.pagination li:first-child a {
+  border-left-width: 1px;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
 .pagination li:last-child a {
-  border: 0;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
 }
 .pagination-centered {
   text-align: center;
@@ -2383,8 +2389,8 @@ i {
   padding: 3px;
   width: 280px;
   overflow: hidden;
-  background-color: #000000;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: #000000;
+  background: rgba(0, 0, 0, 0.8);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -2667,7 +2673,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   opacity: 0.75;
 }
 .alert {
-  position: relative;
   padding: 8px 35px 8px 14px;
   margin-bottom: 18px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -2680,11 +2685,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .alert, .alert-heading {
   color: #c09853;
 }
-.alert > .close {
+.alert .close {
   *margin-top: 3px;
   /* IE7 spacing */
 
-  margin-right: -21px;
+  position: relative;
+  right: -21px;
 }
 .alert-success {
   background-color: #dff0d8;
@@ -2722,7 +2728,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .thumbnails {
   margin-left: -20px;
-  margin-bottom: 0;
   list-style: none;
   zoom: 1;
 }
@@ -2763,74 +2768,6 @@ a.thumbnail:hover {
 }
 .thumbnail .caption {
   padding: 9px;
-}
-.carousel {
-  position: relative;
-}
-.carousel .carousel-inner {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
-.carousel .item {
-  display: none;
-  position: relative;
-  -webkit-transition: 0.6s ease-in-out left;
-  -moz-transition: 0.6s ease-in-out left;
-  -ms-transition: 0.6s ease-in-out left;
-  -o-transition: 0.6s ease-in-out left;
-  transition: 0.6s ease-in-out left;
-}
-.carousel .active, .carousel .next, .carousel .prev {
-  display: block;
-}
-.carousel .active {
-  left: 0;
-}
-.carousel .next, .carousel .prev {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-.carousel .next {
-  left: 100%;
-}
-.carousel .prev {
-  left: -100%;
-}
-.carousel .next.left, .carousel .prev.right {
-  left: 0%;
-}
-.carousel .active.left {
-  left: -100%;
-}
-.carousel .active.right {
-  left: 100%;
-}
-.carousel .nav {
-  width: auto;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  height: 50px;
-  position: absolute;
-  top: 50%;
-  margin: -25px 0 0;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  font-size: 42px;
-  left: 5px;
-  font-weight: 100;
-  padding: 0 15px;
-}
-.carousel .nav.right {
-  right: 5px;
-  left: auto;
-}
-.carousel .nav:hover {
-  text-decoration: none;
-  background: rgba(0, 0, 0, 0.8);
 }
 .label {
   padding: 1px 3px 2px;
@@ -2998,6 +2935,74 @@ a.thumbnail:hover {
   background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.carousel {
+  position: relative;
+}
+.carousel .carousel-inner {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.carousel .item {
+  display: none;
+  position: relative;
+  -webkit-transition: 0.6s ease-in-out left;
+  -moz-transition: 0.6s ease-in-out left;
+  -ms-transition: 0.6s ease-in-out left;
+  -o-transition: 0.6s ease-in-out left;
+  transition: 0.6s ease-in-out left;
+}
+.carousel .active, .carousel .next, .carousel .prev {
+  display: block;
+}
+.carousel .active {
+  left: 0;
+}
+.carousel .next, .carousel .prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.carousel .next {
+  left: 100%;
+}
+.carousel .prev {
+  left: -100%;
+}
+.carousel .next.left, .carousel .prev.right {
+  left: 0%;
+}
+.carousel .active.left {
+  left: -100%;
+}
+.carousel .active.right {
+  left: 100%;
+}
+.carousel .nav {
+  width: auto;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  margin: -25px 0 0;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 42px;
+  left: 5px;
+  font-weight: 100;
+  padding: 0 15px;
+}
+.carousel .nav.right {
+  right: 5px;
+  left: auto;
+}
+.carousel .nav:hover {
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.8);
 }
 .pull-right {
   float: right;

@@ -3,7 +3,6 @@
 
 // Base alert styles
 .alert {
-  position: relative;
   padding: 8px 35px 8px 14px;
   margin-bottom: @baseLineHeight;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -17,9 +16,10 @@
 }
 
 // Adjust close link position
-.alert > .close {
+.alert .close {
   *margin-top: 3px; /* IE7 spacing */
-  margin-right: -21px;
+  position: relative;
+  right: -21px;
 }
 
 // Alternate styles

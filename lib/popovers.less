@@ -25,8 +25,8 @@
     padding: 3px;
     width: 280px;
     overflow: hidden;
-    background-color: @black;
-    background-color: rgba(0,0,0,.8);
+    background: @black; // has to be full background declaration for IE fallback
+    background: rgba(0,0,0,.8);
     .border-radius(6px);
     .box-shadow(0 3px 7px rgba(0,0,0,0.3));
   }
