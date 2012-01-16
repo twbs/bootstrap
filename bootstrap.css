@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 15 16:27:00 PST 2012
+ * Date: Sun Jan 15 18:32:40 PST 2012
  */
 html, body {
   margin: 0;
@@ -2936,10 +2936,29 @@ a.thumbnail:hover {
   background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
+.accordion {
+  padding: 0;
+}
+.accordion-heading {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+}
+.accordion-body {
+  padding: 10px;
+  margin-left: 0;
+  margin-bottom: 9px;
+  border: 1px solid #ddd;
+  border-top: 0;
+  display: none;
+}
+.accordion .in {
+  display: block;
+}
 .carousel {
   position: relative;
+  line-height: 1;
 }
-.carousel .carousel-inner {
+.carousel-inner {
   overflow: hidden;
   width: 100%;
   position: relative;
@@ -2971,7 +2990,7 @@ a.thumbnail:hover {
   left: -100%;
 }
 .carousel .next.left, .carousel .prev.right {
-  left: 0%;
+  left: 0;
 }
 .carousel .active.left {
   left: -100%;
@@ -2979,30 +2998,45 @@ a.thumbnail:hover {
 .carousel .active.right {
   left: 100%;
 }
-.carousel .nav {
-  width: auto;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  height: 50px;
+.carousel-control {
   position: absolute;
-  top: 50%;
-  margin: -25px 0 0;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  font-size: 42px;
-  left: 5px;
+  top: 40%;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  font-size: 60px;
   font-weight: 100;
-  padding: 0 15px;
+  line-height: 30px;
+  color: #ccc;
+  text-align: center;
+  background: #999;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }
-.carousel .nav.right {
-  right: 5px;
+.carousel-control.right {
   left: auto;
+  right: 15px;
 }
-.carousel .nav:hover {
+.carousel-control:hover {
+  color: #fff;
   text-decoration: none;
-  background: rgba(0, 0, 0, 0.8);
+  background: #333;
+  background: rgba(0, 0, 0, 0.75);
+}
+.carousel-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 15px 5px;
+  background: #333;
+  background: rgba(0, 0, 0, 0.75);
+}
+.carousel-caption h4, .carousel-caption p {
+  color: #fff;
 }
 .pull-right {
   float: right;

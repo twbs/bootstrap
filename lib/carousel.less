@@ -2,14 +2,17 @@
 // --------
 
 .carousel {
-
   position: relative;
+  line-height: 1;
+}
 
-  .carousel-inner {
-    overflow: hidden;
-    width: 100%;
-    position: relative;
-  }
+.carousel-inner {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.carousel {
 
   .item {
     display: none;
@@ -17,38 +20,88 @@
     .transition(.6s ease-in-out left);
   }
 
-  .active, .next, .prev { display: block; }
+  .active, 
+  .next, 
+  .prev { display: block; }
 
-  .active { left: 0 }
+  .active {
+    left: 0;
+  }
 
-  .next, .prev {
+  .next, 
+  .prev {
     position: absolute;
     top: 0;
     width: 100%;
   }
 
-  .next { left: 100%; }
-  .prev { left: -100%; }
-  .next.left, .prev.right { left: 0% }
-
-  .active.left { left: -100% }
-  .active.right { left: 100% }
-
-  .nav {
-    width: auto;
-    .border-radius(0);
-    height: 50px;
-    position: absolute;
-    top: 50%;
-    margin: -25px 0 0;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 42px;
-    left: 5px;
-    font-weight: 100;
-    padding: 0 15px;
-    &.right { right: 5px; left: auto; }
-    &:hover { text-decoration: none; background: rgba(0, 0, 0, 0.8); }
+  .next {
+    left: 100%;
   }
+  .prev {
+    left: -100%;
+  }
+  .next.left, 
+  .prev.right {
+    left: 0;
+  }
+
+  .active.left {
+    left: -100%;
+  }
+  .active.right {
+    left: 100%;
+  }
+
+}
+
+// Left/right controls for nav
+// ---------------------------
+
+.carousel-control {
+  position: absolute;
+  top: 40%;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 30px;
+  color: #ccc;
+  text-align: center;
+  background: #999;
+  background: rgba(0,0,0,.5);
+  .border-radius(20px);
+
+  // Reposition the right one
+  &.right {
+    left: auto;
+    right: 15px;
+  }
+
+  // Hover state
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    background: #333;
+    background: rgba(0,0,0,.75);
+  }
+}
+
+// Caption for text below images
+// -----------------------------
+
+.carousel-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 15px 5px;
+  background: #333;
+  background: rgba(0,0,0,.75);
+}
+.carousel-caption h4,
+.carousel-caption p {
+  color: #fff;
 }

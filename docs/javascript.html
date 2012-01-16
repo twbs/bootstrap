@@ -1079,33 +1079,33 @@ $('#my-alert').bind('closed', function () {
         <div class="span9 columns">
           <h2>Example accordion</h2>
           <p>Using the collapse plugin, we built a simple accordion style widget:</p>
-          <dl id="accordion">
-            <dt>
+          <dl class="accordion" id="accordion">
+            <dt class="accordion-heading">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                 Collapsible Group Item #1
               </a>
             </dt>
-            <dd id="collapseOne" class="collapse in">
+            <dd id="collapseOne" class="accordion-body collapse in">
               <p>
               Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </p>
             </dd>
-            <dt>
+            <dt class="accordion-heading">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                 Collapsible Group Item #2
               </a>
             </dt>
-            <dd id="collapseTwo" class="collapse">
+            <dd id="collapseTwo" class="accordion-body collapse">
               <p>
               Blog +1 eiusmod, williamsburg chambray craft beer brooklyn. Trust fund squid whatever, sunt hoodie skateboard mustache 3 wolf moon art party wes anderson ad leggings officia. Skateboard keytar incididunt gluten-free retro sartorial, single-origin coffee et viral. Art party blog sunt, readymade fugiat 8-bit aesthetic ex echo park fanny pack keytar. Thundercats sustainable labore, mustache adipisicing tattooed dolore aute occaecat velit 8-bit raw denim letterpress. In occaecat freegan, next level single-origin coffee chambray excepteur nihil duis exercitation adipisicing ex sartorial twee squid. You probably haven't heard of them fugiat ea retro eiusmod quis cosby sweater, +1 fap sapiente biodiesel banksy.
               </p>
             </dd>
-            <dt>
+            <dt class="accordion-heading">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
                 Collapsible Group Item #3
               </a>
             </dt>
-            <dd id="collapseThree" class="collapse">
+            <dd id="collapseThree" class="accordion-body collapse">
               <p>
               Tempor gentrify pariatur nihil salvia, irony synth incididunt odio commodo brunch aute. Four loko est vice echo park wes anderson jean shorts, tempor ea vero locavore. Seitan DIY dolore readymade williamsburg viral. Dolor fap master cleanse delectus, ad butcher labore duis vice mollit cillum exercitation eu banh mi. Austin banksy 3 wolf moon locavore sed, helvetica next level VHS you probably haven't heard of them ethical odio. Incididunt locavore minim, do seitan consequat qui thundercats labore before they sold out retro laborum. Esse twee readymade laboris fap vice, voluptate DIY.
               </p>
@@ -1220,32 +1220,32 @@ $('#myCollapsible').on('hidden', function () {
         <div class="span9 columns">
           <h2>Example carousel</h2>
           <p>Watch the slideshow below.</p>
-          <div id="myCarousel" class="thumbnail carousel slide">
+          <div id="myCarousel" class="carousel slide">
             <div class="carousel-inner">
               <div class="item active">
-                <img src="http://placehold.it/1100x400" alt="">
-                <div class="caption">
-                  <h5>First Thumbnail label</h5>
+                <img src="http://placehold.it/1000x500" alt="">
+                <div class="carousel-caption">
+                  <h4>First Thumbnail label</h4>
                   <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                 </div>
               </div>
               <div class="item">
-                <img src="http://placehold.it/1100x400" alt="">
-                <div class="caption">
-                  <h5>Second Thumbnail label</h5>
+                <img src="http://placehold.it/1000x500" alt="">
+                <div class="carousel-caption">
+                  <h4>Second Thumbnail label</h4>
                   <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                 </div>
               </div>
               <div class="item">
-                <img src="http://placehold.it/1100x400" alt="">
-                <div class="caption">
-                  <h5>Third Thumbnail label</h5>
+                <img src="http://placehold.it/1000x500" alt="">
+                <div class="carousel-caption">
+                  <h4>Third Thumbnail label</h4>
                   <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                 </div>
               </div>
             </div>
-            <a class="left nav" href="#myCarousel" data-slide="prev">&laquo;</a>
-            <a class="right nav" href="#myCarousel" data-slide="next">&raquo;</a>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
           </div>
           <hr>
           <h2>Using bootstrap-carousel.js</h2>
@@ -1273,24 +1273,24 @@ $('#myCollapsible').on('hidden', function () {
           <h3>Markup</h3>
           <p>Data attributes are integral to the carousel plugin. Check out the example code below for the various markup types.</p>
 <pre class="prettyprint linenums">
-&lt;div class="thumbnail carousel"&gt;
-
-  &lt;!-- items --&gt;
-  &lt;div class="carousel-inner"&gt;…&lt;/div&gt;
-
-  &lt;!-- navigation --&gt;
-  &lt;a class="nav" href="#myCarousel" data-slide="next"&gt;&amp;lt;&lt;/a&gt;
-  &lt;a class="nav" href="#myCarousel" data-slide="prev"&gt;&amp;gt;&lt;/a&gt;
-
+&lt;div class="carousel"&gt;
+  &lt;!-- Carousel items --&gt;
+  &lt;div class="carousel-inner"&gt;
+    ...
+  &lt;/div&gt;
+  &lt;!-- Carousel nav --&gt;
+  &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
+  &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
 &lt;/div&gt;
 </pre>
           <h3>Methods</h3>
           <h4>.carousel(options)</h4>
           <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
-          <pre class="prettyprint linenums">
-          $('.myCarousel').carousel({
-            interval: 2000
-          })</pre>
+<pre class="prettyprint linenums">
+$('.myCarousel').carousel({
+  interval: 2000
+})
+</pre>
           <h4>.carousel('cycle')</h4>
           <p>Cycles through the carousel items from left to right.</p>
           <h4>.carousel('pause')</h4>
