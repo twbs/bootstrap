@@ -3,8 +3,18 @@
 
 // Navbar variables
 @navBarHeight: 40px;
+@navBarLineHeight: 19px;
+@navBarBrandSize: 20px;
 @navBarBgStart: #333;
 @navBarBgEnd: #222;
+
+// Calculate padding based on @navBarHeight
+@navBarPaddingTop:    floor((@navBarHeight - @navBarLineHeight)/2);
+@navBarPaddingBottom: round((@navBarHeight - @navBarLineHeight)/2);
+
+@_delta: round(@navBarBrandSize/10);
+@navBarBrandPaddingTop:    floor((@navBarHeight - @navBarBrandSize)/2) - @_delta;
+@navBarBrandPaddingBottom: floor((@navBarHeight - @navBarBrandSize)/2) + @_delta;
 
 // Common styles
 .navbar {
@@ -28,9 +38,9 @@
   .brand {
     float: left;
     display: block;
-    padding: 8px 20px 12px;
+    padding: @navBarBrandPaddingTop 20px @navBarBrandPaddingBottom;
     margin-left: -20px; // negative indent to left-align the text down the page
-    font-size: 20px;
+    font-size: @navBarBrandSize;
     font-weight: 200;
     line-height: 1;
     color: @white;
@@ -47,7 +57,7 @@
   // Buttons in navbar
   .btn,
   .btn-group {
-    margin-top: 5px; // make buttons vertically centered in navbar
+    margin-top: floor((@navBarHeight - 30px)/2); // make buttons vertically centered in navbar
   }
   .btn-group .btn {
     margin-top: 0;
@@ -68,7 +78,7 @@
 .navbar-search {
   position: relative;
   float: left;
-  margin-top: 6px;
+  margin-top: round((@navBarHeight - 29px)/2);
   margin-bottom: 0;
   .search-query {
     padding: 4px 9px;
@@ -152,8 +162,8 @@
 // Links
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 10px 11px;
-  line-height: 19px;
+  padding: @navBarPaddingTop 10px @navBarPaddingBottom;
+  line-height: @navBarLineHeight;
   color: @grayLight;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
@@ -175,7 +185,7 @@
 
 // Dividers (basically a vertical hr)
 .navbar .vertical-divider {
-  height: 40px;
+  height: @navBarHeight;
   width: 1px;
   margin: 0 5px;
   overflow: hidden;
@@ -196,7 +206,7 @@
 
 // Menu position and menu carets
 .navbar .dropdown-menu {
-  top: 41px;
+  top: @navBarHeight + 1;
   .border-radius(4px);
   &:before {
     content: '';
