@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 15 21:48:07 PST 2012
+ * Date: Sun Jan 15 21:49:43 PST 2012
  */
 html, body {
   margin: 0;
@@ -2942,10 +2942,9 @@ a.thumbnail:hover {
 .accordion-heading {
   padding: 5px 10px;
   border: 1px solid #ddd;
-  margin-bottom: 1px;
 }
 .accordion-body {
-  margin-left: 0;
+  margin: 0 0 1px 0;
 }
 .accordion-inner {
   padding: 10px;
