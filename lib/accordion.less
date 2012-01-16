@@ -4,18 +4,23 @@
 .accordion {
   padding: 0;
 }
+
 .accordion-heading {
   padding: 5px 10px;
   border: 1px solid #ddd;
+  margin-bottom: 1px;
 }
+
 .accordion-body {
-  padding: 10px;
   margin-left: 0;
-  margin-bottom: @baseLineHeight / 2;
+}
+
+.accordion-inner {
+  padding: 10px;
   border: 1px solid #ddd;
   border-top: 0;
-  display: none;
 }
+
 .accordion .in {
-  display: block;
+  margin-bottom: @baseLineHeight / 2;
 }
