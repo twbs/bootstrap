@@ -4,17 +4,21 @@
 .accordion {
   padding: 0;
 }
+.accordion-group {
+  margin-bottom: @baseLineHeight / 2;
+  background-color: #eee;
+  .border-radius(4px);
+}
 .accordion-heading {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
+  display: block;
+  padding: 9px 15px;
 }
 .accordion-body {
-  padding: 10px;
-  margin-left: 0;
-  margin-bottom: @baseLineHeight / 2;
-  border: 1px solid #ddd;
-  border-top: 0;
   display: none;
+  padding: 15px;
+  margin-left: 0;
+  border-top: 1px solid #ddd;
+  .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
 }
 .accordion .in {
   display: block;
