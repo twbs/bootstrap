@@ -1,22 +1,21 @@
 // NAVBAR (FIXED AND STATIC)
 // -------------------------
 
-// Navbar variables
-@navBarHeight: 40px;
-@navBarBgStart: #333;
-@navBarBgEnd: #222;
 
-// Common styles
+// COMMON STYLES
+// -------------
+
 .navbar {
   overflow: visible;
 }
 // gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
-  background-color: @navBarBgEnd;
-  #gradient > .vertical(@navBarBgStart, @navBarBgEnd);
+  background-color: @navbarBackground;
+  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
   .box-shadow(@shadow);
 }
+
 // Text and links
 .navbar {
   // Hover and active states
@@ -75,20 +74,16 @@
     #font > .sans-serif(13px, normal, 1);
     color: @white;
     color: rgba(255,255,255,.75);
-    background-color: #444;
-    background-color: rgba(255,255,255,.3);
+    background: #444;
+    background: rgba(255,255,255,.3);
     border: 1px solid #111;
     @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15);
     .box-shadow(@shadow);
     .transition(none);
 
     // Placeholder text gets special styles; can't be bundled together though for some reason
-    &:-moz-placeholder {
-      color: @grayLighter;
-    }
-    &::-webkit-input-placeholder {
-      color: @grayLighter;
-    }
+    .placeholder(@grayLighter);
+
     // Hover states
     &:hover {
       color: @white;
