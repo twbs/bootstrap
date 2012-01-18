@@ -3,7 +3,12 @@
 // -----------------------------------------------------------------
 
 
-// Clearfix for clearing floats like a boss h5bp.com/q
+// UTILITY MIXINS
+// --------------------------------------------------
+
+// Clearfix
+// -------------------------
+// For clearing floats like a boss h5bp.com/q
 .clearfix() {
   zoom: 1;
   &:before,
@@ -19,6 +24,7 @@
 }
 
 // Center-align a block level element
+// -------------------------
 .center-block() {
   display: block;
   margin-left: auto;
@@ -26,12 +32,14 @@
 }
 
 // IE7 inline-block
+// -------------------------
 .ie7-inline-block() {
   *display: inline; /* IE7 inline-block hack */
   *zoom: 1;
 }
 
 // Sizing shortcuts
+// -------------------------
 .size(@height: 5px, @width: 5px) {
   width: @width;
   height: @height;
@@ -40,8 +48,9 @@
   .size(@size, @size);
 }
 
-// Input placeholder text
-.placeholder(@color: @grayLight) {
+// Placeholder text
+// -------------------------
+.placeholder(@color: @placeHolderText) {
   :-moz-placeholder {
     color: @color;
   }
@@ -50,7 +59,11 @@
   }
 }
 
-// Font Stacks
+
+
+// FONTS
+// --------------------------------------------------
+
 #font {
   #family {
     .serif() {
@@ -82,20 +95,28 @@
   }
 }
 
-// Grid System
+
+
+// GRID SYSTEM
+// --------------------------------------------------
+
+// Site container
+// -------------------------
 .fixed-container() {
   width: @siteWidth;
   margin-left: auto;
   margin-right: auto;
   .clearfix();
 }
+
+// Columns and offseting
+// -------------------------
 .columns(@columns: 1) {
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
 .offset(@columns: 1) {
   margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
 }
-
 // Necessary grid styles for every column to make them appear next to each other horizontally
 .gridColumn() {
   float: left;
@@ -106,6 +127,11 @@
   .gridColumn();
   .columns(@columnSpan);
 }
+
+
+
+// CSS3 PROPERTIES
+// --------------------------------------------------
 
 // Border Radius
 .border-radius(@radius: 5px) {
@@ -170,15 +196,6 @@
           transform: translate(@x, @y);
 }
 
-// User select
-// For selecting text on the page
-.user-select(@select) {
-  -webkit-user-select: @select;
-     -moz-user-select: @select;
-       -o-user-select: @select;
-          user-select: @select;
-}
-
 // Background clipping
 // Heads up: FF 3.6 and under need padding instead of padding-box
 .background-clip(@clip) {
@@ -187,11 +204,29 @@
           background-clip: @clip;
 }
 
+// Background sizing
+.background-size(@size){
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+       -o-background-size: @size;
+          background-size: @size;
+}
+
+
 // Box sizing
 .box-sizing(@boxmodel) {
   -webkit-box-sizing: @boxmodel;
      -moz-box-sizing: @boxmodel;
           box-sizing: @boxmodel;
+}
+
+// User select
+// For selecting text on the page
+.user-select(@select) {
+  -webkit-user-select: @select;
+     -moz-user-select: @select;
+       -o-user-select: @select;
+          user-select: @select;
 }
 
 // Resize anything
@@ -209,6 +244,18 @@
      -moz-column-gap: @columnGap;
           column-gap: @columnGap;
 }
+
+// Opacity
+.opacity(@opacity: 100) {
+  filter: e(%("alpha(opacity=%d)", @opacity));
+    -moz-opacity: @opacity / 100;
+         opacity: @opacity / 100;
+}
+
+
+
+// BACKGROUNDS
+// --------------------------------------------------
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
@@ -301,14 +348,13 @@
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }
 
-// Opacity
-.opacity(@opacity: 100) {
-  filter: e(%("alpha(opacity=%d)", @opacity));
-    -moz-opacity: @opacity / 100;
-         opacity: @opacity / 100;
-}
 
-// Popover arrows
+
+// COMPONENT MIXINS
+// --------------------------------------------------
+
+// POPOVER ARROWS
+// -------------------------
 // For tipsies and popovers
 #popoverArrow {
   .top(@arrowWidth: 5px) {
@@ -343,11 +389,4 @@
     border-bottom: @arrowWidth solid transparent;
     border-right: @arrowWidth solid @black;
   }
-}
-
-.background-size(@width, @height){
-  -webkit-background-size: @width @height;
-     -moz-background-size: @width @height;
-       -o-background-size: @width @height;
-          background-size: @width @height;
 }
