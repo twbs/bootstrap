@@ -208,6 +208,19 @@ form .clearfix.success {
   .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
 }
 
+// Form field states displayed in help only
+form .clearfix .help-inline, form .clearfix .help-block {
+  &.error {
+    color: #b94a48
+  }
+  &.warning {
+    color: #c09853
+  }
+  &.success {
+    color: #468847
+  }
+}
+
 
 // Form element sizes
 // TODO v2: remove duplication here and just stick to .input-[size] in light of adding .spanN sizes
