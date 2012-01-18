@@ -176,12 +176,11 @@ input::-webkit-input-placeholder{color:#999999;}
 .form-horizontal .control-group>label{float:left;width:140px;padding-top:5px;text-align:right;}
 .form-horizontal .controls{margin-left:160px;}
 .form-horizontal .form-actions{padding-left:160px;}
-table{width:100%;margin-bottom:18px;}
-th,td{padding:8px;line-height:18px;text-align:left;border-top:1px solid #ddd;}
-th{font-weight:bold;vertical-align:bottom;}
-td{vertical-align:top;}
-thead:first-child tr th,thead:first-child tr td{border-top:0;}
-tbody+tbody{border-top:2px solid #ddd;}
+.table{width:100%;margin-bottom:18px;}.table th,.table td{padding:8px;line-height:18px;text-align:left;border-top:1px solid #ddd;}
+.table th{font-weight:bold;vertical-align:bottom;}
+.table td{vertical-align:top;}
+.table thead:first-child tr th,.table thead:first-child tr td{border-top:0;}
+.table tbody+tbody{border-top:2px solid #ddd;}
 .table-condensed th,.table-condensed td{padding:4px 5px;}
 .table-bordered{border:1px solid #ddd;border-collapse:separate;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.table-bordered th+th,.table-bordered td+td,.table-bordered th+td,.table-bordered td+th{border-left:1px solid #ddd;}
 .table-bordered thead:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child td{border-top:0;}

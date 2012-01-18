@@ -4,39 +4,38 @@
 // ----------------------------------------
 
 
-
 // BASELINE STYLES
 // ---------------
 
-table {
+.table {
   width: 100%;
   margin-bottom: @baseLineHeight;
-}
-th,
-td {
-  padding: 8px;
-  line-height: @baseLineHeight;
-  text-align: left;
-  border-top: 1px solid #ddd;
-}
-th {
-  font-weight: bold;
-  vertical-align: bottom;
-}
-td {
-  vertical-align: top;
+  // Cells
+  th,
+  td {
+    padding: 8px;
+    line-height: @baseLineHeight;
+    text-align: left;
+    border-top: 1px solid #ddd;
+  }
+  th {
+    font-weight: bold;
+    vertical-align: bottom;
+  }
+  td {
+    vertical-align: top;
+  }
+  // Remove top border from thead by default
+  thead:first-child tr th,
+  thead:first-child tr td {
+    border-top: 0;
+  }
+  // Account for multiple tbody instances
+  tbody + tbody {
+    border-top: 2px solid #ddd;
+  }
 }
 
-// Remove top border from thead by default
-thead:first-child tr th,
-thead:first-child tr td {
-  border-top: 0;
-}
-
-// Account for multiple tbody instances
-tbody + tbody {
-  border-top: 2px solid #ddd;
-}
 
 
 // CONDENSED TABLE W/ HALF PADDING
