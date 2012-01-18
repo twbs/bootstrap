@@ -3,53 +3,56 @@
 // -----------------------------------------------------
 
 
-// LINK COLORS
-// -----------
 
-@linkColor:         #08c;
-@linkColorHover:    darken(@linkColor, 15);
+// GLOBAL VALUES
+// --------------------------------------------------
 
+// Links
+@linkColor:             #08c;
+@linkColorHover:        darken(@linkColor, 15);
 
-// GRAYS
-// -----
+// Grays
+@black:                 #000;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #eee;
+@white:                 #fff;
 
-@black:             #000;
-@grayDark:          #333;
-@gray:              #555;
-@grayLight:         #999;
-@grayLighter:       #eee;
-@white:             #fff;
+// Accent colors
+@blue:                  #049CDB;
+@blueDark:              #0064CD;
+@green:                 #46a546;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@orange:                #f89406;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
 
-
-// ACCENT COLORS
-// -------------
-
-@blue:              #049CDB;
-@blueDark:          #0064CD;
-@green:             #46a546;
-@red:               #9d261d;
-@yellow:            #ffc40d;
-@orange:            #f89406;
-@pink:              #c3325f;
-@purple:            #7a43b6;
-
-
-// GRID
-// ----
-
+// Grid system
 // Modify the grid styles in mixins.less
-@gridColumns:       12;
-@gridColumnWidth:   60px;
-@gridGutterWidth:   20px;
-@siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
-
+@gridColumns:           12;
+@gridColumnWidth:       60px;
+@gridGutterWidth:       20px;
+@siteWidth:             (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 // Fluid width sidebar
-@fluidSidebarWidth: 220px;
+@fluidSidebarWidth:     220px;
+
+// Typography
+@baseFontSize:          13px;
+@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@baseLineHeight:        18px;
+
+// Buttons
+@primaryButtonColor:    @blue;
 
 
-// Z-INDEX
-// -------
 
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// Used for a bird's eye view of components dependent on the z-axis
 @zindexDropdown:        1000;
 @zindexPopover:         1010;
 @zindexTooltip:         1020;
@@ -57,18 +60,5 @@
 @zindexModalBackdrop:   1040;
 @zindexModal:           1050;
 
-
-// THEME VARIABLES
-// ---------------
-
-// Typography
-@baseFontSize:          13px;
-@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@baseLineHeight:        18px;
-
-// Visuals
-@primaryButtonColor:    @blue;
-
-
-
+// Input placeholder text color
 @placeHolderText:       @grayLight;
