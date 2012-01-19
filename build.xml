@@ -736,8 +736,9 @@
                 <echo message="copying ${file.manifest} to /${dir.publish}"/>
                 <copy file="${dir.intermediate}/${file.manifest}" tofile="${dir.publish}/${file.manifest}" />
 
+                <!-- add manifest attribute -->
                 <echo>Add manifest attribute to HTML: </echo>
-                <replaceregexp match="&lt;html (.*?)>" replace='&lt;html \1 manifest="${file.manifest}">' flags="g">
+                <replaceregexp match="&lt;html (.*?)(?!?)>" replace='&lt;html \1 manifest="${file.manifest}">' flags="g">
                     <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
                 </replaceregexp>
 
