@@ -6,95 +6,8 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu 19 Jan 2012 22:27:04 GMT
+ * Date: Fri 20 Jan 2012 21:21:51 GMT
  */
-html, body {
-  margin: 0;
-  padding: 0;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-dd,
-dl,
-dt,
-li,
-ol,
-ul,
-fieldset,
-form,
-label,
-legend,
-button,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 100%;
-  line-height: 1;
-  font-family: inherit;
-}
-table {
-  max-width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-ol, ul {
-  list-style: none;
-}
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: "";
-}
-html {
-  overflow-y: scroll;
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-a:focus {
-  outline: thin dotted;
-}
-a:hover, a:active {
-  outline: 0;
-}
 article,
 aside,
 details,
@@ -114,6 +27,17 @@ audio, canvas, video {
 }
 audio:not([controls]) {
   display: none;
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:hover, a:active {
+  outline: 0;
 }
 sub, sup {
   position: relative;
@@ -228,8 +152,6 @@ body {
   width: 100%;
 }
 a {
-  font-weight: inherit;
-  line-height: inherit;
   color: #0088cc;
   text-decoration: none;
 }
@@ -322,7 +244,7 @@ a:hover {
   margin-left: 900px;
 }
 p {
-  margin-bottom: 9px;
+  margin: 0 0 9px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -337,6 +259,7 @@ h3,
 h4,
 h5,
 h6 {
+  margin: 0;
   font-weight: bold;
   color: #333333;
   text-rendering: optimizelegibility;
@@ -347,6 +270,7 @@ h3 small,
 h4 small,
 h5 small,
 h6 small {
+  font-weight: normal;
   color: #999999;
 }
 h1 {
@@ -388,6 +312,7 @@ h6 {
   text-transform: uppercase;
 }
 ul, ol {
+  padding: 0;
   margin: 0 0 9px 25px;
 }
 ul ul,
@@ -428,13 +353,10 @@ hr {
   border-bottom: 1px solid #fff;
 }
 strong {
-  font-style: inherit;
   font-weight: bold;
 }
 em {
   font-style: italic;
-  font-weight: inherit;
-  line-height: inherit;
 }
 .muted {
   color: #999999;
@@ -446,8 +368,8 @@ abbr {
   cursor: help;
 }
 blockquote {
-  padding-left: 15px;
-  margin-bottom: 18px;
+  padding: 0 0 0 15px;
+  margin: 0 0 18px;
   border-left: 5px solid #eee;
 }
 blockquote p {
@@ -474,10 +396,17 @@ blockquote.pull-right {
 blockquote.pull-right p, blockquote.pull-right small {
   text-align: right;
 }
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
 address {
   display: block;
   margin-bottom: 18px;
   line-height: 18px;
+  font-style: normal;
 }
 code, pre {
   padding: 0 3px 2px;
@@ -515,26 +444,40 @@ pre code {
   padding: 0;
   background-color: transparent;
 }
+small {
+  font-size: 100%;
+}
+cite {
+  font-style: normal;
+}
 form {
-  margin-bottom: 18px;
+  margin: 0 0 18px;
+}
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 legend {
   display: block;
   width: 100%;
+  padding: 0;
   margin-bottom: 27px;
   font-size: 19.5px;
   line-height: 36px;
   color: #333333;
+  border: 0;
   border-bottom: 1px solid #eee;
   -webkit-margin-collapse: separate;
 }
 label,
 input,
+button,
 select,
 textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: normal;
-  font-weight: 13px;
+  font-size: 13px;
+  font-weight: normal;
   line-height: 18px;
 }
 label {
@@ -966,6 +909,11 @@ input:invalid:focus, textarea:invalid:focus, select:invalid:focus {
 }
 .form-horizontal .form-actions {
   padding-left: 160px;
+}
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 .table {
   width: 100%;
