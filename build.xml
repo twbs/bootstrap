@@ -738,7 +738,7 @@
 
                 <!-- add manifest attribute -->
                 <echo>Add manifest attribute to HTML: </echo>
-                <replaceregexp match="&lt;html (.*?)(?!?)>" replace='&lt;html \1 manifest="${file.manifest}">' flags="g">
+                <replaceregexp match="&lt;html (.*?)(?&lt;![?])&gt;" replace='&lt;html \1 manifest="${file.manifest}"&gt;' flags="g">
                     <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
                 </replaceregexp>
 
