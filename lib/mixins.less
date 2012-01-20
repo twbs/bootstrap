@@ -78,7 +78,13 @@
   .clearfix();
 }
 .columns(@columnSpan: 1) {
+  box-sizing: border-box;
+
   width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
+  .row {
+    box-sizing: border-box;
+    width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * @columnSpan);
+  }
 }
 .offset(@columnOffset: 1) {
   margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @extraSpace;
