@@ -1,12 +1,29 @@
 {% if hidden %}
   {{ input }}
 {% else %}
+  {% if use_twipsy %}
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        console.log($('#{{ id_for_label }}'));
+        $('#{{ id_for_label }}').parents('.input-wrapper').popover({
+          content: function() { return '{{ help_text|safe }}' },
+          offset: 24,
+          template: '<div class="arrow"></div><div class="inner"><div class="content"><p></p></div></div>',
+          html: true
+        });
+      });
+    </script>
+  {% endif %}
   <div class="clearfix {{ wrapper_class }}">
     {{ label }}
     <div class="input">
-      {{ input }}
+      <span class="input-wrapper">
+        {{ input }}
+      </span>
       <span class="help-inline">{{ errors }}</span>
+      {% if not use_twipsy %}
       <span class="help-block">{{ help_text|safe }}</span>
+      {% endif %}
     </div>
   </div>
 {% endif %}
