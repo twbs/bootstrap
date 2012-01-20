@@ -125,9 +125,8 @@
   $(function () {
     $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
       var $this = $(this)
-        , target = $this.attr('data-target') || $this.attr('href')
+        , target = $this.attr('data-target') || e.preventDefault() || $this.attr('href')
         , option = $(target).data('collapse') ? 'toggle' : $this.data()
-      e.preventDefault()
       $(target).collapse(option)
     })
   })
