@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 18 00:34:59 PST 2012
+ * Date: Thu 19 Jan 2012 22:27:04 GMT
  */
 html, body {
   margin: 0;
@@ -163,7 +163,7 @@ input[type="search"] {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-input[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 textarea {
@@ -182,13 +182,11 @@ body {
   width: 940px;
   margin-left: auto;
   margin-right: auto;
-  zoom: 1;
+  *zoom: 1;
 }
 .container:before, .container:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .container:after {
   clear: both;
@@ -198,13 +196,11 @@ body {
   min-width: 940px;
   padding-left: 20px;
   padding-right: 20px;
-  zoom: 1;
+  *zoom: 1;
 }
 .fluid-container:before, .fluid-container:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .fluid-container:after {
   clear: both;
@@ -243,13 +239,11 @@ a:hover {
 }
 .row {
   margin-left: -20px;
-  zoom: 1;
+  *zoom: 1;
 }
 .row:before, .row:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .row:after {
   clear: both;
@@ -865,16 +859,14 @@ input:invalid:focus, textarea:invalid:focus, select:invalid:focus {
 }
 .input-prepend, .input-append {
   margin-bottom: 5px;
-  zoom: 1;
+  *zoom: 1;
 }
 .input-prepend:before,
 .input-append:before,
 .input-prepend:after,
 .input-append:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .input-prepend:after, .input-append:after {
   clear: both;
@@ -1610,16 +1602,14 @@ i {
   background-color: #0088cc;
 }
 .tabs, .pills {
-  zoom: 1;
+  *zoom: 1;
 }
 .tabs:before,
 .pills:before,
 .tabs:after,
 .pills:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .tabs:after, .pills:after {
   clear: both;
@@ -1743,13 +1733,11 @@ i {
   border-color: #999;
 }
 .tabbable {
-  zoom: 1;
+  *zoom: 1;
 }
 .tabbable:before, .tabbable:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .tabbable:after {
   clear: both;
@@ -1907,7 +1895,7 @@ i {
 .navbar-search .search-query :-moz-placeholder {
   color: #eeeeee;
 }
-.navbar-search .search-query ::-webkit-input-placeholder {
+.navbar-search .search-query::-webkit-input-placeholder {
   color: #eeeeee;
 }
 .navbar-search .search-query:hover {
@@ -2135,13 +2123,11 @@ i {
   margin-bottom: 18px;
   list-style: none;
   text-align: center;
-  zoom: 1;
+  *zoom: 1;
 }
 .pager:before, .pager:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .pager:after {
   clear: both;
@@ -2237,13 +2223,11 @@ i {
   -webkit-box-shadow: inset 0 1px 0 #ffffff;
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
-  zoom: 1;
+  *zoom: 1;
 }
 .modal-footer:before, .modal-footer:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .modal-footer:after {
   clear: both;
@@ -2575,13 +2559,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .btn-group {
   position: relative;
-  zoom: 1;
+  *zoom: 1;
 }
 .btn-group:before, .btn-group:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .btn-group:after {
   clear: both;
@@ -2730,13 +2712,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .thumbnails {
   margin-left: -20px;
   list-style: none;
-  zoom: 1;
+  *zoom: 1;
 }
 .thumbnails:before, .thumbnails:after {
   display: table;
-  *display: inline;
   content: "";
-  zoom: 1;
 }
 .thumbnails:after {
   clear: both;

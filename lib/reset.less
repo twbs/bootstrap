@@ -140,7 +140,8 @@ input[type="search"] { // Appearance in Safari/Chrome
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
-input[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none; // Inner-padding issues in Chrome OSX, Safari 5
 }
 textarea {
