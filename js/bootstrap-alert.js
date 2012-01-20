@@ -43,13 +43,12 @@
 
       e && e.preventDefault()
 
-      $parent.length || ($parent = $this.hasClass('alert-message') ? $this : $this.parent())
+      $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
 
       $parent.removeClass('in')
 
       function removeElement() {
         $parent.remove()
-
         $parent.trigger('closed')
       }
 
