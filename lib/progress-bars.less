@@ -46,10 +46,18 @@
 .progress .bar {
   width: 0%;
   height: 18px;
+  overflow: hidden;
   #gradient > .vertical(#149bdf, #0480be);
   .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
   .box-sizing(border-box);
   .transition(width .6s ease);
+}
+
+.progress .bar p {
+  color: @white;
+  font-size: 11px;
+  text-align: center;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
 }
 
 // Striped bars
