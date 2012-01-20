@@ -1,5 +1,8 @@
 {% if hidden %}
-  {{ input }}
+    {{ input }}
+    {% if errors %}
+      <span class="help-inline error">(hidden error) {{ errors }}</span>
+    {% endif %}
 {% else %}
   {% if use_twipsy %}
     <script type="text/javascript" charset="utf-8">
