@@ -34,9 +34,9 @@
   padding: 5px 10px 6px;
   font-size: @baseFontSize;
   line-height: normal;
-  color: #333;
+  color: @grayDark;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  #gradient > .vertical-three-colors(#ffffff, #ffffff, 25%, darken(#ffffff, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
+  #gradient > .vertical-three-colors(@white, @white, 25%, darken(@white, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   .border-radius(4px);

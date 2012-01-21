@@ -18,7 +18,7 @@
 }
 .nav > li > a:hover {
   text-decoration: none;
-  background-color: #eee;
+  background-color: @grayLighter;
 }
 
 
@@ -97,7 +97,7 @@
   border: 1px solid transparent;
   .border-radius(4px 4px 0 0);
   &:hover {
-    border-color: #eee #eee #ddd;
+    border-color: @grayLighter @grayLighter #ddd;
   }
 }
 // Active state, and it's :hover to override normal :hover
@@ -201,13 +201,13 @@
 // -------------------------
 .tabs .active .dropdown-toggle .caret,
 .pills .active .dropdown-toggle .caret {
-  border-top-color: #333;
+  border-top-color: @grayDark;
 }
 
 // Active:hover dropdown links
 // -------------------------
 .nav > .dropdown.active > a:hover {
-  color: #000;
+  color: @black;
   cursor: pointer;
 }
 
@@ -216,20 +216,20 @@
 .tabs .open .dropdown-toggle,
 .pills .open .dropdown-toggle,
 .nav > .open.active > a:hover {
-  color: #fff;
-  background-color: #999;
-  border-color: #999;
+  color: @white;
+  background-color: @grayLight;
+  border-color: @grayLight;
 }
 .nav .open .caret,
 .nav .open.active .caret,
 .nav .open a:hover .caret {
-  border-top-color: #fff;
+  border-top-color: @white;
   .opacity(100);
 }
 
 // Dropdowns in stacked tabs
 .tabs.stacked .open > a:hover {
-  border-color: #999;
+  border-color: @grayLight;
 }
 
 
@@ -312,7 +312,7 @@
   .border-radius(4px 0 0 4px);
 }
 .tabs-left .tabs > li > a:hover {
-  border-color: #eee #ddd #eee #eee;
+  border-color: @grayLighter #ddd @grayLighter @grayLighter;
 }
 .tabs-left .tabs .active > a,
 .tabs-left .tabs .active > a:hover {
@@ -330,7 +330,7 @@
   .border-radius(0 4px 4px 0);
 }
 .tabs-right .tabs > li > a:hover {
-  border-color: #eee #eee #eee #ddd;
+  border-color: @grayLighter @grayLighter @grayLighter #ddd;
 }
 .tabs-right .tabs .active > a,
 .tabs-right .tabs .active > a:hover {
