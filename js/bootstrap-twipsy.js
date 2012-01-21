@@ -260,15 +260,28 @@
 
     function leave() {
       var twipsy = get(this)
-      twipsy.hoverState = 'out'
-      if (options.delayOut == 0) {
-        twipsy.hide()
-      } else {
-        setTimeout(function() {
-          if (twipsy.hoverState == 'out') {
-            twipsy.hide()
-          }
-        }, options.delayOut)
+      if (!options.stayOnHover) {
+        twipsy.hoverState = 'out'
+        if (options.delayOut == 0) {
+          twipsy.hide()
+        } else {
+          setTimeout(function() {
+            if (twipsy.hoverState == 'out') {
+              twipsy.hide()
+            }
+          }, options.delayOut)
+        }
+      }
+      else {
+      	var timeoutid = setTimeout(function() {
+      		twipsy.hide()
+		}, 50)
+      	$('.'+options.stayTargetClass).hover(function(){
+			clearTimeout(timeoutid)
+		}, function(){
+			twipsy.hide()
+		})
+		 
       }
     }
 
@@ -294,6 +307,8 @@
     animate: true
   , delayIn: 0
   , delayOut: 0
+  , stayOnHover: false
+  , stayTargetClass : 'bs-popover-'+Math.floor(Math.random()*100000)
   , fallback: ''
   , placement: 'above'
   , html: false
