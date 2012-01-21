@@ -31,7 +31,7 @@
         var li = $(this).parent('li')
           , isActive = li.hasClass('open')
 
-        clearMenus()
+        clearMenus();
         !isActive && li.toggleClass('open')
         return false
       })
