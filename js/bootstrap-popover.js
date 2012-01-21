@@ -37,8 +37,8 @@
     setContent: function () {
       var $tip = this.tip()
       $tip.find('.title')[this.options.html ? 'html' : 'text'](this.getTitle())
-      $tip.find('.content > *')[this.options.html ? 'html' : 'text'](this.getContent())
-      $tip[0].className = 'popover'
+      $tip.find('.content p')[this.options.html ? 'html' : 'text'](this.getContent())
+      $tip[0].className = 'popover ' + this.options.stayTargetClass
     }
 
   , hasContent: function () {
