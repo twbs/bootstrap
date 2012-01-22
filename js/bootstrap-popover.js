@@ -41,7 +41,7 @@
       $tip.find('.title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
       $tip.find('.content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
 
-      $tip[0].className = 'popover'
+      $tip.removeClass('fade top bottom left right in')
     }
 
   , hasContent: function () {
