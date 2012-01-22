@@ -208,12 +208,13 @@
    * =========================== */
 
   $.fn.typeahead = function ( option ) {
+    var args = arguments
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('typeahead')
         , options = typeof option == 'object' && option
       if (!data) $this.data('typeahead', (data = new Typeahead(this, options)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option == 'string') data[option].apply(data, Array.prototype.slice.call(args, 1))
     })
   }
 

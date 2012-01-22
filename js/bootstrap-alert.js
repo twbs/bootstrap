@@ -64,11 +64,12 @@
   * ======================= */
 
   $.fn.alert = function ( option ) {
+    var args = arguments
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('alert')
       if (!data) $this.data('alert', (data = new Alert(this)))
-      if (typeof option == 'string') data[option].call($this)
+      if (typeof option == 'string') data[option].apply(data, Array.prototype.slice.call(args, 1))
     })
   }
 

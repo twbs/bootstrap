@@ -99,12 +99,13 @@
   * ========================== */
 
   $.fn.carousel = function ( option ) {
+    var args = arguments
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('carousel')
         , options = typeof option == 'object' && option
       if (!data) $this.data('carousel', (data = new Carousel(this, options)))
-      if (typeof option == 'string' || (option = options.slide)) data[option]()
+      if (typeof option == 'string' || (option = options.slide)) data[option].apply(data, Array.prototype.slice.call(args, 1))
       else data.cycle()
     })
   }

@@ -101,11 +101,12 @@
   * ===================== */
 
   $.fn.tab = function ( option ) {
+    var args = arguments
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('tab')
       if (!data) $this.data('tab', (data = new Tab(this)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option == 'string') data[option].apply(data, Array.prototype.slice.call(args, 1))
     })
   }
 
