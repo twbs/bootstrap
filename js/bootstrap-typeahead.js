@@ -35,7 +35,8 @@
     constructor: Typeahead
 
   , matcher: function (item, query) {
-      return ~item.indexOf(query)
+      // ;_; http://jsperf.com/asdfdfasdfa
+      return ~item.toLowerCase().indexOf(query)
     }
 
   , select: function () {
@@ -66,16 +67,20 @@
     }
 
   , lookup: function (event) {
-      var query = this.$element.val()
-        , that = this
+      var that = this
         , items
+        , q
 
-      if (!query) {
+      this.query = this.$element.val()
+
+      if (!this.query) {
         return this.shown ? this.hide() : this
       }
 
+      q = this.query.toLowerCase()
+
       items = this.data.filter(function (item) {
-        if (that.matcher(item, query)) return item
+        if (that.matcher(item, q)) return item
       })
 
       if (!items.length) {
@@ -87,10 +92,15 @@
 
   , render: function (items) {
       var that = this
+        , QUERY = new RegExp('(' + this.query + ')', 'ig')
 
       items = $(items).map(function (i, item) {
         i = $(that.options.item).attr('data-value', item)
-        i.find('a').text(item)
+
+        i.find('a').html(item.replace(QUERY, function ($1, match) {
+          return '<strong>' + match + '</strong>'
+        }))
+
         return i[0]
       })
 
@@ -119,6 +129,21 @@
       }
 
       prev.addClass('active')
+    }
+
+  , listen: function () {
+      this.$element
+        .on('blur',     $.proxy(this.blur, this))
+        .on('keypress', $.proxy(this.keypress, this))
+        .on('keyup',    $.proxy(this.keyup, this))
+
+      if ($.browser.webkit || $.browser.msie) {
+        this.$element.on('keydown', $.proxy(this.keypress, this))
+      }
+
+      this.$menu
+        .on('click', $.proxy(this.click, this))
+        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
   , keyup: function (e) {
@@ -187,20 +212,6 @@
       $(e.currentTarget).addClass('active')
     }
 
-  , listen: function () {
-      this.$element
-        .on('blur',     $.proxy(this.blur, this))
-        .on('keypress', $.proxy(this.keypress, this))
-        .on('keyup',    $.proxy(this.keyup, this))
-
-      if ($.browser.webkit || $.browser.msie) {
-        this.$element.on('keydown', $.proxy(this.keypress, this))
-      }
-
-      this.$menu
-        .on('click', $.proxy(this.click, this))
-        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
-    }
   }
 
 

@@ -10,13 +10,11 @@
 // -------------------------
 // For clearing floats like a boss h5bp.com/q
 .clearfix() {
-  zoom: 1;
+  *zoom: 1;
   &:before,
   &:after {
     display: table;
-    *display: inline;
     content: "";
-    zoom: 1;
   }
   &:after {
     clear: both;

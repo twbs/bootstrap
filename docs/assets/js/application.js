@@ -38,7 +38,7 @@ $(function(){
   // it's merely here to prevent button clicks form taking you
   // away from your spot on page!!
 
-  $('[href^=#]').click(function (e) {
+  $('section [href^=#]').click(function (e) {
     e.preventDefault()
   })
 
