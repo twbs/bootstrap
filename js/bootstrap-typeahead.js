@@ -35,7 +35,8 @@
     constructor: Typeahead
 
   , matcher: function (item, query) {
-      return ~item.indexOf(query)
+      // ;_; http://jsperf.com/asdfdfasdfa
+      return ~item.toLowerCase().indexOf(query.toLowerCase())
     }
 
   , select: function () {
