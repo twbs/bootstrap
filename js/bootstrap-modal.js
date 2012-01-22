@@ -256,5 +256,13 @@
       $('#' + $this.attr('data-controls-modal')).modal( $this.data() )
     })
   })
+  
+  $(document).ready(function () {
+    $('body').delegate('[data-cancel-modal]', 'click', function (e) {
+      e.preventDefault()
+      var $this = $(this).data('show', false)
+      $('#' + $this.attr('data-cancel-modal')).modal( $this.data() )
+    })
+  })
 
 }( window.jQuery || window.ender );
