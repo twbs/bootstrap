@@ -127,6 +127,12 @@
 
         pos = this.getPosition(inside)
 
+        if (this.options.fixed) {
+          $tip.addClass('fixed')
+          pos.top -= window.scrollY;
+          pos.left -= window.scrollX;
+        }
+
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
@@ -259,6 +265,7 @@
 
   $.fn.tooltip.defaults = {
     animation: true
+  , fixed: false
   , delay: 0
   , selector: false
   , placement: 'top'
