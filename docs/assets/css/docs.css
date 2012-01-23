@@ -448,6 +448,7 @@ h2 + .row {
   margin: -18px 0 27px;
   font-size: 18px;
   font-weight: 300;
+  line-height: 24px;
   color: #999;
   text-align: center;
 }
@@ -561,6 +562,18 @@ form.well {
     font-size: 18px;
     padding: 10px 14px;
     margin: 0 auto 10px;
+  }
+
+  /* Subnav */
+  .subhead .nav {
+    padding: 0;
+    background: none;
+  }
+  .subhead .nav > li {
+    float: none;
+  }
+  .subhead .nav li + li a {
+    border-top: 1px solid #eee;
   }
 
   /* Don't space out quick links so much */
