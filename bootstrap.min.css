@@ -171,7 +171,8 @@ input:focus:required:invalid,textarea:focus:required:invalid,select:focus:requir
 .search-query{padding-left:14px;padding-right:14px;margin-bottom:0;-webkit-border-radius:14px;-moz-border-radius:14px;border-radius:14px;}
 .form-search input,.form-inline input,.form-horizontal input,.form-search textarea,.form-inline textarea,.form-horizontal textarea,.form-search select,.form-inline select,.form-horizontal select,.form-search .uneditable-input,.form-inline .uneditable-input,.form-horizontal .uneditable-input{display:inline-block;margin-bottom:0;}
 .form-search label,.form-inline label{display:inline-block;}
-.control-group{margin-bottom:18px;}
+.control-group{margin-bottom:9px;}
+.form-horizontal .control-group{margin-bottom:18px;}
 .form-horizontal .control-group>label{float:left;width:140px;padding-top:5px;text-align:right;}
 .form-horizontal .controls{margin-left:160px;}
 .form-horizontal .form-actions{padding-left:160px;}

@@ -463,13 +463,16 @@ select:focus:required:invalid {
 
 // Margin to space out fieldsets
 .control-group {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseLineHeight / 2;
 }
 
 // Horizontal-specific styles
 // --------------------------
 
 .form-horizontal {
+  .control-group {
+    margin-bottom: @baseLineHeight;
+  }
   // Float the labels left
   .control-group > label {
     float: left;
