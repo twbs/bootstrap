@@ -60,8 +60,6 @@ body {
 
 // Links
 a {
-  font-weight: inherit;
-  line-height: inherit;
   color: @linkColor;
   text-decoration: none;
   &:hover {
@@ -75,11 +73,8 @@ a {
 // -----------
 // To customize the grid system, bring up the variables.less file and change the column count, size, and gutter there
 .row {
+  margin-left: @gridGutterWidth * -1;
   .clearfix();
-}
-
-[class*="span"]:first-child{
-  margin-left: 0;
 }
 
 // Find all .span# classes within .row and give them the necessary properties for grid columns 

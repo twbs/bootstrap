@@ -115,8 +115,8 @@ section {
 ------------------------- */
 /* supporting docs pages */
 .subhead {
-  padding-bottom: 14px;
-  border-bottom: 3px solid #e5e5e5;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 .subhead h1,
 .subhead p {
@@ -124,6 +124,36 @@ section {
 }
 .subhead h1 {
   font-size: 45px;
+}
+
+/* Subnav */
+.subhead .nav {
+  padding: 0 10px;
+  background-color: #eeeeee; /* Old browsers */
+  background-repeat: repeat-x; /* Repeat the gradient */
+  background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* FF3.6+ */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
+  background-image: -ms-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* IE10+ */
+  background-image: -o-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Opera 11.10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+  background-image: linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* W3C */
+  border: 1px solid #eee;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.subhead .nav a {
+  margin: 0;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+.subhead .nav .active a {
+  background-color: #fff;
+  color: #333;
 }
 
 
@@ -418,6 +448,7 @@ h2 + .row {
   margin: -18px 0 27px;
   font-size: 18px;
   font-weight: 300;
+  line-height: 24px;
   color: #999;
   text-align: center;
 }
@@ -531,6 +562,18 @@ form.well {
     font-size: 18px;
     padding: 10px 14px;
     margin: 0 auto 10px;
+  }
+
+  /* Subnav */
+  .subhead .nav {
+    padding: 0;
+    background: none;
+  }
+  .subhead .nav > li {
+    float: none;
+  }
+  .subhead .nav li + li a {
+    border-top: 1px solid #eee;
   }
 
   /* Don't space out quick links so much */

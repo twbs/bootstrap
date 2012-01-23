@@ -7,7 +7,7 @@
 // ---------
 
 p {
-  margin-bottom: @baseLineHeight / 2;
+  margin: 0 0 @baseLineHeight / 2;
   font-family: @baseFontFamily;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
@@ -17,15 +17,16 @@ p {
   }
 }
 
-
 // HEADINGS
 // --------
 
 h1, h2, h3, h4, h5, h6 {
+  margin: 0;
   font-weight: bold;
   color: @grayDark;
   text-rendering: optimizelegibility; // Fix the character spacing for headings
   small {
+    font-weight: normal;
     color: @grayLight;
   }
 }
@@ -74,6 +75,7 @@ h6 {
 
 // Unordered and Ordered lists
 ul, ol {
+  padding: 0;
   margin: 0 0 @baseLineHeight / 2 25px;
 }
 ul ul,
@@ -124,13 +126,10 @@ hr {
 
 // Emphasis
 strong {
-  font-style: inherit;
   font-weight: bold;
 }
 em {
   font-style: italic;
-  font-weight: inherit;
-  line-height: inherit;
 }
 .muted {
   color: @grayLight;
@@ -146,8 +145,8 @@ abbr {
 
 // Blockquotes
 blockquote {
-  padding-left: 15px;
-  margin-bottom: @baseLineHeight;
+  padding: 0 0 0 15px;
+  margin: 0 0 @baseLineHeight;
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
@@ -176,11 +175,19 @@ blockquote {
   }
 }
 
+q:before,
+q:after,
+blockquote:before, 
+blockquote:after {
+  content: "";
+}
+
 // Addresses
 address {
   display: block;
   margin-bottom: @baseLineHeight;
   line-height: @baseLineHeight;
+  font-style: normal;
 }
 
 // Inline and block code styles
@@ -220,4 +227,12 @@ pre {
     padding: 0;
     background-color: transparent;
   }
+}
+
+small {
+  font-size: 100%;
+}
+
+cite {
+  font-style: normal;
 }

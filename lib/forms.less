@@ -8,17 +8,25 @@
 
 // Make all forms have space below them
 form {
-  margin-bottom: @baseLineHeight;
+  margin: 0 0 @baseLineHeight;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 // Groups of fields with labels on top (legends)
 legend {
   display: block;
   width: 100%;
+  padding: 0;
   margin-bottom: @baseLineHeight * 1.5;
   font-size: @baseFontSize * 1.5;
   line-height: @baseLineHeight * 2;
   color: @grayDark;
+  border: 0;
   border-bottom: 1px solid #eee;
   -webkit-margin-collapse: separate;
 }
@@ -26,6 +34,7 @@ legend {
 // Set font for forms
 label,
 input,
+button,
 select,
 textarea {
   #font > .sans-serif(@baseFontSize,normal,@baseLineHeight);
@@ -454,13 +463,17 @@ select:focus:required:invalid {
 
 // Margin to space out fieldsets
 .control-group {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @baseLineHeight / 2;
 }
 
 // Horizontal-specific styles
 // --------------------------
 
 .form-horizontal {
+  // Increase spacing between groups
+  .control-group {
+    margin-bottom: @baseLineHeight;
+  }
   // Float the labels left
   .control-group > label {
     float: left;
