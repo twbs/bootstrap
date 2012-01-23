@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 22 20:02:42 PST 2012
+ * Date: Sun Jan 22 20:06:46 PST 2012
  */
 html, body {
   margin: 0;
@@ -425,7 +425,7 @@ hr {
   margin: 18px 0;
   border: 0;
   border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
 }
 strong {
   font-style: inherit;
@@ -448,7 +448,7 @@ abbr {
 blockquote {
   padding-left: 15px;
   margin-bottom: 18px;
-  border-left: 5px solid #eee;
+  border-left: 5px solid #eeeeee;
 }
 blockquote p {
   margin-bottom: 0;
@@ -469,7 +469,7 @@ blockquote.pull-right {
   padding-left: 0;
   padding-right: 15px;
   border-left: 0;
-  border-right: 5px solid #eee;
+  border-right: 5px solid #eeeeee;
 }
 blockquote.pull-right p, blockquote.pull-right small {
   text-align: right;
@@ -533,8 +533,8 @@ input,
 select,
 textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: normal;
-  font-weight: 13px;
+  font-size: 13px;
+  font-weight: normal;
   line-height: 18px;
 }
 label {
@@ -1101,7 +1101,7 @@ table .header:after {
   margin-top: 7px;
   border-width: 0 4px 4px;
   border-style: solid;
-  border-color: #000 transparent;
+  border-color: #000000 transparent;
   visibility: hidden;
 }
 table .headerSortUp, table .headerSortDown {
@@ -1121,7 +1121,7 @@ table .headerSortUp:after {
   border-bottom: none;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 4px solid #000;
+  border-top: 4px solid #000000;
   visibility: visible;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -1420,7 +1420,7 @@ i {
   vertical-align: top;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 4px solid #000;
+  border-top: 4px solid #000000;
   filter: alpha(opacity=30);
   -moz-opacity: 0.3;
   opacity: 0.3;
@@ -1483,7 +1483,7 @@ i {
   white-space: nowrap;
 }
 .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
 }
@@ -1572,7 +1572,7 @@ i {
 }
 .nav > li > a:hover {
   text-decoration: none;
-  background-color: #eee;
+  background-color: #eeeeee;
 }
 .nav.list {
   padding-left: 14px;
@@ -1638,7 +1638,7 @@ i {
   border-radius: 4px 4px 0 0;
 }
 .tabs > li > a:hover {
-  border-color: #eee #eee #ddd;
+  border-color: #eeeeee #eeeeee #dddddd;
 }
 .tabs > .active > a, .tabs > .active > a:hover {
   color: #555555;
@@ -1712,25 +1712,25 @@ i {
   border-top-color: #005580;
 }
 .tabs .active .dropdown-toggle .caret, .pills .active .dropdown-toggle .caret {
-  border-top-color: #333;
+  border-top-color: #333333;
 }
 .nav > .dropdown.active > a:hover {
-  color: #000;
+  color: #000000;
   cursor: pointer;
 }
 .tabs .open .dropdown-toggle, .pills .open .dropdown-toggle, .nav > .open.active > a:hover {
-  color: #fff;
-  background-color: #999;
-  border-color: #999;
+  color: #ffffff;
+  background-color: #999999;
+  border-color: #999999;
 }
 .nav .open .caret, .nav .open.active .caret, .nav .open a:hover .caret {
-  border-top-color: #fff;
+  border-top-color: #ffffff;
   filter: alpha(opacity=100);
   -moz-opacity: 1;
   opacity: 1;
 }
 .tabs.stacked .open > a:hover {
-  border-color: #999;
+  border-color: #999999;
 }
 .tabbable {
   *zoom: 1;
@@ -1790,7 +1790,7 @@ i {
   border-radius: 4px 0 0 4px;
 }
 .tabs-left .tabs > li > a:hover {
-  border-color: #eee #ddd #eee #eee;
+  border-color: #eeeeee #dddddd #eeeeee #eeeeee;
 }
 .tabs-left .tabs .active > a, .tabs-left .tabs .active > a:hover {
   border-color: #ddd transparent #ddd #ddd;
@@ -1807,7 +1807,7 @@ i {
   border-radius: 0 4px 4px 0;
 }
 .tabs-right .tabs > li > a:hover {
-  border-color: #eee #eee #eee #ddd;
+  border-color: #eeeeee #eeeeee #eeeeee #dddddd;
 }
 .tabs-right .tabs .active > a, .tabs-right .tabs .active > a:hover {
   border-color: #ddd #ddd #ddd transparent;
@@ -1961,7 +1961,7 @@ i {
 .navbar .nav .active > a {
   color: #ffffff;
   text-decoration: none;
-  background-color: #222;
+  background-color: #222222;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .navbar .vertical-divider {
@@ -1969,7 +1969,7 @@ i {
   width: 1px;
   margin: 0 5px;
   overflow: hidden;
-  background-color: #222;
+  background-color: #222222;
   border-right: 1px solid #444;
 }
 .navbar .nav.pull-right {
@@ -1998,13 +1998,13 @@ i {
   display: inline-block;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 6px solid #fff;
+  border-bottom: 6px solid #ffffff;
   position: absolute;
   top: -6px;
   left: 10px;
 }
 .navbar .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret {
-  border-top-color: #fff;
+  border-top-color: #ffffff;
 }
 .navbar .nav .active .caret {
   filter: alpha(opacity=100);
@@ -2015,7 +2015,7 @@ i {
   background-color: transparent;
 }
 .navbar .nav .active > .dropdown-toggle:hover {
-  color: #fff;
+  color: #ffffff;
 }
 .navbar .nav.pull-right .dropdown-menu {
   right: 0;
@@ -2299,7 +2299,7 @@ i {
 .tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
-  color: white;
+  color: #ffffff;
   text-align: center;
   text-decoration: none;
   background-color: #000000;
@@ -2460,7 +2460,7 @@ i {
   padding: 5px 10px 6px;
   font-size: 13px;
   line-height: normal;
-  color: #333;
+  color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   background-color: #e6e6e6;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
@@ -2650,7 +2650,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .danger .caret,
 .info .caret,
 .success .caret {
-  border-top-color: #fff;
+  border-top-color: #ffffff;
   filter: alpha(opacity=75);
   -moz-opacity: 0.75;
   opacity: 0.75;
@@ -2993,7 +2993,7 @@ a.thumbnail:hover {
   line-height: 30px;
   color: #ccc;
   text-align: center;
-  background: #999;
+  background: #999999;
   background: rgba(0, 0, 0, 0.5);
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -3004,9 +3004,9 @@ a.thumbnail:hover {
   right: 15px;
 }
 .carousel-control:hover {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
-  background: #333;
+  background: #333333;
   background: rgba(0, 0, 0, 0.75);
 }
 .carousel-caption {
@@ -3015,11 +3015,11 @@ a.thumbnail:hover {
   right: 0;
   bottom: 0;
   padding: 10px 15px 5px;
-  background: #333;
+  background: #333333;
   background: rgba(0, 0, 0, 0.75);
 }
 .carousel-caption h4, .carousel-caption p {
-  color: #fff;
+  color: #ffffff;
 }
 .pull-right {
   float: right;
