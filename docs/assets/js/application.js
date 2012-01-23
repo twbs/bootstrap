@@ -24,6 +24,7 @@ $(function(){
   // table sort example
   if ($.fn.tableSorter) {
     $("#sortTableExample").tablesorter( { sortList: [[ 1, 0 ]] } )
+    $(".tablesorter-example").tablesorter({ sortList: [[1,0]] })
   }
 
   // add on logic
