@@ -153,7 +153,7 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 .control-group.success>label,.control-group.success .help-block,.control-group.success .help-inline{color:#468847;}
 .control-group.success input,.control-group.success textarea{color:#468847;border-color:#57a957;}.control-group.success input:focus,.control-group.success textarea:focus{border-color:#458845;-webkit-box-shadow:0 0 6px #9acc9a;-moz-box-shadow:0 0 6px #9acc9a;box-shadow:0 0 6px #9acc9a;}
 .control-group.success .input-prepend .add-on,.control-group.success .input-append .add-on{color:#468847;background-color:#bcddbc;border-color:#468847;}
-input:invalid,textarea:invalid,select:invalid{color:#b94a48;border-color:#ee5f5b;}input:invalid:focus,textarea:invalid:focus,select:invalid:focus{border-color:#e9322d;-webkit-box-shadow:0 0 6px #f8b9b7;-moz-box-shadow:0 0 6px #f8b9b7;box-shadow:0 0 6px #f8b9b7;}
+input:focus:required:invalid,textarea:focus:required:invalid,select:focus:required:invalid{color:#b94a48;border-color:#ee5f5b;}input:focus:required:invalid:focus,textarea:focus:required:invalid:focus,select:focus:required:invalid:focus{border-color:#e9322d;-webkit-box-shadow:0 0 6px #f8b9b7;-moz-box-shadow:0 0 6px #f8b9b7;box-shadow:0 0 6px #f8b9b7;}
 .form-actions{padding:17px 20px 18px;margin-top:18px;margin-bottom:18px;background-color:#f5f5f5;border-top:1px solid #ddd;}
 .uneditable-input{display:block;background-color:#ffffff;border-color:#eee;-webkit-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);-moz-box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.025);cursor:not-allowed;}
 :-moz-placeholder{color:#999999;}
