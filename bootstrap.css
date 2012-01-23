@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Mon Jan 23 12:20:49 PST 2012
+ * Date: Mon Jan 23 13:48:03 PST 2012
  */
 article,
 aside,
@@ -3068,6 +3068,7 @@ a.thumbnail:hover {
     left: 20px;
     right: 20px;
     width: auto;
+    margin: 0;
   }
   .modal.fade.in {
     top: auto;
