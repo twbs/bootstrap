@@ -164,7 +164,7 @@
 .navbar .nav .active > a {
   color: @white;
   text-decoration: none;
-  background-color: #222;
+  background-color: @grayDarker;
   background-color: rgba(0,0,0,.5);
 }
 
@@ -174,7 +174,7 @@
   width: 1px;
   margin: 0 5px;
   overflow: hidden;
-  background-color: #222;
+  background-color: @grayDarker;
   border-right: 1px solid #444;
 }
 
@@ -209,7 +209,7 @@
     display: inline-block;
     border-left:   6px solid transparent;
     border-right:  6px solid transparent;
-    border-bottom: 6px solid #fff;
+    border-bottom: 6px solid @white;
     position: absolute;
     top: -6px;
     left: 10px;
@@ -219,7 +219,7 @@
 // Dropdown toggle caret
 .navbar .nav .dropdown-toggle .caret,
 .navbar .nav .open.dropdown .caret {
-  border-top-color: #fff;
+  border-top-color: @white;
 }
 .navbar .nav .active .caret {
   .opacity(100);
@@ -234,7 +234,7 @@
 
 // Dropdown link on hover
 .navbar .nav .active > .dropdown-toggle:hover {
-  color: #fff;
+  color: @white;
 }
 
 // Right aligned menus need alt position
