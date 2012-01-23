@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 22 20:06:46 PST 2012
+ * Date: Sun Jan 22 20:11:39 PST 2012
  */
 html, body {
   margin: 0;
@@ -238,7 +238,6 @@ a:hover {
   text-decoration: underline;
 }
 .row {
-  margin-left: -20px;
   *zoom: 1;
 }
 .row:before, .row:after {
@@ -247,6 +246,9 @@ a:hover {
 }
 .row:after {
   clear: both;
+}
+[class*="span"]:first-child {
+  margin-left: 0;
 }
 [class*="span"] {
   float: left;
