@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Sun Jan 22 20:31:51 PST 2012
+ * Date: Sun Jan 22 20:42:19 PST 2012
  */
 html, body {
   margin: 0;
@@ -1440,7 +1440,7 @@ i {
 }
 .dropdown-menu {
   position: absolute;
-  top: 40px;
+  top: 100%;
   z-index: 1000;
   float: left;
   display: none;
@@ -1698,7 +1698,7 @@ i {
   margin-bottom: 1px;
 }
 .pills .dropdown-menu, .tabs .dropdown-menu {
-  top: 33px;
+  margin-top: 1px;
   border-width: 1px;
 }
 .pills .dropdown-menu {
@@ -1979,7 +1979,7 @@ i {
   margin-right: 0;
 }
 .navbar .dropdown-menu {
-  top: 41px;
+  margin-top: 1px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -2630,7 +2630,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .btn-group.open .dropdown-menu {
   display: block;
-  top: 30px;
+  margin-top: 1px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
