@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu 19 Jan 2012 22:27:04 GMT
+ * Date: Sun Jan 22 20:02:42 PST 2012
  */
 html, body {
   margin: 0;
@@ -1391,7 +1391,7 @@ i {
 .arrow-down {
   background-position: -312px -96px;
 }
-.share {
+.share-alt {
   background-position: -336px -96px;
 }
 .resize-full {
