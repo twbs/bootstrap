@@ -134,6 +134,9 @@ form .clearfix.warning .input-prepend .add-on,form .clearfix.warning .input-appe
 form .clearfix.success>label,form .clearfix.success .help-block,form .clearfix.success .help-inline{color:#468847;}
 form .clearfix.success input,form .clearfix.success textarea{color:#468847;border-color:#57a957;}form .clearfix.success input:focus,form .clearfix.success textarea:focus{border-color:#458845;-webkit-box-shadow:0 0 6px #9acc9a;-moz-box-shadow:0 0 6px #9acc9a;box-shadow:0 0 6px #9acc9a;}
 form .clearfix.success .input-prepend .add-on,form .clearfix.success .input-append .add-on{color:#468847;background-color:#bcddbc;border-color:#468847;}
+form .clearfix .help-inline.error,form .clearfix .help-block.error{color:#b94a48;}
+form .clearfix .help-inline.warning,form .clearfix .help-block.warning{color:#c09853;}
+form .clearfix .help-inline.success,form .clearfix .help-block.success{color:#468847;}
 .input-mini,input.mini,textarea.mini,select.mini{width:60px;}
 .input-small,input.small,textarea.small,select.small{width:90px;}
 .input-medium,input.medium,textarea.medium,select.medium{width:150px;}
