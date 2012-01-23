@@ -24,9 +24,9 @@ body {
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .fluid-container {
   position: relative;
-  min-width: 940px;
-  padding-left: 20px;
-  padding-right: 20px;
+  min-width: @siteWidth;
+  padding-left: @gridGutterWidth;
+  padding-right: @gridGutterWidth;
   .clearfix();
 }
 
@@ -35,17 +35,17 @@ body {
   width: @fluidSidebarWidth;
   margin: 0 20px 18px;
 }
-.sidebar-left   { padding-left: @fluidSidebarWidth + 40; }
-.sidebar-right  { padding-right: @fluidSidebarWidth + 40; }
+.sidebar-left   { padding-left: @fluidSidebarWidth + @gridGutterWidth * 2; }
+.sidebar-right  { padding-right: @fluidSidebarWidth + @gridGutterWidth * 2; }
 
 // Float the sidebars accordingly
 .sidebar-left .fluid-sidebar {
   float: left;
-  margin-left: (@fluidSidebarWidth + 20) * -1;
+  margin-left: (@fluidSidebarWidth + @gridGutterWidth) * -1;
 }
 .sidebar-right .fluid-sidebar {
   float: right;
-  margin-right: (@fluidSidebarWidth + 20) * -1;
+  margin-right: (@fluidSidebarWidth + @gridGutterWidth) * -1;
 }
 
 // The main content area
@@ -75,11 +75,15 @@ a {
 // -----------
 // To customize the grid system, bring up the variables.less file and change the column count, size, and gutter there
 .row {
-  margin-left: -@gridGutterWidth;
   .clearfix();
 }
 
-// Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
+[class*="span"]:first-child{
+  margin-left: 0;
+}
+
+// Find all .span# classes within .row and give them the necessary properties for grid columns 
+// (supported by all browsers back to IE7)
 // Credit to @dhg for the idea
 [class*="span"] {
   .gridColumn();

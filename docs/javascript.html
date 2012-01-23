@@ -240,7 +240,7 @@
           <div class="well" style="background-color: #888; border: none;">
             <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1">
               <div class="modal-header">
-                <a href="#" class="close js-dismiss">&times;</a>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
                 <h3>Modal header</h3>
               </div>
               <div class="modal-body">
@@ -489,12 +489,12 @@ $('#myModal').on('hidden', function () {
 <pre class="prettyprint linenums">
 &lt;ul class="nav pills"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="dropdown"&gt;
+  &lt;li class="dropdown" id="menu1"&gt;
     &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
       Dropdown
       &lt;b class="caret"&gt;&lt;/b&gt;
     &lt;/a&gt;
-    &lt;ul id="menu1" class="dropdown-menu"&gt;
+    &lt;ul class="dropdown-menu"&gt;
       &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
