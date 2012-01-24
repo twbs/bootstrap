@@ -53,3 +53,10 @@
   })
 
 }( window.jQuery || window.ender );
+
+// Make sure forms in the topbar stay open when click on them
+$(document).ready(function() {
+  $('.dropdown-menu').find('form').click(function (e) {
+    e.stopPropagation();
+  });
+});
