@@ -6,7 +6,7 @@ var layout, pages
 
 // compile layout template
 layout = fs.readFileSync(__dirname + '/../templates/layout.mustache', 'utf-8')
-layout = hogan.compile(layout)
+layout = hogan.compile(layout, { sectionTags: [{o:'_i', c:'i'}] })
 
 // retrieve pages
 pages = fs.readdirSync(__dirname + '/../templates/pages')
@@ -18,7 +18,9 @@ pages.forEach(function (name) {
     , context = {}
 
   context[name.replace(/\.mustache$/, '')] = 'active'
-  page = hogan.compile(page)
+  context._i = true
+
+  page = hogan.compile(page, { sectionTags: [{o:'_i', c:'i'}] })
   page = layout.render(context, {
     body: page
   })
