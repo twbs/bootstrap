@@ -83,7 +83,7 @@ section {
 
 /* Benefits list in masthead */
 .benefits {
-  width: 250px;
+  width: 280px;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -105,8 +105,6 @@ section {
   color: #555;
 }
 .benefits span {
-  position: relative;
-  top: -2px;
   padding-right: 5px;
   color: #999;
 }
@@ -200,7 +198,7 @@ section {
 }
 .marketing h1 {
   margin: 36px 0 27px;
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 300;
   text-align: center;
 }
@@ -227,59 +225,28 @@ section {
 
 /* Quickstart section for getting le code
 -------------------------------------------------- */
-.getting-started {
-  background-color: #f5f5f5;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f5f5f5));
-  background-image: -moz-linear-gradient(#f9f9f9, #f5f5f5);
-  background-image: -ms-linear-gradient(#f9f9f9, #f5f5f5);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f5f5f5));
-  background-image: -webkit-linear-gradient(#f9f9f9, #f5f5f5);
-  background-image: -o-linear-gradient(#f9f9f9, #f5f5f5);
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0)";
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0);
-  background-image: linear-gradient(#f9f9f9, #f5f5f5);
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-}
-.getting-started {
-  border-color: #eee;
-}
-.getting-started td {
-  width: 33%;
-  border-right: 1px solid #eee;
-}
-.getting-started td + td {
-  border-left: 1px solid #fff;
-}
-.getting-started td:last-child {
-  border-right: 0;
-}
-.quick-start {
-  padding: 17px 20px;
-}
-.quick-start h3,
-.quick-start p {
+.getting-started h3,
+.getting-started p {
   line-height: 18px;
   text-align: center;
   margin-bottom: 9px;
 }
-.quick-start p {
+.getting-started p {
   color: #777;
 }
-.quick-start .current-version,
-.quick-start .current-version a {
+.getting-started .current-version,
+.getting-started .current-version a {
   color: #999;
 }
-.quick-start form {
+.getting-started form {
   margin-bottom: 0;
 }
-.quick-start textarea {
+.getting-started textarea {
   display: block;
-  width: 100%;
+  width: 95%;
   height: auto;
-  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 21px;
   white-space: nowrap;
   overflow: hidden;
@@ -627,6 +594,11 @@ form.well {
   /* Space out the show-grid examples */
   .show-grid [class*="span"] {
     margin-bottom: 5px;
+  }
+
+  /* Space out the getting started sections */
+  .getting-started .span4 {
+    margin-bottom: 18px;
   }
 
   /* Unfloat the back to top link in footer */
