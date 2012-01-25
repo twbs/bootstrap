@@ -876,14 +876,14 @@
     <div class="span8">
       <form class="form-horizontal">
         <legend>{{_i}}Controls Bootstrap supports{{/i}}</legend>
-        <fieldset class="control-group">
+        <div class="control-group">
           <label class="control-label" for="input01">{{_i}}Text input{{/i}}</label>
           <div class="controls">
             <input type="text" class="xlarge" name="input01">
             <p class="help-block">{{_i}}In addition to freeform text, any HTML5 text-based input appears like so.{{/i}}</p>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="optionsCheckbox">{{_i}}Checkbox{{/i}}</label>
           <div class="controls">
             <label class="checkbox">
@@ -891,8 +891,8 @@
               {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
             </label>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="select01">{{_i}}Select list{{/i}}</label>
           <div class="controls">
             <select name="select01">
@@ -903,8 +903,8 @@
               <option>5</option>
             </select>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="multiSelect">{{_i}}Multi-select{{/i}}</label>
           <div class="controls">
             <select multiple="multiple" name="multiSelect">
@@ -915,23 +915,23 @@
               <option>5</option>
             </select>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="fileInput">{{_i}}File input{{/i}}</label>
           <div class="controls">
             <input class="input-file" id="fileInput" name="fileInput" type="file">
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="textarea">{{_i}}Textarea{{/i}}</label>
           <div class="controls">
             <textarea class="input-xlarge" name="textarea" id="textarea" rows="3"></textarea>
           </div>
-        </fieldset>
-        <fieldset class="form-actions">
+        </div>
+        <div class="form-actions">
           <button type="submit" class="btn primary">{{_i}}Save changes{{/i}}</button>
           <button type="reset" class="btn">{{_i}}Cancel{{/i}}</button>
-        </fieldset>
+        </div>
       </form>
     </div>
     <div class="span4">
@@ -960,19 +960,19 @@
     <div class="span8">
       <form class="form-horizontal">
         <legend>{{_i}}Form control states{{/i}}</legend>
-        <fieldset class="control-group">
+        <div class="control-group">
           <label class="control-label" for="focusedInput">{{_i}}Focused input{{/i}}</label>
           <div class="controls">
             <input class="input-xlarge focused" id="focusedInput" name="focusedInput" type="text" value="{{_i}}This is focused…{{/i}}">
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="disabledInput">{{_i}}Disabled input{{/i}}</label>
           <div class="controls">
             <input class="input-xlarge disabled" id="disabledInput" name="disabledInput" type="text" placeholder="{{_i}}Disabled input here…{{/i}}" disabled>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="optionsCheckbox">{{_i}}Disabled checkbox{{/i}}</label>
           <div class="controls">
             <label class="checkbox">
@@ -980,29 +980,29 @@
               {{_i}}This is a disabled checkbox{{/i}}
             </label>
           </div>
-        </fieldset>
-        <fieldset class="control-group warning">
+        </div>
+        <div class="control-group warning">
           <label class="control-label" for="inputError">{{_i}}Input with warning{{/i}}</label>
           <div class="controls">
             <input type="text" name="inputError">
             <span class="help-inline">{{_i}}Something may have gone wrong{{/i}}</span>
           </div>
-        </fieldset>
-        <fieldset class="control-group error">
+        </div>
+        <div class="control-group error">
           <label class="control-label" for="inputError">{{_i}}Input with error{{/i}}</label>
           <div class="controls">
             <input type="text" name="inputError">
             <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
           </div>
-        </fieldset>
-        <fieldset class="control-group success">
+        </div>
+        <div class="control-group success">
           <label class="control-label" for="inputError">{{_i}}Input with success{{/i}}</label>
           <div class="controls">
             <input type="text" name="inputError">
             <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
           </div>
-        </fieldset>
-        <fieldset class="control-group success">
+        </div>
+        <div class="control-group success">
           <label class="control-label" for="selectError">{{_i}}Select with success{{/i}}</label>
           <div class="controls">
             <select name="selectError">
@@ -1014,11 +1014,11 @@
             </select>
             <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
           </div>
-        </fieldset>
-        <fieldset class="form-actions">
+        </div>
+        <div class="form-actions">
           <button type="submit" class="btn primary">{{_i}}Save changes{{/i}}</button>
           <button type="reset" class="btn">{{_i}}Cancel{{/i}}</button>
-        </fieldset>
+        </div>
       </form>
     </div>
     <div class="span4">
@@ -1044,7 +1044,7 @@
     <div class="span8">
       <form class="form-horizontal">
         <legend>{{_i}}Extending form controls{{/i}}</legend>
-        <fieldset class="control-group">
+        <div class="control-group">
           <label class="control-label">{{_i}}Form sizes{{/i}}</label>
           <div class="controls docs-input-sizes">
             <input class="span2" type="text" name="" placeholder=".span2">
@@ -1052,8 +1052,8 @@
             <input class="span4" type="text" name="" placeholder=".span4">
             <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="prependedInput">{{_i}}Prepended text{{/i}}</label>
           <div class="controls">
             <div class="input-prepend">
@@ -1062,8 +1062,8 @@
             </div>
             <p class="help-block">{{_i}}Here's some help text{{/i}}</p>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="appendedInput">{{_i}}Appended text{{/i}}</label>
           <div class="controls">
             <div class="input-append">
@@ -1072,8 +1072,8 @@
             </div>
             <p class="help-block">{{_i}}Here's more help text{{/i}}</p>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="inlineCheckboxes">{{_i}}Inline checkboxes{{/i}}</label>
           <div class="controls">
             <label class="checkbox inline">
@@ -1086,8 +1086,8 @@
               <input type="checkbox" name="inlineCheckbox1" value="option1"> 3
             </label>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="optionsCheckboxes">{{_i}}Checkboxes{{/i}}</label>
           <div class="controls">
             <label class="checkbox">
@@ -1104,8 +1104,8 @@
             </label>
             <p class="help-text">{{_i}}<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.{{/i}}</p>
           </div>
-        </fieldset>
-        <fieldset class="control-group">
+        </div>
+        <div class="control-group">
           <label class="control-label" for="optionsRadios">{{_i}}Radio buttons{{/i}}</label>
           <div class="controls">
             <label class="radio">
@@ -1117,11 +1117,11 @@
               {{_i}}Option two can is something else and selecting it will deselect option one{{/i}}
             </label>
           </div>
-        </fieldset>
-        <fieldset class="form-actions">
+        </div>
+        <div class="form-actions">
           <button type="submit" class="btn primary">{{_i}}Save changes{{/i}}</button>
           <button type="reset" class="btn">{{_i}}Cancel{{/i}}</button>
-        </fieldset>
+        </div>
       </form>
     </div>
     <div class="span4">
