@@ -143,6 +143,7 @@
 
   $(function () {
     $('body').on('click.carousel.data-api', '[data-slide]', function ( e ) {
+      e.preventDefault()
       var $this = $(this)
         , $target = $($this.attr('data-target') || $this.attr('href'))
         , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
