@@ -266,12 +266,12 @@ section {
 .marketing p {
   margin-right: 10px;
 }
-.marketing .icon {
+.marketing .bs-icon {
   float: left;
   margin: 7px 10px 0 0;
   opacity: .8;
 }
-.marketing .small-icon {
+.marketing .small-bs-icon {
   float: left;
   margin: 4px 5px 0 0;
 }
@@ -497,7 +497,7 @@ section {
 
 /* Giant download button */
 .download-btn {
-  margin: 36px 0 108px;
+  margin: 36px 0 108px.i;
 }
 .download p,
 .download h4 {
