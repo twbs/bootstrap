@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 25 11:27:15 PST 2012
+ * Date: Wed Jan 25 11:31:57 PST 2012
  */
 article,
 aside,
@@ -715,11 +715,11 @@ textarea[readonly] {
 .control-group.warning > label, .control-group.warning .help-block, .control-group.warning .help-inline {
   color: #c09853;
 }
-.control-group.warning input, .control-group.warning textarea {
+.control-group.warning input, .control-group.warning select, .control-group.warning textarea {
   color: #c09853;
   border-color: #c09853;
 }
-.control-group.warning input:focus, .control-group.warning textarea:focus {
+.control-group.warning input:focus, .control-group.warning select:focus, .control-group.warning textarea:focus {
   border-color: #a47e3c;
   -webkit-box-shadow: 0 0 6px #dbc59e;
   -moz-box-shadow: 0 0 6px #dbc59e;
@@ -733,11 +733,11 @@ textarea[readonly] {
 .control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
   color: #b94a48;
 }
-.control-group.error input, .control-group.error textarea {
+.control-group.error input, .control-group.error select, .control-group.error textarea {
   color: #b94a48;
   border-color: #b94a48;
 }
-.control-group.error input:focus, .control-group.error textarea:focus {
+.control-group.error input:focus, .control-group.error select:focus, .control-group.error textarea:focus {
   border-color: #953b39;
   -webkit-box-shadow: 0 0 6px #d59392;
   -moz-box-shadow: 0 0 6px #d59392;
@@ -751,11 +751,11 @@ textarea[readonly] {
 .control-group.success > label, .control-group.success .help-block, .control-group.success .help-inline {
   color: #468847;
 }
-.control-group.success input, .control-group.success textarea {
+.control-group.success input, .control-group.success select, .control-group.success textarea {
   color: #468847;
   border-color: #468847;
 }
-.control-group.success input:focus, .control-group.success textarea:focus {
+.control-group.success input:focus, .control-group.success select:focus, .control-group.success textarea:focus {
   border-color: #356635;
   -webkit-box-shadow: 0 0 6px #7aba7b;
   -moz-box-shadow: 0 0 6px #7aba7b;
