@@ -168,7 +168,8 @@ section {
 .subhead .subnav-fixed {
   position: fixed;
   top: 40px;
-  z-index:1000;
+  z-index: 1030;
+  width: 938px;
 }
 
 
