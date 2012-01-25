@@ -100,7 +100,7 @@
 
 // Site container
 // -------------------------
-.fixed-container() {
+.container-fixed() {
   width: @siteWidth;
   margin-left: auto;
   margin-right: auto;
@@ -137,23 +137,6 @@
      -moz-border-radius: @radius;
           border-radius: @radius;
 }
-.border-radius-custom(@topLeft: 0, @topRight: 0, @bottomRight: 0, @bottomLeft: 0) {
-  -webkit-border-top-left-radius: @topLeft;
-      -moz-border-radius-topleft: @topLeft;
-          border-top-left-radius: @topLeft;
-  -webkit-border-top-right-radius: @topRight;
-      -moz-border-radius-topright: @topRight;
-          border-top-right-radius: @topRight;
-  -webkit-border-bottom-right-radius: @bottomRight;
-      -moz-border-radius-bottomright: @bottomRight;
-          border-bottom-right-radius: @bottomRight;
-  -webkit-border-bottom-left-radius: @bottomLeft;
-      -moz-border-radius-bottomleft: @bottomLeft;
-          border-bottom-left-radius: @bottomLeft;
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
-}
 
 // Drop shadows
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
@@ -172,19 +155,19 @@
 }
 
 // Transformations
-.rotate(@degrees: 5deg) {
+.rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
      -moz-transform: rotate(@degrees);
       -ms-transform: rotate(@degrees);
        -o-transform: rotate(@degrees);
           transform: rotate(@degrees);
 }
-.scale(@value: 1.5) {
-  -webkit-transform: scale(@value);
-     -moz-transform: scale(@value);
-      -ms-transform: scale(@value);
-       -o-transform: scale(@value);
-          transform: scale(@value);
+.scale(@ratio) {
+  -webkit-transform: scale(@ratio);
+     -moz-transform: scale(@ratio);
+      -ms-transform: scale(@ratio);
+       -o-transform: scale(@ratio);
+          transform: scale(@ratio);
 }
 .translate(@x: 0, @y: 0) {
   -webkit-transform: translate(@x, @y);
@@ -234,7 +217,7 @@
 }
 
 // CSS3 Content Columns
-.content-columns(@columnCount, @columnGap: 20px) {
+.content-columns(@columnCount, @columnGap: @gridColumnGutter) {
   -webkit-column-count: @columnCount;
      -moz-column-count: @columnCount;
           column-count: @columnCount;

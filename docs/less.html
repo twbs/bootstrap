@@ -406,14 +406,18 @@
       <h3>Basic mixins</h3>
       <p>A basic mixin is essentially an include or a partial for a snippet of CSS. They're written just like a CSS class and can be called anywhere.</p>
 <pre class="prettyprint linenums">
-  Coming soon!
+.element {
+  .clearfix();
+}
 </pre>
     </div><!-- /span4 -->
     <div class="span4">
       <h3>Parametric mixins</h3>
-      <p>A parametric mixin is just like a basic mixin, but it also accepts optional Parameters (hence the name).</p>
+      <p>A parametric mixin is just like a basic mixin, but it also accepts parameters (hence the name) with optional default values.</p>
 <pre class="prettyprint linenums">
-  Coming soon!
+.element {
+  .border-radius(4px);
+}
 </pre>
     </div><!-- /span4 -->
     <div class="span4">
@@ -499,38 +503,38 @@
     <tbody>
       <tr>
         <td><code>#font > #family > .serif()</code></td>
-        <td></td>
-        <td></td>
+        <td><em class="muted">none</em></td>
+        <td>Make an element use a serif font stack</td>
       </tr>
       <tr>
         <td><code>#font > #family > .sans-serif()</code></td>
-        <td></td>
-        <td></td>
+        <td><em class="muted">none</em></td>
+        <td>Make an element use a sans-serif font stack</td>
       </tr>
       <tr>
         <td><code>#font > #family > .monospace()</code></td>
-        <td></td>
-        <td></td>
+        <td><em class="muted">none</em></td>
+        <td>Make an element use a monospace font stack</td>
       </tr>
       <tr>
         <td><code>#font > .shorthand()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
+        <td>Easily set font size, weight, and leading</td>
       </tr>
       <tr>
         <td><code>#font > .serif()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
+        <td>Set font family to serif, and control size, weight, and leading</td>
       </tr>
       <tr>
         <td><code>#font > .sans-serif()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
+        <td>Set font family to sans-serif, and control size, weight, and leading</td>
       </tr>
       <tr>
         <td><code>#font > .monospace()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
+        <td>Set font family to monospace, and control size, weight, and leading</td>
       </tr>
     </tbody>
   </table>
@@ -545,24 +549,24 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>.fixed-container()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>.container-fixed()</code></td>
+        <td><em class="muted">none</em></td>
+        <td>Provide a fixed-width (set with <code>@siteWidth</code>) container for holding your content</td>
       </tr>
       <tr>
         <td><code>.columns()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@columns: 1</code></td>
+        <td>Build a grid column that spans any number of columns (defaults to 1 column)</td>
       </tr>
       <tr>
         <td><code>.offset()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@columns: 1</code></td>
+        <td>Offset a grid column with left margin that spans any number of columns</td>
       </tr>
       <tr>
         <td><code>.gridColumn()</code></td>
-        <td></td>
-        <td></td>
+        <td><em class="muted">none</em></td>
+        <td>Make an element float like a grid column</td>
       </tr>
     </tbody>
   </table>
@@ -570,7 +574,7 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th class="span4">Mixin</th>
+        <th class="span3">Mixin</th>
         <th>Parameters</th>
         <th>Usage</th>
       </tr>
@@ -578,68 +582,63 @@
     <tbody>
       <tr>
         <td><code>.border-radius()</code></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><code>.border-radius-custom()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@radius: 5px</code></td>
+        <td>Round the corners of an element. Can be a single value or four space-separated values</td>
       </tr>
       <tr>
         <td><code>.box-shadow()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@shadow: 0 1px 3px rgba(0,0,0,.25)</code></td>
+        <td>Add a drop shadow to an element</td>
       </tr>
       <tr>
         <td><code>.transition()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@transition</code></td>
+        <td>Add CSS3 transition effect (e.g., <code>all .2s linear</code>)</td>
       </tr>
       <tr>
         <td><code>.rotate()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@degrees</code></td>
+        <td>Rotate an element <em>n</em> degrees</td>
       </tr>
       <tr>
         <td><code>.scale()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@ratio</code></td>
+        <td>Scale an element to <em>n</em> times it's original size</td>
       </tr>
       <tr>
         <td><code>.translate()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@x: 0, @y: 0</code></td>
+        <td>Move an element on the x and y planes</td>
       </tr>
       <tr>
         <td><code>.background-clip()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@clip</code></td>
+        <td>Crop the backgroud of an element (useful for <code>border-radius</code>)</td>
       </tr>
       <tr>
         <td><code>.background-size()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@size</code></td>
+        <td>Control the size of background images via CSS3</td>
       </tr>
       <tr>
         <td><code>.box-sizing()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@boxmodel</code></td>
+        <td>Change the box model for an element (e.g., <code>border-box</code> for a full-width <code>input</code>)</td>
       </tr>
       <tr>
         <td><code>.user-select()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@select</code></td>
+        <td>Control cursor selection of text on a page</td>
       </tr>
       <tr>
         <td><code>.resizable()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@direction: both</code></td>
+        <td>Make any element resizable on the right and bottom</td>
       </tr>
       <tr>
         <td><code>.content-columns()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@columnCount, @columnGap: @gridColumnGutter</code></td>
+        <td>Make the content of any element use CSS3 columns</td>
       </tr>
     </tbody>
   </table>
@@ -655,48 +654,48 @@
     <tbody>
       <tr>
         <td><code>.#translucent > .background()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@color: @white, @alpha: 1</code></td>
+        <td>Give an element a translucent background color</td>
       </tr>
       <tr>
         <td><code>.#translucent > .border()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@color: @white, @alpha: 1</code></td>
+        <td>Give an element a translucent border color</td>
       </tr>
       <tr>
         <td><code>.#gradient > .vertical()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@startColor, @endColor</code></td>
+        <td>Create a cross-browser vertical background gradient</td>
       </tr>
       <tr>
         <td><code>.#gradient > .horizontal()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@startColor, @endColor</code></td>
+        <td>Create a cross-browser horizontal background gradient</td>
       </tr>
       <tr>
         <td><code>.#gradient > .directional()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@startColor, @endColor, @deg</code></td>
+        <td>Create a cross-browser directional background gradient</td>
       </tr>
       <tr>
         <td><code>.#gradient > .vertical-three-colors()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@startColor, @midColor, @colorStop, @endColor</code></td>
+        <td>Create a cross-browser three-color background gradient</td>
       </tr>
       <tr>
         <td><code>.#gradient > .radial()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@innerColor, @outerColor</code></td>
+        <td>Create a cross-browser radial background gradient</td>
       </tr>
       <tr>
         <td><code>.#gradient > .striped()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@color, @angle</code></td>
+        <td>Create a cross-browser striped background gradient</td>
       </tr>
       <tr>
         <td><code>.#gradientBar()</code></td>
-        <td></td>
-        <td></td>
+        <td><code>@primaryColor, @secondaryColor</code></td>
+        <td>Used for buttons to assign a gradient and slightly darker border</td>
       </tr>
     </tbody>
   </table>
