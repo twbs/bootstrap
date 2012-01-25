@@ -197,8 +197,9 @@ section {
             box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
   }
   .subnav-fixed .nav {
-    width: 940px;
+    width: 938px;
     margin: 0 auto;
+    padding: 0 1px;
   }
 }
 
