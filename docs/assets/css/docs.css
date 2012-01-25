@@ -170,6 +170,12 @@ section {
   top: 40px;
   z-index: 1030;
   width: 938px;
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 5px rgba(0,0,0,.05);
+          box-shadow: 0 1px 5px rgba(0,0,0,.05);
 }
 
 
@@ -565,6 +571,13 @@ form.well {
   .subhead .nav li + li a {
     border-top: 1px solid #eee;
   }
+  .subhead .subnav-fixed {
+    position: static;
+    top: auto;
+    z-index: auto;
+    width: auto;
+  }
+
 
   /* Don't space out quick links so much */
   .quick-links {
