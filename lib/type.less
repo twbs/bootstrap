@@ -175,6 +175,7 @@ blockquote {
   }
 }
 
+// Quotes
 q:before,
 q:after,
 blockquote:before, 
@@ -195,13 +196,16 @@ code,
 pre {
   padding: 0 3px 2px;
   #font > #family > .monospace;
-  font-size: 12px;
+  font-size: @baseFontSize - 2;
   color: @grayDark;
   .border-radius(3px);
 }
 code {
-  padding: 1px 3px;
+  padding: 3px 4px;
   background-color: lighten(@orange, 40%);
+  color: #d14;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
 }
 pre {
   display: block;
@@ -210,7 +214,7 @@ pre {
   font-size: 12px;
   line-height: @baseLineHeight;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; // fallback for IE7-8
   border: 1px solid rgba(0,0,0,.15);
   .border-radius(4px);
   white-space: pre;

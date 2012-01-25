@@ -63,207 +63,244 @@
       <header class="jumbotron subhead" id="overview">
         <h1>Using LESS with Bootstrap</h1>
         <p class="lead">Customize and extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap's CSS.</p>
+        <ul class="nav pills">
+          <li><a href="./less.html#builtWith">Built with Less</a></li>
+          <li><a href="./less.html#variables">Variables</a></li>
+          <li><a href="./less.html#mixins">Mixins</a></li>
+          <li><a href="./less.html#compiling">Compiling Bootstrap</a></li>
+        </ul>
       </header>
 
 
 
       <!-- BUILT WITH LESS
       ================================================== -->
-      <div class="page-header">
-        <h1>Built with LESS</h1>
-      </div>
-      <div class="row">
-        <div class="span4">
-          <h3>Why LESS?</h3>
-          <p>Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
+      <section id="builtWith">
+        <div class="page-header">
+          <h1>Built with LESS</h1>
         </div>
-        <div class="span4">
-          <h3>What's included?</h3>
-          <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
+        <div class="row">
+          <div class="span4">
+            <h3>Why LESS?</h3>
+            <p>Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
+          </div>
+          <div class="span4">
+            <h3>What's included?</h3>
+            <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
+          </div>
+          <div class="span4">
+            <h3>Learn more</h3>
+            <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
+            <p>Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.</p>
+          </div>
         </div>
-        <div class="span4">
-          <h3>Learn more</h3>
-          <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
-          <p>Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.</p>
+        <div class="row">
+          <div class="span4">
+            <h3>Variables</h3>
+            <p>Managing colors and pixel values in CSS can be a bit of a pain, usually full of copy and paste. Not with LESS though&mdash;assign colors or pixel values as variables and change them once.</p>
+          </div>
+          <div class="span4">
+            <h3>Mixins</h3>
+            <p>Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.</p>
+          </div>
+          <div class="span4">
+            <h3>Operations</h3>
+            <p>Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiple, divide, add, and subtract your way to CSS sanity.</p>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="span4">
-          <h3>Variables</h3>
-          <p>Managing colors and pixel values in CSS can be a bit of a pain, usually full of copy and paste. Not with LESS though&mdash;assign colors or pixel values as variables and change them once.</p>
-        </div>
-        <div class="span4">
-          <h3>Mixins</h3>
-          <p>Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.</p>
-        </div>
-        <div class="span4">
-          <h3>Operations</h3>
-          <p>Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiple, divide, add, and subtract your way to CSS sanity.</p>
-        </div>
-      </div>
+      </section>
 
 
 
       <!-- VARIABLES
       ================================================== -->
-      <div class="page-header" id="variables">
-        <h1>Variables <small>from variables.less</small></h1>
-      </div>
+      <section id="variables">
+        <div class="page-header">
+          <h1>Variables <small>from variables.less</small></h1>
+        </div>
 
-          <h3>Hyperlinks</h3>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Variable</th>
-                <th>Value</th>
-                <th>Usage</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>@linkColor</code></td>
-                <td>#0069d6</td>
-                <td>Default link text color</td>
-              </tr>
-              <tr>
-                <td><code>@linkColorHover</code></td>
-                <td><code>darken(@linkColor, 15)</code></td>
-                <td>Default link text hover color</td>
-              </tr>
-            </tbody>
-          </table>
+        <h3>Hyperlinks</h3>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th class="span2">Variable</th>
+              <th>Value</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>@linkColor</code></td>
+              <td>#08c</td>
+              <td>Default link text color</td>
+            </tr>
+            <tr>
+              <td><code>@linkColorHover</code></td>
+              <td><code>darken(@linkColor, 15%)</code></td>
+              <td>Default link text hover color</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <div class="row">
-        <div class="span6">
-          <h3>Grayscale colors</h3>
-          <table class="table table-bordered table-striped">
-            <tbody>
-              <tr>
-                <td><code>@black</code></td>
-                <td>#000</td>
-              </tr>
-              <tr>
-                <td><code>@grayDark</code></td>
-                <td><code>lighten(@black, 25%)</code></td>
-              </tr>
-              <tr>
-                <td><code>@gray</code></td>
-                <td><code>lighten(@black, 50%)</code></td>
-              </tr>
-              <tr>
-                <td><code>@grayLight</code></td>
-                <td><code>lighten(@black, 75%)</code></td>
-              </tr>
-              <tr>
-                <td><code>@grayLighter</code></td>
-                <td><code>lighten(@black, 90%)</code></td>
-              </tr>
-              <tr>
-                <td><code>@white</code></td>
-                <td>#fff</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="span6">
-          <h3>Accent colors</h3>
-          <table class="table table-bordered table-striped">
-            <tbody>
-              <tr>
-                <td><code>@blue</code></td>
-                <td>#049CDB</td>
-              </tr>
-              <tr>
-                <td><code>@green</code></td>
-                <td>#46a546</td>
-              </tr>
-              <tr>
-                <td><code>@red</code></td>
-                <td>#9d261d</td>
-              </tr>
-              <tr>
-                <td><code>@yellow</code></td>
-                <td>#ffc40d</td>
-              </tr>
-              <tr>
-                <td><code>@orange</code></td>
-                <td>#f89406</td>
-              </tr>
-              <tr>
-                <td><code>@pink</code></td>
-                <td>#c3325f</td>
-              </tr>
-              <tr>
-                <td><code>@purple</code></td>
-                <td>#7a43b6</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        <div class="row">
+          <div class="span6">
+            <h3>Grayscale colors</h3>
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th class="span2">Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>@black</code></td>
+                  <td>#000</td>
+                </tr>
+                <tr>
+                  <td><code>@grayDarker</code></td>
+                  <td><code>#222</code></td>
+                </tr>
+                <tr>
+                  <td><code>@grayDark</code></td>
+                  <td><code>#333</code></td>
+                </tr>
+                <tr>
+                  <td><code>@gray</code></td>
+                  <td><code>#555</code></td>
+                </tr>
+                <tr>
+                  <td><code>@grayLight</code></td>
+                  <td><code>#999</code></td>
+                </tr>
+                <tr>
+                  <td><code>@grayLighter</code></td>
+                  <td><code>#eee</code></td>
+                </tr>
+                <tr>
+                  <td><code>@white</code></td>
+                  <td>#fff</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="span6">
+            <h3>Accent colors</h3>
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th class="span2">Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>@blue</code></td>
+                  <td>#049cdb</td>
+                </tr>
+                <tr>
+                  <td><code>@green</code></td>
+                  <td>#46a546</td>
+                </tr>
+                <tr>
+                  <td><code>@red</code></td>
+                  <td>#9d261d</td>
+                </tr>
+                <tr>
+                  <td><code>@yellow</code></td>
+                  <td>#ffc40d</td>
+                </tr>
+                <tr>
+                  <td><code>@orange</code></td>
+                  <td>#f89406</td>
+                </tr>
+                <tr>
+                  <td><code>@pink</code></td>
+                  <td>#c3325f</td>
+                </tr>
+                <tr>
+                  <td><code>@purple</code></td>
+                  <td>#7a43b6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> <!-- /row -->
+        <div class="row">
+          <div class="span6">
+            <h3>Grid system</h3>
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th class="span2">Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>@gridColumns</code></td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <td><code>@gridColumnWidth</code></td>
+                  <td>60px</td>
+                </tr>
+                <tr>
+                  <td><code>@gridGutterWidth</code></td>
+                  <td>20px</td>
+                </tr>
+                <tr>
+                  <td><code>@siteWidth</code></td>
+                  <td><code>(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1))</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="span6">
+            <h3>Typography</h3>
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th class="span2">Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>@baseFontSize</code></td>
+                  <td>13px</td>
+                </tr>
+                <tr>
+                  <td><code>@baseFontFamily</code></td>
+                  <td><code>"Helvetica Neue", Helvetica, Arial, sans-serif</code></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><code>@baseLineHeight</code></td>
+                  <td>18px</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> <!-- /row -->
+        <div class="row">
+          <div class="span3">
+            <h3>Visuals</h3>
+          </div>
+          <div class="span9">
+            <table class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <td><code>@primaryButtonColor</code></td>
+                  <td><code>@blue</code></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> <!-- /row -->
+      </section>
 
-      <div class="row">
-        <div class="span6">
-          <h3>Grid system</h3>
-          <table class="table table-bordered table-striped">
-            <tbody>
-              <tr>
-                <td><code>@gridColumns</code></td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <td><code>@gridColumnWidth</code></td>
-                <td>60px</td>
-              </tr>
-              <tr>
-                <td><code>@gridGutterWidth</code></td>
-                <td>20px</td>
-              </tr>
-              <tr>
-                <td><code>@siteWidth</code></td>
-                <td><code>(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1))</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="span6">
-          <h3>Typography</h3>
-          <table class="table table-bordered table-striped">
-            <tbody>
-              <tr>
-                <td><code>@baseFontSize</code></td>
-                <td>13px</td>
-              </tr>
-              <tr>
-                <td><code>@baseFontFamily</code></td>
-                <td><code>"Helvetica Neue", Helvetica, Arial, sans-serif</code></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><code>@baseLineHeight</code></td>
-                <td>18px</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="span3">
-          <h3>Visuals</h3>
-        </div>
-        <div class="span9">
-          <table class="table table-bordered table-striped">
-            <tbody>
-              <tr>
-                <td><code>@primaryButtonColor</code></td>
-                <td><code>@blue</code></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
 
 
       <!-- MIXINS
