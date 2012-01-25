@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Jan 24 16:01:37 PST 2012
+ * Date: Tue Jan 24 16:18:56 PST 2012
  */
 article,
 aside,
@@ -411,7 +411,7 @@ address {
 code, pre {
   padding: 0 3px 2px;
   font-family: Menlo, Monaco, "Courier New", monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: #333333;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
