@@ -165,6 +165,12 @@ section {
   border-right: 0;
 }
 
+.subhead .subnav-fixed {
+  position: fixed;
+  top: 40px;
+  z-index:1000;
+}
+
 
 /* Quick links
 -------------------------------------------------- */
