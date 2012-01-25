@@ -58,11 +58,12 @@
 
     <div class="container">
 
-  <!-- Masthead
-  ================================================== -->
-  <header class="jumbotron subhead" id="overview">
-    <h1>Components</h1>
-    <p class="lead">Dozens of reusable components are built into Bootstrap to provide navigation, alerts, popovers, and much more.</p>
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <h1>Components</h1>
+  <p class="lead">Dozens of reusable components are built into Bootstrap to provide navigation, alerts, popovers, and much more.</p>
+  <div class="subnav">
     <ul class="nav pills">
       <li><a href="./components.html#buttonGroups">Button groups</a></li>
       <li><a href="./components.html#buttonDropdowns">Button dropdowns</a></li>
@@ -74,51 +75,52 @@
       <li><a href="./components.html#alerts">Alerts</a></li>
       <li><a href="./components.html#progress">Progress bars</a></li>
     </ul>
-  </header>
+  </div>
+</header>
 
 
 
-  <!-- Button Groups
-  ================================================== -->
-  <section id="buttonGroups">
-    <div class="page-header">
-      <h1>Button groups <small>Join buttons for more toolbar-like functionality</small></h1>
-    </div>
-    <div class="row">
-      <div class="span4">
-        <h3>Button groups</h3>
-        <p>Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.</p>
-        <p>You can also combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex projects.</p>
-        <div class="well" style="padding: 10px; margin-bottom: 9px;">
-          <div class="btn-group">
-            <a class="btn" href="#">Left</a>
-            <a class="btn" href="#">Middle</a>
-            <a class="btn" href="#">Right</a>
-          </div>
+<!-- Button Groups
+================================================== -->
+<section id="buttonGroups">
+  <div class="page-header">
+    <h1>Button groups <small>Join buttons for more toolbar-like functionality</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h3>Button groups</h3>
+      <p>Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.</p>
+      <p>You can also combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex projects.</p>
+      <div class="well" style="padding: 10px; margin-bottom: 9px;">
+        <div class="btn-group">
+          <a class="btn" href="#">Left</a>
+          <a class="btn" href="#">Middle</a>
+          <a class="btn" href="#">Right</a>
         </div>
-        <div class="well" style="padding: 10px;">
-          <div class="btn-toolbar">
-            <div class="btn-group">
-              <a class="btn" href="#">1</a>
-              <a class="btn" href="#">2</a>
-              <a class="btn" href="#">3</a>
-              <a class="btn" href="#">4</a>
-            </div>
-            <div class="btn-group">
-              <a class="btn" href="#">5</a>
-              <a class="btn" href="#">6</a>
-              <a class="btn" href="#">7</a>
-            </div>
-            <div class="btn-group">
-              <a class="btn" href="#">8</a>
-            </div>
-          </div>
-        </div>
-
       </div>
-      <div class="span4">
-        <h3>Example markup</h3>
-        <p>Here's how the HTML looks for a standard button group built with anchor tag buttons:</p>
+      <div class="well" style="padding: 10px;">
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn" href="#">1</a>
+            <a class="btn" href="#">2</a>
+            <a class="btn" href="#">3</a>
+            <a class="btn" href="#">4</a>
+          </div>
+          <div class="btn-group">
+            <a class="btn" href="#">5</a>
+            <a class="btn" href="#">6</a>
+            <a class="btn" href="#">7</a>
+          </div>
+          <div class="btn-group">
+            <a class="btn" href="#">8</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="span4">
+      <h3>Example markup</h3>
+      <p>Here's how the HTML looks for a standard button group built with anchor tag buttons:</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
@@ -134,95 +136,95 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-      </div>
-      <div class="span4">
-        <h3>Checkbox and radio flavors</h3>
-        <p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.</p>
-        <p><a class="btn js-btn" href="./javascript.html#buttons">Get the javascript &raquo;</a></p>
-        <hr>
-        <h4 class="muted">Heads up</h4>
-        <p class="muted">CSS for button groups is in a separate file, button-groups.less.</p>
-      </div>
     </div>
-  </section>
-
-
-
-  <!-- Split button dropdowns
-  ================================================== -->
-  <section id="buttonDropdowns">
-    <div class="page-header">
-      <h1>Split button dropdowns <small>Built on button groups to provide contextual menus</small></h1>
+    <div class="span4">
+      <h3>Checkbox and radio flavors</h3>
+      <p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.</p>
+      <p><a class="btn js-btn" href="./javascript.html#buttons">Get the javascript &raquo;</a></p>
+      <hr>
+      <h4 class="muted">Heads up</h4>
+      <p class="muted">CSS for button groups is in a separate file, button-groups.less.</p>
     </div>
-    <div class="row">
-      <div class="span4">
-        <h3>Split button dropdowns</h3>
-        <p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.</p>
-        <div class="well" style="padding: 10px; margin-bottom: 9px;">
-          <div class="btn-toolbar" style="margin-bottom: 9px;">
-            <div class="btn-group">
-              <a class="btn" href="#">Action</a>
-              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-            <div class="btn-group">
-              <a class="btn primary" href="#">Action</a>
-              <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-            <div class="btn-group">
-              <a class="btn danger" href="#">Danger</a>
-              <a class="btn danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-          </div>
-          <div class="btn-toolbar">
-            <div class="btn-group">
-              <a class="btn success" href="#">Success</a>
-              <a class="btn success dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-            <div class="btn-group">
-              <a class="btn info" href="#">Info</a>
-              <a class="btn info dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </div><!-- /btn-group -->
-          </div>
-        </div> <!-- /well -->
-      </div>
-      <div class="span8">
-        <h3>Example markup</h3>
-        <p>Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.</p>
+  </div>
+</section>
+
+
+
+<!-- Split button dropdowns
+================================================== -->
+<section id="buttonDropdowns">
+  <div class="page-header">
+    <h1>Split button dropdowns <small>Built on button groups to provide contextual menus</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h3>Split button dropdowns</h3>
+      <p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.</p>
+      <div class="well" style="padding: 10px; margin-bottom: 9px;">
+        <div class="btn-toolbar" style="margin-bottom: 9px;">
+          <div class="btn-group">
+            <a class="btn" href="#">Action</a>
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+          <div class="btn-group">
+            <a class="btn primary" href="#">Action</a>
+            <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+          <div class="btn-group">
+            <a class="btn danger" href="#">Danger</a>
+            <a class="btn danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+        </div>
+        <div class="btn-toolbar">
+          <div class="btn-group">
+            <a class="btn success" href="#">Success</a>
+            <a class="btn success dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+          <div class="btn-group">
+            <a class="btn info" href="#">Info</a>
+            <a class="btn info dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+        </div>
+      </div> <!-- /well -->
+    </div>
+    <div class="span8">
+      <h3>Example markup</h3>
+      <p>Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn" href="#"&gt;Action&lt;/a&gt;
@@ -234,9 +236,9 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
 
@@ -528,11 +530,6 @@
 
   <h3>Tabbable in any direction</h3>
   <div class="row">
-<!--
-    <div class="span4">
-      <p>Swap the order of your HTML&mdash;placing <code>.tabs</code> after <code>.tab-content</code>&mdash;for tabs on the bottom.</p>
-    </div>
--->
     <div class="span4">
       <h4>Tabs on the bottom</h4>
       <p>Flip the order of the HTML and add a class to put tabs on the bottom.</p>

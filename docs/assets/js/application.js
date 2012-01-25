@@ -118,8 +118,8 @@ $(function(){
 
   // fix sub nav playa
   var $win = $(window)
-    , $nav = $('.subhead .nav')
-    , navTop = $('.subhead .nav').offset().top - 40
+    , $nav = $('.subnav')
+    , navTop = $('.subnav').offset().top - 40
     , isFixed = 0
 
   processScroll()
