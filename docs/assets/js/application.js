@@ -119,7 +119,7 @@ $(function(){
   // fix sub nav playa
   var $win = $(window)
     , $nav = $('.subnav')
-    , navTop = $('.subnav').offset().top - 40
+    , navTop = $('.subnav').length && $('.subnav').offset().top - 40
     , isFixed = 0
 
   processScroll()

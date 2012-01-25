@@ -26,10 +26,11 @@
 
   function ScrollSpy( element, options) {
     var process = $.proxy(this.process, this)
+      , $element = $(element).is('body') ? $(window) : $(element)
     this.options = $.extend({}, $.fn.scrollspy.defaults, options)
-    this.$scrollElement = $(element).on('scroll.scroll.data-api', process)
-    this.selector = (this.$scrollElement.attr('data-target')
-      || this.$scrollElement.attr('href')
+    this.$scrollElement = $element.on('scroll.scroll.data-api', process)
+    this.selector = (this.options.target
+      || $(element).attr('href')
       || '') + ' .nav li > a'
     this.$body = $('body').on('click.scroll.data-api', this.selector, process)
     this.refresh()
@@ -111,11 +112,13 @@
 
 
  /* SCROLLSPY DATA-API
-  * ============== */
+  * ================== */
 
   $(function () {
-    var $spy = $('[data-spy="scroll"]')
-    $spy.scrollspy($spy.data())
+    $('[data-spy="scroll"]').each(function () {
+      var $spy = $(this)
+      $spy.scrollspy($spy.data())
+    })
   })
 
 }( window.jQuery )
