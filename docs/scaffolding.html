@@ -357,7 +357,7 @@
       <ol>
         <li>Use the compiled responsive version, bootstrap.reponsive.css</li>
         <li>Add @import "responsive.less" and recompile Bootstrap</li>
-        <li>Compile responsive.less as a separate file and include that</li>
+        <li>Modify and recompile responsive.less as a separate</li>
       </ol>
       <p><strong>Why not just include it?</strong> Truth be told, not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it.</p>
     </div>
@@ -367,7 +367,7 @@
   @media (max-width: 480px) { ... }
 
   // Landscape phone to portrait tablet
-  @media (min-width: 480px) and (max-width: 768px) { ... }
+  @media (max-width: 768px) { ... }
 
   // Portrait tablet to landscape and desktop
   @media (min-width: 768px) and (max-width: 940px) { ... }
