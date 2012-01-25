@@ -146,7 +146,10 @@ section {
      -moz-border-radius: 4px;
           border-radius: 4px;  
 }
-.subhead .nav a {
+.subnav .nav {
+  margin-bottom: 0;
+}
+.subnav .nav a {
   margin: 0;
   padding-top: 11px;
   padding-bottom: 11px;
@@ -158,24 +161,25 @@ section {
      -moz-border-radius: 0;
           border-radius: 0;
 }
-.subhead .nav a:hover,
-.subhead .nav .active a {
+.subnav .nav a:hover,
+.subnav .nav .active a {
   background-color: transparent;
   color: #333;
 }
-.subhead .nav .active a {
+.subnav .nav .active a {
   background-color: #eee;
 }
-.subhead .nav li:first-child a {
+.subnav .nav li:first-child a {
   border-left: 0;
   -webkit-border-radius: 4px 0 0 4px;
      -moz-border-radius: 4px 0 0 4px;
           border-radius: 4px 0 0 4px;
 }
-.subhead .nav li:last-child a {
+.subnav .nav li:last-child a {
   border-right: 0;
 }
 
+/* Fixed subnav on scroll */
 .subnav-fixed {
   position: fixed;
   top: 40px;
@@ -558,7 +562,7 @@ form.well {
 
   /* Subnav */
   .subnav {
-    background: none;
+    background: #fff; /* whole background property since we use a background-image for gradient */
   }
   .subnav .nav > li {
     float: none;
@@ -620,11 +624,21 @@ form.well {
 @media (max-width: 768px) {
 
   /* Subnav */
-  .subnav-fixed {
+  .subnav {
     position: static;
     top: auto;
     z-index: auto;
     width: auto;
+    height: auto;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+  .subnav .nav a {
+    border: 0;
+  }
+  .subnav .nav li + li a {
+    border-top: 1px solid #e5e5e5;
   }
 
   /* Adjust the jumbotron */
