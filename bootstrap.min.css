@@ -99,8 +99,8 @@ input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:
 input[type=image],input[type=checkbox],input[type=radio]{width:auto;height:auto;padding:0;margin:3px 0;*margin-top:0;line-height:normal;border:none;cursor:pointer;}
 input[type=file]{padding:initial;line-height:initial;border:initial;background-color:#ffffff;background-color:initial;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 input[type=button],input[type=reset],input[type=submit]{width:auto;height:auto;}
-select,input[type=file]{height:27px;*margin-top:4px;line-height:27px;}
-select{width:220px;vertical-align:middle;background-color:#ffffff;}
+select,input[type=file]{height:28px;*margin-top:4px;line-height:28px;}
+select{width:220px;vertical-align:baseline;background-color:#ffffff;}
 select[multiple],select[size]{height:auto;}
 input[type=image]{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 textarea{height:auto;}

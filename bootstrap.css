@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 25 11:50:14 PST 2012
+ * Date: Wed Jan 25 12:03:47 PST 2012
  */
 article,
 aside,
@@ -541,17 +541,17 @@ input[type=button], input[type=reset], input[type=submit] {
   height: auto;
 }
 select, input[type=file] {
-  height: 27px;
+  height: 28px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 
   *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
 
-  line-height: 27px;
+  line-height: 28px;
 }
 select {
   width: 220px;
-  vertical-align: middle;
+  vertical-align: baseline;
   background-color: #ffffff;
 }
 select[multiple], select[size] {

@@ -103,15 +103,15 @@ input[type=submit] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type=file] {
-  height: @baseLineHeight * 1.5; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
-  line-height: @baseLineHeight * 1.5;
+  line-height: 28px;
 }
 
 // Chrome on Linux and Mobile Safari need background-color
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
-  vertical-align: middle;
+  vertical-align: baseline;
   background-color: @white;
 }
 
