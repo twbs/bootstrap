@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 25 11:05:15 PST 2012
+ * Date: Wed Jan 25 11:15:41 PST 2012
  */
 article,
 aside,
@@ -2596,9 +2596,6 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-}
-.btn-group.open .dropdown-menu.large {
-  top: 40px;
 }
 .btn-group.open .dropdown-toggle {
   background-image: none;
