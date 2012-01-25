@@ -304,7 +304,7 @@
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
   }
-  .radial(@centerColor: #555, @outsideColor: #333)  {
+  .radial(@innerColor: #555, @outerColor: #333)  {
     background-color: @outsideColor;
     background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@centerColor), to(@outsideColor));
     background-image: -webkit-radial-gradient(circle, @centerColor, @outsideColor);
@@ -313,7 +313,7 @@
     background-repeat: no-repeat;
     // Opera cannot do radial gradients yet
   }
-  .striped(@color,@angle: -45deg) {
+  .striped(@color, @angle: -45deg) {
     background-color: @color;
     background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
     background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);

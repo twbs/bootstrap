@@ -6,11 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
-<<<<<<< HEAD
- * Date: Wed Jan 25 12:03:47 PST 2012
-=======
- * Date: Wed Jan 25 11:49:21 PST 2012
->>>>>>> 04f84997c18f2f132c8173f728f72b6b7aef52d1
+ * Date: Wed Jan 25 15:04:24 PST 2012
  */
 article,
 aside,
@@ -1868,7 +1864,7 @@ table .headerSortUp:after {
 .navbar-search .search-query :-moz-placeholder {
   color: #eeeeee;
 }
-.navbar-search .search-query::-webkit-input-placeholder {
+.navbar-search .search-query ::-webkit-input-placeholder {
   color: #eeeeee;
 }
 .navbar-search .search-query:hover {
