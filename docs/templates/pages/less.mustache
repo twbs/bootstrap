@@ -42,11 +42,11 @@
   </div>
   <div class="row">
     <div class="span4">
-      <h3>{{_i}}Variables{{/i}}</h3>
+      <h3><a href="#variables">{{_i}}Variables{{/i}}</a></h3>
       <p>{{_i}}Managing colors and pixel values in CSS can be a bit of a pain, usually full of copy and paste. Not with LESS though&mdash;assign colors or pixel values as variables and change them once.{{/i}}</p>
     </div>
     <div class="span4">
-      <h3>{{_i}}Mixins{{/i}}</h3>
+      <h3><a href="#mixins">{{_i}}Mixins{{/i}}</a></h3>
       <p>{{_i}}Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.{{/i}}</p>
     </div>
     <div class="span4">
@@ -332,62 +332,312 @@
 
 <!-- MIXINS
 ================================================== -->
-<div class="page-header" id="mixins">
-  <h1>{{_i}}Bootstrap mixins <small></small>{{/i}}</h1>
-</div>
-
-<h3>{{_i}}Mixins up the wazoo{{/i}}</h3>
-<p>{{_i}}Mixins are basically includes or partials for CSS, allowing you to combine a block of code into one. They’re great for vendor prefixed properties like <code>box-shadow</code>, cross-browser gradients, font stacks, and more. Below is a sample of the mixins that are included with Bootstrap.{{/i}}</p>
-<h4>{{_i}}Font stacks{{/i}}</h4>
+<section id="mixins">
+  <div class="page-header">
+    <h1>{{_i}}Bootstrap mixins <small></small>{{/i}}</h1>
+  </div>
+  <h2>About mixins</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Basic mixins</h3>
+      <p>A basic mixin is essentially an include or a partial for a snippet of CSS. They're written just like a CSS class and can be called anywhere.</p>
 <pre class="prettyprint linenums">
-#font {
-  .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-  .sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-  ...
-}
+  Coming soon!
 </pre>
-<h4>{{_i}}Gradients{{/i}}</h4>
+    </div><!-- /span4 -->
+    <div class="span4">
+      <h3>Parametric mixins</h3>
+      <p>A parametric mixin is just like a basic mixin, but it also accepts optional paramaters (hence the name).</p>
 <pre class="prettyprint linenums">
-#gradient {
-  ...
-  .vertical (@startColor: #555, @endColor: #333) {
-    background-color: @endColor;
-    background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
-    background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
-    background-image: linear-gradient(@startColor, @endColor); // The standard
-  }
-  ...
-}
+  Coming soon!
 </pre>
+    </div><!-- /span4 -->
+    <div class="span4">
+      <h3>Easily add your own</h3>
+      <p>Nearly all of Bootstrap's mixins are stored in mixins.less, a wonderful utility .less file that enables you to use a mixin in any of the .less files in the toolkit.</p>
+      <p>So, go ahead and use the existing ones or feel free to add your own as you need.</p>
+    </div><!-- /span4 -->
+  </div><!-- /row -->
+  <h2>Included mixins</h2>
+  <h3>Utilities</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="span4">Mixin</th>
+        <th>Paramaters</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.clearfix()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.center-block()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.ie7-inline-block()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.size()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.square()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.opacity()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.reset-filter()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Forms</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="span4">Mixin</th>
+        <th>Paramaters</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.placeholder()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Typography</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="span4">Mixin</th>
+        <th>Paramaters</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>#font > #family > .serif()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>#font > #family > .sans-serif()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>#font > #family > .monospace()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>#font > .shorthand()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>#font > .serif()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>#font > .sans-serif()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>#font > .monospace()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Grid system</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="span4">Mixin</th>
+        <th>Paramaters</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.fixed-container()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.columns()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.offset()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.gridColumn()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>CSS3 properties</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="span4">Mixin</th>
+        <th>Paramaters</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.border-radius()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.border-radius-custom()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.box-shadow()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.transition()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.rotate()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.scale()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.translate()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.background-clip()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.background-size()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.box-sizing()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.user-select()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.resizable()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.content-columns()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Backgrounds and gradients</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="span4">Mixin</th>
+        <th>Paramaters</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.#translucent > .background()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#translucent > .border()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#gradient > .vertical()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#gradient > .horizontal()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#gradient > .directional()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#gradient > .vertical-three-colors()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#gradient > .radial()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#gradient > .striped()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>.#gradientBar()</code></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-<h3>{{_i}}Operations{{/i}}</h3>
-<p>{{_i}}Get fancy and perform some math to generate flexible and powerful mixins like the one below.{{/i}}</p>
-<pre class="prettyprint linenums">
-// Griditude
-@gridColumns:       16;
-@gridColumnWidth:   40px;
-@gridGutterWidth:   20px;
-@siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
-
-// Make some columns
-.columns(@columnSpan: 1) {
-  width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
-}
-</pre>
 
 
 <!-- COMPILING LESS AND BOOTSTRAP
