@@ -58,359 +58,520 @@
 
     <div class="container">
 
-      <div class="alert">
-        <strong>Heads up!</strong> This page is still under construction and is missing plenty of documentation. Hang tight!
-      </div>
+<div class="alert">
+  <strong>Heads up!</strong> This page is still under construction and is missing plenty of documentation. Hang tight!
+</div>
 
-      <!-- Masthead
-      ================================================== -->
-      <header class="jumbotron subhead" id="overview">
-        <h1>Using LESS with Bootstrap</h1>
-        <p class="lead">Customize and extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap's CSS.</p>
-        <div class="subnav">
-          <ul class="nav pills">
-            <li><a href="./less.html#builtWith">Built with Less</a></li>
-            <li><a href="./less.html#variables">Variables</a></li>
-            <li><a href="./less.html#mixins">Mixins</a></li>
-            <li><a href="./less.html#compiling">Compiling Bootstrap</a></li>
-          </ul>
-        </div>
-      </header>
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <h1>Using LESS with Bootstrap</h1>
+  <p class="lead">Customize and extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap's CSS.</p>
+  <div class="subnav">
+    <ul class="nav pills">
+      <li><a href="./less.html#builtWith">Built with Less</a></li>
+      <li><a href="./less.html#variables">Variables</a></li>
+      <li><a href="./less.html#mixins">Mixins</a></li>
+      <li><a href="./less.html#compiling">Compiling Bootstrap</a></li>
+    </ul>
+  </div>
+</header>
 
 
 
-      <!-- BUILT WITH LESS
-      ================================================== -->
-      <section id="builtWith">
-        <div class="page-header">
-          <h1>Built with LESS</h1>
-        </div>
-        <div class="row">
-          <div class="span4">
-            <h3>Why LESS?</h3>
-            <p>Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
+<!-- BUILDER
+================================================== -->
+<section id="builder">
+  <div class="page-header">
+    <h1>Chop Shop <small>Customize your build of Bootstrap</small></h1>
+  </div>
+
+  <form class="form-horizontal builder">
+    <div class="tabbable tabs-left">
+      <ul class="nav tabs">
+        <li class="active">
+          <a href="#components" data-toggle="tab">1. Select components</a>
+        </li>
+        <li><a href="#variables" data-toggle="tab">2. Customize variables</a></li>
+        <li><a href="#download" data-toggle="tab">3. Build and download</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="components">
+          <div class="row">
+            <div class="span2 builder-section">
+              <h3>Scaffolding</h3>
+              <label class="checkbox"><input type="checkbox" value=""> CSS reset</label>
+              <label class="checkbox"><input type="checkbox" value=""> Grid system</label>
+              <label class="checkbox"><input type="checkbox" value=""> Layouts</label>
+              <h3>Base CSS</h3>
+              <label class="checkbox"><input type="checkbox" value=""> Headings and body</label>
+              <label class="checkbox"><input type="checkbox" value=""> Code and pre</label>
+              <label class="checkbox"><input type="checkbox" value=""> Labels</label>
+              <label class="checkbox"><input type="checkbox" value=""> Tables</label>
+              <label class="checkbox"><input type="checkbox" value=""> Forms</label>
+              <label class="checkbox"><input type="checkbox" value=""> Buttons</label>
+              <label class="checkbox"><input type="checkbox" value=""> Icons</label>
+            </div>
+            <div class="span2 builder-section">
+              <h3>Components</h3>
+              <label class="checkbox"><input type="checkbox" value=""> Button groups</label>
+              <label class="checkbox"><input type="checkbox" value=""> Combo buttons</label>
+              <label class="checkbox"><input type="checkbox" value=""> Navs, tabs, and pills</label>
+              <label class="checkbox"><input type="checkbox" value=""> Navbar</label>
+              <label class="checkbox"><input type="checkbox" value=""> Breadcrumbs</label>
+              <label class="checkbox"><input type="checkbox" value=""> Pagination</label>
+              <label class="checkbox"><input type="checkbox" value=""> Pager</label>
+              <label class="checkbox"><input type="checkbox" value=""> Thumbnails</label>
+              <label class="checkbox"><input type="checkbox" value=""> Alerts</label>
+              <label class="checkbox"><input type="checkbox" value=""> Progress bars</label>
+            </div>
+            <div class="span2 builder-section">
+              <h3>JS Components</h3>
+              <label class="checkbox"><input type="checkbox" value=""> Tooltips</label>
+              <label class="checkbox"><input type="checkbox" value=""> Popovers</label>
+              <label class="checkbox"><input type="checkbox" value=""> Modals</label>
+              <label class="checkbox"><input type="checkbox" value=""> Dropdowns</label>
+              <label class="checkbox"><input type="checkbox" value=""> Tabs</label>
+              <label class="checkbox"><input type="checkbox" value=""> Collapse</label>
+              <label class="checkbox"><input type="checkbox" value=""> Carousel</label>
+            </div>
+            <div class="span2 builder-section">
+              <h3>Responsive</h3>
+              <label class="checkbox"><input type="checkbox" value=""> Max-width 480px</label>
+              <label class="checkbox"><input type="checkbox" value=""> Max-width 768px</label>
+              <label class="checkbox"><input type="checkbox" value=""> Max-width 1210px</label>
+              <h3>Miscellaneous</h3>
+              <label class="checkbox"><input type="checkbox" value=""> Wells</label>
+              <label class="checkbox"><input type="checkbox" value=""> Close icon</label>
+              <label class="checkbox"><input type="checkbox" value=""> Utilities</label>
+              <label class="checkbox"><input type="checkbox" value=""> Component animations</label>
+            </div>
           </div>
-          <div class="span4">
-            <h3>What's included?</h3>
-            <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
-          </div>
-          <div class="span4">
-            <h3>Learn more</h3>
-            <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
-            <p>Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="span4">
-            <h3>Variables</h3>
-            <p>Managing colors and pixel values in CSS can be a bit of a pain, usually full of copy and paste. Not with LESS though&mdash;assign colors or pixel values as variables and change them once.</p>
-          </div>
-          <div class="span4">
-            <h3>Mixins</h3>
-            <p>Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.</p>
-          </div>
-          <div class="span4">
-            <h3>Operations</h3>
-            <p>Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiple, divide, add, and subtract your way to CSS sanity.</p>
-          </div>
-        </div>
-      </section>
+          <div class="builder-actions">
+            <a class="toggle-all" href="">Reset variables</a>
+            <a class="btn large primary" href="">Next: Customize variables</a>
+          </div>        
+        </div><!-- /tab-pane -->
+        <div class="tab-pane" id="variables">
+          <div class="row">
+            <div class="span3">
+              <h3>Links</h3>
+              <label>@linkColor</label>
+              <input type="text" class="span3" value="#08c">
+              <label>@linkColorHove</label>
+              <input type="text" class="span3" value="darken(@linkColor, 15%)">
+              <h3>Grid system</h3>
+              <label>@gridColumns</label>
+              <input type="text" class="span3" value="">
+              <label>@gridColumnWidth</label>
+              <input type="text" class="span3" value="">
+              <label>@gridGutterWidth</label>
+              <input type="text" class="span3" value="">
+              <label>@siteWidth</label>
+              <input type="text" class="span3" value="">
+              <label>@fluidSidebarWidth</label>
+              <input type="text" class="span3" value="">
+            </div><!-- /span -->
+            <div class="span3">
+              <h3>Typography</h3>
+              <label>@baseFontSize</label>
+              <input type="text" class="span3" value="13px">
+              <label>@baseFontFamily</label>
+              <input type="text" class="span3" value="'Helvetica Neue', Helvetica, Arial, sans-serif">
+              <label>@baseLineHeight</label>
+              <input type="text" class="span3" value="18px">
+              <h3>Forms</h3>
+              <label>@primaryButtonColor</label>
+              <input type="text" class="span3" value="@blue">
+              <label>@placeholderText</label>
+              <input type="text" class="span3" value="@grayLight">
+              <h3>Navbar</h3>
+              <label>@navbarHeight</label>
+              <input type="text" class="span3" value="40px">
+              <label>@navbarBackground</label>
+              <input type="text" class="span3" value="@grayDarker">
+              <label>@navbarBackgroundHighlight</label>
+              <input type="text" class="span3" value="@grayDark">
+            </div><!-- /span -->
+            <div class="span3">
+              <h3>Form states &amp; alerts</h3>
+              <label>@warningText</label>
+              <input type="text" class="span3" value="#c09853">
+              <label>@warningBackground</label>
+              <input type="text" class="span3" value="#fcf8e3">
+              <label>@warningBorder</label>
+              <input type="text" class="span3" value="#f3edd2">
+              <label>@errorText</label>
+              <input type="text" class="span3" value="#b94a48">
+              <label>@errorBackground</label>
+              <input type="text" class="span3" value="#f2dede">
+              <label>@errorBorder</label>
+              <input type="text" class="span3" value="#e9c7c7">
+              <label>@successText</label>
+              <input type="text" class="span3" value="#468847">
+              <label>@successBackground</label>
+              <input type="text" class="span3" value="#dff0d8">
+              <label>@successBorder</label>
+              <input type="text" class="span3" value="#cfe8c4">
+              <label>@infoText</label>
+              <input type="text" class="span3" value="#3a87ad">
+              <label>@infoBackground</label>
+              <input type="text" class="span3" value="#d9edf7">
+              <label>@infoBorder</label>
+              <input type="text" class="span3" value="#bfe1f2">
+            </div><!-- /span -->
+          </div><!-- /row -->
+          <div class="builder-actions">
+            <a class="btn large primary" href="">Next: Build and download</a>
+          </div>        
+        </div><!-- /tab-pane -->
+        <div class="tab-pane" id="download">
+          <h2>And you're set!</h2>
+          <p class="lead">We've compiled your selected CSS and customized variables and have them ready to download as a tidy ZIP file. Choose from compiled or compiled and minified CSS files.</p>
+          <a class="btn large primary">Download CSS</a> <a class="btn large primary">Download minified CSS</a>
+          <hr>
+          <p>Looking to customize your javascript? Head over to the <a href="./javascript.html#overview">Javascript plugins page</a> to build your own Bootstrap JS bundle.</p>
+        </div><!-- /tab-pane -->
+      </div><!-- /tab-content -->
+    </div><!-- /tabbable -->
+  </form>
+
+</section>
 
 
 
-      <!-- VARIABLES
-      ================================================== -->
-      <section id="variables">
-        <div class="page-header">
-          <h1>Variables <small>from variables.less</small></h1>
-        </div>
-
-        <h3>Hyperlinks</h3>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th class="span2">Variable</th>
-              <th>Value</th>
-              <th>Usage</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>@linkColor</code></td>
-              <td>#08c</td>
-              <td>Default link text color</td>
-            </tr>
-            <tr>
-              <td><code>@linkColorHover</code></td>
-              <td><code>darken(@linkColor, 15%)</code></td>
-              <td>Default link text hover color</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="row">
-          <div class="span6">
-            <h3>Grayscale colors</h3>
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th class="span2">Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>@black</code></td>
-                  <td>#000</td>
-                </tr>
-                <tr>
-                  <td><code>@grayDarker</code></td>
-                  <td>#222</td>
-                </tr>
-                <tr>
-                  <td><code>@grayDark</code></td>
-                  <td>#333</td>
-                </tr>
-                <tr>
-                  <td><code>@gray</code></td>
-                  <td>#555</td>
-                </tr>
-                <tr>
-                  <td><code>@grayLight</code></td>
-                  <td>#999</td>
-                </tr>
-                <tr>
-                  <td><code>@grayLighter</code></td>
-                  <td>#eee</td>
-                </tr>
-                <tr>
-                  <td><code>@white</code></td>
-                  <td>#fff</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="span6">
-            <h3>Accent colors</h3>
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th class="span2">Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>@blue</code></td>
-                  <td>#049cdb</td>
-                </tr>
-                <tr>
-                  <td><code>@green</code></td>
-                  <td>#46a546</td>
-                </tr>
-                <tr>
-                  <td><code>@red</code></td>
-                  <td>#9d261d</td>
-                </tr>
-                <tr>
-                  <td><code>@yellow</code></td>
-                  <td>#ffc40d</td>
-                </tr>
-                <tr>
-                  <td><code>@orange</code></td>
-                  <td>#f89406</td>
-                </tr>
-                <tr>
-                  <td><code>@pink</code></td>
-                  <td>#c3325f</td>
-                </tr>
-                <tr>
-                  <td><code>@purple</code></td>
-                  <td>#7a43b6</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div> <!-- /row -->
-        <div class="row">
-          <div class="span6">
-            <h3>Grid system</h3>
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th class="span2">Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>@gridColumns</code></td>
-                  <td>12</td>
-                </tr>
-                <tr>
-                  <td><code>@gridColumnWidth</code></td>
-                  <td>60px</td>
-                </tr>
-                <tr>
-                  <td><code>@gridGutterWidth</code></td>
-                  <td>20px</td>
-                </tr>
-                <tr>
-                  <td><code>@siteWidth</code></td>
-                  <td><code>(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1))</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="span6">
-            <h3>Typography</h3>
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th class="span2">Variable</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>@baseFontSize</code></td>
-                  <td>13px</td>
-                </tr>
-                <tr>
-                  <td><code>@baseFontFamily</code></td>
-                  <td><code>"Helvetica Neue", Helvetica, Arial, sans-serif</code></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td><code>@baseLineHeight</code></td>
-                  <td>18px</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div> <!-- /row -->
-
-        <h3>Components</h3>
-        <div class="row">
-          <div class="span6">
-            <h4>Buttons</h4>
-            <table class="table table-bordered table-striped">
-              <tbody>
-                <tr>
-                  <td class="span3"><code>@primaryButtonColor</code></td>
-                  <td><code>@blue</code></td>
-                </tr>
-              </tbody>
-            </table>
-            <h4>Forms</h4>
-            <table class="table table-bordered table-striped">
-              <tbody>
-                <tr>
-                  <td class="span3"><code>@placeholderText</code></td>
-                  <td><code>@grayLight</code></td>
-                </tr>
-              </tbody>
-            </table>
-            <h4>Navbar</h4>
-            <table class="table table-bordered table-striped">
-              <tbody>
-                <tr>
-                  <td class="span3"><code>@navbarHeight</code></td>
-                  <td>40px</td>
-                </tr>
-                <tr>
-                  <td><code>@navbarBackground</code></td>
-                  <td><code>@grayDarker</code></td>
-                </tr>
-                <tr>
-                  <td><code>@navbarBackgroundHighlight</code></td>
-                  <td><code>@grayDark</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="span6">
-            <h4>Form states and alerts</h4>
-            <table class="table table-bordered table-striped">
-              <tbody>
-                <tr>
-                  <td class="span3"><code>@warningText</code></td>
-                  <td>#f3edd2</td>
-                </tr>
-                <tr>
-                  <td><code>@warningBackground</code></td>
-                  <td>#c09853</td>
-                </tr>
-                <tr>
-                  <td><code>@warningBorder</code></td>
-                  <td>#f3edd2</td>
-                </tr>
-                <tr>
-                  <td><code>@errorText</code></td>
-                  <td>#b94a48</td>
-                </tr>
-                <tr>
-                  <td><code>@errorBackground</code></td>
-                  <td>#f2dede</td>
-                </tr>
-                <tr>
-                  <td><code>@errorBorder</code></td>
-                  <td>#e9c7c7</td>
-                </tr>
-                <tr>
-                  <td><code>@successText</code></td>
-                  <td>#468847</td>
-                </tr>
-                <tr>
-                  <td><code>@successBackground</code></td>
-                  <td>#dff0d8</td>
-                </tr>
-                <tr>
-                  <td><code>@successBorder</code></td>
-                  <td>#cfe8c4</td>
-                </tr>
-                <tr>
-                  <td><code>@infoText</code></td>
-                  <td>#3a87ad</td>
-                </tr>
-                <tr>
-                  <td><code>@infoBackground</code></td>
-                  <td>#d9edf7</td>
-                </tr>
-                <tr>
-                  <td><code>@infoBorder</code></td>
-                  <td>#bfe1f2</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div><!-- /row -->
-
-      </section>
+<!-- BUILT WITH LESS
+================================================== -->
+<section id="builtWith">
+  <div class="page-header">
+    <h1>Built with LESS</h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h3>Why LESS?</h3>
+      <p>Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
+    </div>
+    <div class="span4">
+      <h3>What's included?</h3>
+      <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
+    </div>
+    <div class="span4">
+      <h3>Learn more</h3>
+      <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
+      <p>Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h3>Variables</h3>
+      <p>Managing colors and pixel values in CSS can be a bit of a pain, usually full of copy and paste. Not with LESS though&mdash;assign colors or pixel values as variables and change them once.</p>
+    </div>
+    <div class="span4">
+      <h3>Mixins</h3>
+      <p>Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.</p>
+    </div>
+    <div class="span4">
+      <h3>Operations</h3>
+      <p>Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiple, divide, add, and subtract your way to CSS sanity.</p>
+    </div>
+  </div>
+</section>
 
 
 
-      <!-- MIXINS
-      ================================================== -->
-      <div class="page-header" id="mixins">
-        <h1>Mixins <small>from mixins.less</small></h1>
-      </div>
+<!-- VARIABLES
+================================================== -->
+<section id="variables">
+  <div class="page-header">
+    <h1>Variables <small>from variables.less</small></h1>
+  </div>
+
+  <h3>Hyperlinks</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="span2">Variable</th>
+        <th>Value</th>
+        <th>Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>@linkColor</code></td>
+        <td>#08c</td>
+        <td>Default link text color</td>
+      </tr>
+      <tr>
+        <td><code>@linkColorHover</code></td>
+        <td><code>darken(@linkColor, 15%)</code></td>
+        <td>Default link text hover color</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="span6">
+      <h3>Grayscale colors</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="span2">Variable</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@black</code></td>
+            <td>#000</td>
+          </tr>
+          <tr>
+            <td><code>@grayDarker</code></td>
+            <td>#222</td>
+          </tr>
+          <tr>
+            <td><code>@grayDark</code></td>
+            <td>#333</td>
+          </tr>
+          <tr>
+            <td><code>@gray</code></td>
+            <td>#555</td>
+          </tr>
+          <tr>
+            <td><code>@grayLight</code></td>
+            <td>#999</td>
+          </tr>
+          <tr>
+            <td><code>@grayLighter</code></td>
+            <td>#eee</td>
+          </tr>
+          <tr>
+            <td><code>@white</code></td>
+            <td>#fff</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="span6">
+      <h3>Accent colors</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="span2">Variable</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@blue</code></td>
+            <td>#049cdb</td>
+          </tr>
+          <tr>
+            <td><code>@green</code></td>
+            <td>#46a546</td>
+          </tr>
+          <tr>
+            <td><code>@red</code></td>
+            <td>#9d261d</td>
+          </tr>
+          <tr>
+            <td><code>@yellow</code></td>
+            <td>#ffc40d</td>
+          </tr>
+          <tr>
+            <td><code>@orange</code></td>
+            <td>#f89406</td>
+          </tr>
+          <tr>
+            <td><code>@pink</code></td>
+            <td>#c3325f</td>
+          </tr>
+          <tr>
+            <td><code>@purple</code></td>
+            <td>#7a43b6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> <!-- /row -->
+  <div class="row">
+    <div class="span6">
+      <h3>Grid system</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="span2">Variable</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@gridColumns</code></td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td><code>@gridColumnWidth</code></td>
+            <td>60px</td>
+          </tr>
+          <tr>
+            <td><code>@gridGutterWidth</code></td>
+            <td>20px</td>
+          </tr>
+          <tr>
+            <td><code>@siteWidth</code></td>
+            <td><code>(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1))</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="span6">
+      <h3>Typography</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="span2">Variable</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@baseFontSize</code></td>
+            <td>13px</td>
+          </tr>
+          <tr>
+            <td><code>@baseFontFamily</code></td>
+            <td><code>"Helvetica Neue", Helvetica, Arial, sans-serif</code></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><code>@baseLineHeight</code></td>
+            <td>18px</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> <!-- /row -->
+
+  <h3>Components</h3>
+  <div class="row">
+    <div class="span6">
+      <h4>Buttons</h4>
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <tr>
+            <td class="span3"><code>@primaryButtonColor</code></td>
+            <td><code>@blue</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Forms</h4>
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <tr>
+            <td class="span3"><code>@placeholderText</code></td>
+            <td><code>@grayLight</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Navbar</h4>
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <tr>
+            <td class="span3"><code>@navbarHeight</code></td>
+            <td>40px</td>
+          </tr>
+          <tr>
+            <td><code>@navbarBackground</code></td>
+            <td><code>@grayDarker</code></td>
+          </tr>
+          <tr>
+            <td><code>@navbarBackgroundHighlight</code></td>
+            <td><code>@grayDark</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="span6">
+      <h4>Form states and alerts</h4>
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <tr>
+            <td class="span3"><code>@warningText</code></td>
+            <td>#f3edd2</td>
+          </tr>
+          <tr>
+            <td><code>@warningBackground</code></td>
+            <td>#c09853</td>
+          </tr>
+          <tr>
+            <td><code>@warningBorder</code></td>
+            <td>#f3edd2</td>
+          </tr>
+          <tr>
+            <td><code>@errorText</code></td>
+            <td>#b94a48</td>
+          </tr>
+          <tr>
+            <td><code>@errorBackground</code></td>
+            <td>#f2dede</td>
+          </tr>
+          <tr>
+            <td><code>@errorBorder</code></td>
+            <td>#e9c7c7</td>
+          </tr>
+          <tr>
+            <td><code>@successText</code></td>
+            <td>#468847</td>
+          </tr>
+          <tr>
+            <td><code>@successBackground</code></td>
+            <td>#dff0d8</td>
+          </tr>
+          <tr>
+            <td><code>@successBorder</code></td>
+            <td>#cfe8c4</td>
+          </tr>
+          <tr>
+            <td><code>@infoText</code></td>
+            <td>#3a87ad</td>
+          </tr>
+          <tr>
+            <td><code>@infoBackground</code></td>
+            <td>#d9edf7</td>
+          </tr>
+          <tr>
+            <td><code>@infoBorder</code></td>
+            <td>#bfe1f2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><!-- /row -->
+
+</section>
 
 
 
-      <!-- OPERATIONS
-      ================================================== -->
-      <div class="page-header" id="operations">
-        <h1>Operations</h1>
-      </div>
+<!-- MIXINS
+================================================== -->
+<div class="page-header" id="mixins">
+  <h1>Mixins <small>from mixins.less</small></h1>
+</div>
 
 
 
-      <!-- COMPILING LESS AND BOOTSTRAP
-      ================================================== -->
-      <div class="page-header" id="compiling">
-        <h1>Compiling LESS and Bootstrap</h1>
-      </div>
+<!-- OPERATIONS
+================================================== -->
+<div class="page-header" id="operations">
+  <h1>Operations</h1>
+</div>
+
+
+
+<!-- COMPILING LESS AND BOOTSTRAP
+================================================== -->
+<div class="page-header" id="compiling">
+  <h1>Compiling LESS and Bootstrap</h1>
+</div>
 
 
 

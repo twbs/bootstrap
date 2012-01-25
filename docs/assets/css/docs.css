@@ -179,25 +179,27 @@ section {
   border-right: 0;
 }
 
-/* Fixed subnav on scroll */
-.subnav-fixed {
-  position: fixed;
-  top: 40px;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  border-color: #d5d5d5;
-  border-width: 0 0 1px; /* drop the border on the fixed edges */
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-          border-radius: 0;
-  -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-     -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-          box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-}
-.subnav-fixed .nav {
-  width: 940px;
-  margin: 0 auto;
+/* Fixed subnav on scroll, but only for 940px and up (sorry IE!) */
+@media (min-width: 940px) {
+  .subnav-fixed {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    border-color: #d5d5d5;
+    border-width: 0 0 1px; /* drop the border on the fixed edges */
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+       -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+            box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+  }
+  .subnav-fixed .nav {
+    width: 940px;
+    margin: 0 auto;
+  }
 }
 
 
@@ -439,6 +441,72 @@ section {
 }
 
 
+/* CSS Chop Shop
+-------------------------------------------------- */
+.builder {
+}
+.builder .span2 {
+  width: 160px;
+}
+.builder ul {
+  margin: 0;
+  list-style: none;
+}
+.builder .tabs {
+  margin-right: 0;
+}
+.builder .tabs a {
+  width: 160px;
+  padding: 14px;
+  font-size: 14px;
+}
+.builder .tab-content {
+  padding: 19px;
+  margin-left: 189px;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 0 4px 4px 4px;
+     -moz-border-radius: 0 4px 4px 4px;
+          border-radius: 0 4px 4px 4px;
+}
+
+/* Space out h3s when following a section */
+.builder input + h3,
+.builder .checkbox + h3 {
+  margin-top: 9px;
+}
+
+/* Fields for variables */
+.builder input + h3 {
+  margin-top: 9px;
+}
+.builder #variables label {
+  margin-bottom: 2px;
+  color: #555;
+}
+.builder input[type=text] {
+  margin-bottom: 9px;
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 12px;
+  color: #d14;
+  background-color: #f7f7f9;
+}
+.builder input[type=text]:focus {
+  background-color: #fff;
+}
+
+
+.builder-actions {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #eee;
+}
+.builder-actions .toggle-all {
+  float: right;
+  line-height: 36px;
+}
+
+
+
 /* Misc
 -------------------------------------------------- */
 
@@ -560,14 +628,6 @@ form.well {
     margin-top: 18px;
   }
 
-  /* Subnav */
-  .subnav {
-    background: #fff; /* whole background property since we use a background-image for gradient */
-  }
-  .subnav .nav > li {
-    float: none;
-  }
-
   /* Adjust the jumbotron */
   .jumbotron h1,
   .jumbotron p {
@@ -630,9 +690,13 @@ form.well {
     z-index: auto;
     width: auto;
     height: auto;
+    background: #fff; /* whole background property since we use a background-image for gradient */
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
+  }
+  .subnav .nav > li {
+    float: none;
   }
   .subnav .nav a {
     border: 0;
@@ -683,7 +747,6 @@ form.well {
   .jumbotron h1 {
     font-size: 54px;
   }
-
   .jumbotron h1,
   .jumbotron p {
     margin-right: 0;
