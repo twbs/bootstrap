@@ -959,66 +959,68 @@
   <div class="row">
     <div class="span8">
       <form class="form-horizontal">
-        <legend>{{_i}}Form control states{{/i}}</legend>
-        <div class="control-group">
-          <label class="control-label" for="focusedInput">{{_i}}Focused input{{/i}}</label>
-          <div class="controls">
-            <input class="input-xlarge focused" id="focusedInput" name="focusedInput" type="text" value="{{_i}}This is focused…{{/i}}">
+        <fieldset>
+          <legend>{{_i}}Form control states{{/i}}</legend>
+          <div class="control-group">
+            <label class="control-label" for="focusedInput">{{_i}}Focused input{{/i}}</label>
+            <div class="controls">
+              <input class="input-xlarge focused" id="focusedInput" name="focusedInput" type="text" value="{{_i}}This is focused…{{/i}}">
+            </div>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="disabledInput">{{_i}}Disabled input{{/i}}</label>
-          <div class="controls">
-            <input class="input-xlarge disabled" id="disabledInput" name="disabledInput" type="text" placeholder="{{_i}}Disabled input here…{{/i}}" disabled>
+          <div class="control-group">
+            <label class="control-label" for="disabledInput">{{_i}}Disabled input{{/i}}</label>
+            <div class="controls">
+              <input class="input-xlarge disabled" id="disabledInput" name="disabledInput" type="text" placeholder="{{_i}}Disabled input here…{{/i}}" disabled>
+            </div>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="optionsCheckbox">{{_i}}Disabled checkbox{{/i}}</label>
-          <div class="controls">
-            <label class="checkbox">
-              <input type="checkbox" name="optionsCheckbox" value="option1" disabled>
-              {{_i}}This is a disabled checkbox{{/i}}
-            </label>
+          <div class="control-group">
+            <label class="control-label" for="optionsCheckbox">{{_i}}Disabled checkbox{{/i}}</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckbox" value="option1" disabled>
+                {{_i}}This is a disabled checkbox{{/i}}
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="control-group warning">
-          <label class="control-label" for="inputError">{{_i}}Input with warning{{/i}}</label>
-          <div class="controls">
-            <input type="text" name="inputError">
-            <span class="help-inline">{{_i}}Something may have gone wrong{{/i}}</span>
+          <div class="control-group warning">
+            <label class="control-label" for="inputError">{{_i}}Input with warning{{/i}}</label>
+            <div class="controls">
+              <input type="text" name="inputError">
+              <span class="help-inline">{{_i}}Something may have gone wrong{{/i}}</span>
+            </div>
           </div>
-        </div>
-        <div class="control-group error">
-          <label class="control-label" for="inputError">{{_i}}Input with error{{/i}}</label>
-          <div class="controls">
-            <input type="text" name="inputError">
-            <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
+          <div class="control-group error">
+            <label class="control-label" for="inputError">{{_i}}Input with error{{/i}}</label>
+            <div class="controls">
+              <input type="text" name="inputError">
+              <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
+            </div>
           </div>
-        </div>
-        <div class="control-group success">
-          <label class="control-label" for="inputError">{{_i}}Input with success{{/i}}</label>
-          <div class="controls">
-            <input type="text" name="inputError">
-            <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
+          <div class="control-group success">
+            <label class="control-label" for="inputError">{{_i}}Input with success{{/i}}</label>
+            <div class="controls">
+              <input type="text" name="inputError">
+              <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
+            </div>
           </div>
-        </div>
-        <div class="control-group success">
-          <label class="control-label" for="selectError">{{_i}}Select with success{{/i}}</label>
-          <div class="controls">
-            <select name="selectError">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-            <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
+          <div class="control-group success">
+            <label class="control-label" for="selectError">{{_i}}Select with success{{/i}}</label>
+            <div class="controls">
+              <select name="selectError">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
+            </div>
           </div>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn primary">{{_i}}Save changes{{/i}}</button>
-          <button type="reset" class="btn">{{_i}}Cancel{{/i}}</button>
-        </div>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">{{_i}}Save changes{{/i}}</button>
+            <button type="reset" class="btn">{{_i}}Cancel{{/i}}</button>
+          </div>
+        </fieldset>
       </form>
     </div>
     <div class="span4">
@@ -1043,85 +1045,87 @@
   <div class="row">
     <div class="span8">
       <form class="form-horizontal">
-        <legend>{{_i}}Extending form controls{{/i}}</legend>
-        <div class="control-group">
-          <label class="control-label">{{_i}}Form sizes{{/i}}</label>
-          <div class="controls docs-input-sizes">
-            <input class="span2" type="text" name="" placeholder=".span2">
-            <input class="span3" type="text" name="" placeholder=".span3">
-            <input class="span4" type="text" name="" placeholder=".span4">
-            <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="prependedInput">{{_i}}Prepended text{{/i}}</label>
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on">@</span>
-              <input class="span2" id="prependedInput" name="prependedInput" size="16" type="text">
+        <fieldset>
+          <legend>{{_i}}Extending form controls{{/i}}</legend>
+          <div class="control-group">
+            <label class="control-label">{{_i}}Form sizes{{/i}}</label>
+            <div class="controls docs-input-sizes">
+              <input class="span2" type="text" name="" placeholder=".span2">
+              <input class="span3" type="text" name="" placeholder=".span3">
+              <input class="span4" type="text" name="" placeholder=".span4">
+              <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
             </div>
-            <p class="help-block">{{_i}}Here's some help text{{/i}}</p>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="appendedInput">{{_i}}Appended text{{/i}}</label>
-          <div class="controls">
-            <div class="input-append">
-              <input class="span2" id="appendedInput" name="appendedInput" size="16" type="text">
-              <span class="add-on">.00</span>
+          <div class="control-group">
+            <label class="control-label" for="prependedInput">{{_i}}Prepended text{{/i}}</label>
+            <div class="controls">
+              <div class="input-prepend">
+                <span class="add-on">@</span>
+                <input class="span2" id="prependedInput" name="prependedInput" size="16" type="text">
+              </div>
+              <p class="help-block">{{_i}}Here's some help text{{/i}}</p>
             </div>
-            <p class="help-block">{{_i}}Here's more help text{{/i}}</p>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="inlineCheckboxes">{{_i}}Inline checkboxes{{/i}}</label>
-          <div class="controls">
-            <label class="checkbox inline">
-              <input type="checkbox" name="inlineCheckbox1" value="option1"> 1
-            </label>
-            <label class="checkbox inline">
-              <input type="checkbox" name="inlineCheckbox1" value="option1"> 2
-            </label>
-            <label class="checkbox inline">
-              <input type="checkbox" name="inlineCheckbox1" value="option1"> 3
-            </label>
+          <div class="control-group">
+            <label class="control-label" for="appendedInput">{{_i}}Appended text{{/i}}</label>
+            <div class="controls">
+              <div class="input-append">
+                <input class="span2" id="appendedInput" name="appendedInput" size="16" type="text">
+                <span class="add-on">.00</span>
+              </div>
+              <p class="help-block">{{_i}}Here's more help text{{/i}}</p>
+            </div>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="optionsCheckboxes">{{_i}}Checkboxes{{/i}}</label>
-          <div class="controls">
-            <label class="checkbox">
-              <input type="checkbox" name="optionsCheckboxes" value="option1">
-              {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
-            </label>
-            <label class="checkbox">
-              <input type="checkbox" name="optionsCheckboxes" value="option2">
-              {{_i}}Option two can also be checked and included in form results{{/i}}
-            </label>
-            <label class="checkbox">
-              <input type="checkbox" name="optionsCheckboxes" value="option3">
-              {{_i}}Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results{{/i}}
-            </label>
-            <p class="help-text">{{_i}}<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.{{/i}}</p>
+          <div class="control-group">
+            <label class="control-label" for="inlineCheckboxes">{{_i}}Inline checkboxes{{/i}}</label>
+            <div class="controls">
+              <label class="checkbox inline">
+                <input type="checkbox" name="inlineCheckbox1" value="option1"> 1
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" name="inlineCheckbox1" value="option1"> 2
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" name="inlineCheckbox1" value="option1"> 3
+              </label>
+            </div>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="optionsRadios">{{_i}}Radio buttons{{/i}}</label>
-          <div class="controls">
-            <label class="radio">
-              <input type="radio" checked name="optionsRadios" value="option1">
-              {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
-            </label>
-            <label class="radio">
-              <input type="radio" name="optionsRadios" value="option2">
-              {{_i}}Option two can is something else and selecting it will deselect option one{{/i}}
-            </label>
+          <div class="control-group">
+            <label class="control-label" for="optionsCheckboxes">{{_i}}Checkboxes{{/i}}</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option1">
+                {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option2">
+                {{_i}}Option two can also be checked and included in form results{{/i}}
+              </label>
+              <label class="checkbox">
+                <input type="checkbox" name="optionsCheckboxes" value="option3">
+                {{_i}}Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results{{/i}}
+              </label>
+              <p class="help-text">{{_i}}<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.{{/i}}</p>
+            </div>
           </div>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn primary">{{_i}}Save changes{{/i}}</button>
-          <button type="reset" class="btn">{{_i}}Cancel{{/i}}</button>
-        </div>
+          <div class="control-group">
+            <label class="control-label" for="optionsRadios">{{_i}}Radio buttons{{/i}}</label>
+            <div class="controls">
+              <label class="radio">
+                <input type="radio" checked name="optionsRadios" value="option1">
+                {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
+              </label>
+              <label class="radio">
+                <input type="radio" name="optionsRadios" value="option2">
+                {{_i}}Option two can is something else and selecting it will deselect option one{{/i}}
+              </label>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">{{_i}}Save changes{{/i}}</button>
+            <button type="reset" class="btn">{{_i}}Cancel{{/i}}</button>
+          </div>
+        </fieldset>
       </form>
     </div>
     <div class="span4">

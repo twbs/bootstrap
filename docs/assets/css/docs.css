@@ -125,7 +125,7 @@ section {
   margin-right: 0;
 }
 .subhead h1 {
-  font-size: 45px;
+  font-size: 54px;
 }
 
 /* Subnav */
@@ -168,10 +168,17 @@ section {
   color: #333;
 }
 .subnav .nav .active a {
-  background-color: #e5e5e5;
+  background-color: #e9e9e9;
+  border-right-color: #ddd;
+  border-left: 0;
+  padding-left: 13px;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
+     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
+          box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
 }
 .subnav .nav li:first-child a {
   border-left: 0;
+  padding-left: 12px;
 }
 .subnav .nav li:last-child a {
   border-right: 0;
@@ -464,7 +471,6 @@ section {
   font-family: Menlo, Monaco, "Courier New", monospace;
   font-size: 12px;
   color: #d14;
-  background-color: #f7f7f9;
 }
 .download-builder input[type=text]:focus {
   background-color: #fff;
@@ -473,7 +479,6 @@ section {
 /* Custom, larger checkbox labels */
 .download .checkbox {
   padding: 6px 10px 6px 25px;
-  font-size: 14px;
   color: #555;
   background-color: #f9f9f9;
   -webkit-border-radius: 3px;
@@ -485,10 +490,6 @@ section {
   color: #333;
   background-color: #f5f5f5;
 }
-.download .checkbox input[type=checkbox] {
-  position: relative;
-  top: 1px;
-}
 .download .checkbox small {
   font-size: 12px;
   color: #777;
@@ -496,17 +497,23 @@ section {
 
 /* Giant download button */
 .download-btn {
-  pading: 18px 20px;
-  margin: 45px 0;
+  margin: 36px 0 108px;
+}
+.download p,
+.download h4 {
+  max-width: 50%;
+  margin: 0 auto 18px;
+  color: #999;
   text-align: center;
-  border: 1px solid #eee;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+}
+.download-btn h4 {
+  margin-bottom: 0;
 }
 .btn.xlarge {
-  margin: 36px auto;
-  padding: 14px 24px;
+  display: block;
+  width: auto;
+  padding: 19px 24px;
+  margin-bottom: 27px;
   font-size: 30px;
   text-align: center;
   -webkit-border-radius: 6px;

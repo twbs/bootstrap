@@ -69,11 +69,19 @@
 <!-- Masthead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
-  <h1>Download and customize Bootstrap</h1>
+  <h1>Download and customize</h1>
   <p class="lead"><a href="https://github.com/twitter/bootstrap/zipball/master">Download the full repository</a> or customize your entire Bootstrap build by selecting only the components, javascript plugins, and assets you need.</p>
+  <div class="subnav">
+    <ul class="nav pills">
+      <li><a href="#components">1. Select components</a></li>
+      <li><a href="#variables">2. Modify variables</a></li>
+      <li><a href="#plugins">3. Select jQuery plugins</a></li>
+      <li><a href="#download">4. Build and download</a></li>
+    </ul>
+  </div>
 </header>
 
-<div class="download">
+<section class="download" id="components">
   <div class="page-header">
     <a class="pull-right toggle-all" href="#">Toggle all</a>
     <h1>
@@ -131,7 +139,9 @@
       <label class="checkbox"><input type="checkbox" value=""> Max-width 1210px</label>
     </div><!-- /span -->
   </div><!-- /row -->
+</section>
 
+<section class="download" id="variables">
   <div class="page-header">
     <a class="pull-right toggle-all" href="#">Reset to defaults</a>
     <h1>
@@ -207,7 +217,9 @@
       <input type="text" class="span3" value="#bfe1f2">
     </div><!-- /span -->
   </div><!-- /row -->
+</section>
 
+<section class="download" id="plugins">
   <div class="page-header">
     <a class="pull-right toggle-all" href="#">Toggle all</a>
     <h1>
@@ -273,11 +285,21 @@
       <p class="muted">All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
     </div><!-- /span -->
   </div><!-- /row -->
+</section>
 
+<section class="download" id="download">
+  <div class="page-header">
+    <h1>
+      4. Download
+      <small></small>
+    </h1>
+  </div>
   <div class="download-btn">
     <a class="btn xlarge primary" href="#">Build and Download</a>
+    <h4>What's included?</h4>
+    <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
   </div>
-</div><!-- /download -->
+</section><!-- /download -->
 
      <!-- Footer
       ================================================== -->

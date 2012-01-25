@@ -5,11 +5,19 @@
 <!-- Masthead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
-  <h1>{{_i}}Download and customize Bootstrap{{/i}}</h1>
+  <h1>{{_i}}Download and customize{{/i}}</h1>
   <p class="lead">{{_i}}<a href="https://github.com/twitter/bootstrap/zipball/master">Download the full repository</a> or customize your entire Bootstrap build by selecting only the components, javascript plugins, and assets you need.{{/i}}</p>
+  <div class="subnav">
+    <ul class="nav pills">
+      <li><a href="#components">{{_i}}1. Select components{{/i}}</a></li>
+      <li><a href="#variables">{{_i}}2. Modify variables{{/i}}</a></li>
+      <li><a href="#plugins">{{_i}}3. Select jQuery plugins{{/i}}</a></li>
+      <li><a href="#download">{{_i}}4. Build and download{{/i}}</a></li>
+    </ul>
+  </div>
 </header>
 
-<div class="download">
+<section class="download" id="components">
   <div class="page-header">
     <a class="pull-right toggle-all" href="#">Toggle all</a>
     <h1>
@@ -67,7 +75,9 @@
       <label class="checkbox"><input type="checkbox" value=""> Max-width 1210px</label>
     </div><!-- /span -->
   </div><!-- /row -->
+</section>
 
+<section class="download" id="variables">
   <div class="page-header">
     <a class="pull-right toggle-all" href="#">Reset to defaults</a>
     <h1>
@@ -143,7 +153,9 @@
       <input type="text" class="span3" value="#bfe1f2">
     </div><!-- /span -->
   </div><!-- /row -->
+</section>
 
+<section class="download" id="plugins">
   <div class="page-header">
     <a class="pull-right toggle-all" href="#">Toggle all</a>
     <h1>
@@ -209,8 +221,18 @@
       <p class="muted">{{_i}}All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.{{/i}}</p>
     </div><!-- /span -->
   </div><!-- /row -->
+</section>
 
+<section class="download" id="download">
+  <div class="page-header">
+    <h1>
+      4. Download
+      <small></small>
+    </h1>
+  </div>
   <div class="download-btn">
     <a class="btn xlarge primary" href="#">Build and Download</a>
+    <h4>What's included?</h4>
+    <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
   </div>
-</div><!-- /download -->
+</section><!-- /download -->
