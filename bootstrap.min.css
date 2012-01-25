@@ -312,7 +312,7 @@ i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);backgrou
 .well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #eee;border:1px solid rgba(0, 0, 0, 0.05);-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);}.well blockquote{border-color:#ddd;border-color:rgba(0, 0, 0, 0.15);}
 .fade{-webkit-transition:opacity 0.15s linear;-moz-transition:opacity 0.15s linear;-ms-transition:opacity 0.15s linear;-o-transition:opacity 0.15s linear;transition:opacity 0.15s linear;opacity:0;}.fade.in{opacity:1;}
 .collapse{-webkit-transition:height 0.35s ease;-moz-transition:height 0.35s ease;-ms-transition:height 0.35s ease;-o-transition:height 0.35s ease;transition:height 0.35s ease;position:relative;overflow:hidden;height:0;}.collapse.in{height:auto;}
-.close{float:right;font-size:20px;font-weight:bold;line-height:12px;color:#000000;text-shadow:0 1px 0 #ffffff;filter:alpha(opacity=20);-moz-opacity:0.2;opacity:0.2;}.close:hover{color:#000000;text-decoration:none;filter:alpha(opacity=40);-moz-opacity:0.4;opacity:0.4;cursor:pointer;}
+.close{float:right;font-size:20px;font-weight:bold;line-height:18px;color:#000000;text-shadow:0 1px 0 #ffffff;filter:alpha(opacity=20);-moz-opacity:0.2;opacity:0.2;}.close:hover{color:#000000;text-decoration:none;filter:alpha(opacity=40);-moz-opacity:0.4;opacity:0.4;cursor:pointer;}
 .nav{margin-left:0;margin-bottom:18px;list-style:none;}
 .nav>li>a{display:block;}
 .nav>li>a:hover{text-decoration:none;background-color:#eeeeee;}
@@ -482,7 +482,7 @@ button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner{padding:0;
 .primary .caret,.danger .caret,.info .caret,.success .caret{border-top-color:#ffffff;filter:alpha(opacity=75);-moz-opacity:0.75;opacity:0.75;}
 .alert{padding:8px 35px 8px 14px;margin-bottom:18px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);background-color:#fcf8e3;border:1px solid #f3edd2;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
 .alert,.alert-heading{color:#c09853;}
-.alert .close{*margin-top:3px;position:relative;right:-21px;}
+.alert .close{position:relative;right:-21px;line-height:18px;}
 .alert-success{background-color:#dff0d8;border-color:#cfe8c4;}
 .alert-success,.alert-success .alert-heading{color:#468847;}
 .alert-danger,.alert-error{background-color:#f2dede;border-color:#e9c7c7;}
