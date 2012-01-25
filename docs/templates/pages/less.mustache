@@ -9,174 +9,13 @@
   <p class="lead">{{_i}}Customize and extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap's CSS.{{/i}}</p>
   <div class="subnav">
     <ul class="nav pills">
-      <li><a href="./less.html#builtWith">{{_i}}Built with Less{{/i}}</a></li>
-      <li><a href="./less.html#variables">{{_i}}Variables{{/i}}</a></li>
-      <li><a href="./less.html#mixins">{{_i}}Mixins{{/i}}</a></li>
-      <li><a href="./less.html#compiling">{{_i}}Compiling Bootstrap{{/i}}</a></li>
+      <li><a href="#builtWith">{{_i}}Built with Less{{/i}}</a></li>
+      <li><a href="#variables">{{_i}}Variables{{/i}}</a></li>
+      <li><a href="#mixins">{{_i}}Mixins{{/i}}</a></li>
+      <li><a href="#compiling">{{_i}}Compiling Bootstrap{{/i}}</a></li>
     </ul>
   </div>
 </header>
-
-
-
-<!-- BUILDER
-================================================== -->
-<section id="builder">
-  <div class="page-header">
-    <h1>Chop Shop <small>Customize your build of Bootstrap</small></h1>
-  </div>
-
-  <form class="form-horizontal builder">
-    <div class="tabbable tabs-left">
-      <ul class="nav tabs">
-        <li class="active">
-          <a href="#components" data-toggle="tab">1. Select components</a>
-        </li>
-        <li><a href="#variables" data-toggle="tab">2. Customize variables</a></li>
-        <li><a href="#download" data-toggle="tab">3. Build and download</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="components">
-          <div class="row">
-            <div class="span2 builder-section">
-              <h3>Scaffolding</h3>
-              <label class="checkbox"><input type="checkbox" value=""> CSS reset</label>
-              <label class="checkbox"><input type="checkbox" value=""> Grid system</label>
-              <label class="checkbox"><input type="checkbox" value=""> Layouts</label>
-              <h3>Base CSS</h3>
-              <label class="checkbox"><input type="checkbox" value=""> Headings and body</label>
-              <label class="checkbox"><input type="checkbox" value=""> Code and pre</label>
-              <label class="checkbox"><input type="checkbox" value=""> Labels</label>
-              <label class="checkbox"><input type="checkbox" value=""> Tables</label>
-              <label class="checkbox"><input type="checkbox" value=""> Forms</label>
-              <label class="checkbox"><input type="checkbox" value=""> Buttons</label>
-              <label class="checkbox"><input type="checkbox" value=""> Icons</label>
-            </div>
-            <div class="span2 builder-section">
-              <h3>Components</h3>
-              <label class="checkbox"><input type="checkbox" value=""> Button groups</label>
-              <label class="checkbox"><input type="checkbox" value=""> Combo buttons</label>
-              <label class="checkbox"><input type="checkbox" value=""> Navs, tabs, and pills</label>
-              <label class="checkbox"><input type="checkbox" value=""> Navbar</label>
-              <label class="checkbox"><input type="checkbox" value=""> Breadcrumbs</label>
-              <label class="checkbox"><input type="checkbox" value=""> Pagination</label>
-              <label class="checkbox"><input type="checkbox" value=""> Pager</label>
-              <label class="checkbox"><input type="checkbox" value=""> Thumbnails</label>
-              <label class="checkbox"><input type="checkbox" value=""> Alerts</label>
-              <label class="checkbox"><input type="checkbox" value=""> Progress bars</label>
-            </div>
-            <div class="span2 builder-section">
-              <h3>JS Components</h3>
-              <label class="checkbox"><input type="checkbox" value=""> Tooltips</label>
-              <label class="checkbox"><input type="checkbox" value=""> Popovers</label>
-              <label class="checkbox"><input type="checkbox" value=""> Modals</label>
-              <label class="checkbox"><input type="checkbox" value=""> Dropdowns</label>
-              <label class="checkbox"><input type="checkbox" value=""> Tabs</label>
-              <label class="checkbox"><input type="checkbox" value=""> Collapse</label>
-              <label class="checkbox"><input type="checkbox" value=""> Carousel</label>
-            </div>
-            <div class="span2 builder-section">
-              <h3>Responsive</h3>
-              <label class="checkbox"><input type="checkbox" value=""> Max-width 480px</label>
-              <label class="checkbox"><input type="checkbox" value=""> Max-width 768px</label>
-              <label class="checkbox"><input type="checkbox" value=""> Max-width 1210px</label>
-              <h3>Miscellaneous</h3>
-              <label class="checkbox"><input type="checkbox" value=""> Wells</label>
-              <label class="checkbox"><input type="checkbox" value=""> Close icon</label>
-              <label class="checkbox"><input type="checkbox" value=""> Utilities</label>
-              <label class="checkbox"><input type="checkbox" value=""> Component animations</label>
-            </div>
-          </div>
-          <div class="builder-actions">
-            <a class="toggle-all" href="">Reset variables</a>
-            <a class="btn large primary" href="">Next: Customize variables</a>
-          </div>        
-        </div><!-- /tab-pane -->
-        <div class="tab-pane" id="variables">
-          <div class="row">
-            <div class="span3">
-              <h3>Links</h3>
-              <label>@linkColor</label>
-              <input type="text" class="span3" value="#08c">
-              <label>@linkColorHove</label>
-              <input type="text" class="span3" value="darken(@linkColor, 15%)">
-              <h3>Grid system</h3>
-              <label>@gridColumns</label>
-              <input type="text" class="span3" value="">
-              <label>@gridColumnWidth</label>
-              <input type="text" class="span3" value="">
-              <label>@gridGutterWidth</label>
-              <input type="text" class="span3" value="">
-              <label>@siteWidth</label>
-              <input type="text" class="span3" value="">
-              <label>@fluidSidebarWidth</label>
-              <input type="text" class="span3" value="">
-            </div><!-- /span -->
-            <div class="span3">
-              <h3>Typography</h3>
-              <label>@baseFontSize</label>
-              <input type="text" class="span3" value="13px">
-              <label>@baseFontFamily</label>
-              <input type="text" class="span3" value="'Helvetica Neue', Helvetica, Arial, sans-serif">
-              <label>@baseLineHeight</label>
-              <input type="text" class="span3" value="18px">
-              <h3>Forms</h3>
-              <label>@primaryButtonColor</label>
-              <input type="text" class="span3" value="@blue">
-              <label>@placeholderText</label>
-              <input type="text" class="span3" value="@grayLight">
-              <h3>Navbar</h3>
-              <label>@navbarHeight</label>
-              <input type="text" class="span3" value="40px">
-              <label>@navbarBackground</label>
-              <input type="text" class="span3" value="@grayDarker">
-              <label>@navbarBackgroundHighlight</label>
-              <input type="text" class="span3" value="@grayDark">
-            </div><!-- /span -->
-            <div class="span3">
-              <h3>Form states &amp; alerts</h3>
-              <label>@warningText</label>
-              <input type="text" class="span3" value="#c09853">
-              <label>@warningBackground</label>
-              <input type="text" class="span3" value="#fcf8e3">
-              <label>@warningBorder</label>
-              <input type="text" class="span3" value="#f3edd2">
-              <label>@errorText</label>
-              <input type="text" class="span3" value="#b94a48">
-              <label>@errorBackground</label>
-              <input type="text" class="span3" value="#f2dede">
-              <label>@errorBorder</label>
-              <input type="text" class="span3" value="#e9c7c7">
-              <label>@successText</label>
-              <input type="text" class="span3" value="#468847">
-              <label>@successBackground</label>
-              <input type="text" class="span3" value="#dff0d8">
-              <label>@successBorder</label>
-              <input type="text" class="span3" value="#cfe8c4">
-              <label>@infoText</label>
-              <input type="text" class="span3" value="#3a87ad">
-              <label>@infoBackground</label>
-              <input type="text" class="span3" value="#d9edf7">
-              <label>@infoBorder</label>
-              <input type="text" class="span3" value="#bfe1f2">
-            </div><!-- /span -->
-          </div><!-- /row -->
-          <div class="builder-actions">
-            <a class="btn large primary" href="">Next: Build and download</a>
-          </div>        
-        </div><!-- /tab-pane -->
-        <div class="tab-pane" id="download">
-          <h2>And you're set!</h2>
-          <p class="lead">We've compiled your selected CSS and customized variables and have them ready to download as a tidy ZIP file. Choose from compiled or compiled and minified CSS files.</p>
-          <a class="btn large primary">Download CSS</a> <a class="btn large primary">Download minified CSS</a>
-          <hr>
-          <p>Looking to customize your javascript? Head over to the <a href="./javascript.html#javascript">Javascript plugins page</a> to build your own Bootstrap JS bundle.</p>
-        </div><!-- /tab-pane -->
-      </div><!-- /tab-content -->
-    </div><!-- /tabbable -->
-  </form>
-
-</section>
 
 
 
@@ -189,7 +28,7 @@
   <div class="row">
     <div class="span4">
       <h3>{{_i}}Why LESS?{{/i}}</h3>
-      <p>{{_i}}Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.{{/i}}</p>
+      <p>{{_i}}Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.{{/i}}</p>
     </div>
     <div class="span4">
       <h3>{{_i}}What's included?{{/i}}</h3>
@@ -223,7 +62,7 @@
 ================================================== -->
 <section id="variables">
   <div class="page-header">
-    <h1>{{_i}}Variables <small>from variables.less</small>{{/i}}</h1>
+    <h1>{{_i}}Bootstrap variables <small></small>{{/i}}</h1>
   </div>
 
   <h3>{{_i}}Hyperlinks{{/i}}</h3>
@@ -494,85 +333,8 @@
 <!-- MIXINS
 ================================================== -->
 <div class="page-header" id="mixins">
-  <h1>{{_i}}Mixins <small>from mixins.less</small>{{/i}}</h1>
+  <h1>{{_i}}Bootstrap mixins <small></small>{{/i}}</h1>
 </div>
-
-
-
-<!-- OPERATIONS
-================================================== -->
-<div class="page-header" id="operations">
-  <h1>{{_i}}Operations{{/i}}</h1>
-</div>
-
-
-
-<!-- COMPILING LESS AND BOOTSTRAP
-================================================== -->
-<div class="page-header" id="compiling">
-  <h1>{{_i}}Compiling LESS and Bootstrap{{/i}}</h1>
-</div>
-
-
-
-
-<!-- Using Bootstrap w/ Less
-================================================== -->
-<section id="less">
-<div class="page-header">
-  <h1>{{_i}}Using Bootstrap with Less <small>Supercharge your CSS with variables, mixins, and functions</small>{{/i}}</h1>
-</div>
-<div class="row">
-  <div class="span3">
-    <p>{{_i}}Bootstrap was built with <a href="http://markdotto.com/bootstrap/">Preboot</a>, an open-source pack of mixins and variables to be used in conjunction with <a href="http://lesscss.org" target="_blank">Less</a>, a CSS preprocessor for faster and easier web development.{{/i}}</p>
-    <p>{{_i}}Check out how we used Preboot in Bootstrap and how you can make use of it should you choose to run Less on your next project.{{/i}}</p>
-  </div>
-  <div class="span9">
-    <h2>{{_i}}How to use it{{/i}}</h2>
-    <p>{{_i}}Use this option to make full use of Bootstrap’s Less variables, mixins, and nesting in CSS via javascript in your browser.{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;link rel="stylesheet/less" href="less/bootstrap.less" media="all" /&gt;
-&lt;script src="js/less-1.1.3.min.js"&gt;&lt;/script&gt;</pre>
-<p>{{_i}}Not feeling the .js solution? <a href="http://incident57.com/less" target="_blank">Try the Less Mac app</a> or <a href="http://lesscss.org/#-client-side-usage" target="_blank">use Node.js</a> to compile when you deploy your code.{{/i}}</p>
-
-    <h2>{{_i}}What’s included{{/i}}</h2>
-    <p>{{_i}}Here are some of the highlights of what’s included in Twitter Bootstrap as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.{{/i}}</p>
-    <h3>{{_i}}Variables{{/i}}</h3>
-    <p>{{_i}}Variables in Less are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you’re set.{{/i}}</p>
-<pre class="prettyprint linenums">
-// Links
-@linkColor:         #8b59c2;
-@linkColorHover:    darken(@linkColor, 10);
-
-// Grays
-@black:             #000;
-@grayDark:          lighten(@black, 25%);
-@gray:              lighten(@black, 50%);
-@grayLight:         lighten(@black, 70%);
-@grayLighter:       lighten(@black, 90%);
-@white:             #fff;
-
-// Accent Colors
-@blue:              #08b5fb;
-@green:             #46a546;
-@red:               #9d261d;
-@yellow:            #ffc40d;
-@orange:            #f89406;
-@pink:              #c3325f;
-@purple:            #7a43b6;
-
-// Baseline grid
-@basefont:          13px;
-@baseline:          18px;
-</pre>
-
-<h3>{{_i}}Commenting{{/i}}</h3>
-<p>{{_i}}Less also provides another style of commenting in addition to CSS’s normal <code>/* ... */</code> syntax.{{/i}}</p>
-<pre class="prettyprint linenums">
-// This is a comment
-/* This is also a comment */
-</pre>
-
 <h3>{{_i}}Mixins up the wazoo{{/i}}</h3>
 <p>{{_i}}Mixins are basically includes or partials for CSS, allowing you to combine a block of code into one. They’re great for vendor prefixed properties like <code>box-shadow</code>, cross-browser gradients, font stacks, and more. Below is a sample of the mixins that are included with Bootstrap.{{/i}}</p>
 <h4>{{_i}}Font stacks{{/i}}</h4>
@@ -626,66 +388,55 @@
 }
 </pre>
 
-    <h2 id="compiling">{{_i}}Compiling Less{{/i}}</h2>
-    <p>{{_i}}After modifying the <code>.less</code> files in /lib/, you'll need to recompile them in order to regenerate the bootstrap-*.*.*.css and bootstrap-*.*.*.min.css files. If you're submitting a pull request to GitHub, you must always recompile.{{/i}}</p>
-    <h3>{{_i}}Ways to compile{{/i}}</h3>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th style="width: 120px;">{{_i}}Method{{/i}}</th>
-          <th>{{_i}}Steps{{/i}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{_i}}Node with makefile{{/i}}</td>
-          <td>
-            <p>{{_i}}Install the LESS command line compiler with npm by running the following command:{{/i}}</p>
-            <pre>$ npm install less</pre>
-            <p>{{_i}}Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.{{/i}}</p>
-            <p>{{_i}}Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).{{/i}}</p>
-          </td>
-        </tr>
-          <td>{{_i}}Javascript{{/i}}</td>
-          <td>
-            <p>{{_i}}<a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>&lt;head&gt;</code>.{{/i}}</p>
+
+<!-- COMPILING LESS AND BOOTSTRAP
+================================================== -->
+<section id="compiling">
+  <div class="page-header">
+    <h1>{{_i}}Compiling Bootstrap with LESS{{/i}}</h1>
+  </div>
+  <div class="alert alert-info">
+    {{_i}}<strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.{{/i}}
+  </div>
+  <h2>{{_i}}Tools for compiling{{/i}}</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Node with makefile{{/i}}</h3>
+      <p>{{_i}}Install the LESS command line compiler with npm by running the following command:{{/i}}</p>
+      <pre>$ npm install less</pre>
+      <p>{{_i}}Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.{{/i}}</p>
+      <p>{{_i}}Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).{{/i}}</p>
+    </div><!-- /span4 -->
+    <div class="span4">
+      <h3>{{_i}}Command line{{/i}}</h3>
+      <p>{{_i}}Install the LESS command line tool via Node and run the following command:{{/i}}</p>
+        <pre>$ lessc ./lib/bootstrap.less > bootstrap.css</pre>
+      <p>{{_i}}Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!{{/i}}</p>
+    </div><!-- /span4 -->
+    <div class="span4">
+      <h3>{{_i}}Javascript{{/i}}</h3>
+      <p>{{_i}}<a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>&lt;head&gt;</code>.{{/i}}</p>
 <pre class="prettyprint">
 &lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
 &lt;script src="/path/to/less.js"&gt;&lt;/script&gt;
 </pre>
-            <p>{{_i}}To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.{{/i}}</p>
-          </td>
-        </tr>
-        <tr>
-          <td>{{_i}}Command line{{/i}}</td>
-          <td>
-            <p>{{_i}}Install the LESS command line tool via Node and run the following command:{{/i}}</p>
-              <pre>$ lessc ./lib/bootstrap.less > bootstrap.css</pre>
-            <p>{{_i}}Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!{{/i}}</p>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="http://incident57.com/less/" target="_blank">{{_i}}Unofficial Mac app{{/i}}</a></td>
-          <td>
-            <p>{{_i}}<a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.{{/i}}</p>
-            <p>{{_i}}If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.{{/i}}</p>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="http://crunchapp.net/" target="_blank">Crunch</a></td>
-          <td>{{_i}}Crunch is a great looking LESS editor and compiler built on Adobe Air.{{/i}}</td>
-        </tr>
-        <tr>
-          <td><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></td>
-          <td>{{_i}}Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.{{/i}}</td>
-        </tr>
-        <tr>
-          <td><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></td>
-          <td>{{_i}}Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.{{/i}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
+      <p>{{_i}}To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.{{/i}}</p>
+    </div><!-- /span4 -->
+  </div><!-- /row -->
+  <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Unofficial Mac app{{/i}}</h3>
+      <p>{{_i}}<a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.{{/i}}</p>
+      <p>{{_i}}If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.{{/i}}</p>
+    </div><!-- /span4 -->
+    <div class="span4">
+      <h3>{{_i}}More Mac apps{{/i}}</h3>
+      <h4><a href="http://crunchapp.net/" target="_blank">Crunch</a></h4>
+      <p>{{_i}}Crunch is a great looking LESS editor and compiler built on Adobe Air.{{/i}}</p>
+      <h4><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></h4>
+      <p>{{_i}}Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.{{/i}}</p>
+      <h4><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></h4>
+      <p>{{_i}}Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.{{/i}}</p>
+    </div><!-- /span4 -->
+  </div><!-- /row -->
 </section>

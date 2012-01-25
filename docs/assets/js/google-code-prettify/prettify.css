@@ -28,7 +28,3 @@ ol.linenums li {
   line-height: 18px;
   text-shadow: 0 1px 0 #fff;
 }
-/* Alternate shading for lines */
-li.L1, li.L3, li.L5, li.L7, li.L9 {
-  
-}

@@ -442,68 +442,78 @@ section {
 }
 
 
-/* CSS Chop Shop
+/* Download page
 -------------------------------------------------- */
-.builder {
+.download .page-header {
+  margin-top: 36px;
 }
-.builder .span2 {
-  width: 160px;
-}
-.builder ul {
-  margin: 0;
-  list-style: none;
-}
-.builder .tabs {
-  margin-right: 0;
-}
-.builder .tabs a {
-  width: 160px;
-  padding: 14px;
-  font-size: 14px;
-}
-.builder .tab-content {
-  padding: 19px;
-  margin-left: 189px;
-  border: 1px solid #e5e5e5;
-  -webkit-border-radius: 0 4px 4px 4px;
-     -moz-border-radius: 0 4px 4px 4px;
-          border-radius: 0 4px 4px 4px;
+.page-header .toggle-all {
+  margin-top: 13px;
 }
 
 /* Space out h3s when following a section */
-.builder input + h3,
-.builder .checkbox + h3 {
+.download h3 {
+  margin-bottom: 5px;
+}
+.download-builder input + h3,
+.download-builder .checkbox + h3 {
   margin-top: 9px;
 }
 
 /* Fields for variables */
-.builder input + h3 {
-  margin-top: 9px;
-}
-.builder #variables label {
-  margin-bottom: 2px;
-  color: #555;
-}
-.builder input[type=text] {
+.download-builder input[type=text] {
   margin-bottom: 9px;
   font-family: Menlo, Monaco, "Courier New", monospace;
   font-size: 12px;
   color: #d14;
   background-color: #f7f7f9;
 }
-.builder input[type=text]:focus {
+.download-builder input[type=text]:focus {
   background-color: #fff;
 }
 
-
-.builder-actions {
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid #eee;
+/* Custom, larger checkbox labels */
+.download .checkbox {
+  padding: 6px 10px 6px 25px;
+  font-size: 14px;
+  color: #555;
+  background-color: #f9f9f9;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  cursor: pointer;
 }
-.builder-actions .toggle-all {
-  float: right;
-  line-height: 36px;
+.download .checkbox:hover {
+  color: #333;
+  background-color: #f5f5f5;
+}
+.download .checkbox input[type=checkbox] {
+  position: relative;
+  top: 1px;
+}
+.download .checkbox small {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Giant download button */
+.download-btn {
+  pading: 18px 20px;
+  margin: 45px 0;
+  text-align: center;
+  border: 1px solid #eee;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.btn.xlarge {
+  margin: 36px auto;
+  padding: 14px 24px;
+  font-size: 30px;
+  text-align: center;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
 }
 
 

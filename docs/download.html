@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../bootstrap.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+  
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <ul class="nav">
+            <li class="">
+              <a href="./index.html">Overview</a>
+            </li>
+            <li class="">
+              <a href="./scaffolding.html">Scaffolding</a>
+            </li>
+            <li class="">
+              <a href="./base-css.html">Base CSS</a>
+            </li>
+            <li class="">
+              <a href="./components.html">Components</a>
+            </li>
+            <li class="">
+              <a href="./javascript.html">Javascript plugins</a>
+            </li>
+            <li class="">
+              <a href="./less.html">Using LESS</a>
+            </li>
+            <li class="active">
+              <a href="./download.html">Download</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+<div class="alert">
+  <strong>Heads up!</strong> This page is still under construction and is missing plenty of documentation. Hang tight!
+</div>
+
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <h1>Download and customize Bootstrap</h1>
+  <p class="lead"><a href="https://github.com/twitter/bootstrap/zipball/master">Download the full repository</a> or customize your entire Bootstrap build by selecting only the components, javascript plugins, and assets you need.</p>
+</header>
+
+<div class="download">
+  <div class="page-header">
+    <a class="pull-right toggle-all" href="#">Toggle all</a>
+    <h1>
+      1. Select components
+      <small>Get just the CSS you need</small>
+    </h1>
+  </div>
+  <div class="row download-builder">
+    <div class="span3">
+      <h3>Scaffolding</h3>
+      <label class="checkbox"><input type="checkbox" value=""> CSS reset</label>
+      <label class="checkbox"><input type="checkbox" value=""> Grid system</label>
+      <label class="checkbox"><input type="checkbox" value=""> Layouts</label>
+      <h3>Base CSS</h3>
+      <label class="checkbox"><input type="checkbox" value=""> Headings and body</label>
+      <label class="checkbox"><input type="checkbox" value=""> Code and pre</label>
+      <label class="checkbox"><input type="checkbox" value=""> Labels</label>
+      <label class="checkbox"><input type="checkbox" value=""> Tables</label>
+      <label class="checkbox"><input type="checkbox" value=""> Forms</label>
+      <label class="checkbox"><input type="checkbox" value=""> Buttons</label>
+      <label class="checkbox"><input type="checkbox" value=""> Icons</label>
+    </div><!-- /span -->
+    <div class="span3">
+      <h3>Components</h3>
+      <label class="checkbox"><input type="checkbox" value=""> Button groups</label>
+      <label class="checkbox"><input type="checkbox" value=""> Combo buttons</label>
+      <label class="checkbox"><input type="checkbox" value=""> Navs, tabs, and pills</label>
+      <label class="checkbox"><input type="checkbox" value=""> Navbar</label>
+      <label class="checkbox"><input type="checkbox" value=""> Breadcrumbs</label>
+      <label class="checkbox"><input type="checkbox" value=""> Pagination</label>
+      <label class="checkbox"><input type="checkbox" value=""> Pager</label>
+      <label class="checkbox"><input type="checkbox" value=""> Thumbnails</label>
+      <label class="checkbox"><input type="checkbox" value=""> Alerts</label>
+      <label class="checkbox"><input type="checkbox" value=""> Progress bars</label>
+    </div><!-- /span -->
+    <div class="span3">
+      <h3>JS Components</h3>
+      <label class="checkbox"><input type="checkbox" value=""> Tooltips</label>
+      <label class="checkbox"><input type="checkbox" value=""> Popovers</label>
+      <label class="checkbox"><input type="checkbox" value=""> Modals</label>
+      <label class="checkbox"><input type="checkbox" value=""> Dropdowns</label>
+      <label class="checkbox"><input type="checkbox" value=""> Tabs</label>
+      <label class="checkbox"><input type="checkbox" value=""> Collapse</label>
+      <label class="checkbox"><input type="checkbox" value=""> Carousel</label>
+    </div><!-- /span -->
+    <div class="span3">
+      <h3>Miscellaneous</h3>
+      <label class="checkbox"><input type="checkbox" value=""> Wells</label>
+      <label class="checkbox"><input type="checkbox" value=""> Close icon</label>
+      <label class="checkbox"><input type="checkbox" value=""> Utilities</label>
+      <label class="checkbox"><input type="checkbox" value=""> Component animations</label>
+      <h3>Responsive</h3>
+      <label class="checkbox"><input type="checkbox" value=""> Max-width 480px</label>
+      <label class="checkbox"><input type="checkbox" value=""> Max-width 768px</label>
+      <label class="checkbox"><input type="checkbox" value=""> Max-width 1210px</label>
+    </div><!-- /span -->
+  </div><!-- /row -->
+
+  <div class="page-header">
+    <a class="pull-right toggle-all" href="#">Reset to defaults</a>
+    <h1>
+      2. Modify variables
+      <small>Customize Bootstrap without using a LESS compiler</small>
+    </h1>
+  </div>
+  <div class="row download-builder">
+    <div class="span4">
+      <h3>Links</h3>
+      <label>@linkColor</label>
+      <input type="text" class="span3" value="#08c">
+      <label>@linkColorHover</label>
+      <input type="text" class="span3" value="darken(@linkColor, 15%)">
+      <h3>Grid system</h3>
+      <label>@gridColumns</label>
+      <input type="text" class="span3" value="">
+      <label>@gridColumnWidth</label>
+      <input type="text" class="span3" value="">
+      <label>@gridGutterWidth</label>
+      <input type="text" class="span3" value="">
+      <label>@siteWidth</label>
+      <input type="text" class="span3" value="">
+      <label>@fluidSidebarWidth</label>
+      <input type="text" class="span3" value="">
+    </div><!-- /span -->
+    <div class="span4">
+      <h3>Typography</h3>
+      <label>@baseFontSize</label>
+      <input type="text" class="span3" value="13px">
+      <label>@baseFontFamily</label>
+      <input type="text" class="span3" value="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <label>@baseLineHeight</label>
+      <input type="text" class="span3" value="18px">
+      <h3>Forms</h3>
+      <label>@primaryButtonColor</label>
+      <input type="text" class="span3" value="@blue">
+      <label>@placeholderText</label>
+      <input type="text" class="span3" value="@grayLight">
+      <h3>Navbar</h3>
+      <label>@navbarHeight</label>
+      <input type="text" class="span3" value="40px">
+      <label>@navbarBackground</label>
+      <input type="text" class="span3" value="@grayDarker">
+      <label>@navbarBackgroundHighlight</label>
+      <input type="text" class="span3" value="@grayDark">
+    </div><!-- /span -->
+    <div class="span4">
+      <h3>Form states &amp; alerts</h3>
+      <label>@warningText</label>
+      <input type="text" class="span3" value="#c09853">
+      <label>@warningBackground</label>
+      <input type="text" class="span3" value="#fcf8e3">
+      <label>@warningBorder</label>
+      <input type="text" class="span3" value="#f3edd2">
+      <label>@errorText</label>
+      <input type="text" class="span3" value="#b94a48">
+      <label>@errorBackground</label>
+      <input type="text" class="span3" value="#f2dede">
+      <label>@errorBorder</label>
+      <input type="text" class="span3" value="#e9c7c7">
+      <label>@successText</label>
+      <input type="text" class="span3" value="#468847">
+      <label>@successBackground</label>
+      <input type="text" class="span3" value="#dff0d8">
+      <label>@successBorder</label>
+      <input type="text" class="span3" value="#cfe8c4">
+      <label>@infoText</label>
+      <input type="text" class="span3" value="#3a87ad">
+      <label>@infoBackground</label>
+      <input type="text" class="span3" value="#d9edf7">
+      <label>@infoBorder</label>
+      <input type="text" class="span3" value="#bfe1f2">
+    </div><!-- /span -->
+  </div><!-- /row -->
+
+  <div class="page-header">
+    <a class="pull-right toggle-all" href="#">Toggle all</a>
+    <h1>
+      3. Select jQuery plugins
+      <small>Quickly add only the necessary javascript</small>
+    </h1>
+  </div>
+  <div class="row download-builder">
+    <div class="span4">
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-modal.js">
+        Modals
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-dropdown.js">
+        Dropdowns
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-scrollspy.js">
+        Scrollspy
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-tab.js">
+        Togglable tabs
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-tooltip.js">
+        Tooltips
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-popover.js">
+        Popovers <small>(requires Tooltips)</small>
+      </label>
+    </div><!-- /span -->
+    <div class="span4">
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-alert.js">
+        Alert messages
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-button.js">
+        Buttons
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-collapse.js">
+        Collapse
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-carousel.js">
+        Carousel
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-typeahead.js">
+        Typeahead
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" checked="true" value="bootstrap-transition.js">
+        Transitions <small>(required for any animation)</small>
+      </label>
+    </div><!-- /span -->
+    <div class="span4">
+      <h4 class="muted">Heads up!</h4>
+      <p class="muted">All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
+    </div><!-- /span -->
+  </div><!-- /row -->
+
+  <div class="download-btn">
+    <a class="btn xlarge primary" href="#">Build and Download</a>
+  </div>
+</div><!-- /download -->
+
+     <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </footer>
+
+    </div><!-- /container -->
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
+    <script src="../js/tests/vendor/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="../js/bootstrap-transition.js"></script>
+    <script src="../js/bootstrap-alert.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
+    <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+    <script src="../js/bootstrap-tooltip.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-button.js"></script>
+    <script src="../js/bootstrap-collapse.js"></script>
+    <script src="../js/bootstrap-carousel.js"></script>
+    <script src="../js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/application.js"></script>
+  </body>
+</html>
