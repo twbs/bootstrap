@@ -22,7 +22,7 @@ $(function(){
   window.prettyPrint && prettyPrint()
 
   // table sort example
-  if ($.fn.tableSorter) {
+  if ($.fn.tablesorter) {
     $("#sortTableExample").tablesorter( { sortList: [[ 1, 0 ]] } )
     $(".tablesorter-example").tablesorter({ sortList: [[1,0]] })
   }
