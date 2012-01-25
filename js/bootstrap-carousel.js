@@ -147,6 +147,7 @@
         , $target = $($this.attr('data-target') || $this.attr('href'))
         , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
       $target.carousel(options)
+      e.preventDefault()
     })
   })
 
