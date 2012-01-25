@@ -116,6 +116,27 @@ $(function(){
     })
   })
 
+  // fix sub nav playa
+  var $win = $(window)
+    , $nav = $('.subhead .nav')
+    , navTop = $('.subhead .nav').offset().top - 40
+    , isFixed = 0
+
+  processScroll()
+
+  $win.on('scroll', processScroll)
+
+  function processScroll() {
+    var i, scrollTop = $win.scrollTop()
+    if (scrollTop >= navTop && !isFixed) {
+      isFixed = 1
+      $nav.addClass('subnav-fixed')
+    } else if (scrollTop <= navTop && isFixed) {
+      isFixed = 0
+      $nav.removeClass('subnav-fixed')
+    }
+  }
+
 })
 
 // JS for javascript demos
