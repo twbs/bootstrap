@@ -20,6 +20,12 @@
     .transition(.6s ease-in-out left);
   }
 
+  // Account for jankitude on images
+  .item > img {
+    display: block;
+    line-height: 1;
+  }
+
   .active, 
   .next, 
   .prev { display: block; }

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 25 11:31:57 PST 2012
+ * Date: Wed Jan 25 11:47:25 PST 2012
  */
 article,
 aside,
@@ -2923,6 +2923,10 @@ a.thumbnail:hover {
   -ms-transition: 0.6s ease-in-out left;
   -o-transition: 0.6s ease-in-out left;
   transition: 0.6s ease-in-out left;
+}
+.carousel .item > img {
+  display: block;
+  line-height: 1;
 }
 .carousel .active, .carousel .next, .carousel .prev {
   display: block;

@@ -524,6 +524,7 @@ a.thumbnail:hover{border-color:#0088cc;-webkit-box-shadow:0 1px 4px rgba(0, 105,
 .carousel{position:relative;line-height:1;}
 .carousel-inner{overflow:hidden;width:100%;position:relative;}
 .carousel .item{display:none;position:relative;-webkit-transition:0.6s ease-in-out left;-moz-transition:0.6s ease-in-out left;-ms-transition:0.6s ease-in-out left;-o-transition:0.6s ease-in-out left;transition:0.6s ease-in-out left;}
+.carousel .item>img{display:block;line-height:1;}
 .carousel .active,.carousel .next,.carousel .prev{display:block;}
 .carousel .active{left:0;}
 .carousel .next,.carousel .prev{position:absolute;top:0;width:100%;}
