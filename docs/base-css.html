@@ -181,7 +181,7 @@
       </address>
       <address>
         <strong>Full Name</strong><br>
-        <a mailto="#">first.last@gmail.com</a>
+        <a href="mailto:#">first.last@gmail.com</a>
       </address>
     </div>
     <div class="span4">
@@ -767,63 +767,17 @@
 
 
 
-  <h3>5. Striped table w/ TableSorter.js</h3>
+  <h3>5. Combine them all!</h3>
   <div class="row">
     <div class="span4">
-      <p>Include the <a href="http://jquery.com">jQuery</a> <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin and automatically get clear styles for sorted columns.</p>
-<pre class="prettyprint linenums">
-&lt;script src="jquery.tablesorter.js"&gt;&lt;/script&gt;
-&lt;script &gt;
-  $(function() {
-    $("table#sortTableExample")
-    .tablesorter({
-      sortList: [[1,0]]
-    });
-  });
-&lt;/script&gt;
-&lt;table class="table table-striped"&gt;
-  …
+      <p>Feel free to combine any of the table classes to achieve different looks by utilizing any of the available classes.</p>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+&lt;table class="table table-striped table-bordered table-condensed"&gt;
+  ...
 &lt;/table&gt;</pre>
     </div>
     <div class="span8">
-      <table class="table table-striped tablesorter-example">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th class="yellow">First Name</th>
-            <th class="blue">Last Name</th>
-            <th class="green">Language</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>CSS</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Javascript</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Brosef</td>
-            <td>Stalin</td>
-            <td>HTML</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Styles for the Tablesorter, zebra striping, borders, and condensing may all compound in any variation to fit your needs.</p>
-      <table class="table table-striped table-bordered table-condensed tablesorter-example">
+      <table class="table table-striped table-bordered table-condensed">
         <thead>
           <tr>
             <th>#</th>
