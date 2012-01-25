@@ -52,7 +52,7 @@ input,
 textarea,
 select,
 .uneditable-input {
-  display: block;
+  display: inline-block;
   width: 210px;
   height: @baseLineHeight;
   padding: 4px;
@@ -283,6 +283,7 @@ textarea[readonly] {
   }
   // Style inputs accordingly
   input,
+  select,
   textarea {
     color: @textColor;
     border-color: @borderColor;

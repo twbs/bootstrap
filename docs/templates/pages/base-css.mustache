@@ -835,7 +835,7 @@
     <div class="span9">
       <form class="well">
         <label>{{_i}}Label name{{/i}}</label>
-        <input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}">
+        <input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}"> <span class="help-inline">Associated help text!</span>
         <label class="checkbox">
           <input type="checkbox"> {{_i}}Check me out{{/i}}
         </label>
@@ -999,6 +999,19 @@
           <label class="control-label" for="inputError">{{_i}}Input with success{{/i}}</label>
           <div class="controls">
             <input type="text" name="inputError">
+            <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
+          </div>
+        </fieldset>
+        <fieldset class="control-group success">
+          <label class="control-label" for="selectError">{{_i}}Select with success{{/i}}</label>
+          <div class="controls">
+            <select name="selectError">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
             <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
           </div>
         </fieldset>
