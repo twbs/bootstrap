@@ -150,40 +150,40 @@
     width: 748px;
   }
   .offset1 {
-    margin-left: 64px;
+    margin-left: 84px;
   }
   .offset2 {
-    margin-left: 128px;
+    margin-left: 148px;
   }
   .offset3 {
-    margin-left: 192px;
+    margin-left: 212px;
   }
   .offset4 {
-    margin-left: 256px;
+    margin-left: 276px;
   }
   .offset5 {
-    margin-left: 320px;
+    margin-left: 340px;
   }
   .offset6 {
-    margin-left: 384px;
+    margin-left: 404px;
   }
   .offset7 {
-    margin-left: 448px;
+    margin-left: 468px;
   }
   .offset8 {
-    margin-left: 512px;
+    margin-left: 532px;
   }
   .offset9 {
-    margin-left: 576px;
+    margin-left: 596px;
   }
   .offset10 {
-    margin-left: 640px;
+    margin-left: 660px;
   }
   .offset11 {
-    margin-left: 704px;
+    margin-left: 724px;
   }
   .offset12 {
-    margin-left: 768px;
+    margin-left: 788px;
   }
 }
 /*
@@ -196,11 +196,11 @@
   @siteWidth:         1170px;
 
   // Bring grid mixins to recalculate widths
-  .columns(@columnSpan: 1) {
-    width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
+  .columns(@columns: 1) {
+    width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
   }
-  .offset(@columnOffset: 1) {
-    margin-left: (@gridColumnWidth * @columnOffset) + (@gridGutterWidth * (@columnOffset - 1)) + @gridGutterWidth;
+  .offset(@columns: 1) {
+    margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
   }
 
   .container {
