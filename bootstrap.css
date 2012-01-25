@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Wed Jan 25 10:47:55 PST 2012
+ * Date: Wed Jan 25 11:05:15 PST 2012
  */
 article,
 aside,
@@ -2776,7 +2776,7 @@ a.thumbnail:hover {
 .progress .bar {
   width: 0%;
   height: 18px;
-  color: #fff;
+  color: #ffffff;
   font-size: 12px;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -2957,10 +2957,10 @@ a.thumbnail:hover {
   font-size: 60px;
   font-weight: 100;
   line-height: 30px;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   background: #222222;
-  border: 3px solid #fff;
+  border: 3px solid #ffffff;
   -webkit-border-radius: 23px;
   -moz-border-radius: 23px;
   border-radius: 23px;
