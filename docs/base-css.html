@@ -887,10 +887,12 @@
 
 
   <h2>Example forms <small>using just form controls, no extra markup</small></h2>
+  <h3>Basic form</h3>
   <div class="row">
-    <div class="span4">
-      <h3>Basic form</h3>
+    <div class="span3">
       <p>With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.</p>
+    </div>
+    <div class="span9">
       <form class="well">
         <label>Label name</label>
         <input type="text" class="span3" placeholder="Type something…">
@@ -900,17 +902,25 @@
         <button type="submit" class="btn">Submit</button>
       </form>
     </div>
-    <div class="span4">
-      <h3>Search form</h3>
+  </div> <!-- /row -->
+  <h3>Search form</h3>
+  <div class="row">
+    <div class="span3">
       <p>Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.</p>
+    </div>
+    <div class="span9">
       <form class="well form-search">
         <input type="text" class="input-medium search-query">
         <button type="submit" class="btn">Search</button>
       </form>
     </div>
-    <div class="span4">
-      <h3>Inline form</h3>
+  </div> <!-- /row -->
+  <h3>Inline form</h3>
+  <div class="row">
+    <div class="span3">
       <p>Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.</p>
+    </div>
+    <div class="span9">
       <form class="well form-search">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">

@@ -827,10 +827,12 @@
 
 
   <h2>{{_i}}Example forms <small>using just form controls, no extra markup</small>{{/i}}</h2>
+  <h3>{{_i}}Basic form{{/i}}</h3>
   <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Basic form{{/i}}</h3>
+    <div class="span3">
       <p>{{_i}}With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.{{/i}}</p>
+    </div>
+    <div class="span9">
       <form class="well">
         <label>{{_i}}Label name{{/i}}</label>
         <input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}">
@@ -840,17 +842,25 @@
         <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
       </form>
     </div>
-    <div class="span4">
-      <h3>{{_i}}Search form{{/i}}</h3>
+  </div> <!-- /row -->
+  <h3>{{_i}}Search form{{/i}}</h3>
+  <div class="row">
+    <div class="span3">
       <p>{{_i}}Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.{{/i}}</p>
+    </div>
+    <div class="span9">
       <form class="well form-search">
         <input type="text" class="input-medium search-query">
         <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
       </form>
     </div>
-    <div class="span4">
-      <h3>{{_i}}Inline form{{/i}}</h3>
+  </div> <!-- /row -->
+  <h3>{{_i}}Inline form{{/i}}</h3>
+  <div class="row">
+    <div class="span3">
       <p>{{_i}}Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.{{/i}}</p>
+    </div>
+    <div class="span9">
       <form class="well form-search">
         <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}">
         <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
