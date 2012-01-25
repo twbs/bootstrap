@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Jan 24 20:30:11 PST 2012
+ * Date: Tue Jan 24 20:44:12 PST 2012
  */
 article,
 aside,
@@ -2953,13 +2953,21 @@ a.thumbnail:hover {
   font-size: 60px;
   font-weight: 100;
   line-height: 30px;
-  color: #ccc;
+  color: #fff;
   text-align: center;
-  background: #999999;
-  background: rgba(0, 0, 0, 0.5);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
+  background: #222222;
+  border: 3px solid #fff;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 .carousel-control.right {
   left: auto;
@@ -2968,8 +2976,9 @@ a.thumbnail:hover {
 .carousel-control:hover {
   color: #ffffff;
   text-decoration: none;
-  background: #333333;
-  background: rgba(0, 0, 0, 0.75);
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.9;
+  opacity: 0.9;
 }
 .carousel-caption {
   position: absolute;

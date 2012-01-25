@@ -68,11 +68,13 @@
   font-size: 60px;
   font-weight: 100;
   line-height: 30px;
-  color: #ccc;
+  color: #fff;
   text-align: center;
-  background: @grayLight;
-  background: rgba(0,0,0,.5);
-  .border-radius(20px);
+  background: @grayDarker;
+  border: 3px solid #fff;
+  .border-radius(23px);
+  .opacity(50);
+  .transition(all .2s linear);
 
   // Reposition the right one
   &.right {
@@ -84,8 +86,7 @@
   &:hover {
     color: @white;
     text-decoration: none;
-    background: @grayDark;
-    background: rgba(0,0,0,.75);
+    .opacity(90);
   }
 }
 
