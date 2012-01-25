@@ -145,6 +145,10 @@
             break
         }
 
+        tp.zIndex = this.options.zIndex || parseInt(this.$element.parents().filter(function() {
+          return $(this).css('z-index') != 'auto';
+        }).first().css('z-index'))+10
+
         $tip
           .css(tp)
           .addClass(placement)
@@ -265,6 +269,7 @@
   , trigger: 'hover'
   , title: ''
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , zIndex: null
   }
 
 }( window.jQuery )
