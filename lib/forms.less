@@ -295,17 +295,17 @@ textarea[readonly] {
     border-color: @textColor;
   }
 }
-// Error
-.control-group.error {
-  .formFieldState(#b94a48, #ee5f5b, lighten(#ee5f5b, 30%));
-}
 // Warning
 .control-group.warning {
-  .formFieldState(#c09853, #ccae64, lighten(#CCAE64, 5%));
+  .formFieldState(@warningText, @warningBorder, @warningBackground);
+}
+// Error
+.control-group.error {
+  .formFieldState(@errorText, @errorBorder, @errorBackground);
 }
 // Success
 .control-group.success {
-  .formFieldState(#468847, #57a957, lighten(#57a957, 30%));
+  .formFieldState(@successText, @successBorder, @successBackground);
 }
 
 // HTML5 invalid states

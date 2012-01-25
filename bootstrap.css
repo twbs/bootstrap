@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Tue Jan 24 16:18:56 PST 2012
+ * Date: Tue Jan 24 16:50:16 PST 2012
  */
 article,
 aside,
@@ -701,58 +701,58 @@ textarea[readonly] {
   border-color: #ddd;
   cursor: not-allowed;
 }
-.control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
-  color: #b94a48;
-}
-.control-group.error input, .control-group.error textarea {
-  color: #b94a48;
-  border-color: #ee5f5b;
-}
-.control-group.error input:focus, .control-group.error textarea:focus {
-  border-color: #e9322d;
-  -webkit-box-shadow: 0 0 6px #f8b9b7;
-  -moz-box-shadow: 0 0 6px #f8b9b7;
-  box-shadow: 0 0 6px #f8b9b7;
-}
-.control-group.error .input-prepend .add-on, .control-group.error .input-append .add-on {
-  color: #b94a48;
-  background-color: #fce6e6;
-  border-color: #b94a48;
-}
 .control-group.warning > label, .control-group.warning .help-block, .control-group.warning .help-inline {
   color: #c09853;
 }
 .control-group.warning input, .control-group.warning textarea {
   color: #c09853;
-  border-color: #ccae64;
+  border-color: #f3edd2;
 }
 .control-group.warning input:focus, .control-group.warning textarea:focus {
-  border-color: #be9a3f;
-  -webkit-box-shadow: 0 0 6px #e5d6b1;
-  -moz-box-shadow: 0 0 6px #e5d6b1;
-  box-shadow: 0 0 6px #e5d6b1;
+  border-color: #e8ddaa;
+  -webkit-box-shadow: 0 0 6px #ffffff;
+  -moz-box-shadow: 0 0 6px #ffffff;
+  box-shadow: 0 0 6px #ffffff;
 }
 .control-group.warning .input-prepend .add-on, .control-group.warning .input-append .add-on {
   color: #c09853;
-  background-color: #d2b877;
+  background-color: #fcf8e3;
   border-color: #c09853;
+}
+.control-group.error > label, .control-group.error .help-block, .control-group.error .help-inline {
+  color: #b94a48;
+}
+.control-group.error input, .control-group.error textarea {
+  color: #b94a48;
+  border-color: #e9c7c7;
+}
+.control-group.error input:focus, .control-group.error textarea:focus {
+  border-color: #dba2a2;
+  -webkit-box-shadow: 0 0 6px #ffffff;
+  -moz-box-shadow: 0 0 6px #ffffff;
+  box-shadow: 0 0 6px #ffffff;
+}
+.control-group.error .input-prepend .add-on, .control-group.error .input-append .add-on {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #b94a48;
 }
 .control-group.success > label, .control-group.success .help-block, .control-group.success .help-inline {
   color: #468847;
 }
 .control-group.success input, .control-group.success textarea {
   color: #468847;
-  border-color: #57a957;
+  border-color: #cfe8c4;
 }
 .control-group.success input:focus, .control-group.success textarea:focus {
-  border-color: #458845;
-  -webkit-box-shadow: 0 0 6px #9acc9a;
-  -moz-box-shadow: 0 0 6px #9acc9a;
-  box-shadow: 0 0 6px #9acc9a;
+  border-color: #b1da9f;
+  -webkit-box-shadow: 0 0 6px #ffffff;
+  -moz-box-shadow: 0 0 6px #ffffff;
+  box-shadow: 0 0 6px #ffffff;
 }
 .control-group.success .input-prepend .add-on, .control-group.success .input-append .add-on {
   color: #468847;
-  background-color: #bcddbc;
+  background-color: #dff0d8;
   border-color: #468847;
 }
 input:focus:required:invalid, textarea:focus:required:invalid, select:focus:required:invalid {
@@ -2648,7 +2648,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .alert-error,
 .alert-danger .alert-heading,
 .alert-error .alert-heading {
-  color: #B94A48;
+  color: #b94a48;
 }
 .alert-info {
   background-color: #d9edf7;
