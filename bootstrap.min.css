@@ -208,7 +208,7 @@ table .headerSortUp,table .headerSortDown{background-color:#f7f7f9;text-shadow:0
 table .header:hover:after{visibility:visible;}
 table .headerSortDown:after,table .headerSortDown:hover:after{visibility:visible;filter:alpha(opacity=60);-moz-opacity:0.6;opacity:0.6;}
 table .headerSortUp:after{border-bottom:none;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid #000000;visibility:visible;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;filter:alpha(opacity=60);-moz-opacity:0.6;opacity:0.6;}
-i{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);background-position:0 0;background-repeat:no-repeat;display:inline-block;vertical-align:text-top;width:14px;height:14px;}
+.icon{background-image:url(docs/assets/img/glyphicons-halflings-sprite.png);background-position:0 0;background-repeat:no-repeat;display:inline-block;vertical-align:text-top;width:14px;height:14px;}
 .glass{background-position:0 0;}
 .music{background-position:-24px 0;}
 .search{background-position:-48px 0;}
