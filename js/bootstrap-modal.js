@@ -82,8 +82,7 @@
           var transition = $.support.transition && that.$element.hasClass('fade')
 
           that.$element
-            .appendTo(document.body)
-            .show()
+              .show()
 
           if (transition) {
             that.$element[0].offsetWidth // force reflow
