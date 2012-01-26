@@ -26,3 +26,8 @@ def bootstrap_form(form):
 @register.inclusion_tag("bootstrap_form_wizard.html")
 def bootstrap_form_wizard(form, submit_value):
     return {'form': form, 'submit_value': submit_value}
+
+
+@register.filter
+def form_verb(obj):
+    return "Update" if obj else "Add"
