@@ -28,7 +28,6 @@ legend {
   color: @grayDark;
   border: 0;
   border-bottom: 1px solid #eee;
-  -webkit-margin-collapse: separate;
 }
 
 // Set font for forms
@@ -490,7 +489,8 @@ select:focus:required:invalid {
 .form-horizontal {
   // Legend collapses margin, so we're relegated to padding
   legend + .control-group {
-    padding-top: @baseLineHeight * 1.5;
+    margin-top: @baseLineHeight;
+    -webkit-margin-top-collapse: separate;
   }
   // Increase spacing between groups
   .control-group {

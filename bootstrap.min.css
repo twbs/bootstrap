@@ -91,7 +91,7 @@ pre{display:block;padding:8.5px;margin:0 0 9px;font-size:12px;line-height:18px;b
 pre code{padding:0;background-color:transparent;}
 form{margin:0 0 18px;}
 fieldset{padding:0;margin:0;border:0;}
-legend{display:block;width:100%;padding:0;margin-bottom:27px;font-size:19.5px;line-height:36px;color:#333333;border:0;border-bottom:1px solid #eee;-webkit-margin-collapse:separate;}
+legend{display:block;width:100%;padding:0;margin-bottom:27px;font-size:19.5px;line-height:36px;color:#333333;border:0;border-bottom:1px solid #eee;}
 label,input,button,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:18px;}
 label{display:block;margin-bottom:5px;color:#333333;}
 input,textarea,select,.uneditable-input{display:inline-block;width:210px;height:18px;padding:4px;margin-bottom:9px;font-size:13px;line-height:18px;color:#555555;border:1px solid #ccc;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
@@ -176,7 +176,7 @@ input:focus:required:invalid,textarea:focus:required:invalid,select:focus:requir
 .form-search input,.form-inline input,.form-horizontal input,.form-search textarea,.form-inline textarea,.form-horizontal textarea,.form-search select,.form-inline select,.form-horizontal select,.form-search .help-inline,.form-inline .help-inline,.form-horizontal .help-inline,.form-search .uneditable-input,.form-inline .uneditable-input,.form-horizontal .uneditable-input{display:inline-block;margin-bottom:0;}
 .form-search label,.form-inline label{display:inline-block;}
 .control-group{margin-bottom:9px;}
-.form-horizontal legend+.control-group{padding-top:27px;}
+.form-horizontal legend+.control-group{margin-top:18px;-webkit-margin-top-collapse:separate;}
 .form-horizontal .control-group{margin-bottom:18px;}
 .form-horizontal .control-group>label{float:left;width:140px;padding-top:5px;text-align:right;}
 .form-horizontal .controls{margin-left:160px;}
