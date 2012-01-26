@@ -96,7 +96,8 @@ hr.soften {
 
 /* Masthead (docs home) */
 .masthead {
-  padding: 36px 0 0;
+  padding-top: 36px;
+  margin-bottom: 72px;
 }
 .masthead h1,
 .masthead p {
