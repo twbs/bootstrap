@@ -246,470 +246,456 @@
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -copy"/>
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -copy"/>
 
-    <target name="-basics.production"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -copy"/>
+  <target name="-basics.production"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -copy"/>
 
-    <!-- Target: text -->
-    <target name="-text.dev"
-            depends="-intro,
-                     -copyall"/>
+  <!-- Target: text -->
+  <target name="-text.dev"
+          depends="-intro,
+                   -copyall"/>
 
-    <target name="-text.test"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlclean,
-                     -copy"/>
+  <target name="-text.test"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlclean,
+                   -copy"/>
 
-    <target name="-text.production"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlclean,
-                     -copy"/>
+  <target name="-text.production"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlclean,
+                   -copy"/>
 
-    <!-- Target: buildkit -->
-    <target name="-buildkit.dev"
-            depends="-intro,
-                     -imagespng,
-                     -imagesjpg,
-                     -copyall"/>
+  <!-- Target: buildkit -->
+  <target name="-buildkit.dev"
+          depends="-intro,
+                   -imagespng,
+                   -imagesjpg,
+                   -copyall"/>
 
-    <target name="-buildkit.test"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlbuildkit,
-                     -imagespng,
-                     -imagesjpg,
-                     -copy"/>
+  <target name="-buildkit.test"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlbuildkit,
+                   -imagespng,
+                   -imagesjpg,
+                   -copy"/>
 
-    <target name="-buildkit.production"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlbuildkit,
-                     -imagespng,
-                     -imagesjpg,
-                     -copy"/>
+  <target name="-buildkit.production"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlbuildkit,
+                   -imagespng,
+                   -imagesjpg,
+                   -copy"/>
 
-    <!-- Target: build -->
-    <target name="-build.dev"
-            depends="-intro,
-                     -imagespng,
-                     -imagesjpg,
-                     -copyall"/>
+  <!-- Target: build -->
+  <target name="-build.dev"
+          depends="-intro,
+                   -imagespng,
+                   -imagesjpg,
+                   -copyall"/>
 
-    <target name="-build.test"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlclean,
-                     -imagespng,
-                     -imagesjpg,
-                     -copy"/>
+  <target name="-build.test"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlclean,
+                   -imagespng,
+                   -imagesjpg,
+                   -copy"/>
 
-    <target name="-build.production"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlclean,
-                     -imagespng,
-                     -imagesjpg,
-                     -copy"/>
+  <target name="-build.production"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlclean,
+                   -imagespng,
+                   -imagesjpg,
+                   -copy"/>
 
-    <!-- Target: minify -->
-    <target name="-minify.dev"
-            depends="-intro,
-                     -imagespng,
-                     -imagesjpg,
-                     -copyall"/>
+  <!-- Target: minify -->
+  <target name="-minify.dev"
+          depends="-intro,
+                   -imagespng,
+                   -imagesjpg,
+                   -copyall"/>
 
-    <target name="-minify.test"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlcompress,
-                     -imagespng,
-                     -imagesjpg,
-                     -copy"/>
+  <target name="-minify.test"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlcompress,
+                   -imagespng,
+                   -imagesjpg,
+                   -copy"/>
 
-    <target name="-minify.production"
-            depends="-intro,
-                     -usemin,
-                     -js.all.minify,
-                     -js.main.concat,
-                     -js.mylibs.concat,
-                     -js.scripts.concat,
-                     -css,
-                     -manifest,
-                     -htmlcompress,
-                     -imagespng,
-                     -imagesjpg,
-                     -copy"/>
+  <target name="-minify.production"
+          depends="-intro,
+                   -usemin,
+                   -js.all.minify,
+                   -js.main.concat,
+                   -js.mylibs.concat,
+                   -js.scripts.concat,
+                   -css,
+                   -manifest,
+                   -htmlcompress,
+                   -imagespng,
+                   -imagesjpg,
+                   -copy"/>
 
-    <!--
-    *************************************************
-    * FUNCTION TARGETS                              *
-    *************************************************
-    -->
+  <!--
+  *************************************************
+  * FUNCTION TARGETS                              *
+  *************************************************
+  -->
 
-    <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
-    <!-- This is a private target -->
-        <echo message="Cleaning up previous build directory..."/>
-        <delete dir="./${dir.intermediate}/"/>
-        <delete dir="./${dir.publish}/"/>
-    </target>
+  <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
+  <!-- This is a private target -->
+      <echo message="Cleaning up previous build directory..."/>
+      <delete dir="./${dir.intermediate}/"/>
+      <delete dir="./${dir.publish}/"/>
+  </target>
 
 
-    <target name="-intro" description="(PRIVATE) Kindly inform the developer about the impending magic">
-    <!-- This is a private target -->
+  <target name="-intro" description="(PRIVATE) Kindly inform the developer about the impending magic">
+  <!-- This is a private target -->
 
-        <echo message="====================================================================="/>
-        <echo message="Welcome to the HTML5 Boilerplate Build Script!"/>
-        <echo message=" "/>
-        <echo message="We're going to get your site all ship-shape and ready for prime time."/>
-        <echo message=" "/>
-        <echo message="This should take somewhere between 15 seconds and a few minutes,"/>
-        <echo message="mostly depending on how many images we're going to compress."/>
-        <echo message=" "/>
-        <echo message="Feel free to come back or stay here and follow along."/>
-        <echo message="====================================================================="/>
-        <echo message=" "/>
-        <echo message=" "/>
+      <echo message="====================================================================="/>
+      <echo message="Welcome to the HTML5 Boilerplate Build Script!"/>
+      <echo message=" "/>
+      <echo message="We're going to get your site all ship-shape and ready for prime time."/>
+      <echo message=" "/>
+      <echo message="This should take somewhere between 15 seconds and a few minutes,"/>
+      <echo message="mostly depending on how many images we're going to compress."/>
+      <echo message=" "/>
+      <echo message="Feel free to come back or stay here and follow along."/>
+      <echo message="====================================================================="/>
+      <echo message=" "/>
+      <echo message=" "/>
 
-    </target>
+  </target>
 
-    <target name="-mkdirs" depends="-clean">
-      <if>
-          <or>
-            <equals arg1="${dir.publish}" arg2="."/>
-            <equals arg1="${dir.publish}" arg2=".."/>
-            <equals arg1="${dir.publish}" arg2="/"/>
-            <equals arg1="${dir.publish}" arg2="./"/>
-            <equals arg1="${dir.publish}" arg2="../"/>
-          </or>
-          <then>
-            <fail message="Your dir.publish folder is set to ${dir.publish} which could delete your entire site or worse. Change it in project.properties"/>
-          </then>
-          <else>
-            <echo message="Creating directory structure... ${dir.publish}"/>
+  <target name="-mkdirs" depends="-clean">
+    <if>
+        <or>
+          <equals arg1="${dir.publish}" arg2="."/>
+          <equals arg1="${dir.publish}" arg2=".."/>
+          <equals arg1="${dir.publish}" arg2="/"/>
+          <equals arg1="${dir.publish}" arg2="./"/>
+          <equals arg1="${dir.publish}" arg2="../"/>
+        </or>
+        <then>
+          <fail message="Your dir.publish folder is set to ${dir.publish} which could delete your entire site or worse. Change it in project.properties"/>
+        </then>
+        <else>
+          <echo message="Creating directory structure... ${dir.publish}"/>
 
-            <mkdir dir="${dir.intermediate}"/>
-            <copy todir="${dir.intermediate}" includeEmptyDirs="true">
+          <mkdir dir="${dir.intermediate}"/>
+          <copy todir="${dir.intermediate}" includeEmptyDirs="true">
+              <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                  <type type="dir"/>
+              </fileset>
+          </copy>
+            <mkdir dir="${dir.publish}"/>
+            <copy todir="${dir.publish}" includeEmptyDirs="true">
                 <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
                     <type type="dir"/>
                 </fileset>
             </copy>
-              <mkdir dir="${dir.publish}"/>
-              <copy todir="${dir.publish}" includeEmptyDirs="true">
-                  <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                      <type type="dir"/>
-                  </fileset>
-              </copy>
-          </else>
-      </if>
-    </target>
+        </else>
+    </if>
+  </target>
 
-    <target name="-copy" depends="-mkdirs">
-    <!-- This is a private target -->
+  <target name="-copy" depends="-mkdirs">
+  <!-- This is a private target -->
 
-        <echo message="Copying over new files..."/>
-        <copy todir="./${dir.publish}">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                <!-- exclude files that are superseded by optimized versions with different names -->
-                <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
-                <exclude name="${dir.js}/**/*.js"/>
-                <exclude name="${dir.js.modules}"/>
-                <exclude name="${dir.css}/**/*.css"/>
-                <exclude name="${file.manifest}"/>
-            </fileset>
-        </copy>
-
-        <echo message="A copy of all new non-dev files are now in: ./${dir.publish}."/>
-    </target>
-
-    <target name="-copyall" depends="-mkdirs">
-    <!-- This is a private target -->
-	<!-- Copies all files, including .css and .js files for when you aren't minifying-->
-        <echo message="Copying over all files..."/>
-
-        <copy todir="./${dir.publish}">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                <exclude name="${file.manifest}"/>
-            </fileset>
-        </copy>
-
-        <echo message="A copy of all non-dev files are now in: ./${dir.publish}."/>
-    </target>
-
-    <!-- JAVASCRIPT -->
-    <target name="-js.main.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js">
-        <echo message="Concatenating Main JS scripts..."/>
-        <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
-            <fileset dir="./${dir.intermediate}/">
-                <include name="${dir.js.main}/plugins.js"/>
-                <include name="${dir.js.main}/${file.root.script}"/>
-            </fileset>
-        </concat>
-    </target>
-
-    <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
-        <mkdir dir="./${dir.intermediate}/${dir.js.mylibs}"/>
-
-        <echo message="Concatenating JS libraries"/>
-        <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.js}/mylibs-concat.js" overwrite="no">
-            <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
-                includes="**/*.js"
-                excludes="${file.js.bypass}"/>
-
-        </concat>
-    </target>
-
-
-    <target name="-js.scripts.concat" depends="-js.main.concat,-js.mylibs.concat" if="build.concat.scripts">
-        <echo message="Concatenating library file with main script file"/>
-        <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
-            <fileset dir="./${dir.intermediate}/${dir.js}/">
-                <include name="mylibs-concat.js"/>
-                <include name="scripts-concat.js"/>
-            </fileset>
-        </concat>
-
-        <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.fullsha" />
-        <propertyregex property="scripts.sha" input="${scripts.fullsha}" regexp=".{${hash.length}}" select="\0" />
-        <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
-        <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${dir.js}/${scripts.sha}.js" />
-		
-		<!-- cachebust modules directory name -->
-        <!-- Concatinate only to generate checksum. Concatinated file not actually published. -->
-        <if>
-            <available file="./${dir.intermediate}/${dir.js.modules}"/>
-            <then>
-				<concat destfile="./${dir.intermediate}/${dir.js.modules}/_all.js" overwrite="no">
-					<fileset dir="./${dir.intermediate}/${dir.js.modules}/">
-						<include name="*.js"/>
-					</fileset>
-				</concat>
-				<if>
-					<available file="./${dir.intermediate}/${dir.js.modules}/_all.js"/>
-					<then>
-						<checksum file="${dir.intermediate}/${dir.js.modules}/_all.js" algorithm="sha" property="modules.fullsha" />
-						<propertyregex property="modules.sha" input="${modules.fullsha}" regexp=".{${hash.length}}" select="\0" />
-						<property name="modules.js.dir" value="${dir.js}/${modules.sha}" />
-						<move file="${dir.publish}/${dir.js.modules}/" tofile="${dir.publish}/${dir.js}/${modules.sha}/" />
-					</then>
-				</if>
-			</then>
-		</if>
-    </target>
-
-
-    <target name="-js.all.minify" depends="-mkdirs" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
-        <echo message="Minifying scripts"/>
-        <copy todir="${dir.intermediate}/">
-            <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js"/>
-        </copy>
-        <apply executable="java" parallel="false">
-            <fileset dir="${dir.source}/" excludes="${dir.js.mylibs}/${file.js.bypass}, ${dir.js}/**/*.min.js" includes="${dir.js}/**/*.js">
-            </fileset>
-            <arg line="-jar"/>
-            <arg path="./${dir.build.tools}/closure-compiler-v1346.jar"/>
-            <arg line="--js"/>
-			<srcfile/>
-			<arg line="--compilation_level" />
-			 <arg value="${scripts.compilation.level}" />
-			 <arg line="--warning_level" />
-			 <arg value="${scripts.compilation.warninglevel}" />
-			 <arg line="--js_output_file" />
-            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/*.js"/>
-            <targetfile/>
-        </apply>
-
-        <!-- at this point all js files are minified with their original names -->
-
-        <copy todir="${dir.publish}/">
-          <fileset dir="${dir.intermediate}/">
-              <include name="${dir.js}/**/*.js"/>
-              <exclude name="${dir.js.mylibs}/**/*.js"/>
-              <exclude name="${dir.js}/scripts-concat.js"/>
-              <exclude name="${dir.js}/mylibs-concat.js"/>
-              <exclude name="${dir.js}/scripts-concat.min.js"/>
-              <exclude name="${dir.js}/plugins.js"/>
-              <exclude name="${dir.js}/${file.root.script}"/>
+      <echo message="Copying over new files..."/>
+      <copy todir="./${dir.publish}">
+          <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+              <!-- exclude files that are superseded by optimized versions with different names -->
+              <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
+              <exclude name="${dir.js}/**/*.js"/>
+              <exclude name="${dir.js.modules}"/>
+              <exclude name="${dir.css}/**/*.css"/>
+              <exclude name="${file.manifest}"/>
           </fileset>
-        </copy>
-        <copy todir="${dir.publish}/${dir.js.mylibs}/">
-            <fileset dir="${dir.source}/${dir.js.mylibs}/"
-            includes="${file.js.bypass}"/>
-        </copy>
-    </target>
+      </copy>
+
+      <echo message="A copy of all new non-dev files are now in: ./${dir.publish}."/>
+  </target>
+
+  <target name="-copyall" depends="-mkdirs">
+  <!-- This is a private target -->
+<!-- Copies all files, including .css and .js files for when you aren't minifying-->
+      <echo message="Copying over all files..."/>
+
+      <copy todir="./${dir.publish}">
+          <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+              <exclude name="${file.manifest}"/>
+          </fileset>
+      </copy>
+
+      <echo message="A copy of all non-dev files are now in: ./${dir.publish}."/>
+  </target>
+
+  <!-- JAVASCRIPT -->
+  <target name="-js.main.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js">
+      <echo message="Concatenating Main JS scripts..."/>
+      <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
+      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
+          <fileset dir="./${dir.intermediate}/">
+              <include name="${dir.js}/plugins.js"/>
+              <include name="${dir.js}/${file.root.script}"/>
+          </fileset>
+      </concat>
+  </target>
+
+  <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
+      <echo message="Concatenating JS libraries"/>
+      <concat destfile="./${dir.intermediate}/${dir.js}/otherscripts-concat.js" overwrite="no">
+        <fileset dir="./${dir.intermediate}/${dir.js}" excludes="${file.js.bypass}, ${slug.libs}/*">
+          <exclude name="${file.root.script}"/>
+          <exclude name="plugins.js"/>
+          <exclude name="scripts-concat.js"/>
+        </fileset>
+      </concat>
+
+  </target>
 
 
-    <!-- HTML -->
-    <target name="-usemin" depends="-js.scripts.concat,-css" description="(PRIVATE) Replaces references to non-minified scripts">
-        <echo message="Switching to minified js files..."/>
+  <target name="-js.scripts.concat" depends="-js.main.concat,-js.mylibs.concat" if="build.concat.scripts">
+      <echo message="Concatenating library file with main script file"/>
+      <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
+      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
+        <fileset dir="./${dir.intermediate}/${dir.js}/">
+              <include name="scripts-concat.js"/>
+              <include name="otherscripts-concat.js"/>
+          </fileset>
+      </concat>
 
-        <!-- Changes to style.css or scripts.js mean that the html must be updated, and it will be.
-             Unfortunately, the html we want to update may not have the tags we want to replace(because it was updated before).
-             This outofdate check ensures that the html files have the markers for us to replace. -->
-        <outofdate property="needhtmlrefresh">
-            <sourcefiles>
-                <fileset dir="${dir.publish}" includes="${style.css}, ${scripts.js}"/>
-            </sourcefiles>
-            <targetfiles>
-                <fileset dir="${dir.intermediate}" includes="${page-files}"/>
-            </targetfiles>
-        </outofdate>
-
-        <!-- force the files to be overwritten with older copies from source if needhtmlrefresh is set -->
-        <copy todir="${dir.intermediate}" overwrite="${needhtmlrefresh}">
-            <fileset dir="${dir.source}" includes="${page-files}"/>
-        </copy>
-
-        <!-- switch from a regular jquery to minified -->
-        <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" flags="g">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
-        </replaceregexp>
-        <!-- switch any google CDN reference to minified -->
-        <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" flags="g">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
-        </replaceregexp>
-
-        <echo>Kill off those versioning flags: ?v=2</echo>
-        <replaceregexp match='\?v=\d+">' replace='">' flags="g">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
-        </replaceregexp>
-
-        <echo>Remove favicon.ico reference if it is pointing to the root</echo>
-        <replaceregexp match="&lt;link rel=[&quot;']shortcut icon[&quot;'] href=[&quot;']/favicon\.ico[&quot;']&gt;" replace="">
-            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
-        </replaceregexp>
-        <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
-        <replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
-            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
-        </replace>
-        -->
-
-        <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
-        <!-- style.css replacement handled as a replacetoken above -->
-        <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*&lt;script.*src=['&quot;]?(.*)/${file.root.script}(?:\?.*)?['&quot;]?\s*&gt;\s*&lt;/script&gt;[\d\w\s\W]*&lt;!-- end ((scripts)|(concatenated and minified scripts))\s*--&gt;"
-        	replace="&lt;script defer src='\1/${scripts.sha}.js\'&gt;&lt;/script&gt;" flags="m">
-            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
-        </replaceregexp>
-        <!--[! use comments like this one to avoid having them get minified -->
-
-        <echo message="Update the HTML to reference our name-mangled modules directory"/>
-        <replaceregexp match="&lt;script.*src=['&quot;]?${dir.js.modules}/(.*)['&quot;]\s*&gt;"
-        	replace="&lt;script defer src='${modules.js.dir}/\1'&gt;" flags="mg">
-            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
-        </replaceregexp>
-
-        <echo message="Updating the HTML with the new css filename: ${style.css}"/>
-
-        <replaceregexp match="&lt;link rel=['&quot;]?stylesheet['&quot;]?\s+href=['&quot;]?(.*)/${file.root.stylesheet}(?:\?.*)?['&quot;]?\s*/?&gt;"
-        	replace="&lt;link rel='stylesheet' href='\1/${css.sha}.css'&gt;" flags="m">
-            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
-        </replaceregexp>
-
-    </target>
+      <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.fullsha" />
+      <propertyregex property="scripts.sha" input="${scripts.fullsha}" regexp=".{${hash.length}}" select="\0" />
+      <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
+      <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${dir.js}/${scripts.sha}.js" />
+  
+  <!-- cachebust modules directory name -->
+      <!-- Concatinate only to generate checksum. Concatinated file not actually published. -->
+      <if>
+          <available file="./${dir.intermediate}/${dir.js.modules}"/>
+          <then>
+      <concat destfile="./${dir.intermediate}/${dir.js.modules}/_all.js" overwrite="no">
+        <fileset dir="./${dir.intermediate}/${dir.js.modules}/">
+          <include name="*.js"/>
+        </fileset>
+      </concat>
+      <if>
+        <available file="./${dir.intermediate}/${dir.js.modules}/_all.js"/>
+        <then>
+          <checksum file="${dir.intermediate}/${dir.js.modules}/_all.js" algorithm="sha" property="modules.fullsha" />
+          <propertyregex property="modules.sha" input="${modules.fullsha}" regexp=".{${hash.length}}" select="\0" />
+          <property name="modules.js.dir" value="${dir.js}/${modules.sha}" />
+          <move file="${dir.publish}/${dir.js.modules}/" tofile="${dir.publish}/${dir.js}/${modules.sha}/" />
+        </then>
+      </if>
+    </then>
+  </if>
+  </target>
 
 
-    <target name="-manifest" depends="-usemin">
-        <if>
-            <isset property="file.manifest" />
-            <then>
-                <echo message="copying a fresh ${dir.build}/config/${file.manifest} to /${dir.intermediate}"/>
+  <target name="-js.all.minify" depends="-mkdirs" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
+      <echo message="Minifying scripts"/>
+      <copy todir="${dir.intermediate}/${dir.js}">
+        <fileset dir="${dir.source}/${dir.js}" includes="${file.js.bypass}, **/*.min.js"/>
+      </copy>
+      <apply executable="java" parallel="false">
+        <fileset dir="${dir.source}/${dir.js}" excludes="${file.js.bypass}, **/*.min.js" includes="**/*.js">
+          <exclude name="${dir.js}/otherscripts-concat.js"/>
+          <exclude name="${dir.js}/scripts-concat.js"/>
+        </fileset>          
+          <arg line="-jar"/>
+          <arg path="./${dir.build.tools}/closure-compiler-v1346.jar"/>
+          <arg line="--js"/>
+    <srcfile/>
+    <arg line="--compilation_level" />
+     <arg value="${scripts.compilation.level}" />
+     <arg line="--warning_level" />
+     <arg value="${scripts.compilation.warninglevel}" />
+     <arg line="--js_output_file" />
+     <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/${dir.js}/*.js"/>
+          <targetfile/>
+      </apply>
 
-                <delete file="${dir.intermediate}/${file.manifest}"/>
-                <copy file="${dir.build}/config/${file.manifest}" tofile="${dir.intermediate}/${file.manifest}" />
+      <!-- at this point all js files are minified with their original names -->
 
-                <echo message="manifest creation" />
+      <copy todir="${dir.publish}/${dir.js}">
+        <fileset dir="${dir.intermediate}/${dir.js}" includes="${file.js.bypass}">
+            <exclude name="scripts-concat.js"/>
+            <exclude name="scripts-concat.min.js"/>
+            <exclude name="otherscripts-concat.js"/>
+            <exclude name="plugins.js"/>
+            <exclude name="${file.root.script}"/>
+            <include name="${slug.lib}/*"/>
+        </fileset>
+      </copy>
+  </target>
 
-                <!-- update version -->
-                <echo message="Updating the site.manifest version date to today, current time"/>
-                <tstamp>
-                    <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss"/>
-                </tstamp>
-                <replaceregexp match="# version .+" replace="# version ${TODAY}" file="${dir.intermediate}/${file.manifest}"/>
 
-                <!-- add html files -->
-                <echo message="Updating the site.manifest with html files: ${page-files}"/>
-                <for list="${page-files}" param="file" delimiter="," trim="true">
-                    <sequential>
-                        <replaceregexp match="# html files" replace="# html files${line.separator}@{file}" file="${dir.intermediate}/${file.manifest}" />
-                    </sequential>
-                </for>
+  <!-- HTML -->
+  <target name="-usemin" depends="-js.scripts.concat,-css" description="(PRIVATE) Replaces references to non-minified scripts">
+      <echo message="Switching to minified js files..."/>
 
-                <!-- add stylesheet files -->
-                <echo message="Updating the site.manifest with the new css filename: ${style.css}"/>
-                <replace token="# css files" value="# css files${line.separator}${style.css}" file="${dir.intermediate}/${file.manifest}" />
+      <!-- Changes to style.css or scripts.js mean that the html must be updated, and it will be.
+           Unfortunately, the html we want to update may not have the tags we want to replace(because it was updated before).
+           This outofdate check ensures that the html files have the markers for us to replace. -->
+      <outofdate property="needhtmlrefresh">
+          <sourcefiles>
+              <fileset dir="${dir.publish}" includes="${style.css}, ${scripts.js}"/>
+          </sourcefiles>
+          <targetfiles>
+              <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+          </targetfiles>
+      </outofdate>
 
-                <!-- add javascript files -->
-                <echo message="Updating the site.manifest with the new js filename: ${scripts.js}"/>
-                <for param="file">
-                    <path>
-                        <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
-                            includes="${file.js.bypass}" />
-                    </path>
-                    <sequential>
-                        <basename property="filename.@{file}" file="@{file}" />
-                        <replaceregexp match="# js files" replace="# js files${line.separator}${dir.js.mylibs}/${filename.@{file}}" file="${dir.intermediate}/${file.manifest}" />
-                    </sequential>
-                </for>
-                <for param="file">
+      <!-- force the files to be overwritten with older copies from source if needhtmlrefresh is set -->
+      <copy todir="${dir.intermediate}" overwrite="${needhtmlrefresh}">
+          <fileset dir="${dir.source}" includes="${page-files}"/>
+      </copy>
+
+      <!-- switch from a regular jquery to minified -->
+      <replaceregexp match="jquery-(\d|\d(\.\d)+)\.js" replace="jquery-\1.min.js" flags="g">
+          <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+      </replaceregexp>
+      <!-- switch any google CDN reference to minified -->
+      <replaceregexp match="(\d|\d(\.\d)+)\/jquery\.js" replace="\1/jquery.min.js" flags="g">
+          <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+      </replaceregexp>
+
+      <echo>Kill off those versioning flags: ?v=2</echo>
+      <replaceregexp match='\?v=\d+">' replace='">' flags="g">
+          <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+      </replaceregexp>
+
+      <echo>Remove favicon.ico reference if it is pointing to the root</echo>
+      <replaceregexp match="&lt;link rel=[&quot;']shortcut icon[&quot;'] href=[&quot;']/favicon\.ico[&quot;']&gt;" replace="">
+          <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+      </replaceregexp>
+      <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
+      <replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
+          <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+      </replace>
+      -->
+
+      <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
+      <!-- style.css replacement handled as a replacetoken above -->
+      <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*&lt;script.*src=['&quot;]?(.*)/${file.root.script}(?:\?.*)?['&quot;]?\s*&gt;\s*&lt;/script&gt;[\d\w\s\W]*&lt;!-- end ((scripts)|(concatenated and minified scripts))\s*--&gt;"
+        replace="&lt;script defer src='\1/${scripts.sha}.js\'&gt;&lt;/script&gt;" flags="m">
+          <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+      </replaceregexp>
+      <!--[! use comments like this one to avoid having them get minified -->
+
+      <echo message="Update the HTML to reference our name-mangled modules directory"/>
+      <replaceregexp match="&lt;script.*src=['&quot;]?${dir.js.modules}/(.*)['&quot;]\s*&gt;"
+        replace="&lt;script defer src='${modules.js.dir}/\1'&gt;" flags="mg">
+          <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+      </replaceregexp>
+
+      <echo message="Updating the HTML with the new css filename: ${style.css}"/>
+
+      <replaceregexp match="&lt;link rel=['&quot;]?stylesheet['&quot;]?\s+href=['&quot;]?(.*)/${file.root.stylesheet}(?:\?.*)?['&quot;]?\s*/?&gt;"
+        replace="&lt;link rel='stylesheet' href='\1/${css.sha}.css'&gt;" flags="m">
+          <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+      </replaceregexp>
+
+  </target>
+
+
+  <target name="-manifest" depends="-usemin">
+      <if>
+          <isset property="file.manifest" />
+          <then>
+              <echo message="copying a fresh ${dir.build}/config/${file.manifest} to /${dir.intermediate}"/>
+
+              <delete file="${dir.intermediate}/${file.manifest}"/>
+              <copy file="${dir.build}/config/${file.manifest}" tofile="${dir.intermediate}/${file.manifest}" />
+
+              <echo message="manifest creation" />
+
+              <!-- update version -->
+              <echo message="Updating the site.manifest version date to today, current time"/>
+              <tstamp>
+                  <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss"/>
+              </tstamp>
+              <replaceregexp match="# version .+" replace="# version ${TODAY}" file="${dir.intermediate}/${file.manifest}"/>
+
+              <!-- add html files -->
+              <echo message="Updating the site.manifest with html files: ${page-files}"/>
+              <for list="${page-files}" param="file" delimiter="," trim="true">
+                  <sequential>
+                      <replaceregexp match="# html files" replace="# html files${line.separator}@{file}" file="${dir.intermediate}/${file.manifest}" />
+                  </sequential>
+              </for>
+
+              <!-- add stylesheet files -->
+              <echo message="Updating the site.manifest with the new css filename: ${style.css}"/>
+              <replace token="# css files" value="# css files${line.separator}${style.css}" file="${dir.intermediate}/${file.manifest}" />
+
+              <!-- add javascript files -->
+              <echo message="Updating the site.manifest with the new js filename: ${scripts.js}"/>
+              <for param="file">
                     <path>
                         <fileset dir="./${dir.intermediate}/${dir.js.libs}/"
                             includes="*.min.js"/>
