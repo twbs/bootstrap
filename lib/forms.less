@@ -68,6 +68,13 @@ select,
   height: auto;
 }
 
+// Inputs within a label
+label input,
+label textarea,
+label select {
+  display: block;
+}
+
 // Mini reset for unique input types
 input[type=image],
 input[type=checkbox],
@@ -474,6 +481,10 @@ select:focus:required:invalid {
 // --------------------------
 
 .form-horizontal {
+  // Legend collapses margin, so we're relegated to padding
+  legend + .control-group {
+    padding-top: @baseLineHeight * 1.5;
+  }
   // Increase spacing between groups
   .control-group {
     margin-bottom: @baseLineHeight;
