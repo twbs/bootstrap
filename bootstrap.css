@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan 26 15:04:19 PST 2012
+ * Date: Thu Jan 26 15:25:02 PST 2012
  */
 article,
 aside,
@@ -63,8 +63,7 @@ select,
 textarea {
   margin: 0;
   font-size: 100%;
-  vertical-align: baseline;
-  *vertical-align: middle;
+  vertical-align: middle;
 }
 button, input {
   *overflow: visible;
@@ -528,6 +527,9 @@ input[type=image], input[type=checkbox], input[type=radio] {
   line-height: normal;
   border: none;
   cursor: pointer;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 input[type=file] {
   padding: initial;
@@ -554,7 +556,6 @@ select, input[type=file] {
 }
 select {
   width: 220px;
-  vertical-align: baseline;
   background-color: #ffffff;
 }
 select[multiple], select[size] {
@@ -579,7 +580,7 @@ input[type=hidden] {
   margin-left: -18px;
 }
 .controls > .radio:first-child, .controls > .checkbox:first-child {
-  padding-top: 6px;
+  padding-top: 5px;
 }
 .radio.inline, .checkbox.inline {
   display: inline-block;
@@ -810,13 +811,9 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   color: #999999;
 }
 .help-inline {
-  *position: relative;
-  /* IE6-7 */
-
-  *top: -5px;
-  /* IE6-7 */
-
-  display: inline;
+  display: inline-block;
+  margin-bottom: 9px;
+  vertical-align: middle;
   padding-left: 5px;
 }
 .input-prepend, .input-append {
@@ -905,6 +902,9 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 .form-search select,
 .form-inline select,
 .form-horizontal select,
+.form-search .help-inline,
+.form-inline .help-inline,
+.form-horizontal .help-inline,
 .form-search .uneditable-input,
 .form-inline .uneditable-input,
 .form-horizontal .uneditable-input {
@@ -2441,9 +2441,9 @@ table .span12 {
 }
 .btn {
   display: inline-block;
-  padding: 5px 10px 6px;
+  padding: 4px 10px 4px;
   font-size: 13px;
-  line-height: normal;
+  line-height: 18px;
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   background-color: #fafafa;
@@ -2518,8 +2518,9 @@ table .span12 {
   margin-top: 1px;
 }
 .btn.small {
-  padding: 7px 9px 7px;
+  padding: 5px 9px 5px;
   font-size: 11px;
+  line-height: 16px;
 }
 .btn.small .icon {
   margin-top: -2px;
