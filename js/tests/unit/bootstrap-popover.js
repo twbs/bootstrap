@@ -70,7 +70,7 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
-    
+
       test("should respect custom classes", function() {
         $.support.transition = false
         var popover = $('<a href="#">@fat</a>')
@@ -80,9 +80,8 @@ $(function () {
           , content: 'Test'
           , template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
           })
-        
+
         popover.popover('show')
-        console.log(popover)
         ok($('.popover').length, 'popover was inserted')
         ok($('.popover').hasClass('foobar'), 'custom class is present')
 
