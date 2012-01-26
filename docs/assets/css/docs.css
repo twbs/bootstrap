@@ -30,7 +30,6 @@ body {
   -webkit-transition: all .2s linear;
      -moz-transition: all .2s linear;
           transition: all .2s linear;
-      
 }
 .navbar-fixed .brand:hover {
   text-decoration: none;
