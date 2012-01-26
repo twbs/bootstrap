@@ -25,7 +25,7 @@
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.$menu = $(this.options.menu).appendTo('body')
-    this.data = this.options.data
+    this.data = this.options.data || [];
     this.shown = false
     this.listen()
   }
