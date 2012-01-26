@@ -440,6 +440,15 @@ select:focus:required:invalid {
     margin-left: -1px;
     .border-radius(0 3px 3px 0);
   }
+  input:first-child {
+    // In IE7, having a hasLayout container (from clearfix's zoom:1) can make the first input
+    // inherit the sum of its ancestors' margins.
+    *margin-left: -160px;
+
+    &+.add-on {
+      *margin-left: -21px;
+    }
+  }
 }
 
 
