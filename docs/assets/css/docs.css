@@ -172,9 +172,9 @@ section {
   border-right-color: #ddd;
   border-left: 0;
   padding-left: 13px;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
-     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
-          box-shadow: inset 0 3px 5px rgba(0,0,0,.075);
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+     -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
+          box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
 }
 .subnav .nav li:first-child a {
   border-left: 0;
