@@ -1,0 +1,41 @@
+// GRID SYSTEM
+// -----------
+// To customize the grid system, bring up the variables.less file and change the column count, size, and gutter there
+.row {
+  margin-left: @gridGutterWidth * -1;
+  .clearfix();
+}
+
+// Find all .span# classes within .row and give them the necessary properties for grid columns 
+// (supported by all browsers back to IE7)
+// Credit to @dhg for the idea
+[class*="span"] {
+  .gridColumn();
+}
+
+// Default columns
+.span1     { .columns(1); }
+.span2     { .columns(2); }
+.span3     { .columns(3); }
+.span4     { .columns(4); }
+.span5     { .columns(5); }
+.span6     { .columns(6); }
+.span7     { .columns(7); }
+.span8     { .columns(8); }
+.span9     { .columns(9); }
+.span10    { .columns(10); }
+.span11    { .columns(11); }
+.span12    { .columns(12); }
+
+// Offset column options
+.offset1   { .offset(1); }
+.offset2   { .offset(2); }
+.offset3   { .offset(3); }
+.offset4   { .offset(4); }
+.offset5   { .offset(5); }
+.offset6   { .offset(6); }
+.offset7   { .offset(7); }
+.offset8   { .offset(8); }
+.offset9   { .offset(9); }
+.offset10  { .offset(10); }
+.offset11  { .offset(11); }

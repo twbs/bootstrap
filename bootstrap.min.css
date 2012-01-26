@@ -16,16 +16,6 @@ input[type="search"]{-webkit-appearance:textfield;-webkit-box-sizing:content-box
 input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none;}
 textarea{overflow:auto;vertical-align:top;}
 body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;color:#555555;background-color:#ffffff;}
-.container{width:940px;margin-left:auto;margin-right:auto;*zoom:1;}.container:before,.container:after{display:table;content:"";}
-.container:after{clear:both;}
-.fluid-container{position:relative;min-width:940px;padding-left:20px;padding-right:20px;*zoom:1;}.fluid-container:before,.fluid-container:after{display:table;content:"";}
-.fluid-container:after{clear:both;}
-.fluid-sidebar{width:220px;margin:0 20px 18px;}
-.sidebar-left{padding-left:260px;}
-.sidebar-right{padding-right:260px;}
-.sidebar-left .fluid-sidebar{float:left;margin-left:-240px;}
-.sidebar-right .fluid-sidebar{float:right;margin-right:-240px;}
-.fluid-content{float:left;width:100%;}
 a{color:#0088cc;text-decoration:none;}a:hover{color:#005580;text-decoration:underline;}
 .row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
 .row:after{clear:both;}
@@ -53,6 +43,16 @@ a{color:#0088cc;text-decoration:none;}a:hover{color:#005580;text-decoration:unde
 .offset9{margin-left:740px;}
 .offset10{margin-left:820px;}
 .offset11{margin-left:900px;}
+.container{width:940px;margin-left:auto;margin-right:auto;*zoom:1;}.container:before,.container:after{display:table;content:"";}
+.container:after{clear:both;}
+.fluid-container{position:relative;min-width:940px;padding-left:20px;padding-right:20px;*zoom:1;}.fluid-container:before,.fluid-container:after{display:table;content:"";}
+.fluid-container:after{clear:both;}
+.fluid-sidebar{width:220px;margin:0 20px 18px;}
+.sidebar-left{padding-left:260px;}
+.sidebar-right{padding-right:260px;}
+.sidebar-left .fluid-sidebar{float:left;margin-left:-240px;}
+.sidebar-right .fluid-sidebar{float:right;margin-right:-240px;}
+.fluid-content{float:left;width:100%;}
 p{margin:0 0 9px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;}p small{font-size:11px;color:#999999;}
 .lead{margin-bottom:18px;font-size:20px;font-weight:200;line-height:27px;}
 h1,h2,h3,h4,h5,h6{margin:0;font-weight:bold;color:#333333;text-rendering:optimizelegibility;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-weight:normal;color:#999999;}
