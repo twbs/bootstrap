@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan 26 13:07:59 EST 2012
+ * Date: Thu Jan 26 13:51:07 EST 2012
  */
 article,
 aside,
@@ -2355,7 +2355,13 @@ table .span12 {
   border-color: #0055cc #0055cc #003580;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.primary:hover, .btn.primary:active, .btn.primary.active {
+.btn.primary:hover,
+.btn.primary:active,
+.btn.primary.active,
+.btn.primary.disabled {
+  background-color: #0055cc;
+}
+.btn.primary[disabled] {
   background-color: #0055cc;
 }
 .btn.primary:active, .btn.primary.active {
@@ -2373,7 +2379,13 @@ table .span12 {
   border-color: #c43c35 #c43c35 #882a25;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.danger:hover, .btn.danger:active, .btn.danger.active {
+.btn.danger:hover,
+.btn.danger:active,
+.btn.danger.active,
+.btn.danger.disabled {
+  background-color: #c43c35;
+}
+.btn.danger[disabled] {
   background-color: #c43c35;
 }
 .btn.danger:active, .btn.danger.active {
@@ -2391,7 +2403,13 @@ table .span12 {
   border-color: #57a957 #57a957 #3d773d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.success:hover, .btn.success:active, .btn.success.active {
+.btn.success:hover,
+.btn.success:active,
+.btn.success.active,
+.btn.success.disabled {
+  background-color: #57a957;
+}
+.btn.success[disabled] {
   background-color: #57a957;
 }
 .btn.success:active, .btn.success.active {
@@ -2409,7 +2427,13 @@ table .span12 {
   border-color: #339bb9 #339bb9 #22697d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
-.btn.info:hover, .btn.info:active, .btn.info.active {
+.btn.info:hover,
+.btn.info:active,
+.btn.info.active,
+.btn.info.disabled {
+  background-color: #339bb9;
+}
+.btn.info[disabled] {
   background-color: #339bb9;
 }
 .btn.info:active, .btn.info.active {
@@ -2422,7 +2446,7 @@ table .span12 {
   line-height: normal;
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #ffffff;
+  background-color: #fafafa;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
   background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
@@ -2465,6 +2489,7 @@ table .span12 {
 .btn.disabled {
   cursor: default;
   background-image: none;
+  background-color: #e6e6e6;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
@@ -2474,6 +2499,7 @@ table .span12 {
 .btn[disabled] {
   cursor: default;
   background-image: none;
+  background-color: #e6e6e6;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;

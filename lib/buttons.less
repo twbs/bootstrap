@@ -36,7 +36,11 @@
   .gradientBar(@startColor, @endColor);
 
   // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active {
+  &:hover, &:active, &.active, &.disabled {
+    background-color: @endColor;
+  }
+
+  &[disabled] {
     background-color: @endColor;
   }
 
@@ -92,6 +96,7 @@
   &.disabled {
     cursor: default;
     background-image: none;
+    background-color: darken(@white, 10%);
     .opacity(65);
     .box-shadow(none);
   }
@@ -100,6 +105,7 @@
     // def because IE8 and below will drop it ;_;
     cursor: default;
     background-image: none;
+    background-color: darken(@white, 10%);
     .opacity(65);
     .box-shadow(none);
   }
