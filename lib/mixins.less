@@ -134,14 +134,12 @@
 // Border Radius
 .border-radius(@radius: 5px) {
   -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
           border-radius: @radius;
 }
 
 // Drop shadows
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
   -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
           box-shadow: @shadow;
 }
 
@@ -178,10 +176,9 @@
 }
 
 // Background clipping
-// Heads up: FF 3.6 and under need padding instead of padding-box
+// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
 .background-clip(@clip) {
   -webkit-background-clip: @clip;
-     -moz-background-clip: @clip;
           background-clip: @clip;
 }
 
@@ -228,9 +225,8 @@
 
 // Opacity
 .opacity(@opacity: 100) {
-  filter: e(%("alpha(opacity=%d)", @opacity));
-    -moz-opacity: @opacity / 100;
-         opacity: @opacity / 100;
+  opacity: @opacity / 100;
+   filter: e(%("alpha(opacity=%d)", @opacity));
 }
 
 
@@ -245,9 +241,7 @@
   }
   .border(@color: @white, @alpha: 1) {
     border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-    -webkit-background-clip: padding-box;
-       -moz-background-clip: padding;
-            background-clip: padding-box;
+    .background-clip(padding-box);
   }
 }
 

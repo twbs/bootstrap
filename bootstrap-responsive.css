@@ -13,7 +13,6 @@
   }
   .navbar .nav, .navbar .nav > li:last-child a {
     -webkit-border-radius: 0 0 4px 0;
-    -moz-border-radius: 0 0 4px 0;
     border-radius: 0 0 4px 0;
   }
   .navbar .nav > li {
@@ -47,9 +46,8 @@
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid #ffffff;
-    filter: alpha(opacity=100);
-    -moz-opacity: 1;
     opacity: 1;
+    filter: alpha(opacity=100);
     content: "&darr;";
   }
   .navbar .nav:hover > li {
