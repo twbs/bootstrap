@@ -1,9 +1,10 @@
 // BUTTON STYLES
 // -------------
 
-// Shared colors for buttons and alerts
 .btn {
   // Set text color
+  &.primary,
+  &.primary:hover,
   &.danger,
   &.danger:hover,
   &.success,
@@ -13,17 +14,36 @@
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     color: @white
   }
+  &.primary {
+    .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 15));
+  }
   // Danger and error appear as red
   &.danger {
-    .gradientBar(#ee5f5b, #c43c35);
+    .buttonBackground(#ee5f5b, #c43c35);
   }
   // Success appears as green
   &.success {
-    .gradientBar(#62c462, #57a957);
+    .buttonBackground(#62c462, #57a957);
   }
   // Info appears as a neutral blue
   &.info {
-    .gradientBar(#5bc0de, #339bb9);
+    .buttonBackground(#5bc0de, #339bb9);
+  }
+}
+
+.buttonBackground(@startColor, @endColor) {
+  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
+  .gradientBar(@startColor, @endColor);
+
+  // in these cases the gradient won't cover the background, so we override
+  &:hover, &:active, &.active {
+    background-color: @endColor;
+  }
+
+  &:active,
+  &.active {
+    // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
+    background-color: darken(@endColor, 10%) e("\9");
   }
 }
 
@@ -47,7 +67,12 @@
   &:hover {
     color: @grayDark;
     text-decoration: none;
+    background-color: darken(@white, 10%);
     background-position: 0 -15px;
+
+    // transition is only when going to hover, otherwise the background
+    // behind the gradient (there for IE<=9 fallback) gets mismatched
+    .transition(background-position .1s linear);
   }
 
   // Focus state for keyboard and accessibility
@@ -55,27 +80,18 @@
     outline: 1px dotted #666;
   }
 
-  // Primary Button Type
-  &.primary {
-    color: @white;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    .gradientBar(@primaryButtonBackground, spin(@primaryButtonBackground, 15));
-  }
-
-   // Transitions
-  .transition(.1s linear all);
-
   // Active and Disabled states
   &.active,
   &:active {
     background-image: none;
     @shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
     .box-shadow(@shadow);
+    background-color: darken(@white, 10%);
+    background-color: darken(@white, 15%) e("\9");
   }
   &.disabled {
     cursor: default;
     background-image: none;
-    .reset-filter();
     .opacity(65);
     .box-shadow(none);
   }
@@ -84,7 +100,6 @@
     // def because IE8 and below will drop it ;_;
     cursor: default;
     background-image: none;
-    .reset-filter();
     .opacity(65);
     .box-shadow(none);
   }
@@ -100,10 +115,6 @@
     padding: 7px 9px 7px;
     font-size: @baseFontSize - 2px;
   }
-}
-// Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
-:root .btn {
-  border-radius: 0 \0;
 }
 
 // Help Firefox not be a jerk about adding extra padding to buttons
