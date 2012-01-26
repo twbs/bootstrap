@@ -432,10 +432,10 @@
       </tr>
       <tr>
         <td>
-          <span class="label notice">Notice</span>
+          <span class="label info">Info</span>
         </td>
         <td>
-          <code>&lt;span class="label notice"&gt;Notice&lt;/span&gt;</code>
+          <code>&lt;span class="label info"&gt;Info&lt;/span&gt;</code>
         </td>
       </tr>
     </tbody>
@@ -1210,6 +1210,8 @@
 
 
 
+<!-- Buttons
+================================================== -->
 <section id="buttons">
   <div class="page-header">
     <h1>Buttons</h1>
@@ -1278,9 +1280,9 @@
         <a href="#" class="btn small">Action</a>
       </p>
     </div>
-    <div class="span8">
+    <div class="span4">
       <h3>Disabled state</h3>
-      <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+      <p>For disabled buttons, use <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
       <p>
         <a href="#" class="btn large primary disabled">Primary action</a>
         <a href="#" class="btn large disabled">Action</a>
@@ -1289,6 +1291,11 @@
         <button class="btn large primary disabled" disabled="disabled">Primary action</button>
         <button class="btn large" disabled>Action</button>
       </p>
+    </div>
+    <div class="span4">
+      <h3>Cross browser compatibility</h3>
+      <p>In IE9, we drop the gradient on all buttons in favor of rounded corners as IE9 doesn't crop background gradients to the corners.</p>
+      <p>Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow&mdash;unfortunately we can't fix this.</p>
     </div>
   </div>
 
