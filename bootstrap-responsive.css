@@ -13,6 +13,7 @@
   }
   .navbar .nav, .navbar .nav > li:last-child a {
     -webkit-border-radius: 0 0 4px 0;
+    -moz-border-radius: 0 0 4px 0;
     border-radius: 0 0 4px 0;
   }
   .navbar .nav > li {

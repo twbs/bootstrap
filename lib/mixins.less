@@ -134,12 +134,14 @@
 // Border Radius
 .border-radius(@radius: 5px) {
   -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
           border-radius: @radius;
 }
 
 // Drop shadows
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
   -webkit-box-shadow: @shadow;
+     -moz-box-shadow: @shadow;
           box-shadow: @shadow;
 }
 
@@ -179,6 +181,7 @@
 // Heads up: FF 3.6 and under need "padding" instead of "padding-box"
 .background-clip(@clip) {
   -webkit-background-clip: @clip;
+     -moz-background-clip: @clip;
           background-clip: @clip;
 }
 

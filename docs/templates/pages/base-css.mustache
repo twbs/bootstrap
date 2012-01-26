@@ -880,7 +880,7 @@
           <div class="control-group">
             <label class="control-label" for="input01">{{_i}}Text input{{/i}}</label>
             <div class="controls">
-              <input type="text" class="xlarge" name="input01">
+              <input type="text" class="input-xlarge" id="input01">
               <p class="help-block">{{_i}}In addition to freeform text, any HTML5 text-based input appears like so.{{/i}}</p>
             </div>
           </div>
@@ -888,7 +888,7 @@
             <label class="control-label" for="optionsCheckbox">{{_i}}Checkbox{{/i}}</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" name="optionsCheckbox" value="option1">
+                <input type="checkbox" id="optionsCheckbox" value="option1">
                 {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
               </label>
             </div>
@@ -896,7 +896,7 @@
           <div class="control-group">
             <label class="control-label" for="select01">{{_i}}Select list{{/i}}</label>
             <div class="controls">
-              <select name="select01">
+              <select id="select01">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -908,7 +908,7 @@
           <div class="control-group">
             <label class="control-label" for="multiSelect">{{_i}}Multi-select{{/i}}</label>
             <div class="controls">
-              <select multiple="multiple" name="multiSelect">
+              <select multiple="multiple" id="multiSelect">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -920,13 +920,13 @@
           <div class="control-group">
             <label class="control-label" for="fileInput">{{_i}}File input{{/i}}</label>
             <div class="controls">
-              <input class="input-file" id="fileInput" name="fileInput" type="file">
+              <input class="input-file" id="fileInput" type="file">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="textarea">{{_i}}Textarea{{/i}}</label>
             <div class="controls">
-              <textarea class="input-xlarge" name="textarea" id="textarea" rows="3"></textarea>
+              <textarea class="input-xlarge" id="textarea" rows="3"></textarea>
             </div>
           </div>
           <div class="form-actions">
@@ -966,20 +966,20 @@
           <div class="control-group">
             <label class="control-label" for="focusedInput">{{_i}}Focused input{{/i}}</label>
             <div class="controls">
-              <input class="input-xlarge focused" id="focusedInput" name="focusedInput" type="text" value="{{_i}}This is focused…{{/i}}">
+              <input class="input-xlarge focused" id="focusedInput" type="text" value="{{_i}}This is focused…{{/i}}">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="disabledInput">{{_i}}Disabled input{{/i}}</label>
             <div class="controls">
-              <input class="input-xlarge disabled" id="disabledInput" name="disabledInput" type="text" placeholder="{{_i}}Disabled input here…{{/i}}" disabled>
+              <input class="input-xlarge disabled" id="disabledInput" type="text" placeholder="{{_i}}Disabled input here…{{/i}}" disabled>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="optionsCheckbox">{{_i}}Disabled checkbox{{/i}}</label>
+            <label class="control-label" for="optionsCheckbox2">{{_i}}Disabled checkbox{{/i}}</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" name="optionsCheckbox" value="option1" disabled>
+                <input type="checkbox" id="optionsCheckbox2" value="option1" disabled>
                 {{_i}}This is a disabled checkbox{{/i}}
               </label>
             </div>
@@ -987,28 +987,28 @@
           <div class="control-group warning">
             <label class="control-label" for="inputError">{{_i}}Input with warning{{/i}}</label>
             <div class="controls">
-              <input type="text" name="inputError">
+              <input type="text" id="inputError">
               <span class="help-inline">{{_i}}Something may have gone wrong{{/i}}</span>
             </div>
           </div>
           <div class="control-group error">
             <label class="control-label" for="inputError">{{_i}}Input with error{{/i}}</label>
             <div class="controls">
-              <input type="text" name="inputError">
+              <input type="text" id="inputError">
               <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
             </div>
           </div>
           <div class="control-group success">
             <label class="control-label" for="inputError">{{_i}}Input with success{{/i}}</label>
             <div class="controls">
-              <input type="text" name="inputError">
+              <input type="text" id="inputError">
               <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
             </div>
           </div>
           <div class="control-group success">
             <label class="control-label" for="selectError">{{_i}}Select with success{{/i}}</label>
             <div class="controls">
-              <select name="selectError">
+              <select id="selectError">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -1052,9 +1052,9 @@
           <div class="control-group">
             <label class="control-label">{{_i}}Form sizes{{/i}}</label>
             <div class="controls docs-input-sizes">
-              <input class="span2" type="text" name="" placeholder=".span2">
-              <input class="span3" type="text" name="" placeholder=".span3">
-              <input class="span4" type="text" name="" placeholder=".span4">
+              <input class="span2" type="text" placeholder=".span2">
+              <input class="span3" type="text" placeholder=".span3">
+              <input class="span4" type="text" placeholder=".span4">
               <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
             </div>
           </div>
@@ -1063,7 +1063,7 @@
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on">@</span>
-                <input class="span2" id="prependedInput" name="prependedInput" size="16" type="text">
+                <input class="span2" id="prependedInput" size="16" type="text">
               </div>
               <p class="help-block">{{_i}}Here's some help text{{/i}}</p>
             </div>
@@ -1072,7 +1072,7 @@
             <label class="control-label" for="appendedInput">{{_i}}Appended text{{/i}}</label>
             <div class="controls">
               <div class="input-append">
-                <input class="span2" id="appendedInput" name="appendedInput" size="16" type="text">
+                <input class="span2" id="appendedInput" size="16" type="text">
                 <span class="add-on">.00</span>
               </div>
               <p class="help-block">{{_i}}Here's more help text{{/i}}</p>
@@ -1082,43 +1082,43 @@
             <label class="control-label" for="inlineCheckboxes">{{_i}}Inline checkboxes{{/i}}</label>
             <div class="controls">
               <label class="checkbox inline">
-                <input type="checkbox" name="inlineCheckbox1" value="option1"> 1
+                <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
               </label>
               <label class="checkbox inline">
-                <input type="checkbox" name="inlineCheckbox1" value="option1"> 2
+                <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
               </label>
               <label class="checkbox inline">
-                <input type="checkbox" name="inlineCheckbox1" value="option1"> 3
+                <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
               </label>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="optionsCheckboxes">{{_i}}Checkboxes{{/i}}</label>
+            <label class="control-label" for="optionsCheckboxList">{{_i}}Checkboxes{{/i}}</label>
             <div class="controls">
               <label class="checkbox">
-                <input type="checkbox" name="optionsCheckboxes" value="option1">
+                <input type="checkbox" name="optionsCheckboxList1" value="option1">
                 {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
               </label>
               <label class="checkbox">
-                <input type="checkbox" name="optionsCheckboxes" value="option2">
+                <input type="checkbox" name="optionsCheckboxList2" value="option2">
                 {{_i}}Option two can also be checked and included in form results{{/i}}
               </label>
               <label class="checkbox">
-                <input type="checkbox" name="optionsCheckboxes" value="option3">
+                <input type="checkbox" name="optionsCheckboxList3" value="option3">
                 {{_i}}Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results{{/i}}
               </label>
               <p class="help-text">{{_i}}<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.{{/i}}</p>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="optionsRadios">{{_i}}Radio buttons{{/i}}</label>
+            <label class="control-label">{{_i}}Radio buttons{{/i}}</label>
             <div class="controls">
               <label class="radio">
-                <input type="radio" checked name="optionsRadios" value="option1">
+                <input type="radio" id="optionsRadios1" value="option1" checked>
                 {{_i}}Option one is this and that&mdash;be sure to include why it’s great{{/i}}
               </label>
               <label class="radio">
-                <input type="radio" name="optionsRadios" value="option2">
+                <input type="radio" id="optionsRadios2" value="option2">
                 {{_i}}Option two can is something else and selecting it will deselect option one{{/i}}
               </label>
             </div>

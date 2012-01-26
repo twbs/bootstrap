@@ -27,6 +27,7 @@
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
   
+  
   <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-fixed">
@@ -68,18 +69,17 @@
         ================================================== -->
         <header class="jumbotron masthead">
           <div class="inner">
-            <h1>Bootstrap,<br> from Twitter</h1>
-            <p class="lead">Bootstrap is a responsive frontend toolkit from Twitter designed to kickstart web development, featuring HTML, CSS, and JS for dozens of base elements and common design components.</p>
+            <h1>Twitter Bootstrap</h1>
+            <p class="lead">Bootstrap is a comprehensive front-end toolkit from Twitter designed to kickstart web development. It features HTML, CSS, and JS for dozens of base elements, commonly used design components, and more.</p>
             <p class="download-info">
-              <a href="https://github.com/twitter/bootstrap/" class="btn primary btn-large">View on GitHub</a>
-              <a href="./download.html" class="btn btn-large">Customize and Download</a>
+              <a href="https://github.com/twitter/bootstrap/" class="btn primary btn-large">View project on GitHub</a>
+              <a href="./download.html" class="btn btn-large">Customize and download</a>
             </p>
-
             <div class="benefits">
               <h4>Feature highlights</h4>
               <ul>
                 <li><span>&#10004;</span> Built on LESS</li>
-                <li><span>&#10004;</span> Complete styleguide docs</li>
+                <li><span>&#10004;</span> Complete style guide docs</li>
                 <li><span>&#10004;</span> Fully responsive design</li>
                 <li><span>&#10004;</span> Small footprint (10kb gzipped)</li>
                 <li><span>&#10004;</span> Support for IE7 and up</li>
@@ -88,30 +88,30 @@
               </ul>
             </div>
           </div>
+
+          <ul class="quick-links">
+            <li><a href="https://github.com/twitter/bootstrap/">GitHub repo</a></li>
+            <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
+            <li><a href="https://github.com/twitter/bootstrap/wiki/Roadmap">Roadmap</a></li>
+            <li><a href="https://github.com/twitter/bootstrap/wiki/Changelog">Changelog</a></li>
+            <li class="divider">&middot;</li>
+            <li>
+              <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="114px" height="20px"></iframe>
+            </li>
+            <li>
+              <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="98px" height="20px"></iframe>
+            </li>
+            <li class="divider">&middot;</li>
+            <li class="follow-btn">
+              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-width="145px" data-link-color="#0069D6" data-show-count="false">Follow @twbootstrap</a>
+            </li>
+            <li class="tweet-btn">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
+            </li>
+          </ul>
         </header>
 
-        <ul class="quick-links">
-          <li><strong>Quick links</strong></li>
-          <li><a href="https://github.com/twitter/bootstrap/">GitHub</a></li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
-          <li><a href="https://github.com/twitter/bootstrap/wiki/Roadmap">Roadmap</a></li>
-          <li><a href="https://github.com/twitter/bootstrap/wiki/Changelog">Changelog</a></li>
-          <li class="divider">&middot;</li>
-          <li>
-            <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="114px" height="20px"></iframe>
-          </li>
-          <li>
-            <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="98px" height="20px"></iframe>
-          </li>
-          <li class="divider">&middot;</li>
-          <li class="follow-btn">
-            <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-width="145px" data-link-color="#0069D6" data-show-count="false">Follow @twbootstrap</a>
-          </li>
-          <li class="tweet-btn">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
-          </li>
-        </ul>
-
+        <hr class="soften">
 
         <div class="marketing">
           <h1>Built with Bootstrap.</h1>
@@ -133,6 +133,8 @@
               </a>
             </li>
           </ul>
+
+        <hr class="soften">
 
           <h1>Designed for everyone, everywhere.</h1>
           <p class="marketing-byline">Need reasons to love Bootstrap? Look no further.</p>
@@ -210,6 +212,7 @@
             </div>
           </div><!--/row-->
 
+        <hr class="soften">
 
           <!-- Quickstart options
           ================================================== -->
@@ -243,6 +246,7 @@
 
         </div><!-- /.marketing -->
       </div><!-- /#overview -->
+
      <!-- Footer
       ================================================== -->
       <footer class="footer">
@@ -255,9 +259,11 @@
     </div><!-- /container -->
 
 
-    <!-- Le javascript -->
+
+    <!-- Le javascript
+    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="http://code.jquery.com/jquery-1.7.min.js"></script> -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="../js/tests/vendor/jquery.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="../js/bootstrap-transition.js"></script>
