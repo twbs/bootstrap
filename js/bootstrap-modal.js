@@ -42,10 +42,9 @@
     , show: function () {
         var that = this
 
-        if (this.isShown) return
+        if (this.isShown || this.$element.triggerHandler('show') === false) return
 
         this.isShown = true
-        this.$element.trigger('show')
 
         escape.call(this)
         backdrop.call(this, function () {
@@ -72,16 +71,14 @@
     , hide: function ( e ) {
         e && e.preventDefault()
 
-        if (!this.isShown) return
+        if (!this.isShown || this.$element.triggerHandler('hide') === false) return
 
         var that = this
         this.isShown = false
 
         escape.call(this)
 
-        this.$element
-          .trigger('hide')
-          .removeClass('in')
+        this.$element.removeClass('in')
 
         $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :
