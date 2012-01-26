@@ -69,7 +69,7 @@ hr.soften {
 }
 .jumbotron h1 {
   margin-bottom: 9px;
-  font-size: 108px;
+  font-size: 90px;
   letter-spacing: -1px;
   line-height: 1;
 }
@@ -108,6 +108,8 @@ hr.soften {
 }
 .masthead p {
   margin: 0 5% 27px;
+  font-size: 30px;
+  line-height: 36px;
 }
 
 
