@@ -367,10 +367,10 @@
       </tr>
       <tr>
         <td>
-          <span class="label notice">{{_i}}Notice{{/i}}</span>
+          <span class="label info">{{_i}}Info{{/i}}</span>
         </td>
         <td>
-          <code>&lt;span class="label notice"&gt;{{_i}}Notice{{/i}}&lt;/span&gt;</code>
+          <code>&lt;span class="label info"&gt;{{_i}}Info{{/i}}&lt;/span&gt;</code>
         </td>
       </tr>
     </tbody>
@@ -1145,6 +1145,8 @@
 
 
 
+<!-- Buttons
+================================================== -->
 <section id="buttons">
   <div class="page-header">
     <h1>{{_i}}Buttons{{/i}}</h1>
@@ -1213,9 +1215,9 @@
         <a href="#" class="btn small">{{_i}}Action{{/i}}</a>
       </p>
     </div>
-    <div class="span8">
+    <div class="span4">
       <h3>{{_i}}Disabled state{{/i}}</h3>
-      <p>{{_i}}For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.{{/i}}</p>
+      <p>{{_i}}For disabled buttons, use <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.{{/i}}</p>
       <p>
         <a href="#" class="btn large primary disabled">{{_i}}Primary action{{/i}}</a>
         <a href="#" class="btn large disabled">{{_i}}Action{{/i}}</a>
@@ -1224,6 +1226,11 @@
         <button class="btn large primary disabled" disabled="disabled">{{_i}}Primary action{{/i}}</button>
         <button class="btn large" disabled>{{_i}}Action{{/i}}</button>
       </p>
+    </div>
+    <div class="span4">
+      <h3>Cross browser compatibility</h3>
+      <p>In IE9, we drop the gradient on all buttons in favor of rounded corners as IE9 doesn't crop background gradients to the corners.</p>
+      <p>Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow&mdash;unfortunately we can't fix this.</p>
     </div>
   </div>
 
