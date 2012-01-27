@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan 26 22:05:04 PST 2012
+ * Date: Thu Jan 26 22:39:03 PST 2012
  */
 article,
 aside,
@@ -1066,7 +1066,7 @@ table .span12 {
   margin-left: 0;
 }
 .icon {
-  background-image: url(img/glyphicons-halflings-sprite.png);
+  background-image: url(../img/glyphicons-halflings-sprite.png);
   background-position: 0 0;
   background-repeat: no-repeat;
   display: inline-block;
@@ -1075,7 +1075,7 @@ table .span12 {
   height: 14px;
 }
 .icon.white {
-  background-image: url(img/glyphicons-halflings-sprite-white.png);
+  background-image: url(../img/glyphicons-halflings-sprite-white.png);
 }
 .icon.glass {
   background-position: 0      0;

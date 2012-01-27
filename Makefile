@@ -20,6 +20,7 @@ build:
 		lessc ${BOOTSTRAP_RESPONSIVE_LESS}.tmp > ${BOOTSTRAP_RESPONSIVE}; \
 		rm -f ${BOOTSTRAP_RESPONSIVE_LESS}.tmp; \
 		node docs/build; \
+		cp img/* docs/assets/img/; \
 		echo "Bootstrap successfully built! - `date`"; \
 	else \
 		echo "You must have the LESS compiler installed in order to build Bootstrap."; \
