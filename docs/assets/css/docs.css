@@ -538,6 +538,7 @@ hr.soften {
   padding: 19px 24px;
   margin-bottom: 27px;
   font-size: 30px;
+  line-height: 1;
   text-align: center;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
