@@ -1273,10 +1273,6 @@
         <i class="icon home"></i>
         <i class="icon file"></i>
         <i class="icon time"></i>
-      </div>
-    </div>
-    <div class="span3">
-      <div class="the-icons">
         <i class="icon road"></i>
         <i class="icon download-alt"></i>
         <i class="icon download"></i>
@@ -1284,8 +1280,12 @@
         <i class="icon inbox"></i>
         <i class="icon play-circle"></i>
         <i class="icon repeat"></i>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="the-icons">
         <i class="icon refresh"></i>
-        <i class="icon calendar"></i>
+        <i class="icon list-alt"></i>
         <i class="icon lock"></i>
         <i class="icon flag"></i>
         <i class="icon headphones"></i>
@@ -1301,10 +1301,6 @@
         <i class="icon bookmark"></i>
         <i class="icon print"></i>
         <i class="icon camera"></i>
-      </div>
-    </div>
-    <div class="span3">
-      <div class="the-icons">
         <i class="icon font"></i>
         <i class="icon bold"></i>
         <i class="icon italic"></i>
@@ -1319,7 +1315,10 @@
         <i class="icon indent-right"></i>
         <i class="icon facetime-video"></i>
         <i class="icon picture"></i>
-
+      </div>
+    </div>
+    <div class="span3">
+      <div class="the-icons">
         <i class="icon pencil"></i>
         <i class="icon map-marker"></i>
         <i class="icon adjust"></i>
@@ -1329,10 +1328,6 @@
         <i class="icon check"></i>
         <i class="icon move"></i>
         <i class="icon step-backward"></i>
-      </div>
-    </div>
-    <div class="span3">
-      <div class="the-icons">
         <i class="icon fast-backward"></i>
         <i class="icon backward"></i>
         <i class="icon play"></i>
@@ -1345,6 +1340,20 @@
         <i class="icon chevron-left"></i>
         <i class="icon chevron-right"></i>
 
+        <i class="icon plus-sign"></i>
+        <i class="icon minus-sign"></i>
+        <i class="icon remove-sign"></i>
+        <i class="icon ok-sign"></i>
+        <i class="icon question-sign"></i>
+        <i class="icon info-sign"></i>
+        <i class="icon screenshot"></i>
+        <i class="icon remove-circle"></i>
+        <i class="icon ok-circle"></i>
+        <i class="icon ban-circle"></i>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="the-icons">
         <i class="icon arrow-left"></i>
         <i class="icon arrow-right"></i>
         <i class="icon arrow-up"></i>
@@ -1355,11 +1364,32 @@
         <i class="icon plus"></i>
         <i class="icon minus"></i>
         <i class="icon asterisk"></i>
+
+        <i class="icon exclamation-sign"></i>
+        <i class="icon gift"></i>
+        <i class="icon leaf"></i>
+        <i class="icon fire"></i>
+        <i class="icon eye-open"></i>
+        <i class="icon eye-close"></i>
+        <i class="icon warning-sign"></i>
+        <i class="icon plane"></i>
+        <i class="icon calendar"></i>
+        <i class="icon random"></i>
+        <i class="icon comment"></i>
+        <i class="icon magnet"></i>
+        <i class="icon chevron-up"></i>
+        <i class="icon chevron-down"></i>
+        <i class="icon retweet"></i>
+        <i class="icon shopping-cart"></i>
+        <i class="icon folder-close"></i>
+        <i class="icon folder-open"></i>
+        <i class="icon resize-vertical"></i>
+        <i class="icon resize-horizontal"></i>
       </div>
     </div>
   </div>
   <div class="alert alert-info">
-    {{_i}}<strong>Heads up!</strong> On hover we show a light red background color to highlight the size of the icon. This won't appear in normal usage of icons.{{/i}}
+    {{_i}}<strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code> and on hover in the docs we show a light red background color show the icon's size.{{/i}}
   </div>
 
   <br>
@@ -1376,7 +1406,11 @@
 <pre class="prettyprint linenums">
 &lt;i class="icon search"&gt;&lt;/i&gt;
 </pre>
-      <p>{{_i}}There are over 100 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.{{/i}}</p>
+      <p>There are also styles available for inverted (white) icons, made ready with one extra class:</p>
+<pre class="prettyprint linenums">
+&lt;i class="icon white search"&gt;&lt;/i&gt;
+</pre>
+      <p>{{_i}}There are 120 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.{{/i}}</p>
     </div>
     <div class="span4">
       <h3>{{_i}}Use cases{{/i}}</h3>
@@ -1393,11 +1427,12 @@
 
   <h3>{{_i}}Examples{{/i}}</h3>
   <div class="row">
-    <div class="span4">
+    <div class="span6">
       <p>{{_i}}Use them in buttons, or in button groups for a toolbar style presentation.{{/i}}</p>
       <p>
         <a class="btn" href="#"><i class="icon refresh"></i> {{_i}}Refresh{{/i}}</a>
-        <a class="btn" href="#"><i class="icon cog"></i> {{_i}}Settings{{/i}}</a>
+        <a class="btn success" href="#"><i class="icon white shopping-cart"></i> {{_i}}Checkout{{/i}}</a>
+        <a class="btn danger" href="#"><i class="icon white trash"></i> {{_i}}Delete{{/i}}</a>
       </p>
       <div class="btn-toolbar">
         <div class="btn-group">
@@ -1412,6 +1447,10 @@
           <a class="btn" href="#"><i class="icon align-justify"></i></a>
         </div>
       </div>
+      <p>
+        <a class="btn large" href="#"><i class="icon refresh"></i> {{_i}}Refresh{{/i}}</a>
+        <a class="btn small" href="#"><i class="icon cog"></i> {{_i}}Settings{{/i}}</a>
+      </p>
     </div>
     <div class="span3">
       <p>{{_i}}Or, use them in navigation.{{/i}}</p>

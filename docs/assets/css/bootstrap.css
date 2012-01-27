@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 14:44:00 PST 2012
+ * Date: Fri Jan 27 14:44:44 PST 2012
  */
 article,
 aside,
@@ -1076,8 +1076,8 @@ table .span12 {
   margin-left: 0;
 }
 .icon {
-  background-image: url(../img/glyphicons-halflings-sprite.png);
-  background-position: 0 0;
+  background-image: url(../img/glyphicons-halflings.png);
+  background-position: 14px 14px;
   background-repeat: no-repeat;
   display: inline-block;
   vertical-align: text-top;
@@ -1085,7 +1085,7 @@ table .span12 {
   height: 14px;
 }
 .icon.white {
-  background-image: url(../img/glyphicons-halflings-sprite-white.png);
+  background-image: url(../img/glyphicons-halflings-white.png);
 }
 .icon.glass {
   background-position: 0      0;
@@ -1180,7 +1180,7 @@ table .span12 {
 .icon.refresh {
   background-position: -240px -24px;
 }
-.icon.calendar {
+.icon.list-alt {
   background-position: -264px -24px;
 }
 .icon.lock {
@@ -1211,7 +1211,7 @@ table .span12 {
   background-position: 0 -48px;
 }
 .icon.tags {
-  background-position: -24px -48px;
+  background-position: -25px -48px;
 }
 .icon.book {
   background-position: -48px -48px;
@@ -1229,7 +1229,7 @@ table .span12 {
   background-position: -144px -48px;
 }
 .icon.bold {
-  background-position: -168px -48px;
+  background-position: -167px -48px;
 }
 .icon.italic {
   background-position: -192px -48px;
@@ -1327,6 +1327,36 @@ table .span12 {
 .icon.chevron-right {
   background-position: -456px -72px;
 }
+.icon.plus-sign {
+  background-position: 0 -96px;
+}
+.icon.minus-sign {
+  background-position: -24px -96px;
+}
+.icon.remove-sign {
+  background-position: -48px -96px;
+}
+.icon.ok-sign {
+  background-position: -72px -96px;
+}
+.icon.question-sign {
+  background-position: -96px -96px;
+}
+.icon.info-sign {
+  background-position: -120px -96px;
+}
+.icon.screenshot {
+  background-position: -144px -96px;
+}
+.icon.remove-circle {
+  background-position: -168px -96px;
+}
+.icon.ok-circle {
+  background-position: -192px -96px;
+}
+.icon.ban-circle {
+  background-position: -216px -96px;
+}
 .icon.arrow-left {
   background-position: -240px -96px;
 }
@@ -1334,7 +1364,7 @@ table .span12 {
   background-position: -264px -96px;
 }
 .icon.arrow-up {
-  background-position: -288px -96px;
+  background-position: -289px -96px;
 }
 .icon.arrow-down {
   background-position: -312px -96px;
@@ -1352,10 +1382,70 @@ table .span12 {
   background-position: -408px -96px;
 }
 .icon.minus {
-  background-position: -432px -96px;
+  background-position: -433px -96px;
 }
 .icon.asterisk {
   background-position: -456px -96px;
+}
+.icon.exclamation-sign {
+  background-position: 0 -120px;
+}
+.icon.gift {
+  background-position: -24px -120px;
+}
+.icon.leaf {
+  background-position: -48px -120px;
+}
+.icon.fire {
+  background-position: -72px -120px;
+}
+.icon.eye-open {
+  background-position: -96px -120px;
+}
+.icon.eye-close {
+  background-position: -120px -120px;
+}
+.icon.warning-sign {
+  background-position: -144px -120px;
+}
+.icon.plane {
+  background-position: -168px -120px;
+}
+.icon.calendar {
+  background-position: -192px -120px;
+}
+.icon.random {
+  background-position: -216px -120px;
+}
+.icon.comment {
+  background-position: -240px -120px;
+}
+.icon.magnet {
+  background-position: -264px -120px;
+}
+.icon.chevron-up {
+  background-position: -288px -120px;
+}
+.icon.chevron-down {
+  background-position: -313px -119px;
+}
+.icon.retweet {
+  background-position: -336px -120px;
+}
+.icon.shopping-cart {
+  background-position: -360px -120px;
+}
+.icon.folder-close {
+  background-position: -384px -120px;
+}
+.icon.folder-open {
+  background-position: -408px -120px;
+}
+.icon.resize-vertical {
+  background-position: -432px -119px;
+}
+.icon.resize-horizontal {
+  background-position: -456px -118px;
 }
 .dropdown {
   position: relative;
@@ -1811,6 +1901,7 @@ table .span12 {
 }
 .navbar-form input, .navbar-form select {
   display: inline-block;
+  margin-top: 5px;
   margin-bottom: 0;
 }
 .navbar-search {
