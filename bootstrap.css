@@ -1141,7 +1141,7 @@ table tbody th {
 .bordered-table th + th, .bordered-table td + td, .bordered-table th + td {
   border-left: 1px solid #ddd;
 }
-.bordered-table thead tr:first-child th:first-child, .bordered-table tbody tr:first-child td:first-child {
+.bordered-table thead tr:first-child th:first-child, .bordered-table tbody:first-child tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
   -moz-border-radius: 4px 0 0 0;
   border-radius: 4px 0 0 0;
