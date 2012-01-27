@@ -79,7 +79,7 @@
 
       q = this.query.toLowerCase()
 
-      items = this.data.filter(function (item) {
+      items = jQuery.grep(this.data, function (item) {
         if (that.matcher(item, q)) return item
       })
 
