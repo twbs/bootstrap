@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 13:34:19 PST 2012
+ * Date: Fri Jan 27 13:37:10 PST 2012
  */
 article,
 aside,
@@ -2461,6 +2461,7 @@ table .span12 {
   font-size: 13px;
   line-height: 18px;
   color: #333333;
+  text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   background-color: #fafafa;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
