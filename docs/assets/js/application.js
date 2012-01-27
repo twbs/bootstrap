@@ -76,46 +76,7 @@ $(function(){
     }
   }
 
-  // javascript build logic
-
-  var inputs = $("#javascript input")
-
-  // toggle all plugin checkboxes
-  $('#selectAll').on('click', function (e) {
-    e.preventDefault()
-    inputs.attr('checked', !inputs.is(':checked'))
-  })
-
-  // handle build button dropdown
-  var buildTypes = $('#javascriptBuilder .dropdown-menu li').on('click', function () {
-    buildTypes.removeClass('active')
-    $(this).addClass('active')
-  })
-
-  // request built javascript
-  $('#javascriptBuild').on('click', function () {
-
-    var names = $("#javascript input:checked")
-      .map(function () { return this.value })
-      .toArray()
-
-    if (names[names.length - 1] == 'bootstrap-transition.js') {
-      names.unshift(names.pop())
-    }
-
-    $.ajax({
-      type: 'POST'
-    , dataType: 'jsonpi'
-    , params: {
-        branch: '2.0-wip'
-      , dir: 'js'
-      , filenames: names
-      , compress: buildTypes.first().hasClass('active')
-      }
-    , url: "http://bootstrap.herokuapp.com"
-    })
-  })
-
+ 
   // fix sub nav playa
   var $win = $(window)
     , $nav = $('.subnav')
@@ -202,3 +163,49 @@ $(function () {
     }
   })
 }(jQuery);
+
+ // javascript build logic
+
+$(function () {
+
+  var inputsComponent = $("#components.download input")
+    , inputsPlugin = $("#plugins.download input")
+
+  // toggle all plugin checkboxes
+  $('#components.download .toggle-all').on('click', function (e) {
+    e.preventDefault()
+    inputsComponent.attr('checked', !inputsComponent.is(':checked'))
+  })
+
+  $('#plugins.download .toggle-all').on('click', function (e) {
+    e.preventDefault()
+    inputsPlugin.attr('checked', !inputsPlugin.is(':checked'))
+  })
+
+  // request built javascript
+  $('.download-btn').on('click', function () {
+
+    var comp = $("#components.download input:checked")
+          .map(function () { return this.value })
+          .toArray()
+      , plug = $("#plugins.download input:checked")
+          .map(function () { return this.value })
+          .toArray()
+
+    
+
+    $.ajax({
+      type: 'POST'
+    , dataType: 'jsonpi'
+    , params: {
+        branch: '2.0-wip'
+      , dir: 'js'
+      , filenames: names
+      , compress: buildTypes.first().hasClass('active')
+      }
+    , url: "http://bootstrap.herokuapp.com"
+    })
+  })
+
+})
+
