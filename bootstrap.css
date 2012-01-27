@@ -1146,7 +1146,7 @@ table tbody th {
   -moz-border-radius: 4px 0 0 0;
   border-radius: 4px 0 0 0;
 }
-.bordered-table thead tr:first-child th:last-child, .bordered-table tbody tr:first-child td:last-child {
+.bordered-table thead tr:first-child th:last-child, .bordered-table tbody:first-child tr:first-child td:last-child {
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
   border-radius: 0 4px 0 0;
