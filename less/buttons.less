@@ -67,7 +67,6 @@
   // Button Base
   display: inline-block;
   padding: 4px 10px 4px;
-  *padding: 2px 10px;
   // IE7 likes to collapse the whitespace before the button, so bring it back...
   *margin-left: 4px;
   &:first-child {
@@ -151,6 +150,8 @@
 // Help Firefox not be a jerk about adding extra padding to buttons
 button.btn,
 input[type=submit].btn {
+  // IE7 has some default padding on button controls
+  *padding: 2px 10px;
   &::-moz-focus-inner {
   	padding: 0;
   	border: 0;
