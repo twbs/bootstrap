@@ -171,6 +171,7 @@ $(function () {
 
   var inputsComponent = $("#components.download input")
     , inputsPlugin = $("#plugins.download input")
+    , inputsVariables = $("#variables.download input")
 
   // toggle all plugin checkboxes
   $('#components.download .toggle-all').on('click', function (e) {
@@ -183,6 +184,11 @@ $(function () {
     inputsPlugin.attr('checked', !inputsPlugin.is(':checked'))
   })
 
+  $('#variables.download .toggle-all').on('click', function (e) {
+    e.preventDefault()
+    inputsVariables.val('')
+  })
+
   // request built javascript
   $('.download-btn').on('click', function () {
 
@@ -193,11 +199,12 @@ $(function () {
           .map(function () { return this.value })
           .toArray()
       , vars = {}
+      , img = ['glyphicons-halflings-sprite.png', 'glyphicons-halflings-sprite-white.png']
 
-    $("#variables.download input")
-      .each(function () {
-        return vars[ $(this).prev().text() ] = $(this).val()
-      })
+  $("#variables.download input")
+    .each(function () {
+      $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
+    })
 
 // , url: "http://bootstrap.herokuapp.com"
     $.ajax({
@@ -209,6 +216,7 @@ $(function () {
       , js: js
       , css: css
       , vars: vars
+      , img: img
     }
     })
   })

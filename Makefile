@@ -1,10 +1,10 @@
 VERSION=2.0.0
 BOOTSTRAP = ./bootstrap.css
 BOOTSTRAP_MIN = ./bootstrap.min.css
-BOOTSTRAP_LESS = ./lib/bootstrap.less
+BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_MIN = ./bootstrap-responsive.min.css
-BOOTSTRAP_RESPONSIVE_LESS = ./lib/responsive.less
+BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 LESS_COMPRESSOR ?= `which lessc`
 UGLIFY_JS ?= `which uglifyjs`
 WATCHR ?= `which watchr`
@@ -36,7 +36,7 @@ build:
 watch:
 	@@if test ! -z ${WATCHR}; then \
 	  echo "Watching less files..."; \
-	  watchr -e "watch('lib/.*\.less') { system 'make' }"; \
+	  watchr -e "watch('less/.*\.less') { system 'make' }"; \
 	else \
 		echo "You must have the watchr installed in order to watch Bootstrap Less files."; \
 		echo "You can install it by running: gem install watchr"; \
