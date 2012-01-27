@@ -1258,7 +1258,7 @@ $('.myCarousel').carousel({
           <h2>{{_i}}Example{{/i}}</h2>
           <p>{{_i}}Start typing in the field below to show the typeahead results.{{/i}}</p>
           <div class="well">
-            <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-data='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
+            <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
           </div>
           <hr>
           <h2>{{_i}}Using bootstrap-typeahead.js{{/i}}</h2>
@@ -1275,6 +1275,12 @@ $('.myCarousel').carousel({
              </tr>
             </thead>
             <tbody>
+              <tr>
+               <td>{{_i}}source{{/i}}</td>
+               <td>{{_i}}array{{/i}}</td>
+               <td>[ ]</td>
+               <td>{{_i}}The data source to query against.{{/i}}</td>
+             </tr>
              <tr>
                <td>{{_i}}items{{/i}}</td>
                <td>{{_i}}number{{/i}}</td>
