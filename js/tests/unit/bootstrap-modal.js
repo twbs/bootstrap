@@ -82,4 +82,34 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should cancel show when handler returns false", function () {
+        $.support.transition = false
+        var div = $("<div />")
+          .hide()
+          .appendTo('body')
+          .bind("show", function () {
+            return false
+          })
+          .modal("show")
+
+        ok(!div.is(":visible"), 'modal hidden')
+        div.remove()
+      })
+
+      test("should cancel hide when handler returns false", function () {
+        $.support.transition = false
+        var div = $("<div />")
+          .hide()
+          .bind("hide", function () {
+            return false
+          })
+          .appendTo('body')
+          .modal("show")
+
+        ok(div.is(":visible"), 'modal shown')
+        div.modal("hide")
+        ok(div.is(":visible"), 'modal shown')
+        div.remove()
+      })
 })
