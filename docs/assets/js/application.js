@@ -206,10 +206,9 @@ $(function () {
       $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
     })
 
-// , url: "http://bootstrap.herokuapp.com"
     $.ajax({
       type: 'POST'
-    , url: 'http://localhost:3000'
+    , url: 'http://bootstrap.herokuapp.com'
     , dataType: 'jsonpi'
     , params: {
         branch: '2.0-wip'
