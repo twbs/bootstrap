@@ -1454,7 +1454,7 @@
     </div>
   </div>
   <div class="alert alert-info">
-    <strong>Heads up!</strong> On hover we show a light red background color to highlight the size of the icon. This won't appear in normal usage of icons.
+    <strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code> and on hover in the docs we show a light red background color show the icon's size.
   </div>
 
   <br>
@@ -1470,6 +1470,10 @@
       <p>With v2.0.0, we have opted to use an <code>&lt;i&gt;</code> tag for all our icons with a base class of <code>.icon</code>. To use, place the following code just about anywhere:</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon search"&gt;&lt;/i&gt;
+</pre>
+      <p>There are also styles available for inverted (white) icons, made ready with one extra class:</p>
+<pre class="prettyprint linenums">
+&lt;i class="icon white search"&gt;&lt;/i&gt;
 </pre>
       <p>There are 120 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.</p>
     </div>
@@ -1488,10 +1492,11 @@
 
   <h3>Examples</h3>
   <div class="row">
-    <div class="span4">
+    <div class="span6">
       <p>Use them in buttons, or in button groups for a toolbar style presentation.</p>
       <p>
         <a class="btn" href="#"><i class="icon refresh"></i> Refresh</a>
+        <a class="btn success" href="#"><i class="icon white shopping-cart"></i> Checkout</a>
         <a class="btn danger" href="#"><i class="icon white trash"></i> Delete</a>
       </p>
       <div class="btn-toolbar">

@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 13:43:19 PST 2012
+ * Date: Fri Jan 27 13:54:49 PST 2012
  */
 article,
 aside,
@@ -1088,7 +1088,7 @@ table .span12 {
   background-image: url(../img/glyphicons-halflings-white.png);
 }
 .icon.glass {
-  background-position: 0 0;
+  background-position: 0      0;
 }
 .icon.music {
   background-position: -24px 0;
@@ -1327,23 +1327,20 @@ table .span12 {
 .icon.chevron-right {
   background-position: -456px -72px;
 }
-.icon.arrow-left {
-  background-position: -240px -96px;
-}
 .icon.plus-sign {
   background-position: 0 -96px;
 }
 .icon.minus-sign {
-  background-position: -24px  -96px;
+  background-position: -24px -96px;
 }
 .icon.remove-sign {
-  background-position: -48px  -96px;
+  background-position: -48px -96px;
 }
 .icon.ok-sign {
-  background-position: -72px  -96px;
+  background-position: -72px -96px;
 }
 .icon.question-sign {
-  background-position: -96px  -96px;
+  background-position: -96px -96px;
 }
 .icon.info-sign {
   background-position: -120px -96px;
@@ -1359,6 +1356,9 @@ table .span12 {
 }
 .icon.ban-circle {
   background-position: -216px -96px;
+}
+.icon.arrow-left {
+  background-position: -240px -96px;
 }
 .icon.arrow-right {
   background-position: -264px -96px;
@@ -1391,16 +1391,16 @@ table .span12 {
   background-position: 0 -120px;
 }
 .icon.gift {
-  background-position: -24px  -120px;
+  background-position: -24px -120px;
 }
 .icon.leaf {
-  background-position: -48px  -120px;
+  background-position: -48px -120px;
 }
 .icon.fire {
-  background-position: -72px  -120px;
+  background-position: -72px -120px;
 }
 .icon.eye-open {
-  background-position: -96px  -120px;
+  background-position: -96px -120px;
 }
 .icon.eye-close {
   background-position: -120px -120px;
@@ -1439,7 +1439,7 @@ table .span12 {
   background-position: -384px -120px;
 }
 .icon.folder-open {
-  background-position: -409px -120px;
+  background-position: -408px -120px;
 }
 .icon.resize-vertical {
   background-position: -432px -119px;
