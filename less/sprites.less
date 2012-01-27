@@ -7,13 +7,15 @@
 // -----
 
 // As of v2.0.0, the <i> tag is reserved for icons from the Glyphicons set.
-// All icons receive the styles of the <i> tag and are then given a unique
-// class to add width, height, and background-position. Your resulting HTML
-// will look like <i class="inbox"></i>.
+// All icons receive the styles of the <i> tag with a base class of .icon
+// and are then given a unique class to add width, height, and
+// background-position. Your resulting HTML will look like this:
+// <i class="icon inbox"></i>. And for the white version of the icons, just
+// add the .white class like this: <i class="icon white inbox"></i>
 
 .icon {
-  background-image: url(../img/glyphicons-halflings-sprite.png);
-  background-position: 0 0;
+  background-image: url(../img/glyphicons-halflings.png);
+  background-position: 14px 14px;
   background-repeat: no-repeat;
   display: inline-block;
   vertical-align: text-top;
@@ -21,7 +23,7 @@
   height: 14px;
 }
 .icon.white {
-  background-image: url(../img/glyphicons-halflings-sprite-white.png);
+  background-image: url(../img/glyphicons-halflings-white.png);
 }
 
 .icon.glass              { background-position: 0      0; }
@@ -56,7 +58,7 @@
 .icon.play-circle        { background-position: -192px -24px; }
 .icon.repeat             { background-position: -216px -24px; }
 .icon.refresh            { background-position: -240px -24px; }
-.icon.calendar           { background-position: -264px -24px; }
+.icon.list-alt           { background-position: -264px -24px; }
 .icon.lock               { background-position: -288px -24px; }
 .icon.flag               { background-position: -312px -24px; }
 .icon.headphones         { background-position: -336px -24px; }
@@ -67,13 +69,13 @@
 .icon.barcode            { background-position: -456px -24px; }
 
 .icon.tag                { background-position: 0      -48px; }
-.icon.tags               { background-position: -24px  -48px; }
+.icon.tags               { background-position: -25px  -48px; }
 .icon.book               { background-position: -48px  -48px; }
 .icon.bookmark           { background-position: -72px  -48px; }
 .icon.print              { background-position: -96px  -48px; }
 .icon.camera             { background-position: -120px -48px; }
 .icon.font               { background-position: -144px -48px; }
-.icon.bold               { background-position: -168px -48px; }
+.icon.bold               { background-position: -167px -48px; }
 .icon.italic             { background-position: -192px -48px; }
 .icon.text-height        { background-position: -216px -48px; }
 .icon.text-width         { background-position: -240px -48px; }
@@ -108,14 +110,44 @@
 .icon.chevron-left       { background-position: -432px -72px; }
 .icon.chevron-right      { background-position: -456px -72px; }
 
+.icon.plus-sign          { background-position: 0      -96px; }
+.icon.minus-sign         { background-position: -24px  -96px; }
+.icon.remove-sign        { background-position: -48px  -96px; }
+.icon.ok-sign            { background-position: -72px  -96px; }
+.icon.question-sign      { background-position: -96px  -96px; }
+.icon.info-sign          { background-position: -120px -96px; }
+.icon.screenshot         { background-position: -144px -96px; }
+.icon.remove-circle      { background-position: -168px -96px; }
+.icon.ok-circle          { background-position: -192px -96px; }
+.icon.ban-circle         { background-position: -216px -96px; }
 .icon.arrow-left         { background-position: -240px -96px; }
 .icon.arrow-right        { background-position: -264px -96px; }
-.icon.arrow-up           { background-position: -288px -96px; }
+.icon.arrow-up           { background-position: -289px -96px; }
 .icon.arrow-down         { background-position: -312px -96px; }
 .icon.share-alt          { background-position: -336px -96px; }
 .icon.resize-full        { background-position: -360px -96px; }
 .icon.resize-small       { background-position: -384px -96px; }
 .icon.plus               { background-position: -408px -96px; }
-.icon.minus              { background-position: -432px -96px; }
+.icon.minus              { background-position: -433px -96px; }
 .icon.asterisk           { background-position: -456px -96px; }
 
+.icon.exclamation-sign   { background-position: 0      -120px; }
+.icon.gift               { background-position: -24px  -120px; }
+.icon.leaf               { background-position: -48px  -120px; }
+.icon.fire               { background-position: -72px  -120px; }
+.icon.eye-open           { background-position: -96px  -120px; }
+.icon.eye-close          { background-position: -120px -120px; }
+.icon.warning-sign       { background-position: -144px -120px; }
+.icon.plane              { background-position: -168px -120px; }
+.icon.calendar           { background-position: -192px -120px; }
+.icon.random             { background-position: -216px -120px; }
+.icon.comment            { background-position: -240px -120px; }
+.icon.magnet             { background-position: -264px -120px; }
+.icon.chevron-up         { background-position: -288px -120px; }
+.icon.chevron-down       { background-position: -313px -119px; }
+.icon.retweet            { background-position: -336px -120px; }
+.icon.shopping-cart      { background-position: -360px -120px; }
+.icon.folder-close       { background-position: -384px -120px; }
+.icon.folder-open        { background-position: -408px -120px; }
+.icon.resize-vertical    { background-position: -432px -119px; }
+.icon.resize-horizontal  { background-position: -456px -118px; }
