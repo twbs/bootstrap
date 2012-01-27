@@ -25,7 +25,7 @@
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.$menu = $(this.options.menu).appendTo('body')
-    this.data = this.options.data
+    this.source = this.options.source
     this.shown = false
     this.listen()
   }
@@ -79,7 +79,7 @@
 
       q = this.query.toLowerCase()
 
-      items = jQuery.grep(this.data, function (item) {
+      items = jQuery.grep(this.source, function (item) {
         if (that.matcher(item, q)) return item
       })
 
@@ -229,7 +229,8 @@
   }
 
   $.fn.typeahead.defaults = {
-    items: 8
+    source: []
+  , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   }
