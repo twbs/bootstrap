@@ -13,6 +13,9 @@ pages = fs.readdirSync(__dirname + '/../templates/pages')
 
 // iterate over pages
 pages.forEach(function (name) {
+  if (!name.match(/\.mustache$/)) {
+    return;
+  }
 
   if (!name.match(/\.mustache$/)) return
 
