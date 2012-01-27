@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan 26 15:39:24 PST 2012
+ * Date: Thu Jan 26 19:09:35 PST 2012
  */
 article,
 aside,
@@ -1074,274 +1074,277 @@ table .span12 {
   width: 14px;
   height: 14px;
 }
-.glass {
+.icon.white {
+  background-image: url(docs/assets/img/glyphicons-halflings-sprite-white.png);
+}
+.icon.glass {
   background-position: 0      0;
 }
-.music {
+.icon.music {
   background-position: -24px 0;
 }
-.search {
+.icon.search {
   background-position: -48px 0;
 }
-.envelope {
+.icon.envelope {
   background-position: -72px 0;
 }
-.heart {
+.icon.heart {
   background-position: -96px 0;
 }
-.star {
+.icon.star {
   background-position: -120px 0;
 }
-.star-empty {
+.icon.star-empty {
   background-position: -144px 0;
 }
-.user {
+.icon.user {
   background-position: -168px 0;
 }
-.film {
+.icon.film {
   background-position: -192px 0;
 }
-.th-large {
+.icon.th-large {
   background-position: -216px 0;
 }
-.th {
+.icon.th {
   background-position: -240px 0;
 }
-.th-list {
+.icon.th-list {
   background-position: -264px 0;
 }
-.ok {
+.icon.ok {
   background-position: -288px 0;
 }
-.remove {
+.icon.remove {
   background-position: -312px 0;
 }
-.zoom-in {
+.icon.zoom-in {
   background-position: -336px 0;
 }
-.zoom-out {
+.icon.zoom-out {
   background-position: -360px 0;
 }
-.off {
+.icon.off {
   background-position: -384px 0;
 }
-.signal {
+.icon.signal {
   background-position: -408px 0;
 }
-.cog {
+.icon.cog {
   background-position: -432px 0;
 }
-.trash {
+.icon.trash {
   background-position: -456px 0;
 }
-.home {
+.icon.home {
   background-position: 0 -24px;
 }
-.file {
+.icon.file {
   background-position: -24px -24px;
 }
-.time {
+.icon.time {
   background-position: -48px -24px;
 }
-.road {
+.icon.road {
   background-position: -72px -24px;
 }
-.download-alt {
+.icon.download-alt {
   background-position: -96px -24px;
 }
-.download {
+.icon.download {
   background-position: -120px -24px;
 }
-.upload {
+.icon.upload {
   background-position: -144px -24px;
 }
-.inbox {
+.icon.inbox {
   background-position: -168px -24px;
 }
-.play-circle {
+.icon.play-circle {
   background-position: -192px -24px;
 }
-.repeat {
+.icon.repeat {
   background-position: -216px -24px;
 }
-.refresh {
+.icon.refresh {
   background-position: -240px -24px;
 }
-.calendar {
+.icon.calendar {
   background-position: -264px -24px;
 }
-.lock {
+.icon.lock {
   background-position: -288px -24px;
 }
-.flag {
+.icon.flag {
   background-position: -312px -24px;
 }
-.headphones {
+.icon.headphones {
   background-position: -336px -24px;
 }
-.volume-off {
+.icon.volume-off {
   background-position: -360px -24px;
 }
-.volume-down {
+.icon.volume-down {
   background-position: -384px -24px;
 }
-.volume-up {
+.icon.volume-up {
   background-position: -408px -24px;
 }
-.qrcode {
+.icon.qrcode {
   background-position: -432px -24px;
 }
-.barcode {
+.icon.barcode {
   background-position: -456px -24px;
 }
-.tag {
+.icon.tag {
   background-position: 0 -48px;
 }
-.tags {
+.icon.tags {
   background-position: -24px -48px;
 }
-.book {
+.icon.book {
   background-position: -48px -48px;
 }
-.bookmark {
+.icon.bookmark {
   background-position: -72px -48px;
 }
-.print {
+.icon.print {
   background-position: -96px -48px;
 }
-.camera {
+.icon.camera {
   background-position: -120px -48px;
 }
-.font {
+.icon.font {
   background-position: -144px -48px;
 }
-.bold {
+.icon.bold {
   background-position: -168px -48px;
 }
-.italic {
+.icon.italic {
   background-position: -192px -48px;
 }
-.text-height {
+.icon.text-height {
   background-position: -216px -48px;
 }
-.text-width {
+.icon.text-width {
   background-position: -240px -48px;
 }
-.align-left {
+.icon.align-left {
   background-position: -264px -48px;
 }
-.align-center {
+.icon.align-center {
   background-position: -288px -48px;
 }
-.align-right {
+.icon.align-right {
   background-position: -312px -48px;
 }
-.align-justify {
+.icon.align-justify {
   background-position: -336px -48px;
 }
-.list {
+.icon.list {
   background-position: -360px -48px;
 }
-.indent-left {
+.icon.indent-left {
   background-position: -384px -48px;
 }
-.indent-right {
+.icon.indent-right {
   background-position: -408px -48px;
 }
-.facetime-video {
+.icon.facetime-video {
   background-position: -432px -48px;
 }
-.picture {
+.icon.picture {
   background-position: -456px -48px;
 }
-.pencil {
+.icon.pencil {
   background-position: 0 -72px;
 }
-.map-marker {
+.icon.map-marker {
   background-position: -24px -72px;
 }
-.adjust {
+.icon.adjust {
   background-position: -48px -72px;
 }
-.tint {
+.icon.tint {
   background-position: -72px -72px;
 }
-.edit {
+.icon.edit {
   background-position: -96px -72px;
 }
-.share {
+.icon.share {
   background-position: -120px -72px;
 }
-.check {
+.icon.check {
   background-position: -144px -72px;
 }
-.move {
+.icon.move {
   background-position: -168px -72px;
 }
-.step-backward {
+.icon.step-backward {
   background-position: -192px -72px;
 }
-.fast-backward {
+.icon.fast-backward {
   background-position: -216px -72px;
 }
-.backward {
+.icon.backward {
   background-position: -240px -72px;
 }
-.play {
+.icon.play {
   background-position: -264px -72px;
 }
-.pause {
+.icon.pause {
   background-position: -288px -72px;
 }
-.stop {
+.icon.stop {
   background-position: -312px -72px;
 }
-.forward {
+.icon.forward {
   background-position: -336px -72px;
 }
-.fast-forward {
+.icon.fast-forward {
   background-position: -360px -72px;
 }
-.step-forward {
+.icon.step-forward {
   background-position: -384px -72px;
 }
-.eject {
+.icon.eject {
   background-position: -408px -72px;
 }
-.chevron-left {
+.icon.chevron-left {
   background-position: -432px -72px;
 }
-.chevron-right {
+.icon.chevron-right {
   background-position: -456px -72px;
 }
-.arrow-left {
+.icon.arrow-left {
   background-position: -240px -96px;
 }
-.arrow-right {
+.icon.arrow-right {
   background-position: -264px -96px;
 }
-.arrow-up {
+.icon.arrow-up {
   background-position: -288px -96px;
 }
-.arrow-down {
+.icon.arrow-down {
   background-position: -312px -96px;
 }
-.share-alt {
+.icon.share-alt {
   background-position: -336px -96px;
 }
-.resize-full {
+.icon.resize-full {
   background-position: -360px -96px;
 }
-.resize-small {
+.icon.resize-small {
   background-position: -384px -96px;
 }
-.plus {
+.icon.plus {
   background-position: -408px -96px;
 }
-.minus {
+.icon.minus {
   background-position: -432px -96px;
 }
-.asterisk {
+.icon.asterisk {
   background-position: -456px -96px;
 }
 .dropdown {
@@ -2997,6 +3000,25 @@ a.thumbnail:hover {
 }
 .carousel-caption h4, .carousel-caption p {
   color: #ffffff;
+}
+.hero-unit {
+  padding: 60px;
+  margin-bottom: 30px;
+  background-color: #f5f5f5;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.hero-unit h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.hero-unit p {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 27px;
 }
 .pull-right {
   float: right;
