@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Jan 26 22:39:03 PST 2012
+ * Date: Fri Jan 27 12:16:22 EST 2012
  */
 article,
 aside,
@@ -604,6 +604,9 @@ input:focus, textarea:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   outline: 0;
+  outline: 1px dotted #666 \9;
+  /* IE6-8 */
+
 }
 input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   -webkit-box-shadow: none;
@@ -884,6 +887,12 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
+.input-append input:first-child {
+  *margin-left: -160px;
+}
+.input-append input:first-child + .add-on {
+  *margin-left: -21px;
+}
 .search-query {
   padding-left: 14px;
   padding-right: 14px;
@@ -969,6 +978,7 @@ table {
 .table-bordered {
   border: 1px solid #ddd;
   border-collapse: separate;
+  *border-collapse: collapsed;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -2535,6 +2545,8 @@ table .span12 {
 .btn {
   display: inline-block;
   padding: 4px 10px 4px;
+  *padding: 2px 10px;
+  *margin-left: 4px;
   font-size: 13px;
   line-height: 18px;
   color: #333333;
@@ -2556,6 +2568,9 @@ table .span12 {
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
+}
+.btn:first-child {
+  *margin-left: 0;
 }
 .btn:hover {
   color: #333333;

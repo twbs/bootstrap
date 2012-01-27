@@ -67,6 +67,13 @@
   // Button Base
   display: inline-block;
   padding: 4px 10px 4px;
+  *padding: 2px 10px;
+  // IE7 likes to collapse the whitespace before the button, so bring it back...
+  *margin-left: 4px;
+  &:first-child {
+    // ...but not before the first button
+    *margin-left: 0;
+  }
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @grayDark;
