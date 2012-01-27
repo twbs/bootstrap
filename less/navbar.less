@@ -25,11 +25,14 @@
   }
   // Website or project name
   .brand {
+    @myHeight: 20px;
     float: left;
     display: block;
-    padding: 8px 20px 12px;
+    padding: 20px;
+    padding-top: (@navbarHeight - @myHeight)*2/5;
+    padding-bottom: (@navbarHeight - @myHeight)*3/5;
     margin-left: -20px; // negative indent to left-align the text down the page
-    font-size: 20px;
+    font-size: @myHeight;
     font-weight: 200;
     line-height: 1;
     color: @white;
@@ -37,7 +40,7 @@
   // Plain text in topbar
   p {
     margin: 0;
-    line-height: 40px;
+    line-height: @navbarHeight;
     a:hover {
       color: @white;
       background-color: transparent;
@@ -46,7 +49,8 @@
   // Buttons in navbar
   .btn,
   .btn-group {
-    margin-top: 5px; // make buttons vertically centered in navbar
+    @myHeight: 30px; // assumes button height of ~30px
+    margin-top: (@navbarHeight - @myHeight)/2; // make buttons vertically centered in navbar
   }
   .btn-group .btn {
     margin-top: 0;
@@ -65,9 +69,10 @@
 
 // Navbar search
 .navbar-search {
+  @myHeight: 28px; // assumes input height of ~30px
   position: relative;
   float: left;
-  margin-top: 6px;
+  margin-top: (@navbarHeight - @myHeight)/2;
   margin-bottom: 0;
   .search-query {
     padding: 4px 9px;
@@ -76,7 +81,7 @@
     color: rgba(255,255,255,.75);
     background: #444;
     background: rgba(255,255,255,.3);
-    border: 1px solid #111;
+    border: 1px solid @navbarBackground;
     @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15);
     .box-shadow(@shadow);
     .transition(none);
@@ -146,9 +151,12 @@
 
 // Links
 .navbar .nav > li > a {
+  @myHeight: 19px;
   float: none;
-  padding: 10px 10px 11px;
-  line-height: 19px;
+  padding: 10px;
+  padding-top: (@navbarHeight - (@myHeight + 1))/2;
+  padding-bottom: (@navbarHeight - (@myHeight - 1))/2;
+  line-height: @myHeight;
   color: @grayLight;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
@@ -164,18 +172,18 @@
 .navbar .nav .active > a {
   color: @white;
   text-decoration: none;
-  background-color: @grayDarker;
+  background-color: (@navbarBackgroundHighlight + @navbarBackground)/2;
   background-color: rgba(0,0,0,.5);
 }
 
 // Dividers (basically a vertical hr)
 .navbar .vertical-divider {
-  height: 40px;
+  height: @navbarHeight;
   width: 1px;
   margin: 0 5px;
   overflow: hidden;
-  background-color: @grayDarker;
-  border-right: 1px solid #444;
+  background-color: @navbarBackground;
+  border-right: 1px solid @navbarBackgroundHighlight;
 }
 
 // Secondary (floated right) nav in topbar
