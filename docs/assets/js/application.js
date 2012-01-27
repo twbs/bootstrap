@@ -151,12 +151,13 @@ $(function () {
           .attr('target', name)
 
         $.each(opts.params, function(k, v) {
+
           $('<input>')
             .attr('type', 'hidden')
             .attr('name', k)
-            .attr('value', v)
+            .attr('value', typeof v == 'string' ? v : JSON.stringify(v))
             .appendTo(form)
-        });
+        })
 
         form.appendTo('body').submit()
       }
@@ -195,13 +196,13 @@ $(function () {
 
     $("#variables.download input")
       .each(function () {
-        return $(this).val() 
+        return vars[ $(this).prev().text() ] = $(this).val()
       })
 
+// , url: "http://bootstrap.herokuapp.com"
     $.ajax({
       type: 'POST'
-    , url: 'localhost:3000'
-   // , url: "http://bootstrap.herokuapp.com"
+    , url: 'http://localhost:3000'
     , dataType: 'jsonpi'
     , params: {
         branch: '2.0-wip'
