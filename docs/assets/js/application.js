@@ -185,25 +185,30 @@ $(function () {
   // request built javascript
   $('.download-btn').on('click', function () {
 
-    var comp = $("#components.download input:checked")
+    var css = $("#components.download input:checked")
           .map(function () { return this.value })
           .toArray()
-      , plug = $("#plugins.download input:checked")
+      , js = $("#plugins.download input:checked")
           .map(function () { return this.value })
           .toArray()
+      , vars = {}
 
-    
+    $("#variables.download input")
+      .each(function () {
+        return $(this).val() 
+      })
 
     $.ajax({
       type: 'POST'
+    , url: 'localhost:3000'
+   // , url: "http://bootstrap.herokuapp.com"
     , dataType: 'jsonpi'
     , params: {
         branch: '2.0-wip'
-      , dir: 'js'
-      , filenames: names
-      , compress: buildTypes.first().hasClass('active')
-      }
-    , url: "http://bootstrap.herokuapp.com"
+      , js: js
+      , css: css
+      , vars: vars
+    }
     })
   })
 
