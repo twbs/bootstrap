@@ -6,27 +6,6 @@ Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more
 To get started -- checkout http://twitter.github.com/bootstrap!
 
 
-Usage
------
-
-You can use Twitter Bootstrap in one of two ways: just drop the compiled CSS into any new project and start cranking, or run LESS on your site and compile on the fly like a boss.
-
-Here's what the LESS version looks like:
-
-``` html
-<link rel="stylesheet/less" type="text/css" href="lib/bootstrap.less">
-<script src="less.js" type="text/javascript"></script>
-```
-
-Or if you prefer, the standard CSS way:
-
-``` html
-<link rel="stylesheet" type="text/css" href="bootstrap.css">
-```
-
-For more info, refer to the docs!
-
-
 Versioning
 ----------
 
@@ -74,8 +53,8 @@ Developers
 
 We have included a makefile with convenience methods for working with the Bootstrap library.
 
-+ **build** - `make build`
-This will run the less compiler on the bootstrap lib and generate a bootstrap.css and bootstrap.min.css file.
++ **build** - `make`
+This will run the less compiler on the bootstrap lib and regenerate the docs dir.
 The lessc compiler is required for this command to run.
 
 + **watch** - `make watch`
