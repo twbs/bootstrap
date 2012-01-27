@@ -157,6 +157,7 @@
 
         case 9: // tab
         case 13: // enter
+          if (!this.shown) return
           this.select()
           break
 
@@ -172,6 +173,7 @@
 
   , keypress: function (e) {
       e.stopPropagation()
+      if (!this.shown) return
 
       switch(e.keyCode) {
         case 9: // tab
@@ -181,13 +183,11 @@
           break
 
         case 38: // up arrow
-          if (!this.shown) return
           e.preventDefault()
           this.prev()
           break
 
         case 40: // down arrow
-          if (!this.shown) return
           e.preventDefault()
           this.next()
           break
