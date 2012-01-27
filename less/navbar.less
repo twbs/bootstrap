@@ -16,7 +16,7 @@
   .box-shadow(@shadow);
 }
 
-// Text and links
+// Brand, links, text, and buttons
 .navbar {
   // Hover and active states
   .brand:hover {
@@ -35,9 +35,10 @@
     color: @white;
   }
   // Plain text in topbar
-  p {
-    margin: 0;
+  .navbar-text {
+    margin-bottom: 0;
     line-height: 40px;
+    color: @navbarText;
     a:hover {
       color: @white;
       background-color: transparent;
@@ -105,6 +106,9 @@
 }
 
 
+// STATIC OR FIXED?
+// ----------------
+
 // Static navbar
 .navbar-static {
   margin-bottom: @baseLineHeight;
@@ -116,14 +120,13 @@
 }
 
 // Fixed navbar
-.navbar-fixed {
+.navbar-fixed-top {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: @zindexFixedNavbar;
 }
-
 
 
 // NAVIGATION
@@ -149,33 +152,33 @@
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
-  color: @grayLight;
+  color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 }
 // Hover
 .navbar .nav > li > a:hover {
   background-color: transparent;
-  color: @white;
+  color: @navbarLinkColorHover;
   text-decoration: none;
 }
 
 // Active nav items
 .navbar .nav .active > a {
-  color: @white;
+  color: @navbarLinkColorHover;
   text-decoration: none;
-  background-color: @grayDarker;
+  background-color: @navbarBackground;
   background-color: rgba(0,0,0,.5);
 }
 
 // Dividers (basically a vertical hr)
 .navbar .vertical-divider {
-  height: 40px;
+  height: @navbarHeight;
   width: 1px;
   margin: 0 5px;
   overflow: hidden;
-  background-color: @grayDarker;
-  border-right: 1px solid #444;
+  background-color: @navbarBackground;
+  border-right: 1px solid @navbarBackgroundHighlight;
 }
 
 // Secondary (floated right) nav in topbar

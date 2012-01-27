@@ -111,6 +111,8 @@
 @media (min-width: 768px) and (max-width: 940px) {
   .container {
     width: 748px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .span1 {
     width: 44px;

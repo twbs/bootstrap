@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 12:16:22 EST 2012
+ * Date: Fri Jan 27 13:19:35 PST 2012
  */
 article,
 aside,
@@ -1791,11 +1791,12 @@ table .span12 {
   line-height: 1;
   color: #ffffff;
 }
-.navbar p {
-  margin: 0;
+.navbar .navbar-text {
+  margin-bottom: 0;
   line-height: 40px;
+  color: #999999;
 }
-.navbar p a:hover {
+.navbar .navbar-text a:hover {
   color: #ffffff;
   background-color: transparent;
 }
@@ -1841,7 +1842,7 @@ table .span12 {
 .navbar-search .search-query :-moz-placeholder {
   color: #eeeeee;
 }
-.navbar-search .search-query::-webkit-input-placeholder {
+.navbar-search .search-query ::-webkit-input-placeholder {
   color: #eeeeee;
 }
 .navbar-search .search-query:hover {
@@ -1870,7 +1871,7 @@ table .span12 {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.navbar-fixed {
+.navbar-fixed-top {
   position: fixed;
   top: 0;
   right: 0;
@@ -1916,7 +1917,7 @@ table .span12 {
   margin: 0 5px;
   overflow: hidden;
   background-color: #222222;
-  border-right: 1px solid #444;
+  border-right: 1px solid #333333;
 }
 .navbar .nav.pull-right {
   margin-left: 10px;
@@ -2649,7 +2650,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   margin-bottom: 18px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background-color: #fcf8e3;
-  border: 1px solid #f3edd2;
+  border: 1px solid #fbeed5;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -2664,14 +2665,14 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .alert-success {
   background-color: #dff0d8;
-  border-color: #cfe8c4;
+  border-color: #d6e9c6;
 }
 .alert-success, .alert-success .alert-heading {
   color: #468847;
 }
 .alert-danger, .alert-error {
   background-color: #f2dede;
-  border-color: #e9c7c7;
+  border-color: #eed3d7;
 }
 .alert-danger,
 .alert-error,
@@ -2681,7 +2682,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .alert-info {
   background-color: #d9edf7;
-  border-color: #bfe1f2;
+  border-color: #bce8f1;
 }
 .alert-info, .alert-info .alert-heading {
   color: #3a87ad;

@@ -30,7 +30,7 @@
   
   <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="./index.html">Bootstrap</a>
@@ -73,7 +73,7 @@
             <p>Simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions.</p>
             <p class="download-info">
               <a href="https://github.com/twitter/bootstrap/" class="btn primary btn-large">View project on GitHub</a>
-              <a href="./download.html" class="btn btn-large">Customize and download</a>
+              <a href="./download.html" class="btn btn-large">Customize and Download</a>
             </p>
             <div class="benefits">
               <h4>Feature highlights</h4>
@@ -90,7 +90,7 @@
           </div>
 
           <ul class="quick-links">
-            <li><a href="https://github.com/twitter/bootstrap/">GitHub repo</a></li>
+            <li><a href="./upgrading.html">Upgrading from 1.4</a></li>
             <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
             <li><a href="https://github.com/twitter/bootstrap/wiki/Roadmap">Roadmap</a></li>
             <li><a href="https://github.com/twitter/bootstrap/wiki/Changelog">Changelog</a></li>
@@ -221,26 +221,27 @@
           <div class="getting-started">
             <div class="row">
               <div class="span4">
+                <h3>Prostyle with Node</h3>
+                <p>If you use Node, download the repo, customize Bootstrap, and run make.</p>
+                <pre class="prettyprint">
+$ git clone git@github.com:twitter/bootstrap.git
+$ make</pre>
+              </div>
+              <div class="span4">
                 <h3>Hotlink the CSS</h3>
-                <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
+                <p>For the quickest and easiest start, just copy this snippet into your code to get the CSS.</p>
                 <form>
                   <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.min.css"></textarea>
                 </form>
               </div> 
               <div class="span4">
-                <h3>Use it with LESS</h3>
-                <p>A fan of using LESS? No problem, just download the repo and add these lines to your page:</p>
+                <h3>Use LESS.js</h3>
+                <p>A fan of using LESS? No problem, just link to the appropriate .less and .js files:</p>
                 <form>
                   <textarea class="copy-code" rows="2">&lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
     &lt;script src="/path/to/less.js"&gt;&lt;/script&gt;</textarea>
                 </form>
-              </div> 
-              <div class="span4">
-                <h3>Fork on GitHub</h3>
-                <p>Download, fork, pull, file issues, and more with the Bootstrap GitHub repo.</p>
-                <p><a target="_blank" href="https://github.com/twitter/bootstrap" class="btn primary">Bootstrap on GitHub &raquo;</a></p>
-                <p class="current-version">Currently <a href="https://github.com/twitter/bootstrap/wiki/Changelog">v2.0.0</a></p>
-              </div> 
+              </div>
             </div><!-- /row -->
           </div><!-- /getting-started -->
 
