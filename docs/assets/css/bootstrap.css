@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 11:07:13 PST 2012
+ * Date: Fri Jan 27 16:39:29 EST 2012
  */
 article,
 aside,
@@ -814,6 +814,10 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 }
 .help-inline {
   display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
   margin-bottom: 9px;
   vertical-align: middle;
   padding-left: 5px;
@@ -1083,6 +1087,10 @@ table .span12 {
   vertical-align: text-top;
   width: 14px;
   height: 14px;
+  *margin-right: .3em;
+}
+.icon:last-child {
+  *margin-left: 0;
 }
 .icon.white {
   background-image: url(../img/glyphicons-halflings-sprite-white.png);
@@ -1360,11 +1368,15 @@ table .span12 {
 .dropdown {
   position: relative;
 }
+.dropdown .dropdown-toggle {
+  *margin-bottom: -3px;
+}
 .caret {
   display: inline-block;
   width: 0;
   height: 0;
   text-indent: -99999px;
+  *text-indent: 0;
   vertical-align: top;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
@@ -1376,7 +1388,6 @@ table .span12 {
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
-  *margin-top: 7px;
 }
 .dropdown:hover .caret, .open.dropdown .caret {
   opacity: 1;
@@ -1385,6 +1396,7 @@ table .span12 {
 .dropdown-menu {
   position: absolute;
   top: 100%;
+  left: 0;
   z-index: 1000;
   float: left;
   display: none;
@@ -1408,7 +1420,6 @@ table .span12 {
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-  zoom: 1;
   *border-right-width: 2px;
   *border-bottom-width: 2px;
 }
@@ -1423,6 +1434,8 @@ table .span12 {
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
+  *width: 100%;
+  *margin: -5px 0 5px;
 }
 .dropdown-menu a {
   display: block;
@@ -1437,6 +1450,9 @@ table .span12 {
   color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
+}
+.dropdown.open {
+  *z-index: 1000;
 }
 .dropdown.open .dropdown-toggle {
   color: #ffffff;
@@ -1742,6 +1758,7 @@ table .span12 {
 }
 .tabs-left .tabs .active > a, .tabs-left .tabs .active > a:hover {
   border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #ffffff;
 }
 .tabs-right .tabs {
   float: right;
@@ -1759,6 +1776,7 @@ table .span12 {
 }
 .tabs-right .tabs .active > a, .tabs-right .tabs .active > a:hover {
   border-color: #ddd #ddd #ddd transparent;
+  *border-left-color: #ffffff;
 }
 .navbar {
   overflow: visible;
@@ -1826,7 +1844,7 @@ table .span12 {
   line-height: 1;
   color: #ffffff;
   color: rgba(255, 255, 255, 0.75);
-  background: #444;
+  background: #6a6a6a;
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid #111;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.15);
@@ -2455,8 +2473,6 @@ table .span12 {
 .btn {
   display: inline-block;
   padding: 4px 10px 4px;
-  *padding: 2px 10px;
-  *margin-left: 4px;
   font-size: 13px;
   line-height: 18px;
   color: #333333;
@@ -2478,6 +2494,7 @@ table .span12 {
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
+  *margin-left: .3em;
 }
 .btn:first-child {
   *margin-left: 0;
@@ -2525,7 +2542,7 @@ table .span12 {
   box-shadow: none;
 }
 .btn.large {
-  padding: 9px 14px 9px;
+  padding: 9px 14px;
   font-size: 15px;
   line-height: normal;
   -webkit-border-radius: 5px;
@@ -2536,20 +2553,33 @@ table .span12 {
   margin-top: 1px;
 }
 .btn.small {
-  padding: 5px 9px 5px;
+  padding: 5px 9px;
   font-size: 11px;
   line-height: 16px;
 }
 .btn.small .icon {
   margin-top: -2px;
 }
+button.btn, input[type=submit].btn {
+  *padding-top: 2px;
+  *padding-bottom: 2px;
+}
 button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
+button.btn.large, input[type=submit].btn.large {
+  *padding-top: 7px;
+  *padding-bottom: 7px;
+}
+button.btn.small, input[type=submit].btn.small {
+  *padding-top: 3px;
+  *padding-bottom: 3px;
+}
 .btn-group {
   position: relative;
   *zoom: 1;
+  *margin-left: .3em;
 }
 .btn-group:before, .btn-group:after {
   display: table;
@@ -2558,11 +2588,18 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 .btn-group:after {
   clear: both;
 }
+.btn-group:first-child {
+  *margin-left: 0;
+}
 .btn-group + .btn-group {
   margin-left: 5px;
 }
 .btn-toolbar .btn-group {
   display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
 }
 .btn-group .btn {
   position: relative;
@@ -2615,6 +2652,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -webkit-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  *padding-top: 5px;
+  *padding-bottom: 5px;
+}
+.btn-group.open {
+  *z-index: 1000;
 }
 .btn-group.open .dropdown-menu {
   display: block;
