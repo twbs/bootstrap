@@ -3195,11 +3195,6 @@ a.thumbnail:hover {
   border-radius: 23px;
   opacity: 0.5;
   filter: alpha(opacity=50);
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -ms-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  transition: all 0.2s linear;
 }
 .carousel-control.right {
   left: auto;

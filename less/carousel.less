@@ -26,15 +26,15 @@
     line-height: 1;
   }
 
-  .active, 
-  .next, 
+  .active,
+  .next,
   .prev { display: block; }
 
   .active {
     left: 0;
   }
 
-  .next, 
+  .next,
   .prev {
     position: absolute;
     top: 0;
@@ -47,7 +47,7 @@
   .prev {
     left: -100%;
   }
-  .next.left, 
+  .next.left,
   .prev.right {
     left: 0;
   }
@@ -80,7 +80,13 @@
   border: 3px solid @white;
   .border-radius(23px);
   .opacity(50);
-  .transition(all .2s linear);
+
+  // we can't have this transition here
+  // because webkit cancels the carousel
+  // animation if you trip this while
+  // in the middle of another animation
+  // ;_;
+  // .transition(opacity .2s linear);
 
   // Reposition the right one
   &.right {
