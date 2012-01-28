@@ -681,6 +681,7 @@ form.well {
   }
   .jumbotron p {
     margin-right: 0;
+    margin-left: 0;
     font-size: 18px;
     line-height: 24px;
   }
@@ -694,6 +695,10 @@ form.well {
   /* Don't space out quick links so much */
   .quick-links {
     margin: 40px 0 0;
+  }
+  .quick-links li {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   /* hide the bullets on mobile since our horizontal space is limited */
   .quick-links .divider {
@@ -744,7 +749,7 @@ form.well {
   .subnav .nav > li {
     float: none;
   }
-  .subnav .nav a {
+  .subnav .nav > li > a {
     border: 0;
   }
   .subnav .nav li + li a {
