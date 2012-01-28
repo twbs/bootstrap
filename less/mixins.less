@@ -144,6 +144,16 @@
 .columns(@columns: 1) {
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
+.alert-inline-columns(@columns: 1) {
+  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) - 50;
+  float: none;
+  margin-left: 0;
+}
+.alert-horizontal-columns(@columns: 1) {
+  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) - 50;
+  float: none;
+  margin-left: 160px;
+}
 .offset(@columns: 1) {
   margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
 }
