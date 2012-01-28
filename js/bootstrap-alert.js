@@ -36,9 +36,15 @@
 
   , close: function ( e ) {
       var $this = $(this)
-        , selector = $this.attr('data-target') || $this.attr('href')
-        , $parent = $(selector)
+        , selector = $this.attr('data-target')
+        , $parent
 
+      if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      $parent = $(selector)
       $parent.trigger('close')
 
       e && e.preventDefault()

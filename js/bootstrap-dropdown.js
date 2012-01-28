@@ -36,11 +36,18 @@
 
   , toggle: function ( e ) {
       var $this = $(this)
-        , selector = $this.attr('data-target') || $this.attr('href')
-        , $parent = $(selector)
+        , selector = $this.attr('data-target')
+        , $parent
         , isActive
 
+      if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      $parent = $(selector)
       $parent.length || ($parent = $this.parent())
+
       isActive = $parent.hasClass('open')
 
       clearMenus()
@@ -76,7 +83,7 @@
    * =================================== */
 
   $(function () {
-    $(window).on('click.dropdown.data-api', clearMenus)
+    $('html').on('click.dropdown.data-api', clearMenus)
     $('body').on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
   })
 

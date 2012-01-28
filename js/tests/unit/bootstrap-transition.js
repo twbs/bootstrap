@@ -7,7 +7,7 @@ $(function () {
       })
 
       test("should provide an end object", function () {
-        ok($.support.transition.end, 'end string is defined')
+        ok($.support.transition ? $.support.transition.end : true, 'end string is defined')
       })
 
 })
