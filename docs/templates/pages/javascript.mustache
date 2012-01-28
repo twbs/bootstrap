@@ -1297,7 +1297,7 @@ $('.myCarousel').carousel({
              <tr>
                <th style="width: 100px;">{{_i}}Name{{/i}}</th>
                <th style="width: 50px;">{{_i}}type{{/i}}</th>
-               <th style="width: 90px;">{{_i}}default{{/i}}</th>
+               <th style="width: 100px;">{{_i}}default{{/i}}</th>
                <th>{{_i}}description{{/i}}</th>
              </tr>
             </thead>
@@ -1317,14 +1317,20 @@ $('.myCarousel').carousel({
              <tr>
                <td>{{_i}}matcher{{/i}}</td>
                <td>{{_i}}function{{/i}}</td>
-               <td>case sensitive</td>
+               <td>{{_i}}case insensitive{{/i}}</td>
                <td>{{_i}}The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.{{/i}}</td>
              </tr>
              <tr>
                <td>{{_i}}sorter{{/i}}</td>
                <td>{{_i}}function{{/i}}</td>
-               <td>no sort</td>
+               <td>{{_i}}exact match,<br> case sensitive,<br> case insensitive{{/i}}</td>
                <td>{{_i}}Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}highlighter{{/i}}</td>
+               <td>{{_i}}function{{/i}}</td>
+               <td>{{_i}}highlights all default matches{{/i}}</td>
+               <td>{{_i}}Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.{{/i}}</td>
              </tr>
             </tbody>
           </table>
