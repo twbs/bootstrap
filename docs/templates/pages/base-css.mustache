@@ -6,6 +6,7 @@
   <div class="subnav">
     <ul class="nav pills">
       <li><a href="#typography">{{_i}}Typography{{/i}}</a></li>
+      <li><a href="#code">{{_i}}Code{{/i}}</a></li>
       <li><a href="#tables">{{_i}}Tables{{/i}}</a></li>
       <li><a href="#forms">{{_i}}Forms{{/i}}</a></li>
       <li><a href="#buttons">{{_i}}Buttons{{/i}}</a></li>
@@ -278,51 +279,46 @@
       </dl>
     </div>
   </div><!-- /row -->
+</section>
 
 
-  <!-- Code -->
 
-  <h2>{{_i}}Code <small>Inline and block</small>{{/i}}</h2>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th style="width: 190px;">{{_i}}Element{{/i}}</th>
-        <th>{{_i}}Result{{/i}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>&lt;code&gt;</code></td>
-        <td>{{_i}}In a line of text like this, your wrapped code will look like this <code>&lt;html&gt;</code> element.{{/i}}</td>
-      </tr>
-      <tr>
-        <td><code>&lt;pre&gt;</code></td>
-        <td>
-<pre>&lt;div&gt;
-  &lt;h1&gt;{{_i}}Heading{{/i}}&lt;/h1&gt;
-  &lt;p&gt;{{_i}}Something right here…{{/i}}&lt;/p&gt;
-&lt;/div&gt;</pre>
-          <p>{{_i}}<strong>Note:</strong> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.{{/i}}</p>
-        </td>
-      </tr>
-      <tr>
-        <td><code>&lt;pre class="prettyprint"&gt;</code></td>
-        <td>
-          <p>{{_i}}Using the google-code-prettify library, your blocks of code get a slightly different visual style and automatic syntax highlighting. You can also add an additional class to add line numbers.{{/i}}</p>
-<pre class="prettyprint">&lt;div&gt;
-  &lt;h1&gt;{{_i}}Heading{{/i}}&lt;/h1&gt;
-  &lt;p&gt;{{_i}}Something right here…{{/i}}&lt;/p&gt;
-&lt;/div&gt;</pre>
-<pre class="prettyprint linenums">&lt;div&gt;
-  &lt;h1&gt;{{_i}}Heading{{/i}}&lt;/h1&gt;
-  &lt;p&gt;{{_i}}Something right here…{{/i}}&lt;/p&gt;
-&lt;/div&gt;</pre>
-          <p>{{_i}}<a href="http://code.google.com/p/google-code-prettify/">Download google-code-prettify</a> and view the readme for <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">how to use</a>.{{/i}}</p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
+<!-- Code
+================================================== -->
+<section id="code">
+  <div class="page-header">
+    <h1>{{_i}}Code{{/i}} <small>{{_i}}Inline and block code snippets{{/i}}</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Inline</h2>
+      <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+<pre class="prettyprint linenums">
+{{_i}}For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.{{/i}}
+</pre>
+    </div><!--/span-->
+    <div class="span4">
+      <h2>Basic block</h2>
+      <p>{{_i}}Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to turn any carets into their unicode characters for proper rendering.{{/i}}</p>
+<pre class="prettyprint linenums" style="margin-bottom: 9px;">
+&lt;pre&gt;
+  &amp;lt;p&amp;gt;{{_i}}Sample text here...{{/i}}&amp;lt;/p&amp;gt;
+&lt;/pre&gt;
+</pre>
+      <p>{{_i}}<strong>Note:</strong> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.{{/i}}</p>
+    </div><!--/span-->
+    <div class="span4">
+      <h2>Google Prettify</h2>
+      <p>Take the same <code>&lt;pre&gt;</code> element and add two optional classes for enhanced rendering.</p>
+<pre class="prettyprint linenums" style="margin-bottom: 9px;">
+&lt;pre class="prettyprint
+     linenums"&gt;
+  &amp;lt;p&amp;gt;{{_i}}Sample text here...{{/i}}&amp;lt;/p&amp;gt;
+&lt;/pre&gt;
+</pre>
+      <p>{{_i}}<a href="http://code.google.com/p/google-code-prettify/">Download google-code-prettify</a> and view the readme for <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">how to use</a>.{{/i}}</p>
+    </div><!--/span-->
+  </div><!--/row-->
 </section>
 
 
@@ -1005,9 +1001,9 @@
           <div class="control-group">
             <label class="control-label">{{_i}}Form sizes{{/i}}</label>
             <div class="controls docs-input-sizes">
+              <input class="span1" type="text" placeholder=".span1">
               <input class="span2" type="text" placeholder=".span2">
               <input class="span3" type="text" placeholder=".span3">
-              <input class="span4" type="text" placeholder=".span4">
               <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
             </div>
           </div>

@@ -657,13 +657,12 @@ form.well {
   }
 
   /* Change up some type stuff */
-  h1 small {
-    display: block;
-    line-height: 20px;
-  }
-  /* More space between sections */
   h2 {
     margin-top: 27px;
+  }
+  h2 small {
+    display: block;
+    line-height: 18px;
   }
   h3 {
     margin-top: 18px;
@@ -681,6 +680,7 @@ form.well {
   }
   .jumbotron p {
     margin-right: 0;
+    margin-left: 0;
     font-size: 18px;
     line-height: 24px;
   }
@@ -694,6 +694,10 @@ form.well {
   /* Don't space out quick links so much */
   .quick-links {
     margin: 40px 0 0;
+  }
+  .quick-links li {
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   /* hide the bullets on mobile since our horizontal space is limited */
   .quick-links .divider {
@@ -744,10 +748,10 @@ form.well {
   .subnav .nav > li {
     float: none;
   }
-  .subnav .nav a {
+  .subnav .nav > li > a {
     border: 0;
   }
-  .subnav .nav li + li a {
+  .subnav .nav > li + li a {
     border-top: 1px solid #e5e5e5;
   }
 
