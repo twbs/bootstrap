@@ -38,7 +38,7 @@ $(function () {
 
       test("should show menu when query entered", function () {
         var $input = $('<input />').typeahead({
-              data: ['aa', 'ab', 'ac']
+              source: ['aa', 'ab', 'ac']
             })
           , typeahead = $input.data('typeahead')
 
@@ -55,7 +55,7 @@ $(function () {
       test("should hide menu when query entered", function () {
         stop()
         var $input = $('<input />').typeahead({
-              data: ['aa', 'ab', 'ac']
+              source: ['aa', 'ab', 'ac']
             })
           , typeahead = $input.data('typeahead')
 
@@ -78,7 +78,7 @@ $(function () {
 
       test("should set next item when down arrow is pressed", function () {
         var $input = $('<input />').typeahead({
-              data: ['aa', 'ab', 'ac']
+              source: ['aa', 'ab', 'ac']
             })
           , typeahead = $input.data('typeahead')
 
@@ -111,7 +111,7 @@ $(function () {
 
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
-              data: ['aa', 'ab', 'ac']
+              source: ['aa', 'ab', 'ac']
             })
           , typeahead = $input.data('typeahead')
 
