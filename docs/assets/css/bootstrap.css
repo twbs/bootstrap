@@ -591,6 +591,7 @@ input[type="hidden"] {
 .radio.inline, .checkbox.inline {
   display: inline-block;
   margin-bottom: 0;
+  vertical-align: middle;
 }
 .radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
   margin-left: 10px;
@@ -1952,6 +1953,12 @@ table .span12 {
   display: inline-block;
   margin-top: 5px;
   margin-bottom: 0;
+}
+.navbar-form .radio, .navbar-form .checkbox {
+  margin-top: 5px;
+}
+.navbar-form input[type="image"], .navbar-form input[type="checkbox"], .navbar-form input[type="radio"] {
+  margin-top: 3px;
 }
 .navbar-search {
   position: relative;
