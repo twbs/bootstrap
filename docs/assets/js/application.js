@@ -106,7 +106,14 @@ $(function () {
   $('.tooltip-demo.well').tooltip({
     selector: "a[rel=tooltip]"
   })
-  $('.tooltip-test').tooltip()
+
+  $('.tooltip-test').tooltip({
+    'z-index': 3000
+  })
+
+  $('.popover-test').popover({
+    'z-index': 3000
+  })
 
   // popover demo
   $("a[rel=popover]")

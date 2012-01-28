@@ -221,7 +221,7 @@
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
 
               <h4>Popover in a modal</h4>
-              <p>This <a href="#" class="btn" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
+              <p>This <a href="#" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
 
               <h4>Tooltips in a modal</h4>
               <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
@@ -740,6 +740,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
                </td>
              </tr>
+             <tr>
+               <td>z-index</td>
+               <td>number</td>
+               <td>1020</td>
+               <td>The tooltips z-index value</td>
+             </tr>
             </tbody>
           </table>
           <p><span class="label notice">Notice</span> Individual tooltip instance options can alternatively be specified through the use of data attributes.</p>
@@ -839,6 +845,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>If a number is supplied, delay is applied to both hide/show</p>
                 <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
                </td>
+             </tr>
+             <tr>
+               <td>z-index</td>
+               <td>number</td>
+               <td>1010</td>
+               <td>The popovers z-index value</td>
              </tr>
             </tbody>
           </table>

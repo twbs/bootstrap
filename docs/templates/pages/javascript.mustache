@@ -156,7 +156,7 @@
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
 
               <h4>{{_i}}Popover in a modal{{/i}}</h4>
-              <p>{{_i}}This <a href="#" class="btn" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
+              <p>{{_i}}This <a href="#" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
 
               <h4>{{_i}}Tooltips in a modal{{/i}}</h4>
               <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
@@ -675,6 +675,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
                </td>
              </tr>
+             <tr>
+               <td>{{_i}}z-index{{/i}}</td>
+               <td>{{_i}}number{{/i}}</td>
+               <td>1020</td>
+               <td>The tooltips z-index value</td>
+             </tr>
             </tbody>
           </table>
           <p>{{_i}}<span class="label notice">Notice</span> Individual tooltip instance options can alternatively be specified through the use of data attributes.{{/i}}</p>
@@ -774,6 +780,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>{{_i}}If a number is supplied, delay is applied to both hide/show{{/i}}</p>
                 <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
                </td>
+             </tr>
+             <tr>
+               <td>{{_i}}z-index{{/i}}</td>
+               <td>{{_i}}number{{/i}}</td>
+               <td>1010</td>
+               <td>The popovers z-index value</td>
              </tr>
             </tbody>
           </table>
