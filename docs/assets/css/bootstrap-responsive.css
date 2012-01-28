@@ -7,6 +7,9 @@
     display: block;
     line-height: 18px;
   }
+  input[type="checkbox"], input[type="radio"] {
+    border: 1px solid #ccc;
+  }
   .form-horizontal .control-group > label {
     float: none;
     width: auto;

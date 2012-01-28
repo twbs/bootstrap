@@ -533,8 +533,7 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
   /* IE7 */
 
   line-height: normal;
-  border: none;
-  border: initial;
+  border: 0;
   cursor: pointer;
   border-radius: 0 \0/;
 }
