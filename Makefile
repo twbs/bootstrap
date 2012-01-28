@@ -3,7 +3,6 @@ BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 LESS_COMPRESSOR ?= `which lessc`
-UGLIFY_JS ?= `which uglifyjs`
 WATCHR ?= `which watchr`
 
 #
