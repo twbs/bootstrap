@@ -33,6 +33,12 @@
     line-height: @baseLineHeight;
   }
 
+  // Update checkboxes for iOS
+  input[type="checkbox"],
+  input[type="radio"] {
+    border: 1px solid #ccc;
+  }
+
   // Remove the horizontal form styles
   .form-horizontal .control-group > label {
     float: none;
@@ -50,7 +56,8 @@
   }
   // Move over buttons in .form-actions to align with .controls
   .form-horizontal .form-actions {
-    padding-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   // Modals

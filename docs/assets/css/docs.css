@@ -306,42 +306,6 @@ hr.soften {
 }
 
 
-/* Quickstart section for getting le code
--------------------------------------------------- */
-.getting-started p {
-  color: #777;
-  margin-bottom: 9px;
-}
-.getting-started .current-version,
-.getting-started .current-version a {
-  color: #999;
-}
-.getting-started form {
-  margin-bottom: 0;
-}
-.getting-started textarea {
-  display: block;
-  width: 95%;
-  height: auto;
-  font-family: Menlo, Monaco, "Courier New", monospace;
-  font-size: 12px;
-  line-height: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  color: #999;
-  /* Makes inputs behave like true block-level elements */
-  -webkit-box-sizing: border-box; /* Older Webkit */
-     -moz-box-sizing: border-box; /* Older FF */
-      -ms-box-sizing: border-box; /* IE8 */
-          box-sizing: border-box; /* CSS3 spec*/
-  /* Hacks for IE7 to make this work just okay enough to function */
-  *width: 80%;
-  *height: 24px;
-}
-.getting-started textarea:focus {
-  color: #333;
-}
-
 
 /* Footer
 -------------------------------------------------- */
@@ -352,27 +316,6 @@ hr.soften {
 }
 .footer p {
   margin-bottom: 0;
-  color: #555;
-}
-.footer dl {
-  margin-bottom: 0;
-}
-.footer dl dt {
-  font-size: 11px;
-  color: #999;
-  text-transform: uppercase;
-}
-.footer dl dd + dt {
-  margin-top: 18px;
-}
-.footer dl dd {
-  margin-left: 0;
-  font-size: 12px;
-}
-.footer dl a {
-  color: #999;
-}
-.footer dl a:hover {
   color: #555;
 }
 
@@ -744,6 +687,11 @@ form.well {
     right: auto;
     bottom: auto;
     left: auto;
+  }
+
+  /* Forms docs */
+  .form-docs {
+    padding-left: 0; /* down from 10px */
   }
 }
 
