@@ -18,6 +18,12 @@
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     color: @white
   }
+  &.primary.active,
+  &.danger.active,
+  &.success.active,
+  &.info.active {
+    color: rgba(255,255,255,.75);
+  }
   &.primary {
     .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 15));
   }
@@ -81,6 +87,7 @@
     .box-shadow(@shadow);
     background-color: darken(@white, 10%);
     background-color: darken(@white, 15%) e("\9");
+    color: rgba(0,0,0,.5);
   }
   &.disabled,
   &[disabled] {

@@ -951,6 +951,14 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 }
 .form-horizontal .control-group {
   margin-bottom: 18px;
+  *zoom: 1;
+}
+.form-horizontal .control-group:before, .form-horizontal .control-group:after {
+  display: table;
+  content: "";
+}
+.form-horizontal .control-group:after {
+  clear: both;
 }
 .form-horizontal .control-group > label {
   float: left;
@@ -1970,7 +1978,7 @@ table .span12 {
 .navbar-search .search-query :-moz-placeholder {
   color: #eeeeee;
 }
-.navbar-search .search-query::-webkit-input-placeholder {
+.navbar-search .search-query ::-webkit-input-placeholder {
   color: #eeeeee;
 }
 .navbar-search .search-query:hover {
@@ -2092,6 +2100,7 @@ table .span12 {
   color: #ffffff;
 }
 .navbar .nav.pull-right .dropdown-menu {
+  left: auto;
   right: 0;
 }
 .navbar .nav.pull-right .dropdown-menu:before {
@@ -2485,6 +2494,12 @@ table .span12 {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
 }
+.btn.primary.active,
+.btn.danger.active,
+.btn.success.active,
+.btn.info.active {
+  color: rgba(255, 255, 255, 0.75);
+}
 .btn.primary {
   background-color: #0074cc;
   background-image: -moz-linear-gradient(top, #0088cc, #0055cc);
@@ -2629,6 +2644,7 @@ table .span12 {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
   background-color: #e6e6e6;
   background-color: #d9d9d9 \9;
+  color: rgba(0, 0, 0, 0.5);
 }
 .btn.disabled, .btn[disabled] {
   cursor: default;
@@ -2746,7 +2762,10 @@ button.btn.small, input[type="submit"].btn.small {
   -moz-border-radius-bottomright: 6px;
   border-bottom-right-radius: 6px;
 }
-.btn-group .btn:hover, .btn-group .btn:focus, .btn-group .btn:active {
+.btn-group .btn:hover,
+.btn-group .btn:focus,
+.btn-group .btn:active,
+.btn-group .btn.active {
   z-index: 2;
 }
 .btn-group .dropdown-toggle {
