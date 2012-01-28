@@ -5,7 +5,7 @@
 @media (max-width: 480px) {
   .page-header h1 small {
     display: block;
-    line-height: 18px;
+    line-height: 1.38em;
   }
   .form-horizontal .control-group > label {
     float: none;
@@ -141,7 +141,7 @@
   }
   .navbar-fixed-top {
     position: static;
-    margin-bottom: 36px;
+    margin-bottom: 2.76em;
   }
   .navbar-inner {
     padding: 10px;
@@ -159,7 +159,7 @@
   }
   .navbar .nav {
     float: none;
-    margin: 9px 0;
+    margin: 0.69em 0;
   }
   .navbar .nav > li {
     float: none;
@@ -208,8 +208,8 @@
   }
   .navbar-form, .navbar-search {
     float: none;
-    padding: 9px 15px;
-    margin: 9px 0;
+    padding: 0.69em 15px;
+    margin: 0.69em 0;
     border-top: 1px solid #222222;
     border-bottom: 1px solid #222222;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);

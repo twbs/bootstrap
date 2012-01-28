@@ -7,7 +7,7 @@ code,
 pre {
   padding: 0 3px 2px;
   #font > #family > .monospace;
-  font-size: @baseFontSize - 1;
+  font-size: @baseFontSize * 0.92;
   color: @grayDark;
   .border-radius(3px);
 }
@@ -19,9 +19,9 @@ code {
 }
 pre {
   display: block;
-  padding: (@baseLineHeight - 1) / 2;
+  padding: @baseLineHeight / 1.88;
   margin: 0 0 @baseLineHeight / 2;
-  font-size: 12px;
+  font-size: @baseFontSize * 0.92;
   line-height: @baseLineHeight;
   background-color: #f5f5f5;
   border: 1px solid #ccc; // fallback for IE7-8

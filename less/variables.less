@@ -40,9 +40,12 @@
 @fluidSidebarWidth:     220px;
 
 // Typography
-@baseFontSize:          13px;
+@bodyFontSize:          0.813em;
+@bodyLineHeight:        @bodyFontSize * 1.38;
+// Base font size relative to body font size
+@baseFontSize:          1em;
 @baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@baseLineHeight:        18px;
+@baseLineHeight:        @baseFontSize * 1.38;
 
 // Buttons
 @primaryButtonBackground:    @linkColor;
