@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 19:56:12 PST 2012
+ * Date: Fri Jan 27 20:04:50 PST 2012
  */
 article,
 aside,
@@ -528,7 +528,7 @@ select,
 label input, label textarea, label select {
   display: block;
 }
-input[type=image], input[type=checkbox], input[type=radio] {
+input[type="image"], input[type="checkbox"], input[type="radio"] {
   width: auto;
   height: auto;
   padding: 0;
@@ -543,7 +543,7 @@ input[type=image], input[type=checkbox], input[type=radio] {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-input[type=file] {
+input[type="file"] {
   padding: initial;
   line-height: initial;
   border: initial;
@@ -553,11 +553,11 @@ input[type=file] {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-input[type=button], input[type=reset], input[type=submit] {
+input[type="button"], input[type="reset"], input[type="submit"] {
   width: auto;
   height: auto;
 }
-select, input[type=file] {
+select, input[type="file"] {
   height: 28px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 
@@ -573,7 +573,7 @@ select {
 select[multiple], select[size] {
   height: auto;
 }
-input[type=image] {
+input[type="image"] {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -581,13 +581,13 @@ input[type=image] {
 textarea {
   height: auto;
 }
-input[type=hidden] {
+input[type="hidden"] {
   display: none;
 }
 .radio, .checkbox {
   padding-left: 18px;
 }
-.radio input[type=radio], .checkbox input[type=checkbox] {
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
   float: left;
   margin-left: -18px;
 }
@@ -620,7 +620,7 @@ input:focus, textarea:focus {
   /* IE6-8 */
 
 }
-input[type=file]:focus, input[type=checkbox]:focus, select:focus {
+input[type="file"]:focus, input[type="checkbox"]:focus, select:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -2660,19 +2660,19 @@ table .span12 {
 .btn.small .icon {
   margin-top: -1px;
 }
-button.btn, input[type=submit].btn {
+button.btn, input[type="submit"].btn {
   *padding-top: 2px;
   *padding-bottom: 2px;
 }
-button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
+button.btn::-moz-focus-inner, input[type="submit"].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-button.btn.large, input[type=submit].btn.large {
+button.btn.large, input[type="submit"].btn.large {
   *padding-top: 7px;
   *padding-bottom: 7px;
 }
-button.btn.small, input[type=submit].btn.small {
+button.btn.small, input[type="submit"].btn.small {
   *padding-top: 3px;
   *padding-bottom: 3px;
 }
