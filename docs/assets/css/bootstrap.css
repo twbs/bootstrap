@@ -1983,7 +1983,7 @@ table .span12 {
 .navbar-search .search-query :-moz-placeholder {
   color: #eeeeee;
 }
-.navbar-search .search-query::-webkit-input-placeholder {
+.navbar-search .search-query ::-webkit-input-placeholder {
   color: #eeeeee;
 }
 .navbar-search .search-query:hover {
@@ -2288,7 +2288,7 @@ table .span12 {
   top: 50%;
 }
 .modal-header {
-  padding: 5px 15px;
+  padding: 9px 15px;
   border-bottom: 1px solid #eee;
 }
 .modal-header .close {
