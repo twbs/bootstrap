@@ -15,7 +15,7 @@
 // ------------------
 
 // Hide from screenreaders and browsers
-// Credit: HTML5BP
+// Credit: HTML5 Boilerplate
 .hidden {
   display: none;
   visibility: hidden;
@@ -26,62 +26,6 @@
 // ---------------------
 
 @media (max-width: 480px) {
-
-  // Make the nav work for small devices
-  .navbar {
-    .nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 180px;
-      padding-top: 40px;
-      list-style: none;
-    }
-    .nav,
-    .nav > li:last-child a {
-      .border-radius(0 0 4px 0);
-    }
-    .nav > li {
-      float: none;
-      display: none;
-    }
-    .nav > li > a {
-      float: none;
-      background-color: #222;
-    }
-    .nav > .active {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .nav > .active > a {
-      background-color: transparent;
-    }
-    .nav > .active > a:hover {
-      background-color: #333;
-    }
-    .nav > .active > a:after {
-      display: inline-block;
-      width: 0;
-      height: 0;
-      margin-top: 8px;
-      margin-left: 6px;
-      text-indent: -99999px;
-      vertical-align: top;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 4px solid @white;
-      .opacity(100);
-      content: "&darr;";
-    }
-    .nav:hover > li {
-      display: block;
-    }
-    .nav:hover > li > a:hover {
-      background-color: #333;
-    }
-  }
 
   // Remove the horizontal form styles
   .form-horizontal .control-group > label {
@@ -124,15 +68,9 @@
 // --------------------------------------------------
 
 @media (max-width: 768px) {
-  
-  // Unfix the navbar
-  .navbar-fixed {
-    position: absolute;
-  }
-  .navbar-fixed .nav {
-    float: none;
-  }
 
+  // GRID & CONTAINERS
+  // -----------------
   // Remove width from containers
   .container {
     width: auto;
@@ -208,6 +146,111 @@
   .offset12  { .offset(12); }
 
 }
+
+
+// TABLETS AND BELOW
+// -----------------
+@media (max-width: 940px) {
+
+  // UNFIX THE TOPBAR
+  // ----------------
+  // Remove any padding from the body
+  body {
+    padding-top: 0;
+  }
+  // Unfix the navbar
+  .navbar-fixed-top {
+    position: static;
+    margin-bottom: @baseLineHeight * 2;
+  }
+  .navbar-inner {
+    padding: 10px;
+    background-image: none;
+  }
+  .navbar .container {
+    padding: 0;
+  }
+  // Account for brand name
+  .navbar .brand {
+    float: none;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0;
+  }
+  // Block-level the nav
+  .navbar .nav {
+    float: none;
+    margin: (@baseLineHeight / 2) 0;
+  }
+  .navbar .nav > li {
+    float: none;
+  }
+  .navbar .nav > li > a {
+    margin-bottom: 2px;
+  }
+  .navbar .nav > .vertical-divider {
+    display: none;
+  }
+  // Nav and dropdown links in navbar
+  .navbar .nav > li > a,
+  .navbar .dropdown-menu a {
+    padding: 6px 15px;
+    font-weight: bold;
+    color: @navbarLinkColor;
+    .border-radius(3px);
+  }
+  .navbar .dropdown-menu li + li a {
+    margin-bottom: 2px;
+  }
+  .navbar .nav > li > a:hover,
+  .navbar .dropdown-menu a:hover {
+    background-color: @navbarBackground;
+  }
+  // Dropdowns in the navbar
+  .navbar .dropdown-menu {
+    position: static;
+    display: block;
+    float: none;
+    max-width: none;
+    margin: 0 15px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    .border-radius(0);
+    .box-shadow(none);
+  }
+  .navbar .dropdown-menu:before,
+  .navbar .dropdown-menu:after {
+    display: none;
+  }
+  .navbar .dropdown-menu .divider {
+    display: none;
+  }
+  // Forms in navbar
+  .navbar-form,
+  .navbar-search {
+    float: none;
+    padding: (@baseLineHeight / 2) 15px;
+    margin: (@baseLineHeight / 2) 0;
+    border-top: 1px solid @navbarBackground;
+    border-bottom: 1px solid @navbarBackground;
+    @shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+    .box-shadow(@shadow);
+  }
+  // Pull right (secondary) nav content
+  .navbar .nav.pull-right {
+    float: none;
+    margin-left: 0;
+  }
+  // Static navbar
+  .navbar-static .navbar-inner {
+    padding-left:  10px;
+    padding-right: 10px;
+  }
+
+}
+
 
 // LARGE DESKTOP & UP
 // ------------------

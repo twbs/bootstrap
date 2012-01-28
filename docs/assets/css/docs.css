@@ -723,6 +723,11 @@ form.well {
 
 @media (max-width: 768px) {
 
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+
   /* Subnav */
   .subnav {
     position: static;
@@ -743,13 +748,6 @@ form.well {
   }
   .subnav .nav li + li a {
     border-top: 1px solid #e5e5e5;
-  }
-
-  /* Adjust the jumbotron */
-  .jumbotron .benefits {
-    position: relative;
-    width: auto;
-    margin: 36px 0;
   }
 
   /* Popovers */
@@ -787,9 +785,14 @@ form.well {
   .jumbotron h1 {
     font-size: 54px;
   }
+  .masthead p {
+    font-size: 25px;
+    line-height: 36px;
+  }
   .jumbotron h1,
   .jumbotron p {
     margin-right: 0;
+    margin-left: 0;
   }
 
 }
@@ -797,15 +800,27 @@ form.well {
 
 @media (min-width: 768px) and (max-width: 940px) {
 
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+
   /* Scale down the jumbotron content */
   .jumbotron h1 {
     font-size: 72px;
   }
 
-  /* Provide enough space on right-hand side for benefits list */
-  .jumbotron h1,
-  .jumbotron p {
-    margin-right: 40%;
+}
+
+@media (max-width: 940px) {
+  
+  /* Unfloat brand */
+  .navbar-fixed-top .brand {
+    float: none;
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
   }
+
 }
 
