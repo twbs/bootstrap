@@ -44,6 +44,8 @@
 
         if (this.isShown) return
 
+        $('body').addClass('modal-open')
+
         this.isShown = true
         this.$element.trigger('show')
 
@@ -76,6 +78,8 @@
 
         var that = this
         this.isShown = false
+
+        $('body').removeClass('modal-open')
 
         escape.call(this)
 
