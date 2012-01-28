@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 16:39:57 PST 2012
+ * Date: Fri Jan 27 18:33:07 PST 2012
  */
 article,
 aside,
@@ -35,6 +35,11 @@ html {
 }
 a:focus {
   outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  -moz-outline: 5px auto -moz-mac-focusring;
+  -moz-outline-radius: 6px;
+  -moz-outline-offset: 0;
 }
 a:hover, a:active {
   outline: 0;
@@ -611,8 +616,7 @@ input:focus, textarea:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  outline: 0;
-  outline: 1px dotted #666 \9;
+  outline: thin dotted \9;
   /* IE6-8 */
 
 }
@@ -620,7 +624,12 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  outline: 1px dotted #666;
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  -moz-outline: 5px auto -moz-mac-focusring;
+  -moz-outline-radius: 6px;
+  -moz-outline-offset: 0;
 }
 .input-mini {
   width: 60px;
@@ -2612,7 +2621,12 @@ table .span12 {
   transition: background-position 0.1s linear;
 }
 .btn:focus {
-  outline: 1px dotted #666;
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+  -moz-outline: 5px auto -moz-mac-focusring;
+  -moz-outline-radius: 6px;
+  -moz-outline-offset: 0;
 }
 .btn.active, .btn:active {
   background-image: none;

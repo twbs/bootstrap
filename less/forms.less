@@ -191,14 +191,13 @@ textarea:focus {
   border-color: rgba(82,168,236,.8);
   @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
   .box-shadow(@shadow);
-  outline: 0;
-  outline: 1px dotted #666 \9; /* IE6-8 */
+  outline: thin dotted \9; /* IE6-8 */
 }
 input[type=file]:focus,
 input[type=checkbox]:focus,
 select:focus {
   .box-shadow(none); // override for file inputs
-  outline: 1px dotted #666; // Selet elements don't get box-shadow styles, so instead we do outline
+  .tab-focus();
 }
 
 
