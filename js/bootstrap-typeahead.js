@@ -24,6 +24,8 @@
   var Typeahead = function ( element, options ) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
+    this.matcher = this.options.matcher
+    this.sorter = this.options.sorter
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -33,11 +35,6 @@
   Typeahead.prototype = {
 
     constructor: Typeahead
-
-  , matcher: function (item, query) {
-      // ;_; http://jsperf.com/asdfdfasdfa
-      return ~item.toLowerCase().indexOf(query)
-    }
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
@@ -77,11 +74,11 @@
         return this.shown ? this.hide() : this
       }
 
-      q = this.query.toLowerCase()
-
-      items = jQuery.grep(this.source, function (item) {
-        if (that.matcher(item, q)) return item
+      items = $.grep(this.source, function (item) {
+        if (that.matcher(item)) return item
       })
+
+      items = this.sorter(items)
 
       if (!items.length) {
         return this.shown ? this.hide() : this
@@ -233,6 +230,12 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , matcher: function (item) {
+      return ~item.indexOf(this.query)
+    }
+  , sorter: function (items) {
+      return items
+    }
   }
 
   $.fn.typeahead.Constructor = Typeahead
