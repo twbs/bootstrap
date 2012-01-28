@@ -86,9 +86,6 @@
     width: auto;
     margin: 0;
   }
-  .btn-navbar {
-    display: block;
-  }
 }
 @media (min-width: 768px) and (max-width: 940px) {
   .container {
@@ -257,6 +254,13 @@
   .navbar-static .navbar-inner {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .btn-navbar {
+    display: block;
+  }
+  .nav-collapse {
+    overflow: hidden;
+    height: 0;
   }
 }
 /*

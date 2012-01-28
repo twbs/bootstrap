@@ -26,42 +26,44 @@
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
-  
-  
+
+
   <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="i-bar"></span>
             <span class="i-bar"></span>
             <span class="i-bar"></span>
           </a>
           <a class="brand" href="./index.html">Bootstrap</a>
-          <ul class="nav">
-            <li class="{{index}}">
-              <a href="./index.html">{{_i}}Overview{{/i}}</a>
-            </li>
-            <li class="{{scaffolding}}">
-              <a href="./scaffolding.html">{{_i}}Scaffolding{{/i}}</a>
-            </li>
-            <li class="{{base-css}}">
-              <a href="./base-css.html">{{_i}}Base CSS{{/i}}</a>
-            </li>
-            <li class="{{components}}">
-              <a href="./components.html">{{_i}}Components{{/i}}</a>
-            </li>
-            <li class="{{javascript}}">
-              <a href="./javascript.html">{{_i}}Javascript plugins{{/i}}</a>
-            </li>
-            <li class="{{less}}">
-              <a href="./less.html">{{_i}}Using LESS{{/i}}</a>
-            </li>
-            <li class="{{download}}">
-              <a href="./download.html">{{_i}}Customize{{/i}}</a>
-            </li>
-          </ul>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="{{index}}">
+                <a href="./index.html">{{_i}}Overview{{/i}}</a>
+              </li>
+              <li class="{{scaffolding}}">
+                <a href="./scaffolding.html">{{_i}}Scaffolding{{/i}}</a>
+              </li>
+              <li class="{{base-css}}">
+                <a href="./base-css.html">{{_i}}Base CSS{{/i}}</a>
+              </li>
+              <li class="{{components}}">
+                <a href="./components.html">{{_i}}Components{{/i}}</a>
+              </li>
+              <li class="{{javascript}}">
+                <a href="./javascript.html">{{_i}}Javascript plugins{{/i}}</a>
+              </li>
+              <li class="{{less}}">
+                <a href="./less.html">{{_i}}Using LESS{{/i}}</a>
+              </li>
+              <li class="{{download}}">
+                <a href="./download.html">{{_i}}Customize{{/i}}</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

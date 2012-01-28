@@ -2356,7 +2356,6 @@ button.btn.small, input[type="submit"].btn.small {
   margin-top: 3px;
 }
 .navbar .brand:hover {
-  color: #ffffff;
   text-decoration: none;
 }
 .navbar .brand {
