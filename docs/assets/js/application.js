@@ -69,13 +69,8 @@
       selector: "a[rel=tooltip]"
     })
 
-    $('.tooltip-test').tooltip({
-      'z-index': 3000
-    })
-
-    $('.popover-test').popover({
-      'z-index': 3000
-    })
+    $('.tooltip-test').tooltip()
+    $('.popover-test').popover()
 
     // popover demo
     $("a[rel=popover]")

@@ -2235,6 +2235,18 @@ table .span12 {
 .pager .previous a {
   float: left;
 }
+.modal-open .dropdown-menu {
+  z-index: 2050;
+}
+.modal-open .dropdown.open {
+  *z-index: 2050;
+}
+.modal-open .popover {
+  z-index: 2060;
+}
+.modal-open .tooltip {
+  z-index: 2070;
+}
 .modal-backdrop {
   position: fixed;
   top: 0;
