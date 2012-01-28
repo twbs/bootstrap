@@ -3,6 +3,10 @@
   visibility: hidden;
 }
 @media (max-width: 480px) {
+  .page-header h1 small {
+    display: block;
+    line-height: 18px;
+  }
   .form-horizontal .control-group > label {
     float: none;
     width: auto;
