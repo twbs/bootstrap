@@ -6,6 +6,7 @@
 .btn-group {
   position: relative;
   .clearfix(); // clears the floated buttons
+  .ie7-restore-left-whitespace;
 }
 
 // Space out series of button groups
@@ -17,6 +18,7 @@
 .btn-toolbar {
   .btn-group {
     display: inline-block;
+    .ie7-inline-block;
   }
 }
 
@@ -83,18 +85,27 @@
   padding-right: 8px;
   @shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   .box-shadow(@shadow);
+  *padding-top: 5px;
+  *padding-bottom: 5px;
 }
 
-// Reposition menu on open and round all corners
-.btn-group.open .dropdown-menu {
-  display: block;
-  margin-top: 1px;
-  .border-radius(5px);
-}
-.btn-group.open .dropdown-toggle {
-  background-image: none;
-  @shadow: inset 0 1px 6px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  .box-shadow(@shadow);
+.btn-group.open {
+  // IE7's z-index only goes to the nearest positioned ancestor, which would
+  // make the menu appear below buttons that appeared later on the page
+  *z-index: @zindexDropdown;
+
+  // Reposition menu on open and round all corners
+  .dropdown-menu {
+    display: block;
+    margin-top: 1px;
+    .border-radius(5px);
+  }
+
+  .dropdown-toggle {
+    background-image: none;
+    @shadow: inset 0 1px 6px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+  }
 }
 
 // Reposition the caret

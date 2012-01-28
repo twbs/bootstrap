@@ -35,31 +35,6 @@
   }
 }
 
-
-// Mixin for generating button backgrounds
-// ---------------------------------------
-.buttonBackground(@startColor, @endColor) {
-  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
-  .gradientBar(@startColor, @endColor);
-
-  // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active, &.disabled {
-    background-color: @endColor;
-  }
-
-  // called out separately because IE8 would ignore otherwise
-  &[disabled] {
-    background-color: @endColor;
-  }
-
-  // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
-  &:active,
-  &.active {
-    background-color: darken(@endColor, 10%) e("\9");
-  }
-}
-
-
 // Base styles
 // -----------
 
@@ -67,13 +42,6 @@
   // Button Base
   display: inline-block;
   padding: 4px 10px 4px;
-  *padding: 2px 10px;
-  // IE7 likes to collapse the whitespace before the button, so bring it back...
-  *margin-left: 4px;
-  &:first-child {
-    // ...but not before the first button
-    *margin-left: 0;
-  }
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @grayDark;
@@ -86,6 +54,8 @@
   @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   .box-shadow(@shadow);
   cursor: pointer;
+
+  .ie7-restore-left-whitespace;
 
   &:hover {
     color: @grayDark;
@@ -131,7 +101,7 @@
 
   // Button Sizes
   &.large {
-    padding: 9px 14px 9px;
+    padding: 9px 14px;
     font-size: @baseFontSize + 2px;
     line-height: normal;
     .border-radius(5px);
@@ -140,7 +110,7 @@
     margin-top: 1px;
   }
   &.small {
-    padding: 5px 9px 5px;
+    padding: 5px 9px;
     font-size: @baseFontSize - 2px;
     line-height: @baseLineHeight - 2px;
   }
@@ -155,5 +125,17 @@ input[type=submit].btn {
   &::-moz-focus-inner {
   	padding: 0;
   	border: 0;
+  }
+
+  // IE7 has some default padding on button controls
+  *padding-top: 2px;
+  *padding-bottom: 2px;
+  &.large {
+    *padding-top: 7px;
+    *padding-bottom: 7px;
+  }
+  &.small {
+    *padding-top: 3px;
+    *padding-bottom: 3px;
   }
 }

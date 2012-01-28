@@ -5,12 +5,19 @@
 .dropdown {
   position: relative;
 }
+.dropdown .dropdown-toggle {
+  // The caret makes the toggle a bit too tall in IE7
+  *margin-bottom: -3px;
+}
 // Dropdown arrow/caret
 .caret {
   display: inline-block;
   width: 0;
   height: 0;
   text-indent: -99999px;
+  // IE7 won't do the border trick if there's a text indent, but it doesn't
+  // do the content that text-indent is hiding, either, so we're ok.
+  *text-indent: 0;
   vertical-align: top;
   border-left:  4px solid transparent;
   border-right: 4px solid transparent;
@@ -21,7 +28,6 @@
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
-  *margin-top: 7px;
 }
 .dropdown:hover .caret,
 .open.dropdown .caret {
@@ -31,6 +37,7 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
+  left: 0;
   z-index: @zindexDropdown;
   float: left;
   display: none; // none by default, but block on "open" of the menu
@@ -50,7 +57,6 @@
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-  zoom: 1; // do we need this?
   *border-right-width: 2px;
   *border-bottom-width: 2px;
 
@@ -68,6 +74,13 @@
     overflow: hidden;
     background-color: #e5e5e5;
     border-bottom: 1px solid @white;
+
+    // IE7 needs a set width since we gave a height. Restricting just
+    // to IE7 to keep the 1px left/right space in other browsers.
+    // It is unclear where IE is getting the extra space that we need
+    // to negative-margin away, but so it goes.
+    *width: 100%;
+    *margin: -5px 0 5px;
   }
 
   // Links within the dropdown menu
@@ -93,6 +106,10 @@
 
 // Open state for the dropdown
 .dropdown.open {
+  // IE7's z-index only goes to the nearest positioned ancestor, which would
+  // make the menu appear below buttons that appeared later on the page
+  *z-index: @zindexDropdown;
+
   .dropdown-toggle {
     color: @white;
     background: #ccc;
