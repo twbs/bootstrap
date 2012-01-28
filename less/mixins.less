@@ -148,6 +148,10 @@
 .columns(@columns: 1) {
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
+.alert-columns(@columns: 1) {
+  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) - 50;
+  float: none;
+}
 .offset(@columns: 1) {
   margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
 }
