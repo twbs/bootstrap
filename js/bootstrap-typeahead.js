@@ -24,8 +24,9 @@
   var Typeahead = function ( element, options ) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
-    this.matcher = this.options.matcher
-    this.sorter = this.options.sorter
+    this.matcher = this.options.matcher || this.matcher
+    this.sorter = this.options.sorter || this.sorter
+    this.highlighter = this.options.highlighter || this.highlighter
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -87,17 +88,37 @@
       return this.render(items.slice(0, this.options.items)).show()
     }
 
+  , matcher: function (item) {
+      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+    }
+
+  , sorter: function (items) {
+      var beginswith = []
+        , caseSensitive = []
+        , caseInsensitive = []
+        , item
+
+      while (item = items.shift()) {
+        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        else caseInsensitive.push(item)
+      }
+
+      return beginswith.concat(caseSensitive, caseInsensitive)
+    }
+
+  , highlighter: function (item) {
+      return item.replace(new RegExp('(' + this.query + ')', 'ig'), function ($1, match) {
+        return '<strong>' + match + '</strong>'
+      })
+    }
+
   , render: function (items) {
       var that = this
-        , QUERY = new RegExp('(' + this.query + ')', 'ig')
 
       items = $(items).map(function (i, item) {
         i = $(that.options.item).attr('data-value', item)
-
-        i.find('a').html(item.replace(QUERY, function ($1, match) {
-          return '<strong>' + match + '</strong>'
-        }))
-
+        i.find('a').html(that.highlighter(item))
         return i[0]
       })
 
@@ -230,12 +251,6 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
-  , matcher: function (item) {
-      return ~item.indexOf(this.query)
-    }
-  , sorter: function (items) {
-      return items
-    }
   }
 
   $.fn.typeahead.Constructor = Typeahead
