@@ -20,7 +20,8 @@
     padding-top: 0;
   }
   .form-horizontal .form-actions {
-    padding-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .modal {
     position: absolute;

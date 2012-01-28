@@ -534,6 +534,7 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
 
   line-height: normal;
   border: none;
+  border: initial;
   cursor: pointer;
   border-radius: 0 \0/;
 }
