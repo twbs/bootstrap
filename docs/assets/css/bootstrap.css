@@ -36,9 +36,6 @@ a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-  -moz-outline: 5px auto -moz-mac-focusring;
-  -moz-outline-radius: 6px;
-  -moz-outline-offset: 0;
 }
 a:hover, a:active {
   outline: 0;
@@ -627,9 +624,6 @@ input[type="file"]:focus, input[type="checkbox"]:focus, select:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-  -moz-outline: 5px auto -moz-mac-focusring;
-  -moz-outline-radius: 6px;
-  -moz-outline-offset: 0;
 }
 .input-mini {
   width: 60px;
@@ -1490,8 +1484,11 @@ table .span12 {
 .dropdown {
   position: relative;
 }
-.dropdown .dropdown-toggle {
+.dropdown-toggle {
   *margin-bottom: -3px;
+}
+.dropdown-toggle:active, .open .dropdown-toggle {
+  outline: 0;
 }
 .caret {
   display: inline-block;
@@ -2641,9 +2638,6 @@ table .span12 {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-  -moz-outline: 5px auto -moz-mac-focusring;
-  -moz-outline-radius: 6px;
-  -moz-outline-offset: 0;
 }
 .btn.active, .btn:active {
   background-image: none;
@@ -2653,6 +2647,7 @@ table .span12 {
   background-color: #e6e6e6;
   background-color: #d9d9d9 \9;
   color: rgba(0, 0, 0, 0.5);
+  outline: 0;
 }
 .btn.disabled, .btn[disabled] {
   cursor: default;
@@ -2775,6 +2770,9 @@ button.btn.small, input[type="submit"].btn.small {
 .btn-group .btn:active,
 .btn-group .btn.active {
   z-index: 2;
+}
+.btn-group .dropdown-toggle:active, .btn-group.open .dropdown-toggle {
+  outline: 0;
 }
 .btn-group .dropdown-toggle {
   padding-left: 8px;
