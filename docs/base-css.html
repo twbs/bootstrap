@@ -1482,50 +1482,89 @@
       <p>Icons are great, but where would one use them? Here are a few ideas:</p>
       <ul>
         <li>As visuals for your sidebar navigation</li>
-        <li>For a purely icon-driven nav</li>
+        <li>For a purely icon-driven navigation</li>
         <li>For buttons to help convey the meaning of an action</li>
         <li>With links to share context on a user's destination</li>
       </ul>
-      <p>Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon.</p>
+      <p>Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon. And if you need to position the text with no icon before it (where other items have an icon; see the navigation example below) simply use <code>.icon</code> class with no other classes:</p>
+<pre class="prettyprint linenums">
+&lt;i class="icon"&gt;&lt;/i&gt;
+</pre>
     </div>
   </div>
 
   <h3>Examples</h3>
   <div class="row">
-    <div class="span6">
-      <p>Use them in buttons, or in button groups for a toolbar style presentation.</p>
-      <p>
-        <a class="btn" href="#"><i class="icon refresh"></i> Refresh</a>
-        <a class="btn success" href="#"><i class="icon white shopping-cart"></i> Checkout</a>
-        <a class="btn danger" href="#"><i class="icon white trash"></i> Delete</a>
-      </p>
+    <div class="span4">
+      <p>Use them in buttons - of all types and sizes.</p>
       <div class="btn-toolbar">
-        <div class="btn-group">
-          <a class="btn" href="#"><i class="icon font"></i></a>
-          <a class="btn" href="#"><i class="icon bold"></i></a>
-          <a class="btn" href="#"><i class="icon italic"></i></a>
-        </div>
         <div class="btn-group">
           <a class="btn" href="#"><i class="icon align-left"></i></a>
           <a class="btn" href="#"><i class="icon align-center"></i></a>
           <a class="btn" href="#"><i class="icon align-right"></i></a>
           <a class="btn" href="#"><i class="icon align-justify"></i></a>
         </div>
+        <div class="btn-group">
+          <a class="btn primary" href="#"><i class="icon white user"></i> User</a>
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="icon pencil"></i> Edit</a></li>
+            <li><a href="#"><i class="icon trash"></i> Delete</a></li>
+            <li><a href="#"><i class="icon ban-circle"></i> Ban</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon"></i> Make Admin</a></li>
+          </ul>
+        </div>
       </div>
       <p>
-        <a class="btn large" href="#"><i class="icon refresh"></i> Refresh</a>
+        <a class="btn" href="#"><i class="icon refresh"></i> Refresh</a>
+        <a class="btn success" href="#"><i class="icon white shopping-cart"></i> Checkout</a>
+        <a class="btn danger" href="#"><i class="icon white trash"></i> Delete</a>
+      </p>
+      <p>
+        <a class="btn large" href="#"><i class="icon comment"></i> Comment</a>
         <a class="btn small" href="#"><i class="icon cog"></i> Settings</a>
+        <a class="btn small info" href="#"><i class="icon white info-sign"></i> More Info</a>
       </p>
     </div>
-    <div class="span3">
-      <p>Or, use them in navigation.</p>
+    <div class="span4">
+      <p>Use them in navigation.</p>
       <div class="well" style="padding: 8px 0;">
         <ul class="nav list">
           <li class="active"><a href="#"><i class="icon white home"></i> Home</a></li>
           <li><a href="#"><i class="icon book"></i> Library</a></li>
           <li><a href="#"><i class="icon pencil"></i> Applications</a></li>
+          <li><a href="#"><i class="icon"></i> Misc</a></li>
         </ul>
       </div> <!-- /well -->
+    </div>
+    <div class="span4">
+      <form>
+        <p>Use them with prepended forms.</p>
+        <div class="control-group">
+          <label class="control-label" for="prependedInput">Your Email Address:</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon envelope"></i></span>
+              <input class="span32" id="iconInput" size="16" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="prependedInput">Your Location:</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon map-marker"></i></span>
+              <select id="select01">
+                <option>Istanbul</option>
+                <option>London</option>
+                <option>New York</option>
+                <option>Tokyo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>
