@@ -173,10 +173,9 @@ hr.soften {
 }
 .subnav .nav > li > a {
   margin: 0;
-  padding-top: 11px;
+  padding-top:    11px;
   padding-bottom: 11px;
   font-size: 13px;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
   border-left: 1px solid #f5f5f5;
   border-right: 1px solid #e5e5e5;
   -webkit-border-radius: 0;
@@ -202,9 +201,17 @@ hr.soften {
 .subnav .nav > li:first-child > a:hover {
   border-left: 0;
   padding-left: 12px;
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
 }
 .subnav .nav > li:last-child > a {
   border-right: 0;
+}
+.subnav .dropdown-menu {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
 }
 
 /* Fixed subnav on scroll, but only for 940px and up (sorry IE!) */
@@ -228,6 +235,12 @@ hr.soften {
     width: 938px;
     margin: 0 auto;
     padding: 0 1px;
+  }
+  .subnav .nav > li:first-child > a,
+  .subnav .nav > li:first-child > a:hover {
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
   }
 }
 

@@ -29,10 +29,6 @@
   // Webkit
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-  // Firefox
-  -moz-outline: 5px auto -moz-mac-focusring;
-  -moz-outline-radius: 6px;
-  -moz-outline-offset: 0;
 }
 
 // Center-align a block level element
@@ -333,11 +329,11 @@
     background-repeat: no-repeat;
   }
   .radial(@innerColor: #555, @outerColor: #333)  {
-    background-color: @outsideColor;
-    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@centerColor), to(@outsideColor));
-    background-image: -webkit-radial-gradient(circle, @centerColor, @outsideColor);
-    background-image: -moz-radial-gradient(circle, @centerColor, @outsideColor);
-    background-image: -ms-radial-gradient(circle, @centerColor, @outsideColor);
+    background-color: @outerColor;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+    background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -ms-radial-gradient(circle, @innerColor, @outerColor);
     background-repeat: no-repeat;
     // Opera cannot do radial gradients yet
   }
