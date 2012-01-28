@@ -27,7 +27,10 @@
 
   var toggle = '[data-toggle="dropdown"]'
     , Dropdown = function ( element ) {
-        $(element).bind('click', this.toggle)
+        var $el = $(element).on('click.dropdown.data-api', this.toggle)
+        $('html').on('click.dropdown.data-api', function () {
+          $el.parent().removeClass('open')
+        })
       }
 
   Dropdown.prototype = {
@@ -51,7 +54,6 @@
       isActive = $parent.hasClass('open')
 
       clearMenus()
-
       !isActive && $parent.toggleClass('open')
 
       return false
