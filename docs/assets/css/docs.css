@@ -154,7 +154,6 @@ hr.soften {
 .subnav {
   width: 100%;
   height: 36px;
-  overflow: hidden;
   background-color: #eeeeee; /* Old browsers */
   background-repeat: repeat-x; /* Repeat the gradient */
   background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* FF3.6+ */
@@ -172,37 +171,39 @@ hr.soften {
 .subnav .nav {
   margin-bottom: 0;
 }
-.subnav .nav a {
+.subnav .nav > li > a {
   margin: 0;
   padding-top: 11px;
   padding-bottom: 11px;
   font-size: 13px;
-  color: #777;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
   border-left: 1px solid #f5f5f5;
   border-right: 1px solid #e5e5e5;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
 }
-.subnav .nav a:hover,
-.subnav .nav .active a {
-  background-color: transparent;
-  color: #333;
-}
-.subnav .nav .active a {
+.subnav .nav > .active > a,
+.subnav .nav > .active > a:hover {
+  padding-left: 13px;
+  color: #777;
   background-color: #e9e9e9;
   border-right-color: #ddd;
   border-left: 0;
-  padding-left: 13px;
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
      -moz-box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
           box-shadow: inset 0 3px 5px rgba(0,0,0,.05);
 }
-.subnav .nav li:first-child a {
+.subnav .nav > .active > a .caret,
+.subnav .nav > .active > a:hover .caret {
+  border-top-color: #777;
+}
+.subnav .nav > li:first-child > a,
+.subnav .nav > li:first-child > a:hover {
   border-left: 0;
   padding-left: 12px;
 }
-.subnav .nav li:last-child a {
+.subnav .nav > li:last-child > a {
   border-right: 0;
 }
 

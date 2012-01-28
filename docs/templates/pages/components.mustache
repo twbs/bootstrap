@@ -5,15 +5,27 @@
   <p class="lead">{{_i}}Dozens of reusable components are built into Bootstrap to provide navigation, alerts, popovers, and much more.{{/i}}</p>
   <div class="subnav">
     <ul class="nav pills">
-      <li><a href="#buttonGroups">{{_i}}Button groups{{/i}}</a></li>
-      <li><a href="#buttonDropdowns">{{_i}}Button dropdowns{{/i}}</a></li>
-      <li><a href="#navs">{{_i}}Nav, tabs, pills{{/i}}</a></li>
-      <li><a href="#navbar">{{_i}}Navbar{{/i}}</a></li>
-      <li><a href="#breadcrumbs">{{_i}}Breadcrumbs{{/i}}</a></li>
-      <li><a href="#pagination">{{_i}}Pagination{{/i}}</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Buttons{{/i}} <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#buttonGroups">Button groups</a></li>
+          <li><a href="#buttonDropdowns">Button dropdowns</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Navigation{{/i}} <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#navs">{{_i}}Nav, tabs, pills{{/i}}</a></li>
+          <li><a href="#navbar">{{_i}}Navbar{{/i}}</a></li>
+          <li><a href="#breadcrumbs">{{_i}}Breadcrumbs{{/i}}</a></li>
+          <li><a href="#pagination">{{_i}}Pagination{{/i}}</a></li>
+        </ul>
+      </li>
+      <li><a href="#labels">{{_i}}Labels{{/i}}</a></li>
       <li><a href="#thumbnails">{{_i}}Thumbnails{{/i}}</a></li>
       <li><a href="#alerts">{{_i}}Alerts{{/i}}</a></li>
       <li><a href="#progress">{{_i}}Progress bars{{/i}}</a></li>
+      <li><a href="#misc">{{_i}}Miscellaneous{{/i}}</a></li>
     </ul>
   </div>
 </header>
@@ -862,6 +874,66 @@
 
 
 
+<!-- Labels
+================================================== -->
+<section id="labels">
+  <div class="page-header">
+    <h1>{{_i}}Inline labels{{/i}} <small>{{_i}}Label and annotate text{{/i}}</small></h1>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 190px;">{{_i}}Labels{{/i}}</th>
+        <th>{{_i}}Markup{{/i}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="label">{{_i}}Default{{/i}}</span>
+        </td>
+        <td>
+          <code>&lt;span class="label"&gt;{{_i}}Default{{/i}}&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label success">{{_i}}New{{/i}}</span>
+        </td>
+        <td>
+          <code>&lt;span class="label success"&gt;{{/_i}}New{{/i}}&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label warning">{{_i}}Warning{{/i}}</span>
+        </td>
+        <td>
+          <code>&lt;span class="label warning"&gt;{{_i}}Warning{{/i}}&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label important">{{_i}}Important{{/i}}</span>
+        </td>
+        <td>
+          <code>&lt;span class="label important"&gt;{{_i}}Important{{/i}}&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label info">{{_i}}Info{{/i}}</span>
+        </td>
+        <td>
+          <code>&lt;span class="label info"&gt;{{_i}}Info{{/i}}&lt;/span&gt;</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
 <!-- Thumbnails
 ================================================== -->
 <section id="thumbnails">
@@ -1103,32 +1175,32 @@
 
 <!-- Progress bars
 ================================================== -->
-      <section id="progress">
-        <div class="page-header">
-          <h1>{{_i}}Progress bars{{/i}} <small>{{_i}}For loading, redirecting, or action status{{/i}}</small></h1>
-        </div>
+<section id="progress">
+  <div class="page-header">
+    <h1>{{_i}}Progress bars{{/i}} <small>{{_i}}For loading, redirecting, or action status{{/i}}</small></h1>
+  </div>
 
-        <h2>{{_i}}Examples and markup{{/i}}</h2>
-        <div class="row">
-          <div class="span4">
-            <h3>{{_i}}Basic{{/i}}</h3>
-            <p>{{_i}}Default progress bar with a vertical gradient.{{/i}}</p>
-            <div class="progress">
-              <div class="bar" style="width: 60%;"></div>
-            </div>
+  <h2>{{_i}}Examples and markup{{/i}}</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Basic{{/i}}</h3>
+      <p>{{_i}}Default progress bar with a vertical gradient.{{/i}}</p>
+      <div class="progress">
+        <div class="bar" style="width: 60%;"></div>
+      </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="bar"
        style="width: 60%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          </div>
-          <div class="span4">
-            <h3>{{_i}}Striped{{/i}}</h3>
-            <p>{{_i}}Uses a gradient to create a striped effect.{{/i}}</p>
-            <div class="progress info striped">
-              <div class="bar" style="width: 20%;"></div>
-            </div>
+    </div>
+    <div class="span4">
+      <h3>{{_i}}Striped{{/i}}</h3>
+      <p>{{_i}}Uses a gradient to create a striped effect.{{/i}}</p>
+      <div class="progress info striped">
+        <div class="bar" style="width: 20%;"></div>
+      </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress info
      striped"&gt;
@@ -1136,13 +1208,13 @@
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          </div>
-          <div class="span4">
-            <h3>{{_i}}Animated{{/i}}</h3>
-            <p>{{_i}}Takes the striped example and animates it.{{/i}}</p>
-            <div class="progress danger active striped">
-              <div class="bar" style="width: 45%"></div>
-            </div>
+    </div>
+    <div class="span4">
+      <h3>{{_i}}Animated{{/i}}</h3>
+      <p>{{_i}}Takes the striped example and animates it.{{/i}}</p>
+      <div class="progress danger active striped">
+        <div class="bar" style="width: 45%"></div>
+      </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress danger
      striped active"&gt;
@@ -1150,31 +1222,72 @@
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          </div>
-        </div>
+    </div>
+  </div>
 
-        <h2>{{_i}}Options and browser support{{/i}}</h2>
-        <div class="row">
-          <div class="span4">
-            <h3>{{_i}}Additional colors{{/i}}</h3>
-            <p>{{_i}}Progress bars utilize some of the same classes as buttons and alert messages for quick styling.{{/i}}</p>
-            <ul>
-              <li><code>.info</code></li>
-              <li><code>.success</code></li>
-              <li><code>.danger</code></li>
-            </ul>
-            <p>{{_i}}Alternatively, you can customize the LESS files and roll your own colors and sizes.{{/i}}</p>
-          </div>
-          <div class="span4">
-            <h3>{{_i}}Behavior{{/i}}</h3>
-            <p>{{_i}}Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.{{/i}}</p>
-            <p>{{_i}}If you use the <code>.active</code> class, your <code>.striped</code> progress bars will animate the stripes left to right.{{/i}}</p>
-          </div>
-          <div class="span4">
-            <h3>{{_i}}Browser support{{/i}}</h3>
-            <p>{{_i}}Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-8 or older versions of Firefox.{{/i}}</p>
-            <p>{{_i}}Opera does not support animations at this time.{{/i}}</p>
-          </div>
-        </div>
+  <h2>{{_i}}Options and browser support{{/i}}</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Additional colors{{/i}}</h3>
+      <p>{{_i}}Progress bars utilize some of the same classes as buttons and alert messages for quick styling.{{/i}}</p>
+      <ul>
+        <li><code>.info</code></li>
+        <li><code>.success</code></li>
+        <li><code>.danger</code></li>
+      </ul>
+      <p>{{_i}}Alternatively, you can customize the LESS files and roll your own colors and sizes.{{/i}}</p>
+    </div>
+    <div class="span4">
+      <h3>{{_i}}Behavior{{/i}}</h3>
+      <p>{{_i}}Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.{{/i}}</p>
+      <p>{{_i}}If you use the <code>.active</code> class, your <code>.striped</code> progress bars will animate the stripes left to right.{{/i}}</p>
+    </div>
+    <div class="span4">
+      <h3>{{_i}}Browser support{{/i}}</h3>
+      <p>{{_i}}Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-8 or older versions of Firefox.{{/i}}</p>
+      <p>{{_i}}Opera does not support animations at this time.{{/i}}</p>
+    </div>
+  </div>
 
-      </section>
+</section>
+
+
+
+
+
+<!-- Miscellaneous
+================================================== -->
+<section id="misc">
+  <div class="page-header">
+    <h1>{{_i}}Miscellaneous{{/i}} <small>{{_i}}Wells, badges, and close icon{{/i}}</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>{{_i}}Wells{{/i}}</h2>
+      <p>{{_i}}Use the well as a simple effect on an element to give it an inset effect.{{/i}}</p>
+      <div class="well">
+        {{_i}}Look, I'm in a well!{{/i}}
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="well"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+    </div><!--/span-->
+    <div class="span4" style="display: none;">
+      <h2>{{_i}}Badges{{/i}}</h2>
+      <p>{{_i}}Use a badge on an element for an unread count or as a simple indicator.{{/i}}</p>
+<pre class="prettyprint linenums">&lt;span class="badge"&gt;3&lt;/div&gt;</pre>
+    </div><!--/span-->
+    <div class="span4">
+      <h2>{{_i}}Close icon{{/i}}</h2>
+      <p>{{_i}}Use the generic close icon for dismissing content like modals and alerts.{{/i}}</p>
+      <p><a class="close" style="float: none;">&times;</a></p>
+<pre class="prettyprint linenums">&lt;a class="close"&gt;&amp;times;&lt;/a&gt;</pre>
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+
+
+

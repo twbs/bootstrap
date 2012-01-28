@@ -70,15 +70,27 @@
   <p class="lead">Dozens of reusable components are built into Bootstrap to provide navigation, alerts, popovers, and much more.</p>
   <div class="subnav">
     <ul class="nav pills">
-      <li><a href="#buttonGroups">Button groups</a></li>
-      <li><a href="#buttonDropdowns">Button dropdowns</a></li>
-      <li><a href="#navs">Nav, tabs, pills</a></li>
-      <li><a href="#navbar">Navbar</a></li>
-      <li><a href="#breadcrumbs">Breadcrumbs</a></li>
-      <li><a href="#pagination">Pagination</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Buttons <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#buttonGroups">Button groups</a></li>
+          <li><a href="#buttonDropdowns">Button dropdowns</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Navigation <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#navs">Nav, tabs, pills</a></li>
+          <li><a href="#navbar">Navbar</a></li>
+          <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+          <li><a href="#pagination">Pagination</a></li>
+        </ul>
+      </li>
+      <li><a href="#labels">Labels</a></li>
       <li><a href="#thumbnails">Thumbnails</a></li>
       <li><a href="#alerts">Alerts</a></li>
       <li><a href="#progress">Progress bars</a></li>
+      <li><a href="#misc">Miscellaneous</a></li>
     </ul>
   </div>
 </header>
@@ -927,6 +939,66 @@
 
 
 
+<!-- Labels
+================================================== -->
+<section id="labels">
+  <div class="page-header">
+    <h1>Inline labels <small>Label and annotate text</small></h1>
+  </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 190px;">Labels</th>
+        <th>Markup</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="label">Default</span>
+        </td>
+        <td>
+          <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label success">New</span>
+        </td>
+        <td>
+          <code>&lt;span class="label success"&gt;New&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label warning">Warning</span>
+        </td>
+        <td>
+          <code>&lt;span class="label warning"&gt;Warning&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label important">Important</span>
+        </td>
+        <td>
+          <code>&lt;span class="label important"&gt;Important&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label info">Info</span>
+        </td>
+        <td>
+          <code>&lt;span class="label info"&gt;Info&lt;/span&gt;</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
 <!-- Thumbnails
 ================================================== -->
 <section id="thumbnails">
@@ -1168,32 +1240,32 @@
 
 <!-- Progress bars
 ================================================== -->
-      <section id="progress">
-        <div class="page-header">
-          <h1>Progress bars <small>For loading, redirecting, or action status</small></h1>
-        </div>
+<section id="progress">
+  <div class="page-header">
+    <h1>Progress bars <small>For loading, redirecting, or action status</small></h1>
+  </div>
 
-        <h2>Examples and markup</h2>
-        <div class="row">
-          <div class="span4">
-            <h3>Basic</h3>
-            <p>Default progress bar with a vertical gradient.</p>
-            <div class="progress">
-              <div class="bar" style="width: 60%;"></div>
-            </div>
+  <h2>Examples and markup</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Basic</h3>
+      <p>Default progress bar with a vertical gradient.</p>
+      <div class="progress">
+        <div class="bar" style="width: 60%;"></div>
+      </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="bar"
        style="width: 60%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          </div>
-          <div class="span4">
-            <h3>Striped</h3>
-            <p>Uses a gradient to create a striped effect.</p>
-            <div class="progress info striped">
-              <div class="bar" style="width: 20%;"></div>
-            </div>
+    </div>
+    <div class="span4">
+      <h3>Striped</h3>
+      <p>Uses a gradient to create a striped effect.</p>
+      <div class="progress info striped">
+        <div class="bar" style="width: 20%;"></div>
+      </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress info
      striped"&gt;
@@ -1201,13 +1273,13 @@
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          </div>
-          <div class="span4">
-            <h3>Animated</h3>
-            <p>Takes the striped example and animates it.</p>
-            <div class="progress danger active striped">
-              <div class="bar" style="width: 45%"></div>
-            </div>
+    </div>
+    <div class="span4">
+      <h3>Animated</h3>
+      <p>Takes the striped example and animates it.</p>
+      <div class="progress danger active striped">
+        <div class="bar" style="width: 45%"></div>
+      </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress danger
      striped active"&gt;
@@ -1215,34 +1287,75 @@
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          </div>
-        </div>
+    </div>
+  </div>
 
-        <h2>Options and browser support</h2>
-        <div class="row">
-          <div class="span4">
-            <h3>Additional colors</h3>
-            <p>Progress bars utilize some of the same classes as buttons and alert messages for quick styling.</p>
-            <ul>
-              <li><code>.info</code></li>
-              <li><code>.success</code></li>
-              <li><code>.danger</code></li>
-            </ul>
-            <p>Alternatively, you can customize the LESS files and roll your own colors and sizes.</p>
-          </div>
-          <div class="span4">
-            <h3>Behavior</h3>
-            <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
-            <p>If you use the <code>.active</code> class, your <code>.striped</code> progress bars will animate the stripes left to right.</p>
-          </div>
-          <div class="span4">
-            <h3>Browser support</h3>
-            <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-8 or older versions of Firefox.</p>
-            <p>Opera does not support animations at this time.</p>
-          </div>
-        </div>
+  <h2>Options and browser support</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Additional colors</h3>
+      <p>Progress bars utilize some of the same classes as buttons and alert messages for quick styling.</p>
+      <ul>
+        <li><code>.info</code></li>
+        <li><code>.success</code></li>
+        <li><code>.danger</code></li>
+      </ul>
+      <p>Alternatively, you can customize the LESS files and roll your own colors and sizes.</p>
+    </div>
+    <div class="span4">
+      <h3>Behavior</h3>
+      <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
+      <p>If you use the <code>.active</code> class, your <code>.striped</code> progress bars will animate the stripes left to right.</p>
+    </div>
+    <div class="span4">
+      <h3>Browser support</h3>
+      <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-8 or older versions of Firefox.</p>
+      <p>Opera does not support animations at this time.</p>
+    </div>
+  </div>
 
-      </section>
+</section>
+
+
+
+
+
+<!-- Miscellaneous
+================================================== -->
+<section id="misc">
+  <div class="page-header">
+    <h1>Miscellaneous <small>Wells, badges, and close icon</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Wells</h2>
+      <p>Use the well as a simple effect on an element to give it an inset effect.</p>
+      <div class="well">
+        Look, I'm in a well!
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="well"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+    </div><!--/span-->
+    <div class="span4" style="display: none;">
+      <h2>Badges</h2>
+      <p>Use a badge on an element for an unread count or as a simple indicator.</p>
+<pre class="prettyprint linenums">&lt;span class="badge"&gt;3&lt;/div&gt;</pre>
+    </div><!--/span-->
+    <div class="span4">
+      <h2>Close icon</h2>
+      <p>Use the generic close icon for dismissing content like modals and alerts.</p>
+      <p><a class="close" style="float: none;">&times;</a></p>
+<pre class="prettyprint linenums">&lt;a class="close"&gt;&amp;times;&lt;/a&gt;</pre>
+    </div><!--/span-->
+  </div><!--/row-->
+</section>
+
+
+
+
 
 
      <!-- Footer
