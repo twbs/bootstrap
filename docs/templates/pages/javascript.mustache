@@ -156,7 +156,7 @@
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
 
               <h4>{{_i}}Popover in a modal{{/i}}</h4>
-              <p>{{_i}}This <a href="#" class="btn" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
+              <p>{{_i}}This <a href="#" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
 
               <h4>{{_i}}Tooltips in a modal{{/i}}</h4>
               <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
@@ -675,6 +675,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
                </td>
              </tr>
+             <tr>
+               <td>{{_i}}z-index{{/i}}</td>
+               <td>{{_i}}number{{/i}}</td>
+               <td>1020</td>
+               <td>The tooltips z-index value</td>
+             </tr>
             </tbody>
           </table>
           <p>{{_i}}<span class="label notice">Notice</span> Individual tooltip instance options can alternatively be specified through the use of data attributes.{{/i}}</p>
@@ -689,6 +695,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.tooltip('hide')</h4>
           <p>{{_i}}Hides an elements tooltip.{{/i}}</p>
           <pre class="prettyprint linenums">$('#element').tooltip('hide')</pre>
+          <h4>.tooltip('toggle')</h4>
+          <p>{{_i}}Toggles an elements tooltip.{{/i}}</p>
+          <pre class="prettyprint linenums">$('#element').tooltip('toggle')</pre>
         </div>
       </div>
     </section>
@@ -775,6 +784,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
                </td>
              </tr>
+             <tr>
+               <td>{{_i}}z-index{{/i}}</td>
+               <td>{{_i}}number{{/i}}</td>
+               <td>1010</td>
+               <td>The popovers z-index value</td>
+             </tr>
             </tbody>
           </table>
           <p>{{_i}}<span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.{{/i}}</p>
@@ -791,6 +806,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.popover('hide')</h4>
           <p>{{_i}}Hides an elements popover.{{/i}}</p>
           <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
+          <h4>.popover('toggle')</h4>
+          <p>{{_i}}Toggles an elements popover.{{/i}}</p>
+          <pre class="prettyprint linenums">$('#element').popover('toggle')</pre>
         </div>
       </div>
     </section>
@@ -1270,7 +1288,7 @@ $('.myCarousel').carousel({
              <tr>
                <th style="width: 100px;">{{_i}}Name{{/i}}</th>
                <th style="width: 50px;">{{_i}}type{{/i}}</th>
-               <th style="width: 50px;">{{_i}}default{{/i}}</th>
+               <th style="width: 90px;">{{_i}}default{{/i}}</th>
                <th>{{_i}}description{{/i}}</th>
              </tr>
             </thead>
@@ -1287,6 +1305,18 @@ $('.myCarousel').carousel({
                <td>8</td>
                <td>{{_i}}The max number of items to display in the dropdown.{{/i}}</td>
              </tr>
+             <tr>
+               <td>{{_i}}matcher{{/i}}</td>
+               <td>{{_i}}function{{/i}}</td>
+               <td>case sensitive</td>
+               <td>{{_i}}The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}sorter{{/i}}</td>
+               <td>{{_i}}function{{/i}}</td>
+               <td>no sort</td>
+               <td>{{_i}}Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.{{/i}}</td>
+             </tr>
             </tbody>
           </table>
 
@@ -1295,6 +1325,9 @@ $('.myCarousel').carousel({
 <pre class="prettyprint linenums">
 &lt;input type="text" data-provide="typeahead"&gt;
 </pre>
+          <h3>{{_i}}Methods{{/i}}</h3>
+          <h4>.typeahead({{_i}}options{{/i}})</h4>
+          <p>{{_i}}Initializes an input with a typahead.{{/i}}</p>
         </div>
       </div>
     </section>

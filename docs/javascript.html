@@ -221,7 +221,7 @@
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
 
               <h4>Popover in a modal</h4>
-              <p>This <a href="#" class="btn" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
+              <p>This <a href="#" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
 
               <h4>Tooltips in a modal</h4>
               <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
@@ -740,6 +740,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
                </td>
              </tr>
+             <tr>
+               <td>z-index</td>
+               <td>number</td>
+               <td>1020</td>
+               <td>The tooltips z-index value</td>
+             </tr>
             </tbody>
           </table>
           <p><span class="label notice">Notice</span> Individual tooltip instance options can alternatively be specified through the use of data attributes.</p>
@@ -754,6 +760,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.tooltip('hide')</h4>
           <p>Hides an elements tooltip.</p>
           <pre class="prettyprint linenums">$('#element').tooltip('hide')</pre>
+          <h4>.tooltip('toggle')</h4>
+          <p>Toggles an elements tooltip.</p>
+          <pre class="prettyprint linenums">$('#element').tooltip('toggle')</pre>
         </div>
       </div>
     </section>
@@ -840,6 +849,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
                </td>
              </tr>
+             <tr>
+               <td>z-index</td>
+               <td>number</td>
+               <td>1010</td>
+               <td>The popovers z-index value</td>
+             </tr>
             </tbody>
           </table>
           <p><span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.</p>
@@ -856,6 +871,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.popover('hide')</h4>
           <p>Hides an elements popover.</p>
           <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
+          <h4>.popover('toggle')</h4>
+          <p>Toggles an elements popover.</p>
+          <pre class="prettyprint linenums">$('#element').popover('toggle')</pre>
         </div>
       </div>
     </section>
@@ -1335,7 +1353,7 @@ $('.myCarousel').carousel({
              <tr>
                <th style="width: 100px;">Name</th>
                <th style="width: 50px;">type</th>
-               <th style="width: 50px;">default</th>
+               <th style="width: 90px;">default</th>
                <th>description</th>
              </tr>
             </thead>
@@ -1352,6 +1370,18 @@ $('.myCarousel').carousel({
                <td>8</td>
                <td>The max number of items to display in the dropdown.</td>
              </tr>
+             <tr>
+               <td>matcher</td>
+               <td>function</td>
+               <td>case sensitive</td>
+               <td>The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.</td>
+             </tr>
+             <tr>
+               <td>sorter</td>
+               <td>function</td>
+               <td>no sort</td>
+               <td>Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.</td>
+             </tr>
             </tbody>
           </table>
 
@@ -1360,6 +1390,9 @@ $('.myCarousel').carousel({
 <pre class="prettyprint linenums">
 &lt;input type="text" data-provide="typeahead"&gt;
 </pre>
+          <h3>Methods</h3>
+          <h4>.typeahead(options)</h4>
+          <p>Initializes an input with a typahead.</p>
         </div>
       </div>
     </section>
