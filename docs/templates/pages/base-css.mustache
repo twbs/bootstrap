@@ -1423,50 +1423,89 @@
       <p>{{_i}}Icons are great, but where would one use them? Here are a few ideas:{{/i}}</p>
       <ul>
         <li>{{_i}}As visuals for your sidebar navigation{{/i}}</li>
-        <li>{{_i}}For a purely icon-driven nav{{/i}}</li>
+        <li>{{_i}}For a purely icon-driven navigation{{/i}}</li>
         <li>{{_i}}For buttons to help convey the meaning of an action{{/i}}</li>
         <li>{{_i}}With links to share context on a user's destination{{/i}}</li>
       </ul>
-      <p>{{_i}}Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon.{{/i}}</p>
+      <p>{{_i}}Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon. And if you need to position the text with no icon before it (where other items have an icon; see the navigation example below) simply use <code>.icon</code> class with no other classes:{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;i class="icon"&gt;&lt;/i&gt;
+</pre>
     </div>
   </div>
 
   <h3>{{_i}}Examples{{/i}}</h3>
   <div class="row">
-    <div class="span6">
-      <p>{{_i}}Use them in buttons, or in button groups for a toolbar style presentation.{{/i}}</p>
-      <p>
-        <a class="btn" href="#"><i class="icon refresh"></i> {{_i}}Refresh{{/i}}</a>
-        <a class="btn success" href="#"><i class="icon white shopping-cart"></i> {{_i}}Checkout{{/i}}</a>
-        <a class="btn danger" href="#"><i class="icon white trash"></i> {{_i}}Delete{{/i}}</a>
-      </p>
+    <div class="span4">
+      <p>{{_i}}Use them in buttons - of all types and sizes.{{/i}}</p>
       <div class="btn-toolbar">
-        <div class="btn-group">
-          <a class="btn" href="#"><i class="icon font"></i></a>
-          <a class="btn" href="#"><i class="icon bold"></i></a>
-          <a class="btn" href="#"><i class="icon italic"></i></a>
-        </div>
         <div class="btn-group">
           <a class="btn" href="#"><i class="icon align-left"></i></a>
           <a class="btn" href="#"><i class="icon align-center"></i></a>
           <a class="btn" href="#"><i class="icon align-right"></i></a>
           <a class="btn" href="#"><i class="icon align-justify"></i></a>
         </div>
+        <div class="btn-group">
+          <a class="btn primary" href="#"><i class="icon white user"></i> {{_i}}User{{/i}}</a>
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="icon pencil"></i> {{_i}}Edit{{/i}}</a></li>
+            <li><a href="#"><i class="icon trash"></i> {{_i}}Delete{{/i}}</a></li>
+            <li><a href="#"><i class="icon ban-circle"></i> {{_i}}Ban{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon"></i> {{_i}}Make Admin{{/i}}</a></li>
+          </ul>
+        </div>
       </div>
       <p>
-        <a class="btn large" href="#"><i class="icon refresh"></i> {{_i}}Refresh{{/i}}</a>
+        <a class="btn" href="#"><i class="icon refresh"></i> {{_i}}Refresh{{/i}}</a>
+        <a class="btn success" href="#"><i class="icon white shopping-cart"></i> {{_i}}Checkout{{/i}}</a>
+        <a class="btn danger" href="#"><i class="icon white trash"></i> {{_i}}Delete{{/i}}</a>
+      </p>
+      <p>
+        <a class="btn large" href="#"><i class="icon comment"></i> {{_i}}Comment{{/i}}</a>
         <a class="btn small" href="#"><i class="icon cog"></i> {{_i}}Settings{{/i}}</a>
+        <a class="btn small info" href="#"><i class="icon white info-sign"></i> {{_i}}More Info{{/i}}</a>
       </p>
     </div>
-    <div class="span3">
-      <p>{{_i}}Or, use them in navigation.{{/i}}</p>
+    <div class="span4">
+      <p>{{_i}}Use them in navigation.{{/i}}</p>
       <div class="well" style="padding: 8px 0;">
         <ul class="nav list">
           <li class="active"><a href="#"><i class="icon white home"></i> {{_i}}Home{{/i}}</a></li>
           <li><a href="#"><i class="icon book"></i> {{_i}}Library{{/i}}</a></li>
           <li><a href="#"><i class="icon pencil"></i> {{_i}}Applications{{/i}}</a></li>
+          <li><a href="#"><i class="icon"></i> {{_i}}Misc{{/i}}</a></li>
         </ul>
       </div> <!-- /well -->
+    </div>
+    <div class="span4">
+      <form>
+        <p>{{_i}}Use them with prepended forms.{{_i}}</p>
+        <div class="control-group">
+          <label class="control-label" for="prependedInput">{{_i}}Your Email Address:{{/i}}</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon envelope"></i></span>
+              <input class="span32" id="iconInput" size="16" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="iconSelect">{{_i}}Your Location:{{/i}}</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon map-marker"></i></span>
+              <select id="iconSelect">
+                <option>Istanbul</option>
+                <option>London</option>
+                <option>New York</option>
+                <option>Tokyo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>
