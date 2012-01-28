@@ -861,6 +861,13 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
+.input-prepend input:focus,
+.input-append input:focus,
+.input-prepend .uneditable-input:focus,
+.input-append .uneditable-input:focus {
+  position: relative;
+  z-index: 2;
+}
 .input-prepend .uneditable-input, .input-append .uneditable-input {
   border-left-color: #ccc;
 }

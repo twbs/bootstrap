@@ -396,6 +396,10 @@ select:focus:required:invalid {
   input,
   .uneditable-input {
     .border-radius(0 3px 3px 0);
+    &:focus {
+      position: relative;
+      z-index: 2;
+    }
   }
   .uneditable-input {
     border-left-color: #ccc;
