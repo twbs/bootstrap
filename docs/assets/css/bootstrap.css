@@ -2100,6 +2100,7 @@ table .span12 {
   color: #ffffff;
 }
 .navbar .nav.pull-right .dropdown-menu {
+  left: auto;
   right: 0;
 }
 .navbar .nav.pull-right .dropdown-menu:before {
