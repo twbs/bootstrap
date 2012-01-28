@@ -14,12 +14,6 @@
     // make code pretty
     window.prettyPrint && prettyPrint()
 
-    // table sort example
-    if ($.fn.tablesorter) {
-      $("#sortTableExample").tablesorter({ sortList: [[1,0]] })
-      $(".tablesorter-example").tablesorter({ sortList: [[1,0]] })
-    }
-
     // add-ons
     $('.add-on :checkbox').on('click', function () {
       var $this = $(this)

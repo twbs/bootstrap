@@ -82,7 +82,7 @@ $(function () {
           })
         
         popover.popover('show')
-        console.log(popover)
+
         ok($('.popover').length, 'popover was inserted')
         ok($('.popover').hasClass('foobar'), 'custom class is present')
 

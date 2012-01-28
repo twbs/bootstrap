@@ -145,7 +145,6 @@
             break
         }
 
-        debugger
         if (this.options['z-index']) tp['z-index'] = this.options['z-index']
 
         $tip

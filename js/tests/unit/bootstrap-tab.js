@@ -17,7 +17,6 @@ $(function () {
           + '<li><a href="#profile">Profile</a></li>'
           + '</ul>'
 
-
         $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo("#qunit-fixture")
 
         $(tabsHTML).find('li:last a').tab('show')
