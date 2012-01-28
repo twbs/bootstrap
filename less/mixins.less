@@ -360,12 +360,7 @@
   .gradientBar(@startColor, @endColor);
 
   // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active, &.disabled {
-    background-color: @endColor;
-  }
-
-  // called out separately because IE8 would ignore otherwise
-  &[disabled] {
+  &:hover, &:active, &.active, &.disabled, &[disabled] {
     background-color: @endColor;
   }
 

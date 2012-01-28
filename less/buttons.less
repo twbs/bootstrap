@@ -82,16 +82,8 @@
     background-color: darken(@white, 10%);
     background-color: darken(@white, 15%) e("\9");
   }
-  &.disabled {
-    cursor: default;
-    background-image: none;
-    background-color: darken(@white, 10%);
-    .opacity(65);
-    .box-shadow(none);
-  }
+  &.disabled,
   &[disabled] {
-    // disabled pseudo can't be included with .disabled
-    // def because IE8 and below will drop it ;_;
     cursor: default;
     background-image: none;
     background-color: darken(@white, 10%);

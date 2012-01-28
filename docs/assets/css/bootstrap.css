@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Fri Jan 27 18:33:07 PST 2012
+ * Date: Fri Jan 27 18:43:22 PST 2012
  */
 article,
 aside,
@@ -2498,9 +2498,7 @@ table .span12 {
 .btn.primary:hover,
 .btn.primary:active,
 .btn.primary.active,
-.btn.primary.disabled {
-  background-color: #0055cc;
-}
+.btn.primary.disabled,
 .btn.primary[disabled] {
   background-color: #0055cc;
 }
@@ -2522,9 +2520,7 @@ table .span12 {
 .btn.danger:hover,
 .btn.danger:active,
 .btn.danger.active,
-.btn.danger.disabled {
-  background-color: #c43c35;
-}
+.btn.danger.disabled,
 .btn.danger[disabled] {
   background-color: #c43c35;
 }
@@ -2546,9 +2542,7 @@ table .span12 {
 .btn.success:hover,
 .btn.success:active,
 .btn.success.active,
-.btn.success.disabled {
-  background-color: #57a957;
-}
+.btn.success.disabled,
 .btn.success[disabled] {
   background-color: #57a957;
 }
@@ -2570,9 +2564,7 @@ table .span12 {
 .btn.info:hover,
 .btn.info:active,
 .btn.info.active,
-.btn.info.disabled {
-  background-color: #339bb9;
-}
+.btn.info.disabled,
 .btn.info[disabled] {
   background-color: #339bb9;
 }
@@ -2636,17 +2628,7 @@ table .span12 {
   background-color: #e6e6e6;
   background-color: #d9d9d9 \9;
 }
-.btn.disabled {
-  cursor: default;
-  background-image: none;
-  background-color: #e6e6e6;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-.btn[disabled] {
+.btn.disabled, .btn[disabled] {
   cursor: default;
   background-image: none;
   background-color: #e6e6e6;
