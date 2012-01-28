@@ -657,13 +657,12 @@ form.well {
   }
 
   /* Change up some type stuff */
-  h1 small {
-    display: block;
-    line-height: 20px;
-  }
-  /* More space between sections */
   h2 {
     margin-top: 27px;
+  }
+  h2 small {
+    display: block;
+    line-height: 18px;
   }
   h3 {
     margin-top: 18px;
