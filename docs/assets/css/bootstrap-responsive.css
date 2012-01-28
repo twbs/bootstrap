@@ -86,6 +86,9 @@
     width: auto;
     margin: 0;
   }
+  .btn-navbar {
+    display: block;
+  }
 }
 @media (min-width: 768px) and (max-width: 940px) {
   .container {

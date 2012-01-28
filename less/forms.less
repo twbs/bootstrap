@@ -86,7 +86,7 @@ input[type="radio"] {
   line-height: normal;
   border: 0;
   cursor: pointer;
-  border-radius: 0 e("\0/");
+  border-radius: 0 e("\0/"); // Nuke border-radius for IE9 only
 }
 
 // Reset the file input to browser defaults
@@ -169,6 +169,7 @@ input[type="hidden"] {
 .checkbox.inline {
   display: inline-block;
   margin-bottom: 0;
+  vertical-align: middle;
 }
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {

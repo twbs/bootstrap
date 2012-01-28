@@ -16,6 +16,29 @@
   .box-shadow(@shadow);
 }
 
+// Navbar button for toggling navbar items in responsive layouts
+.btn-navbar {
+  display: none;
+  float: right;
+  padding: 7px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
+  .box-shadow(@shadow);
+}
+.btn-navbar .i-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: #f5f5f5;
+  .border-radius(1px);
+  .box-shadow(0 1px 0 rgba(0,0,0,.25));
+}
+.btn-navbar .i-bar + .i-bar {
+  margin-top: 3px;
+}
+
 // Brand, links, text, and buttons
 .navbar {
   // Hover and active states
@@ -62,6 +85,15 @@
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 0;
+  }
+  .radio,
+  .checkbox {
+    margin-top: 5px;
+  }
+  input[type="image"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-top: 3px;
   }
 }
 
