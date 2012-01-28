@@ -81,7 +81,7 @@
           </label>
         </div>
       </div> <!-- /row -->
-      <div class="row">
+      <div class="row" style="margin-bottom: 9px;">
         <div class="span3">
           <label>
             <h3><a href="./javascript.html#collapse">{{_i}}Collapse{{/i}}</a></h3>
@@ -108,6 +108,7 @@
           </label>
         </div>
       </div> <!-- /row -->
+      <div class="alert alert-info"><strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}All javascript plugins require the latest version of jQuery.{{/i}}</div>
     </section>
 
 
@@ -220,7 +221,9 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-          <p>{{_i}}<span class="label notice">Notice</span> If you want your modal to animate in and out, just add a <code>.fade</code> class to the <code>.modal</code> element (refer to the demo to see this in action).{{/i}}</p>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}If you want your modal to animate in and out, just add a <code>.fade</code> class to the <code>.modal</code> element (refer to the demo to see this in action) and include bootstrap-transition.js.{{/i}}
+          </div>
           <h3{{_i}}>Methods{{/i}}</h3>
           <h4>.modal({{_i}}options{{/i}})</h4>
           <p>{{_i}}Activates your content as a modal. Accepts an optional options <code>object</code>.{{/i}}</p>
@@ -374,7 +377,9 @@ $('#myModal').on('hidden', function () {
           <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}To quickly add dropdown functionality to any element just add <code>data-toggle="dropdown"</code> and any valid bootstrap dropdown will automatically be activated.{{/i}}</p>
-          <p>{{_i}}<span class="label notice">Notice</span> For added control and flexibility, optionally specify a <code>data-target="#fat"</code> or <code>href="#fat"</code> - this allows you to target specific dropdowns.{{/i}}</p>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>{{_i}} You may optionally target a specific dropdown by using <code>data-target="#fat"</code> or <code>href="#fat"</code>.{{/i}}
+          </div>
 
 <pre class="prettyprint linenums">
 &lt;ul class="nav pills"&gt;
@@ -468,7 +473,10 @@ $('#myModal').on('hidden', function () {
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body).{{/i}}</p>
           <pre class="prettyprint linenums">&lt;body data-spy="scroll" &gt;...&lt;/body&gt;</pre>
-           <p>{{_i}}<span class="label notice">Notice</span> Navbar anchor tags must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.{{/i}}</p>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>
+            {{_i}}Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.{{/i}}
+          </div>
           <h3>{{_i}}Options{{/i}}</h3>
           <table class="table table-bordered table-striped">
             <thead>
@@ -683,7 +691,10 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              </tr>
             </tbody>
           </table>
-          <p>{{_i}}<span class="label notice">Notice</span> Individual tooltip instance options can alternatively be specified through the use of data attributes.{{/i}}</p>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>
+            {{_i}}Options for individual tooltips can alternatively be specified through the use of data attributes.{{/i}}
+          </div>
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.{{/i}}</p>
           <h3>{{_i}}Methods{{/i}}</h3>
@@ -792,7 +803,10 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              </tr>
             </tbody>
           </table>
-          <p>{{_i}}<span class="label notice">Notice</span> Individual popover instance options can alternatively be specified through the use of data attributes.{{/i}}</p>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>
+            {{_i}}Options for individual popovers can alternatively be specified through the use of data attributes.{{/i}}
+          </div>
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>
           {{_i}}For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a the selector option.{{/i}}
@@ -965,19 +979,23 @@ $('#my-alert').bind('closed', function () {
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().button('toggle')</h4>
           <p>{{_i}}Toggles push state. Gives btn the look that it's been activated.{{/i}}</p>
-          <p>{{_i}}<span class="label notice">Notice</span> You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.{{/i}}</p>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>
+            {{_i}}You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.{{/i}}
+          </div>
           <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="button" &gt;…&lt;/button&gt;</pre>
           <h4>$().button('loading')</h4>
           <p>{{_i}}Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.{{/i}}
           </p>
-           <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
-          <p>
-            {{_i}}<span class="label notice">Notice</span> Firefox persists the disabled state across page loads. A workaround for this is to use: <code>autocomplete="off"</code>. More info can be found <a href="https://github.com/twitter/bootstrap/issues/793">here</a>.{{/i}}
-          </p>
-           <h4>$().button('reset')</h4>
-           <p>{{_i}}Resets button state - swaps text to original text.{{/i}}</p>
-           <h4>$().button(string)</h4>
-           <p>{{_i}}Resets button state - swaps text to any data defined text state.{{/i}}</p>
+          <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>
+            {{_i}}<a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.{{/i}}
+          </div>
+          <h4>$().button('reset')</h4>
+          <p>{{_i}}Resets button state - swaps text to original text.{{/i}}</p>
+          <h4>$().button(string)</h4>
+          <p>{{_i}}Resets button state - swaps text to any data defined text state.{{/i}}</p>
 <pre class="prettyprint linenums">&lt;button class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
 &lt;script&gt;
   $('.btn').button('complete')
@@ -1081,7 +1099,10 @@ $('#my-alert').bind('closed', function () {
 &lt;/button&gt;
 
 &lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;</pre>
-         <p>{{_i}}<span class="label notice">Notice</span> To add accordion like group management to a collapsible control just add the additional data attribute <code>data-parent="#selector"</code>. Refer to the demo below to see this in action.{{/i}}</p>
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>
+            {{_i}}To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.{{/i}}
+          </div>
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>.collapse({{_i}}options{{/i}})</h4>
           <p>{{_i}}Activates your content as a collapsible element. Accepts an optional options <code>object</code>.{{/i}}
