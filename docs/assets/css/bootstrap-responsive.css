@@ -24,9 +24,9 @@
   }
   .modal {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
     width: auto;
     margin: 0;
   }
@@ -35,6 +35,7 @@
   }
   .modal-header .close {
     padding: 10px;
+    margin: -10px;
   }
 }
 @media (max-width: 768px) {

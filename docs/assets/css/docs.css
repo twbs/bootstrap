@@ -723,6 +723,15 @@ form.well {
     word-wrap: break-word;
     word-break: break-all;
   }
+
+  /* Modal example */
+  .modal-example .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
 }
 
 
