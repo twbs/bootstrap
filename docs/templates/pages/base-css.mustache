@@ -1412,7 +1412,7 @@
 <pre class="prettyprint linenums">
 &lt;i class="icon search"&gt;&lt;/i&gt;
 </pre>
-      <p>There are also styles available for inverted (white) icons, made ready with one extra class:</p>
+      <p>{{_i}}There are also styles available for inverted (white) icons, made ready with one extra class:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon white search"&gt;&lt;/i&gt;
 </pre>
@@ -1427,18 +1427,15 @@
         <li>{{_i}}For buttons to help convey the meaning of an action{{/i}}</li>
         <li>{{_i}}With links to share context on a user's destination{{/i}}</li>
       </ul>
-      <p>{{_i}}Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon. And if you need to position the text with no icon before it (where other items have an icon; see the navigation example below) simply use <code>.icon</code> class with no other classes:{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;i class="icon"&gt;&lt;/i&gt;
-</pre>
+      <p>{{_i}}Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon.{{/i}}</p>
     </div>
   </div>
 
   <h3>{{_i}}Examples{{/i}}</h3>
+  <p>{{_i}}Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.{{/i}}</p>
   <div class="row">
     <div class="span4">
-      <p>{{_i}}Use them in buttons - of all types and sizes.{{/i}}</p>
-      <div class="btn-toolbar">
+      <div class="btn-toolbar" style="margin-bottom: 9px">
         <div class="btn-group">
           <a class="btn" href="#"><i class="icon align-left"></i></a>
           <a class="btn" href="#"><i class="icon align-center"></i></a>
@@ -1453,7 +1450,7 @@
             <li><a href="#"><i class="icon trash"></i> {{_i}}Delete{{/i}}</a></li>
             <li><a href="#"><i class="icon ban-circle"></i> {{_i}}Ban{{/i}}</a></li>
             <li class="divider"></li>
-            <li><a href="#"><i class="icon"></i> {{_i}}Make Admin{{/i}}</a></li>
+            <li><a href="#"><i class="icon"></i> {{_i}}Make admin{{/i}}</a></li>
           </ul>
         </div>
       </div>
@@ -1469,7 +1466,6 @@
       </p>
     </div>
     <div class="span4">
-      <p>{{_i}}Use them in navigation.{{/i}}</p>
       <div class="well" style="padding: 8px 0;">
         <ul class="nav list">
           <li class="active"><a href="#"><i class="icon white home"></i> {{_i}}Home{{/i}}</a></li>
@@ -1481,27 +1477,12 @@
     </div>
     <div class="span4">
       <form>
-        <p>{{_i}}Use them with prepended forms.{{_i}}</p>
         <div class="control-group">
-          <label class="control-label" for="prependedInput">{{_i}}Your Email Address:{{/i}}</label>
+          <label class="control-label" for="prependedInput">{{_i}}Email address{{/i}}</label>
           <div class="controls">
             <div class="input-prepend">
               <span class="add-on"><i class="icon envelope"></i></span>
               <input class="span32" id="iconInput" size="16" type="text">
-            </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="iconSelect">{{_i}}Your Location:{{/i}}</label>
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on"><i class="icon map-marker"></i></span>
-              <select id="iconSelect">
-                <option>Istanbul</option>
-                <option>London</option>
-                <option>New York</option>
-                <option>Tokyo</option>
-              </select>
             </div>
           </div>
         </div>
