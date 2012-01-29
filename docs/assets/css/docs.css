@@ -543,19 +543,6 @@ form.well {
   margin: 18px 0;
 }
 
-/* Form docs for horizontal forms */
-.form-docs {
-  padding-left: 10px;
-}
-.form-docs h3,
-.form-docs p,
-.form-docs li {
-  color: #777;
-}
-.form-docs hr {
-  margin: 18px 0;
-}
-
 /* Fake the :focus state to demo it */
 .focused {
   border-color: rgba(82,168,236,.8);
@@ -689,10 +676,6 @@ form.well {
     left: auto;
   }
 
-  /* Forms docs */
-  .form-docs {
-    padding-left: 0; /* down from 10px */
-  }
 }
 
 
