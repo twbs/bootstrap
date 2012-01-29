@@ -2002,6 +2002,7 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .alert .close {
   position: relative;
+  top: -2px;
   right: -21px;
   line-height: 18px;
 }
