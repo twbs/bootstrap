@@ -1,14 +1,40 @@
 // GRID SYSTEM
 // -----------
-// To customize the grid system, bring up the variables.less file and change the column count, size, and gutter there
+
+
+// Default grid sizing
+// -------------------
+@gridColumns:           12;
+@gridColumnWidth:       60px;
+@gridGutterWidth:       20px;
+
+@gridRowWidth:          (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+@gridTotalWidth:        @gridRowWidth;
+
+
+// Columns and offseting mixins
+// ----------------------------
+.columns(@columns: 1) {
+  //width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+  width: @gridTotalWidth * ((((@gridGutterWidth+@gridColumnWidth)*@columns)-@gridGutterWidth)/@gridRowWidth);
+}
+.offset(@columns: 1) {
+  margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+}
+// Necessary grid styles for every column to make them appear next to each other horizontally
+.gridColumn() {
+  float: left;
+  margin-left: @gridGutterWidth;
+}
+
+// Grid rows and columns
+// ---------------------
 .row {
   margin-left: @gridGutterWidth * -1;
   .clearfix();
 }
 
-// Find all .span# classes within .row and give them the necessary properties for grid columns 
-// (supported by all browsers back to IE7)
-// Credit to @dhg for the idea
+// Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks @dhg)
 [class*="span"] {
   .gridColumn();
 }
@@ -39,3 +65,42 @@
 .offset9   { .offset(9); }
 .offset10  { .offset(10); }
 .offset11  { .offset(11); }
+
+
+
+// FLUID GRID SYSTEM
+// -----------------
+// This is a very early and limited fluid grid system for now and will not be documented until it's refined in v2.1.
+
+.row-fluid {
+  @gridColumnWidth: 6.382978723%;
+  @gridGutterWidth: 2.127659574%;
+
+  width: 100% * ((@gridGutterWidth + @gridRowWidth)/@gridRowWidth);
+  margin-left: 0 - @gridGutterWidth;
+
+  // Redeclare the mixins
+  .gridColumn() {
+    float: left;
+    margin-left: @gridGutterWidth;
+  } 
+  [class*="span"] {
+    .gridColumn();
+  }
+  .fluidColumns(@columns: 1) {
+    width: @gridTotalWidth * ((((@gridGutterWidth+@gridColumnWidth)*@columns)-@gridGutterWidth)/(@gridRowWidth+@gridGutterWidth));
+  }
+  // Redeclare the columns
+  .span1     { .fluidColumns(1); }
+  .span2     { .fluidColumns(2); }
+  .span3     { .fluidColumns(3); }
+  .span4     { .fluidColumns(4); }
+  .span5     { .fluidColumns(5); }
+  .span6     { .fluidColumns(6); }
+  .span7     { .fluidColumns(7); }
+  .span8     { .fluidColumns(8); }
+  .span9     { .fluidColumns(9); }
+  .span10    { .fluidColumns(10); }
+  .span11    { .fluidColumns(11); }
+  .span12    { .fluidColumns(12); }
+}

@@ -10,34 +10,8 @@
 }
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
-.fluid-container {
-  position: relative;
-  min-width: @siteWidth;
+.container-fluid {
   padding-left: @gridGutterWidth;
   padding-right: @gridGutterWidth;
   .clearfix();
-}
-
-// Sidebars (left and right options)
-.fluid-sidebar {
-  width: @fluidSidebarWidth;
-  margin: 0 20px 18px;
-}
-.sidebar-left   { padding-left: @fluidSidebarWidth + @gridGutterWidth * 2; }
-.sidebar-right  { padding-right: @fluidSidebarWidth + @gridGutterWidth * 2; }
-
-// Float the sidebars accordingly
-.sidebar-left .fluid-sidebar {
-  float: left;
-  margin-left: (@fluidSidebarWidth + @gridGutterWidth) * -1;
-}
-.sidebar-right .fluid-sidebar {
-  float: right;
-  margin-right: (@fluidSidebarWidth + @gridGutterWidth) * -1;
-}
-
-// The main content area
-.fluid-content {
-  float: left;
-  width: 100%;
 }

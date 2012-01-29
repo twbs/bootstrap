@@ -115,6 +115,10 @@
     width: auto;
     padding: 0 20px;
   }
+  // Fluid rows
+  .row-fluid {
+    width: 100%;
+  }
   // Undo negative margin on rows
   .row {
     margin-left: 0;
@@ -182,6 +186,42 @@
   .offset10  { .offset(10); }
   .offset11  { .offset(11); }
 
+  // FLUID GRID
+  // ----------
+  .row-fluid {
+    @gridColumnWidth:     5.801104972%;
+    @gridGutterWidth:     2.762430939%;
+    @gridRowWidth:        (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+    @gridTotalWidth:      @gridRowWidth;
+
+    width: 100% * ((@gridGutterWidth + @gridRowWidth)/@gridRowWidth);
+    margin-left: 0 - @gridGutterWidth;
+
+    // Redeclare the mixins
+    .gridColumn() {
+      float: left;
+      margin-left: @gridGutterWidth;
+    } 
+    [class*="span"] {
+      .gridColumn();
+    }
+    .fluidColumns(@columns: 1) {
+      width: @gridTotalWidth * ((((@gridGutterWidth+@gridColumnWidth)*@columns)-@gridGutterWidth)/(@gridRowWidth+@gridGutterWidth));
+    }
+    // Redeclare the columns
+    .span1     { .fluidColumns(1); }
+    .span2     { .fluidColumns(2); }
+    .span3     { .fluidColumns(3); }
+    .span4     { .fluidColumns(4); }
+    .span5     { .fluidColumns(5); }
+    .span6     { .fluidColumns(6); }
+    .span7     { .fluidColumns(7); }
+    .span8     { .fluidColumns(8); }
+    .span9     { .fluidColumns(9); }
+    .span10    { .fluidColumns(10); }
+    .span11    { .fluidColumns(11); }
+    .span12    { .fluidColumns(12); }
+  }
 }
 
 
@@ -198,7 +238,7 @@
   // Unfix the navbar
   .navbar-fixed-top {
     position: static;
-    margin-bottom: @baseLineHeight * 2;
+    margin-bottom: @baseLineHeight;
   }
   .navbar-inner {
     padding: 5px;
@@ -314,6 +354,14 @@
   @gridGutterWidth:   30px;
   @siteWidth:         1170px;
 
+  // Thumbnails
+  .thumbnails {
+    margin-left: @gridGutterWidth * -1;
+  }
+  .thumbnails > li {
+    margin-left: @gridGutterWidth;
+  }
+
   // Bring grid mixins to recalculate widths
   .columns(@columns: 1) {
     width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
@@ -358,12 +406,41 @@
   .offset10  { .offset(10); }
   .offset11  { .offset(11); }
 
-  // Thumbnails
-  .thumbnails {
-    margin-left: @gridGutterWidth * -1;
-  }
-  .thumbnails > li {
-    margin-left: @gridGutterWidth;
-  }
 
+  // FLUID GRID
+  // ----------
+  .row-fluid {
+    @gridColumnWidth:     5.982%;
+    @gridGutterWidth:     2.56%;
+    @gridRowWidth:        (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+    @gridTotalWidth:      @gridRowWidth;
+
+    width: 100% * ((@gridGutterWidth + @gridRowWidth)/@gridRowWidth);
+    margin-left: 0 - @gridGutterWidth;
+
+    // Redeclare the mixins
+    .gridColumn() {
+      float: left;
+      margin-left: @gridGutterWidth;
+    } 
+    [class*="span"] {
+      .gridColumn();
+    }
+    .fluidColumns(@columns: 1) {
+      width: @gridTotalWidth * ((((@gridGutterWidth+@gridColumnWidth)*@columns)-@gridGutterWidth)/(@gridRowWidth+@gridGutterWidth));
+    }
+    // Redeclare the columns
+    .span1     { .fluidColumns(1); }
+    .span2     { .fluidColumns(2); }
+    .span3     { .fluidColumns(3); }
+    .span4     { .fluidColumns(4); }
+    .span5     { .fluidColumns(5); }
+    .span6     { .fluidColumns(6); }
+    .span7     { .fluidColumns(7); }
+    .span8     { .fluidColumns(8); }
+    .span9     { .fluidColumns(9); }
+    .span10    { .fluidColumns(10); }
+    .span11    { .fluidColumns(11); }
+    .span12    { .fluidColumns(12); }
+  }
 }

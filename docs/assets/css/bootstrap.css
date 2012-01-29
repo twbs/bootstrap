@@ -126,7 +126,7 @@ a:hover {
   margin-left: 20px;
 }
 .span1 {
-  width: 60px;
+  width: 59.99999999999999px;
 }
 .span2 {
   width: 140px;
@@ -194,6 +194,50 @@ a:hover {
 .offset11 {
   margin-left: 900px;
 }
+.row-fluid {
+  width: 102.12765957421277%;
+  margin-left: -2.127659574%;
+}
+.row-fluid [class*="span"] {
+  float: left;
+  margin-left: 2.127659574%;
+}
+.row-fluid .span1 {
+  width: 6.249999999619791%;
+}
+.row-fluid .span2 {
+  width: 14.58333333211979%;
+}
+.row-fluid .span3 {
+  width: 22.91666666461979%;
+}
+.row-fluid .span4 {
+  width: 31.24999999711979%;
+}
+.row-fluid .span5 {
+  width: 39.58333332961979%;
+}
+.row-fluid .span6 {
+  width: 47.91666666211979%;
+}
+.row-fluid .span7 {
+  width: 56.24999999461979%;
+}
+.row-fluid .span8 {
+  width: 64.58333332711977%;
+}
+.row-fluid .span9 {
+  width: 72.91666665961978%;
+}
+.row-fluid .span10 {
+  width: 81.24999999211977%;
+}
+.row-fluid .span11 {
+  width: 89.58333332461977%;
+}
+.row-fluid .span12 {
+  width: 97.91666665711978%;
+}
 .container {
   width: 940px;
   margin-left: auto;
@@ -207,41 +251,17 @@ a:hover {
 .container:after {
   clear: both;
 }
-.fluid-container {
-  position: relative;
-  min-width: 940px;
+.container-fluid {
   padding-left: 20px;
   padding-right: 20px;
   *zoom: 1;
 }
-.fluid-container:before, .fluid-container:after {
+.container-fluid:before, .container-fluid:after {
   display: table;
   content: "";
 }
-.fluid-container:after {
+.container-fluid:after {
   clear: both;
-}
-.fluid-sidebar {
-  width: 220px;
-  margin: 0 20px 18px;
-}
-.sidebar-left {
-  padding-left: 260px;
-}
-.sidebar-right {
-  padding-right: 260px;
-}
-.sidebar-left .fluid-sidebar {
-  float: left;
-  margin-left: -240px;
-}
-.sidebar-right .fluid-sidebar {
-  float: right;
-  margin-right: -240px;
-}
-.fluid-content {
-  float: left;
-  width: 100%;
 }
 p {
   margin: 0 0 9px;
