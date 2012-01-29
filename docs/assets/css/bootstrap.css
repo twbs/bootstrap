@@ -2208,13 +2208,16 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .tabs .dropdown-toggle .caret, .pills .dropdown-toggle .caret {
   border-top-color: #0088cc;
+  border-bottom-color: #0088cc;
   margin-top: 6px;
 }
 .tabs .dropdown-toggle:hover .caret, .pills .dropdown-toggle:hover .caret {
   border-top-color: #005580;
+  border-bottom-color: #005580;
 }
 .tabs .active .dropdown-toggle .caret, .pills .active .dropdown-toggle .caret {
   border-top-color: #333333;
+  border-bottom-color: #333333;
 }
 .nav > .dropdown.active > a:hover {
   color: #000000;
