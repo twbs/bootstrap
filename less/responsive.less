@@ -135,10 +135,10 @@
 @media (min-width: 768px) and (max-width: 940px) {
 
   // Reset grid variables
-  @gridColumns:       16;
-  @gridColumnWidth:   44px;
+  @gridColumns:       12;
+  @gridColumnWidth:   42px;
   @gridGutterWidth:   20px;
-  @siteWidth:         748px;
+  @siteWidth:         724px;
 
   // Bring grid mixins to recalculate widths
   .columns(@columns: 1) {
@@ -148,11 +148,11 @@
     margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
   }
 
-  // 16cols at 30px wide with 16px gutters
+  // 12cols at 44px wide with 20px gutters
   .container {
     width: @siteWidth;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   // Default columns
@@ -181,7 +181,6 @@
   .offset9   { .offset(9); }
   .offset10  { .offset(10); }
   .offset11  { .offset(11); }
-  .offset12  { .offset(12); }
 
 }
 
@@ -295,6 +294,7 @@
     display: block;
   }
 
+  // Hide everything in the navbar save .brand and toggle button */
   .nav-collapse {
     overflow: hidden;
     height: 0;
