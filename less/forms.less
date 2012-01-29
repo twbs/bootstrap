@@ -175,6 +175,11 @@ input[type="hidden"] {
 .checkbox.inline + .checkbox.inline {
   margin-left: 10px; // space out consecutive inline controls
 }
+// But don't forget to remove their padding on first-child
+.controls > .radio.inline:first-child,
+.controls > .checkbox.inline:first-child {
+  padding-top: 5px; // has to be padding because margin collaspes
+}
 
 
 

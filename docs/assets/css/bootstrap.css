@@ -596,6 +596,9 @@ input[type="hidden"] {
 .radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
   margin-left: 10px;
 }
+.controls > .radio.inline:first-child, .controls > .checkbox.inline:first-child {
+  padding-top: 5px;
+}
 input, textarea {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
