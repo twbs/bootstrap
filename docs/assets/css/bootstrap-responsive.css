@@ -218,7 +218,7 @@
     position: static;
     margin-bottom: 18px;
   }
-  .navbar-inner {
+  .navbar-fixed-top .navbar-inner {
     padding: 5px;
     background-image: none;
   }
@@ -305,9 +305,12 @@
   .btn-navbar {
     display: block;
   }
-  .nav-collapse {
+  .nav-collapse.collapse {
     overflow: hidden;
     height: 0;
+  }
+  .nav-collapse.collapse.in {
+    height: auto;
   }
 }
 @media (min-width: 1200px) {

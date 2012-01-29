@@ -240,7 +240,7 @@
     position: static;
     margin-bottom: @baseLineHeight;
   }
-  .navbar-inner {
+  .navbar-fixed-top .navbar-inner {
     padding: 5px;
     background-image: none;
   }
@@ -335,9 +335,12 @@
   }
 
   // Hide everything in the navbar save .brand and toggle button */
-  .nav-collapse {
+  .nav-collapse.collapse {
     overflow: hidden;
     height: 0;
+  }
+  .nav-collapse.collapse.in {
+    height: auto;
   }
 
 }
