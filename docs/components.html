@@ -659,7 +659,7 @@
   </div>
   <h2>Static navbar example</h2>
   <p>An example of a static (not fixed to the top) navbar with project name, navigation, and search form.</p>
-  <div class="navbar navbar-static">
+  <div class="navbar">
     <div class="navbar-inner">
       <div class="container" style="width: auto;">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -712,7 +712,7 @@
       <h3>Navbar scaffolding</h3>
       <p>The navbar requires only a few divs to structure it well for static or fixed display.</p>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-static"&gt;
+&lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
     &lt;div class="container"&gt;
       ...
@@ -720,7 +720,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-      <p>To make the navbar fixed, swap the <code>.navbar-static</code> class for <code>.navbar-fixed-top</code>. In your CSS, you will also need to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>&lt;body&gt;</code>.</p>
+      <p>To make the navbar fixed to the top of the viewport, add <code>.navbar-fixed-top</code> to the outermost div, <code>.navbar</code>. In your CSS, you will also need to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>&lt;body&gt;</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-top"&gt;
   ...
@@ -743,7 +743,7 @@
       <h3>Optional responsive variation</h3>
       <p>Depending on the amount of content in your topbar, you might want to implement the responsive options. To do so, wrap your nav content in a containing div, <code>.nav-collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.</p>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-static"&gt;
+&lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
     &lt;div class="container"&gt;
       
