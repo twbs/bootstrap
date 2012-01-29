@@ -467,7 +467,7 @@
       <div class="well" style="padding: 8px 0;">
         <ul class="nav list">
           <li class="nav-header">List header</li>
-          <li class="active"><a href="#"><i class="icon home"></i> Home</a></li>
+          <li class="active"><a href="#"><i class="icon white home"></i> Home</a></li>
           <li><a href="#"><i class="icon book"></i> Library</a></li>
           <li><a href="#"><i class="icon pencil"></i> Applications</a></li>
           <li class="nav-header">Another list header</li>
@@ -740,6 +740,33 @@
   &lt;input type="text" class="search-query pull-left" placeholder="Search"&gt;
 &lt;/form&gt;
 </pre>
+      <h3>Optional responsive variation</h3>
+      <p>Depending on the amount of content in your topbar, you might want to implement the responsive options. To do so, wrap your nav content in a containing div, <code>.nav-collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.</p>
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-static"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;div class="container"&gt;
+      
+      &lt;!-- .btn-navbar is used as the toggle for collapsed navbar content --&gt;
+      &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
+        &lt;span class="i-bar"&gt;&lt;/span&gt;
+        &lt;span class="i-bar"&gt;&lt;/span&gt;
+        &lt;span class="i-bar"&gt;&lt;/span&gt;
+      &lt;/a&gt;
+      
+      &lt;!-- Be sure to leave the brand out there if you want it shown --&gt;
+      &lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
+
+      &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;
+      &lt;div class="nav-collapse"&gt;
+        &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
     </div><!-- /.span -->
     <div class="span4">
       <h3>Nav links</h3>
