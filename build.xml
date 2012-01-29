@@ -743,12 +743,7 @@
             <fileset dir="${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
             <arg path="${dir.build.tools}/${tool.htmlcompressor}"/>
-            <arg line="--preserve-multi-spaces"/>
-            <arg line="--remove-quotes"/>
-            <arg line="--compress-js"/>
-            <arg line="--compress-css"/>
-            <arg line="--preserve-php"/>
-            <arg line="--preserve-ssi"/>
+            <arg line="${tool.htmlcompressor.opts} ${tool.htmlcompressor.opts.extra}"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="${basedir}/${dir.publish}/*"/>
