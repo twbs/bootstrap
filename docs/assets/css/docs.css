@@ -106,35 +106,6 @@ hr.soften {
 }
 
 
-/* Benefits list in masthead */
-.benefits {
-  display: none;
-  width: 260px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-.benefits ul {
-  list-style: none;
-  margin: 0;
-}
-.benefits li {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 35px;
-  color: #555;
-}
-.benefits li + li {
-  border-top: 1px solid #f5f5f5;
-}
-.benefits h4 {
-  color: #555;
-}
-.benefits span {
-  padding-right: 5px;
-  color: #999;
-}
-
 /* Specific jumbotrons
 ------------------------- */
 /* supporting docs pages */
@@ -175,7 +146,6 @@ hr.soften {
   margin: 0;
   padding-top:    11px;
   padding-bottom: 11px;
-  font-size: 13px;
   border-left: 1px solid #f5f5f5;
   border-right: 1px solid #e5e5e5;
   -webkit-border-radius: 0;
@@ -500,6 +470,30 @@ hr.soften {
 
 
 
+/* Color swatches on LESS docs page
+-------------------------------------------------- */
+/* Sets the width of the td */
+.swatch-col {
+  width: 30px;
+}
+/* Le swatch */
+.swatch {
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  margin: -6px 0;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+/* For white swatches, give a border */
+.swatch-bordered {
+  width: 28px;
+  height: 18px;
+  border: 1px solid #eee;
+}
+
+
 /* Misc
 -------------------------------------------------- */
 
@@ -522,6 +516,7 @@ h2 + .row {
 /* Example sites showcase */
 .example-sites img {
   max-width: 100%;
+  margin: 0 auto;
 }
 .marketing-byline {
   margin: -18px 0 27px;
@@ -545,19 +540,6 @@ form.well {
 
 /* Tighten up spacing */
 .well hr {
-  margin: 18px 0;
-}
-
-/* Form docs for horizontal forms */
-.form-docs {
-  padding-left: 10px;
-}
-.form-docs h3,
-.form-docs p,
-.form-docs li {
-  color: #777;
-}
-.form-docs hr {
   margin: 18px 0;
 }
 
@@ -646,6 +628,10 @@ form.well {
     padding: 10px 14px;
     margin: 0 auto 10px;
   }
+  /* Masthead (home page jumbotron) */
+  .masthead {
+    padding-top: 0;
+  }
 
   /* Don't space out quick links so much */
   .quick-links {
@@ -669,8 +655,9 @@ form.well {
     display: block;
     max-width: 300px;
     margin: 0 auto 18px;
+    text-align: center;
   }
-  .example-sites img {
+  .example-sites .thumbnail > img {
     max-width: 270px;
   }
 
@@ -689,17 +676,8 @@ form.well {
     left: auto;
   }
 
-  /* Forms docs */
-  .form-docs {
-    padding-left: 0; /* down from 10px */
-  }
 }
 
-@media (min-width: 940px) {
-  .nav-collapse.collapse {
-    height: auto !important;
-  }
-}
 
 @media (max-width: 768px) {
 
@@ -726,7 +704,7 @@ form.well {
   .subnav .nav > li > a {
     border: 0;
   }
-  .subnav .nav > li + li a {
+  .subnav .nav > li + li > a {
     border-top: 1px solid #e5e5e5;
   }
 
@@ -792,15 +770,26 @@ form.well {
 
 }
 
+
 @media (max-width: 940px) {
 
   /* Unfloat brand */
   .navbar-fixed-top .brand {
-    float: none;
+    float: left;
     margin-left: 0;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
 }
 
+
+/* LARGE DESKTOP SCREENS */
+@media (min-width: 1210px) {
+
+  /* Update subnav container */
+  .subnav-fixed .nav {
+    width: 1168px; /* 2px less to account for left/right borders being removed when in fixed mode */
+  }
+
+}

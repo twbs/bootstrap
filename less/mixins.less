@@ -133,29 +133,10 @@
 // Site container
 // -------------------------
 .container-fixed() {
-  width: @siteWidth;
+  width: @gridTotalWidth;
   margin-left: auto;
   margin-right: auto;
   .clearfix();
-}
-
-// Columns and offseting
-// -------------------------
-.columns(@columns: 1) {
-  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
-}
-.offset(@columns: 1) {
-  margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
-}
-// Necessary grid styles for every column to make them appear next to each other horizontally
-.gridColumn() {
-  float: left;
-  margin-left: @gridGutterWidth;
-}
-// makeColumn can be used to mark any element (e.g., .content-primary) as a column without changing markup to .span something
-.makeColumn(@columnSpan: 1) {
-  .gridColumn();
-  .columns(@columnSpan);
 }
 
 

@@ -7,11 +7,15 @@
 
 .navbar {
   overflow: visible;
+  margin-bottom: @baseLineHeight;
 }
-// gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
+
+// Gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
-  background-color: @navbarBackground;
+  padding-left:  20px;
+  padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  .border-radius(4px);
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
   .box-shadow(@shadow);
 }
@@ -21,8 +25,8 @@
   display: none;
   float: right;
   padding: 7px 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
   @shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
   .box-shadow(@shadow);
@@ -38,6 +42,10 @@
 .btn-navbar .i-bar + .i-bar {
   margin-top: 3px;
 }
+.nav-collapse.collapse {
+  height: auto !important; // Required to be !important to override native collapse plugin
+}
+
 
 // Brand, links, text, and buttons
 .navbar {
@@ -138,26 +146,20 @@
 }
 
 
-// STATIC OR FIXED?
-// ----------------
+// FIXED NAVBAR
+// ------------
 
-// Static navbar
-.navbar-static {
-  margin-bottom: @baseLineHeight;
-}
-.navbar-static .navbar-inner {
-  padding-left:  20px;
-  padding-right: 20px;
-  .border-radius(4px);
-}
-
-// Fixed navbar
 .navbar-fixed-top {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: @zindexFixedNavbar;
+}
+.navbar-fixed-top .navbar-inner {
+  padding-left:  0;
+  padding-right: 0;
+  .border-radius(0);
 }
 
 
