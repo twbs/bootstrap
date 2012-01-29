@@ -732,7 +732,7 @@ form.well {
   .subnav .nav > li > a {
     border: 0;
   }
-  .subnav .nav > li + li a {
+  .subnav .nav > li + li > a {
     border-top: 1px solid #e5e5e5;
   }
 
