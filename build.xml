@@ -655,8 +655,8 @@
 
       <echo message="Updating the HTML with the new css filename: ${style.css}"/>
 
-      <replaceregexp match="&lt;link rel=['&quot;]?stylesheet['&quot;]?\s+href=['&quot;]?(.*)/${file.root.stylesheet}(?:\?.*)?['&quot;]?\s*/?&gt;"
-        replace="&lt;link rel='stylesheet' href='\1/${css.sha}.css'&gt;" flags="m">
+      <replaceregexp match="&lt;link(.+)href=['&quot;]?(.*)/${file.root.stylesheet}(?:\?.*)?['&quot;\s]?(.*/?&gt;)"
+        replace="&lt;link\1href='\2/${css.sha}.css'\3" flags="m">
           <fileset dir="${dir.intermediate}" includes="${page-files}"/>
       </replaceregexp>
 
