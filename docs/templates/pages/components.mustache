@@ -935,34 +935,34 @@
       </tr>
       <tr>
         <td>
-          <span class="label success">{{_i}}New{{/i}}</span>
+          <span class="label label-success">{{_i}}New{{/i}}</span>
         </td>
         <td>
-          <code>&lt;span class="label success"&gt;{{/_i}}New{{/i}}&lt;/span&gt;</code>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="label warning">{{_i}}Warning{{/i}}</span>
-        </td>
-        <td>
-          <code>&lt;span class="label warning"&gt;{{_i}}Warning{{/i}}&lt;/span&gt;</code>
+          <code>&lt;span class="label label-success"&gt;{{/_i}}New{{/i}}&lt;/span&gt;</code>
         </td>
       </tr>
       <tr>
         <td>
-          <span class="label important">{{_i}}Important{{/i}}</span>
+          <span class="label label-warning">{{_i}}Warning{{/i}}</span>
         </td>
         <td>
-          <code>&lt;span class="label important"&gt;{{_i}}Important{{/i}}&lt;/span&gt;</code>
+          <code>&lt;span class="label label-warning"&gt;{{_i}}Warning{{/i}}&lt;/span&gt;</code>
         </td>
       </tr>
       <tr>
         <td>
-          <span class="label info">{{_i}}Info{{/i}}</span>
+          <span class="label label-important">{{_i}}Important{{/i}}</span>
         </td>
         <td>
-          <code>&lt;span class="label info"&gt;{{_i}}Info{{/i}}&lt;/span&gt;</code>
+          <code>&lt;span class="label label-important"&gt;{{_i}}Important{{/i}}&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label label-info">{{_i}}Info{{/i}}</span>
+        </td>
+        <td>
+          <code>&lt;span class="label label-info"&gt;{{_i}}Info{{/i}}&lt;/span&gt;</code>
         </td>
       </tr>
     </tbody>
@@ -1235,12 +1235,12 @@
     <div class="span4">
       <h3>{{_i}}Striped{{/i}}</h3>
       <p>{{_i}}Uses a gradient to create a striped effect.{{/i}}</p>
-      <div class="progress info striped">
+      <div class="progress progress-info progress-striped">
         <div class="bar" style="width: 20%;"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress info
-     striped"&gt;
+&lt;div class="progress progress-info
+     progress-striped"&gt;
   &lt;div class="bar"
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1249,12 +1249,12 @@
     <div class="span4">
       <h3>{{_i}}Animated{{/i}}</h3>
       <p>{{_i}}Takes the striped example and animates it.{{/i}}</p>
-      <div class="progress danger active striped">
+      <div class="progress progress-danger progress-striped active">
         <div class="bar" style="width: 45%"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress danger
-     striped active"&gt;
+&lt;div class="progress progress-danger
+     progress-striped active"&gt;
   &lt;div class="bar"
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1266,18 +1266,18 @@
   <div class="row">
     <div class="span4">
       <h3>{{_i}}Additional colors{{/i}}</h3>
-      <p>{{_i}}Progress bars utilize some of the same classes as buttons and alert messages for quick styling.{{/i}}</p>
+      <p>{{_i}}Progress bars utilize some of the same class names as buttons and alerts for similar styling.{{/i}}</p>
       <ul>
-        <li><code>.info</code></li>
-        <li><code>.success</code></li>
-        <li><code>.danger</code></li>
+        <li><code>.progress-info</code></li>
+        <li><code>.progress-success</code></li>
+        <li><code>.progress-danger</code></li>
       </ul>
       <p>{{_i}}Alternatively, you can customize the LESS files and roll your own colors and sizes.{{/i}}</p>
     </div>
     <div class="span4">
       <h3>{{_i}}Behavior{{/i}}</h3>
       <p>{{_i}}Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.{{/i}}</p>
-      <p>{{_i}}If you use the <code>.active</code> class, your <code>.striped</code> progress bars will animate the stripes left to right.{{/i}}</p>
+      <p>{{_i}}If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.{{/i}}</p>
     </div>
     <div class="span4">
       <h3>{{_i}}Browser support{{/i}}</h3>
@@ -1324,7 +1324,3 @@
     </div><!--/span-->
   </div><!--/row-->
 </section>
-
-
-
-

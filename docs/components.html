@@ -1007,34 +1007,34 @@
       </tr>
       <tr>
         <td>
-          <span class="label success">New</span>
+          <span class="label label-success">New</span>
         </td>
         <td>
-          <code>&lt;span class="label success"&gt;New&lt;/span&gt;</code>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="label warning">Warning</span>
-        </td>
-        <td>
-          <code>&lt;span class="label warning"&gt;Warning&lt;/span&gt;</code>
+          <code>&lt;span class="label label-success"&gt;New&lt;/span&gt;</code>
         </td>
       </tr>
       <tr>
         <td>
-          <span class="label important">Important</span>
+          <span class="label label-warning">Warning</span>
         </td>
         <td>
-          <code>&lt;span class="label important"&gt;Important&lt;/span&gt;</code>
+          <code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code>
         </td>
       </tr>
       <tr>
         <td>
-          <span class="label info">Info</span>
+          <span class="label label-important">Important</span>
         </td>
         <td>
-          <code>&lt;span class="label info"&gt;Info&lt;/span&gt;</code>
+          <code>&lt;span class="label label-important"&gt;Important&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="label label-info">Info</span>
+        </td>
+        <td>
+          <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
         </td>
       </tr>
     </tbody>
@@ -1307,12 +1307,12 @@
     <div class="span4">
       <h3>Striped</h3>
       <p>Uses a gradient to create a striped effect.</p>
-      <div class="progress info striped">
+      <div class="progress progress-info progress-striped">
         <div class="bar" style="width: 20%;"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress info
-     striped"&gt;
+&lt;div class="progress progress-info
+     progress-striped"&gt;
   &lt;div class="bar"
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1321,12 +1321,12 @@
     <div class="span4">
       <h3>Animated</h3>
       <p>Takes the striped example and animates it.</p>
-      <div class="progress danger active striped">
+      <div class="progress progress-danger progress-striped active">
         <div class="bar" style="width: 45%"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress danger
-     striped active"&gt;
+&lt;div class="progress progress-danger
+     progress-striped active"&gt;
   &lt;div class="bar"
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1338,18 +1338,18 @@
   <div class="row">
     <div class="span4">
       <h3>Additional colors</h3>
-      <p>Progress bars utilize some of the same classes as buttons and alert messages for quick styling.</p>
+      <p>Progress bars utilize some of the same class names as buttons and alerts for similar styling.</p>
       <ul>
-        <li><code>.info</code></li>
-        <li><code>.success</code></li>
-        <li><code>.danger</code></li>
+        <li><code>.progress-info</code></li>
+        <li><code>.progress-success</code></li>
+        <li><code>.progress-danger</code></li>
       </ul>
       <p>Alternatively, you can customize the LESS files and roll your own colors and sizes.</p>
     </div>
     <div class="span4">
       <h3>Behavior</h3>
       <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
-      <p>If you use the <code>.active</code> class, your <code>.striped</code> progress bars will animate the stripes left to right.</p>
+      <p>If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.</p>
     </div>
     <div class="span4">
       <h3>Browser support</h3>
@@ -1396,10 +1396,6 @@
     </div><!--/span-->
   </div><!--/row-->
 </section>
-
-
-
-
 
 
      <!-- Footer
