@@ -894,7 +894,7 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   min-width: 16px;
   height: 18px;
   margin-right: -1px;
-  padding: 4px 4px 4px 5px;
+  padding: 4px 5px;
   font-weight: normal;
   line-height: 18px;
   color: #999999;
