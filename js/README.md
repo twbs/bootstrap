@@ -73,7 +73,7 @@ Each plugin should expose it's raw constructor on a `Constructor` property -- ac
 
 ### DATA ACCESSOR
 
-Each plugin stores a copy of the invoked class on an object. This class instance can be accessed directly through jQuery's data api like this:
+Each plugin stores a copy of the invoked class on an object. This class instance can be accessed directly through jQuery's data API like this:
 
     $('[rel=popover]').data('popover') instanceof $.fn.popover.Constructor
 
