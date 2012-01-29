@@ -3165,7 +3165,8 @@ a.thumbnail:hover {
   margin-bottom: 18px;
 }
 .accordion-group {
-  background-color: #f5f5f5;
+  margin-bottom: 2px;
+  border: 1px solid #e5e5e5;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -3176,9 +3177,6 @@ a.thumbnail:hover {
 .accordion-heading .accordion-toggle {
   display: block;
   padding: 8px 15px;
-}
-.accordion-body {
-  margin-bottom: 2px;
 }
 .accordion-inner {
   padding: 9px 15px;
