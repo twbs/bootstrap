@@ -1,6 +1,6 @@
 /* ===========================================================
  * bootstrap-popover.js v2.0.0
- * http://twitter.github.com/bootstrap/javascript.html#popover
+ * http://twitter.github.com/bootstrap/javascript.html#popovers
  * ===========================================================
  * Copyright 2012 Twitter, Inc.
  *
@@ -41,7 +41,7 @@
       $tip.find('.title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
       $tip.find('.content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
 
-      $tip[0].className = 'popover'
+      $tip.removeClass('fade top bottom left right in')
     }
 
   , hasContent: function () {

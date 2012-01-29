@@ -1,6 +1,6 @@
 /* =========================================================
  * bootstrap-modal.js v2.0.0
- * http://twitter.github.com/bootstrap/javascript.html#modal
+ * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
  * Copyright 2012 Twitter, Inc.
  *
@@ -44,6 +44,8 @@
 
         if (this.isShown) return
 
+        $('body').addClass('modal-open')
+
         this.isShown = true
         this.$element.trigger('show')
 
@@ -76,6 +78,8 @@
 
         var that = this
         this.isShown = false
+
+        $('body').removeClass('modal-open')
 
         escape.call(this)
 
@@ -193,8 +197,8 @@
 
   $(function () {
     $('body').on('click.modal.data-api', '[data-toggle="modal"]', function ( e ) {
-      var $this = $(this)
-        , $target = $($this.attr('data-target') || $this.attr('href'))
+      var $this = $(this), href
+        , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
         , option = $target.data('modal') ? 'toggle' : $.extend({}, $target.data(), $this.data())
 
       e.preventDefault()

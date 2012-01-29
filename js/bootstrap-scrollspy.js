@@ -24,15 +24,16 @@
   /* SCROLLSPY CLASS DEFINITION
    * ========================== */
 
-  function ScrollSpy( element ) {
+  function ScrollSpy( element, options) {
     var process = $.proxy(this.process, this)
-
-    this.$scrollElement = $(element).on('scroll.scroll.data-api', process)
-    this.selector = (this.$scrollElement.attr('data-target')
-      || this.$scrollElement.attr('href')
+      , $element = $(element).is('body') ? $(window) : $(element)
+      , href
+    this.options = $.extend({}, $.fn.scrollspy.defaults, options)
+    this.$scrollElement = $element.on('scroll.scroll.data-api', process)
+    this.selector = (this.options.target
+      || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
       || '') + ' .nav li > a'
     this.$body = $('body').on('click.scroll.data-api', this.selector, process)
-
     this.refresh()
     this.process()
   }
@@ -55,7 +56,7 @@
       }
 
     , process: function () {
-        var scrollTop = this.$scrollElement.scrollTop() + 10
+        var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
           , offsets = this.offsets
           , targets = this.targets
           , activeTarget = this.activeTarget
@@ -98,17 +99,27 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('scrollspy')
-      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this)))
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
 
   $.fn.scrollspy.Constructor = ScrollSpy
 
+  $.fn.scrollspy.defaults = {
+    offset: 10
+  }
+
 
  /* SCROLLSPY DATA-API
-  * ============== */
+  * ================== */
 
-  $(function () { $('[data-spy="scroll"]').scrollspy() })
+  $(function () {
+    $('[data-spy="scroll"]').each(function () {
+      var $spy = $(this)
+      $spy.scrollspy($spy.data())
+    })
+  })
 
 }( window.jQuery )

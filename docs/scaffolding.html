@@ -7,100 +7,63 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="../bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/ico/bootstrap-apple-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/bootstrap-apple-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/bootstrap-apple-114x114.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png">
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target=".subnav" data-offset="50">
 
-    <!-- Navbar
+
+  <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+            <span class="i-bar"></span>
+          </a>
           <a class="brand" href="./index.html">Bootstrap</a>
-          <ul class="nav">
-            <li><a href="./index.html">Overview</a></li>
-            <li class="dropdown active">
-              <a href="./scaffolding.html" class="dropdown-toggle" data-toggle="dropdown">
-                Scaffolding
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="./scaffolding.html#grid-system">Grid system</a></li>
-                <li><a href="./scaffolding.html#layouts">Layouts</a></li>
-                <li><a href="./scaffolding.html#responsive">Responsive design</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="./base-css.html" class="dropdown-toggle" data-toggle="dropdown">
-                Base CSS
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="./base-css.html#typography">Typography</a></li>
-                <li><a href="./base-css.html#tables">Tables</a></li>
-                <li><a href="./base-css.html#forms">Forms</a></li>
-                <li><a href="./base-css.html#buttons">Buttons</a></li>
-                <li><a href="./base-css.html#icons">Icons by Glyphicons</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="./components.html" class="dropdown-toggle" data-toggle="dropdown">
-                Components
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="./components.html#buttonGroups">Button groups</a></li>
-                <li><a href="./components.html#buttonDropdowns">Split button dropdowns</a></li>
-                <li><a href="./components.html#navs">Nav, tabs, pills</a></li>
-                <li><a href="./components.html#navbar">Navbar</a></li>
-                <li><a href="./components.html#breadcrumbs">Breadcrumbs</a></li>
-                <li><a href="./components.html#pagination">Pagination</a></li>
-                <li><a href="./components.html#thumbnails">Thumbnails</a></li>
-                <li><a href="./components.html#alerts">Alert messages</a></li>
-                <li><a href="./components.html#progress">Progress bars</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="./javascript.html" class="dropdown-toggle" data-toggle="dropdown">
-                Javascript plugins
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="./javascript.html#transitions">Transition</a></li>
-                <li><a href="./javascript.html#modals">Modal</a></li>
-                <li><a href="./javascript.html#dropdowns">Dropdown</a></li>
-                <li><a href="./javascript.html#scrollspy">Scrollspy</a></li>
-                <li><a href="./javascript.html#tabs">Tab</a></li>
-                <li><a href="./javascript.html#tooltips">Tooltip</a></li>
-                <li><a href="./javascript.html#popovers">Popover</a></li>
-                <li><a href="./javascript.html#alerts">Alert</a></li>
-                <li><a href="./javascript.html#buttons">Button</a></li>
-                <li><a href="./javascript.html#collapse">Collapse</a></li>
-                <li><a href="./javascript.html#carousel">Carousel</a></li>
-                <li><a href="./javascript.html#typeahead">Typeahead</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="./less.html">
-                Using LESS
-              </a>
-            </li>
-          </ul>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Overview</a>
+              </li>
+              <li class="active">
+                <a href="./scaffolding.html">Scaffolding</a>
+              </li>
+              <li class="">
+                <a href="./base-css.html">Base CSS</a>
+              </li>
+              <li class="">
+                <a href="./components.html">Components</a>
+              </li>
+              <li class="">
+                <a href="./javascript.html">Javascript plugins</a>
+              </li>
+              <li class="">
+                <a href="./less.html">Using LESS</a>
+              </li>
+              <li class="">
+                <a href="./download.html">Customize</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -112,6 +75,13 @@
       <header class="jumbotron subhead" id="overview">
         <h1>Scaffolding</h1>
         <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
+        <div class="subnav">
+          <ul class="nav pills">
+            <li><a href="#grid-system">Grid system</a></li>
+            <li><a href="#layouts">Layouts</a></li>
+            <li><a href="#responsive">Responsive design</a></li>
+          </ul>
+        </div>
       </header>
 
 
@@ -173,6 +143,8 @@
     </div>
   </div><!-- /row -->
 
+  <br>
+
   <h2>Offsetting columns</h2>
   <div class="row show-grid">
     <div class="span4">4</div>
@@ -185,6 +157,12 @@
   <div class="row show-grid">
     <div class="span8 offset4">8 offset 4</div>
   </div><!-- /row -->
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span4 offset4"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
   <br>
 
@@ -223,7 +201,7 @@
   </div>
 
   <h2>Grid customization</h2>
-  <table class="table-bordered table-striped">
+  <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>Variable</th>
@@ -250,7 +228,7 @@
       <tr>
         <td><code>@siteWidth</code></td>
         <td><em>Computed sum of all columns and gutters</em></td>
-        <td>Counts number of columns and gutters to set width of the <code>.fixed-container()</code> mixin</td>
+        <td>Counts number of columns and gutters to set width of the <code>.container-fixed()</code> mixin</td>
       </tr>
     </tbody>
   </table>
@@ -261,7 +239,7 @@
     </div>
     <div class="span4">
       <h3>How to customize</h3>
-      <p>Modifying the grid means changing the three <code>@grid*</code> variables and recompiling Bootstrap. Change the grids in the preboot.less file and use one of the <a href="#compiling">four ways documented to recompile</a>.</p>
+      <p>Modifying the grid means changing the three <code>@grid*</code> variables and recompiling Bootstrap. Change the grid variables in variables.less and use one of the <a href="#compiling">four ways documented to recompile</a>. If you're adding more columns, be sure to add the CSS for those in grid.less.</p>
     </div>
     <div class="span4">
       <h3>Staying responsive</h3>
@@ -335,7 +313,7 @@
     <div class="span8">
       <h2>Supported devices</h2>
       <p>Bootstrap supports a handful of media queries to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
-      <table class="table-bordered table-striped">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th>Label</th>
@@ -394,9 +372,9 @@
     <div class="span5">
       <p>Bootstrap doesn't automatically include these media queries, but understanding and adding them is very easy and requires minimal setup. You have a few options for including the responsive features of Bootstrap:</p>
       <ol>
-        <li>Use the compiled responsive version, bootstrap.reponsive.css</li>
+        <li>Use the compiled responsive version, bootstrap-responsive.css</li>
         <li>Add @import "responsive.less" and recompile Bootstrap</li>
-        <li>Compile responsive.less as a separate file and include that</li>
+        <li>Modify and recompile responsive.less as a separate</li>
       </ol>
       <p><strong>Why not just include it?</strong> Truth be told, not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it.</p>
     </div>
@@ -406,20 +384,20 @@
   @media (max-width: 480px) { ... }
 
   // Landscape phone to portrait tablet
-  @media (min-width: 480px) and (max-width: 768px) { ... }
+  @media (max-width: 768px) { ... }
 
   // Portrait tablet to landscape and desktop
   @media (min-width: 768px) and (max-width: 940px) { ... }
 
   // Large desktop
-  @media (min-width: 1210px) { .. }
+  @media (min-width: 1200px) { .. }
 </pre>
     </div>
   </div>
 </section>
 
 
-      <!-- Footer
+     <!-- Footer
       ================================================== -->
       <footer class="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
@@ -427,16 +405,29 @@
         <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
+
     </div><!-- /container -->
 
-    <!-- Le javascript -->
+
+
+    <!-- Le javascript
+    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="../js/tests/vendor/jquery.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="../js/bootstrap-transition.js"></script>
-    <script src="../js/bootstrap-tooltip.js"></script>
+    <script src="../js/bootstrap-alert.js"></script>
+    <script src="../js/bootstrap-modal.js"></script>
     <script src="../js/bootstrap-dropdown.js"></script>
+    <script src="../js/bootstrap-scrollspy.js"></script>
+    <script src="../js/bootstrap-tab.js"></script>
+    <script src="../js/bootstrap-tooltip.js"></script>
+    <script src="../js/bootstrap-popover.js"></script>
+    <script src="../js/bootstrap-button.js"></script>
+    <script src="../js/bootstrap-collapse.js"></script>
+    <script src="../js/bootstrap-carousel.js"></script>
+    <script src="../js/bootstrap-typeahead.js"></script>
     <script src="assets/js/application.js"></script>
-
   </body>
 </html>

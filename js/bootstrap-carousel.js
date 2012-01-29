@@ -1,6 +1,6 @@
 /* ==========================================================
  * bootstrap-carousel.js v2.0.0
- * http://twitter.github.com/bootstrap/javascript.html#alerts
+ * http://twitter.github.com/bootstrap/javascript.html#carousel
  * ==========================================================
  * Copyright 2012 Twitter, Inc.
  *
@@ -38,6 +38,27 @@
       return this
     }
 
+  , to: function (pos) {
+      var $active = this.$element.find('.active')
+        , children = $active.parent().children()
+        , activePos = children.index($active)
+        , that = this
+
+      if (pos > (children.length - 1) || pos < 0) return
+
+      if (this.sliding) {
+        return this.$element.one('slid', function () {
+          that.to(pos)
+        })
+      }
+
+      if (activePos == pos) {
+        return this.pause().cycle()
+      }
+
+      return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
+    }
+
   , pause: function () {
       clearInterval(this.interval)
       return this
@@ -53,9 +74,9 @@
       return this.slide('prev')
     }
 
-  , slide: function (type) {
+  , slide: function (type, next) {
       var $active = this.$element.find('.active')
-        , $next = $active[type]()
+        , $next = next || $active[type]()
         , isCycling = this.interval
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
@@ -71,8 +92,8 @@
         this.$element.trigger('slide')
         $active.removeClass('active')
         $next.addClass('active')
-        this.$element.trigger('slid')
         this.sliding = false
+        this.$element.trigger('slid')
       } else {
         $next.addClass(type)
         $next[0].offsetWidth // force reflow
@@ -82,8 +103,8 @@
         this.$element.one($.support.transition.end, function () {
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
-          that.$element.trigger('slid')
           that.sliding = false
+          setTimeout(function () { that.$element.trigger('slid') }, 0)
         })
       }
 
@@ -104,7 +125,8 @@
         , data = $this.data('carousel')
         , options = typeof option == 'object' && option
       if (!data) $this.data('carousel', (data = new Carousel(this, options)))
-      if (typeof option == 'string' || (option = options.slide)) data[option]()
+      if (typeof option == 'number') data.to(option)
+      else if (typeof option == 'string' || (option = options.slide)) data[option]()
       else data.cycle()
     })
   }
@@ -121,10 +143,11 @@
 
   $(function () {
     $('body').on('click.carousel.data-api', '[data-slide]', function ( e ) {
-      var $this = $(this)
-        , $target = $($this.attr('data-target') || $this.attr('href'))
+      var $this = $(this), href
+        , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
         , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
       $target.carousel(options)
+      e.preventDefault()
     })
   })
 
