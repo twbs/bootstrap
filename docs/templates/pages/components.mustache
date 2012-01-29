@@ -103,11 +103,11 @@
 ================================================== -->
 <section id="buttonDropdowns">
   <div class="page-header">
-    <h1>{{_i}}Buttons dropdowns{{/i}} <small>{{_i}}Built on button groups to provide contextual dropdown menus{{/i}}</small></h1>
+    <h1>{{_i}}Button dropdowns and dropups{{/i}} <small>{{_i}}Built on button groups to provide contextual dropdown menus{{/i}}</small></h1>
   </div>
   <div class="row">
     <div class="span4">
-      <h3>{{_i}}Split button dropdowns{{/i}}</h3>
+      <h3>{{_i}}Split button dropdowns and dropups{{/i}}</h3>
       <p>{{_i}}Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.{{/i}}</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
@@ -167,6 +167,42 @@
             <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
           </ul>
         </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn" href="#">{{_i}}Right{{/i}}</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+      <p>{{_i}}Additionally, you can create dropup style split buttons. Simply add a second class, <code>.bottom-up</code>, after <code>.caret</code> and <code>.dropdown-menu</code> classes. Optionally, it's recommended to add a third <code>.pull-right</code> class to provide a better experience.{{/i}}</p>
+      <div class="btn-toolbar" style="margin-top: 18px;">
+        <div class="btn-group">
+          <a class="btn" href="#">{{_i}}Dropup{{/i}}</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret bottom-up"></span></a>
+          <ul class="dropdown-menu bottom-up">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn primary" href="#">{{_i}}Right Dropup{{/i}}</a>
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret bottom-up"></span></a>
+          <ul class="dropdown-menu bottom-up pull-right">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
       </div>
     </div>
     <div class="span8">
@@ -183,6 +219,9 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+      <div class="alert alert-info">
++       <strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}In some cases (especially on mobile screens) the content of the dropdown or dropup menus will overflow the screen. You need to manually take care of this or use a custom JavaScript code to adjust the alignment of the menu.{{_i}}
++     </div>
     </div>
   </div>
 </section>
@@ -612,6 +651,16 @@
                 <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
               </ul>
             </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropup{{/i}} <b class="caret bottom-up"></b></a>
+              <ul class="dropdown-menu bottom-up pull-right">
+                <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                <li class="divider"></li>
+                <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+              </ul>
+            </li>
           </ul>
           <form class="navbar-search pull-left" action="">
             <input type="text" class="search-query span2" placeholder="Search">
@@ -619,6 +668,16 @@
           <ul class="nav pull-right">
             <li><a href="#">{{_i}}Link{{/i}}</a></li>
             <li class="vertical-divider"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropup{{/i}} <b class="caret bottom-up"></b></a>
+              <ul class="dropdown-menu bottom-up pull-right">
+                <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                <li class="divider"></li>
+                <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -711,8 +770,8 @@
   &lt;li&gt;&lt;a href="#"&gt;{{_i}}Link{{/i}}&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-      <h3>{{_i}}Adding dropdowns{{/i}}</h3>
-      <p>{{_i}}Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.{{/i}}</p>
+      <h3>{{_i}}Adding dropdowns and dropups{{/i}}</h3>
+      <p>{{_i}}Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;

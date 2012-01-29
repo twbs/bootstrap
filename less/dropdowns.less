@@ -29,6 +29,14 @@
   .opacity(30);
   content: "\2193";
 }
+
+  // Allow for caret to show up (goes well with dropup-menus)
+  &.bottom-up {
+    border-top: 0;
+    border-bottom: 4px solid @black;
+    content: "\2191";
+  }
+
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
@@ -68,7 +76,13 @@
   &.bottom-up {
     top: auto;
     bottom: 100%;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
+  }
+
+  // Aligns the dropdown menu to right
+  &.pull-right {
+    right: 0;
+    left: auto;
   }
 
   // Dividers (basically an hr) within the dropdown

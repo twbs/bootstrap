@@ -253,11 +253,27 @@
     left: 10px;
   }
 }
-
+// Menu position and menu caret support for dropups via extra bottom-up class
+.navbar .dropdown-menu.bottom-up {
+  &:before {
+    border-top: 7px solid #ccc;
+    border-top-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 0;
+    bottom: -7px;
+    top: auto;
+  }
+  &:after {
+    border-top: 6px solid #ffffff;
+    border-bottom: 0;
+    bottom: -6px;
+    top: auto;
+  }
+}
 // Dropdown toggle caret
 .navbar .nav .dropdown-toggle .caret,
 .navbar .nav .open.dropdown .caret {
   border-top-color: @white;
+  border-bottom-color: @white;
 }
 .navbar .nav .active .caret {
   .opacity(100);
@@ -276,7 +292,7 @@
 }
 
 // Right aligned menus need alt position
-.navbar .nav.pull-right .dropdown-menu {
+.navbar .nav.pull-right .dropdown-menu, .navbar .nav .dropdown-menu.pull-right {
   left: auto;
   right: 0;
   &:before {

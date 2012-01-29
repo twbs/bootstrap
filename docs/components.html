@@ -175,11 +175,11 @@
 ================================================== -->
 <section id="buttonDropdowns">
   <div class="page-header">
-    <h1>Buttons dropdowns <small>Built on button groups to provide contextual dropdown menus</small></h1>
+    <h1>Button dropdowns and dropups <small>Built on button groups to provide contextual dropdown menus</small></h1>
   </div>
   <div class="row">
     <div class="span4">
-      <h3>Split button dropdowns</h3>
+      <h3>Split button dropdowns and dropups</h3>
       <p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
@@ -239,6 +239,42 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn" href="#">Right</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+      <p>Additionally, you can create dropup style split buttons. Simply add a second class, <code>.bottom-up</code>, after <code>.caret</code> and <code>.dropdown-menu</code> classes. Optionally, it's recommended to add a third <code>.pull-right</code> class to provide a better experience.</p>
+      <div class="btn-toolbar" style="margin-top: 18px;">
+        <div class="btn-group">
+          <a class="btn" href="#">Dropup</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret bottom-up"></span></a>
+          <ul class="dropdown-menu bottom-up">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn primary" href="#">Right Dropup</a>
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret bottom-up"></span></a>
+          <ul class="dropdown-menu bottom-up pull-right">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
       </div>
     </div>
     <div class="span8">
@@ -255,6 +291,9 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+      <div class="alert alert-info">
+              <strong>Heads up!</strong> In some cases (especially on mobile screens) the content of the dropdown or dropup menus will overflow the screen. You need to manually take care of this or use a custom JavaScript code to adjust the alignment of the menu.
+      </div>
     </div>
   </div>
 </section>
@@ -684,6 +723,16 @@
                 <li><a href="#">Separated link</a></li>
               </ul>
             </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropup <b class="caret bottom-up"></b></a>
+              <ul class="dropdown-menu bottom-up pull-right">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
           </ul>
           <form class="navbar-search pull-left" action="">
             <input type="text" class="search-query span2" placeholder="Search">
@@ -691,6 +740,16 @@
           <ul class="nav pull-right">
             <li><a href="#">Link</a></li>
             <li class="vertical-divider"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropup <b class="caret bottom-up"></b></a>
+              <ul class="dropdown-menu bottom-up pull-right">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -783,8 +842,8 @@
   &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-      <h3>Adding dropdowns</h3>
-      <p>Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.</p>
+      <h3>Adding dropdowns and dropups</h3>
+      <p>Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;
