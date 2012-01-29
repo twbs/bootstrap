@@ -522,6 +522,7 @@ h2 + .row {
 /* Example sites showcase */
 .example-sites img {
   max-width: 100%;
+  margin: 0 auto;
 }
 .marketing-byline {
   margin: -18px 0 27px;
@@ -646,6 +647,10 @@ form.well {
     padding: 10px 14px;
     margin: 0 auto 10px;
   }
+  /* Masthead (home page jumbotron) */
+  .masthead {
+    padding-top: 0;
+  }
 
   /* Don't space out quick links so much */
   .quick-links {
@@ -669,8 +674,9 @@ form.well {
     display: block;
     max-width: 300px;
     margin: 0 auto 18px;
+    text-align: center;
   }
-  .example-sites img {
+  .example-sites .thumbnail > img {
     max-width: 270px;
   }
 
@@ -796,11 +802,20 @@ form.well {
 
   /* Unfloat brand */
   .navbar-fixed-top .brand {
-    float: none;
+    float: left;
     margin-left: 0;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
 }
 
+/* LARGE DESKTOP SCREENS */
+@media (min-width: 1210px) {
+
+  /* Update subnav container */
+  .subnav-fixed .nav {
+    width: 1168px; /* 2px less to account for left/right borders being removed when in fixed mode */
+  }
+
+}

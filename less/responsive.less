@@ -202,7 +202,7 @@
     margin-bottom: @baseLineHeight * 2;
   }
   .navbar-inner {
-    padding: 10px;
+    padding: 5px;
     background-image: none;
   }
   .navbar .container {
@@ -210,16 +210,18 @@
   }
   // Account for brand name
   .navbar .brand {
-    float: none;
-    display: block;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0 0 0 -5px;
+  }
+  // Nav collapse clears brand
+  .navbar .nav-collapse {
+    clear: left;
   }
   // Block-level the nav
   .navbar .nav {
     float: none;
-    margin: (@baseLineHeight / 2) 0;
+    margin: 0 0 (@baseLineHeight / 2);
   }
   .navbar .nav > li {
     float: none;
@@ -248,8 +250,10 @@
   // Dropdowns in the navbar
   .navbar .dropdown-menu {
     position: static;
-    display: block;
+    top: auto;
+    left: auto;
     float: none;
+    display: block;
     max-width: none;
     margin: 0 15px;
     padding: 0;
@@ -301,7 +305,7 @@
 
 // LARGE DESKTOP & UP
 // ------------------
-/*
+
 @media (min-width: 1210px) {
 
   // Reset grid variables
@@ -317,7 +321,6 @@
   .offset(@columns: 1) {
     margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
   }
-
   .container {
     width: @siteWidth;
   }
@@ -354,7 +357,5 @@
   .offset9   { .offset(9); }
   .offset10  { .offset(10); }
   .offset11  { .offset(11); }
-  .offset12  { .offset(12); }
 
 }
-*/

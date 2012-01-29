@@ -2315,8 +2315,8 @@ button.btn.small, input[type="submit"].btn.small {
   display: none;
   float: right;
   padding: 7px 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   background-color: #2c2c2c;
   background-image: -moz-linear-gradient(top, #333333, #222222);
   background-image: -ms-linear-gradient(top, #333333, #222222);
