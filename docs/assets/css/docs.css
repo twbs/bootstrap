@@ -47,10 +47,10 @@ section {
 hr.soften {
   height: 1px;
   margin: 54px 0;
-  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0)); 
-  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0)); 
-  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0)); 
-  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0)); 
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   border: 0;
 }
 
@@ -166,7 +166,7 @@ hr.soften {
   border: 1px solid #e5e5e5;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
-          border-radius: 4px;  
+          border-radius: 4px;
 }
 .subnav .nav {
   margin-bottom: 0;
@@ -695,6 +695,11 @@ form.well {
   }
 }
 
+@media (min-width: 940px) {
+  .nav-collapse.collapse {
+    height: auto !important;
+  }
+}
 
 @media (max-width: 768px) {
 
@@ -788,7 +793,7 @@ form.well {
 }
 
 @media (max-width: 940px) {
-  
+
   /* Unfloat brand */
   .navbar-fixed-top .brand {
     float: none;
