@@ -582,7 +582,7 @@
       <!-- at this point all js files are minified with their original names -->
 
       <copy todir="${dir.publish}/${dir.js}">
-        <fileset dir="${dir.intermediate}/${dir.js}" includes="${file.js.bypass}">
+        <fileset dir="${dir.intermediate}/${dir.js}" includes="${file.js.bypass}, ${dir.js.libs}/*">
             <exclude name="scripts-concat.js"/>
             <exclude name="scripts-concat.min.js"/>
             <exclude name="otherscripts-concat.js"/>
