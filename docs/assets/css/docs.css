@@ -106,35 +106,6 @@ hr.soften {
 }
 
 
-/* Benefits list in masthead */
-.benefits {
-  display: none;
-  width: 260px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-.benefits ul {
-  list-style: none;
-  margin: 0;
-}
-.benefits li {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 35px;
-  color: #555;
-}
-.benefits li + li {
-  border-top: 1px solid #f5f5f5;
-}
-.benefits h4 {
-  color: #555;
-}
-.benefits span {
-  padding-right: 5px;
-  color: #999;
-}
-
 /* Specific jumbotrons
 ------------------------- */
 /* supporting docs pages */
@@ -175,7 +146,6 @@ hr.soften {
   margin: 0;
   padding-top:    11px;
   padding-bottom: 11px;
-  font-size: 13px;
   border-left: 1px solid #f5f5f5;
   border-right: 1px solid #e5e5e5;
   -webkit-border-radius: 0;
