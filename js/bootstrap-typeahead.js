@@ -75,9 +75,20 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
-      })
+      var isFunction = function (object) {
+        var getClass = {}.toString;
+        return object && getClass.call(object) == "[object Function]";
+      }
+
+      if(isFunction(this.source)) {
+        // run source and get items
+        items = this.source(this.query);
+
+      } else { // presume an array
+        items = $.grep(this.source, function (item) {
+          if (that.matcher(item)) return item
+        })
+      }
 
       items = this.sorter(items)
 

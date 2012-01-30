@@ -125,4 +125,24 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+
+      test("should set input value to selected item, from a dynamic source", function () {
+        var $input = $('<input />').typeahead({
+              source: function(query) {
+                return ['aa', 'ab', 'ac'];
+              }
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac', 'input value was correctly set')
+        ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
+
+        typeahead.$menu.remove()
+      })
 })
