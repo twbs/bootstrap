@@ -310,11 +310,6 @@
     height: 0;
   }
 }
-@media (min-width: 940px) {
-  .nav-collapse.collapse {
-    height: auto !important;
-  }
-}
 @media (min-width: 1200px) {
   .thumbnails {
     margin-left: -30px;
