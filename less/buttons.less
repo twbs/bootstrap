@@ -9,6 +9,8 @@
   // Set text color
   &.primary,
   &.primary:hover,
+  &.warning,
+  &.warning:hover,
   &.danger,
   &.danger:hover,
   &.success,
@@ -19,6 +21,7 @@
     color: @white
   }
   &.primary.active,
+  &.warning.active,
   &.danger.active,
   &.success.active,
   &.info.active {
@@ -26,6 +29,10 @@
   }
   &.primary {
     .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 20));
+  }
+  // Warning appears are orange
+  &.warning {
+    .buttonBackground(lighten(@orange, 15%), @orange);
   }
   // Danger and error appear as red
   &.danger {

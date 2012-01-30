@@ -103,8 +103,85 @@
 ================================================== -->
 <section id="buttonDropdowns">
   <div class="page-header">
-    <h1>{{_i}}Buttons dropdowns{{/i}} <small>{{_i}}Built on button groups to provide contextual dropdown menus{{/i}}</small></h1>
+    <h1>{{_i}}Buttons dropdowns{{/i}} <small>{{_i}}Contextual dropdown menus built on button groups{{/i}}</small></h1>
   </div>
+
+  <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Button dropdowns{{/i}}</h3>
+      <p>{{_i}}Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.{{/i}}</p>
+      <div class="btn-toolbar" style="margin-top: 18px;">
+        <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Action{{/i}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Action{{/i}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn danger dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Danger{{/i}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <a class="btn success dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Success{{/i}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn info dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Info{{/i}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+    </div>
+    <div class="span8">
+      <h3>{{_i}}Example markup{{/i}}</h3>
+      <p>{{_i}}Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+    {{_i}}Action{{/i}}
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;!-- {{_i}}dropdown menu links{{/i}} --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
+
   <div class="row">
     <div class="span4">
       <h3>{{_i}}Split button dropdowns{{/i}}</h3>
@@ -171,7 +248,7 @@
     </div>
     <div class="span8">
       <h3>{{_i}}Example markup{{/i}}</h3>
-      <p>{{_i}}Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.{{/i}}</p>
+      <p>{{_i}}We expand on the normal button dropdowns to provide a second button action that operates as a separate dropdown trigger.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn" href="#"&gt;{{_i}}Action{{/i}}&lt;/a&gt;
@@ -618,7 +695,7 @@
           </form>
           <ul class="nav pull-right">
             <li><a href="#">{{_i}}Link{{/i}}</a></li>
-            <li class="vertical-divider"></li>
+            <li class="divider-vertical"></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -664,8 +741,8 @@
       <h3>{{_i}}Search form{{/i}}</h3>
       <p>{{_i}}Search forms receive custom styles in the navbar with the <code>.navbar-search</code> class. Include <code>.pull-left</code> or <code>.pull-right</code> on the <code>form</code> to align it.{{/i}}</p>
 <pre class="prettyprint linenums">
-&lt;form class="navbar-search"&gt;
-  &lt;input type="text" class="search-query pull-left" placeholder="{{_i}}Search{{/i}}"&gt;
+&lt;form class="navbar-search pull-left"&gt;
+  &lt;input type="text" class="search-query" placeholder="{{_i}}Search{{/i}}"&gt;
 &lt;/form&gt;
 </pre>
       <h3>{{_i}}Optional responsive variation{{/i}}</h3>

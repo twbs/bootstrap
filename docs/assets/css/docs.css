@@ -553,6 +553,7 @@ form.well {
 }
 
 /* For input sizes, make them display block */
+.docs-input-sizes select,
 .docs-input-sizes input[type=text] {
   display: block;
   margin-bottom: 9px;

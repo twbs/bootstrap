@@ -983,7 +983,7 @@
       <p>{{_i}}Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in it's place for <code>:focus</code>.{{/i}}</p>
       <hr>
       <h3>{{_i}}Form validation{{/i}}</h3>
-      <p>{{_i}}It also includes validation styles for errors, warnings, and success. To use, add the a class to the surrounding <code>.control-group</code>.{{/i}}</p>
+      <p>{{_i}}It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;fieldset
   class="control-group error"&gt;
@@ -1006,6 +1006,27 @@
               <input class="span1" type="text" placeholder=".span1">
               <input class="span2" type="text" placeholder=".span2">
               <input class="span3" type="text" placeholder=".span3">
+              <select class="span1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <select class="span2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <select class="span3">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
               <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
             </div>
           </div>
@@ -1131,6 +1152,11 @@
         <td><a class="btn success" href="#">{{_i}}Success{{/i}}</a></td>
         <td><code>.success</code></td>
         <td>{{_i}}Indicates a successful or positive action{{/i}}</td>
+      </tr>
+      <tr>
+        <td><a class="btn warning" href="#">{{_i}}Warning{{/i}}</a></td>
+        <td><code>.warning</code></td>
+        <td>{{_i}}Indicates caution should be taken with this action{{/i}}</td>
       </tr>
       <tr>
         <td><a class="btn danger" href="#">{{_i}}Danger{{/i}}</a></td>
