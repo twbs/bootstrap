@@ -179,8 +179,85 @@
 ================================================== -->
 <section id="buttonDropdowns">
   <div class="page-header">
-    <h1>Buttons dropdowns <small>Built on button groups to provide contextual dropdown menus</small></h1>
+    <h1>Buttons dropdowns <small>Contextual dropdown menus built on button groups</small></h1>
   </div>
+
+  <div class="row">
+    <div class="span4">
+      <h3>Button dropdowns</h3>
+      <p>Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
+      <div class="btn-toolbar" style="margin-top: 18px;">
+        <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn danger dropdown-toggle" data-toggle="dropdown" href="#">Danger <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <a class="btn success dropdown-toggle" data-toggle="dropdown" href="#">Success <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <a class="btn info dropdown-toggle" data-toggle="dropdown" href="#">Info <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+    </div>
+    <div class="span8">
+      <h3>Example markup</h3>
+      <p>Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.</p>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+    Action
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
+
   <div class="row">
     <div class="span4">
       <h3>Split button dropdowns</h3>
@@ -247,7 +324,7 @@
     </div>
     <div class="span8">
       <h3>Example markup</h3>
-      <p>Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.</p>
+      <p>We expand on the normal button dropdowns to provide a second button action that operates as a separate dropdown trigger.</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn" href="#"&gt;Action&lt;/a&gt;
