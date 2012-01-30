@@ -139,6 +139,21 @@
   .clearfix();
 }
 
+// Columns and offseting mixins
+// ----------------------------
+.columns(@columns: 1) {
+  //width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+  width: @gridTotalWidth * ((((@gridGutterWidth+@gridColumnWidth)*@columns)-@gridGutterWidth)/@gridRowWidth);
+}
+.offset(@columns: 1) {
+  margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+}
+// Necessary grid styles for every column to make them appear next to each other horizontally
+.gridColumn() {
+  float: left;
+  margin-left: @gridGutterWidth;
+}
+
 
 
 // CSS3 PROPERTIES

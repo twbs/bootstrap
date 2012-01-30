@@ -707,6 +707,13 @@ form.well {
   .subnav .nav > li + li > a {
     border-top: 1px solid #e5e5e5;
   }
+  .subnav .nav > li:first-child > a,
+  .subnav .nav > li:first-child > a:hover {
+      -webkit-border-radius: 4px 4px 0 0;
+         -moz-border-radius: 4px 4px 0 0;
+              border-radius: 4px 4px 0 0;
+  }
+
 
   /* Popovers */
   .large-bird {
