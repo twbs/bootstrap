@@ -1493,6 +1493,7 @@ table .span12 {
 }
 .dropdown-toggle {
   *margin-bottom: -3px;
+  cursor: pointer;
 }
 .dropdown-toggle:active, .open .dropdown-toggle {
   outline: 0;
@@ -1571,6 +1572,7 @@ table .span12 {
   line-height: 18px;
   color: #555555;
   white-space: nowrap;
+  cursor: pointer;
 }
 .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
   color: #ffffff;
