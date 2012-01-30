@@ -22,6 +22,7 @@
 }
 
 
+
 // UP TO LANDSCAPE PHONE
 // ---------------------
 
@@ -103,11 +104,11 @@
 }
 
 
+
 // LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
 // --------------------------------------------------
 
 @media (max-width: 768px) {
-
   // GRID & CONTAINERS
   // -----------------
   // Remove width from containers
@@ -131,6 +132,7 @@
     margin: 0;
   }
 }
+
 
 
 // PORTRAIT TABLET TO DEFAULT DESKTOP
@@ -223,6 +225,7 @@
     .span12    { .fluidColumns(12); }
   }
 }
+
 
 
 // TABLETS AND BELOW
@@ -335,15 +338,23 @@
   }
 
   // Hide everything in the navbar save .brand and toggle button */
-  .nav-collapse.collapse {
+  .nav-collapse {
     overflow: hidden;
     height: 0;
   }
-  .nav-collapse.collapse.in {
-    height: auto;
-  }
-
 }
+
+
+
+// DEFAULT DESKTOP
+// ---------------
+
+@media (min-width: 940px) {
+  .nav-collapse.collapse {
+    height: auto !important;
+  }
+}
+
 
 
 // LARGE DESKTOP & UP

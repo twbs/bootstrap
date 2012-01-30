@@ -305,12 +305,14 @@
   .btn-navbar {
     display: block;
   }
-  .nav-collapse.collapse {
+  .nav-collapse {
     overflow: hidden;
     height: 0;
   }
-  .nav-collapse.collapse.in {
-    height: auto;
+}
+@media (min-width: 940px) {
+  .nav-collapse.collapse {
+    height: auto !important;
   }
 }
 @media (min-width: 1200px) {
