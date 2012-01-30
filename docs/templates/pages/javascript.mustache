@@ -131,7 +131,7 @@
           <div class="well modal-example" style="background-color: #888; border: none;">
             <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1">
               <div class="modal-header">
-                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <a class="close" data-dismiss="modal">&times;</a>
                 <h3>{{_i}}Modal header{{/i}}</h3>
               </div>
               <div class="modal-body">
@@ -149,7 +149,7 @@
           <!-- sample modal content -->
           <div id="myModal" class="modal hide fade">
             <div class="modal-header">
-              <a class="close" data-dismiss="modal" >&times;</a>
+              <a class="close" data-dismiss="modal">&times;</a>
               <h3>{{_i}}Modal Heading{{/i}}</h3>
             </div>
             <div class="modal-body">
@@ -833,11 +833,11 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h2>{{_i}}Example alerts{{/i}}</h2>
           <p>{{_i}}The alerts plugin works on regular alert messages, and block messages.{{/i}}</p>
           <div class="alert fade in">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <a class="close" data-dismiss="alert">&times;</a>
             <strong>{{_i}}Holy guacamole!{{/i}}</strong> {{_i}}Best check yo self, you’re not looking too good.{{/i}}
           </div>
           <div class="alert alert-block alert-error fade in">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
+            <a class="close" data-dismiss="alert">&times;</a>
             <h4 class="alert-heading">{{_i}}Oh snap! You got an error!{{/i}}</h4>
             <p>{{_i}}Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.{{/i}}</p>
             <p>
@@ -850,7 +850,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.{{/i}}</p>
-          <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+          <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert"&gt;&amp;times;&lt;/a&gt;</pre>
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().alert()</h4>
           <p>{{_i}}Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.{{/i}}</p>
