@@ -71,7 +71,7 @@
 
       this.$element
         .removeClass('collapse')
-        [dimension](size || '')
+        [dimension](size || 'auto')
         [0].offsetWidth
 
       this.$element.addClass('collapse')
