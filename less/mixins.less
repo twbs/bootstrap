@@ -200,6 +200,9 @@
   .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, @columns) {
     width: 1% * (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
   } 
+  .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, @columns) {
+    margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth * 2);
+  }
   .gridColumn(@fluidGridGutterWidth) {
     float: left;
     margin-left: @fluidGridGutterWidth;
@@ -215,7 +218,7 @@
       > [class*="span"] {
         #fluidGridSystem > .gridColumn(@fluidGridGutterWidth);
       }
-      > [class*="span"]:first-child {
+      > [class*="span"]:first-child:not([class*="offset"]) {
         margin-left: 0;
       }
       // Default columns
@@ -231,6 +234,18 @@
       .span10    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 10); }
       .span11    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 11); }
       .span12    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 12); }
+      // Offset column options
+      .offset1   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 1); }
+      .offset2   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 2); }
+      .offset3   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 3); }
+      .offset4   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 4); }
+      .offset5   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 5); }
+      .offset6   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 6); }
+      .offset7   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 7); }
+      .offset8   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 8); }
+      .offset9   { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 9); }
+      .offset10  { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 10); }
+      .offset11  { #fluidGridSystem > .offset(@fluidGridColumnWidth, @fluidGridGutterWidth, 11); }
     }
   }
 }
