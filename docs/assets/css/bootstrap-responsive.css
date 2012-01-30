@@ -84,6 +84,9 @@
     display: block;
     width: 100%;
   }
+  .table caption {
+    display: block;
+  }
   .table thead {
     display: block;
     float: left;
