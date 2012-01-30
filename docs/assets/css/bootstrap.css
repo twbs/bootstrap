@@ -205,11 +205,11 @@ a:hover {
 .row-fluid:after {
   clear: both;
 }
-.row-fluid [class*="span"] {
+.row-fluid > [class*="span"] {
   float: left;
   margin-left: 2.127659574%;
 }
-.row-fluid [class*="span"]:first-child {
+.row-fluid > [class*="span"]:first-child {
   margin-left: 0;
 }
 .row-fluid .span1 {
@@ -1655,6 +1655,8 @@ table .span12 {
 }
 .btn.primary,
 .btn.primary:hover,
+.btn.warning,
+.btn.warning:hover,
 .btn.danger,
 .btn.danger:hover,
 .btn.success,
@@ -1665,6 +1667,7 @@ table .span12 {
   color: #ffffff;
 }
 .btn.primary.active,
+.btn.warning.active,
 .btn.danger.active,
 .btn.success.active,
 .btn.info.active {
@@ -1693,6 +1696,30 @@ table .span12 {
 }
 .btn.primary:active, .btn.primary.active {
   background-color: #003399 \9;
+}
+.btn.warning {
+  background-color: #faa732;
+  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+  background-image: -ms-linear-gradient(top, #fbb450, #f89406);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+  background-image: -o-linear-gradient(top, #fbb450, #f89406);
+  background-image: linear-gradient(top, #fbb450, #f89406);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endColorstr='#f89406', GradientType=0);
+  border-color: #f89406 #f89406 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn.warning:hover,
+.btn.warning:active,
+.btn.warning.active,
+.btn.warning.disabled,
+.btn.warning[disabled] {
+  background-color: #f89406;
+}
+.btn.warning:active, .btn.warning.active {
+  background-color: #c67605 \9;
 }
 .btn.danger {
   background-color: #da4f49;

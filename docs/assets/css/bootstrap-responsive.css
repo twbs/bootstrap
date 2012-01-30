@@ -195,11 +195,11 @@
   .row-fluid:after {
     clear: both;
   }
-  .row-fluid [class*="span"] {
+  .row-fluid > [class*="span"] {
     float: left;
     margin-left: 2.762430939%;
   }
-  .row-fluid [class*="span"]:first-child {
+  .row-fluid > [class*="span"]:first-child {
     margin-left: 0;
   }
   .row-fluid .span1 {
@@ -288,6 +288,7 @@
     background-image: none;
   }
   .navbar .container {
+    width: auto;
     padding: 0;
   }
   .navbar .brand {
@@ -476,11 +477,11 @@
   .row-fluid:after {
     clear: both;
   }
-  .row-fluid [class*="span"] {
+  .row-fluid > [class*="span"] {
     float: left;
     margin-left: 2.564102564%;
   }
-  .row-fluid [class*="span"]:first-child {
+  .row-fluid > [class*="span"]:first-child {
     margin-left: 0;
   }
   .row-fluid .span1 {

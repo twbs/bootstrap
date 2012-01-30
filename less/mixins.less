@@ -212,10 +212,10 @@
       .clearfix();
 
       // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks @dhg)
-      [class*="span"] {
+      > [class*="span"] {
         #fluidGridSystem > .gridColumn(@fluidGridGutterWidth);
       }
-      [class*="span"]:first-child {
+      > [class*="span"]:first-child {
         margin-left: 0;
       }
       // Default columns
