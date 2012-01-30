@@ -38,8 +38,8 @@
         , title = this.getTitle()
         , content = this.getContent()
 
-      $tip.find('.title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
-      $tip.find('.content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
+      $tip.find('.popover-title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
+      $tip.find('.popover-content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
 
       $tip.removeClass('fade top bottom left right in')
     }
@@ -89,7 +89,7 @@
   $.fn.popover.defaults = $.extend({} , $.fn.tooltip.defaults, {
     placement: 'right'
   , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
+  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
 }( window.jQuery )

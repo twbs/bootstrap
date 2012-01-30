@@ -2928,7 +2928,7 @@ button.btn.small, input[type="submit"].btn.small {
   width: 0;
   height: 0;
 }
-.popover .inner {
+.popover-inner {
   padding: 3px;
   width: 280px;
   overflow: hidden;
@@ -2941,7 +2941,7 @@ button.btn.small, input[type="submit"].btn.small {
   -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 }
-.popover .title {
+.popover-title {
   padding: 9px 15px;
   line-height: 1;
   background-color: #f5f5f5;
@@ -2950,7 +2950,7 @@ button.btn.small, input[type="submit"].btn.small {
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
 }
-.popover .content {
+.popover-content {
   padding: 14px;
   background-color: #ffffff;
   -webkit-border-radius: 0 0 3px 3px;
@@ -2960,7 +2960,7 @@ button.btn.small, input[type="submit"].btn.small {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
 }
-.popover .content p, .popover .content ul, .popover .content ol {
+.popover-content p, .popover-content ul, .popover-content ol {
   margin-bottom: 0;
 }
 .thumbnails {
