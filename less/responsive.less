@@ -278,6 +278,7 @@
   .nav-collapse {
     overflow: hidden;
     height: 0;
+    -webkit-transform: translate3d(0, 0, 0); // activate the GPU
   }
 }
 
@@ -304,7 +305,7 @@
 
   // Fluid grid
   #fluidGridSystem > .generate(12, 5.982905983%, 2.564102564%);
-  
+
   // Input grid
   #inputGridSystem > .generate(12, 70px, 30px);
 
