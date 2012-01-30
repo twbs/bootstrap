@@ -2429,6 +2429,14 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .navbar-form {
   margin-bottom: 0;
+  *zoom: 1;
+}
+.navbar-form:before, .navbar-form:after {
+  display: table;
+  content: "";
+}
+.navbar-form:after {
+  clear: both;
 }
 .navbar-form input, .navbar-form select {
   display: inline-block;
