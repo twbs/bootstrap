@@ -3237,6 +3237,7 @@ a.thumbnail:hover {
 }
 .carousel {
   position: relative;
+  margin-bottom: 18px;
   line-height: 1;
 }
 .carousel-inner {
