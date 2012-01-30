@@ -2081,6 +2081,7 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .nav > li > a {
   display: block;
+  cursor: pointer;
 }
 .nav > li > a:hover {
   text-decoration: none;
