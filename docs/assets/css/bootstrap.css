@@ -126,7 +126,7 @@ a:hover {
   margin-left: 20px;
 }
 .span1 {
-  width: 59.99999999999999px;
+  width: 60px;
 }
 .span2 {
   width: 140px;
@@ -158,7 +158,7 @@ a:hover {
 .span11 {
   width: 860px;
 }
-.span12 {
+.span12, .container {
   width: 940px;
 }
 .offset1 {
@@ -195,48 +195,58 @@ a:hover {
   margin-left: 900px;
 }
 .row-fluid {
-  width: 102.12765957421277%;
-  margin-left: -2.127659574%;
+  width: 100%;
+  *zoom: 1;
+}
+.row-fluid:before, .row-fluid:after {
+  display: table;
+  content: "";
+}
+.row-fluid:after {
+  clear: both;
 }
 .row-fluid [class*="span"] {
   float: left;
   margin-left: 2.127659574%;
 }
+.row-fluid [class*="span"]:first-child {
+  margin-left: 0;
+}
 .row-fluid .span1 {
-  width: 6.249999999619791%;
+  width: 6.382978723%;
 }
 .row-fluid .span2 {
-  width: 14.58333333211979%;
+  width: 14.89361702%;
 }
 .row-fluid .span3 {
-  width: 22.91666666461979%;
+  width: 23.404255317%;
 }
 .row-fluid .span4 {
-  width: 31.24999999711979%;
+  width: 31.914893614%;
 }
 .row-fluid .span5 {
-  width: 39.58333332961979%;
+  width: 40.425531911%;
 }
 .row-fluid .span6 {
-  width: 47.91666666211979%;
+  width: 48.93617020799999%;
 }
 .row-fluid .span7 {
-  width: 56.24999999461979%;
+  width: 57.446808505%;
 }
 .row-fluid .span8 {
-  width: 64.58333332711977%;
+  width: 65.95744680199999%;
 }
 .row-fluid .span9 {
-  width: 72.91666665961978%;
+  width: 74.468085099%;
 }
 .row-fluid .span10 {
-  width: 81.24999999211977%;
+  width: 82.97872339599999%;
 }
 .row-fluid .span11 {
-  width: 89.58333332461977%;
+  width: 91.489361693%;
 }
 .row-fluid .span12 {
-  width: 97.91666665711978%;
+  width: 99.99999998999999%;
 }
 .container {
   width: 940px;
@@ -707,42 +717,6 @@ input.span11, textarea.span11, .uneditable-input.span11 {
 }
 input.span12, textarea.span12, .uneditable-input.span12 {
   width: 930px;
-}
-select.span1 {
-  width: 70px;
-}
-select.span2 {
-  width: 150px;
-}
-select.span3 {
-  width: 230px;
-}
-select.span4 {
-  width: 310px;
-}
-select.span5 {
-  width: 390px;
-}
-select.span6 {
-  width: 470px;
-}
-select.span7 {
-  width: 550px;
-}
-select.span8 {
-  width: 630px;
-}
-select.span9 {
-  width: 710px;
-}
-select.span10 {
-  width: 790px;
-}
-select.span11 {
-  width: 870px;
-}
-select.span12 {
-  width: 950px;
 }
 input[disabled],
 select[disabled],

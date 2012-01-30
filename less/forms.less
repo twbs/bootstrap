@@ -229,45 +229,13 @@ textarea[class*="span"],
   margin-left: 0;
 }
 
-// This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
-.inputColumns(@columnSpan: 1) {
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 10;
-}
-input,
-textarea,
-.uneditable-input {
-  // Default columns
-  &.span1     { .inputColumns(1); }
-  &.span2     { .inputColumns(2); }
-  &.span3     { .inputColumns(3); }
-  &.span4     { .inputColumns(4); }
-  &.span5     { .inputColumns(5); }
-  &.span6     { .inputColumns(6); }
-  &.span7     { .inputColumns(7); }
-  &.span8     { .inputColumns(8); }
-  &.span9     { .inputColumns(9); }
-  &.span10    { .inputColumns(10); }
-  &.span11    { .inputColumns(11); }
-  &.span12    { .inputColumns(12); }
-}
 
-.selectColumns(@columnSpan: 1) {
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) + 10;
-}
-select {
-  &.span1     { .selectColumns(1); }
-  &.span2     { .selectColumns(2); }
-  &.span3     { .selectColumns(3); }
-  &.span4     { .selectColumns(4); }
-  &.span5     { .selectColumns(5); }
-  &.span6     { .selectColumns(6); }
-  &.span7     { .selectColumns(7); }
-  &.span8     { .selectColumns(8); }
-  &.span9     { .selectColumns(9); }
-  &.span10    { .selectColumns(10); }
-  &.span11    { .selectColumns(11); }
-  &.span12    { .selectColumns(12); }
-}
+
+// GRID SIZING FOR INPUTS
+// ----------------------
+
+#inputGridSystem > .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth);
+
 
 
 

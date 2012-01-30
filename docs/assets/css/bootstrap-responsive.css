@@ -83,7 +83,7 @@
   .row {
     margin-left: 0;
   }
-  .row > [class*="span"] {
+  .row > [class*="span"], .row-fluid > [class*="span"] {
     float: none;
     display: block;
     width: auto;
@@ -91,10 +91,20 @@
   }
 }
 @media (min-width: 768px) and (max-width: 940px) {
-  .container {
-    width: 724px;
-    padding-left: 20px;
-    padding-right: 20px;
+  .row {
+    margin-left: -20px;
+    *zoom: 1;
+  }
+  .row:before, .row:after {
+    display: table;
+    content: "";
+  }
+  .row:after {
+    clear: both;
+  }
+  [class*="span"] {
+    float: left;
+    margin-left: 20px;
   }
   .span1 {
     width: 42px;
@@ -129,7 +139,7 @@
   .span11 {
     width: 662px;
   }
-  .span12 {
+  .span12, .container {
     width: 724px;
   }
   .offset1 {
@@ -166,48 +176,94 @@
     margin-left: 702px;
   }
   .row-fluid {
-    width: 102.76243093919337%;
-    margin-left: -2.762430939%;
+    width: 100%;
+    *zoom: 1;
+  }
+  .row-fluid:before, .row-fluid:after {
+    display: table;
+    content: "";
+  }
+  .row-fluid:after {
+    clear: both;
   }
   .row-fluid [class*="span"] {
     float: left;
     margin-left: 2.762430939%;
   }
+  .row-fluid [class*="span"]:first-child {
+    margin-left: 0;
+  }
   .row-fluid .span1 {
-    width: 5.6451612899588115%;
+    width: 5.801104972%;
   }
   .row-fluid .span2 {
-    width: 13.978494622708812%;
+    width: 14.364640883%;
   }
   .row-fluid .span3 {
-    width: 22.31182795545881%;
+    width: 22.928176794%;
   }
   .row-fluid .span4 {
-    width: 30.64516128820881%;
+    width: 31.491712705%;
   }
   .row-fluid .span5 {
-    width: 38.97849462095881%;
+    width: 40.055248616%;
   }
   .row-fluid .span6 {
-    width: 47.311827953708814%;
+    width: 48.618784527%;
   }
   .row-fluid .span7 {
-    width: 55.645161286458816%;
+    width: 57.182320438000005%;
   }
   .row-fluid .span8 {
-    width: 63.97849461920882%;
+    width: 65.74585634900001%;
   }
   .row-fluid .span9 {
-    width: 72.31182795195882%;
+    width: 74.30939226%;
   }
   .row-fluid .span10 {
-    width: 80.64516128470882%;
+    width: 82.87292817100001%;
   }
   .row-fluid .span11 {
-    width: 88.97849461745884%;
+    width: 91.436464082%;
   }
   .row-fluid .span12 {
-    width: 97.31182795020881%;
+    width: 99.999999993%;
+  }
+  input.span1, textarea.span1, .uneditable-input.span1 {
+    width: 32px;
+  }
+  input.span2, textarea.span2, .uneditable-input.span2 {
+    width: 94px;
+  }
+  input.span3, textarea.span3, .uneditable-input.span3 {
+    width: 156px;
+  }
+  input.span4, textarea.span4, .uneditable-input.span4 {
+    width: 218px;
+  }
+  input.span5, textarea.span5, .uneditable-input.span5 {
+    width: 280px;
+  }
+  input.span6, textarea.span6, .uneditable-input.span6 {
+    width: 342px;
+  }
+  input.span7, textarea.span7, .uneditable-input.span7 {
+    width: 404px;
+  }
+  input.span8, textarea.span8, .uneditable-input.span8 {
+    width: 466px;
+  }
+  input.span9, textarea.span9, .uneditable-input.span9 {
+    width: 528px;
+  }
+  input.span10, textarea.span10, .uneditable-input.span10 {
+    width: 590px;
+  }
+  input.span11, textarea.span11, .uneditable-input.span11 {
+    width: 652px;
+  }
+  input.span12, textarea.span12, .uneditable-input.span12 {
+    width: 714px;
   }
 }
 @media (max-width: 940px) {
@@ -316,19 +372,19 @@
   }
 }
 @media (min-width: 1200px) {
-  .thumbnails {
-    margin-left: -30px;
-  }
-  .thumbnails > li {
-    margin-left: 30px;
-  }
-  .container {
-    width: 1170px;
-  }
   .row {
     margin-left: -30px;
+    *zoom: 1;
+  }
+  .row:before, .row:after {
+    display: table;
+    content: "";
+  }
+  .row:after {
+    clear: both;
   }
   [class*="span"] {
+    float: left;
     margin-left: 30px;
   }
   .span1 {
@@ -364,7 +420,7 @@
   .span11 {
     width: 1070px;
   }
-  .span12 {
+  .span12, .container {
     width: 1170px;
   }
   .offset1 {
@@ -401,47 +457,99 @@
     margin-left: 1130px;
   }
   .row-fluid {
-    width: 102.56143440326584%;
-    margin-left: -2.56%;
+    width: 100%;
+    *zoom: 1;
+  }
+  .row-fluid:before, .row-fluid:after {
+    display: table;
+    content: "";
+  }
+  .row-fluid:after {
+    clear: both;
   }
   .row-fluid [class*="span"] {
     float: left;
-    margin-left: 2.56%;
+    margin-left: 2.564102564%;
+  }
+  .row-fluid [class*="span"]:first-child {
+    margin-left: 0;
   }
   .row-fluid .span1 {
-    width: 5.832601732615312%;
+    width: 5.982905983%;
   }
   .row-fluid .span2 {
-    width: 14.16126839928198%;
+    width: 14.529914530000001%;
   }
   .row-fluid .span3 {
-    width: 22.489935065948643%;
+    width: 23.076923077%;
   }
   .row-fluid .span4 {
-    width: 30.818601732615313%;
+    width: 31.623931624%;
   }
   .row-fluid .span5 {
-    width: 39.14726839928198%;
+    width: 40.170940171000005%;
   }
   .row-fluid .span6 {
-    width: 47.47593506594863%;
+    width: 48.717948718%;
   }
   .row-fluid .span7 {
-    width: 55.8046017326153%;
+    width: 57.264957265%;
   }
   .row-fluid .span8 {
-    width: 64.13326839928197%;
+    width: 65.81196581200001%;
   }
   .row-fluid .span9 {
-    width: 72.46193506594864%;
+    width: 74.358974359%;
   }
   .row-fluid .span10 {
-    width: 80.7906017326153%;
+    width: 82.905982906%;
   }
   .row-fluid .span11 {
-    width: 89.11926839928198%;
+    width: 91.45299145300001%;
   }
   .row-fluid .span12 {
-    width: 97.44793506594864%;
+    width: 100%;
+  }
+  input.span1, textarea.span1, .uneditable-input.span1 {
+    width: 60px;
+  }
+  input.span2, textarea.span2, .uneditable-input.span2 {
+    width: 160px;
+  }
+  input.span3, textarea.span3, .uneditable-input.span3 {
+    width: 260px;
+  }
+  input.span4, textarea.span4, .uneditable-input.span4 {
+    width: 360px;
+  }
+  input.span5, textarea.span5, .uneditable-input.span5 {
+    width: 460px;
+  }
+  input.span6, textarea.span6, .uneditable-input.span6 {
+    width: 560px;
+  }
+  input.span7, textarea.span7, .uneditable-input.span7 {
+    width: 660px;
+  }
+  input.span8, textarea.span8, .uneditable-input.span8 {
+    width: 760px;
+  }
+  input.span9, textarea.span9, .uneditable-input.span9 {
+    width: 860px;
+  }
+  input.span10, textarea.span10, .uneditable-input.span10 {
+    width: 960px;
+  }
+  input.span11, textarea.span11, .uneditable-input.span11 {
+    width: 1060px;
+  }
+  input.span12, textarea.span12, .uneditable-input.span12 {
+    width: 1160px;
+  }
+  .thumbnails {
+    margin-left: -30px;
+  }
+  .thumbnails > li {
+    margin-left: 30px;
   }
 }

@@ -125,7 +125,8 @@
     margin-left: 0;
   }
   // Make all columns even
-  .row > [class*="span"] {
+  .row > [class*="span"],
+  .row-fluid > [class*="span"] {
     float: none;
     display: block;
     width: auto;
@@ -140,90 +141,15 @@
 
 @media (min-width: 768px) and (max-width: 940px) {
 
-  // Reset grid variables
-  @gridColumns:       12;
-  @gridColumnWidth:   42px;
-  @gridGutterWidth:   20px;
-  @siteWidth:         724px;
+  // Fixed grid
+  #gridSystem > .generate(12, 42px, 20px);
 
-  // Bring grid mixins to recalculate widths
-  .columns(@columns: 1) {
-    width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
-  }
-  .offset(@columns: 1) {
-    margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
-  }
+  // Fluid grid
+  #fluidGridSystem > .generate(12, 5.801104972%, 2.762430939%);
 
-  // 12cols at 44px wide with 20px gutters
-  .container {
-    width: @siteWidth;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  // Input grid
+  #inputGridSystem > .generate(12, 42px, 20px);
 
-  // Default columns
-  .span1     { .columns(1); }
-  .span2     { .columns(2); }
-  .span3     { .columns(3); }
-  .span4     { .columns(4); }
-  .span5     { .columns(5); }
-  .span6     { .columns(6); }
-  .span7     { .columns(7); }
-  .span8     { .columns(8); }
-  .span9     { .columns(9); }
-  .span10    { .columns(10); }
-  .span11    { .columns(11); }
-  .span12    { .columns(12); }
-
-  // Offset column options
-  .offset1   { .offset(1); }
-  .offset2   { .offset(2); }
-  .offset3   { .offset(3); }
-  .offset4   { .offset(4); }
-  .offset5   { .offset(5); }
-  .offset6   { .offset(6); }
-  .offset7   { .offset(7); }
-  .offset8   { .offset(8); }
-  .offset9   { .offset(9); }
-  .offset10  { .offset(10); }
-  .offset11  { .offset(11); }
-
-  // FLUID GRID
-  // ----------
-  .row-fluid {
-    @gridColumnWidth:     5.801104972%;
-    @gridGutterWidth:     2.762430939%;
-    @gridRowWidth:        (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
-    @gridTotalWidth:      @gridRowWidth;
-
-    width: 100% * ((@gridGutterWidth + @gridRowWidth)/@gridRowWidth);
-    margin-left: 0 - @gridGutterWidth;
-
-    // Redeclare the mixins
-    .gridColumn() {
-      float: left;
-      margin-left: @gridGutterWidth;
-    } 
-    [class*="span"] {
-      .gridColumn();
-    }
-    .fluidColumns(@columns: 1) {
-      width: @gridTotalWidth * ((((@gridGutterWidth+@gridColumnWidth)*@columns)-@gridGutterWidth)/(@gridRowWidth+@gridGutterWidth));
-    }
-    // Redeclare the columns
-    .span1     { .fluidColumns(1); }
-    .span2     { .fluidColumns(2); }
-    .span3     { .fluidColumns(3); }
-    .span4     { .fluidColumns(4); }
-    .span5     { .fluidColumns(5); }
-    .span6     { .fluidColumns(6); }
-    .span7     { .fluidColumns(7); }
-    .span8     { .fluidColumns(8); }
-    .span9     { .fluidColumns(9); }
-    .span10    { .fluidColumns(10); }
-    .span11    { .fluidColumns(11); }
-    .span12    { .fluidColumns(12); }
-  }
 }
 
 
@@ -362,99 +288,21 @@
 
 @media (min-width: 1200px) {
 
-  // Reset grid variables
-  @gridColumns:       12;
-  @gridColumnWidth:   70px;
-  @gridGutterWidth:   30px;
-  @siteWidth:         1170px;
+  // Fixed grid
+  #gridSystem > .generate(12, 70px, 30px);
+
+  // Fluid grid
+  #fluidGridSystem > .generate(12, 5.982905983%, 2.564102564%);
+  
+  // Input grid
+  #inputGridSystem > .generate(12, 70px, 30px);
 
   // Thumbnails
   .thumbnails {
-    margin-left: @gridGutterWidth * -1;
+    margin-left: -30px;
   }
   .thumbnails > li {
-    margin-left: @gridGutterWidth;
+    margin-left: 30px;
   }
 
-  // Bring grid mixins to recalculate widths
-  .columns(@columns: 1) {
-    width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
-  }
-  .offset(@columns: 1) {
-    margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
-  }
-  .container {
-    width: @siteWidth;
-  }
-  .row {
-    margin-left: @gridGutterWidth * -1;
-  }
-  [class*="span"] {
-    margin-left: @gridGutterWidth;
-  }
-
-  // Default columns
-  .span1     { .columns(1); }
-  .span2     { .columns(2); }
-  .span3     { .columns(3); }
-  .span4     { .columns(4); }
-  .span5     { .columns(5); }
-  .span6     { .columns(6); }
-  .span7     { .columns(7); }
-  .span8     { .columns(8); }
-  .span9     { .columns(9); }
-  .span10    { .columns(10); }
-  .span11    { .columns(11); }
-  .span12    { .columns(12); }
-
-  // Offset column options
-  .offset1   { .offset(1); }
-  .offset2   { .offset(2); }
-  .offset3   { .offset(3); }
-  .offset4   { .offset(4); }
-  .offset5   { .offset(5); }
-  .offset6   { .offset(6); }
-  .offset7   { .offset(7); }
-  .offset8   { .offset(8); }
-  .offset9   { .offset(9); }
-  .offset10  { .offset(10); }
-  .offset11  { .offset(11); }
-
-
-  // FLUID GRID
-  // ----------
-  .row-fluid {
-    @gridColumnWidth:     5.982%;
-    @gridGutterWidth:     2.56%;
-    @gridRowWidth:        (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
-    @gridTotalWidth:      @gridRowWidth;
-
-    width: 100% * ((@gridGutterWidth + @gridRowWidth)/@gridRowWidth);
-    margin-left: 0 - @gridGutterWidth;
-
-    // Redeclare the mixins
-    .gridColumn() {
-      float: left;
-      margin-left: @gridGutterWidth;
-    } 
-    [class*="span"] {
-      .gridColumn();
-    }
-    .fluidColumns(@columns: 1) {
-      width: @gridTotalWidth * ((((@gridGutterWidth+@gridColumnWidth)*@columns)-@gridGutterWidth)/(@gridRowWidth+@gridGutterWidth));
-    }
-    // Redeclare the columns
-    .span1     { .fluidColumns(1); }
-    .span2     { .fluidColumns(2); }
-    .span3     { .fluidColumns(3); }
-    .span4     { .fluidColumns(4); }
-    .span5     { .fluidColumns(5); }
-    .span6     { .fluidColumns(6); }
-    .span7     { .fluidColumns(7); }
-    .span8     { .fluidColumns(8); }
-    .span9     { .fluidColumns(9); }
-    .span10    { .fluidColumns(10); }
-    .span11    { .fluidColumns(11); }
-    .span12    { .fluidColumns(12); }
-  }
 }
