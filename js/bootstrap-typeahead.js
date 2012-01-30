@@ -29,6 +29,7 @@
     this.highlighter = this.options.highlighter || this.highlighter
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
+    this.onSelect = this.options.onSelect || this.onSelect
     this.shown = false
     this.listen()
   }
@@ -36,10 +37,13 @@
   Typeahead.prototype = {
 
     constructor: Typeahead
+  , onSelect: function() {
 
+  }
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
       this.$element.val(val)
+      this.onSelect(val);
       return this.hide()
     }
 
