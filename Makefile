@@ -9,8 +9,7 @@ WATCHR ?= `which watchr`
 # BUILD DOCS
 #
 
-docs: dist
-	cp -r dist bootstrap
+docs: bootstrap
 	zip -r docs/assets/bootstrap.zip bootstrap
 	rm -r bootstrap
 	lessc ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
@@ -19,21 +18,21 @@ docs: dist
 	cp img/* docs/assets/img/
 
 #
-# BUILD SIMPLE DIST DIRECTORY
+# BUILD SIMPLE BOOTSTRAP DIRECTORY
 # lessc & uglifyjs are required
 #
 
-dist:
-	mkdir -p dist/img
-	mkdir -p dist/css
-	mkdir -p dist/js
-	cp img/* dist/img/
-	lessc ${BOOTSTRAP_LESS} > dist/css/bootstrap.css
-	lessc --compress ${BOOTSTRAP_LESS} > dist/css/bootstrap.min.css
-	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > dist/css/bootstrap.responsive
-	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > dist/css/bootstrap.min.responsive
-	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > dist/js/bootstrap.js
-	uglifyjs -nc dist/js/bootstrap.js > dist/js/bootstrap.min.js
+bootstrap:
+	mkdir -p bootstrap/img
+	mkdir -p bootstrap/css
+	mkdir -p bootstrap/js
+	cp img/* bootstrap/img/
+	lessc ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
+	lessc --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
+	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap.responsive
+	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap.min.responsive
+	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > bootstrap/js/bootstrap.js
+	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.js
 
 #
 # WATCH LESS FILES

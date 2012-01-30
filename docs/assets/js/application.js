@@ -123,7 +123,7 @@
             .map(function () { return this.value })
             .toArray()
         , vars = {}
-        , img = ['glyphicons-halflings-sprite.png', 'glyphicons-halflings-sprite-white.png']
+        , img = ['glyphicons-halflings.png', 'glyphicons-halflings-white.png']
 
     $("#variables.download input")
       .each(function () {
