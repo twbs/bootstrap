@@ -165,9 +165,6 @@
     }
 
   , keyup: function (e) {
-      e.stopPropagation()
-      e.preventDefault()
-
       switch(e.keyCode) {
         case 40: // down arrow
         case 38: // up arrow
@@ -187,10 +184,11 @@
           this.lookup()
       }
 
+      e.stopPropagation()
+      e.preventDefault()
   }
 
   , keypress: function (e) {
-      e.stopPropagation()
       if (!this.shown) return
 
       switch(e.keyCode) {
@@ -210,12 +208,12 @@
           this.next()
           break
       }
+
+      e.stopPropagation()
     }
 
   , blur: function (e) {
       var that = this
-      e.stopPropagation()
-      e.preventDefault()
       setTimeout(function () { that.hide() }, 150)
     }
 
