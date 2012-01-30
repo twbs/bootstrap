@@ -2509,10 +2509,10 @@ button.btn.small, input[type="submit"].btn.small {
   background-color: #222222;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.navbar .vertical-divider {
+.navbar .divider-vertical {
   height: 40px;
   width: 1px;
-  margin: 0 5px;
+  margin: 0 9px;
   overflow: hidden;
   background-color: #222222;
   border-right: 1px solid #333333;
