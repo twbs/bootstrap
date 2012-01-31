@@ -40,9 +40,12 @@ bootstrap:
 # WATCH LESS FILES
 #
 
+gh-pages:
+	cp -r docs/* ../bootstrap-gh-pages
+
 watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 
-.PHONY: dist docs watch
+.PHONY: dist docs watch gh-pages
