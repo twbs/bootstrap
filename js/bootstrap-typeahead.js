@@ -178,6 +178,7 @@
           break
 
         case 27: // escape
+          if (!this.shown) return
           this.hide()
           break
 
