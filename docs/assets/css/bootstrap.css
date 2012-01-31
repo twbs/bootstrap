@@ -1112,7 +1112,7 @@ table .span12 {
   width: 924px;
   margin-left: 0;
 }
-[class*="icon-"] {
+[class^="icon-"] {
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -1122,7 +1122,7 @@ table .span12 {
   background-repeat: no-repeat;
   *margin-right: .3em;
 }
-[class*="icon-"]:last-child {
+[class^="icon-"]:last-child {
   *margin-left: 0;
 }
 .icon-white {
