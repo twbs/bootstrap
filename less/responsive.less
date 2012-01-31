@@ -38,6 +38,11 @@
 
 @media (max-width: 480px) {
 
+  // Smooth out the collapsing/expanding nav
+  .nav-collapse {
+    -webkit-transform: translate3d(0, 0, 0); // activate the GPU
+  }
+
   // Block level the page header small tag for readability
   .page-header h1 small {
     display: block;
@@ -149,7 +154,7 @@
 // PORTRAIT TABLET TO DEFAULT DESKTOP
 // ----------------------------------
 
-@media (min-width: 768px) and (max-width: 940px) {
+@media (min-width: 768px) and (max-width: 980px) {
 
   // Fixed grid
   #gridSystem > .generate(12, 42px, 20px);
@@ -166,7 +171,7 @@
 
 // TABLETS AND BELOW
 // -----------------
-@media (max-width: 940px) {
+@media (max-width: 980px) {
 
   // UNFIX THE TOPBAR
   // ----------------
@@ -277,7 +282,6 @@
   .nav-collapse {
     overflow: hidden;
     height: 0;
-    -webkit-transform: translate3d(0, 0, 0); // activate the GPU
   }
 }
 
@@ -286,7 +290,7 @@
 // DEFAULT DESKTOP
 // ---------------
 
-@media (min-width: 940px) {
+@media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
   }

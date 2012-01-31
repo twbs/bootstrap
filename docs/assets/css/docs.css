@@ -61,17 +61,13 @@ hr.soften {
   position: relative;
 }
 .jumbotron h1 {
-  margin-bottom: 9px;
   font-size: 81px;
   letter-spacing: -1px;
   line-height: 1;
 }
 .jumbotron p {
   margin-bottom: 18px;
-  font-size: 25px;
   font-weight: 300;
-  line-height: 36px;
-  color: #333;
 }
 .jumbotron .btn-large {
   font-size: 20px;
@@ -81,10 +77,6 @@ hr.soften {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
-}
-.jumbotron .download-info {
-  font-size: 16px;
-  color: #999;
 }
 
 /* Masthead (docs home) */
@@ -100,7 +92,8 @@ hr.soften {
   margin-bottom: 18px;
 }
 .masthead p {
-  margin: 0 5% 18px;
+  margin-left: 5%;
+  margin-right: 5%;
   font-size: 30px;
   line-height: 36px;
 }
@@ -111,11 +104,7 @@ hr.soften {
 /* supporting docs pages */
 .subhead {
   padding-bottom: 0;
-  border-bottom: 0;
-}
-.subhead h1,
-.subhead p {
-  margin-right: 0;
+  margin-bottom: 9px;
 }
 .subhead h1 {
   font-size: 54px;
@@ -184,8 +173,8 @@ hr.soften {
           border-radius: 0 0 4px 4px;
 }
 
-/* Fixed subnav on scroll, but only for 940px and up (sorry IE!) */
-@media (min-width: 940px) {
+/* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
+@media (min-width: 980px) {
   .subnav-fixed {
     position: fixed;
     top: 40px;
@@ -228,12 +217,6 @@ hr.soften {
 .quick-links li {
   display: inline;
   margin: 0 5px;
-}
-.quick-links .divider {
-  color: #999;
-}
-.quick-links strong {
-  font-weight: normal;
   color: #999;
 }
 .quick-links .github-btn,
@@ -638,10 +621,6 @@ form.well {
   .quick-links {
     margin: 40px 0 0;
   }
-  .quick-links li {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
   /* hide the bullets on mobile since our horizontal space is limited */
   .quick-links .divider {
     display: none;
@@ -654,7 +633,7 @@ form.well {
   .example-sites > li {
     float: none;
     display: block;
-    max-width: 300px;
+    max-width: 280px;
     margin: 0 auto 18px;
     text-align: center;
   }
@@ -687,6 +666,11 @@ form.well {
     padding-top: 0;
   }
 
+  /* Jumbotron buttons */
+  .jumbotron .btn {
+    margin-bottom: 10px;
+  }
+
   /* Subnav */
   .subnav {
     position: static;
@@ -715,7 +699,6 @@ form.well {
               border-radius: 4px 4px 0 0;
   }
 
-
   /* Popovers */
   .large-bird {
     display: none;
@@ -727,11 +710,6 @@ form.well {
   /* Space out the show-grid examples */
   .show-grid [class*="span"] {
     margin-bottom: 5px;
-  }
-
-  /* Space out the getting started sections */
-  .getting-started .span4 {
-    margin-bottom: 18px;
   }
 
   /* Unfloat the back to top link in footer */
@@ -751,11 +729,6 @@ form.well {
   .jumbotron h1 {
     font-size: 54px;
   }
-  .masthead p {
-    font-size: 25px;
-    line-height: 36px;
-  }
-  .jumbotron h1,
   .jumbotron p {
     margin-right: 0;
     margin-left: 0;
@@ -764,7 +737,7 @@ form.well {
 }
 
 
-@media (min-width: 768px) and (max-width: 940px) {
+@media (min-width: 768px) and (max-width: 980px) {
 
   /* Remove any padding from the body */
   body {
@@ -779,7 +752,7 @@ form.well {
 }
 
 
-@media (max-width: 940px) {
+@media (max-width: 980px) {
 
   /* Unfloat brand */
   .navbar-fixed-top .brand {
@@ -787,6 +760,12 @@ form.well {
     margin-left: 0;
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  /* Inline-block quick links for more spacing */
+  .quick-links li {
+    display: inline-block;
+    margin: 5px;
   }
 
 }
