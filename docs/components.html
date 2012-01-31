@@ -80,7 +80,7 @@
   <h1>Components</h1>
   <p class="lead">Dozens of reusable components are built into Bootstrap to provide navigation, alerts, popovers, and much more.</p>
   <div class="subnav">
-    <ul class="nav pills">
+    <ul class="nav nav-pills">
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Buttons <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -361,13 +361,13 @@
     <div class="span4">
       <h3>Basic tabs</h3>
       <p>Take a regular <code>&lt;ul&gt;</code> of links and add <code>.tabs</code>:</p>
-      <ul class="nav tabs">
+      <ul class="nav nav-tabs">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">Messages</a></li>
       </ul>
 <pre class="prettyprint linenums">
-&lt;ul class="nav tabs"&gt;
+&lt;ul class="nav nav-tabs"&gt;
   &lt;li class="active"&gt;
     &lt;a href="#"&gt;Home&lt;/a&gt;
   &lt;/li&gt;
@@ -379,13 +379,13 @@
     <div class="span4">
       <h3>Basic pills</h3>
       <p>Take that same HTML, but use <code>.pills</code> instead:</p>
-      <ul class="nav pills">
+      <ul class="nav nav-pills">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">Messages</a></li>
       </ul>
 <pre class="prettyprint linenums">
-&lt;ul class="nav pills"&gt;
+&lt;ul class="nav nav-pills"&gt;
   &lt;li class="active"&gt;
     &lt;a href="#"&gt;Home&lt;/a&gt;
   &lt;/li&gt;
@@ -404,26 +404,26 @@
     </div>
     <div class="span4">
       <h3>Stacked tabs</h3>
-      <ul class="nav tabs stacked">
+      <ul class="nav nav-tabs nav-stacked">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">Messages</a></li>
       </ul>
 <pre class="prettyprint linenums">
-&lt;ul class="nav tabs stacked"&gt;
+&lt;ul class="nav nav-tabs nav-stacked"&gt;
   ...
 &lt;/ul&gt;
 </pre>
     </div>
     <div class="span4">
       <h3>Stacked pills</h3>
-      <ul class="nav pills stacked">
+      <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">Messages</a></li>
       </ul>
 <pre class="prettyprint linenums">
-&lt;ul class="nav pills stacked"&gt;
+&lt;ul class="nav nav-pills nav-stacked"&gt;
   ...
 &lt;/ul&gt;
 </pre>
@@ -439,7 +439,7 @@
     </div>
     <div class="span4">
       <h3>Tabs with dropdowns</h3>
-      <ul class="nav tabs">
+      <ul class="nav nav-tabs">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
         <li class="dropdown">
@@ -454,7 +454,7 @@
         </li>
       </ul>
 <pre class="prettyprint linenums">
-&lt;ul class="nav tabs"&gt;
+&lt;ul class="nav nav-tabs"&gt;
   &lt;li class="dropdown"&gt;
     &lt;a class="dropdown-toggle"
        data-toggle="dropdown"
@@ -471,7 +471,7 @@
     </div>
     <div class="span4">
       <h3>Pills with dropdowns</h3>
-      <ul class="nav pills">
+      <ul class="nav nav-pills">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Profile</a></li>
         <li class="dropdown">
@@ -486,7 +486,7 @@
         </li>
       </ul>
 <pre class="prettyprint linenums">
-&lt;ul class="nav pills"&gt;
+&lt;ul class="nav nav-pills"&gt;
   &lt;li class="dropdown"&gt;
     &lt;a class="dropdown-toggle"
        data-toggle="dropdown"
@@ -516,7 +516,7 @@
       <h3>Example nav list</h3>
       <p>Take a list of links and add <code>class="nav list"</code>:</p>
       <div class="well" style="padding: 8px 0;">
-        <ul class="nav list">
+        <ul class="nav nav-list">
           <li class="nav-header">List header</li>
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Library</a></li>
@@ -528,7 +528,7 @@
         </ul>
       </div> <!-- /well -->
 <pre class="prettyprint linenums">
-&lt;ul class="nav list"&gt;
+&lt;ul class="nav nav-list"&gt;
   &lt;li class="nav-header"&gt;
     List header
   &lt;/li&gt;
@@ -546,7 +546,7 @@
       <h3>Example with icons</h3>
       <p>Same example, but with <code>&lt;i&gt;</code> tags for icons.</p>
       <div class="well" style="padding: 8px 0;">
-        <ul class="nav list">
+        <ul class="nav nav-list">
           <li class="nav-header">List header</li>
           <li class="active"><a href="#"><i class="icon white home"></i> Home</a></li>
           <li><a href="#"><i class="icon book"></i> Library</a></li>
@@ -558,7 +558,7 @@
         </ul>
       </div> <!-- /well -->
 <pre class="prettyprint linenums">
-&lt;ul class="nav list"&gt;
+&lt;ul class="nav nav-list"&gt;
   ...
   &lt;li&gt;
     &lt;a href="#"&gt;
@@ -584,7 +584,7 @@
       <h3>Tabbable example</h3>
       <p>To make tabs tabbable, wrap the <code>.tabs</code> in another div with class <code>.tabbable</code>.</p>
       <div class="tabbable" style="margin-bottom: 9px;">
-        <ul class="nav tabs">
+        <ul class="nav nav-tabs">
           <li class="active"><a href="#1" data-toggle="tab">Section 1</a></li>
           <li><a href="#2" data-toggle="tab">Section 2</a></li>
           <li><a href="#3" data-toggle="tab">Section 3</a></li>
@@ -613,7 +613,7 @@
   <p>Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.</p>
 <pre class="prettyprint linenums">
 &lt;div class="tabbable"&gt;
-  &lt;ul class="nav tabs"&gt;
+  &lt;ul class="nav nav-tabs"&gt;
     &lt;li class="active"&gt;&lt;a href="#1" data-toggle="tab"&gt;Section 1&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#2" data-toggle="tab"&gt;Section 2&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
@@ -645,7 +645,7 @@
             <p>What up girl, this is Section C.</p>
           </div>
         </div>
-        <ul class="nav tabs">
+        <ul class="nav nav-tabs">
           <li class="active"><a href="#A" data-toggle="tab">Section 1</a></li>
           <li><a href="#B" data-toggle="tab">Section 2</a></li>
           <li><a href="#C" data-toggle="tab">Section 3</a></li>
@@ -653,12 +653,12 @@
       </div> <!-- /tabbable -->
 <pre class="prettyprint linenums" style="margin-top: 11px;">
 &lt;div class="tabbable tabs-below"&gt;
-  &lt;ul class="nav tabs"&gt;
-    ...
-  &lt;/ul&gt;
   &lt;div class="tab-content"&gt;
     ...
   &lt;/div&gt;
+  &lt;ul class="nav nav-tabs"&gt;
+    ...
+  &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
     </div>
@@ -666,7 +666,7 @@
       <h4>Tabs on the left</h4>
       <p>Swap the class to put tabs on the left.</p>
       <div class="tabbable tabs-left">
-        <ul class="nav tabs">
+        <ul class="nav nav-tabs">
           <li class="active"><a href="#lA" data-toggle="tab">Section 1</a></li>
           <li><a href="#lB" data-toggle="tab">Section 2</a></li>
           <li><a href="#lC" data-toggle="tab">Section 3</a></li>
@@ -685,7 +685,7 @@
       </div> <!-- /tabbable -->
 <pre class="prettyprint linenums">
 &lt;div class="tabbable tabs-left"&gt;
-  &lt;ul class="nav tabs"&gt;
+  &lt;ul class="nav nav-tabs"&gt;
     ...
   &lt;/ul&gt;
   &lt;div class="tab-content"&gt;
@@ -698,7 +698,7 @@
       <h4>Tabs on the right</h4>
       <p>Swap the class to put tabs on the right.</p>
       <div class="tabbable tabs-right">
-        <ul class="nav tabs">
+        <ul class="nav nav-tabs">
           <li class="active"><a href="#rA" data-toggle="tab">Section 1</a></li>
           <li><a href="#rB" data-toggle="tab">Section 2</a></li>
           <li><a href="#rC" data-toggle="tab">Section 3</a></li>
@@ -717,7 +717,7 @@
       </div> <!-- /tabbable -->
 <pre class="prettyprint linenums">
 &lt;div class="tabbable tabs-right"&gt;
-  &lt;ul class="nav tabs"&gt;
+  &lt;ul class="nav nav-tabs"&gt;
     ...
   &lt;/ul&gt;
   &lt;div class="tab-content"&gt;
