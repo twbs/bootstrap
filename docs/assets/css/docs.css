@@ -564,14 +564,14 @@ form.well {
 .the-icons {
   margin-bottom: 18px;
 }
-.the-icons .i {
+.the-icons i {
   display: block;
   margin-bottom: 5px;
 }
-.the-icons .i:hover {
+.the-icons i:hover {
   background-color: rgba(255,0,0,.25);
 }
-.the-icons .i:after {
+.the-icons i:after {
   display: block;
   content: attr(class);
   font-style: normal;
