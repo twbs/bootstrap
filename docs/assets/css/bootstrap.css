@@ -2674,6 +2674,7 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .pagination .active a {
   color: #999999;
+  cursor: default;
 }
 .pagination .disabled a, .pagination .disabled a:hover {
   color: #999999;
