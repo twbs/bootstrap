@@ -202,22 +202,22 @@
     </div><!-- /col -->
     <div class="span6">
       <h2>{{_i}}Fluid layout{{/i}}</h2>
-      <p>{{_i}}<code>&lt;div class="fluid-container"&gt;</code> gives flexible page structure, min- and max-widths, and a left-hand sidebar. It's great for apps and docs.{{/i}}</p>
+      <p>{{_i}}<code>&lt;div class="container-fluid"&gt;</code> gives flexible page structure, min- and max-widths, and a left-hand sidebar. It's great for apps and docs.{{/i}}</p>
       <div class="mini-layout fluid">
         <div class="mini-layout-sidebar"></div>
         <div class="mini-layout-body"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;body&gt;
-  &lt;div class="fluid-container sidebar-left"&gt;
-    &lt;div class="fluid-sidebar"&gt;
-      ...
+&lt;div class="container-fluid"&gt;
+  &lt;div class="row-fluid"&gt;
+    &lt;div class="span2"&gt;
+      &lt;!--{{_i}}Sidebar content{{/i}}--&gt;
     &lt;/div&gt;
-    &lt;div class="fluid-content"&gt;
-      ...
+    &lt;div class="span10"&gt;
+      &lt;!--{{_i}}Body content{{/i}}--&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/body&gt;
+&lt;/div&gt;
 </pre>
     </div><!-- /col -->
   </div><!-- /row -->
