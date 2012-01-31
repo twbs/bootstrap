@@ -7,7 +7,6 @@
   {% if use_twipsy %}
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
-        console.log($('#{{ id_for_label }}'));
         $('#{{ id_for_label }}').parents('.input-wrapper').popover({
           content: function() { return '{{ help_text|safe }}' },
           offset: 24,
