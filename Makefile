@@ -1,47 +1,46 @@
-VERSION=1.4.0
-DATE=$(shell date)
-BOOTSTRAP = ./bootstrap.css
-BOOTSTRAP_MIN = ./bootstrap.min.css
-BOOTSTRAP_LESS = ./lib/bootstrap.less
+BOOTSTRAP = ./docs/assets/css/bootstrap.css
+BOOTSTRAP_LESS = ./less/bootstrap.less
+BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
+BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 LESS_COMPRESSOR ?= `which lessc`
-UGLIFY_JS ?= `which uglifyjs`
 WATCHR ?= `which watchr`
 
-build:
-	@@if test ! -z ${LESS_COMPRESSOR}; then \
-		sed -e 's/@VERSION/'"v${VERSION}"'/' -e 's/@DATE/'"${DATE}"'/' <${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp; \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP}; \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP_MIN} --compress; \
-		rm -f ${BOOTSTRAP_LESS}.tmp; \
-		echo "Bootstrap successfully built! - `date`"; \
-	else \
-		echo "You must have the LESS compiler installed in order to build Bootstrap."; \
-		echo "You can install it by running: npm install less -g"; \
-	fi
+#
+# BUILD DOCS
+#
 
-js/min:
-	@@if test ! -z ${UGLIFY_JS}; then \
-		mkdir -p js/min; \
-		uglifyjs -o js/min/bootstrap-alerts.min.js    js/bootstrap-alerts.js;\
-		uglifyjs -o js/min/bootstrap-buttons.min.js   js/bootstrap-buttons.js;\
-		uglifyjs -o js/min/bootstrap-dropdown.min.js  js/bootstrap-dropdown.js;\
-		uglifyjs -o js/min/bootstrap-modal.min.js     js/bootstrap-modal.js;\
-		uglifyjs -o js/min/bootstrap-popover.min.js   js/bootstrap-popover.js;\
-		uglifyjs -o js/min/bootstrap-scrollspy.min.js js/bootstrap-scrollspy.js;\
-		uglifyjs -o js/min/bootstrap-tabs.min.js      js/bootstrap-tabs.js;\
-		uglifyjs -o js/min/bootstrap-twipsy.min.js    js/bootstrap-twipsy.js;\
-	else \
-		echo "You must have the UGLIFYJS minifier installed in order to minify Bootstrap's js."; \
-		echo "You can install it by running: npm install uglify-js -g"; \
-	fi
+docs: bootstrap
+	zip -r docs/assets/bootstrap.zip bootstrap
+	rm -r bootstrap
+	lessc ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
+	node docs/build
+	cp img/* docs/assets/img/
+
+#
+# BUILD SIMPLE BOOTSTRAP DIRECTORY
+# lessc & uglifyjs are required
+#
+
+bootstrap:
+	mkdir -p bootstrap/img
+	mkdir -p bootstrap/css
+	mkdir -p bootstrap/js
+	cp img/* bootstrap/img/
+	lessc ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
+	lessc --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
+	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap.responsive
+	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap.min.responsive
+	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > bootstrap/js/bootstrap.js
+	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.js
+
+#
+# WATCH LESS FILES
+#
 
 watch:
-	@@if test ! -z ${WATCHR}; then \
-	  echo "Watching less files..."; \
-	  watchr -e "watch('lib/.*\.less') { system 'make' }"; \
-	else \
-		echo "You must have the watchr installed in order to watch Bootstrap less files."; \
-		echo "You can install it by running: gem install watchr"; \
-	fi
+	echo "Watching less files..."; \
+	watchr -e "watch('less/.*\.less') { system 'make' }"
 
-.PHONY: build watch
+
+.PHONY: dist docs watch

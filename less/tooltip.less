@@ -1,0 +1,35 @@
+// TOOLTIP
+// ------=
+
+.tooltip {
+  position: absolute;
+  z-index: @zindexTooltip;
+  display: block;
+  visibility: visible;
+  padding: 5px;
+  font-size: 11px;
+  .opacity(0);
+  &.in     { .opacity(80); }
+  &.top    { margin-top:  -2px; }
+  &.right  { margin-left:  2px; }
+  &.bottom { margin-top:   2px; }
+  &.left   { margin-left: -2px; }
+  &.top .tooltip-arrow    { #popoverArrow > .top(); }
+  &.left .tooltip-arrow   { #popoverArrow > .left(); }
+  &.bottom .tooltip-arrow { #popoverArrow > .bottom(); }
+  &.right .tooltip-arrow  { #popoverArrow > .right(); }
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: @white;
+  text-align: center;
+  text-decoration: none;
+  background-color: @black;
+  .border-radius(4px);
+}
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}

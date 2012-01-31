@@ -1,0 +1,35 @@
+// THUMBNAILS
+// ----------
+
+.thumbnails {
+  margin-left: -20px;
+  list-style: none;
+  .clearfix();
+}
+.thumbnails > li {
+  float: left;
+  margin: 0 0 @baseLineHeight 20px;
+}
+.thumbnail {
+  display: block;
+  padding: 4px;
+  line-height: 1;
+  border: 1px solid #ddd;
+  .border-radius(4px);
+  .box-shadow(0 1px 1px rgba(0,0,0,.075));
+}
+// Add a hover state for linked versions only
+a.thumbnail:hover {
+  border-color: @linkColor;
+  .box-shadow(0 1px 4px rgba(0,105,214,.25));
+}
+// Images and captions
+.thumbnail > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.thumbnail .caption {
+  padding: 9px;
+}
