@@ -61,6 +61,7 @@ hr.soften {
   position: relative;
 }
 .jumbotron h1 {
+  margin-bottom: 9px;
   font-size: 81px;
   letter-spacing: -1px;
   line-height: 1;
@@ -566,6 +567,13 @@ form.well {
   top: -1px;
   display: inline;
   margin-left: 6px;
+}
+
+/* Eaxmples page
+------------------------- */
+.bootstrap-examples .thumbnail {
+  margin-bottom: 9px;
+  background-color: #fff;
 }
 
 
