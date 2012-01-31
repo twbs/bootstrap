@@ -16,6 +16,8 @@ docs: bootstrap
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
 	node docs/build
 	cp img/* docs/assets/img/
+	cp js/*.js docs/assets/js/
+	cp js/tests/vendor/jquery.js docs/assets/js/
 
 #
 # BUILD SIMPLE BOOTSTRAP DIRECTORY
