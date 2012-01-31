@@ -138,7 +138,7 @@
                 <p>{{_i}}One fine body…{{/i}}</p>
               </div>
               <div class="modal-footer">
-                <a href="#" class="btn primary">{{_i}}Save changes{{/i}}</a>
+                <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
                 <a href="#" class="btn">{{_i}}Close{{/i}}</a>
               </div>
             </div>
@@ -163,11 +163,11 @@
               <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
             </div>
             <div class="modal-footer">
-              <a href="#" class="btn primary">{{_i}}Save changes{{/i}}</a>
+              <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
               <a href="#" class="btn" data-dismiss="modal" >{{_i}}Close{{/i}}</a>
             </div>
           </div>
-          <a data-toggle="modal" href="#myModal" class="btn primary large">{{_i}}Launch demo modal{{/i}}</a>
+          <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">{{_i}}Launch demo modal{{/i}}</a>
 
           <hr>
 
@@ -216,7 +216,7 @@
     &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn primary"&gt;{{_i}}Save changes{{/i}}&lt;/a&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/a&gt;
     &lt;a href="#" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -726,7 +726,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h2>{{_i}}Example hover popover{{/i}}</h2>
           <p>{{_i}}Hover over the button to trigger the popover.{{/i}}</p>
           <div class="well">
-            <a href="#" class="btn danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}hover for popover{{/i}}</a>
+            <a href="#" class="btn btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}hover for popover{{/i}}</a>
           </div>
           <hr>
           <h2>{{_i}}Using bootstrap-popover.js{{/i}}</h2>
@@ -841,7 +841,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
             <h4 class="alert-heading">{{_i}}Oh snap! You got an error!{{/i}}</h4>
             <p>{{_i}}Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.{{/i}}</p>
             <p>
-              <a class="btn danger small" href="#">{{_i}}Take this action{{/i}}</a> <a class="btn small" href="#">{{_i}}Or do this{{/i}}</a>
+              <a class="btn btn-danger small" href="#">{{_i}}Take this action{{/i}}</a> <a class="btn small" href="#">{{_i}}Or do this{{/i}}</a>
             </p>
           </div>
           <hr>
@@ -907,7 +907,7 @@ $('#my-alert').bind('closed', function () {
              <tr>
                <td>{{_i}}Stateful{{/i}}</td>
                <td>
-                  <button id="fat-btn" data-loading-text="loading..." class="btn primary">
+                  <button id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
                     {{_i}}Loading State{{/i}}
                   </button>
                 </td>
@@ -915,16 +915,16 @@ $('#my-alert').bind('closed', function () {
              <tr>
                <td>{{_i}}Single toggle{{/i}}</td>
                <td>
-                  <button class="btn primary" data-toggle="button">{{_i}}Single Toggle{{/i}}</button>
+                  <button class="btn btn-primary" data-toggle="button">{{_i}}Single Toggle{{/i}}</button>
                 </td>
              </tr>
              <tr>
                <td>{{_i}}Checkbox{{/i}}</td>
                <td>
                   <div class="btn-group" data-toggle="buttons-checkbox">
-                    <button class="btn primary">{{_i}}Left{{/i}}</button>
-                    <button class="btn primary">{{_i}}Middle{{/i}}</button>
-                    <button class="btn primary">{{_i}}Right{{/i}}</button>
+                    <button class="btn btn-primary">{{_i}}Left{{/i}}</button>
+                    <button class="btn btn-primary">{{_i}}Middle{{/i}}</button>
+                    <button class="btn btn-primary">{{_i}}Right{{/i}}</button>
                   </div>
                </td>
              </tr>
@@ -932,9 +932,9 @@ $('#my-alert').bind('closed', function () {
                <td>{{_i}}Radio{{/i}}</td>
                <td>
                   <div class="btn-group" data-toggle="buttons-radio">
-                    <button class="btn primary">{{_i}}Left{{/i}}</button>
-                    <button class="btn primary">{{_i}}Middle{{/i}}</button>
-                    <button class="btn primary">{{_i}}Right{{/i}}</button>
+                    <button class="btn btn-primary">{{_i}}Left{{/i}}</button>
+                    <button class="btn btn-primary">{{_i}}Middle{{/i}}</button>
+                    <button class="btn btn-primary">{{_i}}Right{{/i}}</button>
                   </div>
                </td>
              </tr>
@@ -1082,7 +1082,7 @@ $('#my-alert').bind('closed', function () {
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.{{/i}}</p>
           <pre class="prettyprint linenums">
-&lt;button class="btn danger" data-toggle="collapse" data-target="#demo"&gt;
+&lt;button class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
   {{_i}}simple collapsible{{/i}}
 &lt;/button&gt;
 

@@ -73,7 +73,7 @@ hr.soften {
   line-height: 36px;
   color: #333;
 }
-.jumbotron .btn {
+.jumbotron .btn-large {
   font-size: 20px;
   font-weight: normal;
   padding: 14px 24px;
@@ -440,7 +440,7 @@ hr.soften {
 
 /* Giant download button */
 .download-btn {
-  margin: 36px 0 108px.i;
+  margin: 36px 0 108px;
 }
 .download p,
 .download h4 {
@@ -455,7 +455,7 @@ hr.soften {
 .download p {
   margin-bottom: 18px;
 }
-.btn.xlarge {
+.download-btn .btn {
   display: block;
   width: auto;
   padding: 19px 24px;

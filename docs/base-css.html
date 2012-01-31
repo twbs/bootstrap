@@ -833,11 +833,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <td>Stacked, left-aligned labels over controls</td>
       </tr>
       <tr>
-        <th>Horizontal</th>
-        <td><code>.form-horizontal</code></td>
-        <td>Float left, right-aligned labels on same line as controls</td>
-      </tr>
-      <tr>
         <th>Inline</th>
         <td><code>.form-inline</code></td>
         <td>Left-aligned label and inline-block controls for compact style</td>
@@ -846,6 +841,11 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <th>Search</th>
         <td><code>.form-search</code></td>
         <td>Extra-rounded text input for a typical search aesthetic</td>
+      </tr>
+      <tr>
+        <th>Horizontal</th>
+        <td><code>.form-horizontal</code></td>
+        <td>Float left, right-aligned labels on same line as controls</td>
       </tr>
     </tbody>
   </table>
@@ -955,7 +955,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
             <button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
@@ -1048,7 +1048,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
             <button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
@@ -1172,7 +1172,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
             <button type="reset" class="btn">Cancel</button>
           </div>
         </fieldset>
@@ -1215,28 +1215,28 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <td>Standard gray button with gradient</td>
       </tr>
       <tr>
-        <td><a class="btn primary" href="#">Primary</a></td>
-        <td><code>.primary</code></td>
+        <td><a class="btn btn-primary" href="#">Primary</a></td>
+        <td><code>.btn-primary</code></td>
         <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
       </tr>
       <tr>
-        <td><a class="btn info" href="#">Info</a></td>
-        <td><code>.info</code></td>
+        <td><a class="btn btn-info" href="#">Info</a></td>
+        <td><code>.btn-info</code></td>
         <td>Used as an alternate to the default styles</td>
       </tr>
       <tr>
-        <td><a class="btn success" href="#">Success</a></td>
-        <td><code>.success</code></td>
+        <td><a class="btn btn-success" href="#">Success</a></td>
+        <td><code>.btn-success</code></td>
         <td>Indicates a successful or positive action</td>
       </tr>
       <tr>
-        <td><a class="btn warning" href="#">Warning</a></td>
-        <td><code>.warning</code></td>
+        <td><a class="btn btn-warning" href="#">Warning</a></td>
+        <td><code>.btn-warning</code></td>
         <td>Indicates caution should be taken with this action</td>
       </tr>
       <tr>
-        <td><a class="btn danger" href="#">Danger</a></td>
-        <td><code>.danger</code></td>
+        <td><a class="btn btn-danger" href="#">Danger</a></td>
+        <td><code>.btn-danger</code></td>
         <td>Indicates a dangerous or potentially negative action</td>
       </tr>
     </tbody>
@@ -1261,24 +1261,24 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <h3>Multiple sizes</h3>
       <p>Fancy larger or smaller buttons? Have at it!</p>
       <p>
-        <a href="#" class="btn large primary">Primary action</a>
-        <a href="#" class="btn large">Action</a>
+        <a href="#" class="btn btn-large btn-primary">Primary action</a>
+        <a href="#" class="btn btn-large">Action</a>
       </p>
       <p>
-        <a href="#" class="btn small primary">Primary action</a>
-        <a href="#" class="btn small">Action</a>
+        <a href="#" class="btn btn-small btn-primary">Primary action</a>
+        <a href="#" class="btn btn-small">Action</a>
       </p>
     </div>
     <div class="span4">
       <h3>Disabled state</h3>
-      <p>For disabled buttons, use <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+      <p>For disabled buttons, use <code>.btn-disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
       <p>
-        <a href="#" class="btn large primary disabled">Primary action</a>
-        <a href="#" class="btn large disabled">Action</a>
+        <a href="#" class="btn btn-large btn-primary btn-disabled">Primary action</a>
+        <a href="#" class="btn btn-large btn-disabled">Action</a>
       </p>
       <p>
-        <button class="btn large primary disabled" disabled="disabled">Primary action</button>
-        <button class="btn large" disabled>Action</button>
+        <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary action</button>
+        <button class="btn btn-large" disabled>Action</button>
       </p>
     </div>
     <div class="span4">
@@ -1491,8 +1491,8 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <a class="btn" href="#"><i class="icon align-justify"></i></a>
         </div>
         <div class="btn-group">
-          <a class="btn primary" href="#"><i class="icon white user"></i> User</a>
-          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <a class="btn btn-primary" href="#"><i class="icon white user"></i> User</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#"><i class="icon pencil"></i> Edit</a></li>
             <li><a href="#"><i class="icon trash"></i> Delete</a></li>
@@ -1504,13 +1504,13 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       </div>
       <p>
         <a class="btn" href="#"><i class="icon refresh"></i> Refresh</a>
-        <a class="btn success" href="#"><i class="icon white shopping-cart"></i> Checkout</a>
-        <a class="btn danger" href="#"><i class="icon white trash"></i> Delete</a>
+        <a class="btn btn-success" href="#"><i class="icon white shopping-cart"></i> Checkout</a>
+        <a class="btn btn-danger" href="#"><i class="icon white trash"></i> Delete</a>
       </p>
       <p>
-        <a class="btn large" href="#"><i class="icon comment"></i> Comment</a>
-        <a class="btn small" href="#"><i class="icon cog"></i> Settings</a>
-        <a class="btn small info" href="#"><i class="icon white info-sign"></i> More Info</a>
+        <a class="btn btn-large" href="#"><i class="icon comment"></i> Comment</a>
+        <a class="btn btn-small" href="#"><i class="icon cog"></i> Settings</a>
+        <a class="btn btn-small btn-info" href="#"><i class="icon white info-sign"></i> More Info</a>
       </p>
     </div>
     <div class="span4">
