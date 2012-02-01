@@ -27,6 +27,7 @@
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
+    this.onselect = this.options.onselect || this.onselect
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -38,9 +39,13 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
-      this.$element.val(val)
+      var val = this.$menu.find('.active').data('data-value')
+      this.onselect(val)
       return this.hide()
+    }
+    
+  , onselect: function (item) {
+      this.$element.val(item)
     }
 
   , show: function () {
@@ -117,7 +122,7 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).data('data-value', item)
         i.find('a').html(that.highlighter(item))
         return i[0]
       })
