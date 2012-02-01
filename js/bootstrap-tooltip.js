@@ -197,12 +197,12 @@
         var elementWidth, elementHeight;
         
         if ( e.nodeName == 'svg' ) {
-          var rect = this.$element[0].getBoundingClientRect();
+          var rect = e.getBoundingClientRect();
           elementWidth = rect.width;
           elementHeight = rect.height;
         } else {
-          elementWidth = this.$element[0].offsetWidth;
-          elementHeight = this.$element[0].offsetHeight;
+          elementWidth = e.offsetWidth;
+          elementHeight = e.offsetHeight;
         }
 
       return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
