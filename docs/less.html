@@ -78,7 +78,7 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <h1>Using LESS with Bootstrap</h1>
-  <p class="lead">Customize and extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap's CSS.</p>
+  <p class="lead">Customize and extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap’s CSS.</p>
   <div class="subnav">
     <ul class="nav nav-pills">
       <li><a href="#builtWith">Built with Less</a></li>
@@ -100,10 +100,10 @@
   <div class="row">
     <div class="span4">
       <h3>Why LESS?</h3>
-      <p>Bootstrap is made with LESS at it's core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
+      <p>Bootstrap is made with LESS at it’s core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
     </div>
     <div class="span4">
-      <h3>What's included?</h3>
+      <h3>What’s included?</h3>
       <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
     </div>
     <div class="span4">
@@ -119,7 +119,7 @@
     </div>
     <div class="span4">
       <h3><a href="#mixins">Mixins</a></h3>
-      <p>Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.</p>
+      <p>Those three border-radius declarations you need to make in regular ol’ CSS? Now they’re down to one line with the help of mixins, snippets of code you can reuse anywhere.</p>
     </div>
     <div class="span4">
       <h3>Operations</h3>
@@ -406,7 +406,7 @@
   <div class="row">
     <div class="span4">
       <h3>Basic mixins</h3>
-      <p>A basic mixin is essentially an include or a partial for a snippet of CSS. They're written just like a CSS class and can be called anywhere.</p>
+      <p>A basic mixin is essentially an include or a partial for a snippet of CSS. They’re written just like a CSS class and can be called anywhere.</p>
 <pre class="prettyprint linenums">
 .element {
   .clearfix();
@@ -424,7 +424,7 @@
     </div><!-- /span4 -->
     <div class="span4">
       <h3>Easily add your own</h3>
-      <p>Nearly all of Bootstrap's mixins are stored in mixins.less, a wonderful utility .less file that enables you to use a mixin in any of the .less files in the toolkit.</p>
+      <p>Nearly all of Bootstrap’s mixins are stored in mixins.less, a wonderful utility .less file that enables you to use a mixin in any of the .less files in the toolkit.</p>
       <p>So, go ahead and use the existing ones or feel free to add your own as you need.</p>
     </div><!-- /span4 -->
   </div><!-- /row -->
@@ -605,7 +605,7 @@
       <tr>
         <td><code>.scale()</code></td>
         <td><code>@ratio</code></td>
-        <td>Scale an element to <em>n</em> times it's original size</td>
+        <td>Scale an element to <em>n</em> times it’s original size</td>
       </tr>
       <tr>
         <td><code>.translate()</code></td>
@@ -712,7 +712,7 @@
     <h1>Compiling Bootstrap with LESS</h1>
   </div>
   <div class="alert alert-info">
-    <strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.
+    <strong>Note:</strong> If you’re submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.
   </div>
   <h2>Tools for compiling</h2>
   <div class="row">
@@ -720,14 +720,14 @@
       <h3>Node with makefile</h3>
       <p>Install the LESS command line compiler with npm by running the following command:</p>
       <pre>$ npm install less</pre>
-      <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
-      <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
+      <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you’re all set.</p>
+      <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn’t required, just a convenience method).</p>
     </div><!-- /span4 -->
     <div class="span4">
       <h3>Command line</h3>
       <p>Install the LESS command line tool via Node and run the following command:</p>
         <pre>$ lessc ./lib/bootstrap.less > bootstrap.css</pre>
-      <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
+      <p>Be sure to include <code>--compress</code> in that command if you’re trying to save some bytes!</p>
     </div><!-- /span4 -->
     <div class="span4">
       <h3>Javascript</h3>
