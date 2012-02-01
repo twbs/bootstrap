@@ -196,7 +196,7 @@
 
         var elementWidth, elementHeight;
         
-        if ( e.nodeName == 'svg' ) {
+        if ( e.getBoundingClientRect != undefined ) {
           var rect = e.getBoundingClientRect();
           elementWidth = rect.width;
           elementHeight = rect.height;
