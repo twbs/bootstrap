@@ -182,6 +182,7 @@
             <fileset dir="./${dir.source}/">
         <include name="**/${dir.js}/*.js"/>
         <exclude name="**/*.min.js"/>
+        <exclude name="${dir.intermediate}/**/*.js"/>
         <exclude name="**/${dir.js.libs}/"/>
         <exclude name="**/${dir.publish}/"/>
           </fileset>
@@ -199,8 +200,9 @@
     <target name="jshint">
       <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
             <fileset dir="./${dir.source}/">
-        <include name="**/${dir.js}/*.js"/>
+         <include name="**/${dir.js}/*.js"/>
         <exclude name="**/*.min.js"/>
+        <exclude name="${dir.intermediate}/**/*.js"/>
         <exclude name="**/${dir.js.libs}/"/>
         <exclude name="**/${dir.publish}/"/>
           </fileset>
