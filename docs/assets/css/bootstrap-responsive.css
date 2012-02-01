@@ -12,6 +12,9 @@
   visibility: hidden;
 }
 @media (max-width: 480px) {
+  .nav-collapse {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
   .page-header h1 small {
     display: block;
     line-height: 18px;
@@ -99,7 +102,7 @@
     margin: 0;
   }
 }
-@media (min-width: 768px) and (max-width: 940px) {
+@media (min-width: 768px) and (max-width: 980px) {
   .row {
     margin-left: -20px;
     *zoom: 1;
@@ -275,7 +278,7 @@
     width: 714px;
   }
 }
-@media (max-width: 940px) {
+@media (max-width: 980px) {
   body {
     padding-top: 0;
   }
@@ -285,7 +288,6 @@
   }
   .navbar-fixed-top .navbar-inner {
     padding: 5px;
-    background-image: none;
   }
   .navbar .container {
     width: auto;
@@ -376,7 +378,7 @@
     height: 0;
   }
 }
-@media (min-width: 940px) {
+@media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
   }
