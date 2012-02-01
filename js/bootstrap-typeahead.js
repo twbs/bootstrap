@@ -29,6 +29,7 @@
     this.highlighter = this.options.highlighter || this.highlighter
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
+    this.onSelect = this.options.onSelect || this.onSelect
     this.shown = false
     this.listen()
   }
@@ -36,10 +37,13 @@
   Typeahead.prototype = {
 
     constructor: Typeahead
+  , onSelect: function() {
 
+  }
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
       this.$element.val(val)
+      this.onSelect(val);
       return this.hide()
     }
 
@@ -75,9 +79,20 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
-      })
+      var isFunction = function (object) {
+        var getClass = {}.toString;
+        return object && getClass.call(object) == "[object Function]";
+      }
+
+      if(isFunction(this.source)) {
+        // run source and get items
+        items = this.source(this.query);
+
+      } else { // presume an array
+        items = $.grep(this.source, function (item) {
+          if (that.matcher(item)) return item
+        })
+      }
 
       items = this.sorter(items)
 
