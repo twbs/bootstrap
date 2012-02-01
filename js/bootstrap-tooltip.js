@@ -192,7 +192,7 @@
     }
 
   , getPosition: function (inside) {
-        e = this.$element[0];
+        var e = this.$element[0];
 
         var elementWidth, elementHeight;
         
