@@ -192,9 +192,22 @@
     }
 
   , getPosition: function (inside) {
+        e = this.$element[0];
+
+        var elementWidth, elementHeight;
+        
+        if ( e.nodeName == 'svg' ) {
+          var rect = this.$element[0].getBoundingClientRect();
+          elementWidth = rect.width;
+          elementHeight = rect.height;
+        } else {
+          elementWidth = this.$element[0].offsetWidth;
+          elementHeight = this.$element[0].offsetHeight;
+        }
+
       return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
-        width: this.$element[0].offsetWidth
-      , height: this.$element[0].offsetHeight
+        width: elementWidth
+      , height: elementHeight
       })
     }
 
