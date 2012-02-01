@@ -33,6 +33,8 @@
 
     constructor: Tooltip
 
+  , eventNamespace: '.tooltip'
+
   , init: function ( type, element, options ) {
       var eventIn
         , eventOut
@@ -45,8 +47,8 @@
       if (this.options.trigger != 'manual') {
         eventIn  = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
         eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
-        this.$element.on(eventIn, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut, this.options.selector, $.proxy(this.leave, this))
+        this.$element.on(eventIn + this.eventNamespace, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on(eventOut + this.eventNamespace, this.options.selector, $.proxy(this.leave, this))
       }
 
       this.options.selector ?
@@ -215,11 +217,23 @@
       return this.$tip = this.$tip || $(this.options.template)
     }
 
+  , destroy: function () {
+      var $e = this.$element
+        , title;
+
+      if (typeof(title = $e.attr('data-original-title')) == 'string' && title) {
+        $e.attr('title', title)
+      }
+      $e.off(this.eventNamespace).removeAttr('data-original-title')
+        
+      this.hide()
+      this.$element = null
+      this.options = null
+    }
+
   , validate: function () {
       if (!this.$element[0].parentNode) {
-        this.hide()
-        this.$element = null
-        this.options = null
+        this.destroy()
       }
     }
 
@@ -251,7 +265,12 @@
         , data = $this.data('tooltip')
         , options = typeof option == 'object' && option
       if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option == 'string') {
+         data[option]()
+
+         if (option == 'destroy')
+           $this.removeData('tooltip')
+      }
     })
   }
 
