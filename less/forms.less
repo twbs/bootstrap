@@ -22,7 +22,6 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @baseLineHeight * 1.5;
   font-size: @baseFontSize * 1.5;
   line-height: @baseLineHeight * 2;
   color: @grayDark;
@@ -483,15 +482,18 @@ select:focus:required:invalid {
   margin-bottom: @baseLineHeight / 2;
 }
 
+form {
+  // Legend collapses margin on webkit, so set margin on first control-group
+  legend + .control-group {
+    margin-top: @baseLineHeight * 1.5;
+    -webkit-margin-top-collapse: separate;
+  }
+}
+
 // Horizontal-specific styles
 // --------------------------
 
 .form-horizontal {
-  // Legend collapses margin, so we're relegated to padding
-  legend + .control-group {
-    margin-top: @baseLineHeight;
-    -webkit-margin-top-collapse: separate;
-  }
   // Increase spacing between groups
   .control-group {
     margin-bottom: @baseLineHeight;
