@@ -135,7 +135,7 @@
       , url: 'http://bootstrap.herokuapp.com'
       , dataType: 'jsonpi'
       , params: {
-          branch: '2.0-wip'
+          branch: 'v2.0.0'
         , js: js
         , css: css
         , vars: vars
