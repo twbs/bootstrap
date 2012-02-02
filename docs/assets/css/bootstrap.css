@@ -570,6 +570,7 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
   border-radius: 0;
 }
 input[type="file"] {
+  width: auto;
   padding: initial;
   line-height: initial;
   border: initial;
