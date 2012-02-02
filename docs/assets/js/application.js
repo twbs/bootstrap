@@ -135,7 +135,7 @@
       , url: 'http://bootstrap.herokuapp.com'
       , dataType: 'jsonpi'
       , params: {
-          branch: 'master'
+          branch: 'v2.0.0'
         , js: js
         , css: css
         , vars: vars
