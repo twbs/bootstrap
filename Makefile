@@ -10,6 +10,7 @@ WATCHR ?= `which watchr`
 #
 
 docs: bootstrap
+	rm docs/assets/bootstrap.zip
 	zip -r docs/assets/bootstrap.zip bootstrap
 	rm -r bootstrap
 	lessc ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
@@ -42,6 +43,7 @@ bootstrap:
 #
 
 gh-pages: docs
+	rm -f ../bootstrap-gh-pages/assets/bootstrap.zip
 	node docs/build production
 	cp -r docs/* ../bootstrap-gh-pages
 
