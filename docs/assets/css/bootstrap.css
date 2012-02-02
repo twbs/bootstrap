@@ -565,7 +565,9 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
   line-height: normal;
   border: 0;
   cursor: pointer;
-  border-radius: 0 \0/;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 input[type="file"] {
   padding: initial;

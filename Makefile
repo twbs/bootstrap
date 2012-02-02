@@ -38,11 +38,16 @@ bootstrap:
 	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.js
 
 #
-# WATCH LESS FILES
+# MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
 #
 
-gh-pages:
+gh-pages: docs
+	node docs/build production
 	cp -r docs/* ../bootstrap-gh-pages
+
+#
+# WATCH LESS FILES
+#
 
 watch:
 	echo "Watching less files..."; \
