@@ -202,7 +202,7 @@
     float: left;
     margin-left: 2.762430939%;
   }
-  .row-fluid > [class*="span"]:first-child {
+  .row-fluid > [class*="span"]:first-child:not([class*="offset"]) {
     margin-left: 0;
   }
   .row-fluid .span1 {
@@ -240,6 +240,39 @@
   }
   .row-fluid .span12 {
     width: 99.999999993%;
+  }
+  .row-fluid .offset1 {
+    margin-left: 11.32596685%;
+  }
+  .row-fluid .offset2 {
+    margin-left: 19.889502761%;
+  }
+  .row-fluid .offset3 {
+    margin-left: 28.453038671999998%;
+  }
+  .row-fluid .offset4 {
+    margin-left: 37.016574583%;
+  }
+  .row-fluid .offset5 {
+    margin-left: 45.580110494%;
+  }
+  .row-fluid .offset6 {
+    margin-left: 54.143646405000005%;
+  }
+  .row-fluid .offset7 {
+    margin-left: 62.70718231600001%;
+  }
+  .row-fluid .offset8 {
+    margin-left: 71.270718227%;
+  }
+  .row-fluid .offset9 {
+    margin-left: 79.83425413799999%;
+  }
+  .row-fluid .offset10 {
+    margin-left: 88.39779004900001%;
+  }
+  .row-fluid .offset11 {
+    margin-left: 96.96132596%;
   }
   input.span1, textarea.span1, .uneditable-input.span1 {
     width: 32px;
@@ -483,7 +516,7 @@
     float: left;
     margin-left: 2.564102564%;
   }
-  .row-fluid > [class*="span"]:first-child {
+  .row-fluid > [class*="span"]:first-child:not([class*="offset"]) {
     margin-left: 0;
   }
   .row-fluid .span1 {
@@ -521,6 +554,39 @@
   }
   .row-fluid .span12 {
     width: 100%;
+  }
+  .row-fluid .offset1 {
+    margin-left: 11.111111111%;
+  }
+  .row-fluid .offset2 {
+    margin-left: 19.658119658%;
+  }
+  .row-fluid .offset3 {
+    margin-left: 28.205128205%;
+  }
+  .row-fluid .offset4 {
+    margin-left: 36.752136752%;
+  }
+  .row-fluid .offset5 {
+    margin-left: 45.299145299%;
+  }
+  .row-fluid .offset6 {
+    margin-left: 53.846153846%;
+  }
+  .row-fluid .offset7 {
+    margin-left: 62.393162393%;
+  }
+  .row-fluid .offset8 {
+    margin-left: 70.94017094000002%;
+  }
+  .row-fluid .offset9 {
+    margin-left: 79.487179487%;
+  }
+  .row-fluid .offset10 {
+    margin-left: 88.03418803400001%;
+  }
+  .row-fluid .offset11 {
+    margin-left: 96.58119658100001%;
   }
   input.span1, textarea.span1, .uneditable-input.span1 {
     width: 60px;

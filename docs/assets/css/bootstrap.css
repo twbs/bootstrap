@@ -209,7 +209,7 @@ a:hover {
   float: left;
   margin-left: 2.127659574%;
 }
-.row-fluid > [class*="span"]:first-child {
+.row-fluid > [class*="span"]:first-child:not([class*="offset"]) {
   margin-left: 0;
 }
 .row-fluid .span1 {
@@ -247,6 +247,39 @@ a:hover {
 }
 .row-fluid .span12 {
   width: 99.99999998999999%;
+}
+.row-fluid .offset1 {
+  margin-left: 10.638297870999999%;
+}
+.row-fluid .offset2 {
+  margin-left: 19.148936168%;
+}
+.row-fluid .offset3 {
+  margin-left: 27.659574465%;
+}
+.row-fluid .offset4 {
+  margin-left: 36.170212762%;
+}
+.row-fluid .offset5 {
+  margin-left: 44.680851059%;
+}
+.row-fluid .offset6 {
+  margin-left: 53.19148935599999%;
+}
+.row-fluid .offset7 {
+  margin-left: 61.702127653%;
+}
+.row-fluid .offset8 {
+  margin-left: 70.21276594999999%;
+}
+.row-fluid .offset9 {
+  margin-left: 78.723404247%;
+}
+.row-fluid .offset10 {
+  margin-left: 87.23404254399999%;
+}
+.row-fluid .offset11 {
+  margin-left: 95.744680841%;
 }
 .container {
   width: 940px;
