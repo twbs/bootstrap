@@ -83,6 +83,70 @@
   .carousel-caption {
     position: static;
   }
+  .table {
+    display: block;
+    width: 100%;
+  }
+  .table caption {
+    display: block;
+  }
+  .table thead {
+    display: block;
+    float: left;
+  }
+  .table thead tr {
+    display: block;
+  }
+  .table tbody {
+    display: block;
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .table tbody tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .table th {
+    display: block;
+  }
+  .table td {
+    display: block;
+    border-top: 0;
+    border-left: 1px solid #ddd;
+  }
+  .table-bordered tr + th,
+  .table-bordered td + td,
+  .table-bordered th + td,
+  .table-bordered td + th {
+    border-top: 1px solid #ddd;
+  }
+  .table-bordered thead:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child td {
+    border-left: 0;
+    border-top: 1px solid #ddd;
+  }
+  .table-bordered thead:first-child tr:first-child th:first-child, .table-bordered tbody:first-child tr:first-child th:first-child, .table-bordered tbody:first-child tr:first-child td:first-child {
+    border-top: 0;
+    -webkit-border-radius: 4px 0 0 0;
+    -moz-border-radius: 4px 0 0 0;
+    border-radius: 4px 0 0 0;
+  }
+  .table-bordered thead:first-child tr:first-child th:last-child, .table-bordered tbody:first-child tr:first-child th:last-child, .table-bordered tbody:first-child tr:first-child td:last-child {
+    -webkit-border-radius: 0 0 4px 0;
+    -moz-border-radius: 0 0 4px 0;
+    border-radius: 0 0 4px 0;
+  }
+  .table-bordered thead:last-child tr:last-child th:last-child, .table-bordered tbody:last-child tr:last-child th:last-child, .table-bordered tbody:last-child tr:last-child td:last-child {
+    -webkit-border-radius: 0 0 0 4px;
+    -moz-border-radius: 0 0 0 4px;
+    border-radius: 0 0 0 4px;
+  }
+  .table-bordered thead:last-child tr:last-child th:first-child, .table-bordered tbody:last-child tr:last-child th:first-child, .table-bordered tbody:last-child tr:last-child td:first-child {
+    -webkit-border-radius: 0 0 0 0;
+    -moz-border-radius: 0 0 0 0;
+    border-radius: 0 0 0 0;
+  }
 }
 @media (max-width: 768px) {
   .container {

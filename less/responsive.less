@@ -116,6 +116,76 @@
     position: static;
   }
 
+  // Tables
+  .table {
+    display: block;
+    width: 100%;
+    caption {
+      display: block;
+    }
+    thead {
+      display: block;
+      float: left;
+      tr {
+        display: block;
+      }
+    }
+    tbody {
+      display: block;
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap;
+      tr {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    // Cells
+    th {
+      display: block;
+    }
+    td {
+      display: block;
+      border-top: 0;
+      border-left: 1px solid #ddd;
+    }
+  }
+  // BORDERED VERSION
+  // ----------------
+
+  .table-bordered {
+    tr + th,
+    td + td,
+    th + td,
+    td + th {
+      border-top: 1px solid #ddd;
+    }
+    thead:first-child tr:first-child th,
+    tbody:first-child tr:first-child th,
+    tbody:first-child tr:first-child td {
+      border-left: 0;
+      border-top: 1px solid #ddd;
+      &:first-child {
+        border-top: 0;
+        .border-radius(4px 0 0 0);
+      }
+      &:last-child {
+        .border-radius(0 0 4px 0);
+      }
+    }
+    thead:last-child tr:last-child th,
+    tbody:last-child tr:last-child th,
+    tbody:last-child tr:last-child td {
+      &:last-child {
+        .border-radius(0 0 0 4px);
+      }
+      &:first-child {
+        .border-radius(0 0 0 0);
+      }
+    }
+  }
+
 }
 
 
