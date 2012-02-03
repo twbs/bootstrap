@@ -16,6 +16,8 @@ docs: bootstrap
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
 	node docs/build
 	cp img/* docs/assets/img/
+	cp js/*.js docs/assets/js/
+	cp js/tests/vendor/jquery.js docs/assets/js/
 
 #
 # BUILD SIMPLE BOOTSTRAP DIRECTORY
@@ -38,9 +40,12 @@ bootstrap:
 # WATCH LESS FILES
 #
 
+gh-pages:
+	cp -r docs/* ../bootstrap-gh-pages
+
 watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 
-.PHONY: dist docs watch
+.PHONY: dist docs watch gh-pages
