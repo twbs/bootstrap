@@ -17,6 +17,70 @@
  * limitations under the License.
  * ========================================================= */
 
+/* Borrowed from jquery ui
+ * ======================= */
+
+function focusable( element, isTabIndexNotNaN ) {
+  var nodeName = element.nodeName.toLowerCase();
+  if ( "area" === nodeName ) {
+    var map = element.parentNode,
+      mapName = map.name,
+      img;
+    if ( !element.href || !mapName || map.nodeName.toLowerCase() !== "map" ) {
+      return false;
+    }
+    img = $( "img[usemap=#" + mapName + "]" )[0];
+    return !!img && visible( img );
+  }
+  return ( /input|select|textarea|button|object/.test( nodeName )
+    ? !element.disabled
+    : "a" == nodeName
+      ? element.href || isTabIndexNotNaN
+      : isTabIndexNotNaN)
+    // the element and all of its ancestors must be visible
+    && visible( element );
+}
+
+function visible( element ) {
+  return !$( element ).parents().andSelf().filter(function() {
+    return $.curCSS( this, "visibility" ) === "hidden" ||
+      $.expr.filters.hidden( this );
+  }).length;
+}
+
+$.fn.extend({
+  _focus: $.fn.focus,
+  focus: function( delay, fn ) {
+    return typeof delay === "number" ?
+      this.each(function() {
+        var elem = this;
+        setTimeout(function() {
+          $( elem ).focus();
+          if ( fn ) {
+            fn.call( elem );
+          }
+        }, delay );
+      }) :
+      this._focus.apply( this, arguments );
+  }
+});
+
+$.extend( $.expr[ ":" ], {
+  data: function( elem, i, match ) {
+    return !!$.data( elem, match[ 3 ] );
+  },
+
+  focusable: function( element ) {
+    return focusable( element, !isNaN( $.attr( element, "tabindex" ) ) );
+  },
+
+  tabbable: function( element ) {
+    var tabIndex = $.attr( element, "tabindex" ),
+      isTabIndexNaN = isNaN( tabIndex );
+    return ( isTabIndexNaN || tabIndex >= 0 ) && focusable( element, !isTabIndexNaN );
+  }
+});
+
 
 !function( $ ){
 
@@ -65,12 +129,30 @@
           that.$element.addClass('in')
 
           transition ?
-            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
+            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown'); setFocus.call(that) }) :
             that.$element.trigger('shown')
-
+            setFocus.call(that)
         })
-      }
 
+        // prevent tabbing out of the modal
+        this.$element.bind( "keydown", function( event ) {
+          if ( event.keyCode !== 9 ) {
+            return;
+          }
+
+          var tabbables = $( ":tabbable", this ),
+            first = tabbables.filter( ":first" ),
+            last  = tabbables.filter( ":last" );
+
+          if ( event.target === last[0] && !event.shiftKey ) {
+            first.focus( 1 );
+            return false;
+          } else if ( event.target === first[0] && event.shiftKey ) {
+            last.focus( 1 );
+            return false;
+          }
+        });
+      }
     , hide: function ( e ) {
         e && e.preventDefault()
 
@@ -97,6 +179,22 @@
 
  /* MODAL PRIVATE METHODS
   * ===================== */
+
+  function setFocus() {
+    // set focus to the first form input field...
+    var focal = this.$element.find( "input,select,textarea,button,object" );
+
+    // ...or to the first link that does not look like a close button
+    if ( !focal.length ) {
+      focal = this.$element.find( "a:not([data-toggle=modal])" );
+
+      // ...or heck, to the modal div itself
+      if ( !focal.length ) {
+        focal = this.$element;
+      }
+    }
+    focal.eq( 0 ).focus();
+  }
 
   function hideWithTransition() {
     var that = this
