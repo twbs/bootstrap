@@ -1,29 +1,66 @@
 /*!
- * Bootstrap v1.4.0
+ * Bootstrap v2.0.0
  *
- * Copyright 2011 Twitter, Inc
+ * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  *
- * Converted to Sass by @johnwlong.
+ * Converted to Sass by @johnwlong / @m5o.
  *
  * Date: @DATE
  */
 
+// Core variables and mixins
+@import "variables.scss"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.scss";
+
 // CSS Reset
 @import "reset.scss";
 
-// Core
-@import "variables.scss";
-@import "mixins.scss";
-
 // Grid system and page structure
 @import "scaffolding.scss";
+@import "grid.scss";
+@import "layouts.scss";
 
-// Styled patterns and elements
+// Base CSS
 @import "type.scss";
+@import "code.scss";
 @import "forms.scss";
 @import "tables.scss";
-@import "patterns.scss";
+
+// Components: common
+@import "sprites.scss";
+@import "dropdowns.scss";
+@import "wells.scss";
+@import "component-animations.scss";
+@import "close.scss";
+
+// Components: Buttons & Alerts
+@import "buttons.scss";
+@import "button-groups.scss";
+@import "alerts.scss"; // Note: alerts share common CSS with buttons and thus have styles in buttons.scss
+
+// Components: Nav
+@import "navs.scss";
+@import "navbar.scss";
+@import "breadcrumbs.scss";
+@import "pagination.scss";
+@import "pager.scss";
+
+// Components: Popovers
+@import "modals.scss";
+@import "tooltip.scss";
+@import "popovers.scss";
+
+// Components: Misc
+@import "thumbnails.scss";
+@import "labels.scss";
+@import "progress-bars.scss";
+@import "accordion.scss";
+@import "carousel.scss";
+@import "hero-unit.scss";
+
+// Utility classes
+@import "utilities.scss"; // Has to be last to override when necessary

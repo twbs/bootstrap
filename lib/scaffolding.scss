@@ -1,108 +1,29 @@
-/*
- * Scaffolding.scss
- * Basic and global styles for generating a grid system, structural layout, and page templates
- * ------------------------------------------------------------------------------------------- */
+// Scaffolding
+// Basic and global styles for generating a grid system, structural layout, and page templates
+// -------------------------------------------------------------------------------------------
 
 
 // STRUCTURAL LAYOUT
 // -----------------
 
 body {
-  background-color: $white;
   margin: 0;
-  @include sans-serif-font(normal,$basefont,$baseline);
-  color: $grayDark;
-}
-
-// Container (centered, fixed-width layouts)
-.container {
-  @include fixed-container();
-}
-
-// Fluid layouts (left aligned, with sidebar, min- & max-width content)
-.container-fluid {
-  position: relative;
-  min-width: 940px;
-  padding-left: 20px;
-  padding-right: 20px;
-  @include clearfix();
-  > .sidebar {
-    position: absolute;
-    top: 0;
-    left: 20px;
-    width: 220px;
-  }
-  // TODO in v2: rename this and .popover .content to be more specific
-  > .content {
-    margin-left: 240px;
-  }
+  font-family: $baseFontFamily;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  color: $textColor;
+  background-color: $white;
 }
 
 
-// BASE STYLES
-// -----------
+// LINKS
+// -----
 
-// Links
 a {
   color: $linkColor;
   text-decoration: none;
-  line-height: inherit;
-  font-weight: inherit;
-  &:hover {
-    color: $linkColorHover;
-    text-decoration: underline;
-  }
 }
-
-// Quick floats
-.pull-right {
-  float: right;
-}
-.pull-left {
-  float: left;
-}
-
-// Toggling content
-.hide {
-  display: none;
-}
-.show {
-  display: block;
-}
-
-
-// GRID SYSTEM
-// -----------
-// To customize the grid system, bring up the variables.scss file and change the column count, size, and gutter there
-
-.row {
-  @include clearfix();
-  margin-left: -1 * $gridGutterWidth;
-}
-
-// Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
-// Credit to @dhg for the idea
-.row > [class*="span"] {
-  @include gridColumn();
-}
-
-// Default columns
-// For option 24-column grid
-@for $i from 1 through 24 {
-  .span#{$i}     { @include columns($i); }
-}
-
-// Offset column options
-.row {
-  @for $i from 1 through 12 {
-    > .offset#{$i}    { @include offset($i); }
-  }
-}
-
-// Unique column sizes for 16-column grid
-.span-one-third     { width: 300px; }
-.span-two-thirds    { width: 620px; }
-.row {
-  > .offset-one-third   { margin-left: 340px; }
-  > .offset-two-thirds  { margin-left: 660px; }
+a:hover {
+  color: $linkColorHover;
+  text-decoration: underline;
 }
