@@ -776,9 +776,9 @@
 
 
   <h2>{{_i}}Example forms <small>using just form controls, no extra markup</small>{{/i}}</h2>
-  <h3>{{_i}}Basic form{{/i}}</h3>
   <div class="row">
     <div class="span3">
+      <h3>{{_i}}Basic form{{/i}}</h3>
       <p>{{_i}}With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.{{/i}}</p>
     </div>
     <div class="span9">
@@ -790,11 +790,22 @@
         </label>
         <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well"&gt;
+  &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
+  &lt;input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}"&gt;
+  &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;label class="checkbox"&gt;
+    &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>{{_i}}Search form{{/i}}</h3>
   <div class="row">
     <div class="span3">
+      <h3>{{_i}}Search form{{/i}}</h3>
       <p>{{_i}}Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.{{/i}}</p>
     </div>
     <div class="span9">
@@ -802,11 +813,17 @@
         <input type="text" class="input-medium search-query">
         <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-search"&gt;
+  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>{{_i}}Inline form{{/i}}</h3>
   <div class="row">
     <div class="span3">
+      <h3>{{_i}}Inline form{{/i}}</h3>
       <p>{{_i}}Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.{{/i}}</p>
     </div>
     <div class="span9">
@@ -815,6 +832,13 @@
         <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
         <button type="submit" class="btn">{{_i}}Go{{/i}}</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-inline"&gt;
+  &lt;input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}"&gt;
+  &lt;input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}"&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Go{{/i}}&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div><!-- /row -->
 
