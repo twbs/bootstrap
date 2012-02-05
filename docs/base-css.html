@@ -869,7 +869,8 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 <pre class="prettyprint linenums">
 &lt;form class="well"&gt;
   &lt;label&gt;Label name&lt;/label&gt;
-  &lt;input type="text" class="span3" placeholder="Type something…"&gt; &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;input type="text" class="span3" placeholder="Type something…"&gt;
+  &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; Check me out
   &lt;/label&gt;
@@ -983,6 +984,22 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </div>
         </fieldset>
       </form>
+      <h3>Example markup</h3>
+      <p>Given the above example form layout, here's the markup associated with the first input and control group.</p>
+<pre class="prettyprint linenums">
+&lt;form class="form-horizontal"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Legend text&lt;/legend&gt;
+    &lt;div class="control-group"&gt;
+      &lt;label class="control-label" for="input01"&gt;Text input&lt;/label&gt;
+      &lt;div class="controls"&gt;
+        &lt;input type="text" class="input-xlarge" id="input01"&gt;
+        &lt;p class="help-block"&gt;Supporting help text&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
     </div>
     <div class="span4">
       <h3>What's included</h3>
