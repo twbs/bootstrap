@@ -977,7 +977,7 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 .form-horizontal .control-group:after {
   clear: both;
 }
-.form-horizontal .control-group > label {
+.form-horizontal .control-label {
   float: left;
   width: 140px;
   padding-top: 5px;
