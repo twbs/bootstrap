@@ -1310,7 +1310,10 @@ $('.myCarousel').carousel({
                <td>{{_i}}source{{/i}}</td>
                <td>{{_i}}array{{/i}}</td>
                <td>[ ]</td>
-               <td>{{_i}}The data source to query against.{{/i}}</td>
+               <td>
+                <p>{{_i}}The data source to query against.{{/i}}</p>
+                <p>{{_i}}Can be a simple array of items: <code>['California', 'New York']</code>, or an array of objects, providing at least the <code>label</code> and <code>value</code> properties: <code>[{ label: 'California', value: 'CA' }, { label: 'New York', value: 'NY' }]</code>{{/i}}</p>
+                </td>
              </tr>
              <tr>
                <td>{{_i}}items{{/i}}</td>
@@ -1322,19 +1325,28 @@ $('.myCarousel').carousel({
                <td>{{_i}}matcher{{/i}}</td>
                <td>{{_i}}function{{/i}}</td>
                <td>{{_i}}case insensitive{{/i}}</td>
-               <td>{{_i}}The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.{{/i}}</td>
+               <td>
+                <p>{{_i}}The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.{{/i}}</p>
+                <p>{{_i}}If you passed an array of objects as the source, <code>item</code> will be the object to compare against, otherwise <code>item</code> will be the string to compare against.{{/i}}</p>
+              </td>
              </tr>
              <tr>
                <td>{{_i}}sorter{{/i}}</td>
                <td>{{_i}}function{{/i}}</td>
                <td>{{_i}}exact match,<br> case sensitive,<br> case insensitive{{/i}}</td>
-               <td>{{_i}}Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.{{/i}}</td>
+               <td>
+                <p>{{_i}}Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.{{/i}}</p>
+                <p>{{_i}}If you passed an array of objects as the source, <code>items</code> will an array of your objects to sort, otherwise <code>items</code> will an array of strings to sort.{{/i}}</p>
+              </td>
              </tr>
              <tr>
                <td>{{_i}}highlighter{{/i}}</td>
                <td>{{_i}}function{{/i}}</td>
                <td>{{_i}}highlights all default matches{{/i}}</td>
-               <td>{{_i}}Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.{{/i}}</td>
+               <td>
+                <p>{{_i}}Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.{{/i}}</p>
+                <p>{{_i}}{{_i}}If you passed an array of objects as the source, <code>item</code> will be the object to highlight, otherwise <code>item</code> will be the string to highlight.{{/i}}{{/i}}</p>
+              </td>
              </tr>
             </tbody>
           </table>
@@ -1347,6 +1359,28 @@ $('.myCarousel').carousel({
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>.typeahead({{_i}}options{{/i}})</h4>
           <p>{{_i}}Initializes an input with a typeahead.{{/i}}</p>
+
+          <h3>{{_i}}Events{{/i}}</h3>
+          <p>{{_i}}Bootstrap's typeahead class exposes a few events for hooking into typeahead functionality.{{/i}}</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">{{_i}}Event{{/i}}</th>
+               <th>{{_i}}Description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}selected{{/i}}</td>
+               <td>{{_i}}This event is fired when the user has selected an item, passing in the object or string the user selected, depending on how the <code>source</code> was specified.{{/i}}</td>
+             </tr>
+            </tbody>
+          </table>
+
+<pre class="prettyprint linenums">
+$('#myTypeahead').on('selected', function (e, item) {
+  // {{_i}}do something…{{/i}}
+})</pre>
         </div>
       </div>
     </section>

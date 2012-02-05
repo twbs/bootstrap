@@ -28,8 +28,13 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.$menu = $(this.options.menu).appendTo('body')
-    this.source = this.options.source
     this.shown = false
+    this.objectSource = true
+    if (this.options.source.length > 0 && typeof this.options.source[0] != 'object') {
+      this.objectSource = false
+      this.options.source = this.normalizeItems(this.options.source)
+    }
+    this.source = this.options.source
     this.listen()
   }
 
@@ -38,8 +43,9 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
-      this.$element.val(val)
+      var item = this.$menu.find('.active').data('item')
+      this.$element.val(item.label)
+      this.$element.trigger('selected', this.objectSource ? item : item.label)
       return this.hide()
     }
 
@@ -76,10 +82,11 @@
       }
 
       items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
+        if (that.matcher(that.objectSource ? item : item.label)) return item
       })
 
-      items = this.sorter(items)
+      items = this.sorter(this.objectSource ? items : this.labelsFor(items))
+      if (!this.objectSource) items = this.normalizeItems(items)
 
       if (!items.length) {
         return this.shown ? this.hide() : this
@@ -89,7 +96,8 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      var label = this.objectSource ? item.label : item
+      return ~label.toLowerCase().indexOf(this.query.toLowerCase())
     }
 
   , sorter: function (items) {
@@ -97,10 +105,12 @@
         , caseSensitive = []
         , caseInsensitive = []
         , item
+        , label
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        label = this.objectSource ? item.label : item
+        if (!label.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~label.indexOf(this.query)) caseSensitive.push(item)
         else caseInsensitive.push(item)
       }
 
@@ -108,7 +118,8 @@
     }
 
   , highlighter: function (item) {
-      return item.replace(new RegExp('(' + this.query + ')', 'ig'), function ($1, match) {
+      var label = this.objectSource ? item.label : item
+      return label.replace(new RegExp('(' + this.query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }
@@ -117,8 +128,8 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
-        i.find('a').html(that.highlighter(item))
+        i = $(that.options.item).attr('data-value', item.label).data('item', item)
+        i.find('a').html(that.highlighter(that.objectSource ? item : item.label))
         return i[0]
       })
 
@@ -228,6 +239,18 @@
   , mouseenter: function (e) {
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
+    }
+
+  , normalizeItems: function(items) {
+      return $.makeArray($(items).map(function (i, item) {
+        return { label: item, value: item }
+      }))
+    }
+
+  , labelsFor: function(items) {
+      return $.makeArray($(items).map(function (i, item) {
+        return item.label
+      }))
     }
 
   }
