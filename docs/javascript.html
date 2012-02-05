@@ -923,7 +923,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <hr>
           <h2>Using bootstrap-alerts.js</h2>
           <p>Enable dismissal of an alert via javascript:</p>
-          <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
+          <pre class="prettyprint linenums">$(".alert").alert()</pre>
           <h3>Markup</h3>
           <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
           <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
@@ -932,7 +932,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
           <h4>.alert('close')</h4>
           <p>Closes an alert.</p>
-          <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
+          <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
           <h3>Events</h3>
           <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
           <table class="table table-bordered table-striped">
