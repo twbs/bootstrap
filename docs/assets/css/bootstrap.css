@@ -494,7 +494,9 @@ pre.prettyprint {
 }
 pre code {
   padding: 0;
+  color: inherit;
   background-color: transparent;
+  border: 0;
 }
 form {
   margin: 0 0 18px;
