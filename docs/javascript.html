@@ -1386,7 +1386,10 @@ $('.myCarousel').carousel({
                <td>source</td>
                <td>array</td>
                <td>[ ]</td>
-               <td>The data source to query against.</td>
+               <td>
+                <p>The data source to query against.</p>
+                <p>Can be a simple array of items: <code>['California', 'New York']</code>, or an array of objects, providing at least the <code>label</code> and <code>value</code> properties: <code>[{ label: 'California', value: 'CA' }, { label: 'New York', value: 'NY' }]</code></p>
+                </td>
              </tr>
              <tr>
                <td>items</td>
@@ -1398,19 +1401,28 @@ $('.myCarousel').carousel({
                <td>matcher</td>
                <td>function</td>
                <td>case insensitive</td>
-               <td>The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.</td>
+               <td>
+                <p>The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.</p>
+                <p>If you passed an array of objects as the source, <code>item</code> will be the object to compare against, otherwise <code>item</code> will be the string to compare against.</p>
+              </td>
              </tr>
              <tr>
                <td>sorter</td>
                <td>function</td>
                <td>exact match,<br> case sensitive,<br> case insensitive</td>
-               <td>Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.</td>
+               <td>
+                <p>Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.</p>
+                <p>If you passed an array of objects as the source, <code>items</code> will an array of your objects to sort, otherwise <code>items</code> will an array of strings to sort.</p>
+              </td>
              </tr>
              <tr>
                <td>highlighter</td>
                <td>function</td>
                <td>highlights all default matches</td>
-               <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
+               <td>
+                <p>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</p>
+                <p>If you passed an array of objects as the source, <code>item</code> will be the object to highlight, otherwise <code>item</code> will be the string to highlight.</p>
+              </td>
              </tr>
             </tbody>
           </table>
@@ -1436,13 +1448,13 @@ $('.myCarousel').carousel({
             <tbody>
              <tr>
                <td>selected</td>
-               <td>This event is fired when the user has selected an item.</td>
+               <td>This event is fired when the user has selected an item, passing in the object or string the user selected, depending on how the <code>source</code> was specified.</td>
              </tr>
             </tbody>
           </table>
 
 <pre class="prettyprint linenums">
-$('#myTypeahead').on('selected', function () {
+$('#myTypeahead').on('selected', function (e, item) {
   // do something…
 })</pre>
         </div>
