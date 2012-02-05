@@ -166,20 +166,17 @@ input[type="hidden"] {
 }
 
 // Radios and checkboxes on same line
+// TODO v3: Convert .inline to .control-inline
 .radio.inline,
 .checkbox.inline {
   display: inline-block;
+  padding-top: 5px;
   margin-bottom: 0;
   vertical-align: middle;
 }
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {
   margin-left: 10px; // space out consecutive inline controls
-}
-// But don't forget to remove their padding on first-child
-.controls > .radio.inline:first-child,
-.controls > .checkbox.inline:first-child {
-  padding-top: 0;
 }
 
 
