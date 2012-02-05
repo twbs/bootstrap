@@ -852,9 +852,9 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
 
   <h2>Example forms <small>using just form controls, no extra markup</small></h2>
-  <h3>Basic form</h3>
   <div class="row">
     <div class="span3">
+      <h3>Basic form</h3>
       <p>With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.</p>
     </div>
     <div class="span9">
@@ -866,11 +866,21 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         </label>
         <button type="submit" class="btn">Submit</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well"&gt;
+  &lt;label&gt;Label name&lt;/label&gt;
+  &lt;input type="text" class="span3" placeholder="Type something…"&gt; &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;label class="checkbox"&gt;
+    &lt;input type="checkbox"&gt; Check me out
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>Search form</h3>
   <div class="row">
     <div class="span3">
+      <h3>Search form</h3>
       <p>Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.</p>
     </div>
     <div class="span9">
@@ -878,11 +888,17 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <input type="text" class="input-medium search-query">
         <button type="submit" class="btn">Search</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-search"&gt;
+  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>Inline form</h3>
   <div class="row">
     <div class="span3">
+      <h3>Inline form</h3>
       <p>Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.</p>
     </div>
     <div class="span9">
@@ -891,6 +907,13 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <input type="password" class="input-small" placeholder="Password">
         <button type="submit" class="btn">Go</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-inline"&gt;
+  &lt;input type="text" class="input-small" placeholder="Email"&gt;
+  &lt;input type="password" class="input-small" placeholder="Password"&gt;
+  &lt;button type="submit" class="btn"&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div><!-- /row -->
 
