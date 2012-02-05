@@ -207,46 +207,76 @@ a:hover {
 }
 .row-fluid > [class*="span"] {
   float: left;
-  margin-left: 2.127659574%;
-}
-.row-fluid > [class*="span"]:first-child {
-  margin-left: 0;
+  margin-left: 2.04081632653061%;
 }
 .row-fluid .span1 {
-  width: 6.382978723%;
+  width: 6.12244897959183%;
 }
 .row-fluid .span2 {
-  width: 14.89361702%;
+  width: 14.28571428571427%;
 }
 .row-fluid .span3 {
-  width: 23.404255317%;
+  width: 22.44897959183671%;
 }
 .row-fluid .span4 {
-  width: 31.914893614%;
+  width: 30.61224489795915%;
 }
 .row-fluid .span5 {
-  width: 40.425531911%;
+  width: 38.77551020408159%;
 }
 .row-fluid .span6 {
-  width: 48.93617020799999%;
+  width: 46.93877551020403%;
 }
 .row-fluid .span7 {
-  width: 57.446808505%;
+  width: 55.10204081632647%;
 }
 .row-fluid .span8 {
-  width: 65.95744680199999%;
+  width: 63.26530612244891%;
 }
 .row-fluid .span9 {
-  width: 74.468085099%;
+  width: 71.42857142857136%;
 }
 .row-fluid .span10 {
-  width: 82.97872339599999%;
+  width: 79.5918367346938%;
 }
 .row-fluid .span11 {
-  width: 91.489361693%;
+  width: 87.75510204081623%;
 }
 .row-fluid .span12 {
-  width: 99.99999998999999%;
+  width: 95.91836734693868%;
+}
+.row-fluid .offset1 {
+  margin-left: 10.20408163265305%;
+}
+.row-fluid .offset2 {
+  margin-left: 18.36734693877549%;
+}
+.row-fluid .offset3 {
+  margin-left: 26.53061224489793%;
+}
+.row-fluid .offset4 {
+  margin-left: 34.69387755102037%;
+}
+.row-fluid .offset5 {
+  margin-left: 42.85714285714281%;
+}
+.row-fluid .offset6 {
+  margin-left: 51.02040816326525%;
+}
+.row-fluid .offset7 {
+  margin-left: 59.18367346938769%;
+}
+.row-fluid .offset8 {
+  margin-left: 67.34693877551013%;
+}
+.row-fluid .offset9 {
+  margin-left: 75.51020408163258%;
+}
+.row-fluid .offset10 {
+  margin-left: 83.67346938775502%;
+}
+.row-fluid .offset11 {
+  margin-left: 91.83673469387745%;
 }
 .container {
   width: 940px;
@@ -262,8 +292,6 @@ a:hover {
   clear: both;
 }
 .container-fluid {
-  padding-left: 20px;
-  padding-right: 20px;
   *zoom: 1;
 }
 .container-fluid:before, .container-fluid:after {
@@ -2513,8 +2541,6 @@ button.btn.small, input[type="submit"].btn.small {
   z-index: 1030;
 }
 .navbar-fixed-top .navbar-inner {
-  padding-left: 0;
-  padding-right: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
