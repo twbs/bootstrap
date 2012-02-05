@@ -502,7 +502,7 @@ select:focus:required:invalid {
     @include clearfix();
   }
   // Float the labels left
-  .control-group > label {
+  .control-label {
     float: left;
     width: 140px;
     padding-top: 5px;
