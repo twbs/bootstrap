@@ -908,6 +908,22 @@
           </div>
         </fieldset>
       </form>
+      <h3>{{_i}}Example markup{{/i}}</h3>
+      <p>{{_i}}Given the above example form layout, here's the markup associated with the first input and control group.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;form class="form-horizontal"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;{{_i}}Legend text{{/i}}&lt;/legend&gt;
+    &lt;div class="control-group"&gt;
+      &lt;label class="control-label" for="input01"&gt;{{_i}}Text input{{/i}}&lt;/label&gt;
+      &lt;div class="controls"&gt;
+        &lt;input type="text" class="input-xlarge" id="input01"&gt;
+        &lt;p class="help-block"&gt;{{_i}}Supporting help text{{/i}}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
     </div>
     <div class="span4">
       <h3>{{_i}}What's included{{/i}}</h3>
