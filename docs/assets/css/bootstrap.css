@@ -3064,17 +3064,33 @@ a.thumbnail:hover {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+.label:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
 .label-important {
   background-color: #b94a48;
+}
+.label-important:hover {
+  background-color: #953b39;
 }
 .label-warning {
   background-color: #f89406;
 }
+.label-warning:hover {
+  background-color: #c67605;
+}
 .label-success {
   background-color: #468847;
 }
+.label-success:hover {
+  background-color: #356635;
+}
 .label-info {
   background-color: #3a87ad;
+}
+.label-info:hover {
+  background-color: #2d6987;
 }
 @-webkit-keyframes progress-bar-stripes {
   from {
