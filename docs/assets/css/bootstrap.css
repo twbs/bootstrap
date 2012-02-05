@@ -2550,7 +2550,6 @@ button.btn.small, input[type="submit"].btn.small {
   color: #ffffff;
   text-decoration: none;
   background-color: #222222;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 .navbar .divider-vertical {
   height: 40px;
