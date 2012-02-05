@@ -1347,6 +1347,28 @@ $('.myCarousel').carousel({
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>.typeahead({{_i}}options{{/i}})</h4>
           <p>{{_i}}Initializes an input with a typeahead.{{/i}}</p>
+
+          <h3>{{_i}}Events{{/i}}</h3>
+          <p>{{_i}}Bootstrap's typeahead class exposes a few events for hooking into typeahead functionality.{{/i}}</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">{{_i}}Event{{/i}}</th>
+               <th>{{_i}}Description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}selected{{/i}}</td>
+               <td>{{_i}}This event is fired when the user has selected an item.{{/i}}</td>
+             </tr>
+            </tbody>
+          </table>
+
+<pre class="prettyprint linenums">
+$('#myTypeahead').on('selected', function () {
+  // {{_i}}do something…{{/i}}
+})</pre>
         </div>
       </div>
     </section>
