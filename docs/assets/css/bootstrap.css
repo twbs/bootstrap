@@ -654,7 +654,10 @@ input:focus, textarea:focus {
   /* IE6-8 */
 
 }
-input[type="file"]:focus, input[type="checkbox"]:focus, select:focus {
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus,
+select:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
