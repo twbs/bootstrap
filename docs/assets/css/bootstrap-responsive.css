@@ -85,14 +85,11 @@
   }
 }
 @media (max-width: 768px) {
-  .container {
+  .container, .container-fluid {
     width: auto;
     padding: 0 20px;
   }
-  .row-fluid {
-    width: 100%;
-  }
-  .row {
+  .row, .row-fluid {
     margin-left: 0;
   }
   .row > [class*="span"], .row-fluid > [class*="span"] {
