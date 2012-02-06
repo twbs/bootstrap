@@ -747,7 +747,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                <td>title</td>
                <td>string | function</td>
                <td>''</td>
-               <td>default title value if `title` tag isn't present</td>
+               <td>default title value if `data-original-title` isn't present</td>
              </tr>
              <tr>
                <td>trigger</td>
@@ -773,6 +773,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           </div>
           <h3>Markup</h3>
           <p>For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
+          <pre class="prettyprint linenums">
+          &lt;a href="#" rel="tooltip" data-original-title="first tooltip"&gt;hover over me&lt;/a&gt;
+
           <h3>Methods</h3>
           <h4>$().tooltip(options)</h4>
           <p>Attaches a tooltip handler to an element collection.</p>
