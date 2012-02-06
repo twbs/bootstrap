@@ -17,6 +17,10 @@
   border: 1px solid #ddd;
   .border-radius(4px);
   .box-shadow(0 1px 1px rgba(0,0,0,.075));
+  /* Box Model >IE8, Sorry no IE7 */
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 // Add a hover state for linked versions only
 a.thumbnail:hover {
