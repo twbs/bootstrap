@@ -1668,11 +1668,13 @@ table .span12 {
 .btn {
   display: inline-block;
   padding: 4px 10px 4px;
+  margin-bottom: 0;
   font-size: 13px;
   line-height: 18px;
   color: #333333;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
   background-color: #fafafa;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);

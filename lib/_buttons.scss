@@ -9,6 +9,7 @@
 .btn {
   display: inline-block;
   padding: 4px 10px 4px;
+  margin-bottom: 0; // For input.btn
   font-size: $baseFontSize;
   line-height: $baseLineHeight;
   color: $grayDark;
@@ -147,7 +148,7 @@
 button.btn,
 input[type="submit"].btn {
   &::-moz-focus-inner {
-  padding: 0;
+    padding: 0;
     border: 0;
   }
 
