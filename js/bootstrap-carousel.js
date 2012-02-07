@@ -40,11 +40,12 @@
 
   , to: function (pos) {
       var $active = this.$element.find('.active')
-        , children = $active.parent().children()
-        , activePos = children.index($active)
+        , $children = $active.parent().children()
+        , activePos = $children.index($active)
+        , $child = $children.filter(':nth-child(' + pos + ')')
         , that = this
 
-      if (pos > (children.length - 1) || pos < 0) return
+      if ( $child.length == 0 ) return
 
       if (this.sliding) {
         return this.$element.one('slid', function () {
@@ -56,7 +57,7 @@
         return this.pause().cycle()
       }
 
-      return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
+      return this.slide(pos > activePos ? 'next' : 'prev', $child)
     }
 
   , pause: function () {
@@ -86,7 +87,7 @@
 
       isCycling && this.pause()
 
-      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+      $next = $next.length ? $next : this.$element.find('.item').parent().children(':' + fallback + '-child');
 
       if (!$.support.transition && this.$element.hasClass('slide')) {
         this.$element.trigger('slide')
