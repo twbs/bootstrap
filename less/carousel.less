@@ -119,3 +119,35 @@
 .carousel-caption p {
   color: @white;
 }
+
+// Paginator for carousel corner right top
+// -----------------------------
+
+.carousel-paginator {
+	.clearfix();
+	position: absolute;
+	top: 0;
+	right: 0;
+	.item {
+		position:static;
+		display:block;
+		float:left;
+		margin:4px;
+		padding: 4px 10px 4px;
+		border:1px solid @white;
+		.border-radius(50%);
+		background: rgba(0,0,0,.75);
+		color:@white;
+		a, a:hover {
+			color:@white;
+			text-decoration:none;
+		}
+		.opacity(50);
+	}
+	.prev, .next {
+		width:auto;
+	}
+	.active {
+		.opacity(100);
+	}
+}
