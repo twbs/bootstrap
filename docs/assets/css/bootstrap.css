@@ -374,7 +374,8 @@ ol {
 li {
   line-height: 18px;
 }
-ul.unstyled {
+ul.unstyled,
+ol.unstyled {
   margin-left: 0;
   list-style: none;
 }
