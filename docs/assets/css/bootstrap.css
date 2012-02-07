@@ -3526,19 +3526,20 @@ a.thumbnail:hover {
   display: block;
   float: left;
   margin: 4px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.carousel-paginator .item a {
+  display: block;
   padding: 4px 10px 4px;
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.75);
   color: #ffffff;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
 }
-.carousel-paginator .item a,
 .carousel-paginator .item a:hover {
-  color: #ffffff;
   text-decoration: none;
 }
 .carousel-paginator .prev,

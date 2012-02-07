@@ -133,13 +133,15 @@
 		display:block;
 		float:left;
 		margin:4px;
-		padding: 4px 10px 4px;
-		border:1px solid @white;
-		.border-radius(50%);
-		background: rgba(0,0,0,.75);
-		color:@white;
-		a, a:hover {
+		a {
+			display:block;
+			padding: 4px 10px 4px;
+			border:2px solid @white;
+			.border-radius(50%);
+			background: rgba(0,0,0,.75);
 			color:@white;
+		}
+		a:hover {
 			text-decoration:none;
 		}
 		.opacity(50);
