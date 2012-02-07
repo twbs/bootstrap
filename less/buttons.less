@@ -9,11 +9,13 @@
 .btn {
   display: inline-block;
   padding: 4px 10px 4px;
+  margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @grayDark;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  vertical-align: middle;
   #gradient > .vertical-three-colors(@white, @white, 25%, darken(@white, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
@@ -147,7 +149,7 @@
 button.btn,
 input[type="submit"].btn {
   &::-moz-focus-inner {
-  padding: 0;
+    padding: 0;
     border: 0;
   }
 

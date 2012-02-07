@@ -1289,17 +1289,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     <div class="span4">
       <h3>Buttons for actions</h3>
       <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.</p>
+      <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
+      <h3>Cross browser compatibility</h3>
+      <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
     </div>
-    <div class="span4">
-      <h3>For anchors and forms</h3>
-      <p>Button styles can be applied to anything with the <code>.btn</code> applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
-    </div>
-    <div class="span4">
-      <p><strong>Note:</strong> All buttons must include the <code>.btn</code> class. Button styles should be applied to <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> elements for consistency.</p>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="span4">
       <h3>Multiple sizes</h3>
       <p>Fancy larger or smaller buttons? Add <code>.btn-large</code> or <code>.btn-small</code> for two additional sizes.</p>
@@ -1311,8 +1304,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <a href="#" class="btn btn-small btn-primary">Primary action</a>
         <a href="#" class="btn btn-small">Action</a>
       </p>
-    </div>
-    <div class="span4">
+      <br>
       <h3>Disabled state</h3>
       <p>For disabled buttons, use <code>.btn-disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
       <p>
@@ -1325,14 +1317,27 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       </p>
     </div>
     <div class="span4">
-      <h3>Cross browser compatibility</h3>
-      <p>In IE9, we drop the gradient on all buttons in favor of rounded corners as IE9 doesn't crop background gradients to the corners.</p>
-      <p>Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow&mdash;unfortunately we can't fix this.</p>
+      <h3>One class, multiple tags</h3>
+      <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+<form>
+<a class="btn" href="">Link</a>
+<button class="btn" type="submit">Button</button>
+<input class="btn" type="button" value="Input">
+<input class="btn" type="submit" value="Submit">
+</form>
+<pre class="prettyprint linenums">
+&lt;a class="btn" href=""&gt;Link&lt;/a&gt;
+&lt;button class="btn" type="submit"&gt;
+  Button
+&lt;/button&gt;
+&lt;input class="btn" type="button" 
+         value="Input"&gt;
+&lt;input class="btn" type="submit" 
+         value="Submit"&gt;
+</pre>
+      <p>As a best practice, try to match the element for you context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
     </div>
   </div>
-
-  <br>
-
 </section>
 
 
