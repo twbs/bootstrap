@@ -3,7 +3,7 @@ $(function () {
     module("bootstrap-buttons")
 
       test("should be defined on jquery object", function () {
-        ok($(document.body).button, 'tabs method is defined')
+        ok($(document.body).button, 'button method is defined')
       })
 
       test("should return element", function () {
