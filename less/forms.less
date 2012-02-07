@@ -259,33 +259,6 @@ textarea[readonly] {
 // FORM FIELD FEEDBACK STATES
 // --------------------------
 
-// Mixin for form field states
-.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
-  // Set the text color
-  > label,
-  .help-block,
-  .help-inline {
-    color: @textColor;
-  }
-  // Style inputs accordingly
-  input,
-  select,
-  textarea {
-    color: @textColor;
-    border-color: @borderColor;
-    &:focus {
-      border-color: darken(@borderColor, 10%);
-      .box-shadow(0 0 6px lighten(@borderColor, 20%));
-    }
-  }
-  // Give a small background color for input-prepend/-append
-  .input-prepend .add-on,
-  .input-append .add-on {
-    color: @textColor;
-    background-color: @backgroundColor;
-    border-color: @textColor;
-  }
-}
 // Warning
 .control-group.warning {
   .formFieldState(@warningText, @warningText, @warningBackground);
