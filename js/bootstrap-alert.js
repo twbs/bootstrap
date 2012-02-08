@@ -54,7 +54,7 @@
       $parent.removeClass('in')
 
       function removeElement() {
-        $parent.remove()
+        $parent.hide()
         $parent.trigger('closed')
       }
 
