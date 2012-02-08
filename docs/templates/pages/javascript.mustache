@@ -58,7 +58,7 @@
         <div class="span3">
           <label>
             <h3><a href="./javascript.html#tooltips">{{_i}}Tooltips{{/i}}</a></h3>
-            <p>{{_i}}A new take on the jQuery Tipsy plugin, Tooltips don't rely on images, uss CSS3 for animations, and data-attributes for local title storage.{{/i}}</p>
+            <p>{{_i}}A new take on the jQuery Tipsy plugin, Tooltips don't rely on images, use CSS3 for animations, and data-attributes for local title storage.{{/i}}</p>
           </label>
         </div>
         <div class="span3">
@@ -558,7 +558,7 @@ $('#myModal').on('hidden', function () {
   &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#profile" data-toggle="tab"&gt;{{_i}}Profile{{/i}}&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#messages" data-toggle="tab"&gt;{{_i}}Messages{{/i}}&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#ettings" data-toggle="tab"&gt;{{_i}}Settings{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#settings" data-toggle="tab"&gt;{{_i}}Settings{{/i}}&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().tab</h4>
@@ -956,17 +956,17 @@ $('#my-alert').bind('closed', function () {
             <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}Data attributes are integral to the button plugin. Check out the example code below for the various markup types.{{/i}}</p>
 <pre class="prettyprint linenums">
-&lt;!-- Add data-toggle="button" to activate toggling on a single button --&gt;
+&lt;!-- {{_i}}Add data-toggle="button" to activate toggling on a single button{{/i}} --&gt;
 &lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
 
-&lt;!-- Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group --&gt;
+&lt;!-- {{_i}}Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group{{/i}} --&gt;
 &lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
   &lt;button class="btn"&gt;Left&lt;/button&gt;
   &lt;button class="btn"&gt;Middle&lt;/button&gt;
   &lt;button class="btn"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 
-&lt;!-- Add data-toggle="buttons-radio" for radio style toggling on btn-group --&gt;
+&lt;!-- {{_i}}Add data-toggle="buttons-radio" for radio style toggling on btn-group{{/i}} --&gt;
 &lt;div class="btn-group" data-toggle="buttons-radio"&gt;
   &lt;button class="btn"&gt;Left&lt;/button&gt;
   &lt;button class="btn"&gt;Middle&lt;/button&gt;
@@ -975,7 +975,7 @@ $('#my-alert').bind('closed', function () {
 </pre>
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().button('toggle')</h4>
-          <p>{{_i}}Toggles push state. Gives btn the look that it's been activated.{{/i}}</p>
+          <p>{{_i}}Toggles push state. Gives btn the look that it hass been activated.{{/i}}</p>
           <div class="alert alert-info">
             <strong>{{_i}}Heads up!{{/i}}</strong>
             {{_i}}You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.{{/i}}
@@ -1061,7 +1061,7 @@ $('#my-alert').bind('closed', function () {
 
           <hr>
           <h2>{{_i}}Using bootstrap-collapse.js{{/i}}</h2>
-          <p>Enable via javascript:</p>
+          <p>{{_i}}Enable via javascript:{{/i}}</p>
           <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
           <h3>{{_i}}Options{{/i}}</h3>
           <table class="table table-bordered table-striped">
@@ -1078,7 +1078,7 @@ $('#my-alert').bind('closed', function () {
                <td>{{_i}}parent{{/i}}</td>
                <td>{{_i}}selector{{/i}}</td>
                <td>false</td>
-               <td>{{_i}}If selector then all collapsible elements under the specified parent will be closed when this collasabile item is shown. (similar to traditional accordion behavior){{/i}}</td>
+               <td>{{_i}}If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior){{/i}}</td>
              </tr>
              <tr>
                <td>{{_i}}toggle{{/i}}</td>
@@ -1228,12 +1228,14 @@ $('#myCollapsible').on('hidden', function () {
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}Data attributes are integral to the carousel plugin. Check out the example code below for the various markup types.{{/i}}</p>
 <pre class="prettyprint linenums">
-&lt;div class="carousel"&gt;
-  &lt;!-- Carousel items --&gt;
+&lt;div id="myCarousel" class="carousel"&gt;
+  &lt;!-- {{_i}}Carousel items{{/i}} --&gt;
   &lt;div class="carousel-inner"&gt;
-    ...
+    &lt;div class="active item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
   &lt;/div&gt;
-  &lt;!-- Carousel nav --&gt;
+  &lt;!-- {{_i}}Carousel nav{{/i}} --&gt;
   &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
   &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
 &lt;/div&gt;
@@ -1272,7 +1274,7 @@ $('.myCarousel').carousel({
              </tr>
              <tr>
                <td>{{_i}}slid{{/i}}</td>
-               <td>{{_i}}This event is fired when the carousel has completed it's slide transition.{{/i}}</td>
+               <td>{{_i}}This event is fired when the carousel has completed its slide transition.{{/i}}</td>
              </tr>
             </tbody>
           </table>

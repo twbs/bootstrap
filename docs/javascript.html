@@ -1304,10 +1304,12 @@ $('#myCollapsible').on('hidden', function () {
           <h3>Markup</h3>
           <p>Data attributes are integral to the carousel plugin. Check out the example code below for the various markup types.</p>
 <pre class="prettyprint linenums">
-&lt;div class="carousel"&gt;
+&lt;div id="myCarousel" class="carousel"&gt;
   &lt;!-- Carousel items --&gt;
   &lt;div class="carousel-inner"&gt;
-    ...
+    &lt;div class="active item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
   &lt;/div&gt;
   &lt;!-- Carousel nav --&gt;
   &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
