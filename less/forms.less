@@ -496,13 +496,15 @@ select:focus:required:invalid {
   .control-group {
     margin-bottom: @baseLineHeight;
     .clearfix();
-  }
-  // Float the labels left
-  .control-group > label {
-    float: left;
-    width: 140px;
-    padding-top: 5px;
-    text-align: right;
+
+    // Float the labels left
+    > label,
+    .control-label {
+      float: left;
+      width: 140px;
+      padding-top: 5px;
+      text-align: right;
+    }
   }
   // Move over all input controls and content
   .controls {
