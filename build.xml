@@ -643,14 +643,14 @@
       <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
       <!-- style.css replacement handled as a replacetoken above -->
       <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*&lt;script.*src=['&quot;]?(.*)/${file.root.script}(?:\?.*)?['&quot;]?\s*&gt;\s*&lt;/script&gt;[\d\w\s\W]*&lt;!-- end ((scripts)|(concatenated and minified scripts))\s*--&gt;"
-        replace="&lt;script defer src='\1/${scripts.sha}.js\'&gt;&lt;/script&gt;" flags="m">
+        replace="&lt;script src='\1/${scripts.sha}.js\'&gt;&lt;/script&gt;" flags="m">
           <fileset dir="${dir.intermediate}" includes="${page-files}"/>
       </replaceregexp>
       <!--[! use comments like this one to avoid having them get minified -->
 
       <echo message="Update the HTML to reference our name-mangled modules directory"/>
       <replaceregexp match="&lt;script.*src=['&quot;]?${dir.js.modules}/(.*)['&quot;]\s*&gt;"
-        replace="&lt;script defer src='${modules.js.dir}/\1'&gt;" flags="mg">
+        replace="&lt;script src='${modules.js.dir}/\1'&gt;" flags="mg">
           <fileset dir="${dir.intermediate}" includes="${page-files}"/>
       </replaceregexp>
 
