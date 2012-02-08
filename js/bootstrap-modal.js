@@ -26,7 +26,7 @@
   * ====================== */
 
   var Modal = function ( content, options ) {
-    this.options = $.extend({}, $.fn.modal.defaults, options)
+    this.options = options
     this.$element = $(content)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
   }
@@ -177,16 +177,17 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('modal')
-        , options = typeof option == 'object' && option
+        , options = $.extend({}, $.fn.modal.defaults, typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
-      else data.show()
+      else if (options.show) data.show()
     })
   }
 
   $.fn.modal.defaults = {
       backdrop: true
     , keyboard: true
+    , show: true
   }
 
   $.fn.modal.Constructor = Modal

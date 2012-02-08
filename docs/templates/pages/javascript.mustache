@@ -197,6 +197,12 @@
                <td>{{_i}}true{{/i}}</td>
                <td>{{_i}}Closes the modal when escape key is pressed{{/i}}</td>
              </tr>
+             <tr>
+               <td>{{_i}}show{{/i}}</td>
+               <td>{{_i}}boolean{{/i}}</td>
+               <td>{{_i}}true{{/i}}</td>
+               <td>{{_i}}Shows the modal when initialized.{{/i}}</td>
+             </tr>
             </tbody>
           </table>
           <h3>{{_i}}Markup{{/i}}</h3>
@@ -834,7 +840,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <p>{{_i}}The alerts plugin works on regular alert messages, and block messages.{{/i}}</p>
           <div class="alert fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong>{{_i}}Holy guacamole!{{/i}}</strong> {{_i}}Best check yo self, you’re not looking too good.{{/i}}
+            <strong>{{_i}}Holy guacamole!{{/i}}</strong> {{_i}}Best check yo self, you're not looking too good.{{/i}}
           </div>
           <div class="alert alert-block alert-error fade in">
             <a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -847,7 +853,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <hr>
           <h2>{{_i}}Using bootstrap-alerts.js{{/i}}</h2>
           <p>{{_i}}Enable dismissal of an alert via javascript:{{/i}}</p>
-          <pre class="prettyprint linenums">$(".alert-message").alert()</pre>
+          <pre class="prettyprint linenums">$(".alert").alert()</pre>
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
@@ -856,7 +862,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <p>{{_i}}Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.{{/i}}</p>
           <h4>.alert('close')</h4>
           <p>{{_i}}Closes an alert.{{/i}}</p>
-          <pre class="prettyprint linenums">$(".alert-message").alert('close')</pre>
+          <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
           <h3>{{_i}}Events{{/i}}</h3>
           <p>{{_i}}Bootstrap's alert class exposes a few events for hooking into alert functionality.{{/i}}</p>
           <table class="table table-bordered table-striped">
