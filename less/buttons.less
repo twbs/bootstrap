@@ -24,45 +24,45 @@
 
   // Give IE7 some love
   .ie7-restore-left-whitespace();
-}
 
-// Hover state
-.btn:hover {
-  color: @grayDark;
-  text-decoration: none;
-  background-color: darken(@white, 10%);
-  background-position: 0 -15px;
+  // Hover state
+  &:hover {
+    color: @grayDark;
+    text-decoration: none;
+    background-color: darken(@white, 10%);
+    background-position: 0 -15px;
 
-  // transition is only when going to hover, otherwise the background
-  // behind the gradient (there for IE<=9 fallback) gets mismatched
-  .transition(background-position .1s linear);
-}
+    // transition is only when going to hover, otherwise the background
+    // behind the gradient (there for IE<=9 fallback) gets mismatched
+    .transition(background-position .1s linear);
+  }
 
-// Focus state for keyboard and accessibility
-.btn:focus {
-  .tab-focus();
-}
+  // Focus state for keyboard and accessibility
+  &:focus {
+    .tab-focus();
+  }
 
-// Active state
-.btn.active,
-.btn:active {
-  background-image: none;
-  @shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  .box-shadow(@shadow);
-  background-color: darken(@white, 10%);
-  background-color: darken(@white, 15%) e("\9");
-  color: rgba(0,0,0,.5);
-  outline: 0;
-}
+  // Active state
+  &.active,
+  &:active {
+    background-image: none;
+    @shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+    .box-shadow(@shadow);
+    background-color: darken(@white, 10%);
+    background-color: darken(@white, 15%) e("\9");
+    color: rgba(0,0,0,.5);
+    outline: 0;
+  }
 
-// Disabled state
-.btn.disabled,
-.btn[disabled] {
-  cursor: default;
-  background-image: none;
-  background-color: darken(@white, 10%);
-  .opacity(65);
-  .box-shadow(none);
+  // Disabled state
+  &.disabled,
+  &[disabled] {
+    cursor: default;
+    background-image: none;
+    background-color: darken(@white, 10%);
+    .opacity(65);
+    .box-shadow(none);
+  }
 }
 
 
