@@ -100,7 +100,7 @@ Authors
 Sass Conversion
 ---------------
 
-The Twitter Bootstrap was lovingly converted to CSS by:
+The Twitter Bootstrap was lovingly converted to Sass by:
 
 **John W. Long**
 
