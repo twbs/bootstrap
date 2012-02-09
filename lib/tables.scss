@@ -1,90 +1,129 @@
-/*
- * Tables.scss
- * Tables for, you guessed it, tabular data
- * ---------------------------------------- */
+//
+// Tables.scss
+// Tables for, you guessed it, tabular data
+// ----------------------------------------
 
+
+// BASE TABLES
+// -----------------
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 // BASELINE STYLES
 // ---------------
 
-table {
+.table {
   width: 100%;
-  margin-bottom: $baseline;
-  padding: 0;
-  font-size: $basefont;
-  border-collapse: collapse;
+  margin-bottom: $baseLineHeight;
+  // Cells
   th,
   td {
-    padding: 10px 10px 9px;
-    line-height: $baseline;
+    padding: 8px;
+    line-height: $baseLineHeight;
     text-align: left;
+    border-top: 1px solid #ddd;
   }
   th {
-    padding-top: 9px;
     font-weight: bold;
-    vertical-align: middle;
+    vertical-align: bottom;
   }
   td {
     vertical-align: top;
-    border-top: 1px solid #ddd;
   }
-  // When scoped to row, fix th in tbody
-  tbody th {
-    border-top: 1px solid #ddd;
-    vertical-align: top;
+  // Remove top border from thead by default
+  thead:first-child tr th,
+  thead:first-child tr td {
+    border-top: 0;
+  }
+  // Account for multiple tbody instances
+  tbody + tbody {
+    border-top: 2px solid #ddd;
   }
 }
 
-// CONDENSED VERSION
-// -----------------
-.condensed-table {
+
+
+// CONDENSED TABLE W/ HALF PADDING
+// -------------------------------
+
+.table-condensed {
   th,
   td {
-    padding: 5px 5px 4px;
+    padding: 4px 5px;
   }
 }
-
 
 
 // BORDERED VERSION
 // ----------------
 
-.bordered-table {
+.table-bordered {
   border: 1px solid #ddd;
   border-collapse: separate; // Done so we can round those corners!
-  *border-collapse: collapse; /* IE7, collapse table to remove spacing */
+  *border-collapse: collapsed; // IE7 can't round corners anyway
   @include border-radius(4px);
   th + th,
   td + td,
-  th + td {
+  th + td,
+  td + th {
     border-left: 1px solid #ddd;
   }
-  thead tr:first-child th:first-child,
-  tbody tr:first-child td:first-child {
+  // Prevent a double border
+  thead:first-child tr:first-child th,
+  tbody:first-child tr:first-child th,
+  tbody:first-child tr:first-child td {
+    border-top: 0;
+  }
+  // For first th or td in the first row in the first thead or tbody
+  thead:first-child tr:first-child th:first-child,
+  tbody:first-child tr:first-child td:first-child {
     @include border-radius(4px 0 0 0);
   }
-  thead tr:first-child th:last-child,
-  tbody tr:first-child td:last-child {
+  thead:first-child tr:first-child th:last-child,
+  tbody:first-child tr:first-child td:last-child {
     @include border-radius(0 4px 0 0);
   }
-  tbody tr:last-child td:first-child {
+  // For first th or td in the first row in the first thead or tbody
+  thead:last-child tr:last-child th:first-child,
+  tbody:last-child tr:last-child td:first-child {
     @include border-radius(0 0 0 4px);
   }
-  tbody tr:last-child td:last-child {
+  thead:last-child tr:last-child th:last-child,
+  tbody:last-child tr:last-child td:last-child {
     @include border-radius(0 0 4px 0);
   }
 }
 
 
-// TABLE CELL SIZES
-// ----------------
+// ZEBRA-STRIPING
+// --------------
 
-// This is a duplication of the main grid .columns() mixin, but subtracts 20px to account for input padding and border
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.table-striped {
+  tbody {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+
+
+// TABLE CELL SIZING
+// -----------------
+
+// Change the columns
 @mixin tableColumns($columnSpan: 1) {
-  width: (($gridColumnWidth - 20) * $columnSpan) + (($gridColumnWidth - 20) * ($columnSpan - 1));
+  float: none;
+  width: (($gridColumnWidth) * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1)) - 16;
+  margin-left: 0;
 }
 table {
-  // Default columns
   .span1     { @include tableColumns(1); }
   .span2     { @include tableColumns(2); }
   .span3     { @include tableColumns(3); }
@@ -97,128 +136,4 @@ table {
   .span10    { @include tableColumns(10); }
   .span11    { @include tableColumns(11); }
   .span12    { @include tableColumns(12); }
-  .span13    { @include tableColumns(13); }
-  .span14    { @include tableColumns(14); }
-  .span15    { @include tableColumns(15); }
-  .span16    { @include tableColumns(16); }
-}
-
-
-// ZEBRA-STRIPING
-// --------------
-
-// Default zebra-stripe styles (alternating gray and transparent backgrounds)
-.zebra-striped {
-  tbody {
-    tr:nth-child(odd) td,
-    tr:nth-child(odd) th {
-      background-color: #f9f9f9;
-    }
-    tr:hover td,
-    tr:hover th{
-      background-color: #f5f5f5;
-    }
-  }
-}
-
-table {
-  // Tablesorting styles w/ jQuery plugin
-  .header {
-    cursor: pointer;
-    &:after {
-      content: "";
-      float: right;
-      margin-top: 7px;
-      border-width: 0 4px 4px;
-      border-style: solid;
-      border-color: #000 transparent;
-      visibility: hidden;
-    }
-  }
-  // Style the sorted column headers (THs)
-  .headerSortUp,
-  .headerSortDown {
-    background-color: rgba(141,192,219,.25);
-    text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  }
-  // Style the ascending (reverse alphabetical) column header
-  .header:hover {
-    &:after {
-      visibility:visible;
-    }
-  }
-  // Style the descending (alphabetical) column header
-  .headerSortDown,
-  .headerSortDown:hover {
-    &:after {
-      visibility:visible;
-      @include opacity(60);
-    }
-  }
-  // Style the ascending (reverse alphabetical) column header
-  .headerSortUp {
-    &:after {
-      border-bottom: none;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 4px solid #000;
-      visibility:visible;
-      @include box-shadow(none); //can't add boxshadow to downward facing arrow :(
-      @include opacity(60);
-    }
-  }
-  // Blue Table Headings
-  .blue {
-    color: $blue;
-    border-bottom-color: $blue;
-  }
-  .headerSortUp.blue,
-  .headerSortDown.blue {
-    background-color: lighten($blue, 40%);
-  }
-  // Green Table Headings
-  .green {
-    color: $green;
-    border-bottom-color: $green;
-  }
-  .headerSortUp.green,
-  .headerSortDown.green {
-    background-color: lighten($green, 40%);
-  }
-  // Red Table Headings
-  .red {
-    color: $red;
-    border-bottom-color: $red;
-  }
-  .headerSortUp.red,
-  .headerSortDown.red {
-    background-color: lighten($red, 50%);
-  }
-  // Yellow Table Headings
-  .yellow {
-    color: $yellow;
-    border-bottom-color: $yellow;
-  }
-  .headerSortUp.yellow,
-  .headerSortDown.yellow {
-    background-color: lighten($yellow, 40%);
-  }
-  // Orange Table Headings
-  .orange {
-    color: $orange;
-    border-bottom-color: $orange;
-  }
-  .headerSortUp.orange,
-  .headerSortDown.orange {
-    background-color: lighten($orange, 40%);
-  }
-  // Purple Table Headings
-  .purple {
-    color: $purple;
-    border-bottom-color: $purple;
-  }
-  .headerSortUp.purple,
-  .headerSortDown.purple {
-    background-color: lighten($purple, 40%);
-  }
 }

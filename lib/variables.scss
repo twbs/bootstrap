@@ -1,60 +1,100 @@
-/* variables.scss
- * Variables and mixins to pre-ignite any new web development project
- * ------------------------------------------------------------------ */
+// Variables.scss
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
 
+
+
+// GLOBAL VALUES
+// -------------
 
 // Links
-$linkColor:         #0069d6;
-$linkColorHover:    darken($linkColor, 15);
+$linkColor:             #08c !default;
+$linkColorHover:        darken($linkColor, 15) !default;
+
 
 // Grays
-$black:             #000;
-$grayDark:          lighten($black, 25%);
-$gray:              lighten($black, 50%);
-$grayLight:         lighten($black, 75%);
-$grayLighter:       lighten($black, 90%);
-$white:             #fff;
+$black:                 #000 !default;
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #999 !default;
+$grayLighter:           #eee !default;
+$white:                 #fff !default;
 
-// Accent Colors
-$blue:              #049CDB;
-$blueDark:          #0064CD;
-$green:             #46a546;
-$red:               #9d261d;
-$yellow:            #ffc40d;
-$orange:            #f89406;
-$pink:              #c3325f;
-$purple:            #7a43b6;
+// Accent colors
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
 
-// Baseline grid
-$basefont:          13px;
-$baseline:          18px;
+// Typography
+$baseFontSize:          13px !default;
+$baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$baseLineHeight:        18px !default;
+$textColor:             $grayDark !default;
 
-// Griditude
-// Modify the grid styles in mixins.scss
-$gridColumns:       16;
-$gridColumnWidth:   40px;
-$gridGutterWidth:   20px;
-$extraSpace:        ($gridGutterWidth * 2); // For our grid calculations
-$siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
-
-// Color Scheme
-// Use this to roll your own color schemes if you like (unused by Bootstrap by default)
-$baseColor:         $blue;                        // Set a base color
-$complement:        complement($baseColor);       // Determine a complementary color
-$split1:            adjust-hue($baseColor, 158);  // Split complements
-$split2:            adjust-hue($baseColor, -158);
-$triad1:            adjust-hue($baseColor, 135);  // Triads colors
-$triad2:            adjust-hue($baseColor, -135);
-$tetra1:            adjust-hue($baseColor, 90);   // Tetra colors
-$tetra2:            adjust-hue($baseColor, -90);
-$analog1:           adjust-hue($baseColor, 22);   // Analogs colors
-$analog2:           adjust-hue($baseColor, -22);
+// Buttons
+$primaryButtonBackground:    $linkColor !default;
 
 
 
-// More variables coming soon:
-// - @basefont to @baseFontSize
-// - @baseline to @baseLineHeight
-// - @baseFontFamily
-// - @primaryButtonColor
-// - anything else? File an issue on GitHub
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+$zindexDropdown:        1000 !default;
+$zindexPopover:         1010 !default;
+$zindexTooltip:         1020 !default;
+$zindexFixedNavbar:     1030 !default;
+$zindexModalBackdrop:   1040 !default;
+$zindexModal:           1050 !default;
+
+// Input placeholder text color
+$placeholderText:       $grayLight !default;
+
+// Navbar
+$navbarHeight:                    40px !default;
+$navbarBackground:                $grayDarker !default;
+$navbarBackgroundHighlight:       $grayDark !default;
+
+$navbarText:                      $grayLight !default;
+$navbarLinkColor:                 $grayLight !default;
+$navbarLinkColorHover:            $white !default;
+
+// Form states and alerts
+$warningText:             #c09853 !default;
+$warningBackground:       #fcf8e3 !default;
+$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%) !default;
+
+$errorText:               #b94a48 !default;
+$errorBackground:         #f2dede !default;
+$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%) !default;
+
+$successText:             #468847 !default;
+$successBackground:       #dff0d8 !default;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%) !default;
+
+$infoText:                #3a87ad !default;
+$infoBackground:          #d9edf7 !default;
+$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
+
+
+
+// GRID
+// ----
+
+// Default 940px grid
+$gridColumns:             12 !default;
+$gridColumnWidth:         60px !default;
+$gridGutterWidth:         20px !default;
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+// Fluid grid
+$fluidGridColumnWidth:    6.382978723% !default;
+$fluidGridGutterWidth:    2.127659574% !default;

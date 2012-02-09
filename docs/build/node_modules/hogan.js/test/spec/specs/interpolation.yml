@@ -1,0 +1,230 @@
+overview: |
+  Interpolation tags are used to integrate dynamic content into the template.
+
+  The tag's content MUST be a non-whitespace character sequence NOT containing
+  the current closing delimiter.
+
+  This tag's content names the data to replace the tag.  A single period (`.`)
+  indicates that the item currently sitting atop the context stack should be
+  used; otherwise, name resolution is as follows:
+    1) Split the name on periods; the first part is the name to resolve, any
+    remaining parts should be retained.
+    2) Walk the context stack from top to bottom, finding the first context
+    that is a) a hash containing the name as a key OR b) an object responding
+    to a method with the given name.
+    3) If the context is a hash, the data is the value associated with the
+    name.
+    4) If the context is an object, the data is the value returned by the
+    method with the given name.
+    5) If any name parts were retained in step 1, each should be resolved
+    against a context stack containing only the result from the former
+    resolution.  If any part fails resolution, the result should be considered
+    falsey, and should interpolate as the empty string.
+  Data should be coerced into a string (and escaped, if appropriate) before
+  interpolation.
+
+  The Interpolation tags MUST NOT be treated as standalone.
+tests:
+  - name: No Interpolation
+    desc: Mustache-free templates should render as-is.
+    data: { }
+    template: |
+      Hello from {Mustache}!
+    expected: |
+      Hello from {Mustache}!
+
+  - name: Basic Interpolation
+    desc: Unadorned tags should interpolate content into the template.
+    data: { subject: "world" }
+    template: |
+      Hello, {{subject}}!
+    expected: |
+      Hello, world!
+
+  - name: HTML Escaping
+    desc: Basic interpolation should be HTML escaped.
+    data: { forbidden: '& " < >' }
+    template: |
+      These characters should be HTML escaped: {{forbidden}}
+    expected: |
+      These characters should be HTML escaped: &amp; &quot; &lt; &gt;
+
+  - name: Triple Mustache
+    desc: Triple mustaches should interpolate without HTML escaping.
+    data: { forbidden: '& " < >' }
+    template: |
+      These characters should not be HTML escaped: {{{forbidden}}}
+    expected: |
+      These characters should not be HTML escaped: & " < >
+
+  - name: Ampersand
+    desc: Ampersand should interpolate without HTML escaping.
+    data: { forbidden: '& " < >' }
+    template: |
+      These characters should not be HTML escaped: {{&forbidden}}
+    expected: |
+      These characters should not be HTML escaped: & " < >
+
+  - name: Basic Integer Interpolation
+    desc: Integers should interpolate seamlessly.
+    data: { mph: 85 }
+    template: '"{{mph}} miles an hour!"'
+    expected: '"85 miles an hour!"'
+
+  - name: Triple Mustache Integer Interpolation
+    desc: Integers should interpolate seamlessly.
+    data: { mph: 85 }
+    template: '"{{{mph}}} miles an hour!"'
+    expected: '"85 miles an hour!"'
+
+  - name: Ampersand Integer Interpolation
+    desc: Integers should interpolate seamlessly.
+    data: { mph: 85 }
+    template: '"{{&mph}} miles an hour!"'
+    expected: '"85 miles an hour!"'
+
+  - name: Basic Decimal Interpolation
+    desc: Decimals should interpolate seamlessly with proper significance.
+    data: { power: 1.210 }
+    template: '"{{power}} jiggawatts!"'
+    expected: '"1.21 jiggawatts!"'
+
+  - name: Triple Mustache Decimal Interpolation
+    desc: Decimals should interpolate seamlessly with proper significance.
+    data: { power: 1.210 }
+    template: '"{{{power}}} jiggawatts!"'
+    expected: '"1.21 jiggawatts!"'
+
+  - name: Ampersand Decimal Interpolation
+    desc: Decimals should interpolate seamlessly with proper significance.
+    data: { power: 1.210 }
+    template: '"{{&power}} jiggawatts!"'
+    expected: '"1.21 jiggawatts!"'
+
+  # Context Misses
+
+  - name: Basic Context Miss Interpolation
+    desc: Failed context lookups should default to empty strings.
+    data: { }
+    template: "I ({{cannot}}) be seen!"
+    expected: "I () be seen!"
+
+  - name: Triple Mustache Context Miss Interpolation
+    desc: Failed context lookups should default to empty strings.
+    data: { }
+    template: "I ({{{cannot}}}) be seen!"
+    expected: "I () be seen!"
+
+  - name: Ampersand Context Miss Interpolation
+    desc: Failed context lookups should default to empty strings.
+    data: { }
+    template: "I ({{&cannot}}) be seen!"
+    expected: "I () be seen!"
+
+  # Dotted Names
+
+  - name: Dotted Names - Basic Interpolation
+    desc: Dotted names should be considered a form of shorthand for sections.
+    data: { person: { name: 'Joe' } }
+    template: '"{{person.name}}" == "{{#person}}{{name}}{{/person}}"'
+    expected: '"Joe" == "Joe"'
+
+  - name: Dotted Names - Triple Mustache Interpolation
+    desc: Dotted names should be considered a form of shorthand for sections.
+    data: { person: { name: 'Joe' } }
+    template: '"{{{person.name}}}" == "{{#person}}{{{name}}}{{/person}}"'
+    expected: '"Joe" == "Joe"'
+
+  - name: Dotted Names - Ampersand Interpolation
+    desc: Dotted names should be considered a form of shorthand for sections.
+    data: { person: { name: 'Joe' } }
+    template: '"{{&person.name}}" == "{{#person}}{{&name}}{{/person}}"'
+    expected: '"Joe" == "Joe"'
+
+  - name: Dotted Names - Arbitrary Depth
+    desc: Dotted names should be functional to any level of nesting.
+    data:
+      a: { b: { c: { d: { e: { name: 'Phil' } } } } }
+    template: '"{{a.b.c.d.e.name}}" == "Phil"'
+    expected: '"Phil" == "Phil"'
+
+  - name: Dotted Names - Broken Chains
+    desc: Any falsey value prior to the last part of the name should yield ''.
+    data:
+      a: { }
+    template: '"{{a.b.c}}" == ""'
+    expected: '"" == ""'
+
+  - name: Dotted Names - Broken Chain Resolution
+    desc: Each part of a dotted name should resolve only against its parent.
+    data:
+      a: { b: { } }
+      c: { name: 'Jim' }
+    template: '"{{a.b.c.name}}" == ""'
+    expected: '"" == ""'
+
+  - name: Dotted Names - Initial Resolution
+    desc: The first part of a dotted name should resolve as any other name.
+    data:
+      a: { b: { c: { d: { e: { name: 'Phil' } } } } }
+      b: { c: { d: { e: { name: 'Wrong' } } } }
+    template: '"{{#a}}{{b.c.d.e.name}}{{/a}}" == "Phil"'
+    expected: '"Phil" == "Phil"'
+
+  # Whitespace Sensitivity
+
+  - name: Interpolation - Surrounding Whitespace
+    desc: Interpolation should not alter surrounding whitespace.
+    data: { string: '---' }
+    template: '| {{string}} |'
+    expected: '| --- |'
+
+  - name: Triple Mustache - Surrounding Whitespace
+    desc: Interpolation should not alter surrounding whitespace.
+    data: { string: '---' }
+    template: '| {{{string}}} |'
+    expected: '| --- |'
+
+  - name: Ampersand - Surrounding Whitespace
+    desc: Interpolation should not alter surrounding whitespace.
+    data: { string: '---' }
+    template: '| {{&string}} |'
+    expected: '| --- |'
+
+  - name: Interpolation - Standalone
+    desc: Standalone interpolation should not alter surrounding whitespace.
+    data: { string: '---' }
+    template: "  {{string}}\n"
+    expected: "  ---\n"
+
+  - name: Triple Mustache - Standalone
+    desc: Standalone interpolation should not alter surrounding whitespace.
+    data: { string: '---' }
+    template: "  {{{string}}}\n"
+    expected: "  ---\n"
+
+  - name: Ampersand - Standalone
+    desc: Standalone interpolation should not alter surrounding whitespace.
+    data: { string: '---' }
+    template: "  {{&string}}\n"
+    expected: "  ---\n"
+
+  # Whitespace Insensitivity
+
+  - name: Interpolation With Padding
+    desc: Superfluous in-tag whitespace should be ignored.
+    data: { string: "---" }
+    template: '|{{ string }}|'
+    expected: '|---|'
+
+  - name: Triple Mustache With Padding
+    desc: Superfluous in-tag whitespace should be ignored.
+    data: { string: "---" }
+    template: '|{{{ string }}}|'
+    expected: '|---|'
+
+  - name: Ampersand With Padding
+    desc: Superfluous in-tag whitespace should be ignored.
+    data: { string: "---" }
+    template: '|{{& string }}|'
+    expected: '|---|'

@@ -1,0 +1,18 @@
+// CLOSE ICONS
+// -----------
+
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: $baseLineHeight;
+  color: $black;
+  text-shadow: 0 1px 0 rgba(255,255,255,1);
+  @include opacity(20);
+  &:hover {
+    color: $black;
+    text-decoration: none;
+    @include opacity(40);
+    cursor: pointer;
+  }
+}

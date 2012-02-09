@@ -1,0 +1,18 @@
+// COMPONENT ANIMATIONS
+// --------------------
+
+.fade {
+  @include transition(opacity .15s linear);
+  opacity: 0;
+  &.in {
+    opacity: 1;
+  }
+}
+
+.collapse {
+  @include transition(height .35s ease);
+  position:relative;
+  overflow:hidden;
+  height: 0;
+  &.in { height: auto; }
+}
