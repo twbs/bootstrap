@@ -13,54 +13,54 @@
  */
 
 // Core variables and mixins
-@import "variables.scss"; // Modify this for custom colors, font-sizes, etc
-@import "mixins.scss";
+@import "variables"; // Modify this for custom colors, font-sizes, etc
+@import "mixins";
 
 // CSS Reset
-@import "reset.scss";
+@import "reset";
 
 // Grid system and page structure
-@import "scaffolding.scss";
-@import "grid.scss";
-@import "layouts.scss";
+@import "scaffolding";
+@import "grid";
+@import "layouts";
 
 // Base CSS
-@import "type.scss";
-@import "code.scss";
-@import "forms.scss";
-@import "tables.scss";
+@import "type";
+@import "code";
+@import "forms";
+@import "tables";
 
 // Components: common
-@import "sprites.scss";
-@import "dropdowns.scss";
-@import "wells.scss";
-@import "component-animations.scss";
-@import "close.scss";
+@import "sprites";
+@import "dropdowns";
+@import "wells";
+@import "component-animations";
+@import "close";
 
 // Components: Buttons & Alerts
-@import "buttons.scss";
-@import "button-groups.scss";
-@import "alerts.scss"; // Note: alerts share common CSS with buttons and thus have styles in buttons.scss
+@import "buttons";
+@import "button-groups";
+@import "alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons.scss
 
 // Components: Nav
-@import "navs.scss";
-@import "navbar.scss";
-@import "breadcrumbs.scss";
-@import "pagination.scss";
-@import "pager.scss";
+@import "navs";
+@import "navbar";
+@import "breadcrumbs";
+@import "pagination";
+@import "pager";
 
 // Components: Popovers
-@import "modals.scss";
-@import "tooltip.scss";
-@import "popovers.scss";
+@import "modals";
+@import "tooltip";
+@import "popovers";
 
 // Components: Misc
-@import "thumbnails.scss";
-@import "labels.scss";
-@import "progress-bars.scss";
-@import "accordion.scss";
-@import "carousel.scss";
-@import "hero-unit.scss";
+@import "thumbnails";
+@import "labels";
+@import "progress-bars";
+@import "accordion";
+@import "carousel";
+@import "hero-unit";
 
 // Utility classes
-@import "utilities.scss"; // Has to be last to override when necessary
+@import "utilities"; // Has to be last to override when necessary
