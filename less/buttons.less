@@ -107,7 +107,9 @@
 .btn-success,
 .btn-success:hover,
 .btn-info,
-.btn-info:hover {
+.btn-info:hover,
+.btn-dark,
+.btn-dark:hover {
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   color: @white;
 }
@@ -116,7 +118,8 @@
 .btn-warning.active,
 .btn-danger.active,
 .btn-success.active,
-.btn-info.active {
+.btn-info.active,
+.btn-dark.active {
   color: rgba(255,255,255,.75);
 }
 
@@ -140,6 +143,10 @@
 // Info appears as a neutral blue
 .btn-info {
   .buttonBackground(#5bc0de, #2f96b4);
+}
+// Dark appears as black
+.btn-dark {
+  .buttonBackground(#454545, #262626);
 }
 
 
