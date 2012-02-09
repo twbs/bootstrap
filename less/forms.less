@@ -28,6 +28,12 @@ legend {
   color: @grayDark;
   border: 0;
   border-bottom: 1px solid #eee;
+  
+  // Legend collapses margin, so we need to move margin to following element
+  + .control-group {
+    margin-top: @baseLineHeight;
+    -webkit-margin-top-collapse: separate;
+  }
 }
 
 // Set font for forms
@@ -487,11 +493,6 @@ select:focus:required:invalid {
 // --------------------------
 
 .form-horizontal {
-  // Legend collapses margin, so we're relegated to padding
-  legend + .control-group {
-    margin-top: @baseLineHeight;
-    -webkit-margin-top-collapse: separate;
-  }
   // Increase spacing between groups
   .control-group {
     margin-bottom: @baseLineHeight;
