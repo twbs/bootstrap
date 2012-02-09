@@ -21,7 +21,7 @@
     <h1>{{_i}}Grid system <small>12 columns with a responsive twist</small>{{/i}}</h1>
   </div>
 
-  <h2>Default 940px grid</h2>
+  <h2>{{_i}}Default grid{{/i}}</h2>
   <div class="row show-grid">
     <div class="span1">1</div>
     <div class="span1">1</div>
@@ -72,7 +72,7 @@
 
   <br>
 
-  <h2>Offsetting columns</h2>
+  <h2>{{_i}}Offsetting columns{{/i}}</h2>
   <div class="row show-grid">
     <div class="span4">4</div>
     <div class="span4 offset4">4 offset 4</div>
@@ -166,7 +166,7 @@
     </div>
     <div class="span4">
       <h3>{{_i}}How to customize{{/i}}</h3>
-      <p>{{_i}}Modifying the grid means changing the three <code>@grid*</code> variables and recompiling Bootstrap. Change the grid variables in variables.less and use one of the <a href="#compiling">four ways documented to recompile</a>. If you're adding more columns, be sure to add the CSS for those in grid.less.{{/i}}</p>
+      <p>{{_i}}Modifying the grid means changing the three <code>@grid*</code> variables and recompiling Bootstrap. Change the grid variables in variables.less and use one of the <a href="less.html#compiling">four ways documented to recompile</a>. If you're adding more columns, be sure to add the CSS for those in grid.less.{{/i}}</p>
     </div>
     <div class="span4">
       <h3>{{_i}}Staying responsive{{/i}}</h3>
@@ -281,6 +281,10 @@
         </tbody>
       </table>
 
+      <h3>{{_i}}Requires meta tag{{/i}}</h3>
+      <p>{{_i}}To ensure devices display responsive pages properly, include the viewport meta tag.{{/i}}</p>
+      <pre class="prettyprint linenums">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+
       <h3>{{_i}}What they do{{/i}}</h3>
       <p>{{_i}}Media queries allow for custom CSS based on a number of conditions&mdash;ratios, widths, display type, etc&mdash;but usually focuses around <code>min-width</code> and <code>max-width</code>.{{/i}}</p>
       <ul>
@@ -301,7 +305,7 @@
       <ol>
         <li>{{_i}}Use the compiled responsive version, bootstrap-responsive.css{{/i}}</li>
         <li>{{_i}}Add @import "responsive.less" and recompile Bootstrap{{/i}}</li>
-        <li>{{_i}}Modify and recompile responsive.less as a separate{{/i}}</li>
+        <li>{{_i}}Modify and recompile responsive.less as a separate file{{/i}}</li>
       </ol>
       <p>{{_i}}<strong>Why not just include it?</strong> Truth be told, not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it.{{/i}}</p>
     </div>

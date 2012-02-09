@@ -7,16 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
@@ -375,7 +375,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </div><!--/span-->
     <div class="span4">
       <h2>Basic block</h2>
-      <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to turn any carets into their unicode characters for proper rendering.</p>
+      <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to turn any angle brackets into unicode characters for proper rendering.</p>
 <pre>
 &lt;p&gt;Sample text here...&lt;/p&gt;
 </pre>
@@ -530,7 +530,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <td>
           <code>.table-bordered</code>
         </td>
-        <td>Rounds corners and adds outter border</td>
+        <td>Rounds corners and adds outer border</td>
       </tr>
       <tr>
         <td>Zebra-stripe</td>
@@ -852,9 +852,9 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
 
   <h2>Example forms <small>using just form controls, no extra markup</small></h2>
-  <h3>Basic form</h3>
   <div class="row">
     <div class="span3">
+      <h3>Basic form</h3>
       <p>With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.</p>
     </div>
     <div class="span9">
@@ -866,11 +866,22 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         </label>
         <button type="submit" class="btn">Submit</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well"&gt;
+  &lt;label&gt;Label name&lt;/label&gt;
+  &lt;input type="text" class="span3" placeholder="Type something…"&gt;
+  &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;label class="checkbox"&gt;
+    &lt;input type="checkbox"&gt; Check me out
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>Search form</h3>
   <div class="row">
     <div class="span3">
+      <h3>Search form</h3>
       <p>Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.</p>
     </div>
     <div class="span9">
@@ -878,19 +889,32 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <input type="text" class="input-medium search-query">
         <button type="submit" class="btn">Search</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-search"&gt;
+  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>Inline form</h3>
   <div class="row">
     <div class="span3">
+      <h3>Inline form</h3>
       <p>Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.</p>
     </div>
     <div class="span9">
-      <form class="well form-search">
+      <form class="well form-inline">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
         <button type="submit" class="btn">Go</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-inline"&gt;
+  &lt;input type="text" class="input-small" placeholder="Email"&gt;
+  &lt;input type="password" class="input-small" placeholder="Password"&gt;
+  &lt;button type="submit" class="btn"&gt;Go&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div><!-- /row -->
 
@@ -960,6 +984,22 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </div>
         </fieldset>
       </form>
+      <h3>Example markup</h3>
+      <p>Given the above example form layout, here's the markup associated with the first input and control group. The <code>.control-group</code>, <code>.control-label</code>, and <code>.controls</code> classes are all required for styling.</p>
+<pre class="prettyprint linenums">
+&lt;form class="form-horizontal"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Legend text&lt;/legend&gt;
+    &lt;div class="control-group"&gt;
+      &lt;label class="control-label" for="input01"&gt;Text input&lt;/label&gt;
+      &lt;div class="controls"&gt;
+        &lt;input type="text" class="input-xlarge" id="input01"&gt;
+        &lt;p class="help-block"&gt;Supporting help text&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
     </div>
     <div class="span4">
       <h3>What's included</h3>
@@ -1056,7 +1096,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </div>
     <div class="span4">
       <h3>Redesigned browser states</h3>
-      <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in it's place for <code>:focus</code>.</p>
+      <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
       <hr>
       <h3>Form validation</h3>
       <p>It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.</p>
@@ -1249,20 +1289,13 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     <div class="span4">
       <h3>Buttons for actions</h3>
       <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.</p>
+      <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
+      <h3>Cross browser compatibility</h3>
+      <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
     </div>
-    <div class="span4">
-      <h3>For anchors and forms</h3>
-      <p>Button styles can be applied to anything with the <code>.btn</code> applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
-    </div>
-    <div class="span4">
-      <p><strong>Note:</strong> All buttons must include the <code>.btn</code> class. Button styles should be applied to <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> elements for consistency.</p>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="span4">
       <h3>Multiple sizes</h3>
-      <p>Fancy larger or smaller buttons? Have at it!</p>
+      <p>Fancy larger or smaller buttons? Add <code>.btn-large</code> or <code>.btn-small</code> for two additional sizes.</p>
       <p>
         <a href="#" class="btn btn-large btn-primary">Primary action</a>
         <a href="#" class="btn btn-large">Action</a>
@@ -1271,8 +1304,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <a href="#" class="btn btn-small btn-primary">Primary action</a>
         <a href="#" class="btn btn-small">Action</a>
       </p>
-    </div>
-    <div class="span4">
+      <br>
       <h3>Disabled state</h3>
       <p>For disabled buttons, use <code>.btn-disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
       <p>
@@ -1285,14 +1317,27 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       </p>
     </div>
     <div class="span4">
-      <h3>Cross browser compatibility</h3>
-      <p>In IE9, we drop the gradient on all buttons in favor of rounded corners as IE9 doesn't crop background gradients to the corners.</p>
-      <p>Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow&mdash;unfortunately we can't fix this.</p>
+      <h3>One class, multiple tags</h3>
+      <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+<form>
+<a class="btn" href="">Link</a>
+<button class="btn" type="submit">Button</button>
+<input class="btn" type="button" value="Input">
+<input class="btn" type="submit" value="Submit">
+</form>
+<pre class="prettyprint linenums">
+&lt;a class="btn" href=""&gt;Link&lt;/a&gt;
+&lt;button class="btn" type="submit"&gt;
+  Button
+&lt;/button&gt;
+&lt;input class="btn" type="button" 
+         value="Input"&gt;
+&lt;input class="btn" type="submit" 
+         value="Submit"&gt;
+</pre>
+      <p>As a best practice, try to match the element for you context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
     </div>
   </div>
-
-  <br>
-
 </section>
 
 
@@ -1446,7 +1491,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </div>
   </div>
   <div class="alert alert-info">
-    <strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code>. In the docs, we show a light red background color on hover to hightlight the icon's size.
+    <strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code>. In the docs, we show a light red background color on hover to highlight the icon's size.
   </div>
 
   <br>
@@ -1469,6 +1514,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
       <p>There are 120 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.</p>
+      <div class="alert alert-info">
+        <strong>Heads up!</strong>
+        The <code>.icon-</code> class must be listed first in the class tag for proper CSS targeting.
+      </div>
     </div>
     <div class="span4">
       <h3>Use cases</h3>
@@ -1495,7 +1544,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <a class="btn" href="#"><i class="icon-align-justify"></i></a>
         </div>
         <div class="btn-group">
-          <a class="btn btn-primary" href="#"><i class="icon white user"></i> User</a>
+          <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
