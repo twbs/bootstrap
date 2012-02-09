@@ -112,6 +112,11 @@ The Twitter Bootstrap was lovingly converted to CSS by:
 + http://twitter.com/copiousfreetime
 + http://github.com/copiousfreetime
 
+**m5o**
+
++ http://twitter.com/m5o
++ http://github.com/m5o
+
 And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 
 
