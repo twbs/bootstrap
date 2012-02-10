@@ -84,7 +84,7 @@
     position: static;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container {
     width: auto;
     padding: 0 20px;

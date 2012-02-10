@@ -91,6 +91,7 @@ input[type="radio"] {
 
 // Reset the file input to browser defaults
 input[type="file"] {
+  width: auto;
   padding: initial;
   line-height: initial;
   border: initial;
@@ -165,20 +166,17 @@ input[type="hidden"] {
 }
 
 // Radios and checkboxes on same line
+// TODO v3: Convert .inline to .control-inline
 .radio.inline,
 .checkbox.inline {
   display: inline-block;
+  padding-top: 5px;
   margin-bottom: 0;
   vertical-align: middle;
 }
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {
   margin-left: 10px; // space out consecutive inline controls
-}
-// But don't forget to remove their padding on first-child
-.controls > .radio.inline:first-child,
-.controls > .checkbox.inline:first-child {
-  padding-top: 0;
 }
 
 
@@ -201,6 +199,7 @@ textarea:focus {
   outline: thin dotted \9; /* IE6-8 */
 }
 input[type="file"]:focus,
+input[type="radio"]:focus,
 input[type="checkbox"]:focus,
 select:focus {
   .box-shadow(none); // override for file inputs
@@ -260,33 +259,6 @@ textarea[readonly] {
 // FORM FIELD FEEDBACK STATES
 // --------------------------
 
-// Mixin for form field states
-.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
-  // Set the text color
-  > label,
-  .help-block,
-  .help-inline {
-    color: @textColor;
-  }
-  // Style inputs accordingly
-  input,
-  select,
-  textarea {
-    color: @textColor;
-    border-color: @borderColor;
-    &:focus {
-      border-color: darken(@borderColor, 10%);
-      .box-shadow(0 0 6px lighten(@borderColor, 20%));
-    }
-  }
-  // Give a small background color for input-prepend/-append
-  .input-prepend .add-on,
-  .input-append .add-on {
-    color: @textColor;
-    background-color: @backgroundColor;
-    border-color: @textColor;
-  }
-}
 // Warning
 .control-group.warning {
   .formFieldState(@warningText, @warningText, @warningBackground);
@@ -461,6 +433,10 @@ select:focus:required:invalid {
     display: inline-block;
     margin-bottom: 0;
   }
+  // Re-hide hidden elements due to specifity
+  .hide {
+    display: none;
+  }
 }
 .form-search label,
 .form-inline label,
@@ -498,7 +474,7 @@ select:focus:required:invalid {
     .clearfix();
   }
   // Float the labels left
-  .control-group > label {
+  .control-label {
     float: left;
     width: 140px;
     padding-top: 5px;

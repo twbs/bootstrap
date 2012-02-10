@@ -299,7 +299,7 @@
     </div><!--/span-->
     <div class="span4">
       <h2>Basic block</h2>
-      <p>{{_i}}Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to turn any carets into their unicode characters for proper rendering.{{/i}}</p>
+      <p>{{_i}}Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to turn any angle brackets into unicode characters for proper rendering.{{/i}}</p>
 <pre>
 &lt;p&gt;{{_i}}Sample text here...{{/i}}&lt;/p&gt;
 </pre>
@@ -454,7 +454,7 @@
         <td>
           <code>.table-bordered</code>
         </td>
-        <td>{{_i}}Rounds corners and adds outter border{{/i}}</td>
+        <td>{{_i}}Rounds corners and adds outer border{{/i}}</td>
       </tr>
       <tr>
         <td>{{_i}}Zebra-stripe{{/i}}</td>
@@ -776,9 +776,9 @@
 
 
   <h2>{{_i}}Example forms <small>using just form controls, no extra markup</small>{{/i}}</h2>
-  <h3>{{_i}}Basic form{{/i}}</h3>
   <div class="row">
     <div class="span3">
+      <h3>{{_i}}Basic form{{/i}}</h3>
       <p>{{_i}}With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.{{/i}}</p>
     </div>
     <div class="span9">
@@ -790,11 +790,22 @@
         </label>
         <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well"&gt;
+  &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
+  &lt;input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}"&gt;
+  &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;label class="checkbox"&gt;
+    &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>{{_i}}Search form{{/i}}</h3>
   <div class="row">
     <div class="span3">
+      <h3>{{_i}}Search form{{/i}}</h3>
       <p>{{_i}}Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.{{/i}}</p>
     </div>
     <div class="span9">
@@ -802,19 +813,32 @@
         <input type="text" class="input-medium search-query">
         <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-search"&gt;
+  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div> <!-- /row -->
-  <h3>{{_i}}Inline form{{/i}}</h3>
   <div class="row">
     <div class="span3">
+      <h3>{{_i}}Inline form{{/i}}</h3>
       <p>{{_i}}Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.{{/i}}</p>
     </div>
     <div class="span9">
-      <form class="well form-search">
+      <form class="well form-inline">
         <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}">
         <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
         <button type="submit" class="btn">{{_i}}Go{{/i}}</button>
       </form>
+<pre class="prettyprint linenums">
+&lt;form class="well form-inline"&gt;
+  &lt;input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}"&gt;
+  &lt;input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}"&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Go{{/i}}&lt;/button&gt;
+&lt;/form&gt;
+</pre>
     </div>
   </div><!-- /row -->
 
@@ -884,6 +908,22 @@
           </div>
         </fieldset>
       </form>
+      <h3>{{_i}}Example markup{{/i}}</h3>
+      <p>{{_i}}Given the above example form layout, here's the markup associated with the first input and control group. The <code>.control-group</code>, <code>.control-label</code>, and <code>.controls</code> classes are all required for styling.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;form class="form-horizontal"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;{{_i}}Legend text{{/i}}&lt;/legend&gt;
+    &lt;div class="control-group"&gt;
+      &lt;label class="control-label" for="input01"&gt;{{_i}}Text input{{/i}}&lt;/label&gt;
+      &lt;div class="controls"&gt;
+        &lt;input type="text" class="input-xlarge" id="input01"&gt;
+        &lt;p class="help-block"&gt;{{_i}}Supporting help text{{/i}}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
     </div>
     <div class="span4">
       <h3>{{_i}}What's included{{/i}}</h3>
@@ -980,7 +1020,7 @@
     </div>
     <div class="span4">
       <h3>{{_i}}Redesigned browser states{{/i}}</h3>
-      <p>{{_i}}Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in it's place for <code>:focus</code>.{{/i}}</p>
+      <p>{{_i}}Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.{{/i}}</p>
       <hr>
       <h3>{{_i}}Form validation{{/i}}</h3>
       <p>{{_i}}It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.{{/i}}</p>
@@ -1173,20 +1213,13 @@
     <div class="span4">
       <h3>{{_i}}Buttons for actions{{/i}}</h3>
       <p>{{_i}}As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.{{/i}}</p>
+      <p>{{_i}}Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.{{/i}}</p>
+      <h3>{{_i}}Cross browser compatibility{{/i}}</h3>
+      <p>{{_i}}IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.{{/i}}</p>
     </div>
-    <div class="span4">
-      <h3>{{_i}}For anchors and forms{{/i}}</h3>
-      <p>{{_i}}Button styles can be applied to anything with the <code>.btn</code> applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.{{/i}}</p>
-    </div>
-    <div class="span4">
-      <p>{{_i}}<strong>Note:</strong> All buttons must include the <code>.btn</code> class. Button styles should be applied to <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> elements for consistency.{{/i}}</p>
-    </div>
-  </div>
-
-  <div class="row">
     <div class="span4">
       <h3>{{_i}}Multiple sizes{{/i}}</h3>
-      <p>{{_i}}Fancy larger or smaller buttons? Have at it!{{/i}}</p>
+      <p>{{_i}}Fancy larger or smaller buttons? Add <code>.btn-large</code> or <code>.btn-small</code> for two additional sizes.{{/i}}</p>
       <p>
         <a href="#" class="btn btn-large btn-primary">{{_i}}Primary action{{/i}}</a>
         <a href="#" class="btn btn-large">{{_i}}Action{{/i}}</a>
@@ -1195,8 +1228,7 @@
         <a href="#" class="btn btn-small btn-primary">{{_i}}Primary action{{/i}}</a>
         <a href="#" class="btn btn-small">{{_i}}Action{{/i}}</a>
       </p>
-    </div>
-    <div class="span4">
+      <br>
       <h3>{{_i}}Disabled state{{/i}}</h3>
       <p>{{_i}}For disabled buttons, use <code>.btn-disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.{{/i}}</p>
       <p>
@@ -1209,14 +1241,27 @@
       </p>
     </div>
     <div class="span4">
-      <h3>Cross browser compatibility</h3>
-      <p>In IE9, we drop the gradient on all buttons in favor of rounded corners as IE9 doesn't crop background gradients to the corners.</p>
-      <p>Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow&mdash;unfortunately we can't fix this.</p>
+      <h3>{{_i}}One class, multiple tags{{/i}}</h3>
+      <p>{{_i}}Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.{{/i}}</p>
+<form>
+<a class="btn" href="">{{_i}}Link{{/i}}</a>
+<button class="btn" type="submit">{{_i}}Button{{/i}}</button>
+<input class="btn" type="button" value="{{_i}}Input{{/i}}">
+<input class="btn" type="submit" value="{{_i}}Submit{{/i}}">
+</form>
+<pre class="prettyprint linenums">
+&lt;a class="btn" href=""&gt;{{_i}}Link{{/i}}&lt;/a&gt;
+&lt;button class="btn" type="submit"&gt;
+  {{_i}}Button{{/i}}
+&lt;/button&gt;
+&lt;input class="btn" type="button" 
+         value="{{_i}}Input{{/i}}"&gt;
+&lt;input class="btn" type="submit" 
+         value="{{_i}}Submit{{/i}}"&gt;
+</pre>
+      <p>{{_i}}As a best practice, try to match the element for you context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.{{/i}}</p>
     </div>
   </div>
-
-  <br>
-
 </section>
 
 
@@ -1370,7 +1415,7 @@
     </div>
   </div>
   <div class="alert alert-info">
-    {{_i}}<strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code>. In the docs, we show a light red background color on hover to hightlight the icon's size.{{/i}}
+    {{_i}}<strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code>. In the docs, we show a light red background color on hover to highlight the icon's size.{{/i}}
   </div>
 
   <br>
@@ -1393,6 +1438,10 @@
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
       <p>{{_i}}There are 120 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.{{/i}}</p>
+      <div class="alert alert-info">
+        <strong>{{_i}}Heads up!{{/i}}</strong>
+        {{_i}}The <code>.icon-</code> class must be listed first in the class tag for proper CSS targeting.{{/i}}
+      </div>
     </div>
     <div class="span4">
       <h3>{{_i}}Use cases{{/i}}</h3>
@@ -1419,7 +1468,7 @@
           <a class="btn" href="#"><i class="icon-align-justify"></i></a>
         </div>
         <div class="btn-group">
-          <a class="btn btn-primary" href="#"><i class="icon white user"></i> {{_i}}User{{/i}}</a>
+          <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> {{_i}}User{{/i}}</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#"><i class="icon-pencil"></i> {{_i}}Edit{{/i}}</a></li>

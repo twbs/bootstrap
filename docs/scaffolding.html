@@ -7,16 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
@@ -97,7 +97,7 @@
     <h1>Grid system <small>12 columns with a responsive twist</small></h1>
   </div>
 
-  <h2>Default 940px grid</h2>
+  <h2>Default grid</h2>
   <div class="row show-grid">
     <div class="span1">1</div>
     <div class="span1">1</div>
@@ -242,7 +242,7 @@
     </div>
     <div class="span4">
       <h3>How to customize</h3>
-      <p>Modifying the grid means changing the three <code>@grid*</code> variables and recompiling Bootstrap. Change the grid variables in variables.less and use one of the <a href="#compiling">four ways documented to recompile</a>. If you're adding more columns, be sure to add the CSS for those in grid.less.</p>
+      <p>Modifying the grid means changing the three <code>@grid*</code> variables and recompiling Bootstrap. Change the grid variables in variables.less and use one of the <a href="less.html#compiling">four ways documented to recompile</a>. If you're adding more columns, be sure to add the CSS for those in grid.less.</p>
     </div>
     <div class="span4">
       <h3>Staying responsive</h3>
@@ -357,6 +357,10 @@
         </tbody>
       </table>
 
+      <h3>Requires meta tag</h3>
+      <p>To ensure devices display responsive pages properly, include the viewport meta tag.</p>
+      <pre class="prettyprint linenums">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+
       <h3>What they do</h3>
       <p>Media queries allow for custom CSS based on a number of conditions&mdash;ratios, widths, display type, etc&mdash;but usually focuses around <code>min-width</code> and <code>max-width</code>.</p>
       <ul>
@@ -377,7 +381,7 @@
       <ol>
         <li>Use the compiled responsive version, bootstrap-responsive.css</li>
         <li>Add @import "responsive.less" and recompile Bootstrap</li>
-        <li>Modify and recompile responsive.less as a separate</li>
+        <li>Modify and recompile responsive.less as a separate file</li>
       </ol>
       <p><strong>Why not just include it?</strong> Truth be told, not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it.</p>
     </div>
