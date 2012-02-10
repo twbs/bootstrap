@@ -551,6 +551,9 @@
           <propertyregex property="modules.sha" input="${modules.fullsha}" regexp=".{${hash.length}}" select="\0" />
           <property name="modules.js.dir" value="${dir.js}/${modules.sha}" />
           <move file="${dir.publish}/${dir.js.modules}/" tofile="${dir.publish}/${dir.js}/${modules.sha}/" />
+          <copy todir="${dir.publish}/${dir.js}/${modules.sha}/" >
+          	<fileset dir="${dir.intermediate}/${dir.js.modules}" includes="**/**.js" excludes="_all.js" />
+          </copy>
         </then>
       </if>
     </then>
