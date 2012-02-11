@@ -97,7 +97,8 @@
   <div class="row">
     <div class="span6">
       <p>{{_i}}With the static (non-fluid) grid system in Bootstrap, nesting is easy. To nest your content, just add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column.{{/i}}</p>
-      <h4>{{_i}}Example{{/i}}</h4>
+      <h3>{{_i}}Example{{/i}}</h3>
+      <p>{{_i}}Nested rows should include a set of columns that add up to the number of columns of it's parent. For example, two nested <code>.span3</code> columns should be placed within a <code>.span6</code>.{{/i}}</p>
       <div class="row show-grid">
         <div class="span6">
           {{_i}}Level 1 of column{{/i}}
@@ -107,6 +108,21 @@
             </div>
             <div class="span3">
               {{_i}}Level 2{{/i}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>{{_i}}Fluid example{{/i}}</h3>
+      <p>{{_i}}Nesting with fluid grids is a bit different: the number of nested columns doesn't need to match the parent. Instead, your columns are reset at each level because each row takes up 100% of the parent column.{{/i}}</p>
+      <div class="row-fluid show-grid">
+        <div class="span12">
+          {{_i}}Fluid 12{{/i}}
+          <div class="row-fluid show-grid">
+            <div class="span6">
+              {{_i}}Fluid 6{{/i}}
+            </div>
+            <div class="span6">
+              {{_i}}Fluid 6{{/i}}
             </div>
           </div>
         </div>
