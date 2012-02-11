@@ -9,7 +9,7 @@
  *
  * Converted to Sass by @johnwlong / @m5o.
  *
- * Date: Thu Feb  9 10:08:13 EST 2012
+ * Date: Sa 11 Feb 2012 19:53:05 CET
  */
 .hidden {
   display: none;
@@ -96,7 +96,7 @@
     position: static;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container {
     width: auto;
     padding: 0 20px;
