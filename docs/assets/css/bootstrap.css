@@ -967,7 +967,7 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 .control-group {
   margin-bottom: 9px;
 }
-.form-horizontal legend + .control-group {
+legend + .control-group {
   margin-top: 18px;
   -webkit-margin-top-collapse: separate;
 }
