@@ -481,9 +481,6 @@ hr.soften {
 /* Misc
 -------------------------------------------------- */
 
-pre.prettyprint {
-  overflow: hidden;
-}
 
 .browser-support {
   max-width: 100%;

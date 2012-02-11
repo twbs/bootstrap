@@ -374,8 +374,7 @@ ol {
 li {
   line-height: 18px;
 }
-ul.unstyled,
-ol.unstyled {
+ul.unstyled, ol.unstyled {
   margin-left: 0;
   list-style: none;
 }
@@ -498,6 +497,10 @@ pre code {
   color: inherit;
   background-color: transparent;
   border: 0;
+}
+.pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll;
 }
 form {
   margin: 0 0 18px;
@@ -1004,14 +1007,14 @@ table {
   padding: 8px;
   line-height: 18px;
   text-align: left;
+  vertical-align: top;
   border-top: 1px solid #ddd;
 }
 .table th {
   font-weight: bold;
-  vertical-align: bottom;
 }
-.table td {
-  vertical-align: top;
+.table thead th {
+  vertical-align: bottom;
 }
 .table thead:first-child tr th, .table thead:first-child tr td {
   border-top: 0;
