@@ -459,15 +459,16 @@ select:focus:required:invalid {
   margin-bottom: @baseLineHeight / 2;
 }
 
+// Legend collapses margin, so next element is responsible for spacing
+legend + .control-group {
+  margin-top: @baseLineHeight;
+  -webkit-margin-top-collapse: separate;
+}
+
 // Horizontal-specific styles
 // --------------------------
 
 .form-horizontal {
-  // Legend collapses margin, so we're relegated to padding
-  legend + .control-group {
-    margin-top: @baseLineHeight;
-    -webkit-margin-top-collapse: separate;
-  }
   // Increase spacing between groups
   .control-group {
     margin-bottom: @baseLineHeight;
