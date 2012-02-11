@@ -2,7 +2,7 @@
 // ----------
 
 .thumbnails {
-  margin-left: -@gridGutterWidth;
+  margin-left: -$gridGutterWidth;
   list-style: none;
   @include clearfix();
 }
