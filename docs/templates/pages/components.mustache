@@ -42,14 +42,34 @@
     <div class="span4">
       <h3>{{_i}}Button groups{{/i}}</h3>
       <p>{{_i}}Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.{{/i}}</p>
-      <p>{{_i}}You can also combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex projects.{{/i}}</p>
-      <div class="btn-toolbar" style="margin-top: 18px;">
-        <div class="btn-group">
+      <h3>{{_i}}Best practices{{/i}}</h3>
+      <p>{{_i}}We recommend the following guidelines for using button groups and toolbars:{{/i}}</p>
+      <ul>
+        <li>{{_i}}Always use the same element in a single button group, <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>.{{/i}}</li>
+        <li>{{_i}}Don't mix buttons of different colors in the same button group.{{/i}}</li>
+        <li>{{_i}}Use icons in addition to or instead of text, but be sure include alt and title text where appropriate.{{/i}}</li>
+      </ul>
+      <p>{{_i}}<span class="label label-info">Related</span> Button groups with dropdowns (see below) should be called out separately and always include a dropdown caret to indicate intended behavior.{{/i}}</p>
+    </div>
+    <div class="span4">
+      <h3>{{_i}}Default example{{/i}}</h3>
+      <p>{{_i}}Here's how the HTML looks for a standard button group built with anchor tag buttons:{{/i}}</p>
+      <div class="">
+        <div class="btn-group" style="margin: 9px 0;">
           <a class="btn" href="#">{{_i}}Left{{/i}}</a>
           <a class="btn" href="#">{{_i}}Middle{{/i}}</a>
           <a class="btn" href="#">{{_i}}Right{{/i}}</a>
         </div>
       </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
+  &lt;a class="btn" href="#"&gt;2&lt;/a&gt;
+  &lt;a class="btn" href="#"&gt;3&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+      <h3>{{_i}}Toolbar example{{/i}}</h3>
+      <p>{{_i}}Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.{{/i}}</p>
       <div class="btn-toolbar">
         <div class="btn-group">
           <a class="btn" href="#">1</a>
@@ -66,18 +86,6 @@
           <a class="btn" href="#">8</a>
         </div>
       </div>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Example markup{{/i}}</h3>
-      <p>{{_i}}Here's how the HTML looks for a standard button group built with anchor tag buttons:{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group"&gt;
-  &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;2&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;3&lt;/a&gt;
-&lt;/div&gt;
-</pre>
-      <p>{{_i}}And with a toolbar for multiple groups:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-toolbar"&gt;
   &lt;div class="btn-group"&gt;
