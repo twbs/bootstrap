@@ -181,7 +181,7 @@ hr.soften {
     top: 40px;
     left: 0;
     right: 0;
-    z-index: 1030;
+    z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
     border-color: #d5d5d5;
     border-width: 0 0 1px; /* drop the border on the fixed edges */
     -webkit-border-radius: 0;
