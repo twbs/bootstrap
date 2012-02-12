@@ -15,7 +15,8 @@
   color: $grayDark;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  @include gradient-vertical-three-colors($white, $white, 25%, darken($white, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
+  vertical-align: middle;
+  @include buttonBackground($white, darken($white, 10%));
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   @include border-radius(4px);
@@ -24,6 +25,7 @@
   cursor: pointer;
 
   // Give IE7 some love
+  @include reset-filter();
   @include ie7-restore-left-whitespace();
 }
 
