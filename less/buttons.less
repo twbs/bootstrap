@@ -16,7 +16,7 @@
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   vertical-align: middle;
-  #gradient > .vertical-three-colors(@white, @white, 25%, darken(@white, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
+  .buttonBackground(@white, darken(@white, 10%));
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   .border-radius(4px);
@@ -25,6 +25,7 @@
   cursor: pointer;
 
   // Give IE7 some love
+  .reset-filter();
   .ie7-restore-left-whitespace();
 }
 
