@@ -1310,14 +1310,18 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       </p>
       <br>
       <h3>Disabled state</h3>
-      <p>For disabled buttons, use <code>.btn-disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+      <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code> attribute for <code>&lt;button&gt;</code> elements.</p>
       <p>
         <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
         <a href="#" class="btn btn-large disabled">Link</a>
       </p>
-      <p>
+      <p style="margin-bottom: 18px;">
         <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
         <button class="btn btn-large" disabled>Button</button>
+      </p>
+      <p>
+        <span class="label label-info">Heads up!</span>
+        We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
       </p>
     </div>
     <div class="span4">

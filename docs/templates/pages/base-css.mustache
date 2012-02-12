@@ -1234,14 +1234,18 @@
       </p>
       <br>
       <h3>{{_i}}Disabled state{{/i}}</h3>
-      <p>{{_i}}For disabled buttons, use <code>.btn-disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.{{/i}}</p>
+      <p>{{_i}}For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code> attribute for <code>&lt;button&gt;</code> elements.{{/i}}</p>
       <p>
         <a href="#" class="btn btn-large btn-primary disabled">{{_i}}Primary link{{/i}}</a>
         <a href="#" class="btn btn-large disabled">{{_i}}Link{{/i}}</a>
       </p>
-      <p>
+      <p style="margin-bottom: 18px;">
         <button class="btn btn-large btn-primary disabled" disabled="disabled">{{_i}}Primary button{{/i}}</button>
         <button class="btn btn-large" disabled>{{_i}}Button{{/i}}</button>
+      </p>
+      <p>
+        <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
+        {{_i}}We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.{{/i}}
       </p>
     </div>
     <div class="span4">
