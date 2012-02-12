@@ -173,7 +173,8 @@
   <div class="row">
     <div class="span6">
       <p>With the static (non-fluid) grid system in Bootstrap, nesting is easy. To nest your content, just add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column.</p>
-      <h4>Example</h4>
+      <h3>Example</h3>
+      <p>Nested rows should include a set of columns that add up to the number of columns of it's parent. For example, two nested <code>.span3</code> columns should be placed within a <code>.span6</code>.</p>
       <div class="row show-grid">
         <div class="span6">
           Level 1 of column
@@ -183,6 +184,21 @@
             </div>
             <div class="span3">
               Level 2
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Fluid example</h3>
+      <p>Nesting with fluid grids is a bit different: the number of nested columns doesn't need to match the parent. Instead, your columns are reset at each level because each row takes up 100% of the parent column.</p>
+      <div class="row-fluid show-grid">
+        <div class="span12">
+          Fluid 12
+          <div class="row-fluid show-grid">
+            <div class="span6">
+              Fluid 6
+            </div>
+            <div class="span6">
+              Fluid 6
             </div>
           </div>
         </div>
@@ -315,7 +331,7 @@
     </div>
     <div class="span8">
       <h2>Supported devices</h2>
-      <p>Bootstrap supports a handful of media queries to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
+      <p>Bootstrap supports a handful of media queries in a single file to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -339,7 +355,7 @@
           <tr>
             <td>Landscape tablets</td>
             <td>768px to 980px</td>
-            <td>44px</td>
+            <td>42px</td>
             <td>20px</td>
           </tr>
           <tr>

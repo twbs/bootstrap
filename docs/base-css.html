@@ -375,7 +375,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </div><!--/span-->
     <div class="span4">
       <h2>Basic block</h2>
-      <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to turn any angle brackets into unicode characters for proper rendering.</p>
+      <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 <pre>
 &lt;p&gt;Sample text here...&lt;/p&gt;
 </pre>
@@ -385,6 +385,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;/pre&gt;
 </pre>
       <p><strong>Note:</strong> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
+      <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
     </div><!--/span-->
     <div class="span4">
       <h2>Google Prettify</h2>
@@ -906,7 +907,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <form class="well form-inline">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
-        <button type="submit" class="btn">Go</button>
+        <label class="checkbox">
+          <input type="checkbox"> Remember?
+        </label>
+        <button type="submit" class="btn">Sign in</button>
       </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-inline"&gt;
@@ -980,7 +984,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </div>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save changes</button>
-            <button type="reset" class="btn">Cancel</button>
+            <button class="btn">Cancel</button>
           </div>
         </fieldset>
       </form>
@@ -1089,7 +1093,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </div>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save changes</button>
-            <button type="reset" class="btn">Cancel</button>
+            <button class="btn">Cancel</button>
           </div>
         </fieldset>
       </form>
@@ -1213,7 +1217,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </div>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save changes</button>
-            <button type="reset" class="btn">Cancel</button>
+            <button class="btn">Cancel</button>
           </div>
         </fieldset>
       </form>
@@ -1297,23 +1301,27 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <h3>Multiple sizes</h3>
       <p>Fancy larger or smaller buttons? Add <code>.btn-large</code> or <code>.btn-small</code> for two additional sizes.</p>
       <p>
-        <a href="#" class="btn btn-large btn-primary">Primary action</a>
-        <a href="#" class="btn btn-large">Action</a>
+        <button class="btn btn-large btn-primary">Primary action</button>
+        <button class="btn btn-large">Action</button>
       </p>
       <p>
-        <a href="#" class="btn btn-small btn-primary">Primary action</a>
-        <a href="#" class="btn btn-small">Action</a>
+        <button class="btn btn-small btn-primary">Primary action</button>
+        <button class="btn btn-small">Action</button>
       </p>
       <br>
       <h3>Disabled state</h3>
-      <p>For disabled buttons, use <code>.btn-disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+      <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code> attribute for <code>&lt;button&gt;</code> elements.</p>
       <p>
-        <a href="#" class="btn btn-large btn-primary disabled">Primary action</a>
-        <a href="#" class="btn btn-large disabled">Action</a>
+        <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+        <a href="#" class="btn btn-large disabled">Link</a>
+      </p>
+      <p style="margin-bottom: 18px;">
+        <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+        <button class="btn btn-large" disabled>Button</button>
       </p>
       <p>
-        <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary action</button>
-        <button class="btn btn-large" disabled>Action</button>
+        <span class="label label-info">Heads up!</span>
+        We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
       </p>
     </div>
     <div class="span4">
@@ -1350,144 +1358,140 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   </div>
   <div class="row">
     <div class="span3">
-      <div class="the-icons">
-        <i class="icon-glass"></i>
-        <i class="icon-music"></i>
-        <i class="icon-search"></i>
-        <i class="icon-envelope"></i>
-        <i class="icon-heart"></i>
-        <i class="icon-star"></i>
-        <i class="icon-star-empty"></i>
-        <i class="icon-user"></i>
-        <i class="icon-film"></i>
-        <i class="icon-th-large"></i>
-        <i class="icon-th"></i>
-        <i class="icon-th-list"></i>
-        <i class="icon-ok"></i>
-        <i class="icon-remove"></i>
-        <i class="icon-zoom-in"></i>
-        <i class="icon-zoom-out"></i>
-        <i class="icon-off"></i>
-        <i class="icon-signal"></i>
-        <i class="icon-cog"></i>
-        <i class="icon-trash"></i>
-
-        <i class="icon-home"></i>
-        <i class="icon-file"></i>
-        <i class="icon-time"></i>
-        <i class="icon-road"></i>
-        <i class="icon-download-alt"></i>
-        <i class="icon-download"></i>
-        <i class="icon-upload"></i>
-        <i class="icon-inbox"></i>
-        <i class="icon-play-circle"></i>
-        <i class="icon-repeat"></i>
-      </div>
+      <ul class="the-icons">
+        <li><i class="icon-glass"></i> icon-glass</li>
+        <li><i class="icon-music"></i> icon-music</li>
+        <li><i class="icon-search"></i> icon-search</li>
+        <li><i class="icon-envelope"></i> icon-envelope</li>
+        <li><i class="icon-heart"></i> icon-heart</li>
+        <li><i class="icon-star"></i> icon-star</li>
+        <li><i class="icon-star-empty"></i> icon-star-empty</li>
+        <li><i class="icon-user"></i> icon-user</li>
+        <li><i class="icon-film"></i> icon-film</li>
+        <li><i class="icon-th-large"></i> icon-th-large</li>
+        <li><i class="icon-th"></i> icon-th</li>
+        <li><i class="icon-th-list"></i> icon-th-list</li>
+        <li><i class="icon-ok"></i> icon-ok</li>
+        <li><i class="icon-remove"></i> icon-remove</li>
+        <li><i class="icon-zoom-in"></i> icon-zoom-in</li>
+        <li><i class="icon-zoom-out"></i> icon-zoom-out</li>
+        <li><i class="icon-off"></i> icon-off</li>
+        <li><i class="icon-signal"></i> icon-signal</li>
+        <li><i class="icon-cog"></i> icon-cog</li>
+        <li><i class="icon-trash"></i> icon-trash</li>
+        <li><i class="icon-home"></i> icon-home</li>
+        <li><i class="icon-file"></i> icon-file</li>
+        <li><i class="icon-time"></i> icon-time</li>
+        <li><i class="icon-road"></i> icon-road</li>
+        <li><i class="icon-download-alt"></i> icon-download-alt</li>
+        <li><i class="icon-download"></i> icon-download</li>
+        <li><i class="icon-upload"></i> icon-upload</li>
+        <li><i class="icon-inbox"></i> icon-inbox</li>
+        <li><i class="icon-play-circle"></i> icon-play-circle</li>
+        <li><i class="icon-repeat"></i> icon-repeat</li>
+      </ul>
     </div>
     <div class="span3">
-      <div class="the-icons">
-        <i class="icon-refresh"></i>
-        <i class="icon-list-alt"></i>
-        <i class="icon-lock"></i>
-        <i class="icon-flag"></i>
-        <i class="icon-headphones"></i>
-        <i class="icon-volume-off"></i>
-        <i class="icon-volume-down"></i>
-        <i class="icon-volume-up"></i>
-        <i class="icon-qrcode"></i>
-        <i class="icon-barcode"></i>
-
-        <i class="icon-tag"></i>
-        <i class="icon-tags"></i>
-        <i class="icon-book"></i>
-        <i class="icon-bookmark"></i>
-        <i class="icon-print"></i>
-        <i class="icon-camera"></i>
-        <i class="icon-font"></i>
-        <i class="icon-bold"></i>
-        <i class="icon-italic"></i>
-        <i class="icon-text-height"></i>
-        <i class="icon-text-width"></i>
-        <i class="icon-align-left"></i>
-        <i class="icon-align-center"></i>
-        <i class="icon-align-right"></i>
-        <i class="icon-align-justify"></i>
-        <i class="icon-list"></i>
-        <i class="icon-indent-left"></i>
-        <i class="icon-indent-right"></i>
-        <i class="icon-facetime-video"></i>
-        <i class="icon-picture"></i>
-      </div>
+      <ul class="the-icons">
+        <li><i class="icon-refresh"></i> icon-refresh</li>
+        <li><i class="icon-list-alt"></i> icon-list-alt</li>
+        <li><i class="icon-lock"></i> icon-lock</li>
+        <li><i class="icon-flag"></i> icon-flag</li>
+        <li><i class="icon-headphones"></i> icon-headphones</li>
+        <li><i class="icon-volume-off"></i> icon-volume-off</li>
+        <li><i class="icon-volume-down"></i> icon-volume-down</li>
+        <li><i class="icon-volume-up"></i> icon-volume-up</li>
+        <li><i class="icon-qrcode"></i> icon-qrcode</li>
+        <li><i class="icon-barcode"></i> icon-barcode</li>
+        <li><i class="icon-tag"></i> icon-tag</li>
+        <li><i class="icon-tags"></i> icon-tags</li>
+        <li><i class="icon-book"></i> icon-book</li>
+        <li><i class="icon-bookmark"></i> icon-bookmark</li>
+        <li><i class="icon-print"></i> icon-print</li>
+        <li><i class="icon-camera"></i> icon-camera</li>
+        <li><i class="icon-font"></i> icon-font</li>
+        <li><i class="icon-bold"></i> icon-bold</li>
+        <li><i class="icon-italic"></i> icon-italic</li>
+        <li><i class="icon-text-height"></i> icon-text-height</li>
+        <li><i class="icon-text-width"></i> icon-text-width</li>
+        <li><i class="icon-align-left"></i> icon-align-left</li>
+        <li><i class="icon-align-center"></i> icon-align-center</li>
+        <li><i class="icon-align-right"></i> icon-align-right</li>
+        <li><i class="icon-align-justify"></i> icon-align-justify</li>
+        <li><i class="icon-list"></i> icon-list</li>
+        <li><i class="icon-indent-left"></i> icon-indent-left</li>
+        <li><i class="icon-indent-right"></i> icon-indent-right</li>
+        <li><i class="icon-facetime-video"></i> icon-facetime-video</li>
+        <li><i class="icon-picture"></i> icon-picture</li>
+      </ul>
     </div>
     <div class="span3">
-      <div class="the-icons">
-        <i class="icon-pencil"></i>
-        <i class="icon-map-marker"></i>
-        <i class="icon-adjust"></i>
-        <i class="icon-tint"></i>
-        <i class="icon-edit"></i>
-        <i class="icon-share"></i>
-        <i class="icon-check"></i>
-        <i class="icon-move"></i>
-        <i class="icon-step-backward"></i>
-        <i class="icon-fast-backward"></i>
-        <i class="icon-backward"></i>
-        <i class="icon-play"></i>
-        <i class="icon-pause"></i>
-        <i class="icon-stop"></i>
-        <i class="icon-forward"></i>
-        <i class="icon-fast-forward"></i>
-        <i class="icon-step-forward"></i>
-        <i class="icon-eject"></i>
-        <i class="icon-chevron-left"></i>
-        <i class="icon-chevron-right"></i>
-
-        <i class="icon-plus-sign"></i>
-        <i class="icon-minus-sign"></i>
-        <i class="icon-remove-sign"></i>
-        <i class="icon-ok-sign"></i>
-        <i class="icon-question-sign"></i>
-        <i class="icon-info-sign"></i>
-        <i class="icon-screenshot"></i>
-        <i class="icon-remove-circle"></i>
-        <i class="icon-ok-circle"></i>
-        <i class="icon-ban-circle"></i>
-      </div>
+      <ul class="the-icons">
+        <li><i class="icon-pencil"></i> icon-pencil</li>
+        <li><i class="icon-map-marker"></i> icon-map-marker</li>
+        <li><i class="icon-adjust"></i> icon-adjust</li>
+        <li><i class="icon-tint"></i> icon-tint</li>
+        <li><i class="icon-edit"></i> icon-edit</li>
+        <li><i class="icon-share"></i> icon-share</li>
+        <li><i class="icon-check"></i> icon-check</li>
+        <li><i class="icon-move"></i> icon-move</li>
+        <li><i class="icon-step-backward"></i> icon-step-backward</li>
+        <li><i class="icon-fast-backward"></i> icon-fast-backward</li>
+        <li><i class="icon-backward"></i> icon-backward</li>
+        <li><i class="icon-play"></i> icon-play</li>
+        <li><i class="icon-pause"></i> icon-pause</li>
+        <li><i class="icon-stop"></i> icon-stop</li>
+        <li><i class="icon-forward"></i> icon-forward</li>
+        <li><i class="icon-fast-forward"></i> icon-fast-forward</li>
+        <li><i class="icon-step-forward"></i> icon-step-forward</li>
+        <li><i class="icon-eject"></i> icon-eject</li>
+        <li><i class="icon-chevron-left"></i> icon-chevron-left</li>
+        <li><i class="icon-chevron-right"></i> icon-chevron-right</li>
+        <li><i class="icon-plus-sign"></i> icon-plus-sign</li>
+        <li><i class="icon-minus-sign"></i> icon-minus-sign</li>
+        <li><i class="icon-remove-sign"></i> icon-remove-sign</li>
+        <li><i class="icon-ok-sign"></i> icon-ok-sign</li>
+        <li><i class="icon-question-sign"></i> icon-question-sign</li>
+        <li><i class="icon-info-sign"></i> icon-info-sign</li>
+        <li><i class="icon-screenshot"></i> icon-screenshot</li>
+        <li><i class="icon-remove-circle"></i> icon-remove-circle</li>
+        <li><i class="icon-ok-circle"></i> icon-ok-circle</li>
+        <li><i class="icon-ban-circle"></i> icon-ban-circle</li>
+      </ul>
     </div>
     <div class="span3">
-      <div class="the-icons">
-        <i class="icon-arrow-left"></i>
-        <i class="icon-arrow-right"></i>
-        <i class="icon-arrow-up"></i>
-        <i class="icon-arrow-down"></i>
-        <i class="icon-share-alt"></i>
-        <i class="icon-resize-full"></i>
-        <i class="icon-resize-small"></i>
-        <i class="icon-plus"></i>
-        <i class="icon-minus"></i>
-        <i class="icon-asterisk"></i>
-
-        <i class="icon-exclamation-sign"></i>
-        <i class="icon-gift"></i>
-        <i class="icon-leaf"></i>
-        <i class="icon-fire"></i>
-        <i class="icon-eye-open"></i>
-        <i class="icon-eye-close"></i>
-        <i class="icon-warning-sign"></i>
-        <i class="icon-plane"></i>
-        <i class="icon-calendar"></i>
-        <i class="icon-random"></i>
-        <i class="icon-comment"></i>
-        <i class="icon-magnet"></i>
-        <i class="icon-chevron-up"></i>
-        <i class="icon-chevron-down"></i>
-        <i class="icon-retweet"></i>
-        <i class="icon-shopping-cart"></i>
-        <i class="icon-folder-close"></i>
-        <i class="icon-folder-open"></i>
-        <i class="icon-resize-vertical"></i>
-        <i class="icon-resize-horizontal"></i>
-      </div>
+      <ul class="the-icons">
+        <li><i class="icon-arrow-left"></i> icon-arrow-left</li>
+        <li><i class="icon-arrow-right"></i> icon-arrow-right</li>
+        <li><i class="icon-arrow-up"></i> icon-arrow-up</li>
+        <li><i class="icon-arrow-down"></i> icon-arrow-down</li>
+        <li><i class="icon-share-alt"></i> icon-share-alt</li>
+        <li><i class="icon-resize-full"></i> icon-resize-full</li>
+        <li><i class="icon-resize-small"></i> icon-resize-small</li>
+        <li><i class="icon-plus"></i> icon-plus</li>
+        <li><i class="icon-minus"></i> icon-minus</li>
+        <li><i class="icon-asterisk"></i> icon-asterisk</li>
+        <li><i class="icon-exclamation-sign"></i> icon-exclamation-sign</li>
+        <li><i class="icon-gift"></i> icon-gift</li>
+        <li><i class="icon-leaf"></i> icon-leaf</li>
+        <li><i class="icon-fire"></i> icon-fire</li>
+        <li><i class="icon-eye-open"></i> icon-eye-open</li>
+        <li><i class="icon-eye-close"></i> icon-eye-close</li>
+        <li><i class="icon-warning-sign"></i> icon-warning-sign</li>
+        <li><i class="icon-plane"></i> icon-plane</li>
+        <li><i class="icon-calendar"></i> icon-calendar</li>
+        <li><i class="icon-random"></i> icon-random</li>
+        <li><i class="icon-comment"></i> icon-comment</li>
+        <li><i class="icon-magnet"></i> icon-magnet</li>
+        <li><i class="icon-chevron-up"></i> icon-chevron-up</li>
+        <li><i class="icon-chevron-down"></i> icon-chevron-down</li>
+        <li><i class="icon-retweet"></i> icon-retweet</li>
+        <li><i class="icon-shopping-cart"></i> icon-shopping-cart</li>
+        <li><i class="icon-folder-close"></i> icon-folder-close</li>
+        <li><i class="icon-folder-open"></i> icon-folder-open</li>
+        <li><i class="icon-resize-vertical"></i> icon-resize-vertical</li>
+        <li><i class="icon-resize-horizontal"></i> icon-resize-horizontal</li>
+      </ul>
     </div>
   </div>
   <div class="alert alert-info">
@@ -1514,10 +1518,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
       <p>There are 120 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.</p>
-      <div class="alert alert-info">
-        <strong>Heads up!</strong>
-        The <code>.icon-</code> class must be listed first in the class tag for proper CSS targeting.
-      </div>
     </div>
     <div class="span4">
       <h3>Use cases</h3>

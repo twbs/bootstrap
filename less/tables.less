@@ -25,14 +25,15 @@ table {
     padding: 8px;
     line-height: @baseLineHeight;
     text-align: left;
+    vertical-align: top;
     border-top: 1px solid #ddd;
   }
   th {
     font-weight: bold;
-    vertical-align: bottom;
   }
-  td {
-    vertical-align: top;
+  // Bottom align for column headings
+  thead th {
+    vertical-align: bottom;
   }
   // Remove top border from thead by default
   thead:first-child tr th,

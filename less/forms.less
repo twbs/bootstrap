@@ -28,6 +28,12 @@ legend {
   color: @grayDark;
   border: 0;
   border-bottom: 1px solid #eee;
+
+  // Small
+  small {
+    font-size: @baseLineHeight * .75;
+    color: @grayLight;
+  }
 }
 
 // Set font for forms
@@ -116,6 +122,11 @@ input[type="file"] {
   line-height: 28px;
 }
 
+// Reset line-height for IE
+input[type="file"] {
+  line-height: 18px \9;
+}
+
 // Chrome on Linux and Mobile Safari need background-color
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
@@ -196,7 +207,7 @@ textarea:focus {
   @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
   .box-shadow(@shadow);
   outline: 0;
-  outline: thin dotted \9; /* IE6-8 */
+  outline: thin dotted \9; /* IE6-9 */
 }
 input[type="file"]:focus,
 input[type="radio"]:focus,
@@ -453,21 +464,30 @@ select:focus:required:invalid {
 .form-inline .input-prepend .add-on {
   vertical-align: middle;
 }
+// Inline checkbox/radio labels
+.form-search .radio,
+.form-inline .radio,
+.form-search .checkbox,
+.form-inline .checkbox {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
 
 // Margin to space out fieldsets
 .control-group {
   margin-bottom: @baseLineHeight / 2;
 }
 
+// Legend collapses margin, so next element is responsible for spacing
+legend + .control-group {
+  margin-top: @baseLineHeight;
+  -webkit-margin-top-collapse: separate;
+}
+
 // Horizontal-specific styles
 // --------------------------
 
 .form-horizontal {
-  // Legend collapses margin, so we're relegated to padding
-  legend + .control-group {
-    margin-top: @baseLineHeight;
-    -webkit-margin-top-collapse: separate;
-  }
   // Increase spacing between groups
   .control-group {
     margin-bottom: @baseLineHeight;

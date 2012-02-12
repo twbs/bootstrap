@@ -25,7 +25,7 @@
   .uneditable-input {
     display: block;
     width: 100%;
-    height: 28px;
+    min-height: 28px;
     /* Make inputs at least the height of their button counterpart */
   
     /* Makes inputs behave like true block-level elements */
