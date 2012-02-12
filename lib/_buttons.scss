@@ -108,7 +108,9 @@
 .btn-success,
 .btn-success:hover,
 .btn-info,
-.btn-info:hover {
+.btn-info:hover,
+.btn-inverse,
+.btn-inverse:hover {
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   color: $white;
 }
@@ -141,6 +143,10 @@
 // Info appears as a neutral blue
 .btn-info {
   @include buttonBackground(#5bc0de, #2f96b4);
+}
+// Inverse appears as dark gray
+.btn-inverse {
+  @include buttonBackground(#454545, #262626);
 }
 
 
