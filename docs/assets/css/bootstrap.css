@@ -2130,27 +2130,31 @@ button.btn.small, input[type="submit"].btn.small {
   text-decoration: none;
   background-color: #eeeeee;
 }
+.nav .nav-header {
+  display: block;
+  padding: 3px 15px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #999999;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+.nav li + .nav-header {
+  margin-top: 9px;
+}
 .nav-list {
   padding-left: 14px;
   padding-right: 14px;
   margin-bottom: 0;
 }
 .nav-list > li > a, .nav-list .nav-header {
-  display: block;
-  padding: 3px 15px;
   margin-left: -15px;
   margin-right: -15px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-.nav-list .nav-header {
-  font-size: 11px;
-  font-weight: bold;
-  line-height: 18px;
-  color: #999999;
-  text-transform: uppercase;
-}
-.nav-list > li + .nav-header {
-  margin-top: 9px;
+.nav-list > li > a {
+  padding: 3px 15px;
 }
 .nav-list .active > a, .nav-list .active > a:hover {
   color: #ffffff;
