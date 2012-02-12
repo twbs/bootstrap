@@ -603,6 +603,9 @@ select, input[type="file"] {
 
   line-height: 28px;
 }
+input[type="file"] {
+  line-height: 18px \9;
+}
 select {
   width: 220px;
   background-color: #ffffff;

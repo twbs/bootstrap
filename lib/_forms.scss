@@ -122,6 +122,11 @@ input[type="file"] {
   line-height: 28px;
 }
 
+// Reset line-height for IE
+input[type="file"] {
+  line-height: 18px \9;
+}
+
 // Chrome on Linux and Mobile Safari need background-color
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
