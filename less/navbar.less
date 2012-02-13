@@ -81,7 +81,7 @@
     margin-top: 5px; // make buttons vertically centered in navbar
   }
   .btn-group .btn {
-    margin-top: 0;
+    margin-top: 0; // then undo the margin here so we don't accidentally double it
   }
 }
 
@@ -103,6 +103,14 @@
   input[type="checkbox"],
   input[type="radio"] {
     margin-top: 3px;
+  }
+  .input-append,
+  .input-prepend {
+    margin-top: 6px;
+    white-space: nowrap; // preven two  items from separating within a .navbar-form that has .pull-left
+    input {
+      margin-top: 0; // remove the margin on top since it's on the parent
+    }
   }
 }
 
