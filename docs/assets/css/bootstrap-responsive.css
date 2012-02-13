@@ -314,6 +314,10 @@
   .navbar .nav > .divider-vertical {
     display: none;
   }
+  .navbar .nav .nav-header {
+    color: #999999;
+    text-shadow: none;
+  }
   .navbar .nav > li > a, .navbar .dropdown-menu a {
     padding: 6px 15px;
     font-weight: bold;
