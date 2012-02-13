@@ -42,7 +42,13 @@ input,
 button,
 select,
 textarea {
-  #font > .sans-serif(@baseFontSize,normal,@baseLineHeight);
+  #font > .shorthand(@baseFontSize,normal,@baseLineHeight); // Set size, weight, line-height here
+}
+input,
+button,
+select,
+textarea {
+  #font > #family > .sans-serif(); // And only set font-family here for those that need it (note the missing label element)
 }
 
 // Identify controls by their labels
