@@ -54,12 +54,16 @@
 
     , toggle: function () {
         var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
+        var customClass = this.$element.data('customClass')
 
-        $parent && $parent
-          .find('.active')
-          .removeClass('active')
+        if ($parent) $parent.find('.active').each(function(i, el) {
+            $(el).removeClass('active')
+            $(el).data('customClass') &&
+              $(el).removeClass($(el).data('customClass'))
+        })
 
         this.$element.toggleClass('active')
+        customClass && this.$element.toggleClass(customClass)
       }
 
   }
