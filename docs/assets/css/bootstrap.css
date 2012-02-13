@@ -1806,7 +1806,7 @@ table .span12 {
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
-.btn-dark.active {
+.btn-inverse.active {
   color: rgba(255, 255, 255, 0.75);
 }
 .btn-primary {
@@ -1930,16 +1930,16 @@ table .span12 {
   background-color: #24748c \9;
 }
 .btn-inverse {
-  background-color: #393939;
-  background-image: -moz-linear-gradient(top, #454545, #262626);
-  background-image: -ms-linear-gradient(top, #454545, #262626);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#454545), to(#262626));
-  background-image: -webkit-linear-gradient(top, #454545, #262626);
-  background-image: -o-linear-gradient(top, #454545, #262626);
-  background-image: linear-gradient(top, #454545, #262626);
+  background-color: #414141;
+  background-image: -moz-linear-gradient(top, #555555, #222222);
+  background-image: -ms-linear-gradient(top, #555555, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#222222));
+  background-image: -webkit-linear-gradient(top, #555555, #222222);
+  background-image: -o-linear-gradient(top, #555555, #222222);
+  background-image: linear-gradient(top, #555555, #222222);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545', endColorstr='#262626', GradientType=0);
-  border-color: #262626 #262626 #000000;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#222222', GradientType=0);
+  border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
@@ -1948,10 +1948,10 @@ table .span12 {
 .btn-inverse.active,
 .btn-inverse.disabled,
 .btn-inverse[disabled] {
-  background-color: #262626;
+  background-color: #222222;
 }
 .btn-inverse:active, .btn-inverse.active {
-  background-color: #0c0c0c \9;
+  background-color: #080808 \9;
 }
 button.btn, input[type="submit"].btn {
   *padding-top: 2px;
@@ -3171,6 +3171,12 @@ a.thumbnail:hover {
 }
 .label-info:hover {
   background-color: #2d6987;
+}
+.label-inverse {
+  background-color: #333333;
+}
+.label-inverse:hover {
+  background-color: #1a1a1a;
 }
 @-webkit-keyframes progress-bar-stripes {
   from {
