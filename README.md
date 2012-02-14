@@ -52,6 +52,7 @@ IRC
 ---
 
 Server: irc.freenode.net
+
 Channel: ##twitter-bootstrap (the double ## is not a typo)
 
 
