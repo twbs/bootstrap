@@ -625,8 +625,9 @@ $('#myModal').on('hidden', function () {
           </div>
           <hr>
           <h2>Using bootstrap-tab.js</h2>
-          <p>Enable tabbable tabs via javascript:</p>
+          <p>Enable tabbable tabs via javascript (where "myTab" is the id of one of the &lt;a&gt; tags in tabs.):</p>
           <pre class="prettyprint linenums">$('#myTab').tab('show')</pre>
+          <p>Would render the Settings tab as the active tab in the example below:</p>
           <h3>Markup</h3>
           <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element.</p>
 <pre class="prettyprint linenums">
@@ -634,7 +635,7 @@ $('#myModal').on('hidden', function () {
   &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#profile" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#messages" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#ettings" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a id="myTab" href="#settings" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
           <h3>Methods</h3>
           <h4>$().tab</h4>
