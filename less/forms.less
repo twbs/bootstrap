@@ -42,7 +42,13 @@ input,
 button,
 select,
 textarea {
-  #font > .sans-serif(@baseFontSize,normal,@baseLineHeight);
+  #font > .shorthand(@baseFontSize,normal,@baseLineHeight); // Set size, weight, line-height here
+}
+input,
+button,
+select,
+textarea {
+  #font > #family > .sans-serif(); // And only set font-family here for those that need it (note the missing label element)
 }
 
 // Identify controls by their labels
@@ -327,6 +333,7 @@ select:focus:required:invalid {
 // ---------
 
 .help-block {
+  display: block; // account for any element using help-block
   margin-top: 5px;
   margin-bottom: 0;
   color: @grayLight;
@@ -395,6 +402,7 @@ select:focus:required:invalid {
     .border-radius(3px 0 0 3px);
   }
   .uneditable-input {
+    border-left-color: #eee;
     border-right-color: #ccc;    
   }
   .add-on {

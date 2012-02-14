@@ -15,7 +15,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Le fav and touch icons -->
@@ -1121,7 +1121,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <fieldset>
           <legend>Extending form controls</legend>
           <div class="control-group">
-            <label class="control-label">Form sizes</label>
+            <label class="control-label">Form grid sizes</label>
             <div class="controls docs-input-sizes">
               <input class="span1" type="text" placeholder=".span1">
               <input class="span2" type="text" placeholder=".span2">
@@ -1150,6 +1150,15 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
               <p class="help-block">Use the same <code>.span*</code> classes from the grid system for input sizes.</p>
             </div>
           </div>
+          <div class="control-group">
+            <label class="control-label">Alternate sizes</label>
+            <div class="controls docs-input-sizes">
+              <input class="input-mini" type="text" placeholder=".input-mini">
+              <input class="input-small" type="text" placeholder=".input-small">
+              <input class="input-medium" type="text" placeholder=".input-medium">
+              <p class="help-block">You may also use static classes that don't map to the grid, adapt to the responsive CSS styles, or account for varying types of controls (e.g., <code>input</code> vs. <code>select</code>).</p>
+            </div>
+          </div>          
           <div class="control-group">
             <label class="control-label" for="prependedInput">Prepended text</label>
             <div class="controls">
@@ -1285,6 +1294,11 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <td><a class="btn btn-danger" href="#">Danger</a></td>
         <td><code>.btn-danger</code></td>
         <td>Indicates a dangerous or potentially negative action</td>
+      </tr>
+  	  <tr>
+        <td><a class="btn btn-inverse" href="#">Inverse</a></td>
+        <td><code>.btn-inverse</code></td>
+        <td>Alternate dark gray button, not tied to a semantic action or use</td>
       </tr>
     </tbody>
   </table>

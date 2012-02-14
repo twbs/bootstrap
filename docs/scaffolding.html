@@ -15,7 +15,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Le fav and touch icons -->
@@ -81,7 +81,9 @@
         <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
         <div class="subnav">
           <ul class="nav nav-pills">
-            <li><a href="#grid-system">Grid system</a></li>
+            <li><a href="#gridSystem">Grid system</a></li>
+            <li><a href="#fluidGridSystem">Fluid gird system</a></li>
+            <li><a href="#gridCustomization">Customizing</a></li>
             <li><a href="#layouts">Layouts</a></li>
             <li><a href="#responsive">Responsive design</a></li>
           </ul>
@@ -92,12 +94,11 @@
 
 <!-- Grid system
 ================================================== -->
-<section id="grid-system">
+<section id="gridSystem">
   <div class="page-header">
-    <h1>Grid system <small>12 columns with a responsive twist</small></h1>
+    <h1>Default grid system <small>12 columns with a responsive twist</small></h1>
   </div>
 
-  <h2>Default grid</h2>
   <div class="row show-grid">
     <div class="span1">1</div>
     <div class="span1">1</div>
@@ -188,7 +189,87 @@
           </div>
         </div>
       </div>
-      <h3>Fluid example</h3>
+    </div><!-- /span6 -->
+    <div class="span6">
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span12"&gt;
+    Level 1 of column
+    &lt;div class="row"&gt;
+      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
+      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Fluid grid system
+================================================== -->
+<section id="fluidGridSystem">
+  <div class="page-header">
+    <h1>Fluid grid system <small>12 responsive, percent-based columns</small></h1>
+  </div>
+
+  <h2>Fluid columns</h2>
+  <div class="row-fluid show-grid">
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+  </div>
+  <div class="row-fluid show-grid">
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+  </div>
+  <div class="row-fluid show-grid">
+    <div class="span4">4</div>
+    <div class="span8">8</div>
+  </div>
+  <div class="row-fluid show-grid">
+    <div class="span6">6</div>
+    <div class="span6">6</div>
+  </div>
+  <div class="row-fluid show-grid">
+    <div class="span12">12</div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <h3>Percents, not pixels</h3>
+      <p>The fluid grid system uses percents for column widths instead of fixed pixels. It also has the same responsive variations as our fixed grid system, ensuring proper proportions for key screen resolutions and devices.</p>
+    </div>
+    <div class="span4">
+      <h3>Fluid rows</h3>
+      <p>Make any row fluid simply by changing <code>.row</code> to <code>.row-fluid</code>. The columns stay the exact same, making it super straightforward to flip between fixed and fluid layouts.</p>
+    </div>
+    <div class="span4">
+      <h3>Markup</h3>
+<pre class="prettyprint linenums">
+&lt;div class="row-fluid"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span8"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+
+  <h2>Fluid nesting</h2>
+  <div class="row">
+    <div class="span6">
       <p>Nesting with fluid grids is a bit different: the number of nested columns doesn't need to match the parent. Instead, your columns are reset at each level because each row takes up 100% of the parent column.</p>
       <div class="row-fluid show-grid">
         <div class="span12">
@@ -206,10 +287,10 @@
     </div>
     <div class="span6">
 <pre class="prettyprint linenums">
-&lt;div class="row"&gt;
+&lt;div class="row-fluid"&gt;
   &lt;div class="span12"&gt;
     Level 1 of column
-    &lt;div class="row"&gt;
+    &lt;div class="row-fluid"&gt;
       &lt;div class="span6"&gt;Level 2&lt;/div&gt;
       &lt;div class="span6"&gt;Level 2&lt;/div&gt;
     &lt;/div&gt;
@@ -219,7 +300,16 @@
     </div>
   </div>
 
-  <h2>Grid customization</h2>
+</section>
+
+
+
+<!-- Customizaton
+================================================== -->
+<section id="gridCustomization">
+  <div class="page-header">
+    <h1>Grid customization</h1>
+  </div>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -281,8 +371,8 @@
     <div class="span6">
       <h2>Fixed layout</h2>
       <p>The default and simple 940px-wide, centered layout for just about any website or page provided by a single <code>&lt;div class="container"&gt;</code>.</p>
-      <div class="minicon-layout">
-        <div class="minicon-layout-body"></div>
+      <div class="mini-layout">
+        <div class="mini-layout-body"></div>
       </div>
 <pre class="prettyprint linenums">
 &lt;body&gt;
@@ -295,9 +385,9 @@
     <div class="span6">
       <h2>Fluid layout</h2>
       <p><code>&lt;div class="container-fluid"&gt;</code> gives flexible page structure, min- and max-widths, and a left-hand sidebar. It's great for apps and docs.</p>
-      <div class="minicon-layout fluid">
-        <div class="minicon-layout-sidebar"></div>
-        <div class="minicon-layout-body"></div>
+      <div class="mini-layout fluid">
+        <div class="mini-layout-sidebar"></div>
+        <div class="mini-layout-body"></div>
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="container-fluid"&gt;

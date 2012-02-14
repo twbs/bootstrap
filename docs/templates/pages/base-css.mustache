@@ -1045,7 +1045,7 @@
         <fieldset>
           <legend>{{_i}}Extending form controls{{/i}}</legend>
           <div class="control-group">
-            <label class="control-label">{{_i}}Form sizes{{/i}}</label>
+            <label class="control-label">{{_i}}Form grid sizes{{/i}}</label>
             <div class="controls docs-input-sizes">
               <input class="span1" type="text" placeholder=".span1">
               <input class="span2" type="text" placeholder=".span2">
@@ -1074,6 +1074,15 @@
               <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
             </div>
           </div>
+          <div class="control-group">
+            <label class="control-label">{{_i}}Alternate sizes{{/i}}</label>
+            <div class="controls docs-input-sizes">
+              <input class="input-mini" type="text" placeholder=".input-mini">
+              <input class="input-small" type="text" placeholder=".input-small">
+              <input class="input-medium" type="text" placeholder=".input-medium">
+              <p class="help-block">{{_i}}You may also use static classes that don't map to the grid, adapt to the responsive CSS styles, or account for varying types of controls (e.g., <code>input</code> vs. <code>select</code>).{{/i}}</p>
+            </div>
+          </div>          
           <div class="control-group">
             <label class="control-label" for="prependedInput">{{_i}}Prepended text{{/i}}</label>
             <div class="controls">
@@ -1209,6 +1218,11 @@
         <td><a class="btn btn-danger" href="#">{{_i}}Danger{{/i}}</a></td>
         <td><code>.btn-danger</code></td>
         <td>{{_i}}Indicates a dangerous or potentially negative action{{/i}}</td>
+      </tr>
+  	  <tr>
+        <td><a class="btn btn-inverse" href="#">{{_i}}Inverse{{/i}}</a></td>
+        <td><code>.btn-inverse</code></td>
+        <td>{{_i}}Alternate dark gray button, not tied to a semantic action or use{{/i}}</td>
       </tr>
     </tbody>
   </table>

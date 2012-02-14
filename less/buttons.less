@@ -16,7 +16,7 @@
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   vertical-align: middle;
-  #gradient > .vertical-three-colors(@white, @white, 25%, darken(@white, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
+  .buttonBackground(@white, darken(@white, 10%));
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   .border-radius(4px);
@@ -25,6 +25,7 @@
   cursor: pointer;
 
   // Give IE7 some love
+  .reset-filter();
   .ie7-restore-left-whitespace();
 }
 
@@ -106,7 +107,9 @@
 .btn-success,
 .btn-success:hover,
 .btn-info,
-.btn-info:hover {
+.btn-info:hover,
+.btn-inverse,
+.btn-inverse:hover {
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   color: @white;
 }
@@ -115,7 +118,8 @@
 .btn-warning.active,
 .btn-danger.active,
 .btn-success.active,
-.btn-info.active {
+.btn-info.active,
+.btn-dark.active {
   color: rgba(255,255,255,.75);
 }
 
@@ -140,6 +144,10 @@
 .btn-info {
   .buttonBackground(#5bc0de, #2f96b4);
 }
+// Inverse appears as dark gray
+.btn-inverse {
+  .buttonBackground(#454545, #262626);
+}
 
 
 // Cross-browser Jank
@@ -147,6 +155,8 @@
 
 button.btn,
 input[type="submit"].btn {
+
+  // Firefox 3.6 only I believe
   &::-moz-focus-inner {
     padding: 0;
     border: 0;
