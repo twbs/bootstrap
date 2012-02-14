@@ -59,9 +59,13 @@
   .active.right {
     left: 100%;
   }
+}
   
-  /* Use the media query to determine if transforms are supported */
-  @media all and (-webkit-transform) {
+/* Use the media query to determine if transforms are supported */
+/* For some reason, -webkit-transform isn't detected, but -webkit-transform-3d is */
+@media all and (-webkit-transform-3d) {
+
+  .carousel {
 
     .item {
       -webkit-transition: 0.6s ease-in-out -webkit-transform;
@@ -96,7 +100,6 @@
       -webkit-transform: translate(100%, 0%);
       left: 0;
     }
-  
   }
 
 }
