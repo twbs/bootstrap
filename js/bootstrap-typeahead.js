@@ -195,7 +195,6 @@
       if (!this.shown) return
 
       switch(e.keyCode) {
-        //case 9: // tab
         case 13: // enter
         case 27: // escape
           e.preventDefault()
