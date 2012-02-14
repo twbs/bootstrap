@@ -37,8 +37,13 @@
       var $tip = this.tip()
         , title = this.getTitle()
         , content = this.getContent()
+        , $title = $tip.find('.popover-title')
 
-      $tip.find('.popover-title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
+      if (title === content || title === '') {
+        $title.hide()
+      } else {
+        $title[ $.type(title) == 'object' ? 'append' : 'html' ](title)
+      }
       $tip.find('.popover-content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
 
       $tip.removeClass('fade top bottom left right in')
@@ -54,6 +59,7 @@
         , o = this.options
 
       content = $e.attr('data-content')
+        || this.getTitle()
         || (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
 
       content = content.toString().replace(/(^\s*|\s*$)/, "")
