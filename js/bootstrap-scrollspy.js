@@ -122,4 +122,4 @@
     })
   })
 
-}( window.jQuery )
+}( window.jQuery );
