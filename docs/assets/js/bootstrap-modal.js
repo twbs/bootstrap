@@ -207,4 +207,4 @@
     })
   })
 
-}( window.jQuery )
+}( window.jQuery );

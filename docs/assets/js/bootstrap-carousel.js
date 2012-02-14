@@ -151,4 +151,4 @@
     })
   })
 
-}( window.jQuery )
+}( window.jQuery );

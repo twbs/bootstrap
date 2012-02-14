@@ -268,4 +268,4 @@
     })
   })
 
-}( window.jQuery )
+}( window.jQuery );
