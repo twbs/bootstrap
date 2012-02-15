@@ -19,16 +19,20 @@
   width: 14px;
   height: 14px;
   vertical-align: text-top;
-  background-image: url(../img/glyphicons-halflings.png);
+  background-image: url('@{imageDirectory}glyphicons-halflings.png');
   background-position: 14px 14px;
   background-repeat: no-repeat;
 
   .ie7-restore-right-whitespace();
 }
+.make-icon-white() {
+    background-image: url('@{imageDirectory}glyphicons-halflings-white.png');
+}
 .icon-white {
-  background-image: url(../img/glyphicons-halflings-white.png);
+    .make-icon-white();
 }
 
+// All the standard icons
 .icon-glass              { background-position: 0      0; }
 .icon-music              { background-position: -24px  0; }
 .icon-search             { background-position: -48px  0; }

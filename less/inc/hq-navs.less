@@ -1,0 +1,33 @@
+// Extends Twitter Bootstrap's navigation styles
+
+
+// NAV LIST Extensions
+// --------
+
+.nav-list .active > a [class^="icon-"],
+.nav-list .active > a:hover [class^="icon-"] {
+    .make-icon-white();
+}
+
+.nav-list .nav-header {
+    font-size: @baseFontSize - 1;
+    color: @commCareGray;
+}
+
+// sidebar specific Nav list styles
+.sidebar {
+    nav > .nav-list > li > a,
+    nav > .nav-list .nav-header {
+        padding-left: @gridGutterWidth;
+        margin-left:  -@gridGutterWidth;
+    }
+    .nav > li > a:hover {
+        background-color: darken(@sideNavigationBackground, 10);
+        color: @grayDarker;
+    }
+    .nav-list .active > a,
+    .nav-list .active > a:hover {
+        color: @white;
+        background-color: @linkColor;
+    }
+}

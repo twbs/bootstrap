@@ -1,0 +1,41 @@
+// FOOTER BAR (FIXED AND STATIC)
+// -------------------------
+
+footer {
+    height: @footerHeight;
+    padding: @gridGutterWidth @gridGutterWidth 0 @gridGutterWidth;
+    background-color: @footerBackground;
+    color: @white;
+    .clearfix();
+}
+
+footer .footer-right {
+    display: block;
+    float: right;
+    clear: right;
+}
+
+footer .footer-left {
+    display: block;
+    float: left;
+    clear: left;
+}
+
+footer .footer-text {
+    padding-top: 5px;
+}
+
+footer .powered {
+    width: 85px;
+    height: 41px;
+}
+
+footer a,
+footer a:link,
+footer a:visited {
+    color: @footerLinkColor;
+}
+
+footer a:hover {
+    color: @footerLinkColorHover;
+}

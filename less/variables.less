@@ -8,25 +8,26 @@
 // --------------------------------------------------
 
 // Links
-@linkColor:             #08c;
+@linkColor:             #1557A2;
 @linkColorHover:        darken(@linkColor, 15%);
 
 // Grays
 @black:                 #000;
-@grayDarker:            #222;
+@grayDarker:            #2C2C2C;
 @grayDark:              #333;
 @gray:                  #555;
 @grayLight:             #999;
 @grayLighter:           #eee;
 @white:                 #fff;
+@commCareGray:          #6C6C6C;
 
 // Accent colors
-@blue:                  #049cdb;
-@blueDark:              #0064cd;
+@blue:                  #1557A2;
+@blueDark:              #4A607D;
 @green:                 #46a546;
 @red:                   #9d261d;
 @yellow:                #ffc40d;
-@orange:                #f89406;
+@orange:                #FF8B03;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
 
@@ -36,8 +37,16 @@
 @baseLineHeight:        18px;
 @textColor:             @grayDark;
 
+@textOrangeColor:       #E06C00;
+
 // Buttons
 @primaryButtonBackground:    @linkColor;
+
+
+
+
+// Common File Locations
+@imageDirectory:                  "../img/";
 
 
 
@@ -58,13 +67,26 @@
 @placeholderText:       @grayLight;
 
 // Navbar
-@navbarHeight:                    40px;
-@navbarBackground:                @grayDarker;
-@navbarBackgroundHighlight:       @grayDark;
+@navbarHeight:                    62px;
+@navbarBackground:                #F4F4F4;
+@navbarBackgroundHighlight:       #FDFDFD;
 
-@navbarText:                      @grayLight;
-@navbarLinkColor:                 @grayLight;
+@navbarBrandWidth:                211px;
+@navbarBrandHeight:               32px;
+
+@navbarText:                      @commCareGray;
+@navbarLinkColor:                 @commCareGray;
 @navbarLinkColorHover:            @white;
+
+// Side Navbar
+@sideNavigationBackground:        #F4F4F4;
+
+// Footer
+@footerHeight:                    100px;
+@footerBackground:                @grayDarker;
+@footerLinkColor:                 @white;
+@footerLinkColorHover:            @grayLighter;
+@footerButtonColor:               #474747;
 
 // Form states and alerts
 @warningText:             #c09853;
@@ -95,5 +117,9 @@
 @gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // Fluid grid
+@fluidMinimumWidth:       1200px;
 @fluidGridColumnWidth:    6.382978723%;
 @fluidGridGutterWidth:    2.127659574%;
+
+// Sidebar
+@fluidSidebarWidth: @gridColumnWidth*4;

@@ -1,0 +1,135 @@
+// HQ NAVBAR (FIXED AND STATIC)
+// -------------------------
+
+
+// COMMON STYLES
+// -------------
+
+.hq-navbar {
+  min-width: @fluidMinimumWidth;
+  width:100%;
+  height: @navbarHeight;
+  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+  position: relative;
+  border-bottom: 1px solid darken(@navbarBackground, 10);
+  @shadow: 1px 1px 4px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+}
+
+// hgroup (brand)
+.hq-navbar {
+    hgroup {
+        padding-top: 15px;
+        position: absolute;
+        left: @gridGutterWidth;
+        h1 {
+            padding: 0;
+            margin: 0;
+
+            img,
+            a, a:before {
+                width: @navbarBrandWidth;
+                height: @navbarBrandHeight;
+            }
+            img {
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            a {
+                position: relative;
+            }
+            a:before {
+                z-index: 2;
+                content: url('@{imageDirectory}commcare-logo-hover.png');
+                position: absolute;
+                top: 0;
+                left: 0;
+                display:none;
+            }
+            a:hover:before {
+                display: block;
+            }
+        }
+    }
+}
+
+// Text and buttons
+.hq-navbar {
+  // Plain text in topbar
+  .navbar-text {
+      margin-bottom: 0;
+      line-height: 40px;
+      color: @navbarText;
+      a:hover {
+        color: @white;
+        background-color: transparent;
+      }
+    }
+    // Buttons in navbar
+    .btn,
+    .btn-group {
+      margin-top: 5px; // make buttons vertically centered in navbar
+    }
+    .btn-group .btn {
+      margin-top: 0;
+    }
+}
+
+
+// NAVIGATION
+// ----------
+
+.hq-navbar .nav {
+  position: absolute;
+  top: 16px;
+  left: @gridGutterWidth*3 + @navbarBrandWidth;
+  display: block;
+  margin: 0 10px 0 0;
+}
+.hq-navbar .nav.pull-right {
+  left: auto;
+  right: @gridGutterWidth;
+}
+.hq-navbar .nav > li {
+  display: block;
+  float: left;
+}
+
+// Links
+.hq-navbar .nav > li > a {
+  float: none;
+  margin-right: 2px;
+  padding: 4px 10px 5px;
+  font-size: @baseFontSize + 1;
+  line-height: 19px;
+  color: @navbarLinkColor;
+  border: 1px solid transparent;
+  .border-radius();
+  text-decoration: none;
+}
+// Hover
+.hq-navbar .nav > li > a:hover {
+  text-decoration: none;
+  border-color: darken(@primaryButtonBackground, 15);
+  .buttonBackground(desaturate(lighten(@primaryButtonBackground, 15), 15), @primaryButtonBackground);
+  color: @white;
+}
+
+// Active nav items
+.hq-navbar .nav .active > a,
+.hq-navbar .nav .active > a:hover {
+  text-decoration: none;
+  .buttonBackground(lighten(@navbarBackground, 5), darken(@navbarBackground,10));
+  border-color: darken(@navbarBackground, 12);
+  color: @navbarLinkColor;
+}
+
+// Secondary button-based nav
+.hq-navbar .secondary-nav {
+    position: absolute;
+    top: 0;
+    right: @gridGutterWidth;
+    padding-top: 3px;
+}

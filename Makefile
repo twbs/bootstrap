@@ -1,6 +1,6 @@
-BOOTSTRAP = ./docs/assets/css/bootstrap.css
+BOOTSTRAP = ./assets/css/bootstrap.css
 BOOTSTRAP_LESS = ./less/bootstrap.less
-BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
+BOOTSTRAP_RESPONSIVE = ./assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 
 HQ_BOOTSTRAP_SRC = ../core-hq-src/corehq/apps/hqwebapp/static/hq-bootstrap
@@ -22,15 +22,22 @@ bootstrap:
 	lessc ${BOOTSTRAP_LESS} > ${HQ_BOOTSTRAP_SRC}/css/bootstrap.css
 	lessc --compress ${BOOTSTRAP_LESS} > ${HQ_BOOTSTRAP_SRC}/css/bootstrap.min.css
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > ${HQ_BOOTSTRAP_SRC}/css/bootstrap-responsive.css
-	lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > ${HQ_BOOTSTRAP_SRC}/css/bootstrap-responsive.min.css
+	#lessc --compress ${BOOTSTRAP_RESPONSIVE_LESS} > ${HQ_BOOTSTRAP_SRC}/css/bootstrap-responsive.min.css
 	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > ${HQ_BOOTSTRAP_SRC}/js/bootstrap.js
 	uglifyjs -nc ${HQ_BOOTSTRAP_SRC}/js/bootstrap.js > ${HQ_BOOTSTRAP_SRC}/js/bootstrap.min.js
 
 #
-# javascript only
+# non-css only
 #
 
-javascript:
+extra:
+	mkdir -p ${HQ_BOOTSTRAP_SRC}/img
+	cp img/* ${HQ_BOOTSTRAP_SRC}/img/
+
+	rm -rf ${HQ_BOOTSTRAP_SRC}/js
+	mkdir -p ${HQ_BOOTSTRAP_SRC}/js
+	cp -r js/includes/* ${HQ_BOOTSTRAP_SRC}/js/
+
 	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > ${HQ_BOOTSTRAP_SRC}/js/bootstrap.js
 	uglifyjs -nc ${HQ_BOOTSTRAP_SRC}/js/bootstrap.js > ${HQ_BOOTSTRAP_SRC}/js/bootstrap.min.js
 

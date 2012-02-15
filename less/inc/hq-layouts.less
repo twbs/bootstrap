@@ -1,0 +1,27 @@
+// Modified Layouts of Twitter Bootstrap
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.hq-container-fluid {
+    min-width: @fluidMinimumWidth;
+
+    // sticky footer
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    @clearFooterHeight: @footerHeight+@gridGutterWidth;
+    margin-bottom: -@clearFooterHeight;
+    .clearfix(@clearFooterHeight+@gridGutterWidth);
+}
+.hq-container-fluid .sidebar {
+    nav {
+        padding: @gridGutterWidth 0;
+        border-top: 1px solid @white;
+        #gradient > .vertical(#F7F7F7, @sideNavigationBackground);
+    }
+    .nav {
+        padding-left: @gridGutterWidth;
+    }
+}
+.hq-double-col {
+    #gradient > .horizontal-two-column-color(@sideNavigationBackground, @white, (@fluidGridColumnWidth*2+@fluidGridGutterWidth));
+}
