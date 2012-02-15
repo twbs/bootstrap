@@ -64,6 +64,19 @@
       return this
     }
 
+  , populate: function (query, callback) {
+      if (typeof(this.source === 'string')) {
+          $.ajax({
+            url: this.source,
+            success: callback,
+            data: { query: query },
+            dataType: 'json'
+          });
+      } else {
+        callback(this.source);
+      }
+    }
+
   , lookup: function (event) {
       var that = this
         , items
@@ -75,17 +88,21 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
-      })
+      this.populate(this.query, function(source) {
 
-      items = this.sorter(items)
+          items = $.grep(source, function (item) {
+            if (that.matcher(item)) return item
+          })
 
-      if (!items.length) {
-        return this.shown ? this.hide() : this
-      }
+          items = that.sorter(items)
 
-      return this.render(items.slice(0, this.options.items)).show()
+          if (!items.length) {
+            return that.shown ? that.hide() : that
+          }
+
+          return that.render(items.slice(0, that.options.items)).show()
+
+      });
     }
 
   , matcher: function (item) {
