@@ -29,12 +29,15 @@
     this.$element = $(element)
     this.options = $.extend({}, $.fn.carousel.defaults, options)
     this.options.slide && this.slide(this.options.slide)
+    this.stopped = !this.options.cycle
   }
 
   Carousel.prototype = {
 
     cycle: function () {
-      this.interval = setInterval($.proxy(this.next, this), this.options.interval)
+      if (!this.stopped) {
+        this.interval = setInterval($.proxy(this.next, this), this.options.interval)
+      }
       return this
     }
 
@@ -57,6 +60,16 @@
       }
 
       return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
+    }
+
+  , start: function() {
+      this.stopped = false
+      return this.cycle()
+    }
+
+  , stop: function() {
+      this.stopped = true
+      return this.pause()
     }
 
   , pause: function () {
@@ -133,6 +146,7 @@
 
   $.fn.carousel.defaults = {
     interval: 5000
+   ,cycle: true
   }
 
   $.fn.carousel.Constructor = Carousel
