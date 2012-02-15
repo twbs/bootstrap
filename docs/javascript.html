@@ -1296,6 +1296,12 @@ $('#myCollapsible').on('hidden', function () {
                <td>5000</td>
                <td>The amount of time to delay between automatically cycling an item.</td>
              </tr>
+             <tr>
+               <td>cycle</td>
+               <td>boolean</td>
+               <td>true</td>
+               <td>Cycles through all of the items.</td>
+             </tr>
             </tbody>
           </table>
           <h3>Markup</h3>
@@ -1320,9 +1326,13 @@ $('.myCarousel').carousel({
 })
 </pre>
           <h4>.carousel('cycle')</h4>
-          <p>Cycles through the carousel items from left to right.</p>
+          <p>Cycles through the carousel items from left to right, unless the carousel was created with cycle option set to false or was previsouly stopped using the stop method.</p>
+          <h4>.carousel('start')</h4>
+          <p>Cycles through the carousel items from left to right, even if the carousel was created with cycle option set to false or was previsouly stopped using the stop method.</p>
           <h4>.carousel('pause')</h4>
-          <p>Stops the carousel from cycling through items.</p>
+          <p>Pauses the carousel as it cycles through items.<br/>The carousel is unpaused if cycle, start, next or prev is called or if the carousel is cycled to a particular item.</p>
+          <h4>.carousel('stop')</h4>
+          <p>Stops the carousel from cycling through items.<br/>Once the carousel is stopped it will not resume cycling through the items as it will if it is paused.<br/><br/>Use start to resume cycling through the items.</p>
           <h4>.carousel(number)</h4>
           <p>Cycles the carousel to a particular frame (0 based, similar to an array).</p>
           <h4>.carousel('prev')</h4>
