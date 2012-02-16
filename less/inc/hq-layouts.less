@@ -25,3 +25,8 @@
 .hq-double-col {
     #gradient > .horizontal-two-column-color(@sideNavigationBackground, @white, (@fluidGridColumnWidth*2+@fluidGridGutterWidth));
 }
+.row-fluid .hq-content {
+    @leftMargin: .15%;
+    margin-left: @leftMargin;
+    width: @fluidGridColumnWidth*10 + @fluidGridGutterWidth*10 - @leftMargin;
+}

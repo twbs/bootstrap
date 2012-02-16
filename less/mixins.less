@@ -453,13 +453,17 @@
   }
   .horizontal-two-column-color(@startColor: #00b3ee, @endColor: #7a43b6, @colorStop: 50%) {
       background-color: mix(@startColor, @endColor, 80%);
-      @preColorStop: (@colorStop - 0.05);
-      background-image: -webkit-gradient(linear, left top, right top, from(@startColor), color-stop(@preColorStop, @startColor), color-stop(@colorStop, @endColor), to(@endColor));
-      background-image: -webkit-linear-gradient(left, @startColor, @startColor @preColorStop, @endColor @colorStop, @endColor);
-      background-image: -moz-linear-gradient(left, @startColor, @startColor @preColorStop, @endColor @colorStop, @endColor);
-      background-image: -ms-linear-gradient(left, @startColor, @startColor @preColorStop, @endColor @colorStop, @endColor);
-      background-image: -o-linear-gradient(left, @startColor, @startColor @preColorStop, @endColor @colorStop, @endColor);
-      background-image: linear-gradient(left, @startColor, @startColor @preColorStop, @endColor @colorStop, @endColor);
+      @firstPreColorStop: (@colorStop - .05);
+      @secondPreColorStop: (@firstPreColorStop + 0.01);
+      @thirdPreColorStop: (@colorStop - 0.01);
+      @firstPostColorStop: (@colorStop + .05);
+      @secondPostColorStop: (@firstPostColorStop + 0.01);
+      background-image: -webkit-gradient(linear, left top, right top, from(@startColor), color-stop(@firstPreColorStop, @startColor), color-stop(@secondPreColorStop, @endColor), color-stop(@thirdPreColorStop, @endColor), color-stop(@colorStop, @grayBorderColor), color-stop(@firstPostColorStop, @grayBorderColor), color-stop(@secondPostColorStop, @endColor), to(@endColor));
+      background-image: -webkit-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+      background-image: -moz-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+      background-image: -ms-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+      background-image: -o-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+      background-image: linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
       background-repeat: no-repeat;
       filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
    }

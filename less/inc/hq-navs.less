@@ -16,8 +16,16 @@
 
 // sidebar specific Nav list styles
 .sidebar {
-    nav > .nav-list > li > a,
-    nav > .nav-list .nav-header {
+    .nav-list > li > a,
+    .nav-list > li > a:visited,
+    .nav-list > li > a:link {
+        color: darken(@commCareGray, 4);
+    }
+    .nav-list .nav-header {
+        color: @blue;
+    }
+    .nav-list > li > a,
+    .nav-list .nav-header {
         padding-left: @gridGutterWidth;
         margin-left:  -@gridGutterWidth;
     }
@@ -25,9 +33,9 @@
         background-color: darken(@sideNavigationBackground, 10);
         color: @grayDarker;
     }
-    .nav-list .active > a,
-    .nav-list .active > a:hover {
+    .nav-list > li.active > a,
+    .nav-list > li.active > a:hover {
         color: @white;
-        background-color: @linkColor;
+        background-color: @blue;
     }
 }

@@ -1,0 +1,100 @@
+// Extends the styling for Twitter Bootstrap Tables
+
+// DataTables styling
+
+.datatable {
+    margin-bottom: 1px;
+}
+
+.datatable thead th {
+    color: @white;
+    #gradient > .vertical(desaturate(lighten(@blue, 20), 60), desaturate(darken(@blue, 5), 20));
+    font-weight: normal;
+    position: relative;
+    &.headerSortDown [class^="icon-hq-"] {
+        background-position: -24px  -48px;
+    }
+    &.headerSortUp [class^="icon-hq-"] {
+        background-position: 0  -48px;
+    }
+}
+
+.datatable tbody {
+    .odd {
+        background-color: @oddDataTableRowBackground;
+        .sorting_1 {
+            background-color: @oddDataTableRowSelectedBackground;
+            border-color: darken(#ddd, 5);
+        }
+    }
+    .even {
+        background-color: @evenDataTableRowBackground;
+        .sorting_1 {
+            background-color: @evenDataTableRowSelectedBackground;
+            border-color: darken(#ddd, 5);
+        }
+    }
+}
+
+.datatable tfoot td,
+.datatable tfoot th {
+    background-color: lighten(desaturate(@blue, 60), 10);
+    color: @white;
+    border-top: 1px solid darken(desaturate(@blue, 60), 40);
+}
+
+.dataTables_filter {
+    padding-top: 2px;
+    label {
+        padding-right: 10px;
+        [class^="icon-"] {
+            margin-top: 3px;
+        }
+    }
+}
+
+.dataTables_control {
+    #gradient > .vertical(@sideNavigationBackground, darken(@sideNavigationBackground, 10));
+    color: @commCareGray;
+    padding: 10px 0 0;
+    border-top: 1px solid @grayBorderColor;
+    border-bottom: 1px solid darken(@grayBorderColor, 20);
+    .box-shadow(0 1px 3px rgba(0,0,0,.25));
+}
+
+.dataTables_info,
+.dataTables_length {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.dataTables_info {
+    margin: 0 @gridGutterWidth;
+    line-height: 28px;
+}
+
+.dataTables_control .pagination {
+    margin: 0;
+    float: right;
+    margin-right: @gridGutterWidth;
+
+    li a {
+        line-height: 28px;
+        .buttonBackground(lighten(@grayLighter, 10), @grayLighter);
+        color: @commCareGray;
+    }
+    li a:hover {
+        .buttonBackground(@blue, desaturate(lighten(@blue, 20), 40));
+        color: @white;
+    }
+    li.disabled a,
+    li.disabled a:hover {
+        color: @grayLight;
+        .buttonBackground(darken(@sideNavigationBackground, 3), darken(@sideNavigationBackground, 3));
+    }
+    li.active a,
+    li.active a:hover {
+        .buttonBackground(desaturate(lighten(@blue, 20), 40), @blue);
+        color: @white;
+    }
+}

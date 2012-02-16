@@ -1,10 +1,15 @@
 // Extended and new type styles for HQ
 
 // Page header
+.hq-page-header-container {
+    padding-top: @baseLineHeight;
+    background-color: @white;
+}
+
 h1.page-header {
-  padding: @baseLineHeight @gridGutterWidth (@baseLineHeight - 1);
+  padding: 0 @gridGutterWidth (@baseLineHeight - 1);
   margin:0;
-  border-bottom: 1px solid @grayLighter;
+  border-bottom: 1px solid @grayBorderColor;
   line-height: 1em;
   font-size: 24px;
   font-weight: normal;

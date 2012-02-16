@@ -79,7 +79,10 @@
 @navbarLinkColorHover:            @white;
 
 // Side Navbar
-@sideNavigationBackground:        #F4F4F4;
+@sideNavigationBackground:        @navbarBackground;
+
+// Other stuff
+@grayBorderColor:       darken(@navbarBackground, 10);
 
 // Footer
 @footerHeight:                    100px;
@@ -104,6 +107,12 @@
 @infoText:                #3a87ad;
 @infoBackground:          #d9edf7;
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+// Tables
+@oddDataTableRowBackground:             @white;
+@oddDataTableRowSelectedBackground:     darken(@oddDataTableRowBackground, 5);
+@evenDataTableRowBackground:            @grayLighter;
+@evenDataTableRowSelectedBackground:    darken(@evenDataTableRowBackground, 5);
 
 
 
