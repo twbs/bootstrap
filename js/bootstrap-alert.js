@@ -45,17 +45,19 @@
       }
 
       $parent = $(selector)
-      $parent.trigger('close')
 
       e && e.preventDefault()
 
       $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
 
+      $parent.trigger('close')
+      
       $parent.removeClass('in')
 
       function removeElement() {
-        $parent.remove()
+        $parent.detach()
         $parent.trigger('closed')
+        $parent.remove()
       }
 
       $.support.transition && $parent.hasClass('fade') ?
