@@ -3,6 +3,14 @@
 // -----------------------------------------------------------------
 
 
+// NOTES on HQ Changes:
+/*
+    .clearfix
+    #gradient > .horizontal-two-column-color
+*/
+
+
+
 // UTILITY MIXINS
 // --------------------------------------------------
 
@@ -26,7 +34,7 @@
 // ------------------
 .tab-focus() {
   // Default
-  outline: thin dotted;
+  outline: thin dotted #333;
   // Webkit
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -90,6 +98,15 @@
   }
 }
 
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 
 
 // FONTS
@@ -146,7 +163,7 @@
   // Setup the mixins to be used
   .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @columns) {
     width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
-  } 
+  }
   .offset(@gridColumnWidth, @gridGutterWidth, @columns) {
     margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
   }
@@ -200,13 +217,13 @@
   // Setup the mixins to be used
   .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, @columns) {
     width: 1% * (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
-  } 
+  }
   .gridColumn(@fluidGridGutterWidth) {
     float: left;
     margin-left: @fluidGridGutterWidth;
   }
   // Take these values and mixins, and make 'em do their thang
-  .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth) {      
+  .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
     // Row surrounds the columns
     .row-fluid {
       width: 100%;
@@ -220,23 +237,21 @@
         margin-left: 0;
       }
       // Default columns
-      .span1     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 1); }
-      .span2     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 2); }
-      .span3     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 3); }
-      .span4     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 4); }
-      .span5     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 5); }
-      .span6     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 6); }
-      .span7     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 7); }
-      .span8     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 8); }
-      .span9     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 9); }
-      .span10    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 10); }
-      .span11    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 11); }
-      .span12    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 12); }
+      > .span1     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 1); }
+      > .span2     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 2); }
+      > .span3     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 3); }
+      > .span4     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 4); }
+      > .span5     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 5); }
+      > .span6     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 6); }
+      > .span7     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 7); }
+      > .span8     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 8); }
+      > .span9     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 9); }
+      > .span10    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 10); }
+      > .span11    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 11); }
+      > .span12    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 12); }
     }
   }
 }
-
-
 
 // Input grid system
 // -------------------------
@@ -261,6 +276,52 @@
       &.span11    { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 11); }
       &.span12    { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
     }
+  }
+}
+
+// Make a Grid
+// -------------------------
+// Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
+.makeRow() {
+  margin-left: @gridGutterWidth * -1;
+  .clearfix();
+}
+.makeColumn(@columns: 1) {
+  float: left;
+  margin-left: @gridGutterWidth;
+  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+}
+
+
+
+// Form field states (used in forms.less)
+// --------------------------------------------------
+
+// Mixin for form field states
+.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+  // Set the text color
+  > label,
+  .help-block,
+  .help-inline {
+    color: @textColor;
+  }
+  // Style inputs accordingly
+  input,
+  select,
+  textarea {
+    color: @textColor;
+    border-color: @borderColor;
+    &:focus {
+      border-color: darken(@borderColor, 10%);
+      .box-shadow(0 0 6px lighten(@borderColor, 20%));
+    }
+  }
+  // Give a small background color for input-prepend/-append
+  .input-prepend .add-on,
+  .input-append .add-on {
+    color: @textColor;
+    background-color: @backgroundColor;
+    border-color: @textColor;
   }
 }
 
@@ -315,18 +376,18 @@
           transform: translate(@x, @y);
 }
 .skew(@x: 0, @y: 0) {
-  -webkit-transform: translate(@x, @y);
-     -moz-transform: translate(@x, @y);
-      -ms-transform: translate(@x, @y);
-       -o-transform: translate(@x, @y);
-          transform: translate(@x, @y);
-}
-.skew(@x: 0, @y: 0) {
   -webkit-transform: skew(@x, @y);
      -moz-transform: skew(@x, @y);
       -ms-transform: skew(@x, @y);
        -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
+}
+.translate3d(@x: 0, @y: 0, @z: 0) {
+  -webkit-transform: translate(@x, @y, @z);
+     -moz-transform: translate(@x, @y, @z);
+      -ms-transform: translate(@x, @y, @z);
+       -o-transform: translate(@x, @y, @z);
+          transform: translate(@x, @y, @z);
 }
 
 // Background clipping
@@ -451,22 +512,6 @@
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
   }
-  .horizontal-two-column-color(@startColor: #00b3ee, @endColor: #7a43b6, @colorStop: 50%) {
-      background-color: mix(@startColor, @endColor, 80%);
-      @firstPreColorStop: (@colorStop - .05);
-      @secondPreColorStop: (@firstPreColorStop + 0.01);
-      @thirdPreColorStop: (@colorStop - 0.01);
-      @firstPostColorStop: (@colorStop + .05);
-      @secondPostColorStop: (@firstPostColorStop + 0.01);
-      background-image: -webkit-gradient(linear, left top, right top, from(@startColor), color-stop(@firstPreColorStop, @startColor), color-stop(@secondPreColorStop, @endColor), color-stop(@thirdPreColorStop, @endColor), color-stop(@colorStop, @grayBorderColor), color-stop(@firstPostColorStop, @grayBorderColor), color-stop(@secondPostColorStop, @endColor), to(@endColor));
-      background-image: -webkit-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
-      background-image: -moz-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
-      background-image: -ms-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
-      background-image: -o-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
-      background-image: linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
-      background-repeat: no-repeat;
-      filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
-   }
   .radial(@innerColor: #555, @outerColor: #333)  {
     background-color: @outerColor;
     background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
@@ -484,6 +529,22 @@
     background-image: -ms-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
     background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
     background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  }
+  .horizontal-two-column-color(@startColor: #00b3ee, @endColor: #7a43b6, @colorStop: 50%) {
+    background-color: mix(@startColor, @endColor, 80%);
+    @firstPreColorStop: (@colorStop - .05);
+    @secondPreColorStop: (@firstPreColorStop + 0.01);
+    @thirdPreColorStop: (@colorStop - 0.01);
+    @firstPostColorStop: (@colorStop + .05);
+    @secondPostColorStop: (@firstPostColorStop + 0.01);
+    background-image: -webkit-gradient(linear, left top, right top, from(@startColor), color-stop(@firstPreColorStop, @startColor), color-stop(@secondPreColorStop, @endColor), color-stop(@thirdPreColorStop, @endColor), color-stop(@colorStop, @grayBorderColor), color-stop(@firstPostColorStop, @grayBorderColor), color-stop(@secondPostColorStop, @endColor), to(@endColor));
+    background-image: -webkit-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: -moz-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: -ms-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: -o-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
   }
 }
 // Reset filters for IE
