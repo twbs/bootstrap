@@ -11,7 +11,7 @@
 // and background-position. Your resulting HTML will look like
 // <i class="icon-inbox"></i>.
 
-// For the white version of the  icons, just add the .icon-white class:
+// For the white version of the icons, just add the .icon-white class:
 // <i class="icon-inbox icon-white"></i>
 
 [class^="icon-"],
@@ -21,14 +21,14 @@
   height: 14px;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url(@iconSpritePath);
+  background-image: url("@{iconSpritePath}");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 
   .ie7-restore-right-whitespace();
 }
 .icon-white {
-  background-image: url(@iconWhiteSpritePath);
+  background-image: url("@{iconWhiteSpritePath}");
 }
 
 .icon-glass              { background-position: 0      0; }
