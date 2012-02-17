@@ -7,16 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
@@ -115,7 +115,7 @@
   <ul>
     <li>Media queries added for <strong>basic support</strong> across mobile and tablet devices
     <li>Responsive CSS is compiled separately, as bootstrap-responsive.css</li>
-  </ul>  
+  </ul>
 </section>
 
 
@@ -152,12 +152,14 @@
     <li>IE9: removed gradients and added rounded corners</li>
     <li>Updated active state to make styling clearer in button groups (new) and look better with custom transition</li>
     <li>New mixin, <code>.buttonBackground</code>, to set button gradients</li>
+    <li>The <code>.secondary</code> class was removed from modal examples in our docs as it never had associated styles.</li>
   </ul>
   <h3>Forms</h3>
   <ul>
     <li>Default form style is now vertical (stacked) to use less CSS and add greater flexibility</li>
     <li>Form classes standardized with <code>.form-</code> required as a prefix</li>
     <li>New built-in form defaults for search, inline, and horizontal forms</li>
+    <li>For horizontal forms, previous classes <code>.clearfix</code> and <code>.input</code> are equivalent to the new <code>.control-group</code> and <code>.controls</code>.</li>
     <li>More flexible horizontal form markup with classes for all styling, including new optional class for the <code>label</code></li>
     <li>Form states: colors updated and customizable via new LESS variables</li>
   </ul>
@@ -185,7 +187,7 @@
   </ul>
   <h3>Navigation</h3>
   <ul>
-    <li>Tabs and pills now require the use of a new base class, <code>.nav</code>, on their <code>&lt;ul&gt;</code></li>
+    <li>Tabs and pills now require the use of a new base class, <code>.nav</code>, on their <code>&lt;ul&gt;</code> and the class names are now <code>.nav-pills</code> and <code>.nav-tabs</code>.</li>
     <li>New nav list variation added that uses the same base class, <code>.nav</code></li>
     <li>Vertical tabs and pills have been added&mdash;just add <code>.nav-stacked</code> to the <code>&lt;ul&gt;</code></li>
     <li>Pills were restyled to be less rounded by default</li>
@@ -204,6 +206,7 @@
   <ul>
     <li>Updated the <code>.dropdown-menu</code> to tighten up spacing</li>
     <li>Now requires you to add a <code>&lt;span class="caret"&gt;&lt;/span&gt;</code> to show the dropdown arrow</li>
+    <li>Now requires you to add a <code>data-toggle="dropdown"</code> attribute to obtain toggling behavior</li>
     <li>The navbar (fixed topbar) has brand new dropdowns. Gone are the dark versions and in their place are the standard white ones with an additional caret at their tops for clarity of position.</li>
   </ul>
   <h3>Labels</h3>
@@ -220,7 +223,7 @@
   <ul>
     <li>New base class: <code>.alert</code> instead of <code>.alert-message</code></li>
     <li>Class names standardized for other options, now all starting with <code>.alert-</code></li>
-    <li>Redesigned base alert styles to combine the deafult alerts and block-level alerts into one</li>
+    <li>Redesigned base alert styles to combine the default alerts and block-level alerts into one</li>
     <li>Block level alert class changed: <code>.alert-block</code> instead of <code>.block-message</code></li>
   </ul>
   <h3>Progress bars</h3>
@@ -243,11 +246,19 @@
     <h1>Javascript plugins</h1>
   </div>
   <div class="alert alert-info">
-    <strong>Heads up!</strong> We're rewritten just about everything for our plugins, so head on over to <a href="./javascript.html">the Javascript page</a> to learn more.
+    <strong>Heads up!</strong> We've rewritten just about everything for our plugins, so head on over to <a href="./javascript.html">the Javascript page</a> to learn more.
   </div>
+  <h3>Tooltips</h3>
+  <ul>
+    <li>The plugin method has been renamed from <code>twipsy()</code> to <code>tooltip()</code>, and the class name changed from <code>twipsy</code> to <code>tooltip</code>.</li>
+    <li>The <code>placement</code> option value that was <code>below</code> is now <code>bottom</code>, and <code>above</code> is now <code>top</code>.</li>
+    <li>The <code>animate</code> option was renamed to <code>animation</code>.</li>
+    <li>The <code>html</code> option was removed, as the tooltips default to allowing HTML now.</li>
+  </ul>
   <h3>Popovers</h3>
   <ul>
     <li>Child elements now properly namespaced: <code>.title</code> to <code>.popover-title</code>, <code>.inner</code> to <code>.popover-inner</code>, and <code>.content</code> to <code>.popover-content</code>.</li>
+    <li>The <code>placement</code> option value that was <code>below</code> is now <code>bottom</code>, and <code>above</code> is now <code>top</code>.</li>
   </ul>
   <h3>New plugins</h3>
   <ul>
