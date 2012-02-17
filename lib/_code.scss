@@ -34,6 +34,7 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   word-break: break-all;
+  word-wrap: break-word;
 
   // Make prettyprint styles more spaced out for readability
   &.prettyprint {

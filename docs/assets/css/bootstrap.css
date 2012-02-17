@@ -498,6 +498,7 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   word-break: break-all;
+  word-wrap: break-word;
 }
 pre.prettyprint {
   margin-bottom: 18px;
@@ -588,11 +589,16 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
   /* IE7 */
 
   line-height: normal;
-  border: 0;
   cursor: pointer;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
+  border: 0 \9;
+  /* IE9 and down */
+
+}
+input[type="image"] {
+  border: 0;
 }
 input[type="file"] {
   width: auto;
