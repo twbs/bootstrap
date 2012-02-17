@@ -61,6 +61,7 @@
 
   , pause: function () {
       clearInterval(this.interval)
+      this.interval = null
       return this
     }
 
