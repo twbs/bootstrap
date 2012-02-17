@@ -181,7 +181,7 @@ hr.soften {
     top: 40px;
     left: 0;
     right: 0;
-    z-index: 1030;
+    z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
     border-color: #d5d5d5;
     border-width: 0 0 1px; /* drop the border on the fixed edges */
     -webkit-border-radius: 0;
@@ -190,6 +190,7 @@ hr.soften {
     -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
        -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
             box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
   }
   .subnav-fixed .nav {
     width: 938px;
@@ -481,9 +482,6 @@ hr.soften {
 /* Misc
 -------------------------------------------------- */
 
-pre.prettyprint {
-  overflow: hidden;
-}
 
 .browser-support {
   max-width: 100%;
@@ -546,27 +544,11 @@ form.well {
 /* Icons
 ------------------------- */
 .the-icons {
-  margin-bottom: 18px;
-}
-.the-icons i {
-  display: block;
-  margin-bottom: 5px;
+  margin-left: 0;
+  list-style: none;
 }
 .the-icons i:hover {
   background-color: rgba(255,0,0,.25);
-}
-.the-icons i:after {
-  display: block;
-  content: attr(class);
-  font-style: normal;
-  margin-left: 20px;
-  width: 140px;
-}
-#javascript input[type=checkbox] {
-  position: relative;
-  top: -1px;
-  display: inline;
-  margin-left: 6px;
 }
 
 /* Eaxmples page

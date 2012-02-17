@@ -9,12 +9,14 @@
 .btn {
   display: inline-block;
   padding: 4px 10px 4px;
+  margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @grayDark;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
-  #gradient > .vertical-three-colors(@white, @white, 25%, darken(@white, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
+  vertical-align: middle;
+  .buttonBackground(@white, darken(@white, 10%));
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
   .border-radius(4px);
@@ -23,6 +25,7 @@
   cursor: pointer;
 
   // Give IE7 some love
+  .reset-filter();
   .ie7-restore-left-whitespace();
 }
 
@@ -51,7 +54,6 @@
   .box-shadow(@shadow);
   background-color: darken(@white, 10%);
   background-color: darken(@white, 15%) e("\9");
-  color: rgba(0,0,0,.5);
   outline: 0;
 }
 
@@ -76,7 +78,7 @@
   line-height: normal;
   .border-radius(5px);
 }
-.btn-large .icon {
+.btn-large [class^="icon-"] {
   margin-top: 1px;
 }
 
@@ -86,8 +88,15 @@
   font-size: @baseFontSize - 2px;
   line-height: @baseLineHeight - 2px;
 }
-.btn-small .icon {
+.btn-small [class^="icon-"] {
   margin-top: -1px;
+}
+
+// Mini
+.btn-mini {
+  padding: 2px 6px;
+  font-size: @baseFontSize - 2px;
+  line-height: @baseLineHeight - 4px;
 }
 
 
@@ -105,7 +114,9 @@
 .btn-success,
 .btn-success:hover,
 .btn-info,
-.btn-info:hover {
+.btn-info:hover,
+.btn-inverse,
+.btn-inverse:hover {
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   color: @white;
 }
@@ -114,7 +125,8 @@
 .btn-warning.active,
 .btn-danger.active,
 .btn-success.active,
-.btn-info.active {
+.btn-info.active,
+.btn-dark.active {
   color: rgba(255,255,255,.75);
 }
 
@@ -139,6 +151,10 @@
 .btn-info {
   .buttonBackground(#5bc0de, #2f96b4);
 }
+// Inverse appears as dark gray
+.btn-inverse {
+  .buttonBackground(#454545, #262626);
+}
 
 
 // Cross-browser Jank
@@ -146,8 +162,10 @@
 
 button.btn,
 input[type="submit"].btn {
+
+  // Firefox 3.6 only I believe
   &::-moz-focus-inner {
-  padding: 0;
+    padding: 0;
     border: 0;
   }
 

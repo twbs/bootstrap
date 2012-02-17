@@ -51,11 +51,14 @@
 
       $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
 
-      $parent.removeClass('in')
+      $parent
+        .trigger('close')
+        .removeClass('in')
 
       function removeElement() {
-        $parent.remove()
-        $parent.trigger('closed')
+        $parent
+          .trigger('closed')
+          .remove()
       }
 
       $.support.transition && $parent.hasClass('fade') ?
@@ -88,4 +91,4 @@
     $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
   })
 
-}( window.jQuery )
+}( window.jQuery );

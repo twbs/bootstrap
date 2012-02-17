@@ -9,24 +9,26 @@
 // All icons receive the styles of the <i> tag with a base class 
 // of .i and are then given a unique class to add width, height, 
 // and background-position. Your resulting HTML will look like
-// <i class="i icon-inbox"></i>.
+// <i class="icon-inbox"></i>.
 
 // For the white version of the  icons, just add the .icon-white class:
-// <i class="i icon-inbox icon-white"></i>
+// <i class="icon-inbox icon-white"></i>
 
-[class^="icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   display: inline-block;
   width: 14px;
   height: 14px;
+  line-height: 14px;
   vertical-align: text-top;
-  background-image: url(../img/glyphicons-halflings.png);
+  background-image: url(@iconSpritePath);
   background-position: 14px 14px;
   background-repeat: no-repeat;
 
   .ie7-restore-right-whitespace();
 }
 .icon-white {
-  background-image: url(../img/glyphicons-halflings-white.png);
+  background-image: url(@iconWhiteSpritePath);
 }
 
 .icon-glass              { background-position: 0      0; }

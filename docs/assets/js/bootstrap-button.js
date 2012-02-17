@@ -91,8 +91,8 @@
 
   $(function () {
     $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
-      $(e.target).button('toggle')
+      $(e.currentTarget).button('toggle')
     })
   })
 
-}( window.jQuery )
+}( window.jQuery );

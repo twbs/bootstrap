@@ -39,7 +39,7 @@
   <ul>
     <li>{{_i}}Media queries added for <strong>basic support</strong> across mobile and tablet devices{{/i}}
     <li>{{_i}}Responsive CSS is compiled separately, as bootstrap-responsive.css{{/i}}</li>
-  </ul>  
+  </ul>
 </section>
 
 
@@ -76,12 +76,14 @@
     <li>{{_i}}IE9: removed gradients and added rounded corners{{/i}}</li>
     <li>{{_i}}Updated active state to make styling clearer in button groups (new) and look better with custom transition{{/i}}</li>
     <li>{{_i}}New mixin, <code>.buttonBackground</code>, to set button gradients{{/i}}</li>
+    <li>{{_i}}The <code>.secondary</code> class was removed from modal examples in our docs as it never had associated styles.{{/i}}</li>
   </ul>
   <h3>{{_i}}Forms{{/i}}</h3>
   <ul>
     <li>{{_i}}Default form style is now vertical (stacked) to use less CSS and add greater flexibility{{/i}}</li>
     <li>{{_i}}Form classes standardized with <code>.form-</code> required as a prefix{{/i}}</li>
     <li>{{_i}}New built-in form defaults for search, inline, and horizontal forms{{/i}}</li>
+    <li>{{_i}}For horizontal forms, previous classes <code>.clearfix</code> and <code>.input</code> are equivalent to the new <code>.control-group</code> and <code>.controls</code>.{{/i}}</li>
     <li>{{_i}}More flexible horizontal form markup with classes for all styling, including new optional class for the <code>label</code>{{/i}}</li>
     <li>{{_i}}Form states: colors updated and customizable via new LESS variables{{/i}}</li>
   </ul>
@@ -109,7 +111,7 @@
   </ul>
   <h3>{{_i}}Navigation{{/i}}</h3>
   <ul>
-    <li>{{_i}}Tabs and pills now require the use of a new base class, <code>.nav</code>, on their <code>&lt;ul&gt;</code>{{/i}}</li>
+    <li>{{_i}}Tabs and pills now require the use of a new base class, <code>.nav</code>, on their <code>&lt;ul&gt;</code> and the class names are now <code>.nav-pills</code> and <code>.nav-tabs</code>.{{/i}}</li>
     <li>{{_i}}New nav list variation added that uses the same base class, <code>.nav</code>{{/i}}</li>
     <li>{{_i}}Vertical tabs and pills have been added&mdash;just add <code>.nav-stacked</code> to the <code>&lt;ul&gt;</code>{{/i}}</li>
     <li>{{_i}}Pills were restyled to be less rounded by default{{/i}}</li>
@@ -128,6 +130,7 @@
   <ul>
     <li>{{_i}}Updated the <code>.dropdown-menu</code> to tighten up spacing{{/i}}</li>
     <li>{{_i}}Now requires you to add a <code>&lt;span class="caret"&gt;&lt;/span&gt;</code> to show the dropdown arrow{{/i}}</li>
+    <li>{{_i}}Now requires you to add a <code>data-toggle="dropdown"</code> attribute to obtain toggling behavior{{/i}}</li>
     <li>{{_i}}The navbar (fixed topbar) has brand new dropdowns. Gone are the dark versions and in their place are the standard white ones with an additional caret at their tops for clarity of position.{{/i}}</li>
   </ul>
   <h3>{{_i}}Labels{{/i}}</h3>
@@ -144,7 +147,7 @@
   <ul>
     <li>{{_i}}New base class: <code>.alert</code> instead of <code>.alert-message</code>{{/i}}</li>
     <li>{{_i}}Class names standardized for other options, now all starting with <code>.alert-</code>{{/i}}</li>
-    <li>{{_i}}Redesigned base alert styles to combine the deafult alerts and block-level alerts into one{{/i}}</li>
+    <li>{{_i}}Redesigned base alert styles to combine the default alerts and block-level alerts into one{{/i}}</li>
     <li>{{_i}}Block level alert class changed: <code>.alert-block</code> instead of <code>.block-message</code>{{/i}}</li>
   </ul>
   <h3>{{_i}}Progress bars{{/i}}</h3>
@@ -167,7 +170,7 @@
     <h1>{{_i}}Javascript plugins{{/i}}</h1>
   </div>
   <div class="alert alert-info">
-    <strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}We're rewritten just about everything for our plugins, so head on over to <a href="./javascript.html">the Javascript page</a> to learn more.{{/i}}
+    <strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}We've rewritten just about everything for our plugins, so head on over to <a href="./javascript.html">the Javascript page</a> to learn more.{{/i}}
   </div>
   <h3>{{_i}}Tooltips{{/i}}</h3>
   <ul>
@@ -179,6 +182,7 @@
   <h3>{{_i}}Popovers{{/i}}</h3>
   <ul>
     <li>{{_i}}Child elements now properly namespaced: <code>.title</code> to <code>.popover-title</code>, <code>.inner</code> to <code>.popover-inner</code>, and <code>.content</code> to <code>.popover-content</code>.{{/i}}</li>
+    <li>{{_i}}The <code>placement</code> option value that was <code>below</code> is now <code>bottom</code>, and <code>above</code> is now <code>top</code>.{{/i}}</li>
   </ul>
   <h3>{{_i}}New plugins{{/i}}</h3>
   <ul>

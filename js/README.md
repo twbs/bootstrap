@@ -37,7 +37,7 @@ All methods should accept an optional options object, a string which targets a p
 
 Options should be sparse and add universal value. We should pick the right defaults.
 
-All plugins should have a default object which can be modified to effect all instance's default options. The defaults object should be available via `$.fn.plugin.defaults`.
+All plugins should have a default object which can be modified to affect all instances' default options. The defaults object should be available via `$.fn.plugin.defaults`.
 
     $.fn.modal.defaults = { … }
 
@@ -64,7 +64,7 @@ All events should have an infinitive and past participle form. The infinitive is
 
 ### CONSTRUCTORS
 
-Each plugin should expose it's raw constructor on a `Constructor` property -- accessed in the following way:
+Each plugin should expose its raw constructor on a `Constructor` property -- accessed in the following way:
 
 
     $.fn.popover.Constructor
