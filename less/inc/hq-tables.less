@@ -1,16 +1,20 @@
 // Extends the styling for Twitter Bootstrap Tables
 
-// DataTables styling
+// DataTables & Export Data Tables styling
 
 .datatable {
     margin-bottom: 1px;
 }
 
-.datatable thead th {
+.datatable thead th,
+.export_data thead th {
     color: @white;
     #gradient > .vertical(desaturate(lighten(@blue, 20), 60), desaturate(darken(@blue, 5), 20));
     font-weight: normal;
     position: relative;
+}
+
+.datatable thead th {
     &.headerSortDown [class^="icon-hq-"] {
         background-position: -24px  -48px;
     }
@@ -19,7 +23,8 @@
     }
 }
 
-.datatable tbody {
+.datatable tbody,
+.export_data tbody {
     .odd {
         background-color: @oddDataTableRowBackground;
         .sorting_1 {
@@ -35,6 +40,8 @@
         }
     }
 }
+
+// Strictly DataTables
 
 .datatable tfoot td,
 .datatable tfoot th {
@@ -96,5 +103,19 @@
     li.active a:hover {
         .buttonBackground(desaturate(lighten(@blue, 20), 40), @blue);
         color: @white;
+    }
+}
+
+// Strictly Export Data Tables
+
+.export_data {
+    .box-shadow();
+}
+.export_data tbody td {
+    padding-top: 13px;
+
+    &.cell-vertical-centered {
+        padding-top: 8px;
+        line-height: 28px;
     }
 }
