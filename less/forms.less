@@ -96,9 +96,12 @@ input[type="radio"] {
   margin: 3px 0;
   *margin-top: 0; /* IE7 */
   line-height: normal;
-  border: 0;
   cursor: pointer;
   .border-radius(0);
+  border: 0 \9; /* IE9 and down */
+}
+input[type="image"] {
+  border: 0;
 }
 
 // Reset the file input to browser defaults
