@@ -83,6 +83,8 @@
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
 
+      if (!$next.length) return
+
       this.sliding = true
 
       isCycling && this.pause()
