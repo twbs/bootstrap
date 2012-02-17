@@ -102,7 +102,7 @@
     margin: 0;
   }
 }
-@media (min-width: 768px) and (max-width: 980px) {
+@media (min-width: 768px) and (max-width: 979px) {
   .row {
     margin-left: -20px;
     *zoom: 1;
@@ -278,7 +278,7 @@
     width: 714px;
   }
 }
-@media (max-width: 980px) {
+@media (max-width: 979px) {
   body {
     padding-top: 0;
   }
