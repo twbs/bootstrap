@@ -61,6 +61,7 @@
 
   , pause: function () {
       clearInterval(this.interval)
+      this.interval = null
       return this
     }
 
@@ -81,6 +82,8 @@
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
+
+      if (!$next.length) return
 
       this.sliding = true
 
@@ -151,4 +154,4 @@
     })
   })
 
-}( window.jQuery )
+}( window.jQuery );

@@ -47,5 +47,5 @@
     })()
 
   })
-  
-}( window.jQuery )
+
+}( window.jQuery );

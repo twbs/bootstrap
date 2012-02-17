@@ -33,7 +33,7 @@ html {
   -ms-text-size-adjust: 100%;
 }
 a:focus {
-  outline: thin dotted;
+  outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -93,6 +93,16 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 textarea {
   overflow: auto;
   vertical-align: top;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
 }
 body {
   margin: 0;
@@ -488,6 +498,7 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   word-break: break-all;
+  word-wrap: break-word;
 }
 pre.prettyprint {
   margin-bottom: 18px;
@@ -530,10 +541,15 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 18px;
+}
+input,
+button,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 label {
   display: block;
@@ -573,11 +589,16 @@ input[type="image"], input[type="checkbox"], input[type="radio"] {
   /* IE7 */
 
   line-height: normal;
-  border: 0;
   cursor: pointer;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
+  border: 0 \9;
+  /* IE9 and down */
+
+}
+input[type="image"] {
+  border: 0;
 }
 input[type="file"] {
   width: auto;
@@ -670,7 +691,7 @@ select:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  outline: thin dotted;
+  outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -1744,7 +1765,7 @@ table .span12 {
   transition: background-position 0.1s linear;
 }
 .btn:focus {
-  outline: thin dotted;
+  outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -1785,6 +1806,11 @@ table .span12 {
 }
 .btn-small [class^="icon-"] {
   margin-top: -1px;
+}
+.btn-mini {
+  padding: 2px 6px;
+  font-size: 11px;
+  line-height: 14px;
 }
 .btn-primary,
 .btn-primary:hover,

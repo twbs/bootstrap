@@ -133,4 +133,4 @@
     })
   })
 
-}( window.jQuery )
+}( window.jQuery );
