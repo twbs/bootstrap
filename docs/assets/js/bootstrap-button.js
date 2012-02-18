@@ -53,13 +53,15 @@
       }
 
     , toggle: function () {
-        var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
+        var $button = this.$element.closest('.btn')
+        var $group  = $button.parent('[data-toggle="buttons-radio"]')
 
-        $parent && $parent
+        $group && $group
           .find('.active')
           .removeClass('active')
 
-        this.$element.toggleClass('active')
+        $button && $button
+          .toggleClass('active')
       }
 
   }
@@ -91,7 +93,7 @@
 
   $(function () {
     $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
-      $(e.currentTarget).button('toggle')
+      $(e.target).button('toggle')
     })
   })
 
