@@ -427,17 +427,17 @@ hr.soften {
 .download-btn {
   margin: 36px 0 108px;
 }
-.download p,
-.download h4 {
+#download p,
+#download h4 {
   max-width: 50%;
   margin: 0 auto;
   color: #999;
   text-align: center;
 }
-.download h4 {
+#download h4 {
   margin-bottom: 0;
 }
-.download p {
+#download p {
   margin-bottom: 18px;
 }
 .download-btn .btn {
