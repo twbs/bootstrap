@@ -989,14 +989,14 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   display: inline-block;
 }
 .form-search .input-append .add-on,
-.form-inline .input-prepend .add-on,
-.form-search .input-append .add-on,
+.form-search .input-prepend .add-on,
+.form-inline .input-append .add-on,
 .form-inline .input-prepend .add-on {
   vertical-align: middle;
 }
 .form-search .radio,
-.form-inline .radio,
 .form-search .checkbox,
+.form-inline .radio,
 .form-inline .checkbox {
   margin-bottom: 0;
   vertical-align: middle;
