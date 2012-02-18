@@ -754,8 +754,14 @@
   {{_i}}Project name{{/i}}
 &lt;/a&gt;
 </pre>
-      <h3>{{_i}}Search form{{/i}}</h3>
-      <p>{{_i}}Search forms receive custom styles in the navbar with the <code>.navbar-search</code> class. Include <code>.pull-left</code> or <code>.pull-right</code> on the <code>form</code> to align it.{{/i}}</p>
+      <h3>{{_i}}Forms in navbar{{/i}}</h3>
+      <p>{{_i}}To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;form class="navbar-form pull-left"&gt;
+  &lt;input type="text" class="span2"&gt;
+&lt;/form&gt;
+</pre>
+      <p>{{_i}}For a more customized search form, add the <code>.navbar-search</code> class to receive specialized styles in the navbar.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="{{_i}}Search{{/i}}"&gt;
