@@ -415,7 +415,7 @@ em {
 .muted {
   color: #999999;
 }
-abbr {
+abbr[title] {
   border-bottom: 1px dotted #ddd;
   cursor: help;
 }
