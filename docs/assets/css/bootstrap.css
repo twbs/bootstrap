@@ -419,6 +419,10 @@ abbr[title] {
   border-bottom: 1px dotted #ddd;
   cursor: help;
 }
+abbr.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
 blockquote {
   padding: 0 0 0 15px;
   margin: 0 0 18px;
