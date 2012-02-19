@@ -416,8 +416,6 @@ em {
   color: #999999;
 }
 abbr {
-  font-size: 90%;
-  text-transform: uppercase;
   border-bottom: 1px dotted #ddd;
   cursor: help;
 }
