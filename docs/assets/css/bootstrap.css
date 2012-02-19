@@ -2132,9 +2132,10 @@ button.btn.small, input[type="submit"].btn.small {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-}
-.alert, .alert-heading {
   color: #c09853;
+}
+.alert-heading {
+  color: inherit;
 }
 .alert .close {
   position: relative;
@@ -2145,25 +2146,16 @@ button.btn.small, input[type="submit"].btn.small {
 .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
-}
-.alert-success, .alert-success .alert-heading {
   color: #468847;
 }
 .alert-danger, .alert-error {
   background-color: #f2dede;
   border-color: #eed3d7;
-}
-.alert-danger,
-.alert-error,
-.alert-danger .alert-heading,
-.alert-error .alert-heading {
   color: #b94a48;
 }
 .alert-info {
   background-color: #d9edf7;
   border-color: #bce8f1;
-}
-.alert-info, .alert-info .alert-heading {
   color: #3a87ad;
 }
 .alert-block {
