@@ -25,7 +25,7 @@
   * ============================== */
 
   var Button = function ( element, options ) {
-    this.$element = $(element)
+    this.$element = $(element).closest('button, a')
     this.options = $.extend({}, $.fn.button.defaults, options)
   }
 
