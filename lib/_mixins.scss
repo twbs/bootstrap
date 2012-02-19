@@ -25,7 +25,7 @@
 // ------------------
 @mixin tab-focus() {
   // Default
-  outline: thin dotted;
+  outline: thin dotted #333;
   // Webkit
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -89,27 +89,42 @@
   }
 }
 
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 
 
 // FONTS
 // --------------------------------------------------
 
 // Font Stacks
+@mixin font-family-serif {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+@mixin font-family-sans-serif {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@mixin font-family-monospace {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+}
 @mixin font-shorthand($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   font-size: $size;
   font-weight: $weight;
   line-height: $lineHeight;
 }
 @mixin font-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  @include font-family-serif;
   @include font-shorthand($size, $weight, $lineHeight);
 }
 @mixin font-sans-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  @include font-family-sans-serif;
   @include font-shorthand($size, $weight, $lineHeight);
-}
-@mixin font-family-monospace {
-  font-family: Menlo, Monaco, "Courier New", monospace;
 }
 @mixin font-monospace($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   @include font-family-monospace;
@@ -186,7 +201,7 @@
 // -------------------------
 @mixin fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, $columns) {
   width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1));
-} 
+}
 @mixin fluidGridSystem-gridColumn($fluidGridGutterWidth) {
   float: left;
   margin-left: $fluidGridGutterWidth;
@@ -206,18 +221,18 @@
       margin-left: 0;
     }
     // Default columns
-    .span1     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 1); }
-    .span2     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 2); }
-    .span3     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 3); }
-    .span4     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 4); }
-    .span5     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 5); }
-    .span6     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 6); }
-    .span7     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 7); }
-    .span8     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 8); }
-    .span9     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 9); }
-    .span10    { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 10); }
-    .span11    { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 11); }
-    .span12    { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 12); }
+    > .span1     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 1); }
+    > .span2     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 2); }
+    > .span3     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 3); }
+    > .span4     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 4); }
+    > .span5     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 5); }
+    > .span6     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 6); }
+    > .span7     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 7); }
+    > .span8     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 8); }
+    > .span9     { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 9); }
+    > .span10    { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 10); }
+    > .span11    { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 11); }
+    > .span12    { @include fluidGridSystem-columns($fluidGridGutterWidth, $fluidGridColumnWidth, 12); }
   }
 }
 
@@ -244,6 +259,52 @@
     &.span10    { @include inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 10); }
     &.span11    { @include inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 11); }
     &.span12    { @include inputGridSystem-inputColumns($gridGutterWidth, $gridColumnWidth, $gridRowWidth, 12); }
+  }
+}
+
+// Make a Grid
+// -------------------------
+// Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
+@mixin makeRow() {
+  margin-left: $gridGutterWidth * -1;
+  @include clearfix();
+}
+@mixin makeColumn($columns: 1) {
+  float: left;
+  margin-left: $gridGutterWidth;
+  width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
+}
+
+
+
+// Form field states (used in forms.scss)
+// --------------------------------------------------
+
+// Mixin for form field states
+@mixin formFieldState($textColor: #555, $borderColor: #ccc, $backgroundColor: #f5f5f5) {
+  // Set the text color
+  > label,
+  .help-block,
+  .help-inline {
+    color: $textColor;
+  }
+  // Style inputs accordingly
+  input,
+  select,
+  textarea {
+    color: $textColor;
+    border-color: $borderColor;
+    &:focus {
+      border-color: darken($borderColor, 10%);
+      @include box-shadow(0 0 6px lighten($borderColor, 20%));
+    }
+  }
+  // Give a small background color for input-prepend/-append
+  .input-prepend .add-on,
+  .input-append .add-on {
+    color: $textColor;
+    background-color: $backgroundColor;
+    border-color: $textColor;
   }
 }
 
@@ -298,18 +359,18 @@
           transform: translate($x, $y);
 }
 @mixin skew($x: 0, $y: 0) {
-  -webkit-transform: translate($x, $y);
-     -moz-transform: translate($x, $y);
-      -ms-transform: translate($x, $y);
-       -o-transform: translate($x, $y);
-          transform: translate($x, $y);
-}
-@mixin skew($x: 0, $y: 0) {
   -webkit-transform: skew($x, $y);
      -moz-transform: skew($x, $y);
       -ms-transform: skew($x, $y);
        -o-transform: skew($x, $y);
           transform: skew($x, $y);
+}
+@mixin translate3d($x: 0, $y: 0, $z: 0) {
+  -webkit-transform: translate($x, $y, $z);
+     -moz-transform: translate($x, $y, $z);
+      -ms-transform: translate($x, $y, $z);
+       -o-transform: translate($x, $y, $z);
+          transform: translate($x, $y, $z);
 }
 
 // Background clipping
@@ -386,27 +447,25 @@
 // Gradients
 @mixin gradient-horizontal($startColor: #555, $endColor: #333) {
   background-color: $endColor;
-  background-image: -khtml-gradient(linear, left top, right top, from($startColor), to($endColor)); // Konqueror
   background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1), $startColor, $endColor; // IE9 and down
 }
 @mixin gradient-vertical($startColor: #555, $endColor: #333) {
-  background-color: $endColor;
-  background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor)); // Konqueror
+  background-color: mix($startColor, $endColor, 60%);
   background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $startColor), color-stop(100%, $endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
-  //background-image: linear-gradient(top left, $startColor, $endColor); // The standard
+  background-image: linear-gradient(top, $startColor, $endColor); // The standard
   background-repeat: repeat-x;
- filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0),$startColor,$endColor; // IE9 and down
 }
 @mixin gradient-directional($startColor: #555, $endColor: #333, $deg: 45deg) {
   background-color: $endColor;
@@ -418,7 +477,7 @@
   background-image: linear-gradient($deg, $startColor, $endColor); // The standard
 }
 @mixin gradient-vertical-three-colors($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
-  background-color: $endColor;
+  background-color: mix($midColor, $endColor, 80%);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
   background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
@@ -426,14 +485,14 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0), $startColor, $endColor; // IE9 and down, gets no color-stop at all the proper fallback
 }
-@mixin gradient-radial($centerColor: #555, $outsideColor: #333)  {
-  background-color: $outsideColor;
-  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($centerColor), to($outsideColor));
-  background-image: -webkit-radial-gradient(circle, $centerColor, $outsideColor);
-  background-image: -moz-radial-gradient(circle, $centerColor, $outsideColor);
-  background-image: -ms-radial-gradient(circle, $centerColor, $outsideColor);
+@mixin gradient-radial($innerColor: #555, $outerColor: #333)  {
+  background-color: $outerColor;
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor));
+  background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -moz-radial-gradient(circle, $innerColor, $outerColor);
+  background-image: -ms-radial-gradient(circle, $innerColor, $outerColor);
   background-repeat: no-repeat;
   // Opera cannot do radial gradients yet
 }

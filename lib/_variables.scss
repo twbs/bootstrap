@@ -5,12 +5,11 @@
 
 
 // GLOBAL VALUES
-// -------------
+// --------------------------------------------------
 
 // Links
 $linkColor:             #08c !default;
 $linkColorHover:        darken($linkColor, 15) !default;
-
 
 // Grays
 $black:                 #000 !default;
@@ -55,13 +54,21 @@ $zindexFixedNavbar:     1030 !default;
 $zindexModalBackdrop:   1040 !default;
 $zindexModal:           1050 !default;
 
+// Sprite icons path
+$iconSpritePath:          "../img/glyphicons-halflings.png";
+$iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
 // Input placeholder text color
 $placeholderText:       $grayLight !default;
+
+// Hr border color
+$hrBorder:              $grayLighter !default;
 
 // Navbar
 $navbarHeight:                    40px !default;
 $navbarBackground:                $grayDarker !default;
 $navbarBackgroundHighlight:       $grayDark !default;
+$navbarLinkBackgroundHover:       transparent !default;
 
 $navbarText:                      $grayLight !default;
 $navbarLinkColor:                 $grayLight !default;
@@ -87,7 +94,7 @@ $infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
 
 
 // GRID
-// ----
+// --------------------------------------------------
 
 // Default 940px grid
 $gridColumns:             12 !default;
