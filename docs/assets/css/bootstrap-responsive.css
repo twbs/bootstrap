@@ -161,7 +161,10 @@
   .span11 {
     width: 662px;
   }
-  .span12, .container {
+  .span12 {
+    width: 724px;
+  }
+  .container {
     width: 724px;
   }
   .offset1 {
@@ -447,7 +450,10 @@
   .span11 {
     width: 1070px;
   }
-  .span12, .container {
+  .span12 {
+    width: 1170px;
+  }
+  .container {
     width: 1170px;
   }
   .offset1 {
