@@ -142,7 +142,6 @@
 // Site container
 // -------------------------
 .container-fixed() {
-  width: @gridRowWidth;
   margin-left: auto;
   margin-right: auto;
   .clearfix();
@@ -185,8 +184,8 @@
     .span9     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 9); }
     .span10    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 10); }
     .span11    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 11); }
-    .span12,
-    .container { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
+    .span12    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
+    .container { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @gridColumns); }
     // Offset column options
     .offset1   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 1); }
     .offset2   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 2); }
