@@ -2510,6 +2510,9 @@ button.btn.small, input[type="submit"].btn.small {
 .nav-collapse.collapse {
   height: auto;
 }
+.navbar {
+  color: #999999;
+}
 .navbar .brand:hover {
   text-decoration: none;
 }
@@ -2526,11 +2529,6 @@ button.btn.small, input[type="submit"].btn.small {
 .navbar .navbar-text {
   margin-bottom: 0;
   line-height: 40px;
-  color: #999999;
-}
-.navbar .navbar-text a:hover {
-  color: #ffffff;
-  background-color: transparent;
 }
 .navbar .btn, .navbar .btn-group {
   margin-top: 5px;
