@@ -154,11 +154,13 @@ em {
 }
 
 // Abbreviations and acronyms
-abbr {
-  font-size: 90%;
-  text-transform: uppercase;
+abbr[title] {
   border-bottom: 1px dotted #ddd;
   cursor: help;
+}
+abbr.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
 }
 
 // Blockquotes

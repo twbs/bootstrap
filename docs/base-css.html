@@ -166,7 +166,8 @@
           Wraps abbreviations and acronyms to show the expanded version on hover
         </td>
         <td>
-          Include optional <code>title</code> for expanded text
+          <p>Include optional <code>title</code> attribute for expanded text</p>
+          Use <code>.initialism</code> class for uppercase abbreviations.
         </td>
       </tr>
       <tr>
@@ -205,8 +206,9 @@
     </div>
     <div class="span4">
       <h3>Example abbreviations</h3>
-      <p>Abbreviations are styled with uppercase text and a light dotted bottom border. They also have a help cursor on hover so users have extra indication something will be shown on hover.</p>
-      <p><abbr title="HyperText Markup Language">HTML</abbr> is the best thing since sliced bread.</p>
+      <p>Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.</p>
+      <p>Add the <code>initialism</code> class to an abbreviation to increase typographic harmony by giving it a slightly smaller text size.</p>
+      <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
       <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
     </div>
   </div>
