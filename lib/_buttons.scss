@@ -54,7 +54,6 @@
   @include box-shadow($shadow);
   background-color: darken($white, 10%);
   background-color: darken($white, 15%) #{"\9"};
-  color: rgba(0,0,0,.5);
   outline: 0;
 }
 
@@ -96,8 +95,8 @@
 // Mini
 .btn-mini {
   padding: 2px 6px;
-  font-size: @baseFontSize - 2px;
-  line-height: @baseLineHeight - 4px;
+  font-size: $baseFontSize - 2px;
+  line-height: $baseLineHeight - 4px;
 }
 
 
@@ -126,7 +125,8 @@
 .btn-warning.active,
 .btn-danger.active,
 .btn-success.active,
-.btn-info.active {
+.btn-info.active,
+.btn-dark.active {
   color: rgba(255,255,255,.75);
 }
 

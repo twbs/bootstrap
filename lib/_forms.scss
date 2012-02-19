@@ -31,17 +31,24 @@ legend {
 
   // Small
   small {
-    font-size: @baseLineHeight * .75;
-    color: @grayLight;
+    font-size: $baseLineHeight * .75;
+    color: $grayLight;
   }
 }
 
 // Set font for forms
+label,
 input,
 button,
 select,
 textarea {
-  @include font-sans-serif($baseFontSize,normal,$baseLineHeight);
+  @include font-shorthand(); // Set size, weight, line-height here
+}
+input,
+button,
+select,
+textarea {
+  @include font-family-sans-serif(); // And only set font-family here for those that need it (note the missing label element)
 }
 
 // Identify controls by their labels
@@ -399,7 +406,7 @@ select:focus:required:invalid {
   }
   .uneditable-input {
     border-left-color: #eee;
-    border-right-color: #ccc;    
+    border-right-color: #ccc;
   }
   .add-on {
     margin-right: 0;

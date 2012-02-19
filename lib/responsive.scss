@@ -24,6 +24,9 @@
 @import "variables"; // Modify this for custom colors, font-sizes, etc
 @import "mixins";
 
+.clearfix {
+  @include clearfix();
+}
 
 // RESPONSIVE CLASSES
 // ------------------
@@ -220,7 +223,7 @@
     display: none;
   }
   .navbar .nav .nav-header {
-    color: @navbarText;
+    color: $navbarText;
     text-shadow: none;
   }
   // Nav and dropdown links in navbar
