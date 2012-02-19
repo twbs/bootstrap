@@ -90,7 +90,8 @@
           {{_i}}Wraps abbreviations and acronyms to show the expanded version on hover{{/i}}
         </td>
         <td>
-          {{_i}}Include optional <code>title</code> for expanded text{{/i}}
+          <p>{{_i}}Include optional <code>title</code> attribute for expanded text{{/i}}</p>
+          {{_i}}Use <code>.initialism</code> class for uppercase abbreviations.{{/i}}
         </td>
       </tr>
       <tr>
@@ -129,8 +130,9 @@
     </div>
     <div class="span4">
       <h3>{{_i}}Example abbreviations{{/i}}</h3>
-      <p>{{_i}}Abbreviations are styled with uppercase text and a light dotted bottom border. They also have a help cursor on hover so users have extra indication something will be shown on hover.{{/i}}</p>
-      <p>{{_i}}<abbr title="HyperText Markup Language">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
+      <p>{{_i}}Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.{{/i}}</p>
+      <p>{{_i}}Add the <code>initialism</code> class to an abbreviation to increase typographic harmony by giving it a slightly smaller text size.{{/i}}</p>
+      <p>{{_i}}<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
       <p>{{_i}}An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.{{/i}}</p>
     </div>
   </div>
