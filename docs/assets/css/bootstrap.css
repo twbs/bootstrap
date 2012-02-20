@@ -860,6 +860,7 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   display: block;
   margin-top: 5px;
   margin-bottom: 0;
+  color: #999999;
 }
 .help-inline {
   display: inline-block;
@@ -2781,7 +2782,7 @@ button.btn.small, input[type="submit"].btn.small {
   color: #999999;
   cursor: default;
 }
-.pagination .disabled a, .pagination .disabled a:hover {
+.pagination .disabled span, .pagination .disabled a, .pagination .disabled a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
