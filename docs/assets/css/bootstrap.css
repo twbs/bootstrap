@@ -1993,11 +1993,11 @@ button.btn::-moz-focus-inner, input[type="submit"].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-button.btn.large, input[type="submit"].btn.large {
+button.btn.btn-large, input[type="submit"].btn.btn-large {
   *padding-top: 7px;
   *padding-bottom: 7px;
 }
-button.btn.small, input[type="submit"].btn.small {
+button.btn.btn-small, input[type="submit"].btn.btn-small {
   *padding-top: 3px;
   *padding-bottom: 3px;
 }
