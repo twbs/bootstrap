@@ -48,3 +48,10 @@ git pull -s subtree h5bp-ant-bs master
 # Merge back into master branch if everything went according to plan
 ```
 
+## Requirements
+
+Java 1.6 is required to make use of the build script as a result of switching to the Closure Compiler. 
+
+This means that OS X versions prior to 10.6 are no longer supported out of the box. [SoyLatte][soylatte] may provide compatibility for some Intel OS X machines. However, PowerPC based Macs will not be able to run Java 1.6. 
+
+[soylatte]: http://landonf.bikemonkey.org/static/soylatte/ 
