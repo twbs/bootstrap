@@ -199,16 +199,23 @@
     }
 
   , getTitle: function () {
-      var title
-        , $e = this.$element
-        , o = this.options
+      var title, $e = this.$element, o = this.options;
+      this.fixTitle();
 
-      title = $e.attr('data-original-title')
-        || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+      if (typeof o.title == 'string') {
+          var title_name = o.title == 'title' ? 'original-title' : o.title;
+          if ($e.children(title_name).length){
+              title = $e.children(title_name).html();
+          } else{
+              title = $e.attr(title_name);
+              if (typeof title == 'undefined') title = title_name
+          }
 
-      title = title.toString().replace(/(^\s*|\s*$)/, "")
-
-      return title
+      } else if (typeof o.title == 'function') {
+          title = o.title.call($e[0]);
+      }
+      title = ('' + title).replace(/(^\s*|\s*$)/, "");
+      return title || o.fallback;
     }
 
   , tip: function () {
