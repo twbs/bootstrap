@@ -92,22 +92,22 @@
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
       if (!$.support.transition && this.$element.hasClass('slide')) {
-        this.$element.trigger('slide')
+        this.$element.trigger('slide.carousel')
         $active.removeClass('active')
         $next.addClass('active')
         this.sliding = false
-        this.$element.trigger('slid')
+        this.$element.trigger('slid.carousel')
       } else {
         $next.addClass(type)
         $next[0].offsetWidth // force reflow
         $active.addClass(direction)
         $next.addClass(direction)
-        this.$element.trigger('slide')
+        this.$element.trigger('slide.carousel')
         this.$element.one($.support.transition.end, function () {
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
-          setTimeout(function () { that.$element.trigger('slid') }, 0)
+          setTimeout(function () { that.$element.trigger('slid.carousel') }, 0)
         })
       }
 

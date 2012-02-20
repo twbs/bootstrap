@@ -18,7 +18,6 @@ $(function () {
       })
 
       test("should insert into dom when show method is called", function () {
-        stop()
         $.support.transition = false
         $("<div id='modal-test'></div>")
           .bind("shown", function () {
@@ -30,7 +29,6 @@ $(function () {
       })
 
       test("should hide modal when hide is called", function () {
-        stop()
         $.support.transition = false
 
         $("<div id='modal-test'></div>")
@@ -48,7 +46,6 @@ $(function () {
       })
 
       test("should toggle when toggle is called", function () {
-        stop()
         $.support.transition = false
         var div = $("<div id='modal-test'></div>")
         div
@@ -66,7 +63,6 @@ $(function () {
       })
 
       test("should remove from dom when click [data-dismiss=modal]", function () {
-        stop()
         $.support.transition = false
         var div = $("<div id='modal-test'><span class='close' data-dismiss='modal'></span></div>")
         div
