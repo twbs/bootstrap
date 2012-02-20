@@ -527,8 +527,30 @@
 }
 
 
-// Mixin for generating button backgrounds
-// ---------------------------------------
+
+// COMPONENT MIXINS
+// --------------------------------------------------
+
+// NAV DIVIDER
+// -------------------------
+// Dividers (basically an hr) within dropdowns and nav lists
+.nav-divider() {
+  height: 1px;
+  margin: ((@baseLineHeight / 2) - 1) 1px; // 8px 1px
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid @white;
+
+  // IE7 needs a set width since we gave a height. Restricting just
+  // to IE7 to keep the 1px left/right space in other browsers.
+  // It is unclear where IE is getting the extra space that we need
+  // to negative-margin away, but so it goes.
+  *width: 100%;
+  *margin: -5px 0 5px;
+}
+
+// BUTTON BACKGROUNDS
+// ------------------
 .buttonBackground(@startColor, @endColor) {
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
   .gradientBar(@startColor, @endColor);
@@ -545,10 +567,6 @@
     background-color: darken(@endColor, 10%) e("\9");
   }
 }
-
-
-// COMPONENT MIXINS
-// --------------------------------------------------
 
 // POPOVER ARROWS
 // -------------------------

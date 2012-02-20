@@ -1612,7 +1612,7 @@ table .span12 {
 }
 .dropdown-menu .divider {
   height: 1px;
-  margin: 5px 1px;
+  margin: 8px 1px;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
@@ -2216,6 +2216,15 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .nav-list [class^="icon-"] {
   margin-right: 2px;
+}
+.nav-list .divider {
+  height: 1px;
+  margin: 8px 1px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ffffff;
+  *width: 100%;
+  *margin: -5px 0 5px;
 }
 .nav-tabs, .nav-pills {
   *zoom: 1;

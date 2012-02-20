@@ -466,8 +466,18 @@
       <h3>{{_i}}Application-style navigation{{/i}}</h3>
       <p>{{_i}}Nav lists provide a simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.{{/i}}</p>
       <p>{{_i}}Structurally, they're built on the same core nav styles as tabs and pills, so usage and customization are straightforward.{{/i}}</p>
+      <hr>
       <h4>{{_i}}With icons{{/i}}</h4>
       <p>{{_i}}Nav lists are also easy to equip with icons. Add the proper <code>&lt;i&gt;</code> tag with class and you're set.{{/i}}</p>
+      <h4>{{_i}}Horizontal dividers{{/i}}</h4>
+      <p>{{_i}}Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-list"&gt;
+  ...
+  &lt;li class="divider"&gt;&lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</pre>
     </div>
     <div class="span4">
       <h3>{{_i}}Example nav list{{/i}}</h3>
@@ -481,6 +491,7 @@
           <li class="nav-header">{{_i}}Another list header{{/i}}</li>
           <li><a href="#">{{_i}}Profile{{/i}}</a></li>
           <li><a href="#">{{_i}}Settings{{/i}}</a></li>
+          <li class="divider"></li>
           <li><a href="#">{{_i}}Help{{/i}}</a></li>
         </ul>
       </div> <!-- /well -->
@@ -511,6 +522,7 @@
           <li class="nav-header">{{_i}}Another list header{{/i}}</li>
           <li><a href="#"><i class="icon-user"></i> {{_i}}Profile{{/i}}</a></li>
           <li><a href="#"><i class="icon-cog"></i> {{_i}}Settings{{/i}}</a></li>
+          <li class="divider"></li>
           <li><a href="#"><i class="icon-flag"></i> {{_i}}Help{{/i}}</a></li>
         </ul>
       </div> <!-- /well -->
