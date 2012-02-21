@@ -682,7 +682,7 @@ $('#myModal').on('hidden', function () {
           </table>
 
           <pre class="prettyprint linenums">
-$('a[data-toggle="tab"]').on('shown', function (e) {
+$('body').on('shown', 'a[data-toggle="tab"]', function (e) {
   e.target // activated tab
   e.relatedTarget // previous tab
 })</pre>
