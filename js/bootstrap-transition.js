@@ -32,17 +32,17 @@
         , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
 
       return support && {
-        end: (function () {
+        end: (function ( browser ) {
           var transitionEnd = "TransitionEnd"
-          if ( $.browser.webkit ) {
+          if ( browser.webkit ) {
           	transitionEnd = "webkitTransitionEnd"
-          } else if ( $.browser.mozilla ) {
+          } else if ( browser.mozilla ) {
           	transitionEnd = "transitionend"
-          } else if ( $.browser.opera ) {
+          } else if ( browser.opera ) {
           	transitionEnd = "oTransitionEnd"
           }
           return transitionEnd
-        }())
+        }( $.browser ))
       }
     })()
 
