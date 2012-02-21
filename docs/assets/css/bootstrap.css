@@ -855,11 +855,12 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 ::-webkit-input-placeholder {
   color: #999999;
 }
+.help-block, .help-inline {
+  color: #555555;
+}
 .help-block {
   display: block;
-  margin-top: 5px;
-  margin-bottom: 0;
-  color: #999999;
+  margin-bottom: 9px;
 }
 .help-inline {
   display: inline-block;
@@ -867,7 +868,6 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   /* IE7 inline-block hack */
 
   *zoom: 1;
-  margin-bottom: 9px;
   vertical-align: middle;
   padding-left: 5px;
 }
@@ -1043,6 +1043,10 @@ legend + .control-group {
 }
 .form-horizontal .controls {
   margin-left: 160px;
+}
+.form-horizontal .help-block {
+  margin-top: 9px;
+  margin-bottom: 0;
 }
 .form-horizontal .form-actions {
   padding-left: 160px;

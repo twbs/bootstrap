@@ -335,17 +335,19 @@ select:focus:required:invalid {
 // HELP TEXT
 // ---------
 
+.help-block,
+.help-inline {
+  color: @gray; // lighten the text some for contrast
+}
+
 .help-block {
   display: block; // account for any element using help-block
-  margin-top: 5px;
-  margin-bottom: 0;
-  color: @grayLight;
+  margin-bottom: @baseLineHeight / 2;
 }
 
 .help-inline {
   display: inline-block;
   .ie7-inline-block();
-  margin-bottom: 9px;
   vertical-align: middle;
   padding-left: 5px;
 }
@@ -527,6 +529,11 @@ legend + .control-group {
   // Move over all input controls and content
   .controls {
     margin-left: 160px;
+  }
+  // Remove bottom margin on block level help text since that's accounted for on .control-group
+  .help-block {
+    margin-top: @baseLineHeight / 2;
+    margin-bottom: 0;
   }
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
