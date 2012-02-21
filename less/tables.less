@@ -129,11 +129,6 @@ table {
 // -----------------
 
 // Change the columns
-.tableColumns(@columnSpan: 1) {
-  float: none;
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16;
-  margin-left: 0;
-}
 table {
   .span1     { .tableColumns(1); }
   .span2     { .tableColumns(2); }
