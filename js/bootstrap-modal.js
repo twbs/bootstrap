@@ -47,7 +47,7 @@
         $('body').addClass('modal-open')
 
         this.isShown = true
-        this.$element.trigger('show')
+        this.$element.trigger('show.modal')
 
         escape.call(this)
         backdrop.call(this, function () {
@@ -65,8 +65,8 @@
           that.$element.addClass('in')
 
           transition ?
-            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
-            that.$element.trigger('shown')
+            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown.modal') }) :
+            that.$element.trigger('shown.modal')
 
         })
       }
@@ -84,7 +84,7 @@
         escape.call(this)
 
         this.$element
-          .trigger('hide')
+          .trigger('hide.modal')
           .removeClass('in')
 
         $.support.transition && this.$element.hasClass('fade') ?
@@ -114,7 +114,7 @@
   function hideModal( that ) {
     this.$element
       .hide()
-      .trigger('hidden')
+      .trigger('hidden.modal')
 
     backdrop.call(this)
   }

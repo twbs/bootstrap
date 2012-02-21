@@ -45,19 +45,19 @@
       }
 
       $parent = $(selector)
-      $parent.trigger('close')
+      $parent.trigger('close.alert')
 
       e && e.preventDefault()
 
       $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
 
       $parent
-        .trigger('close')
+        .trigger('close.alert')
         .removeClass('in')
 
       function removeElement() {
         $parent
-          .trigger('closed')
+          .trigger('closed.alert')
           .remove()
       }
 
