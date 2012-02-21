@@ -74,7 +74,7 @@
   // Buttons in navbar
   .btn,
   .btn-group {
-    margin-top: 5px; // make buttons vertically centered in navbar
+    .navbarVerticalAlign(30px); // Vertically center in navbar
   }
   .btn-group .btn {
     margin-top: 0; // then undo the margin here so we don't accidentally double it
@@ -86,14 +86,15 @@
   margin-bottom: 0; // remove default bottom margin
   .clearfix();
   input,
-  select {
-    display: inline-block;
-    margin-top: 5px;
-    margin-bottom: 0;
-  }
+  select,
   .radio,
   .checkbox {
-    margin-top: 5px;
+    .navbarVerticalAlign(30px); // Vertically center in navbar
+  }
+  input,
+  select {
+    display: inline-block;
+    margin-bottom: 0;
   }
   input[type="image"],
   input[type="checkbox"],
@@ -114,7 +115,7 @@
 .navbar-search {
   position: relative;
   float: left;
-  margin-top: 6px;
+  .navbarVerticalAlign(28px); // Vertically center in navbar
   margin-bottom: 0;
   .search-query {
     padding: 4px 9px;

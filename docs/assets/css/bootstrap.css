@@ -2559,13 +2559,15 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 .navbar-form:after {
   clear: both;
 }
+.navbar-form input,
+.navbar-form select,
+.navbar-form .radio,
+.navbar-form .checkbox {
+  margin-top: 5px;
+}
 .navbar-form input, .navbar-form select {
   display: inline-block;
-  margin-top: 5px;
   margin-bottom: 0;
-}
-.navbar-form .radio, .navbar-form .checkbox {
-  margin-top: 5px;
 }
 .navbar-form input[type="image"], .navbar-form input[type="checkbox"], .navbar-form input[type="radio"] {
   margin-top: 3px;
