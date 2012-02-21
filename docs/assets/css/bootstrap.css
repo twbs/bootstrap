@@ -2367,7 +2367,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   clear: both;
 }
 .tab-content {
-  overflow: hidden;
+  display: table;
 }
 .tabs-below .nav-tabs, .tabs-right .nav-tabs, .tabs-left .nav-tabs {
   border-bottom: 0;
