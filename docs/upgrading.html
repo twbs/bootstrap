@@ -15,7 +15,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Le fav and touch icons -->
@@ -115,7 +115,7 @@
   <ul>
     <li>Media queries added for <strong>basic support</strong> across mobile and tablet devices
     <li>Responsive CSS is compiled separately, as bootstrap-responsive.css</li>
-  </ul>  
+  </ul>
 </section>
 
 
@@ -246,11 +246,19 @@
     <h1>Javascript plugins</h1>
   </div>
   <div class="alert alert-info">
-    <strong>Heads up!</strong> We're rewritten just about everything for our plugins, so head on over to <a href="./javascript.html">the Javascript page</a> to learn more.
+    <strong>Heads up!</strong> We've rewritten just about everything for our plugins, so head on over to <a href="./javascript.html">the Javascript page</a> to learn more.
   </div>
+  <h3>Tooltips</h3>
+  <ul>
+    <li>The plugin method has been renamed from <code>twipsy()</code> to <code>tooltip()</code>, and the class name changed from <code>twipsy</code> to <code>tooltip</code>.</li>
+    <li>The <code>placement</code> option value that was <code>below</code> is now <code>bottom</code>, and <code>above</code> is now <code>top</code>.</li>
+    <li>The <code>animate</code> option was renamed to <code>animation</code>.</li>
+    <li>The <code>html</code> option was removed, as the tooltips default to allowing HTML now.</li>
+  </ul>
   <h3>Popovers</h3>
   <ul>
     <li>Child elements now properly namespaced: <code>.title</code> to <code>.popover-title</code>, <code>.inner</code> to <code>.popover-inner</code>, and <code>.content</code> to <code>.popover-content</code>.</li>
+    <li>The <code>placement</code> option value that was <code>below</code> is now <code>bottom</code>, and <code>above</code> is now <code>top</code>.</li>
   </ul>
   <h3>New plugins</h3>
   <ul>

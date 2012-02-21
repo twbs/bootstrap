@@ -15,7 +15,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Le fav and touch icons -->
@@ -134,7 +134,7 @@
         <div class="span3">
           <label>
             <h3><a href="./javascript.html#tooltips">Tooltips</a></h3>
-            <p>A new take on the jQuery Tipsy plugin, Tooltips don't rely on images, use CSS3 for animations, and data-attributes for local title storage.</p>
+            <p>A new take on the jQuery Tipsy plugin, Tooltips don't rely on images&mdash;they use CSS3 for animations and data-attributes for local title storage.</p>
           </label>
         </div>
         <div class="span3">
@@ -289,7 +289,7 @@
 </pre>
 
 <pre class="prettyprint linenums">
-&lt;div class="modal"&gt;
+&lt;div class="modal" id="myModal"&gt;
   &lt;div class="modal-header"&gt;
     &lt;a class="close" data-dismiss="modal"&gt;&times;&lt;/a&gt;
     &lt;h3&gt;Modal header&lt;/h3&gt;
@@ -700,14 +700,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
       <div class="row">
         <div class="span3 columns">
           <h3>About Tooltips</h3>
-          <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, uss css3 for animations, and data-attributes for local title storage.</p>
+          <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use css3 for animations, and data-attributes for local title storage.</p>
           <a href="assets/js/bootstrap-tooltip.js" target="_blank" class="btn">Download file</a>
         </div>
         <div class="span9 columns">
           <h2>Example use of Tooltips</h2>
           <p>Hover over the links below to see tooltips:</p>
           <div class="tooltip-demo well">
-            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" rel='tooltip' title="first tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel='tooltip' title='Another tooltip'>have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel='tooltip' title='Another one here too'>really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel='tooltip' title='The last tip!'>twitter handle</a> freegan cred raw denim single-origin coffee viral.
+            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" rel="tooltip" title="first tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A <a href="#" rel="tooltip" title="Another one here too">really ironic</a> artisan whatever keytar, scenester farm-to-table banksy Austin <a href="#" rel="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
             </p>
           </div>
           <hr>
@@ -733,7 +733,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              </tr>
              <tr>
                <td>placement</td>
-               <td>string</td>
+               <td>string|function</td>
                <td>'top'</td>
                <td>how to position the tooltip - top | bottom | left | right</td>
              </tr>
@@ -836,7 +836,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              </tr>
              <tr>
                <td>placement</td>
-               <td>string</td>
+               <td>string|function</td>
                <td>'right'</td>
                <td>how to position the popover - top | bottom | left | right</td>
              </tr>
@@ -930,7 +930,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
             </p>
           </div>
           <hr>
-          <h2>Using bootstrap-alerts.js</h2>
+          <h2>Using bootstrap-alert.js</h2>
           <p>Enable dismissal of an alert via javascript:</p>
           <pre class="prettyprint linenums">$(".alert").alert()</pre>
           <h3>Markup</h3>
