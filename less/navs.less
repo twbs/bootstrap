@@ -64,6 +64,10 @@
 .nav-list [class^="icon-"] {
   margin-right: 2px;
 }
+// Dividers (basically an hr) within the dropdown
+.nav-list .divider {
+  .nav-divider();
+}
 
 
 
@@ -256,7 +260,7 @@
   .clearfix();
 }
 .tab-content {
-  overflow: hidden; // prevent content from running below tabs
+  display: table; // prevent content from running below tabs
 }
 
 // Remove border on bottom, left, right

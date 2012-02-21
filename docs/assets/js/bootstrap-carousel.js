@@ -83,13 +83,13 @@
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
 
-      if (!$next.length) return
-
       this.sliding = true
 
       isCycling && this.pause()
 
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+
+      if ($next.hasClass('active')) return
 
       if (!$.support.transition && this.$element.hasClass('slide')) {
         this.$element.trigger('slide')

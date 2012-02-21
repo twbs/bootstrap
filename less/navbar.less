@@ -50,6 +50,7 @@
 
 // Brand, links, text, and buttons
 .navbar {
+  color: @navbarText;
   // Hover and active states
   .brand:hover {
     text-decoration: none;
@@ -69,16 +70,11 @@
   .navbar-text {
     margin-bottom: 0;
     line-height: 40px;
-    color: @navbarText;
-    a:hover {
-      color: @white;
-      background-color: transparent;
-    }
   }
   // Buttons in navbar
   .btn,
   .btn-group {
-    margin-top: 5px; // make buttons vertically centered in navbar
+    .navbarVerticalAlign(30px); // Vertically center in navbar
   }
   .btn-group .btn {
     margin-top: 0; // then undo the margin here so we don't accidentally double it
@@ -90,14 +86,15 @@
   margin-bottom: 0; // remove default bottom margin
   .clearfix();
   input,
-  select {
-    display: inline-block;
-    margin-top: 5px;
-    margin-bottom: 0;
-  }
+  select,
   .radio,
   .checkbox {
-    margin-top: 5px;
+    .navbarVerticalAlign(30px); // Vertically center in navbar
+  }
+  input,
+  select {
+    display: inline-block;
+    margin-bottom: 0;
   }
   input[type="image"],
   input[type="checkbox"],
@@ -118,7 +115,7 @@
 .navbar-search {
   position: relative;
   float: left;
-  margin-top: 6px;
+  .navbarVerticalAlign(28px); // Vertically center in navbar
   margin-bottom: 0;
   .search-query {
     padding: 4px 9px;
@@ -286,8 +283,6 @@
 
 // Right aligned menus need alt position
 .navbar .nav.pull-right .dropdown-menu {
-  left: auto;
-  right: 0;
   &:before {
     left: auto;
     right: 12px;

@@ -161,7 +161,10 @@
   .span11 {
     width: 662px;
   }
-  .span12, .container {
+  .span12 {
+    width: 724px;
+  }
+  .container {
     width: 724px;
   }
   .offset1 {
@@ -395,6 +398,7 @@
 @media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
+    overflow: visible !important;
   }
 }
 @media (min-width: 1200px) {
@@ -446,7 +450,10 @@
   .span11 {
     width: 1070px;
   }
-  .span12, .container {
+  .span12 {
+    width: 1170px;
+  }
+  .container {
     width: 1170px;
   }
   .offset1 {
