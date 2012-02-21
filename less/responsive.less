@@ -188,13 +188,13 @@
 @media (min-width: 768px) and (max-width: 979px) {
 
   // Fixed grid
-  #gridSystem > .generate(12, 42px, 20px);
+  #gridSystem > .generate(@gridColumns, 42px, 20px);
 
   // Fluid grid
-  #fluidGridSystem > .generate(12, 5.801104972%, 2.762430939%);
+  #fluidGridSystem > .generate(@gridColumns, 5.801104972%, 2.762430939%);
 
   // Input grid
-  #inputGridSystem > .generate(12, 42px, 20px);
+  #inputGridSystem > .generate(@gridColumns, 42px, 20px);
 
 }
 
@@ -340,13 +340,13 @@
 @media (min-width: 1200px) {
 
   // Fixed grid
-  #gridSystem > .generate(12, 70px, 30px);
+  #gridSystem > .generate(@gridColumns, 70px, 30px);
 
   // Fluid grid
-  #fluidGridSystem > .generate(12, 5.982905983%, 2.564102564%);
+  #fluidGridSystem > .generate(@gridColumns, 5.982905983%, 2.564102564%);
 
   // Input grid
-  #inputGridSystem > .generate(12, 70px, 30px);
+  #inputGridSystem > .generate(@gridColumns, 70px, 30px);
 
   // Thumbnails
   .thumbnails {
