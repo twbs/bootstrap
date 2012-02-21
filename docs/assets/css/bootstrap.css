@@ -134,6 +134,9 @@ a:hover {
   float: left;
   margin-left: 20px;
 }
+.container {
+  width: 940px;
+}
 .span1 {
   width: 60px;
 }
@@ -205,9 +208,6 @@ a:hover {
 }
 .span24 {
   width: 1900px;
-}
-.container {
-  width: 940px;
 }
 .offset1 {
   margin-left: 100px;

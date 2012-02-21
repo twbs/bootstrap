@@ -172,6 +172,10 @@
     [class*="span"] {
       #gridSystem > .gridColumn(@gridGutterWidth);
     }
+    
+    // Fixed container
+    .container { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @gridColumns); }
+
     // Default columns
     .span1     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 1); }
     .span2     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 2); }
@@ -197,8 +201,6 @@
     .span22    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 22); }
     .span23    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 23); }
     .span24    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 24); }
-    
-    .container { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @gridColumns); }
     
     // Offset column options
     .offset1   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 1); }
