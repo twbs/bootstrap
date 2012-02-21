@@ -1001,8 +1001,17 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 .form-search .checkbox,
 .form-inline .radio,
 .form-inline .checkbox {
+  padding-left: 0;
   margin-bottom: 0;
   vertical-align: middle;
+}
+.form-search .radio input[type="radio"],
+.form-search .checkbox input[type="checkbox"],
+.form-inline .radio input[type="radio"],
+.form-inline .checkbox input[type="checkbox"] {
+  float: left;
+  margin-left: 0;
+  margin-right: 3px;
 }
 .control-group {
   margin-bottom: 9px;
