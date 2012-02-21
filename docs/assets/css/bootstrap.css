@@ -887,6 +887,8 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 }
 .input-prepend input,
 .input-append input,
+.input-prepend select,
+.input-append select,
 .input-prepend .uneditable-input,
 .input-append .uneditable-input {
   -webkit-border-radius: 0 3px 3px 0;
@@ -895,6 +897,8 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
 }
 .input-prepend input:focus,
 .input-append input:focus,
+.input-prepend select:focus,
+.input-append select:focus,
 .input-prepend .uneditable-input:focus,
 .input-append .uneditable-input:focus {
   position: relative;
@@ -931,7 +935,7 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   /* IE6-7 */
 
 }
-.input-append input, .input-append .uneditable-input {
+.input-append input, .input-append select .uneditable-input {
   float: left;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
@@ -2376,6 +2380,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 }
 .tab-content {
   display: table;
+  width: 100%;
 }
 .tabs-below .nav-tabs, .tabs-right .nav-tabs, .tabs-left .nav-tabs {
   border-bottom: 0;
@@ -3175,6 +3180,7 @@ a.thumbnail:hover {
   padding: 2px 4px 3px;
   font-size: 11.049999999999999px;
   font-weight: bold;
+  white-space: nowrap;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #999999;
@@ -3220,6 +3226,7 @@ a.thumbnail:hover {
   padding: 2px 10px 3px;
   font-size: 12.025px;
   font-weight: bold;
+  white-space: nowrap;
   color: #ffffff;
   background-color: #999999;
   -webkit-border-radius: 10px;
