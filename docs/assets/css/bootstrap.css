@@ -173,42 +173,6 @@ a:hover {
 .span12 {
   width: 940px;
 }
-.span13 {
-  width: 1020px;
-}
-.span14 {
-  width: 1100px;
-}
-.span15 {
-  width: 1180px;
-}
-.span16 {
-  width: 1260px;
-}
-.span17 {
-  width: 1340px;
-}
-.span18 {
-  width: 1420px;
-}
-.span19 {
-  width: 1500px;
-}
-.span20 {
-  width: 1580px;
-}
-.span21 {
-  width: 1660px;
-}
-.span22 {
-  width: 1740px;
-}
-.span23 {
-  width: 1820px;
-}
-.span24 {
-  width: 1900px;
-}
 .offset1 {
   margin-left: 100px;
 }
@@ -244,39 +208,6 @@ a:hover {
 }
 .offset12 {
   margin-left: 980px;
-}
-.offset13 {
-  margin-left: 1060px;
-}
-.offset14 {
-  margin-left: 1140px;
-}
-.offset15 {
-  margin-left: 1220px;
-}
-.offset16 {
-  margin-left: 1300px;
-}
-.offset17 {
-  margin-left: 1380px;
-}
-.offset18 {
-  margin-left: 1460px;
-}
-.offset19 {
-  margin-left: 1540px;
-}
-.offset20 {
-  margin-left: 1620px;
-}
-.offset21 {
-  margin-left: 1700px;
-}
-.offset22 {
-  margin-left: 1780px;
-}
-.offset23 {
-  margin-left: 1860px;
 }
 .row-fluid {
   width: 100%;
@@ -331,42 +262,6 @@ a:hover {
 }
 .row-fluid > .span12 {
   width: 99.99999998999999%;
-}
-.row-fluid > .span13 {
-  width: 108.510638287%;
-}
-.row-fluid > .span14 {
-  width: 117.02127658399999%;
-}
-.row-fluid > .span15 {
-  width: 125.531914881%;
-}
-.row-fluid > .span16 {
-  width: 134.042553178%;
-}
-.row-fluid > .span17 {
-  width: 142.553191475%;
-}
-.row-fluid > .span18 {
-  width: 151.063829772%;
-}
-.row-fluid > .span19 {
-  width: 159.57446806899998%;
-}
-.row-fluid > .span20 {
-  width: 168.085106366%;
-}
-.row-fluid > .span21 {
-  width: 176.595744663%;
-}
-.row-fluid > .span22 {
-  width: 185.10638296000002%;
-}
-.row-fluid > .span23 {
-  width: 193.617021257%;
-}
-.row-fluid > .span24 {
-  width: 202.127659554%;
 }
 .container {
   margin-left: auto;
@@ -866,42 +761,6 @@ input.span11, textarea.span11, .uneditable-input.span11 {
 }
 input.span12, textarea.span12, .uneditable-input.span12 {
   width: 930px;
-}
-input.span13, textarea.span13, .uneditable-input.span13 {
-  width: 1010px;
-}
-input.span14, textarea.span14, .uneditable-input.span14 {
-  width: 1090px;
-}
-input.span15, textarea.span15, .uneditable-input.span15 {
-  width: 1170px;
-}
-input.span16, textarea.span16, .uneditable-input.span16 {
-  width: 1250px;
-}
-input.span17, textarea.span17, .uneditable-input.span17 {
-  width: 1330px;
-}
-input.span18, textarea.span18, .uneditable-input.span18 {
-  width: 1410px;
-}
-input.span19, textarea.span19, .uneditable-input.span19 {
-  width: 1490px;
-}
-input.span20, textarea.span20, .uneditable-input.span20 {
-  width: 1570px;
-}
-input.span21, textarea.span21, .uneditable-input.span21 {
-  width: 1650px;
-}
-input.span22, textarea.span22, .uneditable-input.span22 {
-  width: 1730px;
-}
-input.span23, textarea.span23, .uneditable-input.span23 {
-  width: 1810px;
-}
-input.span24, textarea.span24, .uneditable-input.span24 {
-  width: 1890px;
 }
 input[disabled],
 select[disabled],
