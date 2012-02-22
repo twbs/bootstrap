@@ -204,11 +204,13 @@
 .nav-tabs .dropdown-toggle .caret,
 .nav-pills .dropdown-toggle .caret {
   border-top-color: @linkColor;
+  border-bottom-color: @linkColor;
   margin-top: 6px;
 }
 .nav-tabs .dropdown-toggle:hover .caret,
 .nav-pills .dropdown-toggle:hover .caret {
   border-top-color: @linkColorHover;
+  border-bottom-color: @linkColorHover;
 }
 
 // Active dropdown links
@@ -216,6 +218,7 @@
 .nav-tabs .active .dropdown-toggle .caret,
 .nav-pills .active .dropdown-toggle .caret {
   border-top-color: @grayDark;
+  border-bottom-color: @grayDark;
 }
 
 // Active:hover dropdown links
@@ -238,6 +241,7 @@
 .nav .open.active .caret,
 .nav .open a:hover .caret {
   border-top-color: @white;
+  border-bottom-color: @white;
   .opacity(100);
 }
 

@@ -188,12 +188,13 @@
 ================================================== -->
 <section id="buttonDropdowns">
   <div class="page-header">
-    <h1>Buttons dropdowns <small>Contextual dropdown menus built on button groups</small></h1>
+    <h1>Button dropdown menus <small>Built on button groups to provide contextual menus</small></h1>
   </div>
 
+  <h2>Button dropdowns</h2>
   <div class="row">
     <div class="span4">
-      <h3>Button dropdowns</h3>
+      <h3>Overview and examples</h3>
       <p>Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
@@ -278,10 +279,14 @@
 </pre>
     </div>
   </div>
+  <div class="alert alert-info">
+    <strong>Heads up!</strong> In some cases&mdash;like mobile&mdash;dropdown menus will extend outside the viewport. You need to resolve the alignment manually or with custom javascript.
+  </div>
 
+  <h2>Split button dropdowns</h2>
   <div class="row">
     <div class="span4">
-      <h3>Split button dropdowns</h3>
+      <h3>Overview and examples</h3>
       <p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
@@ -352,7 +357,30 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </div><!-- /btn-group -->
-      </div>
+      </div><!-- /btn-toolbar -->
+      <h3>Right aligned menus</h3>
+      <p>Add <code>.pull-right</code> to the <code>.dropdown-menu</code> of any button dropdown for right aligned menus.</p>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <a class="btn" href="#">Right</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div><!-- /btn-toolbar -->
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  ...
+  &lt;ul class="dropdown-menu pull-right"&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
     </div>
     <div class="span8">
       <h3>Example markup</h3>
@@ -368,6 +396,44 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+      <h3>Dropup menus</h3>
+      <p>Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>.caret</code> and reposition the menu itself to move from the bottom up instead of top down.</p>
+      <div class="btn-toolbar" style="margin-top: 9px;">
+        <div class="btn-group dropup">
+          <a class="btn" href="#">Dropup</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group dropup">
+          <a class="btn primary" href="#">Right dropup</a>
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group dropup"&gt;
+  &lt;a class="btn" href="#"&gt;Dropup&lt;/a&gt;
+  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
     </div>
   </div>
 </section>
@@ -474,10 +540,20 @@
       <h3>Tabs with dropdowns</h3>
       <ul class="nav nav-tabs">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="#">Help</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropup <b class="caret bottom-up"></b></a>
+          <ul class="dropdown-menu bottom-up pull-right">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -506,10 +582,20 @@
       <h3>Pills with dropdowns</h3>
       <ul class="nav nav-pills">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="#">Help</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropup <b class="caret bottom-up"></b></a>
+          <ul class="dropdown-menu bottom-up pull-right">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -812,6 +898,16 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropup <b class="caret bottom-up"></b></a>
+              <ul class="dropdown-menu bottom-up pull-right">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
           </ul>
           <form class="navbar-search pull-left" action="">
             <input type="text" class="search-query span2" placeholder="Search">
@@ -819,6 +915,16 @@
           <ul class="nav pull-right">
             <li><a href="#">Link</a></li>
             <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropup <b class="caret bottom-up"></b></a>
+              <ul class="dropdown-menu bottom-up pull-right">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -940,8 +1046,8 @@
 </pre>
       <h3>Component alignment</h3>
       <p>To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
-      <h3>Adding dropdowns</h3>
-      <p>Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.</p>
+      <h3>Adding dropdown menus</h3>
+      <p>Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;
