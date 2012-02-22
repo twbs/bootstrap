@@ -845,6 +845,14 @@ input:focus:required:invalid:focus, textarea:focus:required:invalid:focus, selec
   margin-bottom: 18px;
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
+  *zoom: 1;
+}
+.form-actions:before, .form-actions:after {
+  display: table;
+  content: "";
+}
+.form-actions:after {
+  clear: both;
 }
 .uneditable-input {
   display: block;
