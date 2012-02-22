@@ -336,16 +336,20 @@ select:focus:required:invalid {
 // ---------
 
 .help-block,
-.help-inline {
+.help-inline,
+.message-block,
+.message-inline {
   color: @gray; // lighten the text some for contrast
 }
 
-.help-block {
+.help-block,
+.message-block {
   display: block; // account for any element using help-block
   margin-bottom: @baseLineHeight / 2;
 }
 
-.help-inline {
+.help-inline,
+.message-inline {
   display: inline-block;
   .ie7-inline-block();
   vertical-align: middle;
