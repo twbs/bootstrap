@@ -2346,8 +2346,9 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   margin-bottom: -1px;
 }
 .nav-tabs > li > a {
-  padding-top: 9px;
-  padding-bottom: 9px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  line-height: 18px;
   border: 1px solid transparent;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
