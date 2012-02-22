@@ -1867,12 +1867,12 @@ table .span24 {
   left: auto;
   right: 0;
 }
-.dropup .caret {
+.dropup .caret, .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
   border-bottom: 4px solid #000000;
   content: "\2191";
 }
-.dropup .dropdown-menu {
+.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {
   top: auto;
   bottom: 100%;
   margin-bottom: 1px;
@@ -2945,14 +2945,14 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   top: -6px;
   left: 10px;
 }
-.navbar .dropdown-menu.bottom-up:before {
+.navbar-fixed-bottom .dropdown-menu:before {
   border-top: 7px solid #ccc;
   border-top-color: rgba(0, 0, 0, 0.2);
   border-bottom: 0;
   bottom: -7px;
   top: auto;
 }
-.navbar .dropdown-menu.bottom-up:after {
+.navbar-fixed-bottom .dropdown-menu:after {
   border-top: 6px solid #ffffff;
   border-bottom: 0;
   bottom: -6px;
