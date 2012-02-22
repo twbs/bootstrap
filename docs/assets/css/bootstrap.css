@@ -2840,19 +2840,25 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   outline: 0;
 }
-.navbar-fixed-top {
+.navbar-fixed-top, .navbar-fixed-bottom {
   position: fixed;
-  top: 0;
   right: 0;
   left: 0;
   z-index: 1030;
+  margin-bottom: 0;
 }
-.navbar-fixed-top .navbar-inner {
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
   padding-left: 0;
   padding-right: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
+}
+.navbar-fixed-top {
+  top: 0;
+}
+.navbar-fixed-bottom {
+  bottom: 0;
 }
 .navbar .nav {
   position: relative;

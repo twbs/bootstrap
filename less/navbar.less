@@ -153,21 +153,36 @@
 }
 
 
+
 // FIXED NAVBAR
 // ------------
 
-.navbar-fixed-top {
+// Shared (top/bottom) styles
+.navbar-fixed-top,
+.navbar-fixed-bottom {
   position: fixed;
-  top: 0;
   right: 0;
   left: 0;
   z-index: @zindexFixedNavbar;
+  margin-bottom: 0; // remove 18px margin for static navbar
 }
-.navbar-fixed-top .navbar-inner {
+.navbar-fixed-top .navbar-inner,
+.navbar-fixed-bottom .navbar-inner {
   padding-left:  0;
   padding-right: 0;
   .border-radius(0);
 }
+
+// Fixed to top
+.navbar-fixed-top {
+  top: 0;
+}
+
+// Fixed to bottom
+.navbar-fixed-bottom {
+  bottom: 0;
+}
+
 
 
 // NAVIGATION

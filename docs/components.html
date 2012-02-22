@@ -849,13 +849,24 @@
 &lt;/div&gt;
 </pre>
       <h3>Fixed navbar</h3>
-      <p>To make the navbar fixed to the top of the viewport, add <code>.navbar-fixed-top</code> to the outermost div, <code>.navbar</code>.</p>
+      <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
+      <div class="row">
+        <div class="span4">
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
-      <p>In your CSS, you will also need to account for the overlap it causes by adding 40px or more of padding to your <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+        </div><!--/span-->
+        <div class="span4">
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-fixed-bottom"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+        </div><!--/span-->
+      </div><!--/row-->
+      <p>When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of apdding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
       <h3>Brand name</h3>
       <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 <pre class="prettyprint linenums">
