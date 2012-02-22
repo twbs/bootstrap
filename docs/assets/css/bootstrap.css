@@ -134,7 +134,7 @@ a:hover {
   float: left;
   margin-left: 20px;
 }
-.container {
+.container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
   width: 940px;
 }
 .span1 {
@@ -726,40 +726,43 @@ textarea[class*="span"],
   float: none;
   margin-left: 0;
 }
-input.span1, textarea.span1, .uneditable-input.span1 {
+input, textarea, .uneditable-input {
+  margin-left: 0;
+}
+input > .span1, textarea > .span1, .uneditable-input > .span1 {
   width: 50px;
 }
-input.span2, textarea.span2, .uneditable-input.span2 {
+input > .span2, textarea > .span2, .uneditable-input > .span2 {
   width: 130px;
 }
-input.span3, textarea.span3, .uneditable-input.span3 {
+input > .span3, textarea > .span3, .uneditable-input > .span3 {
   width: 210px;
 }
-input.span4, textarea.span4, .uneditable-input.span4 {
+input > .span4, textarea > .span4, .uneditable-input > .span4 {
   width: 290px;
 }
-input.span5, textarea.span5, .uneditable-input.span5 {
+input > .span5, textarea > .span5, .uneditable-input > .span5 {
   width: 370px;
 }
-input.span6, textarea.span6, .uneditable-input.span6 {
+input > .span6, textarea > .span6, .uneditable-input > .span6 {
   width: 450px;
 }
-input.span7, textarea.span7, .uneditable-input.span7 {
+input > .span7, textarea > .span7, .uneditable-input > .span7 {
   width: 530px;
 }
-input.span8, textarea.span8, .uneditable-input.span8 {
+input > .span8, textarea > .span8, .uneditable-input > .span8 {
   width: 610px;
 }
-input.span9, textarea.span9, .uneditable-input.span9 {
+input > .span9, textarea > .span9, .uneditable-input > .span9 {
   width: 690px;
 }
-input.span10, textarea.span10, .uneditable-input.span10 {
+input > .span10, textarea > .span10, .uneditable-input > .span10 {
   width: 770px;
 }
-input.span11, textarea.span11, .uneditable-input.span11 {
+input > .span11, textarea > .span11, .uneditable-input > .span11 {
   width: 850px;
 }
-input.span12, textarea.span12, .uneditable-input.span12 {
+input > .span12, textarea > .span12, .uneditable-input > .span12 {
   width: 930px;
 }
 input[disabled],
