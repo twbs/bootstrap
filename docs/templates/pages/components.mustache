@@ -112,12 +112,13 @@
 ================================================== -->
 <section id="buttonDropdowns">
   <div class="page-header">
-    <h1>{{_i}}Buttons dropdowns{{/i}} <small>{{_i}}Contextual dropdown menus built on button groups{{/i}}</small></h1>
+    <h1>{{_i}}Button dropdown menus{{/i}} <small>{{_i}}Built on button groups to provide contextual menus{{/i}}</small></h1>
   </div>
 
+  <h2>{{_i}}Button dropdowns{{/i}}</h2>
   <div class="row">
     <div class="span4">
-      <h3>{{_i}}Button dropdowns{{/i}}</h3>
+      <h3>{{_i}}Overview and examples{{/i}}</h3>
       <p>{{_i}}Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.{{/i}}</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
@@ -202,10 +203,14 @@
 </pre>
     </div>
   </div>
+  <div class="alert alert-info">
+    <strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}In some cases&mdash;like mobile&mdash;dropdown menus will extend outside the viewport. You need to resolve the alignment manually or with custom javascript.{{/i}}
+  </div>
 
+  <h2>{{_i}}Split button dropdowns{{/i}}</h2>
   <div class="row">
     <div class="span4">
-      <h3>{{_i}}Split button dropdowns{{/i}}</h3>
+      <h3>{{_i}}Overview and examples{{/i}}</h3>
       <p>{{_i}}Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.{{/i}}</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
@@ -276,7 +281,30 @@
             <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
           </ul>
         </div><!-- /btn-group -->
-      </div>
+      </div><!-- /btn-toolbar -->
+      <h3>{{_i}}Right aligned menus{{/i}}</h3>
+      <p>{{_i}}Add <code>.pull-right</code> to the <code>.dropdown-menu</code> of any button dropdown for right aligned menus.{{/i}}</p>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <a class="btn" href="#">{{_i}}Right{{/i}}</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div><!-- /btn-toolbar -->
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  ...
+  &lt;ul class="dropdown-menu pull-right"&gt;
+    &lt;!-- {{_i}}dropdown menu links{{/i}} --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
     </div>
     <div class="span8">
       <h3>{{_i}}Example markup{{/i}}</h3>
@@ -292,6 +320,44 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+      <h3>{{_i}}Dropup menus{{/i}}</h3>
+      <p>{{_i}}Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>.caret</code> and reposition the menu itself to move from the bottom up instead of top down.{{/i}}</p>
+      <div class="btn-toolbar" style="margin-top: 9px;">
+        <div class="btn-group dropup">
+          <a class="btn" href="#">{{_i}}Dropup{{/i}}</a>
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group dropup">
+          <a class="btn primary" href="#">{{_i}}Right dropup{{/i}}</a>
+          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group dropup"&gt;
+  &lt;a class="btn" href="#"&gt;{{_i}}Dropup{{/i}}&lt;/a&gt;
+  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;!-- {{_i}}dropdown menu links{{/i}} --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
     </div>
   </div>
 </section>
@@ -398,10 +464,20 @@
       <h3>{{_i}}Tabs with dropdowns{{/i}}</h3>
       <ul class="nav nav-tabs">
         <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+        <li><a href="#">{{_i}}Help{{/i}}</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropup{{/i}} <b class="caret bottom-up"></b></a>
+          <ul class="dropdown-menu bottom-up pull-right">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
             <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
@@ -430,10 +506,20 @@
       <h3>{{_i}}Pills with dropdowns{{/i}}</h3>
       <ul class="nav nav-pills">
         <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+        <li><a href="#">{{_i}}Help{{/i}}</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropup{{/i}} <b class="caret bottom-up"></b></a>
+          <ul class="dropdown-menu bottom-up pull-right">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
             <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
@@ -711,7 +797,7 @@
   <p>{{_i}}An example of a static (not fixed to the top) navbar with project name, navigation, and search form.{{/i}}</p>
   <div class="navbar">
     <div class="navbar-inner">
-      <div class="container" style="width: auto;">
+      <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -773,13 +859,24 @@
 &lt;/div&gt;
 </pre>
       <h3>{{_i}}Fixed navbar{{/i}}</h3>
-      <p>{{_i}}To make the navbar fixed to the top of the viewport, add <code>.navbar-fixed-top</code> to the outermost div, <code>.navbar</code>.{{/i}}</p>
+      <p>{{_i}}Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.{{/i}}</p>
+      <div class="row">
+        <div class="span4">
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
-      <p>{{_i}}In your CSS, you will also need to account for the overlap it causes by adding 40px or more of padding to your <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.{{/i}}</p>
+        </div><!--/span-->
+        <div class="span4">
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-fixed-bottom"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+        </div><!--/span-->
+      </div><!--/row-->
+      <p>{{_i}}When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of apdding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.{{/i}}</p>
       <h3>{{_i}}Brand name{{/i}}</h3>
       <p>{{_i}}A simple link to show your brand or project name only requires an anchor tag.{{/i}}</p>
 <pre class="prettyprint linenums">
@@ -853,8 +950,8 @@
 </pre>
       <h3>{{_i}}Component alignment{{/i}}</h3>
       <p>{{_i}}To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.{{/i}}</p>
-      <h3>{{_i}}Adding dropdowns{{/i}}</h3>
-      <p>{{_i}}Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.{{/i}}</p>
+      <h3>{{_i}}Adding dropdown menus{{/i}}</h3>
+      <p>{{_i}}Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;

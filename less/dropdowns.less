@@ -13,7 +13,9 @@
 .open .dropdown-toggle {
   outline: 0;
 }
+
 // Dropdown arrow/caret
+// --------------------
 .caret {
   display: inline-block;
   width: 0;
@@ -29,6 +31,7 @@
   .opacity(30);
   content: "\2193";
 }
+
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
@@ -37,7 +40,9 @@
 .open.dropdown .caret {
   .opacity(100);
 }
+
 // The dropdown menu (ul)
+// ----------------------
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -62,11 +67,10 @@
   *border-right-width: 2px;
   *border-bottom-width: 2px;
 
-  // Allow for dropdowns to go bottom up (aka, dropup-menu)
-  &.bottom-up {
-    top: auto;
-    bottom: 100%;
-    margin-bottom: 2px;
+  // Aligns the dropdown menu to right
+  &.pull-right {
+    right: 0;
+    left: auto;
   }
 
   // Dividers (basically an hr) within the dropdown
@@ -87,6 +91,7 @@
 }
 
 // Hover state
+// -----------
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
@@ -96,6 +101,7 @@
 }
 
 // Open state for the dropdown
+// ---------------------------
 .dropdown.open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
@@ -117,7 +123,28 @@
   right: 0;
 }
 
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// ------------------------------------------------------
+// Just add .dropup after the standard .dropdown class and you're set, bro.
+// TODO: abstract this so that the navbar fixed styles are not placed here?
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  // Reverse the caret
+  .caret {
+    border-top: 0;
+    border-bottom: 4px solid @black;
+    content: "\2191";
+  }
+  // Different positioning for bottom up menu
+  .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 1px;
+  }
+}
+
 // Typeahead
+// ---------
 .typeahead {
   margin-top: 2px; // give it some space to breathe
   .border-radius(4px);
