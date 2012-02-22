@@ -20,6 +20,12 @@
   .box-shadow(@shadow);
 }
 
+// Set width to auto for default container
+// We then reset it for fixed navbars in the #gridSystem mixin
+.navbar .container {
+  width: auto;
+}
+
 // Navbar button for toggling navbar items in responsive layouts
 .btn-navbar {
   display: none;

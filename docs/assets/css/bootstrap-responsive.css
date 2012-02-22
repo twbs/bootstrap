@@ -174,7 +174,7 @@
     float: left;
     margin-left: 20px;
   }
-  .container {
+  .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
     width: 724px;
   }
   .span1 {
@@ -607,7 +607,7 @@
     float: left;
     margin-left: 30px;
   }
-  .container {
+  .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
     width: 1170px;
   }
   .span1 {

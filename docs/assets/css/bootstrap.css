@@ -134,7 +134,7 @@ a:hover {
   float: left;
   margin-left: 20px;
 }
-.container {
+.container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
   width: 940px;
 }
 .span1 {
@@ -2697,6 +2697,9 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.navbar .container {
+  width: auto;
 }
 .btn-navbar {
   display: none;

@@ -173,8 +173,13 @@
       #gridSystem > .gridColumn(@gridGutterWidth);
     }
     
-    // Fixed container
-    .container { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @gridColumns); }
+    // Fixed containers
+    // Default container and reset for fixed navbars
+    .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container {
+      #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @gridColumns);
+    }
 
     // Default columns
     .span1     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 1); }
