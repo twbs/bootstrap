@@ -332,24 +332,23 @@ select:focus:required:invalid {
 
 
 
-// HELP TEXT
-// ---------
+// HELP TEXT AND MESSAGES
+// ----------------------
 
-.help-block {
+.help-block, .message-block {
   display: block; // account for any element using help-block
   margin-top: 5px;
   margin-bottom: 0;
   color: @grayLight;
 }
 
-.help-inline {
+.help-inline, .message-inline {
   display: inline-block;
   .ie7-inline-block();
   margin-bottom: 9px;
   vertical-align: middle;
   padding-left: 5px;
 }
-
 
 
 // INPUT GROUPS

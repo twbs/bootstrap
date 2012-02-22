@@ -10,7 +10,8 @@
 .clearfix {
   *zoom: 1;
 }
-.clearfix:before, .clearfix:after {
+.clearfix:before,
+.clearfix:after {
   display: table;
   content: "";
 }
@@ -53,10 +54,12 @@
     /* CSS3 spec*/
   
   }
-  .input-prepend input[class*="span"], .input-append input[class*="span"] {
+  .input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
     width: auto;
   }
-  input[type="checkbox"], input[type="radio"] {
+  input[type="checkbox"],
+  input[type="radio"] {
     border: 1px solid #ccc;
   }
   .form-horizontal .control-group > label {
@@ -105,7 +108,8 @@
   .row {
     margin-left: 0;
   }
-  .row > [class*="span"], .row-fluid > [class*="span"] {
+  .row > [class*="span"],
+  .row-fluid > [class*="span"] {
     float: none;
     display: block;
     width: auto;
@@ -117,7 +121,8 @@
     margin-left: -20px;
     *zoom: 1;
   }
-  .row:before, .row:after {
+  .row:before,
+  .row:after {
     display: table;
     content: "";
   }
@@ -161,7 +166,8 @@
   .span11 {
     width: 662px;
   }
-  .span12, .container {
+  .span12,
+  .container {
     width: 724px;
   }
   .offset1 {
@@ -201,7 +207,8 @@
     width: 100%;
     *zoom: 1;
   }
-  .row-fluid:before, .row-fluid:after {
+  .row-fluid:before,
+  .row-fluid:after {
     display: table;
     content: "";
   }
@@ -251,40 +258,64 @@
   .row-fluid > .span12 {
     width: 99.999999993%;
   }
-  input.span1, textarea.span1, .uneditable-input.span1 {
+  input.span1,
+  textarea.span1,
+  .uneditable-input.span1 {
     width: 32px;
   }
-  input.span2, textarea.span2, .uneditable-input.span2 {
+  input.span2,
+  textarea.span2,
+  .uneditable-input.span2 {
     width: 94px;
   }
-  input.span3, textarea.span3, .uneditable-input.span3 {
+  input.span3,
+  textarea.span3,
+  .uneditable-input.span3 {
     width: 156px;
   }
-  input.span4, textarea.span4, .uneditable-input.span4 {
+  input.span4,
+  textarea.span4,
+  .uneditable-input.span4 {
     width: 218px;
   }
-  input.span5, textarea.span5, .uneditable-input.span5 {
+  input.span5,
+  textarea.span5,
+  .uneditable-input.span5 {
     width: 280px;
   }
-  input.span6, textarea.span6, .uneditable-input.span6 {
+  input.span6,
+  textarea.span6,
+  .uneditable-input.span6 {
     width: 342px;
   }
-  input.span7, textarea.span7, .uneditable-input.span7 {
+  input.span7,
+  textarea.span7,
+  .uneditable-input.span7 {
     width: 404px;
   }
-  input.span8, textarea.span8, .uneditable-input.span8 {
+  input.span8,
+  textarea.span8,
+  .uneditable-input.span8 {
     width: 466px;
   }
-  input.span9, textarea.span9, .uneditable-input.span9 {
+  input.span9,
+  textarea.span9,
+  .uneditable-input.span9 {
     width: 528px;
   }
-  input.span10, textarea.span10, .uneditable-input.span10 {
+  input.span10,
+  textarea.span10,
+  .uneditable-input.span10 {
     width: 590px;
   }
-  input.span11, textarea.span11, .uneditable-input.span11 {
+  input.span11,
+  textarea.span11,
+  .uneditable-input.span11 {
     width: 652px;
   }
-  input.span12, textarea.span12, .uneditable-input.span12 {
+  input.span12,
+  textarea.span12,
+  .uneditable-input.span12 {
     width: 714px;
   }
 }
@@ -328,7 +359,8 @@
     color: #999999;
     text-shadow: none;
   }
-  .navbar .nav > li > a, .navbar .dropdown-menu a {
+  .navbar .nav > li > a,
+  .navbar .dropdown-menu a {
     padding: 6px 15px;
     font-weight: bold;
     color: #999999;
@@ -339,7 +371,8 @@
   .navbar .dropdown-menu li + li a {
     margin-bottom: 2px;
   }
-  .navbar .nav > li > a:hover, .navbar .dropdown-menu a:hover {
+  .navbar .nav > li > a:hover,
+  .navbar .dropdown-menu a:hover {
     background-color: #222222;
   }
   .navbar .dropdown-menu {
@@ -360,13 +393,15 @@
     -moz-box-shadow: none;
     box-shadow: none;
   }
-  .navbar .dropdown-menu:before, .navbar .dropdown-menu:after {
+  .navbar .dropdown-menu:before,
+  .navbar .dropdown-menu:after {
     display: none;
   }
   .navbar .dropdown-menu .divider {
     display: none;
   }
-  .navbar-form, .navbar-search {
+  .navbar-form,
+  .navbar-search {
     float: none;
     padding: 9px 15px;
     margin: 9px 0;
@@ -402,7 +437,8 @@
     margin-left: -30px;
     *zoom: 1;
   }
-  .row:before, .row:after {
+  .row:before,
+  .row:after {
     display: table;
     content: "";
   }
@@ -446,7 +482,8 @@
   .span11 {
     width: 1070px;
   }
-  .span12, .container {
+  .span12,
+  .container {
     width: 1170px;
   }
   .offset1 {
@@ -486,7 +523,8 @@
     width: 100%;
     *zoom: 1;
   }
-  .row-fluid:before, .row-fluid:after {
+  .row-fluid:before,
+  .row-fluid:after {
     display: table;
     content: "";
   }
@@ -536,40 +574,64 @@
   .row-fluid > .span12 {
     width: 100%;
   }
-  input.span1, textarea.span1, .uneditable-input.span1 {
+  input.span1,
+  textarea.span1,
+  .uneditable-input.span1 {
     width: 60px;
   }
-  input.span2, textarea.span2, .uneditable-input.span2 {
+  input.span2,
+  textarea.span2,
+  .uneditable-input.span2 {
     width: 160px;
   }
-  input.span3, textarea.span3, .uneditable-input.span3 {
+  input.span3,
+  textarea.span3,
+  .uneditable-input.span3 {
     width: 260px;
   }
-  input.span4, textarea.span4, .uneditable-input.span4 {
+  input.span4,
+  textarea.span4,
+  .uneditable-input.span4 {
     width: 360px;
   }
-  input.span5, textarea.span5, .uneditable-input.span5 {
+  input.span5,
+  textarea.span5,
+  .uneditable-input.span5 {
     width: 460px;
   }
-  input.span6, textarea.span6, .uneditable-input.span6 {
+  input.span6,
+  textarea.span6,
+  .uneditable-input.span6 {
     width: 560px;
   }
-  input.span7, textarea.span7, .uneditable-input.span7 {
+  input.span7,
+  textarea.span7,
+  .uneditable-input.span7 {
     width: 660px;
   }
-  input.span8, textarea.span8, .uneditable-input.span8 {
+  input.span8,
+  textarea.span8,
+  .uneditable-input.span8 {
     width: 760px;
   }
-  input.span9, textarea.span9, .uneditable-input.span9 {
+  input.span9,
+  textarea.span9,
+  .uneditable-input.span9 {
     width: 860px;
   }
-  input.span10, textarea.span10, .uneditable-input.span10 {
+  input.span10,
+  textarea.span10,
+  .uneditable-input.span10 {
     width: 960px;
   }
-  input.span11, textarea.span11, .uneditable-input.span11 {
+  input.span11,
+  textarea.span11,
+  .uneditable-input.span11 {
     width: 1060px;
   }
-  input.span12, textarea.span12, .uneditable-input.span12 {
+  input.span12,
+  textarea.span12,
+  .uneditable-input.span12 {
     width: 1160px;
   }
   .thumbnails {
