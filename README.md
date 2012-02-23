@@ -27,6 +27,27 @@ It's highly recommended that you use this when making changes to the .less files
 
 Check the README for [uglify-js on GitHub](https://github.com/mishoo/UglifyJS) for instructions of how to install uglify-js for your system.
 
+The following should work:
+
+    ## clone the repository
+    mkdir -p /where/you/wanna/put/it
+    cd /where/you/wanna/put/it
+    git clone git://github.com/mishoo/UglifyJS.git
+
+    ## make the module available to Node
+    mkdir -p ~/.node_libraries/
+    cd ~/.node_libraries/
+    ln -s /where/you/wanna/put/it/UglifyJS/uglify-js.js
+
+    ## and if you want the CLI script too:
+    mkdir -p /usr/bin
+    cd /usr/bin
+    ln -s /where/you/wanna/put/it/UglifyJS/bin/uglifyjs
+    # (then add ~/bin to your $PATH if it's not there already)
+
+Make sure the user you want to use uglifyjs has the .node_libraries directory properly configured in their home dir.
+
+
 Building Bootstrap
 ------------------
 
