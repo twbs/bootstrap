@@ -3064,6 +3064,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 .modal-footer {
   padding: 14px 15px 15px;
   margin-bottom: 0;
+  text-align: right;
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
   -webkit-border-radius: 0 0 6px 6px;
@@ -3081,8 +3082,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 .modal-footer:after {
   clear: both;
 }
-.modal-footer .btn {
-  float: right;
+.modal-footer .btn + .btn {
   margin-left: 5px;
   margin-bottom: 0;
 }
