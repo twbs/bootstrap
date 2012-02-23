@@ -1,6 +1,28 @@
 CommCareHQ Bootstrap, forked from Twitter Bootstrap
 ===================================================
 
+HQ Bootstrap Requirements
+-------------------------
+
+### lessc
+
+The LESS CSS compiler is required to compile all the less files from hq-boostrap.
+
+You must first [install nodejs](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
+
+Do the following to install `lessc`.
++ `sudo git clone https://github.com/cloudhead/less.js.git /opt/lessc`
++ add `alias lessc='nodejs /opt/lessc/bin/lessc'` to your bash profile
+
+### uglify-js
+
+
+
+
+
+
+
+
 Building Bootstrap
 ------------------
 
