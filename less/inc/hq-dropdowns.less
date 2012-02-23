@@ -5,11 +5,24 @@
   right: 0;
 }
 
+.dropdown-menu .nav-header {
+    padding: 8px 15px 3px;
+    font-weight: bold;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: @baseLineHeight;
+    color: @grayLight;
+}
+
 // Different Colored Menus
 .dropdown-menu.dropdown-orange {
     li > a:hover,
     .active > a,
     .active > a:hover {
         background-color: @orange;
+    }
+    .nav-header {
+        color: darken(@orange, 10);
     }
 }

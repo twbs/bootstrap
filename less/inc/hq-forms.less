@@ -1,6 +1,6 @@
 // Extension of Twitter Bootstrap's Forms
 
-.control-group .controls label {
+.control-group .controls label.sub-label {
     display: inline-block;
     vertical-align: top;
     padding-left: @gridGutterWidth;
@@ -30,7 +30,11 @@ form fieldset > p {
     padding: 2em 0 1em;
 }
 
-.hq-content form {
+.hq-content form,
+.form-report {
     padding-top: @gridGutterWidth;
     padding-right: @gridGutterWidth*2;
+}
+.form-report {
+    padding-left: @gridGutterWidth*2;
 }

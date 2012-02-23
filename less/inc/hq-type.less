@@ -18,3 +18,45 @@ h1.page-header {
 .hq-generic-report h2 {
     padding: @gridGutterWidth @gridGutterWidth @gridGutterWidth/2;
 }
+
+.hq-content .tab-pane > dl {
+    margin-left: @gridGutterWidth;
+    margin-top: 0;
+}
+
+dl.def-form-data {
+    dd {
+        margin-left: @gridGutterWidth;
+    }
+    dt {
+        line-height: @baseLineHeight+5;
+        [class^="icon-"] {
+            margin-top: 1px;
+        }
+    }
+    > dt.nest-head {
+        font-size: @baseFontSize*1.5;
+        line-height: @baseLineHeight*1.5;
+        margin-top: @gridGutterWidth;
+    }
+    > dd.nest-body {
+        border: 1px solid @grayLighter;
+        #gradient > .vertical(lighten(@grayLighter, 5), lighten(@grayLighter, 4));
+        .border-radius();
+        margin: 0 0 @gridGutterWidth;
+        padding: @gridGutterWidth;
+
+        > dl dt.nest-head {
+            font-size: @baseFontSize*1.2;
+            line-height: @baseLineHeight*1.2;
+        }
+    }
+
+    dl {
+        margin-top: 0;
+        > dd {
+            margin-bottom: 1em;
+        }
+    }
+
+}

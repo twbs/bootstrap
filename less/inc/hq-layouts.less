@@ -25,8 +25,21 @@
 .hq-double-col {
     #gradient > .horizontal-two-column-color(@sideNavigationBackground, @white, (@fluidGridColumnWidth*2+@fluidGridGutterWidth));
 }
-.row-fluid .hq-report-content {
+.row-fluid .hq-flush-content {
     @leftMargin: .15%;
     margin-left: @leftMargin;
     width: @fluidGridColumnWidth*10 + @fluidGridGutterWidth*10 - @leftMargin;
+}
+
+.old-style {
+    #gradient > .vertical(#ffffff, #ffffff);
+}
+
+.old-style .hq-page-header-container {
+    background: 0;
+    border-bottom: 0;
+    h1 {
+        border-bottom: 0;
+        padding: 0;
+    }
 }

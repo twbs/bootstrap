@@ -1,0 +1,24 @@
+// Styles for HQ Graphs / Graphic Reports
+
+.hq-graphic-report {
+    .well {
+        margin: @gridGutterWidth;
+        text-align: center;
+    }
+    .hq-graph {
+        padding-bottom: @gridGutterWidth*2;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+.hq-graphic-report .legend-square {
+    display: inline-block;
+    position: relative;
+    width: @baseFontSize - 2;
+    height: @baseFontSize - 2;
+    border: 1px solid @gray;
+    margin-right: @gridGutterWidth/2;
+    top: 2px;
+    .border-radius(2px);
+}

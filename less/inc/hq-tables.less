@@ -7,7 +7,7 @@
 }
 
 .datatable thead th,
-.export_data thead th {
+.hq-generic-report .table thead th {
     color: @white;
     #gradient > .vertical(desaturate(lighten(@blue, 20), 60), desaturate(darken(@blue, 5), 20));
     font-weight: normal;
@@ -108,7 +108,7 @@
 
 // Strictly Export Data Tables
 
-.export_data {
+.hq-generic-report .table {
     .box-shadow();
 }
 .export_data tbody td {
@@ -118,4 +118,19 @@
         padding-top: 8px;
         line-height: 28px;
     }
+}
+
+.table.column_list tbody tr:hover,
+.table.column_list tr.dragged {
+    cursor: move;
+}
+
+.table.column_list tbody tr:hover td {
+    background-color: @warningBackground;
+}
+
+.table.column_list tbody tr.dragged td,
+.table.column_list tbody tr.dragged td.even,
+.table.column_list tbody tr.dragged td.odd{
+    background-color: @infoBackground;
 }

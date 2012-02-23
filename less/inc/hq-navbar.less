@@ -25,6 +25,11 @@
         h1 {
             padding: 0;
             margin: 0;
+            width: @navbarBrandWidth;
+            height: @navbarBrandHeight;
+            display: block;
+            overflow: visible;
+            position: relative;
 
             img,
             a, a:before {
@@ -32,16 +37,16 @@
                 height: @navbarBrandHeight;
             }
             img {
-                z-index: 1;
+                z-index: @zindexBrand;
+            }
+            a {
+                display: block;
                 position: absolute;
                 top: 0;
                 left: 0;
             }
-            a {
-                position: relative;
-            }
             a:before {
-                z-index: 2;
+                z-index: @zindexBrandHover;
                 content: url('@{imageDirectory}commcare-logo-hover.png');
                 position: absolute;
                 top: 0;

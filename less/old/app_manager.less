@@ -1,0 +1,110 @@
+.hq-oldstyle {
+    h3 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    #main_container {
+        padding: 0;
+    }
+    #apps-menu {
+        padding: 1em 1em .5em 1em;
+        background-color: #EEE;
+        display: none;
+    }
+
+    #apps-menu > ul, #app-info > ul {
+        display: table-row;
+    }
+    #apps-menu > ul > li, #app-info > ul > li {
+        border-right: 1px solid #CCC;
+        padding: 0 .5em;
+        display: table-cell;
+    }
+    #apps-menu > ul > li:last-child, #app-info > ul > li:last-child {
+        border-right: none;
+    }
+    #apps-menu-toggle {
+        background-color: #EEE;
+        border: 1px solid #CCC;
+        border-top: none;
+        padding: .5em;
+        position: absolute;
+        right: 300px;
+        top: -1px;
+        width: 8em;
+    }
+    #apps-menu-border {
+        background-color: #EEE;
+        border-bottom: 1px solid #CCC;
+        height: .5em;
+    }
+    #title-bar {
+        position: relative;
+    }
+    input.sms-autocomplete {
+        width: 90%;
+    }
+    .dialog textarea {
+        width: 90%;
+        height: 100px;
+        padding: 10px;
+    }
+    #build-errors a {
+        color: #0067B1 !important;
+    }
+    #app-info {
+        float: left;
+    }
+    .jar_download_dialog p {
+        padding-top: .5em;
+        margin-left: 1em;
+    }
+    .jar_download_dialog ol li {
+        list-style: decimal outside;
+        margin-left: 2em;
+        padding-bottom: 1em;
+    }
+
+    .delete-me {
+        position: absolute;
+        right: 1em;
+        top: 1.5em;
+    }
+
+    .scary-settings {
+        background-color: #FEFEFE;
+        border: 1px solid #CCC;
+        border-top: none;
+        padding: 1em;
+    }
+    .scary-settings-toggle {
+        margin-top: 1em;
+        border: 1px solid transparent;
+        padding: .5em;
+    }
+    .scary-settings-toggle-open {
+        border: 1px solid #CCC;
+        background-color: #EEE;
+
+    }
+
+    /* has to be more specific than the existing rule */
+    #xform-source .syntaxhighlighter {
+        overflow: visible !important;
+    }
+
+    #deleted-app-dialog h1 {
+        font-size: 2em;
+        padding-bottom: 1em;
+    }
+    #deleted-app-dialog {
+        padding: 2em;
+        background-color: white;
+        border: 1px solid black;
+        z-index: 10000;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 10px;
+    }
+}
