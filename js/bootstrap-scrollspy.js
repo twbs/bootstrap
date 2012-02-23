@@ -43,16 +43,22 @@
       constructor: ScrollSpy
 
     , refresh: function () {
-        this.targets = this.$body
+        var hrefs = this.$body
           .find(this.selector)
           .map(function () {
             var href = $(this).attr('href')
             return /^#\w/.test(href) && $(href).length ? href : null
           })
-
-        this.offsets = $.map(this.targets, function (id) {
-          return $(id).position().top
+        var offset_positions = $.map(hrefs, function (id) {
+          return [[$(id).position().top, id]]
         })
+        offset_positions.sort(function(a,b){return a[0] - b[0];});
+        this.offsets = $.map(offset_positions, function(id){
+            return id[0]
+        });
+        this.targets = $.map(offset_positions, function(id){
+            return id[1]
+        });
       }
 
     , process: function () {
