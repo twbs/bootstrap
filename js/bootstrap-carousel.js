@@ -83,7 +83,7 @@
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
 
-      if (!$next.length) return
+      if (!$next.length && !this.options.loop) return
 
       this.sliding = true
 
@@ -135,7 +135,8 @@
   }
 
   $.fn.carousel.defaults = {
-    interval: 5000
+    interval: 5000,
+    loop: false
   }
 
   $.fn.carousel.Constructor = Carousel
