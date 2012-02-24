@@ -89,7 +89,7 @@
         this.$element
           .trigger('hide')
           .removeClass('in')
-          .removeAttr('style')
+          .css('top','')
 
         $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :
