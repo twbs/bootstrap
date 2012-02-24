@@ -1055,7 +1055,8 @@ select:focus:required:invalid:focus {
 .input-append input:first-child + .add-on {
   *margin-left: -21px;
 }
-.search-query {
+.search-query,
+input[type=search] {
   padding-left: 14px;
   padding-right: 14px;
   margin-bottom: 0;
