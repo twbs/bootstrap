@@ -62,7 +62,12 @@
   }
 
   function clearMenus() {
-    $(toggle).parent().removeClass('open')
+    var $toggle = $(toggle);
+    if (e === undefined) {
+      $toggle.parent().removeClass('open')
+    } else if ($toggle.attr('data-sticky') && $(e.target).closest('.dropdown-menu').length == 0) {
+      $toggle.parent().removeClass('open')
+    }
   }
 
 
