@@ -49,7 +49,9 @@
     line-height: @baseLineHeight;
   }
 
-  // Make span* classes full width
+  // Make span* and input-*xlarge classes full width
+  .input-xlarge,
+  .input-xxlarge,
   input[class*="span"],
   select[class*="span"],
   textarea[class*="span"],
@@ -64,6 +66,8 @@
             box-sizing: border-box; /* CSS3 spec*/
   }
   // But don't let it screw up prepend/append inputs
+  .input-prepend input[class*="xlarge"],
+  .input-append input[class*="xlarge"],
   .input-prepend input[class*="span"],
   .input-append input[class*="span"] {
     width: auto;
