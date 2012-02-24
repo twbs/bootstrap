@@ -93,3 +93,11 @@
 .progress-info.progress-striped .bar {
   #gradient > .striped(#5bc0de);
 }
+
+// Warning (orange)
+.progress-warning .bar {
+  #gradient > .vertical(lighten(@orange, 15%), @orange);
+}
+.progress-warning.progress-striped .bar {
+  #gradient > .striped(lighten(@orange, 15%));
+}
