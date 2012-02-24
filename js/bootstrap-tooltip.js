@@ -154,7 +154,7 @@
 
   , setContent: function () {
       var $tip = this.tip()
-      $tip.find('.tooltip-inner').html(this.getTitle())
+      $tip.find('.tooltip-inner').text(this.getTitle())
       $tip.removeClass('fade in top bottom left right')
     }
 
