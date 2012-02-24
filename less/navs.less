@@ -21,6 +21,21 @@
   background-color: @grayLighter;
 }
 
+// Nav headers (for dropdowns and lists)
+.nav .nav-header {
+  display: block;
+  padding: 3px 15px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: @baseLineHeight;
+  color: @grayLight;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  text-transform: uppercase;
+}
+// Space them out when they follow another list item (link)
+.nav li + .nav-header {
+  margin-top: 9px;
+}
 
 
 // NAV LIST
@@ -33,21 +48,12 @@
 }
 .nav-list > li > a,
 .nav-list .nav-header {
-  display: block;
-  padding: 3px 15px;
   margin-left:  -15px;
   margin-right: -15px;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
-.nav-list .nav-header {
-  font-size: 11px;
-  font-weight: bold;
-  line-height: @baseLineHeight;
-  color: @grayLight;
-  text-transform: uppercase;
-}
-.nav-list > li + .nav-header {
-  margin-top: 9px;
+.nav-list > li > a {
+  padding: 3px 15px;
 }
 .nav-list .active > a,
 .nav-list .active > a:hover {
@@ -248,6 +254,9 @@
 // Clear any floats
 .tabbable {
   .clearfix();
+}
+.tab-content {
+  overflow: hidden; // prevent content from running below tabs
 }
 
 // Remove border on bottom, left, right

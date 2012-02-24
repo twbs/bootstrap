@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.0.0
+ * Bootstrap Responsive v2.0.1
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -7,6 +7,16 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
 .hidden {
   display: none;
   visibility: hidden;
@@ -25,7 +35,7 @@
   .uneditable-input {
     display: block;
     width: 100%;
-    height: 28px;
+    min-height: 28px;
     /* Make inputs at least the height of their button counterpart */
   
     /* Makes inputs behave like true block-level elements */
@@ -84,7 +94,7 @@
     position: static;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container {
     width: auto;
     padding: 0 20px;
@@ -102,7 +112,7 @@
     margin: 0;
   }
 }
-@media (min-width: 768px) and (max-width: 980px) {
+@media (min-width: 768px) and (max-width: 979px) {
   .row {
     margin-left: -20px;
     *zoom: 1;
@@ -205,40 +215,40 @@
   .row-fluid > [class*="span"]:first-child {
     margin-left: 0;
   }
-  .row-fluid .span1 {
+  .row-fluid > .span1 {
     width: 5.801104972%;
   }
-  .row-fluid .span2 {
+  .row-fluid > .span2 {
     width: 14.364640883%;
   }
-  .row-fluid .span3 {
+  .row-fluid > .span3 {
     width: 22.928176794%;
   }
-  .row-fluid .span4 {
+  .row-fluid > .span4 {
     width: 31.491712705%;
   }
-  .row-fluid .span5 {
+  .row-fluid > .span5 {
     width: 40.055248616%;
   }
-  .row-fluid .span6 {
+  .row-fluid > .span6 {
     width: 48.618784527%;
   }
-  .row-fluid .span7 {
+  .row-fluid > .span7 {
     width: 57.182320438000005%;
   }
-  .row-fluid .span8 {
+  .row-fluid > .span8 {
     width: 65.74585634900001%;
   }
-  .row-fluid .span9 {
+  .row-fluid > .span9 {
     width: 74.30939226%;
   }
-  .row-fluid .span10 {
+  .row-fluid > .span10 {
     width: 82.87292817100001%;
   }
-  .row-fluid .span11 {
+  .row-fluid > .span11 {
     width: 91.436464082%;
   }
-  .row-fluid .span12 {
+  .row-fluid > .span12 {
     width: 99.999999993%;
   }
   input.span1, textarea.span1, .uneditable-input.span1 {
@@ -278,7 +288,7 @@
     width: 714px;
   }
 }
-@media (max-width: 980px) {
+@media (max-width: 979px) {
   body {
     padding-top: 0;
   }
@@ -313,6 +323,10 @@
   }
   .navbar .nav > .divider-vertical {
     display: none;
+  }
+  .navbar .nav .nav-header {
+    color: #999999;
+    text-shadow: none;
   }
   .navbar .nav > li > a, .navbar .dropdown-menu a {
     padding: 6px 15px;
@@ -486,40 +500,40 @@
   .row-fluid > [class*="span"]:first-child {
     margin-left: 0;
   }
-  .row-fluid .span1 {
+  .row-fluid > .span1 {
     width: 5.982905983%;
   }
-  .row-fluid .span2 {
+  .row-fluid > .span2 {
     width: 14.529914530000001%;
   }
-  .row-fluid .span3 {
+  .row-fluid > .span3 {
     width: 23.076923077%;
   }
-  .row-fluid .span4 {
+  .row-fluid > .span4 {
     width: 31.623931624%;
   }
-  .row-fluid .span5 {
+  .row-fluid > .span5 {
     width: 40.170940171000005%;
   }
-  .row-fluid .span6 {
+  .row-fluid > .span6 {
     width: 48.717948718%;
   }
-  .row-fluid .span7 {
+  .row-fluid > .span7 {
     width: 57.264957265%;
   }
-  .row-fluid .span8 {
+  .row-fluid > .span8 {
     width: 65.81196581200001%;
   }
-  .row-fluid .span9 {
+  .row-fluid > .span9 {
     width: 74.358974359%;
   }
-  .row-fluid .span10 {
+  .row-fluid > .span10 {
     width: 82.905982906%;
   }
-  .row-fluid .span11 {
+  .row-fluid > .span11 {
     width: 91.45299145300001%;
   }
-  .row-fluid .span12 {
+  .row-fluid > .span12 {
     width: 100%;
   }
   input.span1, textarea.span1, .uneditable-input.span1 {
