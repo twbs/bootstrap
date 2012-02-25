@@ -79,6 +79,9 @@ hr.soften {
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
+.jumbotron .btn-large small {
+  font-size: 14px;
+}
 
 /* Masthead (docs home) */
 .masthead {
