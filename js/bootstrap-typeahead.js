@@ -44,7 +44,7 @@
       var val = this.$menu.find('.active').attr('data-value')
       if( this.mode === 'multiple' ) {
         this.selections.push(val)
-        val = this.selections.join(this.delimiter)
+        val = this.selections.join(this.formatteddelimiter()) + this.formatteddelimiter()
       }
       this.$element.val( val )
       return this.hide()
@@ -170,6 +170,10 @@
       this.$menu
         .on('click', $.proxy(this.click, this))
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+    }
+
+  , formatteddelimiter: function(){
+      return this.delimiter + ' ';
     }
 
   , keyup: function (e) {
