@@ -81,11 +81,11 @@
       var that = this
         , complete = function () {
             if (startEvent == 'show') that.reset()
-            that.$element.trigger(completeEvent)
+            that.$element.trigger(completeEvent + '.collapse')
           }
 
       this.$element
-        .trigger(startEvent)
+        .trigger(startEvent + '.collapse')
         [method]('in')
 
       $.support.transition && this.$element.hasClass('collapse') ?
