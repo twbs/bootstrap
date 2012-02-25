@@ -125,4 +125,22 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+      
+      test("should replace keys with values", function() {
+        var $input = $('<input />').typeahead({
+          source: [{"icon": "john_avatar.png", "name": "John"}, {"icon": "doe_avatar.png", "name": "Doe"}],
+          item: '<li><a><img src="#{icon}" />#{name}</a></li>',
+          useJsonSource: true,
+          searchKey: 'name'
+        })
+        var typeahead = $input.data('typeahead')
+        
+        $input.val('j')
+        typeahead.lookup()
+        
+        equals($(typeahead.$menu.find('img')).attr('src'), 'john_avatar.png', 'src key replaced correctly')
+        equals($(typeahead.$menu.find('a')).text(), 'John', 'name key replaced correctly')
+        
+        typeahead.$menu.remove()
+      })
 })
