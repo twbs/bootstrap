@@ -1418,6 +1418,12 @@ $('.myCarousel').carousel({
                <td>highlights all default matches</td>
                <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
              </tr>
+             <tr>
+              <td>remoteuri</td>
+              <td>string</td>
+              <td>n/a</td>
+              <td>When a uri is provided a remote request will be made to retrieve autocomplete results instead of referring to 'source'. A GET request will be issued with two querystring arguments. <code>q</code> contains the value of the query. <code>max</code> contains the maximum number of results to return as set by the 'items' setting. A JSON array of values is the expected response.</td>
+             </tr>
             </tbody>
           </table>
 
