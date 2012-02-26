@@ -93,6 +93,7 @@
             <li><a href="#collapse">Collapse</a></li>
             <li><a href="#carousel">Carousel</a></li>
             <li><a href="#typeahead">Typeahead</a></li>
+            <li><a href="#combobox">Combobox</a></li>
           </ul>
         </div>
       </header>
@@ -157,7 +158,7 @@
           </label>
         </div>
       </div> <!-- /row -->
-      <div class="row" style="margin-bottom: 9px;">
+      <div class="row">
         <div class="span3">
           <label>
             <h3><a href="./javascript.html#collapse">Collapse</a></h3>
@@ -176,6 +177,15 @@
             <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
           </label>
         </div>
+        <div class="span3">
+          <label>
+            <h3><a href="./javascript.html#combobox">Combobox</a> <small class="muted">*</small></h3>
+            <p>Turns a boring and keyboard unfriendly select into a autocompleting combobox.</p>
+            <p class="muted"><strong>*</strong> Requires <a href="#typeahead">Typeahead</a> to be included</p>
+          </label>
+        </div>
+      </div> <!-- /row -->
+      <div class="row" style="margin-bottom: 9px;">
         <div class="span3">
           <label>
             <h3>Transitions <small class="muted">*</small></h3>
@@ -1438,6 +1448,70 @@ $('.myCarousel').carousel({
       </div>
     </section>
 
+
+
+    <!-- Combobox
+    ================================================== -->
+    <section id="combobox">
+      <div class="page-header">
+        <h1>Combobox <small>bootstrap-combobox.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <h3>About</h3>
+          <p>Turns a boring and keyboard unfriendly select into a autocompleting combobox.</p>
+          <a href="assets/js/bootstrap-combobox.js" target="_blank" class="btn">Download file</a>
+        </div>
+        <div class="span9 columns">
+          <h2>Example</h2>
+          <p>Start typing in the field below to show the typeahead results.</p>
+          <div class="well">
+            <select class="combobox"><option></option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Dakota</option><option>North Carolina</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+          </div>
+          <hr>
+          <h2>Using bootstrap-combobox.js</h2>
+          <p>Call the typeahead via javascript:</p>
+          <pre class="prettyprint linenums">$('.combobox').combobox()</pre>
+          <h3>Options</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 50px;">type</th>
+               <th style="width: 100px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>matcher</td>
+               <td>function</td>
+               <td>case insensitive</td>
+               <td>The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.</td>
+             </tr>
+             <tr>
+               <td>sorter</td>
+               <td>function</td>
+               <td>exact match,<br> case sensitive,<br> case insensitive</td>
+               <td>Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.</td>
+             </tr>
+             <tr>
+               <td>highlighter</td>
+               <td>function</td>
+               <td>highlights all default matches</td>
+               <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
+             </tr>
+            </tbody>
+          </table>
+
+          <h3>Methods</h3>
+          <h4>.combobox(options)</h4>
+          <p>Turns a select into a combobox.</p>
+        </div>
+      </div>
+    </section>
+
+
      <!-- Footer
       ================================================== -->
       <footer class="footer">
@@ -1469,6 +1543,7 @@ $('.myCarousel').carousel({
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-combobox.js"></script>
     <script src="assets/js/application.js"></script>
 
 
