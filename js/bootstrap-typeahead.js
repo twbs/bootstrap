@@ -206,9 +206,6 @@
   , keypress: function (e) {
       e.stopPropagation()
 
-      if (e.keyCode === 8 && this.mode === 'multiple' && !this.shown)
-        e.preventDefault()
-
       if (!this.shown) return
 
       switch(e.keyCode) {
