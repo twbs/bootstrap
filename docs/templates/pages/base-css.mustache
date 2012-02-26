@@ -473,6 +473,13 @@
         </td>
         <td>{{_i}}Cuts vertical padding in half, from 8px to 4px, within all <code>td</code> and <code>th</code> elements{{/i}}</td>
       </tr>
+      <tr>
+        <td>{{_i}}Expanded{{/i}}</td>
+        <td>
+          <code>.table-expanded</code>
+        </td>
+        <td>{{_i}}Causes table to stretch horizontally{{/i}}</td>
+      </tr>
     </tbody>
   </table>
 
@@ -659,18 +666,60 @@
   </div>
 
 
+  <h3>5. {{_i}}Expanded table{{/i}}</h3>
+  <div class="row">
+    <div class="span4">
+      <p>{{_i}}Make your table stretch horizontally with the <code>.table-expanded</code> class.{{/i}}</p>
+<pre class="prettyprint linenums" style="margin-bottom: 18px;">
+&lt;table class="table table-expanded"&gt;
+  …
+&lt;/table&gt;</pre>
+    </div>
+    <div class="span8">
+      <table class="table table-expanded">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>{{_i}}First Name{{/i}}</th>
+            <th>{{_i}}Last Name{{/i}}</th>
+            <th>{{_i}}Username{{/i}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <h3>5. {{_i}}Combine them all!{{/i}}</h3>
+
+  <h3>6. {{_i}}Combine them all!{{/i}}</h3>
   <div class="row">
     <div class="span4">
       <p>{{_i}}Feel free to combine any of the table classes to achieve different looks by utilizing any of the available classes.{{/i}}</p>
 <pre class="prettyprint linenums" style="margin-bottom: 18px;">
-&lt;table class="table table-striped table-bordered table-condensed"&gt;
+&lt;table class="table table-striped table-bordered table-expanded table-condensed"&gt;
   ...
 &lt;/table&gt;</pre>
     </div>
     <div class="span8">
-      <table class="table table-striped table-bordered table-condensed">
+      <table class="table table-striped table-bordered table-expanded table-condensed">
         <thead>
           <tr>
             <th></th>
@@ -1223,7 +1272,7 @@
         <td><code>.btn-danger</code></td>
         <td>{{_i}}Indicates a dangerous or potentially negative action{{/i}}</td>
       </tr>
-  	  <tr>
+      <tr>
         <td><button class="btn btn-inverse" href="#">{{_i}}Inverse{{/i}}</button></td>
         <td><code>.btn-inverse</code></td>
         <td>{{_i}}Alternate dark gray button, not tied to a semantic action or use{{/i}}</td>
