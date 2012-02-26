@@ -44,22 +44,10 @@
       var val = this.$menu.find('.active').attr('data-value')
       if( this.mode === 'multiple' ) {
         this.selections.push(val)
-        val = this.selections.join(this.formatteddelimiter())
-        if (val.length) val += this.formatteddelimiter()
+        val = this.selections.join(this.formatteddelimiter()) + this.formatteddelimiter()
       }
       this.$element.val( val )
       return this.hide()
-    }
-
-  , pop: function () {
-      var val = null
-      if( this.mode === 'multiple' ) {
-        this.selections.pop()
-        val = this.selections.join(this.formatteddelimiter())
-        if (val.length) val += this.formatteddelimiter()
-      }
-      this.$element.val( val )
-      return this
     }
 
   , show: function () {
@@ -88,6 +76,8 @@
         , items
         , q
         , input = this.mode === 'multiple' ? this.$element.val().split(this.delimiter) : [this.$element.val()]
+
+      this.selections = input.slice(0, input.length - 1)
 
       this.query = $.trim(input[input.length - 1])
 
@@ -191,14 +181,10 @@
   , keyup: function (e) {
       e.stopPropagation()
       e.preventDefault()
-      
+
       switch(e.keyCode) {
         case 40: // down arrow
         case 38: // up arrow
-          break
-
-        case 8: // backspace
-          if (this.mode === 'multiple' && !this.shown) this.pop()
           break
 
         case 9: // tab

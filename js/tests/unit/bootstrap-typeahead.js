@@ -138,12 +138,12 @@ $(function () {
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
-        $input.val( $input.val() + ',a')
+        $input.val( $input.val() + 'a')
         typeahead.lookup()
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
-        equals($input.val(), 'ac,ac', 'input value was correctly set')
+        equals($input.val(), 'ac, ac, ', 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
 
         typeahead.$menu.remove()
@@ -162,12 +162,12 @@ $(function () {
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
-        $input.val( $input.val() + ';a')
+        $input.val( $input.val() + 'a')
         typeahead.lookup()
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
-        equals($input.val(), 'ac;ac', 'input value was correctly set')
+        equals($input.val(), 'ac; ac; ', 'input value was correctly set')
       })
 
       test("should not allow multiple selection if multiple selection mode is not enabled", function () {
@@ -187,5 +187,47 @@ $(function () {
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
         equals($input.val(), 'ac', 'input value was correctly set')
+      })
+
+      test("should insert a space after the delimiter when multiple selection is enabled", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , delimiter: ','
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac, ', 'delimiter was followed by a space')
+      })
+
+      test("should not append old matches when user clears input", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , delimiter: ','
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[1]).mouseover().click()
+
+        $input.val( 'ac, a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[0]).mouseover().click()
+
+        equals($input.val(), 'ac, aa, ', 'input value was correctly set')
       })
 })
