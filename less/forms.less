@@ -388,6 +388,10 @@ select:focus:required:invalid {
     border: 1px solid #ccc;
     .border-radius(3px 0 0 3px);
   }
+  [class*="icon-"] {
+    opacity: 0.5;
+    filter: alpha(opacity=5);
+  }
   .active {
     background-color: lighten(@green, 30);
     border-color: @green;
