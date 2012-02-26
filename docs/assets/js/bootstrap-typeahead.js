@@ -30,7 +30,10 @@
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
+    this.delimiter = this.options.delimiter || this.delimiter
     this.listen()
+    this.mode = this.options.mode || this.mode
+    this.selections = []
   }
 
   Typeahead.prototype = {
@@ -39,8 +42,24 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
-      this.$element.val(val)
+      if( this.mode === 'multiple' ) {
+        this.selections.push(val)
+        val = this.selections.join(this.formatteddelimiter())
+        if (val.length) val += this.formatteddelimiter()
+      }
+      this.$element.val( val )
       return this.hide()
+    }
+
+  , pop: function () {
+      var val = null
+      if( this.mode === 'multiple' ) {
+        this.selections.pop()
+        val = this.selections.join(this.formatteddelimiter())
+        if (val.length) val += this.formatteddelimiter()
+      }
+      this.$element.val( val )
+      return this
     }
 
   , show: function () {
@@ -68,8 +87,9 @@
       var that = this
         , items
         , q
+        , input = this.mode === 'multiple' ? this.$element.val().split(this.delimiter) : [this.$element.val()]
 
-      this.query = this.$element.val()
+      this.query = $.trim(input[input.length - 1])
 
       if (!this.query) {
         return this.shown ? this.hide() : this
@@ -164,13 +184,21 @@
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
+  , formatteddelimiter: function(){
+      return this.delimiter + ' '
+    }
+
   , keyup: function (e) {
       e.stopPropagation()
       e.preventDefault()
-
+      
       switch(e.keyCode) {
         case 40: // down arrow
         case 38: // up arrow
+          break
+
+        case 8: // backspace
+          if (this.mode === 'multiple' && !this.shown) this.pop()
           break
 
         case 9: // tab
@@ -191,6 +219,10 @@
 
   , keypress: function (e) {
       e.stopPropagation()
+
+      if (e.keyCode === 8 && this.mode === 'multiple' && !this.shown)
+        e.preventDefault()
+
       if (!this.shown) return
 
       switch(e.keyCode) {
@@ -251,6 +283,8 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , delimiter: ','
+  , mode: 'single'
   }
 
   $.fn.typeahead.Constructor = Typeahead
