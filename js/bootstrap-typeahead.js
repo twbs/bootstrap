@@ -132,10 +132,13 @@
       items = $(items).map(function (i, item) {
         if (that.useJsonSource) {
           i = $(that.replaceKeys(item)).attr('data-value', item[that.searchKey])
-          var children = i.find('a').children()
           
-          i.find('a').html(that.highlighter(item[that.searchKey]))
-          i.find('a').prepend(children)
+          i.find('a').contents().each(function() {
+            if (this.nodeType == 3) {
+              $(this).replaceWith(that.highlighter(item[that.searchKey]))
+            }
+          })
+
           return i[0]
         } else {
           i = $(that.options.item).attr('data-value', item)
