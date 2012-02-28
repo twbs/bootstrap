@@ -50,4 +50,45 @@ $(function () {
         dropdown.remove()
       })
 
+      test("should not toggle if disabled (via class .disabled) and clicked", function () {
+        var dropdownHTML = '<ul class="tabs">'
+          + '<li class="dropdown">'
+          + '<a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">Dropdown</a>'
+          + '<ul class="dropdown-menu">'
+          + '<li><a href="#">Secondary link</a></li>'
+          + '<li><a href="#">Something else here</a></li>'
+          + '<li class="divider"></li>'
+          + '<li><a href="#">Another link</a></li>'
+          + '</ul>'
+          + '</li>'
+          + '</ul>'
+          , dropdown = $(dropdownHTML)
+            .appendTo('#qunit-fixture')
+            .find('[data-toggle="dropdown"]')
+            .dropdown()
+            .click()
+        ok(!dropdown.parent('.dropdown').hasClass('open'), 'not toggled (because disabled)')
+        dropdown.remove()
+      })
+
+      test("should not toggle if disabled (via attribute disabled) and clicked", function () {
+        var dropdownHTML = '<ul class="tabs">'
+          + '<li class="dropdown">'
+          + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" disabled>Dropdown</a>'
+          + '<ul class="dropdown-menu">'
+          + '<li><a href="#">Secondary link</a></li>'
+          + '<li><a href="#">Something else here</a></li>'
+          + '<li class="divider"></li>'
+          + '<li><a href="#">Another link</a></li>'
+          + '</ul>'
+          + '</li>'
+          + '</ul>'
+          , dropdown = $(dropdownHTML)
+            .appendTo('#qunit-fixture')
+            .find('[data-toggle="dropdown"]')
+            .dropdown()
+            .click()
+        ok(!dropdown.parent('.dropdown').hasClass('open'), 'not toggled (because disabled)')
+        dropdown.remove()
+      })
 })
