@@ -2740,6 +2740,9 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   -moz-border-radius: 0;
   border-radius: 0;
 }
+.navbar-fixed-top .container, .navbar-fixed-bottom .container {
+  width: 940px;
+}
 .navbar-fixed-top {
   top: 0;
 }
