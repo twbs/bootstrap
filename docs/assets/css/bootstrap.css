@@ -2859,6 +2859,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 .breadcrumb {
   padding: 7px 14px;
   margin: 0 0 18px;
+  list-style: none;
   background-color: #fbfbfb;
   background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
   background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
