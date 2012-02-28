@@ -1,0 +1,616 @@
+
+@import "../buttons.less";
+
+.hq-oldstyle {
+    /* to prevent flicker */
+    display: none;
+    margin-bottom: 60px;
+    font-size: 12px;
+
+    #main_container {
+        padding: 10px;
+        width: 1000px;
+    }
+}
+
+.hq-oldstyle select {
+    height: auto;
+    width: auto;
+    display: inline;
+}
+
+.hq-oldstyle input {
+    display: inline;
+}
+
+.hq-oldstyle label {
+    display: inline;
+}
+
+.hq-oldstyle {
+    h1, h2 {
+        font-size: 13px;
+        line-height: normal;
+        width: auto;
+    }
+    ul {
+        margin: 0;
+    }
+    .container::before,
+    .container::after {
+        display: none;
+    }
+    .dataTables_filter label,
+    .dataTables_length label{
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .dataTables_filter {
+        float: right;
+        line-height: 20px;
+    }
+    .dataTables_length {
+        padding-left: 10px;
+        padding-top: 5px;
+        label {
+            margin-bottom: 0;
+        }
+    }
+    .dataTables_paginate {
+        float: right;
+        margin-top: 5px;
+    }
+}
+
+.hq-oldstyle .ui-accordion .ui-accordion-header a {
+    font-size: 13px;
+    text-align: left;
+}
+
+
+.hq-oldstyle {
+    .loadingBar{
+        z-index:9999;
+        position: fixed;
+        margin: 0px;
+        padding: 0px;
+        top: 0px;
+        width:100%;
+        height:100%;
+        /*display:none*/
+    }
+
+    .myProgressBar{
+        width:90%;
+    }
+
+    body{
+        font-family: "Helvetica Neue", "Helvetica", "Verdana", "Arial", sans-serif;
+        overflow-x:hidden;
+    }
+
+    /* overrides for stuff in jquery UI */
+
+    #fd-props-content .ui-widget { font-family: inherit; }
+
+
+    #fd-question-table{
+        border: 1px solid gray;
+        width: 50em;
+    }
+
+    .fd-question-property-row td{
+
+    }
+    .fd-question-table-header{
+        font: bold;
+    }
+
+    .fd-monitor-window-textarea{
+        width:49em;
+        height:30em;
+    }
+
+    .fd-toolbar{
+        padding: 5px;
+        /*border: 1px solid black;*/
+        margin-top: 0px;
+        vertical-align: middle;
+    }
+
+    .fd-toolbar > * {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 1px;
+    }
+
+    .ui-state-error a {
+        font-weight: bold;
+    }
+
+    #fd-trees{
+        position:relative;
+    }
+    .fd-tree{
+        background: none repeat scroll 0 0 white;
+        border: 1px solid gray;
+        float: left;
+        height: 900px;
+        margin-top: 5px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        width: 235px;
+    }
+
+    #fd-props-advanced{
+        margin-right:5px;
+    }
+
+    #fd-question-tree{
+        clear:right;
+        float:left;
+        background: none;
+    }
+
+    #fd-data-tree{
+        background: none;
+    }
+
+    #fd-data-tree-container{
+        float: left;
+        left: -360px;
+        /*top:500px;*/
+        position: absolute;
+        z-index: 0;
+        overflow: auto;
+        margin-top: 10px;
+        width:280px;
+    }
+
+    #fd-parse-error {
+
+    }
+
+    .fd-message {
+        padding: .8em;
+        margin: .8em;
+    }
+
+
+    #fd-question-properties {
+        border: 1px solid gray;
+        float: left;
+        margin-top: 5px;
+        margin-left: 5px;
+        height:900px;
+        width: 490px;
+        display:none;
+        overflow-x:hidden;
+
+    }
+
+    #fd-ui-container td {
+        text-align: center;
+    }
+
+    .fd-properties-block-header {
+        text-align:left;
+    }
+    .fd-props-ul  {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        /*top: -20px;*/
+    }
+
+    #fd-adv-props-content .fd-props-ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        /*padding-top:20px;*/
+        position: relative;
+        top: -20px;
+    }
+
+    #fd-extra-tools-accordion .fd-props-ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 30px 0 0 5px;
+        position: relative;
+        top: -20px;
+    }
+
+    #fd-extra-tools{
+        float:right;
+        position:relative;
+        border: 1px solid gray;
+        height:895px;
+        padding-bottom:5px;
+        /*margin: 5px;*/
+        width: 235px;
+        margin-top: 5px;
+        background: white;
+        z-index:4;
+        padding-right: 5px;
+    }
+
+    #fd-extra-tools-accordion{
+        z-index:4;
+        padding-left: 2px;
+        padding-bottom:100px;
+    }
+
+    #fd-acc-min-max{
+        cursor: pointer;
+        float: left;
+        left: -237px;
+        margin: 0;
+        padding: 0;
+        top: 237px;
+        width: 498px;
+        z-index: 5;
+    }
+
+    #textDrop{
+        width: 640px;
+        height: 640px;
+    }
+
+    #fd-source {
+        width: 800px;
+        height: 800px;
+    }
+
+    #fd-source-help, #fd-source-controls {
+        width: 800px;
+        padding: 1em;
+    }
+
+    .fd-property-input {
+        margin-top: 0;
+        padding-bottom: 2px;
+        padding-left: 5px;
+        padding-top: 0;
+        width: 80%;
+    }
+
+    .fd-property {
+        display: table;
+        padding: 5px 0 5px 5px;
+        width: 100%;
+    }
+
+    #fd-props-head, #fd-extra-props-head {
+        position: relative;
+        width: 100%;
+    }
+
+
+
+    .fd-property-text {
+        height: 50px;
+        position: relative;
+    }
+
+    #fd-question-properties ul {
+        list-style-type: none;
+    }
+
+    #fd-form-opts-ul {
+        list-style-type: none;
+    }
+
+    #fd-question-properties ul li.fd-property:nth-child(even) {
+        background: #FAFAFF
+    }
+
+    .questionButton {
+        margin: 1px;
+        vertical-align: middle;
+        width: 200px;
+    }
+
+    #fd-save-button {
+        float: right;
+    }
+
+
+    #fd-question-properties ul li:hover{
+        background: #f0f8ff;
+    }
+    #fd-question-properties ul li:nth-child(odd) {
+
+    }
+
+    .fd-props-heading {
+        font-weight: bold;
+    }
+
+
+
+    .fd-props-validate {
+        float: right;
+    }
+
+    .fd-head {
+        /*-webkit-transform: rotate(-90deg);*/
+        /*-moz-transform: rotate(-90deg);*/
+        /* for ie */
+        /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
+
+        /*background: url("smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;*/
+        border: 1px solid #D3D3D3;
+        /*color: #555555;*/
+        font-size: 17px;
+        font-weight: bold;
+        height: 24px;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        width: 500px;
+        z-index: 3;
+        line-height:25px;
+    }
+
+    #fd-question-tree-head {
+        position: relative;
+        width: 100%;
+    }
+
+    #fd-question-tree-container {
+        overflow-x:auto;
+    }
+
+    #fd-data-tree-head {
+        position: relative;
+        width: 100%;
+    }
+
+    #fd-props-content {
+        padding: 5px;
+        position: relative;
+    }
+
+    .fd-tree-valid-alert-icon {
+        display:inline;
+        position:absolute;
+
+    }
+
+    .fd-form-props-heading {
+        font-weight:bold;
+    }
+
+
+    #fd-adv-props-content {
+        padding: 0;
+        overflow-x: hidden;
+        /*width: 100%;*/
+    }
+
+
+    .fd-template-but {
+        width: 200px;
+        margin: 2px;
+    }
+
+    #fd-ui-container {
+
+        width: 100%;
+    }
+
+    #fd-min-max-button {
+        float: right;
+        height: 21px;
+        margin: 1px;
+        width: 37px;
+    }
+
+    .fd-prop-input-div {
+        float: right;
+        width:320px;
+    }
+
+    #fd-parsexml-button {
+        float: right;
+        margin-left: 2px;
+        margin-right: 0;
+        margin-top: 7px;
+    }
+
+    #fd-extra-template-questions, #fd-extra-advanced, #fd-dragons, #fd-extra-settings {
+        margin: 0;
+        overflow-x:hidden;
+        padding-left: 2px;
+    }
+
+    .fd-prop-input-div-checkbox {
+        float: right;
+        width: 150px;
+
+    }
+
+    #fd-props-message {
+        margin: 0;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #fd-itext-lang-select_chzn {
+        float:left;
+    }
+
+    #fd-itext-add-lang-button {
+        float: right;
+    }
+
+    #fd-form-saving-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #fd-question-add {
+        display: inline-block;
+    }
+
+    #fd-question-select {
+        position:relative;
+        width:280px;
+    }
+
+    #fd-question-select_chzn {
+        clear: none;
+        float: left;
+        margin-right: 5px;
+
+    }
+
+    #fd-add-but {
+        position:relative;
+    }
+
+    #formdesigner {
+        width: 996px;
+        margin: auto;
+    }
+
+    #fd-props-mugtype-info {
+        border: 1px solid gray;
+        text-align: center;
+    }
+
+    #xpath-edit-head {
+        border: 1px solid #D3D3D3;
+        font-size: 17px;
+        font-weight: bold;
+        height: 24px;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        width: 710px;
+        z-index: 3;
+        line-height:25px;
+    }
+
+    #fd-xpath-editor {
+        border: 1px solid gray;
+        float: left;
+        margin-top: 5px;
+        margin-left: 5px;
+        height:900px;
+        width: 713px;
+        overflow-x:hidden;
+        display: none;
+    }
+
+    #xpath-edit-inner {
+        padding-top: 25px;
+        margin: 5px;
+    }
+
+    /* new question UI styling */
+
+    #fd-props-content h1 {
+        font-weight: bold;
+        font-size: 1.4em;
+        margin-bottom: .5em;
+    }
+
+    #fd-props-content h2 {
+        font-size: 1.1em;
+        border: 1px solid lightgray;
+        border-bottom: 0;
+        text-align: center;
+        background-color: whitesmoke;
+        padding: .2em;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    #fd-props-content .ui-accordion-content {
+        padding: 1em .5em;
+    }
+
+
+
+    #fd-props-content fieldset:not(.ui-widget) {
+        padding:0 .4em .4em .4em;
+        margin:0 0 1.5em 0;
+        border:1px solid #ccc;
+    }
+
+    #fd-props-content fieldset h3 {
+        text-align: left;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    #fd-props-content fieldset div .widget {
+        clear: both;
+        margin-bottom: .3em;
+    }
+
+    #fd-props-content fieldset label {
+        font-weight: normal;
+        display: inline-block;
+        padding-top: .4em;
+    }
+
+    #fd-props-content fieldset input[type="text"], #fd-props-content fieldset select {
+        width: 220px;
+        float: right;
+        margin: .5em 1em .5em 0;
+
+    }
+
+    #fd-props-content fieldset .xpath-edit-button {
+        float: right;
+        margin-right: 2em;
+    }
+
+    #fd-props-content fieldset .auto-itext {
+        float: right;
+        margin-right: 2em;
+        display: inline-block;
+    }
+
+    .question-section {
+        margin-bottom: 1em;
+    }
+
+    /* xpath editor styling */
+
+    /* stolen from blueprint */
+    .error, .notice, .success {padding:.4em; border:2px solid #ddd;}
+    .error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+    .notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+    .success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+
+    .bin-expression {
+        min-height: 35px;
+    }
+
+    .xpath-edit-node, .expression-part, .op-select, .validation-results {
+        vertical-align: text-bottom;
+        display: inline-block;
+        margin-left: .4em;
+    }
+
+    .xpath-edit-node {
+        width: 180px !important;
+    }
+
+    .validation-results
+    {
+        position: relative;
+        margin-bottom: 0px;
+    }
+
+
+    .dismiss-message-button {
+        float: right;
+    }
+}

@@ -31,3 +31,5 @@ nbproject
 .svn
 .CVS
 .idea
+
+./less/*.css

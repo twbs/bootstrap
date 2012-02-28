@@ -2,6 +2,7 @@ BOOTSTRAP_LESS = ./less/hq-bootstrap.less
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 DIRECT_LESS_COMMAND = nodejs /opt/lessc/bin/lessc
 HQ_BOOTSTRAP_SRC = ../core-hq-src/corehq/apps/hqwebapp/static/hq-bootstrap
+FORMDESIGNER_CSS_SRC = ../formdesigner/css
 
 LESS_COMPRESSOR ?= `which less`
 WATCHR ?= `which watchr`
@@ -24,6 +25,9 @@ bootstrap:
 	mkdir -p ${HQ_BOOTSTRAP_SRC}/css/old
 	lessc ./less/old/core.less > ${HQ_BOOTSTRAP_SRC}/css/old/core.css
 	lessc ./less/old/app_manager.less >  ${HQ_BOOTSTRAP_SRC}/css/old/app_manager.css
+
+	lessc ./less/formdesigner-old/formdesigner.less > ${FORMDESIGNER_CSS_SRC}/formdesigner.css
+	lessc ./less/formdesigner-old/screen.less > ${FORMDESIGNER_CSS_SRC}/screen.css
 
 	mkdir -p ${HQ_BOOTSTRAP_SRC}/js
 	cp -r js/includes/* ${HQ_BOOTSTRAP_SRC}/js/
@@ -49,6 +53,9 @@ direct:
 	mkdir -p ${HQ_BOOTSTRAP_SRC}/css/old
 	${DIRECT_LESS_COMMAND} ./less/old/core.less > ${HQ_BOOTSTRAP_SRC}/css/old/core.css
 	${DIRECT_LESS_COMMAND} ./less/old/app_manager.less >  ${HQ_BOOTSTRAP_SRC}/css/old/app_manager.css
+
+	${DIRECT_LESS_COMMAND} ./less/formdesigner-old/formdesigner.less > ${FORMDESIGNER_CSS_SRC}/formdesigner.css
+	${DIRECT_LESS_COMMAND} ./less/formdesigner-old/screen.less > ${FORMDESIGNER_CSS_SRC}/screen.css
 
 	mkdir -p ${HQ_BOOTSTRAP_SRC}/js
 	cp -r js/includes/* ${HQ_BOOTSTRAP_SRC}/js/
