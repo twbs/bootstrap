@@ -482,14 +482,124 @@
 
 #grid {
 
-  .core (@gridColumnWidth, @gridGutterWidth) {
+  // we have to define these bogus mixins otherwise
+  // less throws an exception when we call for them
+  // below and a guard hasn't overridden them
+  // (@fat will work with @cloudhead on coming up with something better hopefully)
+  .span1 (@gridColumns)  {}
+  .span2 (@gridColumns)  {}
+  .span3 (@gridColumns)  {}
+  .span4 (@gridColumns)  {}
+  .span5 (@gridColumns)  {}
+  .span6 (@gridColumns)  {}
+  .span7 (@gridColumns)  {}
+  .span8 (@gridColumns)  {}
+  .span9 (@gridColumns)  {}
+  .span10 (@gridColumns) {}
+  .span11 (@gridColumns) {}
+  .span12 (@gridColumns) {}
+  .span13 (@gridColumns) {}
+  .span14 (@gridColumns) {}
+  .span15 (@gridColumns) {}
+  .span16 (@gridColumns) {}
+  .span17 (@gridColumns) {}
+  .span18 (@gridColumns) {}
+  .span19 (@gridColumns) {}
+  .span20 (@gridColumns) {}
+  .span21 (@gridColumns) {}
+  .span22 (@gridColumns) {}
+  .span23 (@gridColumns) {}
+  .span24 (@gridColumns) {}
 
-    .span (@columns) {
-      width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
-    }
+
+  // override mixins with guards
+  .span1  (@gridColumns) when (@gridColumns > 0)  { .span1 { .span(1); } }
+  .span2  (@gridColumns) when (@gridColumns > 1)  { .span2 { .span(2); } }
+  .span3  (@gridColumns) when (@gridColumns > 2)  { .span3 { .span(3); } }
+  .span4  (@gridColumns) when (@gridColumns > 3)  { .span4 { .span(4); } }
+  .span5  (@gridColumns) when (@gridColumns > 4)  { .span5 { .span(5); } }
+  .span6  (@gridColumns) when (@gridColumns > 5)  { .span6 { .span(6); } }
+  .span7  (@gridColumns) when (@gridColumns > 6)  { .span7 { .span(7); } }
+  .span8  (@gridColumns) when (@gridColumns > 7)  { .span8 { .span(8); } }
+  .span9  (@gridColumns) when (@gridColumns > 8)  { .span9 { .span(9); } }
+  .span10 (@gridColumns) when (@gridColumns > 9)  { .span10 { .span(10); } }
+  .span11 (@gridColumns) when (@gridColumns > 10) { .span11 { .span(11); } }
+  .span12 (@gridColumns) when (@gridColumns > 11) { .span12 { .span(12); } }
+  .span13 (@gridColumns) when (@gridColumns > 12) { .span13 { .span(13); } }
+  .span14 (@gridColumns) when (@gridColumns > 13) { .span14 { .span(14); } }
+  .span15 (@gridColumns) when (@gridColumns > 14) { .span15 { .span(15); } }
+  .span16 (@gridColumns) when (@gridColumns > 15) { .span16 { .span(16); } }
+  .span17 (@gridColumns) when (@gridColumns > 16) { .span17 { .span(17); } }
+  .span18 (@gridColumns) when (@gridColumns > 17) { .span18 { .span(18); } }
+  .span19 (@gridColumns) when (@gridColumns > 18) { .span19 { .span(19); } }
+  .span20 (@gridColumns) when (@gridColumns > 19) { .span20 { .span(20); } }
+  .span21 (@gridColumns) when (@gridColumns > 20) { .span21 { .span(21); } }
+  .span22 (@gridColumns) when (@gridColumns > 21) { .span22 { .span(22); } }
+  .span23 (@gridColumns) when (@gridColumns > 22) { .span23 { .span(23); } }
+  .span24 (@gridColumns) when (@gridColumns > 23) { .span24 { .span(24); } }
+
+
+  // do the same with offset as we did with spans ;_;
+  .offset1 (@gridColumns)  {}
+  .offset2 (@gridColumns)  {}
+  .offset3 (@gridColumns)  {}
+  .offset4 (@gridColumns)  {}
+  .offset5 (@gridColumns)  {}
+  .offset6 (@gridColumns)  {}
+  .offset7 (@gridColumns)  {}
+  .offset8 (@gridColumns)  {}
+  .offset9 (@gridColumns)  {}
+  .offset10 (@gridColumns) {}
+  .offset11 (@gridColumns) {}
+  .offset12 (@gridColumns) {}
+  .offset13 (@gridColumns) {}
+  .offset14 (@gridColumns) {}
+  .offset15 (@gridColumns) {}
+  .offset16 (@gridColumns) {}
+  .offset17 (@gridColumns) {}
+  .offset18 (@gridColumns) {}
+  .offset19 (@gridColumns) {}
+  .offset20 (@gridColumns) {}
+  .offset21 (@gridColumns) {}
+  .offset22 (@gridColumns) {}
+  .offset23 (@gridColumns) {}
+  .offset24 (@gridColumns) {}
+
+
+  // override with guards
+  .offset1  (@gridColumns) when (@gridColumns > 0)  { .offset1 { .offset(1); } }
+  .offset2  (@gridColumns) when (@gridColumns > 1)  { .offset2 { .offset(2); } }
+  .offset3  (@gridColumns) when (@gridColumns > 2)  { .offset3 { .offset(3); } }
+  .offset4  (@gridColumns) when (@gridColumns > 3)  { .offset4 { .offset(4); } }
+  .offset5  (@gridColumns) when (@gridColumns > 4)  { .offset5 { .offset(5); } }
+  .offset6  (@gridColumns) when (@gridColumns > 5)  { .offset6 { .offset(6); } }
+  .offset7  (@gridColumns) when (@gridColumns > 6)  { .offset7 { .offset(7); } }
+  .offset8  (@gridColumns) when (@gridColumns > 7)  { .offset8 { .offset(8); } }
+  .offset9  (@gridColumns) when (@gridColumns > 8)  { .offset9 { .offset(9); } }
+  .offset10 (@gridColumns) when (@gridColumns > 9)  { .offset10 { .offset(10); } }
+  .offset11 (@gridColumns) when (@gridColumns > 10) { .offset11 { .offset(11); } }
+  .offset12 (@gridColumns) when (@gridColumns > 11) { .offset12 { .offset(12); } }
+  .offset13 (@gridColumns) when (@gridColumns > 12) { .offset13 { .offset(13); } }
+  .offset14 (@gridColumns) when (@gridColumns > 13) { .offset14 { .offset(14); } }
+  .offset15 (@gridColumns) when (@gridColumns > 14) { .offset15 { .offset(15); } }
+  .offset16 (@gridColumns) when (@gridColumns > 15) { .offset16 { .offset(16); } }
+  .offset17 (@gridColumns) when (@gridColumns > 16) { .offset17 { .offset(17); } }
+  .offset18 (@gridColumns) when (@gridColumns > 17) { .offset18 { .offset(18); } }
+  .offset19 (@gridColumns) when (@gridColumns > 18) { .offset19 { .offset(19); } }
+  .offset20 (@gridColumns) when (@gridColumns > 19) { .offset20 { .offset(20); } }
+  .offset21 (@gridColumns) when (@gridColumns > 20) { .offset21 { .offset(21); } }
+  .offset22 (@gridColumns) when (@gridColumns > 21) { .offset22 { .offset(22); } }
+  .offset23 (@gridColumns) when (@gridColumns > 22) { .offset23 { .offset(23); } }
+  .offset24 (@gridColumns) when (@gridColumns > 23) { .offset24 { .offset(24); } }
+
+  .core (@gridColumnWidth, @gridGutterWidth) {
 
     .offset (@columns) {
       margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+    }
+
+    .span (@columns) {
+      width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
     }
 
     .row {
@@ -505,33 +615,59 @@
     // Set the container width, and reset it for fixed navbars
     .container,
     .navbar-fixed-top .container,
-    .navbar-fixed-bottom .container { .span(12); }
+    .navbar-fixed-bottom .container { .span(@gridColumns); }
 
-    .span1 { .span(1); }
-    .span2 { .span(2); }
-    .span3 { .span(3); }
-    .span4 { .span(4); }
-    .span5 { .span(5); }
-    .span6 { .span(6); }
-    .span7 { .span(7); }
-    .span8 { .span(8); }
-    .span9 { .span(9); }
-    .span10 { .span(10); }
-    .span11 { .span(11); }
-    .span12 { .span(12); }
+    // define up to max of 24 columns (default is 12)
+    #grid .span1(@gridColumns);
+    #grid .span2(@gridColumns);
+    #grid .span3(@gridColumns);
+    #grid .span4(@gridColumns);
+    #grid .span5(@gridColumns);
+    #grid .span6(@gridColumns);
+    #grid .span7(@gridColumns);
+    #grid .span8(@gridColumns);
+    #grid .span9(@gridColumns);
+    #grid .span10(@gridColumns);
+    #grid .span11(@gridColumns);
+    #grid .span12(@gridColumns);
+    #grid .span13(@gridColumns);
+    #grid .span14(@gridColumns);
+    #grid .span15(@gridColumns);
+    #grid .span16(@gridColumns);
+    #grid .span17(@gridColumns);
+    #grid .span18(@gridColumns);
+    #grid .span19(@gridColumns);
+    #grid .span20(@gridColumns);
+    #grid .span21(@gridColumns);
+    #grid .span22(@gridColumns);
+    #grid .span23(@gridColumns);
+    #grid .span24(@gridColumns);
 
-    .offset1 { .offset(1); }
-    .offset2 { .offset(2); }
-    .offset3 { .offset(3); }
-    .offset4 { .offset(4); }
-    .offset5 { .offset(5); }
-    .offset6 { .offset(6); }
-    .offset7 { .offset(7); }
-    .offset8 { .offset(8); }
-    .offset9 { .offset(9); }
-    .offset10 { .offset(10); }
-    .offset11 { .offset(11); }
-    .offset12 { .offset(12); }
+    // define up to max of 24 offsets (default is 12)
+    #grid .offset1(@gridColumns);
+    #grid .offset2(@gridColumns);
+    #grid .offset3(@gridColumns);
+    #grid .offset4(@gridColumns);
+    #grid .offset5(@gridColumns);
+    #grid .offset6(@gridColumns);
+    #grid .offset7(@gridColumns);
+    #grid .offset8(@gridColumns);
+    #grid .offset9(@gridColumns);
+    #grid .offset10(@gridColumns);
+    #grid .offset11(@gridColumns);
+    #grid .offset12(@gridColumns);
+    #grid .offset13(@gridColumns);
+    #grid .offset14(@gridColumns);
+    #grid .offset15(@gridColumns);
+    #grid .offset16(@gridColumns);
+    #grid .offset17(@gridColumns);
+    #grid .offset18(@gridColumns);
+    #grid .offset19(@gridColumns);
+    #grid .offset20(@gridColumns);
+    #grid .offset21(@gridColumns);
+    #grid .offset22(@gridColumns);
+    #grid .offset23(@gridColumns);
+    #grid .offset24(@gridColumns);
 
   }
 
@@ -551,18 +687,31 @@
       > [class*="span"]:first-child {
         margin-left: 0;
       }
-      > .span1 { .span(1); }
-      > .span2 { .span(2); }
-      > .span3 { .span(3); }
-      > .span4 { .span(4); }
-      > .span5 { .span(5); }
-      > .span6 { .span(6); }
-      > .span7 { .span(7); }
-      > .span8 { .span(8); }
-      > .span9 { .span(9); }
-      > .span10 { .span(10); }
-      > .span11 { .span(11); }
-      > .span12 { .span(12); }
+
+      #grid .span1(@gridColumns);
+      #grid .span2(@gridColumns);
+      #grid .span3(@gridColumns);
+      #grid .span4(@gridColumns);
+      #grid .span5(@gridColumns);
+      #grid .span6(@gridColumns);
+      #grid .span7(@gridColumns);
+      #grid .span8(@gridColumns);
+      #grid .span9(@gridColumns);
+      #grid .span10(@gridColumns);
+      #grid .span11(@gridColumns);
+      #grid .span12(@gridColumns);
+      #grid .span13(@gridColumns);
+      #grid .span14(@gridColumns);
+      #grid .span15(@gridColumns);
+      #grid .span16(@gridColumns);
+      #grid .span17(@gridColumns);
+      #grid .span18(@gridColumns);
+      #grid .span19(@gridColumns);
+      #grid .span20(@gridColumns);
+      #grid .span21(@gridColumns);
+      #grid .span22(@gridColumns);
+      #grid .span23(@gridColumns);
+      #grid .span24(@gridColumns);
     }
 
   }
@@ -577,18 +726,31 @@
     textarea,
     .uneditable-input {
       margin-left: 0; // override margin-left from core grid system
-      > .span1 { .span(1); }
-      > .span2 { .span(2); }
-      > .span3 { .span(3); }
-      > .span4 { .span(4); }
-      > .span5 { .span(5); }
-      > .span6 { .span(6); }
-      > .span7 { .span(7); }
-      > .span8 { .span(8); }
-      > .span9 { .span(9); }
-      > .span10 { .span(10); }
-      > .span11 { .span(11); }
-      > .span12 { .span(12); }
+
+      #grid .span1(@gridColumns);
+      #grid .span2(@gridColumns);
+      #grid .span3(@gridColumns);
+      #grid .span4(@gridColumns);
+      #grid .span5(@gridColumns);
+      #grid .span6(@gridColumns);
+      #grid .span7(@gridColumns);
+      #grid .span8(@gridColumns);
+      #grid .span9(@gridColumns);
+      #grid .span10(@gridColumns);
+      #grid .span11(@gridColumns);
+      #grid .span12(@gridColumns);
+      #grid .span13(@gridColumns);
+      #grid .span14(@gridColumns);
+      #grid .span15(@gridColumns);
+      #grid .span16(@gridColumns);
+      #grid .span17(@gridColumns);
+      #grid .span18(@gridColumns);
+      #grid .span19(@gridColumns);
+      #grid .span20(@gridColumns);
+      #grid .span21(@gridColumns);
+      #grid .span22(@gridColumns);
+      #grid .span23(@gridColumns);
+      #grid .span24(@gridColumns);
     }
 
   }
