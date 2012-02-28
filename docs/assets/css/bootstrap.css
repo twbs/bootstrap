@@ -3058,7 +3058,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   max-height: 400px;
   padding: 15px;
 }
-.modal-body .modal-form {
+.modal-form {
   margin-bottom: 0;
 }
 .modal-footer {
