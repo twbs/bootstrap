@@ -7,6 +7,8 @@ It provides all of the styling and basic javascript for HQ's user interface.
 HQ Bootstrap Requirements
 -------------------------
 
+The following instructions are for *nix users. For windows installation, skip ahead to the bottom of this section.
+
 ### nodejs
 
 Both lessc and uglify-js below need nodejs to run. [How to install nodejs](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
@@ -48,6 +50,16 @@ The following should work:
     # (then add ~/bin to your $PATH if it's not there already)
 
 Make sure the user you want to use uglifyjs has the .node_libraries directory properly configured in their home dir.
+
+
+### Installation for Windows Users
+
+Installing the prerequisites on windows is actually quite painless. Install node.js via the latest .msi installer. Then install the dependencies using:
+
++ npm install less
++ npm install uglify-js
+
+After you're done just update your PATH environment variable to include the bin/ directories containing the lessc and uglifyjs commands. 
 
 
 Building Bootstrap
