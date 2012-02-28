@@ -7,11 +7,13 @@ It provides all of the styling and basic javascript for HQ's user interface.
 HQ Bootstrap Requirements
 -------------------------
 
+### nodejs
+
+Both lessc and uglify-js below need nodejs to run. [How to install nodejs](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
+
 ### lessc
 
 The LESS CSS compiler is required to compile all the .less files from hq-boostrap.
-
-You must first [install nodejs](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
 
 Do the following to install `lessc`.
 
@@ -54,6 +56,9 @@ Building Bootstrap
 + **build** - `make`
 This will run the less compiler on the bootstrap lib and compile to core-hq/hqwebapp/static/hq-bootstrap
 The lessc compiler and uglifyjs are required for this command to run.
+
++ **build** - `make direct`
+This will directly use the lessc install in /opt. Use this when you have conflicts with the ruby gem of lessc.
 
 + **build** - `make extra`
 This will compile everything but the .less files. uglify-js is necessary for this.
