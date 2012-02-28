@@ -135,156 +135,6 @@
 }
 
 
-
-// GRID SYSTEM
-// --------------------------------------------------
-
-// Site container
-// -------------------------
-.container-fixed() {
-  width: @gridRowWidth;
-  margin-left: auto;
-  margin-right: auto;
-  .clearfix();
-}
-
-// Le grid system
-// -------------------------
-#gridSystem {
-  // Setup the mixins to be used
-  .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @columns) {
-    width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
-  } 
-  .offset(@gridColumnWidth, @gridGutterWidth, @columns) {
-    margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
-  }
-  .gridColumn(@gridGutterWidth) {
-    float: left;
-    margin-left: @gridGutterWidth;
-  }
-  // Take these values and mixins, and make 'em do their thang
-  .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth) {
-    // Row surrounds the columns
-    .row {
-      margin-left: @gridGutterWidth * -1;
-      .clearfix();
-    }
-    // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks @dhg)
-    [class*="span"] {
-      #gridSystem > .gridColumn(@gridGutterWidth);
-    }
-    // Default columns
-    .span1     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 1); }
-    .span2     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 2); }
-    .span3     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 3); }
-    .span4     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 4); }
-    .span5     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 5); }
-    .span6     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 6); }
-    .span7     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 7); }
-    .span8     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 8); }
-    .span9     { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 9); }
-    .span10    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 10); }
-    .span11    { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 11); }
-    .span12,
-    .container { #gridSystem > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
-    // Offset column options
-    .offset1   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 1); }
-    .offset2   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 2); }
-    .offset3   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 3); }
-    .offset4   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 4); }
-    .offset5   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 5); }
-    .offset6   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 6); }
-    .offset7   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 7); }
-    .offset8   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 8); }
-    .offset9   { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 9); }
-    .offset10  { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 10); }
-    .offset11  { #gridSystem > .offset(@gridColumnWidth, @gridGutterWidth, 11); }
-  }
-}
-
-// Fluid grid system
-// -------------------------
-#fluidGridSystem {
-  // Setup the mixins to be used
-  .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, @columns) {
-    width: 1% * (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
-  }
-  .gridColumn(@fluidGridGutterWidth) {
-    float: left;
-    margin-left: @fluidGridGutterWidth;
-  }
-  // Take these values and mixins, and make 'em do their thang
-  .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
-    // Row surrounds the columns
-    .row-fluid {
-      width: 100%;
-      .clearfix();
-
-      // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks @dhg)
-      > [class*="span"] {
-        #fluidGridSystem > .gridColumn(@fluidGridGutterWidth);
-      }
-      > [class*="span"]:first-child {
-        margin-left: 0;
-      }
-      // Default columns
-      > .span1     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 1); }
-      > .span2     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 2); }
-      > .span3     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 3); }
-      > .span4     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 4); }
-      > .span5     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 5); }
-      > .span6     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 6); }
-      > .span7     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 7); }
-      > .span8     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 8); }
-      > .span9     { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 9); }
-      > .span10    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 10); }
-      > .span11    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 11); }
-      > .span12    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 12); }
-    }
-  }
-}
-
-// Input grid system
-// -------------------------
-#inputGridSystem {
-  .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @columns) {
-    width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 10;
-  }
-  .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth) {
-    input,
-    textarea,
-    .uneditable-input {
-      &.span1     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 1); }
-      &.span2     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 2); }
-      &.span3     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 3); }
-      &.span4     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 4); }
-      &.span5     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 5); }
-      &.span6     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 6); }
-      &.span7     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 7); }
-      &.span8     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 8); }
-      &.span9     { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 9); }
-      &.span10    { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 10); }
-      &.span11    { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 11); }
-      &.span12    { #inputGridSystem > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
-    }
-  }
-}
-
-// Make a Grid
-// -------------------------
-// Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-.makeRow() {
-  margin-left: @gridGutterWidth * -1;
-  .clearfix();
-}
-.makeColumn(@columns: 1) {
-  float: left;
-  margin-left: @gridGutterWidth;
-  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
-}
-
-
-
 // Form field states (used in forms.less)
 // --------------------------------------------------
 
@@ -509,8 +359,8 @@
     background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
     background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
     background-image: -ms-radial-gradient(circle, @innerColor, @outerColor);
+    background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
     background-repeat: no-repeat;
-    // Opera cannot do radial gradients yet
   }
   .striped(@color, @angle: -45deg) {
     background-color: @color;
@@ -528,8 +378,30 @@
 }
 
 
-// Mixin for generating button backgrounds
-// ---------------------------------------
+
+// COMPONENT MIXINS
+// --------------------------------------------------
+
+// Horizontal dividers
+// -------------------------
+// Dividers (basically an hr) within dropdowns and nav lists
+.nav-divider() {
+  height: 1px;
+  margin: ((@baseLineHeight / 2) - 1) 1px; // 8px 1px
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid @white;
+
+  // IE7 needs a set width since we gave a height. Restricting just
+  // to IE7 to keep the 1px left/right space in other browsers.
+  // It is unclear where IE is getting the extra space that we need
+  // to negative-margin away, but so it goes.
+  *width: 100%;
+  *margin: -5px 0 5px;
+}
+
+// Button backgrounds
+// ------------------
 .buttonBackground(@startColor, @endColor) {
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
   .gradientBar(@startColor, @endColor);
@@ -547,11 +419,15 @@
   }
 }
 
+// Navbar vertical align
+// -------------------------
+// Vertically center elements in the navbar.
+// Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
+.navbarVerticalAlign(@elementHeight) {
+  margin-top: (@navbarHeight - @elementHeight) / 2;
+}
 
-// COMPONENT MIXINS
-// --------------------------------------------------
-
-// POPOVER ARROWS
+// Popover arrows
 // -------------------------
 // For tipsies and popovers
 #popoverArrow {
@@ -587,4 +463,134 @@
     border-bottom: @arrowWidth solid transparent;
     border-right: @arrowWidth solid @black;
   }
+}
+
+// Grid System
+// -----------
+
+.container-fixed() {
+  margin-left: auto;
+  margin-right: auto;
+  .clearfix();
+}
+
+.tableColumns(@columnSpan: 1) {
+  float: none; // undo default grid column styles
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
+  margin-left: 0; // undo default grid column styles
+}
+
+#grid {
+
+  .core (@gridColumnWidth, @gridGutterWidth) {
+
+    .span (@columns) {
+      width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+    }
+
+    .offset (@columns) {
+      margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+    }
+
+    .row {
+      margin-left: @gridGutterWidth * -1;
+      .clearfix();
+    }
+
+    [class*="span"] {
+      float: left;
+      margin-left: @gridGutterWidth;
+    }
+
+    // Set the container width, and override it for fixed navbars in media queries
+    .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container { .span(12); }
+
+    .span1 { .span(1); }
+    .span2 { .span(2); }
+    .span3 { .span(3); }
+    .span4 { .span(4); }
+    .span5 { .span(5); }
+    .span6 { .span(6); }
+    .span7 { .span(7); }
+    .span8 { .span(8); }
+    .span9 { .span(9); }
+    .span10 { .span(10); }
+    .span11 { .span(11); }
+    .span12 { .span(12); }
+
+    .offset1 { .offset(1); }
+    .offset2 { .offset(2); }
+    .offset3 { .offset(3); }
+    .offset4 { .offset(4); }
+    .offset5 { .offset(5); }
+    .offset6 { .offset(6); }
+    .offset7 { .offset(7); }
+    .offset8 { .offset(8); }
+    .offset9 { .offset(9); }
+    .offset10 { .offset(10); }
+    .offset11 { .offset(11); }
+    .offset12 { .offset(12); }
+
+  }
+
+  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
+
+    .span (@columns) {
+      width: 1% * (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+    }
+
+    .row-fluid {
+      width: 100%;
+      .clearfix();
+      > [class*="span"] {
+        float: left;
+        margin-left: @fluidGridGutterWidth;
+      }
+      > [class*="span"]:first-child {
+        margin-left: 0;
+      }
+      > .span1 { .span(1); }
+      > .span2 { .span(2); }
+      > .span3 { .span(3); }
+      > .span4 { .span(4); }
+      > .span5 { .span(5); }
+      > .span6 { .span(6); }
+      > .span7 { .span(7); }
+      > .span8 { .span(8); }
+      > .span9 { .span(9); }
+      > .span10 { .span(10); }
+      > .span11 { .span(11); }
+      > .span12 { .span(12); }
+    }
+
+  }
+
+  .input(@gridColumnWidth, @gridGutterWidth) {
+
+    .span(@columns) {
+      width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 10;
+    }
+
+    input,
+    textarea,
+    .uneditable-input {
+      margin-left: 0; // override margin-left from core grid system
+      > .span1 { .span(1); }
+      > .span2 { .span(2); }
+      > .span3 { .span(3); }
+      > .span4 { .span(4); }
+      > .span5 { .span(5); }
+      > .span6 { .span(6); }
+      > .span7 { .span(7); }
+      > .span8 { .span(8); }
+      > .span9 { .span(9); }
+      > .span10 { .span(10); }
+      > .span11 { .span(11); }
+      > .span12 { .span(12); }
+    }
+
+  }
+
 }

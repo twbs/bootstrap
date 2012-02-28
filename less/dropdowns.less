@@ -13,7 +13,9 @@
 .open .dropdown-toggle {
   outline: 0;
 }
+
 // Dropdown arrow/caret
+// --------------------
 .caret {
   display: inline-block;
   width: 0;
@@ -29,6 +31,7 @@
   .opacity(30);
   content: "\2193";
 }
+
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
@@ -37,7 +40,9 @@
 .open.dropdown .caret {
   .opacity(100);
 }
+
 // The dropdown menu (ul)
+// ----------------------
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -46,7 +51,6 @@
   float: left;
   display: none; // none by default, but block on "open" of the menu
   min-width: 160px;
-  _width: 160px;
   padding: 4px 0;
   margin: 0; // override default ul
   list-style: none;
@@ -63,27 +67,15 @@
   *border-right-width: 2px;
   *border-bottom-width: 2px;
 
-  // Allow for dropdowns to go bottom up (aka, dropup-menu)
-  &.bottom-up {
-    top: auto;
-    bottom: 100%;
-    margin-bottom: 2px;
+  // Aligns the dropdown menu to right
+  &.pull-right {
+    right: 0;
+    left: auto;
   }
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    height: 1px;
-    margin: 5px 1px;
-    overflow: hidden;
-    background-color: #e5e5e5;
-    border-bottom: 1px solid @white;
-
-    // IE7 needs a set width since we gave a height. Restricting just
-    // to IE7 to keep the 1px left/right space in other browsers.
-    // It is unclear where IE is getting the extra space that we need
-    // to negative-margin away, but so it goes.
-    *width: 100%;
-    *margin: -5px 0 5px;
+    .nav-divider();
   }
 
   // Links within the dropdown menu
@@ -99,6 +91,7 @@
 }
 
 // Hover state
+// -----------
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
@@ -108,6 +101,7 @@
 }
 
 // Open state for the dropdown
+// ---------------------------
 .dropdown.open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
@@ -123,7 +117,34 @@
   }
 }
 
+// Right aligned dropdowns
+.pull-right .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// ------------------------------------------------------
+// Just add .dropup after the standard .dropdown class and you're set, bro.
+// TODO: abstract this so that the navbar fixed styles are not placed here?
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  // Reverse the caret
+  .caret {
+    border-top: 0;
+    border-bottom: 4px solid @black;
+    content: "\2191";
+  }
+  // Different positioning for bottom up menu
+  .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 1px;
+  }
+}
+
 // Typeahead
+// ---------
 .typeahead {
   margin-top: 2px; // give it some space to breathe
   .border-radius(4px);
