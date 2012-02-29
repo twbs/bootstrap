@@ -42,7 +42,9 @@
         , selector = $this.attr('data-target')
         , $parent
         , isActive
-
+      
+      
+      
       if (!selector) {
         selector = $this.attr('href')
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
@@ -50,6 +52,10 @@
 
       $parent = $(selector)
       $parent.length || ($parent = $this.parent())
+      
+      $parent.find('form').click(function(event){
+        event.stopPropagation();
+      });
 
       isActive = $parent.hasClass('open')
 
