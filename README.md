@@ -24,6 +24,8 @@ Do the following to install `lessc`.
 
 **Note to OSX users:**
 
+Instead of adding the lessc alias, on Mac OS X you should put the lessc executable on the path, e.g. by adding `/opt/lessc/bin/` to the path.
+
 This [LESS app](http://incident57.com/less/) is super useful for working with LESS.
 It's highly recommended that you use this when making changes to the .less files. Use this along side the `make extra` command described below for updating changes to javascript or image files.
 
