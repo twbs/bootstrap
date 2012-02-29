@@ -67,19 +67,20 @@ After you're done just update your PATH environment variable to include the bin/
 Building Bootstrap
 ------------------
 
-+ **build** - `make`
-This will run the less compiler on the bootstrap lib and compile to core-hq/hqwebapp/static/hq-bootstrap
-The lessc compiler and uglifyjs are required for this command to run.
+From the root directory of [commcare-hq](https://github.com/dimagi/commcare-hq) run:
 
-+ **build** - `make direct`
-This will directly use the lessc install in /opt. Use this when you have conflicts with the ruby gem of lessc.
+    python manage.py make_bootstrap
 
-+ **build** - `make extra`
-This will compile everything but the .less files. uglify-js is necessary for this.
 
-+ **watch** - `make watch`
-This is a convenience method for watching your less files and automatically building them whenever you save.
-Watchr is required for this command to run.
+### Having some aliasing issues?
+
+The following arguments to this management command may help:
+
++ `direct-lessc` - runs `lessc` directly from `/opt/lessc`
+
++ `direct-uglifyjs` - runs `uglifyjs` directly from `/opt/UglifyJS`
+
++ `node` - used in addition to `direct-lessc` for when your OSX install of nodejs runs is accessed using `node`, not `nodejs`.
 
 
 Authors of Twitter Bootstrap
