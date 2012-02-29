@@ -31,28 +31,13 @@ It's highly recommended that you use this when making changes to the .less files
 
 ### uglify-js
 
-Check the README for [uglify-js on GitHub](https://github.com/mishoo/UglifyJS) for instructions of how to install uglify-js for your system.
+Install [npm](http://npmjs.org/).
 
-The following should work:
+Then do the following
 
-    ## clone the repository
-    mkdir -p /where/you/wanna/put/it
-    cd /where/you/wanna/put/it
-    git clone git://github.com/mishoo/UglifyJS.git
+    npm install uglify-js -g
 
-    ## make the module available to Node
-    mkdir -p ~/.node_libraries/
-    cd ~/.node_libraries/
-    ln -s /where/you/wanna/put/it/UglifyJS/uglify-js.js
-
-    ## and if you want the CLI script too:
-    mkdir -p /usr/bin
-    cd /usr/bin
-    ln -s /where/you/wanna/put/it/UglifyJS/bin/uglifyjs
-    # (then add /usr/bin to your $PATH if it's not there already)
-
-Make sure the user you want to use uglifyjs has the .node_libraries directory properly configured in their home dir.
-
+You may have to run `npm link uglify-js`.
 
 ### Installation for Windows Users
 
@@ -77,8 +62,6 @@ From the root directory of [commcare-hq](https://github.com/dimagi/commcare-hq) 
 The following arguments to this management command may help:
 
 + `direct-lessc` - runs `lessc` directly from `/opt/lessc`
-
-+ `direct-uglifyjs` - runs `uglifyjs` directly from `/opt/UglifyJS`
 
 + `node` - used in addition to `direct-lessc` for when your OSX install of nodejs is for some reason accessed using `node` instead of `nodejs`.
 
