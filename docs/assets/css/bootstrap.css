@@ -2359,6 +2359,14 @@ button.btn.small, input[type="submit"].btn.small {
 .tabbable:after {
   clear: both;
 }
+
+.nav-list-content > .nav-list-pane {
+  display: none;
+}
+.nav-list-content > .active{
+  display: block;
+}
+
 .tab-content {
   overflow: hidden;
 }
