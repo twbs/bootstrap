@@ -80,7 +80,7 @@ The following arguments to this management command may help:
 
 + `direct-uglifyjs` - runs `uglifyjs` directly from `/opt/UglifyJS`
 
-+ `node` - used in addition to `direct-lessc` for when your OSX install of nodejs runs is accessed using `node`, not `nodejs`.
++ `node` - used in addition to `direct-lessc` for when your OSX install of nodejs is for some reason accessed using `node` instead of `nodejs`.
 
 
 Authors of Twitter Bootstrap
