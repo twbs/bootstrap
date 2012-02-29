@@ -47,7 +47,7 @@ The following should work:
     mkdir -p /usr/bin
     cd /usr/bin
     ln -s /where/you/wanna/put/it/UglifyJS/bin/uglifyjs
-    # (then add ~/bin to your $PATH if it's not there already)
+    # (then add /usr/bin to your $PATH if it's not there already)
 
 Make sure the user you want to use uglifyjs has the .node_libraries directory properly configured in their home dir.
 
