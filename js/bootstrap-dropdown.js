@@ -50,7 +50,10 @@
 
       $parent = $(selector)
       $parent.length || ($parent = $this.parent())
-
+      $parent.find('form').click(function(event){
+        event.stopPropagation();
+      });
+      
       isActive = $parent.hasClass('open')
 
       clearMenus()
