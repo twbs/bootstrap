@@ -334,6 +334,11 @@
      -moz-box-shadow: @shadow;
           box-shadow: @shadow;
 }
+.box-shadow(@shadow1, @shadow2) {
+  -webkit-box-shadow: @shadow1, @shadow2;
+     -moz-box-shadow: @shadow1, @shadow2;
+          box-shadow: @shadow1, @shadow2;
+}
 
 // Transitions
 .transition(@transition) {
