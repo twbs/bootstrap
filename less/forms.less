@@ -179,10 +179,16 @@ input[type="hidden"] {
   margin-left: -18px;
 }
 
-// Move the options list down to align with labels
-.controls > .radio:first-child,
-.controls > .checkbox:first-child {
-  padding-top: 5px; // has to be padding because margin collaspes
+// Move the options list down to align with labels in horizontal forms
+.form-horizontal .controls > .radio:first-child,
+.form-horizontal .controls > .checkbox:first-child {
+  padding-top: 5px; // has to be padding because margin collapses
+}
+
+// Space options out in inline & search forms
+.form-inline .controls > .radio,
+.form-search .controls > .checkbox {
+  margin-right: 10px;
 }
 
 // Radios and checkboxes on same line
