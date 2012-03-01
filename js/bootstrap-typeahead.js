@@ -75,7 +75,7 @@
       var that = this
         , items
         , q
-        , input = this.mode === 'multiple' ? this.$element.val().split(this.delimiter) : [this.$element.val()]
+        , input = this.mode === 'multiple' ? this.$element.val().split(this.formatteddelimiter()) : [this.$element.val()]
 
       this.selections = input.slice(0, input.length - 1)
 

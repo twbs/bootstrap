@@ -230,4 +230,30 @@ $(function () {
 
         equals($input.val(), 'ac, aa, ', 'input value was correctly set')
       })
+
+      test("should not have extra spaces when multiple items are selected", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , delimiter: ';'
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac; ac; ac; ', 'input value was correctly set')
+      })
 })
