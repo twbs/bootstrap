@@ -4,7 +4,7 @@ BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 LESS_COMPRESSOR ?= `which lessc`
 WATCHR ?= `which watchr`
-
+DESTDIR ?= install
 #
 # BUILD DOCS
 #
@@ -55,5 +55,10 @@ watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
+install:
+	unzip docs/assets/bootstrap.zip 
+	mkdir -p ${DESTDIR}
+	cp -r bootstrap/* ${DESTDIR}
+	rm -r bootstrap
 
 .PHONY: dist docs watch gh-pages
