@@ -56,7 +56,9 @@ Ant itself requires the Java JDK, version 1.4 or later. 1.5 or later is strongly
 
 Closure Compiler, our tool for script minification, requires Java 1.6. 
 
-This means that OS X versions prior to 10.6 are no longer supported out of the box. [SoyLatte][soylatte] may provide compatibility for some Intel OS X machines. However, PowerPC based Macs will not be able to run Java 1.6. 
+This means that OS X versions prior to 10.6 are no longer supported out of the box. 
+[SoyLatte][soylatte] provides 10.4 and 10.5 builds of OpenJDK 7 for Intel OS X machines. However, only OS X 10.5 builds of OpenJDK 7 are available for PowerPC based Macs due to a bug in the 10.4 Compiler.  
+( Be sure to read the Download link as the archives are password protected "to provide a click though agreement" of the JDK licensing. )
 
 [soylatte]: http://landonf.bikemonkey.org/static/soylatte/ 
 
