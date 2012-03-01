@@ -7,16 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
@@ -123,7 +123,7 @@
     </div>
     <div class="span4">
       <h3>Operations</h3>
-      <p>Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiple, divide, add, and subtract your way to CSS sanity.</p>
+      <p>Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiply, divide, add, and subtract your way to CSS sanity.</p>
     </div>
   </div>
 </section>
@@ -348,13 +348,13 @@
         <tbody>
           <tr>
             <td class="span3"><code>@warningText</code></td>
-            <td>#f3edd2</td>
-            <td class="swatch-col"><span class="swatch" style="background-color: #f3edd2;"></span></td>
+            <td>#c09853</td>
+            <td><span class="swatch" style="background-color: #c09853;"></span></td>
           </tr>
           <tr>
             <td><code>@warningBackground</code></td>
-            <td>#c09853</td>
-            <td><span class="swatch" style="background-color: #c09853;"></span></td>
+            <td>#f3edd2</td>
+            <td class="swatch-col"><span class="swatch" style="background-color: #f3edd2;"></span></td>
           </tr>
           <tr>
             <td><code>@errorText</code></td>
@@ -604,7 +604,7 @@
       <tr>
         <td><code>.scale()</code></td>
         <td><code>@ratio</code></td>
-        <td>Scale an element to <em>n</em> times it's original size</td>
+        <td>Scale an element to <em>n</em> times its original size</td>
       </tr>
       <tr>
         <td><code>.translate()</code></td>
@@ -614,7 +614,7 @@
       <tr>
         <td><code>.background-clip()</code></td>
         <td><code>@clip</code></td>
-        <td>Crop the backgroud of an element (useful for <code>border-radius</code>)</td>
+        <td>Crop the background of an element (useful for <code>border-radius</code>)</td>
       </tr>
       <tr>
         <td><code>.background-size()</code></td>
@@ -717,8 +717,8 @@
   <div class="row">
     <div class="span4">
       <h3>Node with makefile</h3>
-      <p>Install the LESS command line compiler with npm by running the following command:</p>
-      <pre>$ npm install less</pre>
+      <p>Install the LESS command line compiler globally with npm by running the following command:</p>
+      <pre>$ npm install -g less</pre>
       <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
       <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
     </div><!-- /span4 -->

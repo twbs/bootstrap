@@ -2,13 +2,13 @@
 // ----------
 
 .thumbnails {
-  margin-left: -20px;
+  margin-left: -@gridGutterWidth;
   list-style: none;
   .clearfix();
 }
 .thumbnails > li {
   float: left;
-  margin: 0 0 @baseLineHeight 20px;
+  margin: 0 0 @baseLineHeight @gridGutterWidth;
 }
 .thumbnail {
   display: block;
