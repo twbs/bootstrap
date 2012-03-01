@@ -788,6 +788,44 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>.tooltip('toggle')</h4>
           <p>Toggles an elements tooltip.</p>
           <pre class="prettyprint linenums">$('#element').tooltip('toggle')</pre>
+          <h3>Events</h3>
+          <p>Bootstrap's tooltip class exposes a few events for hooking into tooltip functionality.</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>show</td>
+               <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>shown</td>
+               <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</td>
+             </tr>
+             <tr>
+               <td>hide</td>
+               <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+             </tr>
+             <tr>
+               <td>hidden</td>
+               <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
+             </tr>
+            </tbody>
+          </table>
+
+<pre class="prettyprint linenums">
+$('#element').on('show', function () {
+  // do important stuff
+})</pre>
+
+          <div class="alert alert-info">
+            <strong>Heads up!</strong>
+            Event are fired on tooltip trigger element since tooltips elements are added or removed from DOM when triggered by event. 
+          </div>
         </div>
       </div>
     </section>
