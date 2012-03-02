@@ -38,19 +38,17 @@
 
 // Buttons
 @primaryButtonBackground:    @linkColor;
+@primaryButtonBackgroundEnd: spin(@primaryButtonBackground, 20);
 
-// Buttons [patterns.less]
-@btnPrimaryBgStart: #4787cf;
-@btnPrimaryBgEnd: #6b9bcf;
+@buttonBackground: @white;
+@buttonBackgroundEnd: darken(@white, 10%);
 
-@btnBgColor1: #6b9bcf;
-@btnBgColor2: #6b9bcf;
-@btnBgColor3: #6b9bcf;
+@buttonHoverBackground: @buttonBackgroundEnd;
 
-@btnColor: @white;
-@btnHoverColor: @white;
-@btnBorder: 1px solid #99f;
-@btnBorderBottomColor: #88f;
+@buttonColor: @grayDark;
+@buttonHoverColor: @buttonColor;
+@buttonBorder: 1px solid #ccc;
+@buttonBorderBottomColor: #bbb;
 
 
 
@@ -87,26 +85,22 @@
 @navbarLinkColor:                 @grayLight;
 @navbarLinkColorHover:            @white;
 
-@navBarTextColor: @white;
-@navBarLinkColor: #ddf;
+@navbarActiveLinkColor: @navbarLinkColorHover;
+@navbarActiveLinkBackground: @navbarBackground;
 
-@navBarBrandHoverBg: rgba(0,0,255,.05);
-@navBarItemHoverBg: rgba(0,0,255,.05);
-@navBarActiveItemBg: rgba(0,0,255,.05);
+@navbarBrandHoverBackground: transparent;
 
-// OTHERS
+// Wells
+@wellBackground: #f5f5f5;
 
-// Wells [pattern.less]
-@wellBgColor: #ddf;
+// Hero
+@heroBackground: @wellBackground;
 
-// Hero [pattern.less]
-@heroBgColor: #ddf;
+// Body (scaffolding.less)
+@bodyBackground: @white;
 
-// Body [scaffolding.less]
-@bodyColor: #339;
-
-// [type.less]
-@headerColor: #00f;
+// Typography (type.less)
+@headerColor: @grayDark;
 
 // Form states and alerts
 @warningText:             #c09853;

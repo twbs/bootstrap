@@ -12,13 +12,13 @@
   margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
-  color: @grayDark;
+  color: @buttonColor;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   vertical-align: middle;
-  .buttonBackground(@white, darken(@white, 10%));
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
+  .buttonBackground(@buttonBackground, @buttonBackgroundEnd);
+  border: @buttonBorder;
+  border-bottom-color: @buttonBorderBottomColor;
   .border-radius(4px);
   @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   .box-shadow(@shadow);
@@ -30,9 +30,9 @@
 
 // Hover state
 .btn:hover {
-  color: @grayDark;
+  color: @buttonHoverColor;
   text-decoration: none;
-  background-color: darken(@white, 10%);
+  background-color: @buttonHoverBackground;
   background-position: 0 -15px;
 
   // transition is only when going to hover, otherwise the background
@@ -132,7 +132,7 @@
 // Set the backgrounds
 // -------------------------
 .btn-primary {
-  .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 20));
+  .buttonBackground(@primaryButtonBackground, @primaryButtonBackgroundEnd);
 }
 // Warning appears are orange
 .btn-warning {
