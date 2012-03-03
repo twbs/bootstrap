@@ -2511,7 +2511,7 @@ button.btn.small, input[type="submit"].btn.small {
   text-decoration: none;
 }
 .navbar .brand {
-  float: right;
+  float: left;
   display: block;
   padding: 8px 20px 12px;
   margin-left: -20px;
