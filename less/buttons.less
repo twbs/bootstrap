@@ -134,41 +134,55 @@ input[disabled] + label.btn {
 .btn-dark.active {
   .buttonExtraContrast;
 }
-input:checked {
-  + .btn-primary,
-  + .btn-warning,
-  + .btn-danger,
-  + .btn-success,
-  + .btn-info,
-  + .btn-dark {
-    .buttonExtraContrast;
-  }
-}
 
 // Set the backgrounds
 // -------------------------
 .btn-primary {
   .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 20));
 }
+input:checked + label.btn-primary {
+  .buttonExtraContrast;
+  background-color: spin(@primaryButtonBackground, 20);
+}
 // Warning appears are orange
 .btn-warning {
   .buttonBackground(lighten(@orange, 15%), @orange);
+}
+input:checked + label.btn-warning {
+  .buttonExtraContrast;
+  background-color: @orange;
 }
 // Danger and error appear as red
 .btn-danger {
   .buttonBackground(#ee5f5b, #bd362f);
 }
+input:checked + label.btn-danger {
+  .buttonExtraContrast;
+  background-color: #bd362f;
+}
 // Success appears as green
 .btn-success {
   .buttonBackground(#62c462, #51a351);
+}
+input:checked + label.btn-success {
+  .buttonExtraContrast;
+  background-color: #51a351;
 }
 // Info appears as a neutral blue
 .btn-info {
   .buttonBackground(#5bc0de, #2f96b4);
 }
+input:checked + label.btn-info {
+  .buttonExtraContrast;
+  background-color: #2f96b4;
+}
 // Inverse appears as dark gray
 .btn-inverse {
   .buttonBackground(#454545, #262626);
+}
+input:checked + label.btn-inverse {
+  .buttonExtraContrast;
+  background-color: #262626;
 }
 
 
