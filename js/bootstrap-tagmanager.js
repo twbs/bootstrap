@@ -185,7 +185,7 @@
    jQuery.fn.tagsManager = function (options) {
       tagManagerOptions = {
          preventSubmitOnEnter: true,
-         typeahead: true,
+         typeahead: false,
          typeaheadAjaxSource: null,
          typeaheadSource: null,
          delimeters: [44, 188, 13],
@@ -228,7 +228,16 @@
       });
 
       obj.on("keyup", function (e) {
+         var p = jQuery.inArray(e.which, delimeters);
+         if (-1 != p) {
+            //user just entered a valid delimeter
+            var user_input = jQuery(this).val(); //user_input = jQuery().inArray(delimeters[p]);
+            user_input = jQuery(this).trimTag(user_input);
+            jQuery(this).pushTag(user_input);
+         }
+      });
 
+      obj.on("keydown", function (e) {
          var p = jQuery.inArray(e.which, backspace);
          if (-1 != p) {
             //user just entered backspace or equivalent
@@ -241,22 +250,16 @@
                jQuery(this).popTag();
             }
          }
+      });
 
-         p = jQuery.inArray(e.which, delimeters);
-         if (-1 != p) {
-            //user just entered a valid delimeter
+      if (!tagManagerOptions.typeahead) {
+         obj.on("blur", function (e) {
+            //lost focus
             var user_input = jQuery(this).val(); //user_input = jQuery().inArray(delimeters[p]);
             user_input = jQuery(this).trimTag(user_input);
             jQuery(this).pushTag(user_input);
-         }
-      });
-
-      obj.on("blur", function (e) {
-         //lost focus
-         var user_input = jQuery(this).val(); //user_input = jQuery().inArray(delimeters[p]);
-         user_input = jQuery(this).trimTag(user_input);
-         jQuery(this).pushTag(user_input);
-      });
+         });
+      }
 
    }
 })(jQuery);
