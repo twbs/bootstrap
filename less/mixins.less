@@ -485,17 +485,17 @@
   // Recursive mixins! <3
   // Requires not yet released LESS ;)
 
-  .spanX (@index) when not (@index = 0) {
+  .spanX (@index) when (@index > 0) {
     ~".span@{index}" { .span(@index); }
     #grid .spanX(@index - 1);
   }
-  .spanX (@index, @child) when not (@index = 0) and (@child) {
+  .spanX (@index, @child) when (@index > 0) and (@child) {
     ~"> .span@{index}" { .span(@index); }
     #grid .spanX(@index - 1);
   }
   .spanX (0) {}
 
-  .offsetX (@index) when not (@index = 0) {
+  .offsetX (@index) when (@index > 0) {
     ~".offset@{index}" { .offset(@index); }
     #grid .offsetX(@index - 1);
   }
