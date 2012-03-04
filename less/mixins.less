@@ -213,6 +213,9 @@
     float: left;
     margin-left: @fluidGridGutterWidth;
   }
+  .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, @columns) {
+    margin-left: 1% * (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * @columns) !important;
+  }
   // Take these values and mixins, and make 'em do their thang
   .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
     // Row surrounds the columns
@@ -240,6 +243,19 @@
       > .span10    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 10); }
       > .span11    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 11); }
       > .span12    { #fluidGridSystem > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 12); }
+      // Offset column options
+      > .offset1     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 1); }
+      > .offset2     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 2); }
+      > .offset3     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 3); }
+      > .offset4     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 4); }
+      > .offset5     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 5); }
+      > .offset6     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 6); }
+      > .offset7     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 7); }
+      > .offset8     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 8); }
+      > .offset9     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 9); }
+      > .offset10     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 10); }
+      > .offset11     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 11); }
+      > .offset12     { #fluidGridSystem > .offset(@fluidGridGutterWidth, @fluidGridColumnWidth, 12); }
     }
   }
 }
