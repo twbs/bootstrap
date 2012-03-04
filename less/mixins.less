@@ -489,10 +489,10 @@
     ~".span@{index}" { .span(@index); }
     #grid .spanX(@index - 1);
   }
-  .spanX (@index, @child) when not (@index = 0) and (@child) {
-    ~"> .span@{index}" { .span(@index); }
-    #grid .spanX(@index - 1, @child);
-  }
+  .spanX (@index, child) when (@index > 0) {
+    ~"> .span@{index}" { .span(@index); }
+    #grid .spanX(@index - 1, child);
+  }
   .spanX (0, ...) {}
 
   .offsetX (@index) when (@index > 0) {
@@ -550,7 +550,7 @@
       }
 
       // generate .spanX
-      #grid .spanX (@gridColumns, true);
+      #grid .spanX (@gridColumns, child);
     }
 
   }
@@ -567,7 +567,7 @@
       margin-left: 0; // override margin-left from core grid system
 
       // generate .spanX
-      #grid .spanX (@gridColumns, true);
+      #grid .spanX (@gridColumns, child);
     }
 
   }
