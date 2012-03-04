@@ -489,11 +489,11 @@
     ~".span@{index}" { .span(@index); }
     #grid .spanX(@index - 1);
   }
-  .spanX (@index, @child) when (@index > 0) and (@child) {
+  .spanX (@index, @child) when not (@index = 0) and (@child) {
     ~"> .span@{index}" { .span(@index); }
-    #grid .spanX(@index - 1);
+    #grid .spanX(@index - 1, @child);
   }
-  .spanX (0) {}
+  .spanX (0, ...) {}
 
   .offsetX (@index) when (@index > 0) {
     ~".offset@{index}" { .offset(@index); }
