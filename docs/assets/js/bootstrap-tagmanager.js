@@ -94,6 +94,31 @@
       }
    };
 
+   jQuery.fn.refreshHiddenTagList = function (robj) {
+      var obj;
+      if (robj == null)
+         obj = jQuery(this);
+      else
+         obj = robj;
+
+      if (hiddenTagList == null || hiddenTagList == undefined) {
+         var lhiddenTagList = obj.siblings("input[name='hiddenTagList']");
+         if (lhiddenTagList != null && lhiddenTagList != undefined && lhiddenTagList[0] != undefined)
+            hiddenTagList = lhiddenTagList[0];
+         else {
+            html = "";
+            html += "<input name='hiddenTagList' type='hidden' value=''/>";
+            obj.before(html);
+            lhiddenTagList = obj.siblings("input[name='hiddenTagList']");
+            if (lhiddenTagList != null && lhiddenTagList != undefined && lhiddenTagList[0] != undefined)
+               hiddenTagList = lhiddenTagList[0];
+         }
+      }
+      if (hiddenTagList != null || hiddenTagList != undefined && lhiddenTagList[0] != undefined) {
+         jQuery(hiddenTagList).val(tagList.join(","));
+      }
+   };
+
    jQuery.fn.spliceTag = function (TagId) {
       console.log(
               "TagIdToRemove: " + TagId
@@ -106,6 +131,7 @@
          jQuery("#myTag_" + TagId).remove();
          tagList.splice(p, 1);
          tagLiID.splice(p, 1);
+         jQuery(inputObj).refreshHiddenTagList();
          console.log(tagList);
       }
    };
@@ -118,16 +144,25 @@
               "TagIdToRemove: " + TagId
             );
          jQuery("#myTag_" + TagId).remove();
+         jQuery(inputObj).refreshHiddenTagList();
          console.log(tagList);
       }
    };
 
-   jQuery.fn.pushTag = function (tag) {
+   jQuery.fn.pushTag = function (tag, robj) {
       if (!tag || tag.length <= 0) {
          return;
       }
+      if (tagManagerOptions.CapitalizeFirstLetter && tag.length > 1) {
+         tag = tag.charAt(0).toUpperCase() + tag.slice(1).toLowerCase();
+      }
 
-      var obj = jQuery(this);
+      var obj;
+      if (robj == null)
+         obj = jQuery(this);
+      else
+         obj = robj;
+
       var alreadyInList = false;
       var p = jQuery.inArray(tag, tagList);
       if (-1 != p) {
@@ -156,26 +191,7 @@
             jQuery(this).spliceTag(parseInt(jQuery(this).attr("TagIdToRemove")));
          });
 
-         if (hiddenTagList == null || hiddenTagList == undefined) {
-            var lhiddenTagList = obj.siblings("input[name='hiddenTagList']");
-            if (lhiddenTagList != null && lhiddenTagList != undefined && lhiddenTagList[0] != undefined)
-               hiddenTagList = lhiddenTagList[0];
-            else {
-               html = "";
-               html += "<input name='hiddenTagList' type='hidden' value=''/>";
-               obj.before(html);
-               lhiddenTagList = obj.siblings("input[name='hiddenTagList']");
-               if (lhiddenTagList != null && lhiddenTagList != undefined && lhiddenTagList[0] != undefined)
-                  hiddenTagList = lhiddenTagList[0];
-            }
-         }
-         if (hiddenTagList != null || hiddenTagList != undefined && lhiddenTagList[0] != undefined) {
-            jQuery(hiddenTagList).val(tagList.join(","));
-         }
-         //            jQuery("#myHidden" + TagId).on("click", function (e) {
-         //              var TagIdToRemove = parseInt(jQuery(this).attr("TagIdToRemove"));
-         //              jQuery(this).spliceTag(parseInt(jQuery(this).attr("TagIdToRemove")));
-         //            });
+         obj.refreshHiddenTagList(obj);
 
       }
       obj.val("");
@@ -184,6 +200,8 @@
 
    jQuery.fn.tagsManager = function (options) {
       tagManagerOptions = {
+         prefilled: null,
+         CapitalizeFirstLetter: true,
          preventSubmitOnEnter: true,
          typeahead: false,
          typeaheadAjaxSource: null,
@@ -259,6 +277,24 @@
             user_input = jQuery(this).trimTag(user_input);
             jQuery(this).pushTag(user_input);
          });
+      }
+
+      if (tagManagerOptions.prefilled != null) {
+         if (typeof (tagManagerOptions.prefilled) == "object") {
+            var pta = tagManagerOptions.prefilled;
+            jQuery.each(pta, function (key, val) {
+               var a = 1;
+               obj.pushTag(val, obj);
+            });
+         } else if (typeof (tagManagerOptions.prefilled) == "string") {
+            var pta = tagManagerOptions.prefilled.split(',');
+
+            jQuery.each(pta, function (key, val) {
+               var a = 1;
+               obj.pushTag(val, obj);
+            });
+
+         }
       }
 
    }
