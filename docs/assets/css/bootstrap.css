@@ -2882,6 +2882,10 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 }
 .breadcrumb li {
   display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
   text-shadow: 0 1px 0 #ffffff;
 }
 .breadcrumb .divider {
