@@ -1712,13 +1712,13 @@ table .span24 {
   clear: both;
   font-weight: normal;
   line-height: 18px;
-  color: #555555;
+  color: #333333;
   white-space: nowrap;
 }
 .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #0088cc;
+  background-color: #333333;
 }
 .dropdown.open {
   *z-index: 1000;

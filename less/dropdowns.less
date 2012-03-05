@@ -54,7 +54,7 @@
   padding: 4px 0;
   margin: 0; // override default ul
   list-style: none;
-  background-color: @white;
+  background-color: @dropdownBackground;
   border-color: #ccc;
   border-color: rgba(0,0,0,.2);
   border-style: solid;
@@ -85,7 +85,7 @@
     clear: both;
     font-weight: normal;
     line-height: @baseLineHeight;
-    color: @gray;
+    color: @dropdownLinkColor;
     white-space: nowrap;
   }
 }
@@ -95,9 +95,9 @@
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-  color: @white;
+  color: @dropdownLinkColorHover;
   text-decoration: none;
-  background-color: @linkColor;
+  background-color: @dropdownLinkBackgroundHover;
 }
 
 // Open state for the dropdown
