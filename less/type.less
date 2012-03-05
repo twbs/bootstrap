@@ -130,6 +130,29 @@ dt {
 dd {
   margin-left: @baseLineHeight / 2;
 }
+// Horizontal layout (like forms)
+dl.horizontal {
+  dt {
+    float: left;
+    clear: left;
+    width: 120px;
+    text-align: right;
+  }
+  dd {
+    margin-left: 130px;
+  }
+  &.horizontal-small {
+    dt { width:        50px; }
+    dd { margin-left:  60px; }
+  }
+  &.horizontal-normal {
+    // no additional styles needed
+  }
+  &.horizontal-large {
+    dt { width:       190px; }
+    dd { margin-left: 200px; }
+  }
+}
 
 // MISC
 // ----
@@ -198,7 +221,7 @@ blockquote {
 // Quotes
 q:before,
 q:after,
-blockquote:before, 
+blockquote:before,
 blockquote:after {
   content: "";
 }
