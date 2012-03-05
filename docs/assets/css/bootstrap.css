@@ -2222,6 +2222,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   filter: alpha(opacity=100);
 }
 .btn-primary .caret,
+.btn-warning .caret,
 .btn-danger .caret,
 .btn-info .caret,
 .btn-success .caret,
