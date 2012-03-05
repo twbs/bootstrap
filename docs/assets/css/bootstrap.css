@@ -400,9 +400,19 @@ dt, dd {
 }
 dt {
   font-weight: bold;
+  line-height: 17px;
 }
 dd {
   margin-left: 9px;
+}
+.dl-horizontal dt {
+  float: left;
+  clear: left;
+  width: 120px;
+  text-align: right;
+}
+.dl-horizontal dd {
+  margin-left: 130px;
 }
 hr {
   margin: 18px 0;

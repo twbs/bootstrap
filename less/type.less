@@ -126,12 +126,13 @@ dd {
 }
 dt {
   font-weight: bold;
+  line-height: @baseLineHeight - 1; // fix jank Helvetica Neue font bug
 }
 dd {
   margin-left: @baseLineHeight / 2;
 }
 // Horizontal layout (like forms)
-dl.horizontal {
+.dl-horizontal {
   dt {
     float: left;
     clear: left;
@@ -140,17 +141,6 @@ dl.horizontal {
   }
   dd {
     margin-left: 130px;
-  }
-  &.horizontal-small {
-    dt { width:        50px; }
-    dd { margin-left:  60px; }
-  }
-  &.horizontal-normal {
-    // no additional styles needed
-  }
-  &.horizontal-large {
-    dt { width:       190px; }
-    dd { margin-left: 200px; }
   }
 }
 
