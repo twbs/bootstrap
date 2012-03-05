@@ -136,7 +136,13 @@
       }
    };
 
-   jQuery.fn.popTag = function () {
+   jQuery.fn.popTag = function (robj) {
+      var obj;
+      if (robj == null)
+         obj = jQuery(this);
+      else
+         obj = robj;
+
       if (tagLiID.length > 0) {
          var TagId = tagLiID.pop();
          tagList.pop();
@@ -144,7 +150,7 @@
               "TagIdToRemove: " + TagId
             );
          jQuery("#myTag_" + TagId).remove();
-         jQuery(inputObj).refreshHiddenTagList();
+         jQuery(obj).refreshHiddenTagList();
          console.log(tagList);
       }
    };
@@ -211,10 +217,18 @@
       };
       jQuery.extend(tagManagerOptions, options);
 
+      var obj = jQuery(this);
+
       delimeters = tagManagerOptions.delimeters;
       backspace = tagManagerOptions.backspace;
+      hiddenTagList = null;
 
-      var obj = jQuery(this);
+      if (lastTagId > 0) {
+         while (lastTagId > 0) {
+            obj.popTag(obj);
+            lastTagId--;
+         }
+      }
 
       if (tagManagerOptions.typeahead) {
          obj.setupTypeahead();
