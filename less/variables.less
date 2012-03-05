@@ -7,10 +7,6 @@
 // GLOBAL VALUES
 // --------------------------------------------------
 
-// Links
-@linkColor:             #08c;
-@linkColorHover:        darken(@linkColor, 15%);
-
 // Grays
 @black:                 #000;
 @grayDarker:            #222;
@@ -30,14 +26,57 @@
 @pink:                  #c3325f;
 @purple:                #7a43b6;
 
+// Scaffolding
+@bodyBackground:        @white;
+@textColor:             @grayDark;
+
+// Links
+@linkColor:             #08c;
+@linkColorHover:        #069;
+
 // Typography
 @baseFontSize:          13px;
 @baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 @baseLineHeight:        18px;
-@textColor:             @grayDark;
+@altFontFamily:         Georgia, "Times New Roman", Times, serif;
+
+@headingsFontFamily:    ''; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    normal; // instead of browser default, bold
+@headingsColor:         ''; // empty to use BS default, @textColor
 
 // Buttons
-@primaryButtonBackground:    @linkColor;
+@btnBackground:                     @white;
+@btnBackgroundHighlight:            darken(@white, 10%);
+@btnBorder:                         #ccc;
+
+@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              @gray;
+@btnInverseBackgroundHighlight:     @grayDarker;
+
+// Forms
+@inputBackground:               @white;
+@inputBorder:                   #ccc;
+
+@inputDisabledBackground:       @grayLighter;
+
+// Dropdowns
+@dropdownLinkColor:             @grayDark;
+@dropdownLinkColorHover:        @white;
+@dropdownLinkBackgroundHover:   @grayDark;
 
 
 
@@ -73,6 +112,11 @@
 @navbarText:                      @grayLight;
 @navbarLinkColor:                 @grayLight;
 @navbarLinkColorHover:            @white;
+
+// Hero unit
+@heroUnitBackground:              #312f2e;
+@heroUnitHeadingColor:            @white;
+@heroUnitLeadColor:               @white;
 
 // Form states and alerts
 @warningText:             #c09853;

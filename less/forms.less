@@ -71,7 +71,7 @@ select,
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
-  border: 1px solid #ccc;
+  border: 1px solid @inputBorder;
   .border-radius(3px);
 }
 .uneditable-textarea {
@@ -110,7 +110,7 @@ input[type="file"] {
   padding: initial;
   line-height: initial;
   border: initial;
-  background-color: @white;
+  background-color: @inputBackground;
   background-color: initial;
   .box-shadow(none);
 }
@@ -139,7 +139,7 @@ input[type="file"] {
 // Chrome on Linux and Mobile Safari need background-color
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
-  background-color: @white;
+  background-color: @inputBackground;
 }
 
 // Make multiple select elements height not fixed
@@ -268,7 +268,7 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  background-color: #f5f5f5;
+  background-color: @inputDisabledBackground;
   border-color: #ddd;
   cursor: not-allowed;
 }
@@ -314,7 +314,7 @@ select:focus:required:invalid {
   padding: (@baseLineHeight - 1) 20px @baseLineHeight;
   margin-top: @baseLineHeight;
   margin-bottom: @baseLineHeight;
-  background-color: #f5f5f5;
+  background-color: #grayLight;
   border-top: 1px solid #ddd;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
@@ -322,7 +322,7 @@ select:focus:required:invalid {
 // For text that needs to appear as an input but should not be an input
 .uneditable-input {
   display: block;
-  background-color: @white;
+  background-color: @inputBackground;
   border-color: #eee;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
   cursor: not-allowed;
@@ -387,7 +387,7 @@ select:focus:required:invalid {
     line-height: @baseLineHeight;
     text-align: center;
     text-shadow: 0 1px 0 @white;
-    background-color: #f5f5f5;
+    background-color: #grayLight;
     border: 1px solid #ccc;
     .border-radius(3px 0 0 3px);
   }
