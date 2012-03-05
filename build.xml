@@ -765,7 +765,7 @@
             <fileset dir="${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
             <arg path="${dir.build.tools}/${tool.htmlcompressor}"/>
-            <arg line="${tool.htmlcompressor.opts} ${tool.htmlcompressor.opts.extra}"/>
+            <arg line="${tool.htmlcompressor.opts} ${tool.htmlcompressor.javascript} ${tool.htmlcompressor.opts.extra}"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="${basedir}/${dir.publish}/*"/>
