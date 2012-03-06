@@ -1078,6 +1078,7 @@ table {
   max-width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  background-color: transparent;
 }
 .table {
   width: 100%;
@@ -1088,7 +1089,7 @@ table {
   line-height: 18px;
   text-align: left;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #dddddd;
 }
 .table th {
   font-weight: bold;
@@ -1100,13 +1101,13 @@ table {
   border-top: 0;
 }
 .table tbody + tbody {
-  border-top: 2px solid #ddd;
+  border-top: 2px solid #dddddd;
 }
 .table-condensed th, .table-condensed td {
   padding: 4px 5px;
 }
 .table-bordered {
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   border-left: 0;
   border-collapse: separate;
   *border-collapse: collapsed;
@@ -1115,11 +1116,11 @@ table {
   border-radius: 4px;
 }
 .table-bordered th, .table-bordered td {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #dddddd;
 }
 .table-bordered thead:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child td {
   border-top: 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
 }
 .table-bordered thead:first-child tr:first-child th:first-child, .table-bordered tbody:first-child tr:first-child td:first-child {
   -webkit-border-radius: 4px 0 0 0;
