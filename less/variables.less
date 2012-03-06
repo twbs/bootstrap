@@ -18,7 +18,6 @@
 @grayLighter:           #eee;
 @white:                 #fff;
 
-
 // Accent colors
 // -------------------------
 @blue:                  #049cdb;
@@ -41,7 +40,6 @@
 // -------------------------
 @linkColor:             #08c;
 @linkColorHover:        #069;
-
 
 // Typography
 // -------------------------
@@ -68,6 +66,10 @@
 @btnBackground:                     @white;
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #ccc;
+
+@btnColor:                          @grayDark;
+@btnHoverColor:                     @btnColor;
+@btnHoverBackground:                @btnBackgroundHighlight;
 
 @btnPrimaryBackground:              @linkColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
@@ -138,8 +140,16 @@
 @navbarLinkColor:                 @grayLight;
 @navbarLinkColorHover:            @white;
 
+@navbarActiveLinkColor:           @navbarLinkColorHover;
+@navbarActiveLinkBackground:      @navbarBackground;
+
+@navbarBrandHoverBackground:      transparent;
+
+// Wells
+@wellBackground:                  #f5f5f5;
+
 // Hero unit
-@heroUnitBackground:              #312f2e;
+@heroUnitBackground:              @wellBackground;
 @heroUnitHeadingColor:            @white;
 @heroUnitLeadColor:               @white;
 
