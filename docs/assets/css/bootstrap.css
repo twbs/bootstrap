@@ -1728,7 +1728,7 @@ table .span24 {
 .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #333333;
+  background-color: #0088cc;
 }
 .dropdown.open {
   *z-index: 1000;
