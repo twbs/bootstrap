@@ -141,9 +141,16 @@
   }
 }
 @media (max-width: 767px) {
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .navbar-fixed-top {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
   .container {
     width: auto;
-    padding: 0 20px;
   }
   .row-fluid {
     width: 100%;

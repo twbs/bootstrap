@@ -3002,6 +3002,11 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 .pager .previous a {
   float: left;
 }
+.pager .disabled a, .pager .disabled a:hover {
+  color: #999999;
+  background-color: #fff;
+  cursor: default;
+}
 .modal-open .dropdown-menu {
   z-index: 2050;
 }
