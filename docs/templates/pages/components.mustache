@@ -154,6 +154,16 @@
       </div>
       <div class="btn-toolbar">
         <div class="btn-group">
+          <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Warning{{/i}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
           <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Success{{/i}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
@@ -249,6 +259,17 @@
       </div>
       <div class="btn-toolbar">
         <div class="btn-group">
+          <a class="btn btn-warning" href="#">{{_i}}Warning{{/i}}</a>
+          <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
           <a class="btn btn-success" href="#">{{_i}}Success{{/i}}</a>
           <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -270,6 +291,8 @@
             <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
           </ul>
         </div><!-- /btn-group -->
+      </div>
+      <div class="btn-toolbar">
         <div class="btn-group">
           <a class="btn btn-inverse" href="#">{{_i}}Inverse{{/i}}</a>
           <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
@@ -1109,6 +1132,8 @@
     <div class="span4">
       <h3>{{_i}}About pager{{/i}}</h3>
       <p>{{_i}}The pager component is a set of links for simple pagination implementations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.{{/i}}</p>
+      <h4>{{_i}}Optional disabled state{{/i}}</h4>
+      <p>{{_i}}Pager links also use the general <code>.disabled</code> class from the pagination.{{/i}}</p>
     </div>
     <div class="span4">
       <h3>{{_i}}Default example{{/i}}</h3>
@@ -1631,12 +1656,11 @@
     <div class="span4">
       <h3>{{_i}}Striped{{/i}}</h3>
       <p>{{_i}}Uses a gradient to create a striped effect.{{/i}}</p>
-      <div class="progress progress-info progress-striped">
+      <div class="progress progress-striped">
         <div class="bar" style="width: 20%;"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-info
-     progress-striped"&gt;
+&lt;div class="progress progress-striped"&gt;
   &lt;div class="bar"
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1645,12 +1669,12 @@
     <div class="span4">
       <h3>{{_i}}Animated{{/i}}</h3>
       <p>{{_i}}Takes the striped example and animates it.{{/i}}</p>
-      <div class="progress progress-danger progress-striped active">
+      <div class="progress progress-striped active">
         <div class="bar" style="width: 45%"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-danger
-     progress-striped active"&gt;
+&lt;div class="progress progress-striped
+     active"&gt;
   &lt;div class="bar"
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1660,23 +1684,44 @@
 
   <h2>{{_i}}Options and browser support{{/i}}</h2>
   <div class="row">
-    <div class="span4">
+    <div class="span3">
       <h3>{{_i}}Additional colors{{/i}}</h3>
-      <p>{{_i}}Progress bars utilize some of the same class names as buttons and alerts for similar styling.{{/i}}</p>
-      <ul>
-        <li><code>.progress-info</code></li>
-        <li><code>.progress-success</code></li>
-        <li><code>.progress-warning</code></li>
-        <li><code>.progress-danger</code></li>
-      </ul>
-      <p>{{_i}}Alternatively, you can customize the LESS files and roll your own colors and sizes.{{/i}}</p>
+      <p>{{_i}}Progress bars use some of the same button and alert classes for consistent styles.{{/i}}</p>
+      <div class="progress progress-info" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 20%"></div>
+      </div>
+      <div class="progress progress-success" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 40%"></div>
+      </div>
+      <div class="progress progress-warning" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 60%"></div>
+      </div>
+      <div class="progress progress-danger" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 80%"></div>
+      </div>
     </div>
-    <div class="span4">
+     <div class="span3">
+      <h3>{{_i}}Striped bars{{/i}}</h3>
+      <p>{{_i}}Similar to the solid colors, we have varied striped progress bars.{{/i}}</p>
+      <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 20%"></div>
+      </div>
+      <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 40%"></div>
+      </div>
+      <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 60%"></div>
+      </div>
+      <div class="progress progress-danger progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 80%"></div>
+      </div>
+    </div>
+    <div class="span3">
       <h3>{{_i}}Behavior{{/i}}</h3>
       <p>{{_i}}Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.{{/i}}</p>
       <p>{{_i}}If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.{{/i}}</p>
     </div>
-    <div class="span4">
+    <div class="span3">
       <h3>{{_i}}Browser support{{/i}}</h3>
       <p>{{_i}}Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-8 or older versions of Firefox.{{/i}}</p>
       <p>{{_i}}Opera does not support animations at this time.{{/i}}</p>

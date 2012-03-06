@@ -7,11 +7,9 @@
 // GLOBAL VALUES
 // --------------------------------------------------
 
-// Links
-@linkColor:             #08c;
-@linkColorHover:        darken(@linkColor, 15%);
 
 // Grays
+// -------------------------
 @black:                 #000;
 @grayDarker:            #222;
 @grayDark:              #333;
@@ -21,6 +19,7 @@
 @white:                 #fff;
 
 // Accent colors
+// -------------------------
 @blue:                  #049cdb;
 @blueDark:              #0064cd;
 @green:                 #46a546;
@@ -30,25 +29,81 @@
 @pink:                  #c3325f;
 @purple:                #7a43b6;
 
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        @white;
+@textColor:             @grayDark;
+
+
+// Links
+// -------------------------
+@linkColor:             #08c;
+@linkColorHover:        #069;
+
 // Typography
+// -------------------------
 @baseFontSize:          13px;
 @baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 @baseLineHeight:        18px;
-@textColor:             @grayDark;
+@altFontFamily:         Georgia, "Times New Roman", Times, serif;
+
+@headingsFontFamily:    ''; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    normal; // instead of browser default, bold
+@headingsColor:         ''; // empty to use BS default, @textColor
+
+
+// Tables
+// -------------------------
+@tableBackground:                   transparent; // overall background-color
+@tableBackgroundAccent:             #f9f9f9; // for striping
+@tableBackgroundHover:              #f5f5f5; // for hover
+@tableBorder:                       #ddd; // table and cell border
+
 
 // Buttons
-@primaryButtonBackground:    @linkColor;
-@primaryButtonBackgroundEnd: spin(@primaryButtonBackground, 20);
+// -------------------------
+@btnBackground:                     @white;
+@btnBackgroundHighlight:            darken(@white, 10%);
+@btnBorder:                         #ccc;
 
-@buttonBackground: @white;
-@buttonBackgroundEnd: darken(@white, 10%);
+@btnColor:                          @grayDark;
+@btnHoverColor:                     @btnColor;
+@btnHoverBackground:                @btnBackgroundHighlight;
 
-@buttonHoverBackground: @buttonBackgroundEnd;
+@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
 
-@buttonColor: @grayDark;
-@buttonHoverColor: @buttonColor;
-@buttonBorder: 1px solid #ccc;
-@buttonBorderBottomColor: #bbb;
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              @gray;
+@btnInverseBackgroundHighlight:     @grayDarker;
+
+
+// Forms
+// -------------------------
+@inputBackground:               @white;
+@inputBorder:                   #ccc;
+
+@inputDisabledBackground:       @grayLighter;
+
+
+// Dropdowns
+// -------------------------
+@dropdownBackground:            @white;
+@dropdownLinkColor:             @grayDark;
+@dropdownLinkColorHover:        @white;
+@dropdownLinkBackgroundHover:   @linkColor;
 
 
 
@@ -85,22 +140,18 @@
 @navbarLinkColor:                 @grayLight;
 @navbarLinkColorHover:            @white;
 
-@navbarActiveLinkColor: @navbarLinkColorHover;
-@navbarActiveLinkBackground: @navbarBackground;
+@navbarActiveLinkColor:           @navbarLinkColorHover;
+@navbarActiveLinkBackground:      @navbarBackground;
 
-@navbarBrandHoverBackground: transparent;
+@navbarBrandHoverBackground:      transparent;
 
 // Wells
-@wellBackground: #f5f5f5;
+@wellBackground:                  #f5f5f5;
 
-// Hero
-@heroBackground: @wellBackground;
-
-// Body (scaffolding.less)
-@bodyBackground: @white;
-
-// Typography (type.less)
-@headerColor: @grayDark;
+// Hero unit
+@heroUnitBackground:              @wellBackground;
+@heroUnitHeadingColor:            @white;
+@heroUnitLeadColor:               @white;
 
 // Form states and alerts
 @warningText:             #c09853;

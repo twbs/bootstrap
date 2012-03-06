@@ -211,8 +211,8 @@
   <!-- Lists -->
   <h2>{{_i}}Lists{{/i}}</h2>
   <div class="row">
-    <div class="span3">
-      <h4>{{_i}}Unordered{{/i}}</h4>
+    <div class="span4">
+      <h3>{{_i}}Unordered{{/i}}</h3>
       <p><code>&lt;ul&gt;</code></p>
       <ul>
         <li>Lorem ipsum dolor sit amet</li>
@@ -232,8 +232,8 @@
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-    <div class="span3">
-      <h4>{{_i}}Unstyled{{/i}}</h4>
+    <div class="span4">
+      <h3>{{_i}}Unstyled{{/i}}</h3>
       <p><code>&lt;ul class="unstyled"&gt;</code></p>
       <ul class="unstyled">
         <li>Lorem ipsum dolor sit amet</li>
@@ -253,8 +253,8 @@
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-    <div class="span3">
-      <h4>{{_i}}Ordered{{/i}}</h4>
+    <div class="span4">
+      <h3>{{_i}}Ordered{{/i}}</h3>
       <p><code>&lt;ol&gt;</code></p>
       <ol>
         <li>Lorem ipsum dolor sit amet</li>
@@ -267,10 +267,26 @@
         <li>Eget porttitor lorem</li>
       </ol>
     </div>
-    <div class="span3">
-      <h4>{{_i}}Description{{/i}}</h4>
+  </div><!-- /row -->
+  <br>
+  <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Description{{/i}}</h3>
       <p><code>&lt;dl&gt;</code></p>
       <dl>
+        <dt>{{_i}}Description lists{{/i}}</dt>
+        <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      </dl>
+    </div>
+    <div class="span8">
+      <h3>{{_i}}Horizontal description{{/i}}</h3>
+      <p><code>&lt;dl class="dl-horizontal"&gt;</code></p>
+      <dl class="dl-horizontal">
         <dt>{{_i}}Description lists{{/i}}</dt>
         <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
         <dt>Euismod</dt>
@@ -1223,7 +1239,7 @@
         <td><code>.btn-danger</code></td>
         <td>{{_i}}Indicates a dangerous or potentially negative action{{/i}}</td>
       </tr>
-  	  <tr>
+      <tr>
         <td><button class="btn btn-inverse" href="#">{{_i}}Inverse{{/i}}</button></td>
         <td><code>.btn-inverse</code></td>
         <td>{{_i}}Alternate dark gray button, not tied to a semantic action or use{{/i}}</td>

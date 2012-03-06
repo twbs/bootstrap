@@ -29,7 +29,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: bold;
-  color: @headerColor;
+  color: @headingsColor;
   text-rendering: optimizelegibility; // Fix the character spacing for headings
   small {
     font-weight: normal;
@@ -126,9 +126,22 @@ dd {
 }
 dt {
   font-weight: bold;
+  line-height: @baseLineHeight - 1; // fix jank Helvetica Neue font bug
 }
 dd {
   margin-left: @baseLineHeight / 2;
+}
+// Horizontal layout (like forms)
+.dl-horizontal {
+  dt {
+    float: left;
+    clear: left;
+    width: 120px;
+    text-align: right;
+  }
+  dd {
+    margin-left: 130px;
+  }
 }
 
 // MISC
@@ -198,7 +211,7 @@ blockquote {
 // Quotes
 q:before,
 q:after,
-blockquote:before, 
+blockquote:before,
 blockquote:after {
   content: "";
 }
