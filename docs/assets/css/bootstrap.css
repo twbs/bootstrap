@@ -1675,6 +1675,9 @@ table .span24 {
   opacity: 1;
   filter: alpha(opacity=100);
 }
+.btn-small .caret {
+  margin-top: 6px;
+}
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -2231,9 +2234,6 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   border-bottom-color: #ffffff;
   opacity: 0.75;
   filter: alpha(opacity=75);
-}
-.btn-small .caret {
-  margin-top: 4px;
 }
 .alert {
   padding: 8px 35px 8px 14px;
