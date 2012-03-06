@@ -6,7 +6,12 @@
 
   $(function(){
 
-    // Disable certain links in docs
+    // Set the title on non-index pages. Done here to allow the head section to remain generic across page templates.
+      $("#overview h1").each(function(i,el){
+          document.title = document.title.concat(" | ", $(el).text());
+      });
+
+      // Disable certain links in docs
     $('section [href^=#]').click(function (e) {
       e.preventDefault()
     })
