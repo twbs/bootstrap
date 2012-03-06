@@ -1730,12 +1730,11 @@
     <div class="span4">
       <h3>Striped</h3>
       <p>Uses a gradient to create a striped effect.</p>
-      <div class="progress progress-info progress-striped">
+      <div class="progress progress-striped">
         <div class="bar" style="width: 20%;"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-info
-     progress-striped"&gt;
+&lt;div class="progress progress-striped"&gt;
   &lt;div class="bar"
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1744,12 +1743,12 @@
     <div class="span4">
       <h3>Animated</h3>
       <p>Takes the striped example and animates it.</p>
-      <div class="progress progress-danger progress-striped active">
+      <div class="progress progress-striped active">
         <div class="bar" style="width: 45%"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-danger
-     progress-striped active"&gt;
+&lt;div class="progress progress-striped
+     active"&gt;
   &lt;div class="bar"
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1759,23 +1758,44 @@
 
   <h2>Options and browser support</h2>
   <div class="row">
-    <div class="span4">
+    <div class="span3">
       <h3>Additional colors</h3>
-      <p>Progress bars utilize some of the same class names as buttons and alerts for similar styling.</p>
-      <ul>
-        <li><code>.progress-info</code></li>
-        <li><code>.progress-success</code></li>
-        <li><code>.progress-warning</code></li>
-        <li><code>.progress-danger</code></li>
-      </ul>
-      <p>Alternatively, you can customize the LESS files and roll your own colors and sizes.</p>
+      <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
+      <div class="progress progress-info" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 20%"></div>
+      </div>
+      <div class="progress progress-success" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 40%"></div>
+      </div>
+      <div class="progress progress-warning" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 60%"></div>
+      </div>
+      <div class="progress progress-danger" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 80%"></div>
+      </div>
     </div>
-    <div class="span4">
+     <div class="span3">
+      <h3>Striped bars</h3>
+      <p>Similar to the solid colors, we have varied striped progress bars.</p>
+      <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 20%"></div>
+      </div>
+      <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 40%"></div>
+      </div>
+      <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 60%"></div>
+      </div>
+      <div class="progress progress-danger progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 80%"></div>
+      </div>
+    </div>
+    <div class="span3">
       <h3>Behavior</h3>
       <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
       <p>If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.</p>
     </div>
-    <div class="span4">
+    <div class="span3">
       <h3>Browser support</h3>
       <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-8 or older versions of Firefox.</p>
       <p>Opera does not support animations at this time.</p>
