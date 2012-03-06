@@ -980,6 +980,15 @@
 
         <echo message="First, we run optipng on the .png files..."/>
 
+        <if>
+            <equals arg1="${images.strip.metadata}" arg2="true"/>
+            <then>
+                <var name="strip-meta-tags" value="-strip all"/>
+            </then>
+            <else>
+                <var name="strip-meta-tags" value=""/>
+            </else>
+        </if>
         <!-- osfamily=unix is actually true on OS X as well -->
         <!-- On *nix's and OS X, check for optipng and give a helpful message if it's not installed -->
         <if>
@@ -998,8 +1007,9 @@
                     <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                     <arg value="-quiet"/>
                     <arg value="-o7"/>
-                    <arg value="-out"/>
-                    <targetfile/>
+                    <arg value="${strip-meta-tags}"/>
+                    <arg value="-out"/>	
+					<targetfile/>
                     <srcfile/>
                     <mapper type="identity"/>
                 </apply>
@@ -1021,10 +1031,11 @@
                             <include name="**/*.png"/>
                         </fileset>
                     </delete>
-                    <apply executable="${basedir}/${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
+                    <apply executable="${basedir}/${dir.build.tools}/optipng-0.7-win32/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
                         <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                         <arg value="-quiet"/>
                         <arg value="-o7"/>
+						<arg value="${strip-meta-tags}"/>
                         <arg value="-out"/>
                         <targetfile/>
                         <srcfile/>
