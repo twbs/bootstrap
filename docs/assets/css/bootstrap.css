@@ -2318,7 +2318,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
 .nav-list > li > a {
   padding: 3px 15px;
 }
-.nav-list .active > a, .nav-list .active > a:hover {
+.nav-list > .active > a, .nav-list > .active > a:hover {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   background-color: #0088cc;
@@ -2391,7 +2391,7 @@ button.btn.btn-small, input[type="submit"].btn.btn-small {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.nav-pills .active > a, .nav-pills .active > a:hover {
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
   color: #ffffff;
   background-color: #0088cc;
 }
