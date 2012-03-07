@@ -14,6 +14,10 @@
 // For the white version of the  icons, just add the .icon-white class:
 // <i class="icon-inbox icon-white"></i>
 
+
+.spriteIcons (@useSpriteIcons);
+.spriteIcons (@bool) when (@bool = false) {};
+.spriteIcons (@bool) when (@bool = true) {
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
@@ -156,3 +160,4 @@
 .icon-folder-open        { background-position: -408px -120px; }
 .icon-resize-vertical    { background-position: -432px -119px; }
 .icon-resize-horizontal  { background-position: -456px -118px; }
+}
