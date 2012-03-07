@@ -1,6 +1,5 @@
-.fontIcons (@useFontIcons);
-.fontIcons (@bool) when (@bool = false) {};
-.fontIcons (@bool) when (@bool = true) {
+.fontIcons(@bool) when not (@bool) {}
+.fontIcons(@bool) when (@bool) {
 @font-face {
     font-family: 'FontAwesome';
     src: url('@{baseFontPath}fontawesome-webfont.eot');
@@ -219,3 +218,5 @@ li[class*=" icon-"] {
 .icon-upload-alt:before         { content: "\f093"; }
 .icon-lemon:before              { content: "\f094"; }
 } // close fontIcons switch
+.fontIcons(@useFontIcons);
+

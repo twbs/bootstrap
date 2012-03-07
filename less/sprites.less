@@ -15,9 +15,8 @@
 // <i class="icon-inbox icon-white"></i>
 
 
-.spriteIcons (@useSpriteIcons);
-.spriteIcons (@bool) when (@bool = false) {};
-.spriteIcons (@bool) when (@bool = true) {
+.spriteIcons(@bool) when not (@bool) {}
+.spriteIcons(@bool) when (@bool) {
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
@@ -161,3 +160,4 @@
 .icon-resize-vertical    { background-position: -432px -119px; }
 .icon-resize-horizontal  { background-position: -456px -118px; }
 }
+.spriteIcons(@useSpriteIcons);
