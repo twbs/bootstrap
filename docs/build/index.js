@@ -19,15 +19,27 @@ pages.forEach(function (name) {
 
   var page = fs.readFileSync(__dirname  + '/../templates/pages/' + name, 'utf-8')
     , context = {}
+    , partial = {}
+    , titleNames = {
+        'index': '',
+        'scaffolding': 'Scaffolding · ',
+        'base-css': 'Base CSS · ',
+        'components': 'Components · ',
+        'javascript': 'Javascript plugins · ',
+        'less': 'Using LESS · ',
+        'download': 'Customize · ',
+        'examples': 'Examples · '
+      }
 
   context[name.replace(/\.mustache$/, '')] = 'active'
   context._i = true
   context.production = prod
 
+  partial.body  = page
+  partial.title = titleNames[name.replace(/\.mustache$/, '')]
+
   page = hogan.compile(page, { sectionTags: [{o:'_i', c:'i'}] })
-  page = layout.render(context, {
-    body: page
-  })
+  page = layout.render(context, partial)
 
   fs.writeFileSync(__dirname + '/../' + name.replace(/mustache$/, 'html'), page, 'utf-8')
 })
