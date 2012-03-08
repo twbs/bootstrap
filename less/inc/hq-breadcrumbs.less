@@ -14,5 +14,18 @@
     .active a:visited{
         color: @commCareGray;
     }
+}
 
+.breadcrumb-steps {
+    li {
+        color: lighten(@grayLight, 10);
+        text-shadow: 0 px 0 rgba(0,0,0,.25);
+        &.active {
+            color: @blue;
+            font-weight: bold;
+        }
+        &.past {
+            color: @grayDark;
+        }
+    }
 }
