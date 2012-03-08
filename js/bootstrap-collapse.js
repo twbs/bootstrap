@@ -47,6 +47,10 @@
         , actives = this.$parent && this.$parent.find('.in')
         , hasData
 
+      if (this.options.filter) {
+        actives = actives.filter(this.options.filter)
+      }
+
       if (actives && actives.length) {
         hasData = actives.data('collapse')
         actives.collapse('hide')
