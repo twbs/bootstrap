@@ -20,10 +20,7 @@
   .box-shadow(@shadow);
 }
 
-// Elements with .pull-right (fx) in static navbars, will now display correctly,
-// because .container divs inside does not force 940px width
-// which is incorrect because 940px inside something already 940px + padding becomes
-// greater than 940px
+// Correctly sets the width of nested .containers inside static navbars
 .navbar-inner .container {
   width: auto;
 }
