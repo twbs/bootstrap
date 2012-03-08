@@ -4,7 +4,7 @@
  * =============================================================
  * Copyright 2012 Twitter, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apaache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -88,6 +88,28 @@
       return this.render(items.slice(0, this.options.items)).show()
     }
 
+  , showmenu: function (event) {
+      var that = this
+        , items
+        , q
+
+      this.query = this.$element.val()
+
+      if (this.query) {
+        return this.lookup(event)
+      }
+	  
+      items = jQuery.extend(true, new Array(), this.source);
+
+      items = this.sorter(items)
+
+      if (!items.length) {
+        return this.shown ? this.hide() : this
+      }
+
+      return this.render(items.slice(0, this.options.items)).show()
+    }
+
   , matcher: function (item) {
       return ~item.toLowerCase().indexOf(this.query.toLowerCase())
     }
@@ -154,6 +176,7 @@
         .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
+        .on('focus',    $.proxy(this.focus, this))
 
       if ($.browser.webkit || $.browser.msie) {
         this.$element.on('keydown', $.proxy(this.keypress, this))
@@ -219,6 +242,16 @@
       setTimeout(function () { that.hide() }, 150)
     }
 
+  , focus: function (e) {
+      var that = this
+      e.stopPropagation()
+      e.preventDefault()
+	  if(that.options.focusshow)
+	  {
+        that.showmenu()
+	  }
+    }
+
   , click: function (e) {
       e.stopPropagation()
       e.preventDefault()
@@ -251,6 +284,7 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , focusshow: false
   }
 
   $.fn.typeahead.Constructor = Typeahead
