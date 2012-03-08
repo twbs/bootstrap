@@ -20,6 +20,11 @@
   .box-shadow(@shadow);
 }
 
+// Correctly sets the width of nested .containers inside static navbars
+.navbar-inner .container {
+  width: auto;
+}
+
 // Navbar button for toggling navbar items in responsive layouts
 .btn-navbar {
   display: none;
