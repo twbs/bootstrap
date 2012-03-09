@@ -8,7 +8,7 @@
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         $('#{{ id_for_label }}').parents('.input-wrapper').popover({
-          content: function() { return '{{ help_text|safe }}' },
+          content: function() { return '{{ help_text }}' },
           offset: 24,
           template: '<div class="arrow"></div><div class="inner"><div class="content"><p></p></div></div>',
           html: true
