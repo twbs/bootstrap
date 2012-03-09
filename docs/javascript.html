@@ -86,6 +86,7 @@
             <li><a href="#dropdowns">Dropdown</a></li>
             <li><a href="#scrollspy">Scrollspy</a></li>
             <li><a href="#tabs">Tab</a></li>
+            <li><a href="#navlist">Nav List</a></li>
             <li><a href="#tooltips">Tooltip</a></li>
             <li><a href="#popovers">Popover</a></li>
             <li><a href="#alerts">Alert</a></li>
@@ -689,6 +690,61 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
        </div>
       </div>
     </section>
+
+    <!-- Nav List
+    ================================================== -->
+      <section id="navlist">
+          <div class="page-header">
+              <h1>Togglable nav list <small>bootstrap-navlist.js</small></h1>
+          </div>
+          <div class="row">
+              <div class="span3 columns">
+                  <p>This plugin adds quick, dynamic nav list functionality for transitioning through local content.</p>
+                  <a href="assets/js/bootstrap-navlist.js" target="_blank" class="btn">Download file</a>
+              </div>
+              <div class="span9 columns">
+                  <h2>Example nav list</h2>
+                  <p>Click the navigation below to toggle between hidden panes, even via dropdown menus.</p>
+
+                  <div class="row">
+                      <div class="span3 columns">
+                          <div class="well" style="padding: 8px 0;">
+                          <ul id="nav-list" class="nav nav-list">
+                              <li class="nav-header">Header 1</li>
+                              <li class="active"><a href="#home1" data-toggle="nav-list">Home</a></li>
+                              <li><a href="#profile1" data-toggle="nav-list">Profile</a></li>
+                              <li class="nav-header">Header 2</li>
+                              <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                  <ul class="dropdown-menu">
+                                      <li><a href="#dropdown1n" data-toggle="nav-list">@fat</a></li>
+                                      <li><a href="#dropdown2n" data-toggle="nav-list">@mdo</a></li>
+                                  </ul>
+                              </li>
+                          </ul>
+                          </div>
+                      </div>
+                      <div class="span6 columns">
+                          <div id="myNavListContent" class="nav-list-content">
+                              <div class="nav-list-pane fade in active" id="home1">
+                                  <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                              </div>
+                              <div class="nav-list-pane fade" id="profile1">
+                                  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                              </div>
+                              <div class="nav-list-pane fade" id="dropdown1n">
+                                  <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                              </div>
+                              <div class="nav-list-pane fade" id="dropdown2n">
+                                  <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </section>
 
 
     <!-- Tooltips
@@ -1463,6 +1519,7 @@ $('.myCarousel').carousel({
     <script src="assets/js/bootstrap-dropdown.js"></script>
     <script src="assets/js/bootstrap-scrollspy.js"></script>
     <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-navlist.js"></script>
     <script src="assets/js/bootstrap-tooltip.js"></script>
     <script src="assets/js/bootstrap-popover.js"></script>
     <script src="assets/js/bootstrap-button.js"></script>
