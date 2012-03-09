@@ -1065,3 +1065,30 @@ input[type=submit].btn {
 iframe {
   border: none;
 }
+
+.footer {
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000;
+  overflow: visible;
+  text-align: center;
+}
+.footer a {
+  color: #404040;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.footer-inner {
+  #gradient > .vertical(#333, #222);
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+}
+
+.footer-inner a {
+  color: #bfbfbf;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
