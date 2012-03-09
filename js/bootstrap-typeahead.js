@@ -29,6 +29,8 @@
     this.highlighter = this.options.highlighter || this.highlighter
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
+    this.useJsonSource = this.options.useJsonSource
+    this.searchKey = this.options.searchKey
     this.shown = false
     this.listen()
   }
@@ -40,6 +42,7 @@
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
       this.$element.val(val)
+      
       return this.hide()
     }
 
@@ -76,7 +79,11 @@
       }
 
       items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
+        if (that.useJsonSource) {
+          if (that.matcher(item[that.searchKey])) return item
+        } else {
+          if (that.matcher(item)) return item        
+        }
       })
 
       items = this.sorter(items)
@@ -99,9 +106,15 @@
         , item
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
-        else caseInsensitive.push(item)
+        if (this.useJsonSource) {
+          if (!item[this.searchKey].toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+          else if (~item[this.searchKey].indexOf(this.query)) caseSensitive.push(item)
+          else caseInsensitive.push(item)
+        } else {
+          if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+          else if (~item.indexOf(this.query)) caseSensitive.push(item)
+          else caseInsensitive.push(item)
+        }
       }
 
       return beginswith.concat(caseSensitive, caseInsensitive)
@@ -117,16 +130,39 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
-        i.find('a').html(that.highlighter(item))
-        return i[0]
+        if (that.useJsonSource) {
+          i = $(that.replaceKeys(item)).attr('data-value', item[that.searchKey])
+          
+          i.find('a').contents().each(function() {
+            if (this.nodeType == 3) {
+              $(this).replaceWith(that.highlighter(item[that.searchKey]))
+            }
+          })
+
+          return i[0]
+        } else {
+          i = $(that.options.item).attr('data-value', item)
+          i.find('a').html(that.highlighter(item))
+          return i[0]
+        }
       })
 
       items.first().addClass('active')
       this.$menu.html(items)
       return this
     }
+  
+  , replaceKeys: function(item) {
+      var i = this.options.item
+      
+      for (var key in item) {
+        if (item.hasOwnProperty(key))
+          i = i.replace(new RegExp('#{' + key + '}', 'ig'), item[key])
+      }
 
+      return i
+    }
+  
   , next: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
         , next = active.next()
@@ -248,6 +284,8 @@
 
   $.fn.typeahead.defaults = {
     source: []
+  , useJsonSource: false
+  , searchKey: ''
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
