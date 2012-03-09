@@ -48,7 +48,8 @@
 
 // Active state
 .btn.active,
-.btn:active {
+.btn:active,
+input:checked + label.btn {
   background-image: none;
   @shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   .box-shadow(@shadow);
@@ -59,7 +60,8 @@
 
 // Disabled state
 .btn.disabled,
-.btn[disabled] {
+.btn[disabled],
+input[disabled] + label.btn {
   cursor: default;
   background-image: none;
   background-color: darken(@white, 10%);
@@ -120,6 +122,9 @@
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   color: @white;
 }
+.buttonExtraContrast() {
+  color: rgba(255,255,255,.75);
+}
 // Provide *some* extra contrast for those who can get it
 .btn-primary.active,
 .btn-warning.active,
@@ -127,7 +132,7 @@
 .btn-success.active,
 .btn-info.active,
 .btn-dark.active {
-  color: rgba(255,255,255,.75);
+  .buttonExtraContrast;
 }
 
 // Set the backgrounds
@@ -135,25 +140,49 @@
 .btn-primary {
   .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 20));
 }
+input:checked + label.btn-primary {
+  .buttonExtraContrast;
+  background-color: spin(@primaryButtonBackground, 20);
+}
 // Warning appears are orange
 .btn-warning {
   .buttonBackground(lighten(@orange, 15%), @orange);
+}
+input:checked + label.btn-warning {
+  .buttonExtraContrast;
+  background-color: @orange;
 }
 // Danger and error appear as red
 .btn-danger {
   .buttonBackground(#ee5f5b, #bd362f);
 }
+input:checked + label.btn-danger {
+  .buttonExtraContrast;
+  background-color: #bd362f;
+}
 // Success appears as green
 .btn-success {
   .buttonBackground(#62c462, #51a351);
+}
+input:checked + label.btn-success {
+  .buttonExtraContrast;
+  background-color: #51a351;
 }
 // Info appears as a neutral blue
 .btn-info {
   .buttonBackground(#5bc0de, #2f96b4);
 }
+input:checked + label.btn-info {
+  .buttonExtraContrast;
+  background-color: #2f96b4;
+}
 // Inverse appears as dark gray
 .btn-inverse {
   .buttonBackground(#454545, #262626);
+}
+input:checked + label.btn-inverse {
+  .buttonExtraContrast;
+  background-color: #262626;
 }
 
 
