@@ -82,6 +82,8 @@
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
+        , fromIndex
+        , toIndex
 
       if (!$next.length) return
 
@@ -91,8 +93,10 @@
 
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
+      fromIndex = $active.index();
+      toIndex = $next.index();
       if (!$.support.transition && this.$element.hasClass('slide')) {
-        this.$element.trigger('slide')
+        this.$element.trigger('slide', [fromIndex, toIndex])
         $active.removeClass('active')
         $next.addClass('active')
         this.sliding = false
@@ -102,7 +106,7 @@
         $next[0].offsetWidth // force reflow
         $active.addClass(direction)
         $next.addClass(direction)
-        this.$element.trigger('slide')
+        this.$element.trigger('slide', [fromIndex, toIndex])
         this.$element.one($.support.transition.end, function () {
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
