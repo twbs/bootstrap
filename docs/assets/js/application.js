@@ -92,6 +92,9 @@
     // carousel demo
     $('#myCarousel').carousel()
 
+    // combobox demo
+    $('.combobox').combobox()
+
     // javascript build logic
     var inputsComponent = $("#components.download input")
       , inputsPlugin = $("#plugins.download input")
