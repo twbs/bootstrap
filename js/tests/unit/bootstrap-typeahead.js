@@ -125,4 +125,135 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should allow multiple selections", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac, ac, ', 'input value was correctly set')
+        ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
+
+        typeahead.$menu.remove()
+      })
+
+      test("should allow user to specify delimiter in options", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , delimiter: ';'
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+          $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac; ac; ', 'input value was correctly set')
+      })
+
+      test("should not allow multiple selection if multiple selection mode is not enabled", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + ', a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac', 'input value was correctly set')
+      })
+
+      test("should insert a space after the delimiter when multiple selection is enabled", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , delimiter: ','
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac, ', 'delimiter was followed by a space')
+      })
+
+      test("should not append old matches when user clears input", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , delimiter: ','
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[1]).mouseover().click()
+
+        $input.val( 'ac, a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[0]).mouseover().click()
+
+        equals($input.val(), 'ac, aa, ', 'input value was correctly set')
+      })
+
+      test("should not have extra spaces when multiple items are selected", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+              , delimiter: ';'
+              , mode: 'multiple'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        $input.val( $input.val() + 'a')
+        typeahead.lookup()
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac; ac; ac; ', 'input value was correctly set')
+      })
 })
