@@ -319,7 +319,7 @@
     width: 714px;
   }
 }
-@media (max-width: 979px) {
+@media (max-width: 767px) {
   body {
     padding-top: 0;
   }
