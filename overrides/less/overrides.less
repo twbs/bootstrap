@@ -1,6 +1,7 @@
 /* Use this css to override any of Bootstrap's default code. 
 This allows you to keep the Bootstrap core up-to-date without losing your modifications. */
-
+@import "variables.less"; // Some theme colors need to be imported, after bootstrap to override, but before (in variables.less) 
+						  // to give user control over changing colors.
 @import "font-awesome.less"; //Using awesomefont instead of an image sprite.
 @import "responsive.less"; //Turning on responsive layout by default.
 

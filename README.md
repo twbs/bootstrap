@@ -16,6 +16,9 @@ Turns glyphicons into an icon font to use a variety of sizes and colors. Also ad
 Uses sample files and resources gathered and created from HTML5 Boilerplate for making great HTML5 pages. Bootstrap Extra includes a sample file ready to go for a new Bootstrap HTML5 Page.
 + http://html5boilerplate.com/
 
+**Skins**
++ Easily switch to different color schemes. (Available but still in infantile stage)
+
 How to upgrade bootstrap core (if you don't want to wait for me to do it)
 -------------------------------------------------------------------------
 
