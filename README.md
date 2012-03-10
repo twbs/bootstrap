@@ -19,11 +19,15 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 **Skins**
 + Easily switch to different color schemes. (Available but still in infantile stage)
 
-How to upgrade bootstrap core (if you don't want to wait for me to do it)
--------------------------------------------------------------------------
+Change Themes
+-------------
 
-Directions for upgrading bootstrap core
-===========
+1. Open /overrides/less/themes.less
+2. Uncomment the theme you want to use.
+3. Compile
+
+Upgrade bootstrap core (if you don't want to wait for me to do it)
+-------------------------------------------------------------------------
 
 Using bootstrap extras requires using the LESS framework in your development environment. 
 At this time, you can avoid having to do this by simply downloading the latest releases of Bootstrap extras from GitHub.
