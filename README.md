@@ -43,12 +43,16 @@ So it should look like this:
 @import "../overrides/less/variables.less"; // Use our own variables if we want.
 @import "mixins.less";
 
-5. In the same file add this to the very end:
+5. Comment out the sprites line like this
+
+//@import "sprites.less";
+
+6. In the same file add this to the very end:
 
 //Overrides
 @import "../overrides/less/overrides.less";
 
-6. Compile and you're set.
+7. Compile and you're set.
 
 Authors
 -------
