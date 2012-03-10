@@ -37,13 +37,13 @@ At this time, you can avoid having to do this by simply downloading the latest r
 
 Add this line: 
 
-@import "../overrides/less/variables.less"; // Use our own variables if we want.
+@import "../overrides/less/themes.less"; // Use our own variables if we want.
 
 So it should look like this:
 
 // Core variables and mixins
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
-@import "../overrides/less/variables.less"; // Use our own variables if we want.
+@import "../overrides/less/themes.less"; // Use our own variables if we want.
 @import "mixins.less";
 
 5. Comment out the sprites line like this
