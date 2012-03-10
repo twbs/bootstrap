@@ -311,7 +311,7 @@ h5,
 h6 {
   margin: 0;
   font-family: inherit;
-  font-weight: normal;
+  font-weight: bold;
   color: inherit;
   text-rendering: optimizelegibility;
 }
