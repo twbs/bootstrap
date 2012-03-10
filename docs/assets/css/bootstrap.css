@@ -324,9 +324,9 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-family: '';
-  font-weight: normal;
-  color: '';
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
   text-rendering: optimizelegibility;
 }
 h1 small,
@@ -1877,6 +1877,18 @@ table .span24 {
 .well blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
+}
+.well-large {
+  padding: 24px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.well-small {
+  padding: 9px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 .fade {
   -webkit-transition: opacity 0.15s linear;

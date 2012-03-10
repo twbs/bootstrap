@@ -58,34 +58,34 @@
       <p>{{_i}}Here's how the HTML looks for a standard button group built with anchor tag buttons:{{/i}}</p>
       <div class="">
         <div class="btn-group" style="margin: 9px 0;">
-          <a class="btn" href="#">{{_i}}Left{{/i}}</a>
-          <a class="btn" href="#">{{_i}}Middle{{/i}}</a>
-          <a class="btn" href="#">{{_i}}Right{{/i}}</a>
+          <button class="btn">{{_i}}Left{{/i}}</button>
+          <button class="btn">{{_i}}Middle{{/i}}</button>
+          <button class="btn">{{_i}}Right{{/i}}</button>
         </div>
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;2&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;3&lt;/a&gt;
+  &lt;button class="btn"&gt;1&lt;/button&gt;
+  &lt;button class="btn"&gt;2&lt;/button&gt;
+  &lt;button class="btn"&gt;3&lt;/button&gt;
 &lt;/div&gt;
 </pre>
       <h3>{{_i}}Toolbar example{{/i}}</h3>
       <p>{{_i}}Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.{{/i}}</p>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn" href="#">1</a>
-          <a class="btn" href="#">2</a>
-          <a class="btn" href="#">3</a>
-          <a class="btn" href="#">4</a>
+          <button class="btn">1</button>
+          <button class="btn">2</button>
+          <button class="btn">3</button>
+          <button class="btn">4</button>
         </div>
         <div class="btn-group">
-          <a class="btn" href="#">5</a>
-          <a class="btn" href="#">6</a>
-          <a class="btn" href="#">7</a>
+          <button class="btn">5</button>
+          <button class="btn">6</button>
+          <button class="btn">7</button>
         </div>
         <div class="btn-group">
-          <a class="btn" href="#">8</a>
+          <button class="btn">8</button>
         </div>
       </div>
 <pre class="prettyprint linenums">
@@ -122,7 +122,7 @@
       <p>{{_i}}Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.{{/i}}</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
-          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Action{{/i}} <span class="caret"></span></a>
+          <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -132,7 +132,7 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Action{{/i}} <span class="caret"></span></a>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -142,7 +142,7 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Danger{{/i}} <span class="caret"></span></a>
+          <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">{{_i}}Danger{{/i}} <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -154,7 +154,7 @@
       </div>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Warning{{/i}} <span class="caret"></span></a>
+          <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">{{_i}}Warning{{/i}} <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -164,7 +164,7 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Success{{/i}} <span class="caret"></span></a>
+          <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">{{_i}}Success{{/i}} <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -174,7 +174,7 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Info{{/i}} <span class="caret"></span></a>
+          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{_i}}Info{{/i}} <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -184,7 +184,7 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Inverse{{/i}} <span class="caret"></span></a>
+          <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">{{_i}}Inverse{{/i}} <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -224,8 +224,8 @@
       <p>{{_i}}Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.{{/i}}</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
-          <a class="btn" href="#">{{_i}}Action{{/i}}</a>
-          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn">{{_i}}Action{{/i}}</button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -235,8 +235,8 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-primary" href="#">{{_i}}Action{{/i}}</a>
-          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn btn-primary">{{_i}}Action{{/i}}</button>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -246,43 +246,8 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-danger" href="#">{{_i}}Danger{{/i}}</a>
-          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <a class="btn btn-warning" href="#">{{_i}}Warning{{/i}}</a>
-          <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <a class="btn btn-success" href="#">{{_i}}Success{{/i}}</a>
-          <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <a class="btn btn-info" href="#">{{_i}}Info{{/i}}</a>
-          <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn btn-danger">{{_i}}Danger{{/i}}</button>
+          <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -294,8 +259,43 @@
       </div>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn btn-inverse" href="#">{{_i}}Inverse{{/i}}</a>
-          <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn btn-warning">{{_i}}Warning{{/i}}</button>
+          <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-success">{{_i}}Success{{/i}}</button>
+          <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-info">{{_i}}Info{{/i}}</button>
+          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{_i}}Action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+            <li class="divider"></li>
+            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button class="btn btn-inverse">{{_i}}Inverse{{/i}}</button>
+          <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -309,8 +309,8 @@
       <p>{{_i}}Add <code>.pull-right</code> to the <code>.dropdown-menu</code> of any button dropdown for right aligned menus.{{/i}}</p>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn" href="#">{{_i}}Right{{/i}}</a>
-          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn">{{_i}}Right{{/i}}</button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -334,10 +334,10 @@
       <p>{{_i}}We expand on the normal button dropdowns to provide a second button action that operates as a separate dropdown trigger.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;a class="btn" href="#"&gt;{{_i}}Action{{/i}}&lt;/a&gt;
-  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+  &lt;button class="btn"&gt;{{_i}}Action{{/i}}&lt;/button&gt;
+  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
     &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/a&gt;
+  &lt;/button&gt;
   &lt;ul class="dropdown-menu"&gt;
     &lt;!-- {{_i}}dropdown menu links{{/i}} --&gt;
   &lt;/ul&gt;
@@ -347,8 +347,8 @@
       <p>{{_i}}Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>.caret</code> and reposition the menu itself to move from the bottom up instead of top down.{{/i}}</p>
       <div class="btn-toolbar" style="margin-top: 9px;">
         <div class="btn-group dropup">
-          <a class="btn" href="#">{{_i}}Dropup{{/i}}</a>
-          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn">{{_i}}Dropup{{/i}}</button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -358,8 +358,8 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group dropup">
-          <a class="btn primary" href="#">{{_i}}Right dropup{{/i}}</a>
-          <a class="btn primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn primary">{{_i}}Right dropup{{/i}}</button>
+          <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
@@ -371,10 +371,10 @@
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group dropup"&gt;
-  &lt;a class="btn" href="#"&gt;{{_i}}Dropup{{/i}}&lt;/a&gt;
-  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+  &lt;button class="btn"&gt;{{_i}}Dropup{{/i}}&lt;/button&gt;
+  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
     &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/a&gt;
+  &lt;/button&gt;
   &lt;ul class="dropdown-menu"&gt;
     &lt;!-- {{_i}}dropdown menu links{{/i}} --&gt;
   &lt;/ul&gt;
