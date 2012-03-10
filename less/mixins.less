@@ -283,7 +283,7 @@
 // Opacity
 .opacity(@opacity: 100) {
   opacity: @opacity / 100;
-   filter: e(%("alpha(opacity=%d)", @opacity));
+   filter: ~"alpha(opacity=@{opacity})";
 }
 
 
@@ -320,7 +320,7 @@
     background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
     background-image: linear-gradient(left, @startColor, @endColor); // Le standard
     background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@startColor, endColorstr=@endColor, GradientType=1); // IE9 and down
   }
   .vertical(@startColor: #555, @endColor: #333) {
     background-color: mix(@startColor, @endColor, 60%);
@@ -331,7 +331,7 @@
     background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
     background-image: linear-gradient(top, @startColor, @endColor); // The standard
     background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@startColor, endColorstr=@endColor, GradientType=0); // IE9 and down
   }
   .directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
     background-color: @endColor;
@@ -351,7 +351,7 @@
     background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@startColor, endColorstr=@endColor, GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
   }
   .radial(@innerColor: #555, @outerColor: #333)  {
     background-color: @outerColor;
@@ -374,7 +374,7 @@
 }
 // Reset filters for IE
 .reset-filter() {
-  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 
 
