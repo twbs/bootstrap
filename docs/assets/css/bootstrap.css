@@ -310,9 +310,9 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-family: '';
+  font-family: inherit;
   font-weight: normal;
-  color: '';
+  color: inherit;
   text-rendering: optimizelegibility;
 }
 h1 small,
