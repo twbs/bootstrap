@@ -127,23 +127,20 @@
     padding: 4px 9px;
     #font > .sans-serif(13px, normal, 1);
     color: @white;
-    color: rgba(255,255,255,.75);
-    background: #666;
-    background: rgba(255,255,255,.3);
-    border: 1px solid #111;
+    background-color: lighten(@navbarBackground, 25%);
+    border: 1px solid darken(@navbarBackground, 15%);
     @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15);
     .box-shadow(@shadow);
     .transition(none);
 
-    // Placeholder text gets special styles; can't be bundled together though for some reason
-    .placeholder(@grayLighter);
-
-    // Hover states
-    &:hover {
-      color: @white;
-      background-color: @grayLight;
-      background-color: rgba(255,255,255,.5);
+    // Placeholder text gets special styles; can't be a grouped selector
+    &:-moz-placeholder {
+      color: @navbarSearchPlaceholderColor;
     }
+    &::-webkit-input-placeholder {
+      color: @navbarSearchPlaceholderColor;
+    }
+
     // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
     &:focus,
     &.focused {
