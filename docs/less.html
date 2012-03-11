@@ -552,22 +552,17 @@
       <tr>
         <td><code>.container-fixed()</code></td>
         <td><em class="muted">none</em></td>
-        <td>Provide a fixed-width (set with <code>@siteWidth</code>) container for holding your content</td>
+        <td>Create a horizontally centered container for holding your content</td>
       </tr>
       <tr>
-        <td><code>.columns()</code></td>
-        <td><code>@columns: 1</code></td>
-        <td>Build a grid column that spans any number of columns (defaults to 1 column)</td>
+        <td><code>#grid > .core()</code></td>
+        <td><code>@gridColumnWidth, @gridGutterWidth</code></td>
+        <td>Generate a pixel grid system (container, row, and columns) with <em>n</em> columns and <em>x</em> pixel wide gutter</td>
       </tr>
       <tr>
-        <td><code>.offset()</code></td>
-        <td><code>@columns: 1</code></td>
-        <td>Offset a grid column with left margin that spans any number of columns</td>
-      </tr>
-      <tr>
-        <td><code>.gridColumn()</code></td>
-        <td><em class="muted">none</em></td>
-        <td>Make an element float like a grid column</td>
+        <td><code>#grid > .fluid()</code></td>
+        <td><code>@fluidGridColumnWidth, @fluidGridGutterWidth</code></td>
+        <td>Generate a precent grid system with <em>n</em> columns and <em>x</em> % wide gutter</td>
       </tr>
     </tbody>
   </table>
