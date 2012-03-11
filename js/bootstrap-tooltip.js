@@ -68,32 +68,42 @@
     }
 
   , enter: function ( e ) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type);
 
       if (!self.options.delay || !self.options.delay.show) {
-        self.show()
+        self.show();
+        clearTimeout(self.hideTimeout);
+        delete self.hideTimeout;
       } else {
-        self.hoverState = 'in'
-        setTimeout(function() {
-          if (self.hoverState == 'in') {
-            self.show()
-          }
-        }, self.options.delay.show)
+        if (typeof self.hideTimeout === 'undefined') {
+          self.showTimeout = setTimeout(function() {
+            self.show();
+            delete self.showTimeout;
+          }, self.options.delay.show)
+        } else {
+          clearTimeout(self.hideTimeout);
+          delete self.hideTimeout;
+        }
       }
     }
 
   , leave: function ( e ) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type);
 
       if (!self.options.delay || !self.options.delay.hide) {
-        self.hide()
+        self.hide();
+        clearTimeout(self.showTimeout);
+        delete self.showTimeout;
       } else {
-        self.hoverState = 'out'
-        setTimeout(function() {
-          if (self.hoverState == 'out') {
-            self.hide()
-          }
-        }, self.options.delay.hide)
+        if (typeof self.showTimeout === 'undefined') {
+          self.hideTimeout = setTimeout(function() {
+            self.hide();
+            delete self.hideTimeout;
+          }, self.options.delay.hide);
+        } else {
+          clearTimeout(self.showTimeout);
+          delete self.showTimeout;
+        }
       }
     }
 
