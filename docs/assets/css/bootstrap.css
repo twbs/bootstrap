@@ -1182,6 +1182,48 @@ table .span12 {
 .icon-white {
   background-image: url("../img/glyphicons-halflings-white.png");
 }
+.icon-red{
+	background-image:url("../img/glyphicons-halflings-red.png");
+}
+.icon-red:hover{
+	background-image:url("../img/glyphicons-halflings-red-light.png");
+}
+.icon-blue{
+	background-image:url("../img/glyphicons-halflings-blue.png");
+}
+.icon-blue:hover{
+	background-image:url("../img/glyphicons-halflings-blue-light.png");
+}
+.icon-yellow{
+	background-image:url("../img/glyphicons-halflings-yellow.png");
+}
+.icon-yellow:hover{
+	background-image:url("../img/glyphicons-halflings-yellow-light.png");
+}
+.icon-orange{
+	background-image:url("../img/glyphicons-halflings-orange.png");
+}
+.icon-orange:hover{
+	background-image:url("../img/glyphicons-halflings-orange-light.png");
+}
+.icon-green{
+	background-image:url("../img/glyphicons-halflings-green.png");
+}
+.icon-green:hover{
+	background-image:url("../img/glyphicons-halflings-green-light.png");
+}
+.icon-violet{
+	background-image:url("../img/glyphicons-halflings-violet.png");
+}
+.icon-violet:hover{
+	background-image:url("../img/glyphicons-halflings-violet-light.png");
+}
+.icon-magenta{
+	background-image:url("../img/glyphicons-halflings-magenta.png");
+}
+.icon-magenta:hover{
+	background-image:url("../img/glyphicons-halflings-magenta-light.png");
+}
 .icon-glass {
   background-position: 0      0;
 }
