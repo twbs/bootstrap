@@ -168,6 +168,16 @@
     width: auto;
     margin: 0;
   }
+  input,
+  textarea,
+  select,
+  .uneditable-input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {

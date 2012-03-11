@@ -188,6 +188,17 @@
     width: auto;
     margin: 0;
   }
+
+  // FORM FIELDS
+  // -----------
+  // Make them behave like divs
+  input,
+  textarea,
+  select,
+  .uneditable-input {
+    .box-sizing(border-box);
+    max-width: 100%;
+  }
 }
 
 
