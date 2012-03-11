@@ -40,7 +40,7 @@
 // Links
 // -------------------------
 @linkColor:             #08c;
-@linkColorHover:        #069;
+@linkColorHover:        darken(@linkColor, 15%);
 
 
 // Typography
@@ -67,7 +67,7 @@
 // -------------------------
 @btnBackground:                     @white;
 @btnBackgroundHighlight:            darken(@white, 10%);
-@btnBorder:                         #ccc;
+@btnBorder:                         darken(@white, 20%);
 
 @btnPrimaryBackground:              @linkColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
@@ -92,7 +92,6 @@
 // -------------------------
 @inputBackground:               @white;
 @inputBorder:                   #ccc;
-
 @inputDisabledBackground:       @grayLighter;
 
 
@@ -153,9 +152,9 @@
 
 // Hero unit
 // -------------------------
-@heroUnitBackground:              #312f2e;
-@heroUnitHeadingColor:            @white;
-@heroUnitLeadColor:               @white;
+@heroUnitBackground:              @grayLighter;
+@heroUnitHeadingColor:            inherit;
+@heroUnitLeadColor:               inherit;
 
 
 // Form states and alerts

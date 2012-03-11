@@ -124,7 +124,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #006699;
+  color: #005580;
   text-decoration: underline;
 }
 .row {
@@ -2601,8 +2601,8 @@ input[type="submit"].btn.btn-small {
 }
 .nav-tabs .dropdown-toggle:hover .caret,
 .nav-pills .dropdown-toggle:hover .caret {
-  border-top-color: #006699;
-  border-bottom-color: #006699;
+  border-top-color: #005580;
+  border-bottom-color: #005580;
 }
 .nav-tabs .active .dropdown-toggle .caret,
 .nav-pills .active .dropdown-toggle .caret {
@@ -3901,7 +3901,7 @@ a.thumbnail:hover {
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: #f5f5f5;
+  background-color: #eeeeee;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -3910,12 +3910,14 @@ a.thumbnail:hover {
   margin-bottom: 0;
   font-size: 60px;
   line-height: 1;
+  color: inherit;
   letter-spacing: -1px;
 }
 .hero-unit p {
   font-size: 18px;
   font-weight: 200;
   line-height: 27px;
+  color: inherit;
 }
 .pull-right {
   float: right;
