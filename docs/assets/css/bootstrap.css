@@ -982,7 +982,6 @@ select:focus:required:invalid:focus {
 }
 .input-prepend,
 .input-append {
-  display: inline-block;
   margin-bottom: 5px;
 }
 .input-prepend input,
@@ -1071,7 +1070,13 @@ select:focus:required:invalid:focus {
 .form-horizontal .help-inline,
 .form-search .uneditable-input,
 .form-inline .uneditable-input,
-.form-horizontal .uneditable-input {
+.form-horizontal .uneditable-input,
+.form-search .input-prepend,
+.form-inline .input-prepend,
+.form-horizontal .input-prepend,
+.form-search .input-append,
+.form-inline .input-append,
+.form-horizontal .input-append {
   display: inline-block;
   margin-bottom: 0;
 }
@@ -1081,11 +1086,7 @@ select:focus:required:invalid:focus {
   display: none;
 }
 .form-search label,
-.form-inline label,
-.form-search .input-append,
-.form-inline .input-append,
-.form-search .input-prepend,
-.form-inline .input-prepend {
+.form-inline label {
   display: inline-block;
 }
 .form-search .input-append,

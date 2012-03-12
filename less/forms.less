@@ -361,7 +361,6 @@ select:focus:required:invalid {
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
 .input-append {
-  display: inline-block;
   margin-bottom: 5px;
   input,
   select,
@@ -440,7 +439,9 @@ select:focus:required:invalid {
   textarea,
   select,
   .help-inline,
-  .uneditable-input {
+  .uneditable-input,
+  .input-prepend,
+  .input-append {
     display: inline-block;
     margin-bottom: 0;
   }
@@ -450,11 +451,7 @@ select:focus:required:invalid {
   }
 }
 .form-search label,
-.form-inline label,
-.form-search .input-append,
-.form-inline .input-append,
-.form-search .input-prepend,
-.form-inline .input-prepend {
+.form-inline label {
   display: inline-block;
 }
 // Remove margin for input-prepend/-append
