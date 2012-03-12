@@ -503,14 +503,27 @@
 
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-.makeRow() {
+.makeRow() when(isNumber(@gridColumnWidth)) {
   margin-left: @gridGutterWidth * -1;
   .clearfix();
 }
-.makeColumn(@columns: 1) {
+ .makeRow() when(@gridColumnWidth = auto){ 
+            margin-left: 0;
+}
+.makeColumn(@columns: 1) when(isNumber(@gridColumnWidth)) {
   float: left;
   margin-left: @gridGutterWidth;
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+}
+
+.makeColumn (@columns) when(@gridColumnWidth = auto){ 
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0;
+}
+.makeOffset (@columns) {
+    margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
 }
 // The Grid
 #grid {
