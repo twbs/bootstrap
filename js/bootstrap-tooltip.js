@@ -110,6 +110,8 @@
         $tip = this.tip()
         this.setContent()
 
+		this.$element.trigger('show');
+
         if (this.options.animation) {
           $tip.addClass('fade')
         }
@@ -150,6 +152,8 @@
           .addClass(placement)
           .addClass('in')
       }
+
+	  this.$element.trigger('shown');
     }
 
   , setContent: function () {
@@ -162,6 +166,7 @@
       var that = this
         , $tip = this.tip()
 
+      this.$element.trigger('hide')
       $tip.removeClass('in')
 
       function removeWithAnimation() {
@@ -178,6 +183,8 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.remove()
+
+      this.$element.trigger('hidden')
     }
 
   , fixTitle: function () {
