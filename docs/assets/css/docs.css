@@ -212,13 +212,19 @@ hr.soften {
 
 /* Quick links
 -------------------------------------------------- */
+.bs-links {
+  margin: 36px 0;
+}
 .quick-links {
   min-height: 30px;
+  margin: 0;
   padding: 5px 20px;
-  margin: 36px 0;
   list-style: none;
   text-align: center;
   overflow: hidden;
+}
+.quick-links:first-child {
+  min-height: 0;
 }
 .quick-links li {
   display: inline;
