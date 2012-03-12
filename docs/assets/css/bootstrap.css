@@ -1941,7 +1941,6 @@ table .span24 {
 }
 .collapse.in {
   height: auto;
-  overflow: visible;
 }
 .close {
   float: right;
