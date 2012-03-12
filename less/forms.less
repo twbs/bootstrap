@@ -362,7 +362,6 @@ select:focus:required:invalid {
 .input-prepend,
 .input-append {
   margin-bottom: 5px;
-  .clearfix(); // Clear the float to prevent wrapping
   input,
   select,
   .uneditable-input {
@@ -376,8 +375,7 @@ select:focus:required:invalid {
     border-left-color: #ccc;
   }
   .add-on {
-    float: left;
-    display: block;
+    display: inline-block;
     width: auto;
     min-width: 16px;
     height: @baseLineHeight;
@@ -387,6 +385,7 @@ select:focus:required:invalid {
     line-height: @baseLineHeight;
     text-align: center;
     text-shadow: 0 1px 0 @white;
+    vertical-align: middle;
     background-color: @grayLighter;
     border: 1px solid #ccc;
     .border-radius(3px 0 0 3px);
@@ -396,16 +395,10 @@ select:focus:required:invalid {
     border-color: @green;
   }
 }
-.input-prepend {
-  .add-on {
-    *margin-top: 1px; /* IE6-7 */
-  }
-}
 .input-append {
   input,
   select
   .uneditable-input {
-    float: left;
     .border-radius(3px 0 0 3px);
   }
   .uneditable-input {
@@ -416,15 +409,6 @@ select:focus:required:invalid {
     margin-right: 0;
     margin-left: -1px;
     .border-radius(0 3px 3px 0);
-  }
-  input:first-child {
-    // In IE7, having a hasLayout container (from clearfix's zoom:1) can make the first input
-    // inherit the sum of its ancestors' margins.
-    *margin-left: -160px;
-
-    &+.add-on {
-      *margin-left: -21px;
-    }
   }
 }
 
