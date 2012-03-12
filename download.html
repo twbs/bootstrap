@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Download · Twitter Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,9 +20,9 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -108,6 +108,7 @@
       <label class="checkbox"><input checked="checked" type="checkbox" value="type.less"> Headings, body, etc</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="code.less"> Code and pre</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="labels.less"> Labels</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="badges.less"> Badges</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="tables.less"> Tables</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="forms.less"> Forms</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> Buttons</label>
@@ -210,7 +211,7 @@
     </div><!-- /span -->
     <div class="span4">
       <h4 class="muted">Heads up!</h4>
-      <p class="muted">All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
+      <p class="muted">All checked plugins will be compiled into a single file, bootstrap.js. All plugins require the latest version of <a href="http://jquery.com/" target="_blank">jQuery</a> to be included.</p>
     </div><!-- /span -->
   </div><!-- /row -->
 </section>
@@ -226,6 +227,12 @@
   </div>
   <div class="row download-builder">
     <div class="span3">
+      <h3>Scaffolding</h3>
+      <label>@bodyBackground</label>
+      <input type="text" class="span3" placeholder="@white">
+      <label>@textColor</label>
+      <input type="text" class="span3" placeholder="@grayDark">
+
       <h3>Links</h3>
       <label>@linkColor</label>
       <input type="text" class="span3" placeholder="#08c">
@@ -246,6 +253,13 @@
       <input type="text" class="span3" placeholder="#c3325f">
       <label>@purple</label>
       <input type="text" class="span3" placeholder="#7a43b6">
+
+      <h3>Sprites</h3>
+      <label>@iconSpritePath</label>
+      <input type="text" class="span3" placeholder="'../img/glyphicons-halflings.png'">
+      <label>@iconWhiteSpritePath</label>
+      <input type="text" class="span3" placeholder="'../img/glyphicons-halflings-white.png'">
+
     </div><!-- /span -->
     <div class="span3">
       <h3>Grid system</h3>
@@ -260,6 +274,7 @@
       <input type="text" class="span3" placeholder="6.382978723%">
       <label>@fluidGridGutterWidth</label>
       <input type="text" class="span3" placeholder="2.127659574%">
+
       <h3>Typography</h3>
       <label>@baseFontSize</label>
       <input type="text" class="span3" placeholder="13px">
@@ -267,13 +282,32 @@
       <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
       <label>@baseLineHeight</label>
       <input type="text" class="span3" placeholder="18px">
+      <label>@altFontFamily</label>
+      <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif;">
+      <label>@headingsFontFamily</label>
+      <input type="text" class="span3" placeholder="inherit">
+      <label>@headingsFontWeight</label>
+      <input type="text" class="span3" placeholder="bold">
+      <label>@headingsColor</label>
+      <input type="text" class="span3" placeholder="inherit">
+      <label>@heroUnitBackground</label>
+      <input type="text" class="span3" placeholder="@grayLighter">
+      <label>@heroUnitHeadingColor</label>
+      <input type="text" class="span3" placeholder="inherit">
+      <label>@heroUnitLeadColor</label>
+      <input type="text" class="span3" placeholder="inherit">
     </div><!-- /span -->
     <div class="span3">
-      <h3>Forms</h3>
-      <label>@primaryButtonColor</label>
-      <input type="text" class="span3" placeholder="@blue">
-      <label>@placeholderText</label>
-      <input type="text" class="span3" placeholder="@grayLight">
+      <h3>Tables</h3>
+      <label>@tableBackground</label>
+      <input type="text" class="span3" placeholder="transparent">
+      <label>@tableBackgroundAccent</label>
+      <input type="text" class="span3" placeholder="#f9f9f9">
+      <label>@tableBackgroundHover</label>
+      <input type="text" class="span3" placeholder="#f5f5f5">
+      <label>@tableBorder</label>
+      <input type="text" class="span3" placeholder="#ddd">
+
       <h3>Navbar</h3>
       <label>@navbarHeight</label>
       <input type="text" class="span3" placeholder="40px">
@@ -287,8 +321,49 @@
       <input type="text" class="span3" placeholder="@grayLight">
       <label>@navbarLinkColorHover</label>
       <input type="text" class="span3" placeholder="@white">
+      <label>@navbarLinkColorActive</label>
+      <input type="text" class="span3" placeholder="@navbarLinkColorHover">
+      <label>@navbarLinkBackgroundHover</label>
+      <input type="text" class="span3" placeholder="transparent">
+      <label>@navbarLinkBackgroundActive</label>
+      <input type="text" class="span3" placeholder="@navbarBackground">
+      <label>@navbarSearchBackground</label>
+      <input type="text" class="span3" placeholder="lighten(@navbarBackground, 25%)">
+      <label>@navbarSearchBackgroundFocus</label>
+      <input type="text" class="span3" placeholder="@white">
+      <label>@navbarSearchBorder</label>
+      <input type="text" class="span3" placeholder="darken(@navbarSearchBackground, 30%)">
+      <label>@navbarSearchPlaceholderColor</label>
+      <input type="text" class="span3" placeholder="#ccc">
+
+      <h3>Dropdowns</h3>
+      <label>@dropdownBackground</label>
+      <input type="text" class="span3" placeholder="@white">
+      <label>@dropdownBorder</label>
+      <input type="text" class="span3" placeholder="rgba(0,0,0,.2)">
+      <label>@dropdownLinkColor</label>
+      <input type="text" class="span3" placeholder="@grayDark">
+      <label>@dropdownLinkColorHover</label>
+      <input type="text" class="span3" placeholder="@white">
+      <label>@dropdownLinkBackgroundHover</label>
+      <input type="text" class="span3" placeholder="@linkColor">
     </div><!-- /span -->
     <div class="span3">
+      <h3>Forms</h3>
+      <label>@placeholderText</label>
+      <input type="text" class="span3" placeholder="@grayLight">
+      <label>@inputBackground</label>
+      <input type="text" class="span3" placeholder="@white">
+      <label>@inputBorder</label>
+      <input type="text" class="span3" placeholder="#ccc">
+      <label>@inputDisabledBackground</label>
+      <input type="text" class="span3" placeholder="@grayLighter">
+
+      <label>@btnPrimaryBackground</label>
+      <input type="text" class="span3" placeholder="@linkColor">
+      <label>@btnPrimaryBackgroundHighlight</label>
+      <input type="text" class="span3" placeholder="darken(@white, 10%);">
+
       <h3>Form states &amp; alerts</h3>
       <label>@warningText</label>
       <input type="text" class="span3" placeholder="#c09853">

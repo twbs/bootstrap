@@ -138,8 +138,8 @@
                 <p>{{_i}}One fine body…{{/i}}</p>
               </div>
               <div class="modal-footer">
-                <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
                 <a href="#" class="btn">{{_i}}Close{{/i}}</a>
+                <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
               </div>
             </div>
           </div> <!-- /well -->
@@ -161,10 +161,21 @@
 
               <h4>{{_i}}Tooltips in a modal{{/i}}</h4>
               <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
+
+              <hr>
+
+              <h4>{{_i}}Overflowing text to show optional scrollbar{{/i}}</h4>
+              <p>{{_i}}We set a fixed <code>max-height</code> on the <code>.modal-body</code>. Watch it overflow with all this extra lorem ipsum text we've included.{{/i}}</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-              <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
               <a href="#" class="btn" data-dismiss="modal" >{{_i}}Close{{/i}}</a>
+              <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
             </div>
           </div>
           <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">{{_i}}Launch demo modal{{/i}}</a>
@@ -189,7 +200,7 @@
                <td>{{_i}}backdrop{{/i}}</td>
                <td>{{_i}}boolean{{/i}}</td>
                <td>{{_i}}true{{/i}}</td>
-               <td>{{_i}}Includes a modal-backdrop element{{/i}}</td>
+               <td>{{_i}}Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.{{/i}}</td>
              </tr>
              <tr>
                <td>{{_i}}keyboard{{/i}}</td>
@@ -222,8 +233,8 @@
     &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/a&gt;
     &lt;a href="#" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -388,7 +399,7 @@ $('#myModal').on('hidden', function () {
           </div>
 
 <pre class="prettyprint linenums">
-&lt;ul class="nav pills"&gt;
+&lt;ul class="nav nav-pills"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
   &lt;li class="dropdown" id="menu1"&gt;
     &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
@@ -704,13 +715,13 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>$().tooltip({{_i}}options{{/i}})</h4>
           <p>{{_i}}Attaches a tooltip handler to an element collection.{{/i}}</p>
           <h4>.tooltip('show')</h4>
-          <p>{{_i}}Reveals an elements tooltip.{{/i}}</p>
+          <p>{{_i}}Reveals an element's tooltip.{{/i}}</p>
           <pre class="prettyprint linenums">$('#element').tooltip('show')</pre>
           <h4>.tooltip('hide')</h4>
-          <p>{{_i}}Hides an elements tooltip.{{/i}}</p>
+          <p>{{_i}}Hides an element's tooltip.{{/i}}</p>
           <pre class="prettyprint linenums">$('#element').tooltip('hide')</pre>
           <h4>.tooltip('toggle')</h4>
-          <p>{{_i}}Toggles an elements tooltip.{{/i}}</p>
+          <p>{{_i}}Toggles an element's tooltip.{{/i}}</p>
           <pre class="prettyprint linenums">$('#element').tooltip('toggle')</pre>
         </div>
       </div>
@@ -975,7 +986,7 @@ $('#my-alert').bind('closed', function () {
 </pre>
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().button('toggle')</h4>
-          <p>{{_i}}Toggles push state. Gives btn the look that it hass been activated.{{/i}}</p>
+          <p>{{_i}}Toggles push state. Gives the button the appearance that it has been activated.{{/i}}</p>
           <div class="alert alert-info">
             <strong>{{_i}}Heads up!{{/i}}</strong>
             {{_i}}You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.{{/i}}
@@ -1223,10 +1234,16 @@ $('#myCollapsible').on('hidden', function () {
                <td>5000</td>
                <td>{{_i}}The amount of time to delay between automatically cycling an item.{{/i}}</td>
              </tr>
+             <tr>
+               <td>{{_i}}pause{{/i}}</td>
+               <td>{{_i}}string{{/i}}</td>
+               <td>"hover"</td>
+               <td>{{_i}}Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.{{/i}}</td>
+             </tr>
             </tbody>
           </table>
           <h3>{{_i}}Markup{{/i}}</h3>
-          <p>{{_i}}Data attributes are integral to the carousel plugin. Check out the example code below for the various markup types.{{/i}}</p>
+          <p>{{_i}}Data attributes are used for the previous and next conrols. Check out the example markup below.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div id="myCarousel" class="carousel"&gt;
   &lt;!-- {{_i}}Carousel items{{/i}} --&gt;
@@ -1244,7 +1261,7 @@ $('#myCollapsible').on('hidden', function () {
           <h4>.carousel({{_i}}options{{/i}})</h4>
           <p>{{_i}}Initializes the carousel with an optional options <code>object</code> and starts cycling through items.{{/i}}</p>
 <pre class="prettyprint linenums">
-$('.myCarousel').carousel({
+$('.carousel').carousel({
   interval: 2000
 })
 </pre>
@@ -1259,7 +1276,7 @@ $('.myCarousel').carousel({
           <h4>.carousel('next')</h4>
           <p>{{_i}}Cycles to the next item.{{/i}}</p>
           <h3>{{_i}}Events{{/i}}</h3>
-          <p>{{_i}}Bootstrap's modal class exposes a few events for hooking into modal functionality.{{/i}}</p>
+          <p>{{_i}}Bootstrap's carousel class exposes two events for hooking into carousel functionality.{{/i}}</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>

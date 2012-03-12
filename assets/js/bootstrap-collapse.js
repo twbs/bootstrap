@@ -74,7 +74,9 @@
         [dimension](size || 'auto')
         [0].offsetWidth
 
-      this.$element.addClass('collapse')
+      this.$element[size ? 'addClass' : 'removeClass']('collapse')
+
+      return this
     }
 
   , transition: function ( method, startEvent, completeEvent ) {
