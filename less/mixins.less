@@ -516,13 +516,13 @@
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
 
-.makeColumn (@columns) when(@gridColumnWidth = auto){ 
+.makeColumn (@columns: 1) when(@gridColumnWidth = auto){ 
     float: none;
     display: block;
     width: auto;
     margin: 0;
 }
-.makeOffset (@columns) {
+.makeOffset (@columns: 1) {
     margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
 }
 // The Grid
