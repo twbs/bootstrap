@@ -387,6 +387,9 @@ select:focus:required:invalid {
     vertical-align: middle;
     background-color: @grayLighter;
     border: 1px solid #ccc;
+  }
+  .add-on,
+  .btn {
     .border-radius(3px 0 0 3px);
   }
   .active {
@@ -395,7 +398,8 @@ select:focus:required:invalid {
   }
 }
 .input-prepend {
-  .add-on {
+  .add-on,
+  .btn {
     margin-right: -1px;
   }
 }
@@ -409,7 +413,8 @@ select:focus:required:invalid {
     border-left-color: #eee;
     border-right-color: #ccc;
   }
-  .add-on {
+  .add-on,
+  .btn {
     margin-left: -1px;
     .border-radius(0 3px 3px 0);
   }
@@ -421,11 +426,13 @@ select:focus:required:invalid {
   .uneditable-input {
     .border-radius(0);
   }
-  .add-on:first-child {
+  .add-on:first-child,
+  .btn:first-child {
     margin-right: -1px;
     .border-radius(3px 0 0 3px);
   }
-  .add-on:last-child {
+  .add-on:last-child,
+  .btn:last-child {
     margin-left: -1px;
     .border-radius(0 3px 3px 0);
   }

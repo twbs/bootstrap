@@ -1021,6 +1021,11 @@ select:focus:required:invalid:focus {
   vertical-align: middle;
   background-color: #eeeeee;
   border: 1px solid #ccc;
+}
+.input-prepend .add-on,
+.input-append .add-on,
+.input-prepend .btn,
+.input-append .btn {
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
@@ -1030,7 +1035,8 @@ select:focus:required:invalid:focus {
   background-color: #a9dba9;
   border-color: #46a546;
 }
-.input-prepend .add-on {
+.input-prepend .add-on,
+.input-prepend .btn {
   margin-right: -1px;
 }
 .input-append input,
@@ -1043,7 +1049,8 @@ select:focus:required:invalid:focus {
   border-left-color: #eee;
   border-right-color: #ccc;
 }
-.input-append .add-on {
+.input-append .add-on,
+.input-append .btn {
   margin-left: -1px;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -1056,13 +1063,15 @@ select:focus:required:invalid:focus {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.input-prepend.input-append .add-on:first-child {
+.input-prepend.input-append .add-on:first-child,
+.input-prepend.input-append .btn:first-child {
   margin-right: -1px;
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
 }
-.input-prepend.input-append .add-on:last-child {
+.input-prepend.input-append .add-on:last-child,
+.input-prepend.input-append .btn:last-child {
   margin-left: -1px;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
