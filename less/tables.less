@@ -25,14 +25,15 @@ table {
     padding: 8px;
     line-height: @baseLineHeight;
     text-align: left;
+    vertical-align: top;
     border-top: 1px solid #ddd;
   }
   th {
     font-weight: bold;
-    vertical-align: bottom;
   }
-  td {
-    vertical-align: top;
+  // Bottom align for column headings
+  thead th {
+    vertical-align: bottom;
   }
   // Remove top border from thead by default
   thead:first-child tr th,
@@ -112,6 +113,16 @@ table {
   }
 }
 
+
+// HOVER EFFECT
+// ------------
+// Placed here since it has to come after the potential zebra striping
+.table {
+  tbody tr:hover td,
+  tbody tr:hover th {
+    background-color: #f5f5f5;
+  }
+}
 
 
 // TABLE CELL SIZING

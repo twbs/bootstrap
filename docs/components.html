@@ -7,16 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
@@ -98,6 +98,7 @@
         </ul>
       </li>
       <li><a href="#labels">Labels</a></li>
+      <li><a href="#typography">Typography</a></li>
       <li><a href="#thumbnails">Thumbnails</a></li>
       <li><a href="#alerts">Alerts</a></li>
       <li><a href="#progress">Progress bars</a></li>
@@ -118,14 +119,34 @@
     <div class="span4">
       <h3>Button groups</h3>
       <p>Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.</p>
-      <p>You can also combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex projects.</p>
-      <div class="btn-toolbar" style="margin-top: 18px;">
-        <div class="btn-group">
+      <h3>Best practices</h3>
+      <p>We recommend the following guidelines for using button groups and toolbars:</p>
+      <ul>
+        <li>Always use the same element in a single button group, <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>.</li>
+        <li>Don't mix buttons of different colors in the same button group.</li>
+        <li>Use icons in addition to or instead of text, but be sure include alt and title text where appropriate.</li>
+      </ul>
+      <p><span class="label label-info">Related</span> Button groups with dropdowns (see below) should be called out separately and always include a dropdown caret to indicate intended behavior.</p>
+    </div>
+    <div class="span4">
+      <h3>Default example</h3>
+      <p>Here's how the HTML looks for a standard button group built with anchor tag buttons:</p>
+      <div class="">
+        <div class="btn-group" style="margin: 9px 0;">
           <a class="btn" href="#">Left</a>
           <a class="btn" href="#">Middle</a>
           <a class="btn" href="#">Right</a>
         </div>
       </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
+  &lt;a class="btn" href="#"&gt;2&lt;/a&gt;
+  &lt;a class="btn" href="#"&gt;3&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+      <h3>Toolbar example</h3>
+      <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
       <div class="btn-toolbar">
         <div class="btn-group">
           <a class="btn" href="#">1</a>
@@ -142,18 +163,6 @@
           <a class="btn" href="#">8</a>
         </div>
       </div>
-    </div>
-    <div class="span4">
-      <h3>Example markup</h3>
-      <p>Here's how the HTML looks for a standard button group built with anchor tag buttons:</p>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group"&gt;
-  &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;2&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;3&lt;/a&gt;
-&lt;/div&gt;
-</pre>
-      <p>And with a toolbar for multiple groups:</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-toolbar"&gt;
   &lt;div class="btn-group"&gt;
@@ -239,7 +248,9 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </div><!-- /btn-group -->
-      </div>
+      </div><!-- /btn-toolbar -->
+      <hr>
+      <p><span class="label label-info">Heads up!</span> Button dropdowns require the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a> to function.</p>
     </div>
     <div class="span8">
       <h3>Example markup</h3>
@@ -354,9 +365,10 @@
     <div class="span4">
       <h3>Powerful base class</h3>
       <p>All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.</p>
-      <h3>Why tabs and pills</h3>
-      <p>Tabs and pills in Bootstrap are built on a <code>&lt;ul&gt;</code> with the same core HTML, a list of links. Swap between tabs or pills with only a class.</p>
-      <p>Both options are great for sub-sections of content or navigating between pages of related content.</p>
+      <h3>When to use</h3>
+      <p>Tabs and pills are great for sections of content or navigating between pages of related content.</p>
+      <h3>Component alignment</h3>
+      <p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
     </div>
     <div class="span4">
       <h3>Basic tabs</h3>
@@ -762,7 +774,9 @@
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
+                <li class="nav-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
           </ul>
@@ -801,12 +815,14 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-      <p>To make the navbar fixed to the top of the viewport, add <code>.navbar-fixed-top</code> to the outermost div, <code>.navbar</code>. In your CSS, you will also need to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>&lt;body&gt;</code>.</p>
+      <h3>Fixed navbar</h3>
+      <p>To make the navbar fixed to the top of the viewport, add <code>.navbar-fixed-top</code> to the outermost div, <code>.navbar</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
+      <p>In your CSS, you will also need to account for the overlap it causes by adding 40px or more of padding to your <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
       <h3>Brand name</h3>
       <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 <pre class="prettyprint linenums">
@@ -827,14 +843,14 @@
 &lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
     &lt;div class="container"&gt;
-      
+
       &lt;!-- .btn-navbar is used as the toggle for collapsed navbar content --&gt;
       &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
         &lt;span class="icon-bar"&gt;&lt;/span&gt;
         &lt;span class="icon-bar"&gt;&lt;/span&gt;
         &lt;span class="icon-bar"&gt;&lt;/span&gt;
       &lt;/a&gt;
-      
+
       &lt;!-- Be sure to leave the brand out there if you want it shown --&gt;
       &lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
 
@@ -864,8 +880,18 @@
   &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
+      <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav"&gt;
+  ...
+  &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+      <h3>Component alignment</h3>
+      <p>To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
       <h3>Adding dropdowns</h3>
-      <p>Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html#dropdown">our javascript plugin</a>.</p>
+      <p>Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;
@@ -881,7 +907,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-      <p><a class="btn" href="./javascript.html#dropdown">Get the javascript &rarr;</a></p>
+      <p><a class="btn" href="./javascript.html#dropdowns">Get the javascript &rarr;</a></p>
     </div><!-- /.span -->
   </div><!-- /.row -->
 
@@ -1021,7 +1047,7 @@
   <div class="row">
     <div class="span4">
       <h3>About pager</h3>
-      <p>The pager component is a set of links for simple pagination implemenations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.</p>
+      <p>The pager component is a set of links for simple pagination implementations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.</p>
     </div>
     <div class="span4">
       <h3>Default example</h3>
@@ -1091,7 +1117,7 @@
           <span class="label label-success">Success</span>
         </td>
         <td>
-          <code>&lt;span class="label label-success"&gt;New&lt;/span&gt;</code>
+          <code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code>
         </td>
       </tr>
       <tr>
@@ -1120,6 +1146,55 @@
       </tr>
     </tbody>
   </table>
+</section>
+
+
+
+<!-- Typographic components
+================================================== -->
+<section id="typography">
+  <div class="page-header">
+    <h1>Typographic components <small>Page header and hero unit for segmenting content</small></h1>
+  </div>
+  <h2>Hero unit</h2>
+  <div class="row">
+    <div class="span4">
+      <p>Bootstrap provides a lightweight, flexible component called a hero unit to showcase content on your site. It works well on marketing and content-heavy sites.</p>
+      <h3>Markup</h3>
+      <p>Wrap your content in a <code>div</code> like so:</p>
+<pre class="prettyprint linenums">
+&lt;div class="hero-unit"&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Tagline&lt;/p&gt;
+  &lt;p&gt;
+    &lt;a class="btn btn-primary btn-large"&gt;
+      Learn more
+    &lt;/a&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+    <div class="span8">
+      <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p><a class="btn btn-primary btn-large">Learn more</a></p>
+      </div>
+    </div>
+  </div><!-- /row -->
+  <h2>Page header</h2>
+  <div class="row">
+    <div class="span4">
+      <p>A simple shell for an <code>h1</code> to appropratiely space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
+    </div>
+    <div class="span8">
+<pre class="prettyprint linenums">
+&lt;div class="page-haeder"&gt;
+  &lt;h1&gt;Example page header&lt;/h1&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
 </section>
 
 
@@ -1168,7 +1243,7 @@
             <div class="caption">
               <h5>Thumbnail label</h5>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a href="#" class="btn primary">Action</a> <a href="#" class="btn">Action</a></p>
+              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
             </div>
           </div>
         </li>
@@ -1178,7 +1253,7 @@
             <div class="caption">
               <h5>Thumbnail label</h5>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a href="#" class="btn primary">Action</a> <a href="#" class="btn">Action</a></p>
+              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
             </div>
           </div>
         </li>
@@ -1282,7 +1357,7 @@
   <div class="row">
     <div class="span4">
       <h3>Rewritten base class</h3>
-      <p>With Bootstrap 2, we've simplified the base class: <code>.alert</code> instead of <code>.alert-message</code>. We've also reduced the minimum required markup&mdash;no <code>&lt;p&gt;</code> is required by default, just the outter <code>&lt;div&gt;</code>.</p>
+      <p>With Bootstrap 2, we've simplified the base class: <code>.alert</code> instead of <code>.alert-message</code>. We've also reduced the minimum required markup&mdash;no <code>&lt;p&gt;</code> is required by default, just the outer <code>&lt;div&gt;</code>.</p>
       <h3>Single alert message</h3>
       <p>For a more durable component with less code, we've removed the differentiating look for block alerts, messages that come with more padding and typically more text. The class also has changed to <code>.alert-block</code>.</p>
       <hr>
@@ -1294,24 +1369,24 @@
       <h3>Example alerts</h3>
       <p>Wrap your message and an optional close icon in a div with simple class.</p>
       <div class="alert">
-        <a class="close">&times;</a>
+        <a class="close" data-dismiss="alert">&times;</a>
         <strong>Warning!</strong> Best check yo self, you're not looking too good.
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert"&gt;
-  &lt;a class="close"&gt;&times;&lt;/a&gt;
+  &lt;a class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;
   &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you're not looking too good.
 &lt;/div&gt;
 </pre>
       <p>Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.</p>
       <div class="alert alert-block">
-        <a class="close">&times;</a>
+        <a class="close" data-dismiss="alert">&times;</a>
         <h4 class="alert-heading">Warning!</h4>
         <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
-  &lt;a class="close"&gt;&times;&lt;/a&gt;
+  &lt;a class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;
   &lt;h4 class="alert-heading"&gt;Warning!&lt;/h4&gt;
   Best check yo self, you're not...
 &lt;/div&gt;
@@ -1324,7 +1399,7 @@
     <div class="span4">
       <h3>Error or danger</h3>
       <div class="alert alert-error">
-        <a class="close">&times;</a>
+        <a class="close" data-dismiss="alert">&times;</a>
         <strong>Oh snap!</strong> Change a few things up and try submitting again.
       </div>
 <pre class="prettyprint linenums">
@@ -1336,7 +1411,7 @@
     <div class="span4">
       <h3>Success</h3>
       <div class="alert alert-success">
-        <a class="close">&times;</a>
+        <a class="close" data-dismiss="alert">&times;</a>
         <strong>Well done!</strong> You successfully read this important alert message.
       </div>
 <pre class="prettyprint linenums">
@@ -1348,7 +1423,7 @@
     <div class="span4">
       <h3>Information</h3>
       <div class="alert alert-info">
-        <a class="close">&times;</a>
+        <a class="close" data-dismiss="alert">&times;</a>
         <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
       </div>
 <pre class="prettyprint linenums">
