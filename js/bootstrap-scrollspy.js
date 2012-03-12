@@ -47,7 +47,7 @@
           .find(this.selector)
           .map(function () {
             var href = $(this).attr('href')
-            return /^#\w/.test(href) && $(href).length ? href : null
+            return /^#\w/.test(href) && $(href).length && !($(this).attr('data-toggle') == 'modal') ? href : null
           })
 
         this.offsets = $.map(this.targets, function (id) {
