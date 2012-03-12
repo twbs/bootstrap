@@ -2730,6 +2730,8 @@ input[type="submit"].btn.btn-small {
   *border-left-color: #ffffff;
 }
 .navbar {
+  *position: relative;
+  *z-index: 2;
   overflow: visible;
   margin-bottom: 18px;
 }
