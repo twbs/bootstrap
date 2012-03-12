@@ -982,6 +982,7 @@ select:focus:required:invalid:focus {
 }
 .input-prepend,
 .input-append {
+  display: inline-block;
   margin-bottom: 5px;
 }
 .input-prepend input,
@@ -1087,11 +1088,11 @@ select:focus:required:invalid:focus {
 .form-inline .input-prepend {
   display: inline-block;
 }
-.form-search .input-append .add-on,
-.form-search .input-prepend .add-on,
-.form-inline .input-append .add-on,
-.form-inline .input-prepend .add-on {
-  vertical-align: middle;
+.form-search .input-append,
+.form-inline .input-append,
+.form-search .input-prepend,
+.form-inline .input-prepend {
+  margin-bottom: 0;
 }
 .form-search .radio,
 .form-search .checkbox,
