@@ -1174,8 +1174,10 @@ table {
 .table thead th {
   vertical-align: bottom;
 }
-.table thead:first-child tr th,
-.table thead:first-child tr td {
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
   border-top: 0;
 }
 .table tbody + tbody {
@@ -1197,12 +1199,6 @@ table {
 .table-bordered th,
 .table-bordered td {
   border-left: 1px solid #dddddd;
-}
-.table-bordered thead:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child th,
-.table-bordered tbody:first-child tr:first-child td {
-  border-top: 0;
-  border-bottom: 1px solid #dddddd;
 }
 .table-bordered thead:first-child tr:first-child th:first-child,
 .table-bordered tbody:first-child tr:first-child td:first-child {
