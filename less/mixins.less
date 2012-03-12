@@ -450,37 +450,37 @@
 // -------------------------
 // For tipsies and popovers
 #popoverArrow {
-  .top(@arrowWidth: 5px) {
+  .top(@arrowWidth: 5px, @color: @black) {
     bottom: 0;
     left: 50%;
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
-    border-top: @arrowWidth solid @black;
+    border-top: @arrowWidth solid @color;
   }
-  .left(@arrowWidth: 5px) {
+  .left(@arrowWidth: 5px, @color: @black) {
     top: 50%;
     right: 0;
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
-    border-left: @arrowWidth solid @black;
+    border-left: @arrowWidth solid @color;
   }
-  .bottom(@arrowWidth: 5px) {
+  .bottom(@arrowWidth: 5px, @color: @black) {
     top: 0;
     left: 50%;
     margin-left: -@arrowWidth;
     border-left: @arrowWidth solid transparent;
     border-right: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid @black;
+    border-bottom: @arrowWidth solid @color;
   }
-  .right(@arrowWidth: 5px) {
+  .right(@arrowWidth: 5px, @color: @black) {
     top: 50%;
     left: 0;
     margin-top: -@arrowWidth;
     border-top: @arrowWidth solid transparent;
     border-bottom: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid @black;
+    border-right: @arrowWidth solid @color;
   }
 }
 
