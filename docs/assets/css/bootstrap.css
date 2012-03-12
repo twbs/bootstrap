@@ -117,6 +117,19 @@ textarea {
   text-indent: 100%;
   white-space: nowrap;
 }
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  /* Make inputs at least the height of their button counterpart */
+
+  /* Makes inputs behave like true block-level elements */
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
