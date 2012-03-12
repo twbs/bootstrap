@@ -76,34 +76,6 @@
     display: block;
     line-height: 18px;
   }
-  input[class*="span"],
-  select[class*="span"],
-  textarea[class*="span"],
-  .uneditable-input {
-    display: block;
-    width: 100%;
-    min-height: 28px;
-    /* Make inputs at least the height of their button counterpart */
-  
-    /* Makes inputs behave like true block-level elements */
-  
-    -webkit-box-sizing: border-box;
-    /* Older Webkit */
-  
-    -moz-box-sizing: border-box;
-    /* Older FF */
-  
-    -ms-box-sizing: border-box;
-    /* IE8 */
-  
-    box-sizing: border-box;
-    /* CSS3 spec*/
-  
-  }
-  .input-prepend input[class*="span"],
-  .input-append input[class*="span"] {
-    width: auto;
-  }
   input[type="checkbox"],
   input[type="radio"] {
     border: 1px solid #ccc;
@@ -171,19 +143,34 @@
   .thumbnails [class*="span"] {
     width: auto;
   }
-  /*
-    // FORM FIELDS
-    // -----------
-    // Make them behave like divs
-    input,
-    textarea,
-    select,
-    .uneditable-input {
-      .box-sizing(border-box);
-      max-width: 100%;
-      min-height: 20px;
-    }
-  */
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
+  .uneditable-input {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    /* Make inputs at least the height of their button counterpart */
+  
+    /* Makes inputs behave like true block-level elements */
+  
+    -webkit-box-sizing: border-box;
+    /* Older Webkit */
+  
+    -moz-box-sizing: border-box;
+    /* Older FF */
+  
+    -ms-box-sizing: border-box;
+    /* IE8 */
+  
+    box-sizing: border-box;
+    /* CSS3 spec*/
+  
+  }
+  .input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
+    width: auto;
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .row {

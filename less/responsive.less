@@ -80,26 +80,6 @@
     line-height: @baseLineHeight;
   }
 
-  // Make span* classes full width
-  input[class*="span"],
-  select[class*="span"],
-  textarea[class*="span"],
-  .uneditable-input {
-    display: block;
-    width: 100%;
-    min-height: 28px; /* Make inputs at least the height of their button counterpart */
-    /* Makes inputs behave like true block-level elements */
-    -webkit-box-sizing: border-box; /* Older Webkit */
-       -moz-box-sizing: border-box; /* Older FF */
-        -ms-box-sizing: border-box; /* IE8 */
-            box-sizing: border-box; /* CSS3 spec*/
-  }
-  // But don't let it screw up prepend/append inputs
-  .input-prepend input[class*="span"],
-  .input-append input[class*="span"] {
-    width: auto;
-  }
-
   // Update checkboxes for iOS
   input[type="checkbox"],
   input[type="radio"] {
@@ -195,19 +175,28 @@
     width: auto;
   }
 
-/*
   // FORM FIELDS
   // -----------
-  // Make them behave like divs
-  input,
-  textarea,
-  select,
+  // Make span* classes full width
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
   .uneditable-input {
-    .box-sizing(border-box);
-    max-width: 100%;
-    min-height: 20px;
+    display: block;
+    width: 100%;
+    min-height: 28px; /* Make inputs at least the height of their button counterpart */
+    /* Makes inputs behave like true block-level elements */
+    -webkit-box-sizing: border-box; /* Older Webkit */
+       -moz-box-sizing: border-box; /* Older FF */
+        -ms-box-sizing: border-box; /* IE8 */
+            box-sizing: border-box; /* CSS3 spec*/
   }
-*/
+  // But don't let it screw up prepend/append inputs
+  .input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
+    width: auto;
+  }
+
 }
 
 
