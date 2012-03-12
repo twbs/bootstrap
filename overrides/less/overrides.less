@@ -1,10 +1,30 @@
 /* Use this css to override any of Bootstrap's default code. 
 This allows you to keep the Bootstrap core up-to-date without losing your modifications. */
-@import "variables.less"; // Some theme colors need to be imported, after bootstrap to override, but before (in variables.less) 
-						  // to give user control over changing colors.
-@import "font-awesome.less"; //Using awesomefont instead of an image sprite.
+
 @import "responsive.less"; //Turning on responsive layout by default.
 
+//THEME
+//-----
+
+//Switch to a theme by uncommenting the @import lines.
+//A more user-friendly way to do this is coming :)
+
+//CERULEAN
+@import "../themes/cerulean/less/bootswatch.less";
+@import "../themes/cerulean/less/variables.less";
+
+//SLATE
+//@import "../themes/slate/less/bootswatch.less";
+//@import "../themes/slate/less/variables.less";
+
+//SPRUCE
+//@import "../themes/spruce/less/bootswatch.less";
+//@import "../themes/spruce/less/variables.less";
+
+//--------
+//END THEME
+
+@import "../../extras/fontawesome/font-awesome.less"; //Using awesomefont instead of an image sprite.
 
   /* Define css rules for different screen sizes here. */
   // Landscape phones and down
