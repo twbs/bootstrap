@@ -525,6 +525,17 @@
 .makeOffset (@columns: 1) {
     margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
 }
+
+ .makeContainer() when(isNumber(@gridColumnWidth)){
+	  .container-fixed();
+	  width: (@gridColumnWidth * @gridColumns) + (@gridGutterWidth * (@gridColumns - 1));
+	}
+
+	.makeContainer() when(@gridColumnWidth = auto){
+	   .container-fixed();
+	   width: auto;
+	   padding:0 20px;
+	}
 // The Grid
 #grid {
 
