@@ -990,6 +990,7 @@ select:focus:required:invalid:focus {
 .input-append select,
 .input-prepend .uneditable-input,
 .input-append .uneditable-input {
+  *margin-left: 0;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
@@ -1167,6 +1168,11 @@ legend + .control-group {
 }
 .form-horizontal .controls {
   margin-left: 160px;
+  /* Super jank IE7 fix to ensure the inputs in .input-append and input-prepend don't inherit the margin of the parent, in this case .controls */
+
+  *display: inline-block;
+  *margin-left: 0;
+  *padding-left: 20px;
 }
 .form-horizontal .help-block {
   margin-top: 9px;

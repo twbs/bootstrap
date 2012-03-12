@@ -365,6 +365,7 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
+    *margin-left: 0;
     .border-radius(0 3px 3px 0);
     &:focus {
       position: relative;
@@ -537,6 +538,10 @@ legend + .control-group {
   // Move over all input controls and content
   .controls {
     margin-left: 160px;
+    /* Super jank IE7 fix to ensure the inputs in .input-append and input-prepend don't inherit the margin of the parent, in this case .controls */
+    *display: inline-block;
+    *margin-left: 0;
+    *padding-left: 20px;
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
   .help-block {
