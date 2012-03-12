@@ -199,14 +199,22 @@
 
 @media (min-width: 768px) and (max-width: 979px) {
 
-  // Fixed grid
-  #grid > .core(42px, 20px);
+  //Default grid
+  @gridColumnWidth:         42px;
+  @gridGutterWidth:         20px;
 
   // Fluid grid
-  #grid > .fluid(5.801104972%, 2.762430939%);
+  @fluidGridColumnWidth:    5.801104972%;
+  @fluidGridGutterWidth:    2.762430939%;
+
+  // Fixed grid
+  #grid > .core(@gridColumnWidth, @gridGutterWidth);
+
+  // Fluid grid
+  #grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
 
   // Input grid
-  #grid > .input(42px, 20px);
+  #grid > .input(@gridColumnWidth, @gridGutterWidth);
 
 }
 
@@ -351,21 +359,30 @@
 
 @media (min-width: 1200px) {
 
-  // Fixed grid
-  #grid > .core(70px, 30px);
+  //Default grid
+  @gridColumnWidth:         70px;
+  @gridGutterWidth:         30px;
 
   // Fluid grid
-  #grid > .fluid(5.982905983%, 2.564102564%);
+  @fluidGridColumnWidth:    5.982905983%;
+  @fluidGridGutterWidth:    2.564102564%;
+
+  // Fixed grid
+  #grid > .core(@gridColumnWidth, @gridGutterWidth);
+
+  // Fluid grid
+  #grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
 
   // Input grid
-  #grid > .input(70px, 30px);
+  #grid > .input(@gridColumnWidth, @gridGutterWidth);
+
 
   // Thumbnails
   .thumbnails {
-    margin-left: -30px;
+    margin-left: -@gridGutterWidth;
   }
   .thumbnails > li {
-    margin-left: 30px;
+    margin-left: @gridGutterWidth;
   }
 
 }
