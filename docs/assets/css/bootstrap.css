@@ -3323,6 +3323,9 @@ input[type="submit"].btn.btn-small {
   margin-left: 5px;
   margin-bottom: 0;
 }
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
 .tooltip {
   position: absolute;
   z-index: 1020;
