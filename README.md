@@ -9,22 +9,27 @@ Extras
 -------
 
 **Font Awesome**
+
 Turns glyphicons into an icon font to use a variety of sizes and colors. Also adds a bunch of new icons.
 + http://fortawesome.github.com/Font-Awesome/#
 
 **HTML5 Boilerplate Goodies**
+
 Uses sample files and resources gathered and created from HTML5 Boilerplate for making great HTML5 pages. Bootstrap Extra includes a sample file ready to go for a new Bootstrap HTML5 Page.
 + http://html5boilerplate.com/
 
 **Skins**
+
 + Easily switch to different color schemes. (Available but still in infantile stage)
++ Support for Bootswatch themes (still in testing). Easily switch between predefined theme packages.
++ http://bootswatch.com/
 
 Change Themes
 -------------
 
-1. Open /overrides/less/themes.less
-2. Uncomment the theme you want to use.
-3. Compile
+1. Open /overrides/less/overrides.less
+2. Uncomment the @import lines of the theme you want to use.
+3. Compile.
 
 Upgrade bootstrap core (if you don't want to wait for me to do it)
 -------------------------------------------------------------------------
@@ -41,7 +46,7 @@ At this time, you can avoid having to do this by simply downloading the latest r
 
 Add this line: 
 
-@import "../overrides/less/themes.less"; // Use our own variables if we want.
+@import "../overrides/less/overrides.less"; // Use our own variables if we want.
 
 So it should look like this:
 
