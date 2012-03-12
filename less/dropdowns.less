@@ -20,16 +20,12 @@
   display: inline-block;
   width: 0;
   height: 0;
-  text-indent: -99999px;
-  // IE7 won't do the border trick if there's a text indent, but it doesn't
-  // do the content that text-indent is hiding, either, so we're ok.
-  *text-indent: 0;
   vertical-align: top;
   border-left:  4px solid transparent;
   border-right: 4px solid transparent;
   border-top:   4px solid @black;
   .opacity(30);
-  content: "\2193";
+  content: "";
 }
 
 // Place the caret
