@@ -512,11 +512,10 @@
   margin-left: @gridGutterWidth;
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
-
 // The Grid
 #grid {
 
-  .core (@gridColumnWidth, @gridGutterWidth) {
+  .core (@gridColumnWidth: @gridColumnWidth, @gridGutterWidth: @gridGutterWidth) {
 
     .spanX (@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
@@ -559,7 +558,7 @@
 
   }
 
-  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
+  .fluid (@fluidGridColumnWidth: @fluidGridColumnWidth, @fluidGridGutterWidth: @fluidGridGutterWidth) {
 
     .spanX (@index) when (@index > 0) {
       (~"> .span@{index}") { .span(@index); }
@@ -589,7 +588,7 @@
 
   }
 
-  .input(@gridColumnWidth, @gridGutterWidth) {
+  .input(@gridColumnWidth: @gridColumnWidth , @gridGutterWidth:  @gridGutterWidth) {
 
     .spanX (@index) when (@index > 0) {
       (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
