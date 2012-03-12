@@ -198,6 +198,7 @@
         case 13: // enter
         case 27: // escape
           e.preventDefault()
+          this.$element.focus()
           break
 
         case 38: // up arrow
