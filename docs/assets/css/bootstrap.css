@@ -112,6 +112,11 @@ textarea {
 .clearfix:after {
   clear: both;
 }
+.hide-text {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1930,6 +1935,10 @@ table .span24 {
 }
 .btn {
   display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
   padding: 4px 10px 4px;
   margin-bottom: 0;
   font-size: 13px;

@@ -18,6 +18,11 @@
 .clearfix:after {
   clear: both;
 }
+.hide-text {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
 .hidden {
   display: none;
   visibility: hidden;
