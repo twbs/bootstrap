@@ -1013,7 +1013,6 @@ select:focus:required:invalid:focus {
   width: auto;
   min-width: 16px;
   height: 18px;
-  margin-right: -1px;
   padding: 4px 5px;
   font-weight: normal;
   line-height: 18px;
@@ -1031,6 +1030,9 @@ select:focus:required:invalid:focus {
   background-color: #a9dba9;
   border-color: #46a546;
 }
+.input-prepend .add-on {
+  margin-right: -1px;
+}
 .input-append input,
 .input-append select .uneditable-input {
   -webkit-border-radius: 3px 0 0 3px;
@@ -1042,7 +1044,25 @@ select:focus:required:invalid:focus {
   border-right-color: #ccc;
 }
 .input-append .add-on {
-  margin-right: 0;
+  margin-left: -1px;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+.input-prepend.input-append input,
+.input-prepend.input-append select,
+.input-prepend.input-append .uneditable-input {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.input-prepend.input-append .add-on:first-child {
+  margin-right: -1px;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+.input-prepend.input-append .add-on:last-child {
   margin-left: -1px;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;

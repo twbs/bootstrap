@@ -379,7 +379,6 @@ select:focus:required:invalid {
     width: auto;
     min-width: 16px;
     height: @baseLineHeight;
-    margin-right: -1px;
     padding: 4px 5px;
     font-weight: normal;
     line-height: @baseLineHeight;
@@ -395,6 +394,11 @@ select:focus:required:invalid {
     border-color: @green;
   }
 }
+.input-prepend {
+  .add-on {
+    margin-right: -1px;
+  }
+}
 .input-append {
   input,
   select
@@ -406,7 +410,22 @@ select:focus:required:invalid {
     border-right-color: #ccc;
   }
   .add-on {
-    margin-right: 0;
+    margin-left: -1px;
+    .border-radius(0 3px 3px 0);
+  }
+}
+// Remove all border-radius for inputs with both prepend and append
+.input-prepend.input-append {
+  input,
+  select,
+  .uneditable-input {
+    .border-radius(0);
+  }
+  .add-on:first-child {
+    margin-right: -1px;
+    .border-radius(3px 0 0 3px);
+  }
+  .add-on:last-child {
     margin-left: -1px;
     .border-radius(0 3px 3px 0);
   }
