@@ -1844,6 +1844,7 @@ table .span24 {
   padding: 3px 15px;
   clear: both;
   font-weight: normal;
+  text-align: left;
   line-height: 18px;
   color: #333333;
   white-space: nowrap;
