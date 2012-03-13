@@ -8,28 +8,24 @@ Last updated with Bootstrap v. 2.02
 The Extras
 ==========
 
-**Font Awesome**
+**<a href="http://fortawesome.github.com/Font-Awesome/#">Font Awesome</a>**
 
 Turns glyphicons into an icon font to use a variety of sizes and colors. Also adds a bunch of new icons.
 
-+ http://fortawesome.github.com/Font-Awesome/#
-
-**HTML5 Boilerplate Goodies**
+**<a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> Goodies**
 
 Uses sample files and resources gathered and created from HTML5 Boilerplate for making great HTML5 pages. Bootstrap Extra includes a sample file ready to go for a new Bootstrap HTML5 Page.
+
 + Normalized, jQueryized, Doctypized html starter files.
 + Modernizr js loaded and ready to go in starter html files.
 + Ready for Google Analytics
 + Optional Google Chrome Frame prompt for users of older browsers
 + More information at <a href="http://html5boilerplate.com/">H5BP Homepage</a>
 
-+ http://html5boilerplate.com/
-
 **Themes**
 
 + Easily switch to different color schemes.
-+ Support for Bootswatch themes. Easily switch between predefined theme packages.
-+ http://bootswatch.com/
++ Support for <a href="http://bootswatch.com/">Bootswatch</a> themes. Easily switch between predefined theme packages.
 
 Change Themes
 -------------
@@ -44,7 +40,7 @@ Upgrade bootstrap core (if you don't want to wait for me to do it)
 Using bootstrap extras requires using the LESS framework in your development environment. 
 At this time, you can avoid having to do this by simply downloading the latest releases of Bootstrap extras from GitHub.
 
-1. Download complete bootstrap files from http://twitter.github.com/bootstrap
+1. <a href="http://twitter.github.com/bootstrap">Download complete bootstrap files</a>.
 2. Simply paste everything into the root of this directory (at the same level as index.html and 404.html)
 3. Edit /less/bootstrap.less
 4. After this line:<pre>
