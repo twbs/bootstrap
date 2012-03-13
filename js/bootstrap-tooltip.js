@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-tooltip.js v2.0.2
+ * bootstrap-tooltip.js v2.0.3
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
@@ -70,10 +70,11 @@
   , enter: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
+      self.hoverState = 'in'
+
       if (!self.options.delay || !self.options.delay.show) {
         self.show()
       } else {
-        self.hoverState = 'in'
         setTimeout(function() {
           if (self.hoverState == 'in') {
             self.show()
@@ -85,10 +86,11 @@
   , leave: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
+      self.hoverState = 'out'
+
       if (!self.options.delay || !self.options.delay.hide) {
         self.hide()
       } else {
-        self.hoverState = 'out'
         setTimeout(function() {
           if (self.hoverState == 'out') {
             self.hide()
