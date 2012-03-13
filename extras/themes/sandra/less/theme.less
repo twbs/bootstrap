@@ -1,0 +1,218 @@
+// SANDRA
+// -----------------------------------------------------
+
+// TYPOGRAPHY
+// -----------------------------------------------------
+@import "variables.less";
+// Norican web font
+@import url(http://fonts.googleapis.com/css?family=Euphoria+Script);
+
+// COLORS
+
+  .green {color:@green;}
+  .yellow {color:@yellow;}
+  .lightorange {color:@orange;}
+  .darkorange {color:@darkorange;}
+  .magenta {color:@red;}
+  .blue {color:@blue;}
+  
+  .green-back {background-color:@green;}
+  .yellow-back {background-color:@yellow;}
+  .lightorange-back {background-color:@orange;}
+  .darkorange-back {background-color:@darkorange;}
+  .magenta-back {background-color:@red;}
+  .blue-back {background-color:@blue;}
+  
+//TEXT
+
+  h1,h2,h3,.brand {.headerFontStyle;}
+  strong {text-transform:uppercase;}
+
+// NAVBAR
+// -----------------------------------------------------
+
+// Added dividers to items
+.navbar .nav > li > a {
+	border-right: 1px solid #C03D14;
+	border-left: 1px solid #E6633A;
+	
+	&:hover {
+		background-color: @linkColorHover;
+	}
+}
+
+// Lightened color of active item
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover {
+  background-color: rgba(0,0,0,.2);
+}
+
+// Styled item divider
+.navbar .divider-vertical {
+	background-color: inherit;
+	border-right: 0px solid #CE4213;
+}
+
+.navbar .navbar-text > a {
+	color: @white;
+	text-decoration: underline;
+	
+	&:hover {
+		color: #ddd;
+	}
+}
+
+.navbar-search .search-query {
+	border: 1px solid darken(@navbarBackground, 15%);
+}
+
+.navbar .nav-collapse > .nav > li .dropdown-menu a {
+	color: @linkColor;
+	
+	&:hover {
+		color: @white;
+	}
+}
+
+.navbar .nav-collapse.collapse > .nav li > a {
+	color: @white;
+	border-left: 0px solid @orange;
+	border-right: 0px solid @orange;
+	
+	&:hover {
+		background-color: #2B7CAC;
+	}
+}
+
+.navbar .nav-collapse .navbar-form,
+.navbar .nav-collapse .navbar-search {
+	border-top: 0px solid @orange;
+	border-bottom: 0px solid @orange;
+	.box-shadow(none);
+}
+
+// BUTTONS
+// -----------------------------------------------------
+
+  //Buttons
+  
+  .btn-danger {
+    .buttonBackground(darken(@errorBackground,10%),darken(@errorBorder,15%));
+  }
+  .btn-success {
+    .buttonBackground(darken(@successBackground,30%), darken(@successBackground,40%));
+  }
+
+  
+  @primaryButtonBackground:	darken(spin(@green,-14),36%);
+  
+  //Warning
+  @warningText:             darken(spin(@warningBackground, -5), 50%);
+  @warningBackground:       @yellow;
+  @warningBorder:           darken(spin(@warningBackground, -10), 3%);
+  
+  //Light Blue
+  @infoText:                darken(spin(@infoBackground, -5), 50%);
+  @infoBackground:          @green;
+  @infoBorder:           	darken(spin(@infoBackground, -10), 3%);
+  
+  //Red
+  @errorText:               darken(spin(@errorBackground, -5), 50%);
+  @errorBackground:         lighten(@red,15%);
+  @errorBorder:             darken(spin(@errorBackground, -10), 3%);
+  
+  //Blue
+  @successText:             darken(spin(@successBackground, -5), 50%);
+  @successBackground:       @blue;
+  @successBorder:           darken(spin(@successBackground, -10), 3%);
+  
+  //Text
+  
+  @linkColor:             darken(@blue, 45%);
+  @linkColorHover:        darken(@linkColor, 15%);
+
+// ALERTS
+// -----------------------------------------------------
+
+// Removed text-shadow
+.alert {
+	//text-shadow: none !important;
+}
+
+.alert 					{background-color: lighten(@warningBackground,10%);}
+.alert-success			{background-color: lighten(@successBackground,10%);}
+.alert-error			{background-color: lighten(@errorBackground,10%);}
+.alert-info				{background-color: lighten(@infoBackground,10%);}
+
+.alert:hover 			{background-color: lighten(@warningBackground,5%);}
+.alert-success:hover	{background-color: lighten(@successBackground,5%);}
+.alert-error:hover		{background-color: lighten(@errorBackground,5%);}
+.alert-info:hover		{background-color: lighten(@infoBackground,5%);}
+
+//Divs
+
+.thumbnail {
+	@box-shadow(5px 5px 10px rgba(0, 0, 0, 0.075));
+}
+
+//Responsive Layout
+
+  /* Define css rules for different screen sizes here. */
+  // Landscape phones and down
+  @media (max-width: 480px) {
+    .search-query {
+      position: relative;
+      display: block;
+      margin: 0px auto;
+      width: 94%;
+    }
+    .navbar .brand {
+      margin: 0px auto;
+      float: none;
+      text-align: center;
+    }
+	header.fixed-nav {
+		margin-top: 127px;
+	}
+  }
+ 
+  // Landscape phone to portrait tablet
+  @media (max-width: 768px) {}
+ 
+  // Portrait tablet to landscape and desktop
+  @media (max-width: 980px) {
+    .navbar-fixed-top {
+    	position: fixed;
+    	margin-bottom: 18px;
+    }
+	.navbar-form, .navbar-search {
+		float: none;
+		padding: 9px 15px;
+		margin: 9px 0;
+		border-top: 0;
+		border-bottom: 0;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+	}
+    
+  }
+  
+  @media (min-width: 480px) and (max-width: 980px) {
+    .navbar-form, .navbar-search {
+		float: right;
+	}
+	.navbar .brand {
+		padding: 9px 15px;
+		margin: 9px 0;
+	}
+	header.fixed-nav {
+		margin-top: 90px;
+	}
+  }
+ 
+  // Large desktop
+  @media (min-width: 1200px) {}
+  
+  //------------------  
+  //END SANDRA
