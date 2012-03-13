@@ -45,17 +45,17 @@ At this time, you can avoid having to do this by simply downloading the latest r
 4. After this line:<pre>
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc</pre>
 Add this line: <pre>
-@import "../overrides/less/overrides.less"; // Use our own variables if we want.</pre>
-So it should look like this:
+@import "../extras/less/overrides.less"; // Use our own variables if we want.</pre>
+So it should look like this:<pre>
 // Core variables and mixins
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
-@import "../overrides/less/themes.less"; // Use our own variables if we want.
-@import "mixins.less";
-5. Comment out the sprites line like this
-//@import "sprites.less";
-6. In the same file add this to the very end:
+@import "../extras/less/themes.less"; // Use our own variables if we want.
+@import "mixins.less";</pre>
+5. Comment out the sprites line like this<pre>
+//@import "sprites.less";</pre>
+6. In the same file add this to the very end:<pre>
 //Overrides
-@import "../overrides/less/overrides.less";
+@import "../extras/less/overrides.less";</pre>
 7. Compile and you're set.
 
 Authors
