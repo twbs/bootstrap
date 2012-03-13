@@ -17,6 +17,11 @@ Turns glyphicons into an icon font to use a variety of sizes and colors. Also ad
 **HTML5 Boilerplate Goodies**
 
 Uses sample files and resources gathered and created from HTML5 Boilerplate for making great HTML5 pages. Bootstrap Extra includes a sample file ready to go for a new Bootstrap HTML5 Page.
++ Normalized, jQueryized, Doctypized html starter files.
++ Modernizr js loaded and ready to go in starter html files.
++ Ready for Google Analytics
++ Optional Google Chrome Frame prompt for users of older browsers
++ More information at <a href="http://html5boilerplate.com/">H5BP Homepage</a>
 
 + http://html5boilerplate.com/
 
