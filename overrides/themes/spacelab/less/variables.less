@@ -1,0 +1,107 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// Swatch: Spacelab
+// -----------------------------------------------------
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Links
+@linkColor:             #4183C4;
+@linkColorHover:        #4183C4;
+
+// Grays
+@black:                 #000;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #eee;
+@white:                 #fff;
+
+// Accent colors
+@blue:                  #4183C4;
+@blueDark:              #405A6A;
+@green:                 #84DE81;
+@red:                   #E5322C;
+@yellow:                #F4CA00;
+@orange:                #FF7D00;
+@pink:                  #F44B8C;
+@purple:                #405A6A;
+
+// Typography
+@baseFontSize:          13px;
+@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@baseLineHeight:        18px;
+@textColor:             @grayDark;
+
+// sans
+@primaryButtonBackground:    @linkColor;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:        1000;
+@zindexPopover:         1010;
+@zindexTooltip:         1020;
+@zindexFixedNavbar:     1030;
+@zindexModalBackdrop:   1040;
+@zindexModal:           1050;
+
+// Sprite icons path
+@iconSpritePath:          "../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
+// Input placeholder text color
+@placeholderText:       @grayLight;
+
+// Hr border color
+@hrBorder:                @grayLighter;
+
+// Navbar
+@navbarHeight:                    40px;
+@navbarBackground:                #EAEAEA;
+@navbarBackgroundHighlight:       lighten(@navbarBackground, 15%);
+@navbarLinkBackgroundHover:       transparent;
+
+@navbarText:                      @grayDarker;
+@navbarLinkColor:                 @grayDarker;
+@navbarLinkColorHover:            @linkColor;
+
+// Form states and alerts
+@warningText:             #393939;
+@warningBackground:       #F5F3B4;
+@warningBorder:           darken(spin(@warningBackground, -10), 3%);
+
+@errorText:               @warningText;
+@errorBackground:         #FFE9E9;
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+@successText:             #333;
+@successBackground:       #BEDEBE;
+@successBorder:           darken(spin(@successBackground, -10), 5%);
+
+@infoText:                #1B3650;
+@infoBackground:          #E4F0FF;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;

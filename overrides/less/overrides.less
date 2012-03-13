@@ -5,36 +5,64 @@ This allows you to keep the Bootstrap core up-to-date without losing your modifi
 
 //THEME
 //-----
-
-//Switch to a theme by uncommenting the @import lines.
-//A more user-friendly way to do this is coming :)
-
-//CERULEAN
-@import "../themes/cerulean/less/bootswatch.less";
-@import "../themes/cerulean/less/variables.less";
-
-//SLATE
-//@import "../themes/slate/less/bootswatch.less";
-//@import "../themes/slate/less/variables.less";
-
-//SPRUCE
-//@import "../themes/spruce/less/bootswatch.less";
-//@import "../themes/spruce/less/variables.less";
+  
+  //Switch to a theme by uncommenting [remove the '/'s from] the @import lines.
+  //A more user-friendly way to do this is coming :)
+  //Thanks to bootswatch for the themes: http://bootswatch.com/
+  
+  //CERULEAN
+  //@import "../themes/cerulean/less/bootswatch.less";
+  
+  //SLATE
+  //@import "../themes/slate/less/bootswatch.less";
+  
+  //SPRUCE
+  //@import "../themes/spruce/less/bootswatch.less";
+  
+  //CYBORG
+  //@import "../themes/cyborg/less/bootswatch.less";
+  
+  //AMELIA
+  //@import "../themes/amelia/less/bootswatch.less";
+  
+  //SIMPLEX
+  //@import "../themes/simplex/less/bootswatch.less";
+  
+  //JOURNAL
+  //@import "../themes/journal/less/bootswatch.less";
+  
+  //READABLE
+  //@import "../themes/readable/less/bootswatch.less";
+  
+  //SPACELAB
+  //@import "../themes/spacelab/less/bootswatch.less";
+  
+  //SUPERHERO
+  @import "../themes/superhero/less/bootswatch.less";
+  
+  //UNITED
+  //@import "../themes/united/less/bootswatch.less";
 
 //--------
 //END THEME
 
-@import "../../extras/fontawesome/font-awesome.less"; //Using awesomefont instead of an image sprite.
+//BOOTSTRAP OVERRIDES
+//-------------------
 
-  /* Define css rules for different screen sizes here. */
-  // Landscape phones and down
-  @media (max-width: 480px) {}
- 
-  // Landscape phone to portrait tablet
-  @media (max-width: 768px) {}
- 
-  // Portrait tablet to landscape and desktop
-  @media (min-width: 768px) and (max-width: 980px) {}
- 
-  // Large desktop
-  @media (min-width: 1200px) {}
+  @import "../../extras/fontawesome/font-awesome.less"; //Using awesomefont instead of an image sprite.
+  
+    /* Define css rules for different screen sizes here. */
+    // Landscape phones and down
+    @media (max-width: 480px) {}
+   
+    // Landscape phone to portrait tablet
+    @media (max-width: 768px) {}
+   
+    // Portrait tablet to landscape and desktop
+    @media (min-width: 768px) and (max-width: 980px) {}
+   
+    // Large desktop
+    @media (min-width: 1200px) {}
+  
+//-----------------------
+//END BOOTSTRAP OVERRIDES

@@ -1,0 +1,174 @@
+// Bootswatch.less
+// Swatch: Spacelab
+// -----------------------------------------------------
+
+// NAVBAR
+// -----------------------------------------------------
+@import "variables.less";
+// navbar style
+.navbar {
+	border-bottom: 1px solid #CACACA;
+	
+	.brand {
+		font-size: 20px;
+		font-weight: bold;
+		color: @textColor;
+	
+		&:hover {
+			color: @linkColor;
+		}
+	}
+}
+
+// navbar dropshadow
+.navbar .navbar-inner {
+	.box-shadow(0 1px 0 rgba(255,255,255,0.4));
+	.box-shadow(0 0 10px rgba(0,0,0,0.1));
+}
+
+// nav item typography
+.navbar .nav > li > a {
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.navbar .nav .active > a {
+	background-color: transparent;
+	color: @textColor;
+	
+	&:hover {
+		background-color: transparent;
+		color: @linkColor;
+	}
+}
+
+.navbar .nav > li > a:hover,
+.navbar .nav .open.dropdown .dropdown-toggle {
+	color: @linkColor !important;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+	border-top-color: @textColor;
+	opacity: 1;
+}
+
+.navbar .nav .open.dropdown .caret,
+.navbar .nav .dropdown-toggle:hover .caret {
+	border-top-color: @linkColor !important;
+}
+
+.subnav .nav > li > a {
+	font-weight: bold;
+	color: #777;
+	
+	&:hover {
+		color: @linkColor;
+	}
+}
+
+.subnav .nav > li.active > a {
+	color: @textColor;
+	
+	&:hover {
+		color: @grayDark;
+	}
+}
+
+.navbar-search .search-query,
+.navbar-search .search-query:hover {
+	border: none;
+	color: @grayLight;
+	.placeholder(@grayLight);
+	.box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.5));
+	
+    &:focus,
+    &.focused {
+		.box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.5));
+		color: @textColor;
+	}
+}
+
+.navbar .nav-collapse > .nav li > a {
+
+	color: @textColor;
+
+	.caret {
+		border-top-color: @grayLight;
+	}
+}
+
+
+.navbar .nav-collapse > .nav li > a:hover {
+	text-shadow: none;
+	color: @linkColor;
+	background-color: transparent;
+	
+	.caret {
+		border-top-color: @white;
+	}
+}
+
+
+// BUTTON
+// -----------------------------------------------------
+
+.btn {
+	.buttonBackground(#F4F4F4, #ECECEC);
+}
+
+.btn-warning {
+  .caret {
+    border-top-color: @white;
+    .opacity(75);
+  }
+}
+
+.btn-primary {
+	.buttonBackground(#909090, #3F3F3F);
+}
+
+.btn-warning {
+  .buttonBackground(lighten(@yellow, 15%), @yellow);
+}
+
+.btn-danger {
+  .buttonBackground(lighten(#DA2D2D, 15%), #DA2D2D);
+}
+
+.btn-success {
+  .buttonBackground(#8ADD6D, #60B044);
+}
+
+.btn-info {
+  .buttonBackground(lighten(#4488BB, 15%), #4488BB);
+}
+
+.btn-inverse {
+  .buttonBackground(lighten(@purple, 5%), @purple);
+}
+
+// FORMS
+// -----------------------------------------------------
+
+
+// Warning
+.control-group.warning {
+  .formFieldState(#E29235, #E29235, @warningBackground);
+}
+// Error
+.control-group.error {
+  .formFieldState(#C00, #C00, @errorBackground);
+}
+// Success
+.control-group.success {
+  .formFieldState(#2BA949, #2BA949, @successBackground);
+}
+
+
+// LABELS
+// -----------------------------------------------------
+
+.label-important { background-color: #BD2C00; }
+.label-warning   { background-color: #E3E84D; }
+.label-success   { background-color: #6CC644; }
+.label-info      { background-color: #4183C4; }

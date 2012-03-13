@@ -1,0 +1,505 @@
+// Bootswatch.less
+// Swatch: Cyborg
+// -----------------------------------------------------
+
+// TYPOGRAPHY
+// -----------------------------------------------------
+
+// Ubuntu web font
+@import url('http://fonts.googleapis.com/css?family=Droid+Sans:400,700');
+@import "variables.less";
+
+h1, h2, h3, h4, h5, .navbar .brand, .navbar .nav-collapse.collapse .nav li > a {
+	color: @grayLighter;
+	font-weight: normal;
+	text-shadow: none;
+}
+
+.navbar {
+	font-size: 16px;
+}
+
+label, input, button, select, textarea {
+	font-family: 'Droid Sans', sans-serif;
+	color: @gray;
+}
+
+.navbar .search-query:-moz-placeholder {
+	font-family: 'Droid Sans', sans-serif;
+	color: @gray;
+}
+	
+.navbar .search-query::-webkit-input-placeholder {
+	font-family: 'Droid Sans', sans-serif;
+}
+
+blockquote {
+	border-left: 5px solid @blue;
+	
+	&.pull-right {
+		border-right: 5px solid @blue;
+	}
+}
+
+// SCAFFOLDING
+// -----------------------------------------------------
+
+body {
+	background-color: #060606;
+	#gradient > .vertical (#060606, #252A30);
+}
+
+.page-header {
+	border-bottom: 2px solid @blue
+}
+
+// NAVBAR
+// -----------------------------------------------------
+
+.navbar-inner {
+  .border-radius(0);
+  @shadow: none;
+  .box-shadow(@shadow);
+  border-bottom: 2px solid @blue
+}
+
+.navbar .nav li > a {
+	padding: 13px 10px 8px;
+	border-bottom: 3px solid rgba(0, 0, 0, 0);
+}
+
+.navbar .brand {
+	padding: 12px 20px 8px;
+}
+
+.navbar .search-query,
+.navbar .search-query:focus,
+.navbar .search-query.focused {
+	color: @grayLight;
+	text-shadow: none;
+	background-color: #222;
+	.border-radius(1px);
+	.placeholder(@gray);
+}
+
+.navbar .nav .active > a,
+.navbar .nav li > a:hover,
+.navbar .brand:hover {
+	border-bottom: 3px solid @blue
+}
+
+// Added dividers to items
+.navbar .nav > li > a {
+	border-left: 1px solid #222;	
+}
+
+.dropdown-menu {
+	background-color: #191A1A;
+	border-left: solid 1px rgba(256,256,256,.1);
+	.box-shadow(0 2px 4px rgba(0,0,0,.8));
+}
+
+.dropdown-menu li > a:hover {
+	background-color: @blue;
+	border-bottom: 3px solid transparent;
+}
+
+.dropdown-menu .divider {
+	background-color: #222;
+	border-bottom: 0px solid white;
+}
+
+.navbar .dropdown-menu::before,
+.navbar .dropdown-menu::after {
+	display: none;
+}
+
+.navbar .nav-collapse.collapse .nav > li > a {
+	border-left: 0;
+}
+
+.navbar .nav-collapse.collapse .nav a:hover {
+	background-color: @blue;
+}
+
+div.subnav {
+	position: static;
+	background-color: @grayDarker;
+	background-image: none;
+	border: 0;
+}
+
+div.subnav.subnav-fixed {
+	position: relative;
+	left: -1px;
+	top: auto;
+}
+
+div.subnav .nav li > a,
+div.subnav .nav .active a {
+	border-left: 1px solid #222;
+	border-right: 0;
+	color: @grayLighter;
+	background-color: @grayDarker;
+}
+
+.subnav .nav > li > a:hover,
+.subnav .nav > li.active > a:hover,
+.subnav .nav > li:first-child > a:hover {
+	background: transparent;
+	border-bottom: 2px solid @blue;
+	border-left: 1px solid #222;
+	color: @white;
+}
+
+div.subnav .nav .dropdown.open {
+
+	.dropdown-toggle {
+		border: 0;
+		border-left: 1px solid #222;
+	    border-bottom: 2px solid @blue;
+		background-color: #060606;
+	}
+
+	.dropdown-menu {
+		background-color: @grayDarker;
+		border-left: 0;
+		
+		li > a:hover {
+			border-bottom: 0;
+			background: @blue;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	div.subnav .nav > li + li > a,
+	div.subnav .nav > li:first-child > a {
+		border-top: 1px solid #222;
+		border-left: 1px solid #222;
+	}
+	
+	.subnav .nav > li + li > a:hover,
+	.subnav .nav > li:first-child > a:hover {
+			border-bottom: 0;
+			background-color: @blue;
+	}
+	
+}
+
+// TABLES
+// -----------------------------------------------------
+
+.table-bordered {
+  border: 1px solid #222;
+  
+  th + th,
+  td + td,
+  th + td,
+  td + th {
+    border-left: 1px solid #222;
+  }
+  // Prevent a double border
+  thead:first-child tr:first-child th,
+  tbody:first-child tr:first-child th,
+  tbody:first-child tr:first-child td {
+    border-top: 0;
+  }
+}
+
+.table th, .table td {
+  	border-top: 1px solid #222;
+}
+
+// make shaded elements light gray
+.breadcrumb,
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+	background-color: rgba(40, 40, 40, 0.5);
+}
+
+.table-striped tbody tr:nth-child(even) td,
+.table-striped tbody tr:nth-child(even) th {
+	background-color: transparent;
+}
+
+.table tbody tr:hover th,
+.table tbody tr:hover td {
+	background-color: @grayDark;
+}
+
+code, pre, pre.prettyprint {
+	background-color: @grayLighter;
+}
+
+.well {
+	background-color: rgba(40, 40, 40, 0.5);
+	background-color: #131517;
+	border-top: solid 1px rgba(256,256,256,.1);
+	.box-shadow(0 2px 4px rgba(0,0,0,.8));
+}
+
+
+.table, .well, .prettyprint, input, textarea, select {
+	.border-radius(1px);
+}
+
+input, textarea, select, .uneditable-input {
+	color: @grayDark;
+}
+
+
+// NAVIGATION
+// -----------------------------------------------------
+
+
+.nav-list > li > a, .nav-list .nav-header {
+	text-shadow: none;
+}
+
+.nav-list li > a:hover,
+.nav-tabs li > a:hover,
+.nav-tabs li.active > a,
+.nav-pills li > a:hover,
+.nav-stacked li > a:hover,
+.nav-stacked li.active > a {
+	background-color: @blue;
+	color: @white;
+}
+
+.nav-tabs {
+	border-bottom: 1px solid #222;
+}
+
+.nav-stacked > li > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+	border: 1px solid #222 !important;
+}
+
+.nav.nav-tabs .active a:hover {
+	background-color: @blue;
+	color: @white;
+}
+
+.nav.nav-tabs .dropdown.open,
+.nav.nav-pills .dropdown.open {
+	.dropdown-toggle {
+		background-color: #060606 !important;
+		border-top: 0;
+		border: 1px solid #222;
+	}
+	
+	.dropdown-menu li > a:hover { border-bottom: 0; }
+}
+
+.tabbable .nav-tabs, .thumbnail {
+	border-color: #222;
+}
+
+.breadcrumb {
+	background-color: transparent;
+	background-image: none;
+	border-width: 0;
+	.box-shadow(none);
+	font-size: 14px;
+	
+	li > a {
+		color: @blue;
+		text-shadow: none;
+	}
+	
+	li.active {
+		text-shadow: none;
+	}
+}
+
+.pagination {
+	ul {
+		.box-shadow(none);
+	}
+	
+	a {
+		border: 0;
+		font-size: 14px;
+	}
+	
+	a:hover, .active a {
+		background-color: @blue;
+		color: @white;
+	}	
+}
+
+// BUTTONS
+// -----------------------------------------------------
+
+.btn, {
+	border: 0;
+	.border-radius(3px);
+	.box-shadow(1px 1px 2px #111);
+	.buttonBackground(darken(@gray, 20%), darken(@gray, 30%));
+	color: @white;
+	text-shadow: none;
+	
+	&:hover {
+	    background-color: darken(@gray, 35%);
+		text-shadow: none;
+	  	color: @white;
+	}
+}
+
+.btn-primary {
+  .buttonBackground(@blueDark, darken(@blueDark, 10%));
+}
+
+.btn-warning {
+  .buttonBackground(lighten(@orange, 10%), @orange);
+}
+
+.btn-danger {
+  .buttonBackground(lighten(@red, 10%), @red);
+}
+
+.btn-success {
+  .buttonBackground(lighten(@green, 10%), @green);
+}
+
+.btn-info {
+  .buttonBackground(darken(@gray, 40%), darken(@gray, 50%));
+}
+
+.btn-inverse {
+  .buttonBackground(lighten(@purple, 5%), @purple);
+}
+
+.btn-group .btn:first-child {
+    -webkit-border-top-left-radius: 3px;
+       -moz-border-top-left-radius: 3px;
+            border-top-left-radius: 3px;
+
+    -webkit-border-bottom-left-radius: 3px;
+       -moz-border-bottom-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+}
+
+.btn-group .btn:last-child, .btn-group .dropdown-toggle {
+    -webkit-border-top-right-radius: 3px;
+       -moz-border-top-right-radius: 3px;
+            border-top-right-radius: 3px;
+
+    -webkit-border-bottom-right-radius: 3px;
+       -moz-border-bottom-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+	
+}
+
+.btn .caret {
+	border-top: 4px solid black;
+	opacity: 0.3;
+}
+
+.btn-group > .dropdown-menu > li > a:hover {
+	border-bottom: 0;
+}
+
+.btn.disabled, .btn[disabled] {
+	background-color: @grayLight;
+}
+
+// FORMS
+// -----------------------------------------------------
+
+input, textarea, select {
+	background-color: #ccc;
+	border-color: #bbb;
+	border-width: 2px;
+	.placeholder(@gray);
+} 
+
+legend, label {
+	color: @textColor;
+	border-bottom: 0px solid #222;
+}
+
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly], .uneditable-input {
+	background-color: #555;
+	border-color: #444;
+}
+
+input:focus,
+textarea:focus,
+input.focused,
+textarea.focused {
+  border-color: rgba(82,168,236,1);
+  outline: 0;
+  outline: thin dotted \9; /* IE6-9 */
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus,
+select:focus {
+  .box-shadow(none); // override for file inputs
+  .tab-focus();
+}
+
+.form-actions {
+	background: transparent;
+}
+
+.form-actions, footer.footer {
+	border-top: 1px solid #222;
+}
+
+
+// MISCELLANEOUS
+// -----------------------------------------------------
+
+
+.progress {
+	background-color: #060606;
+	background-image: none;
+	.border-radius(0);
+}
+
+.label {
+	color: @grayLighter;
+}
+
+.label, .alert { background-color: darken(@gray, 20%); }
+
+.label:hover { background-color: darken(@gray, 30%); }
+
+
+.label-important, .alert-danger,
+.alert-error { background-color: @red; }
+
+.label-important:hover { background-color: darken(@red, 10%); }
+
+.label-warning   { background-color: darken(@orange, 10%); }
+
+.label-warning:hover { background-color: darken(@orange, 20%); }
+
+.label-success, .alert-success { background-color: darken(@green, 3%); }
+
+.label-success:hover { background-color: darken(@green, 13%); }
+
+.label-info, .alert-info { background-color: darken(@blueDark, 10%); }
+
+.label-info:hover { background-color: darken(@blueDark, 20%); }
+
+.alert,
+.alert .alert-heading,
+.alert-success,
+.alert-success .alert-heading,
+.alert-danger,
+.alert-error,
+.alert-danger .alert-heading,
+.alert-error .alert-heading,
+.alert-info,
+.alert-info .alert-heading {
+  color: @grayLighter;
+  text-shadow: none;
+  border: none;
+}

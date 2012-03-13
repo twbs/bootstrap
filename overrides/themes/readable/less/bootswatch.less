@@ -1,0 +1,454 @@
+// Bootswatch.less
+// Swatch: Readable
+// -----------------------------------------------------
+
+// CUSTOM VALUES
+// --------------------------------------------------
+
+@import "variables.less";
+@bodyBackgroundColor:	#FDFDFA;
+ 
+
+// TYPOGRAPHY
+// -----------------------------------------------------
+
+h1 {
+	font-size: 2em;
+	line-height: 2em;
+	color: @textColor;
+}
+
+h2 {
+	font-size: 1.5em;
+	line-height: 2em;
+	color: @textColor;
+}
+
+h3, h4, h5, h6 {
+	font-size: 1em;
+	line-height: 2em;
+	text-transform: none;
+	color: @textColor;
+}
+
+input, button, select, textarea {
+	font-family: @baseFontFamily;
+}
+
+input, textarea, select {
+	color: @textColor;
+}
+
+.muted, .help-block, .uneditable-input, blockquote, small {
+	color: @grayLight;
+}
+
+small {
+	font-size: 13px;
+}
+
+// SCAFFOLDING
+// -----------------------------------------------------
+
+body {
+	background-color: @bodyBackgroundColor;
+	padding-top: 20px !important;
+}
+
+
+// NAVBAR
+// -----------------------------------------------------
+
+.navbar {
+
+	margin-left: 16px;
+
+	.navbar-inner {
+		.box-shadow(none);
+	}
+
+	.brand {
+		color: @linkColor;
+		font-size: @baseFontSize;
+		font-weight: bold;
+		line-height: 1em;
+		padding: 10px 10px 11px;
+		
+		&:hover {
+			color: @linkColorHover;
+		}
+	}
+	
+	.nav > li > a {
+		text-shadow: none;
+		padding: 10px;
+	}
+
+	.nav > li.active > a,
+	.nav > li:active > a,
+	.dropdown.open .dropdown-toggle {
+		color: @linkColor;
+	}
+	
+	.search-query {
+		border: 1px solid #D4D4D4;
+		.border-radius(0);
+		color: @textColor;
+		background-color: @white;
+	}
+
+	.nav .dropdown-toggle .caret,
+	.nav .open.dropdown .caret {
+		border-top-color: @linkColor;
+		opacity: 1;
+	}
+
+}
+
+@media (max-width: 980px) {
+	form.navbar-form, form.navbar-search {
+		border-top: 1px solid #D4D4D4;
+		border-bottom: 1px solid #D4D4D4;
+	}
+}
+
+.navbar-fixed-top {
+	position: static;
+}
+
+div.subnav {
+	.box-shadow(none);
+	.border-radius(0);
+	background-color: @white;
+	background-image: none;
+
+	.nav {
+		padding: 0;	
+	}
+	
+	.nav > li.active > a,
+	.nav > li:active > a {
+		color: @linkColor;
+		.box-shadow(none);
+		background-color: transparent;
+	}
+	
+	.nav > li > a:hover,
+	.nav > li.active > a:hover,
+	.nav > li:active > a:hover {
+		color: @linkColorHover;
+		.box-shadow(none);
+		background-color: transparent;
+	}
+}
+
+div.subnav-fixed {
+	position: static;
+	left: auto;
+	width: 100%;
+	margin: 0;
+	.box-shadow(none);
+	.border-radius(4px);
+	border: 1px solid #E5E5E5;
+	
+	.nav {
+		width: auto;
+		padding: 0;
+	}
+}
+
+.dropdown-menu {
+	background-color: @white;
+	border: 1px solid #D4D4D4;
+	.border-radius(0);
+	.box-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+	
+	li > a {
+		color: @linkColor;
+	}
+	
+	li > a:hover {
+		color: @linkColorHover;
+		background-color: transparent;
+	}
+}
+
+.navbar .nav-collapse.collapse {
+	
+	.nav > li > a:last-child {
+		margin-bottom: 10px;
+	}
+	
+	li > a {
+		color: @linkColor;
+		.border-radius(0);
+		font-weight: normal;
+		
+		&:hover {
+			color: @linkColorHover;
+		}
+	}
+	
+	li > a:hover {
+		background: transparent;
+	}
+
+}
+
+// NAV
+// -----------------------------------------------------
+
+.nav .dropdown .caret {
+	opacity: 1;
+}
+
+.nav-tabs {
+
+	li > a {
+		.border-radius(0);
+	}
+
+	li > a:hover {
+		background-color: @bodyBackgroundColor;
+	}
+
+	li.active > a,
+	li.active > a:hover {
+		color: @textColor;
+		background-color: @bodyBackgroundColor;
+	}
+}
+
+.nav-tabs.nav-stacked {
+
+	li > a {
+		background-color: @white;
+	}
+	
+
+	li.active > a,
+	li.active > a:hover,
+	li > a:hover {
+		background-color: #F5F5F5;
+	}
+
+	li:first-child > a,
+	li:last-child > a {
+		.border-radius(0);
+	}
+}
+
+.nav-pills {
+
+	li > a {
+		.border-radius(0);
+	}
+
+	li > a:hover {
+		background-color: @bodyBackgroundColor;
+	}
+
+	li.active > a,
+	li.active > a:hover {
+		color: @textColor;
+		background-color: @bodyBackgroundColor;
+	}
+}
+
+.nav-list {
+
+	li > a:hover,
+	li.active > a,
+	li.active > a:hover {
+		background-color: transparent;
+		text-shadow: none;
+	}
+
+	li.active > a,
+	li.active > a:hover {
+		color: @textColor;
+	}
+	
+	[class^="icon-"] {
+		margin-top: 3px;
+		opacity: 0.8;
+	}
+}
+
+.breadcrumb {
+	.border-radius(0);
+	background-color: @white;
+	background-image: none;
+}
+
+.pagination {
+
+	ul {
+		.box-shadow(none);
+	}
+
+	li > a {
+		padding: 10px 14px;
+	}
+	
+
+	li.active > a,
+	li.active > a:hover {
+		color: @textColor;
+		background-color: #F5F5F5;
+	}
+	
+	li > a,
+	li.disabled > a,
+	li.disabled > a:hover {
+		background-color: @white;
+	}
+	
+	li:first-child > a,
+	li:last-child > a {
+		.border-radius(0);
+	}
+}
+
+.pager {
+	
+	a {
+		.border-radius(0);
+	}
+}
+
+// BUTTONS
+// -----------------------------------------------------
+
+.btn-primary {
+  .buttonBackground(lighten(@primaryButtonBackground, 10%), @primaryButtonBackground);
+}
+
+.btn [class^="icon-"],
+.btn [class*=" icon-"] {
+	margin-top: 4px;
+}
+
+.btn-large [class^="icon-"],
+.btn-large [class*=" icon-"] {
+	margin-top: 6px;
+	margin-right: 2px;
+}
+
+.btn-small [class^="icon-"],
+.btn-small [class*=" icon-"] {
+	margin-top: 3px;
+}
+
+.btn .caret {
+	margin-top: 13px;
+}
+
+// FORMS
+// -----------------------------------------------------
+
+
+// TABLES
+// -----------------------------------------------------
+
+.table-bordered {
+	.border-radius(0);
+}
+
+.table-striped {
+  tbody {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
+      background-color: darken(@bodyBackgroundColor, 2%);
+    }
+  }
+}
+
+.table {
+  tbody tr:hover td,
+  tbody tr:hover th {
+      background-color: darken(@bodyBackgroundColor, 4%);
+  }
+}
+
+// MISCELLANEOUS
+// -----------------------------------------------------
+
+.alert, 
+.label, .label:hover {
+	.border-radius(0);
+	border: 1px solid #D4D4D4;
+	color: @textColor;
+	text-shadow: none;
+}
+
+.alert-heading {
+	color: @textColor;
+	text-shadow: none;
+}
+
+.label, .label:hover {
+	background-color: @white;
+	font-weight: normal;
+	font-size: @baseFontSize;
+	padding: 4px;
+}
+
+.label-important, .label-important:hover { background-color: @errorBackground; }
+
+.label-warning, .label-warning:hover { background-color: @warningBackground; }
+
+.label-success, .label-success:hover { background-color: @successBackground; }
+
+.label-info, .label-info:hover { background-color: @infoBackground; }
+
+.well {
+	.box-shadow(none);
+	border: 1px solid #D4D4D4;
+	.border-radius(0);
+	background-color: @white;
+}
+
+blockquote {
+	border-left: 6px solid @grayLighter;
+	
+	&.pull-right {
+		border-right: 6px solid @grayLighter;
+	}
+	
+	p {
+		font-size: 1em;
+		line-height: 1.2em;
+	}
+}
+
+.thumbnail {
+	background-color: @white;
+}
+
+.thumbnail, .thumbnail > img {
+	.border-radius(0);
+	.box-shadow(none);
+}
+
+code, pre {
+	.border-radius(0);
+	background-color: @white;
+}
+
+.page-header {
+	padding-bottom: 1em;
+	border-bottom: 2px solid @grayLighter;
+}
+
+.form-actions {
+	background-color: transparent;
+	border-top: 1px solid #D4D4D4;
+	padding-top: 2em;
+}
+
+footer.footer {
+	padding-top: 2em;
+	padding-bottom: 3em;
+	border-top: 2px solid @grayLighter;
+}

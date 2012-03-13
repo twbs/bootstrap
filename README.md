@@ -11,11 +11,13 @@ Extras
 **Font Awesome**
 
 Turns glyphicons into an icon font to use a variety of sizes and colors. Also adds a bunch of new icons.
+
 + http://fortawesome.github.com/Font-Awesome/#
 
 **HTML5 Boilerplate Goodies**
 
 Uses sample files and resources gathered and created from HTML5 Boilerplate for making great HTML5 pages. Bootstrap Extra includes a sample file ready to go for a new Bootstrap HTML5 Page.
+
 + http://html5boilerplate.com/
 
 **Skins**
