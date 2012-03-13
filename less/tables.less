@@ -11,6 +11,7 @@ table {
   max-width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  background-color: @tableBackground;
 }
 
 // BASELINE STYLES
@@ -26,7 +27,7 @@ table {
     line-height: @baseLineHeight;
     text-align: left;
     vertical-align: top;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid @tableBorder;
   }
   th {
     font-weight: bold;
@@ -36,13 +37,15 @@ table {
     vertical-align: bottom;
   }
   // Remove top border from thead by default
-  thead:first-child tr th,
-  thead:first-child tr td {
+  colgroup + thead tr:first-child th,
+  colgroup + thead tr:first-child td,
+  thead:first-child tr:first-child th,
+  thead:first-child tr:first-child td {
     border-top: 0;
   }
   // Account for multiple tbody instances
   tbody + tbody {
-    border-top: 2px solid #ddd;
+    border-top: 2px solid @tableBorder;
   }
 }
 
@@ -63,15 +66,14 @@ table {
 // ----------------
 
 .table-bordered {
-  border: 1px solid #ddd;
+  border: 1px solid @tableBorder;
+  border-left: 0;
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapsed; // IE7 can't round corners anyway
   .border-radius(4px);
-  th + th,
-  td + td,
-  th + td,
-  td + th {
-    border-left: 1px solid #ddd;
+  th,
+  td {
+    border-left: 1px solid @tableBorder;
   }
   // Prevent a double border
   thead:first-child tr:first-child th,
@@ -108,7 +110,7 @@ table {
   tbody {
     tr:nth-child(odd) td,
     tr:nth-child(odd) th {
-      background-color: #f9f9f9;
+      background-color: @tableBackgroundAccent;
     }
   }
 }
@@ -120,7 +122,7 @@ table {
 .table {
   tbody tr:hover td,
   tbody tr:hover th {
-    background-color: #f5f5f5;
+    background-color: @tableBackgroundHover;
   }
 }
 
@@ -129,11 +131,6 @@ table {
 // -----------------
 
 // Change the columns
-.tableColumns(@columnSpan: 1) {
-  float: none;
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16;
-  margin-left: 0;
-}
 table {
   .span1     { .tableColumns(1); }
   .span2     { .tableColumns(2); }
@@ -147,4 +144,16 @@ table {
   .span10    { .tableColumns(10); }
   .span11    { .tableColumns(11); }
   .span12    { .tableColumns(12); }
+  .span13    { .tableColumns(13); }
+  .span14    { .tableColumns(14); }
+  .span15    { .tableColumns(15); }
+  .span16    { .tableColumns(16); }
+  .span17    { .tableColumns(17); }
+  .span18    { .tableColumns(18); }
+  .span19    { .tableColumns(19); }
+  .span20    { .tableColumns(20); }
+  .span21    { .tableColumns(21); }
+  .span22    { .tableColumns(22); }
+  .span23    { .tableColumns(23); }
+  .span24    { .tableColumns(24); }
 }

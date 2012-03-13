@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.0.1
+ * Bootstrap Responsive v2.0.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -31,6 +31,37 @@
   visibility: hidden;
 }
 
+// Visibility utilities
+
+// For desktops
+.visible-phone     { display: none; }
+.visible-tablet    { display: none; }
+.visible-desktop   { display: block; }
+.hidden-phone      { display: block; }
+.hidden-tablet     { display: block; }
+.hidden-desktop    { display: none; }
+
+// Phones only
+@media (max-width: 767px) {
+  // Show
+  .visible-phone     { display: block; }
+  // Hide
+  .hidden-phone      { display: none; }
+  // Hide everything else
+  .hidden-desktop    { display: block; }
+  .visible-desktop   { display: none; }
+}
+
+// Tablets & small desktops only
+@media (min-width: 768px) and (max-width: 979px) {
+  // Show
+  .visible-tablet    { display: block; }
+  // Hide
+  .hidden-tablet     { display: none; }
+  // Hide everything else
+  .hidden-desktop    { display: block; }
+  .visible-desktop   { display: none; }
+}
 
 
 // UP TO LANDSCAPE PHONE
@@ -47,26 +78,6 @@
   .page-header h1 small {
     display: block;
     line-height: @baseLineHeight;
-  }
-
-  // Make span* classes full width
-  input[class*="span"],
-  select[class*="span"],
-  textarea[class*="span"],
-  .uneditable-input {
-    display: block;
-    width: 100%;
-    min-height: 28px; /* Make inputs at least the height of their button counterpart */
-    /* Makes inputs behave like true block-level elements */
-    -webkit-box-sizing: border-box; /* Older Webkit */
-       -moz-box-sizing: border-box; /* Older FF */
-        -ms-box-sizing: border-box; /* IE8 */
-            box-sizing: border-box; /* CSS3 spec*/
-  }
-  // But don't let it screw up prepend/append inputs
-  .input-prepend input[class*="span"],
-  .input-append input[class*="span"] {
-    width: auto;
   }
 
   // Update checkboxes for iOS
@@ -124,12 +135,22 @@
 // --------------------------------------------------
 
 @media (max-width: 767px) {
+
+  // Padding to set content in a bit
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .navbar-fixed-top {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
   // GRID & CONTAINERS
   // -----------------
   // Remove width from containers
   .container {
     width: auto;
-    padding: 0 20px;
   }
   // Fluid rows
   .row-fluid {
@@ -147,6 +168,28 @@
     width: auto;
     margin: 0;
   }
+
+  // THUMBNAILS
+  // ----------
+  .thumbnails [class*="span"] {
+    width: auto;
+  }
+
+  // FORM FIELDS
+  // -----------
+  // Make span* classes full width
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
+  .uneditable-input {
+    .input-block-level();
+  }
+  // But don't let it screw up prepend/append inputs
+  .input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
+    width: auto;
+  }
+
 }
 
 
@@ -157,13 +200,13 @@
 @media (min-width: 768px) and (max-width: 979px) {
 
   // Fixed grid
-  #gridSystem > .generate(12, 42px, 20px);
+  #grid > .core(42px, 20px);
 
   // Fluid grid
-  #fluidGridSystem > .generate(12, 5.801104972%, 2.762430939%);
+  #grid > .fluid(5.801104972%, 2.762430939%);
 
   // Input grid
-  #inputGridSystem > .generate(12, 42px, 20px);
+  #grid > .input(42px, 20px);
 
 }
 
@@ -297,6 +340,7 @@
 @media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
+    overflow: visible !important;
   }
 }
 
@@ -308,13 +352,13 @@
 @media (min-width: 1200px) {
 
   // Fixed grid
-  #gridSystem > .generate(12, 70px, 30px);
+  #grid > .core(70px, 30px);
 
   // Fluid grid
-  #fluidGridSystem > .generate(12, 5.982905983%, 2.564102564%);
+  #grid > .fluid(5.982905983%, 2.564102564%);
 
   // Input grid
-  #inputGridSystem > .generate(12, 70px, 30px);
+  #grid > .input(70px, 30px);
 
   // Thumbnails
   .thumbnails {

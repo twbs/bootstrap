@@ -2,6 +2,7 @@
 var hogan = require('hogan.js')
   , fs    = require('fs')
   , prod  = process.argv[2] == 'production'
+  , title = 'Twitter Bootstrap'
 
 var layout, pages
 
@@ -23,6 +24,16 @@ pages.forEach(function (name) {
   context[name.replace(/\.mustache$/, '')] = 'active'
   context._i = true
   context.production = prod
+  context.title = name
+    .replace(/\.mustache/, '')
+    .replace(/\-.*/, '')
+    .replace(/(.)/, function ($1) { return $1.toUpperCase() })
+
+  if (context.title == 'Index') {
+    context.title = title
+  } else {
+    context.title += ' · ' + title
+  }
 
   page = hogan.compile(page, { sectionTags: [{o:'_i', c:'i'}] })
   page = layout.render(context, {

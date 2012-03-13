@@ -476,22 +476,17 @@
       <tr>
         <td><code>.container-fixed()</code></td>
         <td><em class="muted">none</em></td>
-        <td>{{_i}}Provide a fixed-width (set with <code>@siteWidth</code>) container for holding your content{{/i}}</td>
+        <td>{{_i}}Create a horizontally centered container for holding your content{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.columns()</code></td>
-        <td><code>@columns: 1</code></td>
-        <td>{{_i}}Build a grid column that spans any number of columns (defaults to 1 column){{/i}}</td>
+        <td><code>#grid > .core()</code></td>
+        <td><code>@gridColumnWidth, @gridGutterWidth</code></td>
+        <td>{{_i}}Generate a pixel grid system (container, row, and columns) with <em>n</em> columns and <em>x</em> pixel wide gutter{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.offset()</code></td>
-        <td><code>@columns: 1</code></td>
-        <td>{{_i}}Offset a grid column with left margin that spans any number of columns{{/i}}</td>
-      </tr>
-      <tr>
-        <td><code>.gridColumn()</code></td>
-        <td><em class="muted">none</em></td>
-        <td>{{_i}}Make an element float like a grid column{{/i}}</td>
+        <td><code>#grid > .fluid()</code></td>
+        <td><code>@fluidGridColumnWidth, @fluidGridGutterWidth</code></td>
+        <td>{{_i}}Generate a precent grid system with <em>n</em> columns and <em>x</em> % wide gutter{{/i}}</td>
       </tr>
     </tbody>
   </table>
@@ -578,47 +573,47 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>.#translucent > .background()</code></td>
+        <td><code>#translucent > .background()</code></td>
         <td><code>@color: @white, @alpha: 1</code></td>
         <td>{{_i}}Give an element a translucent background color{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#translucent > .border()</code></td>
+        <td><code>#translucent > .border()</code></td>
         <td><code>@color: @white, @alpha: 1</code></td>
         <td>{{_i}}Give an element a translucent border color{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#gradient > .vertical()</code></td>
+        <td><code>#gradient > .vertical()</code></td>
         <td><code>@startColor, @endColor</code></td>
         <td>{{_i}}Create a cross-browser vertical background gradient{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#gradient > .horizontal()</code></td>
+        <td><code>#gradient > .horizontal()</code></td>
         <td><code>@startColor, @endColor</code></td>
         <td>{{_i}}Create a cross-browser horizontal background gradient{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#gradient > .directional()</code></td>
+        <td><code>#gradient > .directional()</code></td>
         <td><code>@startColor, @endColor, @deg</code></td>
         <td>{{_i}}Create a cross-browser directional background gradient{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#gradient > .vertical-three-colors()</code></td>
+        <td><code>#gradient > .vertical-three-colors()</code></td>
         <td><code>@startColor, @midColor, @colorStop, @endColor</code></td>
         <td>{{_i}}Create a cross-browser three-color background gradient{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#gradient > .radial()</code></td>
+        <td><code>#gradient > .radial()</code></td>
         <td><code>@innerColor, @outerColor</code></td>
         <td>{{_i}}Create a cross-browser radial background gradient{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#gradient > .striped()</code></td>
+        <td><code>#gradient > .striped()</code></td>
         <td><code>@color, @angle</code></td>
         <td>{{_i}}Create a cross-browser striped background gradient{{/i}}</td>
       </tr>
       <tr>
-        <td><code>.#gradientBar()</code></td>
+        <td><code>#gradientBar()</code></td>
         <td><code>@primaryColor, @secondaryColor</code></td>
         <td>{{_i}}Used for buttons to assign a gradient and slightly darker border{{/i}}</td>
       </tr>
@@ -641,8 +636,8 @@
   <div class="row">
     <div class="span4">
       <h3>{{_i}}Node with makefile{{/i}}</h3>
-      <p>{{_i}}Install the LESS command line compiler globally with npm by running the following command:{{/i}}</p>
-      <pre>$ npm install -g less</pre>
+      <p>{{_i}}Install the LESS command line compiler and uglify-js globally with npm by running the following command:{{/i}}</p>
+      <pre>$ npm install -g less uglify-js</pre>
       <p>{{_i}}Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.{{/i}}</p>
       <p>{{_i}}Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).{{/i}}</p>
     </div><!-- /span4 -->
