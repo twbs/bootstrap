@@ -1,12 +1,12 @@
-Bootstrap Extra
-=================
+The Gist
+========
 
-Bootstrap Extra uses the latest version of Twitter's bootstrap and adds lots of extras for slick web applications.
+Kickstrap uses the latest version of Twitter's bootstrap (http://twitter.github.com/bootstrap) and adds a layer of extras to create slick web applications with themes, modern html/css standards, an icon font, and progressive enhancement through javascript.
 
-For more information on Twitter's Bootstrap, checkout http://twitter.github.com/bootstrap!
+Last updated with Bootstrap v. 2.02
 
-Extras
--------
+The Extras
+==========
 
 **Font Awesome**
 
@@ -20,7 +20,7 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 
 + http://html5boilerplate.com/
 
-**Skins**
+**Themes**
 
 + Easily switch to different color schemes. (Available but still in infantile stage)
 + Support for Bootswatch themes (still in testing). Easily switch between predefined theme packages.
@@ -43,55 +43,42 @@ At this time, you can avoid having to do this by simply downloading the latest r
 2. Simply paste everything into the root of this directory (at the same level as index.html and 404.html)
 3. Edit /less/bootstrap.less
 4. After this line:
-
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
-
 Add this line: 
-
 @import "../overrides/less/overrides.less"; // Use our own variables if we want.
-
 So it should look like this:
-
 // Core variables and mixins
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
 @import "../overrides/less/themes.less"; // Use our own variables if we want.
 @import "mixins.less";
-
 5. Comment out the sprites line like this
-
 //@import "sprites.less";
-
 6. In the same file add this to the very end:
-
 //Overrides
 @import "../overrides/less/overrides.less";
-
 7. Compile and you're set.
 
 Authors
 -------
-(Original)
 
-**Mark Otto**
+**Mark Otto** (Bootstrap)
 
 + http://twitter.com/mdo
 + http://github.com/markdotto
 
-**Jacob Thornton**
+**Jacob Thornton** (Bootstrap)
 
 + http://twitter.com/fat
 + http://github.com/fat
 
-(Modified)
-
-**Adam Kochanowicz**
+**Adam Kochanowicz** (Kickstrap)
 
 + http://twitter.com/yourwebsitesUX
 
 Copyright and license
 ---------------------
 
-Copyright 2012 Twitter, Inc.
+Bootstrap: Copyright 2012 Twitter, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.
