@@ -22,14 +22,14 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 
 **Themes**
 
-+ Easily switch to different color schemes. (Available but still in infantile stage)
-+ Support for Bootswatch themes (still in testing). Easily switch between predefined theme packages.
++ Easily switch to different color schemes.
++ Support for Bootswatch themes. Easily switch between predefined theme packages.
 + http://bootswatch.com/
 
 Change Themes
 -------------
 
-1. Open /overrides/less/overrides.less
+1. Open /extras/less/overrides.less
 2. Uncomment the @import lines of the theme you want to use.
 3. Compile.
 
@@ -42,10 +42,10 @@ At this time, you can avoid having to do this by simply downloading the latest r
 1. Download complete bootstrap files from http://twitter.github.com/bootstrap
 2. Simply paste everything into the root of this directory (at the same level as index.html and 404.html)
 3. Edit /less/bootstrap.less
-4. After this line:
-@import "variables.less"; // Modify this for custom colors, font-sizes, etc
-Add this line: 
-@import "../overrides/less/overrides.less"; // Use our own variables if we want.
+4. After this line:<pre>
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc</pre>
+Add this line: <pre>
+@import "../overrides/less/overrides.less"; // Use our own variables if we want.</pre>
 So it should look like this:
 // Core variables and mixins
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
