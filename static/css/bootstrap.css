@@ -6,7 +6,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
- * Date: Thu Mar  8 16:19:45 PST 2012
+ * Date: 
  */
 /* Reset.less
  * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here	that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
@@ -2600,7 +2600,7 @@ iframe {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100000;
+  z-index: -1;
   overflow: visible;
   text-align: center;
 }
