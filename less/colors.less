@@ -1,0 +1,240 @@
+// Color.less
+// basic background colors or font colors
+// --------------------------------------------------------
+
+//Mixin for the matching contrast Color
+
+.checkContrast (@a) when (lightness(@a) >= 50%) {
+  color: black;
+}
+.checkContrast (@a) when (lightness(@a) < 50%) {
+  color: white;
+}
+
+
+
+div.blue {
+	background-color:@blue;
+
+	&.hovered:hover{
+		 background-color: darken(@blue, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@blue, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@blue);
+	}
+}
+div.blueDark {
+	background-color:@blueDark;
+
+	&.hovered:hover{
+		 background-color: darken(@blueDark, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@blueDark, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@blueDark);
+	}
+}
+div.green {
+	background-color:@green;
+
+	&.hovered:hover{
+		 background-color: darken(@green, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@green, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@green);
+	}
+}
+div.red {
+	background-color:@red;
+
+	&.hovered:hover{
+		 background-color: darken(@red, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@red, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@red);
+	}
+}
+div.yellow {
+	background-color:@yellow;
+
+	&.hovered:hover{
+		 background-color: darken(@yellow, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@yellow, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@yellow);
+	}
+}
+div.orange {
+	background-color:@orange;
+
+	&.hovered:hover{
+		 background-color: darken(@orange, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@orange, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@orange);
+	}
+}
+div.pink {
+	background-color:@pink;
+
+	&.hovered:hover{
+		 background-color: darken(@pink, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@pink, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@pink);
+	}
+}
+div.purple {
+	background-color:@purple;
+
+	&.hovered:hover{
+		 background-color: darken(@purple, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@purple, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@purple);
+	}
+}
+div.black {
+	background-color:@black;
+
+	&.hovered:hover{
+		 background-color: darken(@black, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@black, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@black);
+	}
+}
+div.grayDarker {
+	background-color:@grayDarker;
+
+	&.hovered:hover{
+		 background-color: darken(@grayDarker, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@grayDarker, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@grayDarker);
+	}
+}
+div.grayDark {
+	background-color:@grayDark;
+
+	&.hovered:hover{
+		 background-color: darken(@grayDark, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@grayDark, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@grayDark);
+	}
+}
+div.gray {
+	background-color:@gray;
+
+	&.hovered:hover{
+		 background-color: darken(@gray, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@gray, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@gray);
+	}
+}
+div.grayLight {
+	background-color:@grayLight;
+
+	&.hovered:hover{
+		 background-color: darken(@grayLight, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@grayLight, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@grayLight);
+	}
+}
+div.grayLighter {
+	background-color:@grayLighter;
+
+	&.hovered:hover{
+		 background-color: darken(@grayLighter, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@grayLighter, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@grayLighter);
+	}
+}
+div.white {
+	background-color:@white;
+
+	&.hovered:hover{
+		 background-color: darken(@white, 5%);
+	}
+
+	&.bordered{
+		border: 1px solid darken(@white, 10%);
+	}
+	
+	&.contrast, .contrast{
+		.checkContrast(@white);
+	}
+}
