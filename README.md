@@ -30,7 +30,19 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 Quick Start
 ===========
 
-Change Themes
+You have a LESS compiler
+------------------------
+
+1. <a href="https://github.com/ajkochanowicz/Kickstrap/zipball/master">Download Kickstrap</a>.
+2. Edit either the index.html or sample.html file to play around. All the necessary files are already linked into these documents.
+3. <a href="#changethemes">Change themes</a>.
+
+You don't have a LESS compiler
+------------------------------
+
+Apologies. Kickstrap does not yet work very well without a LESS compiler in the development environment. However, I will be adding support for this very soon.
+
+<span id="changethemes">Change Themes</span>
 -------------
 
 1. Open /extras/less/overrides.less
