@@ -315,6 +315,12 @@
   .background(@color: @white, @alpha: 1) {
     background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
   }
+  .background(@color: @white){
+    background-color: @color;
+    @ie_col: argb(@color);
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')",@ie_col,@ie_col));
+    zoom:1; //needed for IE7
+  }
   .border(@color: @white, @alpha: 1) {
     border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
     .background-clip(padding-box);
