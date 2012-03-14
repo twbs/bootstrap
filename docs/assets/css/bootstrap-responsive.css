@@ -19,9 +19,11 @@
   clear: both;
 }
 .hide-text {
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
 }
 .input-block-level {
   display: block;
@@ -169,9 +171,9 @@
     width: 100%;
     min-height: 28px;
     /* Make inputs at least the height of their button counterpart */
-
+  
     /* Makes inputs behave like true block-level elements */
-
+  
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
