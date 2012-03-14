@@ -27,6 +27,9 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 + Easily switch to different color schemes.
 + Support for <a href="http://bootswatch.com/">Bootswatch</a> themes. Easily switch between predefined theme packages.
 
+Quick Start
+===========
+
 Change Themes
 -------------
 
