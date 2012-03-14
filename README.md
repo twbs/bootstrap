@@ -35,7 +35,7 @@ You have a LESS compiler
 
 1. <a href="https://github.com/ajkochanowicz/Kickstrap/zipball/master">Download Kickstrap</a>.
 2. Edit either the index.html or sample.html file to play around. All the necessary files are already linked into these documents.
-3. <a href="#changethemes">Change themes</a>.
+3. Change themes (section below).
 
 You don't have a LESS compiler
 ------------------------------

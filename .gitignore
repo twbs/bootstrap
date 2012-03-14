@@ -11,6 +11,7 @@
 *.sass-cache
 
 # OS or Editor folders
+Makefile
 .DS_Store
 Thumbs.db
 .cache
