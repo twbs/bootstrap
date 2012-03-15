@@ -22,6 +22,10 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 + Optional Google Chrome Frame prompt for users of older browsers
 + More information at <a href="http://html5boilerplate.com/">H5BP Homepage</a>
 
+**<a href="http://harvesthq.github.com/chosen/">Chosen</a> from Harvest**
+
+jQuery-powered library to stylize &lt;select&gt; boxes. (See sample.html)
+
 **Themes**
 
 + Easily switch to different color schemes.
