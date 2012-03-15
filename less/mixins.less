@@ -116,13 +116,13 @@
 #font {
   #family {
     .serif() {
-      font-family: Georgia, "Times New Roman", Times, serif;
+      font-family: @serifFontFamily;
     }
     .sans-serif() {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: @sansFontFamily;
     }
     .monospace() {
-      font-family: Menlo, Monaco, "Courier New", monospace;
+      font-family: @monoFontFamily;
     }
   }
   .shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
