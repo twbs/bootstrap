@@ -1870,6 +1870,11 @@ table .span24 {
   left: auto;
   right: 0;
 }
+.dropup .btn-large .caret,
+.navbar-fixed-bottom .dropdown .btn-large .caret {
+  border-bottom: 5px solid #000000;
+  border-top: 0;
+}
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;

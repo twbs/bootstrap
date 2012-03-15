@@ -126,6 +126,15 @@
 // TODO: abstract this so that the navbar fixed styles are not placed here?
 .dropup,
 .navbar-fixed-bottom .dropdown {
+  
+  // Different caret for large buttons
+  .btn-large {
+    .caret {
+      border-bottom: 5px solid @black;
+      border-top: 0;
+    }
+  }
+  
   // Reverse the caret
   .caret {
     border-top: 0;
