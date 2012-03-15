@@ -21,7 +21,8 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
   <link rel="stylesheet" href="extras/html5bp/css/style.min.css">
-  <link rel="stylesheet" href="css/bootstrap.css"Mor
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="extras/chosen/chosen.min.css" />
   <!-- More ideas for your head here: h5bp.com/d/head-Tips -->
 
   <!-- All JavaScript at the bottom, except this Modernizr build.
@@ -49,6 +50,9 @@
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="extras/html5bp/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  
+  <!-- Chosen -->
+  <script type="text/javascript" src="extras/chosen/chosen.jquery.min.js"></script>
 
   <!-- scripts concatenated and minified via build script -->
   <script src="extras/html5bp/js/plugins.js"></script>
@@ -56,6 +60,7 @@
   
   <!-- Full Bootstrap js file. -->
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  
   
   <!-- If you'd rather pick and choose, comment the above and uncomment what you need below -->
   <!--script type="text/javascript" src="js/bootstrap-alert.min.js"></script-->
@@ -78,6 +83,8 @@
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
        mathiasbynens.be/notes/async-analytics-snippet -->
+  <!-- Activate Chosen js -->
+  <script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true}); </script>
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
