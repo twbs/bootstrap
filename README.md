@@ -59,30 +59,37 @@ Apologies. Kickstrap does not yet work very well without a LESS compiler in the 
 2. Uncomment the @import lines of the theme you want to use.
 3. Compile.
 
-Upgrade bootstrap core (if you don't want to wait for me to do it)
--------------------------------------------------------------------------
+Add to an existing Bootstrap Project
+------------------------------------
 
 Using bootstrap extras requires using the LESS framework in your development environment. 
 At this time, you can avoid having to do this by simply downloading the latest releases of Bootstrap extras from GitHub.
 
-1. <a href="http://twitter.github.com/bootstrap">Download complete bootstrap files</a>.
-2. Simply paste everything into the root of this directory (at the same level as index.html and 404.html)
-3. Edit /less/bootstrap.less
-4. After this line:<pre>
-@import "variables.less"; // Modify this for custom colors, font-sizes, etc</pre>
-Add this line: <pre>
-@import "../extras/less/overrides.less"; // Use our own variables if we want.</pre>
-So it should look like this:<pre>
-// Core variables and mixins
-@import "variables.less"; // Modify this for custom colors, font-sizes, etc
-@import "../extras/less/themes.less"; // Use our own variables if we want.
-@import "mixins.less";</pre>
-5. Comment out the sprites line like this<pre>
-//@import "sprites.less";</pre>
-6. In the same file add this to the very end:<pre>
-//Overrides
-@import "../extras/less/overrides.less";</pre>
-7. Compile and you're set.
+1. Paste the /extras folder into the root of your Bootstrap directory (and any other files in the Kickstrap root you may want)
+2. Add the following to the very end of [Bootstrap root]/less/bootstrap.less:
+<code>@import "../extras/less/overrides.less";<code>
+3. Compile with LESS.
+4. Add the following to your &lt;head&gt;:
+<pre>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;extras/html5bp/css/style.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.css&quot;&gt;
+&lt;script src=&quot;extras/html5bp/js/libs/modernizr-2.5.3.min.js&quot;&gt;&lt;/script&gt;</pre>
+(Assuming this file is in the Bootstrap root directory. Adjust accordingly.)
+5. Add the following just before the ending &lt;body&gt; tag:
+<pre>&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;window.jQuery || document.write('&lt;script src=&quot;extras/html5bp/js/libs/jquery-1.7.1.min.js&quot;&gt;&lt;\/script&gt;')&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;extras/chosen/chosen.jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;extras/html5bp/js/plugins.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;extras/html5bp/js/script.js&quot;&gt;&lt;/script&gt;  
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; $(&quot;.chzn-select&quot;).chosen(); $(&quot;.chzn-select-deselect&quot;).chosen({allow_single_deselect:true}); &lt;/script&gt;
+&lt;script&gt;
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+&lt;/script&gt;</pre>
+(Assuming this file is in your root bootstrap directory. Adjust accordingly.)
 
 Authors
 -------
