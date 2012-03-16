@@ -31,7 +31,7 @@
   <!-- All JavaScript at the bottom, except this Modernizr build.
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="extras/html5bp/js/libs/modernizr-2.5.3.min.js"></script>
+  <script src="extras/html5bp/js/libs/modernizr.custom.39617.js"></script>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -41,7 +41,8 @@
 
   </header>
   <div role="main">
-    <a href="sample.html">Sample</a>
+    <h1><a href="sample.html">Sample</a></h1>
+    <input type="text" placeholder="glorious" />
   </div>
   <footer>
 
@@ -90,6 +91,16 @@
        mathiasbynens.be/notes/async-analytics-snippet -->
   <!-- Activate Chosen js -->
   <script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true}); </script>
+  <script type="text/javascript">
+  //Show placeholder text in input boxes for older browsers.
+    Modernizr.load({
+        test: Modernizr.input.placeholder,
+        nope: [
+                'extras/html5bp/css/placeholder_polyfillt.min.css',
+                'extras/html5bp/js/libs/placeholder_polyfill.jquery.min.combo.js'
+              ]
+    });
+  </script>
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
