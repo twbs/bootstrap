@@ -10,7 +10,7 @@ The Extras
 
 **<a href="http://fortawesome.github.com/Font-Awesome/#">Font Awesome</a>**
 
-Turns glyphicons into an icon font to use a variety of sizes and colors. Also adds a bunch of new icons.
++ Turns glyphicons into an icon font to use a variety of sizes and colors. Also adds a bunch of new icons.
 
 **<a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> Goodies**
 
@@ -20,7 +20,7 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 + Modernizr js loaded and ready to go in starter html files.
 + Ready for Google Analytics
 + Optional Google Chrome Frame prompt for users of older browsers
-+ More information at <a href="http://html5boilerplate.com/">H5BP Homepage</a>
++ Too much to mention here. More information at <a href="http://html5boilerplate.com/">H5BP Homepage</a>
 
 **<a href="http://harvesthq.github.com/chosen/">Chosen</a> from Harvest**
 
