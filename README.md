@@ -35,7 +35,7 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 
 + OLCG is just a 98 byte code snippet to quickly halve or third anything.
 + (.oh = one half, ot = one third, tt = two thirds.)
-+ Check out the docs to see how much this little peice of code can do.
++ Check out the docs to see how much this little piece of code can do.
 
 Quick Start
 ===========
