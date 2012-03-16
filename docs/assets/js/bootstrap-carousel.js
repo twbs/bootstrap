@@ -34,17 +34,20 @@
       .on('mouseleave', $.proxy(this.cycle, this))
     
     this.touch = {
-       supported: "ontouchend" in document,
-       maxTime: 1000,
-       maxDistance: 50,
-       startedAt: 0,
-       startPosition: 0
+       supported: "ontouchend" in document
+    ,  startedAt: 0
+    ,  startPosition: 0
     }
     
-    this.touch.supported == true && this.$element
-      .on('touchstart', $.proxy(this.touchstart, this))
-      .on('touchend', $.proxy(this.touchend, this))
-      .on('touchmove', $.proxy(this.touchmove, this))
+    if (this.options.touch && this.touch.supported == true) {
+      this.$element
+        .on('touchstart', $.proxy(this.touchstart, this))
+        .on('touchend', $.proxy(this.touchend, this))
+        .on('touchmove', $.proxy(this.touchmove, this))
+        
+      this.options.touchHideControls && this.$element
+        .children('.carousel-control').fadeOut('slow')
+    }
   }
 
   Carousel.prototype = {
@@ -149,7 +152,7 @@
           currentDistance = (this.touch.startPosition === 0) ? 0 : Math.abs(currentX - this.touch.startPosition),
           currentTime = e.timeStamp
 
-      if (this.touch.startedAt !== 0 && currentTime - this.touch.startedAt < this.touch.maxTime && currentDistance > this.touch.maxDistance) {
+      if (this.touch.startedAt !== 0 && currentTime - this.touch.startedAt < this.options.touchMaxTime && currentDistance > this.options.touchMaxDistance) {
         if (currentX < this.touch.startPosition) {
           this.prev().pause();
         } else if (currentX > this.touch.startPosition) {
@@ -181,6 +184,10 @@
   $.fn.carousel.defaults = {
     interval: 5000
   , pause: 'hover'
+  , touch: true
+  , touchMaxTime: 1000
+  , touchMaxDistance: 50
+  , touchHideControls: true
   }
 
   $.fn.carousel.Constructor = Carousel
