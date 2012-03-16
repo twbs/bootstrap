@@ -42,8 +42,8 @@
 // --------
 
 .nav-list {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 14px;
+  padding-right: 14px;
   margin-bottom: 0;
 }
 .nav-list > li > a,
@@ -55,18 +55,14 @@
 .nav-list > li > a {
   padding: 3px 15px;
 }
-.nav-list > .active > a,
-.nav-list > .active > a:hover {
+.nav-list .active > a,
+.nav-list .active > a:hover {
   color: @white;
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
   background-color: @linkColor;
 }
 .nav-list [class^="icon-"] {
   margin-right: 2px;
-}
-// Dividers (basically an hr) within the dropdown
-.nav-list .divider {
-  .nav-divider();
 }
 
 
@@ -106,9 +102,8 @@
 
 // Actual tabs (as links)
 .nav-tabs > li > a {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  line-height: @baseLineHeight;
+  padding-top: 9px;
+  padding-bottom: 9px;
   border: 1px solid transparent;
   .border-radius(4px 4px 0 0);
   &:hover {
@@ -138,8 +133,8 @@
 }
 
 // Active state
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills .active > a,
+.nav-pills .active > a:hover {
   color: @white;
   background-color: @linkColor;
 }
@@ -205,13 +200,11 @@
 .nav-tabs .dropdown-toggle .caret,
 .nav-pills .dropdown-toggle .caret {
   border-top-color: @linkColor;
-  border-bottom-color: @linkColor;
   margin-top: 6px;
 }
 .nav-tabs .dropdown-toggle:hover .caret,
 .nav-pills .dropdown-toggle:hover .caret {
   border-top-color: @linkColorHover;
-  border-bottom-color: @linkColorHover;
 }
 
 // Active dropdown links
@@ -219,7 +212,6 @@
 .nav-tabs .active .dropdown-toggle .caret,
 .nav-pills .active .dropdown-toggle .caret {
   border-top-color: @grayDark;
-  border-bottom-color: @grayDark;
 }
 
 // Active:hover dropdown links
@@ -242,7 +234,6 @@
 .nav .open.active .caret,
 .nav .open a:hover .caret {
   border-top-color: @white;
-  border-bottom-color: @white;
   .opacity(100);
 }
 
@@ -265,8 +256,7 @@
   .clearfix();
 }
 .tab-content {
-  display: table; // prevent content from running below tabs
-  width: 100%;
+  overflow: hidden; // prevent content from running below tabs
 }
 
 // Remove border on bottom, left, right

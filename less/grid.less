@@ -1,5 +1,8 @@
+// GRID SYSTEM
+// -----------
+
 // Fixed (940px)
-#grid > .core(@gridColumnWidth, @gridGutterWidth);
+#gridSystem > .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth);
 
 // Fluid (940px)
-#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
+#fluidGridSystem > .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth);

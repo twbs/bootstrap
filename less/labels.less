@@ -3,13 +3,10 @@
 
 // Base
 .label {
-  padding: 1px 4px 2px;
-  font-size: @baseFontSize * .846;
+  padding: 2px 4px 3px;
+  font-size: @baseFontSize * .85;
   font-weight: bold;
-  line-height: 13px; // ensure proper line-height if floated
   color: @white;
-  vertical-align: middle;
-  white-space: nowrap;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   background-color: @grayLight;
   .border-radius(3px);
@@ -33,6 +30,3 @@
 
 .label-info             { background-color: @infoText; }
 .label-info:hover       { background-color: darken(@infoText, 10%); }
-
-.label-inverse             { background-color: @grayDark; }
-.label-inverse:hover       { background-color: darken(@grayDark, 10%); }
