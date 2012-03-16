@@ -24,7 +24,7 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 
 **<a href="http://harvesthq.github.com/chosen/">Chosen</a> from Harvest**
 
-jQuery-powered library to stylize &lt;select&gt; boxes. (See sample.html)
++ jQuery-powered library to stylize &lt;select&gt; boxes. (See sample.html)
 
 **Themes**
 
