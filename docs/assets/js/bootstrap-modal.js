@@ -41,13 +41,26 @@
 
     , show: function () {
         var that = this
+          , openModalCount = $('body').data('modal-open-count') || 0
+          , backdropZIndex = $('div.modal-backdrop:first').css('zIndex') || 0
 
         if (this.isShown) return
 
-        $('body').addClass('modal-open')
+        $('div.modal.in:visible').each(function() {
+        	var $modal = $(this)
+        	  , modalOpenIndex = $modal.data('modal-open-index') || 0
+        	
+        	if (modalOpenIndex <= openModalCount) {
+        	  $modal.css('zIndex', backdropZIndex - 50 + modalOpenIndex) //move the modal beneath the modal backdrop
+        	}
+        })
+        
+        openModalCount++;
+        
+        $('body').addClass('modal-open').data('modal-open-count', openModalCount)
 
         this.isShown = true
-        this.$element.trigger('show')
+        this.$element.trigger('show').data('modal-open-index', openModalCount)
 
         escape.call(this)
         backdrop.call(this, function () {
@@ -77,15 +90,29 @@
         if (!this.isShown) return
 
         var that = this
+          , openModalCount = $('body').data('modal-open-count') || 0
+          , thisModalOpenIndex = this.$element.data('modal-open-index') || 0
         this.isShown = false
+        
+        $('div.modal.in:visible').each(function() {
+        	var $modal = $(this)
+        	  , modalOpenIndex = $modal.data('modal-open-index') || 0
+        	
+        	if (modalOpenIndex == thisModalOpenIndex - 1) {
+        	  $modal.css('zIndex', '')
+        	}
+        })
+        
+        openModalCount--;
 
-        $('body').removeClass('modal-open')
+        $('body').removeClass('modal-open').data('modal-open-count', openModalCount)
 
         escape.call(this)
 
         this.$element
           .trigger('hide')
           .removeClass('in')
+          .data('modal-open-index', '')
 
         $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :
@@ -125,9 +152,14 @@
 
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
+        , $backDrops = $("body div.modal-backdrop")
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .appendTo(document.body)
+
+      if ($backDrops.length > 0) {
+        this.$backdrop.addClass("modal-backdrop-transparent")
+      }
 
       if (this.options.backdrop != 'static') {
         this.$backdrop.click($.proxy(this.hide, this))

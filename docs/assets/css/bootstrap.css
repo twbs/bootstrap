@@ -3271,6 +3271,9 @@ input[type="submit"].btn.btn-mini {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
+.modal-backdrop-transparent {
+  background-color: transparent;
+}
 .modal {
   position: fixed;
   top: 50%;
