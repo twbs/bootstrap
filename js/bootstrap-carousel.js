@@ -34,12 +34,12 @@
       .on('mouseleave', $.proxy(this.cycle, this))
     
     this.touch = {
-        supported: "ontouchend" in document,
-        maxTime: 1000,
-        maxDistance: 50,
-        startedAt: 0,
-        startPosition: 0
-    };
+       supported: "ontouchend" in document,
+       maxTime: 1000,
+       maxDistance: 50,
+       startedAt: 0,
+       startPosition: 0
+    }
     
     this.touch.supported == true && this.$element
       .on('touchstart', $.proxy(this.touchstart, this))
@@ -132,33 +132,33 @@
       return this
     }
     
-    ,touchstart: function(e) {
-        e.preventDefault();
-        this.touch.startedAt = e.timeStamp
-        this.touch.startPosition = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
+  , touchstart: function(e) {
+      e.preventDefault();
+      this.touch.startedAt = e.timeStamp
+      this.touch.startPosition = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
     }
     
-    ,touchend: function() {
-        this.touch.startedAt = 0
-        this.touch.startPosition = 0
+  , touchend: function() {
+      this.touch.startedAt = 0
+      this.touch.startPosition = 0
     }
 
-    ,touchmove: function(e) {
-        e.preventDefault();
-        var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX,
-            currentDistance = (this.touch.startPosition === 0) ? 0 : Math.abs(currentX - this.touch.startPosition),
-            currentTime = e.timeStamp
-            
-        if (this.touch.startedAt !== 0 && currentTime - this.touch.startedAt < this.touch.maxTime && currentDistance > this.touch.maxDistance) {
-            if (currentX < this.touch.startPosition) {
-                this.prev().pause();
-            } else if (currentX > this.touch.startPosition) {
-                this.next().pause();
-            }
-            
-            this.touch.startedAt = 0
-            this.touch.startPosition = 0
+  , touchmove: function(e) {
+      e.preventDefault();
+      var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX,
+          currentDistance = (this.touch.startPosition === 0) ? 0 : Math.abs(currentX - this.touch.startPosition),
+          currentTime = e.timeStamp
+
+      if (this.touch.startedAt !== 0 && currentTime - this.touch.startedAt < this.touch.maxTime && currentDistance > this.touch.maxDistance) {
+        if (currentX < this.touch.startPosition) {
+          this.prev().pause();
+        } else if (currentX > this.touch.startPosition) {
+          this.next().pause();
         }
+
+        this.touch.startedAt = 0
+        this.touch.startPosition = 0
+      }
     }
   }
 
