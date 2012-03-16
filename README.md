@@ -31,6 +31,12 @@ jQuery-powered library to stylize &lt;select&gt; boxes. (See sample.html)
 + Easily switch to different color schemes.
 + Support for <a href="http://bootswatch.com/">Bootswatch</a> themes. Easily switch between predefined theme packages.
 
+**<a href="http://adamkochanowicz.com/oneline.html">One Line CSS Grid</a>**
+
++ OLCG is just a 98 byte code snippet to quickly halve or third anything.
++ (.oh = one half, ot = one third, tt = two thirds.)
++ Check out the docs to see how much this little peice of code can do.
+
 Quick Start
 ===========
 
