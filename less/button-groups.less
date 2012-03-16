@@ -95,8 +95,22 @@
   padding-right: 8px;
   @shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   .box-shadow(@shadow);
-  *padding-top: 5px;
-  *padding-bottom: 5px;
+  *padding-top: 3px;
+  *padding-bottom: 3px;
+}
+.btn-group .btn-mini.dropdown-toggle {
+  padding-left: 5px;
+  padding-right: 5px;
+  *padding-top: 1px;
+  *padding-bottom: 1px;
+}
+.btn-group .btn-small.dropdown-toggle {
+  *padding-top: 4px;
+  *padding-bottom: 4px;
+}
+.btn-group .btn-large.dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .btn-group.open {
@@ -127,22 +141,32 @@
 .open.btn-group .caret {
   .opacity(100);
 }
+// Carets in other button sizes
+.btn-mini .caret {
+  margin-top: 5px;
+}
+.btn-small .caret {
+  margin-top: 6px;
+}
+.btn-large .caret {
+  margin-top: 6px;
+  border-left:  5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top:   5px solid @black;
+}
 
 
 // Account for other colors
 .btn-primary,
+.btn-warning,
 .btn-danger,
 .btn-info,
 .btn-success,
 .btn-inverse {
   .caret {
     border-top-color: @white;
+    border-bottom-color: @white;
     .opacity(75);
   }
-}
-
-// Small button dropdowns
-.btn-small .caret {
-  margin-top: 4px;
 }
 

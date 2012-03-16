@@ -6,6 +6,10 @@
 // -------------
 
 .navbar {
+  // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
+  *position: relative;
+  *z-index: 2;
+
   overflow: visible;
   margin-bottom: @baseLineHeight;
 }
@@ -18,6 +22,12 @@
   .border-radius(4px);
   @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
   .box-shadow(@shadow);
+}
+
+// Set width to auto for default container
+// We then reset it for fixed navbars in the #gridSystem mixin
+.navbar .container {
+  width: auto;
 }
 
 // Navbar button for toggling navbar items in responsive layouts
@@ -50,6 +60,7 @@
 
 // Brand, links, text, and buttons
 .navbar {
+  color: @navbarText;
   // Hover and active states
   .brand:hover {
     text-decoration: none;
@@ -68,17 +79,12 @@
   // Plain text in topbar
   .navbar-text {
     margin-bottom: 0;
-    line-height: 40px;
-    color: @navbarText;
-    a:hover {
-      color: @white;
-      background-color: transparent;
-    }
+    line-height: @navbarHeight;
   }
   // Buttons in navbar
   .btn,
   .btn-group {
-    margin-top: 5px; // make buttons vertically centered in navbar
+    .navbarVerticalAlign(30px); // Vertically center in navbar
   }
   .btn-group .btn {
     margin-top: 0; // then undo the margin here so we don't accidentally double it
@@ -90,14 +96,15 @@
   margin-bottom: 0; // remove default bottom margin
   .clearfix();
   input,
-  select {
-    display: inline-block;
-    margin-top: 5px;
-    margin-bottom: 0;
-  }
+  select,
   .radio,
   .checkbox {
-    margin-top: 5px;
+    .navbarVerticalAlign(30px); // Vertically center in navbar
+  }
+  input,
+  select {
+    display: inline-block;
+    margin-bottom: 0;
   }
   input[type="image"],
   input[type="checkbox"],
@@ -118,36 +125,33 @@
 .navbar-search {
   position: relative;
   float: left;
-  margin-top: 6px;
+  .navbarVerticalAlign(28px); // Vertically center in navbar
   margin-bottom: 0;
   .search-query {
     padding: 4px 9px;
     #font > .sans-serif(13px, normal, 1);
     color: @white;
-    color: rgba(255,255,255,.75);
-    background: #666;
-    background: rgba(255,255,255,.3);
-    border: 1px solid #111;
+    background-color: @navbarSearchBackground;
+    border: 1px solid @navbarSearchBorder;
     @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15);
     .box-shadow(@shadow);
     .transition(none);
 
-    // Placeholder text gets special styles; can't be bundled together though for some reason
-    .placeholder(@grayLighter);
-
-    // Hover states
-    &:hover {
-      color: @white;
-      background-color: @grayLight;
-      background-color: rgba(255,255,255,.5);
+    // Placeholder text gets special styles; can't be a grouped selector
+    &:-moz-placeholder {
+      color: @navbarSearchPlaceholderColor;
     }
+    &::-webkit-input-placeholder {
+      color: @navbarSearchPlaceholderColor;
+    }
+
     // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
     &:focus,
     &.focused {
       padding: 5px 10px;
       color: @grayDark;
       text-shadow: 0 1px 0 @white;
-      background-color: @white;
+      background-color: @navbarSearchBackgroundFocus;
       border: 0;
       .box-shadow(0 0 3px rgba(0,0,0,.15));
       outline: 0;
@@ -156,21 +160,41 @@
 }
 
 
+
 // FIXED NAVBAR
 // ------------
 
-.navbar-fixed-top {
+// Shared (top/bottom) styles
+.navbar-fixed-top,
+.navbar-fixed-bottom {
   position: fixed;
-  top: 0;
   right: 0;
   left: 0;
   z-index: @zindexFixedNavbar;
+  margin-bottom: 0; // remove 18px margin for static navbar
 }
-.navbar-fixed-top .navbar-inner {
+.navbar-fixed-top .navbar-inner,
+.navbar-fixed-bottom .navbar-inner {
   padding-left:  0;
   padding-right: 0;
   .border-radius(0);
 }
+
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  #grid > .core > .span(@gridColumns);
+}
+
+// Fixed to top
+.navbar-fixed-top {
+  top: 0;
+}
+
+// Fixed to bottom
+.navbar-fixed-bottom {
+  bottom: 0;
+}
+
 
 
 // NAVIGATION
@@ -210,9 +234,9 @@
 // Active nav items
 .navbar .nav .active > a,
 .navbar .nav .active > a:hover {
-  color: @navbarLinkColorHover;
+  color: @navbarLinkColorActive;
   text-decoration: none;
-  background-color: @navbarBackground;
+  background-color: @navbarLinkBackgroundActive;
 }
 
 // Dividers (basically a vertical hr)
@@ -246,7 +270,7 @@
     border-left:   7px solid transparent;
     border-right:  7px solid transparent;
     border-bottom: 7px solid #ccc;
-    border-bottom-color: rgba(0,0,0,.2);
+    border-bottom-color: @dropdownBorder;
     position: absolute;
     top: -7px;
     left: 9px;
@@ -256,17 +280,33 @@
     display: inline-block;
     border-left:   6px solid transparent;
     border-right:  6px solid transparent;
-    border-bottom: 6px solid @white;
+    border-bottom: 6px solid @dropdownBackground;
     position: absolute;
     top: -6px;
     left: 10px;
   }
 }
-
+// Menu position and menu caret support for dropups via extra dropup class
+.navbar-fixed-bottom .dropdown-menu {
+  &:before {
+    border-top: 7px solid #ccc;
+    border-top-color: @dropdownBorder;
+    border-bottom: 0;
+    bottom: -7px;
+    top: auto;
+  }
+  &:after {
+    border-top: 6px solid @dropdownBackground;
+    border-bottom: 0;
+    bottom: -6px;
+    top: auto;
+  }
+}
 // Dropdown toggle caret
 .navbar .nav .dropdown-toggle .caret,
 .navbar .nav .open.dropdown .caret {
   border-top-color: @white;
+  border-bottom-color: @white;
 }
 .navbar .nav .active .caret {
   .opacity(100);
@@ -285,7 +325,9 @@
 }
 
 // Right aligned menus need alt position
-.navbar .nav.pull-right .dropdown-menu {
+// TODO: rejigger this at some point to simplify the selectors
+.navbar .nav.pull-right .dropdown-menu,
+.navbar .nav .dropdown-menu.pull-right {
   left: auto;
   right: 0;
   &:before {
