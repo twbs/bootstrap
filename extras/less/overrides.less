@@ -1,12 +1,27 @@
 //BOOTSTRAP OVERRIDES
 //-------------------
 
-  /* Use this css to override any of Bootstrap's default code. 
-  This allows you to keep the Bootstrap core up-to-date without losing your modifications. */
+  /* 
+  
+  What should go here?
+  
+  The override.less file is Grand Central for all the css that overrides Bootstrap.
+  This should be @imported into /less/bootstrap.less at the end of the file.
+  This allows you to keep the Bootstrap core up-to-date without losing your modifications. 
+  
+  However, only less writeup which effects the whole of Kickstrap should be directly written here.
+  If instead you want to modify your current theme, I recommend going into the /extras/themes/ folder
+  and modifying it there.
+  
+  */
 
   @import "../../extras/fontawesome/font-awesome.less"; // Using awesomefont instead of an image sprite.
   @import "responsive.less"; // Turning on responsive layout by default.
   @import "../../extras/chosen/chosen.less"; // Chosen for select boxes
+  
+  // ONE LINE CSS GRID
+  // For simple halving and thirding of divs. http://adamkochanowicz.com/oneline.html
+  .oh,.ot,.tt{float:left;padding:0 2% 2% 0;width:48%}.ot{width:31%}.tt{width:65%}.cl{clear:both}
   
   //THEME
   //-----
