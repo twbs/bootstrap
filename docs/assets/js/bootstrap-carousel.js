@@ -154,9 +154,9 @@
 
       if (this.touch.startedAt !== 0 && currentTime - this.touch.startedAt < this.options.touchMaxTime && currentDistance > this.options.touchMaxDistance) {
         if (currentX < this.touch.startPosition) {
-          this.prev().pause();
-        } else if (currentX > this.touch.startPosition) {
           this.next().pause();
+        } else if (currentX > this.touch.startPosition) {
+          this.prev().pause();
         }
 
         this.touch.startedAt = 0
