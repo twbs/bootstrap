@@ -93,6 +93,7 @@
             <li><a href="#collapse">Collapse</a></li>
             <li><a href="#carousel">Carousel</a></li>
             <li><a href="#typeahead">Typeahead</a></li>
+            <li><a href="#multiselector">Multi Selector</a></li>
           </ul>
         </div>
       </header>
@@ -1454,6 +1455,46 @@ $('.carousel').carousel({
         </div>
       </div>
     </section>
+  
+    <!-- Multi Selector
+    ================================================== -->
+    <section id="multiselector">
+      <div class="page-header">
+        <h1>Multi Selector <small>bootstrap-multiselector.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <h3>About</h3>
+          <p>A combination of a button and a multi-items selector with intelligent button text </p>
+          <a href="assets/js/bootstrap-multiselector.js" target="_blank" class="btn">Download file</a>
+        </div>
+        <div class="span9 columns">
+          <h2>Example</h2>
+          <div class="well">
+            <div class="btn-group multi-selector" data-provide="multiselector" data-filter-multiple="Multiple Items">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+              <span>No Items</span>
+              <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu ">
+                <li><a href="#">No Items</a></li>
+                <li class="divider"></li>
+                <li><a href="#"> <label class="checkbox"> <input type="checkbox"> Item 1</label></a></li>
+                <li><a href="#"> <label class="checkbox"> <input type="checkbox"> Item 2</label></a></li>
+                <li><a href="#"> <label class="checkbox"> <input type="checkbox"> Item 3</label></a></li>
+                <li><a href="#"> <label class="checkbox"> <input type="checkbox"> Item 4</label></a></li>
+                <li><a href="#"> <label class="checkbox"> <input type="checkbox"> Item 5</label></a></li>
+              </ul>
+            </div>
+          </div>
+        <h2>Using bootstrap-multiselector.js</h2>
+          <p>Call the multiselector via javascript:</p>
+          <pre class="prettyprint linenums">$('.typeahead').multiselector()</pre>
+          <h3>Methods</h3>
+          <h4>$().multiselector('update')</h4>
+          <p>Updates the button text.</p>
+    </section>
+
 
      <!-- Footer
       ================================================== -->
@@ -1486,6 +1527,7 @@ $('.carousel').carousel({
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-multiselector.js"></script>
     <script src="assets/js/application.js"></script>
 
 
