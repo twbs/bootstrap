@@ -36,15 +36,17 @@
     this.touch = {
        supported: "ontouchend" in document
     ,  startedAt: 0
-    ,  startPosition: 0
+    ,  endedAt: 0
+    ,  startX: 0
+    ,  endX: 0
     }
     
     if (this.options.touch && this.touch.supported == true) {
       this.$element
         .on('touchstart', $.proxy(this.touchstart, this))
-        .on('touchend', $.proxy(this.touchend, this))
         .on('touchmove', $.proxy(this.touchmove, this))
-        
+        .on('touchend', $.proxy(this.touchend, this))
+
       this.options.touchHideControls && this.$element
         .children('.carousel-control').fadeOut('slow')
     }
@@ -136,32 +138,31 @@
     }
     
   , touchstart: function(e) {
-      e.preventDefault();
       this.touch.startedAt = e.timeStamp
-      this.touch.startPosition = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
+      this.touch.startX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
     }
     
-  , touchend: function() {
-      this.touch.startedAt = 0
-      this.touch.startPosition = 0
+  , touchmove: function(e) {
+      this.touch.endX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
+      e.preventDefault();
     }
 
-  , touchmove: function(e) {
-      e.preventDefault();
-      var currentX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX,
-          currentDistance = (this.touch.startPosition === 0) ? 0 : Math.abs(currentX - this.touch.startPosition),
-          currentTime = e.timeStamp
-
-      if (this.touch.startedAt !== 0 && currentTime - this.touch.startedAt < this.options.touchMaxTime && currentDistance > this.options.touchMaxDistance) {
-        if (currentX < this.touch.startPosition) {
+  , touchend: function(e) {
+      this.touch.endedAt = e.timeStamp
+      var distance = (this.touch.startX === 0) ? 0 : Math.abs(this.touch.endX - this.touch.startX)
+      
+      if (this.touch.startedAt !== 0 && (this.touch.endedAt - this.touch.startedAt) < this.options.touchMaxTime && distance > this.options.touchMaxDistance) {
+        if (this.touch.endX < this.touch.startX) {
           this.next().pause();
-        } else if (currentX > this.touch.startPosition) {
+        } else if (this.touch.endX > this.touch.startX) {
           this.prev().pause();
         }
-
-        this.touch.startedAt = 0
-        this.touch.startPosition = 0
       }
+      
+      this.touch.startedAt = 0
+      this.touch.endedAt = 0
+      this.touch.startX = 0
+      this.touch.endX = 0
     }
   }
 
