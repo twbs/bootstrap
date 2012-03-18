@@ -90,7 +90,8 @@
           {{_i}}Wraps abbreviations and acronyms to show the expanded version on hover{{/i}}
         </td>
         <td>
-          {{_i}}Include optional <code>title</code> for expanded text{{/i}}
+          <p>{{_i}}Include optional <code>title</code> attribute for expanded text{{/i}}</p>
+          {{_i}}Use <code>.initialism</code> class for uppercase abbreviations.{{/i}}
         </td>
       </tr>
       <tr>
@@ -129,8 +130,9 @@
     </div>
     <div class="span4">
       <h3>{{_i}}Example abbreviations{{/i}}</h3>
-      <p>{{_i}}Abbreviations are styled with uppercase text and a light dotted bottom border. They also have a help cursor on hover so users have extra indication something will be shown on hover.{{/i}}</p>
-      <p>{{_i}}<abbr title="HyperText Markup Language">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
+      <p>{{_i}}Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.{{/i}}</p>
+      <p>{{_i}}Add the <code>initialism</code> class to an abbreviation to increase typographic harmony by giving it a slightly smaller text size.{{/i}}</p>
+      <p>{{_i}}<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
       <p>{{_i}}An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.{{/i}}</p>
     </div>
   </div>
@@ -209,8 +211,8 @@
   <!-- Lists -->
   <h2>{{_i}}Lists{{/i}}</h2>
   <div class="row">
-    <div class="span3">
-      <h4>{{_i}}Unordered{{/i}}</h4>
+    <div class="span4">
+      <h3>{{_i}}Unordered{{/i}}</h3>
       <p><code>&lt;ul&gt;</code></p>
       <ul>
         <li>Lorem ipsum dolor sit amet</li>
@@ -230,8 +232,8 @@
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-    <div class="span3">
-      <h4>{{_i}}Unstyled{{/i}}</h4>
+    <div class="span4">
+      <h3>{{_i}}Unstyled{{/i}}</h3>
       <p><code>&lt;ul class="unstyled"&gt;</code></p>
       <ul class="unstyled">
         <li>Lorem ipsum dolor sit amet</li>
@@ -251,8 +253,8 @@
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-    <div class="span3">
-      <h4>{{_i}}Ordered{{/i}}</h4>
+    <div class="span4">
+      <h3>{{_i}}Ordered{{/i}}</h3>
       <p><code>&lt;ol&gt;</code></p>
       <ol>
         <li>Lorem ipsum dolor sit amet</li>
@@ -265,10 +267,26 @@
         <li>Eget porttitor lorem</li>
       </ol>
     </div>
-    <div class="span3">
-      <h4>{{_i}}Description{{/i}}</h4>
+  </div><!-- /row -->
+  <br>
+  <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Description{{/i}}</h3>
       <p><code>&lt;dl&gt;</code></p>
       <dl>
+        <dt>{{_i}}Description lists{{/i}}</dt>
+        <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      </dl>
+    </div>
+    <div class="span8">
+      <h3>{{_i}}Horizontal description{{/i}}</h3>
+      <p><code>&lt;dl class="dl-horizontal"&gt;</code></p>
+      <dl class="dl-horizontal">
         <dt>{{_i}}Description lists{{/i}}</dt>
         <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
         <dt>Euismod</dt>
@@ -341,6 +359,10 @@
   <div class="row">
     <div class="span8">
       <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="span1">
+          <col class="span7">
+        </colgroup>
         <thead>
           <tr>
             <th>{{_i}}Tag{{/i}}</th>
@@ -493,7 +515,7 @@
             <th>#</th>
             <th>{{_i}}First Name{{/i}}</th>
             <th>{{_i}}Last Name{{/i}}</th>
-            <th>{{_i}}Language{{/i}}</th>
+            <th>{{_i}}Username{{/i}}</th>
           </tr>
         </thead>
         <tbody>
@@ -501,19 +523,19 @@
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -538,7 +560,7 @@
             <th>#</th>
             <th>{{_i}}First Name{{/i}}</th>
             <th>{{_i}}Last Name{{/i}}</th>
-            <th>{{_i}}Language{{/i}}</th>
+            <th>{{_i}}Username{{/i}}</th>
           </tr>
         </thead>
         <tbody>
@@ -546,19 +568,19 @@
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -582,31 +604,31 @@
             <th>#</th>
             <th>{{_i}}First Name{{/i}}</th>
             <th>{{_i}}Last Name{{/i}}</th>
-            <th>{{_i}}Language{{/i}}</th>
+            <th>{{_i}}Username{{/i}}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td colspan="2">Mark Otto</td>
-            <td>CSS</td>
+            <td rowspan="2">1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@TwBootstrap</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td rowspan="2">Javascript</td>
-          </tr>
-          </tr>
-            <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Brosef</td>
-            <td>Stalin</td>
-            <td>HTML</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -630,7 +652,7 @@
             <th>#</th>
             <th>{{_i}}First Name{{/i}}</th>
             <th>{{_i}}Last Name{{/i}}</th>
-            <th>{{_i}}Language{{/i}}</th>
+            <th>{{_i}}Username{{/i}}</th>
           </tr>
         </thead>
         <tbody>
@@ -638,19 +660,18 @@
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -672,36 +693,35 @@
       <table class="table table-striped table-bordered table-condensed">
         <thead>
           <tr>
+            <th></th>
+            <th colspan="2">{{_i}}Full name{{/i}}</th>
+            <th></th>
+          </tr>
+          <tr>
             <th>#</th>
-            <th class="yellow">{{_i}}First Name{{/i}}</th>
-            <th class="blue">{{_i}}Last Name{{/i}}</th>
-            <th class="green">{{_i}}Language{{/i}}</th>
+            <th>{{_i}}First Name{{/i}}</th>
+            <th>{{_i}}Last Name{{/i}}</th>
+            <th>{{_i}}Username{{/i}}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+          <tr>
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Brosef</td>
-            <td>Stalin</td>
-            <td>HTML</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -786,6 +806,7 @@
       <form class="well">
         <label>{{_i}}Label name{{/i}}</label>
         <input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}"> <span class="help-inline">Associated help text!</span>
+        <p class="help-block">{{_i}}Example block-level help text here.{{/i}}</p>
         <label class="checkbox">
           <input type="checkbox"> {{_i}}Check me out{{/i}}
         </label>
@@ -832,7 +853,7 @@
         <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}">
         <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
         <label class="checkbox">
-          <input type="checkbox"> {{_i}}Remember?{{/i}}
+          <input type="checkbox"> {{_i}}Remember me{{/i}}
         </label>
         <button type="submit" class="btn">{{_i}}Sign in{{/i}}</button>
       </form>
@@ -840,7 +861,10 @@
 &lt;form class="well form-inline"&gt;
   &lt;input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}"&gt;
   &lt;input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}"&gt;
-  &lt;button type="submit" class="btn"&gt;{{_i}}Go{{/i}}&lt;/button&gt;
+  &lt;label class="checkbox"&gt;
+    &lt;input type="checkbox"&gt; {{_i}}Remember me{{/i}}
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Sign in{{/i}}&lt;/button&gt;
 &lt;/form&gt;
 </pre>
     </div>
@@ -1087,8 +1111,7 @@
             <label class="control-label" for="prependedInput">{{_i}}Prepended text{{/i}}</label>
             <div class="controls">
               <div class="input-prepend">
-                <span class="add-on">@</span>
-                <input class="span2" id="prependedInput" size="16" type="text">
+                <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
               </div>
               <p class="help-block">{{_i}}Here's some help text{{/i}}</p>
             </div>
@@ -1097,10 +1120,25 @@
             <label class="control-label" for="appendedInput">{{_i}}Appended text{{/i}}</label>
             <div class="controls">
               <div class="input-append">
-                <input class="span2" id="appendedInput" size="16" type="text">
-                <span class="add-on">.00</span>
+                <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
               </div>
-              <p class="help-block">{{_i}}Here's more help text{{/i}}</p>
+              <span class="help-inline">{{_i}}Here's more help text{{/i}}</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="appendedPrependedInput">{{_i}}Append and prepend{{/i}}</label>
+            <div class="controls">
+              <div class="input-prepend input-append">
+                <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="appendedPrependedInput">{{_i}}Append with button{{/i}}</label>
+            <div class="controls">
+              <div class="input-append">
+                <input class="span2" id="appendedPrependedInput" size="16" type="text"><button class="btn" type="button">Go!</button>
+              </div>
             </div>
           </div>
           <div class="control-group">
@@ -1184,44 +1222,44 @@
     <thead>
       <tr>
         <th>{{_i}}Button{{/i}}</th>
-        <th>{{_i}}Class{{/i}}</th>
+        <th>{{_i}}class=""{{/i}}</th>
         <th>{{_i}}Description{{/i}}</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><button class="btn" href="#">{{_i}}Default{{/i}}</button></td>
-        <td><code>.btn</code></td>
+        <td><code>btn</code></td>
         <td>{{_i}}Standard gray button with gradient{{/i}}</td>
       </tr>
       <tr>
         <td><button class="btn btn-primary" href="#">{{_i}}Primary{{/i}}</button></td>
-        <td><code>.btn-primary</code></td>
+        <td><code>btn btn-primary</code></td>
         <td>{{_i}}Provides extra visual weight and identifies the primary action in a set of buttons{{/i}}</td>
       </tr>
       <tr>
         <td><button class="btn btn-info" href="#">{{_i}}Info{{/i}}</button></td>
-        <td><code>.btn-info</code></td>
+        <td><code>btn btn-info</code></td>
         <td>{{_i}}Used as an alternate to the default styles{{/i}}</td>
       </tr>
       <tr>
         <td><button class="btn btn-success" href="#">{{_i}}Success{{/i}}</button></td>
-        <td><code>.btn-success</code></td>
+        <td><code>btn btn-success</code></td>
         <td>{{_i}}Indicates a successful or positive action{{/i}}</td>
       </tr>
       <tr>
         <td><button class="btn btn-warning" href="#">{{_i}}Warning{{/i}}</button></td>
-        <td><code>.btn-warning</code></td>
+        <td><code>btn btn-warning</code></td>
         <td>{{_i}}Indicates caution should be taken with this action{{/i}}</td>
       </tr>
       <tr>
         <td><button class="btn btn-danger" href="#">{{_i}}Danger{{/i}}</button></td>
-        <td><code>.btn-danger</code></td>
+        <td><code>btn btn-danger</code></td>
         <td>{{_i}}Indicates a dangerous or potentially negative action{{/i}}</td>
       </tr>
-  	  <tr>
+      <tr>
         <td><button class="btn btn-inverse" href="#">{{_i}}Inverse{{/i}}</button></td>
-        <td><code>.btn-inverse</code></td>
+        <td><code>btn btn-inverse</code></td>
         <td>{{_i}}Alternate dark gray button, not tied to a semantic action or use{{/i}}</td>
       </tr>
     </tbody>
@@ -1436,9 +1474,6 @@
       </ul>
     </div>
   </div>
-  <div class="alert alert-info">
-    {{_i}}<strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code>. In the docs, we show a light red background color on hover to highlight the icon's size.{{/i}}
-  </div>
 
   <br>
 
@@ -1451,7 +1486,7 @@
     </div>
     <div class="span4">
       <h3>{{_i}}How to use{{/i}}</h3>
-      <p>{{_i}}With v2.0.1, we have opted to use an <code>&lt;i&gt;</code> tag for all our icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:{{/i}}</p>
+      <p>{{_i}}Bootstrap uses an <code>&lt;i&gt;</code> tag for all icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search"&gt;&lt;/i&gt;
 </pre>
@@ -1460,6 +1495,10 @@
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
       <p>{{_i}}There are 120 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.{{/i}}</p>
+      <p>
+        <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
+        {{_i}}When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.{{/i}}
+      </p>
     </div>
     <div class="span4">
       <h3>{{_i}}Use cases{{/i}}</h3>

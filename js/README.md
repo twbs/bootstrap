@@ -28,7 +28,7 @@ All public APIs should be single, chainable methods, and return the collection a
 All methods should accept an optional options object, a string which targets a particular method, or null which initiates the default behavior:
 
     $("#myModal").modal() // initialized with defaults
-    $("#myModal").modal({ keyboard: false }) // initialized with now keyboard
+    $("#myModal").modal({ keyboard: false }) // initialized with no keyboard
     $("#myModal").modal('show') // initializes and invokes show immediately afterqwe2
 
 ---

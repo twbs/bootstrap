@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Scaffolding · Twitter Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,9 +20,9 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -81,14 +81,54 @@
         <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
         <div class="subnav">
           <ul class="nav nav-pills">
+            <li><a href="#global">Global styles</a></li>
             <li><a href="#gridSystem">Grid system</a></li>
-            <li><a href="#fluidGridSystem">Fluid gird system</a></li>
+            <li><a href="#fluidGridSystem">Fluid grid system</a></li>
             <li><a href="#gridCustomization">Customizing</a></li>
             <li><a href="#layouts">Layouts</a></li>
             <li><a href="#responsive">Responsive design</a></li>
           </ul>
         </div>
       </header>
+
+
+
+
+<!-- Global Bootstrap settings
+================================================== -->
+<section id="global">
+  <div class="page-header">
+    <h1>Global styles <small>for CSS reset, typography, and links</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Requires HTML5 doctype</h2>
+      <p>Bootstrap makes use of HTML elements and CSS properties that require the use of the HTML5 doctype. Be sure to include it at the beginning of every Bootstrapped page in your project.</p>
+<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  ...
+&lt;/html&gt;
+</pre>
+    </div><!-- /.span -->
+    <div class="span4">
+      <h2>Typography and links</h2>
+      <p>Within the <strong>scaffolding.less</strong> file, we set basic global display, typography, and link styles. Specifically, we:</p>
+      <ul>
+        <li>Remove margin on the body</li>
+        <li>Set <code>background-color: white;</code> on the <code>body</code></li>
+        <li>Use the <code>@baseFontFamily</code>, <code>@baseFontSize</code>, and <code>@baseLineHeight</code> attributes as our typographyic base</li>
+        <li>Set the global link color via <code>@linkColor</code> and apply link underlines only on <code>:hover</code></li>
+      </ul>
+    </div><!-- /.span -->
+    <div class="span4">
+      <h2>Reset via Normalize</h2>
+      <p>As of Bootstrap 2, the traditional CSS reset has evolved to make use of elements from <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> that also powers the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a>.</p>
+      <p>The new reset can still be found in <strong>reset.less</strong>, but with many elements removed for brevity and accuracy.</p>
+    </div><!-- /.span -->
+  </div><!-- /.row -->
+</section>
+
 
 
 
@@ -133,7 +173,7 @@
     <div class="span4">
       <p>The default grid system provided as part of Bootstrap is a <strong>940px-wide, 12-column grid</strong>.</p>
       <p>It also has four responsive variations for various devices and resolutions: phone, tablet portrait, table landscape and small desktops, and large widescreen desktops.</p>
-    </div>
+    </div><!-- /.span -->
     <div class="span4">
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
@@ -141,11 +181,11 @@
   &lt;div class="span8"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
+    </div><!-- /.span -->
     <div class="span4">
       <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 12 foundational columns we defined as part of our grid system.</p>
-    </div>
-  </div><!-- /row -->
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 
   <br>
 
@@ -189,7 +229,7 @@
           </div>
         </div>
       </div>
-    </div><!-- /span6 -->
+    </div><!-- /.span -->
     <div class="span6">
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
@@ -202,8 +242,8 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 </section>
 
 
@@ -251,11 +291,11 @@
     <div class="span4">
       <h3>Percents, not pixels</h3>
       <p>The fluid grid system uses percents for column widths instead of fixed pixels. It also has the same responsive variations as our fixed grid system, ensuring proper proportions for key screen resolutions and devices.</p>
-    </div>
+    </div><!-- /.span -->
     <div class="span4">
       <h3>Fluid rows</h3>
       <p>Make any row fluid simply by changing <code>.row</code> to <code>.row-fluid</code>. The columns stay the exact same, making it super straightforward to flip between fixed and fluid layouts.</p>
-    </div>
+    </div><!-- /.span -->
     <div class="span4">
       <h3>Markup</h3>
 <pre class="prettyprint linenums">
@@ -264,8 +304,8 @@
   &lt;div class="span8"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div><!-- /row -->
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 
   <h2>Fluid nesting</h2>
   <div class="row">
@@ -284,7 +324,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- /.span -->
     <div class="span6">
 <pre class="prettyprint linenums">
 &lt;div class="row-fluid"&gt;
@@ -297,8 +337,8 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 
 </section>
 
@@ -345,16 +385,16 @@
     <div class="span4">
       <h3>Variables in LESS</h3>
       <p>Built into Bootstrap are a handful of variables for customizing the default 940px grid system, documented above. All variables for the grid are stored in variables.less.</p>
-    </div>
+    </div><!-- /.span -->
     <div class="span4">
       <h3>How to customize</h3>
       <p>Modifying the grid means changing the three <code>@grid*</code> variables and recompiling Bootstrap. Change the grid variables in variables.less and use one of the <a href="less.html#compiling">four ways documented to recompile</a>. If you're adding more columns, be sure to add the CSS for those in grid.less.</p>
-    </div>
+    </div><!-- /.span -->
     <div class="span4">
       <h3>Staying responsive</h3>
       <p>Customization of the grid only works at the default level, the 940px grid. To maintain the responsive aspects of Bootstrap, you'll also have to customize the grids in responsive.less.</p>
-    </div>
-  </div><!-- /row -->
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 
 </section>
 
@@ -381,7 +421,7 @@
   &lt;/div&gt;
 &lt;/body&gt;
 </pre>
-    </div><!-- /col -->
+    </div><!-- /.span -->
     <div class="span6">
       <h2>Fluid layout</h2>
       <p><code>&lt;div class="container-fluid"&gt;</code> gives flexible page structure, min- and max-widths, and a left-hand sidebar. It's great for apps and docs.</p>
@@ -401,8 +441,8 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div><!-- /col -->
-  </div><!-- /row -->
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 </section>
 
 
@@ -417,8 +457,16 @@
   <!-- Supported devices -->
   <div class="row">
     <div class="span4">
-      <img src="assets/img/responsive-illustrations.png" alt="Responsive devices">
-    </div>
+      <p><img src="assets/img/responsive-illustrations.png" alt="Responsive devices"></p>
+      <h3>What they do</h3>
+      <p>Media queries allow for custom CSS based on a number of conditions&mdash;ratios, widths, display type, etc&mdash;but usually focuses around <code>min-width</code> and <code>max-width</code>.</p>
+      <ul>
+        <li>Modify the width of column in our grid</li>
+        <li>Stack elements instead of float wherever necessary</li>
+        <li>Resize headings and text to be more appropriate for devices</li>
+      </ul>
+      <p>Use media queries responsibly and only as a start to your mobile audiences. For larger projects, do consider dedicated code bases and not layers of media queries.</p>
+    </div><!-- /.span -->
     <div class="span8">
       <h2>Supported devices</h2>
       <p>Bootstrap supports a handful of media queries in a single file to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
@@ -438,13 +486,13 @@
             <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
           </tr>
           <tr>
-            <td>Portrait tablets</td>
-            <td>480px to 768px</td>
+            <td>Smartphones to tablets</td>
+            <td>767px and below</td>
             <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
           </tr>
           <tr>
-            <td>Landscape tablets</td>
-            <td>768px to 979px</td>
+            <td>Portrait tablets</td>
+            <td>768px and above</td>
             <td>42px</td>
             <td>20px</td>
           </tr>
@@ -456,7 +504,7 @@
           </tr>
           <tr>
             <td>Large display</td>
-            <td>1210px and up</td>
+            <td>1200px and up</td>
             <td>70px</td>
             <td>30px</td>
           </tr>
@@ -466,23 +514,15 @@
       <h3>Requires meta tag</h3>
       <p>To ensure devices display responsive pages properly, include the viewport meta tag.</p>
       <pre class="prettyprint linenums">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
-
-      <h3>What they do</h3>
-      <p>Media queries allow for custom CSS based on a number of conditions&mdash;ratios, widths, display type, etc&mdash;but usually focuses around <code>min-width</code> and <code>max-width</code>.</p>
-      <ul>
-        <li>Modify the width of column in our grid</li>
-        <li>Stack elements instead of float wherever necessary</li>
-        <li>Resize headings and text to be more appropriate for devices</li>
-      </ul>
-    </div>
-  </div>
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 
   <br>
 
   <!-- Media query code -->
   <h2>Using the media queries</h2>
   <div class="row">
-    <div class="span5">
+    <div class="span4">
       <p>Bootstrap doesn't automatically include these media queries, but understanding and adding them is very easy and requires minimal setup. You have a few options for including the responsive features of Bootstrap:</p>
       <ol>
         <li>Use the compiled responsive version, bootstrap-responsive.css</li>
@@ -490,8 +530,8 @@
         <li>Modify and recompile responsive.less as a separate file</li>
       </ol>
       <p><strong>Why not just include it?</strong> Truth be told, not everything needs to be responsive. Instead of encouraging developers to remove this feature, we figure it best to enable it.</p>
-    </div>
-    <div class="span7">
+    </div><!-- /.span -->
+    <div class="span8">
 <pre class="prettyprint linenums">
   // Landscape phones and down
   @media (max-width: 480px) { ... }
@@ -505,8 +545,93 @@
   // Large desktop
   @media (min-width: 1200px) { .. }
 </pre>
-    </div>
-  </div>
+    </div><!-- /.span -->
+  </div><!-- /.row -->
+  <br>
+
+  <!-- Responsive utility classes -->
+  <h2>Responsive utility classes</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>What are they</h2>
+      <p>For faster mobile-friendly development, use these basic utility classes for showing and hidding content by device.</p>
+      <h3>When to use</h2>
+      <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation.</p>
+      <p>For example, you might show a <code>&lt;select&gt;</code> element for nav on mobile layouts, but not on tablets or desktops.</p>
+    </div><!-- /.span -->
+    <div class="span8">
+      <h3>Support classes</h3>
+      <p>Shown here is a table of the classes we support and their effect on a given media query layout (labeled by device). They can be found in <code>responsive.less</code>.</p>
+      <table class="table table-bordered table-striped responsive-utilities">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Phones <small>480px and below</small></th>
+            <th>Tablets <small>767px and below</small></th>
+            <th>Desktops <small>768px and above</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><code>.visible-phone</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th><code>.visible-tablet</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th><code>.visible-desktop</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th><code>.hidden-phone</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th><code>.hidden-tablet</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th><code>.hidden-desktop</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Test case</h3>
+      <p>Resize your browser or load on different devices to test the above clases.</p>
+      <h4>Visible on...</h4>
+      <ul class="responsive-utilities-test">
+        <li>Phone<span class="visible-phone">&#10004; Phone</span></li>
+        <li>Tablet<span class="visible-tablet">&#10004; Tablet</span></li>
+        <li>Desktop<span class="visible-desktop">&#10004; Desktop</span></li>
+      </ul>
+      <h4>Hidden on...</h4>
+      <ul class="responsive-utilities-test hidden-on">
+        <li>Phone<span class="hidden-phone">&#10004; Phone</span></li>
+        <li>Tablet<span class="hidden-tablet">&#10004; Tablet</span></li>
+        <li>Desktop<span class="hidden-desktop">&#10004; Desktop</span></li>
+      </ul>
+    </div><!-- /.span -->
+  </div><!-- /.row -->
+
+      
+  <div class="row">
+    <div class="span4">
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 </section>
 
 

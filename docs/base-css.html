@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Base · Twitter Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,9 +20,9 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -166,7 +166,8 @@
           Wraps abbreviations and acronyms to show the expanded version on hover
         </td>
         <td>
-          Include optional <code>title</code> for expanded text
+          <p>Include optional <code>title</code> attribute for expanded text</p>
+          Use <code>.initialism</code> class for uppercase abbreviations.
         </td>
       </tr>
       <tr>
@@ -205,8 +206,9 @@
     </div>
     <div class="span4">
       <h3>Example abbreviations</h3>
-      <p>Abbreviations are styled with uppercase text and a light dotted bottom border. They also have a help cursor on hover so users have extra indication something will be shown on hover.</p>
-      <p><abbr title="HyperText Markup Language">HTML</abbr> is the best thing since sliced bread.</p>
+      <p>Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.</p>
+      <p>Add the <code>initialism</code> class to an abbreviation to increase typographic harmony by giving it a slightly smaller text size.</p>
+      <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
       <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
     </div>
   </div>
@@ -285,8 +287,8 @@
   <!-- Lists -->
   <h2>Lists</h2>
   <div class="row">
-    <div class="span3">
-      <h4>Unordered</h4>
+    <div class="span4">
+      <h3>Unordered</h3>
       <p><code>&lt;ul&gt;</code></p>
       <ul>
         <li>Lorem ipsum dolor sit amet</li>
@@ -306,8 +308,8 @@
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-    <div class="span3">
-      <h4>Unstyled</h4>
+    <div class="span4">
+      <h3>Unstyled</h3>
       <p><code>&lt;ul class="unstyled"&gt;</code></p>
       <ul class="unstyled">
         <li>Lorem ipsum dolor sit amet</li>
@@ -327,8 +329,8 @@
         <li>Eget porttitor lorem</li>
       </ul>
     </div>
-    <div class="span3">
-      <h4>Ordered</h4>
+    <div class="span4">
+      <h3>Ordered</h3>
       <p><code>&lt;ol&gt;</code></p>
       <ol>
         <li>Lorem ipsum dolor sit amet</li>
@@ -341,10 +343,26 @@
         <li>Eget porttitor lorem</li>
       </ol>
     </div>
-    <div class="span3">
-      <h4>Description</h4>
+  </div><!-- /row -->
+  <br>
+  <div class="row">
+    <div class="span4">
+      <h3>Description</h3>
       <p><code>&lt;dl&gt;</code></p>
       <dl>
+        <dt>Description lists</dt>
+        <dd>A description list is perfect for defining terms.</dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      </dl>
+    </div>
+    <div class="span8">
+      <h3>Horizontal description</h3>
+      <p><code>&lt;dl class="dl-horizontal"&gt;</code></p>
+      <dl class="dl-horizontal">
         <dt>Description lists</dt>
         <dd>A description list is perfect for defining terms.</dd>
         <dt>Euismod</dt>
@@ -417,6 +435,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   <div class="row">
     <div class="span8">
       <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="span1">
+          <col class="span7">
+        </colgroup>
         <thead>
           <tr>
             <th>Tag</th>
@@ -569,7 +591,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Language</th>
+            <th>Username</th>
           </tr>
         </thead>
         <tbody>
@@ -577,19 +599,19 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -614,7 +636,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Language</th>
+            <th>Username</th>
           </tr>
         </thead>
         <tbody>
@@ -622,19 +644,19 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -658,31 +680,31 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Language</th>
+            <th>Username</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td colspan="2">Mark Otto</td>
-            <td>CSS</td>
+            <td rowspan="2">1</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@TwBootstrap</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td rowspan="2">Javascript</td>
-          </tr>
-          </tr>
-            <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Brosef</td>
-            <td>Stalin</td>
-            <td>HTML</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -706,7 +728,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <th>#</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Language</th>
+            <th>Username</th>
           </tr>
         </thead>
         <tbody>
@@ -714,19 +736,18 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -748,36 +769,35 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <table class="table table-striped table-bordered table-condensed">
         <thead>
           <tr>
+            <th></th>
+            <th colspan="2">Full name</th>
+            <th></th>
+          </tr>
+          <tr>
             <th>#</th>
-            <th class="yellow">First Name</th>
-            <th class="blue">Last Name</th>
-            <th class="green">Language</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+          <tr>
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
-            <td>CSS</td>
+            <td>@mdo</td>
           </tr>
           <tr>
             <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>Javascript</td>
+            <td>@fat</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>Stu</td>
-            <td>Dent</td>
-            <td>HTML</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Brosef</td>
-            <td>Stalin</td>
-            <td>HTML</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
           </tr>
         </tbody>
       </table>
@@ -862,6 +882,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <form class="well">
         <label>Label name</label>
         <input type="text" class="span3" placeholder="Type something…"> <span class="help-inline">Associated help text!</span>
+        <p class="help-block">Example block-level help text here.</p>
         <label class="checkbox">
           <input type="checkbox"> Check me out
         </label>
@@ -908,7 +929,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
         <label class="checkbox">
-          <input type="checkbox"> Remember?
+          <input type="checkbox"> Remember me
         </label>
         <button type="submit" class="btn">Sign in</button>
       </form>
@@ -916,7 +937,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;form class="well form-inline"&gt;
   &lt;input type="text" class="input-small" placeholder="Email"&gt;
   &lt;input type="password" class="input-small" placeholder="Password"&gt;
-  &lt;button type="submit" class="btn"&gt;Go&lt;/button&gt;
+  &lt;label class="checkbox"&gt;
+    &lt;input type="checkbox"&gt; Remember me
+  &lt;/label&gt;
+  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
 &lt;/form&gt;
 </pre>
     </div>
@@ -1163,8 +1187,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <label class="control-label" for="prependedInput">Prepended text</label>
             <div class="controls">
               <div class="input-prepend">
-                <span class="add-on">@</span>
-                <input class="span2" id="prependedInput" size="16" type="text">
+                <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
               </div>
               <p class="help-block">Here's some help text</p>
             </div>
@@ -1173,10 +1196,25 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <label class="control-label" for="appendedInput">Appended text</label>
             <div class="controls">
               <div class="input-append">
-                <input class="span2" id="appendedInput" size="16" type="text">
-                <span class="add-on">.00</span>
+                <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
               </div>
-              <p class="help-block">Here's more help text</p>
+              <span class="help-inline">Here's more help text</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="appendedPrependedInput">Append and prepend</label>
+            <div class="controls">
+              <div class="input-prepend input-append">
+                <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="appendedPrependedInput">Append with button</label>
+            <div class="controls">
+              <div class="input-append">
+                <input class="span2" id="appendedPrependedInput" size="16" type="text"><button class="btn" type="button">Go!</button>
+              </div>
             </div>
           </div>
           <div class="control-group">
@@ -1260,44 +1298,44 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     <thead>
       <tr>
         <th>Button</th>
-        <th>Class</th>
+        <th>class=""</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><button class="btn" href="#">Default</button></td>
-        <td><code>.btn</code></td>
+        <td><code>btn</code></td>
         <td>Standard gray button with gradient</td>
       </tr>
       <tr>
         <td><button class="btn btn-primary" href="#">Primary</button></td>
-        <td><code>.btn-primary</code></td>
+        <td><code>btn btn-primary</code></td>
         <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
       </tr>
       <tr>
         <td><button class="btn btn-info" href="#">Info</button></td>
-        <td><code>.btn-info</code></td>
+        <td><code>btn btn-info</code></td>
         <td>Used as an alternate to the default styles</td>
       </tr>
       <tr>
         <td><button class="btn btn-success" href="#">Success</button></td>
-        <td><code>.btn-success</code></td>
+        <td><code>btn btn-success</code></td>
         <td>Indicates a successful or positive action</td>
       </tr>
       <tr>
         <td><button class="btn btn-warning" href="#">Warning</button></td>
-        <td><code>.btn-warning</code></td>
+        <td><code>btn btn-warning</code></td>
         <td>Indicates caution should be taken with this action</td>
       </tr>
       <tr>
         <td><button class="btn btn-danger" href="#">Danger</button></td>
-        <td><code>.btn-danger</code></td>
+        <td><code>btn btn-danger</code></td>
         <td>Indicates a dangerous or potentially negative action</td>
       </tr>
-  	  <tr>
+      <tr>
         <td><button class="btn btn-inverse" href="#">Inverse</button></td>
-        <td><code>.btn-inverse</code></td>
+        <td><code>btn btn-inverse</code></td>
         <td>Alternate dark gray button, not tied to a semantic action or use</td>
       </tr>
     </tbody>
@@ -1512,9 +1550,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       </ul>
     </div>
   </div>
-  <div class="alert alert-info">
-    <strong>Heads up!</strong> Icon classes are echoed via CSS <code>:after</code>. In the docs, we show a light red background color on hover to highlight the icon's size.
-  </div>
 
   <br>
 
@@ -1527,7 +1562,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </div>
     <div class="span4">
       <h3>How to use</h3>
-      <p>With v2.0.1, we have opted to use an <code>&lt;i&gt;</code> tag for all our icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:</p>
+      <p>Bootstrap uses an <code>&lt;i&gt;</code> tag for all icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search"&gt;&lt;/i&gt;
 </pre>
@@ -1536,6 +1571,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
       <p>There are 120 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.</p>
+      <p>
+        <span class="label label-info">Heads up!</span>
+        When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.
+      </p>
     </div>
     <div class="span4">
       <h3>Use cases</h3>
