@@ -159,11 +159,13 @@
       this.touch.endedAt = e.timeStamp
       var distance = (this.touch.startX === 0) ? 0 : Math.abs(this.touch.endX - this.touch.startX)
       
-      if (!this.touch.isScroll && (this.touch.endedAt - this.touch.startedAt) < this.options.touchMaxTime && distance > this.options.touchMaxDistance) {
-        if (this.touch.endX < this.touch.startX) {
-          this.next().pause();
-        } else if (this.touch.endX > this.touch.startX) {
-          this.prev().pause();
+      if (!this.touch.isScroll && this.touch.startedAt !== 0) {
+        if ((this.touch.endedAt - this.touch.startedAt) < this.options.touchMaxTime && distance > this.options.touchMaxDistance) {
+          if (this.touch.endX < this.touch.startX) {
+            this.next().pause();
+          } else if (this.touch.endX > this.touch.startX) {
+            this.prev().pause();
+          }
         }
       }
       
