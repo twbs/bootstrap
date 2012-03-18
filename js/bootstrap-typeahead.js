@@ -153,6 +153,7 @@
   , listen: function () {
       this.$element
         .on('blur',     $.proxy(this.blur, this))
+        .on('keydown',  $.proxy(this.keydown, this))
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
 
@@ -164,15 +165,20 @@
         .on('click', $.proxy(this.click, this))
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
+  , keydown: function(e) {
+      this.enterPressed = (e.keyCode == 13)
+    }
 
   , keyup: function (e) {
+      var enterPressed = this.enterPressed;
+      this.enterPressed = false;
+
       switch(e.keyCode) {
         case 40: // down arrow
         case 38: // up arrow
           break
 
         case 9: // tab
-        case 13: // enter
           if (!this.shown) return
           this.select()
           break
@@ -183,14 +189,20 @@
           break
 
         default:
-          this.lookup()
+          if(enterPressed) {
+            if (!this.shown) return
+            this.select()
+          } else {
+            this.lookup()
+          }
       }
-
       e.stopPropagation()
       e.preventDefault()
   }
 
   , keypress: function (e) {
+      this.enterPressed = this.enterPressed && (e.keyCode == 13)
+
       if (!this.shown) return
 
       switch(e.keyCode) {
