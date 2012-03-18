@@ -39,6 +39,9 @@
     ,  endedAt: 0
     ,  startX: 0
     ,  endX: 0
+    ,  startY: 0
+    ,  endY: 0
+    ,  isScroll: false
     }
     
     if (this.options.touch && this.touch.supported == true) {
@@ -140,18 +143,23 @@
   , touchstart: function(e) {
       this.touch.startedAt = e.timeStamp
       this.touch.startX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
+      this.touch.startY = e.originalEvent.touches ? e.originalEvent.touches[0].pageY : e.pageY
     }
     
   , touchmove: function(e) {
       this.touch.endX = e.originalEvent.touches ? e.originalEvent.touches[0].pageX : e.pageX
-      e.preventDefault();
+      this.touch.endY = e.originalEvent.touches ? e.originalEvent.touches[0].pageY : e.pageY
+      
+      this.touch.isScroll = !!(Math.abs(this.touch.endX - this.touch.startX) < Math.abs(this.touch.endY - this.touch.startY))
+      
+      !this.touch.isScroll && e.preventDefault();
     }
 
   , touchend: function(e) {
       this.touch.endedAt = e.timeStamp
       var distance = (this.touch.startX === 0) ? 0 : Math.abs(this.touch.endX - this.touch.startX)
       
-      if (this.touch.startedAt !== 0 && (this.touch.endedAt - this.touch.startedAt) < this.options.touchMaxTime && distance > this.options.touchMaxDistance) {
+      if (!this.touch.isScroll && (this.touch.endedAt - this.touch.startedAt) < this.options.touchMaxTime && distance > this.options.touchMaxDistance) {
         if (this.touch.endX < this.touch.startX) {
           this.next().pause();
         } else if (this.touch.endX > this.touch.startX) {
@@ -163,6 +171,9 @@
       this.touch.endedAt = 0
       this.touch.startX = 0
       this.touch.endX = 0
+      this.touch.startY = 0
+      this.touch.endY = 0
+      this.touch.isScroll = false
     }
   }
 
