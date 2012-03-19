@@ -12,30 +12,32 @@
   .green {color:@green;}
   .yellow {color:@yellow;}
   .lightorange {color:@orange;}
-  .darkorange {color:@darkorange;}
+  .darkorange {color:@orange;}
   .magenta {color:@red;}
   .blue {color:@blue;}
   
   .green-back {background-color:@green;}
   .yellow-back {background-color:@yellow;}
   .lightorange-back {background-color:@orange;}
-  .darkorange-back {background-color:@darkorange;}
+  .darkorange-back {background-color:@orange;}
   .magenta-back {background-color:@red;}
   .blue-back {background-color:@blue;}
   
 //TEXT
 
-  h1,h2,h3,.brand {.headerFontStyle;}
+  h1,h2,.brand {.headerFontStyle;}
   strong {text-transform:uppercase;}
+  h1,h2,h3,h4,h5 {color:@crimson;}
+  h2 {font-size:25px;}
 
 // NAVBAR
 // -----------------------------------------------------
 
 // Added dividers to items
 .navbar .nav > li > a {
-	border-right: 1px solid #C03D14;
-	border-left: 1px solid #E6633A;
-	
+	border-right: 1px solid darken(@darkGreen,15%);
+	border-left: 1px solid darken(@darkGreen,20%);
+	color:@lightBrown;
 	&:hover {
 		background-color: @linkColorHover;
 	}
@@ -44,7 +46,11 @@
 // Lightened color of active item
 .navbar .nav .active > a,
 .navbar .nav .active > a:hover {
-  background-color: rgba(0,0,0,.2);
+  background-color: darken(@darkGreen,27%);
+}
+
+.nav-list .active > a, .nav-list .active > a:hover {
+	background-color:@darkBrown;
 }
 
 // Styled item divider
@@ -89,6 +95,11 @@
 	border-top: 0px solid @orange;
 	border-bottom: 0px solid @orange;
 	.box-shadow(none);
+}
+
+.hero-unit, .well {
+  background-color:@lightBrown;
+
 }
 
 // BUTTONS
