@@ -66,7 +66,7 @@
 
         if (scrollTop >= maxScroll) {
           return activeTarget != (i = targets.last()[0])
-            && this.activate ( i );
+            && this.activate ( i )
         }
 
         for (i = offsets.length; i--;) {
