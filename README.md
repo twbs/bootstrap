@@ -40,42 +40,43 @@ Uses sample files and resources gathered and created from HTML5 Boilerplate for 
 Quick Start
 ===========
 
-You have a LESS compiler
-------------------------
+Install
+-------
 
-1. <a href="https://github.com/ajkochanowicz/Kickstrap/zipball/master">Download Kickstrap</a>.
-2. Edit either the index.html or sample.html file to play around. All the necessary files are already linked into these documents.
-3. Change themes (section below).
++ If you're starting from scratch, simply download this repository and start working in the index.html or sample.html document.
++ If you already have a Bootstrap installation running, drop the /extras folder into your Bootstrap root. Drag the sample_index.html file in /extras to your Bootstrap root. It should be linked and ready to go.
+(If you already have HTML files you want to use, see "Advanced Setup" below.
 
-You don't have a LESS compiler
-------------------------------
+Pick Theme
+----------
 
-Apologies. Kickstrap does not yet work very well without a LESS compiler in the development environment. However, I will be adding support for this very soon.
+A. If you have a LESS compiler:
 
-<span id="changethemes">Change Themes</span>
--------------
+1. Open /extras/less/overrides.less and uncomment the @import line (remove the //s) of the theme you want to use.
+2. Compile.
 
-1. Open /extras/less/overrides.less
-2. Uncomment the @import lines of the theme you want to use.
-3. Compile.
+B. If you don't have a LESS compiler
 
-Add to an existing Bootstrap Project
-------------------------------------
+1. If using the included index.html file, find this line and follow instructions. Themes listed above:
+<pre>&lt;!-- Want to try a different theme?
+If not using LESS compiler: Uncomment below
+and change to name of desired theme. (See docs) 	--&gt;
+&lt;!--link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;extras/css/amelia.css&quot; /--&gt;</pre>
+Otherwise, see "Pick theme" in "Advanced Setup" below.
 
-Using bootstrap extras requires using the LESS framework in your development environment. 
-At this time, you can avoid having to do this by simply downloading the latest releases of Bootstrap extras from GitHub.
+Advanced Setup
+==============
 
-1. Paste the /extras folder into the root of your Bootstrap directory (and any other files in the Kickstrap root you may want)
-2. Add the following to the very end of [Bootstrap root]/less/bootstrap.less:
-<code>@import "../extras/less/overrides.less";<code>
-3. Compile with LESS.
-4. Add the following to your &lt;head&gt;:
+Install
+-------
+
+1. If you already have html (or php, aspx...) files you want to use, drop the /extras folder in your Bootstrap root. Paste this into the head of every page you want to use Kickstrap:
 <pre>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;extras/html5bp/css/style.css&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.css&quot;&gt;
 &lt;script src=&quot;extras/html5bp/js/libs/modernizr-2.5.3.min.js&quot;&gt;&lt;/script&gt;</pre>
 (Assuming this file is in the Bootstrap root directory. Adjust accordingly.)
-5. Add the following just before the ending &lt;body&gt; tag:
+2. Add the following just before the ending &lt;body&gt; tag:
 <pre>&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;window.jQuery || document.write('&lt;script src=&quot;extras/html5bp/js/libs/jquery-1.7.1.min.js&quot;&gt;&lt;\/script&gt;')&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;extras/chosen/chosen.jquery.min.js&quot;&gt;&lt;/script&gt;
@@ -90,6 +91,16 @@ At this time, you can avoid having to do this by simply downloading the latest r
   s.parentNode.insertBefore(g,s)}(document,'script'));
 &lt;/script&gt;</pre>
 (Assuming this file is in your root bootstrap directory. Adjust accordingly.)
+3. If you plan to compile with LESS, add this to the end of the /less/bootstrap.less file:
+<code>@import "../extras/less/overrides.less";<code>
+4. Choose your theme in /extras/less/overrides.less (uncomment the @import line you want to use) and compile.
+
+Pick Theme
+----------
+
+If using the included index.html file, you can follow the instructions in "Quick Setup" above. Otherwise, add a reference to the theme you want to use after the link to your default bootstrap css.
+<pre>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.css&quot; /&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;extras/css/amelia.css&quot; /&gt;</pre>
 
 Authors
 -------
