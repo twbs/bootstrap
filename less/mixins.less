@@ -534,6 +534,16 @@
       margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
     }
 
+    .insetX (@index) when (@index > 0) {
+      (~".inset@{index}") { .inset(@index); }
+      .insetX(@index - 1);
+    }
+    .insetX (0) {}
+
+    .inset (@columns) {
+      margin-left: -((@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2) - (@gridGutterWidth * 2));
+    }
+
     .span (@columns) {
       width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
     }
@@ -553,9 +563,10 @@
     .navbar-fixed-top .container,
     .navbar-fixed-bottom .container { .span(@gridColumns); }
 
-    // generate .spanX and .offsetX
+    // generate .spanX, .offsetX and .insetX
     .spanX (@gridColumns);
     .offsetX (@gridColumns);
+    .insetX (@gridColumns);
 
   }
 
