@@ -512,6 +512,9 @@
   margin-left: @gridGutterWidth;
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
+.makeOffset(@columns: 1) {
+   margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+}
 
 // The Grid
 #grid {
