@@ -507,9 +507,9 @@
   margin-left: @gridGutterWidth * -1;
   .clearfix();
 }
-.makeColumn(@columns: 1) {
+.makeColumn(@columns: 1, @offset: 0) {
   float: left;
-  margin-left: @gridGutterWidth;
+  margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
 
