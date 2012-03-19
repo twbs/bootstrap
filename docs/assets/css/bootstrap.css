@@ -1019,7 +1019,7 @@ select:focus:required:invalid:focus {
   line-height: 18px;
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
-  vertical-align: middle;
+  vertical-align: top;
   background-color: #eeeeee;
   border: 1px solid #ccc;
 }
