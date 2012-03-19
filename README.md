@@ -95,6 +95,14 @@ Install
 <code>@import "../extras/less/overrides.less";<code>
 4. Choose your theme in /extras/less/overrides.less (uncomment the @import line you want to use) and compile.
 
+Optional: If you're using your own existing Bootstrap installation and really don't want to replace bootstrap.css (say you've customized it),
+remember to include the chosen library with the following lines of code near your ending body tag:
+
+<pre>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;extras/css/chosen.min.css&quot; /&gt;
+&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;extras/chosen/chosen.jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt; $(&quot;.chzn-select&quot;).chosen(); $(&quot;.chzn-select-deselect&quot;).chosen({allow_single_deselect:true}); &lt;/script&gt;</pre>
+
 Pick Theme
 ----------
 
