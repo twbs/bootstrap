@@ -248,7 +248,6 @@
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -259,7 +258,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -275,7 +273,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -287,7 +284,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -306,7 +302,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -320,7 +315,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -341,7 +335,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -355,7 +348,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -376,7 +368,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -390,7 +381,6 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
-                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -498,7 +488,7 @@
   <target name="-js.main.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js">
       <echo message="Concatenating Main JS scripts..."/>
       <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
+      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
           <fileset dir="./${dir.intermediate}/">
               <include name="${dir.js}/plugins.js"/>
               <include name="${dir.js}/${file.root.script}"/>
@@ -506,30 +496,8 @@
       </concat>
   </target>
 
-  <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
-      <echo message="Concatenating JS libraries"/>
-      <echo message="Concatenating all files in ./${dir.intermediate}/${dir.js}/ that don't fit the H5BL folder structure" />
-      <echo message="The following will be excluded: ${file.js.bypass}, ${dir.js.libs}/*, ${dir.js.modules}/*,  ${file.root.script}, scripts-concat.js and plugins.js" />
-      <concat destfile="./${dir.intermediate}/${dir.js}/otherscripts-concat.js" overwrite="no">
-        <fileset dir="./${dir.intermediate}/${dir.js}" excludes="${file.js.bypass}, ${slug.libs}/*, ${slug.modules}/*">
-          <exclude name="${file.root.script}"/>
-          <exclude name="plugins.js"/>
-          <exclude name="scripts-concat.js"/>
-        </fileset>
-      </concat>
-
-  </target>
-
-
-  <target name="-js.scripts.concat" depends="-js.main.concat,-js.mylibs.concat" if="build.concat.scripts">
+  <target name="-js.scripts.concat" depends="-js.main.concat" if="build.concat.scripts">
       <echo message="Concatenating library file with main script file"/>
-      <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
-        <fileset dir="./${dir.intermediate}/${dir.js}/">
-              <include name="scripts-concat.js"/>
-              <include name="otherscripts-concat.js"/>
-          </fileset>
-      </concat>
 
       <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.fullsha" />
       <propertyregex property="scripts.sha" input="${scripts.fullsha}" regexp=".{${hash.length}}" select="\0" />
