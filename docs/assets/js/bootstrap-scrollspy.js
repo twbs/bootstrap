@@ -57,10 +57,17 @@
 
     , process: function () {
         var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
+          , scrollHeight = this.$scrollElement[0].scrollHeight || this.$body[0].scrollHeight
+          , maxScroll = scrollHeight - this.$scrollElement.height()
           , offsets = this.offsets
           , targets = this.targets
           , activeTarget = this.activeTarget
           , i
+
+        if (scrollTop >= maxScroll) {
+          return activeTarget != (i = targets.last()[0])
+            && this.activate ( i );
+        }
 
         for (i = offsets.length; i--;) {
           activeTarget != targets[i]
