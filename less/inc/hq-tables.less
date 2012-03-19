@@ -1,13 +1,14 @@
 // Extends the styling for Twitter Bootstrap Tables
 
-// DataTables & Export Data Tables styling
+// DataTables, HQ Tables & Export Data Tables styling
 
 .datatable {
     margin-bottom: 1px;
 }
 
 .datatable thead th,
-.hq-generic-report .table thead th {
+.hq-generic-report .table thead th,
+.table-hq thead th {
     color: @white;
     #gradient > .vertical(desaturate(lighten(@blue, 20), 60), desaturate(darken(@blue, 5), 20));
     font-weight: normal;
@@ -24,7 +25,8 @@
 }
 
 .datatable tbody,
-.export_data tbody {
+.export_data tbody,
+.table-hq tbody {
     .odd {
         background-color: @oddDataTableRowBackground;
         .sorting_1 {
