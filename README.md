@@ -44,7 +44,7 @@ Install
 -------
 
 + If you're starting from scratch, simply download this repository and start working in the index.html or sample.html document.
-+ If you already have a Bootstrap installation running, drop the /extras folder into your Bootstrap root. Drag the sample_index.html file in /extras to your Bootstrap root. It should be linked and ready to go.
++ If you already have a Bootstrap installation running, drop the /extras folder into your Bootstrap root. Drag the sample_index.html file in /extras to your Bootstrap root and /extras/css/bootstrap(.min).css wherever you have your existing bootstrap.css file. It should be linked and ready to go.
 (If you already have HTML files you want to use, see "Advanced Setup" below.
 
 Pick Theme
