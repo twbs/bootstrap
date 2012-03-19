@@ -50,7 +50,7 @@ Install
 Pick Theme
 ----------
 
-A. If you have a LESS compiler:
+A. If you have a LESS compiler (Tested successfully with CodeKit on Mac OSX Lion):
 
 1. Open /extras/less/overrides.less and uncomment the @import line (remove the //s) of the theme you want to use.
 2. Compile.
