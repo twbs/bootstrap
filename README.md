@@ -67,6 +67,8 @@ Otherwise, see "Pick theme" in "Advanced Setup" below.
 Advanced Setup
 ==============
 
+In the future, I plan to eliminate the need for advanced setup by giving users the options to opt in to the features they want, much like Bootstrap's customize page, but in lieu of keeping this project from the public, here's a slightly more complicated way to get it working for now.
+
 Install
 -------
 
