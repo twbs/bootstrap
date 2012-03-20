@@ -1,58 +1,45 @@
-// SANDRA
+// Bootswatch.less
+// Swatch: United
 // -----------------------------------------------------
 
 // TYPOGRAPHY
 // -----------------------------------------------------
 @import "variables.less";
-// Norican web font
-@import url(http://fonts.googleapis.com/css?family=Euphoria+Script);
+// Fredoka web font
+@import url(http://fonts.googleapis.com/css?family=Fredoka+One);
 
-// COLORS
+// TEXT
+// -----------------------------------------------------
 
-// Trying this out: http://www.colourlovers.com/palette/2062659/This_Is_The_Truth
-
-  .green {color:@green;}
-  .yellow {color:@yellow;}
-  .lightorange {color:@orange;}
-  .darkorange {color:@orange;}
-  .magenta {color:@red;}
-  .blue {color:@blue;}
-  
-  .green-back {background-color:@green;}
-  .yellow-back {background-color:@yellow;}
-  .lightorange-back {background-color:@orange;}
-  .darkorange-back {background-color:@orange;}
-  .magenta-back {background-color:@red;}
-  .blue-back {background-color:@blue;}
-  
-//TEXT
-
-  h1,h2,.brand {.headerFontStyle;}
-  strong {text-transform:uppercase;}
-  h1,h2,h3,h4,h5 {color:@crimson;}
-  h2 {font-size:25px;}
+h1,h2,h3,h4,h5,a.brand {
+  font-weight:normal;
+  font-family: 'Fredoka One', Cursive, sans-serif;
+}
+h1,h3,h5 {color:@green;}
+h2,h4 {color:@blue;}
 
 // NAVBAR
 // -----------------------------------------------------
 
 // Added dividers to items
-.navbar .nav > li > a {
-	border-right: 1px solid darken(@darkGreen,15%);
-	border-left: 1px solid darken(@darkGreen,20%);
-	color:@lightBrown;
-	&:hover {
-		background-color: @linkColorHover;
+.navbar {
+    .navbar-inner {
+      #gradient > .horizontal(@green,@blue);
+    }
+    .nav > li > a {
+  	  border-right: 1px solid darken(@green,5%);
+  	  border-left: 1px solid darken(@green,5%);
+  	  
+  	  &:hover {
+  	  	background-color: @blue;
 	}
+  }
 }
 
 // Lightened color of active item
 .navbar .nav .active > a,
 .navbar .nav .active > a:hover {
-  background-color: darken(@darkGreen,27%);
-}
-
-.nav-list .active > a, .nav-list .active > a:hover {
-	background-color:@darkBrown;
+  background-color: rgba(0,0,0,.2);
 }
 
 // Styled item divider
@@ -99,133 +86,36 @@
 	.box-shadow(none);
 }
 
-.hero-unit, .well {
-  background-color:@lightBrown;
-
-}
-
 // BUTTONS
 // -----------------------------------------------------
 
-  //Buttons
-  
-  .btn-danger {
-    .buttonBackground(darken(@errorBackground,10%),darken(@errorBorder,15%));
-  }
-  .btn-success {
-    .buttonBackground(darken(@successBackground,30%), darken(@successBackground,40%));
-  }
+// Reversed gradient on primary button
+.btn-primary {
+  .buttonBackground(lighten(@primaryButtonBackground, 15%), @primaryButtonBackground);
+}
 
+// Made warning button yellow since orange is taken
+.btn-warning {
+  color:@warningText;
+  .buttonBackground(lighten(@yellow, 5%), darken(@yellow,15%));
   
-  @primaryButtonBackground:	darken(spin(@green,-14),36%);
-  
-  //Warning
-  @warningText:             darken(spin(@warningBackground, -5), 50%);
-  @warningBackground:       @yellow;
-  @warningBorder:           darken(spin(@warningBackground, -10), 3%);
-  
-  //Light Blue
-  @infoText:                darken(spin(@infoBackground, -5), 50%);
-  @infoBackground:          @green;
-  @infoBorder:           	darken(spin(@infoBackground, -10), 3%);
-  
-  //Red
-  @errorText:               darken(spin(@errorBackground, -5), 50%);
-  @errorBackground:         lighten(@red,15%);
-  @errorBorder:             darken(spin(@errorBackground, -10), 3%);
-  
-  //Blue
-  @successText:             darken(spin(@successBackground, -5), 50%);
-  @successBackground:       @blue;
-  @successBorder:           darken(spin(@successBackground, -10), 3%);
-  
-  //Text
-  
-  @linkColor:             darken(@blue, 45%);
-  @linkColorHover:        darken(@linkColor, 15%);
+  .caret {
+    border-top-color: @white;
+    .opacity(75);
+  }
+}
 
-// ALERTS
+// CONTAINERS
 // -----------------------------------------------------
 
-// Removed text-shadow
-.alert {
-	//text-shadow: none !important;
+.hero-unit, .well {
+  background-color: #F3F8ED;
+  color: #61645C;
+  h1,h3,h5 {
+    color:@green;
+  }
+  h2,h4 {
+    color:@blue;
+  }
 }
 
-.alert 					{background-color: lighten(@warningBackground,10%);}
-.alert-success			{background-color: lighten(@successBackground,10%);}
-.alert-error			{background-color: lighten(@errorBackground,10%);}
-.alert-info				{background-color: lighten(@infoBackground,10%);}
-
-.alert:hover 			{background-color: lighten(@warningBackground,5%);}
-.alert-success:hover	{background-color: lighten(@successBackground,5%);}
-.alert-error:hover		{background-color: lighten(@errorBackground,5%);}
-.alert-info:hover		{background-color: lighten(@infoBackground,5%);}
-
-//Divs
-
-.thumbnail {
-	@box-shadow(5px 5px 10px rgba(0, 0, 0, 0.075));
-}
-
-//Responsive Layout
-
-  /* Define css rules for different screen sizes here. */
-  // Landscape phones and down
-  @media (max-width: 480px) {
-    .search-query {
-      position: relative;
-      display: block;
-      margin: 0px auto;
-      width: 94%;
-    }
-    .navbar .brand {
-      margin: 0px auto;
-      float: none;
-      text-align: center;
-    }
-	header.fixed-nav {
-		margin-top: 127px;
-	}
-  }
- 
-  // Landscape phone to portrait tablet
-  @media (max-width: 768px) {}
- 
-  // Portrait tablet to landscape and desktop
-  @media (max-width: 980px) {
-    .navbar-fixed-top {
-    	position: fixed;
-    	margin-bottom: 18px;
-    }
-	.navbar-form, .navbar-search {
-		float: none;
-		padding: 9px 15px;
-		margin: 9px 0;
-		border-top: 0;
-		border-bottom: 0;
-		-webkit-box-shadow: none;
-		-moz-box-shadow: none;
-		box-shadow: none;
-	}
-    
-  }
-  
-  @media (min-width: 480px) and (max-width: 980px) {
-    .navbar-form, .navbar-search {
-		float: right;
-	}
-	.navbar .brand {
-		padding: 9px 15px;
-		margin: 9px 0;
-	}
-	header.fixed-nav {
-		margin-top: 90px;
-	}
-  }
- 
-  // Large desktop
-  @media (min-width: 1200px) {}
-  
-  //------------------  
-  //END SANDRA

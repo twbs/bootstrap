@@ -9,7 +9,7 @@
 // --------------------------------------------------
 
 // Links
-@linkColor:             #DD4814;
+@linkColor:             #1A4445;
 @linkColorHover:        darken(@linkColor, 15%);
 
 // Grays
@@ -21,30 +21,26 @@
 @grayLighter:           #eee;
 @white:                 #fff;
 
-//ColourLovers Palatte
-
-@crimson: 				#902D16;
-@darkBrown:				#BC9715;
-@mediumBrown:			#D9C250;
-@lightBrown:			#F5ECB5;
-@darkGreen:				#779C68;
-
 // Accent colors
-@blue:                  #049cdb;
+@blue:                  #2AC7C4;
 @blueDark:              #0064cd;
-@green:                 #46a546;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orange:                #f89406;
+@green:                 #62c729;
+@red:                   #DF382C;
+@yellow:                #FFF8AF;
+@orange:                #000000;
 @pink:                  #c3325f;
-@purple:                #7a43b6;
+@purple:                #772953;
 
 // Typography
 @baseFontSize:          13px;
-@baseFontFamily:        'Helvetica Neue', Helvetica, sans-serif;
-.headerFontStyle		{font-family:'Euphoria Script', Tahoma, sans-serif;font-weight:normal;}
+@baseFontFamily:        'Helvetica Neue', helvetica, sans-serif;
 @baseLineHeight:        18px;
 @textColor:             @grayDark;
+
+// Buttons
+@primaryButtonBackground:    darken(@blue,7%);
+
+
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -59,6 +55,10 @@
 @zindexModalBackdrop:   1040;
 @zindexModal:           1050;
 
+// Sprite icons path
+@iconSpritePath:          "../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
 // Input placeholder text color
 @placeholderText:       @grayLight;
 
@@ -67,8 +67,8 @@
 
 // Navbar
 @navbarHeight:                    40px;
-@navbarBackground:                darken(@darkGreen,20%);
-@navbarBackgroundHighlight:       @darkGreen;
+@navbarBackground:                #61645C;
+@navbarBackgroundHighlight:       #CE4213;
 @navbarLinkBackgroundHover:       transparent;
 
 @navbarText:                      @white;
@@ -76,20 +76,20 @@
 @navbarLinkColorHover:            @white;
 
 // Form states and alerts
-@warningText:             #ECA918;
-@warningBackground:       lighten(@warningText, 40%);
+@warningText:             #5F5C27;
+@warningBackground:       #FEF5B2;
 @warningBorder:           darken(spin(@warningBackground, -10), 3%);
 
 @errorText:               #DF382C;
 @errorBackground:         lighten(@errorText, 40%);
 @errorBorder:             darken(spin(@errorBackground, -10), 3%);
 
-@successText:             #38B44A;
-@successBackground:       lighten(@successText, 40%);
+@successText:             darken(@green,20%);
+@successBackground:       lighten(@green,25%);
 @successBorder:           darken(spin(@successBackground, -10), 5%);
 
-@infoText:                #19B6EE;
-@infoBackground:          lighten(@infoText, 40%);
+@infoText:                darken(@blue,20%);
+@infoBackground:          lighten(@blue,40%);
 @infoBorder:              darken(spin(@infoBackground, -10), 7%);
 
 
