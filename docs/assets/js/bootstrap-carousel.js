@@ -95,13 +95,7 @@
 
       if ($next.hasClass('active')) return
 
-      if (!$.support.transition && this.$element.hasClass('slide')) {
-        this.$element.trigger('slide')
-        $active.removeClass('active')
-        $next.addClass('active')
-        this.sliding = false
-        this.$element.trigger('slid')
-      } else {
+      if ($.support.transition && this.$element.hasClass('slide')) {
         $next.addClass(type)
         $next[0].offsetWidth // force reflow
         $active.addClass(direction)
@@ -113,6 +107,12 @@
           that.sliding = false
           setTimeout(function () { that.$element.trigger('slid') }, 0)
         })
+      } else {
+        this.$element.trigger('slide')
+        $active.removeClass('active')
+        $next.addClass('active')
+        this.sliding = false
+        this.$element.trigger('slid')
       }
 
       isCycling && this.cycle()
