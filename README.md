@@ -27,7 +27,7 @@ And constructed with the following guidelines:
 
 * Breaking backward compatibility bumps the major (and resets minor and patch)
 * New additions without breaking backward compatibility bumps the minor (and resets patch)
-* Bug fixes and misc changes bump the patch
+* Bug fixes and misc changes bumps the patch
 
 For more information on SemVer, please visit http://semver.org/.
 
