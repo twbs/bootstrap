@@ -32,6 +32,11 @@
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
+
+
+    $.support.touch && this.$element.touch() && this.$element
+      .on('swipeleft',$.proxy(this.next, this))
+      .on('swiperight',$.proxy(this.prev, this))
   }
 
   Carousel.prototype = {
