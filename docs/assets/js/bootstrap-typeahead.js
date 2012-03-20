@@ -39,8 +39,9 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
-      this.$element.val(val)
-      this.$element.change();
+      this.$element
+        .val(val)
+        .change()
       return this.hide()
     }
 
