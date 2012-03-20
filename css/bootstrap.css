@@ -4608,7 +4608,7 @@ h5 {
 }
 h2,
 h4 {
-  color: #2ac7c4;
+  color: #26b2af;
 }
 .navbar .navbar-inner {
   background-color: #2ac7c4;
@@ -4728,20 +4728,6 @@ h4 {
 .well {
   background-color: #F3F8ED;
   color: #61645C;
-}
-.hero-unit h1,
-.well h1,
-.hero-unit h3,
-.well h3,
-.hero-unit h5,
-.well h5 {
-  color: #62c729;
-}
-.hero-unit h2,
-.well h2,
-.hero-unit h4,
-.well h4 {
-  color: #2ac7c4;
 }
 [class^="icon-"],
 [class*=" icon-"] {
