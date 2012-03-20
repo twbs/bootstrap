@@ -975,9 +975,12 @@
                     <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                     <arg value="-quiet"/>
                     <arg value="-o7"/>
-                    <arg value="${strip-meta-tags}"/>
+                    <!--
+                       Temporarily fixes #39
+                       <arg value="${strip-meta-tags}"/>
+                    -->
                     <arg value="-out"/>	
-					<targetfile/>
+		    <targetfile/>
                     <srcfile/>
                     <mapper type="identity"/>
                 </apply>
@@ -1003,7 +1006,7 @@
                         <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                         <arg value="-quiet"/>
                         <arg value="-o7"/>
-						<arg value="${strip-meta-tags}"/>
+		        <arg value="${strip-meta-tags}"/>
                         <arg value="-out"/>
                         <targetfile/>
                         <srcfile/>
