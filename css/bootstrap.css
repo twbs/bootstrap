@@ -4729,6 +4729,14 @@ h4 {
   background-color: #F3F8ED;
   color: #61645C;
 }
+ul.ul-horizontal {
+  list-style: none;
+  list-style-type: none;
+}
+ul.ul-horizontal li {
+  display: inline;
+  margin: 0px 10px;
+}
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
