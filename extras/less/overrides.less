@@ -18,10 +18,6 @@
   @import "../../extras/fontawesome/font-awesome.less"; // Using awesomefont instead of an image sprite.
   @import "../../extras/chosen/chosen.less"; // Chosen for select boxes
   
-  // ONE LINE CSS GRID
-  // For simple halving and thirding of divs. http://adamkochanowicz.com/oneline.html
-  .oh,.ot,.tt{float:left;padding:0 2% 2% 0;width:48%}.ot{width:31%}.tt{width:65%}.cl{clear:both}
-  
   //THEME
   //-----
     
@@ -69,37 +65,120 @@
   //--------
   //END THEME
   
-// HORIZONTAL LISTS
-// ----------------
-
-ul.ul-horizontal {
-  list-style:none;
-  list-style-type:none;
-  li {
-    display:inline;
-    margin:0px 10px;
+  // ONE LINE CSS GRID
+  // For simple halving and thirding of divs. http://adamkochanowicz.com/oneline.html
+  .oh,.ot,.tt{float:left;padding:0 2% 2% 0;width:48%}.ot{width:31%}.tt{width:65%}.cl{clear:both}
+  
+  // PROGRESS BARS
+  
+  // Bar of progress
+  .progress .bar {
+    width: 0%;
+    height: 18px;
+    color: @white;
+    font-size: 12px;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    
+    .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+    .box-sizing(border-box);
+    .transition(width .6s ease);
   }
-}
-
-// ICONS
-// -----
-
-// DESTROY THE GLYPHICONS
-
-[class^="icon-"],
-[class*=" icon-"] {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  line-height: inherit;
-  vertical-align: middle;
-  background-image: none;
-  background-position: 0;
-  background-repeat: no-repeat;
-}
-.icon-white {
-  background-image: none;
-}
+  .progress .bar,
+  .progress .step-full {
+    #gradient > .vertical(@blue, darken(@blue,10%));
+  }
+  
+    // COLORS
+    // ------
+    
+    // Danger (red)
+    .progress-danger .bar,
+    .progress-danger .step-full {
+      #gradient > .vertical(#ee5f5b, #c43c35);
+    }
+    .progress-danger.progress-striped .bar {
+      #gradient > .striped(#ee5f5b);
+    }
+    
+    // Success (green)
+    .progress-success .bar,
+    .progress-success .step-full {
+      #gradient > .vertical(@green, darken(@green,10%));
+    }
+    .progress-success.progress-striped .bar {
+      #gradient > .striped(#62c462);
+    }
+    
+    // Info (teal)
+    .progress-info .bar,
+    .progress-info .step-full {
+      #gradient > .vertical(lighten(@infoText,10%), @infoText);
+    }
+    .progress-info.progress-striped .bar {
+      #gradient > .striped(#5bc0de);
+    }
+  
+  // STEP PROGRESS
+  // -------------
+  
+  .progress-step .step-full, .progress-step .step-empty {
+    height: 30px;
+    width: 30px;
+    background-color: blue;
+    .border-radius(15px);
+    position: absolute;
+    left: 0%;
+    margin-top: -6px;
+    margin-left: -14px;
+  }
+  .progress-step-square {
+    .step-full, 
+    .step-empty {
+    .border-radius(2px);
+    }
+  }
+  .progress-step .step-empty {
+    #gradient > .vertical(#f5f5f5, #f9f9f9);
+    .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+  }
+  .progress.progress-step {
+    margin: 10px 25px 18px 20px;
+    position: relative;
+    overflow: visible;
+  }
+  
+  // HORIZONTAL LISTS
+  // ----------------
+  
+  ul.ul-horizontal {
+    list-style:none;
+    list-style-type:none;
+    li {
+      display:inline;
+      margin:0px 10px;
+    }
+  }
+  
+  // ICONS
+  // -----
+  
+  // DESTROY THE GLYPHICONS
+  
+  [class^="icon-"],
+  [class*=" icon-"] {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    line-height: inherit;
+    vertical-align: middle;
+    background-image: none;
+    background-position: 0;
+    background-repeat: no-repeat;
+  }
+  .icon-white {
+    background-image: none;
+  }
 
 /*
 

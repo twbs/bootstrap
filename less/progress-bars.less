@@ -80,7 +80,7 @@
 
 // Success (green)
 .progress-success .bar {
-  #gradient > .vertical(#62c462, #57a957);
+  #gradient > .vertical(@green, darken(@green,10%));
 }
 .progress-success.progress-striped .bar {
   #gradient > .striped(#62c462);
@@ -88,7 +88,7 @@
 
 // Info (teal)
 .progress-info .bar {
-  #gradient > .vertical(#5bc0de, #339bb9);
+  #gradient > .vertical(@blue, darken(@blue,10%));
 }
 .progress-info.progress-striped .bar {
   #gradient > .striped(#5bc0de);

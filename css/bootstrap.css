@@ -3491,15 +3491,15 @@ a.thumbnail:hover {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 .progress-success .bar {
-  background-color: #5eb95e;
-  background-image: -moz-linear-gradient(top, #62c462, #57a957);
-  background-image: -ms-linear-gradient(top, #62c462, #57a957);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#57a957));
-  background-image: -webkit-linear-gradient(top, #62c462, #57a957);
-  background-image: -o-linear-gradient(top, #62c462, #57a957);
-  background-image: linear-gradient(top, #62c462, #57a957);
+  background-color: #5ab626;
+  background-image: -moz-linear-gradient(top, #62c729, #4d9d20);
+  background-image: -ms-linear-gradient(top, #62c729, #4d9d20);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c729), to(#4d9d20));
+  background-image: -webkit-linear-gradient(top, #62c729, #4d9d20);
+  background-image: -o-linear-gradient(top, #62c729, #4d9d20);
+  background-image: linear-gradient(top, #62c729, #4d9d20);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462', endColorstr='#57a957', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c729', endColorstr='#4d9d20', GradientType=0);
 }
 .progress-success.progress-striped .bar {
   background-color: #62c462;
@@ -3511,15 +3511,15 @@ a.thumbnail:hover {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 .progress-info .bar {
-  background-color: #4bb1cf;
-  background-image: -moz-linear-gradient(top, #5bc0de, #339bb9);
-  background-image: -ms-linear-gradient(top, #5bc0de, #339bb9);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#339bb9));
-  background-image: -webkit-linear-gradient(top, #5bc0de, #339bb9);
-  background-image: -o-linear-gradient(top, #5bc0de, #339bb9);
-  background-image: linear-gradient(top, #5bc0de, #339bb9);
+  background-color: #26b6b3;
+  background-image: -moz-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -ms-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2ac7c4), to(#219d9b));
+  background-image: -webkit-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -o-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: linear-gradient(top, #2ac7c4, #219d9b);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5bc0de', endColorstr='#339bb9', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2ac7c4', endColorstr='#219d9b', GradientType=0);
 }
 .progress-info.progress-striped .bar {
   background-color: #5bc0de;
@@ -4576,22 +4576,6 @@ li[class*=" icon-"].icon-large:before {
   direction: rtl;
 }
 /* @end */
-.oh,
-.ot,
-.tt {
-  float: left;
-  padding: 0 2% 2% 0;
-  width: 48%;
-}
-.ot {
-  width: 31%;
-}
-.tt {
-  width: 65%;
-}
-.cl {
-  clear: both;
-}
 h1,
 h2,
 h3,
@@ -4728,6 +4712,154 @@ h4 {
 .well {
   background-color: #F3F8ED;
   color: #61645C;
+}
+.oh,
+.ot,
+.tt {
+  float: left;
+  padding: 0 2% 2% 0;
+  width: 48%;
+}
+.ot {
+  width: 31%;
+}
+.tt {
+  width: 65%;
+}
+.cl {
+  clear: both;
+}
+.progress .bar {
+  width: 0%;
+  height: 18px;
+  color: #ffffff;
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: width 0.6s ease;
+  -moz-transition: width 0.6s ease;
+  -ms-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+}
+.progress .bar,
+.progress .step-full {
+  background-color: #26b6b3;
+  background-image: -moz-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -ms-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2ac7c4), to(#219d9b));
+  background-image: -webkit-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -o-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: linear-gradient(top, #2ac7c4, #219d9b);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2ac7c4', endColorstr='#219d9b', GradientType=0);
+}
+.progress-danger .bar,
+.progress-danger .step-full {
+  background-color: #dd514c;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -ms-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#c43c35));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: linear-gradient(top, #ee5f5b, #c43c35);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#c43c35', GradientType=0);
+}
+.progress-danger.progress-striped .bar {
+  background-color: #ee5f5b;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-success .bar,
+.progress-success .step-full {
+  background-color: #5ab626;
+  background-image: -moz-linear-gradient(top, #62c729, #4d9d20);
+  background-image: -ms-linear-gradient(top, #62c729, #4d9d20);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c729), to(#4d9d20));
+  background-image: -webkit-linear-gradient(top, #62c729, #4d9d20);
+  background-image: -o-linear-gradient(top, #62c729, #4d9d20);
+  background-image: linear-gradient(top, #62c729, #4d9d20);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c729', endColorstr='#4d9d20', GradientType=0);
+}
+.progress-success.progress-striped .bar {
+  background-color: #62c462;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-info .bar,
+.progress-info .step-full {
+  background-color: #1e8c8a;
+  background-image: -moz-linear-gradient(top, #219d9b, #187371);
+  background-image: -ms-linear-gradient(top, #219d9b, #187371);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#219d9b), to(#187371));
+  background-image: -webkit-linear-gradient(top, #219d9b, #187371);
+  background-image: -o-linear-gradient(top, #219d9b, #187371);
+  background-image: linear-gradient(top, #219d9b, #187371);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#219d9b', endColorstr='#187371', GradientType=0);
+}
+.progress-info.progress-striped .bar {
+  background-color: #5bc0de;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-step .step-full,
+.progress-step .step-empty {
+  height: 30px;
+  width: 30px;
+  background-color: blue;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  position: absolute;
+  left: 0%;
+  margin-top: -6px;
+  margin-left: -14px;
+}
+.progress-step-square .step-full,
+.progress-step-square .step-empty {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.progress-step .step-empty {
+  background-color: #f7f7f7;
+  background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -ms-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#f9f9f9', GradientType=0);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.progress.progress-step {
+  margin: 10px 25px 18px 20px;
+  position: relative;
+  overflow: visible;
 }
 ul.ul-horizontal {
   list-style: none;
