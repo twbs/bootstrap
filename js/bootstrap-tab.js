@@ -27,11 +27,38 @@
 
   var Tab = function ( element ) {
     this.element = $(element)
+    this.initialize()
   }
 
   Tab.prototype = {
 
     constructor: Tab
+
+  , initialize: function () {
+      var $ul
+        , $target
+
+      this.element.closest('ul:not(.dropdown-menu)').find('> li [data-target], > li [href]').each(function () {
+        var $this = $(this)
+          , selector = $this.attr('data-target')
+          , $target
+
+        if (!selector) {
+          selector = $this.attr('href')
+          selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+        }
+
+        if ( $this.parent('li').hasClass('active') ) return
+
+        $target = $(selector)
+
+        if ( $this.parent('li').parent().find('> .active').size() == 0
+              && $target.hasClass('active') )
+          $this.parent('li').addClass('active')
+        else
+          $target.removeClass('active').addClass('inactive')
+      });
+    }
 
   , show: function () {
       var $this = this.element
@@ -73,11 +100,11 @@
 
       function next() {
         $active
-          .removeClass('active')
+          .removeClass('active').addClass('inactive')
           .find('> .dropdown-menu > .active')
           .removeClass('active')
 
-        element.addClass('active')
+        element.addClass('active').removeClass('inactive')
 
         if (transition) {
           element[0].offsetWidth // reflow for transition
@@ -124,6 +151,15 @@
     $('body').on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
       e.preventDefault()
       $(this).tab('show')
+    })
+
+    // Run auto-tab at the end of the DOMReady queue, so we can check if
+    // the tab.data-api namespace has been turned off.
+    $(function(){
+      var events = $('body').data('events')
+        , apienabled = events && $(events.click).filter(function(){ return this.namespace == 'data-api.tab' }).size()
+      if (apienabled)
+        $('[data-toggle="tab"], [data-toggle="pill"]').tab()
     })
   })
 
