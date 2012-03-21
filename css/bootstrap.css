@@ -4857,7 +4857,7 @@ h4 {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .progress.progress-step {
-  margin: 10px 25px 18px 20px;
+  margin: 14px 17px 18px 14px;
   position: relative;
   overflow: visible;
 }
