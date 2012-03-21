@@ -14,56 +14,6 @@
   and modifying it there.
   
   */
-
-  @import "../../extras/fontawesome/font-awesome.less"; // Using awesomefont instead of an image sprite.
-  @import "../../extras/chosen/chosen.less"; // Chosen for select boxes
-  
-  //THEME
-  //-----
-    
-    // Switch to a theme by uncommenting [remove the '/'s from] the @import lines. 
-    // (one and only one line!)
-    // A more user-friendly way to do this is coming :)
-    // Thanks to bootswatch for the themes: http://bootswatch.com/
-    
-    //  CERULEAN
-    //  @import "../themes/cerulean/less/cerulean.less";
-    
-    //  SLATE
-    //  @import "../themes/slate/less/slate.less";
-    
-    //  SPRUCE
-    //  @import "../themes/spruce/less/spruce.less";
-    
-    //  CYBORG
-    //  @import "../themes/cyborg/less/cyborg.less";
-    
-    //  AMELIA
-    //  @import "../themes/amelia/less/amelia.less";
-    
-    //  SIMPLEX
-    //  @import "../themes/simplex/less/simplex.less";
-    
-    //  JOURNAL
-    //  @import "../themes/journal/less/journal.less";
-    
-    //  READABLE
-    //  @import "../themes/readable/less/readable.less";
-     
-    //  SANDRA
-      @import "../themes/sandra/less/sandra.less";
-    
-    //  SPACELAB
-    //  @import "../themes/spacelab/less/spacelab.less";
-    
-    //  SUPERHERO
-    //  @import "../themes/superhero/less/superhero.less";
-    
-    //  UNITED
-    //  @import "../themes/united/less/united.less";
-  
-  //--------
-  //END THEME
   
   // ONE LINE CSS GRID
   // For simple halving and thirding of divs. http://adamkochanowicz.com/oneline.html
@@ -223,7 +173,92 @@ M,::::::::N        ${ylw}=======================${txtrst}N  MMMMMMMMMMMMMMMM    
 
 OVERRIDE ALL THE THINGS
 https://github.com/btford/allthethings
-*/           
+*/
+
+// PRETTY PRINT
+// ------------
+
+.com { color: #93a1a1; }
+.lit { color: #195f91; }
+.pun, .opn, .clo { color: #93a1a1; }
+.fun { color: #dc322f; }
+.str, .atv { color: #D14; }
+.kwd, .linenums .tag { color: #1e347b; }
+.typ, .atn, .dec, .var { color: teal; }
+.pln { color: #48484c; }
+
+.prettyprint {
+  padding: 8px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+.prettyprint.linenums {
+  -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+     -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+          box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin: 0 0 0 33px; /* IE indents via margin-left */
+} 
+ol.linenums li {
+  padding-left: 12px;
+  color: #bebec5;
+  line-height: 18px;
+  text-shadow: 0 1px 0 #fff;
+}
+
+  //THEME
+  //-----
+    
+    // Switch to a theme by uncommenting [remove the '/'s from] the @import lines. 
+    // (one and only one line!)
+    // A more user-friendly way to do this is coming :)
+    // Thanks to bootswatch for the themes: http://bootswatch.com/
+    
+    //  CERULEAN
+    //  @import "../themes/cerulean/less/cerulean.less";
+    
+    //  SLATE
+    //  @import "../themes/slate/less/slate.less";
+    
+    //  SPRUCE
+    //  @import "../themes/spruce/less/spruce.less";
+    
+    //  CYBORG
+    //  @import "../themes/cyborg/less/cyborg.less";
+    
+    //  AMELIA
+    //  @import "../themes/amelia/less/amelia.less";
+    
+    //  SIMPLEX
+    //  @import "../themes/simplex/less/simplex.less";
+    
+    //  JOURNAL
+    //  @import "../themes/journal/less/journal.less";
+    
+    //  READABLE
+    //  @import "../themes/readable/less/readable.less";
+     
+    //  SANDRA
+      @import "../themes/sandra/less/sandra.less";
+    
+    //  SPACELAB
+    //  @import "../themes/spacelab/less/spacelab.less";
+    
+    //  SUPERHERO
+    //  @import "../themes/superhero/less/superhero.less";
+    
+    //  UNITED
+    //  @import "../themes/united/less/united.less";
+  
+  //--------
+  //END THEME  
+  
+  @import "../../extras/fontawesome/font-awesome.less"; 	// Using awesomefont instead of an image sprite.
+  @import "../../extras/icomoon/icomoon.less"; 				//turn this on if you want even more fonts from IcoMoon.
+  @import "../../extras/chosen/chosen.less"; 				// Chosen for select boxes         
   
 //-----------------------
 //END BOOTSTRAP OVERRIDES
