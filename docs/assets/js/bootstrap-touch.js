@@ -75,9 +75,9 @@
             if (!this.touch.isScroll && this.touch.startedAt !== 0) {
                 if ((this.touch.endedAt - this.touch.startedAt) < this.options.touchMaxTime && distance > this.options.touchMaxDistance) {
                     if (this.touch.endX < this.touch.startX) {
-                        this.$element.trigger('swipeleft')
+                        this.$element.trigger('swipe',['left'])
                     } else if (this.touch.endX > this.touch.startX) {
-                        this.$element.trigger('swiperight')
+                        this.$element.trigger('swipe',['right'])
                     }
                 }
             }
