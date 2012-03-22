@@ -33,6 +33,34 @@
 
     constructor: Tab
 
+  , hide: function() {
+	  var $this = this.element
+	    , $ul = $this.closest('ul:not(.dropdown-menu)')
+	    , selector = $this.attr('data-target')
+	    , previous
+	    
+	  if (!selector) {
+        selector = $this.attr('href')
+        selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+	  
+	  $this.trigger({
+      	  type: 'hide'
+      	, relatedTarget: previous
+      })
+	    
+	  this.deactivate($ul)
+	  this.deactivate($(selector).parent())
+	    
+	  // Hide bottom border
+	  $ul.css('border-bottom', '0');
+  }
+  
+  , deactivate: function(container) {
+	  var $active = container.find('> .active');
+	  $active.removeClass('active').find('> .dropdown-menu > .active').removeClass('active')
+  }
+
   , show: function () {
       var $this = this.element
         , $ul = $this.closest('ul:not(.dropdown-menu)')
@@ -45,9 +73,15 @@
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
       }
 
-      if ( $this.parent('li').hasClass('active') ) return
+      if ( $this.parent('li').hasClass('active') ) {
+        this.hide();
+        return;
+      }
 
       previous = $ul.find('.active a').last()[0]
+      
+      // Restore original bottom border
+      $ul.css('border-bottom', '');
 
       $this.trigger({
         type: 'show'

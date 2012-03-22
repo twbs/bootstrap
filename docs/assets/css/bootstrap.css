@@ -1022,6 +1022,7 @@ select:focus:required:invalid:focus {
   vertical-align: middle;
   background-color: #eeeeee;
   border: 1px solid #ccc;
+  margin-bottom: 9px;
 }
 .input-prepend .add-on,
 .input-append .add-on,
