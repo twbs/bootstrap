@@ -54,9 +54,9 @@
           .map(function () {
             var href = $(this).attr('href')
               , $href = /^#\w/.test(href) && $(href)
-            return $href
+            return ( $href
               && href.length
-              && [[ $href.position().top, href ]]
+              && [[ $href.position().top, href ]] ) || null
           })
           .sort(function (a, b) { return a[0] - b[0] })
           .each(function () {
