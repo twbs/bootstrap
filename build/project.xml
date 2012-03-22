@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="Project Build" default="build" basedir="../">
+	
+    <!-- Use this file to define any custom build targets (for example, automatically deploying via FTP). -->
+
+</project>
