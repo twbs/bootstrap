@@ -636,9 +636,13 @@ $('#myModal').on('hidden', function () {
           </div>
           <hr>
           <h2>Using bootstrap-tab.js</h2>
-          <p>Enable tabbable tabs via javascript:</p>
-          <pre class="prettyprint linenums">$('#myTab').tab('show')</pre>
-          <p>You can select individual tabs in several ways:</p>
+          <p>Enable tabbable tabs via javascript (each tab needs to be activated individually):</p>
+          <pre class="prettyprint linenums">
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})</pre>
+          <p>You can activate individual tabs in several ways:</p>
 <pre class="prettyprint linenums">
 $('#myTab a[href="#profile"]').tab('show'); //Select tab by name
 $('#myTab a:first').tab('show'); //Select first tab
