@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-tooltip.js v2.0.2
+ * bootstrap-tooltip.js v2.0.3
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
@@ -33,6 +33,8 @@
 
     constructor: Tooltip
 
+  , hoverTimer: -1
+
   , init: function ( type, element, options ) {
       var eventIn
         , eventOut
@@ -47,6 +49,7 @@
         eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
         this.$element.on(eventIn, this.options.selector, $.proxy(this.enter, this))
         this.$element.on(eventOut, this.options.selector, $.proxy(this.leave, this))
+        this.$element.on("click", this.options.selector, $.proxy(this.click, this))
       }
 
       this.options.selector ?
@@ -70,11 +73,13 @@
   , enter: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
+      self.hoverState = 'in'
+      clearTimeout(this.hoverTimer)
+
       if (!self.options.delay || !self.options.delay.show) {
         self.show()
       } else {
-        self.hoverState = 'in'
-        setTimeout(function() {
+        this.hoverTimer = setTimeout(function() {
           if (self.hoverState == 'in') {
             self.show()
           }
@@ -85,15 +90,25 @@
   , leave: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
+      self.hoverState = 'out'
+      clearTimeout(this.hoverTimer)
+
       if (!self.options.delay || !self.options.delay.hide) {
         self.hide()
       } else {
-        self.hoverState = 'out'
-        setTimeout(function() {
+        this.hoverTimer = setTimeout(function() {
           if (self.hoverState == 'out') {
             self.hide()
           }
         }, self.options.delay.hide)
+      }
+    }
+
+  , click: function ( e ) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+
+      if (this.$element.attr("disabled")) {
+        self.hide()
       }
     }
 
@@ -105,6 +120,10 @@
         , actualHeight
         , placement
         , tp
+
+      if (this.$element.attr("disabled")) {
+        return;
+      }
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
