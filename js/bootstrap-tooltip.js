@@ -41,6 +41,7 @@
       this.$element = $(element)
       this.options = this.getOptions(options)
       this.enabled = true
+      this.shown = false
 
       if (this.options.trigger != 'manual') {
         eventIn  = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
@@ -106,7 +107,8 @@
         , placement
         , tp
 
-      if (this.hasContent() && this.enabled) {
+      if (this.hasContent() && this.enabled && !this.shown) {
+        this.shown = true
         $tip = this.tip()
         this.setContent()
 
@@ -162,11 +164,17 @@
       var that = this
         , $tip = this.tip()
 
+      if (!this.shown)
+        return
+
+      this.shown = false
+
       $tip.removeClass('in')
 
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
-          $tip.off($.support.transition.end).remove()
+          if(!that.shown)
+            $tip.off($.support.transition.end).remove()
         }, 500)
 
         $tip.one($.support.transition.end, function () {
