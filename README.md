@@ -25,9 +25,9 @@ Releases will be numbered with the follow format:
 
 And constructed with the following guidelines:
 
-* Breaking backward compatibility bumps the major
-* New additions without breaking backward compatibility bumps the minor
-* Bug fixes and misc changes bump the patch
+* Breaking backward compatibility bumps the major (and resets the minor and patch)
+* New additions without breaking backward compatibility bumps the minor (and resets the patch)
+* Bug fixes and misc changes bumps the patch
 
 For more information on SemVer, please visit http://semver.org/.
 
