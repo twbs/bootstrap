@@ -609,7 +609,7 @@ $('#myModal').on('hidden', function () {
         <div class="span9 columns">
           <h2>Example tabs</h2>
           <p>Click the tabs below to toggle between hidden panes, even via dropdown menus.</p>
-          <ul id="tab" class="nav nav-tabs">
+          <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
             <li><a href="#profile" data-toggle="tab">Profile</a></li>
             <li class="dropdown">
@@ -638,10 +638,12 @@ $('#myModal').on('hidden', function () {
           <h2>Using bootstrap-tab.js</h2>
           <p>Enable tabbable tabs via javascript:</p>
           <pre class="prettyprint linenums">$('#myTab').tab('show')</pre>
-          <p>You can also activate a specific tab (or a pseudo-selected one) on init:</p>
+          <p>You can select individual tabs in several ways:</p>
 <pre class="prettyprint linenums">
-$('#myTab a[href="#profile"]').tab('show');
-$('#myTab a:last').tab('show');
+$('#myTab a[href="#profile"]').tab('show'); //Select tab by name
+$('#myTab a:first').tab('show'); //Select first tab
+$('#myTab a:last').tab('show'); //Select last tab
+$('#myTab li:eq(2) a').tab('show'); //Select third tab (0-indexed)
 </pre>
           <h3>Markup</h3>
           <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the bootstrap tab styling.</p>
