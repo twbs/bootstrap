@@ -169,9 +169,9 @@
     width: 100%;
     min-height: 28px;
     /* Make inputs at least the height of their button counterpart */
-
+  
     /* Makes inputs behave like true block-level elements */
-
+  
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
