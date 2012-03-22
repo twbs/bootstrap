@@ -3562,8 +3562,8 @@ a.thumbnail:hover {
 .thumbnail .caption {
   padding: 9px;
 }
-.label {
-  padding: 1px 4px 2px;
+.label,
+.badge {
   font-size: 10.998px;
   font-weight: bold;
   line-height: 13px;
@@ -3572,88 +3572,63 @@ a.thumbnail:hover {
   white-space: nowrap;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #999999;
+}
+.label {
+  padding: 1px 4px 2px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-.label:hover {
-  color: #ffffff;
-  text-decoration: none;
-}
-.label-important {
-  background-color: #b94a48;
-}
-.label-important:hover {
-  background-color: #953b39;
-}
-.label-warning {
-  background-color: #f89406;
-}
-.label-warning:hover {
-  background-color: #c67605;
-}
-.label-success {
-  background-color: #468847;
-}
-.label-success:hover {
-  background-color: #356635;
-}
-.label-info {
-  background-color: #3a87ad;
-}
-.label-info:hover {
-  background-color: #2d6987;
-}
-.label-inverse {
-  background-color: #333333;
-}
-.label-inverse:hover {
-  background-color: #1a1a1a;
-}
 .badge {
   padding: 1px 9px 2px;
-  font-size: 12.025px;
-  font-weight: bold;
-  white-space: nowrap;
-  color: #ffffff;
-  background-color: #999999;
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;
   border-radius: 9px;
 }
-.badge:hover {
+a.label:hover,
+a.badge:hover {
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
-.badge-error {
+.label-important,
+.badge-important {
   background-color: #b94a48;
 }
-.badge-error:hover {
+.label-important[href],
+.badge-important[href] {
   background-color: #953b39;
 }
+.label-warning,
 .badge-warning {
   background-color: #f89406;
 }
-.badge-warning:hover {
+.label-warning[href],
+.badge-warning[href] {
   background-color: #c67605;
 }
+.label-success,
 .badge-success {
   background-color: #468847;
 }
-.badge-success:hover {
+.label-success[href],
+.badge-success[href] {
   background-color: #356635;
 }
+.label-info,
 .badge-info {
   background-color: #3a87ad;
 }
-.badge-info:hover {
+.label-info[href],
+.badge-info[href] {
   background-color: #2d6987;
 }
+.label-inverse,
 .badge-inverse {
   background-color: #333333;
 }
-.badge-inverse:hover {
+.label-inverse[href],
+.badge-inverse[href] {
   background-color: #1a1a1a;
 }
 @-webkit-keyframes progress-bar-stripes {
