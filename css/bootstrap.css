@@ -3689,7 +3689,7 @@ a.thumbnail:hover {
   This should be @imported into /less/bootstrap.less at the end of the file.
   This allows you to keep the Bootstrap core up-to-date without losing your modifications. 
   
-  However, only less writeup which effects the whole of Kickstrap should be directly written here.
+  However, only LESS writeup which effects the whole of Kickstrap should be directly written here.
   If instead you want to modify your current theme, I recommend going into the /extras/themes/ folder
   and modifying it there.
   
@@ -4758,7 +4758,7 @@ li[class*=" icon-imb"].icon-imblarge:before {
 .icon-imb-info:before {
   content: "\0069";
 }
-.icon-imb-sun:plus {
+.icon-imb-sun:before {
   content: "\0070";
 }
 .icon-imb-thumbsup:before {
