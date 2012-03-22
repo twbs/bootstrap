@@ -609,7 +609,7 @@ $('#myModal').on('hidden', function () {
         <div class="span9 columns">
           <h2>Example tabs</h2>
           <p>Click the tabs below to toggle between hidden panes, even via dropdown menus.</p>
-          <ul id="tab" class="nav nav-tabs">
+          <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
             <li><a href="#profile" data-toggle="tab">Profile</a></li>
             <li class="dropdown">
@@ -636,10 +636,21 @@ $('#myModal').on('hidden', function () {
           </div>
           <hr>
           <h2>Using bootstrap-tab.js</h2>
-          <p>Enable tabbable tabs via javascript:</p>
-          <pre class="prettyprint linenums">$('#myTab').tab('show')</pre>
+          <p>Enable tabbable tabs via javascript (each tab needs to be activated individually):</p>
+          <pre class="prettyprint linenums">
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})</pre>
+          <p>You can activate individual tabs in several ways:</p>
+<pre class="prettyprint linenums">
+$('#myTab a[href="#profile"]').tab('show'); //Select tab by name
+$('#myTab a:first').tab('show'); //Select first tab
+$('#myTab a:last').tab('show'); //Select last tab
+$('#myTab li:eq(2) a').tab('show'); //Select third tab (0-indexed)
+</pre>
           <h3>Markup</h3>
-          <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element.</p>
+          <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the bootstrap tab styling.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -653,7 +664,7 @@ $('#myModal').on('hidden', function () {
             Activates a tab element and content container. Tab should have either a `data-target` or an `href` targeting a container node in the dom.
           </p>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs"&gt;
+&lt;ul class="nav nav-tabs" id="myTab"&gt;
   &lt;li class="active"&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#messages"&gt;Messages&lt;/a&gt;&lt;/li&gt;
@@ -669,7 +680,7 @@ $('#myModal').on('hidden', function () {
 
 &lt;script&gt;
   $(function () {
-    $('.tabs a:last').tab('show')
+    $('#myTab a:last').tab('show')
   })
 &lt;/script&gt;</pre>
           <h3>Events</h3>
@@ -893,7 +904,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           </div>
           <h3>Markup</h3>
           <p>
-          For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a the selector option.
+          For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.
           </p>
           <h3>Methods</h3>
           <h4>$().popover(options)</h4>
