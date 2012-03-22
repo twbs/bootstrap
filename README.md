@@ -1,6 +1,9 @@
 The Gist
 ========
 
+***Coming Soon***
+Release candidate due April 15th 2012
+
 Kickstrap uses the latest version of Twitter's bootstrap (http://twitter.github.com/bootstrap) and adds a layer of extras to create slick web applications with themes, modern html/css standards, an icon font, and progressive enhancement through javascript.
 
 Last updated with Bootstrap v. 2.02
