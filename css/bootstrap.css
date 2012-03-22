@@ -4110,9 +4110,6 @@ h4 {
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  margin-top: -8px;
-  vertical-align: middle;
-  line-height: normal;
 }
 .icon-large:before {
   font-size: 1.3333333333333333em;
@@ -4120,7 +4117,6 @@ h4 {
 .btn [class^="icon-"],
 .btn [class*=" icon-"] {
   line-height: .9em;
-  margin-top: -4px;
 }
 li [class^="icon-"],
 li [class*=" icon-"] {
@@ -4568,8 +4564,8 @@ li[class*=" icon-"].icon-large:before {
 }
 @font-face {
   font-family: 'IcoMoonBase';
-  src: url('../extras/icomoon/base/icomoon-webfont.eot');
-  src: url('../extras/icomoon/base/icomoon-webfont.eot?#iefix') format('embedded-opentype'), url('../extras/icomoon/base/icomoon-webfont.woff') format('woff'), url('../extras/icomoon/base/icomoon-webfont.ttf') format('truetype'), url('../extras/icomoon/base/icomoon-webfont.svgz#IcoMoon') format('svg'), url('../extras/icomoon/base/icomoon-webfont.svg#IcoMoon') format('svg');
+  src: url('../extras/icomoon/full-webfont.eot');
+  src: url('../extras/icomoon/full-webfont.eot?#iefix') format('embedded-opentype'), url('../extras/icomoon/full-webfont.woff') format('woff'), url('../extras/icomoon/full-webfont.ttf') format('truetype'), url('../extras/icomoon/full-webfont.svgz#IcoMoon') format('svg'), url('../extras/icomoon/full-webfont.svg#IcoMoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -4791,16 +4787,9 @@ li[class*=" icon-imb"].icon-imblarge:before {
 .icon-imb-flag-alt:before {
   content: "\0079";
 }
-@font-face {
-  font-family: 'IcoMoonSocial';
-  src: url('../extras/icomoon/social/icomoonsocial-webfont.eot');
-  src: url('../extras/icomoon/social/icomoonsocial-webfont.eot?#iefix') format('embedded-opentype'), url('../extras/icomoon/social/icomoonsocial-webfont.woff') format('woff'), url('../extras/icomoon/social/icomoonsocial-webfont.ttf') format('truetype'), url('../extras/icomoon/social/icomoonsocial-webfont.svgz#IcoMoon') format('svg'), url('../extras/icomoon/social/icomoonsocial-webfont.svg#IcoMoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
 [class^="icon-ims-"]:before,
 [class*=" icon-ims-"]:before {
-  font-family: 'IcoMoonSocial';
+  font-family: 'IcoMoonBase';
   font-weight: normal;
   font-style: normal;
   display: inline-block;
