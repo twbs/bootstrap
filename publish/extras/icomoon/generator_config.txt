@@ -1,0 +1,5 @@
+# Font Squirrel Font-face Generator Configuration File
+# Upload this file to the generator to recreate the settings
+# you used to create these fonts.
+
+{"mode":"easy","formats":["ttf","woff","eot_lite","svg"],"options_hinting":"Y","options_vertical_metrics":"Y","add_space_glyphs":"Y","add_hyphen_glyphs":"Y","fallback":"none","options_subset":"basic","subset_custom":"","subset_custom_range":"","css_format":"fontspring","filename_suffix":"webfont","emsquare":"2048","spacing_adjustment":"0","gasp_setting":"xy"}

@@ -1,0 +1,130 @@
+// DROPDOWN MENUS
+// --------------
+
+// Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
+.dropdown {
+  position: relative;
+}
+.dropdown-toggle {
+  // The caret makes the toggle a bit too tall in IE7
+  *margin-bottom: -3px;
+}
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+  outline: 0;
+}
+// Dropdown arrow/caret
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  text-indent: -99999px;
+  // IE7 won't do the border trick if there's a text indent, but it doesn't
+  // do the content that text-indent is hiding, either, so we're ok.
+  *text-indent: 0;
+  vertical-align: top;
+  border-left:  4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top:   4px solid @black;
+  .opacity(30);
+  content: "\2193";
+}
+.dropdown .caret {
+  margin-top: 8px;
+  margin-left: 2px;
+}
+.dropdown:hover .caret,
+.open.dropdown .caret {
+  .opacity(100);
+}
+// The dropdown menu (ul)
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: @zindexDropdown;
+  float: left;
+  display: none; // none by default, but block on "open" of the menu
+  min-width: 160px;
+  _width: 160px;
+  padding: 4px 0;
+  margin: 0; // override default ul
+  list-style: none;
+  background-color: @white;
+  border-color: #ccc;
+  border-color: rgba(0,0,0,.2);
+  border-style: solid;
+  border-width: 1px;
+  .border-radius(0 0 5px 5px);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+
+  // Allow for dropdowns to go bottom up (aka, dropup-menu)
+  &.bottom-up {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 2px;
+  }
+
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    height: 1px;
+    margin: 5px 1px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    border-bottom: 1px solid @white;
+
+    // IE7 needs a set width since we gave a height. Restricting just
+    // to IE7 to keep the 1px left/right space in other browsers.
+    // It is unclear where IE is getting the extra space that we need
+    // to negative-margin away, but so it goes.
+    *width: 100%;
+    *margin: -5px 0 5px;
+  }
+
+  // Links within the dropdown menu
+  a {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: @baseLineHeight;
+    color: @gray;
+    white-space: nowrap;
+  }
+}
+
+// Hover state
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+  color: @white;
+  text-decoration: none;
+  background-color: @linkColor;
+}
+
+// Open state for the dropdown
+.dropdown.open {
+  // IE7's z-index only goes to the nearest positioned ancestor, which would
+  // make the menu appear below buttons that appeared later on the page
+  *z-index: @zindexDropdown;
+
+  .dropdown-toggle {
+    color: @white;
+    background: #ccc;
+    background: rgba(0,0,0,.3);
+  }
+  .dropdown-menu {
+    display: block;
+  }
+}
+
+// Typeahead
+.typeahead {
+  margin-top: 2px; // give it some space to breathe
+  .border-radius(4px);
+}

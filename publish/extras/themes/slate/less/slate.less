@@ -1,0 +1,404 @@
+// Bootswatch.less
+// Swatch: Slate
+// -----------------------------------------------------
+
+// SCAFFOLDING
+// -----------------------------------------------------
+@import "variables.less";
+body {
+	background-color: @grayDarker;
+}
+
+h1, h2, h3, h4, h5, h6, body, legend, label {
+	color: @grayLight;
+	text-shadow: -1px -1px 0 #111;
+}
+
+// NAVBAR
+// -----------------------------------------------------
+
+.navbar .brand {
+	font-weight: bold;
+}
+
+.navbar .navbar-inner,
+div.subnav {
+	#gradient > .vertical-three-colors(@gray, @grayDark, 70%, @grayDark);
+}
+
+.navbar .divider-vertical {
+	background-color: transparent;
+	border-right: none;
+}
+
+.navbar .brand,
+.navbar .nav > li > a,
+div.subnav .nav > li > a {
+	color: @grayLighter;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	border-right: 1px solid darken(@gray, 15%);
+}
+
+.navbar .nav > li > a,
+div.subnav .nav > li > a {
+	border-left: 1px solid @gray;
+	
+	&:hover {
+		color: @grayLighter;
+		background-color: @grayDark;
+		#gradient > .directional(@grayDarker, @grayDark, 280deg);
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
+	}
+}
+
+.navbar .nav > li.active > a,
+div.subnav .nav > li.active > a,
+.navbar .nav > li.active > a:hover,
+div.subnav .nav > li.active > a:hover {
+	color: @grayLighter;
+	background-color: @grayDark;
+	#gradient > .directional(lighten(@grayDarker, 4%), lighten(@grayDark, 4%), 280deg);
+	border-right: 1px solid darken(@gray, 15%);
+}
+
+div.subnav .nav > li:first-child > a,
+div.subnav .nav > li:first-child > a:hover {
+	border-left: 1px solid transparent;
+}
+
+div.subnav.subnav-fixed .nav > li.active:first-child > a,
+div.subnav.subnav-fixed .nav > li:first-child > a:hover {
+	border-left: 1px solid darken(@gray, 15%);
+}
+
+div.subnav .nav > li.active:last-child > a,
+div.subnav .nav > li:last-child > a:hover {
+	border-right: 1px solid darken(@gray, 15%);
+}
+
+div.subnav {
+	border: 1px solid transparent;
+	.box-shadow(0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1));
+}
+
+.navbar-search .search-query {
+	border: 1px solid darken(@gray, 15%);
+}
+
+.nav .nav-header {
+	text-shadow: none;
+}
+
+.navbar .nav-collapse.collapse > .nav > li > a,
+.navbar .nav-collapse.collapse > .nav > li.active > a,
+.navbar .nav-collapse.collapse > .nav > li > a:hover,
+.navbar .nav-collapse.collapse > .nav > li.active > a:hover {
+	color: @grayLighter;
+	border: 1px solid transparent;
+	.box-shadow(none);
+	background-color: transparent;
+	background-image: none;
+}
+
+.navbar .nav-collapse.collapse > .nav > li > a:hover, 
+.navbar .nav-collapse.collapse > .nav > li.active > a:hover {
+	background-color: @grayDarker;
+}
+
+@media (max-width: 979px) {
+	.navbar .brand {
+		border-right: none;
+	}
+}
+
+// BUTTONS
+// -----------------------------------------------------
+
+.btn {
+    .buttonBackground(@gray, darken(@gray, 10%));
+	.border-radius(3px);
+	border: 1px solid @grayDarker;
+}
+
+.btn, .btn:hover {
+	color: @white;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+// Set the backgrounds
+// -------------------------
+.btn-primary {
+  .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 20));
+}
+// Warning appears are orange
+.btn-warning {
+  .buttonBackground(lighten(@orange, 15%), @orange);
+}
+// Danger and error appear as red
+.btn-danger {
+  .buttonBackground(#ee5f5b, #bd362f);
+}
+// Success appears as green
+.btn-success {
+  .buttonBackground(#62c462, #51a351);
+}
+// Info appears as a neutral blue
+.btn-info {
+  .buttonBackground(#5bc0de, #2f96b4);
+}
+// Inverse appears as dark gray
+.btn-inverse {
+  .buttonBackground(#454545, #262626);
+}
+
+.caret {
+	border-top-color: @white;
+}
+
+// TABLES
+// -----------------------------------------------------
+
+.table th, .table td, .table tbody + tbody {
+	border-top: 1px solid darken(@grayDarker, 5%);
+}
+
+.table-bordered {
+  border: 1px solid darken(@grayDarker, 5%);
+  th + th,
+  td + td,
+  th + td,
+  td + th {
+    border-left: 1px solid darken(@grayDarker, 5%);
+  }
+  // Prevent a double border
+  thead:first-child tr:first-child th,
+  tbody:first-child tr:first-child th,
+  tbody:first-child tr:first-child td {
+    border-top: 0;
+  }
+}
+
+.table-striped {
+  tbody {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
+      background-color: darken(@grayDark, 5%);
+    }
+  }
+}
+
+.table {
+  tbody tr:hover td,
+  tbody tr:hover th {
+    background-color: @grayDark;
+  }
+}
+
+// NAVIGATION
+// -----------------------------------------------------
+
+.pagination > ul {
+	.box-shadow(none);
+}
+
+.breadcrumb, .pagination > ul a, .pager a {
+	border: 1px solid transparent;
+	.box-shadow(0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1));
+	#gradient > .vertical-three-colors(@gray, @grayDark, 70%, @grayDark);	
+}
+
+.breadcrumb li, .breadcrumb a, .pagination > ul a {
+	color: @grayLighter;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.breadcrumb a {
+	color: @white;
+}
+
+.pagination li > a,
+.pagination li.disabled > a {
+	border-left: 1px solid @gray;
+	border-right: 1px solid darken(@gray, 15%);
+	border-top: none;
+	border-bottom: none;
+}
+
+.pagination li.disabled > a {
+	#gradient > .vertical-three-colors(@grayLight, @gray, 70%, @gray);	
+}
+
+.pagination > ul > li:not(.disabled) a:hover,
+  {
+	#gradient > .directional(@grayDarker, @grayDark, 280deg);
+	border-left: 1px solid transparent;
+}
+
+.pagination > ul > li.active > a,
+.pagination > ul > li.active > a:hover {
+	color: @grayLighter;
+	background-color: @grayDark;
+	#gradient > .directional(lighten(@grayDarker, 4%), lighten(@grayDark, 4%), 280deg);
+	border-left: 1px solid transparent;
+}
+
+.pager a:hover {
+	#gradient > .directional(@grayDarker, @grayDark, 280deg);
+	border: 1px solid transparent;
+}
+
+.nav > li > a,
+.nav > li > a:hover,
+.nav > li.active > a,
+.nav > li.active > a:hover,
+.nav-tabs.nav-stacked > li > a,
+.nav-tabs.nav-stacked > li > a:hover {
+	border: none;
+	background-color: transparent;
+	color: @grayLighter;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);	
+}
+
+.dropdown-menu {
+	.box-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+.dropdown-menu,
+.dropdown-menu li.active a,
+.dropdown-menu li.active a:hover {
+	background-color: @grayDark;
+}
+
+.dropdown-menu a,
+.dropdown-menu li.active a,
+.dropdown-menu li a:hover,
+.dropdown-menu li.active a:hover,
+.dropdown.open .dropdown-toggle {
+	color: @grayLighter;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li.active a:hover {
+	background-color: @grayDarker;
+}
+
+.navbar .dropdown-menu::after {
+	border-bottom: 6px solid @grayDark;
+}
+
+.nav > li > a {
+	border: none;
+	.box-shadow(0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1));
+	#gradient > .vertical-three-colors(@gray, @grayDark, 70%, @grayDark);
+
+}
+
+.nav.nav-list .nav-header {
+	color: @grayLight;
+	text-shadow: -1px -1px 0 #111;
+}
+
+.tabs-below .nav-tabs {
+	border-top: none;
+}
+
+.tabs-left .nav-tabs {
+	border-right: none;
+}
+
+.tabs-right .nav-tabs {
+	border-left: none;
+}
+
+// FORMS
+// -----------------------------------------------------
+
+.form-actions {
+	background-color: darken(@grayDarker, 3%);
+	border-top: none;
+}
+
+.input-prepend .add-on, .input-append .add-on {
+	background-color: @gray;
+	border-top: 1px solid @grayLight;
+	border-left: 1px solid @grayLight;
+	border-bottom: 1px solid @grayDark;
+	border-right: 1px solid @grayDark;
+	text-shadow: none;
+}
+
+.uneditable-input, input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly] {
+	text-shadow: none;
+	color: @grayLighter;
+}
+
+// LABELS AND ALERTS
+// -----------------------------------------------------
+
+.label, .alert {
+  	color: rgba(256, 256, 256, 0.9);
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
+	.box-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.alert-heading {
+  	color: rgba(256, 256, 256, 0.9);
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.alert {
+  background-color: @warningText;
+  border-color: @warningText;  
+}
+
+.alert-success {
+  background-color: @successText;
+  border-color: @successText;  
+}
+
+.alert-danger,
+.alert-error {
+  background-color: @errorText;
+  border-color: @errorText;
+}
+
+.alert-info {
+  background-color: @infoText;
+  border-color: @infoText;
+}
+
+// MISCELLANEOUS
+// -----------------------------------------------------
+
+code, pre {
+	background-color: #F7F7F7;
+	border: 1px solid darken(@grayDarker, 5%);
+	text-shadow: none;
+}
+
+hr, legend, .page-header, .dropdown-menu .divider {
+	border-top: none;
+	border-bottom: 1px solid darken(@grayDarker, 5%);
+	background-color: transparent;
+}
+
+footer.footer {
+	border-top: 1px solid darken(@grayDarker, 5%);
+}
+
+.well, .progress {
+	background-color: darken(@grayDarker, 3%);
+	.box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.progress {
+	#gradient > .vertical(darken(@grayDarker, 3%), darken(@grayDarker, 3%));
+}
+
+.thumbnail, a.thumbnail:hover {
+  border: 1px solid darken(@grayDarker, 5%);
+}

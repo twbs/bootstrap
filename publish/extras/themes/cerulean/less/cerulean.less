@@ -1,0 +1,122 @@
+// Bootswatch.less
+// Swatch: Cerulean
+// -----------------------------------------------------
+
+// TYPOGRAPHY
+// -----------------------------------------------------
+
+@import url(http://fonts.googleapis.com/css?family=Telex);
+@import "variables.less";
+
+h1,h2,h3,h4,h5,h6, .navbar, .subnav {
+	font-family: 'Telex', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	color: #317EAC
+}
+
+// NAVBAR
+// -----------------------------------------------------
+
+.navbar-inner {
+  #gradient > .vertical-three-colors(@navbarBackground, @navbarBackground, 90%, @navbarBackgroundHighlight);
+}
+
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover {
+  background-color: @navbarBackground;
+  background-color: rgba(0,0,0,.2);
+}
+
+.navbar .search-query {
+	border: 1px solid darken(@linkColor, 10%);
+}
+
+// responsive menu colors
+
+.navbar .nav-collapse > .nav > li .dropdown-menu a {
+	color: @linkColor;
+	
+	&:hover {
+		color: @white;
+	}
+}
+
+.navbar .nav-collapse.collapse > .nav li > a {
+	color: @white;
+	
+	&:hover {
+		background-color: #2B7CAC;
+	}
+}
+
+.btn-navbar:hover {
+    background-color: darken(@white, 20%);
+    background-position: 0 0;
+}
+
+// FORMS
+// -----------------------------------------------------
+
+// Warning
+.control-group.warning {
+  .formFieldState(@orange, @orange, @warningBackground);
+}
+// Error
+.control-group.error {
+  .formFieldState(@red, @red, @errorBackground);
+}
+// Success
+.control-group.success {
+  .formFieldState(darken(@green, 10%), darken(@green, 10%), @successBackground);
+}
+
+// BUTTONS
+// -----------------------------------------------------
+
+.btn {
+  #gradient > .vertical-three-colors(@white, @white, 5%, darken(@white, 0%));
+  @shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
+}
+
+.btn-warning {
+  .caret {
+    border-top-color: @white;
+    .opacity(75);
+  }
+}
+
+.btn-primary {
+  .buttonBackground(lighten(@linkColor, 5%), @linkColor);
+}
+
+.btn-warning {
+  .buttonBackground(lighten(@orange, 5%), @orange);
+}
+
+.btn-danger {
+  .buttonBackground(lighten(@red, 5%), @red);
+}
+
+.btn-success {
+  .buttonBackground(lighten(@green, 5%), @green);
+}
+
+.btn-info {
+  .buttonBackground(lighten(@purple, 5%), @purple);
+}
+
+.btn-inverse {
+  .buttonBackground(lighten(@yellow, 5%), @yellow);
+}
+
+
+// ICONS
+// -----------------------------------------------------
+
+// Make icons gray
+i[class^="icon-"]{
+	opacity: 0.8;
+}

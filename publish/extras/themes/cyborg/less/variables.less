@@ -1,0 +1,110 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// Swatch: Cyborg
+// -----------------------------------------------------
+
+// CUSTOM VALUES
+// --------------------------------------------------
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Links
+@linkColor:             @blue;
+@linkColorHover:        @white;
+
+// Grays
+@black:                 #000;
+@grayDarker:            #020202;
+@grayDark:              #282828;
+@gray:                  #999;
+@grayLight:             #ADAFAE;
+@grayLighter:           #eee;
+@white:                 #fff;
+
+// Accent colors
+@blue:                  #33B5E5;
+@blueDark:              #0099CC;
+@green:                 #669900;
+@red:                   #CC0000;
+@yellow:                #ECBB13;
+@orange:                #FF8800;
+@pink:                  #FF4444;
+@purple:                #9933CC;
+
+// Typography
+@baseFontSize:          13px;
+@baseFontFamily:        'Droid Sans', sans-serif;
+@baseLineHeight:        18px;
+@textColor:             @gray;
+
+// Buttons
+@primaryButtonBackground:    @blue;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:        1000;
+@zindexPopover:         1010;
+@zindexTooltip:         1020;
+@zindexFixedNavbar:     1030;
+@zindexModalBackdrop:   1040;
+@zindexModal:           1050;
+
+// Sprite icons path
+@iconSpritePath:          "../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+
+// Input placeholder text color
+@placeholderText:       @grayLight;
+
+// Hr border color
+@hrBorder:                @grayDark;
+
+// Navbar
+@navbarHeight:                    40px;
+@navbarBackground:                @grayDarker;
+@navbarBackgroundHighlight:       @grayDarker;
+@navbarLinkBackgroundHover:       transparent;
+
+@navbarText:                      @grayLight;
+@navbarLinkColor:                 @grayLight;
+@navbarLinkColorHover:            @white;
+
+// Form states and alerts
+@warningText:             darken(#c09853, 10%);
+@warningBackground:       @grayLighter;
+@warningBorder:           transparent;
+
+@errorText:               #b94a48;
+@errorBackground:         @grayLighter;
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+@successText:             #468847;
+@successBackground:       @grayLighter;
+@successBorder:           darken(spin(@successBackground, -10), 5%);
+
+@infoText:                @blueDark;
+@infoBackground:          @grayLighter;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;

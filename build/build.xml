@@ -490,8 +490,8 @@
       <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
       <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
           <fileset dir="./${dir.intermediate}/">
-              <include name="${dir.js}/plugins.js"/>
-              <include name="${dir.js}/${file.root.script}"/>
+              <!--include name="${dir.js}/plugins.js"/-->
+              <!--include name="${dir.js}/${file.root.script}"/-->
           </fileset>
       </concat>
   </target>

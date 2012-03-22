@@ -1,0 +1,32 @@
+// LABELS
+// ------
+
+// Base
+.label {
+  padding: 2px 4px 3px;
+  font-size: @baseFontSize * .85;
+  font-weight: bold;
+  color: @white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  background-color: @grayLight;
+  .border-radius(3px);
+}
+
+// Hover state
+.label:hover {
+  color: @white;
+  text-decoration: none;
+}
+
+// Colors
+.label-important        { background-color: @errorText; }
+.label-important:hover  { background-color: darken(@errorText, 10%); }
+
+.label-warning          { background-color: @orange; }
+.label-warning:hover    { background-color: darken(@orange, 10%); }
+
+.label-success          { background-color: @successText; }
+.label-success:hover    { background-color: darken(@successText, 10%); }
+
+.label-info             { background-color: @infoText; }
+.label-info:hover       { background-color: darken(@infoText, 10%); }

@@ -1,0 +1,474 @@
+// Bootswatch.less
+// Swatch: Vintage
+// -----------------------------------------------------
+
+// TYPOGRAPHY
+// --------------------------------------------------
+
+@import url('http://fonts.googleapis.com/css?family=Josefin+Slab:400,700');
+@import "variables.less";
+
+h1, h2, h3, h4, h5, h6, .navbar .brand, legend, .btn,
+.navbar .nav > li > a,
+div.subnav li > a  {
+	font-family: 'Josefin Slab', serif;
+	font-weight: 700;
+}
+
+h3 { font-size: 20px; }
+h4 { font-size: 16px; }
+h5 { font-size: 14px; }
+
+.alert-heading {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: @yellow;
+}
+
+h1 > small, h2 > small, h3 > small, h4 > small, h5 > small, h6 > small, .muted {
+	color: @linkColor;
+}
+
+// SCAFFOLDING
+// --------------------------------------------------
+
+body {
+	background-color: #AEAD8E;
+	#gradient > .vertical-three-colors (#90A38F, #AEAD8E, 60%, #90A38F);
+	background-size: 100% 1400px;
+	background-repeat: repeat-y !important;
+}
+
+blockquote {
+	border-left: 2px solid @linkColor;
+	
+	&.pull-right {
+		border-right: 2px solid @linkColor;
+	}
+	
+	small {
+		color: @blueDark;
+	}
+}
+
+code, pre {
+	color: lighten(@blueDark, 10%);
+	background-color: @linkColor;
+}
+
+// NAVBAR
+// --------------------------------------------------
+
+.navbar-inner {
+	background-image: none;
+	.box-shadow(none);
+}
+
+.navbar .brand {
+	font-size: 26px;
+	padding: 18px 20px 12px;
+	color: @linkColor;
+}
+
+.navbar .nav > li > a, {
+	font-size: 20px;
+	padding: 22px 10px 11px;
+	color: @linkColor;
+	
+	&:hover {
+		color: @yellow;
+	}
+}
+
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover {
+	color: @yellow;
+}
+
+.navbar-search {
+	margin-top: 12px;
+}
+
+.navbar-search .search-query {
+	border-color: transparent;
+	padding: 6px 9px 2px 9px;
+}
+
+.navbar .nav > .dropdown.open > a {
+	color: @yellow;
+}
+
+.navbar .nav > .dropdown.open > .dropdown-menu {
+	background-color: @linkColor;
+	color: @textColor;
+	border-color: transparent;
+}
+
+.navbar .nav > .dropdown.open > .dropdown-menu a:hover {
+	background-color: darken(#90A38F, 10%);
+	color: @linkColor;
+}
+
+.dropdown-menu .divider {
+	background-color: transparent;
+	border-bottom: 1px solid #AEAD8E;
+}
+
+div.subnav {
+	font-size: 18px;
+}
+
+div.subnav-fixed {
+	top: 54px;
+}
+
+div.subnav {
+	background-color: @green;
+	background-image: none;
+	border-color: transparent;
+	.box-shadow(0 1px 5px rgba(0,0,0,.1));
+}
+
+div.subnav .nav > li > a {
+	color: @linkColor;
+	border-color: transparent;
+	background-color: transparent;
+}
+
+div.subnav .nav > li.active > a,
+div.subnav .nav > li > a:hover,
+div.subnav .nav > li.active > a:hover,
+div.subnav .dropdown.open .dropdown-toggle {
+	background-color: transparent;
+	border-color: transparent;
+	color: @yellow;
+}
+
+div.subnav .dropdown.open > .dropdown-menu {
+	background-color: @linkColor;
+	color: @textColor;
+	border-color: transparent;
+}
+
+div.subnav .dropdown.open > .dropdown-menu a:hover {
+	background-color: darken(#90A38F, 10%);
+	color: @linkColor;
+}
+
+.navbar .btn-navbar {
+	margin-top: 14px;
+}
+
+.navbar .nav-collapse.collapse .nav li > a {
+	color: @linkColor;
+	
+	&:hover {
+		color: @yellow;
+		background-color: @blue;
+	}
+}
+
+.navbar .navbar-form, .navbar .navbar-search {
+	border-color: transparent;
+	.box-shadow(none);
+}
+
+div.subnav .nav > li + li > a {
+	border-color: transparent;
+}
+
+
+// TABLES
+// --------------------------------------------------
+
+.table-bordered {
+	border: 2px solid @linkColor;
+}
+
+.table th,
+.table-striped tbody tr:nth-child(odd) th {
+	background-color: darken(#90A38F, 10%);
+	color: @linkColor;
+}
+
+.table tbody tr td {
+	background-color: #C3C7AE;
+}
+
+.table-striped tbody tr:nth-child(odd) td {
+	background-color: darken(#C3C7AE, 5%);
+}
+
+.table tbody tr:hover td {
+	background-color: darken(#C3C7AE, 10%);
+}
+
+// BUTTONS
+// --------------------------------------------------
+
+.btn {
+  .buttonBackground(lighten(@blueDark, 5%), @blueDark);
+    text-shadow: none;
+    color: @white;
+	border-color: transparent;
+	.box-shadow(none);
+	
+	&:hover {
+		color: @grayLighter;
+	}
+}
+
+.btn-large {
+	font-size: 18px;
+}
+
+.btn-primary {
+	.buttonBackground(lighten(@blue, 10%), lighten(@blue, 5%));
+}
+// Warning appears are orange
+.btn-warning {
+  .buttonBackground(@orange, darken(@orange, 5%));
+}
+// Danger and error appear as red
+.btn-danger {
+  .buttonBackground(lighten(@red, 5%), @red);
+}
+// Success appears as green
+.btn-success {
+  .buttonBackground(#62c462, #51a351);
+}
+// Info appears as a neutral blue
+.btn-info {
+  .buttonBackground(#5bc0de, #2f96b4);
+}
+// Inverse appears as dark gray
+.btn-inverse {
+  .buttonBackground(@yellow, darken(@yellow, 5%));
+}
+
+.btn-group .dropdown-toggle {
+	.box-shadow(none);
+}
+
+// NAVIGATION
+// --------------------------------------------------
+
+.breadcrumb, .pagination > ul {
+	background-color: darken(#90A38F, 10%);
+	background-image: none;
+	border-color: transparent;
+	.box-shadow(none);
+}
+
+
+.breadcrumb li {
+	color: @yellow;
+	text-shadow: none;
+	
+	a {
+		color: @linkColor;
+	}
+	
+	a:hover {
+		color: @yellow;
+	}
+	
+	.divider {
+		color: @blue;
+	}
+}
+
+.pagination a {
+	color: @linkColor;
+	border-color: transparent;
+	
+	&:hover {
+		color: @yellow;
+		background-color: #748C73;
+	}
+}
+
+.pagination .active a {
+	color: @blue;
+	background-color: #A2CDB5;
+}
+
+.pagination .disabled a,
+.pagination .disabled a:hover {
+	color: @blue;
+}
+
+.nav-list > li > a, .nav-list .nav-header {
+	text-shadow: none;
+}
+
+.nav-list .active > a, .nav-list .active > a:hover {
+	background-color: #A2CDB5;
+	text-shadow: none;
+}
+
+.nav-list li > a:hover {
+	background-color: transparent;
+}
+
+.nav-tabs {
+	border-color: transparent;
+}
+
+.nav-tabs > li > a,
+.nav-pills > li > a {
+	background-color: #748C73;
+	
+	&:hover {
+		background-color: #748C73;
+		border-color: transparent;
+	}
+}
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-pills .active > a,
+.nav-pills .active > a:hover {
+	background-color: #A2CDB5;
+	border-color: transparent;
+	color: @blue;
+}
+
+.nav-tabs.nav-stacked > li > a {
+	border-color: transparent;
+	
+	&:hover {
+		border-color: transparent;
+	}
+}
+
+.nav-tabs .open .dropdown-toggle,
+.nav-pills .open .dropdown-toggle  {
+	background-color: #748C73;
+	border-color: transparent;
+	color: @yellow;
+}
+
+.nav-tabs .active.open .dropdown-toggle,
+.nav-pills .active.open .dropdown-toggle {
+	background-color: #A2CDB5;
+}
+
+.nav-tabs .dropdown-menu,
+.nav-pills .dropdown-menu {
+	background-color: @linkColor;
+	color: @textColor;
+	border-color: transparent;
+	
+	a:hover {
+		background-color: #A2CDB5;
+		color: @linkColor;
+	}
+}
+
+.nav .nav-header {
+	color: @blue;
+}
+
+.tabbable > .nav-tabs,
+.tabbable > .nav-tabs > li > a,
+.tabbable > .nav-tabs > li > a:hover,
+.tabbable > .nav-tabs > li.active > a,
+.tabbable > .nav-tabs > li.active > a:hover  {
+	border-color: transparent;
+}
+
+.pager a {
+	border: none;
+	background-color: #748C73;
+	
+	&:hover {
+		background-color: transparent;
+		background-color: #748C73;
+	}
+}
+
+// FORMS
+// --------------------------------------------------
+
+legend {
+	color: @yellow;
+}
+
+label, .help-block, input[type="file"] {
+	color: @linkColor;
+}
+
+input, textarea, select {
+	color: @textColor;
+}
+
+.uneditable-input {
+	color: @gray;
+}
+
+legend {
+	border-bottom: 2px solid @white;
+}
+
+.form-actions {
+	background-color: transparent;
+	border-top: none;
+	.border-radius(4px);
+}
+
+// MISCELLANEOUS
+// --------------------------------------------------
+
+.alert {
+	text-shadow: none;
+	border: none;
+}
+
+.label {
+	color: @linkColor;
+	opacity: 1;
+	text-shadow: none;
+}
+
+.progress {
+	background-color: darken(#90A38F, 10%);
+	background-image: none;
+	.box-shadow(none);
+	
+	.bar {
+		background-image: none;	
+		background-color: #A2CDB5;
+	}
+}
+
+.well {
+	background-color: darken(#90A38F, 10%);
+	border: none;
+	.box-shadow(none);
+}
+
+.thumbnail {
+	border: none;
+	.box-shadow(none);
+	
+	img {
+		.border-radius(4px);
+	}
+}
+
+hr {
+	border-top: none;
+	border-bottom: 2px solid @linkColor;
+}
+
+.page-header {
+	border-bottom: 2px solid @linkColor;
+	padding-bottom: 5px;
+}
+
+footer.footer {
+	border-top: 2px solid @linkColor;
+}

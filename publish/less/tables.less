@@ -1,0 +1,150 @@
+//
+// Tables.less
+// Tables for, you guessed it, tabular data
+// ----------------------------------------
+
+
+// BASE TABLES
+// -----------------
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// BASELINE STYLES
+// ---------------
+
+.table {
+  width: 100%;
+  margin-bottom: @baseLineHeight;
+  // Cells
+  th,
+  td {
+    padding: 8px;
+    line-height: @baseLineHeight;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }
+  th {
+    font-weight: bold;
+  }
+  // Bottom align for column headings
+  thead th {
+    vertical-align: bottom;
+  }
+  // Remove top border from thead by default
+  thead:first-child tr th,
+  thead:first-child tr td {
+    border-top: 0;
+  }
+  // Account for multiple tbody instances
+  tbody + tbody {
+    border-top: 2px solid #ddd;
+  }
+}
+
+
+
+// CONDENSED TABLE W/ HALF PADDING
+// -------------------------------
+
+.table-condensed {
+  th,
+  td {
+    padding: 4px 5px;
+  }
+}
+
+
+// BORDERED VERSION
+// ----------------
+
+.table-bordered {
+  border: 1px solid #ddd;
+  border-collapse: separate; // Done so we can round those corners!
+  *border-collapse: collapsed; // IE7 can't round corners anyway
+  .border-radius(4px);
+  th + th,
+  td + td,
+  th + td,
+  td + th {
+    border-left: 1px solid #ddd;
+  }
+  // Prevent a double border
+  thead:first-child tr:first-child th,
+  tbody:first-child tr:first-child th,
+  tbody:first-child tr:first-child td {
+    border-top: 0;
+  }
+  // For first th or td in the first row in the first thead or tbody
+  thead:first-child tr:first-child th:first-child,
+  tbody:first-child tr:first-child td:first-child {
+    .border-radius(4px 0 0 0);
+  }
+  thead:first-child tr:first-child th:last-child,
+  tbody:first-child tr:first-child td:last-child {
+    .border-radius(0 4px 0 0);
+  }
+  // For first th or td in the first row in the first thead or tbody
+  thead:last-child tr:last-child th:first-child,
+  tbody:last-child tr:last-child td:first-child {
+    .border-radius(0 0 0 4px);
+  }
+  thead:last-child tr:last-child th:last-child,
+  tbody:last-child tr:last-child td:last-child {
+    .border-radius(0 0 4px 0);
+  }
+}
+
+
+// ZEBRA-STRIPING
+// --------------
+
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.table-striped {
+  tbody {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
+      background-color: #f9f9f9;
+    }
+  }
+}
+
+
+// HOVER EFFECT
+// ------------
+// Placed here since it has to come after the potential zebra striping
+.table {
+  tbody tr:hover td,
+  tbody tr:hover th {
+    background-color: #f5f5f5;
+  }
+}
+
+
+// TABLE CELL SIZING
+// -----------------
+
+// Change the columns
+.tableColumns(@columnSpan: 1) {
+  float: none;
+  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16;
+  margin-left: 0;
+}
+table {
+  .span1     { .tableColumns(1); }
+  .span2     { .tableColumns(2); }
+  .span3     { .tableColumns(3); }
+  .span4     { .tableColumns(4); }
+  .span5     { .tableColumns(5); }
+  .span6     { .tableColumns(6); }
+  .span7     { .tableColumns(7); }
+  .span8     { .tableColumns(8); }
+  .span9     { .tableColumns(9); }
+  .span10    { .tableColumns(10); }
+  .span11    { .tableColumns(11); }
+  .span12    { .tableColumns(12); }
+}
