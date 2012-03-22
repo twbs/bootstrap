@@ -76,16 +76,20 @@
 
         if (!this.isShown) return
 
+        var event = jQuery.Event("hide")
+        
+        this.$element.trigger(event)
+        
+        if (event.isDefaultPrevented()) return
+        
+        this.$element.removeClass('in')
+
         var that = this
         this.isShown = false
 
         $('body').removeClass('modal-open')
 
         escape.call(this)
-
-        this.$element
-          .trigger('hide')
-          .removeClass('in')
 
         $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :
