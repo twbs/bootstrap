@@ -239,6 +239,42 @@ a:hover {
 .offset1 {
   margin-left: 100px;
 }
+.inset12 {
+  margin-left: -940px;
+}
+.inset11 {
+  margin-left: -860px;
+}
+.inset10 {
+  margin-left: -780px;
+}
+.inset9 {
+  margin-left: -700px;
+}
+.inset8 {
+  margin-left: -620px;
+}
+.inset7 {
+  margin-left: -540px;
+}
+.inset6 {
+  margin-left: -460px;
+}
+.inset5 {
+  margin-left: -380px;
+}
+.inset4 {
+  margin-left: -300px;
+}
+.inset3 {
+  margin-left: -220px;
+}
+.inset2 {
+  margin-left: -140px;
+}
+.inset1 {
+  margin-left: -60px;
+}
 .row-fluid {
   width: 100%;
   *zoom: 1;

@@ -210,6 +210,36 @@
 
   <br>
 
+  <h2>Insetting columns</h2>
+  <div class="row show-grid">
+    <div class="span4">4</div>
+    <div class="span4 offset4">4 offset 4</div>
+    <div class="span4 inset8">4 inset 8</div>
+  </div><!-- /row -->
+  <div class="row show-grid">
+    <div class="span3 offset3">3 offset 3</div>
+    <div class="span3 inset6">3 inset 6</div>
+  </div><!-- /row -->
+  <div class="row show-grid">
+    <div class="span8 offset4">8 offset 4</div>
+    <div class="span4 inset12">4 inset 12</div>
+  </div><!-- /row -->
+  <div class="row">
+    <div class="span6">
+      <p>Inset columns allow you to stack your markup for mobile and tablet devices while providing an alternate layout on larger screen resolutions.</p>
+      <p>To calculate the proper amount of inset columns simply add the columns values from the div above. <code>.span4 .offset4</code> would use <code>.inset8</code></p>
+    </div>
+    <div class="span6">
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span4"&gt;Displays on the left&lt;/div&gt;
+  &lt;div class="span4 offset4"&gt;Displays on the right&lt;/div&gt;
+  &lt;div class="span4 inset8"&gt;Displays in the center&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
+
   <h2>Nesting columns</h2>
   <div class="row">
     <div class="span6">
