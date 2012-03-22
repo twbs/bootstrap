@@ -73,8 +73,9 @@
       if (!self.options.delay || !self.options.delay.show) {
         self.show()
       } else {
+        clearTimeout(this.timeout)
         self.hoverState = 'in'
-        setTimeout(function() {
+        this.timeout = setTimeout(function() {
           if (self.hoverState == 'in') {
             self.show()
           }
@@ -88,8 +89,9 @@
       if (!self.options.delay || !self.options.delay.hide) {
         self.hide()
       } else {
+        clearTimeout(this.timeout)
         self.hoverState = 'out'
-        setTimeout(function() {
+        this.timeout = setTimeout(function() {
           if (self.hoverState == 'out') {
             self.hide()
           }
