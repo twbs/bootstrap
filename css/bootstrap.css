@@ -3855,11 +3855,10 @@ ul.ul-horizontal li {
   display: inline-block;
   width: auto;
   height: auto;
-  line-height: inherit;
-  vertical-align: middle;
   background-image: none;
   background-position: 0;
   background-repeat: no-repeat;
+  line-height: normal;
 }
 .icon-white {
   background-image: none;
@@ -4111,6 +4110,9 @@ h4 {
   font-weight: normal;
   font-style: normal;
   display: inline-block;
+  margin-top: -8px;
+  vertical-align: middle;
+  line-height: normal;
 }
 .icon-large:before {
   font-size: 1.3333333333333333em;
@@ -4118,6 +4120,7 @@ h4 {
 .btn [class^="icon-"],
 .btn [class*=" icon-"] {
   line-height: .9em;
+  margin-top: -4px;
 }
 li [class^="icon-"],
 li [class*=" icon-"] {
@@ -4576,15 +4579,15 @@ li[class*=" icon-"].icon-large:before {
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  margin-top: -5px;
-  line-height: inherit;
+  vertical-align: middle;
+  margin-top: -95%;
 }
 .icon-imblarge:before {
   font-size: 1.3333333333333333em;
 }
 .btn [class^="icon-imb"],
 .btn [class*=" icon-imb"] {
-  margin-top: -2px;
+  margin-top: -4px;
   line-height: inherit;
 }
 li [class^="icon-imb"],
@@ -4801,8 +4804,8 @@ li[class*=" icon-imb"].icon-imblarge:before {
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  margin-top: -5px;
-  line-height: inherit;
+  vertical-align: middle;
+  margin-top: -95%;
 }
 .icon-ims-large:before {
   font-size: 1.3333333333333333em;
