@@ -321,7 +321,6 @@ select:focus:required:invalid {
 
 // For text that needs to appear as an input but should not be an input
 .uneditable-input {
-  display: block;
   background-color: @inputBackground;
   border-color: #eee;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
@@ -367,6 +366,7 @@ select:focus:required:invalid {
   .uneditable-input {
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
+    vertical-align: middle;
     .border-radius(0 3px 3px 0);
     &:focus {
       position: relative;
