@@ -8,6 +8,10 @@
     margin-bottom: 36px;
   }
 
+  h4 {
+    margin-bottom: 5px;
+  }
+
   /* colgroup tests */
   .col1 {
     background-color: rgba(255,0,0,.1);
@@ -20,12 +24,18 @@
   }
 </style>
 
+
 <!-- Masthead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <h1>{{_i}}CSS Tests{{/i}}</h1>
   <p class="lead">{{_i}}One stop shop for quick debugging and edge-case tests of CSS.{{/i}}</p>
 </header>
+
+
+
+<!-- Tables
+================================================== -->
 
 <div class="page-header">
   <h1>Tables</h1>
@@ -191,3 +201,49 @@
     </table>
   </div><!--/span-->
 </div><!--/row-->
+
+
+
+<!-- Forms
+================================================== -->
+
+<div class="page-header">
+  <h1>Forms</h1>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <h4>Prepend and append on inputs</h4>
+    <form>
+      <div class="controls">
+        <div class="input-prepend">
+          <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
+        </div>
+      </div>
+      <div class="controls">
+        <div class="input-append">
+          <input class="span2" id="prependedInput" size="16" type="text"><span class="add-on">@</span>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="input-prepend input-append">
+          <span class="add-on">$</span><input class="span2" id="prependedInput" size="16" type="text"><span class="add-on">.00</span>
+        </div>
+      </div>
+    </form>
+  </div><!--/span-->
+  <div class="span6">
+    <h4>Prepend and append with uneditable</h4>
+    <form>
+      <div class="input-prepend">
+        <span class="add-on">$</span><span class="span2 uneditable-input">Some value here</span>
+      </div>
+      <div class="input-append">
+        <span class="span2 uneditable-input">Some value here</span><span class="add-on">.00</span>
+      </div>
+    </form>
+
+  </div><!--/span-->
+</div><!--/row-->
+
+

@@ -791,7 +791,7 @@ select:focus {
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
-.uneditable-input {
+.uneditable-input[class*="span"] {
   float: none;
   margin-left: 0;
 }
@@ -1045,7 +1045,8 @@ select:focus:required:invalid:focus {
   margin-right: -1px;
 }
 .input-append input,
-.input-append select .uneditable-input {
+.input-append select,
+.input-append .uneditable-input {
   -webkit-border-radius: 3px 0 0 3px;
   -moz-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
