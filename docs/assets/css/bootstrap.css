@@ -2419,9 +2419,13 @@ input[type="submit"].btn.btn-mini {
 }
 .btn-large .caret {
   margin-top: 6px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #000000;
+  border-left-width: 5px;
+  border-right-width: 5px;
+  border-top-width: 5px;
+}
+.dropup .btn-large .caret {
+  border-bottom: 5px solid #000000;
+  border-top: 0;
 }
 .btn-primary .caret,
 .btn-warning .caret,
