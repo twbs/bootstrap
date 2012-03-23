@@ -113,9 +113,11 @@ textarea {
   clear: both;
 }
 .hide-text {
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
 }
 .input-block-level {
   display: block;
@@ -2866,7 +2868,7 @@ input[type="submit"].btn.btn-mini {
   font-size: 20px;
   font-weight: 200;
   line-height: 1;
-  color: #ffffff;
+  color: #999999;
 }
 .navbar .navbar-text {
   margin-bottom: 0;
