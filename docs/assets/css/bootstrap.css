@@ -2735,6 +2735,10 @@ input[type="submit"].btn.btn-mini {
 .tabs-below .nav-tabs .active > a:hover {
   border-color: transparent #ddd #ddd #ddd;
 }
+.tabs-left .tab-content,
+.tabs-right .tab-content {
+  width: auto;
+}
 .tabs-left .nav-tabs > li,
 .tabs-right .nav-tabs > li {
   float: none;
@@ -3039,12 +3043,6 @@ input[type="submit"].btn.btn-mini {
   margin-left: 10px;
   margin-right: 0;
 }
-.navbar .dropdown-menu {
-  margin-top: 1px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
 .navbar .dropdown-menu:before {
   content: '';
   display: inline-block;
@@ -3080,7 +3078,7 @@ input[type="submit"].btn.btn-mini {
   top: auto;
 }
 .navbar .nav .dropdown-toggle .caret,
-.navbar .nav .open.dropdown .caret {
+.navbar .nav .open .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
