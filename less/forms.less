@@ -365,6 +365,7 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
+    margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
     .border-radius(0 3px 3px 0);
     &:focus {

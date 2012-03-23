@@ -992,6 +992,7 @@ select:focus:required:invalid:focus {
 .input-append select,
 .input-prepend .uneditable-input,
 .input-append .uneditable-input {
+  margin-bottom: 0;
   *margin-left: 0;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
