@@ -78,6 +78,12 @@ table {
     border-left: 1px solid @tableBorder;
   }
   // Prevent a double border
+  caption + thead tr:first-child th,
+  caption + tbody tr:first-child th,
+  caption + tbody tr:first-child td,
+  colgroup + thead tr:first-child th,
+  colgroup + tbody tr:first-child th,
+  colgroup + tbody tr:first-child td,
   thead:first-child tr:first-child th,
   tbody:first-child tr:first-child th,
   tbody:first-child tr:first-child td {

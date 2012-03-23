@@ -1,6 +1,186 @@
+<style>
+body {
+  background-image: none;
+}
+.col1 {
+  background-color: rgba(255,0,0,.1);
+}
+.col2 {
+  background-color: rgba(0,255,0,.1);
+}
+.col3 {
+  background-color: rgba(0,0,255,.1);
+}
+</style>
+
 <!-- Masthead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
-  <h1>{{_i}}Tests{{/i}}</h1>
-  <p class="lead">{{_i}}{{/i}}</p>
+  <h1>{{_i}}CSS Tests{{/i}}</h1>
+  <p class="lead">{{_i}}One stop shop for quick debugging and edge-case tests of CSS.{{/i}}</p>
 </header>
+
+<div class="page-header">
+  <h1>Tables</h1>
+</div>
+
+<div class="row">
+  <div class="span6">
+    <h4>Bordered without thead</h4>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered without thead, with caption</h4>
+    <table class="table table-bordered">
+      <caption>Table caption</caption>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered without thead, with colgroup</h4>
+    <table class="table table-bordered">
+      <colgroup>
+        <col class="col1">
+        <col class="col2">
+        <col class="col3">
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered with thead, with colgroup</h4>
+    <table class="table table-bordered">
+      <colgroup>
+        <col class="col1">
+        <col class="col2">
+        <col class="col3">
+      </colgroup>
+      <thead>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!--/span-->
+  <div class="span6">
+    <h4>Bordered with thead and caption</h4>
+    <table class="table table-bordered">
+      <caption>Table caption</caption>
+      <thead>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered with rowspan and colspan</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">1 and 2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td rowspan="2">2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td rowspan="2">1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td colspan="2">2 and 3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!--/span-->
+</div><!--/row-->
