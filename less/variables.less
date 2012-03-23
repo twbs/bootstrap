@@ -45,18 +45,18 @@
 
 // Typography
 // -------------------------
+@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Menlo, Monaco, "Courier New", monospace;
+
 @baseFontSize:          13px;
-@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@baseFontFamily:        @sansFontFamily;
 @baseLineHeight:        18px;
-@altFontFamily:         Georgia, "Times New Roman", Times, serif;
+@altFontFamily:         @serifFontFamily;
 
 @headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
 @headingsFontWeight:    bold;    // instead of browser default, bold
 @headingsColor:         inherit; // empty to use BS default, @textColor
-
-@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@monoFontFamily:        Menlo, Monaco, "Courier New", monospace;
 
 
 // Tables
