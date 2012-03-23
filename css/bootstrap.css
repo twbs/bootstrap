@@ -4119,6 +4119,7 @@ h4 {
 .btn [class^="icon-"],
 .btn [class*=" icon-"] {
   line-height: .9em;
+  vertical-align: baseline;
 }
 li [class^="icon-"],
 li [class*=" icon-"] {
@@ -4584,6 +4585,7 @@ li[class*=" icon-"].icon-large:before {
 .btn [class^="icomoon-"],
 .btn [class*=" icomoon-"] {
   line-height: .9em;
+  vertical-align: baseline;
 }
 li [class^="icomoon-"],
 li [class*=" icomoon-"] {
