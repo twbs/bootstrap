@@ -75,12 +75,20 @@
   .progress-step .step-full, .progress-step .step-empty {
     height: 30px;
     width: 30px;
-    background-color: blue;
-    .border-radius(15px);
+    background-color: @blue;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
     position: absolute;
     left: 0%;
     margin-top: -6px;
     margin-left: -14px;
+    font-size: 12pt;
+    color: white;
+    text-shadow: 0px 0px 3px #222;
+    text-align: center;
+    line-height: 28px;
+    font-weight: bold;
   }
   .progress-step-square {
     .step-full, 
