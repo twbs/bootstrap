@@ -197,10 +197,10 @@
 }
 
 // Drop shadows
-.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25), ...) {
+  -webkit-box-shadow: @arguments;
+     -moz-box-shadow: @arguments;
+          box-shadow: @arguments;
 }
 
 // Transitions
@@ -251,18 +251,18 @@
 
 // Background clipping
 // Heads up: FF 3.6 and under need "padding" instead of "padding-box"
-.background-clip(@clip) {
-  -webkit-background-clip: @clip;
-     -moz-background-clip: @clip;
-          background-clip: @clip;
+.background-clip(@clip, ...) {
+  -webkit-background-clip: @arguments;
+     -moz-background-clip: @arguments;
+          background-clip: @arguments;
 }
 
 // Background sizing
-.background-size(@size){
-  -webkit-background-size: @size;
-     -moz-background-size: @size;
-       -o-background-size: @size;
-          background-size: @size;
+.background-size(@size, ...){
+  -webkit-background-size: @arguments;
+     -moz-background-size: @arguments;
+       -o-background-size: @arguments;
+          background-size: @arguments;
 }
 
 
