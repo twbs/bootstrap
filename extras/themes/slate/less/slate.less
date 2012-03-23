@@ -1,16 +1,12 @@
 // Bootswatch.less
 // Swatch: Slate
+// Version: 2.0.2
 // -----------------------------------------------------
 
 // SCAFFOLDING
 // -----------------------------------------------------
-@import "variables.less";
-body {
-	background-color: @grayDarker;
-}
 
 h1, h2, h3, h4, h5, h6, body, legend, label {
-	color: @grayLight;
 	text-shadow: -1px -1px 0 #111;
 }
 
@@ -79,7 +75,11 @@ div.subnav .nav > li:last-child > a:hover {
 
 div.subnav {
 	border: 1px solid transparent;
-	.box-shadow(0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1));
+	.box-shadow('0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1)');
+}
+
+div.subnav-fixed {
+	.box-shadow(none);
 }
 
 .navbar-search .search-query {
@@ -90,10 +90,10 @@ div.subnav {
 	text-shadow: none;
 }
 
-.navbar .nav-collapse.collapse > .nav > li > a,
-.navbar .nav-collapse.collapse > .nav > li.active > a,
-.navbar .nav-collapse.collapse > .nav > li > a:hover,
-.navbar .nav-collapse.collapse > .nav > li.active > a:hover {
+.navbar .nav-collapse.in > .nav > li > a,
+.navbar .nav-collapse.in > .nav > li.active > a,
+.navbar .nav-collapse.in > .nav > li > a:hover,
+.navbar .nav-collapse.in > .nav > li.active > a:hover {
 	color: @grayLighter;
 	border: 1px solid transparent;
 	.box-shadow(none);
@@ -101,14 +101,20 @@ div.subnav {
 	background-image: none;
 }
 
-.navbar .nav-collapse.collapse > .nav > li > a:hover, 
-.navbar .nav-collapse.collapse > .nav > li.active > a:hover {
+.navbar .nav-collapse.in > .nav > li > a:hover, 
+.navbar .nav-collapse.in > .nav > li.active > a:hover {
 	background-color: @grayDarker;
 }
 
 @media (max-width: 979px) {
 	.navbar .brand {
 		border-right: none;
+	}
+}
+
+@media (max-width: 768px) {
+	div.subnav .nav > li + li > a {
+		border-top: 1px solid transparent;
 	}
 }
 
@@ -127,28 +133,25 @@ div.subnav {
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-// Set the backgrounds
-// -------------------------
 .btn-primary {
-  .buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 20));
+  //.buttonBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
 }
-// Warning appears are orange
 .btn-warning {
   .buttonBackground(lighten(@orange, 15%), @orange);
 }
-// Danger and error appear as red
+
 .btn-danger {
   .buttonBackground(#ee5f5b, #bd362f);
 }
-// Success appears as green
+
 .btn-success {
   .buttonBackground(#62c462, #51a351);
 }
-// Info appears as a neutral blue
+
 .btn-info {
   .buttonBackground(#5bc0de, #2f96b4);
 }
-// Inverse appears as dark gray
+
 .btn-inverse {
   .buttonBackground(#454545, #262626);
 }
@@ -160,41 +163,7 @@ div.subnav {
 // TABLES
 // -----------------------------------------------------
 
-.table th, .table td, .table tbody + tbody {
-	border-top: 1px solid darken(@grayDarker, 5%);
-}
 
-.table-bordered {
-  border: 1px solid darken(@grayDarker, 5%);
-  th + th,
-  td + td,
-  th + td,
-  td + th {
-    border-left: 1px solid darken(@grayDarker, 5%);
-  }
-  // Prevent a double border
-  thead:first-child tr:first-child th,
-  tbody:first-child tr:first-child th,
-  tbody:first-child tr:first-child td {
-    border-top: 0;
-  }
-}
-
-.table-striped {
-  tbody {
-    tr:nth-child(odd) td,
-    tr:nth-child(odd) th {
-      background-color: darken(@grayDark, 5%);
-    }
-  }
-}
-
-.table {
-  tbody tr:hover td,
-  tbody tr:hover th {
-    background-color: @grayDark;
-  }
-}
 
 // NAVIGATION
 // -----------------------------------------------------
@@ -203,9 +172,13 @@ div.subnav {
 	.box-shadow(none);
 }
 
+.breadcrumb {
+	.box-shadow(none);
+}
+
 .breadcrumb, .pagination > ul a, .pager a {
 	border: 1px solid transparent;
-	.box-shadow(0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1));
+	.box-shadow('0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1)');
 	#gradient > .vertical-three-colors(@gray, @grayDark, 70%, @grayDark);	
 }
 
@@ -292,7 +265,7 @@ div.subnav {
 
 .nav > li > a {
 	border: none;
-	.box-shadow(0 1px 3px rgba(0, 0, 0, 0.25),inset 0 -1px 0 rgba(0, 0, 0, 0.1));
+	.box-shadow('0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1)');
 	#gradient > .vertical-three-colors(@gray, @grayDark, 70%, @grayDark);
 
 }
@@ -300,6 +273,15 @@ div.subnav {
 .nav.nav-list .nav-header {
 	color: @grayLight;
 	text-shadow: -1px -1px 0 #111;
+}
+
+.nav.nav-list .divider {
+	border-bottom: 1px solid darken(@grayDarker, 5%);
+	background-color: transparent;
+}
+
+.nav-tabs {
+	border-bottom: none;
 }
 
 .tabs-below .nav-tabs {
@@ -317,12 +299,18 @@ div.subnav {
 // FORMS
 // -----------------------------------------------------
 
+label, input, button, select, textarea, legend {
+	color: @textColor;
+}
+
 .form-actions {
 	background-color: darken(@grayDarker, 3%);
 	border-top: none;
 }
 
 .input-prepend .add-on, .input-append .add-on {
+	vertical-align: top;
+	height: 19px;
 	background-color: @gray;
 	border-top: 1px solid @grayLight;
 	border-left: 1px solid @grayLight;
@@ -371,6 +359,27 @@ div.subnav {
   border-color: @infoText;
 }
 
+// MODALS
+// -----------------------------------------------------
+
+.modal {
+	background-color: darken(@grayDark, 5%);
+}
+
+.modal-header {
+	border-bottom: none;
+}
+
+.modal-body {
+	border-bottom: 1px solid #1C1E22;
+}
+
+.modal-footer {
+	border-top: none;
+	background-color: @grayDarker;
+	.box-shadow(none);
+}
+
 // MISCELLANEOUS
 // -----------------------------------------------------
 
@@ -388,9 +397,13 @@ hr, legend, .page-header, .dropdown-menu .divider {
 
 footer.footer {
 	border-top: 1px solid darken(@grayDarker, 5%);
+	
+	p {
+		color: @textColor;
+	}
 }
 
-.well, .progress {
+.well, .progress, .hero-unit {
 	background-color: darken(@grayDarker, 3%);
 	.box-shadow(inset 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
