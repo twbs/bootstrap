@@ -1,6 +1,9 @@
 The Gist
 ========
 
+***Coming Soon***
+Release candidate due April 15th 2012
+
 Kickstrap uses the latest version of Twitter's bootstrap (http://twitter.github.com/bootstrap) and adds a layer of extras to create slick web applications with themes, modern html/css standards, an icon font, and progressive enhancement through javascript.
 
 Last updated with Bootstrap v. 2.02
@@ -50,7 +53,7 @@ Install
 Pick Theme
 ----------
 
-A. If you have a LESS compiler:
+A. If you have a LESS compiler (Tested successfully with CodeKit on Mac OSX Lion):
 
 1. Open /extras/less/overrides.less and uncomment the @import line (remove the //s) of the theme you want to use.
 2. Compile.
@@ -66,6 +69,8 @@ Otherwise, see "Pick theme" in "Advanced Setup" below.
 
 Advanced Setup
 ==============
+
+In the future, I plan to eliminate the need for advanced setup by giving users the options to opt in to the features they want, much like Bootstrap's customize page, but in lieu of keeping this project from the public, here's a slightly more complicated way to get it working for now.
 
 Install
 -------
