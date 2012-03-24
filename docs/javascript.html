@@ -589,6 +589,21 @@ $('#myModal').on('hidden', function () {
              </tr>
             </tbody>
           </table>
+           <h3>Events</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>activate</td>
+               <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -1320,7 +1335,7 @@ $('#myCollapsible').on('hidden', function () {
                <td>interval</td>
                <td>number</td>
                <td>5000</td>
-               <td>The amount of time to delay between automatically cycling an item.</td>
+               <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
              </tr>
              <tr>
                <td>pause</td>

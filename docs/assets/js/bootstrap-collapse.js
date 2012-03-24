@@ -42,10 +42,17 @@
     }
 
   , show: function () {
-      var dimension = this.dimension()
-        , scroll = $.camelCase(['scroll', dimension].join('-'))
-        , actives = this.$parent && this.$parent.find('.in')
+      var dimension
+        , scroll
+        , actives
         , hasData
+
+      if (this.transitioning) return
+
+      dimension = this.dimension()
+      scroll = $.camelCase(['scroll', dimension].join('-'))
+      actives = this.$parent && this.$parent.find('> .accordion-group > .in')
+      hasData
 
       if (actives && actives.length) {
         hasData = actives.data('collapse')
@@ -56,11 +63,12 @@
       this.$element[dimension](0)
       this.transition('addClass', 'show', 'shown')
       this.$element[dimension](this.$element[0][scroll])
-
     }
 
   , hide: function () {
-      var dimension = this.dimension()
+      var dimension
+      if (this.transitioning) return
+      dimension = this.dimension()
       this.reset(this.$element[dimension]())
       this.transition('removeClass', 'hide', 'hidden')
       this.$element[dimension](0)
@@ -74,7 +82,7 @@
         [dimension](size || 'auto')
         [0].offsetWidth
 
-      this.$element[size ? 'addClass' : 'removeClass']('collapse')
+      this.$element[size != null ? 'addClass' : 'removeClass']('collapse')
 
       return this
     }
@@ -83,8 +91,11 @@
       var that = this
         , complete = function () {
             if (startEvent == 'show') that.reset()
+            that.transitioning = 0
             that.$element.trigger(completeEvent)
           }
+
+      this.transitioning = 1
 
       this.$element
         .trigger(startEvent)
