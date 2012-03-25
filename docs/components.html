@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Components · Twitter Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,9 +20,9 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -98,6 +98,7 @@
         </ul>
       </li>
       <li><a href="#labels">Labels</a></li>
+      <li><a href="#badges">Badges</a></li>
       <li><a href="#typography">Typography</a></li>
       <li><a href="#thumbnails">Thumbnails</a></li>
       <li><a href="#alerts">Alerts</a></li>
@@ -133,34 +134,34 @@
       <p>Here's how the HTML looks for a standard button group built with anchor tag buttons:</p>
       <div class="">
         <div class="btn-group" style="margin: 9px 0;">
-          <a class="btn" href="#">Left</a>
-          <a class="btn" href="#">Middle</a>
-          <a class="btn" href="#">Right</a>
+          <button class="btn">Left</button>
+          <button class="btn">Middle</button>
+          <button class="btn">Right</button>
         </div>
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;a class="btn" href="#"&gt;1&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;2&lt;/a&gt;
-  &lt;a class="btn" href="#"&gt;3&lt;/a&gt;
+  &lt;button class="btn"&gt;1&lt;/button&gt;
+  &lt;button class="btn"&gt;2&lt;/button&gt;
+  &lt;button class="btn"&gt;3&lt;/button&gt;
 &lt;/div&gt;
 </pre>
       <h3>Toolbar example</h3>
       <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn" href="#">1</a>
-          <a class="btn" href="#">2</a>
-          <a class="btn" href="#">3</a>
-          <a class="btn" href="#">4</a>
+          <button class="btn">1</button>
+          <button class="btn">2</button>
+          <button class="btn">3</button>
+          <button class="btn">4</button>
         </div>
         <div class="btn-group">
-          <a class="btn" href="#">5</a>
-          <a class="btn" href="#">6</a>
-          <a class="btn" href="#">7</a>
+          <button class="btn">5</button>
+          <button class="btn">6</button>
+          <button class="btn">7</button>
         </div>
         <div class="btn-group">
-          <a class="btn" href="#">8</a>
+          <button class="btn">8</button>
         </div>
       </div>
 <pre class="prettyprint linenums">
@@ -175,9 +176,8 @@
       <h3>Checkbox and radio flavors</h3>
       <p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.</p>
       <p><a class="btn js-btn" href="./javascript.html#buttons">Get the javascript &raquo;</a></p>
-      <hr>
-      <h4 class="muted">Heads up</h4>
-      <p class="muted">CSS for button groups is in a separate file, button-groups.less.</p>
+      <h3>Dropdowns in button groups</h3>
+      <p><span class="label label-info">Heads up!</span> Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
     </div>
   </div>
 </section>
@@ -188,16 +188,17 @@
 ================================================== -->
 <section id="buttonDropdowns">
   <div class="page-header">
-    <h1>Buttons dropdowns <small>Contextual dropdown menus built on button groups</small></h1>
+    <h1>Button dropdown menus <small>Built on button groups to provide contextual menus</small></h1>
   </div>
 
+  <h2>Button dropdowns</h2>
   <div class="row">
     <div class="span4">
-      <h3>Button dropdowns</h3>
+      <h3>Overview and examples</h3>
       <p>Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
-          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+          <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -207,7 +208,7 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -217,7 +218,7 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">Danger <span class="caret"></span></a>
+          <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Danger <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -229,7 +230,7 @@
       </div>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">Success <span class="caret"></span></a>
+          <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Warning <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -239,7 +240,27 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">Info <span class="caret"></span></a>
+          <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Info <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">Inverse <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -249,8 +270,6 @@
           </ul>
         </div><!-- /btn-group -->
       </div><!-- /btn-toolbar -->
-      <hr>
-      <p><span class="label label-info">Heads up!</span> Button dropdowns require the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a> to function.</p>
     </div>
     <div class="span8">
       <h3>Example markup</h3>
@@ -268,15 +287,60 @@
 </pre>
     </div>
   </div>
-
   <div class="row">
     <div class="span4">
-      <h3>Split button dropdowns</h3>
+      <h3>Works with all button sizes</h3>
+      <p>Button dropdowns work at any size. your button sizes to <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
+      <div class="btn-toolbar" style="margin-top: 18px;">
+        <div class="btn-group">
+          <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Large button <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Small button <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Mini button <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div><!-- /btn-toolbar -->
+    </div><!--/span-->
+    <div class="span4">
+      <h3>Requires javascript</h3>
+      <p>Button dropdowns require the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a> to function.</p>
+      <p>In some cases&mdash;like mobile&mdash;dropdown menus will extend outside the viewport. You need to resolve the alignment manually or with custom javascript.</p>
+    </div><!--/span-->
+  </div><!--/row-->
+  <br>
+
+  <h2>Split button dropdowns</h2>
+  <div class="row">
+    <div class="span4">
+      <h3>Overview and examples</h3>
       <p>Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.</p>
       <div class="btn-toolbar" style="margin-top: 18px;">
         <div class="btn-group">
-          <a class="btn" href="#">Action</a>
-          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn">Action</button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -286,8 +350,8 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-primary" href="#">Action</a>
-          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn btn-primary">Action</button>
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -297,8 +361,8 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-danger" href="#">Danger</a>
-          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn btn-danger">Danger</button>
+          <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -310,8 +374,8 @@
       </div>
       <div class="btn-toolbar">
         <div class="btn-group">
-          <a class="btn btn-success" href="#">Success</a>
-          <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn btn-warning">Warning</button>
+          <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -321,8 +385,19 @@
           </ul>
         </div><!-- /btn-group -->
         <div class="btn-group">
-          <a class="btn btn-info" href="#">Info</a>
-          <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <button class="btn btn-success">Success</button>
+          <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-info">Info</button>
+          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -332,21 +407,121 @@
           </ul>
         </div><!-- /btn-group -->
       </div>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button class="btn btn-inverse">Inverse</button>
+          <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div><!-- /btn-toolbar -->
+      <h3>Sizes</h3>
+      <p>Utilize the extra button classe <code>.btn-mini</code>, <code>.btn-small</code>, or <code>.btn-large</code> for sizing.</p>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button class="btn btn-large">Large action</button>
+          <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div><!-- /btn-toolbar -->
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button class="btn btn-small">Small action</button>
+          <button class="btn btn-small dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div><!-- /btn-toolbar -->
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button class="btn btn-mini">Mini action</button>
+          <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div><!-- /btn-toolbar -->
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  ...
+  &lt;ul class="dropdown-menu pull-right"&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
     </div>
     <div class="span8">
       <h3>Example markup</h3>
       <p>We expand on the normal button dropdowns to provide a second button action that operates as a separate dropdown trigger.</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;a class="btn" href="#"&gt;Action&lt;/a&gt;
-  &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
+  &lt;button class="btn"&gt;Action&lt;/button&gt;
+  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
     &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/a&gt;
+  &lt;/button&gt;
   &lt;ul class="dropdown-menu"&gt;
     &lt;!-- dropdown menu links --&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+      <h3>Dropup menus</h3>
+      <p>Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>.caret</code> and reposition the menu itself to move from the bottom up instead of top down.</p>
+      <div class="btn-toolbar" style="margin-top: 9px;">
+        <div class="btn-group dropup">
+          <button class="btn">Dropup</button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+        <div class="btn-group dropup">
+          <button class="btn primary">Right dropup</button>
+          <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div><!-- /btn-group -->
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group dropup"&gt;
+  &lt;button class="btn"&gt;Dropup&lt;/button&gt;
+  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;!-- dropdown menu links --&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
     </div>
   </div>
 </section>
@@ -453,10 +628,20 @@
       <h3>Tabs with dropdowns</h3>
       <ul class="nav nav-tabs">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="#">Help</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropup <b class="caret bottom-up"></b></a>
+          <ul class="dropdown-menu bottom-up pull-right">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -485,10 +670,20 @@
       <h3>Pills with dropdowns</h3>
       <ul class="nav nav-pills">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="#">Help</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropup <b class="caret bottom-up"></b></a>
+          <ul class="dropdown-menu bottom-up pull-right">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
@@ -521,8 +716,18 @@
       <h3>Application-style navigation</h3>
       <p>Nav lists provide a simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.</p>
       <p>Structurally, they're built on the same core nav styles as tabs and pills, so usage and customization are straightforward.</p>
+      <hr>
       <h4>With icons</h4>
       <p>Nav lists are also easy to equip with icons. Add the proper <code>&lt;i&gt;</code> tag with class and you're set.</p>
+      <h4>Horizontal dividers</h4>
+      <p>Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-list"&gt;
+  ...
+  &lt;li class="divider"&gt;&lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</pre>
     </div>
     <div class="span4">
       <h3>Example nav list</h3>
@@ -536,6 +741,7 @@
           <li class="nav-header">Another list header</li>
           <li><a href="#">Profile</a></li>
           <li><a href="#">Settings</a></li>
+          <li class="divider"></li>
           <li><a href="#">Help</a></li>
         </ul>
       </div> <!-- /well -->
@@ -566,6 +772,7 @@
           <li class="nav-header">Another list header</li>
           <li><a href="#"><i class="icon-user"></i> Profile</a></li>
           <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+          <li class="divider"></li>
           <li><a href="#"><i class="icon-flag"></i> Help</a></li>
         </ul>
       </div> <!-- /well -->
@@ -754,7 +961,7 @@
   <p>An example of a static (not fixed to the top) navbar with project name, navigation, and search form.</p>
   <div class="navbar">
     <div class="navbar-inner">
-      <div class="container" style="width: auto;">
+      <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -816,13 +1023,24 @@
 &lt;/div&gt;
 </pre>
       <h3>Fixed navbar</h3>
-      <p>To make the navbar fixed to the top of the viewport, add <code>.navbar-fixed-top</code> to the outermost div, <code>.navbar</code>.</p>
+      <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
+      <div class="row">
+        <div class="span4">
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
-      <p>In your CSS, you will also need to account for the overlap it causes by adding 40px or more of padding to your <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+        </div><!--/span-->
+        <div class="span4">
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-fixed-bottom"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+        </div><!--/span-->
+      </div><!--/row-->
+      <p>When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of apdding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
       <h3>Brand name</h3>
       <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 <pre class="prettyprint linenums">
@@ -830,8 +1048,14 @@
   Project name
 &lt;/a&gt;
 </pre>
-      <h3>Search form</h3>
-      <p>Search forms receive custom styles in the navbar with the <code>.navbar-search</code> class. Include <code>.pull-left</code> or <code>.pull-right</code> on the <code>form</code> to align it.</p>
+      <h3>Forms in navbar</h3>
+      <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
+<pre class="prettyprint linenums">
+&lt;form class="navbar-form pull-left"&gt;
+  &lt;input type="text" class="span2"&gt;
+&lt;/form&gt;
+</pre>
+      <p>For a more customized search form, add the <code>.navbar-search</code> class to receive specialized styles in the navbar.</p>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="Search"&gt;
@@ -890,8 +1114,8 @@
 </pre>
       <h3>Component alignment</h3>
       <p>To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
-      <h3>Adding dropdowns</h3>
-      <p>Adding dropdowns to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.</p>
+      <h3>Adding dropdown menus</h3>
+      <p>Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;
@@ -908,6 +1132,9 @@
 &lt;/ul&gt;
 </pre>
       <p><a class="btn" href="./javascript.html#dropdowns">Get the javascript &rarr;</a></p>
+      <hr>
+      <h3>Text in the navbar</h3>
+      <p>Wrap strings of text in a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
     </div><!-- /.span -->
   </div><!-- /.row -->
 
@@ -953,9 +1180,7 @@
   &lt;li&gt;
     &lt;a href="#"&gt;Library&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;
   &lt;/li&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Data&lt;/a&gt;
-  &lt;/li&gt;
+  &lt;li class="active"&gt;Data&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
     </div>
@@ -1048,6 +1273,8 @@
     <div class="span4">
       <h3>About pager</h3>
       <p>The pager component is a set of links for simple pagination implementations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.</p>
+      <h4>Optional disabled state</h4>
+      <p>Pager links also use the general <code>.disabled</code> class from the pagination.</p>
     </div>
     <div class="span4">
       <h3>Default example</h3>
@@ -1144,8 +1371,112 @@
           <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
         </td>
       </tr>
+      <tr>
+        <td>
+          <span class="label label-inverse">Inverse</span>
+        </td>
+        <td>
+          <code>&lt;span class="label label-inverse"&gt;Inverse&lt;/span&gt;</code>
+        </td>
+      </tr>
     </tbody>
   </table>
+</section>
+
+
+
+<!-- Badges
+================================================== -->
+<section id="badges">
+  <div class="page-header">
+    <h1>Badges <small>Indicators and unread counts</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h3>About</h3>
+      <p>Badges are small, simple components for displaying an indicator or count of some sort. They're commonly found in email clients like Mail.app or on mobile apps for push notifications.</p>
+    </div><!-- /.span -->
+    <div class="span8">
+      <h3>Available classes</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Example</th>
+            <th>Markup</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Default
+            </td>
+            <td>
+              <span class="badge">1</span>
+            </td>
+            <td>
+              <code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Success
+            </td>
+            <td>
+              <span class="badge badge-success">2</span>
+            </td>
+            <td>
+              <code>&lt;span class="badge badge-success"&gt;2&lt;/span&gt;</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Warning
+            </td>
+            <td>
+              <span class="badge badge-warning">4</span>
+            </td>
+            <td>
+              <code>&lt;span class="badge badge-warning"&gt;4&lt;/span&gt;</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Error
+            </td>
+            <td>
+              <span class="badge badge-error">6</span>
+            </td>
+            <td>
+              <code>&lt;span class="badge badge-error"&gt;6&lt;/span&gt;</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Info
+            </td>
+            <td>
+              <span class="badge badge-info">8</span>
+            </td>
+            <td>
+              <code>&lt;span class="badge badge-info"&gt;8&lt;/span&gt;</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Inverse
+            </td>
+            <td>
+              <span class="badge badge-inverse">10</span>
+            </td>
+            <td>
+              <code>&lt;span class="badge badge-inverse"&gt;10&lt;/span&gt;</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- /.span -->
+  </div><!-- /.row -->
 </section>
 
 
@@ -1188,8 +1519,11 @@
       <p>A simple shell for an <code>h1</code> to appropratiely space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
     </div>
     <div class="span8">
+      <div class="page-header">
+        <h1>Example page header <small>Subtext for header</small></h1>
+      </div>
 <pre class="prettyprint linenums">
-&lt;div class="page-haeder"&gt;
+&lt;div class="page-header"&gt;
   &lt;h1&gt;Example page header&lt;/h1&gt;
 &lt;/div&gt;
 </pre>
@@ -1462,13 +1796,12 @@
     </div>
     <div class="span4">
       <h3>Striped</h3>
-      <p>Uses a gradient to create a striped effect.</p>
-      <div class="progress progress-info progress-striped">
+      <p>Uses a gradient to create a striped effect (no IE).</p>
+      <div class="progress progress-striped">
         <div class="bar" style="width: 20%;"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-info
-     progress-striped"&gt;
+&lt;div class="progress progress-striped"&gt;
   &lt;div class="bar"
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1476,13 +1809,13 @@
     </div>
     <div class="span4">
       <h3>Animated</h3>
-      <p>Takes the striped example and animates it.</p>
-      <div class="progress progress-danger progress-striped active">
+      <p>Takes the striped example and animates it (no IE).</p>
+      <div class="progress progress-striped active">
         <div class="bar" style="width: 45%"></div>
       </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-danger
-     progress-striped active"&gt;
+&lt;div class="progress progress-striped
+     active"&gt;
   &lt;div class="bar"
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1492,25 +1825,47 @@
 
   <h2>Options and browser support</h2>
   <div class="row">
-    <div class="span4">
+    <div class="span3">
       <h3>Additional colors</h3>
-      <p>Progress bars utilize some of the same class names as buttons and alerts for similar styling.</p>
-      <ul>
-        <li><code>.progress-info</code></li>
-        <li><code>.progress-success</code></li>
-        <li><code>.progress-danger</code></li>
-      </ul>
-      <p>Alternatively, you can customize the LESS files and roll your own colors and sizes.</p>
+      <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
+      <div class="progress progress-info" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 20%"></div>
+      </div>
+      <div class="progress progress-success" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 40%"></div>
+      </div>
+      <div class="progress progress-warning" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 60%"></div>
+      </div>
+      <div class="progress progress-danger" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 80%"></div>
+      </div>
     </div>
-    <div class="span4">
+     <div class="span3">
+      <h3>Striped bars</h3>
+      <p>Similar to the solid colors, we have varied striped progress bars.</p>
+      <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 20%"></div>
+      </div>
+      <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 40%"></div>
+      </div>
+      <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 60%"></div>
+      </div>
+      <div class="progress progress-danger progress-striped" style="margin-bottom: 9px;">
+        <div class="bar" style="width: 80%"></div>
+      </div>
+    </div>
+    <div class="span3">
       <h3>Behavior</h3>
       <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
       <p>If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.</p>
     </div>
-    <div class="span4">
+    <div class="span3">
       <h3>Browser support</h3>
-      <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-8 or older versions of Firefox.</p>
-      <p>Opera does not support animations at this time.</p>
+      <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.</p>
+      <p>Opera and IE do not support animations at this time.</p>
     </div>
   </div>
 
@@ -1524,7 +1879,7 @@
 ================================================== -->
 <section id="misc">
   <div class="page-header">
-    <h1>Miscellaneous <small>Wells, badges, and close icon</small></h1>
+    <h1>Miscellaneous <small>Lightweight utility components</small></h1>
   </div>
   <div class="row">
     <div class="span4">
@@ -1538,11 +1893,6 @@
   ...
 &lt;/div&gt;
 </pre>
-    </div><!--/span-->
-    <div class="span4" style="display: none;">
-      <h2>Badges</h2>
-      <p>Use a badge on an element for an unread count or as a simple indicator.</p>
-<pre class="prettyprint linenums">&lt;span class="badge"&gt;3&lt;/div&gt;</pre>
     </div><!--/span-->
     <div class="span4">
       <h2>Close icon</h2>

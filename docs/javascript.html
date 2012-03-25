@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Javascript · Twitter Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,9 +20,9 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -214,8 +214,8 @@
                 <p>One fine body…</p>
               </div>
               <div class="modal-footer">
-                <a href="#" class="btn btn-primary">Save changes</a>
                 <a href="#" class="btn">Close</a>
+                <a href="#" class="btn btn-primary">Save changes</a>
               </div>
             </div>
           </div> <!-- /well -->
@@ -237,10 +237,21 @@
 
               <h4>Tooltips in a modal</h4>
               <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
+
+              <hr>
+
+              <h4>Overflowing text to show optional scrollbar</h4>
+              <p>We set a fixed <code>max-height</code> on the <code>.modal-body</code>. Watch it overflow with all this extra lorem ipsum text we've included.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-              <a href="#" class="btn btn-primary">Save changes</a>
               <a href="#" class="btn" data-dismiss="modal" >Close</a>
+              <a href="#" class="btn btn-primary">Save changes</a>
             </div>
           </div>
           <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
@@ -265,7 +276,7 @@
                <td>backdrop</td>
                <td>boolean</td>
                <td>true</td>
-               <td>Includes a modal-backdrop element</td>
+               <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
              </tr>
              <tr>
                <td>keyboard</td>
@@ -298,8 +309,8 @@
     &lt;p&gt;One fine body…&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
     &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -464,7 +475,7 @@ $('#myModal').on('hidden', function () {
           </div>
 
 <pre class="prettyprint linenums">
-&lt;ul class="nav pills"&gt;
+&lt;ul class="nav nav-pills"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
   &lt;li class="dropdown" id="menu1"&gt;
     &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
@@ -780,13 +791,13 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h4>$().tooltip(options)</h4>
           <p>Attaches a tooltip handler to an element collection.</p>
           <h4>.tooltip('show')</h4>
-          <p>Reveals an elements tooltip.</p>
+          <p>Reveals an element's tooltip.</p>
           <pre class="prettyprint linenums">$('#element').tooltip('show')</pre>
           <h4>.tooltip('hide')</h4>
-          <p>Hides an elements tooltip.</p>
+          <p>Hides an element's tooltip.</p>
           <pre class="prettyprint linenums">$('#element').tooltip('hide')</pre>
           <h4>.tooltip('toggle')</h4>
-          <p>Toggles an elements tooltip.</p>
+          <p>Toggles an element's tooltip.</p>
           <pre class="prettyprint linenums">$('#element').tooltip('toggle')</pre>
         </div>
       </div>
@@ -1051,7 +1062,7 @@ $('#my-alert').bind('closed', function () {
 </pre>
           <h3>Methods</h3>
           <h4>$().button('toggle')</h4>
-          <p>Toggles push state. Gives btn the look that it hass been activated.</p>
+          <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
           <div class="alert alert-info">
             <strong>Heads up!</strong>
             You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.
@@ -1299,10 +1310,16 @@ $('#myCollapsible').on('hidden', function () {
                <td>5000</td>
                <td>The amount of time to delay between automatically cycling an item.</td>
              </tr>
+             <tr>
+               <td>pause</td>
+               <td>string</td>
+               <td>"hover"</td>
+               <td>Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.</td>
+             </tr>
             </tbody>
           </table>
           <h3>Markup</h3>
-          <p>Data attributes are integral to the carousel plugin. Check out the example code below for the various markup types.</p>
+          <p>Data attributes are used for the previous and next conrols. Check out the example markup below.</p>
 <pre class="prettyprint linenums">
 &lt;div id="myCarousel" class="carousel"&gt;
   &lt;!-- Carousel items --&gt;
@@ -1320,7 +1337,7 @@ $('#myCollapsible').on('hidden', function () {
           <h4>.carousel(options)</h4>
           <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
 <pre class="prettyprint linenums">
-$('.myCarousel').carousel({
+$('.carousel').carousel({
   interval: 2000
 })
 </pre>
@@ -1335,7 +1352,7 @@ $('.myCarousel').carousel({
           <h4>.carousel('next')</h4>
           <p>Cycles to the next item.</p>
           <h3>Events</h3>
-          <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
+          <p>Bootstrap's carousel class exposes two events for hooking into carousel functionality.</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
