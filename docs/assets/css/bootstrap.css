@@ -2253,8 +2253,6 @@ table .span24 {
 button.btn,
 input[type="submit"].btn,
 input[type="button"].btn {
-  *line-height: 20px;
-  *border: 0;
   *padding-top: 2px;
   *padding-bottom: 2px;
 }
@@ -2281,6 +2279,43 @@ input[type="submit"].btn.btn-mini,
 input[type="button"].btn.btn-mini {
   *padding-top: 1px;
   *padding-bottom: 1px;
+}
+button[type="submit"].btn,
+button[type="reset"].btn,
+input[type="submit"].btn,
+input[type="reset"].btn,
+input[type="button"].btn {
+  *line-height: 20px;
+  *border: 0;
+}
+.btn-ie7-border {
+  *border: 1px solid;
+  *border-color: #cccccc #cccccc #a6a6a6;
+}
+.btn-ie7-border button[type="submit"].btn,
+.btn-ie7-border button[type="reset"].btn,
+.btn-ie7-border input[type="submit"].btn,
+.btn-ie7-border input[type="reset"].btn,
+.btn-ie7-border input[type="button"].btn {
+  *line-height: 18px;
+}
+.btn-ie7-border-primary {
+  *border-color: #0055cc #0055cc #003580;
+}
+.btn-ie7-border-warning {
+  *border-color: #f89406 #f89406 #ad6704;
+}
+.btn-ie7-border-danger {
+  *border-color: #bd362f #bd362f #802420;
+}
+.btn-ie7-border-success {
+  *border-color: #51a351 #51a351 #387038;
+}
+.btn-ie7-border-info {
+  *border-color: #2f96b4 #2f96b4 #1f6377;
+}
+.btn-ie7-border-inverse {
+  *border-color: #222222 #222222 #000000;
 }
 .btn-group {
   position: relative;
