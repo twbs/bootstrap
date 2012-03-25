@@ -102,6 +102,15 @@ textarea {
   overflow: auto;
   vertical-align: top;
 }
+button[type="reset"],
+button[type="button"],
+button[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="submit"] {
+  filter: chroma(color=#000000);
+  overflow: visible;
+}
 .clearfix {
   *zoom: 1;
 }
