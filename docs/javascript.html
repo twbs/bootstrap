@@ -822,7 +822,13 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <h2>Example hover popover</h2>
           <p>Hover over the button to trigger the popover.</p>
           <div class="well">
-            <a href="#" class="btn btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
+            <a href="#" class="btn btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for text popover</a>
+            <a href="#" class="btn btn-danger" rel="popover" data-target="#popover-content">hover for an HTML popover</a>
+            <div class="hide" id="popover-content">
+              <h3>A Title</h3>
+              <p> And here's some amazing content. It's very engaging. right? We can even do images: </p>
+              <img src="http://placehold.it/150x150" />
+            </div>
           </div>
           <hr>
           <h2>Using bootstrap-popover.js</h2>
@@ -867,13 +873,19 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                <td>title</td>
                <td>string | function</td>
                <td>''</td>
-               <td>default title value if `title` attribute isn't present</td>
+               <td>default title value if <code>title</code> attribute isn't present</td>
              </tr>
              <tr>
                <td>content</td>
                <td>string | function</td>
                <td>''</td>
-               <td>default content value if `data-content` attribute isn't present</td>
+               <td>default content value if <code>data-content</code> attribute isn't present</td>
+             </tr>
+             <tr>
+               <td>target</td>
+               <td>string</td>
+               <td>''</td>
+               <td>a selector indicating where the popover's content should come from; if provided, any content provided by the <code>data-content</code> attribute or the <code>content</code> option is ignored</td>
              </tr>
              <tr>
                <td>delay</td>
@@ -893,7 +905,21 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           </div>
           <h3>Markup</h3>
           <p>
-          For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a the selector option.
+          For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.
+          </p>
+          <p>
+          Regardless of whether you specify a selector, you can leverage the <code>data-target</code> attribute to tell the popover to pull it's content from an existing element. This is especially useful for longer content that includes additional markup:
+<pre class="prettyprint linenums">
+&lt;a href="#" class="btn" rel="popover" data-target="#popover-content"&gt;hover for popover&lt;/a&gt;
+&lt;div class="hide" id="popover-content"&gt;
+  &lt;h3&gt;A Title&lt;/h3&gt;
+  &lt;p&gt;
+    And here's some amazing content. It's very engaging. right?
+    We can even do images:
+  &lt;/p&gt;
+  &lt;img src="http://placehold.it/150x150" /&gt;
+&lt;/div&gt;
+</pre>
           </p>
           <h3>Methods</h3>
           <h4>$().popover(options)</h4>
