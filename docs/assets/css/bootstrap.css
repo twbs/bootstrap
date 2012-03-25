@@ -1041,7 +1041,8 @@ select:focus:required:invalid:focus {
   border-color: #46a546;
 }
 .input-prepend .add-on,
-.input-prepend .btn {
+.input-prepend .btn,
+.input-prepend .btn-ie7-border {
   margin-right: -1px;
 }
 .input-append input,
@@ -1056,7 +1057,8 @@ select:focus:required:invalid:focus {
   border-right-color: #ccc;
 }
 .input-append .add-on,
-.input-append .btn {
+.input-append .btn,
+.input-append .btn-ie7-border {
   margin-left: -1px;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -1185,6 +1187,9 @@ legend + .control-group {
 }
 .form-horizontal .form-actions {
   padding-left: 160px;
+}
+.form-inline label + .btn-ie7-border {
+  margin-left: 6px;
 }
 table {
   max-width: 100%;
@@ -2283,8 +2288,7 @@ input[type="button"].btn.btn-mini {
 button[type="submit"].btn,
 button[type="reset"].btn,
 input[type="submit"].btn,
-input[type="reset"].btn,
-input[type="button"].btn {
+input[type="reset"].btn {
   *line-height: 20px;
   *border: 0;
 }
@@ -2295,8 +2299,7 @@ input[type="button"].btn {
 .btn-ie7-border button[type="submit"].btn,
 .btn-ie7-border button[type="reset"].btn,
 .btn-ie7-border input[type="submit"].btn,
-.btn-ie7-border input[type="reset"].btn,
-.btn-ie7-border input[type="button"].btn {
+.btn-ie7-border input[type="reset"].btn {
   *line-height: 18px;
 }
 .btn-ie7-border-primary {

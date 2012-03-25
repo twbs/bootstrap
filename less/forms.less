@@ -402,7 +402,8 @@ select:focus:required:invalid {
 }
 .input-prepend {
   .add-on,
-  .btn {
+  .btn,
+  .btn-ie7-border {
     margin-right: -1px;
   }
 }
@@ -417,7 +418,8 @@ select:focus:required:invalid {
     border-right-color: #ccc;
   }
   .add-on,
-  .btn {
+  .btn,
+  .btn-ie7-border {
     margin-left: -1px;
     .border-radius(0 3px 3px 0);
   }
@@ -553,5 +555,13 @@ legend + .control-group {
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
     padding-left: 160px;
+  }
+}
+
+// Inline-specific styles
+// --------------------------
+.form-inline {
+  label + .btn-ie7-border {
+      margin-left:6px;
   }
 }

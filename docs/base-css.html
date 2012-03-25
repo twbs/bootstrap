@@ -1348,6 +1348,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
       <h3>Cross browser compatibility</h3>
       <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
+      <p>IE7 adds an outline to buttons that perform actions and have a css border set. We remove the border to prevent this but you can add it back by wrapping the button or submit element with the below.</p>
+      <p><code>&lt;span class="btn-ie7-border"&gt;...&lt;/span&gt;</code></p>
+      <p>You can also add a border class to match button.</p>
+      <p><code>btn-ie7-border-{primary|success|etc}</code></p>
     </div>
     <div class="span4">
       <h3>Multiple sizes</h3>
@@ -1386,7 +1390,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 <form>
 <a class="btn" href="">Link</a>
 <span class="btn-ie7-border"><button class="btn" type="submit">Button</button></span>
-<span class="btn-ie7-border"><input class="btn" type="button" value="Input"></span>
+<input class="btn" type="button" value="Input">
 <span class="btn-ie7-border"><input class="btn" type="submit" value="Submit"></span>
 </form>
 <pre class="prettyprint linenums">

@@ -810,7 +810,7 @@
         <label class="checkbox">
           <input type="checkbox"> {{_i}}Check me out{{/i}}
         </label>
-        <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
+        <span class="btn-ie7-border"><button type="submit" class="btn">{{_i}}Submit{{/i}}</button></span>
       </form>
 <pre class="prettyprint linenums">
 &lt;form class="well"&gt;
@@ -833,7 +833,7 @@
     <div class="span9">
       <form class="well form-search">
         <input type="text" class="input-medium search-query">
-        <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
+        <span class="btn-ie7-border"><button type="submit" class="btn">{{_i}}Search{{/i}}</button></span>
       </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-search"&gt;
@@ -855,7 +855,7 @@
         <label class="checkbox">
           <input type="checkbox"> {{_i}}Remember me{{/i}}
         </label>
-        <button type="submit" class="btn">{{_i}}Sign in{{/i}}</button>
+        <span class="btn-ie7-border"><button type="submit" class="btn">{{_i}}Sign in{{/i}}</button></span>
       </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-inline"&gt;
@@ -931,7 +931,7 @@
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
+            <span class="btn-ie7-border btn-ie7-border-primary"><button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button></span>
             <button class="btn">{{_i}}Cancel{{/i}}</button>
           </div>
         </fieldset>
@@ -1040,7 +1040,7 @@
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
+            <span class="btn-ie7-border btn-ie7-border-primary"><button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button></span>
             <button class="btn">{{_i}}Cancel{{/i}}</button>
           </div>
         </fieldset>
@@ -1187,7 +1187,7 @@
             </div>
           </div>
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
+            <span class="btn-ie7-border btn-ie7-border-primary"><button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button></span>
             <button class="btn">{{_i}}Cancel{{/i}}</button>
           </div>
         </fieldset>
@@ -1272,6 +1272,10 @@
       <p>{{_i}}Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.{{/i}}</p>
       <h3>{{_i}}Cross browser compatibility{{/i}}</h3>
       <p>{{_i}}IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.{{/i}}</p>
+      <p>IE7 adds an outline to buttons that perform actions and have a css border set. We remove the border to prevent this but you can add it back by wrapping the button or submit element with the below.</p>
+      <p><code>&lt;span class="btn-ie7-border"&gt;&lt;/span&gt;</code></p>
+      <p>You can also add a border class to match button.</p>
+      <p><code>btn-ie7-border-{primary|success|etc}</code></p>
     </div>
     <div class="span4">
       <h3>{{_i}}Multiple sizes{{/i}}</h3>
@@ -1309,9 +1313,9 @@
       <p>{{_i}}Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.{{/i}}</p>
 <form>
 <a class="btn" href="">{{_i}}Link{{/i}}</a>
-<button class="btn" type="submit">{{_i}}Button{{/i}}</button>
+<span class="btn-ie7-border"><button class="btn" type="submit">{{_i}}Button{{/i}}</button></span>
 <input class="btn" type="button" value="{{_i}}Input{{/i}}">
-<input class="btn" type="submit" value="{{_i}}Submit{{/i}}">
+<span class="btn-ie7-border"><input class="btn" type="submit" value="{{_i}}Submit{{/i}}"></span>
 </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;{{_i}}Link{{/i}}&lt;/a&gt;
