@@ -1,3 +1,5 @@
+#NOT READY FOR KICKSTRAP
+
 BOOTSTRAP = ./docs/assets/css/bootstrap.css
 BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
