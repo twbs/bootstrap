@@ -49,6 +49,13 @@ Keep up to date on announcements and more by following Bootstrap on Twitter, [@T
 
 
 
+Blog
+----
+
+Read more detailed announcements, discussions, and more on [The Official Twitter Bootstrap Blog](http://blog.getbootstrap.com).
+
+
+
 Mailing list
 ------------
 
