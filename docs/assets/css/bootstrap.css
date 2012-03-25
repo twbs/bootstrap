@@ -102,15 +102,6 @@ textarea {
   overflow: auto;
   vertical-align: top;
 }
-button[type="reset"],
-button[type="button"],
-button[type="submit"],
-input[type="reset"],
-input[type="button"],
-input[type="submit"] {
-  filter: chroma(color=#000000);
-  overflow: visible;
-}
 .clearfix {
   *zoom: 1;
 }
@@ -2262,6 +2253,8 @@ table .span24 {
 button.btn,
 input[type="submit"].btn,
 input[type="button"].btn {
+  *line-height: 20px;
+  *border: 0;
   *padding-top: 2px;
   *padding-bottom: 2px;
 }
