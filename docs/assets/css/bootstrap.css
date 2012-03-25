@@ -253,11 +253,11 @@ a:hover {
 .row-fluid:after {
   clear: both;
 }
-.row-fluid > [class*="span"] {
+.row-fluid [class*="span"] {
   float: left;
   margin-left: 2.127659574%;
 }
-.row-fluid > [class*="span"]:first-child {
+.row-fluid [class*="span"]:first-child {
   margin-left: 0;
 }
 .row-fluid > .span12 {
