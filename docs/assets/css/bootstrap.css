@@ -2251,27 +2251,32 @@ table .span24 {
   background-color: #080808 \9;
 }
 button.btn,
-input[type="submit"].btn {
+input[type="submit"].btn,
+input[type="button"].btn {
   *padding-top: 2px;
   *padding-bottom: 2px;
 }
 button.btn::-moz-focus-inner,
-input[type="submit"].btn::-moz-focus-inner {
+input[type="submit"].btn::-moz-focus-inner,
+input[type="button"].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 button.btn.btn-large,
-input[type="submit"].btn.btn-large {
+input[type="submit"].btn.btn-large,
+input[type="button"].btn.btn-large {
   *padding-top: 7px;
   *padding-bottom: 7px;
 }
 button.btn.btn-small,
-input[type="submit"].btn.btn-small {
+input[type="submit"].btn.btn-small,
+input[type="button"].btn.btn-small {
   *padding-top: 3px;
   *padding-bottom: 3px;
 }
 button.btn.btn-mini,
-input[type="submit"].btn.btn-mini {
+input[type="submit"].btn.btn-mini,
+input[type="button"].btn.btn-mini {
   *padding-top: 1px;
   *padding-bottom: 1px;
 }
