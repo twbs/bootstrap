@@ -58,7 +58,6 @@ sub {
 }
 img {
   max-width: 100%;
-  height: auto;
   border: 0;
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
@@ -3672,6 +3671,14 @@ a.badge:hover {
   }
   to {
     background-position: 0 0;
+  }
+}
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
   }
 }
 @keyframes progress-bar-stripes {
