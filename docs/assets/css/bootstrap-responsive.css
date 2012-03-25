@@ -136,6 +136,9 @@
     margin-left: -20px;
     margin-right: -20px;
   }
+  .container-fluid {
+    padding: 0;
+  }
   .container {
     width: auto;
   }
@@ -282,11 +285,11 @@
   .row-fluid:after {
     clear: both;
   }
-  .row-fluid > [class*="span"] {
+  .row-fluid [class*="span"] {
     float: left;
     margin-left: 2.762430939%;
   }
-  .row-fluid > [class*="span"]:first-child {
+  .row-fluid [class*="span"]:first-child {
     margin-left: 0;
   }
   .row-fluid > .span12 {
@@ -473,11 +476,11 @@
   .row-fluid:after {
     clear: both;
   }
-  .row-fluid > [class*="span"] {
+  .row-fluid [class*="span"] {
     float: left;
     margin-left: 2.564102564%;
   }
-  .row-fluid > [class*="span"]:first-child {
+  .row-fluid [class*="span"]:first-child {
     margin-left: 0;
   }
   .row-fluid > .span12 {
