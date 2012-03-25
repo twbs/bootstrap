@@ -2896,6 +2896,12 @@ input[type="submit"].btn.btn-mini {
   margin-bottom: 0;
   line-height: 40px;
 }
+.navbar .navbar-link {
+  color: #999999;
+}
+.navbar .navbar-link:hover {
+  color: #ffffff;
+}
 .navbar .btn,
 .navbar .btn-group {
   margin-top: 5px;

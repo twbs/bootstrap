@@ -81,6 +81,13 @@
     margin-bottom: 0;
     line-height: @navbarHeight;
   }
+  // Janky solution for now to account for links outside the .nav
+  .navbar-link {
+    color: @navbarLinkColor;
+    &:hover {
+      color: @navbarLinkColorHover;
+    }
+  }
   // Buttons in navbar
   .btn,
   .btn-group {
