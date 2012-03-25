@@ -1116,6 +1116,10 @@ select:focus:required:invalid:focus {
 .form-inline .input-append,
 .form-horizontal .input-append {
   display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
   margin-bottom: 0;
 }
 .form-search .hide,
