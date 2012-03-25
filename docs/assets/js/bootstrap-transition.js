@@ -17,7 +17,8 @@
  * limitations under the License.
  * ========================================================== */
 
-!function( $ ) {
+
+!function ( $ ) {
 
   $(function () {
 

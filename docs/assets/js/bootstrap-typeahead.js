@@ -17,6 +17,7 @@
  * limitations under the License.
  * ============================================================ */
 
+
 !function( $ ){
 
   "use strict"
@@ -78,7 +79,7 @@
       }
 
       items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
+        return that.matcher(item)
       })
 
       items = this.sorter(items)
