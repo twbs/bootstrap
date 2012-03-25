@@ -1935,17 +1935,18 @@ table .span24 {
   opacity: 1;
 }
 .collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
   -webkit-transition: height 0.35s ease;
   -moz-transition: height 0.35s ease;
   -ms-transition: height 0.35s ease;
   -o-transition: height 0.35s ease;
   transition: height 0.35s ease;
-  position: relative;
-  overflow: hidden;
-  height: 0;
 }
 .collapse.in {
   height: auto;
+  overflow: visible;
 }
 .close {
   float: right;

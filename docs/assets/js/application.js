@@ -92,6 +92,9 @@
     // carousel demo
     $('#myCarousel').carousel()
 
+    // CSS tests
+    $("#dropdownTest .dd-toggle").dropdown()
+
     // javascript build logic
     var inputsComponent = $("#components.download input")
       , inputsPlugin = $("#plugins.download input")

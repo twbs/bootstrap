@@ -10,11 +10,12 @@
 }
 
 .collapse {
-  .transition(height .35s ease);
-  position:relative;
-  overflow:hidden;
+  position: relative;
   height: 0;
+  overflow: hidden;
+  .transition(height .35s ease);
   &.in {
     height: auto;
+    overflow: visible;
   }
 }

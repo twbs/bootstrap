@@ -22,6 +22,15 @@
   .col3 {
     background-color: rgba(0,0,255,.1);
   }
+
+  /* dropdown tests */
+  #dropdownTest .dd-toggle {
+    padding: 4px;
+    background-color: #eee;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+  }
 </style>
 
 
@@ -246,4 +255,26 @@
   </div><!--/span-->
 </div><!--/row-->
 
+
+
+<!-- Dropdowns
+================================================== -->
+
+<div class="page-header">
+  <h1>Dropdowns</h1>
+</div>
+
+<p>Test to see if dropdowns work outside navs and buttons.</p>
+
+{{! Purposely avoid using .dropdown-toggle on the anchor since it effectively does nothing in the CSS. }}
+<div class="dropdown" id="dropdownTest">
+  <a href="#" class="dd-toggle"><i class="icon-cog"></i><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="#">{{_i}}Action{{/i}}</a></li>
+    <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+    <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+    <li class="divider"></li>
+    <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+  </ul>
+</div>
 
