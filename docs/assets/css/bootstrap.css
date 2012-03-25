@@ -2804,6 +2804,7 @@ input[type="submit"].btn.btn-mini {
   margin-bottom: 18px;
 }
 .navbar-inner {
+  height: 40px;
   padding-left: 20px;
   padding-right: 20px;
   background-color: #2c2c2c;
@@ -3030,7 +3031,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 10px 11px;
+  padding: 9px 10px 11px;
   line-height: 19px;
   color: #999999;
   text-decoration: none;
