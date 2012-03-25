@@ -46,8 +46,8 @@
         var self = this
           , $targets
 
-        this.offsets = []
-        this.targets = []
+        this.offsets = $([])
+        this.targets = $([])
 
         $targets = this.$body
           .find(this.selector)
