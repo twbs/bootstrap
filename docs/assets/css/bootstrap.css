@@ -1990,6 +1990,9 @@ table .span24 {
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   border: 1px solid #cccccc;
   border-bottom-color: #b3b3b3;
   -webkit-border-radius: 4px;
@@ -2000,6 +2003,10 @@ table .span24 {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   *margin-left: .3em;
+  /* Remove the border to prevent IE7's black border on input:focus */
+
+  *border: 0;
+  *line-height: 20px;
 }
 .btn:hover,
 .btn:active,
@@ -2007,6 +2014,7 @@ table .span24 {
 .btn.disabled,
 .btn[disabled] {
   background-color: #e6e6e6;
+  *background-color: #d9d9d9;
 }
 .btn:active,
 .btn.active {
@@ -2019,6 +2027,9 @@ table .span24 {
   color: #333333;
   text-decoration: none;
   background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+  /* Buttons in IE7 don't get borders, so darken on hover */
+
   background-position: 0 -15px;
   -webkit-transition: background-position 0.1s linear;
   -moz-transition: background-position 0.1s linear;
@@ -2112,6 +2123,9 @@ table .span24 {
   border-color: #0055cc #0055cc #003580;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #0055cc;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
 }
 .btn-primary:hover,
 .btn-primary:active,
@@ -2119,6 +2133,7 @@ table .span24 {
 .btn-primary.disabled,
 .btn-primary[disabled] {
   background-color: #0055cc;
+  *background-color: #004ab3;
 }
 .btn-primary:active,
 .btn-primary.active {
@@ -2137,6 +2152,9 @@ table .span24 {
   border-color: #f89406 #f89406 #ad6704;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #f89406;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
 }
 .btn-warning:hover,
 .btn-warning:active,
@@ -2144,6 +2162,7 @@ table .span24 {
 .btn-warning.disabled,
 .btn-warning[disabled] {
   background-color: #f89406;
+  *background-color: #df8505;
 }
 .btn-warning:active,
 .btn-warning.active {
@@ -2162,6 +2181,9 @@ table .span24 {
   border-color: #bd362f #bd362f #802420;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #bd362f;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
 }
 .btn-danger:hover,
 .btn-danger:active,
@@ -2169,6 +2191,7 @@ table .span24 {
 .btn-danger.disabled,
 .btn-danger[disabled] {
   background-color: #bd362f;
+  *background-color: #a9302a;
 }
 .btn-danger:active,
 .btn-danger.active {
@@ -2187,6 +2210,9 @@ table .span24 {
   border-color: #51a351 #51a351 #387038;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #51a351;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
 }
 .btn-success:hover,
 .btn-success:active,
@@ -2194,6 +2220,7 @@ table .span24 {
 .btn-success.disabled,
 .btn-success[disabled] {
   background-color: #51a351;
+  *background-color: #499249;
 }
 .btn-success:active,
 .btn-success.active {
@@ -2212,6 +2239,9 @@ table .span24 {
   border-color: #2f96b4 #2f96b4 #1f6377;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #2f96b4;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
 }
 .btn-info:hover,
 .btn-info:active,
@@ -2219,6 +2249,7 @@ table .span24 {
 .btn-info.disabled,
 .btn-info[disabled] {
   background-color: #2f96b4;
+  *background-color: #2a85a0;
 }
 .btn-info:active,
 .btn-info.active {
@@ -2237,6 +2268,9 @@ table .span24 {
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #222222;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
 }
 .btn-inverse:hover,
 .btn-inverse:active,
@@ -2244,6 +2278,7 @@ table .span24 {
 .btn-inverse.disabled,
 .btn-inverse[disabled] {
   background-color: #222222;
+  *background-color: #151515;
 }
 .btn-inverse:active,
 .btn-inverse.active {
@@ -2844,6 +2879,9 @@ input[type="submit"].btn.btn-mini {
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  *background-color: #222222;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
@@ -2854,6 +2892,7 @@ input[type="submit"].btn.btn-mini {
 .btn-navbar.disabled,
 .btn-navbar[disabled] {
   background-color: #222222;
+  *background-color: #151515;
 }
 .btn-navbar:active,
 .btn-navbar.active {

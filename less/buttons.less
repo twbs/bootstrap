@@ -28,6 +28,10 @@
 
   // Give IE7 some love
   .ie7-restore-left-whitespace();
+
+  /* Remove the border to prevent IE7's black border on input:focus */
+  *border: 0;
+  *line-height: 20px;
 }
 
 // Hover state
@@ -35,6 +39,7 @@
   color: @grayDark;
   text-decoration: none;
   background-color: darken(@white, 10%);
+  *background-color: darken(@white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
   background-position: 0 -15px;
 
   // transition is only when going to hover, otherwise the background
