@@ -1,0 +1,90 @@
+div.jGrowl {
+  padding: 10px;
+  z-index: 9999;
+  color: #fff;
+  font-size: 12px;
+}
+/** Special IE6 Style Positioning **/
+div.ie6 {
+  position: absolute;
+}
+/** Normal Style Positions **/
+div.jGrowl {
+  position: absolute;
+}
+body > div.jGrowl {
+  position: fixed;
+}
+div.jGrowl.top-left {
+  left: 0px;
+  top: 0px;
+}
+div.jGrowl.top-right {
+  right: 0px;
+  top: 0px;
+}
+div.jGrowl.bottom-left {
+  left: 0px;
+  bottom: 0px;
+}
+div.jGrowl.bottom-right {
+  right: 0px;
+  bottom: 0px;
+}
+div.jGrowl.center {
+  top: 0px;
+  width: 50%;
+  left: 25%;
+}
+/** Cross Browser Styling **/
+div.center div.jGrowl-notification,
+div.center div.jGrowl-closer {
+  margin-left: auto;
+  margin-right: auto;
+}
+div.jGrowl div.jGrowl-notification,
+div.jGrowl div.jGrowl-closer {
+  background-color: #000;
+  opacity: .85;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+  filter: progid:dximagetransform.microsoft.alpha(Opacity=85);
+  zoom: 1;
+  width: 235px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  text-align: left;
+  display: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+div.jGrowl div.jGrowl-notification {
+  min-height: 40px;
+}
+div.jGrowl div.jGrowl-notification div.jGrowl-header {
+  font-weight: bold;
+  font-size: .85em;
+}
+div.jGrowl div.jGrowl-notification div.jGrowl-close {
+  z-index: 99;
+  float: right;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+}
+div.jGrowl div.jGrowl-closer {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  font-size: .9em;
+  font-weight: bold;
+  text-align: center;
+}
+/** Hide jGrowl when printing **/
+@media print {
+  div.jGrowl {
+    display: none;
+  }
+}
