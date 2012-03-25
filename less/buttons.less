@@ -106,7 +106,6 @@
   line-height: @baseLineHeight - 4px;
 }
 
-
 // Alternate buttons
 // --------------------------------------------------
 
@@ -163,13 +162,12 @@
   .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
 }
 
-
 // Cross-browser Jank
 // --------------------------------------------------
 
 button.btn,
-input[type="submit"].btn {
-
+input[type="submit"].btn,
+input[type="button"].btn {
   // Firefox 3.6 only I believe
   &::-moz-focus-inner {
     padding: 0;
@@ -191,4 +189,51 @@ input[type="submit"].btn {
     *padding-top: 1px;
     *padding-bottom: 1px;
   }
+}
+
+// IE7 Adjustments & Helpers
+// --------------------------------------------------
+
+button[type="submit"].btn,
+button[type="reset"].btn,
+input[type="submit"].btn,
+input[type="reset"].btn {
+  *line-height: @baseLineHeight + 2px;
+  *border: 0;
+}
+
+.btn-ie7-border {
+  *border:1px solid;
+  .ie7-button-border-color();
+
+  button[type="submit"].btn,
+  button[type="reset"].btn,
+  input[type="submit"].btn,
+  input[type="reset"].btn {
+      *line-height: @baseLineHeight;
+  }
+}
+
+.btn-ie7-border-primary {
+  .ie7-button-border-color(@btnPrimaryBackgroundHighlight);
+}
+// Warning appears are orange
+.btn-ie7-border-warning {
+  .ie7-button-border-color(@btnWarningBackgroundHighlight);
+}
+// Danger and error appear as red
+.btn-ie7-border-danger {
+  .ie7-button-border-color(@btnDangerBackgroundHighlight);
+}
+// Success appears as green
+.btn-ie7-border-success {
+  .ie7-button-border-color(@btnSuccessBackgroundHighlight);
+}
+// Info appears as a neutral blue
+.btn-ie7-border-info {
+  .ie7-button-border-color(@btnInfoBackgroundHighlight);
+}
+// Inverse appears as dark gray
+.btn-ie7-border-inverse {
+  .ie7-button-border-color(@btnInverseBackgroundHighlight);
 }
