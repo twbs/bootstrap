@@ -1,5 +1,5 @@
 /*
- * Bootstrap Responsive v2.0.1
+ * Bootstrap Responsive v2.0.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -9,7 +9,7 @@
  *
  * Converted to Sass by @johnwlong / @m5o.
  *
- * Date: So 19 Feb 2012 17:06:11 CET
+ * Date: Mo 26 Mär 2012 22:56:07 CEST
  */
 .clearfix {
   *zoom: 1;
@@ -22,11 +22,87 @@
   clear: both;
 }
 
+.hide-text {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  /* Make inputs at least the height of their button counterpart */
+  /* Makes inputs behave like true block-level elements */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .hidden {
   display: none;
   visibility: hidden;
 }
 
+.visible-phone {
+  display: none;
+}
+
+.visible-tablet {
+  display: none;
+}
+
+.visible-desktop {
+  display: block;
+}
+
+.hidden-phone {
+  display: block;
+}
+
+.hidden-tablet {
+  display: block;
+}
+
+.hidden-desktop {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .visible-phone {
+    display: block;
+  }
+
+  .hidden-phone {
+    display: none;
+  }
+
+  .hidden-desktop {
+    display: block;
+  }
+
+  .visible-desktop {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .visible-tablet {
+    display: block;
+  }
+
+  .hidden-tablet {
+    display: none;
+  }
+
+  .hidden-desktop {
+    display: block;
+  }
+
+  .visible-desktop {
+    display: none;
+  }
+}
 @media (max-width: 480px) {
   .nav-collapse {
     -webkit-transform: translate3d(0, 0, 0);
@@ -35,30 +111,6 @@
   .page-header h1 small {
     display: block;
     line-height: 18px;
-  }
-
-  input[class*="span"],
-  select[class*="span"],
-  textarea[class*="span"],
-  .uneditable-input {
-    display: block;
-    width: 100%;
-    min-height: 28px;
-    /* Make inputs at least the height of their button counterpart */
-    /* Makes inputs behave like true block-level elements */
-    -webkit-box-sizing: border-box;
-    /* Older Webkit */
-    -moz-box-sizing: border-box;
-    /* Older FF */
-    -ms-box-sizing: border-box;
-    /* IE8 */
-    box-sizing: border-box;
-    /* CSS3 spec*/
-  }
-
-  .input-prepend input[class*="span"],
-  .input-append input[class*="span"] {
-    width: auto;
   }
 
   input[type="checkbox"],
@@ -108,9 +160,18 @@
   }
 }
 @media (max-width: 767px) {
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .navbar-fixed-top {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
   .container {
     width: auto;
-    padding: 0 20px;
   }
 
   .row-fluid {
@@ -127,6 +188,30 @@
     display: block;
     width: auto;
     margin: 0;
+  }
+
+  .thumbnails [class*="span"] {
+    width: auto;
+  }
+
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
+  .uneditable-input {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    /* Make inputs at least the height of their button counterpart */
+    /* Makes inputs behave like true block-level elements */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
+    width: auto;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
@@ -145,6 +230,12 @@
   [class*="span"] {
     float: left;
     margin-left: 20px;
+  }
+
+  .container,
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 724px;
   }
 
   .span1 {
@@ -191,8 +282,7 @@
     width: 662px;
   }
 
-  .span12,
-  .container {
+  .span12 {
     width: 724px;
   }
 
@@ -295,6 +385,11 @@
     width: 100.0%;
   }
 
+  input,
+  textarea,
+  .uneditable-input {
+    margin-left: 0;
+  }
   input.span1,
   textarea.span1,
   .uneditable-input.span1 {
@@ -488,6 +583,7 @@
 @media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
+    overflow: visible !important;
   }
 }
 @media (min-width: 1200px) {
@@ -506,6 +602,12 @@
   [class*="span"] {
     float: left;
     margin-left: 30px;
+  }
+
+  .container,
+  .navbar-fixed-top .container,
+  .navbar-fixed-bottom .container {
+    width: 1170px;
   }
 
   .span1 {
@@ -552,8 +654,7 @@
     width: 1070px;
   }
 
-  .span12,
-  .container {
+  .span12 {
     width: 1170px;
   }
 
@@ -656,6 +757,11 @@
     width: 100%;
   }
 
+  input,
+  textarea,
+  .uneditable-input {
+    margin-left: 0;
+  }
   input.span1,
   textarea.span1,
   .uneditable-input.span1 {
