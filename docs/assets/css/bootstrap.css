@@ -1975,6 +1975,13 @@ table .span24 {
   filter: alpha(opacity=40);
   cursor: pointer;
 }
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
 .btn {
   display: inline-block;
   *display: inline;
