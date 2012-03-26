@@ -1790,6 +1790,7 @@ table .span24 {
 .icon-resize-horizontal {
   background-position: -456px -118px;
 }
+.dropup,
 .dropdown {
   position: relative;
 }
