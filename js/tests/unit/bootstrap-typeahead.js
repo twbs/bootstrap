@@ -114,14 +114,18 @@ $(function () {
               source: ['aa', 'ab', 'ac']
             })
           , typeahead = $input.data('typeahead')
+          , changed = false
 
         $input.val('a')
         typeahead.lookup()
+
+        $input.change(function() { changed = true });
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
         equals($input.val(), 'ac', 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
+        ok(changed, 'a change event was fired')
 
         typeahead.$menu.remove()
       })

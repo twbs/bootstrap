@@ -10,7 +10,7 @@
     height: 100%;
     @clearFooterHeight: @footerHeight+@gridGutterWidth;
     margin-bottom: -@clearFooterHeight;
-    .clearfix(@clearFooterHeight+@gridGutterWidth);
+    .hq-clearfix(@clearFooterHeight+@gridGutterWidth);
 }
 .hq-container-fluid .sidebar {
     nav {
@@ -43,4 +43,9 @@
         border-bottom: 0;
         padding: 0;
     }
+}
+
+.hq-inset {
+    paddin-top: @gridGutterWidth;
+    padding-right: @gridGutterWidth*2;
 }

@@ -1,0 +1,140 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Links
+@linkColor:             #1557A2;
+@linkColorHover:        darken(@linkColor, 15%);
+
+// Grays
+@black:                 #000;
+@grayDarker:            #2C2C2C;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #eee;
+@white:                 #fff;
+@commCareGray:          #6C6C6C;
+
+// Accent colors
+@blue:                  #1557A2;
+@blueDark:              #4A607D;
+@green:                 #46a546;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@orange:                #FF8B03;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
+
+// Typography
+@baseFontSize:          13px;
+@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@baseLineHeight:        18px;
+@textColor:             @grayDark;
+
+@textOrangeColor:       #E06C00;
+
+// Buttons
+@primaryButtonBackground:    @linkColor;
+
+
+
+
+// Common File Locations
+@imageDirectory:                  "../img/";
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexBrand:           900;
+@zindexBrandHover:      950;
+@zindexDropdown:        1000;
+@zindexPopover:         1010;
+@zindexTooltip:         1020;
+@zindexFixedNavbar:     1030;
+@zindexModalBackdrop:   1040;
+@zindexModal:           1050;
+
+// Input placeholder text color
+@placeholderText:       @grayLight;
+
+// Hr Border Color
+@hrBorder:                @grayLighter;
+
+// Navbar
+@navbarHeight:                    62px;
+@navbarBackground:                #F4F4F4;
+@navbarBackgroundHighlight:       #FDFDFD;
+@navbarLinkBackgroundHover:       transparent;
+
+@navbarBrandWidth:                211px;
+@navbarBrandHeight:               32px;
+
+@navbarText:                      @commCareGray;
+@navbarLinkColor:                 @commCareGray;
+@navbarLinkColorHover:            @white;
+
+// Side Navbar
+@sideNavigationBackground:        @navbarBackground;
+
+// Other stuff
+@grayBorderColor:       darken(@navbarBackground, 10);
+
+// Footer
+@footerHeight:                    100px;
+@footerBackground:                @grayDarker;
+@footerLinkColor:                 @white;
+@footerLinkColorHover:            @grayLighter;
+@footerButtonColor:               #474747;
+
+// Form states and alerts
+@warningText:             #c09853;
+@warningBackground:       #fcf8e3;
+@warningBorder:           darken(spin(@warningBackground, -10), 3%);
+
+@errorText:               #b94a48;
+@errorBackground:         #f2dede;
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+@successText:             #468847;
+@successBackground:       #dff0d8;
+@successBorder:           darken(spin(@successBackground, -10), 5%);
+
+@infoText:                #3a87ad;
+@infoBackground:          #d9edf7;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+// Tables
+@oddDataTableRowBackground:             @white;
+@oddDataTableRowSelectedBackground:     darken(@oddDataTableRowBackground, 5);
+@evenDataTableRowBackground:            @grayLighter;
+@evenDataTableRowSelectedBackground:    darken(@evenDataTableRowBackground, 5);
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+@fluidMinimumWidth:       1300px;
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;
+
+// Sidebar
+@fluidSidebarWidth: @gridColumnWidth*4;

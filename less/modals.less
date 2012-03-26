@@ -1,6 +1,7 @@
 // MODALS
 // ------
 
+// Recalculate z-index where appropriate
 .modal-open {
   .dropdown-menu {  z-index: @zindexDropdown + @zindexModal; }
   .dropdown.open { *z-index: @zindexDropdown + @zindexModal; }
@@ -8,6 +9,7 @@
   .tooltip       {  z-index: @zindexTooltip  + @zindexModal; }
 }
 
+// Background
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -25,12 +27,12 @@
   .opacity(80);
 }
 
+// Base modal
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: @zindexModal;
-  max-height: 500px;
   overflow: auto;
   width: 560px;
   margin: -250px 0 0 -280px;
@@ -53,20 +55,36 @@
   // Close icon
   .close { margin-top: 2px; }
 }
+
+// Body (where all modal content resises)
 .modal-body {
+  overflow-y: auto;
+  max-height: 400px;
   padding: 15px;
 }
+// Remove bottom margin if need be
+.modal-form {
+  margin-bottom: 0;
+}
+
+// Footer (for actions)
 .modal-footer {
   padding: 14px 15px 15px;
   margin-bottom: 0;
+  text-align: right; // right align buttons
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
   .border-radius(0 0 6px 6px);
   .box-shadow(inset 0 1px 0 @white);
-  .clearfix();
-  .btn {
-    float: right;
+  .clearfix(); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
     margin-left: 5px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
   }
 }

@@ -1,0 +1,132 @@
+// HQ Mixins.less
+// Overrides for original twitter bootstrap mixings
+
+
+
+// UTILITY MIXINS
+// --------------------------------------------------
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.hq-clearfix(@clearFixHeight:0px) {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    height: @clearFixHeight;
+    clear: both;
+  }
+}
+
+.make-icon-white() {
+    background-image: url('@{iconWhiteSpritePath}');
+}
+
+.make-icon-black() {
+    background-image: url('@{iconSpritePath}');
+}
+
+// BACKGROUNDS
+// --------------------------------------------------
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+//#translucent {
+//  .background(@color: @white, @alpha: 1) {
+//    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+//  }
+//  .border(@color: @white, @alpha: 1) {
+//    border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+//    .background-clip(padding-box);
+//  }
+//}
+
+// Gradient Bar Colors for buttons and alerts
+//.gradientBar(@primaryColor, @secondaryColor) {
+//  #gradient > .vertical(@primaryColor, @secondaryColor);
+//  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+//  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+//}
+
+// Gradients
+#gradient {
+//  .horizontal(@startColor: #555, @endColor: #333) {
+//       background-color: @endColor;
+//       background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+//       background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
+//       background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+//       background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+//       background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+//       background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+//       background-repeat: repeat-x;
+//       filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down
+//     }
+//     .vertical(@startColor: #555, @endColor: #333) {
+//       background-color: mix(@startColor, @endColor, 60%);
+//       background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+//       background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
+//       background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+//       background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+//       background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+//       background-image: linear-gradient(top, @startColor, @endColor); // The standard
+//       background-repeat: repeat-x;
+//       filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
+//     }
+//     .directional(@startColor: #555, @endColor: #333, @deg: 45deg) {
+//       background-color: @endColor;
+//       background-repeat: repeat-x;
+//       background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
+//       background-image: -ms-linear-gradient(@deg, @startColor, @endColor); // IE10
+//       background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+//       background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
+//       background-image: linear-gradient(@deg, @startColor, @endColor); // The standard
+//     }
+  .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
+    background-color: mix(@midColor, @endColor, 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+    background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
+    background-image: -ms-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+//  .radial(@innerColor: #555, @outerColor: #333)  {
+//    background-color: @outerColor;
+//    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+//    background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+//    background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+//    background-image: -ms-radial-gradient(circle, @innerColor, @outerColor);
+//    background-repeat: no-repeat;
+//    // Opera cannot do radial gradients yet
+//  }
+//  .striped(@color, @angle: -45deg) {
+//    background-color: @color;
+//    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+//    background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+//    background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+//    background-image: -ms-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+//    background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+//    background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+//  }
+  .horizontal-two-column-color(@startColor: #00b3ee, @endColor: #7a43b6, @colorStop: 50%) {
+    background-color: mix(@startColor, @endColor, 80%);
+    @firstPreColorStop: (@colorStop - .05);
+    @secondPreColorStop: (@firstPreColorStop + 0.01);
+    @thirdPreColorStop: (@colorStop - 0.01);
+    @firstPostColorStop: (@colorStop + .05);
+    @secondPostColorStop: (@firstPostColorStop + 0.01);
+    background-image: -webkit-gradient(linear, left top, right top, from(@startColor), color-stop(@firstPreColorStop, @startColor), color-stop(@secondPreColorStop, @endColor), color-stop(@thirdPreColorStop, @endColor), color-stop(@colorStop, @grayBorderColor), color-stop(@firstPostColorStop, @grayBorderColor), color-stop(@secondPostColorStop, @endColor), to(@endColor));
+    background-image: -webkit-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: -moz-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: -ms-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: -o-linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-image: linear-gradient(left, @startColor, @startColor @firstPreColorStop, @endColor @secondPreColorStop, @endColor @thirdPreColorStop, @grayBorderColor @colorStop, @grayBorderColor @firstPostColorStop, @endColor @secondPostColorStop, @endColor);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+}
