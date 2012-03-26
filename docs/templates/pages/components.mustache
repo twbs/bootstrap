@@ -1612,10 +1612,11 @@
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert"&gt;
-  &lt;a class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;
+  &lt;a class="close" data-dismiss="alert" href="#"&gt;&times;&lt;/a&gt;
   &lt;strong&gt;{{_i}}Warning!{{/i}}&lt;/strong&gt; {{_i}}Best check yo self, you're not looking too good.{{/i}}
 &lt;/div&gt;
 </pre>
+      <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for fully responsive and dismissable alerts.{{/i}}</p>
       <p>{{_i}}Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.{{/i}}</p>
       <div class="alert alert-block">
         <a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -1624,7 +1625,7 @@
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
-  &lt;a class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;
+  &lt;a class="close" data-dismiss="alert" href="#"&gt;&times;&lt;/a&gt;
   &lt;h4 class="alert-heading"&gt;{{_i}}Warning!{{/i}}&lt;/h4&gt;
   {{_i}}Best check yo self, you're not...{{/i}}
 &lt;/div&gt;
