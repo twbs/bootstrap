@@ -494,6 +494,14 @@ $('#myModal').on('hidden', function () {
             <strong>{{_i}}Heads up!{{/i}}</strong>
             {{_i}}Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.{{/i}}
           </div>
+          <h3>{{_i}}Methods{{/i}}</h3>
+          <h4>.scrollspy('refresh')</h4>
+          <p>{{_i}}When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:{{/i}}</p>
+<pre class="prettyprint linenums">
+$('[data-spy="scroll"]').each(function () {
+  var $spy = $(this).scrollspy('refresh')
+});
+</pre>
           <h3>{{_i}}Options{{/i}}</h3>
           <table class="table table-bordered table-striped">
             <thead>
