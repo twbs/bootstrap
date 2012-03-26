@@ -1,5 +1,5 @@
 /* ===================================================
- * bootstrap-touch.js v2.0.2
+ * bootstrap-touch.js v2.0.3
  * http://twitter.github.com/bootstrap/javascript.html#touch
  * ===================================================
  * Copyright 2012 Twitter, Inc.
