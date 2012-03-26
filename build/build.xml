@@ -24,11 +24,11 @@
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
-    <!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to latest-->
-    <fail message="All features of the build script require Ant version 1.8.2 or greater. Please upgrade to the latest version or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
+    <!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
+    <fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
         <condition>
             <not>
-                 <antversion atleast="1.8.2"/>
+                <contains string="${ant.version}" substring="1.8.2"/>
             </not>
         </condition>
     </fail>
@@ -174,6 +174,29 @@
 
     <target name="clean" depends="-clean"/>
 
+	<!-- LESS target, run separately -->
+    <target name="compileless">
+      <echo>Compile LESS to CSS</echo>
+      <apply dir="${dir.source}/${dir.less}" executable="java" parallel="false" failonerror="true">
+          <fileset dir="${dir.source}/${dir.less}" includes="style.less"/>
+          <arg value="-jar" />
+          <arg path="./${dir.build.tools}/${tool.rhino}" />
+          <arg path="./${dir.build.tools}/${tool.lessrhino}" />
+          <srcfile/>
+          <arg value="../${dir.source}/${dir.less}/style.less.css" />
+      </apply>
+      <echo message="Minifying css..."/>
+      <apply dir="${dir.source}/${dir.less}" executable="java" parallel="false">
+          <fileset dir="${dir.source}/${dir.less}" includes="style.less.css"/>
+          <arg line="-jar"/>
+          <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
+          <srcfile/>
+          <arg line="-o"/>
+          <mapper type="merge" to="../${dir.source}/${dir.less}/style.less.min.css"/>
+          <targetfile/>
+      </apply>    
+      <delete file="${dir.source}/${dir.less}/style.less.css"/>
+    </target>
 
 
     <!-- JSLint target, run separately -->
@@ -248,6 +271,7 @@
                      -usemin,
                      -js.all.minify,
                      -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -258,6 +282,7 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -273,6 +298,7 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -284,6 +310,7 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -302,6 +329,7 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -315,6 +343,7 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -335,6 +364,7 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -348,7 +378,9 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
+				   -less,
                    -css,
                    -manifest,
                    -htmlclean,
@@ -368,6 +400,7 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
                    -css,
                    -manifest,
@@ -381,7 +414,9 @@
                    -usemin,
                    -js.all.minify,
                    -js.main.concat,
+                   -js.mylibs.concat,
                    -js.scripts.concat,
+				   -less,
                    -css,
                    -manifest,
                    -htmlcompress,
@@ -462,6 +497,7 @@
               <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
               <exclude name="${dir.js}/**/*.js"/>
               <exclude name="${dir.js.modules}"/>
+			  <exclude name="${dir.less}/**/*.less"/>
               <exclude name="${dir.css}/**/*.css"/>
               <exclude name="${file.manifest}"/>
           </fileset>
@@ -488,16 +524,38 @@
   <target name="-js.main.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js">
       <echo message="Concatenating Main JS scripts..."/>
       <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
+      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
           <fileset dir="./${dir.intermediate}/">
-              <!--include name="${dir.js}/plugins.js"/-->
-              <!--include name="${dir.js}/${file.root.script}"/-->
+              <include name="${dir.js}/plugins.js"/>
+              <include name="${dir.js}/${file.root.script}"/>
           </fileset>
       </concat>
   </target>
 
-  <target name="-js.scripts.concat" depends="-js.main.concat" if="build.concat.scripts">
+  <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
+      <echo message="Concatenating JS libraries"/>
+      <echo message="Concatenating all files in ./${dir.intermediate}/${dir.js}/ that don't fit the H5BL folder structure" />
+      <echo message="The following will be excluded: ${file.js.bypass}, ${dir.js.libs}/*, ${dir.js.modules}/*,  ${file.root.script}, scripts-concat.js and plugins.js" />
+      <concat destfile="./${dir.intermediate}/${dir.js}/otherscripts-concat.js" overwrite="no">
+        <fileset dir="./${dir.intermediate}/${dir.js}" excludes="${file.js.bypass}, ${slug.libs}/*, ${slug.modules}/*">
+          <exclude name="${file.root.script}"/>
+          <exclude name="plugins.js"/>
+          <exclude name="scripts-concat.js"/>
+        </fileset>
+      </concat>
+
+  </target>
+
+
+  <target name="-js.scripts.concat" depends="-js.main.concat,-js.mylibs.concat" if="build.concat.scripts">
       <echo message="Concatenating library file with main script file"/>
+      <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
+      <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
+        <fileset dir="./${dir.intermediate}/${dir.js}/">
+              <include name="scripts-concat.js"/>
+              <include name="otherscripts-concat.js"/>
+          </fileset>
+      </concat>
 
       <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.fullsha" />
       <propertyregex property="scripts.sha" input="${scripts.fullsha}" regexp=".{${hash.length}}" select="\0" />
@@ -537,7 +595,7 @@
         <fileset dir="${dir.source}/${dir.js}" includes="${file.js.bypass}, **/*.min.js"/>
       </copy>
       <apply executable="java" parallel="false">
-        <fileset dir="${dir.source}/${dir.js}" excludes="${file.js.bypass}, **/*.min.js" includes="**/*.js">
+        <fileset dir="${dir.source}/${dir.js}" excludes="${file.js.bypass}, **/*.min.js, **/less.js" includes="**/*.js">
           <exclude name="${dir.js}/otherscripts-concat.js"/>
           <exclude name="${dir.js}/scripts-concat.js"/>
         </fileset>          
@@ -569,7 +627,7 @@
 
 
   <!-- HTML -->
-  <target name="-usemin" depends="-js.scripts.concat,-css" description="(PRIVATE) Replaces references to non-minified scripts">
+  <target name="-usemin" depends="-js.scripts.concat,-less,-css" description="(PRIVATE) Replaces references to non-minified scripts">
       <echo message="Switching to minified js files..."/>
 
       <!-- Changes to style.css or scripts.js mean that the html must be updated, and it will be.
@@ -644,10 +702,14 @@
 
       <echo message="Updating the HTML with the new css filename: ${style.css}"/>
 
-      <replaceregexp match="&lt;link(.+)href=['&quot;]?(.*)/${file.root.stylesheet}(?:\?.*)?['&quot;\s]?(.*/?&gt;)"
-        replace="&lt;link\1href='\2/${css.sha}.css'\3" flags="m">
-          <fileset dir="${dir.intermediate}" includes="${page-files}"/>
-      </replaceregexp>
+	  <replaceregexp match="&lt;link rel=['&quot;]?stylesheet/less['&quot;]?\s+href=['&quot;]?(.*)/${file.root.less.stylesheet}(?:\?.*)?['&quot;]?\s*&gt;"
+		replace="&lt;link rel='stylesheet' href='css/${css.sha}.css'&gt;" flags="m">
+		<fileset dir="${dir.intermediate}" includes="${page-files}"/>
+	  </replaceregexp>
+	  <replaceregexp match="&lt;script.*src=['&quot;]?(.*)/less.*.js(?:\?.*)?['&quot;]?\s*&gt;\s*&lt;/script&gt;"
+		replace="" flags="m">
+		<fileset dir="${dir.intermediate}" includes="${page-files}"/>
+	  </replaceregexp>
 
   </target>
 
@@ -733,7 +795,7 @@
             <fileset dir="${dir.intermediate}/" includes="${page-files}"/>
             <arg value="-jar"/>
             <arg path="${dir.build.tools}/${tool.htmlcompressor}"/>
-            <arg line="${tool.htmlcompressor.opts} ${tool.htmlcompressor.javascript} ${tool.htmlcompressor.opts.extra}"/>
+            <arg line="${tool.htmlcompressor.opts} ${tool.htmlcompressor.opts.extra}"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="${basedir}/${dir.publish}/*"/>
@@ -789,7 +851,42 @@
 
     <!-- CSS -->
 
-    <target name="-css-remove-concatenated-stylesheets">
+    <target name="-less" depends="-mkdirs" description="Convert LESS to CSS then concatenate and Minify any stylesheets">
+
+	<echo message="Converting LESS to CSS..."/>
+        <delete includeemptydirs="true">
+            <fileset dir="${dir.publish}/${dir.css}" includes="**/*.css" defaultexcludes="false"/>
+        </delete>
+        
+        <apply dir="${dir.source}/${dir.less}" executable="java" parallel="false" failonerror="true">
+            <fileset dir="./${dir.source}/">
+                <include name="**/${dir.less}/${file.root.less.stylesheet}"/>
+            </fileset>
+            <arg value="-jar" />
+            <arg path="./${dir.build.tools}/${tool.rhino}" />
+            <arg path="./${dir.build.tools}/${tool.lessrhino}" />
+            <srcfile/>
+            <arg value="${tool.lessrhino.opts}" />
+        </apply>
+
+        <echo message="Minifying css..."/>
+        <apply executable="java" parallel="false">
+            <fileset dir="${dir.intermediate}/${dir.css}/" includes="style.less.css"/>
+            <arg line="-jar"/>
+            <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="merge" to="${basedir}/${dir.intermediate}/${dir.css}/style.less.min.css"/>
+            <targetfile/>
+        </apply>
+
+        <checksum file="${dir.intermediate}/${dir.css}/style.less.min.css" algorithm="sha" property="css.fullsha" />
+        <propertyregex property="css.sha" input="${css.fullsha}" regexp=".{${hash.length}}" select="\0" />
+        <property name="style.css" value="${dir.css}/${css.sha}.css" />
+        <copy file="${dir.intermediate}/${dir.css}/style.less.min.css" tofile="${dir.publish}/${dir.css}/${css.sha}.css" />
+    </target>
+
+	<target name="-css-remove-concatenated-stylesheets">
             <echo>Removing ${css_file} from html</echo>
             <replaceregexp match="&lt;link.+href=&quot;.*${css_file}&quot;.*&gt;" replace="  ">
                 <fileset dir="${dir.intermediate}" includes="${page-files}"/>
@@ -948,15 +1045,6 @@
 
         <echo message="First, we run optipng on the .png files..."/>
 
-        <if>
-            <equals arg1="${images.strip.metadata}" arg2="true"/>
-            <then>
-                <var name="strip-meta-tags" value="-strip all"/>
-            </then>
-            <else>
-                <var name="strip-meta-tags" value=""/>
-            </else>
-        </if>
         <!-- osfamily=unix is actually true on OS X as well -->
         <!-- On *nix's and OS X, check for optipng and give a helpful message if it's not installed -->
         <if>
@@ -975,12 +1063,8 @@
                     <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                     <arg value="-quiet"/>
                     <arg value="-o7"/>
-                    <!--
-                       Temporarily fixes #39
-                       <arg value="${strip-meta-tags}"/>
-                    -->
-                    <arg value="-out"/>	
-		    <targetfile/>
+                    <arg value="-out"/>
+                    <targetfile/>
                     <srcfile/>
                     <mapper type="identity"/>
                 </apply>
@@ -1002,11 +1086,10 @@
                             <include name="**/*.png"/>
                         </fileset>
                     </delete>
-                    <apply executable="${basedir}/${dir.build.tools}/optipng-0.7-win32/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
+                    <apply executable="${basedir}/${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
                         <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                         <arg value="-quiet"/>
                         <arg value="-o7"/>
-		        <arg value="${strip-meta-tags}"/>
                         <arg value="-out"/>
                         <targetfile/>
                         <srcfile/>
