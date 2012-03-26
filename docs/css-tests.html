@@ -99,6 +99,11 @@
   .col3 {
     background-color: rgba(0,0,255,.1);
   }
+
+  /* Fluid row inputs */
+  #fluidRowInputs .row-fluid > [class*=span] {
+    background-color: rgba(255,0,0,.1);
+  }
 </style>
 
 
@@ -319,9 +324,31 @@
         <span class="span2 uneditable-input">Some value here</span><span class="add-on">.00</span>
       </div>
     </form>
-
   </div><!--/span-->
 </div><!--/row-->
+
+<h4>Fluid row with inputs</h4>
+<p>Inputs should not extend past the light red background, set on their parent, a <code>.span*</code> column.</p>
+<div id="fluidRowInputs">
+  <div class="row-fluid">
+    <div class="span4">
+      <input class="span4" placeholder="span4">
+    </div><!--/span-->
+    <div class="span8">
+      <input class="span8" placeholder="span8">
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="row-fluid" id="fluidRowInputs">
+    <div class="span12">
+      <input class="span12" placeholder="span12">
+    </div><!--/span-->
+  </div><!--/row-->
+</div>
+
+
+
+
+
 
 
 
