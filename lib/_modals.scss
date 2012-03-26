@@ -33,7 +33,6 @@
   top: 50%;
   left: 50%;
   z-index: $zindexModal;
-  max-height: 500px;
   overflow: auto;
   width: 560px;
   margin: -250px 0 0 -280px;
@@ -45,8 +44,8 @@
   @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
   @include background-clip(padding-box);
   &.fade {
-    @include transition(opacity .3s linear);
-    // @include transition(top .3s ease-out);
+    $transition: opacity .3s linear, top .3s ease-out;
+    @include transition($transition);
     top: -25%;
   }
   &.fade.in { top: 50%; }
@@ -60,6 +59,8 @@
 
 // Body (where all modal content resises)
 .modal-body {
+  overflow-y: auto;
+  max-height: 400px;
   padding: 15px;
 }
 // Remove bottom margin if need be
@@ -71,14 +72,20 @@
 .modal-footer {
   padding: 14px 15px 15px;
   margin-bottom: 0;
+  text-align: right; // right align buttons
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
   @include border-radius(0 0 6px 6px);
   @include box-shadow(inset 0 1px 0 $white);
-  @include clearfix();
-  .btn {
-    float: right;
+  @include clearfix(); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
     margin-left: 5px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
   }
 }

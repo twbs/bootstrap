@@ -13,22 +13,22 @@
 .open .dropdown-toggle {
   outline: 0;
 }
+
 // Dropdown arrow/caret
+// --------------------
 .caret {
   display: inline-block;
   width: 0;
   height: 0;
-  text-indent: -99999px;
-  // IE7 won't do the border trick if there's a text indent, but it doesn't
-  // do the content that text-indent is hiding, either, so we're ok.
-  *text-indent: 0;
   vertical-align: top;
   border-left:  4px solid transparent;
   border-right: 4px solid transparent;
   border-top:   4px solid $black;
   @include opacity(30);
-  content: "\2193";
+  content: "";
 }
+
+// Place the caret
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
@@ -37,7 +37,9 @@
 .open.dropdown .caret {
   @include opacity(100);
 }
+
 // The dropdown menu (ul)
+// ----------------------
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -46,11 +48,10 @@
   float: left;
   display: none; // none by default, but block on "open" of the menu
   min-width: 160px;
-  _width: 160px;
   padding: 4px 0;
   margin: 0; // override default ul
   list-style: none;
-  background-color: $white;
+  background-color: $dropdownBackground;
   border-color: #ccc;
   border-color: rgba(0,0,0,.2);
   border-style: solid;
@@ -63,27 +64,15 @@
   *border-right-width: 2px;
   *border-bottom-width: 2px;
 
-  // Allow for dropdowns to go bottom up (aka, dropup-menu)
-  &.bottom-up {
-    top: auto;
-    bottom: 100%;
-    margin-bottom: 2px;
+  // Aligns the dropdown menu to right
+  &.pull-right {
+    right: 0;
+    left: auto;
   }
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    height: 1px;
-    margin: 5px 1px;
-    overflow: hidden;
-    background-color: #e5e5e5;
-    border-bottom: 1px solid $white;
-
-    // IE7 needs a set width since we gave a height. Restricting just
-    // to IE7 to keep the 1px left/right space in other browsers.
-    // It is unclear where IE is getting the extra space that we need
-    // to negative-margin away, but so it goes.
-    *width: 100%;
-    *margin: -5px 0 5px;
+    @include nav-divider();
   }
 
   // Links within the dropdown menu
@@ -93,21 +82,23 @@
     clear: both;
     font-weight: normal;
     line-height: $baseLineHeight;
-    color: $gray;
+    color: $dropdownLinkColor;
     white-space: nowrap;
   }
 }
 
 // Hover state
+// -----------
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-  color: $white;
+  color: $dropdownLinkColorHover;
   text-decoration: none;
-  background-color: $linkColor;
+  background-color: $dropdownLinkBackgroundHover;
 }
 
 // Open state for the dropdown
+// ---------------------------
 .dropdown.open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
@@ -123,7 +114,34 @@
   }
 }
 
+// Right aligned dropdowns
+.pull-right .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// ------------------------------------------------------
+// Just add .dropup after the standard .dropdown class and you're set, bro.
+// TODO: abstract this so that the navbar fixed styles are not placed here?
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  // Reverse the caret
+  .caret {
+    border-top: 0;
+    border-bottom: 4px solid $black;
+    content: "\2191";
+  }
+  // Different positioning for bottom up menu
+  .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 1px;
+  }
+}
+
 // Typeahead
+// ---------
 .typeahead {
   margin-top: 2px; // give it some space to breathe
   @include border-radius(4px);

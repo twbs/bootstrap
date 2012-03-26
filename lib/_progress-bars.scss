@@ -17,6 +17,12 @@
   to    { background-position: 40px 0; }
 }
 
+// IE9
+@-ms-keyframes progress-bar-stripes {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
+}
+
 // Spec
 @keyframes progress-bar-stripes {
   from  { background-position: 0 0; }
@@ -54,7 +60,7 @@
 
 // Striped bars
 .progress-striped .bar {
-  @include gradient-striped(#62c462);
+  @include gradient-striped(#149bdf);
   @include background-size(40px 40px);
 }
 
@@ -87,9 +93,17 @@
 }
 
 // Info (teal)
-.progress.info .bar {
+.progress-info .bar {
   @include gradient-vertical(#5bc0de, #339bb9);
 }
 .progress-info.progress-striped .bar {
   @include gradient-striped(#5bc0de);
+}
+
+// Warning (orange)
+.progress-warning .bar {
+  @include gradient-vertical(lighten($orange, 15%), $orange);
+}
+.progress-warning.progress-striped .bar {
+  @include gradient-striped(lighten($orange, 15%));
 }
