@@ -63,6 +63,7 @@ hr.soften {
 .jumbotron h1 {
   margin-bottom: 9px;
   font-size: 81px;
+  font-weight: bold;
   letter-spacing: -1px;
   line-height: 1;
 }
@@ -78,6 +79,9 @@ hr.soften {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
+}
+.jumbotron .btn-large small {
+  font-size: 14px;
 }
 
 /* Masthead (docs home) */
@@ -208,13 +212,19 @@ hr.soften {
 
 /* Quick links
 -------------------------------------------------- */
+.bs-links {
+  margin: 36px 0;
+}
 .quick-links {
   min-height: 30px;
+  margin: 0;
   padding: 5px 20px;
-  margin: 36px 0;
   list-style: none;
   text-align: center;
   overflow: hidden;
+}
+.quick-links:first-child {
+  min-height: 0;
 }
 .quick-links li {
   display: inline;
@@ -427,17 +437,17 @@ hr.soften {
 .download-btn {
   margin: 36px 0 108px;
 }
-.download p,
-.download h4 {
+#download p,
+#download h4 {
   max-width: 50%;
   margin: 0 auto;
   color: #999;
   text-align: center;
 }
-.download h4 {
+#download h4 {
   margin-bottom: 0;
 }
-.download p {
+#download p {
   margin-bottom: 18px;
 }
 .download-btn .btn {
@@ -482,8 +492,7 @@ hr.soften {
 /* Misc
 -------------------------------------------------- */
 
-
-.browser-support {
+img {
   max-width: 100%;
 }
 
@@ -556,6 +565,70 @@ form.well {
 .bootstrap-examples .thumbnail {
   margin-bottom: 9px;
   background-color: #fff;
+}
+
+/* Responsive table
+------------------------- */
+.responsive-utilities th small {
+  display: block;
+  font-weight: normal;
+  color: #999;
+}
+.responsive-utilities tbody th {
+  font-weight: normal;
+}
+.responsive-utilities td {
+  text-align: center;
+}
+.responsive-utilities td.is-visible {
+  color: #468847;
+  background-color: #dff0d8 !important;
+}
+.responsive-utilities td.is-hidden {
+  color: #ccc;
+  background-color: #f9f9f9 !important;
+}
+
+/* Responsive tests
+------------------------- */
+.responsive-utilities-test {
+  margin-top: 5px;
+  margin-left: 0;
+  list-style: none;
+  overflow: hidden; /* clear floats */
+}
+.responsive-utilities-test li {
+  position: relative;
+  float: left;
+  width: 25%;
+  height: 43px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 43px;
+  color: #999;
+  text-align: center;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.responsive-utilities-test li + li {
+  margin-left: 10px;
+}
+.responsive-utilities-test span {
+  position: absolute;
+  top:    -1px;
+  left:   -1px;
+  right:  -1px;
+  bottom: -1px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.responsive-utilities-test span {
+  color: #468847;
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
 }
 
 
