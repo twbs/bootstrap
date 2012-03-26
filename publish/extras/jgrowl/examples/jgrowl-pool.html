@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml" debug="true">
+	<head>
+		<title>jGrowl Pooling Tests</title>
+		<link rel="stylesheet" href="../jquery.jgrowl.css" type="text/css"/>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery.jgrowl.js"></script>
+		<script type="text/javascript">
+
+		// In case you don't have firebug...
+		if (!window.console || !console.firebug) {
+			var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+			window.console = {};
+			for (var i = 0; i < names.length; ++i) window.console[names[i]] = function() {};
+		}
+
+		(function($){
+
+			$(document).ready(function(){
+			
+				// This specifies how many messages can be pooled out at any given time.
+				// If there are more notifications raised then the pool, the others are
+				// placed into queue and rendered after the other have disapeared.
+				$.jGrowl.defaults.pool = 5;
+			
+				var i = 1;
+				var y = 1;
+
+				setInterval( function() {
+					if ( i < 25 ) {
+						$.jGrowl("Message " + i, {
+							sticky:			(i % 3 == 0) ? true : false,
+							life: 			12000,
+							log: 			function() {
+								console.log("Creating message " + i + "...");
+							},
+							beforeOpen: 	function() {
+								console.log("Rendering message " + y + "...");
+								y++;
+							}
+						});
+					}
+	
+					i++;
+				} , 1000 );
+
+			});
+		})(jQuery);
+
+		</script>
+	</head>
+	<body>
+		<h1>jGrowl Pooling Tests</h1>
+				
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam porttitor turpis eu sem. Phasellus pulvinar, purus eget euismod imperdiet, quam est sollicitudin nisl, sed vulputate urna magna vel risus. Aliquam erat volutpat. Ut nulla mi, sagittis a, egestas ut, auctor vitae, nulla. Sed ut metus vel tellus scelerisque dictum. Suspendisse felis odio, eleifend a, feugiat a, interdum eget, lorem. Aliquam facilisis. Nulla neque enim, bibendum vitae, convallis vitae, pretium a, felis. Nunc diam sapien, iaculis sed, vestibulum in, pellentesque a, tellus. Mauris molestie risus non lectus. In a arcu. Etiam pulvinar, nibh et imperdiet egestas, diam pede lobortis risus, ac facilisis justo mauris eu ipsum. Aliquam nibh tortor, venenatis eu, pretium at, condimentum non, enim. Integer vitae urna. Duis semper, mauris ac egestas tristique, quam ipsum viverra risus, eget tempor libero turpis id nisl. Fusce pede. Nam varius.</p>
+
+		<p>Phasellus placerat suscipit neque. In porttitor mi vel felis. Sed vel ante. Vestibulum lectus mauris, ullamcorper id, luctus vitae, molestie a, metus. Fusce eu diam in libero fermentum sagittis. Quisque eget mi non purus convallis dignissim. Nam id lectus. Maecenas sit amet massa id metus hendrerit euismod. Phasellus porta tempor odio. Aliquam erat volutpat. Sed ut quam a dolor fermentum vehicula. Nulla et metus. Nulla ornare lorem sed augue. Nulla urna. Donec ligula. Nulla blandit ultrices pede.</p>
+
+		<p>Etiam blandit scelerisque diam. Donec nisl orci, accumsan sed, sodales vel, dictum ac, mauris. Aliquam non nunc eget magna imperdiet condimentum. Nunc sem. Etiam tincidunt. Quisque eros tortor, ultricies at, condimentum sit amet, feugiat vel, lectus. Morbi quis enim a ligula tristique consequat. Praesent nec massa nec urna cursus pretium. Phasellus porttitor. In adipiscing. Morbi ultrices.</p>
+
+		<p>Cras eget elit. Duis placerat diam in sapien. Duis tempor. Sed tincidunt semper augue. Nam varius gravida ante. Etiam ultricies iaculis neque. Nam lacinia, augue eget commodo auctor, pede lorem lacinia leo, eu rhoncus est purus nec ligula. Sed congue feugiat sem. Nulla bibendum, purus et sodales dignissim, elit mauris pulvinar turpis, a pulvinar sem diam a magna. Suspendisse ut purus sit amet felis suscipit lobortis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vestibulum pharetra dictum nisl. Fusce odio metus, tempor a, pretium vel, ultrices quis, ante. Pellentesque ut purus sit amet mi mattis volutpat.</p>
+
+		<p>Maecenas eu elit. Nam gravida. In leo. Morbi ante est, bibendum ut, pulvinar id, rhoncus vel, nisl. Nunc purus. Praesent nec nisl. Vivamus accumsan eleifend leo. Integer a enim non dolor convallis sagittis. Phasellus vel turpis. Phasellus pulvinar lectus eu sapien sollicitudin pharetra. In sollicitudin porttitor turpis. Donec feugiat, odio id egestas iaculis, lacus odio sagittis justo, a pharetra sem nunc eget orci. Donec ipsum nibh, fringilla sed, imperdiet id, vehicula eu, mi. Pellentesque tincidunt sodales diam. Pellentesque pede dolor, accumsan sit amet, dictum et, posuere eu, diam. Nulla lacinia turpis et neque. Ut ut augue. Phasellus ut metus. Nam in tellus.</p>
+	</body>
+</html>

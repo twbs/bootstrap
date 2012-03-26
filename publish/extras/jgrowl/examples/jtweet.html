@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml" debug="true">
+	<head>
+		<title>jGrowl meet Twitter</title>
+		<link rel="stylesheet" href="../jquery.jgrowl.css" type="text/css"/>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery.jgrowl.js"></script>
+		<script type="text/javascript">
+
+		// In case you don't have firebug...
+		if (!window.console || !console.firebug) {
+			var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+			window.console = {};
+			for (var i = 0; i < names.length; ++i) window.console[names[i]] = function() {};
+		}
+
+		(function($){
+			/**
+			 * @todo Add the twitter avatars to tweets, via tweet.user["profile_image_url"]
+			 * @todo Find a way to calculate the dates relatively
+			 * @todo Test is a cookie plugin is available so that some of this data can be 'cached'
+			 */
+			$.jTweet = function( username , total ) {
+				$.getJSON("http://twitter.com/status/user_timeline/" + username + ".json?count=" + total + "&callback=?", function(response) { 
+					$.each(response, function(i, tweet) {
+						$.jGrowl( (tweet.text.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/, function(m) {
+							return m.link(m);
+						})) + ' [' + tweet.source + ']' , { header: tweet.created_at , sticky: true } );
+					});
+				});
+			};
+		})(jQuery);
+
+		//	Setup a twitter interface with jGrowl
+		$(document).ready(function() {
+			$.jTweet('jquery', 5);
+		});
+
+		</script>
+	</head>
+	<body>
+		<h1>jGrowl meets Twitter</h1>
+
+		<p>An example of using jGrowl with Twitter to display tweets.</p>
+	</body>
+</html>
