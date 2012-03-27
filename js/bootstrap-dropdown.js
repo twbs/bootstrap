@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrap-dropdown.js v2.0.2
+ * bootstrap-dropdown.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
  * Copyright 2012 Twitter, Inc.
@@ -46,6 +46,11 @@
       if (!selector) {
         selector = $this.attr('href')
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      }
+
+      // if this target is disabled in any way, don't toggle
+      if ($this.prop( "disabled" ) || $this.is( ".disabled" ) || $this.is( "[disabled]" )) {
+        return false
       }
 
       $parent = $(selector)
