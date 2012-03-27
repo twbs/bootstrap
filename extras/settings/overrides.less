@@ -15,6 +15,8 @@
   
   */
   
+  @import "../../extras/jgrowl/jquery.jgrowl.less";				// jGrowl for Growl-like alert messages
+  
   // ONE LINE CSS GRID
   // For simple halving and thirding of divs. http://adamkochanowicz.com/oneline.html
   .oh,.ot,.tt{float:left;padding:0 2% 2% 0;width:48%}.ot{width:31%}.tt{width:65%}.cl{clear:both}
@@ -68,6 +70,33 @@
     .progress-info.progress-striped .bar {
       #gradient > .striped(#5bc0de);
     }
+    
+  // jGROWL THEMES
+  // -------------
+  
+  div.jGrowl div.warning {
+  	color:@warningText;
+    background-color:@warningBackground;
+    border: 1px solid @warningBorder
+  }
+  
+  div.jGrowl div.info {
+  	color:@infoText;
+    background-color:@infoBackground;
+    border: 1px solid @infoBorder;
+  }
+  
+  div.jGrowl div.success {
+  	color:@successText;
+    background-color:@successBackground;
+    border: 1px solid @successBorder;
+  }
+  
+  div.jGrowl div.danger {
+  	color:@errorText;
+    background-color:@errorBackground;
+    border: 1px solid @errorBorder;
+  }
   
   // STEP PROGRESS
   // -------------
@@ -221,8 +250,7 @@ ol.linenums li {
   @import "../../extras/themes/settings.less";				// Kickstrap themes 
   @import "../../extras/fontawesome/font-awesome.less"; 	// Using awesomefont instead of an image sprite.
   @import "../../extras/icomoon/icomoon.less"; 				// Turn this on if you want even more fonts from IcoMoon.
-  @import "../../extras/chosen/chosen.less"; 				// Chosen for select boxes
-  @import "../../extras/jgrowl/jquery.jgrowl.less";				// jGrowl for Growl-like alert messages        
+  @import "../../extras/chosen/chosen.less"; 				// Chosen for select boxes        
   
 //-----------------------
 //END BOOTSTRAP OVERRIDES
