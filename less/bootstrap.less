@@ -58,5 +58,13 @@
 @import "carousel.less";
 @import "hero-unit.less";
 
+// Responsive styles
+.responsive(@_) {
+}
+.responsive(true) {
+  @import "responsive.less";
+}
+.responsive(@responsive);
+
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
