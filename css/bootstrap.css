@@ -3803,40 +3803,40 @@ div.jGrowl div.jGrowl-closer {
 .cl {
   clear: both;
 }
-.span1-vertical {
+.vertical1 {
   padding-top: 15px;
 }
-.span2-vertical {
+.vertical2 {
   padding-top: 30px;
 }
-.span3-vertical {
+.vertical3 {
   padding-top: 45px;
 }
-.span4-vertical {
+.vertical4 {
   padding-top: 60px;
 }
-.span5-vertical {
+.vertical5 {
   padding-top: 75px;
 }
-.span6-vertical {
+.vertical6 {
   padding-top: 90px;
 }
-.span7-vertical {
+.vertical7 {
   padding-top: 105px;
 }
-.span8-vertical {
+.vertical8 {
   padding-top: 120px;
 }
-.span9-vertical {
+.vertical9 {
   padding-top: 135px;
 }
-.span10-vertical {
+.vertical10 {
   padding-top: 150px;
 }
-.span11-vertical {
+.vertical11 {
   padding-top: 165px;
 }
-.span12-vertical {
+.vertical12 {
   padding-top: 180px;
 }
 .progress .bar {
