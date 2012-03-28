@@ -249,6 +249,15 @@
           transform: translate(@x, @y, @z);
 }
 
+// Back-face Visibility
+// This prevents the browser flickering when using to CSS transformations
+.backface-visibility(@visibility){
+	-webkit-backface-visibility: @visibility;
+	-moz-backface-visibility: @visibility;
+	-ms-backface-visibility: @visibility;
+	backface-visibility: @visibility;
+}
+
 // Background clipping
 // Heads up: FF 3.6 and under need "padding" instead of "padding-box"
 .background-clip(@clip) {
