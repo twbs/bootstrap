@@ -991,6 +991,7 @@ select:focus:required:invalid:focus {
 .input-append select,
 .input-prepend .uneditable-input,
 .input-append .uneditable-input {
+  position: relative;
   margin-bottom: 0;
   *margin-left: 0;
   vertical-align: middle;
@@ -1004,7 +1005,6 @@ select:focus:required:invalid:focus {
 .input-append select:focus,
 .input-prepend .uneditable-input:focus,
 .input-append .uneditable-input:focus {
-  position: relative;
   z-index: 2;
 }
 .input-prepend .uneditable-input,

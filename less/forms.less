@@ -365,13 +365,13 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
+    position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
     vertical-align: middle;
     .border-radius(0 3px 3px 0);
     // Make input on top when focused so blue border and shadow always show
     &:focus {
-      position: relative;
       z-index: 2;
     }
   }
