@@ -702,54 +702,58 @@
       <h3>{{_i}}What's included{{/i}}</h3>
       <p>{{_i}}Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles: top (default), right, bottom, and left.{{/i}}</p>
       <p>{{_i}}Changing between them is easy and only requires changing very little markup.{{/i}}</p>
+      <hr>
+      <h4>{{_i}}Fade in tabs{{/i}}</h4>
+      <p>{{_i}}To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.{{/i}}</p>
+      <hr>
+      <h4>{{_i}}Requires jQuery plugin{{/i}}</h4>
+      <p>{{_i}}All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life <a href="./javascript.html#tabs">on the javascript docs page</a>.{{/i}}</p>
+      <p><a class="btn" href="./javascript.html#tabs">{{_i}}Get the javascript &rarr;{{/i}}</a></p>
     </div>
-    <div class="span4">
+    <div class="span8">
       <h3>{{_i}}Tabbable example{{/i}}</h3>
-      <p>{{_i}}To make tabs tabbable, wrap the <code>.nav-tabs</code> in another div with class <code>.tabbable</code>.{{/i}}</p>
-      <div class="tabbable" style="margin-bottom: 9px;">
+      <p>{{_i}}To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.{{/i}}</p>
+      <div class="tabbable" style="margin-bottom: 18px;">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#1" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
-          <li><a href="#2" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
-          <li><a href="#3" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
+          <li class="active"><a href="#tab1" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
+          <li><a href="#tab2" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
+          <li><a href="#tab3" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
         </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="1">
+        <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+          <div class="tab-pane active" id="tab1">
             <p>{{_i}}I'm in Section 1.{{/i}}</p>
           </div>
-          <div class="tab-pane" id="2">
+          <div class="tab-pane" id="tab2">
             <p>{{_i}}Howdy, I'm in Section 2.{{/i}}</p>
           </div>
-          <div class="tab-pane" id="3">
+          <div class="tab-pane" id="tab3">
             <p>{{_i}}What up girl, this is Section 3.{{/i}}</p>
           </div>
         </div>
       </div> <!-- /tabbable -->
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Custom jQuery plugin{{/i}}</h3>
-      <p>{{_i}}All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life on the javascript docs page.{{/i}}</p>
-      <p><a class="btn" href="./javascript.html#tabs">{{_i}}Get the javascript &rarr;{{/i}}</a></p>
-    </div>
-  </div>
+      <p>{{_i}}For right or left aligned tabs, wrap the <code>.nav-tabs</code> and <code>.tab-content</code> in <code>.tabbable</code>.{{/i}}</p>
 
-  <h3>{{_i}}Straightforward markup{{/i}}</h3>
-  <p>{{_i}}Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.{{/i}}</p>
+      <h3>{{_i}}Straightforward markup{{/i}}</h3>
+      <p>{{_i}}Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.{{/i}}</p>
 <pre class="prettyprint linenums">
-&lt;div class="tabbable"&gt;
+&lt;div class="tabbable"&gt; &lt;-- Only required for left/right tabs --&gt;
   &lt;ul class="nav nav-tabs"&gt;
-    &lt;li class="active"&gt;&lt;a href="#1" data-toggle="tab"&gt;{{_i}}Section 1{{/i}}&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#2" data-toggle="tab"&gt;{{_i}}Section 2{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;{{_i}}Section 1{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;{{_i}}Section 2{{/i}}&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
   &lt;div class="tab-content"&gt;
-    &lt;div class="tab-pane active" id="1"&gt;
+    &lt;div class="tab-pane active" id="tab1"&gt;
       &lt;p&gt;{{_i}}I'm in Section 1.{{/i}}&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class="tab-pane" id="2"&gt;
+    &lt;div class="tab-pane" id="tab2"&gt;
       &lt;p&gt;{{_i}}Howdy, I'm in Section 2.{{/i}}&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
+    </div>
+  </div>
+
 
   <h3>{{_i}}Tabbable in any direction{{/i}}</h3>
   <div class="row">
