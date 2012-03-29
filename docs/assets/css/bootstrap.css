@@ -2557,6 +2557,9 @@ input[type="submit"].btn.btn-mini {
   text-decoration: none;
   background-color: #eeeeee;
 }
+.nav > .pull-right {
+  float: right;
+}
 .nav .nav-header {
   display: block;
   padding: 3px 15px;
