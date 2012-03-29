@@ -128,10 +128,14 @@
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .insertBefore(this.$element)
-      this.$elementWrapper = $('<div class="modal-wrapper clearfix" />')
+      this.$elementWrapper = $('<div class="modal-wrapper" />')
         .prependTo(this.$backdrop)
       this.$element.remove().prependTo(this.$elementWrapper)
       $('html').css({ 'overflow' : 'hidden'  })
+
+      this.$elementWrapper.click(function(e) {
+          event.stopPropagation()
+      })
 
       if (this.options.backdrop != 'static') {
         this.$backdrop.click($.proxy(this.hide, this))
