@@ -3287,7 +3287,6 @@ input[type="submit"].btn.btn-mini {
   margin: 0;
   z-index: 1050;
   overflow: auto;
-  width: 560px;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
