@@ -130,15 +130,16 @@
       this.$elementWrapper = $('<div class="modal-wrapper" />')
         .prependTo(this.$backdrop)
         .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-      this.$element.remove().prependTo(this.$elementWrapper)
+      this.$element.prependTo(this.$elementWrapper)
+
       $('html').css({ 'overflow' : 'hidden'  })
 
-      this.$elementWrapper.click(function(e) {
-          event.stopPropagation()
-      })
-
       if (this.options.backdrop != 'static') {
-        this.$backdrop.click($.proxy(this.hide, this))
+        this.$backdrop.on('click', function(e){
+          if (e.target == e.delegateTarget) {
+            that.hide(e)
+          }
+        })
       }
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow

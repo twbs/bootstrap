@@ -78,7 +78,7 @@
 
           <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
 
-          <a id="close-this-shit" href="#">Close this shit</a>
+          <a id="close-this-shit" href="#" class="btn btn-large btn-success">Close this shit</a>
         </div>
         <div class="modal-footer">
           <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -102,10 +102,10 @@
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $("#close-this-shit").on('click', function(event){
-          console.log($(this).attr('id') + " clicked")
-          $("#myModal").modal('hide');
-        });
+        $("#close-this-shit").live('click', function(){
+          console.log("inside custom JS");
+          $('#myModal').modal('hide');
+        })
       })
     </script>
 

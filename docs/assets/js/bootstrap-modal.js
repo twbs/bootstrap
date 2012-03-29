@@ -28,7 +28,6 @@
   var Modal = function ( content, options ) {
     this.options = options
     this.$element = $(content)
-      .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
   }
 
   Modal.prototype = {
@@ -130,11 +129,17 @@
         .insertBefore(this.$element)
       this.$elementWrapper = $('<div class="modal-wrapper" />')
         .prependTo(this.$backdrop)
-      this.$element.remove().prependTo(this.$elementWrapper)
+        .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+      this.$element.prependTo(this.$elementWrapper)
+
       $('html').css({ 'overflow' : 'hidden'  })
 
       if (this.options.backdrop != 'static') {
-        this.$backdrop.click($.proxy(this.hide, this))
+        this.$backdrop.on('click', function(e){
+          if (e.target == e.delegateTarget) {
+            that.hide(e)
+          }
+        })
       }
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
