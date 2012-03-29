@@ -3243,16 +3243,16 @@ input[type="submit"].btn.btn-mini {
   cursor: default;
 }
 .modal-open .dropdown-menu {
-  z-index: 2050;
-}
-.modal-open .dropdown.open {
-  *z-index: 2050;
-}
-.modal-open .popover {
   z-index: 2060;
 }
-.modal-open .tooltip {
+.modal-open .dropdown.open {
+  *z-index: 2060;
+}
+.modal-open .popover {
   z-index: 2070;
+}
+.modal-open .tooltip {
+  z-index: 2080;
 }
 .modal-backdrop {
   overflow-x: hidden;
@@ -3276,7 +3276,7 @@ input[type="submit"].btn.btn-mini {
   top: 50px;
   left: 50%;
   margin-left: -280px;
-  z-index: 1049;
+  z-index: 1050;
   width: 560px;
   position: absolute;
   padding-bottom: 80px;
@@ -3284,7 +3284,7 @@ input[type="submit"].btn.btn-mini {
 }
 .modal {
   margin: 0;
-  z-index: 1050;
+  z-index: 1060;
   overflow: auto;
   width: 560px;
   background-color: #ffffff;

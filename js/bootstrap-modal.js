@@ -28,7 +28,6 @@
   var Modal = function ( content, options ) {
     this.options = options
     this.$element = $(content)
-      .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
   }
 
   Modal.prototype = {
@@ -130,6 +129,7 @@
         .insertBefore(this.$element)
       this.$elementWrapper = $('<div class="modal-wrapper" />')
         .prependTo(this.$backdrop)
+        .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
       this.$element.remove().prependTo(this.$elementWrapper)
       $('html').css({ 'overflow' : 'hidden'  })
 
