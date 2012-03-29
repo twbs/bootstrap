@@ -940,10 +940,22 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
   <h2>Horizontal forms</h2>
   <div class="row">
+    <div class="span4">
+      <p></p>
+      <p>Shown on the right are all the default form controls we support. Here's the bulleted list:</p>
+      <ul>
+        <li>text inputs (text, password, email, etc)</li>
+        <li>checkbox</li>
+        <li>radio</li>
+        <li>select</li>
+        <li>multiple select</li>
+        <li>file input</li>
+        <li>textarea</li>
+      </ul>
+    </div><!-- /.span -->
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>Controls Bootstrap supports</legend>
           <div class="control-group">
             <label class="control-label" for="input01">Text input</label>
             <div class="controls">
@@ -1019,31 +1031,27 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;/form&gt;
 </pre>
     </div>
-    <div class="span4">
-      <h3>What's included</h3>
-      <p>Shown on the left are all the default form controls we support. Here's the bulleted list:</p>
-      <ul>
-        <li>text inputs (text, password, email, etc)</li>
-        <li>checkbox</li>
-        <li>radio</li>
-        <li>select</li>
-        <li>multiple select</li>
-        <li>file input</li>
-        <li>textarea</li>
-      </ul>
-      <hr>
-      <h3>New defaults with v2.0</h3>
-      <p>Up to v1.4, Bootstrap's default form styles used the horizontal layout. With Bootstrap 2, we removed that constraint to have smarter, more scalable defaults for any form.</p>
-    </div>
   </div>
 
   <br>
 
+  <h2>Form control states</h2>
   <div class="row">
+    <div class="span4">
+      <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
+      <hr>
+      <h3>Form validation</h3>
+      <p>It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.</p>
+<pre class="prettyprint linenums">
+&lt;fieldset
+  class="control-group error"&gt;
+  …
+&lt;/fieldset&gt;
+</pre>
+    </div>
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>Form control states</legend>
           <div class="control-group">
             <label class="control-label" for="focusedInput">Focused input</label>
             <div class="controls">
@@ -1112,28 +1120,29 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         </fieldset>
       </form>
     </div>
-    <div class="span4">
-      <h3>Redesigned browser states</h3>
-      <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
-      <hr>
-      <h3>Form validation</h3>
-      <p>It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.</p>
-<pre class="prettyprint linenums">
-&lt;fieldset
-  class="control-group error"&gt;
-  …
-&lt;/fieldset&gt;
-</pre>
-    </div>
   </div>
 
   <br>
 
+  <h2>Extending form controls</h2>
   <div class="row">
+    <div class="span4">
+      <h3>Prepend &amp; append inputs</h3>
+      <p>Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.</p>
+      <hr>
+      <h3>Checkboxes and radios</h3>
+      <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
+      <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
+      <hr>
+      <h4>Inline forms and append/prepend</h4>
+      <p>To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.</p>
+      <hr>
+      <h4>Form help text</h4>
+      <p>To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.</p>
+    </div>
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>Extending form controls</legend>
           <div class="control-group">
             <label class="control-label">Form grid sizes</label>
             <div class="controls docs-input-sizes">
@@ -1258,20 +1267,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </div>
         </fieldset>
       </form>
-    </div>
-    <div class="span4">
-      <h3>Prepend &amp; append inputs</h3>
-      <p>Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.</p>
-      <hr>
-      <h3>Checkboxes and radios</h3>
-      <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
-      <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
-      <hr>
-      <h4>Inline forms and append/prepend</h4>
-      <p>To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.</p>
-      <hr>
-      <h4>Form help text</h4>
-      <p>To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.</p>
     </div>
   </div><!-- /row -->
 </section>
