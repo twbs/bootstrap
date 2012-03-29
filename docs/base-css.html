@@ -875,11 +875,9 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
   <h2>Example forms <small>using just form controls, no extra markup</small></h2>
   <div class="row">
-    <div class="span3">
+    <div class="span6">
       <h3>Basic form</h3>
-      <p>With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.</p>
-    </div>
-    <div class="span9">
+      <p>Smart and lightweight defaults without extra markup.</p>
       <form class="well">
         <label>Label name</label>
         <input type="text" class="span3" placeholder="Type something…">
@@ -893,39 +891,30 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;form class="well"&gt;
   &lt;label&gt;Label name&lt;/label&gt;
   &lt;input type="text" class="span3" placeholder="Type something…"&gt;
-  &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; Check me out
   &lt;/label&gt;
   &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
-  <div class="row">
-    <div class="span3">
-      <h3>Search form</h3>
-      <p>Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.</p>
-    </div>
-    <div class="span9">
-      <form class="well form-search">
-        <input type="text" class="input-medium search-query">
-        <button type="submit" class="btn">Search</button>
-      </form>
+  </div>
+  <div class="span6">
+    <h3>Search form</h3>
+    <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>input</code>.</p>
+    <form class="well form-search">
+      <input type="text" class="input-medium search-query">
+      <button type="submit" class="btn">Search</button>
+    </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-search"&gt;
   &lt;input type="text" class="input-medium search-query"&gt;
   &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
-  <div class="row">
-    <div class="span3">
+
       <h3>Inline form</h3>
-      <p>Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.</p>
-    </div>
-    <div class="span9">
+      <p>Add <code>.form-inline</code> to finesse the vertical alignment and spacing of form controls.</p>
       <form class="well form-inline">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
@@ -944,7 +933,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
+    </div><!-- /.span -->
   </div><!-- /row -->
 
   <br>
