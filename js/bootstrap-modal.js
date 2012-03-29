@@ -127,7 +127,11 @@
       var doAnimate = $.support.transition && animate
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .appendTo(document.body)
+        .insertBefore(this.$element)
+      this.$elementWrapper = $('<div class="modal-wrapper clearfix" />')
+        .prependTo(this.$backdrop)
+      this.$element.remove().prependTo(this.$elementWrapper)
+      $('html').css({ 'overflow' : 'hidden'  })
 
       if (this.options.backdrop != 'static') {
         this.$backdrop.click($.proxy(this.hide, this))
@@ -154,8 +158,10 @@
   }
 
   function removeBackdrop() {
+    this.$element.remove().insertAfter(this.$backdrop)
     this.$backdrop.remove()
     this.$backdrop = null
+    $('html').css({ 'overflow' : 'auto'  })
   }
 
   function escape() {
