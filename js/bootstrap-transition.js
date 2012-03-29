@@ -29,31 +29,30 @@
 
     $.support.transition = (function () {
 
-      var thisBody = document.body || document.documentElement
-        , thisStyle = thisBody.style
-        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
+      var transitionEnd = (function () {
 
-      return support && {
-        end: (function () {
-          var el = document.createElement('bootstrap')
-            , transEndEventNames = {
-                 'WebkitTransition' : 'webkitTransitionEnd'
-              ,  'MozTransition'    : 'transitionend'
-              ,  'OTransition'      : 'oTransitionEnd'
-              ,  'msTransition'     : 'MsTransitionEnd'
-              ,  'transition'       : 'transitionend'
-              }
-            , name
-
-          for (name in transEndEventNames){
-            if (el.style[name] !== undefined) {
-              return transEndEventNames[name]
+        var el = document.createElement('bootstrap')
+          , transEndEventNames = {
+               'WebkitTransition' : 'webkitTransitionEnd'
+            ,  'MozTransition'    : 'transitionend'
+            ,  'OTransition'      : 'oTransitionEnd'
+            ,  'msTransition'     : 'MsTransitionEnd'
+            ,  'transition'       : 'transitionend'
             }
+          , name
+
+        for (name in transEndEventNames){
+          if (el.style[name] !== undefined) {
+            return transEndEventNames[name]
           }
+        }
 
-        }())
+      })()
 
+      return transitionEnd && {
+        end: transitionEnd
       }
+
     })()
 
   })
