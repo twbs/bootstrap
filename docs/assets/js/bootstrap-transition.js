@@ -24,7 +24,7 @@
 
     "use strict"
 
-    /* CSS TRANSITION SUPPORT (technique from http://www.modernizr.com/)
+    /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
      * ======================================================= */
 
     $.support.transition = (function () {
