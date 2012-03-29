@@ -47,7 +47,7 @@
           }
         }
 
-      })()
+      }())
 
       return transitionEnd && {
         end: transitionEnd
