@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Tests · Twitter Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../../docs/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../../docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../../docs/assets/css/docs.css" rel="stylesheet">
+    <link href="../../docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- CSS just for the tests page -->
+    <link href="css-tests.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../../docs/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../docs/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../docs/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../docs/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="../../docs/index.html">Bootstrap</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <h1>CSS Tests</h1>
+  <p class="lead">One stop shop for quick debugging and edge-case tests of CSS.</p>
+</header>
+
+
+
+<!-- Tables
+================================================== -->
+
+<div class="page-header">
+  <h1>Tables</h1>
+</div>
+
+<div class="row">
+  <div class="span6">
+    <h4>Bordered without thead</h4>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered without thead, with caption</h4>
+    <table class="table table-bordered">
+      <caption>Table caption</caption>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered without thead, with colgroup</h4>
+    <table class="table table-bordered">
+      <colgroup>
+        <col class="col1">
+        <col class="col2">
+        <col class="col3">
+      </colgroup>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered with thead, with colgroup</h4>
+    <table class="table table-bordered">
+      <colgroup>
+        <col class="col1">
+        <col class="col2">
+        <col class="col3">
+      </colgroup>
+      <thead>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!--/span-->
+  <div class="span6">
+    <h4>Bordered with thead and caption</h4>
+    <table class="table table-bordered">
+      <caption>Table caption</caption>
+      <thead>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Bordered with rowspan and colspan</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">1 and 2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td rowspan="2">2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td rowspan="2">1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td colspan="2">2 and 3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!--/span-->
+</div><!--/row-->
+
+
+
+<!-- Forms
+================================================== -->
+
+<div class="page-header">
+  <h1>Forms</h1>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <h4>Prepend and append on inputs</h4>
+    <form>
+      <div class="controls">
+        <div class="input-prepend">
+          <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
+        </div>
+      </div>
+      <div class="controls">
+        <div class="input-append">
+          <input class="span2" id="prependedInput" size="16" type="text"><span class="add-on">@</span>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="input-prepend input-append">
+          <span class="add-on">$</span><input class="span2" id="prependedInput" size="16" type="text"><span class="add-on">.00</span>
+        </div>
+      </div>
+    </form>
+  </div><!--/span-->
+  <div class="span6">
+    <h4>Prepend and append with uneditable</h4>
+    <form>
+      <div class="input-prepend">
+        <span class="add-on">$</span><span class="span2 uneditable-input">Some value here</span>
+      </div>
+      <div class="input-append">
+        <span class="span2 uneditable-input">Some value here</span><span class="add-on">.00</span>
+      </div>
+    </form>
+  </div><!--/span-->
+</div><!--/row-->
+
+<h4>Fluid row with inputs</h4>
+<p>Inputs should not extend past the light red background, set on their parent, a <code>.span*</code> column.</p>
+<div id="fluidRowInputs">
+  <div class="row-fluid">
+    <div class="span4">
+      <input class="span4" placeholder="span4">
+    </div><!--/span-->
+    <div class="span8">
+      <input class="span8" placeholder="span8">
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="row-fluid" id="fluidRowInputs">
+    <div class="span12">
+      <input class="span12" placeholder="span12">
+    </div><!--/span-->
+  </div><!--/row-->
+</div>
+
+
+
+
+
+
+
+
+
+     <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </footer>
+
+    </div><!-- /container -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="../../docs/assets/js/jquery.js"></script>
+    <script src="../../docs/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="../../docs/assets/js/bootstrap-transition.js"></script>
+    <script src="../../docs/assets/js/bootstrap-alert.js"></script>
+    <script src="../../docs/assets/js/bootstrap-modal.js"></script>
+    <script src="../../docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../../docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../../docs/assets/js/bootstrap-tab.js"></script>
+    <script src="../../docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="../../docs/assets/js/bootstrap-popover.js"></script>
+    <script src="../../docs/assets/js/bootstrap-button.js"></script>
+    <script src="../../docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="../../docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="../../docs/assets/js/bootstrap-typeahead.js"></script>
+    <script src="../../docs/assets/js/application.js"></script>
+
+
+  </body>
+</html>

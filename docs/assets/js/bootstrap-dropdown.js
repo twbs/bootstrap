@@ -18,7 +18,7 @@
  * ============================================================ */
 
 
-!function( $ ){
+!function ( $ ) {
 
   "use strict"
 
@@ -86,7 +86,9 @@
 
   $(function () {
     $('html').on('click.dropdown.data-api', clearMenus)
-    $('body').on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    $('body')
+      .on('click.dropdown', '.dropdown form', function (e) { e.stopPropagation() })
+      .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
   })
 
 }( window.jQuery );

@@ -98,13 +98,15 @@
   white-space: nowrap;
 }
 
-// New image replacement
+// CSS image replacement
 // -------------------------
-// Source: http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 .hide-text {
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
 }
 
 
@@ -114,13 +116,13 @@
 #font {
   #family {
     .serif() {
-      font-family: Georgia, "Times New Roman", Times, serif;
+      font-family: @serifFontFamily;
     }
     .sans-serif() {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: @sansFontFamily;
     }
     .monospace() {
-      font-family: Menlo, Monaco, "Courier New", monospace;
+      font-family: @monoFontFamily;
     }
   }
   .shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
@@ -247,6 +249,17 @@
       -ms-transform: translate(@x, @y, @z);
        -o-transform: translate(@x, @y, @z);
           transform: translate(@x, @y, @z);
+}
+
+// Backface visibility
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+.backface-visibility(@visibility: visible){
+	-webkit-backface-visibility: @visibility;
+	   -moz-backface-visibility: @visibility;
+	    -ms-backface-visibility: @visibility;
+	        backface-visibility: @visibility;
 }
 
 // Background clipping
@@ -393,7 +406,7 @@
 }
 // Reset filters for IE
 .reset-filter() {
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }
 
 
@@ -425,10 +438,12 @@
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
   .gradientBar(@startColor, @endColor);
   .reset-filter();
+  *background-color: @endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
     background-color: @endColor;
+    *background-color: darken(@endColor, 5%);
   }
 
   // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
@@ -574,11 +589,11 @@
     .row-fluid {
       width: 100%;
       .clearfix();
-      > [class*="span"] {
+      [class*="span"] {
         float: left;
         margin-left: @fluidGridGutterWidth;
       }
-      > [class*="span"]:first-child {
+      [class*="span"]:first-child {
         margin-left: 0;
       }
 

@@ -17,6 +17,7 @@
  * limitations under the License.
  * ============================================================== */
 
+
 !function ( $ ) {
 
   "use strict"
@@ -43,24 +44,41 @@
       constructor: ScrollSpy
 
     , refresh: function () {
-        this.targets = this.$body
+        var self = this
+          , $targets
+
+        this.offsets = $([])
+        this.targets = $([])
+
+        $targets = this.$body
           .find(this.selector)
           .map(function () {
             var href = $(this).attr('href')
-            return /^#\w/.test(href) && $(href).length ? href : null
+              , $href = /^#\w/.test(href) && $(href)
+            return ( $href
+              && href.length
+              && [[ $href.position().top, href ]] ) || null
           })
-
-        this.offsets = $.map(this.targets, function (id) {
-          return $(id).position().top
-        })
+          .sort(function (a, b) { return a[0] - b[0] })
+          .each(function () {
+            self.offsets.push(this[0])
+            self.targets.push(this[1])
+          })
       }
 
     , process: function () {
         var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
+          , scrollHeight = this.$scrollElement[0].scrollHeight || this.$body[0].scrollHeight
+          , maxScroll = scrollHeight - this.$scrollElement.height()
           , offsets = this.offsets
           , targets = this.targets
           , activeTarget = this.activeTarget
           , i
+
+        if (scrollTop >= maxScroll) {
+          return activeTarget != (i = targets.last()[0])
+            && this.activate ( i )
+        }
 
         for (i = offsets.length; i--;) {
           activeTarget != targets[i]
@@ -85,8 +103,10 @@
           .addClass('active')
 
         if ( active.parent('.dropdown-menu') )  {
-          active.closest('li.dropdown').addClass('active')
+          active = active.closest('li.dropdown').addClass('active')
         }
+
+        active.trigger('activate')
       }
 
   }

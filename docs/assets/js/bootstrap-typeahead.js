@@ -17,6 +17,7 @@
  * limitations under the License.
  * ============================================================ */
 
+
 !function( $ ){
 
   "use strict"
@@ -39,8 +40,9 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
-      this.$element.val(val)
-      this.$element.change();
+      this.$element
+        .val(val)
+        .change()
       return this.hide()
     }
 
@@ -77,7 +79,7 @@
       }
 
       items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
+        return that.matcher(item)
       })
 
       items = this.sorter(items)
@@ -109,7 +111,8 @@
     }
 
   , highlighter: function (item) {
-      return item.replace(new RegExp('(' + this.query + ')', 'ig'), function ($1, match) {
+      var query = this.query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
+      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }

@@ -18,7 +18,7 @@
  * ========================================================== */
 
 
-!function( $ ){
+!function ( $ ) {
 
   "use strict"
 
@@ -45,15 +45,16 @@
       }
 
       $parent = $(selector)
-      $parent.trigger('close')
 
       e && e.preventDefault()
 
       $parent.length || ($parent = $this.hasClass('alert') ? $this : $this.parent())
 
-      $parent
-        .trigger('close')
-        .removeClass('in')
+      $parent.trigger(e = $.Event('close'))
+
+      if (e.isDefaultPrevented()) return
+
+      $parent.removeClass('in')
 
       function removeElement() {
         $parent

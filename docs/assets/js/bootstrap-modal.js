@@ -18,7 +18,7 @@
  * ========================================================= */
 
 
-!function( $ ){
+!function ( $ ) {
 
   "use strict"
 
@@ -41,13 +41,15 @@
 
     , show: function () {
         var that = this
+          , e = $.Event('show')
 
-        if (this.isShown) return
+        this.$element.trigger(e)
+
+        if (this.isShown || e.isDefaultPrevented()) return
 
         $('body').addClass('modal-open')
 
         this.isShown = true
-        this.$element.trigger('show')
 
         escape.call(this)
         backdrop.call(this, function () {
@@ -74,18 +76,21 @@
     , hide: function ( e ) {
         e && e.preventDefault()
 
-        if (!this.isShown) return
-
         var that = this
+
+        e = $.Event('hide')
+
+        this.$element.trigger(e)
+
+        if (!this.isShown || e.isDefaultPrevented()) return
+
         this.isShown = false
 
         $('body').removeClass('modal-open')
 
         escape.call(this)
 
-        this.$element
-          .trigger('hide')
-          .removeClass('in')
+        this.$element.removeClass('in')
 
         $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :

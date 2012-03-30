@@ -228,7 +228,7 @@ hr.soften {
 }
 .quick-links li {
   display: inline;
-  margin: 0 5px;
+  margin: 0 8px;
   color: #999;
 }
 .quick-links .github-btn,
@@ -491,10 +491,6 @@ hr.soften {
 
 /* Misc
 -------------------------------------------------- */
-
-img {
-  max-width: 100%;
-}
 
 /* Make tables spaced out a bit more */
 h2 + table,

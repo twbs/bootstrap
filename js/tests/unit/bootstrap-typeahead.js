@@ -52,6 +52,22 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should not explode when regex chars are entered", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac', 'mdo*', 'fat+']
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('+')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 1, 'has 1 item in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        typeahead.$menu.remove()
+      })
+
       test("should hide menu when query entered", function () {
         stop()
         var $input = $('<input />').typeahead({

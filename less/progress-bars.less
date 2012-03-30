@@ -7,26 +7,32 @@
 
 // Webkit
 @-webkit-keyframes progress-bar-stripes {
-  from  { background-position: 0 0; }
-  to    { background-position: 40px 0; }
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
 }
 
 // Firefox
 @-moz-keyframes progress-bar-stripes {
-  from  { background-position: 0 0; }
-  to    { background-position: 40px 0; }
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
 }
 
 // IE9
 @-ms-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+// Opera
+@-o-keyframes progress-bar-stripes {
   from  { background-position: 0 0; }
   to    { background-position: 40px 0; }
 }
 
 // Spec
 @keyframes progress-bar-stripes {
-  from  { background-position: 0 0; }
-  to    { background-position: 40px 0; }
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
 }
 
 
@@ -68,6 +74,8 @@
 .progress.active .bar {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
      -moz-animation: progress-bar-stripes 2s linear infinite;
+      -ms-animation: progress-bar-stripes 2s linear infinite;
+       -o-animation: progress-bar-stripes 2s linear infinite;
           animation: progress-bar-stripes 2s linear infinite;
 }
 
