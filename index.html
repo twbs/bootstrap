@@ -32,7 +32,10 @@
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <!--[if lt IE 7]>
+    <link href="css/bootstrap.ie6.css" rel="stylesheet">
+  	<p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p>
+  <![endif]-->
 <div class="container">  
   <header>
 
@@ -43,6 +46,23 @@
       <br />
       <div class="span2 offset5">
         <a href="sample.html"><h1><i class="icomoon-star"></i>&nbsp;Sample </h1></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span8">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <div class="span4">
+    <div class="btn-group">
+      <a class="btn" href="#">1</a>
+      <a class="btn" href="#">2</a>
+      <a class="btn" href="#">3</a>
+    </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <i class="icon-book"></i> Read the documentation
       </div>
     </div>
   </div>
@@ -97,5 +117,7 @@
     <footer>
     <p><i class="icon-github-sign"></i> Built with <a href="http://ajkochanowicz.github.com/Kickstrap/">Kickstrap</a></p>
   </footer>
+  <!-- A little ie7- magic -->
+  <script type="text/javascript"> $(function(){if($.browser.msie&&parseInt($.browser.version,10)===6){$('.row div[class^="span"]:last-child').addClass("last-child");$('[class="span"]').addClass("margin-left-20");$(':button[class="btn"], :reset[class="btn"], :submit[class="btn"], input[type="button"]').addClass("button-reset");$(":checkbox").addClass("input-checkbox");$('[class^="icon-"], [class=" icon-"]').addClass("icon-sprite");$(".pagination li:first-child a").addClass("pagination-first-child")}}) </script>
 </body>
 </html>
