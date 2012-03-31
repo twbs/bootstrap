@@ -3839,37 +3839,6 @@ div.jGrowl div.jGrowl-closer {
 .vertical12 {
   padding-top: 180px;
 }
-.progress .bar {
-  width: 0%;
-  height: 18px;
-  color: #ffffff;
-  font-size: 12px;
-  text-align: center;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: width 0.6s ease;
-  -moz-transition: width 0.6s ease;
-  -ms-transition: width 0.6s ease;
-  -o-transition: width 0.6s ease;
-  transition: width 0.6s ease;
-}
-.progress .bar,
-.progress .step-full {
-  background-color: #26b6b3;
-  background-image: -moz-linear-gradient(top, #2ac7c4, #219d9b);
-  background-image: -ms-linear-gradient(top, #2ac7c4, #219d9b);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2ac7c4), to(#219d9b));
-  background-image: -webkit-linear-gradient(top, #2ac7c4, #219d9b);
-  background-image: -o-linear-gradient(top, #2ac7c4, #219d9b);
-  background-image: linear-gradient(top, #2ac7c4, #219d9b);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2ac7c4', endColorstr='#219d9b', GradientType=0);
-}
 .progress-danger .bar,
 .progress-danger .step-full {
   background-color: #dd514c;
@@ -3996,6 +3965,37 @@ div.jGrowl div.danger {
   margin: 14px 17px 18px 14px;
   position: relative;
   overflow: visible;
+}
+.progress .bar {
+  width: 0%;
+  height: 18px;
+  color: #ffffff;
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: width 0.6s ease;
+  -moz-transition: width 0.6s ease;
+  -ms-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  transition: width 0.6s ease;
+}
+.progress .bar,
+.progress .step-full {
+  background-color: #26b6b3;
+  background-image: -moz-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -ms-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2ac7c4), to(#219d9b));
+  background-image: -webkit-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: -o-linear-gradient(top, #2ac7c4, #219d9b);
+  background-image: linear-gradient(top, #2ac7c4, #219d9b);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2ac7c4', endColorstr='#219d9b', GradientType=0);
 }
 ul.ul-horizontal {
   list-style: none;

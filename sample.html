@@ -45,12 +45,46 @@
       .sidebar-nav {
         padding: 9px 0;
       }
+      .card-two,.card-three {display:none;}
+      .modal-body {min-height:260px;} /* To keep the next/back buttons in the same place */
     </style>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  
+<div class="modal" id="myModal">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Welcome to Kickstrap</h3>
+  </div>
+  <div class="modal-body">
+    <h4 class="card-one">Getting Started</h4>
+    <h4 class="card-two">Advanced Usage</h4>
+    <h4 class="card-three">Moving on</h4>
+    <div class="progress progress-step">
+      <div class="step-full first">1</div>
+      <div class="step-empty second" style="left:50%">2</div>
+      <div class="step-empty third" style="left:100%">3</div>
+      <div class="bar" style="width: 0%;"></div>
+    </div>
+    <p class="card-one">Check out the source of this page, <code>sample.html</code> in your Kickstrap root to see how some of this magic is done.</p>
+    <p class="card-one">If instead you'd like to jump right in, use <code>index.html</code>, a (nearly) blank html document with all the default Kickstrap magic linked and ready to go.</p>
+    <p class="card-one">To make css changes, your best bet is to <a href="http://ajkochanowicz.github.com/Kickstrap/less.html#compiling">download a less compiler</a> and mess around in the <code>/extras</code> directory.</p>
+    <p class="card-one"><a href="http://ajkochanowicz.github.com/Kickstrap">See the <i class="icon-book"></i> Documentation</a> to learn more.</p>
+    
+    <p class="card-two">In an effort to make Kickstrap run as smoothly and quickly as a regular version of Bootstrap, we've made some of the goodies which add to the page load optional. For example, to use js plugins, you'll need to add them in your markup per the <a href="http://ajkochanowicz.github.com/Kickstrap"><i class="icon-book"></i> Documentation</a></p>
+    <p class="card-two">This is also a good time to start thinking of the production of your website. Do you want to minify and compress your css and js? If so, consider using the included ant build script in the <code>build</code> folder.</p>
+    
+    <p class="card-three">This is third</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn btn-primary next">Next</a>
+    <a href="#" class="btn back">Back</a>
+  </div>
+</div>
+  
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -98,13 +132,7 @@
         </div><!--/span-->
         <div class="span9">
           <div class="hero-unit">
-            <div class="progress progress-step" style="margin: -27px 0 50px 0;">
-              <div class="step-full">1</div>
-              <div class="step-full" style="left:33%">2</div>
-              <div class="step-empty" style="left:66%">3</div>
-              <div class="step-empty" style="left:100%">4</div>
-              <div class="bar" style="width: 33%;"></div>
-            </div>
+            
             <h1><i class="icon-list"></i> Hello, world!</h1>
             <h2>It's so nice to see you.</h2>
             <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
@@ -831,7 +859,56 @@
   <script type="text/javascript" src="extras/jgrowl/jquery.jgrowl.min.js"></script>
   <script type="text/javascript">
     $(document).ready (function() {
+      var step = 1;
       $.jGrowl("Welcome to Kickstrap. <a href=\"http://stanlemon.net/pages/jgrowl\"><i class=\"icon-book\"></i> jGrowl Docs</a>", { life: 3000 });
+      $('.next').click(function() {
+      //This all could probably be shorter. Let me know if you have idears -Adam
+        if (step < 3) {step++;}
+        console.log(step);
+        updateStep();
+      });
+      $('.back').click(function() {
+        if(step > 1) {step--;}
+        console.log(step);
+        updateStep();
+      });
+      $('.close').click(function(){
+        $('#myModal').hide();
+      });
+      function updateStep() {
+        switch(step) {
+          case 1:
+            $('.card-one').show();
+            $('.card-two').hide();
+            $('.card-three').hide();
+            $('.second').removeClass('step-full');
+            $('.bar').css('width','0');
+          break;
+          
+          case 2:
+            $('.card-one').hide();
+            $('.card-two').show();
+            $('.card-three').hide();
+            $('.second').addClass('step-full');
+            $('.third').removeClass('step-full');
+            $('.bar').css('width','50%');
+            $('.finish').text('Next').removeClass('btn-success finish').addClass('btn-primary next');
+          break;
+          
+          case 3:
+            $('.card-one').hide();
+            $('.card-two').hide();
+            $('.card-three').show();
+            $('.third').addClass('step-full');
+            $('.bar').css('width','100%');
+            $('.next').text('Finish').removeClass('btn-primary next').addClass('btn-success finish');
+          break;
+        }
+      }
+      $(".finish").on("click", function(event){ 
+        console.log('okay');
+        $('#myModal').hide();
+      });
     });
   </script>
        
