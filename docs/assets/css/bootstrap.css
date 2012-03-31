@@ -254,46 +254,57 @@ a:hover {
   clear: both;
 }
 .row-fluid [class*="span"] {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  /* Make inputs at least the height of their button counterpart */
+
+  /* Makes inputs behave like true block-level elements */
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   margin-left: 2.127659574%;
 }
 .row-fluid [class*="span"]:first-child {
   margin-left: 0;
 }
-.row-fluid > .span12 {
+.row-fluid .span12 {
   width: 99.99999998999999%;
 }
-.row-fluid > .span11 {
+.row-fluid .span11 {
   width: 91.489361693%;
 }
-.row-fluid > .span10 {
+.row-fluid .span10 {
   width: 82.97872339599999%;
 }
-.row-fluid > .span9 {
+.row-fluid .span9 {
   width: 74.468085099%;
 }
-.row-fluid > .span8 {
+.row-fluid .span8 {
   width: 65.95744680199999%;
 }
-.row-fluid > .span7 {
+.row-fluid .span7 {
   width: 57.446808505%;
 }
-.row-fluid > .span6 {
+.row-fluid .span6 {
   width: 48.93617020799999%;
 }
-.row-fluid > .span5 {
+.row-fluid .span5 {
   width: 40.425531911%;
 }
-.row-fluid > .span4 {
+.row-fluid .span4 {
   width: 31.914893614%;
 }
-.row-fluid > .span3 {
+.row-fluid .span3 {
   width: 23.404255317%;
 }
-.row-fluid > .span2 {
+.row-fluid .span2 {
   width: 14.89361702%;
 }
-.row-fluid > .span1 {
+.row-fluid .span1 {
   width: 6.382978723%;
 }
 .container {
