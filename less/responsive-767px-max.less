@@ -100,9 +100,9 @@
   .row {
     margin-left: 0;
   }
-  // Make all columns even
-  .row > [class*="span"],
-  .row-fluid > [class*="span"] {
+  // Make all grid-sized elements block level again
+  [class*="span"],
+  .row-fluid [class*="span"] {
     float: none;
     display: block;
     width: auto;
@@ -125,8 +125,11 @@
     .input-block-level();
   }
   // But don't let it screw up prepend/append inputs
+  .input-prepend input,
+  .input-append input,
   .input-prepend input[class*="span"],
   .input-append input[class*="span"] {
+    display: inline-block; // redeclare so they don't wrap to new lines
     width: auto;
   }
 

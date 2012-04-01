@@ -148,8 +148,8 @@
   .row {
     margin-left: 0;
   }
-  .row > [class*="span"],
-  .row-fluid > [class*="span"] {
+  [class*="span"],
+  .row-fluid [class*="span"] {
     float: none;
     display: block;
     width: auto;
@@ -174,8 +174,11 @@
     -ms-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .input-prepend input,
+  .input-append input,
   .input-prepend input[class*="span"],
   .input-append input[class*="span"] {
+    display: inline-block;
     width: auto;
   }
 }
