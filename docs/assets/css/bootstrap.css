@@ -2780,8 +2780,7 @@ input[type="submit"].btn.btn-mini {
   clear: both;
 }
 .tab-content {
-  display: table;
-  width: 100%;
+  overflow: auto;
 }
 .tabs-below .nav-tabs,
 .tabs-right .nav-tabs,
@@ -2815,10 +2814,6 @@ input[type="submit"].btn.btn-mini {
 .tabs-below .nav-tabs .active > a,
 .tabs-below .nav-tabs .active > a:hover {
   border-color: transparent #ddd #ddd #ddd;
-}
-.tabs-left .tab-content,
-.tabs-right .tab-content {
-  width: auto;
 }
 .tabs-left .nav-tabs > li,
 .tabs-right .nav-tabs > li {

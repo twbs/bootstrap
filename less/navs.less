@@ -266,8 +266,7 @@
   .clearfix();
 }
 .tab-content {
-  display: table; // prevent content from running below tabs
-  width: 100%;
+  overflow: auto; // prevent content from running below tabs
 }
 
 // Remove border on bottom, left, right
@@ -314,10 +313,6 @@
 // ------------
 
 // Common styles
-.tabs-left .tab-content,
-.tabs-right .tab-content {
-  width: auto;
-}
 .tabs-left .nav-tabs > li,
 .tabs-right .nav-tabs > li {
   float: none;
