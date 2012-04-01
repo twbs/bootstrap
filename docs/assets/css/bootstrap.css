@@ -458,6 +458,9 @@ dd {
   margin-left: 9px;
 }
 .dl-horizontal dt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   float: left;
   clear: left;
   width: 120px;

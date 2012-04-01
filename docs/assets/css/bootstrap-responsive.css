@@ -139,6 +139,15 @@
   .container-fluid {
     padding: 0;
   }
+  .dl-horizontal dt {
+    float: none;
+    clear: none;
+    width: auto;
+    text-align: left;
+  }
+  .dl-horizontal dd {
+    margin-left: 0;
+  }
   .container {
     width: auto;
   }
