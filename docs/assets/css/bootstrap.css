@@ -3626,6 +3626,9 @@ input[type="submit"].btn.btn-mini {
 .thumbnails:after {
   clear: both;
 }
+.row-fluid .thumbnails {
+  margin-left: 0;
+}
 .thumbnails > li {
   margin-bottom: 18px;
 }
