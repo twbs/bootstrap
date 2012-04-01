@@ -164,9 +164,6 @@
     width: auto;
     margin: 0;
   }
-  .thumbnails [class*="span"] {
-    width: auto;
-  }
   input[class*="span"],
   select[class*="span"],
   textarea[class*="span"],
@@ -596,9 +593,6 @@
   }
   .thumbnails {
     margin-left: -30px;
-  }
-  .thumbnails > li {
-    margin-left: 30px;
   }
 }
 @media (max-width: 979px) {

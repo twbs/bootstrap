@@ -3627,8 +3627,7 @@ input[type="submit"].btn.btn-mini {
   clear: both;
 }
 .thumbnails > li {
-  float: left;
-  margin: 0 0 18px 20px;
+  margin-bottom: 18px;
 }
 .thumbnail {
   display: block;
