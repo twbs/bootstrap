@@ -627,17 +627,17 @@
       </tr>
       <tr>
         <td><code>.size()</code></td>
-        <td><code>@height: 5px, @width: 5px</code></td>
+        <td><code>@height @width</code></td>
         <td>{{_i}}Quickly set the height and width on one line{{/i}}</td>
       </tr>
       <tr>
         <td><code>.square()</code></td>
-        <td><code>@size: 5px</code></td>
+        <td><code>@size</code></td>
         <td>{{_i}}Builds on <code>.size()</code> to set the width and height as same value{{/i}}</td>
       </tr>
       <tr>
         <td><code>.opacity()</code></td>
-        <td><code>@opacity: 100</code></td>
+        <td><code>@opacity</code></td>
         <td>{{_i}}Set, in whole numbers, the opacity percentage (e.g., "50" or "75"){{/i}}</td>
       </tr>
     </tbody>
@@ -745,12 +745,12 @@
     <tbody>
       <tr>
         <td><code>.border-radius()</code></td>
-        <td><code>@radius: 5px</code></td>
+        <td><code>@radius</code></td>
         <td>{{_i}}Round the corners of an element. Can be a single value or four space-separated values{{/i}}</td>
       </tr>
       <tr>
         <td><code>.box-shadow()</code></td>
-        <td><code>@shadow: 0 1px 3px rgba(0,0,0,.25)</code></td>
+        <td><code>@shadow</code></td>
         <td>{{_i}}Add a drop shadow to an element{{/i}}</td>
       </tr>
       <tr>
@@ -770,7 +770,7 @@
       </tr>
       <tr>
         <td><code>.translate()</code></td>
-        <td><code>@x: 0, @y: 0</code></td>
+        <td><code>@x, @y</code></td>
         <td>{{_i}}Move an element on the x and y planes{{/i}}</td>
       </tr>
       <tr>
@@ -805,7 +805,7 @@
       </tr>
       <tr>
         <td><code>.content-columns()</code></td>
-        <td><code>@columnCount, @columnGap: @gridColumnGutter</code></td>
+        <td><code>@columnCount, @columnGap: @gridGutterWidth</code></td>
         <td>{{_i}}Make the content of any element use CSS3 columns{{/i}}</td>
       </tr>
     </tbody>
