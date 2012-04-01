@@ -16,11 +16,16 @@
 
 // REPEAT VARIABLES & MIXINS
 // -------------------------
-// Required since we compile the responsive stuff separately
+// Required if compiling the responsive stuff separately
 
-@import "variables.less"; // Modify this for custom colors, font-sizes, etc
-@import "mixins.less";
-
+// Responsive styles
+.responsive-vars(@_) {
+  @import "variables.less"; // Modify this for custom colors, font-sizes, etc
+  @import "mixins.less";
+}
+.responsive-vars(true) {
+}
+.responsive-vars(@responsive);
 
 // RESPONSIVE CLASSES
 // ------------------
