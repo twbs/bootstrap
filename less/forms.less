@@ -291,6 +291,19 @@ textarea[readonly] {
   .formFieldState(@successText, @successText, @successBackground);
 }
 
+// Mark required controls
+.control-group.required > label::after {
+	content: '\000a0*';
+	vertical-align: top;
+	color: @infoText;
+}
+.control-group.required.error > label::after {
+	color: @errorText;
+}
+.control-group.required.warning > label::after {
+	color: @warningText;
+}
+
 // HTML5 invalid states
 // Shares styles with the .control-group.error above
 input:focus:required:invalid,
