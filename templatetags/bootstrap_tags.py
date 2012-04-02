@@ -1,7 +1,12 @@
+import re
+
 from django import template
 from django.conf import settings
 
 register = template.Library()
+
+success_regex = re.compile(r"success", flags=re.I)
+important_regex = re.compile(r"(failure)|(revoked)", flags=re.I)
 
 
 @register.inclusion_tag("bootstrap_field.html")
@@ -31,3 +36,14 @@ def bootstrap_form_wizard(form, submit_value):
 @register.filter
 def form_verb(obj):
     return "Update" if obj else "Add"
+
+
+@register.simple_tag
+def label(text):
+    label_class = ''
+    if success_regex.match(text):
+        label_class = "success"
+    elif important_regex.match(text):
+        label_class = "important"
+    text = '<span class="label %s">%s</span>' % (label_class, text)
+    return text
