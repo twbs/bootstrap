@@ -196,6 +196,14 @@
           border-radius: @radius;
 }
 
+ // Text shadows
+	.text-shadow (@shadow: 0 -1px 1px rgba(0,0,0,.5)) {
+ -webkit-text-shadow: @shadow;	  
+    -moz-text-shadow: @shadow;
+         text-shadow: @shadow;
+	}
+
+
 // Drop shadows
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
   -webkit-box-shadow: @shadow;
