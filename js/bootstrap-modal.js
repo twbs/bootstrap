@@ -127,10 +127,16 @@
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
         .insertBefore(this.$element)
-      this.$elementWrapper = $('<div class="modal-wrapper" />')
-        .prependTo(this.$backdrop)
+
+      if (this.options.dynamic) {
+        this.$elementWrapper = $('<div class="modal-wrapper" />')
+          .prependTo(this.$backdrop)
+          .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+        this.$element.prependTo(this.$elementWrapper)    
+      } else {
+        this.$element.prependTo(this.$backdrop)
         .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-      this.$element.prependTo(this.$elementWrapper)
+      }
 
       $('html').css({ 'overflow' : 'hidden'  })
 
@@ -163,7 +169,7 @@
   }
 
   function removeBackdrop() {
-    this.$element.remove().insertAfter(this.$backdrop)
+    this.$element.insertAfter(this.$backdrop)
     this.$backdrop.remove()
     this.$backdrop = null
     $('html').css({ 'overflow' : 'auto'  })
