@@ -139,6 +139,15 @@
   .container-fluid {
     padding: 0;
   }
+  .dl-horizontal dt {
+    float: none;
+    clear: none;
+    width: auto;
+    text-align: left;
+  }
+  .dl-horizontal dd {
+    margin-left: 0;
+  }
   .container {
     width: auto;
   }
@@ -148,15 +157,12 @@
   .row {
     margin-left: 0;
   }
-  .row > [class*="span"],
-  .row-fluid > [class*="span"] {
+  [class*="span"],
+  .row-fluid [class*="span"] {
     float: none;
     display: block;
     width: auto;
     margin: 0;
-  }
-  .thumbnails [class*="span"] {
-    width: auto;
   }
   input[class*="span"],
   select[class*="span"],
@@ -174,8 +180,11 @@
     -ms-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .input-prepend input,
+  .input-append input,
   .input-prepend input[class*="span"],
   .input-append input[class*="span"] {
+    display: inline-block;
     width: auto;
   }
 }
@@ -286,46 +295,57 @@
     clear: both;
   }
   .row-fluid [class*="span"] {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    /* Make inputs at least the height of their button counterpart */
+  
+    /* Makes inputs behave like true block-level elements */
+  
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
     float: left;
     margin-left: 2.762430939%;
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
   }
-  .row-fluid > .span12 {
+  .row-fluid .span12 {
     width: 99.999999993%;
   }
-  .row-fluid > .span11 {
+  .row-fluid .span11 {
     width: 91.436464082%;
   }
-  .row-fluid > .span10 {
+  .row-fluid .span10 {
     width: 82.87292817100001%;
   }
-  .row-fluid > .span9 {
+  .row-fluid .span9 {
     width: 74.30939226%;
   }
-  .row-fluid > .span8 {
+  .row-fluid .span8 {
     width: 65.74585634900001%;
   }
-  .row-fluid > .span7 {
+  .row-fluid .span7 {
     width: 57.182320438000005%;
   }
-  .row-fluid > .span6 {
+  .row-fluid .span6 {
     width: 48.618784527%;
   }
-  .row-fluid > .span5 {
+  .row-fluid .span5 {
     width: 40.055248616%;
   }
-  .row-fluid > .span4 {
+  .row-fluid .span4 {
     width: 31.491712705%;
   }
-  .row-fluid > .span3 {
+  .row-fluid .span3 {
     width: 22.928176794%;
   }
-  .row-fluid > .span2 {
+  .row-fluid .span2 {
     width: 14.364640883%;
   }
-  .row-fluid > .span1 {
+  .row-fluid .span1 {
     width: 5.801104972%;
   }
   input,
@@ -477,46 +497,57 @@
     clear: both;
   }
   .row-fluid [class*="span"] {
+    display: block;
+    width: 100%;
+    min-height: 28px;
+    /* Make inputs at least the height of their button counterpart */
+  
+    /* Makes inputs behave like true block-level elements */
+  
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
     float: left;
     margin-left: 2.564102564%;
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
   }
-  .row-fluid > .span12 {
+  .row-fluid .span12 {
     width: 100%;
   }
-  .row-fluid > .span11 {
+  .row-fluid .span11 {
     width: 91.45299145300001%;
   }
-  .row-fluid > .span10 {
+  .row-fluid .span10 {
     width: 82.905982906%;
   }
-  .row-fluid > .span9 {
+  .row-fluid .span9 {
     width: 74.358974359%;
   }
-  .row-fluid > .span8 {
+  .row-fluid .span8 {
     width: 65.81196581200001%;
   }
-  .row-fluid > .span7 {
+  .row-fluid .span7 {
     width: 57.264957265%;
   }
-  .row-fluid > .span6 {
+  .row-fluid .span6 {
     width: 48.717948718%;
   }
-  .row-fluid > .span5 {
+  .row-fluid .span5 {
     width: 40.170940171000005%;
   }
-  .row-fluid > .span4 {
+  .row-fluid .span4 {
     width: 31.623931624%;
   }
-  .row-fluid > .span3 {
+  .row-fluid .span3 {
     width: 23.076923077%;
   }
-  .row-fluid > .span2 {
+  .row-fluid .span2 {
     width: 14.529914530000001%;
   }
-  .row-fluid > .span1 {
+  .row-fluid .span1 {
     width: 5.982905983%;
   }
   input,
@@ -563,8 +594,8 @@
   .thumbnails {
     margin-left: -30px;
   }
-  .thumbnails > li {
-    margin-left: 30px;
+  .row-fluid .thumbnails {
+    margin-left: 0;
   }
 }
 @media (max-width: 979px) {
@@ -655,9 +686,9 @@
     margin: 9px 0;
     border-top: 1px solid #222222;
     border-bottom: 1px solid #222222;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
   }
   .navbar .nav.pull-right {
     float: none;

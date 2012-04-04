@@ -416,6 +416,20 @@ $('#myModal').on('hidden', function () {
   &lt;/li&gt;
   ...
 &lt;/ul&gt;</pre>
+          <p>{{_i}}To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-pills"&gt;
+  &lt;li class="dropdown"&gt;
+    &lt;a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="path/to/page.html"&gt;
+      {{_i}}Dropdown{{/i}}
+      &lt;b class="caret"&gt;&lt;/b&gt;
+    &lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().dropdown()</h4>
           <p>{{_i}}A programatic api for activating menus for a given navbar or tabbed navigation.{{/i}}</p>

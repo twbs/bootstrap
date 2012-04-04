@@ -213,9 +213,7 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: rgba(82,168,236,.8);
-  @shadow: inset 0 1px 1px rgba(0,0,0,.075),
-           0 0 8px rgba(82,168,236,.6);
-  .box-shadow(@shadow);
+  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
 }
@@ -244,7 +242,12 @@ select:focus {
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
-.uneditable-input[class*="span"] {
+.uneditable-input[class*="span"],
+// Redeclare since the fluid row class is more specific
+.row-fluid input[class*="span"],
+.row-fluid select[class*="span"],
+.row-fluid textarea[class*="span"],
+.row-fluid .uneditable-input[class*="span"] {
   float: none;
   margin-left: 0;
 }

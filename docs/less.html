@@ -704,17 +704,17 @@
       </tr>
       <tr>
         <td><code>.size()</code></td>
-        <td><code>@height: 5px, @width: 5px</code></td>
+        <td><code>@height @width</code></td>
         <td>Quickly set the height and width on one line</td>
       </tr>
       <tr>
         <td><code>.square()</code></td>
-        <td><code>@size: 5px</code></td>
+        <td><code>@size</code></td>
         <td>Builds on <code>.size()</code> to set the width and height as same value</td>
       </tr>
       <tr>
         <td><code>.opacity()</code></td>
-        <td><code>@opacity: 100</code></td>
+        <td><code>@opacity</code></td>
         <td>Set, in whole numbers, the opacity percentage (e.g., "50" or "75")</td>
       </tr>
     </tbody>
@@ -822,12 +822,12 @@
     <tbody>
       <tr>
         <td><code>.border-radius()</code></td>
-        <td><code>@radius: 5px</code></td>
+        <td><code>@radius</code></td>
         <td>Round the corners of an element. Can be a single value or four space-separated values</td>
       </tr>
       <tr>
         <td><code>.box-shadow()</code></td>
-        <td><code>@shadow: 0 1px 3px rgba(0,0,0,.25)</code></td>
+        <td><code>@shadow</code></td>
         <td>Add a drop shadow to an element</td>
       </tr>
       <tr>
@@ -847,7 +847,7 @@
       </tr>
       <tr>
         <td><code>.translate()</code></td>
-        <td><code>@x: 0, @y: 0</code></td>
+        <td><code>@x, @y</code></td>
         <td>Move an element on the x and y planes</td>
       </tr>
       <tr>
@@ -882,7 +882,7 @@
       </tr>
       <tr>
         <td><code>.content-columns()</code></td>
-        <td><code>@columnCount, @columnGap: @gridColumnGutter</code></td>
+        <td><code>@columnCount, @columnGap: @gridGutterWidth</code></td>
         <td>Make the content of any element use CSS3 columns</td>
       </tr>
     </tbody>
@@ -969,7 +969,7 @@
     <div class="span4">
       <h3>Command line</h3>
       <p>Install the LESS command line tool via Node and run the following command:</p>
-        <pre>$ lessc ./lib/bootstrap.less > bootstrap.css</pre>
+        <pre>$ lessc ./less/bootstrap.less > bootstrap.css</pre>
       <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
     </div><!-- /span4 -->
     <div class="span4">
