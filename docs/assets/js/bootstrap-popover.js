@@ -38,8 +38,8 @@
         , title = this.getTitle()
         , content = this.getContent()
 
-      $tip.find('.popover-title').html(title)
-      $tip.find('.popover-content > *').html(content)
+      $tip.find('.popover-title')[this.isHTML(title) ? 'html' : 'text'](title)
+      $tip.find('.popover-content > *')[this.isHTML(content) ? 'html' : 'text'](content)
 
       $tip.removeClass('fade top bottom left right in')
     }

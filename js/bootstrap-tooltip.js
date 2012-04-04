@@ -167,9 +167,8 @@
   , setContent: function () {
       var $tip = this.tip()
         , title = this.getTitle()
-        , isHTML = this.isHTML(title)
 
-      $tip.find('.tooltip-inner')[isHTML ? 'html' : 'text'](title)
+      $tip.find('.tooltip-inner')[this.isHTML(title) ? 'html' : 'text'](title)
       $tip.removeClass('fade in top bottom left right')
     }
 
