@@ -391,7 +391,7 @@ select:focus:required:invalid {
   }
   .add-on,
   .btn {
-    .border-radius(3px 0 0 3px);
+    .border-radius(0);
   }
   .active {
     background-color: lighten(@green, 30);
@@ -402,6 +402,10 @@ select:focus:required:invalid {
   .add-on,
   .btn {
     margin-right: -1px;
+  }
+  .add-on:first-child,
+  .btn:first-child {
+    .border-radius(3px 0 0 3px);
   }
 }
 .input-append {
@@ -417,6 +421,9 @@ select:focus:required:invalid {
   .add-on,
   .btn {
     margin-left: -1px;
+  }
+  .add-on:last-child,
+  .btn:last-child {
     .border-radius(0 3px 3px 0);
   }
 }
