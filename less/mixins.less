@@ -331,7 +331,7 @@
 // Gradients
 #gradient {
   // Helpers
-  .horizontal-bacground-image(@startColor: #555, @endColor: #333) {
+  .horizontal-background-image(@startColor: #555, @endColor: #333) {
     background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
     background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
     background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
@@ -350,13 +350,13 @@
   // The gradients
   .horizontal(@startColor: #555, @endColor: #333) when (iscolor(@startColor)) and (iscolor(@endColor)) {
     background-color: @endColor;
-    .horizontal-bacground-image(@startColor, @endColor);
+    .horizontal-background-image(@startColor, @endColor);
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down
   }
   .horizontal(@startColor: transparent, @endColor: #333) when (@startColor = transparent) {
     background-color: transparent;
-    .horizontal-bacground-image(@startColor, @endColor);
+    .horizontal-background-image(@startColor, @endColor);
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",#00000000,@endColor)); // IE9 and down
   }
