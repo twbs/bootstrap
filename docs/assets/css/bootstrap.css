@@ -1048,9 +1048,10 @@ select:focus:required:invalid:focus {
 .input-append .add-on,
 .input-prepend .btn,
 .input-append .btn {
-  -webkit-border-radius: 3px 0 0 3px;
-  -moz-border-radius: 3px 0 0 3px;
-  border-radius: 3px 0 0 3px;
+  margin-left: -1px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 .input-prepend .active,
 .input-append .active {
@@ -1060,6 +1061,12 @@ select:focus:required:invalid:focus {
 .input-prepend .add-on,
 .input-prepend .btn {
   margin-right: -1px;
+}
+.input-prepend .add-on:first-child,
+.input-prepend .btn:first-child {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
 }
 .input-append input,
 .input-append select,
@@ -1072,9 +1079,8 @@ select:focus:required:invalid:focus {
   border-left-color: #eee;
   border-right-color: #ccc;
 }
-.input-append .add-on,
-.input-append .btn {
-  margin-left: -1px;
+.input-append .add-on:last-child,
+.input-append .btn:last-child {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
