@@ -72,7 +72,7 @@ select,
   line-height: @baseLineHeight;
   color: @gray;
   border: 1px solid @inputBorder;
-  .border-radius(3px);
+  .border-radius(@inputBorderRadius);
 }
 .uneditable-textarea {
   width: auto;
@@ -372,7 +372,7 @@ select:focus:required:invalid {
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
     vertical-align: middle;
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     // Make input on top when focused so blue border and shadow always show
     &:focus {
       z-index: 2;
@@ -397,7 +397,7 @@ select:focus:required:invalid {
   }
   .add-on,
   .btn {
-    .border-radius(3px 0 0 3px);
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
   .active {
     background-color: lighten(@green, 30);
@@ -414,7 +414,7 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
-    .border-radius(3px 0 0 3px);
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
   .uneditable-input {
     border-left-color: #eee;
@@ -423,7 +423,7 @@ select:focus:required:invalid {
   .add-on,
   .btn {
     margin-left: -1px;
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
 // Remove all border-radius for inputs with both prepend and append
@@ -436,12 +436,12 @@ select:focus:required:invalid {
   .add-on:first-child,
   .btn:first-child {
     margin-right: -1px;
-    .border-radius(3px 0 0 3px);
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
   .add-on:last-child,
   .btn:last-child {
     margin-left: -1px;
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
 
