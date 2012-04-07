@@ -154,7 +154,8 @@
   .row-fluid {
     width: 100%;
   }
-  .row {
+  .row,
+  .thumbnails {
     margin-left: 0;
   }
   [class*="span"],
@@ -162,7 +163,7 @@
     float: none;
     display: block;
     width: auto;
-    margin: 0;
+    margin-left: 0;
   }
   input[class*="span"],
   select[class*="span"],

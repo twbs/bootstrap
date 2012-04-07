@@ -111,8 +111,9 @@
   .row-fluid {
     width: 100%;
   }
-  // Undo negative margin on rows
-  .row {
+  // Undo negative margin on rows and thumbnails
+  .row,
+  .thumbnails {
     margin-left: 0;
   }
   // Make all grid-sized elements block level again
@@ -121,7 +122,7 @@
     float: none;
     display: block;
     width: auto;
-    margin: 0;
+    margin-left: 0;
   }
 
   // FORM FIELDS
