@@ -165,6 +165,9 @@
     width: auto;
     margin-left: 0;
   }
+  .input-large,
+  .input-xlarge,
+  .input-xxlarge,
   input[class*="span"],
   select[class*="span"],
   textarea[class*="span"],
