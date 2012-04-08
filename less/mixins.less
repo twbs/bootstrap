@@ -313,7 +313,13 @@
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
 #translucent {
   .background(@color: @white, @alpha: 1) {
-    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+    @rgba: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+    @argb: argb(@rgba); //Get #AARRGGBB color code for IE fileter
+    @filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb},endColorstr=@{argb})";
+    background-color: @rgba;
+    *background:transparent;
+	   filter: @filter;
+	   border-radius: ~"0\9\0"; //Reset border-radius for IE9 only. Since the filter background in this version is not clipped.
   }
   .border(@color: @white, @alpha: 1) {
     border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
