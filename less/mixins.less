@@ -531,7 +531,7 @@
     .offsetX (0) {}
 
     .offset (@columns) {
-      margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+      margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
     }
 
     .span (@columns) {
@@ -560,30 +560,43 @@
   }
 
   .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
-
+    @totalGridRowWidth: 100% + @fluidGridGutterWidth;
+    @newGridColumnWidth: percentage(@fluidGridColumnWidth / @totalGridRowWidth);
+    @newGridGutterWidth: percentage(@fluidGridGutterWidth / @totalGridRowWidth);
+    
     .spanX (@index) when (@index > 0) {
       (~"> .span@{index}") { .span(@index); }
       .spanX(@index - 1);
     }
     .spanX (0) {}
+    
+    .offsetX (@index) when (@index > 0) {
+      (~".offset@{index}") { .offset(@index); }
+      .offsetX(@index - 1);
+    }
+    .offsetX (0) {}
 
+    .offset (@columns) {
+      margin-left: (@newGridColumnWidth * @columns) + (@newGridGutterWidth * (@columns + 1));
+    }
+    
     .span (@columns) {
-      width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+      width: (@newGridColumnWidth * @columns) + (@newGridGutterWidth * (@columns - 1));
     }
 
     .row-fluid {
-      width: 100%;
+      width: @totalGridRowWidth;
+      margin-left: @fluidGridGutterWidth * -1;
       .clearfix();
+      
       > [class*="span"] {
         float: left;
-        margin-left: @fluidGridGutterWidth;
-      }
-      > [class*="span"]:first-child {
-        margin-left: 0;
+        margin-left: @newGridGutterWidth;
       }
 
       // generate .spanX
       .spanX (@gridColumns);
+      .offsetX (@gridColumns);
     }
 
   }
