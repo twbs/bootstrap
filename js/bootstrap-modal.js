@@ -41,14 +41,17 @@
 
     , show: function () {
         var that = this
-
         if (this.isShown) return
 
         $('body').addClass('modal-open')
 
         this.isShown = true
         this.$element.trigger('show')
-
+        if(window.matchMedia("(max-width: 480px)").matches){
+            var viewTop = $('body').scrollTop() + 20
+            this.$element.css('top', viewTop)
+        }
+      
         escape.call(this)
         backdrop.call(this, function () {
           var transition = $.support.transition && that.$element.hasClass('fade')
@@ -86,6 +89,7 @@
         this.$element
           .trigger('hide')
           .removeClass('in')
+          .css('top','')
 
         $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :
