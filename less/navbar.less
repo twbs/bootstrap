@@ -241,8 +241,9 @@
 }
 
 // Active nav items
-.navbar .nav .active > a,
-.navbar .nav .active > a:hover {
+// angle brackets before .active gives extra specificity and allows dropdown active links to have different styling than active navbar links
+.navbar .nav > .active > a, 
+.navbar .nav > .active > a:hover {
   color: @navbarLinkColorActive;
   text-decoration: none;
   background-color: @navbarLinkBackgroundActive;

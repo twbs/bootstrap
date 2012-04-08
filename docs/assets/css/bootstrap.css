@@ -1895,11 +1895,15 @@ table .span24 {
   white-space: nowrap;
 }
 .dropdown-menu li > a:hover,
-.dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
+}
+.dropdown-menu .active > a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #0070a8;
 }
 .open {
   *z-index: 1000;
@@ -3122,8 +3126,8 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
   text-decoration: none;
 }
-.navbar .nav .active > a,
-.navbar .nav .active > a:hover {
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover {
   color: #ffffff;
   text-decoration: none;
   background-color: #222222;
