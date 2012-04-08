@@ -39,6 +39,8 @@ bootstrap:
 	echo "/**\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
 	cat bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js > bootstrap/js/bootstrap.min.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
+clean:
+	rm -rf bootstrap/
 
 #
 # MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
