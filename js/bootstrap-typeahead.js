@@ -26,6 +26,8 @@
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
+    this.labelField = this.options.labelField || false
+    this.valueField = this.options.valueField || false
     this.highlighter = this.options.highlighter || this.highlighter
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
@@ -38,8 +40,11 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
-      this.$element.val(val)
+      var $active = this.$menu.find('.active')
+        , val = $active.attr('data-value')
+        , label = $active.attr('data-label')
+      this.$element.val(!this.labelField ? val : label)
+      this.$element.attr('data-value', val)
       this.$element.change();
       return this.hide()
     }
@@ -67,29 +72,55 @@
 
   , lookup: function (event) {
       var that = this
-        , items
         , q
+        , fn
 
       this.query = this.$element.val()
 
       if (!this.query) {
         return this.shown ? this.hide() : this
       }
-
-      items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
-      })
-
-      items = this.sorter(items)
-
-      if (!items.length) {
-        return this.shown ? this.hide() : this
+      
+      if (!$.isArray(this.source)){
+        fn = 'lookupAsync'
+      } else {
+        fn = 'lookupLocal'
       }
 
-      return this.render(items.slice(0, this.options.items)).show()
+      this[fn](function (items) {
+        if (!items.length) {
+          return that.shown ? that.hide() : that
+        }
+        return that.render(items.slice(0, that.options.items)).show()
+      })
+      
+      return this
+    }
+  
+  , lookupAsync: function (callback) {
+      var that = this
+      this.source(this.query, that.options.items, function (items) {
+        callback(items)
+      })
+      return this
+    }
+    
+  , lookupLocal: function (callback) {
+      var that = this
+        , items
+      
+      items = $.grep(this.source, function (item)  {
+        if (that.matcher(item)) return item
+      })
+      
+      callback(this.sorter(items))
+      return this
     }
 
   , matcher: function (item) {
+      if (this.labelField !== false) {
+        item = item[this.labelField]
+      }
       return ~item.toLowerCase().indexOf(this.query.toLowerCase())
     }
 
@@ -118,8 +149,9 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
-        i.find('a').html(that.highlighter(item))
+        i = $(that.options.item).attr('data-value', !that.valueField ? item : item[that.valueField])
+              .attr('data-label', !that.labelField ? item : item[that.labelField])
+        i.find('a').html(that.highlighter(!that.labelField ? item : item[that.labelField]))
         return i[0]
       })
 
