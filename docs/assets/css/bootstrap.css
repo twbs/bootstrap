@@ -2926,7 +2926,7 @@ input[type="submit"].btn.btn-mini {
   margin-top: 5px;
 }
 .navbar .btn-group .btn {
-  margin-top: 0;
+  margin: 0;
 }
 .navbar-form {
   margin-bottom: 0;
