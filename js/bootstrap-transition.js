@@ -31,7 +31,7 @@
         , thisStyle = thisBody.style
         , transition = 'transition WebkitTransition MozTransition OTransition MsTransition'.split(' ')
         , transitionEnd = 'TransitionEnd webkitTransitionEnd transitionend oTransitionend MSTransitionEnd'.split(' ')
-        , i = transitions.length
+        , i = transition.length
         , support = false
       while (i--) {
         if (transition[i] in thisStyle) {
