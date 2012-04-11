@@ -29,22 +29,21 @@
     $.support.transition = (function () {
       var thisBody = document.body || document.documentElement
         , thisStyle = thisBody.style
-        , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined
-
-      return support && {
-        end: (function () {
-          var transitionEnd = "TransitionEnd"
-          if ( $.browser.webkit ) {
-          	transitionEnd = "webkitTransitionEnd"
-          } else if ( $.browser.mozilla ) {
-          	transitionEnd = "transitionend"
-          } else if ( $.browser.opera ) {
-          	transitionEnd = "oTransitionEnd"
-          }
-          return transitionEnd
-        }())
+        , transition = 'transition WebkitTransition MozTransition OTransition MsTransition'.split(' ')
+        , transitionEnd = 'TransitionEnd webkitTransitionEnd transitionend oTransitionend MSTransitionEnd'.split(' ')
+        , i = transition.length
+        , support = false
+      while (i--) {
+        if (transition[i] in thisStyle) {
+          support = transition[i]
+          transitionEnd = transitionEnd[i]
+          break
+        }
       }
-    })()
+
+      return support && { end: transitionEnd }
+      
+    }())
 
   })
 
