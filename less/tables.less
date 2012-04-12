@@ -86,18 +86,30 @@ table {
   tbody:first-child tr:first-child td:first-child {
     .border-radius(4px 0 0 0);
   }
+  // For last th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:last-child,
   tbody:first-child tr:first-child td:last-child {
     .border-radius(0 4px 0 0);
   }
-  // For first th or td in the first row in the first thead or tbody
+  // For only th or td in the first row in the first thead or tbody
+  thead:first-child tr:first-child th:only-child,
+  tbody:first-child tr:first-child td:only-child {
+    .border-radius(4px 4px 0 0);
+  }
+  // For first th or td in the last row in the last thead or tbody
   thead:last-child tr:last-child th:first-child,
   tbody:last-child tr:last-child td:first-child {
     .border-radius(0 0 0 4px);
   }
+  // For last th or td in the last row in the last thead or tbody
   thead:last-child tr:last-child th:last-child,
   tbody:last-child tr:last-child td:last-child {
     .border-radius(0 0 4px 0);
+  }
+  // For only th or td in the last row in the last thead or tbody
+  thead:last-child tr:last-child th:only-child,
+  tbody:last-child tr:last-child td:only-child {
+    .border-radius(0 0 4px 4px);
   }
 }
 
