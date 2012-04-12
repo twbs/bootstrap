@@ -70,14 +70,12 @@
   , enter: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
+      clearTimeout(self.hideTimeout);
       if (!self.options.delay || !self.options.delay.show) {
         self.show()
       } else {
-        self.hoverState = 'in'
-        setTimeout(function() {
-          if (self.hoverState == 'in') {
-            self.show()
-          }
+        self.showTimeout = setTimeout(function() {
+          self.show()
         }, self.options.delay.show)
       }
     }
@@ -85,14 +83,12 @@
   , leave: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
+      clearTimeout(self.showTimeout);
       if (!self.options.delay || !self.options.delay.hide) {
         self.hide()
       } else {
-        self.hoverState = 'out'
-        setTimeout(function() {
-          if (self.hoverState == 'out') {
-            self.hide()
-          }
+        self.hideTimeout = setTimeout(function() {
+          self.hide()
         }, self.options.delay.hide)
       }
     }
