@@ -66,7 +66,7 @@
 
     // tooltip demo
     $('.tooltip-demo.well').tooltip({
-      selector: "a[rel=tooltip]"
+      selector: "a[data-toggle=tooltip]"
     })
 
     $('.tooltip-test').tooltip()
