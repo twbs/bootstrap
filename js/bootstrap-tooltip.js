@@ -70,11 +70,11 @@
   , enter: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
-      clearTimeout(self.hideTimeout);
+      clearTimeout(self.timeout)
       if (!self.options.delay || !self.options.delay.show) {
         self.show()
       } else {
-        self.showTimeout = setTimeout(function() {
+        self.timeout = setTimeout(function() {
           self.show()
         }, self.options.delay.show)
       }
@@ -83,11 +83,11 @@
   , leave: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
-      clearTimeout(self.showTimeout);
+      clearTimeout(self.timeout)
       if (!self.options.delay || !self.options.delay.hide) {
         self.hide()
       } else {
-        self.hideTimeout = setTimeout(function() {
+        self.timeout = setTimeout(function() {
           self.hide()
         }, self.options.delay.hide)
       }
