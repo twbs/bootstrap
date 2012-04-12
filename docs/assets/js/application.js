@@ -73,7 +73,7 @@
     $('.popover-test').popover()
 
     // popover demo
-    $("a[rel=popover]")
+    $("a[data-toggle=popover]")
       .popover()
       .click(function(e) {
         e.preventDefault()
