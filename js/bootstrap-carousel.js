@@ -80,6 +80,9 @@
     }
 
   , slide: function (type, next) {
+      if(!$.support.transition && this.$element.hasClass('slide')) {
+        this.$element.find('.item').stop(true, true); //Finish animation and jump to end.
+      }
       var $active = this.$element.find('.active')
         , $next = next || $active[type]()
         , isCycling = this.interval
@@ -108,6 +111,17 @@
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
           setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+      }else if(!$.support.transition && this.$element.hasClass('slide')) {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
+        $active.animate({left: (direction == 'right' ? '100%' : '-100%')}, 600, function(){
+            $active.removeClass('active')
+            that.sliding = false
+            setTimeout(function () { that.$element.trigger('slid') }, 0)
+        })
+        $next.addClass(type).css({left: (direction == 'right' ? '-100%' : '100%')}).animate({left: '0'}, 600,  function(){
+            $next.removeClass(type).addClass('active')
         })
       } else {
         this.$element.trigger(e)
