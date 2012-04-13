@@ -67,13 +67,17 @@ table {
 
 .table-bordered {
   border: 1px solid @tableBorder;
-  border-left: 0;
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapsed; // IE7 can't round corners anyway
   .border-radius(4px);
   th,
   td {
     border-left: 1px solid @tableBorder;
+  }
+  // Prevent sharp corners
+  th:first-child,
+  td:first-child {
+    border-left: 0;
   }
   // Prevent a double border
   thead:first-child tr:first-child th,
