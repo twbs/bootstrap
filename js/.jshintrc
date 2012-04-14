@@ -1,5 +1,5 @@
 {
-	"browser"  : true,
+    "browser"  : true,
     "expr"     : true,
     "laxbreak" : true,
     "boss"     : true,
