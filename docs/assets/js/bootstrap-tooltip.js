@@ -45,9 +45,11 @@
 
       if (this.options.trigger != 'manual') {
         eventIn  = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
-        eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
         this.$element.on(eventIn, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut, this.options.selector, $.proxy(this.leave, this))
+        if (this.options.dismiss != 'click') {
+          eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
+          this.$element.on(eventOut, this.options.selector, $.proxy(this.leave, this))
+        }
       }
 
       this.options.selector ?
@@ -70,6 +72,15 @@
 
   , enter: function ( e ) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+
+      if (self.options.dismiss === 'click') {
+        $(document).on('click.tooltip', function(ev) {
+          if ($(ev.target).closest(self.$tip).length === 0) {
+            self.$tip.remove();
+            $(document).off('click.tooltip');
+          }
+        })
+      }
 
       if (!self.options.delay || !self.options.delay.show) {
         self.show()
