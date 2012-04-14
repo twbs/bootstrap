@@ -90,4 +90,10 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
+
+      test("should get extra class from attribute", function () {
+        var popover = $('<a href="#" rel="popover" title="Another popover" data-content="Popover content" data-className="some-class"></a>').popover('show')
+        ok($('.popover').hasClass('some-class'), 'extra class is present')
+        popover.popover('hide')
+      })
 })
