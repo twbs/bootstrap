@@ -105,6 +105,7 @@
         , actualHeight
         , placement
         , tp
+        , className
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
@@ -149,6 +150,11 @@
           .css(tp)
           .addClass(placement)
           .addClass('in')
+
+        className = this.options.classname
+        if (className) {
+          $tip.addClass(className)
+        }
       }
     }
 
@@ -265,6 +271,7 @@
   , trigger: 'hover'
   , title: ''
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , classname: false
   }
 
 }( window.jQuery );

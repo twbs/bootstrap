@@ -700,6 +700,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
                </td>
              </tr>
+             <tr>
+               <td>{{_i}}classname{{/i}}</td>
+               <td>{{_i}}string{{/i}}</td>
+               <td>false</td>
+               <td>
+                <p>{{_i}}Extra class(es) to add to tooltip to allow for custom styling.{{/i}}</p>
+               </td>
+             </tr>
             </tbody>
           </table>
           <div class="alert alert-info">
@@ -809,6 +817,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
                </td>
              </tr>
+             <tr>
+               <td>{{_i}}classname{{/i}}</td>
+               <td>{{_i}}string{{/i}}</td>
+               <td>false</td>
+               <td>
+                <p>{{_i}}Extra class(es) to add to tooltip to allow for custom styling.{{/i}}</p>
+               </td>
+             </tr>
             </tbody>
           </table>
           <div class="alert alert-info">
@@ -819,6 +835,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <p>
           {{_i}}For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a the selector option.{{/i}}
           </p>
+<pre class="prettyprint linenums">
+&lt;a href="#" rel="popover" title="{{_i}}first popover{{/i}}"&gt;{{_i}}hover over me{{/i}}&lt;/a&gt;
+</pre>
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().popover({{_i}}options{{/i}})</h4>
           <p>{{_i}}Initializes popovers for an element collection.{{/i}}</p>

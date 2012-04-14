@@ -59,4 +59,9 @@ $(function () {
         ok(!$(".tooltip").length, 'tooltip removed')
       })
 
+      test("should get extra class from attribute", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip" data-className="some-class"></a>').tooltip('show')
+        ok($('.tooltip').hasClass('some-class'), 'extra class is present')
+        tooltip.tooltip('hide')
+      })
 })
