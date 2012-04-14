@@ -18,58 +18,53 @@
  * ============================================================ */
 
 
-!function ( $ ) {
+!function ($) {
 
-  "use strict"
+  "use strict"; // jshint ;_;
+
 
  /* BUTTON PUBLIC CLASS DEFINITION
   * ============================== */
 
-  var Button = function ( element, options ) {
+  var Button = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.button.defaults, options)
   }
 
-  Button.prototype = {
+  Button.prototype.setState = function (state) {
+    var d = 'disabled'
+      , $el = this.$element
+      , data = $el.data()
+      , val = $el.is('input') ? 'val' : 'html'
 
-      constructor: Button
+    state = state + 'Text'
+    data.resetText || $el.data('resetText', $el[val]())
 
-    , setState: function ( state ) {
-        var d = 'disabled'
-          , $el = this.$element
-          , data = $el.data()
-          , val = $el.is('input') ? 'val' : 'html'
+    $el[val](data[state] || this.options[state])
 
-        state = state + 'Text'
-        data.resetText || $el.data('resetText', $el[val]())
+    // push to event loop to allow forms to submit
+    setTimeout(function () {
+      state == 'loadingText' ?
+        $el.addClass(d).attr(d, d) :
+        $el.removeClass(d).removeAttr(d)
+    }, 0)
+  }
 
-        $el[val](data[state] || this.options[state])
+  Button.prototype.toggle = function () {
+    var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
 
-        // push to event loop to allow forms to submit
-        setTimeout(function () {
-          state == 'loadingText' ?
-            $el.addClass(d).attr(d, d) :
-            $el.removeClass(d).removeAttr(d)
-        }, 0)
-      }
+    $parent && $parent
+      .find('.active')
+      .removeClass('active')
 
-    , toggle: function () {
-        var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
-
-        $parent && $parent
-          .find('.active')
-          .removeClass('active')
-
-        this.$element.toggleClass('active')
-      }
-
+    this.$element.toggleClass('active')
   }
 
 
  /* BUTTON PLUGIN DEFINITION
   * ======================== */
 
-  $.fn.button = function ( option ) {
+  $.fn.button = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('button')
@@ -98,4 +93,4 @@
     })
   })
 
-}( window.jQuery );
+}(window.jQuery);

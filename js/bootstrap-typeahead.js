@@ -18,11 +18,15 @@
  * ============================================================ */
 
 
-!function( $ ){
+!function($){
 
-  "use strict"
+  "use strict"; // jshint ;_;
 
-  var Typeahead = function ( element, options ) {
+
+ /* TYPEAHEAD PUBLIC CLASS DEFINITION
+  * ================================= */
+
+  var Typeahead = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.matcher = this.options.matcher || this.matcher
@@ -111,7 +115,7 @@
     }
 
   , highlighter: function (item) {
-      var query = this.query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
+      var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
       return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
@@ -241,7 +245,7 @@
   /* TYPEAHEAD PLUGIN DEFINITION
    * =========================== */
 
-  $.fn.typeahead = function ( option ) {
+  $.fn.typeahead = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('typeahead')
@@ -273,4 +277,4 @@
     })
   })
 
-}( window.jQuery );
+}(window.jQuery);

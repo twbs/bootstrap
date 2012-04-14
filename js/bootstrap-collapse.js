@@ -18,16 +18,20 @@
  * ============================================================ */
 
 
-!function ( $ ) {
+!function ($) {
 
-  "use strict"
+  "use strict"; // jshint ;_;
 
-  var Collapse = function ( element, options ) {
-  	this.$element = $(element)
+
+ /* COLLAPSE PUBLIC CLASS DEFINITION
+  * ================================ */
+
+  var Collapse = function (element, options) {
+    this.$element = $(element)
     this.options = $.extend({}, $.fn.collapse.defaults, options)
 
-    if (this.options["parent"]) {
-      this.$parent = $(this.options["parent"])
+    if (this.options.parent) {
+      this.$parent = $(this.options.parent)
     }
 
     this.options.toggle && this.toggle()
@@ -53,7 +57,6 @@
       dimension = this.dimension()
       scroll = $.camelCase(['scroll', dimension].join('-'))
       actives = this.$parent && this.$parent.find('> .accordion-group > .in')
-      hasData
 
       if (actives && actives.length) {
         hasData = actives.data('collapse')
@@ -75,7 +78,7 @@
       this.$element[dimension](0)
     }
 
-  , reset: function ( size ) {
+  , reset: function (size) {
       var dimension = this.dimension()
 
       this.$element
@@ -83,12 +86,12 @@
         [dimension](size || 'auto')
         [0].offsetWidth
 
-      this.$element[size != null ? 'addClass' : 'removeClass']('collapse')
+      this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
 
       return this
     }
 
-  , transition: function ( method, startEvent, completeEvent ) {
+  , transition: function (method, startEvent, completeEvent) {
       var that = this
         , complete = function () {
             if (startEvent == 'show') that.reset()
@@ -107,18 +110,19 @@
       $.support.transition && this.$element.hasClass('collapse') ?
         this.$element.one($.support.transition.end, complete) :
         complete()
-  	}
+    }
 
   , toggle: function () {
       this[this.$element.hasClass('in') ? 'hide' : 'show']()
-  	}
+    }
 
   }
 
-  /* COLLAPSIBLE PLUGIN DEFINITION
+
+ /* COLLAPSIBLE PLUGIN DEFINITION
   * ============================== */
 
-  $.fn.collapse = function ( option ) {
+  $.fn.collapse = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('collapse')
@@ -149,4 +153,4 @@
     })
   })
 
-}( window.jQuery );
+}(window.jQuery);
