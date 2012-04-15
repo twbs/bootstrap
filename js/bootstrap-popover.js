@@ -38,14 +38,19 @@
         , title = this.getTitle()
         , content = this.getContent()
 
-      $tip.find('.popover-title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
-      $tip.find('.popover-content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
+      if (this.options.target) {
+        $tip.find('.popover-content').html(content);
+        $tip.find('.popover-title').remove();
+      } else {
+        $tip.find('.popover-title')[ $.type(title) == 'object' ? 'append' : 'html' ](title)
+        $tip.find('.popover-content > *')[ $.type(content) == 'object' ? 'append' : 'html' ](content)
+      }
 
       $tip.removeClass('fade top bottom left right in')
     }
 
   , hasContent: function () {
-      return this.getTitle() || this.getContent()
+      return this.getTitle() || this.getContent() || this.options.target
     }
 
   , getContent: function () {
@@ -54,6 +59,7 @@
         , o = this.options
 
       content = $e.attr('data-content')
+        || (o.target ? $(o.target).html() : null)
         || (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
 
       content = content.toString().replace(/(^\s*|\s*$)/, "")
