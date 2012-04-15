@@ -1,9 +1,10 @@
 {
-    "browser"  : true,
-    "expr"     : true,
-    "laxbreak" : true,
-    "boss"     : true,
-    "asi"      : true,
+    "validthis": true,
     "laxcomma" : true,
-    "validthis": true
+    "laxbreak" : true,
+    "browser"  : true,
+    "debug"    : true,
+    "boss"     : true,
+    "expr"     : true,
+    "asi"      : true
 }
