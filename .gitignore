@@ -32,3 +32,6 @@ nbproject
 .svn
 .CVS
 .idea
+
+# build output
+bootstrap

@@ -2,8 +2,12 @@ BOOTSTRAP = ./docs/assets/css/bootstrap.css
 BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
-LESS_COMPRESSOR ?= `which lessc`
-WATCHR ?= `which watchr`
+LESS_FILES = ./less/*.less
+JS_FILES = ./js/*.js
+LESS_COMPRESSOR ?= $(which lessc)
+WATCHR ?= $(which watchr)
+
+all: bootstrap
 
 #
 # BUILD DOCS
@@ -27,7 +31,7 @@ docs: bootstrap
 # lessc & uglifyjs are required
 #
 
-bootstrap:
+bootstrap: ${LESS_FILES} ${JS_FILES}
 	mkdir -p bootstrap/img
 	mkdir -p bootstrap/css
 	mkdir -p bootstrap/js
@@ -41,6 +45,9 @@ bootstrap:
 	echo "/**\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
 	cat bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js > bootstrap/js/bootstrap.min.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
+
+clean:
+	rm -rf bootstrap
 
 #
 # MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
@@ -60,4 +67,4 @@ watch:
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 
-.PHONY: docs watch gh-pages
+.PHONY: docs watch gh-pages clean
