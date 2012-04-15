@@ -729,6 +729,7 @@ input[type="hidden"] {
 }
 .radio,
 .checkbox {
+  overflow: auto;
   padding-left: 18px;
 }
 .radio input[type="radio"],
