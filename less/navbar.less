@@ -30,27 +30,6 @@
   width: auto;
 }
 
-// Navbar button for toggling navbar items in responsive layouts
-.btn-navbar {
-  display: none;
-  float: right;
-  padding: 7px 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
-  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
-}
-.btn-navbar .icon-bar {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background-color: #f5f5f5;
-  .border-radius(1px);
-  .box-shadow(0 1px 0 rgba(0,0,0,.25));
-}
-.btn-navbar .icon-bar + .icon-bar {
-  margin-top: 3px;
-}
 // Override the default collapsed state
 .nav-collapse.collapse {
   height: auto;
@@ -95,7 +74,7 @@
     .navbarVerticalAlign(30px); // Vertically center in navbar
   }
   .btn-group .btn {
-    margin-top: 0; // then undo the margin here so we don't accidentally double it
+    margin: 0; // then undo the margin here so we don't accidentally double it
   }
 }
 
@@ -233,6 +212,21 @@
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 }
+// Buttons
+.navbar .btn {
+  display: inline-block;
+  padding: 4px 10px 4px;
+  // Vertically center the button given @navbarHeight
+  @elementHeight: 28px;
+  margin: ((@navbarHeight - @elementHeight) / 2 - 1) 5px ((@navbarHeight - @elementHeight) / 2);
+  line-height: @baseLineHeight;
+}
+.navbar .btn-group {
+  margin: 0;
+  // Vertically center the button given @navbarHeight
+  @elementHeight: 28px;
+  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 5px ((@navbarHeight - @elementHeight) / 2);
+}
 // Hover
 .navbar .nav > li > a:hover {
   background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
@@ -264,6 +258,28 @@
   margin-right: 0;
 }
 
+// Navbar button for toggling navbar items in responsive layouts
+// These definitions need to come after '.navbar .btn'
+.navbar .btn-navbar {
+  display: none;
+  float: right;
+  padding: 7px 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
+  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
+}
+.navbar .btn-navbar .icon-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: #f5f5f5;
+  .border-radius(1px);
+  .box-shadow(0 1px 0 rgba(0,0,0,.25));
+}
+.btn-navbar .icon-bar + .icon-bar {
+  margin-top: 3px;
+}
 
 
 // Dropdown menus
@@ -310,31 +326,31 @@
   }
 }
 // Dropdown toggle caret
-.navbar .nav .dropdown-toggle .caret,
-.navbar .nav .open .caret {
+.navbar .nav li.dropdown .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open .caret {
   border-top-color: @white;
   border-bottom-color: @white;
 }
-.navbar .nav .active .caret {
+.navbar .nav li.dropdown.active .caret {
   .opacity(100);
 }
 
 // Remove background color from open dropdown
-.navbar .nav .open > .dropdown-toggle,
-.navbar .nav .active > .dropdown-toggle,
-.navbar .nav .open.active > .dropdown-toggle {
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: transparent;
 }
 
 // Dropdown link on hover
-.navbar .nav .active > .dropdown-toggle:hover {
+.navbar .nav li.dropdown.active > .dropdown-toggle:hover {
   color: @white;
 }
 
 // Right aligned menus need alt position
 // TODO: rejigger this at some point to simplify the selectors
-.navbar .nav.pull-right .dropdown-menu,
-.navbar .nav .dropdown-menu.pull-right {
+.navbar .pull-right .dropdown-menu,
+.navbar .dropdown-menu.pull-right {
   left: auto;
   right: 0;
   &:before {
