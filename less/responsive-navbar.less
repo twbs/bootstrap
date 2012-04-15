@@ -26,45 +26,59 @@
     padding-right: 10px;
     margin: 0 0 0 -5px;
   }
+
+  // COLLAPSIBLE NAVBAR
+  // ------------------
   // Nav collapse clears brand
-  .navbar .nav-collapse {
-    clear: left;
+  .nav-collapse {
+    clear: both;
   }
   // Block-level the nav
-  .navbar .nav {
+  .nav-collapse .nav {
     float: none;
     margin: 0 0 (@baseLineHeight / 2);
   }
-  .navbar .nav > li {
+  .nav-collapse .nav > li {
     float: none;
   }
-  .navbar .nav > li > a {
+  .nav-collapse .nav > li > a {
     margin-bottom: 2px;
   }
-  .navbar .nav > .divider-vertical {
+  .nav-collapse .nav > .divider-vertical {
     display: none;
   }
-  .navbar .nav .nav-header {
+  .nav-collapse .nav .nav-header {
     color: @navbarText;
     text-shadow: none;
   }
   // Nav and dropdown links in navbar
-  .navbar .nav > li > a,
-  .navbar .dropdown-menu a {
+  .nav-collapse .nav > li > a,
+  .nav-collapse .dropdown-menu a {
     padding: 6px 15px;
     font-weight: bold;
     color: @navbarLinkColor;
     .border-radius(3px);
   }
-  .navbar .dropdown-menu li + li a {
+  // Buttons
+  .nav-collapse .btn {
+    padding: 4px 10px 4px;
+    font-weight: normal;
+    .border-radius(4px);
+  }
+  .nav-collapse .dropdown-menu li + li a {
     margin-bottom: 2px;
   }
-  .navbar .nav > li > a:hover,
-  .navbar .dropdown-menu a:hover {
+  .nav-collapse .nav > li > a:hover,
+  .nav-collapse .dropdown-menu a:hover {
     background-color: @navbarBackground;
   }
+  // Buttons in the navbar
+  .nav-collapse.in .btn-group {
+    margin-top: 5px;
+    padding: 0;
+  }
   // Dropdowns in the navbar
-  .navbar .dropdown-menu {
+  .nav-collapse .dropdown-menu {
     position: static;
     top: auto;
     left: auto;
@@ -78,16 +92,16 @@
     .border-radius(0);
     .box-shadow(none);
   }
-  .navbar .dropdown-menu:before,
-  .navbar .dropdown-menu:after {
+  .nav-collapse .dropdown-menu:before,
+  .nav-collapse .dropdown-menu:after {
     display: none;
   }
-  .navbar .dropdown-menu .divider {
+  .nav-collapse .dropdown-menu .divider {
     display: none;
   }
   // Forms in navbar
-  .navbar-form,
-  .navbar-search {
+  .nav-collapse .navbar-form,
+  .nav-collapse .navbar-search {
     float: none;
     padding: (@baseLineHeight / 2) 15px;
     margin: (@baseLineHeight / 2) 0;
@@ -96,24 +110,26 @@
     .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)");
   }
   // Pull right (secondary) nav content
-  .navbar .nav.pull-right {
+  .navbar .nav-collapse .nav.pull-right {
     float: none;
     margin-left: 0;
   }
-  // Static navbar
-  .navbar-static .navbar-inner {
-    padding-left:  10px;
-    padding-right: 10px;
+  // Hide everything in the navbar save .brand and toggle button */
+  .nav-collapse,
+  .nav-collapse.collapse {
+    overflow: hidden;
+    height: 0;
   }
   // Navbar button
-  .btn-navbar {
+  .navbar .btn-navbar {
     display: block;
   }
 
-  // Hide everything in the navbar save .brand and toggle button */
-  .nav-collapse, .nav-collapse.collapse {
-    overflow: hidden;
-    height: 0;
+  // STATIC NAVBAR
+  // -------------
+  .navbar-static .navbar-inner {
+    padding-left:  10px;
+    padding-right: 10px;
   }
 }
 
