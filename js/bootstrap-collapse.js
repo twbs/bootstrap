@@ -60,6 +60,7 @@
 
       if (actives && actives.length) {
         hasData = actives.data('collapse')
+        if (hasData && hasData.transitioning) return
         actives.collapse('hide')
         hasData || actives.data('collapse', null)
       }
