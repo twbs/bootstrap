@@ -1205,8 +1205,6 @@ legend + .control-group {
 }
 .form-horizontal .controls {
   margin-left: 160px;
-  /* Super jank IE7 fix to ensure the inputs in .input-append and input-prepend don't inherit the margin of the parent, in this case .controls */
-
   *display: inline-block;
   *margin-left: 0;
   *padding-left: 20px;
