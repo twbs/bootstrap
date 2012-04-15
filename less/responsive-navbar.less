@@ -26,56 +26,59 @@
     padding-right: 10px;
     margin: 0 0 0 -5px;
   }
+
+  // COLLAPSIBLE NAVBAR
+  // ------------------
   // Nav collapse clears brand
-  .navbar .nav-collapse {
+  .nav-collapse {
     clear: both;
   }
   // Block-level the nav
-  .navbar .nav-collapse .nav {
+  .nav-collapse .nav {
     float: none;
     margin: 0 0 (@baseLineHeight / 2);
   }
-  .navbar .nav-collapse .nav > li {
+  .nav-collapse .nav > li {
     float: none;
   }
-  .navbar .nav-collapse .nav > li > a {
+  .nav-collapse .nav > li > a {
     margin-bottom: 2px;
   }
-  .navbar .nav-collapse .nav > .divider-vertical {
+  .nav-collapse .nav > .divider-vertical {
     display: none;
   }
-  .navbar .nav-collapse .nav .nav-header {
+  .nav-collapse .nav .nav-header {
     color: @navbarText;
     text-shadow: none;
   }
   // Nav and dropdown links in navbar
-  .navbar .nav-collapse .nav > li > a,
-  .navbar .nav-collapse .dropdown-menu a {
+  .nav-collapse .nav > li > a,
+  .nav-collapse .dropdown-menu a {
     padding: 6px 15px;
     font-weight: bold;
     color: @navbarLinkColor;
     .border-radius(3px);
   }
   // Buttons
-  .navbar .nav-collapse .btn {
+  .nav-collapse .btn {
     padding: 4px 10px 4px;
     font-weight: normal;
     .border-radius(4px);
   }
-  .navbar .nav-collapse .dropdown-menu li + li a {
+  .nav-collapse .dropdown-menu li + li a {
     margin-bottom: 2px;
   }
-  .navbar .nav-collapse .nav > li > a:hover,
-  .navbar .nav-collapse .dropdown-menu a:hover {
+  .nav-collapse .nav > li > a:hover,
+  .nav-collapse .dropdown-menu a:hover {
     background-color: @navbarBackground;
   }
   // Buttons in the navbar
-  .navbar .nav-collapse.in .btn-group {
+  .nav-collapse.in .btn-group {
     margin-top: 5px;
     padding: 0;
   }
   // Dropdowns in the navbar
-  .navbar .nav-collapse .dropdown-menu {
+  .nav-collapse .dropdown-menu {
     position: static;
     top: auto;
     left: auto;
@@ -89,11 +92,11 @@
     .border-radius(0);
     .box-shadow(none);
   }
-  .navbar .nav-collapse .dropdown-menu:before,
-  .navbar .nav-collapse .dropdown-menu:after {
+  .nav-collapse .dropdown-menu:before,
+  .nav-collapse .dropdown-menu:after {
     display: none;
   }
-  .navbar .nav-collapse .dropdown-menu .divider {
+  .nav-collapse .dropdown-menu .divider {
     display: none;
   }
   // Forms in navbar
@@ -111,20 +114,22 @@
     float: none;
     margin-left: 0;
   }
-  // Static navbar
-  .navbar-static .navbar-inner {
-    padding-left:  10px;
-    padding-right: 10px;
+  // Hide everything in the navbar save .brand and toggle button */
+  .nav-collapse,
+  .nav-collapse.collapse {
+    overflow: hidden;
+    height: 0;
   }
   // Navbar button
   .navbar .btn-navbar {
     display: block;
   }
 
-  // Hide everything in the navbar save .brand and toggle button */
-  .nav-collapse, .nav-collapse.collapse {
-    overflow: hidden;
-    height: 0;
+  // STATIC NAVBAR
+  // -------------
+  .navbar-static .navbar-inner {
+    padding-left:  10px;
+    padding-right: 10px;
   }
 }
 

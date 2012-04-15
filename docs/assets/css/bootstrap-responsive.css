@@ -622,28 +622,28 @@
     padding-right: 10px;
     margin: 0 0 0 -5px;
   }
-  .navbar .nav-collapse {
+  .nav-collapse {
     clear: both;
   }
-  .navbar .nav-collapse .nav {
+  .nav-collapse .nav {
     float: none;
     margin: 0 0 9px;
   }
-  .navbar .nav-collapse .nav > li {
+  .nav-collapse .nav > li {
     float: none;
   }
-  .navbar .nav-collapse .nav > li > a {
+  .nav-collapse .nav > li > a {
     margin-bottom: 2px;
   }
-  .navbar .nav-collapse .nav > .divider-vertical {
+  .nav-collapse .nav > .divider-vertical {
     display: none;
   }
-  .navbar .nav-collapse .nav .nav-header {
+  .nav-collapse .nav .nav-header {
     color: #999999;
     text-shadow: none;
   }
-  .navbar .nav-collapse .nav > li > a,
-  .navbar .nav-collapse .dropdown-menu a {
+  .nav-collapse .nav > li > a,
+  .nav-collapse .dropdown-menu a {
     padding: 6px 15px;
     font-weight: bold;
     color: #999999;
@@ -651,25 +651,25 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
   }
-  .navbar .nav-collapse .btn {
+  .nav-collapse .btn {
     padding: 4px 10px 4px;
     font-weight: normal;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
   }
-  .navbar .nav-collapse .dropdown-menu li + li a {
+  .nav-collapse .dropdown-menu li + li a {
     margin-bottom: 2px;
   }
-  .navbar .nav-collapse .nav > li > a:hover,
-  .navbar .nav-collapse .dropdown-menu a:hover {
+  .nav-collapse .nav > li > a:hover,
+  .nav-collapse .dropdown-menu a:hover {
     background-color: #222222;
   }
-  .navbar .nav-collapse.in .btn-group {
+  .nav-collapse.in .btn-group {
     margin-top: 5px;
     padding: 0;
   }
-  .navbar .nav-collapse .dropdown-menu {
+  .nav-collapse .dropdown-menu {
     position: static;
     top: auto;
     left: auto;
@@ -687,11 +687,11 @@
     -moz-box-shadow: none;
     box-shadow: none;
   }
-  .navbar .nav-collapse .dropdown-menu:before,
-  .navbar .nav-collapse .dropdown-menu:after {
+  .nav-collapse .dropdown-menu:before,
+  .nav-collapse .dropdown-menu:after {
     display: none;
   }
-  .navbar .nav-collapse .dropdown-menu .divider {
+  .nav-collapse .dropdown-menu .divider {
     display: none;
   }
   .nav-collapse .navbar-form,
@@ -709,17 +709,17 @@
     float: none;
     margin-left: 0;
   }
-  .navbar-static .navbar-inner {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .navbar .btn-navbar {
-    display: block;
-  }
   .nav-collapse,
   .nav-collapse.collapse {
     overflow: hidden;
     height: 0;
+  }
+  .navbar .btn-navbar {
+    display: block;
+  }
+  .navbar-static .navbar-inner {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media (min-width: 980px) {
