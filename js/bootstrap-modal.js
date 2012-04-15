@@ -28,7 +28,6 @@
   var Modal = function ( content, options ) {
     this.options = options
     this.$element = $(content)
-      .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
   }
 
   Modal.prototype = {
@@ -127,10 +126,26 @@
       var doAnimate = $.support.transition && animate
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .appendTo(document.body)
+        .insertBefore(this.$element)
+
+      if (this.options.dynamic) {
+        this.$elementWrapper = $('<div class="modal-wrapper" />')
+          .prependTo(this.$backdrop)
+          .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+        this.$element.prependTo(this.$elementWrapper)    
+      } else {
+        this.$element.prependTo(this.$backdrop)
+        .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+      }
+
+      $('html').css({ 'overflow' : 'hidden'  })
 
       if (this.options.backdrop != 'static') {
-        this.$backdrop.click($.proxy(this.hide, this))
+        this.$backdrop.on('click', function(e){
+          if (e.target == e.delegateTarget) {
+            that.hide(e)
+          }
+        })
       }
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
@@ -154,8 +169,10 @@
   }
 
   function removeBackdrop() {
+    this.$element.insertAfter(this.$backdrop)
     this.$backdrop.remove()
     this.$backdrop = null
+    $('html').css({ 'overflow' : 'auto'  })
   }
 
   function escape() {

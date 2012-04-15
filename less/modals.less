@@ -17,17 +17,19 @@
   bottom: 0;
   left: 0;
   z-index: @zindexModalBackdrop;
-  background-color: @black;
+  background: rgba(0, 0, 0, 1.0);
+  overflow-x: hidden;
+  overflow-y: auto;
   // Fade for backdrop
-  &.fade { opacity: 0; }
+  &.fade { background: rgba(0, 0, 0, 0.0); }
 }
 
 .modal-backdrop,
 .modal-backdrop.fade.in {
-  .opacity(80);
+  background: rgba(0, 0, 0, 0.8);
 }
 
-// Base modal
+// Default static height modal
 .modal {
   position: fixed;
   top: 50%;
@@ -49,6 +51,39 @@
   }
   &.fade.in { top: 50%; }
 }
+
+// Dynamic height modal
+.modal-wrapper {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  z-index: @zindexModalWrapper;
+  width: 560px;
+  margin-left: -280px;
+  padding-bottom: 80px;
+  overflow: visible;
+
+  &.fade {
+    .transition(e('opacity .3s linear, top .3s ease-out'));
+    top: -100%;
+  }
+  &.fade.in { top: 50px; }
+
+  .modal {
+    position: static;
+    margin: 0;
+    z-index: @zindexModal;
+    overflow: auto;
+    background-color: @white;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.3);
+    *border: 1px solid #999; /* IE6-7 */
+    .border-radius(6px);
+    .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+    .background-clip(padding-box);
+  }
+}
+
 .modal-header {
   padding: 9px 15px;
   border-bottom: 1px solid #eee;
@@ -56,12 +91,19 @@
   .close { margin-top: 2px; }
 }
 
-// Body (where all modal content resises)
+// Body (where all modal content resides)
 .modal-body {
   overflow-y: auto;
   max-height: 400px;
   padding: 15px;
 }
+
+// Some different styling for dynamic height modals
+.modal-wrapper .modal .modal-body {
+  overflow-y: visible;
+  max-height: none;
+}
+
 // Remove bottom margin if need be
 .modal-form {
   margin-bottom: 0;
