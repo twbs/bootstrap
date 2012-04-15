@@ -123,7 +123,6 @@
         return i[0]
       })
 
-      items.first().addClass('active')
       this.$menu.html(items)
       return this
     }
@@ -172,6 +171,8 @@
           break
 
         case 9: // tab
+        case 16: // shift, used in combination with tab (shift tab for reverse tabbing)
+		      break;
         case 13: // enter
           if (!this.shown) return
           this.select()
@@ -194,7 +195,6 @@
       if (!this.shown) return
 
       switch(e.keyCode) {
-        case 9: // tab
         case 13: // enter
         case 27: // escape
           e.preventDefault()
