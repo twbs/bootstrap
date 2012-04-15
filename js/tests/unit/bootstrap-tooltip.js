@@ -59,6 +59,56 @@ $(function () {
         ok(!$(".tooltip").length, 'tooltip removed')
       })
 
+      test("should not show tooltip if leave event occurs before delay expires", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: 200 })
+
+        stop()
+
+        tooltip.trigger('mouseenter')
+
+        setTimeout(function () {
+          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          tooltip.trigger('mouseout')
+          setTimeout(function () {
+            ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+            start()
+          }, 200)
+        }, 100)
+      })
+
+      test("should not show tooltip if leave event occurs before delay expires", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: 100 })
+        stop()
+        tooltip.trigger('mouseenter')
+        setTimeout(function () {
+          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          tooltip.trigger('mouseout')
+          setTimeout(function () {
+            ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+            start()
+          }, 100)
+        }, 50)
+      })
+
+      test("should show tooltip if leave event hasn't occured before delay expires", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: 200 })
+        stop()
+        tooltip.trigger('mouseenter')
+        setTimeout(function () {
+          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          setTimeout(function () {
+            ok(!$(".tooltip").hasClass('fade in'), 'tooltip has faded in')
+            start()
+          }, 200)
+        }, 100)
+      })
+
       test("should detect if title string is html or text: foo", function () {
         ok(!$.fn.tooltip.Constructor.prototype.isHTML('foo'), 'correctly detected html')
       })
