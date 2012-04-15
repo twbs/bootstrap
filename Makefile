@@ -12,6 +12,8 @@ WATCHR ?= `which watchr`
 docs: bootstrap
 	rm docs/assets/bootstrap.zip
 	zip -r docs/assets/bootstrap.zip bootstrap
+	cp bootstrap/js/bootstrap.js docs/assets/js/bootstrap.js
+	cp bootstrap/js/bootstrap.min.js docs/assets/js/bootstrap.min.js
 	rm -r bootstrap
 	lessc ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
