@@ -331,6 +331,9 @@ select:focus:required:invalid {
   border-color: #eee;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
   cursor: not-allowed;
+  // prevent text from wrapping, but still cut it off like an input does
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 // Placeholder text gets special styles; can't be bundled together though for some reason
