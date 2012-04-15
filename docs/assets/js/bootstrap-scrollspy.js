@@ -18,9 +18,10 @@
  * ============================================================== */
 
 
-!function ( $ ) {
+!function ($) {
 
-  "use strict"
+  "use strict"; // jshint ;_;
+
 
   /* SCROLLSPY CLASS DEFINITION
    * ========================== */
@@ -142,4 +143,4 @@
     })
   })
 
-}( window.jQuery );
+}(window.jQuery);

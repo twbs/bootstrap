@@ -18,11 +18,12 @@
  * ========================================================== */
 
 
-!function ( $ ) {
+!function ($) {
 
   $(function () {
 
-    "use strict"
+    "use strict"; // jshint ;_;
+
 
     /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
      * ======================================================= */
@@ -57,4 +58,4 @@
 
   })
 
-}( window.jQuery );
+}(window.jQuery);

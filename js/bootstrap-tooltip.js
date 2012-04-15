@@ -19,14 +19,15 @@
  * ========================================================== */
 
 
-!function ( $ ) {
+!function ($) {
 
-  "use strict"
+  "use strict"; // jshint ;_;
+
 
  /* TOOLTIP PUBLIC CLASS DEFINITION
   * =============================== */
 
-  var Tooltip = function ( element, options ) {
+  var Tooltip = function (element, options) {
     this.init('tooltip', element, options)
   }
 
@@ -34,7 +35,7 @@
 
     constructor: Tooltip
 
-  , init: function ( type, element, options ) {
+  , init: function (type, element, options) {
       var eventIn
         , eventOut
 
@@ -55,7 +56,7 @@
         this.fixTitle()
     }
 
-  , getOptions: function ( options ) {
+  , getOptions: function (options) {
       options = $.extend({}, $.fn[this.type].defaults, options, this.$element.data())
 
       if (options.delay && typeof options.delay == 'number') {
@@ -68,7 +69,7 @@
       return options
     }
 
-  , enter: function ( e ) {
+  , enter: function (e) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
       if (!self.options.delay || !self.options.delay.show) {
@@ -84,7 +85,7 @@
       }
     }
 
-  , leave: function ( e ) {
+  , leave: function (e) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
       if (!self.options.delay || !self.options.delay.hide) {
@@ -155,7 +156,7 @@
       }
     }
 
-  , isHTML: function( text ) {
+  , isHTML: function(text) {
       // html string detection logic adapted from jQuery
       return typeof text != 'string'
         || ( text.charAt(0) === "<"
@@ -271,12 +272,12 @@
 
   $.fn.tooltip.defaults = {
     animation: true
-  , delay: 0
-  , selector: false
   , placement: 'top'
+  , selector: false
+  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
   , title: ''
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , delay: 0
   }
 
-}( window.jQuery );
+}(window.jQuery);

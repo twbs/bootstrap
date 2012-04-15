@@ -18,9 +18,10 @@
  * ========================================================== */
 
 
-!function ( $ ) {
+!function ($) {
 
-  "use strict"
+  "use strict"; // jshint ;_;
+
 
  /* CAROUSEL CLASS DEFINITION
   * ========================= */
@@ -129,7 +130,7 @@
  /* CAROUSEL PLUGIN DEFINITION
   * ========================== */
 
-  $.fn.carousel = function ( option ) {
+  $.fn.carousel = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('carousel')
@@ -162,4 +163,4 @@
     })
   })
 
-}( window.jQuery );
+}(window.jQuery);
