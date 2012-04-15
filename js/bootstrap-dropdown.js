@@ -53,7 +53,7 @@
 
       isActive = $parent.hasClass('open')
 
-      clearMenus()
+      clearMenus();
       !isActive && $parent.toggleClass('open')
 
       return false
