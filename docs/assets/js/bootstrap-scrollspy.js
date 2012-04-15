@@ -94,12 +94,11 @@
 
         this.activeTarget = target
 
-        this.$body
-          .find(this.selector).parent('.active')
+        $(this.selector)
+          .parent('.active')
           .removeClass('active')
 
-        active = this.$body
-          .find(this.selector + '[href="' + target + '"]')
+        active = $(this.selector + '[href="' + target + '"]')
           .parent('li')
           .addClass('active')
 
