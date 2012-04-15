@@ -40,9 +40,13 @@
 
   , toggle: function (e) {
       var $this = $(this)
-        , selector = $this.attr('data-target')
+        , selector
         , $parent
         , isActive
+
+      if ($this.is('.disabled, :disabled')) return
+
+      selector = $this.attr('data-target')
 
       if (!selector) {
         selector = $this.attr('href')
