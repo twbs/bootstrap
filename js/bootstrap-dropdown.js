@@ -40,8 +40,8 @@
 
   , toggle: function (e) {
       var $this = $(this)
-        , selector
         , $parent
+        , selector
         , isActive
 
       if ($this.is('.disabled, :disabled')) return
