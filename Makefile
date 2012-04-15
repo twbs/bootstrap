@@ -7,10 +7,9 @@ BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 # BUILD DOCS
 #
 
-docs: bootstrap
-	rm docs/assets/bootstrap.zip
-	zip -r docs/assets/bootstrap.zip bootstrap
-	rm -r bootstrap
+docs:
+	jshint js/*.js --config js/.jshintrc
+	jshint js/tests/unit/*.js --config js/.jshintrc
 	lessc ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
 	node docs/build
@@ -32,8 +31,6 @@ bootstrap:
 	lessc --yui-compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
 	lessc ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.css
 	lessc --yui-compress ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.min.css
-	jshint js/*.js --config js/.jshintrc
-	jshint js/tests/unit/*.js --config js/.jshintrc
 	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > bootstrap/js/bootstrap.js
 	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.tmp.js
 	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
@@ -44,7 +41,10 @@ bootstrap:
 # MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
 #
 
-gh-pages: docs
+gh-pages: bootstrap docs
+	rm docs/assets/bootstrap.zip
+	zip -r docs/assets/bootstrap.zip bootstrap
+	rm -r bootstrap
 	rm -f ../bootstrap-gh-pages/assets/bootstrap.zip
 	node docs/build production
 	cp -r docs/* ../bootstrap-gh-pages
