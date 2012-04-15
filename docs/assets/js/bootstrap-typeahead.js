@@ -30,6 +30,8 @@
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
+    this.remoteuri = this.options.remoteuri
+    this.remotexhr = null
     this.listen()
   }
 
@@ -76,12 +78,21 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.grep(this.source, function (item) {
-        if (that.matcher(item)) return item
-      })
+      if (this.remoteuri) {
+        if (this.remotexhr) this.remotexhr.abort()
+        this.remotexhr = $.get(this.remoteuri, {max:this.options.items,q:this.query}, null, 'json')
+          .success($.proxy(this.processItems, this))
+      }
+      else 
+        return this.processItems($.grep(this.source, function (item) {
+          if (that.matcher(item)) return item
+        }))
 
+      return this
+    }
+
+  , processItems: function(items) {
       items = this.sorter(items)
-
       if (!items.length) {
         return this.shown ? this.hide() : this
       }
