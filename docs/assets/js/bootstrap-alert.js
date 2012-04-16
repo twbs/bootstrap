@@ -27,7 +27,7 @@
   * ====================== */
 
   var dismiss = '[data-dismiss="alert"]'
-    , Alert = function ( el ) {
+    , Alert = function (el) {
         $(el).on('click', dismiss, this.close)
       }
 
@@ -68,7 +68,7 @@
  /* ALERT PLUGIN DEFINITION
   * ======================= */
 
-  $.fn.alert = function ( option ) {
+  $.fn.alert = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('alert')
