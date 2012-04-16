@@ -300,8 +300,8 @@ a:hover {
   width: 6.382978723%;
 }
 .container {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
   *zoom: 1;
 }
 .container:before,
@@ -313,8 +313,8 @@ a:hover {
   clear: both;
 }
 .container-fluid {
-  padding-left: 20px;
   padding-right: 20px;
+  padding-left: 20px;
   *zoom: 1;
 }
 .container-fluid:before,
@@ -377,8 +377,8 @@ h2 small {
   font-size: 18px;
 }
 h3 {
-  line-height: 27px;
   font-size: 18px;
+  line-height: 27px;
 }
 h3 small {
   font-size: 14px;
@@ -450,13 +450,13 @@ dd {
   margin-left: 9px;
 }
 .dl-horizontal dt {
+  float: left;
+  width: 120px;
+  clear: left;
+  text-align: right;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  float: left;
-  clear: left;
-  width: 120px;
-  text-align: right;
 }
 .dl-horizontal dd {
   margin-left: 130px;
@@ -477,8 +477,8 @@ em {
   color: #999999;
 }
 abbr[title] {
-  border-bottom: 1px dotted #ddd;
   cursor: help;
+  border-bottom: 1px dotted #ddd;
 }
 abbr.initialism {
   font-size: 90%;
@@ -505,10 +505,10 @@ blockquote small:before {
 }
 blockquote.pull-right {
   float: right;
-  padding-left: 0;
   padding-right: 15px;
-  border-left: 0;
+  padding-left: 0;
   border-right: 5px solid #eeeeee;
+  border-left: 0;
 }
 blockquote.pull-right p,
 blockquote.pull-right small {
@@ -523,8 +523,8 @@ blockquote:after {
 address {
   display: block;
   margin-bottom: 18px;
-  line-height: 18px;
   font-style: normal;
+  line-height: 18px;
 }
 small {
   font-size: 100%;
@@ -554,16 +554,16 @@ pre {
   margin: 0 0 9px;
   font-size: 12.025px;
   line-height: 18px;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-break: break-all;
-  word-wrap: break-word;
 }
 pre.prettyprint {
   margin-bottom: 18px;
@@ -660,12 +660,12 @@ input[type="radio"] {
 
   line-height: normal;
   cursor: pointer;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
   border: 0 \9;
   /* IE9 and down */
 
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 input[type="image"] {
   border: 0;
@@ -674,9 +674,9 @@ input[type="file"] {
   width: auto;
   padding: initial;
   line-height: initial;
-  border: initial;
   background-color: #ffffff;
   background-color: initial;
+  border: initial;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -721,8 +721,8 @@ input[type="hidden"] {
 }
 .radio,
 .checkbox {
-  overflow: auto;
   padding-left: 18px;
+  overflow: auto;
 }
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
@@ -758,24 +758,24 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
 
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
 }
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus,
 select:focus {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 .input-mini {
   width: 60px;
@@ -853,9 +853,9 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
+  cursor: not-allowed;
   background-color: #eeeeee;
   border-color: #ddd;
-  cursor: not-allowed;
 }
 .control-group.warning > label,
 .control-group.warning .help-block,
@@ -963,14 +963,14 @@ select:focus:required:invalid:focus {
   clear: both;
 }
 .uneditable-input {
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: not-allowed;
   background-color: #ffffff;
   border-color: #eee;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
-  cursor: not-allowed;
-  overflow: hidden;
-  white-space: nowrap;
 }
 :-moz-placeholder {
   color: #999999;
@@ -1029,8 +1029,8 @@ select:focus:required:invalid:focus {
 .input-append .add-on {
   display: inline-block;
   width: auto;
-  min-width: 16px;
   height: 18px;
+  min-width: 16px;
   padding: 4px 5px;
   font-weight: normal;
   line-height: 18px;
@@ -1072,8 +1072,8 @@ select:focus:required:invalid:focus {
   border-radius: 3px 0 0 3px;
 }
 .input-append .uneditable-input {
-  border-left-color: #eee;
   border-right-color: #ccc;
+  border-left-color: #eee;
 }
 .input-append .add-on:last-child,
 .input-append .btn:last-child {
@@ -1103,12 +1103,12 @@ select:focus:required:invalid:focus {
   border-radius: 0 3px 3px 0;
 }
 .search-query {
-  padding-left: 14px;
   padding-right: 14px;
+  padding-right: 4px \9;
+  padding-left: 14px;
   padding-left: 4px \9;
   /* IE7-8 doesn't have border-radius, so don't indent the padding */
 
-  padding-right: 4px \9;
   margin-bottom: 0;
   -webkit-border-radius: 14px;
   -moz-border-radius: 14px;
@@ -1170,8 +1170,8 @@ select:focus:required:invalid:focus {
 .form-inline .radio input[type="radio"],
 .form-inline .checkbox input[type="checkbox"] {
   float: left;
-  margin-left: 0;
   margin-right: 3px;
+  margin-left: 0;
 }
 .control-group {
   margin-bottom: 9px;
@@ -1199,10 +1199,10 @@ legend + .control-group {
   text-align: right;
 }
 .form-horizontal .controls {
-  margin-left: 160px;
   *display: inline-block;
-  *margin-left: 0;
   *padding-left: 20px;
+  margin-left: 160px;
+  *margin-left: 0;
 }
 .form-horizontal .controls:first-child {
   *padding-left: 160px;
@@ -1216,9 +1216,9 @@ legend + .control-group {
 }
 table {
   max-width: 100%;
+  background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
-  background-color: transparent;
 }
 .table {
   width: 100%;
@@ -1255,9 +1255,9 @@ table {
 }
 .table-bordered {
   border: 1px solid #dddddd;
-  border-left: 0;
   border-collapse: separate;
   *border-collapse: collapsed;
+  border-left: 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -1280,14 +1280,14 @@ table {
 .table-bordered thead:first-child tr:first-child th:first-child,
 .table-bordered tbody:first-child tr:first-child td:first-child {
   -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
   border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
 }
 .table-bordered thead:first-child tr:first-child th:last-child,
 .table-bordered tbody:first-child tr:first-child td:last-child {
   -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
   border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
 }
 .table-bordered thead:last-child tr:last-child th:first-child,
 .table-bordered tbody:last-child tr:last-child td:first-child {
@@ -1295,14 +1295,14 @@ table {
   -moz-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
   -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
   border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
 }
 .table-bordered thead:last-child tr:last-child th:last-child,
 .table-bordered tbody:last-child tr:last-child td:last-child {
   -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
   border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
 }
 .table-striped tbody tr:nth-child(odd) td,
 .table-striped tbody tr:nth-child(odd) th {
@@ -1437,12 +1437,12 @@ table .span24 {
   display: inline-block;
   width: 14px;
   height: 14px;
+  *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
   background-image: url("../img/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
-  *margin-right: .3em;
 }
 [class^="icon-"]:last-child,
 [class*=" icon-"]:last-child {
@@ -1887,12 +1887,12 @@ table .span24 {
   width: 0;
   height: 0;
   vertical-align: top;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
   border-top: 4px solid #000000;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
   opacity: 0.3;
   filter: alpha(opacity=30);
-  content: "";
 }
 .dropdown .caret {
   margin-top: 8px;
@@ -1908,8 +1908,8 @@ table .span24 {
   top: 100%;
   left: 0;
   z-index: 1000;
-  float: left;
   display: none;
+  float: left;
   min-width: 160px;
   padding: 4px 0;
   margin: 1px 0 0;
@@ -1917,6 +1917,8 @@ table .span24 {
   background-color: #ffffff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -1926,21 +1928,19 @@ table .span24 {
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
 }
 .dropdown-menu.pull-right {
   right: 0;
   left: auto;
 }
 .dropdown-menu .divider {
+  *width: 100%;
   height: 1px;
   margin: 8px 1px;
+  *margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
-  *width: 100%;
-  *margin: -5px 0 5px;
 }
 .dropdown-menu a {
   display: block;
@@ -1965,8 +1965,8 @@ table .span24 {
   display: block;
 }
 .pull-right .dropdown-menu {
-  left: auto;
   right: 0;
+  left: auto;
 }
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
@@ -2017,25 +2017,25 @@ table .span24 {
   border-radius: 3px;
 }
 .fade {
+  opacity: 0;
   -webkit-transition: opacity 0.15s linear;
   -moz-transition: opacity 0.15s linear;
   -ms-transition: opacity 0.15s linear;
   -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
-  opacity: 0;
 }
 .fade.in {
   opacity: 1;
 }
 .collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
   -webkit-transition: height 0.35s ease;
   -moz-transition: height 0.35s ease;
   -ms-transition: height 0.35s ease;
   -o-transition: height 0.35s ease;
   transition: height 0.35s ease;
-  position: relative;
-  overflow: hidden;
-  height: 0;
 }
 .collapse.in {
   height: auto;
@@ -2053,9 +2053,9 @@ table .span24 {
 .close:hover {
   color: #000000;
   text-decoration: none;
+  cursor: pointer;
   opacity: 0.4;
   filter: alpha(opacity=40);
-  cursor: pointer;
 }
 button.close {
   padding: 0;
@@ -2074,10 +2074,12 @@ button.close {
   margin-bottom: 0;
   font-size: 13px;
   line-height: 18px;
+  *line-height: 20px;
   color: #333333;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
+  cursor: pointer;
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
@@ -2089,24 +2091,20 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #e6e6e6;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   border: 1px solid #cccccc;
+  *border: 0;
   border-bottom-color: #b3b3b3;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  *margin-left: .3em;
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  cursor: pointer;
-  *margin-left: .3em;
-  /* Remove the border to prevent IE7's black border on input:focus */
-
-  *border: 0;
-  *line-height: 20px;
 }
 .btn:hover,
 .btn:active,
@@ -2144,19 +2142,19 @@ button.close {
 }
 .btn.active,
 .btn:active {
+  background-color: #e6e6e6;
+  background-color: #d9d9d9 \9;
   background-image: none;
+  outline: 0;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  background-color: #e6e6e6;
-  background-color: #d9d9d9 \9;
-  outline: 0;
 }
 .btn.disabled,
 .btn[disabled] {
   cursor: default;
-  background-image: none;
   background-color: #e6e6e6;
+  background-image: none;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
@@ -2199,8 +2197,8 @@ button.close {
 .btn-info:hover,
 .btn-inverse,
 .btn-inverse:hover {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .btn-primary.active,
 .btn-warning.active,
@@ -2222,10 +2220,10 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0055cc', GradientType=0);
   border-color: #0055cc #0055cc #003580;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #0055cc;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-primary:hover,
 .btn-primary:active,
@@ -2251,10 +2249,10 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endColorstr='#f89406', GradientType=0);
   border-color: #f89406 #f89406 #ad6704;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #f89406;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-warning:hover,
 .btn-warning:active,
@@ -2280,10 +2278,10 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#bd362f', GradientType=0);
   border-color: #bd362f #bd362f #802420;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #bd362f;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-danger:hover,
 .btn-danger:active,
@@ -2309,10 +2307,10 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462', endColorstr='#51a351', GradientType=0);
   border-color: #51a351 #51a351 #387038;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #51a351;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-success:hover,
 .btn-success:active,
@@ -2338,10 +2336,10 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5bc0de', endColorstr='#2f96b4', GradientType=0);
   border-color: #2f96b4 #2f96b4 #1f6377;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #2f96b4;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-info:hover,
 .btn-info:active,
@@ -2367,10 +2365,10 @@ button.close {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#222222', GradientType=0);
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #222222;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .btn-inverse:hover,
 .btn-inverse:active,
@@ -2678,13 +2676,13 @@ input[type="submit"].btn.btn-mini {
   margin-right: 2px;
 }
 .nav-list .divider {
+  *width: 100%;
   height: 1px;
   margin: 8px 1px;
+  *margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
-  *width: 100%;
-  *margin: -5px 0 5px;
 }
 .nav-tabs,
 .nav-pills {
@@ -3172,10 +3170,10 @@ input[type="submit"].btn.btn-mini {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   *background-color: #222222;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);

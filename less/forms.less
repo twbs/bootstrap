@@ -98,8 +98,8 @@ input[type="radio"] {
   *margin-top: 0; /* IE7 */
   line-height: normal;
   cursor: pointer;
-  .border-radius(0);
   border: 0 \9; /* IE9 and down */
+  .border-radius(0);
 }
 input[type="image"] {
   border: 0;
@@ -110,9 +110,9 @@ input[type="file"] {
   width: auto;
   padding: initial;
   line-height: initial;
-  border: initial;
   background-color: @inputBackground;
   background-color: initial;
+  border: initial;
   .box-shadow(none);
 }
 
@@ -172,8 +172,8 @@ input[type="hidden"] {
 // Indent the labels to position radios/checkboxes as hanging
 .radio,
 .checkbox {
-  overflow: auto; // clear the floating input if there is no label text
   padding-left: 18px;
+  overflow: auto; // clear the floating input if there is no label text
 }
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
@@ -215,16 +215,16 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: rgba(82,168,236,.8);
-  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
   outline: 0;
   outline: thin dotted \9; /* IE6-9 */
+  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
 }
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus,
 select:focus {
-  .box-shadow(none); // override for file inputs
   .tab-focus();
+  .box-shadow(none); // override for file inputs
 }
 
 
@@ -274,9 +274,9 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
+  cursor: not-allowed;
   background-color: @inputDisabledBackground;
   border-color: #ddd;
-  cursor: not-allowed;
 }
 
 
@@ -327,13 +327,12 @@ select:focus:required:invalid {
 
 // For text that needs to appear as an input but should not be an input
 .uneditable-input {
+  overflow: hidden; // prevent text from wrapping, but still cut it off like an input does
+  white-space: nowrap;
+  cursor: not-allowed;
   background-color: @inputBackground;
   border-color: #eee;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
-  cursor: not-allowed;
-  // prevent text from wrapping, but still cut it off like an input does
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 // Placeholder text gets special styles; can't be bundled together though for some reason
@@ -389,8 +388,8 @@ select:focus:required:invalid {
   .add-on {
     display: inline-block;
     width: auto;
-    min-width: 16px;
     height: @baseLineHeight;
+    min-width: 16px;
     padding: 4px 5px;
     font-weight: normal;
     line-height: @baseLineHeight;
@@ -427,8 +426,8 @@ select:focus:required:invalid {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
   .uneditable-input {
-    border-left-color: #eee;
     border-right-color: #ccc;
+    border-left-color: #eee;
   }
   .add-on:last-child,
   .btn:last-child {
@@ -460,10 +459,10 @@ select:focus:required:invalid {
 // -----------
 
 .search-query {
-  padding-left: 14px;
   padding-right: 14px;
-  padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
   padding-right: 4px \9;
+  padding-left: 14px;
+  padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
   margin-bottom: 0; // remove the default margin on all inputs
   .border-radius(14px);
 }
@@ -521,8 +520,8 @@ select:focus:required:invalid {
 .form-inline .radio input[type="radio"],
 .form-inline .checkbox input[type="checkbox"] {
   float: left;
-  margin-left: 0;
   margin-right: 3px;
+  margin-left: 0;
 }
 
 
@@ -555,11 +554,12 @@ legend + .control-group {
   }
   // Move over all input controls and content
   .controls {
-    margin-left: 160px;
-    // Super jank IE7 fix to ensure the inputs in .input-append and input-prepend don't inherit the margin of the parent, in this case .controls
+    // Super jank IE7 fix to ensure the inputs in .input-append and input-prepend
+    // don't inherit the margin of the parent, in this case .controls
     *display: inline-block;
-    *margin-left: 0;
     *padding-left: 20px;
+    margin-left: 160px;
+    *margin-left: 0;
     &:first-child {
       *padding-left: 160px;
     }
