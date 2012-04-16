@@ -58,9 +58,9 @@ sub {
 }
 img {
   max-width: 100%;
+  vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
-  vertical-align: middle;
 }
 button,
 input,
@@ -88,10 +88,10 @@ input[type="submit"] {
   -webkit-appearance: button;
 }
 input[type="search"] {
-  -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
+  -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
@@ -113,20 +113,16 @@ textarea {
   clear: both;
 }
 .hide-text {
-  border: 0;
   font: 0/0 a;
-  text-shadow: none;
   color: transparent;
+  text-shadow: none;
   background-color: transparent;
+  border: 0;
 }
 .input-block-level {
   display: block;
   width: 100%;
   min-height: 28px;
-  /* Make inputs at least the height of their button counterpart */
-
-  /* Makes inputs behave like true block-level elements */
-
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -257,10 +253,6 @@ a:hover {
   display: block;
   width: 100%;
   min-height: 28px;
-  /* Make inputs at least the height of their button counterpart */
-
-  /* Makes inputs behave like true block-level elements */
-
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
