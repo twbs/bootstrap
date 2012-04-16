@@ -130,18 +130,25 @@
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
+          var ofs;
+          if (this.options.offset) {
+              ofs = this.options.offset.split(",")
+              ofs = { x: parseInt(ofs[0], 10), y: parseInt(ofs[1], 10) };
+          } else
+              ofs = { x: 0, y: 0 };
+
         switch (inside ? placement.split(' ')[1] : placement) {
           case 'bottom':
-            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+            tp = {top: pos.top + pos.height + ofs.y, left: pos.left + pos.width / 2 - actualWidth / 2 + ofs.x}
             break
           case 'top':
-            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+            tp = {top: pos.top - actualHeight - ofs.y, left: pos.left + pos.width / 2 - actualWidth / 2 + ofs.x}
             break
           case 'left':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2 + ofs.y, left: pos.left - actualWidth - ofs.x}
             break
           case 'right':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2 + ofs.y, left: pos.left + pos.width + ofs.x}
             break
         }
 
@@ -192,9 +199,10 @@
     }
 
   , getPosition: function (inside) {
-      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
-        width: this.$element[0].offsetWidth
-      , height: this.$element[0].offsetHeight
+	  var el = this.options.attachTo ? $(this.options.attachTo) : this.$element
+      return $.extend({}, (inside ? {top: 0, left: 0} : el.offset()), {
+        width: el[0].offsetWidth
+      , height: el[0].offsetHeight
       })
     }
 
@@ -265,6 +273,7 @@
   , trigger: 'hover'
   , title: ''
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , offset: null
   }
 
 }( window.jQuery );
