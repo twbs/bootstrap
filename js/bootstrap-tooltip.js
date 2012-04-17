@@ -120,9 +120,11 @@
 
         inside = /in/.test(placement)
 
+        tp = { top: 0, left: 0, display: 'block' };
+
         $tip
           .remove()
-          .css({ top: 0, left: 0, display: 'block' })
+          .css(tp)
           .appendTo(inside ? this.$element : document.body)
 
         pos = this.getPosition(inside)
@@ -144,6 +146,10 @@
             tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
             break
         }
+
+        /******** prevents tip from display off screen ************/
+        if (tp.top < 0) { tp.top = 0; }
+        if (tp.left < 0) { tp.left = 0; }
 
         $tip
           .css(tp)
