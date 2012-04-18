@@ -13,23 +13,19 @@
   margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
+  *line-height: 20px;
   color: @grayDark;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   vertical-align: middle;
+  cursor: pointer;
   .buttonBackground(@btnBackground, @btnBackgroundHighlight);
   border: 1px solid @btnBorder;
+  *border: 0; // Remove the border to prevent IE7's black border on input:focus
   border-bottom-color: darken(@btnBorder, 10%);
   .border-radius(4px);
+  .ie7-restore-left-whitespace(); // Give IE7 some love
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
-  cursor: pointer;
-
-  // Give IE7 some love
-  .ie7-restore-left-whitespace();
-
-  /* Remove the border to prevent IE7's black border on input:focus */
-  *border: 0;
-  *line-height: 20px;
 }
 
 // Hover state
@@ -53,19 +49,19 @@
 // Active state
 .btn.active,
 .btn:active {
-  background-image: none;
-  .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
   background-color: darken(@white, 10%);
   background-color: darken(@white, 15%) e("\9");
+  background-image: none;
   outline: 0;
+  .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
 }
 
 // Disabled state
 .btn.disabled,
 .btn[disabled] {
   cursor: default;
-  background-image: none;
   background-color: darken(@white, 10%);
+  background-image: none;
   .opacity(65);
   .box-shadow(none);
 }
@@ -120,8 +116,8 @@
 .btn-info:hover,
 .btn-inverse,
 .btn-inverse:hover {
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   color: @white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 }
 // Provide *some* extra contrast for those who can get it
 .btn-primary.active,

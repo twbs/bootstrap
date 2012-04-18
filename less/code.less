@@ -27,14 +27,14 @@ pre {
   margin: 0 0 @baseLineHeight / 2;
   font-size: @baseFontSize * .925; // 13px to 12px
   line-height: @baseLineHeight;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
   background-color: #f5f5f5;
   border: 1px solid #ccc; // fallback for IE7-8
   border: 1px solid rgba(0,0,0,.15);
   .border-radius(4px);
-  white-space: pre;
-  white-space: pre-wrap;
-  word-break: break-all;
-  word-wrap: break-word;
 
   // Make prettyprint styles more spaced out for readability
   &.prettyprint {
