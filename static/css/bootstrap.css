@@ -2631,6 +2631,16 @@ iframe {
 .disabled {
   color: silver;
 }
+.topbar-alert-message-container {
+  position: fixed;
+  width: 100%;
+  top: 20px;
+  text-align: center;
+}
+.topbar-alert-message {
+  display: inline-block;
+  z-index: 10001;
+}
 .jstree-default.jstree-focused {
   background-color: transparent !important;
 }
