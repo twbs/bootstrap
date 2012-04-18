@@ -89,11 +89,17 @@
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
-.dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: @dropdownLinkColorHover;
   text-decoration: none;
-  background-color: @dropdownLinkBackgroundHover;
+  background-color: @dropdownLinkBackgroundHover; 
+}
+// separated a from a:hover to allow for different styles on dropdown
+// and active navbar at the same time.
+.dropdown-menu .active > a {
+  color: @dropdownLinkColorHover;
+  text-decoration: none;
+  background-color: @dropdownLinkBackgroundActive;
 }
 
 // Open state for the dropdown
