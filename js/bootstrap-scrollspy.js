@@ -54,7 +54,8 @@
         $targets = this.$body
           .find(this.selector)
           .map(function () {
-            var href = $(this).attr('href')
+            var $el = $(this)
+              , href = $el.data('target') || $el.attr('href')
               , $href = /^#\w/.test(href) && $(href)
             return ( $href
               && href.length
@@ -91,6 +92,7 @@
 
     , activate: function (target) {
         var active
+          , selector
 
         this.activeTarget = target
 
@@ -98,7 +100,11 @@
           .parent('.active')
           .removeClass('active')
 
-        active = $(this.selector + '[href="' + target + '"]')
+        selector = this.selector
+          + '[data-target="' + target + '"],'
+          + this.selector + '[href="' + target + '"]'
+
+        active = $(selector)
           .parent('li')
           .addClass('active')
 
