@@ -110,6 +110,10 @@
           $tip.addClass('fade')
         }
 
+        if (this.options.className) {
+          $tip.addClass(this.options.className)
+        }
+
         placement = typeof this.options.placement == 'function' ?
           this.options.placement.call(this, $tip[0], this.$element[0]) :
           this.options.placement
@@ -270,6 +274,7 @@
   , trigger: 'hover'
   , title: ''
   , delay: 0
+  , className: ''
   }
 
 }(window.jQuery);
