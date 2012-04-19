@@ -36,6 +36,14 @@ build:
 	@echo "Thanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n"
 
+#
+# RUN JSHINT
+# TODO: run unittests
+#
+
+test:
+	jshint js/*.js --config js/.jshintrc
+	jshint js/tests/unit/*.js --config js/.jshintrc
 
 #
 # BUILD SIMPLE BOOTSTRAP DIRECTORY
