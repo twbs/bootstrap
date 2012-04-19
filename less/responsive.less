@@ -34,33 +34,40 @@
 // Visibility utilities
 
 // For desktops
-.visible-phone     { display: none; }
-.visible-tablet    { display: none; }
+.visible-phone, th.visible-phone, td.visible-phone     { display: none; }
+.visible-tablet, th.visible-tablet, td.visible-tablet    { display: none; }
 .visible-desktop   { display: block; }
+th.visible-desktop, td.visible-desktop   { display: table-cell; }
 .hidden-phone      { display: block; }
+th.hidden-phone, td.hidden-phone      { display: table-cell; }
 .hidden-tablet     { display: block; }
-.hidden-desktop    { display: none; }
+th.hidden-tablet, td.hidden-tablet     { display: table-cell; }
+.hidden-desktop, th.hidden-desktop, td.hidden-desktop    { display: none; }
 
 // Phones only
 @media (max-width: 767px) {
   // Show
   .visible-phone     { display: block; }
+  th.visible-phone, td.visible-phone	{ display: table-cell; }
   // Hide
-  .hidden-phone      { display: none; }
+  .hidden-phone, th.hidden-phone, td.hidden-phone      { display: none; }
   // Hide everything else
   .hidden-desktop    { display: block; }
-  .visible-desktop   { display: none; }
+  th.hidden-desktop, td.hidden-desktop	{ display: table-cell; }
+  .visible-desktop, th.visible-desktop, td.visible-desktop   { display: none; }
 }
 
 // Tablets & small desktops only
 @media (min-width: 768px) and (max-width: 979px) {
   // Show
   .visible-tablet    { display: block; }
+  th.visible-tablet, td.visible-tablet	{ display: table-cell; }
   // Hide
-  .hidden-tablet     { display: none; }
+  .hidden-tablet, th.hidden-tablet, td.hidden-tablet     { display: none; }
   // Hide everything else
   .hidden-desktop    { display: block; }
-  .visible-desktop   { display: none; }
+  th.hidden-desktop, td.hidden-desktop	{ display: table-cell; }
+  .visible-desktop, th.visible-desktop, td.visible-desktop   { display: none; }
 }
 
 
