@@ -1,0 +1,22 @@
+{
+  "name": "bootstrap"
+  , "description": "HTML, CSS, and JS toolkit from Twitter."
+  , "version": "2.0.3"
+  , "keywords": ["bootstrap", "css"]
+  , "homepage": "http://twitter.github.com/bootstrap/"
+  , "author": "Twitter Inc."
+  , "repository": {
+    "type": "git"
+    , "url": "https://github.com/twitter/bootstrap.git"
+  }
+  , "licenses": [
+    { "type": "Apache-2.0"
+      , "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ]
+  , "devDependencies": {
+    "uglify-js": "*"
+    , "jshint": "*"
+    , "recess": "*"
+  }
+}
