@@ -2,25 +2,40 @@ BOOTSTRAP = ./docs/assets/css/bootstrap.css
 BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
+DATE=$(shell date +%I:%M%p)
+CHECK=\033[32m✔\033[39m
 
 #
 # BUILD DOCS
 #
 
-docs:
-	jshint js/*.js --config js/.jshintrc
-	jshint js/tests/unit/*.js --config js/.jshintrc
-	recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
-	recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
-	node docs/build
-	cp img/* docs/assets/img/
-	cp js/*.js docs/assets/js/
-	cp js/tests/vendor/jquery.js docs/assets/js/
-	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > docs/assets/js/bootstrap.js
-	uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
-	echo "/**\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
-	cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
-	rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
+build:
+	@echo "\n##################################################"
+	@echo "Building Bootstrap..."
+	@echo "##################################################\n"
+	@jshint js/*.js --config js/.jshintrc
+	@jshint js/tests/unit/*.js --config js/.jshintrc
+	@echo "Running JSHint on javascript...             ${CHECK} Done"
+	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
+	@echo "Compiling LESS with Recess...               ${CHECK} Done"
+	@node docs/build
+	@cp img/* docs/assets/img/
+	@cp js/*.js docs/assets/js/
+	@cp js/tests/vendor/jquery.js docs/assets/js/
+	@echo "Compiling documentation...                  ${CHECK} Done"
+	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > docs/assets/js/bootstrap.js
+	@uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
+	@echo "/**\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
+	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
+	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
+	@echo "Compiling and minifying javascript...       ${CHECK} Done"
+	@echo "\n##################################################"
+	@echo "Bootstrap successfully built at ${DATE}."
+	@echo "##################################################\n"
+	@echo "Thanks for using Bootstrap,"
+	@echo "<3 @mdo and @fat\n"
+
 
 #
 # BUILD SIMPLE BOOTSTRAP DIRECTORY
