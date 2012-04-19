@@ -5,7 +5,7 @@
   height: @baseLineHeight * 2;
   margin: @baseLineHeight 0;
  }
-.pagination ul {
+.pagination > ul {
   display: inline-block;
   .ie7-inline-block();
   margin-left: 0;
@@ -25,10 +25,12 @@
   border-left-width: 0;
 }
 .pagination a:hover,
-.pagination .active a {
+.pagination .open > a,
+.pagination .active > a {
   background-color: #f5f5f5;
 }
-.pagination .active a {
+.pagination .open > a,
+.pagination .active > a {
   color: @grayLight;
   cursor: default;
 }
@@ -54,3 +56,12 @@
 .pagination-right {
   text-align: right;
 }
+
+.pagination .dropdown {
+  float: left;
+}
+
+.pagination .caret {
+  margin-top:16px;
+}
+
