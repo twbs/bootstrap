@@ -20,5 +20,6 @@
       "uglify-js": "*"
     , "jshint": "*"
     , "recess": "*"
+    , "connect": "*"
   }
 }
