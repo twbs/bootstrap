@@ -1,0 +1,68 @@
+// COMMON STYLES
+// -------------
+
+.media, .media-body {
+	overflow:hidden;
+	*overflow:visible;
+	zoom:1;
+}
+.media {
+	margin-bottom: 10px;
+}
+.media .media {
+	margin-top: 20px;
+}
+.media .pull-left {
+	margin-right: 10px;
+}
+.media .pull-right {
+	margin-left: 10px;
+}
+.media .media-object {
+	display: block;
+}
+
+// Media list
+.medias {
+	margin-top: 20px;
+	margin-left: 0;
+	list-style-type: none;
+}
+.medias .media {
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(0, 0, 0, .07);
+}
+.medias > .media:last-child {
+	margin: 0;
+	border-bottom: none;
+}
+.medias > .media .media {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+} 
+
+// Media box
+.media-box {
+	margin-bottom: 19px;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.09);
+	.border-radius(4px);
+	.box-shadow(1px 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 480px) {
+    .media .pull-left,
+    .media .pull-right  {
+    	float: none;
+    	display: block;
+    	margin-bottom: 10px;
+    }
+    .media .pull-left {
+        margin-right: 0;    
+    }
+    .media .pull-right {
+        margin-left: 0;    
+    }
+}

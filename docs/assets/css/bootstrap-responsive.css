@@ -114,6 +114,18 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+  .media .pull-left,
+  .media .pull-right {
+    float: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .media .pull-left {
+    margin-right: 0;
+  }
+  .media .pull-right {
+    margin-left: 0;
+  }
   .modal {
     position: absolute;
     top: 10px;
@@ -169,9 +181,9 @@
     width: 100%;
     min-height: 28px;
     /* Make inputs at least the height of their button counterpart */
-
+  
     /* Makes inputs behave like true block-level elements */
-
+  
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
