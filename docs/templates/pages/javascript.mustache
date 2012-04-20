@@ -107,6 +107,12 @@
             <p class="muted"><strong>*</strong> {{_i}}Required for animation in plugins{{/i}}</p>
           </label>
         </div>
+        <div class="span3">
+          <label>
+            <h3>{{_i}}Touch{{/i}}</h3>
+            <p>{{_i}}For touch support, include bootstrap-touch.js once to add swipe navigation to carousel.{{/i}}</p>
+          </label>
+        </div>
       </div> <!-- /row -->
       <div class="alert alert-info"><strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}All javascript plugins require the latest version of jQuery.{{/i}}</div>
     </section>
@@ -1286,8 +1292,8 @@ $('#myCollapsible').on('hidden', function () {
              <tr>
                <td>{{_i}}pause{{/i}}</td>
                <td>{{_i}}string{{/i}}</td>
-               <td>"hover"</td>
-               <td>{{_i}}Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.{{/i}}</td>
+               <td>"both"</td>
+               <td>{{_i}Pauses the cycling of the carousel on hover, swipe, or both and resumes the cycling of the carousel on mouseleave (hover).{{/i}}</td>
              </tr>
             </tbody>
           </table>

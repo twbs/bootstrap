@@ -184,6 +184,12 @@
             <p class="muted"><strong>*</strong> Required for animation in plugins</p>
           </label>
         </div>
+        <div class="span3">
+          <label>
+            <h3>Touch</h3>
+            <p>For touch support, include bootstrap-touch.js once to add swipe navigation to carousel.</p>
+          </label>
+        </div>
       </div> <!-- /row -->
       <div class="alert alert-info"><strong>Heads up!</strong> All javascript plugins require the latest version of jQuery.</div>
     </section>
@@ -1363,8 +1369,8 @@ $('#myCollapsible').on('hidden', function () {
              <tr>
                <td>pause</td>
                <td>string</td>
-               <td>"hover"</td>
-               <td>Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.</td>
+               <td>"both"</td>
+               <td>Pauses the cycling of the carousel on hover, swipe, or both and resumes the cycling of the carousel on mouseleave (hover).</td>
              </tr>
             </tbody>
           </table>
@@ -1524,6 +1530,7 @@ $('.carousel').carousel({
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-touch.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
     <script src="assets/js/bootstrap-modal.js"></script>
