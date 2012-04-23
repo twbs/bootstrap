@@ -98,6 +98,7 @@ input[type="radio"] {
   *margin-top: 0; /* IE7 */
   line-height: normal;
   cursor: pointer;
+  background-color: transparent;
   border: 0 \9; /* IE9 and down */
   .border-radius(0);
 }
@@ -277,6 +278,13 @@ textarea[readonly] {
   cursor: not-allowed;
   background-color: @inputDisabledBackground;
   border-color: #ddd;
+}
+// Explicitly reset the colors here
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
 }
 
 
