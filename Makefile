@@ -4,6 +4,7 @@ BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔\033[39m
+HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
 
 #
@@ -11,9 +12,9 @@ CHECK=\033[32m✔\033[39m
 #
 
 build:
-	@echo "\n##################################################"
+	@echo "\n${HR}"
 	@echo "Building Bootstrap..."
-	@echo "##################################################\n"
+	@echo "${HR}\n"
 	@jshint js/*.js --config js/.jshintrc
 	@jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "Running JSHint on javascript...             ${CHECK} Done"
@@ -31,9 +32,9 @@ build:
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
 	@echo "Compiling and minifying javascript...       ${CHECK} Done"
-	@echo "\n##################################################"
+	@echo "\n${HR}"
 	@echo "Bootstrap successfully built at ${DATE}."
-	@echo "##################################################\n"
+	@echo "${HR}\n"
 	@echo "Thanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n"
 
