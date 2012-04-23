@@ -4,15 +4,11 @@
  */
 
 var connect = require('connect')
-  , args = process.argv.slice(2)
-  , fs = require('fs')
-  , folder = '/../../'
-  , port = '3000'
+  , http = require('http')
+  , fs   = require('fs')
+  , app = connect()
+      .use(connect.static(__dirname + '/../../'));
 
-var server = connect.createServer(
-    connect.static(__dirname + folder)
-).listen(port)
+http.createServer(app).listen(3000);
 
 fs.writeFileSync(__dirname + '/pid.txt', process.pid, 'utf-8')
-
-console.log("Server started on port %s in %s", port, folder)
