@@ -17,9 +17,9 @@
     }
   ]
   , "devDependencies": {
-      "uglify-js": "*"
-    , "jshint": "*"
-    , "recess": "*"
-    , "connect": "*"
+      "uglify-js": "1.2.6"
+    , "jshint": "0.6.1"
+    , "recess": "1.0.3"
+    , "connect": "2.1.3"
   }
 }
