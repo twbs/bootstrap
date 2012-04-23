@@ -2694,6 +2694,10 @@ button.close {
   color: rgba(255, 255, 255, 0.75);
 }
 
+.btn {
+  border-color: #ccc;
+}
+
 .btn-primary {
   background-color: #0074cc;
   *background-color: #0055cc;
