@@ -75,7 +75,7 @@
       } else {
         self.hoverState = 'in'
         setTimeout(function() {
-          if (self.hoverState == 'in') {
+          if (self.hoverState == 'in' && self.enabled) {
             self.show()
           }
         }, self.options.delay.show)
