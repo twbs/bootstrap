@@ -2,15 +2,15 @@
 // Adapted from Modernizr
 
 function waitFor(testFx, onReady, timeOutMillis) {
-  var maxtimeOutMillis = timeOutMillis ? timeOutMillis : 3001 //< Default Max Timout is 3s
+  var maxtimeOutMillis = timeOutMillis ? timeOutMillis :  5001 //< Default Max Timout is 5s
     , start = new Date().getTime()
     , condition = false
-    , interval = setInterval(function() {
+    , interval = setInterval(function () {
         if ((new Date().getTime() - start < maxtimeOutMillis) && !condition) {
           // If not time-out yet and condition not yet fulfilled
           condition = (typeof(testFx) === "string" ? eval(testFx) : testFx()) //< defensive code
         } else {
-          if(!condition) {
+          if (!condition) {
             // If condition still not fulfilled (timeout but condition is 'false')
             console.log("'waitFor()' timeout")
             phantom.exit(1)
