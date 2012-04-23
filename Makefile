@@ -5,6 +5,7 @@ BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔\033[39m
 
+
 #
 # BUILD DOCS
 #
@@ -36,6 +37,17 @@ build:
 	@echo "Thanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n"
 
+#
+# RUN JSHINT & QUNIT TESTS IN PHANTOMJS
+#
+
+test:
+	jshint js/*.js --config js/.jshintrc
+	jshint js/tests/unit/*.js --config js/.jshintrc
+	node js/tests/server.js &
+	phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"
+	kill -9 `cat js/tests/pid.txt`
+	rm js/tests/pid.txt
 
 #
 # BUILD SIMPLE BOOTSTRAP DIRECTORY
