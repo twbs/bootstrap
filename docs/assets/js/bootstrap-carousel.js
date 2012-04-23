@@ -35,7 +35,7 @@
       .on('mouseleave', $.proxy(this.cycle, this))
       
     $.support.touch && this.$element.touch() && this.$element
-      .on('swipe',$.proxy(this.swipe, this))
+      .on('swipe',$.proxy(this.swipe, this)) && this.$element.children('.carousel-control').fadeOut('slow')
   }
 
   Carousel.prototype = {
