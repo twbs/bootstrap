@@ -2499,6 +2499,7 @@ table .span24 {
 
 .fade {
   opacity: 0;
+  filter: alpha(opacity=0);
   -webkit-transition: opacity 0.15s linear;
      -moz-transition: opacity 0.15s linear;
       -ms-transition: opacity 0.15s linear;
@@ -2508,6 +2509,7 @@ table .span24 {
 
 .fade.in {
   opacity: 1;
+  filter: alpha(opacity=100);
 }
 
 .collapse {
@@ -4445,6 +4447,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .thumbnails > li {
+  float: left;
   margin-bottom: 18px;
 }
 
@@ -4647,15 +4650,15 @@ a.badge:hover {
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
      -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
           box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-          box-sizing: border-box;
   -webkit-transition: width 0.6s ease;
      -moz-transition: width 0.6s ease;
       -ms-transition: width 0.6s ease;
        -o-transition: width 0.6s ease;
           transition: width 0.6s ease;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .progress-striped .bar {
