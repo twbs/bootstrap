@@ -6,8 +6,8 @@
 // ICONS
 // -----
 
-// All icons receive the styles of the <i> tag with a base class 
-// of .i and are then given a unique class to add width, height, 
+// All icons receive the styles of the <i> tag with a base class
+// of .i and are then given a unique class to add width, height,
 // and background-position. Your resulting HTML will look like
 // <i class="icon-inbox"></i>.
 
@@ -19,13 +19,13 @@
   display: inline-block;
   width: 14px;
   height: 14px;
+  .ie7-restore-right-whitespace();
   line-height: 14px;
   vertical-align: text-top;
   background-image: url("@{iconSpritePath}");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 
-  .ie7-restore-right-whitespace();
 }
 .icon-white {
   background-image: url("@{iconWhiteSpritePath}");
@@ -149,10 +149,43 @@
 .icon-comment            { background-position: -240px -120px; }
 .icon-magnet             { background-position: -264px -120px; }
 .icon-chevron-up         { background-position: -288px -120px; }
-.icon-chevron-down       { background-position: -313px -119px; } // 1px off
+.icon-chevron-down       { background-position: -313px -119px; } // 1px, 1px off
 .icon-retweet            { background-position: -336px -120px; }
 .icon-shopping-cart      { background-position: -360px -120px; }
 .icon-folder-close       { background-position: -384px -120px; }
 .icon-folder-open        { background-position: -408px -120px; }
-.icon-resize-vertical    { background-position: -432px -119px; }
-.icon-resize-horizontal  { background-position: -456px -118px; }
+.icon-resize-vertical    { background-position: -432px -119px; } // 1px, 1px off
+.icon-resize-horizontal  { background-position: -456px -118px; } // 1px, 2px off
+
+.icon-hdd                     { background-position: 0      -144px; }
+.icon-bullhorn                { background-position: -24px  -144px; }
+.icon-bell                    { background-position: -48px  -144px; }
+.icon-certificate             { background-position: -72px  -144px; }
+.icon-thumbs-up               { background-position: -96px  -144px; }
+.icon-thumbs-down             { background-position: -120px -144px; }
+.icon-hand-right              { background-position: -144px -144px; }
+.icon-hand-left               { background-position: -168px -144px; }
+.icon-hand-up                 { background-position: -192px -144px; }
+.icon-hand-down               { background-position: -216px -144px; }
+.icon-circle-arrow-right      { background-position: -240px -144px; }
+.icon-circle-arrow-left       { background-position: -264px -144px; }
+.icon-circle-arrow-up         { background-position: -288px -144px; }
+.icon-circle-arrow-down       { background-position: -312px -144px; }
+.icon-globe                   { background-position: -336px -144px; }
+.icon-wrench                  { background-position: -360px -144px; }
+.icon-tasks                   { background-position: -384px -144px; }
+.icon-filter                  { background-position: -408px -144px; }
+.icon-briefcase               { background-position: -432px -144px; }
+.icon-fullscreen              { background-position: -456px -144px; }
+
+
+
+
+
+
+
+
+
+
+
+

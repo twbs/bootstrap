@@ -16,12 +16,12 @@
 
 // Gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
+  min-height: @navbarHeight;
   padding-left:  20px;
   padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   .border-radius(4px);
-  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  .box-shadow(@shadow);
+  .box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
 }
 
 // Set width to auto for default container
@@ -30,28 +30,6 @@
   width: auto;
 }
 
-// Navbar button for toggling navbar items in responsive layouts
-.btn-navbar {
-  display: none;
-  float: right;
-  padding: 7px 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
-  .box-shadow(@shadow);
-}
-.btn-navbar .icon-bar {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background-color: #f5f5f5;
-  .border-radius(1px);
-  .box-shadow(0 1px 0 rgba(0,0,0,.25));
-}
-.btn-navbar .icon-bar + .icon-bar {
-  margin-top: 3px;
-}
 // Override the default collapsed state
 .nav-collapse.collapse {
   height: auto;
@@ -69,17 +47,26 @@
   .brand {
     float: left;
     display: block;
-    padding: 8px 20px 12px;
+    // Vertically center the text given @navbarHeight
+    @elementHeight: 20px;
+    padding: ((@navbarHeight - @elementHeight) / 2 - 2) 20px ((@navbarHeight - @elementHeight) / 2 + 2);
     margin-left: -20px; // negative indent to left-align the text down the page
     font-size: 20px;
     font-weight: 200;
     line-height: 1;
-    color: @white;
+    color: @navbarBrandColor;
   }
   // Plain text in topbar
   .navbar-text {
     margin-bottom: 0;
     line-height: @navbarHeight;
+  }
+  // Janky solution for now to account for links outside the .nav
+  .navbar-link {
+    color: @navbarLinkColor;
+    &:hover {
+      color: @navbarLinkColorHover;
+    }
   }
   // Buttons in navbar
   .btn,
@@ -87,7 +74,7 @@
     .navbarVerticalAlign(30px); // Vertically center in navbar
   }
   .btn-group .btn {
-    margin-top: 0; // then undo the margin here so we don't accidentally double it
+    margin: 0; // then undo the margin here so we don't accidentally double it
   }
 }
 
@@ -133,8 +120,7 @@
     color: @white;
     background-color: @navbarSearchBackground;
     border: 1px solid @navbarSearchBorder;
-    @shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15);
-    .box-shadow(@shadow);
+    .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0px rgba(255,255,255,.15)");
     .transition(none);
 
     // Placeholder text gets special styles; can't be a grouped selector
@@ -218,11 +204,28 @@
 // Links
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 10px 11px;
+  // Vertically center the text given @navbarHeight
+  @elementHeight: 20px;
+  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 10px ((@navbarHeight - @elementHeight) / 2 + 1);
   line-height: 19px;
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+// Buttons
+.navbar .btn {
+  display: inline-block;
+  padding: 4px 10px 4px;
+  // Vertically center the button given @navbarHeight
+  @elementHeight: 28px;
+  margin: ((@navbarHeight - @elementHeight) / 2 - 1) 5px ((@navbarHeight - @elementHeight) / 2);
+  line-height: @baseLineHeight;
+}
+.navbar .btn-group {
+  margin: 0;
+  // Vertically center the button given @navbarHeight
+  @elementHeight: 28px;
+  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 5px ((@navbarHeight - @elementHeight) / 2);
 }
 // Hover
 .navbar .nav > li > a:hover {
@@ -255,6 +258,28 @@
   margin-right: 0;
 }
 
+// Navbar button for toggling navbar items in responsive layouts
+// These definitions need to come after '.navbar .btn'
+.navbar .btn-navbar {
+  display: none;
+  float: right;
+  padding: 7px 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
+  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
+}
+.navbar .btn-navbar .icon-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: #f5f5f5;
+  .border-radius(1px);
+  .box-shadow(0 1px 0 rgba(0,0,0,.25));
+}
+.btn-navbar .icon-bar + .icon-bar {
+  margin-top: 3px;
+}
 
 
 // Dropdown menus
@@ -262,8 +287,6 @@
 
 // Menu position and menu carets
 .navbar .dropdown-menu {
-  margin-top: 1px;
-  .border-radius(4px);
   &:before {
     content: '';
     display: inline-block;
@@ -303,31 +326,31 @@
   }
 }
 // Dropdown toggle caret
-.navbar .nav .dropdown-toggle .caret,
-.navbar .nav .open.dropdown .caret {
+.navbar .nav li.dropdown .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open .caret {
   border-top-color: @white;
   border-bottom-color: @white;
 }
-.navbar .nav .active .caret {
+.navbar .nav li.dropdown.active .caret {
   .opacity(100);
 }
 
 // Remove background color from open dropdown
-.navbar .nav .open > .dropdown-toggle,
-.navbar .nav .active > .dropdown-toggle,
-.navbar .nav .open.active > .dropdown-toggle {
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
   background-color: transparent;
 }
 
 // Dropdown link on hover
-.navbar .nav .active > .dropdown-toggle:hover {
+.navbar .nav li.dropdown.active > .dropdown-toggle:hover {
   color: @white;
 }
 
 // Right aligned menus need alt position
 // TODO: rejigger this at some point to simplify the selectors
-.navbar .nav.pull-right .dropdown-menu,
-.navbar .nav .dropdown-menu.pull-right {
+.navbar .pull-right .dropdown-menu,
+.navbar .dropdown-menu.pull-right {
   left: auto;
   right: 0;
   &:before {

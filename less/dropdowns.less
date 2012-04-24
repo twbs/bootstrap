@@ -2,6 +2,7 @@
 // --------------
 
 // Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
+.dropup,
 .dropdown {
   position: relative;
 }
@@ -21,11 +22,11 @@
   width: 0;
   height: 0;
   vertical-align: top;
-  border-left:  4px solid transparent;
-  border-right: 4px solid transparent;
   border-top:   4px solid @black;
-  .opacity(30);
+  border-right: 4px solid transparent;
+  border-left:  4px solid transparent;
   content: "";
+  .opacity(30);
 }
 
 // Place the caret
@@ -34,7 +35,7 @@
   margin-left: 2px;
 }
 .dropdown:hover .caret,
-.open.dropdown .caret {
+.open .caret {
   .opacity(100);
 }
 
@@ -45,24 +46,22 @@
   top: 100%;
   left: 0;
   z-index: @zindexDropdown;
-  float: left;
   display: none; // none by default, but block on "open" of the menu
+  float: left;
   min-width: 160px;
   padding: 4px 0;
-  margin: 0; // override default ul
+  margin: 1px 0 0; // override default ul
   list-style: none;
   background-color: @dropdownBackground;
-  border-color: #ccc;
-  border-color: rgba(0,0,0,.2);
-  border-style: solid;
-  border-width: 1px;
-  .border-radius(0 0 5px 5px);
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  .border-radius(5px);
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
 
   // Aligns the dropdown menu to right
   &.pull-right {
@@ -99,25 +98,21 @@
 
 // Open state for the dropdown
 // ---------------------------
-.dropdown.open {
+.open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
   *z-index: @zindexDropdown;
 
-  .dropdown-toggle {
-    color: @white;
-    background: #ccc;
-    background: rgba(0,0,0,.3);
-  }
   .dropdown-menu {
     display: block;
   }
 }
 
 // Right aligned dropdowns
+// ---------------------------
 .pull-right .dropdown-menu {
-  left: auto;
   right: 0;
+  left: auto;
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
