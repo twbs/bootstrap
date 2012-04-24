@@ -33,3 +33,17 @@ h4 {
 #fluidRowInputs .row-fluid > [class*=span] {
   background-color: rgba(255,0,0,.1);
 }
+
+
+/* Fluid grid */
+.fluid-grid .row {
+  height: 60px;
+  padding-top: 10px;
+  margin-top: 10px;
+  color: #fff;
+  text-align: center;
+  background-color: #eee;
+}
+.fluid-grid .span1 {
+  background-color: #999;
+}

@@ -583,6 +583,7 @@
 
     .span (@columns) {
       width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+      *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
     }
 
     .row-fluid {
@@ -592,6 +593,7 @@
         .input-block-level();
         float: left;
         margin-left: @fluidGridGutterWidth;
+        *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
       }
       [class*="span"]:first-child {
         margin-left: 0;

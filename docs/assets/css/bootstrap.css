@@ -313,6 +313,7 @@ a:hover {
   width: 100%;
   min-height: 28px;
   margin-left: 2.127659574%;
+  *margin-left: 2.0744680846382977%;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
       -ms-box-sizing: border-box;
@@ -325,50 +326,62 @@ a:hover {
 
 .row-fluid .span12 {
   width: 99.99999998999999%;
+  *width: 99.94680850063828%;
 }
 
 .row-fluid .span11 {
   width: 91.489361693%;
+  *width: 91.4361702036383%;
 }
 
 .row-fluid .span10 {
   width: 82.97872339599999%;
+  *width: 82.92553190663828%;
 }
 
 .row-fluid .span9 {
   width: 74.468085099%;
+  *width: 74.4148936096383%;
 }
 
 .row-fluid .span8 {
   width: 65.95744680199999%;
+  *width: 65.90425531263828%;
 }
 
 .row-fluid .span7 {
   width: 57.446808505%;
+  *width: 57.3936170156383%;
 }
 
 .row-fluid .span6 {
   width: 48.93617020799999%;
+  *width: 48.88297871863829%;
 }
 
 .row-fluid .span5 {
   width: 40.425531911%;
+  *width: 40.3723404216383%;
 }
 
 .row-fluid .span4 {
   width: 31.914893614%;
+  *width: 31.8617021246383%;
 }
 
 .row-fluid .span3 {
   width: 23.404255317%;
+  *width: 23.3510638276383%;
 }
 
 .row-fluid .span2 {
   width: 14.89361702%;
+  *width: 14.8404255306383%;
 }
 
 .row-fluid .span1 {
   width: 6.382978723%;
+  *width: 6.329787233638298%;
 }
 
 .container {
