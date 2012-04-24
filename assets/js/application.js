@@ -51,6 +51,11 @@
 
     processScroll()
 
+    // hack sad times - holdover until rewrite for 2.1
+    $nav.on('click', function () {
+      if (!isFixed) setTimeout(function () {  $win.scrollTop($win.scrollTop() - 47) }, 10)
+    })
+
     $win.on('scroll', processScroll)
 
     function processScroll() {
@@ -132,7 +137,7 @@
 
       $.ajax({
         type: 'POST'
-      , url: 'http://bootstrap.herokuapp.com'
+      , url: /\?dev/.test(window.location) ? 'http://localhost:3000' : 'http://bootstrap.herokuapp.com'
       , dataType: 'jsonpi'
       , params: {
           js: js
@@ -142,7 +147,6 @@
       }
       })
     })
-
   })
 
 // Modified from the original jsonpi https://github.com/benvinegar/jquery-jsonpi
