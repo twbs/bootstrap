@@ -4777,6 +4777,10 @@ a.badge:hover {
   padding: 8px 15px;
 }
 
+.accordion-toggle {
+  cursor: pointer;
+}
+
 .accordion-inner {
   padding: 9px 15px;
   border-top: 1px solid #e5e5e5;
