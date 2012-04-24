@@ -36,13 +36,15 @@ h4 {
 
 
 /* Fluid grid */
+.fluid-grid {
+  margin-bottom: 45px;
+}
 .fluid-grid .row {
-  height: 60px;
+  height: 40px;
   padding-top: 10px;
   margin-top: 10px;
-  color: #fff;
+  color: #ddd;
   text-align: center;
-  background-color: #eee;
 }
 .fluid-grid .span1 {
   background-color: #999;
