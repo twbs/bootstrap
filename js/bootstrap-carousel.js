@@ -30,9 +30,12 @@
     this.$element = $(element)
     this.options = options
     this.options.slide && this.slide(this.options.slide)
-    this.options.pause == 'hover' && this.$element
+    this.options.pause in {hover:1,both:1} && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
+      
+    $.support.touch && this.$element.touch() && this.$element
+      .on('swipe',$.proxy(this.swipe, this)) && this.$element.children('.carousel-control').fadeOut('slow')
   }
 
   Carousel.prototype = {
@@ -126,7 +129,12 @@
 
       return this
     }
-
+    
+    , swipe: function(e, direction) {
+        this.options.pause in {swipe:1,both:1} && this.pause()
+        direction == 'left' && this.next()
+        direction == 'right' && this.prev()
+    }
   }
 
 
@@ -147,7 +155,7 @@
 
   $.fn.carousel.defaults = {
     interval: 5000
-  , pause: 'hover'
+  , pause: 'both'
   }
 
   $.fn.carousel.Constructor = Carousel
