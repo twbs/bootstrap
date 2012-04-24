@@ -132,7 +132,9 @@
 // Set the backgrounds
 // -------------------------
 .btn {
-  border-color: #ccc; // reset here as of 2.0.3 due to Recess property order
+  // reset here as of 2.0.3 due to Recess property order
+  border-color: #ccc;
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
 }
 .btn-primary {
   .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
