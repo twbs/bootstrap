@@ -1,15 +1,26 @@
 // THUMBNAILS
 // ----------
+// Note: `.thumbnails` and `.thumbnails > li` are overriden in responsive files
 
+// Make wrapper ul behave like the grid
 .thumbnails {
   margin-left: -@gridGutterWidth;
   list-style: none;
   .clearfix();
 }
-.thumbnails > li {
-  float: left;
-  margin: 0 0 @baseLineHeight @gridGutterWidth;
+// Fluid rows have no left margin
+.row-fluid .thumbnails {
+  margin-left: 0;
 }
+
+// Float li to make thumbnails appear in a row
+.thumbnails > li {
+  float: left; // Explicity set the float since we don't require .span* classes
+  margin-bottom: @baseLineHeight;
+  margin-left: @gridGutterWidth;
+}
+
+// The actual thumbnail (can be `a` or `div`)
 .thumbnail {
   display: block;
   padding: 4px;
@@ -23,6 +34,7 @@ a.thumbnail:hover {
   border-color: @linkColor;
   .box-shadow(0 1px 4px rgba(0,105,214,.25));
 }
+
 // Images and captions
 .thumbnail > img {
   display: block;

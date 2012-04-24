@@ -20,6 +20,7 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
@@ -39,7 +40,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse">
+          <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
                 <a href="./index.html">Overview</a>
@@ -107,8 +108,7 @@
       <h3>Base CSS</h3>
       <label class="checkbox"><input checked="checked" type="checkbox" value="type.less"> Headings, body, etc</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="code.less"> Code and pre</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="labels.less"> Labels</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="badges.less"> Badges</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="labels-badges.less"> Labels and badges</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="tables.less"> Tables</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="forms.less"> Forms</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> Buttons</label>
@@ -143,7 +143,11 @@
       <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> Utilities</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="component-animations.less"> Component animations</label>
       <h3>Responsive</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive.less"> Responsive layouts</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-utilities.less"> Visible/hidden classes</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-767px-max.less"> Narrow tablets and below (<767px)</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-768px-979px.less"> Tablets to desktops (767-979px)</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-1200px-min.less"> Large desktops (>1200px)</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-navbar.less"> Responsive navbar</label>
     </div><!-- /span -->
   </div><!-- /row -->
 </section>
@@ -276,14 +280,20 @@
       <input type="text" class="span3" placeholder="2.127659574%">
 
       <h3>Typography</h3>
+      <label>@sansFontFamily</label>
+      <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <label>@serifFontFamily</label>
+      <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif">
+      <label>@monoFontFamily</label>
+      <input type="text" class="span3" placeholder="Menlo, Monaco, 'Courier New', monospace">
       <label>@baseFontSize</label>
       <input type="text" class="span3" placeholder="13px">
       <label>@baseFontFamily</label>
-      <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <input type="text" class="span3" placeholder="@sansFontFamily">
       <label>@baseLineHeight</label>
       <input type="text" class="span3" placeholder="18px">
       <label>@altFontFamily</label>
-      <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif;">
+      <input type="text" class="span3" placeholder="@serifFontFamily">
       <label>@headingsFontFamily</label>
       <input type="text" class="span3" placeholder="inherit">
       <label>@headingsFontWeight</label>
@@ -317,6 +327,8 @@
       <input type="text" class="span3" placeholder="@grayDark">
       <label>@navbarText</label>
       <input type="text" class="span3" placeholder="@grayLight">
+      <label>@navbarBrandColor</label>
+      <input type="text" class="span3" placeholder="@navbarLinkColor">
       <label>@navbarLinkColor</label>
       <input type="text" class="span3" placeholder="@grayLight">
       <label>@navbarLinkColorHover</label>
@@ -356,8 +368,12 @@
       <input type="text" class="span3" placeholder="@white">
       <label>@inputBorder</label>
       <input type="text" class="span3" placeholder="#ccc">
+      <label>@inputBorderRadius</label>
+      <input type="text" class="span3" placeholder="3px">
       <label>@inputDisabledBackground</label>
       <input type="text" class="span3" placeholder="@grayLighter">
+      <label>@formActionsBackground</label>
+      <input type="text" class="span3" placeholder="#f5f5f5">
 
       <label>@btnPrimaryBackground</label>
       <input type="text" class="span3" placeholder="@linkColor">

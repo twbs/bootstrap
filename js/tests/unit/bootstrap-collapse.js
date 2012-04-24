@@ -22,4 +22,19 @@ $(function () {
         ok(/height/.test(el.attr('style')), 'has height set')
       })
 
+      test("should not fire shown when show is prevented", function () {
+        $.support.transition = false
+        stop();
+        $('<div class="collapse"/>')
+          .bind('show', function (e) {
+            e.preventDefault();
+            ok(true);
+            start();
+          })
+          .bind('shown', function () {
+            ok(false);
+          })
+          .collapse('show')
+      })
+
 })
