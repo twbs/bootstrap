@@ -873,8 +873,8 @@ input[type="hidden"] {
 
 .radio,
 .checkbox {
+  min-height: 18px;
   padding-left: 18px;
-  overflow: auto;
 }
 
 .radio input[type="radio"],
@@ -2694,6 +2694,11 @@ button.close {
   color: rgba(255, 255, 255, 0.75);
 }
 
+.btn {
+  border-color: #ccc;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
 .btn-primary {
   background-color: #0074cc;
   *background-color: #0055cc;
@@ -3003,9 +3008,9 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group > .dropdown-toggle {
-  *padding-top: 3px;
+  *padding-top: 4px;
   padding-right: 8px;
-  *padding-bottom: 3px;
+  *padding-bottom: 4px;
   padding-left: 8px;
   -webkit-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -3013,9 +3018,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group > .btn-mini.dropdown-toggle {
-  *padding-top: 1px;
   padding-right: 5px;
-  *padding-bottom: 1px;
   padding-left: 5px;
 }
 
@@ -4771,6 +4774,10 @@ a.badge:hover {
 .accordion-heading .accordion-toggle {
   display: block;
   padding: 8px 15px;
+}
+
+.accordion-toggle {
+  cursor: pointer;
 }
 
 .accordion-inner {

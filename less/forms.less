@@ -173,8 +173,8 @@ input[type="hidden"] {
 // Indent the labels to position radios/checkboxes as hanging
 .radio,
 .checkbox {
+  min-height: 18px; // clear the floating input if there is no label text
   padding-left: 18px;
-  overflow: auto; // clear the floating input if there is no label text
 }
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
