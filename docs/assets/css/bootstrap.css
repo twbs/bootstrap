@@ -873,8 +873,8 @@ input[type="hidden"] {
 
 .radio,
 .checkbox {
+  min-height: 18px;
   padding-left: 18px;
-  overflow: auto;
 }
 
 .radio input[type="radio"],
