@@ -2499,6 +2499,7 @@ table .span24 {
 
 .fade {
   opacity: 0;
+  filter: alpha(opacity=0);
   -webkit-transition: opacity 0.15s linear;
      -moz-transition: opacity 0.15s linear;
       -ms-transition: opacity 0.15s linear;
@@ -2508,6 +2509,7 @@ table .span24 {
 
 .fade.in {
   opacity: 1;
+  filter: alpha(opacity=100);
 }
 
 .collapse {
@@ -2547,7 +2549,7 @@ table .span24 {
 button.close {
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
+  background: transparent;
   border: 0;
   -webkit-appearance: none;
 }
@@ -4445,7 +4447,9 @@ input[type="submit"].btn.btn-mini {
 }
 
 .thumbnails > li {
+  float: left;
   margin-bottom: 18px;
+  margin-left: 20px;
 }
 
 .thumbnail {
