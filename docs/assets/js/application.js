@@ -137,7 +137,7 @@
 
       $.ajax({
         type: 'POST'
-      , url: 'http://bootstrap.herokuapp.com'
+      , url: /\?dev/.test(window.location) ? 'http://localhost:3000' : 'http://bootstrap.herokuapp.com'
       , dataType: 'jsonpi'
       , params: {
           js: js
@@ -147,7 +147,6 @@
       }
       })
     })
-
   })
 
 // Modified from the original jsonpi https://github.com/benvinegar/jquery-jsonpi
