@@ -2549,7 +2549,7 @@ table .span24 {
 button.close {
   padding: 0;
   cursor: pointer;
-  background-color: transparent;
+  background: transparent;
   border: 0;
   -webkit-appearance: none;
 }
@@ -4449,6 +4449,7 @@ input[type="submit"].btn.btn-mini {
 .thumbnails > li {
   float: left;
   margin-bottom: 18px;
+  margin-left: 20px;
 }
 
 .thumbnail {
