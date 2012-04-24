@@ -33,7 +33,11 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
-    this.$menu = $(this.options.menu).appendTo('body')
+    if (this.options.appendToBody) {
+      this.$menu = $(this.options.menu).appendTo('body')
+    } else {
+      this.$menu = $(this.options.menu).insertAfter(this.$element)
+    }
     this.source = this.options.source
     this.shown = false
     this.listen()
