@@ -4651,15 +4651,15 @@ a.badge:hover {
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
      -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
           box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-transition: width 0.6s ease;
      -moz-transition: width 0.6s ease;
       -ms-transition: width 0.6s ease;
        -o-transition: width 0.6s ease;
           transition: width 0.6s ease;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .progress-striped .bar {

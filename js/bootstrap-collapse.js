@@ -95,7 +95,7 @@
   , transition: function (method, startEvent, completeEvent) {
       var that = this
         , complete = function () {
-            if (startEvent == 'show') that.reset()
+            if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
             that.$element.trigger(completeEvent)
           }
