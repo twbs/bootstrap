@@ -5,9 +5,9 @@ These are the high-level design rules which guide the development of Bootstrap's
 
 ### DATA-ATTRIBUTE API
 
-We believe you should be able to use all plugins provided by Bootstrap purely through the markup API without writing a single line of javascript. This is bootstraps first class api.
+We believe you should be able to use all plugins provided by Bootstrap purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API.
 
-We acknowledge that this isn't always the most performant and sometimes it may be desirable to turn this functionality off altogether. Therefore, as of 2.0 we provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
+We acknowledge that this isn't always the most performant and it may sometimes be desirable to turn this functionality off altogether. Therefore, as of 2.0 we provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
 
     $('body').off('.data-api')
 
@@ -19,7 +19,7 @@ To target a specific plugin, just include the plugins name as a namespace along 
 
 ### PROGRAMATIC API
 
-We also believe you should be able to use all plugins provided by Bootstrap purely through the JS API.
+We also believe you should be able to use all plugins provided by Bootstrap purely through the JavaScript API.
 
 All public APIs should be single, chainable methods, and return the collection acted upon.
 
@@ -45,7 +45,7 @@ An options definition should take the following form:
 
     *noun*: *adjective* - describes or modifies a quality of an instance
 
-examples:
+Examples:
 
     backdrop: true
     keyboard: false
@@ -93,7 +93,7 @@ Data attributes should take the following form:
 - data-target || href^=# - defined on "control" element (if element controls an element other than self)
 - data-{{noun}} - defines class instance options
 
-examples:
+Examples:
 
     // control other targets
     data-toggle="modal" data-target="#foo"
