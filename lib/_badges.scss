@@ -20,6 +20,9 @@
 }
 
 // Colors
+.badge-important        { background-color: $errorText; }
+.badge-important:hover  { background-color: darken($errorText, 10%); }
+
 .badge-error            { background-color: $errorText; }
 .badge-error:hover      { background-color: darken($errorText, 10%); }
 
