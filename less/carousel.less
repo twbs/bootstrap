@@ -60,6 +60,27 @@
     left: 100%;
   }
 
+  // Fade effect
+  &.carousel-fade {
+    .item {
+     .transition(opacity 2s ease-in-out);
+    }
+    .active {
+      &.left, &.right {
+        left: 0;
+        z-index: 2;
+        .opacity(0);
+      }
+    }
+    .next, .prev {
+      left: 0;
+      z-index: 1;
+    }
+    .carousel-control {
+      z-index : 3;
+    }
+  }
+
 }
 
 // Left/right controls for nav
