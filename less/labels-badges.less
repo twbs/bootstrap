@@ -13,9 +13,11 @@
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   background-color: @grayLight;
 }
-// Set unique padding and border-radii
+// Set unique padding, border-radius and align to baseline of surrounding text
 .label {
-  padding: 1px 4px 2px;
+  display: inline-block;
+  margin-top: -3px;
+  padding: 2px 5px;
   .border-radius(3px);
 }
 .badge {
