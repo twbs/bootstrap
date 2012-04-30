@@ -30,6 +30,7 @@ h4 {
 
 
 /* Fluid row inputs */
+#rowInputs .row > [class*=span],
 #fluidRowInputs .row-fluid > [class*=span] {
   background-color: rgba(255,0,0,.1);
 }
