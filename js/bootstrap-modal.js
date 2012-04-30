@@ -30,6 +30,7 @@
     this.options = options
     this.$element = $(content)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+    this.isShown = this.$element.is(':visible')
   }
 
   Modal.prototype = {
@@ -189,6 +190,7 @@
       if (!data) $this.data('modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
+      else data.hide()
     })
   }
 
