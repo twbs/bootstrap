@@ -576,7 +576,7 @@
   .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
 
     .spanX (@index) when (@index > 0) {
-      (~".span@{index}") { .span(@index); }
+      (~ > ".span@{index}") { .span(@index); }
       .spanX(@index - 1);
     }
     .spanX (0) {}
@@ -589,13 +589,13 @@
     .row-fluid {
       width: 100%;
       .clearfix();
-      [class*="span"] {
+      > [class*="span"] {
         .input-block-level();
         float: left;
         margin-left: @fluidGridGutterWidth;
         *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
       }
-      [class*="span"]:first-child {
+      > [class*="span"]:first-child {
         margin-left: 0;
       }
 
