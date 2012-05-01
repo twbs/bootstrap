@@ -1244,6 +1244,7 @@ select:focus:required:invalid:focus {
 .input-prepend,
 .input-append {
   margin-bottom: 5px;
+  font-size: 0;
 }
 
 .input-prepend input,
@@ -1255,6 +1256,7 @@ select:focus:required:invalid:focus {
   position: relative;
   margin-bottom: 0;
   *margin-left: 0;
+  font-size: 13px;
   vertical-align: middle;
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
@@ -1296,6 +1298,7 @@ select:focus:required:invalid:focus {
 .input-prepend .btn,
 .input-append .btn {
   margin-left: -1px;
+  font-size: 13px;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;

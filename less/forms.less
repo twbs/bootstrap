@@ -376,10 +376,12 @@ select:focus:required:invalid {
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-prepend,
 .input-append {
+  font-size: 0;
   margin-bottom: 5px;
   input,
   select,
   .uneditable-input {
+    font-size: @baseFontSize;
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
@@ -409,6 +411,7 @@ select:focus:required:invalid {
   }
   .add-on,
   .btn {
+    font-size: @baseFontSize;
     margin-left: -1px;
     .border-radius(0);
   }
