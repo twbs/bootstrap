@@ -312,6 +312,15 @@
           column-gap: @columnGap;
 }
 
+// Optional hyphenation
+.hyphens(@mode: auto) {
+  -webkit-hyphens: @mode;
+     -moz-hyphens: @mode;
+      -ms-hyphens: @mode;
+          hyphens: @mode;
+        word-wrap:break-word;
+}
+
 // Opacity
 .opacity(@opacity) {
   opacity: @opacity / 100;
