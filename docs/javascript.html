@@ -94,6 +94,7 @@
             <li><a href="#collapse">Collapse</a></li>
             <li><a href="#carousel">Carousel</a></li>
             <li><a href="#typeahead">Typeahead</a></li>
+            <li><a href="#list">Lists</a></li>
           </ul>
         </div>
       </header>
@@ -1504,6 +1505,132 @@ $('.carousel').carousel({
         </div>
       </div>
     </section>
+    
+    
+    <!-- Lists
+    ================================================== -->
+    <section id="list">
+      <div class="page-header">
+        <h1>Lists <small>bootstrap-list.js</small></h1>
+      </div>
+      <div class="row">
+        <div class="span3 columns">
+          <h3>About</h3>
+          <p>A basic, easily extended plugin for quickly creating touch-enabled list components.</p>
+          <a href="assets/js/bootstrap-list.js" target="_blank" class="btn">Download file</a>
+        </div>
+        <div class="span9 columns">
+          <h2>Example</h2>
+          <p>Scroll through the list using your scroll wheel, a touch gesture (works with mouse input too), or using the scrollbar (desktop only).  Tap an item to receive a "change" event.   Gesture-based scrolling animates with inertia for both desktop and mobile browsers.</p>
+          
+          <p>For performance optimizations, the list component uses data virtualization techniques, so there are never more list elements in the HTML DOM than what is currently visible on the screen.  As the user scrolls through content, the list updates the DOM elements accordingly.  This makes scrolling lists of thousands of items extremely fluid.</p>
+          
+          <hr>
+          <h2>Using bootstrap-list.js</h2>
+          <p>There are two methods that the list component can be used.  One option is to declare the list structure in HTML markup, another option is to specify a dataProvider array, from which the list will create DOM elements.</p>
+          
+          <h3>Declarative Markup</h3>
+          <p>This list has 50 items as &lt;LI&gt; elements:
+          <p><div class="list" id="myList" >
+			<ul>
+				<li>item 0</li> <li>item 1</li> <li>item 2</li> <li>item 3</li> <li>item 4</li> <li>item 5</li> <li>item 6</li> <li>item 7</li> <li>item 8</li> <li>item 9</li> 
+				<li>item 10</li> <li>item 11</li> <li>item 12</li> <li>item 13</li> <li>item 14</li> <li>item 15</li> <li>item 16</li> <li>item 17</li> <li>item 18</li> <li>item 19</li> 
+				<li>item 20</li> <li>item 21</li> <li>item 22</li> <li>item 23</li> <li>item 24</li> <li>item 25</li> <li>item 26</li> <li>item 27</li> <li>item 28</li> <li>item 29</li> 
+				<li>item 30</li> <li>item 31</li> <li>item 32</li> <li>item 33</li> <li>item 34</li> <li>item 35</li> <li>item 36</li> <li>item 37</li> <li>item 38</li> <li>item 39</li> 
+				<li>item 40</li> <li>item 41</li> <li>item 42</li> <li>item 43</li> <li>item 44</li> <li>item 45</li> <li>item 46</li> <li>item 47</li> <li>item 48</li> <li>item 49</li>
+			</ul>
+		  </div></p>
+          <p>First create the HTML Structure, then instantiate the list via javascript, and add an event handler:</p>
+          <h4>Markup</h4>
+          <pre class="prettyprint linenums">
+&lt;div class="list" id="myList" &gt;
+    &lt;ul&gt;
+        &lt;li&gt;item 0&lt;/li&gt; &lt;li&gt;item 1&lt;/li&gt; &lt;li&gt;item 2&lt;/li&gt; &lt;li&gt;item 3&lt;/li&gt; &lt;li&gt;item 4&lt;/li&gt; &lt;li&gt;item 5&lt;/li&gt; &lt;li&gt;item 6&lt;/li&gt; &lt;li&gt;item 7&lt;/li&gt; &lt;li&gt;item 8&lt;/li&gt; &lt;li&gt;item 9&lt;/li&gt; 
+    &lt;/ul&gt;
+&lt;/div&gt;
+          </pre>
+          <h4>Script</h4>
+          <pre class="prettyprint linenums">$('#myList').list()
+$('#myList').on('change', function(event){ 
+    var message = "selected index: "+event.selectedIndex+"\n"+ 
+                  "selected item: "+event.srcElement.get()[0].outerHTML;
+    alert( message ); 
+})</pre>
+
+          <hr/>
+          <h3>Specifying a Data Provider Array</h3>
+          <p>This list has <strong style="color:red">100,000</strong> items in the data provider array:</p>
+          <p><div class="list" id="myList2" ></div></p>
+          <p>First, declare the basic HTML container &lt;div&gt;, then create the list, then add a data provider array and optional label function.</p>
+          <h4>Markup</h4>
+          <pre class="prettyprint linenums">&lt;div class="list" id="myList2" &gt;&lt;/div&gt;</pre>
+          <h4>Script</h4>
+          <pre class="prettyprint linenums">function listChangeHandler( event ) { 
+    var message =   "selected index: " + event.selectedIndex + "\n" + 
+                    "selected item: " + event.srcElement.get()[0].outerHTML   ;
+    alert( message ); 
+}
+
+function createDataProvider() {
+    var result = [];
+    for ( var x=0; x<1000; x++ ) {
+        result.push(x);
+    }	
+    return result;
+}
+
+function listItemLabelFunction( item ) {
+    return "Decimal: " + item.toString() + ", Hex: " + item.toString(16);
+}
+
+$('#myList2').list()
+$('#myList2').list('setDataProvider', createDataProvider() )
+$('#myList2').list('setLabelFunction', listItemLabelFunction )
+$('#myList').on('change', listChangeHandler)</pre>
+
+          
+          <h3>Methods</h3>
+          <h4>.list()</h4>
+          <p>Initializes a list component.</p>
+          <h4>.list('setDataProvider', dataProviderArray)</h4>
+          <p>Sets the data provider array for the list instance.  There is no concrete limit on the length of the data provider array.  Elements within the array can be of primitive or complex types.</p>
+          <h4>.list('setLabelFunction', labelFunction)</h4>
+          <p>Sets label function that can be used to format items in the data provider array into string values that can be displayed within the list.</p>
+          <h4>.list('setSelectedIndex', index)</h4>
+          <p>Set the item at selected index as selected.</p>
+          <h4>.list('getSelectedIndex')</h4>
+          <p>Returns the currently selected index.  If no list item is selected, returns -1.</p>
+          <h4>.list('clearSelectedIndex')</h4>
+          <p>Clears the currently selected item in the list.</p>
+          
+          <h3>Events</h3>
+          <p>
+            Bootstrap's list class exposes a change event for handling when the selected item in the list changes.
+          </p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">Event</th>
+               <th>Description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>change</td>
+               <td>This event is fired when the selected item in the list is changed.  You can access details of the selected item in the list by accessing attributes of the event.  
+                <h5>event.index</h5>
+                The numeric index for the item in the list that was clicked/touched.
+                <h5>event.srcElement</h5>
+                A jQuery reference to the list item that was clicked/touched.
+                <h5>event.item</h5>
+                A reference to the data item for the list item.  If using inline &lt;li&gt; in markup, this will be the same DOM element as event.srcElement.  If using a dataProvider, it will be the object in the dataProvider array corresponding to the selected list item.
+               </td>
+             </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
      <!-- Footer
       ================================================== -->
@@ -1536,6 +1663,7 @@ $('.carousel').carousel({
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-list.js"></script>
     <script src="assets/js/application.js"></script>
 
 

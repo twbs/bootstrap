@@ -1,0 +1,82 @@
+// LIST
+// --------
+
+.list {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow: hidden;
+	position:relative;
+	border: 1px solid silver;
+	background-color: @white;
+	height:200px;
+}
+
+.list ul,
+.list li {
+	padding:0;
+	margin:0;
+	border:none;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+.list ul {
+	position:absolute;
+	display:block;
+	width:100%;
+	height:100%;
+	top:0px;
+	overflow:visible;
+	
+	visibility:hidden;
+	transform: translate3d(0px, 0px, 0px);
+	transform: -o-translate3d(0px, 0px, 0px);
+	transform: -ms-translate3d(0px, 0px, 0px);
+	transform: -moz-translate3d(0px, 0px, 0px);
+	transform: -webkit-translate3d(0px, 0px, 0px);
+}
+
+.list li {
+	padding:10px;
+	display:block;
+	position: absolute;
+	width:100%;
+	border-top:1px solid #EDEDED;
+	transform: translate3d(0px, 0px, 0px);
+	transform: -o-translate3d(0px, 0px, 0px);
+	transform: -ms-translate3d(0px, 0px, 0px);
+	transform: -moz-translate3d(0px, 0px, 0px);
+	transform: -webkit-translate3d(0px, 0px, 0px);
+}
+
+.listSelected {
+	color: @white;
+	border-top:1px solid #094C99;
+	background: rgb(30,87,153); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(50,151,229,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(50,151,229,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(50,151,229,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(50,151,229,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(50,151,229,1) 100%); /* IE10+ */
+	background: linear-gradient(top, rgba(30,87,153,1) 0%,rgba(50,151,229,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#3297e5',GradientType=0 ); /* IE6-9 */
+}
+
+.list #scrollbar {
+	position:absolute;
+	background-color: black;
+	background-color: rgba(0,0,0,0.5);
+	width:5px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	top:1px;
+	right:1px;
+	height:25px;
+	border:1px solid rgba(255,255,255,0.5);
+}

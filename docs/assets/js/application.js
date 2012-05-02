@@ -96,6 +96,34 @@
 
     // carousel demo
     $('#myCarousel').carousel()
+    
+    //lists demos
+    function listChangeHandler( event ) { 
+        var message =   "selected index: " + event.selectedIndex + "\n" + 
+                        "selected item: " + event.srcElement.get()[0].outerHTML   ;
+        alert( message ); 
+    }
+    
+    function createDataProvider() {
+        var result = [];
+        
+        for ( var x=0; x<100000; x++ ) {
+            result.push(x);
+        }	
+        return result;
+    }
+    
+    function listItemLabelFunction( item ) {
+        return "Decimal: " + item.toString() + ", Hex: " + item.toString(16);
+    }
+    
+    $('#myList').list()
+    $('#myList').on('change', listChangeHandler)
+    
+    $('#myList2').list()
+    $('#myList2').list('setDataProvider', createDataProvider() )
+    $('#myList2').list('setLabelFunction', listItemLabelFunction )
+    $('#myList2').on('change', listChangeHandler)
 
     // javascript build logic
     var inputsComponent = $("#components.download input")
