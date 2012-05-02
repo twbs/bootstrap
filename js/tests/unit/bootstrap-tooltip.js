@@ -133,4 +133,8 @@ $(function () {
         ok($.fn.tooltip.Constructor.prototype.isHTML($('<div></div>')), 'correctly detected html')
       })
 
+      test("should detect if title string is html or text: foo&amp;amp;bar", function () {
+        ok($.fn.tooltip.Constructor.prototype.isHTML('foo&amp;bar'), 'correctly detected html')
+      })
+
 })
