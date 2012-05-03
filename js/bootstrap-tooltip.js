@@ -145,6 +145,8 @@
           .css(tp)
           .addClass(placement)
           .addClass('in')
+        
+        if(this.options.onShow) this.options.onShow()
       }
     }
 
@@ -169,6 +171,8 @@
       var that = this
         , $tip = this.tip()
 
+      if(this.options.onHide) this.options.onHide()
+      
       $tip.removeClass('in')
 
       function removeWithAnimation() {
@@ -270,6 +274,8 @@
   , trigger: 'hover'
   , title: ''
   , delay: 0
+  , onShow: false
+  , onHide: false
   }
 
 }(window.jQuery);
