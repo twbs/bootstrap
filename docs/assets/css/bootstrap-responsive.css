@@ -169,7 +169,7 @@
   }
   [class*="span"],
   .row-fluid [class*="span"] {
-    display: block;
+    display: inline-block;
     float: none;
     width: auto;
     margin-left: 0;
