@@ -132,6 +132,20 @@ table {
   }
 }
 
+// Default zebra-stripe styles (for multi-row records)
+.table-multirow-striped {
+  tbody:nth-child(odd) {
+    background-color: @tableBackgroundAccent;
+  }
+  tbody + tbody {
+    border-top: 1px solid @tableBorder;
+  }
+  tr:not(:first-child) th, tr:not(:first-child) td {
+    border-top: none;
+  }
+}
+
+
 
 // HOVER EFFECT
 // ------------
