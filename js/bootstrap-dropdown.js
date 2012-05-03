@@ -53,6 +53,12 @@
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
       }
 
+      try {
+        $parent = $(selector)
+      }
+      catch(e) { 
+        $parent = false 
+      }
       $parent = $(selector)
       $parent.length || ($parent = $this.parent())
 
