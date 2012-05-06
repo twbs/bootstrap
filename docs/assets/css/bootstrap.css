@@ -324,6 +324,15 @@ a:hover {
   margin-left: 0;
 }
 
+@media (min-width: 768px) {
+  .row-fluid [class*="span"] + [class*="span"]:last-child {
+    float: right;
+  }
+  .row-fluid [class*="span"] + [class*="span"].end {
+    float: left;
+  }
+}
+
 .row-fluid .span12 {
   width: 99.99999998999999%;
   *width: 99.94680850063828%;
