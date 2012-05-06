@@ -598,7 +598,20 @@
       [class*="span"]:first-child {
         margin-left: 0;
       }
-
+      
+      @media (min-width: 768px) {
+        // It's preferable to have the last column in a fluid row
+        // stick to that row's right edge. This ensures that the
+        // columns fully span the row, despite rounding errors.
+        [class*="span"] + [class*="span"]:last-child { float: right; }
+      
+        // If you happen to be in a situation where you have a fluid
+        // row whose columns' span values don't add up to 12 (ie. you
+        // have intentionally left space to the right of the last column)
+        // give that last column the .end class to keep it in place.
+        [class*="span"] + [class*="span"].end { float: left; }
+      }
+      
       // generate .spanX
       .spanX (@gridColumns);
     }

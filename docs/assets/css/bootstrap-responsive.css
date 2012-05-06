@@ -434,6 +434,15 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 979px) and (min-width: 768px) {
+  [class*="span"] + [class*="span"]:last-child {
+    float: right;
+  }
+  [class*="span"] + [class*="span"].end {
+    float: left;
+  }
+}
+
 @media (min-width: 1200px) {
   .row {
     margin-left: -30px;
@@ -676,6 +685,15 @@
   }
   .row-fluid .thumbnails {
     margin-left: 0;
+  }
+}
+
+@media (min-width: 1200px) and (min-width: 768px) {
+  [class*="span"] + [class*="span"]:last-child {
+    float: right;
+  }
+  [class*="span"] + [class*="span"].end {
+    float: left;
   }
 }
 
