@@ -67,8 +67,13 @@
 
   }
 
-  function clearMenus() {
-    $(toggle).parent().removeClass('open')
+  function clearMenus(e) {
+    if (e && e.target)
+      $(toggle).each(function() {
+        if (!$.contains($(this).parent()[0], e.target))
+          $(this).parent().removeClass('open')
+      })
+    else $(toggle).parent().removeClass('open')
   }
 
 
