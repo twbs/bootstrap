@@ -19,6 +19,7 @@ Thumbs.db
 .project
 .settings
 .tmproj
+.tm_properties
 *.esproj
 nbproject
 *.sublime-project
@@ -34,3 +35,5 @@ nbproject
 .CVS
 .idea
 node_modules
+cache
+temp
