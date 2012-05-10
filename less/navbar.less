@@ -233,6 +233,9 @@
   color: @navbarLinkColorHover;
   text-decoration: none;
 }
+.navbar .nav > li > a.btn:hover {
+  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight); // for buttons placed in a nav list
+}
 
 // Active nav items
 .navbar .nav .active > a,
