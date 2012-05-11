@@ -100,6 +100,8 @@
 
       if ($next.hasClass('active')) return
 
+      e.relatedTarget = $next // set related target to next item
+      
       if ($.support.transition && this.$element.hasClass('slide')) {
         this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
