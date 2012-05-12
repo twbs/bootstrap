@@ -1,0 +1,51 @@
+/*!
+ * Bootstrap CSS Tests
+ */
+
+
+/* Remove background image */
+body {
+  background-image: none;
+}
+
+/* Space out subhead */
+.subhead {
+  margin-bottom: 36px;
+}
+h4 {
+  margin-bottom: 5px;
+}
+
+
+/* colgroup tests */
+.col1 {
+  background-color: rgba(255,0,0,.1);
+}
+.col2 {
+  background-color: rgba(0,255,0,.1);
+}
+.col3 {
+  background-color: rgba(0,0,255,.1);
+}
+
+
+/* Fluid row inputs */
+#fluidRowInputs .row-fluid > [class*=span] {
+  background-color: rgba(255,0,0,.1);
+}
+
+
+/* Fluid grid */
+.fluid-grid {
+  margin-bottom: 45px;
+}
+.fluid-grid .row {
+  height: 40px;
+  padding-top: 10px;
+  margin-top: 10px;
+  color: #ddd;
+  text-align: center;
+}
+.fluid-grid .span1 {
+  background-color: #999;
+}

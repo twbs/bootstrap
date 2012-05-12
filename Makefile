@@ -1,47 +1,94 @@
-VERSION=1.4.0
-DATE=$(shell DATE)
-BOOTSTRAP = ./bootstrap.css
-BOOTSTRAP_MIN = ./bootstrap.min.css
-BOOTSTRAP_LESS = ./lib/bootstrap.less
-LESS_COMPRESSOR ?= `which lessc`
-UGLIFY_JS ?= `which uglifyjs`
-WATCHR ?= `which watchr`
+BOOTSTRAP = ./docs/assets/css/bootstrap.css
+BOOTSTRAP_LESS = ./less/bootstrap.less
+BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
+BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
+DATE=$(shell date +%I:%M%p)
+CHECK=\033[32m✔\033[39m
+HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+
+#
+# BUILD DOCS
+#
 
 build:
-	@@if test ! -z ${LESS_COMPRESSOR}; then \
-		sed -e 's/@VERSION/'"v${VERSION}"'/' -e 's/@DATE/'"${DATE}"'/' <${BOOTSTRAP_LESS} >${BOOTSTRAP_LESS}.tmp; \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP}; \
-		lessc ${BOOTSTRAP_LESS}.tmp > ${BOOTSTRAP_MIN} --compress; \
-		rm -f ${BOOTSTRAP_LESS}.tmp; \
-		echo "Bootstrap successfully built! - `date`"; \
-	else \
-		echo "You must have the LESS compiler installed in order to build Bootstrap."; \
-		echo "You can install it by running: npm install less -g"; \
-	fi
+	@echo "\n${HR}"
+	@echo "Building Bootstrap..."
+	@echo "${HR}\n"
+	@jshint js/*.js --config js/.jshintrc
+	@jshint js/tests/unit/*.js --config js/.jshintrc
+	@echo "Running JSHint on javascript...             ${CHECK} Done"
+	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
+	@echo "Compiling LESS with Recess...               ${CHECK} Done"
+	@node docs/build
+	@cp img/* docs/assets/img/
+	@cp js/*.js docs/assets/js/
+	@cp js/tests/vendor/jquery.js docs/assets/js/
+	@echo "Compiling documentation...                  ${CHECK} Done"
+	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > docs/assets/js/bootstrap.js
+	@uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
+	@echo "/**\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
+	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
+	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
+	@echo "Compiling and minifying javascript...       ${CHECK} Done"
+	@echo "\n${HR}"
+	@echo "Bootstrap successfully built at ${DATE}."
+	@echo "${HR}\n"
+	@echo "Thanks for using Bootstrap,"
+	@echo "<3 @mdo and @fat\n"
 
-js/min:
-	@@if test ! -z ${UGLIFY_JS}; then \
-		mkdir -p js/min; \
-		uglifyjs -o js/min/bootstrap-alerts.min.js    js/bootstrap-alerts.js;\
-		uglifyjs -o js/min/bootstrap-buttons.min.js   js/bootstrap-buttons.js;\
-		uglifyjs -o js/min/bootstrap-dropdown.min.js  js/bootstrap-dropdown.js;\
-		uglifyjs -o js/min/bootstrap-modal.min.js     js/bootstrap-modal.js;\
-		uglifyjs -o js/min/bootstrap-popover.min.js   js/bootstrap-popover.js;\
-		uglifyjs -o js/min/bootstrap-scrollspy.min.js js/bootstrap-scrollspy.js;\
-		uglifyjs -o js/min/bootstrap-tabs.min.js      js/bootstrap-tabs.js;\
-		uglifyjs -o js/min/bootstrap-twipsy.min.js    js/bootstrap-twipsy.js;\
-	else \
-		echo "You must have the UGLIFYJS minifier installed in order to minify Bootstrap's js."; \
-		echo "You can install it by running: npm install uglify-js -g"; \
-	fi
+#
+# RUN JSHINT & QUNIT TESTS IN PHANTOMJS
+#
+
+test:
+	jshint js/*.js --config js/.jshintrc
+	jshint js/tests/unit/*.js --config js/.jshintrc
+	node js/tests/server.js &
+	phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"
+	kill -9 `cat js/tests/pid.txt`
+	rm js/tests/pid.txt
+
+#
+# BUILD SIMPLE BOOTSTRAP DIRECTORY
+# recess & uglifyjs are required
+#
+
+bootstrap:
+	mkdir -p bootstrap/img
+	mkdir -p bootstrap/css
+	mkdir -p bootstrap/js
+	cp img/* bootstrap/img/
+	recess --compile ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
+	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
+	recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.css
+	recess --compress ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.min.css
+	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js > bootstrap/js/bootstrap.js
+	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.tmp.js
+	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
+	cat bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js > bootstrap/js/bootstrap.min.js
+	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
+
+#
+# MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
+#
+
+gh-pages: bootstrap docs
+	rm -f docs/assets/bootstrap.zip
+	zip -r docs/assets/bootstrap.zip bootstrap
+	rm -r bootstrap
+	rm -f ../bootstrap-gh-pages/assets/bootstrap.zip
+	node docs/build production
+	cp -r docs/* ../bootstrap-gh-pages
+
+#
+# WATCH LESS FILES
+#
 
 watch:
-	@@if test ! -z ${WATCHR}; then \
-	  echo "Watching less files..."; \
-	  watchr -e "watch('lib/.*\.less') { system 'make' }"; \
-	else \
-		echo "You must have the watchr installed in order to watch Bootstrap less files."; \
-		echo "You can install it by running: gem install watchr"; \
-	fi
+	echo "Watching less files..."; \
+	watchr -e "watch('less/.*\.less') { system 'make' }"
 
-.PHONY: build watch
+
+.PHONY: docs watch gh-pages

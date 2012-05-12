@@ -1,0 +1,193 @@
+overview: |
+  Inverted Section tags and End Section tags are used in combination to wrap a
+  section of the template.
+
+  These tags' content MUST be a non-whitespace character sequence NOT
+  containing the current closing delimiter; each Inverted Section tag MUST be
+  followed by an End Section tag with the same content within the same
+  section.
+
+  This tag's content names the data to replace the tag.  Name resolution is as
+  follows:
+    1) Split the name on periods; the first part is the name to resolve, any
+    remaining parts should be retained.
+    2) Walk the context stack from top to bottom, finding the first context
+    that is a) a hash containing the name as a key OR b) an object responding
+    to a method with the given name.
+    3) If the context is a hash, the data is the value associated with the
+    name.
+    4) If the context is an object and the method with the given name has an
+    arity of 1, the method SHOULD be called with a String containing the
+    unprocessed contents of the sections; the data is the value returned.
+    5) Otherwise, the data is the value returned by calling the method with
+    the given name.
+    6) If any name parts were retained in step 1, each should be resolved
+    against a context stack containing only the result from the former
+    resolution.  If any part fails resolution, the result should be considered
+    falsey, and should interpolate as the empty string.
+  If the data is not of a list type, it is coerced into a list as follows: if
+  the data is truthy (e.g. `!!data == true`), use a single-element list
+  containing the data, otherwise use an empty list.
+
+  This section MUST NOT be rendered unless the data list is empty.
+
+  Inverted Section and End Section tags SHOULD be treated as standalone when
+  appropriate.
+tests:
+  - name: Falsey
+    desc: Falsey sections should have their contents rendered.
+    data: { boolean: false }
+    template: '"{{^boolean}}This should be rendered.{{/boolean}}"'
+    expected: '"This should be rendered."'
+
+  - name: Truthy
+    desc: Truthy sections should have their contents omitted.
+    data: { boolean: true }
+    template: '"{{^boolean}}This should not be rendered.{{/boolean}}"'
+    expected: '""'
+
+  - name: Context
+    desc: Objects and hashes should behave like truthy values.
+    data: { context: { name: 'Joe' } }
+    template: '"{{^context}}Hi {{name}}.{{/context}}"'
+    expected: '""'
+
+  - name: List
+    desc: Lists should behave like truthy values.
+    data: { list: [ { n: 1 }, { n: 2 }, { n: 3 } ] }
+    template: '"{{^list}}{{n}}{{/list}}"'
+    expected: '""'
+
+  - name: Empty List
+    desc: Empty lists should behave like falsey values.
+    data: { list: [ ] }
+    template: '"{{^list}}Yay lists!{{/list}}"'
+    expected: '"Yay lists!"'
+
+  - name: Doubled
+    desc: Multiple inverted sections per template should be permitted.
+    data: { bool: false, two: 'second' }
+    template: |
+      {{^bool}}
+      * first
+      {{/bool}}
+      * {{two}}
+      {{^bool}}
+      * third
+      {{/bool}}
+    expected: |
+      * first
+      * second
+      * third
+
+  - name: Nested (Falsey)
+    desc: Nested falsey sections should have their contents rendered.
+    data: { bool: false }
+    template: "| A {{^bool}}B {{^bool}}C{{/bool}} D{{/bool}} E |"
+    expected: "| A B C D E |"
+
+  - name: Nested (Truthy)
+    desc: Nested truthy sections should be omitted.
+    data: { bool: true }
+    template: "| A {{^bool}}B {{^bool}}C{{/bool}} D{{/bool}} E |"
+    expected: "| A  E |"
+
+  - name: Context Misses
+    desc: Failed context lookups should be considered falsey.
+    data: { }
+    template: "[{{^missing}}Cannot find key 'missing'!{{/missing}}]"
+    expected: "[Cannot find key 'missing'!]"
+
+  # Dotted Names
+
+  - name: Dotted Names - Truthy
+    desc: Dotted names should be valid for Inverted Section tags.
+    data: { a: { b: { c: true } } }
+    template: '"{{^a.b.c}}Not Here{{/a.b.c}}" == ""'
+    expected: '"" == ""'
+
+  - name: Dotted Names - Falsey
+    desc: Dotted names should be valid for Inverted Section tags.
+    data: { a: { b: { c: false } } }
+    template: '"{{^a.b.c}}Not Here{{/a.b.c}}" == "Not Here"'
+    expected: '"Not Here" == "Not Here"'
+
+  - name: Dotted Names - Broken Chains
+    desc: Dotted names that cannot be resolved should be considered falsey.
+    data: { a: { } }
+    template: '"{{^a.b.c}}Not Here{{/a.b.c}}" == "Not Here"'
+    expected: '"Not Here" == "Not Here"'
+
+  # Whitespace Sensitivity
+
+  - name: Surrounding Whitespace
+    desc: Inverted sections should not alter surrounding whitespace.
+    data: { boolean: false }
+    template: " | {{^boolean}}\t|\t{{/boolean}} | \n"
+    expected: " | \t|\t | \n"
+
+  - name: Internal Whitespace
+    desc: Inverted should not alter internal whitespace.
+    data: { boolean: false }
+    template: " | {{^boolean}} {{! Important Whitespace }}\n {{/boolean}} | \n"
+    expected: " |  \n  | \n"
+
+  - name: Indented Inline Sections
+    desc: Single-line sections should not alter surrounding whitespace.
+    data: { boolean: false }
+    template: " {{^boolean}}NO{{/boolean}}\n {{^boolean}}WAY{{/boolean}}\n"
+    expected: " NO\n WAY\n"
+
+  - name: Standalone Lines
+    desc: Standalone lines should be removed from the template.
+    data: { boolean: false }
+    template: |
+      | This Is
+      {{^boolean}}
+      |
+      {{/boolean}}
+      | A Line
+    expected: |
+      | This Is
+      |
+      | A Line
+
+  - name: Standalone Indented Lines
+    desc: Standalone indented lines should be removed from the template.
+    data: { boolean: false }
+    template: |
+      | This Is
+        {{^boolean}}
+      |
+        {{/boolean}}
+      | A Line
+    expected: |
+      | This Is
+      |
+      | A Line
+
+  - name: Standalone Line Endings
+    desc: '"\r\n" should be considered a newline for standalone tags.'
+    data: { boolean: false }
+    template: "|\r\n{{^boolean}}\r\n{{/boolean}}\r\n|"
+    expected: "|\r\n|"
+
+  - name: Standalone Without Previous Line
+    desc: Standalone tags should not require a newline to precede them.
+    data: { boolean: false }
+    template: "  {{^boolean}}\n^{{/boolean}}\n/"
+    expected: "^\n/"
+
+  - name: Standalone Without Newline
+    desc: Standalone tags should not require a newline to follow them.
+    data: { boolean: false }
+    template: "^{{^boolean}}\n/\n  {{/boolean}}"
+    expected: "^\n/\n"
+
+  # Whitespace Insensitivity
+
+  - name: Padding
+    desc: Superfluous in-tag whitespace should be ignored.
+    data: { boolean: false }
+    template: '|{{^ boolean }}={{/ boolean }}|'
+    expected: '|=|'

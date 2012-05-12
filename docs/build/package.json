@@ -1,0 +1,6 @@
+{
+  "name": "bootstrap-doc-builder"
+, "version": "0.0.1"
+, "description": "build bootstrap docs"
+, "dependencies": { "hogan.js": "1.0.5-dev" }
+}
