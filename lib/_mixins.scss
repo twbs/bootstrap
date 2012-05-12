@@ -565,11 +565,6 @@
   *width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1)) - (.5 / $gridRowWidth * 100px * 1%);
 }
 
-.gridTest {
-  width: 1px;
-  *width: 1px;
-}
-
 @mixin grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth) {
   .row-fluid {
     width: 100%;
