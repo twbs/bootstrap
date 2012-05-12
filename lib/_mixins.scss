@@ -4,9 +4,8 @@
 
 // Updates for SASS:
 //  - use @mixin instead of class definitions
-//  - replace @ with $ for variables
+//  - replace @ with $
 //  - add default of 5px for @size and @square mixins
-//  - add baseFontWeight variable
 //  - replace grid generation loops with for $i from 1 to $gridColumns
 
 // UTILITY MIXINS
@@ -131,21 +130,21 @@
   font-family: $monoFontFamily;
 }
 
-@mixin font-shorthand ($size: $baseFontSize, $weight: $baseFontWeight, $lineHeight: $baseLineHeight) {
+@mixin font-shorthand ($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   font-size: $size;
   font-weight: $weight;
   line-height: $lineHeight;
 }
 
-@mixin font-serif($size: $baseFontSize, $weight: $baseFontWeight, $lineHeight: $baseLineHeight) {
+@mixin font-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   @include font-family-serif();
   @include font-shorthand($size, $weight, $lineHeight);
 }
-@mixin font-sans-serif($size: $baseFontSize, $weight: $baseFontWeight, $lineHeight: $baseLineHeight) {
+@mixin font-sans-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   @include font-family-sans-serif();
   @include font-shorthand($size, $weight, $lineHeight);
 }
-@mixin font-monospace($size: $baseFontSize, $weight: $baseFontWeight, $lineHeight: $baseLineHeight) {
+@mixin font-monospace($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   @include font-family-monospace();
   @include font-shorthand($size, $weight, $lineHeight);
 }

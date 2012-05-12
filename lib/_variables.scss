@@ -5,8 +5,6 @@
 // Updated for SASS:
 //  - replace @ with $
 //  - replace `spin` with `adjust-hue`
-//  - add a $baseFontWeight variable (default: normal) for use with
-//    font-shorthand mixins
 //  - add !default to variable definitions
 
 // GLOBAL VALUES
@@ -57,7 +55,6 @@ $monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace !defau
 $baseFontSize:          13px !default;
 $baseFontFamily:        $sansFontFamily !default;
 $baseLineHeight:        18px !default;
-$baseFontWeight:        normal !default;
 $altFontFamily:         $serifFontFamily !default;
 
 $headingsFontFamily:    inherit !default; // empty to use BS default, $baseFontFamily

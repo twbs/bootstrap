@@ -3,7 +3,7 @@
 
 // Updates for SASS:
 //  - replace $ with $
-//  - update mixin definitions
+//  - replace . with @include for mixins
 
 .pagination {
   height: $baseLineHeight * 2;

@@ -2,7 +2,7 @@
 // --------------------
 
 // Updates for SASS:
-//  - update mixin definitions
+//  - replace . with @include for mixins
 
 .fade {
   @include opacity(0);

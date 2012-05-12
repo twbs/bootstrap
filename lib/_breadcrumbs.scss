@@ -3,7 +3,7 @@
 
 // Updates for SASS:
 //  - replace @ with $
-//  - update mixin definitions
+//  - replace . with @include for mixins
 //  - replace #gradient > .vertical with @include gradient-vertical
 
 .breadcrumb {
