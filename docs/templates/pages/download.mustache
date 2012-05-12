@@ -31,8 +31,7 @@
       <h3>{{_i}}Base CSS{{/i}}</h3>
       <label class="checkbox"><input checked="checked" type="checkbox" value="type.less"> {{_i}}Headings, body, etc{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="code.less"> {{_i}}Code and pre{{/i}}</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="labels.less"> {{_i}}Labels{{/i}}</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="badges.less"> {{_i}}Badges{{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="labels-badges.less"> {{_i}}Labels and badges{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="tables.less"> {{_i}}Tables{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="forms.less"> {{_i}}Forms{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> {{_i}}Buttons{{/i}}</label>
@@ -67,7 +66,11 @@
       <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> {{_i}}Utilities{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="component-animations.less"> {{_i}}Component animations{{/i}}</label>
       <h3>{{_i}}Responsive{{/i}}</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive.less"> {{_i}}Responsive layouts{{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-utilities.less"> {{_i}}Visible/hidden classes{{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-767px-max.less"> {{_i}}Narrow tablets and below (<767px){{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-768px-979px.less"> {{_i}}Tablets to desktops (767-979px){{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-1200px-min.less"> {{_i}}Large desktops (>1200px){{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-navbar.less"> {{_i}}Responsive navbar{{/i}}</label>
     </div><!-- /span -->
   </div><!-- /row -->
 </section>
@@ -200,14 +203,20 @@
       <input type="text" class="span3" placeholder="2.127659574%">
 
       <h3>{{_i}}Typography{{/i}}</h3>
+      <label>@sansFontFamily</label>
+      <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <label>@serifFontFamily</label>
+      <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif">
+      <label>@monoFontFamily</label>
+      <input type="text" class="span3" placeholder="Menlo, Monaco, 'Courier New', monospace">
       <label>@baseFontSize</label>
       <input type="text" class="span3" placeholder="13px">
       <label>@baseFontFamily</label>
-      <input type="text" class="span3" placeholder="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <input type="text" class="span3" placeholder="@sansFontFamily">
       <label>@baseLineHeight</label>
       <input type="text" class="span3" placeholder="18px">
       <label>@altFontFamily</label>
-      <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif;">
+      <input type="text" class="span3" placeholder="@serifFontFamily">
       <label>@headingsFontFamily</label>
       <input type="text" class="span3" placeholder="inherit">
       <label>@headingsFontWeight</label>
@@ -241,6 +250,8 @@
       <input type="text" class="span3" placeholder="@grayDark">
       <label>@navbarText</label>
       <input type="text" class="span3" placeholder="@grayLight">
+      <label>@navbarBrandColor</label>
+      <input type="text" class="span3" placeholder="@navbarLinkColor">
       <label>@navbarLinkColor</label>
       <input type="text" class="span3" placeholder="@grayLight">
       <label>@navbarLinkColorHover</label>
@@ -280,8 +291,12 @@
       <input type="text" class="span3" placeholder="@white">
       <label>@inputBorder</label>
       <input type="text" class="span3" placeholder="#ccc">
+      <label>@inputBorderRadius</label>
+      <input type="text" class="span3" placeholder="3px">
       <label>@inputDisabledBackground</label>
       <input type="text" class="span3" placeholder="@grayLighter">
+      <label>@formActionsBackground</label>
+      <input type="text" class="span3" placeholder="#f5f5f5">
 
       <label>@btnPrimaryBackground</label>
       <input type="text" class="span3" placeholder="@linkColor">

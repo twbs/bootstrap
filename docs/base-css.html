@@ -20,6 +20,7 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
@@ -39,7 +40,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse">
+          <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
                 <a href="./index.html">Overview</a>
@@ -370,7 +371,14 @@
         <dd>Donec id elit non mi porta gravida at eget metus.</dd>
         <dt>Malesuada porta</dt>
         <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        <dt>Felis euismod semper eget lacinia</dt>
+        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
       </dl>
+      <hr>
+      <p>
+        <span class="label label-info">Heads up!</span>
+        Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
+      </p>
     </div>
   </div><!-- /row -->
 </section>
@@ -874,14 +882,12 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
   <h2>Example forms <small>using just form controls, no extra markup</small></h2>
   <div class="row">
-    <div class="span3">
+    <div class="span6">
       <h3>Basic form</h3>
-      <p>With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.</p>
-    </div>
-    <div class="span9">
+      <p>Smart and lightweight defaults without extra markup.</p>
       <form class="well">
         <label>Label name</label>
-        <input type="text" class="span3" placeholder="Type something…"> <span class="help-inline">Associated help text!</span>
+        <input type="text" class="span3" placeholder="Type something…">
         <p class="help-block">Example block-level help text here.</p>
         <label class="checkbox">
           <input type="checkbox"> Check me out
@@ -892,39 +898,30 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;form class="well"&gt;
   &lt;label&gt;Label name&lt;/label&gt;
   &lt;input type="text" class="span3" placeholder="Type something…"&gt;
-  &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; Check me out
   &lt;/label&gt;
   &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
-  <div class="row">
-    <div class="span3">
-      <h3>Search form</h3>
-      <p>Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.</p>
-    </div>
-    <div class="span9">
-      <form class="well form-search">
-        <input type="text" class="input-medium search-query">
-        <button type="submit" class="btn">Search</button>
-      </form>
+  </div>
+  <div class="span6">
+    <h3>Search form</h3>
+    <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>input</code>.</p>
+    <form class="well form-search">
+      <input type="text" class="input-medium search-query">
+      <button type="submit" class="btn">Search</button>
+    </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-search"&gt;
   &lt;input type="text" class="input-medium search-query"&gt;
   &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
-  <div class="row">
-    <div class="span3">
+
       <h3>Inline form</h3>
-      <p>Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.</p>
-    </div>
-    <div class="span9">
+      <p>Add <code>.form-inline</code> to finesse the vertical alignment and spacing of form controls.</p>
       <form class="well form-inline">
         <input type="text" class="input-small" placeholder="Email">
         <input type="password" class="input-small" placeholder="Password">
@@ -943,17 +940,29 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
+    </div><!-- /.span -->
   </div><!-- /row -->
 
   <br>
 
   <h2>Horizontal forms</h2>
   <div class="row">
+    <div class="span4">
+      <p></p>
+      <p>Shown on the right are all the default form controls we support. Here's the bulleted list:</p>
+      <ul>
+        <li>text inputs (text, password, email, etc)</li>
+        <li>checkbox</li>
+        <li>radio</li>
+        <li>select</li>
+        <li>multiple select</li>
+        <li>file input</li>
+        <li>textarea</li>
+      </ul>
+    </div><!-- /.span -->
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>Controls Bootstrap supports</legend>
           <div class="control-group">
             <label class="control-label" for="input01">Text input</label>
             <div class="controls">
@@ -1029,31 +1038,27 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;/form&gt;
 </pre>
     </div>
-    <div class="span4">
-      <h3>What's included</h3>
-      <p>Shown on the left are all the default form controls we support. Here's the bulleted list:</p>
-      <ul>
-        <li>text inputs (text, password, email, etc)</li>
-        <li>checkbox</li>
-        <li>radio</li>
-        <li>select</li>
-        <li>multiple select</li>
-        <li>file input</li>
-        <li>textarea</li>
-      </ul>
-      <hr>
-      <h3>New defaults with v2.0</h3>
-      <p>Up to v1.4, Bootstrap's default form styles used the horizontal layout. With Bootstrap 2, we removed that constraint to have smarter, more scalable defaults for any form.</p>
-    </div>
   </div>
 
   <br>
 
+  <h2>Form control states</h2>
   <div class="row">
+    <div class="span4">
+      <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
+      <hr>
+      <h3>Form validation</h3>
+      <p>It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.</p>
+<pre class="prettyprint linenums">
+&lt;fieldset
+  class="control-group error"&gt;
+  …
+&lt;/fieldset&gt;
+</pre>
+    </div>
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>Form control states</legend>
           <div class="control-group">
             <label class="control-label" for="focusedInput">Focused input</label>
             <div class="controls">
@@ -1122,28 +1127,29 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         </fieldset>
       </form>
     </div>
-    <div class="span4">
-      <h3>Redesigned browser states</h3>
-      <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
-      <hr>
-      <h3>Form validation</h3>
-      <p>It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.</p>
-<pre class="prettyprint linenums">
-&lt;fieldset
-  class="control-group error"&gt;
-  …
-&lt;/fieldset&gt;
-</pre>
-    </div>
   </div>
 
   <br>
 
+  <h2>Extending form controls</h2>
   <div class="row">
+    <div class="span4">
+      <h3>Prepend &amp; append inputs</h3>
+      <p>Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.</p>
+      <hr>
+      <h3>Checkboxes and radios</h3>
+      <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
+      <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
+      <hr>
+      <h4>Inline forms and append/prepend</h4>
+      <p>To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.</p>
+      <hr>
+      <h4>Form help text</h4>
+      <p>To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.</p>
+    </div>
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>Extending form controls</legend>
           <div class="control-group">
             <label class="control-label">Form grid sizes</label>
             <div class="controls docs-input-sizes">
@@ -1210,10 +1216,18 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="appendedPrependedInput">Append with button</label>
+            <label class="control-label" for="appendedInputButton">Append with button</label>
             <div class="controls">
               <div class="input-append">
-                <input class="span2" id="appendedPrependedInput" size="16" type="text"><button class="btn" type="button">Go!</button>
+                <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="appendedInputButtons">Two-button append</label>
+            <div class="controls">
+              <div class="input-append">
+                <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
               </div>
             </div>
           </div>
@@ -1269,20 +1283,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         </fieldset>
       </form>
     </div>
-    <div class="span4">
-      <h3>Prepend &amp; append inputs</h3>
-      <p>Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.</p>
-      <hr>
-      <h3>Checkboxes and radios</h3>
-      <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
-      <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
-      <hr>
-      <h4>Inline forms and append/prepend</h4>
-      <p>To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.</p>
-      <hr>
-      <h4>Form help text</h4>
-      <p>To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.</p>
-    </div>
   </div><!-- /row -->
 </section>
 
@@ -1316,7 +1316,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <tr>
         <td><button class="btn btn-info" href="#">Info</button></td>
         <td><code>btn btn-info</code></td>
-        <td>Used as an alternate to the default styles</td>
+        <td>Used as an alternative to the default styles</td>
       </tr>
       <tr>
         <td><button class="btn btn-success" href="#">Success</button></td>
@@ -1445,15 +1445,15 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-inbox"></i> icon-inbox</li>
         <li><i class="icon-play-circle"></i> icon-play-circle</li>
         <li><i class="icon-repeat"></i> icon-repeat</li>
-      </ul>
-    </div>
-    <div class="span3">
-      <ul class="the-icons">
         <li><i class="icon-refresh"></i> icon-refresh</li>
         <li><i class="icon-list-alt"></i> icon-list-alt</li>
         <li><i class="icon-lock"></i> icon-lock</li>
         <li><i class="icon-flag"></i> icon-flag</li>
         <li><i class="icon-headphones"></i> icon-headphones</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <ul class="the-icons">
         <li><i class="icon-volume-off"></i> icon-volume-off</li>
         <li><i class="icon-volume-down"></i> icon-volume-down</li>
         <li><i class="icon-volume-up"></i> icon-volume-up</li>
@@ -1479,10 +1479,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-indent-right"></i> icon-indent-right</li>
         <li><i class="icon-facetime-video"></i> icon-facetime-video</li>
         <li><i class="icon-picture"></i> icon-picture</li>
-      </ul>
-    </div>
-    <div class="span3">
-      <ul class="the-icons">
         <li><i class="icon-pencil"></i> icon-pencil</li>
         <li><i class="icon-map-marker"></i> icon-map-marker</li>
         <li><i class="icon-adjust"></i> icon-adjust</li>
@@ -1493,6 +1489,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-move"></i> icon-move</li>
         <li><i class="icon-step-backward"></i> icon-step-backward</li>
         <li><i class="icon-fast-backward"></i> icon-fast-backward</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <ul class="the-icons">
         <li><i class="icon-backward"></i> icon-backward</li>
         <li><i class="icon-play"></i> icon-play</li>
         <li><i class="icon-pause"></i> icon-pause</li>
@@ -1513,10 +1513,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-remove-circle"></i> icon-remove-circle</li>
         <li><i class="icon-ok-circle"></i> icon-ok-circle</li>
         <li><i class="icon-ban-circle"></i> icon-ban-circle</li>
-      </ul>
-    </div>
-    <div class="span3">
-      <ul class="the-icons">
         <li><i class="icon-arrow-left"></i> icon-arrow-left</li>
         <li><i class="icon-arrow-right"></i> icon-arrow-right</li>
         <li><i class="icon-arrow-up"></i> icon-arrow-up</li>
@@ -1532,6 +1528,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-leaf"></i> icon-leaf</li>
         <li><i class="icon-fire"></i> icon-fire</li>
         <li><i class="icon-eye-open"></i> icon-eye-open</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <ul class="the-icons">
         <li><i class="icon-eye-close"></i> icon-eye-close</li>
         <li><i class="icon-warning-sign"></i> icon-warning-sign</li>
         <li><i class="icon-plane"></i> icon-plane</li>
@@ -1547,6 +1547,26 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-folder-open"></i> icon-folder-open</li>
         <li><i class="icon-resize-vertical"></i> icon-resize-vertical</li>
         <li><i class="icon-resize-horizontal"></i> icon-resize-horizontal</li>
+        <li><i class="icon-hdd"></i> icon-hdd</li>
+        <li><i class="icon-bullhorn"></i> icon-bullhorn</li>
+        <li><i class="icon-bell"></i> icon-bell</li>
+        <li><i class="icon-certificate"></i> icon-certificate</li>
+        <li><i class="icon-thumbs-up"></i> icon-thumbs-up</li>
+        <li><i class="icon-thumbs-down"></i> icon-thumbs-down</li>
+        <li><i class="icon-hand-right"></i> icon-hand-right</li>
+        <li><i class="icon-hand-left"></i> icon-hand-left</li>
+        <li><i class="icon-hand-up"></i> icon-hand-up</li>
+        <li><i class="icon-hand-down"></i> icon-hand-down</li>
+        <li><i class="icon-circle-arrow-right"></i> icon-circle-arrow-right</li>
+        <li><i class="icon-circle-arrow-left"></i> icon-circle-arrow-left</li>
+        <li><i class="icon-circle-arrow-up"></i> icon-circle-arrow-up</li>
+        <li><i class="icon-circle-arrow-down"></i> icon-circle-arrow-down</li>
+        <li><i class="icon-globe"></i> icon-globe</li>
+        <li><i class="icon-wrench"></i> icon-wrench</li>
+        <li><i class="icon-tasks"></i> icon-tasks</li>
+        <li><i class="icon-filter"></i> icon-filter</li>
+        <li><i class="icon-briefcase"></i> icon-briefcase</li>
+        <li><i class="icon-fullscreen"></i> icon-fullscreen</li>
       </ul>
     </div>
   </div>
@@ -1639,8 +1659,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <label class="control-label" for="inputIcon">Email address</label>
           <div class="controls">
             <div class="input-prepend">
-              <span class="add-on"><i class="icon-envelope"></i></span>
-              <input class="span2" id="inputIcon" type="text">
+              <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text">
             </div>
           </div>
         </div>

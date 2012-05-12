@@ -294,7 +294,14 @@
         <dd>Donec id elit non mi porta gravida at eget metus.</dd>
         <dt>Malesuada porta</dt>
         <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+        <dt>Felis euismod semper eget lacinia</dt>
+        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
       </dl>
+      <hr>
+      <p>
+        <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
+        {{_i}}Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.{{/i}}
+      </p>
     </div>
   </div><!-- /row -->
 </section>
@@ -798,14 +805,12 @@
 
   <h2>{{_i}}Example forms <small>using just form controls, no extra markup</small>{{/i}}</h2>
   <div class="row">
-    <div class="span3">
+    <div class="span6">
       <h3>{{_i}}Basic form{{/i}}</h3>
-      <p>{{_i}}With v2.0, we have lighter and smarter defaults for form styles. No extra markup, just form controls.{{/i}}</p>
-    </div>
-    <div class="span9">
+      <p>{{_i}}Smart and lightweight defaults without extra markup.{{/i}}</p>
       <form class="well">
         <label>{{_i}}Label name{{/i}}</label>
-        <input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}"> <span class="help-inline">Associated help text!</span>
+        <input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}">
         <p class="help-block">{{_i}}Example block-level help text here.{{/i}}</p>
         <label class="checkbox">
           <input type="checkbox"> {{_i}}Check me out{{/i}}
@@ -816,39 +821,30 @@
 &lt;form class="well"&gt;
   &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
   &lt;input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}"&gt;
-  &lt;span class="help-inline"&gt;Associated help text!&lt;/span&gt;
+  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
   &lt;/label&gt;
   &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
-  <div class="row">
-    <div class="span3">
-      <h3>{{_i}}Search form{{/i}}</h3>
-      <p>{{_i}}Reflecting default WebKit styles, just add <code>.form-search</code> for extra rounded search fields.{{/i}}</p>
-    </div>
-    <div class="span9">
-      <form class="well form-search">
-        <input type="text" class="input-medium search-query">
-        <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
-      </form>
+  </div>
+  <div class="span6">
+    <h3>{{_i}}Search form{{/i}}</h3>
+    <p>{{_i}}Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>input</code>.{{/i}}</p>
+    <form class="well form-search">
+      <input type="text" class="input-medium search-query">
+      <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
+    </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-search"&gt;
   &lt;input type="text" class="input-medium search-query"&gt;
   &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
-  </div> <!-- /row -->
-  <div class="row">
-    <div class="span3">
+
       <h3>{{_i}}Inline form{{/i}}</h3>
-      <p>{{_i}}Inputs are block level to start. For <code>.form-inline</code> and <code>.form-horizontal</code>, we use inline-block.{{/i}}</p>
-    </div>
-    <div class="span9">
+      <p>{{_i}}Add <code>.form-inline</code> to finesse the vertical alignment and spacing of form controls.{{/i}}</p>
       <form class="well form-inline">
         <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}">
         <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
@@ -867,17 +863,29 @@
   &lt;button type="submit" class="btn"&gt;{{_i}}Sign in{{/i}}&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div>
+    </div><!-- /.span -->
   </div><!-- /row -->
 
   <br>
 
   <h2>{{_i}}Horizontal forms{{/i}}</h2>
   <div class="row">
+    <div class="span4">
+      <p>{{_i}}{{/i}}</p>
+      <p>{{_i}}Shown on the right are all the default form controls we support. Here's the bulleted list:{{/i}}</p>
+      <ul>
+        <li>{{_i}}text inputs (text, password, email, etc){{/i}}</li>
+        <li>{{_i}}checkbox{{/i}}</li>
+        <li>{{_i}}radio{{/i}}</li>
+        <li>{{_i}}select{{/i}}</li>
+        <li>{{_i}}multiple select{{/i}}</li>
+        <li>{{_i}}file input{{/i}}</li>
+        <li>{{_i}}textarea{{/i}}</li>
+      </ul>
+    </div><!-- /.span -->
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>{{_i}}Controls Bootstrap supports{{/i}}</legend>
           <div class="control-group">
             <label class="control-label" for="input01">{{_i}}Text input{{/i}}</label>
             <div class="controls">
@@ -953,31 +961,27 @@
 &lt;/form&gt;
 </pre>
     </div>
-    <div class="span4">
-      <h3>{{_i}}What's included{{/i}}</h3>
-      <p>{{_i}}Shown on the left are all the default form controls we support. Here's the bulleted list:{{/i}}</p>
-      <ul>
-        <li>{{_i}}text inputs (text, password, email, etc){{/i}}</li>
-        <li>{{_i}}checkbox{{/i}}</li>
-        <li>{{_i}}radio{{/i}}</li>
-        <li>{{_i}}select{{/i}}</li>
-        <li>{{_i}}multiple select{{/i}}</li>
-        <li>{{_i}}file input{{/i}}</li>
-        <li>{{_i}}textarea{{/i}}</li>
-      </ul>
-      <hr>
-      <h3>{{_i}}New defaults with v2.0{{/i}}</h3>
-      <p>{{_i}}Up to v1.4, Bootstrap's default form styles used the horizontal layout. With Bootstrap 2, we removed that constraint to have smarter, more scalable defaults for any form.{{/i}}</p>
-    </div>
   </div>
 
   <br>
 
+  <h2>{{_i}}Form control states{{/i}}</h2>
   <div class="row">
+    <div class="span4">
+      <p>{{_i}}Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.{{/i}}</p>
+      <hr>
+      <h3>{{_i}}Form validation{{/i}}</h3>
+      <p>{{_i}}It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;fieldset
+  class="control-group error"&gt;
+  …
+&lt;/fieldset&gt;
+</pre>
+    </div>
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>{{_i}}Form control states{{/i}}</legend>
           <div class="control-group">
             <label class="control-label" for="focusedInput">{{_i}}Focused input{{/i}}</label>
             <div class="controls">
@@ -1046,28 +1050,29 @@
         </fieldset>
       </form>
     </div>
-    <div class="span4">
-      <h3>{{_i}}Redesigned browser states{{/i}}</h3>
-      <p>{{_i}}Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.{{/i}}</p>
-      <hr>
-      <h3>{{_i}}Form validation{{/i}}</h3>
-      <p>{{_i}}It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;fieldset
-  class="control-group error"&gt;
-  …
-&lt;/fieldset&gt;
-</pre>
-    </div>
   </div>
 
   <br>
 
+  <h2>{{_i}}Extending form controls{{/i}}</h2>
   <div class="row">
+    <div class="span4">
+      <h3>{{_i}}Prepend &amp; append inputs{{/i}}</h3>
+      <p>{{_i}}Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.{{/i}}</p>
+      <hr>
+      <h3>{{_i}}Checkboxes and radios{{/i}}</h3>
+      <p>{{_i}}Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.{{/i}}</p>
+      <p>{{_i}}Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.{{/i}}</p>
+      <hr>
+      <h4>{{_i}}Inline forms and append/prepend{{/i}}</h4>
+      <p>{{_i}}To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.{{/i}}</p>
+      <hr>
+      <h4>{{_i}}Form help text{{/i}}</h4>
+      <p>{{_i}}To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.{{/i}}</p>
+    </div>
     <div class="span8">
       <form class="form-horizontal">
         <fieldset>
-          <legend>{{_i}}Extending form controls{{/i}}</legend>
           <div class="control-group">
             <label class="control-label">{{_i}}Form grid sizes{{/i}}</label>
             <div class="controls docs-input-sizes">
@@ -1134,10 +1139,18 @@
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="appendedPrependedInput">{{_i}}Append with button{{/i}}</label>
+            <label class="control-label" for="appendedInputButton">{{_i}}Append with button{{/i}}</label>
             <div class="controls">
               <div class="input-append">
-                <input class="span2" id="appendedPrependedInput" size="16" type="text"><button class="btn" type="button">Go!</button>
+                <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="appendedInputButtons">{{_i}}Two-button append{{/i}}</label>
+            <div class="controls">
+              <div class="input-append">
+                <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
               </div>
             </div>
           </div>
@@ -1193,20 +1206,6 @@
         </fieldset>
       </form>
     </div>
-    <div class="span4">
-      <h3>{{_i}}Prepend &amp; append inputs{{/i}}</h3>
-      <p>{{_i}}Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.{{/i}}</p>
-      <hr>
-      <h3>{{_i}}Checkboxes and radios{{/i}}</h3>
-      <p>{{_i}}Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.{{/i}}</p>
-      <p>{{_i}}Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.{{/i}}</p>
-      <hr>
-      <h4>{{_i}}Inline forms and append/prepend{{/i}}</h4>
-      <p>{{_i}}To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.{{/i}}</p>
-      <hr>
-      <h4>{{_i}}Form help text{{/i}}</h4>
-      <p>{{_i}}To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.{{/i}}</p>
-    </div>
   </div><!-- /row -->
 </section>
 
@@ -1240,7 +1239,7 @@
       <tr>
         <td><button class="btn btn-info" href="#">{{_i}}Info{{/i}}</button></td>
         <td><code>btn btn-info</code></td>
-        <td>{{_i}}Used as an alternate to the default styles{{/i}}</td>
+        <td>{{_i}}Used as an alternative to the default styles{{/i}}</td>
       </tr>
       <tr>
         <td><button class="btn btn-success" href="#">{{_i}}Success{{/i}}</button></td>
@@ -1369,15 +1368,15 @@
         <li><i class="icon-inbox"></i> icon-inbox</li>
         <li><i class="icon-play-circle"></i> icon-play-circle</li>
         <li><i class="icon-repeat"></i> icon-repeat</li>
-      </ul>
-    </div>
-    <div class="span3">
-      <ul class="the-icons">
         <li><i class="icon-refresh"></i> icon-refresh</li>
         <li><i class="icon-list-alt"></i> icon-list-alt</li>
         <li><i class="icon-lock"></i> icon-lock</li>
         <li><i class="icon-flag"></i> icon-flag</li>
         <li><i class="icon-headphones"></i> icon-headphones</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <ul class="the-icons">
         <li><i class="icon-volume-off"></i> icon-volume-off</li>
         <li><i class="icon-volume-down"></i> icon-volume-down</li>
         <li><i class="icon-volume-up"></i> icon-volume-up</li>
@@ -1403,10 +1402,6 @@
         <li><i class="icon-indent-right"></i> icon-indent-right</li>
         <li><i class="icon-facetime-video"></i> icon-facetime-video</li>
         <li><i class="icon-picture"></i> icon-picture</li>
-      </ul>
-    </div>
-    <div class="span3">
-      <ul class="the-icons">
         <li><i class="icon-pencil"></i> icon-pencil</li>
         <li><i class="icon-map-marker"></i> icon-map-marker</li>
         <li><i class="icon-adjust"></i> icon-adjust</li>
@@ -1417,6 +1412,10 @@
         <li><i class="icon-move"></i> icon-move</li>
         <li><i class="icon-step-backward"></i> icon-step-backward</li>
         <li><i class="icon-fast-backward"></i> icon-fast-backward</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <ul class="the-icons">
         <li><i class="icon-backward"></i> icon-backward</li>
         <li><i class="icon-play"></i> icon-play</li>
         <li><i class="icon-pause"></i> icon-pause</li>
@@ -1437,10 +1436,6 @@
         <li><i class="icon-remove-circle"></i> icon-remove-circle</li>
         <li><i class="icon-ok-circle"></i> icon-ok-circle</li>
         <li><i class="icon-ban-circle"></i> icon-ban-circle</li>
-      </ul>
-    </div>
-    <div class="span3">
-      <ul class="the-icons">
         <li><i class="icon-arrow-left"></i> icon-arrow-left</li>
         <li><i class="icon-arrow-right"></i> icon-arrow-right</li>
         <li><i class="icon-arrow-up"></i> icon-arrow-up</li>
@@ -1456,6 +1451,10 @@
         <li><i class="icon-leaf"></i> icon-leaf</li>
         <li><i class="icon-fire"></i> icon-fire</li>
         <li><i class="icon-eye-open"></i> icon-eye-open</li>
+      </ul>
+    </div>
+    <div class="span3">
+      <ul class="the-icons">
         <li><i class="icon-eye-close"></i> icon-eye-close</li>
         <li><i class="icon-warning-sign"></i> icon-warning-sign</li>
         <li><i class="icon-plane"></i> icon-plane</li>
@@ -1471,6 +1470,26 @@
         <li><i class="icon-folder-open"></i> icon-folder-open</li>
         <li><i class="icon-resize-vertical"></i> icon-resize-vertical</li>
         <li><i class="icon-resize-horizontal"></i> icon-resize-horizontal</li>
+        <li><i class="icon-hdd"></i> icon-hdd</li>
+        <li><i class="icon-bullhorn"></i> icon-bullhorn</li>
+        <li><i class="icon-bell"></i> icon-bell</li>
+        <li><i class="icon-certificate"></i> icon-certificate</li>
+        <li><i class="icon-thumbs-up"></i> icon-thumbs-up</li>
+        <li><i class="icon-thumbs-down"></i> icon-thumbs-down</li>
+        <li><i class="icon-hand-right"></i> icon-hand-right</li>
+        <li><i class="icon-hand-left"></i> icon-hand-left</li>
+        <li><i class="icon-hand-up"></i> icon-hand-up</li>
+        <li><i class="icon-hand-down"></i> icon-hand-down</li>
+        <li><i class="icon-circle-arrow-right"></i> icon-circle-arrow-right</li>
+        <li><i class="icon-circle-arrow-left"></i> icon-circle-arrow-left</li>
+        <li><i class="icon-circle-arrow-up"></i> icon-circle-arrow-up</li>
+        <li><i class="icon-circle-arrow-down"></i> icon-circle-arrow-down</li>
+        <li><i class="icon-globe"></i> icon-globe</li>
+        <li><i class="icon-wrench"></i> icon-wrench</li>
+        <li><i class="icon-tasks"></i> icon-tasks</li>
+        <li><i class="icon-filter"></i> icon-filter</li>
+        <li><i class="icon-briefcase"></i> icon-briefcase</li>
+        <li><i class="icon-fullscreen"></i> icon-fullscreen</li>
       </ul>
     </div>
   </div>
@@ -1563,8 +1582,7 @@
           <label class="control-label" for="inputIcon">{{_i}}Email address{{/i}}</label>
           <div class="controls">
             <div class="input-prepend">
-              <span class="add-on"><i class="icon-envelope"></i></span>
-              <input class="span2" id="inputIcon" type="text">
+              <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text">
             </div>
           </div>
         </div>
