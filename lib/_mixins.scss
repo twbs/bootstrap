@@ -10,6 +10,8 @@
 //  - explicitly provide .clearfix, .hide-text and .input-block-level
 //    (line 304) for compatibility
 //  - replace fadein with fade-in
+//  - pass grid-* mixin arguments to generators, because otherwise the
+//    generator mixins will use the default variables
 
 // UTILITY MIXINS
 // --------------------------------------------------
@@ -544,11 +546,11 @@
 }
 
 // The Grid
-@mixin core-offset($columns) {
+@mixin core-offset($columns, $gridColumnWidth, $gridGutterWidth) {
   margin-left: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns + 1));
 }
 
-@mixin core-span($columns) {
+@mixin core-span($columns, $gridColumnWidth, $gridGutterWidth) {
   width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
 }
 
@@ -566,16 +568,25 @@
   // Set the container width, and override it for fixed navbars in media queries
   .container,
   .navbar-fixed-top .container,
-  .navbar-fixed-bottom .container { @include core-span($gridColumns); }
+  .navbar-fixed-bottom .container {
+    @include core-span($gridColumns, $gridColumnWidth, $gridGutterWidth);
+  }
 
   // generate .spanX and .offsetX
-  @for $i from 1 through $gridColumns {
-    .span#{$i} { @include core-span($i); }
-    .offset#{$i} { @include core-offset($i); }
+  $i: $gridColumns;
+  @while $i > 0 {
+    .span#{$i} { @include core-span($i, $gridColumnWidth, $gridGutterWidth); }
+    $i: $i - 1;
+  }
+
+  $i: $gridColumns;
+  @while $i > 0 {
+    .offset#{$i} { @include core-offset($i, $gridColumnWidth, $gridGutterWidth); }
+    $i: $i - 1;
   }
 }
 
-@mixin fluid-span($columns) {
+@mixin fluid-span($columns, $fluidGridColumnWidth, $fluidGridGutterWidth) {
   width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1));
   *width: ($fluidGridColumnWidth * $columns) + ($fluidGridGutterWidth * ($columns - 1)) - (.5 / $gridRowWidth * 100px * 1%);
 }
@@ -595,13 +606,17 @@
     }
 
     // generate .spanX
-    @for $i from 1 through $gridColumns {
-      .span#{$i} { @include fluid-span($i); }
+    $i: $gridColumns;
+    @while $i > 0 {
+      .span#{$i} {
+        @include fluid-span($i, $fluidGridColumnWidth, $fluidGridGutterWidth);
+      }
+      $i: $i - 1;
     }
   }
 }
 
-@mixin input-span($columns) {
+@mixin input-span($columns, $gridColumnWidth, $gridGutterWidth) {
   width: (($gridColumnWidth) * $columns) + ($gridGutterWidth * ($columns - 1)) - 10;
 }
 
@@ -613,7 +628,13 @@
   }
 
   // generate .spanX
-  @for $i from 1 through $gridColumns {
-    input.span#{$i}, textarea.span#{$i}, .uneditable-input.span#{$i} { @include input-span($i); }
+  $i: $gridColumns;
+  @while $i > 0 {
+    input.span#{$i},
+    textarea.span#{$i},
+    .uneditable-input.span#{$i} {
+      @include input-span($i, $gridColumnWidth, $gridGutterWidth);
+    }
+    $i: $i - 1;
   }
 }

@@ -189,100 +189,100 @@ a:hover {
   width: 940px;
 }
 
-.span1 {
-  width: 60px;
-}
-
-.offset1 {
-  margin-left: 100px;
-}
-
-.span2 {
-  width: 140px;
-}
-
-.offset2 {
-  margin-left: 180px;
-}
-
-.span3 {
-  width: 220px;
-}
-
-.offset3 {
-  margin-left: 260px;
-}
-
-.span4 {
-  width: 300px;
-}
-
-.offset4 {
-  margin-left: 340px;
-}
-
-.span5 {
-  width: 380px;
-}
-
-.offset5 {
-  margin-left: 420px;
-}
-
-.span6 {
-  width: 460px;
-}
-
-.offset6 {
-  margin-left: 500px;
-}
-
-.span7 {
-  width: 540px;
-}
-
-.offset7 {
-  margin-left: 580px;
-}
-
-.span8 {
-  width: 620px;
-}
-
-.offset8 {
-  margin-left: 660px;
-}
-
-.span9 {
-  width: 700px;
-}
-
-.offset9 {
-  margin-left: 740px;
-}
-
-.span10 {
-  width: 780px;
-}
-
-.offset10 {
-  margin-left: 820px;
+.span12 {
+  width: 940px;
 }
 
 .span11 {
   width: 860px;
 }
 
-.offset11 {
-  margin-left: 900px;
+.span10 {
+  width: 780px;
 }
 
-.span12 {
-  width: 940px;
+.span9 {
+  width: 700px;
+}
+
+.span8 {
+  width: 620px;
+}
+
+.span7 {
+  width: 540px;
+}
+
+.span6 {
+  width: 460px;
+}
+
+.span5 {
+  width: 380px;
+}
+
+.span4 {
+  width: 300px;
+}
+
+.span3 {
+  width: 220px;
+}
+
+.span2 {
+  width: 140px;
+}
+
+.span1 {
+  width: 60px;
 }
 
 .offset12 {
   margin-left: 980px;
+}
+
+.offset11 {
+  margin-left: 900px;
+}
+
+.offset10 {
+  margin-left: 820px;
+}
+
+.offset9 {
+  margin-left: 740px;
+}
+
+.offset8 {
+  margin-left: 660px;
+}
+
+.offset7 {
+  margin-left: 580px;
+}
+
+.offset6 {
+  margin-left: 500px;
+}
+
+.offset5 {
+  margin-left: 420px;
+}
+
+.offset4 {
+  margin-left: 340px;
+}
+
+.offset3 {
+  margin-left: 260px;
+}
+
+.offset2 {
+  margin-left: 180px;
+}
+
+.offset1 {
+  margin-left: 100px;
 }
 
 .row-fluid {
@@ -311,53 +311,53 @@ a:hover {
 .row-fluid [class*="span"]:first-child {
   margin-left: 0;
 }
-.row-fluid .span1 {
-  width: 6.382978723%;
-  *width: 6.3297872336%;
-}
-.row-fluid .span2 {
-  width: 14.89361702%;
-  *width: 14.8404255306%;
-}
-.row-fluid .span3 {
-  width: 23.404255317%;
-  *width: 23.3510638276%;
-}
-.row-fluid .span4 {
-  width: 31.914893614%;
-  *width: 31.8617021246%;
-}
-.row-fluid .span5 {
-  width: 40.425531911%;
-  *width: 40.3723404216%;
-}
-.row-fluid .span6 {
-  width: 48.936170208%;
-  *width: 48.8829787186%;
-}
-.row-fluid .span7 {
-  width: 57.446808505%;
-  *width: 57.3936170156%;
-}
-.row-fluid .span8 {
-  width: 65.957446802%;
-  *width: 65.9042553126%;
-}
-.row-fluid .span9 {
-  width: 74.468085099%;
-  *width: 74.4148936096%;
-}
-.row-fluid .span10 {
-  width: 82.978723396%;
-  *width: 82.9255319066%;
+.row-fluid .span12 {
+  width: 99.99999999%;
+  *width: 99.9468085006%;
 }
 .row-fluid .span11 {
   width: 91.489361693%;
   *width: 91.4361702036%;
 }
-.row-fluid .span12 {
-  width: 99.99999999%;
-  *width: 99.9468085006%;
+.row-fluid .span10 {
+  width: 82.978723396%;
+  *width: 82.9255319066%;
+}
+.row-fluid .span9 {
+  width: 74.468085099%;
+  *width: 74.4148936096%;
+}
+.row-fluid .span8 {
+  width: 65.957446802%;
+  *width: 65.9042553126%;
+}
+.row-fluid .span7 {
+  width: 57.446808505%;
+  *width: 57.3936170156%;
+}
+.row-fluid .span6 {
+  width: 48.936170208%;
+  *width: 48.8829787186%;
+}
+.row-fluid .span5 {
+  width: 40.425531911%;
+  *width: 40.3723404216%;
+}
+.row-fluid .span4 {
+  width: 31.914893614%;
+  *width: 31.8617021246%;
+}
+.row-fluid .span3 {
+  width: 23.404255317%;
+  *width: 23.3510638276%;
+}
+.row-fluid .span2 {
+  width: 14.89361702%;
+  *width: 14.8404255306%;
+}
+.row-fluid .span1 {
+  width: 6.382978723%;
+  *width: 6.3297872336%;
 }
 
 .container {
@@ -929,52 +929,76 @@ textarea,
   margin-left: 0;
 }
 
-input.span1, textarea.span1, .uneditable-input.span1 {
-  width: 50px;
+input.span12,
+textarea.span12,
+.uneditable-input.span12 {
+  width: 930px;
 }
 
-input.span2, textarea.span2, .uneditable-input.span2 {
-  width: 130px;
-}
-
-input.span3, textarea.span3, .uneditable-input.span3 {
-  width: 210px;
-}
-
-input.span4, textarea.span4, .uneditable-input.span4 {
-  width: 290px;
-}
-
-input.span5, textarea.span5, .uneditable-input.span5 {
-  width: 370px;
-}
-
-input.span6, textarea.span6, .uneditable-input.span6 {
-  width: 450px;
-}
-
-input.span7, textarea.span7, .uneditable-input.span7 {
-  width: 530px;
-}
-
-input.span8, textarea.span8, .uneditable-input.span8 {
-  width: 610px;
-}
-
-input.span9, textarea.span9, .uneditable-input.span9 {
-  width: 690px;
-}
-
-input.span10, textarea.span10, .uneditable-input.span10 {
-  width: 770px;
-}
-
-input.span11, textarea.span11, .uneditable-input.span11 {
+input.span11,
+textarea.span11,
+.uneditable-input.span11 {
   width: 850px;
 }
 
-input.span12, textarea.span12, .uneditable-input.span12 {
-  width: 930px;
+input.span10,
+textarea.span10,
+.uneditable-input.span10 {
+  width: 770px;
+}
+
+input.span9,
+textarea.span9,
+.uneditable-input.span9 {
+  width: 690px;
+}
+
+input.span8,
+textarea.span8,
+.uneditable-input.span8 {
+  width: 610px;
+}
+
+input.span7,
+textarea.span7,
+.uneditable-input.span7 {
+  width: 530px;
+}
+
+input.span6,
+textarea.span6,
+.uneditable-input.span6 {
+  width: 450px;
+}
+
+input.span5,
+textarea.span5,
+.uneditable-input.span5 {
+  width: 370px;
+}
+
+input.span4,
+textarea.span4,
+.uneditable-input.span4 {
+  width: 290px;
+}
+
+input.span3,
+textarea.span3,
+.uneditable-input.span3 {
+  width: 210px;
+}
+
+input.span2,
+textarea.span2,
+.uneditable-input.span2 {
+  width: 130px;
+}
+
+input.span1,
+textarea.span1,
+.uneditable-input.span1 {
+  width: 50px;
 }
 
 input[disabled],
