@@ -1,6 +1,10 @@
 // ALERT STYLES
 // ------------
 
+// Updates for SASS:
+//  - replace $ with $
+//  - replace .border-radius with $include border-radius
+
 // Base alert styles
 .alert {
   padding: 8px 35px 8px 14px;
@@ -28,7 +32,7 @@
 
 .alert-success {
   background-color: $successBackground;
-  border-color: $successBorder;  
+  border-color: $successBorder;
   color: $successText;
 }
 .alert-danger,

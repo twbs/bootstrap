@@ -1,7 +1,11 @@
-// Typography.scss
+// Typography.less
 // Headings, body text, lists, code, and more for a versatile and durable typography system
 // ----------------------------------------------------------------------------------------
 
+// Updates for SASS:
+//  - replace @ with $
+//  - update mixin definitions
+//  - use font-shorthand instead of #font > .shorthand
 
 // BODY TEXT
 // ---------
@@ -52,8 +56,8 @@ h2 {
   }
 }
 h3 {
-  line-height: $baseLineHeight * 1.5;
   font-size: 18px;
+  line-height: $baseLineHeight * 1.5;
   small {
     font-size: 14px;
   }
@@ -136,9 +140,10 @@ dd {
 .dl-horizontal {
   dt {
     float: left;
-    clear: left;
     width: 120px;
+    clear: left;
     text-align: right;
+    @include text-overflow();
   }
   dd {
     margin-left: 130px;
@@ -169,8 +174,8 @@ em {
 
 // Abbreviations and acronyms
 abbr[title] {
-  border-bottom: 1px dotted #ddd;
   cursor: help;
+  border-bottom: 1px dotted #ddd;
 }
 abbr.initialism {
   font-size: 90%;
@@ -198,10 +203,10 @@ blockquote {
   // Float right with text-align: right
   &.pull-right {
     float: right;
-    padding-left: 0;
     padding-right: 15px;
-    border-left: 0;
+    padding-left: 0;
     border-right: 5px solid $grayLighter;
+    border-left: 0;
     p,
     small {
       text-align: right;
@@ -212,7 +217,7 @@ blockquote {
 // Quotes
 q:before,
 q:after,
-blockquote:before, 
+blockquote:before,
 blockquote:after {
   content: "";
 }
@@ -221,8 +226,8 @@ blockquote:after {
 address {
   display: block;
   margin-bottom: $baseLineHeight;
-  line-height: $baseLineHeight;
   font-style: normal;
+  line-height: $baseLineHeight;
 }
 
 // Misc

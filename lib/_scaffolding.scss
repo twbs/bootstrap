@@ -2,9 +2,11 @@
 // Basic and global styles for generating a grid system, structural layout, and page templates
 // -------------------------------------------------------------------------------------------
 
+// Updates for SASS:
+//  - replace @ with $
 
-// STRUCTURAL LAYOUT
-// -----------------
+// Body reset
+// ----------
 
 body {
   margin: 0;
@@ -16,7 +18,7 @@ body {
 }
 
 
-// LINKS
+// Links
 // -----
 
 a {

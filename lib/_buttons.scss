@@ -1,6 +1,10 @@
 // BUTTON STYLES
 // -------------
 
+// Updates for SASS:
+//  - replace $ with $
+//  - update mixin definitions
+//  - pull complex shadow definitions into variables
 
 // Base styles
 // --------------------------------------------------
@@ -13,20 +17,20 @@
   margin-bottom: 0; // For input.btn
   font-size: $baseFontSize;
   line-height: $baseLineHeight;
+  *line-height: 20px;
   color: $grayDark;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   vertical-align: middle;
+  cursor: pointer;
   @include buttonBackground($btnBackground, $btnBackgroundHighlight);
   border: 1px solid $btnBorder;
+  *border: 0; // Remove the border to prevent IE7's black border on input:focus
   border-bottom-color: darken($btnBorder, 10%);
   @include border-radius(4px);
+  @include ie7-restore-left-whitespace(); // Give IE7 some love
   $shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   @include box-shadow($shadow);
-  cursor: pointer;
-
-  // Give IE7 some love
-  @include ie7-restore-left-whitespace();
 }
 
 // Hover state
@@ -34,6 +38,7 @@
   color: $grayDark;
   text-decoration: none;
   background-color: darken($white, 10%);
+  *background-color: darken($white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
   background-position: 0 -15px;
 
   // transition is only when going to hover, otherwise the background
@@ -49,20 +54,20 @@
 // Active state
 .btn.active,
 .btn:active {
+  background-color: darken($white, 10%);
+  background-color: darken($white, 15%) e("\9");
   background-image: none;
+  outline: 0;
   $shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   @include box-shadow($shadow);
-  background-color: darken($white, 10%);
-  background-color: darken($white, 15%) #{"\9"};
-  outline: 0;
 }
 
 // Disabled state
 .btn.disabled,
 .btn[disabled] {
   cursor: default;
-  background-image: none;
   background-color: darken($white, 10%);
+  background-image: none;
   @include opacity(65);
   @include box-shadow(none);
 }
@@ -117,8 +122,8 @@
 .btn-info:hover,
 .btn-inverse,
 .btn-inverse:hover {
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   color: $white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 }
 // Provide *some* extra contrast for those who can get it
 .btn-primary.active,
@@ -132,6 +137,11 @@
 
 // Set the backgrounds
 // -------------------------
+.btn {
+  // reset here as of 2.0.3 due to Recess property order
+  border-color: #ccc;
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+}
 .btn-primary {
   @include buttonBackground($btnPrimaryBackground, $btnPrimaryBackgroundHighlight);
 }

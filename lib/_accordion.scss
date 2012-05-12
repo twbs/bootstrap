@@ -1,6 +1,9 @@
 // ACCORDION
 // ---------
 
+// Updated for SASS:
+//  - replace @ with $
+//  - replace .border-radius with @include border-radius
 
 // Parent container
 .accordion {
@@ -19,6 +22,11 @@
 .accordion-heading .accordion-toggle {
   display: block;
   padding: 8px 15px;
+}
+
+// General toggle styles
+.accordion-toggle {
+  cursor: pointer;
 }
 
 // Inner needs the styles because you can't animate properly with any styles on the element
