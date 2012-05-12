@@ -1122,7 +1122,6 @@ select:focus:required:invalid:focus {
 .help-inline {
   display: inline-block;
   *display: inline;
-  /* IE7 inline-block hack */
   *zoom: 1;
   vertical-align: middle;
   padding-left: 5px;
@@ -1275,7 +1274,6 @@ select:focus:required:invalid:focus {
   display: inline-block;
   margin-bottom: 0;
   *display: inline;
-  /* IE7 inline-block hack */
   *zoom: 1;
 }
 .form-search .hide,
@@ -2380,7 +2378,6 @@ button.close {
 .btn {
   display: inline-block;
   *display: inline;
-  /* IE7 inline-block hack */
   *zoom: 1;
   padding: 4px 10px 4px;
   margin-bottom: 0;
@@ -2727,7 +2724,6 @@ input[type="submit"].btn.btn-mini {
 .btn-toolbar .btn-group {
   display: inline-block;
   *display: inline;
-  /* IE7 inline-block hack */
   *zoom: 1;
 }
 
@@ -3695,7 +3691,6 @@ input[type="submit"].btn.btn-mini {
 .breadcrumb li {
   display: inline-block;
   *display: inline;
-  /* IE7 inline-block hack */
   *zoom: 1;
   text-shadow: 0 1px 0 white;
 }
@@ -3715,7 +3710,6 @@ input[type="submit"].btn.btn-mini {
 .pagination ul {
   display: inline-block;
   *display: inline;
-  /* IE7 inline-block hack */
   *zoom: 1;
   margin-left: 0;
   margin-bottom: 0;

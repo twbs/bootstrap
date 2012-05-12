@@ -54,7 +54,7 @@
 // IE7 inline-block
 // ----------------
 @mixin ie7-inline-block() {
-  *display: inline; /* IE7 inline-block hack */
+  *display: inline; // IE7 inline-block hack
   *zoom: 1;
 }
 
