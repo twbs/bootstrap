@@ -7,6 +7,9 @@
 //  - replace @ with $
 //  - add default of 5px for @size and @square mixins
 //  - replace grid generation loops with for $i from 1 to $gridColumns
+//  - explicitly provide .clearfix, .hide-text and .input-block-level
+//    (line 304) for compatibility
+//  - replace fadein with fade-in
 
 // UTILITY MIXINS
 // --------------------------------------------------
@@ -24,6 +27,10 @@
   &:after {
     clear: both;
   }
+}
+
+.clearfix {
+  @include clearfix();
 }
 
 // Webkit-style focus
@@ -114,6 +121,9 @@
   border: 0;
 }
 
+.hide-text {
+  @include hide-text();
+}
 
 // FONTS
 // --------------------------------------------------
@@ -291,6 +301,11 @@
           box-sizing: $boxmodel;
 }
 
+// Uses box-sizing mixin, so must be defined here
+.input-block-level {
+  @include input-block-level();
+}
+
 // User select
 // For selecting text on the page
 @mixin user-select($select) {
@@ -342,7 +357,7 @@
 @mixin gradientBar($primaryColor, $secondaryColor) {
   @include gradient-vertical($primaryColor, $secondaryColor);
   border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fade-in(rgba(0,0,0,.1), 0.15);
 }
 
 // Gradients
@@ -355,7 +370,7 @@
   background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1), $startColor, $endColor; // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
 }
 @mixin gradient-vertical($startColor: #555, $endColor: #333) {
   background-color: mix($startColor, $endColor, 60%);
@@ -366,7 +381,7 @@
   background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient(top, $startColor, $endColor); // The standard
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0),$startColor,$endColor; // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
 }
 @mixin gradient-directional($startColor: #555, $endColor: #333, $deg: 45deg) {
   background-color: $endColor;
@@ -386,7 +401,7 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0), $startColor, $endColor; // IE9 and down, gets no color-stop at all the proper fallback
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
 }
 @mixin gradient-radial($innerColor: #555, $outerColor: #333)  {
   background-color: $outerColor;
@@ -409,7 +424,7 @@
 
 // Reset filters for IE
 @mixin gradient-reset-filter() {
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
 
@@ -451,7 +466,7 @@
   // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
   &:active,
   &.active {
-    background-color: darken($endColor, 10%) e("\9");
+    background-color: darken($endColor, 10%) \9;
   }
 }
 

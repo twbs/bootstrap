@@ -499,8 +499,8 @@ select:focus:required:invalid {
   .input-prepend,
   .input-append {
     display: inline-block;
-    @include ie7-inline-block();
     margin-bottom: 0;
+    @include ie7-inline-block();
   }
   // Re-hide hidden elements due to specifity
   .hide {

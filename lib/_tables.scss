@@ -154,6 +154,6 @@ table {
 // Change the columns
 table {
   @for $i from 1 through 24 {
-    .span#{i} { @include tableColumns($i); }
+    .span#{$i} { @include tableColumns($i); }
   }
 }
