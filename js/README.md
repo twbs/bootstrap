@@ -5,7 +5,7 @@ These are the high-level design rules which guide the development of Bootstrap's
 
 ### DATA-ATTRIBUTE API
 
-We believe you should be able to use all plugins provided by Bootstrap purely through the markup API without writing a single line of javascript.
+We believe you should be able to use all plugins provided by Bootstrap purely through the markup API without writing a single line of javascript. This is bootstraps first class api.
 
 We acknowledge that this isn't always the most performant and sometimes it may be desirable to turn this functionality off altogether. Therefore, as of 2.0 we provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
 
@@ -29,7 +29,7 @@ All methods should accept an optional options object, a string which targets a p
 
     $("#myModal").modal() // initialized with defaults
     $("#myModal").modal({ keyboard: false }) // initialized with no keyboard
-    $("#myModal").modal('show') // initializes and invokes show immediately afterqwe2
+    $("#myModal").modal('show') // initializes and invokes show immediately
 
 ---
 
@@ -59,6 +59,12 @@ All events should have an infinitive and past participle form. The infinitive is
 
     show | shown
     hide | hidden
+
+All infinitive events should provide preventDefault functionality. This provides the abililty to stop the execution of an action.
+
+    $('#myModal').on('show', function (e) {
+        if (!data) return e.preventDefault() // stops modal from being shown
+    })
 
 ---
 
