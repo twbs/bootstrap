@@ -1588,7 +1588,7 @@
 
 
 
-<!-- Alerts & Messages
+<!-- Alerts
 ================================================== -->
 <section id="alerts">
   <div class="page-header">
@@ -1620,7 +1620,7 @@
   &lt;strong&gt;{{_i}}Warning!{{/i}}&lt;/strong&gt; {{_i}}Best check yo self, you're not looking too good.{{/i}}
 &lt;/div&gt;
 </pre>
-      <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>button</code> element with the data attribute, which we have opted to do for our docs.{{/i}}</p>
+      <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or risk unintentional form submissions.{{/i}}</p>
       <p>{{_i}}Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.{{/i}}</p>
       <div class="alert alert-block">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
