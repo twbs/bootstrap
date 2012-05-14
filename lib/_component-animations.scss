@@ -1,19 +1,22 @@
 // COMPONENT ANIMATIONS
 // --------------------
 
+// Updates for SASS:
+//  - replace . with @include for mixins
+
 .fade {
+  @include opacity(0);
   @include transition(opacity .15s linear);
-  opacity: 0;
   &.in {
-    opacity: 1;
+    @include opacity(100);
   }
 }
 
 .collapse {
-  @include transition(height .35s ease);
-  position:relative;
-  overflow:hidden;
+  position: relative;
   height: 0;
+  overflow: hidden;
+  @include transition(height .35s ease);
   &.in {
     height: auto;
   }

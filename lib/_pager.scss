@@ -1,6 +1,10 @@
 // PAGER
 // -----
 
+// Updates for SASS:
+//  - replace @ with $
+//  - replace . with @include for mixins
+
 .pager {
   margin-left: 0;
   margin-bottom: $baseLineHeight;

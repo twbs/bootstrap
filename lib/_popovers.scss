@@ -1,6 +1,10 @@
 // POPOVERS
 // --------
 
+// Updates for SASS:
+//  - replace @ with $
+//  - replace . with @include for mixins
+
 .popover {
   position: absolute;
   top: 0;

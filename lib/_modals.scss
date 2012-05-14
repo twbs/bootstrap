@@ -1,6 +1,11 @@
 // MODALS
 // ------
 
+// Updates for SASS:
+//  - replace @ with $
+//  - replace . with @include for mixins
+//  - pull transition definition into variable
+
 // Recalculate z-index where appropriate
 .modal-open {
   .dropdown-menu {  z-index: $zindexDropdown + $zindexModal; }
@@ -57,14 +62,14 @@
   .close { margin-top: 2px; }
 }
 
-// Body (where all modal content resises)
+// Body (where all modal content resides)
 .modal-body {
   overflow-y: auto;
   max-height: 400px;
   padding: 15px;
 }
 // Remove bottom margin if need be
-.modal-body .modal-form {
+.modal-form {
   margin-bottom: 0;
 }
 

@@ -3,6 +3,9 @@
 // Fixed-width and fluid (with sidebar) layouts
 // --------------------------------------------
 
+// Updates for SASS:
+//  - replace @ with $
+//  - replace . with @include for mixins
 
 // Container (centered, fixed-width layouts)
 .container {
@@ -11,7 +14,7 @@
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {
-  padding-left: $gridGutterWidth;
   padding-right: $gridGutterWidth;
+  padding-left: $gridGutterWidth;
   @include clearfix();
 }

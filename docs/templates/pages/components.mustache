@@ -345,7 +345,7 @@
         </div><!-- /btn-group -->
       </div><!-- /btn-toolbar -->
       <h3>{{_i}}Sizes{{/i}}</h3>
-      <p>{{_i}}Utilize the extra button classe <code>.btn-mini</code>, <code>.btn-small</code>, or <code>.btn-large</code> for sizing.{{/i}}</p>
+      <p>{{_i}}Utilize the extra button classes <code>.btn-mini</code>, <code>.btn-small</code>, or <code>.btn-large</code> for sizing.{{/i}}</p>
       <div class="btn-toolbar">
         <div class="btn-group">
           <button class="btn btn-large">{{_i}}Large action{{/i}}</button>
@@ -563,16 +563,6 @@
             <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropup{{/i}} <b class="caret bottom-up"></b></a>
-          <ul class="dropdown-menu bottom-up pull-right">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </li>
       </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
@@ -598,16 +588,6 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropup{{/i}} <b class="caret bottom-up"></b></a>
-          <ul class="dropdown-menu bottom-up pull-right">
             <li><a href="#">{{_i}}Action{{/i}}</a></li>
             <li><a href="#">{{_i}}Another action{{/i}}</a></li>
             <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
@@ -722,54 +702,58 @@
       <h3>{{_i}}What's included{{/i}}</h3>
       <p>{{_i}}Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles: top (default), right, bottom, and left.{{/i}}</p>
       <p>{{_i}}Changing between them is easy and only requires changing very little markup.{{/i}}</p>
+      <hr>
+      <h4>{{_i}}Fade in tabs{{/i}}</h4>
+      <p>{{_i}}To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.{{/i}}</p>
+      <hr>
+      <h4>{{_i}}Requires jQuery plugin{{/i}}</h4>
+      <p>{{_i}}All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life <a href="./javascript.html#tabs">on the javascript docs page</a>.{{/i}}</p>
+      <p><a class="btn" href="./javascript.html#tabs">{{_i}}Get the javascript &rarr;{{/i}}</a></p>
     </div>
-    <div class="span4">
+    <div class="span8">
       <h3>{{_i}}Tabbable example{{/i}}</h3>
-      <p>{{_i}}To make tabs tabbable, wrap the <code>.nav-tabs</code> in another div with class <code>.tabbable</code>.{{/i}}</p>
-      <div class="tabbable" style="margin-bottom: 9px;">
+      <p>{{_i}}To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.{{/i}}</p>
+      <div class="tabbable" style="margin-bottom: 18px;">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#1" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
-          <li><a href="#2" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
-          <li><a href="#3" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
+          <li class="active"><a href="#tab1" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
+          <li><a href="#tab2" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
+          <li><a href="#tab3" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
         </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="1">
+        <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+          <div class="tab-pane active" id="tab1">
             <p>{{_i}}I'm in Section 1.{{/i}}</p>
           </div>
-          <div class="tab-pane" id="2">
+          <div class="tab-pane" id="tab2">
             <p>{{_i}}Howdy, I'm in Section 2.{{/i}}</p>
           </div>
-          <div class="tab-pane" id="3">
+          <div class="tab-pane" id="tab3">
             <p>{{_i}}What up girl, this is Section 3.{{/i}}</p>
           </div>
         </div>
       </div> <!-- /tabbable -->
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Custom jQuery plugin{{/i}}</h3>
-      <p>{{_i}}All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life on the javascript docs page.{{/i}}</p>
-      <p><a class="btn" href="./javascript.html#tabs">{{_i}}Get the javascript &rarr;{{/i}}</a></p>
-    </div>
-  </div>
+      <p>{{_i}}For right or left aligned tabs, wrap the <code>.nav-tabs</code> and <code>.tab-content</code> in <code>.tabbable</code>.{{/i}}</p>
 
-  <h3>{{_i}}Straightforward markup{{/i}}</h3>
-  <p>{{_i}}Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.{{/i}}</p>
+      <h3>{{_i}}Straightforward markup{{/i}}</h3>
+      <p>{{_i}}Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.{{/i}}</p>
 <pre class="prettyprint linenums">
-&lt;div class="tabbable"&gt;
+&lt;div class="tabbable"&gt; &lt;-- Only required for left/right tabs --&gt;
   &lt;ul class="nav nav-tabs"&gt;
-    &lt;li class="active"&gt;&lt;a href="#1" data-toggle="tab"&gt;{{_i}}Section 1{{/i}}&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#2" data-toggle="tab"&gt;{{_i}}Section 2{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;{{_i}}Section 1{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;{{_i}}Section 2{{/i}}&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
   &lt;div class="tab-content"&gt;
-    &lt;div class="tab-pane active" id="1"&gt;
+    &lt;div class="tab-pane active" id="tab1"&gt;
       &lt;p&gt;{{_i}}I'm in Section 1.{{/i}}&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class="tab-pane" id="2"&gt;
+    &lt;div class="tab-pane" id="tab2"&gt;
       &lt;p&gt;{{_i}}Howdy, I'm in Section 2.{{/i}}&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
+    </div>
+  </div>
+
 
   <h3>{{_i}}Tabbable in any direction{{/i}}</h3>
   <div class="row">
@@ -964,7 +948,7 @@
 </pre>
         </div><!--/span-->
       </div><!--/row-->
-      <p>{{_i}}When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of apdding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.{{/i}}</p>
+      <p>{{_i}}When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of padding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.{{/i}}</p>
       <h3>{{_i}}Brand name{{/i}}</h3>
       <p>{{_i}}A simple link to show your brand or project name only requires an anchor tag.{{/i}}</p>
 <pre class="prettyprint linenums">
@@ -979,7 +963,7 @@
   &lt;input type="text" class="span2"&gt;
 &lt;/form&gt;
 </pre>
-      <p>{{_i}}For a more customized search form, add the <code>.navbar-search</code> class to receive specialized styles in the navbar.{{/i}}</p>
+      <p>{{_i}}For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="{{_i}}Search{{/i}}"&gt;
@@ -1012,7 +996,7 @@
 &lt;/div&gt;
 </pre>
       <div class="alert alert-info">
-        <strong>{{_i}}Heads up!{{/i}}</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a>.
+        <strong>{{_i}}Heads up!{{/i}}</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a> and <a href="./scaffolding.html#responsive">responsive Bootstrap CSS file</a>.
       </div>
 
     </div><!-- /.span -->
@@ -1039,7 +1023,7 @@
       <h3>{{_i}}Component alignment{{/i}}</h3>
       <p>{{_i}}To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.{{/i}}</p>
       <h3>{{_i}}Adding dropdown menus{{/i}}</h3>
-      <p>{{_i}}Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html/#dropdown">our javascript plugin</a>.{{/i}}</p>
+      <p>{{_i}}Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;
@@ -1058,7 +1042,7 @@
       <p><a class="btn" href="./javascript.html#dropdowns">{{_i}}Get the javascript &rarr;{{/i}}</a></p>
       <hr>
       <h3>{{_i}}Text in the navbar{{/i}}</h3>
-      <p>{{_i}}Wrap strings of text in a <code>&lt;p&gt;</code> tag for proper leading and color.{{/i}}</p>
+      <p>{{_i}}Wrap strings of text in a <code>&lt;.navbar-text&gt;</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.{{/i}}</p>
     </div><!-- /.span -->
   </div><!-- /.row -->
 
@@ -1155,11 +1139,11 @@
       </div>
       <div class="pagination">
         <ul>
-          <li><a href="#">&larr;</a></li>
+          <li><a href="#">&laquo;</a></li>
           <li class="active"><a href="#">10</a></li>
           <li class="disabled"><a href="#">...</a></li>
           <li><a href="#">20</a></li>
-          <li><a href="#">&rarr;</a></li>
+          <li><a href="#">&raquo;</a></li>
         </ul>
       </div>
       <div class="pagination pagination-centered">
@@ -1366,13 +1350,13 @@
           </tr>
           <tr>
             <td>
-              {{_i}}Error{{/i}}
+              {{_i}}Important{{/i}}
             </td>
             <td>
-              <span class="badge badge-error">6</span>
+              <span class="badge badge-important">6</span>
             </td>
             <td>
-              <code>&lt;span class="badge badge-error"&gt;6&lt;/span&gt;</code>
+              <code>&lt;span class="badge badge-important"&gt;6&lt;/span&gt;</code>
             </td>
           </tr>
           <tr>
@@ -1440,7 +1424,7 @@
   <h2>{{_i}}Page header{{/i}}</h2>
   <div class="row">
     <div class="span4">
-      <p>{{_i}}A simple shell for an <code>h1</code> to appropratiely space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).{{/i}}</p>
+      <p>{{_i}}A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).{{/i}}</p>
     </div>
     <div class="span8">
       <div class="page-header">
@@ -1627,24 +1611,25 @@
       <h3>{{_i}}Example alerts{{/i}}</h3>
       <p>{{_i}}Wrap your message and an optional close icon in a div with simple class.{{/i}}</p>
       <div class="alert">
-        <a class="close" data-dismiss="alert">&times;</a>
+        <button class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Warning!{{/i}}</strong> {{_i}}Best check yo self, you're not looking too good.{{/i}}
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert"&gt;
-  &lt;a class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;
+  &lt;button class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
   &lt;strong&gt;{{_i}}Warning!{{/i}}&lt;/strong&gt; {{_i}}Best check yo self, you're not looking too good.{{/i}}
 &lt;/div&gt;
 </pre>
+      <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>button</code> element with the data attribute, which we have opted to do for our docs.{{/i}}</p>
       <p>{{_i}}Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.{{/i}}</p>
       <div class="alert alert-block">
-        <a class="close" data-dismiss="alert">&times;</a>
+        <button class="close" data-dismiss="alert">&times;</button>
         <h4 class="alert-heading">{{_i}}Warning!{{/i}}</h4>
         <p>{{_i}}Best check yo self, you're not looking too good.{{/i}} Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
       </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
-  &lt;a class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;
+  &lt;a class="close" data-dismiss="alert" href="#"&gt;&times;&lt;/a&gt;
   &lt;h4 class="alert-heading"&gt;{{_i}}Warning!{{/i}}&lt;/h4&gt;
   {{_i}}Best check yo self, you're not...{{/i}}
 &lt;/div&gt;
@@ -1657,7 +1642,7 @@
     <div class="span4">
       <h3>{{_i}}Error or danger{{/i}}</h3>
       <div class="alert alert-error">
-        <a class="close" data-dismiss="alert">&times;</a>
+        <button class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Oh snap!{{/i}}</strong> {{_i}}Change a few things up and try submitting again.{{/i}}
       </div>
 <pre class="prettyprint linenums">
@@ -1669,7 +1654,7 @@
     <div class="span4">
       <h3>{{_i}}Success{{/i}}</h3>
       <div class="alert alert-success">
-        <a class="close" data-dismiss="alert">&times;</a>
+        <button class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Well done!{{/i}}</strong> {{_i}}You successfully read this important alert message.{{/i}}
       </div>
 <pre class="prettyprint linenums">
@@ -1681,7 +1666,7 @@
     <div class="span4">
       <h3>{{_i}}Information{{/i}}</h3>
       <div class="alert alert-info">
-        <a class="close" data-dismiss="alert">&times;</a>
+        <button class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}This alert needs your attention, but it's not super important.{{/i}}
       </div>
 <pre class="prettyprint linenums">
@@ -1821,8 +1806,10 @@
     <div class="span4">
       <h2>{{_i}}Close icon{{/i}}</h2>
       <p>{{_i}}Use the generic close icon for dismissing content like modals and alerts.{{/i}}</p>
-      <p><a class="close" style="float: none;">&times;</a></p>
-<pre class="prettyprint linenums">&lt;a class="close"&gt;&amp;times;&lt;/a&gt;</pre>
+      <p><button class="close" style="float: none;">&times;</button></p>
+<pre class="prettyprint linenums">&lt;button class="close"&gt;&amp;times;&lt;/button&gt;</pre>
+      <p>{{_i}}iOS devices require an href="#" for click events if you rather use an anchor.{{/i}}</p>
+<pre class="prettyprint linenums">&lt;a class="close" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
     </div><!--/span-->
   </div><!--/row-->
 </section>

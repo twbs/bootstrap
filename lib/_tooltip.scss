@@ -1,5 +1,9 @@
 // TOOLTIP
-// -------
+// ------=
+
+// Updates for SASS:
+//  - replace @ with $
+//  - replace . with @include for mixins
 
 .tooltip {
   position: absolute;

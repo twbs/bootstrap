@@ -1,8 +1,11 @@
-// Variables.scss
+// Variables.less
 // Variables to customize the look and feel of Bootstrap
 // -----------------------------------------------------
 
-
+// Updated for SASS:
+//  - replace @ with $
+//  - replace `spin` with `adjust-hue`
+//  - add !default to variable definitions
 
 // GLOBAL VALUES
 // --------------------------------------------------
@@ -40,19 +43,23 @@ $textColor:             $grayDark !default;
 // Links
 // -------------------------
 $linkColor:             #08c !default;
-$linkColorHover:        darken($linkColor, 15) !default;
+$linkColorHover:        darken($linkColor, 15%) !default;
 
 
 // Typography
 // -------------------------
-$baseFontSize:          13px !default;
-$baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$baseLineHeight:        18px !default;
-$altFontFamily:         Georgia, "Times New Roman", Times, serif !default;
+$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif !default;
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace !default;
 
-$headingsFontFamily:    inherit !default; // empty to use BS default, @baseFontFamily
+$baseFontSize:          13px !default;
+$baseFontFamily:        $sansFontFamily !default;
+$baseLineHeight:        18px !default;
+$altFontFamily:         $serifFontFamily !default;
+
+$headingsFontFamily:    inherit !default; // empty to use BS default, $baseFontFamily
 $headingsFontWeight:    bold !default;    // instead of browser default, bold
-$headingsColor:         inherit !default; // empty to use BS default, @textColor
+$headingsColor:         inherit !default; // empty to use BS default, $textColor
 
 
 // Tables
@@ -67,10 +74,10 @@ $tableBorder:                       #ddd !default; // table and cell border
 // -------------------------
 $btnBackground:                     $white !default;
 $btnBackgroundHighlight:            darken($white, 10%) !default;
-$btnBorder:                         darken($white, 20%) !default;
+$btnBorder:                         #ccc !default;
 
 $btnPrimaryBackground:              $linkColor !default;
-$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 15) !default;
+$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 15%) !default;
 
 $btnInfoBackground:                 #5bc0de !default;
 $btnInfoBackgroundHighlight:        #2f96b4 !default;
@@ -92,8 +99,9 @@ $btnInverseBackgroundHighlight:     $grayDarker !default;
 // -------------------------
 $inputBackground:               $white !default;
 $inputBorder:                   #ccc !default;
+$inputBorderRadius:             3px !default;
 $inputDisabledBackground:       $grayLighter !default;
-
+$formActionsBackground:         #f5f5f5 !default;
 
 // Dropdowns
 // -------------------------
@@ -123,8 +131,8 @@ $zindexModal:             1050 !default;
 
 // Sprite icons path
 // -------------------------
-$iconSpritePath:          "../img/glyphicons-halflings.png";
-$iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+$iconSpritePath:          "../img/glyphicons-halflings.png" !default;
+$iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png" !default;
 
 
 // Input placeholder text color
@@ -154,6 +162,7 @@ $navbarSearchBackground:          lighten($navbarBackground, 25%) !default;
 $navbarSearchBackgroundFocus:     $white !default;
 $navbarSearchBorder:              darken($navbarSearchBackground, 30%) !default;
 $navbarSearchPlaceholderColor:    #ccc !default;
+$navbarBrandColor:                $navbarLinkColor !default;
 
 
 // Hero unit
@@ -183,7 +192,6 @@ $infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
 
 
 
-
 // GRID
 // --------------------------------------------------
 
@@ -193,7 +201,6 @@ $gridColumns:             12 !default;
 $gridColumnWidth:         60px !default;
 $gridGutterWidth:         20px !default;
 $gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1)) !default;
-
 
 // Fluid grid
 // -------------------------

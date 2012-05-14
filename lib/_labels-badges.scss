@@ -1,0 +1,57 @@
+// LABELS & BADGES
+// ---------------
+
+// Updates for SASS:
+//  - replace @ with $
+//  - replace . with @include for mixins
+//  - manually set up .label- and .badge- classes
+
+// Base classes
+.label,
+.badge {
+  font-size: $baseFontSize * .846;
+  font-weight: bold;
+  line-height: 14px; // ensure proper line-height if floated
+  color: $white;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  background-color: $grayLight;
+}
+// Set unique padding and border-radii
+.label {
+  padding: 1px 4px 2px;
+  @include border-radius(3px);
+}
+.badge {
+  padding: 1px 9px 2px;
+  @include border-radius(9px);
+}
+
+// Hover state, but only for links
+a {
+  &.label:hover,
+  &.badge:hover {
+    color: $white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Colors
+// Only give background-color difference to links (and to simplify, we don't qualify with `a` but [href] attribute)
+// Important (red)
+.label-important, .badge-important { background-color: $errorText; }
+.label-important[href], .badge-important[href] { background-color: darken($errorText, 10%); }
+// Warnings (orange)
+.label-warning, .badge-warning { background-color: $orange; }
+.label-warning[href], .badge-warning[href] { background-color: darken($orange, 10%); }
+// Success (green)
+.label-success, .badge-success { background-color: $successText; }
+.label-success[href], .badge-success[href] { background-color: darken($successText, 10%); }
+// Info (turquoise)
+.label-info, .badge-info { background-color: $infoText; }
+.label-info[href], .badge-info[href] { background-color: darken($infoText, 10%); }
+// Inverse (black)
+.label-inverse, .badge-inverse { background-color: $grayDark; }
+.label-inverse[href], .badge-inverse[href] { background-color: darken($grayDark, 10%); }

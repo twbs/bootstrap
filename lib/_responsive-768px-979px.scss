@@ -1,0 +1,20 @@
+// PORTRAIT TABLET TO DEFAULT DESKTOP
+// ----------------------------------
+
+// Updates for SASS:
+//  - replace #grid > .style with @include grid-style
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+  // Fixed grid
+  @include grid-core(42px, 20px);
+
+  // Fluid grid
+  @include grid-fluid(5.801104972%, 2.762430939%);
+
+  // Input grid
+  @include grid-input(42px, 20px);
+
+  // No need to reset .thumbnails here since it's the same @gridGutterWidth
+
+}

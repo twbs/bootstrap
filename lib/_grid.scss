@@ -1,5 +1,10 @@
+// Updates for SASS:
+// - replace @ with $
+// - use grid-core and grid-fluid mixins instead of #grid > .core and
+//   #grid > .fluid
+
 // Fixed (940px)
-@include grid-core-generate($gridColumnWidth, $gridGutterWidth);
+@include grid-core($gridColumnWidth, $gridGutterWidth);
 
 // Fluid (940px)
-@include grid-fluid-generate($fluidGridColumnWidth, $fluidGridGutterWidth);
+@include grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth);

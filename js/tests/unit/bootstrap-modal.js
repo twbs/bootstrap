@@ -29,6 +29,35 @@ $(function () {
           .modal("show")
       })
 
+      test("should fire show event", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'></div>")
+          .bind("show", function () {
+            ok(true, "show was called")
+          })
+          .bind("shown", function () {
+            $(this).remove()
+            start()
+          })
+          .modal("show")
+      })
+
+      test("should not fire shown when default prevented", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'></div>")
+          .bind("show", function (e) {
+            e.preventDefault()
+            ok(true, "show was called")
+            start()
+          })
+          .bind("shown", function () {
+            ok(false, "shown was called")
+          })
+          .modal("show")
+      })
+
       test("should hide modal when hide is called", function () {
         stop()
         $.support.transition = false

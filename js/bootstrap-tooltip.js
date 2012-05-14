@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-tooltip.js v2.0.2
+ * bootstrap-tooltip.js v2.0.3
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
@@ -18,14 +18,16 @@
  * limitations under the License.
  * ========================================================== */
 
-!function( $ ) {
 
-  "use strict"
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
 
  /* TOOLTIP PUBLIC CLASS DEFINITION
   * =============================== */
 
-  var Tooltip = function ( element, options ) {
+  var Tooltip = function (element, options) {
     this.init('tooltip', element, options)
   }
 
@@ -33,7 +35,7 @@
 
     constructor: Tooltip
 
-  , init: function ( type, element, options ) {
+  , init: function (type, element, options) {
       var eventIn
         , eventOut
 
@@ -54,7 +56,7 @@
         this.fixTitle()
     }
 
-  , getOptions: function ( options ) {
+  , getOptions: function (options) {
       options = $.extend({}, $.fn[this.type].defaults, options, this.$element.data())
 
       if (options.delay && typeof options.delay == 'number') {
@@ -67,34 +69,28 @@
       return options
     }
 
-  , enter: function ( e ) {
+  , enter: function (e) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
-      if (!self.options.delay || !self.options.delay.show) {
-        self.show()
-      } else {
-        self.hoverState = 'in'
-        setTimeout(function() {
-          if (self.hoverState == 'in') {
-            self.show()
-          }
-        }, self.options.delay.show)
-      }
+      if (!self.options.delay || !self.options.delay.show) return self.show()
+
+      clearTimeout(this.timeout)
+      self.hoverState = 'in'
+      this.timeout = setTimeout(function() {
+        if (self.hoverState == 'in') self.show()
+      }, self.options.delay.show)
     }
 
-  , leave: function ( e ) {
+  , leave: function (e) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
-      if (!self.options.delay || !self.options.delay.hide) {
-        self.hide()
-      } else {
-        self.hoverState = 'out'
-        setTimeout(function() {
-          if (self.hoverState == 'out') {
-            self.hide()
-          }
-        }, self.options.delay.hide)
-      }
+      if (!self.options.delay || !self.options.delay.hide) return self.hide()
+
+      clearTimeout(this.timeout)
+      self.hoverState = 'out'
+      this.timeout = setTimeout(function() {
+        if (self.hoverState == 'out') self.hide()
+      }, self.options.delay.hide)
     }
 
   , show: function () {
@@ -152,9 +148,20 @@
       }
     }
 
+  , isHTML: function(text) {
+      // html string detection logic adapted from jQuery
+      return typeof text != 'string'
+        || ( text.charAt(0) === "<"
+          && text.charAt( text.length - 1 ) === ">"
+          && text.length >= 3
+        ) || /^(?:[^<]*<[\w\W]+>[^>]*$)/.exec(text)
+    }
+
   , setContent: function () {
       var $tip = this.tip()
-      $tip.find('.tooltip-inner').html(this.getTitle())
+        , title = this.getTitle()
+
+      $tip.find('.tooltip-inner')[this.isHTML(title) ? 'html' : 'text'](title)
       $tip.removeClass('fade in top bottom left right')
     }
 
@@ -205,8 +212,6 @@
 
       title = $e.attr('data-original-title')
         || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
-
-      title = (title || '').toString().replace(/(^\s*|\s*$)/, "")
 
       return title
     }
@@ -259,12 +264,12 @@
 
   $.fn.tooltip.defaults = {
     animation: true
-  , delay: 0
-  , selector: false
   , placement: 'top'
+  , selector: false
+  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
   , title: ''
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , delay: 0
   }
 
-}( window.jQuery );
+}(window.jQuery);
