@@ -104,7 +104,6 @@
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
-        this.setContent()
 
         if (this.options.animation) {
           $tip.addClass('fade')
@@ -120,6 +119,8 @@
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
           .appendTo(inside ? this.$element : document.body)
+          
+        this.setContent()
 
         pos = this.getPosition(inside)
 
