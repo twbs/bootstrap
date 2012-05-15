@@ -61,7 +61,7 @@ label {
 // Form controls
 // -------------------------
 
-// Shared resets
+// Shared size and type resets
 select,
 textarea,
 input[type="text"],
@@ -87,7 +87,7 @@ input[type="color"] {
   color: @gray;
 }
 
-// Textual inputs and textareas
+// Reset background, border, and box-shadow for textual inputs and textarea
 textarea,
 input[type="text"],
 input[type="password"],
@@ -111,31 +111,21 @@ input[type="color"] {
   .transition(@transition);
 }
 
+// Unused selectors
 input[type="radio"],
 input[type="checkbox"] {
-
 }
-
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {
-
 }
-
 input[type="file"] {
-
 }
-
 input[type="hidden"] {
-
 }
-
 input[type="image"] {
-
 }
-
 input[type="range"] {
-
 }
 
 // Make uneditable textareas behave like a textarea
