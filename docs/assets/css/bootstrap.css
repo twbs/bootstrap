@@ -796,6 +796,11 @@ input[type="color"] {
   color: #555555;
 }
 
+input,
+textarea {
+  width: 210px;
+}
+
 textarea,
 input[type="text"],
 input[type="password"],
@@ -826,6 +831,24 @@ input[type="color"] {
           transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 3px 0;
+  *margin-top: 0;
+  /* IE7 */
+
+  line-height: normal;
+  cursor: pointer;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+
 .uneditable-textarea {
   width: auto;
   height: auto;
@@ -840,6 +863,11 @@ input[type="file"] {
   /* For IE7, add top margin to align select with labels */
 
   line-height: 28px;
+}
+
+select {
+  width: 220px;
+  border: 1px solid #bbb;
 }
 
 select[multiple],
