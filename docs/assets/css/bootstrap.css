@@ -786,7 +786,8 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"] {
+input[type="color"],
+.uneditable-input {
   display: inline-block;
   height: 18px;
   padding: 4px;
@@ -815,7 +816,8 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"] {
+input[type="color"],
+.uneditable-input {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-border-radius: 3px;
