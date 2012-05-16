@@ -126,24 +126,33 @@
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
-        switch (inside ? placement.split(' ')[1] : placement) {
-          case 'bottom':
-            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'top':
-            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'left':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
-            break
-          case 'right':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
-            break
+        var repos = function() {
+          switch (inside ? placement.split(' ')[1] : placement) {
+            case 'bottom':
+              tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+              break
+            case 'top':
+              tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+              break
+            case 'left':
+              tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+              break
+            case 'right':
+              tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+              break
+          }
         }
+        repos()
 
         $tip
           .css(tp)
           .addClass(placement)
+
+        actualHeight = $tip[0].offsetHeight
+        repos() // reposition to account for word wrapping and window edge detection
+
+        $tip
+          .css(tp)
           .addClass('in')
       }
     }
