@@ -146,7 +146,7 @@ $(function () {
         typeahead.$menu.remove()
       })
 
-      test("should trigger select event on choosing an item from dropdown menu", function() {
+      test("should trigger selectitem event on choosing an item from dropdown menu", function() {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
             })
@@ -157,7 +157,7 @@ $(function () {
 
         // test:
         typeahead.lookup()
-        $input.bind("select", function() { selected = true })
+        $input.bind("selectitem", function() { selected = true })
         $(typeahead.$menu.find('li')[1]).mouseover().click()
 
         // check:
@@ -168,7 +168,7 @@ $(function () {
         typeahead.$menu.remove()
       })
 
-      test("should can prevent closing dropdown menu in select event handler", function() {
+      test("should can prevent closing dropdown menu in selectitem event handler", function() {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
             })
@@ -184,7 +184,7 @@ $(function () {
 
         // test:
         typeahead.lookup()
-        $input.bind("select", function(e) { e.preventDefault(); })
+        $input.bind("selectitem", function(e) { e.preventDefault(); })
         $(typeahead.$menu.find('li')[1]).mouseover().click()
 
         // check:

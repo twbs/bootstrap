@@ -45,7 +45,7 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
-        , e = $.Event('select')
+        , e = $.Event('selectitem')
 
       this.$element
         .val(this.updater(val))
