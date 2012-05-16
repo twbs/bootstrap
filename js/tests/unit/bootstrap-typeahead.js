@@ -145,4 +145,52 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should trigger selectitem event on choosing an item from dropdown menu", function() {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+            })
+          , typeahead = $input.data('typeahead')
+          , selected = false
+
+        $input.val('a')
+
+        // test:
+        typeahead.lookup()
+        $input.bind("selectitem", function() { selected = true })
+        $(typeahead.$menu.find('li')[1]).mouseover().click()
+
+        // check:
+        ok(selected, 'a change event was fired')
+        ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
+
+        // teardown:
+        typeahead.$menu.remove()
+      })
+
+      test("should can prevent closing dropdown menu in selectitem event handler", function() {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        // sanity check that the test is correct:
+        $(typeahead.$menu.find('li')[1]).mouseover().click()
+        ok(!typeahead.$menu.is(':visible'), 'the menu was closed')
+
+
+        // test:
+        typeahead.lookup()
+        $input.bind("selectitem", function(e) { e.preventDefault(); })
+        $(typeahead.$menu.find('li')[1]).mouseover().click()
+
+        // check:
+        ok(typeahead.$menu.is(':visible'), 'the menu is still visible')
+
+        // teardown:
+        typeahead.$menu.remove()
+      })
 })

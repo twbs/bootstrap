@@ -45,9 +45,13 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
+        , e = $.Event('selectitem')
+
       this.$element
         .val(this.updater(val))
         .change()
+        .trigger(e)
+      if (e.isDefaultPrevented()) return
       return this.hide()
     }
 
