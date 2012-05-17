@@ -201,10 +201,10 @@
           <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
 
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide fade" tabindex=0>
+          <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h3>Modal Heading</h3>
+              <h3 id="myModal-label">Modal Heading</h3>
             </div>
             <div class="modal-body">
               <h4>Text in a modal</h4>

@@ -95,7 +95,8 @@
         $('body').removeClass('modal-open')
 
         this.escape()
-        this.relaxFocus()
+
+        $(document).off('focusin.modal')
 
         this.$element.removeClass('in')
 
@@ -106,18 +107,11 @@
 
     , enforceFocus: function () {
         var that = this
-        var console = window.console
-        console.log('attach');
         $(document).on('focusin.modal', function (e) {
-          console.log('triggered');
           if (that.$element[0] !== e.target && !that.$element.has(e.target).length) {
             that.$element.focus()
           }
         })
-      }
-
-    , relaxFocus: function () {
-        $(document).off('focus.modal')
       }
 
     , escape: function () {
