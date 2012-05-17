@@ -103,6 +103,9 @@
         , tp
 
       if (this.hasContent() && this.enabled) {
+        var triggerEvent = $.Event('show')
+        this.$element.trigger(triggerEvent)
+        
         $tip = this.tip()
         this.setContent()
 
@@ -145,6 +148,9 @@
           .css(tp)
           .addClass(placement)
           .addClass('in')
+        
+        triggerEvent = $.Event('shown')
+        this.$element.trigger(triggerEvent)
       }
     }
 
@@ -168,7 +174,10 @@
   , hide: function () {
       var that = this
         , $tip = this.tip()
-
+      
+      var triggerEvent = $.Event('hide')
+      this.$element.trigger(triggerEvent)
+      
       $tip.removeClass('in')
 
       function removeWithAnimation() {
@@ -185,6 +194,9 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.remove()
+      
+      triggerEvent = $.Event('hidden')
+      this.$element.trigger(triggerEvent)
     }
 
   , fixTitle: function () {
