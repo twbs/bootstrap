@@ -176,6 +176,24 @@ And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 
 
 
+Sass Conversion Quick Tips
+--------------------------
+
+* replace @ with $
+* replace . with @include for mixins
+* replace `spin` with `adjust-hue`
+* add !default to variable definitions
+* replace #gradient > .vertical with @include gradient-vertical
+* replace #grid > .style with @include grid-style
+* use grid-core and grid-fluid mixins instead of #grid > .core and #grid > .fluid
+* use font-shorthand instead of #font > .shorthand
+* replace fadein with fade-in
+* move @import for reset below mixins, because it uses tab-focus mixin in bootstrap.scss
+* explicitly provide .clearfix, .hide-text and .input-block-level for compatibility with LESS output
+* pass grid-* mixin arguments to generators, because otherwise the generator mixins will use the default variables pull transition definition into variable
+
+
+
 Copyright and license
 ---------------------
 
