@@ -139,8 +139,6 @@
    * =================================== */
 
   $(function () {
-    console.log(toggle + ', ' + toggle + ' + [role=menu]')
-
     $('html')
       .on('click.dropdown.data-api', clearMenus)
     $('body')
