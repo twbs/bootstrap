@@ -1,31 +1,41 @@
-TWITTER BOOTSTRAP
+[Twitter Bootstrap](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
 =================
 
-Bootstrap is Twitter's toolkit for kickstarting CSS for websites, apps, and more. It includes base CSS styles for typography, forms, buttons, tables, grids, navigation, alerts, and more.
+Bootstrap provides simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions. In other words, it's a front-end toolkit for faster, more beautiful web development. It's created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat) at Twitter.
 
-To get started -- checkout http://twitter.github.com/bootstrap!
+To get started, checkout http://twitter.github.com/bootstrap!
 
 
-Usage
------
+
+Quick start
+-----------
+
+Clone the repo, `git clone git@github.com:twitter/bootstrap.git`, or [download the latest release](https://github.com/twitter/bootstrap/zipball/master).
+
+
+
+SASS: Usage
+-----------
 
 You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new project and start cranking.
 
 Because SASS always outputs standard css, just link to the final output like normal:
 
-    <link rel="stylesheet" type="text/css" href="bootstrap-2.0.3.css">
+`<link rel="stylesheet" type="text/css" href="bootstrap-2.0.3.css">`
 
 For more info, refer to the docs!
 
 
-Basic modification
-------------------
+
+SASS: Basic modification
+------------------------
 
 You can learn more about SASS at:
 
-    http://sass-lang.com
+[sass-lang.com](http://sass-lang.com)
 
-SASS runs as a local GEM on your system. You can run "sass --watch lib/bootstrap.scss:bootstrap-2.0.3.css"
+SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:bootstrap-2.0.3.css`
+
 
 
 Versioning
@@ -39,11 +49,12 @@ Releases will be numbered with the follow format:
 
 And constructed with the following guidelines:
 
-* Breaking backward compatibility bumps the major
-* New additions without breaking backward compatibility bumps the minor
-* Bug fixes and misc changes bump the patch
+* Breaking backward compatibility bumps the major (and resets the minor and patch)
+* New additions without breaking backward compatibility bumps the minor (and resets the patch)
+* Bug fixes and misc changes bumps the patch
 
 For more information on SemVer, please visit http://semver.org/.
+
 
 
 Bug tracker
@@ -52,6 +63,7 @@ Bug tracker
 Have a bug? Please create an issue here on GitHub!
 
 https://github.com/twitter/bootstrap/issues
+
 
 
 Twitter account
@@ -78,6 +90,7 @@ twitter-bootstrap@googlegroups.com
 http://groups.google.com/group/twitter-bootstrap
 
 
+
 IRC
 ---
 
@@ -86,8 +99,9 @@ Server: irc.freenode.net
 Channel: ##twitter-bootstrap (the double ## is not a typo)
 
 
-SASS Developers
----------------
+
+SASS: Developers
+----------------
 
 We have included a Rakefile with convenience methods for working with the SASS Bootstrap library.
 
@@ -97,6 +111,7 @@ The lessc compiler is required for this command to run.
 
 + **watch** - `rake watch`
 This is a convenience method for watching your Sass files and automatically building them whenever you save.
+
 
 
 Developers
@@ -121,6 +136,7 @@ Runs jshint and qunit tests headlessly in phantom js (used for ci). Depends on h
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
 
 
+
 Authors
 -------
 
@@ -133,6 +149,7 @@ Authors
 
 + http://twitter.com/fat
 + http://github.com/fat
+
 
 
 Sass Conversion
@@ -156,6 +173,7 @@ The Twitter Bootstrap was lovingly converted to Sass by:
 + http://github.com/m5o
 
 And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
+
 
 
 Copyright and license
