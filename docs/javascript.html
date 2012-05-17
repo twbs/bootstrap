@@ -199,8 +199,9 @@
 
           <h2>Live demo</h2>
           <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide fade">
+          <div id="myModal" class="modal hide fade" tabindex=0>
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h3>Modal Heading</h3>
@@ -208,6 +209,11 @@
             <div class="modal-body">
               <h4>Text in a modal</h4>
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+
+              <form class="well">
+                <label>Label name</label>
+                <input type="text" class="span3" placeholder="Type something…">
+              </form>
 
               <h4>Popover in a modal</h4>
               <p>This <a href="#" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
