@@ -26,8 +26,7 @@
  /* DROPDOWN CLASS DEFINITION
   * ========================= */
 
-  var toggle = '[data-toggle="dropdown"]'
-    , active = 'aria-active'
+  var toggle = '[data-toggle=dropdown]'
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
         $('html').on('click.dropdown.data-api', function () {
@@ -61,15 +60,16 @@
     }
 
   , keydown: function (e) {
-      var $this = $(this)
+      var $this
         , $items
         , $active
         , $parent
+        , isActive
         , index
 
-      if (e.keyCode == 27) return $this.click()
+      if (!/(38|40|27)/.test(e.keyCode)) return
 
-      if (!/(38|40|13)/.test(e.keyCode)) return
+      $this = $(this)
 
       e.preventDefault()
       e.stopPropagation()
@@ -78,27 +78,23 @@
 
       $parent = getParent($this)
 
-      $parent.hasClass('open') || $this.click()
+      isActive = $parent.hasClass('open')
 
-      $items = $('[role=menu] li:not(.divider)', $parent)
+      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
+
+      $items = $('[role=menu] li:not(.divider) a', $parent)
 
       if (!$items.length) return
 
-      index = $items.index($items.filter('#' + active))
-
-      $items
-        .eq(index)
-        .attr('id', '')
+      index = $items.index($items.filter(':focus'))
 
       if (e.keyCode == 38 && index > 0) index--                                        // up
-      else if (e.keyCode == 40 && index < $items.length - 1) index++                   // down
-      else if (e.keyCode == 13 && ~index) return $items.eq(index).find('a').click()    // enter
-
+      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
       if (!~index) index = 0
 
       $items
         .eq(index)
-        .attr('id', active)
+        .focus()
     }
 
   }
@@ -106,8 +102,6 @@
   function clearMenus() {
     getParent($(toggle))
       .removeClass('open')
-      .find('#' + active)
-      .attr('id', '')
   }
 
   function getParent($this) {
@@ -145,12 +139,14 @@
    * =================================== */
 
   $(function () {
+    console.log(toggle + ', ' + toggle + ' + [role=menu]')
+
     $('html')
       .on('click.dropdown.data-api', clearMenus)
     $('body')
       .on('click.dropdown', '.dropdown form', function (e) { e.stopPropagation() })
       .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-      .on('keydown.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+      .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
   })
 
 }(window.jQuery);

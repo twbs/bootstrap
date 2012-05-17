@@ -2419,18 +2419,13 @@ table .span24 {
 }
 
 .dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
 .dropdown-menu .active > a,
-.dropdown-menu .active > a:hover,
-.dropdown-menu:hover #aria-active > a:hover,
-.dropdown-menu #aria-active > a {
+.dropdown-menu .active > a:hover {
   color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
-}
-
-.dropdown-menu:hover #aria-active > a {
-  color: #333333;
-  background-color: #ffffff;
+  outline: 0;
 }
 
 .open {
