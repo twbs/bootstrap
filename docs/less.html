@@ -614,6 +614,14 @@
             <td><code>@dropdownLinkBackgroundHover</code></td>
             <td><code>@linkColor</code></td>
           </tr>
+          <tr>
+            <td><code>@@dropdownDividerTop</code></td>
+            <td><code>#e5e5e5</code></td>
+          </tr>
+          <tr>
+            <td><code>@@dropdownDividerBottom</code></td>
+            <td><code>@white</code></td>
+          </tr>
         </tbody>
       </table>
       <h4>Hero unit</h4>
@@ -899,6 +907,11 @@
         <td><code>@columnCount, @columnGap: @gridGutterWidth</code></td>
         <td>Make the content of any element use CSS3 columns</td>
       </tr>
+      <tr>
+        <td><code>.hyphens()</code></td>
+        <td><code>@mode: auto</code></td>
+        <td>CSS3 hyphenation when you want it (includes <code>word-wrap: break-word</code>)</td>
+      </tr>
     </tbody>
   </table>
   <h3>Backgrounds and gradients</h3>
@@ -975,8 +988,8 @@
   <div class="row">
     <div class="span4">
       <h3>Node with makefile</h3>
-      <p>Install the LESS command line compiler and uglify-js globally with npm by running the following command:</p>
-      <pre>$ npm install -g less uglify-js</pre>
+      <p>Install the LESS command line compiler, JSHint, Recess, and uglify-js globally with npm by running the following command:</p>
+      <pre>$ npm install -g less jshint recess uglify-js</pre>
       <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
       <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
     </div><!-- /span4 -->
