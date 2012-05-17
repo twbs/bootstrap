@@ -2355,10 +2355,15 @@ table .span24 {
   margin-left: 2px;
 }
 
-.dropdown:hover .caret,
+.dropdown a:focus .caret,
+.dropdown a:hover .caret,
 .open .caret {
   opacity: 1;
   filter: alpha(opacity=100);
+}
+
+.navbar .nav .open > a {
+  color: #ffffff;
 }
 
 .dropdown-menu {
@@ -2415,10 +2420,17 @@ table .span24 {
 
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
-.dropdown-menu .active > a:hover {
+.dropdown-menu .active > a:hover,
+.dropdown-menu:hover #aria-active > a:hover,
+.dropdown-menu #aria-active > a {
   color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
+}
+
+.dropdown-menu:hover #aria-active > a {
+  color: #333333;
+  background-color: #ffffff;
 }
 
 .open {
@@ -3779,6 +3791,7 @@ input[type="submit"].btn.btn-mini {
   margin: 0;
 }
 
+.navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
   color: #ffffff;
   text-decoration: none;
@@ -3786,7 +3799,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav .active > a,
-.navbar .nav .active > a:hover {
+.navbar .nav .active > a:hover,
+.navbar .nav .active > a:focus {
   color: #ffffff;
   text-decoration: none;
   background-color: #222222;
@@ -3916,6 +3930,7 @@ input[type="submit"].btn.btn-mini {
   background-color: transparent;
 }
 
+.navbar .nav li.dropdown.active > .dropdown-toggle:focus,
 .navbar .nav li.dropdown.active > .dropdown-toggle:hover {
   color: #ffffff;
 }

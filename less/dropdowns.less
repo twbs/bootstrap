@@ -34,9 +34,14 @@
   margin-top: 8px;
   margin-left: 2px;
 }
-.dropdown:hover .caret,
+.dropdown a:focus .caret,
+.dropdown a:hover .caret,
 .open .caret {
   .opacity(100);
+}
+
+.navbar .nav .open > a {
+  color: @navbarLinkColorActive;
 }
 
 // The dropdown menu (ul)
@@ -90,10 +95,16 @@
 // -----------
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
-.dropdown-menu .active > a:hover {
+.dropdown-menu .active > a:hover,
+.dropdown-menu:hover #aria-active > a:hover,
+.dropdown-menu #aria-active > a {
   color: @dropdownLinkColorHover;
   text-decoration: none;
   background-color: @dropdownLinkBackgroundHover;
+}
+.dropdown-menu:hover #aria-active > a {
+  color: @dropdownLinkColor;
+  background-color: @dropdownBackground;
 }
 
 // Open state for the dropdown
