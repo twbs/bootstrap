@@ -2,10 +2,6 @@
 // ----------
 // Note: `.thumbnails` and `.thumbnails > li` are overriden in responsive files
 
-// Updates for SASS:
-//  - replace @ with $
-//  - replace . with @include for mixins
-
 // Make wrapper ul behave like the grid
 .thumbnails {
   margin-left: -$gridGutterWidth;

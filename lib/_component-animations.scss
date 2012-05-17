@@ -1,9 +1,6 @@
 // COMPONENT ANIMATIONS
 // --------------------
 
-// Updates for SASS:
-//  - replace . with @include for mixins
-
 .fade {
   @include opacity(0);
   @include transition(opacity .15s linear);

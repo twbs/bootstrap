@@ -1,11 +1,6 @@
 // BREADCRUMBS
 // -----------
 
-// Updates for SASS:
-//  - replace @ with $
-//  - replace . with @include for mixins
-//  - replace #gradient > .vertical with @include gradient-vertical
-
 .breadcrumb {
   padding: 7px 14px;
   margin: 0 0 $baseLineHeight;
