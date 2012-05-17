@@ -185,7 +185,7 @@
   [class*="span"],
   .row-fluid [class*="span"] {
     float: none;
-    display: block;
+    display: inline-block;
     width: auto;
     margin-left: 0;
   }
@@ -777,12 +777,21 @@
     padding-top: 0;
   }
 
-  .navbar-fixed-top {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
     position: static;
+  }
+
+  .navbar-fixed-top {
     margin-bottom: 18px;
   }
 
-  .navbar-fixed-top .navbar-inner {
+  .navbar-fixed-bottom {
+    margin-top: 18px;
+  }
+
+  .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {
     padding: 5px;
   }
 
