@@ -169,10 +169,14 @@
   }
   [class*="span"],
   .row-fluid [class*="span"] {
-    display: inline-block;
+    display: block;
     float: none;
     width: auto;
     margin-left: 0;
+  }
+  .row-fluid .input-prepend [class*="span"],
+  .row-fluid .input-append [class*="span"] {
+    display: inline-block;
   }
   .input-large,
   .input-xlarge,

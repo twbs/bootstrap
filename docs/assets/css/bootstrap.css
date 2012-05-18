@@ -802,6 +802,10 @@ textarea {
   width: 210px;
 }
 
+textarea {
+  height: auto;
+}
+
 textarea,
 input[type="text"],
 input[type="password"],

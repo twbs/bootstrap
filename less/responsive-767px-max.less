@@ -120,9 +120,13 @@
   [class*="span"],
   .row-fluid [class*="span"] {
     float: none;
-    display: inline-block;
+    display: block;
     width: auto;
     margin-left: 0;
+  }
+  .row-fluid .input-prepend [class*="span"],
+  .row-fluid .input-append [class*="span"] {
+    display: inline-block;
   }
 
   // FORM FIELDS
