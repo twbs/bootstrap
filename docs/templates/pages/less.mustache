@@ -537,6 +537,14 @@
             <td><code>@dropdownLinkBackgroundHover</code></td>
             <td><code>@linkColor</code></td>
           </tr>
+          <tr>
+            <td><code>@@dropdownDividerTop</code></td>
+            <td><code>#e5e5e5</code></td>
+          </tr>
+          <tr>
+            <td><code>@@dropdownDividerBottom</code></td>
+            <td><code>@white</code></td>
+          </tr>
         </tbody>
       </table>
       <h4>{{_i}}Hero unit{{/i}}</h4>
@@ -733,7 +741,7 @@
       <tr>
         <td><code>#grid > .fluid()</code></td>
         <td><code>@fluidGridColumnWidth, @fluidGridGutterWidth</code></td>
-        <td>{{_i}}Generate a precent grid system with <em>n</em> columns and <em>x</em> % wide gutter{{/i}}</td>
+        <td>{{_i}}Generate a percent grid system with <em>n</em> columns and <em>x</em> % wide gutter{{/i}}</td>
       </tr>
       <tr>
         <td><code>#grid > .input()</code></td>
@@ -822,6 +830,11 @@
         <td><code>@columnCount, @columnGap: @gridGutterWidth</code></td>
         <td>{{_i}}Make the content of any element use CSS3 columns{{/i}}</td>
       </tr>
+      <tr>
+        <td><code>.hyphens()</code></td>
+        <td><code>@mode: auto</code></td>
+        <td>{{_i}}CSS3 hyphenation when you want it (includes <code>word-wrap: break-word</code>){{/i}}</td>
+      </tr>
     </tbody>
   </table>
   <h3>{{_i}}Backgrounds and gradients{{/i}}</h3>
@@ -898,8 +911,8 @@
   <div class="row">
     <div class="span4">
       <h3>{{_i}}Node with makefile{{/i}}</h3>
-      <p>{{_i}}Install the LESS command line compiler and uglify-js globally with npm by running the following command:{{/i}}</p>
-      <pre>$ npm install -g less uglify-js</pre>
+      <p>{{_i}}Install the LESS command line compiler, JSHint, Recess, and uglify-js globally with npm by running the following command:{{/i}}</p>
+      <pre>$ npm install -g less jshint recess uglify-js</pre>
       <p>{{_i}}Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.{{/i}}</p>
       <p>{{_i}}Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).{{/i}}</p>
     </div><!-- /span4 -->

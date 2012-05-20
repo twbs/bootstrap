@@ -736,7 +736,7 @@
       <h3>{{_i}}Straightforward markup{{/i}}</h3>
       <p>{{_i}}Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.{{/i}}</p>
 <pre class="prettyprint linenums">
-&lt;div class="tabbable"&gt; &lt;-- Only required for left/right tabs --&gt;
+&lt;div class="tabbable"&gt; &lt;!-- Only required for left/right tabs --&gt;
   &lt;ul class="nav nav-tabs"&gt;
     &lt;li class="active"&gt;&lt;a href="#tab1" data-toggle="tab"&gt;{{_i}}Section 1{{/i}}&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#tab2" data-toggle="tab"&gt;{{_i}}Section 2{{/i}}&lt;/a&gt;&lt;/li&gt;
@@ -1252,7 +1252,7 @@
           <span class="label label-success">{{_i}}Success{{/i}}</span>
         </td>
         <td>
-          <code>&lt;span class="label label-success"&gt;{{/_i}}Success{{/i}}&lt;/span&gt;</code>
+          <code>&lt;span class="label label-success"&gt;{{_i}}Success{{/i}}&lt;/span&gt;</code>
         </td>
       </tr>
       <tr>
@@ -1588,7 +1588,7 @@
 
 
 
-<!-- Alerts & Messages
+<!-- Alerts
 ================================================== -->
 <section id="alerts">
   <div class="page-header">
@@ -1611,7 +1611,7 @@
       <h3>{{_i}}Example alerts{{/i}}</h3>
       <p>{{_i}}Wrap your message and an optional close icon in a div with simple class.{{/i}}</p>
       <div class="alert">
-        <button class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Warning!{{/i}}</strong> {{_i}}Best check yo self, you're not looking too good.{{/i}}
       </div>
 <pre class="prettyprint linenums">
@@ -1620,10 +1620,10 @@
   &lt;strong&gt;{{_i}}Warning!{{/i}}&lt;/strong&gt; {{_i}}Best check yo self, you're not looking too good.{{/i}}
 &lt;/div&gt;
 </pre>
-      <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>button</code> element with the data attribute, which we have opted to do for our docs.{{/i}}</p>
+      <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.{{/i}}</p>
       <p>{{_i}}Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.{{/i}}</p>
       <div class="alert alert-block">
-        <button class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h4 class="alert-heading">{{_i}}Warning!{{/i}}</h4>
         <p>{{_i}}Best check yo self, you're not looking too good.{{/i}} Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
       </div>
@@ -1642,7 +1642,7 @@
     <div class="span4">
       <h3>{{_i}}Error or danger{{/i}}</h3>
       <div class="alert alert-error">
-        <button class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Oh snap!{{/i}}</strong> {{_i}}Change a few things up and try submitting again.{{/i}}
       </div>
 <pre class="prettyprint linenums">
@@ -1654,7 +1654,7 @@
     <div class="span4">
       <h3>{{_i}}Success{{/i}}</h3>
       <div class="alert alert-success">
-        <button class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Well done!{{/i}}</strong> {{_i}}You successfully read this important alert message.{{/i}}
       </div>
 <pre class="prettyprint linenums">
@@ -1666,7 +1666,7 @@
     <div class="span4">
       <h3>{{_i}}Information{{/i}}</h3>
       <div class="alert alert-info">
-        <button class="close" data-dismiss="alert">&times;</button>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>{{_i}}Heads up!{{/i}}</strong> {{_i}}This alert needs your attention, but it's not super important.{{/i}}
       </div>
 <pre class="prettyprint linenums">
