@@ -33,7 +33,7 @@ $(function () {
           .tooltip({placement: 'bottom'})
           .tooltip('show')
 
-        ok($(".tooltip").hasClass('fade bottom in'), 'has correct classes applied')
+        ok($(".tooltip").is('.fade.bottom.in'), 'has correct classes applied')
         tooltip.tooltip('hide')
       })
 
@@ -69,10 +69,10 @@ $(function () {
         tooltip.trigger('mouseenter')
 
         setTimeout(function () {
-          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
           tooltip.trigger('mouseout')
           setTimeout(function () {
-            ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
             start()
           }, 200)
         }, 100)
@@ -104,10 +104,10 @@ $(function () {
         stop()
         tooltip.trigger('mouseenter')
         setTimeout(function () {
-          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
           tooltip.trigger('mouseout')
           setTimeout(function () {
-            ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
             start()
           }, 100)
         }, 50)
@@ -120,9 +120,9 @@ $(function () {
         stop()
         tooltip.trigger('mouseenter')
         setTimeout(function () {
-          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
           setTimeout(function () {
-            ok(!$(".tooltip").hasClass('fade in'), 'tooltip has faded in')
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip has faded in')
             start()
           }, 200)
         }, 100)
