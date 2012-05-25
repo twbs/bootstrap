@@ -73,6 +73,10 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
+#map_canvas img {
+  max-width: none;
+}
+
 button,
 input,
 select,
