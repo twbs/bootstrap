@@ -1224,6 +1224,10 @@ select:focus:required:invalid:focus {
   color: #999999;
 }
 
+:-ms-input-placeholder {
+  color: #999999;
+}
+
 ::-webkit-input-placeholder {
   color: #999999;
 }
