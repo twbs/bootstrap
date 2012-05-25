@@ -85,7 +85,7 @@ We have included a makefile with convenience methods for working with the Bootst
 Our makefile depends on you having recess, uglify.js, and jshint installed. To install, just run the following command in npm:
 
 ```
-$ npm install recess uglify-js jshint -g
+$ npm install recess uglify-js jshint connect -g
 ```
 
 + **build** - `make`
