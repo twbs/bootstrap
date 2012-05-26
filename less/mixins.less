@@ -6,18 +6,31 @@
 // UTILITY MIXINS
 // --------------------------------------------------
 
-// Clearfix
-// --------
-// For clearing floats like a boss h5bp.com/q
-.clearfix {
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    content: "";
+#utilities {
+  // Clearfix
+  // --------
+  // For clearing floats like a boss h5bp.com/q
+  .clearfix() {
+    *zoom: 1;
+    &:before,
+    &:after {
+      display: table;
+      content: "";
+    }
+    &:after {
+      clear: both;
+    }
   }
-  &:after {
-    clear: both;
+
+  // CSS image replacement
+  // -------------------------
+  // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+  .hide-text() {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
   }
 }
 
@@ -98,17 +111,6 @@
   white-space: nowrap;
 }
 
-// CSS image replacement
-// -------------------------
-// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
 
 // FONTS
 // --------------------------------------------------
@@ -148,12 +150,14 @@
 // FORMS
 // --------------------------------------------------
 
-// Block level inputs
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 28px;        // Make inputs at least the height of their button counterpart
-  .box-sizing(border-box); // Makes inputs behave like true block-level elements
+#forms {
+  // Block level inputs
+  .input-block-level() {
+    display: block;
+    width: 100%;
+    min-height: 28px;        // Make inputs at least the height of their button counterpart
+    .box-sizing(border-box); // Makes inputs behave like true block-level elements
+  }
 }
 
 
@@ -505,7 +509,7 @@
 .container-fixed() {
   margin-right: auto;
   margin-left: auto;
-  .clearfix();
+  #utilities > .clearfix();
 }
 
 // Table columns
@@ -519,7 +523,7 @@
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
 .makeRow() {
   margin-left: @gridGutterWidth * -1;
-  .clearfix();
+  #utilities > .clearfix();
 }
 .makeColumn(@columns: 1, @offset: 0) {
   float: left;
@@ -554,7 +558,7 @@
 
     .row {
       margin-left: @gridGutterWidth * -1;
-      .clearfix();
+      #utilities > .clearfix();
     }
 
     [class*="span"] {
@@ -588,9 +592,9 @@
 
     .row-fluid {
       width: 100%;
-      .clearfix();
+      #utilities > .clearfix();
       [class*="span"] {
-        .input-block-level();
+        #forms > .input-block-level();
         float: left;
         margin-left: @fluidGridGutterWidth;
         *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
