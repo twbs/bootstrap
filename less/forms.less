@@ -330,7 +330,7 @@ select:focus:required:invalid {
   margin-bottom: @baseLineHeight;
   background-color: @formActionsBackground;
   border-top: 1px solid #ddd;
-  .clearfix(); // Adding clearfix to allow for .pull-right button containers
+  #utilities > .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
 // For text that needs to appear as an input but should not be an input
@@ -551,7 +551,7 @@ legend + .control-group {
   // Increase spacing between groups
   .control-group {
     margin-bottom: @baseLineHeight;
-    .clearfix();
+    #utilities > .clearfix();
   }
   // Float the labels left
   .control-label {
@@ -581,4 +581,8 @@ legend + .control-group {
   .form-actions {
     padding-left: 160px;
   }
+}
+
+.input-block-level {
+  #forms > .input-block-level();
 }
