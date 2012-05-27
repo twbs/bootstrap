@@ -8,9 +8,6 @@
 
 p {
   margin: 0 0 @baseLineHeight / 2;
-  font-family: @baseFontFamily;
-  font-size: @baseFontSize;
-  line-height: @baseLineHeight;
   small {
     font-size: @baseFontSize - 2;
     color: @grayLight;
@@ -171,7 +168,7 @@ em {
 // Abbreviations and acronyms
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #ddd;
+  border-bottom: 1px dotted @grayLight;
 }
 abbr.initialism {
   font-size: 90%;
