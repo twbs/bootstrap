@@ -331,7 +331,7 @@
     </h1>
   </div>
   <div class="download-btn">
-    <a class="btn btn-primary" href="#">{{_i}}Customize and Download{{/i}}</a>
+    <a class="btn btn-primary" href="#" {{#production}}onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);"{{/production}}>Customize and Download</a>
     <h4>{{_i}}What's included?{{/i}}</h4>
     <p>{{_i}}Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.{{/i}}</p>
   </div>
