@@ -507,7 +507,7 @@
   , transition: function (method, startEvent, completeEvent) {
       var that = this
         , complete = function () {
-            if (startEvent == 'show') that.reset()
+            if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
             that.$element.trigger(completeEvent)
           }
@@ -1290,7 +1290,7 @@
     this.selector = (this.options.target
       || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
       || '') + ' .nav li > a'
-    this.$body = $('body').on('click.scroll.data-api', this.selector, process)
+    this.$body = $('body')
     this.refresh()
     this.process()
   }
@@ -1595,7 +1595,7 @@
     }
 
   , show: function () {
-      var pos = $.extend({}, this.$element.position(), {
+      var pos = $.extend({}, this.$element.offset(), {
         height: this.$element[0].offsetHeight
       })
 

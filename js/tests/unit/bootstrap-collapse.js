@@ -37,4 +37,18 @@ $(function () {
           .collapse('show')
       })
 
+      test("should reset style to auto after finishing opening collapse", function () {
+        $.support.transition = false
+        stop();
+        $('<div class="collapse" style="height: 0px"/>')
+          .bind('show', function () {
+            ok(this.style.height == '0px')
+          })
+          .bind('shown', function () {
+            ok(this.style.height == 'auto')
+            start()
+          })
+          .collapse('show')
+      })
+
 })
