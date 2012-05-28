@@ -2449,7 +2449,7 @@ table .span24 {
   display: block;
 }
 
-.pull-right .dropdown-menu {
+.pull-right > .dropdown-menu {
   right: 0;
   left: auto;
 }
