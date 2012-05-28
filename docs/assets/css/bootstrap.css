@@ -3713,6 +3713,10 @@ input[type="submit"].btn.btn-mini {
   color: #cccccc;
 }
 
+.navbar-search .search-query:-ms-input-placeholder {
+  color: #cccccc;
+}
+
 .navbar-search .search-query::-webkit-input-placeholder {
   color: #cccccc;
 }
