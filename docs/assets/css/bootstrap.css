@@ -2511,7 +2511,6 @@ table .span24 {
 
 .fade {
   opacity: 0;
-  filter: alpha(opacity=0);
   -webkit-transition: opacity 0.15s linear;
      -moz-transition: opacity 0.15s linear;
       -ms-transition: opacity 0.15s linear;
@@ -2521,7 +2520,6 @@ table .span24 {
 
 .fade.in {
   opacity: 1;
-  filter: alpha(opacity=100);
 }
 
 .collapse {
