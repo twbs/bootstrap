@@ -245,6 +245,15 @@ textarea[class*="span"],
   float: none;
   margin-left: 0;
 }
+// Ensure input-prepend/append never wraps
+.input-append input[class*="span"],
+.input-append .uneditable-input[class*="span"],
+.input-prepend input[class*="span"],
+.input-prepend .uneditable-input[class*="span"],
+.row-fluid .input-prepend [class*="span"],
+.row-fluid .input-append [class*="span"] {
+  display: inline-block;
+}
 
 
 
