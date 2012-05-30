@@ -1,5 +1,10 @@
 {% load bootstrap_tags %}
 
+{% if form.non_field_errors %}
+<div class="alert-message block-message error">
+  {{ form.non_field_errors }}
+</div>
+{% endif %}
 {% for field in form %}
   {% bootstrap_field field %}
 {% endfor %}
