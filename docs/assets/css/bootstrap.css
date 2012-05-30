@@ -2483,6 +2483,11 @@ table .span24 {
   border-color: rgba(0, 0, 0, 0.15);
 }
 
+.well .form-actions {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 .well-large {
   padding: 24px;
   -webkit-border-radius: 6px;
