@@ -116,16 +116,16 @@ $(function () {
       test("should show tooltip if leave event hasn't occured before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
-          .tooltip({ delay: 200 })
+          .tooltip({ delay: 150 })
         stop()
         tooltip.trigger('mouseenter')
         setTimeout(function () {
           ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
-          setTimeout(function () {
-            ok(!$(".tooltip").is('.fade.in'), 'tooltip has faded in')
-            start()
-          }, 200)
         }, 100)
+        setTimeout(function () {
+          ok($(".tooltip").is('.fade.in'), 'tooltip has faded in')
+          start()
+        }, 200)
       })
 
       test("should detect if title string is html or text: foo", function () {
