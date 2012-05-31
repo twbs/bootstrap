@@ -109,13 +109,14 @@
   float: none;
   margin-right: 2px;
   padding: 4px 10px 5px;
-  font-size: @baseFontSize + 1;
+  font-size: @baseFontSize;
   line-height: 19px;
   color: @navbarLinkColor;
   border: 1px solid transparent;
   .border-radius();
   text-decoration: none;
 }
+
 // Hover
 .hq-navbar .nav > li > a:hover {
   text-decoration: none;
@@ -138,5 +139,8 @@
     position: absolute;
     top: 0;
     right: @gridGutterWidth;
-    padding-top: 3px;
+    padding-top: 2px;
+    .btn {
+        font-size: (@baseFontSize - 1);
+    }
 }
