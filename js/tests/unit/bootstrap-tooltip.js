@@ -78,6 +78,25 @@ $(function () {
         }, 100)
       })
 
+      test("should not show tooltip if leave event occurs before delay expires, even if hide delay is 0", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: { show: 200, hide: 0} })
+
+        stop()
+
+        tooltip.trigger('mouseenter')
+
+        setTimeout(function () {
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
+          tooltip.trigger('mouseout')
+          setTimeout(function () {
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
+            start()
+          }, 200)
+        }, 100)
+      })
+
       test("should not show tooltip if leave event occurs before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
