@@ -5,8 +5,8 @@
     <h1>{{_i}}Bootstrap, from Twitter{{/i}}</h1>
     <p>{{_i}}Simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions.{{/i}}</p>
     <p class="download-info">
-      <a href="https://github.com/twitter/bootstrap/" class="btn btn-primary btn-large">{{_i}}View project on GitHub{{/i}}</a>
-      <a href="assets/bootstrap.zip" class="btn btn-large">{{_i}}Download Bootstrap <small>(v2.0.3)</small>{{/i}}</a>
+      <a href="https://github.com/twitter/bootstrap/" class="btn btn-primary btn-large" {{#production}}onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'GitHub Project', 'View project on GitHub']);"{{/production}}>{{_i}}View project on GitHub{{/i}}</a>
+      <a href="assets/bootstrap.zip" class="btn btn-large" {{#production}}onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 2.0.4']);"{{/production}}>{{_i}}Download Bootstrap <small>(v2.0.4)</small>{{/i}}</a>
     </p>
   </div>
 

@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.0.3
+ * Bootstrap v2.0.4
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -71,6 +71,10 @@ img {
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
+}
+
+#map_canvas img {
+  max-width: none;
 }
 
 button,
@@ -418,9 +422,6 @@ a:hover {
 
 p {
   margin: 0 0 9px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
 }
 
 p small {
@@ -603,7 +604,7 @@ em {
 
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #ddd;
+  border-bottom: 1px dotted #999999;
 }
 
 abbr.initialism {
@@ -740,7 +741,7 @@ legend {
   line-height: 36px;
   color: #333333;
   border: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 legend small {
@@ -768,79 +769,119 @@ textarea {
 label {
   display: block;
   margin-bottom: 5px;
-  color: #333333;
 }
 
-input,
-textarea,
 select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
 .uneditable-input {
   display: inline-block;
-  width: 210px;
   height: 18px;
   padding: 4px;
   margin-bottom: 9px;
   font-size: 13px;
   line-height: 18px;
   color: #555555;
+}
+
+input,
+textarea {
+  width: 210px;
+}
+
+textarea {
+  height: auto;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
   background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+      -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
-.uneditable-textarea {
-  width: auto;
-  height: auto;
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
-label input,
-label textarea,
-label select {
-  display: block;
-}
-
-input[type="image"],
-input[type="checkbox"],
-input[type="radio"] {
-  width: auto;
-  height: auto;
-  padding: 0;
+input[type="radio"],
+input[type="checkbox"] {
   margin: 3px 0;
   *margin-top: 0;
   /* IE7 */
 
   line-height: normal;
   cursor: pointer;
-  background-color: transparent;
-  border: 0 \9;
-  /* IE9 and down */
-
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-          border-radius: 0;
 }
 
-input[type="image"] {
-  border: 0;
-}
-
-input[type="file"] {
-  width: auto;
-  padding: initial;
-  line-height: initial;
-  background-color: #ffffff;
-  background-color: initial;
-  border: initial;
-  -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
-}
-
-input[type="button"],
+input[type="submit"],
 input[type="reset"],
-input[type="submit"] {
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+
+.uneditable-textarea {
   width: auto;
   height: auto;
 }
@@ -856,13 +897,9 @@ input[type="file"] {
   line-height: 28px;
 }
 
-input[type="file"] {
-  line-height: 18px \9;
-}
-
 select {
   width: 220px;
-  background-color: #ffffff;
+  border: 1px solid #bbb;
 }
 
 select[multiple],
@@ -870,18 +907,13 @@ select[size] {
   height: auto;
 }
 
-input[type="image"] {
-  -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
-}
-
-textarea {
-  height: auto;
-}
-
-input[type="hidden"] {
-  display: none;
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 
 .radio,
@@ -912,42 +944,6 @@ input[type="hidden"] {
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {
   margin-left: 10px;
-}
-
-input,
-textarea {
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-      -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
-       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-          transition: border linear 0.2s, box-shadow linear 0.2s;
-}
-
-input:focus,
-textarea:focus {
-  border-color: rgba(82, 168, 236, 0.8);
-  outline: 0;
-  outline: thin dotted \9;
-  /* IE6-9 */
-
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-}
-
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus,
-select:focus {
-  outline: thin dotted #333;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-  -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
 }
 
 .input-mini {
@@ -984,6 +980,15 @@ textarea[class*="span"],
 .row-fluid .uneditable-input[class*="span"] {
   float: none;
   margin-left: 0;
+}
+
+.input-append input[class*="span"],
+.input-append .uneditable-input[class*="span"],
+.input-prepend input[class*="span"],
+.input-prepend .uneditable-input[class*="span"],
+.row-fluid .input-prepend [class*="span"],
+.row-fluid .input-append [class*="span"] {
+  display: inline-block;
 }
 
 input,
@@ -1088,6 +1093,8 @@ input[type="checkbox"][readonly] {
   color: #c09853;
 }
 
+.control-group.warning .checkbox,
+.control-group.warning .radio,
 .control-group.warning input,
 .control-group.warning select,
 .control-group.warning textarea {
@@ -1095,6 +1102,8 @@ input[type="checkbox"][readonly] {
   border-color: #c09853;
 }
 
+.control-group.warning .checkbox:focus,
+.control-group.warning .radio:focus,
 .control-group.warning input:focus,
 .control-group.warning select:focus,
 .control-group.warning textarea:focus {
@@ -1117,6 +1126,8 @@ input[type="checkbox"][readonly] {
   color: #b94a48;
 }
 
+.control-group.error .checkbox,
+.control-group.error .radio,
 .control-group.error input,
 .control-group.error select,
 .control-group.error textarea {
@@ -1124,6 +1135,8 @@ input[type="checkbox"][readonly] {
   border-color: #b94a48;
 }
 
+.control-group.error .checkbox:focus,
+.control-group.error .radio:focus,
 .control-group.error input:focus,
 .control-group.error select:focus,
 .control-group.error textarea:focus {
@@ -1146,6 +1159,8 @@ input[type="checkbox"][readonly] {
   color: #468847;
 }
 
+.control-group.success .checkbox,
+.control-group.success .radio,
 .control-group.success input,
 .control-group.success select,
 .control-group.success textarea {
@@ -1153,6 +1168,8 @@ input[type="checkbox"][readonly] {
   border-color: #468847;
 }
 
+.control-group.success .checkbox:focus,
+.control-group.success .radio:focus,
 .control-group.success input:focus,
 .control-group.success select:focus,
 .control-group.success textarea:focus {
@@ -1190,7 +1207,7 @@ select:focus:required:invalid:focus {
   margin-top: 18px;
   margin-bottom: 18px;
   background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e5e5e5;
   *zoom: 1;
 }
 
@@ -1216,6 +1233,10 @@ select:focus:required:invalid:focus {
 }
 
 :-moz-placeholder {
+  color: #999999;
+}
+
+:-ms-input-placeholder {
   color: #999999;
 }
 
@@ -2433,11 +2454,11 @@ table .span24 {
   *z-index: 1000;
 }
 
-.open .dropdown-menu {
+.open > .dropdown-menu {
   display: block;
 }
 
-.pull-right .dropdown-menu {
+.pull-right > .dropdown-menu {
   right: 0;
   left: auto;
 }
@@ -2499,7 +2520,6 @@ table .span24 {
 
 .fade {
   opacity: 0;
-  filter: alpha(opacity=0);
   -webkit-transition: opacity 0.15s linear;
      -moz-transition: opacity 0.15s linear;
       -ms-transition: opacity 0.15s linear;
@@ -2509,7 +2529,6 @@ table .span24 {
 
 .fade.in {
   opacity: 1;
-  filter: alpha(opacity=100);
 }
 
 .collapse {
@@ -3698,6 +3717,10 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-search .search-query:-moz-placeholder {
+  color: #cccccc;
+}
+
+.navbar-search .search-query:-ms-input-placeholder {
   color: #cccccc;
 }
 
