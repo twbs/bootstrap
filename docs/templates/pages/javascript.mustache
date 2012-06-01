@@ -200,7 +200,7 @@
 </pre>
 
 <pre class="prettyprint linenums">
-&lt;div class="modal" id="myModal"&gt;
+&lt;div class="modal hide" id="myModal"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
     &lt;h3&gt;Modal header&lt;/h3&gt;
@@ -209,7 +209,7 @@
     &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
+    &lt;a href="#" class="btn" data-dismiss="modal"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
     &lt;a href="#" class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -1270,7 +1270,7 @@ $('#myCollapsible').on('hidden', function () {
           <h3>{{_i}}Markup{{/i}}</h3>
           <p>{{_i}}Data attributes are used for the previous and next conrols. Check out the example markup below.{{/i}}</p>
 <pre class="prettyprint linenums">
-&lt;div id="myCarousel" class="carousel"&gt;
+&lt;div id="myCarousel" class="carousel slide"&gt;
   &lt;!-- {{_i}}Carousel items{{/i}} --&gt;
   &lt;div class="carousel-inner"&gt;
     &lt;div class="active item"&gt;…&lt;/div&gt;
