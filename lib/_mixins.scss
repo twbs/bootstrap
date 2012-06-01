@@ -89,10 +89,10 @@
     color: $color;
   }
   :-ms-input-placeholder {
-    color: @color;
+    color: $color;
   }
   ::-webkit-input-placeholder {
-    color: @color;
+    color: $color;
   }
 }
 
@@ -368,25 +368,25 @@
 // Gradients
 @mixin gradient-horizontal($startColor: #555, $endColor: #333) {
   background-color: $endColor;
+  background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
   background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
-  background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=1); // IE9 and down
 }
 @mixin gradient-vertical($startColor: #555, $endColor: #333) {
   background-color: mix($startColor, $endColor, 60%);
+  background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
-  background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: linear-gradient(top, $startColor, $endColor); // The standard
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0); // IE9 and down
 }
 @mixin gradient-directional($startColor: #555, $endColor: #333, $deg: 45deg) {
   background-color: $endColor;
@@ -406,7 +406,7 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
 }
 @mixin gradient-radial($innerColor: #555, $outerColor: #333)  {
   background-color: $outerColor;
