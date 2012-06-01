@@ -88,8 +88,11 @@
   :-moz-placeholder {
     color: $color;
   }
+  :-ms-input-placeholder {
+    color: @color;
+  }
   ::-webkit-input-placeholder {
-    color: $color;
+    color: @color;
   }
 }
 
@@ -169,6 +172,8 @@
     color: $textColor;
   }
   // Style inputs accordingly
+  .checkbox,
+  .radio,
   input,
   select,
   textarea {
