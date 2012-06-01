@@ -1,9 +1,6 @@
 // NAVBAR (FIXED AND STATIC)
 // -------------------------
 
-// Updates for SASS:
-//  - replace @ with $
-//  - replace . with @include for mixins
 
 // COMMON STYLES
 // -------------
@@ -24,8 +21,7 @@
   padding-right: 20px;
   @include gradient-vertical($navbarBackgroundHighlight, $navbarBackground);
   @include border-radius(4px);
-  $shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
+  @include box-shadow(#{0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)});
 }
 
 // Set width to auto for default container
@@ -124,17 +120,10 @@
     color: $white;
     background-color: $navbarSearchBackground;
     border: 1px solid $navbarSearchBorder;
-    $shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15);
-    @include box-shadow($shadow);
+    @include box-shadow(#{inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)});
     @include transition(none);
 
-    // Placeholder text gets special styles; can't be a grouped selector
-    &:-moz-placeholder {
-      color: $navbarSearchPlaceholderColor;
-    }
-    &::-webkit-input-placeholder {
-      color: $navbarSearchPlaceholderColor;
-    }
+    @include placeholder($navbarSearchPlaceholderColor);
 
     // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
     &:focus,
@@ -223,9 +212,7 @@
   padding: 4px 10px 4px;
   // Vertically center the button given @navbarHeight
   $elementHeight: 28px;
-  $topMargin: ($navbarHeight - $elementHeight) / 2 - 1;
-  $bottomMargin: ($navbarHeight - $elementHeight) / 2;
-  margin: $topMargin 5px $bottomMargin;
+  margin: (($navbarHeight - $elementHeight) / 2 - 1) 5px (($navbarHeight - $elementHeight) / 2);
   line-height: $baseLineHeight;
 }
 .navbar .btn-group {
@@ -274,8 +261,7 @@
   margin-left: 5px;
   margin-right: 5px;
   @include buttonBackground($navbarBackgroundHighlight, $navbarBackground);
-  $shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075);
-  @include box-shadow($shadow);
+  @include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)});
 }
 .navbar .btn-navbar .icon-bar {
   display: block;

@@ -33,7 +33,7 @@ $(function () {
           .tooltip({placement: 'bottom'})
           .tooltip('show')
 
-        ok($(".tooltip").hasClass('fade bottom in'), 'has correct classes applied')
+        ok($(".tooltip").is('.fade.bottom.in'), 'has correct classes applied')
         tooltip.tooltip('hide')
       })
 
@@ -69,10 +69,29 @@ $(function () {
         tooltip.trigger('mouseenter')
 
         setTimeout(function () {
-          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
           tooltip.trigger('mouseout')
           setTimeout(function () {
-            ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
+            start()
+          }, 200)
+        }, 100)
+      })
+
+      test("should not show tooltip if leave event occurs before delay expires, even if hide delay is 0", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: { show: 200, hide: 0} })
+
+        stop()
+
+        tooltip.trigger('mouseenter')
+
+        setTimeout(function () {
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
+          tooltip.trigger('mouseout')
+          setTimeout(function () {
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
             start()
           }, 200)
         }, 100)
@@ -85,10 +104,10 @@ $(function () {
         stop()
         tooltip.trigger('mouseenter')
         setTimeout(function () {
-          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
           tooltip.trigger('mouseout')
           setTimeout(function () {
-            ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
+            ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
             start()
           }, 100)
         }, 50)
@@ -97,16 +116,16 @@ $(function () {
       test("should show tooltip if leave event hasn't occured before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
-          .tooltip({ delay: 200 })
+          .tooltip({ delay: 150 })
         stop()
         tooltip.trigger('mouseenter')
         setTimeout(function () {
-          ok(!$(".tooltip").hasClass('fade in'), 'tooltip is not faded in')
-          setTimeout(function () {
-            ok(!$(".tooltip").hasClass('fade in'), 'tooltip has faded in')
-            start()
-          }, 200)
+          ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
         }, 100)
+        setTimeout(function () {
+          ok($(".tooltip").is('.fade.in'), 'tooltip has faded in')
+          start()
+        }, 200)
       })
 
       test("should detect if title string is html or text: foo", function () {

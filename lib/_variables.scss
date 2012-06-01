@@ -1,11 +1,8 @@
-// Variables.less
+// Variables
 // Variables to customize the look and feel of Bootstrap
 // -----------------------------------------------------
 
-// Updated for SASS:
-//  - replace @ with $
-//  - replace `spin` with `adjust-hue`
-//  - add !default to variable definitions
+
 
 // GLOBAL VALUES
 // --------------------------------------------------
@@ -110,7 +107,6 @@ $dropdownBorder:                rgba(0,0,0,.2) !default;
 $dropdownLinkColor:             $grayDark !default;
 $dropdownLinkColorHover:        $white !default;
 $dropdownLinkBackgroundHover:   $linkColor !default;
-
 
 
 

@@ -1,17 +1,7 @@
-// Mixins.less
+// Mixins
 // Snippets of reusable CSS to develop faster and keep code readable
 // -----------------------------------------------------------------
 
-// Updates for SASS:
-//  - use @mixin instead of class definitions
-//  - replace @ with $
-//  - add default of 5px for @size and @square mixins
-//  - replace grid generation loops with for $i from 1 to $gridColumns
-//  - explicitly provide .clearfix, .hide-text and .input-block-level
-//    (line 304) for compatibility with LESS output
-//  - replace fadein with fade-in
-//  - pass grid-* mixin arguments to generators, because otherwise the
-//    generator mixins will use the default variables
 
 // UTILITY MIXINS
 // --------------------------------------------------
@@ -84,11 +74,11 @@
 
 // Sizing shortcuts
 // -------------------------
-@mixin size($height: 5px, $width: 5px) {
+@mixin size($height, $width) {
   width: $width;
   height: $height;
 }
-@mixin square($size: 5px) {
+@mixin square($size) {
   @include size($size, $size);
 }
 
@@ -96,6 +86,9 @@
 // -------------------------
 @mixin placeholder($color: $placeholderText) {
   :-moz-placeholder {
+    color: $color;
+  }
+  :-ms-input-placeholder {
     color: $color;
   }
   ::-webkit-input-placeholder {
@@ -130,24 +123,20 @@
 // FONTS
 // --------------------------------------------------
 
-@mixin font-family-serif {
+@mixin font-family-serif() {
   font-family: $serifFontFamily;
 }
-
-@mixin font-family-sans-serif {
+@mixin font-family-sans-serif() {
   font-family: $sansFontFamily;
 }
-
-@mixin font-family-monospace {
+@mixin font-family-monospace() {
   font-family: $monoFontFamily;
 }
-
-@mixin font-shorthand ($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
+@mixin font-shorthand($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   font-size: $size;
   font-weight: $weight;
   line-height: $lineHeight;
 }
-
 @mixin font-serif($size: $baseFontSize, $weight: normal, $lineHeight: $baseLineHeight) {
   @include font-family-serif();
   @include font-shorthand($size, $weight, $lineHeight);
@@ -183,6 +172,8 @@
     color: $textColor;
   }
   // Style inputs accordingly
+  .checkbox,
+  .radio,
   input,
   select,
   textarea {
@@ -208,14 +199,14 @@
 // --------------------------------------------------
 
 // Border Radius
-@mixin border-radius($radius: 5px) {
+@mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
           border-radius: $radius;
 }
 
 // Drop shadows
-@mixin box-shadow($shadow: 0 1px 3px rgba(0,0,0,.25)) {
+@mixin box-shadow($shadow) {
   -webkit-box-shadow: $shadow;
      -moz-box-shadow: $shadow;
           box-shadow: $shadow;
@@ -252,6 +243,7 @@
        -o-transform: translate($x, $y);
           transform: translate($x, $y);
 }
+
 @mixin skew($x, $y) {
   -webkit-transform: skew($x, $y);
      -moz-transform: skew($x, $y);
@@ -259,6 +251,7 @@
        -o-transform: skew($x, $y);
           transform: skew($x, $y);
 }
+
 @mixin translate3d($x, $y, $z) {
   -webkit-transform: translate($x, $y, $z);
      -moz-transform: translate($x, $y, $z);
@@ -334,6 +327,16 @@
           column-gap: $columnGap;
 }
 
+// Optional hyphenation
+@mixin hyphens($mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: $mode;
+     -moz-hyphens: $mode;
+      -ms-hyphens: $mode;
+       -o-hyphens: $mode;
+          hyphens: $mode;
+}
+
 // Opacity
 @mixin opacity($opacity) {
   opacity: $opacity / 100;
@@ -365,25 +368,25 @@
 // Gradients
 @mixin gradient-horizontal($startColor: #555, $endColor: #333) {
   background-color: $endColor;
+  background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
   background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
-  background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=1); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=1); // IE9 and down
 }
 @mixin gradient-vertical($startColor: #555, $endColor: #333) {
   background-color: mix($startColor, $endColor, 60%);
+  background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
   background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
-  background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: linear-gradient(top, $startColor, $endColor); // The standard
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0); // IE9 and down
 }
 @mixin gradient-directional($startColor: #555, $endColor: #333, $deg: 45deg) {
   background-color: $endColor;
@@ -403,7 +406,7 @@
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$startColor}', endColorstr='#{$endColor}', GradientType=0); // IE9 and down, gets no color-stop at all the proper fallback
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken($startColor, 1%)}', endColorstr='#{darken($endColor, 1%)}', GradientType=0); // IE9 and down, gets no color-stop at all for proper fallback
 }
 @mixin gradient-radial($innerColor: #555, $outerColor: #333)  {
   background-color: $outerColor;
@@ -437,7 +440,7 @@
 // Horizontal dividers
 // -------------------------
 // Dividers (basically an hr) within dropdowns and nav lists
-@mixin nav-divider {
+@mixin nav-divider($top: #e5e5e5, $bottom: $white) {
   // IE7 needs a set width since we gave a height. Restricting just
   // to IE7 to keep the 1px left/right space in other browsers.
   // It is unclear where IE is getting the extra space that we need
@@ -447,8 +450,8 @@
   margin: (($baseLineHeight / 2) - 1) 1px; // 8px 1px
   *margin: -5px 0 5px;
   overflow: hidden;
-  background-color: #e5e5e5;
-  border-bottom: 1px solid $white;
+  background-color: $top;
+  border-bottom: 1px solid $bottom;
 }
 
 // Button backgrounds

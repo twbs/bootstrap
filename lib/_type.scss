@@ -1,20 +1,13 @@
-// Typography.less
+// Typography
 // Headings, body text, lists, code, and more for a versatile and durable typography system
 // ----------------------------------------------------------------------------------------
 
-// Updates for SASS:
-//  - replace @ with $
-//  - replace . with @include for mixins
-//  - use font-shorthand instead of #font > .shorthand
 
 // BODY TEXT
 // ---------
 
 p {
   margin: 0 0 $baseLineHeight / 2;
-  font-family: $baseFontFamily;
-  font-size: $baseFontSize;
-  line-height: $baseLineHeight;
   small {
     font-size: $baseFontSize - 2;
     color: $grayLight;
@@ -175,7 +168,7 @@ em {
 // Abbreviations and acronyms
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #ddd;
+  border-bottom: 1px dotted $grayLight;
 }
 abbr.initialism {
   font-size: 90%;

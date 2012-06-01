@@ -1,11 +1,6 @@
 // MODALS
 // ------
 
-// Updates for SASS:
-//  - replace @ with $
-//  - replace . with @include for mixins
-//  - pull transition definition into variable
-
 // Recalculate z-index where appropriate
 .modal-open {
   .dropdown-menu {  z-index: $zindexDropdown + $zindexModal; }
@@ -49,8 +44,7 @@
   @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
   @include background-clip(padding-box);
   &.fade {
-    $transition: opacity .3s linear, top .3s ease-out;
-    @include transition($transition);
+    @include transition(#{opacity .3s linear, top .3s ease-out});
     top: -25%;
   }
   &.fade.in { top: 50%; }

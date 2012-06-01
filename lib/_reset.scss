@@ -1,9 +1,6 @@
-// Reset.less
+// Reset
 // Adapted from Normalize.css http://github.com/necolas/normalize.css
 // ------------------------------------------------------------------------
-
-// Updates for SASS:
-//  - none!
 
 // Display in IE6-9 and FF3
 // -------------------------
@@ -82,6 +79,11 @@ img {
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
+}
+
+// Prevent max-width from affecting Google Maps
+#map_canvas img {
+  max-width: none;
 }
 
 // Forms

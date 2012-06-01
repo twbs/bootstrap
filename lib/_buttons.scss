@@ -1,10 +1,6 @@
 // BUTTON STYLES
 // -------------
 
-// Updates for SASS:
-//  - replace $ with $
-//  - replace . with @include for mixins
-//  - pull complex shadow definitions into variables
 
 // Base styles
 // --------------------------------------------------
@@ -29,8 +25,7 @@
   border-bottom-color: darken($btnBorder, 10%);
   @include border-radius(4px);
   @include ie7-restore-left-whitespace(); // Give IE7 some love
-  $shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  @include box-shadow($shadow);
+  @include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)});
 }
 
 // Hover state
@@ -58,8 +53,7 @@
   background-color: darken($white, 15%) \9;
   background-image: none;
   outline: 0;
-  $shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  @include box-shadow($shadow);
+  @include box-shadow(#{inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)});
 }
 
 // Disabled state
