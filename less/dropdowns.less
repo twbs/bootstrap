@@ -71,7 +71,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider();
+    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
   }
 
   // Links within the dropdown menu
@@ -103,14 +103,14 @@
   // make the menu appear below buttons that appeared later on the page
   *z-index: @zindexDropdown;
 
-  .dropdown-menu {
+  & > .dropdown-menu {
     display: block;
   }
 }
 
 // Right aligned dropdowns
 // ---------------------------
-.pull-right .dropdown-menu {
+.pull-right > .dropdown-menu {
   right: 0;
   left: auto;
 }

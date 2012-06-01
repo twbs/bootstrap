@@ -968,9 +968,9 @@
   , leave: function (e) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
+      if (this.timeout) clearTimeout(this.timeout)
       if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
-      clearTimeout(this.timeout)
       self.hoverState = 'out'
       this.timeout = setTimeout(function() {
         if (self.hoverState == 'out') self.hide()
@@ -1156,7 +1156,8 @@
   , delay: 0
   }
 
-}(window.jQuery);/* ===========================================================
+}(window.jQuery);
+/* ===========================================================
  * bootstrap-popover.js v2.0.3
  * http://twitter.github.com/bootstrap/javascript.html#popovers
  * ===========================================================

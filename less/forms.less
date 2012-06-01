@@ -27,7 +27,7 @@ legend {
   line-height: @baseLineHeight * 2;
   color: @grayDark;
   border: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e5e5e5;
 
   // Small
   small {
@@ -55,72 +55,101 @@ textarea {
 label {
   display: block;
   margin-bottom: 5px;
-  color: @grayDark;
 }
 
-// Inputs, Textareas, Selects
-input,
-textarea,
+// Form controls
+// -------------------------
+
+// Shared size and type resets
 select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
 .uneditable-input {
   display: inline-block;
-  width: 210px;
   height: @baseLineHeight;
   padding: 4px;
   margin-bottom: 9px;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
+}
+
+// Reset appearance properties for textual inputs and textarea
+// Declare width for legacy (can't be on input[type=*] selectors or it's too specific)
+input,
+textarea {
+  width: 210px;
+}
+// Reset height since textareas have rows
+textarea {
+  height: auto;
+}
+// Everything else
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
   background-color: @inputBackground;
   border: 1px solid @inputBorder;
   .border-radius(@inputBorderRadius);
-}
-.uneditable-textarea {
-  width: auto;
-  height: auto;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  @transition: border linear .2s, box-shadow linear .2s;
+  .transition(@transition);
+
+  // Focus state
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
+  }
 }
 
-// Inputs within a label
-label input,
-label textarea,
-label select {
-  display: block;
-}
-
-// Mini reset for unique input types
-input[type="image"],
-input[type="checkbox"],
-input[type="radio"] {
-  width: auto;
-  height: auto;
-  padding: 0;
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
   margin: 3px 0;
   *margin-top: 0; /* IE7 */
   line-height: normal;
   cursor: pointer;
-  background-color: transparent;
-  border: 0 \9; /* IE9 and down */
-  .border-radius(0);
-}
-input[type="image"] {
-  border: 0;
 }
 
-// Reset the file input to browser defaults
-input[type="file"] {
-  width: auto;
-  padding: initial;
-  line-height: initial;
-  background-color: @inputBackground;
-  background-color: initial;
-  border: initial;
-  .box-shadow(none);
-}
-
-// Help out input buttons
-input[type="button"],
+// Reset width of input buttons, radios, checkboxes
+input[type="submit"],
 input[type="reset"],
-input[type="submit"] {
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto; // Override of generic input selector
+}
+
+// Make uneditable textareas behave like a textarea
+.uneditable-textarea {
   width: auto;
   height: auto;
 }
@@ -133,15 +162,10 @@ input[type="file"] {
   line-height: 28px;
 }
 
-// Reset line-height for IE
-input[type="file"] {
-  line-height: 18px \9;
-}
-
-// Chrome on Linux and Mobile Safari need background-color
+// Make select elements obey height by applying a border
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
-  background-color: @inputBackground;
+  border: 1px solid #bbb;
 }
 
 // Make multiple select elements height not fixed
@@ -150,19 +174,12 @@ select[size] {
   height: auto;
 }
 
-// Remove shadow from image inputs
-input[type="image"] {
-  .box-shadow(none);
-}
-
-// Make textarea height behave
-textarea {
-  height: auto;
-}
-
-// Hidden inputs
-input[type="hidden"] {
-  display: none;
+// Focus for select, file, radio, and checkbox
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  .tab-focus();
 }
 
 
@@ -204,32 +221,6 @@ input[type="hidden"] {
 
 
 
-// FOCUS STATE
-// -----------
-
-input,
-textarea {
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  @transition: border linear .2s, box-shadow linear .2s;
-  .transition(@transition);
-}
-input:focus,
-textarea:focus {
-  border-color: rgba(82,168,236,.8);
-  outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
-  .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6)");
-}
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus,
-select:focus {
-  .tab-focus();
-  .box-shadow(none); // override for file inputs
-}
-
-
-
 // INPUT SIZES
 // -----------
 
@@ -254,14 +245,22 @@ textarea[class*="span"],
   float: none;
   margin-left: 0;
 }
+// Ensure input-prepend/append never wraps
+.input-append input[class*="span"],
+.input-append .uneditable-input[class*="span"],
+.input-prepend input[class*="span"],
+.input-prepend .uneditable-input[class*="span"],
+.row-fluid .input-prepend [class*="span"],
+.row-fluid .input-append [class*="span"] {
+  display: inline-block;
+}
 
 
 
 // GRID SIZING FOR INPUTS
 // ----------------------
 
-#grid > .input (@gridColumnWidth, @gridGutterWidth);
-
+#grid > .input(@gridColumnWidth, @gridGutterWidth);
 
 
 
@@ -329,7 +328,7 @@ select:focus:required:invalid {
   margin-top: @baseLineHeight;
   margin-bottom: @baseLineHeight;
   background-color: @formActionsBackground;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e5e5e5;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
@@ -344,7 +343,7 @@ select:focus:required:invalid {
 }
 
 // Placeholder text gets special styles; can't be bundled together though for some reason
-.placeholder(@grayLight);
+.placeholder();
 
 
 
