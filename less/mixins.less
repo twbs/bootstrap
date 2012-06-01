@@ -203,19 +203,29 @@
 }
 
 // Drop shadows
-.box-shadow(@shadow) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
+.box-shadow(@shadowA, @shadowB:X, ...) {
+  @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+  -webkit-box-shadow: @props;
+     -moz-box-shadow: @props;
+          box-shadow: @props;
+}
+
+// Text shadows
+.text-shadow(@shadowA, @shadowB:X, ...) {
+  @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+  -webkit-text-shadow: @props;
+     -moz-text-shadow: @props;
+          text-shadow: @props;
 }
 
 // Transitions
 .transition(@transition) {
-  -webkit-transition: @transition;
-     -moz-transition: @transition;
-      -ms-transition: @transition;
-       -o-transition: @transition;
-          transition: @transition;
+  @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+  -webkit-transition: @props;
+     -moz-transition: @props;
+      -ms-transition: @props;
+       -o-transition: @props;
+          transition: @props;
 }
 
 // Transformations
