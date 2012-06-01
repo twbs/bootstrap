@@ -21,7 +21,7 @@ You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new
 
 Because SASS always outputs standard css, just link to the final output like normal:
 
-`<link rel="stylesheet" type="text/css" href="bootstrap-2.0.3.css">`
+`<link rel="stylesheet" type="text/css" href="bootstrap-2.0.4.css">`
 
 For more info, refer to the docs!
 
@@ -34,7 +34,7 @@ You can learn more about SASS at:
 
 [sass-lang.com](http://sass-lang.com)
 
-SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:bootstrap-2.0.3.css`
+SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:bootstrap-2.0.4.css`
 
 
 
@@ -60,7 +60,7 @@ For more information on SemVer, please visit http://semver.org/.
 Bug tracker
 -----------
 
-Have a bug? Please create an issue here on GitHub!
+Have a bug? Please create an issue here on GitHub! Also, when filing please make sure you're familiar with [necolas's guidelines](https://github.com/necolas/issue-guidelines). thanks! <3
 
 https://github.com/twitter/bootstrap/issues
 
@@ -135,6 +135,11 @@ Runs jshint and qunit tests headlessly in phantom js (used for ci). Depends on h
 + **watch** - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
 
+
+Contributing
+------------
+
+Please make all pull requests against wip-* branches. Also, if your unit test contains javascript patches or features - you must include relevant unit tests. Thanks!
 
 
 Authors
