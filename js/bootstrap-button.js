@@ -52,6 +52,8 @@
 
   Button.prototype.toggle = function () {
     var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
+    
+    if ($parent && (this.$element.hasClass('disabled') || this.$element.hasClass('active'))) return
 
     $parent && $parent
       .find('.active')
