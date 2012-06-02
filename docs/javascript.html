@@ -200,18 +200,19 @@
 
           <h2>Live demo</h2>
           <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide fade">
+          <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h3>Modal Heading</h3>
+              <h3 id="myModalLabel">Modal Heading</h3>
             </div>
             <div class="modal-body">
               <h4>Text in a modal</h4>
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
 
               <h4>Popover in a modal</h4>
-              <p>This <a href="#" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
+              <p>This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
 
               <h4>Tooltips in a modal</h4>
               <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
@@ -228,8 +229,8 @@
               <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-              <a href="#" class="btn" data-dismiss="modal" >Close</a>
-              <a href="#" class="btn btn-primary">Save changes</a>
+              <a href="#" role="button" class="btn" data-dismiss="modal" >Close</a>
+              <a href="#" role="button" class="btn btn-primary">Save changes</a>
             </div>
           </div>
           <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
@@ -274,24 +275,25 @@
           <p>You can activate modals on your page easily without having to write a single line of javascript. Just set <code>data-toggle="modal"</code> on a controller element with a <code>data-target="#foo"</code> or <code>href="#foo"</code> which corresponds to a modal element id, and when clicked, it will launch your modal.</p>
           <p>Also, to add options to your modal instance, just include them as additional data attributes on either the control element or the modal markup itself.</p>
 <pre class="prettyprint linenums">
-&lt;a class="btn" data-toggle="modal" href="#myModal" &gt;Launch Modal&lt;/a&gt;
+&lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch Modal&lt;/a&gt;
 </pre>
 
 <pre class="prettyprint linenums">
-&lt;div class="modal hide" id="myModal"&gt;
+&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
-    &lt;h3&gt;Modal header&lt;/h3&gt;
+    &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
     &lt;p&gt;One fine body…&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn" data-dismiss="modal"&gt;Close&lt;/a&gt;
-    &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+    &lt;a href="#" role="button" class="btn"&gt;Close&lt;/a&gt;
+    &lt;a href="#" role="button" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
+
           <div class="alert alert-info">
             <strong>Heads up!</strong> If you want your modal to animate in and out, just add a <code>.fade</code> class to the <code>.modal</code> element (refer to the demo to see this in action) and include bootstrap-transition.js.
           </div>
@@ -365,41 +367,42 @@ $('#myModal').on('hidden', function () {
         <div class="span9 columns">
           <h2>Examples</h2>
           <p>Click on the dropdown nav links in the navbar and pills below to test dropdowns.</p>
+
           <div id="navbar-example" class="navbar navbar-static">
             <div class="navbar-inner">
               <div class="container" style="width: auto;">
                 <a class="brand" href="#">Project Name</a>
-                <ul class="nav">
+                <ul class="nav" role="navigation">
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
+                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                      <li><a tabindex="-1" href="http://google.com">Action</a></li>
+                      <li><a tabindex="-1" href="#anotherAction">Another action</a></li>
+                      <li><a tabindex="-1" href="#">Something else here</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
+                      <li><a tabindex="-1" href="#">Separated link</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
+                    <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                      <li><a tabindex="-1" href="#">Action</a></li>
+                      <li><a tabindex="-1" href="#">Another action</a></li>
+                      <li><a tabindex="-1" href="#">Something else here</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
+                      <li><a tabindex="-1" href="#">Separated link</a></li>
                     </ul>
                   </li>
                 </ul>
                 <ul class="nav pull-right">
                   <li id="fat-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
+                    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                      <li><a tabindex="-1" href="#">Action</a></li>
+                      <li><a tabindex="-1" href="#">Another action</a></li>
+                      <li><a tabindex="-1" href="#">Something else here</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
+                      <li><a tabindex="-1" href="#">Separated link</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -410,33 +413,33 @@ $('#myModal').on('hidden', function () {
           <ul class="nav nav-pills">
             <li class="active"><a href="#">Regular link</a></li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-              <ul id="menu1" class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+              <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+              <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                <li><a tabindex="-1" href="#">Action</a></li>
+                <li><a tabindex="-1" href="#">Another action</a></li>
+                <li><a tabindex="-1" href="#">Something else here</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a tabindex="-1" href="#">Separated link</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
-              <ul id="menu2" class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+              <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
+              <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                <li><a tabindex="-1" href="#">Action</a></li>
+                <li><a tabindex="-1" href="#">Another action</a></li>
+                <li><a tabindex="-1" href="#">Something else here</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a tabindex="-1" href="#">Separated link</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
-              <ul id="menu3" class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+              <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 3 <b class="caret"></b></a>
+              <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                <li><a tabindex="-1" href="#">Action</a></li>
+                <li><a tabindex="-1" href="#">Another action</a></li>
+                <li><a tabindex="-1" href="#">Something else here</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a tabindex="-1" href="#">Separated link</a></li>
               </ul>
             </li>
           </ul> <!-- /tabs -->
@@ -456,16 +459,16 @@ $('#myModal').on('hidden', function () {
 &lt;ul class="nav nav-pills"&gt;
   &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
   &lt;li class="dropdown" id="menu1"&gt;
-    &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
+    &lt;a id="dLabel" role="button" class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
       Dropdown
       &lt;b class="caret"&gt;&lt;/b&gt;
     &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
       &lt;li class="divider"&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   ...
@@ -474,11 +477,11 @@ $('#myModal').on('hidden', function () {
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="path/to/page.html"&gt;
+    &lt;a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html"&gt;
       Dropdown
       &lt;b class="caret"&gt;&lt;/b&gt;
     &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
+    &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
       ...
     &lt;/ul&gt;
   &lt;/li&gt;

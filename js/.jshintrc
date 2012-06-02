@@ -4,6 +4,7 @@
     "laxbreak" : true,
     "browser"  : true,
     "debug"    : true,
+    "devel"    : true,
     "boss"     : true,
     "expr"     : true,
     "asi"      : true
