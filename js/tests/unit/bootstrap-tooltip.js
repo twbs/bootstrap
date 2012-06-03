@@ -128,28 +128,4 @@ $(function () {
         }, 200)
       })
 
-      test("should detect if title string is html or text: foo", function () {
-        ok(!$.fn.tooltip.Constructor.prototype.isHTML('foo'), 'correctly detected html')
-      })
-
-      test("should detect if title string is html or text: &amp;lt;foo&amp;gt;", function () {
-        ok(!$.fn.tooltip.Constructor.prototype.isHTML('&lt;foo&gt;'), 'correctly detected html')
-      })
-
-      test("should detect if title string is html or text: &lt;div>foo&lt;/div>", function () {
-        ok($.fn.tooltip.Constructor.prototype.isHTML('<div>foo</div>'), 'correctly detected html')
-      })
-
-      test("should detect if title string is html or text: asdfa&lt;div>foo&lt;/div>asdfasdf", function () {
-        ok($.fn.tooltip.Constructor.prototype.isHTML('asdfa<div>foo</div>asdfasdf'), 'correctly detected html')
-      })
-
-      test("should detect if title string is html or text: document.createElement('div')", function () {
-        ok($.fn.tooltip.Constructor.prototype.isHTML(document.createElement('div')), 'correctly detected html')
-      })
-
-      test("should detect if title string is html or text: $('&lt;div />)", function () {
-        ok($.fn.tooltip.Constructor.prototype.isHTML($('<div></div>')), 'correctly detected html')
-      })
-
 })
