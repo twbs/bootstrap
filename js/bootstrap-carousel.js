@@ -139,7 +139,7 @@
         , data = $this.data('carousel')
         , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' && option)
       if (!data) $this.data('carousel', (data = new Carousel(this, options)))
-      if (typeof option == 'number') data.to(option)
+      if (typeof option == 'number' || (option = options.to) !== undefined) data.to(option)
       else if (typeof option == 'string' || (option = options.slide)) data[option]()
       else if (options.interval) data.cycle()
     })
@@ -157,7 +157,7 @@
   * ================= */
 
   $(function () {
-    $('body').on('click.carousel.data-api', '[data-slide]', function ( e ) {
+    $('body').on('click.carousel.data-api', '[data-slide],[data-to]', function ( e ) {
       var $this = $(this), href
         , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
         , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
