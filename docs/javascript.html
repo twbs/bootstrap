@@ -1454,9 +1454,9 @@ $('.carousel').carousel({
             <tbody>
               <tr>
                <td>source</td>
-               <td>array</td>
+               <td>array, function</td>
                <td>[ ]</td>
-               <td>The data source to query against.</td>
+               <td>The data source to query against. May be an array of strings or a function. The function is passed two arguments, the <code>query</code> value in the input field and the <code>process</code> callback. The function may be used synchronously by returning the data source directly or asynchronously via the <code>process</code> callback's single argument.</td>
              </tr>
              <tr>
                <td>items</td>
@@ -1496,6 +1496,7 @@ $('.carousel').carousel({
         </div>
       </div>
     </section>
+
 
      <!-- Footer
       ================================================== -->
