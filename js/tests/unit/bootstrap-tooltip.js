@@ -37,6 +37,39 @@ $(function () {
         tooltip.tooltip('hide')
       })
 
+      test("should place tooltips according to the optional 'relationship', appending to the &lt;body&gt; by default", function () {
+        $.support.transition = false
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({placement: 'top'})
+          .tooltip('show')
+
+        ok($(".tooltip").parent().is('body'), 'is appended to the body')
+        tooltip.tooltip('hide')
+      })
+
+      test("should place tooltips according to the optional 'relationship', when defined as 'in'", function () {
+        $.support.transition = false
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({placement: 'in top'})
+          .tooltip('show')
+
+        ok($(".tooltip").parent().is('a[rel="tooltip"]'), 'is appended inside the source element')
+        tooltip.tooltip('hide')
+      })
+
+      test("should place tooltips according to the optional 'relationship', when defined as 'sibling'", function () {
+        $.support.transition = false
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({placement: 'sibling top'})
+          .tooltip('show')
+
+        ok($(".tooltip").next().is('a[rel="tooltip"]'), 'is inserted before the source element')
+        tooltip.tooltip('hide')
+      })
+
       test("should always allow html entities", function () {
         $.support.transition = false
         var tooltip = $('<a href="#" rel="tooltip" title="<b>@fat</b>"></a>')

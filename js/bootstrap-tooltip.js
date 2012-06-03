@@ -95,11 +95,11 @@
 
   , show: function () {
       var $tip
-        , inside
         , pos
         , actualWidth
         , actualHeight
         , placement
+        , relationship
         , tp
 
       if (this.hasContent() && this.enabled) {
@@ -114,19 +114,30 @@
           this.options.placement.call(this, $tip[0], this.$element[0]) :
           this.options.placement
 
-        inside = /in/.test(placement)
+        relationship = (/^sibling|^in/.exec(placement) || [])[0]
 
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
-          .appendTo(inside ? this.$element : document.body)
 
-        pos = this.getPosition(inside)
+        switch (relationship) {
+          case 'sibling':
+            $tip.insertBefore(this.$element)
+            break
+          case 'in':
+            $tip.appendTo(this.$element)
+            break
+          case undefined:
+            $tip.appendTo(document.body)
+            break
+        }
+
+        pos = this.getPosition(relationship)
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
-        switch (inside ? placement.split(' ')[1] : placement) {
+        switch ((relationship) ? placement.split(' ')[1] : placement) {
           case 'bottom':
             tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
             break
@@ -198,8 +209,17 @@
       return this.getTitle()
     }
 
-  , getPosition: function (inside) {
-      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
+  , getOffset: function (relationship) {
+    if(relationship === undefined) {
+      return this.$element.offset()
+    }
+    else {
+      return (relationship === 'sibling') ? this.$element.position() : {top: 0, left: 0}
+    }
+  }
+
+  , getPosition: function (relationship) {
+      return $.extend({}, (this.getOffset(relationship)), {
         width: this.$element[0].offsetWidth
       , height: this.$element[0].offsetHeight
       })
