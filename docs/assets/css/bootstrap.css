@@ -2229,6 +2229,7 @@ table .span24 {
 }
 
 .icon-random {
+  width: 16px;
   background-position: -216px -120px;
 }
 
@@ -2261,6 +2262,7 @@ table .span24 {
 }
 
 .icon-folder-open {
+  width: 16px;
   background-position: -408px -120px;
 }
 
