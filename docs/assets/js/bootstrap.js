@@ -312,6 +312,10 @@
 
   , pause: function (e) {
       if (!e) this.paused = true
+      if (this.$element.find('.next, .prev')) {
+        this.$element.trigger($.support.transition.end)
+        this.cycle()
+      }
       clearInterval(this.interval)
       this.interval = null
       return this
@@ -1772,6 +1776,8 @@
     }
 
   , move: function (e) {
+      if (!this.shown) return
+
       switch(e.keyCode) {
         case 9: // tab
         case 13: // enter
@@ -1799,7 +1805,7 @@
     }
 
   , keypress: function (e) {
-      if (!this.shown || this.suppressKeyPressRepeat) return
+      if (this.suppressKeyPressRepeat) return
       this.move(e)
     }
 

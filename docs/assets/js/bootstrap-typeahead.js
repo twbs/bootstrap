@@ -178,6 +178,8 @@
     }
 
   , move: function (e) {
+      if (!this.shown) return
+
       switch(e.keyCode) {
         case 9: // tab
         case 13: // enter
@@ -205,7 +207,7 @@
     }
 
   , keypress: function (e) {
-      if (!this.shown || this.suppressKeyPressRepeat) return
+      if (this.suppressKeyPressRepeat) return
       this.move(e)
     }
 
