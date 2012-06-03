@@ -312,7 +312,7 @@
 
   , pause: function (e) {
       if (!e) this.paused = true
-      if (this.$element.find('.next, .prev') && $.support.transition.end) {
+      if (this.$element.find('.next, .prev').length && $.support.transition.end) {
         this.$element.trigger($.support.transition.end)
         this.cycle()
       }
