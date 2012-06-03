@@ -66,6 +66,7 @@
       }
 
       this.$element[dimension](0)
+      this.$element.css('overflow', 'hidden')
       this.transition('addClass', $.Event('show'), 'shown')
       this.$element[dimension](this.$element[0][scroll])
     }
@@ -84,6 +85,7 @@
 
       this.$element
         .removeClass('collapse')
+        .css('overflow', '')
         [dimension](size || 'auto')
         [0].offsetWidth
 
