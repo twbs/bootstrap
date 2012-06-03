@@ -82,7 +82,7 @@
         , q
 
       this.query = this.$element.val()
-
+     
       if (!this.query) {
         return this.shown ? this.hide() : this
       }
@@ -92,12 +92,15 @@
       })
 
       items = this.sorter(items)
-
       if (!items.length) {
         return this.shown ? this.hide() : this
       }
 
-      return this.render(items.slice(0, this.options.items)).show()
+      return this.render(items.slice(0, this.options.items), true).show()
+    }
+  
+  , all: function(event){
+      return this.render(this.source.slice(0, this.options.items), false).show()
     }
 
   , matcher: function (item) {
@@ -126,12 +129,17 @@
       })
     }
 
-  , render: function (items) {
+  , render: function (items, highlight) {
       var that = this
 
       items = $(items).map(function (i, item) {
         i = $(that.options.item).attr('data-value', item)
-        i.find('a').html(that.highlighter(item))
+        if (highlight){
+          i.find('a').html(that.highlighter(item))
+        }
+        else{
+          i.find('a').html(item)
+        }
         return i[0]
       })
 
@@ -162,11 +170,16 @@
       prev.addClass('active')
     }
 
+  , showlist: function() {
+      this.all();
+    }
+
   , listen: function () {
       this.$element
         .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
+        .on('showlist', $.proxy(this.showlist, this))
 
       if ($.browser.webkit || $.browser.msie) {
         this.$element.on('keydown', $.proxy(this.keypress, this))
