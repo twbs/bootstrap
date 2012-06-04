@@ -127,7 +127,7 @@ $(function () {
 
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
-              source: ['aa', 'ab', 'ac']
+              source: [{text:'aa'}, {text:'ab'}, {text:'ac'}]
             })
           , typeahead = $input.data('typeahead')
           , changed = false
@@ -139,7 +139,7 @@ $(function () {
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
-        equals($input.val(), 'ac', 'input value was correctly set')
+        equals($input.val(), {text:'ac'}, 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
         ok(changed, 'a change event was fired')
 
