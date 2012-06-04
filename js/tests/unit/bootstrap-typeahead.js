@@ -163,7 +163,45 @@ $(function () {
 
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
-              source: ['aa', 'ab', 'ac']
+              source: [
+                {
+                  text: 'aa',
+                  toLowerCase: function() {
+                    return this.text
+                  },
+                  indexOf    : function(str) {
+                    return this.text.indexOf(str)
+                  },
+                  replace    : function(pattern, replacement) {
+                    return this.text.indexOf(pattern, replacement)
+                  }
+                },
+                {text: 'ab',
+                  toLowerCase: function() {
+                    return this.text
+                  },
+                  indexOf    : function(str) {
+                    return this.text.indexOf(str)
+                  },
+                  replace    : function(pattern, replacement) {
+                    return this.text.indexOf(pattern, replacement)
+                  }
+                },
+                {text: 'ac'
+                  ,toLowerCase: function() {
+                  return this.text
+                },
+                  indexOf    : function(str) {
+                    return this.text.indexOf(str)
+                  },
+                  replace    : function(pattern, replacement) {
+                    return this.text.indexOf(pattern, replacement)
+                  }
+                }
+              ],
+              updater: function (item) {
+                return item.text
+              }
             })
           , typeahead = $input.data('typeahead')
           , changed = false
