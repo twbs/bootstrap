@@ -127,7 +127,45 @@ $(function () {
 
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
-              source: [{text:'aa'}, {text:'ab'}, {text:'ac'}]
+              source: [
+                {
+                  text: 'aa',
+                  toLowerCase: function() {
+                    return this.text
+                  },
+                  indexOf    : function(str) {
+                    return this.text.indexOf(str)
+                  },
+                  replace    : function(pattern, replacement) {
+                    return this.text.indexOf(pattern, replacement)
+                  }
+                },
+                {text: 'ab',
+                  toLowerCase: function() {
+                    return this.text
+                  },
+                  indexOf    : function(str) {
+                    return this.text.indexOf(str)
+                  },
+                  replace    : function(pattern, replacement) {
+                    return this.text.indexOf(pattern, replacement)
+                  }
+                },
+                {text: 'ac'
+                  ,toLowerCase: function() {
+                  return this.text
+                },
+                  indexOf    : function(str) {
+                    return this.text.indexOf(str)
+                  },
+                  replace    : function(pattern, replacement) {
+                    return this.text.indexOf(pattern, replacement)
+                  }
+                }
+              ],
+              updater: function (item) {
+                return item.text
+              }
             })
           , typeahead = $input.data('typeahead')
           , changed = false
@@ -139,7 +177,7 @@ $(function () {
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
-        equals($input.val(), {text:'ac'}, 'input value was correctly set')
+        equals($input.val(), 'ac', 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
         ok(changed, 'a change event was fired')
 
