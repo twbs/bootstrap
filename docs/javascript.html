@@ -269,6 +269,13 @@
                <td>true</td>
                <td>Shows the modal when initialized.</td>
              </tr>
+             <tr>
+               <td>remote</td>
+               <td>path</td>
+               <td>false</td>
+               <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
+<pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre></td>
+             </tr>
             </tbody>
           </table>
           <h3>Markup</h3>
