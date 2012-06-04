@@ -1387,7 +1387,7 @@ textarea::-webkit-input-placeholder {
           border-radius: 0 3px 3px 0;
 }
 
-.search-query {
+input.search-query {
   padding-right: 14px;
   padding-right: 4px \9;
   padding-left: 14px;
