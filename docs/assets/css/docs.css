@@ -23,10 +23,6 @@ li {
   line-height: 20px;
 }
 
-.bs-docs-container {
-  max-width: 780px;
-  margin: 0 auto;
-}
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
@@ -67,6 +63,19 @@ hr.soften {
   border: 0;
 }
 
+/* Table of contents */
+.bs-docs-content {
+  color: #999;
+}
+.bs-docs-contents ol {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.bs-docs-contents li {
+  line-height: 25px;
+  color: #999;
+}
+
 
 /* Jumbotrons
 -------------------------------------------------- */
@@ -75,7 +84,7 @@ hr.soften {
 }
 .jumbotron h1 {
   margin-bottom: 9px;
-  font-size: 81px;
+  font-size: 80px;
   font-weight: bold;
   letter-spacing: -1px;
   line-height: 1;
@@ -110,8 +119,6 @@ hr.soften {
   margin-bottom: 18px;
 }
 .masthead p {
-  margin-left: 5%;
-  margin-right: 5%;
   font-size: 30px;
   line-height: 36px;
 }
@@ -290,10 +297,10 @@ hr.soften {
 .footer {
   padding: 35px 0 36px;
   margin-top: 45px;
-  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .footer p {
+  margin-bottom: 5px;
   color: #555;
 }
 
@@ -689,7 +696,7 @@ form.well {
 ------------------------- */
 .bs-docs-grid {
   width: 940px;
-  margin-left: -80px;
+  margin-left: -240px;
 }
 
 
@@ -908,7 +915,7 @@ form.well {
 
   .bs-docs-grid {
     width: 1170px;
-    margin-left: -195px;
+    margin-left: -300px;
   }
 
 }
