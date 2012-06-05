@@ -779,29 +779,25 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   <div class="page-header">
     <h1>Forms</h1>
   </div>
-  <div class="row">
-    <div class="span4">
-      <h2>Flexible HTML and CSS</h2>
-      <p>The best part about forms in Bootstrap is that all your inputs and controls look great no matter how you build them in your markup. No superfluous HTML is required, but we provide the patterns for those who require it.</p>
-      <p>More complicated layouts come with succinct and scalable classes for easy styling and event binding, so you're covered at every step.</p>
-    </div>
-    <div class="span4">
-      <h2>Four layouts included</h2>
-      <p>Bootstrap comes with support for four types of form layouts:</p>
-      <ul>
-        <li>Vertical (default)</li>
-        <li>Search</li>
-        <li>Inline</li>
-        <li>Horizontal</li>
-      </ul>
-      <p>Different types of form layouts require some changes to markup, but the controls themselves remain and behave the same.</p>
-    </div>
-    <div class="span4">
-      <h2>Control states and more</h2>
-      <p>Bootstrap's forms include styles for all the base form controls like input, textarea, and select you'd expect. But it also comes with a number of custom components like appended and prepended inputs and support for lists of checkboxes.</p>
-      <p>States like error, warning, and success are included for each type of form control. Also included are styles for disabled controls.</p>
-    </div>
-  </div>
+
+  <h2>Flexible HTML and CSS</h2>
+  <p>The best part about forms in Bootstrap is that all your inputs and controls look great no matter how you build them in your markup. No superfluous HTML is required, but we provide the patterns for those who require it.</p>
+  <p>More complicated layouts come with succinct and scalable classes for easy styling and event binding, so you're covered at every step.</p>
+
+  <h2>Four layouts included</h2>
+  <p>Bootstrap comes with support for four types of form layouts:</p>
+  <ul>
+    <li>Vertical (default)</li>
+    <li>Search</li>
+    <li>Inline</li>
+    <li>Horizontal</li>
+  </ul>
+  <p>Different types of form layouts require some changes to markup, but the controls themselves remain and behave the same.</p>
+
+  <h2>Control states and more</h2>
+  <p>Bootstrap's forms include styles for all the base form controls like input, textarea, and select you'd expect. But it also comes with a number of custom components like appended and prepended inputs and support for lists of checkboxes.</p>
+  <p>States like error, warning, and success are included for each type of form control. Also included are styles for disabled controls.</p>
+
 
   <h2>Four types of forms</h2>
   <p>Bootstrap provides simple markup and styles for four styles of common web forms.</p>
@@ -839,19 +835,17 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
 
   <h2>Example forms <small>using just form controls, no extra markup</small></h2>
-  <div class="row">
-    <div class="span6">
-      <h3>Basic form</h3>
-      <p>Smart and lightweight defaults without extra markup.</p>
-      <form class="well">
-        <label>Label name</label>
-        <input type="text" class="span3" placeholder="Type something…">
-        <p class="help-block">Example block-level help text here.</p>
-        <label class="checkbox">
-          <input type="checkbox"> Check me out
-        </label>
-        <button type="submit" class="btn">Submit</button>
-      </form>
+  <h3>Basic form</h3>
+  <p>Smart and lightweight defaults without extra markup.</p>
+  <form class="well">
+    <label>Label name</label>
+    <input type="text" class="span3" placeholder="Type something…">
+    <p class="help-block">Example block-level help text here.</p>
+    <label class="checkbox">
+      <input type="checkbox"> Check me out
+    </label>
+    <button type="submit" class="btn">Submit</button>
+  </form>
 <pre class="prettyprint linenums">
 &lt;form class="well"&gt;
   &lt;label&gt;Label name&lt;/label&gt;
@@ -863,14 +857,13 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-  </div>
-  <div class="span6">
-    <h3>Search form</h3>
-    <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>input</code>.</p>
-    <form class="well form-search">
-      <input type="text" class="input-medium search-query">
-      <button type="submit" class="btn">Search</button>
-    </form>
+
+  <h3>Search form</h3>
+  <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>input</code>.</p>
+  <form class="well form-search">
+    <input type="text" class="input-medium search-query">
+    <button type="submit" class="btn">Search</button>
+  </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-search"&gt;
   &lt;input type="text" class="input-medium search-query"&gt;
@@ -878,16 +871,16 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;/form&gt;
 </pre>
 
-      <h3>Inline form</h3>
-      <p>Add <code>.form-inline</code> to finesse the vertical alignment and spacing of form controls.</p>
-      <form class="well form-inline">
-        <input type="text" class="input-small" placeholder="Email">
-        <input type="password" class="input-small" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox"> Remember me
-        </label>
-        <button type="submit" class="btn">Sign in</button>
-      </form>
+  <h3>Inline form</h3>
+  <p>Add <code>.form-inline</code> to finesse the vertical alignment and spacing of form controls.</p>
+  <form class="well form-inline">
+    <input type="text" class="input-small" placeholder="Email">
+    <input type="password" class="input-small" placeholder="Password">
+    <label class="checkbox">
+      <input type="checkbox"> Remember me
+    </label>
+    <button type="submit" class="btn">Sign in</button>
+  </form>
 <pre class="prettyprint linenums">
 &lt;form class="well form-inline"&gt;
   &lt;input type="text" class="input-small" placeholder="Email"&gt;
@@ -898,89 +891,83 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
 &lt;/form&gt;
 </pre>
-    </div><!-- /.span -->
-  </div><!-- /row -->
 
   <br>
 
   <h2>Horizontal forms</h2>
-  <div class="row">
-    <div class="span4">
-      <p></p>
-      <p>Shown on the right are all the default form controls we support. Here's the bulleted list:</p>
-      <ul>
-        <li>text inputs (text, password, email, etc)</li>
-        <li>checkbox</li>
-        <li>radio</li>
-        <li>select</li>
-        <li>multiple select</li>
-        <li>file input</li>
-        <li>textarea</li>
-      </ul>
-    </div><!-- /.span -->
-    <div class="span8">
-      <form class="form-horizontal">
-        <fieldset>
-          <div class="control-group">
-            <label class="control-label" for="input01">Text input</label>
-            <div class="controls">
-              <input type="text" class="input-xlarge" id="input01">
-              <p class="help-block">In addition to freeform text, any HTML5 text-based input appears like so.</p>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="optionsCheckbox">Checkbox</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox" value="option1">
-                Option one is this and that&mdash;be sure to include why it's great
-              </label>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="select01">Select list</label>
-            <div class="controls">
-              <select id="select01">
-                <option>something</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="multiSelect">Multicon-select</label>
-            <div class="controls">
-              <select multiple="multiple" id="multiSelect">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="fileInput">File input</label>
-            <div class="controls">
-              <input class="input-file" id="fileInput" type="file">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="textarea">Textarea</label>
-            <div class="controls">
-              <textarea class="input-xlarge" id="textarea" rows="3"></textarea>
-            </div>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
-          </div>
-        </fieldset>
-      </form>
-      <h3>Example markup</h3>
-      <p>Given the above example form layout, here's the markup associated with the first input and control group. The <code>.control-group</code>, <code>.control-label</code>, and <code>.controls</code> classes are all required for styling.</p>
+  <p>Shown on the right are all the default form controls we support. Here's the bulleted list:</p>
+  <ul>
+    <li>text inputs (text, password, email, etc)</li>
+    <li>checkbox</li>
+    <li>radio</li>
+    <li>select</li>
+    <li>multiple select</li>
+    <li>file input</li>
+    <li>textarea</li>
+  </ul>
+
+  <form class="form-horizontal">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="input01">Text input</label>
+        <div class="controls">
+          <input type="text" class="input-xlarge" id="input01">
+          <p class="help-block">In addition to freeform text, any HTML5 text-based input appears like so.</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="optionsCheckbox">Checkbox</label>
+        <div class="controls">
+          <label class="checkbox">
+            <input type="checkbox" id="optionsCheckbox" value="option1">
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="select01">Select list</label>
+        <div class="controls">
+          <select id="select01">
+            <option>something</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="multiSelect">Multicon-select</label>
+        <div class="controls">
+          <select multiple="multiple" id="multiSelect">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="fileInput">File input</label>
+        <div class="controls">
+          <input class="input-file" id="fileInput" type="file">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="textarea">Textarea</label>
+        <div class="controls">
+          <textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button class="btn">Cancel</button>
+      </div>
+    </fieldset>
+  </form>
+  <h3>Example markup</h3>
+  <p>Given the above example form layout, here's the markup associated with the first input and control group. The <code>.control-group</code>, <code>.control-label</code>, and <code>.controls</code> classes are all required for styling.</p>
 <pre class="prettyprint linenums">
 &lt;form class="form-horizontal"&gt;
   &lt;fieldset&gt;
@@ -995,253 +982,241 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-    </div>
-  </div>
 
   <br>
 
   <h2>Form control states</h2>
-  <div class="row">
-    <div class="span4">
-      <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
-      <hr>
-      <h3>Form validation</h3>
-      <p>It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.</p>
+  <p>Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
+  <hr>
+  <h3>Form validation</h3>
+  <p>It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.</p>
 <pre class="prettyprint linenums">
 &lt;fieldset
   class="control-group error"&gt;
   …
 &lt;/fieldset&gt;
 </pre>
-    </div>
-    <div class="span8">
-      <form class="form-horizontal">
-        <fieldset>
-          <div class="control-group">
-            <label class="control-label" for="focusedInput">Focused input</label>
-            <div class="controls">
-              <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused…">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Uneditable input</label>
-            <div class="controls">
-              <span class="input-xlarge uneditable-input">Some value here</span>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="disabledInput">Disabled input</label>
-            <div class="controls">
-              <input class="input-xlarge disabled" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="optionsCheckbox2">Disabled checkbox</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" id="optionsCheckbox2" value="option1" disabled>
-                This is a disabled checkbox
-              </label>
-            </div>
-          </div>
-          <div class="control-group warning">
-            <label class="control-label" for="inputWarning">Input with warning</label>
-            <div class="controls">
-              <input type="text" id="inputWarning">
-              <span class="help-inline">Something may have gone wrong</span>
-            </div>
-          </div>
-          <div class="control-group error">
-            <label class="control-label" for="inputError">Input with error</label>
-            <div class="controls">
-              <input type="text" id="inputError">
-              <span class="help-inline">Please correct the error</span>
-            </div>
-          </div>
-          <div class="control-group success">
-            <label class="control-label" for="inputSuccess">Input with success</label>
-            <div class="controls">
-              <input type="text" id="inputSuccess">
-              <span class="help-inline">Woohoo!</span>
-            </div>
-          </div>
-          <div class="control-group success">
-            <label class="control-label" for="selectError">Select with success</label>
-            <div class="controls">
-              <select id="selectError">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-              <span class="help-inline">Woohoo!</span>
-            </div>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  </div>
+
+  <form class="form-horizontal">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="focusedInput">Focused input</label>
+        <div class="controls">
+          <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused…">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Uneditable input</label>
+        <div class="controls">
+          <span class="input-xlarge uneditable-input">Some value here</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="disabledInput">Disabled input</label>
+        <div class="controls">
+          <input class="input-xlarge disabled" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="optionsCheckbox2">Disabled checkbox</label>
+        <div class="controls">
+          <label class="checkbox">
+            <input type="checkbox" id="optionsCheckbox2" value="option1" disabled>
+            This is a disabled checkbox
+          </label>
+        </div>
+      </div>
+      <div class="control-group warning">
+        <label class="control-label" for="inputWarning">Input with warning</label>
+        <div class="controls">
+          <input type="text" id="inputWarning">
+          <span class="help-inline">Something may have gone wrong</span>
+        </div>
+      </div>
+      <div class="control-group error">
+        <label class="control-label" for="inputError">Input with error</label>
+        <div class="controls">
+          <input type="text" id="inputError">
+          <span class="help-inline">Please correct the error</span>
+        </div>
+      </div>
+      <div class="control-group success">
+        <label class="control-label" for="inputSuccess">Input with success</label>
+        <div class="controls">
+          <input type="text" id="inputSuccess">
+          <span class="help-inline">Woohoo!</span>
+        </div>
+      </div>
+      <div class="control-group success">
+        <label class="control-label" for="selectError">Select with success</label>
+        <div class="controls">
+          <select id="selectError">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <span class="help-inline">Woohoo!</span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button class="btn">Cancel</button>
+      </div>
+    </fieldset>
+  </form>
 
   <br>
 
   <h2>Extending form controls</h2>
-  <div class="row">
-    <div class="span4">
-      <h3>Prepend &amp; append inputs</h3>
-      <p>Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.</p>
-      <hr>
-      <h3>Checkboxes and radios</h3>
-      <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
-      <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
-      <hr>
-      <h4>Inline forms and append/prepend</h4>
-      <p>To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.</p>
-      <hr>
-      <h4>Form help text</h4>
-      <p>To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.</p>
-    </div>
-    <div class="span8">
-      <form class="form-horizontal">
-        <fieldset>
-          <div class="control-group">
-            <label class="control-label">Form grid sizes</label>
-            <div class="controls docs-input-sizes">
-              <input class="span1" type="text" placeholder=".span1">
-              <input class="span2" type="text" placeholder=".span2">
-              <input class="span3" type="text" placeholder=".span3">
-              <select class="span1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-              <select class="span2">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-              <select class="span3">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-              <p class="help-block">Use the same <code>.span*</code> classes from the grid system for input sizes.</p>
-            </div>
+  <h3>Prepend &amp; append inputs</h3>
+  <p>Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.</p>
+  <hr>
+  <h3>Checkboxes and radios</h3>
+  <p>Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.</p>
+  <p>Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.</p>
+  <hr>
+  <h4>Inline forms and append/prepend</h4>
+  <p>To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.</p>
+  <hr>
+  <h4>Form help text</h4>
+  <p>To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.</p>
+
+  <form class="form-horizontal">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label">Form grid sizes</label>
+        <div class="controls docs-input-sizes">
+          <input class="span1" type="text" placeholder=".span1">
+          <input class="span2" type="text" placeholder=".span2">
+          <input class="span3" type="text" placeholder=".span3">
+          <select class="span1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <select class="span2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <select class="span3">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <p class="help-block">Use the same <code>.span*</code> classes from the grid system for input sizes.</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Alternate sizes</label>
+        <div class="controls docs-input-sizes">
+          <input class="input-mini" type="text" placeholder=".input-mini">
+          <input class="input-small" type="text" placeholder=".input-small">
+          <input class="input-medium" type="text" placeholder=".input-medium">
+          <p class="help-block">You may also use static classes that don't map to the grid, adapt to the responsive CSS styles, or account for varying types of controls (e.g., <code>input</code> vs. <code>select</code>).</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="prependedInput">Prepended text</label>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text" placeholder="Username">
           </div>
-          <div class="control-group">
-            <label class="control-label">Alternate sizes</label>
-            <div class="controls docs-input-sizes">
-              <input class="input-mini" type="text" placeholder=".input-mini">
-              <input class="input-small" type="text" placeholder=".input-small">
-              <input class="input-medium" type="text" placeholder=".input-medium">
-              <p class="help-block">You may also use static classes that don't map to the grid, adapt to the responsive CSS styles, or account for varying types of controls (e.g., <code>input</code> vs. <code>select</code>).</p>
-            </div>
+          <p class="help-block">Here's some help text</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="appendedInput">Appended text</label>
+        <div class="controls">
+          <div class="input-append">
+            <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
           </div>
-          <div class="control-group">
-            <label class="control-label" for="prependedInput">Prepended text</label>
-            <div class="controls">
-              <div class="input-prepend">
-                <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text" placeholder="Username">
-              </div>
-              <p class="help-block">Here's some help text</p>
-            </div>
+          <span class="help-inline">Here's more help text</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="appendedPrependedInput">Append and prepend</label>
+        <div class="controls">
+          <div class="input-prepend input-append">
+            <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
           </div>
-          <div class="control-group">
-            <label class="control-label" for="appendedInput">Appended text</label>
-            <div class="controls">
-              <div class="input-append">
-                <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
-              </div>
-              <span class="help-inline">Here's more help text</span>
-            </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="appendedInputButton">Append with button</label>
+        <div class="controls">
+          <div class="input-append">
+            <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
           </div>
-          <div class="control-group">
-            <label class="control-label" for="appendedPrependedInput">Append and prepend</label>
-            <div class="controls">
-              <div class="input-prepend input-append">
-                <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
-              </div>
-            </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="appendedInputButtons">Two-button append</label>
+        <div class="controls">
+          <div class="input-append">
+            <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
           </div>
-          <div class="control-group">
-            <label class="control-label" for="appendedInputButton">Append with button</label>
-            <div class="controls">
-              <div class="input-append">
-                <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
-              </div>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="appendedInputButtons">Two-button append</label>
-            <div class="controls">
-              <div class="input-append">
-                <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
-              </div>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
-            <div class="controls">
-              <label class="checkbox inline">
-                <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-              </label>
-              <label class="checkbox inline">
-                <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-              </label>
-              <label class="checkbox inline">
-                <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-              </label>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="optionsCheckboxList">Checkboxes</label>
-            <div class="controls">
-              <label class="checkbox">
-                <input type="checkbox" name="optionsCheckboxList1" value="option1">
-                Option one is this and that&mdash;be sure to include why it's great
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" name="optionsCheckboxList2" value="option2">
-                Option two can also be checked and included in form results
-              </label>
-              <label class="checkbox">
-                <input type="checkbox" name="optionsCheckboxList3" value="option3">
-                Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results
-              </label>
-              <p class="help-block"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label">Radio buttons</label>
-            <div class="controls">
-              <label class="radio">
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                Option one is this and that&mdash;be sure to include why it's great
-              </label>
-              <label class="radio">
-                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                Option two can be something else and selecting it will deselect option one
-              </label>
-            </div>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <button class="btn">Cancel</button>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  </div><!-- /row -->
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inlineCheckboxes">Inline checkboxes</label>
+        <div class="controls">
+          <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+          </label>
+          <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+          </label>
+          <label class="checkbox inline">
+            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="optionsCheckboxList">Checkboxes</label>
+        <div class="controls">
+          <label class="checkbox">
+            <input type="checkbox" name="optionsCheckboxList1" value="option1">
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="optionsCheckboxList2" value="option2">
+            Option two can also be checked and included in form results
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="optionsCheckboxList3" value="option3">
+            Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results
+          </label>
+          <p class="help-block"><strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Radio buttons</label>
+        <div class="controls">
+          <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+          <label class="radio">
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button class="btn">Cancel</button>
+      </div>
+    </fieldset>
+  </form>
 </section>
 
 
@@ -1299,48 +1274,44 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </tbody>
   </table>
 
-  <div class="row">
-    <div class="span4">
-      <h3>Buttons for actions</h3>
-      <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.</p>
-      <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
-      <h3>Cross browser compatibility</h3>
-      <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
-    </div>
-    <div class="span4">
-      <h3>Multiple sizes</h3>
-      <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for two additional sizes.</p>
-      <p>
-        <button class="btn btn-large btn-primary">Primary action</button>
-        <button class="btn btn-large">Action</button>
-      </p>
-      <p>
-        <button class="btn btn-small btn-primary">Primary action</button>
-        <button class="btn btn-small">Action</button>
-      </p>
-      <p>
-        <button class="btn btn-mini btn-primary">Primary action</button>
-        <button class="btn btn-mini">Action</button>
-      </p>
-      <br>
-      <h3>Disabled state</h3>
-      <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code> attribute for <code>&lt;button&gt;</code> elements.</p>
-      <p>
-        <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
-        <a href="#" class="btn btn-large disabled">Link</a>
-      </p>
-      <p style="margin-bottom: 18px;">
-        <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-        <button class="btn btn-large" disabled>Button</button>
-      </p>
-      <p>
-        <span class="label label-info">Heads up!</span>
-        We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
-      </p>
-    </div>
-    <div class="span4">
-      <h3>One class, multiple tags</h3>
-      <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+  <h3>Buttons for actions</h3>
+  <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.</p>
+  <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
+  <h3>Cross browser compatibility</h3>
+  <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
+
+  <h3>Multiple sizes</h3>
+  <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for two additional sizes.</p>
+  <p>
+    <button class="btn btn-large btn-primary">Primary action</button>
+    <button class="btn btn-large">Action</button>
+  </p>
+  <p>
+    <button class="btn btn-small btn-primary">Primary action</button>
+    <button class="btn btn-small">Action</button>
+  </p>
+  <p>
+    <button class="btn btn-mini btn-primary">Primary action</button>
+    <button class="btn btn-mini">Action</button>
+  </p>
+  <br>
+  <h3>Disabled state</h3>
+  <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code> attribute for <code>&lt;button&gt;</code> elements.</p>
+  <p>
+    <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+    <a href="#" class="btn btn-large disabled">Link</a>
+  </p>
+  <p style="margin-bottom: 18px;">
+    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+    <button class="btn btn-large" disabled>Button</button>
+  </p>
+  <p>
+    <span class="label label-info">Heads up!</span>
+    We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
+  </p>
+
+  <h3>One class, multiple tags</h3>
+  <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
 <form>
 <a class="btn" href="">Link</a>
 <button class="btn" type="submit">Button</button>
@@ -1357,9 +1328,8 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;input class="btn" type="submit"
          value="Submit"&gt;
 </pre>
-      <p>As a best practice, try to match the element for you context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
-    </div>
-  </div>
+  <p>As a best practice, try to match the element for you context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
+
 </section>
 
 
@@ -1371,7 +1341,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     <h1>Icons <small>Graciously provided by <a href="http://glyphicons.com" target="_blank">Glyphicons</a></small></h1>
   </div>
   <div class="row">
-    <div class="span3">
+    <div class="span2">
       <ul class="the-icons">
         <li><i class="icon-glass"></i> icon-glass</li>
         <li><i class="icon-music"></i> icon-music</li>
@@ -1410,7 +1380,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-headphones"></i> icon-headphones</li>
       </ul>
     </div>
-    <div class="span3">
+    <div class="span2">
       <ul class="the-icons">
         <li><i class="icon-volume-off"></i> icon-volume-off</li>
         <li><i class="icon-volume-down"></i> icon-volume-down</li>
@@ -1449,7 +1419,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-fast-backward"></i> icon-fast-backward</li>
       </ul>
     </div>
-    <div class="span3">
+    <div class="span2">
       <ul class="the-icons">
         <li><i class="icon-backward"></i> icon-backward</li>
         <li><i class="icon-play"></i> icon-play</li>
@@ -1488,7 +1458,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-eye-open"></i> icon-eye-open</li>
       </ul>
     </div>
-    <div class="span3">
+    <div class="span2">
       <ul class="the-icons">
         <li><i class="icon-eye-close"></i> icon-eye-close</li>
         <li><i class="icon-warning-sign"></i> icon-warning-sign</li>
@@ -1531,99 +1501,91 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
   <br>
 
-  <div class="row">
-    <div class="span4">
-      <h3>Built as a sprite</h3>
-      <p>Instead of making every icon an extra request, we've compiled them into a sprite&mdash;a bunch of images in one file that uses CSS to position the images with <code>background-position</code>. This is the same method we use on Twitter.com and it has worked well for us.</p>
-      <p>All icons classes are prefixed with <code>.icon-</code> for proper namespacing and scoping, much like our other components. This will help avoid conflicts with other tools.</p>
-      <p><a href="http://glyphicons.com" target="_blank">Glyphicons</a> has granted us use of the Halflings set in our open-source toolkit so long as we provide a link and credit here in the docs. Please consider doing the same in your projects.</p>
-    </div>
-    <div class="span4">
-      <h3>How to use</h3>
-      <p>Bootstrap uses an <code>&lt;i&gt;</code> tag for all icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:</p>
+
+  <h3>Built as a sprite</h3>
+  <p>Instead of making every icon an extra request, we've compiled them into a sprite&mdash;a bunch of images in one file that uses CSS to position the images with <code>background-position</code>. This is the same method we use on Twitter.com and it has worked well for us.</p>
+  <p>All icons classes are prefixed with <code>.icon-</code> for proper namespacing and scoping, much like our other components. This will help avoid conflicts with other tools.</p>
+  <p><a href="http://glyphicons.com" target="_blank">Glyphicons</a> has granted us use of the Halflings set in our open-source toolkit so long as we provide a link and credit here in the docs. Please consider doing the same in your projects.</p>
+
+  <h3>How to use</h3>
+  <p>Bootstrap uses an <code>&lt;i&gt;</code> tag for all icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search"&gt;&lt;/i&gt;
 </pre>
-      <p>There are also styles available for inverted (white) icons, made ready with one extra class:</p>
+  <p>There are also styles available for inverted (white) icons, made ready with one extra class:</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
-      <p>There are 140 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.</p>
-      <p>
-        <span class="label label-info">Heads up!</span>
-        When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.
-      </p>
-    </div>
-    <div class="span4">
-      <h3>Use cases</h3>
-      <p>Icons are great, but where would one use them? Here are a few ideas:</p>
-      <ul>
-        <li>As visuals for your sidebar navigation</li>
-        <li>For a purely icon-driven navigation</li>
-        <li>For buttons to help convey the meaning of an action</li>
-        <li>With links to share context on a user's destination</li>
-      </ul>
-      <p>Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon.</p>
-    </div>
-  </div>
+  <p>There are 140 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.</p>
+  <p>
+    <span class="label label-info">Heads up!</span>
+    When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.
+  </p>
+
+  <h3>Use cases</h3>
+  <p>Icons are great, but where would one use them? Here are a few ideas:</p>
+  <ul>
+    <li>As visuals for your sidebar navigation</li>
+    <li>For a purely icon-driven navigation</li>
+    <li>For buttons to help convey the meaning of an action</li>
+    <li>With links to share context on a user's destination</li>
+  </ul>
+  <p>Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon.</p>
+
 
   <h3>Examples</h3>
   <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
-  <div class="row">
-    <div class="span4">
-      <div class="btn-toolbar" style="margin-bottom: 9px">
-        <div class="btn-group">
-          <a class="btn" href="#"><i class="icon-align-left"></i></a>
-          <a class="btn" href="#"><i class="icon-align-center"></i></a>
-          <a class="btn" href="#"><i class="icon-align-right"></i></a>
-          <a class="btn" href="#"><i class="icon-align-justify"></i></a>
-        </div>
-        <div class="btn-group">
-          <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-            <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-            <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-            <li class="divider"></li>
-            <li><a href="#"><i class="i"></i> Make admin</a></li>
-          </ul>
-        </div>
-      </div>
-      <p>
-        <a class="btn" href="#"><i class="icon-refresh"></i> Refresh</a>
-        <a class="btn btn-success" href="#"><i class="icon-shopping-cart icon-white"></i> Checkout</a>
-        <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i> Delete</a>
-      </p>
-      <p>
-        <a class="btn btn-large" href="#"><i class="icon-comment"></i> Comment</a>
-        <a class="btn btn-small" href="#"><i class="icon-cog"></i> Settings</a>
-        <a class="btn btn-small btn-info" href="#"><i class="icon-info-sign icon-white"></i> More Info</a>
-      </p>
+
+  <div class="btn-toolbar" style="margin-bottom: 9px">
+    <div class="btn-group">
+      <a class="btn" href="#"><i class="icon-align-left"></i></a>
+      <a class="btn" href="#"><i class="icon-align-center"></i></a>
+      <a class="btn" href="#"><i class="icon-align-right"></i></a>
+      <a class="btn" href="#"><i class="icon-align-justify"></i></a>
     </div>
-    <div class="span4">
-      <div class="well" style="padding: 8px 0;">
-        <ul class="nav nav-list">
-          <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
-          <li><a href="#"><i class="icon-book"></i> Library</a></li>
-          <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
-          <li><a href="#"><i class="i"></i> Misc</a></li>
-        </ul>
-      </div> <!-- /well -->
-    </div>
-    <div class="span4">
-      <form>
-        <div class="control-group">
-          <label class="control-label" for="inputIcon">Email address</label>
-          <div class="controls">
-            <div class="input-prepend">
-              <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text">
-            </div>
-          </div>
-        </div>
-      </form>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+        <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+        <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="i"></i> Make admin</a></li>
+      </ul>
     </div>
   </div>
+  <p>
+    <a class="btn" href="#"><i class="icon-refresh"></i> Refresh</a>
+    <a class="btn btn-success" href="#"><i class="icon-shopping-cart icon-white"></i> Checkout</a>
+    <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i> Delete</a>
+  </p>
+  <p>
+    <a class="btn btn-large" href="#"><i class="icon-comment"></i> Comment</a>
+    <a class="btn btn-small" href="#"><i class="icon-cog"></i> Settings</a>
+    <a class="btn btn-small btn-info" href="#"><i class="icon-info-sign icon-white"></i> More Info</a>
+  </p>
+
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+      <li><a href="#"><i class="icon-book"></i> Library</a></li>
+      <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+      <li><a href="#"><i class="i"></i> Misc</a></li>
+    </ul>
+  </div> <!-- /well -->
+
+  <form>
+    <div class="control-group">
+      <label class="control-label" for="inputIcon">Email address</label>
+      <div class="controls">
+        <div class="input-prepend">
+          <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text">
+        </div>
+      </div>
+    </div>
+  </form>
+
 </section>
 
 
