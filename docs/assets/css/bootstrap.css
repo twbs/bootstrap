@@ -873,6 +873,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+input[type="image"],
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
