@@ -23,11 +23,11 @@
       </li>
       <li><a href="#labels">{{_i}}Labels{{/i}}</a></li>
       <li><a href="#badges">{{_i}}Badges{{/i}}</a></li>
-      <li><a href="#typography">{{_i}}Typography{{/i}}</a></li>
+      <li><a href="#typography">{{_i}}Type{{/i}}</a></li>
       <li><a href="#thumbnails">{{_i}}Thumbnails{{/i}}</a></li>
       <li><a href="#alerts">{{_i}}Alerts{{/i}}</a></li>
       <li><a href="#progress">{{_i}}Progress bars{{/i}}</a></li>
-      <li><a href="#misc">{{_i}}Miscellaneous{{/i}}</a></li>
+      <li><a href="#misc">{{_i}}Misc{{/i}}</a></li>
     </ul>
   </div>
 </header>
@@ -40,29 +40,27 @@
   <div class="page-header">
     <h1>{{_i}}Button groups{{/i}} <small>{{_i}}Join buttons for more toolbar-like functionality{{/i}}</small></h1>
   </div>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Button groups{{/i}}</h3>
-      <p>{{_i}}Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.{{/i}}</p>
-      <h3>{{_i}}Best practices{{/i}}</h3>
-      <p>{{_i}}We recommend the following guidelines for using button groups and toolbars:{{/i}}</p>
-      <ul>
-        <li>{{_i}}Always use the same element in a single button group, <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>.{{/i}}</li>
-        <li>{{_i}}Don't mix buttons of different colors in the same button group.{{/i}}</li>
-        <li>{{_i}}Use icons in addition to or instead of text, but be sure include alt and title text where appropriate.{{/i}}</li>
-      </ul>
-      <p>{{_i}}<span class="label label-info">Related</span> Button groups with dropdowns (see below) should be called out separately and always include a dropdown caret to indicate intended behavior.{{/i}}</p>
+
+  <h3>{{_i}}Button groups{{/i}}</h3>
+  <p>{{_i}}Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.{{/i}}</p>
+  <h3>{{_i}}Best practices{{/i}}</h3>
+  <p>{{_i}}We recommend the following guidelines for using button groups and toolbars:{{/i}}</p>
+  <ul>
+    <li>{{_i}}Always use the same element in a single button group, <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>.{{/i}}</li>
+    <li>{{_i}}Don't mix buttons of different colors in the same button group.{{/i}}</li>
+    <li>{{_i}}Use icons in addition to or instead of text, but be sure include alt and title text where appropriate.{{/i}}</li>
+  </ul>
+  <p>{{_i}}<span class="label label-info">Related</span> Button groups with dropdowns (see below) should be called out separately and always include a dropdown caret to indicate intended behavior.{{/i}}</p>
+
+  <h3>{{_i}}Default example{{/i}}</h3>
+  <p>{{_i}}Here's how the HTML looks for a standard button group built with anchor tag buttons:{{/i}}</p>
+  <div class="">
+    <div class="btn-group" style="margin: 9px 0;">
+      <button class="btn">{{_i}}Left{{/i}}</button>
+      <button class="btn">{{_i}}Middle{{/i}}</button>
+      <button class="btn">{{_i}}Right{{/i}}</button>
     </div>
-    <div class="span4">
-      <h3>{{_i}}Default example{{/i}}</h3>
-      <p>{{_i}}Here's how the HTML looks for a standard button group built with anchor tag buttons:{{/i}}</p>
-      <div class="">
-        <div class="btn-group" style="margin: 9px 0;">
-          <button class="btn">{{_i}}Left{{/i}}</button>
-          <button class="btn">{{_i}}Middle{{/i}}</button>
-          <button class="btn">{{_i}}Right{{/i}}</button>
-        </div>
-      </div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;button class="btn"&gt;1&lt;/button&gt;
@@ -70,24 +68,24 @@
   &lt;button class="btn"&gt;3&lt;/button&gt;
 &lt;/div&gt;
 </pre>
-      <h3>{{_i}}Toolbar example{{/i}}</h3>
-      <p>{{_i}}Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.{{/i}}</p>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn">1</button>
-          <button class="btn">2</button>
-          <button class="btn">3</button>
-          <button class="btn">4</button>
-        </div>
-        <div class="btn-group">
-          <button class="btn">5</button>
-          <button class="btn">6</button>
-          <button class="btn">7</button>
-        </div>
-        <div class="btn-group">
-          <button class="btn">8</button>
-        </div>
-      </div>
+  <h3>{{_i}}Toolbar example{{/i}}</h3>
+  <p>{{_i}}Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.{{/i}}</p>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <button class="btn">1</button>
+      <button class="btn">2</button>
+      <button class="btn">3</button>
+      <button class="btn">4</button>
+    </div>
+    <div class="btn-group">
+      <button class="btn">5</button>
+      <button class="btn">6</button>
+      <button class="btn">7</button>
+    </div>
+    <div class="btn-group">
+      <button class="btn">8</button>
+    </div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-toolbar"&gt;
   &lt;div class="btn-group"&gt;
@@ -95,15 +93,11 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Checkbox and radio flavors{{/i}}</h3>
-      <p>{{_i}}Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.{{/i}}</p>
-      <p><a class="btn js-btn" href="./javascript.html#buttons">{{_i}}Get the javascript &raquo;{{/i}}</a></p>
-      <h3>{{_i}}Dropdowns in button groups{{/i}}</h3>
-      <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.{{/i}}</p>
-    </div>
-  </div>
+  <h3>{{_i}}Checkbox and radio flavors{{/i}}</h3>
+  <p>{{_i}}Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.{{/i}}</p>
+  <p><a class="btn js-btn" href="./javascript.html#buttons">{{_i}}Get the javascript &raquo;{{/i}}</a></p>
+  <h3>{{_i}}Dropdowns in button groups{{/i}}</h3>
+  <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.{{/i}}</p>
 </section>
 
 
@@ -116,88 +110,86 @@
   </div>
 
   <h2>{{_i}}Button dropdowns{{/i}}</h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Overview and examples{{/i}}</h3>
-      <p>{{_i}}Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.{{/i}}</p>
-      <div class="btn-toolbar" style="margin-top: 18px;">
-        <div class="btn-group">
-          <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">{{_i}}Danger{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">{{_i}}Warning{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">{{_i}}Success{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{_i}}Info{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">{{_i}}Inverse{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div><!-- /btn-toolbar -->
-    </div>
-    <div class="span8">
-      <h3>{{_i}}Example markup{{/i}}</h3>
-      <p>{{_i}}Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.{{/i}}</p>
+
+  <h3>{{_i}}Overview and examples{{/i}}</h3>
+  <p>{{_i}}Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.{{/i}}</p>
+  <div class="btn-toolbar" style="margin-top: 18px;">
+    <div class="btn-group">
+      <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">{{_i}}Danger{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">{{_i}}Warning{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">{{_i}}Success{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{_i}}Info{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">{{_i}}Inverse{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div><!-- /btn-toolbar -->
+
+  <h3>{{_i}}Example markup{{/i}}</h3>
+  <p>{{_i}}Similar to a button group, our markup uses regular button markup, but with a handful of additions to refine the style and support Bootstrap's dropdown jQuery plugin.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;a class="btn dropdown-toggle" data-toggle="dropdown" href="#"&gt;
@@ -209,182 +201,176 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Works with all button sizes{{/i}}</h3>
-      <p>{{_i}}Button dropdowns work at any size. your button sizes to <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.{{/i}}</p>
-      <div class="btn-toolbar" style="margin-top: 18px;">
-        <div class="btn-group">
-          <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">{{_i}}Large button{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">{{_i}}Small button{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">{{_i}}Mini button{{/i}} <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div><!-- /btn-toolbar -->
-    </div><!--/span-->
-    <div class="span4">
-      <h3>{{_i}}Requires javascript{{/i}}</h3>
-      <p>{{_i}}Button dropdowns require the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a> to function.{{/i}}</p>
-      <p>{{_i}}In some cases&mdash;like mobile&mdash;dropdown menus will extend outside the viewport. You need to resolve the alignment manually or with custom javascript.{{/i}}</p>
-    </div><!--/span-->
-  </div><!--/row-->
+
+  <h3>{{_i}}Works with all button sizes{{/i}}</h3>
+  <p>{{_i}}Button dropdowns work at any size. your button sizes to <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.{{/i}}</p>
+  <div class="btn-toolbar" style="margin-top: 18px;">
+    <div class="btn-group">
+      <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">{{_i}}Large button{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">{{_i}}Small button{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">{{_i}}Mini button{{/i}} <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div><!-- /btn-toolbar -->
+
+  <h3>{{_i}}Requires javascript{{/i}}</h3>
+  <p>{{_i}}Button dropdowns require the <a href="./javascript.html#dropdowns">Bootstrap dropdown plugin</a> to function.{{/i}}</p>
+  <p>{{_i}}In some cases&mdash;like mobile&mdash;dropdown menus will extend outside the viewport. You need to resolve the alignment manually or with custom javascript.{{/i}}</p>
+
   <br>
 
   <h2>{{_i}}Split button dropdowns{{/i}}</h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Overview and examples{{/i}}</h3>
-      <p>{{_i}}Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.{{/i}}</p>
-      <div class="btn-toolbar" style="margin-top: 18px;">
-        <div class="btn-group">
-          <button class="btn">{{_i}}Action{{/i}}</button>
-          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-primary">{{_i}}Action{{/i}}</button>
-          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-danger">{{_i}}Danger{{/i}}</button>
-          <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn btn-warning">{{_i}}Warning{{/i}}</button>
-          <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-success">{{_i}}Success{{/i}}</button>
-          <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group">
-          <button class="btn btn-info">{{_i}}Info{{/i}}</button>
-          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn btn-inverse">{{_i}}Inverse{{/i}}</button>
-          <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div><!-- /btn-toolbar -->
-      <h3>{{_i}}Sizes{{/i}}</h3>
-      <p>{{_i}}Utilize the extra button classes <code>.btn-mini</code>, <code>.btn-small</code>, or <code>.btn-large</code> for sizing.{{/i}}</p>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn btn-large">{{_i}}Large action{{/i}}</button>
-          <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div><!-- /btn-toolbar -->
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn btn-small">{{_i}}Small action{{/i}}</button>
-          <button class="btn btn-small dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div><!-- /btn-toolbar -->
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn btn-mini">{{_i}}Mini action{{/i}}</button>
-          <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div><!-- /btn-toolbar -->
+
+  <h3>{{_i}}Overview and examples{{/i}}</h3>
+  <p>{{_i}}Building on the button group styles and markup, we can easily create a split button. Split buttons feature a standard action on the left and a dropdown toggle on the right with contextual links.{{/i}}</p>
+  <div class="btn-toolbar" style="margin-top: 18px;">
+    <div class="btn-group">
+      <button class="btn">{{_i}}Action{{/i}}</button>
+      <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-primary">{{_i}}Action{{/i}}</button>
+      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-danger">{{_i}}Danger{{/i}}</button>
+      <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <button class="btn btn-warning">{{_i}}Warning{{/i}}</button>
+      <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-success">{{_i}}Success{{/i}}</button>
+      <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button class="btn btn-info">{{_i}}Info{{/i}}</button>
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <button class="btn btn-inverse">{{_i}}Inverse{{/i}}</button>
+      <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div><!-- /btn-toolbar -->
+  <h3>{{_i}}Sizes{{/i}}</h3>
+  <p>{{_i}}Utilize the extra button classes <code>.btn-mini</code>, <code>.btn-small</code>, or <code>.btn-large</code> for sizing.{{/i}}</p>
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <button class="btn btn-large">{{_i}}Large action{{/i}}</button>
+      <button class="btn btn-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div><!-- /btn-toolbar -->
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <button class="btn btn-small">{{_i}}Small action{{/i}}</button>
+      <button class="btn btn-small dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div><!-- /btn-toolbar -->
+  <div class="btn-toolbar">
+    <div class="btn-group">
+      <button class="btn btn-mini">{{_i}}Mini action{{/i}}</button>
+      <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div><!-- /btn-toolbar -->
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   ...
@@ -393,10 +379,9 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-    <div class="span8">
-      <h3>{{_i}}Example markup{{/i}}</h3>
-      <p>{{_i}}We expand on the normal button dropdowns to provide a second button action that operates as a separate dropdown trigger.{{/i}}</p>
+
+  <h3>{{_i}}Example markup{{/i}}</h3>
+  <p>{{_i}}We expand on the normal button dropdowns to provide a second button action that operates as a separate dropdown trigger.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
   &lt;button class="btn"&gt;{{_i}}Action{{/i}}&lt;/button&gt;
@@ -408,32 +393,32 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-      <h3>{{_i}}Dropup menus{{/i}}</h3>
-      <p>{{_i}}Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>.caret</code> and reposition the menu itself to move from the bottom up instead of top down.{{/i}}</p>
-      <div class="btn-toolbar" style="margin-top: 9px;">
-        <div class="btn-group dropup">
-          <button class="btn">{{_i}}Dropup{{/i}}</button>
-          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-        <div class="btn-group dropup">
-          <button class="btn primary">{{_i}}Right dropup{{/i}}</button>
-          <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-          <ul class="dropdown-menu pull-right">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </div><!-- /btn-group -->
-      </div>
+  <h3>{{_i}}Dropup menus{{/i}}</h3>
+  <p>{{_i}}Dropdown menus can also be toggled from the bottom up by adding a single class to the immediate parent of <code>.dropdown-menu</code>. It will flip the direction of the <code>.caret</code> and reposition the menu itself to move from the bottom up instead of top down.{{/i}}</p>
+  <div class="btn-toolbar" style="margin-top: 9px;">
+    <div class="btn-group dropup">
+      <button class="btn">{{_i}}Dropup{{/i}}</button>
+      <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+    <div class="btn-group dropup">
+      <button class="btn primary">{{_i}}Right dropup{{/i}}</button>
+      <button class="btn primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+      <ul class="dropdown-menu pull-right">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div><!-- /btn-group -->
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group dropup"&gt;
   &lt;button class="btn"&gt;{{_i}}Dropup{{/i}}&lt;/button&gt;
@@ -446,8 +431,6 @@
 &lt;/div&gt;
 </pre>
 
-    </div>
-  </div>
 </section>
 
 
