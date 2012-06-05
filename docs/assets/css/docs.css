@@ -11,10 +11,16 @@
 body {
   position: relative;
   padding-top: 90px;
+  font-size: 14px;
   background-color: #fff;
   background-image: url(../img/grid-18px-masked.png);
   background-repeat: repeat-x;
   background-position: 0 40px;
+}
+
+body,
+li {
+  line-height: 20px;
 }
 
 .bs-docs-container {
@@ -24,6 +30,9 @@ body {
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
+.navbar {
+  font-size: 13px;
+}
 .navbar-fixed-top .brand {
   padding-right: 0;
   padding-left: 0;
@@ -603,7 +612,6 @@ form.well {
 .bs-docs-example > p {
   font-size: 13px;
   line-height: 18px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .bs-docs-example p:last-child {
   margin-bottom: 0;

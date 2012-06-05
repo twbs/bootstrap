@@ -908,11 +908,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Project name</a>
+        <a class="brand" href="#">Title</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             <li class="dropdown">
@@ -950,10 +949,9 @@
     </div><!-- /navbar-inner -->
   </div><!-- /navbar -->
 
-  <div class="row">
-    <div class="span8">
-      <h3>Navbar scaffolding</h3>
-      <p>The navbar requires only a few divs to structure it well for static or fixed display.</p>
+
+  <h3>Navbar scaffolding</h3>
+  <p>The navbar requires only a few divs to structure it well for static or fixed display.</p>
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
@@ -963,47 +961,42 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-      <h3>Fixed navbar</h3>
-      <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
-      <div class="row">
-        <div class="span4">
+  <h3>Fixed navbar</h3>
+  <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
-        </div><!--/span-->
-        <div class="span4">
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-bottom"&gt;
   ...
 &lt;/div&gt;
 </pre>
-        </div><!--/span-->
-      </div><!--/row-->
-      <p>When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of padding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
-      <h3>Brand name</h3>
-      <p>A simple link to show your brand or project name only requires an anchor tag.</p>
+
+  <p>When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of padding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+  <h3>Brand name</h3>
+  <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 <pre class="prettyprint linenums">
 &lt;a class="brand" href="#"&gt;
   Project name
 &lt;/a&gt;
 </pre>
-      <h3>Forms in navbar</h3>
-      <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
+  <h3>Forms in navbar</h3>
+  <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
 &lt;/form&gt;
 </pre>
-      <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
+  <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="Search"&gt;
 &lt;/form&gt;
 </pre>
-      <h3>Optional responsive variation</h3>
-      <p>Depending on the amount of content in your topbar, you might want to implement the responsive options. To do so, wrap your nav content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.</p>
+  <h3>Optional responsive variation</h3>
+  <p>Depending on the amount of content in your topbar, you might want to implement the responsive options. To do so, wrap your nav content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
@@ -1028,14 +1021,12 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-      <div class="alert alert-info">
-        <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a> and <a href="./scaffolding.html#responsive">responsive Bootstrap CSS file</a>.
-      </div>
+  <div class="alert alert-info">
+    <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a> and <a href="./scaffolding.html#responsive">responsive Bootstrap CSS file</a>.
+  </div>
 
-    </div><!-- /.span -->
-    <div class="span4">
-      <h3>Nav links</h3>
-      <p>Nav items are simple to add via unordered lists.</p>
+  <h3>Nav links</h3>
+  <p>Nav items are simple to add via unordered lists.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="active"&gt;
@@ -1045,7 +1036,7 @@
   &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-      <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
+  <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   ...
@@ -1053,10 +1044,10 @@
   ...
 &lt;/ul&gt;
 </pre>
-      <h3>Component alignment</h3>
-      <p>To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
-      <h3>Adding dropdown menus</h3>
-      <p>Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.</p>
+  <h3>Component alignment</h3>
+  <p>To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+  <h3>Adding dropdown menus</h3>
+  <p>Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="dropdown"&gt;
@@ -1072,12 +1063,10 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-      <p><a class="btn" href="./javascript.html#dropdowns">Get the javascript &rarr;</a></p>
-      <hr>
-      <h3>Text in the navbar</h3>
-      <p>Wrap strings of text in a <code>&lt;.navbar-text&gt;</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
-    </div><!-- /.span -->
-  </div><!-- /.row -->
+  <p><a class="btn" href="./javascript.html#dropdowns">Get the javascript &rarr;</a></p>
+  <hr>
+  <h3>Text in the navbar</h3>
+  <p>Wrap strings of text in a <code>&lt;.navbar-text&gt;</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
 
 </section>
 
@@ -1090,29 +1079,26 @@
     <h1>Breadcrumbs <small></small></h1>
   </div>
 
-  <div class="row">
-    <div class="span6">
-      <h3>Why use them</h3>
-      <p>Breadcrumb navigation is used as a way to show users where they are within an app or a site, but not for primary navigation. Keep their use sparse and succinct to be most effective.</p>
+  <h3>Why use them</h3>
+  <p>Breadcrumb navigation is used as a way to show users where they are within an app or a site, but not for primary navigation. Keep their use sparse and succinct to be most effective.</p>
 
-      <h3>Examples</h3>
-      <p>A single example shown as it might be displayed across multiple pages.</p>
-      <ul class="breadcrumb">
-        <li class="active">Home</li>
-      </ul>
-      <ul class="breadcrumb">
-        <li><a href="#">Home</a> <span class="divider">/</span></li>
-        <li class="active">Library</li>
-      </ul>
-      <ul class="breadcrumb">
-        <li><a href="#">Home</a> <span class="divider">/</span></li>
-        <li><a href="#">Library</a> <span class="divider">/</span></li>
-        <li class="active">Data</li>
-      </ul>
-    </div>
-    <div class="span6">
-      <h3>Markup</h3>
-      <p>HTML is your standard unordered list with links.</p>
+  <h3>Examples</h3>
+  <p>A single example shown as it might be displayed across multiple pages.</p>
+  <ul class="breadcrumb">
+    <li class="active">Home</li>
+  </ul>
+  <ul class="breadcrumb">
+    <li><a href="#">Home</a> <span class="divider">/</span></li>
+    <li class="active">Library</li>
+  </ul>
+  <ul class="breadcrumb">
+    <li><a href="#">Home</a> <span class="divider">/</span></li>
+    <li><a href="#">Library</a> <span class="divider">/</span></li>
+    <li class="active">Data</li>
+  </ul>
+
+  <h3>Markup</h3>
+  <p>HTML is your standard unordered list with links.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="breadcrumb"&gt;
   &lt;li&gt;
@@ -1124,8 +1110,6 @@
   &lt;li class="active"&gt;Data&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-    </div>
-  </div>
 
 </section>
 
@@ -1139,59 +1123,56 @@
   </div>
 
   <h2>Multicon-page pagination</h2>
-  <div class="row">
-    <div class="span4">
-      <h3>When to use</h3>
-      <p>Ultra simplistic and minimally styled pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
-      <h3>Stateful page links</h3>
-      <p>Links are customizable and work in a number of circumstances with the right class. <code>.disabled</code> for unclickable links and <code>.active</code> for current page.</p>
-      <h3>Flexible alignment</h3>
-      <p>Add either of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.</p>
-    </div>
-    <div class="span4">
-      <h3>Examples</h3>
-      <p>The default pagination component is flexible and works in a number of variations.</p>
-      <div class="pagination">
-        <ul>
-          <li class="disabled"><a href="#">&laquo;</a></li>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
-      <div class="pagination">
-        <ul>
-          <li><a href="#">&laquo;</a></li>
-          <li><a href="#">10</a></li>
-          <li class="active"><a href="#">11</a></li>
-          <li><a href="#">12</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
-      <div class="pagination">
-        <ul>
-          <li><a href="#">&laquo;</a></li>
-          <li class="active"><a href="#">10</a></li>
-          <li class="disabled"><a href="#">...</a></li>
-          <li><a href="#">20</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-      </div>
-      <div class="pagination pagination-centered">
-        <ul>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="span4">
-      <h3>Markup</h3>
-      <p>Wrapped in a <code>&lt;div&gt;</code>, pagination is just a <code>&lt;ul&gt;</code>.</p>
+
+  <h3>When to use</h3>
+  <p>Ultra simplistic and minimally styled pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+  <h3>Stateful page links</h3>
+  <p>Links are customizable and work in a number of circumstances with the right class. <code>.disabled</code> for unclickable links and <code>.active</code> for current page.</p>
+  <h3>Flexible alignment</h3>
+  <p>Add either of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.</p>
+
+  <h3>Examples</h3>
+  <p>The default pagination component is flexible and works in a number of variations.</p>
+  <div class="pagination">
+    <ul>
+      <li class="disabled"><a href="#">&laquo;</a></li>
+      <li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
+  </div>
+  <div class="pagination">
+    <ul>
+      <li><a href="#">&laquo;</a></li>
+      <li><a href="#">10</a></li>
+      <li class="active"><a href="#">11</a></li>
+      <li><a href="#">12</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
+  </div>
+  <div class="pagination">
+    <ul>
+      <li><a href="#">&laquo;</a></li>
+      <li class="active"><a href="#">10</a></li>
+      <li class="disabled"><a href="#">...</a></li>
+      <li><a href="#">20</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
+  </div>
+  <div class="pagination pagination-centered">
+    <ul>
+      <li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+    </ul>
+  </div>
+
+  <h3>Markup</h3>
+  <p>Wrapped in a <code>&lt;div&gt;</code>, pagination is just a <code>&lt;ul&gt;</code>.</p>
 <pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
@@ -1206,24 +1187,20 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div><!-- /row -->
 
   <h2>Pager <small>For quick previous and next links</small></h2>
-  <div class="row">
-    <div class="span4">
-      <h3>About pager</h3>
-      <p>The pager component is a set of links for simple pagination implementations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.</p>
-      <h4>Optional disabled state</h4>
-      <p>Pager links also use the general <code>.disabled</code> class from the pagination.</p>
-    </div>
-    <div class="span4">
-      <h3>Default example</h3>
-      <p>By default, the pager centers links.</p>
-      <ul class="pager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="#">Next</a></li>
-      </ul>
+
+  <h3>About pager</h3>
+  <p>The pager component is a set of links for simple pagination implementations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.</p>
+  <h4>Optional disabled state</h4>
+  <p>Pager links also use the general <code>.disabled</code> class from the pagination.</p>
+
+  <h3>Default example</h3>
+  <p>By default, the pager centers links.</p>
+  <ul class="pager">
+    <li><a href="#">Previous</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="pager"&gt;
   &lt;li&gt;
@@ -1234,14 +1211,13 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>Aligned links</h3>
-      <p>Alternatively, you can align each link to the sides:</p>
-      <ul class="pager">
-        <li class="previous"><a href="#">&larr; Older</a></li>
-        <li class="next"><a href="#">Newer &rarr;</a></li>
-      </ul>
+
+  <h3>Aligned links</h3>
+  <p>Alternatively, you can align each link to the sides:</p>
+  <ul class="pager">
+    <li class="previous"><a href="#">&larr; Older</a></li>
+    <li class="next"><a href="#">Newer &rarr;</a></li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="pager"&gt;
   &lt;li class="previous"&gt;
@@ -1252,8 +1228,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-    </div>
-  </div><!-- /row -->
+
 </section>
 
 
@@ -1332,92 +1307,89 @@
   <div class="page-header">
     <h1>Badges <small>Indicators and unread counts</small></h1>
   </div>
-  <div class="row">
-    <div class="span4">
-      <h3>About</h3>
-      <p>Badges are small, simple components for displaying an indicator or count of some sort. They're commonly found in email clients like Mail.app or on mobile apps for push notifications.</p>
-    </div><!-- /.span -->
-    <div class="span8">
-      <h3>Available classes</h3>
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Example</th>
-            <th>Markup</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              Default
-            </td>
-            <td>
-              <span class="badge">1</span>
-            </td>
-            <td>
-              <code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Success
-            </td>
-            <td>
-              <span class="badge badge-success">2</span>
-            </td>
-            <td>
-              <code>&lt;span class="badge badge-success"&gt;2&lt;/span&gt;</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Warning
-            </td>
-            <td>
-              <span class="badge badge-warning">4</span>
-            </td>
-            <td>
-              <code>&lt;span class="badge badge-warning"&gt;4&lt;/span&gt;</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Important
-            </td>
-            <td>
-              <span class="badge badge-important">6</span>
-            </td>
-            <td>
-              <code>&lt;span class="badge badge-important"&gt;6&lt;/span&gt;</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Info
-            </td>
-            <td>
-              <span class="badge badge-info">8</span>
-            </td>
-            <td>
-              <code>&lt;span class="badge badge-info"&gt;8&lt;/span&gt;</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Inverse
-            </td>
-            <td>
-              <span class="badge badge-inverse">10</span>
-            </td>
-            <td>
-              <code>&lt;span class="badge badge-inverse"&gt;10&lt;/span&gt;</code>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div><!-- /.span -->
-  </div><!-- /.row -->
+
+  <h3>About</h3>
+  <p>Badges are small, simple components for displaying an indicator or count of some sort. They're commonly found in email clients like Mail.app or on mobile apps for push notifications.</p>
+
+  <h3>Available classes</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Example</th>
+        <th>Markup</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Default
+        </td>
+        <td>
+          <span class="badge">1</span>
+        </td>
+        <td>
+          <code>&lt;span class="badge"&gt;1&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Success
+        </td>
+        <td>
+          <span class="badge badge-success">2</span>
+        </td>
+        <td>
+          <code>&lt;span class="badge badge-success"&gt;2&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Warning
+        </td>
+        <td>
+          <span class="badge badge-warning">4</span>
+        </td>
+        <td>
+          <code>&lt;span class="badge badge-warning"&gt;4&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Important
+        </td>
+        <td>
+          <span class="badge badge-important">6</span>
+        </td>
+        <td>
+          <code>&lt;span class="badge badge-important"&gt;6&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Info
+        </td>
+        <td>
+          <span class="badge badge-info">8</span>
+        </td>
+        <td>
+          <code>&lt;span class="badge badge-info"&gt;8&lt;/span&gt;</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Inverse
+        </td>
+        <td>
+          <span class="badge badge-inverse">10</span>
+        </td>
+        <td>
+          <code>&lt;span class="badge badge-inverse"&gt;10&lt;/span&gt;</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </section>
 
 
@@ -1429,11 +1401,10 @@
     <h1>Typographic components <small>Page header and hero unit for segmenting content</small></h1>
   </div>
   <h2>Hero unit</h2>
-  <div class="row">
-    <div class="span4">
-      <p>Bootstrap provides a lightweight, flexible component called a hero unit to showcase content on your site. It works well on marketing and content-heavy sites.</p>
-      <h3>Markup</h3>
-      <p>Wrap your content in a <code>div</code> like so:</p>
+
+  <p>Bootstrap provides a lightweight, flexible component called a hero unit to showcase content on your site. It works well on marketing and content-heavy sites.</p>
+  <h3>Markup</h3>
+  <p>Wrap your content in a <code>div</code> like so:</p>
 <pre class="prettyprint linenums">
 &lt;div class="hero-unit"&gt;
   &lt;h1&gt;Heading&lt;/h1&gt;
@@ -1445,31 +1416,29 @@
   &lt;/p&gt;
 &lt;/div&gt;
 </pre>
+
+  <div class="bs-docs-example">
+    <div class="hero-unit">
+      <h1>Hello, world!</h1>
+      <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+      <p><a class="btn btn-primary btn-large">Learn more</a></p>
     </div>
-    <div class="span8">
-      <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-large">Learn more</a></p>
-      </div>
-    </div>
-  </div><!-- /row -->
+  </div>
+
   <h2>Page header</h2>
-  <div class="row">
-    <div class="span4">
-      <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
+
+  <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
+  <div class="bs-docs-example">
+    <div class="page-header">
+      <h1>Example page header <small>Subtext for header</small></h1>
     </div>
-    <div class="span8">
-      <div class="page-header">
-        <h1>Example page header <small>Subtext for header</small></h1>
-      </div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="page-header"&gt;
   &lt;h1&gt;Example page header&lt;/h1&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div><!-- /row -->
+
 </section>
 
 
@@ -1481,80 +1450,67 @@
     <h1>Thumbnails <small>Grids of images, videos, text, and more</small></h1>
   </div>
 
-  <div class="row">
-    <div class="span6">
-      <h2>Default thumbnails</h2>
-      <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
-      <ul class="thumbnails">
-        <li class="span3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/260x180" alt="">
-          </a>
-        </li>
-        <li class="span3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/260x180" alt="">
-          </a>
-        </li>
-        <li class="span3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/260x180" alt="">
-          </a>
-        </li>
-        <li class="span3">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/260x180" alt="">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="span6">
-      <h2>Highly customizable</h2>
-      <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
-      <ul class="thumbnails">
-        <li class="span3">
-          <div class="thumbnail">
-            <img src="http://placehold.it/260x180" alt="">
-            <div class="caption">
-              <h5>Thumbnail label</h5>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-            </div>
-          </div>
-        </li>
-        <li class="span3">
-          <div class="thumbnail">
-            <img src="http://placehold.it/260x180" alt="">
-            <div class="caption">
-              <h5>Thumbnail label</h5>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <h2>Default thumbnails</h2>
+  <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
+  <ul class="thumbnails">
+    <li class="span3">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/260x180" alt="">
+      </a>
+    </li>
+    <li class="span3">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/260x180" alt="">
+      </a>
+    </li>
+    <li class="span3">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/260x180" alt="">
+      </a>
+    </li>
+    <li class="span3">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/260x180" alt="">
+      </a>
+    </li>
+  </ul>
 
-  <div class="row">
-    <div class="span4">
-      <h3>Why use thumbnails</h3>
-      <p>Thumbnails (previously <code>.media-grid</code> up until v1.4) are great for grids of photos or videos, image search results, retail products, portfolios, and much more. They can be links or static content.</p>
-    </div>
-    <div class="span4">
-      <h3>Simple, flexible markup</h3>
-      <p>Thumbnail markup is simple&mdash;a <code>ul</code> with any number of <code>li</code> elements is all that is required. It's also super flexible, allowing for any type of content with just a bit more markup to wrap your contents.</p>
-    </div>
-    <div class="span4">
-      <h3>Uses grid column sizes</h3>
-      <p>Lastly, the thumbnails component uses existing grid system classes&mdash;like <code>.span2</code> or <code>.span3</code>&mdash;for control of thumbnail dimensions.</p>
-    </div>
-  </div>
+  <h2>Highly customizable</h2>
+  <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
+  <ul class="thumbnails">
+    <li class="span3">
+      <div class="thumbnail">
+        <img src="http://placehold.it/260x180" alt="">
+        <div class="caption">
+          <h5>Thumbnail label</h5>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+        </div>
+      </div>
+    </li>
+    <li class="span3">
+      <div class="thumbnail">
+        <img src="http://placehold.it/260x180" alt="">
+        <div class="caption">
+          <h5>Thumbnail label</h5>
+          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+        </div>
+      </div>
+    </li>
+  </ul>
 
-  <div class="row">
-    <div class="span6">
-      <h2>The markup</h2>
-      <p>As mentioned previously, the required markup for thumbnails is light and straightforward. Here's a look at the default setup <strong>for linked images</strong>:</p>
+  <h3>Why use thumbnails</h3>
+  <p>Thumbnails (previously <code>.media-grid</code> up until v1.4) are great for grids of photos or videos, image search results, retail products, portfolios, and much more. They can be links or static content.</p>
+
+  <h3>Simple, flexible markup</h3>
+  <p>Thumbnail markup is simple&mdash;a <code>ul</code> with any number of <code>li</code> elements is all that is required. It's also super flexible, allowing for any type of content with just a bit more markup to wrap your contents.</p>
+
+  <h3>Uses grid column sizes</h3>
+  <p>Lastly, the thumbnails component uses existing grid system classes&mdash;like <code>.span2</code> or <code>.span3</code>&mdash;for control of thumbnail dimensions.</p>
+
+  <h2>The markup</h2>
+  <p>As mentioned previously, the required markup for thumbnails is light and straightforward. Here's a look at the default setup <strong>for linked images</strong>:</p>
 <pre class="prettyprint linenums">
 &lt;ul class="thumbnails"&gt;
   &lt;li class="span3"&gt;
@@ -1565,7 +1521,7 @@
   ...
 &lt;/ul&gt;
 </pre>
-      <p>For custom HTML content in thumbnails, the markup changes slightly. To allow block level content anywhere, we swap the <code>&lt;a&gt;</code> for a <code>&lt;div&gt;</code> like so:</p>
+  <p>For custom HTML content in thumbnails, the markup changes slightly. To allow block level content anywhere, we swap the <code>&lt;a&gt;</code> for a <code>&lt;div&gt;</code> like so:</p>
 <pre class="prettyprint linenums">
 &lt;ul class="thumbnails"&gt;
   &lt;li class="span3"&gt;
@@ -1578,44 +1534,41 @@
   ...
 &lt;/ul&gt;
 </pre>
-    </div>
-    <div class="span6">
-      <h2>More examples</h2>
-      <p>Explore all your options with the various grid classes available to you. You can also mix and match different sizes.</p>
-      <ul class="thumbnails">
-        <li class="span4">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/360x268" alt="">
-          </a>
-        </li>
-        <li class="span2">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/160x120" alt="">
-          </a>
-        </li>
-        <li class="span2">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/160x120" alt="">
-          </a>
-        </li>
-        <li class="span2">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/160x120" alt="">
-          </a>
-        </li>
-        <li class="span2">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/160x120" alt="">
-          </a>
-        </li>
-        <li class="span2">
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/160x120" alt="">
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+
+  <h2>More examples</h2>
+  <p>Explore all your options with the various grid classes available to you. You can also mix and match different sizes.</p>
+  <ul class="thumbnails">
+    <li class="span4">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/360x268" alt="">
+      </a>
+    </li>
+    <li class="span2">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/160x120" alt="">
+      </a>
+    </li>
+    <li class="span2">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/160x120" alt="">
+      </a>
+    </li>
+    <li class="span2">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/160x120" alt="">
+      </a>
+    </li>
+    <li class="span2">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/160x120" alt="">
+      </a>
+    </li>
+    <li class="span2">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/160x120" alt="">
+      </a>
+    </li>
+  </ul>
 
 </section>
 
@@ -1629,37 +1582,35 @@
   </div>
 
   <h2>Lightweight defaults</h2>
-  <div class="row">
-    <div class="span4">
-      <h3>Rewritten base class</h3>
-      <p>With Bootstrap 2, we've simplified the base class: <code>.alert</code> instead of <code>.alert-message</code>. We've also reduced the minimum required markup&mdash;no <code>&lt;p&gt;</code> is required by default, just the outer <code>&lt;div&gt;</code>.</p>
-      <h3>Single alert message</h3>
-      <p>For a more durable component with less code, we've removed the differentiating look for block alerts, messages that come with more padding and typically more text. The class also has changed to <code>.alert-block</code>.</p>
-      <hr>
-      <h3>Goes great with javascript</h3>
-      <p>Bootstrap comes with a great jQuery plugin that supports alert messages, making dismissing them quick and easy.</p>
-      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the plugin &raquo;</a></p>
-    </div>
-    <div class="span8">
-      <h3>Example alerts</h3>
-      <p>Wrap your message and an optional close icon in a div with simple class.</p>
-      <div class="alert">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Warning!</strong> Best check yo self, you're not looking too good.
-      </div>
+
+  <h3>Rewritten base class</h3>
+  <p>With Bootstrap 2, we've simplified the base class: <code>.alert</code> instead of <code>.alert-message</code>. We've also reduced the minimum required markup&mdash;no <code>&lt;p&gt;</code> is required by default, just the outer <code>&lt;div&gt;</code>.</p>
+  <h3>Single alert message</h3>
+  <p>For a more durable component with less code, we've removed the differentiating look for block alerts, messages that come with more padding and typically more text. The class also has changed to <code>.alert-block</code>.</p>
+  <hr>
+  <h3>Goes great with javascript</h3>
+  <p>Bootstrap comes with a great jQuery plugin that supports alert messages, making dismissing them quick and easy.</p>
+  <p><a class="btn js-btn" href="./javascript.html#alerts">Get the plugin &raquo;</a></p>
+
+  <h3>Example alerts</h3>
+  <p>Wrap your message and an optional close icon in a div with simple class.</p>
+  <div class="alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Warning!</strong> Best check yo self, you're not looking too good.
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert"&gt;
   &lt;button class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
   &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you're not looking too good.
 &lt;/div&gt;
 </pre>
-      <p><span class="label label-info">Heads up!</span> iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
-      <p>Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.</p>
-      <div class="alert alert-block">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4 class="alert-heading">Warning!</h4>
-        <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-      </div>
+  <p><span class="label label-info">Heads up!</span> iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
+  <p>Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.</p>
+  <div class="alert alert-block">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4 class="alert-heading">Warning!</h4>
+    <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
   &lt;a class="close" data-dismiss="alert" href="#"&gt;&times;&lt;/a&gt;
@@ -1667,48 +1618,41 @@
   Best check yo self, you're not...
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
 
   <h2>Contextual alternatives <small>Add optional classes to change an alert's connotation</small></h2>
-  <div class="row">
-    <div class="span4">
-      <h3>Error or danger</h3>
-      <div class="alert alert-error">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Oh snap!</strong> Change a few things up and try submitting again.
-      </div>
+
+  <h3>Error or danger</h3>
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Oh snap!</strong> Change a few things up and try submitting again.
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-error"&gt;
   ...
 &lt;/div&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>Success</h3>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Well done!</strong> You successfully read this important alert message.
-      </div>
+
+  <h3>Success</h3>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Well done!</strong> You successfully read this important alert message.
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-success"&gt;
   ...
 &lt;/div&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>Information</h3>
-      <div class="alert alert-info">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-      </div>
+
+  <h3>Information</h3>
+  <div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-info"&gt;
   ...
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
 
 </section>
 
@@ -1722,39 +1666,36 @@
   </div>
 
   <h2>Examples and markup</h2>
-  <div class="row">
-    <div class="span4">
-      <h3>Basic</h3>
-      <p>Default progress bar with a vertical gradient.</p>
-      <div class="progress">
-        <div class="bar" style="width: 60%;"></div>
-      </div>
+
+  <h3>Basic</h3>
+  <p>Default progress bar with a vertical gradient.</p>
+  <div class="progress">
+    <div class="bar" style="width: 60%;"></div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
   &lt;div class="bar"
        style="width: 60%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>Striped</h3>
-      <p>Uses a gradient to create a striped effect (no IE).</p>
-      <div class="progress progress-striped">
-        <div class="bar" style="width: 20%;"></div>
-      </div>
+
+  <h3>Striped</h3>
+  <p>Uses a gradient to create a striped effect (no IE).</p>
+  <div class="progress progress-striped">
+    <div class="bar" style="width: 20%;"></div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped"&gt;
   &lt;div class="bar"
        style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>Animated</h3>
-      <p>Takes the striped example and animates it (no IE).</p>
-      <div class="progress progress-striped active">
-        <div class="bar" style="width: 45%"></div>
-      </div>
+
+  <h3>Animated</h3>
+  <p>Takes the striped example and animates it (no IE).</p>
+  <div class="progress progress-striped active">
+    <div class="bar" style="width: 45%"></div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped
      active"&gt;
@@ -1762,54 +1703,46 @@
        style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
 
   <h2>Options and browser support</h2>
-  <div class="row">
-    <div class="span3">
-      <h3>Additional colors</h3>
-      <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
-      <div class="progress progress-info" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 20%"></div>
-      </div>
-      <div class="progress progress-success" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 40%"></div>
-      </div>
-      <div class="progress progress-warning" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 60%"></div>
-      </div>
-      <div class="progress progress-danger" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 80%"></div>
-      </div>
-    </div>
-     <div class="span3">
-      <h3>Striped bars</h3>
-      <p>Similar to the solid colors, we have varied striped progress bars.</p>
-      <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 20%"></div>
-      </div>
-      <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 40%"></div>
-      </div>
-      <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 60%"></div>
-      </div>
-      <div class="progress progress-danger progress-striped" style="margin-bottom: 9px;">
-        <div class="bar" style="width: 80%"></div>
-      </div>
-    </div>
-    <div class="span3">
-      <h3>Behavior</h3>
-      <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
-      <p>If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.</p>
-    </div>
-    <div class="span3">
-      <h3>Browser support</h3>
-      <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.</p>
-      <p>Opera and IE do not support animations at this time.</p>
-    </div>
+
+  <h3>Additional colors</h3>
+  <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
+  <div class="progress progress-info" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 20%"></div>
   </div>
+  <div class="progress progress-success" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 40%"></div>
+  </div>
+  <div class="progress progress-warning" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 60%"></div>
+  </div>
+  <div class="progress progress-danger" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 80%"></div>
+  </div>
+
+  <h3>Striped bars</h3>
+  <p>Similar to the solid colors, we have varied striped progress bars.</p>
+  <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 20%"></div>
+  </div>
+  <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 40%"></div>
+  </div>
+  <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 60%"></div>
+  </div>
+  <div class="progress progress-danger progress-striped" style="margin-bottom: 9px;">
+    <div class="bar" style="width: 80%"></div>
+  </div>
+
+  <h3>Behavior</h3>
+  <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
+  <p>If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.</p>
+
+  <h3>Browser support</h3>
+  <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.</p>
+  <p>Opera and IE do not support animations at this time.</p>
 
 </section>
 
@@ -1823,20 +1756,19 @@
   <div class="page-header">
     <h1>Miscellaneous <small>Lightweight utility components</small></h1>
   </div>
-  <div class="row">
-    <div class="span8">
-      <h2>Wells</h2>
-      <p>Use the well as a simple effect on an element to give it an inset effect.</p>
-      <div class="well">
-        Look, I'm in a well!
-      </div>
+
+  <h2>Wells</h2>
+  <p>Use the well as a simple effect on an element to give it an inset effect.</p>
+  <div class="well">
+    Look, I'm in a well!
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="well"&gt;
   ...
 &lt;/div&gt;
 </pre>
-      <h4>Optional classes</h4>
-      <p>Control padding and rounded corners with two optional modifier classes.</p>
+  <h4>Optional classes</h4>
+  <p>Control padding and rounded corners with two optional modifier classes.</p>
 <pre class="prettyprint linenums">
 &lt;div class="well well-large"&gt;
   ...
@@ -1847,18 +1779,18 @@
   ...
 &lt;/div&gt;
 </pre>
-      <h2>Close icon</h2>
-      <p>Use the generic close icon for dismissing content like modals and alerts.</p>
-      <p><button class="close" style="float: none;">&times;</button></p>
+  <h2>Close icon</h2>
+  <p>Use the generic close icon for dismissing content like modals and alerts.</p>
+  <p><button class="close" style="float: none;">&times;</button></p>
 <pre class="prettyprint linenums">&lt;button class="close"&gt;&amp;times;&lt;/button&gt;</pre>
-      <p>iOS devices require an href="#" for click events if you rather use an anchor.</p>
+  <p>iOS devices require an href="#" for click events if you rather use an anchor.</p>
 <pre class="prettyprint linenums">&lt;a class="close" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
 
-      <h2>Helper classes</h2>
-      <p>Simple, focused classes for small display or behavior tweaks.</p>
+  <h2>Helper classes</h2>
+  <p>Simple, focused classes for small display or behavior tweaks.</p>
 
-      <h4>.pull-left</h4>
-      <p>Float an element left</p>
+  <h4>.pull-left</h4>
+  <p>Float an element left</p>
 <pre class="prettyprint linenums">
 class="pull-left"
 </pre>
@@ -1868,9 +1800,8 @@ class="pull-left"
 }
 </pre>
 
-
-      <h4>.pull-right</h4>
-      <p>Float an element right</p>
+  <h4>.pull-right</h4>
+  <p>Float an element right</p>
 <pre class="prettyprint linenums">
 class="pull-right"
 </pre>
@@ -1880,8 +1811,8 @@ class="pull-right"
 }
 </pre>
 
-      <h4>.muted</h4>
-      <p>Change an element's color to <code>#999</code></p>
+  <h4>.muted</h4>
+  <p>Change an element's color to <code>#999</code></p>
 <pre class="prettyprint linenums">
 class="muted"
 </pre>
@@ -1891,8 +1822,8 @@ class="muted"
 }
 </pre>
 
-      <h4>.clearfix</h4>
-      <p>Clear the <code>float</code> on any element</p>
+  <h4>.clearfix</h4>
+  <p>Clear the <code>float</code> on any element</p>
 <pre class="prettyprint linenums">
 class="clearfix"
 </pre>
@@ -1910,8 +1841,6 @@ class="clearfix"
 }
 </pre>
 
-    </div><!--/span-->
-  </div><!--/row-->
 </section>
 
 
