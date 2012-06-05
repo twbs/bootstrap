@@ -443,23 +443,21 @@
   </div>
 
   <h2>{{_i}}Lightweight defaults{{/i}} <small>{{_i}}Same markup, different classes{{/i}}</small></h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Powerful base class{{/i}}</h3>
-      <p>{{_i}}All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.{{/i}}</p>
-      <h3>{{_i}}When to use{{/i}}</h3>
-      <p>{{_i}}Tabs and pills are great for sections of content or navigating between pages of related content.{{/i}}</p>
-      <h3>{{_i}}Component alignment{{/i}}</h3>
-      <p>{{_i}}To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.{{/i}}</p>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Basic tabs{{/i}}</h3>
-      <p>{{_i}}Take a regular <code>&lt;ul&gt;</code> of links and add <code>.nav-tabs</code>:{{/i}}</p>
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Profile{{/i}}</a></li>
-        <li><a href="#">{{_i}}Messages{{/i}}</a></li>
-      </ul>
+
+  <h3>{{_i}}Powerful base class{{/i}}</h3>
+  <p>{{_i}}All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.{{/i}}</p>
+  <h3>{{_i}}When to use{{/i}}</h3>
+  <p>{{_i}}Tabs and pills are great for sections of content or navigating between pages of related content.{{/i}}</p>
+  <h3>{{_i}}Component alignment{{/i}}</h3>
+  <p>{{_i}}To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.{{/i}}</p>
+
+  <h3>{{_i}}Basic tabs{{/i}}</h3>
+  <p>{{_i}}Take a regular <code>&lt;ul&gt;</code> of links and add <code>.nav-tabs</code>:{{/i}}</p>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+    <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+    <li><a href="#">{{_i}}Messages{{/i}}</a></li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li class="active"&gt;
@@ -469,15 +467,14 @@
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Basic pills{{/i}}</h3>
-      <p>{{_i}}Take that same HTML, but use <code>.nav-pills</code> instead:{{/i}}</p>
-      <ul class="nav nav-pills">
-        <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Profile{{/i}}</a></li>
-        <li><a href="#">{{_i}}Messages{{/i}}</a></li>
-      </ul>
+
+  <h3>{{_i}}Basic pills{{/i}}</h3>
+  <p>{{_i}}Take that same HTML, but use <code>.nav-pills</code> instead:{{/i}}</p>
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+    <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+    <li><a href="#">{{_i}}Messages{{/i}}</a></li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   &lt;li class="active"&gt;
@@ -487,66 +484,58 @@
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-    </div>
-  </div>
+
 
   <h2>{{_i}}Stackable{{/i}} <small>{{_i}}Make tabs or pills vertical{{/i}}</small></h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}How to stack 'em{{/i}}</h3>
-      <p>{{_i}}As tabs and pills are horizontal by default, just add a second class, <code>.nav-stacked</code>, to make them appear vertically stacked.{{/i}}</p>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Stacked tabs{{/i}}</h3>
-      <ul class="nav nav-tabs nav-stacked">
-        <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Profile{{/i}}</a></li>
-        <li><a href="#">{{_i}}Messages{{/i}}</a></li>
-      </ul>
+
+  <h3>{{_i}}How to stack 'em{{/i}}</h3>
+  <p>{{_i}}As tabs and pills are horizontal by default, just add a second class, <code>.nav-stacked</code>, to make them appear vertically stacked.{{/i}}</p>
+
+  <h3>{{_i}}Stacked tabs{{/i}}</h3>
+  <ul class="nav nav-tabs nav-stacked">
+    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+    <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+    <li><a href="#">{{_i}}Messages{{/i}}</a></li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs nav-stacked"&gt;
   ...
 &lt;/ul&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Stacked pills{{/i}}</h3>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Profile{{/i}}</a></li>
-        <li><a href="#">{{_i}}Messages{{/i}}</a></li>
-      </ul>
+
+  <h3>{{_i}}Stacked pills{{/i}}</h3>
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+    <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+    <li><a href="#">{{_i}}Messages{{/i}}</a></li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills nav-stacked"&gt;
   ...
 &lt;/ul&gt;
 </pre>
-    </div>
-  </div>
 
   <h2>{{_i}}Dropdowns{{/i}} <small>{{_i}}For advanced nav components{{/i}}</small></h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Rich menus made easy{{/i}}</h3>
-      <p>{{_i}}Dropdown menus in Bootstrap tabs and pills are super easy and require only a little extra HTML and a lightweight jQuery plugin.{{/i}}</p>
-      <p>{{_i}}Head over to the Javascript page to read the docs on <a href="./javascript.html#tabs">initializing dropdowns</a> in Bootstrap.{{/i}}</p>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Tabs with dropdowns{{/i}}</h3>
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Help{{/i}}</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </li>
+
+  <h3>{{_i}}Rich menus made easy{{/i}}</h3>
+  <p>{{_i}}Dropdown menus in Bootstrap tabs and pills are super easy and require only a little extra HTML and a lightweight jQuery plugin.{{/i}}</p>
+  <p>{{_i}}Head over to the Javascript page to read the docs on <a href="./javascript.html#tabs">initializing dropdowns</a> in Bootstrap.{{/i}}</p>
+
+  <h3>{{_i}}Tabs with dropdowns{{/i}}</h3>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+    <li><a href="#">{{_i}}Help{{/i}}</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
       </ul>
+    </li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li class="dropdown"&gt;
@@ -562,23 +551,22 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Pills with dropdowns{{/i}}</h3>
-      <ul class="nav nav-pills">
-        <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-        <li><a href="#">{{_i}}Help{{/i}}</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">{{_i}}Action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-            <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-            <li class="divider"></li>
-            <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-          </ul>
-        </li>
+
+  <h3>{{_i}}Pills with dropdowns{{/i}}</h3>
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+    <li><a href="#">{{_i}}Help{{/i}}</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
       </ul>
+    </li>
+  </ul>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-pills"&gt;
   &lt;li class="dropdown"&gt;
@@ -594,20 +582,17 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-    </div>
-  </div>
 
   <h2>{{_i}}Nav lists{{/i}} <small>{{_i}}Build simple stacked navs, great for sidebars{{/i}}</small></h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Application-style navigation{{/i}}</h3>
-      <p>{{_i}}Nav lists provide a simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.{{/i}}</p>
-      <p>{{_i}}Structurally, they're built on the same core nav styles as tabs and pills, so usage and customization are straightforward.{{/i}}</p>
-      <hr>
-      <h4>{{_i}}With icons{{/i}}</h4>
-      <p>{{_i}}Nav lists are also easy to equip with icons. Add the proper <code>&lt;i&gt;</code> tag with class and you're set.{{/i}}</p>
-      <h4>{{_i}}Horizontal dividers{{/i}}</h4>
-      <p>{{_i}}Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:{{/i}}</p>
+
+  <h3>{{_i}}Application-style navigation{{/i}}</h3>
+  <p>{{_i}}Nav lists provide a simple and easy way to build groups of nav links with optional headers. They're best used in sidebars like the Finder in OS X.{{/i}}</p>
+  <p>{{_i}}Structurally, they're built on the same core nav styles as tabs and pills, so usage and customization are straightforward.{{/i}}</p>
+  <hr>
+  <h4>{{_i}}With icons{{/i}}</h4>
+  <p>{{_i}}Nav lists are also easy to equip with icons. Add the proper <code>&lt;i&gt;</code> tag with class and you're set.{{/i}}</p>
+  <h4>{{_i}}Horizontal dividers{{/i}}</h4>
+  <p>{{_i}}Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
   ...
@@ -615,23 +600,22 @@
   ...
 &lt;/ul&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Example nav list{{/i}}</h3>
-      <p>{{_i}}Take a list of links and add <code>class="nav nav-list"</code>:{{/i}}</p>
-      <div class="well" style="padding: 8px 0;">
-        <ul class="nav nav-list">
-          <li class="nav-header">{{_i}}List header{{/i}}</li>
-          <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-          <li><a href="#">{{_i}}Library{{/i}}</a></li>
-          <li><a href="#">{{_i}}Applications{{/i}}</a></li>
-          <li class="nav-header">{{_i}}Another list header{{/i}}</li>
-          <li><a href="#">{{_i}}Profile{{/i}}</a></li>
-          <li><a href="#">{{_i}}Settings{{/i}}</a></li>
-          <li class="divider"></li>
-          <li><a href="#">{{_i}}Help{{/i}}</a></li>
-        </ul>
-      </div> <!-- /well -->
+
+  <h3>{{_i}}Example nav list{{/i}}</h3>
+  <p>{{_i}}Take a list of links and add <code>class="nav nav-list"</code>:{{/i}}</p>
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">{{_i}}List header{{/i}}</li>
+      <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+      <li><a href="#">{{_i}}Library{{/i}}</a></li>
+      <li><a href="#">{{_i}}Applications{{/i}}</a></li>
+      <li class="nav-header">{{_i}}Another list header{{/i}}</li>
+      <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+      <li><a href="#">{{_i}}Settings{{/i}}</a></li>
+      <li class="divider"></li>
+      <li><a href="#">{{_i}}Help{{/i}}</a></li>
+    </ul>
+  </div> <!-- /well -->
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
   &lt;li class="nav-header"&gt;
@@ -646,23 +630,22 @@
   ...
 &lt;/ul&gt;
 </pre>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Example with icons{{/i}}</h3>
-      <p>{{_i}}Same example, but with <code>&lt;i&gt;</code> tags for icons.{{/i}}</p>
-      <div class="well" style="padding: 8px 0;">
-        <ul class="nav nav-list">
-          <li class="nav-header">{{_i}}List header{{/i}}</li>
-          <li class="active"><a href="#"><i class="icon-white icon-home"></i> {{_i}}Home{{/i}}</a></li>
-          <li><a href="#"><i class="icon-book"></i> {{_i}}Library{{/i}}</a></li>
-          <li><a href="#"><i class="icon-pencil"></i> {{_i}}Applications{{/i}}</a></li>
-          <li class="nav-header">{{_i}}Another list header{{/i}}</li>
-          <li><a href="#"><i class="icon-user"></i> {{_i}}Profile{{/i}}</a></li>
-          <li><a href="#"><i class="icon-cog"></i> {{_i}}Settings{{/i}}</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="icon-flag"></i> {{_i}}Help{{/i}}</a></li>
-        </ul>
-      </div> <!-- /well -->
+
+  <h3>{{_i}}Example with icons{{/i}}</h3>
+  <p>{{_i}}Same example, but with <code>&lt;i&gt;</code> tags for icons.{{/i}}</p>
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">{{_i}}List header{{/i}}</li>
+      <li class="active"><a href="#"><i class="icon-white icon-home"></i> {{_i}}Home{{/i}}</a></li>
+      <li><a href="#"><i class="icon-book"></i> {{_i}}Library{{/i}}</a></li>
+      <li><a href="#"><i class="icon-pencil"></i> {{_i}}Applications{{/i}}</a></li>
+      <li class="nav-header">{{_i}}Another list header{{/i}}</li>
+      <li><a href="#"><i class="icon-user"></i> {{_i}}Profile{{/i}}</a></li>
+      <li><a href="#"><i class="icon-cog"></i> {{_i}}Settings{{/i}}</a></li>
+      <li class="divider"></li>
+      <li><a href="#"><i class="icon-flag"></i> {{_i}}Help{{/i}}</a></li>
+    </ul>
+  </div> <!-- /well -->
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
   ...
@@ -675,49 +658,45 @@
   ...
 &lt;/ul&gt;
 </pre>
-    </div>
-  </div>
 
 
   <h2>{{_i}}Tabbable nav{{/i}} <small>{{_i}}Bring tabs to life via javascript{{/i}}</small></h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}What's included{{/i}}</h3>
-      <p>{{_i}}Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles: top (default), right, bottom, and left.{{/i}}</p>
-      <p>{{_i}}Changing between them is easy and only requires changing very little markup.{{/i}}</p>
-      <hr>
-      <h4>{{_i}}Fade in tabs{{/i}}</h4>
-      <p>{{_i}}To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.{{/i}}</p>
-      <hr>
-      <h4>{{_i}}Requires jQuery plugin{{/i}}</h4>
-      <p>{{_i}}All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life <a href="./javascript.html#tabs">on the javascript docs page</a>.{{/i}}</p>
-      <p><a class="btn" href="./javascript.html#tabs">{{_i}}Get the javascript &rarr;{{/i}}</a></p>
-    </div>
-    <div class="span8">
-      <h3>{{_i}}Tabbable example{{/i}}</h3>
-      <p>{{_i}}To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.{{/i}}</p>
-      <div class="tabbable" style="margin-bottom: 18px;">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#tab1" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
-          <li><a href="#tab2" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
-          <li><a href="#tab3" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
-        </ul>
-        <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
-          <div class="tab-pane active" id="tab1">
-            <p>{{_i}}I'm in Section 1.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="tab2">
-            <p>{{_i}}Howdy, I'm in Section 2.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="tab3">
-            <p>{{_i}}What up girl, this is Section 3.{{/i}}</p>
-          </div>
-        </div>
-      </div> <!-- /tabbable -->
-      <p>{{_i}}For right or left aligned tabs, wrap the <code>.nav-tabs</code> and <code>.tab-content</code> in <code>.tabbable</code>.{{/i}}</p>
 
-      <h3>{{_i}}Straightforward markup{{/i}}</h3>
-      <p>{{_i}}Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.{{/i}}</p>
+  <h3>{{_i}}What's included{{/i}}</h3>
+  <p>{{_i}}Bring your tabs to life with a simple plugin to toggle between content via tabs. Bootstrap integrates tabbable tabs in four styles: top (default), right, bottom, and left.{{/i}}</p>
+  <p>{{_i}}Changing between them is easy and only requires changing very little markup.{{/i}}</p>
+  <hr>
+  <h4>{{_i}}Fade in tabs{{/i}}</h4>
+  <p>{{_i}}To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.{{/i}}</p>
+  <hr>
+  <h4>{{_i}}Requires jQuery plugin{{/i}}</h4>
+  <p>{{_i}}All tabbable tabs are powered by our lightweight jQuery plugin. Read more about how to bring tabbable tabs to life <a href="./javascript.html#tabs">on the javascript docs page</a>.{{/i}}</p>
+  <p><a class="btn" href="./javascript.html#tabs">{{_i}}Get the javascript &rarr;{{/i}}</a></p>
+
+  <h3>{{_i}}Tabbable example{{/i}}</h3>
+  <p>{{_i}}To make tabs tabbable, create a <code>.tab-pane</code> with unique ID for every tab and wrap them in <code>.tab-content</code>.{{/i}}</p>
+  <div class="tabbable" style="margin-bottom: 18px;">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
+      <li><a href="#tab2" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
+      <li><a href="#tab3" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
+    </ul>
+    <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+      <div class="tab-pane active" id="tab1">
+        <p>{{_i}}I'm in Section 1.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <p>{{_i}}Howdy, I'm in Section 2.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <p>{{_i}}What up girl, this is Section 3.{{/i}}</p>
+      </div>
+    </div>
+  </div> <!-- /tabbable -->
+  <p>{{_i}}For right or left aligned tabs, wrap the <code>.nav-tabs</code> and <code>.tab-content</code> in <code>.tabbable</code>.{{/i}}</p>
+
+  <h3>{{_i}}Straightforward markup{{/i}}</h3>
+  <p>{{_i}}Using tabbable tabs requires a wrapping div, a set of tabs, and a set of tabbable panes of content.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="tabbable"&gt; &lt;!-- Only required for left/right tabs --&gt;
   &lt;ul class="nav nav-tabs"&gt;
@@ -734,33 +713,30 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
 
 
   <h3>{{_i}}Tabbable in any direction{{/i}}</h3>
-  <div class="row">
-    <div class="span4">
-      <h4>{{_i}}Tabs on the bottom{{/i}}</h4>
-      <p>{{_i}}Flip the order of the HTML and add a class to put tabs on the bottom.{{/i}}</p>
-      <div class="tabbable tabs-below">
-        <div class="tab-content">
-          <div class="tab-pane active" id="A">
-            <p>{{_i}}I'm in Section A.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="B">
-            <p>{{_i}}Howdy, I'm in Section B.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="C">
-            <p>{{_i}}What up girl, this is Section C.{{/i}}</p>
-          </div>
-        </div>
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#A" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
-          <li><a href="#B" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
-          <li><a href="#C" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
-        </ul>
-      </div> <!-- /tabbable -->
+
+  <h4>{{_i}}Tabs on the bottom{{/i}}</h4>
+  <p>{{_i}}Flip the order of the HTML and add a class to put tabs on the bottom.{{/i}}</p>
+  <div class="tabbable tabs-below">
+    <div class="tab-content">
+      <div class="tab-pane active" id="A">
+        <p>{{_i}}I'm in Section A.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="B">
+        <p>{{_i}}Howdy, I'm in Section B.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="C">
+        <p>{{_i}}What up girl, this is Section C.{{/i}}</p>
+      </div>
+    </div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#A" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
+      <li><a href="#B" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
+      <li><a href="#C" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
+    </ul>
+  </div> <!-- /tabbable -->
 <pre class="prettyprint linenums" style="margin-top: 11px;">
 &lt;div class="tabbable tabs-below"&gt;
   &lt;div class="tab-content"&gt;
@@ -771,28 +747,27 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
+
+  <h4>{{_i}}Tabs on the left{{/i}}</h4>
+  <p>{{_i}}Swap the class to put tabs on the left.{{/i}}</p>
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#lA" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
+      <li><a href="#lB" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
+      <li><a href="#lC" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="lA">
+        <p>{{_i}}I'm in Section A.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="lB">
+        <p>{{_i}}Howdy, I'm in Section B.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="lC">
+        <p>{{_i}}What up girl, this is Section C.{{/i}}</p>
+      </div>
     </div>
-    <div class="span4">
-      <h4>{{_i}}Tabs on the left{{/i}}</h4>
-      <p>{{_i}}Swap the class to put tabs on the left.{{/i}}</p>
-      <div class="tabbable tabs-left">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#lA" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
-          <li><a href="#lB" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
-          <li><a href="#lC" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="lA">
-            <p>{{_i}}I'm in Section A.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="lB">
-            <p>{{_i}}Howdy, I'm in Section B.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="lC">
-            <p>{{_i}}What up girl, this is Section C.{{/i}}</p>
-          </div>
-        </div>
-      </div> <!-- /tabbable -->
+  </div> <!-- /tabbable -->
 <pre class="prettyprint linenums">
 &lt;div class="tabbable tabs-left"&gt;
   &lt;ul class="nav nav-tabs"&gt;
@@ -803,28 +778,27 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
+
+  <h4>{{_i}}Tabs on the right{{/i}}</h4>
+  <p>{{_i}}Swap the class to put tabs on the right.{{/i}}</p>
+  <div class="tabbable tabs-right">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#rA" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
+      <li><a href="#rB" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
+      <li><a href="#rC" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="rA">
+        <p>{{_i}}I'm in Section A.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="rB">
+        <p>{{_i}}Howdy, I'm in Section B.{{/i}}</p>
+      </div>
+      <div class="tab-pane" id="rC">
+        <p>{{_i}}What up girl, this is Section C.{{/i}}</p>
+      </div>
     </div>
-    <div class="span4">
-      <h4>{{_i}}Tabs on the right{{/i}}</h4>
-      <p>{{_i}}Swap the class to put tabs on the right.{{/i}}</p>
-      <div class="tabbable tabs-right">
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#rA" data-toggle="tab">{{_i}}Section 1{{/i}}</a></li>
-          <li><a href="#rB" data-toggle="tab">{{_i}}Section 2{{/i}}</a></li>
-          <li><a href="#rC" data-toggle="tab">{{_i}}Section 3{{/i}}</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane active" id="rA">
-            <p>{{_i}}I'm in Section A.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="rB">
-            <p>{{_i}}Howdy, I'm in Section B.{{/i}}</p>
-          </div>
-          <div class="tab-pane" id="rC">
-            <p>{{_i}}What up girl, this is Section C.{{/i}}</p>
-          </div>
-        </div>
-      </div> <!-- /tabbable -->
+  </div> <!-- /tabbable -->
 <pre class="prettyprint linenums">
 &lt;div class="tabbable tabs-right"&gt;
   &lt;ul class="nav nav-tabs"&gt;
@@ -835,8 +809,6 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-    </div>
-  </div>
 
 </section>
 
