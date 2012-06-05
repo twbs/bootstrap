@@ -563,6 +563,53 @@ form.well {
   background-color: #fff;
 }
 
+/* Docs examples
+------------------------- */
+.bs-docs-example {
+  overflow: auto;
+  position: relative;
+  margin: 15px 0;
+  padding: 39px 19px 14px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.bs-docs-example:after {
+  content: "Example";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 3px 7px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  color: #9da0a4;
+  -webkit-border-radius: 4px 0 4px 0;
+     -moz-border-radius: 4px 0 4px 0;
+          border-radius: 4px 0 4px 0;
+}
+.bs-docs-example + .prettyprint {
+  margin-top: -20px;
+  padding-top: 15px;
+}
+.bs-docs-example,
+.bs-docs-example > p {
+  font-size: 13px;
+  line-height: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.bs-docs-example p:last-child {
+  margin-bottom: 0;
+}
+.bs-docs-example .lead {
+  font-size: 18px;
+  line-height: 24px;
+}
+
 /* Responsive table
 ------------------------- */
 .responsive-utilities th small {
