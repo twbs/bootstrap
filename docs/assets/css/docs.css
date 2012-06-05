@@ -279,12 +279,12 @@ hr.soften {
 /* Footer
 -------------------------------------------------- */
 .footer {
-  margin-top: 45px;
   padding: 35px 0 36px;
+  margin-top: 45px;
+  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .footer p {
-  margin-bottom: 0;
   color: #555;
 }
 
@@ -680,6 +680,7 @@ form.well {
 /* Grid examples
 ------------------------- */
 .bs-docs-grid {
+  width: 940px;
   margin-left: -80px;
 }
 
@@ -834,9 +835,6 @@ form.well {
   }
 
   /* Unfloat the back to top link in footer */
-  .footer .pull-right {
-    float: none;
-  }
   .footer p {
     margin-bottom: 9px;
   }
