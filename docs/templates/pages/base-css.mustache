@@ -23,35 +23,42 @@
     <h1>{{_i}}Typography <small>Headings, paragraphs, lists, and other inline type elements</small>{{/i}}</h1>
   </div>
 
-  <h2>{{_i}}Headings &amp; body copy{{/i}}</h2>
-
-  <!-- Headings & Paragraph Copy -->
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Typographic scale{{/i}}</h3>
-      <p>{{_i}}The entire typographic grid is based on two Less variables in our variables.less file: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height.{{/i}}</p>
-      <p>{{_i}}We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.{{/i}}</p>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Example body text{{/i}}</h3>
-      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-      <h3>{{_i}}Lead body copy{{/i}}</h3>
-      <p>{{_i}}Make a paragraph stand out by adding <code>.lead</code>.{{/i}}</p>
-      <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
-    </div>
-    <div class="span4">
-      <div class="well">
-        <h1>h1. {{_i}}Heading 1{{/i}}</h1>
-        <h2>h2. {{_i}}Heading 2{{/i}}</h2>
-        <h3>h3. {{_i}}Heading 3{{/i}}</h3>
-        <h4>h4. {{_i}}Heading 4{{/i}}</h4>
-        <h5>h5. {{_i}}Heading 5{{/i}}</h5>
-        <h6>h6. {{_i}}Heading 6{{/i}}</h6>
-      </div>
-    </div>
+  {{! Headings }}
+  <h2>{{_i}}Headings{{/i}}</h2>
+  <p>{{_i}}All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.{{/i}}</p>
+  <div class="bs-docs-example">
+    <h1>h1. {{_i}}Heading 1{{/i}}</h1>
+    <h2>h2. {{_i}}Heading 2{{/i}}</h2>
+    <h3>h3. {{_i}}Heading 3{{/i}}</h3>
+    <h4>h4. {{_i}}Heading 4{{/i}}</h4>
+    <h5>h5. {{_i}}Heading 5{{/i}}</h5>
+    <h6>h6. {{_i}}Heading 6{{/i}}</h6>
   </div>
 
-  <!-- Misc Elements -->
+  {{! Body copy }}
+  <h2>{{_i}}Body copy{{/i}}</h2>
+  <p>{{_i}}Bootstrap's global default <code>font-size</code> is <strong>13px</strong>, with a <code>line-height</code> of <strong>18px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (9px by default).{{/i}}</p>
+  <div class="bs-docs-example">
+    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+  </div>
+
+  {{! Body copy .lead }}
+  <h2>{{_i}}Lead body copy{{/i}}</h2>
+  <p>{{_i}}Make a paragraph stand out by adding <code>.lead</code>.{{/i}}</p>
+  <div class="bs-docs-example">
+    <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+  </div>
+
+  {{! Using LESS }}
+  <h2>{{_i}}Built with Less{{/i}}</h2>
+  <p>{{_i}}The typographic scale is based on two Less variables in variables.less file: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height.{{/i}}</p>
+  <p>{{_i}}We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more. Customize them and watch Bootstrap adapt as you go.{{/i}}</p>
+
+  <hr>
+
+  {{! Misc Elements }}
   <h2>{{_i}}Emphasis, address, and abbreviation{{/i}}</h2>
   <table class="table table-bordered table-striped">
     <thead>
@@ -110,37 +117,43 @@
     </tbody>
   </table>
 
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Using emphasis{{/i}}</h3>
-      <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
-      <p>{{_i}}<strong>Note:</strong> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5, but their usage has changed a bit. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.{{/i}}</p>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Example addresses{{/i}}</h3>
-      <p>{{_i}}Here are two examples of how the <code>&lt;address&gt;</code> tag can be used:{{/i}}</p>
-      <address>
-        <strong>Twitter, Inc.</strong><br>
-        795 Folsom Ave, Suite 600<br>
-        San Francisco, CA 94107<br>
-        <abbr title="Phone">P:</abbr> (123) 456-7890
-      </address>
-      <address>
-        <strong>{{_i}}Full Name{{/i}}</strong><br>
-        <a href="mailto:#">{{_i}}first.last@gmail.com{{/i}}</a>
-      </address>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Example abbreviations{{/i}}</h3>
-      <p>{{_i}}Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.{{/i}}</p>
-      <p>{{_i}}Add the <code>initialism</code> class to an abbreviation to increase typographic harmony by giving it a slightly smaller text size.{{/i}}</p>
-      <p>{{_i}}<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
-      <p>{{_i}}An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.{{/i}}</p>
-    </div>
+  {{! Emphasis }}
+  <h3>{{_i}}Using emphasis{{/i}}</h3>
+  <div class="bs-docs-example">
+    <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+  </div>
+  <p>{{_i}}<strong>Note:</strong> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.{{/i}}</p>
+
+  {{! Addresses }}
+  <h3>{{_i}}Example addresses{{/i}}</h3>
+  <p>{{_i}}Here are two examples of how the <code>&lt;address&gt;</code> tag can be used:{{/i}}</p>
+  <div class="bs-docs-example">
+    <address>
+      <strong>Twitter, Inc.</strong><br>
+      795 Folsom Ave, Suite 600<br>
+      San Francisco, CA 94107<br>
+      <abbr title="Phone">P:</abbr> (123) 456-7890
+    </address>
+    <address>
+      <strong>{{_i}}Full Name{{/i}}</strong><br>
+      <a href="mailto:#">{{_i}}first.last@gmail.com{{/i}}</a>
+    </address>
   </div>
 
+  {{! Abbreviations }}
+  <h3>{{_i}}Example abbreviations{{/i}}</h3>
+  <p>{{_i}}Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.{{/i}}</p>
+  <div class="bs-docs-example">
+    <p>{{_i}}An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.{{/i}}</p>
+  </div>
+  <p>{{_i}}Add the <code>initialism</code> class to an abbreviation for a slightly smaller font-size.{{/i}}</p>
+  <div class="bs-docs-example">
+    <p>{{_i}}<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
+  </div>
 
-  <!-- Blockquotes -->
+  <hr>
+
+  {{! Blockquotes }}
   <h2>{{_i}}Blockquotes{{/i}}</h2>
   <table class="table table-bordered table-striped">
     <thead>
@@ -176,136 +189,125 @@
       </tr>
     </tbody>
   </table>
-  <div class="row">
-    <div class="span4">
-      <p>{{_i}}To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.{{/i}}</p>
-      <p>{{_i}}Include an optional <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it for styling purposes.{{/i}}</p>
-    </div>
-    <div class="span8">
+  <p>{{_i}}To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.{{/i}}</p>
+  <p>{{_i}}Include an optional <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it for styling purposes.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;blockquote&gt;
   &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.&lt;/p&gt;
   &lt;small&gt;{{_i}}Someone famous{{/i}}&lt;/small&gt;
 &lt;/blockquote&gt;
 </pre>
-    </div>
-  </div><!--/row-->
-
   <h3>{{_i}}Example blockquotes{{/i}}</h3>
-  <div class="row">
-    <div class="span6">
-      <p>{{_i}}Default blockquotes are styled as such:{{/i}}</p>
-      <blockquote>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-        <small>{{_i}}Someone famous in <cite title="">Body of work</cite>{{/i}}</small>
-      </blockquote>
-    </div>
-    <div class="span6">
-      <p>{{_i}}To float your blockquote to the right, add <code>class="pull-right"</code>:{{/i}}</p>
-      <blockquote class="pull-right">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-        <small>{{_i}}Someone famous in <cite title="">Body of work</cite>{{/i}}</small>
-      </blockquote>
-    </div>
+  <p>{{_i}}Default blockquotes are styled as such:{{/i}}</p>
+  <div class="bs-docs-example">
+    <blockquote>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
+      <small>{{_i}}Someone famous in <cite title="">Body of work</cite>{{/i}}</small>
+    </blockquote>
+  </div>
+  <p>{{_i}}To float your blockquote to the right, add <code>class="pull-right"</code>:{{/i}}</p>
+  <div class="bs-docs-example">
+    <blockquote class="pull-right">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
+      <small>{{_i}}Someone famous in <cite title="">Body of work</cite>{{/i}}</small>
+    </blockquote>
   </div>
 
+  <hr>
 
   <!-- Lists -->
   <h2>{{_i}}Lists{{/i}}</h2>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Unordered{{/i}}</h3>
-      <p><code>&lt;ul&gt;</code></p>
+
+  <h3>{{_i}}Unordered{{/i}}</h3>
+  <p>{{_i}}A list of items in which the order does not explicitly matter.{{/i}}</p>
+  <div class="bs-docs-example">
+    <ul>
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>Nulla volutpat aliquam velit
+        <ul>
+          <li>Phasellus iaculis neque</li>
+          <li>Purus sodales ultricies</li>
+          <li>Vestibulum laoreet porttitor sem</li>
+          <li>Ac tristique libero volutpat at</li>
+        </ul>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+      <li>Eget porttitor lorem</li>
+    </ul>
+  </div>
+<pre class="prettyprint linenums">
+&lt;ul&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+  <h3>{{_i}}Unstyled{{/i}}</h3>
+  <p><code>&lt;ul class="unstyled"&gt;</code></p>
+  <ul class="unstyled">
+    <li>Lorem ipsum dolor sit amet</li>
+    <li>Consectetur adipiscing elit</li>
+    <li>Integer molestie lorem at massa</li>
+    <li>Facilisis in pretium nisl aliquet</li>
+    <li>Nulla volutpat aliquam velit
       <ul>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit
-          <ul>
-            <li>Phasellus iaculis neque</li>
-            <li>Purus sodales ultricies</li>
-            <li>Vestibulum laoreet porttitor sem</li>
-            <li>Ac tristique libero volutpat at</li>
-          </ul>
-        </li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
+        <li>Phasellus iaculis neque</li>
+        <li>Purus sodales ultricies</li>
+        <li>Vestibulum laoreet porttitor sem</li>
+        <li>Ac tristique libero volutpat at</li>
       </ul>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Unstyled{{/i}}</h3>
-      <p><code>&lt;ul class="unstyled"&gt;</code></p>
-      <ul class="unstyled">
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit
-          <ul>
-            <li>Phasellus iaculis neque</li>
-            <li>Purus sodales ultricies</li>
-            <li>Vestibulum laoreet porttitor sem</li>
-            <li>Ac tristique libero volutpat at</li>
-          </ul>
-        </li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-      </ul>
-    </div>
-    <div class="span4">
-      <h3>{{_i}}Ordered{{/i}}</h3>
-      <p><code>&lt;ol&gt;</code></p>
-      <ol>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit</li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-      </ol>
-    </div>
-  </div><!-- /row -->
-  <br>
-  <div class="row">
-    <div class="span4">
-      <h3>{{_i}}Description{{/i}}</h3>
-      <p><code>&lt;dl&gt;</code></p>
-      <dl>
-        <dt>{{_i}}Description lists{{/i}}</dt>
-        <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
-        <dt>Euismod</dt>
-        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-        <dt>Malesuada porta</dt>
-        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-      </dl>
-    </div>
-    <div class="span8">
-      <h3>{{_i}}Horizontal description{{/i}}</h3>
-      <p><code>&lt;dl class="dl-horizontal"&gt;</code></p>
-      <dl class="dl-horizontal">
-        <dt>{{_i}}Description lists{{/i}}</dt>
-        <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
-        <dt>Euismod</dt>
-        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-        <dt>Malesuada porta</dt>
-        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-        <dt>Felis euismod semper eget lacinia</dt>
-        <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-      </dl>
-      <hr>
-      <p>
-        <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
-        {{_i}}Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.{{/i}}
-      </p>
-    </div>
-  </div><!-- /row -->
+    </li>
+    <li>Faucibus porta lacus fringilla vel</li>
+    <li>Aenean sit amet erat nunc</li>
+    <li>Eget porttitor lorem</li>
+  </ul>
+
+  <h3>{{_i}}Ordered{{/i}}</h3>
+  <p><code>&lt;ol&gt;</code></p>
+  <ol>
+    <li>Lorem ipsum dolor sit amet</li>
+    <li>Consectetur adipiscing elit</li>
+    <li>Integer molestie lorem at massa</li>
+    <li>Facilisis in pretium nisl aliquet</li>
+    <li>Nulla volutpat aliquam velit</li>
+    <li>Faucibus porta lacus fringilla vel</li>
+    <li>Aenean sit amet erat nunc</li>
+    <li>Eget porttitor lorem</li>
+  </ol>
+
+  <h3>{{_i}}Description{{/i}}</h3>
+  <p><code>&lt;dl&gt;</code></p>
+  <dl>
+    <dt>{{_i}}Description lists{{/i}}</dt>
+    <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
+    <dt>Euismod</dt>
+    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+    <dt>Malesuada porta</dt>
+    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+  </dl>
+
+  <h3>{{_i}}Horizontal description{{/i}}</h3>
+  <p><code>&lt;dl class="dl-horizontal"&gt;</code></p>
+  <dl class="dl-horizontal">
+    <dt>{{_i}}Description lists{{/i}}</dt>
+    <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
+    <dt>Euismod</dt>
+    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+    <dt>Malesuada porta</dt>
+    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+    <dt>Felis euismod semper eget lacinia</dt>
+    <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+  </dl>
+  <hr>
+  <p>
+    <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
+    {{_i}}Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.{{/i}}
+  </p>
 </section>
 
 
