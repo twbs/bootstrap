@@ -1791,7 +1791,7 @@
     <h1>{{_i}}Miscellaneous{{/i}} <small>{{_i}}Lightweight utility components{{/i}}</small></h1>
   </div>
   <div class="row">
-    <div class="span4">
+    <div class="span8">
       <h2>{{_i}}Wells{{/i}}</h2>
       <p>{{_i}}Use the well as a simple effect on an element to give it an inset effect.{{/i}}</p>
       <div class="well">
@@ -1814,14 +1814,69 @@
   ...
 &lt;/div&gt;
 </pre>
-    </div><!--/span-->
-    <div class="span4">
       <h2>{{_i}}Close icon{{/i}}</h2>
       <p>{{_i}}Use the generic close icon for dismissing content like modals and alerts.{{/i}}</p>
       <p><button class="close" style="float: none;">&times;</button></p>
 <pre class="prettyprint linenums">&lt;button class="close"&gt;&amp;times;&lt;/button&gt;</pre>
       <p>{{_i}}iOS devices require an href="#" for click events if you rather use an anchor.{{/i}}</p>
 <pre class="prettyprint linenums">&lt;a class="close" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+
+      <h2>{{_i}}Helper classes{{/i}}</h2>
+      <p>{{_i}}Simple, focused classes for small display or behavior tweaks.{{/i}}</p>
+
+      <h4>{{_i}}.pull-left{{/i}}</h4>
+      <p>{{_i}}Float an element left{{/i}}</p>
+<pre class="prettyprint linenums">
+class="pull-left"
+</pre>
+<pre class="prettyprint linenums">
+.pull-left {
+  float: left;
+}
+</pre>
+
+
+      <h4>{{_i}}.pull-right{{/i}}</h4>
+      <p>{{_i}}Float an element right{{/i}}</p>
+<pre class="prettyprint linenums">
+class="pull-right"
+</pre>
+<pre class="prettyprint linenums">
+.pull-right {
+  float: right;
+}
+</pre>
+
+      <h4>{{_i}}.muted{{/i}}</h4>
+      <p>{{_i}}Change an element's color to <code>#999</code>{{/i}}</p>
+<pre class="prettyprint linenums">
+class="muted"
+</pre>
+<pre class="prettyprint linenums">
+.muted {
+  color: #999;
+}
+</pre>
+
+      <h4>{{_i}}.clearfix{{/i}}</h4>
+      <p>{{_i}}Clear the <code>float</code> on any element{{/i}}</p>
+<pre class="prettyprint linenums">
+class="clearfix"
+</pre>
+<pre class="prettyprint linenums">
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+</pre>
+
     </div><!--/span-->
   </div><!--/row-->
 </section>

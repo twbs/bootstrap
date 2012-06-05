@@ -1869,7 +1869,7 @@
     <h1>Miscellaneous <small>Lightweight utility components</small></h1>
   </div>
   <div class="row">
-    <div class="span4">
+    <div class="span8">
       <h2>Wells</h2>
       <p>Use the well as a simple effect on an element to give it an inset effect.</p>
       <div class="well">
@@ -1892,14 +1892,69 @@
   ...
 &lt;/div&gt;
 </pre>
-    </div><!--/span-->
-    <div class="span4">
       <h2>Close icon</h2>
       <p>Use the generic close icon for dismissing content like modals and alerts.</p>
       <p><button class="close" style="float: none;">&times;</button></p>
 <pre class="prettyprint linenums">&lt;button class="close"&gt;&amp;times;&lt;/button&gt;</pre>
       <p>iOS devices require an href="#" for click events if you rather use an anchor.</p>
 <pre class="prettyprint linenums">&lt;a class="close" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+
+      <h2>Helper classes</h2>
+      <p>Simple, focused classes for small display or behavior tweaks.</p>
+
+      <h4>.pull-left</h4>
+      <p>Float an element left</p>
+<pre class="prettyprint linenums">
+class="pull-left"
+</pre>
+<pre class="prettyprint linenums">
+.pull-left {
+  float: left;
+}
+</pre>
+
+
+      <h4>.pull-right</h4>
+      <p>Float an element right</p>
+<pre class="prettyprint linenums">
+class="pull-right"
+</pre>
+<pre class="prettyprint linenums">
+.pull-right {
+  float: right;
+}
+</pre>
+
+      <h4>.muted</h4>
+      <p>Change an element's color to <code>#999</code></p>
+<pre class="prettyprint linenums">
+class="muted"
+</pre>
+<pre class="prettyprint linenums">
+.muted {
+  color: #999;
+}
+</pre>
+
+      <h4>.clearfix</h4>
+      <p>Clear the <code>float</code> on any element</p>
+<pre class="prettyprint linenums">
+class="clearfix"
+</pre>
+<pre class="prettyprint linenums">
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+</pre>
+
     </div><!--/span-->
   </div><!--/row-->
 </section>
