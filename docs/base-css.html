@@ -124,84 +124,76 @@
     <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
   </div>
 
-  <h2>Lead body copy</h2>
+  <h3>Lead body copy</h3>
   <p>Make a paragraph stand out by adding <code>.lead</code>.</p>
   <div class="bs-docs-example">
     <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
   </div>
 
   <h2>Built with Less</h2>
-  <p>The typographic scale is based on two Less variables in variables.less file: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
-  <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more. Customize them and watch Bootstrap adapt as you go.</p>
+  <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
-  <hr>
 
-  <h2>Emphasis, address, and abbreviation</h2>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Usage</th>
-        <th>Optional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <code>&lt;strong&gt;</code>
-        </td>
-        <td>
-          For emphasizing a snippet of text with <strong>important</strong>
-        </td>
-        <td>
-          <span class="muted">None</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;em&gt;</code>
-        </td>
-        <td>
-          For emphasizing a snippet of text with <em>stress</em>
-        </td>
-        <td>
-          <span class="muted">None</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;abbr&gt;</code>
-        </td>
-        <td>
-          Wraps abbreviations and acronyms to show the expanded version on hover
-        </td>
-        <td>
-          <p>Include optional <code>title</code> attribute for expanded text</p>
-          Use <code>.initialism</code> class for uppercase abbreviations.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;address&gt;</code>
-        </td>
-        <td>
-          For contact information for its nearest ancestor or the entire body of work
-        </td>
-        <td>
-          Preserve formatting by ending all lines with <code>&lt;br&gt;</code>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <hr class="soften">
 
-  <h3>Using emphasis</h3>
+
+  <h2>Emphasis</h2>
+  <p>Make use of HTML's default emphasis tags, <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>.</p>
+
+  <h3><code>&lt;strong&gt;</code></h3>
+  <p>For emphasizing a snippet of text with <strong>important</strong></p>
   <div class="bs-docs-example">
-    <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+    <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
   </div>
-  <p><strong>Note:</strong> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+<pre class="prettyprint">
+&lt;strong&gt;rendered as bold text&lt;/strong&gt;
+</pre>
 
-  <h3>Example addresses</h3>
-  <p>Here are two examples of how the <code>&lt;address&gt;</code> tag can be used:</p>
+  <h3><code>&lt;em&gt;</code></h3>
+  <p>For emphasizing a snippet of text with <em>stress</em></p>
+  <div class="bs-docs-example">
+    <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+  </div>
+<pre class="prettyprint">
+&lt;em&gt;rendered as italicized text&lt;/em&gt;
+</pre>
+
+  <p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+
+
+  <hr class="soften">
+
+
+  <h2>Abbreviations</h2>
+  <p>Stylized implemenation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
+
+  <h3><code>&lt;abbr&gt;</code></h3>
+  <p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.</p>
+  <div class="bs-docs-example">
+    <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+  </div>
+<pre class="prettyprint">
+&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;
+</pre>
+
+  <h3><code>&lt;abbr class="initialism"&gt;</code></h3>
+  <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
+  <div class="bs-docs-example">
+    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
+  </div>
+<pre class="prettyprint">
+&lt;abbr title="attribute" class="initialism"&gt;attr&lt;/abbr&gt;
+</pre>
+
+
+  <hr class="soften">
+
+
+  <h2>Addresses</h2>
+  <p>Present contact information for the nearest ancestor or the entire body of work.</p>
+
+  <h3><code>&lt;address&gt;</code></h3>
+  <p>Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
   <div class="bs-docs-example">
     <address>
       <strong>Twitter, Inc.</strong><br>
@@ -214,79 +206,76 @@
       <a href="mailto:#">first.last@gmail.com</a>
     </address>
   </div>
+<pre class="prettyprint linenums">
+&lt;address&gt;
+  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
+  795 Folsom Ave, Suite 600&lt;br&gt;
+  San Francisco, CA 94107&lt;br&gt;
+  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
+&lt;/address&gt;
 
-  <h3>Example abbreviations</h3>
-  <p>Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.</p>
-  <div class="bs-docs-example">
-    <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-  </div>
-  <p>Add the <code>initialism</code> class to an abbreviation for a slightly smaller font-size.</p>
-  <div class="bs-docs-example">
-    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
-  </div>
+&lt;address&gt;
+  &lt;strong&gt;Full Name&lt;/strong&gt;&lt;br&gt;
+  &lt;a href="mailto:#"&gt;first.last@gmail.com&lt;/a&gt;
+&lt;/address&gt;
+</pre>
 
-  <hr>
+
+  <hr class="soften">
+
 
   <h2>Blockquotes</h2>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Usage</th>
-        <th>Optional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <code>&lt;blockquote&gt;</code>
-        </td>
-        <td>
-          Block-level element for quoting content from another source
-        </td>
-        <td>
-          <p>Add <code>cite</code> attribute for source URL</p>
-          Use <code>.pull-left</code> and <code>.pull-right</code> classes for floated options
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;small&gt;</code>
-        </td>
-        <td>
-          Optional element for adding a user-facing citation, typically an author with title of work
-        </td>
-        <td>
-          Place the <code>&lt;cite&gt;</code> around the title or name of source
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <p>To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
-  <p>Include an optional <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it for styling purposes.</p>
-<pre class="prettyprint linenums">
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.&lt;/p&gt;
-  &lt;small&gt;Someone famous&lt;/small&gt;
-&lt;/blockquote&gt;
-</pre>
-  <h3>Example blockquotes</h3>
-  <p>Default blockquotes are styled as such:</p>
+  <p>For quoting blocks of content from another source within your document.</p>
+
+  <h3>Default blockqoute</h3>
+  <p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
   <div class="bs-docs-example">
     <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-      <small>Someone famous in <cite title="">Body of work</cite></small>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     </blockquote>
   </div>
-  <p>To float your blockquote to the right, add <code>class="pull-right"</code>:</p>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+&lt;/blockquote&gt;
+</pre>
+
+  <h3>Blockquote options</h3>
+  <p>Style and content changes for simple variations on a standard blockquote.</p>
+
+  <h4>Naming a source</h4>
+  <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+  <div class="bs-docs-example">
+    <blockquote>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
+  </div>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
+
+  <h4>Alternate displays</h4>
+  <p>Use <code>.pull-left</code> and <code>.pull-right</code> classes for floated, right-aligned blockquote content.</p>
   <div class="bs-docs-example">
     <blockquote class="pull-right">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-      <small>Someone famous in <cite title="">Body of work</cite></small>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
     </blockquote>
   </div>
+<pre class="prettyprint linenums">
+&lt;blockquote class="pull-right"&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
 
-  <hr>
+
+  <hr class="soften">
+
 
   <!-- Lists -->
   <h2>Lists</h2>
@@ -406,7 +395,6 @@
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
-  <hr>
   <p>
     <span class="label label-info">Heads up!</span>
     Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.

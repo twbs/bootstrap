@@ -49,7 +49,7 @@
   </div>
 
   {{! Body copy .lead }}
-  <h2>{{_i}}Lead body copy{{/i}}</h2>
+  <h3>{{_i}}Lead body copy{{/i}}</h3>
   <p>{{_i}}Make a paragraph stand out by adding <code>.lead</code>.{{/i}}</p>
   <div class="bs-docs-example">
     <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
@@ -57,80 +57,72 @@
 
   {{! Using LESS }}
   <h2>{{_i}}Built with Less{{/i}}</h2>
-  <p>{{_i}}The typographic scale is based on two Less variables in variables.less file: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height.{{/i}}</p>
-  <p>{{_i}}We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more. Customize them and watch Bootstrap adapt as you go.{{/i}}</p>
+  <p>{{_i}}The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.{{/i}}</p>
 
-  <hr>
 
-  {{! Misc Elements }}
-  <h2>{{_i}}Emphasis, address, and abbreviation{{/i}}</h2>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>{{_i}}Element{{/i}}</th>
-        <th>{{_i}}Usage{{/i}}</th>
-        <th>{{_i}}Optional{{/i}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <code>&lt;strong&gt;</code>
-        </td>
-        <td>
-          {{_i}}For emphasizing a snippet of text with <strong>important</strong>{{/i}}
-        </td>
-        <td>
-          <span class="muted">{{_i}}None{{/i}}</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;em&gt;</code>
-        </td>
-        <td>
-          {{_i}}For emphasizing a snippet of text with <em>stress</em>{{/i}}
-        </td>
-        <td>
-          <span class="muted">{{_i}}None{{/i}}</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;abbr&gt;</code>
-        </td>
-        <td>
-          {{_i}}Wraps abbreviations and acronyms to show the expanded version on hover{{/i}}
-        </td>
-        <td>
-          <p>{{_i}}Include optional <code>title</code> attribute for expanded text{{/i}}</p>
-          {{_i}}Use <code>.initialism</code> class for uppercase abbreviations.{{/i}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;address&gt;</code>
-        </td>
-        <td>
-          {{_i}}For contact information for its nearest ancestor or the entire body of work{{/i}}
-        </td>
-        <td>
-          {{_i}}Preserve formatting by ending all lines with <code>&lt;br&gt;</code>{{/i}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <hr class="soften">
+
 
   {{! Emphasis }}
-  <h3>{{_i}}Using emphasis{{/i}}</h3>
+  <h2>{{_i}}Emphasis{{/i}}</h2>
+  <p>{{_i}}Make use of HTML's default emphasis tags, <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>.{{/i}}</p>
+
+  <h3><code>&lt;strong&gt;</code></h3>
+  <p>{{_i}}For emphasizing a snippet of text with <strong>important</strong>{{/i}}</p>
   <div class="bs-docs-example">
-    <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+    <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
   </div>
-  <p>{{_i}}<strong>Note:</strong> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.{{/i}}</p>
+<pre class="prettyprint">
+&lt;strong&gt;rendered as bold text&lt;/strong&gt;
+</pre>
+
+  <h3><code>&lt;em&gt;</code></h3>
+  <p>{{_i}}For emphasizing a snippet of text with <em>stress</em>{{/i}}</p>
+  <div class="bs-docs-example">
+    <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+  </div>
+<pre class="prettyprint">
+&lt;em&gt;rendered as italicized text&lt;/em&gt;
+</pre>
+
+  <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.{{/i}}</p>
+
+
+  <hr class="soften">
+
+
+  {{! Abbreviations }}
+  <h2>{{_i}}Abbreviations{{/i}}</h2>
+  <p>{{_i}}Stylized implemenation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.{{/i}}</p>
+
+  <h3><code>&lt;abbr&gt;</code></h3>
+  <p>{{_i}}For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.{{/i}}</p>
+  <div class="bs-docs-example">
+    <p>{{_i}}An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.{{/i}}</p>
+  </div>
+<pre class="prettyprint">
+&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;
+</pre>
+
+  <h3><code>&lt;abbr class="initialism"&gt;</code></h3>
+  <p>{{_i}}Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.{{/i}}</p>
+  <div class="bs-docs-example">
+    <p>{{_i}}<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
+  </div>
+<pre class="prettyprint">
+&lt;abbr title="attribute" class="initialism"&gt;attr&lt;/abbr&gt;
+</pre>
+
+
+  <hr class="soften">
+
 
   {{! Addresses }}
-  <h3>{{_i}}Example addresses{{/i}}</h3>
-  <p>{{_i}}Here are two examples of how the <code>&lt;address&gt;</code> tag can be used:{{/i}}</p>
+  <h2>{{_i}}Addresses{{/i}}</h2>
+  <p>{{_i}}Present contact information for the nearest ancestor or the entire body of work.{{/i}}</p>
+
+  <h3><code>&lt;address&gt;</code></h3>
+  <p>{{_i}}Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.{{/i}}</p>
   <div class="bs-docs-example">
     <address>
       <strong>Twitter, Inc.</strong><br>
@@ -143,81 +135,77 @@
       <a href="mailto:#">{{_i}}first.last@gmail.com{{/i}}</a>
     </address>
   </div>
+<pre class="prettyprint linenums">
+&lt;address&gt;
+  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
+  795 Folsom Ave, Suite 600&lt;br&gt;
+  San Francisco, CA 94107&lt;br&gt;
+  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
+&lt;/address&gt;
 
-  {{! Abbreviations }}
-  <h3>{{_i}}Example abbreviations{{/i}}</h3>
-  <p>{{_i}}Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover. This gives users extra indication something will be shown on hover.{{/i}}</p>
-  <div class="bs-docs-example">
-    <p>{{_i}}An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.{{/i}}</p>
-  </div>
-  <p>{{_i}}Add the <code>initialism</code> class to an abbreviation for a slightly smaller font-size.{{/i}}</p>
-  <div class="bs-docs-example">
-    <p>{{_i}}<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
-  </div>
+&lt;address&gt;
+  &lt;strong&gt;{{_i}}Full Name{{/i}}&lt;/strong&gt;&lt;br&gt;
+  &lt;a href="mailto:#"&gt;{{_i}}first.last@gmail.com{{/i}}&lt;/a&gt;
+&lt;/address&gt;
+</pre>
 
-  <hr>
+
+  <hr class="soften">
+
 
   {{! Blockquotes }}
   <h2>{{_i}}Blockquotes{{/i}}</h2>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>{{_i}}Element{{/i}}</th>
-        <th>{{_i}}Usage{{/i}}</th>
-        <th>{{_i}}Optional{{/i}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <code>&lt;blockquote&gt;</code>
-        </td>
-        <td>
-          {{_i}}Block-level element for quoting content from another source{{/i}}
-        </td>
-        <td>
-          <p>{{_i}}Add <code>cite</code> attribute for source URL{{/i}}</p>
-          {{_i}}Use <code>.pull-left</code> and <code>.pull-right</code> classes for floated options{{/i}}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>&lt;small&gt;</code>
-        </td>
-        <td>
-          {{_i}}Optional element for adding a user-facing citation, typically an author with title of work{{/i}}
-        </td>
-        <td>
-          {{_i}}Place the <code>&lt;cite&gt;</code> around the title or name of source{{/i}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <p>{{_i}}To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.{{/i}}</p>
-  <p>{{_i}}Include an optional <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it for styling purposes.{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.&lt;/p&gt;
-  &lt;small&gt;{{_i}}Someone famous{{/i}}&lt;/small&gt;
-&lt;/blockquote&gt;
-</pre>
-  <h3>{{_i}}Example blockquotes{{/i}}</h3>
-  <p>{{_i}}Default blockquotes are styled as such:{{/i}}</p>
+  <p>{{_i}}For quoting blocks of content from another source within your document.{{/i}}</p>
+
+  <h3>{{_i}}Default blockqoute{{/i}}</h3>
+  <p>{{_i}}Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.{{/i}}</p>
   <div class="bs-docs-example">
     <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-      <small>{{_i}}Someone famous in <cite title="">Body of work</cite>{{/i}}</small>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     </blockquote>
   </div>
-  <p>{{_i}}To float your blockquote to the right, add <code>class="pull-right"</code>:{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+&lt;/blockquote&gt;
+</pre>
+
+  <h3>{{_i}}Blockquote options{{/i}}</h3>
+  <p>{{_i}}Style and content changes for simple variations on a standard blockquote.{{/i}}</p>
+
+  <h4>{{_i}}Naming a source{{/i}}</h4>
+  <p>{{_i}}Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.{{/i}}</p>
+  <div class="bs-docs-example">
+    <blockquote>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <small>{{_i}}Someone famous in <cite title="Source Title">Source Title</cite>{{/i}}</small>
+    </blockquote>
+  </div>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;{{_i}}Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;{{/i}}&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
+
+  <h4>{{_i}}Alternate displays{{/i}}</h4>
+  <p>{{_i}}Use <code>.pull-left</code> and <code>.pull-right</code> classes for floated, right-aligned blockquote content.{{/i}}</p>
   <div class="bs-docs-example">
     <blockquote class="pull-right">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
-      <small>{{_i}}Someone famous in <cite title="">Body of work</cite>{{/i}}</small>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <small>{{_i}}Someone famous in <cite title="Source Title">Source Title</cite>{{/i}}</small>
     </blockquote>
   </div>
+<pre class="prettyprint linenums">
+&lt;blockquote class="pull-right"&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+  &lt;small&gt;{{_i}}Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;{{/i}}&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
 
-  <hr>
+
+  <hr class="soften">
+
 
   <!-- Lists -->
   <h2>{{_i}}Lists{{/i}}</h2>
@@ -337,7 +325,6 @@
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
-  <hr>
   <p>
     <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
     {{_i}}Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.{{/i}}
