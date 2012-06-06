@@ -10,18 +10,18 @@
 -------------------------------------------------- */
 body {
   position: relative;
-  padding-top: 90px;
+  padding-top: 60px;
   font-size: 14px;
   background-color: #fff;
   background-image: url(../img/grid-20px.png);
   background-repeat: repeat-x;
-  background-position: 0 40px;
+  background-position: 0 0;
 }
 
 /* Custom container for the narrow docs */
 .bs-docs-container {
   max-width: 780px;
-  margin: 0 auto;
+  margin: 0 0 0 240px;
 }
 
 /* Increase docs base type size and line-heights */
@@ -35,6 +35,58 @@ li {
   line-height: 25px;
 }
 
+
+.bs-docs-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  width: 140px;
+  padding: 25px 30px;
+  background-color: #555;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  -webkit-box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
+}
+.bs-docs-nav ul {
+  margin-left: 0;
+  margin-bottom: 15px;
+}
+.bs-docs-nav ul li {
+  list-style: none;
+  line-height: 1;
+}
+.bs-docs-nav ul li a {
+  display: block;
+  padding: 0 30px;
+  margin: 0 -30px;
+  font-size: 13px;
+  line-height: 24px;
+  color: #ccc;
+}
+.bs-docs-nav ul li a:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #666;
+}
+.bs-docs-nav > ul > li > a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+.bs-docs-logo {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.bs-docs-logo a {
+  color: #353535;
+  text-shadow: 0 1px 0 #656565;
+}
 
 
 /* Tweak navbar brand link to be super sleek
@@ -114,12 +166,10 @@ hr.soften {
 
 /* Masthead (docs home) */
 .masthead {
-  padding-top: 40px;
   margin-bottom: 60px;
 }
 .masthead h1,
 .masthead p {
-  text-align: center;
 }
 .masthead h1 {
   margin-bottom: 18px;
@@ -248,9 +298,8 @@ hr.soften {
 .quick-links {
   min-height: 30px;
   margin: 0;
-  padding: 5px 20px;
+  padding: 5px 0;
   list-style: none;
-  text-align: center;
   overflow: hidden;
 }
 .quick-links:first-child {
@@ -278,7 +327,6 @@ hr.soften {
   margin: 36px 0 27px;
   font-size: 40px;
   font-weight: 300;
-  text-align: center;
 }
 .marketing h2,
 .marketing h3 {
@@ -299,7 +347,13 @@ hr.soften {
   float: left;
   margin: 4px 5px 0 0;
 }
-
+.marketing-byline {
+  margin: -18px 0 27px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #999;
+}
 
 
 /* Footer
@@ -307,10 +361,12 @@ hr.soften {
 .footer {
   padding: 35px 0 36px;
   margin-top: 45px;
-  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .footer p {
+  font-size: 12px;
+  line-height: 20px;
+  margin-bottom: 0;
   color: #555;
 }
 
@@ -534,14 +590,6 @@ h2 + .row {
 .example-sites img {
   max-width: 100%;
   margin: 0 auto;
-}
-.marketing-byline {
-  margin: -18px 0 27px;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 24px;
-  color: #999;
-  text-align: center;
 }
 
 .scrollspy-example {

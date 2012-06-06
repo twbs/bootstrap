@@ -27,51 +27,84 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".subnav" data-offset="50">
+  <body>
 
-
-  <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="./index.html">Overview</a>
-              </li>
-              <li class="">
-                <a href="./scaffolding.html">Scaffolding</a>
-              </li>
-              <li class="">
-                <a href="./base-css.html">Base CSS</a>
-              </li>
-              <li class="">
-                <a href="./components.html">Components</a>
-              </li>
-              <li class="active">
-                <a href="./javascript.html">Javascript plugins</a>
-              </li>
-              <li class="">
-                <a href="./less.html">Using LESS</a>
-              </li>
-              <li class="divider-vertical"></li>
-              <li class="">
-                <a href="./download.html">Customize</a>
-              </li>
-              <li class="">
-                <a href="./examples.html">Examples</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div class="bs-docs-nav">
+      <h3 class="bs-docs-logo"><a href="./index.html">Bootstrap</a></h3>
+      <ul class="bs-nav">
+        <li class="">
+          <a href="./scaffolding.html">Scaffolding</a>
+          <ul>
+            <li><a href="./scaffolding.html#global">Global styles</a></li>
+            <li><a href="./scaffolding.html#gridSystem">Grid system</a></li>
+            <li><a href="./scaffolding.html#fluidGridSystem">Fluid grid system</a></li>
+            <li><a href="./scaffolding.html#gridCustomization">Customizing</a></li>
+            <li><a href="./scaffolding.html#layouts">Layouts</a></li>
+            <li><a href="./scaffolding.html#responsive">Responsive design</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="./base-css.html">Base CSS</a>
+          <ul>
+            <li><a href="./base-css.html#typography">Typography</a></li>
+            <li><a href="./base-css.html#code">Code</a></li>
+            <li><a href="./base-css.html#tables">Tables</a></li>
+            <li><a href="./base-css.html#forms">Forms</a></li>
+            <li><a href="./base-css.html#buttons">Buttons</a></li>
+            <li><a href="./base-css.html#icons">Icons by Glyphicons</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="./components.html">Components</a>
+          <ul>
+            <li><a href="./components.html#buttonGroups">Button groups</a></li>
+            <li><a href="./components.html#buttonDropdowns">Button dropdowns</a></li>
+            <li><a href="./components.html#navs">Nav, tabs, pills</a></li>
+            <li><a href="./components.html#navbar">Navbar</a></li>
+            <li><a href="./components.html#breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="./components.html#pagination">Pagination</a></li>
+            <li><a href="./components.html#labels">Labels</a></li>
+            <li><a href="./components.html#badges">Badges</a></li>
+            <li><a href="./components.html#typography">Typography</a></li>
+            <li><a href="./components.html#thumbnails">Thumbnails</a></li>
+            <li><a href="./components.html#alerts">Alerts</a></li>
+            <li><a href="./components.html#progress">Progress bars</a></li>
+            <li><a href="./components.html#misc">Miscellaneous</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="./javascript.html">Javascript</a>
+          <ul>
+            <li><a href="./javascript.html#javascript">All plugins</a></li>
+            <li><a href="./javascript.html#modals">Modal</a></li>
+            <li><a href="./javascript.html#dropdowns">Dropdown</a></li>
+            <li><a href="./javascript.html#scrollspy">Scrollspy</a></li>
+            <li><a href="./javascript.html#tabs">Tab</a></li>
+            <li><a href="./javascript.html#tooltips">Tooltip</a></li>
+            <li><a href="./javascript.html#popovers">Popover</a></li>
+            <li><a href="./javascript.html#alerts">Alert</a></li>
+            <li><a href="./javascript.html#buttons">Button</a></li>
+            <li><a href="./javascript.html#collapse">Collapse</a></li>
+            <li><a href="./javascript.html#carousel">Carousel</a></li>
+            <li><a href="./javascript.html#typeahead">Typeahead</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="./less.html">LESS</a>
+          <ul>
+            <li><a href="./less.html#builtWith">Built with Less</a></li>
+            <li><a href="./less.html#variables">Variables</a></li>
+            <li><a href="./less.html#mixins">Mixins</a></li>
+            <li><a href="./less.html#compiling">Compiling Bootstrap</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="./download.html">Customize</a>
+        </li>
+        <li class="">
+          <a href="./examples.html">Examples</a>
+        </li>
+      </ul>
     </div>
 
     <div class="bs-docs-container">
@@ -82,28 +115,6 @@
   <h1>Javascript for Bootstrap</h1>
   <p class="lead">Bring Bootstrap's components to life&mdash;now with 12 custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.
 </header>
-
-
-
-<section id="contents">
-  <div class="bs-docs-contents">
-    <h3>Contents</h3>
-    <ol>
-      <li><a href="#javascript">All plugins</a></li>
-      <li><a href="#modals">Modal</a></li>
-      <li><a href="#dropdowns">Dropdown</a></li>
-      <li><a href="#scrollspy">Scrollspy</a></li>
-      <li><a href="#tabs">Tab</a></li>
-      <li><a href="#tooltips">Tooltip</a></li>
-      <li><a href="#popovers">Popover</a></li>
-      <li><a href="#alerts">Alert</a></li>
-      <li><a href="#buttons">Button</a></li>
-      <li><a href="#collapse">Collapse</a></li>
-      <li><a href="#carousel">Carousel</a></li>
-      <li><a href="#typeahead">Typeahead</a></li>
-    </ol>
-  </div>
-</section>
 
 
 
@@ -1482,10 +1493,10 @@ $('.carousel').carousel({
      <!-- Footer
       ================================================== -->
       <footer class="footer">
+        <p clas="right"><a href="#">Back to top</a></p>
         <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
         <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p><a href="#">Back to top</a></p>
       </footer>
 
     </div><!-- /container -->
