@@ -70,7 +70,7 @@
     }
 
     // tooltip demo
-    $('.tooltip-demo.well').tooltip({
+    $('.tooltip-demo').tooltip({
       selector: "a[rel=tooltip]"
     })
 

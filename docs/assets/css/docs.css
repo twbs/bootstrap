@@ -23,6 +23,47 @@ li {
   line-height: 20px;
 }
 
+.bs-docs-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  width: 140px;
+  padding: 25px 30px;
+  background-color: #eee;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.bs-docs-nav ul {
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+.bs-docs-nav ul li {
+  list-style: none;
+}
+.bs-docs-nav a {
+  font-size: 13px;
+  line-height: 20px;
+}
+.bs-docs-nav > ul > li > a {
+  font-size: 14px;
+  color: #999;
+}
+
+.bs-docs-wrapper {
+  position: fixed;
+  top: 0;
+  left: 200px;
+  right: 0;
+  bottom: 0;
+  padding: 40px 0;
+  overflow-y: scroll;
+  -webkit-box-shadow: -10px 0 15px rgba(0,0,0,.05), -5px 0 10px rgba(0,0,0,.05);
+     -moz-box-shadow: -10px 0 15px rgba(0,0,0,.05), -5px 0 10px rgba(0,0,0,.05);
+          box-shadow: -10px 0 15px rgba(0,0,0,.05), -5px 0 10px rgba(0,0,0,.05);
+}
+
 .bs-docs-container {
   max-width: 780px;
   margin: 0 auto;
@@ -69,13 +110,13 @@ hr.soften {
 
 /* Table of contents */
 .bs-docs-contents {
-  color: #999;
 }
 .bs-docs-contents h3 {
 
 }
 .bs-docs-contents li {
   line-height: 25px;
+  color: #777;
 }
 
 
@@ -85,7 +126,7 @@ hr.soften {
   position: relative;
 }
 .jumbotron h1 {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
   font-size: 80px;
   font-weight: bold;
   letter-spacing: -1px;
@@ -110,8 +151,8 @@ hr.soften {
 
 /* Masthead (docs home) */
 .masthead {
-  padding-top: 36px;
-  margin-bottom: 72px;
+  padding-top: 40px;
+  margin-bottom: 60px;
 }
 .masthead h1,
 .masthead p {
@@ -122,7 +163,7 @@ hr.soften {
 }
 .masthead p {
   font-size: 30px;
-  line-height: 36px;
+  line-height: 35px;
 }
 
 
@@ -130,12 +171,15 @@ hr.soften {
 ------------------------- */
 /* supporting docs pages */
 .subhead {
-  padding-bottom: 0;
-  margin-bottom: 9px;
-  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
 }
 .subhead h1 {
-  font-size: 54px;
+  font-size: 60px;
+}
+.subhead .lead {
+  line-height: 25px;
 }
 
 /* Subnav */
