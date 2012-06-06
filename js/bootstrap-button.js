@@ -15,7 +15,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ============================================================ */
+ * ============================================================
+ *
+ *   MODIFIED FROM ORIGINAL
+ *
+ * */
 
 !function( $ ){
 
@@ -46,7 +50,7 @@
 
         // push to event loop to allow forms to submit
         setTimeout(function () {
-          state == 'loadingText' ?
+          ((state == 'loadingText') || (state =='standardText')) ?
             $el.addClass(d).attr(d, d) :
             $el.removeClass(d).removeAttr(d)
         }, 0)
