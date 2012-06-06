@@ -3,7 +3,7 @@
 <header class="jumbotron subhead" id="overview">
   <h1>{{_i}}Base CSS{{/i}}</h1>
   <p class="lead">{{_i}}On top of the scaffolding, basic HTML elements are styled and enhanced with extensible classes to provide a fresh, consistent look and feel.{{/i}}</p>
-  <div class="subnav">
+<!--   <div class="subnav">
     <ul class="nav nav-pills">
       <li><a href="#typography">{{_i}}Typography{{/i}}</a></li>
       <li><a href="#code">{{_i}}Code{{/i}}</a></li>
@@ -13,8 +13,22 @@
       <li><a href="#icons">{{_i}}Icons by Glyphicons{{/i}}</a></li>
     </ul>
   </div>
-</header>
+ --></header>
 
+
+<section id="contents">
+  <div class="bs-docs-contents">
+    <h3>{{_i}}Contents{{/i}}</h3>
+    <ol>
+      <li><a href="#typography">{{_i}}Typography{{/i}}</a></li>
+      <li><a href="#code">{{_i}}Code{{/i}}</a></li>
+      <li><a href="#tables">{{_i}}Tables{{/i}}</a></li>
+      <li><a href="#forms">{{_i}}Forms{{/i}}</a></li>
+      <li><a href="#buttons">{{_i}}Buttons{{/i}}</a></li>
+      <li><a href="#icons">{{_i}}Icons by Glyphicons{{/i}}</a></li>
+    </ol>
+  </div>
+</section>
 
 <!-- Typography
 ================================================== -->
@@ -219,7 +233,7 @@
   <h2>{{_i}}Lists{{/i}}</h2>
 
   <h3>{{_i}}Unordered{{/i}}</h3>
-  <p>{{_i}}A list of items in which the order does not explicitly matter.{{/i}}</p>
+  <p>{{_i}}A list of items in which the order does <em>not</em> explicitly matter.{{/i}}</p>
   <div class="bs-docs-example">
     <ul>
       <li>Lorem ipsum dolor sit amet</li>
@@ -245,64 +259,94 @@
 &lt;/ul&gt;
 </pre>
 
-  <h3>{{_i}}Unstyled{{/i}}</h3>
-  <p><code>&lt;ul class="unstyled"&gt;</code></p>
-  <ul class="unstyled">
-    <li>Lorem ipsum dolor sit amet</li>
-    <li>Consectetur adipiscing elit</li>
-    <li>Integer molestie lorem at massa</li>
-    <li>Facilisis in pretium nisl aliquet</li>
-    <li>Nulla volutpat aliquam velit
-      <ul>
-        <li>Phasellus iaculis neque</li>
-        <li>Purus sodales ultricies</li>
-        <li>Vestibulum laoreet porttitor sem</li>
-        <li>Ac tristique libero volutpat at</li>
-      </ul>
-    </li>
-    <li>Faucibus porta lacus fringilla vel</li>
-    <li>Aenean sit amet erat nunc</li>
-    <li>Eget porttitor lorem</li>
-  </ul>
-
   <h3>{{_i}}Ordered{{/i}}</h3>
-  <p><code>&lt;ol&gt;</code></p>
-  <ol>
-    <li>Lorem ipsum dolor sit amet</li>
-    <li>Consectetur adipiscing elit</li>
-    <li>Integer molestie lorem at massa</li>
-    <li>Facilisis in pretium nisl aliquet</li>
-    <li>Nulla volutpat aliquam velit</li>
-    <li>Faucibus porta lacus fringilla vel</li>
-    <li>Aenean sit amet erat nunc</li>
-    <li>Eget porttitor lorem</li>
-  </ol>
+  <p>{{_i}}A list of items in which the order <em>does</em> explicitly matter.{{/i}}</p>
+  <div class="bs-docs-example">
+    <ol>
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>Nulla volutpat aliquam velit</li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+      <li>Eget porttitor lorem</li>
+    </ol>
+  </div>
+<pre class="prettyprint linenums">
+&lt;ol&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+  <h3>{{_i}}Unstyled{{/i}}</h3>
+  <p>{{_i}}A list of items with no <code>list-style</code> or additional left padding.{{/i}}</p>
+  <div class="bs-docs-example">
+    <ul class="unstyled">
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetur adipiscing elit</li>
+      <li>Integer molestie lorem at massa</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>Nulla volutpat aliquam velit
+        <ul>
+          <li>Phasellus iaculis neque</li>
+          <li>Purus sodales ultricies</li>
+          <li>Vestibulum laoreet porttitor sem</li>
+          <li>Ac tristique libero volutpat at</li>
+        </ul>
+      </li>
+      <li>Faucibus porta lacus fringilla vel</li>
+      <li>Aenean sit amet erat nunc</li>
+      <li>Eget porttitor lorem</li>
+    </ul>
+  </div>
+<pre class="prettyprint linenums">
+&lt;ul class="unstyled"&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 
   <h3>{{_i}}Description{{/i}}</h3>
-  <p><code>&lt;dl&gt;</code></p>
-  <dl>
-    <dt>{{_i}}Description lists{{/i}}</dt>
-    <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
-    <dt>Euismod</dt>
-    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-    <dt>Malesuada porta</dt>
-    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-  </dl>
+  <p>{{_i}}A list of terms with their associated descriptions.{{/i}}</p>
+  <div class="bs-docs-example">
+    <dl>
+      <dt>{{_i}}Description lists{{/i}}</dt>
+      <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
+      <dt>Euismod</dt>
+      <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+      <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+      <dt>Malesuada porta</dt>
+      <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+    </dl>
+  </div>
+<pre class="prettyprint linenums">
+&lt;dl&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
 
-  <h3>{{_i}}Horizontal description{{/i}}</h3>
-  <p><code>&lt;dl class="dl-horizontal"&gt;</code></p>
-  <dl class="dl-horizontal">
-    <dt>{{_i}}Description lists{{/i}}</dt>
-    <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
-    <dt>Euismod</dt>
-    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-    <dt>Malesuada porta</dt>
-    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-    <dt>Felis euismod semper eget lacinia</dt>
-    <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-  </dl>
+  <h4>{{_i}}Horizontal description{{/i}}</h4>
+  <p>{{_i}}Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.{{/i}}</p>
+  <div class="bs-docs-example">
+    <dl class="dl-horizontal">
+      <dt>{{_i}}Description lists{{/i}}</dt>
+      <dd>{{_i}}A description list is perfect for defining terms.{{/i}}</dd>
+      <dt>Euismod</dt>
+      <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+      <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+      <dt>Malesuada porta</dt>
+      <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      <dt>Felis euismod semper eget lacinia</dt>
+      <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+    </dl>
+  </div>
+<pre class="prettyprint linenums">
+&lt;dl class="dl-horizontal"&gt;
+  &lt;dt&gt;...&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
   <hr>
   <p>
     <span class="label label-info">{{_i}}Heads up!{{/i}}</span>

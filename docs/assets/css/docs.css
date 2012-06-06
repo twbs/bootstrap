@@ -23,6 +23,10 @@ li {
   line-height: 20px;
 }
 
+.bs-docs-container {
+  max-width: 780px;
+  margin: 0 auto;
+}
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
@@ -64,16 +68,14 @@ hr.soften {
 }
 
 /* Table of contents */
-.bs-docs-content {
+.bs-docs-contents {
   color: #999;
 }
-.bs-docs-contents ol {
-  margin-top: 5px;
-  margin-bottom: 0;
+.bs-docs-contents h3 {
+
 }
 .bs-docs-contents li {
   line-height: 25px;
-  color: #999;
 }
 
 
@@ -130,6 +132,7 @@ hr.soften {
 .subhead {
   padding-bottom: 0;
   margin-bottom: 9px;
+  border-bottom: 1px solid #ddd;
 }
 .subhead h1 {
   font-size: 54px;
@@ -297,10 +300,10 @@ hr.soften {
 .footer {
   padding: 35px 0 36px;
   margin-top: 45px;
+  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .footer p {
-  margin-bottom: 5px;
   color: #555;
 }
 
@@ -696,7 +699,7 @@ form.well {
 ------------------------- */
 .bs-docs-grid {
   width: 940px;
-  margin-left: -240px;
+  margin-left: -80px;
 }
 
 
@@ -915,7 +918,7 @@ form.well {
 
   .bs-docs-grid {
     width: 1170px;
-    margin-left: -300px;
+    margin-left: -195px;
   }
 
 }
