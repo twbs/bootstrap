@@ -18,56 +18,24 @@ body {
   background-position: 0 40px;
 }
 
-body,
-li {
-  line-height: 20px;
-}
-
-.bs-docs-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  width: 140px;
-  padding: 25px 30px;
-  background-color: #eee;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
-}
-.bs-docs-nav ul {
-  margin-left: 0;
-  margin-bottom: 10px;
-}
-.bs-docs-nav ul li {
-  list-style: none;
-}
-.bs-docs-nav a {
-  font-size: 13px;
-  line-height: 20px;
-}
-.bs-docs-nav > ul > li > a {
-  font-size: 14px;
-  color: #999;
-}
-
-.bs-docs-wrapper {
-  position: fixed;
-  top: 0;
-  left: 200px;
-  right: 0;
-  bottom: 0;
-  padding: 40px 0;
-  overflow-y: scroll;
-  -webkit-box-shadow: -10px 0 15px rgba(0,0,0,.05), -5px 0 10px rgba(0,0,0,.05);
-     -moz-box-shadow: -10px 0 15px rgba(0,0,0,.05), -5px 0 10px rgba(0,0,0,.05);
-          box-shadow: -10px 0 15px rgba(0,0,0,.05), -5px 0 10px rgba(0,0,0,.05);
-}
-
+/* Custom container for the narrow docs */
 .bs-docs-container {
   max-width: 780px;
   margin: 0 auto;
 }
+
+/* Increase docs base type size and line-heights */
+body {
+  line-height: 20px;
+}
+p {
+  margin-bottom: 15px;
+}
+li {
+  line-height: 25px;
+}
+
+
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
@@ -97,6 +65,12 @@ section {
   padding-top: 60px;
 }
 
+/* Table of contents */
+.bs-docs-contents li {
+  line-height: 25px;
+  color: #777;
+}
+
 /* Faded out hr */
 hr.soften {
   height: 1px;
@@ -106,17 +80,6 @@ hr.soften {
   background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   border: 0;
-}
-
-/* Table of contents */
-.bs-docs-contents {
-}
-.bs-docs-contents h3 {
-
-}
-.bs-docs-contents li {
-  line-height: 25px;
-  color: #777;
 }
 
 
@@ -365,8 +328,8 @@ hr.soften {
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
-  min-height: 30px;
-  line-height: 30px;
+  min-height: 40px;
+  line-height: 40px;
 }
 .show-grid:hover [class*="span"] {
   background: #ddd;
@@ -667,12 +630,18 @@ form.well {
   font-size: 13px;
   line-height: 18px;
 }
+.bs-docs-example p {
+  margin-bottom: 9px;
+}
 .bs-docs-example p:last-child {
   margin-bottom: 0;
 }
 .bs-docs-example .lead {
   font-size: 18px;
   line-height: 24px;
+}
+.bs-docs-example li {
+  line-height: 18px;
 }
 
 /* Responsive table
