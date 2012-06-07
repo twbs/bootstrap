@@ -190,7 +190,7 @@
     }
 
   , getPosition: function (inside) {
-      return $.extend({}, this.$element[0].getBoundingClientRect(), (inside ? {top: 0, left: 0} : {}))
+      return $.extend({}, this.$element[0].getBoundingClientRect(), (inside ? {top: 0, left: 0} : this.$element.offset()))
     }
 
   , getTitle: function () {
