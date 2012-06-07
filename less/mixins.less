@@ -597,7 +597,7 @@
     .spanX (0) {}
 
     .offsetX (@index) when (@index > 0) {
-      (~'.offset@{index}, .row-fluid > .offset@{index}[class*="span"]') { .offset(@index); }
+      (~'.offset@{index}, .row-fluid .offset@{index}:first-child') { .offset(@index); }
       .offsetX(@index - 1);
     }
     .offsetX (0) {}
