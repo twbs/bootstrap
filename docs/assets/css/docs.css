@@ -158,6 +158,7 @@ hr.soften {
   line-height: 1;
 }
 .jumbotron p {
+  max-width: 780px;
   margin-bottom: 20px;
   font-weight: 300;
 }
@@ -772,13 +773,6 @@ form.bs-docs-example {
   border: 1px solid #d6e9c6;
 }
 
-/* Grid examples
-------------------------- */
-.bs-docs-grid {
-  width: 940px;
-  margin-left: -80px;
-}
-
 
 
 /* Responsive Docs
@@ -988,14 +982,13 @@ form.bs-docs-example {
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
 
+  .bs-docs-container {
+    max-width: 970px;
+  }
+
   /* Update subnav container */
   .subnav-fixed .nav {
     width: 1168px; /* 2px less to account for left/right borders being removed when in fixed mode */
-  }
-
-  .bs-docs-grid {
-    width: 1170px;
-    margin-left: -195px;
   }
 
 }
