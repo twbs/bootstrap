@@ -1,0 +1,97 @@
+/**
+* From github.com/danielfarrell/bootstrap-combobox
+*
+*/
+
+.combobox-container {
+  .input-append();
+  select {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-indent: -99999px;
+    *text-indent: 0;
+  }
+}
+
+.combobox-container {
+    .caret {
+        margin-right: 8px;
+    }
+}
+
+.combobox-selected {
+  .combobox-clear {
+    display: inline-block;
+  }
+  .caret {
+    display: none;
+  }
+}
+
+.combobox-clear {
+  display: none;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  vertical-align: top;
+  .opacity(30);
+}
+
+.dropdown:hover .combobox-clear,
+.open.dropdown .combobox-clear {
+  .opacity(100);
+}
+
+.btn .combobox-clear {
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
+.btn:hover .combobox-clear, .open.btn-group .combobox-clear {
+  .opacity(100);
+}
+
+.typeahead-long {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.control-group.error {
+  .combobox-container {
+    .add-on {
+      color: #B94A48;
+      border-color: #B94A48;
+    }
+    .caret {
+      border-top-color: #B94A48;
+    }
+  }
+}
+
+.control-group.warning {
+  .combobox-container {
+    .add-on {
+      color: #C09853;
+      border-color: #C09853;
+    }
+    .caret {
+      border-top-color: #C09853;
+    }
+  }
+}
+
+.control-group.success {
+  .combobox-container {
+    .add-on {
+      color: #468847;
+      border-color: #468847;
+    }
+    .caret {
+      border-top-color: #468847;
+    }
+  }
+}
