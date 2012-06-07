@@ -59,10 +59,15 @@
       var pos = $.extend({}, this.$element.offset(), {
         height: this.$element[0].offsetHeight
       })
+      
+      var zIndex = parseInt(this.$element.parents().filter(function() {
+        return $(this).css('z-index') != 'auto';
+      }).first().css('z-index'), 10)+10;      
 
       this.$menu.css({
         top: pos.top + pos.height
       , left: pos.left
+      , zIndex: zIndex
       })
 
       this.$menu.show()
