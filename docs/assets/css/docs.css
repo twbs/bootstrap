@@ -6,11 +6,13 @@
 */
 
 
+
 /* Body and structure
 -------------------------------------------------- */
+
 body {
   position: relative;
-  padding-top: 60px;
+  padding-top: 40px;
   font-size: 14px;
   background-color: #fff;
   background-image: url(../img/grid-20px.png);
@@ -36,19 +38,25 @@ li {
 }
 
 
+
+/* Left nav
+-------------------------------------------------- */
+
 .bs-docs-nav {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   overflow-y: scroll;
-  width: 140px;
-  padding: 25px 30px;
-  background-color: #555;
-  text-shadow: 0 1px 0 rgba(0,0,0,.25);
-  -webkit-box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
-     -moz-box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
-          box-shadow: inset -1px 0 0 rgba(0,0,0,.1);
+  width: 150px;
+  padding: 25px;
+  background-color: #dde2e9;
+  text-shadow: 0 1px 0 rgba(255,255,255,.55);
+  -webkit-box-shadow: inset -10px 0 15px rgba(0,0,0,.15);
+     -moz-box-shadow: inset -10px 0 15px rgba(0,0,0,.15);
+          box-shadow: inset -10px 0 15px rgba(0,0,0,.15);
+  background-color: #444;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
 }
 .bs-docs-nav ul {
   margin-left: 0;
@@ -58,24 +66,33 @@ li {
   list-style: none;
   line-height: 1;
 }
+.bs-docs-nav a:hover {
+  text-decoration: none;
+}
 .bs-docs-nav ul li a {
   display: block;
+  width: 145px;
   padding: 0 30px;
   margin: 0 -30px;
-  font-size: 13px;
-  line-height: 24px;
-  color: #ccc;
+  font-size: 12px;
+  line-height: 22px;
+  color: #444;
+  color: #999;
 }
 .bs-docs-nav ul li a:hover {
+  color: #333;
   color: #fff;
-  text-decoration: none;
-  background-color: #666;
+  background-color: rgba(0,0,0,.05);
 }
 .bs-docs-nav > ul > li > a {
   font-size: 14px;
   font-weight: bold;
+  line-height: 24px;
+  color: #333;
   color: #fff;
 }
+
+/* Logo wordmark */
 .bs-docs-logo {
   font-size: 24px;
   font-weight: bold;
@@ -84,35 +101,20 @@ li {
   margin-bottom: 20px;
 }
 .bs-docs-logo a {
-  color: #353535;
-  text-shadow: 0 1px 0 #656565;
+  color: #a4b4cb;
+  color: #333;
+  text-shadow: 0 1px 0 #555;
+}
+.bs-docs-logo a:hover {
+  color: #8e9db3;
+  color: #222;
 }
 
-
-/* Tweak navbar brand link to be super sleek
--------------------------------------------------- */
-.navbar {
-  font-size: 13px;
-}
-.navbar-fixed-top .brand {
-  padding-right: 0;
-  padding-left: 0;
-  margin-left: 20px;
-  float: right;
-  font-weight: bold;
-  color: #000;
-  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
-  -webkit-transition: all .2s linear;
-     -moz-transition: all .2s linear;
-          transition: all .2s linear;
-}
-.navbar-fixed-top .brand:hover {
-  text-decoration: none;
-}
 
 
 /* Space out sub-sections more
 -------------------------------------------------- */
+
 section {
   padding-top: 60px;
 }
@@ -121,6 +123,11 @@ section {
 .bs-docs-contents li {
   line-height: 25px;
   color: #777;
+}
+
+/* Separators (hr) */
+.bs-docs-separator {
+  margin: 40px 0 39px;
 }
 
 /* Faded out hr */
@@ -137,6 +144,9 @@ hr.soften {
 
 /* Jumbotrons
 -------------------------------------------------- */
+
+/* Base class
+------------------------- */
 .jumbotron {
   position: relative;
 }
@@ -148,13 +158,13 @@ hr.soften {
   line-height: 1;
 }
 .jumbotron p {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   font-weight: 300;
 }
 .jumbotron .btn-large {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: normal;
-  padding: 14px 24px;
+  padding: 13px 24px;
   margin-right: 10px;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
@@ -164,7 +174,8 @@ hr.soften {
   font-size: 14px;
 }
 
-/* Masthead (docs home) */
+/* Masthead (docs home)
+------------------------- */
 .masthead {
   margin-bottom: 60px;
 }
@@ -172,21 +183,47 @@ hr.soften {
 .masthead p {
 }
 .masthead h1 {
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 .masthead p {
   font-size: 30px;
-  line-height: 35px;
+  line-height: 40px;
 }
+
+/* Quick links
+------------------------- */
+.bs-links {
+  margin: 40px 0 0;
+  font-size: 12px;
+}
+.quick-links {
+  min-height: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+.quick-links:first-child {
+  min-height: 0;
+}
+.quick-links li {
+  display: inline;
+  margin: 0 8px;
+  color: #999;
+}
+.quick-links .github-btn,
+.quick-links .tweet-btn,
+.quick-links .follow-btn {
+  position: relative;
+  top: 5px;
+}
+
 
 
 /* Specific jumbotrons
 ------------------------- */
 /* supporting docs pages */
 .subhead {
-  padding-bottom: 12px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #e5e5e5;
 }
 .subhead h1 {
   font-size: 60px;
@@ -290,32 +327,6 @@ hr.soften {
 }
 
 
-/* Quick links
--------------------------------------------------- */
-.bs-links {
-  margin: 36px 0;
-}
-.quick-links {
-  min-height: 30px;
-  margin: 0;
-  padding: 5px 0;
-  list-style: none;
-  overflow: hidden;
-}
-.quick-links:first-child {
-  min-height: 0;
-}
-.quick-links li {
-  display: inline;
-  margin: 0 8px;
-  color: #999;
-}
-.quick-links .github-btn,
-.quick-links .tweet-btn,
-.quick-links .follow-btn {
-  position: relative;
-  top: 5px;
-}
 
 
 /* Marketing section of Overview
@@ -683,6 +694,12 @@ form.well {
 }
 .bs-docs-example p:last-child {
   margin-bottom: 0;
+}
+.bs-docs-example .table {
+  margin-bottom: 5px;
+}
+form.bs-docs-example {
+  padding-bottom: 19px;
 }
 .bs-docs-example .lead {
   font-size: 18px;
