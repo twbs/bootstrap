@@ -12,18 +12,18 @@
 
 body {
   position: relative;
-  padding-top: 40px;
+  padding-top: 100px;
   font-size: 14px;
   background-color: #fff;
   background-image: url(../img/grid-20px.png);
   background-repeat: repeat-x;
-  background-position: 0 0;
+  background-position: 0 40px;
 }
 
 /* Custom container for the narrow docs */
 .bs-docs-container {
   max-width: 780px;
-  margin: 0 0 0 240px;
+  margin: 0 auto;
 }
 
 /* Increase docs base type size and line-heights */
@@ -43,6 +43,7 @@ li {
 -------------------------------------------------- */
 
 .bs-docs-nav {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
