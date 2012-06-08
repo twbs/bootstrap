@@ -39,6 +39,31 @@ li {
 
 
 
+/* Tweak navbar brand link to be super sleek
+-------------------------------------------------- */
+
+.navbar,
+.subnav {
+  font-size: 13px;
+}
+.navbar-fixed-top .brand {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 20px;
+  float: right;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+.navbar-fixed-top .brand:hover {
+  text-decoration: none;
+}
+
+
+
 /* Left nav
 -------------------------------------------------- */
 
@@ -150,6 +175,7 @@ hr.soften {
 ------------------------- */
 .jumbotron {
   position: relative;
+  text-align: center;
 }
 .jumbotron h1 {
   margin-bottom: 10px;
@@ -159,7 +185,6 @@ hr.soften {
   line-height: 1;
 }
 .jumbotron p {
-  max-width: 780px;
   margin-bottom: 20px;
   font-weight: 300;
 }
@@ -179,7 +204,8 @@ hr.soften {
 /* Masthead (docs home)
 ------------------------- */
 .masthead {
-  margin-bottom: 60px;
+  margin-top: 20px;
+  margin-bottom: 80px;
 }
 .masthead h1,
 .masthead p {
@@ -226,11 +252,14 @@ hr.soften {
 ------------------------- */
 /* supporting docs pages */
 .subhead {
+  text-align: left;
 }
 .subhead h1 {
   font-size: 60px;
 }
 .subhead .lead {
+  max-width: 780px;
+  margin-bottom: 30px;
   line-height: 25px;
 }
 
@@ -340,6 +369,7 @@ hr.soften {
   margin: 36px 0 27px;
   font-size: 40px;
   font-weight: 300;
+  text-align: center;
 }
 .marketing h2,
 .marketing h3 {
@@ -366,6 +396,7 @@ hr.soften {
   font-weight: 300;
   line-height: 24px;
   color: #999;
+  text-align: center;
 }
 
 
@@ -600,6 +631,9 @@ h2 + .row {
 }
 
 /* Example sites showcase */
+.example-sites {
+  margin-left: 20px;
+}
 .example-sites img {
   max-width: 100%;
   margin: 0 auto;
