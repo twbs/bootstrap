@@ -77,7 +77,7 @@
           , activeTarget = this.activeTarget
           , i
 
-        if (scrollTop >= maxScroll) {
+        if (maxScroll && scrollTop >= maxScroll) {
           return activeTarget != (i = targets.last()[0])
             && this.activate ( i )
         }
