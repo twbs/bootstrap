@@ -258,9 +258,10 @@ hr.soften {
   font-size: 60px;
 }
 .subhead .lead {
-  max-width: 780px;
   margin-bottom: 30px;
   line-height: 25px;
+  font-size: 30px;
+  line-height: 40px;
 }
 
 /* Subnav */
