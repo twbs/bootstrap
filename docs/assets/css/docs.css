@@ -455,8 +455,12 @@ hr.soften {
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
           box-shadow: 0 1px 2px rgba(0,0,0,.075);
 }
+.mini-layout,
+.mini-layout .mini-layout-body,
+.mini-layout.fluid .mini-layout-sidebar {
+  height: 300px;
+}
 .mini-layout {
-  height: 240px;
   margin-bottom: 20px;
   padding: 9px;
 }
@@ -469,7 +473,6 @@ hr.soften {
   background-color: #dceaf4;
   margin: 0 auto;
   width: 70%;
-  height: 240px;
 }
 .mini-layout.fluid .mini-layout-sidebar,
 .mini-layout.fluid .mini-layout-header,
@@ -479,7 +482,6 @@ hr.soften {
 .mini-layout.fluid .mini-layout-sidebar {
   background-color: #bbd8e9;
   width: 20%;
-  height: 240px;
 }
 .mini-layout.fluid .mini-layout-body {
   width: 77.5%;

@@ -39,7 +39,7 @@
     {{/production}}
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target=".subnav" data-offset="50">
 
     <!-- Navbar
     ================================================== -->
@@ -85,84 +85,6 @@
       </div>
     </div>
 
-    <div class="bs-docs-nav">
-      <h3 class="bs-docs-logo"><a href="./index.html">{{_i}}Bootstrap{{/i}}</a></h3>
-      <ul class="bs-nav">
-        <li class="{{scaffolding}}">
-          <a href="./scaffolding.html">{{_i}}Scaffolding{{/i}}</a>
-          <ul>
-            <li><a href="./scaffolding.html#global">{{_i}}Global styles{{/i}}</a></li>
-            <li><a href="./scaffolding.html#gridSystem">{{_i}}Grid system{{/i}}</a></li>
-            <li><a href="./scaffolding.html#fluidGridSystem">{{_i}}Fluid grid system{{/i}}</a></li>
-            <li><a href="./scaffolding.html#gridCustomization">{{_i}}Customizing{{/i}}</a></li>
-            <li><a href="./scaffolding.html#layouts">{{_i}}Layouts{{/i}}</a></li>
-            <li><a href="./scaffolding.html#responsive">{{_i}}Responsive design{{/i}}</a></li>
-          </ul>
-        </li>
-        <li class="{{base-css}}">
-          <a href="./base-css.html">{{_i}}Base CSS{{/i}}</a>
-          <ul>
-            <li><a href="./base-css.html#typography">{{_i}}Typography{{/i}}</a></li>
-            <li><a href="./base-css.html#code">{{_i}}Code{{/i}}</a></li>
-            <li><a href="./base-css.html#tables">{{_i}}Tables{{/i}}</a></li>
-            <li><a href="./base-css.html#forms">{{_i}}Forms{{/i}}</a></li>
-            <li><a href="./base-css.html#buttons">{{_i}}Buttons{{/i}}</a></li>
-            <li><a href="./base-css.html#icons">{{_i}}Icons by Glyphicons{{/i}}</a></li>
-          </ul>
-        </li>
-        <li class="{{components}}">
-          <a href="./components.html">{{_i}}Components{{/i}}</a>
-          <ul>
-            <li><a href="./components.html#buttonGroups">{{_i}}Button groups{{/i}}</a></li>
-            <li><a href="./components.html#buttonDropdowns">{{_i}}Button dropdowns{{/i}}</a></li>
-            <li><a href="./components.html#navs">{{_i}}Nav, tabs, pills{{/i}}</a></li>
-            <li><a href="./components.html#navbar">{{_i}}Navbar{{/i}}</a></li>
-            <li><a href="./components.html#breadcrumbs">{{_i}}Breadcrumbs{{/i}}</a></li>
-            <li><a href="./components.html#pagination">{{_i}}Pagination{{/i}}</a></li>
-            <li><a href="./components.html#labels">{{_i}}Labels{{/i}}</a></li>
-            <li><a href="./components.html#badges">{{_i}}Badges{{/i}}</a></li>
-            <li><a href="./components.html#typography">{{_i}}Typography{{/i}}</a></li>
-            <li><a href="./components.html#thumbnails">{{_i}}Thumbnails{{/i}}</a></li>
-            <li><a href="./components.html#alerts">{{_i}}Alerts{{/i}}</a></li>
-            <li><a href="./components.html#progress">{{_i}}Progress bars{{/i}}</a></li>
-            <li><a href="./components.html#misc">{{_i}}Miscellaneous{{/i}}</a></li>
-          </ul>
-        </li>
-        <li class="{{javascript}}">
-          <a href="./javascript.html">{{_i}}Javascript{{/i}}</a>
-          <ul>
-            <li><a href="./javascript.html#javascript">{{_i}}All plugins{{/i}}</a></li>
-            <li><a href="./javascript.html#modals">{{_i}}Modal{{/i}}</a></li>
-            <li><a href="./javascript.html#dropdowns">{{_i}}Dropdown{{/i}}</a></li>
-            <li><a href="./javascript.html#scrollspy">{{_i}}Scrollspy{{/i}}</a></li>
-            <li><a href="./javascript.html#tabs">{{_i}}Tab{{/i}}</a></li>
-            <li><a href="./javascript.html#tooltips">{{_i}}Tooltip{{/i}}</a></li>
-            <li><a href="./javascript.html#popovers">{{_i}}Popover{{/i}}</a></li>
-            <li><a href="./javascript.html#alerts">{{_i}}Alert{{/i}}</a></li>
-            <li><a href="./javascript.html#buttons">{{_i}}Button{{/i}}</a></li>
-            <li><a href="./javascript.html#collapse">{{_i}}Collapse{{/i}}</a></li>
-            <li><a href="./javascript.html#carousel">{{_i}}Carousel{{/i}}</a></li>
-            <li><a href="./javascript.html#typeahead">{{_i}}Typeahead{{/i}}</a></li>
-          </ul>
-        </li>
-        <li class="{{less}}">
-          <a href="./less.html">{{_i}}LESS{{/i}}</a>
-          <ul>
-            <li><a href="./less.html#builtWith">{{_i}}Built with Less{{/i}}</a></li>
-            <li><a href="./less.html#variables">{{_i}}Variables{{/i}}</a></li>
-            <li><a href="./less.html#mixins">{{_i}}Mixins{{/i}}</a></li>
-            <li><a href="./less.html#compiling">{{_i}}Compiling Bootstrap{{/i}}</a></li>
-          </ul>
-        </li>
-        <li class="{{download}}">
-          <a href="./download.html">{{_i}}Customize{{/i}}</a>
-        </li>
-        <li class="{{examples}}">
-          <a href="./examples.html">{{_i}}Examples{{/i}}</a>
-        </li>
-      </ul>
-    </div>
-
     <div class="bs-docs-container">
 
 {{>body}}
@@ -177,7 +99,7 @@
         <p>{{_i}}Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.{{/i}}</p>
       </footer>
 
-    </div><!-- /container -->
+    </div>{{! /container }}
 
 
 
