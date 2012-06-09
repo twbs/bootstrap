@@ -346,7 +346,7 @@ hr.soften {
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
   }
   .subnav-fixed .nav {
-    width: 938px;
+    max-width: 780px;
     margin: 0 auto;
     padding: 0 1px;
   }
@@ -918,7 +918,7 @@ form.bs-docs-example {
   /* Jumbotron buttons */
   .jumbotron .btn {
     margin-bottom: 10px;
-  }
+av  }
 
   /* Subnav */
   .subnav {
@@ -1026,7 +1026,7 @@ form.bs-docs-example {
 
   /* Update subnav container */
   .subnav-fixed .nav {
-    width: 1168px; /* 2px less to account for left/right borders being removed when in fixed mode */
+    max-width: 970px; /* 2px less to account for left/right borders being removed when in fixed mode */
   }
 
 }
