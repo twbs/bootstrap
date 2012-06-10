@@ -1202,6 +1202,9 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   <div class="page-header">
     <h1>Buttons</h1>
   </div>
+
+  <h2>Default buttons</h2>
+  <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -1249,13 +1252,14 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </tbody>
   </table>
 
-  <h3>Buttons for actions</h3>
-  <p>As a convention, buttons should only be used for actions while hyperlinks are to be used for objects. For instance, "Download" should be a button while "recent activity" should be a link.</p>
-  <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements.</p>
-  <h3>Cross browser compatibility</h3>
+  <h4>Cross browser compatibility</h4>
   <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
 
-  <h3>Multiple sizes</h3>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Button sizes</h2>
   <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for two additional sizes.</p>
   <p>
     <button class="btn btn-large btn-primary">Primary action</button>
@@ -1269,29 +1273,51 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     <button class="btn btn-mini btn-primary">Primary action</button>
     <button class="btn btn-mini">Action</button>
   </p>
-  <br>
-  <h3>Disabled state</h3>
-  <p>For disabled buttons, add the <code>.disabled</code> class to links and the <code>disabled</code> attribute for <code>&lt;button&gt;</code> elements.</p>
-  <p>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Disabled state</h2>
+  <p>Make buttons look unclickable by fading them back 50%.</p>
+
+  <h3>Anchor element</h3>
+  <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+  <p class="bs-docs-example">
     <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
     <a href="#" class="btn btn-large disabled">Link</a>
   </p>
-  <p style="margin-bottom: 18px;">
-    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-    <button class="btn btn-large" disabled>Button</button>
-  </p>
+<pre class="prettyprint linenums">
+&lt;a href="#" class="btn btn-large btn-primary disabled"&gt;Primary link&lt;/a&gt;
+&lt;a href="#" class="btn btn-large disabled"&gt;Link&lt;/a&gt;
+</pre>
   <p>
     <span class="label label-info">Heads up!</span>
     We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
   </p>
 
-  <h3>One class, multiple tags</h3>
+  <h3>Button element</h3>
+  <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+  <p class="bs-docs-example">
+    <button class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+    <button class="btn btn-large" disabled>Button</button>
+  </p>
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-large btn-primary disabled" disabled="disabled"&gt;Primary button&lt;/button&gt;
+&lt;button class="btn btn-large" disabled&gt;Button&lt;/button&gt;
+</pre>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>One class, multiple tags</h2>
   <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
-<form>
-<a class="btn" href="">Link</a>
-<button class="btn" type="submit">Button</button>
-<input class="btn" type="button" value="Input">
-<input class="btn" type="submit" value="Submit">
+<form class="bs-docs-example">
+  <a class="btn" href="">Link</a>
+  <button class="btn" type="submit">Button</button>
+  <input class="btn" type="button" value="Input">
+  <input class="btn" type="submit" value="Submit">
 </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
@@ -1346,6 +1372,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-download"></i> icon-download</li>
         <li><i class="icon-upload"></i> icon-upload</li>
         <li><i class="icon-inbox"></i> icon-inbox</li>
+      </ul>
+    </div>
+    <div class="span2">
+      <ul class="the-icons">
         <li><i class="icon-play-circle"></i> icon-play-circle</li>
         <li><i class="icon-repeat"></i> icon-repeat</li>
         <li><i class="icon-refresh"></i> icon-refresh</li>
@@ -1353,10 +1383,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-lock"></i> icon-lock</li>
         <li><i class="icon-flag"></i> icon-flag</li>
         <li><i class="icon-headphones"></i> icon-headphones</li>
-      </ul>
-    </div>
-    <div class="span2">
-      <ul class="the-icons">
         <li><i class="icon-volume-off"></i> icon-volume-off</li>
         <li><i class="icon-volume-down"></i> icon-volume-down</li>
         <li><i class="icon-volume-up"></i> icon-volume-up</li>
@@ -1378,6 +1404,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-align-right"></i> icon-align-right</li>
         <li><i class="icon-align-justify"></i> icon-align-justify</li>
         <li><i class="icon-list"></i> icon-list</li>
+      </ul>
+    </div>
+    <div class="span2">
+      <ul class="the-icons">
         <li><i class="icon-indent-left"></i> icon-indent-left</li>
         <li><i class="icon-indent-right"></i> icon-indent-right</li>
         <li><i class="icon-facetime-video"></i> icon-facetime-video</li>
@@ -1392,10 +1422,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-move"></i> icon-move</li>
         <li><i class="icon-step-backward"></i> icon-step-backward</li>
         <li><i class="icon-fast-backward"></i> icon-fast-backward</li>
-      </ul>
-    </div>
-    <div class="span2">
-      <ul class="the-icons">
         <li><i class="icon-backward"></i> icon-backward</li>
         <li><i class="icon-play"></i> icon-play</li>
         <li><i class="icon-pause"></i> icon-pause</li>
@@ -1410,6 +1436,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-minus-sign"></i> icon-minus-sign</li>
         <li><i class="icon-remove-sign"></i> icon-remove-sign</li>
         <li><i class="icon-ok-sign"></i> icon-ok-sign</li>
+      </ul>
+    </div>
+    <div class="span2">
+      <ul class="the-icons">
         <li><i class="icon-question-sign"></i> icon-question-sign</li>
         <li><i class="icon-info-sign"></i> icon-info-sign</li>
         <li><i class="icon-screenshot"></i> icon-screenshot</li>
@@ -1431,10 +1461,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-leaf"></i> icon-leaf</li>
         <li><i class="icon-fire"></i> icon-fire</li>
         <li><i class="icon-eye-open"></i> icon-eye-open</li>
-      </ul>
-    </div>
-    <div class="span2">
-      <ul class="the-icons">
         <li><i class="icon-eye-close"></i> icon-eye-close</li>
         <li><i class="icon-warning-sign"></i> icon-warning-sign</li>
         <li><i class="icon-plane"></i> icon-plane</li>
@@ -1442,6 +1468,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li><i class="icon-random"></i> icon-random</li>
         <li><i class="icon-comment"></i> icon-comment</li>
         <li><i class="icon-magnet"></i> icon-magnet</li>
+      </ul>
+    </div>
+    <div class="span2">
+      <ul class="the-icons">
         <li><i class="icon-chevron-up"></i> icon-chevron-up</li>
         <li><i class="icon-chevron-down"></i> icon-chevron-down</li>
         <li><i class="icon-retweet"></i> icon-retweet</li>
