@@ -742,7 +742,8 @@ form.well {
 .bs-docs-example .table,
 .bs-docs-example .progress,
 .bs-docs-example .well,
-.bs-docs-example .alert {
+.bs-docs-example .alert,
+.bs-docs-example .hero-unit {
   margin-bottom: 5px;
 }
 form.bs-docs-example {
