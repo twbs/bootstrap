@@ -739,7 +739,10 @@ form.well {
 .bs-docs-example p:last-child {
   margin-bottom: 0;
 }
-.bs-docs-example .table {
+.bs-docs-example .table,
+.bs-docs-example .progress,
+.bs-docs-example .well,
+.bs-docs-example .alert {
   margin-bottom: 5px;
 }
 form.bs-docs-example {

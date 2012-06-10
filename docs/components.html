@@ -1579,50 +1579,68 @@
     <h1>Alerts <small>Styles for success, warning, and error messages</small></h1>
   </div>
 
-  <h2>Lightweight defaults</h2>
-
-  <h3>Rewritten base class</h3>
-  <p>With Bootstrap 2, we've simplified the base class: <code>.alert</code> instead of <code>.alert-message</code>. We've also reduced the minimum required markup&mdash;no <code>&lt;p&gt;</code> is required by default, just the outer <code>&lt;div&gt;</code>.</p>
-  <h3>Single alert message</h3>
-  <p>For a more durable component with less code, we've removed the differentiating look for block alerts, messages that come with more padding and typically more text. The class also has changed to <code>.alert-block</code>.</p>
-  <hr>
-  <h3>Goes great with javascript</h3>
-  <p>Bootstrap comes with a great jQuery plugin that supports alert messages, making dismissing them quick and easy.</p>
-  <p><a class="btn js-btn" href="./javascript.html#alerts">Get the plugin &raquo;</a></p>
-
-  <h3>Example alerts</h3>
-  <p>Wrap your message and an optional close icon in a div with simple class.</p>
-  <div class="alert">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Warning!</strong> Best check yo self, you're not looking too good.
+  <h2>Default alert</h2>
+  <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
+  <div class="bs-docs-example">
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Warning!</strong> Best check yo self, you're not looking too good.
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert"&gt;
-  &lt;button class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
+  &lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
   &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you're not looking too good.
 &lt;/div&gt;
 </pre>
-  <p><span class="label label-info">Heads up!</span> iOS devices require an <code>href="#"</code> for the dismissal of alerts. Be sure to include it and the data attribute for anchor close icons. Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
-  <p>Easily extend the standard alert message with two optional classes: <code>.alert-block</code> for more padding and text controls and <code>.alert-heading</code> for a matching heading.</p>
-  <div class="alert alert-block">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <h4 class="alert-heading">Warning!</h4>
-    <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+
+  <h3>Dismiss buttons</h3>
+  <p>Mobile Safari and Mobile Opera browsers, in addition to the <code>data-dismiss="alert"</code> attribute, require an <code>href="#"</code> for the dismissal of alerts when using an <code>&lt;a&gt;</code> tag.</p>
+<pre class="prettyprint linenums">
+&lt;a href="#" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
+</pre>
+  <p>Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
+<pre class="prettyprint linenums">
+&lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
+</pre>
+
+  <h3>Dismiss alerts via javascript</h3>
+  <p>Use the <a href="./javascript.html#alerts">alerts jQuery plugin</a> for quick and easy dismissal of alerts.</p>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Options</h2>
+  <p>For longer messages, increase the padding on the top and bottom of the alert wrapper by adding <code>.alert-block</code>.</p>
+  <div class="bs-docs-example">
+    <div class="alert alert-block">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4>Warning!</h4>
+      <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
-  &lt;a class="close" data-dismiss="alert" href="#"&gt;&times;&lt;/a&gt;
-  &lt;h4 class="alert-heading"&gt;Warning!&lt;/h4&gt;
+  &lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;
+  &lt;h4&gt;Warning!&lt;/h4&gt;
   Best check yo self, you're not...
 &lt;/div&gt;
 </pre>
 
-  <h2>Contextual alternatives <small>Add optional classes to change an alert's connotation</small></h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Contextual alternatives</h2>
+  <p>Add optional classes to change an alert's connotation.</p>
 
   <h3>Error or danger</h3>
-  <div class="alert alert-error">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Oh snap!</strong> Change a few things up and try submitting again.
+  <div class="bs-docs-example">
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Oh snap!</strong> Change a few things up and try submitting again.
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-error"&gt;
@@ -1631,9 +1649,11 @@
 </pre>
 
   <h3>Success</h3>
-  <div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Well done!</strong> You successfully read this important alert message.
+  <div class="bs-docs-example">
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-success"&gt;
@@ -1642,9 +1662,11 @@
 </pre>
 
   <h3>Information</h3>
-  <div class="alert alert-info">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+  <div class="bs-docs-example">
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-info"&gt;
@@ -1667,78 +1689,116 @@
 
   <h3>Basic</h3>
   <p>Default progress bar with a vertical gradient.</p>
-  <div class="progress">
-    <div class="bar" style="width: 60%;"></div>
+  <div class="bs-docs-example">
+    <div class="progress">
+      <div class="bar" style="width: 60%;"></div>
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
-  &lt;div class="bar"
-       style="width: 60%;"&gt;&lt;/div&gt;
+  &lt;div class="bar" style="width: 60%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
   <h3>Striped</h3>
-  <p>Uses a gradient to create a striped effect (no IE).</p>
-  <div class="progress progress-striped">
-    <div class="bar" style="width: 20%;"></div>
+  <p>Uses a gradient to create a striped effect. Not available in IE7-8.</p>
+  <div class="bs-docs-example">
+    <div class="progress progress-striped">
+      <div class="bar" style="width: 20%;"></div>
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped"&gt;
-  &lt;div class="bar"
-       style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="bar" style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
   <h3>Animated</h3>
-  <p>Takes the striped example and animates it (no IE).</p>
-  <div class="progress progress-striped active">
-    <div class="bar" style="width: 45%"></div>
+  <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
+  <div class="bs-docs-example">
+    <div class="progress progress-striped active">
+      <div class="bar" style="width: 45%"></div>
+    </div>
   </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-striped
-     active"&gt;
-  &lt;div class="bar"
-       style="width: 40%;"&gt;&lt;/div&gt;
+&lt;div class="progress progress-striped active"&gt;
+  &lt;div class="bar" style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
-  <h2>Options and browser support</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Options</h2>
 
   <h3>Additional colors</h3>
   <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
-  <div class="progress progress-info" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 20%"></div>
+  <div class="bs-docs-example">
+    <div class="progress progress-info" style="margin-bottom: 9px;">
+      <div class="bar" style="width: 20%"></div>
+    </div>
+    <div class="progress progress-success" style="margin-bottom: 9px;">
+      <div class="bar" style="width: 40%"></div>
+    </div>
+    <div class="progress progress-warning" style="margin-bottom: 9px;">
+      <div class="bar" style="width: 60%"></div>
+    </div>
+    <div class="progress progress-danger">
+      <div class="bar" style="width: 80%"></div>
+    </div>
   </div>
-  <div class="progress progress-success" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 40%"></div>
-  </div>
-  <div class="progress progress-warning" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 60%"></div>
-  </div>
-  <div class="progress progress-danger" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 80%"></div>
-  </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress progress-info"&gt;
+  &lt;div class="bar" style="width: 20%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="progress progress-success"&gt;
+  &lt;div class="bar" style="width: 40%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="progress progress-warning"&gt;
+  &lt;div class="bar" style="width: 60%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="progress progress-danger"&gt;
+  &lt;div class="bar" style="width: 80%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
   <h3>Striped bars</h3>
   <p>Similar to the solid colors, we have varied striped progress bars.</p>
-  <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 20%"></div>
+  <div class="bs-docs-example">
+    <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
+      <div class="bar" style="width: 20%"></div>
+    </div>
+    <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
+      <div class="bar" style="width: 40%"></div>
+    </div>
+    <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
+      <div class="bar" style="width: 60%"></div>
+    </div>
+    <div class="progress progress-danger progress-striped">
+      <div class="bar" style="width: 80%"></div>
+    </div>
   </div>
-  <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 40%"></div>
-  </div>
-  <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 60%"></div>
-  </div>
-  <div class="progress progress-danger progress-striped" style="margin-bottom: 9px;">
-    <div class="bar" style="width: 80%"></div>
-  </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress progress-info progress-striped"&gt;
+  &lt;div class="bar" style="width: 20%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="progress progress-success progress-striped"&gt;
+  &lt;div class="bar" style="width: 40%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="progress progress-warning progress-striped"&gt;
+  &lt;div class="bar" style="width: 60%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="progress progress-danger progress-striped"&gt;
+  &lt;div class="bar" style="width: 80%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
-  <h3>Behavior</h3>
-  <p>Progress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.</p>
-  <p>If you use the <code>.active</code> class, your <code>.progress-striped</code> progress bars will animate the stripes left to right.</p>
 
-  <h3>Browser support</h3>
+  <hr class="bs-docs-separator">
+
+
+  <h2>Browser support</h2>
   <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.</p>
   <p>Opera and IE do not support animations at this time.</p>
 
@@ -1757,21 +1817,33 @@
 
   <h2>Wells</h2>
   <p>Use the well as a simple effect on an element to give it an inset effect.</p>
-  <div class="well">
-    Look, I'm in a well!
+  <div class="bs-docs-example">
+    <div class="well">
+      Look, I'm in a well!
+    </div>
   </div>
 <pre class="prettyprint linenums">
 &lt;div class="well"&gt;
   ...
 &lt;/div&gt;
 </pre>
-  <h4>Optional classes</h4>
+  <h3>Optional classes</h3>
   <p>Control padding and rounded corners with two optional modifier classes.</p>
+  <div class="bs-docs-example">
+    <div class="well well-large">
+      Look, I'm in a well!
+    </div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="well well-large"&gt;
   ...
 &lt;/div&gt;
 </pre>
+  <div class="bs-docs-example">
+    <div class="well well-small">
+      Look, I'm in a well!
+    </div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="well well-small"&gt;
   ...
@@ -1779,7 +1851,9 @@
 </pre>
   <h2>Close icon</h2>
   <p>Use the generic close icon for dismissing content like modals and alerts.</p>
-  <p><button class="close" style="float: none;">&times;</button></p>
+  <div class="bs-docs-example">
+    <p><button class="close" style="float: none;">&times;</button></p>
+  </div>
 <pre class="prettyprint linenums">&lt;button class="close"&gt;&amp;times;&lt;/button&gt;</pre>
   <p>iOS devices require an href="#" for click events if you rather use an anchor.</p>
 <pre class="prettyprint linenums">&lt;a class="close" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
