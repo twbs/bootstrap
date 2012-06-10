@@ -641,48 +641,11 @@
     <h1>{{_i}}Forms{{/i}}</h1>
   </div>
 
-  <h2>{{_i}}Controls and layouts{{/i}}</h2>
-  <p>{{_i}}Forms include styles for all the base form controls like <code>input</code>, <code>textarea</code>, and <code>select</code> you'd expect. There are also a number of custom components like appended and prepended inputs and support for lists of checkboxes.{{/i}}</p>
-  <p>{{_i}}Bootstrap provides simple markup and styles for four styles of common web forms. Each layout requires small changes to surrounding markup, but the controls themselves remain and behave the same.{{/i}}</p>
-  <p>{{_i}}Error, warning, and success states are included for form controls, as wel as disabled.{{/i}}</p>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>{{_i}}Name{{/i}}</th>
-        <th>{{_i}}Class{{/i}}</th>
-        <th>{{_i}}Description{{/i}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>{{_i}}Vertical (default){{/i}}</th>
-        <td><code>.form-vertical</code> <span class="muted">({{_i}}not required{{/i}})</span></td>
-        <td>{{_i}}Stacked, left-aligned labels over controls{{/i}}</td>
-      </tr>
-      <tr>
-        <th>{{_i}}Inline{{/i}}</th>
-        <td><code>.form-inline</code></td>
-        <td>{{_i}}Left-aligned label and inline-block controls for compact style{{/i}}</td>
-      </tr>
-      <tr>
-        <th>{{_i}}Search{{/i}}</th>
-        <td><code>.form-search</code></td>
-        <td>{{_i}}Extra-rounded text input for a typical search aesthetic{{/i}}</td>
-      </tr>
-      <tr>
-        <th>{{_i}}Horizontal{{/i}}</th>
-        <td><code>.form-horizontal</code></td>
-        <td>{{_i}}Float left, right-aligned labels on same line as controls{{/i}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>{{_i}}Example forms <small>using just form controls, no extra markup</small>{{/i}}</h2>
-  <h3>{{_i}}Basic form{{/i}}</h3>
-  <p>{{_i}}Smart and lightweight defaults without extra markup.{{/i}}</p>
+  <h2>{{_i}}Default styles{{/i}}</h2>
+  <p>{{_i}}Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.{{/i}}</p>
   <form class="bs-docs-example">
     <label>{{_i}}Label name{{/i}}</label>
-    <input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}">
+    <input type="text" placeholder="{{_i}}Type something…{{/i}}">
     <p class="help-block">{{_i}}Example block-level help text here.{{/i}}</p>
     <label class="checkbox">
       <input type="checkbox"> {{_i}}Check me out{{/i}}
@@ -692,7 +655,7 @@
 <pre class="prettyprint linenums">
 &lt;form class="well"&gt;
   &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
-  &lt;input type="text" class="span3" placeholder="{{_i}}Type something…{{/i}}"&gt;
+  &lt;input type="text" placeholder="{{_i}}Type something…{{/i}}"&gt;
   &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
@@ -701,21 +664,28 @@
 &lt;/form&gt;
 </pre>
 
+
+  <hr class="bs-docs-separator"></hr>
+
+
+  <h2>{{_i}}Optional layouts{{/i}}</h2>
+  <p>{{_i}}Included with Bootstrap are three optional form layouts for common use cases.{{/i}}</p>
+
   <h3>{{_i}}Search form{{/i}}</h3>
-  <p>{{_i}}Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>input</code>.{{/i}}</p>
+  <p>{{_i}}Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>&lt;input&gt;</code> for an extra-rounded text input.{{/i}}</p>
   <form class="bs-docs-example form-search">
     <input type="text" class="input-medium search-query">
     <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
   </form>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;form class="well form-search"&gt;
+&lt;form class="form-search"&gt;
   &lt;input type="text" class="input-medium search-query"&gt;
   &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
   <h3>{{_i}}Inline form{{/i}}</h3>
-  <p>{{_i}}Add <code>.form-inline</code> to finesse the vertical alignment and spacing of form controls.{{/i}}</p>
+  <p>{{_i}}Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.{{/i}}</p>
   <form class="bs-docs-example form-inline">
     <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}">
     <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
@@ -725,7 +695,7 @@
     <button type="submit" class="btn">{{_i}}Sign in{{/i}}</button>
   </form>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;form class="well form-inline"&gt;
+&lt;form class="form-inline"&gt;
   &lt;input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}"&gt;
   &lt;input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}"&gt;
   &lt;label class="checkbox"&gt;
@@ -735,331 +705,424 @@
 &lt;/form&gt;
 </pre>
 
-  <br>
-
-  <h2>{{_i}}Horizontal forms{{/i}}</h2>
-  <p>{{_i}}Shown on the right are all the default form controls we support. Here's the bulleted list:{{/i}}</p>
+  <h3>{{_i}}Horizontal form{{/i}}</h3>
+  <p>{{_i}}Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:{{/i}}</p>
   <ul>
-    <li>{{_i}}text inputs (text, password, email, etc){{/i}}</li>
-    <li>{{_i}}checkbox{{/i}}</li>
-    <li>{{_i}}radio{{/i}}</li>
-    <li>{{_i}}select{{/i}}</li>
-    <li>{{_i}}multiple select{{/i}}</li>
-    <li>{{_i}}file input{{/i}}</li>
-    <li>{{_i}}textarea{{/i}}</li>
+    <li>{{_i}}Add <code>.form-horizontal</code> to the form{{/i}}</li>
+    <li>{{_i}}Wrap labels and controls in <code>.control-group</code>{{/i}}</li>
+    <li>{{_i}}Add <code>.control-label</code> to the label{{/i}}</li>
+    <li>{{_i}}Wrap any associated controls in <code>.controls</code> for proper alignment{{/i}}</li>
   </ul>
-
-  <form class="form-horizontal">
-    <fieldset>
-      <div class="control-group">
-        <label class="control-label" for="input01">{{_i}}Text input{{/i}}</label>
-        <div class="controls">
-          <input type="text" class="input-xlarge" id="input01">
-          <p class="help-block">{{_i}}In addition to freeform text, any HTML5 text-based input appears like so.{{/i}}</p>
-        </div>
+  <form class="bs-docs-example form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="">{{_i}}Email{{/i}}</label>
+      <div class="controls">
+        <input type="text" placeholder="{{_i}}Email{{/i}}">
       </div>
-      <div class="control-group">
-        <label class="control-label" for="optionsCheckbox">{{_i}}Checkbox{{/i}}</label>
-        <div class="controls">
-          <label class="checkbox">
-            <input type="checkbox" id="optionsCheckbox" value="option1">
-            {{_i}}Option one is this and that&mdash;be sure to include why it's great{{/i}}
-          </label>
-        </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">{{_i}}Password{{/i}}</label>
+      <div class="controls">
+        <input type="password" placeholder="{{_i}}Password{{/i}}">
       </div>
-      <div class="control-group">
-        <label class="control-label" for="select01">{{_i}}Select list{{/i}}</label>
-        <div class="controls">
-          <select id="select01">
-            <option>something</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox"> {{_i}}Remember me{{/i}}
+        </label>
+        <button type="submit" class="btn">{{_i}}Sign in{{/i}}</button>
       </div>
-      <div class="control-group">
-        <label class="control-label" for="multiSelect">{{_i}}Multicon-select{{/i}}</label>
-        <div class="controls">
-          <select multiple="multiple" id="multiSelect">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="fileInput">{{_i}}File input{{/i}}</label>
-        <div class="controls">
-          <input class="input-file" id="fileInput" type="file">
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="textarea">{{_i}}Textarea{{/i}}</label>
-        <div class="controls">
-          <textarea class="input-xlarge" id="textarea" rows="3"></textarea>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
-        <button class="btn">{{_i}}Cancel{{/i}}</button>
-      </div>
-    </fieldset>
+    </div>
   </form>
-  <h3>{{_i}}Example markup{{/i}}</h3>
-  <p>{{_i}}Given the above example form layout, here's the markup associated with the first input and control group. The <code>.control-group</code>, <code>.control-label</code>, and <code>.controls</code> classes are all required for styling.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;form class="form-horizontal"&gt;
-  &lt;fieldset&gt;
-    &lt;legend&gt;{{_i}}Legend text{{/i}}&lt;/legend&gt;
-    &lt;div class="control-group"&gt;
-      &lt;label class="control-label" for="input01"&gt;{{_i}}Text input{{/i}}&lt;/label&gt;
-      &lt;div class="controls"&gt;
-        &lt;input type="text" class="input-xlarge" id="input01"&gt;
-        &lt;p class="help-block"&gt;{{_i}}Supporting help text{{/i}}&lt;/p&gt;
-      &lt;/div&gt;
+  &lt;div class="control-group"&gt;
+    &lt;label class="control-label" for=""&gt;{{_i}}Email{{/i}}&lt;/label&gt;
+    &lt;div class="controls"&gt;
+      &lt;input type="text" placeholder="{{_i}}Email{{/i}}"&gt;
     &lt;/div&gt;
-  &lt;/fieldset&gt;
+  &lt;/div&gt;
+  &lt;div class="control-group"&gt;
+    &lt;label class="control-label" for=""&gt;{{_i}}Password{{/i}}&lt;/label&gt;
+    &lt;div class="controls"&gt;
+      &lt;input type="password" placeholder="{{_i}}Password{{/i}}"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="control-group"&gt;
+    &lt;div class="controls"&gt;
+      &lt;label class="checkbox"&gt;
+        &lt;input type="checkbox"&gt; {{_i}}Remember me{{/i}}
+      &lt;/label&gt;
+      &lt;button type="submit" class="btn"&gt;{{_i}}Sign in{{/i}}&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/form&gt;
 </pre>
 
-  <br>
 
-  <h2>{{_i}}Form control states{{/i}}</h2>
-  <p>{{_i}}Bootstrap features styles for browser-supported focused and <code>disabled</code> states. We remove the default Webkit <code>outline</code> and apply a <code>box-shadow</code> in its place for <code>:focus</code>.{{/i}}</p>
-  <hr>
-  <h3>{{_i}}Form validation{{/i}}</h3>
-  <p>{{_i}}It also includes validation styles for errors, warnings, and success. To use, add the error class to the surrounding <code>.control-group</code>.{{/i}}</p>
+  <hr class="bs-docs-separator"></hr>
+
+
+  <h2>{{_i}}Supported form controls{{/i}}</h2>
+  <p>{{_i}}Examples of standard form controls supported in an example form layout.{{/i}}</p>
+
+  <h3>{{_i}}Inputs{{/i}}</h3>
+  <p>{{_i}}Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.{{/i}}</p>
+  <p>{{_i}}Requires the use of a specified <code>type</code> at all times.{{/i}}</p>
+  <form class="bs-docs-example form-inline">
+    <input type="text" placeholder="Text input">
+  </form>
 <pre class="prettyprint linenums">
-&lt;fieldset
-  class="control-group error"&gt;
-  …
-&lt;/fieldset&gt;
+&lt;input type="text" placeholder="Text input"&gt;
 </pre>
 
-  <form class="form-horizontal">
-    <fieldset>
-      <div class="control-group">
-        <label class="control-label" for="focusedInput">{{_i}}Focused input{{/i}}</label>
-        <div class="controls">
-          <input class="input-xlarge focused" id="focusedInput" type="text" value="{{_i}}This is focused…{{/i}}">
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">Uneditable input</label>
-        <div class="controls">
-          <span class="input-xlarge uneditable-input">Some value here</span>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="disabledInput">{{_i}}Disabled input{{/i}}</label>
-        <div class="controls">
-          <input class="input-xlarge disabled" id="disabledInput" type="text" placeholder="{{_i}}Disabled input here…{{/i}}" disabled>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="optionsCheckbox2">{{_i}}Disabled checkbox{{/i}}</label>
-        <div class="controls">
-          <label class="checkbox">
-            <input type="checkbox" id="optionsCheckbox2" value="option1" disabled>
-            {{_i}}This is a disabled checkbox{{/i}}
-          </label>
-        </div>
-      </div>
-      <div class="control-group warning">
-        <label class="control-label" for="inputWarning">{{_i}}Input with warning{{/i}}</label>
-        <div class="controls">
-          <input type="text" id="inputWarning">
-          <span class="help-inline">{{_i}}Something may have gone wrong{{/i}}</span>
-        </div>
-      </div>
-      <div class="control-group error">
-        <label class="control-label" for="inputError">{{_i}}Input with error{{/i}}</label>
-        <div class="controls">
-          <input type="text" id="inputError">
-          <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
-        </div>
-      </div>
-      <div class="control-group success">
-        <label class="control-label" for="inputSuccess">{{_i}}Input with success{{/i}}</label>
-        <div class="controls">
-          <input type="text" id="inputSuccess">
-          <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
-        </div>
-      </div>
-      <div class="control-group success">
-        <label class="control-label" for="selectError">{{_i}}Select with success{{/i}}</label>
-        <div class="controls">
-          <select id="selectError">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-          <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
-        <button class="btn">{{_i}}Cancel{{/i}}</button>
-      </div>
-    </fieldset>
+  <h3>{{_i}}Textarea{{/i}}</h3>
+  <p>{{_i}}Form control which supports multiple lines of text. Change <code>row</code> attribute as necessary.{{/i}}</p>
+  <form class="bs-docs-example form-inline">
+    <textarea rows="3"></textarea>
   </form>
+<pre class="prettyprint linenums">
+&lt;textarea id="textarea" rows="3"&gt;&lt;/textarea&gt;
+</pre>
 
-  <br>
+  <h3>{{_i}}Checkboxes and radios{{/i}}</h3>
+  <p>{{_i}}Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.{{/i}}</p>
+  <h4>{{_i}}Default (stacked){{/i}}</h4>
+  <form class="bs-docs-example">
+    <label class="checkbox">
+      <input type="checkbox" value="">
+      {{_i}}Option one is this and that&mdash;be sure to include why it's great{{/i}}
+    </label>
+    <br>
+    <label class="radio">
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+      {{_i}}Option one is this and that&mdash;be sure to include why it's great{{/i}}
+    </label>
+    <label class="radio">
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+      {{_i}}Option two can be something else and selecting it will deselect option one{{/i}}
+    </label>
+  </form>
+<pre class="prettyprint linenums">
+&lt;label class="checkbox"&gt;
+  &lt;input type="checkbox" value=""&gt;
+  {{_i}}Option one is this and that&mdash;be sure to include why it's great{{/i}}
+&lt;/label&gt;
+
+&lt;label class="radio"&gt;
+  &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
+  {{_i}}Option one is this and that&mdash;be sure to include why it's great{{/i}}
+&lt;/label&gt;
+&lt;label class="radio"&gt;
+  &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
+  {{_i}}Option two can be something else and selecting it will deselect option one{{/i}}
+&lt;/label&gt;
+</pre>
+
+  <h4>{{_i}}Inline checkboxes{{/i}}</h4>
+  <p>{{_i}}Add the <code>.inline</code> class to a series of checkboxes or radios for controls appear on the same line.{{/i}}</p>
+  <form class="bs-docs-example">
+    <label class="checkbox inline">
+      <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+    <label class="checkbox inline">
+      <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+    <label class="checkbox inline">
+      <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+    </label>
+  </form>
+<pre class="prettyprint linenums">
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
+&lt;/label&gt;
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
+&lt;/label&gt;
+&lt;label class="checkbox inline"&gt;
+  &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
+&lt;/label&gt;
+</pre>
+
+  <h3>{{_i}}Selects{{/i}}</h3>
+  <p>{{_i}}Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.{{/i}}</p>
+  <form class="bs-docs-example">
+    <select>
+      <option>something</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <br>
+    <select>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </form>
+<pre class="prettyprint linenums">
+&lt;select&gt;
+  &lt;option&gt;something&lt;/option&gt;
+  &lt;option&gt;2&lt;/option&gt;
+  &lt;option&gt;3&lt;/option&gt;
+  &lt;option&gt;4&lt;/option&gt;
+  &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;select&gt;
+  &lt;option&gt;1&lt;/option&gt;
+  &lt;option&gt;2&lt;/option&gt;
+  &lt;option&gt;3&lt;/option&gt;
+  &lt;option&gt;4&lt;/option&gt;
+  &lt;option&gt;5&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+
+  <hr class="bs-docs-separator"></hr>
+
 
   <h2>{{_i}}Extending form controls{{/i}}</h2>
-  <h3>{{_i}}Prepend &amp; append inputs{{/i}}</h3>
-  <p>{{_i}}Input groups&mdash;with appended or prepended text&mdash;provide an easy way to give more context for your inputs. Great examples include the @ sign for Twitter usernames or $ for finances.{{/i}}</p>
-  <hr>
-  <h3>{{_i}}Checkboxes and radios{{/i}}</h3>
-  <p>{{_i}}Up to v1.4, Bootstrap required extra markup around checkboxes and radios to stack them. Now, it's a simple matter of repeating the <code>&lt;label class="checkbox"&gt;</code> that wraps the <code>&lt;input type="checkbox"&gt;</code>.{{/i}}</p>
-  <p>{{_i}}Inline checkboxes and radios are also supported. Just add <code>.inline</code> to any <code>.checkbox</code> or <code>.radio</code> and you're done.{{/i}}</p>
-  <hr>
-  <h4>{{_i}}Inline forms and append/prepend{{/i}}</h4>
-  <p>{{_i}}To use prepend or append inputs in an inline form, be sure to place the <code>.add-on</code> and <code>input</code> on the same line, without spaces.{{/i}}</p>
-  <hr>
-  <h4>{{_i}}Form help text{{/i}}</h4>
-  <p>{{_i}}To add help text for your form inputs, include inline help text with <code>&lt;span class="help-inline"&gt;</code> or a help text block with <code>&lt;p class="help-block"&gt;</code> after the input element.{{/i}}</p>
+  <p>{{_i}}Adding on top of existing browser controls, Bootstrap includes other useful form components.{{/i}}</p>
 
-  <form class="form-horizontal">
-    <fieldset>
-      <div class="control-group">
-        <label class="control-label">{{_i}}Form grid sizes{{/i}}</label>
-        <div class="controls docs-input-sizes">
-          <input class="span1" type="text" placeholder=".span1">
-          <input class="span2" type="text" placeholder=".span2">
-          <input class="span3" type="text" placeholder=".span3">
-          <select class="span1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-          <select class="span2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-          <select class="span3">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-          <p class="help-block">{{_i}}Use the same <code>.span*</code> classes from the grid system for input sizes.{{/i}}</p>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">{{_i}}Alternate sizes{{/i}}</label>
-        <div class="controls docs-input-sizes">
-          <input class="input-mini" type="text" placeholder=".input-mini">
-          <input class="input-small" type="text" placeholder=".input-small">
-          <input class="input-medium" type="text" placeholder=".input-medium">
-          <p class="help-block">{{_i}}You may also use static classes that don't map to the grid, adapt to the responsive CSS styles, or account for varying types of controls (e.g., <code>input</code> vs. <code>select</code>).{{/i}}</p>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="prependedInput">{{_i}}Prepended text{{/i}}</label>
-        <div class="controls">
-          <div class="input-prepend">
-            <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}">
-          </div>
-          <p class="help-block">{{_i}}Here's some help text{{/i}}</p>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="appendedInput">{{_i}}Appended text{{/i}}</label>
-        <div class="controls">
-          <div class="input-append">
-            <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
-          </div>
-          <span class="help-inline">{{_i}}Here's more help text{{/i}}</span>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="appendedPrependedInput">{{_i}}Append and prepend{{/i}}</label>
-        <div class="controls">
-          <div class="input-prepend input-append">
-            <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="appendedInputButton">{{_i}}Append with button{{/i}}</label>
-        <div class="controls">
-          <div class="input-append">
-            <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="appendedInputButtons">{{_i}}Two-button append{{/i}}</label>
-        <div class="controls">
-          <div class="input-append">
-            <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="inlineCheckboxes">{{_i}}Inline checkboxes{{/i}}</label>
-        <div class="controls">
-          <label class="checkbox inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-          </label>
-          <label class="checkbox inline">
-            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-          </label>
-          <label class="checkbox inline">
-            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-          </label>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="optionsCheckboxList">{{_i}}Checkboxes{{/i}}</label>
-        <div class="controls">
-          <label class="checkbox">
-            <input type="checkbox" name="optionsCheckboxList1" value="option1">
-            {{_i}}Option one is this and that&mdash;be sure to include why it's great{{/i}}
-          </label>
-          <label class="checkbox">
-            <input type="checkbox" name="optionsCheckboxList2" value="option2">
-            {{_i}}Option two can also be checked and included in form results{{/i}}
-          </label>
-          <label class="checkbox">
-            <input type="checkbox" name="optionsCheckboxList3" value="option3">
-            {{_i}}Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results{{/i}}
-          </label>
-          <p class="help-block">{{_i}}<strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.{{/i}}</p>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label">{{_i}}Radio buttons{{/i}}</label>
-        <div class="controls">
-          <label class="radio">
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-            {{_i}}Option one is this and that&mdash;be sure to include why it's great{{/i}}
-          </label>
-          <label class="radio">
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-            {{_i}}Option two can be something else and selecting it will deselect option one{{/i}}
-          </label>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
-        <button class="btn">{{_i}}Cancel{{/i}}</button>
-      </div>
-    </fieldset>
+  <h3>{{_i}}Prepended and appended inputs{{/i}}</h3>
+  <p>{{_i}}Add text or buttons before or after any text-based input.{{/i}}</p>
+
+  <h4>{{_i}}Default options{{/i}}</h4>
+  <p>{{_i}}Wrap a <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.{{/i}}</p>
+  <form class="bs-docs-example form-inline">
+    <div class="input-prepend">
+      <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}">
+    </div>
+    <br>
+    <div class="input-append">
+      <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
+    </div>
   </form>
+<pre class="prettyprint linenums">
+&lt;div class="input-prepend"&gt;
+  &lt;span class="add-on"&gt;@&lt;/span&gt;&lt;input class="span2" id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}"&gt;
+&lt;/div&gt;
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+  <h4>{{_i}}Combined{{/i}}</h4>
+  <p>{{_i}}Use both classes and two instances of <code>.add-on</code> to prepend and append an input.{{/i}}</p>
+  <form class="bs-docs-example form-inline">
+    <div class="input-prepend input-append">
+      <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
+    </div>
+  </form>
+<pre class="prettyprint linenums">
+&lt;div class="input-prepend input-append"&gt;
+  &lt;span class="add-on"&gt;$&lt;/span&gt;&lt;input class="span2" id="appendedPrependedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+  <h4>{{_i}}Buttons instead of text{{/i}}</h4>
+  <p>{{_i}}Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.{{/i}}</p>
+  <form class="bs-docs-example">
+    <div class="input-append">
+      <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
+    </div>
+    <br>
+    <div class="input-append">
+      <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
+    </div>
+  </form>
+<pre class="prettyprint linenums">
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButton" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButtons" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+
+  <h3>{{_i}}Control sizing{{/i}}</h3>
+  <p>{{_i}}Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.{{/i}}</p>
+
+  <h4>{{_i}}Relative sizing{{/i}}</h4>
+  <form class="bs-docs-example">
+    <div class="controls docs-input-sizes">
+      <input class="input-mini" type="text" placeholder=".input-mini">
+      <input class="input-small" type="text" placeholder=".input-small">
+      <input class="input-medium" type="text" placeholder=".input-medium">
+      <input class="input-large" type="text" placeholder=".input-large">
+      <input class="input-xlarge" type="text" placeholder=".input-xlarge">
+      <input class="input-xxlarge" type="text" placeholder=".input-xxlarge">
+    </div>
+  </form>
+<pre class="prettyprint linenums">
+&lt;input class="input-mini" type="text"&gt;
+&lt;input class="input-small" type="text"&gt;
+&lt;input class="input-medium" type="text"&gt;
+&lt;input class="input-large" type="text"&gt;
+&lt;input class="input-xlarge" type="text"&gt;
+&lt;input class="input-xxlarge" type="text"&gt;
+</pre>
+
+  <h4>{{_i}}Grid sizing{{/i}}</h4>
+  <p>{{_i}}Use <code>.span1</code> to <code>.span12</code> for inputs that match the same sizes of the grid columns.{{/i}}</p>
+  <form class="bs-docs-example">
+    <div class="controls docs-input-sizes">
+      <input class="span1" type="text" placeholder=".span1">
+      <input class="span2" type="text" placeholder=".span2">
+      <input class="span3" type="text" placeholder=".span3">
+      <select class="span1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+      <select class="span2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+      <select class="span3">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+  </form>
+<pre class="prettyprint linenums">
+&lt;input class="span1" type="text"&gt;
+&lt;input class="span2" type="text"&gt;
+&lt;input class="span3" type="text"&gt;
+</pre>
+
+  <h3>{{_i}}Uneditable inputs{{/i}}</h3>
+  <p>{{_i}}Present data in a form that's not editable without using actual form markup.{{/i}}</p>
+  <form class="bs-docs-example">
+    <span class="input-xlarge uneditable-input">Some value here</span>
+  </form>
+<pre class="prettyprint linenums">
+  &lt;span class="input-xlarge uneditable-input"&gt;Some value here&lt;/span&gt;
+</pre>
+
+  <h3>{{_i}}Form actions{{/i}}</h3>
+  <p>{{_i}}End a form with a group of actions (buttons). When placed within a <code>.form-horizontal</code>, the buttons will automatically indent to line up with the form controls.{{/i}}</p>
+  <form class="bs-docs-example">
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
+      <button class="btn">{{_i}}Cancel{{/i}}</button>
+    </div>
+  </form>
+<pre class="prettyprint linenums">
+&lt;div class="form-actions"&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/button&gt;
+  &lt;button class="btn"&gt;{{_i}}Cancel{{/i}}&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+
+  <h3>{{_i}}Help text{{/i}}</h3>
+  <p>{{_i}}Inline and block level support for help text that appears around form controls.{{/i}}</p>
+  <h4>{{_i}}Inline help{{/i}}</h4>
+  <form class="bs-docs-example form-inline">
+    <input type="text"> <span class="help-inline">Inline help text</span>
+  </form>
+<pre class="prettyprint linenums">
+&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
+</pre>
+
+  <h4>{{_i}}Block help{{/i}}</h4>
+  <form class="bs-docs-example form-inline">
+    <input type="text">
+    <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+  </form>
+<pre class="prettyprint linenums">
+&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
+</pre>
+
+
+  <hr class="bs-docs-separator"></hr>
+
+
+  <h2>{{_i}}Form control states{{/i}}</h2>
+  <p>{{_i}}Provide feedback to users or visitors with basic feedback states on form controls and labels.{{/i}}</p>
+
+  <h3>{{_i}}Input focus{{/i}}</h3>
+  <p>{{_i}}We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.{{/i}}</p>
+  <form class="bs-docs-example form-inline">
+    <input class="input-xlarge focused" id="focusedInput" type="text" value="{{_i}}This is focused...{{/i}}">
+  </form>
+<pre class="prettyprint linenums">
+&lt;input class="input-xlarge" id="focusedInput" type="text" value="{{_i}}This is focused...{{/i}}"&gt;
+</pre>
+
+  <h3>{{_i}}Disabled inputs{{/i}}</h3>
+  <p>{{_i}}Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.{{/i}}</p>
+  <form class="bs-docs-example form-inline">
+    <input class="input-xlarge" id="disabledInput" type="text" placeholder="{{_i}}Disabled input here…{{/i}}" disabled>
+  </form>
+<pre class="prettyprint linenums">
+&lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="{{_i}}Disabled input here...{{/i}}" disabled&gt;
+</pre>
+
+  <h3>{{_i}}Validation states{{/i}}</h3>
+  <p>{{_i}}Bootstrap includes validation styles for error, warning, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
+
+  <form class="bs-docs-example form-horizontal">
+    <div class="control-group warning">
+      <label class="control-label" for="inputWarning">{{_i}}Input with warning{{/i}}</label>
+      <div class="controls">
+        <input type="text" id="inputWarning">
+        <span class="help-inline">{{_i}}Something may have gone wrong{{/i}}</span>
+      </div>
+    </div>
+    <div class="control-group error">
+      <label class="control-label" for="inputError">{{_i}}Input with error{{/i}}</label>
+      <div class="controls">
+        <input type="text" id="inputError">
+        <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
+      </div>
+    </div>
+    <div class="control-group success">
+      <label class="control-label" for="inputSuccess">{{_i}}Input with success{{/i}}</label>
+      <div class="controls">
+        <input type="text" id="inputSuccess">
+        <span class="help-inline">{{_i}}Woohoo!{{/i}}</span>
+      </div>
+    </div>
+  </form>
+<pre class="prettyprint linenums">
+&lt;div class="control-group warning"&gt;
+  &lt;label class="control-label" for="inputWarning"&gt;{{_i}}Input with warning{{/i}}&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputWarning"&gt;
+    &lt;span class="help-inline"&gt;{{_i}}Something may have gone wrong{{/i}}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="control-group error"&gt;
+  &lt;label class="control-label" for="inputError"&gt;{{_i}}Input with error{{/i}}&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputError"&gt;
+    &lt;span class="help-inline"&gt;{{_i}}Please correct the error{{/i}}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="control-group success"&gt;
+  &lt;label class="control-label" for="inputSuccess"&gt;{{_i}}Input with success{{/i}}&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputSuccess"&gt;
+    &lt;span class="help-inline"&gt;{{_i}}Woohoo!{{/i}}&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
 </section>
 
 
