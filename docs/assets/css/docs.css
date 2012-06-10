@@ -743,8 +743,12 @@ form.well {
 .bs-docs-example .progress,
 .bs-docs-example .well,
 .bs-docs-example .alert,
-.bs-docs-example .hero-unit {
+.bs-docs-example .hero-unit,
+.bs-docs-example .pagination {
   margin-bottom: 5px;
+}
+.bs-docs-example .pagination {
+  margin-top: 0;
 }
 form.bs-docs-example {
   padding-bottom: 19px;

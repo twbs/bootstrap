@@ -1000,34 +1000,26 @@
     <h1>{{_i}}Breadcrumbs{{/i}} <small></small></h1>
   </div>
 
-  <h3>{{_i}}Why use them{{/i}}</h3>
-  <p>{{_i}}Breadcrumb navigation is used as a way to show users where they are within an app or a site, but not for primary navigation. Keep their use sparse and succinct to be most effective.{{/i}}</p>
-
-  <h3>{{_i}}Examples{{/i}}</h3>
+  <h2>{{_i}}Examples{{/i}}</h2>
   <p>{{_i}}A single example shown as it might be displayed across multiple pages.{{/i}}</p>
-  <ul class="breadcrumb">
-    <li class="active">{{_i}}Home{{/i}}</li>
-  </ul>
-  <ul class="breadcrumb">
-    <li><a href="#">{{_i}}Home{{/i}}</a> <span class="divider">/</span></li>
-    <li class="active">{{_i}}Library{{/i}}</li>
-  </ul>
-  <ul class="breadcrumb">
-    <li><a href="#">{{_i}}Home{{/i}}</a> <span class="divider">/</span></li>
-    <li><a href="#">{{_i}}Library{{/i}}</a> <span class="divider">/</span></li>
-    <li class="active">{{_i}}Data{{/i}}</li>
-  </ul>
-
-  <h3>{{_i}}Markup{{/i}}</h3>
-  <p>{{_i}}HTML is your standard unordered list with links.{{/i}}</p>
+  <div class="bs-docs-example">
+    <ul class="breadcrumb">
+      <li class="active">{{_i}}Home{{/i}}</li>
+    </ul>
+    <ul class="breadcrumb">
+      <li><a href="#">{{_i}}Home{{/i}}</a> <span class="divider">/</span></li>
+      <li class="active">{{_i}}Library{{/i}}</li>
+    </ul>
+    <ul class="breadcrumb" style="margin-bottom: 5px;">
+      <li><a href="#">{{_i}}Home{{/i}}</a> <span class="divider">/</span></li>
+      <li><a href="#">{{_i}}Library{{/i}}</a> <span class="divider">/</span></li>
+      <li class="active">{{_i}}Data{{/i}}</li>
+    </ul>
+  </div>
 <pre class="prettyprint linenums">
 &lt;ul class="breadcrumb"&gt;
-  &lt;li&gt;
-    &lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#"&gt;{{_i}}Library{{/i}}&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;{{_i}}Library{{/i}}&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
   &lt;li class="active"&gt;{{_i}}Data{{/i}}&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
@@ -1043,85 +1035,119 @@
     <h1>{{_i}}Pagination{{/i}} <small>{{_i}}Two options for paging through content{{/i}}</small></h1>
   </div>
 
-  <h2>{{_i}}Multicon-page pagination{{/i}}</h2>
-
-  <h3>{{_i}}When to use{{/i}}</h3>
-  <p>{{_i}}Ultra simplistic and minimally styled pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.{{/i}}</p>
-  <h3>{{_i}}Stateful page links{{/i}}</h3>
-  <p>{{_i}}Links are customizable and work in a number of circumstances with the right class. <code>.disabled</code> for unclickable links and <code>.active</code> for current page.{{/i}}</p>
-  <h3>{{_i}}Flexible alignment{{/i}}</h3>
-  <p>{{_i}}Add either of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.{{/i}}</p>
-
-  <h3>{{_i}}Examples{{/i}}</h3>
-  <p>{{_i}}The default pagination component is flexible and works in a number of variations.{{/i}}</p>
-  <div class="pagination">
-    <ul>
-      <li class="disabled"><a href="#">&laquo;</a></li>
-      <li class="active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
+  <h2>{{_i}}Standard pagination{{/i}}</h2>
+  <p>{{_i}}Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.{{/i}}</p>
+  <div class="bs-docs-example">
+    <div class="pagination">
+      <ul>
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="pagination">
-    <ul>
-      <li><a href="#">&laquo;</a></li>
-      <li><a href="#">10</a></li>
-      <li class="active"><a href="#">11</a></li>
-      <li><a href="#">12</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
-  </div>
-  <div class="pagination">
-    <ul>
-      <li><a href="#">&laquo;</a></li>
-      <li class="active"><a href="#">10</a></li>
-      <li class="disabled"><a href="#">...</a></li>
-      <li><a href="#">20</a></li>
-      <li><a href="#">&raquo;</a></li>
-    </ul>
-  </div>
-  <div class="pagination pagination-centered">
-    <ul>
-      <li class="active"><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-    </ul>
-  </div>
-
-  <h3>{{_i}}Markup{{/i}}</h3>
-  <p>{{_i}}Wrapped in a <code>&lt;div&gt;</code>, pagination is just a <code>&lt;ul&gt;</code>.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li>
-    &lt;li class="active"&gt;
-      &lt;a href="#"&gt;1&lt;/a&gt;
-    &lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li>
+    &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
 
-  <h2>{{_i}}Pager{{/i}} <small>{{_i}}For quick previous and next links{{/i}}</small></h2>
 
-  <h3>{{_i}}About pager{{/i}}</h3>
-  <p>{{_i}}The pager component is a set of links for simple pagination implementations with light markup and even lighter styles. It's great for simple sites like blogs or magazines.{{/i}}</p>
-  <h4>{{_i}}Optional disabled state{{/i}}</h4>
-  <p>{{_i}}Pager links also use the general <code>.disabled</code> class from the pagination.{{/i}}</p>
+  <hr class="bs-docs-separator">
+
+
+  <h2>{{_i}}Options{{/i}}</h2>
+
+  <h3>{{_i}}Disabled and active states{{/i}}</h3>
+  <p>{{_i}}Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.{{/i}}</p>
+  <div class="bs-docs-example">
+    <div class="pagination pagination-centered">
+      <ul>
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+     </ul>
+    </div>
+  </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination "&gt;
+  &lt;ul&gt;
+    &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li>
+    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+  <h3>{{_i}}Alignment{{/i}}</h3>
+  <p>{{_i}}Add one of two optional classes to change the alignment of pagination links: <code>.pagination-centered</code> and <code>.pagination-right</code>.{{/i}}</p>
+  <div class="bs-docs-example">
+    <div class="pagination pagination-centered">
+      <ul>
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+     </ul>
+    </div>
+  </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination pagination-centered"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+  <div class="bs-docs-example">
+    <div class="pagination pagination-right">
+      <ul>
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>
+    </div>
+  </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination pagination-right"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>{{_i}}Pager{{/i}}</h2>
+  <p>{{_i}}Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.{{/i}}</p>
 
   <h3>{{_i}}Default example{{/i}}</h3>
   <p>{{_i}}By default, the pager centers links.{{/i}}</p>
-  <ul class="pager">
-    <li><a href="#">{{_i}}Previous{{/i}}</a></li>
-    <li><a href="#">{{_i}}Next{{/i}}</a></li>
-  </ul>
+  <div class="bs-docs-example">
+    <ul class="pager">
+      <li><a href="#">{{_i}}Previous{{/i}}</a></li>
+      <li><a href="#">{{_i}}Next{{/i}}</a></li>
+    </ul>
+  </div>
 <pre class="prettyprint linenums">
 &lt;ul class="pager"&gt;
   &lt;li&gt;
@@ -1135,10 +1161,12 @@
 
   <h3>{{_i}}Aligned links{{/i}}</h3>
   <p>{{_i}}Alternatively, you can align each link to the sides:{{/i}}</p>
-  <ul class="pager">
-    <li class="previous"><a href="#">{{_i}}&larr; Older{{/i}}</a></li>
-    <li class="next"><a href="#">{{_i}}Newer &rarr;{{/i}}</a></li>
-  </ul>
+  <div class="bs-docs-example">
+    <ul class="pager">
+      <li class="previous"><a href="#">{{_i}}&larr; Older{{/i}}</a></li>
+      <li class="next"><a href="#">{{_i}}Newer &rarr;{{/i}}</a></li>
+    </ul>
+  </div>
 <pre class="prettyprint linenums">
 &lt;ul class="pager"&gt;
   &lt;li class="previous"&gt;
@@ -1147,6 +1175,23 @@
   &lt;li class="next"&gt;
     &lt;a href="#"&gt;{{_i}}Newer &amp;rarr;{{/i}}&lt;/a&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+  <h3>{{_i}}Optional disabled state{{/i}}</h3>
+  <p>{{_i}}Pager links also use the general <code>.disabled</code> utility class from the pagination.{{/i}}</p>
+  <div class="bs-docs-example">
+    <ul class="pager">
+      <li class="previous disabled"><a href="#">{{_i}}&larr; Older{{/i}}</a></li>
+      <li class="next"><a href="#">{{_i}}Newer &rarr;{{/i}}</a></li>
+    </ul>
+  </div>
+<pre class="prettyprint linenums">
+&lt;ul class="pager"&gt;
+  &lt;li class="previous disabled"&gt;
+    &lt;a href="#"&gt;{{_i}}&amp;larr; Older{{/i}}&lt;/a&gt;
+  &lt;/li&gt;
+  ...
 &lt;/ul&gt;
 </pre>
 
