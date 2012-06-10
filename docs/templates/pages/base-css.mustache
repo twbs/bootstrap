@@ -1272,6 +1272,9 @@
   <div class="page-header">
     <h1>{{_i}}Icons <small>Graciously provided by <a href="http://glyphicons.com" target="_blank">Glyphicons</a></small>{{/i}}</h1>
   </div>
+
+  <h2>{{_i}}Icon glyphs{{/i}}</h2>
+  <p>{{_i}}140 icons in sprite form, available in dark gray (default) and white, provided by <a href="http://glyphicons.com" target="_blank">Glyphicons</a>.{{/i}}</p>
   <div class="row">
     <div class="span2">
       <ul class="the-icons">
@@ -1435,16 +1438,12 @@
     </div>
   </div>
 
-  <br>
+
+  <hr class="bs-docs-separator">
 
 
-  <h3>{{_i}}Built as a sprite{{/i}}</h3>
-  <p>{{_i}}Instead of making every icon an extra request, we've compiled them into a sprite&mdash;a bunch of images in one file that uses CSS to position the images with <code>background-position</code>. This is the same method we use on Twitter.com and it has worked well for us.{{/i}}</p>
-  <p>{{_i}}All icons classes are prefixed with <code>.icon-</code> for proper namespacing and scoping, much like our other components. This will help avoid conflicts with other tools.{{/i}}</p>
-  <p>{{_i}}<a href="http://glyphicons.com" target="_blank">Glyphicons</a> has granted us use of the Halflings set in our open-source toolkit so long as we provide a link and credit here in the docs. Please consider doing the same in your projects.{{/i}}</p>
-
-  <h3>{{_i}}How to use{{/i}}</h3>
-  <p>{{_i}}Bootstrap uses an <code>&lt;i&gt;</code> tag for all icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:{{/i}}</p>
+  <h2>{{_i}}How to use{{/i}}</h2>
+  <p>{{_i}}All icons require an <code>&lt;i&gt;</code> tag with a unique class, prefixed with <code>icon-</code>. To use, place the following code just about anywhere:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search"&gt;&lt;/i&gt;
 </pre>
@@ -1452,66 +1451,55 @@
 <pre class="prettyprint linenums">
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
-  <p>{{_i}}There are 140 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.{{/i}}</p>
   <p>
     <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
     {{_i}}When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.{{/i}}
   </p>
 
-  <h3>{{_i}}Use cases{{/i}}</h3>
-  <p>{{_i}}Icons are great, but where would one use them? Here are a few ideas:{{/i}}</p>
-  <ul>
-    <li>{{_i}}As visuals for your sidebar navigation{{/i}}</li>
-    <li>{{_i}}For a purely icon-driven navigation{{/i}}</li>
-    <li>{{_i}}For buttons to help convey the meaning of an action{{/i}}</li>
-    <li>{{_i}}With links to share context on a user's destination{{/i}}</li>
-  </ul>
-  <p>{{_i}}Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon.{{/i}}</p>
+
+  <hr class="bs-docs-separator">
 
 
-  <h3>{{_i}}Examples{{/i}}</h3>
+  <h2>{{_i}}Icon examples{{/i}}</h2>
   <p>{{_i}}Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.{{/i}}</p>
 
-  <div class="btn-toolbar" style="margin-bottom: 9px">
-    <div class="btn-group">
-      <a class="btn" href="#"><i class="icon-align-left"></i></a>
-      <a class="btn" href="#"><i class="icon-align-center"></i></a>
-      <a class="btn" href="#"><i class="icon-align-right"></i></a>
-      <a class="btn" href="#"><i class="icon-align-justify"></i></a>
+  <h4>{{_i}}Buttons{{/i}}</h4>
+  <div class="bs-docs-example">
+    <div class="btn-toolbar" style="margin-bottom: 9px">
+      <div class="btn-group">
+        <a class="btn" href="#"><i class="icon-align-left"></i></a>
+        <a class="btn" href="#"><i class="icon-align-center"></i></a>
+        <a class="btn" href="#"><i class="icon-align-right"></i></a>
+        <a class="btn" href="#"><i class="icon-align-justify"></i></a>
+      </div>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> {{_i}}User{{/i}}</a>
+        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="icon-pencil"></i> {{_i}}Edit{{/i}}</a></li>
+          <li><a href="#"><i class="icon-trash"></i> {{_i}}Delete{{/i}}</a></li>
+          <li><a href="#"><i class="icon-ban-circle"></i> {{_i}}Ban{{/i}}</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="i"></i> {{_i}}Make admin{{/i}}</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="btn-group">
-      <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> {{_i}}User{{/i}}</a>
-      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-pencil"></i> {{_i}}Edit{{/i}}</a></li>
-        <li><a href="#"><i class="icon-trash"></i> {{_i}}Delete{{/i}}</a></li>
-        <li><a href="#"><i class="icon-ban-circle"></i> {{_i}}Ban{{/i}}</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="i"></i> {{_i}}Make admin{{/i}}</a></li>
+  </div>{{! /bs-docs-example }}
+
+  <h4>{{_i}}Navigation{{/i}}</h4>
+  <div class="bs-docs-example">
+    <div class="well" style="padding: 8px 0; margin-bottom: 0;">
+      <ul class="nav nav-list">
+        <li class="active"><a href="#"><i class="icon-home icon-white"></i> {{_i}}Home{{/i}}</a></li>
+        <li><a href="#"><i class="icon-book"></i> {{_i}}Library{{/i}}</a></li>
+        <li><a href="#"><i class="icon-pencil"></i> {{_i}}Applications{{/i}}</a></li>
+        <li><a href="#"><i class="i"></i> {{_i}}Misc{{/i}}</a></li>
       </ul>
-    </div>
-  </div>
-  <p>
-    <a class="btn" href="#"><i class="icon-refresh"></i> {{_i}}Refresh{{/i}}</a>
-    <a class="btn btn-success" href="#"><i class="icon-shopping-cart icon-white"></i> {{_i}}Checkout{{/i}}</a>
-    <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i> {{_i}}Delete{{/i}}</a>
-  </p>
-  <p>
-    <a class="btn btn-large" href="#"><i class="icon-comment"></i> {{_i}}Comment{{/i}}</a>
-    <a class="btn btn-small" href="#"><i class="icon-cog"></i> {{_i}}Settings{{/i}}</a>
-    <a class="btn btn-small btn-info" href="#"><i class="icon-info-sign icon-white"></i> {{_i}}More Info{{/i}}</a>
-  </p>
+    </div>{{! /well }}
+  </div>{{! /bs-docs-example }}
 
-  <div class="well" style="padding: 8px 0;">
-    <ul class="nav nav-list">
-      <li class="active"><a href="#"><i class="icon-home icon-white"></i> {{_i}}Home{{/i}}</a></li>
-      <li><a href="#"><i class="icon-book"></i> {{_i}}Library{{/i}}</a></li>
-      <li><a href="#"><i class="icon-pencil"></i> {{_i}}Applications{{/i}}</a></li>
-      <li><a href="#"><i class="i"></i> {{_i}}Misc{{/i}}</a></li>
-    </ul>
-  </div> <!-- /well -->
-
-  <form>
+  <h4>{{_i}}Form fields{{/i}}</h4>
+  <form class="bs-docs-example form-horizontal">
     <div class="control-group">
       <label class="control-label" for="inputIcon">{{_i}}Email address{{/i}}</label>
       <div class="controls">

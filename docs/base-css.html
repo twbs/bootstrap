@@ -1341,6 +1341,9 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   <div class="page-header">
     <h1>Icons <small>Graciously provided by <a href="http://glyphicons.com" target="_blank">Glyphicons</a></small></h1>
   </div>
+
+  <h2>Icon glyphs</h2>
+  <p>140 icons in sprite form, available in dark gray (default) and white, provided by <a href="http://glyphicons.com" target="_blank">Glyphicons</a>.</p>
   <div class="row">
     <div class="span2">
       <ul class="the-icons">
@@ -1504,16 +1507,12 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     </div>
   </div>
 
-  <br>
+
+  <hr class="bs-docs-separator">
 
 
-  <h3>Built as a sprite</h3>
-  <p>Instead of making every icon an extra request, we've compiled them into a sprite&mdash;a bunch of images in one file that uses CSS to position the images with <code>background-position</code>. This is the same method we use on Twitter.com and it has worked well for us.</p>
-  <p>All icons classes are prefixed with <code>.icon-</code> for proper namespacing and scoping, much like our other components. This will help avoid conflicts with other tools.</p>
-  <p><a href="http://glyphicons.com" target="_blank">Glyphicons</a> has granted us use of the Halflings set in our open-source toolkit so long as we provide a link and credit here in the docs. Please consider doing the same in your projects.</p>
-
-  <h3>How to use</h3>
-  <p>Bootstrap uses an <code>&lt;i&gt;</code> tag for all icons, but they have no case class&mdash;only a shared prefix. To use, place the following code just about anywhere:</p>
+  <h2>How to use</h2>
+  <p>All icons require an <code>&lt;i&gt;</code> tag with a unique class, prefixed with <code>icon-</code>. To use, place the following code just about anywhere:</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search"&gt;&lt;/i&gt;
 </pre>
@@ -1521,66 +1520,55 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 <pre class="prettyprint linenums">
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
-  <p>There are 140 classes to choose from for your icons. Just add an <code>&lt;i&gt;</code> tag with the right classes and you're set. You can find the full list in <strong>sprites.less</strong> or right here in this document.</p>
   <p>
     <span class="label label-info">Heads up!</span>
     When using beside strings of text, as in buttons or nav links, be sure to leave a space after the <code>&lt;i&gt;</code> tag for proper spacing.
   </p>
 
-  <h3>Use cases</h3>
-  <p>Icons are great, but where would one use them? Here are a few ideas:</p>
-  <ul>
-    <li>As visuals for your sidebar navigation</li>
-    <li>For a purely icon-driven navigation</li>
-    <li>For buttons to help convey the meaning of an action</li>
-    <li>With links to share context on a user's destination</li>
-  </ul>
-  <p>Essentially, anywhere you can put an <code>&lt;i&gt;</code> tag, you can put an icon.</p>
+
+  <hr class="bs-docs-separator">
 
 
-  <h3>Examples</h3>
+  <h2>Icon examples</h2>
   <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
 
-  <div class="btn-toolbar" style="margin-bottom: 9px">
-    <div class="btn-group">
-      <a class="btn" href="#"><i class="icon-align-left"></i></a>
-      <a class="btn" href="#"><i class="icon-align-center"></i></a>
-      <a class="btn" href="#"><i class="icon-align-right"></i></a>
-      <a class="btn" href="#"><i class="icon-align-justify"></i></a>
+  <h4>Buttons</h4>
+  <div class="bs-docs-example">
+    <div class="btn-toolbar" style="margin-bottom: 9px">
+      <div class="btn-group">
+        <a class="btn" href="#"><i class="icon-align-left"></i></a>
+        <a class="btn" href="#"><i class="icon-align-center"></i></a>
+        <a class="btn" href="#"><i class="icon-align-right"></i></a>
+        <a class="btn" href="#"><i class="icon-align-justify"></i></a>
+      </div>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+          <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+          <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="i"></i> Make admin</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="btn-group">
-      <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-        <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-        <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="i"></i> Make admin</a></li>
+  </div>
+
+  <h4>Navigation</h4>
+  <div class="bs-docs-example">
+    <div class="well" style="padding: 8px 0; margin-bottom: 0;">
+      <ul class="nav nav-list">
+        <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+        <li><a href="#"><i class="icon-book"></i> Library</a></li>
+        <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+        <li><a href="#"><i class="i"></i> Misc</a></li>
       </ul>
     </div>
   </div>
-  <p>
-    <a class="btn" href="#"><i class="icon-refresh"></i> Refresh</a>
-    <a class="btn btn-success" href="#"><i class="icon-shopping-cart icon-white"></i> Checkout</a>
-    <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i> Delete</a>
-  </p>
-  <p>
-    <a class="btn btn-large" href="#"><i class="icon-comment"></i> Comment</a>
-    <a class="btn btn-small" href="#"><i class="icon-cog"></i> Settings</a>
-    <a class="btn btn-small btn-info" href="#"><i class="icon-info-sign icon-white"></i> More Info</a>
-  </p>
 
-  <div class="well" style="padding: 8px 0;">
-    <ul class="nav nav-list">
-      <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
-      <li><a href="#"><i class="icon-book"></i> Library</a></li>
-      <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
-      <li><a href="#"><i class="i"></i> Misc</a></li>
-    </ul>
-  </div> <!-- /well -->
-
-  <form>
+  <h4>Form fields</h4>
+  <form class="bs-docs-example form-horizontal">
     <div class="control-group">
       <label class="control-label" for="inputIcon">Email address</label>
       <div class="controls">
