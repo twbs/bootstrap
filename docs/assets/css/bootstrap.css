@@ -3169,10 +3169,6 @@ input[type="submit"].btn.btn-mini {
           border-radius: 4px;
 }
 
-.alert-heading {
-  color: inherit;
-}
-
 .alert .close {
   position: relative;
   top: -2px;

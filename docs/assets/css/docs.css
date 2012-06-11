@@ -12,18 +12,18 @@
 
 body {
   position: relative;
-  padding-top: 40px;
+  padding-top: 100px;
   font-size: 14px;
   background-color: #fff;
   background-image: url(../img/grid-20px.png);
   background-repeat: repeat-x;
-  background-position: 0 0;
+  background-position: 0 40px;
 }
 
 /* Custom container for the narrow docs */
 .bs-docs-container {
   max-width: 780px;
-  margin: 0 0 0 240px;
+  margin: 0 auto;
 }
 
 /* Increase docs base type size and line-heights */
@@ -37,12 +37,44 @@ li {
   line-height: 25px;
 }
 
+/* Code in headings */
+h3 code {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+
+
+/* Tweak navbar brand link to be super sleek
+-------------------------------------------------- */
+
+.navbar,
+.subnav {
+  font-size: 13px;
+}
+body > .navbar-fixed-top .brand {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 20px;
+  float: right;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+body > .navbar-fixed-top .brand:hover {
+  text-decoration: none;
+}
+
 
 
 /* Left nav
 -------------------------------------------------- */
 
 .bs-docs-nav {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -149,6 +181,7 @@ hr.soften {
 ------------------------- */
 .jumbotron {
   position: relative;
+  text-align: center;
 }
 .jumbotron h1 {
   margin-bottom: 10px;
@@ -177,7 +210,8 @@ hr.soften {
 /* Masthead (docs home)
 ------------------------- */
 .masthead {
-  margin-bottom: 60px;
+  margin-top: 20px;
+  margin-bottom: 80px;
 }
 .masthead h1,
 .masthead p {
@@ -224,12 +258,16 @@ hr.soften {
 ------------------------- */
 /* supporting docs pages */
 .subhead {
+  text-align: left;
 }
 .subhead h1 {
   font-size: 60px;
 }
 .subhead .lead {
+  margin-bottom: 30px;
   line-height: 25px;
+  font-size: 30px;
+  line-height: 40px;
 }
 
 /* Subnav */
@@ -314,7 +352,7 @@ hr.soften {
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
   }
   .subnav-fixed .nav {
-    width: 938px;
+    max-width: 780px;
     margin: 0 auto;
     padding: 0 1px;
   }
@@ -338,6 +376,7 @@ hr.soften {
   margin: 36px 0 27px;
   font-size: 40px;
   font-weight: 300;
+  text-align: center;
 }
 .marketing h2,
 .marketing h3 {
@@ -364,6 +403,7 @@ hr.soften {
   font-weight: 300;
   line-height: 24px;
   color: #999;
+  text-align: center;
 }
 
 
@@ -421,8 +461,12 @@ hr.soften {
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
           box-shadow: 0 1px 2px rgba(0,0,0,.075);
 }
+.mini-layout,
+.mini-layout .mini-layout-body,
+.mini-layout.fluid .mini-layout-sidebar {
+  height: 300px;
+}
 .mini-layout {
-  height: 240px;
   margin-bottom: 20px;
   padding: 9px;
 }
@@ -435,7 +479,6 @@ hr.soften {
   background-color: #dceaf4;
   margin: 0 auto;
   width: 70%;
-  height: 240px;
 }
 .mini-layout.fluid .mini-layout-sidebar,
 .mini-layout.fluid .mini-layout-header,
@@ -445,7 +488,6 @@ hr.soften {
 .mini-layout.fluid .mini-layout-sidebar {
   background-color: #bbd8e9;
   width: 20%;
-  height: 240px;
 }
 .mini-layout.fluid .mini-layout-body {
   width: 77.5%;
@@ -598,6 +640,9 @@ h2 + .row {
 }
 
 /* Example sites showcase */
+.example-sites {
+  margin-left: 20px;
+}
 .example-sites img {
   max-width: 100%;
   margin: 0 auto;
@@ -694,8 +739,44 @@ form.well {
 .bs-docs-example p:last-child {
   margin-bottom: 0;
 }
-.bs-docs-example .table {
+.bs-docs-example .table,
+.bs-docs-example .progress,
+.bs-docs-example .well,
+.bs-docs-example .alert,
+.bs-docs-example .hero-unit,
+.bs-docs-example .pagination,
+.bs-docs-example .navbar,
+.bs-docs-example .nav {
   margin-bottom: 5px;
+}
+.bs-docs-example .pagination {
+  margin-top: 0;
+}
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  height: 90px;
+}
+.bs-navbar-top-example {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
+.bs-navbar-top-example:after {
+  top: auto;
+  bottom: -1px;
+  -webkit-border-radius: 0 4px 0 4px;
+     -moz-border-radius: 0 4px 0 4px;
+          border-radius: 0 4px 0 4px;
+}
+.bs-navbar-bottom-example {
+  -webkit-border-radius: 4px 4px 0 0;
+     -moz-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+.bs-navbar-bottom-example .navbar {
+  margin-bottom: 0;
 }
 form.bs-docs-example {
   padding-bottom: 19px;
@@ -770,13 +851,6 @@ form.bs-docs-example {
   color: #468847;
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
-}
-
-/* Grid examples
-------------------------- */
-.bs-docs-grid {
-  width: 940px;
-  margin-left: -80px;
 }
 
 
@@ -886,7 +960,7 @@ form.bs-docs-example {
   /* Jumbotron buttons */
   .jumbotron .btn {
     margin-bottom: 10px;
-  }
+av  }
 
   /* Subnav */
   .subnav {
@@ -988,14 +1062,13 @@ form.bs-docs-example {
 /* LARGE DESKTOP SCREENS */
 @media (min-width: 1210px) {
 
-  /* Update subnav container */
-  .subnav-fixed .nav {
-    width: 1168px; /* 2px less to account for left/right borders being removed when in fixed mode */
+  .bs-docs-container {
+    max-width: 970px;
   }
 
-  .bs-docs-grid {
-    width: 1170px;
-    margin-left: -195px;
+  /* Update subnav container */
+  .subnav-fixed .nav {
+    max-width: 970px; /* 2px less to account for left/right borders being removed when in fixed mode */
   }
 
 }

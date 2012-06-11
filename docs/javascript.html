@@ -27,84 +27,50 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target=".subnav" data-offset="50">
 
-    <div class="bs-docs-nav">
-      <h3 class="bs-docs-logo"><a href="./index.html">Bootstrap</a></h3>
-      <ul class="bs-nav">
-        <li class="">
-          <a href="./scaffolding.html">Scaffolding</a>
-          <ul>
-            <li><a href="./scaffolding.html#global">Global styles</a></li>
-            <li><a href="./scaffolding.html#gridSystem">Grid system</a></li>
-            <li><a href="./scaffolding.html#fluidGridSystem">Fluid grid system</a></li>
-            <li><a href="./scaffolding.html#gridCustomization">Customizing</a></li>
-            <li><a href="./scaffolding.html#layouts">Layouts</a></li>
-            <li><a href="./scaffolding.html#responsive">Responsive design</a></li>
-          </ul>
-        </li>
-        <li class="">
-          <a href="./base-css.html">Base CSS</a>
-          <ul>
-            <li><a href="./base-css.html#typography">Typography</a></li>
-            <li><a href="./base-css.html#code">Code</a></li>
-            <li><a href="./base-css.html#tables">Tables</a></li>
-            <li><a href="./base-css.html#forms">Forms</a></li>
-            <li><a href="./base-css.html#buttons">Buttons</a></li>
-            <li><a href="./base-css.html#icons">Icons by Glyphicons</a></li>
-          </ul>
-        </li>
-        <li class="">
-          <a href="./components.html">Components</a>
-          <ul>
-            <li><a href="./components.html#buttonGroups">Button groups</a></li>
-            <li><a href="./components.html#buttonDropdowns">Button dropdowns</a></li>
-            <li><a href="./components.html#navs">Nav, tabs, pills</a></li>
-            <li><a href="./components.html#navbar">Navbar</a></li>
-            <li><a href="./components.html#breadcrumbs">Breadcrumbs</a></li>
-            <li><a href="./components.html#pagination">Pagination</a></li>
-            <li><a href="./components.html#labels">Labels</a></li>
-            <li><a href="./components.html#badges">Badges</a></li>
-            <li><a href="./components.html#typography">Typography</a></li>
-            <li><a href="./components.html#thumbnails">Thumbnails</a></li>
-            <li><a href="./components.html#alerts">Alerts</a></li>
-            <li><a href="./components.html#progress">Progress bars</a></li>
-            <li><a href="./components.html#misc">Miscellaneous</a></li>
-          </ul>
-        </li>
-        <li class="active">
-          <a href="./javascript.html">Javascript</a>
-          <ul>
-            <li><a href="./javascript.html#javascript">All plugins</a></li>
-            <li><a href="./javascript.html#modals">Modal</a></li>
-            <li><a href="./javascript.html#dropdowns">Dropdown</a></li>
-            <li><a href="./javascript.html#scrollspy">Scrollspy</a></li>
-            <li><a href="./javascript.html#tabs">Tab</a></li>
-            <li><a href="./javascript.html#tooltips">Tooltip</a></li>
-            <li><a href="./javascript.html#popovers">Popover</a></li>
-            <li><a href="./javascript.html#alerts">Alert</a></li>
-            <li><a href="./javascript.html#buttons">Button</a></li>
-            <li><a href="./javascript.html#collapse">Collapse</a></li>
-            <li><a href="./javascript.html#carousel">Carousel</a></li>
-            <li><a href="./javascript.html#typeahead">Typeahead</a></li>
-          </ul>
-        </li>
-        <li class="">
-          <a href="./less.html">LESS</a>
-          <ul>
-            <li><a href="./less.html#builtWith">Built with Less</a></li>
-            <li><a href="./less.html#variables">Variables</a></li>
-            <li><a href="./less.html#mixins">Mixins</a></li>
-            <li><a href="./less.html#compiling">Compiling Bootstrap</a></li>
-          </ul>
-        </li>
-        <li class="">
-          <a href="./download.html">Customize</a>
-        </li>
-        <li class="">
-          <a href="./examples.html">Examples</a>
-        </li>
-      </ul>
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="bs-docs-container">
+          <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="./scaffolding.html">Scaffolding</a>
+              </li>
+              <li class="">
+                <a href="./base-css.html">Base CSS</a>
+              </li>
+              <li class="">
+                <a href="./components.html">Components</a>
+              </li>
+              <li class="active">
+                <a href="./javascript.html">Javascript</a>
+              </li>
+              <li class="">
+                <a href="./less.html">LESS</a>
+              </li>
+              <li class="divider-vertical"></li>
+              <li class="">
+                <a href="./download.html">Customize</a>
+              </li>
+              <li class="">
+                <a href="./examples.html">Examples</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="bs-docs-container">
@@ -114,73 +80,54 @@
 <header class="jumbotron subhead" id="overview">
   <h1>Javascript for Bootstrap</h1>
   <p class="lead">Bring Bootstrap's components to life&mdash;now with 12 custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.
+  <div class="subnav">
+    <ul class="nav nav-pills">
+      <li><a href="#modals">Modal</a></li>
+      <li><a href="#dropdowns">Dropdown</a></li>
+      <li><a href="#scrollspy">Scrollspy</a></li>
+      <li><a href="#tabs">Tab</a></li>
+      <li><a href="#tooltips">Tooltip</a></li>
+      <li><a href="#popovers">Popover</a></li>
+      <li><a href="#alerts">Alert</a></li>
+      <li><a href="#buttons">Button</a></li>
+      <li><a href="#collapse">Collapse</a></li>
+      <li><a href="#carousel">Carousel</a></li>
+      <li><a href="#typeahead">Typeahead</a></li>
+    </ul>
+  </div>
 </header>
 
 
 
-  <!-- Using Javascript w/ Bootstrap
-  ================================================== -->
-  <section id="javascript">
-    <div class="page-header">
-      <h1>jQuery plugins <small>A dozen Bootstrap plugins to get you started</small></h1>
-    </div>
-  <div class="row">
-    <div class="span4">
-      <h3><a href="./javascript.html#modals">Modals</a></h3>
-      <p>A streamlined, but flexible, take on the traditional javascript modal plugin with only the minimum required functionality and smart defaults.</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#dropdowns">Dropdowns</a></h3>
-      <p>Add dropdown menus to nearly anything in Bootstrap with this simple plugin. Bootstrap features full dropdown menu support on in the navbar, tabs, and pills.</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#scrollspy">Scrollspy</a></h3>
-      <p>Use scrollspy to automatically update the links in your navbar to show the current active link based on scroll position.</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#tabs">Togglable tabs</a></h3>
-      <p>Use this plugin to make tabs and pills more useful by allowing them to toggle through tabbable panes of local content.</p>
-    </div>
-  </div> <!-- /row -->
-  <div class="row">
-    <div class="span4">
-      <h3><a href="./javascript.html#tooltips">Tooltips</a></h3>
-      <p>A new take on the jQuery Tipsy plugin, Tooltips don't rely on images&mdash;they use CSS3 for animations and data-attributes for local title storage.</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#popovers">Popovers</a> <small class="muted">*</small></h3>
-      <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
-      <p class="muted"><strong>*</strong> Requires <a href="#tooltips">Tooltips</a> to be included</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#alerts">Alert messages</a></h3>
-      <p>The alert plugin is a tiny class for adding close functionality to alerts.</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#buttons">Buttons</a></h3>
-      <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
-    </div>
-  </div> <!-- /row -->
-  <div class="row" style="margin-bottom: 9px;">
-    <div class="span4">
-      <h3><a href="./javascript.html#collapse">Collapse</a></h3>
-      <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#carousel">Carousel</a></h3>
-      <p>Create a merry-go-round of any content you wish to provide an interactive slideshow of content.</p>
-    </div>
-    <div class="span4">
-      <h3><a href="./javascript.html#typeahead">Typeahead</a></h3>
-      <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
-    </div>
-    <div class="span4">
-      <h3>Transitions <small class="muted">*</small></h3>
-      <p>For simple transition effects, include bootstrap-transition.js once to slide in modals or fade out alerts.</p>
-      <p class="muted"><strong>*</strong> Required for animation in plugins</p>
-    </div>
-  </div> <!-- /row -->
-  <div class="alert alert-info"><strong>Heads up!</strong>  If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of these plugins.</div>
+
+<!-- Overview
+================================================== -->
+<section id="overview">
+  <div class="page-header">
+    <h1>Javascript in Bootstrap</h1>
+  </div>
+  <h3>Individual or compiled</h3>
+  <p>If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of these plugins.</p>
+  <h3>Data attributea</h3>
+  <p>...</p>
+  <h3>Programmatic API</h3>
+  <p>...</p>
+
+
+
+</section>
+
+
+
+<!-- Transitions
+================================================== -->
+<section id="modals">
+  <div class="page-header">
+    <h1>Transitions <small>bootstrap-transition.js</small></h1>
+  </div>
+  <h3>About transitions</h3>
+  <p>For simple transition effects, include bootstrap-transition.js once to slide in modals or fade out alerts.</p>
+  <p class="muted"><strong>*</strong> Required for animation in plugins</p>
 </section>
 
 
@@ -194,7 +141,6 @@
 
   <h3>About modals</h3>
   <p>A streamlined, but flexible, take on the traditional javascript modal plugin with only the minimum required functionality and smart defaults.</p>
-  <a href="assets/js/bootstrap-modal.js" target="_blank" class="btn">Download file</a>
 
   <h2>Static example</h2>
   <p>Below is a statically rendered modal.</p>
@@ -384,7 +330,6 @@ $('#myModal').on('hidden', function () {
 
   <h3>About dropdowns</h3>
   <p>Add dropdown menus to nearly anything in Bootstrap with this simple plugin. Bootstrap features full dropdown menu support on in the navbar, tabs, and pills.</p>
-  <a href="assets/js/bootstrap-dropdown.js" target="_blank" class="btn">Download file</a>
 
   <h2>Examples</h2>
   <p>Click on the dropdown nav links in the navbar and pills below to test dropdowns.</p>
@@ -527,7 +472,6 @@ $('#myModal').on('hidden', function () {
   </div>
 
   <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position.</p>
-  <a href="assets/js/bootstrap-scrollspy.js" target="_blank" class="btn">Download file</a>
 
   <h2>Example navbar with scrollspy</h2>
   <p>Scroll the area below and watch the navigation update. The dropdown sub items will be highlighted as well. Try it!</p>
@@ -643,7 +587,6 @@ $('[data-spy="scroll"]').each(function () {
   </div>
 
   <p>This plugin adds quick, dynamic tab and pill functionality for transitioning through local content.</p>
-  <a href="assets/js/bootstrap-tab.js" target="_blank" class="btn">Download file</a>
 
   <h2>Example tabs</h2>
   <p>Click the tabs below to toggle between hidden panes, even via dropdown menus.</p>
@@ -759,7 +702,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
   <h3>About Tooltips</h3>
   <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use css3 for animations, and data-attributes for local title storage.</p>
-  <a href="assets/js/bootstrap-tooltip.js" target="_blank" class="btn">Download file</a>
 
   <h2>Example use of Tooltips</h2>
   <p>Hover over the links below to see tooltips:</p>
@@ -866,7 +808,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
   <h3>About popovers</h3>
   <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
   <p class="muted"><strong>*</strong> Requires <a href="#tooltips">Tooltip</a> to be included</p>
-  <a href="assets/js/bootstrap-popover.js" target="_blank" class="btn">Download file</a>
 
   <h2>Example hover popover</h2>
   <p>Hover over the button to trigger the popover.</p>
@@ -975,7 +916,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
   <h3>About alerts</h3>
   <p>The alert plugin is a tiny class for adding close functionality to alerts.</p>
-  <a href="assets/js/bootstrap-alert.js" target="_blank" class="btn">Download</a>
 
   <h2>Example alerts</h2>
   <p>The alerts plugin works on regular alert messages, and block messages.</p>
@@ -1046,7 +986,6 @@ $('#my-alert').bind('closed', function () {
 
   <h3>About</h3>
   <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
-  <a href="assets/js/bootstrap-button.js" target="_blank" class="btn">Download file</a>
 
   <h2>Example uses</h2>
   <p>Use the buttons plugin for states and toggles.</p>
@@ -1141,7 +1080,6 @@ $('#my-alert').bind('closed', function () {
 
   <h3>About</h3>
   <p>Get base styles and flexible support for collapsible components like accordions and navigation.</p>
-  <a href="assets/js/bootstrap-collapse.js" target="_blank" class="btn">Download file</a>
   <p class="muted"><strong>*</strong> Requires the Transitions plugin to be included.</p>
 
   <h2>Example accordion</h2>
@@ -1290,7 +1228,6 @@ $('#myCollapsible').on('hidden', function () {
 
   <h3>About</h3>
   <p>A generic plugin for cycling through elements. A merry-go-round.</p>
-  <a href="assets/js/bootstrap-carousel.js" target="_blank" class="btn">Download file</a>
 
   <h2>Example carousel</h2>
   <p>Watch the slideshow below.</p>
@@ -1424,7 +1361,6 @@ $('.carousel').carousel({
 
   <h3>About</h3>
   <p>A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.</p>
-  <a href="assets/js/bootstrap-typeahead.js" target="_blank" class="btn">Download file</a>
 
   <h2>Example</h2>
   <p>Start typing in the field below to show the typeahead results.</p>
@@ -1499,7 +1435,7 @@ $('.carousel').carousel({
         <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
 
-    </div><!-- /container -->
+    </div>
 
 
 
