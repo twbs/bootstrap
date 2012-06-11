@@ -33,6 +33,7 @@
 </header>
 
 
+
 <!-- Button Groups
 ================================================== -->
 <section id="buttonGroups">
@@ -40,10 +41,9 @@
     <h1>{{_i}}Button groups{{/i}} <small>{{_i}}Join buttons for more toolbar-like functionality{{/i}}</small></h1>
   </div>
 
-  <h3>{{_i}}Button groups{{/i}}</h3>
-  <p>{{_i}}Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.{{/i}}</p>
-  <h3>{{_i}}Best practices{{/i}}</h3>
-  <p>{{_i}}We recommend the following guidelines for using button groups and toolbars:{{/i}}</p>
+
+  <h2>{{_i}}Description and best practices{{/i}}</h2>
+  <p>{{_i}}Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. We recommend the following guidelines for using button groups and toolbars:{{/i}}</p>
   <ul>
     <li>{{_i}}Always use the same element in a single button group, <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>.{{/i}}</li>
     <li>{{_i}}Don't mix buttons of different colors in the same button group.{{/i}}</li>
@@ -51,10 +51,17 @@
   </ul>
   <p>{{_i}}<span class="label label-info">Related</span> Button groups with dropdowns (see below) should be called out separately and always include a dropdown caret to indicate intended behavior.{{/i}}</p>
 
-  <h3>{{_i}}Default example{{/i}}</h3>
-  <p>{{_i}}Here's how the HTML looks for a standard button group built with anchor tag buttons:{{/i}}</p>
-  <div class="">
-    <div class="btn-group" style="margin: 9px 0;">
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>{{_i}}Examples and variations{{/i}}</h2>
+  <p>{{_i}}Two basic options, along with two more specific variations.{{/i}}</p>
+
+  <h3>{{_i}}Basic button group{{/i}}</h3>
+  <p>{{_i}}Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.{{/i}}</p>
+  <div class="bs-docs-example">
+    <div class="btn-group" style="margin: 9px 0 5px;">
       <button class="btn">{{_i}}Left{{/i}}</button>
       <button class="btn">{{_i}}Middle{{/i}}</button>
       <button class="btn">{{_i}}Right{{/i}}</button>
@@ -67,22 +74,25 @@
   &lt;button class="btn"&gt;3&lt;/button&gt;
 &lt;/div&gt;
 </pre>
+
   <h3>{{_i}}Toolbar example{{/i}}</h3>
   <p>{{_i}}Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.{{/i}}</p>
-  <div class="btn-toolbar">
-    <div class="btn-group">
-      <button class="btn">1</button>
-      <button class="btn">2</button>
-      <button class="btn">3</button>
-      <button class="btn">4</button>
-    </div>
-    <div class="btn-group">
-      <button class="btn">5</button>
-      <button class="btn">6</button>
-      <button class="btn">7</button>
-    </div>
-    <div class="btn-group">
-      <button class="btn">8</button>
+  <div class="bs-docs-example">
+    <div class="btn-toolbar" style="margin: 0;">
+      <div class="btn-group">
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="btn">4</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+        <button class="btn">7</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn">8</button>
+      </div>
     </div>
   </div>
 <pre class="prettyprint linenums">
@@ -92,9 +102,10 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
+
   <h3>{{_i}}Checkbox and radio flavors{{/i}}</h3>
   <p>{{_i}}Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.{{/i}}</p>
-  <p><a class="btn js-btn" href="./javascript.html#buttons">{{_i}}Get the javascript &raquo;{{/i}}</a></p>
+
   <h3>{{_i}}Dropdowns in button groups{{/i}}</h3>
   <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.{{/i}}</p>
 </section>

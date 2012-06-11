@@ -110,6 +110,7 @@
 </header>
 
 
+
 <!-- Button Groups
 ================================================== -->
 <section id="buttonGroups">
@@ -117,10 +118,9 @@
     <h1>Button groups <small>Join buttons for more toolbar-like functionality</small></h1>
   </div>
 
-  <h3>Button groups</h3>
-  <p>Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements.</p>
-  <h3>Best practices</h3>
-  <p>We recommend the following guidelines for using button groups and toolbars:</p>
+
+  <h2>Description and best practices</h2>
+  <p>Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. We recommend the following guidelines for using button groups and toolbars:</p>
   <ul>
     <li>Always use the same element in a single button group, <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>.</li>
     <li>Don't mix buttons of different colors in the same button group.</li>
@@ -128,10 +128,17 @@
   </ul>
   <p><span class="label label-info">Related</span> Button groups with dropdowns (see below) should be called out separately and always include a dropdown caret to indicate intended behavior.</p>
 
-  <h3>Default example</h3>
-  <p>Here's how the HTML looks for a standard button group built with anchor tag buttons:</p>
-  <div class="">
-    <div class="btn-group" style="margin: 9px 0;">
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Examples and variations</h2>
+  <p>Two basic options, along with two more specific variations.</p>
+
+  <h3>Basic button group</h3>
+  <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
+  <div class="bs-docs-example">
+    <div class="btn-group" style="margin: 9px 0 5px;">
       <button class="btn">Left</button>
       <button class="btn">Middle</button>
       <button class="btn">Right</button>
@@ -144,22 +151,25 @@
   &lt;button class="btn"&gt;3&lt;/button&gt;
 &lt;/div&gt;
 </pre>
+
   <h3>Toolbar example</h3>
   <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
-  <div class="btn-toolbar">
-    <div class="btn-group">
-      <button class="btn">1</button>
-      <button class="btn">2</button>
-      <button class="btn">3</button>
-      <button class="btn">4</button>
-    </div>
-    <div class="btn-group">
-      <button class="btn">5</button>
-      <button class="btn">6</button>
-      <button class="btn">7</button>
-    </div>
-    <div class="btn-group">
-      <button class="btn">8</button>
+  <div class="bs-docs-example">
+    <div class="btn-toolbar" style="margin: 0;">
+      <div class="btn-group">
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="btn">4</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+        <button class="btn">7</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn">8</button>
+      </div>
     </div>
   </div>
 <pre class="prettyprint linenums">
@@ -169,9 +179,10 @@
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
+
   <h3>Checkbox and radio flavors</h3>
   <p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.</p>
-  <p><a class="btn js-btn" href="./javascript.html#buttons">Get the javascript &raquo;</a></p>
+
   <h3>Dropdowns in button groups</h3>
   <p><span class="label label-info">Heads up!</span> Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
 </section>
