@@ -52,7 +52,7 @@ h3 code {
 .subnav {
   font-size: 13px;
 }
-.navbar-fixed-top .brand {
+body > .navbar-fixed-top .brand {
   padding-right: 0;
   padding-left: 0;
   margin-left: 20px;
@@ -64,7 +64,7 @@ h3 code {
      -moz-transition: all .2s linear;
           transition: all .2s linear;
 }
-.navbar-fixed-top .brand:hover {
+body > .navbar-fixed-top .brand:hover {
   text-decoration: none;
 }
 
@@ -744,11 +744,38 @@ form.well {
 .bs-docs-example .well,
 .bs-docs-example .alert,
 .bs-docs-example .hero-unit,
-.bs-docs-example .pagination {
+.bs-docs-example .pagination,
+.bs-docs-example .navbar {
   margin-bottom: 5px;
 }
 .bs-docs-example .pagination {
   margin-top: 0;
+}
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  height: 90px;
+}
+.bs-navbar-top-example {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
+.bs-navbar-top-example:after {
+  top: auto;
+  bottom: -1px;
+  -webkit-border-radius: 0 4px 0 4px;
+     -moz-border-radius: 0 4px 0 4px;
+          border-radius: 0 4px 0 4px;
+}
+.bs-navbar-bottom-example {
+  -webkit-border-radius: 4px 4px 0 0;
+     -moz-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+.bs-navbar-bottom-example .navbar {
+  margin-bottom: 0;
 }
 form.bs-docs-example {
   padding-bottom: 19px;

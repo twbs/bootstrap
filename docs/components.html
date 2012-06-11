@@ -896,105 +896,213 @@
   <div class="page-header">
     <h1>Navbar</h1>
   </div>
-  <h2>Static navbar example</h2>
-  <p>An example of a static (not fixed to the top) navbar with project name, navigation, and search form.</p>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
+
+
+  <h2>Basic navbar</h2>
+  <p>To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.</p>
+  <div class="bs-docs-example">
+    <div class="navbar">
+      <div class="navbar-inner">
         <a class="brand" href="#">Title</a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="nav-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="navbar-search pull-left" action="">
-            <input type="text" class="search-query span2" placeholder="Search">
-          </form>
-          <ul class="nav pull-right">
-            <li><a href="#">Link</a></li>
-            <li class="divider-vertical"></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.nav-collapse -->
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
       </div>
-    </div><!-- /navbar-inner -->
-  </div><!-- /navbar -->
-
-
-  <h3>Navbar scaffolding</h3>
-  <p>The navbar requires only a few divs to structure it well for static or fixed display.</p>
+    </div>
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
-    &lt;div class="container"&gt;
-      ...
-    &lt;/div&gt;
+    &lt;a class="brand" href="#"&gt;Title&lt;/a&gt;
+    &lt;ul class="nav"&gt;
+      &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-  <h3>Fixed navbar</h3>
-  <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-top"&gt;
-  ...
-&lt;/div&gt;
-</pre>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-bottom"&gt;
-  ...
-&lt;/div&gt;
-</pre>
 
-  <p>When you affix the navbar, remember to account for the hidden area underneath. Add 40px or more of padding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
-  <h3>Brand name</h3>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Navbar components</h2>
+
+  <h3>Brand</h3>
   <p>A simple link to show your brand or project name only requires an anchor tag.</p>
 <pre class="prettyprint linenums">
-&lt;a class="brand" href="#"&gt;
-  Project name
-&lt;/a&gt;
+&lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
 </pre>
-  <h3>Forms in navbar</h3>
+
+  <h3>Nav links</h3>
+  <p>Nav items are simple to add via unordered lists.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav"&gt;
+  &lt;li class="active"&gt;
+    &lt;a href="#">Home&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+  <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav"&gt;
+  ...
+  &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+
+  <h3>Forms</h3>
   <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
 &lt;/form&gt;
 </pre>
+
+  <h3>Search form</h3>
   <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="Search"&gt;
 &lt;/form&gt;
 </pre>
-  <h3>Optional responsive variation</h3>
-  <p>Depending on the amount of content in your topbar, you might want to implement the responsive options. To do so, wrap your nav content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.</p>
+
+  <h3>Component alignment</h3>
+  <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
+
+  <h3>Using dropdowns</h3>
+  <p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript.html#dropdowns">dropdowns javascript plugin</a>.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="nav"&gt;
+  &lt;li class="dropdown"&gt;
+    &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Account
+      &lt;b class="caret"&gt;&lt;/b&gt;
+    &lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+  <p>Visit the <a href="./javascript.html#dropdowns">javascript dropdowns documentation</a> for more markup and information on calling dropdowns.</p>
+
+  <h3>Text</h3>
+  <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Fixed navigation</h2>
+  <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
+
+  <h3>Fixed to top</h3>
+  <p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+  <div class="bs-docs-example bs-navbar-top-example">
+    <div class="navbar navbar-fixed-top" style="position: absolute;">
+      <div class="navbar-inner">
+        <div class="container" style="width: auto; padding: 0 20px;">
+          <a class="brand" href="#">Title</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-fixed-top"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+
+  <h3>Fixed to bottom</h3>
+  <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
+  <div class="bs-docs-example bs-navbar-bottom-example">
+    <div class="navbar navbar-fixed-bottom" style="position: absolute;">
+      <div class="navbar-inner">
+        <div class="container" style="width: auto; padding: 0 20px;">
+          <a class="brand" href="#">Title</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-fixed-bottom"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Responsive navbar</h2>
+  <p>To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.</p>
+  <div class="bs-docs-example">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Title</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-search pull-left" action="">
+              <input type="text" class="search-query span2" placeholder="Search">
+            </form>
+            <ul class="nav pull-right">
+              <li><a href="#">Link</a></li>
+              <li class="divider-vertical"></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.nav-collapse -->
+        </div>
+      </div><!-- /navbar-inner -->
+    </div><!-- /navbar -->
+  </div>
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
   &lt;div class="navbar-inner"&gt;
@@ -1022,49 +1130,6 @@
   <div class="alert alert-info">
     <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a> and <a href="./scaffolding.html#responsive">responsive Bootstrap CSS file</a>.
   </div>
-
-  <h3>Nav links</h3>
-  <p>Nav items are simple to add via unordered lists.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#">Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-  <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  ...
-  &lt;li class="divider-vertical"&gt;&lt;/li&gt;
-  ...
-&lt;/ul&gt;
-</pre>
-  <h3>Component alignment</h3>
-  <p>To align a nav, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
-  <h3>Adding dropdown menus</h3>
-  <p>Adding dropdowns and dropups to the nav is super simple, but does require the use of <a href="./javascript.html#dropdowns">our javascript plugin</a>.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a href="#"
-          class="dropdown-toggle"
-          data-toggle="dropdown">
-          Account
-          &lt;b class="caret"&gt;&lt;/b&gt;
-    &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-  <p><a class="btn" href="./javascript.html#dropdowns">Get the javascript &rarr;</a></p>
-  <hr>
-  <h3>Text in the navbar</h3>
-  <p>Wrap strings of text in a <code>&lt;.navbar-text&gt;</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
 
 </section>
 
