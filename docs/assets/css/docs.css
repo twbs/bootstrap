@@ -745,7 +745,8 @@ form.well {
 .bs-docs-example .alert,
 .bs-docs-example .hero-unit,
 .bs-docs-example .pagination,
-.bs-docs-example .navbar {
+.bs-docs-example .navbar,
+.bs-docs-example .nav {
   margin-bottom: 5px;
 }
 .bs-docs-example .pagination {
