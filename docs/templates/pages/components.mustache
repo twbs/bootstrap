@@ -5,6 +5,7 @@
   <p class="lead">{{_i}}Dozens of reusable components are built into Bootstrap to provide navigation, alerts, popovers, and much more.{{/i}}</p>
   <div class="subnav">
     <ul class="nav nav-pills">
+      <li><a href="#dropdowns">{{_i}}Dropdowns{{/i}}</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Buttons{{/i}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -13,7 +14,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Navigation{{/i}} <b class="caret"></b></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{_i}}Nav{{/i}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#navs">{{_i}}Nav, tabs, pills{{/i}}</a></li>
           <li><a href="#navbar">{{_i}}Navbar{{/i}}</a></li>
@@ -27,10 +28,92 @@
       <li><a href="#thumbnails">{{_i}}Thumbnails{{/i}}</a></li>
       <li><a href="#alerts">{{_i}}Alerts{{/i}}</a></li>
       <li><a href="#progress">{{_i}}Progress bars{{/i}}</a></li>
-      <li><a href="#misc">{{_i}}Miscellaneous{{/i}}</a></li>
+      <li><a href="#misc">{{_i}}Misc{{/i}}</a></li>
     </ul>
   </div>
 </header>
+
+
+
+<!-- Dropdowns
+================================================== -->
+<section id="Dropdowns">
+  <div class="page-header">
+    <h1>{{_i}}Dropdown menus{{/i}} <small>{{_i}}Dropdown and dropup menus for contextual actions{{/i}}</small></h1>
+  </div>
+
+  <h2>{{_i}}Example{{/i}}</h2>
+  <p>{{_i}}An isolated (without dropdown toggle) dropdown menu example, designed to be used with the <a href="./javascript.html#dropdowns">dropdown javascript plugin</a>.{{/i}}</p>
+  <div class="bs-docs-example">
+    <div class="dropdown clearfix">
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
+        <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+        <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+      </ul>
+    </div>
+  </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Action{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Another action{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Something else here{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="divider"&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Separated link{{/i}}&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>{{_i}}Markup{{/i}}</h2>
+  <p>{{_i}}Dropdowns require...{{/i}}</p>
+
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-pills"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown" id="menu1"&gt;
+    &lt;a id="dLabel" role="button" class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
+      {{_i}}Dropdown{{/i}}
+      &lt;b class="caret"&gt;&lt;/b&gt;
+    &lt;/a&gt;
+    &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Action{{/i}}&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Another action{{/i}}&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Something else here{{/i}}&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider"&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Separated link{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;</pre>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>{{_i}}Options{{/i}}</h2>
+  <p>{{_i}}...{{/i}}</p>
+
+  <h3>{{_i}}Dropup menus{{/i}}</h3>
+  <p>{{_i}}...{{/i}}</p>
+
+  <h3>{{_i}}Aligning the menus{{/i}}</h3>
+  <p>{{_i}}...{{/i}}</p>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>{{_i}}Usage{{/i}}</h2>
+  <p>{{_i}}...{{/i}}</p>
+
+
+</section>
+
 
 
 

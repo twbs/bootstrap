@@ -151,10 +151,11 @@
   </div>
 
 
-  <h2>About modals</h2>
-  <p>A streamlined, but flexible, take on the traditional javascript modal plugin with only the minimum required functionality and smart defaults.</p>
+  <h2>Examples</h2>
+  <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
 
   <h3>Static example</h3>
+  <p>A rendered modal with header, body, and set of actions in the footer.</p>
   <div class="bs-docs-example" style="background-color: #f5f5f5;">
     <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
       <div class="modal-header">
@@ -223,13 +224,40 @@
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
   </div>
+<pre class="prettyprint linenums">
+&lt;-- Button to trigger modal --&gt;
+&lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
+
+&lt;-- Modal --&gt;
+&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
+    &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-body"&gt;
+    &lt;p&gt;One fine body…&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-footer"&gt;
+    &lt;a href="#" role="button" class="btn"&gt;Close&lt;/a&gt;
+    &lt;a href="#" role="button" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
 
   <hr class="bs-docs-separator">
 
 
   <h2>Usage</h2>
-  <p>Call the modal via javascript:</p>
+
+  <h3>Via data attributes</h3>
+  <p>Activate a modal without writing javascript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
+<pre class="prettyprint linenums">
+&lt;button type="button" data-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;
+</pre>
+
+  <h3>Via javascript</h3>
+  <p>Call a modal with id <code>myModal</code> with a single line of javascript:</p>
   <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
 
   <h3>Options</h3>
@@ -270,32 +298,7 @@
      </tr>
     </tbody>
   </table>
-  <h3>Markup</h3>
-  <p>You can activate modals on your page easily without having to write a single line of javascript. Just set <code>data-toggle="modal"</code> on a controller element with a <code>data-target="#foo"</code> or <code>href="#foo"</code> which corresponds to a modal element id, and when clicked, it will launch your modal.</p>
-  <p>Also, to add options to your modal instance, just include them as additional data attributes on either the control element or the modal markup itself.</p>
-<pre class="prettyprint linenums">
-&lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch Modal&lt;/a&gt;
-</pre>
 
-<pre class="prettyprint linenums">
-&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"&gt;
-  &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
-    &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-body"&gt;
-    &lt;p&gt;One fine body…&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-footer"&gt;
-    &lt;a href="#" role="button" class="btn"&gt;Close&lt;/a&gt;
-    &lt;a href="#" role="button" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
-
-  <div class="alert alert-info">
-    <strong>Heads up!</strong> If you want your modal to animate in and out, just add a <code>.fade</code> class to the <code>.modal</code> element (refer to the demo to see this in action) and include bootstrap-transition.js.
-  </div>
   <h3>Methods</h3>
   <h4>.modal(options)</h4>
   <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
@@ -355,12 +358,11 @@ $('#myModal').on('hidden', function () {
     <h1>Dropdowns <small>bootstrap-dropdown.js</small></h1>
   </div>
 
-  <h3>About dropdowns</h3>
-  <p>Add dropdown menus to nearly anything in Bootstrap with this simple plugin. Bootstrap features full dropdown menu support on in the navbar, tabs, and pills.</p>
 
   <h2>Examples</h2>
-  <p>Click on the dropdown nav links in the navbar and pills below to test dropdowns.</p>
+  <p>Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.</p>
 
+  <h3>Within a navbar</h3>
   <div class="bs-docs-example">
     <div id="navbar-example" class="navbar navbar-static">
       <div class="navbar-inner">
@@ -405,6 +407,7 @@ $('#myModal').on('hidden', function () {
     </div> <!-- /navbar-example -->
   </div> 
 
+  <h3>Within tabs</h3>
   <div class="bs-docs-example">
     <ul class="nav nav-pills">
       <li class="active"><a href="#">Regular link</a></li>
@@ -441,49 +444,39 @@ $('#myModal').on('hidden', function () {
     </ul> <!-- /tabs -->
   </div> 
 
-  <hr>
 
-  <h2>Using bootstrap-dropdown.js</h2>
-  <p>Call the dropdowns via javascript:</p>
-  <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
-  <h3>Markup</h3>
-  <p>To quickly add dropdown functionality to any element just add <code>data-toggle="dropdown"</code> and any valid bootstrap dropdown will automatically be activated.</p>
-  <div class="alert alert-info">
-    <strong>Heads up!</strong> You may optionally target a specific dropdown by using <code>data-target="#fat"</code> or <code>href="#fat"</code>.
-  </div>
+  <hr class="bs-docs-separator">
 
+
+  <h2>Usage</h2>
+
+  <h3>Via data attributes</h3>
+  <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="dropdown" id="menu1"&gt;
-    &lt;a id="dLabel" role="button" class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
-      Dropdown
-      &lt;b class="caret"&gt;&lt;/b&gt;
-    &lt;/a&gt;
-    &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="divider"&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  ...
-&lt;/ul&gt;</pre>
+&lt;div class="dropdown"&gt;
+  &lt;a class="dropdown-toggle" href="#"&gt;Dropdown trigger&lt;/a&gt;
+  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
   <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html"&gt;
-      Dropdown
-      &lt;b class="caret"&gt;&lt;/b&gt;
-    &lt;/a&gt;
-    &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class="dropdown"&gt;
+  &lt;a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html"&gt;
+    Dropdown
+    &lt;b class="caret"&gt;&lt;/b&gt;
+  &lt;/a&gt;
+  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;
 </pre>
+
+  <h3>Via javascript</h3>
+  <p>Call the dropdowns via javascript:</p>
+  <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
+
   <h3>Methods</h3>
   <h4>$().dropdown()</h4>
   <p>A programatic api for activating menus for a given navbar or tabbed navigation.</p>
@@ -498,10 +491,9 @@ $('#myModal').on('hidden', function () {
     <h1>ScrollSpy <small>bootstrap-scrollspy.js</small></h1>
   </div>
 
-  <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position.</p>
 
-  <h2>Example navbar with scrollspy</h2>
-  <p>Scroll the area below and watch the navigation update. The dropdown sub items will be highlighted as well. Try it!</p>
+  <h2>Example in navbar</h2>
+  <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
   <div class="bs-docs-example">
     <div id="navbarExample" class="navbar navbar-static">
       <div class="navbar-inner">
@@ -525,41 +517,39 @@ $('#myModal').on('hidden', function () {
     </div>
     <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
       <h4 id="fat">@fat</h4>
-      <p>
-      Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
-      </p>
+      <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
       <h4 id="mdo">@mdo</h4>
-      <p>
-      Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.
-      </p>
+      <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
       <h4 id="one">one</h4>
-      <p>
-      Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.
-      </p>
+      <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
       <h4 id="two">two</h4>
-      <p>
-      In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.
-      </p>
+      <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
       <h4 id="three">three</h4>
-      <p>
-      Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
-      </p>
+      <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
       <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
       </p>
     </div>
   </div>
 
-  <hr>
-  <h2>Using bootstrap-scrollspy.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
+
+  <h3>Via data attributes</h3>
+  <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use.</p>
+  <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
+
+  <h3>Via javascript</h3>
   <p>Call the scrollspy via javascript:</p>
   <pre class="prettyprint linenums">$('#navbar').scrollspy()</pre>
-  <h3>Markup</h3>
-  <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body).</p>
-  <pre class="prettyprint linenums">&lt;body data-spy="scroll" &gt;...&lt;/body&gt;</pre>
+
   <div class="alert alert-info">
     <strong>Heads up!</strong>
     Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
   </div>
+
   <h3>Methods</h3>
   <h4>.scrollspy('refresh')</h4>
   <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
@@ -568,6 +558,7 @@ $('[data-spy="scroll"]').each(function () {
   var $spy = $(this).scrollspy('refresh')
 });
 </pre>
+
   <h3>Options</h3>
   <table class="table table-bordered table-striped">
     <thead>
@@ -587,7 +578,8 @@ $('[data-spy="scroll"]').each(function () {
      </tr>
     </tbody>
   </table>
-   <h3>Events</h3>
+
+  <h3>Events</h3>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -645,7 +637,11 @@ $('[data-spy="scroll"]').each(function () {
     </div>
   </div>
 
-  <h2>Using bootstrap-tab.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Enable tabbable tabs via javascript (each tab needs to be activated individually):</p>
 <pre class="prettyprint linenums">
 $('#myTab a').click(function (e) {
@@ -659,6 +655,7 @@ $('#myTab a:first').tab('show'); // Select first tab
 $('#myTab a:last').tab('show'); // Select last tab
 $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
 </pre>
+
   <h3>Markup</h3>
   <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the bootstrap tab styling.</p>
 <pre class="prettyprint linenums">
@@ -668,6 +665,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
   &lt;li&gt;&lt;a href="#messages" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#settings" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
+
   <h3>Methods</h3>
   <h4>$().tab</h4>
   <p>
@@ -693,6 +691,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
     $('#myTab a:last').tab('show');
   })
 &lt;/script&gt;</pre>
+
   <h3>Events</h3>
   <table class="table table-bordered table-striped">
     <thead>
@@ -737,9 +736,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     </p>
   </div>
 
-  <h2>Using bootstrap-tooltip.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Trigger the tooltip via javascript:</p>
   <pre class="prettyprint linenums">$('#example').tooltip(options)</pre>
+
   <h3>Options</h3>
   <table class="table table-bordered table-striped">
     <thead>
@@ -803,6 +807,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <strong>Heads up!</strong>
     Options for individual tooltips can alternatively be specified through the use of data attributes.
   </div>
+
   <h3>Markup</h3>
   <p>For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
 <pre class="prettyprint linenums">
@@ -842,9 +847,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <a href="#" class="btn btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
   </div>
 
-  <h2>Using bootstrap-popover.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Enable popovers via javascript:</p>
   <pre class="prettyprint linenums">$('#example').popover(options)</pre>
+
   <h3>Options</h3>
   <table class="table table-bordered table-striped">
     <thead>
@@ -914,10 +924,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <strong>Heads up!</strong>
     Options for individual popovers can alternatively be specified through the use of data attributes.
   </div>
+
   <h3>Markup</h3>
-  <p>
-  For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.
-  </p>
+  <p>For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
   <h3>Methods</h3>
   <h4>$().popover(options)</h4>
   <p>Initializes popovers for an element collection.</p>
@@ -964,18 +973,25 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     </div>
   </div>
 
-  <h2>Using bootstrap-alert.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Enable dismissal of an alert via javascript:</p>
   <pre class="prettyprint linenums">$(".alert").alert()</pre>
+
   <h3>Markup</h3>
   <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
   <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+
   <h3>Methods</h3>
   <h4>$().alert()</h4>
   <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
   <h4>.alert('close')</h4>
   <p>Closes an alert.</p>
   <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
+
   <h3>Events</h3>
   <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
   <table class="table table-bordered table-striped">
@@ -1047,10 +1063,15 @@ $('#my-alert').bind('closed', function () {
     </div>
   </div>
 
-  <h2>Using bootstrap-button.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Enable buttons via javascript:</p>
   <pre class="prettyprint linenums">$('.nav-tabs').button()</pre>
-    <h3>Markup</h3>
+
+  <h3>Markup</h3>
   <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
 <pre class="prettyprint linenums">
 &lt;!-- Add data-toggle="button" to activate toggling on a single button --&gt;
@@ -1070,6 +1091,7 @@ $('#my-alert').bind('closed', function () {
   &lt;button class="btn"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
+
   <h3>Methods</h3>
   <h4>$().button('toggle')</h4>
   <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
@@ -1153,9 +1175,14 @@ $('#my-alert').bind('closed', function () {
     </div>
   </div>
 
-  <h2>Using bootstrap-collapse.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Enable via javascript:</p>
   <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
+
   <h3>Options</h3>
   <table class="table table-bordered table-striped">
     <thead>
@@ -1193,6 +1220,7 @@ $('#my-alert').bind('closed', function () {
     <strong>Heads up!</strong>
     To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.
   </div>
+
   <h3>Methods</h3>
   <h4>.collapse(options)</h4>
   <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
@@ -1206,10 +1234,9 @@ $('#myCollapsible').collapse({
   <p>Shows a collapsible element.</p>
   <h4>.collapse('hide')</h4>
   <p>Hides a collapsible element.</p>
+
   <h3>Events</h3>
-  <p>
-    Bootstrap's collapse class exposes a few events for hooking into collapse functionality.
-  </p>
+  <p>Bootstrap's collapse class exposes a few events for hooking into collapse functionality.</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -1293,8 +1320,12 @@ $('#myCollapsible').on('hidden', function () {
     <strong>Heads up!</strong>
     When implementing this carousel, remove the images we have provided and replace them with your own.
   </div>
-  <hr>
-  <h2>Using bootstrap-carousel.js</h2>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Call via javascript:</p>
   <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
   <h3>Options</h3>
@@ -1322,6 +1353,7 @@ $('#myCollapsible').on('hidden', function () {
      </tr>
     </tbody>
   </table>
+
   <h3>Markup</h3>
   <p>Data attributes are used for the previous and next conrols. Check out the example markup below.</p>
 <pre class="prettyprint linenums">
@@ -1337,6 +1369,7 @@ $('#myCollapsible').on('hidden', function () {
   &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
 &lt;/div&gt;
 </pre>
+
   <h3>Methods</h3>
   <h4>.carousel(options)</h4>
   <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
@@ -1355,6 +1388,7 @@ $('.carousel').carousel({
   <p>Cycles to the previous item.</p>
   <h4>.carousel('next')</h4>
   <p>Cycles to the next item.</p>
+
   <h3>Events</h3>
   <p>Bootstrap's carousel class exposes two events for hooking into carousel functionality.</p>
   <table class="table table-bordered table-striped">
@@ -1395,7 +1429,11 @@ $('.carousel').carousel({
     <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
   </div>
 
-  <h2>Using bootstrap-typeahead.js</h2>
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Call the typeahead via javascript:</p>
   <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
   <h3>Options</h3>

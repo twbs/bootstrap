@@ -676,7 +676,7 @@ form.well {
 .bs-docs-example .hero-unit,
 .bs-docs-example .pagination,
 .bs-docs-example .navbar,
-.bs-docs-example .nav,
+.bs-docs-example > .nav,
 .bs-docs-example blockquote {
   margin-bottom: 5px;
 }

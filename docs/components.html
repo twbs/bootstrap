@@ -82,6 +82,7 @@
   <p class="lead">Dozens of reusable components are built into Bootstrap to provide navigation, alerts, popovers, and much more.</p>
   <div class="subnav">
     <ul class="nav nav-pills">
+      <li><a href="#dropdowns">Dropdowns</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Buttons <b class="caret"></b></a>
         <ul class="dropdown-menu">
@@ -90,7 +91,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Navigation <b class="caret"></b></a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Nav <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#navs">Nav, tabs, pills</a></li>
           <li><a href="#navbar">Navbar</a></li>
@@ -104,10 +105,92 @@
       <li><a href="#thumbnails">Thumbnails</a></li>
       <li><a href="#alerts">Alerts</a></li>
       <li><a href="#progress">Progress bars</a></li>
-      <li><a href="#misc">Miscellaneous</a></li>
+      <li><a href="#misc">Misc</a></li>
     </ul>
   </div>
 </header>
+
+
+
+<!-- Dropdowns
+================================================== -->
+<section id="Dropdowns">
+  <div class="page-header">
+    <h1>Dropdown menus <small>Dropdown and dropup menus for contextual actions</small></h1>
+  </div>
+
+  <h2>Example</h2>
+  <p>An isolated (without dropdown toggle) dropdown menu example, designed to be used with the <a href="./javascript.html#dropdowns">dropdown javascript plugin</a>.</p>
+  <div class="bs-docs-example">
+    <div class="dropdown clearfix">
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
+        <li><a tabindex="-1" href="#">Action</a></li>
+        <li><a tabindex="-1" href="#">Another action</a></li>
+        <li><a tabindex="-1" href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div>
+<pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="divider"&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Markup</h2>
+  <p>Dropdowns require...</p>
+
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-pills"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="dropdown" id="menu1"&gt;
+    &lt;a id="dLabel" role="button" class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
+      Dropdown
+      &lt;b class="caret"&gt;&lt;/b&gt;
+    &lt;/a&gt;
+    &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider"&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;</pre>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Options</h2>
+  <p>...</p>
+
+  <h3>Dropup menus</h3>
+  <p>...</p>
+
+  <h3>Aligning the menus</h3>
+  <p>...</p>
+
+
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
+  <p>...</p>
+
+
+</section>
+
 
 
 
