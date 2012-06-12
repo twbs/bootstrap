@@ -610,10 +610,9 @@ $('[data-spy="scroll"]').each(function () {
     <h1>Togglable tabs <small>bootstrap-tab.js</small></h1>
   </div>
 
-  <p>This plugin adds quick, dynamic tab and pill functionality for transitioning through local content.</p>
 
   <h2>Example tabs</h2>
-  <p>Click the tabs below to toggle between hidden panes, even via dropdown menus.</p>
+  <p>Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.</p>
   <div class="bs-docs-example">
     <ul id="myTab" class="nav nav-tabs">
       <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
@@ -731,10 +730,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <h1>Tooltips <small>bootstrap-tooltip.js</small></h1>
   </div>
 
-  <h3>About Tooltips</h3>
-  <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use css3 for animations, and data-attributes for local title storage.</p>
 
-  <h2>Example use of Tooltips</h2>
+  <h2>Examples</h2>
+  <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.</p>
   <p>Hover over the links below to see tooltips:</p>
   <div class="bs-docs-example tooltip-demo">
     <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" rel="tooltip" title="first tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" rel="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" rel="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
@@ -843,12 +841,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <h1>Popovers <small>bootstrap-popover.js</small></h1>
   </div>
 
-  <h3>About popovers</h3>
-  <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information.</p>
+  <h2>Example</h2>
+  <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.</p>
   <p class="muted"><strong>*</strong> Requires <a href="#tooltips">Tooltip</a> to be included</p>
-
-  <h2>Example hover popover</h2>
-  <p>Hover over the button to trigger the popover.</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <a href="#" class="btn btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
   </div>
@@ -958,11 +953,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <h1>Alert messages <small>bootstrap-alert.js</small></h1>
   </div>
 
-  <h3>About alerts</h3>
-  <p>The alert plugin is a tiny class for adding close functionality to alerts.</p>
 
   <h2>Example alerts</h2>
-  <p>The alerts plugin works on regular alert messages, and block messages.</p>
+  <p>Add dismiss functionality to all alerge messages with this plugin.</p>
   <div class="bs-docs-example">
     <div class="alert fade in">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -1036,25 +1029,31 @@ $('#my-alert').bind('closed', function () {
     <h1>Buttons <small>bootstrap-button.js</small></h1>
   </div>
 
-  <h3>About</h3>
+  <h2>Example uses</h2>
   <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
 
-  <h2>Example uses</h2>
-  <p>Use the buttons plugin for states and toggles.</p>
-
   <h4>Stateful</h4>
+  <p>Add data-loading-text="Loading..." to use a loading state on a button.</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <button id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
-      Loading State
+      Loading state
     </button>
   </div>
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;
+</pre>
 
   <h4>Single toggle</h4>
+  <p>Add data-toggle="button" to activate toggling on a single button.</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <button class="btn btn-primary" data-toggle="button">Single Toggle</button>
   </div>
+<pre class="prettyprint linenums">
+&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
+</pre>
 
   <h4>Checkbox</h4>
+  <p>Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons-checkbox">
       <button class="btn btn-primary">Left</button>
@@ -1062,8 +1061,16 @@ $('#my-alert').bind('closed', function () {
       <button class="btn btn-primary">Right</button>
     </div>
   </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+</pre>
 
   <h4>Radio</h4>
+  <p>Add data-toggle="buttons-radio" for radio style toggling on btn-group.</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons-radio">
       <button class="btn btn-primary">Left</button>
@@ -1071,6 +1078,13 @@ $('#my-alert').bind('closed', function () {
       <button class="btn btn-primary">Right</button>
     </div>
   </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+</pre>
 
 
   <hr class="bs-docs-separator">
@@ -1082,24 +1096,6 @@ $('#my-alert').bind('closed', function () {
 
   <h3>Markup</h3>
   <p>Data attributes are integral to the button plugin. Check out the example code below for the various markup types.</p>
-<pre class="prettyprint linenums">
-&lt;!-- Add data-toggle="button" to activate toggling on a single button --&gt;
-&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
-
-&lt;!-- Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group --&gt;
-&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;!-- Add data-toggle="buttons-radio" for radio style toggling on btn-group --&gt;
-&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-</pre>
 
   <h3>Options</h3>
   <p><em>None</em></p>
@@ -1186,13 +1182,26 @@ $('#my-alert').bind('closed', function () {
       </div>
     </div>
   </div>
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
+  simple collapsible
+&lt;/button&gt;
+
+&lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;
+</pre>
 
 
   <hr class="bs-docs-separator">
 
 
   <h2>Usage</h2>
-  <p>Enable via javascript:</p>
+
+  <h3>Via data attributes</h3>
+  <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+  <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
+
+  <h3>Via javascript</h3>
+  <p>Enable manually with:</p>
   <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
 
   <h3>Options</h3>
@@ -1221,18 +1230,7 @@ $('#my-alert').bind('closed', function () {
      </tr>
     </tbody>
   </table>
-  <h3>Markup</h3>
-  <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
-<pre class="prettyprint linenums">
-&lt;button class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
-  simple collapsible
-&lt;/button&gt;
 
-&lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;</pre>
-  <div class="alert alert-info">
-    <strong>Heads up!</strong>
-    To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.
-  </div>
 
   <h3>Methods</h3>
   <h4>.collapse(options)</h4>
@@ -1293,12 +1291,8 @@ $('#myCollapsible').on('hidden', function () {
     <h1>Carousel <small>bootstrap-carousel.js</small></h1>
   </div>
 
-  <h3>About</h3>
-  <p>A generic plugin for cycling through elements. A merry-go-round.</p>
-
   <h2>Example carousel</h2>
-  <p>Watch the slideshow below.</p>
-
+  <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
   <div class="bs-docs-example">
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
@@ -1328,8 +1322,21 @@ $('#myCollapsible').on('hidden', function () {
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
   </div>
+<pre class="prettyprint linenums">
+&lt;div id="myCarousel" class="carousel slide"&gt;
+  &lt;!-- Carousel items --&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="active item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Carousel nav --&gt;
+  &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
+  &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
+&lt;/div&gt;
+</pre>
 
-  <div class="alert alert-info">
+  <div class="alert alert-warning">
     <strong>Heads up!</strong>
     When implementing this carousel, remove the images we have provided and replace them with your own.
   </div>
@@ -1339,7 +1346,12 @@ $('#myCollapsible').on('hidden', function () {
 
 
   <h2>Usage</h2>
-  <p>Call via javascript:</p>
+
+  <h3>Via data attributes</h3>
+  <p>...</p>
+
+  <h3>Via javascript</h3>
+  <p>Call carousel manually with:</p>
   <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
 
   <h3>Options</h3>
@@ -1368,22 +1380,6 @@ $('#myCollapsible').on('hidden', function () {
      </tr>
     </tbody>
   </table>
-
-  <h3>Markup</h3>
-  <p>Data attributes are used for the previous and next conrols. Check out the example markup below.</p>
-<pre class="prettyprint linenums">
-&lt;div id="myCarousel" class="carousel slide"&gt;
-  &lt;!-- Carousel items --&gt;
-  &lt;div class="carousel-inner"&gt;
-    &lt;div class="active item"&gt;…&lt;/div&gt;
-    &lt;div class="item"&gt;…&lt;/div&gt;
-    &lt;div class="item"&gt;…&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;!-- Carousel nav --&gt;
-  &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
-  &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
-&lt;/div&gt;
-</pre>
 
   <h3>Methods</h3>
   <h4>.carousel(options)</h4>

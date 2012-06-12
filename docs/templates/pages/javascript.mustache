@@ -535,10 +535,9 @@ $('[data-spy="scroll"]').each(function () {
     <h1>{{_i}}Togglable tabs{{/i}} <small>bootstrap-tab.js</small></h1>
   </div>
 
-  <p>{{_i}}This plugin adds quick, dynamic tab and pill functionality for transitioning through local content.{{/i}}</p>
 
   <h2>{{_i}}Example tabs{{/i}}</h2>
-  <p>{{_i}}Click the tabs below to toggle between hidden panes, even via dropdown menus.{{/i}}</p>
+  <p>{{_i}}Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.{{/i}}</p>
   <div class="bs-docs-example">
     <ul id="myTab" class="nav nav-tabs">
       <li class="active"><a href="#home" data-toggle="tab">{{_i}}Home{{/i}}</a></li>
@@ -656,10 +655,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <h1>{{_i}}Tooltips{{/i}} <small>bootstrap-tooltip.js</small></h1>
   </div>
 
-  <h3>{{_i}}About Tooltips{{/i}}</h3>
-  <p>{{_i}}Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use css3 for animations, and data-attributes for local title storage.{{/i}}</p>
 
-  <h2>{{_i}}Example use of Tooltips{{/i}}</h2>
+  <h2>{{_i}}Examples{{/i}}</h2>
+  <p>{{_i}}Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.{{/i}}</p>
   <p>{{_i}}Hover over the links below to see tooltips:{{/i}}</p>
   <div class="bs-docs-example tooltip-demo">
     <p class="muted" style="margin-bottom: 0;">{{_i}}Tight pants next level keffiyeh <a href="#" rel="tooltip" title="first tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" rel="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" rel="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.{{/i}}
@@ -768,12 +766,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <h1>{{_i}}Popovers{{/i}} <small>bootstrap-popover.js</small></h1>
   </div>
 
-  <h3>{{_i}}About popovers{{/i}}</h3>
-  <p>{{_i}}Add small overlays of content, like those on the iPad, to any element for housing secondary information.{{/i}}</p>
+  <h2>{{_i}}Example{{/i}}</h2>
+  <p>{{_i}}Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.{{/i}}</p>
   <p class="muted"><strong>*</strong> {{_i}}Requires <a href="#tooltips">Tooltip</a> to be included{{/i}}</p>
-
-  <h2>{{_i}}Example hover popover{{/i}}</h2>
-  <p>{{_i}}Hover over the button to trigger the popover.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <a href="#" class="btn btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}hover for popover{{/i}}</a>
   </div>
@@ -883,11 +878,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <h1>{{_i}}Alert messages{{/i}} <small>bootstrap-alert.js</small></h1>
   </div>
 
-  <h3>{{_i}}About alerts{{/i}}</h3>
-  <p>{{_i}}The alert plugin is a tiny class for adding close functionality to alerts.{{/i}}</p>
 
   <h2>{{_i}}Example alerts{{/i}}</h2>
-  <p>{{_i}}The alerts plugin works on regular alert messages, and block messages.{{/i}}</p>
+  <p>{{_i}}Add dismiss functionality to all alerge messages with this plugin.{{/i}}</p>
   <div class="bs-docs-example">
     <div class="alert fade in">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -961,25 +954,31 @@ $('#my-alert').bind('closed', function () {
     <h1>{{_i}}Buttons{{/i}} <small>bootstrap-button.js</small></h1>
   </div>
 
-  <h3>{{_i}}About{{/i}}</h3>
+  <h2>{{_i}}Example uses{{/i}}</h2>
   <p>{{_i}}Do more with buttons. Control button states or create groups of buttons for more components like toolbars.{{/i}}</p>
 
-  <h2>{{_i}}Example uses{{/i}}</h2>
-  <p>{{_i}}Use the buttons plugin for states and toggles.{{/i}}</p>
-
   <h4>{{_i}}Stateful{{/i}}</h4>
+  <p>{{_i}}Add data-loading-text="Loading..." to use a loading state on a button.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <button id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
-      {{_i}}Loading State{{/i}}
+      {{_i}}Loading state{{/i}}
     </button>
   </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;
+</pre>
 
   <h4>{{_i}}Single toggle{{/i}}</h4>
+  <p>{{_i}}Add data-toggle="button" to activate toggling on a single button.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <button class="btn btn-primary" data-toggle="button">{{_i}}Single Toggle{{/i}}</button>
   </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
+</pre>
 
   <h4>{{_i}}Checkbox{{/i}}</h4>
+  <p>{{_i}}Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons-checkbox">
       <button class="btn btn-primary">{{_i}}Left{{/i}}</button>
@@ -987,8 +986,16 @@ $('#my-alert').bind('closed', function () {
       <button class="btn btn-primary">{{_i}}Right{{/i}}</button>
     </div>
   </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+</pre>
 
   <h4>{{_i}}Radio{{/i}}</h4>
+  <p>{{_i}}Add data-toggle="buttons-radio" for radio style toggling on btn-group.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons-radio">
       <button class="btn btn-primary">{{_i}}Left{{/i}}</button>
@@ -996,6 +1003,13 @@ $('#my-alert').bind('closed', function () {
       <button class="btn btn-primary">{{_i}}Right{{/i}}</button>
     </div>
   </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
+&lt;/div&gt;
+</pre>
 
 
   <hr class="bs-docs-separator">
@@ -1007,24 +1021,6 @@ $('#my-alert').bind('closed', function () {
 
   <h3>{{_i}}Markup{{/i}}</h3>
   <p>{{_i}}Data attributes are integral to the button plugin. Check out the example code below for the various markup types.{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;!-- {{_i}}Add data-toggle="button" to activate toggling on a single button{{/i}} --&gt;
-&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
-
-&lt;!-- {{_i}}Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group{{/i}} --&gt;
-&lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;!-- {{_i}}Add data-toggle="buttons-radio" for radio style toggling on btn-group{{/i}} --&gt;
-&lt;div class="btn-group" data-toggle="buttons-radio"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-</pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
   <p><em>{{_i}}None{{/i}}</em></p>
@@ -1111,13 +1107,26 @@ $('#my-alert').bind('closed', function () {
       </div>
     </div>
   </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
+  {{_i}}simple collapsible{{/i}}
+&lt;/button&gt;
+
+&lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;
+</pre>
 
 
   <hr class="bs-docs-separator">
 
 
   <h2>{{_i}}Usage{{/i}}</h2>
-  <p>{{_i}}Enable via javascript:{{/i}}</p>
+
+  <h3>{{_i}}Via data attributes{{/i}}</h3>
+  <p>{{_i}}Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.{{/i}}</p>
+  <p>{{_i}}To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.{{/i}}</p>
+
+  <h3>{{_i}}Via javascript{{/i}}</h3>
+  <p>{{_i}}Enable manually with:{{/i}}</p>
   <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
@@ -1146,18 +1155,7 @@ $('#my-alert').bind('closed', function () {
      </tr>
     </tbody>
   </table>
-  <h3>{{_i}}Markup{{/i}}</h3>
-  <p>{{_i}}Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;button class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
-  {{_i}}simple collapsible{{/i}}
-&lt;/button&gt;
 
-&lt;div id="demo" class="collapse in"&gt; … &lt;/div&gt;</pre>
-  <div class="alert alert-info">
-    <strong>{{_i}}Heads up!{{/i}}</strong>
-    {{_i}}To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.{{/i}}
-  </div>
 
   <h3>{{_i}}Methods{{/i}}</h3>
   <h4>.collapse({{_i}}options{{/i}})</h4>
@@ -1218,12 +1216,8 @@ $('#myCollapsible').on('hidden', function () {
     <h1>{{_i}}Carousel{{/i}} <small>bootstrap-carousel.js</small></h1>
   </div>
 
-  <h3>{{_i}}About{{/i}}</h3>
-  <p>{{_i}}A generic plugin for cycling through elements. A merry-go-round.{{/i}}</p>
-
   <h2>{{_i}}Example carousel{{/i}}</h2>
-  <p>{{_i}}Watch the slideshow below.{{/i}}</p>
-
+  <p>{{_i}}The slideshow below shows a generic plugin and component for cycling through elements like a carousel.{{/i}}</p>
   <div class="bs-docs-example">
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
@@ -1253,8 +1247,21 @@ $('#myCollapsible').on('hidden', function () {
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
   </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;div id="myCarousel" class="carousel slide"&gt;
+  &lt;!-- {{_i}}Carousel items{{/i}} --&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="active item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
+    &lt;div class="item"&gt;…&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- {{_i}}Carousel nav{{/i}} --&gt;
+  &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
+  &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
+&lt;/div&gt;
+</pre>
 
-  <div class="alert alert-info">
+  <div class="alert alert-warning">
     <strong>{{_i}}Heads up!{{/i}}</strong>
     {{_i}}When implementing this carousel, remove the images we have provided and replace them with your own.{{/i}}
   </div>
@@ -1264,7 +1271,12 @@ $('#myCollapsible').on('hidden', function () {
 
 
   <h2>{{_i}}Usage{{/i}}</h2>
-  <p>{{_i}}Call via javascript:{{/i}}</p>
+
+  <h3>{{_i}}Via data attributes{{/i}}</h3>
+  <p>{{_i}}...{{/i}}</p>
+
+  <h3>{{_i}}Via javascript{{/i}}</h3>
+  <p>{{_i}}Call carousel manually with:{{/i}}</p>
   <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
@@ -1293,22 +1305,6 @@ $('#myCollapsible').on('hidden', function () {
      </tr>
     </tbody>
   </table>
-
-  <h3>{{_i}}Markup{{/i}}</h3>
-  <p>{{_i}}Data attributes are used for the previous and next conrols. Check out the example markup below.{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;div id="myCarousel" class="carousel slide"&gt;
-  &lt;!-- {{_i}}Carousel items{{/i}} --&gt;
-  &lt;div class="carousel-inner"&gt;
-    &lt;div class="active item"&gt;…&lt;/div&gt;
-    &lt;div class="item"&gt;…&lt;/div&gt;
-    &lt;div class="item"&gt;…&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;!-- {{_i}}Carousel nav{{/i}} --&gt;
-  &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
-  &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
-&lt;/div&gt;
-</pre>
 
   <h3>{{_i}}Methods{{/i}}</h3>
   <h4>.carousel({{_i}}options{{/i}})</h4>
