@@ -622,6 +622,10 @@ form.well {
 
 /* Eaxmples page
 ------------------------- */
+.bootstrap-examples p {
+  font-size: 13px;
+  line-height: 18px;
+}
 .bootstrap-examples .thumbnail {
   margin-bottom: 9px;
   background-color: #fff;
