@@ -186,6 +186,7 @@
   <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
+  <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.{{/i}}</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -402,6 +403,9 @@ $('#myModal').on('hidden', function () {
   <p>{{_i}}Call the dropdowns via javascript:{{/i}}</p>
   <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
 
+  <h3>{{_i}}Options{{/i}}</h3>
+  <p><em>{{_i}}None{{/i}}</em></p>
+
   <h3>{{_i}}Methods{{/i}}</h3>
   <h4>$().dropdown()</h4>
   <p>{{_i}}A programatic api for activating menus for a given navbar or tabbed navigation.{{/i}}</p>
@@ -485,6 +489,7 @@ $('[data-spy="scroll"]').each(function () {
 </pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
+  <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.{{/i}}</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -670,6 +675,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
   <pre class="prettyprint linenums">$('#example').tooltip({{_i}}options{{/i}})</pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
+  <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.{{/i}}</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -781,6 +787,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
   <pre class="prettyprint linenums">$('#example').popover({{_i}}options{{/i}})</pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
+  <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.{{/i}}</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -852,6 +859,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
   <h3>{{_i}}Markup{{/i}}</h3>
   <p>{{_i}}For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.{{/i}}</p>
+
   <h3>{{_i}}Methods{{/i}}</h3>
   <h4>$().popover({{_i}}options{{/i}})</h4>
   <p>{{_i}}Initializes popovers for an element collection.{{/i}}</p>
@@ -916,6 +924,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
   <h4>.alert('close')</h4>
   <p>{{_i}}Closes an alert.{{/i}}</p>
   <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
+
 
   <h3>{{_i}}Events{{/i}}</h3>
   <p>{{_i}}Bootstrap's alert class exposes a few events for hooking into alert functionality.{{/i}}</p>
@@ -1017,6 +1026,9 @@ $('#my-alert').bind('closed', function () {
 &lt;/div&gt;
 </pre>
 
+  <h3>{{_i}}Options{{/i}}</h3>
+  <p><em>{{_i}}None{{/i}}</em></p>
+
   <h3>{{_i}}Methods{{/i}}</h3>
   <h4>$().button('toggle')</h4>
   <p>{{_i}}Toggles push state. Gives the button the appearance that it has been activated.{{/i}}</p>
@@ -1109,6 +1121,7 @@ $('#my-alert').bind('closed', function () {
   <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
 
   <h3>{{_i}}Options{{/i}}</h3>
+  <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.{{/i}}</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -1253,7 +1266,9 @@ $('#myCollapsible').on('hidden', function () {
   <h2>{{_i}}Usage{{/i}}</h2>
   <p>{{_i}}Call via javascript:{{/i}}</p>
   <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
+
   <h3>{{_i}}Options{{/i}}</h3>
+  <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.{{/i}}</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -1345,23 +1360,31 @@ $('.carousel').carousel({
     <h1>{{_i}}Typeahead{{/i}} <small>bootstrap-typeahead.js</small></h1>
   </div>
 
-  <h3>{{_i}}About{{/i}}</h3>
-  <p>{{_i}}A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.{{/i}}</p>
 
   <h2>{{_i}}Example{{/i}}</h2>
-  <p>{{_i}}Start typing in the field below to show the typeahead results.{{/i}}</p>
+  <p>{{_i}}A basic, easily extended plugin for quickly creating elegant typeaheads with any form text input.{{/i}}</p>
   <div class="bs-docs-example" style="background-color: #f5f5f5;">
     <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
   </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;input type="text" data-provide="typeahead"&gt;
+</pre>
 
 
   <hr class="bs-docs-separator">
 
 
   <h2>{{_i}}Usage{{/i}}</h2>
-  <p>{{_i}}Call the typeahead via javascript:{{/i}}</p>
+
+  <h3>{{_i}}Via data attributes{{/i}}</h3>
+  <p>{{_i}}Add data attributes to register an element with typeahead functionality as shown in the example above.{{/i}}</p>
+
+  <h3>{{_i}}Via javascript{{/i}}</h3>
+  <p>{{_i}}Call the typeahead manually with:{{/i}}</p>
   <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
+
   <h3>{{_i}}Options{{/i}}</h3>
+  <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-source=""</code>.{{/i}}</p>
   <table class="table table-bordered table-striped">
     <thead>
      <tr>
@@ -1405,11 +1428,6 @@ $('.carousel').carousel({
     </tbody>
   </table>
 
-  <h3>{{_i}}Markup{{/i}}</h3>
-  <p>{{_i}}Add data attributes to register an element with typeahead functionality.{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;input type="text" data-provide="typeahead"&gt;
-</pre>
   <h3>{{_i}}Methods{{/i}}</h3>
   <h4>.typeahead({{_i}}options{{/i}})</h4>
   <p>{{_i}}Initializes an input with a typeahead.{{/i}}</p>
