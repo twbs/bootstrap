@@ -106,10 +106,13 @@
   <div class="page-header">
     <h1>Javascript in Bootstrap</h1>
   </div>
+
   <h3>Individual or compiled</h3>
   <p>If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of these plugins.</p>
-  <h3>Data attributea</h3>
+
+  <h3>Data attributes</h3>
   <p>...</p>
+
   <h3>Programmatic API</h3>
   <p>...</p>
 
@@ -126,8 +129,16 @@
     <h1>Transitions <small>bootstrap-transition.js</small></h1>
   </div>
   <h3>About transitions</h3>
-  <p>For simple transition effects, include bootstrap-transition.js once to slide in modals or fade out alerts.</p>
-  <p class="muted"><strong>*</strong> Required for animation in plugins</p>
+  <p>For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
+  <h3>Use cases</h3>
+  <p>A few examples of the transition plugin:</p>
+  <ul>
+    <li>Sliding or fading in modals</li>
+    <li>Fading out tabs</li>
+    <li>Fading out alerts</li>
+    <li>Sliding carousel panes</li>
+  </ul>
+
 </section>
 
 
@@ -139,11 +150,11 @@
     <h1>Modals <small>bootstrap-modal.js</small></h1>
   </div>
 
-  <h3>About modals</h3>
+
+  <h2>About modals</h2>
   <p>A streamlined, but flexible, take on the traditional javascript modal plugin with only the minimum required functionality and smart defaults.</p>
 
-  <h2>Static example</h2>
-  <p>Below is a statically rendered modal.</p>
+  <h3>Static example</h3>
   <div class="bs-docs-example" style="background-color: #f5f5f5;">
     <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
       <div class="modal-header">
@@ -159,10 +170,24 @@
       </div>
     </div>
   </div>
+<pre class="prettyprint linenums">
+&lt;div class="modal hide fade"&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;button type="button" class="close" data-dismiss="modal"&gt;&amp;times;&lt;/button&gt;
+    &lt;h3&gt;Modal header&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-body"&gt;
+    &lt;p&gt;One fine body…&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-footer"&gt;
+    &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
-  <h2>Live demo</h2>
+  <h3>Live demo</h3>
   <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
-
   <!-- sample modal content -->
   <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-header">
@@ -195,16 +220,18 @@
       <a href="#" role="button" class="btn btn-primary">Save changes</a>
     </div>
   </div>
-
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
   </div>
 
-  <hr>
 
-  <h2>Using bootstrap-modal</h2>
+  <hr class="bs-docs-separator">
+
+
+  <h2>Usage</h2>
   <p>Call the modal via javascript:</p>
   <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
+
   <h3>Options</h3>
   <table class="table table-bordered table-striped">
     <thead>

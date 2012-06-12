@@ -69,87 +69,17 @@ body > .navbar-fixed-top .brand:hover {
 }
 
 
-
-/* Left nav
--------------------------------------------------- */
-
-.bs-docs-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  width: 150px;
-  padding: 25px;
-  background-color: #dde2e9;
-  text-shadow: 0 1px 0 rgba(255,255,255,.55);
-  -webkit-box-shadow: inset -10px 0 15px rgba(0,0,0,.15);
-     -moz-box-shadow: inset -10px 0 15px rgba(0,0,0,.15);
-          box-shadow: inset -10px 0 15px rgba(0,0,0,.15);
-  background-color: #444;
-  text-shadow: 0 1px 0 rgba(0,0,0,.5);
-}
-.bs-docs-nav ul {
-  margin-left: 0;
-  margin-bottom: 15px;
-}
-.bs-docs-nav ul li {
-  list-style: none;
-  line-height: 1;
-}
-.bs-docs-nav a:hover {
-  text-decoration: none;
-}
-.bs-docs-nav ul li a {
-  display: block;
-  width: 145px;
-  padding: 0 30px;
-  margin: 0 -30px;
-  font-size: 12px;
-  line-height: 22px;
-  color: #444;
-  color: #999;
-}
-.bs-docs-nav ul li a:hover {
-  color: #333;
-  color: #fff;
-  background-color: rgba(0,0,0,.05);
-}
-.bs-docs-nav > ul > li > a {
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 24px;
-  color: #333;
-  color: #fff;
-}
-
-/* Logo wordmark */
-.bs-docs-logo {
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 1;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-.bs-docs-logo a {
-  color: #a4b4cb;
-  color: #333;
-  text-shadow: 0 1px 0 #555;
-}
-.bs-docs-logo a:hover {
-  color: #8e9db3;
-  color: #222;
-}
-
-
-
 /* Space out sub-sections more
 -------------------------------------------------- */
 
 section {
   padding-top: 60px;
 }
+
+section > .table {
+  font-size: 13px;
+}
+
 
 /* Table of contents */
 .bs-docs-contents li {
