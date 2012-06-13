@@ -1,6 +1,11 @@
 // MODALS
 // ------
 
+// Prevent the body from scrolling, when user scrolls inside modal
+body.modal-open {
+    overflow: hidden;
+}
+
 // Recalculate z-index where appropriate
 .modal-open {
   .dropdown-menu {  z-index: @zindexDropdown + @zindexModal; }
