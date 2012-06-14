@@ -199,9 +199,10 @@
     }
 
   , getPosition: function (inside) {
-      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
-        width: this.$element[0].offsetWidth
-      , height: this.$element[0].offsetHeight
+	  var el = this.options.attachTo ? $(this.options.attachTo) : this.$element
+      return $.extend({}, (inside ? {top: 0, left: 0} : el.offset()), {
+        width: el[0].offsetWidth
+      , height: el[0].offsetHeight
       })
     }
 
