@@ -1269,6 +1269,7 @@ textarea::-webkit-input-placeholder {
 .input-prepend,
 .input-append {
   margin-bottom: 5px;
+  font-size: 0;
 }
 
 .input-prepend input,
@@ -1280,6 +1281,7 @@ textarea::-webkit-input-placeholder {
   position: relative;
   margin-bottom: 0;
   *margin-left: 0;
+  font-size: 13px;
   vertical-align: middle;
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
@@ -1307,6 +1309,7 @@ textarea::-webkit-input-placeholder {
   height: 18px;
   min-width: 16px;
   padding: 4px 5px;
+  font-size: 13px;
   font-weight: normal;
   line-height: 18px;
   text-align: center;

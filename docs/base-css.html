@@ -965,11 +965,13 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   <p>Wrap a <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.</p>
   <form class="bs-docs-example">
     <div class="input-prepend">
-      <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text" placeholder="Username">
+      <span class="add-on">@</span>
+      <input class="span2" id="prependedInput" size="16" type="text" placeholder="Username">
     </div>
     <br>
     <div class="input-append">
-      <input class="span2" id="appendedInput" size="16" type="text"><span class="add-on">.00</span>
+      <input class="span2" id="appendedInput" size="16" type="text">
+      <span class="add-on">.00</span>
     </div>
   </form>
 <pre class="prettyprint linenums">
@@ -985,7 +987,9 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   <p>Use both classes and two instances of <code>.add-on</code> to prepend and append an input.</p>
   <form class="bs-docs-example form-inline">
     <div class="input-prepend input-append">
-      <span class="add-on">$</span><input class="span2" id="appendedPrependedInput" size="16" type="text"><span class="add-on">.00</span>
+      <span class="add-on">$</span>
+      <input class="span2" id="appendedPrependedInput" size="16" type="text">
+      <span class="add-on">.00</span>
     </div>
   </form>
 <pre class="prettyprint linenums">
@@ -998,11 +1002,14 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   <p>Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.</p>
   <form class="bs-docs-example">
     <div class="input-append">
-      <input class="span2" id="appendedInputButton" size="16" type="text"><button class="btn" type="button">Go!</button>
+      <input class="span2" id="appendedInputButton" size="16" type="text">
+      <button class="btn" type="button">Go!</button>
     </div>
     <br>
     <div class="input-append">
-      <input class="span2" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button">Search</button><button class="btn" type="button">Options</button>
+      <input class="span2" id="appendedInputButtons" size="16" type="text">
+      <button class="btn" type="button">Search</button>
+      <button class="btn" type="button">Options</button>
     </div>
   </form>
 <pre class="prettyprint linenums">

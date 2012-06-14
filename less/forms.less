@@ -380,12 +380,14 @@ textarea {
 .input-prepend,
 .input-append {
   margin-bottom: 5px;
+  font-size: 0;
   input,
   select,
   .uneditable-input {
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
+    font-size: @baseFontSize;
     vertical-align: middle;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     // Make input on top when focused so blue border and shadow always show
@@ -402,6 +404,7 @@ textarea {
     height: @baseLineHeight;
     min-width: 16px;
     padding: 4px 5px;
+    font-size: @baseFontSize;
     font-weight: normal;
     line-height: @baseLineHeight;
     text-align: center;
