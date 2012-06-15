@@ -1584,10 +1584,11 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      var val = this.$menu.find('.active').data('value')
       this.$element
         .val(this.updater(val))
         .change()
+        .trigger("typeahead:selected", [val])
       return this.hide()
     }
 
@@ -1670,7 +1671,7 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).data('value', item)
         i.find('a').html(that.highlighter(item))
         return i[0]
       })
