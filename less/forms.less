@@ -22,7 +22,7 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @baseLineHeight * 1.5;
+  margin-bottom: 0px;
   font-size: @baseFontSize * 1.5;
   line-height: @baseLineHeight * 2;
   color: @grayDark;
@@ -34,6 +34,11 @@ legend {
     font-size: @baseLineHeight * .75;
     color: @grayLight;
   }
+}
+
+legend + * {
+  -webkit-margin-top-collapse : separate;
+  margin-top                  : @baseLineHeight * 1.5;
 }
 
 // Set font for forms
