@@ -1,48 +1,25 @@
 // HQ extension of Twitter Bootstrap's Accordion styles
+.hq-accordion-control {
+    margin-bottom: 2px;
+}
 
 .hq-accordion-control .accordion-heading {
     border: none;
     position: relative;
+    #gradient > .vertical(lighten(@sideNavigationBackground, 3), darken(@sideNavigationBackground, 5));
+    border-top: 1px solid @white;
+    border-bottom: 1px solid darken(@grayBorderColor,10);
+    height: 35px;
 
-    .no-filters {
-        height: 31px;
-    }
-    a, .no-filters {
-        #gradient > .vertical(lighten(@sideNavigationBackground, 3), darken(@sideNavigationBackground, 5));
-        border-top: 1px solid @white;
-        border-bottom: 1px solid darken(@grayBorderColor,10);
-        position: relative;
-    }
-    a {
-        display: block;
-        font-size: @baseFontSize + 2;
-        padding: @baseLineHeight/3 @gridGutterWidth @baseLineHeight/3 @gridGutterWidth*3;
-    }
-    a:before {
-        content: " ";
-        display: block;
-        position: absolute;
-        left: @gridGutterWidth;
-        top: 8px;
-        width: 16px;
-        height: 13px;
-        background-image: url('@{imageDirectory}advanced-filters-double-chevron.png');
-        background-position: 0 0;
-    }
-    a,
-    a:link,
-    a:visited {
-        text-decoration: none;
-        color: @commCareGray;
-    }
-    a:hover {
-        #gradient > .vertical(desaturate(lighten(@blue, 20), 20), @blue);
-        text-decoration: none;
-        color: @white;
-        text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-        border-bottom-color: darken(@grayBorderColor,30);
-        &:before {
-            background-position: 0 -13px;
+    .accordion-actions {
+        padding: 3px 3px 0;
+        a:hover {
+            .btn-primary();
+        }
+        span {
+            font-size: @baseFontSize;
+            padding: 1px 5px 1px 10px;
+            vertical-align: middle;
         }
     }
 
@@ -55,46 +32,26 @@
         background-color: transparent;
         height: 32px;
     }
-    &:hover .accordion-extra [class^="icon-"] {
-        .make-icon-white();
-    }
-    &:hover .accordion-extra:hover [class^="icon-"] {
-        .make-icon-black();
-    }
 }
 
 .hq-accordion-control .accordion-body {
-    padding-bottom: 9px;
-    margin-bottom: 1px;
+    .box-shadow(inset 0 0px 8px rgba(0,0,0,.2));
+    background-color: lighten(@sideNavigationBackground, 3);
+    border: none;
+    border-bottom: 1px solid darken(@navbarBackground, 15);
+
     .accordion-inner {
         padding-bottom: 3px;
     }
+
+
     &.collapse {
-        .box-shadow(inset 0 0px 8px rgba(0,0,0,.5));
-        border: none;
-        border-bottom: 1px solid darken(@navbarBackground, 35);
-        background-color: darken(@sideNavigationBackground, 20);
-        .accordion-inner {
-            display: none;
-        }
-        &:before {
-            content: url('@{imageDirectory}three-dots.png');
-            display: block;
-            position: absolute;
-            top: -6px;
-            left: 50%;
-        }
     }
     &.in {
-        .box-shadow(inset 0 0px 8px rgba(0,0,0,.2));
-        border: none;
-        border-bottom: 1px solid darken(@navbarBackground, 15);
-        background-color: lighten(@sideNavigationBackground, 3);
+        padding-bottom: 9px;
+        margin-bottom: 1px;
         .accordion-inner {
             display: block;
-        }
-        &:before {
-            display: none;
         }
     }
 }
