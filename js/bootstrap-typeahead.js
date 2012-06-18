@@ -151,7 +151,7 @@
         , next = active.next()
 
       if (!next.length) {
-        next = $(this.$menu.find('li')[0])
+        next = $(this.$menu.children('li')[0])
       }
 
       next.addClass('active')
@@ -162,7 +162,7 @@
         , prev = active.prev()
 
       if (!prev.length) {
-        prev = this.$menu.find('li').last()
+        prev = this.$menu.children('li').last()
       }
 
       prev.addClass('active')
