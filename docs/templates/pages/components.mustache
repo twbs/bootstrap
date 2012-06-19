@@ -756,18 +756,16 @@
   </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
-  &lt;li class="nav-header"&gt;
-    {{_i}}List header{{/i}}
-  &lt;/li&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;a href="#"&gt;{{_i}}Library{{/i}}&lt;/a&gt;
-  &lt;/li&gt;
+  &lt;li class="nav-header"&gt;{{_i}}List header{{/i}}&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;{{_i}}Library{{/i}}&lt;/a&gt;&lt;/li&gt;
   ...
 &lt;/ul&gt;
 </pre>
+  <p>
+    <span class="label label-info">{{_i}}Note{{/i}}</span>
+    {{_i}}For nesting within a nav list, include <code>class="nav nav-list"</code> on any nested <code>&lt;ul&gt;</code>.{{/i}}
+  </p>
 
   <h3>{{_i}}Horizontal dividers{{/i}}</h3>
   <p>{{_i}}Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:{{/i}}</p>
