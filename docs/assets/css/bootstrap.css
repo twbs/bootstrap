@@ -4604,6 +4604,218 @@ a.badge:hover {
   background-color: #1a1a1a;
 }
 
+.riband {
+  float: left;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  *background-color: #e6e6e6;
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.riband:hover,
+.riband:active,
+.riband.active,
+.riband.disabled,
+.riband[disabled] {
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+
+.riband:active,
+.riband.active {
+  background-color: #cccccc \9;
+}
+
+.riband .riband-inner {
+  position: relative;
+  padding: 20px 10px 10px;
+  font-size: 13px;
+  line-height: 18px;
+  *line-height: 20px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.riband .riband-inner:after,
+.riband .riband-inner:before {
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  z-index: 2;
+  display: block;
+  border-top: 15px solid #e6e6e6;
+  border-right: 25px solid transparent;
+  content: "";
+}
+
+.riband .riband-inner:before {
+  right: 0;
+  left: auto;
+  border-right: none;
+  border-left: 25px solid transparent;
+}
+
+.riband-good .riband-inner,
+.riband-power .riband-inner,
+.riband-super .riband-inner,
+.riband-elite .riband-inner {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.riband-good {
+  background-color: #5bb75b;
+  *background-color: #51a351;
+  background-image: -ms-linear-gradient(top, #62c462, #51a351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(top, #62c462, #51a351);
+  background-repeat: repeat-x;
+  border-color: #51a351 #51a351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.riband-good:hover,
+.riband-good:active,
+.riband-good.active,
+.riband-good.disabled,
+.riband-good[disabled] {
+  background-color: #51a351;
+  *background-color: #499249;
+}
+
+.riband-good:active,
+.riband-good.active {
+  background-color: #408140 \9;
+}
+
+.riband-good .riband-inner:before,
+.riband-good .riband-inner:after {
+  border-top-color: #51a351;
+}
+
+.riband-power {
+  background-color: #faa732;
+  *background-color: #f89406;
+  background-image: -ms-linear-gradient(top, #fbb450, #f89406);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+  background-image: -o-linear-gradient(top, #fbb450, #f89406);
+  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+  background-image: linear-gradient(top, #fbb450, #f89406);
+  background-repeat: repeat-x;
+  border-color: #f89406 #f89406 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.riband-power:hover,
+.riband-power:active,
+.riband-power.active,
+.riband-power.disabled,
+.riband-power[disabled] {
+  background-color: #f89406;
+  *background-color: #df8505;
+}
+
+.riband-power:active,
+.riband-power.active {
+  background-color: #c67605 \9;
+}
+
+.riband-power .riband-inner:before,
+.riband-power .riband-inner:after {
+  border-top-color: #f89406;
+}
+
+.riband-super {
+  background-color: #da4f49;
+  *background-color: #bd362f;
+  background-image: -ms-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: linear-gradient(top, #ee5f5b, #bd362f);
+  background-repeat: repeat-x;
+  border-color: #bd362f #bd362f #802420;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.riband-super:hover,
+.riband-super:active,
+.riband-super.active,
+.riband-super.disabled,
+.riband-super[disabled] {
+  background-color: #bd362f;
+  *background-color: #a9302a;
+}
+
+.riband-super:active,
+.riband-super.active {
+  background-color: #942a25 \9;
+}
+
+.riband-super .riband-inner:before,
+.riband-super .riband-inner:after {
+  border-top-color: #bd362f;
+}
+
+.riband-elite {
+  background-color: #414141;
+  *background-color: #222222;
+  background-image: -ms-linear-gradient(top, #555555, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#222222));
+  background-image: -webkit-linear-gradient(top, #555555, #222222);
+  background-image: -o-linear-gradient(top, #555555, #222222);
+  background-image: -moz-linear-gradient(top, #555555, #222222);
+  background-image: linear-gradient(top, #555555, #222222);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.riband-elite:hover,
+.riband-elite:active,
+.riband-elite.active,
+.riband-elite.disabled,
+.riband-elite[disabled] {
+  background-color: #222222;
+  *background-color: #151515;
+}
+
+.riband-elite:active,
+.riband-elite.active {
+  background-color: #080808 \9;
+}
+
+.riband-elite .riband-inner:before,
+.riband-elite .riband-inner:after {
+  border-top-color: #222222;
+}
+
 @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
