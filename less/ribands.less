@@ -1,0 +1,86 @@
+// RIBAND
+// ---------------
+
+// Base classes
+.riband {
+  float: left;
+  margin-bottom: 20px;
+  .buttonBackground(@btnBackground, @btnBackgroundHighlight);
+
+  .riband-inner {
+    position: relative;
+    padding: 20px 10px 10px;
+    text-transform: uppercase;
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+    *line-height: 20px;
+    color: @grayDark;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    vertical-align: middle;
+
+    &:after,
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 2;
+      bottom: -14px;
+      left: 0;
+      border-right: 25px solid transparent;
+      border-top: 15px solid @btnBackgroundHighlight;
+    }
+    &:before {
+      left: auto;
+      right: 0;
+      border-left: 25px solid transparent;
+      border-right: none;
+    }
+  }
+}
+// Set text color.
+.riband-good .riband-inner,
+.riband-power .riband-inner,
+.riband-super .riband-inner,
+.riband-elite .riband-inner {
+  color: @white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+
+// Colors
+// Good appears as green
+.riband-good {
+  .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+
+  .riband-inner:before,
+  .riband-inner:after {
+    border-top-color: @btnSuccessBackgroundHighlight;
+  }
+}
+// Power appears as orange
+.riband-power {
+  .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+
+  .riband-inner:before,
+  .riband-inner:after {
+    border-top-color: @btnWarningBackgroundHighlight;
+  }
+}
+// Bad appear as red
+.riband-super {
+  .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+
+  .riband-inner:before,
+  .riband-inner:after {
+    border-top-color: @btnDangerBackgroundHighlight;
+  }
+}
+// Inverse appears as dark gray
+.riband-elite {
+  .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+
+  .riband-inner:before,
+  .riband-inner:after {
+    border-top-color: @btnInverseBackgroundHighlight;
+  }
+}
