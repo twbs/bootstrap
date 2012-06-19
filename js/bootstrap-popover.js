@@ -71,6 +71,12 @@
       return this.$tip
     }
 
+  , destroy: function () {
+      var $e = this.$element
+      $e.off()
+      $e.removeData('popover')
+    }
+
   })
 
 

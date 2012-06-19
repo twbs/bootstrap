@@ -235,6 +235,12 @@
       this[this.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
+  , destroy: function () {
+      var $e = this.$element
+      $e.off()
+      $e.removeData('tooltip')
+    }
+
   }
 
 
