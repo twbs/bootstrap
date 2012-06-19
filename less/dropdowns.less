@@ -103,6 +103,20 @@
   outline: 0;
 }
 
+// Disabled state
+// --------------
+// Gray out text and ensure the hover state remains gray
+.dropdown-menu .disabled > a,
+.dropdown-menu .disabled > a:hover {
+  color: @grayLight;
+}
+// Nuke hover effects
+.dropdown-menu .disabled > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: default;
+}
+
 // Open state for the dropdown
 // ---------------------------
 .open {

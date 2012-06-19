@@ -37,7 +37,7 @@
 
 <!-- Dropdowns
 ================================================== -->
-<section id="Dropdowns">
+<section id="dropdowns">
   <div class="page-header">
     <h1>{{_i}}Dropdown menus{{/i}} <small>{{_i}}Dropdown and dropup menus for contextual actions{{/i}}</small></h1>
   </div>
@@ -575,6 +575,23 @@
   &lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+  <h3>{{_i}}Disabled state{{/i}}</h3>
+  <p>{{_i}}For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless custom javascript is implemented to prevent those clicks.{{/i}}</p>
+  <div class="bs-docs-example">
+    <ul class="nav nav-pills">
+      <li><a href="#">{{_i}}Clickable link{{/i}}</a></li>
+      <li><a href="#">{{_i}}Clickable link{{/i}}</a></li>
+      <li class="disabled"><a href="#">{{_i}}Disabled link{{/i}}</a></li>
+    </ul>
+  </div>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-pills"&gt;
+  ...
+  &lt;li class="disabled"&gt;&lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
+  ...
 &lt;/ul&gt;
 </pre>
 

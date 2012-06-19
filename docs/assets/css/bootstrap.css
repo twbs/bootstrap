@@ -2466,6 +2466,17 @@ table .span24 {
   outline: 0;
 }
 
+.dropdown-menu .disabled > a,
+.dropdown-menu .disabled > a:hover {
+  color: #999999;
+}
+
+.dropdown-menu .disabled > a:hover {
+  text-decoration: none;
+  cursor: default;
+  background-color: transparent;
+}
+
 .open {
   *z-index: 1000;
 }
@@ -3578,6 +3589,16 @@ input[type="submit"].btn.btn-mini {
 .tabs-right > .nav-tabs .active > a:hover {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
+}
+
+.nav > .disabled > a {
+  color: #999999;
+}
+
+.nav > .disabled > a:hover {
+  text-decoration: none;
+  cursor: default;
+  background-color: transparent;
 }
 
 .navbar {
