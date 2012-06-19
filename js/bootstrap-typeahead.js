@@ -177,10 +177,9 @@
       if ($.browser.webkit || $.browser.msie) {
         this.$element.on('keydown', $.proxy(this.keydown, this))
       }
-
-      this.$menu
-        .on('click', $.proxy(this.click, this))
-        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+      
+      this.$menu.on('click', $.proxy(this.click, this))
+      this.$menu.children('li').on('mouseenter', $.proxy(this.mouseenter, this))
     }
 
   , move: function (e) {
