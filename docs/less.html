@@ -753,37 +753,37 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>#font > #family > .serif()</code></td>
+        <td><code>#font &gt; #family &gt; .serif()</code></td>
         <td><em class="muted">none</em></td>
         <td>Make an element use a serif font stack</td>
       </tr>
       <tr>
-        <td><code>#font > #family > .sans-serif()</code></td>
+        <td><code>#font &gt; #family &gt; .sans-serif()</code></td>
         <td><em class="muted">none</em></td>
         <td>Make an element use a sans-serif font stack</td>
       </tr>
       <tr>
-        <td><code>#font > #family > .monospace()</code></td>
+        <td><code>#font &gt; #family &gt; .monospace()</code></td>
         <td><em class="muted">none</em></td>
         <td>Make an element use a monospace font stack</td>
       </tr>
       <tr>
-        <td><code>#font > .shorthand()</code></td>
+        <td><code>#font &gt; .shorthand()</code></td>
         <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
         <td>Easily set font size, weight, and leading</td>
       </tr>
       <tr>
-        <td><code>#font > .serif()</code></td>
+        <td><code>#font &gt; .serif()</code></td>
         <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
         <td>Set font family to serif, and control size, weight, and leading</td>
       </tr>
       <tr>
-        <td><code>#font > .sans-serif()</code></td>
+        <td><code>#font &gt; .sans-serif()</code></td>
         <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
         <td>Set font family to sans-serif, and control size, weight, and leading</td>
       </tr>
       <tr>
-        <td><code>#font > .monospace()</code></td>
+        <td><code>#font &gt; .monospace()</code></td>
         <td><code>@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight</code></td>
         <td>Set font family to monospace, and control size, weight, and leading</td>
       </tr>
@@ -805,17 +805,17 @@
         <td>Create a horizontally centered container for holding your content</td>
       </tr>
       <tr>
-        <td><code>#grid > .core()</code></td>
+        <td><code>#grid &gt; .core()</code></td>
         <td><code>@gridColumnWidth, @gridGutterWidth</code></td>
         <td>Generate a pixel grid system (container, row, and columns) with <em>n</em> columns and <em>x</em> pixel wide gutter</td>
       </tr>
       <tr>
-        <td><code>#grid > .fluid()</code></td>
+        <td><code>#grid &gt; .fluid()</code></td>
         <td><code>@fluidGridColumnWidth, @fluidGridGutterWidth</code></td>
         <td>Generate a percent grid system with <em>n</em> columns and <em>x</em> % wide gutter</td>
       </tr>
       <tr>
-        <td><code>#grid > .input()</code></td>
+        <td><code>#grid &gt; .input()</code></td>
         <td><code>@gridColumnWidth, @gridGutterWidth</code></td>
         <td>Generate the pixel grid system for <code>input</code> elements, accounting for padding and borders</td>
       </tr>
@@ -919,42 +919,42 @@
     </thead>
     <tbody>
       <tr>
-        <td><code>#translucent > .background()</code></td>
+        <td><code>#translucent &gt; .background()</code></td>
         <td><code>@color: @white, @alpha: 1</code></td>
         <td>Give an element a translucent background color</td>
       </tr>
       <tr>
-        <td><code>#translucent > .border()</code></td>
+        <td><code>#translucent &gt; .border()</code></td>
         <td><code>@color: @white, @alpha: 1</code></td>
         <td>Give an element a translucent border color</td>
       </tr>
       <tr>
-        <td><code>#gradient > .vertical()</code></td>
+        <td><code>#gradient &gt; .vertical()</code></td>
         <td><code>@startColor, @endColor</code></td>
         <td>Create a cross-browser vertical background gradient</td>
       </tr>
       <tr>
-        <td><code>#gradient > .horizontal()</code></td>
+        <td><code>#gradient &gt; .horizontal()</code></td>
         <td><code>@startColor, @endColor</code></td>
         <td>Create a cross-browser horizontal background gradient</td>
       </tr>
       <tr>
-        <td><code>#gradient > .directional()</code></td>
+        <td><code>#gradient &gt; .directional()</code></td>
         <td><code>@startColor, @endColor, @deg</code></td>
         <td>Create a cross-browser directional background gradient</td>
       </tr>
       <tr>
-        <td><code>#gradient > .vertical-three-colors()</code></td>
+        <td><code>#gradient &gt; .vertical-three-colors()</code></td>
         <td><code>@startColor, @midColor, @colorStop, @endColor</code></td>
         <td>Create a cross-browser three-color background gradient</td>
       </tr>
       <tr>
-        <td><code>#gradient > .radial()</code></td>
+        <td><code>#gradient &gt; .radial()</code></td>
         <td><code>@innerColor, @outerColor</code></td>
         <td>Create a cross-browser radial background gradient</td>
       </tr>
       <tr>
-        <td><code>#gradient > .striped()</code></td>
+        <td><code>#gradient &gt; .striped()</code></td>
         <td><code>@color, @angle</code></td>
         <td>Create a cross-browser striped background gradient</td>
       </tr>
@@ -990,7 +990,7 @@
     <div class="span4">
       <h3>Command line</h3>
       <p>Install the LESS command line tool via Node and run the following command:</p>
-        <pre>$ lessc ./less/bootstrap.less > bootstrap.css</pre>
+        <pre>$ lessc ./less/bootstrap.less &gt; bootstrap.css</pre>
       <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
     </div><!-- /span4 -->
     <div class="span4">
