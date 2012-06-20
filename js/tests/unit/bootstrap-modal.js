@@ -111,4 +111,18 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should only close inner-most modal when click [data-dismiss=modal]", function() {
+        stop()
+        $.support.transition = false
+        var outer = $("<div id='outer-modal'><div id='inner-modal'><span class='close' data-dismiss='modal'></span></div></div>")
+          , inner = outer.find('#inner-modal')
+        outer.modal("toggle")
+        inner.modal("toggle")
+        inner.find('.close').click()
+        ok(!$('#inner-modal').is(":visible"), 'inner modal hidden')
+        ok($('#outer-modal').is(":visible"), 'outer modal still visible')
+        outer.remove()
+        start()
+      })
 })
