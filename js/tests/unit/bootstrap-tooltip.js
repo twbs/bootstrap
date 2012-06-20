@@ -128,4 +128,13 @@ $(function () {
         }, 200)
       })
 
+      test("should destroy tooltip", function () {
+        var tooltip = $('<div/>').tooltip()
+        ok(tooltip.data('tooltip'), 'tooltip has data')
+        ok(tooltip.data('events').mouseover && tooltip.data('events').mouseout, 'tooltip has hover event')
+        tooltip.tooltip('destroy')
+        ok(!tooltip.data('tooltip'), 'tooltip does not have data')
+        ok(!tooltip.data('events'), 'tooltip does not have any events')
+      })
+
 })
