@@ -2457,7 +2457,12 @@ table .span24 {
 }
 
 .dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus,
+.dropdown-menu li > a:focus {
+  color: #333333;
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: #ffffff;

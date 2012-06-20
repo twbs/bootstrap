@@ -94,12 +94,19 @@
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus,
+.dropdown-menu li > a:focus {
+  text-decoration: none;
+  color: @dropdownLinkColorActive;
+  background-color: @dropdownLinkBackgroundHover;
+}
+
+// Active state
+// ------------
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: @dropdownLinkColorHover;
   text-decoration: none;
-  background-color: @dropdownLinkBackgroundHover;
+  background-color: @dropdownLinkBackgroundActive;
   outline: 0;
 }
 
