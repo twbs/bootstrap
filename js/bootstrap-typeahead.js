@@ -151,7 +151,7 @@
         , next = active.next()
 
       if (!next.length) {
-        next = $(this.$menu.find('li')[0])
+        next = $(this.$menu.children('li')[0])
       }
 
       next.addClass('active')
@@ -162,7 +162,7 @@
         , prev = active.prev()
 
       if (!prev.length) {
-        prev = this.$menu.find('li').last()
+        prev = this.$menu.children('li').last()
       }
 
       prev.addClass('active')
@@ -177,10 +177,9 @@
       if ($.browser.webkit || $.browser.msie) {
         this.$element.on('keydown', $.proxy(this.keydown, this))
       }
-
-      this.$menu
-        .on('click', $.proxy(this.click, this))
-        .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+      
+      this.$menu.on('click', $.proxy(this.click, this))
+      this.$menu.children('li').on('mouseenter', $.proxy(this.mouseenter, this))
     }
 
   , move: function (e) {
