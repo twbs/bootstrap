@@ -194,9 +194,7 @@ a:hover {
   margin-left: 20px;
 }
 
-.container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
+.container {
   width: 940px;
 }
 
