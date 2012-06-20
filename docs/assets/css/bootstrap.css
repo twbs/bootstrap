@@ -4111,7 +4111,8 @@ input[type="submit"].btn.btn-mini {
   display: inline;
 }
 
-.pagination a {
+.pagination a,
+.pagination span {
   float: left;
   padding: 0 14px;
   line-height: 34px;
@@ -4121,11 +4122,13 @@ input[type="submit"].btn.btn-mini {
 }
 
 .pagination a:hover,
-.pagination .active a {
+.pagination .active a,
+.pagination .active span {
   background-color: #f5f5f5;
 }
 
-.pagination .active a {
+.pagination .active a,
+.pagination .active span {
   color: #999999;
   cursor: default;
 }
@@ -4138,14 +4141,16 @@ input[type="submit"].btn.btn-mini {
   background-color: transparent;
 }
 
-.pagination li:first-child a {
+.pagination li:first-child a,
+.pagination li:first-child span {
   border-left-width: 1px;
   -webkit-border-radius: 3px 0 0 3px;
      -moz-border-radius: 3px 0 0 3px;
           border-radius: 3px 0 0 3px;
 }
 
-.pagination li:last-child a {
+.pagination li:last-child a,
+.pagination li:last-child span {
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
           border-radius: 0 3px 3px 0;
