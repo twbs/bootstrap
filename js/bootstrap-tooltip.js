@@ -236,9 +236,7 @@
     }
 
   , destroy: function () {
-      var $e = this.$element
-      $e.off()
-      $e.removeData('tooltip')
+      this.$element.off().removeData('tooltip')
     }
 
   }

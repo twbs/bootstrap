@@ -72,9 +72,7 @@
     }
 
   , destroy: function () {
-      var $e = this.$element
-      $e.off()
-      $e.removeData('popover')
+      this.$element.off().removeData('popover')
     }
 
   })
