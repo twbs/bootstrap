@@ -36,7 +36,7 @@
           , transEndEventNames = {
                'WebkitTransition' : 'webkitTransitionEnd'
             ,  'MozTransition'    : 'transitionend'
-            ,  'OTransition'      : 'oTransitionEnd'
+            ,  'OTransition'      : 'otransitionend'
             ,  'msTransition'     : 'MSTransitionEnd'
             ,  'transition'       : 'transitionend'
             }
