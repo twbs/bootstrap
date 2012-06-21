@@ -618,7 +618,9 @@
     }
 
     // Set the container width, and override it for fixed navbars in media queries
-    .container { .span(@gridColumns); }
+    .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container { .span(@gridColumns); }
 
     // generate .spanX and .offsetX
     .spanX (@gridColumns);
@@ -645,7 +647,7 @@
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
 	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
     }
-    
+
     .offsetFirstChild (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
       *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
