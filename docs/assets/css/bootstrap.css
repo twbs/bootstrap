@@ -388,6 +388,126 @@ a:hover {
   *width: 6.329787233638298%;
 }
 
+.row-fluid .offset12 {
+  margin-left: 104.25531913799999%;
+  *margin-left: 104.14893615927657%;
+}
+
+.row-fluid .offset12:first-child {
+  margin-left: 102.127659564%;
+  *margin-left: 102.02127658527658%;
+}
+
+.row-fluid .offset11 {
+  margin-left: 95.744680841%;
+  *margin-left: 95.63829786227659%;
+}
+
+.row-fluid .offset11:first-child {
+  margin-left: 93.61702126700001%;
+  *margin-left: 93.5106382882766%;
+}
+
+.row-fluid .offset10 {
+  margin-left: 87.23404254399999%;
+  *margin-left: 87.12765956527657%;
+}
+
+.row-fluid .offset10:first-child {
+  margin-left: 85.10638297%;
+  *margin-left: 84.99999999127658%;
+}
+
+.row-fluid .offset9 {
+  margin-left: 78.723404247%;
+  *margin-left: 78.61702126827659%;
+}
+
+.row-fluid .offset9:first-child {
+  margin-left: 76.59574467300001%;
+  *margin-left: 76.4893616942766%;
+}
+
+.row-fluid .offset8 {
+  margin-left: 70.21276594999999%;
+  *margin-left: 70.10638297127657%;
+}
+
+.row-fluid .offset8:first-child {
+  margin-left: 68.085106376%;
+  *margin-left: 67.97872339727658%;
+}
+
+.row-fluid .offset7 {
+  margin-left: 61.702127653%;
+  *margin-left: 61.595744674276595%;
+}
+
+.row-fluid .offset7:first-child {
+  margin-left: 59.574468079%;
+  *margin-left: 59.468085100276596%;
+}
+
+.row-fluid .offset6 {
+  margin-left: 53.19148935599999%;
+  *margin-left: 53.08510637727659%;
+}
+
+.row-fluid .offset6:first-child {
+  margin-left: 51.06382978199999%;
+  *margin-left: 50.95744680327659%;
+}
+
+.row-fluid .offset5 {
+  margin-left: 44.680851059%;
+  *margin-left: 44.574468080276596%;
+}
+
+.row-fluid .offset5:first-child {
+  margin-left: 42.553191485%;
+  *margin-left: 42.4468085062766%;
+}
+
+.row-fluid .offset4 {
+  margin-left: 36.170212762%;
+  *margin-left: 36.063829783276596%;
+}
+
+.row-fluid .offset4:first-child {
+  margin-left: 34.042553188%;
+  *margin-left: 33.9361702092766%;
+}
+
+.row-fluid .offset3 {
+  margin-left: 27.659574465%;
+  *margin-left: 27.553191486276596%;
+}
+
+.row-fluid .offset3:first-child {
+  margin-left: 25.531914891%;
+  *margin-left: 25.425531912276597%;
+}
+
+.row-fluid .offset2 {
+  margin-left: 19.148936168%;
+  *margin-left: 19.042553189276596%;
+}
+
+.row-fluid .offset2:first-child {
+  margin-left: 17.021276594%;
+  *margin-left: 16.914893615276597%;
+}
+
+.row-fluid .offset1 {
+  margin-left: 10.638297870999999%;
+  *margin-left: 10.531914892276596%;
+}
+
+.row-fluid .offset1:first-child {
+  margin-left: 8.510638297%;
+  *margin-left: 8.404255318276597%;
+}
+
 .container {
   margin-right: auto;
   margin-left: auto;

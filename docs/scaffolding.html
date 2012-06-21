@@ -283,6 +283,28 @@
 &lt;/div&gt;
 </pre>
 
+  <h2>Fluid offsetting</h2>
+  <p>Operates the same way as the fixed grid system offsetting: add <code>.offset*</code> to any column to offset by that many columns.</p>
+  <div class="bs-docs-grid">
+    <div class="row-fluid show-grid">
+      <div class="span4">4</div>
+      <div class="span4 offset4">4 offset 4</div>
+    </div><!-- /row -->
+    <div class="row-fluid show-grid">
+      <div class="span3 offset3">3 offset 3</div>
+      <div class="span3 offset3">3 offset 3</div>
+    </div><!-- /row -->
+    <div class="row-fluid show-grid">
+      <div class="span6 offset6">6 offset 6</div>
+    </div><!-- /row -->
+  </div>
+<pre class="prettyprint linenums">
+&lt;div class="row-fluid"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span4 offset2"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
   <h2>Fluid nesting</h2>
   <p>Nesting with fluid grids is a bit different: the number of nested columns should not match the parent's number of columns. Instead, each level of nested columns are reset because each row takes up 100% of the parent column.</p>
   <div class="row-fluid show-grid">
