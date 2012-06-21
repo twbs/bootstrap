@@ -196,7 +196,7 @@
 // --------------------------------------------------
 
 // Border Radius
-.border-radius(@radius) {
+.border-radius(@radius) when (@radius > 0px) {
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
           border-radius: @radius;
