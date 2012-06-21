@@ -332,7 +332,7 @@
     }
 
   , slide: function (type, next) {
-      var $active = this.$element.find('.active')
+      var $active = this.$element.find('.item.active')
         , $next = next || $active[type]()
         , isCycling = this.interval
         , direction = type == 'next' ? 'left' : 'right'
@@ -1188,6 +1188,10 @@
       this[this.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
+  , destroy: function () {
+      this.$element.off().removeData('tooltip')
+    }
+
   }
 
 
@@ -1289,6 +1293,10 @@
         this.$tip = $(this.options.template)
       }
       return this.$tip
+    }
+
+  , destroy: function () {
+      this.$element.off().removeData('popover')
     }
 
   })
