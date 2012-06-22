@@ -47,6 +47,7 @@
       var val = this.$menu.find('.active').attr('data-value')
       this.$element
         .val(this.updater(val))
+        .text(this.updater(val))
         .change()
       return this.hide()
     }
@@ -81,7 +82,7 @@
         , items
         , q
 
-      this.query = this.$element.val()
+      this.query = this.$element.val() ? this.$element.val() : this.$element.text();
 
       if (!this.query) {
         return this.shown ? this.hide() : this
