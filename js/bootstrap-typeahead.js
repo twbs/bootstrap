@@ -81,7 +81,7 @@
         , items
         , q
 
-      this.query = this.$element.val()
+      this.query = this.$element.val() ? this.$element.val() : this.$element.text()
 
       if (!this.query) {
         return this.shown ? this.hide() : this
