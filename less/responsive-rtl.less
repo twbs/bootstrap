@@ -1,0 +1,117 @@
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins-rtl.less";
+
+
+// UP TO LANDSCAPE PHONE
+// ---------------------
+
+@media (max-width: 480px) {
+
+  // Remove the horizontal form styles
+  .form-horizontal .control-group > label {
+    text-align: right;
+  }
+  // Move over all input controls and content
+  .form-horizontal .controls {
+    margin-right: 0;
+  }
+}
+
+// LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+// --------------------------------------------------
+
+@media (max-width: 767px) {
+
+
+  // TYPOGRAPHY
+  // ----------
+  // Reset horizontal dl
+  .dl-horizontal {
+    dt {
+      text-align: right;
+    }
+    dd {
+      margin-right: 0;
+    }
+  }
+
+  .row,
+  .thumbnails {
+    margin-right: 0;
+  }
+  // Make all grid-sized elements block level again
+  [class*="span"],
+  .row-fluid [class*="span"] {
+    margin-right: 0;
+  }
+}
+
+// PORTRAIT TABLET TO DEFAULT DESKTOP
+// ----------------------------------
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+  // Fixed grid
+  #grid > .core(42px, 20px);
+
+  // Fluid grid
+  #grid > .fluid(5.801104972%, 2.762430939%);
+
+  // Input grid
+  #grid > .input(42px, 20px);
+
+  // No need to reset .thumbnails here since it's the same @gridGutterWidth
+
+}
+
+// LARGE DESKTOP & UP
+// ------------------
+
+@media (min-width: 1200px) {
+
+  // Fixed grid
+  #grid > .core(70px, 30px);
+
+  // Fluid grid
+  #grid > .fluid(5.982905983%, 2.564102564%);
+
+  // Input grid
+  #grid > .input(70px, 30px);
+
+  // Thumbnails
+  .thumbnails {
+    margin-right: -30px;
+    margin-left: 0;
+  }
+  .thumbnails > li {
+    margin-right: 30px;
+    margin-left: 0;
+  }
+  .row-fluid .thumbnails {
+    margin-right: 0;
+  }
+
+}
+
+// RESPONSIVE NAVBAR
+// ------------------
+
+// TABLETS AND BELOW
+// -----------------
+@media (max-width: 979px) {
+
+  // Account for brand name
+  .navbar .brand {
+    margin: 0 -5px 0 0;
+  }
+
+  // Dropdowns in the navbar
+  .nav-collapse .dropdown-menu {
+    right: auto;
+  }
+  // Pull right (secondary) nav content
+  .navbar .nav-collapse .nav.pull-right {
+    margin-right: 0;
+  }
+}
+

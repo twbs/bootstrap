@@ -1,0 +1,741 @@
+//rtl.less 
+//rtl hack for bootstrap
+// CSS Reset
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins-rtl.less";
+//mixins.less
+
+//scaffoldin.less
+#grid > .core(@gridColumnWidth, @gridGutterWidth);
+
+// Fluid (940px)
+#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
+
+//Types.less
+ul, ol {
+  margin: 0 25px @baseLineHeight / 2 0;
+}
+
+dd {
+  margin-right: @baseLineHeight / 2;
+  margin-left : 0;
+}
+
+// Horizontal layout (like forms)
+.dl-horizontal {
+  dt {
+    float: right;
+    clear: right;
+    text-align: left;
+  }
+  dd {
+    margin-right: 130px;
+    margin-left : 0;
+  }
+}
+
+
+// Blockquotes
+blockquote {
+  padding: 0 15px 0 0;
+  border-right: 5px solid @grayLighter;
+  border-left : 0;
+
+  // Float right with text-align: right, but in rtl version every thing is mirrored
+  &.pull-right {
+    float: left;
+    padding-left: 15px;
+    padding-right: 0;
+    border-left: 5px solid @grayLighter;
+    border-right: 0;
+    p,
+    small {
+      text-align: left;
+    }
+  }
+}
+
+
+//forms.less
+
+// Indent the labels to position radios/checkboxes as hanging
+.radio,
+.checkbox {
+  padding-right: 18px;
+  padding-left : 0;
+}
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  float: right;
+  margin-right: -18px;
+  margin-left : 0;
+}
+
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+  margin-right: 10px; // space out consecutive inline controls
+  margin-left : 0;
+}
+
+// Grid style input sizes
+input[class*="span"],
+select[class*="span"],
+textarea[class*="span"],
+.uneditable-input[class*="span"],
+// Redeclare since the fluid row class is more specific
+.row-fluid input[class*="span"],
+.row-fluid select[class*="span"],
+.row-fluid textarea[class*="span"],
+.row-fluid .uneditable-input[class*="span"] {
+  margin-right: 0;
+}
+
+// GRID SIZING FOR INPUTS
+// ----------------------
+
+#grid > .input (@gridColumnWidth, @gridGutterWidth);
+
+.help-inline {
+  padding-right: 5px;
+  padding-left : 0;
+}
+
+
+// INPUT GROUPS
+// ------------
+
+// Allow us to put symbols and text within the input field for a cleaner look
+.input-prepend,
+.input-append {
+  input,
+  select,
+  .uneditable-input {
+    *margin-right: 0;
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .uneditable-input {
+    border-right-color: #ccc;
+    border-left-color: #eee;
+  }
+  .add-on,
+  .btn {
+    margin-right: -1px;
+    margin-left : 0; //not sure if this is correct 
+  }
+  .add-on:first-child,
+  .btn:first-child {
+    .border-radius( 0 @inputBorderRadius @inputBorderRadius 0);
+  }  
+}
+.input-prepend {
+  .add-on,
+  .btn {
+    margin-left: -1px;
+    margin-right : 0;
+  }
+}
+.input-append {
+  .uneditable-input {
+    border-left-color: #ccc;
+    border-right-color: #eee;
+  }
+}
+// Remove all border-radius for inputs with both prepend and append
+.input-prepend.input-append {
+  .add-on:first-child,
+  .btn:first-child {
+    margin-right: -1px;
+    margin-left : 0;
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+  }
+  .add-on:last-child,
+  .btn:last-child {
+    margin-right: -1px;
+    margin-left: 0;
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+  }
+}
+
+
+
+// SEARCH FORM
+// -----------
+
+.search-query {
+  padding-left: 14px;
+  padding-left: 4px \9;
+  padding-right: 14px;
+  padding-right: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
+}
+
+// Inline checkbox/radio labels (remove padding on left)
+.form-search .radio,
+.form-search .checkbox,
+.form-inline .radio,
+.form-inline .checkbox {
+  padding-right: 0;
+}
+
+// Remove float and margin, set to inline-block
+.form-search .radio input[type="radio"],
+.form-search .checkbox input[type="checkbox"],
+.form-inline .radio input[type="radio"],
+.form-inline .checkbox input[type="checkbox"] {
+  float: right;
+  margin-left: 3px;
+  margin-right: 0;
+}
+
+
+// Horizontal-specific styles
+// --------------------------
+
+.form-horizontal {
+  // Float the labels left
+  .control-label {
+    float: right;
+    text-align: left;
+  }
+  // Move over all input controls and content
+  .controls {
+    // Super jank IE7 fix to ensure the inputs in .input-append and input-prepend
+    // don't inherit the margin of the parent, in this case .controls
+    *display: inline-block;
+    *padding-right: 20px;
+    *padding-left: 0; //Not sure if default is zero
+    margin-right: 160px;
+    margin-left : 0;
+    *margin-right: 0;
+    *margin-left: 0;
+    &:first-child {
+      *padding-right: 160px;
+      *padding-left: 0;
+    }
+  }
+  // Move over buttons in .form-actions to align with .controls
+  .form-actions {
+    padding-right: 160px;
+    padding-left : 0px; //Not sure :D
+  }
+}
+
+
+//
+// Tables.less
+
+// BASELINE STYLES
+// ---------------
+
+.table {
+  // Cells
+  th,
+  td {
+    text-align: right;
+  }
+}
+
+// BORDERED VERSION
+// ----------------
+
+.table-bordered {
+  border-right: 0;
+  border-left: 1px solid @tableBorder;
+  .border-radius(4px);
+  th,
+  td {
+    border-right: 1px solid @tableBorder;
+  }
+}
+
+// TABLE CELL SIZING
+// -----------------
+
+// Change the columns
+table {
+  .span1     { .tableColumns(1); }
+  .span2     { .tableColumns(2); }
+  .span3     { .tableColumns(3); }
+  .span4     { .tableColumns(4); }
+  .span5     { .tableColumns(5); }
+  .span6     { .tableColumns(6); }
+  .span7     { .tableColumns(7); }
+  .span8     { .tableColumns(8); }
+  .span9     { .tableColumns(9); }
+  .span10    { .tableColumns(10); }
+  .span11    { .tableColumns(11); }
+  .span12    { .tableColumns(12); }
+  .span13    { .tableColumns(13); }
+  .span14    { .tableColumns(14); }
+  .span15    { .tableColumns(15); }
+  .span16    { .tableColumns(16); }
+  .span17    { .tableColumns(17); }
+  .span18    { .tableColumns(18); }
+  .span19    { .tableColumns(19); }
+  .span20    { .tableColumns(20); }
+  .span21    { .tableColumns(21); }
+  .span22    { .tableColumns(22); }
+  .span23    { .tableColumns(23); }
+  .span24    { .tableColumns(24); }
+}
+
+
+// DROPDOWN MENUS
+// --------------
+
+// Place the caret
+.dropdown .caret {
+  margin-right: 2px;
+  margin-left : 0;
+}
+
+// The dropdown menu (ul)
+// ----------------------
+.dropdown-menu {
+  right: 0;
+  left : auto;
+  float: right;
+  *border-right-width: 2px;
+  *border-left-width: 0;
+  // Aligns the dropdown menu to right
+  &.pull-right {
+    left: 0;
+    right: auto;
+  }
+}
+
+
+// Right aligned dropdowns
+// ---------------------------
+.pull-right .dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
+// CLOSE ICONS
+// -----------
+
+.close {
+  float: left;
+}
+
+// BUTTON STYLES
+// -------------
+
+
+// Base styles
+// --------------------------------------------------
+
+// Core
+.btn {
+  .ie7-restore-right-whitespace(); // Give IE7 some love
+}
+
+// BUTTON GROUPS
+// -------------
+
+// Make the div behave like a button
+.btn-group {
+  .ie7-restore-right-whitespace();
+}
+
+// Space out series of button groups
+.btn-group + .btn-group {
+  margin-right: 5px;
+  margin-left : 0;
+}
+
+// Float them, remove border radius, then re-add to first and last elements
+.btn-group > .btn {
+  float: right;
+  margin-right: -1px;
+  margin-left : 0;
+}
+
+//A hack to fix inherit border-radius 
+.btn-group > .btn:first-child,
+.btn-group > .btn:last-child,
+.btn-group > .dropdown-toggle ,
+.btn-group > .btn.large:first-child,
+.btn-group > .btn.large:last-child,
+.btn-group > .large.dropdown-toggle 
+{
+	.border-radius(0)
+}
+
+//There is a problem here, chromium and firefox load the secound block AFTER the original bootstrap! and I don't know why!
+// Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
+.btn-group > .btn:first-child {
+  margin-right: 0;
+     -webkit-border-top-right-radius: 4px !important;
+         -moz-border-radius-topright: 4px !important;
+             border-top-right-radius: 4px !important;
+  -webkit-border-bottom-right-radius: 4px !important;
+      -moz-border-radius-bottomright: 4px !important;
+          border-bottom-right-radius: 4px !important;
+
+}
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+.btn-group > .btn:last-child,
+.btn-group > .dropdown-toggle {
+     -webkit-border-top-left-radius: 4px !important;
+         -moz-border-radius-topleft: 4px !important;
+             border-top-left-radius: 4px !important;
+  -webkit-border-bottom-left-radius: 4px !important;
+      -moz-border-radius-bottomleft: 4px !important;
+          border-bottom-left-radius: 4px !important;
+}
+// Reset corners for large buttons
+.btn-group > .btn.large:first-child {
+  margin-right: 0;
+     -webkit-border-top-right-radius: 6px !important;
+         -moz-border-radius-topright: 6px !important;
+             border-top-right-radius: 6px !important;
+  -webkit-border-bottom-right-radius: 6px !important;
+      -moz-border-radius-bottomright: 6px !important;
+          border-bottom-right-radius: 6px !important;
+}
+.btn-group > .btn.large:last-child,
+.btn-group > .large.dropdown-toggle {
+     -webkit-border-top-left-radius: 6px !important;
+         -moz-border-radius-topleft: 6px !important;
+             border-top-left-radius: 6px !important;
+  -webkit-border-bottom-left-radius: 6px !important;
+      -moz-border-radius-bottomleft: 6px !important;
+          border-bottom-left-radius: 6px !important;
+}
+
+
+// Reposition the caret
+.btn .caret {
+  margin-right: 0;
+}
+
+// ALERT STYLES
+// ------------
+
+// Base alert styles
+.alert {
+  padding: 8px 14px 8px 35px;
+}
+// Adjust close link position
+.alert .close {
+  left: -21px;
+  right: auto;
+}
+
+// NAVIGATIONS
+// -----------
+
+
+// BASE CLASS
+// ----------
+
+.nav {
+  margin-right: 0;
+}
+// Redeclare pull classes because of specifity
+.nav > .pull-right {
+  float: left;
+}
+
+// NAV LIST
+// --------
+.nav-list [class^="icon-"] {
+  margin-left: 2px;
+  margin-right: 0;
+}
+
+.nav-tabs > li,
+.nav-pills > li {
+  float: right;
+}
+
+.nav-tabs > li > a,
+.nav-pills > li > a {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-left: 2px;
+  margin-right: 0px;
+}
+.nav-stacked > li > a {
+  margin-left: 0; // no need for the gap between nav items
+}
+.tabs-left > .nav-tabs > li > a,
+.tabs-right > .nav-tabs > li > a {
+  margin-left: 0;
+}
+
+// Tabs on the left
+.tabs-left > .nav-tabs {
+  float: right;
+  margin-left: 19px;
+  margin-right: 0;
+  border-left: 1px solid #ddd;
+  border-right: 0;
+}
+.tabs-left > .nav-tabs > li > a {
+  margin-left: -1px;
+  margin-right: 0;
+}
+.tabs-left > .nav-tabs .active > a,
+.tabs-left > .nav-tabs .active > a:hover {
+  border-color: #ddd transparent #ddd #ddd;
+  *border-left-color: @white;
+}
+
+// Tabs on the right
+.tabs-right > .nav-tabs {
+  float: left;
+  margin-right: 19px;
+  margin-left: 0;
+  border-right: 1px solid #ddd;
+  border-left: 0;
+}
+.tabs-right > .nav-tabs > li > a {
+  margin-right: -1px;
+  margin-left: 0;
+}
+.tabs-right > .nav-tabs .active > a,
+.tabs-right > .nav-tabs .active > a:hover {
+  border-color: #ddd #ddd #ddd transparent;
+  *border-right-color: @white;
+}
+
+// NAVBAR (FIXED AND STATIC)
+// -------------------------
+
+
+// Brand, links, text, and buttons
+.navbar {
+  // Website or project name
+  .brand {
+    float: right;
+    margin-right: -20px; // negative indent to left-align the text down the page
+    margin-left: 0;
+  }
+}
+
+// Navbar search
+.navbar-search {
+  float: right;
+}
+
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  #grid > .core > .span(@gridColumns);
+}
+
+
+// NAVIGATION
+// ----------
+
+.navbar .nav {
+  position: relative;
+  right: 0;
+  left: auto;
+  float: right;
+  margin: 0 0 0 10px;
+}
+.navbar .nav.pull-right {
+  float: left; // redeclare due to specificity
+}
+.navbar .nav > li {
+  float: right;
+}
+
+// Secondary (floated right) nav in topbar
+.navbar .nav.pull-right {
+  margin-right: 10px;
+  margin-left: 0;
+}
+
+.navbar .btn-navbar {
+  float: left;
+}
+
+// Menu position and menu carets
+.navbar .dropdown-menu {
+  &:before {
+    right: 9px;
+    left: auto;
+  }
+  &:after {
+    right: 10px;
+    left: auto;
+  }
+}
+
+// Right aligned menus need alt position
+// TODO: rejigger this at some point to simplify the selectors
+.navbar .pull-right .dropdown-menu,
+.navbar .dropdown-menu.pull-right {
+  left: 0;
+  right: auto;
+  &:before {
+    left: 12px;
+    right: auto;
+  }
+  &:after {
+    left: 13px;
+    right: auto;
+  }
+}
+
+// PAGINATION
+// ----------
+.pagination ul {
+  margin-right: 0;
+}
+.pagination a {
+  float: right;
+  border: 1px solid #ddd;
+  border-right-width: 0;
+}
+.pagination li:first-child a {
+  border-right-width: 1px;
+}
+.pagination-right {
+  text-align: left;
+}
+
+// PAGER
+// -----
+
+.pager {
+  margin-right: 0;
+}
+.pager .next a {
+  float: left;
+}
+.pager .previous a {
+  float: right;
+}
+
+// MODALS
+// ------
+
+// Base modal
+.modal {
+  right: 50%;
+  left: auto;
+  margin: -250px -280px 0 0;
+}
+
+// Footer (for actions)
+.modal-footer {
+  text-align: left; // right align buttons
+  // Properly space out buttons
+  .btn + .btn {
+    margin-right: 5px;
+    margin-left: 0;
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-right: -1px;
+    margin-left: 0;
+  }
+}
+// TOOLTIP
+// ------=
+
+.tooltip {
+  &.right  { margin-left:  2px; margin-right: 0;}
+  &.left   { margin-right: -2px; margin-left: 0;}
+  &.top .tooltip-arrow    { #popoverArrow > .top(); }
+  &.left .tooltip-arrow   { #popoverArrow > .left(); }
+  &.bottom .tooltip-arrow { #popoverArrow > .bottom(); }
+  &.right .tooltip-arrow  { #popoverArrow > .right(); }
+}
+
+// POPOVERS
+// --------
+
+.popover {
+  right: 0;
+  left: auto;
+  &.right  { margin-right:  5px; margin-left: 0;}
+  &.left   { margin-right: -5px; margin-left: 0;}
+  &.top .arrow    { #popoverArrow > .top(); }
+  &.right .arrow  { #popoverArrow > .right(); }
+  &.bottom .arrow { #popoverArrow > .bottom(); }
+  &.left .arrow   { #popoverArrow > .left();  }
+}
+
+// THUMBNAILS
+// ----------
+
+// Make wrapper ul behave like the grid
+.thumbnails {
+  margin-right: -@gridGutterWidth;
+  margin-left: 0;
+}
+// Fluid rows have no left margin
+.row-fluid .thumbnails {
+  margin-right: 0;
+}
+
+// Float li to make thumbnails appear in a row
+.thumbnails > li {
+  float: right; // Explicity set the float since we don't require .span* classes
+  margin-right: @gridGutterWidth;
+  margin-left: 0;
+}
+
+// CAROUSEL
+// --------
+.carousel {
+
+  .active {
+    left: auto;
+    right: 0;
+  }
+
+  .next {
+    right: 100%;
+    left: auto;
+  }
+  .prev {
+    right: -100%;
+    left: auto;
+  }
+  .next.left,
+  .prev.right {
+    right: 0;
+    left: auto;
+  }
+
+  .active.left {
+    right: -100%;
+    left: auto;
+  }
+  .active.right {
+    right: 100%;
+    left: auto;
+  }
+
+}
+
+// Left/right controls for nav
+// ---------------------------
+
+.carousel-control {
+  right: 15px;
+  left: auto;
+  &.right {
+    right: auto;
+    left: 15px;
+  }
+}
+
+// UTILITY CLASSES
+// ---------------
+
+// Quick floats
+.pull-right {
+  float: left;
+}
+.pull-left {
+  float: right;
+}

@@ -1,0 +1,171 @@
+
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+.ie7-restore-left-whitespace() {
+  *margin-left: .3em;
+
+  &:first-child {
+    *margin-left: 0;
+  }
+}
+
+.ie7-restore-right-whitespace() {
+  *margin-right: .3em;
+
+  &:last-child {
+    *margin-left: 0;
+  }
+}
+
+
+// Border Radius
+//just need this one :D
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// Table columns
+.tableColumns(@columnSpan: 1) {
+  margin-right: 0; // undo default grid column styles
+}
+
+
+// Popover arrows
+// -------------------------
+// For tipsies and popovers
+#popoverArrow {
+  .top(@arrowWidth: 5px, @color: @black) {
+    right: 50%;
+    left: auto;
+    margin-right: -@arrowWidth;
+    margin-left: 0;
+    border-right: @arrowWidth solid transparent;
+    border-left: @arrowWidth solid transparent;
+  }
+  .left(@arrowWidth: 5px, @color: @black) {
+    left: 0;
+    right: auto;
+    border-right: @arrowWidth solid @color;
+    border-left: 0;
+  }
+  .bottom(@arrowWidth: 5px, @color: @black) {
+    right: 50%;
+    left: 0;
+    margin-right: -@arrowWidth;
+    margin-top: 0;
+    border-right: @arrowWidth solid transparent;
+    border-left: @arrowWidth solid transparent;
+  }
+  .right(@arrowWidth: 5px, @color: @black) {
+    right: 0;
+    left: auto;
+    border-left: @arrowWidth solid @color;
+    border-right: 0;
+  }
+}
+
+// The Grid
+#grid {
+
+  .core (@gridColumnWidth, @gridGutterWidth) {
+
+    .spanX (@index) when (@index > 0) {
+      (~".span@{index}") { .span(@index); }
+      .spanX(@index - 1);
+    }
+    .spanX (0) {}
+
+    .offsetX (@index) when (@index > 0) {
+      (~".offset@{index}") { .offset(@index); }
+      .offsetX(@index - 1);
+    }
+    .offsetX (0) {}
+
+    .offset (@columns) {
+      margin-right: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+      margin-left : 0;  //There is no way to discard the old margin value 
+    }
+
+    .span (@columns) {
+      width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+    }
+
+    .row {
+      margin-right: @gridGutterWidth * -1;
+      margin-left : 0;
+    }
+
+    [class*="span"] {
+      float: right;
+      margin-right: @gridGutterWidth;
+      margin-left : 0;
+    }
+
+    // Set the container width, and override it for fixed navbars in media queries
+    .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container { .span(@gridColumns); }
+
+    // generate .spanX and .offsetX
+    .spanX (@gridColumns);
+    .offsetX (@gridColumns);
+
+  }
+
+  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
+
+    .spanX (@index) when (@index > 0) {
+      (~".span@{index}") { .span(@index); }
+      .spanX(@index - 1);
+    }
+    .spanX (0) {}
+
+    .span (@columns) {
+      width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+      *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
+    }
+
+    .row-fluid {
+      width: 100%;
+      [class*="span"] {
+        float: right;
+        margin-right: @fluidGridGutterWidth;
+        margin-left : 0;
+        *margin-right: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+      }
+      [class*="span"]:first-child {
+        margin-right: 0; //Margin left is alredy zero
+      }
+
+      // generate .spanX
+      .spanX (@gridColumns);
+    }
+
+  }
+  
+    .input(@gridColumnWidth, @gridGutterWidth) {
+
+
+    input,
+    textarea,
+    .uneditable-input {
+      margin-right: 0; // override margin-right from core grid system
+    }
+
+  }
+}
+
+//First of all need to change direction on body 
+body {
+	direction: rtl;
+}
+//Code and pre are exceptions, they are ltr even in rtl languages
+code,pre {
+	direction: ltr;
+}
