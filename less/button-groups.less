@@ -3,7 +3,9 @@
 
 
 // Make the div behave like a button
-.btn-group {
+.btn-group, 
+.btn-combo // combo behaves like group but without grouping or spacing
+{
   position: relative;
   .clearfix(); // clears the floated buttons
   .ie7-restore-left-whitespace();
@@ -18,21 +20,26 @@
 .btn-toolbar {
   margin-top: @baseLineHeight / 2;
   margin-bottom: @baseLineHeight / 2;
-  .btn-group {
+  .btn-group, 
+  .btn-combo
+  {
     display: inline-block;
     .ie7-inline-block();
   }
 }
 
 // Float them, remove border radius, then re-add to first and last elements
-.btn-group > .btn {
+.btn-group > .btn,
+.btn-group > .btn-combo > .btn {
   position: relative;
   float: left;
   margin-left: -1px;
   .border-radius(0);
 }
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
-.btn-group > .btn:first-child {
+.btn-group > .btn:first-child, 
+.btn-group > .btn-combo:first-child > .btn
+{
   margin-left: 0;
      -webkit-border-top-left-radius: 4px;
          -moz-border-radius-topleft: 4px;
@@ -43,7 +50,9 @@
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
-.btn-group > .dropdown-toggle {
+.btn-group > .dropdown-toggle,
+.btn-group > .btn-combo > .dropdown-toggle
+{
      -webkit-border-top-right-radius: 4px;
          -moz-border-radius-topright: 4px;
              border-top-right-radius: 4px;
@@ -91,7 +100,9 @@
 // ----------------------
 
 // Give the line between buttons some depth
-.btn-group > .dropdown-toggle {
+.btn-group > .dropdown-toggle,
+.btn-comnbo > .dropdown-toggle
+{
   padding-left: 8px;
   padding-right: 8px;
   .box-shadow(~"inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
@@ -111,7 +122,9 @@
   padding-right: 12px;
 }
 
-.btn-group.open {
+.btn-group.open,
+.btn-combo.open
+{
 
   // The clickable button for toggling the menu
   // Remove the gradient and set the same inset shadow as the :active state
