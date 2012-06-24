@@ -361,3 +361,19 @@
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: @white;
 }
+
+
+
+// DISABLED STATES
+// ---------------
+
+// Gray out text
+.nav > .disabled > a {
+  color: @grayLight;
+}
+// Nuke hover effects
+.nav > .disabled > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: default;
+}

@@ -14,7 +14,7 @@
   margin-bottom: @baseLineHeight;
 }
 
-// Gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
+// Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
   min-height: @navbarHeight;
   padding-left:  20px;
@@ -222,6 +222,7 @@
   padding: ((@navbarHeight - @elementHeight) / 2 - 1) 5px ((@navbarHeight - @elementHeight) / 2);
 }
 // Hover
+.navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
   background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
   color: @navbarLinkColorHover;
@@ -230,7 +231,8 @@
 
 // Active nav items
 .navbar .nav .active > a,
-.navbar .nav .active > a:hover {
+.navbar .nav .active > a:hover,
+.navbar .nav .active > a:focus {
   color: @navbarLinkColorActive;
   text-decoration: none;
   background-color: @navbarLinkBackgroundActive;
@@ -337,6 +339,7 @@
 }
 
 // Dropdown link on hover
+.navbar .nav li.dropdown.active > .dropdown-toggle:focus,
 .navbar .nav li.dropdown.active > .dropdown-toggle:hover {
   color: @white;
 }

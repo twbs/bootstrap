@@ -11,16 +11,13 @@
   .border-radius(4px);
   color: @warningText;
 }
-.alert-heading {
-  color: inherit;
-}
 
 // Adjust close link position
 .alert .close {
   position: relative;
   top: -2px;
   right: -21px;
-  line-height: 18px;
+  line-height: @baseLineHeight;
 }
 
 // Alternate styles
@@ -28,7 +25,7 @@
 
 .alert-success {
   background-color: @successBackground;
-  border-color: @successBorder;  
+  border-color: @successBorder;
   color: @successText;
 }
 .alert-danger,

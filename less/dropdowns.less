@@ -34,9 +34,14 @@
   margin-top: 8px;
   margin-left: 2px;
 }
-.dropdown:hover .caret,
+.dropdown a:focus .caret,
+.dropdown a:hover .caret,
 .open .caret {
   .opacity(100);
+}
+
+.navbar .nav .open > a {
+  color: @navbarLinkColorActive;
 }
 
 // The dropdown menu (ul)
@@ -89,11 +94,34 @@
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus {
+  text-decoration: none;
+  color: @dropdownLinkColorActive;
+  background-color: @dropdownLinkBackgroundHover;
+}
+
+// Active state
+// ------------
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: @dropdownLinkColorHover;
   text-decoration: none;
-  background-color: @dropdownLinkBackgroundHover;
+  background-color: @dropdownLinkBackgroundActive;
+  outline: 0;
+}
+
+// Disabled state
+// --------------
+// Gray out text and ensure the hover state remains gray
+.dropdown-menu .disabled > a,
+.dropdown-menu .disabled > a:hover {
+  color: @grayLight;
+}
+// Nuke hover effects
+.dropdown-menu .disabled > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: default;
 }
 
 // Open state for the dropdown

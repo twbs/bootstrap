@@ -90,4 +90,14 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
+
+      test("should destroy popover", function () {
+        var popover = $('<div/>').popover()
+        ok(popover.data('popover'), 'popover has data')
+        ok(popover.data('events').mouseover && popover.data('events').mouseout, 'popover has hover event')
+        popover.popover('destroy')
+        ok(!popover.data('popover'), 'popover does not have data')
+        ok(!popover.data('events'), 'popover does not have any events')
+      })
+      
 })
