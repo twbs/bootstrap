@@ -1753,6 +1753,13 @@ table {
   background-color: #f5f5f5;
 }
 
+table [class*=span],
+.row-fluid table [class*=span] {
+  display: table-cell;
+  float: none;
+  margin-left: 0;
+}
+
 table .span1 {
   float: none;
   width: 44px;
