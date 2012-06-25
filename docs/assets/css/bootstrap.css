@@ -3985,13 +3985,12 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav > li {
-  display: block;
   float: left;
 }
 
 .navbar .nav > li > a {
   float: none;
-  padding: 9px 10px 11px;
+  padding: 9px 12px 11px;
   line-height: 19px;
   color: #999999;
   text-decoration: none;
@@ -4045,18 +4044,18 @@ input[type="submit"].btn.btn-mini {
   padding: 7px 10px;
   margin-right: 5px;
   margin-left: 5px;
-  background-color: #2c2c2c;
-  *background-color: #222222;
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
-  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-color: #1f1f1f;
+  *background-color: #151515;
+  background-image: -ms-linear-gradient(top, #262626, #151515);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#262626), to(#151515));
+  background-image: -webkit-linear-gradient(top, #262626, #151515);
+  background-image: -o-linear-gradient(top, #262626, #151515);
+  background-image: linear-gradient(top, #262626, #151515);
+  background-image: -moz-linear-gradient(top, #262626, #151515);
   background-repeat: repeat-x;
-  border-color: #222222 #222222 #000000;
+  border-color: #151515 #151515 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff262626', endColorstr='#ff151515', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
@@ -4068,13 +4067,13 @@ input[type="submit"].btn.btn-mini {
 .navbar .btn-navbar.active,
 .navbar .btn-navbar.disabled,
 .navbar .btn-navbar[disabled] {
-  background-color: #222222;
-  *background-color: #151515;
+  background-color: #151515;
+  *background-color: #080808;
 }
 
 .navbar .btn-navbar:active,
 .navbar .btn-navbar.active {
-  background-color: #080808 \9;
+  background-color: #000000 \9;
 }
 
 .navbar .btn-navbar .icon-bar {
@@ -4170,6 +4169,118 @@ input[type="submit"].btn.btn-mini {
 .navbar .dropdown-menu.pull-right:after {
   right: 13px;
   left: auto;
+}
+
+/* Subnav
+-------------------------------------------------- */
+
+/* Base
+------------------------- */
+
+.subnav {
+  width: 100%;
+  height: 36px;
+  background-color: #f2f2f2;
+  background-image: -moz-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: -ms-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#eeeeee));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: -o-linear-gradient(top, #f5f5f5, #eeeeee);
+  background-image: linear-gradient(top, #f5f5f5, #eeeeee);
+  background-repeat: repeat-x;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffeeeeee', GradientType=0);
+}
+
+/* Nav links
+------------------------- */
+
+.subnav .nav {
+  margin-bottom: 0;
+}
+
+.subnav .nav > li {
+  float: left;
+}
+
+.subnav .nav > li > a {
+  padding: 8px 12px;
+  line-height: 20px;
+  border-right: 1px solid #e5e5e5;
+  border-left: 1px solid #f5f5f5;
+}
+
+.subnav .nav > .active > a,
+.subnav .nav > .active > a:hover {
+  padding-left: 13px;
+  color: #777;
+  background-color: #e9e9e9;
+  border-left: 0;
+  border-right-color: #ddd;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.05);
+}
+
+.subnav .nav > .active > a .caret,
+.subnav .nav > .active > a:hover .caret {
+  border-top-color: #777;
+}
+
+.subnav .nav > li:first-child > a,
+.subnav .nav > li:first-child > a:hover {
+  padding-left: 12px;
+  border-left: 0;
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
+}
+
+.subnav .nav > li:last-child > a {
+  border-right: 0;
+}
+
+/* Dropdown menus get matching border-radius
+.subnav .dropdown-menu {
+  -webkit-border-radius: 0 0 @subnavBorderRadius @subnavBorderRadius;
+     -moz-border-radius: 0 0 @subnavBorderRadius @subnavBorderRadius;
+          border-radius: 0 0 @subnavBorderRadius @subnavBorderRadius;
+}
+
+
+/* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
+
+@media (min-width: 980px) {
+  .subnav-fixed {
+    position: fixed;
+    top: 40px;
+    right: 0;
+    left: 0;
+    z-index: 1020;
+    border-color: #d5d5d5;
+    border-width: 0 0 1px;
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    -webkit-box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
+       -moz-box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+  .subnav-fixed .nav {
+    max-width: 780px;
+    padding: 0 1px;
+    margin: 0 auto;
+  }
+  .subnav .nav > li:first-child > a,
+  .subnav .nav > li:first-child > a:hover {
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+  }
 }
 
 .breadcrumb {

@@ -191,7 +191,6 @@
   float: right; // redeclare due to specificity
 }
 .navbar .nav > li {
-  display: block;
   float: left;
 }
 
@@ -200,7 +199,7 @@
   float: none;
   // Vertically center the text given @navbarHeight
   @elementHeight: 20px;
-  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 10px ((@navbarHeight - @elementHeight) / 2 + 1);
+  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 12px ((@navbarHeight - @elementHeight) / 2 + 1);
   line-height: 19px;
   color: @navbarLinkColor;
   text-decoration: none;
@@ -262,7 +261,7 @@
   padding: 7px 10px;
   margin-left: 5px;
   margin-right: 5px;
-  .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
+  .buttonBackground(darken(@navbarBackgroundHighlight, 5%), darken(@navbarBackground, 5%));
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
 }
 .navbar .btn-navbar .icon-bar {

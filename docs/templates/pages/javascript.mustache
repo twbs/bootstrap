@@ -4,7 +4,8 @@
   <h1>{{_i}}Javascript for Bootstrap{{/i}}</h1>
   <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 12 custom <a href="http://jquery.com/" target="_blank">jQuery</a> plugins.{{/i}}
   <div class="subnav">
-    <ul class="nav nav-pills">
+    <ul class="nav">
+      <li><a href="#transitions">{{_i}}Transitions{{/i}}</a></li>
       <li><a href="#modals">{{_i}}Modal{{/i}}</a></li>
       <li><a href="#dropdowns">{{_i}}Dropdown{{/i}}</a></li>
       <li><a href="#scrollspy">{{_i}}Scrollspy{{/i}}</a></li>
@@ -48,7 +49,7 @@
 
 <!-- Transitions
 ================================================== -->
-<section id="modals">
+<section id="transitions">
   <div class="page-header">
     <h1>{{_i}}Transitions{{/i}} <small>bootstrap-transition.js</small></h1>
   </div>
@@ -115,7 +116,7 @@
   <h3>{{_i}}Live demo{{/i}}</h3>
   <p>{{_i}}Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.{{/i}}</p>
   <!-- sample modal content -->
-  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h3 id="myModalLabel">{{_i}}Modal Heading{{/i}}</h3>
