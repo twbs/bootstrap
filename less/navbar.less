@@ -362,3 +362,46 @@
     right: 13px;
   }
 }
+
+
+/* Subnav navbar
+-------------------------------------------------- */
+// In the future, we may make two options available for the navbar:
+// a default state, the lighter one, and the darker one as an option
+// to enable. This would prevent some overriding back to defaults.
+
+
+// Override the default .navbar
+.navbar-subnav {
+  height: 36px;
+}
+.navbar-subnav .navbar-inner {
+  min-height: 36px;
+  padding: 0;
+  #gradient > .vertical(#f9f9f9, #eeeeee);
+  .box-shadow(none);
+  border: 1px solid #e5e5e5;
+}
+
+// Change link colors back
+.navbar-subnav .nav > li > a {
+  color: @linkColor;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.navbar-subnav .nav > li > a:hover {
+  color: @linkColorHover;
+}
+
+// Dropdown carets
+.navbar-subnav .nav li.dropdown .dropdown-toggle .caret,
+.navbar-subnav .nav li.dropdown.open .caret {
+  border-top-color: @linkColor;
+  border-bottom-color: @linkColor;
+}
+
+// Open dropdown dropdown-toggle
+.navbar-subnav .nav .open > a {
+  color: @linkColorHover;
+}
+
+
