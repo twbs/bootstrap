@@ -3104,17 +3104,8 @@ input[type="submit"].btn.btn-mini {
 .btn-group {
   position: relative;
   *margin-left: .3em;
-  *zoom: 1;
-}
-
-.btn-group:before,
-.btn-group:after {
-  display: table;
-  content: "";
-}
-
-.btn-group:after {
-  clear: both;
+  font-size: 0;
+  white-space: nowrap;
 }
 
 .btn-group:first-child {
@@ -3140,11 +3131,20 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group > .btn {
   position: relative;
-  float: left;
   margin-left: -1px;
+  font-size: 13px;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
+}
+
+.btn-group > .btn-mini,
+.btn-group > .btn-small {
+  font-size: 11px;
+}
+
+.btn-group > .btn-large {
+  font-size: 15px;
 }
 
 .btn-group > .btn:first-child {

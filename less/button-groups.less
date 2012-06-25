@@ -5,7 +5,8 @@
 // Make the div behave like a button
 .btn-group {
   position: relative;
-  .clearfix(); // clears the floated buttons
+  font-size: 0; // remove as part 1 of font-size inline-block hack
+  white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
   .ie7-restore-left-whitespace();
 }
 
@@ -27,10 +28,20 @@
 // Float them, remove border radius, then re-add to first and last elements
 .btn-group > .btn {
   position: relative;
-  float: left;
   margin-left: -1px;
+  font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
   .border-radius(0);
 }
+
+// Reset fonts for other sizes
+.btn-group > .btn-mini,
+.btn-group > .btn-small {
+  font-size: @baseFontSize - 2px;
+}
+.btn-group > .btn-large {
+  font-size: @baseFontSize + 2px;
+}
+
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
