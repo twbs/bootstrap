@@ -26,7 +26,7 @@
  /* TYPEAHEAD PUBLIC CLASS DEFINITION
   * ================================= */
 
-  var Typeahead = function (element, options) {
+  var Typeahead = function (element, options, callback) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.matcher = this.options.matcher || this.matcher
@@ -37,6 +37,7 @@
     this.source = this.options.source
     this.shown = false
     this.listen()
+    this.callback = options["callback"] || callback || new Function();
   }
 
   Typeahead.prototype = {
@@ -45,6 +46,7 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
+      this.callback(val);
       this.$element
         .val(this.updater(val))
         .change()
@@ -250,12 +252,12 @@
   /* TYPEAHEAD PLUGIN DEFINITION
    * =========================== */
 
-  $.fn.typeahead = function (option) {
+  $.fn.typeahead = function (option, callback) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('typeahead')
         , options = typeof option == 'object' && option
-      if (!data) $this.data('typeahead', (data = new Typeahead(this, options)))
+      if (!data) $this.data('typeahead', (data = new Typeahead(this, options, callback)))
       if (typeof option == 'string') data[option]()
     })
   }
