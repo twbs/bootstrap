@@ -2532,7 +2532,7 @@ table .span24 {
   display: none;
   float: left;
   min-width: 160px;
-  padding: 4px 0;
+  padding: 5px 0;
   margin: 1px 0 0;
   list-style: none;
   background-color: #ffffff;
@@ -2540,9 +2540,9 @@ table .span24 {
   border: 1px solid rgba(0, 0, 0, 0.2);
   *border-right-width: 2px;
   *border-bottom-width: 2px;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -3585,38 +3585,35 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-tabs .dropdown-menu {
-  -webkit-border-radius: 0 0 5px 5px;
-     -moz-border-radius: 0 0 5px 5px;
-          border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
 }
 
 .nav-pills .dropdown-menu {
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
 }
 
-.nav-tabs .dropdown-toggle .caret,
-.nav-pills .dropdown-toggle .caret {
+.nav .dropdown-toggle .caret {
   margin-top: 6px;
   border-top-color: #0088cc;
   border-bottom-color: #0088cc;
 }
 
-.nav-tabs .dropdown-toggle:hover .caret,
-.nav-pills .dropdown-toggle:hover .caret {
+.nav .dropdown-toggle:hover .caret {
   border-top-color: #005580;
   border-bottom-color: #005580;
 }
 
-.nav-tabs .active .dropdown-toggle .caret,
-.nav-pills .active .dropdown-toggle .caret {
-  border-top-color: #333333;
-  border-bottom-color: #333333;
+.nav .active .dropdown-toggle .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
 }
 
 .nav > .dropdown.active > a:hover {
-  color: #000000;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -3997,6 +3994,10 @@ input[type="submit"].btn.btn-mini {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
+.navbar .nav .dropdown-toggle .caret {
+  margin-top: 8px;
+}
+
 .navbar .btn {
   display: inline-block;
   padding: 4px 10px 4px;
@@ -4207,8 +4208,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .subnav .nav > li > a {
-  padding: 8px 12px;
-  line-height: 20px;
+  padding: 9px 12px;
+  line-height: 18px;
   border-right: 1px solid #e5e5e5;
   border-left: 1px solid #f5f5f5;
 }
@@ -4225,11 +4226,6 @@ input[type="submit"].btn.btn-mini {
           box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.05);
 }
 
-.subnav .nav > .active > a .caret,
-.subnav .nav > .active > a:hover .caret {
-  border-top-color: #777;
-}
-
 .subnav .nav > li:first-child > a,
 .subnav .nav > li:first-child > a:hover {
   padding-left: 12px;
@@ -4243,13 +4239,24 @@ input[type="submit"].btn.btn-mini {
   border-right: 0;
 }
 
-/* Dropdown menus get matching border-radius
-.subnav .dropdown-menu {
-  -webkit-border-radius: 0 0 @subnavBorderRadius @subnavBorderRadius;
-     -moz-border-radius: 0 0 @subnavBorderRadius @subnavBorderRadius;
-          border-radius: 0 0 @subnavBorderRadius @subnavBorderRadius;
+/* Reposition the dropdown carets */
+
+.subnav .nav .dropdown-toggle .caret {
+  margin-top: 7px;
 }
 
+.nav .active .dropdown-toggle .caret {
+  border-top-color: #777;
+  border-bottom-color: #777;
+}
+
+/* Dropdown menus get matching border-radius */
+
+.subnav .dropdown-menu {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
 
 /* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
 
