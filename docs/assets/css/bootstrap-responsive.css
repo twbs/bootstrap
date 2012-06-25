@@ -1004,7 +1004,7 @@
     height: auto !important;
     overflow: visible !important;
   }
-  .subnav-fixed {
+  .navbar-subnav-fixed {
     position: fixed;
     top: 40px;
     right: 0;
@@ -1020,13 +1020,14 @@
        -moz-box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
             box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
   }
-  .subnav-fixed .nav {
-    max-width: 780px;
+  .navbar-subnav-fixed .nav {
+    float: none;
+    max-width: 970px;
     padding: 0 1px;
     margin: 0 auto;
   }
-  .subnav .nav > li:first-child > a,
-  .subnav .nav > li:first-child > a:hover {
+  .navbar-subnav .nav > li:first-child > a,
+  .navbar-subnav .nav > li:first-child > a:hover {
     -webkit-border-radius: 0;
        -moz-border-radius: 0;
             border-radius: 0;

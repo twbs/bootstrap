@@ -153,7 +153,7 @@
   }
 
   // Fixed subnav on scroll, but only for 980px and up (sorry IE!)
-  .subnav-fixed {
+  .navbar-subnav-fixed {
     position: fixed;
     top: 40px;
     left: 0;
@@ -169,13 +169,14 @@
             box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
   }
-  .subnav-fixed .nav {
-    max-width: 780px;
+  .navbar-subnav-fixed .nav {
+    float: none;
+    max-width: 970px;
     margin: 0 auto;
     padding: 0 1px;
   }
-  .subnav .nav > li:first-child > a,
-  .subnav .nav > li:first-child > a:hover {
+  .navbar-subnav .nav > li:first-child > a,
+  .navbar-subnav .nav > li:first-child > a:hover {
     -webkit-border-radius: 0;
        -moz-border-radius: 0;
             border-radius: 0;
