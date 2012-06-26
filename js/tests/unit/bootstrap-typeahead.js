@@ -124,7 +124,6 @@ $(function () {
         typeahead.$menu.remove()
       })
 
-
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
@@ -142,6 +141,22 @@ $(function () {
         equals($input.val(), 'ac', 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
         ok(changed, 'a change event was fired')
+
+        typeahead.$menu.remove()
+      })
+
+      test("should show menu on focus when showAll is true", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+            , showAll: true
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.focus()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
 
         typeahead.$menu.remove()
       })
