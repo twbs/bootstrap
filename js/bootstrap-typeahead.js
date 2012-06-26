@@ -83,7 +83,7 @@
 
       this.query = this.$element.val()
 
-      if (!this.query) {
+      if (!this.query && !this.options.showAll) {
         return this.shown ? this.hide() : this
       }
 
@@ -167,6 +167,7 @@
         .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
+        .on('focus',    $.proxy(this.focus, this))
 
       if ($.browser.webkit || $.browser.msie) {
         this.$element.on('keydown', $.proxy(this.keypress, this))
@@ -233,6 +234,10 @@
       setTimeout(function () { that.hide() }, 150)
     }
 
+  , focus: function (e) {
+      this.lookup()
+    }
+
   , click: function (e) {
       e.stopPropagation()
       e.preventDefault()
@@ -265,6 +270,7 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , showAll: false
   }
 
   $.fn.typeahead.Constructor = Typeahead
