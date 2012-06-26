@@ -29,8 +29,11 @@
 .btn-group > .btn {
   position: relative;
   margin-left: -1px;
-  font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
   .border-radius(0);
+}
+.btn-group > .btn,
+.btn-group > .dropdown-menu {
+  font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
