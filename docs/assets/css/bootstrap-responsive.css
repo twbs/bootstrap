@@ -36,7 +36,6 @@
   min-height: 28px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
-      -ms-box-sizing: border-box;
           box-sizing: border-box;
 }
 
@@ -202,7 +201,6 @@
     *margin-left: 2.510911074638298%;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
             box-sizing: border-box;
   }
   .row-fluid [class*="span"]:first-child {
@@ -543,7 +541,6 @@
     *margin-left: 2.709239449638298%;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
             box-sizing: border-box;
   }
   .row-fluid [class*="span"]:first-child {
@@ -811,7 +808,6 @@
     min-height: 28px;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
             box-sizing: border-box;
   }
   .input-prepend input,
