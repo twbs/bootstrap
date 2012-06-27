@@ -4981,3 +4981,7 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+
+.inline {
+  display: inline;
+}
