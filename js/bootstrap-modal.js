@@ -54,7 +54,7 @@
         openModals.push(this)
         this.isShown = true
 
-        var zindex = parseInt(this.$element.css('z-index')) + ((openModals.length - 1) * 10)
+        var zindex = parseInt(this.$element.css('z-index')) + ((openModals.length - 1) * 10, 10)
 
         backdrop.call(this, zindex-1, function() {
           var transition = $.support.transition && that.$element.hasClass('fade')
