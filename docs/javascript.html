@@ -848,11 +848,52 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
     <h1>Popovers <small>bootstrap-popover.js</small></h1>
   </div>
 
-  <h2>Example</h2>
+  <h2>Examples</h2>
   <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover.</p>
   <p class="muted"><strong>*</strong> Requires <a href="#tooltips">Tooltip</a> to be included</p>
+
+  <h3>Static popover</h3>
+  <p>Four options are available: top, right, bottom, and left aligned.</p>
+  <div class="bs-docs-example bs-docs-example-popover">
+    <div class="popover top">
+      <div class="arrow"></div>
+      <h3 class="popover-title">Popover top</h3>
+      <div class="popover-content">
+        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+      </div>
+    </div>
+
+    <div class="popover right">
+      <div class="arrow"></div>
+      <h3 class="popover-title">Popover right</h3>
+      <div class="popover-content">
+        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+      </div>
+    </div>
+
+    <div class="popover bottom">
+      <div class="arrow"></div>
+      <h3 class="popover-title">Popover bottom</h3>
+      <div class="popover-content">
+        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+      </div>
+    </div>
+
+    <div class="popover left">
+      <div class="arrow"></div>
+      <h3 class="popover-title">Popover left</h3>
+      <div class="popover-content">
+        <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+  <p>No markup shown as popovers are generated from javascript and content within a <code>data</code> attribute.</p>
+
+  <h3>Live demo</h3>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
-    <a href="#" class="btn btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">hover for popover</a>
+    <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Hover for popover</a>
   </div>
 
 

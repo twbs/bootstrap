@@ -601,6 +601,20 @@ form.bs-docs-example {
   line-height: 18px;
 }
 
+/* Popovers */
+.bs-docs-example-popover {
+  padding-bottom: 24px;
+  background-color: #f9f9f9;
+}
+.bs-docs-example-popover .popover {
+  position: relative;
+  display: block;
+  float: left;
+  width: 210px;
+  margin: 10px;
+}
+
+
 /* Responsive table
 ------------------------- */
 .responsive-utilities th small {

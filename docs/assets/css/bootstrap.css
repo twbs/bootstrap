@@ -2644,8 +2644,7 @@ table .span24 {
   padding: 19px;
   margin-bottom: 20px;
   background-color: #f5f5f5;
-  border: 1px solid #eee;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid #e3e3e3;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -4531,39 +4530,75 @@ input[type="submit"].btn.btn-mini {
 }
 
 .tooltip.top .tooltip-arrow {
-  bottom: 0;
+  bottom: -10px;
   left: 50%;
-  margin-left: -5px;
-  border-top: 5px solid #000000;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
+  margin-left: -10px;
+  border-top: 10px solid #cccccc;
+  border-top: 10px solid rgba(0, 0, 0, 0.2);
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+
+.tooltip.top .tooltip-arrow:after {
+  bottom: 1px;
+  left: -9px;
+  border-top: 9px solid #ffffff;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
 }
 
 .tooltip.left .tooltip-arrow {
   top: 50%;
-  right: 0;
-  margin-top: -5px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid #000000;
+  right: -10px;
+  margin-top: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #cccccc;
+  border-left: 10px solid rgba(0, 0, 0, 0.2);
+}
+
+.tooltip.left .tooltip-arrow:after {
+  right: 1px;
+  bottom: -9px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 9px solid #ffffff;
 }
 
 .tooltip.bottom .tooltip-arrow {
-  top: 0;
+  top: -10px;
   left: 50%;
-  margin-left: -5px;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #000000;
-  border-left: 5px solid transparent;
+  margin-left: -10px;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #cccccc;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.2);
+  border-left: 10px solid transparent;
+}
+
+.tooltip.bottom .tooltip-arrow:after {
+  top: 1px;
+  left: -9px;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #f5f5f5;
+  border-left: 9px solid transparent;
 }
 
 .tooltip.right .tooltip-arrow {
   top: 50%;
-  left: 0;
-  margin-top: -5px;
-  border-top: 5px solid transparent;
-  border-right: 5px solid #000000;
-  border-bottom: 5px solid transparent;
+  left: -10px;
+  margin-top: -10px;
+  border-top: 10px solid transparent;
+  border-right: 10px solid #cccccc;
+  border-right: 10px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 10px solid transparent;
+}
+
+.tooltip.right .tooltip-arrow:after {
+  bottom: -9px;
+  left: 1px;
+  border-top: 9px solid transparent;
+  border-right: 9px solid #ffffff;
+  border-bottom: 9px solid transparent;
 }
 
 .tooltip-inner {
@@ -4590,59 +4625,107 @@ input[type="submit"].btn.btn-mini {
   left: 0;
   z-index: 1010;
   display: none;
-  padding: 5px;
+  width: 218px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
 }
 
 .popover.top {
-  margin-top: -5px;
+  margin-bottom: 10px;
 }
 
 .popover.right {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .popover.bottom {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .popover.left {
-  margin-left: -5px;
+  margin-right: 10px;
 }
 
 .popover.top .arrow {
-  bottom: 0;
+  bottom: -10px;
   left: 50%;
-  margin-left: -5px;
-  border-top: 5px solid #000000;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
+  margin-left: -10px;
+  border-top: 10px solid #cccccc;
+  border-top: 10px solid rgba(0, 0, 0, 0.2);
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+
+.popover.top .arrow:after {
+  bottom: 1px;
+  left: -9px;
+  border-top: 9px solid #ffffff;
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
 }
 
 .popover.right .arrow {
   top: 50%;
-  left: 0;
-  margin-top: -5px;
-  border-top: 5px solid transparent;
-  border-right: 5px solid #000000;
-  border-bottom: 5px solid transparent;
+  left: -10px;
+  margin-top: -10px;
+  border-top: 10px solid transparent;
+  border-right: 10px solid #cccccc;
+  border-right: 10px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 10px solid transparent;
+}
+
+.popover.right .arrow:after {
+  bottom: -9px;
+  left: 1px;
+  border-top: 9px solid transparent;
+  border-right: 9px solid #ffffff;
+  border-bottom: 9px solid transparent;
 }
 
 .popover.bottom .arrow {
-  top: 0;
+  top: -10px;
   left: 50%;
-  margin-left: -5px;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #000000;
-  border-left: 5px solid transparent;
+  margin-left: -10px;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #cccccc;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.2);
+  border-left: 10px solid transparent;
+}
+
+.popover.bottom .arrow:after {
+  top: 1px;
+  left: -9px;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #f5f5f5;
+  border-left: 9px solid transparent;
 }
 
 .popover.left .arrow {
   top: 50%;
-  right: 0;
-  margin-top: -5px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid #000000;
+  right: -10px;
+  margin-top: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #cccccc;
+  border-left: 10px solid rgba(0, 0, 0, 0.2);
+}
+
+.popover.left .arrow:after {
+  right: 1px;
+  bottom: -9px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 9px solid #ffffff;
 }
 
 .popover .arrow {
@@ -4651,39 +4734,28 @@ input[type="submit"].btn.btn-mini {
   height: 0;
 }
 
-.popover-inner {
-  width: 280px;
-  padding: 3px;
-  overflow: hidden;
-  background: #000000;
-  background: rgba(0, 0, 0, 0.8);
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-     -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+.popover .arrow:after {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  content: "";
 }
 
 .popover-title {
-  padding: 9px 15px;
-  line-height: 1;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
   background-color: #f5f5f5;
-  border-bottom: 1px solid #eee;
-  -webkit-border-radius: 3px 3px 0 0;
-     -moz-border-radius: 3px 3px 0 0;
-          border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px 5px 0 0;
+     -moz-border-radius: 5px 5px 0 0;
+          border-radius: 5px 5px 0 0;
 }
 
 .popover-content {
-  padding: 14px;
-  background-color: #ffffff;
-  -webkit-border-radius: 0 0 3px 3px;
-     -moz-border-radius: 0 0 3px 3px;
-          border-radius: 0 0 3px 3px;
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding-box;
-          background-clip: padding-box;
+  padding: 9px 14px;
 }
 
 .popover-content p,
