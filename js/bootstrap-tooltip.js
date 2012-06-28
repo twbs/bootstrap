@@ -65,6 +65,13 @@
         , hide: options.delay
         }
       }
+      
+      if (options.delayShow || options.delayHide) {
+        options.delay = {
+          show: options.delayShow
+        , hide: options.delayHide
+        }
+      }
 
       return options
     }
