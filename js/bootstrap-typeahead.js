@@ -33,6 +33,7 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.minLength = this.options.minLength || this.minLength
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -80,6 +81,10 @@
       var that = this
         , items
         , q
+
+      if (this.$element.val().length < this.minLength) {
+        return this.shown ? this.hide() : this
+      }
 
       this.query = this.$element.val()
 
@@ -263,6 +268,7 @@
   $.fn.typeahead.defaults = {
     source: []
   , items: 8
+  , minLength: 1
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   }
