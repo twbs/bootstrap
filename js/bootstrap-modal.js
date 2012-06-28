@@ -91,7 +91,7 @@
 
         this.isShown = false
         openModals = $.grep(openModals, function(v) { return v != that; })
-        if (openModals.length == 0) { $('body').removeClass('modal-open') }
+        if (openModals.length === 0) { $('body').removeClass('modal-open') }
 
         this.$element.removeClass('in')
 
