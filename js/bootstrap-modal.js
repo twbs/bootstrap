@@ -22,6 +22,8 @@
 
   "use strict"; // jshint ;_;
 
+  var openModals = []
+
 
  /* MODAL CLASS DEFINITION
   * ====================== */
@@ -49,19 +51,19 @@
         if (this.isShown || e.isDefaultPrevented()) return
 
         $('body').addClass('modal-open')
-
+        openModals.push(this)
         this.isShown = true
 
-        escape.call(this)
-        backdrop.call(this, function () {
+        var zindex = parseInt(this.$element.css('z-index')) + ((openModals.length - 1) * 10)
+
+        backdrop.call(this, zindex-1, function() {
           var transition = $.support.transition && that.$element.hasClass('fade')
 
           if (!that.$element.parent().length) {
             that.$element.appendTo(document.body) //don't move modals dom position
           }
 
-          that.$element
-            .show()
+          that.$element.css('z-index', zindex).show()
 
           if (transition) {
             that.$element[0].offsetWidth // force reflow
@@ -88,10 +90,8 @@
         if (!this.isShown || e.isDefaultPrevented()) return
 
         this.isShown = false
-
-        $('body').removeClass('modal-open')
-
-        escape.call(this)
+        openModals = $.grep(openModals, function(v) { return v != that; })
+        if (openModals.length == 0) { $('body').removeClass('modal-open') }
 
         this.$element.removeClass('in')
 
@@ -127,7 +127,7 @@
     backdrop.call(this)
   }
 
-  function backdrop(callback) {
+  function backdrop(zindex, callback) {
     var that = this
       , animate = this.$element.hasClass('fade') ? 'fade' : ''
 
@@ -135,7 +135,7 @@
       var doAnimate = $.support.transition && animate
 
       this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .appendTo(document.body)
+        .css('z-index', zindex).appendTo(document.body)
 
       if (this.options.backdrop != 'static') {
         this.$backdrop.click($.proxy(this.hide, this))
@@ -166,16 +166,13 @@
     this.$backdrop = null
   }
 
-  function escape() {
-    var that = this
-    if (this.isShown && this.options.keyboard) {
-      $(document).on('keyup.dismiss.modal', function ( e ) {
-        e.which == 27 && that.hide()
-      })
-    } else if (!this.isShown) {
-      $(document).off('keyup.dismiss.modal')
+  $(document).on('keyup.dismiss.modal', function (e) {
+    if (openModals.length) {
+      var modal = openModals[openModals.length - 1]
+      if (modal.options.keyboard) { e.which == 27 && modal.hide() }
     }
-  }
+  })
+
 
 
  /* MODAL PLUGIN DEFINITION
