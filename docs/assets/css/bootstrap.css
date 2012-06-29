@@ -3987,7 +3987,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a {
   float: none;
-  padding: 9px 12px 11px;
+  padding: 10px 12px 11px;
   line-height: 19px;
   color: #999999;
   text-decoration: none;
@@ -4174,12 +4174,7 @@ input[type="submit"].btn.btn-mini {
 /* Subnav navbar
 -------------------------------------------------- */
 
-.navbar-subnav {
-  height: 36px;
-}
-
 .navbar-subnav .navbar-inner {
-  min-height: 36px;
   padding: 0;
   background-color: #f6f6f6;
   background-image: -moz-linear-gradient(top, #f9f9f9, #f1f1f1);
@@ -4204,6 +4199,12 @@ input[type="submit"].btn.btn-mini {
   color: #005580;
 }
 
+.navbar-subnav .nav > .active > a,
+.navbar-subnav .nav > .active > a:hover {
+  color: #777;
+  background-color: #e5e5e5;
+}
+
 .navbar-subnav .nav li.dropdown .dropdown-toggle .caret,
 .navbar-subnav .nav li.dropdown.open .caret {
   border-top-color: #0088cc;
@@ -4220,15 +4221,18 @@ input[type="submit"].btn.btn-mini {
   right: 0;
   left: 0;
   z-index: 1020;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff, 0 1px 10px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: inset 0 1px 0 #ffffff, 0 1px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 0 #ffffff, 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-subnav-fixed .navbar-inner {
   border-color: #d5d5d5;
   border-width: 0 0 1px;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-  -webkit-box-shadow: inset 0 1px 0 #ffffff, 0 1px 10px rgba(0, 0, 0, 0.1);
-     -moz-box-shadow: inset 0 1px 0 #ffffff, 0 1px 10px rgba(0, 0, 0, 0.1);
-          box-shadow: inset 0 1px 0 #ffffff, 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-subnav-fixed .nav {
