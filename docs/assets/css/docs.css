@@ -51,6 +51,8 @@ h3 code {
 .navbar {
   font-size: 13px;
 }
+
+/* Change the docs' brand */
 body > .navbar-fixed-top .brand {
   padding-right: 0;
   padding-left: 0;
@@ -91,6 +93,7 @@ hr.soften {
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   border: 0;
 }
+
 
 
 /* Jumbotrons
@@ -149,7 +152,7 @@ hr.soften {
   font-size: 60px;
 }
 
-/* Quick links
+/* Quick links on Home
 ------------------------- */
 .bs-links {
   margin: 40px 0 0;
@@ -178,8 +181,10 @@ hr.soften {
 }
 
 
+
 /* Marketing section of Overview
 -------------------------------------------------- */
+
 .marketing .row {
   margin-bottom: 9px;
 }
@@ -189,8 +194,7 @@ hr.soften {
   font-weight: 300;
   text-align: center;
 }
-.marketing h2,
-.marketing h3 {
+.marketing h2 {
   font-weight: 300;
 }
 .marketing p {
@@ -200,10 +204,6 @@ hr.soften {
   float: left;
   margin: 7px 10px 0 0;
   opacity: .8;
-}
-.marketing .small-bs-icon {
-  float: left;
-  margin: 4px 5px 0 0;
 }
 .marketing .marketing-byline {
   margin-bottom: 30px;
@@ -215,8 +215,10 @@ hr.soften {
 }
 
 
+
 /* Footer
 -------------------------------------------------- */
+
 .footer {
   padding: 40px 0;
   margin-top: 49px;
@@ -231,6 +233,7 @@ hr.soften {
 
 /* Special grid styles
 -------------------------------------------------- */
+
 .show-grid {
   margin-top: 10px;
   margin-bottom: 20px;
@@ -256,7 +259,8 @@ hr.soften {
 }
 
 
-/* Render mini layout previews
+
+/* Mini layout previews
 -------------------------------------------------- */
 .mini-layout {
   border: 1px solid #ddd;
@@ -301,32 +305,10 @@ hr.soften {
 }
 
 
-/* Popover docs
--------------------------------------------------- */
-.popover-well {
-  min-height: 160px;
-}
-.popover-well .popover {
-  display: block;
-}
-.popover-well .popover-wrapper {
-  width: 50%;
-  height: 160px;
-  float: left;
-  margin-left: 55px;
-  position: relative;
-}
-.popover-well .popover-menu-wrapper {
-  height: 80px;
-}
-.large-bird {
-  margin: 5px 0 0 310px;
-  opacity: .1;
-}
-
 
 /* Download page
 -------------------------------------------------- */
+
 .download .page-header {
   margin-top: 36px;
 }
@@ -410,30 +392,6 @@ hr.soften {
 
 
 
-/* Color swatches on LESS docs page
--------------------------------------------------- */
-/* Sets the width of the td */
-.swatch-col {
-  width: 30px;
-}
-/* Le swatch */
-.swatch {
-  display: inline-block;
-  width: 30px;
-  height: 20px;
-  margin: -6px 0;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-/* For white swatches, give a border */
-.swatch-bordered {
-  width: 28px;
-  height: 18px;
-  border: 1px solid #eee;
-}
-
-
 /* Misc
 -------------------------------------------------- */
 
@@ -460,15 +418,6 @@ h2 + .row {
   position: relative;
 }
 
-/* Remove bottom margin on example forms in wells */
-form.well {
-  padding: 14px;
-}
-
-/* Tighten up spacing */
-.well hr {
-  margin: 18px 0;
-}
 
 /* Fake the :focus state to demo it */
 .focused {
@@ -507,8 +456,12 @@ form.well {
   background-color: #fff;
 }
 
-/* Docs examples
-------------------------- */
+
+
+/* Bootstrap code examples
+-------------------------------------------------- */
+
+/* Base class */
 .bs-docs-example {
   position: relative;
   margin: 15px 0;
@@ -519,6 +472,8 @@ form.well {
      -moz-border-radius: 4px;
           border-radius: 4px;
 }
+
+/* Echo out a label for the example */
 .bs-docs-example:after {
   content: "Example";
   position: absolute;
@@ -534,10 +489,15 @@ form.well {
      -moz-border-radius: 4px 0 4px 0;
           border-radius: 4px 0 4px 0;
 }
+
+/* Remove spacing between an example and it's code */
 .bs-docs-example + .prettyprint {
   margin-top: -20px;
   padding-top: 15px;
 }
+
+/* Tweak examples
+------------------------- */
 .bs-docs-example,
 .bs-docs-example > p {
   font-size: 13px;
@@ -614,7 +574,11 @@ form.bs-docs-example {
 }
 
 
-/* Responsive table
+
+/* Responsive docs
+-------------------------------------------------- */
+
+/* Utility classes table
 ------------------------- */
 .responsive-utilities th small {
   display: block;
@@ -680,10 +644,71 @@ form.bs-docs-example {
 
 
 
-/* Responsive Docs
+/* Responsive
 -------------------------------------------------- */
-@media (max-width: 480px) {
 
+/* Desktop large
+------------------------- */
+@media (min-width: 1210px) {
+  .bs-docs-container {
+    max-width: 970px;
+  }
+}
+
+/* Desktop
+------------------------- */
+@media (max-width: 980px) {
+  /* Unfloat brand */
+  body > .navbar-fixed-top .brand {
+    float: left;
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Inline-block quick links for more spacing */
+  .quick-links li {
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 980px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 768px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+
+  /* Jumbotron buttons */
+  .jumbotron .btn {
+    margin-bottom: 10px;
+  }
+
+  /* Space out the show-grid examples */
+  .show-grid [class*="span"] {
+    margin-bottom: 5px;
+  }
+
+  /* Unfloat the back to top link in footer */
+  .footer p {
+    margin-bottom: 9px;
+  }
+}
+
+/* Landscape phones
+------------------------- */
+@media (max-width: 480px) {
   /* Reduce padding above jumbotron */
   body {
     padding-top: 70px;
@@ -749,80 +774,4 @@ form.bs-docs-example {
   .footer .pull-right {
     float: none;
   }
-
-}
-
-
-@media (max-width: 768px) {
-
-  /* Remove any padding from the body */
-  body {
-    padding-top: 0;
-  }
-
-  /* Jumbotron buttons */
-  .jumbotron .btn {
-    margin-bottom: 10px;
-  }
-
-  /* Space out the show-grid examples */
-  .show-grid [class*="span"] {
-    margin-bottom: 5px;
-  }
-
-  /* Unfloat the back to top link in footer */
-  .footer p {
-    margin-bottom: 9px;
-  }
-
-}
-
-
-@media (min-width: 480px) and (max-width: 768px) {
-
-
-}
-
-
-@media (min-width: 768px) and (max-width: 980px) {
-
-  /* Remove any padding from the body */
-  body {
-    padding-top: 0;
-  }
-
-}
-
-
-@media (max-width: 980px) {
-
-  /* Unfloat brand */
-  body > .navbar-fixed-top .brand {
-    float: left;
-    margin-left: 0;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  /* Inline-block quick links for more spacing */
-  .quick-links li {
-    display: inline-block;
-    margin: 5px;
-  }
-
-}
-
-
-/* LARGE DESKTOP SCREENS */
-@media (min-width: 1210px) {
-
-  .bs-docs-container {
-    max-width: 970px;
-  }
-
-  /* Update subnav container */
-  .subnav-fixed .nav {
-    max-width: 970px; /* 2px less to account for left/right borders being removed when in fixed mode */
-  }
-
 }
