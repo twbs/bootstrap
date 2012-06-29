@@ -48,8 +48,7 @@ h3 code {
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 
-.navbar,
-.subnav {
+.navbar {
   font-size: 13px;
 }
 body > .navbar-fixed-top .brand {
@@ -764,42 +763,6 @@ form.bs-docs-example {
   /* Jumbotron buttons */
   .jumbotron .btn {
     margin-bottom: 10px;
-  }
-
-  /* Subnav */
-  .subnav {
-    position: static;
-    top: auto;
-    z-index: auto;
-    width: auto;
-    height: auto;
-    background: #fff; /* whole background property since we use a background-image for gradient */
-    -webkit-box-shadow: none;
-       -moz-box-shadow: none;
-            box-shadow: none;
-  }
-  .subnav .nav > li {
-    float: none;
-  }
-  .subnav .nav > li > a {
-    border: 0;
-  }
-  .subnav .nav > li + li > a {
-    border-top: 1px solid #e5e5e5;
-  }
-  .subnav .nav > li:first-child > a,
-  .subnav .nav > li:first-child > a:hover {
-      -webkit-border-radius: 4px 4px 0 0;
-         -moz-border-radius: 4px 4px 0 0;
-              border-radius: 4px 4px 0 0;
-  }
-
-  /* Popovers */
-  .large-bird {
-    display: none;
-  }
-  .popover-well .popover-wrapper {
-    margin-left: 0;
   }
 
   /* Space out the show-grid examples */

@@ -872,7 +872,8 @@
     padding-top: 0;
   }
   .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-bottom,
+  .navbar-subnav-fixed {
     position: static;
   }
   .navbar-fixed-top {
@@ -993,39 +994,44 @@
     padding-right: 10px;
     padding-left: 10px;
   }
+  .navbar-subnav {
+    width: auto;
+    height: auto;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-subnav .navbar-inner {
+    background-color: #fff;
+    background-image: none;
+  }
+  .navbar-subnav .nav {
+    float: none;
+    margin-right: 0;
+  }
+  .navbar-subnav .nav > li {
+    float: none;
+  }
+  .navbar-subnav .nav > li > a {
+    border: 0;
+  }
+  .navbar-subnav .nav > li > a:hover {
+    background-color: #f5f5f5;
+  }
+  .navbar-subnav .nav > li + li > a {
+    border-top: 1px solid #e5e5e5;
+  }
+  .navbar-subnav .nav > li:first-child > a,
+  .navbar-subnav .nav > li:first-child > a:hover {
+    -webkit-border-radius: 4px 4px 0 0;
+       -moz-border-radius: 4px 4px 0 0;
+            border-radius: 4px 4px 0 0;
+  }
 }
 
 @media (min-width: 980px) {
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
-  }
-  .navbar-subnav-fixed {
-    position: fixed;
-    top: 40px;
-    right: 0;
-    left: 0;
-    z-index: 1020;
-    border-color: #d5d5d5;
-    border-width: 0 0 1px;
-    -webkit-border-radius: 0;
-       -moz-border-radius: 0;
-            border-radius: 0;
-    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-    -webkit-box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
-       -moz-box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
-            box-shadow: inset 0 1px 0 #ffffff, 0 1px 5px rgba(0, 0, 0, 0.1);
-  }
-  .navbar-subnav-fixed .nav {
-    float: none;
-    max-width: 970px;
-    padding: 0 1px;
-    margin: 0 auto;
-  }
-  .navbar-subnav .nav > li:first-child > a,
-  .navbar-subnav .nav > li:first-child > a:hover {
-    -webkit-border-radius: 0;
-       -moz-border-radius: 0;
-            border-radius: 0;
   }
 }

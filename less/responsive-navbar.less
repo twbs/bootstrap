@@ -8,9 +8,10 @@
   body {
     padding-top: 0;
   }
-  // Unfix the navbar
+  // Unfix the navbars
   .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-bottom,
+  .navbar-subnav-fixed {
     position: static;
   }
   .navbar-fixed-top {
@@ -138,6 +139,44 @@
     padding-left:  10px;
     padding-right: 10px;
   }
+
+  // STATIC SUBNAV
+  // -------------
+  .navbar-subnav {
+    width: auto;
+    height: auto;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-subnav .navbar-inner {
+    background-color: #fff;
+    background-image: none; // Remove gradient
+  }
+  .navbar-subnav .nav {
+    float: none;
+    margin-right: 0;
+  }
+  .navbar-subnav .nav > li {
+    float: none;
+  }
+  .navbar-subnav .nav > li > a {
+    border: 0;
+  }
+  .navbar-subnav .nav > li > a:hover {
+    background-color: #f5f5f5;
+  }
+  .navbar-subnav .nav > li + li > a {
+    border-top: 1px solid #e5e5e5;
+  }
+  .navbar-subnav .nav > li:first-child > a,
+  .navbar-subnav .nav > li:first-child > a:hover {
+      -webkit-border-radius: 4px 4px 0 0;
+         -moz-border-radius: 4px 4px 0 0;
+              border-radius: 4px 4px 0 0;
+  }
+
+
 }
 
 
@@ -150,36 +189,6 @@
   .nav-collapse.collapse {
     height: auto !important;
     overflow: visible !important;
-  }
-
-  // Fixed subnav on scroll, but only for 980px and up (sorry IE!)
-  .navbar-subnav-fixed {
-    position: fixed;
-    top: 40px;
-    left: 0;
-    right: 0;
-    z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
-    border-color: #d5d5d5;
-    border-width: 0 0 1px; /* drop the border on the fixed edges */
-    -webkit-border-radius: 0;
-       -moz-border-radius: 0;
-            border-radius: 0;
-    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-       -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-            box-shadow: inset 0 1px 0 #fff, 0 1px 5px rgba(0,0,0,.1);
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
-  }
-  .navbar-subnav-fixed .nav {
-    float: none;
-    max-width: 970px;
-    margin: 0 auto;
-    padding: 0 1px;
-  }
-  .navbar-subnav .nav > li:first-child > a,
-  .navbar-subnav .nav > li:first-child > a:hover {
-    -webkit-border-radius: 0;
-       -moz-border-radius: 0;
-            border-radius: 0;
   }
 
 }
