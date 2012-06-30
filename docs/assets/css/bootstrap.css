@@ -5323,3 +5323,7 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+
+.fixed {
+  position: fixed;
+}
