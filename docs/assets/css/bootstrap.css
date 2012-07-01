@@ -1634,6 +1634,42 @@ legend + .control-group {
   padding-left: 160px;
 }
 
+.form-oversize .control-label {
+  padding-top: 7px;
+  font-size: 16px;
+}
+
+.form-oversize .controls > .radio:first-child,
+.form-oversize .controls > .checkbox:first-child {
+  padding-top: 8px;
+}
+
+.form-oversize select,
+.form-oversize input[type="file"] {
+  margin-top: 2px;
+}
+
+.form-oversize textarea,
+.form-oversize input[type="text"],
+.form-oversize input[type="password"],
+.form-oversize input[type="datetime"],
+.form-oversize input[type="datetime-local"],
+.form-oversize input[type="date"],
+.form-oversize input[type="month"],
+.form-oversize input[type="time"],
+.form-oversize input[type="week"],
+.form-oversize input[type="number"],
+.form-oversize input[type="email"],
+.form-oversize input[type="url"],
+.form-oversize input[type="search"],
+.form-oversize input[type="tel"],
+.form-oversize input[type="color"],
+.form-oversize .uneditable-input {
+  padding: 6px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
 table {
   max-width: 100%;
   background-color: transparent;
