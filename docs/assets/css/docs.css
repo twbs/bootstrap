@@ -775,3 +775,61 @@ form.bs-docs-example {
     float: none;
   }
 }
+
+
+
+
+.navbar {
+}
+.jumbo {
+  padding: 100px 0;
+  margin-top: -60px;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1), 0 0 30px rgba(0,0,0,.075);
+
+  background: #c9cabc; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #c9cabc 0%, #68686d 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#c9cabc), color-stop(100%,#68686d)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #c9cabc 0%,#68686d 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #c9cabc 0%,#68686d 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #c9cabc 0%,#68686d 100%); /* IE10+ */
+background: linear-gradient(135deg,  #c9cabc 0%,#68686d 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9cabc', endColorstr='#68686d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  xborder-bottom: 1px solid #68686d;
+
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+     -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+          box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+}
+.jumbo h1 {
+  font-size: 120px;
+  font-weight: 200;
+  line-height: 1;
+  margin: 0 0 5px;
+  letter-spacing: -2px;
+}
+.jumbo p {
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 1.25;
+}
+.jumbo .btn {
+  font-size: 20px;
+  padding: 14px 24px;
+  margin: 0 10px 30px 0;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 3px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 3px rgba(0,0,0,.2);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 3px rgba(0,0,0,.2);
+}
+.jumbo .btn:active {
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25);
+     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25);
+          box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25);
+}
+
+
+
