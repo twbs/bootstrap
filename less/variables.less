@@ -1,10 +1,9 @@
-// Variables.less
-// Variables to customize the look and feel of Bootstrap
-// -----------------------------------------------------
+//
+// Variables
+// --------------------------------------------------
 
 
-
-// GLOBAL VALUES
+// Global values
 // --------------------------------------------------
 
 
@@ -104,11 +103,16 @@
 // -------------------------
 @dropdownBackground:            @white;
 @dropdownBorder:                rgba(0,0,0,.2);
-@dropdownLinkColor:             @grayDark;
-@dropdownLinkColorHover:        @white;
-@dropdownLinkBackgroundHover:   @linkColor;
 @dropdownDividerTop:            #e5e5e5;
 @dropdownDividerBottom:         @white;
+
+@dropdownLinkColor:             @grayDark;
+
+@dropdownLinkColorHover:        @white;
+@dropdownLinkBackgroundHover:   @grayLighter;
+
+@dropdownLinkColorActive:       @dropdownLinkColor;
+@dropdownLinkBackgroundActive:  @linkColor;
 
 
 
@@ -141,6 +145,11 @@
 // Hr border color
 // -------------------------
 @hrBorder:                @grayLighter;
+
+
+// Wells
+// -------------------------
+@wellBackground:                  #f5f5f5;
 
 
 // Navbar
@@ -193,6 +202,7 @@
 // GRID
 // --------------------------------------------------
 
+
 // Default 940px grid
 // -------------------------
 @gridColumns:             12;
@@ -200,7 +210,24 @@
 @gridGutterWidth:         20px;
 @gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
+// 1200px min
+@gridColumnWidth1200:     70px;
+@gridGutterWidth1200:     30px;
+
+// 768px-979px
+@gridColumnWidth768:      42px;
+@gridGutterWidth768:      20px;
+
+
 // Fluid grid
 // -------------------------
 @fluidGridColumnWidth:    6.382978723%;
 @fluidGridGutterWidth:    2.127659574%;
+
+// 1200px min
+@fluidGridColumnWidth1200:     5.982905983%;
+@fluidGridGutterWidth1200:     2.564102564%;
+
+// 768px-979px
+@fluidGridColumnWidth768:      5.801104972%;
+@fluidGridGutterWidth768:      2.762430939%;

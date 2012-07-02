@@ -1,7 +1,6 @@
 //
-// Tables.less
-// Tables for, you guessed it, tabular data
-// ----------------------------------------
+// Tables
+// --------------------------------------------------
 
 
 // BASE TABLES
@@ -136,7 +135,7 @@ table {
 // HOVER EFFECT
 // ------------
 // Placed here since it has to come after the potential zebra striping
-.table {
+.table-hover {
   tbody tr:hover td,
   tbody tr:hover th {
     background-color: @tableBackgroundHover;
@@ -147,7 +146,15 @@ table {
 // TABLE CELL SIZING
 // -----------------
 
-// Change the columns
+// Reset default grid behavior
+table [class*=span],
+.row-fluid table [class*=span] {
+  display: table-cell;
+  float: none; // undo default grid column styles
+  margin-left: 0; // undo default grid column styles
+}
+
+// Change the column widths to account for td/th padding
 table {
   .span1     { .tableColumns(1); }
   .span2     { .tableColumns(2); }

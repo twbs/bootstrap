@@ -1,5 +1,6 @@
-// NAVBAR (FIXED AND STATIC)
-// -------------------------
+//
+// Navbars
+// --------------------------------------------------
 
 
 // COMMON STYLES
@@ -14,7 +15,7 @@
   margin-bottom: @baseLineHeight;
 }
 
-// Gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
+// Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
 .navbar-inner {
   min-height: @navbarHeight;
   padding-left:  20px;
@@ -168,11 +169,17 @@
 // Fixed to top
 .navbar-fixed-top {
   top: 0;
+  -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.1);
+     -moz-box-shadow: 0 1px 10px rgba(0,0,0,.1);
+          box-shadow: 0 1px 10px rgba(0,0,0,.1);
 }
 
 // Fixed to bottom
 .navbar-fixed-bottom {
   bottom: 0;
+  -webkit-box-shadow: 0 -1px 10px rgba(0,0,0,.1);
+     -moz-box-shadow: 0 -1px 10px rgba(0,0,0,.1);
+          box-shadow: 0 -1px 10px rgba(0,0,0,.1);
 }
 
 
@@ -191,7 +198,6 @@
   float: right; // redeclare due to specificity
 }
 .navbar .nav > li {
-  display: block;
   float: left;
 }
 
@@ -200,12 +206,16 @@
   float: none;
   // Vertically center the text given @navbarHeight
   @elementHeight: 20px;
-  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 10px ((@navbarHeight - @elementHeight) / 2 + 1);
+  padding: ((@navbarHeight - @elementHeight) / 2) 12px ((@navbarHeight - @elementHeight) / 2 + 1);
   line-height: 19px;
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 }
+.navbar .nav .dropdown-toggle .caret {
+  margin-top: 8px;
+}
+
 // Buttons
 .navbar .btn {
   display: inline-block;
@@ -222,6 +232,7 @@
   padding: ((@navbarHeight - @elementHeight) / 2 - 1) 5px ((@navbarHeight - @elementHeight) / 2);
 }
 // Hover
+.navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
   background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
   color: @navbarLinkColorHover;
@@ -230,7 +241,8 @@
 
 // Active nav items
 .navbar .nav .active > a,
-.navbar .nav .active > a:hover {
+.navbar .nav .active > a:hover,
+.navbar .nav .active > a:focus {
   color: @navbarLinkColorActive;
   text-decoration: none;
   background-color: @navbarLinkBackgroundActive;
@@ -260,7 +272,7 @@
   padding: 7px 10px;
   margin-left: 5px;
   margin-right: 5px;
-  .buttonBackground(@navbarBackgroundHighlight, @navbarBackground);
+  .buttonBackground(darken(@navbarBackgroundHighlight, 5%), darken(@navbarBackground, 5%));
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
 }
 .navbar .btn-navbar .icon-bar {
@@ -337,6 +349,7 @@
 }
 
 // Dropdown link on hover
+.navbar .nav li.dropdown.active > .dropdown-toggle:focus,
 .navbar .nav li.dropdown.active > .dropdown-toggle:hover {
   color: @white;
 }
@@ -356,3 +369,81 @@
     right: 13px;
   }
 }
+
+
+/* Subnav navbar
+-------------------------------------------------- */
+// In the future, we may make two options available for the navbar:
+// a default state, the lighter one, and the darker one as an option
+// to enable. This would prevent some overriding back to defaults.
+
+
+// Override the default .navbar
+.navbar-subnav {
+}
+.navbar-subnav .navbar-inner {
+  padding: 0;
+  #gradient > .vertical(#f9f9f9, #f1f1f1);
+  .box-shadow(none);
+  border: 1px solid #e5e5e5;
+}
+
+// Change link colors back
+.navbar-subnav .nav > li > a {
+  color: @linkColor;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.navbar-subnav .nav > li > a:hover {
+  color: @linkColorHover;
+}
+
+// Active nav links
+.navbar-subnav .nav > .active > a,
+.navbar-subnav .nav > .active > a:hover {
+  color: #777;
+  background-color: #e5e5e5;
+}
+
+// Dropdown carets
+.navbar-subnav .nav li.dropdown .dropdown-toggle .caret,
+.navbar-subnav .nav li.dropdown.open .caret {
+  border-top-color: @linkColor;
+  border-bottom-color: @linkColor;
+}
+
+// Open dropdown dropdown-toggle
+.navbar-subnav .nav .open > a {
+  color: @linkColorHover;
+}
+
+// Fixed subnav on scroll, but only for 980px and up (sorry IE!)
+.navbar-subnav-fixed {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 1020; /* 10 less than .navbar-fixed to prevent any overlap */
+  -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 10px rgba(0,0,0,.1);
+     -moz-box-shadow: inset 0 1px 0 #fff, 0 1px 10px rgba(0,0,0,.1);
+          box-shadow: inset 0 1px 0 #fff, 0 1px 10px rgba(0,0,0,.1);
+}
+.navbar-subnav-fixed .navbar-inner {
+  border-color: #d5d5d5;
+  border-width: 0 0 1px; /* drop the border on the fixed edges */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); /* IE6-9 */
+  .border-radius(0);
+}
+.navbar-subnav-fixed .nav {
+  float: none;
+  max-width: 970px;
+  margin: 0 auto;
+  padding: 0 1px;
+}
+.navbar-subnav .nav > li:first-child > a,
+.navbar-subnav .nav > li:first-child > a:hover {
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+

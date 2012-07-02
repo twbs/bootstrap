@@ -1,5 +1,7 @@
-// POPOVERS
-// --------
+//
+// Popovers
+// --------------------------------------------------
+
 
 .popover {
   position: absolute;
@@ -7,42 +9,55 @@
   left: 0;
   z-index: @zindexPopover;
   display: none;
-  padding: 5px;
-  &.top    { margin-top:  -5px; }
-  &.right  { margin-left:  5px; }
-  &.bottom { margin-top:   5px; }
-  &.left   { margin-left: -5px; }
+  width: 218px;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  .border-radius(6px);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+
+  // Offset the popover to account for the popover arrow
+  &.top     { margin-bottom: 10px; }
+  &.right   { margin-left: 10px; }
+  &.bottom  { margin-top: 10px; }
+  &.left    { margin-right: 10px; }
+
+  // Call the mixin for the arrows
   &.top .arrow    { #popoverArrow > .top(); }
   &.right .arrow  { #popoverArrow > .right(); }
   &.bottom .arrow { #popoverArrow > .bottom(); }
   &.left .arrow   { #popoverArrow > .left();  }
+
+  // Common arrow styles
   .arrow {
     position: absolute;
     width: 0;
     height: 0;
+    &:after {
+      position: absolute;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      content: "";
+    }
   }
 }
-.popover-inner {
-  padding: 3px;
-  width: 280px;
-  overflow: hidden;
-  background: @black; // has to be full background declaration for IE fallback
-  background: rgba(0,0,0,.8);
-  .border-radius(6px);
-  .box-shadow(0 3px 7px rgba(0,0,0,0.3));
-}
+
 .popover-title {
-  padding: 9px 15px;
-  line-height: 1;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
   background-color: #f5f5f5;
-  border-bottom:1px solid #eee;
-  .border-radius(3px 3px 0 0);
+  border-bottom: 1px solid #e5e5e5;
+  .border-radius(5px 5px 0 0);
 }
+
 .popover-content {
-  padding: 14px;
-  background-color: @white;
-  .border-radius(0 0 3px 3px);
-  .background-clip(padding-box);
+  padding: 9px 14px;
   p, ul, ol {
     margin-bottom: 0;
   }

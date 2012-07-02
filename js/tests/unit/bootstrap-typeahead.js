@@ -52,6 +52,42 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should accept data source via synchronous function", function () {
+        var $input = $('<input />').typeahead({
+              source: function () {
+                return ['aa', 'ab', 'ac']
+              }
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        typeahead.$menu.remove()
+      })
+
+      test("should accept data source via asynchronous function", function () {
+        var $input = $('<input />').typeahead({
+              source: function (query, process) {
+                process(['aa', 'ab', 'ac'])
+              }
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        typeahead.$menu.remove()
+      })
+
       test("should not explode when regex chars are entered", function () {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac', 'mdo*', 'fat+']

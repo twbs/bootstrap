@@ -36,8 +36,8 @@
     }
 
     // add tipsies to grid for scaffolding
-    if ($('#grid-system').length) {
-      $('#grid-system').tooltip({
+    if ($('#gridSystem').length) {
+      $('#gridSystem').tooltip({
           selector: '.show-grid > div'
         , title: function () { return $(this).width() + 'px' }
       })
@@ -45,8 +45,8 @@
 
     // fix sub nav on scroll
     var $win = $(window)
-      , $nav = $('.subnav')
-      , navTop = $('.subnav').length && $('.subnav').offset().top - 40
+      , $nav = $('.navbar-subnav')
+      , navTop = $('.navbar-subnav').length && $('.navbar-subnav').offset().top - 40
       , isFixed = 0
 
     processScroll()
@@ -62,15 +62,15 @@
       var i, scrollTop = $win.scrollTop()
       if (scrollTop >= navTop && !isFixed) {
         isFixed = 1
-        $nav.addClass('subnav-fixed')
+        $nav.addClass('navbar-subnav-fixed')
       } else if (scrollTop <= navTop && isFixed) {
         isFixed = 0
-        $nav.removeClass('subnav-fixed')
+        $nav.removeClass('navbar-subnav-fixed')
       }
     }
 
     // tooltip demo
-    $('.tooltip-demo.well').tooltip({
+    $('.tooltip-demo').tooltip({
       selector: "a[rel=tooltip]"
     })
 
