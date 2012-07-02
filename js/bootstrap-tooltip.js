@@ -126,31 +126,20 @@
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
-        var _top, _left;
-        
         switch (inside ? placement.split(' ')[1] : placement) {
           case 'bottom':
-        	_top = pos.top + pos.height
-        	_left = pos.left + pos.width / 2 - actualWidth / 2
+            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
             break
           case 'top':
-        	_top = pos.top - actualHeight
-        	_left = pos.left + pos.width / 2 - actualWidth / 2            
+            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
             break
           case 'left':
-        	_top = pos.top + pos.height / 2 - actualHeight / 2
-        	_left = pos.left - actualWidth            
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
             break
           case 'right':
-        	_top = pos.top + pos.height / 2 - actualHeight / 2
-        	_left = pos.left + pos.width            
+            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
             break
         }
-        
-        _top = _top > 0 ?  _top : 5;
-        _left = _left > 0 ? _left : 5;
-        
-        tp = {top: _top, left: _left};  
 
         $tip
           .css(tp)
