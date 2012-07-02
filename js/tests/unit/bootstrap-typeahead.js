@@ -181,4 +181,24 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should start querying when minLength is met", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac'],
+              minLength: 3
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('aa')
+        typeahead.lookup()
+
+        equals(typeahead.$menu.find('li').length, 0, 'has 0 items in menu')
+
+        $input.val('aaa')
+        typeahead.lookup()
+
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+
+        typeahead.$menu.remove()
+      })
 })
