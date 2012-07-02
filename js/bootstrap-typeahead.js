@@ -79,14 +79,10 @@
 
   , lookup: function (event) {
       var items
-
-      if (this.$element.val().length < this.minLength) {
-        return this.shown ? this.hide() : this
-      }
-
+      
       this.query = this.$element.val()
 
-      if (!this.query) {
+      if (!this.query || this.query.length < this.minLength) {
         return this.shown ? this.hide() : this
       }
 
