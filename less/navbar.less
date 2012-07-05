@@ -379,10 +379,7 @@
 
 
 // Override the default .navbar
-.navbar-subnav {
-}
 .navbar-subnav .navbar-inner {
-  padding: 0;
   #gradient > .vertical(#ffffff, #f1f1f1);
   .box-shadow(none);
   border: 1px solid #e5e5e5;
@@ -419,6 +416,21 @@
 .navbar-subnav .nav li.dropdown.open .caret {
   border-top-color: @linkColor;
   border-bottom-color: @linkColor;
+}
+
+// Reset search input form
+.navbar-subnav .search-query {
+  background-color: #fff;
+  border-color: #ccc;
+  .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25)");
+
+  // On :focus, keep the same padding and border
+  &:focus,
+  &.focused {
+    padding: 4px 9px;
+    border: 1px solid rgba(82,168,236,.8);
+    .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6)");
+  }
 }
 
 // Open dropdown dropdown-toggle
