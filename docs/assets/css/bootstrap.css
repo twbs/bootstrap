@@ -786,7 +786,7 @@ cite {
 code,
 pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size: 13px;
   color: #333333;
   -webkit-border-radius: 3px;
@@ -2726,7 +2726,7 @@ button.close {
 .btn {
   display: inline-block;
   *display: inline;
-  padding: 4px 10px 4px;
+  padding: 4px 14px 4px;
   margin-bottom: 0;
   *margin-left: .3em;
   font-size: 14px;

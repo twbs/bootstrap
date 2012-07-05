@@ -428,6 +428,9 @@ h2 + .row {
   margin-left: 0;
   list-style: none;
 }
+.the-icons li {
+  line-height: 25px;
+}
 .the-icons i:hover {
   background-color: rgba(255,0,0,.25);
 }
