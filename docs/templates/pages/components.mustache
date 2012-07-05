@@ -1602,53 +1602,67 @@
 
   <h2>{{_i}}Default thumbnails{{/i}}</h2>
   <p>{{_i}}By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.{{/i}}</p>
-  <ul class="thumbnails">
-    <li class="span3">
-      <a href="#" class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-      </a>
-    </li>
-    <li class="span3">
-      <a href="#" class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-      </a>
-    </li>
-    <li class="span3">
-      <a href="#" class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-      </a>
-    </li>
-    <li class="span3">
-      <a href="#" class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-      </a>
-    </li>
-  </ul>
+  <div class="row-fluid">
+    <ul class="thumbnails">
+      <li class="span3">
+        <a href="#" class="thumbnail">
+          <img src="http://placehold.it/260x180" alt="">
+        </a>
+      </li>
+      <li class="span3">
+        <a href="#" class="thumbnail">
+          <img src="http://placehold.it/260x180" alt="">
+        </a>
+      </li>
+      <li class="span3">
+        <a href="#" class="thumbnail">
+          <img src="http://placehold.it/260x180" alt="">
+        </a>
+      </li>
+      <li class="span3">
+        <a href="#" class="thumbnail">
+          <img src="http://placehold.it/260x180" alt="">
+        </a>
+      </li>
+    </ul>
+  </div>
 
   <h2>{{_i}}Highly customizable{{/i}}</h2>
   <p>{{_i}}With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.{{/i}}</p>
-  <ul class="thumbnails">
-    <li class="span3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-        <div class="caption">
-          <h5>{{_i}}Thumbnail label{{/i}}</h5>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a href="#" class="btn btn-primary">{{_i}}Action{{/i}}</a> <a href="#" class="btn">{{_i}}Action{{/i}}</a></p>
+  <div class="row-fluid">
+    <ul class="thumbnails">
+      <li class="span4">
+        <div class="thumbnail">
+          <img src="http://placehold.it/300x200" alt="">
+          <div class="caption">
+            <h3>{{_i}}Thumbnail label{{/i}}</h3>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a href="#" class="btn btn-primary">{{_i}}Action{{/i}}</a> <a href="#" class="btn">{{_i}}Action{{/i}}</a></p>
+          </div>
         </div>
-      </div>
-    </li>
-    <li class="span3">
-      <div class="thumbnail">
-        <img src="http://placehold.it/260x180" alt="">
-        <div class="caption">
-          <h5>{{_i}}Thumbnail label{{/i}}</h5>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a href="#" class="btn btn-primary">{{_i}}Action{{/i}}</a> <a href="#" class="btn">{{_i}}Action{{/i}}</a></p>
+      </li>
+      <li class="span4">
+        <div class="thumbnail">
+          <img src="http://placehold.it/300x200" alt="">
+          <div class="caption">
+            <h3>{{_i}}Thumbnail label{{/i}}</h3>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a href="#" class="btn btn-primary">{{_i}}Action{{/i}}</a> <a href="#" class="btn">{{_i}}Action{{/i}}</a></p>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+      <li class="span4">
+        <div class="thumbnail">
+          <img src="http://placehold.it/300x200" alt="">
+          <div class="caption">
+            <h3>{{_i}}Thumbnail label{{/i}}</h3>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a href="#" class="btn btn-primary">{{_i}}Action{{/i}}</a> <a href="#" class="btn">{{_i}}Action{{/i}}</a></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 
   <h3>{{_i}}Why use thumbnails{{/i}}</h3>
   <p>{{_i}}Thumbnails (previously <code>.media-grid</code> up until v1.4) are great for grids of photos or videos, image search results, retail products, portfolios, and much more. They can be links or static content.{{/i}}</p>
@@ -1663,9 +1677,9 @@
   <p>{{_i}}As mentioned previously, the required markup for thumbnails is light and straightforward. Here's a look at the default setup <strong>for linked images</strong>:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="thumbnails"&gt;
-  &lt;li class="span3"&gt;
+  &lt;li class="span4"&gt;
     &lt;a href="#" class="thumbnail"&gt;
-      &lt;img src="http://placehold.it/260x180" alt=""&gt;
+      &lt;img src="http://placehold.it/300x200" alt=""&gt;
     &lt;/a&gt;
   &lt;/li&gt;
   ...
@@ -1674,11 +1688,11 @@
   <p>{{_i}}For custom HTML content in thumbnails, the markup changes slightly. To allow block level content anywhere, we swap the <code>&lt;a&gt;</code> for a <code>&lt;div&gt;</code> like so:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="thumbnails"&gt;
-  &lt;li class="span3"&gt;
+  &lt;li class="span4"&gt;
     &lt;div class="thumbnail"&gt;
-      &lt;img src="http://placehold.it/260x180" alt=""&gt;
-      &lt;h5&gt;{{_i}}Thumbnail label{{/i}}&lt;/h5&gt;
-      &lt;p&gt;{{_i}}Thumbnail caption right here...{{/i}}&lt;/p&gt;
+      &lt;img src="http://placehold.it/300x200" alt=""&gt;
+      &lt;h3&gt;{{_i}}Thumbnail label{{/i}}&lt;/h3&gt;
+      &lt;p&gt;{{_i}}Thumbnail caption...{{/i}}&lt;/p&gt;
     &lt;/div&gt;
   &lt;/li&gt;
   ...
@@ -1691,6 +1705,11 @@
     <li class="span4">
       <a href="#" class="thumbnail">
         <img src="http://placehold.it/360x268" alt="">
+      </a>
+    </li>
+    <li class="span2">
+      <a href="#" class="thumbnail">
+        <img src="http://placehold.it/160x120" alt="">
       </a>
     </li>
     <li class="span2">

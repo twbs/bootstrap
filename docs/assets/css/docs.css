@@ -33,10 +33,10 @@ body {
 p {
   margin-bottom: 15px;
 }
-li {
+/*li {
   line-height: 25px;
 }
-
+*/
 /* Code in headings */
 h3 code {
   font-size: 14px;
