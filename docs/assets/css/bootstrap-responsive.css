@@ -830,7 +830,7 @@
   }
   .page-header h1 small {
     display: block;
-    line-height: 18px;
+    line-height: 20px;
   }
   input[type="checkbox"],
   input[type="radio"] {
@@ -882,10 +882,10 @@
     position: static;
   }
   .navbar-fixed-top {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
   .navbar-fixed-bottom {
-    margin-top: 18px;
+    margin-top: 20px;
   }
   .navbar-fixed-top .navbar-inner,
   .navbar-fixed-bottom .navbar-inner {
@@ -905,7 +905,7 @@
   }
   .nav-collapse .nav {
     float: none;
-    margin: 0 0 9px;
+    margin: 0 0 10px;
   }
   .nav-collapse .nav > li {
     float: none;
@@ -975,8 +975,8 @@
   .nav-collapse .navbar-form,
   .nav-collapse .navbar-search {
     float: none;
-    padding: 9px 15px;
-    margin: 9px 0;
+    padding: 10px 15px;
+    margin: 10px 0;
     border-top: 1px solid #111111;
     border-bottom: 1px solid #111111;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);

@@ -26,17 +26,6 @@ body {
   margin: 0 auto;
 }
 
-/* Increase docs base type size and line-heights */
-body {
-  line-height: 20px;
-}
-p {
-  margin-bottom: 15px;
-}
-/*li {
-  line-height: 25px;
-}
-*/
 /* Code in headings */
 h3 code {
   font-size: 14px;
@@ -49,7 +38,6 @@ h3 code {
 -------------------------------------------------- */
 
 .navbar {
-  font-size: 13px;
 }
 
 /* Change the docs' brand */
@@ -197,8 +185,7 @@ hr.soften {
 }
 .marketing h2 {
   font-weight: 400;
-  letter-spacing: -1px;
-}
+`}
 .marketing p {
   color: #555;
 }
