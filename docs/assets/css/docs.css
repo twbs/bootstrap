@@ -86,7 +86,7 @@ section {
 /* Faded out hr */
 hr.soften {
   height: 1px;
-  margin: 54px 0;
+  margin: 70px 0;
   background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
@@ -185,33 +185,33 @@ hr.soften {
 /* Marketing section of Overview
 -------------------------------------------------- */
 
-.marketing .row {
-  margin-bottom: 9px;
-}
-.marketing h1 {
-  margin: 40px 0 10px;
-  font-size: 40px;
-  font-weight: 300;
+.marketing {
   text-align: center;
 }
+.marketing h1 {
+  margin: 60px 0 10px;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1px;
+}
 .marketing h2 {
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: -1px;
 }
 .marketing p {
-  margin: 5px 10px 15px 0;
-}
-.marketing .bs-icon {
-  float: left;
-  margin: 7px 10px 0 0;
-  opacity: .8;
+  color: #555;
 }
 .marketing .marketing-byline {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   font-size: 20px;
   font-weight: 300;
   line-height: 25px;
   color: #999;
-  text-align: center;
+}
+.marketing img {
+  display: block;
+  margin: 0 auto 20px;
 }
 
 
@@ -220,8 +220,8 @@ hr.soften {
 -------------------------------------------------- */
 
 .footer {
-  padding: 40px 0;
-  margin-top: 49px;
+  padding: 70px 0;
+  margin-top: 70px;
   border-top: 1px solid #e5e5e5;
 }
 .footer p {
@@ -405,7 +405,7 @@ h2 + .row {
 
 /* Example sites showcase */
 .example-sites {
-  margin-left: 20px;
+  xmargin-left: 20px;
 }
 .example-sites img {
   max-width: 100%;
@@ -778,16 +778,18 @@ form.bs-docs-example {
 
 
 
-
-.navbar {
+.navbar-inner {
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
 }
 .jumbo {
   padding: 100px 0;
-  margin-top: -60px;
+  margin: -60px 0 60px;
   background-color: #222;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(0,0,0,.1), 0 0 30px rgba(0,0,0,.075);
+  text-shadow: 0 1px 5px rgba(0,0,0,.25), 0 0 30px rgba(0,0,0,.075);
 
   background: #c9cabc; /* Old browsers */
 background: -moz-linear-gradient(-45deg,  #c9cabc 0%, #68686d 100%); /* FF3.6+ */
@@ -798,6 +800,24 @@ background: -ms-linear-gradient(-45deg,  #c9cabc 0%,#68686d 100%); /* IE10+ */
 background: linear-gradient(135deg,  #c9cabc 0%,#68686d 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9cabc', endColorstr='#68686d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+  background: #020031; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #020031 0%, #803353 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#803353)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg,  #020031 0%,#803353 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg,  #020031 0%,#803353 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg,  #020031 0%,#803353 100%); /* IE10+ */
+  background: linear-gradient(45deg,  #020031 0%,#803353 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#803353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+  background: #020031; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #020031 0%, #6d3353 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* IE10+ */
+  background: linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
   xborder-bottom: 1px solid #68686d;
 
   -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
@@ -806,9 +826,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9cabc', end
 }
 .jumbo h1 {
   font-size: 120px;
-  font-weight: 200;
+  font-weight: ;
   line-height: 1;
-  margin: 0 0 5px;
+  margin: 0 0 10px;
   letter-spacing: -2px;
 }
 .jumbo p {
@@ -818,19 +838,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9cabc', end
   line-height: 1.25;
 }
 .jumbo .btn {
-  font-size: 20px;
+  font-size: 24px;
   padding: 14px 24px;
-  margin: 0 0 30px 0;
   font-weight: 200;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 3px rgba(0,0,0,.2);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 3px rgba(0,0,0,.2);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 3px rgba(0,0,0,.2);
+  border: 0;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
 }
 .jumbo .btn:active {
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25);
-     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25);
-          box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25);
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+          box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
 }
+.jumbo-links {
+  margin: 0;
+  list-style: none;
+}
+.jumbo-links li {
+  display: inline;
+  padding: 0 10px;
+  color: rgba(255,255,255,.25);
+}
+.jumbo-links a {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+}
+.jumbo-links a:hover {
+  color: #fff;
+}
+
 
 
 @media (max-width: 480px) {
@@ -849,5 +886,3 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9cabc', end
   }
 
 }
-
-

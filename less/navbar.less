@@ -383,10 +383,17 @@
 }
 .navbar-subnav .navbar-inner {
   padding: 0;
-  #gradient > .vertical(#f9f9f9, #f1f1f1);
+  #gradient > .vertical(#ffffff, #f1f1f1);
   .box-shadow(none);
   border: 1px solid #e5e5e5;
 }
+
+// Lighten vertical dividers
+.navbar-subnav .divider-vertical {
+  background-color: #f1f1f1;
+  border-right-color: #ffffff;
+}
+
 
 // Change link colors back
 .navbar-subnav .nav > li > a {
@@ -401,7 +408,10 @@
 .navbar-subnav .nav > .active > a,
 .navbar-subnav .nav > .active > a:hover {
   color: #777;
-  background-color: #e5e5e5;
+  background-color: #eee;
+  -webkit-box-shadow: -1px 0 0 rgba(255,255,255,.5), 1px 0 0 rgba(255,255,255,.5);
+     -moz-box-shadow: -1px 0 0 rgba(255,255,255,.5), 1px 0 0 rgba(255,255,255,.5);
+          box-shadow: -1px 0 0 rgba(255,255,255,.5), 1px 0 0 rgba(255,255,255,.5);
 }
 
 // Dropdown carets
