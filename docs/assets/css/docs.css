@@ -147,7 +147,7 @@ hr.soften {
   font-size: 12px;
 }
 .quick-links {
-  min-height: 30px;
+  height: 20px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -157,15 +157,10 @@ hr.soften {
   min-height: 0;
 }
 .quick-links li {
-  display: inline;
+  display: inline-block;
   margin: 0 8px;
   color: #999;
-}
-.quick-links .github-btn,
-.quick-links .tweet-btn,
-.quick-links .follow-btn {
-  position: relative;
-  top: 5px;
+  line-height: 1;
 }
 
 
@@ -774,7 +769,7 @@ form.bs-docs-example {
           border-radius: 6px;
 }
 .jumbo {
-  padding: 100px 0;
+  padding: 80px 0;
   margin: -60px 0 60px;
   background-color: #222;
   color: #fff;
@@ -858,6 +853,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9cabc', end
   color: #fff;
 }
 
+
+.jumbo-buttons {
+  padding: 20px 0;
+  margin-top: -60px;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ddd;
+}
 
 
 @media (max-width: 480px) {
