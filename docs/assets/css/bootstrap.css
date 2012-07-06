@@ -1551,6 +1551,7 @@ input.search-query {
   display: inline-block;
   *display: inline;
   margin-bottom: 0;
+  vertical-align: middle;
   *zoom: 1;
 }
 
