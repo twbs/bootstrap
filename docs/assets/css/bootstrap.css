@@ -130,6 +130,7 @@ textarea {
 .clearfix:before,
 .clearfix:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -181,6 +182,7 @@ a:hover {
 .row:before,
 .row:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -303,6 +305,7 @@ a:hover {
 .row-fluid:before,
 .row-fluid:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -515,6 +518,7 @@ a:hover {
 .container:before,
 .container:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -531,6 +535,7 @@ a:hover {
 .container-fluid:before,
 .container-fluid:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -574,6 +579,7 @@ h4 small,
 h5 small,
 h6 small {
   font-weight: normal;
+  line-height: 1;
   color: #999999;
 }
 
@@ -1331,6 +1337,7 @@ select:focus:required:invalid:focus {
 .form-actions:before,
 .form-actions:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -1600,6 +1607,7 @@ legend + .control-group {
 .form-horizontal .control-group:before,
 .form-horizontal .control-group:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -3468,6 +3476,7 @@ input[type="submit"].btn.btn-mini {
 .nav-tabs:after,
 .nav-pills:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -3641,6 +3650,7 @@ input[type="submit"].btn.btn-mini {
 .tabbable:before,
 .tabbable:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -3845,6 +3855,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-form:before,
 .navbar-form:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -4373,6 +4384,7 @@ input[type="submit"].btn.btn-mini {
 .pager:before,
 .pager:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -4522,6 +4534,7 @@ input[type="submit"].btn.btn-mini {
 .modal-footer:before,
 .modal-footer:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -4814,6 +4827,7 @@ input[type="submit"].btn.btn-mini {
 .thumbnails:before,
 .thumbnails:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 

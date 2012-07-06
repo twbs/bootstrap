@@ -15,6 +15,7 @@
 .clearfix:before,
 .clearfix:after {
   display: table;
+  line-height: 0;
   content: "";
 }
 
@@ -94,6 +95,7 @@
   .row:before,
   .row:after {
     display: table;
+    line-height: 0;
     content: "";
   }
   .row:after {
@@ -187,6 +189,7 @@
   .row-fluid:before,
   .row-fluid:after {
     display: table;
+    line-height: 0;
     content: "";
   }
   .row-fluid:after {
@@ -434,6 +437,7 @@
   .row:before,
   .row:after {
     display: table;
+    line-height: 0;
     content: "";
   }
   .row:after {
@@ -527,6 +531,7 @@
   .row-fluid:before,
   .row-fluid:after {
     display: table;
+    line-height: 0;
     content: "";
   }
   .row-fluid:after {
