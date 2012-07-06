@@ -1011,37 +1011,37 @@ $('#my-alert').bind('closed', function () {
   <h4>{{_i}}Stateful{{/i}}</h4>
   <p>{{_i}}Add data-loading-text="Loading..." to use a loading state on a button.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
-    <button id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
+    <button type="button" id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
       {{_i}}Loading state{{/i}}
     </button>
   </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;button class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;
 </pre>
 
   <h4>{{_i}}Single toggle{{/i}}</h4>
   <p>{{_i}}Add data-toggle="button" to activate toggling on a single button.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
-    <button class="btn btn-primary" data-toggle="button">{{_i}}Single Toggle{{/i}}</button>
+    <button type="button" class="btn btn-primary" data-toggle="button">{{_i}}Single Toggle{{/i}}</button>
   </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;button class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
+&lt;button type="button" class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;
 </pre>
 
   <h4>{{_i}}Checkbox{{/i}}</h4>
   <p>{{_i}}Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons-checkbox">
-      <button class="btn btn-primary">{{_i}}Left{{/i}}</button>
-      <button class="btn btn-primary">{{_i}}Middle{{/i}}</button>
-      <button class="btn btn-primary">{{_i}}Right{{/i}}</button>
+      <button type="button" class="btn btn-primary">{{_i}}Left{{/i}}</button>
+      <button type="button" class="btn btn-primary">{{_i}}Middle{{/i}}</button>
+      <button type="button" class="btn btn-primary">{{_i}}Right{{/i}}</button>
     </div>
   </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1049,16 +1049,16 @@ $('#my-alert').bind('closed', function () {
   <p>{{_i}}Add data-toggle="buttons-radio" for radio style toggling on btn-group.{{/i}}</p>
   <div class="bs-docs-example" style="padding-bottom: 24px;">
     <div class="btn-group" data-toggle="buttons-radio">
-      <button class="btn btn-primary">{{_i}}Left{{/i}}</button>
-      <button class="btn btn-primary">{{_i}}Middle{{/i}}</button>
-      <button class="btn btn-primary">{{_i}}Right{{/i}}</button>
+      <button type="button" class="btn btn-primary">{{_i}}Left{{/i}}</button>
+      <button type="button" class="btn btn-primary">{{_i}}Middle{{/i}}</button>
+      <button type="button" class="btn btn-primary">{{_i}}Right{{/i}}</button>
     </div>
   </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="btn-group" data-toggle="buttons-radio"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1083,11 +1083,11 @@ $('#my-alert').bind('closed', function () {
     <strong>{{_i}}Heads up!{{/i}}</strong>
     {{_i}}You can enable auto toggling of a button by using the <code>data-toggle</code> attribute.{{/i}}
   </div>
-  <pre class="prettyprint linenums">&lt;button class="btn" data-toggle="button" &gt;…&lt;/button&gt;</pre>
+  <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button" &gt;…&lt;/button&gt;</pre>
   <h4>$().button('loading')</h4>
   <p>{{_i}}Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.{{/i}}
   </p>
-  <pre class="prettyprint linenums">&lt;button class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
+  <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
   <div class="alert alert-info">
     <strong>{{_i}}Heads up!{{/i}}</strong>
     {{_i}}<a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.{{/i}}
@@ -1096,7 +1096,7 @@ $('#my-alert').bind('closed', function () {
   <p>{{_i}}Resets button state - swaps text to original text.{{/i}}</p>
   <h4>$().button(string)</h4>
   <p>{{_i}}Resets button state - swaps text to any data defined text state.{{/i}}</p>
-<pre class="prettyprint linenums">&lt;button class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
+<pre class="prettyprint linenums">&lt;button type="button" class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
 &lt;script&gt;
   $('.btn').button('complete')
 &lt;/script&gt;</pre>
@@ -1159,7 +1159,7 @@ $('#my-alert').bind('closed', function () {
     </div>
   </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;button class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
+&lt;button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
   {{_i}}simple collapsible{{/i}}
 &lt;/button&gt;
 
