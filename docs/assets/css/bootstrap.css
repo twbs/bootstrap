@@ -1685,6 +1685,18 @@ table {
   border-top: 2px solid #dddddd;
 }
 
+.table .success td {
+  background-color: #dff0d8;
+}
+
+.table .error td {
+  background-color: #f2dede;
+}
+
+.table .info td {
+  background-color: #d9edf7;
+}
+
 .table-condensed th,
 .table-condensed td {
   padding: 4px 5px;
