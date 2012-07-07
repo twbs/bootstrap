@@ -1449,6 +1449,12 @@ $('.carousel').carousel({
        <td>{{_i}}The data source to query against. May be an array of strings or a function. The function is passed two arguments, the <code>query</code> value in the input field and the <code>process</code> callback. The function may be used synchronously by returning the data source directly or asynchronously via the <code>process</code> callback's single argument.{{/i}}</td>
      </tr>
      <tr>
+       <td>{{_i}}render{{/i}}</td>
+       <td>{{_i}}function{{/i}}</td>
+       <td>iterates results displaying value and highlighting matched characters with <code>&lt;strong&gt;</code></td>
+       <td>{{_i}}The method is used to render the results in the typeahead <code>ul</code>. You can override this method to provide your own html based on the type of object being rendered, useful when your results contain mixed types (i.e. photos, people etc).{{/i}}</td>
+     </tr>
+     <tr>
        <td>{{_i}}items{{/i}}</td>
        <td>{{_i}}number{{/i}}</td>
        <td>8</td>
