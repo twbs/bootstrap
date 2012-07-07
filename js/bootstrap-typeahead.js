@@ -35,6 +35,7 @@
     this.updater = this.options.updater || this.updater
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
+    this.render = this.options.render || this.render
     this.shown = false
     this.listen()
   }
@@ -103,7 +104,9 @@
         return this.shown ? this.hide() : this
       }
 
-      return this.render(items.slice(0, this.options.items)).show()
+      this.render(items.slice(0, this.options.items))
+
+      return this.show()
     }
 
   , matcher: function (item) {
@@ -148,7 +151,7 @@
 
   , next: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
-        , next = active.next()
+        , next = active.nextAll(':has(a):first')
 
       if (!next.length) {
         next = $(this.$menu.find('li')[0])
@@ -159,7 +162,7 @@
 
   , prev: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
-        , prev = active.prev()
+        , prev = active.prevAll(':has(a):first')
 
       if (!prev.length) {
         prev = this.$menu.find('li').last()
