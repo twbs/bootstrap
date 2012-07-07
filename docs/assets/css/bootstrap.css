@@ -158,8 +158,8 @@ textarea {
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 20px;
   color: #333333;
   background-color: #ffffff;
 }
@@ -544,19 +544,19 @@ a:hover {
 }
 
 p {
-  margin: 0 0 9px;
+  margin: 0 0 10px;
 }
 
 p small {
-  font-size: 11px;
+  font-size: 12px;
   color: #999999;
 }
 
 .lead {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   font-size: 20px;
   font-weight: 200;
-  line-height: 27px;
+  line-height: 30px;
 }
 
 h1,
@@ -565,9 +565,10 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
+  margin: 10px 0;
   font-family: inherit;
   font-weight: bold;
+  line-height: 1;
   color: inherit;
   text-rendering: optimizelegibility;
 }
@@ -584,70 +585,60 @@ h6 small {
 }
 
 h1 {
-  font-size: 30px;
-  line-height: 36px;
-}
-
-h1 small {
-  font-size: 18px;
+  font-size: 36px;
+  line-height: 40px;
 }
 
 h2 {
+  font-size: 30px;
+  line-height: 40px;
+}
+
+h3 {
   font-size: 24px;
-  line-height: 36px;
+  line-height: 40px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+h1 small {
+  font-size: 24px;
 }
 
 h2 small {
   font-size: 18px;
 }
 
-h3 {
-  font-size: 18px;
-  line-height: 27px;
-}
-
 h3 small {
   font-size: 14px;
 }
 
-h4,
-h5,
-h6 {
-  line-height: 18px;
-}
-
-h4 {
+h4 small {
   font-size: 14px;
 }
 
-h4 small {
-  font-size: 12px;
-}
-
-h5 {
-  font-size: 12px;
-}
-
-h6 {
-  font-size: 11px;
-  color: #999999;
-  text-transform: uppercase;
-}
-
 .page-header {
-  padding-bottom: 17px;
-  margin: 18px 0;
+  margin: 20px 0 19px;
   border-bottom: 1px solid #eeeeee;
-}
-
-.page-header h1 {
-  line-height: 1;
 }
 
 ul,
 ol {
   padding: 0;
-  margin: 0 0 9px 25px;
+  margin: 0 0 10px 25px;
 }
 
 ul ul,
@@ -666,7 +657,7 @@ ol {
 }
 
 li {
-  line-height: 18px;
+  line-height: 20px;
 }
 
 ul.unstyled,
@@ -676,12 +667,12 @@ ol.unstyled {
 }
 
 dl {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 dt,
 dd {
-  line-height: 18px;
+  line-height: 20px;
 }
 
 dt {
@@ -689,7 +680,7 @@ dt {
 }
 
 dd {
-  margin-left: 9px;
+  margin-left: 10px;
 }
 
 .dl-horizontal dt {
@@ -707,7 +698,7 @@ dd {
 }
 
 hr {
-  margin: 18px 0;
+  margin: 20px 0;
   border: 0;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #ffffff;
@@ -737,7 +728,7 @@ abbr.initialism {
 
 blockquote {
   padding: 0 0 0 15px;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   border-left: 5px solid #eeeeee;
 }
 
@@ -745,12 +736,12 @@ blockquote p {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 300;
-  line-height: 22.5px;
+  line-height: 25px;
 }
 
 blockquote small {
   display: block;
-  line-height: 18px;
+  line-height: 20px;
   color: #999999;
 }
 
@@ -780,9 +771,9 @@ blockquote:after {
 
 address {
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   font-style: normal;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 small {
@@ -796,8 +787,8 @@ cite {
 code,
 pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 12px;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 13px;
   color: #333333;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
@@ -813,10 +804,10 @@ code {
 
 pre {
   display: block;
-  padding: 8.5px;
-  margin: 0 0 9px;
-  font-size: 12.025px;
-  line-height: 18px;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 12.950000000000001px;
+  line-height: 20px;
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
@@ -830,7 +821,7 @@ pre {
 }
 
 pre.prettyprint {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 pre code {
@@ -846,7 +837,7 @@ pre code {
 }
 
 form {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
 }
 
 fieldset {
@@ -859,16 +850,16 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 27px;
-  font-size: 19.5px;
-  line-height: 36px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  line-height: 40px;
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
 }
 
 legend small {
-  font-size: 13.5px;
+  font-size: 15px;
   color: #999999;
 }
 
@@ -877,9 +868,9 @@ input,
 button,
 select,
 textarea {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 input,
@@ -912,11 +903,11 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 18px;
+  height: 20px;
   padding: 4px;
   margin-bottom: 9px;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 20px;
   color: #555555;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
@@ -1326,9 +1317,9 @@ select:focus:required:invalid:focus {
 }
 
 .form-actions {
-  padding: 17px 20px 18px;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  padding: 19px 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
   *zoom: 1;
@@ -1378,7 +1369,7 @@ textarea::-webkit-input-placeholder {
 
 .help-block {
   display: block;
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 }
 
 .help-inline {
@@ -1404,7 +1395,7 @@ textarea::-webkit-input-placeholder {
   position: relative;
   margin-bottom: 0;
   *margin-left: 0;
-  font-size: 13px;
+  font-size: 14px;
   vertical-align: middle;
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
@@ -1429,12 +1420,12 @@ textarea::-webkit-input-placeholder {
 .input-append .add-on {
   display: inline-block;
   width: auto;
-  height: 18px;
+  height: 20px;
   min-width: 16px;
   padding: 4px 5px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 20px;
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
   vertical-align: middle;
@@ -1592,16 +1583,16 @@ input.search-query {
 }
 
 .control-group {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 }
 
 legend + .control-group {
-  margin-top: 18px;
+  margin-top: 20px;
   -webkit-margin-top-collapse: separate;
 }
 
 .form-horizontal .control-group {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   *zoom: 1;
 }
 
@@ -1635,7 +1626,7 @@ legend + .control-group {
 }
 
 .form-horizontal .help-block {
-  margin-top: 9px;
+  margin-top: 10px;
   margin-bottom: 0;
 }
 
@@ -1652,13 +1643,13 @@ table {
 
 .table {
   width: 100%;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .table th,
 .table td {
   padding: 8px;
-  line-height: 18px;
+  line-height: 20px;
   text-align: left;
   vertical-align: top;
   border-top: 1px solid #dddddd;
@@ -2571,7 +2562,7 @@ table .span24 {
 .dropdown-menu .divider {
   *width: 100%;
   height: 1px;
-  margin: 8px 1px;
+  margin: 9px 1px;
   *margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
@@ -2583,7 +2574,7 @@ table .span24 {
   padding: 3px 15px;
   clear: both;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 20px;
   color: #333333;
   white-space: nowrap;
 }
@@ -2711,7 +2702,7 @@ table .span24 {
   float: right;
   font-size: 20px;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 20px;
   color: #000000;
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
@@ -2737,11 +2728,11 @@ button.close {
 .btn {
   display: inline-block;
   *display: inline;
-  padding: 4px 10px 4px;
+  padding: 4px 14px 4px;
   margin-bottom: 0;
   *margin-left: .3em;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 20px;
   *line-height: 20px;
   color: #333333;
   text-align: center;
@@ -2767,9 +2758,9 @@ button.close {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   *zoom: 1;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn:hover,
@@ -2816,9 +2807,9 @@ button.close {
   background-color: #d9d9d9 \9;
   background-image: none;
   outline: 0;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn.disabled,
@@ -2835,7 +2826,7 @@ button.close {
 
 .btn-large {
   padding: 9px 14px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: normal;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
@@ -2848,8 +2839,8 @@ button.close {
 
 .btn-small {
   padding: 5px 9px;
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .btn-small [class^="icon-"] {
@@ -2858,8 +2849,8 @@ button.close {
 
 .btn-mini {
   padding: 2px 6px;
-  font-size: 11px;
-  line-height: 14px;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .btn-primary,
@@ -2893,17 +2884,17 @@ button.close {
 }
 
 .btn-primary {
-  background-color: #0074cc;
-  *background-color: #0055cc;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0055cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0055cc);
-  background-image: -o-linear-gradient(top, #0088cc, #0055cc);
-  background-image: linear-gradient(top, #0088cc, #0055cc);
-  background-image: -moz-linear-gradient(top, #0088cc, #0055cc);
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(top, #0088cc, #0044cc);
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
   background-repeat: repeat-x;
-  border-color: #0055cc #0055cc #003580;
+  border-color: #0044cc #0044cc #002a80;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0055cc', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 
@@ -2912,13 +2903,13 @@ button.close {
 .btn-primary.active,
 .btn-primary.disabled,
 .btn-primary[disabled] {
-  background-color: #0055cc;
-  *background-color: #004ab3;
+  background-color: #0044cc;
+  *background-color: #003bb3;
 }
 
 .btn-primary:active,
 .btn-primary.active {
-  background-color: #004099 \9;
+  background-color: #003399 \9;
 }
 
 .btn-warning {
@@ -3038,17 +3029,17 @@ button.close {
 }
 
 .btn-inverse {
-  background-color: #414141;
+  background-color: #363636;
   *background-color: #222222;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#222222));
-  background-image: -webkit-linear-gradient(top, #555555, #222222);
-  background-image: -o-linear-gradient(top, #555555, #222222);
-  background-image: linear-gradient(top, #555555, #222222);
-  background-image: -moz-linear-gradient(top, #555555, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(top, #444444, #222222);
+  background-image: -moz-linear-gradient(top, #444444, #222222);
   background-repeat: repeat-x;
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 
@@ -3112,8 +3103,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-toolbar {
-  margin-top: 9px;
-  margin-bottom: 9px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .btn-toolbar .btn-group {
@@ -3134,16 +3125,16 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .btn-group > .btn-mini,
 .btn-group > .btn-small {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .btn-group > .btn-large {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .btn-group > .btn:first-child {
@@ -3235,7 +3226,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group.open .btn-primary.dropdown-toggle {
-  background-color: #0055cc;
+  background-color: #0044cc;
 }
 
 .btn-group.open .btn-warning.dropdown-toggle {
@@ -3345,7 +3336,7 @@ input[type="submit"].btn.btn-mini {
 
 .alert {
   padding: 8px 35px 8px 14px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   color: #c09853;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background-color: #fcf8e3;
@@ -3359,7 +3350,7 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   top: -2px;
   right: -21px;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 .alert-success {
@@ -3396,7 +3387,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   margin-left: 0;
   list-style: none;
 }
@@ -3419,7 +3410,7 @@ input[type="submit"].btn.btn-mini {
   padding: 3px 15px;
   font-size: 11px;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 20px;
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
@@ -3460,7 +3451,7 @@ input[type="submit"].btn.btn-mini {
 .nav-list .divider {
   *width: 100%;
   height: 1px;
-  margin: 8px 1px;
+  margin: 9px 1px;
   *margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
@@ -3510,7 +3501,7 @@ input[type="submit"].btn.btn-mini {
 .nav-tabs > li > a {
   padding-top: 8px;
   padding-bottom: 8px;
-  line-height: 18px;
+  line-height: 20px;
   border: 1px solid transparent;
   -webkit-border-radius: 4px 4px 0 0;
      -moz-border-radius: 4px 4px 0 0;
@@ -3775,7 +3766,7 @@ input[type="submit"].btn.btn-mini {
 .navbar {
   *position: relative;
   *z-index: 2;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   overflow: visible;
 }
 
@@ -3783,17 +3774,17 @@ input[type="submit"].btn.btn-mini {
   min-height: 40px;
   padding-right: 20px;
   padding-left: 20px;
-  background-color: #2c2c2c;
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
+  background-color: #1b1b1b;
+  background-image: -moz-linear-gradient(top, #222222, #111111);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+  background-image: -webkit-linear-gradient(top, #222222, #111111);
+  background-image: -o-linear-gradient(top, #222222, #111111);
+  background-image: linear-gradient(top, #222222, #111111);
   background-repeat: repeat-x;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff222222', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -3908,8 +3899,8 @@ input[type="submit"].btn.btn-mini {
   font-weight: normal;
   line-height: 1;
   color: #ffffff;
-  background-color: #626262;
-  border: 1px solid #151515;
+  background-color: #515151;
+  border: 1px solid #040404;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15);
      -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15);
           box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -3999,7 +3990,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 12px 11px;
+  padding: 10px 15px 11px;
   line-height: 19px;
   color: #999999;
   text-decoration: none;
@@ -4014,7 +4005,7 @@ input[type="submit"].btn.btn-mini {
   display: inline-block;
   padding: 4px 10px 4px;
   margin: 5px 5px 6px;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 .navbar .btn-group {
@@ -4034,7 +4025,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav .active > a:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #222222;
+  background-color: #111111;
 }
 
 .navbar .divider-vertical {
@@ -4042,8 +4033,8 @@ input[type="submit"].btn.btn-mini {
   height: 40px;
   margin: 0 9px;
   overflow: hidden;
-  background-color: #222222;
-  border-right: 1px solid #333333;
+  background-color: #111111;
+  border-right: 1px solid #222222;
 }
 
 .navbar .nav.pull-right {
@@ -4057,17 +4048,17 @@ input[type="submit"].btn.btn-mini {
   padding: 7px 10px;
   margin-right: 5px;
   margin-left: 5px;
-  background-color: #1f1f1f;
-  *background-color: #151515;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#262626), to(#151515));
-  background-image: -webkit-linear-gradient(top, #262626, #151515);
-  background-image: -o-linear-gradient(top, #262626, #151515);
-  background-image: linear-gradient(top, #262626, #151515);
-  background-image: -moz-linear-gradient(top, #262626, #151515);
+  background-color: #0e0e0e;
+  *background-color: #040404;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#040404));
+  background-image: -webkit-linear-gradient(top, #151515, #040404);
+  background-image: -o-linear-gradient(top, #151515, #040404);
+  background-image: linear-gradient(top, #151515, #040404);
+  background-image: -moz-linear-gradient(top, #151515, #040404);
   background-repeat: repeat-x;
-  border-color: #151515 #151515 #000000;
+  border-color: #040404 #040404 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff262626', endColorstr='#ff151515', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff151515', endColorstr='#ff040404', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
@@ -4079,8 +4070,8 @@ input[type="submit"].btn.btn-mini {
 .navbar .btn-navbar.active,
 .navbar .btn-navbar.disabled,
 .navbar .btn-navbar[disabled] {
-  background-color: #151515;
-  *background-color: #080808;
+  background-color: #040404;
+  *background-color: #000000;
 }
 
 .navbar .btn-navbar:active,
@@ -4187,19 +4178,23 @@ input[type="submit"].btn.btn-mini {
 -------------------------------------------------- */
 
 .navbar-subnav .navbar-inner {
-  padding: 0;
-  background-color: #f6f6f6;
-  background-image: -moz-linear-gradient(top, #f9f9f9, #f1f1f1);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9), to(#f1f1f1));
-  background-image: -webkit-linear-gradient(top, #f9f9f9, #f1f1f1);
-  background-image: -o-linear-gradient(top, #f9f9f9, #f1f1f1);
-  background-image: linear-gradient(top, #f9f9f9, #f1f1f1);
+  background-color: #f9f9f9;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f1f1f1);
+  background-image: -o-linear-gradient(top, #ffffff, #f1f1f1);
+  background-image: linear-gradient(top, #ffffff, #f1f1f1);
+  background-image: -moz-linear-gradient(top, #ffffff, #f1f1f1);
   background-repeat: repeat-x;
   border: 1px solid #e5e5e5;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#fff1f1f1', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff1f1f1', GradientType=0);
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
+}
+
+.navbar-subnav .divider-vertical {
+  background-color: #f1f1f1;
+  border-right-color: #ffffff;
 }
 
 .navbar-subnav .nav > li > a {
@@ -4214,13 +4209,33 @@ input[type="submit"].btn.btn-mini {
 .navbar-subnav .nav > .active > a,
 .navbar-subnav .nav > .active > a:hover {
   color: #777;
-  background-color: #e5e5e5;
+  background-color: #eee;
+  -webkit-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5), 1px 0 0 rgba(255, 255, 255, 0.5);
+     -moz-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5), 1px 0 0 rgba(255, 255, 255, 0.5);
+          box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5), 1px 0 0 rgba(255, 255, 255, 0.5);
 }
 
 .navbar-subnav .nav li.dropdown .dropdown-toggle .caret,
 .navbar-subnav .nav li.dropdown.open .caret {
   border-top-color: #0088cc;
   border-bottom-color: #0088cc;
+}
+
+.navbar-subnav .search-query {
+  background-color: #fff;
+  border-color: #ccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.25);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.25);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.navbar-subnav .search-query:focus,
+.navbar-subnav .search-query.focused {
+  padding: 4px 9px;
+  border: 1px solid rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
 .navbar-subnav .nav .open > a {
@@ -4263,7 +4278,7 @@ input[type="submit"].btn.btn-mini {
 
 .breadcrumb {
   padding: 7px 14px;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   list-style: none;
   background-color: #fbfbfb;
   background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
@@ -4299,8 +4314,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .pagination {
-  height: 36px;
-  margin: 18px 0;
+  height: 40px;
+  margin: 20px 0;
 }
 
 .pagination ul {
@@ -4325,7 +4340,7 @@ input[type="submit"].btn.btn-mini {
 .pagination span {
   float: left;
   padding: 0 14px;
-  line-height: 34px;
+  line-height: 38px;
   text-decoration: none;
   border: 1px solid #ddd;
   border-left-width: 0;
@@ -4375,7 +4390,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .pager {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   margin-left: 0;
   text-align: center;
   list-style: none;
@@ -4842,21 +4857,21 @@ input[type="submit"].btn.btn-mini {
 
 .thumbnails > li {
   float: left;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   margin-left: 20px;
 }
 
 .thumbnail {
   display: block;
   padding: 4px;
-  line-height: 1;
+  line-height: 20px;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
 }
 
 a.thumbnail:hover {
@@ -4875,11 +4890,12 @@ a.thumbnail:hover {
 
 .thumbnail .caption {
   padding: 9px;
+  color: #555555;
 }
 
 .label,
 .badge {
-  font-size: 10.998px;
+  font-size: 11.844px;
   font-weight: bold;
   line-height: 14px;
   color: #ffffff;
@@ -5154,7 +5170,7 @@ a.badge:hover {
 }
 
 .accordion {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .accordion-group {
@@ -5185,7 +5201,7 @@ a.badge:hover {
 
 .carousel {
   position: relative;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   line-height: 1;
 }
 
@@ -5315,7 +5331,7 @@ a.badge:hover {
 .hero-unit p {
   font-size: 18px;
   font-weight: 200;
-  line-height: 27px;
+  line-height: 30px;
   color: inherit;
 }
 

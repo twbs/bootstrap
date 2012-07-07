@@ -206,7 +206,7 @@
   float: none;
   // Vertically center the text given @navbarHeight
   @elementHeight: 20px;
-  padding: ((@navbarHeight - @elementHeight) / 2) 12px ((@navbarHeight - @elementHeight) / 2 + 1);
+  padding: ((@navbarHeight - @elementHeight) / 2) 15px ((@navbarHeight - @elementHeight) / 2 + 1);
   line-height: 19px;
   color: @navbarLinkColor;
   text-decoration: none;
@@ -379,14 +379,18 @@
 
 
 // Override the default .navbar
-.navbar-subnav {
-}
 .navbar-subnav .navbar-inner {
-  padding: 0;
-  #gradient > .vertical(#f9f9f9, #f1f1f1);
+  #gradient > .vertical(#ffffff, #f1f1f1);
   .box-shadow(none);
   border: 1px solid #e5e5e5;
 }
+
+// Lighten vertical dividers
+.navbar-subnav .divider-vertical {
+  background-color: #f1f1f1;
+  border-right-color: #ffffff;
+}
+
 
 // Change link colors back
 .navbar-subnav .nav > li > a {
@@ -401,7 +405,10 @@
 .navbar-subnav .nav > .active > a,
 .navbar-subnav .nav > .active > a:hover {
   color: #777;
-  background-color: #e5e5e5;
+  background-color: #eee;
+  -webkit-box-shadow: -1px 0 0 rgba(255,255,255,.5), 1px 0 0 rgba(255,255,255,.5);
+     -moz-box-shadow: -1px 0 0 rgba(255,255,255,.5), 1px 0 0 rgba(255,255,255,.5);
+          box-shadow: -1px 0 0 rgba(255,255,255,.5), 1px 0 0 rgba(255,255,255,.5);
 }
 
 // Dropdown carets
@@ -409,6 +416,21 @@
 .navbar-subnav .nav li.dropdown.open .caret {
   border-top-color: @linkColor;
   border-bottom-color: @linkColor;
+}
+
+// Reset search input form
+.navbar-subnav .search-query {
+  background-color: #fff;
+  border-color: #ccc;
+  .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.25)");
+
+  // On :focus, keep the same padding and border
+  &:focus,
+  &.focused {
+    padding: 4px 9px;
+    border: 1px solid rgba(82,168,236,.8);
+    .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6)");
+  }
 }
 
 // Open dropdown dropdown-toggle
