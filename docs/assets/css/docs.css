@@ -479,6 +479,7 @@ h2 + .row {
 .bs-docs-example + .prettyprint {
   margin-top: -20px;
   padding-top: 15px;
+  font-size: 12px;
 }
 
 /* Tweak examples

@@ -1384,6 +1384,7 @@ textarea::-webkit-input-placeholder {
 .input-append {
   margin-bottom: 5px;
   font-size: 0;
+  white-space: nowrap;
 }
 
 .input-prepend input,
@@ -5043,7 +5044,7 @@ a.badge:hover {
 
 .progress .bar {
   width: 0;
-  height: 18px;
+  height: 100%;
   font-size: 12px;
   color: #ffffff;
   text-align: center;
