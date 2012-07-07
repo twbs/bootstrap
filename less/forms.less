@@ -149,12 +149,6 @@ input[type="checkbox"] {
   width: auto; // Override of generic input selector
 }
 
-// Make uneditable textareas behave like a textarea
-.uneditable-textarea {
-  width: auto;
-  height: auto;
-}
-
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
@@ -183,6 +177,41 @@ input[type="checkbox"]:focus {
   .tab-focus();
 }
 
+
+// Uneditable inputs
+// -------------------------
+
+// Make uneditable inputs look inactive
+.uneditable-input,
+.uneditable-textarea {
+  color: @grayLight;
+  background-color: darken(@inputBackground, 1%);
+  border-color: @inputBorder;
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
+  cursor: not-allowed;
+}
+
+// For text that needs to appear as an input but should not be an input
+.uneditable-input {
+  overflow: hidden; // prevent text from wrapping, but still cut it off like an input does
+  white-space: nowrap;
+}
+
+// Make uneditable textareas behave like a textarea
+.uneditable-textarea {
+  width: auto;
+  height: auto;
+}
+
+
+// Placeholder
+// -------------------------
+
+// Placeholder text gets special styles; can't be bundled together though for some reason
+input,
+textarea {
+  .placeholder();
+}
 
 
 // CHECKBOXES & RADIOS
@@ -333,22 +362,6 @@ select:focus:required:invalid {
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
-// For text that needs to appear as an input but should not be an input
-.uneditable-input {
-  overflow: hidden; // prevent text from wrapping, but still cut it off like an input does
-  white-space: nowrap;
-  cursor: not-allowed;
-  background-color: @inputBackground;
-  border-color: #eee;
-  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
-}
-
-// Placeholder text gets special styles; can't be bundled together though for some reason
-input,
-textarea {
-  .placeholder();
-}
-
 
 
 // HELP TEXT
@@ -382,6 +395,7 @@ textarea {
   margin-bottom: 5px;
   font-size: 0;
   white-space: nowrap; // Prevent span and input from separating
+
   input,
   select,
   .uneditable-input {
@@ -395,9 +409,6 @@ textarea {
     &:focus {
       z-index: 2;
     }
-  }
-  .uneditable-input {
-    border-left-color: #ccc;
   }
   .add-on {
     display: inline-block;
@@ -439,10 +450,6 @@ textarea {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
-  }
-  .uneditable-input {
-    border-right-color: #ccc;
-    border-left-color: #eee;
   }
   .add-on:last-child,
   .btn:last-child {

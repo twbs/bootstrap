@@ -995,11 +995,6 @@ input[type="checkbox"] {
   width: auto;
 }
 
-.uneditable-textarea {
-  width: auto;
-  height: auto;
-}
-
 select,
 input[type="file"] {
   height: 28px;
@@ -1028,6 +1023,42 @@ input[type="checkbox"]:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+}
+
+.uneditable-input,
+.uneditable-textarea {
+  color: #999999;
+  cursor: not-allowed;
+  background-color: #fcfcfc;
+  border-color: #cccccc;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+}
+
+.uneditable-input {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.uneditable-textarea {
+  width: auto;
+  height: auto;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #999999;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #999999;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999999;
 }
 
 .radio,
@@ -1336,32 +1367,6 @@ select:focus:required:invalid:focus {
   clear: both;
 }
 
-.uneditable-input {
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: not-allowed;
-  background-color: #ffffff;
-  border-color: #eee;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
-     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
-          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
-}
-
-input:-moz-placeholder,
-textarea:-moz-placeholder {
-  color: #999999;
-}
-
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-  color: #999999;
-}
-
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  color: #999999;
-}
-
 .help-block,
 .help-inline {
   color: #595959;
@@ -1410,11 +1415,6 @@ textarea::-webkit-input-placeholder {
 .input-prepend .uneditable-input:focus,
 .input-append .uneditable-input:focus {
   z-index: 2;
-}
-
-.input-prepend .uneditable-input,
-.input-append .uneditable-input {
-  border-left-color: #ccc;
 }
 
 .input-prepend .add-on,
@@ -1468,11 +1468,6 @@ textarea::-webkit-input-placeholder {
   -webkit-border-radius: 3px 0 0 3px;
      -moz-border-radius: 3px 0 0 3px;
           border-radius: 3px 0 0 3px;
-}
-
-.input-append .uneditable-input {
-  border-right-color: #ccc;
-  border-left-color: #eee;
 }
 
 .input-append .add-on:last-child,
