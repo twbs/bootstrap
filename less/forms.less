@@ -448,12 +448,13 @@ textarea {
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
-// Remove all border-radius for inputs with both prepend and append
+// Remove all border-radius for inputs with both prepend and append and correct border colors
 .input-prepend.input-append {
   input,
   select,
   .uneditable-input {
     .border-radius(0);
+    border-left-color: #ccc;
   }
   .add-on:first-child,
   .btn:first-child {
