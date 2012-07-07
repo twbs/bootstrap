@@ -2681,6 +2681,34 @@ table .span24 {
           border-radius: 3px;
 }
 
+.pod {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.pod-large {
+  padding: 24px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.pod-small {
+  padding: 9px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
@@ -5027,7 +5055,7 @@ a.badge:hover {
 
 .progress .bar {
   width: 0;
-  height: 18px;
+  height: 100%;
   font-size: 12px;
   color: #ffffff;
   text-align: center;
