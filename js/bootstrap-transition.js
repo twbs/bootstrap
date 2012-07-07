@@ -38,7 +38,7 @@
             ,  'MozTransition'    : 'transitionend'
             ,  'OTransition'      : 'oTransitionEnd'
             ,  'transition'       : 'transitionend'
-			,  'msTransition'     : 'MSTransitionEnd'
+            ,  'msTransition'     : 'MSTransitionEnd'
             }
           , name
 
