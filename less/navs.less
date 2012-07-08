@@ -128,6 +128,15 @@
   border-bottom-color: transparent;
   cursor: default;
 }
+// Disabled state, and it's :hover to override normal :hover
+.nav-tabs > .disabled > a,
+.nav-tabs > .disabled > a:hover {
+  color: @grayLight;
+  background-color: @white;
+  border: 1px solid transparent;
+  border-bottom-color: #ddd;
+  cursor: default;
+}
 
 
 // PILLS
@@ -148,7 +157,13 @@
   color: @white;
   background-color: @linkColor;
 }
-
+// Disabled state
+.nav-pills > .disabled > a,
+.nav-pills > .disabled > a:hover {
+  color: @grayLight;
+  background-color: transparent;
+  cursor: default;
+}
 
 
 // STACKED NAV
