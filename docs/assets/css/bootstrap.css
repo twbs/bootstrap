@@ -631,7 +631,8 @@ h4 small {
 }
 
 .page-header {
-  margin: 20px 0 19px;
+  padding-bottom: 9px;
+  margin: 20px 0 30px;
   border-bottom: 1px solid #eeeeee;
 }
 

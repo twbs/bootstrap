@@ -12,18 +12,12 @@
 
 body {
   position: relative;
-  padding-top: 100px;
+  padding-top: 80px;
   font-size: 14px;
   background-color: #fff;
   background-image: url(../img/grid-20px.png);
   background-repeat: repeat-x;
   background-position: 0 40px;
-}
-
-/* Custom container for the narrow docs */
-.bs-docs-container {
-  max-width: 780px;
-  margin: 0 auto;
 }
 
 /* Code in headings */
@@ -36,6 +30,10 @@ h3 code {
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
+
+body > .navbar-fixed-top {
+  font-size: 13px;
+}
 
 /* Change the docs' brand */
 body > .navbar-fixed-top .brand {
@@ -52,6 +50,7 @@ body > .navbar-fixed-top .brand {
 }
 body > .navbar-fixed-top .brand:hover {
   text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
 
 
@@ -119,7 +118,7 @@ hr.soften {
 ------------------------- */
 .masthead {
   padding: 50px 0 60px;
-  margin-top: -60px;
+  margin-top: -40px;
   margin-bottom: 0;
   color: #fff;
   text-align: center;
@@ -207,9 +206,13 @@ hr.soften {
 ------------------------- */
 .subhead {
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 .subhead h1 {
   font-size: 60px;
+}
+.subhead .navbar {
+  display: none;
 }
 
 
@@ -242,7 +245,7 @@ hr.soften {
 }
 .marketing img {
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
 }
 
 
@@ -837,3 +840,66 @@ form.bs-docs-example {
     float: none;
   }
 }
+
+
+
+/* Docs side .nav-list
+------------------------- */
+.span3 {
+  min-height: 1px;
+}
+.bs-docs-sidenav {
+  margin-top: 40px;
+  padding: 0;
+  margin-right: 10px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+.bs-docs-sidenav > li > a {
+  margin: 0;
+  font-size: 14px;
+  padding: 9px 14px;
+  border-top: 1px solid #eee;
+}
+.bs-docs-sidenav > li:first-child > a {
+  border-top: 0;
+  -webkit-border-radius: 5px 5px 0 0;
+     -moz-border-radius: 5px 5px 0 0;
+          border-radius: 5px 5px 0 0;
+}
+.bs-docs-sidenav > li:last-child > a {
+  -webkit-border-radius: 0 0 5px 5px;
+     -moz-border-radius: 0 0 5px 5px;
+          border-radius: 0 0 5px 5px;
+}
+/* Chevrons */
+.bs-docs-sidenav .icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.bs-docs-sidenav > li > a:hover {
+  background-color: #f5f5f5;
+}
+.bs-docs-sidenav a:hover .icon-chevron-right {
+  opacity: .5;
+}
+.bs-docs-sidenav .active .icon-chevron-right {
+  background-image: url(../img/glyphicons-halflings-white.png);
+  opacity: .75;
+}
+
+@media (max-width: 979px) {
+
+  .bs-docs-sidenav {
+    margin-top: 30px;
+    margin-right: 0;
+  }
+
+}
+
+

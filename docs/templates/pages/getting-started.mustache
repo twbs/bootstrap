@@ -1,0 +1,143 @@
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <h1>{{_i}}Getting started{{/i}}</h1>
+  <p class="lead">{{_i}}Overview of the project, it's contents, and how to get started with a simple template.{{/i}}</p>
+</header>
+
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <li><a href="#prerequisites">{{_i}}Prerequisites{{/i}} <i class="icon-chevron-right"></i></a></li>
+      <li><a href="#file-structure">{{_i}}File structure{{/i}} <i class="icon-chevron-right"></i></a></li>
+      <li><a href="#contents">{{_i}}What's included{{/i}} <i class="icon-chevron-right"></i></a></li>
+      <li><a href="#html-template">{{_i}}HTML template{{/i}} <i class="icon-chevron-right"></i></a></li>
+    </ul>
+  </div>
+  <div class="span9">
+
+
+    <section id="prerequisites">
+      <div class="page-header">
+        <h1>{{_i}}Prerequisites{{/i}}</h1>
+      </div>
+      <p>{{_i}}Before getting started, you need the following:{{/i}}</p>
+      <ul>
+        <li>{{_i}}An unzipped copy of the <a href="https://github.com/twitter/bootstrap/zipball/master">latest version of Bootstrap</a> (which includes all CSS, JavaScript, and images).{{/i}}</li>
+        <li>{{_i}}An editor of your choice for writing code (I recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>).{{/i}}</li>
+        <li>{{_i}}Some working knowledge of HTML and CSS.{{/i}}</li>
+      </ul>
+      <p>{{_i}}When ready, proceed to the next section, <a href="#file-structure">File structure</a>.{{/i}}</p>
+    </section>
+
+
+
+    <section id="file-structure">
+      <div class="page-header">
+        <h1>{{_i}}File structure{{/i}}</h1>
+      </div>
+      <p>{{_i}}Once unzipped, the structure of Bootstrap&rsquo;s files looks like this:{{/i}}</p>
+      <ul>
+        <li>bootstrap/
+          <ul>
+            <li>css/
+              <ul>
+                <li>bootstrap.css</li>
+                <li>bootstrap.min.css</li>
+              </ul>
+            </li>
+            <li>js/
+              <ul>
+                <li>bootstrap.js</li>
+                <li>bootstrap.min.js</li>
+              </ul>
+            </li>
+            <li>img/
+              <ul>
+                <li>glyphicons-halflings.png</li>
+                <li>glyphicons-halflings-white.png</li>
+              </ul>
+            </li>
+            <li>README.md</li>
+          </ul>
+        </li>
+      </ul>
+      <p>{{_i}}This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.{{/i}}</p>
+    </section>
+
+
+
+    <section id="contents">
+      <div class="page-header">
+        <h1>{{_i}}What's included{{/i}}</h1>
+      </div>
+      <p>{{_i}}Bootstrap comes equipped with CSS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>:{{/i}}</p>
+      <ul>
+        <li><strong><a href="http://twitter.github.com/bootstrap/scaffolding.html">Scaffolding:</a></strong> Global styles for the body to reset type and background, link styles, grid system, and two simple layouts.</li>
+        <li><strong><a href="http://twitter.github.com/bootstrap/base-css.html">Base CSS:</a></strong> Styles for common HTML elements like typography, code, tables, forms, and buttons. Also includes <a href="http://glyphicons.com">Glyphicons</a>, a great little icon set.</li>
+        <li><strong><a href="http://twitter.github.com/bootstrap/components.html">Components:</a></strong> Basic styles for common interface components like tabs and pills, navbar, page headers, and more.</li>
+        <li><strong><a href="http://twitter.github.com/bootstrap/javascript.html">Javascript plugins:</a></strong> Similar to the Components section, these Javascript plugins are interactive components for things like tooltips, popovers, modals, and more.</li>
+      </ul>
+      <p>Together, the <strong>Components</strong> and <strong>Javascript plugins</strong> sections provide the following interface elements:</p>
+      <ul>
+        <li>Button groups</li>
+        <li>Button dropdowns</li>
+        <li>Navigational tabs, pills, and lists</li>
+        <li>Navbar</li>
+        <li>Labels</li>
+        <li>Badges</li>
+        <li>Page headers and hero unit</li>
+        <li>Thumbnails</li>
+        <li>Alerts</li>
+        <li>Progress bars</li>
+        <li>Modals</li>
+        <li>Dropdowns</li>
+        <li>Tooltips</li>
+        <li>Popovers</li>
+        <li>Accordion</li>
+        <li>Carousel</li>
+        <li>Typeahead</li>
+      </ul>
+      <p>{{_i}}In future guides, we may walk through these components individually in more detail. Until then, look for each of these in the documentation for information on how to utilize and customize them.{{/i}}</p>
+    </section>
+
+
+
+    <section id="html-template">
+      <div class="page-header">
+        <h1>{{_i}}Basic HTML template{{/i}}</h1>
+      </div>
+      <p>{{_i}}Now that we&rsquo;ve got the basic information on Bootstrap out of the way, we can focus on getting started. To do that, we&rsquo;ll utilize a basic HTML template that includes everything we&rsquo;ve mentioned in the <a href="#file-structure">File structure</a>.{{/i}}</p>
+      <p>{{_i}}As previously mentioned, we won&rsquo;t cover the basics of writing HTML and CSS here. Instead, we&rsquo;ll leapfrog through various points in web development complexity to give you the broadest and most complete overview.{{/i}}</p>
+      <p>{{_i}}Now, here&rsquo;s a look at a <strong>typical HTML file</strong>:{{/i}}</p>
+  <pre class="prettyprint linenums">
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </pre>
+      <p>{{_i}}To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:{{/i}}</p>
+  <pre class="prettyprint linenums">
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+      &lt;!-- Bootstrap --&gt;
+      &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
+      &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </pre>
+      <p>{{_i}}And you&rsquo;re set. With those two files added, you can begin to write Bootstrap-friendly HTML, CSS, and JS to build any site or application you like. Head to the Bootstrap docs for information, examples, and even code snippets for the Bootstrap grid system, base HTML styles, components, and even responsive features.{{/i}}</p>
+    </section>
+
+
+
+  </div>
+</div>

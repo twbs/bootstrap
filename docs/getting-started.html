@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Getting · Twitter Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="./scaffolding.html">Scaffolding</a>
+              </li>
+              <li class="">
+                <a href="./base-css.html">Base CSS</a>
+              </li>
+              <li class="">
+                <a href="./components.html">Components</a>
+              </li>
+              <li class="">
+                <a href="./javascript.html">Javascript</a>
+              </li>
+              <li class="">
+                <a href="./extend.html">Extend</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <h1>Getting started</h1>
+  <p class="lead">Overview of the project, it's contents, and how to get started with a simple template.</p>
+</header>
+
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <li><a href="#prerequisites">Prerequisites <i class="icon-chevron-right"></i></a></li>
+      <li><a href="#file-structure">File structure <i class="icon-chevron-right"></i></a></li>
+      <li><a href="#contents">What's included <i class="icon-chevron-right"></i></a></li>
+      <li><a href="#html-template">HTML template <i class="icon-chevron-right"></i></a></li>
+    </ul>
+  </div>
+  <div class="span9">
+
+
+    <section id="prerequisites">
+      <div class="page-header">
+        <h1>Prerequisites</h1>
+      </div>
+      <p>Before getting started, you need the following:</p>
+      <ul>
+        <li>An unzipped copy of the <a href="https://github.com/twitter/bootstrap/zipball/master">latest version of Bootstrap</a> (which includes all CSS, JavaScript, and images).</li>
+        <li>An editor of your choice for writing code (I recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>).</li>
+        <li>Some working knowledge of HTML and CSS.</li>
+      </ul>
+      <p>When ready, proceed to the next section, <a href="#file-structure">File structure</a>.</p>
+    </section>
+
+
+
+    <section id="file-structure">
+      <div class="page-header">
+        <h1>File structure</h1>
+      </div>
+      <p>Once unzipped, the structure of Bootstrap&rsquo;s files looks like this:</p>
+      <ul>
+        <li>bootstrap/
+          <ul>
+            <li>css/
+              <ul>
+                <li>bootstrap.css</li>
+                <li>bootstrap.min.css</li>
+              </ul>
+            </li>
+            <li>js/
+              <ul>
+                <li>bootstrap.js</li>
+                <li>bootstrap.min.js</li>
+              </ul>
+            </li>
+            <li>img/
+              <ul>
+                <li>glyphicons-halflings.png</li>
+                <li>glyphicons-halflings-white.png</li>
+              </ul>
+            </li>
+            <li>README.md</li>
+          </ul>
+        </li>
+      </ul>
+      <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+    </section>
+
+
+
+    <section id="contents">
+      <div class="page-header">
+        <h1>What's included</h1>
+      </div>
+      <p>Bootstrap comes equipped with CSS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>:</p>
+      <ul>
+        <li><strong><a href="http://twitter.github.com/bootstrap/scaffolding.html">Scaffolding:</a></strong> Global styles for the body to reset type and background, link styles, grid system, and two simple layouts.</li>
+        <li><strong><a href="http://twitter.github.com/bootstrap/base-css.html">Base CSS:</a></strong> Styles for common HTML elements like typography, code, tables, forms, and buttons. Also includes <a href="http://glyphicons.com">Glyphicons</a>, a great little icon set.</li>
+        <li><strong><a href="http://twitter.github.com/bootstrap/components.html">Components:</a></strong> Basic styles for common interface components like tabs and pills, navbar, page headers, and more.</li>
+        <li><strong><a href="http://twitter.github.com/bootstrap/javascript.html">Javascript plugins:</a></strong> Similar to the Components section, these Javascript plugins are interactive components for things like tooltips, popovers, modals, and more.</li>
+      </ul>
+      <p>Together, the <strong>Components</strong> and <strong>Javascript plugins</strong> sections provide the following interface elements:</p>
+      <ul>
+        <li>Button groups</li>
+        <li>Button dropdowns</li>
+        <li>Navigational tabs, pills, and lists</li>
+        <li>Navbar</li>
+        <li>Labels</li>
+        <li>Badges</li>
+        <li>Page headers and hero unit</li>
+        <li>Thumbnails</li>
+        <li>Alerts</li>
+        <li>Progress bars</li>
+        <li>Modals</li>
+        <li>Dropdowns</li>
+        <li>Tooltips</li>
+        <li>Popovers</li>
+        <li>Accordion</li>
+        <li>Carousel</li>
+        <li>Typeahead</li>
+      </ul>
+      <p>In future guides, we may walk through these components individually in more detail. Until then, look for each of these in the documentation for information on how to utilize and customize them.</p>
+    </section>
+
+
+
+    <section id="html-template">
+      <div class="page-header">
+        <h1>Basic HTML template</h1>
+      </div>
+      <p>Now that we&rsquo;ve got the basic information on Bootstrap out of the way, we can focus on getting started. To do that, we&rsquo;ll utilize a basic HTML template that includes everything we&rsquo;ve mentioned in the <a href="#file-structure">File structure</a>.</p>
+      <p>As previously mentioned, we won&rsquo;t cover the basics of writing HTML and CSS here. Instead, we&rsquo;ll leapfrog through various points in web development complexity to give you the broadest and most complete overview.</p>
+      <p>Now, here&rsquo;s a look at a <strong>typical HTML file</strong>:</p>
+  <pre class="prettyprint linenums">
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </pre>
+      <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
+  <pre class="prettyprint linenums">
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+      &lt;!-- Bootstrap --&gt;
+      &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
+      &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </pre>
+      <p>And you&rsquo;re set. With those two files added, you can begin to write Bootstrap-friendly HTML, CSS, and JS to build any site or application you like. Head to the Bootstrap docs for information, examples, and even code snippets for the Bootstrap grid system, base HTML styles, components, and even responsive features.</p>
+    </section>
+
+
+
+  </div>
+</div>
+
+     <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+        </ul>
+      </footer>
+
+    </div>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/application.js"></script>
+
+
+  </body>
+</html>
