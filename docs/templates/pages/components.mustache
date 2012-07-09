@@ -144,27 +144,13 @@
 ================================================== -->
 <section id="buttonGroups">
   <div class="page-header">
-    <h1>{{_i}}Button groups{{/i}} <small>{{_i}}Join buttons for more toolbar-like functionality{{/i}}</small></h1>
+    <h1>{{_i}}Button groups{{/i}}</h1>
   </div>
 
-
-  <h2>{{_i}}Description and best practices{{/i}}</h2>
-  <p>{{_i}}Use button groups to join multiple buttons together as one composite component. Build them with a series of <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements. We recommend the following guidelines for using button groups and toolbars:{{/i}}</p>
-  <ul>
-    <li>{{_i}}Always use the same element in a single button group, <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>.{{/i}}</li>
-    <li>{{_i}}Don't mix buttons of different colors in the same button group.{{/i}}</li>
-    <li>{{_i}}Use icons in addition to or instead of text, but be sure include alt and title text where appropriate.{{/i}}</li>
-  </ul>
-  <p>{{_i}}<span class="label label-info">Related</span> Button groups with dropdowns (see below) should be called out separately and always include a dropdown caret to indicate intended behavior.{{/i}}</p>
-
-
-  <hr class="bs-docs-separator">
-
-
-  <h2>{{_i}}Examples and variations{{/i}}</h2>
+  <h2>{{_i}}Examples{{/i}}</h2>
   <p>{{_i}}Two basic options, along with two more specific variations.{{/i}}</p>
 
-  <h3>{{_i}}Basic button group{{/i}}</h3>
+  <h3>{{_i}}Single button group{{/i}}</h3>
   <p>{{_i}}Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.{{/i}}</p>
   <div class="bs-docs-example">
     <div class="btn-group" style="margin: 9px 0 5px;">
@@ -181,7 +167,7 @@
 &lt;/div&gt;
 </pre>
 
-  <h3>{{_i}}Toolbar example{{/i}}</h3>
+  <h3>{{_i}}Multiple button groups{{/i}}</h3>
   <p>{{_i}}Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.{{/i}}</p>
   <div class="bs-docs-example">
     <div class="btn-toolbar" style="margin: 0;">
@@ -209,11 +195,7 @@
 &lt;/div&gt;
 </pre>
 
-
-  <hr class="bs-docs-separator">
-
-
-  <h2>{{_i}}Vertical button groups{{/i}}</h2>
+  <h3>{{_i}}Vertical button groups{{/i}}</h3>
   <p>{{_i}}Make a set of buttons appear vertically stacked rather than horizontally.{{/i}}</p>
   <div class="bs-docs-example">
     <div class="btn-group btn-group-vertical">
@@ -233,10 +215,10 @@
   <hr class="bs-docs-separator">
 
 
-  <h3>{{_i}}Checkbox and radio flavors{{/i}}</h3>
+  <h4>{{_i}}Checkbox and radio flavors{{/i}}</h4>
   <p>{{_i}}Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the Javascript docs</a> for that.{{/i}}</p>
 
-  <h3>{{_i}}Dropdowns in button groups{{/i}}</h3>
+  <h4>{{_i}}Dropdowns in button groups{{/i}}</h4>
   <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.{{/i}}</p>
 </section>
 
