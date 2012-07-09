@@ -63,6 +63,10 @@
       if (!isActive) $parent.toggleClass('open')
 
       return false
+    },
+    
+    clearMenus: function(e){
+      clearMenus()
     }
 
   }
