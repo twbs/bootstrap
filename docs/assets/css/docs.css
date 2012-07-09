@@ -483,6 +483,8 @@ h2 + .row {
   list-style: none;
 }
 .the-icons li {
+  float: left;
+  width: 25%;
   line-height: 25px;
 }
 .the-icons i:hover {
