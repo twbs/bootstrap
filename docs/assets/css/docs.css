@@ -547,10 +547,10 @@ h2 + .row {
   font-size: 13px;
   line-height: 18px;
 }
-.bs-docs-example p {
+.bs-docs-example > p {
   margin-bottom: 9px;
 }
-.bs-docs-example p:last-child {
+.bs-docs-example > p:last-child {
   margin-bottom: 0;
 }
 .bs-docs-example .table,
