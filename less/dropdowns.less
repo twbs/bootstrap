@@ -22,8 +22,8 @@
 .caret {
   display: inline-block;
   width: 0;
-  height: 3px;
-  vertical-align: middle;
+  height: 0;
+  vertical-align: top;
   border-top:   4px solid @black;
   border-right: 4px solid transparent;
   border-left:  4px solid transparent;
@@ -33,6 +33,7 @@
 
 // Place the caret
 .dropdown .caret {
+  margin-top: 8px;
   margin-left: 2px;
 }
 .dropdown a:focus .caret,
@@ -152,8 +153,6 @@
 .navbar-fixed-bottom .dropdown {
   // Reverse the caret
   .caret {
-    margin-top: -2px;
-    height: 0;
     border-top: 0;
     border-bottom: 4px solid @black;
     content: "\2191";

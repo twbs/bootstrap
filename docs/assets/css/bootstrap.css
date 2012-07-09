@@ -2498,8 +2498,8 @@ table .span24 {
 .caret {
   display: inline-block;
   width: 0;
-  height: 3px;
-  vertical-align: middle;
+  height: 0;
+  vertical-align: top;
   border-top: 4px solid #000000;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
@@ -2509,6 +2509,7 @@ table .span24 {
 }
 
 .dropdown .caret {
+  margin-top: 8px;
   margin-left: 2px;
 }
 
@@ -2616,8 +2617,6 @@ table .span24 {
 
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
-  height: 0;
-  margin-top: -2px;
   border-top: 0;
   border-bottom: 4px solid #000000;
   content: "\2191";
@@ -2726,10 +2725,10 @@ button.close {
 .btn {
   display: inline-block;
   *display: inline;
-  padding: 4px 14px 4px;
+  padding: 4px 14px;
   margin-bottom: 0;
   *margin-left: .3em;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
   *line-height: 20px;
   color: #333333;
@@ -3123,7 +3122,7 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .btn-group > .btn-mini,
@@ -3188,28 +3187,28 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group > .dropdown-toggle {
-  *padding-top: 8px;
-  padding-right: 10px;
-  *padding-bottom: 8px;
-  padding-left: 10px;
+  *padding-top: 4px;
+  padding-right: 8px;
+  *padding-bottom: 4px;
+  padding-left: 8px;
   -webkit-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
           box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-group > .btn-mini.dropdown-toggle {
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .btn-group > .btn-small.dropdown-toggle {
-  *padding-top: 6px;
-  *padding-bottom: 6px;
+  *padding-top: 4px;
+  *padding-bottom: 4px;
 }
 
 .btn-group > .btn-large.dropdown-toggle {
-  padding-right: 14px;
-  padding-left: 14px;
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 .btn-group.open .dropdown-toggle {
@@ -3248,6 +3247,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn .caret {
+  margin-top: 7px;
   margin-left: 0;
 }
 
@@ -3257,7 +3257,16 @@ input[type="submit"].btn.btn-mini {
   filter: alpha(opacity=100);
 }
 
+.btn-mini .caret {
+  margin-top: 5px;
+}
+
+.btn-small .caret {
+  margin-top: 6px;
+}
+
 .btn-large .caret {
+  margin-top: 6px;
   border-top-width: 5px;
   border-right-width: 5px;
   border-left-width: 5px;
