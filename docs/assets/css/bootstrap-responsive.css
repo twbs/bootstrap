@@ -800,16 +800,15 @@
   .thumbnails {
     margin-left: 0;
   }
+  .thumbnails > li {
+    float: none;
+  }
   [class*="span"],
   .row-fluid [class*="span"] {
     display: block;
     float: none;
     width: auto;
-    max-width: 100%;
     margin-left: 0;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
   }
   .input-large,
   .input-xlarge,
