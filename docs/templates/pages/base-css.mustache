@@ -1012,7 +1012,7 @@
   <p>{{_i}}Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.{{/i}}</p>
 
   <h4>{{_i}}Relative sizing{{/i}}</h4>
-  <form class="bs-docs-example">
+  <form class="bs-docs-example" style="padding-bottom: 15px;">
     <div class="controls docs-input-sizes">
       <input class="input-mini" type="text" placeholder=".input-mini">
       <input class="input-small" type="text" placeholder=".input-small">
@@ -1030,10 +1030,13 @@
 &lt;input class="input-xlarge" type="text"&gt;
 &lt;input class="input-xxlarge" type="text"&gt;
 </pre>
+  <p>
+    <span class="label label-info">{{_i}}Heads up!{{/i}}</span> In future versions, we'll be altering the use of these relative input classes to match our button sizes. For example, <code>.input-large</code> will increase the padding and font-size of an input.
+  </p>
 
   <h4>{{_i}}Grid sizing{{/i}}</h4>
   <p>{{_i}}Use <code>.span1</code> to <code>.span12</code> for inputs that match the same sizes of the grid columns.{{/i}}</p>
-  <form class="bs-docs-example">
+  <form class="bs-docs-example" style="padding-bottom: 15px;">
     <div class="controls docs-input-sizes">
       <input class="span1" type="text" placeholder=".span1">
       <input class="span2" type="text" placeholder=".span2">
@@ -1065,6 +1068,35 @@
 &lt;input class="span1" type="text"&gt;
 &lt;input class="span2" type="text"&gt;
 &lt;input class="span3" type="text"&gt;
+</pre>
+
+  <p>{{_i}}For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and the clears the float.{{/i}}</p>
+  <form class="bs-docs-example" style="padding-bottom: 15px;">
+    <div class="controls">
+      <input class="span5" type="text" placeholder=".span5">
+    </div>
+    <div class="controls controls-row">
+      <input class="span4" type="text" placeholder=".span4">
+      <input class="span1" type="text" placeholder=".span1">
+    </div>
+    <div class="controls controls-row">
+      <input class="span3" type="text" placeholder=".span3">
+      <input class="span2" type="text" placeholder=".span2">
+    </div>
+    <div class="controls controls-row">
+      <input class="span2" type="text" placeholder=".span2">
+      <input class="span3" type="text" placeholder=".span3">
+    </div>
+    <div class="controls controls-row">
+      <input class="span1" type="text" placeholder=".span1">
+      <input class="span4" type="text" placeholder=".span4">
+    </div>
+  </form>
+<pre class="prettyprint linenums">
+&lt;div class="controls controls-row"&gt;
+  &lt;input class="span4" type="text" placeholder=".span4"&gt;
+  &lt;input class="span1" type="text" placeholder=".span1"&gt;
+&lt;/div&gt;
 </pre>
 
   <h3>{{_i}}Uneditable inputs{{/i}}</h3>

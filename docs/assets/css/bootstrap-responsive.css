@@ -358,6 +358,9 @@
   .uneditable-input {
     margin-left: 0;
   }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 30px;
+  }
   input.span12,
   textarea.span12,
   .uneditable-input.span12 {
@@ -699,6 +702,9 @@
   textarea,
   .uneditable-input {
     margin-left: 0;
+  }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 20px;
   }
   input.span12,
   textarea.span12,

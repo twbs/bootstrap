@@ -721,6 +721,11 @@
       margin-left: 0; // override margin-left from core grid system
     }
 
+    // Space grid-sized controls properly if multiple per line
+    .controls-row [class*="span"] + [class*="span"] {
+      margin-left: @gridGutterWidth;
+    }
+
     // generate .spanX
     .spanX (@gridColumns);
 
