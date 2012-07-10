@@ -851,7 +851,7 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 21px;
   line-height: 40px;
   color: #333333;
@@ -1408,19 +1408,19 @@ select:focus:required:invalid:focus {
   *zoom: 1;
 }
 
-.input-prepend,
-.input-append {
+.input-append,
+.input-prepend {
   margin-bottom: 5px;
   font-size: 0;
   white-space: nowrap;
 }
 
-.input-prepend input,
 .input-append input,
-.input-prepend select,
+.input-prepend input,
 .input-append select,
-.input-prepend .uneditable-input,
-.input-append .uneditable-input {
+.input-prepend select,
+.input-append .uneditable-input,
+.input-prepend .uneditable-input {
   position: relative;
   margin-bottom: 0;
   *margin-left: 0;
@@ -1431,17 +1431,17 @@ select:focus:required:invalid:focus {
           border-radius: 0 3px 3px 0;
 }
 
-.input-prepend input:focus,
 .input-append input:focus,
-.input-prepend select:focus,
+.input-prepend input:focus,
 .input-append select:focus,
-.input-prepend .uneditable-input:focus,
-.input-append .uneditable-input:focus {
+.input-prepend select:focus,
+.input-append .uneditable-input:focus,
+.input-prepend .uneditable-input:focus {
   z-index: 2;
 }
 
-.input-prepend .add-on,
-.input-append .add-on {
+.input-append .add-on,
+.input-prepend .add-on {
   display: inline-block;
   width: auto;
   height: 20px;
@@ -1457,18 +1457,18 @@ select:focus:required:invalid:focus {
   border: 1px solid #ccc;
 }
 
-.input-prepend .add-on,
 .input-append .add-on,
-.input-prepend .btn,
-.input-append .btn {
+.input-prepend .add-on,
+.input-append .btn,
+.input-prepend .btn {
   margin-left: -1px;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
 }
 
-.input-prepend .active,
-.input-append .active {
+.input-append .active,
+.input-prepend .active {
   background-color: #a9dba9;
   border-color: #46a546;
 }
@@ -1524,7 +1524,7 @@ select:focus:required:invalid:focus {
           border-radius: 0 3px 3px 0;
 }
 
-input.search-query {
+.search-query {
   padding-right: 14px;
   padding-right: 4px \9;
   padding-left: 14px;
@@ -1535,6 +1535,39 @@ input.search-query {
   -webkit-border-radius: 14px;
      -moz-border-radius: 14px;
           border-radius: 14px;
+}
+
+/* Allow for input prepend/append in search forms */
+
+.form-search .input-append .search-query,
+.form-search .input-prepend .search-query {
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+.form-search .input-append .search-query {
+  -webkit-border-radius: 14px 0 0 14px;
+     -moz-border-radius: 14px 0 0 14px;
+          border-radius: 14px 0 0 14px;
+}
+
+.form-search .input-append .btn {
+  -webkit-border-radius: 0 14px 14px 0;
+     -moz-border-radius: 0 14px 14px 0;
+          border-radius: 0 14px 14px 0;
+}
+
+.form-search .input-prepend .search-query {
+  -webkit-border-radius: 0 14px 14px 0;
+     -moz-border-radius: 0 14px 14px 0;
+          border-radius: 0 14px 14px 0;
+}
+
+.form-search .input-prepend .btn {
+  -webkit-border-radius: 14px 0 0 14px;
+     -moz-border-radius: 14px 0 0 14px;
+          border-radius: 14px 0 0 14px;
 }
 
 .form-search input,

@@ -752,6 +752,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
       <h2>Default styles</h2>
       <p>Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.</p>
       <form class="bs-docs-example">
+        <legend>Legend</legend>
         <label>Label name</label>
         <input type="text" placeholder="Type something…">
         <p class="help-block">Example block-level help text here.</p>
@@ -822,6 +823,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
         <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
       </ul>
       <form class="bs-docs-example form-horizontal">
+        <legend>Legend</legend>
         <div class="control-group">
           <label class="control-label" for="">Email</label>
           <div class="controls">
@@ -1059,6 +1061,24 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;div class="input-append"&gt;
   &lt;input class="span2" id="appendedInputButtons" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
 &lt;/div&gt;
+</pre>
+
+      <h4>Search form</h4>
+      <form class="bs-docs-example form-search">
+        <div class="input-append">
+          <input type="text" class="span2 search-query">
+          <button type="submit" class="btn">Search</button>
+        </div>
+        <div class="input-prepend">
+          <button type="submit" class="btn">Search</button>
+          <input type="text" class="span2 search-query">
+        </div>
+      </form>
+<pre class="prettyprint linenums">
+&lt;form class="form-search"&gt;
+  &lt;input type="text" class="span2 search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+&lt;/form&gt;
 </pre>
 
       <h3>Control sizing</h3>

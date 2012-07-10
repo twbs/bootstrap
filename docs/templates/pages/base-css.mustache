@@ -690,6 +690,7 @@
       <h2>{{_i}}Default styles{{/i}}</h2>
       <p>{{_i}}Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.{{/i}}</p>
       <form class="bs-docs-example">
+        <legend>Legend</legend>
         <label>{{_i}}Label name{{/i}}</label>
         <input type="text" placeholder="{{_i}}Type something…{{/i}}">
         <p class="help-block">{{_i}}Example block-level help text here.{{/i}}</p>
@@ -760,6 +761,7 @@
         <li>{{_i}}Wrap any associated controls in <code>.controls</code> for proper alignment{{/i}}</li>
       </ul>
       <form class="bs-docs-example form-horizontal">
+        <legend>Legend</legend>
         <div class="control-group">
           <label class="control-label" for="">{{_i}}Email{{/i}}</label>
           <div class="controls">
@@ -997,6 +999,24 @@
 &lt;div class="input-append"&gt;
   &lt;input class="span2" id="appendedInputButtons" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
 &lt;/div&gt;
+</pre>
+
+      <h4>{{_i}}Search form{{/i}}</h4>
+      <form class="bs-docs-example form-search">
+        <div class="input-append">
+          <input type="text" class="span2 search-query">
+          <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
+        </div>
+        <div class="input-prepend">
+          <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
+          <input type="text" class="span2 search-query">
+        </div>
+      </form>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;form class="form-search"&gt;
+  &lt;input type="text" class="span2 search-query"&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
+&lt;/form&gt;
 </pre>
 
       <h3>{{_i}}Control sizing{{/i}}</h3>
