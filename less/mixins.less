@@ -389,7 +389,9 @@
 }
 
 // Gradient Bar Colors for buttons and alerts
-.gradientBar(@primaryColor, @secondaryColor) {
+.gradientBar(@primaryColor, @secondaryColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  color: @textColor;
+  text-shadow: @textShadow;
   #gradient > .vertical(@primaryColor, @secondaryColor);
   border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
@@ -481,14 +483,15 @@
 
 // Button backgrounds
 // ------------------
-.buttonBackground(@startColor, @endColor) {
+.buttonBackground(@startColor, @endColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
-  .gradientBar(@startColor, @endColor);
+  .gradientBar(@startColor, @endColor, @textColor, @textShadow);
   *background-color: @endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   .reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
+    color: @textColor;
     background-color: @endColor;
     *background-color: darken(@endColor, 5%);
   }
@@ -508,75 +511,7 @@
   margin-top: (@navbarHeight - @elementHeight) / 2;
 }
 
-// Popover arrows
-// -------------------------
-// For tipsies and popovers
-#popoverArrow {
-  .top(@arrowWidth: 10px, @color: rgba(0,0,0,.2)) {
-    bottom: -@arrowWidth;
-    left: 50%;
-    margin-left: -@arrowWidth;
-    border-left: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid transparent;
-    border-top: @arrowWidth solid #ccc;
-    border-top: @arrowWidth solid @color;
-    &:after {
-      border-left: @arrowWidth - 1 solid transparent;
-      border-right: @arrowWidth - 1 solid transparent;
-      border-top: @arrowWidth - 1 solid #fff;
-      bottom: 1px;
-      left: -@arrowWidth + 1;
-    }
-  }
-  .right(@arrowWidth: 10px, @color: rgba(0,0,0,.2)) {
-    top: 50%;
-    left: -@arrowWidth;
-    margin-top: -@arrowWidth;
-    border-top: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid #ccc;
-    border-right: @arrowWidth solid @color;
-    &:after {
-      border-top: @arrowWidth - 1 solid transparent;
-      border-bottom: @arrowWidth - 1 solid transparent;
-      border-right: @arrowWidth - 1 solid #fff;
-      bottom: -@arrowWidth + 1;
-      left: 1px;
-    }
-  }
-  .bottom(@arrowWidth: 10px, @color: rgba(0,0,0,.2)) {
-    top: -@arrowWidth;
-    left: 50%;
-    margin-left: -@arrowWidth;
-    border-left: @arrowWidth solid transparent;
-    border-right: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid #ccc;
-    border-bottom: @arrowWidth solid @color;
-    &:after {
-      border-left: @arrowWidth - 1 solid transparent;
-      border-right: @arrowWidth - 1 solid transparent;
-      border-bottom: @arrowWidth - 1 solid #f5f5f5;
-      top: 1px;
-      left: -@arrowWidth + 1;
-    }
-  }
-  .left(@arrowWidth: 10px, @color: rgba(0,0,0,.2)) {
-    top: 50%;
-    right: -@arrowWidth;
-    margin-top: -@arrowWidth;
-    border-top: @arrowWidth solid transparent;
-    border-bottom: @arrowWidth solid transparent;
-    border-left: @arrowWidth solid #ccc;
-    border-left: @arrowWidth solid @color;
-    &:after {
-      border-top: @arrowWidth - 1 solid transparent;
-      border-bottom: @arrowWidth - 1 solid transparent;
-      border-left: @arrowWidth - 1 solid #fff;
-      bottom: -@arrowWidth + 1;
-      right: 1px;
-    }
-  }
-}
+
 
 // Grid System
 // -----------
@@ -719,6 +654,11 @@
     textarea,
     .uneditable-input {
       margin-left: 0; // override margin-left from core grid system
+    }
+
+    // Space grid-sized controls properly if multiple per line
+    .controls-row [class*="span"] + [class*="span"] {
+      margin-left: @gridGutterWidth;
     }
 
     // generate .spanX

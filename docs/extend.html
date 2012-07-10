@@ -68,96 +68,109 @@
 
     <div class="container">
 
-<!-- Masthead
+<!-- Subhead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <h1>Extending Bootstrap</h1>
-  <p class="lead">Extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap's CSS.</p>
-  <div class="navbar navbar-subnav">
-    <div class="navbar-inner">
-      <ul class="nav">
-        <li><a href="#builtWith">Built with Less</a></li>
-        <li><a href="#compiling">Compiling Bootstrap</a></li>
-      </ul>
-    </div>
-  </div>
+  <p class="lead">Extend Bootstrap to take advantage of included styles and components, as well as LESS variables and mixins.</p>
 </header>
 
 
 
-<!-- BUILT WITH LESS
+<!-- Docs nav
 ================================================== -->
-<section id="builtWith">
-  <div class="page-header">
-    <h1>Built with LESS</h1>
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <li><a href="#built-with-less">Built with LESS</a></li>
+      <li><a href="#compiling">Compiling Bootstrap</a></li>
+      <li><a href="#static-assets">Use as static assets</a></li>
+    </ul>
   </div>
-
-  <h3>Why LESS?</h3>
-  <p>Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
-
-  <h3>What's included?</h3>
-  <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
-
-  <h3>Learn more</h3>
-  <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
-  <p>Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.</p>
-
-  <h3><a href="#variables">Variables</a></h3>
-  <p>Managing colors and pixel values in CSS can be a bit of a pain, usually full of copy and paste. Not with LESS though&mdash;assign colors or pixel values as variables and change them once.</p>
-
-  <h3><a href="#mixins">Mixins</a></h3>
-  <p>Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.</p>
-
-  <h3>Operations</h3>
-  <p>Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiply, divide, add, and subtract your way to CSS sanity.</p>
-</section>
+  <div class="span9">
 
 
 
-<!-- COMPILING LESS AND BOOTSTRAP
-================================================== -->
-<section id="compiling">
-  <div class="page-header">
-    <h1>Compiling Bootstrap with LESS</h1>
-  </div>
-  <div class="alert alert-info">
-    <strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.
-  </div>
+    <!-- BUILT WITH LESS
+    ================================================== -->
+    <section id="built-with-less">
+      <div class="page-header">
+        <h1>Built with LESS</h1>
+      </div>
 
-  <h2>Tools for compiling</h2>
+      <h3>Why LESS?</h3>
+      <p>Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
 
-  <h3>Node with makefile</h3>
-  <p>Install the LESS command line compiler, JSHint, Recess, and uglify-js globally with npm by running the following command:</p>
-  <pre>$ npm install -g less jshint recess uglify-js</pre>
-  <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
-  <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
+      <h3>What's included?</h3>
+      <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
 
-  <h3>Command line</h3>
-  <p>Install the LESS command line tool via Node and run the following command:</p>
-    <pre>$ lessc ./less/bootstrap.less > bootstrap.css</pre>
-  <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
+      <h3>Learn more</h3>
+      <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
+      <p>Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.</p>
+    </section>
 
-  <h3>Javascript</h3>
-  <p><a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>&lt;head&gt;</code>.</p>
+
+
+    <!-- COMPILING LESS AND BOOTSTRAP
+    ================================================== -->
+    <section id="compiling">
+      <div class="page-header">
+        <h1>Compiling Bootstrap with LESS</h1>
+      </div>
+      <div class="alert alert-info">
+        <strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.
+      </div>
+
+      <h2>Tools for compiling</h2>
+
+      <h3>Node with makefile</h3>
+      <p>Install the LESS command line compiler, JSHint, Recess, and uglify-js globally with npm by running the following command:</p>
+      <pre>$ npm install -g less jshint recess uglify-js</pre>
+      <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
+      <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
+
+      <h3>Command line</h3>
+      <p>Install the LESS command line tool via Node and run the following command:</p>
+      <pre>$ lessc ./less/bootstrap.less > bootstrap.css</pre>
+      <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
+
+      <h3>Javascript</h3>
+      <p><a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>&lt;head&gt;</code>.</p>
 <pre class="prettyprint">
 &lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
 &lt;script src="/path/to/less.js"&gt;&lt;/script&gt;
 </pre>
-  <p>To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.</p>
+      <p>To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.</p>
 
-  <h3>Unofficial Mac app</h3>
-  <p><a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.</p>
-  <p>If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.</p>
+      <h3>Unofficial Mac app</h3>
+      <p><a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.</p>
+      <p>If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.</p>
 
-  <h3>More Mac apps</h3>
-  <h4><a href="http://crunchapp.net/" target="_blank">Crunch</a></h4>
-  <p>Crunch is a great looking LESS editor and compiler built on Adobe Air.</p>
-  <h4><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></h4>
-  <p>Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.</p>
-  <h4><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></h4>
-  <p>Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.</p>
+      <h3>More Mac apps</h3>
+      <h4><a href="http://crunchapp.net/" target="_blank">Crunch</a></h4>
+      <p>Crunch is a great looking LESS editor and compiler built on Adobe Air.</p>
+      <h4><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></h4>
+      <p>Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.</p>
+      <h4><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></h4>
+      <p>Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.</p>
 
-</section>
+    </section>
+
+
+
+    <!-- Static assets
+    ================================================== -->
+    <section id="static-assets">
+      <div class="page-header">
+        <h1>Use as static assets</h1>
+      </div>
+      <p>...</p>
+    </section>
+
+
+
+  </div>
+</div>
 
 
      <!-- Footer

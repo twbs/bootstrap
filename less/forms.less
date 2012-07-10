@@ -22,7 +22,7 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @baseLineHeight * 1.5;
+  margin-bottom: @baseLineHeight;
   font-size: @baseFontSize * 1.5;
   line-height: @baseLineHeight * 2;
   color: @grayDark;
@@ -290,7 +290,17 @@ textarea[class*="span"],
 // GRID SIZING FOR INPUTS
 // ----------------------
 
+// Grid sizes
 #grid > .input(@gridColumnWidth, @gridGutterWidth);
+
+// Control row for multiple inputs per line
+.controls-row {
+  .clearfix(); // Clear the float from controls
+}
+.controls-row [class*="span"] {
+  float: left; // Float to collapse white-space for proper grid alignment
+}
+
 
 
 
@@ -389,8 +399,8 @@ select:focus:required:invalid {
 // ------------
 
 // Allow us to put symbols and text within the input field for a cleaner look
-.input-prepend,
-.input-append {
+.input-append,
+.input-prepend {
   margin-bottom: 5px;
   font-size: 0;
   white-space: nowrap; // Prevent span and input from separating
@@ -479,14 +489,33 @@ select:focus:required:invalid {
 // SEARCH FORM
 // -----------
 
-input.search-query {
+.search-query {
   padding-right: 14px;
   padding-right: 4px \9;
   padding-left: 14px;
   padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
-  margin-bottom: 0; // remove the default margin on all inputs
+  margin-bottom: 0; // Remove the default margin on all inputs
   .border-radius(14px);
 }
+
+/* Allow for input prepend/append in search forms */
+.form-search .input-append .search-query,
+.form-search .input-prepend .search-query {
+  .border-radius(0); // Override due to specificity
+}
+.form-search .input-append .search-query {
+  .border-radius(14px 0 0 14px)
+}
+.form-search .input-append .btn {
+  .border-radius(0 14px 14px 0)
+}
+.form-search .input-prepend .search-query {
+  .border-radius(0 14px 14px 0)
+}
+.form-search .input-prepend .btn {
+  .border-radius(14px 0 0 14px)
+}
+
 
 
 

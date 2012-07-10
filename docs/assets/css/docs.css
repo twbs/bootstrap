@@ -598,6 +598,17 @@ form.bs-docs-example {
   line-height: 18px;
 }
 
+/* Tooltips */
+.bs-docs-tooltip-examples {
+  text-align: center;
+  margin: 0 0 10px;
+  list-style: none;
+}
+.bs-docs-tooltip-examples li {
+  display: inline;
+  padding: 0 10px;
+}
+
 /* Popovers */
 .bs-docs-example-popover {
   padding-bottom: 24px;
@@ -607,8 +618,8 @@ form.bs-docs-example {
   position: relative;
   display: block;
   float: left;
-  width: 210px;
-  margin: 10px;
+  width: 260px;
+  margin: 20px;
 }
 
 

@@ -362,6 +362,9 @@
   .uneditable-input {
     margin-left: 0;
   }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 30px;
+  }
   input.span12,
   textarea.span12,
   .uneditable-input.span12 {
@@ -704,6 +707,9 @@
   .uneditable-input {
     margin-left: 0;
   }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 20px;
+  }
   input.span12,
   textarea.span12,
   .uneditable-input.span12 {
@@ -797,6 +803,9 @@
   .row,
   .thumbnails {
     margin-left: 0;
+  }
+  .thumbnails > li {
+    float: none;
   }
   [class*="span"],
   .row-fluid [class*="span"] {

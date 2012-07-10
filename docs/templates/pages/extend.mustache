@@ -1,90 +1,103 @@
-<!-- Masthead
+<!-- Subhead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <h1>{{_i}}Extending Bootstrap{{/i}}</h1>
-  <p class="lead">{{_i}}Extend Bootstrap with <a href="http://lesscss.org" target="_blank">LESS</a>, a CSS preprocessor, to take advantage of the variables, mixins, and more used to build Bootstrap's CSS.{{/i}}</p>
-  <div class="navbar navbar-subnav">
-    <div class="navbar-inner">
-      <ul class="nav">
-        <li><a href="#builtWith">{{_i}}Built with Less{{/i}}</a></li>
-        <li><a href="#compiling">{{_i}}Compiling Bootstrap{{/i}}</a></li>
-      </ul>
-    </div>
-  </div>
+  <p class="lead">{{_i}}Extend Bootstrap to take advantage of included styles and components, as well as LESS variables and mixins.{{/i}}</p>
 </header>
 
 
 
-<!-- BUILT WITH LESS
+<!-- Docs nav
 ================================================== -->
-<section id="builtWith">
-  <div class="page-header">
-    <h1>{{_i}}Built with LESS{{/i}}</h1>
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <li><a href="#built-with-less">{{_i}}Built with LESS{{/i}}</a></li>
+      <li><a href="#compiling">{{_i}}Compiling Bootstrap{{/i}}</a></li>
+      <li><a href="#static-assets">{{_i}}Use as static assets{{/i}}</a></li>
+    </ul>
   </div>
-
-  <h3>{{_i}}Why LESS?{{/i}}</h3>
-  <p>{{_i}}Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.{{/i}}</p>
-
-  <h3>{{_i}}What's included?{{/i}}</h3>
-  <p>{{_i}}As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.{{/i}}</p>
-
-  <h3>{{_i}}Learn more{{/i}}</h3>
-  <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
-  <p>{{_i}}Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.{{/i}}</p>
-
-  <h3><a href="#variables">{{_i}}Variables{{/i}}</a></h3>
-  <p>{{_i}}Managing colors and pixel values in CSS can be a bit of a pain, usually full of copy and paste. Not with LESS though&mdash;assign colors or pixel values as variables and change them once.{{/i}}</p>
-
-  <h3><a href="#mixins">{{_i}}Mixins{{/i}}</a></h3>
-  <p>{{_i}}Those three border-radius declarations you need to make in regular ol' CSS? Now they're down to one line with the help of mixins, snippets of code you can reuse anywhere.{{/i}}</p>
-
-  <h3>{{_i}}Operations{{/i}}</h3>
-  <p>{{_i}}Make your grid, leading, and more super flexible by doing the math on the fly with operations. Multiply, divide, add, and subtract your way to CSS sanity.{{/i}}</p>
-</section>
+  <div class="span9">
 
 
 
-<!-- COMPILING LESS AND BOOTSTRAP
-================================================== -->
-<section id="compiling">
-  <div class="page-header">
-    <h1>{{_i}}Compiling Bootstrap with LESS{{/i}}</h1>
-  </div>
-  <div class="alert alert-info">
-    {{_i}}<strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.{{/i}}
-  </div>
+    <!-- BUILT WITH LESS
+    ================================================== -->
+    <section id="built-with-less">
+      <div class="page-header">
+        <h1>{{_i}}Built with LESS{{/i}}</h1>
+      </div>
 
-  <h2>{{_i}}Tools for compiling{{/i}}</h2>
+      <h3>{{_i}}Why LESS?{{/i}}</h3>
+      <p>{{_i}}Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.{{/i}}</p>
 
-  <h3>{{_i}}Node with makefile{{/i}}</h3>
-  <p>{{_i}}Install the LESS command line compiler, JSHint, Recess, and uglify-js globally with npm by running the following command:{{/i}}</p>
-  <pre>$ npm install -g less jshint recess uglify-js</pre>
-  <p>{{_i}}Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.{{/i}}</p>
-  <p>{{_i}}Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).{{/i}}</p>
+      <h3>{{_i}}What's included?{{/i}}</h3>
+      <p>{{_i}}As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.{{/i}}</p>
 
-  <h3>{{_i}}Command line{{/i}}</h3>
-  <p>{{_i}}Install the LESS command line tool via Node and run the following command:{{/i}}</p>
-    <pre>$ lessc ./less/bootstrap.less > bootstrap.css</pre>
-  <p>{{_i}}Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!{{/i}}</p>
+      <h3>{{_i}}Learn more{{/i}}</h3>
+      <img style="float: right; height: 36px;" src="assets/img/less-logo-large.png" alt="LESS CSS">
+      <p>{{_i}}Visit the official website at <a href="http://lesscss.org">http://lesscss.org</a> to learn more.{{/i}}</p>
+    </section>
 
-  <h3>{{_i}}Javascript{{/i}}</h3>
-  <p>{{_i}}<a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>&lt;head&gt;</code>.{{/i}}</p>
+
+
+    <!-- COMPILING LESS AND BOOTSTRAP
+    ================================================== -->
+    <section id="compiling">
+      <div class="page-header">
+        <h1>{{_i}}Compiling Bootstrap with LESS{{/i}}</h1>
+      </div>
+      <div class="alert alert-info">
+        {{_i}}<strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.{{/i}}
+      </div>
+
+      <h2>{{_i}}Tools for compiling{{/i}}</h2>
+
+      <h3>{{_i}}Node with makefile{{/i}}</h3>
+      <p>{{_i}}Install the LESS command line compiler, JSHint, Recess, and uglify-js globally with npm by running the following command:{{/i}}</p>
+      <pre>$ npm install -g less jshint recess uglify-js</pre>
+      <p>{{_i}}Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.{{/i}}</p>
+      <p>{{_i}}Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).{{/i}}</p>
+
+      <h3>{{_i}}Command line{{/i}}</h3>
+      <p>{{_i}}Install the LESS command line tool via Node and run the following command:{{/i}}</p>
+      <pre>$ lessc ./less/bootstrap.less > bootstrap.css</pre>
+      <p>{{_i}}Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!{{/i}}</p>
+
+      <h3>{{_i}}Javascript{{/i}}</h3>
+      <p>{{_i}}<a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>&lt;head&gt;</code>.{{/i}}</p>
 <pre class="prettyprint">
 &lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
 &lt;script src="/path/to/less.js"&gt;&lt;/script&gt;
 </pre>
-  <p>{{_i}}To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.{{/i}}</p>
+      <p>{{_i}}To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.{{/i}}</p>
 
-  <h3>{{_i}}Unofficial Mac app{{/i}}</h3>
-  <p>{{_i}}<a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.{{/i}}</p>
-  <p>{{_i}}If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.{{/i}}</p>
+      <h3>{{_i}}Unofficial Mac app{{/i}}</h3>
+      <p>{{_i}}<a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.{{/i}}</p>
+      <p>{{_i}}If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.{{/i}}</p>
 
-  <h3>{{_i}}More Mac apps{{/i}}</h3>
-  <h4><a href="http://crunchapp.net/" target="_blank">Crunch</a></h4>
-  <p>{{_i}}Crunch is a great looking LESS editor and compiler built on Adobe Air.{{/i}}</p>
-  <h4><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></h4>
-  <p>{{_i}}Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.{{/i}}</p>
-  <h4><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></h4>
-  <p>{{_i}}Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.{{/i}}</p>
+      <h3>{{_i}}More Mac apps{{/i}}</h3>
+      <h4><a href="http://crunchapp.net/" target="_blank">Crunch</a></h4>
+      <p>{{_i}}Crunch is a great looking LESS editor and compiler built on Adobe Air.{{/i}}</p>
+      <h4><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></h4>
+      <p>{{_i}}Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.{{/i}}</p>
+      <h4><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></h4>
+      <p>{{_i}}Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.{{/i}}</p>
 
-</section>
+    </section>
+
+
+
+    <!-- Static assets
+    ================================================== -->
+    <section id="static-assets">
+      <div class="page-header">
+        <h1>{{_i}}Use as static assets{{/i}}</h1>
+      </div>
+      <p>...</p>
+    </section>
+
+
+
+  </div>{{! /span9 }}
+</div>{{! row}}
