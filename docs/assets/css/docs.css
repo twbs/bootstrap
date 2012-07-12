@@ -602,9 +602,6 @@ form.bs-docs-example {
   font-size: 18px;
   line-height: 24px;
 }
-.bs-docs-example li {
-  line-height: 18px;
-}
 
 /* Tooltips */
 .bs-docs-tooltip-examples {
@@ -764,6 +761,9 @@ form.bs-docs-example {
   .masthead p,
   .masthead .btn {
     font-size: 24px;
+  }
+  .marketing .span4 {
+    margin-bottom: 40px;
   }
   .bs-docs-social {
     margin: 0 -20px;
