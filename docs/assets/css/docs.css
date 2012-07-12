@@ -222,19 +222,22 @@ hr.soften {
 
 .marketing {
   text-align: center;
+  color: #5a5a5a;
 }
 .marketing h1 {
   margin: 60px 0 10px;
   font-size: 60px;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1;
   letter-spacing: -1px;
 }
 .marketing h2 {
-  font-weight: 400;
-`}
+  font-weight: 200;
+  margin-bottom: 5px;
+}
 .marketing p {
-  color: #555;
+  font-size: 16px;
+  line-height: 1.5;
 }
 .marketing .marketing-byline {
   margin-bottom: 40px;
