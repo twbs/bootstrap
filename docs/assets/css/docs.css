@@ -570,6 +570,11 @@ h2 + .row {
   padding: 0;
   height: 90px;
 }
+.bs-navbar-top-example .navbar-fixed-top,
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  margin-left: 0;
+  margin-right: 0;
+}
 .bs-navbar-top-example {
   -webkit-border-radius: 0 0 4px 4px;
      -moz-border-radius: 0 0 4px 4px;

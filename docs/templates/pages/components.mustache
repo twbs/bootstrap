@@ -1158,19 +1158,19 @@
       <hr class="bs-docs-separator">
 
 
-      <h2>{{_i}}Responsive navbar{{/i}}</h2>
-      <p>{{_i}}To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.{{/i}}</p>
+      <h2>{{_i}}Subnav variation{{/i}}</h2>
+      <p>{{_i}}Modify the look of the navbar by adding <code>.navbar-subnav</code>. Perfect for a secondary nav, or just a replacement to the default dark navbar.{{/i}}</p>
       <div class="bs-docs-example">
         <div class="navbar navbar-subnav" style="position: static;">
           <div class="navbar-inner">
             <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".subnav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </a>
               <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-              <div class="nav-collapse">
+              <div class="nav-collapse subnav-collapse">
                 <ul class="nav">
                   <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
                   <li><a href="#">{{_i}}Link{{/i}}</a></li>
@@ -1210,6 +1210,11 @@
           </div><!-- /navbar-inner -->
         </div><!-- /navbar -->
       </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-subnav"&gt;
+  ...
+&lt;/div&gt;
+</pre>
 
     </section>
 
