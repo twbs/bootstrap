@@ -102,8 +102,15 @@
           <h1>Built with LESS</h1>
         </div>
 
+        <p class="lead">Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
+
         <h3>Why LESS?</h3>
-        <p>Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.</p>
+        <p>One of Bootstrap's creators wrote a quick <a href="http://www.wordsbyf.at/2012/03/08/why-less/">blog post about this</a>, summarized here:</p>
+        <ul>
+          <li>Bootstrap compiles faster ~6x faster with Less compared to Sass</li>
+          <li>Less is written in JavaScript, making it easier to us to dive in and patch compared to Ruby with Sass.</li>
+          <li>Less is more; we want to feel like we're writing CSS and making Bootstrap approachable to all.</li>
+        </ul>
 
         <h3>What's included?</h3>
         <p>As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.</p>
@@ -119,8 +126,11 @@
       ================================================== -->
       <section id="compiling">
         <div class="page-header">
-          <h1>Compiling Bootstrap with LESS</h1>
+          <h1>Compiling Bootstrap with Less</h1>
         </div>
+
+        <p class="lead">Since our CSS is written with Less and utilizes variables and mixins, it needs to be compiled for final production implementation. Here's how.</p>
+
         <div class="alert alert-info">
           <strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.
         </div>
@@ -147,8 +157,7 @@
         <p>To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.</p>
 
         <h3>Unofficial Mac app</h3>
-        <p><a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.</p>
-        <p>If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.</p>
+        <p><a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file. If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.</p>
 
         <h3>More Mac apps</h3>
         <h4><a href="http://crunchapp.net/" target="_blank">Crunch</a></h4>
@@ -156,7 +165,7 @@
         <h4><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></h4>
         <p>Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.</p>
         <h4><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></h4>
-        <p>Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.</p>
+        <p>Mac, Linux, and Windows app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.</p>
 
       </section>
 
@@ -168,6 +177,7 @@
         <div class="page-header">
           <h1>Use as static assets</h1>
         </div>
+        <p class="lead">Quickly start any web project by dropping in the compiled or minified CSS and JS. Layer on custom styles separately for easy upgrades and maintenance moving forward.</p>
         <p>...</p>
       </section>
 

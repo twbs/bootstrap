@@ -31,8 +31,15 @@
           <h1>{{_i}}Built with LESS{{/i}}</h1>
         </div>
 
+        <p class="lead">{{_i}}Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.{{/i}}</p>
+
         <h3>{{_i}}Why LESS?{{/i}}</h3>
-        <p>{{_i}}Bootstrap is made with LESS at its core, a dynamic stylesheet language created by our good friend, <a href="http://cloudhead.io">Alexis Sellier</a>. It makes developing systems-based CSS faster, easier, and more fun.{{/i}}</p>
+        <p>{{_i}}One of Bootstrap's creators wrote a quick <a href="http://www.wordsbyf.at/2012/03/08/why-less/">blog post about this</a>, summarized here:{{/i}}</p>
+        <ul>
+          <li>{{_i}}Bootstrap compiles faster ~6x faster with Less compared to Sass{{/i}}</li>
+          <li>{{_i}}Less is written in JavaScript, making it easier to us to dive in and patch compared to Ruby with Sass.{{/i}}</li>
+          <li>{{_i}}Less is more; we want to feel like we're writing CSS and making Bootstrap approachable to all.{{/i}}</li>
+        </ul>
 
         <h3>{{_i}}What's included?{{/i}}</h3>
         <p>{{_i}}As an extension of CSS, LESS includes variables, mixins for reusable snippets of code, operations for simple math, nesting, and even color functions.{{/i}}</p>
@@ -48,8 +55,11 @@
       ================================================== -->
       <section id="compiling">
         <div class="page-header">
-          <h1>{{_i}}Compiling Bootstrap with LESS{{/i}}</h1>
+          <h1>{{_i}}Compiling Bootstrap with Less{{/i}}</h1>
         </div>
+
+        <p class="lead">{{_i}}Since our CSS is written with Less and utilizes variables and mixins, it needs to be compiled for final production implementation. Here's how.{{/i}}</p>
+
         <div class="alert alert-info">
           {{_i}}<strong>Note:</strong> If you're submitting a pull request to GitHub with modified CSS, you <strong>must</strong> recompile the CSS via any of these methods.{{/i}}
         </div>
@@ -76,8 +86,7 @@
         <p>{{_i}}To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.{{/i}}</p>
 
         <h3>{{_i}}Unofficial Mac app{{/i}}</h3>
-        <p>{{_i}}<a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.{{/i}}</p>
-        <p>{{_i}}If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.{{/i}}</p>
+        <p>{{_i}}<a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file. If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.{{/i}}</p>
 
         <h3>{{_i}}More Mac apps{{/i}}</h3>
         <h4><a href="http://crunchapp.net/" target="_blank">Crunch</a></h4>
@@ -85,7 +94,7 @@
         <h4><a href="http://incident57.com/codekit/" target="_blank">CodeKit</a></h4>
         <p>{{_i}}Created by the same guy as the unofficial Mac app, CodeKit is a Mac app that compiles LESS, SASS, Stylus, and CoffeeScript.{{/i}}</p>
         <h4><a href="http://wearekiss.com/simpless" target="_blank">Simpless</a></h4>
-        <p>{{_i}}Mac, Linux, and PC app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.{{/i}}</p>
+        <p>{{_i}}Mac, Linux, and Windows app for drag and drop compiling of LESS files. Plus, the <a href="https://github.com/Paratron/SimpLESS" target="_blank">source code is on GitHub</a>.{{/i}}</p>
 
       </section>
 
@@ -97,6 +106,7 @@
         <div class="page-header">
           <h1>{{_i}}Use as static assets{{/i}}</h1>
         </div>
+        <p class="lead">Quickly start any web project by dropping in the compiled or minified CSS and JS. Layer on custom styles separately for easy upgrades and maintenance moving forward.</p>
         <p>...</p>
       </section>
 
