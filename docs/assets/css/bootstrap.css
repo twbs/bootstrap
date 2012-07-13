@@ -3950,6 +3950,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-search .search-query {
   padding: 4px 9px;
+  margin-bottom: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -4237,12 +4238,14 @@ input[type="submit"].btn.btn-mini {
 -------------------------------------------------- */
 
 .navbar-subnav .navbar-inner {
+  padding-right: 10px;
+  padding-left: 10px;
   background-color: #f9f9f9;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));
   background-image: -webkit-linear-gradient(top, #ffffff, #f1f1f1);
-  background-image: -o-linear-gradient(top, #ffffff, #f1f1f1);
   background-image: linear-gradient(to bottom, #ffffff, #f1f1f1);
   background-image: -moz-linear-gradient(top, #ffffff, #f1f1f1);
+  background-image: -o-linear-gradient(top, #ffffff, #f1f1f1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f1));
   background-repeat: repeat-x;
   border: 1px solid #e5e5e5;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff1f1f1', GradientType=0);
