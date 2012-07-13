@@ -57,6 +57,10 @@ body > .navbar-fixed-top .brand:hover {
 section {
   padding-top: 60px;
 }
+section > .page-header,
+section > .lead {
+  color: #5a5a5a;
+}
 
 /* Separators (hr) */
 .bs-docs-separator {
