@@ -106,8 +106,59 @@
         <div class="page-header">
           <h1>{{_i}}Use as static assets{{/i}}</h1>
         </div>
-        <p class="lead">Quickly start any web project by dropping in the compiled or minified CSS and JS. Layer on custom styles separately for easy upgrades and maintenance moving forward.</p>
-        <p>...</p>
+        <p class="lead">{{_i}}<a href="./getting-started.html">Quickly start</a> any web project by dropping in the compiled or minified CSS and JS. Layer on custom styles separately for easy upgrades and maintenance moving forward.{{/i}}</p>
+
+        <h3>{{_i}}Setup file structure{{/i}}</h3>
+        <p>{{_i}}Download the latest compiled Bootstrap and place into your project. For example, you might have something like this:{{/i}}</p>
+<pre class="prettyprint">
+  app/
+  ├── layouts/
+  └── templates/
+  public/
+  ├── css/
+  │   ├── bootstrap.min.css
+  ├── js/
+  │   ├── bootstrap.min.js
+  └── img/
+      ├── glyphicons-halflings.png
+      └── glyphicons-halflings-white.png
+</pre>
+
+        <h3>{{_i}}Utilize starter template{{/i}}</h3>
+        <p>{{_i}}Copy the following base HTML to get started.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href="public/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;script src="public/js/bootstrap.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+        <h3>{{_i}}Layer on custom code{{/i}}</h3>
+        <p>{{_i}}Work in your custom CSS, JS, and more as necessary to make Bootstrap your own with your own separate CSS and JS files.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;!-- Bootstrap --&gt;
+    &lt;link href="public/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;script src="public/js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;!-- Project --&gt;
+    &lt;link href="public/css/application.css" rel="stylesheet"&gt;
+    &lt;script src="public/js/application.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
       </section>
 
 
