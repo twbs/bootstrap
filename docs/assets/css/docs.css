@@ -95,9 +95,9 @@ hr.soften {
   background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* IE10+ */
   background: linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-     -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-          box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
+     -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
+          box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
 
 }
 .jumbotron h1 {
@@ -209,7 +209,7 @@ hr.soften {
   font-size: 60px;
 }
 .subhead p {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .subhead .navbar {
   display: none;
@@ -915,5 +915,3 @@ form.bs-docs-example {
   }
 
 }
-
-
