@@ -179,6 +179,14 @@ blockquote {
     small {
       text-align: right;
     }
+    small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014';
+      }
+    }
   }
 }
 

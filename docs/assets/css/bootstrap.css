@@ -763,6 +763,14 @@ blockquote.pull-right small {
   text-align: right;
 }
 
+blockquote.pull-right small:before {
+  content: '';
+}
+
+blockquote.pull-right small:after {
+  content: '\00A0 \2014';
+}
+
 q:before,
 q:after,
 blockquote:before,

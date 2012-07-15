@@ -168,7 +168,7 @@
         </div>
 
         <h3>Basic grid HTML</h3>
-        <p>For a simple two column layout, create a <code>.row</code> and add the appropriate number of <code>.span*</code> columns. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row.</p>
+        <p>For a simple two column layout, create a <code>.row</code> and add the appropriate number of <code>.span*</code> columns. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent).</p>
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
   &lt;div class="span4"&gt;...&lt;/div&gt;
@@ -207,10 +207,10 @@
             <div class="span9">
               Level 1 of column
               <div class="row show-grid">
-                <div class="span5">
+                <div class="span6">
                   Level 2
                 </div>
-                <div class="span4">
+                <div class="span3">
                   Level 2
                 </div>
               </div>
@@ -218,11 +218,11 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
-  &lt;div class="span10"&gt;
+  &lt;div class="span9"&gt;
     Level 1 column
     &lt;div class="row"&gt;
-      &lt;div class="span5"&gt;Level 2&lt;/div&gt;
-      &lt;div class="span5"&gt;Level 2&lt;/div&gt;
+      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
+      &lt;div class="span3"&gt;Level 2&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
