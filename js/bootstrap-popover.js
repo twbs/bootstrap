@@ -72,7 +72,7 @@
     }
 
   , destroy: function () {
-      this.$element.off().removeData('popover')
+      this.$element.off(this.options.ns).removeData('popover')
     }
 
   })
@@ -97,6 +97,7 @@
     placement: 'right'
   , content: ''
   , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+  , ns: '.popover'
   })
 
 }(window.jQuery);

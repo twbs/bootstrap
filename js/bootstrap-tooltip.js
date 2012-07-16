@@ -47,8 +47,8 @@
       if (this.options.trigger != 'manual') {
         eventIn  = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
         eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
-        this.$element.on(eventIn, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut, this.options.selector, $.proxy(this.leave, this))
+        this.$element.on(eventIn + this.options.ns, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on(eventOut + this.options.ns, this.options.selector, $.proxy(this.leave, this))
       }
 
       this.options.selector ?
@@ -236,7 +236,7 @@
     }
 
   , destroy: function () {
-      this.$element.off().removeData('tooltip')
+      this.$element.off(this.options.ns).removeData('tooltip')
     }
 
   }
@@ -266,6 +266,7 @@
   , title: ''
   , delay: 0
   , html: true
+  , ns: '.tooltip'
   }
 
 }(window.jQuery);
