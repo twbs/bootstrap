@@ -570,62 +570,62 @@
     // Set the container width, and override it for fixed navbars in media queries
     .container {
       width: @gridRowWidth;
-
-      .row,
-      .row-padded {
-        .clearfix();
-      }
-
-      .row {
-        margin-left: @gridGutterWidth * -1;
-
-        [class*="span"] {
-          float: left;
-          margin-left: @gridGutterWidth;
-        }
-
-        // generate .spanX and .offsetX
-        .spanX (@gridColumns);
-        .offsetX (@gridColumns);
-      }
-
-      .row-padded {
-        @_gridColumnWidth: (@gridRowWidth - @gridColumns * 2 + @gridGutterWidth) / @gridColumns - @gridGutterWidth;
-
-        margin-left: @gridColumns + 0px;
-        margin-right: @gridColumns + 0px;
-
-        [class*="span"] {
-          float: left;
-          margin-right: @gridGutterWidth;
-        }
-
-        /* Shadow functions */
-        .offsetX (@index) when (@index > 0) {
-          (~".offset@{index}") {
-            margin-left: @_gridColumnWidth * @index + @gridGutterWidth * @index;
-          }
-          .offsetX(@index - 1);
-        }
-        .offsetX (0) {}
-
-        .spanX (@index) when (@index > 0) {
-          (~".span@{index}") {
-            width: (@_gridColumnWidth * @index) + (@gridGutterWidth * (@index - 1));
-          }
-          .spanX(@index - 1);
-        }
-        .spanX (0) {}
-
-        // generate .spanX and .offsetX
-        .spanX (@gridColumns);
-        .offsetX (@gridColumns);
-
-        .omega {
-          margin-right: 0px !important;
-        }
-      }
     }
+
+    .row,
+    .row-padded {
+      .clearfix();
+    }
+
+    .row {
+      margin-left: @gridGutterWidth * -1;
+    }
+
+    [class*="span"] {
+      float: left;
+      margin-left: @gridGutterWidth;
+    }
+
+    // generate .spanX and .offsetX
+    .spanX (@gridColumns);
+    .offsetX (@gridColumns);
+
+    // .row-padded {
+    //   @_gridColumnWidth: (@gridRowWidth - @gridColumns * 2 + @gridGutterWidth) / @gridColumns - @gridGutterWidth;
+
+    //   margin-left: @gridColumns + 0px;
+    //   margin-right: @gridColumns + 0px;
+
+    //   [class*="span"] {
+    //     float: left;
+    //     margin-right: @gridGutterWidth;
+    //   }
+
+    //   /* Shadow functions */
+    //   .offsetX (@index) when (@index > 0) {
+    //     (~".offset@{index}") {
+    //       margin-left: @_gridColumnWidth * @index + @gridGutterWidth * @index;
+    //     }
+    //     .offsetX(@index - 1);
+    //   }
+    //   .offsetX (0) {}
+
+    //   .spanX (@index) when (@index > 0) {
+    //     (~".span@{index}") {
+    //       width: (@_gridColumnWidth * @index) + (@gridGutterWidth * (@index - 1));
+    //     }
+    //     .spanX(@index - 1);
+    //   }
+    //   .spanX (0) {}
+
+    //   // generate .spanX and .offsetX
+    //   .spanX (@gridColumns);
+    //   .offsetX (@gridColumns);
+
+    //   .omega {
+    //     margin-right: 0px !important;
+    //   }
+    // }
 
   }
 
