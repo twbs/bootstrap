@@ -84,7 +84,7 @@
   // Links within the dropdown menu
   a {
     display: block;
-    padding: 3px 15px;
+    padding: 3px 20px;
     clear: both;
     font-weight: normal;
     line-height: @baseLineHeight;
@@ -98,8 +98,9 @@
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus {
   text-decoration: none;
-  color: @dropdownLinkColorActive;
+  color: @dropdownLinkColorHover;
   background-color: @dropdownLinkBackgroundHover;
+  #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
 }
 
 // Active state
@@ -108,8 +109,9 @@
 .dropdown-menu .active > a:hover {
   color: @dropdownLinkColorHover;
   text-decoration: none;
-  background-color: @dropdownLinkBackgroundActive;
   outline: 0;
+  background-color: @dropdownLinkBackgroundActive;
+  #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
 }
 
 // Disabled state
@@ -124,6 +126,14 @@
   text-decoration: none;
   background-color: transparent;
   cursor: default;
+}
+
+// Tweak nav headers
+// -----------------
+// Increase padding from 15px to 20px on sides
+.dropdown .dropdown-menu .nav-header {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 // Open state for the dropdown
