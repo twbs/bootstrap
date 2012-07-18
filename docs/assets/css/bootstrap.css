@@ -3175,6 +3175,26 @@ input[type="submit"].btn.btn-mini {
   *padding-bottom: 1px;
 }
 
+.btn-link {
+  color: #0088cc;
+  cursor: pointer;
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-link:hover {
+  color: #005580;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
 .btn-group {
   position: relative;
   *margin-left: .3em;
