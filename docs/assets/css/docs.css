@@ -105,7 +105,6 @@ hr.soften {
   -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
      -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
           box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
-
 }
 .jumbotron h1 {
   font-size: 80px;
@@ -130,6 +129,24 @@ hr.soften {
 }
 .jumbotron .btn-large small {
   font-size: 14px;
+}
+
+/* Pattern overlay
+------------------------- */
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+}
+.jumbotron:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(../img/bs-docs-masthead-pattern.png);
+  opacity: .5;
 }
 
 /* Masthead (docs home)
