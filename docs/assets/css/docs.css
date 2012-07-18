@@ -93,7 +93,7 @@ hr.soften {
   padding: 40px 0;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 5px rgba(0,0,0,.25), 0 0 30px rgba(0,0,0,.075);
+  text-shadow: 0 1px 5px rgba(0,0,0,.3), 0 0 30px rgba(0,0,0,.075);
   background: #020031; /* Old browsers */
   background: -moz-linear-gradient(45deg,  #020031 0%, #6d3353 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
@@ -145,7 +145,7 @@ hr.soften {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url(../img/bs-docs-masthead-pattern.png);
+  background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
   opacity: .5;
 }
 
