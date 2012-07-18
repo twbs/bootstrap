@@ -260,10 +260,10 @@
 // Default value is `visible`, but can be changed to `hidden
 // See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
 .backface-visibility(@visibility){
-	-webkit-backface-visibility: @visibility;
-	   -moz-backface-visibility: @visibility;
-	    -ms-backface-visibility: @visibility;
-	        backface-visibility: @visibility;
+  -webkit-backface-visibility: @visibility;
+     -moz-backface-visibility: @visibility;
+      -ms-backface-visibility: @visibility;
+          backface-visibility: @visibility;
 }
 
 // Background clipping
@@ -567,18 +567,9 @@
       width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
     }
 
-    // Set the container width, and override it for fixed navbars in media queries
-    .container {
-      width: @gridRowWidth;
-    }
-
-    .row,
-    .row-padded {
-      .clearfix();
-    }
-
     .row {
       margin-left: @gridGutterWidth * -1;
+      .clearfix();
     }
 
     [class*="span"] {
@@ -586,46 +577,55 @@
       margin-left: @gridGutterWidth;
     }
 
+    // Set the container width, and override it for fixed navbars in media queries
+    .container,
+    .navbar-fixed-top .container,
+    .navbar-fixed-bottom .container { .span(@gridColumns); }
+
     // generate .spanX and .offsetX
     .spanX (@gridColumns);
     .offsetX (@gridColumns);
 
-    // .row-padded {
-    //   @_gridColumnWidth: (@gridRowWidth - @gridColumns * 2 + @gridGutterWidth) / @gridColumns - @gridGutterWidth;
+    .row-padded {
+      .clearfix();
 
-    //   margin-left: @gridColumns + 0px;
-    //   margin-right: @gridColumns + 0px;
+      @_gridColumnWidth: (@gridRowWidth - @gridColumns * 2 + @gridGutterWidth) / @gridColumns - @gridGutterWidth;
 
-    //   [class*="span"] {
-    //     float: left;
-    //     margin-right: @gridGutterWidth;
-    //   }
+      margin-left: @gridColumns + 0px;
+      margin-right: @gridColumns + 0px;
 
-    //   /* Shadow functions */
-    //   .offsetX (@index) when (@index > 0) {
-    //     (~".offset@{index}") {
-    //       margin-left: @_gridColumnWidth * @index + @gridGutterWidth * @index;
-    //     }
-    //     .offsetX(@index - 1);
-    //   }
-    //   .offsetX (0) {}
+      [class*="span"] {
+        float: left;
+        margin-left: 0px;
+        margin-right: @gridGutterWidth;
+      }
 
-    //   .spanX (@index) when (@index > 0) {
-    //     (~".span@{index}") {
-    //       width: (@_gridColumnWidth * @index) + (@gridGutterWidth * (@index - 1));
-    //     }
-    //     .spanX(@index - 1);
-    //   }
-    //   .spanX (0) {}
+      /* Shadowed function */
+      .offsetX (@index) when (@index > 0) {
+        (~".offset@{index}") {
+          margin-left: @_gridColumnWidth * @index + @gridGutterWidth * @index;
+        }
+        .offsetX(@index - 1);
+      }
+      .offsetX (0) {}
 
-    //   // generate .spanX and .offsetX
-    //   .spanX (@gridColumns);
-    //   .offsetX (@gridColumns);
+      /* Shadowed function */
+      .spanX (@index) when (@index > 0) {
+        (~".span@{index}") {
+          width: (@_gridColumnWidth * @index) + (@gridGutterWidth * (@index - 1));
+        }
+        .spanX(@index - 1);
+      }
+      .spanX (0) {}
 
-    //   .omega {
-    //     margin-right: 0px !important;
-    //   }
-    // }
+      // generate .spanX and .offsetX
+      .spanX (@gridColumns);
+      .offsetX (@gridColumns);
+
+      .omega {
+        margin-right: 0px;
+      }
+    }
 
   }
 
@@ -638,31 +638,25 @@
     .spanX (0) {}
 
     .span (@columns) {
-      @colw: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
-      width: @colw;
-      *width: @colw - (.5 / @gridRowWidth * 100 * 1%);
+      width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+      *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
     }
 
-    .container {
-
-      .row-fluid {
-        width: 100%;
-        .clearfix();
-
-        [class*="span"] {
-          .input-block-level();
-          float: left;
-          margin-left: @fluidGridGutterWidth;
-          *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
-
-          &:first-child {
-            margin-left: 0;
-          }
-        }
-
-        // generate .spanX
-        .spanX (@gridColumns);
+    .row-fluid {
+      width: 100%;
+      .clearfix();
+      [class*="span"] {
+        .input-block-level();
+        float: left;
+        margin-left: @fluidGridGutterWidth;
+        *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
       }
+      [class*="span"]:first-child {
+        margin-left: 0;
+      }
+
+      // generate .spanX
+      .spanX (@gridColumns);
     }
 
   }
