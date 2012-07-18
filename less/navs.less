@@ -213,6 +213,10 @@
   border-top-color: @linkColorHover;
   border-bottom-color: @linkColorHover;
 }
+/* move down carets for tabs */
+.nav-tabs .dropdown-toggle .caret {
+  margin-top: 8px;
+}
 
 // Active dropdown links
 // -------------------------
@@ -220,11 +224,14 @@
   border-top-color: #fff;
   border-bottom-color: #fff;
 }
+.nav-tabs .active .dropdown-toggle .caret {
+  border-top-color: @gray;
+  border-bottom-color: @gray;
+}
 
 // Active:hover dropdown links
 // -------------------------
 .nav > .dropdown.active > a:hover {
-  color: #fff;
   cursor: pointer;
 }
 
