@@ -13,56 +13,56 @@
 // Visibility utilities
 
 // For desktops (980px to 1199px)
-.visible-phone     { display: none !important; }
-.visible-tablet    { display: none !important; }
-.visible-1200      { display: none !important; }
-.hidden-phone      { }
-.hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.hidden-980        { display: none !important; }
-.hidden-1200       { }
-.visible-desktop   { display: inherit !important; }
-.visible-980       { display: inherit !important; }
+.visible-phone    { display: none !important; }
+.visible-tablet   { display: none !important; }
+.visible-wide     { display: none !important; }
+.hidden-phone     { }
+.hidden-tablet    { }
+.hidden-desktop   { display: none !important; }
+.hidden-normal    { display: none !important; }
+.hidden-wide      { }
+.visible-desktop  { display: inherit !important; }
+.visible-normal   { display: inherit !important; }
 
 // Phones only
 @media (max-width: 767px) {
   // Everything else
-  .hidden-desktop    { display: inherit !important; }
-  .hidden-980        { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
-  .visible-980       { display: none !important; }
+  .hidden-desktop   { display: inherit !important; }
+  .hidden-normal    { display: inherit !important; }
+  .visible-desktop  { display: none !important; }
+  .visible-normal   { display: none !important; }
   
   // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
+  .visible-phone    { display: inherit !important; } // Use inherit to restore previous behavior
   
   // Hide
-  .hidden-phone      { display: none !important; }
+  .hidden-phone     { display: none !important; }
 }
 
 // Tablets & small desktops only
 @media (min-width: 768px) and (max-width: 979px) {
   // Everything else
-  .hidden-desktop    { display: inherit !important; }
-  .hidden-980        { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
-  .visible-980       { display: none !important; }
+  .hidden-desktop   { display: inherit !important; }
+  .hidden-normal    { display: inherit !important; }
+  .visible-desktop  { display: none !important; }
+  .visible-normal   { display: none !important; }
   
   // Show
-  .visible-tablet    { display: inherit !important; }
+  .visible-tablet   { display: inherit !important; }
   
   // Hide
-  .hidden-tablet     { display: none !important; }
+  .hidden-tablet    { display: none !important; }
 }
 
 // Desktops (1200px and above) only
 @media (min-width: 1200px) {
   // Everything else
-  .hidden-980        { display: inherit !important; }
-  .visible-980       { display: none !important; }
+  .hidden-normal    { display: inherit !important; }
+  .visible-normal   { display: none !important; }
   
   // Show
-  .visible-1200      { display: inherit !important; }
+  .visible-wide     { display: inherit !important; }
   
   // Hide
-  .hidden-1200       { display: none !important; }
+  .hidden-wide      { display: none !important; }
 }
