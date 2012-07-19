@@ -141,6 +141,10 @@
             break
         }
 
+        if(this.options.position == 'fixed') {
+          tp.position = 'fixed'
+        }
+
         $tip
           .css(tp)
           .addClass(placement)
@@ -199,10 +203,17 @@
     }
 
   , getPosition: function (inside) {
-      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
+      var pos = $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
         width: this.$element[0].offsetWidth
       , height: this.$element[0].offsetHeight
       })
+
+      if(this.options.position == 'fixed') {
+        pos.top -= $(document).scrollTop();
+        pos.left -= $(document).scrollLeft();
+      }
+
+      return pos
     }
 
   , getTitle: function () {
@@ -265,6 +276,7 @@
   $.fn.tooltip.defaults = {
     animation: true
   , placement: 'top'
+  , position: 'absolute'
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
