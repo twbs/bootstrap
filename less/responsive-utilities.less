@@ -13,15 +13,15 @@
 // Visibility utilities
 
 // For desktops (980px to 1199px)
-.visible-phone    { display: none !important; }
+.visible-phone    { display: none !important; }     // Do not display
 .visible-tablet   { display: none !important; }
 .visible-wide     { display: none !important; }
-.hidden-phone     { }
+.hidden-phone     { }                               // Do not set initially
 .hidden-tablet    { }
 .hidden-desktop   { display: none !important; }
 .hidden-normal    { display: none !important; }
 .hidden-wide      { }
-.visible-desktop  { display: inherit !important; }
+.visible-desktop  { display: inherit !important; }  // Use inherit to restore previous behavior
 .visible-normal   { display: inherit !important; }
 
 // Phones only
@@ -33,7 +33,7 @@
   .visible-normal   { display: none !important; }
   
   // Show
-  .visible-phone    { display: inherit !important; } // Use inherit to restore previous behavior
+  .visible-phone    { display: inherit !important; }
   
   // Hide
   .hidden-phone     { display: none !important; }
