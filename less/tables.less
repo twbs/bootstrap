@@ -113,20 +113,22 @@ table {
   }
   // For first th or td in the first row in the first thead or tbody
   thead:last-child tr:last-child th:first-child,
-  tbody:last-child tr:last-child td:first-child {
+  tbody:last-child tr:last-child td:first-child,
+  tfoot:last-child tr:last-child td:first-child {
     .border-radius(0 0 0 4px);
     -webkit-border-bottom-left-radius: 4px;
             border-bottom-left-radius: 4px;
         -moz-border-radius-bottomleft: 4px;
   }
   thead:last-child tr:last-child th:last-child,
-  tbody:last-child tr:last-child td:last-child {
+  tbody:last-child tr:last-child td:last-child,
+  tfoot:last-child tr:last-child td:last-child {
     -webkit-border-bottom-right-radius: 4px;
             border-bottom-right-radius: 4px;
         -moz-border-radius-bottomright: 4px;
   }
 
-  // Special fixes to round the left border on the first td/td
+  // Special fixes to round the left border on the first td/th
   caption + thead tr:first-child th:first-child,
   caption + tbody tr:first-child td:first-child,
   colgroup + thead tr:first-child th:first-child,
@@ -143,6 +145,36 @@ table {
             border-top-right-radius: 4px;
           -moz-border-right-topleft: 4px;
   }
+
+  // Accounting for tfoot
+/*  thead:last-child tr:last-child th:first-child,
+  tbody:last-child tr:last-child td:first-child,
+  tfoot tr:last-child td:first-child {
+    -webkit-border-bottom-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        -moz-border-radius-bottomleft: 4px;
+  }
+
+  tfoot ~ tbody:last-child tr:last-child td:first-child {
+    -webkit-border-bottom-left-radius: 0;
+            border-bottom-left-radius: 0;
+        -moz-border-radius-bottomleft: 0;
+  }
+
+  thead:last-child tr:last-child th:last-child,
+  tbody:last-child tr:last-child td:last-child,
+  tfoot tr:last-child td:last-child {
+    -webkit-border-bottom-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        -moz-border-radius-bottomright: 4px;
+  }
+
+  tfoot ~ tbody:last-child tr:last-child td:last-child {
+    -webkit-border-bottom-right-radius: 0;
+            border-bottom-right-radius: 0;
+        -moz-border-radius-bottomright: 0;
+  }
+*/
 }
 
 
