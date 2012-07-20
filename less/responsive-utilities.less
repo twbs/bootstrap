@@ -12,32 +12,57 @@
 
 // Visibility utilities
 
-// For desktops
-.visible-phone     { display: none !important; }
-.visible-tablet    { display: none !important; }
-.hidden-phone      { }
-.hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.visible-desktop   { display: inherit !important; }
-
-// Tablets & small desktops only
-@media (min-width: 768px) and (max-width: 979px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important ; }
-  // Show
-  .visible-tablet    { display: inherit !important; }
-  // Hide
-  .hidden-tablet     { display: none !important; }
-}
+// For desktops (980px to 1199px)
+.visible-phone    { display: none !important; }     // Do not display
+.visible-tablet   { display: none !important; }
+.visible-wide     { display: none !important; }
+.hidden-phone     { }                               // Do not set initially
+.hidden-tablet    { }
+.hidden-desktop   { display: none !important; }
+.hidden-normal    { display: none !important; }
+.hidden-wide      { }
+.visible-desktop  { display: inherit !important; }  // Use inherit to restore previous behavior
+.visible-normal   { display: inherit !important; }
 
 // Phones only
 @media (max-width: 767px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
+  // Everything else
+  .hidden-desktop   { display: inherit !important; }
+  .hidden-normal    { display: inherit !important; }
+  .visible-desktop  { display: none !important; }
+  .visible-normal   { display: none !important; }
+  
   // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
+  .visible-phone    { display: inherit !important; }
+  
   // Hide
-  .hidden-phone      { display: none !important; }
+  .hidden-phone     { display: none !important; }
+}
+
+// Tablets & small desktops only
+@media (min-width: 768px) and (max-width: 979px) {
+  // Everything else
+  .hidden-desktop   { display: inherit !important; }
+  .hidden-normal    { display: inherit !important; }
+  .visible-desktop  { display: none !important; }
+  .visible-normal   { display: none !important; }
+  
+  // Show
+  .visible-tablet   { display: inherit !important; }
+  
+  // Hide
+  .hidden-tablet    { display: none !important; }
+}
+
+// Desktops (1200px and above) only
+@media (min-width: 1200px) {
+  // Everything else
+  .hidden-normal    { display: inherit !important; }
+  .visible-normal   { display: none !important; }
+  
+  // Show
+  .visible-wide     { display: inherit !important; }
+  
+  // Hide
+  .hidden-wide      { display: none !important; }
 }
