@@ -42,7 +42,7 @@
         </div>
 
         <h2>{{_i}}Example{{/i}}</h2>
-        <p>{{_i}}An isolated (without dropdown toggle) dropdown menu example, designed to be used with the <a href="./javascript.html#dropdowns">dropdown javascript plugin</a>.{{/i}}</p>
+        <p>{{_i}}Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown javascript plugin</a>.{{/i}}</p>
         <div class="bs-docs-example">
           <div class="dropdown clearfix">
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
@@ -69,26 +69,20 @@
 
 
         <h2>{{_i}}Markup{{/i}}</h2>
-        <p>{{_i}}Dropdowns require...{{/i}}</p>
+        <p>{{_i}}Looking at just the dropdown menu, here's the required HTML. You need to wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then just create the menu.{{/i}}</p>
 
 <pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="dropdown" id="menu1"&gt;
-    &lt;a id="dLabel" role="button" class="dropdown-toggle" data-toggle="dropdown" href="#menu1"&gt;
-      {{_i}}Dropdown{{/i}}
-      &lt;b class="caret"&gt;&lt;/b&gt;
-    &lt;/a&gt;
-    &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Action{{/i}}&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Another action{{/i}}&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Something else here{{/i}}&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="divider"&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Separated link{{/i}}&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  ...
-&lt;/ul&gt;</pre>
+&lt;div class="dropdown"&gt;
+  &lt;!-- Link or button to toggle dropdown --&gt;
+  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Action{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Another action{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Something else here{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Separated link{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
 
 
         <hr class="bs-docs-separator">
