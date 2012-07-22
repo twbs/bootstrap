@@ -175,6 +175,14 @@
 .nav-tabs.nav-stacked > li:last-child > a {
   .border-radius(0 0 4px 4px);
 }
+.tabs-left .nav-tabs.nav-stacked > li:last-child > a,
+.tabs-left .nav-tabs.nav-stacked > li:first-child > a {
+	.border-radius(4px 0 0 4px);
+}
+.tabs-right .nav-tabs.nav-stacked > li:last-child > a,
+.tabs-right .nav-tabs.nav-stacked > li:first-child > a {
+	.border-radius(0 4px 4px 0);
+}
 .nav-tabs.nav-stacked > li > a:hover {
   border-color: #ddd;
   z-index: 2;
