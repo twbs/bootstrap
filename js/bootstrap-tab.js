@@ -47,7 +47,7 @@
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
       }
 
-      if ( $this.parent('li').hasClass('active') ) return
+      if ( $this.parent('li').hasClass('active') || $this.parent('li').hasClass('disabled') ) return
 
       previous = $ul.find('.active a').last()[0]
 
