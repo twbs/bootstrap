@@ -90,5 +90,12 @@ watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
+#
+# HAUNT GITHUB ISSUES 4 FAT & MDO ONLY (O_O  )
+#
+
+haunt:
+	@haunt -s .issue-guidelines.js https://github.com/twitter/bootstrap
+
 
 .PHONY: docs watch gh-pages
