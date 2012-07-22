@@ -176,6 +176,8 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.remove()
+        
+      return this
     }
 
   , fixTitle: function () {
@@ -236,8 +238,7 @@
     }
 
   , destroy: function () {
-      this.hide()
-      this.$element.off(this.options.ns).removeData('tooltip')
+      this.hide().$element.off(this.options.ns).removeData('tooltip')
     }
 
   }
