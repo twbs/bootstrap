@@ -95,7 +95,7 @@ watch:
 #
 
 haunt:
-	@haunt -s .issue-guidelines.js https://github.com/twitter/bootstrap
+	@haunt .issue-guidelines.js https://github.com/twitter/bootstrap
 
 
 .PHONY: docs watch gh-pages
