@@ -37,7 +37,7 @@ module.exports = {
 
             pull.files.forEach(function (file) {
                 if (/^js\/[^./]+.js/.test(file.filename))            hasJS    = true
-                if (/^js\/test\/unit\/[^.]+.js/.test(file.filename)) hasTests = true
+                if (/^js\/tests\/unit\/[^.]+.js/.test(file.filename)) hasTests = true
             })
 
             assert.ok(!hasJS || hasJS && hasTests)
