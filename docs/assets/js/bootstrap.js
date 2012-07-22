@@ -1690,7 +1690,7 @@
 
       this.query = this.$element.val()
 
-      if (!this.query) {
+      if (!this.query || this.query.length < this.options.minLength) {
         return this.shown ? this.hide() : this
       }
 
@@ -1888,12 +1888,13 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , minLength: 1
   }
 
   $.fn.typeahead.Constructor = Typeahead
 
 
- /* TYPEAHEAD DATA-API
+ /*   TYPEAHEAD DATA-API
   * ================== */
 
   $(function () {
