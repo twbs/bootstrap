@@ -72,7 +72,7 @@
     }
 
   , destroy: function () {
-      this.$element.off().removeData('popover')
+      this.hide().$element.off('.' + this.type).removeData(this.type)
     }
 
   })
