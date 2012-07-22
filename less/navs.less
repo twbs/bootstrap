@@ -180,6 +180,18 @@
   border-color: #ddd;
   z-index: 2;
 }
+// Stacked tabs on the left
+.tabs-left .nav-tabs.nav-stacked > li:last-child > a,
+.tabs-left .nav-tabs.nav-stacked > li:first-child > a {
+	.border-radius(4px 0 0 4px);
+}
+// Stacked tabs on the right
+.tabs-right .nav-tabs.nav-stacked > li:last-child > a,
+.tabs-right .nav-tabs.nav-stacked > li:first-child > a {
+	.border-radius(0 4px 4px 0);
+}
+
+
 
 // Pills
 .nav-pills.nav-stacked > li > a {
