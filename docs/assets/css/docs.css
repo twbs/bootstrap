@@ -407,6 +407,8 @@ hr.soften {
 /* Custom, larger checkbox labels */
 .download .checkbox {
   padding: 6px 10px 6px 25px;
+  font-size: 13px;
+  line-height: 18px;
   color: #555;
   background-color: #f9f9f9;
   -webkit-border-radius: 3px;
