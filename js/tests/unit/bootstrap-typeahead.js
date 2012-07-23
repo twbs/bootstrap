@@ -144,14 +144,14 @@ $(function () {
 
         $input.trigger({
           type: 'keydown'
-          , keyCode: 40
+        , keyCode: 40
         })
 
         ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is now active")
 
         $input.trigger({
           type: 'keydown'
-          , keyCode: 40
+        , keyCode: 40
         })
 
         ok(typeahead.$menu.find('li').first().next().hasClass('active'), "second item is active")
