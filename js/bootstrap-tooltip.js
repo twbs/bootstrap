@@ -176,7 +176,7 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.remove()
-        
+
       return this
     }
 

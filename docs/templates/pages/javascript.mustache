@@ -14,7 +14,8 @@
   ================================================== -->
   <div class="row">
     <div class="span3 bs-docs-sidebar">
-      <ul class="nav nav-list bs-docs-sidenav">
+      <ul class="span3 nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-max-979="40" data-offset="80">
+        <li><a href="#overview">{{_i}}Overview{{/i}} <i class="icon-chevron-right"></i></a></li>
         <li><a href="#transitions">{{_i}}Transitions{{/i}} <i class="icon-chevron-right"></i></a></li>
         <li><a href="#modals">{{_i}}Modal{{/i}} <i class="icon-chevron-right"></i></a></li>
         <li><a href="#dropdowns">{{_i}}Dropdown{{/i}} <i class="icon-chevron-right"></i></a></li>
@@ -42,16 +43,51 @@
         </div>
 
         <h3>{{_i}}Individual or compiled{{/i}}</h3>
-        <p>{{_i}}If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of these plugins.{{/i}}</p>
+        <p>{{_i}}If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of the plugins listed on this page.{{/i}}</p>
 
         <h3>{{_i}}Data attributes{{/i}}</h3>
-        <p>{{_i}}...{{/i}}</p>
+        <p>{{_i}}You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.{{/i}}</p>
+
+        <p>{{_i}}That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:{{/i}}
+
+<pre class="prettyprint linenums">
+  $('body').off('.data-api')
+</pre>
+
+        <p>{{_i}}Alternatively, to target a specific plugin, just include the plugins name as a namespace along with the data-api namespace like this:{{/i}}</p>
+
+<pre class="prettyprint linenums">
+  $('body').off('.alert.data-api')
+</pre>
 
         <h3>{{_i}}Programmatic API{{/i}}</h3>
-        <p>{{_i}}...{{/i}}</p>
+        <p>{{_i}}We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.{{/i}}</p>
+
+<pre class="prettyprint linenums">
+  $(".btn.danger").button("toggle").addClass("fat")
+</pre>
+
+        <p>{{_i}}All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):{{/i}}</p>
+
+<pre class="prettyprint linenums">
+  $("#myModal").modal()                       // initialized with defaults
+  $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
+  $("#myModal").modal('show')                // initializes and invokes show immediately</p>
+</pre>
+
+        <p>{{_i}}Each plugin also exposes it's raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.{{/i}}</p>
 
 
-        {{! Thought: consider porting much of the JS readme here? }}
+        <h3>{{_i}}Events{{/i}}</h3>
+        <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and it's past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
+
+        <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.{{/i}}</p>
+
+<pre class="prettyprint linenums">
+  $('#myModal').on('show', function (e) {
+      if (!data) return e.preventDefault() // stops modal from being shown
+  })
+</pre>
 
       </section>
 
@@ -1512,23 +1548,60 @@ $('.carousel').carousel({
       ================================================== -->
       <section id="affix">
         <div class="page-header">
-          <h1>
-            {{_i}}Affix{{/i}}
-            <small>{{_i}}Make an element stick in place{{/i}}</small>
-          </h1>
+          <h1>{{_i}}Affix{{/i}} <small>bootstrap-affix.js</small></h1>
         </div>
 
-        <h2>{{_i}}...{{/i}}</h2>
-        <p>{{_i}}...{{/i}}</p>
-        <div class="bs-docs-example">
 
+        <h2>{{_i}}Example{{/i}}</h2>
+        <p>{{_i}}The subnavigation on the left is a live demo of the affix plugin.{{/i}}</p>
+        
+        <hr class="bs-docs-separator">
+
+        <h2>{{_i}}Usage{{/i}}</h2>
+
+        <h3>{{_i}}Via data attributes{{/i}}</h3>
+        <p>{{_i}}To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. When the affix offsets are satisified, an <code>.affix</code> class is added to the element. {{/i}}</p>
+
+        <pre class="prettyprint linenums">&lt;div data-spy="affix"&gt;...&lt;/body&gt;</pre>
+        
+        <div class="alert alert-info">
+          <strong>{{_i}}Heads up!{{/i}}</strong>
+          {{_i}}It's up to you to maintain the dimensions of an element when toggling between relative and fixed positions. To see how this is done, refer to this pages subnavigation.{{/i}}
         </div>
+
+        <h3>{{_i}}Via javascript{{/i}}</h3>
+        <p>{{_i}}Call the affix plugin via javascript:{{/i}}</p>
+        <pre class="prettyprint linenums">$('#navbar').affix()</pre>
+
+        <h3>{{_i}}Methods{{/i}}</h3>
+        <h4>.scrollspy('refresh')</h4>
+        <p>{{_i}}When using affix in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:{{/i}}</p>
 <pre class="prettyprint linenums">
-...
+$('[data-spy="affix"]').each(function () {
+  $(this).affix('refresh')
+});
 </pre>
-      </section>
 
-
+        <h3>{{_i}}Options{{/i}}</h3>
+        <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.{{/i}}</p>
+        <table class="table table-bordered table-striped">
+          <thead>
+           <tr>
+             <th style="width: 100px;">{{_i}}Name{{/i}}</th>
+             <th style="width: 100px;">{{_i}}type{{/i}}</th>
+             <th style="width: 50px;">{{_i}}default{{/i}}</th>
+             <th>{{_i}}description{{/i}}</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+             <td>{{_i}}offset{{/i}}</td>
+             <td>{{_i}}number | object{{/i}}</td>
+             <td>{{_i}}10{{/i}}</td>
+             <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>.{{/i}}</td>
+           </tr>
+          </tbody>
+        </table>
 
     </div>{{! /span9 }}
   </div>{{! row}}

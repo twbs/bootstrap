@@ -5501,3 +5501,7 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+
+.affix {
+  position: fixed;
+}

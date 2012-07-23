@@ -891,6 +891,7 @@ form.bs-docs-example {
   margin-right: 10px;
   background-color: #fff;
   border: 1px solid #e5e5e5;
+  margin-left: 0;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -930,11 +931,27 @@ form.bs-docs-example {
   opacity: .75;
 }
 
+.bs-docs-sidenav.affix {
+  top: 40px;
+}
+
 @media (max-width: 979px) {
+
+  .bs-docs-sidenav.affix {
+    top: 0px;
+  }
 
   .bs-docs-sidenav {
     margin-top: 30px;
     margin-right: 0;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  .bs-docs-sidenav.affix {
+    position: relative;
   }
 
 }

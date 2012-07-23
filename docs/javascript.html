@@ -85,7 +85,8 @@
   ================================================== -->
   <div class="row">
     <div class="span3 bs-docs-sidebar">
-      <ul class="nav nav-list bs-docs-sidenav">
+      <ul class="span3 nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <li><a href="#overview">Overview <i class="icon-chevron-right"></i></a></li>
         <li><a href="#transitions">Transitions <i class="icon-chevron-right"></i></a></li>
         <li><a href="#modals">Modal <i class="icon-chevron-right"></i></a></li>
         <li><a href="#dropdowns">Dropdown <i class="icon-chevron-right"></i></a></li>
@@ -113,15 +114,51 @@
         </div>
 
         <h3>Individual or compiled</h3>
-        <p>If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of these plugins.</p>
+        <p>If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of the plugins listed on this page.</p>
 
         <h3>Data attributes</h3>
-        <p>...</p>
+        <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
+
+        <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
+
+<pre class="prettyprint linenums">
+  $('body').off('.data-api')
+</pre>
+
+        <p>Alternatively, to target a specific plugin, just include the plugins name as a namespace along with the data-api namespace like this:</p>
+
+<pre class="prettyprint linenums">
+  $('body').off('.alert.data-api')
+</pre>
 
         <h3>Programmatic API</h3>
-        <p>...</p>
+        <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
+
+<pre class="prettyprint linenums">
+  $(".btn.danger").button("toggle").addClass("fat")
+</pre>
+
+        <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+
+<pre class="prettyprint linenums">
+  $("#myModal").modal()                       // initialized with defaults
+  $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
+  $("#myModal").modal('show')                // initializes and invokes show immediately</p>
+</pre>
+
+        <p>Each plugin also exposes it's raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
 
+        <h3>Events</h3>
+        <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and it's past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+
+        <p>All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.</p>
+
+<pre class="prettyprint linenums">
+  $('#myModal').on('show', function (e) {
+      if (!data) return e.preventDefault() // stops modal from being shown
+  })
+</pre>
 
       </section>
 
@@ -849,7 +886,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         <p>Toggles an element's tooltip.</p>
         <pre class="prettyprint linenums">$('#element').tooltip('toggle')</pre>
         <h4>.tooltip('destroy')</h4>
-        <p>Destroys an element's tooltip.</p>
+        <p>Hides and destroys an element's tooltip.</p>
         <pre class="prettyprint linenums">$('#element').tooltip('destroy')</pre>
       </section>
 
@@ -1004,7 +1041,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         <p>Toggles an elements popover.</p>
         <pre class="prettyprint linenums">$('#element').popover('toggle')</pre>
         <h4>.popover('destroy')</h4>
-        <p>Destroys an element's popover.</p>
+        <p>Hides and destroys an element's popover.</p>
         <pre class="prettyprint linenums">$('#element').popover('destroy')</pre>
       </section>
 
@@ -1581,23 +1618,60 @@ $('.carousel').carousel({
       ================================================== -->
       <section id="affix">
         <div class="page-header">
-          <h1>
-            Affix
-            <small>Make an element stick in place</small>
-          </h1>
+          <h1>Affix <small>bootstrap-affix.js</small></h1>
         </div>
 
-        <h2>...</h2>
-        <p>...</p>
-        <div class="bs-docs-example">
 
+        <h2>Example</h2>
+        <p>The subnavigation on the left is a live demo of the affix plugin.</p>
+        
+        <hr class="bs-docs-separator">
+
+        <h2>Usage</h2>
+
+        <h3>Via data attributes</h3>
+        <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. When the affix offsets are satisified, an <code>.affix</code> class is added to the element. </p>
+
+        <pre class="prettyprint linenums">&lt;div data-spy="affix"&gt;...&lt;/body&gt;</pre>
+        
+        <div class="alert alert-info">
+          <strong>Heads up!</strong>
+          It's up to you to maintain the dimensions of an element when toggling between relative and fixed positions. To see how this is done, refer to this pages subnavigation.
         </div>
+
+        <h3>Via javascript</h3>
+        <p>Call the affix plugin via javascript:</p>
+        <pre class="prettyprint linenums">$('#navbar').affix()</pre>
+
+        <h3>Methods</h3>
+        <h4>.scrollspy('refresh')</h4>
+        <p>When using affix in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
 <pre class="prettyprint linenums">
-...
+$('[data-spy="affix"]').each(function () {
+  $(this).affix('refresh')
+});
 </pre>
-      </section>
 
-
+        <h3>Options</h3>
+        <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.</p>
+        <table class="table table-bordered table-striped">
+          <thead>
+           <tr>
+             <th style="width: 100px;">Name</th>
+             <th style="width: 100px;">type</th>
+             <th style="width: 50px;">default</th>
+             <th>description</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+             <td>offset</td>
+             <td>number | object</td>
+             <td>10</td>
+             <td>Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>.</td>
+           </tr>
+          </tbody>
+        </table>
 
     </div>
   </div>
@@ -1642,6 +1716,7 @@ $('.carousel').carousel({
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
     <script src="assets/js/application.js"></script>
 
 
