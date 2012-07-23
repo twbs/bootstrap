@@ -211,7 +211,7 @@
         , o = this.options
 
       title = $e.attr('data-original-title')
-        || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+        || (typeof o.title == 'function' ? o.title.call(this, $e[0]) :  o.title)
 
       return title
     }
