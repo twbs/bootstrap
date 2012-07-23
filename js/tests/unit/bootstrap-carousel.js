@@ -51,5 +51,6 @@ $(function () {
 		$('#myCarousel').carousel();
 		$('#myCarousel').find('.carousel-control').click();
 		ok($('#myCarousel').find('.item').eq($('#myCarousel').find('.carousel-control').data('slide')).hasClass('active'));
+		$('#myCarousel').remove();
 	})
 })
