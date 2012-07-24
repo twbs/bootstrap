@@ -50,7 +50,6 @@
 
     if (typeof offset != 'object') offset = { x: offset, y: offset }
 
-
     affix = (offset.x == null || (position.left - scrollLeft <= offset.x))
          && (offset.y == null || (position.top  - scrollTop  <= offset.y))
 
@@ -80,7 +79,6 @@
   $.fn.affix.defaults = {
     offset: 0
   }
-
 
 
  /* AFFIX DATA-API

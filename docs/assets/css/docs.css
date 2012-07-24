@@ -886,6 +886,7 @@ form.bs-docs-example {
   min-height: 1px;
 }
 .bs-docs-sidenav {
+  width: 218px;
   margin-top: 40px;
   padding: 0;
   margin-right: 10px;
@@ -930,28 +931,36 @@ form.bs-docs-example {
   background-image: url(../img/glyphicons-halflings-white.png);
   opacity: .75;
 }
-
 .bs-docs-sidenav.affix {
   top: 40px;
 }
 
-@media (max-width: 979px) {
-
-  .bs-docs-sidenav.affix {
-    top: 0px;
-  }
-
+@media (min-width: 1200px) {
   .bs-docs-sidenav {
+    width: 258px;
+  }
+}
+
+@media (max-width: 979px) {
+  .bs-docs-sidenav {
+    top: 0px;
     margin-top: 30px;
     margin-right: 0;
   }
+}
 
+@media (min-width: 768px) and (max-width: 979px) {
+  .bs-docs-sidenav {
+    width: 166px;
+  }
 }
 
 @media (max-width: 767px) {
-
+  .bs-docs-sidenav {
+    width: auto;
+  }
   .bs-docs-sidenav.affix {
     position: relative;
+    width: auto;
   }
-
 }
