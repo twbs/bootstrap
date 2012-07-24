@@ -114,15 +114,16 @@
 .navbar-search {
   position: relative;
   float: left;
-  .navbarVerticalAlign(28px); // Vertically center in navbar
+  .navbarVerticalAlign(30px); // Vertically center in navbar
   margin-bottom: 0;
   .search-query {
     margin-bottom: 0;
-    padding: 4px 9px;
+    padding: 4px 14px;
     #font > .sans-serif(13px, normal, 1);
     color: @white;
     background-color: @navbarSearchBackground;
     border: 1px solid @navbarSearchBorder;
+    .border-radius(15px); // redeclare because of specificity of the type attribute
     .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
     .transition(none);
 
@@ -131,7 +132,7 @@
     // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
     &:focus,
     &.focused {
-      padding: 5px 10px;
+      padding: 5px 15px;
       color: @grayDark;
       text-shadow: 0 1px 0 @white;
       background-color: @navbarSearchBackgroundFocus;
