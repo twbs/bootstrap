@@ -4715,6 +4715,11 @@ input[type="submit"].btn.btn-mini {
   margin-top: 2px;
 }
 
+.modal-header h3 {
+  margin: 0;
+  line-height: 30px;
+}
+
 .modal-body {
   max-height: 400px;
   padding: 15px;
@@ -5498,11 +5503,11 @@ a.badge:hover {
 }
 
 .hide {
-  display: none !important;
+  display: none;
 }
 
 .show {
-  display: block !important;
+  display: block;
 }
 
 .invisible {
