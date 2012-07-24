@@ -1,5 +1,7 @@
-// UTILITY CLASSES
-// ---------------
+//
+// Utility classes
+// --------------------------------------------------
+
 
 // Quick floats
 .pull-right {
@@ -10,14 +12,19 @@
 }
 
 // Toggling content
+// Uses `!important` for proper specifity over things like form controls
 .hide {
-  display: none;
+  display: none !important;
 }
 .show {
-  display: block;
+  display: block !important;
 }
 
 // Visibility
 .invisible {
   visibility: hidden;
+}
+
+.affix {
+  position: fixed;
 }

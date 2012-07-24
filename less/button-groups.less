@@ -1,11 +1,13 @@
-// BUTTON GROUPS
-// -------------
+//
+// Button groups
+// --------------------------------------------------
 
 
 // Make the div behave like a button
 .btn-group {
   position: relative;
-  .clearfix(); // clears the floated buttons
+  font-size: 0; // remove as part 1 of font-size inline-block hack
+  white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
   .ie7-restore-left-whitespace();
 }
 
@@ -27,10 +29,23 @@
 // Float them, remove border radius, then re-add to first and last elements
 .btn-group > .btn {
   position: relative;
-  float: left;
   margin-left: -1px;
   .border-radius(0);
 }
+.btn-group > .btn,
+.btn-group > .dropdown-menu {
+  font-size: 13px; // redeclare as part 2 of font-size inline-block hack
+}
+
+// Reset fonts for other sizes
+.btn-group > .btn-mini,
+.btn-group > .btn-small {
+  font-size: 12px;
+}
+.btn-group > .btn-large {
+  font-size: 16px;
+}
+
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
@@ -189,3 +204,33 @@
   }
 }
 
+
+
+// Vertical button groups
+// ----------------------
+
+.btn-group-vertical {
+  display: inline-block; // makes buttons only take up the width they need
+}
+.btn-group-vertical .btn {
+  display: block;
+  float: none;
+  margin-left: 0;
+  width: 100%;
+  .border-radius(0);
+}
+.btn-group-vertical .btn + .btn {
+  margin-top: -1px;
+}
+.btn-group-vertical .btn:first-child {
+  .border-radius(4px 4px 0 0);
+}
+.btn-group-vertical .btn:last-child {
+  .border-radius(0 0 4px 4px);
+}
+.btn-group-vertical .btn-large:first-child {
+  .border-radius(6px 6px 0 0);
+}
+.btn-group-vertical .btn-large:last-child {
+  .border-radius(0 0 6px 6px);
+}
