@@ -78,55 +78,58 @@
   </div>
 </header>
 
-<div class="container">
+<div class="bs-docs-canvas">
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#download-bootstrap">Download <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#file-structure">File structure <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#contents">What's included <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#html-template">HTML template <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#examples">Examples <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#what-next">What next? <i class="icon-chevron-right"></i></a></li>
+        </ul>
+      </div>
+      <div class="span9">
 
 
-  <div class="row">
-    <div class="span3 bs-docs-sidebar">
-      <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
-        <li><a href="#download-bootstrap">Download <i class="icon-chevron-right"></i></a></li>
-        <li><a href="#file-structure">File structure <i class="icon-chevron-right"></i></a></li>
-        <li><a href="#contents">What's included <i class="icon-chevron-right"></i></a></li>
-        <li><a href="#html-template">HTML template <i class="icon-chevron-right"></i></a></li>
-        <li><a href="#examples">Examples <i class="icon-chevron-right"></i></a></li>
-        <li><a href="#what-next">What next? <i class="icon-chevron-right"></i></a></li>
-      </ul>
-    </div>
-    <div class="span9">
 
-
-
-      <!-- Download
-      ================================================== -->
-      <section id="download-bootstrap">
-        <div class="page-header">
-          <h1>1. Download</h1>
-        </div>
-        <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with our the compiled Bootstrap files.</p>
-
-        <div class="row">
-          <div class="span4">
-            <h3>Download compiled</h3>
-            <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
-            <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" >Download Bootstrap</a></p>
+        <!-- Download
+        ================================================== -->
+        <section id="download-bootstrap">
+          <div class="page-header">
+            <h1>1. Download</h1>
           </div>
-          <div class="span4">
-            <h3>Download source</h3>
-            <p>Get the original files for all CSS and Javasript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
-            <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download Bootstrap source</a></p>
+          <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with our the compiled Bootstrap files.</p>
+
+          <div class="row">
+            <div class="span4">
+              <h3>Download compiled</h3>
+              <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
+              <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" >Download Bootstrap</a></p>
+            </div>
+            <div class="span4">
+              <h3>Download source</h3>
+              <p>Get the original files for all CSS and Javasript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
+              <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download Bootstrap source</a></p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
 
 
-      <!-- File structure
-      ================================================== -->
-      <section id="file-structure">
-        <div class="page-header">
-          <h1>2. File structure</h1>
-        </div>
-        <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
+        <!-- File structure
+        ================================================== -->
+        <section id="file-structure">
+          <div class="page-header">
+            <h1>2. File structure</h1>
+          </div>
+          <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
 <pre class="prettyprint">
   bootstrap/
   ├── css/
@@ -140,67 +143,67 @@
   │   ├── glyphicons-halflings-white.png
   └── README.md
 </pre>
-        <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
-      </section>
+          <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+        </section>
 
 
 
-      <!-- Contents
-      ================================================== -->
-      <section id="contents">
-        <div class="page-header">
-          <h1>3. What's included</h1>
-        </div>
-        <p>Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
+        <!-- Contents
+        ================================================== -->
+        <section id="contents">
+          <div class="page-header">
+            <h1>3. What's included</h1>
+          </div>
+          <p>Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
 
-        <h4><a href="http://twitter.github.com/bootstrap/scaffolding.html">Scaffolding</a></h4>
-        <p>Global styles for the body to reset type and background, link styles, grid system, and two simple layouts.</p>
+          <h4><a href="http://twitter.github.com/bootstrap/scaffolding.html">Scaffolding</a></h4>
+          <p>Global styles for the body to reset type and background, link styles, grid system, and two simple layouts.</p>
 
-        <h4><a href="http://twitter.github.com/bootstrap/base-css.html">Base CSS</a></h4>
-        <p>Styles for common HTML elements like typography, code, tables, forms, and buttons. Also includes <a href="http://glyphicons.com">Glyphicons</a>, a great little icon set.</p>
+          <h4><a href="http://twitter.github.com/bootstrap/base-css.html">Base CSS</a></h4>
+          <p>Styles for common HTML elements like typography, code, tables, forms, and buttons. Also includes <a href="http://glyphicons.com">Glyphicons</a>, a great little icon set.</p>
 
-        <h4><a href="http://twitter.github.com/bootstrap/components.html">Components</a></h4>
-        <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more.</p>
+          <h4><a href="http://twitter.github.com/bootstrap/components.html">Components</a></h4>
+          <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more.</p>
 
-        <h4><a href="http://twitter.github.com/bootstrap/javascript.html">Javascript plugins</a></h4>
-        <p>Similar to Components, these Javascript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
+          <h4><a href="http://twitter.github.com/bootstrap/javascript.html">Javascript plugins</a></h4>
+          <p>Similar to Components, these Javascript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
 
-        <hr>
+          <hr>
 
-        <h3>List of components</h3>
-        <p>Together, the <strong>Components</strong> and <strong>Javascript plugins</strong> sections provide the following interface elements:</p>
-        <ul>
-          <li>Button groups</li>
-          <li>Button dropdowns</li>
-          <li>Navigational tabs, pills, and lists</li>
-          <li>Navbar</li>
-          <li>Labels</li>
-          <li>Badges</li>
-          <li>Page headers and hero unit</li>
-          <li>Thumbnails</li>
-          <li>Alerts</li>
-          <li>Progress bars</li>
-          <li>Modals</li>
-          <li>Dropdowns</li>
-          <li>Tooltips</li>
-          <li>Popovers</li>
-          <li>Accordion</li>
-          <li>Carousel</li>
-          <li>Typeahead</li>
-        </ul>
-        <p>In future guides, we may walk through these components individually in more detail. Until then, look for each of these in the documentation for information on how to utilize and customize them.</p>
-      </section>
+          <h3>List of components</h3>
+          <p>Together, the <strong>Components</strong> and <strong>Javascript plugins</strong> sections provide the following interface elements:</p>
+          <ul>
+            <li>Button groups</li>
+            <li>Button dropdowns</li>
+            <li>Navigational tabs, pills, and lists</li>
+            <li>Navbar</li>
+            <li>Labels</li>
+            <li>Badges</li>
+            <li>Page headers and hero unit</li>
+            <li>Thumbnails</li>
+            <li>Alerts</li>
+            <li>Progress bars</li>
+            <li>Modals</li>
+            <li>Dropdowns</li>
+            <li>Tooltips</li>
+            <li>Popovers</li>
+            <li>Accordion</li>
+            <li>Carousel</li>
+            <li>Typeahead</li>
+          </ul>
+          <p>In future guides, we may walk through these components individually in more detail. Until then, look for each of these in the documentation for information on how to utilize and customize them.</p>
+        </section>
 
 
 
-      <!-- HTML template
-      ================================================== -->
-      <section id="html-template">
-        <div class="page-header">
-          <h1>4. Basic HTML template</h1>
-        </div>
-        <p>With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
-        <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
+        <!-- HTML template
+        ================================================== -->
+        <section id="html-template">
+          <div class="page-header">
+            <h1>4. Basic HTML template</h1>
+          </div>
+          <p>With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
+          <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
 <pre class="prettyprint linenums">
 &lt;html&gt;
   &lt;head&gt;
@@ -211,7 +214,7 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-        <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
+          <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
 <pre class="prettyprint linenums">
 &lt;html&gt;
   &lt;head&gt;
@@ -225,61 +228,63 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-        <p><strong>And you're set!</strong> With those two files added, you can begin to develop any site or application with Bootstrap.</p>
-      </section>
+          <p><strong>And you're set!</strong> With those two files added, you can begin to develop any site or application with Bootstrap.</p>
+        </section>
 
 
 
-      <!-- Examples
-      ================================================== -->
-      <section id="examples">
-        <div class="page-header">
-          <h1>5. Examples</h1>
-        </div>
-        <p class="lead">Move beyond the base template with a few example layouts. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
-        <ul class="thumbnails bootstrap-examples">
-          <li class="span3">
-            <a class="thumbnail" href="examples/hero.html">
-              <img src="assets/img/examples/bootstrap-example-hero.jpg" alt="">
-            </a>
-            <h3>Basic marketing site</h3>
-            <p>Featuring a hero unit for a primary message and three supporting elements.</p>
-          </li>
-          <li class="span3">
-            <a class="thumbnail" href="examples/fluid.html">
-              <img src="assets/img/examples/bootstrap-example-fluid.jpg" alt="">
-            </a>
-            <h3>Fluid layout</h3>
-            <p>Uses our new responsive, fluid grid system to create a seamless liquid layout.</p>
-          </li>
-          <li class="span3">
-            <a class="thumbnail" href="examples/starter-template.html">
-              <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
-            </a>
-            <h3>Starter template</h3>
-            <p>A barebones HTML document with all the Bootstrap CSS and javascript included.</p>
-          </li>
-        </ul>
-      </section>
-
-
-
-
-      <!-- Next
-      ================================================== -->
-      <section id="what-next">
-        <div class="page-header">
-          <h1>What next?</h1>
-        </div>
-        <p class="lead">Head to the docs for information, examples, and code snippets, or take the next leap and customize Bootstrap for any upcoming project.</p>
-        <a class="btn btn-large btn-primary" href="./scaffolding.html" >Visit the Bootstrap docs</a>
-        <a class="btn btn-large" href="./download.html" style="margin-left: 5px;" >Customize Bootstrap</a>
-      </section>
+        <!-- Examples
+        ================================================== -->
+        <section id="examples">
+          <div class="page-header">
+            <h1>5. Examples</h1>
+          </div>
+          <p class="lead">Move beyond the base template with a few example layouts. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
+          <ul class="thumbnails bootstrap-examples">
+            <li class="span3">
+              <a class="thumbnail" href="examples/hero.html">
+                <img src="assets/img/examples/bootstrap-example-hero.jpg" alt="">
+              </a>
+              <h3>Basic marketing site</h3>
+              <p>Featuring a hero unit for a primary message and three supporting elements.</p>
+            </li>
+            <li class="span3">
+              <a class="thumbnail" href="examples/fluid.html">
+                <img src="assets/img/examples/bootstrap-example-fluid.jpg" alt="">
+              </a>
+              <h3>Fluid layout</h3>
+              <p>Uses our new responsive, fluid grid system to create a seamless liquid layout.</p>
+            </li>
+            <li class="span3">
+              <a class="thumbnail" href="examples/starter-template.html">
+                <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
+              </a>
+              <h3>Starter template</h3>
+              <p>A barebones HTML document with all the Bootstrap CSS and javascript included.</p>
+            </li>
+          </ul>
+        </section>
 
 
 
 
+        <!-- Next
+        ================================================== -->
+        <section id="what-next">
+          <div class="page-header">
+            <h1>What next?</h1>
+          </div>
+          <p class="lead">Head to the docs for information, examples, and code snippets, or take the next leap and customize Bootstrap for any upcoming project.</p>
+          <a class="btn btn-large btn-primary" href="./scaffolding.html" >Visit the Bootstrap docs</a>
+          <a class="btn btn-large" href="./download.html" style="margin-left: 5px;" >Customize Bootstrap</a>
+        </section>
+
+
+
+
+      </div>
     </div>
+
   </div>
 
 </div>

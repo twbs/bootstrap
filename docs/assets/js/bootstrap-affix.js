@@ -88,7 +88,7 @@
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
         , data = $spy.data()
-  
+
       data.offset = data.offset || {}
 
       data.offsetX && (data.offset.x = data.offsetX)

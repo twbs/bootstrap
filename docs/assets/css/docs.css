@@ -29,6 +29,9 @@ h3 code {
 
 body > .navbar-fixed-top {
   font-size: 13px;
+  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.15);
+     -moz-box-shadow: 0 5px 15px rgba(0,0,0,.15);
+          box-shadow: 0 5px 15px rgba(0,0,0,.15);
 }
 
 /* Change the docs' brand */
@@ -407,6 +410,8 @@ hr.soften {
 /* Custom, larger checkbox labels */
 .download .checkbox {
   padding: 6px 10px 6px 25px;
+  font-size: 13px;
+  line-height: 18px;
   color: #555;
   background-color: #f9f9f9;
   -webkit-border-radius: 3px;
@@ -962,5 +967,36 @@ form.bs-docs-example {
   .bs-docs-sidenav.affix {
     position: relative;
     width: auto;
+  }
+}
+
+@media (min-width: 979px) {
+  .masthead,
+  .subhead {
+    position: fixed;
+    top: 40px;
+    right: 0;
+    left: 0;
+  }
+  .masthead {
+    height: 380px;
+  }
+  .subhead {
+    height: 130px; /* +80px pdding */
+  }
+  .bs-docs-canvas {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+    -webkit-box-shadow: 0 -5px 15px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 -5px 15px rgba(0,0,0,.15);
+            box-shadow: 0 -5px 15px rgba(0,0,0,.15);
+  }
+  .masthead + .bs-docs-canvas {
+    top: 530px;
+  }
+  .subhead + .bs-docs-canvas {
+    top: 250px;
   }
 }
