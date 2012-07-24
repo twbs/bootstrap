@@ -896,28 +896,34 @@ form.bs-docs-example {
   padding: 0;
   margin-right: 10px;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
   margin-left: 0;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 3px rgba(0,0,0,.05);
+          box-shadow: 0 1px 3px rgba(0,0,0,.05);
 }
 .bs-docs-sidenav > li > a {
-  margin: 0;
+  margin: 0 0 -1px;
   font-size: 14px;
   padding: 9px 14px;
-  border-top: 1px solid #eee;
+  border: 1px solid #e5e5e5;
 }
 .bs-docs-sidenav > li:first-child > a {
-  border-top: 0;
-  -webkit-border-radius: 5px 5px 0 0;
-     -moz-border-radius: 5px 5px 0 0;
-          border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
 }
 .bs-docs-sidenav > li:last-child > a {
-  -webkit-border-radius: 0 0 5px 5px;
-     -moz-border-radius: 0 0 5px 5px;
-          border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.bs-docs-sidenav > .active > a {
+  border-color: #08c;
+  position: relative;
+  z-index: 2;
 }
 /* Chevrons */
 .bs-docs-sidenav .icon-chevron-right {
