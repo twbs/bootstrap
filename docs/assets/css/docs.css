@@ -940,3 +940,35 @@ form.bs-docs-example {
   }
 
 }
+
+
+@media (min-width: 979px) {
+  .masthead,
+  .subhead {
+    position: fixed;
+    top: 40px;
+    right: 0;
+    left: 0;
+  }
+  .masthead {
+    height: 400px;
+  }
+  .subhead {
+    height: 120px; /* +80px pdding */
+  }
+  .bs-docs-canvas {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+       -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
+            box-shadow: 0 1px 5px rgba(0,0,0,.5);
+  }
+  .masthead + .bs-docs-canvas {
+    top: 550px;
+  }
+  .subhead + .bs-docs-canvas {
+    top: 240px;
+  }
+}
