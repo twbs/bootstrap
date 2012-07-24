@@ -29,6 +29,9 @@ h3 code {
 
 body > .navbar-fixed-top {
   font-size: 13px;
+  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.15);
+     -moz-box-shadow: 0 5px 15px rgba(0,0,0,.15);
+          box-shadow: 0 5px 15px rgba(0,0,0,.15);
 }
 
 /* Change the docs' brand */
@@ -960,25 +963,25 @@ form.bs-docs-example {
     left: 0;
   }
   .masthead {
-    height: 400px;
+    height: 380px;
   }
   .subhead {
-    height: 120px; /* +80px pdding */
+    height: 130px; /* +80px pdding */
   }
   .bs-docs-canvas {
     position: absolute;
     width: 100%;
     z-index: 10;
     background-color: #fff;
-    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.5);
-       -moz-box-shadow: 0 1px 5px rgba(0,0,0,.5);
-            box-shadow: 0 1px 5px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 -5px 15px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 -5px 15px rgba(0,0,0,.15);
+            box-shadow: 0 -5px 15px rgba(0,0,0,.15);
   }
   .masthead + .bs-docs-canvas {
-    top: 550px;
+    top: 530px;
   }
   .subhead + .bs-docs-canvas {
-    top: 240px;
+    top: 250px;
   }
 }
 
