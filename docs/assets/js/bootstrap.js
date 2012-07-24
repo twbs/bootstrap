@@ -36,7 +36,7 @@
           , transEndEventNames = {
                'WebkitTransition' : 'webkitTransitionEnd'
             ,  'MozTransition'    : 'transitionend'
-            ,  'OTransition'      : 'otransitionend'
+            ,  'OTransition'      : 'oTransitionEnd otransitionend'
             ,  'msTransition'     : 'MSTransitionEnd'
             ,  'transition'       : 'transitionend'
             }
@@ -751,9 +751,9 @@
  /* MODAL CLASS DEFINITION
   * ====================== */
 
-  var Modal = function (content, options) {
+  var Modal = function (element, options) {
     this.options = options
-    this.$element = $(content)
+    this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
     this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
   }
@@ -1000,8 +1000,8 @@
       if (this.options.trigger != 'manual') {
         eventIn  = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
         eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
-        this.$element.on(eventIn, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut, this.options.selector, $.proxy(this.leave, this))
+        this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
       }
 
       this.options.selector ?
@@ -1129,6 +1129,8 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.remove()
+
+      return this
     }
 
   , fixTitle: function () {
@@ -1189,7 +1191,7 @@
     }
 
   , destroy: function () {
-      this.$element.off().removeData('tooltip')
+      this.hide().$element.off('.' + this.type).removeData(this.type)
     }
 
   }
@@ -1250,7 +1252,7 @@
  /* POPOVER PUBLIC CLASS DEFINITION
   * =============================== */
 
-  var Popover = function ( element, options ) {
+  var Popover = function (element, options) {
     this.init('popover', element, options)
   }
 
@@ -1296,7 +1298,7 @@
     }
 
   , destroy: function () {
-      this.$element.off().removeData('popover')
+      this.hide().$element.off('.' + this.type).removeData(this.type)
     }
 
   })
@@ -1348,15 +1350,15 @@
   "use strict"; // jshint ;_;
 
 
-  /* SCROLLSPY CLASS DEFINITION
-   * ========================== */
+ /* SCROLLSPY CLASS DEFINITION
+  * ========================== */
 
-  function ScrollSpy( element, options) {
+  function ScrollSpy(element, options) {
     var process = $.proxy(this.process, this)
       , $element = $(element).is('body') ? $(window) : $(element)
       , href
     this.options = $.extend({}, $.fn.scrollspy.defaults, options)
-    this.$scrollElement = $element.on('scroll.scroll.data-api', process)
+    this.$scrollElement = $element.on('scroll.scroll-spy.data-api', process)
     this.selector = (this.options.target
       || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
       || '') + ' .nav li > a'
@@ -1446,7 +1448,7 @@
  /* SCROLLSPY PLUGIN DEFINITION
   * =========================== */
 
-  $.fn.scrollspy = function ( option ) {
+  $.fn.scrollspy = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('scrollspy')
@@ -1466,7 +1468,7 @@
  /* SCROLLSPY DATA-API
   * ================== */
 
-  $(function () {
+  $(window).on('load', function () {
     $('[data-spy="scroll"]').each(function () {
       var $spy = $(this)
       $spy.scrollspy($spy.data())
@@ -1501,7 +1503,7 @@
  /* TAB CLASS DEFINITION
   * ==================== */
 
-  var Tab = function ( element ) {
+  var Tab = function (element) {
     this.element = $(element)
   }
 
@@ -1690,7 +1692,7 @@
 
       this.query = this.$element.val()
 
-      if (!this.query) {
+      if (!this.query || this.query.length < this.options.minLength) {
         return this.shown ? this.hide() : this
       }
 
@@ -1888,12 +1890,13 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , minLength: 1
   }
 
   $.fn.typeahead.Constructor = Typeahead
 
 
- /* TYPEAHEAD DATA-API
+ /*   TYPEAHEAD DATA-API
   * ================== */
 
   $(function () {

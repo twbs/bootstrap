@@ -26,7 +26,7 @@
  /* POPOVER PUBLIC CLASS DEFINITION
   * =============================== */
 
-  var Popover = function ( element, options ) {
+  var Popover = function (element, options) {
     this.init('popover', element, options)
   }
 
@@ -72,7 +72,7 @@
     }
 
   , destroy: function () {
-      this.$element.off().removeData('popover')
+      this.hide().$element.off('.' + this.type).removeData(this.type)
     }
 
   })
