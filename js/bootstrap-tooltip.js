@@ -123,6 +123,11 @@
 
         pos = this.getPosition(inside)
 
+        if (this.$element.data('tooltip-position') === 'fixed') {
+          pos.top -= $(window).scrollTop()
+          pos.left -= $(window).scrollLeft()
+        }
+
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
