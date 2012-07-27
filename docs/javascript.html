@@ -894,351 +894,214 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
             </div>
           </div>
 
-          <h2>Examples</h2>
-          <p>Add small overlays of content, like those on the iPad, to any element for housing secondary information. Hover over the button to trigger the popover. <strong>Requires <a href="#tooltips">Tooltip</a> to be included.</strong></p>
-
-          <h3>Static popover</h3>
-          <p>Four options are available: top, right, bottom, and left aligned.</p>
-          <div class="bs-docs-example bs-docs-example-popover">
-            <div class="popover top">
-              <div class="arrow"></div>
-              <h3 class="popover-title">Popover top</h3>
-              <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-              </div>
+          <div class="popover right">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover right</h3>
+            <div class="popover-content">
+              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
             </div>
-
-            <div class="popover right">
-              <div class="arrow"></div>
-              <h3 class="popover-title">Popover right</h3>
-              <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-              </div>
-            </div>
-
-            <div class="popover bottom">
-              <div class="arrow"></div>
-              <h3 class="popover-title">Popover bottom</h3>
-              <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-              </div>
-            </div>
-
-            <div class="popover left">
-              <div class="arrow"></div>
-              <h3 class="popover-title">Popover left</h3>
-              <div class="popover-content">
-                <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
-          </div>
-          <p>No markup shown as popovers are generated from javascript and content within a <code>data</code> attribute.</p>
-
-          <h3>Live demo</h3>
-          <div class="bs-docs-example" style="padding-bottom: 24px;">
-            <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Hover for popover</a>
           </div>
 
-
-          <hr class="bs-docs-separator">
-
-
-          <h2>Usage</h2>
-          <p>Enable popovers via javascript:</p>
-          <pre class="prettyprint linenums">$('#example').popover(options)</pre>
-
-          <h3>Options</h3>
-          <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
-          <table class="table table-bordered table-striped">
-            <thead>
-             <tr>
-               <th style="width: 100px;">Name</th>
-               <th style="width: 100px;">type</th>
-               <th style="width: 50px;">default</th>
-               <th>description</th>
-             </tr>
-            </thead>
-            <tbody>
-             <tr>
-               <td>animation</td>
-               <td>boolean</td>
-               <td>true</td>
-               <td>apply a css fade transition to the tooltip</td>
-             </tr>
-             <tr>
-               <td>html</td>
-               <td>boolean</td>
-               <td>true</td>
-               <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
-             </tr>
-             <tr>
-               <td>placement</td>
-               <td>string|function</td>
-               <td>'right'</td>
-               <td>how to position the popover - top | bottom | left | right</td>
-             </tr>
-             <tr>
-               <td>selector</td>
-               <td>string</td>
-               <td>false</td>
-               <td>if a selector is provided, tooltip objects will be delegated to the specified targets</td>
-             </tr>
-             <tr>
-               <td>trigger</td>
-               <td>string</td>
-               <td>'hover'</td>
-               <td>how popover is triggered - hover | focus | manual</td>
-             </tr>
-             <tr>
-               <td>title</td>
-               <td>string | function</td>
-               <td>''</td>
-               <td>default title value if `title` attribute isn't present</td>
-             </tr>
-             <tr>
-               <td>content</td>
-               <td>string | function</td>
-               <td>''</td>
-               <td>default content value if `data-content` attribute isn't present</td>
-             </tr>
-             <tr>
-               <td>delay</td>
-               <td>number | object</td>
-               <td>0</td>
-               <td>
-                <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
-                <p>If a number is supplied, delay is applied to both hide/show</p>
-                <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
-               </td>
-             </tr>
-            </tbody>
-          </table>
-          <div class="alert alert-info">
-            <strong>Heads up!</strong>
-            Options for individual popovers can alternatively be specified through the use of data attributes.
+          <div class="popover bottom">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover bottom</h3>
+            <div class="popover-content">
+              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
           </div>
 
-          <h3>Markup</h3>
-          <p>For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
-
-          <h3>Methods</h3>
-          <h4>$().popover(options)</h4>
-          <p>Initializes popovers for an element collection.</p>
-          <h4>.popover('show')</h4>
-          <p>Reveals an elements popover.</p>
-          <pre class="prettyprint linenums">$('#element').popover('show')</pre>
-          <h4>.popover('hide')</h4>
-          <p>Hides an elements popover.</p>
-          <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
-          <h4>.popover('toggle')</h4>
-          <p>Toggles an elements popover.</p>
-          <pre class="prettyprint linenums">$('#element').popover('toggle')</pre>
-          <h4>.popover('destroy')</h4>
-          <p>Hides and destroys an element's popover.</p>
-          <pre class="prettyprint linenums">$('#element').popover('destroy')</pre>
-        </section>
-
-
-
-        <!-- Alert
-        ================================================== -->
-        <section id="alerts">
-          <div class="page-header">
-            <h1>Alert messages <small>bootstrap-alert.js</small></h1>
+          <div class="popover left">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover left</h3>
+            <div class="popover-content">
+              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
           </div>
 
+          <div class="clearfix"></div>
+        </div>
+        <p>No markup shown as popovers are generated from javascript and content within a <code>data</code> attribute.</p>
 
-          <h2>Example alerts</h2>
-          <p>Add dismiss functionality to all alerge messages with this plugin.</p>
-          <div class="bs-docs-example">
-            <div class="alert fade in">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-            </div>
-            <p>No markup shown as popovers are generated from javascript and content within a <code>data</code> attribute.</p>
-
-            <h3>Live demo</h3>
-            <div class="bs-docs-example" style="padding-bottom: 24px;">
-              <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Hover for popover</a>
-            </div>
+        <h3>Live demo</h3>
+        <div class="bs-docs-example" style="padding-bottom: 24px;">
+          <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Hover for popover</a>
+        </div>
 
 
-            <hr class="bs-docs-separator">
+        <hr class="bs-docs-separator">
 
 
-            <h2>Usage</h2>
-            <p>Enable popovers via javascript:</p>
-            <pre class="prettyprint linenums">$('#example').popover(options)</pre>
+        <h2>Usage</h2>
+        <p>Enable popovers via javascript:</p>
+        <pre class="prettyprint linenums">$('#example').popover(options)</pre>
 
-            <h3>Options</h3>
-            <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 100px;">Name</th>
-                 <th style="width: 100px;">type</th>
-                 <th style="width: 50px;">default</th>
-                 <th>description</th>
-               </tr>
-              </thead>
-              <tbody>
-               <tr>
-                 <td>animation</td>
-                 <td>boolean</td>
-                 <td>true</td>
-                 <td>apply a css fade transition to the tooltip</td>
-               </tr>
-               <tr>
-                 <td>html</td>
-                 <td>boolean</td>
-                 <td>true</td>
-                 <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
-               </tr>
-               <tr>
-                 <td>placement</td>
-                 <td>string|function</td>
-                 <td>'right'</td>
-                 <td>how to position the popover - top | bottom | left | right</td>
-               </tr>
-               <tr>
-                 <td>selector</td>
-                 <td>string</td>
-                 <td>false</td>
-                 <td>if a selector is provided, tooltip objects will be delegated to the specified targets</td>
-               </tr>
-               <tr>
-                 <td>trigger</td>
-                 <td>string</td>
-                 <td>'hover'</td>
-                 <td>how popover is triggered - hover | focus | manual</td>
-               </tr>
-               <tr>
-                 <td>title</td>
-                 <td>string | function</td>
-                 <td>''</td>
-                 <td>default title value if `title` attribute isn't present</td>
-               </tr>
-               <tr>
-                 <td>content</td>
-                 <td>string | function</td>
-                 <td>''</td>
-                 <td>default content value if `data-content` attribute isn't present</td>
-               </tr>
-               <tr>
-                 <td>delay</td>
-                 <td>number | object</td>
-                 <td>0</td>
-                 <td>
-                  <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
-                  <p>If a number is supplied, delay is applied to both hide/show</p>
-                  <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
-                 </td>
-               </tr>
-              </tbody>
-            </table>
-            <div class="alert alert-info">
-              <strong>Heads up!</strong>
-              Options for individual popovers can alternatively be specified through the use of data attributes.
-            </div>
+        <h3>Options</h3>
+        <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
+        <table class="table table-bordered table-striped">
+          <thead>
+           <tr>
+             <th style="width: 100px;">Name</th>
+             <th style="width: 100px;">type</th>
+             <th style="width: 50px;">default</th>
+             <th>description</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+             <td>animation</td>
+             <td>boolean</td>
+             <td>true</td>
+             <td>apply a css fade transition to the tooltip</td>
+           </tr>
+           <tr>
+             <td>html</td>
+             <td>boolean</td>
+             <td>true</td>
+             <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
+           </tr>
+           <tr>
+             <td>placement</td>
+             <td>string|function</td>
+             <td>'right'</td>
+             <td>how to position the popover - top | bottom | left | right</td>
+           </tr>
+           <tr>
+             <td>selector</td>
+             <td>string</td>
+             <td>false</td>
+             <td>if a selector is provided, tooltip objects will be delegated to the specified targets</td>
+           </tr>
+           <tr>
+             <td>trigger</td>
+             <td>string</td>
+             <td>'hover'</td>
+             <td>how popover is triggered - hover | focus | manual</td>
+           </tr>
+           <tr>
+             <td>title</td>
+             <td>string | function</td>
+             <td>''</td>
+             <td>default title value if `title` attribute isn't present</td>
+           </tr>
+           <tr>
+             <td>content</td>
+             <td>string | function</td>
+             <td>''</td>
+             <td>default content value if `data-content` attribute isn't present</td>
+           </tr>
+           <tr>
+             <td>delay</td>
+             <td>number | object</td>
+             <td>0</td>
+             <td>
+              <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
+              <p>If a number is supplied, delay is applied to both hide/show</p>
+              <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+             </td>
+           </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info">
+          <strong>Heads up!</strong>
+          Options for individual popovers can alternatively be specified through the use of data attributes.
+        </div>
 
-            <h3>Markup</h3>
-            <p>For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
+        <h3>Markup</h3>
+        <p>For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.</p>
 
-            <h3>Methods</h3>
-            <h4>$().popover(options)</h4>
-            <p>Initializes popovers for an element collection.</p>
-            <h4>.popover('show')</h4>
-            <p>Reveals an elements popover.</p>
-            <pre class="prettyprint linenums">$('#element').popover('show')</pre>
-            <h4>.popover('hide')</h4>
-            <p>Hides an elements popover.</p>
-            <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
-            <h4>.popover('toggle')</h4>
-            <p>Toggles an elements popover.</p>
-            <pre class="prettyprint linenums">$('#element').popover('toggle')</pre>
-            <h4>.popover('destroy')</h4>
-            <p>Destroys an element's popover.</p>
-            <pre class="prettyprint linenums">$('#element').popover('destroy')</pre>
-          </section>
+        <h3>Methods</h3>
+        <h4>$().popover(options)</h4>
+        <p>Initializes popovers for an element collection.</p>
+        <h4>.popover('show')</h4>
+        <p>Reveals an elements popover.</p>
+        <pre class="prettyprint linenums">$('#element').popover('show')</pre>
+        <h4>.popover('hide')</h4>
+        <p>Hides an elements popover.</p>
+        <pre class="prettyprint linenums">$('#element').popover('hide')</pre>
+        <h4>.popover('toggle')</h4>
+        <p>Toggles an elements popover.</p>
+        <pre class="prettyprint linenums">$('#element').popover('toggle')</pre>
+        <h4>.popover('destroy')</h4>
+        <p>Hides and destroys an element's popover.</p>
+        <pre class="prettyprint linenums">$('#element').popover('destroy')</pre>
+      </section>
 
 
 
-          <!-- Alert
-          ================================================== -->
-          <section id="alerts">
-            <div class="page-header">
-              <h1>Alert messages <small>bootstrap-alert.js</small></h1>
-            </div>
+      <!-- Alert
+      ================================================== -->
+      <section id="alerts">
+        <div class="page-header">
+          <h1>Alert messages <small>bootstrap-alert.js</small></h1>
+        </div>
 
 
-            <h2>Example alerts</h2>
-            <p>Add dismiss functionality to all alerge messages with this plugin.</p>
-            <div class="bs-docs-example">
-              <div class="alert fade in">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-              </div>
-            </div>
+        <h2>Example alerts</h2>
+        <p>Add dismiss functionality to all alerge messages with this plugin.</p>
+        <div class="bs-docs-example">
+          <div class="alert fade in">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+          </div>
+        </div>
 
-            <div class="bs-docs-example">
-              <div class="alert alert-block alert-error fade in">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <h4 class="alert-heading">Oh snap! You got an error!</h4>
-                <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-                <p>
-                  <a class="btn btn-danger" href="#">Take this action</a> <a class="btn" href="#">Or do this</a>
-                </p>
-              </div>
-            </div>
-
-
-            <hr class="bs-docs-separator">
+        <div class="bs-docs-example">
+          <div class="alert alert-block alert-error fade in">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4 class="alert-heading">Oh snap! You got an error!</h4>
+            <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+            <p>
+              <a class="btn btn-danger" href="#">Take this action</a> <a class="btn" href="#">Or do this</a>
+            </p>
+          </div>
+        </div>
 
 
-            <h2>Usage</h2>
-            <p>Enable dismissal of an alert via javascript:</p>
-            <pre class="prettyprint linenums">$(".alert").alert()</pre>
-
-            <h3>Markup</h3>
-            <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
-            <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
-
-            <h3>Methods</h3>
-            <h4>$().alert()</h4>
-            <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
-            <h4>.alert('close')</h4>
-            <p>Closes an alert.</p>
-            <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
+        <hr class="bs-docs-separator">
 
 
-            <h3>Events</h3>
-            <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 150px;">Event</th>
-                 <th>Description</th>
-               </tr>
-              </thead>
-              <tbody>
-               <tr>
-                 <td>close</td>
-                 <td>This event fires immediately when the <code>close</code> instance method is called.</td>
-               </tr>
-               <tr>
-                 <td>closed</td>
-                 <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
-               </tr>
-              </tbody>
-            </table>
+        <h2>Usage</h2>
+        <p>Enable dismissal of an alert via javascript:</p>
+        <pre class="prettyprint linenums">$(".alert").alert()</pre>
+
+        <h3>Markup</h3>
+        <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality.</p>
+        <pre class="prettyprint linenums">&lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+
+        <h3>Methods</h3>
+        <h4>$().alert()</h4>
+        <p>Wraps all alerts with close functionality. To have your alerts animate out when closed, make sure they have the <code>.fade</code> and <code>.in</code> class already applied to them.</p>
+        <h4>.alert('close')</h4>
+        <p>Closes an alert.</p>
+        <pre class="prettyprint linenums">$(".alert").alert('close')</pre>
+
+
+        <h3>Events</h3>
+        <p>Bootstrap's alert class exposes a few events for hooking into alert functionality.</p>
+        <table class="table table-bordered table-striped">
+          <thead>
+           <tr>
+             <th style="width: 150px;">Event</th>
+             <th>Description</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+             <td>close</td>
+             <td>This event fires immediately when the <code>close</code> instance method is called.</td>
+           </tr>
+           <tr>
+             <td>closed</td>
+             <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
+           </tr>
+          </tbody>
+        </table>
 <pre class="prettyprint linenums">
 $('#my-alert').bind('closed', function () {
   // do something…
 })
 </pre>
-          </section>
+      </section>
 
 
 
