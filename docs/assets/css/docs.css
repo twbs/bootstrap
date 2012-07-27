@@ -632,6 +632,12 @@ form.bs-docs-example {
   line-height: 24px;
 }
 
+/* Images */
+.bs-docs-example-images img {
+  margin: 10px;
+  display: inline-block;
+}
+
 /* Tooltips */
 .bs-docs-tooltip-examples {
   text-align: center;
