@@ -900,9 +900,9 @@ form.bs-docs-example {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
-  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.05);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,.05);
-          box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
 }
 .bs-docs-sidenav > li > a {
   margin: 0 0 -1px;

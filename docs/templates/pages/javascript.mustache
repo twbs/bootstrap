@@ -99,34 +99,34 @@ $('#myModal').on('show', function (e) {
 
 
 
-          <!-- Modal
-          ================================================== -->
-          <section id="modals">
-            <div class="page-header">
-              <h1>{{_i}}Modals{{/i}} <small>bootstrap-modal.js</small></h1>
-            </div>
+        <!-- Modal
+        ================================================== -->
+        <section id="modals">
+          <div class="page-header">
+            <h1>{{_i}}Modals{{/i}} <small>bootstrap-modal.js</small></h1>
+          </div>
 
 
-            <h2>{{_i}}Examples{{/i}}</h2>
-            <p>{{_i}}Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.{{/i}}</p>
+          <h2>{{_i}}Examples{{/i}}</h2>
+          <p>{{_i}}Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.{{/i}}</p>
 
-            <h3>{{_i}}Static example{{/i}}</h3>
-            <p>{{_i}}A rendered modal with header, body, and set of actions in the footer.{{/i}}</p>
-            <div class="bs-docs-example" style="background-color: #f5f5f5;">
-              <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h3>{{_i}}Modal header{{/i}}</h3>
-                </div>
-                <div class="modal-body">
-                  <p>{{_i}}One fine body…{{/i}}</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#" class="btn">{{_i}}Close{{/i}}</a>
-                  <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
-                </div>
+          <h3>{{_i}}Static example{{/i}}</h3>
+          <p>{{_i}}A rendered modal with header, body, and set of actions in the footer.{{/i}}</p>
+          <div class="bs-docs-example" style="background-color: #f5f5f5;">
+            <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>{{_i}}Modal header{{/i}}</h3>
               </div>
-            </div>{{! /example }}
+              <div class="modal-body">
+                <p>{{_i}}One fine body…{{/i}}</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="btn">{{_i}}Close{{/i}}</a>
+                <a href="#" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
+              </div>
+            </div>
+          </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="modal hide fade"&gt;
   &lt;div class="modal-header"&gt;
@@ -143,43 +143,43 @@ $('#myModal').on('show', function (e) {
 &lt;/div&gt;
 </pre>
 
-            <h3>{{_i}}Live demo{{/i}}</h3>
-            <p>{{_i}}Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.{{/i}}</p>
-            <!-- sample modal content -->
-            <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 id="myModalLabel">{{_i}}Modal Heading{{/i}}</h3>
-              </div>
-              <div class="modal-body">
-                <h4>{{_i}}Text in a modal{{/i}}</h4>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
-
-                <h4>{{_i}}Popover in a modal{{/i}}</h4>
-                <p>{{_i}}This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
-
-                <h4>{{_i}}Tooltips in a modal{{/i}}</h4>
-                <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
-
-                <hr>
-
-                <h4>{{_i}}Overflowing text to show optional scrollbar{{/i}}</h4>
-                <p>{{_i}}We set a fixed <code>max-height</code> on the <code>.modal-body</code>. Watch it overflow with all this extra lorem ipsum text we've included.{{/i}}</p>
-                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#" role="button" class="btn" data-dismiss="modal" >{{_i}}Close{{/i}}</a>
-                <a href="#" role="button" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
-              </div>
+          <h3>{{_i}}Live demo{{/i}}</h3>
+          <p>{{_i}}Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.{{/i}}</p>
+          <!-- sample modal content -->
+          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 id="myModalLabel">{{_i}}Modal Heading{{/i}}</h3>
             </div>
-            <div class="bs-docs-example" style="padding-bottom: 24px;">
-              <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">{{_i}}Launch demo modal{{/i}}</a>
-            </div>{{! /example }}
+            <div class="modal-body">
+              <h4>{{_i}}Text in a modal{{/i}}</h4>
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+
+              <h4>{{_i}}Popover in a modal{{/i}}</h4>
+              <p>{{_i}}This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
+
+              <h4>{{_i}}Tooltips in a modal{{/i}}</h4>
+              <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
+
+              <hr>
+
+              <h4>{{_i}}Overflowing text to show optional scrollbar{{/i}}</h4>
+              <p>{{_i}}We set a fixed <code>max-height</code> on the <code>.modal-body</code>. Watch it overflow with all this extra lorem ipsum text we've included.{{/i}}</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" role="button" class="btn" data-dismiss="modal" >{{_i}}Close{{/i}}</a>
+              <a href="#" role="button" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
+            </div>
+          </div>
+          <div class="bs-docs-example" style="padding-bottom: 24px;">
+            <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">{{_i}}Launch demo modal{{/i}}</a>
+          </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;-- Button to trigger modal --&gt;
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;{{_i}}Launch demo modal{{/i}}&lt;/a&gt;
@@ -201,214 +201,214 @@ $('#myModal').on('show', function (e) {
 </pre>
 
 
-            <hr class="bs-docs-separator">
+          <hr class="bs-docs-separator">
 
 
-            <h2>{{_i}}Usage{{/i}}</h2>
+          <h2>{{_i}}Usage{{/i}}</h2>
 
-            <h3>{{_i}}Via data attributes{{/i}}</h3>
-            <p>{{_i}}Activate a modal without writing javascript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.{{/i}}</p>
-            <pre class="prettyprint linenums">&lt;button type="button" data-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
+          <h3>{{_i}}Via data attributes{{/i}}</h3>
+          <p>{{_i}}Activate a modal without writing javascript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.{{/i}}</p>
+          <pre class="prettyprint linenums">&lt;button type="button" data-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
 
-            <h3>{{_i}}Via javascript{{/i}}</h3>
-            <p>{{_i}}Call a modal with id <code>myModal</code> with a single line of javascript:{{/i}}</p>
-            <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
+          <h3>{{_i}}Via javascript{{/i}}</h3>
+          <p>{{_i}}Call a modal with id <code>myModal</code> with a single line of javascript:{{/i}}</p>
+          <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
 
-            <h3>{{_i}}Options{{/i}}</h3>
-            <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.{{/i}}</p>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 100px;">{{_i}}Name{{/i}}</th>
-                 <th style="width: 50px;">{{_i}}type{{/i}}</th>
-                 <th style="width: 50px;">{{_i}}default{{/i}}</th>
-                 <th>{{_i}}description{{/i}}</th>
-               </tr>
-              </thead>
-              <tbody>
-               <tr>
-                 <td>{{_i}}backdrop{{/i}}</td>
-                 <td>{{_i}}boolean{{/i}}</td>
-                 <td>{{_i}}true{{/i}}</td>
-                 <td>{{_i}}Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.{{/i}}</td>
-               </tr>
-               <tr>
-                 <td>{{_i}}keyboard{{/i}}</td>
-                 <td>{{_i}}boolean{{/i}}</td>
-                 <td>{{_i}}true{{/i}}</td>
-                 <td>{{_i}}Closes the modal when escape key is pressed{{/i}}</td>
-               </tr>
-               <tr>
-                 <td>{{_i}}show{{/i}}</td>
-                 <td>{{_i}}boolean{{/i}}</td>
-                 <td>{{_i}}true{{/i}}</td>
-                 <td>{{_i}}Shows the modal when initialized.{{/i}}</td>
-               </tr>
-               <tr>
-                 <td>{{_i}}remote{{/i}}</td>
-                 <td>{{_i}}path{{/i}}</td>
-                 <td>{{_i}}false{{/i}}</td>
-                 <td><p>{{_i}}If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:{{/i}}</p>
-                <pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre></td>
-               </tr>
-              </tbody>
-            </table>
+          <h3>{{_i}}Options{{/i}}</h3>
+          <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.{{/i}}</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">{{_i}}Name{{/i}}</th>
+               <th style="width: 50px;">{{_i}}type{{/i}}</th>
+               <th style="width: 50px;">{{_i}}default{{/i}}</th>
+               <th>{{_i}}description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}backdrop{{/i}}</td>
+               <td>{{_i}}boolean{{/i}}</td>
+               <td>{{_i}}true{{/i}}</td>
+               <td>{{_i}}Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}keyboard{{/i}}</td>
+               <td>{{_i}}boolean{{/i}}</td>
+               <td>{{_i}}true{{/i}}</td>
+               <td>{{_i}}Closes the modal when escape key is pressed{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}show{{/i}}</td>
+               <td>{{_i}}boolean{{/i}}</td>
+               <td>{{_i}}true{{/i}}</td>
+               <td>{{_i}}Shows the modal when initialized.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}remote{{/i}}</td>
+               <td>{{_i}}path{{/i}}</td>
+               <td>{{_i}}false{{/i}}</td>
+               <td><p>{{_i}}If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:{{/i}}</p>
+              <pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre></td>
+             </tr>
+            </tbody>
+          </table>
 
-            <h3{{_i}}>Methods{{/i}}</h3>
-            <h4>.modal({{_i}}options{{/i}})</h4>
-            <p>{{_i}}Activates your content as a modal. Accepts an optional options <code>object</code>.{{/i}}</p>
+          <h3{{_i}}>Methods{{/i}}</h3>
+          <h4>.modal({{_i}}options{{/i}})</h4>
+          <p>{{_i}}Activates your content as a modal. Accepts an optional options <code>object</code>.{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myModal').modal({
   keyboard: false
 })
 </pre>
-            <h4>.modal('toggle')</h4>
-            <p>{{_i}}Manually toggles a modal.{{/i}}</p>
-            <pre class="prettyprint linenums">$('#myModal').modal('toggle')</pre>
-            <h4>.modal('show')</h4>
-            <p>{{_i}}Manually opens a modal.{{/i}}</p>
-            <pre class="prettyprint linenums">$('#myModal').modal('show')</pre>
-            <h4>.modal('hide')</h4>
-            <p>{{_i}}Manually hides a modal.{{/i}}</p>
-            <pre class="prettyprint linenums">$('#myModal').modal('hide')</pre>
-            <h3>{{_i}}Events{{/i}}</h3>
-            <p>{{_i}}Bootstrap's modal class exposes a few events for hooking into modal functionality.{{/i}}</p>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 150px;">{{_i}}Event{{/i}}</th>
-                 <th>{{_i}}Description{{/i}}</th>
-               </tr>
-              </thead>
-              <tbody>
-               <tr>
-                 <td>{{_i}}show{{/i}}</td>
-                 <td>{{_i}}This event fires immediately when the <code>show</code> instance method is called.{{/i}}</td>
-               </tr>
-               <tr>
-                 <td>{{_i}}shown{{/i}}</td>
-                 <td>{{_i}}This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).{{/i}}</td>
-               </tr>
-               <tr>
-                 <td>{{_i}}hide{{/i}}</td>
-                 <td>{{_i}}This event is fired immediately when the <code>hide</code> instance method has been called.{{/i}}</td>
-               </tr>
-               <tr>
-                 <td>{{_i}}hidden{{/i}}</td>
-                 <td>{{_i}}This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).{{/i}}</td>
-               </tr>
-              </tbody>
-            </table>
+          <h4>.modal('toggle')</h4>
+          <p>{{_i}}Manually toggles a modal.{{/i}}</p>
+          <pre class="prettyprint linenums">$('#myModal').modal('toggle')</pre>
+          <h4>.modal('show')</h4>
+          <p>{{_i}}Manually opens a modal.{{/i}}</p>
+          <pre class="prettyprint linenums">$('#myModal').modal('show')</pre>
+          <h4>.modal('hide')</h4>
+          <p>{{_i}}Manually hides a modal.{{/i}}</p>
+          <pre class="prettyprint linenums">$('#myModal').modal('hide')</pre>
+          <h3>{{_i}}Events{{/i}}</h3>
+          <p>{{_i}}Bootstrap's modal class exposes a few events for hooking into modal functionality.{{/i}}</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">{{_i}}Event{{/i}}</th>
+               <th>{{_i}}Description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}show{{/i}}</td>
+               <td>{{_i}}This event fires immediately when the <code>show</code> instance method is called.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}shown{{/i}}</td>
+               <td>{{_i}}This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}hide{{/i}}</td>
+               <td>{{_i}}This event is fired immediately when the <code>hide</code> instance method has been called.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}hidden{{/i}}</td>
+               <td>{{_i}}This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).{{/i}}</td>
+             </tr>
+            </tbody>
+          </table>
 <pre class="prettyprint linenums">
 $('#myModal').on('hidden', function () {
   // {{_i}}do something…{{/i}}
 })
 </pre>
-          </section>
+        </section>
 
 
 
-          <!-- Dropdown
-          ================================================== -->
-          <section id="dropdowns">
-            <div class="page-header">
-              <h1>{{_i}}Dropdowns{{/i}} <small>bootstrap-dropdown.js</small></h1>
-            </div>
+        <!-- Dropdown
+        ================================================== -->
+        <section id="dropdowns">
+          <div class="page-header">
+            <h1>{{_i}}Dropdowns{{/i}} <small>bootstrap-dropdown.js</small></h1>
+          </div>
 
 
-            <h2>{{_i}}Examples{{/i}}</h2>
-            <p>{{_i}}Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.{{/i}}</p>
+          <h2>{{_i}}Examples{{/i}}</h2>
+          <p>{{_i}}Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.{{/i}}</p>
 
-            <h3>{{_i}}Within a navbar{{/i}}</h3>
-            <div class="bs-docs-example">
-              <div id="navbar-example" class="navbar navbar-static">
-                <div class="navbar-inner">
-                  <div class="container" style="width: auto;">
-                    <a class="brand" href="#">{{_i}}Project Name{{/i}}</a>
-                    <ul class="nav" role="navigation">
-                      <li class="dropdown">
-                        <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                          <li><a tabindex="-1" href="http://google.com">{{_i}}Action{{/i}}</a></li>
-                          <li><a tabindex="-1" href="#anotherAction">{{_i}}Another action{{/i}}</a></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
-                        </ul>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 2 {{/i}}<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                          <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <ul class="nav pull-right">
-                      <li id="fat-menu" class="dropdown">
-                        <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                          <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
+          <h3>{{_i}}Within a navbar{{/i}}</h3>
+          <div class="bs-docs-example">
+            <div id="navbar-example" class="navbar navbar-static">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto;">
+                  <a class="brand" href="#">{{_i}}Project Name{{/i}}</a>
+                  <ul class="nav" role="navigation">
+                    <li class="dropdown">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li><a tabindex="-1" href="http://google.com">{{_i}}Action{{/i}}</a></li>
+                        <li><a tabindex="-1" href="#anotherAction">{{_i}}Another action{{/i}}</a></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 2 {{/i}}<b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                        <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="nav pull-right">
+                    <li id="fat-menu" class="dropdown">
+                      <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                        <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
-              </div> <!-- /navbar-example -->
-            </div> {{! /example }}
+              </div>
+            </div> <!-- /navbar-example -->
+          </div> {{! /example }}
 
-            <h3>{{_i}}Within tabs{{/i}}</h3>
-            <div class="bs-docs-example">
-              <ul class="nav nav-pills">
-                <li class="active"><a href="#">{{_i}}Regular link{{/i}}</a></li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                  <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                    <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 2{{/i}} <b class="caret"></b></a>
-                  <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                    <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
-                  <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                    <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
-                  </ul>
-                </li>
-              </ul> <!-- /tabs -->
-            </div> {{! /example }}
-
-
-            <hr class="bs-docs-separator">
+          <h3>{{_i}}Within tabs{{/i}}</h3>
+          <div class="bs-docs-example">
+            <ul class="nav nav-pills">
+              <li class="active"><a href="#">{{_i}}Regular link{{/i}}</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 2{{/i}} <b class="caret"></b></a>
+                <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
+                <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </li>
+            </ul> <!-- /tabs -->
+          </div> {{! /example }}
 
 
-            <h2>{{_i}}Usage{{/i}}</h2>
+          <hr class="bs-docs-separator">
 
-            <h3>{{_i}}Via data attributes{{/i}}</h3>
-            <p>{{_i}}Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.{{/i}}</p>
+
+          <h2>{{_i}}Usage{{/i}}</h2>
+
+          <h3>{{_i}}Via data attributes{{/i}}</h3>
+          <p>{{_i}}Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
   &lt;a class="dropdown-toggle" href="#"&gt;Dropdown trigger&lt;/a&gt;
@@ -417,7 +417,7 @@ $('#myModal').on('hidden', function () {
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-            <p>{{_i}}To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.{{/i}}</p>
+          <p>{{_i}}To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
   &lt;a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html"&gt;
@@ -430,185 +430,185 @@ $('#myModal').on('hidden', function () {
 &lt;/div&gt;
 </pre>
 
-            <h3>{{_i}}Via javascript{{/i}}</h3>
-            <p>{{_i}}Call the dropdowns via javascript:{{/i}}</p>
-            <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
+          <h3>{{_i}}Via javascript{{/i}}</h3>
+          <p>{{_i}}Call the dropdowns via javascript:{{/i}}</p>
+          <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
 
-            <h3>{{_i}}Options{{/i}}</h3>
-            <p><em>{{_i}}None{{/i}}</em></p>
+          <h3>{{_i}}Options{{/i}}</h3>
+          <p><em>{{_i}}None{{/i}}</em></p>
 
-            <h3>{{_i}}Methods{{/i}}</h3>
-            <h4>$().dropdown()</h4>
-            <p>{{_i}}A programatic api for activating menus for a given navbar or tabbed navigation.{{/i}}</p>
-          </section>
-
-
-
-          <!-- ScrollSpy
-          ================================================== -->
-          <section id="scrollspy">
-            <div class="page-header">
-              <h1>{{_i}}ScrollSpy{{/i}} <small>bootstrap-scrollspy.js</small></h1>
-            </div>
+          <h3>{{_i}}Methods{{/i}}</h3>
+          <h4>$().dropdown()</h4>
+          <p>{{_i}}A programatic api for activating menus for a given navbar or tabbed navigation.{{/i}}</p>
+        </section>
 
 
-            <h2>{{_i}}Example in navbar{{/i}}</h2>
-            <p>{{_i}}The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.{{/i}}</p>
-            <div class="bs-docs-example">
-              <div id="navbarExample" class="navbar navbar-static">
-                <div class="navbar-inner">
-                  <div class="container" style="width: auto;">
-                    <a class="brand" href="#">{{_i}}Project Name{{/i}}</a>
-                    <ul class="nav">
-                      <li><a href="#fat">@fat</a></li>
-                      <li><a href="#mdo">@mdo</a></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#one">{{_i}}one{{/i}}</a></li>
-                          <li><a href="#two">{{_i}}two{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#three">{{_i}}three{{/i}}</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
+
+        <!-- ScrollSpy
+        ================================================== -->
+        <section id="scrollspy">
+          <div class="page-header">
+            <h1>{{_i}}ScrollSpy{{/i}} <small>bootstrap-scrollspy.js</small></h1>
+          </div>
+
+
+          <h2>{{_i}}Example in navbar{{/i}}</h2>
+          <p>{{_i}}The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div id="navbarExample" class="navbar navbar-static">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto;">
+                  <a class="brand" href="#">{{_i}}Project Name{{/i}}</a>
+                  <ul class="nav">
+                    <li><a href="#fat">@fat</a></li>
+                    <li><a href="#mdo">@mdo</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#one">{{_i}}one{{/i}}</a></li>
+                        <li><a href="#two">{{_i}}two{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#three">{{_i}}three{{/i}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
-                <h4 id="fat">@fat</h4>
-                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-                <h4 id="mdo">@mdo</h4>
-                <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
-                <h4 id="one">one</h4>
-                <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
-                <h4 id="two">two</h4>
-                <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
-                <h4 id="three">three</h4>
-                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-                <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
-                </p>
-              </div>
-            </div>{{! /example }}
-
-
-            <hr class="bs-docs-separator">
-
-
-            <h2>{{_i}}Usage{{/i}}</h2>
-
-            <h3>{{_i}}Via data attributes{{/i}}</h3>
-            <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use.{{/i}}</p>
-            <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
-
-            <h3>{{_i}}Via javascript{{/i}}</h3>
-            <p>{{_i}}Call the scrollspy via javascript:{{/i}}</p>
-            <pre class="prettyprint linenums">$('#navbar').scrollspy()</pre>
-
-            <div class="alert alert-info">
-              <strong>{{_i}}Heads up!{{/i}}</strong>
-              {{_i}}Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.{{/i}}
             </div>
+            <div data-spy="scroll" data-target="#navbarExample" data-offset="0" class="scrollspy-example">
+              <h4 id="fat">@fat</h4>
+              <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+              <h4 id="mdo">@mdo</h4>
+              <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+              <h4 id="one">one</h4>
+              <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+              <h4 id="two">two</h4>
+              <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+              <h4 id="three">three</h4>
+              <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+              <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+              </p>
+            </div>
+          </div>{{! /example }}
 
-            <h3>{{_i}}Methods{{/i}}</h3>
-            <h4>.scrollspy('refresh')</h4>
-            <p>{{_i}}When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:{{/i}}</p>
+
+          <hr class="bs-docs-separator">
+
+
+          <h2>{{_i}}Usage{{/i}}</h2>
+
+          <h3>{{_i}}Via data attributes{{/i}}</h3>
+          <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use.{{/i}}</p>
+          <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
+
+          <h3>{{_i}}Via javascript{{/i}}</h3>
+          <p>{{_i}}Call the scrollspy via javascript:{{/i}}</p>
+          <pre class="prettyprint linenums">$('#navbar').scrollspy()</pre>
+
+          <div class="alert alert-info">
+            <strong>{{_i}}Heads up!{{/i}}</strong>
+            {{_i}}Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.{{/i}}
+          </div>
+
+          <h3>{{_i}}Methods{{/i}}</h3>
+          <h4>.scrollspy('refresh')</h4>
+          <p>{{_i}}When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:{{/i}}</p>
 <pre class="prettyprint linenums">
 $('[data-spy="scroll"]').each(function () {
   var $spy = $(this).scrollspy('refresh')
 });
 </pre>
 
-            <h3>{{_i}}Options{{/i}}</h3>
-            <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.{{/i}}</p>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 100px;">{{_i}}Name{{/i}}</th>
-                 <th style="width: 100px;">{{_i}}type{{/i}}</th>
-                 <th style="width: 50px;">{{_i}}default{{/i}}</th>
-                 <th>{{_i}}description{{/i}}</th>
-               </tr>
-              </thead>
-              <tbody>
-               <tr>
-                 <td>{{_i}}offset{{/i}}</td>
-                 <td>{{_i}}number{{/i}}</td>
-                 <td>{{_i}}10{{/i}}</td>
-                 <td>{{_i}}Pixels to offset from top when calculating position of scroll.{{/i}}</td>
-               </tr>
-              </tbody>
-            </table>
+          <h3>{{_i}}Options{{/i}}</h3>
+          <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.{{/i}}</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">{{_i}}Name{{/i}}</th>
+               <th style="width: 100px;">{{_i}}type{{/i}}</th>
+               <th style="width: 50px;">{{_i}}default{{/i}}</th>
+               <th>{{_i}}description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}offset{{/i}}</td>
+               <td>{{_i}}number{{/i}}</td>
+               <td>{{_i}}10{{/i}}</td>
+               <td>{{_i}}Pixels to offset from top when calculating position of scroll.{{/i}}</td>
+             </tr>
+            </tbody>
+          </table>
 
-            <h3>{{_i}}Events{{/i}}</h3>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 150px;">{{_i}}Event{{/i}}</th>
-                 <th>{{_i}}Description{{/i}}</th>
-               </tr>
-              </thead>
-              <tbody>
-               <tr>
-                 <td>{{_i}}activate{{/i}}</td>
-                 <td>{{_i}}This event fires whenever a new item becomes activated by the scrollspy.{{/i}}</td>
-              </tr>
-              </tbody>
-            </table>
-          </section>
-
-
-
-          <!-- Tabs
-          ================================================== -->
-          <section id="tabs">
-            <div class="page-header">
-              <h1>{{_i}}Togglable tabs{{/i}} <small>bootstrap-tab.js</small></h1>
-            </div>
+          <h3>{{_i}}Events{{/i}}</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">{{_i}}Event{{/i}}</th>
+               <th>{{_i}}Description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}activate{{/i}}</td>
+               <td>{{_i}}This event fires whenever a new item becomes activated by the scrollspy.{{/i}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
 
 
-            <h2>{{_i}}Example tabs{{/i}}</h2>
-            <p>{{_i}}Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.{{/i}}</p>
-            <div class="bs-docs-example">
-              <ul id="myTab" class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab">{{_i}}Home{{/i}}</a></li>
-                <li><a href="#profile" data-toggle="tab">{{_i}}Profile{{/i}}</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
-                    <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="home">
-                  <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                </div>
-                <div class="tab-pane fade" id="profile">
-                  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-                </div>
-                <div class="tab-pane fade" id="dropdown1">
-                  <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-                </div>
-                <div class="tab-pane fade" id="dropdown2">
-                  <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-                </div>
+
+        <!-- Tabs
+        ================================================== -->
+        <section id="tabs">
+          <div class="page-header">
+            <h1>{{_i}}Togglable tabs{{/i}} <small>bootstrap-tab.js</small></h1>
+          </div>
+
+
+          <h2>{{_i}}Example tabs{{/i}}</h2>
+          <p>{{_i}}Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.{{/i}}</p>
+          <div class="bs-docs-example">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#home" data-toggle="tab">{{_i}}Home{{/i}}</a></li>
+              <li><a href="#profile" data-toggle="tab">{{_i}}Profile{{/i}}</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
+                  <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="home">
+                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
               </div>
-            </div>{{! /example }}
+              <div class="tab-pane fade" id="profile">
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+              </div>
+              <div class="tab-pane fade" id="dropdown1">
+                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+              </div>
+              <div class="tab-pane fade" id="dropdown2">
+                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+              </div>
+            </div>
+          </div>{{! /example }}
 
 
-            <hr class="bs-docs-separator">
+          <hr class="bs-docs-separator">
 
 
-            <h2>{{_i}}Usage{{/i}}</h2>
-            <p>{{_i}}Enable tabbable tabs via javascript (each tab needs to be activated individually):{{/i}}</p>
+          <h2>{{_i}}Usage{{/i}}</h2>
+          <p>{{_i}}Enable tabbable tabs via javascript (each tab needs to be activated individually):{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myTab a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
 })</pre>
-            <p>{{_i}}You can activate individual tabs in several ways:{{/i}}</p>
+          <p>{{_i}}You can activate individual tabs in several ways:{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myTab a[href="#profile"]').tab('show'); // Select tab by name
 $('#myTab a:first').tab('show'); // Select first tab
@@ -616,8 +616,8 @@ $('#myTab a:last').tab('show'); // Select last tab
 $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
 </pre>
 
-            <h3>{{_i}}Markup{{/i}}</h3>
-            <p>{{_i}}You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the bootstrap tab styling.{{/i}}</p>
+          <h3>{{_i}}Markup{{/i}}</h3>
+          <p>{{_i}}You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
@@ -626,11 +626,11 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
   &lt;li&gt;&lt;a href="#settings" data-toggle="tab"&gt;{{_i}}Settings{{/i}}&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
 
-            <h3>{{_i}}Methods{{/i}}</h3>
-            <h4>$().tab</h4>
-            <p>
-              {{_i}}Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.{{/i}}
-            </p>
+          <h3>{{_i}}Methods{{/i}}</h3>
+          <h4>$().tab</h4>
+          <p>
+            {{_i}}Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.{{/i}}
+          </p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs" id="myTab"&gt;
   &lt;li class="active"&gt;&lt;a href="#home"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
@@ -653,25 +653,25 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
 &lt;/script&gt;
 </pre>
 
-            <h3>{{_i}}Events{{/i}}</h3>
-            <table class="table table-bordered table-striped">
-              <thead>
-               <tr>
-                 <th style="width: 150px;">{{_i}}Event{{/i}}</th>
-                 <th>{{_i}}Description{{/i}}</th>
-               </tr>
-              </thead>
-              <tbody>
-               <tr>
-                 <td>{{_i}}show{{/i}}</td>
-                 <td>{{_i}}This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.{{/i}}</td>
-              </tr>
-              <tr>
-                 <td>{{_i}}shown{{/i}}</td>
-                 <td>{{_i}}This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.{{/i}}</td>
-               </tr>
-              </tbody>
-            </table>
+          <h3>{{_i}}Events{{/i}}</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 150px;">{{_i}}Event{{/i}}</th>
+               <th>{{_i}}Description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}show{{/i}}</td>
+               <td>{{_i}}This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.{{/i}}</td>
+            </tr>
+            <tr>
+               <td>{{_i}}shown{{/i}}</td>
+               <td>{{_i}}This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.{{/i}}</td>
+             </tr>
+            </tbody>
+          </table>
 <pre class="prettyprint linenums">
 $('a[data-toggle="tab"]').on('shown', function (e) {
   e.target // activated tab
