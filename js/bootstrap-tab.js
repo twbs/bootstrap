@@ -49,7 +49,7 @@
 
       if ( $this.parent('li').hasClass('active') ) return
 
-      previous = $ul.find('.active a').last()[0]
+      previous = $ul.find('.active :first-child').last()[0]
 
       e = $.Event('show', {
         relatedTarget: previous
