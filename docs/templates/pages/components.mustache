@@ -51,16 +51,7 @@
                 <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
                 <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
                 <li class="divider"></li>
-                <li class="dropdown-submenu">
-                  <a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                  </ul>
-                </li>
+                <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
               </ul>
             </div>
           </div>{{! /example }}
@@ -91,10 +82,50 @@
 </pre>
 
           <h2>{{_i}}Options{{/i}}</h2>
-          <p>{{_i}}...{{/i}}</p>
+          <p>{{_i}}Align menus to the right and add include additional levels of dropdowns.{{/i}}</p>
 
           <h3>{{_i}}Aligning the menus{{/i}}</h3>
-          <p>{{_i}}...{{/i}}</p>
+          <p>{{_i}}Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel"&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+
+          <h3>{{_i}}Sub menus on dropdowns{{/i}}</h3>
+          <p>{{_i}}Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="dropdown clearfix">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
+                <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">{{_i}}More options{{/i}}</a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+  ...
+  &lt;li class="dropdown-submenu"&gt;
+    &lt;a tabindex="-1" href="#"&gt;{{_i}}More options{{/i}}&lt;/a&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
         </section>
 
 
