@@ -2687,7 +2687,8 @@ table .span24 {
 }
 
 .dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus {
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
   color: #ffffff;
   text-decoration: none;
   background-color: #0088cc;
@@ -2728,11 +2729,6 @@ table .span24 {
   background-color: transparent;
 }
 
-.dropdown .dropdown-menu .nav-header {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-
 .open {
   *z-index: 1000;
 }
@@ -2758,6 +2754,29 @@ table .span24 {
   top: auto;
   bottom: 100%;
   margin-bottom: 1px;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -5px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+     -moz-border-radius: 0 6px 6px 6px;
+          border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown .dropdown-menu .nav-header {
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .typeahead {

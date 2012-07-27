@@ -96,7 +96,8 @@
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus {
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
   text-decoration: none;
   color: @dropdownLinkColorHover;
   background-color: @dropdownLinkBackgroundHover;
@@ -126,14 +127,6 @@
   text-decoration: none;
   background-color: transparent;
   cursor: default;
-}
-
-// Tweak nav headers
-// -----------------
-// Increase padding from 15px to 20px on sides
-.dropdown .dropdown-menu .nav-header {
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 // Open state for the dropdown
@@ -173,6 +166,33 @@
     bottom: 100%;
     margin-bottom: 1px;
   }
+}
+
+// Sub menus
+// ---------------------------
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -5px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+     -moz-border-radius: 0 6px 6px 6px;
+          border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover .dropdown-menu {
+  display: block;
+}
+
+
+// Tweak nav headers
+// -----------------
+// Increase padding from 15px to 20px on sides
+.dropdown .dropdown-menu .nav-header {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 // Typeahead

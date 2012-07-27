@@ -122,7 +122,16 @@
                 <li><a tabindex="-1" href="#">Another action</a></li>
                 <li><a tabindex="-1" href="#">Something else here</a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1" href="#">Separated link</a></li>
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Separated link</a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">Second level link</a></li>
+                    <li><a tabindex="-1" href="#">Second level link</a></li>
+                    <li><a tabindex="-1" href="#">Second level link</a></li>
+                    <li><a tabindex="-1" href="#">Second level link</a></li>
+                    <li><a tabindex="-1" href="#">Second level link</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
@@ -135,10 +144,6 @@
   &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
-
 
           <h2>Markup</h2>
           <p>Looking at just the dropdown menu, here's the required HTML. You need to wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then just create the menu.</p>
@@ -155,10 +160,6 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
-
 
           <h2>Options</h2>
           <p>...</p>

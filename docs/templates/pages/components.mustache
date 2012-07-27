@@ -51,7 +51,16 @@
                 <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
                 <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>{{! /example }}
@@ -64,10 +73,6 @@
   &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Separated link{{/i}}&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
-
 
           <h2>{{_i}}Markup{{/i}}</h2>
           <p>{{_i}}Looking at just the dropdown menu, here's the required HTML. You need to wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then just create the menu.{{/i}}</p>
@@ -84,10 +89,6 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
-
 
           <h2>{{_i}}Options{{/i}}</h2>
           <p>{{_i}}...{{/i}}</p>
