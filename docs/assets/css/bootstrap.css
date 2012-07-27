@@ -4858,8 +4858,9 @@ input[type="submit"].btn.btn-mini {
   left: 0;
   z-index: 1010;
   display: none;
-  width: 238px;
-  background-color: #fff;
+  width: 236px;
+  padding: 1px;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-border-radius: 6px;
@@ -4895,8 +4896,8 @@ input[type="submit"].btn.btn-mini {
   font-size: 14px;
   font-weight: normal;
   line-height: 18px;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #dcdcdc;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
   -webkit-border-radius: 5px 5px 0 0;
      -moz-border-radius: 5px 5px 0 0;
           border-radius: 5px 5px 0 0;
@@ -4938,7 +4939,7 @@ input[type="submit"].btn.btn-mini {
 .popover.top .arrow:after {
   bottom: -1px;
   left: -11px;
-  border-top-color: rgba(0, 0, 0, 0.2);
+  border-top-color: rgba(0, 0, 0, 0.25);
   border-width: 11px 11px 0;
 }
 
@@ -4953,7 +4954,7 @@ input[type="submit"].btn.btn-mini {
 .popover.right .arrow:after {
   bottom: -11px;
   left: -1px;
-  border-right-color: rgba(0, 0, 0, 0.2);
+  border-right-color: rgba(0, 0, 0, 0.25);
   border-width: 11px 11px 11px 0;
 }
 
@@ -4961,14 +4962,14 @@ input[type="submit"].btn.btn-mini {
   top: -10px;
   left: 50%;
   margin-left: -10px;
-  border-bottom-color: #f5f5f5;
+  border-bottom-color: #ffffff;
   border-width: 0 10px 10px;
 }
 
 .popover.bottom .arrow:after {
   top: -1px;
   left: -11px;
-  border-bottom-color: rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(0, 0, 0, 0.25);
   border-width: 0 11px 11px;
 }
 
@@ -4983,7 +4984,7 @@ input[type="submit"].btn.btn-mini {
 .popover.left .arrow:after {
   right: -1px;
   bottom: -11px;
-  border-left-color: rgba(0, 0, 0, 0.2);
+  border-left-color: rgba(0, 0, 0, 0.25);
   border-width: 11px 0 11px 11px;
 }
 

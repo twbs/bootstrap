@@ -177,7 +177,7 @@ hr.soften {
 /* Masthead (docs home)
 ------------------------- */
 .masthead {
-  padding: 50px 0 60px;
+  padding: 70px 0 80px;
   margin-bottom: 0;
   color: #fff;
 }
@@ -1000,7 +1000,7 @@ form.bs-docs-example {
             box-shadow: 0 -5px 15px rgba(0,0,0,.15);
   }
   .masthead + .bs-docs-canvas {
-    top: 530px;
+    top: 570px;
   }
   .subhead + .bs-docs-canvas {
     top: 250px;
