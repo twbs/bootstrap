@@ -1439,26 +1439,34 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2>Button sizes</h2>
           <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for two additional sizes.</p>
-          <p>
-            <button type="button" class="btn btn-large btn-primary">Primary action</button>
-            <button type="button" class="btn btn-large">Action</button>
-          </p>
-          <p>
-            <button type="button" class="btn btn-small btn-primary">Primary action</button>
-            <button type="button" class="btn btn-small">Action</button>
-          </p>
-          <p>
-            <button type="button" class="btn btn-mini btn-primary">Primary action</button>
-            <button type="button" class="btn btn-mini">Action</button>
-          </p>
-
-
-          <hr class="bs-docs-separator">
+          <div class="bs-docs-example">
+            <p>
+              <button type="button" class="btn btn-large btn-primary">Primary action</button>
+              <button type="button" class="btn btn-large">Action</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-small btn-primary">Primary action</button>
+              <button type="button" class="btn btn-small">Action</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-mini btn-primary">Primary action</button>
+              <button type="button" class="btn btn-mini">Action</button>
+            </p>
+          </div>
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
+&lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
+&lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
+</pre>
+          <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
+          <div class="bs-docs-example">
+            <div class="well" style="max-width: 400px; margin: 0 auto;">
+              <button type="button" class="btn btn-large btn-block">Block level button</button>
+            </div>
+          </div>
+          <pre class="prettyprint linenums">&lt;button class="btn btn-large btn-block" type="button"&gt;Block level button&lt;/button&gt;</pre>
 
 
           <h2>Disabled state</h2>
@@ -1489,9 +1497,6 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;button type="button" class="btn btn-large btn-primary disabled" disabled="disabled"&gt;Primary button&lt;/button&gt;
 &lt;button type="button" class="btn btn-large" disabled&gt;Button&lt;/button&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>One class, multiple tags</h2>
