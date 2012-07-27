@@ -58,23 +58,6 @@ $(function () {
           .tab('show')
       })
 
-      test("should add active class to target when collapse shown", function () {
-        $.support.transition = false
-        stop()
-
-        var target = $('<a data-toggle="collapse" href="#test1"></a>')
-          .appendTo($('#qunit-fixture'))
-
-        var collapsible = $('<div id="test1"></div>')
-          .appendTo($('#qunit-fixture'))
-          .on('show', function () {
-            ok(!target.hasClass('collapsed'))
-            start()
-          })
-
-        target.click()
-      })
-
       test("should set relatedTarget for any target element", function () {
 
         stop();
