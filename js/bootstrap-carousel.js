@@ -42,7 +42,6 @@
 
   Carousel.prototype = {
 
-<<<<<<< HEAD
     pills: function () {
       var self = this
         , pills = ""
@@ -60,15 +59,11 @@
       });
     }
 
-  , cycle: function () {
-      this.interval = setInterval($.proxy(this.next, this), this.options.interval)
-=======
-    cycle: function (e) {
+  , cycle: function (e) {
       if (!e) this.paused = false
       this.options.interval
         && !this.paused
         && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
->>>>>>> upstream/master
       return this
     }
 
