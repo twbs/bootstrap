@@ -72,7 +72,7 @@ table {
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapsed; // IE7 can't round corners anyway
   border-left: 0;
-  .border-radius(4px);
+  .border-radius(@baseBorderRadius);
   th,
   td {
     border-left: 1px solid @tableBorder;
@@ -92,29 +92,29 @@ table {
   // For first th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:first-child,
   tbody:first-child tr:first-child td:first-child {
-    -webkit-border-top-left-radius: 4px;
-            border-top-left-radius: 4px;
-        -moz-border-radius-topleft: 4px;
+    -webkit-border-top-left-radius: @baseBorderRadius;
+            border-top-left-radius: @baseBorderRadius;
+        -moz-border-radius-topleft: @baseBorderRadius;
   }
   thead:first-child tr:first-child th:last-child,
   tbody:first-child tr:first-child td:last-child {
-    -webkit-border-top-right-radius: 4px;
-            border-top-right-radius: 4px;
-        -moz-border-radius-topright: 4px;
+    -webkit-border-top-right-radius: @baseBorderRadius;
+            border-top-right-radius: @baseBorderRadius;
+        -moz-border-radius-topright: @baseBorderRadius;
   }
   // For first th or td in the first row in the first thead or tbody
   thead:last-child tr:last-child th:first-child,
   tbody:last-child tr:last-child td:first-child {
     .border-radius(0 0 0 4px);
-    -webkit-border-bottom-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        -moz-border-radius-bottomleft: 4px;
+    -webkit-border-bottom-left-radius: @baseBorderRadius;
+            border-bottom-left-radius: @baseBorderRadius;
+        -moz-border-radius-bottomleft: @baseBorderRadius;
   }
   thead:last-child tr:last-child th:last-child,
   tbody:last-child tr:last-child td:last-child {
-    -webkit-border-bottom-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-        -moz-border-radius-bottomright: 4px;
+    -webkit-border-bottom-right-radius: @baseBorderRadius;
+            border-bottom-right-radius: @baseBorderRadius;
+        -moz-border-radius-bottomright: @baseBorderRadius;
   }
 }
 
