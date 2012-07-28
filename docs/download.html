@@ -20,9 +20,11 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -33,13 +35,13 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
+          </button>
           <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse">
+          <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
                 <a href="./index.html">Overview</a>
@@ -107,7 +109,7 @@
       <h3>Base CSS</h3>
       <label class="checkbox"><input checked="checked" type="checkbox" value="type.less"> Headings, body, etc</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="code.less"> Code and pre</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="labels.less"> Labels and badges</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="labels-badges.less"> Labels and badges</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="tables.less"> Tables</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="forms.less"> Forms</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> Buttons</label>
@@ -142,7 +144,7 @@
       <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> Utilities</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="component-animations.less"> Component animations</label>
       <h3>Responsive</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-utility-classes.less"> Visible/hidden classes</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-utilities.less"> Visible/hidden classes</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-767px-max.less"> Narrow tablets and below (<767px)</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-768px-979px.less"> Tablets to desktops (767-979px)</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-1200px-min.less"> Large desktops (>1200px)</label>
@@ -367,6 +369,8 @@
       <input type="text" class="span3" placeholder="@white">
       <label>@inputBorder</label>
       <input type="text" class="span3" placeholder="#ccc">
+      <label>@inputBorderRadius</label>
+      <input type="text" class="span3" placeholder="3px">
       <label>@inputDisabledBackground</label>
       <input type="text" class="span3" placeholder="@grayLighter">
       <label>@formActionsBackground</label>
@@ -405,7 +409,7 @@
     </h1>
   </div>
   <div class="download-btn">
-    <a class="btn btn-primary" href="#">Customize and Download</a>
+    <a class="btn btn-primary" href="#" >Customize and Download</a>
     <h4>What's included?</h4>
     <p>Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.</p>
   </div>

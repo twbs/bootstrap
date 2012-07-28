@@ -75,10 +75,30 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  // Negative indent the now static "fixed" navbar
   .navbar-fixed-top,
   .navbar-fixed-bottom {
     margin-left: -20px;
     margin-right: -20px;
+  }
+  // Remove padding on container given explicit padding set on body
+  .container-fluid {
+    padding: 0;
+  }
+
+  // TYPOGRAPHY
+  // ----------
+  // Reset horizontal dl
+  .dl-horizontal {
+    dt {
+      float: none;
+      clear: none;
+      width: auto;
+      text-align: left;
+    }
+    dd {
+      margin-left: 0;
+    }
   }
 
   // GRID & CONTAINERS
@@ -91,28 +111,26 @@
   .row-fluid {
     width: 100%;
   }
-  // Undo negative margin on rows
-  .row {
+  // Undo negative margin on rows and thumbnails
+  .row,
+  .thumbnails {
     margin-left: 0;
   }
-  // Make all columns even
-  .row > [class*="span"],
-  .row-fluid > [class*="span"] {
+  // Make all grid-sized elements block level again
+  [class*="span"],
+  .row-fluid [class*="span"] {
     float: none;
     display: block;
     width: auto;
-    margin: 0;
-  }
-
-  // THUMBNAILS
-  // ----------
-  .thumbnails [class*="span"] {
-    width: auto;
+    margin-left: 0;
   }
 
   // FORM FIELDS
   // -----------
   // Make span* classes full width
+  .input-large,
+  .input-xlarge,
+  .input-xxlarge,
   input[class*="span"],
   select[class*="span"],
   textarea[class*="span"],
@@ -120,8 +138,11 @@
     .input-block-level();
   }
   // But don't let it screw up prepend/append inputs
+  .input-prepend input,
+  .input-append input,
   .input-prepend input[class*="span"],
   .input-append input[class*="span"] {
+    display: inline-block; // redeclare so they don't wrap to new lines
     width: auto;
   }
 

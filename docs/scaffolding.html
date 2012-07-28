@@ -20,9 +20,11 @@
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -33,13 +35,13 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </a>
+          </button>
           <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse">
+          <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
                 <a href="./index.html">Overview</a>
@@ -74,22 +76,22 @@
 
     <div class="container">
 
-      <!-- Masthead
-      ================================================== -->
-      <header class="jumbotron subhead" id="overview">
-        <h1>Scaffolding</h1>
-        <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
-        <div class="subnav">
-          <ul class="nav nav-pills">
-            <li><a href="#global">Global styles</a></li>
-            <li><a href="#gridSystem">Grid system</a></li>
-            <li><a href="#fluidGridSystem">Fluid grid system</a></li>
-            <li><a href="#gridCustomization">Customizing</a></li>
-            <li><a href="#layouts">Layouts</a></li>
-            <li><a href="#responsive">Responsive design</a></li>
-          </ul>
-        </div>
-      </header>
+<!-- Masthead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+  <h1>Scaffolding</h1>
+  <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
+  <div class="subnav">
+    <ul class="nav nav-pills">
+      <li><a href="#global">Global styles</a></li>
+      <li><a href="#gridSystem">Grid system</a></li>
+      <li><a href="#fluidGridSystem">Fluid grid system</a></li>
+      <li><a href="#gridCustomization">Customizing</a></li>
+      <li><a href="#layouts">Layouts</a></li>
+      <li><a href="#responsive">Responsive design</a></li>
+    </ul>
+  </div>
+</header>
 
 
 
@@ -171,8 +173,7 @@
   </div>
   <div class="row">
     <div class="span4">
-      <p>The default grid system provided as part of Bootstrap is a <strong>940px-wide, 12-column grid</strong>.</p>
-      <p>It also has four responsive variations for various devices and resolutions: phone, tablet portrait, table landscape and small desktops, and large widescreen desktops.</p>
+      <p>The default grid system provided in Bootstrap utilizes <strong>12 columns</strong> that render out at widths of 724px, 940px (default without responsive CSS included), and 1170px. Below 767px viewports, the columns become fluid and stack vertically. </p>
     </div><!-- /.span -->
     <div class="span4">
 <pre class="prettyprint linenums">
@@ -183,7 +184,7 @@
 </pre>
     </div><!-- /.span -->
     <div class="span4">
-      <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 12 foundational columns we defined as part of our grid system.</p>
+      <p>As shown here, a basic layout can be created with two "columns", each spanning a number of the 12 foundational columns we defined as part of our grid system.</p>
     </div><!-- /.span -->
   </div><!-- /.row -->
 
@@ -233,11 +234,11 @@
     <div class="span6">
 <pre class="prettyprint linenums">
 &lt;div class="row"&gt;
-  &lt;div class="span12"&gt;
-    Level 1 of column
+  &lt;div class="span6"&gt;
+    Level 1 column
     &lt;div class="row"&gt;
-      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
-      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
+      &lt;div class="span3"&gt;Level 2&lt;/div&gt;
+      &lt;div class="span3"&gt;Level 2&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -528,17 +529,17 @@
     </div><!-- /.span -->
     <div class="span8">
 <pre class="prettyprint linenums">
-  // Landscape phones and down
+  /* Landscape phones and down */
   @media (max-width: 480px) { ... }
 
-  // Landscape phone to portrait tablet
-  @media (max-width: 768px) { ... }
+  /* Landscape phone to portrait tablet */
+  @media (max-width: 767px) { ... }
 
-  // Portrait tablet to landscape and desktop
-  @media (min-width: 768px) and (max-width: 980px) { ... }
+  /* Portrait tablet to landscape and desktop */
+  @media (min-width: 768px) and (max-width: 979px) { ... }
 
-  // Large desktop
-  @media (min-width: 1200px) { .. }
+  /* Large desktop */
+  @media (min-width: 1200px) { ... }
 </pre>
     </div><!-- /.span -->
   </div><!-- /.row -->
@@ -608,12 +609,14 @@
       <h3>Test case</h3>
       <p>Resize your browser or load on different devices to test the above classes.</p>
       <h4>Visible on...</h4>
+      <p>Green checkmarks indicate that class is visible in your current viewport.</p>
       <ul class="responsive-utilities-test">
         <li>Phone<span class="visible-phone">&#10004; Phone</span></li>
         <li>Tablet<span class="visible-tablet">&#10004; Tablet</span></li>
         <li>Desktop<span class="visible-desktop">&#10004; Desktop</span></li>
       </ul>
       <h4>Hidden on...</h4>
+      <p>Here, green checkmarks indicate that class is hidden in your current viewport.</p>
       <ul class="responsive-utilities-test hidden-on">
         <li>Phone<span class="hidden-phone">&#10004; Phone</span></li>
         <li>Tablet<span class="hidden-tablet">&#10004; Tablet</span></li>

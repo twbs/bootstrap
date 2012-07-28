@@ -38,4 +38,19 @@ $(function () {
         ok(!$('#qunit-fixture').find('.alert-message').length, 'element removed from dom')
       })
 
+      test("should not fire closed when close is prevented", function () {
+        $.support.transition = false
+        stop();
+        $('<div class="alert"/>')
+          .bind('close', function (e) {
+            e.preventDefault();
+            ok(true);
+            start();
+          })
+          .bind('closed', function () {
+            ok(false);
+          })
+          .alert('close')
+      })
+
 })

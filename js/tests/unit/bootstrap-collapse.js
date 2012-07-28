@@ -22,4 +22,33 @@ $(function () {
         ok(/height/.test(el.attr('style')), 'has height set')
       })
 
+      test("should not fire shown when show is prevented", function () {
+        $.support.transition = false
+        stop();
+        $('<div class="collapse"/>')
+          .bind('show', function (e) {
+            e.preventDefault();
+            ok(true);
+            start();
+          })
+          .bind('shown', function () {
+            ok(false);
+          })
+          .collapse('show')
+      })
+
+      test("should reset style to auto after finishing opening collapse", function () {
+        $.support.transition = false
+        stop();
+        $('<div class="collapse" style="height: 0px"/>')
+          .bind('show', function () {
+            ok(this.style.height == '0px')
+          })
+          .bind('shown', function () {
+            ok(this.style.height == 'auto')
+            start()
+          })
+          .collapse('show')
+      })
+
 })

@@ -31,7 +31,7 @@
       <h3>{{_i}}Base CSS{{/i}}</h3>
       <label class="checkbox"><input checked="checked" type="checkbox" value="type.less"> {{_i}}Headings, body, etc{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="code.less"> {{_i}}Code and pre{{/i}}</label>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="labels.less"> {{_i}}Labels and badges{{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="labels-badges.less"> {{_i}}Labels and badges{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="tables.less"> {{_i}}Tables{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="forms.less"> {{_i}}Forms{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="buttons.less"> {{_i}}Buttons{{/i}}</label>
@@ -66,7 +66,7 @@
       <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> {{_i}}Utilities{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="component-animations.less"> {{_i}}Component animations{{/i}}</label>
       <h3>{{_i}}Responsive{{/i}}</h3>
-      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-utility-classes.less"> {{_i}}Visible/hidden classes{{/i}}</label>
+      <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-utilities.less"> {{_i}}Visible/hidden classes{{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-767px-max.less"> {{_i}}Narrow tablets and below (<767px){{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-768px-979px.less"> {{_i}}Tablets to desktops (767-979px){{/i}}</label>
       <label class="checkbox"><input checked="checked" type="checkbox" value="responsive-1200px-min.less"> {{_i}}Large desktops (>1200px){{/i}}</label>
@@ -291,6 +291,8 @@
       <input type="text" class="span3" placeholder="@white">
       <label>@inputBorder</label>
       <input type="text" class="span3" placeholder="#ccc">
+      <label>@inputBorderRadius</label>
+      <input type="text" class="span3" placeholder="3px">
       <label>@inputDisabledBackground</label>
       <input type="text" class="span3" placeholder="@grayLighter">
       <label>@formActionsBackground</label>
@@ -329,7 +331,7 @@
     </h1>
   </div>
   <div class="download-btn">
-    <a class="btn btn-primary" href="#">{{_i}}Customize and Download{{/i}}</a>
+    <a class="btn btn-primary" href="#" {{#production}}onclick="_gaq.push(['_trackEvent', 'Customize', 'Download', 'Customize and Download']);"{{/production}}>Customize and Download</a>
     <h4>{{_i}}What's included?{{/i}}</h4>
     <p>{{_i}}Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.{{/i}}</p>
   </div>

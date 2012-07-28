@@ -76,10 +76,14 @@ sub {
 
 img {
   max-width: 100%; // Make images inherently responsive
-  height: auto;
+  vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
-  vertical-align: middle;
+}
+
+// Prevent max-width from affecting Google Maps
+#map_canvas img {
+  max-width: none;
 }
 
 // Forms
@@ -112,10 +116,10 @@ input[type="submit"] {
   -webkit-appearance: button; // Style clickable inputs in iOS
 }
 input[type="search"] { // Appearance in Safari/Chrome
-  -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
           box-sizing: content-box;
+  -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
