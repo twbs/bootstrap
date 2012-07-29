@@ -42,6 +42,11 @@
         , title: function () { return $(this).width() + 'px' }
       })
     }
+    
+    // form wizard demo
+    $("#frmFormWizard").formToWizard({
+    	// options
+    });
 
     // tooltip demo
     $('.tooltip-demo').tooltip({
