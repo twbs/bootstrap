@@ -4467,11 +4467,11 @@ input[type="submit"].btn.btn-mini {
 
 .breadcrumb .divider {
   padding: 0 5px;
-  color: #999999;
+  color: #ccc;
 }
 
-.breadcrumb .active a {
-  color: #333333;
+.breadcrumb .active {
+  color: #999999;
 }
 
 .pagination {
