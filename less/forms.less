@@ -118,8 +118,7 @@ input[type="color"],
   background-color: @inputBackground;
   border: 1px solid @inputBorder;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  @transition: border linear .2s, box-shadow linear .2s;
-  .transition(@transition);
+  .transition(~"border linear .2s, box-shadow linear .2s");
 
   // Focus state
   &:focus {
