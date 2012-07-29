@@ -89,6 +89,7 @@
         <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
           <li><a href="#overview">Overview <i class="icon-chevron-right"></i></a></li>
           <li><a href="#transitions">Transitions <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#form-wizard">Form wizard <i class="icon-chevron-right"></i></a></li>
           <li><a href="#modals">Modal <i class="icon-chevron-right"></i></a></li>
           <li><a href="#dropdowns">Dropdown <i class="icon-chevron-right"></i></a></li>
           <li><a href="#scrollspy">Scrollspy <i class="icon-chevron-right"></i></a></li>
@@ -166,6 +167,115 @@ $('#myModal').on('show', function (e) {
           </ul>
 
         </section>
+        
+		<!-- Form wizard
+        ================================================== -->
+        <section id="form-wizard">
+        	<div class="page-header">
+        		<h1>Form wizzard <small>bootstrap-form-wizard.js</small></h1>
+        	</div>
+        	
+        	<h3>About form wizard</h3>
+        	<p>Created by jankoatwarpspeed.com - Customize by twitter.com/mpunktm</p>
+        	<h3>Use cases</h3>
+        	<p>A few examples of the form wizard plugin:</p>
+        	
+        	<form id="frmFormWizard" class="form-horizontal">
+        		<fieldset>
+        			<legend>User data</legend>
+					
+					<div class="control-group">
+            			<label for="txtUsername" class="control-label">Username</label>
+				        <div class="controls">
+				          <input type="text" id="txtUsername" class="input-xlarge">
+				        </div>
+          			</div>
+          			
+          			<div class="control-group">
+            			<label for="txtEmail" class="control-label">Username</label>
+				        <div class="controls">
+				          <input type="text" id="txtEmail" class="input-xlarge">
+				        </div>
+          			</div>
+          
+        		</fieldset>
+        		
+        		<fieldset>
+        			
+        			<legend>Information</legend>
+					
+					<div class="control-group">
+            			<label for="txtAbout" class="control-label">Username</label>
+				        <div class="controls">
+				          <textarea id="txtAbout" class="input-xlarge" rows="4"></textarea> 
+				        </div>
+          			</div>
+          			
+					<div class="form-actions">
+			            <button class="btn btn-primary" id="btUserSave" type="submit">Save changes</button>
+			            <button class="btn">Cancel</button>
+          			</div>
+          
+        		</fieldset>
+      		</form>
+      		
+      		<h3>Via javascript</h3>
+      		
+      		<h3>Options</h3>
+      		<pre class="prettyprint linenums">$("#frmFormWizard").formToWizard({
+	submitButton: 'btUserSave'
+});
+		    </pre>
+      		<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th style="width: 100px;">Name</th>
+						<th style="width: 50px;">type</th>
+						<th style="width: 50px;">default</th>
+					</tr>
+				
+				</thead>
+					<tbody>
+						<tr>
+							<td>stepText</td>
+							<td>text/string</td>
+							<td>'Step '</td>
+						</tr>
+						<tr>
+							<td>showSteps</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>stepNextText</td>
+							<td>text/string</td>
+							<td>'Next'</td>
+						</tr>
+						<tr>
+							<td>stepNextClass</td>
+							<td>text/string</td>
+							<td>'btn btn-primary'</td>
+						</tr>
+						<tr>
+							<td>stepPrevText</td>
+							<td>text/string</td>
+							<td>'Back'</td>
+						</tr>
+						<tr>
+							<td>stepPrevClass</td>
+							<td>text/string</td>
+							<td>'btn'</td>
+						</tr>
+						<tr>
+							<td>submitButton</td>
+							<td>text/string</td>
+							<td>''</td>
+						</tr>
+					</tbody>
+				</table>
+        </section>
+        
+        
 
 
 
@@ -1699,6 +1809,8 @@ $('[data-spy="affix"]').each(function () {
       <script src="assets/js/bootstrap-typeahead.js"></script>
       <script src="assets/js/bootstrap-affix.js"></script>
       <script src="assets/js/application.js"></script>
+      
+      <script src="assets/js/bootstrap-form-wizard.js"></script>
 
     </div>
 
