@@ -532,6 +532,16 @@ a:hover {
   *margin-left: 8.404255319148938%;
 }
 
+[class*="span"].hide,
+.row-fluid [class*="span"].hide {
+  display: none;
+}
+
+[class*="span"].pull-right,
+.row-fluid [class*="span"].pull-right {
+  float: right;
+}
+
 .container {
   margin-right: auto;
   margin-left: auto;
