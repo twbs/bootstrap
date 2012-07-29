@@ -28,22 +28,12 @@
   border-right: 4px solid transparent;
   border-left:  4px solid transparent;
   content: "";
-  .opacity(30);
 }
 
 // Place the caret
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
-}
-.dropdown a:focus .caret,
-.dropdown a:hover .caret,
-.open .caret {
-  .opacity(100);
-}
-
-.navbar .nav .open > a {
-  color: @navbarLinkColorActive;
 }
 
 // The dropdown menu (ul)
@@ -57,7 +47,7 @@
   float: left;
   min-width: 160px;
   padding: 5px 0;
-  margin: 1px 0 0; // override default ul
+  margin: 2px 0 0; // override default ul
   list-style: none;
   background-color: @dropdownBackground;
   border: 1px solid #ccc; // Fallback for IE7-8

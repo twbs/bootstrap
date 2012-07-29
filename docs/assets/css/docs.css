@@ -28,10 +28,10 @@ h3 code {
 
 body > .navbar-fixed-top {
   font-size: 13px;
-  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.15);
+/*  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.15);
      -moz-box-shadow: 0 5px 15px rgba(0,0,0,.15);
           box-shadow: 0 5px 15px rgba(0,0,0,.15);
-}
+*/}
 
 /* Change the docs' brand */
 body > .navbar-fixed-top .brand {
@@ -597,6 +597,7 @@ h2 + .row {
   z-index: 1;
   padding: 0;
   height: 90px;
+  overflow: hidden; /* cut the drop shadows off */
 }
 .bs-navbar-top-example .navbar-fixed-top,
 .bs-navbar-bottom-example .navbar-fixed-bottom {
