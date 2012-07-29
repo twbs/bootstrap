@@ -1,6 +1,6 @@
-// NAVIGATIONS
-// -----------
-
+//
+// Navs
+// --------------------------------------------------
 
 
 // BASE CLASS
@@ -27,7 +27,7 @@
 }
 
 // Nav headers (for dropdowns and lists)
-.nav .nav-header {
+.nav-header {
   display: block;
   padding: 3px 15px;
   font-size: 11px;
@@ -41,6 +41,7 @@
 .nav li + .nav-header {
   margin-top: 9px;
 }
+
 
 
 // NAV LIST
@@ -170,10 +171,10 @@
   .border-radius(0);
 }
 .nav-tabs.nav-stacked > li:first-child > a {
-  .border-radius(4px 4px 0 0);
+  .border-top-radius(4px);
 }
 .nav-tabs.nav-stacked > li:last-child > a {
-  .border-radius(0 0 4px 4px);
+  .border-bottom-radius(4px);
 }
 .nav-tabs.nav-stacked > li > a:hover {
   border-color: #ddd;
@@ -194,39 +195,43 @@
 // ---------
 
 .nav-tabs .dropdown-menu {
-  .border-radius(0 0 5px 5px); // remove the top rounded corners here since there is a hard edge above the menu
+  .border-radius(0 0 6px 6px); // remove the top rounded corners here since there is a hard edge above the menu
 }
 .nav-pills .dropdown-menu {
-  .border-radius(4px); // make rounded corners match the pills
+  .border-radius(6px); // make rounded corners match the pills
 }
 
 // Default dropdown links
 // -------------------------
 // Make carets use linkColor to start
-.nav-tabs .dropdown-toggle .caret,
-.nav-pills .dropdown-toggle .caret {
+.nav .dropdown-toggle .caret {
   border-top-color: @linkColor;
   border-bottom-color: @linkColor;
   margin-top: 6px;
 }
-.nav-tabs .dropdown-toggle:hover .caret,
-.nav-pills .dropdown-toggle:hover .caret {
+.nav .dropdown-toggle:hover .caret {
   border-top-color: @linkColorHover;
   border-bottom-color: @linkColorHover;
+}
+/* move down carets for tabs */
+.nav-tabs .dropdown-toggle .caret {
+  margin-top: 8px;
 }
 
 // Active dropdown links
 // -------------------------
-.nav-tabs .active .dropdown-toggle .caret,
-.nav-pills .active .dropdown-toggle .caret {
-  border-top-color: @grayDark;
-  border-bottom-color: @grayDark;
+.nav .active .dropdown-toggle .caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+.nav-tabs .active .dropdown-toggle .caret {
+  border-top-color: @gray;
+  border-bottom-color: @gray;
 }
 
 // Active:hover dropdown links
 // -------------------------
 .nav > .dropdown.active > a:hover {
-  color: @black;
   cursor: pointer;
 }
 
@@ -360,4 +365,20 @@
 .tabs-right > .nav-tabs .active > a:hover {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: @white;
+}
+
+
+
+// DISABLED STATES
+// ---------------
+
+// Gray out text
+.nav > .disabled > a {
+  color: @grayLight;
+}
+// Nuke hover effects
+.nav > .disabled > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: default;
 }
