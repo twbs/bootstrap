@@ -973,12 +973,30 @@
 
           <h3>{{_i}}Brand{{/i}}</h3>
           <p>{{_i}}A simple link to show your brand or project name only requires an anchor tag.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+              </div>
+            </div>
+          </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;a class="brand" href="#"&gt;{{_i}}Project name{{/i}}&lt;/a&gt;
 </pre>
 
           <h3>{{_i}}Nav links{{/i}}</h3>
           <p>{{_i}}Nav items are simple to add via unordered lists.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <ul class="nav">
+                  <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="active"&gt;
@@ -989,6 +1007,20 @@
 &lt;/ul&gt;
 </pre>
           <p>{{_i}}You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <ul class="nav">
+                  <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                  <li class="divider-vertical"></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  <li class="divider-vertical"></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  <li class="divider-vertical"></li>
+                </ul>
+              </div>
+            </div>
+          </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   ...
@@ -999,6 +1031,15 @@
 
           <h3>{{_i}}Forms{{/i}}</h3>
           <p>{{_i}}To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <form class="navbar-form pull-left">
+                  <input type="text" class="span2">
+                </form>
+              </div>
+            </div>
+          </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
@@ -1007,6 +1048,15 @@
 
           <h3>{{_i}}Search form{{/i}}</h3>
           <p>{{_i}}For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <form class="navbar-search pull-left">
+                  <input type="text" class="search-query" placeholder="{{_i}}Search{{/i}}">
+                </form>
+              </div>
+            </div>
+          </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="{{_i}}Search{{/i}}"&gt;

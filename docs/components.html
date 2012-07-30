@@ -1044,12 +1044,30 @@
 
           <h3>Brand</h3>
           <p>A simple link to show your brand or project name only requires an anchor tag.</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <a class="brand" href="#">Title</a>
+              </div>
+            </div>
+          </div>
 <pre class="prettyprint linenums">
 &lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
 </pre>
 
           <h3>Nav links</h3>
           <p>Nav items are simple to add via unordered lists.</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <ul class="nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Link</a></li>
+                  <li><a href="#">Link</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   &lt;li class="active"&gt;
@@ -1060,6 +1078,20 @@
 &lt;/ul&gt;
 </pre>
           <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add this between links:</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <ul class="nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li class="divider-vertical"></li>
+                  <li><a href="#">Link</a></li>
+                  <li class="divider-vertical"></li>
+                  <li><a href="#">Link</a></li>
+                  <li class="divider-vertical"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav"&gt;
   ...
@@ -1070,6 +1102,15 @@
 
           <h3>Forms</h3>
           <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <form class="navbar-form pull-left">
+                  <input type="text" class="span2">
+                </form>
+              </div>
+            </div>
+          </div>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
@@ -1078,6 +1119,15 @@
 
           <h3>Search form</h3>
           <p>For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.</p>
+          <div class="bs-docs-example">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <form class="navbar-search pull-left">
+                  <input type="text" class="search-query" placeholder="Search">
+                </form>
+              </div>
+            </div>
+          </div>
 <pre class="prettyprint linenums">
 &lt;form class="navbar-search pull-left"&gt;
   &lt;input type="text" class="search-query" placeholder="Search"&gt;
