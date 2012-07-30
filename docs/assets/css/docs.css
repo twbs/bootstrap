@@ -28,10 +28,7 @@ h3 code {
 
 body > .navbar-fixed-top {
   font-size: 13px;
-/*  -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.15);
-     -moz-box-shadow: 0 5px 15px rgba(0,0,0,.15);
-          box-shadow: 0 5px 15px rgba(0,0,0,.15);
-*/}
+}
 
 /* Change the docs' brand */
 body > .navbar-fixed-top .brand {
@@ -810,6 +807,10 @@ form.bs-docs-example {
   }
 
   /* Unfloat the back to top link in footer */
+  .footer {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
   .footer p {
     margin-bottom: 9px;
   }
