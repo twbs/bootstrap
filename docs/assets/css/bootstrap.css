@@ -5138,6 +5138,11 @@ a.badge:hover {
   top: -1px;
 }
 
+.btn-mini .label,
+.btn-mini .badge {
+  top: 0;
+}
+
 @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
