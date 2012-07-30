@@ -55,3 +55,12 @@ a {
   &-inverse           { background-color: @grayDark; }
   &-inverse[href]     { background-color: darken(@grayDark, 10%); }
 }
+
+// Quick fix for labels/badges in buttons
+.btn {
+  .label,
+  .badge {
+    position: relative;
+    top: -1px;
+  }
+}
