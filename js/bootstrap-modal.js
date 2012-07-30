@@ -49,6 +49,8 @@
 
         if (this.isShown || e.isDefaultPrevented()) return
 
+        !this.options.cache && this.$element.find('.modal-body').load(this.options.remote)
+
         $('body').addClass('modal-open')
 
         this.isShown = true
@@ -206,6 +208,7 @@
       backdrop: true
     , keyboard: true
     , show: true
+    , cache: true
   }
 
   $.fn.modal.Constructor = Modal
