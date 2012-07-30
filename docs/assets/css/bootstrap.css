@@ -4018,7 +4018,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .brand {
   display: block;
   float: left;
-  padding: 10px 20px 10px;
+  padding: 8px 20px 12px;
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
@@ -4072,7 +4072,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-form select,
 .navbar-form .radio,
 .navbar-form .checkbox {
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 .navbar-form input,

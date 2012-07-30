@@ -48,7 +48,8 @@
   display: block;
   // Vertically center the text given @navbarHeight
   @elementHeight: 20px;
-  padding: ((@navbarHeight - @elementHeight) / 2) 20px ((@navbarHeight - @elementHeight) / 2);
+  @heightDifference: @navbarHeight - @elementHeight;
+  padding: ((@heightDifference / 2) - 2) 20px ((@heightDifference / 2) + 2);
   margin-left: -20px; // negative indent to left-align the text down the page
   font-size: 20px;
   font-weight: 200;
@@ -93,7 +94,7 @@
   select,
   .radio,
   .checkbox {
-    .navbarVerticalAlign(28px); // Vertically center in navbar
+    .navbarVerticalAlign(30px); // Vertically center in navbar
   }
   input,
   select,
