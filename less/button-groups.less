@@ -34,11 +34,13 @@
 }
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
-  font-size: 13px; // redeclare as part 2 of font-size inline-block hack
+  font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
-.btn-group > .btn-mini,
+.btn-group > .btn-mini {
+  font-size: 11px;
+}
 .btn-group > .btn-small {
   font-size: 12px;
 }
@@ -106,22 +108,22 @@
 // ----------------------
 
 // Give the line between buttons some depth
-.btn-group > .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
   .box-shadow(~"inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
   *padding-top: 4px;
   *padding-bottom: 4px;
 }
-.btn-group > .btn-mini.dropdown-toggle {
+.btn-group > .btn-mini + .dropdown-toggle {
   padding-left: 5px;
   padding-right: 5px;
 }
-.btn-group > .btn-small.dropdown-toggle {
+.btn-group > .btn-small + .dropdown-toggle {
   *padding-top: 4px;
   *padding-bottom: 4px;
 }
-.btn-group > .btn-large.dropdown-toggle {
+.btn-group > .btn-large + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -162,22 +164,16 @@
 
 // Reposition the caret
 .btn .caret {
-  margin-top: 7px;
+  margin-top: 8px;
   margin-left: 0;
 }
-.btn:hover .caret,
-.open.btn-group .caret {
-  .opacity(100);
-}
 // Carets in other button sizes
-.btn-mini .caret {
-  margin-top: 5px;
-}
-.btn-small .caret {
+.btn-mini .caret,
+.btn-small .caret,
+.btn-large .caret {
   margin-top: 6px;
 }
 .btn-large .caret {
-  margin-top: 6px;
   border-left-width:  5px;
   border-right-width: 5px;
   border-top-width:   5px;
@@ -200,7 +196,6 @@
   .caret {
     border-top-color: @white;
     border-bottom-color: @white;
-    .opacity(75);
   }
 }
 

@@ -2893,7 +2893,7 @@ button.close {
   padding: 4px 14px;
   margin-bottom: 0;
   *margin-left: .3em;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 20px;
   *line-height: 20px;
   color: #333333;
@@ -2909,11 +2909,11 @@ button.close {
   background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-repeat: repeat-x;
-  border: 1px solid #cccccc;
+  border: 1px solid #bbbbbb;
   *border: 0;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-  border-bottom-color: #b3b3b3;
+  border-bottom-color: #a2a2a2;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -3012,7 +3012,7 @@ button.close {
 
 .btn-mini {
   padding: 2px 6px;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 16px;
 }
 
@@ -3324,10 +3324,13 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
-  font-size: 13px;
+  font-size: 14px;
 }
 
-.btn-group > .btn-mini,
+.btn-group > .btn-mini {
+  font-size: 11px;
+}
+
 .btn-group > .btn-small {
   font-size: 12px;
 }
@@ -3388,7 +3391,7 @@ input[type="submit"].btn.btn-mini {
   outline: 0;
 }
 
-.btn-group > .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle {
   *padding-top: 4px;
   padding-right: 8px;
   *padding-bottom: 4px;
@@ -3398,17 +3401,17 @@ input[type="submit"].btn.btn-mini {
           box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.btn-group > .btn-mini.dropdown-toggle {
+.btn-group > .btn-mini + .dropdown-toggle {
   padding-right: 5px;
   padding-left: 5px;
 }
 
-.btn-group > .btn-small.dropdown-toggle {
+.btn-group > .btn-small + .dropdown-toggle {
   *padding-top: 4px;
   *padding-bottom: 4px;
 }
 
-.btn-group > .btn-large.dropdown-toggle {
+.btn-group > .btn-large + .dropdown-toggle {
   padding-right: 12px;
   padding-left: 12px;
 }
@@ -3449,26 +3452,17 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn .caret {
-  margin-top: 7px;
+  margin-top: 8px;
   margin-left: 0;
 }
 
-.btn:hover .caret,
-.open.btn-group .caret {
-  opacity: 1;
-  filter: alpha(opacity=100);
-}
-
-.btn-mini .caret {
-  margin-top: 5px;
-}
-
-.btn-small .caret {
+.btn-mini .caret,
+.btn-small .caret,
+.btn-large .caret {
   margin-top: 6px;
 }
 
 .btn-large .caret {
-  margin-top: 6px;
   border-top-width: 5px;
   border-right-width: 5px;
   border-left-width: 5px;
@@ -3487,8 +3481,6 @@ input[type="submit"].btn.btn-mini {
 .btn-inverse .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
-  opacity: 0.75;
-  filter: alpha(opacity=75);
 }
 
 .btn-group-vertical {
