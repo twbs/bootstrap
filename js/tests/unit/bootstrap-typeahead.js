@@ -168,7 +168,7 @@ $(function () {
         typeahead.$menu.remove()
       })
 
-      test("should can prevent closing dropdown menu in selectitem event handler", function() {
+      test("should be able to prevent closing dropdown menu from within selectitem event handler", function() {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
             })
