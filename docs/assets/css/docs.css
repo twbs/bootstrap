@@ -912,6 +912,8 @@ form.bs-docs-example {
           box-shadow: 0 1px 4px rgba(0,0,0,.065);
 }
 .bs-docs-sidenav > li > a {
+  display: block;
+  *width: 190px;
   margin: 0 0 -1px;
   font-size: 14px;
   padding: 9px 14px;
