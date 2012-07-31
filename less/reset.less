@@ -41,17 +41,24 @@ audio:not([controls]) {
 
 html {
   font-size: 100%;
+  -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
-// Focus states
-a:focus {
-  .tab-focus();
-}
-// Hover & Active
+// Active, Focus, & Hover states
+a:active,
 a:hover,
-a:active {
-  outline: 0;
+a:focus,
+a::-moz-focus-inner,
+button:active,
+button:hover,
+button:focus,
+button::-moz-focus-inner,
+input[type="button"]:active,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="button"]::-moz-focus-inner {
+  .tab-focus();
 }
 
 // Prevents sub and sup affecting line-height in all browsers
