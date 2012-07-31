@@ -2034,11 +2034,6 @@ table .span24 {
   background-repeat: no-repeat;
 }
 
-[class^="icon-"]:last-child,
-[class*=" icon-"]:last-child {
-  *margin-left: 0;
-}
-
 .icon-white {
   background-image: url("../img/glyphicons-halflings-white.png");
 }
