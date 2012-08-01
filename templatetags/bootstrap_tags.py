@@ -2,6 +2,7 @@ import re
 
 from django import template
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 register = template.Library()
 
@@ -46,4 +47,13 @@ def label(text):
     elif important_regex.match(text):
         label_class = "important"
     text = '<span class="label %s">%s</span>' % (label_class, text)
+    return text
+
+
+@register.simple_tag
+def label_link(taskstate):
+    text = label(taskstate.state if taskstate is not None else 'UNKNOWN')
+    if taskstate:
+        url = reverse('task_detail', args=(taskstate.task_id,))
+        text = '<a href="%s">%s</a>' % (url, text)
     return text
