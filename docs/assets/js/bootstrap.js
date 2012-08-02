@@ -1097,6 +1097,7 @@
           .css(tp)
           .addClass(placement)
           .addClass('in')
+        console.log($tip)
       }
     }
 
@@ -1215,7 +1216,7 @@
     animation: true
   , placement: 'top'
   , selector: false
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , template: '<div roll="tooltip" class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
   , title: ''
   , delay: 0
