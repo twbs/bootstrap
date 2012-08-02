@@ -51,9 +51,9 @@ def label(text):
 
 
 @register.simple_tag
-def label_link(taskstate):
+def label_link(taskstate, user):
     text = label(taskstate.state if taskstate is not None else 'UNKNOWN')
-    if taskstate:
+    if taskstate and user.has_module_perms('taskstate'):
         url = reverse('task_detail', args=(taskstate.task_id,))
         text = '<a href="%s">%s</a>' % (url, text)
     return text
