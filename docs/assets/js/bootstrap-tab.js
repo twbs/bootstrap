@@ -129,7 +129,13 @@
     $('body').on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
       e.preventDefault()
       $(this).tab('show')
+      e.target.focus();
     })
+
+    $('body').on('focusin.[data-toggle="tab"]', function (e) {
+      $(e.target).attr('role', 'tab');
+    })
+
   })
 
 }(window.jQuery);
