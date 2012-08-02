@@ -12,8 +12,23 @@ body {
 .subhead {
   margin-bottom: 36px;
 }
-h4 {
+/*h4 {
   margin-bottom: 5px;
+}
+*/
+
+.type-test {
+  margin-bottom: 20px;
+  padding: 0 20px 20px;
+  background: url(../../docs/assets/img/grid-baseline-20px.png);
+}
+.type-test h1,
+.type-test h2,
+.type-test h3,
+.type-test h4,
+.type-test h5,
+.type-test h6 {
+  background-color: rgba(255,0,0,.2);
 }
 
 

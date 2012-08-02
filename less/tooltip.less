@@ -1,6 +1,9 @@
-// TOOLTIP
-// ------=
+//
+// Tooltips
+// --------------------------------------------------
 
+
+// Base class
 .tooltip {
   position: absolute;
   z-index: @zindexTooltip;
@@ -10,26 +13,58 @@
   font-size: 11px;
   .opacity(0);
   &.in     { .opacity(80); }
-  &.top    { margin-top:  -2px; }
-  &.right  { margin-left:  2px; }
-  &.bottom { margin-top:   2px; }
-  &.left   { margin-left: -2px; }
-  &.top .tooltip-arrow    { #popoverArrow > .top(); }
-  &.left .tooltip-arrow   { #popoverArrow > .left(); }
-  &.bottom .tooltip-arrow { #popoverArrow > .bottom(); }
-  &.right .tooltip-arrow  { #popoverArrow > .right(); }
+  &.top    { margin-top:  -3px; }
+  &.right  { margin-left:  3px; }
+  &.bottom { margin-top:   3px; }
+  &.left   { margin-left: -3px; }
 }
+
+// Wrapper for the tooltip content
 .tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
-  color: @white;
+  color: @tooltipColor;
   text-align: center;
   text-decoration: none;
-  background-color: @black;
+  background-color: @tooltipBackground;
   .border-radius(4px);
 }
+
+// Arrows
 .tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip {
+  &.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
+    border-top-color: @tooltipArrowColor;
+  }
+  &.right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth @tooltipArrowWidth @tooltipArrowWidth 0;
+    border-right-color: @tooltipArrowColor;
+  }
+  &.left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth 0 @tooltipArrowWidth @tooltipArrowWidth;
+    border-left-color: @tooltipArrowColor;
+  }
+  &.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -@tooltipArrowWidth;
+    border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
+    border-bottom-color: @tooltipArrowColor;
+  }
 }
