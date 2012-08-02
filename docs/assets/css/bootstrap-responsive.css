@@ -940,7 +940,7 @@
   }
   .nav-collapse .nav > li > a,
   .nav-collapse .dropdown-menu a {
-    padding: 6px 15px;
+    padding: 9px 15px;
     font-weight: bold;
     color: #555555;
     -webkit-border-radius: 3px;
