@@ -912,6 +912,12 @@ form.bs-docs-example {
   }
 
   /* Unfloat the back to top link in footer */
+  .footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .footer p {
     margin-bottom: 9px;
   }
