@@ -214,9 +214,9 @@ $('#myModal').on('show', function (e) {
           <h3>Live demo</h3>
           <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h3 id="myModalLabel">Modal Heading</h3>
             </div>
             <div class="modal-body">
@@ -241,8 +241,8 @@ $('#myModal').on('show', function (e) {
               <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-              <a href="#" role="button" class="btn" data-dismiss="modal" >Close</a>
-              <a href="#" role="button" class="btn btn-primary">Save changes</a>
+              <button class="btn" data-dismiss="modal" >Close</button>
+              <button class="btn btn-primary">Save changes</button>
             </div>
           </div>
           <div class="bs-docs-example" style="padding-bottom: 24px;">
@@ -253,7 +253,7 @@ $('#myModal').on('show', function (e) {
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
 
 &lt;-- Modal --&gt;
-&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"&gt;
+&lt;div class="modal" id="myModal" tabindex="-1" role="dialog&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
@@ -262,8 +262,8 @@ $('#myModal').on('show', function (e) {
     &lt;p&gt;One fine body…&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" role="button" class="btn"&gt;Close&lt;/a&gt;
-    &lt;a href="#" role="button" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+    &lt;button class="btn" data-dismiss="modal"&gt;Close&lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;Save changes&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
