@@ -1300,22 +1300,51 @@ input[type="checkbox"][readonly] {
 
 .control-group.warning .checkbox,
 .control-group.warning .radio,
-.control-group.warning input,
+.control-group.warning input[type="text"],
+.control-group.warning input[type="password"],
+.control-group.warning input[type="datetime"],
+.control-group.warning input[type="datetime-local"],
+.control-group.warning input[type="date"],
+.control-group.warning input[type="month"],
+.control-group.warning input[type="time"],
+.control-group.warning input[type="week"],
+.control-group.warning input[type="number"],
+.control-group.warning input[type="email"],
+.control-group.warning input[type="url"],
+.control-group.warning input[type="search"],
+.control-group.warning input[type="tel"],
+.control-group.warning input[type="color"],
 .control-group.warning select,
 .control-group.warning textarea {
   color: #c09853;
   border-color: #c09853;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .control-group.warning .checkbox:focus,
 .control-group.warning .radio:focus,
-.control-group.warning input:focus,
+.control-group.warning input[type="text"]:focus,
+.control-group.warning input[type="password"]:focus,
+.control-group.warning input[type="datetime"]:focus,
+.control-group.warning input[type="datetime-local"]:focus,
+.control-group.warning input[type="date"]:focus,
+.control-group.warning input[type="month"]:focus,
+.control-group.warning input[type="time"]:focus,
+.control-group.warning input[type="week"]:focus,
+.control-group.warning input[type="number"]:focus,
+.control-group.warning input[type="email"]:focus,
+.control-group.warning input[type="url"]:focus,
+.control-group.warning input[type="search"]:focus,
+.control-group.warning input[type="tel"]:focus,
+.control-group.warning input[type="color"]:focus,
 .control-group.warning select:focus,
 .control-group.warning textarea:focus {
   border-color: #a47e3c;
-  -webkit-box-shadow: 0 0 6px #dbc59e;
-     -moz-box-shadow: 0 0 6px #dbc59e;
-          box-shadow: 0 0 6px #dbc59e;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
 }
 
 .control-group.warning .input-prepend .add-on,
@@ -1333,22 +1362,51 @@ input[type="checkbox"][readonly] {
 
 .control-group.error .checkbox,
 .control-group.error .radio,
-.control-group.error input,
+.control-group.error input[type="text"],
+.control-group.error input[type="password"],
+.control-group.error input[type="datetime"],
+.control-group.error input[type="datetime-local"],
+.control-group.error input[type="date"],
+.control-group.error input[type="month"],
+.control-group.error input[type="time"],
+.control-group.error input[type="week"],
+.control-group.error input[type="number"],
+.control-group.error input[type="email"],
+.control-group.error input[type="url"],
+.control-group.error input[type="search"],
+.control-group.error input[type="tel"],
+.control-group.error input[type="color"],
 .control-group.error select,
 .control-group.error textarea {
   color: #b94a48;
   border-color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .control-group.error .checkbox:focus,
 .control-group.error .radio:focus,
-.control-group.error input:focus,
+.control-group.error input[type="text"]:focus,
+.control-group.error input[type="password"]:focus,
+.control-group.error input[type="datetime"]:focus,
+.control-group.error input[type="datetime-local"]:focus,
+.control-group.error input[type="date"]:focus,
+.control-group.error input[type="month"]:focus,
+.control-group.error input[type="time"]:focus,
+.control-group.error input[type="week"]:focus,
+.control-group.error input[type="number"]:focus,
+.control-group.error input[type="email"]:focus,
+.control-group.error input[type="url"]:focus,
+.control-group.error input[type="search"]:focus,
+.control-group.error input[type="tel"]:focus,
+.control-group.error input[type="color"]:focus,
 .control-group.error select:focus,
 .control-group.error textarea:focus {
   border-color: #953b39;
-  -webkit-box-shadow: 0 0 6px #d59392;
-     -moz-box-shadow: 0 0 6px #d59392;
-          box-shadow: 0 0 6px #d59392;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
 }
 
 .control-group.error .input-prepend .add-on,
@@ -1366,22 +1424,51 @@ input[type="checkbox"][readonly] {
 
 .control-group.success .checkbox,
 .control-group.success .radio,
-.control-group.success input,
+.control-group.success input[type="text"],
+.control-group.success input[type="password"],
+.control-group.success input[type="datetime"],
+.control-group.success input[type="datetime-local"],
+.control-group.success input[type="date"],
+.control-group.success input[type="month"],
+.control-group.success input[type="time"],
+.control-group.success input[type="week"],
+.control-group.success input[type="number"],
+.control-group.success input[type="email"],
+.control-group.success input[type="url"],
+.control-group.success input[type="search"],
+.control-group.success input[type="tel"],
+.control-group.success input[type="color"],
 .control-group.success select,
 .control-group.success textarea {
   color: #468847;
   border-color: #468847;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .control-group.success .checkbox:focus,
 .control-group.success .radio:focus,
-.control-group.success input:focus,
+.control-group.success input[type="text"]:focus,
+.control-group.success input[type="password"]:focus,
+.control-group.success input[type="datetime"]:focus,
+.control-group.success input[type="datetime-local"]:focus,
+.control-group.success input[type="date"]:focus,
+.control-group.success input[type="month"]:focus,
+.control-group.success input[type="time"]:focus,
+.control-group.success input[type="week"]:focus,
+.control-group.success input[type="number"]:focus,
+.control-group.success input[type="email"]:focus,
+.control-group.success input[type="url"]:focus,
+.control-group.success input[type="search"]:focus,
+.control-group.success input[type="tel"]:focus,
+.control-group.success input[type="color"]:focus,
 .control-group.success select:focus,
 .control-group.success textarea:focus {
   border-color: #356635;
-  -webkit-box-shadow: 0 0 6px #7aba7b;
-     -moz-box-shadow: 0 0 6px #7aba7b;
-          box-shadow: 0 0 6px #7aba7b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
 }
 
 .control-group.success .input-prepend .add-on,
