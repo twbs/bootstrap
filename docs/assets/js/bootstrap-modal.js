@@ -187,6 +187,7 @@
         , data = $this.data('modal')
         , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
+      else $.extend($this.data('modal').options, option)
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
     })
@@ -209,6 +210,9 @@
       var $this = $(this), href
         , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
         , option = $target.data('modal') ? 'toggle' : $.extend({}, $target.data(), $this.data())
+      if(option == 'toggle') {
+        $.extend($target.data('modal').options, $this.data())
+      }
 
       e.preventDefault()
       $target.modal(option)
