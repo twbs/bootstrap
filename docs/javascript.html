@@ -78,8 +78,6 @@
   </div>
 </header>
 
-<div class="bs-docs-canvas">
-
   <div class="container">
 
     <!-- Docs nav
@@ -87,20 +85,20 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
-          <li><a href="#overview">Overview <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#transitions">Transitions <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#modals">Modal <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#dropdowns">Dropdown <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#scrollspy">Scrollspy <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#tabs">Tab <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#tooltips">Tooltip <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#popovers">Popover <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#alerts">Alert <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#buttons">Button <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#collapse">Collapse <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#carousel">Carousel <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#typeahead">Typeahead <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#affix">Affix <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
+          <li><a href="#transitions"><i class="icon-chevron-right"></i> Transitions</a></li>
+          <li><a href="#modals"><i class="icon-chevron-right"></i> Modal</a></li>
+          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdown</a></li>
+          <li><a href="#scrollspy"><i class="icon-chevron-right"></i> Scrollspy</a></li>
+          <li><a href="#tabs"><i class="icon-chevron-right"></i> Tab</a></li>
+          <li><a href="#tooltips"><i class="icon-chevron-right"></i> Tooltip</a></li>
+          <li><a href="#popovers"><i class="icon-chevron-right"></i> Popover</a></li>
+          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alert</a></li>
+          <li><a href="#buttons"><i class="icon-chevron-right"></i> Button</a></li>
+          <li><a href="#collapse"><i class="icon-chevron-right"></i> Collapse</a></li>
+          <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
+          <li><a href="#typeahead">Typeahead</a></li>
+          <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -185,7 +183,7 @@ $('#myModal').on('show', function (e) {
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
             <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>Modal header</h3>
               </div>
               <div class="modal-body">
@@ -200,7 +198,7 @@ $('#myModal').on('show', function (e) {
 <pre class="prettyprint linenums">
 &lt;div class="modal hide fade"&gt;
   &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal"&gt;&amp;times;&lt;/button&gt;
+    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
     &lt;h3&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
@@ -216,9 +214,9 @@ $('#myModal').on('show', function (e) {
           <h3>Live demo</h3>
           <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h3 id="myModalLabel">Modal Heading</h3>
             </div>
             <div class="modal-body">
@@ -243,8 +241,8 @@ $('#myModal').on('show', function (e) {
               <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-              <a href="#" role="button" class="btn" data-dismiss="modal" >Close</a>
-              <a href="#" role="button" class="btn btn-primary">Save changes</a>
+              <button class="btn" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Save changes</button>
             </div>
           </div>
           <div class="bs-docs-example" style="padding-bottom: 24px;">
@@ -255,17 +253,17 @@ $('#myModal').on('show', function (e) {
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
 
 &lt;-- Modal --&gt;
-&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"&gt;
+&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
   &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
+    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
     &lt;p&gt;One fine body…&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" role="button" class="btn"&gt;Close&lt;/a&gt;
-    &lt;a href="#" role="button" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+    &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;Close&lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;Save changes&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -1660,47 +1658,44 @@ $('[data-spy="affix"]').each(function () {
 
 
 
-
-      <!-- Footer
-      ================================================== -->
-      <footer class="footer">
-        <div class="container">
-          <p class="pull-right"><a href="#">Back to top</a></p>
-          <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-          <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-          <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-          <ul class="footer-links">
-            <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-            <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
-            <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-          </ul>
-        </div>
-      </footer>
-
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+        </ul>
+      </div>
+    </footer>
 
 
-      <!-- Le javascript
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-      <script src="assets/js/jquery.js"></script>
-      <script src="assets/js/google-code-prettify/prettify.js"></script>
-      <script src="assets/js/bootstrap-transition.js"></script>
-      <script src="assets/js/bootstrap-alert.js"></script>
-      <script src="assets/js/bootstrap-modal.js"></script>
-      <script src="assets/js/bootstrap-dropdown.js"></script>
-      <script src="assets/js/bootstrap-scrollspy.js"></script>
-      <script src="assets/js/bootstrap-tab.js"></script>
-      <script src="assets/js/bootstrap-tooltip.js"></script>
-      <script src="assets/js/bootstrap-popover.js"></script>
-      <script src="assets/js/bootstrap-button.js"></script>
-      <script src="assets/js/bootstrap-collapse.js"></script>
-      <script src="assets/js/bootstrap-carousel.js"></script>
-      <script src="assets/js/bootstrap-typeahead.js"></script>
-      <script src="assets/js/bootstrap-affix.js"></script>
-      <script src="assets/js/application.js"></script>
 
-    </div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/application.js"></script>
 
 
 

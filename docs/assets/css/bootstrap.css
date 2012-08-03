@@ -938,7 +938,7 @@ input[type="color"],
 .uneditable-input {
   display: inline-block;
   height: 20px;
-  padding: 4px;
+  padding: 4px 6px;
   margin-bottom: 9px;
   font-size: 14px;
   line-height: 20px;
@@ -1012,7 +1012,7 @@ input[type="color"]:focus,
 
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 3px 0;
+  margin: 4px 0;
   *margin-top: 0;
   /* IE7 */
 
@@ -1187,73 +1187,73 @@ textarea,
 input.span12,
 textarea.span12,
 .uneditable-input.span12 {
-  width: 930px;
+  width: 926px;
 }
 
 input.span11,
 textarea.span11,
 .uneditable-input.span11 {
-  width: 850px;
+  width: 846px;
 }
 
 input.span10,
 textarea.span10,
 .uneditable-input.span10 {
-  width: 770px;
+  width: 766px;
 }
 
 input.span9,
 textarea.span9,
 .uneditable-input.span9 {
-  width: 690px;
+  width: 686px;
 }
 
 input.span8,
 textarea.span8,
 .uneditable-input.span8 {
-  width: 610px;
+  width: 606px;
 }
 
 input.span7,
 textarea.span7,
 .uneditable-input.span7 {
-  width: 530px;
+  width: 526px;
 }
 
 input.span6,
 textarea.span6,
 .uneditable-input.span6 {
-  width: 450px;
+  width: 446px;
 }
 
 input.span5,
 textarea.span5,
 .uneditable-input.span5 {
-  width: 370px;
+  width: 366px;
 }
 
 input.span4,
 textarea.span4,
 .uneditable-input.span4 {
-  width: 290px;
+  width: 286px;
 }
 
 input.span3,
 textarea.span3,
 .uneditable-input.span3 {
-  width: 210px;
+  width: 206px;
 }
 
 input.span2,
 textarea.span2,
 .uneditable-input.span2 {
-  width: 130px;
+  width: 126px;
 }
 
 input.span1,
 textarea.span1,
 .uneditable-input.span1 {
-  width: 50px;
+  width: 46px;
 }
 
 .controls-row {
@@ -1305,6 +1305,9 @@ input[type="checkbox"][readonly] {
 .control-group.warning textarea {
   color: #c09853;
   border-color: #c09853;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .control-group.warning .checkbox:focus,
@@ -1313,9 +1316,9 @@ input[type="checkbox"][readonly] {
 .control-group.warning select:focus,
 .control-group.warning textarea:focus {
   border-color: #a47e3c;
-  -webkit-box-shadow: 0 0 6px #dbc59e;
-     -moz-box-shadow: 0 0 6px #dbc59e;
-          box-shadow: 0 0 6px #dbc59e;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
 }
 
 .control-group.warning .input-prepend .add-on,
@@ -1338,6 +1341,9 @@ input[type="checkbox"][readonly] {
 .control-group.error textarea {
   color: #b94a48;
   border-color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .control-group.error .checkbox:focus,
@@ -1346,9 +1352,9 @@ input[type="checkbox"][readonly] {
 .control-group.error select:focus,
 .control-group.error textarea:focus {
   border-color: #953b39;
-  -webkit-box-shadow: 0 0 6px #d59392;
-     -moz-box-shadow: 0 0 6px #d59392;
-          box-shadow: 0 0 6px #d59392;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
 }
 
 .control-group.error .input-prepend .add-on,
@@ -1371,6 +1377,9 @@ input[type="checkbox"][readonly] {
 .control-group.success textarea {
   color: #468847;
   border-color: #468847;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .control-group.success .checkbox:focus,
@@ -1379,9 +1388,9 @@ input[type="checkbox"][readonly] {
 .control-group.success select:focus,
 .control-group.success textarea:focus {
   border-color: #356635;
-  -webkit-box-shadow: 0 0 6px #7aba7b;
-     -moz-box-shadow: 0 0 6px #7aba7b;
-          box-shadow: 0 0 6px #7aba7b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
 }
 
 .control-group.success .input-prepend .add-on,
@@ -3039,8 +3048,8 @@ button.close {
 }
 
 .btn {
-  border-color: #ccc;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-color: #c5c5c5;
+  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
 }
 
 .btn-primary {

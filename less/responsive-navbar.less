@@ -67,7 +67,7 @@
   // Nav and dropdown links in navbar
   .nav-collapse .nav > li > a,
   .nav-collapse .dropdown-menu a {
-    padding: 6px 15px;
+    padding: 9px 15px;
     font-weight: bold;
     color: @navbarLinkColor;
     .border-radius(3px);
@@ -84,6 +84,10 @@
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover {
     background-color: @navbarBackground;
+  }
+  .navbar-inverse .nav-collapse .nav > li > a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
+    background-color: @navbarInverseBackground;
   }
   // Buttons in the navbar
   .nav-collapse.in .btn-group {

@@ -7,8 +7,6 @@
   </div>
 </header>
 
-<div class="bs-docs-canvas">
-
   <div class="container">
 
     <!-- Docs nav
@@ -16,20 +14,20 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
-          <li><a href="#overview">{{_i}}Overview{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#transitions">{{_i}}Transitions{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#modals">{{_i}}Modal{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#dropdowns">{{_i}}Dropdown{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#scrollspy">{{_i}}Scrollspy{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#tabs">{{_i}}Tab{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#tooltips">{{_i}}Tooltip{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#popovers">{{_i}}Popover{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#alerts">{{_i}}Alert{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#buttons">{{_i}}Button{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#collapse">{{_i}}Collapse{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#carousel">{{_i}}Carousel{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#typeahead">{{_i}}Typeahead{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#affix">{{_i}}Affix{{/i}} <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#overview"><i class="icon-chevron-right"></i> {{_i}}Overview{{/i}}</a></li>
+          <li><a href="#transitions"><i class="icon-chevron-right"></i> {{_i}}Transitions{{/i}}</a></li>
+          <li><a href="#modals"><i class="icon-chevron-right"></i> {{_i}}Modal{{/i}}</a></li>
+          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> {{_i}}Dropdown{{/i}}</a></li>
+          <li><a href="#scrollspy"><i class="icon-chevron-right"></i> {{_i}}Scrollspy{{/i}}</a></li>
+          <li><a href="#tabs"><i class="icon-chevron-right"></i> {{_i}}Tab{{/i}}</a></li>
+          <li><a href="#tooltips"><i class="icon-chevron-right"></i> {{_i}}Tooltip{{/i}}</a></li>
+          <li><a href="#popovers"><i class="icon-chevron-right"></i> {{_i}}Popover{{/i}}</a></li>
+          <li><a href="#alerts"><i class="icon-chevron-right"></i> {{_i}}Alert{{/i}}</a></li>
+          <li><a href="#buttons"><i class="icon-chevron-right"></i> {{_i}}Button{{/i}}</a></li>
+          <li><a href="#collapse"><i class="icon-chevron-right"></i> {{_i}}Collapse{{/i}}</a></li>
+          <li><a href="#carousel"><i class="icon-chevron-right"></i> {{_i}}Carousel{{/i}}</a></li>
+          <li><a href="#typeahead">{{_i}}Typeahead{{/i}}</a></li>
+          <li><a href="#affix"><i class="icon-chevron-right"></i> {{_i}}Affix{{/i}}</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -115,7 +113,7 @@ $('#myModal').on('show', function (e) {
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
             <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>{{_i}}Modal header{{/i}}</h3>
               </div>
               <div class="modal-body">
@@ -130,7 +128,7 @@ $('#myModal').on('show', function (e) {
 <pre class="prettyprint linenums">
 &lt;div class="modal hide fade"&gt;
   &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal"&gt;&amp;times;&lt;/button&gt;
+    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
     &lt;h3&gt;{{_i}}Modal header{{/i}}&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
@@ -146,9 +144,9 @@ $('#myModal').on('show', function (e) {
           <h3>{{_i}}Live demo{{/i}}</h3>
           <p>{{_i}}Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.{{/i}}</p>
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h3 id="myModalLabel">{{_i}}Modal Heading{{/i}}</h3>
             </div>
             <div class="modal-body">
@@ -173,8 +171,8 @@ $('#myModal').on('show', function (e) {
               <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-              <a href="#" role="button" class="btn" data-dismiss="modal" >{{_i}}Close{{/i}}</a>
-              <a href="#" role="button" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
+              <button class="btn" data-dismiss="modal">{{_i}}Close{{/i}}</button>
+              <button class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
             </div>
           </div>
           <div class="bs-docs-example" style="padding-bottom: 24px;">
@@ -185,17 +183,17 @@ $('#myModal').on('show', function (e) {
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;{{_i}}Launch demo modal{{/i}}&lt;/a&gt;
 
 &lt;-- Modal --&gt;
-&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"&gt;
+&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
   &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
+    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
     &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" role="button" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
-    &lt;a href="#" role="button" class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/a&gt;
+    &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;{{_i}}Close{{/i}}&lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -1587,5 +1585,3 @@ $('[data-spy="affix"]').each(function () {
     </div>{{! row}}
 
   </div>{{! /.container }}
-
-{{! /.bs-docs-canvas closes in footer }}
