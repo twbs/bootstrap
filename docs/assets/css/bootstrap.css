@@ -4944,7 +4944,8 @@ a.badge:hover {
   background-color: #eeeeee;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
-          border-radius: 6px;
+          border-radius: 6px
+          position: relative;
 }
 
 .hero-unit h1 {
@@ -4953,6 +4954,7 @@ a.badge:hover {
   line-height: 1;
   letter-spacing: -1px;
   color: inherit;
+  position: relative;
 }
 
 .hero-unit p {
@@ -4960,6 +4962,7 @@ a.badge:hover {
   font-weight: 200;
   line-height: 27px;
   color: inherit;
+  position: relative;
 }
 
 .pull-right {
@@ -4980,4 +4983,5 @@ a.badge:hover {
 
 .invisible {
   visibility: hidden;
+  position: none;
 }
