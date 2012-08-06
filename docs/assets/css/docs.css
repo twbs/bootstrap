@@ -12,8 +12,16 @@ body {
   position: relative;
   padding-top: 90px;
   background-color: #fff;
-  background-image: url(../img/grid-18px-masked.png);
-  background-repeat: repeat-x;
+  /* background-image: url(../img/grid-18px-masked.png); */
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), color-stop(25%, #fff), to(#fff));
+  background-image: -webkit-linear-gradient(#eee, #fff 25%, #fff);
+  background-image: -moz-linear-gradient(top, #eee, #fff 25%, #fff);
+  background-image: -ms-linear-gradient(#eee, #fff 25%, #fff);
+  background-image: -o-linear-gradient(#eee, #fff 25%, #fff);
+  background-image: linear-gradient(#eee, #fff 25%, #fff);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-repeat: repeat-x; */
   background-position: 0 40px;
 }
 
@@ -36,6 +44,9 @@ body {
   text-decoration: none;
 }
 
+.navbar-fixed-bottom .brand:hover {
+    text-decoration: none;
+}
 
 /* Space out sub-sections more
 -------------------------------------------------- */
@@ -121,6 +132,7 @@ hr.soften {
   height: 36px;
   background-color: #eeeeee; /* Old browsers */
   background-repeat: repeat-x; /* Repeat the gradient */
+  position: fixed;
   background-image: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%); /* FF3.6+ */
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f5f5f5), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
   background-image: -webkit-linear-gradient(top, #f5f5f5 0%,#eeeeee 100%); /* Chrome 10+,Safari 5.1+ */
