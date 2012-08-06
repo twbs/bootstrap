@@ -260,10 +260,10 @@
 // Default value is `visible`, but can be changed to `hidden
 // See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
 .backface-visibility(@visibility){
-	-webkit-backface-visibility: @visibility;
-	   -moz-backface-visibility: @visibility;
-	    -ms-backface-visibility: @visibility;
-	        backface-visibility: @visibility;
+  -webkit-backface-visibility: @visibility;
+     -moz-backface-visibility: @visibility;
+      -ms-backface-visibility: @visibility;
+          backface-visibility: @visibility;
 }
 
 // Background clipping
@@ -585,6 +585,47 @@
     // generate .spanX and .offsetX
     .spanX (@gridColumns);
     .offsetX (@gridColumns);
+
+    .row-padded {
+      .clearfix();
+
+      @_gridColumnWidth: (@gridRowWidth - @gridColumns * 2 + @gridGutterWidth) / @gridColumns - @gridGutterWidth;
+
+      margin-left: @gridColumns + 0px;
+      margin-right: @gridColumns + 0px;
+
+      [class*="span"] {
+        float: left;
+        margin-left: 0px;
+        margin-right: @gridGutterWidth;
+      }
+
+      /* Shadowed function */
+      .offsetX (@index) when (@index > 0) {
+        (~".offset@{index}") {
+          margin-left: @_gridColumnWidth * @index + @gridGutterWidth * @index;
+        }
+        .offsetX(@index - 1);
+      }
+      .offsetX (0) {}
+
+      /* Shadowed function */
+      .spanX (@index) when (@index > 0) {
+        (~".span@{index}") {
+          width: (@_gridColumnWidth * @index) + (@gridGutterWidth * (@index - 1));
+        }
+        .spanX(@index - 1);
+      }
+      .spanX (0) {}
+
+      // generate .spanX and .offsetX
+      .spanX (@gridColumns);
+      .offsetX (@gridColumns);
+
+      .omega {
+        margin-right: 0px;
+      }
+    }
 
   }
 

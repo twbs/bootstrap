@@ -296,6 +296,128 @@ a:hover {
   margin-left: 100px;
 }
 
+.row-padded {
+  margin-right: 12px;
+  margin-left: 12px;
+  *zoom: 1;
+}
+
+.row-padded:before,
+.row-padded:after {
+  display: table;
+  content: "";
+}
+
+.row-padded:after {
+  clear: both;
+}
+
+.row-padded [class*="span"] {
+  float: left;
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+.row-padded .span12 {
+  width: 916px;
+}
+
+.row-padded .span11 {
+  width: 838px;
+}
+
+.row-padded .span10 {
+  width: 760px;
+}
+
+.row-padded .span9 {
+  width: 682px;
+}
+
+.row-padded .span8 {
+  width: 604px;
+}
+
+.row-padded .span7 {
+  width: 526px;
+}
+
+.row-padded .span6 {
+  width: 448px;
+}
+
+.row-padded .span5 {
+  width: 370px;
+}
+
+.row-padded .span4 {
+  width: 292px;
+}
+
+.row-padded .span3 {
+  width: 214px;
+}
+
+.row-padded .span2 {
+  width: 136px;
+}
+
+.row-padded .span1 {
+  width: 58px;
+}
+
+.row-padded .offset12 {
+  margin-left: 936px;
+}
+
+.row-padded .offset11 {
+  margin-left: 858px;
+}
+
+.row-padded .offset10 {
+  margin-left: 780px;
+}
+
+.row-padded .offset9 {
+  margin-left: 702px;
+}
+
+.row-padded .offset8 {
+  margin-left: 624px;
+}
+
+.row-padded .offset7 {
+  margin-left: 546px;
+}
+
+.row-padded .offset6 {
+  margin-left: 468px;
+}
+
+.row-padded .offset5 {
+  margin-left: 390px;
+}
+
+.row-padded .offset4 {
+  margin-left: 312px;
+}
+
+.row-padded .offset3 {
+  margin-left: 234px;
+}
+
+.row-padded .offset2 {
+  margin-left: 156px;
+}
+
+.row-padded .offset1 {
+  margin-left: 78px;
+}
+
+.row-padded .omega {
+  margin-right: 0;
+}
+
 .row-fluid {
   width: 100%;
   *zoom: 1;

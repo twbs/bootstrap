@@ -5,7 +5,12 @@
 
 /* Remove background image */
 body {
+  background: linen;
   background-image: none;
+}
+
+body > .container {
+  background: white;
 }
 
 /* Space out subhead */
@@ -36,6 +41,14 @@ h4 {
 }
 
 
+/* Static grid */
+.static-grid [class*=span] {
+  background: gray;
+  background: rgba(20, 20, 20, .4);
+  text-align: center;
+}
+
+
 /* Fluid grid */
 .fluid-grid {
   margin-bottom: 45px;
@@ -47,6 +60,6 @@ h4 {
   color: #ddd;
   text-align: center;
 }
-.fluid-grid .span1 {
+.row-fluid [class=span1] {
   background-color: #999;
 }
