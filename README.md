@@ -5,6 +5,7 @@ Bootstrap provides simple and flexible HTML, CSS, and Javascript for popular use
 
 To get started, checkout http://twitter.github.com/bootstrap!
 
+To see the instructions, read the file LICENSE.
 
 
 Quick start
