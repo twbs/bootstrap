@@ -2,16 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Twitter Bootstrap</title>
+    <title>Installatie succesvol!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="generator" content="Bootstrap from Twitter">
 
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://images.apple.com/global/styles/base.css" type="text/css" />
+    <link rel="stylesheet" href="http://images.apple.com/v/home/k/styles/home.css" type="text/css" />
+	  <link rel="stylesheet" href="http://images.apple.com/home/styles/home.css" type="text/css" />
+	  <link rel="stylesheet" href="http://images.apple.com/v/home/k/styles/billboard.css" type="text/css" />
+	  <link rel="stylesheet" href="http://images.apple.com/home/styles/billboard.css" type="text/css" />
+    
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -30,9 +37,10 @@
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
 
 
+  <div style="display:none">
   <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-bottom">
       <div class="navbar-inner">
         <div class="container">
           <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -46,6 +54,7 @@
               <li class="active">
                 <a href="./index.html">Overview</a>
               </li>
+              <div style="display:none">
               <li class="">
                 <a href="./scaffolding.html">Scaffolding</a>
               </li>
@@ -68,11 +77,18 @@
               <li class="">
                 <a href="./examples.html">Examples</a>
               </li>
+              </div>
             </ul>
           </div>
         </div>
       </div>
     </div>
+    </div>
+    <!-- If you're Bootstrap site is installed on a subdomain and/or in a subdirectory, you'll have to change the navbar path -->
+      <frameset rows="*,0">
+    <frame src="/less/tests/navbar.html" name="byte_presence_hoofdframe" marginwidth="0" marginheight="0" frameborder="0" noresize="noresize"/>
+    <noframes><body>You can't see the menu, because you're browser is too old to let you see it. The magical word is: UPGRADE.</body></noframes>
+  </frameset>
 
     <div class="container">
 
@@ -80,11 +96,12 @@
 ================================================== -->
 <header class="jumbotron masthead">
   <div class="inner">
-    <h1>Bootstrap, from Twitter</h1>
-    <p>Simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions.</p>
+    <h1>Congratulations, you have successfully installed Bootstrap from Twitter!</h1>
+    <p>Simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions. You've got that now!</p>
     <p class="download-info">
-      <a href="https://github.com/twitter/bootstrap/" class="btn btn-primary btn-large" >View project on GitHub</a>
-      <a href="assets/bootstrap.zip" class="btn btn-large" >Download Bootstrap <small>(v2.0.4)</small></a>
+      <a href="https://github.com/twitter/bootstrap/" class="btn btn-primary btn-warning" >View project on GitHub</a>
+      <a href="assets/bootstrap.zip" class="btn btn-danger" >Download Bootstrap <small>(v2.0.4)</small></a>
+      <a href="/less/tests/navbar.html" class="btn btn-success" >Learn how to set up the menu bar</a>
     </p>
   </div>
 
@@ -112,7 +129,7 @@
     </ul>
   </div>
 </header>
-
+<!--
 <hr class="soften">
 
 <div class="marketing">
@@ -135,6 +152,7 @@
       <p>Originally built with only modern browsers in mind, Bootstrap has evolved to include support for all major browsers (even IE7!) and, with Bootstrap 2, tablets and smartphones, too.</p>
     </div>
   </div><!--/row-->
+  <!--
   <div class="row">
     <div class="span4">
       <img class="bs-icon" src="assets/img/glyphicons/glyphicons_155_show_thumbnails.png">
@@ -152,6 +170,7 @@
       <p>Unlike other front-end toolkits, Bootstrap was designed first and foremost as a styleguide to document not only our features, but best practices and living, coded examples.</p>
     </div>
   </div><!--/row-->
+  <!--
   <div class="row">
     <div class="span4">
       <img class="bs-icon" src="assets/img/glyphicons/glyphicons_082_roundabout.png">
@@ -169,6 +188,7 @@
       <p>Where vanilla CSS falters, LESS excels. Variables, nesting, operations, and mixins in LESS makes coding CSS faster and more efficient with minimal overhead.</p>
     </div>
   </div><!--/row-->
+  <!--
   <div class="row">
     <div class="span3">
       <img class="small-bs-icon" src="assets/img/icon-html5.png">
@@ -191,6 +211,7 @@
       <p>Brought to you by an experienced <a href="http://twitter.com/fat">engineer</a> and <a href="http://twitter.com/mdo">designer</a>.</p>
     </div>
   </div><!--/row-->
+  <!--
 
   <hr class="soften">
 
@@ -220,17 +241,21 @@
   </ul>
 
 </div><!-- /.marketing -->
+</section>
+
+<section id="footer">
 
      <!-- Footer
       ================================================== -->
       <footer class="footer">
-        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p class="pull-right"><a href="#"><img src="http://www.trendyflash.com/ws-themes/tfsimages/toparrow.png" alt="Back to top" /></a></p>
         <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
         <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
 
     </div><!-- /container -->
+    
 
 
 
