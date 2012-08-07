@@ -2466,7 +2466,7 @@ table .span24 {
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
-  border-bottom: 4px solid #000000;
+  border-bottom: 4px solid #FF0000;
   content: "\2191";
 }
 
@@ -3605,7 +3605,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar {
-  color: #999999;
+  color: #FFFFFF;
 }
 
 .navbar .brand:hover {
