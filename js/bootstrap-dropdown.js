@@ -100,7 +100,7 @@
   }
 
   function clearMenus() {
-    getParent($(toggle))
+    $(toggle).parent()
       .removeClass('open')
   }
 
