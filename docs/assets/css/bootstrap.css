@@ -1774,18 +1774,6 @@ table {
   border-top: 2px solid #dddddd;
 }
 
-.table .success td {
-  background-color: #dff0d8;
-}
-
-.table .error td {
-  background-color: #f2dede;
-}
-
-.table .info td {
-  background-color: #d9edf7;
-}
-
 .table-condensed th,
 .table-condensed td {
   padding: 4px 5px;
@@ -1874,8 +1862,8 @@ table {
   background-color: #f9f9f9;
 }
 
-.table-hover tbody tr:hover td,
-.table-hover tbody tr:hover th {
+.table-hover tr:hover td,
+.table-hover tr:hover th {
   background-color: #f5f5f5;
 }
 
@@ -2028,6 +2016,18 @@ table .span24 {
   float: none;
   width: 1884px;
   margin-left: 0;
+}
+
+.table tbody .success td {
+  background-color: #dff0d8;
+}
+
+.table tbody .error td {
+  background-color: #f2dede;
+}
+
+.table tbody .info td {
+  background-color: #d9edf7;
 }
 
 [class^="icon-"],
