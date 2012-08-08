@@ -2018,15 +2018,15 @@ table .span24 {
   margin-left: 0;
 }
 
-.table tbody .success td {
+.table tbody tr.success td {
   background-color: #dff0d8;
 }
 
-.table tbody .error td {
+.table tbody tr.error td {
   background-color: #f2dede;
 }
 
-.table tbody .info td {
+.table tbody tr.info td {
   background-color: #d9edf7;
 }
 
