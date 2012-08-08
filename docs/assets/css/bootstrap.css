@@ -4545,7 +4545,8 @@ input[type="submit"].btn.btn-mini {
   padding: 0 14px;
   line-height: 38px;
   text-decoration: none;
-  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
   border-left-width: 0;
 }
 
