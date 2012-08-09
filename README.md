@@ -1,4 +1,4 @@
-[BAstrap](http://gcba.github.com/bastrap)
+[BAstrap](http://gcba.github.com/BAstrap)
 =================
 
 BAstrap es un fork de [Bootstrap](http://twitter.github.com/bootstrap) para ser usado en desarrollos web del Gobierno de la Ciudad de Buenos Aires.
@@ -29,7 +29,7 @@ Bug tracker
 
 ¿Encontraste un bug? ¡Por favor creá un issue en GitHub! Asegurate de estar familiarizado con los [lineamientos de necolas](https://github.com/necolas/issue-guidelines). ¡Gracias! <3
 
-https://github.com/gcba/bastrap/issues
+https://github.com/gcba/BAstrap/issues
 
 
 
