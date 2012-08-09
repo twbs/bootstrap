@@ -1,111 +1,49 @@
-[Twitter Bootstrap](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
+[BAstrap](http://gcba.github.com/bastrap)
 =================
 
-Bootstrap provides simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions. In other words, it's a front-end toolkit for faster, more beautiful web development. It's created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat) at Twitter.
-
-To get started, checkout http://twitter.github.com/bootstrap!
+BAstrap es un fork de [Bootstrap](http://twitter.github.com/bootstrap) para ser usado en desarrollos web del Gobierno de la Ciudad de Buenos Aires.
 
 
-
-Quick start
------------
-
-Clone the repo, `git clone git://github.com/twitter/bootstrap.git`, or [download the latest release](https://github.com/twitter/bootstrap/zipball/master).
-
-
-
-Versioning
+Versionado
 ----------
 
-For transparency and insight into our release cycle, and for striving to maintain backward compatibility, Bootstrap will be maintained under the Semantic Versioning guidelines as much as possible.
+Vamos a usar el mismo sistema de versionado que Bootstrap:
 
-Releases will be numbered with the follow format:
+Por una cuestión de transparencia y compresión de nuestro ciclo de lanzamientos, y buscando mantener compatibilidad hacia atrás, Bootstrap será mantenido usando los lineamientos de "Semantic Versioning" siempre que sea posible.
+
+Los lanzamientos serán numerados con el siguiente formato:
 
 `<major>.<minor>.<patch>`
 
-And constructed with the following guidelines:
+Y construidos con los siguientes lineamientos:
 
-* Breaking backward compatibility bumps the major (and resets the minor and patch)
-* New additions without breaking backward compatibility bumps the minor (and resets the patch)
-* Bug fixes and misc changes bumps the patch
+* Si se rompe la compatibilidad hacia atrás sube la versión major (y resetea minor y patch)
+* Nuevas incorporaciones que no rompen la compatibilidad hacia atrás suben la versión minor (y reseta patch)
+* Arreglo de bugs y cambios sueltos suben la versión patch
 
-For more information on SemVer, please visit http://semver.org/.
-
+Para más información sobre SemVer, visitar http://semver.org/.
 
 
 Bug tracker
 -----------
 
-Have a bug? Please create an issue here on GitHub! Also, when filing please make sure you're familiar with [necolas's guidelines](https://github.com/necolas/issue-guidelines). thanks! <3
+¿Encontraste un bug? ¡Por favor creá un issue en GitHub! Asegurate de estar familiarizado con los [lineamientos de necolas](https://github.com/necolas/issue-guidelines). ¡Gracias! <3
 
-https://github.com/twitter/bootstrap/issues
-
-
-
-Twitter account
----------------
-
-Keep up to date on announcements and more by following Bootstrap on Twitter, [@TwBootstrap](http://twitter.com/TwBootstrap).
+https://github.com/gcba/bastrap/issues
 
 
 
 Blog
 ----
 
-Read more detailed announcements, discussions, and more on [The Official Twitter Bootstrap Blog](http://blog.getbootstrap.com).
+Leé anuncios, discusiones y más en el [Blog de BADigital](http://digitalba.buenosaires.gob.ar).
 
 
 
-Mailing list
-------------
-
-Have a question? Ask on our mailing list!
-
-twitter-bootstrap@googlegroups.com
-
-http://groups.google.com/group/twitter-bootstrap
-
-
-
-IRC
----
-
-Server: irc.freenode.net
-
-Channel: ##twitter-bootstrap (the double ## is not a typo)
-
-
-
-Developers
-----------
-
-We have included a makefile with convenience methods for working with the Bootstrap library.
-
-+ **dependencies**
-Our makefile depends on you having recess, uglify.js, and jshint installed. To install, just run the following command in npm:
-
-```
-$ npm install recess uglify-js jshint -g
-```
-
-+ **build** - `make`
-Runs the recess compiler to rebuild the `/less` files and compiles the docs pages. Requires recess and uglify-js. <a href="http://twitter.github.com/bootstrap/less.html#compiling">Read more in our docs &raquo;</a>
-
-+ **test** - `make test`
-Runs jshint and qunit tests headlessly in phantom js (used for ci). Depends on having phatomjs installed.
-
-+ **watch** - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
-
-
-Contributing
-------------
-
-Please make all pull requests against wip-* branches. Also, if your unit test contains javascript patches or features - you must include relevant unit tests. Thanks!
-
-
-Authors
+Autores
 -------
+
+Bootstrap original:
 
 **Mark Otto**
 
@@ -119,7 +57,7 @@ Authors
 
 
 
-Copyright and license
+Copyright y licencias
 ---------------------
 
 Copyright 2012 Twitter, Inc.
