@@ -361,3 +361,69 @@
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: @white;
 }
+
+// SHORTCUTS
+.circle {
+	text-align:center;
+}
+.circle span {
+	border: @grayLight 5px solid;
+	-webkit-transition: all .1s ease-in-out;
+	display:block;
+	border-radius:50px;
+	width: 70px;
+	height: 70px;
+	display: block;
+	margin: 0 auto;
+}
+.circle span em {
+	width: 30px;
+	height: 30px;
+	background-repeat: no-repeat;
+	background-position: 0;
+	display: block;
+	margin: 20px;
+	-moz-opacity: 0.4;
+	-khtml-opacity: 0.4;
+	opacity: 0.4;
+	-webkit-backface-visibility: hidden;
+}
+
+.circle_grey span {
+	background: @grayLighter;
+	border-color: @grayLight;
+}
+
+.circle.circle_grey:hover span em {
+	-moz-opacity: 0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;   
+}
+
+
+.circle.circle_grey:hover span {
+	border: #404040 5px solid;
+	-webkit-transform:scale(1.1);
+}
+
+.circle.circle_grey:hover h3 {
+	color: #404040;
+	text-decoration: none!important;
+}
+
+.circle a:hover {
+	cursor: pointer;
+}
+
+.circle a {
+	text-decoration: none;
+	display: block;
+}
+
+.view-shortcuts h3 {
+	margin-top: 10px;
+	text-transform: uppercase;
+	font-size: 17px;
+	color: #666;
+}
+
