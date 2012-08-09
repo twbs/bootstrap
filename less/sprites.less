@@ -25,9 +25,16 @@
   background-image: url("@{iconSpritePath}");
   background-position: 14px 14px;
   background-repeat: no-repeat;
-
 }
-.icon-white {
+
+/* White icons with optional class, or on hover/active states of certain elements */
+.icon-white,
+.nav > .active > a > [class^="icon-"],
+.nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"]
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: url("@{iconWhiteSpritePath}");
 }
 
@@ -177,15 +184,3 @@
 .icon-filter                  { background-position: -408px -144px; }
 .icon-briefcase               { background-position: -432px -144px; }
 .icon-fullscreen              { background-position: -456px -144px; }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1774,18 +1774,6 @@ table {
   border-top: 2px solid #dddddd;
 }
 
-.table .success td {
-  background-color: #dff0d8;
-}
-
-.table .error td {
-  background-color: #f2dede;
-}
-
-.table .info td {
-  background-color: #d9edf7;
-}
-
 .table-condensed th,
 .table-condensed td {
   padding: 4px 5px;
@@ -1874,8 +1862,8 @@ table {
   background-color: #f9f9f9;
 }
 
-.table-hover tbody tr:hover td,
-.table-hover tbody tr:hover th {
+.table-hover tr:hover td,
+.table-hover tr:hover th {
   background-color: #f5f5f5;
 }
 
@@ -2030,6 +2018,18 @@ table .span24 {
   margin-left: 0;
 }
 
+.table tbody tr.success td {
+  background-color: #dff0d8;
+}
+
+.table tbody tr.error td {
+  background-color: #f2dede;
+}
+
+.table tbody tr.info td {
+  background-color: #d9edf7;
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
@@ -2043,7 +2043,14 @@ table .span24 {
   background-repeat: no-repeat;
 }
 
-.icon-white {
+/* White icons with optional class, or on hover/active states of certain elements */
+
+.icon-white,
+.nav > .active > a > [class^="icon-"],
+.nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"].dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: url("../img/glyphicons-halflings-white.png");
 }
 
@@ -4545,7 +4552,8 @@ input[type="submit"].btn.btn-mini {
   padding: 0 14px;
   line-height: 38px;
   text-decoration: none;
-  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
   border-left-width: 0;
 }
 

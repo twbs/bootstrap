@@ -73,7 +73,7 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>Javascript for Bootstrap</h1>
+    <h1>JavaScript for Bootstrap</h1>
     <p class="lead">Bring Bootstrap's components to life&mdash;now with 12 custom jQuery plugins.
   </div>
 </header>
@@ -97,7 +97,7 @@
           <li><a href="#buttons"><i class="icon-chevron-right"></i> Button</a></li>
           <li><a href="#collapse"><i class="icon-chevron-right"></i> Collapse</a></li>
           <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
-          <li><a href="#typeahead">Typeahead</a></li>
+          <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
           <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
         </ul>
       </div>
@@ -108,7 +108,7 @@
         ================================================== -->
         <section id="overview">
           <div class="page-header">
-            <h1>Javascript in Bootstrap</h1>
+            <h1>JavaScript in Bootstrap</h1>
           </div>
 
           <h3>Individual or compiled</h3>
@@ -212,7 +212,7 @@ $('#myModal').on('show', function (e) {
 </pre>
 
           <h3>Live demo</h3>
-          <p>Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.</p>
+          <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
           <!-- sample modal content -->
           <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
@@ -275,15 +275,15 @@ $('#myModal').on('show', function (e) {
           <h2>Usage</h2>
 
           <h3>Via data attributes</h3>
-          <p>Activate a modal without writing javascript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
+          <p>Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.</p>
           <pre class="prettyprint linenums">&lt;button type="button" data-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
 
-          <h3>Via javascript</h3>
-          <p>Call a modal with id <code>myModal</code> with a single line of javascript:</p>
+          <h3>Via JavaScript</h3>
+          <p>Call a modal with id <code>myModal</code> with a single line of JavaScript:</p>
           <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
 
           <h3>Options</h3>
-          <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
+          <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -498,8 +498,8 @@ $('#myModal').on('hidden', function () {
 &lt;/div&gt;
 </pre>
 
-          <h3>Via javascript</h3>
-          <p>Call the dropdowns via javascript:</p>
+          <h3>Via JavaScript</h3>
+          <p>Call the dropdowns via JavaScript:</p>
           <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
 
           <h3>Options</h3>
@@ -569,8 +569,8 @@ $('#myModal').on('hidden', function () {
           <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use.</p>
           <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
 
-          <h3>Via javascript</h3>
-          <p>Call the scrollspy via javascript:</p>
+          <h3>Via JavaScript</h3>
+          <p>Call the scrollspy via JavaScript:</p>
           <pre class="prettyprint linenums">$('#navbar').scrollspy()</pre>
 
           <div class="alert alert-info">
@@ -588,7 +588,7 @@ $('[data-spy="scroll"]').each(function () {
 </pre>
 
           <h3>Options</h3>
-          <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
+          <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -670,7 +670,7 @@ $('[data-spy="scroll"]').each(function () {
 
 
           <h2>Usage</h2>
-          <p>Enable tabbable tabs via javascript (each tab needs to be activated individually):</p>
+          <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
 <pre class="prettyprint linenums">
 $('#myTab a').click(function (e) {
   e.preventDefault();
@@ -685,7 +685,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
 </pre>
 
           <h3>Markup</h3>
-          <p>You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.</p>
+          <p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -780,11 +780,11 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
           <h2>Usage</h2>
-          <p>Trigger the tooltip via javascript:</p>
+          <p>Trigger the tooltip via JavaScript:</p>
           <pre class="prettyprint linenums">$('#example').tooltip(options)</pre>
 
           <h3>Options</h3>
-          <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
+          <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -918,7 +918,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <div class="clearfix"></div>
         </div>
-        <p>No markup shown as popovers are generated from javascript and content within a <code>data</code> attribute.</p>
+        <p>No markup shown as popovers are generated from JavaScript and content within a <code>data</code> attribute.</p>
 
         <h3>Live demo</h3>
         <div class="bs-docs-example" style="padding-bottom: 24px;">
@@ -930,11 +930,11 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
         <h2>Usage</h2>
-        <p>Enable popovers via javascript:</p>
+        <p>Enable popovers via JavaScript:</p>
         <pre class="prettyprint linenums">$('#example').popover(options)</pre>
 
         <h3>Options</h3>
-        <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
+        <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
         <table class="table table-bordered table-striped">
           <thead>
            <tr>
@@ -1059,7 +1059,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
         <h2>Usage</h2>
-        <p>Enable dismissal of an alert via javascript:</p>
+        <p>Enable dismissal of an alert via JavaScript:</p>
         <pre class="prettyprint linenums">$(".alert").alert()</pre>
 
         <h3>Markup</h3>
@@ -1168,7 +1168,7 @@ $('#my-alert').bind('closed', function () {
 
 
             <h2>Usage</h2>
-            <p>Enable buttons via javascript:</p>
+            <p>Enable buttons via JavaScript:</p>
             <pre class="prettyprint linenums">$('.nav-tabs').button()</pre>
 
             <h3>Markup</h3>
@@ -1278,12 +1278,12 @@ $('#my-alert').bind('closed', function () {
             <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
             <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
-            <h3>Via javascript</h3>
+            <h3>Via JavaScript</h3>
             <p>Enable manually with:</p>
             <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
 
             <h3>Options</h3>
-            <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
+            <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1429,12 +1429,12 @@ $('#myCollapsible').on('hidden', function () {
             <h3>Via data attributes</h3>
             <p>...</p>
 
-            <h3>Via javascript</h3>
+            <h3>Via JavaScript</h3>
             <p>Call carousel manually with:</p>
             <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
 
             <h3>Options</h3>
-            <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
+            <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1527,12 +1527,12 @@ $('.carousel').carousel({
             <h3>Via data attributes</h3>
             <p>Add data attributes to register an element with typeahead functionality as shown in the example above.</p>
 
-            <h3>Via javascript</h3>
+            <h3>Via JavaScript</h3>
             <p>Call the typeahead manually with:</p>
             <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
 
             <h3>Options</h3>
-            <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-source=""</code>.</p>
+            <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-source=""</code>.</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1614,8 +1614,8 @@ $('.carousel').carousel({
               It's up to you to maintain the dimensions of an element when toggling between relative and fixed positions. To see how this is done, refer to this pages subnavigation.
             </div>
 
-            <h3>Via javascript</h3>
-            <p>Call the affix plugin via javascript:</p>
+            <h3>Via JavaScript</h3>
+            <p>Call the affix plugin via JavaScript:</p>
             <pre class="prettyprint linenums">$('#navbar').affix()</pre>
 
             <h3>Methods</h3>
@@ -1628,7 +1628,7 @@ $('[data-spy="affix"]').each(function () {
 </pre>
 
           <h3>Options</h3>
-          <p>Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.</p>
+          <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>

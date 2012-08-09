@@ -48,16 +48,6 @@ table {
   tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
-
-  .success td {
-    background-color: @successBackground;
-  }
-  .error td {
-    background-color: @errorBackground;
-  }
-  .info td {
-    background-color: @infoBackground;
-  }
 }
 
 
@@ -169,8 +159,8 @@ table {
 // ------------
 // Placed here since it has to come after the potential zebra striping
 .table-hover {
-  tbody tr:hover td,
-  tbody tr:hover th {
+  tr:hover td,
+  tr:hover th {
     background-color: @tableBackgroundHover;
   }
 }
@@ -213,4 +203,21 @@ table {
   .span22    { .tableColumns(22); }
   .span23    { .tableColumns(23); }
   .span24    { .tableColumns(24); }
+}
+
+
+// TABLE BACKGROUNDS
+// -----------------
+// Exact selectors below required to override .table-striped
+
+.table {
+  tbody tr.success td {
+    background-color: @successBackground;
+  }
+  tbody tr.error td {
+    background-color: @errorBackground;
+  }
+  tbody tr.info td {
+    background-color: @infoBackground;
+  }
 }
