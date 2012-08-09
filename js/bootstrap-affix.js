@@ -36,7 +36,7 @@
   }
 
   Affix.prototype.refresh = function () {
-    this.position = this.$element.offset()
+    if(!this.affixed) this.position = this.$element.offset()
   }
 
   Affix.prototype.checkPosition = function () {
