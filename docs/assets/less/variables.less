@@ -29,8 +29,8 @@
 @orange:                #f89406;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
-
-
+@yellowDark:			#3b2f07;
+@yellowLight:			#7d6413;
 // Scaffolding
 // -------------------------
 @bodyBackground:        @white;
@@ -39,22 +39,22 @@
 
 // Links
 // -------------------------
-@linkColor:             #08c;
+@linkColor:             #4e6ac2;
 @linkColorHover:        darken(@linkColor, 15%);
 
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@sansFontFamily:        "Lucida Grande", Arial, sans-serif;
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
 
-@baseFontSize:          13px;
+@baseFontSize:          14px;
 @baseFontFamily:        @sansFontFamily;
 @baseLineHeight:        18px;
 @altFontFamily:         @serifFontFamily;
 
-@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
+@headingsFontFamily:    'Gotham'; // empty to use BS default, @baseFontFamily
 @headingsFontWeight:    bold;    // instead of browser default, bold
 @headingsColor:         inherit; // empty to use BS default, @textColor
 
@@ -67,14 +67,24 @@
 @tableBorder:                       #ddd; // table and cell border
 
 
+
+//HEDER
+
+@headerLight: 				#ffe200; 
+@headerDark: 				darken(@headerLight,3%);
+@headerBorder:				lighten(@headerLight,30%);
+
+
 // Buttons
 // -------------------------
 @btnBackground:                     @white;
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #ccc;
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
+@btnPrimaryBackground:              #444;
+@btnPrimaryBackgroundHighlight:     darken(@btnPrimaryBackground, 10%);
+
+
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;
@@ -109,7 +119,6 @@
 @dropdownLinkBackgroundHover:   @linkColor;
 @dropdownDividerTop:            #e5e5e5;
 @dropdownDividerBottom:         @white;
-
 
 
 // COMPONENT VARIABLES
@@ -147,10 +156,10 @@
 // -------------------------
 @navbarHeight:                    40px;
 @navbarBackground:                @grayDarker;
-@navbarBackgroundHighlight:       @grayDark;
+@navbarBackgroundHighlight:       lighten(@grayDarker, 10%);
 
 @navbarText:                      @grayLight;
-@navbarLinkColor:                 @grayLight;
+@navbarLinkColor:                 @white;
 @navbarLinkColorHover:            @white;
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       transparent;

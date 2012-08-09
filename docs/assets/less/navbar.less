@@ -20,15 +20,14 @@
   padding-left:  20px;
   padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
-  .border-radius(4px);
   .box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
 }
 
 // Set width to auto for default container
 // We then reset it for fixed navbars in the #gridSystem mixin
-.navbar .container {
-  width: auto;
-}
+// .navbar .container {
+//  width: auto;
+//}
 
 // Override the default collapsed state
 .nav-collapse.collapse {
@@ -200,11 +199,16 @@
   float: none;
   // Vertically center the text given @navbarHeight
   @elementHeight: 20px;
-  padding: ((@navbarHeight - @elementHeight) / 2 - 1) 10px ((@navbarHeight - @elementHeight) / 2 + 1);
+  padding: 10px 20px;
   line-height: 19px;
-  color: @navbarLinkColor;
+  color: @grayLighter;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  font-weight: @headingsFontWeight;
+  text-transform: uppercase;
+  font-family: @headingsFontFamily;
+  letter-spacing: -1px;
+  font-size: 13px;
 }
 // Buttons
 .navbar .btn {

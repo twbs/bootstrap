@@ -25,6 +25,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
+  letter-spacing: -1px;
   font-family: @headingsFontFamily;
   font-weight: @headingsFontWeight;
   color: @headingsColor;
@@ -35,17 +36,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 h1 {
+  letter-spacing: -1px!important;
   font-size: 30px;
   line-height: @baseLineHeight * 2;
   small {
-    font-size: 18px;
+  	letter-spacing:0;
+  	font-size: 18px;
+  	font-family: @sansFontFamily;
   }
+ 
 }
 h2 {
   font-size: 24px;
   line-height: @baseLineHeight * 2;
   small {
     font-size: 18px;
+    font-family: @sansFontFamily;
   }
 }
 h3 {
@@ -53,6 +59,8 @@ h3 {
   line-height: @baseLineHeight * 1.5;
   small {
     font-size: 14px;
+    font-family: @sansFontFamily;
+    
   }
 }
 h4, h5, h6 {
@@ -62,6 +70,7 @@ h4 {
   font-size: 14px;
   small {
     font-size: 12px;
+    font-family: @sansFontFamily;
   }
 }
 h5 {
