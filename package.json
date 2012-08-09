@@ -1,14 +1,14 @@
 {
-    "name": "bootstrap"
-  , "description": "HTML, CSS, and JS toolkit from Twitter."
+    "name": "BAstrap"
+  , "description": "HTML, CSS, and JS toolkit from Twitter and GCBA."
   , "version": "2.0.4"
   , "keywords": ["bootstrap", "css"]
-  , "homepage": "http://twitter.github.com/bootstrap/"
-  , "author": "Twitter Inc."
+  , "homepage": "http://gcba.github.com/BAstrap/"
+  , "author": "GCBA"
   , "scripts": { "test": "make test" }
   , "repository": {
       "type": "git"
-    , "url": "https://github.com/twitter/bootstrap.git"
+    , "url": "https://github.com/gcba/BAstrap.git"
   }
   , "licenses": [
     {
