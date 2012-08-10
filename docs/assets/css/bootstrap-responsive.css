@@ -140,7 +140,7 @@
     padding-right: 20px;
     padding-left: 20px;
   }
-  .navbar-fixed-top,
+  .gcba-fixed-top,
   .navbar-fixed-bottom {
     margin-right: -20px;
     margin-left: -20px;
@@ -216,7 +216,7 @@
     margin-left: 20px;
   }
   .container,
-  .navbar-fixed-top .container,
+  .gcba-fixed-top .container,
   .navbar-fixed-bottom .container {
     width: 724px;
   }
@@ -452,7 +452,7 @@
     margin-left: 30px;
   }
   .container,
-  .navbar-fixed-top .container,
+  .gcba-fixed-top .container,
   .navbar-fixed-bottom .container {
     width: 1170px;
   }
@@ -683,17 +683,17 @@
   body {
     padding-top: 0;
   }
-  .navbar-fixed-top,
+  .gcba-fixed-top,
   .navbar-fixed-bottom {
     position: static;
   }
-  .navbar-fixed-top {
+  .gcba-fixed-top {
     margin-bottom: 18px;
   }
   .navbar-fixed-bottom {
     margin-top: 18px;
   }
-  .navbar-fixed-top .navbar-inner,
+  .gcba-fixed-top .navbar-inner,
   .navbar-fixed-bottom .navbar-inner {
     padding: 5px;
   }

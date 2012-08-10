@@ -144,7 +144,7 @@
 // ------------
 
 // Shared (top/bottom) styles
-.navbar-fixed-top,
+.gcba-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
   right: 0;
@@ -152,20 +152,20 @@
   z-index: @zindexFixedNavbar;
   margin-bottom: 0; // remove 18px margin for static navbar
 }
-.navbar-fixed-top .navbar-inner,
+.gcba-fixed-top .navbar-inner,
 .navbar-fixed-bottom .navbar-inner {
   padding-left:  0;
   padding-right: 0;
   .border-radius(0);
 }
 
-.navbar-fixed-top .container,
+.gcba-fixed-top .container,
 .navbar-fixed-bottom .container {
   #grid > .core > .span(@gridColumns);
 }
 
 // Fixed to top
-.navbar-fixed-top {
+.gcba-fixed-top {
   top: 0;
 }
 
