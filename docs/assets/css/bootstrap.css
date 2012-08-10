@@ -3247,10 +3247,9 @@ input[type="submit"].btn.btn-mini {
   background-image: linear-gradient(top, #ffe200, #f0d400);
   background-image: -ms-linear-gradient(top, #ffe200, #f0d400);
   background-image: -webkit-linear-gradient(top, #ffe200, #f0d400);
-  background-image: -moz-linear-gradient(top, #ffe200, #f0d400);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffe200), to(#f0d400));
+  background-image: -moz-linear-gradient(top, #ffe200, #f0d400);
   background-repeat: repeat-x;
-  border-top: 1px solid #fff399;
   border-color: #f0d400 #f0d400 #a39100;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
