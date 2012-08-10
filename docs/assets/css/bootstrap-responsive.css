@@ -697,7 +697,8 @@
   .navbar-fixed-bottom .navbar-inner {
     padding: 5px;
   }
-  .navbar .container {
+  .navbar .container,
+  #header .container {
     width: auto;
     padding: 0;
   }
@@ -730,7 +731,7 @@
   .nav-collapse .dropdown-menu a {
     padding: 6px 15px;
     font-weight: bold;
-    color: #999999;
+    color: #ffffff;
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
             border-radius: 3px;
