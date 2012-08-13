@@ -7,20 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles
+    <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-     -->
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-    
-    <!-- Le styles LESS -->
-    <link rel="stylesheet/less" href="../less/bootstrap.less">
-    <link rel="stylesheet/less" href="../less/responsive.less">
-    <script src="../js/less.js"></script>
-    <script>less.watch();</script>
-    
-    
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,11 +25,34 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-146052-10']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
-
-
+  
+  <!-- Header GCBA
+	================================================== -->
+  <div class="gcba-fixed-top">
+    	<div class="header-gcba">
+    	  	<div class="header-inner">
+    	  		<div class="container">
+    	  			<div id="logo"></div>
+    	  			<h2 class="slogan">En todo estas vos</h2>
+    	  		</div>
+    	  	</div>
+    	</div>
+    </div>
+    
+    
   <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-fixed-top">
@@ -51,29 +66,29 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="">
-                <a href="./index.html">Overview</a>
+                <a href="./index.html">General</a>
               </li>
               <li class="active">
-                <a href="./scaffolding.html">Scaffolding</a>
+                <a href="./scaffolding.html">Estructuras</a>
               </li>
               <li class="">
-                <a href="./base-css.html">Base CSS</a>
+                <a href="./base-css.html">CSS Basico</a>
               </li>
               <li class="">
-                <a href="./components.html">Components</a>
+                <a href="./components.html">Componentes</a>
               </li>
               <li class="">
-                <a href="./javascript.html">Javascript plugins</a>
+                <a href="./javascript.html">Agregados</a>
               </li>
               <li class="">
-                <a href="./less.html">Using LESS</a>
+                <a href="./less.html">Usando LESS</a>
               </li>
               <li class="divider-vertical"></li>
               <li class="">
-                <a href="./download.html">Customize</a>
+                <a href="./download.html">Personalizacion</a>
               </li>
               <li class="">
-                <a href="./examples.html">Examples</a>
+                <a href="./examples.html">Ejemplos</a>
               </li>
             </ul>
           </div>
@@ -86,16 +101,16 @@
 <!-- Masthead
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
-  <h1>Scaffolding</h1>
-  <p class="lead">Bootstrap is built on a responsive 12-column grid. We've also included fixed- and fluid-width layouts based on that system.</p>
+  <h1>Estructura</h1>
+  <p class="lead">BAstrap está construido sobre una grilla de 12 columnas. También incluimos layouts de ancho fijo y fluido basados en el mismo sistema.</p>
   <div class="subnav">
     <ul class="nav nav-pills">
-      <li><a href="#global">Global styles</a></li>
-      <li><a href="#gridSystem">Grid system</a></li>
-      <li><a href="#fluidGridSystem">Fluid grid system</a></li>
-      <li><a href="#gridCustomization">Customizing</a></li>
+      <li><a href="#global">Estilos globales</a></li>
+      <li><a href="#gridSystem">Sistema de grilla</a></li>
+      <li><a href="#fluidGridSystem">Sistema de grilla fluida</a></li>
+      <li><a href="#gridCustomization">Personalización</a></li>
       <li><a href="#layouts">Layouts</a></li>
-      <li><a href="#responsive">Responsive design</a></li>
+      <li><a href="#responsive">Diseño sensible</a></li>
     </ul>
   </div>
 </header>
@@ -107,12 +122,12 @@
 ================================================== -->
 <section id="global">
   <div class="page-header">
-    <h1>Global styles <small>for CSS reset, typography, and links</small></h1>
+    <h1>Estilos globales <small> para restaurar CSS, tipografía, y enlaces</small></h1>
   </div>
   <div class="row">
     <div class="span4">
-      <h2>Requires HTML5 doctype</h2>
-      <p>Bootstrap makes use of HTML elements and CSS properties that require the use of the HTML5 doctype. Be sure to include it at the beginning of every Bootstrapped page in your project.</p>
+      <h2>Se requiere HTML5 doctype</h2>
+      <p>BAstrap utiliza elementos de HTML y propiedades de CSS que requieren el uso de HTML5 doctype. Asegúrate de incluirlos al comienzo de cada página de tu proyecto BAstrap.</p>
 <pre class="prettyprint linenums">
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
@@ -121,19 +136,19 @@
 </pre>
     </div><!-- /.span -->
     <div class="span4">
-      <h2>Typography and links</h2>
-      <p>Within the <strong>scaffolding.less</strong> file, we set basic global display, typography, and link styles. Specifically, we:</p>
+      <h2>Tipografía y enlaces</h2>
+      <p>Adentro del archivo <strong>scaffolding.less</strong>, se establece el display básico y general, tipografías, y estilos de enlances. Específicamente lo que hacemos es:</p>
       <ul>
-        <li>Remove margin on the body</li>
-        <li>Set <code>background-color: white;</code> on the <code>body</code></li>
-        <li>Use the <code>@baseFontFamily</code>, <code>@baseFontSize</code>, and <code>@baseLineHeight</code> attributes as our typographyic base</li>
-        <li>Set the global link color via <code>@linkColor</code> and apply link underlines only on <code>:hover</code></li>
+        <li>Remover los márgenes del cuerpo</li>
+        <li>Establecer el color blanco como fondo <code>background-color: white;</code> del cuerpo <code>body</code></li>
+        <li>Usar las cualidades de <code>@baseFontFamily</code>, <code>@baseFontSize</code>, y <code>@baseLineHeight</code> como bases tipográficas</li>
+        <li>Establecer el color global de los enlaces via <code>@linkColor</code> y aplicar subrayados únicamente con <code>:hover</code></li>
       </ul>
     </div><!-- /.span -->
     <div class="span4">
-      <h2>Reset via Normalize</h2>
-      <p>As of Bootstrap 2, the traditional CSS reset has evolved to make use of elements from <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> that also powers the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a>.</p>
-      <p>The new reset can still be found in <strong>reset.less</strong>, but with many elements removed for brevity and accuracy.</p>
+      <h2>Restaurar via Normalize</h2>
+      <p>En BAstrap, el tradicional  CSS reset  ha evolucionado para implementar elementos de <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize.css</a>, un proyecto de <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> potencializando también al <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a>.</p>
+      <p>El nuevo reset aún puede ser encontrado en <strong>reset.less</strong>, pero con muchos elementos extraídos por cuestiones de brevedad y precisión.</p>
     </div><!-- /.span -->
   </div><!-- /.row -->
 </section>
@@ -673,6 +688,21 @@
     <script src="assets/js/bootstrap-typeahead.js"></script>
     <script src="assets/js/application.js"></script>
 
+    <!-- Analytics
+    ================================================== -->
+    <script>
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
 
   </body>
 </html>
