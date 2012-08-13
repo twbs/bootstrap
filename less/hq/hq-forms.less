@@ -34,14 +34,20 @@ form .table tbody td {
 form fieldset > p {
     padding: 2em 0 1em;
 }
+
+form fieldset > legend {
+    margin-bottom: @gridGutterWidth;
+}
+
+legend + .control-group {
+  margin-top: 0px;
+  -webkit-margin-top-collapse: separate;
+}
+
 .hq-form-report {
     padding-left: @gridGutterWidth*2;
     padding-right: @gridGutterWidth*2;
 }
 .hq-content .table tbody tr td > form:first-child {
     margin-bottom: 0;
-}
-
-fieldset > fieldset:nth-child(2) {
-    padding-top: 2em;
 }
