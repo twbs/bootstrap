@@ -1013,9 +1013,8 @@ input[type="color"]:focus,
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0;
+  margin-top: 1px \9;
   *margin-top: 0;
-  /* IE7 */
-
   line-height: normal;
   cursor: pointer;
 }
