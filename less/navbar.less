@@ -153,6 +153,9 @@
   left: 0;
   z-index: @zindexFixedNavbar;
   margin-bottom: 0; // remove 18px margin for static navbar
+  .navbar-inner {
+    border: 0;
+  }
 }
 .navbar-fixed-top .navbar-inner,
 .navbar-fixed-bottom .navbar-inner {
@@ -161,6 +164,7 @@
   .border-radius(0);
 }
 
+// Reset container width
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
   #grid > .core > .span(@gridColumns);
@@ -170,7 +174,6 @@
 .navbar-fixed-top {
   top: 0;
   .navbar-inner {
-    border-width: 0 0 1px;
     .box-shadow(0 1px 10px rgba(0,0,0,.1));
   }
 }
@@ -179,7 +182,6 @@
 .navbar-fixed-bottom {
   bottom: 0;
   .navbar-inner {
-    border-width: 1px 0 0;
     .box-shadow(0 -1px 10px rgba(0,0,0,.1));
   }
 }
