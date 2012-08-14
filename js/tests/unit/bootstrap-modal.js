@@ -111,4 +111,22 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should add data options", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test' data-foo='bar'></div>")
+          .bind("shown", function () {
+            ok($('#modal-test').is(":visible"), 'modal visible')
+            ok($('#modal-test').length, 'modal insterted into dom')
+            ok($('#modal-test').data('modal').options.foo === 'bar', 'modal data attached')
+            $(this).modal("hide")
+          })
+          .bind("hidden", function() {
+            ok(!$('#modal-test').is(":visible"), 'modal hidden')
+            $('#modal-test').remove()
+            start()
+          })
+          .modal("show")
+      })
 })
