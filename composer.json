@@ -1,0 +1,12 @@
+{
+    "name": "twitter/twitter-bootstrap",
+    "description": "HTML, CSS, and JS toolkit from Twitter.",
+    "homepage": "http://twitter.github.com/bootstrap/",
+    "keywords": ["bootstrap", "css"],
+    "authors": [
+        {
+            "name": "Twitter Inc."
+        }
+    ],
+    "license": "Apache-2.0"
+}
