@@ -2,12 +2,10 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
   <div class="container">
-    <h1>{{_i}}Javascript for Bootstrap{{/i}}</h1>
+    <h1>{{_i}}JavaScript for Bootstrap{{/i}}</h1>
     <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 12 custom jQuery plugins.{{/i}}
   </div>
 </header>
-
-<div class="bs-docs-canvas">
 
   <div class="container">
 
@@ -16,20 +14,20 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
-          <li><a href="#overview">{{_i}}Overview{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#transitions">{{_i}}Transitions{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#modals">{{_i}}Modal{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#dropdowns">{{_i}}Dropdown{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#scrollspy">{{_i}}Scrollspy{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#tabs">{{_i}}Tab{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#tooltips">{{_i}}Tooltip{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#popovers">{{_i}}Popover{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#alerts">{{_i}}Alert{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#buttons">{{_i}}Button{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#collapse">{{_i}}Collapse{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#carousel">{{_i}}Carousel{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#typeahead">{{_i}}Typeahead{{/i}} <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#affix">{{_i}}Affix{{/i}} <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#overview"><i class="icon-chevron-right"></i> {{_i}}Overview{{/i}}</a></li>
+          <li><a href="#transitions"><i class="icon-chevron-right"></i> {{_i}}Transitions{{/i}}</a></li>
+          <li><a href="#modals"><i class="icon-chevron-right"></i> {{_i}}Modal{{/i}}</a></li>
+          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> {{_i}}Dropdown{{/i}}</a></li>
+          <li><a href="#scrollspy"><i class="icon-chevron-right"></i> {{_i}}Scrollspy{{/i}}</a></li>
+          <li><a href="#tabs"><i class="icon-chevron-right"></i> {{_i}}Tab{{/i}}</a></li>
+          <li><a href="#tooltips"><i class="icon-chevron-right"></i> {{_i}}Tooltip{{/i}}</a></li>
+          <li><a href="#popovers"><i class="icon-chevron-right"></i> {{_i}}Popover{{/i}}</a></li>
+          <li><a href="#alerts"><i class="icon-chevron-right"></i> {{_i}}Alert{{/i}}</a></li>
+          <li><a href="#buttons"><i class="icon-chevron-right"></i> {{_i}}Button{{/i}}</a></li>
+          <li><a href="#collapse"><i class="icon-chevron-right"></i> {{_i}}Collapse{{/i}}</a></li>
+          <li><a href="#carousel"><i class="icon-chevron-right"></i> {{_i}}Carousel{{/i}}</a></li>
+          <li><a href="#typeahead"><i class="icon-chevron-right"></i> {{_i}}Typeahead{{/i}}</a></li>
+          <li><a href="#affix"><i class="icon-chevron-right"></i> {{_i}}Affix{{/i}}</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -39,7 +37,7 @@
         ================================================== -->
         <section id="overview">
           <div class="page-header">
-            <h1>{{_i}}Javascript in Bootstrap{{/i}}</h1>
+            <h1>{{_i}}JavaScript in Bootstrap{{/i}}</h1>
           </div>
 
           <h3>{{_i}}Individual or compiled{{/i}}</h3>
@@ -115,7 +113,7 @@ $('#myModal').on('show', function (e) {
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
             <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>{{_i}}Modal header{{/i}}</h3>
               </div>
               <div class="modal-body">
@@ -130,7 +128,7 @@ $('#myModal').on('show', function (e) {
 <pre class="prettyprint linenums">
 &lt;div class="modal hide fade"&gt;
   &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal"&gt;&amp;times;&lt;/button&gt;
+    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
     &lt;h3&gt;{{_i}}Modal header{{/i}}&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
@@ -144,11 +142,11 @@ $('#myModal').on('show', function (e) {
 </pre>
 
           <h3>{{_i}}Live demo{{/i}}</h3>
-          <p>{{_i}}Toggle a modal via javascript by clicking the button below. It will slide down and fade in from the top of the page.{{/i}}</p>
+          <p>{{_i}}Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.{{/i}}</p>
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h3 id="myModalLabel">{{_i}}Modal Heading{{/i}}</h3>
             </div>
             <div class="modal-body">
@@ -173,8 +171,8 @@ $('#myModal').on('show', function (e) {
               <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-              <a href="#" role="button" class="btn" data-dismiss="modal" >{{_i}}Close{{/i}}</a>
-              <a href="#" role="button" class="btn btn-primary">{{_i}}Save changes{{/i}}</a>
+              <button class="btn" data-dismiss="modal">{{_i}}Close{{/i}}</button>
+              <button class="btn btn-primary">{{_i}}Save changes{{/i}}</button>
             </div>
           </div>
           <div class="bs-docs-example" style="padding-bottom: 24px;">
@@ -185,17 +183,17 @@ $('#myModal').on('show', function (e) {
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;{{_i}}Launch demo modal{{/i}}&lt;/a&gt;
 
 &lt;-- Modal --&gt;
-&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"&gt;
+&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
   &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal"&gt;&times;&lt;/button&gt;
+    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
     &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
-    &lt;a href="#" role="button" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
-    &lt;a href="#" role="button" class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/a&gt;
+    &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;{{_i}}Close{{/i}}&lt;/button&gt;
+    &lt;button class="btn btn-primary"&gt;{{_i}}Save changes{{/i}}&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -207,15 +205,15 @@ $('#myModal').on('show', function (e) {
           <h2>{{_i}}Usage{{/i}}</h2>
 
           <h3>{{_i}}Via data attributes{{/i}}</h3>
-          <p>{{_i}}Activate a modal without writing javascript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.{{/i}}</p>
+          <p>{{_i}}Activate a modal without writing JavaScript. Set <code>data-toggle="modal"</code> on a controller element, like a button, along with a <code>data-target="#foo"</code> or <code>href="#foo"</code> to target a specific modal to toggle.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;button type="button" data-toggle="modal" data-target="#myModal"&gt;Launch modal&lt;/button&gt;</pre>
 
-          <h3>{{_i}}Via javascript{{/i}}</h3>
-          <p>{{_i}}Call a modal with id <code>myModal</code> with a single line of javascript:{{/i}}</p>
+          <h3>{{_i}}Via JavaScript{{/i}}</h3>
+          <p>{{_i}}Call a modal with id <code>myModal</code> with a single line of JavaScript:{{/i}}</p>
           <pre class="prettyprint linenums">$('#myModal').modal(options)</pre>
 
           <h3>{{_i}}Options{{/i}}</h3>
-          <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.{{/i}}</p>
+          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -430,8 +428,8 @@ $('#myModal').on('hidden', function () {
 &lt;/div&gt;
 </pre>
 
-          <h3>{{_i}}Via javascript{{/i}}</h3>
-          <p>{{_i}}Call the dropdowns via javascript:{{/i}}</p>
+          <h3>{{_i}}Via JavaScript{{/i}}</h3>
+          <p>{{_i}}Call the dropdowns via JavaScript:{{/i}}</p>
           <pre class="prettyprint linenums">$('.dropdown-toggle').dropdown()</pre>
 
           <h3>{{_i}}Options{{/i}}</h3>
@@ -501,8 +499,8 @@ $('#myModal').on('hidden', function () {
           <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
 
-          <h3>{{_i}}Via javascript{{/i}}</h3>
-          <p>{{_i}}Call the scrollspy via javascript:{{/i}}</p>
+          <h3>{{_i}}Via JavaScript{{/i}}</h3>
+          <p>{{_i}}Call the scrollspy via JavaScript:{{/i}}</p>
           <pre class="prettyprint linenums">$('#navbar').scrollspy()</pre>
 
           <div class="alert alert-info">
@@ -520,7 +518,7 @@ $('[data-spy="scroll"]').each(function () {
 </pre>
 
           <h3>{{_i}}Options{{/i}}</h3>
-          <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.{{/i}}</p>
+          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -602,7 +600,7 @@ $('[data-spy="scroll"]').each(function () {
 
 
           <h2>{{_i}}Usage{{/i}}</h2>
-          <p>{{_i}}Enable tabbable tabs via javascript (each tab needs to be activated individually):{{/i}}</p>
+          <p>{{_i}}Enable tabbable tabs via JavaScript (each tab needs to be activated individually):{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myTab a').click(function (e) {
   e.preventDefault();
@@ -617,7 +615,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
 </pre>
 
           <h3>{{_i}}Markup{{/i}}</h3>
-          <p>{{_i}}You can activate a tab or pill navigation without writing any javascript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.{{/i}}</p>
+          <p>{{_i}}You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code>data-toggle="tab"</code> or <code>data-toggle="pill"</code> on an element. Adding the <code>nav</code> and <code>nav-tabs</code> classes to the tab <code>ul</code> will apply the Bootstrap tab styling.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-tabs"&gt;
   &lt;li&gt;&lt;a href="#home" data-toggle="tab"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
@@ -712,11 +710,11 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
           <h2>{{_i}}Usage{{/i}}</h2>
-          <p>{{_i}}Trigger the tooltip via javascript:{{/i}}</p>
+          <p>{{_i}}Trigger the tooltip via JavaScript:{{/i}}</p>
           <pre class="prettyprint linenums">$('#example').tooltip({{_i}}options{{/i}})</pre>
 
           <h3>{{_i}}Options{{/i}}</h3>
-          <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.{{/i}}</p>
+          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -850,7 +848,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <div class="clearfix"></div>
         </div>
-        <p>{{_i}}No markup shown as popovers are generated from javascript and content within a <code>data</code> attribute.{{/i}}</p>
+        <p>{{_i}}No markup shown as popovers are generated from JavaScript and content within a <code>data</code> attribute.{{/i}}</p>
 
         <h3>Live demo</h3>
         <div class="bs-docs-example" style="padding-bottom: 24px;">
@@ -862,11 +860,11 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
         <h2>{{_i}}Usage{{/i}}</h2>
-        <p>{{_i}}Enable popovers via javascript:{{/i}}</p>
+        <p>{{_i}}Enable popovers via JavaScript:{{/i}}</p>
         <pre class="prettyprint linenums">$('#example').popover({{_i}}options{{/i}})</pre>
 
         <h3>{{_i}}Options{{/i}}</h3>
-        <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.{{/i}}</p>
+        <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.{{/i}}</p>
         <table class="table table-bordered table-striped">
           <thead>
            <tr>
@@ -991,7 +989,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
         <h2>{{_i}}Usage{{/i}}</h2>
-        <p>{{_i}}Enable dismissal of an alert via javascript:{{/i}}</p>
+        <p>{{_i}}Enable dismissal of an alert via JavaScript:{{/i}}</p>
         <pre class="prettyprint linenums">$(".alert").alert()</pre>
 
         <h3>{{_i}}Markup{{/i}}</h3>
@@ -1100,7 +1098,7 @@ $('#my-alert').bind('closed', function () {
 
 
             <h2>{{_i}}Usage{{/i}}</h2>
-            <p>{{_i}}Enable buttons via javascript:{{/i}}</p>
+            <p>{{_i}}Enable buttons via JavaScript:{{/i}}</p>
             <pre class="prettyprint linenums">$('.nav-tabs').button()</pre>
 
             <h3>{{_i}}Markup{{/i}}</h3>
@@ -1210,12 +1208,12 @@ $('#my-alert').bind('closed', function () {
             <p>{{_i}}Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.{{/i}}</p>
             <p>{{_i}}To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.{{/i}}</p>
 
-            <h3>{{_i}}Via javascript{{/i}}</h3>
+            <h3>{{_i}}Via JavaScript{{/i}}</h3>
             <p>{{_i}}Enable manually with:{{/i}}</p>
             <pre class="prettyprint linenums">$(".collapse").collapse()</pre>
 
             <h3>{{_i}}Options{{/i}}</h3>
-            <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.{{/i}}</p>
+            <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.{{/i}}</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1361,12 +1359,12 @@ $('#myCollapsible').on('hidden', function () {
             <h3>{{_i}}Via data attributes{{/i}}</h3>
             <p>{{_i}}...{{/i}}</p>
 
-            <h3>{{_i}}Via javascript{{/i}}</h3>
+            <h3>{{_i}}Via JavaScript{{/i}}</h3>
             <p>{{_i}}Call carousel manually with:{{/i}}</p>
             <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
 
             <h3>{{_i}}Options{{/i}}</h3>
-            <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.{{/i}}</p>
+            <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.{{/i}}</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1459,12 +1457,12 @@ $('.carousel').carousel({
             <h3>{{_i}}Via data attributes{{/i}}</h3>
             <p>{{_i}}Add data attributes to register an element with typeahead functionality as shown in the example above.{{/i}}</p>
 
-            <h3>{{_i}}Via javascript{{/i}}</h3>
+            <h3>{{_i}}Via JavaScript{{/i}}</h3>
             <p>{{_i}}Call the typeahead manually with:{{/i}}</p>
             <pre class="prettyprint linenums">$('.typeahead').typeahead()</pre>
 
             <h3>{{_i}}Options{{/i}}</h3>
-            <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-source=""</code>.{{/i}}</p>
+            <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-source=""</code>.{{/i}}</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1546,8 +1544,8 @@ $('.carousel').carousel({
               {{_i}}It's up to you to maintain the dimensions of an element when toggling between relative and fixed positions. To see how this is done, refer to this pages subnavigation.{{/i}}
             </div>
 
-            <h3>{{_i}}Via javascript{{/i}}</h3>
-            <p>{{_i}}Call the affix plugin via javascript:{{/i}}</p>
+            <h3>{{_i}}Via JavaScript{{/i}}</h3>
+            <p>{{_i}}Call the affix plugin via JavaScript:{{/i}}</p>
             <pre class="prettyprint linenums">$('#navbar').affix()</pre>
 
             <h3>{{_i}}Methods{{/i}}</h3>
@@ -1560,7 +1558,7 @@ $('[data-spy="affix"]').each(function () {
 </pre>
 
           <h3>{{_i}}Options{{/i}}</h3>
-          <p>{{_i}}Options can be passed via data attributes or javascript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.{{/i}}</p>
+          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -1587,5 +1585,3 @@ $('[data-spy="affix"]').each(function () {
     </div>{{! row}}
 
   </div>{{! /.container }}
-
-{{! /.bs-docs-canvas closes in footer }}

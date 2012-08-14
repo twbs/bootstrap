@@ -80,7 +80,7 @@ input[type="color"],
 .uneditable-input {
   display: inline-block;
   height: @baseLineHeight;
-  padding: 4px;
+  padding: 4px 6px;
   margin-bottom: 9px;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
@@ -132,7 +132,7 @@ input[type="color"],
 // Position radios and checkboxes better
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 3px 0;
+  margin: 4px 0;
   *margin-top: 0; /* IE7 */
   line-height: normal;
   cursor: pointer;
@@ -160,6 +160,7 @@ input[type="file"] {
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
   border: 1px solid #bbb;
+  background-color: @inputBackground; // Chrome on Linux and Mobile Safari need background-color
 }
 
 // Make multiple select elements height not fixed

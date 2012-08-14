@@ -78,7 +78,6 @@
   </div>
 </header>
 
-<div class="bs-docs-canvas">
 
   <div class="container">
 
@@ -87,19 +86,19 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
-          <li><a href="#dropdowns">Dropdowns <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#buttonGroups">Button groups <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#buttonDropdowns">Button dropdowns <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#navs">Navs <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#navbar">Navbar <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#breadcrumbs">Breadcrumbs <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#pagination">Pagination <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#labels-badges">Labels and badges <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#typography">Typography <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#thumbnails">Thumbnails <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#alerts">Alerts <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#progress">Progress bars <i class="icon-chevron-right"></i></a></li>
-          <li><a href="#misc">Misc <i class="icon-chevron-right"></i></a></li>
+          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
+          <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
+          <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
+          <li><a href="#navs"><i class="icon-chevron-right"></i> Navs</a></li>
+          <li><a href="#navbar"><i class="icon-chevron-right"></i> Navbar</a></li>
+          <li><a href="#breadcrumbs"><i class="icon-chevron-right"></i> Breadcrumbs</a></li>
+          <li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
+          <li><a href="#labels-badges"><i class="icon-chevron-right"></i> Labels and badges</a></li>
+          <li><a href="#typography"><i class="icon-chevron-right"></i> Typography</a></li>
+          <li><a href="#thumbnails"><i class="icon-chevron-right"></i> Thumbnails</a></li>
+          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alerts</a></li>
+          <li><a href="#progress"><i class="icon-chevron-right"></i> Progress bars</a></li>
+          <li><a href="#misc"><i class="icon-chevron-right"></i> Misc</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -383,7 +382,7 @@
 </pre>
 
           <h3>Works with all button sizes</h3>
-          <p>Button dropdowns work at any size. your button sizes to <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
+          <p>Button dropdowns work at any size:  <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
@@ -1107,6 +1106,7 @@
               <div class="navbar-inner">
                 <form class="navbar-form pull-left">
                   <input type="text" class="span2">
+                  <button type="submit" class="btn">Submit</button>
                 </form>
               </div>
             </div>
@@ -1114,6 +1114,7 @@
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
+  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
@@ -1349,7 +1350,7 @@
             </div><!-- /navbar -->
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-subnav"&gt;
+&lt;div class="navbar navbar-inverse"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1940,7 +1941,7 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
-  &lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;
+  &lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
   &lt;h4&gt;Warning!&lt;/h4&gt;
   Best check yo self, you're not...
 &lt;/div&gt;
@@ -2243,47 +2244,44 @@ class="clearfix"
 
 
 
-
-      <!-- Footer
-      ================================================== -->
-      <footer class="footer">
-        <div class="container">
-          <p class="pull-right"><a href="#">Back to top</a></p>
-          <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-          <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-          <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-          <ul class="footer-links">
-            <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-            <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
-            <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-          </ul>
-        </div>
-      </footer>
-
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+        </ul>
+      </div>
+    </footer>
 
 
-      <!-- Le javascript
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-      <script src="assets/js/jquery.js"></script>
-      <script src="assets/js/google-code-prettify/prettify.js"></script>
-      <script src="assets/js/bootstrap-transition.js"></script>
-      <script src="assets/js/bootstrap-alert.js"></script>
-      <script src="assets/js/bootstrap-modal.js"></script>
-      <script src="assets/js/bootstrap-dropdown.js"></script>
-      <script src="assets/js/bootstrap-scrollspy.js"></script>
-      <script src="assets/js/bootstrap-tab.js"></script>
-      <script src="assets/js/bootstrap-tooltip.js"></script>
-      <script src="assets/js/bootstrap-popover.js"></script>
-      <script src="assets/js/bootstrap-button.js"></script>
-      <script src="assets/js/bootstrap-collapse.js"></script>
-      <script src="assets/js/bootstrap-carousel.js"></script>
-      <script src="assets/js/bootstrap-typeahead.js"></script>
-      <script src="assets/js/bootstrap-affix.js"></script>
-      <script src="assets/js/application.js"></script>
 
-    </div>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/application.js"></script>
 
 
 

@@ -132,6 +132,11 @@ hr.soften {
 }
 
 /* Download button */
+@-webkit-keyframes downloadButton {
+  from { -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
+  50% {  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 25px rgba(0,68,204,.9); }
+  to {   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
+}
 .masthead .btn {
   padding: 14px 24px;
   font-size: 24px;
@@ -141,9 +146,16 @@ hr.soften {
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.01);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.01);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.01);
+  -webkit-animation-name: downloadButton;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transition: none;
+     -moz-transition: none;
+          transition: none;
+
 }
 .masthead .btn:active {
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
@@ -730,14 +742,87 @@ form.bs-docs-example {
 
 
 
+/* Sidenav for Docs
+-------------------------------------------------- */
+
+/* prevent column from collapsing when affixing */
+.span3 {
+  min-height: 1px;
+}
+
+.bs-docs-sidenav {
+  width: 218px;
+  margin-top: 30px;
+  padding: 0;
+  margin-right: 10px;
+  background-color: #fff;
+  margin-left: 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+.bs-docs-sidenav > li > a {
+  display: block;
+  *width: 190px;
+  margin: 0 0 -1px;
+  font-size: 14px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+}
+.bs-docs-sidenav > li:first-child > a {
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+.bs-docs-sidenav > li:last-child > a {
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.bs-docs-sidenav > .active > a {
+  border-color: #08c;
+  position: relative;
+  z-index: 2;
+}
+/* Chevrons */
+.bs-docs-sidenav .icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.bs-docs-sidenav > li > a:hover {
+  background-color: #f5f5f5;
+}
+.bs-docs-sidenav a:hover .icon-chevron-right {
+  opacity: .5;
+}
+.bs-docs-sidenav .active .icon-chevron-right {
+  background-image: url(../img/glyphicons-halflings-white.png);
+  opacity: .75;
+}
+.bs-docs-sidenav.affix {
+  top: 30px;
+}
+
+
+
+
+
 /* Responsive
 -------------------------------------------------- */
 
 /* Desktop large
 ------------------------- */
-@media (min-width: 1210px) {
+@media (min-width: 1200px) {
   .bs-docs-container {
     max-width: 970px;
+  }
+  .bs-docs-sidenav {
+    width: 258px;
   }
 }
 
@@ -757,6 +842,13 @@ form.bs-docs-example {
     display: inline-block;
     margin: 5px;
   }
+
+  /* When affixed, space properly */
+  .bs-docs-sidenav {
+    top: 0;
+    margin-top: 30px;
+    margin-right: 0;
+  }
 }
 
 /* Tablet to desktop
@@ -769,6 +861,10 @@ form.bs-docs-example {
   /* Widen masthead and social buttons to fill body padding */
   .jumbotron {
     margin-top:   -20px; /* Offset bottom margin on .navbar */
+  }
+  /* Adjust sidenav width */
+  .bs-docs-sidenav {
+    width: 166px;
   }
 }
 
@@ -806,10 +902,21 @@ form.bs-docs-example {
     margin-bottom: 5px;
   }
 
+  /* Sidenav */
+  .bs-docs-sidenav {
+    width: auto;
+  }
+  .bs-docs-sidenav.affix {
+    position: relative;
+    width: auto;
+  }
+
   /* Unfloat the back to top link in footer */
   .footer {
     margin-left: -20px;
     margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .footer p {
     margin-bottom: 9px;
@@ -887,129 +994,5 @@ form.bs-docs-example {
   /* Unfloat the back to top in footer to prevent odd text wrapping */
   .footer .pull-right {
     float: none;
-  }
-}
-
-
-
-/* Docs side .nav-list
-------------------------- */
-.span3 {
-  min-height: 1px;
-}
-.bs-docs-sidenav {
-  width: 218px;
-  margin-top: 30px;
-  padding: 0;
-  margin-right: 10px;
-  background-color: #fff;
-  margin-left: 0;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-          box-shadow: 0 1px 4px rgba(0,0,0,.065);
-}
-.bs-docs-sidenav > li > a {
-  margin: 0 0 -1px;
-  font-size: 14px;
-  padding: 9px 14px;
-  border: 1px solid #e5e5e5;
-}
-.bs-docs-sidenav > li:first-child > a {
-  -webkit-border-radius: 6px 6px 0 0;
-     -moz-border-radius: 6px 6px 0 0;
-          border-radius: 6px 6px 0 0;
-}
-.bs-docs-sidenav > li:last-child > a {
-  -webkit-border-radius: 0 0 6px 6px;
-     -moz-border-radius: 0 0 6px 6px;
-          border-radius: 0 0 6px 6px;
-}
-.bs-docs-sidenav > .active > a {
-  border-color: #08c;
-  position: relative;
-  z-index: 2;
-}
-/* Chevrons */
-.bs-docs-sidenav .icon-chevron-right {
-  float: right;
-  margin-top: 2px;
-  margin-right: -6px;
-  opacity: .25;
-}
-.bs-docs-sidenav > li > a:hover {
-  background-color: #f5f5f5;
-}
-.bs-docs-sidenav a:hover .icon-chevron-right {
-  opacity: .5;
-}
-.bs-docs-sidenav .active .icon-chevron-right {
-  background-image: url(../img/glyphicons-halflings-white.png);
-  opacity: .75;
-}
-.bs-docs-sidenav.affix {
-  top: 40px;
-}
-
-@media (min-width: 1200px) {
-  .bs-docs-sidenav {
-    width: 258px;
-  }
-}
-
-@media (max-width: 979px) {
-  .bs-docs-sidenav {
-    top: 0px;
-    margin-top: 30px;
-    margin-right: 0;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 979px) {
-  .bs-docs-sidenav {
-    width: 166px;
-  }
-}
-
-@media (max-width: 767px) {
-  .bs-docs-sidenav {
-    width: auto;
-  }
-  .bs-docs-sidenav.affix {
-    position: relative;
-    width: auto;
-  }
-}
-
-@media (min-width: 979px) {
-  .masthead,
-  .subhead {
-    position: fixed;
-    top: 40px;
-    right: 0;
-    left: 0;
-  }
-  .masthead {
-    height: 380px;
-  }
-  .subhead {
-    height: 130px; /* +80px pdding */
-  }
-  .bs-docs-canvas {
-    position: absolute;
-    width: 100%;
-    z-index: 10;
-    background-color: #fff;
-    -webkit-box-shadow: 0 -5px 15px rgba(0,0,0,.15);
-       -moz-box-shadow: 0 -5px 15px rgba(0,0,0,.15);
-            box-shadow: 0 -5px 15px rgba(0,0,0,.15);
-  }
-  .masthead + .bs-docs-canvas {
-    top: 570px;
-  }
-  .subhead + .bs-docs-canvas {
-    top: 250px;
   }
 }

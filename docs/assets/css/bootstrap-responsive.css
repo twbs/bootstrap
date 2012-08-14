@@ -368,62 +368,62 @@
   input.span12,
   textarea.span12,
   .uneditable-input.span12 {
-    width: 1160px;
+    width: 1156px;
   }
   input.span11,
   textarea.span11,
   .uneditable-input.span11 {
-    width: 1060px;
+    width: 1056px;
   }
   input.span10,
   textarea.span10,
   .uneditable-input.span10 {
-    width: 960px;
+    width: 956px;
   }
   input.span9,
   textarea.span9,
   .uneditable-input.span9 {
-    width: 860px;
+    width: 856px;
   }
   input.span8,
   textarea.span8,
   .uneditable-input.span8 {
-    width: 760px;
+    width: 756px;
   }
   input.span7,
   textarea.span7,
   .uneditable-input.span7 {
-    width: 660px;
+    width: 656px;
   }
   input.span6,
   textarea.span6,
   .uneditable-input.span6 {
-    width: 560px;
+    width: 556px;
   }
   input.span5,
   textarea.span5,
   .uneditable-input.span5 {
-    width: 460px;
+    width: 456px;
   }
   input.span4,
   textarea.span4,
   .uneditable-input.span4 {
-    width: 360px;
+    width: 356px;
   }
   input.span3,
   textarea.span3,
   .uneditable-input.span3 {
-    width: 260px;
+    width: 256px;
   }
   input.span2,
   textarea.span2,
   .uneditable-input.span2 {
-    width: 160px;
+    width: 156px;
   }
   input.span1,
   textarea.span1,
   .uneditable-input.span1 {
-    width: 60px;
+    width: 56px;
   }
   .thumbnails {
     margin-left: -30px;
@@ -713,62 +713,62 @@
   input.span12,
   textarea.span12,
   .uneditable-input.span12 {
-    width: 714px;
+    width: 710px;
   }
   input.span11,
   textarea.span11,
   .uneditable-input.span11 {
-    width: 652px;
+    width: 648px;
   }
   input.span10,
   textarea.span10,
   .uneditable-input.span10 {
-    width: 590px;
+    width: 586px;
   }
   input.span9,
   textarea.span9,
   .uneditable-input.span9 {
-    width: 528px;
+    width: 524px;
   }
   input.span8,
   textarea.span8,
   .uneditable-input.span8 {
-    width: 466px;
+    width: 462px;
   }
   input.span7,
   textarea.span7,
   .uneditable-input.span7 {
-    width: 404px;
+    width: 400px;
   }
   input.span6,
   textarea.span6,
   .uneditable-input.span6 {
-    width: 342px;
+    width: 338px;
   }
   input.span5,
   textarea.span5,
   .uneditable-input.span5 {
-    width: 280px;
+    width: 276px;
   }
   input.span4,
   textarea.span4,
   .uneditable-input.span4 {
-    width: 218px;
+    width: 214px;
   }
   input.span3,
   textarea.span3,
   .uneditable-input.span3 {
-    width: 156px;
+    width: 152px;
   }
   input.span2,
   textarea.span2,
   .uneditable-input.span2 {
-    width: 94px;
+    width: 90px;
   }
   input.span1,
   textarea.span1,
   .uneditable-input.span1 {
-    width: 32px;
+    width: 28px;
   }
 }
 
@@ -813,6 +813,13 @@
     float: none;
     width: auto;
     margin-left: 0;
+  }
+  .span12,
+  .row-fluid .span12 {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .input-large,
   .input-xlarge,
@@ -940,7 +947,7 @@
   }
   .nav-collapse .nav > li > a,
   .nav-collapse .dropdown-menu a {
-    padding: 6px 15px;
+    padding: 9px 15px;
     font-weight: bold;
     color: #555555;
     -webkit-border-radius: 3px;
@@ -960,6 +967,10 @@
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover {
     background-color: #f2f2f2;
+  }
+  .navbar-inverse .nav-collapse .nav > li > a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
+    background-color: #111111;
   }
   .nav-collapse.in .btn-group {
     padding: 0;
