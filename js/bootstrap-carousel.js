@@ -117,7 +117,12 @@
           $next.removeClass([type, direction].join(' ')).addClass('active')
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
-          setTimeout(function () { that.$element.trigger('slid') }, 0)
+          setTimeout(function () { 
+            that.$element.trigger({
+              type: 'slid'
+            , relatedTarget: $active
+            })
+          }, 0)
         })
       } else {
         this.$element.trigger(e)
@@ -125,7 +130,10 @@
         $active.removeClass('active')
         $next.addClass('active')
         this.sliding = false
-        this.$element.trigger('slid')
+        this.$element.trigger({
+          type: 'slid'
+        , relatedTarget: $active
+        })
       }
 
       isCycling && this.cycle()
