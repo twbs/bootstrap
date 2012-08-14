@@ -4360,6 +4360,17 @@ input[type="submit"].btn.btn-mini {
   left: auto;
 }
 
+.navbar .pull-right .dropdown-menu .dropdown-menu,
+.navbar .dropdown-menu.pull-right .dropdown-menu {
+  right: 100%;
+  left: auto;
+  margin-right: -1px;
+  margin-left: 0;
+  -webkit-border-radius: 6px 0 6px 6px;
+     -moz-border-radius: 6px 0 6px 6px;
+          border-radius: 6px 0 6px 6px;
+}
+
 .navbar-inverse {
   color: #999999;
 }
