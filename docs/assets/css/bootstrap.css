@@ -943,6 +943,7 @@ input[type="color"],
   font-size: 14px;
   line-height: 20px;
   color: #555555;
+  vertical-align: middle;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
@@ -1031,13 +1032,13 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  height: 28px;
+  height: 30px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 
   *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
 
-  line-height: 28px;
+  line-height: 30px;
 }
 
 select {
