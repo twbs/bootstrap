@@ -47,9 +47,7 @@
   float: left;
   display: block;
   // Vertically center the text given @navbarHeight
-  @elementHeight: 20px;
-  @heightDifference: @navbarHeight - @elementHeight;
-  padding: ((@heightDifference / 2) - 2) 20px ((@heightDifference / 2) + 2);
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
   margin-left: -20px; // negative indent to left-align the text down the page
   font-size: 20px;
   font-weight: 200;
@@ -209,8 +207,7 @@
 .navbar .nav > li > a {
   float: none;
   // Vertically center the text given @navbarHeight
-  @elementHeight: 20px;
-  padding: ((@navbarHeight - @elementHeight) / 2) 15px ((@navbarHeight - @elementHeight) / 2);
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
