@@ -511,7 +511,93 @@
   margin-top: (@navbarHeight - @elementHeight) / 2;
 }
 
-
+// Popover arrows
+// -------------------------
+// For tipsies and popovers
+#popoverArrow {
+  .top(@arrowWidth: 5px, @color: @black) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    margin-bottom: ceil( @arrowWidth * -1.5 + 3 );
+    border: solid transparent;
+    border-width: @arrowWidth;
+    border-top-color: @color;
+  }
+  .left(@arrowWidth: 5px, @color: @black) {
+    top: 50%;
+    right: 0;
+    margin-top: -@arrowWidth;
+    margin-right: ceil( @arrowWidth * -1.5 + 3 );
+    border: solid transparent;
+    border-width: @arrowWidth;
+    border-left-color: @color;
+  }
+  .bottom(@arrowWidth: 5px, @color: @black) {
+    top: 0;
+    left: 50%;
+    margin-left: -@arrowWidth;
+    margin-top: ceil( @arrowWidth * -1.5 + 3 );
+    border: solid transparent;
+    border-width: @arrowWidth;
+    border-bottom-color: @color;
+  }
+  .right(@arrowWidth: 5px, @color: @black) {
+    top: 50%;
+    left: 0;
+    margin-top: -@arrowWidth;
+    margin-left: ceil( @arrowWidth * -1.5 + 3 );
+    border: solid transparent;
+    border-width: @arrowWidth;
+    border-right-color: @color;
+  }
+  #outlinedArrow {
+    .inner-arrow-styles() {
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        z-index: 10;
+        border: solid transparent;
+    }
+    #top {
+      .inner-arrow( @mainArrowWidth: 5px, @outlineWidth: 1px, @color: @white ) {
+        .inner-arrow-styles();
+        border-width: @mainArrowWidth + @outlineWidth;
+        border-top-color: @color;
+        margin-left: -@mainArrowWidth - @outlineWidth;
+        margin-top: -@mainArrowWidth + -(@outlineWidth * 2)
+      }
+    }
+    #left {
+      .inner-arrow( @mainArrowWidth: 5px, @outlineWidth: 1px, @color: @white ) {
+        .inner-arrow-styles();
+        border-width: @mainArrowWidth + @outlineWidth;
+        border-left-color: @color;
+        margin-top: -@mainArrowWidth - @outlineWidth;
+        margin-left: -@mainArrowWidth + -(@outlineWidth * 2);
+      }
+    }
+    #bottom {
+      .inner-arrow( @mainArrowWidth: 5px, @outlineWidth: 1px, @color: @white ) {
+        .inner-arrow-styles();
+        border-width: @mainArrowWidth + @outlineWidth;
+        border-bottom-color: @color;
+        margin-left: -@mainArrowWidth - @outlineWidth;
+        margin-top: -@mainArrowWidth;
+      }
+    }
+    #right {
+      .inner-arrow( @mainArrowWidth: 5px, @outlineWidth: 1px, @color: @white ) {
+        .inner-arrow-styles();
+        border-width: @mainArrowWidth + @outlineWidth;
+        border-right-color: @color;
+        margin-top: -@mainArrowWidth - @outlineWidth;
+        margin-left: -@mainArrowWidth;
+      }
+    }
+  }
+}
 
 // Grid System
 // -----------
