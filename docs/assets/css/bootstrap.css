@@ -150,7 +150,7 @@ textarea {
 .input-block-level {
   display: block;
   width: 100%;
-  min-height: 28px;
+  min-height: 30px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -340,7 +340,7 @@ a:hover {
   display: block;
   float: left;
   width: 100%;
-  min-height: 28px;
+  min-height: 30px;
   margin-left: 2.127659574468085%;
   *margin-left: 2.074468085106383%;
   -webkit-box-sizing: border-box;
@@ -2865,6 +2865,7 @@ table .span24 {
   position: relative;
   height: 0;
   overflow: hidden;
+  overflow: visible \9;
   -webkit-transition: height 0.35s ease;
      -moz-transition: height 0.35s ease;
        -o-transition: height 0.35s ease;
@@ -4344,26 +4345,26 @@ input[type="submit"].btn.btn-mini {
   border-bottom-color: #555555;
 }
 
-.navbar .pull-right .dropdown-menu,
-.navbar .dropdown-menu.pull-right {
+.navbar .pull-right > li > .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right {
   right: 0;
   left: auto;
 }
 
-.navbar .pull-right .dropdown-menu:before,
-.navbar .dropdown-menu.pull-right:before {
+.navbar .pull-right > li > .dropdown-menu:before,
+.navbar .nav > li > .dropdown-menu.pull-right:before {
   right: 12px;
   left: auto;
 }
 
-.navbar .pull-right .dropdown-menu:after,
-.navbar .dropdown-menu.pull-right:after {
+.navbar .pull-right > li > .dropdown-menu:after,
+.navbar .nav > li > .dropdown-menu.pull-right:after {
   right: 13px;
   left: auto;
 }
 
-.navbar .pull-right .dropdown-menu .dropdown-menu,
-.navbar .dropdown-menu.pull-right .dropdown-menu {
+.navbar .pull-right > li > .dropdown-menu .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu {
   right: 100%;
   left: auto;
   margin-right: -1px;
