@@ -13,7 +13,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#overview"><i class="icon-chevron-right"></i> {{_i}}Overview{{/i}}</a></li>
           <li><a href="#transitions"><i class="icon-chevron-right"></i> {{_i}}Transitions{{/i}}</a></li>
           <li><a href="#modals"><i class="icon-chevron-right"></i> {{_i}}Modal{{/i}}</a></li>
@@ -1526,7 +1526,6 @@ $('.carousel').carousel({
               <h1>{{_i}}Affix{{/i}} <small>bootstrap-affix.js</small></h1>
             </div>
 
-
             <h2>{{_i}}Example{{/i}}</h2>
             <p>{{_i}}The subnavigation on the left is a live demo of the affix plugin.{{/i}}</p>
 
@@ -1535,13 +1534,13 @@ $('.carousel').carousel({
             <h2>{{_i}}Usage{{/i}}</h2>
 
             <h3>{{_i}}Via data attributes{{/i}}</h3>
-            <p>{{_i}}To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. When the affix offsets are satisified, an <code>.affix</code> class is added to the element. {{/i}}</p>
+            <p>{{_i}}To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.{{/i}}</p>
 
-            <pre class="prettyprint linenums">&lt;div data-spy="affix"&gt;...&lt;/body&gt;</pre>
+            <pre class="prettyprint linenums">&lt;div data-spy="affix" data-offset-top="200"&gt;...&lt;/body&gt;</pre>
 
             <div class="alert alert-info">
               <strong>{{_i}}Heads up!{{/i}}</strong>
-              {{_i}}It's up to you to maintain the dimensions of an element when toggling between relative and fixed positions. To see how this is done, refer to this pages subnavigation.{{/i}}
+              {{_i}}It's up to you to manage the position of a pinned element. This is done by styling <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>.{{/i}}
             </div>
 
             <h3>{{_i}}Via JavaScript{{/i}}</h3>
@@ -1549,16 +1548,15 @@ $('.carousel').carousel({
             <pre class="prettyprint linenums">$('#navbar').affix()</pre>
 
             <h3>{{_i}}Methods{{/i}}</h3>
-            <h4>.scrollspy('refresh')</h4>
-            <p>{{_i}}When using affix in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:{{/i}}</p>
+            <h4>.affix('refresh')</h4>
+            <p>{{_i}}When using affix in conjunction with adding or removing of elements from the DOM, you'll want to call the refresh method:{{/i}}</p>
 <pre class="prettyprint linenums">
 $('[data-spy="affix"]').each(function () {
   $(this).affix('refresh')
 });
 </pre>
-
           <h3>{{_i}}Options{{/i}}</h3>
-          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.{{/i}}</p>
+          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -1571,9 +1569,9 @@ $('[data-spy="affix"]').each(function () {
             <tbody>
              <tr>
                <td>{{_i}}offset{{/i}}</td>
-               <td>{{_i}}number | object{{/i}}</td>
+               <td>{{_i}}number | function | object{{/i}}</td>
                <td>{{_i}}10{{/i}}</td>
-               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>.{{/i}}</td>
+               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
              </tr>
             </tbody>
           </table>

@@ -805,9 +805,13 @@ form.bs-docs-example {
   opacity: .75;
 }
 .bs-docs-sidenav.affix {
-  top: 30px;
+  top: 40px;
 }
-
+.bs-docs-sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
 
 
 
@@ -860,11 +864,14 @@ form.bs-docs-example {
   }
   /* Widen masthead and social buttons to fill body padding */
   .jumbotron {
-    margin-top:   -20px; /* Offset bottom margin on .navbar */
+    margin-top: -20px; /* Offset bottom margin on .navbar */
   }
   /* Adjust sidenav width */
   .bs-docs-sidenav {
     width: 166px;
+  }
+  .bs-docs-sidenav.affix {
+    top: 0px;
   }
 }
 
@@ -920,6 +927,9 @@ form.bs-docs-example {
   }
   .footer p {
     margin-bottom: 9px;
+  }
+  .bs-docs-sidenav.affix {
+    top: 0;
   }
 }
 
