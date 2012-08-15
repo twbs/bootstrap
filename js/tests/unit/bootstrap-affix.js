@@ -16,4 +16,17 @@ $(function () {
         ok(!$affix.hasClass('affix'), 'affix class was not added')
       })
 
+      test("should not refresh position if the element is affixed", function () {
+        var $affix = $('<div></div>').appendTo(document.body).affix({offset: {x: null, y: null}})
+        var position = $affix.data('affix').position
+        $(window).trigger('scroll.affix.data-api')
+        $(window).trigger('resize.affix.data-api')
+        stop()
+        setTimeout(function (){
+          ok($affix.hasClass('affix'), 'affix class was added')
+          ok(position == $affix.data('affix').position, 'position not refresh')
+          start()
+        },10)
+      })
+
 })
