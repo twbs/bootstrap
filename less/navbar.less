@@ -47,9 +47,7 @@
   float: left;
   display: block;
   // Vertically center the text given @navbarHeight
-  @elementHeight: 20px;
-  @heightDifference: @navbarHeight - @elementHeight;
-  padding: ((@heightDifference / 2) - 2) 20px ((@heightDifference / 2) + 2);
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
   margin-left: -20px; // negative indent to left-align the text down the page
   font-size: 20px;
   font-weight: 200;
@@ -74,6 +72,15 @@
   &:hover {
     color: @navbarLinkColorHover;
   }
+}
+
+// Dividers in navbar
+// -------------------------
+.navbar .divider-vertical {
+  height: @navbarHeight;
+  margin: 0 9px;
+  border-left: 1px solid @navbarBackground;
+  border-right: 1px solid @navbarBackgroundHighlight;
 }
 
 // Buttons in navbar
@@ -128,7 +135,6 @@
     padding: 4px 14px;
     #font > .sans-serif(13px, normal, 1);
     .border-radius(15px); // redeclare because of specificity of the type attribute
-    .placeholder(@navbarSearchPlaceholderColor);
   }
 }
 
@@ -145,6 +151,9 @@
   left: 0;
   z-index: @zindexFixedNavbar;
   margin-bottom: 0; // remove 18px margin for static navbar
+  .navbar-inner {
+    border: 0;
+  }
 }
 .navbar-fixed-top .navbar-inner,
 .navbar-fixed-bottom .navbar-inner {
@@ -153,6 +162,7 @@
   .border-radius(0);
 }
 
+// Reset container width
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
   #grid > .core > .span(@gridColumns);
@@ -162,7 +172,6 @@
 .navbar-fixed-top {
   top: 0;
   .navbar-inner {
-    border-width: 0 0 1px;
     .box-shadow(0 1px 10px rgba(0,0,0,.1));
   }
 }
@@ -171,7 +180,6 @@
 .navbar-fixed-bottom {
   bottom: 0;
   .navbar-inner {
-    border-width: 1px 0 0;
     .box-shadow(0 -1px 10px rgba(0,0,0,.1));
   }
 }
@@ -199,8 +207,7 @@
 .navbar .nav > li > a {
   float: none;
   // Vertically center the text given @navbarHeight
-  @elementHeight: 20px;
-  padding: ((@navbarHeight - @elementHeight) / 2) 15px ((@navbarHeight - @elementHeight) / 2);
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 15px ((@navbarHeight - @baseLineHeight) / 2);
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
@@ -258,7 +265,7 @@
 // --------------
 
 // Menu position and menu carets
-.navbar .dropdown-menu {
+.navbar .nav > li > .dropdown-menu {
   &:before {
     content: '';
     display: inline-block;
@@ -282,7 +289,7 @@
   }
 }
 // Menu position and menu caret support for dropups via extra dropup class
-.navbar-fixed-bottom .dropdown-menu {
+.navbar-fixed-bottom .nav > li > .dropdown-menu {
   &:before {
     border-top: 7px solid #ccc;
     border-top-color: @dropdownBorder;
@@ -317,8 +324,8 @@
 }
 
 // Right aligned menus need alt position
-.navbar .pull-right .dropdown-menu,
-.navbar .dropdown-menu.pull-right {
+.navbar .pull-right > li > .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right {
   left: auto;
   right: 0;
   &:before {
@@ -328,6 +335,13 @@
   &:after {
     left: auto;
     right: 13px;
+  }
+  .dropdown-menu {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: -1px;
+    .border-radius(6px 0 6px 6px);
   }
 }
 
@@ -371,6 +385,12 @@
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
+  }
+
+  // Dividers in navbar
+  .divider-vertical {
+    border-left-color: @navbarInverseBackground;
+    border-right-color: @navbarInverseBackgroundHighlight;
   }
 
   // Dropdowns

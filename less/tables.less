@@ -159,9 +159,11 @@ table {
 // ------------
 // Placed here since it has to come after the potential zebra striping
 .table-hover {
-  tr:hover td,
-  tr:hover th {
-    background-color: @tableBackgroundHover;
+  tbody {
+    tr:hover td,
+    tr:hover th {
+      background-color: @tableBackgroundHover;
+    }
   }
 }
 
