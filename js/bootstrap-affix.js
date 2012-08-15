@@ -28,36 +28,38 @@
 
   var Affix = function (element, options) {
     this.options = $.extend({}, $.fn.affix.defaults, options)
-    this.$window = $(window)
-      .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
-      .on('resize.affix.data-api', $.proxy(this.refresh, this))
+    this.$window = $(window).on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
     this.$element = $(element)
-    this.refresh()
-  }
-
-  Affix.prototype.refresh = function () {
-    this.position = this.$element.offset()
+    this.checkPosition()
   }
 
   Affix.prototype.checkPosition = function () {
     if (!this.$element.is(':visible')) return
 
-    var scrollLeft = this.$window.scrollLeft()
+    var scrollHeight = $(document).height()
       , scrollTop = this.$window.scrollTop()
-      , position = this.position
+      , position = this.$element.offset()
       , offset = this.options.offset
+      , offsetBottom = offset.bottom
+      , offsetTop = offset.top
+      , reset = 'affix affix-top affix-bottom'
       , affix
 
-    if (typeof offset != 'object') offset = { x: offset, y: offset }
+    if (typeof offset != 'object') offsetBottom = offsetTop = offset
+    if (typeof offsetTop == 'function') offsetTop = offset.top()
+    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
 
-    affix = (offset.x == null || (position.left - scrollLeft <= offset.x))
-         && (offset.y == null || (position.top  - scrollTop  <= offset.y))
+    affix = this.unpin != null && (scrollTop + this.unpin <= position.top) ?
+      false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
+      'bottom' : offsetTop != null && scrollTop <= offsetTop ?
+      'top'    : false
 
-    if (affix == this.affixed) return
+    if (this.affixed === affix) return
 
     this.affixed = affix
+    this.unpin = affix == 'bottom' ? position.top - scrollTop : null
 
-    this.$element[affix ? 'addClass' : 'removeClass']('affix')
+    this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
   }
 
 
@@ -84,15 +86,15 @@
  /* AFFIX DATA-API
   * ============== */
 
-  $(function () {
+  $(window).on('load', function () {
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
         , data = $spy.data()
 
       data.offset = data.offset || {}
 
-      data.offsetX && (data.offset.x = data.offsetX)
-      data.offsetY && (data.offset.y = data.offsetY)
+      data.offsetBottom && (data.offset.bottom = data.offsetBottom)
+      data.offsetTop && (data.offset.top = data.offsetTop)
 
       $spy.affix(data)
     })
