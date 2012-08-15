@@ -30,7 +30,7 @@
     this.options = $.extend({}, $.fn.affix.defaults, options)
     this.$window = $(window).on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
     this.$element = $(element)
-    this.checkPosition();
+    this.checkPosition()
   }
 
   Affix.prototype.checkPosition = function () {
