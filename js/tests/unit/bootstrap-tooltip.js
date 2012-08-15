@@ -113,6 +113,28 @@ $(function () {
         }, 50)
       })
 
+      test("after delay expires , the tooltip should be hidden if the selector is not null", function () {
+        var tooltipCtn = $('<div><a href="#" rel="tooltip" title="Tooltip first"></a><a href="#" rel="tooltip" title="Tooltip second"></a></div>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: 100, selector: 'a[rel="tooltip"]'})
+        
+        var tooltipFirst = tooltipCtn.children('a[rel="tooltip"]').first()
+          , tooltipSecond = tooltipCtn.children('a[rel="tooltip"]').last()
+
+        tooltipFirst.trigger('mouseenter')
+        stop()
+        setTimeout(function () {
+          ok($(".tooltip").is('.fade.in'), 'the first tooltip has faded in')
+          tooltipFirst.trigger('mouseout')
+          tooltipSecond.trigger('mouseenter')
+          tooltipSecond.trigger('mouseout')
+          setTimeout(function () {
+            ok(!$(".tooltip").is('.fade.in'), 'the first and the second tooltip are not faded in')
+            start()
+          }, 150)
+        }, 150)
+      })
+
       test("should show tooltip if leave event hasn't occured before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
