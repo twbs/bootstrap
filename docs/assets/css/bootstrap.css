@@ -4694,12 +4694,12 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 0;
   left: 50%;
   z-index: 1050;
   width: 560px;
-  margin: -250px 0 0 -280px;
+  margin: 0;
   overflow: auto;
   background-color: #ffffff;
   border: 1px solid #999;
@@ -4743,13 +4743,16 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal-body {
-  max-height: 400px;
   padding: 15px;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .modal-form {
   margin-bottom: 0;
+}
+
+body.modal-open-noscroll {
+  overflow: hidden;
 }
 
 .modal-footer {
