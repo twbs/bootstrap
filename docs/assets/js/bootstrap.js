@@ -782,10 +782,17 @@
         this.backdrop(function () {
           var transition = $.support.transition && that.$element.hasClass('fade')
 
-          if (!that.$element.parent().length) {
-            that.$element.appendTo(document.body) //don't move modals dom position
-          }
+          that.saveLocation(that.$element)
 
+          // need to stack the modals so that if there are multiple ones are 
+          // on a page, they appear on top of each other
+          $(document.body).children().eq(0).hasClass('modal') ?
+            that.$element.detach().insertAfter('.modal') :
+            that.$element.detach().prependTo(document.body)
+
+          // position in center of window          
+          that.$element.css('margin-left', -(that.$element.width() / 2))
+            
           that.$element
             .show()
 
@@ -794,23 +801,25 @@
           }
 
           that.$element
+            .css('top', '-25%')
             .addClass('in')
             .attr('aria-hidden', false)
             .focus()
 
+          that.setPosition(that.$element)
+          
           that.enforceFocus()
 
           transition ?
             that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
             that.$element.trigger('shown')
 
+          $(window).on('resize.modal', function() { that.setPosition(that.$element) })
         })
       }
 
     , hide: function (e) {
         e && e.preventDefault()
-
-        var that = this
 
         e = $.Event('hide')
 
@@ -820,13 +829,15 @@
 
         this.isShown = false
 
-        $('body').removeClass('modal-open')
+        $('body').removeClass('modal-open, modal-open-noscroll')
 
         this.escape()
 
         $(document).off('focusin.modal')
+        $(window).off('resize.modal')
 
         this.$element
+          .css('top', 0)
           .removeClass('in')
           .attr('aria-hidden', true)
 
@@ -873,6 +884,8 @@
           .hide()
           .trigger('hidden')
 
+        this.restoreLocation(this.$element.detach())
+
         this.backdrop()
       }
 
@@ -889,7 +902,7 @@
           var doAnimate = $.support.transition && animate
 
           this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-            .appendTo(document.body)
+            .prependTo(document.body)
 
           if (this.options.backdrop != 'static') {
             this.$backdrop.click($.proxy(this.hide, this))
@@ -912,6 +925,49 @@
 
         } else if (callback) {
           callback()
+        }
+      }
+      
+    , saveLocation: function(elem) {
+        var loc = {}, item = $(elem).prev()
+        loc.element = elem
+        loc.scrollTop = this.getScrollTop()
+        item.length ?
+          loc.prev = item[0] :
+          loc.parent = elem.parent()[0]
+        elem.data('modal-location', loc)        
+      }
+    
+    , restoreLocation: function (elem) {
+        var loc = elem.data('modal-location')
+        $(document.body).scrollTop(loc.scrollTop)
+        loc.parent ?
+          $(loc.parent).prepend(loc.element) :
+          $(loc.prev).after(loc.element)
+      }
+
+    , setPosition: function (elem) {
+        var that = this, b = $(document.body), t = elem.attr('data-top'), 
+          top = elem.css('top')
+        if (t) {
+          t = that.getScrollTop() + parseInt(t, 10)
+        } else if (elem.css('top') != '-25%' && parseInt(top, 10) < 15) {
+          b.removeClass('modal-open-noscroll')
+          t = that.getScrollTop() + 15
+        } else {
+          b.addClass('modal-open-noscroll')
+          t = that.getScrollTop() + ($(window).height() / 2) - (elem.height() / 2)
+        }
+        elem.css('top', t)
+      }
+
+    , getScrollTop: function () {
+        if (typeof window.pageYOffset != 'undefined') {
+          return window.pageYOffset // most browsers
+        } else {
+          var b = document.body, d = document.documentElement
+          d = d.clientHeight ? d : b
+          return d.scrollTop
         }
       }
   }
