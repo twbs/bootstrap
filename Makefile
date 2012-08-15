@@ -75,12 +75,14 @@ bootstrap:
 #
 
 gh-pages: bootstrap docs
+	./create_mirror_clone.sh
 	rm -f docs/assets/bootstrap.zip
 	zip -r docs/assets/bootstrap.zip bootstrap
 	rm -r bootstrap
 	rm -f ../bootstrap-gh-pages/assets/bootstrap.zip
 	node docs/build production
 	cp -r docs/* ../bootstrap-gh-pages
+	./push_to_mirror_clone.sh
 
 #
 # WATCH LESS FILES
