@@ -150,7 +150,7 @@ textarea {
 .input-block-level {
   display: block;
   width: 100%;
-  min-height: 28px;
+  min-height: 30px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -340,7 +340,7 @@ a:hover {
   display: block;
   float: left;
   width: 100%;
-  min-height: 28px;
+  min-height: 30px;
   margin-left: 2.127659574468085%;
   *margin-left: 2.074468085106383%;
   -webkit-box-sizing: border-box;
@@ -1012,10 +1012,9 @@ input[type="color"]:focus,
 
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0;
+  margin: 4px 0 0;
+  margin-top: 1px \9;
   *margin-top: 0;
-  /* IE7 */
-
   line-height: normal;
   cursor: pointer;
 }
@@ -1031,13 +1030,13 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  height: 28px;
+  height: 30px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
 
   *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
 
-  line-height: 28px;
+  line-height: 30px;
 }
 
 select {
@@ -1863,8 +1862,8 @@ table {
   background-color: #f9f9f9;
 }
 
-.table-hover tr:hover td,
-.table-hover tr:hover th {
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
   background-color: #f5f5f5;
 }
 
@@ -2866,6 +2865,7 @@ table .span24 {
   position: relative;
   height: 0;
   overflow: hidden;
+  overflow: visible \9;
   -webkit-transition: height 0.35s ease;
      -moz-transition: height 0.35s ease;
        -o-transition: height 0.35s ease;
@@ -3254,8 +3254,8 @@ button.close {
 
 button.btn,
 input[type="submit"].btn {
-  *padding-top: 2px;
-  *padding-bottom: 2px;
+  *padding-top: 3px;
+  *padding-bottom: 3px;
 }
 
 button.btn::-moz-focus-inner,
@@ -4030,7 +4030,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .brand {
   display: block;
   float: left;
-  padding: 8px 20px 12px;
+  padding: 10px 20px 10px;
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
@@ -4148,6 +4148,11 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-fixed-top .navbar-inner,
 .navbar-fixed-bottom .navbar-inner {
+  border: 0;
+}
+
+.navbar-fixed-top .navbar-inner,
+.navbar-fixed-bottom .navbar-inner {
   padding-right: 0;
   padding-left: 0;
   -webkit-border-radius: 0;
@@ -4165,7 +4170,6 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-fixed-top .navbar-inner {
-  border-width: 0 0 1px;
   -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
@@ -4176,7 +4180,6 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-fixed-bottom .navbar-inner {
-  border-width: 1px 0 0;
   -webkit-box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
@@ -4285,7 +4288,7 @@ input[type="submit"].btn.btn-mini {
   margin-top: 3px;
 }
 
-.navbar .dropdown-menu:before {
+.navbar .nav > li > .dropdown-menu:before {
   position: absolute;
   top: -7px;
   left: 9px;
@@ -4297,7 +4300,7 @@ input[type="submit"].btn.btn-mini {
   content: '';
 }
 
-.navbar .dropdown-menu:after {
+.navbar .nav > li > .dropdown-menu:after {
   position: absolute;
   top: -6px;
   left: 10px;
@@ -4308,7 +4311,7 @@ input[type="submit"].btn.btn-mini {
   content: '';
 }
 
-.navbar-fixed-bottom .dropdown-menu:before {
+.navbar-fixed-bottom .nav > li > .dropdown-menu:before {
   top: auto;
   bottom: -7px;
   border-top: 7px solid #ccc;
@@ -4316,7 +4319,7 @@ input[type="submit"].btn.btn-mini {
   border-top-color: rgba(0, 0, 0, 0.2);
 }
 
-.navbar-fixed-bottom .dropdown-menu:after {
+.navbar-fixed-bottom .nav > li > .dropdown-menu:after {
   top: auto;
   bottom: -6px;
   border-top: 6px solid #ffffff;
@@ -4342,22 +4345,33 @@ input[type="submit"].btn.btn-mini {
   border-bottom-color: #555555;
 }
 
-.navbar .pull-right .dropdown-menu,
-.navbar .dropdown-menu.pull-right {
+.navbar .pull-right > li > .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right {
   right: 0;
   left: auto;
 }
 
-.navbar .pull-right .dropdown-menu:before,
-.navbar .dropdown-menu.pull-right:before {
+.navbar .pull-right > li > .dropdown-menu:before,
+.navbar .nav > li > .dropdown-menu.pull-right:before {
   right: 12px;
   left: auto;
 }
 
-.navbar .pull-right .dropdown-menu:after,
-.navbar .dropdown-menu.pull-right:after {
+.navbar .pull-right > li > .dropdown-menu:after,
+.navbar .nav > li > .dropdown-menu.pull-right:after {
   right: 13px;
   left: auto;
+}
+
+.navbar .pull-right > li > .dropdown-menu .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right .dropdown-menu {
+  right: 100%;
+  left: auto;
+  margin-right: -1px;
+  margin-left: 0;
+  -webkit-border-radius: 6px 0 6px 6px;
+     -moz-border-radius: 6px 0 6px 6px;
+          border-radius: 6px 0 6px 6px;
 }
 
 .navbar-inverse {
