@@ -44,13 +44,13 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      var val = this.updater( this.$menu.find('.active').attr('data-value') )
         , e = $.Event('selectitem')
 
       this.$element
-        .val(this.updater(val))
+        .val(val)
         .change()
-        .trigger(e)
+        .trigger(e, val)
       if (e.isDefaultPrevented()) return
       return this.hide()
     }

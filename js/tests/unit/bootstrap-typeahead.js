@@ -157,7 +157,13 @@ $(function () {
 
         // test:
         typeahead.lookup()
-        $input.bind("selectitem", function() { selected = true })
+        $input.bind("selectitem", function(ev, val) { 
+            selected = true 
+            ok(ev)
+            ok(val)
+            equal(val, "ab")	// as 'click' on item with index 1
+            equal($input.val(), "ab")
+        })
         $(typeahead.$menu.find('li')[1]).mouseover().click()
 
         // check:
