@@ -967,7 +967,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 </pre>
 
           <h3>Textarea</h3>
-          <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
+          <p>Form control which supports multiple lines of text. Change <code>row</code> attribute as necessary.</p>
           <form class="bs-docs-example form-inline">
             <textarea rows="3"></textarea>
           </form>
@@ -1446,6 +1446,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
               <button type="button" class="btn btn-large">Action</button>
             </p>
             <p>
+              <button type="button" class="btn btn-primary">Primary action</button>
+              <button type="button" class="btn">Action</button>
+            </p>
+            <p>
               <button type="button" class="btn btn-small btn-primary">Primary action</button>
               <button type="button" class="btn btn-small">Action</button>
             </p>
@@ -1457,6 +1461,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 <pre class="prettyprint linenums">
 &lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
 &lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
+&lt;button class="btn" type="button"&gt;Default button&lt;/button&gt;
 &lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
 </pre>
           <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
@@ -1740,6 +1745,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
                 <a class="btn" href="#"><i class="icon-align-right"></i></a>
                 <a class="btn" href="#"><i class="icon-align-justify"></i></a>
               </div>
+              <br><br>
               <div class="btn-group">
                 <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
@@ -1751,6 +1757,8 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
                   <li><a href="#"><i class="i"></i> Make admin</a></li>
                 </ul>
               </div>
+              <br><br>
+              <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
             </div>
           </div>
 

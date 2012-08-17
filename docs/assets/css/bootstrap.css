@@ -2037,6 +2037,7 @@ table .span24 {
   display: inline-block;
   width: 14px;
   height: 14px;
+  margin-top: 1px;
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
@@ -3016,17 +3017,17 @@ button.close {
 }
 
 .btn-large [class^="icon-"] {
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .btn-small {
-  padding: 5px 9px;
+  padding: 3px 9px;
   font-size: 12px;
   line-height: 18px;
 }
 
 .btn-small [class^="icon-"] {
-  margin-top: -1px;
+  margin-top: 0;
 }
 
 .btn-mini {
