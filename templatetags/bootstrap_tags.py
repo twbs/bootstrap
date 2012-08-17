@@ -55,7 +55,10 @@ def label_link(taskstate, user, custom_state=None):
     if custom_state is not None:
         state = custom_state
     elif taskstate is not None:
-        state = taskstate.state
+        try:
+            state = taskstate.state
+        except AttributeError:
+            state = taskstate
     else:
         state = 'UNKNOWN'
     text = label(state)
