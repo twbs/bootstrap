@@ -1471,7 +1471,7 @@ select:focus:required:invalid:focus {
   margin-bottom: 0;
   *margin-left: 0;
   font-size: 14px;
-  vertical-align: middle;
+  vertical-align: top;
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
           border-radius: 0 3px 3px 0;
@@ -1498,7 +1498,6 @@ select:focus:required:invalid:focus {
   line-height: 20px;
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
-  vertical-align: middle;
   background-color: #eeeeee;
   border: 1px solid #ccc;
 }
@@ -1508,6 +1507,7 @@ select:focus:required:invalid:focus {
 .input-append .btn,
 .input-prepend .btn {
   margin-left: -1px;
+  vertical-align: top;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
