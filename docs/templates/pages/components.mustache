@@ -1091,7 +1091,7 @@
           <hr class="bs-docs-separator">
 
 
-          <h2>{{_i}}Fixed navigation{{/i}}</h2>
+          <h2>{{_i}}Optional display variations{{/i}}</h2>
           <p>{{_i}}Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.{{/i}}</p>
 
           <h3>Fixed to top</h3>
@@ -1134,6 +1134,28 @@
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-bottom"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+
+          <h3>{{_i}}Static top navbar{{/i}}</h3>
+          <p>{{_i}}Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.{{/i}}</p>
+          <div class="bs-docs-example bs-navbar-top-example">
+            <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto; padding: 0 20px;">
+                  <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+                  <ul class="nav">
+                    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-static-top"&gt;
   ...
 &lt;/div&gt;
 </pre>

@@ -4138,6 +4138,18 @@ input[type="submit"].btn.btn-mini {
           border-radius: 15px;
 }
 
+.navbar-static-top {
+  position: static;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.navbar-static-top .navbar-inner {
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;

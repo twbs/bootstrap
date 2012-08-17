@@ -140,8 +140,22 @@
 
 
 
-// FIXED NAVBAR
-// ------------
+// Static navbar
+// -------------------------
+
+.navbar-static-top {
+  position: static;
+  width: 100%;
+  margin-bottom: 0; // remove 18px margin for default navbar
+  .navbar-inner {
+    .border-radius(0);
+  }
+}
+
+
+
+// Fixed navbar
+// -------------------------
 
 // Shared (top/bottom) styles
 .navbar-fixed-top,
@@ -150,7 +164,7 @@
   right: 0;
   left: 0;
   z-index: @zindexFixedNavbar;
-  margin-bottom: 0; // remove 18px margin for static navbar
+  margin-bottom: 0; // remove 18px margin for default navbar
   .navbar-inner {
     border: 0;
   }
