@@ -1651,7 +1651,9 @@ input.search-query {
 }
 
 .form-search label,
-.form-inline label {
+.form-inline label,
+.form-search .btn-group,
+.form-inline .btn-group {
   display: inline-block;
 }
 
