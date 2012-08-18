@@ -51,7 +51,7 @@
   }
 
   Button.prototype.toggle = function () {
-    var $parent = this.$element.parent('[data-toggle="buttons-radio"], [data-toggle="buttons-radio-optional"]')
+    var $parent = this.$element.parent('[data-toggle^="buttons-radio"]')
 
     this.$element.toggleClass('active')
 
