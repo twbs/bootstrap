@@ -417,10 +417,10 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 </pre>
 <pre class="prettyprint linenums" style="margin-bottom: 9px;">
 &lt;pre&gt;
-  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
 &lt;/pre&gt;
 </pre>
-          <p><strong>Note:</strong> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
+          <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
           <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
         </section>
 
@@ -802,6 +802,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </table>
 <pre class="prettyprint linenums">
 &lt;table&gt;
+  &lt;caption&gt;…&lt;/caption&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;…&lt;/th&gt;
@@ -834,14 +835,15 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <legend>Legend</legend>
             <label>Label name</label>
             <input type="text" placeholder="Type something…">
-            <p class="help-block">Example block-level help text here.</p>
+            <span class="help-block">Example block-level help text here.</span>
             <label class="checkbox">
               <input type="checkbox"> Check me out
             </label>
             <button type="submit" class="btn">Submit</button>
           </form>
 <pre class="prettyprint linenums">
-&lt;form class="well"&gt;
+&lt;form&gt;
+  &lt;legend&gt;Legend&lt;/legend&gt;
   &lt;label&gt;Label name&lt;/label&gt;
   &lt;input type="text" placeholder="Type something…"&gt;
   &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
@@ -853,7 +855,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>Optional layouts</h2>
@@ -904,15 +906,15 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <form class="bs-docs-example form-horizontal">
             <legend>Legend</legend>
             <div class="control-group">
-              <label class="control-label" for="">Email</label>
+              <label class="control-label" for="inputEmail">Email</label>
               <div class="controls">
-                <input type="text" placeholder="Email">
+                <input type="text" id="inputEmail" placeholder="Email">
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="">Password</label>
+              <label class="control-label" for="inputPassword">Password</label>
               <div class="controls">
-                <input type="password" placeholder="Password">
+                <input type="password" id="inputPassword" placeholder="Password">
               </div>
             </div>
             <div class="control-group">
@@ -927,15 +929,15 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 <pre class="prettyprint linenums">
 &lt;form class="form-horizontal"&gt;
   &lt;div class="control-group"&gt;
-    &lt;label class="control-label" for=""&gt;Email&lt;/label&gt;
+    &lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="text" placeholder="Email"&gt;
+      &lt;input type="text" id="inputEmail" placeholder="Email"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
-    &lt;label class="control-label" for=""&gt;Password&lt;/label&gt;
+    &lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="password" placeholder="Password"&gt;
+      &lt;input type="password" id="inputPassword" placeholder="Password"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
@@ -950,7 +952,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>Supported form controls</h2>
@@ -972,7 +974,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <textarea rows="3"></textarea>
           </form>
 <pre class="prettyprint linenums">
-&lt;textarea id="textarea" rows="3"&gt;&lt;/textarea&gt;
+&lt;textarea rows="3"&gt;&lt;/textarea&gt;
 </pre>
 
           <h3>Checkboxes and radios</h3>
@@ -1045,7 +1047,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
               <option>5</option>
             </select>
             <br>
-            <select>
+            <select multiple="multiple">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -1062,7 +1064,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
   &lt;option&gt;5&lt;/option&gt;
 &lt;/select&gt;
 
-&lt;select&gt;
+&lt;select multiple="multiple"&gt;
   &lt;option&gt;1&lt;/option&gt;
   &lt;option&gt;2&lt;/option&gt;
   &lt;option&gt;3&lt;/option&gt;
@@ -1072,7 +1074,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>Extending form controls</h2>
@@ -1082,7 +1084,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <p>Add text or buttons before or after any text-based input. Do note that <code>select</code> elements are not supported here.</p>
 
           <h4>Default options</h4>
-          <p>Wrap a <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.</p>
+          <p>Wrap an <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.</p>
           <form class="bs-docs-example">
             <div class="input-prepend">
               <span class="add-on">@</span>
@@ -1155,8 +1157,14 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
-  &lt;input type="text" class="span2 search-query"&gt;
-  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+  &lt;div class="input-append"&gt;
+    &lt;input type="text" class="span2 search-query"&gt;
+    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="input-prepend"&gt;
+    &lt;input type="text" class="span2 search-query"&gt;
+    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+  &lt;/div&gt;
 &lt;/form&gt;
 </pre>
 
@@ -1175,12 +1183,12 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-mini" type="text"&gt;
-&lt;input class="input-small" type="text"&gt;
-&lt;input class="input-medium" type="text"&gt;
-&lt;input class="input-large" type="text"&gt;
-&lt;input class="input-xlarge" type="text"&gt;
-&lt;input class="input-xxlarge" type="text"&gt;
+&lt;input class="input-mini" type="text" placeholder=".input-mini"&gt;
+&lt;input class="input-small" type="text" placeholder=".input-small"&gt;
+&lt;input class="input-medium" type="text" placeholder=".input-medium"&gt;
+&lt;input class="input-large" type="text" placeholder=".input-large"&gt;
+&lt;input class="input-xlarge" type="text" placeholder=".input-xlarge"&gt;
+&lt;input class="input-xxlarge" type="text" placeholder=".input-xxlarge"&gt;
 </pre>
           <p>
             <span class="label label-info">Heads up!</span> In future versions, we'll be altering the use of these relative input classes to match our button sizes. For example, <code>.input-large</code> will increase the padding and font-size of an input.
@@ -1217,9 +1225,18 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="span1" type="text"&gt;
-&lt;input class="span2" type="text"&gt;
-&lt;input class="span3" type="text"&gt;
+&lt;input class="span1" type="text" placeholder=".span1"&gt;
+&lt;input class="span2" type="text" placeholder=".span2"&gt;
+&lt;input class="span3" type="text" placeholder=".span3"&gt;
+&lt;select class="span1"&gt;
+  ...
+&lt;/select&gt;
+&lt;select class="span2"&gt;
+  ...
+&lt;/select&gt;
+&lt;select class="span3"&gt;
+  ...
+&lt;/select&gt;
 </pre>
 
           <p>For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and the clears the float.</p>
@@ -1245,10 +1262,14 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             </div>
           </form>
 <pre class="prettyprint linenums">
+&lt;div class="controls"&gt;
+  &lt;input class="span5" type="text" placeholder=".span5"&gt;
+&lt;/div&gt;
 &lt;div class="controls controls-row"&gt;
   &lt;input class="span4" type="text" placeholder=".span4"&gt;
   &lt;input class="span1" type="text" placeholder=".span1"&gt;
 &lt;/div&gt;
+...
 </pre>
 
           <h3>Uneditable inputs</h3>
@@ -1282,7 +1303,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <input type="text"> <span class="help-inline">Inline help text</span>
           </form>
 <pre class="prettyprint linenums">
-&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
+&lt;input type="text"&gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
 </pre>
 
           <h4>Block help</h4>
@@ -1291,11 +1312,11 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
           </form>
 <pre class="prettyprint linenums">
-&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
+&lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>Form control states</h2>
@@ -1306,9 +1327,9 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <form class="bs-docs-example form-inline">
             <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused...">
           </form>
-  <pre class="prettyprint linenums">
-  &lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
-  </pre>
+<pre class="prettyprint linenums">
+&lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
+</pre>
 
           <h3>Disabled inputs</h3>
           <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
@@ -1439,39 +1460,54 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
 
           <h2>Button sizes</h2>
-          <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for two additional sizes.</p>
+          <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
           <div class="bs-docs-example">
             <p>
-              <button type="button" class="btn btn-large btn-primary">Primary action</button>
-              <button type="button" class="btn btn-large">Action</button>
+              <button type="button" class="btn btn-large btn-primary">Large button</button>
+              <button type="button" class="btn btn-large">Large button</button>
             </p>
             <p>
-              <button type="button" class="btn btn-primary">Primary action</button>
-              <button type="button" class="btn">Action</button>
+              <button type="button" class="btn btn-primary">Default button</button>
+              <button type="button" class="btn">Default button</button>
             </p>
             <p>
-              <button type="button" class="btn btn-small btn-primary">Primary action</button>
-              <button type="button" class="btn btn-small">Action</button>
+              <button type="button" class="btn btn-small btn-primary">Small button</button>
+              <button type="button" class="btn btn-small">Small button</button>
             </p>
             <p>
-              <button type="button" class="btn btn-mini btn-primary">Primary action</button>
-              <button type="button" class="btn btn-mini">Action</button>
+              <button type="button" class="btn btn-mini btn-primary">Mini button</button>
+              <button type="button" class="btn btn-mini">Mini button</button>
             </p>
           </div>
 <pre class="prettyprint linenums">
-&lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
-&lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
-&lt;button class="btn" type="button"&gt;Default button&lt;/button&gt;
-&lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-large btn-primary" type="button"&gt;Large button&lt;/button&gt;
+  &lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-primary" type="button"&gt;Default button&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Default button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-small btn-primary" type="button"&gt;Small button&lt;/button&gt;
+  &lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-mini btn-primary" type="button"&gt;Mini button&lt;/button&gt;
+  &lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
+&lt;/p&gt;
 </pre>
           <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
           <div class="bs-docs-example">
             <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-              <button type="button" class="btn btn-large btn-primary btn-block">Block level button</button>
+              <button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
               <button type="button" class="btn btn-large btn-block">Block level button</button>
             </div>
           </div>
-          <pre class="prettyprint linenums">&lt;button class="btn btn-large btn-block" type="button"&gt;Block level button&lt;/button&gt;</pre>
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-large btn-block btn-primary" type="button"&gt;Block level button&lt;/button&gt;
+&lt;button class="btn btn-large btn-block" type="button"&gt;Block level button&lt;/button&gt;
+</pre>
 
 
           <h2>Disabled state</h2>
@@ -1514,15 +1550,11 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;Link&lt;/a&gt;
-&lt;button class="btn" type="submit"&gt;
-  Button
-&lt;/button&gt;
-&lt;input class="btn" type="button"
-         value="Input"&gt;
-&lt;input class="btn" type="submit"
-         value="Submit"&gt;
+&lt;button class="btn" type="submit"&gt;Button&lt;/button&gt;
+&lt;input class="btn" type="button" value="Input"&gt;
+&lt;input class="btn" type="submit" value="Submit"&gt;
 </pre>
-          <p>As a best practice, try to match the element for you context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
+          <p>As a best practice, try to match the element for your context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
 
         </section>
 
@@ -1535,16 +1567,17 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <h1>Images</h1>
           </div>
 
-          <p>Simple classes to easily style images in any project. Heads up: <code>.img-rounded</code> and <code>.img-circle</code> don't work in IE7-8.</p>
+          <p>Add the <code>.img-rounded</code>, <code>.img-circle</code> or <code>.img-polaroid</code> class to a <code>&lt;img&gt;</code> element to easily style images in any project.</p>
+          <p><span class="label label-info">Heads up!</span> <code>.img-rounded</code> and <code>.img-circle</code> don't work in IE7-8.</p>
           <div class="bs-docs-example bs-docs-example-images">
             <img src="http://placehold.it/140x140" class="img-rounded">
             <img src="http://placehold.it/140x140" class="img-circle">
             <img src="http://placehold.it/140x140" class="img-polaroid">
           </div>
 <pre class="prettyprint linenums">
-  &lt;img src="..." class="img-rounded"&gt;
-  &lt;img src="..." class="img-circle"&gt;
-  &lt;img src="..." class="img-polaroid"&gt;
+&lt;img src="..." class="img-rounded"&gt;
+&lt;img src="..." class="img-circle"&gt;
+&lt;img src="..." class="img-polaroid"&gt;
 </pre>
 
 
@@ -1737,30 +1770,66 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
 
           <h4>Buttons</h4>
+
+          <h6>Button group in a button toolbar</h6>
           <div class="bs-docs-example">
-            <div class="btn-toolbar" style="margin-bottom: 9px">
+            <div class="btn-toolbar">
               <div class="btn-group">
                 <a class="btn" href="#"><i class="icon-align-left"></i></a>
                 <a class="btn" href="#"><i class="icon-align-center"></i></a>
                 <a class="btn" href="#"><i class="icon-align-right"></i></a>
                 <a class="btn" href="#"><i class="icon-align-justify"></i></a>
               </div>
-              <br><br>
-              <div class="btn-group">
-                <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-                  <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-                  <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#"><i class="i"></i> Make admin</a></li>
-                </ul>
-              </div>
-              <br><br>
-              <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
             </div>
           </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-toolbar"&gt;
+  &lt;div class="btn-group"&gt;
+
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-justify"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+          <h6>Dropdown in a button group</h6>
+          <div class="bs-docs-example">
+            <div class="btn-group">
+              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+                <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="i"></i> Make admin</a></li>
+              </ul>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn btn-primary" href="#"&gt;&lt;i class="icon-user icon-white"&gt;&lt;/i&gt; User&lt;/a&gt;
+  &lt;a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; Edit&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-trash"&gt;&lt;/i&gt; Delete&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-ban-circle"&gt;&lt;/i&gt; Ban&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Make admin&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+          <h6>Button</h6>
+          <div class="bs-docs-example">
+            <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
+          </div>
+<pre class="prettyprint linenums">
+&lt;a class="btn btn-small" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+</pre>
+
 
           <h4>Navigation</h4>
           <div class="bs-docs-example">
@@ -1773,6 +1842,14 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
               </ul>
             </div>
           </div>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-list"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;i class="icon-home icon-white"&gt;&lt;/i&gt; Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-book"&gt;&lt;/i&gt; Library&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; Applications&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Misc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 
           <h4>Form fields</h4>
           <form class="bs-docs-example form-horizontal">
@@ -1785,6 +1862,15 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
               </div>
             </div>
           </form>
+<pre class="prettyprint linenums">
+&lt;div class="control-group"&gt;
+  &lt;label class="control-label" for="inputIcon"&gt;Email address&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;div class="input-prepend"&gt;
+    &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;i&gt;&lt;span&gt;&lt;input class="span2" id="inputIcon" type="text"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
         </section>
 
