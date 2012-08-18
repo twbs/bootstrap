@@ -1770,30 +1770,66 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
 
           <h4>Buttons</h4>
+
+          <h6>Button group in a button toolbar</h6>
           <div class="bs-docs-example">
-            <div class="btn-toolbar" style="margin-bottom: 9px">
+            <div class="btn-toolbar">
               <div class="btn-group">
                 <a class="btn" href="#"><i class="icon-align-left"></i></a>
                 <a class="btn" href="#"><i class="icon-align-center"></i></a>
                 <a class="btn" href="#"><i class="icon-align-right"></i></a>
                 <a class="btn" href="#"><i class="icon-align-justify"></i></a>
               </div>
-              <br><br>
-              <div class="btn-group">
-                <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-                  <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-                  <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#"><i class="i"></i> Make admin</a></li>
-                </ul>
-              </div>
-              <br><br>
-              <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
             </div>
           </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-toolbar"&gt;
+  &lt;div class="btn-group"&gt;
+
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-justify"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+          <h6>Dropdown in a button group</h6>
+          <div class="bs-docs-example">
+            <div class="btn-group">
+              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+                <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+                <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="i"></i> Make admin</a></li>
+              </ul>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn btn-primary" href="#"&gt;&lt;i class="icon-user icon-white"&gt;&lt;/i&gt; User&lt;/a&gt;
+  &lt;a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; Edit&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-trash"&gt;&lt;/i&gt; Delete&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-ban-circle"&gt;&lt;/i&gt; Ban&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Make admin&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+          <h6>Button</h6>
+          <div class="bs-docs-example">
+            <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
+          </div>
+<pre class="prettyprint linenums">
+&lt;a class="btn btn-small" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+</pre>
+
 
           <h4>Navigation</h4>
           <div class="bs-docs-example">
