@@ -406,18 +406,21 @@
 
           <h2>Inline</h2>
           <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+<div class="bs-docs-example">
+  For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+</div>
 <pre class="prettyprint linenums">
-For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
+For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.
 </pre>
 
           <h2>Basic block</h2>
           <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
-<pre>
-&lt;p&gt;Sample text here...&lt;/p&gt;
-</pre>
+<div class="bs-docs-example">
+  <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+</div>
 <pre class="prettyprint linenums" style="margin-bottom: 9px;">
 &lt;pre&gt;
-&amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
+  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
 &lt;/pre&gt;
 </pre>
           <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
@@ -802,17 +805,17 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </table>
 <pre class="prettyprint linenums">
 &lt;table&gt;
-  &lt;caption&gt;…&lt;/caption&gt;
+  &lt;caption&gt;...&lt;/caption&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;…&lt;/th&gt;
-      &lt;th&gt;…&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1040,7 +1043,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
           <form class="bs-docs-example">
             <select>
-              <option>something</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
@@ -1057,7 +1060,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
           </form>
 <pre class="prettyprint linenums">
 &lt;select&gt;
-  &lt;option&gt;something&lt;/option&gt;
+  &lt;option&gt;1&lt;/option&gt;
   &lt;option&gt;2&lt;/option&gt;
   &lt;option&gt;3&lt;/option&gt;
   &lt;option&gt;4&lt;/option&gt;
@@ -1162,8 +1165,8 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
     &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="input-prepend"&gt;
-    &lt;input type="text" class="span2 search-query"&gt;
     &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
+    &lt;input type="text" class="span2 search-query"&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 </pre>
@@ -1567,8 +1570,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
             <h1>Images</h1>
           </div>
 
-          <p>Add the <code>.img-rounded</code>, <code>.img-circle</code> or <code>.img-polaroid</code> class to a <code>&lt;img&gt;</code> element to easily style images in any project.</p>
-          <p><span class="label label-info">Heads up!</span> <code>.img-rounded</code> and <code>.img-circle</code> don't work in IE7-8.</p>
+          <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
           <div class="bs-docs-example bs-docs-example-images">
             <img src="http://placehold.it/140x140" class="img-rounded">
             <img src="http://placehold.it/140x140" class="img-circle">
@@ -1579,6 +1581,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;img src="..." class="img-circle"&gt;
 &lt;img src="..." class="img-polaroid"&gt;
 </pre>
+          <p><span class="label label-info">Heads up!</span> <code>.img-rounded</code> and <code>.img-circle</code> do not work in IE7-8 due to lack of <code>border-radius</code> support.</p>
 
 
         </section>
@@ -1771,7 +1774,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 
           <h4>Buttons</h4>
 
-          <h6>Button group in a button toolbar</h6>
+          <h5>Button group in a button toolbar</h5>
           <div class="bs-docs-example">
             <div class="btn-toolbar">
               <div class="btn-group">
@@ -1794,7 +1797,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;/div&gt;
 </pre>
 
-          <h6>Dropdown in a button group</h6>
+          <h5>Dropdown in a button group</h5>
           <div class="bs-docs-example">
             <div class="btn-group">
               <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
@@ -1822,7 +1825,7 @@ For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.
 &lt;/div&gt;
 </pre>
 
-          <h6>Button</h6>
+          <h5>Small button</h5>
           <div class="bs-docs-example">
             <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
           </div>
