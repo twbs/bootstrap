@@ -18,11 +18,16 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
+  font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: @baseLineHeight / 2;
   margin-bottom: @baseLineHeight / 2;
   .btn-group {
     display: inline-block;
     .ie7-inline-block();
+  }
+  .btn-group + .btn,
+  .btn + .btn-group {
+    margin-left: 5px;
   }
 }
 

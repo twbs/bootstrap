@@ -3328,6 +3328,7 @@ input[type="submit"].btn.btn-mini {
 .btn-toolbar {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 0;
 }
 
 .btn-toolbar .btn-group {
@@ -3336,6 +3337,11 @@ input[type="submit"].btn.btn-mini {
   /* IE7 inline-block hack */
 
   *zoom: 1;
+}
+
+.btn-toolbar .btn-group + .btn,
+.btn-toolbar .btn + .btn-group {
+  margin-left: 5px;
 }
 
 .btn-group > .btn {
