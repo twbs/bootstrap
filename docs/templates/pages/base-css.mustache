@@ -1397,30 +1397,42 @@
 
 
           <h2>{{_i}}Button sizes{{/i}}</h2>
-          <p>{{_i}}Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for two additional sizes.{{/i}}</p>
+          <p>{{_i}}Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.{{/i}}</p>
           <div class="bs-docs-example">
             <p>
-              <button type="button" class="btn btn-large btn-primary">{{_i}}Primary action{{/i}}</button>
-              <button type="button" class="btn btn-large">{{_i}}Action{{/i}}</button>
+              <button type="button" class="btn btn-large btn-primary">{{_i}}Large button{{/i}}</button>
+              <button type="button" class="btn btn-large">{{_i}}Large button{{/i}}</button>
             </p>
             <p>
-              <button type="button" class="btn btn-primary">{{_i}}Primary action{{/i}}</button>
-              <button type="button" class="btn">{{_i}}Action{{/i}}</button>
+              <button type="button" class="btn btn-primary">{{_i}}Default button{{/i}}</button>
+              <button type="button" class="btn">{{_i}}Default button{{/i}}</button>
             </p>
             <p>
-              <button type="button" class="btn btn-small btn-primary">{{_i}}Primary action{{/i}}</button>
-              <button type="button" class="btn btn-small">{{_i}}Action{{/i}}</button>
+              <button type="button" class="btn btn-small btn-primary">{{_i}}Small button{{/i}}</button>
+              <button type="button" class="btn btn-small">{{_i}}Small button{{/i}}</button>
             </p>
             <p>
-              <button type="button" class="btn btn-mini btn-primary">{{_i}}Primary action{{/i}}</button>
-              <button type="button" class="btn btn-mini">{{_i}}Action{{/i}}</button>
+              <button type="button" class="btn btn-mini btn-primary">{{_i}}Mini button{{/i}}</button>
+              <button type="button" class="btn btn-mini">{{_i}}Mini button{{/i}}</button>
             </p>
           </div>
 <pre class="prettyprint linenums">
-&lt;button class="btn btn-large" type="button"&gt;{{_i}}Large button{{/i}}&lt;/button&gt;
-&lt;button class="btn btn-small" type="button"&gt;{{_i}}Small button{{/i}}&lt;/button&gt;
-&lt;button class="btn" type="button"&gt;{{_i}}Default button{{/i}}&lt;/button&gt;
-&lt;button class="btn btn-mini" type="button"&gt;{{_i}}Mini button{{/i}}&lt;/button&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-large btn-primary" type="button"&gt;{{_i}}Large button{{/i}}&lt;/button&gt;
+  &lt;button class="btn btn-large" type="button"&gt;{{_i}}Large button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-primary" type="button"&gt;{{_i}}Default button{{/i}}&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;{{_i}}Default button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-small btn-primary" type="button"&gt;{{_i}}Small button{{/i}}&lt;/button&gt;
+  &lt;button class="btn btn-small" type="button"&gt;{{_i}}Small button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-mini btn-primary" type="button"&gt;{{_i}}Mini button{{/i}}&lt;/button&gt;
+  &lt;button class="btn btn-mini" type="button"&gt;{{_i}}Mini button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
 </pre>
           <p>{{_i}}Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.{{/i}}</p>
           <div class="bs-docs-example">
