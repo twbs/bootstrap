@@ -4710,7 +4710,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal-open .tooltip {
-  z-index: 2070;
+  z-index: 2080;
 }
 
 .modal-backdrop {
@@ -4829,7 +4829,7 @@ input[type="submit"].btn.btn-mini {
 
 .tooltip {
   position: absolute;
-  z-index: 1020;
+  z-index: 1030;
   display: block;
   padding: 5px;
   font-size: 11px;
