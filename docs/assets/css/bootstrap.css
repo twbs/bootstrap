@@ -580,16 +580,31 @@ p {
   margin: 0 0 10px;
 }
 
-p small {
-  font-size: 12px;
-  color: #999999;
-}
-
 .lead {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: 200;
   line-height: 30px;
+}
+
+small {
+  font-size: 85%;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+}
+
+.muted {
+  color: #999999;
 }
 
 h1,
@@ -730,18 +745,6 @@ hr {
   border-bottom: 1px solid #ffffff;
 }
 
-strong {
-  font-weight: bold;
-}
-
-em {
-  font-style: italic;
-}
-
-.muted {
-  color: #999999;
-}
-
 abbr[title] {
   cursor: help;
   border-bottom: 1px dotted #999999;
@@ -808,14 +811,6 @@ address {
   margin-bottom: 20px;
   font-style: normal;
   line-height: 20px;
-}
-
-small {
-  font-size: 100%;
-}
-
-cite {
-  font-style: normal;
 }
 
 code,

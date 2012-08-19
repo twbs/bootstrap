@@ -8,16 +8,32 @@
 
 p {
   margin: 0 0 @baseLineHeight / 2;
-  small {
-    font-size: @baseFontSize - 2;
-    color: @grayLight;
-  }
 }
 .lead {
   margin-bottom: @baseLineHeight;
   font-size: 20px;
   font-weight: 200;
   line-height: @baseLineHeight * 1.5;
+}
+
+
+// Emphasis & misc
+// -------------------------
+
+small {
+  font-size: 85%; // Ex: 14px base font * 85% = about 12px
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+cite {
+  font-style: normal;
+}
+.muted {
+  color: @grayLight;
 }
 
 
@@ -123,17 +139,6 @@ hr {
   border-bottom: 1px solid @white;
 }
 
-// Emphasis
-strong {
-  font-weight: bold;
-}
-em {
-  font-style: italic;
-}
-.muted {
-  color: @grayLight;
-}
-
 // Abbreviations and acronyms
 abbr[title] {
   cursor: help;
@@ -198,12 +203,4 @@ address {
   margin-bottom: @baseLineHeight;
   font-style: normal;
   line-height: @baseLineHeight;
-}
-
-// Misc
-small {
-  font-size: 100%;
-}
-cite {
-  font-style: normal;
 }
