@@ -496,7 +496,7 @@ $('#myModal').on('hidden', function () {
           <h2>{{_i}}Usage{{/i}}</h2>
 
           <h3>{{_i}}Via data attributes{{/i}}</h3>
-          <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use.{{/i}}</p>
+          <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
 
           <h3>{{_i}}Via JavaScript{{/i}}</h3>
@@ -759,7 +759,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                <td>{{_i}}trigger{{/i}}</td>
                <td>{{_i}}string{{/i}}</td>
                <td>'hover'</td>
-               <td>{{_i}}how tooltip is triggered{{/i}} - hover | focus | manual</td>
+               <td>{{_i}}how tooltip is triggered{{/i}} - click | hover | focus | manual</td>
              </tr>
              <tr>
                <td>{{_i}}delay{{/i}}</td>
@@ -852,7 +852,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
         <h3>Live demo</h3>
         <div class="bs-docs-example" style="padding-bottom: 24px;">
-          <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Hover for popover{{/i}}</a>
+          <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Click to toggle popover{{/i}}</a>
         </div>
 
 
@@ -902,8 +902,8 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            <tr>
              <td>{{_i}}trigger{{/i}}</td>
              <td>{{_i}}string{{/i}}</td>
-             <td>'hover'</td>
-             <td>{{_i}}how popover is triggered{{/i}} - hover | focus | manual</td>
+             <td>'click'</td>
+             <td>{{_i}}how popover is triggered{{/i}} - click | hover | focus | manual</td>
            </tr>
            <tr>
              <td>{{_i}}title{{/i}}</td>
