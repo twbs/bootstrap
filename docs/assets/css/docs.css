@@ -876,6 +876,7 @@ form.bs-docs-example {
   /* Adjust sidenav width */
   .bs-docs-sidenav {
     width: 166px;
+    margin-top: 20px;
   }
   .bs-docs-sidenav.affix {
     top: 0;
