@@ -31,20 +31,6 @@
       $(this).parents('.add-on')[method]('active')
     })
 
-    // position static twipsies for components page
-    if ($(".twipsies a").length) {
-      $(window).on('load resize', function () {
-        $(".twipsies a").each(function () {
-          $(this)
-            .tooltip({
-              placement: $(this).attr('title')
-            , trigger: 'manual'
-            })
-            .tooltip('show')
-          })
-      })
-    }
-
     // add tipsies to grid for scaffolding
     if ($('#gridSystem').length) {
       $('#gridSystem').tooltip({
