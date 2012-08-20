@@ -25,6 +25,7 @@
     display: inline-block;
     .ie7-inline-block();
   }
+  .btn + .btn,
   .btn-group + .btn,
   .btn + .btn-group {
     margin-left: 5px;
@@ -34,8 +35,10 @@
 // Float them, remove border radius, then re-add to first and last elements
 .btn-group > .btn {
   position: relative;
-  margin-left: -1px;
   .border-radius(0);
+}
+.btn-group > .btn + .btn {
+  margin-left: -1px;
 }
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
@@ -215,11 +218,11 @@
 .btn-group-vertical .btn {
   display: block;
   float: none;
-  margin-left: 0;
   width: 100%;
   .border-radius(0);
 }
 .btn-group-vertical .btn + .btn {
+  margin-left: 0;
   margin-top: -1px;
 }
 .btn-group-vertical .btn:first-child {
