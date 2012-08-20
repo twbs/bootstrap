@@ -1,5 +1,5 @@
 /* =========================================================
- * bootstrap-modal.js v2.0.4
+ * bootstrap-modal.js v2.1.0
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
  * Copyright 2012 Twitter, Inc.
@@ -229,7 +229,7 @@
       e.preventDefault()
 
       $target
-        .modal(option)        
+        .modal(option)
         .one('hide', function () {
           $this.focus()
         })
