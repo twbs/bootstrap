@@ -239,6 +239,8 @@ hr.soften {
   display: inline-block;
   padding: 5px 8px;
   line-height: 1;
+  *display: inline;
+  *zoom: 1;
 }
 
 /* Subhead (other pages)
@@ -560,6 +562,7 @@ h2 + .row {
   position: relative;
   margin: 15px 0;
   padding: 39px 19px 14px;
+  *padding-top: 19px;
   background-color: #fff;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
