@@ -763,7 +763,7 @@ form.bs-docs-example {
 
 .bs-docs-sidenav {
   width: 228px;
-  margin: 30px 0 20px;
+  margin: 30px 0 0;
   padding: 0;
   background-color: #fff;
   -webkit-border-radius: 6px;
@@ -885,6 +885,9 @@ form.bs-docs-example {
     width: 166px;
     margin-top: 20px;
   }
+  .bs-docs-sidenav.affix {
+    top: 0;
+  }
 }
 
 /* Tablet
@@ -924,6 +927,7 @@ form.bs-docs-example {
   /* Sidenav */
   .bs-docs-sidenav {
     width: auto;
+    margin-bottom: 20px;
   }
   .bs-docs-sidenav.affix {
     position: static;
