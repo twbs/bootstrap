@@ -196,17 +196,13 @@ input[type="submit"].btn {
 .btn-link:active {
   background-color: transparent;
   background-image: none;
-  -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
+  .box-shadow(none);
 }
 .btn-link {
   border-color: transparent;
   cursor: pointer;
   color: @linkColor;
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-          border-radius: 0;
+  .border-radius(0);
 }
 .btn-link:hover {
   color: @linkColorHover;
