@@ -924,6 +924,7 @@ form.bs-docs-example {
   /* Sidenav */
   .bs-docs-sidenav {
     width: auto;
+    margin-bottom: 20px;
   }
   .bs-docs-sidenav.affix {
     position: static;
