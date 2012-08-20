@@ -12,6 +12,7 @@
 
 body {
   position: relative;
+  padding-top: 40px;
 }
 
 /* Code in headings */
@@ -25,12 +26,12 @@ h3 code {
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 
-body > .navbar-static-top {
+body > .navbar {
   font-size: 13px;
 }
 
 /* Change the docs' brand */
-body > .navbar-static-top .brand {
+body > .navbar .brand {
   padding-right: 0;
   padding-left: 0;
   margin-left: 20px;
@@ -42,7 +43,7 @@ body > .navbar-static-top .brand {
      -moz-transition: all .2s linear;
           transition: all .2s linear;
 }
-body > .navbar-static-top .brand:hover {
+body > .navbar .brand:hover {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
@@ -100,9 +101,9 @@ hr.soften {
   background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* IE10+ */
   background: linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
-     -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
-          box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
 }
 .jumbotron h1 {
   font-size: 80px;
@@ -792,6 +793,7 @@ form.bs-docs-example {
   z-index: 2;
   padding: 9px 15px;
   border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
   -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
      -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
           box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
@@ -812,10 +814,10 @@ form.bs-docs-example {
 .bs-docs-sidenav .active .icon-chevron-right,
 .bs-docs-sidenav .active a:hover .icon-chevron-right {
   background-image: url(../img/glyphicons-halflings-white.png);
-  opacity: .75;
+  opacity: 1;
 }
 .bs-docs-sidenav.affix {
-  top: 0;
+  top: 40px;
 }
 .bs-docs-sidenav.affix-bottom {
   position: absolute;
@@ -871,6 +873,10 @@ form.bs-docs-example {
   /* Remove any padding from the body */
   body {
     padding-top: 0;
+  }
+  /* Widen masthead and social buttons to fill body padding */
+  .jumbotron {
+    margin-top: -20px; /* Offset bottom margin on .navbar */
   }
   /* Adjust sidenav width */
   .bs-docs-sidenav {
