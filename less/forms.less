@@ -97,6 +97,10 @@ textarea {
 textarea {
   height: auto;
 }
+// Reset width since it can't be styled reliably on file inputs
+input[type="file"] {
+  width: auto;
+}
 // Everything else
 textarea,
 input[type="text"],
