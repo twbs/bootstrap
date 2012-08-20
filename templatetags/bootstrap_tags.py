@@ -40,11 +40,15 @@ def form_verb(obj):
 
 
 @register.simple_tag
-def label(text):
+def label(text, taskstate=None):
+    try:
+        text_for_class = taskstate.state
+    except AttributeError:
+        text_for_class = text
     label_class = ''
-    if success_regex.match(text):
+    if success_regex.match(text_for_class):
         label_class = "success"
-    elif important_regex.match(text):
+    elif important_regex.match(text_for_class):
         label_class = "important"
     text = '<span class="label %s">%s</span>' % (label_class, text)
     return text
@@ -61,7 +65,7 @@ def label_link(taskstate, user, custom_state=None):
             state = taskstate
     else:
         state = 'UNKNOWN'
-    text = label(state)
+    text = label(state, taskstate)
     if taskstate and user.has_module_perms('taskstate'):
         url = reverse('task_detail', args=(taskstate.task_id,))
         text = '<a href="%s">%s</a>' % (url, text)
