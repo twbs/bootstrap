@@ -1,5 +1,7 @@
-// LABELS & BADGES
-// ---------------
+//
+// Labels and badges
+// --------------------------------------------------
+
 
 // Base classes
 .label,
@@ -52,4 +54,19 @@ a {
   // Inverse (black)
   &-inverse           { background-color: @grayDark; }
   &-inverse[href]     { background-color: darken(@grayDark, 10%); }
+}
+
+// Quick fix for labels/badges in buttons
+.btn {
+  .label,
+  .badge {
+    position: relative;
+    top: -1px;
+  }
+}
+.btn-mini {
+  .label,
+  .badge {
+    top: 0;
+  }
 }

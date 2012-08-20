@@ -1,72 +1,7 @@
-// UP TO LANDSCAPE PHONE
-// ---------------------
-
-@media (max-width: 480px) {
-
-  // Smooth out the collapsing/expanding nav
-  .nav-collapse {
-    -webkit-transform: translate3d(0, 0, 0); // activate the GPU
-  }
-
-  // Block level the page header small tag for readability
-  .page-header h1 small {
-    display: block;
-    line-height: @baseLineHeight;
-  }
-
-  // Update checkboxes for iOS
-  input[type="checkbox"],
-  input[type="radio"] {
-    border: 1px solid #ccc;
-  }
-
-  // Remove the horizontal form styles
-  .form-horizontal .control-group > label {
-    float: none;
-    width: auto;
-    padding-top: 0;
-    text-align: left;
-  }
-  // Move over all input controls and content
-  .form-horizontal .controls {
-    margin-left: 0;
-  }
-  // Move the options list down to align with labels
-  .form-horizontal .control-list {
-    padding-top: 0; // has to be padding because margin collaspes
-  }
-  // Move over buttons in .form-actions to align with .controls
-  .form-horizontal .form-actions {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  // Modals
-  .modal {
-    position: absolute;
-    top:   10px;
-    left:  10px;
-    right: 10px;
-    width: auto;
-    margin: 0;
-    &.fade.in { top: auto; }
-  }
-  .modal-header .close {
-    padding: 10px;
-    margin: -10px;
-  }
-
-  // Carousel
-  .carousel-caption {
-    position: static;
-  }
-
-}
-
-
-
-// LANDSCAPE PHONE TO SMALL DESKTOP & PORTRAIT TABLET
+//
+// Responsive: Landscape phone to desktop/tablet
 // --------------------------------------------------
+
 
 @media (max-width: 767px) {
 
@@ -116,6 +51,10 @@
   .thumbnails {
     margin-left: 0;
   }
+  .thumbnails > li {
+    float: none;
+    margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
+  }
   // Make all grid-sized elements block level again
   [class*="span"],
   .row-fluid [class*="span"] {
@@ -123,6 +62,11 @@
     display: block;
     width: auto;
     margin-left: 0;
+  }
+  .span12,
+  .row-fluid .span12 {
+    width: 100%;
+    .box-sizing(border-box);
   }
 
   // FORM FIELDS
@@ -144,6 +88,80 @@
   .input-append input[class*="span"] {
     display: inline-block; // redeclare so they don't wrap to new lines
     width: auto;
+  }
+
+  // Modals
+  .modal {
+    position: fixed;
+    top:   20px;
+    left:  20px;
+    right: 20px;
+    width: auto;
+    margin: 0;
+    &.fade.in { top: auto; }
+  }
+
+}
+
+
+
+// UP TO LANDSCAPE PHONE
+// ---------------------
+
+@media (max-width: 480px) {
+
+  // Smooth out the collapsing/expanding nav
+  .nav-collapse {
+    -webkit-transform: translate3d(0, 0, 0); // activate the GPU
+  }
+
+  // Block level the page header small tag for readability
+  .page-header h1 small {
+    display: block;
+    line-height: @baseLineHeight;
+  }
+
+  // Update checkboxes for iOS
+  input[type="checkbox"],
+  input[type="radio"] {
+    border: 1px solid #ccc;
+  }
+
+  // Remove the horizontal form styles
+  .form-horizontal .control-group > label {
+    float: none;
+    width: auto;
+    padding-top: 0;
+    text-align: left;
+  }
+  // Move over all input controls and content
+  .form-horizontal .controls {
+    margin-left: 0;
+  }
+  // Move the options list down to align with labels
+  .form-horizontal .control-list {
+    padding-top: 0; // has to be padding because margin collaspes
+  }
+  // Move over buttons in .form-actions to align with .controls
+  .form-horizontal .form-actions {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  // Modals
+  .modal {
+    top:   10px;
+    left:  10px;
+    right: 10px;
+  }
+  .modal-header .close {
+    padding: 10px;
+    margin: -10px;
+  }
+
+  // Carousel
+  .carousel-caption {
+    position: static;
   }
 
 }

@@ -1,11 +1,13 @@
-// BUTTON GROUPS
-// -------------
+//
+// Button groups
+// --------------------------------------------------
 
 
 // Make the div behave like a button
 .btn-group {
   position: relative;
-  .clearfix(); // clears the floated buttons
+  font-size: 0; // remove as part 1 of font-size inline-block hack
+  white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
   .ie7-restore-left-whitespace();
 }
 
@@ -16,21 +18,44 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
+  font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: @baseLineHeight / 2;
   margin-bottom: @baseLineHeight / 2;
   .btn-group {
     display: inline-block;
     .ie7-inline-block();
   }
+  .btn + .btn,
+  .btn-group + .btn,
+  .btn + .btn-group {
+    margin-left: 5px;
+  }
 }
 
 // Float them, remove border radius, then re-add to first and last elements
 .btn-group > .btn {
   position: relative;
-  float: left;
-  margin-left: -1px;
   .border-radius(0);
 }
+.btn-group > .btn + .btn {
+  margin-left: -1px;
+}
+.btn-group > .btn,
+.btn-group > .dropdown-menu {
+  font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
+}
+
+// Reset fonts for other sizes
+.btn-group > .btn-mini {
+  font-size: 11px;
+}
+.btn-group > .btn-small {
+  font-size: 12px;
+}
+.btn-group > .btn-large {
+  font-size: 16px;
+}
+
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
@@ -91,24 +116,28 @@
 // ----------------------
 
 // Give the line between buttons some depth
-.btn-group > .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
   .box-shadow(~"inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
-  *padding-top: 4px;
-  *padding-bottom: 4px;
+  *padding-top: 5px;
+  *padding-bottom: 5px;
 }
-.btn-group > .btn-mini.dropdown-toggle {
+.btn-group > .btn-mini + .dropdown-toggle {
   padding-left: 5px;
   padding-right: 5px;
+  *padding-top: 2px;
+  *padding-bottom: 2px;
 }
-.btn-group > .btn-small.dropdown-toggle {
-  *padding-top: 4px;
+.btn-group > .btn-small + .dropdown-toggle {
+  *padding-top: 5px;
   *padding-bottom: 4px;
 }
-.btn-group > .btn-large.dropdown-toggle {
+.btn-group > .btn-large + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
+  *padding-top: 7px;
+  *padding-bottom: 7px;
 }
 
 .btn-group.open {
@@ -147,22 +176,16 @@
 
 // Reposition the caret
 .btn .caret {
-  margin-top: 7px;
+  margin-top: 8px;
   margin-left: 0;
 }
-.btn:hover .caret,
-.open.btn-group .caret {
-  .opacity(100);
-}
 // Carets in other button sizes
-.btn-mini .caret {
-  margin-top: 5px;
-}
-.btn-small .caret {
+.btn-mini .caret,
+.btn-small .caret,
+.btn-large .caret {
   margin-top: 6px;
 }
 .btn-large .caret {
-  margin-top: 6px;
   border-left-width:  5px;
   border-right-width: 5px;
   border-top-width:   5px;
@@ -185,7 +208,37 @@
   .caret {
     border-top-color: @white;
     border-bottom-color: @white;
-    .opacity(75);
   }
 }
 
+
+
+// Vertical button groups
+// ----------------------
+
+.btn-group-vertical {
+  display: inline-block; // makes buttons only take up the width they need
+  .ie7-inline-block();
+}
+.btn-group-vertical .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  .border-radius(0);
+}
+.btn-group-vertical .btn + .btn {
+  margin-left: 0;
+  margin-top: -1px;
+}
+.btn-group-vertical .btn:first-child {
+  .border-radius(4px 4px 0 0);
+}
+.btn-group-vertical .btn:last-child {
+  .border-radius(0 0 4px 4px);
+}
+.btn-group-vertical .btn-large:first-child {
+  .border-radius(6px 6px 0 0);
+}
+.btn-group-vertical .btn-large:last-child {
+  .border-radius(0 0 6px 6px);
+}

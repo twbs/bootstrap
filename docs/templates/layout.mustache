@@ -39,15 +39,14 @@
     {{/production}}
   </head>
 
-  <body data-spy="scroll" data-target=".subnav" data-offset="50">
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-
-  <!-- Navbar
+    <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <button type="button"class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -56,7 +55,10 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="{{index}}">
-                <a href="./index.html">{{_i}}Overview{{/i}}</a>
+                <a href="./index.html">{{_i}}Home{{/i}}</a>
+              </li>
+              <li class="{{getting-started}}">
+                <a href="./getting-started.html">{{_i}}Get started{{/i}}</a>
               </li>
               <li class="{{scaffolding}}">
                 <a href="./scaffolding.html">{{_i}}Scaffolding{{/i}}</a>
@@ -68,17 +70,10 @@
                 <a href="./components.html">{{_i}}Components{{/i}}</a>
               </li>
               <li class="{{javascript}}">
-                <a href="./javascript.html">{{_i}}Javascript plugins{{/i}}</a>
+                <a href="./javascript.html">{{_i}}Javascript{{/i}}</a>
               </li>
-              <li class="{{less}}">
-                <a href="./less.html">{{_i}}Using LESS{{/i}}</a>
-              </li>
-              <li class="divider-vertical"></li>
-              <li class="{{download}}">
-                <a href="./download.html">{{_i}}Customize{{/i}}</a>
-              </li>
-              <li class="{{examples}}">
-                <a href="./examples.html">{{_i}}Examples{{/i}}</a>
+              <li class="{{customize}}">
+                <a href="./customize.html">{{_i}}Customize{{/i}}</a>
               </li>
             </ul>
           </div>
@@ -86,21 +81,25 @@
       </div>
     </div>
 
-    <div class="container">
-
 {{>body}}
 
 
-     <!-- Footer
-      ================================================== -->
-      <footer class="footer">
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
         <p class="pull-right"><a href="#">{{_i}}Back to top{{/i}}</a></p>
         <p>{{_i}}Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.{{/i}}</p>
         <p>{{_i}}Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.{{/i}}</p>
         <p>{{_i}}Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.{{/i}}</p>
-      </footer>
-
-    </div><!-- /container -->
+        <ul class="footer-links">
+          <li><a href="http://blog.getbootstrap.com">{{_i}}Read the blog{{/i}}</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">{{_i}}Submit issues{{/i}}</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki">{{_i}}Roadmap and changelog{{/i}}</a></li>
+        </ul>
+      </div>
+    </footer>
 
 
 
@@ -122,7 +121,9 @@
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
     <script src="assets/js/application.js"></script>
+
 
     {{#production}}
     <!-- Analytics
