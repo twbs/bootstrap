@@ -236,10 +236,10 @@ body.padded {
   position: absolute;
   top: 0;
   left: 20px;
-  width: 220px;
+  width: 260px;
 }
 .container-fluid > .content {
-  margin-left: 240px;
+  margin-left: 280px;
 }
 a {
   color: #0069d6;
@@ -2094,18 +2094,18 @@ input[type=submit].btn::-moz-focus-inner {
   font-weight: bold;
   line-height: 13.5px;
   text-shadow: 0 1px 0 #ffffff;
-  filter: alpha(opacity=25);
-  -khtml-opacity: 0.25;
-  -moz-opacity: 0.25;
-  opacity: 0.25;
+  filter: alpha(opacity=75);
+  -khtml-opacity: 0.75;
+  -moz-opacity: 0.75;
+  opacity: 0.75;
 }
 .close:hover {
   color: #000000;
   text-decoration: none;
-  filter: alpha(opacity=40);
-  -khtml-opacity: 0.4;
-  -moz-opacity: 0.4;
-  opacity: 0.4;
+  filter: alpha(opacity=50);
+  -khtml-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 .alert-message {
   position: relative;
