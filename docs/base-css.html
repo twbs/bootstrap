@@ -27,11 +27,11 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
     <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -106,7 +106,15 @@
             <h1>Typography</h1>
           </div>
 
-          <h2>Headings</h2>
+          <ul>
+            <li><a href="./base-css.html#headings">Headings</a></li>
+            <li><a href="./base-css.html#body-copy">Body copy</a></li>
+            <li><a href="./base-css.html#emphasis">Emphasis</a></li>
+          </ul>
+
+          <hr>
+
+          <h2 id="headings">Headings</h2>
           <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
           <div class="bs-docs-example">
             <h1>h1. Heading 1</h1>
@@ -117,7 +125,7 @@
             <h6>h6. Heading 6</h6>
           </div>
 
-          <h2>Body copy</h2>
+          <h2 id="body-copy">Body copy</h2>
           <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (9px by default).</p>
           <div class="bs-docs-example">
             <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
@@ -133,14 +141,14 @@
           </div>
           <pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
 
-          <h2>Built with Less</h2>
+          <h3>Built with Less</h3>
           <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
 
 
           <hr class="bs-docs-separator">
 
 
-          <h2>Emphasis</h2>
+          <h2 id="emphasis">Emphasis</h2>
           <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
           <h3><code>&lt;small&gt;</code></h3>

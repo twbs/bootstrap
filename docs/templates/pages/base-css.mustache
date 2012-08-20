@@ -35,8 +35,16 @@
             <h1>{{_i}}Typography{{/i}}</h1>
           </div>
 
+          <ul>
+            <li><a href="./base-css.html#headings">Headings</a></li>
+            <li><a href="./base-css.html#body-copy">Body copy</a></li>
+            <li><a href="./base-css.html#emphasis">Emphasis</a></li>
+          </ul>
+
+          <hr>
+
           {{! Headings }}
-          <h2>{{_i}}Headings{{/i}}</h2>
+          <h2 id="headings">{{_i}}Headings{{/i}}</h2>
           <p>{{_i}}All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.{{/i}}</p>
           <div class="bs-docs-example">
             <h1>h1. {{_i}}Heading 1{{/i}}</h1>
@@ -48,7 +56,7 @@
           </div>
 
           {{! Body copy }}
-          <h2>{{_i}}Body copy{{/i}}</h2>
+          <h2 id="body-copy">{{_i}}Body copy{{/i}}</h2>
           <p>{{_i}}Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (9px by default).{{/i}}</p>
           <div class="bs-docs-example">
             <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
@@ -66,7 +74,7 @@
           <pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
 
           {{! Using LESS }}
-          <h2>{{_i}}Built with Less{{/i}}</h2>
+          <h3>{{_i}}Built with Less{{/i}}</h3>
           <p>{{_i}}The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.{{/i}}</p>
 
 
@@ -74,7 +82,7 @@
 
 
           {{! Emphasis }}
-          <h2>{{_i}}Emphasis{{/i}}</h2>
+          <h2 id="emphasis">{{_i}}Emphasis{{/i}}</h2>
           <p>{{_i}}Make use of HTML's default emphasis tags with lightweight styles.{{/i}}</p>
 
           <h3><code>&lt;small&gt;</code></h3>

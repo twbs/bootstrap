@@ -219,6 +219,7 @@ a:hover {
 }
 
 .container,
+.navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
   width: 940px;
@@ -4172,7 +4173,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-fixed-top .navbar-inner,
-.navbar-fixed-bottom .navbar-inner {
+.navbar-fixed-bottom .navbar-inner,
+.navbar-static-top .navbar-inner {
   border: 0;
 }
 
@@ -4185,6 +4187,7 @@ input[type="submit"].btn.btn-mini {
           border-radius: 0;
 }
 
+.navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
   width: 940px;
@@ -4194,7 +4197,8 @@ input[type="submit"].btn.btn-mini {
   top: 0;
 }
 
-.navbar-fixed-top .navbar-inner {
+.navbar-fixed-top .navbar-inner,
+.navbar-static-top .navbar-inner {
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1);
      -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1);
           box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1);

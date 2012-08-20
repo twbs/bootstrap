@@ -165,6 +165,10 @@
   left: 0;
   z-index: @zindexFixedNavbar;
   margin-bottom: 0; // remove 18px margin for default navbar
+}
+.navbar-fixed-top,
+.navbar-fixed-bottom,
+.navbar-static-top {
   .navbar-inner {
     border: 0;
   }
@@ -177,6 +181,8 @@
 }
 
 // Reset container width
+// Required here as we reset the width earlier on and the grid mixins don't override early enough
+.navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
   #grid > .core > .span(@gridColumns);
@@ -185,6 +191,9 @@
 // Fixed to top
 .navbar-fixed-top {
   top: 0;
+}
+.navbar-fixed-top,
+.navbar-static-top {
   .navbar-inner {
     .box-shadow(~"inset 0 -1px 0 rgba(0,0,0,.1), 0 1px 10px rgba(0,0,0,.1)");
   }

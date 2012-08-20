@@ -12,7 +12,6 @@
 
 body {
   position: relative;
-  padding-top: 40px;
 }
 
 /* Code in headings */
@@ -26,12 +25,12 @@ h3 code {
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 
-body > .navbar-fixed-top {
+body > .navbar-static-top {
   font-size: 13px;
 }
 
 /* Change the docs' brand */
-body > .navbar-fixed-top .brand {
+body > .navbar-static-top .brand {
   padding-right: 0;
   padding-left: 0;
   margin-left: 20px;
@@ -43,7 +42,7 @@ body > .navbar-fixed-top .brand {
      -moz-transition: all .2s linear;
           transition: all .2s linear;
 }
-body > .navbar-fixed-top .brand:hover {
+body > .navbar-static-top .brand:hover {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
@@ -54,7 +53,7 @@ body > .navbar-fixed-top .brand:hover {
 
 /* padding for in-page bookmarks and fixed navbar */
 section {
-  padding-top: 60px;
+  padding-top: 30px;
 }
 section > .page-header,
 section > .lead {
@@ -759,10 +758,9 @@ form.bs-docs-example {
 }
 
 .bs-docs-sidenav {
-  width: 218px;
+  width: 228px;
   margin-top: 30px;
   padding: 0;
-  margin-right: 10px;
   background-color: #fff;
   margin-left: 0;
   -webkit-border-radius: 6px;
@@ -790,9 +788,13 @@ form.bs-docs-example {
           border-radius: 0 0 6px 6px;
 }
 .bs-docs-sidenav > .active > a {
-  border-color: #08c;
   position: relative;
   z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
 /* Chevrons */
 .bs-docs-sidenav .icon-chevron-right {
@@ -807,12 +809,13 @@ form.bs-docs-example {
 .bs-docs-sidenav a:hover .icon-chevron-right {
   opacity: .5;
 }
-.bs-docs-sidenav .active .icon-chevron-right {
+.bs-docs-sidenav .active .icon-chevron-right,
+.bs-docs-sidenav .active a:hover .icon-chevron-right {
   background-image: url(../img/glyphicons-halflings-white.png);
   opacity: .75;
 }
 .bs-docs-sidenav.affix {
-  top: 40px;
+  top: 0;
 }
 .bs-docs-sidenav.affix-bottom {
   position: absolute;
@@ -869,17 +872,10 @@ form.bs-docs-example {
   body {
     padding-top: 0;
   }
-  /* Widen masthead and social buttons to fill body padding */
-  .jumbotron {
-    margin-top: -20px; /* Offset bottom margin on .navbar */
-  }
   /* Adjust sidenav width */
   .bs-docs-sidenav {
     width: 166px;
     margin-top: 20px;
-  }
-  .bs-docs-sidenav.affix {
-    top: 0;
   }
 }
 
@@ -935,9 +931,6 @@ form.bs-docs-example {
   }
   .footer p {
     margin-bottom: 9px;
-  }
-  .bs-docs-sidenav.affix {
-    top: 0;
   }
 }
 
