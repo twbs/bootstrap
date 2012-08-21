@@ -4032,7 +4032,7 @@ input[type="submit"].btn.btn-mini {
   *z-index: 2;
   margin-bottom: 20px;
   overflow: visible;
-  color: #555555;
+  color: #777777;
 }
 
 .navbar-inner {
@@ -4071,7 +4071,7 @@ input[type="submit"].btn.btn-mini {
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
-  color: #555555;
+  color: #777777;
   text-shadow: 0 1px 0 #ffffff;
 }
 
@@ -4085,7 +4085,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-link {
-  color: #555555;
+  color: #777777;
 }
 
 .navbar-link:hover {
@@ -4256,7 +4256,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > li > a {
   float: none;
   padding: 10px 15px 10px;
-  color: #555555;
+  color: #777777;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;
 }
@@ -4386,8 +4386,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
-  border-top-color: #555555;
-  border-bottom-color: #555555;
+  border-top-color: #777777;
+  border-bottom-color: #777777;
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
