@@ -1,17 +1,13 @@
-// Typography.less
-// Headings, body text, lists, code, and more for a versatile and durable typography system
-// ----------------------------------------------------------------------------------------
+//
+// Typography
+// --------------------------------------------------
 
 
-// BODY TEXT
-// ---------
+// Body text
+// -------------------------
 
 p {
   margin: 0 0 @baseLineHeight / 2;
-  small {
-    font-size: @baseFontSize - 2;
-    color: @grayLight;
-  }
 }
 .lead {
   margin-bottom: @baseLineHeight;
@@ -20,73 +16,69 @@ p {
   line-height: @baseLineHeight * 1.5;
 }
 
-// HEADINGS
-// --------
+
+// Emphasis & misc
+// -------------------------
+
+small {
+  font-size: 85%; // Ex: 14px base font * 85% = about 12px
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+cite {
+  font-style: normal;
+}
+.muted {
+  color: @grayLight;
+}
+
+
+// Headings
+// -------------------------
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+  margin: (@baseLineHeight / 2) 0;
   font-family: @headingsFontFamily;
   font-weight: @headingsFontWeight;
+  line-height: 1;
   color: @headingsColor;
   text-rendering: optimizelegibility; // Fix the character spacing for headings
   small {
     font-weight: normal;
+    line-height: 1;
     color: @grayLight;
   }
 }
-h1 {
-  font-size: 30px;
-  line-height: @baseLineHeight * 2;
-  small {
-    font-size: 18px;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: @baseLineHeight * 2;
-  small {
-    font-size: 18px;
-  }
-}
-h3 {
-  font-size: 18px;
-  line-height: @baseLineHeight * 1.5;
-  small {
-    font-size: 14px;
-  }
-}
-h4, h5, h6 {
-  line-height: @baseLineHeight;
-}
-h4 {
-  font-size: 14px;
-  small {
-    font-size: 12px;
-  }
-}
-h5 {
-  font-size: 12px;
-}
-h6 {
-  font-size: 11px;
-  color: @grayLight;
-  text-transform: uppercase;
-}
+h1 { font-size: 36px; line-height: 40px; }
+h2 { font-size: 30px; line-height: 40px; }
+h3 { font-size: 24px; line-height: 40px; }
+h4 { font-size: 18px; line-height: 20px; }
+h5 { font-size: 14px; line-height: 20px; }
+h6 { font-size: 12px; line-height: 20px; }
+
+h1 small { font-size: 24px; }
+h2 small { font-size: 18px; }
+h3 small { font-size: 14px; }
+h4 small { font-size: 14px; }
+
 
 // Page header
+// -------------------------
+
 .page-header {
-  padding-bottom: @baseLineHeight - 1;
-  margin: @baseLineHeight 0;
+  padding-bottom: (@baseLineHeight / 2) - 1;
+  margin: @baseLineHeight 0 (@baseLineHeight * 1.5);
   border-bottom: 1px solid @grayLighter;
 }
-.page-header h1 {
-  line-height: 1;
-}
 
 
 
-// LISTS
-// -----
+// Lists
+// --------------------------------------------------
 
 // Unordered and Ordered lists
 ul, ol {
@@ -98,12 +90,6 @@ ul ol,
 ol ol,
 ol ul {
   margin-bottom: 0;
-}
-ul {
-  list-style: disc;
-}
-ol {
-  list-style: decimal;
 }
 li {
   line-height: @baseLineHeight;
@@ -124,7 +110,6 @@ dd {
 }
 dt {
   font-weight: bold;
-  line-height: @baseLineHeight - 1; // fix jank Helvetica Neue font bug
 }
 dd {
   margin-left: @baseLineHeight / 2;
@@ -152,17 +137,6 @@ hr {
   border: 0;
   border-top: 1px solid @hrBorder;
   border-bottom: 1px solid @white;
-}
-
-// Emphasis
-strong {
-  font-weight: bold;
-}
-em {
-  font-style: italic;
-}
-.muted {
-  color: @grayLight;
 }
 
 // Abbreviations and acronyms
@@ -204,6 +178,14 @@ blockquote {
     small {
       text-align: right;
     }
+    small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014';
+      }
+    }
   }
 }
 
@@ -221,12 +203,4 @@ address {
   margin-bottom: @baseLineHeight;
   font-style: normal;
   line-height: @baseLineHeight;
-}
-
-// Misc
-small {
-  font-size: 100%;
-}
-cite {
-  font-style: normal;
 }

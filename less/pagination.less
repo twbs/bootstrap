@@ -1,5 +1,7 @@
-// PAGINATION
-// ----------
+//
+// Pagination (multiple pages)
+// --------------------------------------------------
+
 
 .pagination {
   height: @baseLineHeight * 2;
@@ -16,19 +18,23 @@
 .pagination li {
     display: inline;
   }
-.pagination a {
+.pagination a,
+.pagination span {
   float: left;
   padding: 0 14px;
   line-height: (@baseLineHeight * 2) - 2;
   text-decoration: none;
-  border: 1px solid #ddd;
+  background-color: @paginationBackground;
+  border: 1px solid @paginationBorder;
   border-left-width: 0;
 }
 .pagination a:hover,
-.pagination .active a {
+.pagination .active a,
+.pagination .active span {
   background-color: #f5f5f5;
 }
-.pagination .active a {
+.pagination .active a,
+.pagination .active span {
   color: @grayLight;
   cursor: default;
 }
@@ -39,11 +45,13 @@
   background-color: transparent;
   cursor: default;
 }
-.pagination li:first-child a {
+.pagination li:first-child a,
+.pagination li:first-child span {
   border-left-width: 1px;
   .border-radius(3px 0 0 3px);
 }
-.pagination li:last-child a {
+.pagination li:last-child a,
+.pagination li:last-child span {
   .border-radius(0 3px 3px 0);
 }
 
