@@ -2759,7 +2759,7 @@ table .span24 {
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
   border-bottom: 4px solid #000000;
-  content: "\2191";
+  content: "";
 }
 
 .dropup .dropdown-menu,
