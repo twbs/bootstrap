@@ -127,7 +127,7 @@
           <h3>Data attributes</h3>
           <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
 
-          <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
+          <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with <code>'data-api'</code>. This looks like this:
           <pre class="prettyprint linenums">$('body').off('.data-api')</pre>
 
           <p>Alternatively, to target a specific plugin, just include the plugins name as a namespace along with the data-api namespace like this:</p>
@@ -142,11 +142,11 @@ $("#myModal").modal()                       // initialized with defaults
 $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
 $("#myModal").modal('show')                // initializes and invokes show immediately</p>
 </pre>
-          <p>Each plugin also exposes it's raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
+          <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
           <h3>Events</h3>
-          <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and it's past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-          <p>All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.</p>
+          <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form&mdash;where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+          <p>All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
@@ -326,7 +326,7 @@ $('#myModal').on('show', function (e) {
                <td>remote</td>
                <td>path</td>
                <td>false</td>
-               <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
+               <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data API, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
               <pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre></td>
              </tr>
             </tbody>
@@ -365,7 +365,7 @@ $('#myModal').modal({
              </tr>
              <tr>
                <td>shown</td>
-               <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</td>
+               <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete).</td>
              </tr>
              <tr>
                <td>hide</td>
@@ -373,7 +373,7 @@ $('#myModal').modal({
              </tr>
              <tr>
                <td>hidden</td>
-               <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
+               <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
              </tr>
             </tbody>
           </table>
@@ -517,7 +517,7 @@ $('#myModal').on('hidden', function () {
 
           <h3>Methods</h3>
           <h4>$().dropdown()</h4>
-          <p>A programatic api for activating menus for a given navbar or tabbed navigation.</p>
+          <p>A programmatic API for activating menus for a given navbar or tabbed navigation.</p>
         </section>
 
 
@@ -531,7 +531,7 @@ $('#myModal').on('hidden', function () {
 
 
           <h2>Example in navbar</h2>
-          <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
+          <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub-items will be highlighted as well.</p>
           <div class="bs-docs-example">
             <div id="navbarExample" class="navbar navbar-static">
               <div class="navbar-inner">
@@ -585,7 +585,7 @@ $('#myModal').on('hidden', function () {
 
           <div class="alert alert-info">
             <strong>Heads up!</strong>
-            Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the dom like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
+            Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.
           </div>
 
           <h3>Methods</h3>
@@ -809,13 +809,13 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                <td>animation</td>
                <td>boolean</td>
                <td>true</td>
-               <td>apply a css fade transition to the tooltip</td>
+               <td>apply a CSS fade transition to the tooltip</td>
              </tr>
              <tr>
                <td>html</td>
                <td>boolean</td>
                <td>true</td>
-               <td>Insert html into the tooltip. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
+               <td>Insert HTML into the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
              </tr>
              <tr>
                <td>placement</td>
@@ -959,13 +959,13 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <td>animation</td>
              <td>boolean</td>
              <td>true</td>
-             <td>apply a css fade transition to the tooltip</td>
+             <td>apply a CSS fade transition to the tooltip</td>
            </tr>
            <tr>
              <td>html</td>
              <td>boolean</td>
              <td>true</td>
-             <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
+             <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
            </tr>
            <tr>
              <td>placement</td>
@@ -1045,7 +1045,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
         <h2>Example alerts</h2>
-        <p>Add dismiss functionality to all alerge messages with this plugin.</p>
+        <p>Add dismiss functionality to all alert messages with this plugin.</p>
         <div class="bs-docs-example">
           <div class="alert fade in">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -1100,7 +1100,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            </tr>
            <tr>
              <td>closed</td>
-             <td>This event is fired when the alert has been closed (will wait for css transitions to complete).</td>
+             <td>This event is fired when the alert has been closed (will wait for CSS transitions to complete).</td>
            </tr>
           </tbody>
         </table>
@@ -1124,23 +1124,23 @@ $('#my-alert').bind('closed', function () {
             <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
 
             <h4>Stateful</h4>
-            <p>Add data-loading-text="Loading..." to use a loading state on a button.</p>
+            <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
-              <button type="button" id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
+              <button type="button" id="fat-btn" data-loading-text="Loading..." class="btn btn-primary">
                 Loading state
               </button>
             </div>
             <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;</pre>
 
             <h4>Single toggle</h4>
-            <p>Add data-toggle="button" to activate toggling on a single button.</p>
+            <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button>
             </div>
             <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
 
             <h4>Checkbox</h4>
-            <p>Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.</p>
+            <p>Add <code>data-toggle="buttons-checkbox"</code> for checkbox-style toggling on <code>btn-group<code>.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-checkbox">
                 <button type="button" class="btn btn-primary">Left</button>
@@ -1157,7 +1157,7 @@ $('#my-alert').bind('closed', function () {
 </pre>
 
             <h4>Radio</h4>
-            <p>Add data-toggle="buttons-radio" for radio style toggling on btn-group.</p>
+            <p>Add <code>data-toggle="buttons-radio"</code> for radio-style toggling on <code>btn-group</code>.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-radio">
                 <button type="button" class="btn btn-primary">Left</button>
@@ -1196,7 +1196,7 @@ $('#my-alert').bind('closed', function () {
             </div>
             <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button" &gt;…&lt;/button&gt;</pre>
             <h4>$().button('loading')</h4>
-            <p>Sets button state to loading - disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
+            <p>Sets button state to loading&mdash;disables button and swaps text to loading text. Loading text should be defined on the button element using the data attribute <code>data-loading-text</code>.
             </p>
             <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-loading-text="loading stuff..." &gt;...&lt;/button&gt;</pre>
             <div class="alert alert-info">
@@ -1204,9 +1204,9 @@ $('#my-alert').bind('closed', function () {
               <a href="https://github.com/twitter/bootstrap/issues/793">Firefox persists the disabled state across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>.
             </div>
             <h4>$().button('reset')</h4>
-            <p>Resets button state - swaps text to original text.</p>
+            <p>Resets button state&mdash;swaps text to original text.</p>
             <h4>$().button(string)</h4>
-            <p>Resets button state - swaps text to any data defined text state.</p>
+            <p>Resets button state&mdash;swaps text to any data defined text state.</p>
 <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-complete-text="finished!" &gt;...&lt;/button&gt;
 &lt;script&gt;
   $('.btn').button('complete')
@@ -1285,7 +1285,7 @@ $('#my-alert').bind('closed', function () {
             <h2>Usage</h2>
 
             <h3>Via data attributes</h3>
-            <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+            <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
             <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
             <h3>Via JavaScript</h3>
@@ -1308,7 +1308,7 @@ $('#my-alert').bind('closed', function () {
                  <td>parent</td>
                  <td>selector</td>
                  <td>false</td>
-                 <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior)</td>
+                 <td>If selector then all collapsible elements under the specified parent will be closed when this collapsible item is shown (similar to traditional accordion behavior).</td>
                </tr>
                <tr>
                  <td>toggle</td>
@@ -1351,7 +1351,7 @@ $('#myCollapsible').collapse({
                </tr>
                <tr>
                  <td>shown</td>
-                 <td>This event is fired when a collapse element has been made visible to the user (will wait for css transitions to complete).</td>
+                 <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
                </tr>
                <tr>
                  <td>hide</td>
@@ -1361,7 +1361,7 @@ $('#myCollapsible').collapse({
                </tr>
                <tr>
                  <td>hidden</td>
-                 <td>This event is fired when a collapse element has been hidden from the user (will wait for css transitions to complete).</td>
+                 <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
                </tr>
               </tbody>
             </table>
@@ -1587,7 +1587,7 @@ $('.carousel').carousel({
                  <td>highlighter</td>
                  <td>function</td>
                  <td>highlights all default matches</td>
-                 <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
+                 <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return HTML.</td>
                </tr>
               </tbody>
             </table>
