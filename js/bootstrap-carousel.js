@@ -34,9 +34,9 @@
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
 
-    if ( !!this.options.pills ) {
-      this.$pills = $('<span class="carousel-pills" />').appendTo(this.$element);
-      this.pills();
+    if (this.options.pills) {
+      this.$pills = $('<span class="carousel-pills" />').appendTo(this.$element)
+      this.pills()
     }
   }
 
@@ -45,17 +45,15 @@
     pills: function () {
       var self = this
         , pills = ""
-        , numImages = this.$element.find(".item").length;
+        , numImages = this.$element.find('.item').length;
 
-      for ( var i = 0; i < numImages; i += 1) {
-        pills += "<span></span>";
-      }
+      for (var i = 0; i < numImages; i++) pills += '<span/>'
 
-      this.$pills.html(pills).find(":first-child").addClass("active-pill");
+      this.$pills.html(pills).find(':first-child').addClass('active-pill')
 
       this.$pills.on('click', 'span', function () {
-        var image = $(this).index();
-        self.to(image);
+        var image = $(this).index()
+        self.to(image)
       });
     }
 
@@ -150,10 +148,9 @@
         this.$element.trigger('slid')
       }
 
-      if ( !!this.options.pills ) {
-        this.$pills.children().eq($next.index()).addClass("active-pill")
-          .siblings().removeClass("active-pill");
-      }
+      if (this.options.pills)
+        this.$pills.children().eq($next.index()).addClass('active-pill')
+          .siblings().removeClass('active-pill')
 
       isCycling && this.cycle()
 
