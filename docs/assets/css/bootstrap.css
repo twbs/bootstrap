@@ -2034,6 +2034,10 @@ table .span24 {
   background-color: #f2dede;
 }
 
+.table tbody tr.warning td {
+  background-color: #fcf8e3;
+}
+
 .table tbody tr.info td {
   background-color: #d9edf7;
 }
