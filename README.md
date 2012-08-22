@@ -92,7 +92,7 @@ $ npm install recess connect uglify-js jshint -g
 Runs the recess compiler to rebuild the `/less` files and compiles the docs pages. Requires recess and uglify-js. <a href="http://twitter.github.com/bootstrap/less.html#compiling">Read more in our docs &raquo;</a>
 
 + **test** - `make test`
-Runs jshint and qunit tests headlessly in [phatomjs] (http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
+Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
 
 + **watch** - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
