@@ -253,6 +253,18 @@
           box-shadow: @shadow;
 }
 
+.box-shadow(@shadow1, @shadow2) {
+  -webkit-box-shadow: @shadow1, @shadow2;
+     -moz-box-shadow: @shadow1, @shadow2;
+          box-shadow: @shadow1, @shadow2;
+}
+
+.box-shadow(@shadow1, @shadow2, @shadow3) {
+  -webkit-box-shadow: @shadow1, @shadow2, @shadow3;
+     -moz-box-shadow: @shadow1, @shadow2, @shadow3;
+          box-shadow: @shadow1, @shadow2, @shadow3;
+}
+
 // Transitions
 .transition(@transition) {
   -webkit-transition: @transition;
