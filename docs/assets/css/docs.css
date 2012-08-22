@@ -673,6 +673,7 @@ form.bs-docs-example {
 .bs-docs-example-popover {
   padding-bottom: 24px;
   background-color: #f9f9f9;
+  overflow: hidden;
 }
 .bs-docs-example-popover .popover {
   position: relative;
