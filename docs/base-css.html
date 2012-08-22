@@ -1367,7 +1367,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
           <h3>Validation states</h3>
-          <p>Bootstrap includes validation styles for error, warning, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
+          <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
 
           <form class="bs-docs-example form-horizontal">
             <div class="control-group warning">
@@ -1382,6 +1382,13 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
               <div class="controls">
                 <input type="text" id="inputError">
                 <span class="help-inline">Please correct the error</span>
+              </div>
+            </div>
+            <div class="control-group info">
+              <label class="control-label" for="inputError">Input with info</label>
+              <div class="controls">
+                <input type="text" id="inputError">
+                <span class="help-inline">Username is taken</span>
               </div>
             </div>
             <div class="control-group success">

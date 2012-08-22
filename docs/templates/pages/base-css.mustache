@@ -1304,7 +1304,7 @@
 </pre>
 
           <h3>{{_i}}Validation states{{/i}}</h3>
-          <p>{{_i}}Bootstrap includes validation styles for error, warning, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
+          <p>{{_i}}Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
 
           <form class="bs-docs-example form-horizontal">
             <div class="control-group warning">
@@ -1319,6 +1319,13 @@
               <div class="controls">
                 <input type="text" id="inputError">
                 <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
+              </div>
+            </div>
+            <div class="control-group info">
+              <label class="control-label" for="inputError">{{_i}}Input with info{{/i}}</label>
+              <div class="controls">
+                <input type="text" id="inputError">
+                <span class="help-inline">{{_i}}Username is taken{{/i}}</span>
               </div>
             </div>
             <div class="control-group success">
