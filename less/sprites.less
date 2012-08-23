@@ -14,18 +14,32 @@
 // For the white version of the icons, just add the .icon-white class:
 // <i class="icon-inbox icon-white"></i>
 
+// For custom icons, use the custom-icon- prefix:
+// <i class="custom-icon-object"></i>
+// and define the icon image and positioning in your stylesheet.
+// .custom-icon-object {
+//   background-image: ...;
+//   background-position: ...;
+// }
+
 [class^="icon-"],
-[class*=" icon-"] {
+[class*=" icon-"],
+[class^="custom-icon-"],
+[class*=" custom-icon-"]{
   display: inline-block;
   width: 14px;
   height: 14px;
   .ie7-restore-right-whitespace();
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("@{iconSpritePath}");
   background-position: 14px 14px;
   background-repeat: no-repeat;
   margin-top: 1px;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  background-image: url("@{iconSpritePath}");
 }
 
 /* White icons with optional class, or on hover/active states of certain elements */
