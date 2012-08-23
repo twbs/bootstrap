@@ -625,6 +625,12 @@
               </tr>
               <tr>
                 <td>
+                  <code>.warning</code>
+                </td>
+                <td>{{_i}}Indicates a warning that might need attention.{{/i}}</td>
+              </tr>
+              <tr>
+                <td>
                   <code>.info</code>
                 </td>
                 <td>{{_i}}Used as an alternative to the default styles.{{/i}}</td>
@@ -654,11 +660,17 @@
                   <td>02/04/2012</td>
                   <td>Declined</td>
                 </tr>
-                <tr class="info">
+                <tr class="warning">
                   <td>3</td>
                   <td>TB - Monthly</td>
                   <td>03/04/2012</td>
                   <td>Pending</td>
+                </tr>
+                <tr class="info">
+                  <td>4</td>
+                  <td>TB - Monthly</td>
+                  <td>04/04/2012</td>
+                  <td>Call in to confirm</td>
                 </tr>
               </tbody>
             </table>
@@ -1292,7 +1304,7 @@
 </pre>
 
           <h3>{{_i}}Validation states{{/i}}</h3>
-          <p>{{_i}}Bootstrap includes validation styles for error, warning, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
+          <p>{{_i}}Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
 
           <form class="bs-docs-example form-horizontal">
             <div class="control-group warning">
@@ -1307,6 +1319,13 @@
               <div class="controls">
                 <input type="text" id="inputError">
                 <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
+              </div>
+            </div>
+            <div class="control-group info">
+              <label class="control-label" for="inputError">{{_i}}Input with info{{/i}}</label>
+              <div class="controls">
+                <input type="text" id="inputError">
+                <span class="help-inline">{{_i}}Username is taken{{/i}}</span>
               </div>
             </div>
             <div class="control-group success">
