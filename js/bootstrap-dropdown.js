@@ -56,7 +56,7 @@
         $this.focus()
       }
 
-      return false
+      e.preventDefault()
     }
 
   , keydown: function (e) {
