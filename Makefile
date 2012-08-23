@@ -6,37 +6,43 @@ DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔\033[39m
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
+ifeq ($(UNAME), Darwin)
+ECHO=echo
+else
+ECHO=echo -e
+endif
+
 
 #
 # BUILD DOCS
 #
 
 build:
-	@echo "\n${HR}"
-	@echo "Building Bootstrap..."
-	@echo "${HR}\n"
+	@$(ECHO) "\n${HR}"
+	@$(ECHO) "Building Bootstrap..."
+	@$(ECHO) "${HR}\n"
 	@jshint js/*.js --config js/.jshintrc
 	@jshint js/tests/unit/*.js --config js/.jshintrc
-	@echo "Running JSHint on javascript...             ${CHECK} Done"
+	@$(ECHO) "Running JSHint on javascript...             ${CHECK} Done"
 	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
-	@echo "Compiling LESS with Recess...               ${CHECK} Done"
+	@$(ECHO) "Compiling LESS with Recess...               ${CHECK} Done"
 	@node docs/build
 	@cp img/* docs/assets/img/
 	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
-	@echo "Compiling documentation...                  ${CHECK} Done"
+	@$(ECHO) "Compiling documentation...                  ${CHECK} Done"
 	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
 	@uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
-	@echo "/**\n* Bootstrap.js v2.1.1 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
+	@$(ECHO) "/**\n* Bootstrap.js v2.1.1 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
-	@echo "Compiling and minifying javascript...       ${CHECK} Done"
-	@echo "\n${HR}"
-	@echo "Bootstrap successfully built at ${DATE}."
-	@echo "${HR}\n"
-	@echo "Thanks for using Bootstrap,"
-	@echo "<3 @mdo and @fat\n"
+	@$(ECHO) "Compiling and minifying javascript...       ${CHECK} Done"
+	@$(ECHO) "\n${HR}"
+	@$(ECHO) "Bootstrap successfully built at ${DATE}."
+	@$(ECHO) "${HR}\n"
+	@$(ECHO) "Thanks for using Bootstrap,"
+	@$(ECHO) "<3 @mdo and @fat\n"
 
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
@@ -73,7 +79,7 @@ bootstrap:
 	recess --compress ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.min.css
 	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > bootstrap/js/bootstrap.js
 	uglifyjs -nc bootstrap/js/bootstrap.js > bootstrap/js/bootstrap.min.tmp.js
-	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
+	$(ECHO) "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
 	cat bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js > bootstrap/js/bootstrap.min.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
 
@@ -94,7 +100,7 @@ gh-pages: bootstrap docs
 #
 
 watch:
-	echo "Watching less files..."; \
+	$(ECHO) "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 #
