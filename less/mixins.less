@@ -247,22 +247,13 @@
 }
 
 // Drop shadows
-.box-shadow(@shadow) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
-}
-
-.box-shadow(@shadow1, @shadow2) {
-  -webkit-box-shadow: @shadow1, @shadow2;
-     -moz-box-shadow: @shadow1, @shadow2;
-          box-shadow: @shadow1, @shadow2;
-}
-
-.box-shadow(@shadow1, @shadow2, @shadow3) {
-  -webkit-box-shadow: @shadow1, @shadow2, @shadow3;
-     -moz-box-shadow: @shadow1, @shadow2, @shadow3;
-          box-shadow: @shadow1, @shadow2, @shadow3;
+// Multiple shadow solution from www.toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
+.box-shadow(@shadowA, @shadowB:X, ...){
+    @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+    -webkit-box-shadow: @props;
+       -moz-box-shadow: @props;
+         -o-box-shadow: @props;
+            box-shadow: @props;
 }
 
 // Transitions
