@@ -1512,7 +1512,6 @@ select:focus:required:invalid:focus {
 .input-prepend .add-on,
 .input-append .btn,
 .input-prepend .btn {
-  margin-left: -1px;
   vertical-align: top;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
@@ -1543,6 +1542,11 @@ select:focus:required:invalid:focus {
   -webkit-border-radius: 3px 0 0 3px;
      -moz-border-radius: 3px 0 0 3px;
           border-radius: 3px 0 0 3px;
+}
+
+.input-append .add-on,
+.input-append .btn {
+  margin-left: -1px;
 }
 
 .input-append .add-on:last-child,

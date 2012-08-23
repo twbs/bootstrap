@@ -441,7 +441,6 @@ select:focus:required:invalid {
   }
   .add-on,
   .btn {
-    margin-left: -1px;
     vertical-align: top;
     .border-radius(0);
   }
@@ -465,6 +464,10 @@ select:focus:required:invalid {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .add-on,
+  .btn {
+    margin-left: -1px;
   }
   .add-on:last-child,
   .btn:last-child {
