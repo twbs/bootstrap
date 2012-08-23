@@ -113,7 +113,7 @@ $(function () {
         }, 50)
       })
 
-      test("should show tooltip if leave event hasn't occured before delay expires", function () {
+      test("should show tooltip if leave event hasn't occurred before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
           .tooltip({ delay: 150 })
