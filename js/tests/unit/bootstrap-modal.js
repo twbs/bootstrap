@@ -111,4 +111,16 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should not open modal if link or button is disabled", function () {
+        var div = $("<div class='modal hide' id='modal-test'>Modal</div>")
+          .appendTo($("#qunit-fixture"))
+        var link = $('<a href="#modal-test" class="disabled" data-toggle="modal">Go</a>')
+          .appendTo($("#qunit-fixture"))
+
+        link.click()
+
+        ok(!$('#modal-test').hasClass("in"), 'modal not opened')
+      })
+
 })
