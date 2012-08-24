@@ -59,6 +59,16 @@ $(function () {
         ok(!$(".tooltip").length, 'tooltip removed')
       })
 
+      test("should respect fixed tooltip position", function () {
+        var tooltip = $('<a href="#" rel="tooltip" data-tooltip-position="fixed" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip('show')
+
+        ok($('.tooltip').hasClass('tooltip-fixed'), 'tooltip-fixed class is present')
+        tooltip.tooltip('hide')
+        ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
       test("should not show tooltip if leave event occurs before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
