@@ -58,4 +58,26 @@ $(function () {
           .tab('show')
       })
 
+      test("should set relatedTarget for any target element", function () {
+
+        stop();
+
+        var pillsHTML =
+            '<ul class="pills">'
+          + '<li class="active"><span href="#home">Home</span></li>'
+          + '<li><span href="#profile">Profile</span></li>'
+          + '</ul>'
+
+        var pills = $(pillsHTML).appendTo($('#qunit-fixture'))
+        var tabContent = $('<ul><li class="in active" id="home"></li><li id="profile"></li></ul>').appendTo($('#qunit-fixture'))
+
+        pills.find('li:last span')
+          .on('show', function (e) {
+            equals(e.target, pills.find('li:last span')[0])
+            equals(e.relatedTarget, pills.find('li:first span')[0])
+            start()
+          })
+          .tab('show')
+
+      })
 })
