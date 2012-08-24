@@ -4197,6 +4197,8 @@ input[type="submit"].btn.btn-mini {
   white-space: nowrap;
 }
 
+.navbar-form .input-append .btn,
+.navbar-form .input-prepend .btn,
 .navbar-form .input-append input,
 .navbar-form .input-prepend input {
   margin-top: 0;
