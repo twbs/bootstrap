@@ -129,3 +129,35 @@
 .carousel-caption p {
   margin-bottom: 0;
 }
+
+// Pills for indicating active image
+// ---------------------------------
+
+.carousel-pills {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+}
+
+.carousel-pills span {
+  display: inline-block;
+  margin: 0px 5px;
+  width: 10px;
+  height: 10px;
+  .border-radius(15px);
+  background: @grayDark;
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+  cursor: pointer;
+
+  &.active-pill {
+    #gradient > .vertical(@white, @grayLighter);
+  }
+
+  &:hover {
+    background: @grayLighter;
+  }
+}

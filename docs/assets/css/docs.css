@@ -886,6 +886,9 @@ form.bs-docs-example {
     width: 166px;
     margin-top: 20px;
   }
+  .bs-docs-sidenav.affix {
+    top: 0;
+  }
 }
 
 /* Tablet

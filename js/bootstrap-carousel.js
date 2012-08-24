@@ -33,11 +33,31 @@
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
+
+    if (this.options.pills) {
+      this.$pills = $('<span class="carousel-pills" />').appendTo(this.$element)
+      this.pills()
+    }
   }
 
   Carousel.prototype = {
 
-    cycle: function (e) {
+    pills: function () {
+      var self = this
+        , pills = ""
+        , numImages = this.$element.find('.item').length;
+
+      for (var i = 0; i < numImages; i++) pills += '<span/>'
+
+      this.$pills.html(pills).find(':first-child').addClass('active-pill')
+
+      this.$pills.on('click', 'span', function () {
+        var image = $(this).index()
+        self.to(image)
+      });
+    }
+
+  , cycle: function (e) {
       if (!e) this.paused = false
       this.options.interval
         && !this.paused
@@ -128,6 +148,10 @@
         this.$element.trigger('slid')
       }
 
+      if (this.options.pills)
+        this.$pills.children().eq($next.index()).addClass('active-pill')
+          .siblings().removeClass('active-pill')
+
       isCycling && this.cycle()
 
       return this
@@ -155,6 +179,7 @@
   $.fn.carousel.defaults = {
     interval: 5000
   , pause: 'hover'
+  , pills: true
   }
 
   $.fn.carousel.Constructor = Carousel
