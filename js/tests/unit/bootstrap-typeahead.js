@@ -47,7 +47,7 @@ $(function () {
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
-        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+        equals(typeahead.$menu.find('.active').length, 0, 'no item is active')
 
         typeahead.$menu.remove()
       })
@@ -65,7 +65,7 @@ $(function () {
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
-        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+        equals(typeahead.$menu.find('.active').length, 0, 'no item is active')
 
         typeahead.$menu.remove()
       })
@@ -83,7 +83,7 @@ $(function () {
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
-        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+        equals(typeahead.$menu.find('.active').length, 0, 'no item is active')
 
         typeahead.$menu.remove()
       })
@@ -99,7 +99,7 @@ $(function () {
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 1, 'has 1 item in menu')
-        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+        equals(typeahead.$menu.find('.active').length, 0, 'no item is active')
 
         typeahead.$menu.remove()
       })
@@ -116,7 +116,7 @@ $(function () {
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
-        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+        equals(typeahead.$menu.find('.active').length, 0, 'no item is active')
 
         $input.blur()
 
@@ -139,8 +139,15 @@ $(function () {
 
         ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
-        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
-        ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is active")
+        equals(typeahead.$menu.find('.active').length, 0, 'no item is active')
+        ok(typeahead.$menu.find('li').first().hasClass('active') === false, "first item is not active")
+
+        $input.trigger({
+          type: 'keydown'
+        , keyCode: 40
+        })
+
+        ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is now active")
 
         $input.trigger({
           type: 'keydown'
