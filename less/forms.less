@@ -209,7 +209,7 @@ input[type="checkbox"]:focus {
 // Placeholder
 // -------------------------
 
-// Placeholder text gets special styles; can't be bundled together though for some reason
+// Placeholder text gets special styles; can't be bundled together because when a browser doesn’t understand a selector, it invalidates the entire line of selectors (except IE 7)
 input,
 textarea {
   .placeholder();
