@@ -2863,7 +2863,6 @@ table .span24 {
 }
 
 .collapse {
-  position: relative;
   height: 0;
   overflow: hidden;
   overflow: visible \9;
