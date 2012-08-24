@@ -227,6 +227,8 @@
         , option = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
       e.preventDefault()
+      
+      if (!/#/.test(href) && href) $($target).find('.modal-body').load(href);
 
       $target
         .modal(option)
