@@ -92,6 +92,9 @@
 .navbar .btn-group .btn {
   margin: 0; // then undo the margin here so we don't accidentally double it
 }
+.navbar .btn-group > .btn + .btn {
+  margin-left: -1px; // fix left margin in order to avoid double border
+}
 
 // Navbar forms
 .navbar-form {
