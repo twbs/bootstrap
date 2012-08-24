@@ -62,16 +62,54 @@ $(function () {
         ok(btn.hasClass('active'), 'btn has class active')
       })
 
-     test("should toggle active when btn children are clicked within btn-group", function () {
+     test("should toggle active when btn children are clicked within buttons-checkbox btn-group", function () {
         var btngroup = $('<div class="btn-group" data-toggle="buttons-checkbox"></div>')
           , btn = $('<button class="btn">fat</button>')
+          , btn2 = $('<button class="btn active">philfreo</button>')
           , inner = $('<i></i>')
         btngroup
           .append(btn.append(inner))
+          .append(btn2)
           .appendTo($('#qunit-fixture'))
         ok(!btn.hasClass('active'), 'btn does not have active class')
         inner.click()
         ok(btn.hasClass('active'), 'btn has class active')
+        ok(btn2.hasClass('active'), 'other btn still has class active')
+        inner.click()
+        ok(!btn.hasClass('active'), 'btn does not have active class')
       })
 
+     test("should toggle active when btn children are clicked within buttons-radio btn-group", function () {
+        var btngroup = $('<div class="btn-group" data-toggle="buttons-radio"></div>')
+          , btn = $('<button class="btn">fat</button>')
+          , btn2 = $('<button class="btn active">philfreo</button>')
+          , inner = $('<i></i>')
+        btngroup
+          .append(btn.append(inner))
+          .append(btn2)
+          .appendTo($('#qunit-fixture'))
+        ok(!btn.hasClass('active'), 'btn does not have active class')
+        inner.click()
+        ok(btn.hasClass('active'), 'btn has class active')
+        ok(!btn2.hasClass('active'), 'other btn no longer has class active')
+        inner.click()
+        ok(btn.hasClass('active'), 'btn still has active class')
+      })
+
+     test("should toggle active when btn children are clicked within buttons-radio-optional btn-group", function () {
+        var btngroup = $('<div class="btn-group" data-toggle="buttons-radio-optional"></div>')
+          , btn = $('<button class="btn">fat</button>')
+          , btn2 = $('<button class="btn active">philfreo</button>')
+          , inner = $('<i></i>')
+        btngroup
+          .append(btn.append(inner))
+          .append(btn2)
+          .appendTo($('#qunit-fixture'))
+        ok(!btn.hasClass('active'), 'btn does not have active class')
+        inner.click()
+        ok(btn.hasClass('active'), 'btn has class active')
+        ok(!btn2.hasClass('active'), 'other btn no longer has class active')
+        inner.click()
+        ok(!btn.hasClass('active'), 'btn does not have active class')
+      })
 })
