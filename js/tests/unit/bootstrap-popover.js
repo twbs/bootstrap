@@ -103,5 +103,15 @@ $(function () {
         ok(popover.data('events').click[0].namespace == 'foo', 'popover still has click.foo')
         ok(!popover.data('events').mouseover && !popover.data('events').mouseout, 'popover does not have any events')
       })
+
+       test("should not show popover if link or button is disabled", function () {
+         var popover = $('<a href="#" class="disabled" title="@pashka_xell" data-content="https://twitter.com/pashka_xell">@pashka_xell</a>')
+             .appendTo('#qunit-fixture')
+             .popover()
+
+         popover.click()
+
+         ok(!popover.hasClass("in"), 'popover is hidden')
+       })
       
 })

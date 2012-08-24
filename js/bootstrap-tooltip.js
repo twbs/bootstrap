@@ -236,6 +236,7 @@
     }
 
   , toggle: function () {
+      if (this.$element.is('.disabled, :disabled')) return;
       this[this.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
