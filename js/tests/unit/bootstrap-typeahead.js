@@ -201,4 +201,52 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should highlight first result when autoselect is enabled", function(){
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac']
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('aa')
+        typeahead.lookup()
+
+        equals(typeahead.$menu.find('.active').length, 1, 'has one active item in menu')
+
+        typeahead.$menu.remove()
+      })
+
+      test("should not highlight first result when autoselect is disabled", function(){
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac'],
+              autoSelect: false
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('aa')
+        typeahead.lookup()
+
+        equals(typeahead.$menu.find('.active').length, 0, 'has no active items in menu')
+
+        typeahead.$menu.remove()
+      })
+
+      test("should not change input if autoselect is disabled", function(){
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac'],
+              autoSelect: false
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('aa')
+        typeahead.lookup()
+        $input.trigger({
+          type: 'keydown'
+        , keyCode: 40
+        })
+
+        equals($input.val(), 'aa', 'input value has not been changed')
+
+        typeahead.$menu.remove()
+      })
 })

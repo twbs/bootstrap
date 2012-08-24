@@ -31,6 +31,7 @@
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
+    this.autoSelect = typeof this.options.autoSelect == 'boolean' ? this.options.autoSelect : true
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
     this.$menu = $(this.options.menu).appendTo('body')
@@ -45,9 +46,11 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
-      this.$element
-        .val(this.updater(val))
-        .change()
+      if(this.autoSelect || val){
+        this.$element
+          .val(this.updater(val))
+          .change()
+      }
       return this.hide()
     }
 
@@ -141,7 +144,9 @@
         return i[0]
       })
 
-      items.first().addClass('active')
+      if (this.autoSelect) {
+        items.first().addClass('active')
+      }
       this.$menu.html(items)
       return this
     }
