@@ -560,8 +560,18 @@
     }
     .offsetX (0) {}
 
+    .offset-leftX (@index) when (@index > 0) {
+      (~".offset-left@{index}") { .offset-left(@index); }
+      .offset-leftX(@index - 1);
+    }
+    .offset-leftX (0) {}
+
     .offset (@columns) {
       margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+    }
+
+    .offset-left (@columns) {
+      margin-left: ((@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1))) * -1;
     }
 
     .span (@columns) {
@@ -587,6 +597,7 @@
     // generate .spanX and .offsetX
     .spanX (@gridColumns);
     .offsetX (@gridColumns);
+    .offset-leftX (@gridColumns);
 
   }
 
@@ -605,6 +616,12 @@
     }
     .offsetX (0) {}
 
+    .offset-leftX (@index) when (@index > 0) {
+      (~".offset-left@{index}") { .offset-left(@index); }
+      .offset-leftX(@index - 1);
+    }
+    .offset-leftX (0) {}
+
     .offset (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
   	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
@@ -613,6 +630,11 @@
     .offsetFirstChild (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
       *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+    }
+
+    .offset-left (@columns) {
+      margin-left: ((@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1))) * -1;
+      *margin-left: ((@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%)) * -1;
     }
 
     .span (@columns) {
@@ -636,6 +658,7 @@
       // generate .spanX and .offsetX
       .spanX (@gridColumns);
       .offsetX (@gridColumns);
+      .offset-leftX (@gridColumns);
     }
 
   }
