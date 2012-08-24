@@ -1,5 +1,7 @@
-// MODALS
-// ------
+//
+// Modals
+// --------------------------------------------------
+
 
 // Recalculate z-index where appropriate
 .modal-open {
@@ -54,6 +56,11 @@
   border-bottom: 1px solid #eee;
   // Close icon
   .close { margin-top: 2px; }
+  // Heading
+  h3 {
+    margin: 0;
+    line-height: 30px;
+  }
 }
 
 // Body (where all modal content resides)

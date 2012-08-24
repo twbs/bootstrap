@@ -1,5 +1,5 @@
 source :rubygems
 
 gem 'rake'
-gem 'sass'
+gem 'sass', '~>3.2'
 gem 'rb-fsevent'

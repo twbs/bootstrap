@@ -1,10 +1,9 @@
+//
 // Variables
-// Variables to customize the look and feel of Bootstrap
-// -----------------------------------------------------
+// --------------------------------------------------
 
 
-
-// GLOBAL VALUES
+// Global values
 // --------------------------------------------------
 
 
@@ -47,11 +46,11 @@ $linkColorHover:        darken($linkColor, 15%) !default;
 // -------------------------
 $sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $serifFontFamily:       Georgia, "Times New Roman", Times, serif !default;
-$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace !default;
 
-$baseFontSize:          13px !default;
+$baseFontSize:          14px !default;
 $baseFontFamily:        $sansFontFamily !default;
-$baseLineHeight:        18px !default;
+$baseLineHeight:        20px !default;
 $altFontFamily:         $serifFontFamily !default;
 
 $headingsFontFamily:    inherit !default; // empty to use BS default, $baseFontFamily
@@ -71,10 +70,10 @@ $tableBorder:                       #ddd !default; // table and cell border
 // -------------------------
 $btnBackground:                     $white !default;
 $btnBackgroundHighlight:            darken($white, 10%) !default;
-$btnBorder:                         #ccc !default;
+$btnBorder:                         #bbb !default;
 
 $btnPrimaryBackground:              $linkColor !default;
-$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 15%) !default;
+$btnPrimaryBackgroundHighlight:     adjust-hue($btnPrimaryBackground, 20%) !default;
 
 $btnInfoBackground:                 #5bc0de !default;
 $btnInfoBackgroundHighlight:        #2f96b4 !default;
@@ -88,7 +87,7 @@ $btnWarningBackgroundHighlight:     $orange !default;
 $btnDangerBackground:               #ee5f5b !default;
 $btnDangerBackgroundHighlight:      #bd362f !default;
 
-$btnInverseBackground:              $gray !default;
+$btnInverseBackground:              #444 !default;
 $btnInverseBackgroundHighlight:     $grayDarker !default;
 
 
@@ -104,9 +103,16 @@ $formActionsBackground:         #f5f5f5 !default;
 // -------------------------
 $dropdownBackground:            $white !default;
 $dropdownBorder:                rgba(0,0,0,.2) !default;
+$dropdownDividerTop:            #e5e5e5 !default;
+$dropdownDividerBottom:         $white !default;
+
 $dropdownLinkColor:             $grayDark !default;
+
 $dropdownLinkColorHover:        $white !default;
 $dropdownLinkBackgroundHover:   $linkColor !default;
+
+$dropdownLinkColorActive:       $dropdownLinkColor !default;
+$dropdownLinkBackgroundActive:  $linkColor !default;
 
 
 
@@ -119,7 +125,7 @@ $dropdownLinkBackgroundHover:   $linkColor !default;
 // Try to avoid customizing these :)
 $zindexDropdown:          1000 !default;
 $zindexPopover:           1010 !default;
-$zindexTooltip:           1020 !default;
+$zindexTooltip:           1030 !default;
 $zindexFixedNavbar:       1030 !default;
 $zindexModalBackdrop:     1040 !default;
 $zindexModal:             1050 !default;
@@ -141,24 +147,54 @@ $placeholderText:         $grayLight !default;
 $hrBorder:                $grayLighter !default;
 
 
+// Wells
+// -------------------------
+$wellBackground:                  #f5f5f5 !default;
+
+
 // Navbar
 // -------------------------
+$navbarCollapseWidth:             979px !default;
+
 $navbarHeight:                    40px !default;
-$navbarBackground:                $grayDarker !default;
-$navbarBackgroundHighlight:       $grayDark !default;
+$navbarBackgroundHighlight:       #ffffff !default;
+$navbarBackground:                darken($navbarBackgroundHighlight, 5%) !default;
+$navbarBorder:                    darken($navbarBackground, 12%) !default;
 
-$navbarText:                      $grayLight !default;
-$navbarLinkColor:                 $grayLight !default;
-$navbarLinkColorHover:            $white !default;
-$navbarLinkColorActive:           $navbarLinkColorHover !default;
+$navbarText:                      $gray !default;
+$navbarLinkColor:                 $gray !default;
+$navbarLinkColorHover:            $grayDark !default;
+$navbarLinkColorActive:           $gray !default;
 $navbarLinkBackgroundHover:       transparent !default;
-$navbarLinkBackgroundActive:      $navbarBackground !default;
+$navbarLinkBackgroundActive:      darken($navbarBackground, 5.25%) !default;
 
-$navbarSearchBackground:          lighten($navbarBackground, 25%) !default;
-$navbarSearchBackgroundFocus:     $white !default;
-$navbarSearchBorder:              darken($navbarSearchBackground, 30%) !default;
-$navbarSearchPlaceholderColor:    #ccc !default;
 $navbarBrandColor:                $navbarLinkColor !default;
+
+// Inverted navbar
+$navbarInverseBackground:                #111111 !default;
+$navbarInverseBackgroundHighlight:       #222222 !default;
+$navbarInverseBorder:                    #252525 !default;
+
+$navbarInverseText:                      $grayLight !default;
+$navbarInverseLinkColor:                 $grayLight !default;
+$navbarInverseLinkColorHover:            $white !default;
+$navbarInverseLinkColorActive:           $navbarInverseLinkColorHover !default;
+$navbarInverseLinkBackgroundHover:       transparent !default;
+$navbarInverseLinkBackgroundActive:      $navbarInverseBackground !default;
+
+$navbarInverseSearchBackground:          lighten($navbarInverseBackground, 25%) !default;
+$navbarInverseSearchBackgroundFocus:     $white !default;
+$navbarInverseSearchBorder:              $navbarInverseBackground !default;
+$navbarInverseSearchPlaceholderColor:    #ccc !default;
+
+$navbarInverseBrandColor:                $navbarInverseLinkColor !default;
+
+
+// Pagination
+// -------------------------
+$paginationBackground:                #fff !default;
+$paginationBorder:                    #ddd !default;
+$paginationActiveBackground:          #f5f5f5 !default;
 
 
 // Hero unit
@@ -187,6 +223,23 @@ $infoBackground:          #d9edf7 !default;
 $infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
 
 
+// Tooltips and popovers
+// -------------------------
+$tooltipColor:            #fff !default;
+$tooltipBackground:       #000 !default;
+$tooltipArrowWidth:       5px !default;
+$tooltipArrowColor:       $tooltipBackground !default;
+
+$popoverBackground:       #fff !default;
+$popoverArrowWidth:       10px !default;
+$popoverArrowColor:       #fff !default;
+$popoverTitleBackground:  darken($popoverBackground, 3%) !default;
+
+// Special enhancement for popovers
+$popoverArrowOuterWidth:  $popoverArrowWidth + 1 !default;
+$popoverArrowOuterColor:  rgba(0,0,0,.25) !default;
+
+
 
 // GRID
 // --------------------------------------------------
@@ -198,7 +251,26 @@ $gridColumnWidth:         60px !default;
 $gridGutterWidth:         20px !default;
 $gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1)) !default;
 
+// 1200px min
+$gridColumnWidth1200:     70px !default;
+$gridGutterWidth1200:     30px !default;
+$gridRowWidth1200:        ($gridColumns * $gridColumnWidth1200) + ($gridGutterWidth1200 * ($gridColumns - 1)) !default;
+
+// 768px-979px
+$gridColumnWidth768:      42px !default;
+$gridGutterWidth768:      20px !default;
+$gridRowWidth768:         ($gridColumns * $gridColumnWidth768) + ($gridGutterWidth768 * ($gridColumns - 1)) !default;
+
+
 // Fluid grid
 // -------------------------
-$fluidGridColumnWidth:    6.382978723% !default;
-$fluidGridGutterWidth:    2.127659574% !default;
+$fluidGridColumnWidth:    percentage($gridColumnWidth/$gridRowWidth) !default;
+$fluidGridGutterWidth:    percentage($gridGutterWidth/$gridRowWidth) !default;
+
+// 1200px min
+$fluidGridColumnWidth1200:     percentage($gridColumnWidth1200/$gridRowWidth1200) !default;
+$fluidGridGutterWidth1200:     percentage($gridGutterWidth1200/$gridRowWidth1200) !default;
+
+// 768px-979px
+$fluidGridColumnWidth768:      percentage($gridColumnWidth768/$gridRowWidth768) !default;
+$fluidGridGutterWidth768:      percentage($gridGutterWidth768/$gridRowWidth768) !default;

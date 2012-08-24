@@ -1,9 +1,9 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    rake (0.9.2)
-    rb-fsevent (0.4.3.1)
-    sass (3.1.19)
+    rake (0.9.2.2)
+    rb-fsevent (0.9.1)
+    sass (3.2.1)
 
 PLATFORMS
   ruby
@@ -11,4 +11,4 @@ PLATFORMS
 DEPENDENCIES
   rake
   rb-fsevent
-  sass
+  sass (~> 3.2)
