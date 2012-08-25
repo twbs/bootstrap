@@ -14,7 +14,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#dropdowns"><i class="icon-chevron-right"></i> {{_i}}Dropdowns{{/i}}</a></li>
           <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> {{_i}}Button groups{{/i}}</a></li>
           <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> {{_i}}Button dropdowns{{/i}}</a></li>
@@ -45,7 +45,7 @@
           <p>{{_i}}Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown javascript plugin</a>.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="dropdown clearfix">
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
                 <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
                 <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
                 <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
@@ -95,7 +95,7 @@
           <p>{{_i}}Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="dropdown clearfix">
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
                 <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
                 <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
                 <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
@@ -311,7 +311,7 @@
 </pre>
 
           <h3>{{_i}}Works with all button sizes{{/i}}</h3>
-          <p>{{_i}}Button dropdowns work at any size. your button sizes to <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.{{/i}}</p>
+          <p>{{_i}}Button dropdowns work at any size:  <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
@@ -1035,6 +1035,7 @@
               <div class="navbar-inner">
                 <form class="navbar-form pull-left">
                   <input type="text" class="span2">
+                  <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
                 </form>
               </div>
             </div>
@@ -1042,6 +1043,7 @@
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
+  &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
@@ -1089,7 +1091,7 @@
           <hr class="bs-docs-separator">
 
 
-          <h2>{{_i}}Fixed navigation{{/i}}</h2>
+          <h2>{{_i}}Optional display variations{{/i}}</h2>
           <p>{{_i}}Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.{{/i}}</p>
 
           <h3>Fixed to top</h3>
@@ -1132,6 +1134,28 @@
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-bottom"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+
+          <h3>{{_i}}Static top navbar{{/i}}</h3>
+          <p>{{_i}}Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.{{/i}}</p>
+          <div class="bs-docs-example bs-navbar-top-example">
+            <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto; padding: 0 20px;">
+                  <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+                  <ul class="nav">
+                    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-static-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1277,7 +1301,7 @@
             </div><!-- /navbar -->
           </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-subnav"&gt;
+&lt;div class="navbar navbar-inverse"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1793,7 +1817,7 @@
           <ul class="thumbnails">
             <li class="span4">
               <a href="#" class="thumbnail">
-                <img src="http://placehold.it/360x268" alt="">
+                <img src="http://placehold.it/360x270" alt="">
               </a>
             </li>
             <li class="span3">
@@ -1846,7 +1870,7 @@
 
           <h3>{{_i}}Dismiss buttons{{/i}}</h3>
           <p>{{_i}}Mobile Safari and Mobile Opera browsers, in addition to the <code>data-dismiss="alert"</code> attribute, require an <code>href="#"</code> for the dismissal of alerts when using an <code>&lt;a&gt;</code> tag.{{/i}}</p>
-          <pre class="prettyprint linenums">&lt;a href="#" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;</pre>
+          <pre class="prettyprint linenums">&lt;a href="#" class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;</pre>
           <p>{{_i}}Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;</pre>
 
@@ -1868,7 +1892,7 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
-  &lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;
+  &lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
   &lt;h4&gt;{{_i}}Warning!{{/i}}&lt;/h4&gt;
   {{_i}}Best check yo self, you're not...{{/i}}
 &lt;/div&gt;
@@ -1972,6 +1996,23 @@
 &lt;/div&gt;
 </pre>
 
+          <h3>Stacked</h3>
+          <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
+          <div class="bs-docs-example">
+            <div class="progress">
+              <div class="bar bar-success" style="width: 35%"></div>
+              <div class="bar bar-warning" style="width: 20%"></div>
+              <div class="bar bar-danger" style="width: 10%"></div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress"&gt;
+  &lt;div class="bar bar-success" style="width: 35%;"&gt;&lt;/div&gt;
+  &lt;div class="bar bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="bar bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
 
           <hr class="bs-docs-separator">
 
@@ -2046,7 +2087,7 @@
 
           <h2>{{_i}}Browser support{{/i}}</h2>
           <p>{{_i}}Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.{{/i}}</p>
-          <p>{{_i}}Opera and IE do not support animations at this time.{{/i}}</p>
+          <p>{{_i}}Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.{{/i}}</p>
 
         </section>
 

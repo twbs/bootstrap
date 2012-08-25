@@ -154,9 +154,10 @@
 .input-block-level {
   display: block;
   width: 100%;
-  min-height: 28px;        // Make inputs at least the height of their button counterpart
+  min-height: 30px;        // Make inputs at least the height of their button counterpart
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
+
 
 
 // Mixin for form field states
@@ -174,6 +175,10 @@
   select,
   textarea {
     color: @textColor;
+  }
+  input,
+  select,
+  textarea {
     border-color: @borderColor;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
@@ -290,10 +295,10 @@
           transform: skew(@x, @y);
 }
 .translate3d(@x, @y, @z) {
-  -webkit-transform: translate(@x, @y, @z);
-     -moz-transform: translate(@x, @y, @z);
-       -o-transform: translate(@x, @y, @z);
-          transform: translate(@x, @y, @z);
+  -webkit-transform: translate3d(@x, @y, @z);
+     -moz-transform: translate3d(@x, @y, @z);
+       -o-transform: translate3d(@x, @y, @z);
+          transform: translate3d(@x, @y, @z);
 }
 
 // Backface visibility
@@ -431,7 +436,7 @@
     background-color: mix(@midColor, @endColor, 80%);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
     background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
-    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
+    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop*100%, @endColor);
     background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
@@ -665,6 +670,7 @@
 
     // Set the container width, and override it for fixed navbars in media queries
     .container,
+    .navbar-static-top .container,
     .navbar-fixed-top .container,
     .navbar-fixed-bottom .container { .span(@gridColumns); }
 
@@ -691,7 +697,7 @@
 
     .offset (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
-	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
+  	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
     }
 
     .offsetFirstChild (@columns) {

@@ -18,19 +18,27 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
+  font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: @baseLineHeight / 2;
   margin-bottom: @baseLineHeight / 2;
   .btn-group {
     display: inline-block;
     .ie7-inline-block();
   }
+  .btn + .btn,
+  .btn-group + .btn,
+  .btn + .btn-group {
+    margin-left: 5px;
+  }
 }
 
 // Float them, remove border radius, then re-add to first and last elements
 .btn-group > .btn {
   position: relative;
-  margin-left: -1px;
   .border-radius(0);
+}
+.btn-group > .btn + .btn {
+  margin-left: -1px;
 }
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
@@ -112,20 +120,24 @@
   padding-left: 8px;
   padding-right: 8px;
   .box-shadow(~"inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
-  *padding-top: 4px;
-  *padding-bottom: 4px;
+  *padding-top: 5px;
+  *padding-bottom: 5px;
 }
 .btn-group > .btn-mini + .dropdown-toggle {
   padding-left: 5px;
   padding-right: 5px;
+  *padding-top: 2px;
+  *padding-bottom: 2px;
 }
 .btn-group > .btn-small + .dropdown-toggle {
-  *padding-top: 4px;
+  *padding-top: 5px;
   *padding-bottom: 4px;
 }
 .btn-group > .btn-large + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
+  *padding-top: 7px;
+  *padding-bottom: 7px;
 }
 
 .btn-group.open {
@@ -206,15 +218,16 @@
 
 .btn-group-vertical {
   display: inline-block; // makes buttons only take up the width they need
+  .ie7-inline-block();
 }
 .btn-group-vertical .btn {
   display: block;
   float: none;
-  margin-left: 0;
   width: 100%;
   .border-radius(0);
 }
 .btn-group-vertical .btn + .btn {
+  margin-left: 0;
   margin-top: -1px;
 }
 .btn-group-vertical .btn:first-child {

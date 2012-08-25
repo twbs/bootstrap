@@ -3,7 +3,7 @@
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <h1>{{_i}}Getting started{{/i}}</h1>
-    <p class="lead">{{_i}}Overview of the project, it's contents, and how to get started with a simple template.{{/i}}</p>
+    <p class="lead">{{_i}}Overview of the project, its contents, and how to get started with a simple template.{{/i}}</p>
   </div>
 </header>
 
@@ -14,7 +14,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#download-bootstrap"><i class="icon-chevron-right"></i> {{_i}}Download{{/i}}</a></li>
           <li><a href="#file-structure"><i class="icon-chevron-right"></i> {{_i}}File structure{{/i}}</a></li>
           <li><a href="#contents"><i class="icon-chevron-right"></i> {{_i}}What's included{{/i}}</a></li>
@@ -35,15 +35,15 @@
           </div>
           <p class="lead">{{_i}}Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with our the compiled Bootstrap files.{{/i}}</p>
 
-          <div class="row">
-            <div class="span4">
+          <div class="row-fluid">
+            <div class="span6">
               <h2>Download compiled</h2>
               <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
               <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" {{#production}}onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);"{{/production}}>Download Bootstrap</a></p>
             </div>
-            <div class="span4">
+            <div class="span6">
               <h2>Download source</h2>
-              <p>Get the original files for all CSS and Javasript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
+              <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
               <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" {{#production}}onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"{{/production}}>Download Bootstrap source</a></p>
             </div>
           </div>
@@ -57,6 +57,7 @@
           <div class="page-header">
             <h1>{{_i}}2. File structure{{/i}}</h1>
           </div>
+          <p class="lead">{{_i}}Within the download you'll find the following file structure and contents, logically grouping common assets and providing both compiled and minified variations.{{/i}}</p>
           <p>{{_i}}Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:{{/i}}</p>
 <pre class="prettyprint">
   bootstrap/
@@ -82,7 +83,7 @@
           <div class="page-header">
             <h1>{{_i}}3. What's included{{/i}}</h1>
           </div>
-          <p>{{_i}}Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.{{/i}}</p>
+          <p class="lead">{{_i}}Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.{{/i}}</p>
 
           <h2>{{_i}}Docs sections{{/i}}</h2>
           <h4><a href="http://twitter.github.com/bootstrap/scaffolding.html">{{_i}}Scaffolding{{/i}}</a></h4>
@@ -126,7 +127,7 @@
           <div class="page-header">
             <h1>{{_i}}4. Basic HTML template{{/i}}</h1>
           </div>
-          <p>{{_i}}With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.{{/i}}</p>
+          <p class="lead">{{_i}}With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.{{/i}}</p>
           <p>{{_i}}Now, here's a look at a <strong>typical HTML file</strong>:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;html&gt;
@@ -169,21 +170,21 @@
               <a class="thumbnail" href="examples/hero.html">
                 <img src="assets/img/examples/bootstrap-example-hero.jpg" alt="">
               </a>
-              <h3>{{_i}}Basic marketing site{{/i}}</h3>
+              <h4>{{_i}}Basic marketing site{{/i}}</h4>
               <p>{{_i}}Featuring a hero unit for a primary message and three supporting elements.{{/i}}</p>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/fluid.html">
                 <img src="assets/img/examples/bootstrap-example-fluid.jpg" alt="">
               </a>
-              <h3>{{_i}}Fluid layout{{/i}}</h3>
+              <h4>{{_i}}Fluid layout{{/i}}</h4>
               <p>{{_i}}Uses our new responsive, fluid grid system to create a seamless liquid layout.{{/i}}</p>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/starter-template.html">
                 <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
               </a>
-              <h3>{{_i}}Starter template{{/i}}</h3>
+              <h4>{{_i}}Starter template{{/i}}</h4>
               <p>{{_i}}A barebones HTML document with all the Bootstrap CSS and javascript included.{{/i}}</p>
             </li>
           </ul>

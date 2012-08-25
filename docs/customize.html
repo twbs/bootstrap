@@ -27,7 +27,7 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
     <!-- Navbar
     ================================================== -->
@@ -85,7 +85,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#components"><i class="icon-chevron-right"></i> 1. Choose components</a></li>
           <li><a href="#plugins"><i class="icon-chevron-right"></i> 2. Select jQuery plugins</a></li>
           <li><a href="#variables"><i class="icon-chevron-right"></i> 3. Customize variables</a></li>
@@ -190,11 +190,15 @@
                   <input type="checkbox" checked="true" value="bootstrap-tooltip.js">
                   Tooltips
                 </label>
-              </div><!-- /span -->
-              <div class="span3">
                 <label class="checkbox">
                   <input type="checkbox" checked="true" value="bootstrap-popover.js">
                   Popovers <small>(requires Tooltips)</small>
+                </label>
+              </div><!-- /span -->
+              <div class="span3">
+                <label class="checkbox">
+                  <input type="checkbox" checked="true" value="bootstrap-affix.js">
+                  Affix
                 </label>
                 <label class="checkbox">
                   <input type="checkbox" checked="true" value="bootstrap-alert.js">
@@ -294,11 +298,11 @@
                 <label>@monoFontFamily</label>
                 <input type="text" class="span3" placeholder="Menlo, Monaco, 'Courier New', monospace">
                 <label>@baseFontSize</label>
-                <input type="text" class="span3" placeholder="13px">
+                <input type="text" class="span3" placeholder="14px">
                 <label>@baseFontFamily</label>
                 <input type="text" class="span3" placeholder="@sansFontFamily">
                 <label>@baseLineHeight</label>
-                <input type="text" class="span3" placeholder="18px">
+                <input type="text" class="span3" placeholder="20px">
                 <label>@altFontFamily</label>
                 <input type="text" class="span3" placeholder="@serifFontFamily">
                 <label>@headingsFontFamily</label>

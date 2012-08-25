@@ -14,7 +14,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#typography"><i class="icon-chevron-right"></i> {{_i}}Typography{{/i}}</a></li>
           <li><a href="#code"><i class="icon-chevron-right"></i> {{_i}}Code{{/i}}</a></li>
           <li><a href="#tables"><i class="icon-chevron-right"></i> {{_i}}Tables{{/i}}</a></li>
@@ -32,11 +32,11 @@
         ================================================== -->
         <section id="typography">
           <div class="page-header">
-            <h1>{{_i}}Typography <small>Headings, paragraphs, lists, and other inline type elements</small>{{/i}}</h1>
+            <h1>{{_i}}Typography{{/i}}</h1>
           </div>
 
           {{! Headings }}
-          <h2>{{_i}}Headings{{/i}}</h2>
+          <h2 id="headings">{{_i}}Headings{{/i}}</h2>
           <p>{{_i}}All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.{{/i}}</p>
           <div class="bs-docs-example">
             <h1>h1. {{_i}}Heading 1{{/i}}</h1>
@@ -48,8 +48,8 @@
           </div>
 
           {{! Body copy }}
-          <h2>{{_i}}Body copy{{/i}}</h2>
-          <p>{{_i}}Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (9px by default).{{/i}}</p>
+          <h2 id="body-copy">{{_i}}Body copy{{/i}}</h2>
+          <p>{{_i}}Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).{{/i}}</p>
           <div class="bs-docs-example">
             <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
             <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -66,7 +66,7 @@
           <pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
 
           {{! Using LESS }}
-          <h2>{{_i}}Built with Less{{/i}}</h2>
+          <h3>{{_i}}Built with Less{{/i}}</h3>
           <p>{{_i}}The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@baseFontSize</code> and <code>@baseLineHeight</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.{{/i}}</p>
 
 
@@ -74,8 +74,19 @@
 
 
           {{! Emphasis }}
-          <h2>{{_i}}Emphasis{{/i}}</h2>
-          <p>{{_i}}Make use of HTML's default emphasis tags, <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>.{{/i}}</p>
+          <h2 id="emphasis">{{_i}}Emphasis{{/i}}</h2>
+          <p>{{_i}}Make use of HTML's default emphasis tags with lightweight styles.{{/i}}</p>
+
+          <h3><code>&lt;small&gt;</code></h3>
+          <p>{{_i}}For de-emphasizing inline or blocks of text, <small>use the small tag.</small>{{/i}}</p>
+          <div class="bs-docs-example">
+            <p><small>This line of text is meant to be treated as fine print.</small></p>
+          </div>
+<pre class="prettyprint">
+&lt;p&gt;
+  &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+&lt;/p&gt;
+</pre>
 
           <h3><code>&lt;strong&gt;</code></h3>
           <p>{{_i}}For emphasizing a snippet of text with <strong>important</strong>{{/i}}</p>
@@ -98,7 +109,7 @@
 
 
           {{! Abbreviations }}
-          <h2>{{_i}}Abbreviations{{/i}}</h2>
+          <h2 id="abbreviations">{{_i}}Abbreviations{{/i}}</h2>
           <p>{{_i}}Stylized implemenation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.{{/i}}</p>
 
           <h3><code>&lt;abbr&gt;</code></h3>
@@ -120,7 +131,7 @@
 
 
           {{! Addresses }}
-          <h2>{{_i}}Addresses{{/i}}</h2>
+          <h2 id="addresses">{{_i}}Addresses{{/i}}</h2>
           <p>{{_i}}Present contact information for the nearest ancestor or the entire body of work.{{/i}}</p>
 
           <h3><code>&lt;address&gt;</code></h3>
@@ -156,10 +167,10 @@
 
 
           {{! Blockquotes }}
-          <h2>{{_i}}Blockquotes{{/i}}</h2>
+          <h2 id="blockquotes">{{_i}}Blockquotes{{/i}}</h2>
           <p>{{_i}}For quoting blocks of content from another source within your document.{{/i}}</p>
 
-          <h3>{{_i}}Default blockqoute{{/i}}</h3>
+          <h3>{{_i}}Default blockquote{{/i}}</h3>
           <p>{{_i}}Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.{{/i}}</p>
           <div class="bs-docs-example">
             <blockquote>
@@ -209,7 +220,7 @@
 
 
           <!-- Lists -->
-          <h2>{{_i}}Lists{{/i}}</h2>
+          <h2 id="lists">{{_i}}Lists{{/i}}</h2>
 
           <h3>{{_i}}Unordered{{/i}}</h3>
           <p>{{_i}}A list of items in which the order does <em>not</em> explicitly matter.{{/i}}</p>
@@ -338,26 +349,29 @@
         ================================================== -->
         <section id="code">
           <div class="page-header">
-            <h1>{{_i}}Code{{/i}} <small>{{_i}}Inline and block code snippets{{/i}}</small></h1>
+            <h1>{{_i}}Code{{/i}}</h1>
           </div>
 
           <h2>Inline</h2>
           <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+<div class="bs-docs-example">
+  For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+</div>
 <pre class="prettyprint linenums">
-{{_i}}For example, &lt;code&gt;section&lt;/code&gt; should be wrapped as inline.{{/i}}
+{{_i}}For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.{{/i}}
 </pre>
 
           <h2>Basic block</h2>
           <p>{{_i}}Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.{{/i}}</p>
-<pre>
-&lt;p&gt;{{_i}}Sample text here...{{/i}}&lt;/p&gt;
-</pre>
+<div class="bs-docs-example">
+  <pre>&lt;p&gt;{{_i}}Sample text here...{{/i}}&lt;/p&gt;</pre>
+</div>
 <pre class="prettyprint linenums" style="margin-bottom: 9px;">
 &lt;pre&gt;
   &amp;lt;p&amp;gt;{{_i}}Sample text here...{{/i}}&amp;lt;/p&amp;gt;
 &lt;/pre&gt;
 </pre>
-          <p>{{_i}}<strong>Note:</strong> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.{{/i}}</p>
+          <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.{{/i}}</p>
           <p>{{_i}}You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.{{/i}}</p>
         </section>
 
@@ -367,7 +381,7 @@
         ================================================== -->
         <section id="tables">
           <div class="page-header">
-            <h1>{{_i}}Tables <small>For, you guessed it, tabular data</small>{{/i}}</h1>
+            <h1>{{_i}}Tables{{/i}}</h1>
           </div>
 
           <h2>{{_i}}Default styles{{/i}}</h2>
@@ -611,6 +625,12 @@
               </tr>
               <tr>
                 <td>
+                  <code>.warning</code>
+                </td>
+                <td>{{_i}}Indicates a warning that might need attention.{{/i}}</td>
+              </tr>
+              <tr>
+                <td>
                   <code>.info</code>
                 </td>
                 <td>{{_i}}Used as an alternative to the default styles.{{/i}}</td>
@@ -640,11 +660,17 @@
                   <td>02/04/2012</td>
                   <td>Declined</td>
                 </tr>
-                <tr class="info">
+                <tr class="warning">
                   <td>3</td>
                   <td>TB - Monthly</td>
                   <td>03/04/2012</td>
                   <td>Pending</td>
+                </tr>
+                <tr class="info">
+                  <td>4</td>
+                  <td>TB - Monthly</td>
+                  <td>04/04/2012</td>
+                  <td>Call in to confirm</td>
                 </tr>
               </tbody>
             </table>
@@ -739,16 +765,17 @@
           </table>
 <pre class="prettyprint linenums">
 &lt;table&gt;
+  &lt;caption&gt;...&lt;/caption&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;…&lt;/th&gt;
-      &lt;th&gt;…&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;…&lt;/td&gt;
-      &lt;td&gt;…&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -771,14 +798,15 @@
             <legend>Legend</legend>
             <label>{{_i}}Label name{{/i}}</label>
             <input type="text" placeholder="{{_i}}Type something…{{/i}}">
-            <p class="help-block">{{_i}}Example block-level help text here.{{/i}}</p>
+            <span class="help-block">{{_i}}Example block-level help text here.{{/i}}</span>
             <label class="checkbox">
               <input type="checkbox"> {{_i}}Check me out{{/i}}
             </label>
             <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
           </form>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;form class="well"&gt;
+&lt;form&gt;
+  &lt;legend&gt;{{_i}}Legend{{/i}}&lt;/legend&gt;
   &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
   &lt;input type="text" placeholder="{{_i}}Type something…{{/i}}"&gt;
   &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
@@ -790,7 +818,7 @@
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>{{_i}}Optional layouts{{/i}}</h2>
@@ -841,15 +869,15 @@
           <form class="bs-docs-example form-horizontal">
             <legend>Legend</legend>
             <div class="control-group">
-              <label class="control-label" for="">{{_i}}Email{{/i}}</label>
+              <label class="control-label" for="inputEmail">{{_i}}Email{{/i}}</label>
               <div class="controls">
-                <input type="text" placeholder="{{_i}}Email{{/i}}">
+                <input type="text" id="inputEmail" placeholder="{{_i}}Email{{/i}}">
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="">{{_i}}Password{{/i}}</label>
+              <label class="control-label" for="inputPassword">{{_i}}Password{{/i}}</label>
               <div class="controls">
-                <input type="password" placeholder="{{_i}}Password{{/i}}">
+                <input type="password" id="inputPassword" placeholder="{{_i}}Password{{/i}}">
               </div>
             </div>
             <div class="control-group">
@@ -864,15 +892,15 @@
 <pre class="prettyprint linenums">
 &lt;form class="form-horizontal"&gt;
   &lt;div class="control-group"&gt;
-    &lt;label class="control-label" for=""&gt;{{_i}}Email{{/i}}&lt;/label&gt;
+    &lt;label class="control-label" for="inputEmail"&gt;{{_i}}Email{{/i}}&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="text" placeholder="{{_i}}Email{{/i}}"&gt;
+      &lt;input type="text" id="inputEmail" placeholder="{{_i}}Email{{/i}}"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
-    &lt;label class="control-label" for=""&gt;{{_i}}Password{{/i}}&lt;/label&gt;
+    &lt;label class="control-label" for="inputPassword"&gt;{{_i}}Password{{/i}}&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="password" placeholder="{{_i}}Password{{/i}}"&gt;
+      &lt;input type="password" id="inputPassword" placeholder="{{_i}}Password{{/i}}"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
@@ -887,7 +915,7 @@
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>{{_i}}Supported form controls{{/i}}</h2>
@@ -909,7 +937,7 @@
             <textarea rows="3"></textarea>
           </form>
 <pre class="prettyprint linenums">
-&lt;textarea id="textarea" rows="3"&gt;&lt;/textarea&gt;
+&lt;textarea rows="3"&gt;&lt;/textarea&gt;
 </pre>
 
           <h3>{{_i}}Checkboxes and radios{{/i}}</h3>
@@ -975,14 +1003,14 @@
           <p>{{_i}}Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.{{/i}}</p>
           <form class="bs-docs-example">
             <select>
-              <option>something</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
               <option>5</option>
             </select>
             <br>
-            <select>
+            <select multiple="multiple">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -992,14 +1020,14 @@
           </form>
 <pre class="prettyprint linenums">
 &lt;select&gt;
-  &lt;option&gt;something&lt;/option&gt;
+  &lt;option&gt;1&lt;/option&gt;
   &lt;option&gt;2&lt;/option&gt;
   &lt;option&gt;3&lt;/option&gt;
   &lt;option&gt;4&lt;/option&gt;
   &lt;option&gt;5&lt;/option&gt;
 &lt;/select&gt;
 
-&lt;select&gt;
+&lt;select multiple="multiple"&gt;
   &lt;option&gt;1&lt;/option&gt;
   &lt;option&gt;2&lt;/option&gt;
   &lt;option&gt;3&lt;/option&gt;
@@ -1009,7 +1037,7 @@
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>{{_i}}Extending form controls{{/i}}</h2>
@@ -1019,7 +1047,7 @@
           <p>{{_i}}Add text or buttons before or after any text-based input. Do note that <code>select</code> elements are not supported here.{{/i}}</p>
 
           <h4>{{_i}}Default options{{/i}}</h4>
-          <p>{{_i}}Wrap a <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.{{/i}}</p>
+          <p>{{_i}}Wrap an <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.{{/i}}</p>
           <form class="bs-docs-example">
             <div class="input-prepend">
               <span class="add-on">@</span>
@@ -1092,8 +1120,14 @@
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
-  &lt;input type="text" class="span2 search-query"&gt;
-  &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
+  &lt;div class="input-append"&gt;
+    &lt;input type="text" class="span2 search-query"&gt;
+    &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="input-prepend"&gt;
+    &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
+    &lt;input type="text" class="span2 search-query"&gt;
+  &lt;/div&gt;
 &lt;/form&gt;
 </pre>
 
@@ -1112,12 +1146,12 @@
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-mini" type="text"&gt;
-&lt;input class="input-small" type="text"&gt;
-&lt;input class="input-medium" type="text"&gt;
-&lt;input class="input-large" type="text"&gt;
-&lt;input class="input-xlarge" type="text"&gt;
-&lt;input class="input-xxlarge" type="text"&gt;
+&lt;input class="input-mini" type="text" placeholder=".input-mini"&gt;
+&lt;input class="input-small" type="text" placeholder=".input-small"&gt;
+&lt;input class="input-medium" type="text" placeholder=".input-medium"&gt;
+&lt;input class="input-large" type="text" placeholder=".input-large"&gt;
+&lt;input class="input-xlarge" type="text" placeholder=".input-xlarge"&gt;
+&lt;input class="input-xxlarge" type="text" placeholder=".input-xxlarge"&gt;
 </pre>
           <p>
             <span class="label label-info">{{_i}}Heads up!{{/i}}</span> In future versions, we'll be altering the use of these relative input classes to match our button sizes. For example, <code>.input-large</code> will increase the padding and font-size of an input.
@@ -1154,9 +1188,18 @@
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="span1" type="text"&gt;
-&lt;input class="span2" type="text"&gt;
-&lt;input class="span3" type="text"&gt;
+&lt;input class="span1" type="text" placeholder=".span1"&gt;
+&lt;input class="span2" type="text" placeholder=".span2"&gt;
+&lt;input class="span3" type="text" placeholder=".span3"&gt;
+&lt;select class="span1"&gt;
+  ...
+&lt;/select&gt;
+&lt;select class="span2"&gt;
+  ...
+&lt;/select&gt;
+&lt;select class="span3"&gt;
+  ...
+&lt;/select&gt;
 </pre>
 
           <p>{{_i}}For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and the clears the float.{{/i}}</p>
@@ -1182,10 +1225,14 @@
             </div>
           </form>
 <pre class="prettyprint linenums">
+&lt;div class="controls"&gt;
+  &lt;input class="span5" type="text" placeholder=".span5"&gt;
+&lt;/div&gt;
 &lt;div class="controls controls-row"&gt;
   &lt;input class="span4" type="text" placeholder=".span4"&gt;
   &lt;input class="span1" type="text" placeholder=".span1"&gt;
 &lt;/div&gt;
+...
 </pre>
 
           <h3>{{_i}}Uneditable inputs{{/i}}</h3>
@@ -1194,7 +1241,7 @@
             <span class="input-xlarge uneditable-input">Some value here</span>
           </form>
 <pre class="prettyprint linenums">
-  &lt;span class="input-xlarge uneditable-input"&gt;Some value here&lt;/span&gt;
+&lt;span class="input-xlarge uneditable-input"&gt;Some value here&lt;/span&gt;
 </pre>
 
           <h3>{{_i}}Form actions{{/i}}</h3>
@@ -1219,7 +1266,7 @@
             <input type="text"> <span class="help-inline">Inline help text</span>
           </form>
 <pre class="prettyprint linenums">
-&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
+&lt;input type="text"&gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
 </pre>
 
           <h4>{{_i}}Block help{{/i}}</h4>
@@ -1228,11 +1275,11 @@
             <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
           </form>
 <pre class="prettyprint linenums">
-&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
+&lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
 </pre>
 
 
-          <hr class="bs-docs-separator"></hr>
+          <hr class="bs-docs-separator">
 
 
           <h2>{{_i}}Form control states{{/i}}</h2>
@@ -1243,9 +1290,9 @@
           <form class="bs-docs-example form-inline">
             <input class="input-xlarge focused" id="focusedInput" type="text" value="{{_i}}This is focused...{{/i}}">
           </form>
-  <pre class="prettyprint linenums">
-  &lt;input class="input-xlarge" id="focusedInput" type="text" value="{{_i}}This is focused...{{/i}}"&gt;
-  </pre>
+<pre class="prettyprint linenums">
+&lt;input class="input-xlarge" id="focusedInput" type="text" value="{{_i}}This is focused...{{/i}}"&gt;
+</pre>
 
           <h3>{{_i}}Disabled inputs{{/i}}</h3>
           <p>{{_i}}Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.{{/i}}</p>
@@ -1257,7 +1304,7 @@
 </pre>
 
           <h3>{{_i}}Validation states{{/i}}</h3>
-          <p>{{_i}}Bootstrap includes validation styles for error, warning, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
+          <p>{{_i}}Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
 
           <form class="bs-docs-example form-horizontal">
             <div class="control-group warning">
@@ -1272,6 +1319,13 @@
               <div class="controls">
                 <input type="text" id="inputError">
                 <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
+              </div>
+            </div>
+            <div class="control-group info">
+              <label class="control-label" for="inputError">{{_i}}Input with info{{/i}}</label>
+              <div class="controls">
+                <input type="text" id="inputError">
+                <span class="help-inline">{{_i}}Username is taken{{/i}}</span>
               </div>
             </div>
             <div class="control-group success">
@@ -1376,34 +1430,54 @@
 
 
           <h2>{{_i}}Button sizes{{/i}}</h2>
-          <p>{{_i}}Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for two additional sizes.{{/i}}</p>
+          <p>{{_i}}Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.{{/i}}</p>
           <div class="bs-docs-example">
             <p>
-              <button type="button" class="btn btn-large btn-primary">{{_i}}Primary action{{/i}}</button>
-              <button type="button" class="btn btn-large">{{_i}}Action{{/i}}</button>
+              <button type="button" class="btn btn-large btn-primary">{{_i}}Large button{{/i}}</button>
+              <button type="button" class="btn btn-large">{{_i}}Large button{{/i}}</button>
             </p>
             <p>
-              <button type="button" class="btn btn-small btn-primary">{{_i}}Primary action{{/i}}</button>
-              <button type="button" class="btn btn-small">{{_i}}Action{{/i}}</button>
+              <button type="button" class="btn btn-primary">{{_i}}Default button{{/i}}</button>
+              <button type="button" class="btn">{{_i}}Default button{{/i}}</button>
             </p>
             <p>
-              <button type="button" class="btn btn-mini btn-primary">{{_i}}Primary action{{/i}}</button>
-              <button type="button" class="btn btn-mini">{{_i}}Action{{/i}}</button>
+              <button type="button" class="btn btn-small btn-primary">{{_i}}Small button{{/i}}</button>
+              <button type="button" class="btn btn-small">{{_i}}Small button{{/i}}</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-mini btn-primary">{{_i}}Mini button{{/i}}</button>
+              <button type="button" class="btn btn-mini">{{_i}}Mini button{{/i}}</button>
             </p>
           </div>
 <pre class="prettyprint linenums">
-&lt;button class="btn btn-large" type="button"&gt;{{_i}}Large button{{/i}}&lt;/button&gt;
-&lt;button class="btn btn-small" type="button"&gt;{{_i}}Small button{{/i}}&lt;/button&gt;
-&lt;button class="btn btn-mini" type="button"&gt;{{_i}}Mini button{{/i}}&lt;/button&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-large btn-primary" type="button"&gt;{{_i}}Large button{{/i}}&lt;/button&gt;
+  &lt;button class="btn btn-large" type="button"&gt;{{_i}}Large button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-primary" type="button"&gt;{{_i}}Default button{{/i}}&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;{{_i}}Default button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-small btn-primary" type="button"&gt;{{_i}}Small button{{/i}}&lt;/button&gt;
+  &lt;button class="btn btn-small" type="button"&gt;{{_i}}Small button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-mini btn-primary" type="button"&gt;{{_i}}Mini button{{/i}}&lt;/button&gt;
+  &lt;button class="btn btn-mini" type="button"&gt;{{_i}}Mini button{{/i}}&lt;/button&gt;
+&lt;/p&gt;
 </pre>
           <p>{{_i}}Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
-              <button type="button" class="btn btn-large btn-primary btn-block">{{_i}}Block level button{{/i}}</button>
+              <button type="button" class="btn btn-large btn-block btn-primary">{{_i}}Block level button{{/i}}</button>
               <button type="button" class="btn btn-large btn-block">{{_i}}Block level button{{/i}}</button>
             </div>
           </div>
-          <pre class="prettyprint linenums">&lt;button class="btn btn-large btn-block" type="button"&gt;{{_i}}Block level button{{/i}}&lt;/button&gt;</pre>
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-large btn-block btn-primary" type="button"&gt;{{_i}}Block level button{{/i}}&lt;/button&gt;
+&lt;button class="btn btn-large btn-block" type="button"&gt;{{_i}}Block level button{{/i}}&lt;/button&gt;
+</pre>
 
 
           <h2>{{_i}}Disabled state{{/i}}</h2>
@@ -1446,15 +1520,11 @@
           </form>
 <pre class="prettyprint linenums">
 &lt;a class="btn" href=""&gt;{{_i}}Link{{/i}}&lt;/a&gt;
-&lt;button class="btn" type="submit"&gt;
-  {{_i}}Button{{/i}}
-&lt;/button&gt;
-&lt;input class="btn" type="button"
-         value="{{_i}}Input{{/i}}"&gt;
-&lt;input class="btn" type="submit"
-         value="{{_i}}Submit{{/i}}"&gt;
+&lt;button class="btn" type="submit"&gt;{{_i}}Button{{/i}}&lt;/button&gt;
+&lt;input class="btn" type="button" value="{{_i}}Input{{/i}}"&gt;
+&lt;input class="btn" type="submit" value="{{_i}}Submit{{/i}}"&gt;
 </pre>
-          <p>{{_i}}As a best practice, try to match the element for you context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.{{/i}}</p>
+          <p>{{_i}}As a best practice, try to match the element for your context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.{{/i}}</p>
 
         </section>
 
@@ -1467,17 +1537,18 @@
             <h1>{{_i}}Images{{/i}}</h1>
           </div>
 
-          <p>{{_i}}Simple classes to easily style images in any project. Heads up: <code>.img-rounded</code> and <code>.img-circle</code> don't work in IE7-8.{{/i}}</p>
+          <p>{{_i}}Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.{{/i}}</p>
           <div class="bs-docs-example bs-docs-example-images">
             <img src="http://placehold.it/140x140" class="img-rounded">
             <img src="http://placehold.it/140x140" class="img-circle">
             <img src="http://placehold.it/140x140" class="img-polaroid">
           </div>
 <pre class="prettyprint linenums">
-  &lt;img src="..." class="img-rounded"&gt;
-  &lt;img src="..." class="img-circle"&gt;
-  &lt;img src="..." class="img-polaroid"&gt;
+&lt;img src="..." class="img-rounded"&gt;
+&lt;img src="..." class="img-circle"&gt;
+&lt;img src="..." class="img-polaroid"&gt;
 </pre>
+          <p><span class="label label-info">{{_i}}Heads up!{{/i}}</span> {{_i}}<code>.img-rounded</code> and <code>.img-circle</code> do not work in IE7-8 due to lack of <code>border-radius</code> support.{{/i}}</p>
 
 
         </section>
@@ -1488,7 +1559,7 @@
         ================================================== -->
         <section id="icons">
           <div class="page-header">
-            <h1>{{_i}}Icons <small>Graciously provided by <a href="http://glyphicons.com" target="_blank">Glyphicons</a></small>{{/i}}</h1>
+            <h1>{{_i}}Icons <small>by <a href="http://glyphicons.com" target="_blank">Glyphicons</a></small>{{/i}}</h1>
           </div>
 
           <h2>{{_i}}Icon glyphs{{/i}}</h2>
@@ -1641,7 +1712,7 @@
           </ul>
 
           <h3>Glyphicons attribution</h3>
-          <p>{{_i}}<a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but an arrangement between Bootstrap and the Glyphicons creators have made this possible at not cost to you as developers. As a thank you, we ask you to include an optional link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever practical.{{/i}}</p>
+          <p>{{_i}}<a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but an arrangement between Bootstrap and the Glyphicons creators have made this possible at no cost to you as developers. As a thank you, we ask you to include an optional link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever practical.{{/i}}</p>
 
 
           <hr class="bs-docs-separator">
@@ -1652,7 +1723,7 @@
 <pre class="prettyprint linenums">
 &lt;i class="icon-search"&gt;&lt;/i&gt;
 </pre>
-          <p>{{_i}}There are also styles available for inverted (white) icons, made ready with one extra class:{{/i}}</p>
+          <p>{{_i}}There are also styles available for inverted (white) icons, made ready with one extra class. We will specifically enforce this class on hover and active states for nav and dropdown links.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;i class="icon-search icon-white"&gt;&lt;/i&gt;
 </pre>
@@ -1669,27 +1740,66 @@
           <p>{{_i}}Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.{{/i}}</p>
 
           <h4>{{_i}}Buttons{{/i}}</h4>
+
+          <h5>{{_i}}Button group in a button toolbar{{/i}}</h5>
           <div class="bs-docs-example">
-            <div class="btn-toolbar" style="margin-bottom: 9px">
+            <div class="btn-toolbar">
               <div class="btn-group">
                 <a class="btn" href="#"><i class="icon-align-left"></i></a>
                 <a class="btn" href="#"><i class="icon-align-center"></i></a>
                 <a class="btn" href="#"><i class="icon-align-right"></i></a>
                 <a class="btn" href="#"><i class="icon-align-justify"></i></a>
               </div>
-              <div class="btn-group">
-                <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> {{_i}}User{{/i}}</a>
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#"><i class="icon-pencil"></i> {{_i}}Edit{{/i}}</a></li>
-                  <li><a href="#"><i class="icon-trash"></i> {{_i}}Delete{{/i}}</a></li>
-                  <li><a href="#"><i class="icon-ban-circle"></i> {{_i}}Ban{{/i}}</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#"><i class="i"></i> {{_i}}Make admin{{/i}}</a></li>
-                </ul>
-              </div>
             </div>
           </div>{{! /bs-docs-example }}
+<pre class="prettyprint linenums">
+&lt;div class="btn-toolbar"&gt;
+  &lt;div class="btn-group"&gt;
+
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-justify"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+          <h5>{{_i}}Dropdown in a button group{{/i}}</h5>
+          <div class="bs-docs-example">
+            <div class="btn-group">
+              <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> {{_i}}User{{/i}}</a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-pencil"></i> {{_i}}Edit{{/i}}</a></li>
+                <li><a href="#"><i class="icon-trash"></i> {{_i}}Delete{{/i}}</a></li>
+                <li><a href="#"><i class="icon-ban-circle"></i> {{_i}}Ban{{/i}}</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="i"></i> {{_i}}Make admin{{/i}}</a></li>
+              </ul>
+            </div>
+          </div>{{! /bs-docs-example }}
+<pre class="prettyprint linenums">
+&lt;div class="btn-group"&gt;
+  &lt;a class="btn btn-primary" href="#"&gt;&lt;i class="icon-user icon-white"&gt;&lt;/i&gt; {{_i}}User{{/i}}&lt;/a&gt;
+  &lt;a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; {{_i}}Edit{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-trash"&gt;&lt;/i&gt; {{_i}}Delete{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-ban-circle"&gt;&lt;/i&gt; {{_i}}Ban{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; {{_i}}Make admin{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+
+          <h5>{{_i}}Small button{{/i}}</h5>
+          <div class="bs-docs-example">
+            <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
+          </div>{{! /bs-docs-example }}
+<pre class="prettyprint linenums">
+&lt;a class="btn btn-small" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+</pre>
+
 
           <h4>{{_i}}Navigation{{/i}}</h4>
           <div class="bs-docs-example">
@@ -1702,6 +1812,14 @@
               </ul>
             </div>{{! /well }}
           </div>{{! /bs-docs-example }}
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-list"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;i class="icon-home icon-white"&gt;&lt;/i&gt; {{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-book"&gt;&lt;/i&gt; {{_i}}Library{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="icon-pencil"&gt;&lt;/i&gt; {{_i}}Applications{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; {{_i}}Misc{{/i}}&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
 
           <h4>{{_i}}Form fields{{/i}}</h4>
           <form class="bs-docs-example form-horizontal">
@@ -1714,6 +1832,16 @@
               </div>
             </div>
           </form>
+<pre class="prettyprint linenums">
+&lt;div class="control-group"&gt;
+  &lt;label class="control-label" for="inputIcon"&gt;{{_i}}Email address{{/i}}&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;div class="input-prepend"&gt;
+    &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input class="span2" id="inputIcon" type="text"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
         </section>
 

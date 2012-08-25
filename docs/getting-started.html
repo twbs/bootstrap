@@ -27,7 +27,7 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
     <!-- Navbar
     ================================================== -->
@@ -74,7 +74,7 @@
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <h1>Getting started</h1>
-    <p class="lead">Overview of the project, it's contents, and how to get started with a simple template.</p>
+    <p class="lead">Overview of the project, its contents, and how to get started with a simple template.</p>
   </div>
 </header>
 
@@ -85,7 +85,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#download-bootstrap"><i class="icon-chevron-right"></i> Download</a></li>
           <li><a href="#file-structure"><i class="icon-chevron-right"></i> File structure</a></li>
           <li><a href="#contents"><i class="icon-chevron-right"></i> What's included</a></li>
@@ -106,15 +106,15 @@
           </div>
           <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with our the compiled Bootstrap files.</p>
 
-          <div class="row">
-            <div class="span4">
+          <div class="row-fluid">
+            <div class="span6">
               <h2>Download compiled</h2>
               <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
               <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" >Download Bootstrap</a></p>
             </div>
-            <div class="span4">
+            <div class="span6">
               <h2>Download source</h2>
-              <p>Get the original files for all CSS and Javasript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
+              <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
               <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download Bootstrap source</a></p>
             </div>
           </div>
@@ -128,6 +128,7 @@
           <div class="page-header">
             <h1>2. File structure</h1>
           </div>
+          <p class="lead">Within the download you'll find the following file structure and contents, logically grouping common assets and providing both compiled and minified variations.</p>
           <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
 <pre class="prettyprint">
   bootstrap/
@@ -153,7 +154,7 @@
           <div class="page-header">
             <h1>3. What's included</h1>
           </div>
-          <p>Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
+          <p class="lead">Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
 
           <h2>Docs sections</h2>
           <h4><a href="http://twitter.github.com/bootstrap/scaffolding.html">Scaffolding</a></h4>
@@ -197,7 +198,7 @@
           <div class="page-header">
             <h1>4. Basic HTML template</h1>
           </div>
-          <p>With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
+          <p class="lead">With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
           <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
 <pre class="prettyprint linenums">
 &lt;html&gt;
@@ -240,21 +241,21 @@
               <a class="thumbnail" href="examples/hero.html">
                 <img src="assets/img/examples/bootstrap-example-hero.jpg" alt="">
               </a>
-              <h3>Basic marketing site</h3>
+              <h4>Basic marketing site</h4>
               <p>Featuring a hero unit for a primary message and three supporting elements.</p>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/fluid.html">
                 <img src="assets/img/examples/bootstrap-example-fluid.jpg" alt="">
               </a>
-              <h3>Fluid layout</h3>
+              <h4>Fluid layout</h4>
               <p>Uses our new responsive, fluid grid system to create a seamless liquid layout.</p>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/starter-template.html">
                 <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
               </a>
-              <h3>Starter template</h3>
+              <h4>Starter template</h4>
               <p>A barebones HTML document with all the Bootstrap CSS and javascript included.</p>
             </li>
           </ul>

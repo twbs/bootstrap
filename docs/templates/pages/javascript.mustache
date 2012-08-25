@@ -1,9 +1,9 @@
 <!-- Subhead
 ================================================== -->
-<header class="jumbotron subhead" id="overview">
+<header class="jumbotron subhead">
   <div class="container">
     <h1>{{_i}}JavaScript for Bootstrap{{/i}}</h1>
-    <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 12 custom jQuery plugins.{{/i}}
+    <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.{{/i}}
   </div>
 </header>
 
@@ -13,7 +13,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#overview"><i class="icon-chevron-right"></i> {{_i}}Overview{{/i}}</a></li>
           <li><a href="#transitions"><i class="icon-chevron-right"></i> {{_i}}Transitions{{/i}}</a></li>
           <li><a href="#modals"><i class="icon-chevron-right"></i> {{_i}}Modal{{/i}}</a></li>
@@ -144,7 +144,7 @@ $('#myModal').on('show', function (e) {
           <h3>{{_i}}Live demo{{/i}}</h3>
           <p>{{_i}}Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.{{/i}}</p>
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h3 id="myModalLabel">{{_i}}Modal Heading{{/i}}</h3>
@@ -306,7 +306,7 @@ $('#myModal').on('hidden', function () {
 
 
 
-        <!-- Dropdown
+        <!-- Dropdowns
         ================================================== -->
         <section id="dropdowns">
           <div class="page-header">
@@ -409,7 +409,7 @@ $('#myModal').on('hidden', function () {
           <p>{{_i}}Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" href="#"&gt;Dropdown trigger&lt;/a&gt;
+  &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#"&gt;Dropdown trigger&lt;/a&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
     ...
   &lt;/ul&gt;
@@ -496,7 +496,7 @@ $('#myModal').on('hidden', function () {
           <h2>{{_i}}Usage{{/i}}</h2>
 
           <h3>{{_i}}Via data attributes{{/i}}</h3>
-          <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use.{{/i}}</p>
+          <p>{{_i}}To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
 
           <h3>{{_i}}Via JavaScript{{/i}}</h3>
@@ -759,7 +759,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                <td>{{_i}}trigger{{/i}}</td>
                <td>{{_i}}string{{/i}}</td>
                <td>'hover'</td>
-               <td>{{_i}}how tooltip is triggered{{/i}} - hover | focus | manual</td>
+               <td>{{_i}}how tooltip is triggered{{/i}} - click | hover | focus | manual</td>
              </tr>
              <tr>
                <td>{{_i}}delay{{/i}}</td>
@@ -852,7 +852,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
         <h3>Live demo</h3>
         <div class="bs-docs-example" style="padding-bottom: 24px;">
-          <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Hover for popover{{/i}}</a>
+          <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Click to toggle popover{{/i}}</a>
         </div>
 
 
@@ -902,8 +902,8 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            <tr>
              <td>{{_i}}trigger{{/i}}</td>
              <td>{{_i}}string{{/i}}</td>
-             <td>'hover'</td>
-             <td>{{_i}}how popover is triggered{{/i}} - hover | focus | manual</td>
+             <td>'click'</td>
+             <td>{{_i}}how popover is triggered{{/i}} - click | hover | focus | manual</td>
            </tr>
            <tr>
              <td>{{_i}}title{{/i}}</td>
@@ -1526,7 +1526,6 @@ $('.carousel').carousel({
               <h1>{{_i}}Affix{{/i}} <small>bootstrap-affix.js</small></h1>
             </div>
 
-
             <h2>{{_i}}Example{{/i}}</h2>
             <p>{{_i}}The subnavigation on the left is a live demo of the affix plugin.{{/i}}</p>
 
@@ -1535,13 +1534,13 @@ $('.carousel').carousel({
             <h2>{{_i}}Usage{{/i}}</h2>
 
             <h3>{{_i}}Via data attributes{{/i}}</h3>
-            <p>{{_i}}To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. When the affix offsets are satisified, an <code>.affix</code> class is added to the element. {{/i}}</p>
+            <p>{{_i}}To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.{{/i}}</p>
 
-            <pre class="prettyprint linenums">&lt;div data-spy="affix"&gt;...&lt;/body&gt;</pre>
+            <pre class="prettyprint linenums">&lt;div data-spy="affix" data-offset-top="200"&gt;...&lt;/div&gt;</pre>
 
             <div class="alert alert-info">
               <strong>{{_i}}Heads up!{{/i}}</strong>
-              {{_i}}It's up to you to maintain the dimensions of an element when toggling between relative and fixed positions. To see how this is done, refer to this pages subnavigation.{{/i}}
+              {{_i}}It's up to you to manage the position of a pinned element. This is done by styling <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>.{{/i}}
             </div>
 
             <h3>{{_i}}Via JavaScript{{/i}}</h3>
@@ -1549,16 +1548,15 @@ $('.carousel').carousel({
             <pre class="prettyprint linenums">$('#navbar').affix()</pre>
 
             <h3>{{_i}}Methods{{/i}}</h3>
-            <h4>.scrollspy('refresh')</h4>
-            <p>{{_i}}When using affix in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:{{/i}}</p>
+            <h4>.affix('refresh')</h4>
+            <p>{{_i}}When using affix in conjunction with adding or removing of elements from the DOM, you'll want to call the refresh method:{{/i}}</p>
 <pre class="prettyprint linenums">
 $('[data-spy="affix"]').each(function () {
   $(this).affix('refresh')
 });
 </pre>
-
           <h3>{{_i}}Options{{/i}}</h3>
-          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-y=""</code>.{{/i}}</p>
+          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -1571,9 +1569,9 @@ $('[data-spy="affix"]').each(function () {
             <tbody>
              <tr>
                <td>{{_i}}offset{{/i}}</td>
-               <td>{{_i}}number | object{{/i}}</td>
+               <td>{{_i}}number | function | object{{/i}}</td>
                <td>{{_i}}10{{/i}}</td>
-               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>.{{/i}}</td>
+               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
              </tr>
             </tbody>
           </table>

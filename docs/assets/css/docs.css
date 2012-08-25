@@ -26,12 +26,12 @@ h3 code {
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 
-body > .navbar-fixed-top {
+body > .navbar {
   font-size: 13px;
 }
 
 /* Change the docs' brand */
-body > .navbar-fixed-top .brand {
+body > .navbar .brand {
   padding-right: 0;
   padding-left: 0;
   margin-left: 20px;
@@ -43,7 +43,7 @@ body > .navbar-fixed-top .brand {
      -moz-transition: all .2s linear;
           transition: all .2s linear;
 }
-body > .navbar-fixed-top .brand:hover {
+body > .navbar .brand:hover {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
@@ -54,7 +54,7 @@ body > .navbar-fixed-top .brand:hover {
 
 /* padding for in-page bookmarks and fixed navbar */
 section {
-  padding-top: 60px;
+  padding-top: 30px;
 }
 section > .page-header,
 section > .lead {
@@ -101,9 +101,9 @@ hr.soften {
   background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* IE10+ */
   background: linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
-     -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
-          box-shadow: inset 0 -1px 0 rgba(0,0,0,.15), inset 0 -3px 7px rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
 }
 .jumbotron h1 {
   font-size: 80px;
@@ -133,9 +133,14 @@ hr.soften {
 
 /* Download button */
 @-webkit-keyframes downloadButton {
-  from { -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
-  50% {  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 25px rgba(0,68,204,.9); }
-  to {   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
+  from { box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
+  50% {  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 25px rgba(0,68,204,.9); }
+  to {   box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
+}
+@-moz-keyframes downloadButton {
+  from { box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
+  50% {  box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 25px rgba(0,68,204,.9); }
+  to {   box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.5); }
 }
 .masthead .btn {
   padding: 14px 24px;
@@ -150,8 +155,11 @@ hr.soften {
      -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.01);
           box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25), 0 2px 10px rgba(0,68,204,.01);
   -webkit-animation-name: downloadButton;
+     -moz-animation-name: downloadButton;
   -webkit-animation-duration: 1.5s;
+     -moz-animation-duration: 1.5s;
   -webkit-animation-iteration-count: infinite;
+     -moz-animation-iteration-count: infinite;
   -webkit-transition: none;
      -moz-transition: none;
           transition: none;
@@ -231,6 +239,8 @@ hr.soften {
   display: inline-block;
   padding: 5px 8px;
   line-height: 1;
+  *display: inline;
+  *zoom: 1;
 }
 
 /* Subhead (other pages)
@@ -552,6 +562,7 @@ h2 + .row {
   position: relative;
   margin: 15px 0;
   padding: 39px 19px 14px;
+  *padding-top: 19px;
   background-color: #fff;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
@@ -751,12 +762,10 @@ form.bs-docs-example {
 }
 
 .bs-docs-sidenav {
-  width: 218px;
-  margin-top: 30px;
+  width: 228px;
+  margin: 30px 0 0;
   padding: 0;
-  margin-right: 10px;
   background-color: #fff;
-  margin-left: 0;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -768,7 +777,6 @@ form.bs-docs-example {
   display: block;
   *width: 190px;
   margin: 0 0 -1px;
-  font-size: 14px;
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
 }
@@ -783,9 +791,14 @@ form.bs-docs-example {
           border-radius: 0 0 6px 6px;
 }
 .bs-docs-sidenav > .active > a {
-  border-color: #08c;
   position: relative;
   z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
 /* Chevrons */
 .bs-docs-sidenav .icon-chevron-right {
@@ -800,14 +813,19 @@ form.bs-docs-example {
 .bs-docs-sidenav a:hover .icon-chevron-right {
   opacity: .5;
 }
-.bs-docs-sidenav .active .icon-chevron-right {
+.bs-docs-sidenav .active .icon-chevron-right,
+.bs-docs-sidenav .active a:hover .icon-chevron-right {
   background-image: url(../img/glyphicons-halflings-white.png);
-  opacity: .75;
+  opacity: 1;
 }
 .bs-docs-sidenav.affix {
-  top: 30px;
+  top: 40px;
 }
-
+.bs-docs-sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
 
 
 
@@ -860,11 +878,15 @@ form.bs-docs-example {
   }
   /* Widen masthead and social buttons to fill body padding */
   .jumbotron {
-    margin-top:   -20px; /* Offset bottom margin on .navbar */
+    margin-top: -20px; /* Offset bottom margin on .navbar */
   }
   /* Adjust sidenav width */
   .bs-docs-sidenav {
     width: 166px;
+    margin-top: 20px;
+  }
+  .bs-docs-sidenav.affix {
+    top: 0;
   }
 }
 
@@ -905,10 +927,12 @@ form.bs-docs-example {
   /* Sidenav */
   .bs-docs-sidenav {
     width: auto;
+    margin-bottom: 20px;
   }
   .bs-docs-sidenav.affix {
-    position: relative;
+    position: static;
     width: auto;
+    top: 0;
   }
 
   /* Unfloat the back to top link in footer */

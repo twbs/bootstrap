@@ -132,13 +132,15 @@ input[type="color"],
 // Position radios and checkboxes better
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0;
+  margin: 4px 0 0;
   *margin-top: 0; /* IE7 */
+  margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
   cursor: pointer;
 }
 
 // Reset width of input images, buttons, radios, checkboxes
+input[type="file"],
 input[type="image"],
 input[type="submit"],
 input[type="reset"],
@@ -151,15 +153,16 @@ input[type="checkbox"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
-  line-height: 28px;
+  line-height: 30px;
 }
 
 // Make select elements obey height by applying a border
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
   border: 1px solid #bbb;
+  background-color: @inputBackground; // Chrome on Linux and Mobile Safari need background-color
 }
 
 // Make multiple select elements height not fixed
@@ -346,6 +349,10 @@ input[type="checkbox"][readonly] {
 .control-group.success {
   .formFieldState(@successText, @successText, @successBackground);
 }
+// Success
+.control-group.info {
+  .formFieldState(@infoText, @infoText, @infoBackground);
+}
 
 // HTML5 invalid states
 // Shares styles with the .control-group.error above
@@ -415,7 +422,7 @@ select:focus:required:invalid {
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
     font-size: @baseFontSize;
-    vertical-align: middle;
+    vertical-align: top;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     // Make input on top when focused so blue border and shadow always show
     &:focus {
@@ -433,13 +440,12 @@ select:focus:required:invalid {
     line-height: @baseLineHeight;
     text-align: center;
     text-shadow: 0 1px 0 @white;
-    vertical-align: middle;
     background-color: @grayLighter;
     border: 1px solid #ccc;
   }
   .add-on,
   .btn {
-    margin-left: -1px;
+    vertical-align: top;
     .border-radius(0);
   }
   .active {
@@ -462,6 +468,10 @@ select:focus:required:invalid {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .add-on,
+  .btn {
+    margin-left: -1px;
   }
   .add-on:last-child,
   .btn:last-child {
@@ -492,7 +502,7 @@ select:focus:required:invalid {
 // SEARCH FORM
 // -----------
 
-.search-query {
+input.search-query {
   padding-right: 14px;
   padding-right: 4px \9;
   padding-left: 14px;
@@ -507,16 +517,16 @@ select:focus:required:invalid {
   .border-radius(0); // Override due to specificity
 }
 .form-search .input-append .search-query {
-  .border-radius(14px 0 0 14px)
+  .border-radius(14px 0 0 14px);
 }
 .form-search .input-append .btn {
-  .border-radius(0 14px 14px 0)
+  .border-radius(0 14px 14px 0);
 }
 .form-search .input-prepend .search-query {
-  .border-radius(0 14px 14px 0)
+  .border-radius(0 14px 14px 0);
 }
 .form-search .input-prepend .btn {
-  .border-radius(14px 0 0 14px)
+  .border-radius(14px 0 0 14px);
 }
 
 
@@ -549,7 +559,9 @@ select:focus:required:invalid {
   }
 }
 .form-search label,
-.form-inline label {
+.form-inline label,
+.form-search .btn-group,
+.form-inline .btn-group {
   display: inline-block;
 }
 // Remove margin for input-prepend/-append

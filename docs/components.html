@@ -27,7 +27,7 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
     <!-- Navbar
     ================================================== -->
@@ -85,7 +85,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdowns</a></li>
           <li><a href="#buttonGroups"><i class="icon-chevron-right"></i> Button groups</a></li>
           <li><a href="#buttonDropdowns"><i class="icon-chevron-right"></i> Button dropdowns</a></li>
@@ -116,7 +116,7 @@
           <p>Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown javascript plugin</a>.</p>
           <div class="bs-docs-example">
             <div class="dropdown clearfix">
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
                 <li><a tabindex="-1" href="#">Action</a></li>
                 <li><a tabindex="-1" href="#">Another action</a></li>
                 <li><a tabindex="-1" href="#">Something else here</a></li>
@@ -166,7 +166,7 @@
           <p>Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.</p>
           <div class="bs-docs-example">
             <div class="dropdown clearfix">
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px;">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
                 <li><a tabindex="-1" href="#">Action</a></li>
                 <li><a tabindex="-1" href="#">Another action</a></li>
                 <li><a tabindex="-1" href="#">Something else here</a></li>
@@ -382,7 +382,7 @@
 </pre>
 
           <h3>Works with all button sizes</h3>
-          <p>Button dropdowns work at any size. your button sizes to <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
+          <p>Button dropdowns work at any size:  <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
@@ -1106,6 +1106,7 @@
               <div class="navbar-inner">
                 <form class="navbar-form pull-left">
                   <input type="text" class="span2">
+                  <button type="submit" class="btn">Submit</button>
                 </form>
               </div>
             </div>
@@ -1113,6 +1114,7 @@
 <pre class="prettyprint linenums">
 &lt;form class="navbar-form pull-left"&gt;
   &lt;input type="text" class="span2"&gt;
+  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;
 </pre>
 
@@ -1160,7 +1162,7 @@
           <hr class="bs-docs-separator">
 
 
-          <h2>Fixed navigation</h2>
+          <h2>Optional display variations</h2>
           <p>Fix the navbar to the top or bottom of the viewport with an additional class on the outermost div, <code>.navbar</code>.</p>
 
           <h3>Fixed to top</h3>
@@ -1203,6 +1205,28 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="navbar navbar-fixed-bottom"&gt;
+  ...
+&lt;/div&gt;
+</pre>
+
+          <h3>Static top navbar</h3>
+          <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
+          <div class="bs-docs-example bs-navbar-top-example">
+            <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto; padding: 0 20px;">
+                  <a class="brand" href="#">Title</a>
+                  <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="navbar navbar-static-top"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1348,7 +1372,7 @@
             </div><!-- /navbar -->
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="navbar navbar-subnav"&gt;
+&lt;div class="navbar navbar-inverse"&gt;
   ...
 &lt;/div&gt;
 </pre>
@@ -1864,7 +1888,7 @@
           <ul class="thumbnails">
             <li class="span4">
               <a href="#" class="thumbnail">
-                <img src="http://placehold.it/360x268" alt="">
+                <img src="http://placehold.it/360x270" alt="">
               </a>
             </li>
             <li class="span3">
@@ -1917,7 +1941,7 @@
 
           <h3>Dismiss buttons</h3>
           <p>Mobile Safari and Mobile Opera browsers, in addition to the <code>data-dismiss="alert"</code> attribute, require an <code>href="#"</code> for the dismissal of alerts when using an <code>&lt;a&gt;</code> tag.</p>
-          <pre class="prettyprint linenums">&lt;a href="#" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;</pre>
+          <pre class="prettyprint linenums">&lt;a href="#" class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;</pre>
           <p>Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
           <pre class="prettyprint linenums">&lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;</pre>
 
@@ -1939,7 +1963,7 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="alert alert-block"&gt;
-  &lt;a class="close" data-dismiss="alert" href="#"&gt;&amp;times;&lt;/a&gt;
+  &lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;
   &lt;h4&gt;Warning!&lt;/h4&gt;
   Best check yo self, you're not...
 &lt;/div&gt;
@@ -2043,6 +2067,23 @@
 &lt;/div&gt;
 </pre>
 
+          <h3>Stacked</h3>
+          <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
+          <div class="bs-docs-example">
+            <div class="progress">
+              <div class="bar bar-success" style="width: 35%"></div>
+              <div class="bar bar-warning" style="width: 20%"></div>
+              <div class="bar bar-danger" style="width: 10%"></div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress"&gt;
+  &lt;div class="bar bar-success" style="width: 35%;"&gt;&lt;/div&gt;
+  &lt;div class="bar bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="bar bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
 
           <hr class="bs-docs-separator">
 
@@ -2117,7 +2158,7 @@
 
           <h2>Browser support</h2>
           <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE7-9 or older versions of Firefox.</p>
-          <p>Opera and IE do not support animations at this time.</p>
+          <p>Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.</p>
 
         </section>
 

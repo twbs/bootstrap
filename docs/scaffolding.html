@@ -27,7 +27,7 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".bs-docs-sidebar" data-offset="10">
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
     <!-- Navbar
     ================================================== -->
@@ -84,7 +84,7 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav" data-spy="affix" data-offset-y="80">
+        <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#global"><i class="icon-chevron-right"></i> Global styles</a></li>
           <li><a href="#gridSystem"><i class="icon-chevron-right"></i> Grid system</a></li>
           <li><a href="#fluidGridSystem"><i class="icon-chevron-right"></i> Fluid grid system</a></li>
@@ -100,7 +100,7 @@
         ================================================== -->
         <section id="global">
           <div class="page-header">
-            <h1>Global styles <small>for CSS reset, typography, and links</small></h1>
+            <h1>Global settings</h1>
           </div>
 
           <h3>Requires HTML5 doctype</h3>
@@ -117,7 +117,7 @@
           <ul>
             <li>Remove <code>margin</code> on the body</li>
             <li>Set <code>background-color: white;</code> on the <code>body</code></li>
-            <li>Use the <code>@baseFontFamily</code>, <code>@baseFontSize</code>, and <code>@baseLineHeight</code> attributes as our typographyic base</li>
+            <li>Use the <code>@baseFontFamily</code>, <code>@baseFontSize</code>, and <code>@baseLineHeight</code> attributes as our typographic base</li>
             <li>Set the global link color via <code>@linkColor</code> and apply link underlines only on <code>:hover</code></li>
           </ul>
           <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
@@ -134,11 +134,11 @@
         ================================================== -->
         <section id="gridSystem">
           <div class="page-header">
-            <h1>Default grid system <small>12 columns with a responsive twist</small></h1>
+            <h1>Default grid system</h1>
           </div>
 
           <h2>Live grid example</h2>
-          <p>The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</p>
+          <p>The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="./scaffolding.html#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
               <div class="span1">1</div>
@@ -199,8 +199,6 @@
 
           <h2>Nesting columns</h2>
           <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to the number of columns of its parent.</p>
-          <h3>Example</h3>
-          <p>Here two nested <code>.span4</code> columns are placed within a <code>.span8</code>.</p>
           <div class="row show-grid">
             <div class="span9">
               Level 1 of column
@@ -233,7 +231,7 @@
         ================================================== -->
         <section id="fluidGridSystem">
           <div class="page-header">
-            <h1>Fluid grid system <small>12 responsive, percent-based columns</small></h1>
+            <h1>Fluid grid system</h1>
           </div>
 
           <h2>Live fluid grid example</h2>
@@ -338,7 +336,7 @@
         ================================================== -->
         <section id="layouts">
           <div class="page-header">
-            <h1>Layouts <small>Basic templates to create webpages</small></h1>
+            <h1>Layouts</h1>
           </div>
 
           <h2>Fixed layout</h2>
@@ -381,7 +379,7 @@
         ================================================== -->
         <section id="responsive">
           <div class="page-header">
-            <h1>Responsive design <small>Media queries for various devices and resolutions</small></h1>
+            <h1>Responsive design</h1>
           </div>
 
           <h2>Enabling responsive features</h2>
