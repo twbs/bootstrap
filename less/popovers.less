@@ -115,3 +115,111 @@
     }
   }
 }
+// Dynamic Popover Border & Arrow Sizes
+// ------------------------------------
+
+#popoverArrowDynamic {
+  .dynamic-arrow-styles() {
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      z-index: 10;
+      border: solid transparent;
+  }
+  .top-outer-arrow(@innerArrowWidth: @popoverArrowWidth, @popoverOutlineWidth: @dynamicPopoverOuterWidth, @outerColor: @popoverArrowOuterColor) {
+    .dynamic-arrow-styles();
+    top: 0;
+    left: (@innerArrowWidth + @popoverOutlineWidth) * -1;
+    border-width: @innerArrowWidth + @popoverOutlineWidth;
+    border-top-color: @outerColor;
+  }
+  .left-outer-arrow(@innerArrowWidth: @popoverArrowWidth, @popoverOutlineWidth: @dynamicPopoverOuterWidth, @outerColor: @popoverArrowOuterColor) {
+    .dynamic-arrow-styles();
+    left: 0;
+    top: (@innerArrowWidth + @popoverOutlineWidth) * -1;
+    border-width: @innerArrowWidth + @popoverOutlineWidth;
+    border-left-color: @outerColor;
+  }
+  .bottom-outer-arrow(@innerArrowWidth: @popoverArrowWidth, @popoverOutlineWidth: @dynamicPopoverOuterWidth, @outerColor: @popoverArrowOuterColor) {
+    .dynamic-arrow-styles();
+    top: (@innerArrowWidth + @popoverOutlineWidth) * -2;
+    right: (@innerArrowWidth + @popoverOutlineWidth) * -1;
+    border-width: @innerArrowWidth + @popoverOutlineWidth;
+    border-bottom-color: @outerColor;
+  }
+  .right-outer-arrow(@innerArrowWidth: @popoverArrowWidth, @popoverOutlineWidth: @dynamicPopoverOuterWidth, @outerColor: @popoverArrowOuterColor) {
+    .dynamic-arrow-styles();
+    right: 0;
+    top: (@innerArrowWidth + @popoverOutlineWidth) * -1;
+    border-width: @innerArrowWidth + @popoverOutlineWidth;
+    border-right-color: @outerColor;
+  }
+  .top-inner-arrow(@innerArrowWidth: @popoverArrowWidth, @color: @popoverBackground) {
+    .dynamic-arrow-styles();
+    border-width: @innerArrowWidth;
+    border-top-color: @color;
+    top: 0;
+    left: -@innerArrowWidth;
+  }
+  .left-inner-arrow(@innerArrowWidth: @popoverArrowWidth, @color: @popoverBackground) {
+    .dynamic-arrow-styles();
+    border-width: @innerArrowWidth;
+    border-left-color: @color;
+    left: 0;
+    top: -@innerArrowWidth;
+  }
+  .bottom-inner-arrow(@innerArrowWidth: @popoverArrowWidth, @color: @popoverBackground) {
+    .dynamic-arrow-styles();
+    border-width: @innerArrowWidth;
+    border-bottom-color: @color;
+    top: @innerArrowWidth * -2;
+    left: -@innerArrowWidth;
+  }
+  .right-inner-arrow(@innerArrowWidth: @popoverArrowWidth, @color: @popoverBackground) {
+    .dynamic-arrow-styles();
+    border-width: @innerArrowWidth;
+    border-right-color: @color;
+    left: @innerArrowWidth * -2;
+    top: -@innerArrowWidth;
+  }
+}
+// Uncomment the following lines and add the additional class `.dynamic` to your popovers
+// in order to control their overall size and the outline stroke width
+
+.popover.dynamic {
+  &:after {
+    display: block;
+    position: relative;
+  }
+  .arrow {
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    margin: 0;
+  }
+  &.top .arrow { bottom: 0; border-width: 0 0 0 0; }
+  &.left .arrow { right: 0; border-width: 0 0 0 0; }
+  &.bottom .arrow { top: 0; border-width: 0 0 0 0; }
+  &.right .arrow { left: 0; border-width: 0 0 0 0; }
+
+  &.top {
+    .arrow:before { #popoverArrowDynamic > .top-outer-arrow(); }
+    .arrow:after { #popoverArrowDynamic > .top-inner-arrow(); }
+  }
+
+  &.left {
+    .arrow:before { #popoverArrowDynamic > .left-outer-arrow(); }
+    .arrow:after { #popoverArrowDynamic > .left-inner-arrow(); }
+  }
+
+  &.bottom {
+    .arrow:before { #popoverArrowDynamic > .bottom-outer-arrow(); }
+    .arrow:after { #popoverArrowDynamic > .bottom-inner-arrow(); }
+  }
+
+  &.right {
+    .arrow:before { #popoverArrowDynamic > .right-outer-arrow(); }
+    .arrow:after { #popoverArrowDynamic > .right-inner-arrow(); }
+  }
+}

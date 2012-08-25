@@ -681,8 +681,134 @@ form.bs-docs-example {
   width: 260px;
   margin: 20px;
 }
-
-
+.bs-docs-example-popover .popover.dynamic:after {
+  position: relative;
+  display: block;
+}
+.bs-docs-example-popover .popover.dynamic .arrow {
+  width: 0;
+  height: 0;
+  margin: 0;
+  border-color: transparent;
+}
+.bs-docs-example-popover .popover.dynamic.top .arrow {
+  bottom: 0;
+  border-width: 0 0 0 0;
+}
+.bs-docs-example-popover .popover.dynamic.left .arrow {
+  right: 0;
+  border-width: 0 0 0 0;
+}
+.bs-docs-example-popover .popover.dynamic.bottom .arrow {
+  top: 0;
+  border-width: 0 0 0 0;
+}
+.bs-docs-example-popover .popover.dynamic.right .arrow {
+  left: 0;
+  border-width: 0 0 0 0;
+}
+.bs-docs-example-popover .popover.dynamic.top .arrow:before {
+  position: absolute;
+  top: 0;
+  left: -11px;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.25);
+  border-width: 11px;
+  content: " ";
+}
+.bs-docs-example-popover .popover.dynamic.top .arrow:after {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-top-color: #ffffff;
+  border-width: 10px;
+  content: " ";
+}
+.bs-docs-example-popover .popover.dynamic.left {
+  border: 4px solid #bde1fc;
+}
+.bs-docs-example-popover .popover.dynamic.left .arrow:before {
+  position: absolute;
+  top: -22px;
+  left: 0;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-left-color: #bde1fc;
+  border-width: 22px;
+  content: " ";
+}
+.bs-docs-example-popover .popover.dynamic.left .arrow:after {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-left-color: #ffffff;
+  border-width: 15px;
+  content: " ";
+}
+.bs-docs-example-popover .popover.dynamic.bottom {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.bs-docs-example-popover .popover.dynamic.bottom .arrow:before {
+  position: absolute;
+  top: -18px;
+  right: -9px;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  border-width: 9px;
+  content: " ";
+}
+.bs-docs-example-popover .popover.dynamic.bottom .arrow:after {
+  position: absolute;
+  top: -16px;
+  left: -8px;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-bottom-color: #f7f7f7;
+  border-width: 8px;
+  content: " ";
+}
+.bs-docs-example-popover .popover.dynamic.right .arrow:before {
+  position: absolute;
+  top: -15px;
+  right: 0;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-right-color: transparent;
+  border-width: 15px;
+  content: " ";
+}
+.bs-docs-example-popover .popover.dynamic.right .arrow:after {
+  position: absolute;
+  top: -15px;
+  left: -30px;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-right-color: rgba(0, 0, 0, 0.25);
+  border-width: 15px;
+  content: " ";
+}
 
 /* Responsive docs
 -------------------------------------------------- */

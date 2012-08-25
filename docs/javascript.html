@@ -376,7 +376,7 @@ $('#myModal').on('hidden', function () {
 
 
 
-        <!-- Dropdown
+        <!-- Dropdowns
         ================================================== -->
         <section id="dropdowns">
           <div class="page-header">
@@ -430,7 +430,7 @@ $('#myModal').on('hidden', function () {
                 </div>
               </div>
             </div> <!-- /navbar-example -->
-          </div> 
+          </div>
 
           <h3>Within tabs</h3>
           <div class="bs-docs-example">
@@ -467,7 +467,7 @@ $('#myModal').on('hidden', function () {
                 </ul>
               </li>
             </ul> <!-- /tabs -->
-          </div> 
+          </div>
 
 
           <hr class="bs-docs-separator">
@@ -479,7 +479,7 @@ $('#myModal').on('hidden', function () {
           <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" href="#"&gt;Dropdown trigger&lt;/a&gt;
+  &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#"&gt;Dropdown trigger&lt;/a&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
     ...
   &lt;/ul&gt;
@@ -924,6 +924,53 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         <div class="bs-docs-example" style="padding-bottom: 24px;">
           <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">Click to toggle popover</a>
         </div>
+
+        <h3>Dynamic popover</h3>
+        <p>Add a <code>.dynamic</code> class to your popovers and you can control the width and color of both the inner arrow and the arrow border.</p>
+        <pre class="prettyprint linenums">
+.popover.dynamic {
+  &amp;.top {
+  .arrow:before { #popoverArrowDynamic > .top-outer-arrow(@popoverArrowWidth, @dynamicPopoverOuterWidth, @popoverArrowOuterColor); }
+  .arrow:after { #popoverArrowDynamic > .top-inner-arrow(@popoverArrowWidth, @color); }
+  }
+}
+        </pre>
+        <div class="bs-docs-example bs-docs-example-popover">
+          <div class="popover dynamic top">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover top</h3>
+            <div class="popover-content">
+              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
+          </div>
+
+          <div class="popover dynamic right">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover right</h3>
+            <div class="popover-content">
+              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
+          </div>
+
+          <div class="popover dynamic bottom">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover bottom</h3>
+            <div class="popover-content">
+              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
+          </div>
+
+          <div class="popover dynamic left">
+            <div class="arrow"></div>
+            <h3 class="popover-title">Popover left</h3>
+            <div class="popover-content">
+              <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </div>
+
 
 
         <hr class="bs-docs-separator">
@@ -1606,7 +1653,7 @@ $('.carousel').carousel({
             <h3>Via data attributes</h3>
             <p>To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.</p>
 
-            <pre class="prettyprint linenums">&lt;div data-spy="affix" data-offset-top="200"&gt;...&lt;/body&gt;</pre>
+            <pre class="prettyprint linenums">&lt;div data-spy="affix" data-offset-top="200"&gt;...&lt;/div&gt;</pre>
 
             <div class="alert alert-info">
               <strong>Heads up!</strong>

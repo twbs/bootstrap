@@ -175,6 +175,10 @@
   select,
   textarea {
     color: @textColor;
+  }
+  input,
+  select,
+  textarea {
     border-color: @borderColor;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
@@ -511,8 +515,6 @@
 .navbarVerticalAlign(@elementHeight) {
   margin-top: (@navbarHeight - @elementHeight) / 2;
 }
-
-
 
 // Grid System
 // -----------
