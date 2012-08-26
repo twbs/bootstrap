@@ -14,6 +14,30 @@ Clone the repo, `git clone git://github.com/twitter/bootstrap.git`, or [download
 
 
 
+SASS: Usage
+-----------
+
+You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new project and start cranking.
+
+Because SASS always outputs standard css, just link to the final output like normal:
+
+`<link rel="stylesheet" type="text/css" href="bootstrap-2.1.0.css">`
+
+For more info, refer to the docs!
+
+
+
+SASS: Basic modification
+------------------------
+
+You can learn more about SASS at:
+
+[sass-lang.com](http://sass-lang.com)
+
+SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:bootstrap-2.1.0.css`
+
+
+
 Versioning
 ----------
 
@@ -76,6 +100,20 @@ Channel: ##twitter-bootstrap (the double ## is not a typo)
 
 
 
+SASS: Developers
+----------------
+
+We have included a Rakefile with convenience methods for working with the SASS Bootstrap library.
+
++ **build** - `rake build`
+This will run the less compiler on the bootstrap lib and regenerate the docs dir.
+The lessc compiler is required for this command to run.
+
++ **watch** - `rake watch`
+This is a convenience method for watching your Sass files and automatically building them whenever you save.
+
+
+
 Developers
 ----------
 
@@ -118,6 +156,53 @@ Authors
 
 + http://twitter.com/fat
 + http://github.com/fat
+
+
+
+Sass Conversion
+---------------
+
+The Twitter Bootstrap was lovingly converted to Sass by:
+
+**John W. Long**
+
++ http://twitter.com/johnwlong
++ http://github.com/jlong
+
+**Jeremy Hinegardner**
+
++ http://twitter.com/copiousfreetime
++ http://github.com/copiousfreetime
+
+**m5o**
+
++ http://twitter.com/m5o
++ http://github.com/m5o
+
+**smt**
+
++ http://twitter.com/tudorstudio
++ http://github.com/smt
+
+And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
+
+
+
+Sass Conversion Quick Tips
+--------------------------
+
+* replace @ with $
+* replace . with @include for mixins
+* replace `spin` with `adjust-hue`
+* add !default to variable definitions
+* replace #gradient > .vertical with @include gradient-vertical
+* replace #grid > .style with @include grid-style
+* use grid-core and grid-fluid mixins instead of #grid > .core and #grid > .fluid
+* use font-shorthand instead of #font > .shorthand
+* replace fadein with fade-in
+* move @import for reset below mixins, because it uses tab-focus mixin in bootstrap.scss
+* explicitly provide .clearfix, .hide-text and .input-block-level for compatibility with LESS output
+* pass grid-* mixin arguments to generators, because otherwise the generator mixins will use the default variables pull transition definition into variable
 
 
 
