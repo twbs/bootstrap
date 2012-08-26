@@ -15,7 +15,7 @@ BOOTSTRAP_MIN_CSS = "bootstrap-#{VERSION}.min.css"
 BOOTSTRAP_RESPONSIVE_CSS = "bootstrap-responsive-#{VERSION}.css"
 BOOTSTRAP_RESPONSIVE_MIN_CSS = "bootstrap-responsive-#{VERSION}.min.css"
 
-SASS_COMMAND = "sass --precision 10 --load-path lib --style"
+SASS_COMMAND = "sass --precision 16 --load-path lib --style"
 
 task BOOTSTRAP_CSS do |target|
   sh "#{SASS_COMMAND} expanded lib/bootstrap.scss:#{target}"
