@@ -68,7 +68,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    @include nav-divider();
+    @include nav-divider($dropdownDividerTop, $dropdownDividerBottom);
   }
 
   // Links within the dropdown menu

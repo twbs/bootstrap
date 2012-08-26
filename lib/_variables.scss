@@ -108,11 +108,11 @@ $dropdownDividerBottom:         $white !default;
 
 $dropdownLinkColor:             $grayDark !default;
 
-$dropdownLinkColorHover:        $white !default;
-$dropdownLinkBackgroundHover:   $linkColor !default;
-
 $dropdownLinkColorActive:       $dropdownLinkColor !default;
 $dropdownLinkBackgroundActive:  $linkColor !default;
+
+$dropdownLinkColorHover:        $white !default;
+$dropdownLinkBackgroundHover:   $dropdownLinkBackgroundActive !default;
 
 
 

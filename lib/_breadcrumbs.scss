@@ -2,13 +2,13 @@
 // Breadcrumbs
 // --------------------------------------------------
 
+
 .breadcrumb {
   padding: 8px 15px;
   margin: 0 0 $baseLineHeight;
   list-style: none;
   background-color: #f5f5f5;
   @include border-radius(4px);
-  @include box-shadow(inset 0 1px 0 $white);
   li {
     display: inline-block;
     @include ie7-inline-block();
@@ -18,7 +18,7 @@
     padding: 0 5px;
     color: #ccc;
   }
-  .active a {
+  .active {
     color: $grayLight;
   }
 }

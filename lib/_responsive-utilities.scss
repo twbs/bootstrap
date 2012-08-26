@@ -3,6 +3,21 @@
 // --------------------------------------------------
 
 
+// Clearing floats
+.clearfix {
+  @include clearfix();
+}
+
+// Accessible yet invisible text
+.hide-text {
+  @include hide-text();
+}
+
+// Uses box-sizing mixin, so must be defined here
+.input-block-level {
+  @include input-block-level();
+}
+
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
 .hidden {
@@ -15,10 +30,10 @@
 // For desktops
 .visible-phone     { display: none !important; }
 .visible-tablet    { display: none !important; }
-.visible-desktop   { } // Don't set initially
 .hidden-phone      { }
 .hidden-tablet     { }
 .hidden-desktop    { display: none !important; }
+.visible-desktop   { display: inherit !important; }
 
 // Tablets & small desktops only
 @media (min-width: 768px) and (max-width: 979px) {
