@@ -305,83 +305,83 @@ a:hover {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   float: left;
-  margin-left: 2.12765957%;
-  *margin-left: 2.07446809%;
+  margin-left: 2.1276595745%;
+  *margin-left: 2.0744680851%;
 }
 .row-fluid [class*="span"]:first-child {
   margin-left: 0;
 }
 .row-fluid .span12 {
   width: 100%;
-  *width: 99.94680851%;
-  margin-left: 108.5106383%;
-  *margin-left: 108.40425532%;
+  *width: 99.9468085106%;
+  margin-left: 108.5106382979%;
+  *margin-left: 108.4042553191%;
 }
 .row-fluid .span11 {
-  width: 91.4893617%;
-  *width: 91.43617021%;
+  width: 91.4893617021%;
+  *width: 91.4361702128%;
   margin-left: 100%;
-  *margin-left: 99.89361702%;
+  *margin-left: 99.8936170213%;
 }
 .row-fluid .span10 {
-  width: 82.9787234%;
-  *width: 82.92553191%;
-  margin-left: 91.4893617%;
-  *margin-left: 91.38297872%;
+  width: 82.9787234043%;
+  *width: 82.9255319149%;
+  margin-left: 91.4893617021%;
+  *margin-left: 91.3829787234%;
 }
 .row-fluid .span9 {
-  width: 74.46808511%;
-  *width: 74.41489362%;
-  margin-left: 82.9787234%;
-  *margin-left: 82.87234043%;
+  width: 74.4680851064%;
+  *width: 74.414893617%;
+  margin-left: 82.9787234043%;
+  *margin-left: 82.8723404255%;
 }
 .row-fluid .span8 {
-  width: 65.95744681%;
-  *width: 65.90425532%;
-  margin-left: 74.46808511%;
-  *margin-left: 74.36170213%;
+  width: 65.9574468085%;
+  *width: 65.9042553191%;
+  margin-left: 74.4680851064%;
+  *margin-left: 74.3617021277%;
 }
 .row-fluid .span7 {
-  width: 57.44680851%;
-  *width: 57.39361702%;
-  margin-left: 65.95744681%;
-  *margin-left: 65.85106383%;
+  width: 57.4468085106%;
+  *width: 57.3936170213%;
+  margin-left: 65.9574468085%;
+  *margin-left: 65.8510638298%;
 }
 .row-fluid .span6 {
-  width: 48.93617021%;
-  *width: 48.88297872%;
-  margin-left: 57.44680851%;
-  *margin-left: 57.34042553%;
+  width: 48.9361702128%;
+  *width: 48.8829787234%;
+  margin-left: 57.4468085106%;
+  *margin-left: 57.3404255319%;
 }
 .row-fluid .span5 {
-  width: 40.42553191%;
-  *width: 40.37234043%;
-  margin-left: 48.93617021%;
-  *margin-left: 48.82978723%;
+  width: 40.4255319149%;
+  *width: 40.3723404255%;
+  margin-left: 48.9361702128%;
+  *margin-left: 48.829787234%;
 }
 .row-fluid .span4 {
-  width: 31.91489362%;
-  *width: 31.86170213%;
-  margin-left: 40.42553191%;
-  *margin-left: 40.31914894%;
+  width: 31.914893617%;
+  *width: 31.8617021277%;
+  margin-left: 40.4255319149%;
+  *margin-left: 40.3191489362%;
 }
 .row-fluid .span3 {
-  width: 23.40425532%;
-  *width: 23.35106383%;
-  margin-left: 31.91489362%;
-  *margin-left: 31.80851064%;
+  width: 23.4042553191%;
+  *width: 23.3510638298%;
+  margin-left: 31.914893617%;
+  *margin-left: 31.8085106383%;
 }
 .row-fluid .span2 {
-  width: 14.89361702%;
-  *width: 14.84042553%;
-  margin-left: 23.40425532%;
-  *margin-left: 23.29787234%;
+  width: 14.8936170213%;
+  *width: 14.8404255319%;
+  margin-left: 23.4042553191%;
+  *margin-left: 23.2978723404%;
 }
 .row-fluid .span1 {
-  width: 6.38297872%;
-  *width: 6.32978723%;
-  margin-left: 14.89361702%;
-  *margin-left: 14.78723404%;
+  width: 6.3829787234%;
+  *width: 6.329787234%;
+  margin-left: 14.8936170213%;
+  *margin-left: 14.7872340426%;
 }
 
 [class*="span"].hide,
@@ -2659,7 +2659,7 @@ button.close {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#e6e6e6));
   background-image: -webkit-linear-gradient(top, white, #e6e6e6);
   background-image: -o-linear-gradient(top, white, #e6e6e6);
-  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, white, #e6e6e6);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#e3e3e3', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
@@ -3685,7 +3685,7 @@ input[type="submit"].btn.btn-mini {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#f2f2f2));
   background-image: -webkit-linear-gradient(top, white, #f2f2f2);
   background-image: -o-linear-gradient(top, white, #f2f2f2);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-image: linear-gradient(to bottom, white, #f2f2f2);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0', GradientType=0);
   border: 1px solid #d4d4d4;
@@ -4831,7 +4831,7 @@ a.label:hover, a.badge:hover {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(whitesmoke), to(#f9f9f9));
   background-image: -webkit-linear-gradient(top, whitesmoke, #f9f9f9);
   background-image: -o-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
+  background-image: linear-gradient(to bottom, whitesmoke, #f9f9f9);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f2f2', endColorstr='#f6f6f6', GradientType=0);
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
