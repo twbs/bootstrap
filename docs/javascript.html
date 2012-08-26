@@ -430,7 +430,7 @@ $('#myModal').on('hidden', function () {
                 </div>
               </div>
             </div> <!-- /navbar-example -->
-          </div>
+          </div> 
 
           <h3>Within tabs</h3>
           <div class="bs-docs-example">
@@ -467,7 +467,7 @@ $('#myModal').on('hidden', function () {
                 </ul>
               </li>
             </ul> <!-- /tabs -->
-          </div>
+          </div> 
 
 
           <hr class="bs-docs-separator">
@@ -926,19 +926,20 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
         </div>
 
         <h3>Dynamic popover</h3>
-        <p>Add a <code>.dynamic</code> class to your popovers and you can control the width and color of both the inner arrow and the arrow border.</p>
+        <p>Add a <code>.dynamic</code> class to your popovers and you can control the width and color of both the inner arrow and the outer border.</p>
         <pre class="prettyprint linenums">
 .popover.dynamic {
   &amp;.top {
-  .arrow:before { #popoverArrowDynamic > .top-outer-arrow(@popoverArrowWidth, @dynamicPopoverOuterWidth, @popoverArrowOuterColor); }
-  .arrow:after { #popoverArrowDynamic > .top-inner-arrow(@popoverArrowWidth, @color); }
+  .arrow { #popoverArrowDynamic > .top-outer-arrow(@innerArrowPx, @outlinePx, @outerColor); }
+  .arrow:after { #popoverArrowDynamic > .top-inner-arrow(@innerArrowPx, @outlinePx, @innerColor); }
   }
+  &amp;.bottom { ... }
 }
         </pre>
         <div class="bs-docs-example bs-docs-example-popover">
-          <div class="popover dynamic top">
+          <div class="popover dynamic top alert-error">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover top</h3>
+            <h3 class="popover-title"><b>Popover custom style</b></h3>
             <div class="popover-content">
               <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
             </div>
@@ -946,7 +947,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <div class="popover dynamic right">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover right</h3>
+            <h3 class="popover-title">Popover custom arrow fill</h3>
             <div class="popover-content">
               <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
             </div>
@@ -954,7 +955,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <div class="popover dynamic bottom">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover bottom</h3>
+            <h3 class="popover-title">Popover smaller arrow</h3>
             <div class="popover-content">
               <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
             </div>
@@ -962,7 +963,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <div class="popover dynamic left">
             <div class="arrow"></div>
-            <h3 class="popover-title">Popover left</h3>
+            <h3 class="popover-title">Popover custom arrow width &amp; color</h3>
             <div class="popover-content">
               <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
             </div>
@@ -970,7 +971,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <div class="clearfix"></div>
         </div>
-
 
 
         <hr class="bs-docs-separator">
