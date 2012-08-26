@@ -305,83 +305,155 @@ a:hover {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   float: left;
-  margin-left: 2.1276595745%;
-  *margin-left: 2.0744680851%;
+  margin-left: 2.127659574468085%;
+  *margin-left: 2.074468085106383%;
 }
 .row-fluid [class*="span"]:first-child {
   margin-left: 0;
 }
 .row-fluid .span12 {
   width: 100%;
-  *width: 99.9468085106%;
-  margin-left: 108.5106382979%;
-  *margin-left: 108.4042553191%;
+  *width: 99.94680851063829%;
 }
 .row-fluid .span11 {
-  width: 91.4893617021%;
-  *width: 91.4361702128%;
-  margin-left: 100%;
-  *margin-left: 99.8936170213%;
+  width: 91.48936170212765%;
+  *width: 91.43617021276594%;
 }
 .row-fluid .span10 {
-  width: 82.9787234043%;
-  *width: 82.9255319149%;
-  margin-left: 91.4893617021%;
-  *margin-left: 91.3829787234%;
+  width: 82.97872340425532%;
+  *width: 82.92553191489361%;
 }
 .row-fluid .span9 {
-  width: 74.4680851064%;
-  *width: 74.414893617%;
-  margin-left: 82.9787234043%;
-  *margin-left: 82.8723404255%;
+  width: 74.46808510638297%;
+  *width: 74.41489361702126%;
 }
 .row-fluid .span8 {
-  width: 65.9574468085%;
-  *width: 65.9042553191%;
-  margin-left: 74.4680851064%;
-  *margin-left: 74.3617021277%;
+  width: 65.95744680851064%;
+  *width: 65.90425531914893%;
 }
 .row-fluid .span7 {
-  width: 57.4468085106%;
-  *width: 57.3936170213%;
-  margin-left: 65.9574468085%;
-  *margin-left: 65.8510638298%;
+  width: 57.44680851063829%;
+  *width: 57.39361702127659%;
 }
 .row-fluid .span6 {
-  width: 48.9361702128%;
-  *width: 48.8829787234%;
-  margin-left: 57.4468085106%;
-  *margin-left: 57.3404255319%;
+  width: 48.93617021276595%;
+  *width: 48.88297872340425%;
 }
 .row-fluid .span5 {
-  width: 40.4255319149%;
-  *width: 40.3723404255%;
-  margin-left: 48.9361702128%;
-  *margin-left: 48.829787234%;
+  width: 40.42553191489362%;
+  *width: 40.37234042553192%;
 }
 .row-fluid .span4 {
-  width: 31.914893617%;
-  *width: 31.8617021277%;
-  margin-left: 40.4255319149%;
-  *margin-left: 40.3191489362%;
+  width: 31.91489361702128%;
+  *width: 31.861702127659576%;
 }
 .row-fluid .span3 {
-  width: 23.4042553191%;
-  *width: 23.3510638298%;
-  margin-left: 31.914893617%;
-  *margin-left: 31.8085106383%;
+  width: 23.404255319148934%;
+  *width: 23.351063829787233%;
 }
 .row-fluid .span2 {
-  width: 14.8936170213%;
-  *width: 14.8404255319%;
-  margin-left: 23.4042553191%;
-  *margin-left: 23.2978723404%;
+  width: 14.893617021276595%;
+  *width: 14.840425531914892%;
 }
 .row-fluid .span1 {
-  width: 6.3829787234%;
-  *width: 6.329787234%;
-  margin-left: 14.8936170213%;
-  *margin-left: 14.7872340426%;
+  width: 6.382978723404255%;
+  *width: 6.329787234042553%;
+}
+.row-fluid .offset12 {
+  margin-left: 104.25531914893617%;
+  *margin-left: 104.14893617021275%;
+}
+.row-fluid .offset12:first-child {
+  margin-left: 102.12765957446808%;
+  *margin-left: 102.02127659574467%;
+}
+.row-fluid .offset11 {
+  margin-left: 95.74468085106382%;
+  *margin-left: 95.6382978723404%;
+}
+.row-fluid .offset11:first-child {
+  margin-left: 93.61702127659574%;
+  *margin-left: 93.51063829787232%;
+}
+.row-fluid .offset10 {
+  margin-left: 87.23404255319149%;
+  *margin-left: 87.12765957446807%;
+}
+.row-fluid .offset10:first-child {
+  margin-left: 85.1063829787234%;
+  *margin-left: 84.99999999999999%;
+}
+.row-fluid .offset9 {
+  margin-left: 78.72340425531914%;
+  *margin-left: 78.61702127659572%;
+}
+.row-fluid .offset9:first-child {
+  margin-left: 76.59574468085106%;
+  *margin-left: 76.48936170212764%;
+}
+.row-fluid .offset8 {
+  margin-left: 70.2127659574468%;
+  *margin-left: 70.10638297872339%;
+}
+.row-fluid .offset8:first-child {
+  margin-left: 68.08510638297872%;
+  *margin-left: 67.9787234042553%;
+}
+.row-fluid .offset7 {
+  margin-left: 61.702127659574465%;
+  *margin-left: 61.59574468085106%;
+}
+.row-fluid .offset7:first-child {
+  margin-left: 59.57446808510638%;
+  *margin-left: 59.46808510638298%;
+}
+.row-fluid .offset6 {
+  margin-left: 53.191489361702125%;
+  *margin-left: 53.085106382978715%;
+}
+.row-fluid .offset6:first-child {
+  margin-left: 51.063829787234035%;
+  *margin-left: 50.95744680851063%;
+}
+.row-fluid .offset5 {
+  margin-left: 44.68085106382979%;
+  *margin-left: 44.57446808510638%;
+}
+.row-fluid .offset5:first-child {
+  margin-left: 42.5531914893617%;
+  *margin-left: 42.4468085106383%;
+}
+.row-fluid .offset4 {
+  margin-left: 36.170212765957444%;
+  *margin-left: 36.06382978723405%;
+}
+.row-fluid .offset4:first-child {
+  margin-left: 34.04255319148936%;
+  *margin-left: 33.93617021276596%;
+}
+.row-fluid .offset3 {
+  margin-left: 27.659574468085104%;
+  *margin-left: 27.5531914893617%;
+}
+.row-fluid .offset3:first-child {
+  margin-left: 25.53191489361702%;
+  *margin-left: 25.425531914893618%;
+}
+.row-fluid .offset2 {
+  margin-left: 19.148936170212764%;
+  *margin-left: 19.04255319148936%;
+}
+.row-fluid .offset2:first-child {
+  margin-left: 17.02127659574468%;
+  *margin-left: 16.914893617021278%;
+}
+.row-fluid .offset1 {
+  margin-left: 10.638297872340425%;
+  *margin-left: 10.53191489361702%;
+}
+.row-fluid .offset1:first-child {
+  margin-left: 8.51063829787234%;
+  *margin-left: 8.404255319148938%;
 }
 
 [class*="span"].hide,
@@ -1248,6 +1320,7 @@ select:focus:required:invalid:focus {
 .help-inline {
   display: inline-block;
   *display: inline;
+  /* IE7 inline-block hack */
   *zoom: 1;
   vertical-align: middle;
   padding-left: 5px;
@@ -1427,6 +1500,7 @@ input.search-query {
 .form-horizontal .input-append {
   display: inline-block;
   *display: inline;
+  /* IE7 inline-block hack */
   *zoom: 1;
   margin-bottom: 0;
   vertical-align: middle;
@@ -2643,6 +2717,7 @@ button.close {
 .btn {
   display: inline-block;
   *display: inline;
+  /* IE7 inline-block hack */
   *zoom: 1;
   padding: 4px 14px;
   margin-bottom: 0;
@@ -3011,6 +3086,7 @@ input[type="submit"].btn.btn-mini {
 .btn-toolbar .btn-group {
   display: inline-block;
   *display: inline;
+  /* IE7 inline-block hack */
   *zoom: 1;
 }
 .btn-toolbar .btn + .btn,
@@ -3110,8 +3186,10 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group > .btn-mini + .dropdown-toggle {
-  *padding-left: 2px;
-  *padding-right: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  *padding-top: 2px;
+  *padding-bottom: 2px;
 }
 
 .btn-group > .btn-small + .dropdown-toggle {
@@ -3120,8 +3198,10 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group > .btn-large + .dropdown-toggle {
-  *padding-left: 7px;
-  *padding-right: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  *padding-top: 7px;
+  *padding-bottom: 7px;
 }
 
 .btn-group.open .dropdown-toggle {
@@ -3187,6 +3267,7 @@ input[type="submit"].btn.btn-mini {
 .btn-group-vertical {
   display: inline-block;
   *display: inline;
+  /* IE7 inline-block hack */
   *zoom: 1;
 }
 
@@ -3860,9 +3941,9 @@ input[type="submit"].btn.btn-mini {
   bottom: 0;
 }
 .navbar-fixed-bottom .navbar-inner {
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1), 0 -1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .nav {
@@ -4169,13 +4250,11 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 white;
-  -moz-box-shadow: inset 0 1px 0 white;
-  box-shadow: inset 0 1px 0 white;
 }
 .breadcrumb li {
   display: inline-block;
   *display: inline;
+  /* IE7 inline-block hack */
   *zoom: 1;
   text-shadow: 0 1px 0 white;
 }
@@ -4183,7 +4262,7 @@ input[type="submit"].btn.btn-mini {
   padding: 0 5px;
   color: #ccc;
 }
-.breadcrumb .active a {
+.breadcrumb .active {
   color: #999999;
 }
 
@@ -4195,6 +4274,7 @@ input[type="submit"].btn.btn-mini {
 .pagination ul {
   display: inline-block;
   *display: inline;
+  /* IE7 inline-block hack */
   *zoom: 1;
   margin-left: 0;
   margin-bottom: 0;
@@ -4661,9 +4741,9 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.055);
-  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.055);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.055);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
