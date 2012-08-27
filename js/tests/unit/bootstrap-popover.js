@@ -3,7 +3,7 @@ $(function () {
     module("bootstrap-popover")
 
     var _data = parseFloat($.fn.jquery) === 1.8 ? $._data : $.data
-    
+
       test("should be defined on jquery object", function () {
         var div = $('<div></div>')
         ok(div.popover, 'popover method is defined')
@@ -72,7 +72,7 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
-    
+
       test("should respect custom classes", function() {
         $.support.transition = false
         var popover = $('<a href="#">@fat</a>')
@@ -82,7 +82,7 @@ $(function () {
           , content: 'Test'
           , template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
           })
-        
+
         popover.popover('show')
 
         ok($('.popover').length, 'popover was inserted')
@@ -105,5 +105,5 @@ $(function () {
         ok(_data(popover[0], 'events').click[0].namespace == 'foo', 'popover still has click.foo')
         ok(!_data(popover[0], 'events').mouseover && !_data(popover[0], 'events').mouseout, 'popover does not have any events')
       })
-      
+
 })

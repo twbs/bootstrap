@@ -44,7 +44,7 @@
 
     constructor: Typeahead
 
-  , eventSupported: function(eventName) {         
+  , eventSupported: function(eventName) {
       var isSupported = (eventName in this.$element)
       if (!isSupported) {
         this.$element.setAttribute(eventName, 'return;')

@@ -3,7 +3,7 @@ $(function () {
     module("bootstrap-typeahead")
 
     var _data = parseFloat($.fn.jquery) === 1.8 ? $._data : $.data
-    var _eventSupported = function(eventName) {     
+    var _eventSupported = function(eventName) {
       var $el = $('body').append('<div />')
         , isSupported = (eventName in $el)
       if (!isSupported) {
