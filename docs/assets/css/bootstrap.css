@@ -3388,6 +3388,7 @@ input[type="submit"].btn.btn-mini {
   *margin-left: .3em;
   font-size: 0;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .btn-group:first-child {
