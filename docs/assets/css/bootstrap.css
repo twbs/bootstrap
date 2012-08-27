@@ -215,6 +215,7 @@ a:hover {
 
 [class*="span"] {
   float: left;
+  min-height: 1px;
   margin-left: 20px;
 }
 
