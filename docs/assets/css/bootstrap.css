@@ -4178,7 +4178,9 @@ input[type="submit"].btn.btn-mini {
   margin-top: 5px;
 }
 
-.navbar .btn-group .btn {
+.navbar .btn-group .btn,
+.navbar .input-prepend .btn,
+.navbar .input-append .btn {
   margin-top: 0;
 }
 
