@@ -3125,6 +3125,12 @@ button.close {
   margin-top: 5px;
 }
 
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+
 .btn-primary.active,
 .btn-warning.active,
 .btn-danger.active,
