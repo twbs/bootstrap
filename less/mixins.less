@@ -251,10 +251,11 @@
 }
 
 // Drop shadows
-.box-shadow(@shadow) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
+.box-shadow(@shadowA, @shadowB:X, ...){
+  @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+  -webkit-box-shadow: @props;
+     -moz-box-shadow: @props;
+          box-shadow: @props;
 }
 
 // Transitions
