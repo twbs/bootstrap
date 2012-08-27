@@ -846,6 +846,9 @@
     display: inline-block;
     width: auto;
   }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
+  }
   .modal {
     position: fixed;
     top: 20px;
