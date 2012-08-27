@@ -1540,7 +1540,7 @@ $('.carousel').carousel({
 
             <div class="alert alert-info">
               <strong>{{_i}}Heads up!{{/i}}</strong>
-              {{_i}}It's up to you to manage the position of a pinned element. This is done by styling <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>.{{/i}}
+              {{_i}}You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.{{/i}}
             </div>
 
             <h3>{{_i}}Via JavaScript{{/i}}</h3>
