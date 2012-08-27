@@ -756,11 +756,6 @@ form.bs-docs-example {
 /* Sidenav for Docs
 -------------------------------------------------- */
 
-/* prevent column from collapsing when affixing */
-.span3 {
-  min-height: 1px;
-}
-
 .bs-docs-sidenav {
   width: 228px;
   margin: 30px 0 0;
