@@ -456,7 +456,7 @@
     background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
     background-repeat: no-repeat;
   }
-  .striped(@color, @angle: 45deg) {
+  .striped(@color: #555, @angle: 45deg) {
     background-color: @color;
     background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
     background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
