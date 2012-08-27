@@ -5658,6 +5658,21 @@ a.badge:hover {
   margin-bottom: 0;
 }
 
+.dissolve .item {
+  -webkit-transition: opacity 2s ease-in-out;
+     -moz-transition: opacity 2s ease-in-out;
+       -o-transition: opacity 2s ease-in-out;
+          transition: opacity 2s ease-in-out;
+}
+
+.dissolve .active.left,
+.dissolve .active.right {
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
