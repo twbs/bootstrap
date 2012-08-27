@@ -129,3 +129,20 @@
 .carousel-caption p {
   margin-bottom: 0;
 }
+
+
+
+// Dissolve animation
+.dissolve {
+  .item {
+    .transition(opacity 2s ease-in-out); 
+  }
+  .active {
+    &.left,
+    &.right {
+      left: 0;
+      z-index: 2;
+      .opacity(0);
+    }
+  }
+}
