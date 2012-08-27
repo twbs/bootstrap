@@ -960,7 +960,8 @@ input[type="color"],
 }
 
 input,
-textarea {
+textarea,
+.uneditable-input {
   width: 206px;
 }
 
