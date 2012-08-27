@@ -29,6 +29,7 @@
   var Typeahead = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
+    this.eventSupported = this.options.eventSupported || this.eventSupported
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
@@ -42,6 +43,15 @@
   Typeahead.prototype = {
 
     constructor: Typeahead
+
+  , eventSupported: function(eventName) {
+      var isSupported = (eventName in this.$element)
+      if (!isSupported) {
+        this.$element.setAttribute(eventName, 'return;')
+        isSupported = typeof this.$element[eventName] === 'function'
+      }
+      return isSupported
+    }
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
@@ -174,7 +184,7 @@
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
 
-      if ($.browser.webkit || $.browser.msie) {
+      if (this.eventSupported('keydown')) {
         this.$element.on('keydown', $.proxy(this.keydown, this))
       }
 
