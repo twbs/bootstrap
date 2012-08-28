@@ -172,6 +172,172 @@ input[type="button"] {
 }
 
 
+// Angled sides
+// ------------------------------
+.directionalAngled(@startColor: #555, @endColor: #333, @deg: 45deg) {
+  background-color: @endColor;
+  background-repeat: no-repeat;
+  background-image: -moz-linear-gradient(@deg, @startColor, @endColor); // FF 3.6+
+  background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
+  background-image: linear-gradient(@deg, @startColor, @endColor); // Standard, IE10
+}
+.btnAngledColors(@primaryColor: @btnBackground, @secondaryColor: @btnBackgroundHighlight) {
+  .directionalAngled(@primaryColor, @secondaryColor, -45deg);
+  background-repeat: no-repeat;
+  border-color: @secondaryColor;
+  border-color: rgba(0,0,0,.1);
+}
+.btn-angled-left, .btn-angled-right {
+  position: relative;
+  // Hover state
+  &:hover:before, &:hover:after{
+    background-position: -15px/1.414 -15px/1.414;
+    .transition(background-position .1s linear);
+  }
+  // Active state
+  &.active:after, &:active:after {
+    background-image: none;
+    outline: 0;
+    .box-shadow(~"inset 0 3px 4px rgba(0,0,0,.15)");
+  }
+  // Active state
+  &.active:before, &:active:before{
+    background-image: none;
+    outline: 0;
+    .box-shadow(~"inset 3px 0 4px rgba(0,0,0,.15)");
+  }
+  // Disabled state
+  &.disabled:before, &[disabled]:before, &.disabled:after, &[disabled]:after{
+    cursor: default;
+    background-image: none;
+    .opacity(65);
+    .box-shadow(none);
+  }
+}
+.btn-angled-left{
+  .border-top-left-radius(1px);
+  .border-bottom-left-radius(1px);
+  border-left: none;
+  margin-left: 11px;
+  padding-left: 6px;
+  &:before {
+    border-style: none none solid solid;
+    left: -10px;
+    .border-top-right-radius(10000em);
+  }
+}
+.btn-angled-right{
+  .border-top-right-radius(1px);
+  .border-bottom-right-radius(1px);
+  border-right: none;
+  margin-right: 11px;
+  padding-right: 6px;
+  &:after {
+    border-style: solid solid none none;
+    right: -11px;
+    .border-bottom-left-radius(10000em);
+  }
+}
+.btn-angled-left:before, .btn-angled-right:after {
+  .rotate(45deg);
+  width: 0;
+  height: 0;
+  padding: 10px;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  border-width: 1px;
+  margin-top: -0.5px;
+  .btnAngledColors();
+}
+// Colors
+.btn-primary {
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    .btnAngledColors(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  }
+}
+.btn-warning {
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    .btnAngledColors(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  }
+}
+.btn-danger {
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    .btnAngledColors(@btnDangerBackground, @btnDangerBackgroundHighlight);
+  }
+}
+.btn-success {
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    .btnAngledColors(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+  }
+}
+.btn-info {
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    .btnAngledColors(@btnInfoBackground, @btnInfoBackgroundHighlight);
+  }
+}
+.btn-inverse {
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    .btnAngledColors(@btnInverseBackground, @btnInverseBackgroundHighlight);
+  }
+}
+.btn-mini{
+  &.btn-angled-left{
+    margin-left: 8.5px;
+    &:before {
+      left: -7.5px;
+    }
+  }
+  &.btn-angled-right{
+    margin-right: 8.5px;
+    &:after {
+      right: -8.5px;
+    }
+  }
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    padding: 7.5px;
+  }
+}
+.btn-small{
+  &.btn-angled-left{
+    margin-left: 9.5px;
+    &:before {
+      left: -8.5px;
+    }
+  }
+  &.btn-angled-right{
+    margin-right: 9.5px;
+    &:after {
+      right: -9.5px;
+    }
+  }
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    padding: 8.5px;
+  }
+}
+.btn-large{
+  &.btn-angled-left{
+    margin-left: 14.5px;
+    padding-left: 10px;
+    &:before {
+      left: -13.5px;
+    }
+  }
+  &.btn-angled-right{
+    margin-right: 14.5px;
+    padding-right: 10px;
+    &:after {
+      right: -14.5px;
+    }
+  }
+  &.btn-angled-left:before, &.btn-angled-right:after {
+    padding: 13.5px;
+    margin-top: -4.5px;
+  }
+}
+
+
 // Cross-browser Jank
 // --------------------------------------------------
 
