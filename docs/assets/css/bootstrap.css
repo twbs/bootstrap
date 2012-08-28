@@ -1792,8 +1792,13 @@ legend + .control-group {
 }
 
 .form-horizontal .help-block {
-  margin-top: 10px;
   margin-bottom: 0;
+}
+
+.form-horizontal input + .help-block,
+.form-horizontal select + .help-block,
+.form-horizontal textarea + .help-block {
+  margin-top: 10px;
 }
 
 .form-horizontal .form-actions {

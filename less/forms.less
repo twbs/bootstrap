@@ -633,8 +633,15 @@ legend + .control-group {
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
   .help-block {
-    margin-top: @baseLineHeight / 2;
     margin-bottom: 0;
+  }
+  // And apply it only to .help-block instances that follow a form control
+  input,
+  select,
+  textarea {
+    + .help-block {
+      margin-top: @baseLineHeight / 2;
+    }
   }
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
