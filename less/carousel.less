@@ -62,6 +62,47 @@
     left: 100%;
   }
 
+  &.vertical {
+    .item {
+      .transition(.6s ease-in-out top);
+    }
+
+    .active {
+      top: 0;
+      left: 0;
+    }
+  
+    .next,
+    .prev {
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+  
+    .next {
+      top: 100%;
+      left: 0;
+    }
+    .prev {
+      top: -100%;
+      left: 0;
+    }
+    .next.left,
+    .prev.right {
+      top: 0;
+      left: 0;
+    }
+  
+    .active.left {
+      top: -100%;
+      left: 0;
+    }
+    .active.right {
+      top: 100%;
+      left: 0;
+    }
+  }
+
 }
 
 // Left/right controls for nav
