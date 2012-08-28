@@ -51,7 +51,7 @@
   }
 
   Button.prototype.toggle = function () {
-    var $parent = this.$element.parent('[data-toggle="buttons-radio"]')
+    var $parent = this.$element.closest('[data-toggle="buttons-radio"]')
 
     $parent && $parent
       .find('.active')
