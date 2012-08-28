@@ -101,15 +101,10 @@
       var that = this
 
       items = $.map( items, function(item) {
-          var itemObject
           if(typeof item === "string"){
-              itemObject = new Object()
-              itemObject.label = item
+              item = {label: item}
           }
-          else{
-              itemObject = item
-          }
-          return itemObject
+          return item
       })
 
       items = $.grep(items, function (item) {
