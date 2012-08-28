@@ -556,7 +556,7 @@
 // The Grid
 #grid {
 
-  .core (@gridColumnWidth, @gridGutterWidth) {
+  .core (@gridColumnWidth, @gridGutterWidth, @gridRowWidth) {
 
     .spanX (@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
@@ -571,111 +571,32 @@
     .offsetX (0) {}
 
     .offset (@columns) {
-      margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+      margin-left: percentage(@columns / @gridColumns);
     }
 
     .span (@columns) {
-      width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+      width: percentage(@columns / @gridColumns);
     }
 
     .row {
-      margin-left: @gridGutterWidth * -1;
+      margin-left: @gridGutterWidth / -2;
+      margin-right: @gridGutterWidth / -2;
       .clearfix();
     }
 
     [class*="span"] {
       float: left;
-      min-height: 1px; // prevent collapsing columns
-      margin-left: @gridGutterWidth;
+      min-height: 1px; // prevent column collapsing
+      padding-left: @gridGutterWidth / 2;
+      padding-right: @gridGutterWidth / 2;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
     }
-
-    // Set the container width, and override it for fixed navbars in media queries
-    .container,
-    .navbar-static-top .container,
-    .navbar-fixed-top .container,
-    .navbar-fixed-bottom .container { .span(@gridColumns); }
 
     // generate .spanX and .offsetX
     .spanX (@gridColumns);
     .offsetX (@gridColumns);
-
-  }
-
-  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
-
-    .spanX (@index) when (@index > 0) {
-      (~".span@{index}") { .span(@index); }
-      .spanX(@index - 1);
-    }
-    .spanX (0) {}
-
-    .offsetX (@index) when (@index > 0) {
-      (~'.offset@{index}') { .offset(@index); }
-      (~'.offset@{index}:first-child') { .offsetFirstChild(@index); }
-      .offsetX(@index - 1);
-    }
-    .offsetX (0) {}
-
-    .offset (@columns) {
-      margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
-  	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
-    }
-
-    .offsetFirstChild (@columns) {
-      margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
-      *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
-    }
-
-    .span (@columns) {
-      width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
-      *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
-    }
-
-    .row-fluid {
-      width: 100%;
-      .clearfix();
-      [class*="span"] {
-        .input-block-level();
-        float: left;
-        margin-left: @fluidGridGutterWidth;
-        *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
-      }
-      [class*="span"]:first-child {
-        margin-left: 0;
-      }
-
-      // generate .spanX and .offsetX
-      .spanX (@gridColumns);
-      .offsetX (@gridColumns);
-    }
-
-  }
-
-  .input(@gridColumnWidth, @gridGutterWidth) {
-
-    .spanX (@index) when (@index > 0) {
-      (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
-      .spanX(@index - 1);
-    }
-    .spanX (0) {}
-
-    .span(@columns) {
-      width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 14;
-    }
-
-    input,
-    textarea,
-    .uneditable-input {
-      margin-left: 0; // override margin-left from core grid system
-    }
-
-    // Space grid-sized controls properly if multiple per line
-    .controls-row [class*="span"] + [class*="span"] {
-      margin-left: @gridGutterWidth;
-    }
-
-    // generate .spanX
-    .spanX (@gridColumns);
 
   }
 
