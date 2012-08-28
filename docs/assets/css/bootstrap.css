@@ -5583,6 +5583,55 @@ a.badge:hover {
   left: 100%;
 }
 
+.carousel.carousel-vertical .carousel-inner {
+  height: 100%;
+}
+
+.carousel.carousel-vertical .item {
+  -webkit-transition: 0.6s ease-in-out top;
+     -moz-transition: 0.6s ease-in-out top;
+       -o-transition: 0.6s ease-in-out top;
+          transition: 0.6s ease-in-out top;
+}
+
+.carousel.carousel-vertical .active {
+  top: 0;
+  left: 0;
+}
+
+.carousel.carousel-vertical .next,
+.carousel.carousel-vertical .prev {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.carousel.carousel-vertical .next {
+  top: 100%;
+  left: 0;
+}
+
+.carousel.carousel-vertical .prev {
+  top: -100%;
+  left: 0;
+}
+
+.carousel.carousel-vertical .next.left,
+.carousel.carousel-vertical .prev.right {
+  top: 0;
+  left: 0;
+}
+
+.carousel.carousel-vertical .active.left {
+  top: -100%;
+  left: 0;
+}
+
+.carousel.carousel-vertical .active.right {
+  top: 100%;
+  left: 0;
+}
+
 .carousel-control {
   position: absolute;
   top: 40%;
