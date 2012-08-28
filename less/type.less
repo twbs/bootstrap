@@ -119,13 +119,13 @@ dd {
   .clearfix(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
-    width: 120px;
+    width: @horizontalComponentOffset - 20;
     clear: left;
     text-align: right;
     .text-overflow();
   }
   dd {
-    margin-left: 130px;
+    margin-left: @horizontalComponentOffset;
   }
 }
 

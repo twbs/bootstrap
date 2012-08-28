@@ -743,7 +743,7 @@ dd {
 
 .dl-horizontal dt {
   float: left;
-  width: 120px;
+  width: 160px;
   overflow: hidden;
   clear: left;
   text-align: right;
@@ -752,7 +752,7 @@ dd {
 }
 
 .dl-horizontal dd {
-  margin-left: 130px;
+  margin-left: 180px;
 }
 
 hr {
@@ -1775,7 +1775,7 @@ legend + .control-group {
 
 .form-horizontal .control-label {
   float: left;
-  width: 140px;
+  width: 160px;
   padding-top: 5px;
   text-align: right;
 }
@@ -1783,12 +1783,12 @@ legend + .control-group {
 .form-horizontal .controls {
   *display: inline-block;
   *padding-left: 20px;
-  margin-left: 160px;
+  margin-left: 180px;
   *margin-left: 0;
 }
 
 .form-horizontal .controls:first-child {
-  *padding-left: 160px;
+  *padding-left: 180px;
 }
 
 .form-horizontal .help-block {
@@ -1802,7 +1802,7 @@ legend + .control-group {
 }
 
 .form-horizontal .form-actions {
-  padding-left: 160px;
+  padding-left: 180px;
 }
 
 table {

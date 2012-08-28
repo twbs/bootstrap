@@ -615,7 +615,7 @@ legend + .control-group {
   // Float the labels left
   .control-label {
     float: left;
-    width: 140px;
+    width: @horizontalComponentOffset - 20;
     padding-top: 5px;
     text-align: right;
   }
@@ -625,10 +625,10 @@ legend + .control-group {
     // don't inherit the margin of the parent, in this case .controls
     *display: inline-block;
     *padding-left: 20px;
-    margin-left: 160px;
+    margin-left: @horizontalComponentOffset;
     *margin-left: 0;
     &:first-child {
-      *padding-left: 160px;
+      *padding-left: @horizontalComponentOffset;
     }
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
@@ -645,6 +645,6 @@ legend + .control-group {
   }
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
-    padding-left: 160px;
+    padding-left: @horizontalComponentOffset;
   }
 }
