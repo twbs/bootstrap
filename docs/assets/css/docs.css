@@ -336,9 +336,6 @@ hr.soften {
   min-height: 40px;
   line-height: 40px;
 }
-.show-grid:hover [class*="span"] {
-  background: #ddd;
-}
 .show-grid .show-grid {
   margin-top: 0;
   margin-bottom: 0;
@@ -347,6 +344,15 @@ hr.soften {
   background-color: #ccc;
 }
 
+.show-grid [class*="span"]:nth-child(even) {
+  background-color: #ddd;
+}
+
+.show-grid [class*="span"]:hover {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
 
 
 /* Mini layout previews
