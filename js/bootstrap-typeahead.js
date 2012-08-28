@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-typeahead.js v2.1.0
+ * bootstrap-typeahead.js v2.1.1
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -33,8 +33,10 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.selected = this.options.selected
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
+    this.itemLabel = this.options.itemLabel || "label"
     this.shown = false
     this.listen()
   }
@@ -44,15 +46,20 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      var val = JSON.parse(this.$menu.find('.active').attr('data-value'))
       this.$element
-        .val(this.updater(val))
+        .val(this.updater(val[this.itemLabel]))
         .change()
+
+        if($.isFunction(this.selected)){
+              this.selected(val)
+         }
+
       return this.hide()
     }
 
-  , updater: function (item) {
-      return item
+  , updater: function (itemLabel) {
+      return itemLabel
     }
 
   , show: function () {
@@ -93,6 +100,13 @@
   , process: function (items) {
       var that = this
 
+      items = $.map( items, function(item) {
+          if(typeof item === "string"){
+              item = new Object({label: item})
+          }
+          return item
+      })
+
       items = $.grep(items, function (item) {
         return that.matcher(item)
       })
@@ -107,7 +121,7 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return ~item[this.itemLabel].toLowerCase().indexOf(this.query.toLowerCase())
     }
 
   , sorter: function (items) {
@@ -117,8 +131,8 @@
         , item
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        if (!item[this.itemLabel].toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~item[this.itemLabel].indexOf(this.query)) caseSensitive.push(item)
         else caseInsensitive.push(item)
       }
 
@@ -127,7 +141,7 @@
 
   , highlighter: function (item) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+      return item[this.itemLabel].replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }
@@ -136,7 +150,7 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).attr('data-value', JSON.stringify(item))
         i.find('a').html(that.highlighter(item))
         return i[0]
       })

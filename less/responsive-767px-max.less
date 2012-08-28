@@ -12,7 +12,8 @@
   }
   // Negative indent the now static "fixed" navbar
   .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-bottom,
+  .navbar-static-top {
     margin-left: -20px;
     margin-right: -20px;
   }
@@ -88,6 +89,9 @@
   .input-append input[class*="span"] {
     display: inline-block; // redeclare so they don't wrap to new lines
     width: auto;
+  }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
   }
 
   // Modals
