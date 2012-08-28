@@ -2102,6 +2102,22 @@ table .span24 {
   background-color: #d9edf7;
 }
 
+.table-hover tbody tr.success:hover td {
+  background-color: #d0e9c6;
+}
+
+.table-hover tbody tr.error:hover td {
+  background-color: #ebcccc;
+}
+
+.table-hover tbody tr.warning:hover td {
+  background-color: #faf2cc;
+}
+
+.table-hover tbody tr.info:hover td {
+  background-color: #c4e3f3;
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
