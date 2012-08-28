@@ -4823,10 +4823,6 @@ input[type="submit"].btn.btn-mini {
   *z-index: 2050;
 }
 
-.modal-open .popover {
-  z-index: 2060;
-}
-
 .modal-open .tooltip {
   z-index: 2080;
 }
