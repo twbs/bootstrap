@@ -113,10 +113,8 @@
     }
 
   , focus: function (e) {
-    var $this
+    var $this = $(this)
       , current
-
-    $this = $(this)
 
     // Trigger focus immediately after touchstart to avoid click delay
     if (e.type == 'touchstart') {
@@ -124,13 +122,17 @@
       return $this.focus()
     }
 
-    current = $this.parents('.dropdown-submenu').index()
+    current = $this.parent().filter('.dropdown-submenu').index()
 
     $this
       .closest('.dropdown-menu')
         .children()
         .each(function (index, element) {
-          $(element).toggleClass('open', (current === index))
+          $(element)
+            .toggleClass('open', (current === index))
+            .filter('.dropdown-submenu')
+              .find('.dropdown-submenu')
+                .removeClass('open')
         })
     }
 
