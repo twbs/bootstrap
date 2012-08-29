@@ -75,14 +75,14 @@ bootstrap:
 #
 
 gh-pages: bootstrap docs
-	./create_mirror_clone.sh
+	@test -d ../bootstrap-gh-pages || (cd .. && git clone https://github.com/gcba/BAstrap.git bootstrap-gh-pages && cd bootstrap-gh-pages && git checkout gh-pages && cd ..)
 	rm -f docs/assets/bootstrap.zip
 	zip -r docs/assets/bootstrap.zip bootstrap
 	rm -r bootstrap
 	rm -f ../bootstrap-gh-pages/assets/bootstrap.zip
 	node docs/build production
 	cp -r docs/* ../bootstrap-gh-pages
-	./push_to_mirror_clone.sh
+	@export ts=`date +%s` && cd ../bootstrap-gh-pages && git pull && git add . -A && git commit -m "gh-pages $ts" && git push origin gh-pages
 
 #
 # WATCH LESS FILES
