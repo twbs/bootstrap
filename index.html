@@ -25,6 +25,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-17784640-34']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
 
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
@@ -59,7 +69,7 @@
                 <a href="./index.html">General</a>
               </li>
               <li class="">
-                <a href="./scaffolding.html">Estructuras</a>
+                <a href="./estructuras.html">Estructuras</a>
               </li>
               <li class="">
                 <a href="./base-css.html">CSS Básico</a>
@@ -95,8 +105,8 @@
     <h1>Buenos Aires Ciudad</h1>
     <p>Guía de Usabilidad del Gobierno de la Ciudad de Buenos Aires.</p>
     <p class="download-info">
-      <a href="https://github.com/gcba/bastrap/" class="btn btn-primary btn-large" >Ver proyecto en GitHub</a>
-      <a href="assets/bootstrap.zip" class="btn btn-large" >Descargar BAstrap <small>(v1)</small></a>
+      <a href="https://github.com/gcba/bastrap/" class="btn btn-primary btn-large" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'GitHub Project', 'View project on GitHub']);">Ver proyecto en GitHub</a>
+      <a href="assets/bootstrap.zip" class="btn btn-large" onclick="_gaq.push(['_trackEvent', 'Jumbotron actions', 'Download', 'Download 2.0.4']);">Descargar BAstrap <small>(v1)</small></a>
     </p>
   </div>
 
