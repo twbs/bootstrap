@@ -83,4 +83,32 @@ $(function () {
           }).tab('show')
       })
 
+      test("should fire all four events", function () {
+        stop()
+        $('#qunit-fixture').append(''
+          + "<ul class='nav nav-tabs'>"
+          +   "<li class='active'><a data-target='#info' data-toggle='tab'>Info</a></li>"
+          +   "<li><a data-target='#media' data-toggle='tab'>Media</a></li>"
+          + "</ul>"
+          + "<div class='tab-content'>"
+          +   "<div class='tab-pane active' id='info'>Info</div>"
+          +   "<div class='tab-pane' id='media'></div>"
+          + "</div>")
+
+        var events = '' // order matters so stop() and start() alone aren't sufficcient
+        $('#qunit-fixture').find("a[data-target='#info']")
+          .on('show', function(e) { ok(false) })
+          .on('hide', function(e) { events += 'hide#info' })
+          .on('shown', function(e) { ok(false) })
+          .on('hidden', function(e) { events += ' hidden#info' })
+
+        $('#qunit-fixture').find("a[data-target='#media']")
+          .on('show', function(e) { events += ' show#media' })
+          .on('hide', function(e) { ok(false) })
+          .on('shown', function(e) { events += ' shown#media'; start() })
+          .on('hidden', function(e) { ok(false) })
+
+        $('#qunit-fixture').find('li:last a').tab('show')
+        equal(events, 'hide#info show#media hidden#info shown#media')
+      })
 })
