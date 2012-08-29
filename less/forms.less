@@ -91,8 +91,9 @@ input[type="color"],
 // Reset appearance properties for textual inputs and textarea
 // Declare width for legacy (can't be on input[type=*] selectors or it's too specific)
 input,
-textarea {
-  width: 210px;
+textarea,
+.uneditable-input {
+  width: 206px; // plus 12px padding and 2px border
 }
 // Reset height since textareas have rows
 textarea {
@@ -209,7 +210,7 @@ input[type="checkbox"]:focus {
 // Placeholder
 // -------------------------
 
-// Placeholder text gets special styles; can't be bundled together though for some reason
+// Placeholder text gets special styles because when browsers invalidate entire lines if it doesn’t understand a selector
 input,
 textarea {
   .placeholder();
@@ -349,6 +350,10 @@ input[type="checkbox"][readonly] {
 .control-group.success {
   .formFieldState(@successText, @successText, @successBackground);
 }
+// Success
+.control-group.info {
+  .formFieldState(@infoText, @infoText, @infoBackground);
+}
 
 // HTML5 invalid states
 // Shares styles with the .control-group.error above
@@ -441,7 +446,6 @@ select:focus:required:invalid {
   }
   .add-on,
   .btn {
-    margin-left: -1px;
     vertical-align: top;
     .border-radius(0);
   }
@@ -465,6 +469,10 @@ select:focus:required:invalid {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
+  .add-on,
+  .btn {
+    margin-left: -1px;
   }
   .add-on:last-child,
   .btn:last-child {
@@ -510,16 +518,16 @@ input.search-query {
   .border-radius(0); // Override due to specificity
 }
 .form-search .input-append .search-query {
-  .border-radius(14px 0 0 14px)
+  .border-radius(14px 0 0 14px);
 }
 .form-search .input-append .btn {
-  .border-radius(0 14px 14px 0)
+  .border-radius(0 14px 14px 0);
 }
 .form-search .input-prepend .search-query {
-  .border-radius(0 14px 14px 0)
+  .border-radius(0 14px 14px 0);
 }
 .form-search .input-prepend .btn {
-  .border-radius(14px 0 0 14px)
+  .border-radius(14px 0 0 14px);
 }
 
 
@@ -607,7 +615,7 @@ legend + .control-group {
   // Float the labels left
   .control-label {
     float: left;
-    width: 140px;
+    width: @horizontalComponentOffset - 20;
     padding-top: 5px;
     text-align: right;
   }
@@ -617,19 +625,26 @@ legend + .control-group {
     // don't inherit the margin of the parent, in this case .controls
     *display: inline-block;
     *padding-left: 20px;
-    margin-left: 160px;
+    margin-left: @horizontalComponentOffset;
     *margin-left: 0;
     &:first-child {
-      *padding-left: 160px;
+      *padding-left: @horizontalComponentOffset;
     }
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
   .help-block {
-    margin-top: @baseLineHeight / 2;
     margin-bottom: 0;
+  }
+  // And apply it only to .help-block instances that follow a form control
+  input,
+  select,
+  textarea {
+    + .help-block {
+      margin-top: @baseLineHeight / 2;
+    }
   }
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
-    padding-left: 160px;
+    padding-left: @horizontalComponentOffset;
   }
 }

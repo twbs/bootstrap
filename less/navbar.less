@@ -27,6 +27,9 @@
   border: 1px solid @navbarBorder;
   .border-radius(4px);
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
+
+  // Prevent floats from breaking the navbar
+  .clearfix();
 }
 
 // Set width to auto for default container
@@ -87,13 +90,16 @@
 // -------------------------
 .navbar .btn,
 .navbar .btn-group {
-  .navbarVerticalAlign(28px); // Vertically center in navbar
+  .navbarVerticalAlign(30px); // Vertically center in navbar
 }
-.navbar .btn-group .btn {
-  margin: 0; // then undo the margin here so we don't accidentally double it
+.navbar .btn-group .btn,
+.navbar .input-prepend .btn,
+.navbar .input-append .btn {
+  margin-top: 0; // then undo the margin here so we don't accidentally double it
 }
 
 // Navbar forms
+// -------------------------
 .navbar-form {
   margin-bottom: 0; // remove default bottom margin
   .clearfix();
@@ -125,6 +131,7 @@
 }
 
 // Navbar search
+// -------------------------
 .navbar-search {
   position: relative;
   float: left;
@@ -166,12 +173,12 @@
   z-index: @zindexFixedNavbar;
   margin-bottom: 0; // remove 18px margin for default navbar
 }
-.navbar-fixed-top,
-.navbar-fixed-bottom,
-.navbar-static-top {
-  .navbar-inner {
-    border: 0;
-  }
+.navbar-fixed-top .navbar-inner,
+.navbar-static-top .navbar-inner {
+  border-width: 0 0 1px;
+}
+.navbar-fixed-bottom .navbar-inner {
+  border-width: 1px 0 0;
 }
 .navbar-fixed-top .navbar-inner,
 .navbar-fixed-bottom .navbar-inner {
@@ -221,6 +228,7 @@
 }
 .navbar .nav.pull-right {
   float: right; // redeclare due to specificity
+  margin-right: 0; // remove margin on float right nav
 }
 .navbar .nav > li {
   float: left;
