@@ -234,6 +234,12 @@
           $this.focus()
         })
     })
+    
+    $('.modal').each(function () {
+      if(window.location.href.indexOf($(this).attr("id")) != -1) {
+        $(this).modal('show');
+      }
+    })
   })
 
 }(window.jQuery);
