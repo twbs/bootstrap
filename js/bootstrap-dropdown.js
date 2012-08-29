@@ -26,7 +26,7 @@
  /* DROPDOWN CLASS DEFINITION
   * ========================= */
 
-  var toggle = '[data-toggle=dropdown]'
+  var toggle = '[data-toggle="dropdown"]'
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
         $('html').on('click.dropdown.data-api', function () {
@@ -41,18 +41,14 @@
   , toggle: function (e) {
       var $this = $(this)
         , $parent
-        , isActive
 
       if ($this.is('.disabled, :disabled')) return
 
       $parent = getParent($this)
 
-      isActive = $parent.hasClass('open')
-
-      clearMenus()
-
-      if (!isActive) {
-        $parent.toggleClass('open')
+      if (!$parent.hasClass('open')) {
+        clearMenus()
+        $parent.addClass('open')
         $this.focus()
       }
 
@@ -67,7 +63,7 @@
         , isActive
         , index
 
-      if (!/(38|40|27)/.test(e.keyCode)) return
+      if (!~$.inArray(e.which, [37, 38, 39, 40, 27])) return
 
       $this = $(this)
 
@@ -78,23 +74,64 @@
 
       $parent = getParent($this)
 
-      isActive = $parent.hasClass('open')
+      if (e.which == 27 && $parent.hasClass('open')) {
+        clearMenus()
+        return ($parent.hasClass('dropdown-submenu') ? $parent.parents('.dropdown-menu').last().parent() : $parent)
+          .children('a').focus()
+      }
 
-      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
-
-      $items = $('[role=menu] li:not(.divider) a', $parent)
+      $items = $parent.find(' > .dropdown-menu > li:not(.divider) > a')
 
       if (!$items.length) return
 
       index = $items.index($items.filter(':focus'))
 
-      if (e.keyCode == 38 && index > 0) index--                                        // up
-      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
+      if (e.which === 38 && index > 0) index--
+      if (e.which === 40 && index < $items.length - 1) index++
       if (!~index) index = 0
 
-      $items
-        .eq(index)
-        .focus()
+      // Left arrow
+      if (e.which === 37) {
+        $this.children('.dropdown-submenu').removeClass('open')
+        $parent.removeClass('open').children('a').focus()
+      // Right arrow
+      } else if (e.which === 39) {
+        $items
+          .eq(index)
+          .parent()
+            .filter('.dropdown-submenu')
+            .find(' > .dropdown-menu > li:not(.divider) > a')
+              .eq(0)
+              .focus()
+      // Up or down arrows
+      } else {
+        $items
+          .eq(index)
+          .focus()
+      }
+
+    }
+
+  , focus: function (e) {
+    var $this
+      , current
+
+    $this = $(this)
+
+    // Trigger focus immediately after touchstart to avoid click delay
+    if (e.type == 'touchstart') {
+      e.preventDefault()
+      return $this.focus()
+    }
+
+    current = $this.parents('.dropdown-submenu').index()
+
+    $this
+      .closest('.dropdown-menu')
+        .children()
+        .each(function (index, element) {
+          $(element).toggleClass('open', (current === index))
+        })
     }
 
   }
@@ -102,6 +139,8 @@
   function clearMenus() {
     getParent($(toggle))
       .removeClass('open')
+      .find('.dropdown-submenu')
+        .removeClass('open')
   }
 
   function getParent($this) {
@@ -144,6 +183,7 @@
     $('body')
       .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
       .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
+      .on('focusin.dropdown.data-api touchstart.dropdown.data-api', toggle + ', .dropdown-menu a', Dropdown.prototype.focus)
       .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
   })
 
