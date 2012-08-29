@@ -442,7 +442,7 @@
     background-color: mix(@midColor, @endColor, 80%);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
     background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
-    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop*100%, @endColor);
+    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
     background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
@@ -456,7 +456,7 @@
     background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
     background-repeat: no-repeat;
   }
-  .striped(@color, @angle: 45deg) {
+  .striped(@color: #555, @angle: 45deg) {
     background-color: @color;
     background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
     background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
@@ -585,6 +585,7 @@
 
     [class*="span"] {
       float: left;
+      min-height: 1px; // prevent collapsing columns
       margin-left: @gridGutterWidth;
     }
 

@@ -61,6 +61,24 @@ $(function () {
         ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
       })
 
+      test("should test if element has a # before assuming it's a selector", function () {
+        var dropdownHTML = '<ul class="tabs">'
+          + '<li class="dropdown">'
+          + '<a href="/foo/" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+          + '<ul class="dropdown-menu">'
+          + '<li><a href="#">Secondary link</a></li>'
+          + '<li><a href="#">Something else here</a></li>'
+          + '<li class="divider"></li>'
+          + '<li><a href="#">Another link</a></li>'
+          + '</ul>'
+          + '</li>'
+          + '</ul>'
+          , dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').dropdown().click()
+
+        ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
+      })
+
+
       test("should remove open class if body clicked", function () {
         var dropdownHTML = '<ul class="tabs">'
           + '<li class="dropdown">'

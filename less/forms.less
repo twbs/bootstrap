@@ -91,8 +91,9 @@ input[type="color"],
 // Reset appearance properties for textual inputs and textarea
 // Declare width for legacy (can't be on input[type=*] selectors or it's too specific)
 input,
-textarea {
-  width: 210px;
+textarea,
+.uneditable-input {
+  width: 206px; // plus 12px padding and 2px border
 }
 // Reset height since textareas have rows
 textarea {
@@ -614,7 +615,7 @@ legend + .control-group {
   // Float the labels left
   .control-label {
     float: left;
-    width: 140px;
+    width: @horizontalComponentOffset - 20;
     padding-top: 5px;
     text-align: right;
   }
@@ -624,19 +625,26 @@ legend + .control-group {
     // don't inherit the margin of the parent, in this case .controls
     *display: inline-block;
     *padding-left: 20px;
-    margin-left: 160px;
+    margin-left: @horizontalComponentOffset;
     *margin-left: 0;
     &:first-child {
-      *padding-left: 160px;
+      *padding-left: @horizontalComponentOffset;
     }
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
   .help-block {
-    margin-top: @baseLineHeight / 2;
     margin-bottom: 0;
+  }
+  // And apply it only to .help-block instances that follow a form control
+  input,
+  select,
+  textarea {
+    + .help-block {
+      margin-top: @baseLineHeight / 2;
+    }
   }
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
-    padding-left: 160px;
+    padding-left: @horizontalComponentOffset;
   }
 }

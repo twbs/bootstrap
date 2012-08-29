@@ -541,7 +541,7 @@ h2 + .row {
   background-color: rgba(255,0,0,.25);
 }
 
-/* Eaxmples page
+/* Example page
 ------------------------- */
 .bootstrap-examples p {
   font-size: 13px;
@@ -756,11 +756,6 @@ form.bs-docs-example {
 /* Sidenav for Docs
 -------------------------------------------------- */
 
-/* prevent column from collapsing when affixing */
-.span3 {
-  min-height: 1px;
-}
-
 .bs-docs-sidenav {
   width: 228px;
   margin: 30px 0 0;
@@ -892,7 +887,7 @@ form.bs-docs-example {
 
 /* Tablet
 ------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   /* Remove any padding from the body */
   body {
     padding-top: 0;

@@ -215,6 +215,7 @@ a:hover {
 
 [class*="span"] {
   float: left;
+  min-height: 1px;
   margin-left: 20px;
 }
 
@@ -742,7 +743,7 @@ dd {
 
 .dl-horizontal dt {
   float: left;
-  width: 120px;
+  width: 160px;
   overflow: hidden;
   clear: left;
   text-align: right;
@@ -751,7 +752,7 @@ dd {
 }
 
 .dl-horizontal dd {
-  margin-left: 130px;
+  margin-left: 180px;
 }
 
 hr {
@@ -960,8 +961,9 @@ input[type="color"],
 }
 
 input,
-textarea {
-  width: 210px;
+textarea,
+.uneditable-input {
+  width: 206px;
 }
 
 textarea {
@@ -1773,7 +1775,7 @@ legend + .control-group {
 
 .form-horizontal .control-label {
   float: left;
-  width: 140px;
+  width: 160px;
   padding-top: 5px;
   text-align: right;
 }
@@ -1781,21 +1783,26 @@ legend + .control-group {
 .form-horizontal .controls {
   *display: inline-block;
   *padding-left: 20px;
-  margin-left: 160px;
+  margin-left: 180px;
   *margin-left: 0;
 }
 
 .form-horizontal .controls:first-child {
-  *padding-left: 160px;
+  *padding-left: 180px;
 }
 
 .form-horizontal .help-block {
-  margin-top: 10px;
   margin-bottom: 0;
 }
 
+.form-horizontal input + .help-block,
+.form-horizontal select + .help-block,
+.form-horizontal textarea + .help-block {
+  margin-top: 10px;
+}
+
 .form-horizontal .form-actions {
-  padding-left: 160px;
+  padding-left: 180px;
 }
 
 table {
@@ -2098,6 +2105,22 @@ table .span24 {
 
 .table tbody tr.info td {
   background-color: #d9edf7;
+}
+
+.table-hover tbody tr.success:hover td {
+  background-color: #d0e9c6;
+}
+
+.table-hover tbody tr.error:hover td {
+  background-color: #ebcccc;
+}
+
+.table-hover tbody tr.warning:hover td {
+  background-color: #faf2cc;
+}
+
+.table-hover tbody tr.info:hover td {
+  background-color: #c4e3f3;
 }
 
 [class^="icon-"],
@@ -3123,6 +3146,12 @@ button.close {
   margin-top: 5px;
 }
 
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+
 .btn-primary.active,
 .btn-warning.active,
 .btn-danger.active,
@@ -3388,6 +3417,7 @@ input[type="submit"].btn.btn-mini {
   *margin-left: .3em;
   font-size: 0;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .btn-group:first-child {
@@ -4113,9 +4143,21 @@ input[type="submit"].btn.btn-mini {
      -moz-border-radius: 4px;
           border-radius: 4px;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+  *zoom: 1;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+
+.navbar-inner:before,
+.navbar-inner:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.navbar-inner:after {
+  clear: both;
 }
 
 .navbar .container {
@@ -4163,10 +4205,12 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .btn,
 .navbar .btn-group {
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
-.navbar .btn-group .btn {
+.navbar .btn-group .btn,
+.navbar .input-prepend .btn,
+.navbar .input-append .btn {
   margin-top: 0;
 }
 
@@ -4258,9 +4302,12 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-fixed-top .navbar-inner,
-.navbar-fixed-bottom .navbar-inner,
 .navbar-static-top .navbar-inner {
-  border: 0;
+  border-width: 0 0 1px;
+}
+
+.navbar-fixed-bottom .navbar-inner {
+  border-width: 1px 0 0;
 }
 
 .navbar-fixed-top .navbar-inner,
@@ -4676,12 +4723,12 @@ input[type="submit"].btn.btn-mini {
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.pagination li {
+.pagination ul > li {
   display: inline;
 }
 
-.pagination a,
-.pagination span {
+.pagination ul > li > a,
+.pagination ul > li > span {
   float: left;
   padding: 0 14px;
   line-height: 38px;
@@ -4691,36 +4738,36 @@ input[type="submit"].btn.btn-mini {
   border-left-width: 0;
 }
 
-.pagination a:hover,
-.pagination .active a,
-.pagination .active span {
+.pagination ul > li > a:hover,
+.pagination ul > .active > a,
+.pagination ul > .active > span {
   background-color: #f5f5f5;
 }
 
-.pagination .active a,
-.pagination .active span {
+.pagination ul > .active > a,
+.pagination ul > .active > span {
   color: #999999;
   cursor: default;
 }
 
-.pagination .disabled span,
-.pagination .disabled a,
-.pagination .disabled a:hover {
+.pagination ul > .disabled > span,
+.pagination ul > .disabled > a,
+.pagination ul > .disabled > a:hover {
   color: #999999;
   cursor: default;
   background-color: transparent;
 }
 
-.pagination li:first-child a,
-.pagination li:first-child span {
+.pagination ul > li:first-child > a,
+.pagination ul > li:first-child > span {
   border-left-width: 1px;
   -webkit-border-radius: 3px 0 0 3px;
      -moz-border-radius: 3px 0 0 3px;
           border-radius: 3px 0 0 3px;
 }
 
-.pagination li:last-child a,
-.pagination li:last-child span {
+.pagination ul > li:last-child > a,
+.pagination ul > li:last-child > span {
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
           border-radius: 0 3px 3px 0;
@@ -4789,19 +4836,19 @@ input[type="submit"].btn.btn-mini {
   background-color: #fff;
 }
 
-.modal-open .dropdown-menu {
+.modal-open .modal .dropdown-menu {
   z-index: 2050;
 }
 
-.modal-open .dropdown.open {
+.modal-open .modal .dropdown.open {
   *z-index: 2050;
 }
 
-.modal-open .popover {
+.modal-open .modal .popover {
   z-index: 2060;
 }
 
-.modal-open .tooltip {
+.modal-open .modal .tooltip {
   z-index: 2080;
 }
 
