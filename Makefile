@@ -51,6 +51,13 @@ test:
 	rm js/tests/pid.txt
 
 #
+# CLEANS THE ROOT DIRECTORY OF PRIOR BUILDS
+#
+
+clean:
+	rm -r bootstrap
+
+#
 # BUILD SIMPLE BOOTSTRAP DIRECTORY
 # recess & uglifyjs are required
 #
