@@ -140,5 +140,26 @@ $(function () {
         ok(tooltip.data('events').click[0].namespace == 'foo', 'tooltip still has click.foo')
         ok(!tooltip.data('events').mouseover && !tooltip.data('events').mouseout, 'tooltip does not have any events')
       })
+      
+      test("should not hide tooltip if cursor is moved out and back in quickly", function() {
+        $(".tooltip").remove()
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip()
+        tooltip.trigger('mouseenter')
+        stop()
+        // Get the mouse out and back in
+        tooltip.trigger('mouseout')
+               
+        setTimeout(function () {
+          // Tooltip should still show
+          tooltip.trigger('mouseenter')
+          setTimeout(function () {
+            // Tooltip should still show even after 500 ms
+            ok($(".tooltip").length, 'tooltip is showing')
+            start()
+          }, 500)
+        }, 100)
+      })
 
 })
