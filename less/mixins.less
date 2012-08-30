@@ -102,14 +102,21 @@
 
 // CSS image replacement
 // -------------------------
-// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+// Source: https://github.com/h5bp/html5-boilerplate/commit/adecc5da035d6d76b77e3fa95c6abde841073da2
 .hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
 }
+
+.hide-text:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}	
 
 
 // FONTS
