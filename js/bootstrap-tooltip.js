@@ -118,6 +118,11 @@
 
         inside = /in/.test(placement)
 
+        /** @see https://github.com/twitter/bootstrap/issues/4797 */
+        $tip
+          .addClass("in")
+          .addClass(placement)
+
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
