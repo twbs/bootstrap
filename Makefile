@@ -59,7 +59,10 @@ build-theme:
 	mkdir -p $$theme_dir/build; \
 	cp -ru -t $$theme_dir/build ./less ./js ./img ./docs ./Makefile; \
 	cp -f $$theme_dir/less/*.less $$theme_dir/build/less; \
+	cp -f $$theme_dir/js/*.js $$theme_dir/build/js; \
+	cp -f -r $$theme_dir/docs/* $$theme_dir/build/docs; \
 	$(MAKE) -C $$theme_dir/build; \
+	rm -r $$theme_dir/build/bootstrap; \
 	$(MAKE) bootstrap -C $$theme_dir/build
 
 #
@@ -71,7 +74,10 @@ build-themes:
 		mkdir -p $$theme_dir/build; \
 		cp -ru -t $$theme_dir/build ./less ./js ./img ./docs ./Makefile; \
 		cp -f $$theme_dir/less/*.less $$theme_dir/build/less; \
+		cp -f $$theme_dir/js/*.js $$theme_dir/build/js; \
+		cp -f -r $$theme_dir/docs/* $$theme_dir/build/docs; \
 		$(MAKE) -C $$theme_dir/build; \
+		rm -r $$theme_dir/build/bootstrap; \
 		$(MAKE) bootstrap -C $$theme_dir/build; \
 	done
 
