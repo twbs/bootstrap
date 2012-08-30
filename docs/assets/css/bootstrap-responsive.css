@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.1.0
+ * Bootstrap Responsive v2.1.1
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -107,6 +107,7 @@
   }
   [class*="span"] {
     float: left;
+    min-height: 1px;
     margin-left: 30px;
   }
   .container,
@@ -453,6 +454,7 @@
   }
   [class*="span"] {
     float: left;
+    min-height: 1px;
     margin-left: 20px;
   }
   .container,
@@ -780,7 +782,8 @@
     padding-left: 20px;
   }
   .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-bottom,
+  .navbar-static-top {
     margin-right: -20px;
     margin-left: -20px;
   }
@@ -814,8 +817,11 @@
   .row-fluid [class*="span"] {
     display: block;
     float: none;
-    width: auto;
+    width: 100%;
     margin-left: 0;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .span12,
   .row-fluid .span12 {
@@ -845,6 +851,9 @@
     display: inline-block;
     width: auto;
   }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
+  }
   .modal {
     position: fixed;
     top: 20px;
@@ -870,7 +879,7 @@
   input[type="radio"] {
     border: 1px solid #ccc;
   }
-  .form-horizontal .control-group > label {
+  .form-horizontal .control-label {
     float: none;
     width: auto;
     padding-top: 0;
@@ -944,14 +953,14 @@
     display: none;
   }
   .nav-collapse .nav .nav-header {
-    color: #555555;
+    color: #777777;
     text-shadow: none;
   }
   .nav-collapse .nav > li > a,
   .nav-collapse .dropdown-menu a {
     padding: 9px 15px;
     font-weight: bold;
-    color: #555555;
+    color: #777777;
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
             border-radius: 3px;
@@ -1003,6 +1012,10 @@
   .nav-collapse .dropdown-menu .divider {
     display: none;
   }
+  .nav-collapse .nav > li > .dropdown-menu:before,
+  .nav-collapse .nav > li > .dropdown-menu:after {
+    display: none;
+  }
   .nav-collapse .navbar-form,
   .nav-collapse .navbar-search {
     float: none;
@@ -1013,6 +1026,11 @@
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .navbar-inverse .nav-collapse .navbar-form,
+  .navbar-inverse .nav-collapse .navbar-search {
+    border-top-color: #111111;
+    border-bottom-color: #111111;
   }
   .navbar .nav-collapse .nav.pull-right {
     float: none;

@@ -49,7 +49,7 @@
 
           {{! Body copy }}
           <h2 id="body-copy">{{_i}}Body copy{{/i}}</h2>
-          <p>{{_i}}Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (9px by default).{{/i}}</p>
+          <p>{{_i}}Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).{{/i}}</p>
           <div class="bs-docs-example">
             <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
             <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
@@ -124,7 +124,7 @@
           <div class="bs-docs-example">
             <p>{{_i}}<abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.{{/i}}</p>
           </div>
-          <pre class="prettyprint">&lt;abbr title="attribute" class="initialism"&gt;attr&lt;/abbr&gt;</pre>
+          <pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre>
 
 
           <hr class="bs-docs-separator">
@@ -170,7 +170,7 @@
           <h2 id="blockquotes">{{_i}}Blockquotes{{/i}}</h2>
           <p>{{_i}}For quoting blocks of content from another source within your document.{{/i}}</p>
 
-          <h3>{{_i}}Default blockqoute{{/i}}</h3>
+          <h3>{{_i}}Default blockquote{{/i}}</h3>
           <p>{{_i}}Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.{{/i}}</p>
           <div class="bs-docs-example">
             <blockquote>
@@ -625,6 +625,12 @@
               </tr>
               <tr>
                 <td>
+                  <code>.warning</code>
+                </td>
+                <td>{{_i}}Indicates a warning that might need attention.{{/i}}</td>
+              </tr>
+              <tr>
+                <td>
                   <code>.info</code>
                 </td>
                 <td>{{_i}}Used as an alternative to the default styles.{{/i}}</td>
@@ -654,11 +660,17 @@
                   <td>02/04/2012</td>
                   <td>Declined</td>
                 </tr>
-                <tr class="info">
+                <tr class="warning">
                   <td>3</td>
                   <td>TB - Monthly</td>
                   <td>03/04/2012</td>
                   <td>Pending</td>
+                </tr>
+                <tr class="info">
+                  <td>4</td>
+                  <td>TB - Monthly</td>
+                  <td>04/04/2012</td>
+                  <td>Call in to confirm</td>
                 </tr>
               </tbody>
             </table>
@@ -1292,7 +1304,7 @@
 </pre>
 
           <h3>{{_i}}Validation states{{/i}}</h3>
-          <p>{{_i}}Bootstrap includes validation styles for error, warning, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
+          <p>{{_i}}Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.{{/i}}</p>
 
           <form class="bs-docs-example form-horizontal">
             <div class="control-group warning">
@@ -1307,6 +1319,13 @@
               <div class="controls">
                 <input type="text" id="inputError">
                 <span class="help-inline">{{_i}}Please correct the error{{/i}}</span>
+              </div>
+            </div>
+            <div class="control-group info">
+              <label class="control-label" for="inputError">{{_i}}Input with info{{/i}}</label>
+              <div class="controls">
+                <input type="text" id="inputError">
+                <span class="help-inline">{{_i}}Username is taken{{/i}}</span>
               </div>
             </div>
             <div class="control-group success">
@@ -1476,7 +1495,7 @@
 </pre>
           <p>
             <span class="label label-info">{{_i}}Heads up!{{/i}}</span>
-            {{_i}}We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.{{/i}}
+            {{_i}}We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.{{/i}}
           </p>
 
           <h3>Button element</h3>
@@ -1693,7 +1712,7 @@
           </ul>
 
           <h3>Glyphicons attribution</h3>
-          <p>{{_i}}<a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but an arrangement between Bootstrap and the Glyphicons creators have made this possible at not cost to you as developers. As a thank you, we ask you to include an optional link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever practical.{{/i}}</p>
+          <p>{{_i}}<a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but an arrangement between Bootstrap and the Glyphicons creators have made this possible at no cost to you as developers. As a thank you, we ask you to include an optional link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever practical.{{/i}}</p>
 
 
           <hr class="bs-docs-separator">
@@ -1818,7 +1837,8 @@
   &lt;label class="control-label" for="inputIcon"&gt;{{_i}}Email address{{/i}}&lt;/label&gt;
   &lt;div class="controls"&gt;
     &lt;div class="input-prepend"&gt;
-    &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;i&gt;&lt;span&gt;&lt;input class="span2" id="inputIcon" type="text"&gt;
+    &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;input class="span2" id="inputIcon" type="text"&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
