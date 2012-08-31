@@ -1,0 +1,67 @@
+//
+// Pagination (multiple pages)
+// --------------------------------------------------
+
+
+.pagination {
+  height: @baseLineHeight * 2;
+  margin: @baseLineHeight 0;
+ }
+.pagination ul {
+  display: inline-block;
+  .ie7-inline-block();
+  margin-right: 0;
+  margin-bottom: 0;
+  .border-radius(3px);
+  .box-shadow(0 1px 2px rgba(0,0,0,.05));
+}
+.pagination li {
+    display: inline;
+  }
+.pagination a,
+.pagination span {
+  float: right;
+  padding: 0 14px;
+  line-height: (@baseLineHeight * 2) - 2;
+  text-decoration: none;
+  background-color: @paginationBackground;
+  border: 1px solid @paginationBorder;
+  border-right-width: 0;
+}
+.pagination a:hover,
+.pagination .active a,
+.pagination .active span {
+  background-color: #f5f5f5;
+}
+.pagination .active a,
+.pagination .active span {
+  color: @grayLight;
+  cursor: default;
+}
+.pagination .disabled span,
+.pagination .disabled a,
+.pagination .disabled a:hover {
+  color: @grayLight;
+  background-color: transparent;
+  cursor: default;
+}
+.pagination li:first-child a,
+.pagination li:first-child span {
+  border-right-width: 1px;
+  .border-radius(0 3px 3px 0);
+}
+.pagination li:last-child a,
+.pagination li:last-child span {
+  .border-radius(3px 0 0 3px);
+}
+
+// Centered
+.pagination-centered {
+  text-align: center;
+}
+.pagination-right {
+  text-align: right;
+}
+.pagination-left {
+  text-align: left;
+}

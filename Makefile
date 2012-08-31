@@ -38,6 +38,58 @@ build:
 	@echo "Thanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n"
 
+# +++++++++++++++++++
+# 	THEME SUPPORT 	|
+# +++++++++++++++++++
+
+THEMES_DIRS = ${shell find ./themes -maxdepth 1 -mindepth 1 -type d -print}
+THEMES = ${shell find ./themes -maxdepth 1 -mindepth 1 -type d -exec basename "{}" \;}
+
+#
+# BUILD A THEME
+#
+
+build-theme:
+	@echo "existing themes:"
+	@for theme in ${THEMES}; do \
+    	printf "\t%s\n" $$theme; \
+	done
+	@read -p "select which one do you want to build (Enter Theme Name):" theme; \
+	theme_dir=./themes/$$theme; \
+	mkdir -p $$theme_dir/build; \
+	cp -ru -t $$theme_dir/build ./less ./js ./img ./docs ./Makefile; \
+	cp -f $$theme_dir/less/*.less $$theme_dir/build/less; \
+	cp -f $$theme_dir/js/*.js $$theme_dir/build/js; \
+	cp -f -r $$theme_dir/docs/* $$theme_dir/build/docs; \
+	$(MAKE) -C $$theme_dir/build; \
+	rm -r $$theme_dir/build/bootstrap; \
+	$(MAKE) bootstrap -C $$theme_dir/build
+
+#
+# BUILD ALL THEMES
+#
+
+build-themes:
+	@for theme_dir in $(THEMES_DIRS); do \
+		mkdir -p $$theme_dir/build; \
+		cp -ru -t $$theme_dir/build ./less ./js ./img ./docs ./Makefile; \
+		cp -f $$theme_dir/less/*.less $$theme_dir/build/less; \
+		cp -f $$theme_dir/js/*.js $$theme_dir/build/js; \
+		cp -f -r $$theme_dir/docs/* $$theme_dir/build/docs; \
+		$(MAKE) -C $$theme_dir/build; \
+		rm -r $$theme_dir/build/bootstrap; \
+		$(MAKE) bootstrap -C $$theme_dir/build; \
+	done
+
+#
+# CLEAN THEMES DIRECTORIES
+#
+
+clean-themes:
+	-@for theme_dir in $(THEMES_DIRS); do \
+		rm -r $$theme_dir/build; \
+	done
+
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
 #
@@ -90,12 +142,5 @@ watch:
 	echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
-#
-# HAUNT GITHUB ISSUES 4 FAT & MDO ONLY (O_O  )
-#
 
-haunt:
-	@haunt .issue-guidelines.js https://github.com/twitter/bootstrap
-
-
-.PHONY: docs watch gh-pages
+.PHONY: docs watch gh-pages build-theme build-themes clean-themes
