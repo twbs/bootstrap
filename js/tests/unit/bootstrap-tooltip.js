@@ -128,6 +128,58 @@ $(function () {
         }, 200)
       })
 
+      test("should fire show and hide events", function () {
+        stop()
+        $.support.transition = false
+        $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .bind("show", function () {
+            ok(true, "show was called")
+          })
+          .bind("shown", function () {
+            ok(true, "shown was called")
+          })
+          .bind("hide", function () {
+            ok(true, "hide was called")
+          })
+          .bind("hidden", function () {
+            ok(true, "hidden was called")
+            $(this).remove()
+            start()
+          })
+          .tooltip("show")
+          .tooltip("hide")
+      })
+
+      test("should not fire shown when default prevented", function () {
+        stop()
+        $.support.transition = false
+        $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .bind("show", function (e) {
+            e.preventDefault()
+            ok(true, "show was called")
+            start()
+          })
+          .bind("shown", function () {
+            ok(false, "shown was called")
+          })
+          .tooltip("show")
+      })
+
+      test("should not fire hidden when default prevented", function () {
+        stop()
+        $.support.transition = false
+        $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .bind("hide", function (e) {
+            e.preventDefault()
+            ok(true, "hide was called")
+            start()
+          })
+          .bind("hidden", function () {
+            ok(false, "hidden was called")
+          })
+          .tooltip("hide")
+      })
+
       test("should destroy tooltip", function () {
         var tooltip = $('<div/>').tooltip().on('click.foo', function(){})
         ok(tooltip.data('tooltip'), 'tooltip has data')
