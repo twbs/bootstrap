@@ -41,14 +41,18 @@
   , toggle: function (e) {
       var $this = $(this)
         , $parent
+        , isActive
 
       if ($this.is('.disabled, :disabled')) return
 
       $parent = getParent($this)
 
-      if (!$parent.hasClass('open')) {
-        clearMenus()
-        $parent.addClass('open')
+      isActive = $parent.hasClass('open')
+
+      clearMenus()
+
+      if (!isActive) {
+        $parent.toggleClass('open')
         $this.focus()
       }
 
@@ -63,7 +67,7 @@
         , isActive
         , index
 
-      if (!~$.inArray(e.which, [37, 38, 39, 40, 27])) return
+      if (!~$.inArray(e.which, [27, 37, 38, 39, 40])) return
 
       $this = $(this)
 
@@ -74,10 +78,15 @@
 
       $parent = getParent($this)
 
-      if (e.which == 27 && $parent.hasClass('open')) {
+      isActive = $parent.hasClass('open')
+
+      // Ignore left and right buttons when closed
+      if (!isActive && (e.which === 37 || e.which === 39)) return
+
+      if (!isActive || e.which == 27) {
         clearMenus()
         return ($parent.hasClass('dropdown-submenu') ? $parent.parents('.dropdown-menu').last().parent() : $parent)
-          .children('a').focus()
+          .children('a').trigger(e.which == 27 ? 'focus' : 'click')
       }
 
       $items = $parent.find(' > .dropdown-menu > li:not(.divider) > a')
