@@ -614,7 +614,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 10px 0;
+  margin: 0;
   font-family: inherit;
   font-weight: bold;
   line-height: 1;
@@ -634,49 +634,54 @@ h6 small {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 30.800000000000004px;
   line-height: 40px;
-}
-
-h2 {
-  font-size: 30px;
-  line-height: 40px;
-}
-
-h3 {
-  font-size: 24px;
-  line-height: 40px;
-}
-
-h4 {
-  font-size: 18px;
-  line-height: 20px;
-}
-
-h5 {
-  font-size: 14px;
-  line-height: 20px;
-}
-
-h6 {
-  font-size: 12px;
-  line-height: 20px;
 }
 
 h1 small {
-  font-size: 24px;
+  font-size: 18.2px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 40px;
 }
 
 h2 small {
-  font-size: 18px;
+  font-size: 18.2px;
+}
+
+h3 {
+  font-size: 21px;
+  line-height: 30px;
 }
 
 h3 small {
   font-size: 14px;
 }
 
-h4 small {
+h4,
+h5,
+h6 {
+  line-height: 20px;
+}
+
+h4 {
   font-size: 14px;
+}
+
+h4 small {
+  font-size: 12px;
+}
+
+h5 {
+  font-size: 12px;
+}
+
+h6 {
+  font-size: 13px;
+  color: #999999;
+  text-transform: uppercase;
 }
 
 .page-header {
