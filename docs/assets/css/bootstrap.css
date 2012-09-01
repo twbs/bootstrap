@@ -3389,7 +3389,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-link,
-.btn-link:active {
+.btn-link:active,
+.btn-link[disabled] {
   background-color: transparent;
   background-image: none;
   -webkit-box-shadow: none;
@@ -3410,6 +3411,11 @@ input[type="submit"].btn.btn-mini {
   color: #005580;
   text-decoration: underline;
   background-color: transparent;
+}
+
+.btn-link[disabled]:hover {
+  color: #333333;
+  text-decoration: none;
 }
 
 .btn-group {
