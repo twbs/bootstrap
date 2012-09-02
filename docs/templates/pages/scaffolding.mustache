@@ -345,20 +345,10 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{_i}}Phones{{/i}}</td>
-                <td>480px and below</td>
-                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
-              </tr>
-              <tr>
-                <td>{{_i}}Phones to tablets{{/i}}</td>
-                <td>767px and below</td>
-                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
-              </tr>
-              <tr>
-                <td>{{_i}}Portrait tablets{{/i}}</td>
-                <td>768px and above</td>
-                <td>42px</td>
-                <td>20px</td>
+                <td>{{_i}}Large display{{/i}}</td>
+                <td>1200px and up</td>
+                <td>70px</td>
+                <td>30px</td>
               </tr>
               <tr>
                 <td>{{_i}}Default{{/i}}</td>
@@ -367,25 +357,35 @@
                 <td>20px</td>
               </tr>
               <tr>
-                <td>{{_i}}Large display{{/i}}</td>
-                <td>1200px and up</td>
-                <td>70px</td>
-                <td>30px</td>
+                <td>{{_i}}Portrait tablets{{/i}}</td>
+                <td>768px and above</td>
+                <td>42px</td>
+                <td>20px</td>
+              </tr>
+              <tr>
+                <td>{{_i}}Phones to tablets{{/i}}</td>
+                <td>767px and below</td>
+                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
+              </tr>
+              <tr>
+                <td>{{_i}}Phones{{/i}}</td>
+                <td>480px and below</td>
+                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
               </tr>
             </tbody>
           </table>
 <pre class="prettyprint linenums">
-/* {{_i}}Landscape phones and down{{/i}} */
-@media (max-width: 480px) { ... }
-
-/* {{_i}}Landscape phone to portrait tablet{{/i}} */
-@media (max-width: 767px) { ... }
+/* {{_i}}Large desktop{{/i}} */
+@media (min-width: 1200px) { ... }
 
 /* {{_i}}Portrait tablet to landscape and desktop{{/i}} */
 @media (min-width: 768px) and (max-width: 979px) { ... }
 
-/* {{_i}}Large desktop{{/i}} */
-@media (min-width: 1200px) { ... }
+/* {{_i}}Landscape phone to portrait tablet{{/i}} */
+@media (max-width: 767px) { ... }
+
+/* {{_i}}Landscape phones and down{{/i}} */
+@media (max-width: 480px) { ... }
 </pre>
 
 
