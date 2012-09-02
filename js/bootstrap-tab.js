@@ -49,10 +49,15 @@
 
       if ( $this.parent('li').hasClass('active') ) return
 
-      previous = $ul.find('.active a').last()[0]
+      previous = $ul.find('.active a').last()
+
+      previous.trigger({
+        type: 'hide'
+      , relatedTarget: $this
+      })
 
       e = $.Event('show', {
-        relatedTarget: previous
+        relatedTarget: previous[0]
       })
 
       $this.trigger(e)
@@ -63,9 +68,13 @@
 
       this.activate($this.parent('li'), $ul)
       this.activate($target, $target.parent(), function () {
+        previous.trigger({
+          type: 'hidden'
+        , relatedTarget: $this
+        })
         $this.trigger({
           type: 'shown'
-        , relatedTarget: previous
+        , relatedTarget: previous[0]
         })
       })
     }
