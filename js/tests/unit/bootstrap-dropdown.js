@@ -102,4 +102,37 @@ $(function () {
         dropdown.remove()
       })
 
+      test("should remove open class from second dropdown if body clicked", function () {
+        var dropdownHTML = '<ul class="tabs">'
+          + '<li class="dropdown" id="first">'
+          + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#first">Dropdown</a>'
+          + '<ul class="dropdown-menu">'
+          + '<li><a href="#">Secondary link</a></li>'
+          + '<li><a href="#">Something else here</a></li>'
+          + '<li class="divider"></li>'
+          + '<li><a href="#">Another link</a></li>'
+          + '</ul>'
+          + '</li>'
+          + '</ul>'
+          + '<ul class="tabs">'
+          + '<li class="dropdown" id="second">'
+          + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#second">Dropdown</a>'
+          + '<ul class="dropdown-menu">'
+          + '<li><a href="#">Secondary link</a></li>'
+          + '<li><a href="#">Something else here</a></li>'
+          + '<li class="divider"></li>'
+          + '<li><a href="#">Another link</a></li>'
+          + '</ul>'
+          + '</li>'
+          + '</ul>'
+          , dropdown = $(dropdownHTML)
+            .appendTo('#qunit-fixture')
+            .find('[data-target="#second"]')
+            .dropdown()
+            .click()
+        ok(dropdown.parent('.dropdown[id="second"]').hasClass('open'), 'open class added on click')
+        $('body').click()
+        ok(!dropdown.parent('.dropdown[id="second"]').hasClass('open'), 'open class removed')
+        dropdown.remove()
+      })
 })
