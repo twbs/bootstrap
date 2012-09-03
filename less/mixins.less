@@ -249,6 +249,7 @@
 
 // Drop shadows
 .box-shadow(@shadowA, @shadowB:X, ...){
+  // Multiple shadow solution from http://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
   @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
   -webkit-box-shadow: @props;
      -moz-box-shadow: @props;
