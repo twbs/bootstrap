@@ -609,6 +609,22 @@ cite {
   color: #999999;
 }
 
+.text-warning {
+  color: #c09853;
+}
+
+.text-error {
+  color: #b94a48;
+}
+
+.text-info {
+  color: #3a87ad;
+}
+
+.text-success {
+  color: #468847;
+}
+
 h1,
 h2,
 h3,
