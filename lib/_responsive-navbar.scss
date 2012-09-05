@@ -115,6 +115,12 @@
   .nav-collapse .dropdown-menu .divider {
     display: none;
   }
+  .nav-collapse .nav > li > .dropdown-menu {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
   // Forms in navbar
   .nav-collapse .navbar-form,
   .nav-collapse .navbar-search {
@@ -124,6 +130,11 @@
     border-top: 1px solid $navbarBackground;
     border-bottom: 1px solid $navbarBackground;
     @include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)});
+  }
+  .navbar-inverse .nav-collapse .navbar-form,
+  .navbar-inverse .nav-collapse .navbar-search {
+    border-top-color: $navbarInverseBackground;
+    border-bottom-color: $navbarInverseBackground;
   }
   // Pull right (secondary) nav content
   .navbar .nav-collapse .nav.pull-right {

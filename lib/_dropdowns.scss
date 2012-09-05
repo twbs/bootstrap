@@ -148,7 +148,7 @@
   .caret {
     border-top: 0;
     border-bottom: 4px solid $black;
-    content: "\2191";
+    content: "";
   }
   // Different positioning for bottom up menu
   .dropdown-menu {
@@ -172,7 +172,7 @@
      -moz-border-radius: 0 6px 6px 6px;
           border-radius: 0 6px 6px 6px;
 }
-.dropdown-submenu:hover .dropdown-menu {
+.dropdown-submenu:hover > .dropdown-menu {
   display: block;
 }
 

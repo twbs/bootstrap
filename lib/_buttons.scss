@@ -96,10 +96,13 @@
 .btn-mini {
   padding: 2px 6px;
   font-size: $baseFontSize - 3px;
-  line-height: $baseLineHeight - 4px;
+  line-height: $baseLineHeight - 3px;
 }
 
+
 // Block button
+// -------------------------
+
 .btn-block {
   display: block;
   width: 100%;
@@ -107,9 +110,21 @@
   padding-right: 0;
   @include box-sizing(border-box);
 }
+
+// Vertically space out multiple block buttons
 .btn-block + .btn-block {
   margin-top: 5px;
 }
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
 
 
 // Alternate buttons
@@ -193,7 +208,8 @@ input[type="submit"].btn {
 
 // Make a button look and behave like a link
 .btn-link,
-.btn-link:active {
+.btn-link:active,
+.btn-link[disabled] {
   background-color: transparent;
   background-image: none;
   @include box-shadow(none);
@@ -208,4 +224,8 @@ input[type="submit"].btn {
   color: $linkColorHover;
   text-decoration: underline;
   background-color: transparent;
+}
+.btn-link[disabled]:hover {
+  color: $grayDark;
+  text-decoration: none;
 }
