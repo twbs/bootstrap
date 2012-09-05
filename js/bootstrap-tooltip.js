@@ -216,9 +216,7 @@
     }
 
   , getTemplate: function () {
-      var $template = $(this.options.template)
-      $template.addClass(this.options.class)
-      return $template
+      return $(this.options.template).addClass(this.options.class)
     }
 
   , validate: function () {
