@@ -74,7 +74,7 @@
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <h1>Getting started</h1>
-    <p class="lead">Overview of the project, it's contents, and how to get started with a simple template.</p>
+    <p class="lead">Overview of the project, its contents, and how to get started with a simple template.</p>
   </div>
 </header>
 
@@ -104,7 +104,7 @@
           <div class="page-header">
             <h1>1. Download</h1>
           </div>
-          <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with our the compiled Bootstrap files.</p>
+          <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
 
           <div class="row-fluid">
             <div class="span6">
@@ -114,7 +114,7 @@
             </div>
             <div class="span6">
               <h2>Download source</h2>
-              <p>Get the original files for all CSS and Javasript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
+              <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
               <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download Bootstrap source</a></p>
             </div>
           </div>
@@ -144,6 +144,7 @@
   └── README.md
 </pre>
           <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+          <p>Please note that all JavaScript plugins require jQuery to be included.</p>
         </section>
 
 
@@ -201,17 +202,20 @@
           <p class="lead">With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
           <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
 <pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
           <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
 <pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
@@ -220,6 +224,7 @@
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
+    &lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
     &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;

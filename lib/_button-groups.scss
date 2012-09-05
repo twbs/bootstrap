@@ -7,6 +7,7 @@
 .btn-group {
   position: relative;
   font-size: 0; // remove as part 1 of font-size inline-block hack
+  vertical-align: middle; // match .btn alignment given font-size hack above
   white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
   @include ie7-restore-left-whitespace();
 }

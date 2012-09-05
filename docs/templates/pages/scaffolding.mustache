@@ -46,7 +46,7 @@
           <ul>
             <li>{{_i}}Remove <code>margin</code> on the body{{/i}}</li>
             <li>{{_i}}Set <code>background-color: white;</code> on the <code>body</code>{{/i}}</li>
-            <li>{{_i}}Use the <code>@baseFontFamily</code>, <code>@baseFontSize</code>, and <code>@baseLineHeight</code> attributes as our typographyic base{{/i}}</li>
+            <li>{{_i}}Use the <code>@baseFontFamily</code>, <code>@baseFontSize</code>, and <code>@baseLineHeight</code> attributes as our typographic base{{/i}}</li>
             <li>{{_i}}Set the global link color via <code>@linkColor</code> and apply link underlines only on <code>:hover</code>{{/i}}</li>
           </ul>
           <p>{{_i}}These styles can be found within <strong>scaffolding.less</strong>.{{/i}}</p>
@@ -67,7 +67,7 @@
           </div>
 
           <h2>{{_i}}Live grid example{{/i}}</h2>
-          <p>{{_i}}The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.{{/i}}</p>
+          <p>{{_i}}The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="./scaffolding.html#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.{{/i}}</p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
               <div class="span1">1</div>
@@ -105,7 +105,7 @@
           <p>{{_i}}Given this example, we have <code>.span4</code> and <code>.span8</code>, making for 12 total columns and a complete row.{{/i}}</p>
 
           <h2>{{_i}}Offsetting columns{{/i}}</h2>
-          <p>{{_i}}Move columns to the left using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.{{/i}}</p>
+          <p>{{_i}}Move columns to the right using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.{{/i}}</p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
               <div class="span4">4</div>
@@ -128,8 +128,6 @@
 
           <h2>{{_i}}Nesting columns{{/i}}</h2>
           <p>{{_i}}To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to the number of columns of its parent.{{/i}}</p>
-          <h3>{{_i}}Example{{/i}}</h3>
-          <p>{{_i}}Here two nested <code>.span4</code> columns are placed within a <code>.span8</code>.{{/i}}</p>
           <div class="row show-grid">
             <div class="span9">
               {{_i}}Level 1 of column{{/i}}
@@ -347,20 +345,10 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{_i}}Phones{{/i}}</td>
-                <td>480px and below</td>
-                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
-              </tr>
-              <tr>
-                <td>{{_i}}Phones to tablets{{/i}}</td>
-                <td>767px and below</td>
-                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
-              </tr>
-              <tr>
-                <td>{{_i}}Portrait tablets{{/i}}</td>
-                <td>768px and above</td>
-                <td>42px</td>
-                <td>20px</td>
+                <td>{{_i}}Large display{{/i}}</td>
+                <td>1200px and up</td>
+                <td>70px</td>
+                <td>30px</td>
               </tr>
               <tr>
                 <td>{{_i}}Default{{/i}}</td>
@@ -369,25 +357,35 @@
                 <td>20px</td>
               </tr>
               <tr>
-                <td>{{_i}}Large display{{/i}}</td>
-                <td>1200px and up</td>
-                <td>70px</td>
-                <td>30px</td>
+                <td>{{_i}}Portrait tablets{{/i}}</td>
+                <td>768px and above</td>
+                <td>42px</td>
+                <td>20px</td>
+              </tr>
+              <tr>
+                <td>{{_i}}Phones to tablets{{/i}}</td>
+                <td>767px and below</td>
+                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
+              </tr>
+              <tr>
+                <td>{{_i}}Phones{{/i}}</td>
+                <td>480px and below</td>
+                <td class="muted" colspan="2">{{_i}}Fluid columns, no fixed widths{{/i}}</td>
               </tr>
             </tbody>
           </table>
 <pre class="prettyprint linenums">
-/* {{_i}}Landscape phones and down{{/i}} */
-@media (max-width: 480px) { ... }
-
-/* {{_i}}Landscape phone to portrait tablet{{/i}} */
-@media (max-width: 767px) { ... }
+/* {{_i}}Large desktop{{/i}} */
+@media (min-width: 1200px) { ... }
 
 /* {{_i}}Portrait tablet to landscape and desktop{{/i}} */
 @media (min-width: 768px) and (max-width: 979px) { ... }
 
-/* {{_i}}Large desktop{{/i}} */
-@media (min-width: 1200px) { ... }
+/* {{_i}}Landscape phone to portrait tablet{{/i}} */
+@media (max-width: 767px) { ... }
+
+/* {{_i}}Landscape phones and down{{/i}} */
+@media (max-width: 480px) { ... }
 </pre>
 
 

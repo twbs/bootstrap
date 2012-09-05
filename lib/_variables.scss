@@ -57,14 +57,12 @@ $headingsFontFamily:    inherit !default; // empty to use BS default, $baseFontF
 $headingsFontWeight:    bold !default;    // instead of browser default, bold
 $headingsColor:         inherit !default; // empty to use BS default, $textColor
 
-
 // Tables
 // -------------------------
 $tableBackground:                   transparent !default; // overall background-color
 $tableBackgroundAccent:             #f9f9f9 !default; // for striping
 $tableBackgroundHover:              #f5f5f5 !default; // for hover
 $tableBorder:                       #ddd !default; // table and cell border
-
 
 // Buttons
 // -------------------------
@@ -107,11 +105,10 @@ $dropdownDividerTop:            #e5e5e5 !default;
 $dropdownDividerBottom:         $white !default;
 
 $dropdownLinkColor:             $grayDark !default;
-
-$dropdownLinkColorActive:       $dropdownLinkColor !default;
-$dropdownLinkBackgroundActive:  $linkColor !default;
-
 $dropdownLinkColorHover:        $white !default;
+$dropdownLinkColorActive:       $dropdownLinkColor !default;
+
+$dropdownLinkBackgroundActive:  $linkColor !default;
 $dropdownLinkBackgroundHover:   $dropdownLinkBackgroundActive !default;
 
 
@@ -147,6 +144,11 @@ $placeholderText:         $grayLight !default;
 $hrBorder:                $grayLighter !default;
 
 
+// Horizontal forms & lists
+// -------------------------
+$horizontalComponentOffset:       180px;
+
+
 // Wells
 // -------------------------
 $wellBackground:                  #f5f5f5 !default;
@@ -161,8 +163,8 @@ $navbarBackgroundHighlight:       #ffffff !default;
 $navbarBackground:                darken($navbarBackgroundHighlight, 5%) !default;
 $navbarBorder:                    darken($navbarBackground, 12%) !default;
 
-$navbarText:                      $gray !default;
-$navbarLinkColor:                 $gray !default;
+$navbarText:                      #777 !default;
+$navbarLinkColor:                 #777 !default;
 $navbarLinkColorHover:            $grayDark !default;
 $navbarLinkColorActive:           $gray !default;
 $navbarLinkBackgroundHover:       transparent !default;

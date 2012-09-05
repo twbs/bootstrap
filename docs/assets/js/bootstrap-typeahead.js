@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-typeahead.js v2.1.0
+ * bootstrap-typeahead.js v2.1.1
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -174,7 +174,7 @@
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
 
-      if ($.browser.webkit || $.browser.msie) {
+      if ($.browser.chrome || $.browser.webkit || $.browser.msie) {
         this.$element.on('keydown', $.proxy(this.keydown, this))
       }
 

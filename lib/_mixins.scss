@@ -170,14 +170,15 @@
   select,
   textarea {
     color: $textColor;
+  }
+  input,
+  select,
+  textarea {
     border-color: $borderColor;
     @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
       border-color: darken($borderColor, 10%);
-      // Write out in full since the lighten() function isn't easily escaped
-      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($borderColor, 20%);
-         -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($borderColor, 20%);
-              box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($borderColor, 20%);
+      @include box-shadow(#{inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($borderColor, 20%)});
     }
   }
   // Give a small background color for input-prepend/-append
@@ -242,7 +243,7 @@
 }
 
 // Drop shadows
-@mixin box-shadow($shadow) {
+@mixin box-shadow($shadow) { // ToDo: Multiple shadow solution for SASS
   -webkit-box-shadow: $shadow;
      -moz-box-shadow: $shadow;
           box-shadow: $shadow;
@@ -254,6 +255,13 @@
      -moz-transition: $transition;
        -o-transition: $transition;
           transition: $transition;
+}
+
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+     -moz-transition-delay: $transition-delay;
+       -o-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
 }
 
 // Transformations
@@ -281,7 +289,7 @@
 @mixin skew($x, $y) {
   -webkit-transform: skew($x, $y);
      -moz-transform: skew($x, $y);
-      -ms-transform: skew($x, $y);
+      -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
        -o-transform: skew($x, $y);
           transform: skew($x, $y);
 }
@@ -425,7 +433,7 @@
   background-color: mix($midColor, $endColor, 80%);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
   background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
-  background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop*100%, $endColor);
+  background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
   background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
   background-repeat: no-repeat;
@@ -439,7 +447,7 @@
   background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
   background-repeat: no-repeat;
 }
-@mixin gradient-striped($color, $angle: 45deg) {
+@mixin gradient-striped($color: #555, $angle: 45deg) {
   background-color: $color;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
@@ -546,6 +554,7 @@
 
   [class*="span"] {
     float: left;
+    min-height: 1px; // prevent collapsing columns
     margin-left: $gridGutterWidth;
   }
 

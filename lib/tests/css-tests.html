@@ -98,6 +98,44 @@
 
 
 
+<!-- Responsive images
+================================================== -->
+
+<div class="page-header">
+  <h1>Responsive images</h1>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <img src="http://placehold.it/600x600" height="200">
+  </div>
+  <div class="span4">
+    <img src="http://placehold.it/600x600">
+  </div>
+  <div class="span4">
+    <img src="http://placehold.it/600x600">
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="span4">
+    <img src="http://placehold.it/600x900" style="width: 200px;">
+  </div>
+  <div class="span4">
+    <img src="http://placehold.it/200x300">
+  </div>
+  <div class="span4">
+    <img src="http://placehold.it/600x600">
+  </div>
+</div>
+
+<br><br>
+
+
+
+
 <!-- Fluid grid
 ================================================== -->
 
@@ -597,6 +635,36 @@
   <h1>Forms</h1>
 </div>
 
+<h4>Buttons and button groups</h4>
+<form class="form-inline">
+  <button class="btn btn-success">Save</button>
+  <button class="btn btn-info">Add new</button>
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="icon-user"></i> User
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Profile</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Sign Out</a></li>
+    </ul>
+  </div>
+</form>
+
+<h4>Horizontal form errors</h4>
+<form class="form-horizontal">
+  <div class="control-group error">
+    <label class="control-label" for="inputError">Radio with error</label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" id="inputError"> Oh hai
+      </label>
+      <span class="help-inline">Please correct the error</span>
+    </div>
+  </div>
+</form>
+
 <div class="row">
   <div class="span4">
     <h4>Prepend and append on inputs</h4>
@@ -622,7 +690,7 @@
       </div>
     </form>
   </div><!--/span-->
-  <div class="span6">
+  <div class="span4">
     <h4>Prepend and append with uneditable</h4>
     <form>
       <div class="input-prepend">
@@ -639,6 +707,24 @@
         <span class="add-on">.00</span>
       </div>
     </form>
+  </div><!--/span-->
+  <div class="span4">
+    <h4>Prepend with type="submit"</h4>
+    <form class="form-search">
+      <div class="input-append">
+        <input type="text" class="span2 search-query" value="" name="q">
+        <input type="submit" value="Search" class="btn">
+      </div>
+    </form>
+    <div class="input-append">
+      <input type="text" class="span2" value="" name="">
+      <input type="submit" value="Button" class="btn">
+    </div>
+    <div class="input-append">
+      <input type="text" size="16" id="appendedInputButtons" class="span2">
+      <input type="submit" value="Search" class="btn">
+      <button type="button" class="btn">Options</button>
+    </div>
   </div><!--/span-->
 </div><!--/row-->
 
@@ -1128,6 +1214,36 @@
   <li>Tablet + Desktop<span class="hidden-tablet hidden-desktop">✔ Tablet + Desktop</span></li>
   <li>All<span class="hidden-phone hidden-tablet hidden-desktop">✔ All</span></li>
 </ul>
+
+
+
+<!-- Gradients
+================================================== -->
+
+<div class="page-header">
+  <h1>Gradients</h1>
+</div>
+
+<h4>Horizontal</h4>
+<div class="gradient-horizontal"></div>
+
+<h4>Vertical</h4>
+<div class="gradient-vertical"></div>
+
+<h4>Directional</h4>
+<div class="gradient-directional"></div>
+
+<h4>Three colors</h4>
+<div class="gradient-vertical-three"></div>
+
+<h4>Radial</h4>
+<div class="gradient-radial"></div>
+
+<h4>Striped</h4>
+<div class="gradient-striped"></div>
+
+
+
 
 
 
