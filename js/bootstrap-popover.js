@@ -66,9 +66,15 @@
 
   , tip: function () {
       if (!this.$tip) {
-        this.$tip = $(this.options.template)
+        this.$tip = this.getTemplate()
       }
       return this.$tip
+    }
+
+  , getTemplate: function () {
+      var $template = $(this.options.template)
+      $template.addClass(this.options.class)
+      return $template
     }
 
   , destroy: function () {
@@ -97,6 +103,7 @@
     placement: 'right'
   , trigger: 'click'
   , content: ''
+  , 'class': ''
   , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
