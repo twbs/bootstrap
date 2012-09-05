@@ -70,7 +70,7 @@
       var $this = $(this)
         , data = $this.data('affix')
         , options = typeof option == 'object' && option
-      if (!data) $this.data('affix', (data = new Affix(this, options)))
+      $this.data('affix', (data = new Affix(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
