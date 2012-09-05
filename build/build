@@ -1,0 +1,254 @@
+#!/usr/bin/env node
+
+'use strict';
+
+try {
+	var optimist = require('optimist');
+	var less = require('less');
+  var wrench = require("wrench");
+  var ugly = require('uglify-js');
+  var colors = require('colors');
+}catch(e){
+	console.log('install required dependencies with this command:');
+	console.log('npm install optimist less wrench uglify-js colors');
+	process.exit(1)
+}
+
+var fs = require('fs');
+var path = require('path');
+
+var bootstrap_dir = fs.realpathSync(__dirname + "/..");
+
+var targets = {
+	"docs" : "original bootstrap docs",
+  "minimal" : "minimal bootstrap starter",
+ // "boilerplate" : "combined HTML5 boilerplate",
+  "clean" : "cleaup for source distro",
+ // "gh-pages"  : "MAKE FOR GH-PAGES 4 FAT & MDO ONLY" // ?
+}
+
+var usage = "This will build your Twitter Bootstrap project\n\nUsage: " .white + "$0 ".red + "[" .white + "target" .blue + "]\n\nAvailable targets:" .white;
+
+var i;
+for (i in targets){
+	usage += "\n  " + i.blue + " - " + targets[i] . white;
+}
+
+var argv = optimist.usage(usage)
+  .alias('d', 'directory')
+  .describe('d', 'Output directory (not including target name)')
+
+  .alias('p', 'production')
+  .boolean('p')
+  .describe('p', 'Compress & minify Javascript & CSS')
+
+  .alias('t', 'test')
+  .boolean('t')
+  .describe('t', 'run jshint & qunit in phantomjs')
+
+  .alias('w', 'watch')
+  .boolean('w')
+  .describe('w', 'watch for changes in the target files, recompile')
+
+  .alias('s', 'serve')
+  .describe('s', "provide a webserver on given port, combines nicely with --watch")
+
+  .default({
+    "d" : bootstrap_dir + '/dist',
+    "p" : true,
+    "t" : false,
+    "w" : false,
+    "s" : 8080
+  }).argv;
+
+var target = argv._[0];
+argv.target = target;
+
+function copyFileSync(srcFile, destFile) {
+  var BUF_LENGTH, buff, bytesRead, fdr, fdw, pos;
+  BUF_LENGTH = 64 * 1024;
+  buff = new Buffer(BUF_LENGTH);
+  fdr = fs.openSync(srcFile, 'r');
+  fdw = fs.openSync(destFile, 'w');
+  bytesRead = 1;
+  pos = 0;
+  while (bytesRead > 0) {
+    bytesRead = fs.readSync(fdr, buff, 0, BUF_LENGTH, pos);
+    fs.writeSync(fdw, buff, 0, bytesRead);
+    pos += bytesRead;
+  }
+  fs.closeSync(fdr);
+  return fs.closeSync(fdw);
+};
+
+/**
+ * given infile & outfile, process LESS, output file, then optionally run callback
+ * @param  {String}   infile   file with LESS directives
+ * @param  {String}   outfile  outputted, minified CSS
+ * @param  {Function} callback paramters are (err, infile, outfile, source-text)
+ */
+function lessify(infile, outfile, minify, callback){
+	callback = callback || function(err, infile, outfile, source){};
+  minify = (minify == undefined) ? true : minify;
+
+  var less_dir = path.resolve(path.dirname(infile));
+	var parser = new(less.Parser)({ filename: infile, paths: ['.', less_dir] });
+	fs.readFile(infile, function(err, less_data){
+		if (err){
+			return callback(err);
+		}
+    parser.parse(less_data + "", function (e, tree) {
+        var css = tree.toCSS({ compress: minify }); // Minify CSS output
+        fs.writeFile(outfile, css, function (err) {
+          callback(err, infile, outfile, css);
+        });
+    });
+	});
+}
+
+/**
+ * given infile & outfile, minify javascript, output file, then optionally run callback
+ * @param  {String}   infile   input javascript filename
+ * @param  {String}   outfile  output javascript filename
+ * @param  {Function} callback paramters are (err, infile, outfile, source-text)
+ */
+function uglify(infile, outfile, callback){
+  callback = callback || function(err, infile, outfile, source){};
+  var jsp = ugly.parser;
+  var pro = ugly.uglify;
+
+  fs.readFile(infile, function(err, orig_code){
+    orig_code = orig_code + "";
+    if (err){
+      return callback(err, infile, outfile, orig_code);
+    }
+    var ast = jsp.parse(orig_code);
+    ast = pro.ast_mangle(ast, {toplevel:true});
+    ast = pro.ast_squeeze(ast);
+    var final_code = pro.gen_code(ast);
+    fs.writeFile(outfile, final_code, function(err){
+      callback(err, infile, outfile, final_code);
+    });
+  });
+}
+
+colors.setTheme({
+  "info":"green",
+  "warn":"yellow",
+  "error":"red"
+});
+
+/**
+ * target-labeled console message
+ * @param  {String} message [description]
+ */
+function msg(message){
+  console.log("[".white + target.info + "] " + message.white);
+}
+
+/**
+ * target-labeled console error
+ * @param  {String} message [description]
+ */
+function error(message){
+  console.log("[".white + target.error + "] " + message.white);
+  process.exit(1);
+}
+
+/**
+ * Builds full bootstrap in given dir
+ * @param  {String} dir Directory to build it in
+ * @param  {Boolean} combineJs [description]
+ * @param  {Boolean} minifyJs  [description]
+ * @param  {Boolean} minifyCss [description]
+ */
+function makelib(dir, combineJs, minifyJs, minifyCss){
+  // make bootstrap dir
+  fs.mkdir(dir, function(err){
+    if (err && err.code != 'EEXIST'){
+      error('  error creating dir for bootstrap.');
+    }
+
+    // uglify JS
+    fs.mkdir(dir + "/js", function(err){
+      if (err && err.code != 'EEXIST'){
+        error('  error creating dir for javascript.');
+      }
+      msg("creating bootstrap javascript.");
+
+      var curFiles=[
+        'bootstrap-transition.js',
+        'bootstrap-alert.js',
+        'bootstrap-modal.js',
+        'bootstrap-dropdown.js',
+        'bootstrap-scrollspy.js',
+        'bootstrap-tab.js',
+        'bootstrap-tooltip.js',
+        'bootstrap-popover.js',
+        'bootstrap-button.js',
+        'bootstrap-collapse.js',
+        'bootstrap-carousel.js',
+        'bootstrap-typeahead.js',
+        'bootstrap-affix.js'
+      ];
+
+      var out="";
+      curFiles.forEach(function(name, i){
+        if (combineJs){
+          out += "\n" + fs.readFileSync(bootstrap_dir + "/js/" + name);
+          if (i == curFiles.length-1){
+            fs.writeFileSync(dir + "/js/bootstrap.js", out);
+            if(minifyJs){
+              uglify(dir + "/js/bootstrap.js", dir + "/js/bootstrap.min.js");
+            }
+          }
+        }else{
+          uglify(bootstrap_dir + "/js/" + name, dir + "/js/" + name);
+        }
+      });
+    });
+
+    // compile LESS
+    msg("compiling bootstrap LESS.");
+    fs.mkdir(dir + "/css", function(err){
+      if (err && err.code != 'EEXIST'){
+        error('error creating dir for LESS.');
+      }
+      lessify(bootstrap_dir + "/less/bootstrap.less", dir + "/css/bootstrap.css", minifyCss)
+      lessify(bootstrap_dir + "/less/responsive.less", dir + "/css/bootstrap-responsive.css", minifyCss);
+    });
+
+    // copy images
+    msg("copying bootstrap images.");
+    fs.mkdir(dir + "/img", function(err){
+      if (err && err.code != 'EEXIST'){
+        error('error creating dir for images.');
+      }
+      copyFileSync(bootstrap_dir + "/img/glyphicons-halflings-white.png", dir + "/img/glyphicons-halflings-white.png");
+      copyFileSync(bootstrap_dir + "/img/glyphicons-halflings.png", dir + "/img/glyphicons-halflings.png");
+    });
+  });
+}
+
+
+switch(target){
+	case 'docs':
+//  case 'gh-pages':
+  case 'minimal':
+//  case 'boilerplate':
+    msg("copying target assets.");
+    wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
+    wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets/', argv.directory + '/' + target + '/assets/');
+
+    makelib(argv.directory + '/' + target + '/assets/', argv.production, argv.production, argv.production);
+
+    msg("building target.");
+    require("./targets/" + target + '/build').build(argv);
+		break;
+	case 'clean':
+    msg("delete all files in " + argv.directory);
+    wrench.rmdirSyncRecursive(argv.directory, true);
+		break;
+	default:
+		require('optimist').showHelp();
+}
