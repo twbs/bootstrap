@@ -96,13 +96,13 @@
 
         this.activeTarget = target
 
-        $(this.selector)
-          .parent('.active')
-          .removeClass('active')
-
         selector = this.selector
           + '[data-target="' + target + '"],'
           + this.selector + '[href="' + target + '"]'
+
+        $(selector).parent()
+                   .siblings('.active')
+                   .removeClass('active')
 
         active = $(selector)
           .parent('li')
