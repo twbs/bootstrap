@@ -102,4 +102,28 @@ $(function () {
         dropdown.remove()
       })
 
+      test("should collapse after link clicked", function () {
+        var dropdownHTML = '<ul class="tabs">'
+          + '<li class="dropdown">'
+          + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+          + '<ul class="dropdown-menu">'
+          + '<li><a href="#">Secondary link</a></li>'
+          + '<li><a href="#" id="test_link">Something else here</a></li>'
+          + '<li class="divider"></li>'
+          + '<li><a href="#">Another link</a></li>'
+          + '</ul>'
+          + '</li>'
+          + '</ul>'
+          , dropdown = $(dropdownHTML)
+            .appendTo('#qunit-fixture')
+            .find('[data-toggle="dropdown"]')
+            .dropdown()
+        ok(!dropdown.parent('.dropdown').hasClass('open'), 'not open before click')
+        dropdown.click()
+        ok(dropdown.parent('.dropdown').hasClass('open'), 'open class added on click')
+        $('#test_link').click()
+        ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class removed after link click')
+        dropdown.remove()
+      })
+
 })
