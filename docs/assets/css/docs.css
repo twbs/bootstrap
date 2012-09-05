@@ -647,10 +647,6 @@ h2 + .row {
 form.bs-docs-example {
   padding-bottom: 19px;
 }
-.bs-docs-example .lead {
-  font-size: 18px;
-  line-height: 24px;
-}
 
 /* Images */
 .bs-docs-example-images img {
