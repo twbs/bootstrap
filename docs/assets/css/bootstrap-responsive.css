@@ -107,6 +107,7 @@
   }
   [class*="span"] {
     float: left;
+    min-height: 1px;
     margin-left: 30px;
   }
   .container,
@@ -453,6 +454,7 @@
   }
   [class*="span"] {
     float: left;
+    min-height: 1px;
     margin-left: 20px;
   }
   .container,
@@ -780,7 +782,8 @@
     padding-left: 20px;
   }
   .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-bottom,
+  .navbar-static-top {
     margin-right: -20px;
     margin-left: -20px;
   }
@@ -814,8 +817,11 @@
   .row-fluid [class*="span"] {
     display: block;
     float: none;
-    width: auto;
+    width: 100%;
     margin-left: 0;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .span12,
   .row-fluid .span12 {
@@ -845,6 +851,9 @@
     display: inline-block;
     width: auto;
   }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
+  }
   .modal {
     position: fixed;
     top: 20px;
@@ -870,7 +879,7 @@
   input[type="radio"] {
     border: 1px solid #ccc;
   }
-  .form-horizontal .control-group > label {
+  .form-horizontal .control-label {
     float: none;
     width: auto;
     padding-top: 0;

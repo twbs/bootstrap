@@ -1402,10 +1402,20 @@
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination "&gt;
+&lt;div class="pagination"&gt;
   &lt;ul&gt;
     &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
     &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+          <p>{{_i}}You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
     ...
   &lt;/ul&gt;
 &lt;/div&gt;
@@ -1698,7 +1708,7 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="page-header"&gt;
-  &lt;h1&gt;{{_i}}Example page header{{/i}}&lt;/h1&gt;
+  &lt;h1&gt;{{_i}}Example page header{{/i}} &lt;small&gt;{{_i}}Subtext for header{{/i}}&lt;/small&gt;&lt;/h1&gt;
 &lt;/div&gt;
 </pre>
 

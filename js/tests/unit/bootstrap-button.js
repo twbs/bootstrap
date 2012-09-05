@@ -62,7 +62,7 @@ $(function () {
         ok(btn.hasClass('active'), 'btn has class active')
       })
 
-     test("should toggle active when btn children are clicked within btn-group", function () {
+      test("should toggle active when btn children are clicked within btn-group", function () {
         var btngroup = $('<div class="btn-group" data-toggle="buttons-checkbox"></div>')
           , btn = $('<button class="btn">fat</button>')
           , inner = $('<i></i>')
@@ -72,6 +72,25 @@ $(function () {
         ok(!btn.hasClass('active'), 'btn does not have active class')
         inner.click()
         ok(btn.hasClass('active'), 'btn has class active')
+      })
+
+      test("should check for closest matching toggle", function () {
+        var group = $("<div data-toggle='buttons-radio'></div>")
+          , btn1  = $("<button class='btn active'></button>")
+          , btn2  = $("<button class='btn'></button>")
+          , wrap  = $("<div></div>")
+
+        wrap.append(btn1, btn2)
+
+        group
+          .append(wrap)
+          .appendTo($('#qunit-fixture'))
+
+        ok(btn1.hasClass('active'), 'btn1 has active class')
+        ok(!btn2.hasClass('active'), 'btn2 does not have active class')
+        btn2.click()
+        ok(!btn1.hasClass('active'), 'btn1 does not have active class')
+        ok(btn2.hasClass('active'), 'btn2 has active class')
       })
 
 })

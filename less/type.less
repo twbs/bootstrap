@@ -11,7 +11,7 @@ p {
 }
 .lead {
   margin-bottom: @baseLineHeight;
-  font-size: 20px;
+  font-size: @baseFontSize * 1.5;
   font-weight: 200;
   line-height: @baseLineHeight * 1.5;
 }
@@ -32,8 +32,22 @@ em {
 cite {
   font-style: normal;
 }
+
+// Utility classes
 .muted {
   color: @grayLight;
+}
+.text-warning {
+  color: @warningText;
+}
+.text-error {
+  color: @errorText;
+}
+.text-info {
+  color: @infoText;
+}
+.text-success {
+  color: @successText;
 }
 
 
@@ -116,15 +130,16 @@ dd {
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
+  .clearfix(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
-    width: 120px;
+    width: @horizontalComponentOffset - 20;
     clear: left;
     text-align: right;
     .text-overflow();
   }
   dd {
-    margin-left: 130px;
+    margin-left: @horizontalComponentOffset;
   }
 }
 

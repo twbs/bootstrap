@@ -133,7 +133,7 @@ table {
   colgroup + tbody tr:first-child td:last-child {
     -webkit-border-top-right-radius: 4px;
             border-top-right-radius: 4px;
-          -moz-border-right-topleft: 4px;
+         -moz-border-radius-topleft: 4px;
   }
 
 }
@@ -180,7 +180,7 @@ table [class*=span],
 }
 
 // Change the column widths to account for td/th padding
-table {
+.table {
   .span1     { .tableColumns(1); }
   .span2     { .tableColumns(2); }
   .span3     { .tableColumns(3); }
@@ -208,21 +208,38 @@ table {
 }
 
 
+
 // TABLE BACKGROUNDS
 // -----------------
 // Exact selectors below required to override .table-striped
 
-.table {
-  tbody tr.success td {
+.table tbody tr {
+  &.success td {
     background-color: @successBackground;
   }
-  tbody tr.error td {
+  &.error td {
     background-color: @errorBackground;
   }
-  tbody tr.warning td {
+  &.warning td {
     background-color: @warningBackground;
   }
-  tbody tr.info td {
+  &.info td {
     background-color: @infoBackground;
+  }
+}
+
+// Hover states for .table-hover
+.table-hover tbody tr {
+  &.success:hover td {
+    background-color: darken(@successBackground, 5%);
+  }
+  &.error:hover td {
+    background-color: darken(@errorBackground, 5%);
+  }
+  &.warning:hover td {
+    background-color: darken(@warningBackground, 5%);
+  }
+  &.info:hover td {
+    background-color: darken(@infoBackground, 5%);
   }
 }

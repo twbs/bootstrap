@@ -154,14 +154,14 @@
 &lt;/p&gt;
 </pre>
 
-          <h3><code>&lt;strong&gt;</code></h3>
+          <h3>Bold</h3>
           <p>For emphasizing a snippet of text with <strong>important</strong></p>
           <div class="bs-docs-example">
             <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
           </div>
           <pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
 
-          <h3><code>&lt;em&gt;</code></h3>
+          <h3>Italics</h3>
           <p>For emphasizing a snippet of text with <em>stress</em></p>
           <div class="bs-docs-example">
             <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
@@ -169,6 +169,23 @@
           <pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
 
           <p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+
+          <h3>Emphasis classes</h3>
+          <p>Convey meaning through color with a handful of emphasis utility classes.</p>
+          <div class="bs-docs-example">
+            <p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+            <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+            <p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
+            <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+          </div>
+<pre class="prettyprint linenums">
+&lt;p class="muted"&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/p&gt;
+&lt;p class="text-warning"&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
+&lt;p class="text-error"&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+&lt;p class="text-info"&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.&lt;/p&gt;
+&lt;p class="text-success"&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/p&gt;
+</pre>
 
 
           <hr class="bs-docs-separator">
@@ -189,7 +206,7 @@
           <div class="bs-docs-example">
             <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
           </div>
-          <pre class="prettyprint">&lt;abbr title="attribute" class="initialism"&gt;attr&lt;/abbr&gt;</pre>
+          <pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre>
 
 
           <hr class="bs-docs-separator">
@@ -995,7 +1012,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
           <h3>Textarea</h3>
-          <p>Form control which supports multiple lines of text. Change <code>row</code> attribute as necessary.</p>
+          <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
           <form class="bs-docs-example form-inline">
             <textarea rows="3"></textarea>
           </form>
@@ -1558,7 +1575,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
           <p>
             <span class="label label-info">Heads up!</span>
-            We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required.
+            We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
           </p>
 
           <h3>Button element</h3>
@@ -1900,8 +1917,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &lt;label class="control-label" for="inputIcon"&gt;Email address&lt;/label&gt;
   &lt;div class="controls"&gt;
     &lt;div class="input-prepend"&gt;
-    &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
-    &lt;input class="span2" id="inputIcon" type="text"&gt;
+      &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;input class="span2" id="inputIcon" type="text"&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
