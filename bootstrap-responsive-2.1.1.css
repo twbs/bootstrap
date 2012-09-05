@@ -107,6 +107,7 @@
 
   [class*="span"] {
     float: left;
+    min-height: 1px;
     margin-left: 30px;
   }
 
@@ -494,6 +495,7 @@
 
   [class*="span"] {
     float: left;
+    min-height: 1px;
     margin-left: 20px;
   }
 
@@ -860,7 +862,8 @@
   }
 
   .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-bottom,
+  .navbar-static-top {
     margin-left: -20px;
     margin-right: -20px;
   }
@@ -901,8 +904,11 @@
   .row-fluid [class*="span"] {
     float: none;
     display: block;
-    width: auto;
+    width: 100%;
     margin-left: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .span12,
@@ -936,6 +942,10 @@
     width: auto;
   }
 
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
+  }
+
   .modal {
     position: fixed;
     top: 20px;
@@ -963,21 +973,18 @@
     border: 1px solid #ccc;
   }
 
-  .form-horizontal .control-group > label {
+  .form-horizontal .control-label {
     float: none;
     width: auto;
     padding-top: 0;
     text-align: left;
   }
-
   .form-horizontal .controls {
     margin-left: 0;
   }
-
   .form-horizontal .control-list {
     padding-top: 0;
   }
-
   .form-horizontal .form-actions {
     padding-left: 10px;
     padding-right: 10px;
@@ -1054,7 +1061,7 @@
   }
 
   .nav-collapse .nav .nav-header {
-    color: #555555;
+    color: #777777;
     text-shadow: none;
   }
 
@@ -1062,7 +1069,7 @@
   .nav-collapse .dropdown-menu a {
     padding: 9px 15px;
     font-weight: bold;
-    color: #555555;
+    color: #777777;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -1123,6 +1130,10 @@
     display: none;
   }
 
+  .nav-collapse .nav > li > .dropdown-menu:before, .nav-collapse .nav > li > .dropdown-menu:after {
+    display: none;
+  }
+
   .nav-collapse .navbar-form,
   .nav-collapse .navbar-search {
     float: none;
@@ -1133,6 +1144,12 @@
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-inverse .nav-collapse .navbar-form,
+  .navbar-inverse .nav-collapse .navbar-search {
+    border-top-color: #111111;
+    border-bottom-color: #111111;
   }
 
   .navbar .nav-collapse .nav.pull-right {
