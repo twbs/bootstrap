@@ -1402,10 +1402,20 @@
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="pagination "&gt;
+&lt;div class="pagination"&gt;
   &lt;ul&gt;
     &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
     &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    ...
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+          <p>{{_i}}You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.{{/i}}</p>
+<pre class="prettyprint linenums">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
     ...
   &lt;/ul&gt;
 &lt;/div&gt;
@@ -1698,7 +1708,7 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="page-header"&gt;
-  &lt;h1&gt;{{_i}}Example page header{{/i}}&lt;/h1&gt;
+  &lt;h1&gt;{{_i}}Example page header{{/i}} &lt;small&gt;{{_i}}Subtext for header{{/i}}&lt;/small&gt;&lt;/h1&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1870,7 +1880,7 @@
 
           <h3>{{_i}}Dismiss buttons{{/i}}</h3>
           <p>{{_i}}Mobile Safari and Mobile Opera browsers, in addition to the <code>data-dismiss="alert"</code> attribute, require an <code>href="#"</code> for the dismissal of alerts when using an <code>&lt;a&gt;</code> tag.{{/i}}</p>
-          <pre class="prettyprint linenums">&lt;a href="#" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;</pre>
+          <pre class="prettyprint linenums">&lt;a href="#" class="close" data-dismiss="alert"&gt;&times;&lt;/a&gt;</pre>
           <p>{{_i}}Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;button type="button" class="close" data-dismiss="alert"&gt;&times;&lt;/button&gt;</pre>
 
