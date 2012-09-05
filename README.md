@@ -21,7 +21,7 @@ You can use the SASS Twitter Bootstrap by dropping the compiled CSS into any new
 
 Because SASS always outputs standard css, just link to the final output like normal:
 
-`<link rel="stylesheet" type="text/css" href="bootstrap-2.1.0.css">`
+`<link rel="stylesheet" type="text/css" href="bootstrap-2.1.1.css">`
 
 For more info, refer to the docs!
 
@@ -34,7 +34,7 @@ You can learn more about SASS at:
 
 [sass-lang.com](http://sass-lang.com)
 
-SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:bootstrap-2.1.0.css`
+SASS runs as a local GEM on your system. You can run `sass --watch lib/bootstrap.scss:bootstrap-2.1.1.css`
 
 
 
@@ -130,7 +130,7 @@ $ npm install recess connect uglify-js jshint -g
 Runs the recess compiler to rebuild the `/less` files and compiles the docs pages. Requires recess and uglify-js. <a href="http://twitter.github.com/bootstrap/less.html#compiling">Read more in our docs &raquo;</a>
 
 + **test** - `make test`
-Runs jshint and qunit tests headlessly in [phatomjs] (http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
+Runs jshint and qunit tests headlessly in [phantomjs] (http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
 
 + **watch** - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
