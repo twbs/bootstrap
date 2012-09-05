@@ -306,7 +306,7 @@ $('#myModal').on('hidden', function () {
 
 
 
-        <!-- Dropdown
+        <!-- Dropdowns
         ================================================== -->
         <section id="dropdowns">
           <div class="page-header">
@@ -409,7 +409,7 @@ $('#myModal').on('hidden', function () {
           <p>{{_i}}Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
-  &lt;a class="dropdown-toggle" href="#"&gt;Dropdown trigger&lt;/a&gt;
+  &lt;a class="dropdown-toggle" data-toggle="dropdown" href="#"&gt;Dropdown trigger&lt;/a&gt;
   &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
     ...
   &lt;/ul&gt;
@@ -965,7 +965,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
 
         <h2>{{_i}}Example alerts{{/i}}</h2>
-        <p>{{_i}}Add dismiss functionality to all alerge messages with this plugin.{{/i}}</p>
+        <p>{{_i}}Add dismiss functionality to all alert messages with this plugin.{{/i}}</p>
         <div class="bs-docs-example">
           <div class="alert fade in">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -1190,6 +1190,36 @@ $('#my-alert').bind('closed', function () {
                 </div>
               </div>
             </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;div class="accordion" id="accordion2"&gt;
+  &lt;div class="accordion-group"&gt;
+    &lt;div class="accordion-heading"&gt;
+      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"&gt;
+        {{_i}}Collapsible Group Item #1{{/i}}
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="collapseOne" class="accordion-body collapse in"&gt;
+      &lt;div class="accordion-inner"&gt;
+        Anim pariatur cliche...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="accordion-group"&gt;
+    &lt;div class="accordion-heading"&gt;
+      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"&gt;
+        {{_i}}Collapsible Group Item #2{{/i}}
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="collapseTwo" class="accordion-body collapse"&gt;
+      &lt;div class="accordion-inner"&gt;
+        Anim pariatur cliche...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+...
+</pre>
+            <p>{{_i}}You can also use the plugin without the accordion markup. Make a button toggle the expanding and collapsing of another element.{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
   {{_i}}simple collapsible{{/i}}
@@ -1536,11 +1566,11 @@ $('.carousel').carousel({
             <h3>{{_i}}Via data attributes{{/i}}</h3>
             <p>{{_i}}To easily add affix behavior to any element, just add <code>data-spy="affix"</code> to the element you want to spy on. Then use offsets to define when to toggle the pinning of an element on and off.{{/i}}</p>
 
-            <pre class="prettyprint linenums">&lt;div data-spy="affix" data-offset-top="200"&gt;...&lt;/body&gt;</pre>
+            <pre class="prettyprint linenums">&lt;div data-spy="affix" data-offset-top="200"&gt;...&lt;/div&gt;</pre>
 
             <div class="alert alert-info">
               <strong>{{_i}}Heads up!{{/i}}</strong>
-              {{_i}}It's up to you to manage the position of a pinned element. This is done by styling <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>.{{/i}}
+              {{_i}}You must manage the position of a pinned element and the behavior of its immediate parent. Position is controlled by <code>affix</code>, <code>affix-top</code>, and <code>affix-bottom</code>. Remember to check for a potentially collapsed parent when the affix kicks in as it's removing content from the normal flow of the page.{{/i}}
             </div>
 
             <h3>{{_i}}Via JavaScript{{/i}}</h3>
