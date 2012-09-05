@@ -107,6 +107,8 @@
     }
 
   , matcher: function (item) {
+      if (item == null )
+            return 0;
       return ~item.toLowerCase().indexOf(this.query.toLowerCase())
     }
 
