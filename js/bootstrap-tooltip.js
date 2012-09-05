@@ -212,7 +212,13 @@
     }
 
   , tip: function () {
-      return this.$tip = this.$tip || $(this.options.template)
+      return this.$tip = this.$tip || this.getTemplate()
+    }
+
+  , getTemplate: function () {
+      var $template = $(this.options.template)
+      $template.addClass(this.options.class)
+      return $template
     }
 
   , validate: function () {
@@ -266,6 +272,7 @@
   , placement: 'top'
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , 'class': ''
   , trigger: 'hover'
   , title: ''
   , delay: 0
