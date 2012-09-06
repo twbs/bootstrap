@@ -87,7 +87,7 @@
         [dimension](size || 'auto')
         [0].offsetWidth
 
-      this.$element[size !== null ? 'addClass' : 'removeClass']('collapse')
+      this.$element[size !== undefined ? 'addClass' : 'removeClass']('collapse')
 
       return this
     }
