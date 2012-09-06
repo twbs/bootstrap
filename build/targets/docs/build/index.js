@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var hogan = require('hogan.js')
+var hogan = require('hogan')
   , fs    = require('fs')
   , title = 'Twitter Bootstrap'
   , wrench = require("wrench");
@@ -69,4 +69,5 @@ module.exports.build = function(argv){
     });
     fs.writeFileSync(argv.directory + '/' + argv.target + '/examples/' + name.replace(/mustache$/, 'html'), page, 'utf-8');
   });
+
 }
