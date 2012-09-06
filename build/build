@@ -251,7 +251,7 @@ if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
   wrench.mkdirSyncRecursive(argv.directory + '/' + target);
 }
 
-if (target != "clean" && target && argv.serve){
+if (argv.serve && target != "clean" && target){
   http.createServer(function(request, response) {
     var uri = url.parse(request.url).pathname
       , filename = path.join(argv.directory, target, uri);
@@ -283,7 +283,7 @@ if (target != "clean" && target && argv.serve){
   msg('Server running at http://127.0.0.1:' + argv.port + '/');
 }
 
-if (target != "clean" && target && argv.watch){
+if (argv.watch && target != "clean" && target ){
   msg("watching files in " + bootstrap_dir + "/build/targets/" + target + ", less & js for changes. hit Ctrl-C to stop.");
 
   watchr(bootstrap_dir + "/build/targets/" + target, function(err, watcher) {
