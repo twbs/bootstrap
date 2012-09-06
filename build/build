@@ -2,13 +2,6 @@
 
 // very simple colors: ideas from colors module
 // I do this before all, so I can have colors in require errors
-var addProperty = function (color, func) {
-  exports[color] = function(str) {
-    return func.apply(str);
-  };
-  String.prototype.__defineGetter__(color, func);
-}
-
 function stylize(str, style) {
   var styles = {
     //styles
@@ -346,6 +339,11 @@ if (argv.serve && target != "clean" && target){
     });
   }).listen(parseInt(argv.port, 10));
   msg('Server running at http://127.0.0.1:' + argv.port + '/');
+}
+
+// testing support
+if (argv.watch && target != "clean" && target ){
+
 }
 
 // watch support
