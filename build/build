@@ -2,29 +2,28 @@
 
 // very simple colors: ideas from colors module
 // I do this before all, so I can have colors in require errors
-function stylize(str, style) {
-  var styles = {
-    //styles
-    'bold'      : ['\033[1m',  '\033[22m'],
-    'italic'    : ['\033[3m',  '\033[23m'],
-    'underline' : ['\033[4m',  '\033[24m'],
-    'inverse'   : ['\033[7m',  '\033[27m'],
-    //grayscale
-    'white'     : ['\033[37m', '\033[39m'],
-    'grey'      : ['\033[90m', '\033[39m'],
-    'black'     : ['\033[30m', '\033[39m'],
-    //colors
-    'blue'      : ['\033[34m', '\033[39m'],
-    'cyan'      : ['\033[36m', '\033[39m'],
-    'green'     : ['\033[32m', '\033[39m'],
-    'magenta'   : ['\033[35m', '\033[39m'],
-    'red'       : ['\033[31m', '\033[39m'],
-    'yellow'    : ['\033[33m', '\033[39m']
-  };
-  return styles[style][0] + str + styles[style][1];
-};
 ['bold', 'underline', 'italic', 'inverse', 'grey', 'black', 'yellow', 'red', 'green', 'blue', 'white', 'cyan', 'magenta'].forEach(function (color) {
-  String.prototype.__defineGetter__(color, function () { return stylize(this, color); });
+  String.prototype.__defineGetter__(color, function () {
+    var styles = {
+      //styles
+      'bold'      : ['\033[1m',  '\033[22m'],
+      'italic'    : ['\033[3m',  '\033[23m'],
+      'underline' : ['\033[4m',  '\033[24m'],
+      'inverse'   : ['\033[7m',  '\033[27m'],
+      //grayscale
+      'white'     : ['\033[37m', '\033[39m'],
+      'grey'      : ['\033[90m', '\033[39m'],
+      'black'     : ['\033[30m', '\033[39m'],
+      //colors
+      'blue'      : ['\033[34m', '\033[39m'],
+      'cyan'      : ['\033[36m', '\033[39m'],
+      'green'     : ['\033[32m', '\033[39m'],
+      'magenta'   : ['\033[35m', '\033[39m'],
+      'red'       : ['\033[31m', '\033[39m'],
+      'yellow'    : ['\033[33m', '\033[39m']
+  };
+    return styles[color][0] + this + styles[color][1];
+  });
 });
 
 
