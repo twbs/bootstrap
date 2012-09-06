@@ -6,21 +6,25 @@ For quick help, type `./build/build` in the top level of the repo.
 
     node ./build/build [target]
 
+
 The targets are either specific distros of Twitter Bootstrap, or cleaning all the built distros.
 
 ## Targets
+
+### clean
+
+__BE CAREFUL!__ this will delete all the files, without warning, in your distro dir.
+
 
 ### docs
 
 This is the original "bootstrap" target. It provides documentation, and some easy-to-folow examples.
 
+
 ### minimal
 
 Very tiny example, that uses jquery from Google's CDN. This is a good start for a new project.
 
-### clean
-
-__BE CAREFUL!__ this will delete all the files, without warning, in your distro dir.
 
 ## Make your own
 
@@ -33,6 +37,7 @@ It's a snap to add your own, just make a node.js module in build/targets/YOURTAR
       "dependencies": { }
     }
 
-The "description" field will be used in the help for the build system.
+The `description` field will be used in the help for the build system.
 
-You can use this trick to make a target for your project, and watch your files for change with the --watch option.
+You can use this trick to make a target for your project, and watch your files for change with the `--watch` option.
+
