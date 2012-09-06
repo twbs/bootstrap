@@ -147,6 +147,8 @@
           .css(tp)
           .addClass(placement)
           .addClass('in')
+
+        $tip.data('re-entered', 'true')
       }
     }
 
@@ -162,11 +164,12 @@
       var that = this
         , $tip = this.tip()
 
-      $tip.removeClass('in')
+      $tip.removeClass('in').data('re-entered', 'false')
 
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
-          $tip.off($.support.transition.end).remove()
+          $tip.off($.support.transition.end)
+          if ($tip.data('re-entered') === 'false') $tip.remove()
         }, 500)
 
         $tip.one($.support.transition.end, function () {
