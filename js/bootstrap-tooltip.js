@@ -169,7 +169,7 @@
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
           $tip.off($.support.transition.end)
-          if ($tip.data('re-entered') === 'false') remove()
+          if ($tip.data('re-entered') === 'false') $tip.remove()
         }, 500)
 
         $tip.one($.support.transition.end, function () {
