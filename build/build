@@ -2,25 +2,25 @@
 
 // very simple colors: ideas from colors module
 // I do this before all, so I can have colors in require errors
-['bold', 'underline', 'italic', 'inverse', 'grey', 'black', 'yellow', 'red', 'green', 'blue', 'white', 'cyan', 'magenta'].forEach(function (color) {
-  String.prototype.__defineGetter__(color, function () {
+['bold', 'underline', 'italic', 'inverse', 'grey', 'black', 'yellow', 'red', 'green', 'blue', 'white', 'cyan', 'magenta'].forEach(function(color) {
+  String.prototype.__defineGetter__(color, function() {
     var styles = {
       //styles
-      'bold'      : ['\033[1m',  '\033[22m'],
-      'italic'    : ['\033[3m',  '\033[23m'],
-      'underline' : ['\033[4m',  '\033[24m'],
-      'inverse'   : ['\033[7m',  '\033[27m'],
+      'bold': ['\033[1m', '\033[22m'],
+      'italic': ['\033[3m', '\033[23m'],
+      'underline': ['\033[4m', '\033[24m'],
+      'inverse': ['\033[7m', '\033[27m'],
       //grayscale
-      'white'     : ['\033[37m', '\033[39m'],
-      'grey'      : ['\033[90m', '\033[39m'],
-      'black'     : ['\033[30m', '\033[39m'],
+      'white': ['\033[37m', '\033[39m'],
+      'grey': ['\033[90m', '\033[39m'],
+      'black': ['\033[30m', '\033[39m'],
       //colors
-      'blue'      : ['\033[34m', '\033[39m'],
-      'cyan'      : ['\033[36m', '\033[39m'],
-      'green'     : ['\033[32m', '\033[39m'],
-      'magenta'   : ['\033[35m', '\033[39m'],
-      'red'       : ['\033[31m', '\033[39m'],
-      'yellow'    : ['\033[33m', '\033[39m']
+      'blue': ['\033[34m', '\033[39m'],
+      'cyan': ['\033[36m', '\033[39m'],
+      'green': ['\033[32m', '\033[39m'],
+      'magenta': ['\033[35m', '\033[39m'],
+      'red': ['\033[31m', '\033[39m'],
+      'yellow': ['\033[33m', '\033[39m']
     };
     return styles[color][0] + this + styles[color][1];
   });
@@ -33,7 +33,7 @@ var target;
  * target-labeled console message, with colors
  * @param  {String} message [description]
  */
-function msg(message){
+function msg(message) {
   target = target || "dependency";
   console.log("[".white + target.green + "] " + message.white);
 }
@@ -42,19 +42,19 @@ function msg(message){
  * target-labeled console error, with colors
  * @param  {String} message [description]
  */
-function error(message){
+function error(message) {
   target = target || "dependency";
   console.log("[".white + target.red + "] " + message.white);
   process.exit(1);
 }
 
 try {
-	var optimist = require('optimist');
-	var less = require('less');
+  var optimist = require('optimist');
+  var less = require('less');
   var wrench = require("wrench");
   var ugly = require('uglify-js');
-}catch(e){
-	error('install required dependencies with this command:\nnpm install optimist less wrench uglify-js');
+} catch (e) {
+  error('install required dependencies with this command:\nnpm install optimist less wrench uglify-js');
 }
 
 var fs = require('fs');
@@ -63,80 +63,65 @@ var http = require('http');
 var url = require("url");
 
 // fancy usage help and argv parsing
-
 var bootstrap_dir = fs.realpathSync(__dirname + "/..");
 
-var usage = "This will build your Twitter Bootstrap project\n\nUsage: " .white + "$0 ".red + "[" .white + "target" .blue + "]\n\nAvailable targets:" .white;
-usage += "\n  clean" . blue + " - cleanup (delete) all targets from distro" . white;
+var usage = "This will build your Twitter Bootstrap project\n\nUsage: ".white + "$0 ".red + "[".white + "target".blue + "]\n\nAvailable targets:".white;
+usage += "\n  clean".blue + " - cleanup (delete) all targets from distro".white;
 
 // get targets from build/targets dir
 var targets = fs.readdirSync(__dirname + '/targets');
-targets.forEach(function(name){
-  if (name[0]!='.'){
+targets.forEach(function(name) {
+  if (name[0] != '.') {
     var description = 'Unknown. Try adding a package.json with a description field.';
-    try{
+    try {
       var pkginfo = require("./targets/" + name + '/build/package.json');
       description = pkginfo.description;
-    }catch(e){}
+    } catch (e) {}
     usage += "\n  " + name.blue + " - " + description.white;
   }
 });
 
-var argv = optimist.usage(usage)
-  .describe('directory', 'Output directory (not including target name.)')
-
-  .alias('x', 'development')
-  .boolean('x')
-  .describe('x', "Don't compress & minify Javascript & CSS.")
-
-//  .alias('t', 'test')
-//  .boolean('t')
-//  .describe('t', 'Run jshint & qunit in phantomjs. Implies --serve.')
-
-  .alias('w', 'watch')
-  .boolean('w')
-  .describe('w', 'Watch for changes in the target files, recompile.')
-
-  .alias('s', 'serve')
-  .boolean('s')
-  .describe('s', "Provide a webserver on given port, combines nicely with --watch")
-
-  .alias('p', 'port')
-  .describe('p', "Port for webserver.")
-
-  .default({
-    "directory" : bootstrap_dir + '/dist',
-    "p" : 8080
+var argv = optimist.usage(usage).describe('directory', 'Output directory (not including target name.)')
+  .alias('x', 'development').boolean('x').describe('x', "Don't compress & minify Javascript & CSS.")
+  //  .alias('t', 'test')
+  //  .boolean('t')
+  //  .describe('t', 'Run jshint & qunit in phantomjs. Implies --serve.')
+  .alias('w', 'watch').boolean('w').describe('w', 'Watch for changes in the target files, recompile.')
+  .alias('s', 'serve').boolean('s').describe('s', "Provide a webserver on given port, combines nicely with --watch")
+  .alias('p', 'port').describe('p', "Port for webserver.")
+  .default ({
+    "directory": bootstrap_dir + '/dist',
+    "p": 8080
   }).argv;
 
 target = argv._[0];
 argv.target = target;
 
 // web-server is needed for testing
-if (argv.test){
+if (argv.test) {
   argv.serve = argv.s = true;
 }
 
 // check for testing dependencies
-if (argv.test){
+if (argv.test) {
   try {
     var phantom = require('phantom');
-  }catch(e){
+  } catch (e) {
     error("Install phantom.js with this command: npm install phantom. You will also need phantomjs command in your path.");
   }
 }
 
 // check for watch dependencies
-if (argv.watch){
+if (argv.watch) {
   try {
     var watchr = require('watch_r');
-  }catch(e){
+  } catch (e) {
     error("Install watch_r with this command: npm install watch_r.");
   }
 }
 
 // basically, an alias
-argv.production = ! argv.development;
+argv.production = !argv.development;
 
 /**
  * Synchronous file copy
@@ -167,23 +152,29 @@ function copyFileSync(srcFile, destFile) {
  * @param  {String}   outfile  outputted, minified CSS
  * @param  {Function} callback paramters are (err, infile, outfile, source-text)
  */
-function lessify(infile, outfile, minify, callback){
-	callback = callback || function(err, infile, outfile, source){};
+function lessify(infile, outfile, minify, callback) {
+  callback = callback ||
+  function(err, infile, outfile, source) {};
   minify = (minify == undefined) ? true : minify;
 
   var less_dir = path.resolve(path.dirname(infile));
-	var parser = new(less.Parser)({ filename: infile, paths: ['.', less_dir] });
-	fs.readFile(infile, function(err, less_data){
-		if (err){
-			return callback(err);
-		}
-    parser.parse(less_data + "", function (e, tree) {
-        var css = tree.toCSS({ compress: minify }); // Minify CSS output
-        fs.writeFile(outfile, css, function (err) {
-          callback(err, infile, outfile, css);
-        });
+  var parser = new(less.Parser)({
+    filename: infile,
+    paths: ['.', less_dir]
+  });
+  fs.readFile(infile, function(err, less_data) {
+    if (err) {
+      return callback(err);
+    }
+    parser.parse(less_data + "", function(e, tree) {
+      var css = tree.toCSS({
+        compress: minify
+      }); // Minify CSS output
+      fs.writeFile(outfile, css, function(err) {
+        callback(err, infile, outfile, css);
+      });
     });
-	});
+  });
 }
 
 /**
@@ -192,21 +183,24 @@ function lessify(infile, outfile, minify, callback){
  * @param  {String}   outfile  output javascript filename
  * @param  {Function} callback paramters are (err, infile, outfile, source-text)
  */
-function uglify(infile, outfile, callback){
-  callback = callback || function(err, infile, outfile, source){};
+function uglify(infile, outfile, callback) {
+  callback = callback ||
+  function(err, infile, outfile, source) {};
   var jsp = ugly.parser;
   var pro = ugly.uglify;
 
-  fs.readFile(infile, function(err, orig_code){
+  fs.readFile(infile, function(err, orig_code) {
     orig_code = orig_code + "";
-    if (err){
+    if (err) {
       return callback(err, infile, outfile, orig_code);
     }
     var ast = jsp.parse(orig_code);
-    ast = pro.ast_mangle(ast, {toplevel:true});
+    ast = pro.ast_mangle(ast, {
+      toplevel: true
+    });
     ast = pro.ast_squeeze(ast);
     var final_code = pro.gen_code(ast);
-    fs.writeFile(outfile, final_code, function(err){
+    fs.writeFile(outfile, final_code, function(err) {
       callback(err, infile, outfile, final_code);
     });
   });
@@ -219,42 +213,28 @@ function uglify(infile, outfile, callback){
  * @param  {Boolean} minifyJs  Minify the javascript file(s)
  * @param  {Boolean} minifyCss Minify the outputted CSS file
  */
-function makelib(dir, combineJs, minifyJs, minifyCss){
+function makelib(dir, combineJs, minifyJs, minifyCss) {
   wrench.mkdirSyncRecursive(dir);
   // uglify JS
-  fs.mkdir(dir + "/js", function(err){
-    if (err && err.code !== 'EEXIST'){
+  fs.mkdir(dir + "/js", function(err) {
+    if (err && err.code !== 'EEXIST') {
       error('error creating dir for javascript.');
     }
     msg("creating bootstrap javascript.");
 
-    var curFiles=[
-      'bootstrap-transition.js',
-      'bootstrap-alert.js',
-      'bootstrap-modal.js',
-      'bootstrap-dropdown.js',
-      'bootstrap-scrollspy.js',
-      'bootstrap-tab.js',
-      'bootstrap-tooltip.js',
-      'bootstrap-popover.js',
-      'bootstrap-button.js',
-      'bootstrap-collapse.js',
-      'bootstrap-carousel.js',
-      'bootstrap-typeahead.js',
-      'bootstrap-affix.js'
-    ];
+    var curFiles = ['bootstrap-transition.js', 'bootstrap-alert.js', 'bootstrap-modal.js', 'bootstrap-dropdown.js', 'bootstrap-scrollspy.js', 'bootstrap-tab.js', 'bootstrap-tooltip.js', 'bootstrap-popover.js', 'bootstrap-button.js', 'bootstrap-collapse.js', 'bootstrap-carousel.js', 'bootstrap-typeahead.js', 'bootstrap-affix.js'];
 
-    var out="";
-    curFiles.forEach(function(name, i){
-      if (combineJs){
+    var out = "";
+    curFiles.forEach(function(name, i) {
+      if (combineJs) {
         out += "\n" + fs.readFileSync(bootstrap_dir + "/js/" + name);
-        if (i == curFiles.length-1){
+        if (i == curFiles.length - 1) {
           fs.writeFileSync(dir + "/js/bootstrap.js", out);
-          if(minifyJs){
+          if (minifyJs) {
             uglify(dir + "/js/bootstrap.js", dir + "/js/bootstrap.min.js");
           }
         }
-      }else{
+      } else {
         uglify(bootstrap_dir + "/js/" + name, dir + "/js/" + name);
       }
     });
@@ -262,8 +242,8 @@ function makelib(dir, combineJs, minifyJs, minifyCss){
 
   // compile LESS
   msg("compiling bootstrap LESS.");
-  fs.mkdir(dir + "/css", function(err){
-    if (err && err.code !== 'EEXIST'){
+  fs.mkdir(dir + "/css", function(err) {
+    if (err && err.code !== 'EEXIST') {
       error('error creating dir for LESS.');
     }
     lessify(bootstrap_dir + "/less/bootstrap.less", dir + "/css/bootstrap.css", minifyCss)
@@ -272,8 +252,8 @@ function makelib(dir, combineJs, minifyJs, minifyCss){
 
   // copy images
   msg("copying bootstrap images.");
-  fs.mkdir(dir + "/img", function(err){
-    if (err && err.code != 'EEXIST'){
+  fs.mkdir(dir + "/img", function(err) {
+    if (err && err.code != 'EEXIST') {
       error('error creating dir for images.');
     }
     copyFileSync(bootstrap_dir + "/img/glyphicons-halflings-white.png", dir + "/img/glyphicons-halflings-white.png");
@@ -283,19 +263,21 @@ function makelib(dir, combineJs, minifyJs, minifyCss){
 
 /**
  * Compile a target
- * @param  {Object} [optional] changed_file An object, as it comes from watch_r 
+ * @param  {Object} [optional] changed_file An object, as it comes from watch_r
  */
-function compile(changed_file){
+function compile(changed_file) {
   // bootstrap changed
-  if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) == -1){
+  if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) == -1) {
     makelib(argv.directory + '/' + target + '/assets/', argv.production, argv.production, argv.production);
   }
 
   // target changed
-  if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) != -1){
+  if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) != -1) {
     msg("copying target assets.");
     wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
-    wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets', argv.directory + '/' + target + '/assets', {"preserve":true});
+    wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets', argv.directory + '/' + target + '/assets', {
+      "preserve": true
+    });
     msg("building target.");
     require("./targets/" + target + '/build').build(argv);
   }
@@ -322,30 +304,34 @@ function compile(changed_file){
 }
 
 // do initial build for watch support 
-if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
+if (argv.watch && !fs.existsSync(argv.directory + '/' + target)) {
   compile();
   wrench.mkdirSyncRecursive(argv.directory + '/' + target);
 }
 
 // webserver
-if (argv.serve && target != "clean" && target){
+if (argv.serve && target != "clean" && target) {
   http.createServer(function(request, response) {
-    var uri = url.parse(request.url).pathname
-      , filename = path.join(argv.directory, target, uri);
-    
+    var uri = url.parse(request.url).pathname,
+      filename = path.join(argv.directory, target, uri);
+
     fs.exists(filename, function(exists) {
-      if(!exists) {
-        response.writeHead(404, {"Content-Type": "text/plain"});
+      if (!exists) {
+        response.writeHead(404, {
+          "Content-Type": "text/plain"
+        });
         response.write("404 Not Found\n");
         response.end();
         return;
       }
 
-    if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+      if (fs.statSync(filename).isDirectory()) filename += '/index.html';
 
       fs.readFile(filename, "binary", function(err, file) {
-        if(err) {        
-          response.writeHead(500, {"Content-Type": "text/plain"});
+        if (err) {
+          response.writeHead(500, {
+            "Content-Type": "text/plain"
+          });
           response.write(err + "\n");
           response.end();
           return;
@@ -361,7 +347,7 @@ if (argv.serve && target != "clean" && target){
 }
 
 // watch support
-if (argv.watch && target != "clean" && target ){
+if (argv.watch && target != "clean" && target) {
   msg("watching files in " + bootstrap_dir + "/build/targets/" + target + ", less & js for changes. hit Ctrl-C to stop.");
 
   watchr(bootstrap_dir + "/build/targets/" + target, function(err, watcher) {
@@ -379,14 +365,13 @@ if (argv.watch && target != "clean" && target ){
     watcher.on('remove', compile);
   });
 
-}else{
-  if (target == 'clean'){
-      msg("delete all files in " + argv.directory);
-      wrench.rmdirSyncRecursive(argv.directory, true);
-  }else if (targets.indexOf(target) != -1){
+} else {
+  if (target == 'clean') {
+    msg("delete all files in " + argv.directory);
+    wrench.rmdirSyncRecursive(argv.directory, true);
+  } else if (targets.indexOf(target) != -1) {
     compile();
-  }else{
+  } else {
     require('optimist').showHelp();
   }
 }
-
