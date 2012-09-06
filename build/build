@@ -89,9 +89,9 @@ var argv = optimist.usage(usage)
   .boolean('x')
   .describe('x', "Don't compress & minify Javascript & CSS.")
 
-  .alias('t', 'test')
-  .boolean('t')
-  .describe('t', 'Run jshint & qunit in phantomjs. Implies --serve.')
+//  .alias('t', 'test')
+//  .boolean('t')
+//  .describe('t', 'Run jshint & qunit in phantomjs. Implies --serve.')
 
   .alias('w', 'watch')
   .boolean('w')
@@ -299,6 +299,26 @@ function compile(changed_file){
     msg("building target.");
     require("./targets/" + target + '/build').build(argv);
   }
+
+  /*
+  // testing support
+  if (argv.test){
+    phantom.create(function(ph) {
+      return ph.createPage(function(page) {
+        return page.open("http://127.0.0.1:" + argv.port, function(status) {
+          
+          return page.evaluate((function() {
+            return document.title;
+          }), function(result) {
+            console.log('Page title is ' + result);
+            return ph.exit();
+          });
+
+        });
+      });
+    });
+  }
+   */
 }
 
 // do initial build for watch support 
@@ -338,11 +358,6 @@ if (argv.serve && target != "clean" && target){
     });
   }).listen(parseInt(argv.port, 10));
   msg('Server running at http://127.0.0.1:' + argv.port + '/');
-}
-
-// testing support
-if (argv.watch && target != "clean" && target ){
-
 }
 
 // watch support
