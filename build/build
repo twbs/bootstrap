@@ -165,84 +165,81 @@ function error(message){
  * @param  {Boolean} minifyCss [description]
  */
 function makelib(dir, combineJs, minifyJs, minifyCss){
-  // make bootstrap dir
-  fs.mkdir(dir, function(err){
-    if (err && err.code != 'EEXIST'){
-      error('  error creating dir for bootstrap.');
+  wrench.mkdirSyncRecursive(dir);
+  // uglify JS
+  fs.mkdir(dir + "/js", function(err){
+    if (err && err.code !== 'EEXIST'){
+      error('error creating dir for javascript.');
     }
+    msg("creating bootstrap javascript.");
 
-    // uglify JS
-    fs.mkdir(dir + "/js", function(err){
-      if (err && err.code != 'EEXIST'){
-        error('  error creating dir for javascript.');
-      }
-      msg("creating bootstrap javascript.");
+    var curFiles=[
+      'bootstrap-transition.js',
+      'bootstrap-alert.js',
+      'bootstrap-modal.js',
+      'bootstrap-dropdown.js',
+      'bootstrap-scrollspy.js',
+      'bootstrap-tab.js',
+      'bootstrap-tooltip.js',
+      'bootstrap-popover.js',
+      'bootstrap-button.js',
+      'bootstrap-collapse.js',
+      'bootstrap-carousel.js',
+      'bootstrap-typeahead.js',
+      'bootstrap-affix.js'
+    ];
 
-      var curFiles=[
-        'bootstrap-transition.js',
-        'bootstrap-alert.js',
-        'bootstrap-modal.js',
-        'bootstrap-dropdown.js',
-        'bootstrap-scrollspy.js',
-        'bootstrap-tab.js',
-        'bootstrap-tooltip.js',
-        'bootstrap-popover.js',
-        'bootstrap-button.js',
-        'bootstrap-collapse.js',
-        'bootstrap-carousel.js',
-        'bootstrap-typeahead.js',
-        'bootstrap-affix.js'
-      ];
-
-      var out="";
-      curFiles.forEach(function(name, i){
-        if (combineJs){
-          out += "\n" + fs.readFileSync(bootstrap_dir + "/js/" + name);
-          if (i == curFiles.length-1){
-            fs.writeFileSync(dir + "/js/bootstrap.js", out);
-            if(minifyJs){
-              uglify(dir + "/js/bootstrap.js", dir + "/js/bootstrap.min.js");
-            }
+    var out="";
+    curFiles.forEach(function(name, i){
+      if (combineJs){
+        out += "\n" + fs.readFileSync(bootstrap_dir + "/js/" + name);
+        if (i == curFiles.length-1){
+          fs.writeFileSync(dir + "/js/bootstrap.js", out);
+          if(minifyJs){
+            uglify(dir + "/js/bootstrap.js", dir + "/js/bootstrap.min.js");
           }
-        }else{
-          uglify(bootstrap_dir + "/js/" + name, dir + "/js/" + name);
         }
-      });
-    });
-
-    // compile LESS
-    msg("compiling bootstrap LESS.");
-    fs.mkdir(dir + "/css", function(err){
-      if (err && err.code != 'EEXIST'){
-        error('error creating dir for LESS.');
+      }else{
+        uglify(bootstrap_dir + "/js/" + name, dir + "/js/" + name);
       }
-      lessify(bootstrap_dir + "/less/bootstrap.less", dir + "/css/bootstrap.css", minifyCss)
-      lessify(bootstrap_dir + "/less/responsive.less", dir + "/css/bootstrap-responsive.css", minifyCss);
     });
+  });
 
-    // copy images
-    msg("copying bootstrap images.");
-    fs.mkdir(dir + "/img", function(err){
-      if (err && err.code != 'EEXIST'){
-        error('error creating dir for images.');
-      }
-      copyFileSync(bootstrap_dir + "/img/glyphicons-halflings-white.png", dir + "/img/glyphicons-halflings-white.png");
-      copyFileSync(bootstrap_dir + "/img/glyphicons-halflings.png", dir + "/img/glyphicons-halflings.png");
-    });
+  // compile LESS
+  msg("compiling bootstrap LESS.");
+  fs.mkdir(dir + "/css", function(err){
+    if (err && err.code !== 'EEXIST'){
+      error('error creating dir for LESS.');
+    }
+    lessify(bootstrap_dir + "/less/bootstrap.less", dir + "/css/bootstrap.css", minifyCss)
+    lessify(bootstrap_dir + "/less/responsive.less", dir + "/css/bootstrap-responsive.css", minifyCss);
+  });
+
+  // copy images
+  msg("copying bootstrap images.");
+  fs.mkdir(dir + "/img", function(err){
+    if (err && err.code != 'EEXIST'){
+      error('error creating dir for images.');
+    }
+    copyFileSync(bootstrap_dir + "/img/glyphicons-halflings-white.png", dir + "/img/glyphicons-halflings-white.png");
+    copyFileSync(bootstrap_dir + "/img/glyphicons-halflings.png", dir + "/img/glyphicons-halflings.png");
   });
 }
 
 
 function compile(changed_file){
-  // TODO: watch for specific build portion to rebuild
-  msg("copying target assets.");
-  wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
-  wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets/', argv.directory + '/' + target + '/assets/');
+  
+  if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) == -1){
+    makelib(argv.directory + '/' + target + '/assets/', argv.production, argv.production, argv.production);
+  }
 
-  makelib(argv.directory + '/' + target + '/assets/', argv.production, argv.production, argv.production);
-
-  msg("building target.");
-  require("./targets/" + target + '/build').build(argv);
+  if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) != -1){
+    msg("copying target assets.");
+    wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
+    wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets', argv.directory + '/' + target + '/assets', {"preserve":true});
+    msg("building target.");
+    require("./targets/" + target + '/build').build(argv);
+  }  
 }
 
 // do initial build for watch support 
