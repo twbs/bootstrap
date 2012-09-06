@@ -19,7 +19,7 @@ $(function () {
         if ($.browser.webkit || $.browser.msie) {
           ok($input.data('events').keydown, 'has a keydown event')
         } else {
-          ok($input.data('events').keydown, 'does not have a keydown event')
+          ok(! $input.data('events').keydown, 'does not have a keydown event')
         }
       })
 
@@ -143,7 +143,7 @@ $(function () {
         ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is active")
 
         $input.trigger({
-          type: 'keydown'
+          type: 'keypress'
         , keyCode: 40
         })
 
@@ -151,7 +151,7 @@ $(function () {
 
 
         $input.trigger({
-          type: 'keydown'
+          type: 'keypress'
         , keyCode: 38
         })
 
