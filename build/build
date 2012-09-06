@@ -17,6 +17,8 @@ try {
 
 var fs = require('fs');
 var path = require('path');
+var http = require('http');
+var url = require("url");
 
 var bootstrap_dir = fs.realpathSync(__dirname + "/..");
 
@@ -243,13 +245,45 @@ function compile(changed_file){
   require("./targets/" + target + '/build').build(argv);
 }
 
-if (target != "clean" && target && argv.watch){
-  // do initial build for watch support
-  if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
-    compile();
-    wrench.mkdirSyncRecursive(argv.directory + '/' + target);
-  }
+// do initial build for watch support 
+if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
+  compile();
+  wrench.mkdirSyncRecursive(argv.directory + '/' + target);
+}
 
+if (target != "clean" && target && argv.serve){
+  http.createServer(function(request, response) {
+    var uri = url.parse(request.url).pathname
+      , filename = path.join(argv.directory, target, uri);
+    
+    fs.exists(filename, function(exists) {
+      if(!exists) {
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("404 Not Found\n");
+        response.end();
+        return;
+      }
+
+    if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+
+      fs.readFile(filename, "binary", function(err, file) {
+        if(err) {        
+          response.writeHead(500, {"Content-Type": "text/plain"});
+          response.write(err + "\n");
+          response.end();
+          return;
+        }
+
+        response.writeHead(200);
+        response.write(file, "binary");
+        response.end();
+      });
+    });
+  }).listen(parseInt(argv.port, 10));
+  msg('Server running at http://127.0.0.1:' + argv.port + '/');
+}
+
+if (target != "clean" && target && argv.watch){
   msg("watching files in " + bootstrap_dir + "/build/targets/" + target + ", less & js for changes. hit Ctrl-C to stop.");
 
   watchr(bootstrap_dir + "/build/targets/" + target, function(err, watcher) {
