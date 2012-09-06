@@ -34,3 +34,5 @@ It's a snap to add your own, just make a node.js module in build/targets/YOURTAR
     }
 
 The "description" field will be used in the help for the build system.
+
+You can use this trick to make a target for your project, and watch your files for change with the --watch option.

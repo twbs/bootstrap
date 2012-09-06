@@ -250,22 +250,30 @@ if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
 }
 
 if (target && argv.watch){
-  msg("watching files in " + argv.directory + '/' + target + " for change. hit Ctrl-C to stop.");
+  msg("watching files in " + bootstrap_dir + "/build/targets/" + target + ", less & js for changes. hit Ctrl-C to stop.");
 
-  watchr(argv.directory + '/' + target, function(err, watcher) {
+  watchr(bootstrap_dir + "/build/targets/" + target, function(err, watcher) {
+    watcher.on('change', compile);
+    watcher.on('remove', compile);
+  });
+
+  watchr(bootstrap_dir + "/js/", function(err, watcher) {
+    watcher.on('change', compile);
+    watcher.on('remove', compile);
+  });
+
+  watchr(bootstrap_dir + "/less/", function(err, watcher) {
     watcher.on('change', compile);
     watcher.on('remove', compile);
   });
 
 }else{
 
-  if (targets.x.indexOf(target) != -1){
-    if (target == 'clean'){
+  if (target == 'clean'){
       msg("delete all files in " + argv.directory);
       wrench.rmdirSyncRecursive(argv.directory, true);
-    }else{
-      compile();
-    }
+  }else if (targets.indexOf(target) != -1){
+    compile();
   }else{
     require('optimist').showHelp();
   }
