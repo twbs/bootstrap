@@ -1,18 +1,68 @@
 #!/usr/bin/env node
 
-'use strict';
+// very simple colors: ideas from colors module
+// I do this before all, so I can have colors in require errors
+var addProperty = function (color, func) {
+  exports[color] = function(str) {
+    return func.apply(str);
+  };
+  String.prototype.__defineGetter__(color, func);
+}
+
+function stylize(str, style) {
+  var styles = {
+    //styles
+    'bold'      : ['\033[1m',  '\033[22m'],
+    'italic'    : ['\033[3m',  '\033[23m'],
+    'underline' : ['\033[4m',  '\033[24m'],
+    'inverse'   : ['\033[7m',  '\033[27m'],
+    //grayscale
+    'white'     : ['\033[37m', '\033[39m'],
+    'grey'      : ['\033[90m', '\033[39m'],
+    'black'     : ['\033[30m', '\033[39m'],
+    //colors
+    'blue'      : ['\033[34m', '\033[39m'],
+    'cyan'      : ['\033[36m', '\033[39m'],
+    'green'     : ['\033[32m', '\033[39m'],
+    'magenta'   : ['\033[35m', '\033[39m'],
+    'red'       : ['\033[31m', '\033[39m'],
+    'yellow'    : ['\033[33m', '\033[39m']
+  };
+  return styles[style][0] + str + styles[style][1];
+};
+['bold', 'underline', 'italic', 'inverse', 'grey', 'black', 'yellow', 'red', 'green', 'blue', 'white', 'cyan', 'magenta'].forEach(function (color) {
+  String.prototype.__defineGetter__(color, function () { return stylize(this, color); });
+});
+
+
+var target;
+
+/**
+ * target-labeled console message, with colors
+ * @param  {String} message [description]
+ */
+function msg(message){
+  target = target || "dependency";
+  console.log("[".white + target.green + "] " + message.white);
+}
+
+/**
+ * target-labeled console error, with colors
+ * @param  {String} message [description]
+ */
+function error(message){
+  target = target || "dependency";
+  console.log("[".white + target.red + "] " + message.white);
+  process.exit(1);
+}
 
 try {
 	var optimist = require('optimist');
 	var less = require('less');
   var wrench = require("wrench");
   var ugly = require('uglify-js');
-  var colors = require('colors');
-  var watchr = require('watch_r');
 }catch(e){
-	console.log('install required dependencies with this command:');
-	console.log('npm install optimist less wrench uglify-js colors watch_r');
-	process.exit(1)
+	error('install required dependencies with this command:\nnpm install optimist less wrench uglify-js');
 }
 
 var fs = require('fs');
@@ -20,17 +70,23 @@ var path = require('path');
 var http = require('http');
 var url = require("url");
 
+// fancy usage help and argv parsing
+
 var bootstrap_dir = fs.realpathSync(__dirname + "/..");
 
 var usage = "This will build your Twitter Bootstrap project\n\nUsage: " .white + "$0 ".red + "[" .white + "target" .blue + "]\n\nAvailable targets:" .white;
 usage += "\n  clean" . blue + " - cleanup (delete) all targets from distro" . white;
 
+// get targets from build/targets dir
 var targets = fs.readdirSync(__dirname + '/targets');
-
 targets.forEach(function(name){
   if (name[0]!='.'){
-    var pkginfo = require("./targets/" + name + '/build/package.json');
-    usage += "\n  " + name.blue + " - " + pkginfo.description . white;
+    var description = 'Unknown. Try adding a package.json with a description field.';
+    try{
+      var pkginfo = require("./targets/" + name + '/build/package.json');
+      description = pkginfo.description;
+    }catch(e){}
+    usage += "\n  " + name.blue + " - " + description.white;
   }
 });
 
@@ -43,7 +99,7 @@ var argv = optimist.usage(usage)
 
   .alias('t', 'test')
   .boolean('t')
-  .describe('t', 'Run jshint & qunit in phantomjs.')
+  .describe('t', 'Run jshint & qunit in phantomjs. Implies --serve.')
 
   .alias('w', 'watch')
   .boolean('w')
@@ -61,11 +117,41 @@ var argv = optimist.usage(usage)
     "p" : 8080
   }).argv;
 
-var target = argv._[0];
+target = argv._[0];
 argv.target = target;
 
+// web-server is needed for testing
+if (argv.test){
+  argv.serve = argv.s = true;
+}
+
+// check for testing dependencies
+if (argv.test){
+  try {
+    var phantom = require('phantom');
+  }catch(e){
+    error("Install phantom.js with this command: npm install phantom. You will also need phantomjs command in your path.");
+  }
+}
+
+// check for watch dependencies
+if (argv.watch){
+  try {
+    var watchr = require('watch_r');
+  }catch(e){
+    error("Install watch_r with this command: npm install watch_r.");
+  }
+}
+
+// basically, an alias
 argv.production = ! argv.development;
 
+/**
+ * Synchronous file copy
+ * @param  {String} srcFile  file to copy from
+ * @param  {String} destFile file to copy to
+ * @return {Boolean}         Success status
+ */
 function copyFileSync(srcFile, destFile) {
   var BUF_LENGTH, buff, bytesRead, fdr, fdw, pos;
   BUF_LENGTH = 64 * 1024;
@@ -134,35 +220,12 @@ function uglify(infile, outfile, callback){
   });
 }
 
-colors.setTheme({
-  "info":"green",
-  "warn":"yellow",
-  "error":"red"
-});
-
-/**
- * target-labeled console message
- * @param  {String} message [description]
- */
-function msg(message){
-  console.log("[".white + target.info + "] " + message.white);
-}
-
-/**
- * target-labeled console error
- * @param  {String} message [description]
- */
-function error(message){
-  console.log("[".white + target.error + "] " + message.white);
-  process.exit(1);
-}
-
 /**
  * Builds full bootstrap in given dir
  * @param  {String} dir Directory to build it in
- * @param  {Boolean} combineJs [description]
- * @param  {Boolean} minifyJs  [description]
- * @param  {Boolean} minifyCss [description]
+ * @param  {Boolean} combineJs Combine all teh javascript files
+ * @param  {Boolean} minifyJs  Minify the javascript file(s)
+ * @param  {Boolean} minifyCss Minify the outputted CSS file
  */
 function makelib(dir, combineJs, minifyJs, minifyCss){
   wrench.mkdirSyncRecursive(dir);
@@ -226,20 +289,24 @@ function makelib(dir, combineJs, minifyJs, minifyCss){
   });
 }
 
-
+/**
+ * Compile a target
+ * @param  {Object} [optional] changed_file An object, as it comes from watch_r 
+ */
 function compile(changed_file){
-  
+  // bootstrap changed
   if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) == -1){
     makelib(argv.directory + '/' + target + '/assets/', argv.production, argv.production, argv.production);
   }
 
+  // target changed
   if (changed_file == undefined || changed_file.path.indexOf(bootstrap_dir + "/build/targets/" + target) != -1){
     msg("copying target assets.");
     wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
     wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets', argv.directory + '/' + target + '/assets', {"preserve":true});
     msg("building target.");
     require("./targets/" + target + '/build').build(argv);
-  }  
+  }
 }
 
 // do initial build for watch support 
@@ -248,6 +315,7 @@ if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
   wrench.mkdirSyncRecursive(argv.directory + '/' + target);
 }
 
+// webserver
 if (argv.serve && target != "clean" && target){
   http.createServer(function(request, response) {
     var uri = url.parse(request.url).pathname
@@ -280,6 +348,7 @@ if (argv.serve && target != "clean" && target){
   msg('Server running at http://127.0.0.1:' + argv.port + '/');
 }
 
+// watch support
 if (argv.watch && target != "clean" && target ){
   msg("watching files in " + bootstrap_dir + "/build/targets/" + target + ", less & js for changes. hit Ctrl-C to stop.");
 
