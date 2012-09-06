@@ -243,13 +243,13 @@ function compile(changed_file){
   require("./targets/" + target + '/build').build(argv);
 }
 
-// do initial build for watch support
-if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
-  compile();
-  wrench.mkdirSyncRecursive(argv.directory + '/' + target);
-}
+if (target != "clean" && target && argv.watch){
+  // do initial build for watch support
+  if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
+    compile();
+    wrench.mkdirSyncRecursive(argv.directory + '/' + target);
+  }
 
-if (target && argv.watch){
   msg("watching files in " + bootstrap_dir + "/build/targets/" + target + ", less & js for changes. hit Ctrl-C to stop.");
 
   watchr(bootstrap_dir + "/build/targets/" + target, function(err, watcher) {
@@ -268,7 +268,6 @@ if (target && argv.watch){
   });
 
 }else{
-
   if (target == 'clean'){
       msg("delete all files in " + argv.directory);
       wrench.rmdirSyncRecursive(argv.directory, true);
