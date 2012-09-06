@@ -8,9 +8,10 @@ try {
   var wrench = require("wrench");
   var ugly = require('uglify-js');
   var colors = require('colors');
+  var watchr = require('watch_r');
 }catch(e){
 	console.log('install required dependencies with this command:');
-	console.log('npm install optimist less wrench uglify-js colors');
+	console.log('npm install optimist less wrench uglify-js colors watch_r');
 	process.exit(1)
 }
 
@@ -230,24 +231,43 @@ function makelib(dir, combineJs, minifyJs, minifyCss){
 }
 
 
-switch(target){
-//  case 'gh-pages':
-//  case 'boilerplate':
-	case 'docs':
-  case 'minimal':
-    msg("copying target assets.");
-    wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
-    wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets/', argv.directory + '/' + target + '/assets/');
+function compile(changed_file){
+  // TODO: watch for specific build portion to rebuild
+  msg("copying target assets.");
+  wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
+  wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets/', argv.directory + '/' + target + '/assets/');
 
-    makelib(argv.directory + '/' + target + '/assets/', argv.production, argv.production, argv.production);
+  makelib(argv.directory + '/' + target + '/assets/', argv.production, argv.production, argv.production);
 
-    msg("building target.");
-    require("./targets/" + target + '/build').build(argv);
-		break;
-	case 'clean':
-    msg("delete all files in " + argv.directory);
-    wrench.rmdirSyncRecursive(argv.directory, true);
-		break;
-	default:
-		require('optimist').showHelp();
+  msg("building target.");
+  require("./targets/" + target + '/build').build(argv);
 }
+
+// do initial build for watch support
+if (argv.watch && !fs.existsSync(argv.directory + '/' + target)){
+  compile();
+  wrench.mkdirSyncRecursive(argv.directory + '/' + target);
+}
+
+if (target && argv.watch){
+  msg("watching files in " + argv.directory + '/' + target + " for change. hit Ctrl-C to stop.");
+
+  watchr(argv.directory + '/' + target, function(err, watcher) {
+    watcher.on('change', compile);
+    watcher.on('remove', compile);
+  });
+
+}else{
+
+  if (targets.x.indexOf(target) != -1){
+    if (target == 'clean'){
+      msg("delete all files in " + argv.directory);
+      wrench.rmdirSyncRecursive(argv.directory, true);
+    }else{
+      compile();
+    }
+  }else{
+    require('optimist').showHelp();
+  }
+}
+
