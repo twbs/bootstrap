@@ -1,9 +1,16 @@
 #!/usr/bin/env node
-var hogan = require('hogan')
-  , fs    = require('fs')
-  , title = 'Twitter Bootstrap'
-  , wrench = require("wrench");
 
+var title = 'Twitter Bootstrap'
+
+try {
+  var hogan = require('hogan');
+  var wrench = require("wrench");
+}catch(e){
+  console.log('[\033[31mdocs\033[39m] install required dependencies with this command:\nnpm install wrench hogan');
+  process.exit(1);
+}
+
+var fs = require('fs');
 
 /**
  * Builds this target
