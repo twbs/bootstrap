@@ -19,50 +19,49 @@ var path = require('path');
 
 var bootstrap_dir = fs.realpathSync(__dirname + "/..");
 
-var targets = {
-	"docs" : "original bootstrap docs",
-  "minimal" : "minimal bootstrap starter",
- // "boilerplate" : "combined HTML5 boilerplate",
-  "clean" : "cleaup for source distro",
- // "gh-pages"  : "MAKE FOR GH-PAGES 4 FAT & MDO ONLY" // ?
-}
-
 var usage = "This will build your Twitter Bootstrap project\n\nUsage: " .white + "$0 ".red + "[" .white + "target" .blue + "]\n\nAvailable targets:" .white;
+usage += "\n  clean" . blue + " - cleanup (delete) all targets from distro" . white;
 
-var i;
-for (i in targets){
-	usage += "\n  " + i.blue + " - " + targets[i] . white;
-}
+var targets = fs.readdirSync(__dirname + '/targets');
+
+targets.forEach(function(name){
+  if (name[0]!='.'){
+    var pkginfo = require("./targets/" + name + '/build/package.json');
+    usage += "\n  " + name.blue + " - " + pkginfo.description . white;
+  }
+});
 
 var argv = optimist.usage(usage)
-  .alias('d', 'directory')
-  .describe('d', 'Output directory (not including target name)')
+  .describe('directory', 'Output directory (not including target name.)')
 
-  .alias('p', 'production')
-  .boolean('p')
-  .describe('p', 'Compress & minify Javascript & CSS')
+  .alias('x', 'development')
+  .boolean('x')
+  .describe('x', "Don't compress & minify Javascript & CSS.")
 
   .alias('t', 'test')
   .boolean('t')
-  .describe('t', 'run jshint & qunit in phantomjs')
+  .describe('t', 'Run jshint & qunit in phantomjs.')
 
   .alias('w', 'watch')
   .boolean('w')
-  .describe('w', 'watch for changes in the target files, recompile')
+  .describe('w', 'Watch for changes in the target files, recompile.')
 
   .alias('s', 'serve')
-  .describe('s', "provide a webserver on given port, combines nicely with --watch")
+  .boolean('s')
+  .describe('s', "Provide a webserver on given port, combines nicely with --watch")
+
+  .alias('p', 'port')
+  .describe('p', "Port for webserver.")
 
   .default({
-    "d" : bootstrap_dir + '/dist',
-    "p" : true,
-    "t" : false,
-    "w" : false,
-    "s" : 8080
+    "directory" : bootstrap_dir + '/dist',
+    "p" : 8080
   }).argv;
 
 var target = argv._[0];
 argv.target = target;
+
+argv.production = ! argv.development;
 
 function copyFileSync(srcFile, destFile) {
   var BUF_LENGTH, buff, bytesRead, fdr, fdw, pos;
@@ -232,10 +231,10 @@ function makelib(dir, combineJs, minifyJs, minifyCss){
 
 
 switch(target){
-	case 'docs':
 //  case 'gh-pages':
-  case 'minimal':
 //  case 'boilerplate':
+	case 'docs':
+  case 'minimal':
     msg("copying target assets.");
     wrench.mkdirSyncRecursive(argv.directory + '/' + target + '/assets');
     wrench.copyDirSyncRecursive(bootstrap_dir + "/build/targets/" + target + '/assets/', argv.directory + '/' + target + '/assets/');
