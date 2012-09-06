@@ -21,7 +21,7 @@
       'magenta'   : ['\033[35m', '\033[39m'],
       'red'       : ['\033[31m', '\033[39m'],
       'yellow'    : ['\033[33m', '\033[39m']
-  };
+    };
     return styles[color][0] + this + styles[color][1];
   });
 });
