@@ -3174,7 +3174,8 @@ input[type="button"].btn-block {
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
-.btn-inverse.active {
+.btn-inverse.active,
+.btn-inthinc.active {
   color: rgba(255, 255, 255, 0.75);
 }
 
@@ -3373,6 +3374,38 @@ input[type="button"].btn-block {
 .btn-inverse:active,
 .btn-inverse.active {
   background-color: #080808 \9;
+}
+
+.btn-inthinc {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #80b846;
+  *background-color: #699e32;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8fc954), to(#699e32));
+  background-image: -webkit-linear-gradient(top, #8fc954, #699e32);
+  background-image: -o-linear-gradient(top, #8fc954, #699e32);
+  background-image: linear-gradient(to bottom, #8fc954, #699e32);
+  background-image: -moz-linear-gradient(top, #8fc954, #699e32);
+  background-repeat: repeat-x;
+  border-color: #699e32 #699e32 #426420;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff8fc954', endColorstr='#ff699e32', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.btn-inthinc:hover,
+.btn-inthinc:active,
+.btn-inthinc.active,
+.btn-inthinc.disabled,
+.btn-inthinc[disabled] {
+  color: #ffffff;
+  background-color: #699e32;
+  *background-color: #5c8b2c;
+}
+
+.btn-inthinc:active,
+.btn-inthinc.active {
+  background-color: #4f7826 \9;
 }
 
 button.btn,

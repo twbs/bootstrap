@@ -136,7 +136,8 @@ input[type="button"] {
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
-.btn-inverse.active {
+.btn-inverse.active,
+.btn-inthinc.active {
   color: rgba(255,255,255,.75);
 }
 
@@ -169,6 +170,10 @@ input[type="button"] {
 // Inverse appears as dark gray
 .btn-inverse {
   .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+}
+
+.btn-inthinc {
+  .buttonBackground(@btnInthincBackground, @btnInthincBackgroundHighlight);
 }
 
 
