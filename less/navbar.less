@@ -72,7 +72,7 @@
 // -------------------------
 .navbar-link {
   color: @navbarLinkColor;
-  &:hover {
+  &:hover:not(.disabled) {
     color: @navbarLinkColorHover;
   }
 }
@@ -247,9 +247,14 @@
   margin-top: 8px;
 }
 
+// Disabled
+.navbar .nav > li > a.disabled {
+  color: darken(@navbarLinkColor, 20%);
+}
+
 // Hover
-.navbar .nav > li > a:focus,
-.navbar .nav > li > a:hover {
+.navbar .nav > li > a:focus:not(.disabled),
+.navbar .nav > li > a:hover:not(.disabled) {
   background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
   color: @navbarLinkColorHover;
   text-decoration: none;
