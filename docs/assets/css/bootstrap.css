@@ -2902,6 +2902,16 @@ table [class*=span],
   display: block;
 }
 
+.dropup .dropdown-submenu > .dropdown-menu {
+  top: auto;
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: -2px;
+  -webkit-border-radius: 5px 5px 5px 0;
+     -moz-border-radius: 5px 5px 5px 0;
+          border-radius: 5px 5px 5px 0;
+}
+
 .dropdown-submenu > a:after {
   display: block;
   float: right;

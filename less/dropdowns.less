@@ -163,6 +163,8 @@
 .dropdown-submenu {
   position: relative;
 }
+
+// Default dropdowns
 .dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
@@ -176,6 +178,18 @@
   display: block;
 }
 
+// Dropups
+.dropup .dropdown-submenu > .dropdown-menu {
+  top: auto;
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: -2px;
+  -webkit-border-radius: 5px 5px 5px 0;
+     -moz-border-radius: 5px 5px 5px 0;
+          border-radius: 5px 5px 5px 0;
+}
+
+// Caret to indicate there is a submenu
 .dropdown-submenu > a:after {
   display: block;
   content: " ";
