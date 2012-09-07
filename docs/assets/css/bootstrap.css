@@ -4988,6 +4988,10 @@ input[type="submit"].btn.btn-mini {
   margin-left: -1px;
 }
 
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+
 .tooltip {
   position: absolute;
   z-index: 1030;
