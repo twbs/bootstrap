@@ -13,10 +13,11 @@
   background-color: @warningBackground;
   border: 1px solid @warningBorder;
   .border-radius(4px);
-  color: @warningText;
-}
-.alert h4 {
-  margin: 0;
+  color: @warningText !important;
+  h1, h2, h3, h4, h5, h6, p {
+    color: @warningText !important;
+    margin: 0;
+  }
 }
 
 // Adjust close link position
@@ -35,17 +36,26 @@
   background-color: @successBackground;
   border-color: @successBorder;
   color: @successText;
+  h1, h2, h3, h4, h5, h6, p {
+    color: @successText !important;
+  }
 }
 .alert-danger,
 .alert-error {
   background-color: @errorBackground;
   border-color: @errorBorder;
-  color: @errorText;
+  color: @errorText !important;
+  h1, h2, h3, h4, h5, h6, p {
+    color: @errorText !important;
+  }
 }
 .alert-info {
   background-color: @infoBackground;
   border-color: @infoBorder;
-  color: @infoText;
+  color: @infoText !important;
+  h1, h2, h3, h4, h5, h6, p {
+    color: @infoText !important;
+  }
 }
 
 
