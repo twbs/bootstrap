@@ -87,7 +87,7 @@
 // -----------
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus,
-.dropdown-submenu:hover > a {
+.dropdown-submenu:hover:not(.disabled) > a {
   text-decoration: none;
   color: @dropdownLinkColorHover;
   background-color: @dropdownLinkBackgroundHover;
@@ -172,7 +172,7 @@
      -moz-border-radius: 0 6px 6px 6px;
           border-radius: 0 6px 6px 6px;
 }
-.dropdown-submenu:hover > .dropdown-menu {
+.dropdown-submenu:hover:not(.disabled) > .dropdown-menu {
   display: block;
 }
 
@@ -189,7 +189,7 @@
   margin-top: 5px;
   margin-right: -10px;
 }
-.dropdown-submenu:hover > a:after {
+.dropdown-submenu:hover:not(.disabled) > a:after {
   border-left-color: @dropdownLinkColorHover;
 }
 
