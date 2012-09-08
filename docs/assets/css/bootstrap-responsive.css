@@ -192,6 +192,100 @@
   .offset1 {
     margin-left: 8.333333333333332%;
   }
+  input[class*="span"]:first-child,
+  textarea[class*="span"]:first-child,
+  .uneditable-input[class*="span"]:first-child {
+    margin-left: 0;
+  }
+  input[class*="span"]:last-child,
+  textarea[class*="span"]:last-child,
+  .uneditable-input[class*="span"]:last-child {
+    margin-right: 0;
+  }
+  input.span12,
+  textarea.span12,
+  .uneditable-input.span12 {
+    width: 97.43589743589743%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span11,
+  textarea.span11,
+  .uneditable-input.span11 {
+    width: 89.10256410256409%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span10,
+  textarea.span10,
+  .uneditable-input.span10 {
+    width: 80.76923076923077%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span9,
+  textarea.span9,
+  .uneditable-input.span9 {
+    width: 72.43589743589743%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span8,
+  textarea.span8,
+  .uneditable-input.span8 {
+    width: 64.10256410256409%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span7,
+  textarea.span7,
+  .uneditable-input.span7 {
+    width: 55.769230769230774%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span6,
+  textarea.span6,
+  .uneditable-input.span6 {
+    width: 47.43589743589744%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span5,
+  textarea.span5,
+  .uneditable-input.span5 {
+    width: 39.10256410256411%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span4,
+  textarea.span4,
+  .uneditable-input.span4 {
+    width: 30.769230769230766%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span3,
+  textarea.span3,
+  .uneditable-input.span3 {
+    width: 22.435897435897438%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span2,
+  textarea.span2,
+  .uneditable-input.span2 {
+    width: 14.1025641025641%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
+  input.span1,
+  textarea.span1,
+  .uneditable-input.span1 {
+    width: 5.769230769230768%;
+    margin-right: 1.282051282051282%;
+    margin-left: 1.282051282051282%;
+  }
   .thumbnails {
     margin-left: -30px;
   }

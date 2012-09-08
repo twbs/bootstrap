@@ -599,4 +599,38 @@
 
   }
 
+
+  .input(@gridColumnWidth, @gridGutterWidth, @gridRowWidth) {
+
+    .spanX (@index) when (@index > 0) {
+      (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
+      .spanX(@index - 1);
+    }
+    .spanX (0) {}
+
+    .span(@columns) {
+      width: percentage(@columns / @gridColumns) - percentage(@gridGutterWidth / @gridRowWidth);
+      margin-left: percentage((@gridGutterWidth / 2) / @gridRowWidth);
+      margin-right: percentage((@gridGutterWidth / 2) / @gridRowWidth);
+    }
+
+    // Space grid-sized controls properly if multiple per line
+    input[class*="span"]:first-child,
+    textarea[class*="span"]:first-child,
+    .uneditable-input[class*="span"]:first-child {
+      margin-left: 0;
+    }
+    input[class*="span"]:last-child,
+    textarea[class*="span"]:last-child,
+    .uneditable-input[class*="span"]:last-child {
+      margin-right: 0;
+    }
+
+
+    // generate .spanX
+    .spanX (@gridColumns);
+
+  }
+
+
 }
