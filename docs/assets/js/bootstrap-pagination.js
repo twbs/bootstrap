@@ -128,20 +128,10 @@
   $.fn.pagination.Constructor = Pagination
 
   $.fn.pagination.defaults = $.extend({} , $.fn.tooltip.defaults, {
-    pageSize: 5
+    pageSize: 3
   , showArrows : true
   , prevText: '&laquo'
   , nextText: '&raquo'
-  })
-
- /* PAGINATION DATA-API
-  * ================== */
-
-  $(window).on('load', function () {
-    $('[data-paged]').each(function () {
-      var $paginator = $(this)
-      $paginator.pagination($paginator.data())
-    })
   })
 
 }(window.jQuery);
