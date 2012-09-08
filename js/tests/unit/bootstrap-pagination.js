@@ -9,7 +9,7 @@ $(function () {
 
       test("should return element", function () {
         var div = $("<div class='pagination'></div>")
-        ok(div.pagination() == div, 'document.body returned')
+        ok(div.pagination({paged: $('<div></div>')}) == div, 'document.body returned')
       })
 
       test("should expose defaults var for settings", function () {
@@ -238,6 +238,31 @@ $(function () {
 
         pagination.remove()
       })      
+
+      test("ignore commands until initialized", function () {
+        var div = $("<div></div>")
+        for(var i = 0; i < 3; i++) {
+          div.append('<div></div>')
+        }
+
+        var pagination = $("<div class='pagination'></div>").appendTo($('body'))
+
+        ok(pagination.is(':visible'))
+
+        pagination.pagination('refresh')
+
+        ok(pagination.is(':visible'))
+
+        pagination.pagination({
+          paged: div,
+          showArrows: false,
+          pageSize: 4
+        })
+
+        ok(!pagination.is(':visible'))
+
+        pagination.remove()
+      })  
 
       test("refresh after removing to hit page size", function () {
         var div = $("<div></div>")

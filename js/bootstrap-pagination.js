@@ -130,8 +130,8 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('pagination')
-      if (!data) $this.data('pagination', (data = new Pagination(this, option)))
-      if (typeof option == 'string') data[option]()
+      if (!data && option.paged) $this.data('pagination', (data = new Pagination(this, option)))
+      if (data && typeof option == 'string') data[option]()
     })
   }
 
