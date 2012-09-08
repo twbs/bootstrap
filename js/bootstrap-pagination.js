@@ -30,34 +30,9 @@
     this.$element = $(element)
 
     this.options = $.extend({}, $.fn.pagination.defaults, options)
-    this.$paged  = $(this.options.paged).children()
-    this.total = this.$paged.length
-    this.pages = Math.ceil(this.total / this.options.pageSize)
     this.currentPage = 0
-
-    if (this.pages > 1) {
-      this.$ul = this.$element.find('ul')
-      this.$ul = this.$ul.length ? this.$ul : $('<ul></ul>').appendTo(this.$element)
-
-      var pageClick = function(i){
-        return function(){
-          this.page(i)
-
-          return false
-        }
-      }
-
-      for (var i = 1; i < (this.pages + 1); i++) {
-        var li = $('<li><a href="#">' + i + '</a></li>').appendTo(this.$ul).click($.proxy(pageClick(i-1), this))
-      }
-
-      if (this.options.showArrows) {
-        this.$prev = $('<li><a href="#">' + this.options.prevText + '</a></li>').prependTo(this.$ul).click($.proxy(this.prev, this))
-        this.$next = $('<li><a href="#">' + this.options.nextText + '</a></li>').appendTo(this.$ul).click($.proxy(this.next, this))
-      }
-
-      this.page(this.currentPage)
-    }
+    
+    this.refresh()
   }
 
   Pagination.prototype = {
@@ -110,6 +85,41 @@
       }
 
       return false
+    }
+
+  , refresh: function(){
+      this.$paged  = $(this.options.paged).children()
+      this.total = this.$paged.length
+      this.pages = Math.ceil(this.total / this.options.pageSize)
+
+      this.$ul = this.$element.find('ul').empty()
+
+      if (this.pages > 1) {
+        this.$ul = this.$ul.length ? this.$ul : $('<ul></ul>').appendTo(this.$element)
+
+        var pageClick = function(i){
+          return function(){
+            this.page(i)
+
+            return false
+          }
+        }
+
+        for (var i = 1; i < (this.pages + 1); i++) {
+          var li = $('<li><a href="#">' + i + '</a></li>').appendTo(this.$ul).click($.proxy(pageClick(i-1), this))
+        }
+
+        if (this.options.showArrows) {
+          this.$prev = $('<li><a href="#">' + this.options.prevText + '</a></li>').prependTo(this.$ul).click($.proxy(this.prev, this))
+          this.$next = $('<li><a href="#">' + this.options.nextText + '</a></li>').appendTo(this.$ul).click($.proxy(this.next, this))
+        }
+
+        this.page(this.currentPage)
+
+        this.$element.show()
+      }else{
+        this.$element.hide()
+      }
     }
   }
 

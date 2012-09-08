@@ -209,4 +209,60 @@ $(function () {
 
         ok(pagination.find('li').last().hasClass('active'), 'next disabled')
       })
+
+      test("refresh after adding to hit page size", function () {
+        var div = $("<div></div>")
+        for(var i = 0; i < 4; i++) {
+          div.append('<div></div>')
+        }
+
+        var pagination = $("<div class='pagination'></div>").appendTo($('body'))
+
+        pagination.pagination({
+          paged: div,
+          showArrows: false,
+          pageSize: 4
+        })
+
+        equal(pagination.find('li').length, 0)
+
+        ok(!pagination.is(':visible'))
+
+        div.append('<div></div>')
+
+        pagination.pagination('refresh')
+
+        ok(pagination.is(':visible'))
+
+        equal(pagination.find('li').length, 2)
+
+        pagination.remove()
+      })      
+
+      test("refresh after removing to hit page size", function () {
+        var div = $("<div></div>")
+        for(var i = 0; i < 5; i++) {
+          div.append('<div></div>')
+        }
+
+        var pagination = $("<div class='pagination'></div>").appendTo($('body'))
+
+        pagination.pagination({
+          paged: div,
+          showArrows: false,
+          pageSize: 4
+        })
+
+        ok(pagination.is(':visible'))
+        equal(pagination.find('li').length, 2)
+
+        div.children().last().remove()
+
+        pagination.pagination('refresh')
+
+        ok(!pagination.is(':visible'))
+        equal(pagination.find('li').length, 0)
+
+        pagination.remove()
+      })      
 })
