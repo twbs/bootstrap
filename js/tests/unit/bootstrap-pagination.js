@@ -265,7 +265,7 @@ $(function () {
       })  
 
       test("refresh after removing to hit page size", function () {
-        var div = $("<div></div>")
+        var div = $("<div></div>").appendTo($('body'))
         for(var i = 0; i < 5; i++) {
           div.append('<div></div>')
         }
@@ -280,14 +280,17 @@ $(function () {
 
         ok(pagination.is(':visible'))
         equal(pagination.find('li').length, 2)
+        equal(div.find(':visible').length, 4)
 
-        div.children().last().remove()
+        div.children().first().remove()
 
         pagination.pagination('refresh')
 
         ok(!pagination.is(':visible'))
         equal(pagination.find('li').length, 0)
+        equal(div.find(':visible').length, 4)
 
         pagination.remove()
+        div.remove()
       })      
 })

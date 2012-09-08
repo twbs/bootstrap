@@ -119,6 +119,7 @@
         this.$element.show()
       }else{
         this.$element.hide()
+        this.$paged.show()
       }
     }
   }
