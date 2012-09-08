@@ -980,8 +980,8 @@ textarea[class*="span"],
 .row-fluid select[class*="span"],
 .row-fluid textarea[class*="span"],
 .row-fluid .uneditable-input[class*="span"] {
-  float: none;
-  margin-left: 0;
+  xmargin-left: 0;
+  xfloat: none;
 }
 
 .input-append input[class*="span"],
