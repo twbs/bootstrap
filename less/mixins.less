@@ -609,10 +609,22 @@
     .spanX (0) {}
 
     .span(@columns) {
-      width: percentage(@columns / @gridColumns) - percentage(@gridGutterWidth / @gridRowWidth);
+      //width: percentage(@columns / @gridColumns) - percentage(@gridGutterWidth / @gridRowWidth) + percentage(@gridGutterWidth/(@columns - 1));
+      //width: (100% - ((@columns - 1) * (@gridGutterWidth / @gridRowWidth))) / @gridColumns;
+
+
+      //width: percentage((@columns * (((@columns - 1) * (@gridGutterWidth/@gridRowWidth)))) / @gridRowWidth);
+      width: percentage((@columns * (@gridRowWidth - ( @columns - 1 ) * (@gridGutterWidth/@gridRowWidth)) / 12 ) / @gridRowWidth);
+      //( 4 * (940 - (num_col - 1 )*(20/940)) )/940
+
       margin-left: percentage((@gridGutterWidth / 2) / @gridRowWidth);
+      //margin-left:  percentage((((@columns - 1) * @gridGutterWidth)/ @gridRowWidth ) / (2 * (@columns - 1) );
+
       margin-right: percentage((@gridGutterWidth / 2) / @gridRowWidth);
+      //margin-right: percentage((((@columns - 1) * @gridGutterWidth)/ @gridRowWidth ) / (2 * (@columns - 1) );
     }
+
+    // 940*4/12 - 20/940 = .312056737
 
     // Space grid-sized controls properly if multiple per line
     input[class*="span"]:first-child,
