@@ -126,10 +126,7 @@
       , current
 
     // Trigger focus immediately after touchstart to avoid click delay
-    if (e.type == 'touchstart') {
-      e.preventDefault()
-      return $this.focus()
-    }
+    if (e.type == 'touchstart') return $this.focus()
 
     current = $this.parent().filter('.dropdown-submenu').index()
 
@@ -192,10 +189,11 @@
     $('html')
       .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
     $('body')
-      .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-      .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
+      .on('touchstart.dropdown', '.dropdown-menu a', function (e) { e.stopPropagation() })
+      .on('click.dropdown touchstart.dropdown', '.dropdown form, .dropdown-submenu > a', function (e) { e.stopPropagation() })
+      .on('click.dropdown.data-api touchstart.dropdown.data-api', toggle, Dropdown.prototype.toggle)
       .on('focusin.dropdown.data-api touchstart.dropdown.data-api', toggle + ', .dropdown-menu a', Dropdown.prototype.focus)
-      .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+      .on('keydown.dropdown.data-api', toggle + ', .dropdown-menu' , Dropdown.prototype.keydown)
   })
 
 }(window.jQuery);
