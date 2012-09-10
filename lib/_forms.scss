@@ -210,7 +210,7 @@ input[type="checkbox"]:focus {
 // Placeholder
 // -------------------------
 
-// Placeholder text gets special styles because when browsers invalidate entire lines if it doesn’t understand a selector
+// Placeholder text gets special styles because when browsers invalidate entire lines if it doesn't understand a selector
 input,
 textarea {
   @include placeholder();
