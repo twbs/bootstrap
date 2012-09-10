@@ -201,4 +201,22 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should allow a minLength of 0", function () {
+
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac'],
+              minLength: 0
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.typeahead.call($input, 'lookup')
+        
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        typeahead.$menu.remove()
+      })
+
 })
