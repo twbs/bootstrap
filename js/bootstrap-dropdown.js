@@ -1,5 +1,5 @@
 /* ============================================================
- * bootstrap-dropdown.js v2.1.1
+ * bootstrap-dropdown.js v2.1.2
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
  * Copyright 2012 Twitter, Inc.
@@ -26,7 +26,7 @@
  /* DROPDOWN CLASS DEFINITION
   * ========================= */
 
-  var toggle = '[data-toggle=dropdown]'
+  var toggle = '[data-toggle="dropdown"]'
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
         $('html').on('click.dropdown.data-api', function () {
@@ -67,7 +67,7 @@
         , isActive
         , index
 
-      if (!/(38|40|27)/.test(e.keyCode)) return
+      if (!~$.inArray(e.which, [27, 37, 38, 39, 40])) return
 
       $this = $(this)
 
@@ -80,21 +80,66 @@
 
       isActive = $parent.hasClass('open')
 
-      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
+      // Ignore left and right buttons when closed
+      if (!isActive && (e.which === 37 || e.which === 39)) return
 
-      $items = $('[role=menu] li:not(.divider) a', $parent)
+      if (!isActive || e.which == 27) {
+        clearMenus()
+        return ($parent.hasClass('dropdown-submenu') ? $parent.parents('.dropdown-menu').last().parent() : $parent)
+          .children('a').trigger(e.which == 27 ? 'focus' : 'click')
+      }
+
+      $items = $parent.find(' > .dropdown-menu > li:not(.divider) > a')
 
       if (!$items.length) return
 
       index = $items.index($items.filter(':focus'))
 
-      if (e.keyCode == 38 && index > 0) index--                                        // up
-      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
+      if (e.which === 38 && index > 0) index--
+      if (e.which === 40 && index < $items.length - 1) index++
       if (!~index) index = 0
 
-      $items
-        .eq(index)
-        .focus()
+      // Left arrow
+      if (e.which === 37) {
+        $this.children('.dropdown-submenu').removeClass('open')
+        $parent.removeClass('open').children('a').focus()
+      // Right arrow
+      } else if (e.which === 39) {
+        $items
+          .eq(index)
+          .parent()
+            .filter('.dropdown-submenu')
+            .find(' > .dropdown-menu > li:not(.divider) > a')
+              .eq(0)
+              .focus()
+      // Up or down arrows
+      } else {
+        $items
+          .eq(index)
+          .focus()
+      }
+
+    }
+
+  , focus: function (e) {
+    var $this = $(this)
+      , current
+
+    // Trigger focus immediately after touchstart to avoid click delay
+    if (e.type == 'touchstart') return $this.focus()
+
+    current = $this.parent().filter('.dropdown-submenu').index()
+
+    $this
+      .closest('.dropdown-menu')
+        .children()
+        .each(function (index, element) {
+          $(element)
+            .toggleClass('open', (current === index))
+            .filter('.dropdown-submenu')
+              .find('.dropdown-submenu')
+                .removeClass('open')
+        })
     }
 
   }
@@ -102,6 +147,8 @@
   function clearMenus() {
     getParent($(toggle))
       .removeClass('open')
+      .find('.dropdown-submenu')
+        .removeClass('open')
   }
 
   function getParent($this) {
@@ -142,9 +189,11 @@
     $('html')
       .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
     $('body')
-      .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-      .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-      .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+      .on('touchstart.dropdown', '.dropdown-menu a', function (e) { e.stopPropagation() })
+      .on('click.dropdown touchstart.dropdown', '.dropdown form, .dropdown-submenu > a', function (e) { e.stopPropagation() })
+      .on('click.dropdown.data-api touchstart.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+      .on('focusin.dropdown.data-api touchstart.dropdown.data-api', toggle + ', .dropdown-menu a', Dropdown.prototype.focus)
+      .on('keydown.dropdown.data-api', toggle + ', .dropdown-menu' , Dropdown.prototype.keydown)
   })
 
 }(window.jQuery);
