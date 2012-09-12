@@ -3445,10 +3445,13 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group {
   position: relative;
+  display: inline-block;
+  *display: inline;
   *margin-left: .3em;
   font-size: 0;
   white-space: nowrap;
   vertical-align: middle;
+  *zoom: 1;
 }
 
 .btn-group:first-child {
@@ -3463,14 +3466,6 @@ input[type="submit"].btn.btn-mini {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 0;
-}
-
-.btn-toolbar .btn-group {
-  display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-
-  *zoom: 1;
 }
 
 .btn-toolbar .btn + .btn,
