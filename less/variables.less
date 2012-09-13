@@ -34,7 +34,7 @@
 
 // Scaffolding
 // -------------------------
-@bodyBackground:        @white;
+@bodyBackground:        @black;
 @textColor:             @grayDark;
 
 
@@ -156,14 +156,14 @@
 
 // Wells
 // -------------------------
-@wellBackground:                  #f5f5f5;
-
+//@wellBackground:                  #f5f5f5;
+@wellBackground:                  @white;
 
 // Navbar
 // -------------------------
 @navbarCollapseWidth:             979px;
 
-@navbarHeight:                    40px;
+@navbarHeight:                    42px;
 @navbarBackgroundHighlight:       #ffffff;
 @navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
 @navbarBorder:                    darken(@navbarBackground, 12%);
@@ -178,8 +178,8 @@
 @navbarBrandColor:                @navbarLinkColor;
 
 // Inverted navbar
-@navbarInverseBackground:                #111111;
-@navbarInverseBackgroundHighlight:       #222222;
+@navbarInverseBackground:                @grayDarker;
+@navbarInverseBackgroundHighlight:       @grayDark;
 @navbarInverseBorder:                    #252525;
 
 @navbarInverseText:                      @grayLight;

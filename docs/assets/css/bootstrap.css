@@ -163,7 +163,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 a {
@@ -2938,8 +2938,8 @@ table [class*=span],
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
+  background-color: #ffffff;
+  border: 1px solid #ededed;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -3930,7 +3930,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
   color: #ffffff;
-  background-color: #0088cc;
+  background-color: #8fc954;
 }
 
 .nav-stacked > li {
@@ -4237,6 +4237,12 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .brand:hover {
   text-decoration: none;
+}
+
+.navbar .logo {
+  display: block;
+  float: left;
+  padding: 20px 80px 20px;
 }
 
 .navbar-text {
