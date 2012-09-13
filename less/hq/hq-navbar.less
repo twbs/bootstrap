@@ -15,6 +15,46 @@
   @shadow: 1px 1px 4px rgba(0,0,0,.075);
   .box-shadow(@shadow);
 }
+#hq-navigation-bar {
+  height: @navbarHeight;
+}
+.hq-subsection-navbar {
+    clear: both;
+    background-color: @subsectionNavbarBackground;
+    color: @white;
+    .box-shadow(inset 0px 0px 15px darken(@subsectionNavbarBackground, 30);
+    padding: 4px;
+
+    ul.nav {
+        margin-bottom: 0;
+        padding-left: 15px;
+        position: relative;
+
+        li {
+            display: inline-block;
+            position: relative;
+            
+            a {
+                padding: 4px 7px;
+                margin: 0 1px;
+                color: @white;
+            }
+            &.active a,
+            a:hover {
+                background-color: @subsectionNavbarBackgroundActive;
+                .border-radius(4px);
+            }
+            &.active:after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 0;
+                #popoverArrow > .top(6px, darken(@subsectionNavbarBackground, 30));
+                top: 30px;
+            }
+        }
+    }
+}
 
 // hgroup (brand)
 .hq-navbar {
