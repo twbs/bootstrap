@@ -1,0 +1,38 @@
+//
+// Footer
+// --------------------------------------------------
+
+
+@footerGray: #72767E;
+
+.footer {
+  	list-style: none;
+	height:@baseLineHeight;
+	opacity:1;
+	color: @footerGray;
+	font-size: 11px;  
+	position: relative;
+  	left: 0;
+  	display: block;
+  	float: left;
+  	margin: 0 10px 0 0;
+	overflow: visible !important;	
+	a {
+		color: @footerGray;
+    	text-decoration: none;
+		&:hover {
+    		color: @grayLight;
+  		}
+  	}
+}
+
+.footer.pull-right {
+  float: right; // redeclare due to specificity
+  margin-right: 0; // remove margin on float right nav
+}
+.footer > li {
+  float: left;
+}
+.footer > li > .divider {
+	padding: 0 5px;
+}
