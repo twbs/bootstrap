@@ -102,7 +102,7 @@ This is a convenience method for watching just Less files and automatically buil
 Contributing
 ------------
 
-Please submit all pull requests against *-wip branches. If your unit test contains javascript patches or features, you must include relevant unit tests. Thanks!
+Please submit all pull requests against *-wip branches. If your unit test contains JavaScript patches or features, you must include relevant unit tests. Thanks!
 
 
 
