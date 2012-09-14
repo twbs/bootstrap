@@ -17,7 +17,7 @@ build:
 	@echo "${HR}\n"
 	@jshint js/*.js --config js/.jshintrc
 	@jshint js/tests/unit/*.js --config js/.jshintrc
-	@echo "Running JSHint on javascript...             ${CHECK} Done"
+	@echo "Running JSHint on JavaScript...             ${CHECK} Done"
 	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
 	@echo "Compiling LESS with Recess...               ${CHECK} Done"
@@ -31,7 +31,7 @@ build:
 	@echo "/**\n* Bootstrap.js v2.1.2 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
-	@echo "Compiling and minifying javascript...       ${CHECK} Done"
+	@echo "Compiling and minifying JavaScript...       ${CHECK} Done"
 	@echo "\n${HR}"
 	@echo "Bootstrap successfully built at ${DATE}."
 	@echo "${HR}\n"

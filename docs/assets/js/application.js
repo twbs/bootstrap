@@ -67,7 +67,7 @@
     // carousel demo
     $('#myCarousel').carousel()
 
-    // javascript build logic
+    // JavaScript build logic
     var inputsComponent = $("#components.download input")
       , inputsPlugin = $("#plugins.download input")
       , inputsVariables = $("#variables.download input")
@@ -88,7 +88,7 @@
       inputsVariables.val('')
     })
 
-    // request built javascript
+    // request built JavaScript
     $('.download-btn').on('click', function () {
 
       var css = $("#components.download input:checked")
