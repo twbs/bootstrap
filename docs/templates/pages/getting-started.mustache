@@ -59,18 +59,17 @@
           </div>
           <p class="lead">{{_i}}Within the download you'll find the following file structure and contents, logically grouping common assets and providing both compiled and minified variations.{{/i}}</p>
           <p>{{_i}}Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:{{/i}}</p>
-<pre>
-  <span class="icon-folder-open"></span> bootstrap/
-      <span class="icon-folder-open"></span> css/
-          <span class="icon-file"></span> bootstrap.css
-          <span class="icon-file"></span> bootstrap.min.css
-      <span class="icon-folder-open"></span> js/
-          <span class="icon-file"></span> bootstrap.js
-          <span class="icon-file"></span> bootstrap.min.js
-      <span class="icon-folder-open"></span> img/
-          <span class="icon-file"></span> glyphicons-halflings.png
-          <span class="icon-file"></span> glyphicons-halflings-white.png
-      <span class="icon-file"></span> README.md
+<pre class="prettyprint">
+  bootstrap/
+  ├── css/
+  │   ├── bootstrap.css
+  │   ├── bootstrap.min.css
+  ├── js/
+  │   ├── bootstrap.js
+  │   ├── bootstrap.min.js
+  └── img/
+      ├── glyphicons-halflings.png
+      └── glyphicons-halflings-white.png
 </pre>
           <p>{{_i}}This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.{{/i}}</p>
           <p>{{_i}}Please note that all JavaScript plugins require jQuery to be included.{{/i}}</p>
