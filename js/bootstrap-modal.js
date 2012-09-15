@@ -227,6 +227,8 @@
         , option = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
       e.preventDefault()
+      
+      if($this.hasClass('disabled')) return;
 
       $target
         .modal(option)
