@@ -102,6 +102,7 @@
         , actualWidth
         , actualHeight
         , placement
+        , cls
         , tp
 
       if (this.hasContent() && this.enabled) {
@@ -115,6 +116,10 @@
         placement = typeof this.options.placement == 'function' ?
           this.options.placement.call(this, $tip[0], this.$element[0]) :
           this.options.placement
+
+        cls = typeof this.options.cls == 'function' ?
+          this.options.cls.call(this, $tip[0], this.$element[0]) :
+          this.options.cls
 
         inside = /in/.test(placement)
 
@@ -147,6 +152,7 @@
           .css(tp)
           .addClass(placement)
           .addClass('in')
+          .addClass(cls)
       }
     }
 
@@ -264,6 +270,7 @@
   $.fn.tooltip.defaults = {
     animation: true
   , placement: 'top'
+  , cls: ''
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
