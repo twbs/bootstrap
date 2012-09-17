@@ -215,6 +215,9 @@
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
   }
+  .row-fluid .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 2.564102564102564%;
+  }
   .row-fluid .span12 {
     width: 100%;
     *width: 99.94680851063829%;
@@ -561,6 +564,9 @@
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
+  }
+  .row-fluid .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 2.7624309392265194%;
   }
   .row-fluid .span12 {
     width: 100%;

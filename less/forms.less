@@ -304,8 +304,12 @@ textarea[class*="span"],
 .controls-row {
   .clearfix(); // Clear the float from controls
 }
-.controls-row [class*="span"] {
-  float: left; // Float to collapse white-space for proper grid alignment
+
+// Float to collapse white-space for proper grid alignment
+.controls-row [class*="span"],
+// Redeclare the fluid grid collapse since we undo the float for inputs
+.row-fluid .controls-row [class*="span"] {
+  float: left;
 }
 
 
