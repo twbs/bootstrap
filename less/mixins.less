@@ -642,6 +642,11 @@
         margin-left: 0;
       }
 
+      // Space grid-sized controls properly if multiple per line
+      .controls-row [class*="span"] + [class*="span"] {
+        margin-left: @fluidGridGutterWidth;
+      }
+
       // generate .spanX and .offsetX
       .spanX (@gridColumns);
       .offsetX (@gridColumns);
