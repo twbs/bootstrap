@@ -895,6 +895,18 @@
     padding-right: 10px;
     padding-left: 10px;
   }
+  .media .pull-left,
+  .media .pull-right {
+    display: block;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .media .pull-left {
+    margin-right: 0;
+  }
+  .media .pull-right {
+    margin-left: 0;
+  }
   .modal {
     top: 10px;
     right: 10px;
