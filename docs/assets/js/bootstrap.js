@@ -1174,7 +1174,11 @@
     }
 
   , tip: function () {
-      return this.$tip = this.$tip || $(this.options.template)
+      return this.$tip = this.$tip || this.getTemplate()
+    }
+
+  , getTemplate: function () {
+      return $(this.options.template).addClass(this.options['class'])
     }
 
   , validate: function () {
@@ -1228,6 +1232,7 @@
   , placement: 'top'
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , 'class': ''
   , trigger: 'hover'
   , title: ''
   , delay: 0
@@ -1303,9 +1308,13 @@
 
   , tip: function () {
       if (!this.$tip) {
-        this.$tip = $(this.options.template)
+        this.$tip = this.getTemplate()
       }
       return this.$tip
+    }
+
+  , getTemplate: function () {
+      return $(this.options.template).addClass(this.options['class'])
     }
 
   , destroy: function () {
@@ -1334,6 +1343,7 @@
     placement: 'right'
   , trigger: 'click'
   , content: ''
+  , 'class': ''
   , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
