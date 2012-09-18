@@ -5109,7 +5109,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover.top {
-  margin-bottom: 10px;
+  margin-top: -10px;
 }
 
 .popover.right {
@@ -5121,7 +5121,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover.left {
-  margin-right: 10px;
+  margin-left: -10px;
 }
 
 .popover-title {
