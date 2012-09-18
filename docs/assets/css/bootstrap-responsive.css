@@ -901,10 +901,8 @@
     float: none;
     margin-bottom: 10px;
   }
-  .media .pull-left {
+  .media-object {
     margin-right: 0;
-  }
-  .media .pull-right {
     margin-left: 0;
   }
   .modal {

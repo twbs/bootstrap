@@ -156,16 +156,16 @@
   }
 
   // Medias
+  // Reset float and spacing to stack
   .media .pull-left,
-  .media .pull-right {
+  .media .pull-right  {
     float: none;
     display: block;
     margin-bottom: 10px;
   }
-  .media .pull-left {
+  // Remove side margins since we stack instead of indent
+  .media-object {
     margin-right: 0;
-  }
-  .media .pull-right {
     margin-left: 0;
   }
 
