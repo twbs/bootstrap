@@ -418,8 +418,16 @@ select:focus:required:invalid {
 .input-append,
 .input-prepend {
   margin-bottom: 5px;
-  font-size: 0;
+  font-size: 0; // white space collapse hack
   white-space: nowrap; // Prevent span and input from separating
+
+  // Reset the white space collapse hack
+  input,
+  select,
+  .uneditable-input,
+  .dropdown-menu {
+    font-size: @baseFontSize;
+  }
 
   input,
   select,
@@ -427,7 +435,6 @@ select:focus:required:invalid {
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
-    font-size: @baseFontSize;
     vertical-align: top;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     // Make input on top when focused so blue border and shadow always show
