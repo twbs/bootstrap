@@ -618,16 +618,32 @@ cite {
   color: #c09853;
 }
 
+.text-warning:hover {
+  color: #a47e3c;
+}
+
 .text-error {
   color: #b94a48;
+}
+
+.text-error:hover {
+  color: #953b39;
 }
 
 .text-info {
   color: #3a87ad;
 }
 
+.text-info:hover {
+  color: #2d6987;
+}
+
 .text-success {
   color: #468847;
+}
+
+.text-success:hover {
+  color: #356635;
 }
 
 h1,
