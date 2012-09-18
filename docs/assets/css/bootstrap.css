@@ -1500,18 +1500,15 @@ input[type="checkbox"][readonly] {
   border-color: #3a87ad;
 }
 
-input:required,
-textarea:required,
-select:required,
 input:invalid,
 textarea:invalid,
 select:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
 }
-input:focus,
-textarea:focus,
-select:focus {
+input:invalid:focus,
+textarea:invalid:focus,
+select:invalid:focus {
   border-color: #e9322d;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
      -moz-box-shadow: 0 0 6px #f8b9b7;
