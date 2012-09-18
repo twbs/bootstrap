@@ -175,6 +175,8 @@
 
           this.$backdrop.addClass('in')
 
+	  this.$backdrop.css('z-index',this.$element.css('z-index') - 1)
+
           doAnimate ?
             this.$backdrop.one($.support.transition.end, callback) :
             callback()
