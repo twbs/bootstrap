@@ -3667,8 +3667,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .dropup .btn-large .caret {
-  border-top: 0;
-  border-bottom: 5px solid #000000;
+  border-bottom-width: 5px;
 }
 
 .btn-primary .caret,
