@@ -1500,16 +1500,18 @@ input[type="checkbox"][readonly] {
   border-color: #3a87ad;
 }
 
-input:focus:required:invalid,
-textarea:focus:required:invalid,
-select:focus:required:invalid {
+input:required,
+textarea:required,
+select:required,
+input:invalid,
+textarea:invalid,
+select:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
 }
-
-input:focus:required:invalid:focus,
-textarea:focus:required:invalid:focus,
-select:focus:required:invalid:focus {
+input:focus,
+textarea:focus,
+select:focus {
   border-color: #e9322d;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
      -moz-box-shadow: 0 0 6px #f8b9b7;
