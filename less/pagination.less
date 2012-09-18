@@ -3,10 +3,6 @@
 // --------------------------------------------------
 
 
-.pagination {
-  height: @baseLineHeight * 2;
-  margin: @baseLineHeight 0;
- }
 .pagination ul {
   display: inline-block;
   .ie7-inline-block();
@@ -21,8 +17,6 @@
 .pagination ul > li > a,
 .pagination ul > li > span {
   float: left;
-  padding: 0 14px;
-  line-height: (@baseLineHeight * 2) - 2;
   text-decoration: none;
   background-color: @paginationBackground;
   border: 1px solid @paginationBorder;
@@ -61,4 +55,52 @@
 }
 .pagination-right {
   text-align: right;
+}
+
+// Pagination Sizes
+// --------------------------------------------------
+
+// Default
+.pagination {
+  margin: (@baseLineHeight - 3) 0;
+  height: @baseLineHeight + 10;
+  font-size: @baseFontSize;
+  ul > li > a,
+  ul > li > span {
+    padding: 0 12px;
+    line-height: @baseLineHeight + 8;
+  }
+}
+// Large
+.pagination-large {
+  margin: @baseLineHeight 0;
+  height: @baseLineHeight + 18;
+  font-size: @baseFontSize + 2px;
+  ul > li > a,
+  ul > li > span {
+    padding: 0 15px;
+    line-height: (@baseLineHeight * 2) - 4;
+  }
+}
+// Small
+.pagination-small {
+  margin: (@baseLineHeight - 5) 0;
+  height: @baseLineHeight + 6;
+  font-size: @baseFontSize - 2px;
+  ul > li > a,
+  ul > li > span {
+    padding: 0 10px;
+    line-height: @baseLineHeight + 2;
+  }
+}
+// Mini
+.pagination-mini {
+  margin: (@baseLineHeight - 10) 0;
+  height: @baseLineHeight + 3;
+  font-size: @baseFontSize - 3px;
+  ul > li > a,
+  ul > li > span {
+    padding: 0 8px;
+    line-height: @baseLineHeight + 1;
+  }
 }
