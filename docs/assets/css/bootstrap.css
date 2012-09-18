@@ -355,6 +355,10 @@ a:hover {
   margin-left: 0;
 }
 
+.row-fluid .controls-row [class*="span"] + [class*="span"] {
+  margin-left: 2.127659574468085%;
+}
+
 .row-fluid .span12 {
   width: 100%;
   *width: 99.94680851063829%;
@@ -1302,7 +1306,8 @@ textarea.span1,
   clear: both;
 }
 
-.controls-row [class*="span"] {
+.controls-row [class*="span"],
+.row-fluid .controls-row [class*="span"] {
   float: left;
 }
 
@@ -4308,7 +4313,6 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-static-top {
   position: static;
-  width: 100%;
   margin-bottom: 0;
 }
 
@@ -5279,6 +5283,43 @@ a.thumbnail:hover {
 .thumbnail .caption {
   padding: 9px;
   color: #555555;
+}
+
+.media,
+.media-body {
+  overflow: hidden;
+  *overflow: visible;
+  zoom: 1;
+}
+
+.media,
+.media .media {
+  margin-top: 15px;
+}
+
+.media:first-child {
+  margin-top: 0;
+}
+
+.media-object {
+  display: block;
+}
+
+.media-heading {
+  margin: 0 0 5px;
+}
+
+.media .pull-left {
+  margin-right: 10px;
+}
+
+.media .pull-right {
+  margin-left: 10px;
+}
+
+.media-list {
+  margin-left: 0;
+  list-style: none;
 }
 
 .label,
