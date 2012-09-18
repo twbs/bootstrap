@@ -101,7 +101,7 @@ input::-moz-focus-inner {
 }
 
 button,
-html input[type="button"],
+input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
@@ -353,10 +353,6 @@ a:hover {
 
 .row-fluid [class*="span"]:first-child {
   margin-left: 0;
-}
-
-.row-fluid .controls-row [class*="span"] + [class*="span"] {
-  margin-left: 2.127659574468085%;
 }
 
 .row-fluid .span12 {
@@ -618,32 +614,16 @@ cite {
   color: #c09853;
 }
 
-.text-warning:hover {
-  color: #a47e3c;
-}
-
 .text-error {
   color: #b94a48;
-}
-
-.text-error:hover {
-  color: #953b39;
 }
 
 .text-info {
   color: #3a87ad;
 }
 
-.text-info:hover {
-  color: #2d6987;
-}
-
 .text-success {
   color: #468847;
-}
-
-.text-success:hover {
-  color: #356635;
 }
 
 h1,
@@ -1322,8 +1302,7 @@ textarea.span1,
   clear: both;
 }
 
-.controls-row [class*="span"],
-.row-fluid .controls-row [class*="span"] {
+.controls-row [class*="span"] {
   float: left;
 }
 
@@ -1566,21 +1545,11 @@ select:focus:required:invalid:focus {
 .input-append select,
 .input-prepend select,
 .input-append .uneditable-input,
-.input-prepend .uneditable-input,
-.input-append .dropdown-menu,
-.input-prepend .dropdown-menu {
-  font-size: 14px;
-}
-
-.input-append input,
-.input-prepend input,
-.input-append select,
-.input-prepend select,
-.input-append .uneditable-input,
 .input-prepend .uneditable-input {
   position: relative;
   margin-bottom: 0;
   *margin-left: 0;
+  font-size: 14px;
   vertical-align: top;
   -webkit-border-radius: 0 3px 3px 0;
      -moz-border-radius: 0 3px 3px 0;
@@ -3476,13 +3445,10 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group {
   position: relative;
-  display: inline-block;
-  *display: inline;
   *margin-left: .3em;
   font-size: 0;
   white-space: nowrap;
   vertical-align: middle;
-  *zoom: 1;
 }
 
 .btn-group:first-child {
@@ -3497,6 +3463,14 @@ input[type="submit"].btn.btn-mini {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 0;
+}
+
+.btn-toolbar .btn-group {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
 }
 
 .btn-toolbar .btn + .btn,
@@ -3667,7 +3641,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .dropup .btn-large .caret {
-  border-bottom-width: 5px;
+  border-top: 0;
+  border-bottom: 5px solid #000000;
 }
 
 .btn-primary .caret,
@@ -4338,6 +4313,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-static-top {
   position: static;
+  width: 100%;
   margin-bottom: 0;
 }
 
@@ -5175,7 +5151,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover.top {
-  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .popover.right {
@@ -5187,7 +5163,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .popover.left {
-  margin-left: -10px;
+  margin-right: 10px;
 }
 
 .popover-title {
@@ -5349,43 +5325,6 @@ a.thumbnail:hover {
 .thumbnail .caption {
   padding: 9px;
   color: #555555;
-}
-
-.media,
-.media-body {
-  overflow: hidden;
-  *overflow: visible;
-  zoom: 1;
-}
-
-.media,
-.media .media {
-  margin-top: 15px;
-}
-
-.media:first-child {
-  margin-top: 0;
-}
-
-.media-object {
-  display: block;
-}
-
-.media-heading {
-  margin: 0 0 5px;
-}
-
-.media .pull-left {
-  margin-right: 10px;
-}
-
-.media .pull-right {
-  margin-left: 10px;
-}
-
-.media-list {
-  margin-left: 0;
-  list-style: none;
 }
 
 .label,
