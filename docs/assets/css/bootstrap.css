@@ -101,7 +101,7 @@ input::-moz-focus-inner {
 }
 
 button,
-input[type="button"],
+html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
