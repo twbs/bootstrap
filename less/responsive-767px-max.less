@@ -158,6 +158,20 @@
     }
   }
 
+  // Medias
+  // Reset float and spacing to stack
+  .media .pull-left,
+  .media .pull-right  {
+    float: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+  // Remove side margins since we stack instead of indent
+  .media-object {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   // Modals
   .modal {
     top:   10px;
