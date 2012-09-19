@@ -13,6 +13,9 @@
     <link href="../../docs/assets/css/docs.css" rel="stylesheet">
     <link href="../../docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
+    <!-- qunit -->
+    <link rel="stylesheet" href="../../js/tests/vendor/qunit.css" type="text/css" media="screen" />
+
     <!-- CSS just for the tests page -->
     <link href="css-tests.css" rel="stylesheet">
 
@@ -885,6 +888,85 @@
 
 <br>
 
+<h4>Fluid row with uneditable input</h4>
+
+<div id="fluidRowUneditableInputTest">
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span1 uneditable-input">span1 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span2 uneditable-input">span2 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span3 uneditable-input">span3 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span4 uneditable-input">span4 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span5 uneditable-input">span5 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span6 uneditable-input">span6 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span7 uneditable-input">span7 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span8 uneditable-input">span8 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span9 uneditable-input">span9 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span10 uneditable-input">span10 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span11 uneditable-input">span11 inside span1</span>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span1">
+      <span class="span12 uneditable-input">span12 inside span12</span>
+    </div>
+  </div>
+</div>
+
+<br>
+
 <h4>Inline form in fluid row</h4>
 
 <div class="row-fluid">
@@ -1292,6 +1374,19 @@
     <script src="../../docs/assets/js/bootstrap-affix.js"></script>
     <script src="../../docs/assets/js/application.js"></script>
 
+    <div>
+      <h1 id="qunit-header">Bootstrap CSS Test Suite</h1>
+      <h2 id="qunit-banner"></h2>
+      <h2 id="qunit-userAgent"></h2>
+      <ol id="qunit-tests"></ol>
+      <div id="qunit-fixture"></div>
+    </div>
+
+    <!-- qunit -->
+    <script src="../../js/tests/vendor/qunit.js"></script>
+
+    <!-- unit tests -->
+    <script src="unit/forms.js"></script>
 
   </body>
 </html>
