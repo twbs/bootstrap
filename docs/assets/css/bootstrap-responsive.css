@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.1.1
+ * Bootstrap Responsive v2.1.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -214,6 +214,9 @@
   }
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
+  }
+  .row-fluid .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 2.564102564102564%;
   }
   .row-fluid .span12 {
     width: 100%;
@@ -562,6 +565,9 @@
   .row-fluid [class*="span"]:first-child {
     margin-left: 0;
   }
+  .row-fluid .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 2.7624309392265194%;
+  }
   .row-fluid .span12 {
     width: 100%;
     *width: 99.94680851063829%;
@@ -830,6 +836,9 @@
        -moz-box-sizing: border-box;
             box-sizing: border-box;
   }
+  .row-fluid [class*="offset"]:first-child {
+    margin-left: 0;
+  }
   .input-large,
   .input-xlarge,
   .input-xxlarge,
@@ -894,6 +903,16 @@
   .form-horizontal .form-actions {
     padding-right: 10px;
     padding-left: 10px;
+  }
+  .media .pull-left,
+  .media .pull-right {
+    display: block;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .media-object {
+    margin-right: 0;
+    margin-left: 0;
   }
   .modal {
     top: 10px;
