@@ -10,7 +10,7 @@
 .btn {
   display: inline-block;
   .ie7-inline-block();
-  padding: 4px 14px;
+  padding: 4px 12px;
   margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
@@ -71,18 +71,11 @@
 // Button Sizes
 // --------------------------------------------------
 
-// Reset line-heights
-.btn-large,
-.btn-small,
-.btn-mini {
-  line-height: 1;
-}
-
 // Large
 .btn-large {
   padding: @paddingLarge;
   font-size: @fontSizeLarge;
-  .border-radius(5px);
+  .border-radius(@borderRadiusLarge);
 }
 .btn-large [class^="icon-"] {
   margin-top: 2px;
@@ -92,6 +85,7 @@
 .btn-small {
   padding: @paddingSmall;
   font-size: @fontSizeSmall;
+  .border-radius(@borderRadiusSmall);
 }
 .btn-small [class^="icon-"] {
   margin-top: 0;
@@ -101,6 +95,7 @@
 .btn-mini {
   padding: @paddingMini;
   font-size: @fontSizeMini;
+  .border-radius(@borderRadiusSmall);
 }
 
 
