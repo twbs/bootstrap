@@ -604,6 +604,8 @@
 
     .spanX (@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
+      (~".uneditable-input.span@{index}") { .span(@index); }
+
       .spanX(@index - 1);
     }
     .spanX (0) {}
