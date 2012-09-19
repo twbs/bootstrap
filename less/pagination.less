@@ -2,21 +2,30 @@
 // Pagination (multiple pages)
 // --------------------------------------------------
 
+// Space out pagination from surrounding content
+.pagination {
+  margin: @baseLineHeight 0;
+}
 
 .pagination ul {
+  // Allow for text-based alignment
   display: inline-block;
   .ie7-inline-block();
+  // Reset default ul styles
   margin-left: 0;
   margin-bottom: 0;
-  .border-radius(3px);
+  // Visuals
+  .border-radius(4px);
   .box-shadow(0 1px 2px rgba(0,0,0,.05));
 }
 .pagination ul > li {
-  display: inline;
+  display: inline; // Remove list-style and block-level defaults
 }
 .pagination ul > li > a,
 .pagination ul > li > span {
-  float: left;
+  float: left; // Collapse white-space
+  padding: 10px 14px;
+  line-height: 1;
   text-decoration: none;
   background-color: @paginationBackground;
   border: 1px solid @paginationBorder;
@@ -57,50 +66,31 @@
   text-align: right;
 }
 
+
 // Pagination Sizes
 // --------------------------------------------------
 
-// Default
-.pagination {
-  margin: (@baseLineHeight - 3) 0;
-  height: @baseLineHeight + 10;
-  font-size: @baseFontSize;
-  ul > li > a,
-  ul > li > span {
-    padding: 0 12px;
-    line-height: @baseLineHeight + 8;
-  }
-}
 // Large
 .pagination-large {
-  margin: @baseLineHeight 0;
-  height: @baseLineHeight + 18;
-  font-size: @baseFontSize + 2px;
+  font-size: @fontSizeLarge;
   ul > li > a,
   ul > li > span {
-    padding: 0 15px;
-    line-height: (@baseLineHeight * 2) - 4;
+    padding: @paddingLarge;
   }
 }
 // Small
 .pagination-small {
-  margin: (@baseLineHeight - 5) 0;
-  height: @baseLineHeight + 6;
-  font-size: @baseFontSize - 2px;
+  font-size: @fontSizeSmall;
   ul > li > a,
   ul > li > span {
-    padding: 0 10px;
-    line-height: @baseLineHeight + 2;
+    padding: @paddingSmall;
   }
 }
 // Mini
 .pagination-mini {
-  margin: (@baseLineHeight - 10) 0;
-  height: @baseLineHeight + 3;
-  font-size: @baseFontSize - 3px;
+  font-size: @fontSizeMini;
   ul > li > a,
   ul > li > span {
-    padding: 0 8px;
-    line-height: @baseLineHeight + 1;
+    padding: @paddingMini;
   }
 }

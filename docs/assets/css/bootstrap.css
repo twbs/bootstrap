@@ -3159,10 +3159,15 @@ button.close {
           box-shadow: none;
 }
 
+.btn-large,
+.btn-small,
+.btn-mini {
+  line-height: 1;
+}
+
 .btn-large {
-  padding: 9px 14px;
-  font-size: 16px;
-  line-height: normal;
+  padding: 10px 19px;
+  font-size: 17.5px;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -3173,9 +3178,8 @@ button.close {
 }
 
 .btn-small {
-  padding: 3px 9px;
-  font-size: 12px;
-  line-height: 18px;
+  padding: 6px 10px;
+  font-size: 11.9px;
 }
 
 .btn-small [class^="icon-"] {
@@ -3183,9 +3187,8 @@ button.close {
 }
 
 .btn-mini {
-  padding: 2px 6px;
-  font-size: 11px;
-  line-height: 17px;
+  padding: 5px 6px;
+  font-size: 10.5px;
 }
 
 .btn-block {
@@ -4759,14 +4762,18 @@ input[type="submit"].btn.btn-mini {
   color: #999999;
 }
 
+.pagination {
+  margin: 20px 0;
+}
+
 .pagination ul {
   display: inline-block;
   *display: inline;
   margin-bottom: 0;
   margin-left: 0;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
   *zoom: 1;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -4780,6 +4787,8 @@ input[type="submit"].btn.btn-mini {
 .pagination ul > li > a,
 .pagination ul > li > span {
   float: left;
+  padding: 10px 14px;
+  line-height: 1;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -4829,52 +4838,31 @@ input[type="submit"].btn.btn-mini {
   text-align: right;
 }
 
-.pagination {
-  height: 30px;
-  margin: 17px 0;
-  font-size: 14px;
-}
-
-.pagination ul > li > a,
-.pagination ul > li > span {
-  padding: 0 12px;
-  line-height: 28px;
-}
-
 .pagination-large {
-  height: 38px;
-  margin: 20px 0;
-  font-size: 16px;
+  font-size: 17.5px;
 }
 
 .pagination-large ul > li > a,
 .pagination-large ul > li > span {
-  padding: 0 15px;
-  line-height: 36px;
+  padding: 10px 19px;
 }
 
 .pagination-small {
-  height: 26px;
-  margin: 15px 0;
-  font-size: 12px;
+  font-size: 11.9px;
 }
 
 .pagination-small ul > li > a,
 .pagination-small ul > li > span {
-  padding: 0 10px;
-  line-height: 22px;
+  padding: 6px 10px;
 }
 
 .pagination-mini {
-  height: 23px;
-  margin: 10px 0;
-  font-size: 11px;
+  font-size: 10.5px;
 }
 
 .pagination-mini ul > li > a,
 .pagination-mini ul > li > span {
-  padding: 0 8px;
-  line-height: 21px;
+  padding: 5px 6px;
 }
 
 .pager {
