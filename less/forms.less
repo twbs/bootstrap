@@ -466,6 +466,7 @@ select:focus:required:invalid {
     border-color: @green;
   }
 }
+
 .input-prepend {
   .add-on,
   .btn {
@@ -473,17 +474,23 @@ select:focus:required:invalid {
   }
   .add-on:first-child,
   .btn:first-child {
+    // FYI, `.btn:first-child` accounts for a button group that's prepended
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
 }
+
 .input-append {
   input,
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    + .btn-group .btn {
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
   }
   .add-on,
-  .btn {
+  .btn,
+  .btn-group {
     margin-left: -1px;
   }
   .add-on:last-child,
@@ -491,12 +498,16 @@ select:focus:required:invalid {
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
+
 // Remove all border-radius for inputs with both prepend and append
 .input-prepend.input-append {
   input,
   select,
   .uneditable-input {
     .border-radius(0);
+    + .btn-group .btn {
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
   }
   .add-on:first-child,
   .btn:first-child {
@@ -508,7 +519,11 @@ select:focus:required:invalid {
     margin-left: -1px;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
+  .btn-group:first-child {
+    margin-left: 0;
+  }
 }
+
 
 
 

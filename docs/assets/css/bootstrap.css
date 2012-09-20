@@ -1648,8 +1648,17 @@ select:focus:required:invalid:focus {
           border-radius: 4px 0 0 4px;
 }
 
+.input-append input + .btn-group .btn,
+.input-append select + .btn-group .btn,
+.input-append .uneditable-input + .btn-group .btn {
+  -webkit-border-radius: 0 4px 4px 0;
+     -moz-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
+}
+
 .input-append .add-on,
-.input-append .btn {
+.input-append .btn,
+.input-append .btn-group {
   margin-left: -1px;
 }
 
@@ -1668,6 +1677,14 @@ select:focus:required:invalid:focus {
           border-radius: 0;
 }
 
+.input-prepend.input-append input + .btn-group .btn,
+.input-prepend.input-append select + .btn-group .btn,
+.input-prepend.input-append .uneditable-input + .btn-group .btn {
+  -webkit-border-radius: 0 4px 4px 0;
+     -moz-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
+}
+
 .input-prepend.input-append .add-on:first-child,
 .input-prepend.input-append .btn:first-child {
   margin-right: -1px;
@@ -1682,6 +1699,10 @@ select:focus:required:invalid:focus {
   -webkit-border-radius: 0 4px 4px 0;
      -moz-border-radius: 0 4px 4px 0;
           border-radius: 0 4px 4px 0;
+}
+
+.input-prepend.input-append .btn-group:first-child {
+  margin-left: 0;
 }
 
 input.search-query {
