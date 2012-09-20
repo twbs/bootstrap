@@ -4999,18 +4999,14 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  position: absolute;
   z-index: 1050;
-  width: 560px;
-  margin: -250px 0 0 -280px;
+  max-width: 100%;
+  overflow: visible;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
   *border: 1px solid #999;
-  /* IE6-7 */
-
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -5020,18 +5016,6 @@ input[type="submit"].btn.btn-mini {
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
-}
-
-.modal.fade {
-  top: -25%;
-  -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
-     -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
-       -o-transition: opacity 0.3s linear, top 0.3s ease-out;
-          transition: opacity 0.3s linear, top 0.3s ease-out;
-}
-
-.modal.fade.in {
-  top: 50%;
 }
 
 .modal-header {
@@ -5049,7 +5033,6 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal-body {
-  max-height: 400px;
   padding: 15px;
   overflow-y: auto;
 }

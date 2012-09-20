@@ -864,15 +864,7 @@
     margin-left: 0;
   }
   .modal {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    left: 20px;
     width: auto;
-    margin: 0;
-  }
-  .modal.fade.in {
-    top: auto;
   }
 }
 
@@ -913,11 +905,6 @@
   .media-object {
     margin-right: 0;
     margin-left: 0;
-  }
-  .modal {
-    top: 10px;
-    right: 10px;
-    left: 10px;
   }
   .modal-header .close {
     padding: 10px;
