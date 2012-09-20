@@ -27,15 +27,23 @@
   * ====================== */
 
   var Modal = function (element, options) {
-    this.options = options
-    this.$element = $(element)
-      .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-    this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+    this.init(element,options)
   }
 
   Modal.prototype = {
 
       constructor: Modal
+    , init: function(element, options) {
+        var that = this
+        this.options = options
+        this.$element = $(element)
+        this.$element.find('[data-dismiss="modal"]')
+          .each(function(){
+              if ( $(this).closest('.modal').is(that.$element) )
+                $(this).on('click.dismiss.modal',$.proxy(that.hide,that))        
+          })
+        this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+      }
 
     , toggle: function () {
         return this[!this.isShown ? 'show' : 'hide']()
@@ -43,7 +51,7 @@
 
     , show: function () {
         var that = this
-          , e = $.Event('show')
+          , e = $.Event('show.modal')
 
         this.$element.trigger(e)
 
@@ -62,9 +70,13 @@
             that.$element.appendTo(document.body) //don't move modals dom position
           }
 
+          $(window).on("resize orientationchange", that,function() { that.setPosition() } )
+          
+          that.incZIndexCounter(that.$element)
+          
           that.$element
             .show()
-
+          that.setPosition()
           if (transition) {
             that.$element[0].offsetWidth // force reflow
           }
@@ -77,26 +89,28 @@
           that.enforceFocus()
 
           transition ?
-            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
-            that.$element.trigger('shown')
+            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown.modal') }) :
+            that.$element.trigger('shown.modal')
 
         })
       }
 
     , hide: function (e) {
-        e && e.preventDefault()
+        e && e.preventDefault() && e.stopPropagation()
 
         var that = this
 
-        e = $.Event('hide')
-
-        this.$element.trigger(e)
+        e = $.Event('hide.modal')
 
         if (!this.isShown || e.isDefaultPrevented()) return
 
+        $(window).off("resize orientationchange",that)
+        
+        this.$element.trigger(e)
+
         this.isShown = false
 
-        $('body').removeClass('modal-open')
+        if ($("div.modal.in").length <= 1) $('body').removeClass('modal-open')
 
         this.escape()
 
@@ -147,15 +161,43 @@
     , hideModal: function (that) {
         this.$element
           .hide()
-          .trigger('hidden')
+          .trigger('hidden.modal')
 
+        this.decZIndexCounter(this.$element)
         this.backdrop()
       }
 
     , removeBackdrop: function () {
+        this.decZIndexCounter(this.$backdrop);
         this.$backdrop.remove()
         this.$backdrop = null
       }
+
+    , setPosition: function () {
+        var parent = this.$element.parent()
+        var win = $(window)
+        var windowWidth = win.width()
+        var windowHeight = win.height()
+        this.$element.appendTo("body").css({left:0,top:0,width:"auto",height:"auto"}) 
+        var modalWidth = this.$element.outerWidth()
+        var modalHeight = this.$element.outerHeight()
+        
+        
+        this.$element
+          .appendTo(parent)
+          .offset({top: (modalHeight < windowHeight) ? win.scrollTop() + (windowHeight - modalHeight) / 2 : win.scrollTop()})            
+          .css({"max-width":windowWidth,"margin-left": (- modalWidth / 2), "left":"50%","width": modalWidth,"height": modalHeight})
+    }
+    
+    , incZIndexCounter: function (elem) {
+       $(elem).css({"z-index": ++ $.fn.modal.zindex_cnt})
+    }
+    
+    , decZIndexCounter: function (elem) {
+        var zindex = $(elem).css("z-index");
+        if (zindex == $.fn.modal.zindex_cnt)
+          $.fn.modal.zindex_cnt--
+    }
 
     , backdrop: function (callback) {
         var that = this
@@ -165,7 +207,9 @@
           var doAnimate = $.support.transition && animate
 
           this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-            .appendTo(document.body)
+            .insertAfter(this.$element)
+
+          this.incZIndexCounter(this.$backdrop);
 
           if (this.options.backdrop != 'static') {
             this.$backdrop.click($.proxy(this.hide, this))
@@ -214,7 +258,7 @@
   }
 
   $.fn.modal.Constructor = Modal
-
+  $.fn.modal.zindex_cnt = 2000
 
  /* MODAL DATA-API
   * ============== */
