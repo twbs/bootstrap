@@ -248,7 +248,7 @@
 }
 
 // Drop shadows
-.box-shadow(@shadowA, @shadowB:X, ...){
+.box-shadow(@shadowA, @shadowB:X, ...) {
   // Multiple shadow solution from http://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
   @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
   -webkit-box-shadow: @props;
@@ -310,7 +310,7 @@
 // Prevent browsers from flickering when using CSS 3D transforms.
 // Default value is `visible`, but can be changed to `hidden
 // See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
-.backface-visibility(@visibility){
+.backface-visibility(@visibility) {
 	-webkit-backface-visibility: @visibility;
 	   -moz-backface-visibility: @visibility;
 	        backface-visibility: @visibility;
@@ -325,7 +325,7 @@
 }
 
 // Background sizing
-.background-size(@size){
+.background-size(@size) {
   -webkit-background-size: @size;
      -moz-background-size: @size;
        -o-background-size: @size;
@@ -447,7 +447,7 @@
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
   }
-  .radial(@innerColor: #555, @outerColor: #333)  {
+  .radial(@innerColor: #555, @outerColor: #333) {
     background-color: @outerColor;
     background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
     background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
