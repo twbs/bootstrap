@@ -1700,7 +1700,7 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
-    this.$menu = $(this.options.menu).appendTo('body')
+    this.$menu = $(this.options.menu).insertAfter(this.$element).css({top:0,left:0})
     this.source = this.options.source
     this.shown = false
     this.listen()
@@ -1727,12 +1727,11 @@
         height: this.$element[0].offsetHeight
       })
 
-      this.$menu.css({
+      this.$menu.show()
+      this.$menu.offset({
         top: pos.top + pos.height
       , left: pos.left
       })
-
-      this.$menu.show()
       this.shown = true
       return this
     }
