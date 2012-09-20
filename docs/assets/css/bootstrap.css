@@ -618,7 +618,7 @@ cite {
   color: #c09853;
 }
 
-.text-warning:hover {
+a.text-warning:hover {
   color: #a47e3c;
 }
 
@@ -626,7 +626,7 @@ cite {
   color: #b94a48;
 }
 
-.text-error:hover {
+a.text-error:hover {
   color: #953b39;
 }
 
@@ -634,7 +634,7 @@ cite {
   color: #3a87ad;
 }
 
-.text-info:hover {
+a.text-info:hover {
   color: #2d6987;
 }
 
@@ -642,7 +642,7 @@ cite {
   color: #468847;
 }
 
-.text-success:hover {
+a.text-success:hover {
   color: #356635;
 }
 
