@@ -33,6 +33,8 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.itemKey = this.options.itemKey || this.itemKey
+    this.itemLabel = this.options.itemLabel || this.itemLabel
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -44,9 +46,15 @@
     constructor: Typeahead
 
   , select: function () {
+      var that = this
       var val = this.$menu.find('.active').attr('data-value')
+      var selected = $.grep(this.items, function(item) {
+          if (that.itemKey(item) == val) {
+              return item;
+          }
+      }).shift()
       this.$element
-        .val(this.updater(val))
+        .val(this.updater(selected))
         .change()
       return this.hide()
     }
@@ -85,9 +93,9 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+      this.items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
 
-      return items ? this.process(items) : this
+      return this.items ? this.process(this.items) : this
     }
 
   , process: function (items) {
@@ -107,7 +115,7 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return ~this.itemLabel(item).toLowerCase().indexOf(this.query.toLowerCase())
     }
 
   , sorter: function (items) {
@@ -117,8 +125,8 @@
         , item
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        if (!this.itemLabel(item).toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~this.itemLabel(item).indexOf(this.query)) caseSensitive.push(item)
         else caseInsensitive.push(item)
       }
 
@@ -127,7 +135,7 @@
 
   , highlighter: function (item) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+      return this.itemLabel(item).replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }
@@ -136,7 +144,7 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).attr('data-value', that.itemKey(item))
         i.find('a').html(that.highlighter(item))
         return i[0]
       })
@@ -267,6 +275,13 @@
       $(e.currentTarget).addClass('active')
     }
 
+  , itemKey: function(item) {
+      return this.itemLabel(item)
+    }
+
+  , itemLabel: function(item) {
+      return item
+    }
   }
 
 

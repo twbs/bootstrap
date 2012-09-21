@@ -196,4 +196,37 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should process objects as source items", function () {
+
+          var expectedLabel, expectedId
+
+          var $input = $('<input />').typeahead({
+                  source: [{label: "aa", id: "1"}, {label: "ab", id: "2"}, {label: "ac", id: "3"}],
+                  updater: function(item){
+                      expectedLabel =  item.label
+                      expectedId =  item.id
+                  },
+                  itemLabel: function(item) {
+                    return item.label
+                  },
+                  itemKey: function(item) {
+                    return item.id
+                  }
+              })
+              , typeahead = $input.data('typeahead')
+
+          $input.val('a')
+          typeahead.lookup()
+
+          $input.change(function() { changed = true });
+
+          $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+          equals(expectedLabel, "ac", 'has "ac" label property');
+          equals(expectedId, "3", 'has "3" as id property');
+
+          typeahead.$menu.remove()
+        })
+
 })
