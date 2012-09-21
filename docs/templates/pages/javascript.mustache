@@ -1568,6 +1568,24 @@ $('.carousel').carousel({
                  <td>highlights all default matches</td>
                  <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
                </tr>
+               <tr>
+                 <td>{{_i}}itemKey{{/i}}</td>
+                 <td>{{_i}}function{{/i}}</td>
+                 <td>{{_i}}tells typeahead which property to use as key (id){{/i}}</td>
+                 <td>{{_i}}This method is called by typeahead and allows you to specify how to get an id for an item. This method accepts an <code>item</code> and should return a simple value, like a string.{{/i}}. Note that this key should uniquely identify an item in the source list. If there are more than one item with the same key, the first match will be returned in the <code>updater</code> method.</td>
+               </tr>
+               <tr>
+                 <td>{{_i}}itemLabel{{/i}}</td>
+                 <td>{{_i}}function{{/i}}</td>
+                 <td>{{_i}}tells typeahead which property to use as the entry's label{{/i}}</td>
+                 <td>{{_i}}This method is called by typeahead and allows you to specify how to render the item on the list. It's useful if you are not using a simple value in the source array or if you prefer to have two object properties to compose the label. Example: "Bayern/BY", where the first part is the state name and the second is the state's code. This method accepts an <code>item</code> and should return a simple value, like a string.{{/i}}</td>
+               </tr>
+               <tr>
+                 <td>{{_i}}updater{{/i}}</td>
+                 <td>{{_i}}function{{/i}}</td>
+                 <td>{{_i}}informs which item was selected{{/i}}</td>
+                 <td>{{_i}}This method is called by typeahead and can be used to get notified when an item is selected from the list. This method accepts an <code>item</code> object (or simple value, if the original source contains only simple values).{{/i}}</td>
+               </tr>
               </tbody>
             </table>
 
