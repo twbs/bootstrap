@@ -909,8 +909,9 @@
         
         this.$element
           .appendTo(parent)
-          .offset({top: (modalHeight < windowHeight) ? win.scrollTop() + (windowHeight - modalHeight) / 2 : win.scrollTop()})            
-          .css({"max-width":windowWidth,"margin-left": (- modalWidth / 2), "left":"50%","width": modalWidth,"height": modalHeight})
+          .offset({top: (modalHeight < windowHeight) ? win.scrollTop() + (windowHeight - modalHeight) / 2 : win.scrollTop(),left: (windowWidth - modalWidth)/2})            
+          .css({"max-width":windowWidth})
+          
     }
     
     , incZIndexCounter: function (elem) {
