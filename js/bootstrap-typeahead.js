@@ -61,7 +61,7 @@
     }
 
   , updater: function (item) {
-      return item
+      return this.itemLabel(item)
     }
 
   , show: function () {
