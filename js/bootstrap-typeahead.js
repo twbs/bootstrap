@@ -39,6 +39,7 @@
     this.$menu = $(this.options.menu)
     this.shown = false
     this.listen()
+    this.items = []
   }
 
   Typeahead.prototype = {
