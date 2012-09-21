@@ -39,6 +39,7 @@
     this.source = this.options.source
     this.shown = false
     this.listen()
+    this.items = []
   }
 
   Typeahead.prototype = {
