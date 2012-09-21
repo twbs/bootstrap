@@ -9,7 +9,7 @@
 // Base class and wrapper
 .navbar {
   overflow: visible;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: (@baseLineHeight / 2);
   color: @navbarText;
 
   // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
@@ -61,13 +61,13 @@
   }
 }
 
-// Brand: website or project name
+// Logo: website or project logo
 // -------------------------
 .navbar .logo {
   float: left;
   display: block;
   // Vertically center the text given @navbarHeight
-  padding: (@navbarHeight - @baseLineHeight) 80px (@navbarHeight - @baseLineHeight);
+  padding: (@navbarHeight - @baseLineHeight) 70px (@navbarHeight - @baseLineHeight);
 }
 
 // Plain text in topbar
@@ -91,8 +91,8 @@
 .navbar .divider-vertical {
   height: @navbarHeight;
   margin: 0 9px;
-  border-left: 1px solid @navbarBackground;
-  border-right: 1px solid @navbarBackgroundHighlight;
+  border-left: 1px solid lighten(@navbarBackground, 5%);
+  border-right: 1px solid lighten(@navbarBackgroundHighlight, 5%);
 }
 
 // Buttons in navbar
@@ -106,6 +106,20 @@
 .navbar .input-append .btn {
   margin-top: 0; // then undo the margin here so we don't accidentally double it
 }
+
+// Pills in navbar
+// add padding between the top of the pill and the top of the navbar
+// -------------------------
+.navbar ul.nav.nav-pills {
+	padding-top:1px;
+	padding-bottom:1px;
+	li > a:hover {
+		color:@navbarPillColorHover;
+		background-color:@navbarPillBackgroundHover;
+  		text-shadow: none;
+	}
+}
+
 
 // Navbar forms
 // -------------------------
@@ -431,6 +445,14 @@
     border-right-color: @navbarInverseBackgroundHighlight;
   }
 
+// Nav Pills in active state
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: @white;
+  background-color: @inthincGreen;
+}
+
+
   // Dropdowns
   .nav li.dropdown.open > .dropdown-toggle,
   .nav li.dropdown.active > .dropdown-toggle,
@@ -441,6 +463,10 @@
   .nav li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbarInverseLinkColor;
     border-bottom-color: @navbarInverseLinkColor;
+  }
+  .nav li.dropdown > .dropdown-toggle:hover .caret {
+    border-top-color: @navbarInverseLinkColorActive;
+    border-bottom-color: @navbarInverseLinkColorActive;
   }
   .nav li.dropdown.open > .dropdown-toggle .caret,
   .nav li.dropdown.active > .dropdown-toggle .caret,
