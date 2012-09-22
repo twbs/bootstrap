@@ -274,6 +274,39 @@
             <a data-toggle="modal" href="#myModal5" class="btn btn-primary btn-large">Launch demo modal</a>
           </div>
  
+ <h3>Live demo - fixed width modal (300px) </h3>
+          <p>Toggle modals via JavaScript by clicking the button below.</p>
+          <!-- sample modal content -->
+          <div id="myModal6" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <a href="#" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+              <h3 id="myModalLabel">Modal 4</h3>
+            </div>
+            <div class="modal-body">
+              <h4>Text in a modal</h4>
+              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+
+              <h4>Popover in a modal</h4>
+              <p>This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.</p>
+
+              <h4>Tooltips in a modal</h4>
+              <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
+
+              <hr>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          
+          
+          
+          <div class="bs-docs-example" style="padding-bottom: 24px;">
+            <a data-toggle="modal" href="#myModal6" class="btn btn-primary btn-large">Launch demo modal</a>
+          </div>
+ 
+ 
 <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -299,6 +332,8 @@
     !function ($) {
       $(document).ready(function() {
           $("#myModal4").modal({show:false,backdrop:false,keyboard:false});
+          $("#myModal6").modal({show:false,width:"300px"});
+          
       });
       }(jQuery)
     </script>

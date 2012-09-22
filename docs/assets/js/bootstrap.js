@@ -794,16 +794,16 @@
             that.$element.appendTo(document.body) //don't move modals dom position
           }
 
-          $(window).on("resize orientationchange", that,function() { that.setPosition() } )
+         //$(window).on("resize orientationchange", that.$element,function() { that.setPosition() } )
           
           that.incZIndexCounter(that.$element)
           
           that.$element
             .show()
-          that.setPosition()
           if (transition) {
             that.$element[0].offsetWidth // force reflow
           }
+          that.setPosition()
 
           that.$element
             .addClass('in')
@@ -828,7 +828,7 @@
 
         if (!this.isShown || e.isDefaultPrevented()) return
 
-        $(window).off("resize orientationchange",that)
+        //$(window).off("resize orientationchange",that.$element)
         
         this.$element.trigger(e)
 
@@ -902,7 +902,7 @@
         var win = $(window)
         var windowWidth = win.width()
         var windowHeight = win.height()
-        this.$element.appendTo("body").css({left:0,top:0,width:"auto",height:"auto"}) 
+        this.$element.appendTo("body").css({left:0,top:0,width:this.options.width,height:"auto","max-width":windowWidth}) 
         var modalWidth = this.$element.outerWidth()
         var modalHeight = this.$element.outerHeight()
         
@@ -910,7 +910,7 @@
         this.$element
           .appendTo(parent)
           .offset({top: (modalHeight < windowHeight) ? win.scrollTop() + (windowHeight - modalHeight) / 2 : win.scrollTop(),left: (windowWidth - modalWidth)/2})            
-          .css({"max-width":windowWidth})
+          .css({"width":modalWidth})
           
     }
     
@@ -980,6 +980,7 @@
       backdrop: true
     , keyboard: true
     , show: true
+    , width: 'auto'
   }
 
   $.fn.modal.Constructor = Modal
@@ -1002,6 +1003,10 @@
         .one('hide', function () {
           $this.focus()
         })
+    })
+    
+    $(window).on('resize.modal orientationchange.modal', function ( e ) {
+       $('.modal.in').modal('setPosition')
     })
   })
 
