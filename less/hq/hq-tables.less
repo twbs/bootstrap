@@ -151,3 +151,44 @@
 .hqtable-vcentered tbody td {
     vertical-align: middle;
 }
+
+
+.mvp-table {
+    @tdSummary: #FFF9ED;
+    @tdCurrentMonth: #F4FBDE;
+    @thSummary: #FFC080;
+    @thCurrentMonth: #B3CC8F;
+    padding-top: 52px;
+    thead tr {
+        position: fixed;
+        margin-top: -52px;
+    }
+    thead th,
+    tbody td{
+        width: 88/17%;
+    }
+    thead th:first-child,
+    tbody th {
+         width: 12%;
+    }
+    td.summary {
+        background-color: @tdSummary;
+    }
+    td.current_month {
+        background-color: @tdCurrentMonth;
+    }
+    tr:nth-child(odd) td.summary {
+        background-color: darken(@tdSummary, 5);
+    }
+    tr:nth-child(odd) td.current_month {
+        background-color: darken(@tdCurrentMonth, 5);
+    }
+    th.summary {
+        #gradient > .vertical(darken(@thSummary, 10), darken(@thSummary, 30));
+    }
+    th.current_month {
+        #gradient > .vertical(darken(@thCurrentMonth, 10), darken(@thCurrentMonth, 30));
+    }
+
+
+}
