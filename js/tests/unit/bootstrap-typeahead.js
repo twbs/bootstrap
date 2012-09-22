@@ -47,6 +47,20 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should work with integers as source", function () {
+        var $input = $('<input />').typeahead({
+              source: [1, 2 ,3]
+            })
+          , typeahead = $input.data('typeahead')
+
+        try {
+          $input.val('1')
+          typeahead.lookup()
+        } catch(exception) {
+          ok(false, 'doesn\'t blow up with integers as source')
+        }
+      })
+
       test("should accept data source via synchronous function", function () {
         var $input = $('<input />').typeahead({
               source: function () {

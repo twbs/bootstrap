@@ -1730,7 +1730,7 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return ~item.toString().toLowerCase().indexOf(this.query.toLowerCase())
     }
 
   , sorter: function (items) {
@@ -1740,7 +1740,7 @@
         , item
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        if (!item.toString().toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
         else if (~item.indexOf(this.query)) caseSensitive.push(item)
         else caseInsensitive.push(item)
       }
@@ -1750,7 +1750,7 @@
 
   , highlighter: function (item) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+      return item.toString().replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }
