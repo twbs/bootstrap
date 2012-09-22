@@ -1,5 +1,7 @@
-// PAGINATION
-// ----------
+//
+// Pagination (multiple pages)
+// --------------------------------------------------
+
 
 .pagination {
   height: @baseLineHeight * 2;
@@ -13,37 +15,43 @@
   .border-radius(3px);
   .box-shadow(0 1px 2px rgba(0,0,0,.05));
 }
-.pagination li {
-    display: inline;
-  }
-.pagination a {
+.pagination ul > li {
+  display: inline;
+}
+.pagination ul > li > a,
+.pagination ul > li > span {
   float: left;
   padding: 0 14px;
   line-height: (@baseLineHeight * 2) - 2;
   text-decoration: none;
-  border: 1px solid #ddd;
+  background-color: @paginationBackground;
+  border: 1px solid @paginationBorder;
   border-left-width: 0;
 }
-.pagination a:hover,
-.pagination .active a {
+.pagination ul > li > a:hover,
+.pagination ul > .active > a,
+.pagination ul > .active > span {
   background-color: #f5f5f5;
 }
-.pagination .active a {
+.pagination ul > .active > a,
+.pagination ul > .active > span {
   color: @grayLight;
   cursor: default;
 }
-.pagination .disabled span,
-.pagination .disabled a,
-.pagination .disabled a:hover {
+.pagination ul > .disabled > span,
+.pagination ul > .disabled > a,
+.pagination ul > .disabled > a:hover {
   color: @grayLight;
   background-color: transparent;
   cursor: default;
 }
-.pagination li:first-child a {
+.pagination ul > li:first-child > a,
+.pagination ul > li:first-child > span {
   border-left-width: 1px;
   .border-radius(3px 0 0 3px);
 }
-.pagination li:last-child a {
+.pagination ul > li:last-child > a,
+.pagination ul > li:last-child > span {
   .border-radius(0 3px 3px 0);
 }
 

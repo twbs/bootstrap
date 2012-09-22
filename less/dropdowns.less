@@ -1,7 +1,10 @@
-// DROPDOWN MENUS
-// --------------
+//
+// Dropdown menus
+// --------------------------------------------------
+
 
 // Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
+.dropup,
 .dropdown {
   position: relative;
 }
@@ -21,10 +24,9 @@
   width: 0;
   height: 0;
   vertical-align: top;
-  border-left:  4px solid transparent;
-  border-right: 4px solid transparent;
   border-top:   4px solid @black;
-  .opacity(30);
+  border-right: 4px solid transparent;
+  border-left:  4px solid transparent;
   content: "";
 }
 
@@ -32,10 +34,6 @@
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
-}
-.dropdown:hover .caret,
-.open.dropdown .caret {
-  .opacity(100);
 }
 
 // The dropdown menu (ul)
@@ -45,24 +43,22 @@
   top: 100%;
   left: 0;
   z-index: @zindexDropdown;
-  float: left;
   display: none; // none by default, but block on "open" of the menu
+  float: left;
   min-width: 160px;
-  padding: 4px 0;
-  margin: 0; // override default ul
+  padding: 5px 0;
+  margin: 2px 0 0; // override default ul
   list-style: none;
   background-color: @dropdownBackground;
-  border-color: #ccc;
-  border-color: rgba(0,0,0,.2);
-  border-style: solid;
-  border-width: 1px;
-  .border-radius(0 0 5px 5px);
+  border: 1px solid #ccc; // Fallback for IE7-8
+  border: 1px solid @dropdownBorder;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  .border-radius(6px);
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
 
   // Aligns the dropdown menu to right
   &.pull-right {
@@ -72,13 +68,13 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider();
+    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
   }
 
   // Links within the dropdown menu
   a {
     display: block;
-    padding: 3px 15px;
+    padding: 3px 20px;
     clear: both;
     font-weight: normal;
     line-height: @baseLineHeight;
@@ -90,34 +86,56 @@
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+  text-decoration: none;
+  color: @dropdownLinkColorHover;
+  background-color: @dropdownLinkBackgroundHover;
+  #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
+}
+
+// Active state
+// ------------
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: @dropdownLinkColorHover;
   text-decoration: none;
-  background-color: @dropdownLinkBackgroundHover;
+  outline: 0;
+  background-color: @dropdownLinkBackgroundActive;
+  #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
+}
+
+// Disabled state
+// --------------
+// Gray out text and ensure the hover state remains gray
+.dropdown-menu .disabled > a,
+.dropdown-menu .disabled > a:hover {
+  color: @grayLight;
+}
+// Nuke hover effects
+.dropdown-menu .disabled > a:hover {
+  text-decoration: none;
+  background-color: transparent;
+  cursor: default;
 }
 
 // Open state for the dropdown
 // ---------------------------
-.dropdown.open {
+.open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
   *z-index: @zindexDropdown;
 
-  .dropdown-toggle {
-    color: @white;
-    background: #ccc;
-    background: rgba(0,0,0,.3);
-  }
-  .dropdown-menu {
+  & > .dropdown-menu {
     display: block;
   }
 }
 
 // Right aligned dropdowns
-.pull-right .dropdown-menu {
-  left: auto;
+// ---------------------------
+.pull-right > .dropdown-menu {
   right: 0;
+  left: auto;
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
@@ -130,7 +148,7 @@
   .caret {
     border-top: 0;
     border-bottom: 4px solid @black;
-    content: "\2191";
+    content: "";
   }
   // Different positioning for bottom up menu
   .dropdown-menu {
@@ -138,6 +156,50 @@
     bottom: 100%;
     margin-bottom: 1px;
   }
+}
+
+// Sub menus
+// ---------------------------
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+     -moz-border-radius: 0 6px 6px 6px;
+          border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: darken(@dropdownBackground, 20%);
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover > a:after {
+  border-left-color: @dropdownLinkColorHover;
+}
+
+
+// Tweak nav headers
+// -----------------
+// Increase padding from 15px to 20px on sides
+.dropdown .dropdown-menu .nav-header {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 // Typeahead

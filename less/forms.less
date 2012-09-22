@@ -1,6 +1,6 @@
-// Forms.less
-// Base styles for various input types, form layouts, and states
-// -------------------------------------------------------------
+//
+// Forms
+// --------------------------------------------------
 
 
 // GENERAL STYLES
@@ -22,12 +22,12 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @baseLineHeight * 1.5;
+  margin-bottom: @baseLineHeight;
   font-size: @baseFontSize * 1.5;
   line-height: @baseLineHeight * 2;
   color: @grayDark;
   border: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e5e5e5;
 
   // Small
   small {
@@ -55,114 +55,166 @@ textarea {
 label {
   display: block;
   margin-bottom: 5px;
-  color: @grayDark;
 }
 
-// Inputs, Textareas, Selects
-input,
-textarea,
+// Form controls
+// -------------------------
+
+// Shared size and type resets
 select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
 .uneditable-input {
   display: inline-block;
-  width: 210px;
   height: @baseLineHeight;
-  padding: 4px;
+  padding: 4px 6px;
   margin-bottom: 9px;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
+  .border-radius(@inputBorderRadius);
+}
+
+// Reset appearance properties for textual inputs and textarea
+// Declare width for legacy (can't be on input[type=*] selectors or it's too specific)
+input,
+textarea,
+.uneditable-input {
+  width: 206px; // plus 12px padding and 2px border
+}
+// Reset height since textareas have rows
+textarea {
+  height: auto;
+}
+// Everything else
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: @inputBackground;
   border: 1px solid @inputBorder;
-  .border-radius(3px);
-}
-.uneditable-textarea {
-  width: auto;
-  height: auto;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  .transition(~"border linear .2s, box-shadow linear .2s");
+
+  // Focus state
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
+  }
 }
 
-// Inputs within a label
-label input,
-label textarea,
-label select {
-  display: block;
-}
-
-// Mini reset for unique input types
-input[type="image"],
-input[type="checkbox"],
-input[type="radio"] {
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 3px 0;
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 4px 0 0;
   *margin-top: 0; /* IE7 */
+  margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
   cursor: pointer;
-  .border-radius(0);
-  border: 0 \9; /* IE9 and down */
-}
-input[type="image"] {
-  border: 0;
 }
 
-// Reset the file input to browser defaults
-input[type="file"] {
-  width: auto;
-  padding: initial;
-  line-height: initial;
-  border: initial;
-  background-color: @inputBackground;
-  background-color: initial;
-  .box-shadow(none);
-}
-
-// Help out input buttons
-input[type="button"],
+// Reset width of input images, buttons, radios, checkboxes
+input[type="file"],
+input[type="image"],
+input[type="submit"],
 input[type="reset"],
-input[type="submit"] {
-  width: auto;
-  height: auto;
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto; // Override of generic input selector
 }
 
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
-  line-height: 28px;
+  line-height: 30px;
 }
 
-// Reset line-height for IE
-input[type="file"] {
-  line-height: 18px \9;
-}
-
-// Chrome on Linux and Mobile Safari need background-color
+// Make select elements obey height by applying a border
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
-  background-color: @inputBackground;
+  border: 1px solid @inputBorder;
+  background-color: @inputBackground; // Chrome on Linux and Mobile Safari need background-color
 }
 
 // Make multiple select elements height not fixed
-select[multiple="multiple"],
-select[size^=""] {
+select[multiple],
+select[size] {
   height: auto;
 }
 
-// Remove shadow from image inputs
-input[type="image"] {
-  .box-shadow(none);
+// Focus for select, file, radio, and checkbox
+select:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  .tab-focus();
 }
 
-// Make textarea height behave
+
+// Uneditable inputs
+// -------------------------
+
+// Make uneditable inputs look inactive
+.uneditable-input,
+.uneditable-textarea {
+  color: @grayLight;
+  background-color: darken(@inputBackground, 1%);
+  border-color: @inputBorder;
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
+  cursor: not-allowed;
+}
+
+// For text that needs to appear as an input but should not be an input
+.uneditable-input {
+  overflow: hidden; // prevent text from wrapping, but still cut it off like an input does
+  white-space: nowrap;
+}
+
+// Make uneditable textareas behave like a textarea
+.uneditable-textarea {
+  width: auto;
+  height: auto;
+}
+
+
+// Placeholder
+// -------------------------
+
+// Placeholder text gets special styles because when browsers invalidate entire lines if it doesn’t understand a selector
+input,
 textarea {
-  height: auto;
+  .placeholder();
 }
-
-// Hidden inputs
-input[type="hidden"] {
-  display: none;
-}
-
 
 
 // CHECKBOXES & RADIOS
@@ -171,6 +223,7 @@ input[type="hidden"] {
 // Indent the labels to position radios/checkboxes as hanging
 .radio,
 .checkbox {
+  min-height: 18px; // clear the floating input if there is no label text
   padding-left: 18px;
 }
 .radio input[type="radio"],
@@ -201,33 +254,6 @@ input[type="hidden"] {
 
 
 
-// FOCUS STATE
-// -----------
-
-input,
-textarea {
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  @transition: border linear .2s, box-shadow linear .2s;
-  .transition(@transition);
-}
-input:focus,
-textarea:focus {
-  border-color: rgba(82,168,236,.8);
-  @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
-  .box-shadow(@shadow);
-  outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
-}
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus,
-select:focus {
-  .box-shadow(none); // override for file inputs
-  .tab-focus();
-}
-
-
-
 // INPUT SIZES
 // -----------
 
@@ -243,9 +269,27 @@ select:focus {
 input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
-.uneditable-input {
+.uneditable-input[class*="span"],
+// Redeclare since the fluid row class is more specific
+.row-fluid input[class*="span"],
+.row-fluid select[class*="span"],
+.row-fluid textarea[class*="span"],
+.row-fluid .uneditable-input[class*="span"] {
   float: none;
   margin-left: 0;
+}
+// Ensure input-prepend/append never wraps
+.input-append input[class*="span"],
+.input-append .uneditable-input[class*="span"],
+.input-prepend input[class*="span"],
+.input-prepend .uneditable-input[class*="span"],
+.row-fluid input[class*="span"],
+.row-fluid select[class*="span"],
+.row-fluid textarea[class*="span"],
+.row-fluid .uneditable-input[class*="span"],
+.row-fluid .input-prepend [class*="span"],
+.row-fluid .input-append [class*="span"] {
+  display: inline-block;
 }
 
 
@@ -253,7 +297,16 @@ textarea[class*="span"],
 // GRID SIZING FOR INPUTS
 // ----------------------
 
-#grid > .input (@gridColumnWidth, @gridGutterWidth);
+// Grid sizes
+#grid > .input(@gridColumnWidth, @gridGutterWidth);
+
+// Control row for multiple inputs per line
+.controls-row {
+  .clearfix(); // Clear the float from controls
+}
+.controls-row [class*="span"] {
+  float: left; // Float to collapse white-space for proper grid alignment
+}
 
 
 
@@ -268,9 +321,15 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  background-color: @inputDisabledBackground;
-  border-color: #ddd;
   cursor: not-allowed;
+  background-color: @inputDisabledBackground;
+}
+// Explicitly reset the colors here
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
 }
 
 
@@ -290,6 +349,10 @@ textarea[readonly] {
 // Success
 .control-group.success {
   .formFieldState(@successText, @successText, @successBackground);
+}
+// Success
+.control-group.info {
+  .formFieldState(@infoText, @infoText, @infoBackground);
 }
 
 // HTML5 invalid states
@@ -314,22 +377,10 @@ select:focus:required:invalid {
   padding: (@baseLineHeight - 1) 20px @baseLineHeight;
   margin-top: @baseLineHeight;
   margin-bottom: @baseLineHeight;
-  background-color: @grayLighter;
-  border-top: 1px solid #ddd;
+  background-color: @formActionsBackground;
+  border-top: 1px solid #e5e5e5;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
-
-// For text that needs to appear as an input but should not be an input
-.uneditable-input {
-  display: block;
-  background-color: @inputBackground;
-  border-color: #eee;
-  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
-  cursor: not-allowed;
-}
-
-// Placeholder text gets special styles; can't be bundled together though for some reason
-.placeholder(@grayLight);
 
 
 
@@ -338,7 +389,7 @@ select:focus:required:invalid {
 
 .help-block,
 .help-inline {
-  color: @gray; // lighten the text some for contrast
+  color: lighten(@textColor, 15%); // lighten the text some for contrast
 }
 
 .help-block {
@@ -359,39 +410,44 @@ select:focus:required:invalid {
 // ------------
 
 // Allow us to put symbols and text within the input field for a cleaner look
-.input-prepend,
-.input-append {
+.input-append,
+.input-prepend {
   margin-bottom: 5px;
+  font-size: 0;
+  white-space: nowrap; // Prevent span and input from separating
+
   input,
   select,
   .uneditable-input {
+    position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
+    margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
-    .border-radius(0 3px 3px 0);
+    font-size: @baseFontSize;
+    vertical-align: top;
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    // Make input on top when focused so blue border and shadow always show
     &:focus {
-      position: relative;
       z-index: 2;
     }
-  }
-  .uneditable-input {
-    border-left-color: #ccc;
   }
   .add-on {
     display: inline-block;
     width: auto;
-    min-width: 16px;
     height: @baseLineHeight;
+    min-width: 16px;
     padding: 4px 5px;
+    font-size: @baseFontSize;
     font-weight: normal;
     line-height: @baseLineHeight;
     text-align: center;
     text-shadow: 0 1px 0 @white;
-    vertical-align: middle;
     background-color: @grayLighter;
     border: 1px solid #ccc;
   }
   .add-on,
   .btn {
-    .border-radius(3px 0 0 3px);
+    vertical-align: top;
+    .border-radius(0);
   }
   .active {
     background-color: lighten(@green, 30);
@@ -403,21 +459,24 @@ select:focus:required:invalid {
   .btn {
     margin-right: -1px;
   }
+  .add-on:first-child,
+  .btn:first-child {
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+  }
 }
 .input-append {
   input,
-  select
+  select,
   .uneditable-input {
-    .border-radius(3px 0 0 3px);
-  }
-  .uneditable-input {
-    border-left-color: #eee;
-    border-right-color: #ccc;
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
   .add-on,
   .btn {
     margin-left: -1px;
-    .border-radius(0 3px 3px 0);
+  }
+  .add-on:last-child,
+  .btn:last-child {
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
 // Remove all border-radius for inputs with both prepend and append
@@ -430,12 +489,12 @@ select:focus:required:invalid {
   .add-on:first-child,
   .btn:first-child {
     margin-right: -1px;
-    .border-radius(3px 0 0 3px);
+    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
   .add-on:last-child,
   .btn:last-child {
     margin-left: -1px;
-    .border-radius(0 3px 3px 0);
+    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
 
@@ -444,12 +503,33 @@ select:focus:required:invalid {
 // SEARCH FORM
 // -----------
 
-.search-query {
-  padding-left: 14px;
+input.search-query {
   padding-right: 14px;
-  margin-bottom: 0; // remove the default margin on all inputs
-  .border-radius(14px);
+  padding-right: 4px \9;
+  padding-left: 14px;
+  padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  margin-bottom: 0; // Remove the default margin on all inputs
+  .border-radius(15px);
 }
+
+/* Allow for input prepend/append in search forms */
+.form-search .input-append .search-query,
+.form-search .input-prepend .search-query {
+  .border-radius(0); // Override due to specificity
+}
+.form-search .input-append .search-query {
+  .border-radius(14px 0 0 14px);
+}
+.form-search .input-append .btn {
+  .border-radius(0 14px 14px 0);
+}
+.form-search .input-prepend .search-query {
+  .border-radius(0 14px 14px 0);
+}
+.form-search .input-prepend .btn {
+  .border-radius(14px 0 0 14px);
+}
+
 
 
 
@@ -470,7 +550,9 @@ select:focus:required:invalid {
   .input-prepend,
   .input-append {
     display: inline-block;
+    .ie7-inline-block();
     margin-bottom: 0;
+    vertical-align: middle;
   }
   // Re-hide hidden elements due to specifity
   .hide {
@@ -478,7 +560,9 @@ select:focus:required:invalid {
   }
 }
 .form-search label,
-.form-inline label {
+.form-inline label,
+.form-search .btn-group,
+.form-inline .btn-group {
   display: inline-block;
 }
 // Remove margin for input-prepend/-append
@@ -503,8 +587,8 @@ select:focus:required:invalid {
 .form-inline .radio input[type="radio"],
 .form-inline .checkbox input[type="checkbox"] {
   float: left;
-  margin-left: 0;
   margin-right: 3px;
+  margin-left: 0;
 }
 
 
@@ -531,25 +615,36 @@ legend + .control-group {
   // Float the labels left
   .control-label {
     float: left;
-    width: 140px;
+    width: @horizontalComponentOffset - 20;
     padding-top: 5px;
     text-align: right;
   }
   // Move over all input controls and content
   .controls {
-    margin-left: 160px;
-    /* Super jank IE7 fix to ensure the inputs in .input-append and input-prepend don't inherit the margin of the parent, in this case .controls */
+    // Super jank IE7 fix to ensure the inputs in .input-append and input-prepend
+    // don't inherit the margin of the parent, in this case .controls
     *display: inline-block;
-    *margin-left: 0;
     *padding-left: 20px;
+    margin-left: @horizontalComponentOffset;
+    *margin-left: 0;
+    &:first-child {
+      *padding-left: @horizontalComponentOffset;
+    }
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
   .help-block {
-    margin-top: @baseLineHeight / 2;
     margin-bottom: 0;
+  }
+  // And apply it only to .help-block instances that follow a form control
+  input,
+  select,
+  textarea {
+    + .help-block {
+      margin-top: @baseLineHeight / 2;
+    }
   }
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
-    padding-left: 160px;
+    padding-left: @horizontalComponentOffset;
   }
 }
