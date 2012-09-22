@@ -116,7 +116,7 @@
 // Strictly Export Data Tables
 
 .hq-generic-report .table {
-    .box-shadow();
+    .box-shadow(0 1px 3px rgba(0,0,0,.25));
 }
 .export_data tbody td {
     padding-top: 13px;
@@ -158,14 +158,12 @@
     @tdCurrentMonth: #F4FBDE;
     @thSummary: #FFC080;
     @thCurrentMonth: #B3CC8F;
-    padding-top: 52px;
-    thead tr {
-        position: fixed;
-        margin-top: -52px;
-    }
     thead th,
     tbody td{
         width: 88/17%;
+    }
+    tr.affix {
+        margin-top: -197px;
     }
     thead th:first-child,
     tbody th {
