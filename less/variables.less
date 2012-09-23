@@ -15,7 +15,19 @@
 @gray:                  #555;
 @grayLight:             #999;
 @grayLighter:           #eee;
+@grayLightest:          #e5e5e5;
+@whiteSmoke:            #f5f5f5;
+@whiteSmokeLight:       #f9f9f9;
 @white:                 #fff;
+
+
+// Border colors
+// -------------------------
+
+@borderColorDark:       #bbb;
+@borderColor:           #ccc;
+@borderColorLight:      #c5c5c5;
+@borderColorLightest:   #ddd;
 
 
 // Accent colors
@@ -79,14 +91,15 @@
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
 @tableBackgroundAccent:             #f9f9f9; // for striping
-@tableBackgroundHover:              #f5f5f5; // for hover
-@tableBorder:                       #ddd; // table and cell border
+@tableBackgroundHover:              @whiteSmoke; // for hover
+@tableBorder:                       @borderColorLightest; // table and cell border
+
 
 // Buttons
 // -------------------------
 @btnBackground:                     @white;
 @btnBackgroundHighlight:            darken(@white, 10%);
-@btnBorder:                         #bbb;
+@btnBorder:                         @borderColorDark;
 
 @btnPrimaryBackground:              @linkColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
@@ -113,15 +126,18 @@
 @inputBorder:                   #ccc;
 @inputBorderRadius:             @baseBorderRadius;
 @inputDisabledBackground:       @grayLighter;
-@formActionsBackground:         #f5f5f5;
+@formActionsBackground:         @whiteSmoke;
 @inputHeight:                   @baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
+@inputInvalid:                  #b94a48;
+@inputInvalidBorder:            #ee5f5b;
 
 
 // Dropdowns
 // -------------------------
 @dropdownBackground:            @white;
 @dropdownBorder:                rgba(0,0,0,.2);
-@dropdownDividerTop:            #e5e5e5;
+@dropdownBorderIE:              @borderColor;
+@dropdownDividerTop:            @grayLightest;
 @dropdownDividerBottom:         @white;
 
 @dropdownLinkColor:             @grayDark;
@@ -130,7 +146,6 @@
 
 @dropdownLinkBackgroundActive:  @linkColor;
 @dropdownLinkBackgroundHover:   @dropdownLinkBackgroundActive;
-
 
 
 // COMPONENT VARIABLES
@@ -172,7 +187,7 @@
 
 // Wells
 // -------------------------
-@wellBackground:                  #f5f5f5;
+@wellBackground:                  @whiteSmoke;
 
 
 // Navbar
@@ -209,16 +224,16 @@
 @navbarInverseSearchBackground:          lighten(@navbarInverseBackground, 25%);
 @navbarInverseSearchBackgroundFocus:     @white;
 @navbarInverseSearchBorder:              @navbarInverseBackground;
-@navbarInverseSearchPlaceholderColor:    #ccc;
+@navbarInverseSearchPlaceholderColor:    @borderColor;
 
 @navbarInverseBrandColor:                @navbarInverseLinkColor;
 
 
 // Pagination
 // -------------------------
-@paginationBackground:                #fff;
-@paginationBorder:                    #ddd;
-@paginationActiveBackground:          #f5f5f5;
+@paginationBackground:                @white;
+@paginationBorder:                    @borderColorLightest;
+@paginationActiveBackground:          @whiteSmoke;
 
 
 // Hero unit
@@ -263,6 +278,38 @@
 @popoverArrowOuterWidth:  @popoverArrowWidth + 1;
 @popoverArrowOuterColor:  rgba(0,0,0,.25);
 
+
+// Accordions
+// -------------------------
+@accordionBorder:         @grayLightest;
+
+// Code
+// -------------------------
+@inlineCodeColor:         #d14;
+@inlineCodeBackground:    #f7f7f9;
+@inlineCodeBorder:        #e1e1e8;
+@blockCodeBorder:         rgba(0,0,0,.15);
+@blockCodeBorderIE:       @borderColor;
+
+
+// Modals
+// -------------------------
+@modalBorder:             rgba(0,0,0,0.3);
+@modalBorderIE:           @grayLight;
+
+
+// Progress bars
+// -------------------------
+@progressStart:            #149bdf;
+@progressStop:             #0480be;
+@progressDangerStart:      #ee5f5b;
+@progressDangerStop:       #c43c35;
+@progressSuccessStart:     #62c462;
+@progressSuccessStop:      #57a957;
+@progressInfoStart:        #5bc0de;
+@progressInfoStop:         #339bb9;
+@progressWarningStart:     lighten(@orange, 15%);
+@progressWarningStop:      @orange;
 
 
 // GRID

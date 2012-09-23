@@ -27,7 +27,7 @@ legend {
   line-height: @baseLineHeight * 2;
   color: @grayDark;
   border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid @grayLightest;
 
   // Small
   small {
@@ -364,11 +364,11 @@ input[type="checkbox"][readonly] {
 input:focus:required:invalid,
 textarea:focus:required:invalid,
 select:focus:required:invalid {
-  color: #b94a48;
-  border-color: #ee5f5b;
+  color: @inputInvalid;
+  border-color: @inputInvalidBorder;
   &:focus {
-    border-color: darken(#ee5f5b, 10%);
-    @shadow: 0 0 6px lighten(#ee5f5b, 20%);
+    border-color: darken(@inputInvalidBorder, 10%);
+    @shadow: 0 0 6px lighten(@inputInvalidBorder, 20%);
     .box-shadow(@shadow);
   }
 }
@@ -383,7 +383,7 @@ select:focus:required:invalid {
   margin-top: @baseLineHeight;
   margin-bottom: @baseLineHeight;
   background-color: @formActionsBackground;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid @grayLightest;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
 
@@ -454,7 +454,7 @@ select:focus:required:invalid {
     text-align: center;
     text-shadow: 0 1px 0 @white;
     background-color: @grayLighter;
-    border: 1px solid #ccc;
+    border: 1px solid @borderColor;
   }
   .add-on,
   .btn {
