@@ -47,8 +47,8 @@
       if (this.options.trigger == 'click') {
         this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
       } else if (this.options.trigger != 'manual') {
-        eventIn = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
-        eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
+        eventIn = this.options.trigger == 'hover' ? 'mouseover' : 'focus'
+        eventOut = this.options.trigger == 'hover' ? 'mouseout' : 'blur'
         this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
         this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
       }
