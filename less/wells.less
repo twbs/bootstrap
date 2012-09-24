@@ -27,3 +27,24 @@
   padding: 9px;
   .border-radius(3px);
 }
+
+.well.success,
+.success .well {
+  background-color: darken(spin(@successBackground, -10), 5%);
+  border: 1px solid darken(spin(@successBackground, -10), 20%);
+}
+.well.error,
+.error .well {
+  background-color: darken(spin(@errorBackground, -10), 5%);
+  border: 1px solid darken(spin(@errorBackground, -10), 20%);
+}
+.well.warning ,
+.warning .well {
+  background-color: darken(spin(@warningBackground, -10), 5%);
+  border: 1px solid darken(spin(@warningBackground, -10), 20%);
+}
+.well.info ,
+.info .well {
+  background-color: darken(spin(@infoBackground, -10), 5%);
+  border: 1px solid darken(spin(@infoBackground, -10), 20%);
+}
