@@ -47,7 +47,7 @@
     constructor: Typeahead
 
   , select: function () {
-      this.selections[this.selections.length - 1] = this.$menu.find('.active').attr('data-value');
+      this.selections[this.selections.length > 0 ? this.selections.length - 1 : this.selections.length] = this.$menu.find('.active').attr('data-value');
       
       if ( this.mode === 'multiple' )
           this.selections[this.selections.length - 1] += this.delimiter
