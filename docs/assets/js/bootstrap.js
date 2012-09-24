@@ -926,6 +926,7 @@
         , data = $this.data('modal')
         , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
+      else $.extend($this.data('modal').options, option)
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
     })
@@ -949,6 +950,9 @@
         , href = $this.attr('href')
         , $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
         , option = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+      if(option == 'toggle') {
+        $.extend($target.data('modal').options, $this.data())
+      }
 
       e.preventDefault()
 
@@ -960,7 +964,8 @@
     })
   })
 
-}(window.jQuery);/* ===========================================================
+}(window.jQuery);
+/* ===========================================================
  * bootstrap-tooltip.js v2.1.2
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
