@@ -1231,7 +1231,7 @@
   , trigger: 'hover'
   , title: ''
   , delay: 0
-  , html: true
+  , html: false
   }
 
 }(window.jQuery);

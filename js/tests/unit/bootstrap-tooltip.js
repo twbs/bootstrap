@@ -37,10 +37,11 @@ $(function () {
         tooltip.tooltip('hide')
       })
 
-      test("should always allow html entities", function () {
+      test("should allow html entities", function () {
         $.support.transition = false
         var tooltip = $('<a href="#" rel="tooltip" title="<b>@fat</b>"></a>')
           .appendTo('#qunit-fixture')
+          .tooltip({html: true})
           .tooltip('show')
 
         ok($('.tooltip b').length, 'b tag was inserted')
