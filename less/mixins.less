@@ -555,92 +555,86 @@
 // The Grid
 #grid {
 
-  .core (@gridColumnWidth, @gridGutterWidth, @gridRowWidth) {
+  .core(@gridColumnWidth, @gridGutterWidth, @gridRowWidth) {
 
-    .spanX (@index) when (@index > 0) {
+    .spanX(@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
       .spanX(@index - 1);
     }
-    .spanX (0) {}
+    .spanX(0) {}
 
-    .offsetX (@index) when (@index > 0) {
+    .offsetX(@index) when (@index > 0) {
       (~".offset@{index}") { .offset(@index); }
       .offsetX(@index - 1);
     }
-    .offsetX (0) {}
+    .offsetX(0) {}
 
-    .offset (@columns) {
+
+    // Base styles
+    .offset(@columns) {
       margin-left: percentage(@columns / @gridColumns);
     }
-
-    .span (@columns) {
+    .span(@columns) {
       width: percentage(@columns / @gridColumns);
     }
 
     .row {
+      // Negative indent the columns so text lines up
       margin-left: @gridGutterWidth / -2;
       margin-right: @gridGutterWidth / -2;
+      // Clear the floated columns
       .clearfix();
     }
 
     [class*="span"] {
-      float: left;
-      min-height: 1px; // prevent column collapsing
+      float: left; // Collapse whitespace
+      min-height: 1px; // Prevent empty columns from collapsing
       padding-left: @gridGutterWidth / 2;
       padding-right: @gridGutterWidth / 2;
+      // Proper box-model (padding doesnt' add to width)
       -webkit-box-sizing: border-box;
          -moz-box-sizing: border-box;
               box-sizing: border-box;
     }
 
-    // generate .spanX and .offsetX
-    .spanX (@gridColumns);
-    .offsetX (@gridColumns);
+    // Generate .spanX and .offsetX
+    .spanX(@gridColumns);
+    .offsetX(@gridColumns);
 
   }
 
 
   .input(@gridColumnWidth, @gridGutterWidth, @gridRowWidth) {
 
-    .spanX (@index) when (@index > 0) {
-      (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
+    .spanX(@index) when (@index > 0) {
+      (~"input.span@{index}, textarea.span@{index}, select.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
       .spanX(@index - 1);
     }
-    .spanX (0) {}
+    .spanX(0) {}
+
+    .offsetX(@index) when (@index > 0) {
+      (~"input.offset@{index}, textarea.offset@{index}, select.offset@{index}, uneditable-input.offset@{index}") { .offset(@index); }
+      .offsetX(@index - 1);
+    }
+    .offsetX(0) {}
+
 
     .span(@columns) {
-      //width: percentage(@columns / @gridColumns) - percentage(@gridGutterWidth / @gridRowWidth) + percentage(@gridGutterWidth/(@columns - 1));
-      //width: (100% - ((@columns - 1) * (@gridGutterWidth / @gridRowWidth))) / @gridColumns;
-
-
-      //width: percentage((@columns * (((@columns - 1) * (@gridGutterWidth/@gridRowWidth)))) / @gridRowWidth);
-      width: percentage((@columns * (@gridRowWidth - ( @columns - 1 ) * (@gridGutterWidth/@gridRowWidth)) / 12 ) / @gridRowWidth);
-      //( 4 * (940 - (num_col - 1 )*(20/940)) )/940
-
+      // Part 1: Since inputs require padding *and* margin, we subtract the grid gutter width, as a percent of the row, from the default column width.
+      width: percentage(@columns / @gridColumns) - percentage(@gridGutterWidth / @gridRowWidth);
+      // Part 2: That subtracted width then gets split in half and added to the left and right margins.
       margin-left: percentage((@gridGutterWidth / 2) / @gridRowWidth);
-      //margin-left:  percentage((((@columns - 1) * @gridGutterWidth)/ @gridRowWidth ) / (2 * (@columns - 1) );
-
       margin-right: percentage((@gridGutterWidth / 2) / @gridRowWidth);
-      //margin-right: percentage((((@columns - 1) * @gridGutterWidth)/ @gridRowWidth ) / (2 * (@columns - 1) );
     }
 
-    // 940*4/12 - 20/940 = .312056737
-
-    // Space grid-sized controls properly if multiple per line
-    input[class*="span"]:first-child,
-    textarea[class*="span"]:first-child,
-    .uneditable-input[class*="span"]:first-child {
-      margin-left: 0;
-    }
-    input[class*="span"]:last-child,
-    textarea[class*="span"]:last-child,
-    .uneditable-input[class*="span"]:last-child {
-      margin-right: 0;
+    .offset(@columns) {
+      // Take the normal offset margin and add an extra gutter's worth.
+      margin-left: percentage(@columns / @gridColumns) + percentage((@gridGutterWidth / 2) / @gridRowWidth);
     }
 
-
-    // generate .spanX
-    .spanX (@gridColumns);
+    // Generate .spanX and .offsetX
+    .spanX(@gridColumns);
+    .offsetX(@gridColumns);
 
   }
 

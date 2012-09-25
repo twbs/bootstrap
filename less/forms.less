@@ -265,40 +265,31 @@ textarea {
 .input-xlarge     { width: 270px; }
 .input-xxlarge    { width: 530px; }
 
-// Grid style input sizes
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"],
-.uneditable-input[class*="span"],
-// Redeclare since the fluid row class is more specific
-.row-fluid input[class*="span"],
-.row-fluid select[class*="span"],
-.row-fluid textarea[class*="span"],
-.row-fluid .uneditable-input[class*="span"] {
-  xfloat: none;
-  xmargin-left: 0;
-}
-// Ensure input-prepend/append never wraps
-.input-append input[class*="span"],
-.input-append .uneditable-input[class*="span"],
-.input-prepend input[class*="span"],
-.input-prepend .uneditable-input[class*="span"],
-.row-fluid input[class*="span"],
-.row-fluid select[class*="span"],
-.row-fluid textarea[class*="span"],
-.row-fluid .uneditable-input[class*="span"],
-.row-fluid .input-prepend [class*="span"],
-.row-fluid .input-append [class*="span"] {
-  display: inline-block;
-}
-
 
 
 // GRID SIZING FOR INPUTS
 // ----------------------
 
+// Grid style input sizes
+input[class*="span"],
+select[class*="span"],
+textarea[class*="span"],
+.uneditable-input[class*="span"] {
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .controls-row {
   #grid > .input(@gridColumnWidth, @gridGutterWidth, @gridRowWidth);
+}
+
+// Ensure input-prepend/append never wraps
+.input-append input[class*="span"],
+.input-append .uneditable-input[class*="span"],
+.input-prepend input[class*="span"],
+.input-prepend .uneditable-input[class*="span"] {
+  display: inline-block;
 }
 
 input[class*="span"],
@@ -427,8 +418,8 @@ select:focus:required:invalid {
   select,
   .uneditable-input {
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
-    margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
-    *margin-left: 0;
+    float: none; // Undo the float from grid sizing
+    margin: 0; // Prevent bottom margin from screwing up alignment in stacked forms
     font-size: @baseFontSize;
     vertical-align: top;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
@@ -436,6 +427,11 @@ select:focus:required:invalid {
     &:focus {
       z-index: 2;
     }
+  }
+  input[class*="span"],
+  select[class*="span"],
+  .uneditable-input[class*="span"] {
+    margin: 0;
   }
   .add-on {
     display: inline-block;

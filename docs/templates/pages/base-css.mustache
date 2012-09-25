@@ -1068,20 +1068,22 @@
           <form class="bs-docs-example">
             <div class="input-prepend">
               <span class="add-on">@</span>
-              <input class="span2" id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}">
+              <input id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}">
             </div>
             <br>
             <div class="input-append">
-              <input class="span2" id="appendedInput" size="16" type="text">
+              <input id="appendedInput" size="16" type="text">
               <span class="add-on">.00</span>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-prepend"&gt;
-  &lt;span class="add-on"&gt;@&lt;/span&gt;&lt;input class="span2" id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}"&gt;
+  &lt;span class="add-on"&gt;@&lt;/span&gt;
+  &lt;input id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}"&gt;
 &lt;/div&gt;
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+  &lt;input id="appendedInput" size="16" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1090,13 +1092,15 @@
           <form class="bs-docs-example form-inline">
             <div class="input-prepend input-append">
               <span class="add-on">$</span>
-              <input class="span2" id="appendedPrependedInput" size="16" type="text">
+              <input id="appendedPrependedInput" size="16" type="text">
               <span class="add-on">.00</span>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-prepend input-append"&gt;
-  &lt;span class="add-on"&gt;$&lt;/span&gt;&lt;input class="span2" id="appendedPrependedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+  &lt;span class="add-on"&gt;$&lt;/span&gt;
+  &lt;input id="appendedPrependedInput" size="16" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1104,46 +1108,49 @@
           <p>{{_i}}Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.{{/i}}</p>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input class="span2" id="appendedInputButton" size="16" type="text">
+              <input id="appendedInputButton" size="16" type="text">
               <button class="btn" type="button">Go!</button>
             </div>
             <br>
             <div class="input-append">
-              <input class="span2" id="appendedInputButtons" size="16" type="text">
+              <input id="appendedInputButtons" size="16" type="text">
               <button class="btn" type="button">Search</button>
               <button class="btn" type="button">Options</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInputButton" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+  &lt;input id="appendedInputButton" size="16" type="text"&gt;
+  &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInputButtons" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
+  &lt;input id="appendedInputButtons" size="16" type="text"&gt;
+  &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
           <h4>{{_i}}Search form{{/i}}</h4>
           <form class="bs-docs-example form-search">
             <div class="input-append">
-              <input type="text" class="span2 search-query">
+              <input type="text" class="search-query">
               <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
             </div>
             <div class="input-prepend">
               <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
-              <input type="text" class="span2 search-query">
+              <input type="text" class="search-query">
             </div>
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
   &lt;div class="input-append"&gt;
-    &lt;input type="text" class="span2 search-query"&gt;
+    &lt;input type="text" class="search-query"&gt;
     &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="input-prepend"&gt;
     &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
-    &lt;input type="text" class="span2 search-query"&gt;
+    &lt;input type="text" class="search-query"&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 </pre>
@@ -1221,7 +1228,7 @@
 
           <p>{{_i}}For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and the clears the float.{{/i}}</p>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
-            <div class="controls">
+            <div class="controls controls-row">
               <input class="span5" type="text" placeholder=".span5">
             </div>
             <div class="controls controls-row">

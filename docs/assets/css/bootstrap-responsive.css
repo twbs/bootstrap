@@ -192,99 +192,173 @@
   .offset1 {
     margin-left: 8.333333333333332%;
   }
-  input[class*="span"]:first-child,
-  textarea[class*="span"]:first-child,
-  .uneditable-input[class*="span"]:first-child {
-    margin-left: 0;
-  }
-  input[class*="span"]:last-child,
-  textarea[class*="span"]:last-child,
-  .uneditable-input[class*="span"]:last-child {
-    margin-right: 0;
-  }
   input.span12,
   textarea.span12,
+  select.span12,
   .uneditable-input.span12 {
-    width: 99.97589305281613%;
+    width: 97.43589743589743%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span11,
   textarea.span11,
+  select.span11,
   .uneditable-input.span11 {
-    width: 91.64657754401344%;
+    width: 89.10256410256409%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span10,
   textarea.span10,
+  select.span10,
   .uneditable-input.span10 {
-    width: 83.31689677843524%;
+    width: 80.76923076923077%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span9,
   textarea.span9,
+  select.span9,
   .uneditable-input.span9 {
-    width: 74.98685075608152%;
+    width: 72.43589743589743%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span8,
   textarea.span8,
+  select.span8,
   .uneditable-input.span8 {
-    width: 66.6564394769523%;
+    width: 64.10256410256409%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span7,
   textarea.span7,
+  select.span7,
   .uneditable-input.span7 {
-    width: 58.325662941047554%;
+    width: 55.769230769230774%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span6,
   textarea.span6,
+  select.span6,
   .uneditable-input.span6 {
-    width: 49.994521148367305%;
+    width: 47.43589743589744%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span5,
   textarea.span5,
+  select.span5,
   .uneditable-input.span5 {
-    width: 41.663014098911525%;
+    width: 39.10256410256411%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span4,
   textarea.span4,
+  select.span4,
   .uneditable-input.span4 {
-    width: 33.33114179268025%;
+    width: 30.769230769230766%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span3,
   textarea.span3,
+  select.span3,
   .uneditable-input.span3 {
-    width: 24.998904229673464%;
+    width: 22.435897435897438%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span2,
   textarea.span2,
+  select.span2,
   .uneditable-input.span2 {
-    width: 16.66630140989115%;
+    width: 14.1025641025641%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
   }
   input.span1,
   textarea.span1,
+  select.span1,
   .uneditable-input.span1 {
-    width: 8.333333333333332%;
+    width: 5.769230769230768%;
     margin-right: 1.282051282051282%;
     margin-left: 1.282051282051282%;
+  }
+  input.offset12,
+  textarea.offset12,
+  select.offset12,
+  uneditable-input.offset12 {
+    margin-left: 101.28205128205128%;
+  }
+  input.offset11,
+  textarea.offset11,
+  select.offset11,
+  uneditable-input.offset11 {
+    margin-left: 92.94871794871794%;
+  }
+  input.offset10,
+  textarea.offset10,
+  select.offset10,
+  uneditable-input.offset10 {
+    margin-left: 84.61538461538463%;
+  }
+  input.offset9,
+  textarea.offset9,
+  select.offset9,
+  uneditable-input.offset9 {
+    margin-left: 76.28205128205128%;
+  }
+  input.offset8,
+  textarea.offset8,
+  select.offset8,
+  uneditable-input.offset8 {
+    margin-left: 67.94871794871794%;
+  }
+  input.offset7,
+  textarea.offset7,
+  select.offset7,
+  uneditable-input.offset7 {
+    margin-left: 59.61538461538462%;
+  }
+  input.offset6,
+  textarea.offset6,
+  select.offset6,
+  uneditable-input.offset6 {
+    margin-left: 51.282051282051285%;
+  }
+  input.offset5,
+  textarea.offset5,
+  select.offset5,
+  uneditable-input.offset5 {
+    margin-left: 42.948717948717956%;
+  }
+  input.offset4,
+  textarea.offset4,
+  select.offset4,
+  uneditable-input.offset4 {
+    margin-left: 34.61538461538461%;
+  }
+  input.offset3,
+  textarea.offset3,
+  select.offset3,
+  uneditable-input.offset3 {
+    margin-left: 26.28205128205128%;
+  }
+  input.offset2,
+  textarea.offset2,
+  select.offset2,
+  uneditable-input.offset2 {
+    margin-left: 17.948717948717945%;
+  }
+  input.offset1,
+  textarea.offset1,
+  select.offset1,
+  uneditable-input.offset1 {
+    margin-left: 9.615384615384613%;
   }
   .thumbnails {
     margin-left: -30px;
