@@ -12,7 +12,7 @@
 
 body {
   position: relative;
-  padding-top: 40px;
+  padding-top: 44px;
 }
 
 /* Code in headings */
@@ -27,7 +27,6 @@ h3 code {
 -------------------------------------------------- */
 
 body > .navbar {
-  font-size: 13px;
   background-color: rgba(0,0,0,.9);
 }
 

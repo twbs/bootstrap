@@ -4083,7 +4083,7 @@ input[type="submit"].btn::-moz-focus-inner {
 .navbar .brand {
   display: block;
   float: left;
-  padding: 10px 20px 10px;
+  padding: 12px 20px 12px;
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
@@ -4097,7 +4097,7 @@ input[type="submit"].btn::-moz-focus-inner {
 
 .navbar-text {
   margin-bottom: 0;
-  line-height: 40px;
+  line-height: 44px;
 }
 
 .navbar-link {
@@ -4109,7 +4109,7 @@ input[type="submit"].btn::-moz-focus-inner {
 }
 
 .navbar .divider-vertical {
-  height: 40px;
+  height: 44px;
   margin: 0 9px;
   border-right: 1px solid #ffffff;
   border-left: 1px solid #f2f2f2;
@@ -4117,7 +4117,7 @@ input[type="submit"].btn::-moz-focus-inner {
 
 .navbar .btn,
 .navbar .btn-group {
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 .navbar .btn-group .btn,
@@ -4145,7 +4145,7 @@ input[type="submit"].btn::-moz-focus-inner {
 .navbar-form select,
 .navbar-form .radio,
 .navbar-form .checkbox {
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 .navbar-form input,
@@ -4175,7 +4175,7 @@ input[type="submit"].btn::-moz-focus-inner {
 .navbar-search {
   position: relative;
   float: left;
-  margin-top: 5px;
+  margin-top: 7px;
   margin-bottom: 0;
 }
 
@@ -4261,7 +4261,7 @@ input[type="submit"].btn::-moz-focus-inner {
 
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 15px 10px;
+  padding: 12px 15px 12px;
   color: #777777;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;
