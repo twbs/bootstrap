@@ -981,7 +981,7 @@
   }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:hover {
-    background-color: #111111;
+    background-color: #262626;
   }
   .nav-collapse.in .btn-group {
     padding: 0;
@@ -1029,8 +1029,8 @@
   }
   .navbar-inverse .nav-collapse .navbar-form,
   .navbar-inverse .nav-collapse .navbar-search {
-    border-top-color: #111111;
-    border-bottom-color: #111111;
+    border-top-color: #262626;
+    border-bottom-color: #262626;
   }
   .navbar .nav-collapse .nav.pull-right {
     float: none;
