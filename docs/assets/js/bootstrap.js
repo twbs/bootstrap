@@ -773,8 +773,6 @@
 
         if (this.isShown || e.isDefaultPrevented()) return
 
-        $('body').addClass('modal-open')
-
         this.isShown = true
 
         this.escape()
@@ -819,8 +817,6 @@
         if (!this.isShown || e.isDefaultPrevented()) return
 
         this.isShown = false
-
-        $('body').removeClass('modal-open')
 
         this.escape()
 
@@ -1083,7 +1079,7 @@
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
-          .appendTo(inside ? this.$element : document.body)
+          .insertAfter(this.$element)
 
         pos = this.getPosition(inside)
 
@@ -1106,7 +1102,7 @@
         }
 
         $tip
-          .css(tp)
+          .offset(tp)
           .addClass(placement)
           .addClass('in')
       }
@@ -1231,11 +1227,10 @@
   , trigger: 'hover'
   , title: ''
   , delay: 0
-  , html: true
+  , html: false
   }
 
-}(window.jQuery);
-/* ===========================================================
+}(window.jQuery);/* ===========================================================
  * bootstrap-popover.js v2.1.2
  * http://twitter.github.com/bootstrap/javascript.html#popovers
  * ===========================================================
@@ -1960,7 +1955,9 @@
 
   var Affix = function (element, options) {
     this.options = $.extend({}, $.fn.affix.defaults, options)
-    this.$window = $(window).on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
+    this.$window = $(window)
+      .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('click.affix.data-api',  $.proxy(function () { setTimeout($.proxy(this.checkPosition, this), 1) }, this))
     this.$element = $(element)
     this.checkPosition()
   }

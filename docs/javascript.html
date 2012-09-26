@@ -504,8 +504,8 @@ $('#myModal').on('hidden', function () {
           <p><em>None</em></p>
 
           <h3>Methods</h3>
-          <h4>$().dropdown()</h4>
-          <p>A programatic api for activating menus for a given navbar or tabbed navigation.</p>
+          <h4>$().dropdown('toggle')</h4>
+          <p>A programatic api for toggling menus for a given navbar or tabbed navigation.</p>
         </section>
 
 
@@ -802,7 +802,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <tr>
                <td>html</td>
                <td>boolean</td>
-               <td>true</td>
+               <td>false</td>
                <td>Insert html into the tooltip. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
              </tr>
              <tr>
@@ -962,7 +962,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            <tr>
              <td>html</td>
              <td>boolean</td>
-             <td>true</td>
+             <td>false</td>
              <td>Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.</td>
            </tr>
            <tr>
