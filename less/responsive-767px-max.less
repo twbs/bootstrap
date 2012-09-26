@@ -43,10 +43,6 @@
   .container {
     width: auto;
   }
-  // Fluid rows
-  .row-fluid {
-    width: 100%;
-  }
   // Undo negative margin on rows and thumbnails
   .row,
   .thumbnails {
@@ -58,22 +54,19 @@
   }
   // Make all grid-sized elements block level again
   [class*="span"],
-  .uneditable-input[class*="span"], // Makes uneditable inputs full-width when using grid sizing
-  .row-fluid [class*="span"] {
+  // Makes uneditable inputs full-width when using grid sizing
+  .uneditable-input[class*="span"] {
     float: none;
     display: block;
     width: 100%;
     margin-left: 0;
     .box-sizing(border-box);
   }
-  .span12,
-  .row-fluid .span12 {
+  .span12 {
     width: 100%;
     .box-sizing(border-box);
   }
-  .row-fluid [class*="offset"]:first-child {
-		margin-left: 0;
-	}
+
 
   // FORM FIELDS
   // -----------
