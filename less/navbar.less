@@ -11,10 +11,6 @@
   overflow: visible;
   margin-bottom: @baseLineHeight;
   color: @navbarText;
-
-  // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
-  *position: relative;
-  *z-index: 2;
 }
 
 // Inner for background effects
@@ -450,7 +446,7 @@
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
 
-      // Focus states (we use .focused since IE7-8 and down doesn't support :focus)
+      // Focus states (we use .focused since IE8 and down doesn't support :focus)
       &:focus,
       &.focused {
         padding: 5px 15px;

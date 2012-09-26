@@ -125,10 +125,6 @@ textarea {
   vertical-align: top;
 }
 
-.clearfix {
-  *zoom: 1;
-}
-
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -207,7 +203,6 @@ a:hover {
 .row {
   margin-right: -10px;
   margin-left: -10px;
-  *zoom: 1;
 }
 
 .row:before,
@@ -340,7 +335,6 @@ a:hover {
 .container {
   margin-right: auto;
   margin-left: auto;
-  *zoom: 1;
 }
 
 .container:before,
@@ -357,7 +351,6 @@ a:hover {
 .container-fluid {
   padding-right: 20px;
   padding-left: 20px;
-  *zoom: 1;
 }
 
 .container-fluid:before,
@@ -549,10 +542,6 @@ dt {
 
 dd {
   margin-left: 10px;
-}
-
-.dl-horizontal {
-  *zoom: 1;
 }
 
 .dl-horizontal:before,
@@ -853,7 +842,8 @@ input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
-  *margin-top: 0;
+  /* IE8-9 */
+
   line-height: normal;
   cursor: pointer;
 }
@@ -871,10 +861,7 @@ input[type="checkbox"] {
 select,
 input[type="file"] {
   height: 30px;
-  /* In IE7, the height of the select element cannot be changed by height, only font-size */
-
-  *margin-top: 4px;
-  /* For IE7, add top margin to align select with labels */
+  /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
 
   line-height: 30px;
 }
@@ -1204,10 +1191,6 @@ textarea[class*="span"],
   height: 30px;
 }
 
-.controls-row {
-  *zoom: 1;
-}
-
 .controls-row:before,
 .controls-row:after {
   display: table;
@@ -1419,7 +1402,6 @@ select:focus:required:invalid:focus {
   margin-bottom: 20px;
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
-  *zoom: 1;
 }
 
 .form-actions:before,
@@ -1445,10 +1427,8 @@ select:focus:required:invalid:focus {
 
 .help-inline {
   display: inline-block;
-  *display: inline;
   padding-left: 5px;
   vertical-align: middle;
-  *zoom: 1;
 }
 
 .input-append,
@@ -1617,7 +1597,7 @@ input.search-query {
   padding-right: 4px \9;
   padding-left: 14px;
   padding-left: 4px \9;
-  /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  /* IE8 doesn't have border-radius, so don't indent the padding */
 
   margin-bottom: 0;
   -webkit-border-radius: 15px;
@@ -1680,10 +1660,8 @@ input.search-query {
 .form-inline .input-append,
 .form-horizontal .input-append {
   display: inline-block;
-  *display: inline;
   margin-bottom: 0;
   vertical-align: middle;
-  *zoom: 1;
 }
 
 .form-search .hide,
@@ -1735,7 +1713,6 @@ legend + .control-group {
 
 .form-horizontal .control-group {
   margin-bottom: 20px;
-  *zoom: 1;
 }
 
 .form-horizontal .control-group:before,
@@ -1757,14 +1734,7 @@ legend + .control-group {
 }
 
 .form-horizontal .controls {
-  *display: inline-block;
-  *padding-left: 20px;
   margin-left: 180px;
-  *margin-left: 0;
-}
-
-.form-horizontal .controls:first-child {
-  *padding-left: 180px;
 }
 
 .form-horizontal .help-block {
@@ -1831,7 +1801,6 @@ table {
 .table-bordered {
   border: 1px solid #dddddd;
   border-collapse: separate;
-  *border-collapse: collapse;
   border-left: 0;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -2105,7 +2074,6 @@ table [class*=span],
   width: 14px;
   height: 14px;
   margin-top: 1px;
-  *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
   background-image: url("../img/glyphicons-halflings.png");
@@ -2696,10 +2664,6 @@ table [class*=span],
   position: relative;
 }
 
-.dropdown-toggle {
-  *margin-bottom: -3px;
-}
-
 .dropdown-toggle:active,
 .open .dropdown-toggle {
   outline: 0;
@@ -2754,10 +2718,8 @@ table [class*=span],
 }
 
 .dropdown-menu .divider {
-  *width: 100%;
   height: 1px;
   margin: 9px 1px;
-  *margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
@@ -2814,10 +2776,6 @@ table [class*=span],
   text-decoration: none;
   cursor: default;
   background-color: transparent;
-}
-
-.open {
-  *z-index: 1000;
 }
 
 .open > .dropdown-menu {
@@ -2989,37 +2947,31 @@ button.close {
 
 .btn {
   display: inline-block;
-  *display: inline;
   padding: 4px 12px;
   margin-bottom: 0;
-  *margin-left: .3em;
   font-size: 14px;
   line-height: 20px;
-  *line-height: 20px;
   color: #333333;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
   cursor: pointer;
   background-color: #f5f5f5;
-  *background-color: #e6e6e6;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
   background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-repeat: repeat-x;
   border: 1px solid #bbbbbb;
-  *border: 0;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   border-bottom-color: #a2a2a2;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-  *zoom: 1;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -3040,17 +2992,10 @@ button.close {
   background-color: #cccccc \9;
 }
 
-.btn:first-child {
-  *margin-left: 0;
-}
-
 .btn:hover {
   color: #333333;
   text-decoration: none;
   background-color: #e6e6e6;
-  *background-color: #d9d9d9;
-  /* Buttons in IE7 don't get borders, so darken on hover */
-
   background-position: 0 -15px;
   -webkit-transition: background-position 0.1s linear;
      -moz-transition: background-position 0.1s linear;
@@ -3157,12 +3102,11 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #006dcc;
-  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
   background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
   background-image: -o-linear-gradient(top, #0088cc, #0044cc);
   background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
   background-repeat: repeat-x;
   border-color: #0044cc #0044cc #002a80;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -3189,12 +3133,11 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #faa732;
-  *background-color: #f89406;
+  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
   background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
   background-image: -o-linear-gradient(top, #fbb450, #f89406);
   background-image: linear-gradient(to bottom, #fbb450, #f89406);
-  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
   background-repeat: repeat-x;
   border-color: #f89406 #f89406 #ad6704;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -3221,12 +3164,11 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #da4f49;
-  *background-color: #bd362f;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
   background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
-  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
   background-repeat: repeat-x;
   border-color: #bd362f #bd362f #802420;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -3253,12 +3195,11 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #5bb75b;
-  *background-color: #51a351;
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
   background-image: -webkit-linear-gradient(top, #62c462, #51a351);
   background-image: -o-linear-gradient(top, #62c462, #51a351);
   background-image: linear-gradient(to bottom, #62c462, #51a351);
-  background-image: -moz-linear-gradient(top, #62c462, #51a351);
   background-repeat: repeat-x;
   border-color: #51a351 #51a351 #387038;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -3285,12 +3226,11 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #49afcd;
-  *background-color: #2f96b4;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
   background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
   background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
   background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
-  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
   background-repeat: repeat-x;
   border-color: #2f96b4 #2f96b4 #1f6377;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -3317,12 +3257,11 @@ input[type="button"].btn-block {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #363636;
-  *background-color: #222222;
+  background-image: -moz-linear-gradient(top, #444444, #222222);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
   background-image: -webkit-linear-gradient(top, #444444, #222222);
   background-image: -o-linear-gradient(top, #444444, #222222);
   background-image: linear-gradient(to bottom, #444444, #222222);
-  background-image: -moz-linear-gradient(top, #444444, #222222);
   background-repeat: repeat-x;
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -3345,34 +3284,10 @@ input[type="button"].btn-block {
   background-color: #080808 \9;
 }
 
-button.btn,
-input[type="submit"].btn {
-  *padding-top: 3px;
-  *padding-bottom: 3px;
-}
-
 button.btn::-moz-focus-inner,
 input[type="submit"].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
-}
-
-button.btn.btn-large,
-input[type="submit"].btn.btn-large {
-  *padding-top: 7px;
-  *padding-bottom: 7px;
-}
-
-button.btn.btn-small,
-input[type="submit"].btn.btn-small {
-  *padding-top: 3px;
-  *padding-bottom: 3px;
-}
-
-button.btn.btn-mini,
-input[type="submit"].btn.btn-mini {
-  *padding-top: 1px;
-  *padding-bottom: 1px;
 }
 
 .btn-link,
@@ -3408,16 +3323,9 @@ input[type="submit"].btn.btn-mini {
 .btn-group {
   position: relative;
   display: inline-block;
-  *display: inline;
-  *margin-left: .3em;
   font-size: 0;
   white-space: nowrap;
   vertical-align: middle;
-  *zoom: 1;
-}
-
-.btn-group:first-child {
-  *margin-left: 0;
 }
 
 .btn-group + .btn-group {
@@ -3613,10 +3521,6 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group-vertical {
   display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-
-  *zoom: 1;
 }
 
 .btn-group-vertical .btn {
@@ -3776,18 +3680,11 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-list .divider {
-  *width: 100%;
   height: 1px;
   margin: 9px 1px;
-  *margin: -5px 0 5px;
   overflow: hidden;
   background-color: #e5e5e5;
   border-bottom: 1px solid #ffffff;
-}
-
-.nav-tabs,
-.nav-pills {
-  *zoom: 1;
 }
 
 .nav-tabs:before,
@@ -3978,10 +3875,6 @@ input[type="submit"].btn.btn-mini {
   border-color: #999999;
 }
 
-.tabbable {
-  *zoom: 1;
-}
-
 .tabbable:before,
 .tabbable:after {
   display: table;
@@ -4107,8 +4000,6 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar {
-  *position: relative;
-  *z-index: 2;
   margin-bottom: 20px;
   overflow: visible;
   color: #777777;
@@ -4130,7 +4021,6 @@ input[type="submit"].btn.btn-mini {
      -moz-border-radius: 4px;
           border-radius: 4px;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
-  *zoom: 1;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
@@ -4204,7 +4094,6 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-form {
   margin-bottom: 0;
-  *zoom: 1;
 }
 
 .navbar-form:before,
@@ -4389,12 +4278,11 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #ededed;
-  *background-color: #e5e5e5;
+  background-image: -moz-linear-gradient(top, #f2f2f2, #e5e5e5);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), to(#e5e5e5));
   background-image: -webkit-linear-gradient(top, #f2f2f2, #e5e5e5);
   background-image: -o-linear-gradient(top, #f2f2f2, #e5e5e5);
   background-image: linear-gradient(to bottom, #f2f2f2, #e5e5e5);
-  background-image: -moz-linear-gradient(top, #f2f2f2, #e5e5e5);
   background-repeat: repeat-x;
   border-color: #e5e5e5 #e5e5e5 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -4637,12 +4525,11 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #0e0e0e;
-  *background-color: #040404;
+  background-image: -moz-linear-gradient(top, #151515, #040404);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#040404));
   background-image: -webkit-linear-gradient(top, #151515, #040404);
   background-image: -o-linear-gradient(top, #151515, #040404);
   background-image: linear-gradient(to bottom, #151515, #040404);
-  background-image: -moz-linear-gradient(top, #151515, #040404);
   background-repeat: repeat-x;
   border-color: #040404 #040404 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -4677,9 +4564,7 @@ input[type="submit"].btn.btn-mini {
 
 .breadcrumb li {
   display: inline-block;
-  *display: inline;
   text-shadow: 0 1px 0 #ffffff;
-  *zoom: 1;
 }
 
 .breadcrumb .divider {
@@ -4697,13 +4582,11 @@ input[type="submit"].btn.btn-mini {
 
 .pagination ul {
   display: inline-block;
-  *display: inline;
   margin-bottom: 0;
   margin-left: 0;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-  *zoom: 1;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -4839,7 +4722,6 @@ input[type="submit"].btn.btn-mini {
   margin: 20px 0;
   text-align: center;
   list-style: none;
-  *zoom: 1;
 }
 
 .pager:before,
@@ -4996,7 +4878,6 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 0 0 6px 6px;
      -moz-border-radius: 0 0 6px 6px;
           border-radius: 0 0 6px 6px;
-  *zoom: 1;
   -webkit-box-shadow: inset 0 1px 0 #ffffff;
      -moz-box-shadow: inset 0 1px 0 #ffffff;
           box-shadow: inset 0 1px 0 #ffffff;
@@ -5249,7 +5130,6 @@ input[type="submit"].btn.btn-mini {
 .thumbnails {
   margin-left: -20px;
   list-style: none;
-  *zoom: 1;
 }
 
 .thumbnails:before,

@@ -8,10 +8,6 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
-.clearfix {
-  *zoom: 1;
-}
-
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -100,7 +96,6 @@
   .row {
     margin-right: -15px;
     margin-left: -15px;
-    *zoom: 1;
   }
   .row:before,
   .row:after {
@@ -372,7 +367,6 @@
   .row {
     margin-right: -10px;
     margin-left: -10px;
-    *zoom: 1;
   }
   .row:before,
   .row:after {

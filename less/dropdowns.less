@@ -8,10 +8,6 @@
 .dropdown {
   position: relative;
 }
-.dropdown-toggle {
-  // The caret makes the toggle a bit too tall in IE7
-  *margin-bottom: -3px;
-}
 .dropdown-toggle:active,
 .open .dropdown-toggle {
   outline: 0;
@@ -50,7 +46,7 @@
   margin: 2px 0 0; // override default ul
   list-style: none;
   background-color: @dropdownBackground;
-  border: 1px solid #ccc; // Fallback for IE7-8
+  border: 1px solid #ccc; // IE8 fallback
   border: 1px solid @dropdownBorder;
   *border-right-width: 2px;
   *border-bottom-width: 2px;
@@ -122,10 +118,6 @@
 // Open state for the dropdown
 // ---------------------------
 .open {
-  // IE7's z-index only goes to the nearest positioned ancestor, which would
-  // make the menu appear below buttons that appeared later on the page
-  *z-index: @zindexDropdown;
-
   & > .dropdown-menu {
     display: block;
   }

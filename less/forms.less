@@ -135,7 +135,6 @@ input[type="color"],
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
-  *margin-top: 0; /* IE7 */
   margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
   cursor: pointer;
@@ -155,8 +154,7 @@ input[type="checkbox"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: @inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size */
-  *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+  height: @inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
   line-height: @inputHeight;
 }
 
@@ -403,7 +401,6 @@ select:focus:required:invalid {
 
 .help-inline {
   display: inline-block;
-  .ie7-inline-block();
   vertical-align: middle;
   padding-left: 5px;
 }
@@ -539,7 +536,7 @@ input.search-query {
   padding-right: 14px;
   padding-right: 4px \9;
   padding-left: 14px;
-  padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
+  padding-left: 4px \9; /* IE8 doesn't have border-radius, so don't indent the padding */
   margin-bottom: 0; // Remove the default margin on all inputs
   .border-radius(15px);
 }
@@ -582,7 +579,6 @@ input.search-query {
   .input-prepend,
   .input-append {
     display: inline-block;
-    .ie7-inline-block();
     margin-bottom: 0;
     vertical-align: middle;
   }
@@ -653,15 +649,7 @@ legend + .control-group {
   }
   // Move over all input controls and content
   .controls {
-    // Super jank IE7 fix to ensure the inputs in .input-append and input-prepend
-    // don't inherit the margin of the parent, in this case .controls
-    *display: inline-block;
-    *padding-left: 20px;
     margin-left: @horizontalComponentOffset;
-    *margin-left: 0;
-    &:first-child {
-      *padding-left: @horizontalComponentOffset;
-    }
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
   .help-block {
