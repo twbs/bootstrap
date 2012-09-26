@@ -28,7 +28,9 @@
 
   var Affix = function (element, options) {
     this.options = $.extend({}, $.fn.affix.defaults, options)
-    this.$window = $(window).on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
+    this.$window = $(window)
+      .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('click.affix.data-api',  $.proxy(function () { setTimeout($.proxy(this.checkPosition, this), 1) }, this))
     this.$element = $(element)
     this.checkPosition()
   }

@@ -49,8 +49,6 @@
 
         if (this.isShown || e.isDefaultPrevented()) return
 
-        $('body').addClass('modal-open')
-
         this.isShown = true
 
         this.escape()
@@ -95,8 +93,6 @@
         if (!this.isShown || e.isDefaultPrevented()) return
 
         this.isShown = false
-
-        $('body').removeClass('modal-open')
 
         this.escape()
 
