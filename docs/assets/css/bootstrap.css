@@ -322,13 +322,11 @@ a:hover {
   margin-left: 8.333333333333332%;
 }
 
-[class*="span"].hide,
-.row-fluid [class*="span"].hide {
+[class*="span"].hide {
   display: none;
 }
 
-[class*="span"].pull-right,
-.row-fluid [class*="span"].pull-right {
+[class*="span"].pull-right {
   float: right;
 }
 
@@ -1252,8 +1250,7 @@ textarea[class*="span"],
   clear: both;
 }
 
-.controls-row [class*="span"],
-.row-fluid .controls-row [class*="span"] {
+.controls-row [class*="span"] {
   float: left;
 }
 
@@ -1935,8 +1932,7 @@ table {
   background-color: #f5f5f5;
 }
 
-table [class*=span],
-.row-fluid table [class*=span] {
+table [class*=span] {
   display: table-cell;
   float: none;
   margin-left: 0;
