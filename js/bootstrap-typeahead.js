@@ -33,6 +33,8 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.getter = this.options.getter || this.getter
+    this.setter = this.options.setter || this.setter
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -44,16 +46,30 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      var val = this.$menu.find('.active').attr('data-value'),
+      item = this.getter(val)
+      
       this.$element
-        .val(this.updater(val))
-        .change()
+          .val(this.updater(item))
+          .change()
       return this.hide()
     }
 
   , updater: function (item) {
       return item
     }
+    
+  , getter: function (pk) {      
+      var source = $.isFunction(this.source) ? this.source() : this.source
+        
+      return $.grep(source, function(item){
+          return item == pk
+      })[0]
+  }
+  
+  , setter: function(item) {
+      return item;
+  }
 
   , show: function () {
       var pos = $.extend({}, this.$element.offset(), {
@@ -136,7 +152,7 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).attr('data-value', that.setter(item))
         i.find('a').html(that.highlighter(item))
         return i[0]
       })
