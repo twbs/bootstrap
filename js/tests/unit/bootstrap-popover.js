@@ -70,7 +70,7 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
-    
+
       test("should respect custom classes", function() {
         $.support.transition = false
         var popover = $('<a href="#">@fat</a>')
@@ -80,7 +80,27 @@ $(function () {
           , content: 'Test'
           , template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
           })
-        
+
+        popover.popover('show')
+
+        ok($('.popover').length, 'popover was inserted')
+        ok($('.popover').hasClass('foobar'), 'custom class is present')
+
+        popover.popover('hide')
+        ok(!$('.popover').length, 'popover was removed')
+        $('#qunit-fixture').empty()
+      })
+
+      test("should respect custom classes through option", function() {
+        $.support.transition = false
+        var popover = $('<a href="#">@fat</a>')
+          .appendTo('#qunit-fixture')
+          .popover({
+            title: 'Test'
+          , content: 'Test'
+          , 'class': 'foobar'
+          })
+
         popover.popover('show')
 
         ok($('.popover').length, 'popover was inserted')
@@ -103,5 +123,5 @@ $(function () {
         ok(popover.data('events').click[0].namespace == 'foo', 'popover still has click.foo')
         ok(!popover.data('events').mouseover && !popover.data('events').mouseout, 'popover does not have any events')
       })
-      
+
 })
