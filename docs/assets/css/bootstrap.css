@@ -5596,28 +5596,38 @@ a.badge:hover {
 
 .carousel-control {
   position: absolute;
-  top: 40%;
-  left: 15px;
-  width: 40px;
-  height: 40px;
-  margin-top: -20px;
-  font-size: 60px;
-  font-weight: 100;
-  line-height: 30px;
-  color: #ffffff;
-  text-align: center;
-  background: #222222;
-  border: 3px solid #ffffff;
-  -webkit-border-radius: 23px;
-     -moz-border-radius: 23px;
-          border-radius: 23px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
 
+.carousel-control.left {
+  background-color: rgba(0, 0, 0, 0.001);
+  background-color: transparent;
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0.001)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
+  background-repeat: repeat-x;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#bf000000', endColorstr='#00000000', GradientType=1);
+}
+
 .carousel-control.right {
-  right: 15px;
+  right: 0;
   left: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.001)), to(rgba(0, 0, 0, 0.75)));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
+  background-repeat: repeat-x;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#00000000', endColorstr='#bf000000', GradientType=1);
 }
 
 .carousel-control:hover {
@@ -5627,23 +5637,37 @@ a.badge:hover {
   filter: alpha(opacity=90);
 }
 
+.carousel-control .control {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: block;
+  margin-top: -35px;
+  margin-left: 35px;
+  font-size: 80px;
+  font-weight: 100;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
 .carousel-caption {
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 15px;
-  background: #333333;
-  background: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+  max-width: 60%;
+  padding: 40px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-.carousel-caption h4,
+.carousel-caption h3,
 .carousel-caption p {
   line-height: 20px;
   color: #ffffff;
 }
 
-.carousel-caption h4 {
+.carousel-caption h3 {
   margin: 0 0 5px;
 }
 
