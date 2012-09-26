@@ -102,11 +102,13 @@
 
   function clearMenus() {
     var $parent = getParent($(toggle))
-    if ( $parent.hasClass('open') )
-  	{
-  		$(toggle).trigger('closed');
-  		$parent.removeClass('open');
-  	}
+    $parent.each(function() {
+  		if ( $(this).hasClass('open') )
+  		{
+  			$(this).children(toggle).trigger('closed');
+  		}
+  	});
+  	$parent.removeClass('open');
   }
 
   function getParent($this) {
