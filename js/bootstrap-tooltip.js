@@ -142,6 +142,9 @@
             tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
             break
         }
+        
+        if (tp.top < 0) tp.top = 0
+        if (tp.left < 0) tp.left = 0
 
         $tip
           .css(tp)
