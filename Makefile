@@ -94,7 +94,7 @@ gh-pages: bootstrap docs
 #
 
 watch:
-	echo "Watching less and js files..."; \
+	@echo "Watching less and js files..."; \
 	supervisor -w less,js -n exit --quiet -e 'less|js' -x make --
 
 #
@@ -102,7 +102,7 @@ watch:
 #
 
 watch-less:
-	echo "Watching less files..."; \
+	@echo "Watching less files..."; \
 	supervisor -w less/ -n exit --quiet -e 'less' -x make --
 
 #
@@ -110,7 +110,7 @@ watch-less:
 #
 
 watch-js:
-	echo "Watching js files..."; \
+	@echo "Watching js files..."; \
 	supervisor -w js/ -n exit --quiet -e 'js' -x make --
 
 #
