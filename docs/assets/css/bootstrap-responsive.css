@@ -504,6 +504,7 @@
     margin-left: 0;
   }
   [class*="span"],
+  .uneditable-input[class*="span"],
   .row-fluid [class*="span"] {
     display: block;
     float: none;
@@ -587,6 +588,16 @@
   .form-horizontal .form-actions {
     padding-right: 10px;
     padding-left: 10px;
+  }
+  .media .pull-left,
+  .media .pull-right {
+    display: block;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .media-object {
+    margin-right: 0;
+    margin-left: 0;
   }
   .modal {
     top: 10px;
