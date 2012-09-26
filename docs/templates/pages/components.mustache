@@ -960,26 +960,22 @@
           <p>{{_i}}To start, navbars are static (not fixed to the top) and include support for a project name and basic navigation. Place one anywhere within a <code>.container</code>, which sets the width of your site and content.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="navbar">
-              <div class="navbar-inner">
-                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                <ul class="nav">
-                  <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                </ul>
-              </div>
+              <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+              <ul class="nav">
+                <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                <li><a href="#">{{_i}}Link{{/i}}</a></li>
+              </ul>
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
-  &lt;div class="navbar-inner"&gt;
-    &lt;a class="brand" href="#"&gt;{{_i}}Title{{/i}}&lt;/a&gt;
-    &lt;ul class="nav"&gt;
-      &lt;li class="active"&gt;&lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;{{_i}}Link{{/i}}&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;{{_i}}Link{{/i}}&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
+  &lt;a class="brand" href="#"&gt;{{_i}}Title{{/i}}&lt;/a&gt;
+  &lt;ul class="nav"&gt;
+    &lt;li class="active"&gt;&lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;{{_i}}Link{{/i}}&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;{{_i}}Link{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
 
@@ -993,9 +989,7 @@
           <p>{{_i}}A simple link to show your brand or project name only requires an anchor tag.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="navbar">
-              <div class="navbar-inner">
-                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-              </div>
+              <a class="brand" href="#">{{_i}}Title{{/i}}</a>
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
@@ -1006,13 +1000,11 @@
           <p>{{_i}}Nav items are simple to add via unordered lists.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="navbar">
-              <div class="navbar-inner">
-                <ul class="nav">
-                  <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                </ul>
-              </div>
+              <ul class="nav">
+                <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                <li><a href="#">{{_i}}Link{{/i}}</a></li>
+              </ul>
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
@@ -1051,12 +1043,10 @@
           <p>{{_i}}To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="navbar">
-              <div class="navbar-inner">
-                <form class="navbar-form pull-left">
-                  <input type="text" class="span2">
-                  <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
-                </form>
-              </div>
+              <form class="navbar-form pull-left">
+                <input type="text" class="span2">
+                <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
+              </form>
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
@@ -1070,11 +1060,9 @@
           <p>{{_i}}For a more customized search form, add <code>.navbar-search</code> to the <code>form</code> and <code>.search-query</code> to the input for specialized styles in the navbar.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="navbar">
-              <div class="navbar-inner">
-                <form class="navbar-search pull-left">
-                  <input type="text" class="search-query" placeholder="{{_i}}Search{{/i}}">
-                </form>
-              </div>
+              <form class="navbar-search pull-left">
+                <input type="text" class="search-query" placeholder="{{_i}}Search{{/i}}">
+              </form>
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
@@ -1117,15 +1105,13 @@
           <p>{{_i}}Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.{{/i}}</p>
           <div class="bs-docs-example bs-navbar-top-example">
             <div class="navbar navbar-fixed-top" style="position: absolute;">
-              <div class="navbar-inner">
-                <div class="container" style="width: auto; padding: 0 20px;">
-                  <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                  <ul class="nav">
-                    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                  </ul>
-                </div>
+              <div class="container" style="width: auto;">
+                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+                <ul class="nav">
+                  <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                </ul>
               </div>
             </div>
           </div>{{! /example }}
@@ -1139,15 +1125,13 @@
           <p>{{_i}}Add <code>.navbar-fixed-bottom</code> instead.{{/i}}</p>
           <div class="bs-docs-example bs-navbar-bottom-example">
             <div class="navbar navbar-fixed-bottom" style="position: absolute;">
-              <div class="navbar-inner">
-                <div class="container" style="width: auto; padding: 0 20px;">
-                  <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                  <ul class="nav">
-                    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                  </ul>
-                </div>
+              <div class="container" style="width: auto;">
+                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+                <ul class="nav">
+                  <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                </ul>
               </div>
             </div>
           </div>{{! /example }}
@@ -1161,15 +1145,13 @@
           <p>{{_i}}Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.{{/i}}</p>
           <div class="bs-docs-example bs-navbar-top-example">
             <div class="navbar navbar-static-top" style="margin: -1px -1px 0;">
-              <div class="navbar-inner">
-                <div class="container" style="width: auto; padding: 0 20px;">
-                  <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                  <ul class="nav">
-                    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                  </ul>
-                </div>
+              <div class="container" style="width: auto;">
+                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+                <ul class="nav">
+                  <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                </ul>
               </div>
             </div>
           </div>{{! /example }}
@@ -1187,75 +1169,71 @@
           <p>{{_i}}To implement a collapsing responsive navbar, wrap your navbar content in a containing div, <code>.nav-collapse.collapse</code>, and add the navbar toggle button, <code>.btn-navbar</code>.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="navbar">
-              <div class="navbar-inner">
-                <div class="container">
-                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </a>
-                  <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                  <div class="nav-collapse collapse">
-                    <ul class="nav">
-                      <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-                      <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                      <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">{{_i}}Action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li class="nav-header">Nav header</li>
-                          <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-                          <li><a href="#">{{_i}}One more separated link{{/i}}</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <form class="navbar-search pull-left" action="">
-                      <input type="text" class="search-query span2" placeholder="Search">
-                    </form>
-                    <ul class="nav pull-right">
-                      <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                      <li class="divider-vertical"></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">{{_i}}Action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div><!-- /.nav-collapse -->
-                </div>
-              </div><!-- /navbar-inner -->
+              <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+                <div class="nav-collapse collapse">
+                  <ul class="nav">
+                    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li class="nav-header">Nav header</li>
+                        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li><a href="#">{{_i}}One more separated link{{/i}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <form class="navbar-search pull-left" action="">
+                    <input type="text" class="search-query span2" placeholder="Search">
+                  </form>
+                  <ul class="nav pull-right">
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
             </div><!-- /navbar -->
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="navbar"&gt;
-  &lt;div class="navbar-inner"&gt;
-    &lt;div class="container"&gt;
+  &lt;div class="container"&gt;
 
-      &lt;!-- {{_i}}.btn-navbar is used as the toggle for collapsed navbar content{{/i}} --&gt;
-      &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;/a&gt;
+    &lt;!-- {{_i}}.btn-navbar is used as the toggle for collapsed navbar content{{/i}} --&gt;
+    &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
+      &lt;span class="icon-bar"&gt;&lt;/span&gt;
+      &lt;span class="icon-bar"&gt;&lt;/span&gt;
+      &lt;span class="icon-bar"&gt;&lt;/span&gt;
+    &lt;/a&gt;
 
-      &lt;!-- {{_i}}Be sure to leave the brand out there if you want it shown{{/i}} --&gt;
-      &lt;a class="brand" href="#"&gt;{{_i}}Project name{{/i}}&lt;/a&gt;
+    &lt;!-- {{_i}}Be sure to leave the brand out there if you want it shown{{/i}} --&gt;
+    &lt;a class="brand" href="#"&gt;{{_i}}Project name{{/i}}&lt;/a&gt;
 
-      &lt;!-- {{_i}}Everything you want hidden at 940px or less, place within here{{/i}} --&gt;
-      &lt;div class="nav-collapse collapse"&gt;
-        &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
-      &lt;/div&gt;
-
+    &lt;!-- {{_i}}Everything you want hidden at 940px or less, place within here{{/i}} --&gt;
+    &lt;div class="nav-collapse collapse"&gt;
+      &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
     &lt;/div&gt;
+
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -1271,52 +1249,50 @@
           <p>{{_i}}Modify the look of the navbar by adding <code>.navbar-inverse</code>.{{/i}}</p>
           <div class="bs-docs-example">
             <div class="navbar navbar-inverse" style="position: static;">
-              <div class="navbar-inner">
-                <div class="container">
-                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".subnav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </a>
-                  <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                  <div class="nav-collapse collapse">
-                    <ul class="nav">
-                      <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-                      <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                      <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">{{_i}}Action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li class="nav-header">Nav header</li>
-                          <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-                          <li><a href="#">{{_i}}One more separated link{{/i}}</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <form class="navbar-search pull-left" action="">
-                      <input type="text" class="search-query span2" placeholder="Search">
-                    </form>
-                    <ul class="nav pull-right">
-                      <li><a href="#">{{_i}}Link{{/i}}</a></li>
-                      <li class="divider-vertical"></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">{{_i}}Action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Another action{{/i}}</a></li>
-                          <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div><!-- /.nav-collapse -->
-                </div>
-              </div><!-- /navbar-inner -->
+              <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".subnav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">{{_i}}Title{{/i}}</a>
+                <div class="nav-collapse collapse">
+                  <ul class="nav">
+                    <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li class="nav-header">Nav header</li>
+                        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li><a href="#">{{_i}}One more separated link{{/i}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <form class="navbar-search pull-left" action="">
+                    <input type="text" class="search-query span2" placeholder="Search">
+                  </form>
+                  <ul class="nav pull-right">
+                    <li><a href="#">{{_i}}Link{{/i}}</a></li>
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.nav-collapse -->
+              </div>
             </div><!-- /navbar -->
           </div>{{! /example }}
 <pre class="prettyprint linenums">

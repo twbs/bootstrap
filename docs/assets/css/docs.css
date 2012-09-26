@@ -28,6 +28,7 @@ h3 code {
 
 body > .navbar {
   font-size: 13px;
+  background-color: rgba(0,0,0,.9);
 }
 
 /* Change the docs' brand */

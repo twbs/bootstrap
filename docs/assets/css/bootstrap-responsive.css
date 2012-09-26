@@ -590,8 +590,8 @@
   .navbar-fixed-bottom {
     margin-top: 20px;
   }
-  .navbar-fixed-top .navbar-inner,
-  .navbar-fixed-bottom .navbar-inner {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
     padding: 5px;
   }
   .navbar .container {
@@ -711,7 +711,7 @@
   .navbar .btn-navbar {
     display: block;
   }
-  .navbar-static .navbar-inner {
+  .navbar-static {
     padding-right: 10px;
     padding-left: 10px;
   }
