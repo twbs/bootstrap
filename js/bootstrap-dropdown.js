@@ -54,6 +54,7 @@
       if (!isActive) {
         $parent.toggleClass('open')
         $this.focus()
+        $this.trigger('opened')
       }
 
       return false
@@ -100,8 +101,12 @@
   }
 
   function clearMenus() {
-    getParent($(toggle))
-      .removeClass('open')
+    var $parent = getParent($(toggle))
+    if ( $parent.hasClass('open') )
+  	{
+  		$(toggle).trigger('closed');
+  		$parent.removeClass('open');
+  	}
   }
 
   function getParent($this) {
