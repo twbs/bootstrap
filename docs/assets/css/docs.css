@@ -26,10 +26,6 @@ h3 code {
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 
-body > .navbar {
-  background-color: rgba(0,0,0,.9);
-}
-
 /* Change the docs' brand */
 body > .navbar .brand {
   padding-right: 0;
