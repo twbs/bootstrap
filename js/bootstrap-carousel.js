@@ -41,7 +41,7 @@
       if (!e) this.paused = false
       this.options.interval
         && !this.paused
-        && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+        && (this.timeout = setTimeout($.proxy(this.next, this), this.options.interval))
       return this
     }
 
@@ -72,8 +72,8 @@
         this.$element.trigger($.support.transition.end)
         this.cycle()
       }
-      clearInterval(this.interval)
-      this.interval = null
+      clearTimeout(this.timeout)
+      this.timeout = null
       return this
     }
 
@@ -90,7 +90,7 @@
   , slide: function (type, next) {
       var $active = this.$element.find('.item.active')
         , $next = next || $active[type]()
-        , isCycling = this.interval
+        , isCycling = this.timeout
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
@@ -118,6 +118,9 @@
           $active.removeClass(['active', direction].join(' '))
           that.sliding = false
           setTimeout(function () { that.$element.trigger('slid') }, 0)
+          
+          clearTimeout(that.timeout)
+          that.timeout = setTimeout($.proxy(that.next, that), that.options.interval)
         })
       } else {
         this.$element.trigger(e)
