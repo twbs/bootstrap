@@ -256,13 +256,41 @@ textarea {
 // INPUT SIZES
 // -----------
 
-// General classes for quick sizes
-.input-mini       { width: 60px; }
-.input-small      { width: 90px; }
-.input-medium     { width: 150px; }
-.input-large      { width: 210px; }
-.input-xlarge     { width: 270px; }
-.input-xxlarge    { width: 530px; }
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  &.input-large {
+    padding: @paddingLarge;
+    padding-left: 14px;
+    padding-right: 14px; // TODO: Resolve this override
+    font-size: @fontSizeLarge;
+    .border-radius(@borderRadiusLarge);
+  }
+  &.input-small {
+    padding: @paddingSmall;
+    font-size: @fontSizeSmall;
+    .border-radius(@borderRadiusSmall);
+  }
+  &.input-mini {
+    padding: @paddingMini;
+    font-size: @fontSizeMini;
+    .border-radius(@borderRadiusSmall);
+  }
+}
 
 
 
