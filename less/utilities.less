@@ -3,7 +3,12 @@
 // --------------------------------------------------
 
 
-// Quick floats
+// Floats
+// -------------------------
+
+.clear {
+  .clearfix();
+}
 .pull-right {
   float: right;
 }
@@ -11,20 +16,35 @@
   float: left;
 }
 
+
 // Toggling content
+// -------------------------
+
 .hide {
   display: none;
 }
 .show {
   display: block;
 }
-
-// Visibility
 .invisible {
   visibility: hidden;
 }
+.text-hide {
+  .hide-text();
+}
+
 
 // For Affix plugin
+// -------------------------
+
 .affix {
   position: fixed;
+}
+
+
+// Forms
+// -------------------------
+
+.control-block-level {
+  .input-block-level();
 }

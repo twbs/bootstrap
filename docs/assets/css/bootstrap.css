@@ -125,34 +125,6 @@ textarea {
   vertical-align: top;
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -5703,6 +5675,17 @@ a.badge:hover {
   color: inherit;
 }
 
+.clear:before,
+.clear:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clear:after {
+  clear: both;
+}
+
 .pull-right {
   float: right;
 }
@@ -5723,6 +5706,23 @@ a.badge:hover {
   visibility: hidden;
 }
 
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
 .affix {
   position: fixed;
+}
+
+.control-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
