@@ -43,14 +43,9 @@
   .container {
     width: auto;
   }
-  // Undo negative margin on rows and thumbnails
-  .row,
-  .thumbnails {
+  // Undo negative margin on rows
+  .row {
     margin-left: 0;
-  }
-  .thumbnails > li {
-    float: none;
-    margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
   }
   // Make all grid-sized elements block level again
   [class*="span"],
@@ -60,20 +55,12 @@
     display: block;
     width: 100%;
     margin-left: 0;
-    .box-sizing(border-box);
-  }
-  .span12 {
-    width: 100%;
-    .box-sizing(border-box);
   }
 
 
   // FORM FIELDS
   // -----------
   // Make span* classes full width
-  .input-large,
-  .input-xlarge,
-  .input-xxlarge,
   input[class*="span"],
   select[class*="span"],
   textarea[class*="span"],

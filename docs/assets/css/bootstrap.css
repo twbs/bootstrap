@@ -5173,32 +5173,6 @@ input[type="submit"].btn::-moz-focus-inner {
   border-width: 11px 0 11px 11px;
 }
 
-.thumbnails {
-  margin-left: -20px;
-  list-style: none;
-}
-
-.thumbnails:before,
-.thumbnails:after {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-
-.thumbnails:after {
-  clear: both;
-}
-
-.row-fluid .thumbnails {
-  margin-left: 0;
-}
-
-.thumbnails > li {
-  float: left;
-  margin-bottom: 20px;
-  margin-left: 20px;
-}
-
 .thumbnail {
   display: block;
   padding: 4px;

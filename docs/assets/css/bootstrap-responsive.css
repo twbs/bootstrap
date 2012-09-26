@@ -355,12 +355,6 @@
   uneditable-input.offset1 {
     margin-left: 9.615384615384613%;
   }
-  .thumbnails {
-    margin-left: -30px;
-  }
-  .thumbnails > li {
-    margin-left: 30px;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -486,12 +480,7 @@
   .container {
     width: auto;
   }
-  .row,
-  .thumbnails {
-    margin-left: 0;
-  }
-  .thumbnails > li {
-    float: none;
+  .row {
     margin-left: 0;
   }
   [class*="span"],
@@ -500,19 +489,7 @@
     float: none;
     width: 100%;
     margin-left: 0;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
   }
-  .span12 {
-    width: 100%;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-  }
-  .input-large,
-  .input-xlarge,
-  .input-xxlarge,
   input[class*="span"],
   select[class*="span"],
   textarea[class*="span"],
