@@ -55,7 +55,7 @@
         relatedTarget: previous
       })
 
-      $this.trigger(e)
+      $this.triggerHandler(e)
 
       if (e.isDefaultPrevented()) return
 
@@ -63,7 +63,7 @@
 
       this.activate($this.parent('li'), $ul)
       this.activate($target, $target.parent(), function () {
-        $this.trigger({
+        $this.triggerHandler({
           type: 'shown'
         , relatedTarget: previous
         })

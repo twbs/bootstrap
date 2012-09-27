@@ -97,10 +97,10 @@
         , complete = function () {
             if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
-            that.$element.trigger(completeEvent)
+            that.$element.triggerHandler(completeEvent)
           }
 
-      this.$element.trigger(startEvent)
+      this.$element.triggerHandler(startEvent)
 
       if (startEvent.isDefaultPrevented()) return
 

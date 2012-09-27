@@ -112,7 +112,7 @@
           active = active.closest('li.dropdown').addClass('active')
         }
 
-        active.trigger('activate')
+        active.triggerHandler('activate')
       }
 
   }
