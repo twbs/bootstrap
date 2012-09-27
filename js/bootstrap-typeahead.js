@@ -298,7 +298,7 @@
   * ================== */
 
   $(function () {
-    $('body').on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
+    $(document).on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
       var $this = $(this)
       if ($this.data('typeahead')) return
       e.preventDefault()
