@@ -118,8 +118,11 @@ $(function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
           .tooltip({ delay: 150 })
+          
         stop()
+        
         tooltip.trigger('mouseenter')
+        
         setTimeout(function () {
           ok(!$(".tooltip").is('.fade.in'), 'tooltip is not faded in')
         }, 100)
@@ -127,6 +130,22 @@ $(function () {
           ok($(".tooltip").is('.fade.in'), 'tooltip has faded in')
           start()
         }, 200)
+      })
+      
+      test("should show the entire tooltip within the bounds of the viewport", function () {
+        var tooltip = $('<a href="#" rel="tooltip" data-placement="left" title="Test tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .css({'position': 'absolute', 'top': '0', 'left': '0'})
+          .tooltip()
+          
+        stop()
+        
+        tooltip.trigger('mouseenter')
+        
+        setTimeout(function () {
+          ok($('.tooltip').css('top') === '0px' && $('.tooltip').css('left') === '0px', 'tooltip within viewport')
+          start()
+        }, 300 )
       })
 
       test("should destroy tooltip", function () {
