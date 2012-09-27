@@ -3213,6 +3213,10 @@ button.close {
           border-radius: 3px;
 }
 
+.btn-mini .icon {
+  margin-top: -1px;
+}
+
 .btn-block {
   display: block;
   width: 100%;
