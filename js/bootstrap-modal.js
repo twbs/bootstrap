@@ -45,7 +45,7 @@
         var that = this
           , e = $.Event('show')
 
-        this.$element.trigger(e)
+        this.$element.triggerHandler(e)
 
         if (this.isShown || e.isDefaultPrevented()) return
 
@@ -77,8 +77,8 @@
           that.enforceFocus()
 
           transition ?
-            that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
-            that.$element.trigger('shown')
+            that.$element.one($.support.transition.end, function () { that.$element.triggerHandler('shown') }) :
+            that.$element.triggerHandler('shown')
 
         })
       }
@@ -90,7 +90,7 @@
 
         e = $.Event('hide')
 
-        this.$element.trigger(e)
+        this.$element.triggerHandler(e)
 
         if (!this.isShown || e.isDefaultPrevented()) return
 
@@ -147,7 +147,7 @@
     , hideModal: function (that) {
         this.$element
           .hide()
-          .trigger('hidden')
+          .triggerHandler('hidden')
 
         this.backdrop()
       }
