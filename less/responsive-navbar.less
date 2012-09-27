@@ -99,7 +99,7 @@
     top: auto;
     left: auto;
     float: none;
-    display: block;
+    display: none;
     max-width: none;
     margin: 0 15px;
     padding: 0;
@@ -108,6 +108,10 @@
     .border-radius(0);
     .box-shadow(none);
   }
+  .nav-collapse .open > .dropdown-menu { 
+    display: block; 
+  }
+
   .nav-collapse .dropdown-menu:before,
   .nav-collapse .dropdown-menu:after {
     display: none;
