@@ -13,14 +13,9 @@ $(function () {
       test("should listen to an input", function () {
         var $input = $('<input />')
         $input.typeahead()
-        ok($input.data('events').blur, 'has a blur event')
-        ok($input.data('events').keypress, 'has a keypress event')
-        ok($input.data('events').keyup, 'has a keyup event')
-        if ($.browser.webkit || $.browser.msie) {
-          ok($input.data('events').keydown, 'has a keydown event')
-        } else {
-          ok($input.data('events').keydown, 'does not have a keydown event')
-        }
+        ok($._data($input[0], 'events').blur, 'has a blur event')
+        ok($._data($input[0], 'events').keypress, 'has a keypress event')
+        ok($._data($input[0], 'events').keyup, 'has a keyup event')
       })
 
       test("should create a menu", function () {
@@ -32,8 +27,8 @@ $(function () {
         var $input = $('<input />')
           , $menu = $input.typeahead().data('typeahead').$menu
 
-        ok($menu.data('events').mouseover, 'has a mouseover(pseudo: mouseenter)')
-        ok($menu.data('events').click, 'has a click')
+        ok($._data($menu[0], 'events').mouseover, 'has a mouseover(pseudo: mouseenter)')
+        ok($._data($menu[0], 'events').click, 'has a click')
       })
 
       test("should show menu when query entered", function () {

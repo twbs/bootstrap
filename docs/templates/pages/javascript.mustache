@@ -3,7 +3,7 @@
 <header class="jumbotron subhead">
   <div class="container">
     <h1>{{_i}}JavaScript for Bootstrap{{/i}}</h1>
-    <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.{{/i}}
+    <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 14 custom jQuery plugins.{{/i}}
   </div>
 </header>
 
@@ -28,6 +28,7 @@
           <li><a href="#carousel"><i class="icon-chevron-right"></i> {{_i}}Carousel{{/i}}</a></li>
           <li><a href="#typeahead"><i class="icon-chevron-right"></i> {{_i}}Typeahead{{/i}}</a></li>
           <li><a href="#affix"><i class="icon-chevron-right"></i> {{_i}}Affix{{/i}}</a></li>
+          <li><a href="#pagination"><i class="icon-chevron-right"></i> {{_i}}Pagination{{/i}}</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -49,7 +50,7 @@
           <p>{{_i}}That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:{{/i}}
           <pre class="prettyprint linenums">$('body').off('.data-api')</pre>
 
-          <p>{{_i}}Alternatively, to target a specific plugin, just include the plugins name as a namespace along with the data-api namespace like this:{{/i}}</p>
+          <p>{{_i}}Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:{{/i}}</p>
           <pre class="prettyprint linenums">$('body').off('.alert.data-api')</pre>
 
           <h3>{{_i}}Programmatic API{{/i}}</h3>
@@ -61,10 +62,10 @@ $("#myModal").modal()                       // initialized with defaults
 $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
 $("#myModal").modal('show')                // initializes and invokes show immediately</p>
 </pre>
-          <p>{{_i}}Each plugin also exposes it's raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.{{/i}}</p>
+          <p>{{_i}}Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.{{/i}}</p>
 
           <h3>{{_i}}Events{{/i}}</h3>
-          <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and it's past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
+          <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
           <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
@@ -183,7 +184,7 @@ $('#myModal').on('show', function (e) {
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;{{_i}}Launch demo modal{{/i}}&lt;/a&gt;
 
 &lt;-- Modal --&gt;
-&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
+&lt;div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
@@ -436,8 +437,8 @@ $('#myModal').on('hidden', function () {
           <p><em>{{_i}}None{{/i}}</em></p>
 
           <h3>{{_i}}Methods{{/i}}</h3>
-          <h4>$().dropdown()</h4>
-          <p>{{_i}}A programatic api for activating menus for a given navbar or tabbed navigation.{{/i}}</p>
+          <h4>$().dropdown('toggle')</h4>
+          <p>{{_i}}A programatic api for toggling menus for a given navbar or tabbed navigation.{{/i}}</p>
         </section>
 
 
@@ -734,7 +735,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <tr>
                <td>{{_i}}html{{/i}}</td>
                <td>{{_i}}boolean{{/i}}</td>
-               <td>true</td>
+               <td>false</td>
                <td>{{_i}}Insert html into the tooltip. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.{{/i}}</td>
              </tr>
              <tr>
@@ -855,6 +856,16 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Click to toggle popover{{/i}}</a>
         </div>
 
+        <h4>{{_i}}Four directions{{/i}}</h4>
+        <div class="bs-docs-example tooltip-demo">
+          <ul class="bs-docs-tooltip-examples">
+            <li><a href="#" class="btn" rel="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
+          </ul>
+        </div>{{! /example }}
+
 
         <hr class="bs-docs-separator">
 
@@ -884,7 +895,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            <tr>
              <td>{{_i}}html{{/i}}</td>
              <td>{{_i}}boolean{{/i}}</td>
-             <td>true</td>
+             <td>false</td>
              <td>{{_i}}Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.{{/i}}</td>
            </tr>
            <tr>
@@ -1607,6 +1618,113 @@ $('[data-spy="affix"]').each(function () {
           </table>
         </section>
 
+          <!-- Pagination
+          ================================================== -->
+          <section id="pagination">
+            <div class="page-header">
+              <h1>{{_i}}Pagination{{/i}} <small>bootstrap-pagination.js</small></h1>
+            </div>
+
+            <p>{{_i}}The pagination javascript component is a simple client-side feature that leverages existing bootstrap pagination components.{{/i}}</p>
+
+            <h2>{{_i}}Simple Example{{/i}}</h2>
+
+            <div class="bs-docs-example" style="background-color: #f5f5f5;">
+              <div class="pagination" id="pager" data-paged="#pagedContent" data-page-size="4"></div>
+
+              <ul id="pagedContent">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+                <li>Item 6</li>
+                <li>Item 7</li>
+                <li>Item 8</li>
+                <li>Item 9</li>
+                <li>Item 10</li>
+                <li>Item 11</li>
+                <li>Item 12</li>
+              </ul>
+            </div>{{! /example }}
+  <pre class="prettyprint linenums">
+&lt;div class=&quot;pagination&quot; id=&quot;pager&quot; data-paged=&quot;#pagedContent&quot; data-page-size=&quot;4&quot;&gt;&lt;/div&gt;
+
+&lt;ul id=&quot;pagedContent&quot;&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+  &lt;li&gt;Item 4&lt;/li&gt;
+  &lt;li&gt;Item 5&lt;/li&gt;
+  &lt;li&gt;Item 6&lt;/li&gt;
+  &lt;li&gt;Item 7&lt;/li&gt;
+  &lt;li&gt;Item 8&lt;/li&gt;
+  &lt;li&gt;Item 9&lt;/li&gt;
+  &lt;li&gt;Item 10&lt;/li&gt;
+  &lt;li&gt;Item 11&lt;/li&gt;
+  &lt;li&gt;Item 12&lt;/li&gt;
+&lt;/ul&gt;
+  </pre>
+
+            <hr class="bs-docs-separator">
+
+            <h2>{{_i}}Usage{{/i}}</h2>
+
+            <h3>{{_i}}Via data attributes{{/i}}</h3>
+            <p>{{_i}}To enable client-side pagination on an existing pagination component, just add <code>data-paged=".cssSelector"</code> to target the container of child elements to page through.{{/i}}</p>
+
+            <pre class="prettyprint linenums">&lt;div class="pagination" data-paged="#pagedContent" data-page-size="4"&gt;&lt;/div&gt;</pre>
+
+            <h3>{{_i}}Via JavaScript{{/i}}</h3>
+            <p>{{_i}}Call the pagination plugin via JavaScript:{{/i}}</p>
+            <pre class="prettyprint linenums">$('#pager').pagination({paged: '#pagedContent'})</pre>
+
+            <h3>{{_i}}Methods{{/i}}</h3>
+            <h4>.pagination('next')</h4>
+            <p>{{_i}}Change the state of the pagination component to the next page (if available) as well as scroll the content forward.{{/i}}</p>
+
+            <h4>.pagination('prev')</h4>
+            <p>{{_i}}Change the state of the pagination component to the previous page (if available) as well as scroll the content backward.{{/i}}</p>
+
+          <h3>{{_i}}Options{{/i}}</h3>
+          <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-page-size="4"</code>.{{/i}}</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">{{_i}}Name{{/i}}</th>
+               <th style="width: 100px;">{{_i}}type{{/i}}</th>
+               <th style="width: 50px;">{{_i}}default{{/i}}</th>
+               <th>{{_i}}description{{/i}}</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>{{_i}}pageSize{{/i}}</td>
+               <td>{{_i}}number{{/i}}</td>
+               <td>{{_i}}5{{/i}}</td>
+               <td>{{_i}}The number of elements to display per page.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}showArrows{{/i}}</td>
+               <td>{{_i}}boolean{{/i}}</td>
+               <td>{{_i}}true{{/i}}</td>
+               <td>{{_i}}When enabled, the next and previous arrows are displayed in the pagination component.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}prevText{{/i}}</td>
+               <td>{{_i}}string{{/i}}</td>
+               <td>{{_i}}&laquo;{{/i}}</td>
+               <td>{{_i}}The text to show in the previous link when <b>showArrows</b> is enabled.{{/i}}</td>
+             </tr>
+             <tr>
+               <td>{{_i}}nextText{{/i}}</td>
+               <td>{{_i}}string{{/i}}</td>
+               <td>{{_i}}&raquo;{{/i}}</td>
+               <td>{{_i}}The text to show in the next link when <b>showArrows</b> is enabled.{{/i}}</td>
+             </tr>
+            </tbody>
+          </table>
+        </section>
 
 
       </div>{{! /span9 }}
