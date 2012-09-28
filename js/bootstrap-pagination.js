@@ -145,4 +145,14 @@
   , nextText: '&raquo'
   })
 
+  /* PAGINATION DATA-API
+  * ==================== */
+
+  $(function () {
+    $('[data-paged]').each(function(){
+      var $pager = $(this);
+      $pager.pagination($pager.data());
+    });
+  })
+  
 }(window.jQuery);
