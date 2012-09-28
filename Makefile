@@ -90,12 +90,28 @@ gh-pages: bootstrap docs
 	cp -r docs/* ../bootstrap-gh-pages
 
 #
-# WATCH LESS FILES
+# WATCH FILES
 #
 
 watch:
-	echo "Watching less files..."; \
-	watchr -e "watch('less/.*\.less') { system 'make' }"
+	@echo "Watching less and js files..."; \
+	supervisor -w less,js -n exit --quiet -e 'less|js' -x make --
+
+#
+# WATCH LESS FILES
+#
+
+watch-less:
+	@echo "Watching less files..."; \
+	supervisor -w less/ -n exit --quiet -e 'less' -x make --
+
+#
+# WATCH JS FILES
+#
+
+watch-js:
+	@echo "Watching js files..."; \
+	supervisor -w js/ -n exit --quiet -e 'js' -x make --
 
 #
 # HAUNT GITHUB ISSUES 4 FAT & MDO ONLY (O_O  )
