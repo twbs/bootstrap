@@ -45,6 +45,19 @@
   background-image: url("@{iconWhiteSpritePath}");
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5),only screen and (min-resolution:200dpi)
+{
+  [class^="icon-"],
+  [class*=" icon-"]{
+    background-image:url("@{iconSprite2xPath}");
+    background-size:469px 159px;
+  }
+  .icon-white {
+    background-image: url("iconWhiteSprite2xPath");
+  }
+}
+
+
 .icon-glass              { background-position: 0      0; }
 .icon-music              { background-position: -24px  0; }
 .icon-search             { background-position: -48px  0; }
