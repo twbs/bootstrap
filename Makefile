@@ -28,7 +28,7 @@ build:
 	@echo "Compiling documentation...                  ${CHECK} Done"
 	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
 	@uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
-	@echo "/**\n* Bootstrap.js v2.1.1 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
+	@echo "/**\n* Bootstrap.js v2.1.2 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
 	@echo "Compiling and minifying javascript...       ${CHECK} Done"
@@ -90,12 +90,28 @@ gh-pages: bootstrap docs
 	cp -r docs/* ../bootstrap-gh-pages
 
 #
-# WATCH LESS FILES
+# WATCH FILES
 #
 
 watch:
-	echo "Watching less files..."; \
-	watchr -e "watch('less/.*\.less') { system 'make' }"
+	@echo "Watching less and js files..."; \
+	supervisor -w less,js -n exit --quiet -e 'less|js' -x make --
+
+#
+# WATCH LESS FILES
+#
+
+watch-less:
+	@echo "Watching less files..."; \
+	supervisor -w less/ -n exit --quiet -e 'less' -x make --
+
+#
+# WATCH JS FILES
+#
+
+watch-js:
+	@echo "Watching js files..."; \
+	supervisor -w js/ -n exit --quiet -e 'js' -x make --
 
 #
 # HAUNT GITHUB ISSUES 4 FAT & MDO ONLY (O_O  )

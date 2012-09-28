@@ -1,5 +1,5 @@
 /* =========================================================
- * bootstrap-modal.js v2.1.1
+ * bootstrap-modal.js v2.1.2
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
  * Copyright 2012 Twitter, Inc.
@@ -49,8 +49,6 @@
 
         if (this.isShown || e.isDefaultPrevented()) return
 
-        $('body').addClass('modal-open')
-
         this.isShown = true
 
         this.escape()
@@ -95,8 +93,6 @@
         if (!this.isShown || e.isDefaultPrevented()) return
 
         this.isShown = false
-
-        $('body').removeClass('modal-open')
 
         this.escape()
 

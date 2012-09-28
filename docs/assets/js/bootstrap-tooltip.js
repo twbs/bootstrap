@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-tooltip.js v2.1.1
+ * bootstrap-tooltip.js v2.1.2
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
@@ -121,7 +121,7 @@
         $tip
           .remove()
           .css({ top: 0, left: 0, display: 'block' })
-          .appendTo(inside ? this.$element : document.body)
+          .insertAfter(this.$element)
 
         pos = this.getPosition(inside)
 
@@ -144,7 +144,7 @@
         }
 
         $tip
-          .css(tp)
+          .offset(tp)
           .addClass(placement)
           .addClass('in')
       }
@@ -269,7 +269,7 @@
   , trigger: 'hover'
   , title: ''
   , delay: 0
-  , html: true
+  , html: false
   }
 
 }(window.jQuery);
