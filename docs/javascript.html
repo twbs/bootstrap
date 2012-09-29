@@ -74,7 +74,7 @@
 <header class="jumbotron subhead">
   <div class="container">
     <h1>JavaScript for Bootstrap</h1>
-    <p class="lead">Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.
+    <p class="lead">Bring Bootstrap's components to life&mdash;now with 14 custom jQuery plugins.
   </div>
 </header>
 
@@ -99,6 +99,7 @@
           <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
           <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
           <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
+          <li><a href="#pagination"><i class="icon-chevron-right"></i> Pagination</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -1687,6 +1688,113 @@ $('[data-spy="affix"]').each(function () {
           </table>
         </section>
 
+          <!-- Pagination
+          ================================================== -->
+          <section id="pagination">
+            <div class="page-header">
+              <h1>Pagination <small>bootstrap-pagination.js</small></h1>
+            </div>
+
+            <p>The pagination javascript component is a simple client-side feature that leverages existing bootstrap pagination components.</p>
+
+            <h2>Simple Example</h2>
+
+            <div class="bs-docs-example" style="background-color: #f5f5f5;">
+              <div class="pagination" id="pager" data-paged="#pagedContent" data-page-size="4"></div>
+
+              <ul id="pagedContent">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+                <li>Item 6</li>
+                <li>Item 7</li>
+                <li>Item 8</li>
+                <li>Item 9</li>
+                <li>Item 10</li>
+                <li>Item 11</li>
+                <li>Item 12</li>
+              </ul>
+            </div>
+  <pre class="prettyprint linenums">
+&lt;div class=&quot;pagination&quot; id=&quot;pager&quot; data-paged=&quot;#pagedContent&quot; data-page-size=&quot;4&quot;&gt;&lt;/div&gt;
+
+&lt;ul id=&quot;pagedContent&quot;&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+  &lt;li&gt;Item 4&lt;/li&gt;
+  &lt;li&gt;Item 5&lt;/li&gt;
+  &lt;li&gt;Item 6&lt;/li&gt;
+  &lt;li&gt;Item 7&lt;/li&gt;
+  &lt;li&gt;Item 8&lt;/li&gt;
+  &lt;li&gt;Item 9&lt;/li&gt;
+  &lt;li&gt;Item 10&lt;/li&gt;
+  &lt;li&gt;Item 11&lt;/li&gt;
+  &lt;li&gt;Item 12&lt;/li&gt;
+&lt;/ul&gt;
+  </pre>
+
+            <hr class="bs-docs-separator">
+
+            <h2>Usage</h2>
+
+            <h3>Via data attributes</h3>
+            <p>To enable client-side pagination on an existing pagination component, just add <code>data-paged=".cssSelector"</code> to target the container of child elements to page through.</p>
+
+            <pre class="prettyprint linenums">&lt;div class="pagination" data-paged="#pagedContent" data-page-size="4"&gt;&lt;/div&gt;</pre>
+
+            <h3>Via JavaScript</h3>
+            <p>Call the pagination plugin via JavaScript:</p>
+            <pre class="prettyprint linenums">$('#pager').pagination({paged: '#pagedContent'})</pre>
+
+            <h3>Methods</h3>
+            <h4>.pagination('next')</h4>
+            <p>Change the state of the pagination component to the next page (if available) as well as scroll the content forward.</p>
+
+            <h4>.pagination('prev')</h4>
+            <p>Change the state of the pagination component to the previous page (if available) as well as scroll the content backward.</p>
+
+          <h3>Options</h3>
+          <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-page-size="4"</code>.</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+             <tr>
+               <th style="width: 100px;">Name</th>
+               <th style="width: 100px;">type</th>
+               <th style="width: 50px;">default</th>
+               <th>description</th>
+             </tr>
+            </thead>
+            <tbody>
+             <tr>
+               <td>pageSize</td>
+               <td>number</td>
+               <td>5</td>
+               <td>The number of elements to display per page.</td>
+             </tr>
+             <tr>
+               <td>showArrows</td>
+               <td>boolean</td>
+               <td>true</td>
+               <td>When enabled, the next and previous arrows are displayed in the pagination component.</td>
+             </tr>
+             <tr>
+               <td>prevText</td>
+               <td>string</td>
+               <td>&laquo;</td>
+               <td>The text to show in the previous link when <b>showArrows</b> is enabled.</td>
+             </tr>
+             <tr>
+               <td>nextText</td>
+               <td>string</td>
+               <td>&raquo;</td>
+               <td>The text to show in the next link when <b>showArrows</b> is enabled.</td>
+             </tr>
+            </tbody>
+          </table>
+        </section>
 
 
       </div>
@@ -1733,6 +1841,7 @@ $('[data-spy="affix"]').each(function () {
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
     <script src="assets/js/bootstrap-affix.js"></script>
+    <script src="assets/js/bootstrap-pagination.js"></script>
     <script src="assets/js/application.js"></script>
 
 
