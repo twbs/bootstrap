@@ -350,15 +350,6 @@
 // BACKGROUNDS
 // --------------------------------------------------
 
-// Gradient Bar Colors for buttons and alerts
-.gradientBar(@primaryColor, @secondaryColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
-  color: @textColor;
-  text-shadow: @textShadow;
-  #gradient > .vertical(@primaryColor, @secondaryColor);
-  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-}
-
 // Gradients
 #gradient {
   .horizontal(@startColor: #555, @endColor: #333) {
@@ -440,8 +431,11 @@
 // Button backgrounds
 // ------------------
 .buttonBackground(@startColor, @endColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
-  // gradientBar will set the background to a pleasing blend of these, to support IE<=*9
-  .gradientBar(@startColor, @endColor, @textColor, @textShadow);
+  color: @textColor;
+  text-shadow: @textShadow;
+  #gradient > .vertical(@startColor, @endColor);
+  border-color: @endColor @endColor darken(@endColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
   .reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
@@ -456,6 +450,7 @@
     background-color: darken(@endColor, 10%) e("\9");
   }
 }
+
 
 // Navbar vertical align
 // -------------------------
