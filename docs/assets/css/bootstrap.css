@@ -1329,6 +1329,11 @@ textarea.span1,
   float: left;
 }
 
+.controls-row .checkbox[class*="span"],
+.controls-row .radio[class*="span"] {
+  padding-top: 5px;
+}
+
 input[disabled],
 select[disabled],
 textarea[disabled],
