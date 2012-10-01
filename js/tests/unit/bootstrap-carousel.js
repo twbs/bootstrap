@@ -10,7 +10,7 @@ $(function () {
         ok($(document.body).carousel()[0] == document.body, 'document.body returned')
       })
 
-      test("should not fire sliden when slide is prevented", function () {
+      test("should not fire slid event when slide is prevented", function () {
         $.support.transition = false
         stop()
         $('<div class="carousel"/>')
