@@ -2917,7 +2917,6 @@ button.close {
 .btn[disabled] {
   color: #333333;
   background-color: #e6e6e6;
-  *background-color: #d9d9d9;
 }
 
 .btn:active,
@@ -3048,7 +3047,6 @@ input[type="button"].btn-block {
 .btn-primary[disabled] {
   color: #ffffff;
   background-color: #0044cc;
-  *background-color: #003bb3;
 }
 
 .btn-primary:active,
@@ -3079,7 +3077,6 @@ input[type="button"].btn-block {
 .btn-warning[disabled] {
   color: #ffffff;
   background-color: #f89406;
-  *background-color: #df8505;
 }
 
 .btn-warning:active,
@@ -3110,7 +3107,6 @@ input[type="button"].btn-block {
 .btn-danger[disabled] {
   color: #ffffff;
   background-color: #bd362f;
-  *background-color: #a9302a;
 }
 
 .btn-danger:active,
@@ -3141,7 +3137,6 @@ input[type="button"].btn-block {
 .btn-success[disabled] {
   color: #ffffff;
   background-color: #51a351;
-  *background-color: #499249;
 }
 
 .btn-success:active,
@@ -3172,7 +3167,6 @@ input[type="button"].btn-block {
 .btn-info[disabled] {
   color: #ffffff;
   background-color: #2f96b4;
-  *background-color: #2a85a0;
 }
 
 .btn-info:active,
@@ -3203,7 +3197,6 @@ input[type="button"].btn-block {
 .btn-inverse[disabled] {
   color: #ffffff;
   background-color: #222222;
-  *background-color: #151515;
 }
 
 .btn-inverse:active,
@@ -3341,30 +3334,19 @@ input[type="button"].btn-block {
 }
 
 .btn-group > .btn + .dropdown-toggle {
-  *padding-top: 5px;
   padding-right: 8px;
-  *padding-bottom: 5px;
   padding-left: 8px;
   -webkit-box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
           box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-group > .btn-mini + .dropdown-toggle {
-  *padding-top: 2px;
   padding-right: 5px;
-  *padding-bottom: 2px;
   padding-left: 5px;
 }
 
-.btn-group > .btn-small + .dropdown-toggle {
-  *padding-top: 5px;
-  *padding-bottom: 4px;
-}
-
 .btn-group > .btn-large + .dropdown-toggle {
-  *padding-top: 7px;
   padding-right: 12px;
-  *padding-bottom: 7px;
   padding-left: 12px;
 }
 
@@ -4152,7 +4134,6 @@ input[type="button"].btn-block {
 .navbar .btn-navbar[disabled] {
   color: #ffffff;
   background-color: #e5e5e5;
-  *background-color: #d9d9d9;
 }
 
 .navbar .btn-navbar:active,
@@ -4386,7 +4367,6 @@ input[type="button"].btn-block {
 .navbar-inverse .btn-navbar[disabled] {
   color: #ffffff;
   background-color: #040404;
-  *background-color: #000000;
 }
 
 .navbar-inverse .btn-navbar:active,
@@ -4967,7 +4947,6 @@ a.thumbnail:hover {
 .media,
 .media-body {
   overflow: hidden;
-  *overflow: visible;
   zoom: 1;
 }
 
