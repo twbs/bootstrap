@@ -77,7 +77,8 @@
   font-size: @fontSizeLarge;
   .border-radius(@borderRadiusLarge);
 }
-.btn-large [class^="icon-"] {
+.btn-large [class^="icon-"],
+.btn-large [class*=" icon-"] {
   margin-top: 2px;
 }
 
@@ -87,7 +88,8 @@
   font-size: @fontSizeSmall;
   .border-radius(@borderRadiusSmall);
 }
-.btn-small [class^="icon-"] {
+.btn-small [class^="icon-"],
+.btn-small [class*=" icon-"] {
   margin-top: 0;
 }
 
