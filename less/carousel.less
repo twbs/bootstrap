@@ -72,13 +72,8 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 100px;
+  width: 120px;
   .opacity(50);
-
-  &.left {
-    #gradient > .horizontal(rgba(0,0,0,.75), rgba(0,0,0,.001));
-    background-color: transparent;
-  }
 
   // we can't have this transition here
   // because webkit cancels the carousel
@@ -87,7 +82,11 @@
   // ;_;
   // .transition(opacity .2s linear);
 
-  // Reposition the right one
+  // Set gradients for backgrounds
+  &.left {
+    #gradient > .horizontal(rgba(0,0,0,.75), rgba(0,0,0,.001));
+    background-color: transparent;
+  }
   &.right {
     left: auto;
     right: 0;
@@ -101,19 +100,25 @@
     text-decoration: none;
     .opacity(90);
   }
+
+  // Toggles
+  .control {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: block;
+    margin-top: -35px;
+    margin-left: 30px;
+    font-size: 80px;
+    font-weight: 100;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  }
+  &.right .control {
+    margin-left: 70px;
+  }
 }
-.carousel-control .control {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
-  display: block;
-  margin-top: -35px;
-  margin-left: 35px;
-  font-size: 80px;
-  font-weight: 100;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
-}
+
 
 
 // Caption for text below images

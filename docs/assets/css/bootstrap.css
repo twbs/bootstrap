@@ -5370,7 +5370,7 @@ a.badge:hover {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 100px;
+  width: 120px;
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
@@ -5414,11 +5414,15 @@ a.badge:hover {
   z-index: 5;
   display: block;
   margin-top: -35px;
-  margin-left: 35px;
+  margin-left: 30px;
   font-size: 80px;
   font-weight: 100;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-control.right .control {
+  margin-left: 70px;
 }
 
 .carousel-caption {
