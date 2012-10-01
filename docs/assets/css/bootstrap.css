@@ -3867,7 +3867,8 @@ input[type="submit"].btn.btn-mini {
   background-color: #0088cc;
 }
 
-.nav-list [class^="icon-"] {
+.nav-list [class^="icon-"],
+.nav-list [class*=" icon-"] {
   margin-right: 2px;
 }
 
