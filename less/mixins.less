@@ -297,6 +297,7 @@
       -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twitter/bootstrap/issues/4885
        -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
 }
 .translate3d(@x, @y, @z) {
   -webkit-transform: translate3d(@x, @y, @z);
