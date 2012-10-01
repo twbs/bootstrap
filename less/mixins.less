@@ -305,7 +305,6 @@
           background-size: @size;
 }
 
-
 // Box sizing
 .box-sizing(@boxmodel) {
   -webkit-box-sizing: @boxmodel;
@@ -352,7 +351,7 @@
 // Opacity
 .opacity(@opacity) {
   opacity: @opacity / 100;
-  filter: ~"alpha(opacity=@{opacity})";
+  filter: ~"alpha(opacity=@{opacity})"; // IE8
 }
 
 
