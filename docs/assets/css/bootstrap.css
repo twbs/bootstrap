@@ -91,12 +91,6 @@ input {
   line-height: normal;
 }
 
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
 button,
 html input[type="button"],
 input[type="reset"],
@@ -399,7 +393,6 @@ h6 {
   font-family: inherit;
   font-weight: bold;
   line-height: 20px;
-  color: inherit;
   text-rendering: optimizelegibility;
 }
 
