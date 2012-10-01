@@ -42,6 +42,11 @@
         , $target
         , e
 
+      if ($ul.length === 0) {
+        // Looking for HTML5 <menu> elements instead of <ul> elements.
+        $ul = $this.closest('menu:not(.dropdown-menu)');
+      }
+
       if (!selector) {
         selector = $this.attr('href')
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
