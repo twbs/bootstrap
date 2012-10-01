@@ -713,20 +713,24 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 20px;
-  padding: 4px 6px;
-  margin-bottom: 9px;
+  min-height: 34px;
+  padding: 6px 9px;
+  margin-bottom: 10px;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
   vertical-align: middle;
+  background-color: #ffffff;
   border-radius: 4px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 input,
 textarea,
 .uneditable-input {
-  width: 206px;
+  width: 220px;
 }
 
 textarea {
@@ -749,7 +753,6 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  background-color: #ffffff;
   border: 1px solid #cccccc;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -806,15 +809,14 @@ input[type="checkbox"] {
 
 select,
 input[type="file"] {
-  height: 30px;
+  height: 34px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
 
-  line-height: 30px;
+  line-height: 34px;
 }
 
 select {
   width: 220px;
-  background-color: #ffffff;
   border: 1px solid #cccccc;
 }
 
@@ -1466,7 +1468,7 @@ select:focus:required:invalid:focus {
   width: auto;
   height: 20px;
   min-width: 16px;
-  padding: 4px 5px;
+  padding: 6px;
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
@@ -1559,7 +1561,7 @@ input.search-query {
   /* IE8 doesn't have border radius, so don't indent the padding */
 
   margin-bottom: 0;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 /* Allow for input prepend/append in search forms */
@@ -1570,19 +1572,19 @@ input.search-query {
 }
 
 .form-search .input-append .search-query {
-  border-radius: 14px 0 0 14px;
+  border-radius: 20px 0 0 20px;
 }
 
 .form-search .input-append .btn {
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 20px 20px 0;
 }
 
 .form-search .input-prepend .search-query {
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 20px 20px 0;
 }
 
 .form-search .input-prepend .btn {
-  border-radius: 14px 0 0 14px;
+  border-radius: 20px 0 0 20px;
 }
 
 .form-search input,
@@ -2731,7 +2733,7 @@ button.close {
 
 .btn {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
   line-height: 20px;
@@ -5257,10 +5259,6 @@ a.badge:hover {
 .control-block-level {
   display: block;
   width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .hidden {
@@ -5720,10 +5718,6 @@ a.badge:hover {
   .uneditable-input {
     display: block;
     width: 100%;
-    min-height: 30px;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
   }
   .input-prepend input,
   .input-append input,

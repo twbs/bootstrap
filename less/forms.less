@@ -79,14 +79,16 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: @baseLineHeight;
-  padding: 4px 6px;
-  margin-bottom: 9px;
+  .box-sizing(border-box); // Makes inputs behave like true block-level elements
+  min-height: @inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: 6px 9px;
+  margin-bottom: @baseLineHeight / 2;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
-  border-radius: @inputBorderRadius;
   vertical-align: middle;
+  background-color: @inputBackground;
+  border-radius: @inputBorderRadius;
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -94,7 +96,7 @@ input[type="color"],
 input,
 textarea,
 .uneditable-input {
-  width: 206px; // plus 12px padding and 2px border
+  width: 220px;
 }
 // Reset height since textareas have rows
 textarea {
@@ -117,7 +119,6 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  background-color: @inputBackground;
   border: 1px solid @inputBorder;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border linear .2s, box-shadow linear .2s");
@@ -162,7 +163,6 @@ input[type="file"] {
 select {
   width: 220px; // default input width + 10px of padding that doesn't get applied
   border: 1px solid @inputBorder;
-  background-color: @inputBackground; // Chrome on Linux and Mobile Safari need background-color
 }
 
 // Make multiple select elements height not fixed
@@ -475,7 +475,7 @@ select:focus:required:invalid {
     width: auto;
     height: @baseLineHeight;
     min-width: 16px;
-    padding: 4px 5px;
+    padding: 6px;
     font-size: @baseFontSize;
     font-weight: normal;
     line-height: @baseLineHeight;
@@ -564,7 +564,7 @@ input.search-query {
   padding-left: 14px;
   padding-left: 4px \9; /* IE8 doesn't have border radius, so don't indent the padding */
   margin-bottom: 0; // Remove the default margin on all inputs
-  border-radius: 15px;
+  border-radius: @inputSearchBorderRadius;
 }
 
 /* Allow for input prepend/append in search forms */
@@ -573,16 +573,16 @@ input.search-query {
   border-radius: 0; // Override due to specificity
 }
 .form-search .input-append .search-query {
-  border-radius: 14px 0 0 14px;
+  border-radius: @inputSearchBorderRadius 0 0 @inputSearchBorderRadius;
 }
 .form-search .input-append .btn {
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 @inputSearchBorderRadius @inputSearchBorderRadius 0;
 }
 .form-search .input-prepend .search-query {
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 @inputSearchBorderRadius @inputSearchBorderRadius 0;
 }
 .form-search .input-prepend .btn {
-  border-radius: 14px 0 0 14px;
+  border-radius: @inputSearchBorderRadius 0 0 @inputSearchBorderRadius;
 }
 
 
