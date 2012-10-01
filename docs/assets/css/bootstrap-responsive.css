@@ -600,16 +600,12 @@
     padding: 9px 15px;
     font-weight: bold;
     color: #777777;
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
+    border-radius: 3px;
   }
   .nav-collapse .btn {
     padding: 4px 10px 4px;
     font-weight: normal;
-    -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
+    border-radius: 4px;
   }
   .nav-collapse .dropdown-menu li + li a {
     margin-bottom: 2px;
@@ -637,9 +633,7 @@
     margin: 0 15px;
     background-color: transparent;
     border: none;
-    -webkit-border-radius: 0;
-       -moz-border-radius: 0;
-            border-radius: 0;
+    border-radius: 0;
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;

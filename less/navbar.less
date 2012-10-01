@@ -14,7 +14,7 @@
   color: @navbarText;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
-  .border-radius(4px);
+  border-radius: 4px;
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
@@ -131,7 +131,7 @@
     margin-bottom: 0;
     padding: 4px 14px;
     #font > .sans-serif(13px, normal, 1);
-    .border-radius(15px); // redeclare because of specificity of the type attribute
+    border-radius: 15px; // redeclare because of specificity of the type attribute
   }
 }
 
@@ -143,7 +143,7 @@
 .navbar-static-top {
   position: static;
   margin-bottom: 0; // remove 18px margin for default navbar
-  .border-radius(0);
+  border-radius: 0;
 }
 
 
@@ -162,7 +162,7 @@
   border-width: 0 0 1px;
   padding-left:  0;
   padding-right: 0;
-  .border-radius(0);
+  border-radius: 0;
 }
 .navbar-fixed-bottom {
   border-width: 1px 0 0;
@@ -258,7 +258,7 @@
   width: 18px;
   height: 2px;
   background-color: #f5f5f5;
-  .border-radius(1px);
+  border-radius: 1px;
   .box-shadow(0 1px 0 rgba(0,0,0,.25));
 }
 .btn-navbar .icon-bar + .icon-bar {
@@ -347,7 +347,7 @@
     right: 100%;
     margin-left: 0;
     margin-right: -1px;
-    .border-radius(6px 0 6px 6px);
+    border-radius: 6px 0 6px 6px;
   }
 }
 

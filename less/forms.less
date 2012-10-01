@@ -85,7 +85,7 @@ input[type="color"],
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
-  .border-radius(@inputBorderRadius);
+  border-radius: @inputBorderRadius;
   vertical-align: middle;
 }
 
@@ -278,17 +278,17 @@ input[type="color"],
     padding-left: 14px;
     padding-right: 14px; // TODO: Resolve this override
     font-size: @fontSizeLarge;
-    .border-radius(@borderRadiusLarge);
+    border-radius: @borderRadiusLarge;
   }
   &.input-small {
     padding: @paddingSmall;
     font-size: @fontSizeSmall;
-    .border-radius(@borderRadiusSmall);
+    border-radius: @borderRadiusSmall;
   }
   &.input-mini {
     padding: @paddingMini;
     font-size: @fontSizeMini;
-    .border-radius(@borderRadiusSmall);
+    border-radius: @borderRadiusSmall;
   }
 }
 
@@ -459,7 +459,7 @@ select:focus:required:invalid {
     margin: 0; // Prevent bottom margin from screwing up alignment in stacked forms
     font-size: @baseFontSize;
     vertical-align: top;
-    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
     // Make input on top when focused so blue border and shadow always show
     &:focus {
       z-index: 2;
@@ -487,7 +487,7 @@ select:focus:required:invalid {
   .add-on,
   .btn {
     vertical-align: top;
-    .border-radius(0);
+    border-radius: 0;
   }
   .active {
     background-color: lighten(@green, 30);
@@ -503,7 +503,7 @@ select:focus:required:invalid {
   .add-on:first-child,
   .btn:first-child {
     // FYI, `.btn:first-child` accounts for a button group that's prepended
-    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    border-radius: @inputBorderRadius 0 0 @inputBorderRadius;
   }
 }
 
@@ -511,9 +511,9 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
-    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    border-radius: @inputBorderRadius 0 0 @inputBorderRadius;
     + .btn-group .btn {
-      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+      border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
     }
   }
   .add-on,
@@ -523,7 +523,7 @@ select:focus:required:invalid {
   }
   .add-on:last-child,
   .btn:last-child {
-    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
   }
 }
 
@@ -532,20 +532,20 @@ select:focus:required:invalid {
   input,
   select,
   .uneditable-input {
-    .border-radius(0);
+    border-radius: 0;
     + .btn-group .btn {
-      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+      border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
     }
   }
   .add-on:first-child,
   .btn:first-child {
     margin-right: -1px;
-    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    border-radius: @inputBorderRadius 0 0 @inputBorderRadius;
   }
   .add-on:last-child,
   .btn:last-child {
     margin-left: -1px;
-    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
   }
   .btn-group:first-child {
     margin-left: 0;
@@ -562,27 +562,27 @@ input.search-query {
   padding-right: 14px;
   padding-right: 4px \9;
   padding-left: 14px;
-  padding-left: 4px \9; /* IE8 doesn't have border-radius, so don't indent the padding */
+  padding-left: 4px \9; /* IE8 doesn't have border radius, so don't indent the padding */
   margin-bottom: 0; // Remove the default margin on all inputs
-  .border-radius(15px);
+  border-radius: 15px;
 }
 
 /* Allow for input prepend/append in search forms */
 .form-search .input-append .search-query,
 .form-search .input-prepend .search-query {
-  .border-radius(0); // Override due to specificity
+  border-radius: 0; // Override due to specificity
 }
 .form-search .input-append .search-query {
-  .border-radius(14px 0 0 14px);
+  border-radius: 14px 0 0 14px;
 }
 .form-search .input-append .btn {
-  .border-radius(0 14px 14px 0);
+  border-radius: 0 14px 14px 0;
 }
 .form-search .input-prepend .search-query {
-  .border-radius(0 14px 14px 0);
+  border-radius: 0 14px 14px 0;
 }
 .form-search .input-prepend .btn {
-  .border-radius(14px 0 0 14px);
+  border-radius: 14px 0 0 14px;
 }
 
 
