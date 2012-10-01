@@ -472,13 +472,6 @@
   .clearfix();
 }
 
-// Table columns
-.tableColumns(@columnSpan: 1) {
-  float: none; // undo default grid column styles
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
-  margin-left: 0; // undo default grid column styles
-}
-
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
 .makeRow() {
