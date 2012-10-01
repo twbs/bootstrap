@@ -4,7 +4,7 @@
 // --------------------------------------------------
 
 
-// Display in IE6-9 and FF3
+// HTML elements <IE9
 // -------------------------
 
 article,
@@ -20,15 +20,10 @@ section {
   display: block;
 }
 
-// Display block in IE6-9 and FF3
-// -------------------------
-
 audio,
 canvas,
 video {
   display: inline-block;
-  *display: inline;
-  *zoom: 1;
 }
 
 // Prevents modern browsers from displaying 'audio' without controls
@@ -106,8 +101,7 @@ textarea {
 }
 button,
 input {
-  *overflow: visible; // Inner spacing ie IE6/7
-  line-height: normal; // FF3/4 have !important on line-height in UA stylesheet
+  line-height: normal;
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner { // Inner padding and border oddities in FF3/4
