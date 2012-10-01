@@ -3304,12 +3304,6 @@ input[type="button"].btn-block {
   background-color: #080808 \9;
 }
 
-button.btn::-moz-focus-inner,
-input[type="submit"].btn::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
 .btn-link,
 .btn-link:active,
 .btn-link[disabled] {
