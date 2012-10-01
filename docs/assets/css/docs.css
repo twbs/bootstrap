@@ -754,7 +754,7 @@ form.bs-docs-example {
 }
 .bs-docs-sidenav > li > a {
   display: block;
-  *width: 190px;
+  width: 190px \9;
   margin: 0 0 -1px;
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
@@ -820,6 +820,9 @@ form.bs-docs-example {
   }
   .bs-docs-sidenav {
     width: 258px;
+  }
+  .bs-docs-sidenav > li > a {
+    width: 230px \9; /* Override the previous IE8-9 hack */
   }
 }
 
