@@ -873,25 +873,29 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <h2 id="forms-default">Default styles</h2>
           <p>Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.</p>
           <form class="bs-docs-example">
-            <legend>Legend</legend>
-            <label>Label name</label>
-            <input type="text" placeholder="Type something…">
-            <span class="help-block">Example block-level help text here.</span>
-            <label class="checkbox">
-              <input type="checkbox"> Check me out
-            </label>
-            <button type="submit" class="btn">Submit</button>
+            <fieldset>
+              <legend>Legend</legend>
+              <label>Label name</label>
+              <input type="text" placeholder="Type something…">
+              <span class="help-block">Example block-level help text here.</span>
+              <label class="checkbox">
+                <input type="checkbox"> Check me out
+              </label>
+              <button type="submit" class="btn">Submit</button>
+            </fieldset>
           </form>
 <pre class="prettyprint linenums">
 &lt;form&gt;
-  &lt;legend&gt;Legend&lt;/legend&gt;
-  &lt;label&gt;Label name&lt;/label&gt;
-  &lt;input type="text" placeholder="Type something…"&gt;
-  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
-  &lt;label class="checkbox"&gt;
-    &lt;input type="checkbox"&gt; Check me out
-  &lt;/label&gt;
-  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Legend&lt;/legend&gt;
+    &lt;label&gt;Label name&lt;/label&gt;
+    &lt;input type="text" placeholder="Type something…"&gt;
+    &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
+    &lt;label class="checkbox"&gt;
+      &lt;input type="checkbox"&gt; Check me out
+    &lt;/label&gt;
+    &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+  &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
 
@@ -945,7 +949,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
             <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
           </ul>
           <form class="bs-docs-example form-horizontal">
-            <legend>Legend</legend>
             <div class="control-group">
               <label class="control-label" for="inputEmail">Email</label>
               <div class="controls">

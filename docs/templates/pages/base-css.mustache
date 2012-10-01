@@ -812,25 +812,29 @@
           <h2 id="forms-default">{{_i}}Default styles{{/i}}</h2>
           <p>{{_i}}Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.{{/i}}</p>
           <form class="bs-docs-example">
-            <legend>Legend</legend>
-            <label>{{_i}}Label name{{/i}}</label>
-            <input type="text" placeholder="{{_i}}Type something…{{/i}}">
-            <span class="help-block">{{_i}}Example block-level help text here.{{/i}}</span>
-            <label class="checkbox">
-              <input type="checkbox"> {{_i}}Check me out{{/i}}
-            </label>
-            <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
+            <fieldset>
+              <legend>Legend</legend>
+              <label>{{_i}}Label name{{/i}}</label>
+              <input type="text" placeholder="{{_i}}Type something…{{/i}}">
+              <span class="help-block">{{_i}}Example block-level help text here.{{/i}}</span>
+              <label class="checkbox">
+                <input type="checkbox"> {{_i}}Check me out{{/i}}
+              </label>
+              <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
+            </fieldset>
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form&gt;
-  &lt;legend&gt;{{_i}}Legend{{/i}}&lt;/legend&gt;
-  &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
-  &lt;input type="text" placeholder="{{_i}}Type something…{{/i}}"&gt;
-  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
-  &lt;label class="checkbox"&gt;
-    &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
-  &lt;/label&gt;
-  &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;{{_i}}Legend{{/i}}&lt;/legend&gt;
+    &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
+    &lt;input type="text" placeholder="{{_i}}Type something…{{/i}}"&gt;
+    &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
+    &lt;label class="checkbox"&gt;
+      &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
+    &lt;/label&gt;
+    &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
+  &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
 
@@ -884,7 +888,6 @@
             <li>{{_i}}Wrap any associated controls in <code>.controls</code> for proper alignment{{/i}}</li>
           </ul>
           <form class="bs-docs-example form-horizontal">
-            <legend>Legend</legend>
             <div class="control-group">
               <label class="control-label" for="inputEmail">{{_i}}Email{{/i}}</label>
               <div class="controls">
