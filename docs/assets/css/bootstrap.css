@@ -5707,9 +5707,6 @@ a.badge:hover {
   .container {
     width: auto;
   }
-  .row {
-    margin-left: 0;
-  }
   [class*="span"],
   .uneditable-input[class*="span"] {
     display: block;
