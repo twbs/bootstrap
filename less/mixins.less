@@ -360,17 +360,6 @@
 // BACKGROUNDS
 // --------------------------------------------------
 
-// Add an alphatransparency value to any background or border color (via Elyse Holladay)
-#translucent {
-  .background(@color: @white, @alpha: 1) {
-    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-  }
-  .border(@color: @white, @alpha: 1) {
-    border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-    .background-clip(padding-box);
-  }
-}
-
 // Gradient Bar Colors for buttons and alerts
 .gradientBar(@primaryColor, @secondaryColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
   color: @textColor;
