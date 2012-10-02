@@ -103,7 +103,7 @@
 
 // Give the tabs something to sit on
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid @borderColorLightest;
 }
 // Make the list-items overlay the bottom border
 .nav-tabs > li {
@@ -117,7 +117,7 @@
   border: 1px solid transparent;
   .border-radius(4px 4px 0 0);
   &:hover {
-    border-color: @grayLighter @grayLighter #ddd;
+    border-color: @grayLighter @grayLighter @borderColorLightest;
   }
 }
 // Active state, and it's :hover to override normal :hover
@@ -222,8 +222,8 @@
 // Active dropdown links
 // -------------------------
 .nav .active .dropdown-toggle .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+  border-top-color: @white;
+  border-bottom-color: @white;
 }
 .nav-tabs .active .dropdown-toggle .caret {
   border-top-color: @gray;

@@ -185,8 +185,8 @@ a:hover {
 
 .img-polaroid {
   padding: 4px;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -881,7 +881,7 @@ pre {
 
 code {
   padding: 2px 4px;
-  color: #d14;
+  color: #dd1144;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
 }
@@ -897,7 +897,7 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -1616,7 +1616,7 @@ select:focus:required:invalid:focus {
   text-align: center;
   text-shadow: 0 1px 0 #ffffff;
   background-color: #eeeeee;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
 }
 
 .input-append .add-on,
@@ -2968,7 +2968,7 @@ table [class*=span],
 }
 
 .well blockquote {
-  border-color: #ddd;
+  border-color: #dddddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -3873,7 +3873,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .nav-tabs > li {
@@ -3999,8 +3999,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav .active .dropdown-toggle .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 .nav-tabs .active .dropdown-toggle .caret {
@@ -4498,7 +4498,7 @@ input[type="submit"].btn.btn-mini {
   left: 9px;
   display: inline-block;
   border-right: 7px solid transparent;
-  border-bottom: 7px solid #ccc;
+  border-bottom: 7px solid #cccccc;
   border-left: 7px solid transparent;
   border-bottom-color: rgba(0, 0, 0, 0.2);
   content: '';
@@ -4518,7 +4518,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-fixed-bottom .nav > li > .dropdown-menu:before {
   top: auto;
   bottom: -7px;
-  border-top: 7px solid #ccc;
+  border-top: 7px solid #cccccc;
   border-bottom: 0;
   border-top-color: rgba(0, 0, 0, 0.2);
 }
@@ -4916,8 +4916,8 @@ input[type="submit"].btn.btn-mini {
 .pager li > span {
   display: inline-block;
   padding: 5px 14px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
   -webkit-border-radius: 15px;
      -moz-border-radius: 15px;
           border-radius: 15px;
@@ -4974,9 +4974,9 @@ input[type="submit"].btn.btn-mini {
   width: 560px;
   margin: -250px 0 0 -280px;
   background-color: #ffffff;
-  border: 1px solid #999;
+  border: 1px solid #999999;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  *border: 1px solid #999;
+  *border: 1px solid #999999;
   /* IE6-7 */
 
   -webkit-border-radius: 6px;
@@ -5004,7 +5004,7 @@ input[type="submit"].btn.btn-mini {
 
 .modal-header {
   padding: 9px 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eeeeee;
 }
 
 .modal-header .close {
@@ -5031,7 +5031,7 @@ input[type="submit"].btn.btn-mini {
   margin-bottom: 0;
   text-align: right;
   background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #dddddd;
   -webkit-border-radius: 0 0 6px 6px;
      -moz-border-radius: 0 0 6px 6px;
           border-radius: 0 0 6px 6px;
@@ -5158,7 +5158,7 @@ input[type="submit"].btn.btn-mini {
   width: 236px;
   padding: 1px;
   background-color: #ffffff;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
@@ -5316,7 +5316,7 @@ input[type="submit"].btn.btn-mini {
   display: block;
   padding: 4px;
   line-height: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
