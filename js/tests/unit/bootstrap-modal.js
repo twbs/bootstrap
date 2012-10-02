@@ -111,4 +111,130 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should refresh when data-remote is changed", function () {
+        stop()
+        $.support.transition = false
+        var modalHTML = "<div id='modal-test'></div>"
+          + "<a id='link-test-1' href='#' data-remote='unit/bootstrap-modal.js' data-target='#modal-test' data-toggle='modal'></a>"
+          + "<a id='link-test-2' href='#' data-remote='unit/bootstrap-popover.js' data-target='#modal-test' data-toggle='modal'></a>"
+        $(modalHTML).appendTo('#qunit-fixture')
+        var div = $('#qunit-fixture').find('#modal-test')
+          , a1 = $('#qunit-fixture').find('#link-test-1')
+          , a2 = $('#qunit-fixture').find('#link-test-2')
+
+        div
+          .bind("shown", function () {
+            ok(div.hasClass('in'), 'in class added on shown')
+            equals($('#modal-test').data('modal').options.remote, "unit/bootstrap-modal.js", 'modal remote correct')
+            ok($('#modal-test').length, 'modal insterted into dom')
+            div.modal("toggle")
+          })
+          .bind("hidden", function() {
+            ok(!div.hasClass('in'), 'in class removed on hidden')
+          })
+        a1.click()
+
+        div.unbind("shown")
+        div.unbind("hidden")
+        div
+          .bind("shown", function () {
+            ok(div.hasClass('in'), 'in class added on shown')
+            equals($('#modal-test').data('modal').options.remote, "unit/bootstrap-popover.js", 'modal remote updated')
+            ok($('#modal-test').length, 'modal insterted into dom')
+            div.modal("toggle")
+          })
+          .bind("hidden", function() {
+            ok(!div.hasClass('in'), 'in class removed on hidden')
+            div.remove()
+            a1.remove()
+            a2.remove()
+            start()
+          })
+        a2.click()
+      })
+
+      test("should refresh when href is changed", function () {
+        stop()
+        $.support.transition = false
+        var modalHTML = "<div id='modal-test'></div>"
+          + "<a id='link-test-1' href='unit/bootstrap-modal.js' data-target='#modal-test' data-toggle='modal'></a>"
+          + "<a id='link-test-2' href='unit/bootstrap-popover.js' data-target='#modal-test' data-toggle='modal'></a>"
+        $(modalHTML).appendTo('#qunit-fixture')
+        var div = $('#qunit-fixture').find('#modal-test')
+          , a1 = $('#qunit-fixture').find('#link-test-1')
+          , a2 = $('#qunit-fixture').find('#link-test-2')
+
+        div
+          .bind("shown", function () {
+            ok(div.hasClass('in'), 'in class added on shown')
+            equals($('#modal-test').data('modal').options.remote, "unit/bootstrap-modal.js", 'modal remote correct')
+            ok($('#modal-test').length, 'modal insterted into dom')
+            div.modal("toggle")
+          })
+          .bind("hidden", function() {
+            ok(!div.hasClass('in'), 'in class removed on hidden')
+          })
+        a1.click()
+
+        div.unbind("shown")
+        div.unbind("hidden")
+        div
+          .bind("shown", function () {
+            ok(div.hasClass('in'), 'in class added on shown')
+            equals($('#modal-test').data('modal').options.remote, "unit/bootstrap-popover.js", 'modal remote updated')
+            ok($('#modal-test').length, 'modal insterted into dom')
+            div.modal("toggle")
+          })
+          .bind("hidden", function() {
+            ok(!div.hasClass('in'), 'in class removed on hidden')
+            div.remove()
+            a1.remove()
+            a2.remove()
+            start()
+          })
+        a2.click()
+      })
+
+      test("should not refresh when href is unchanged", function () {
+        stop()
+        $.support.transition = false
+        var modalHTML = "<div id='modal-test'></div>"
+          + "<a id='link-test-1' href='unit/bootstrap-modal.js' data-target='#modal-test' data-toggle='modal'></a>"
+          + "<a id='link-test-2' href='#' data-target='#modal-test' data-toggle='modal'></a>"
+        $(modalHTML).appendTo('#qunit-fixture')
+        var div = $('#qunit-fixture').find('#modal-test')
+          , a1 = $('#qunit-fixture').find('#link-test-1')
+          , a2 = $('#qunit-fixture').find('#link-test-2')
+
+        div
+          .bind("shown", function () {
+            ok(div.hasClass('in'), 'in class added on shown')
+            equals($('#modal-test').data('modal').options.remote, "unit/bootstrap-modal.js", 'modal remote correct')
+            ok($('#modal-test').length, 'modal insterted into dom')
+            div.modal("toggle")
+          })
+          .bind("hidden", function() {
+            ok(!div.hasClass('in'), 'in class removed on hidden')
+          })
+        a1.click()
+
+        div.unbind("shown")
+        div.unbind("hidden")
+        div
+          .bind("shown", function () {
+            ok(div.hasClass('in'), 'in class added on shown')
+            equals($('#modal-test').data('modal').options.remote, "unit/bootstrap-modal.js", 'modal remote unchanged')
+            ok($('#modal-test').length, 'modal insterted into dom')
+            div.modal("toggle")
+          })
+          .bind("hidden", function() {
+            ok(!div.hasClass('in'), 'in class removed on hidden')
+            div.remove()
+            a1.remove()
+            a2.remove()
+            start()
+          })
+        a2.click()
+      })
 })
