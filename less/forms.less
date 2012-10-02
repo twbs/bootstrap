@@ -367,15 +367,17 @@ input[type="checkbox"][readonly] {
 
 // HTML5 invalid states
 // Shares styles with the .control-group.error above
-input:focus:required:invalid,
-textarea:focus:required:invalid,
-select:focus:required:invalid {
-  color: #b94a48;
-  border-color: #ee5f5b;
-  &:focus {
-    border-color: darken(#ee5f5b, 10%);
-    @shadow: 0 0 6px lighten(#ee5f5b, 20%);
-    .box-shadow(@shadow);
+input,
+textarea,
+select {
+  &:invalid {
+    color: #b94a48;
+    border-color: #ee5f5b;
+    &:focus {
+      border-color: darken(#ee5f5b, 10%);
+      @shadow: 0 0 6px lighten(#ee5f5b, 20%);
+      .box-shadow(@shadow);
+    }
   }
 }
 
