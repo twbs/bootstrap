@@ -20,19 +20,22 @@ table {
   width: 100%;
   margin-bottom: @baseLineHeight;
   // Cells
-  th,
-  td {
+  > tr > th,
+  > thead > tr > th,
+  > tr > td, 
+  > tbody > tr > td {
     padding: 8px;
     line-height: @baseLineHeight;
     text-align: left;
     vertical-align: top;
     border-top: 1px solid @tableBorder;
   }
-  th {
+  > tr > th,
+  > thead > tr > th {
     font-weight: bold;
   }
   // Bottom align for column headings
-  thead th {
+  > thead > th {
     vertical-align: bottom;
   }
   // Remove top border from thead by default
@@ -45,7 +48,7 @@ table {
     border-top: 0;
   }
   // Account for multiple tbody instances
-  tbody + tbody {
+  > tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
 }
@@ -56,8 +59,8 @@ table {
 // -------------------------------
 
 .table-condensed {
-  th,
-  td {
+  > thead > tr > th,
+  > tbody > tr > td {
     padding: 4px 5px;
   }
 }
@@ -72,8 +75,8 @@ table {
   *border-collapse: collapse; // IE7 can't round corners anyway
   border-left: 0;
   .border-radius(4px);
-  th,
-  td {
+  > thead >  tr > th,
+  > tbody > tr > td {
     border-left: 1px solid @tableBorder;
   }
   // Prevent a double border
@@ -146,9 +149,9 @@ table {
 
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 .table-striped {
-  tbody {
-    tr:nth-child(odd) td,
-    tr:nth-child(odd) th {
+  > tbody {
+    > tr:nth-child(odd) td,
+    > tr:nth-child(odd) th {
       background-color: @tableBackgroundAccent;
     }
   }
@@ -159,7 +162,7 @@ table {
 // ------------
 // Placed here since it has to come after the potential zebra striping
 .table-hover {
-  tbody {
+  > tbody {
     tr:hover td,
     tr:hover th {
       background-color: @tableBackgroundHover;
@@ -202,33 +205,33 @@ table [class*=span],
 // -----------------
 // Exact selectors below required to override .table-striped
 
-.table tbody tr {
-  &.success td {
+.table  tbody  tr {
+  &.success > td {
     background-color: @successBackground;
   }
-  &.error td {
+  &.error > td {
     background-color: @errorBackground;
   }
-  &.warning td {
+  &.warning > td {
     background-color: @warningBackground;
   }
-  &.info td {
+  &.info > td {
     background-color: @infoBackground;
   }
 }
 
 // Hover states for .table-hover
 .table-hover tbody tr {
-  &.success:hover td {
+  &.success:hover > td {
     background-color: darken(@successBackground, 5%);
   }
-  &.error:hover td {
+  &.error:hover > td {
     background-color: darken(@errorBackground, 5%);
   }
-  &.warning:hover td {
+  &.warning:hover > td {
     background-color: darken(@warningBackground, 5%);
   }
-  &.info:hover td {
+  &.info:hover > td {
     background-color: darken(@infoBackground, 5%);
   }
 }
