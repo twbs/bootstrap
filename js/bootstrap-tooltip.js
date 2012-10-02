@@ -119,7 +119,7 @@
         inside = /in/.test(placement)
 
         $tip
-          .remove()
+          .detach()
           .css({ top: 0, left: 0, display: 'block' })
           .insertAfter(this.$element)
 
