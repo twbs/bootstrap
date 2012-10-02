@@ -30,7 +30,7 @@
     this.options = options
     this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-    this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+    this.refresh()
   }
 
   Modal.prototype = {
@@ -190,6 +190,10 @@
           callback()
         }
       }
+
+    , refresh: function () {
+      this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+    }
   }
 
 
@@ -224,9 +228,16 @@
       var $this = $(this)
         , href = $this.attr('href')
         , $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
-        , option = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+        , data = $target.data('modal')
+        , options = $.extend({}, $.fn.modal.defaults, { remote: !/#/.test(href) && href }, $target.data(), $this.data())
+        , option = data ? 'toggle' : options
 
       e.preventDefault()
+
+      if (data && options.remote && options.remote != data.options.remote) {
+        data.options = $.extend(data.options, options)
+        data.refresh()
+      }
 
       $target
         .modal(option)
