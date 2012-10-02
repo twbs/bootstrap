@@ -150,6 +150,7 @@
           || e.preventDefault()
           || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
         , option = $(target).data('collapse') ? 'toggle' : $this.data()
+      $('[data-toggle=collapse]').addClass('collapsed')
       $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
       $(target).collapse(option)
     })
