@@ -151,7 +151,6 @@
 .dropdown-submenu {
   position: relative;
 }
-
 // Default dropdowns
 .dropdown-submenu > .dropdown-menu {
   top: 0;
@@ -195,6 +194,21 @@
   border-left-color: @dropdownLinkColorHover;
 }
 
+// Left aligned submenus
+.dropdown-submenu.pull-left {
+  // Undo the float
+  // Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
+  float: none;
+
+  // Positioning the submenu
+  > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+       -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+  }
+}
 
 // Tweak nav headers
 // -----------------

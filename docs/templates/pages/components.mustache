@@ -94,25 +94,11 @@
 
           <h3>{{_i}}Sub menus on dropdowns{{/i}}</h3>
           <p>{{_i}}Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.{{/i}}</p>
-          <div class="bs-docs-example">
-            <div class="dropdown clearfix">
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-                <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-submenu">
-                  <a tabindex="-1" href="#">{{_i}}More options{{/i}}</a>
-                  <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <div class="dropup" style="float: left; margin-left: 20px;">
+          <div class="bs-docs-example" style="min-height: 180px;">
+
+            <div class="pull-left">
+              <p class="muted">Default</p>
+              <div class="dropdown clearfix">
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
                   <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
                   <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
@@ -130,7 +116,52 @@
                   </li>
                 </ul>
               </div>
-            </div>
+            </div>{{! /.pull-left }}
+
+            <div class="pull-left" style="margin-left: 20px;">
+              <p class="muted">Dropup</p>
+              <div class="dropup">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">{{_i}}More options{{/i}}</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>{{! /.pull-left }}
+
+            <div class="pull-left" style="margin-left: 20px;">
+              <p class="muted">Left submenu</p>
+              <div class="dropdown">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-submenu pull-left">
+                    <a tabindex="-1" href="#">{{_i}}More options{{/i}}</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                      <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>{{! /.pull-left }}
+
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
@@ -980,13 +1011,13 @@
           <div class="bs-docs-example">
             <div class="navbar">
               <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                <div class="nav-collapse collapse">
+                <div class="nav-collapse collapse navbar-responsive-collapse">
                   <ul class="nav">
                     <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
                     <li><a href="#">{{_i}}Link{{/i}}</a></li>
@@ -1023,6 +1054,7 @@
                   </ul>
                 </div><!-- /.nav-collapse -->
               </div>
+
             </div><!-- /navbar -->
           </div>{{! /example }}
 <pre class="prettyprint linenums">
@@ -1060,13 +1092,13 @@
           <div class="bs-docs-example">
             <div class="navbar navbar-inverse" style="position: static;">
               <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".subnav-collapse">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </a>
                 <a class="brand" href="#">{{_i}}Title{{/i}}</a>
-                <div class="nav-collapse collapse">
+                <div class="nav-collapse collapse navbar-inverse-collapse">
                   <ul class="nav">
                     <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
                     <li><a href="#">{{_i}}Link{{/i}}</a></li>
