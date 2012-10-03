@@ -196,4 +196,58 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should empty input value when no match is found in items when selection is forced", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac'],
+              forceSelection: true
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('zzz')
+        $input.blur()
+
+        equals(typeahead.$menu.find('li').length, 0, 'has 0 items in menu')
+        equals($input.val().length, 0, 'input value is empty')
+
+        typeahead.$menu.remove()
+      })
+
+      test("should set input value to first match in items when selection is forced", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac'],
+              forceSelection: true
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('aa')
+        typeahead.lookup()
+        $input.blur()
+
+        equals($input.val(), 'aaaa', 'input value was correctly set')
+
+        typeahead.$menu.remove()
+      })
+
+      test("should not change input value when no selection is forced", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aaaa', 'aaab', 'aaac'],
+              forceSelection: false
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('aa')
+        $input.blur()
+
+        equals(typeahead.$menu.find('li').length, 0, 'has 0 items in menu')
+        equals($input.val(), 'aa', 'input value not changed')
+
+        $input.val('zz')
+        $input.blur()
+
+        equals(typeahead.$menu.find('li').length, 0, 'has 0 items in menu')
+        equals($input.val(), 'zz', 'input value not changed when no match found in items')
+        
+        typeahead.$menu.remove()
+      }) 
 })

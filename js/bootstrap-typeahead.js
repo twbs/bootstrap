@@ -253,6 +253,26 @@
 
   , blur: function (e) {
       var that = this
+      , items
+      if(this.options.forceSelection){
+        this.query = this.$element.val()
+        if (!this.query || this.query.length < this.options.minLength) {
+          this.$element.val('')
+          return this.shown ? this.hide() : this
+        }
+          
+        items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+        items = $.grep(items, function (item) {
+          return that.matcher(item)
+        })
+        items = this.sorter(items)
+        
+        if (items.length){
+          this.$element.val(items[0])
+          return this.select()
+        }
+        this.$element.val('');
+      }
       setTimeout(function () { that.hide() }, 150)
     }
 
@@ -289,6 +309,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , forceSelection : false
   }
 
   $.fn.typeahead.Constructor = Typeahead
