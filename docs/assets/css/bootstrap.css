@@ -800,7 +800,8 @@ hr {
   border-bottom: 1px solid #ffffff;
 }
 
-abbr[title] {
+abbr[title],
+abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted #999999;
 }
