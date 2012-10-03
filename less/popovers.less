@@ -17,7 +17,7 @@
           background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.2);
-  .border-radius(6px);
+  .border-radius(@borderRadiusPopover);
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
 
   // Offset the popover to account for the popover arrow
@@ -36,7 +36,7 @@
   line-height: 18px;
   background-color: @popoverTitleBackground;
   border-bottom: 1px solid darken(@popoverTitleBackground, 5%);
-  .border-radius(5px 5px 0 0);
+  .border-radius(@borderRadiusPopoverTitle @borderRadiusPopoverTitle 0 0);
 }
 
 .popover-content {

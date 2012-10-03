@@ -25,7 +25,7 @@
   padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
-  .border-radius(4px);
+  .border-radius(@borderRadiusNavbarInner);
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
@@ -141,7 +141,7 @@
     margin-bottom: 0;
     padding: 4px 14px;
     #font > .sans-serif(13px, normal, 1);
-    .border-radius(15px); // redeclare because of specificity of the type attribute
+    .border-radius(@borderRadiusNavbarSearch); // redeclare because of specificity of the type attribute
   }
 }
 
@@ -281,7 +281,7 @@
   width: 18px;
   height: 2px;
   background-color: #f5f5f5;
-  .border-radius(1px);
+  .border-radius(@borderRadiusNavbarIconbar);
   .box-shadow(0 1px 0 rgba(0,0,0,.25));
 }
 .btn-navbar .icon-bar + .icon-bar {
@@ -370,7 +370,7 @@
     right: 100%;
     margin-left: 0;
     margin-right: -1px;
-    .border-radius(6px 0 6px 6px);
+    .border-radius(@borderRadiusLarge 0 @borderRadiusLarge @borderRadiusLarge);
   }
 }
 
