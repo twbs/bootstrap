@@ -139,7 +139,7 @@
   padding-bottom: 8px;
   margin-top: 2px;
   margin-bottom: 2px;
-  .border-radius(5px);
+  .border-radius(@borderRadiusNavPills);
 }
 
 // Active state
@@ -195,10 +195,10 @@
 // ---------
 
 .nav-tabs .dropdown-menu {
-  .border-radius(0 0 6px 6px); // remove the top rounded corners here since there is a hard edge above the menu
+  .border-radius(0 0 @borderRadiusLarge @borderRadiusLarge); // remove the top rounded corners here since there is a hard edge above the menu
 }
 .nav-pills .dropdown-menu {
-  .border-radius(6px); // make rounded corners match the pills
+  .border-radius(@borderRadiusLarge); // make rounded corners match the pills
 }
 
 // Default dropdown links
@@ -303,7 +303,7 @@
   margin-bottom: 0;
 }
 .tabs-below > .nav-tabs > li > a {
-  .border-radius(0 0 4px 4px);
+  .border-radius(0 0 @borderRadiusMedium @borderRadiusMedium);
   &:hover {
     border-bottom-color: transparent;
     border-top-color: #ddd;
@@ -337,7 +337,7 @@
 }
 .tabs-left > .nav-tabs > li > a {
   margin-right: -1px;
-  .border-radius(4px 0 0 4px);
+  .border-radius(@borderRadiusMedium 0 0 @borderRadiusMedium);
 }
 .tabs-left > .nav-tabs > li > a:hover {
   border-color: @grayLighter #ddd @grayLighter @grayLighter;
@@ -356,7 +356,7 @@
 }
 .tabs-right > .nav-tabs > li > a {
   margin-left: -1px;
-  .border-radius(0 4px 4px 0);
+  .border-radius(0 @borderRadiusMedium @borderRadiusMedium 0);
 }
 .tabs-right > .nav-tabs > li > a:hover {
   border-color: @grayLighter @grayLighter @grayLighter #ddd;

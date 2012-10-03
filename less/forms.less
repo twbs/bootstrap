@@ -85,7 +85,7 @@ input[type="color"],
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
-  .border-radius(@inputBorderRadius);
+  .border-radius(@borderRadiusInput);
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -424,7 +424,7 @@ select:focus:required:invalid {
     *margin-left: 0;
     font-size: @baseFontSize;
     vertical-align: top;
-    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    .border-radius(0 @borderRadiusInput @borderRadiusInput 0);
     // Make input on top when focused so blue border and shadow always show
     &:focus {
       z-index: 2;
@@ -461,14 +461,14 @@ select:focus:required:invalid {
   }
   .add-on:first-child,
   .btn:first-child {
-    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    .border-radius(@borderRadiusInput 0 0 @borderRadiusInput);
   }
 }
 .input-append {
   input,
   select,
   .uneditable-input {
-    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    .border-radius(@borderRadiusInput 0 0 @borderRadiusInput);
   }
   .add-on,
   .btn {
@@ -476,7 +476,7 @@ select:focus:required:invalid {
   }
   .add-on:last-child,
   .btn:last-child {
-    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    .border-radius(0 @borderRadiusInput @borderRadiusInput 0);
   }
 }
 // Remove all border-radius for inputs with both prepend and append
@@ -489,12 +489,12 @@ select:focus:required:invalid {
   .add-on:first-child,
   .btn:first-child {
     margin-right: -1px;
-    .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    .border-radius(@borderRadiusInput 0 0 @borderRadiusInput);
   }
   .add-on:last-child,
   .btn:last-child {
     margin-left: -1px;
-    .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    .border-radius(0 @borderRadiusInput @borderRadiusInput 0);
   }
 }
 
@@ -509,7 +509,7 @@ input.search-query {
   padding-left: 14px;
   padding-left: 4px \9; /* IE7-8 doesn't have border-radius, so don't indent the padding */
   margin-bottom: 0; // Remove the default margin on all inputs
-  .border-radius(15px);
+  .border-radius(@borderRadiusSearchQuery);
 }
 
 /* Allow for input prepend/append in search forms */
@@ -518,16 +518,16 @@ input.search-query {
   .border-radius(0); // Override due to specificity
 }
 .form-search .input-append .search-query {
-  .border-radius(14px 0 0 14px);
+  .border-radius(@borderRadiusSearch 0 0 @borderRadiusSearch);
 }
 .form-search .input-append .btn {
-  .border-radius(0 14px 14px 0);
+  .border-radius(0 @borderRadiusSearch @borderRadiusSearch 0);
 }
 .form-search .input-prepend .search-query {
-  .border-radius(0 14px 14px 0);
+  .border-radius(0 @borderRadiusSearch @borderRadiusSearch 0);
 }
 .form-search .input-prepend .btn {
-  .border-radius(14px 0 0 14px);
+  .border-radius(@borderRadiusSearch 0 0 @borderRadiusSearch);
 }
 
 
