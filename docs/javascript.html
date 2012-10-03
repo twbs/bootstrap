@@ -1609,6 +1609,18 @@ $('.carousel').carousel({
                  <td>highlights all default matches</td>
                  <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
                </tr>
+               <tr>
+                 <td>getter</td>
+                 <td>function</td>
+                 <td>returns item</td>
+                 <td>Method used to retrieve item from data source matching given identifier. Used when items are objects. Accepts a single argument <code>pk</code> (primary key) and has the scope of the typeahead instance. Should return item.</td>
+               </tr>
+               <tr>
+                 <td>setter</td>
+                 <td>function</td>
+                 <td>sets item</td>
+                 <td>Method used set item identifier to autocomplete results. Used when items are objects. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return item identifier (most likely <code>item.id</code>).</td>
+               </tr>
               </tbody>
             </table>
 
