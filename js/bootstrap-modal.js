@@ -130,6 +130,31 @@
           this.$element.off('keyup.dismiss.modal')
         }
       }
+      
+    , innerShadow: function () {
+        var that = this
+        var modalBody = that.$element.find('.modal-body')
+        if (this.isShown) {
+            if(that.$element.hasClass('inner-shadow')){
+                modalBody.scroll(function(e){
+                    if(modalBody.scrollTop() !== 0){
+                        if(!that.$element.hasClass('inner-shadow_top')){
+                            that.$element.addClass('inner-shadow_top')
+                        }
+                    }else{
+                        that.$element.removeClass('inner-shadow_top')
+                    }
+                    if(modalBody[0].scrollHeight - modalBody.scrollTop() > modalBody.outerHeight()){
+                        if(!that.$element.hasClass('inner-shadow_after')){
+                            that.$element.addClass('inner-shadow_after')
+                        }
+                    }else{
+                        that.$element.removeClass('inner-shadow_after')
+                    }
+                })
+            }
+        }
+    }
 
     , hideWithTransition: function () {
         var that = this
