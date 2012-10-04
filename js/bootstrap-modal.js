@@ -135,20 +135,20 @@
         var that = this
         var modalBody = that.$element.find('.modal-body')
         if (this.isShown) {
-            if(that.$element.hasClass('inner-shadow')){
-                modalBody.scroll(function(e){
-                    if(modalBody.scrollTop() !== 0){
-                        if(!that.$element.hasClass('inner-shadow_top')){
+            if (that.$element.hasClass('inner-shadow')) {
+                modalBody.scroll(function (e) {
+                    if (modalBody.scrollTop() !== 0) {
+                        if (!that.$element.hasClass('inner-shadow_top')) {
                             that.$element.addClass('inner-shadow_top')
                         }
-                    }else{
+                    } else {
                         that.$element.removeClass('inner-shadow_top')
                     }
-                    if(modalBody[0].scrollHeight - modalBody.scrollTop() > modalBody.outerHeight()){
-                        if(!that.$element.hasClass('inner-shadow_after')){
+                    if (modalBody[0].scrollHeight - modalBody.scrollTop() > modalBody.outerHeight()) {
+                        if (!that.$element.hasClass('inner-shadow_after')) {
                             that.$element.addClass('inner-shadow_after')
                         }
-                    }else{
+                    } else {
                         that.$element.removeClass('inner-shadow_after')
                     }
                 })
