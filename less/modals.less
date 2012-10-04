@@ -96,3 +96,27 @@
     margin-left: -1px;
   }
 }
+.modal.inner-shadow_top:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 42px;
+    left: 0px;
+    height: 6px;
+    width: 560px;
+    border: 0px solid transparent;
+    z-index: 1;
+    box-shadow:0px 5px 8px rgba(0,0,0,.2);
+}
+.modal.inner-shadow_after:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 44px;
+    left: 0px;
+    height: 6px;
+    width: 560px;
+    border: 0px solid transparent;
+    z-index: 1;
+    box-shadow:0px -5px 8px rgba(0,0,0,.2);
+}
