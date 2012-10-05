@@ -2808,7 +2808,7 @@ table th[class*="span"],
   border-bottom: 1px solid #ffffff;
 }
 
-.dropdown-menu a {
+.dropdown-menu li > a {
   display: block;
   padding: 3px 20px;
   clear: both;
