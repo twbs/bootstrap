@@ -85,12 +85,15 @@
  /* BUTTON DATA-API
   * =============== */
 
-  $(function () {
+  function bootstrapInitButton() {
     $('body').on('click.button.data-api', '[data-toggle^=button]', function ( e ) {
-      var $btn = $(e.target)
-      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
-      $btn.button('toggle')
-    })
-  })
+      var $btn = $(e.target);
+      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn');
+      $btn.button('toggle');
+    });
+  }
+
+  $(bootstrapInitButton);
+  $(document).on('page:load',bootstrapInitButton);
 
 }(window.jQuery);

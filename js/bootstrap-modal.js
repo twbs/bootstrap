@@ -219,7 +219,7 @@
  /* MODAL DATA-API
   * ============== */
 
-  $(function () {
+  function bootstrapInitModal() {
     $('body').on('click.modal.data-api', '[data-toggle="modal"]', function ( e ) {
       var $this = $(this)
         , href = $this.attr('href')
@@ -234,6 +234,9 @@
           $this.focus()
         })
     })
-  })
+  }
+
+  $(bootstrapInitModal);
+  $(document).bind('page:load',bootstrapInitModal);
 
 }(window.jQuery);

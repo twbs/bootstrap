@@ -85,20 +85,22 @@
 
  /* AFFIX DATA-API
   * ============== */
-
-  $(window).on('load', function () {
+  function bootstrapInitAffix() {
     $('[data-spy="affix"]').each(function () {
-      var $spy = $(this)
-        , data = $spy.data()
+      var $spy = $(this),
+        data = $spy.data();
 
-      data.offset = data.offset || {}
+      data.offset = data.offset || {};
 
-      data.offsetBottom && (data.offset.bottom = data.offsetBottom)
-      data.offsetTop && (data.offset.top = data.offsetTop)
+      data.offsetBottom && (data.offset.bottom = data.offsetBottom);
+      data.offsetTop && (data.offset.top = data.offsetTop);
 
-      $spy.affix(data)
-    })
-  })
+      $spy.affix(data);
+    });
+  }
+
+  $(window).on('load', bootstrapInitAffix);
+  $(document).on('page:load',bootstrapInitAffix);
 
 
 }(window.jQuery);
