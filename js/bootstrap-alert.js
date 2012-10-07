@@ -83,8 +83,11 @@
  /* ALERT DATA-API
   * ============== */
 
-  $(function () {
-    $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
-  })
+  function bootstrapInitAlert() {
+    $('body').on('click.alert.data-api', dismiss, Alert.prototype.close);
+  }
+
+  $(bootstrapInitAlert);
+  $(document).on('page:load',bootstrapInitAlert);
 
 }(window.jQuery);

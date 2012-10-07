@@ -125,11 +125,14 @@
  /* TAB DATA-API
   * ============ */
 
-  $(function () {
+  function bootstrapInitTab() {
     $('body').on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    })
-  })
+      e.preventDefault();
+      $(this).tab('show');
+    });
+  }
+
+  $(bootstrapInitTab);
+  $(document).on('page:load',bootstrapInitTab);
 
 }(window.jQuery);
