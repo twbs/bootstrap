@@ -12,16 +12,16 @@
         .buttonBackground(@blue, desaturate(lighten(@blue, 20), 40));
         color: @white;
     }
-    li.disabled a,
-    li.disabled.prev a,
-    li.disabled a:hover,
-    li.disabled a:hover[disabled] {
-        color: @grayLight;
-        .buttonBackground(darken(@sideNavigationBackground, 3), darken(@sideNavigationBackground, 3));
-    }
     li.active a,
     li.active a:hover {
         .buttonBackground(desaturate(lighten(@blue, 20), 40), @blue);
         color: @white;
+    }
+    li.disabled a,
+    li.disabled.prev a,
+    li.disabled a:hover,
+    li.disabled a:hover[disabled] {
+        color: @grayLight !important;
+        .buttonBackground(darken(@sideNavigationBackground, 3), darken(@sideNavigationBackground, 3));
     }
 }
