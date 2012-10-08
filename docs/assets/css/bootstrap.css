@@ -2859,6 +2859,7 @@ table th[class*="span"],
   text-decoration: none;
   cursor: default;
   background-color: transparent;
+  background-image: none;
 }
 
 .open {
