@@ -96,7 +96,9 @@
     }
 
   , show: function () {
-      var $tip
+      var that = this
+        , e = $.Event('show')
+        , $tip
         , inside
         , pos
         , actualWidth
@@ -106,6 +108,11 @@
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
+
+        this.$element.trigger(e)
+
+        if (e.isDefaultPrevented()) return
+
         this.setContent()
 
         if (this.options.animation) {
@@ -147,6 +154,10 @@
           .offset(tp)
           .addClass(placement)
           .addClass('in')
+
+        $.support.transition && $tip.hasClass('fade') ?
+            $tip.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
+            this.$element.trigger('shown')
       }
     }
 
@@ -160,9 +171,19 @@
 
   , hide: function () {
       var that = this
+        , e = $.Event('hide')
         , $tip = this.tip()
 
+      this.$element.trigger(e)
+
+      if (e.isDefaultPrevented()) return
+
       $tip.removeClass('in')
+
+      function remove() {
+        $tip.remove()
+        that.$element.trigger('hidden')
+      }
 
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
@@ -171,13 +192,13 @@
 
         $tip.one($.support.transition.end, function () {
           clearTimeout(timeout)
-          $tip.remove()
+          remove()
         })
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
-        $tip.remove()
+        remove()
 
       return this
     }
