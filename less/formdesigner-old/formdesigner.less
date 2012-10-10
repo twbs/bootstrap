@@ -1,3 +1,5 @@
+@containerHeight: 640px;
+
 .hq-oldstyle {
     /* to prevent flicker */
     display: none;
@@ -132,12 +134,12 @@
         background: none repeat scroll 0 0 white;
         border: 1px solid gray;
         float: left;
-        height: 700px;
+        height: @containerHeight;
         margin-top: 5px;
         overflow-x: hidden;
         overflow-y: auto;
         position: relative;
-        width: 235px;
+        width: 32%;
     }
 
     #fd-props-advanced{
@@ -180,8 +182,8 @@
         float: left;
         margin-top: 5px;
         margin-left: 5px;
-        height:700px;
-        width: 490px;
+        height:@containerHeight;
+        width: 65%;
         display:none;
         overflow-x:hidden;
 
@@ -217,24 +219,6 @@
         padding: 30px 0 0 5px;
         position: relative;
         top: -20px;
-    }
-
-    #fd-extra-tools{
-        float:right;
-        position:relative;
-        border: 1px solid gray;
-        height:700px;
-        width: 235px;
-        margin-top: 5px;
-        background: white;
-        z-index:4;
-        padding-right: 5px;
-    }
-
-    #fd-extra-tools-accordion{
-        z-index:4;
-        padding-left: 2px;
-        padding-bottom:100px;
     }
 
     #fd-acc-min-max{
@@ -374,11 +358,6 @@
 
     }
 
-    .fd-form-props-heading {
-        font-weight:bold;
-    }
-
-
     #fd-adv-props-content {
         padding: 0;
         overflow-x: hidden;
@@ -495,7 +474,7 @@
         float: left;
         margin-top: 5px;
         margin-left: 5px;
-        height:700px;
+        height: @containerHeight;
         width: 713px;
         overflow-x:hidden;
         display: none;
@@ -541,6 +520,7 @@
         text-align: left;
         font-size: 1.1em;
         font-weight: bold;
+        line-height: 1em;
     }
 
     #fd-props-content fieldset div .widget {
@@ -555,10 +535,14 @@
     }
 
     #fd-props-content fieldset input[type="text"], #fd-props-content fieldset select {
-        width: 220px;
+        width: 380px;
         float: right;
-        margin: .5em 1em .5em 0;
+        margin: .5em 10px .5em 0;
+    }
 
+    #fd-props-content fieldset select {
+        width: 220px;
+        margin-right: 175px;
     }
 
     #fd-props-content fieldset .xpath-edit-button {
@@ -612,4 +596,12 @@
     .dismiss-message-button {
         float: right;
     }
+
+    #fd-lang-disp-div {
+        padding-left: 10px;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid #CCC;
+        font-size: .8em;
+    }
+  }
 }
