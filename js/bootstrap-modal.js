@@ -49,24 +49,24 @@
         this.isShown = true
         this.$element.trigger('show')
 
-        escape.call(this)
+        escape.call(this);
         backdrop.call(this, function () {
-          var transition = $.support.transition && that.$element.hasClass('fade')
+          var transition = $.support.transition && that.$element.hasClass('fade');
 
           !that.$element.parent().length && that.$element.appendTo(document.body) //don't move modals dom position
 
           that.$element
-            .show()
+            .show();
 
           if (transition) {
-            that.$element[0].offsetWidth // force reflow
+            that.$element[0].offsetWidth; // force reflow
           }
 
-          that.$element.addClass('in')
+          that.$element.addClass('in');
 
           transition ?
             that.$element.one($.support.transition.end, function () { that.$element.trigger('shown') }) :
-            that.$element.trigger('shown')
+            that.$element.trigger('shown');
 
         })
       }
