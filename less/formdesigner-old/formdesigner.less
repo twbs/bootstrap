@@ -1,4 +1,5 @@
 @containerHeight: 640px;
+@contentWidth: 65%;
 
 .hq-oldstyle {
     /* to prevent flicker */
@@ -183,7 +184,7 @@
         margin-top: 5px;
         margin-left: 5px;
         height:@containerHeight;
-        width: 65%;
+        width: @contentWidth;
         display:none;
         overflow-x:hidden;
 
@@ -261,7 +262,7 @@
         width: 100%;
     }
 
-    #fd-props-head, #fd-extra-props-head {
+    #fd-props-head, #fd-extra-props-head, #fd-xpath-editor-head {
         position: relative;
         width: 100%;
     }
@@ -456,26 +457,13 @@
         text-align: center;
     }
 
-    #xpath-edit-head {
-        border: 1px solid #D3D3D3;
-        font-size: 17px;
-        font-weight: bold;
-        height: 24px;
-        padding: 0;
-        position: absolute;
-        text-align: center;
-        width: 710px;
-        z-index: 3;
-        line-height:25px;
-    }
-
     #fd-xpath-editor {
         border: 1px solid gray;
         float: left;
         margin-top: 5px;
         margin-left: 5px;
         height: @containerHeight;
-        width: 713px;
+        width: @contentWidth;
         overflow-x:hidden;
         display: none;
     }
