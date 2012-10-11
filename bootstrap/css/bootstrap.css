@@ -2757,6 +2757,11 @@ table [class*=span],
   content: "";
 }
 
+.open .caret{
+    border-top :0;
+    border-bottom: 4px solid black;
+}
+
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
