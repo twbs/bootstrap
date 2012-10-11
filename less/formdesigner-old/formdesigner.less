@@ -1,5 +1,6 @@
 @containerHeight: 640px;
-@contentWidth: 65%;
+@contentWidth: 69%;
+@gray: #bbb;
 
 .hq-oldstyle {
     /* to prevent flicker */
@@ -95,7 +96,7 @@
 
 
     #fd-question-table{
-        border: 1px solid gray;
+        border: 1px solid @gray;
         width: 50em;
     }
 
@@ -133,14 +134,14 @@
     }
     .fd-tree{
         background: none repeat scroll 0 0 white;
-        border: 1px solid gray;
+        border: 1px solid @gray;
         float: left;
         height: @containerHeight;
         margin-top: 5px;
         overflow-x: hidden;
         overflow-y: auto;
         position: relative;
-        width: 32%;
+        width: 30%;
     }
 
     #fd-props-advanced{
@@ -178,14 +179,14 @@
     }
 
 
-    #fd-question-properties {
-        border: 1px solid gray;
-        float: left;
+    #fd-question-properties, #fd-xpath-editor {
+        border: 1px solid @gray;
+        float: right;
         margin-top: 5px;
-        margin-left: 5px;
-        height:@containerHeight;
+
+        height: @containerHeight;
         width: @contentWidth;
-        display:none;
+        display: none;
         overflow-x:hidden;
 
     }
@@ -453,19 +454,8 @@
     }
 
     #fd-props-mugtype-info {
-        border: 1px solid gray;
+        border: 1px solid @gray;
         text-align: center;
-    }
-
-    #fd-xpath-editor {
-        border: 1px solid gray;
-        float: left;
-        margin-top: 5px;
-        margin-left: 5px;
-        height: @containerHeight;
-        width: @contentWidth;
-        overflow-x:hidden;
-        display: none;
     }
 
     #xpath-edit-inner {
