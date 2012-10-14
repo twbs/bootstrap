@@ -111,4 +111,27 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should respond to new options", function () {
+        stop()
+        $.support.transition = false
+        var backdrop = false;
+        var div = $("<div id='modal-test'></div>")
+        div
+          .bind("shown", function () {
+            ok(Boolean(div.data('modal').$backdrop) === backdrop, 'backdrop is ' + (backdrop ? '' : 'not') + ' visible');
+            div.modal("toggle")
+          })
+          .bind("hidden", function () {
+            if(!backdrop) {
+              backdrop = true;
+              div.modal({ backdrop: backdrop });
+            }
+            else {
+              div.remove()
+              start()
+            }
+          })
+          .modal({ backdrop: backdrop })
+      })
 })
