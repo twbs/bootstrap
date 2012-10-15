@@ -200,8 +200,9 @@
       if (!data) {
         $this.data('modal', (data = new Modal(this, options)))
       } else {
-        options.remote !== data.options.remote && options.remote && data.$element.find('.modal-body').load(options.remote)
-        $.extend(data.options, options)
+        options.remote !== data.options.remote && options.remote && data.$element.find('.modal-body').load(options.remote);
+        delete options.modal
+        data.options = options
         $this.data('modal', data)
       }
       if (typeof option == 'string') data[option]()
