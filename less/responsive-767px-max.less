@@ -58,7 +58,8 @@
   }
   // Make all grid-sized elements block level again
   [class*="span"],
-  .row-fluid [class*="span"] {
+  .row-fluid [class*="span"],
+  .row-fluid [class*="offset"]:first-child {
     float: none;
     display: block;
     width: 100%;
