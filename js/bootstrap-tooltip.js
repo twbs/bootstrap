@@ -125,6 +125,13 @@
 
         pos = this.getPosition(inside)
 
+        if (this.options.position === 'fixed') {
+          pos.top -= $(window).scrollTop()
+          pos.left -= $(window).scrollLeft()
+
+          $tip.addClass('fixed')
+        }
+
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
@@ -194,7 +201,7 @@
     }
 
   , getPosition: function (inside) {
-      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
+      return $.extend({}, (inside ? this.$element.position() : this.$element.offset()), {
         width: this.$element[0].offsetWidth
       , height: this.$element[0].offsetHeight
       })
@@ -264,6 +271,7 @@
   $.fn.tooltip.defaults = {
     animation: true
   , placement: 'top'
+  , position: 'fixed'
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
