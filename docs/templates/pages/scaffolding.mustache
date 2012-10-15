@@ -130,7 +130,7 @@
           <p>{{_i}}To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to the number of columns of its parent.{{/i}}</p>
           <div class="row show-grid">
             <div class="span9">
-              {{_i}}Level 1 of column{{/i}}
+              {{_i}}Level 1 column{{/i}}
               <div class="row show-grid">
                 <div class="span6">
                   {{_i}}Level 2{{/i}}
@@ -247,10 +247,10 @@
 <pre class="prettyprint linenums">
 &lt;div class="row-fluid"&gt;
   &lt;div class="span12"&gt;
-    {{_i}}Level 1 of column{{/i}}
+    {{_i}}Fluid 12{{/i}}
     &lt;div class="row-fluid"&gt;
-      &lt;div class="span6"&gt;{{_i}}Level 2{{/i}}&lt;/div&gt;
-      &lt;div class="span6"&gt;{{_i}}Level 2{{/i}}&lt;/div&gt;
+      &lt;div class="span6"&gt;{{_i}}Fluid 6{{/i}}&lt;/div&gt;
+      &lt;div class="span6"&gt;{{_i}}Fluid 6{{/i}}&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -442,7 +442,7 @@
           </table>
 
           <h3>{{_i}}When to use{{/i}}</h3>
-          <p>{{_i}}Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation.{{/i}}</p>
+          <p>{{_i}}Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.{{/i}}</p>
 
           <h3>{{_i}}Responsive utilities test case{{/i}}</h3>
           <p>{{_i}}Resize your browser or load on different devices to test the above classes.{{/i}}</p>

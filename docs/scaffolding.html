@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Scaffolding · Twitter Bootstrap</title>
+    <title>Scaffolding · Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -58,7 +58,7 @@
                 <a href="./components.html">Components</a>
               </li>
               <li class="">
-                <a href="./javascript.html">Javascript</a>
+                <a href="./javascript.html">JavaScript</a>
               </li>
               <li class="">
                 <a href="./customize.html">Customize</a>
@@ -201,7 +201,7 @@
           <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to the number of columns of its parent.</p>
           <div class="row show-grid">
             <div class="span9">
-              Level 1 of column
+              Level 1 column
               <div class="row show-grid">
                 <div class="span6">
                   Level 2
@@ -318,10 +318,10 @@
 <pre class="prettyprint linenums">
 &lt;div class="row-fluid"&gt;
   &lt;div class="span12"&gt;
-    Level 1 of column
+    Fluid 12
     &lt;div class="row-fluid"&gt;
-      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
-      &lt;div class="span6"&gt;Level 2&lt;/div&gt;
+      &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
+      &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -509,7 +509,7 @@
           </table>
 
           <h3>When to use</h3>
-          <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation.</p>
+          <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.</p>
 
           <h3>Responsive utilities test case</h3>
           <p>Resize your browser or load on different devices to test the above classes.</p>
@@ -544,12 +544,14 @@
     <footer class="footer">
       <div class="container">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
+          <li class="muted">&middot;</li>
           <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
         </ul>
       </div>
