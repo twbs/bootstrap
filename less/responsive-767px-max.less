@@ -58,7 +58,6 @@
   }
   // Make all grid-sized elements block level again
   [class*="span"],
-  .uneditable-input[class*="span"], // Makes uneditable inputs full-width when using grid sizing
   .row-fluid [class*="span"] {
     float: none;
     display: block;
@@ -71,9 +70,6 @@
     width: 100%;
     .box-sizing(border-box);
   }
-  .row-fluid [class*="offset"]:first-child {
-		margin-left: 0;
-	}
 
   // FORM FIELDS
   // -----------
@@ -107,8 +103,7 @@
     right: 20px;
     width: auto;
     margin: 0;
-    &.fade  { top: -100px; }
-    &.fade.in { top: 20px; }
+    &.fade.in { top: auto; }
   }
 
 }
@@ -158,20 +153,6 @@
       padding-left: 10px;
       padding-right: 10px;
     }
-  }
-
-  // Medias
-  // Reset float and spacing to stack
-  .media .pull-left,
-  .media .pull-right  {
-    float: none;
-    display: block;
-    margin-bottom: 10px;
-  }
-  // Remove side margins since we stack instead of indent
-  .media-object {
-    margin-right: 0;
-    margin-left: 0;
   }
 
   // Modals
