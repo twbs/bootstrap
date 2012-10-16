@@ -219,6 +219,9 @@
 
   , keyup: function (e) {
       switch(e.keyCode) {
+        case 16: // shift
+	      case 17: // ctrl
+	      case 18: // alt
         case 40: // down arrow
         case 38: // up arrow
           break
