@@ -201,4 +201,31 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
+      test("should fire callback on enter key if it's was provided", function () {
+        var $input = $('<input />').typeahead({
+            source: ['aa', 'ab', 'ac'],
+            onEnterKey: function(value) {
+              equal($input.val(), value, 'enter key callback is fired')
+            }
+          })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($input.val(), 'ac', 'input value was correctly set')
+
+        // trigger callback
+        $input.trigger({
+          type: 'keyup'
+          , keyCode: 13
+        })
+
+        typeahead.$menu.remove()
+      })
 })

@@ -225,7 +225,11 @@
 
         case 9: // tab
         case 13: // enter
-          if (!this.shown) return
+          if (!this.shown) {
+            if (this.options.onEnterKey) {
+              (this.options.onEnterKey) (this.$element.val())
+            }
+          }
           this.select()
           break
 
