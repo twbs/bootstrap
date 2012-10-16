@@ -372,6 +372,7 @@ iframe{border:none;}
 .vector a .jstree-icon{display:none;background:transparent url('../images/vector.png') no-repeat scroll top left !important;}
 .aoi-parent a .jstree-icon{background:transparent url('../images/window.png') no-repeat scroll top left !important;}
 .aoi a .jstree-icon{display:none;}
+.aoi-shared a .jstree-icon{display:inline-block;float:right;margin-left:6px;background:transparent url('../images/share.png') no-repeat scroll top left !important;}
 div.dataTables_length label{width:460px;float:left;text-align:left;}
 div.dataTables_length select{width:75px;}
 div.dataTables_filter label{float:right;width:460px;}

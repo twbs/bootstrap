@@ -2688,6 +2688,12 @@ iframe {
 .aoi a .jstree-icon {
   display: none;
 }
+.aoi-shared a .jstree-icon {
+  display: inline-block;
+  float: right;
+  margin-left: 6px;
+  background: transparent url('../images/share.png') no-repeat scroll top left !important;
+}
 div.dataTables_length label {
   width: 460px;
   float: left;
