@@ -920,8 +920,15 @@
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('modal')
-        , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
-      if (!data) $this.data('modal', (data = new Modal(this, options)))
+        , options = $.extend({}, $.fn.modal.defaults, $this.data(), data && data.options, typeof option == 'object' && option)
+      if (!data) {
+        $this.data('modal', (data = new Modal(this, options)))
+      } else {
+        options.remote !== data.options.remote && options.remote && data.$element.find('.modal-body').load(options.remote);
+        delete options.modal
+        data.options = options
+        $this.data('modal', data)
+      }
       if (typeof option == 'string') data[option]()
       else if (options.show) data.show()
     })
