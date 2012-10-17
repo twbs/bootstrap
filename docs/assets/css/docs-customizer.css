@@ -1,0 +1,57 @@
+/*
+  Bootstrap's customizer
+*/
+
+body {
+  padding: 0;
+}
+
+body > .navbar,
+.footer {
+  display: none;
+}
+
+.bsc-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 239px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ccc;
+}
+
+.bsc-preview {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+.bsc-heading {
+  margin: 20px;
+  color: #ccc;
+  text-shadow: 0 1px 0 rgba(255,255,255,.75);
+}
+
+.bsc-toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.bsc-toolbar .btn-group {
+  width: 239px;
+  overflow: hidden;
+}
+.bsc-toolbar .btn-group .btn {
+  border-radius: 0;
+  width: 121px;
+  margin: 0;
+  padding: 10px;
+}
+.bsc-toolbar .btn-group .btn:first-child {
+  margin-left: -1px;
+}
+.bsc-toolbar .btn-group .btn:last-child {
+  margin-right: -1px;
+  border-left-width: 0;
+}
