@@ -102,7 +102,12 @@
 
       isCycling && this.pause()
 
-      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+      if ($next.length === 0) {
+        $next = this.$element.find('.item')[fallback]()
+        e = $.Event('slide', {
+          relatedTarget: $next[0]
+        })
+      }
 
       if ($next.hasClass('active')) return
 
