@@ -64,6 +64,12 @@
         }, 3000)
       })
 
+    // select demo
+    $('.select-chevron').buttonSelect({
+      next: '<i class="icon icon-chevron-right"></i>'
+    , prev: '<i class="icon icon-chevron-left"></i>'
+    })
+
     // carousel demo
     $('#myCarousel').carousel()
 

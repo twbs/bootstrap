@@ -24,6 +24,7 @@
           <li><a href="#popovers"><i class="icon-chevron-right"></i> {{_i}}Popover{{/i}}</a></li>
           <li><a href="#alerts"><i class="icon-chevron-right"></i> {{_i}}Alert{{/i}}</a></li>
           <li><a href="#buttons"><i class="icon-chevron-right"></i> {{_i}}Button{{/i}}</a></li>
+          <li><a href="#selects"><i class="icon-chevron-right"></i> {{_i}}Select{{/i}}</a></li>
           <li><a href="#collapse"><i class="icon-chevron-right"></i> {{_i}}Collapse{{/i}}</a></li>
           <li><a href="#carousel"><i class="icon-chevron-right"></i> {{_i}}Carousel{{/i}}</a></li>
           <li><a href="#typeahead"><i class="icon-chevron-right"></i> {{_i}}Typeahead{{/i}}</a></li>
@@ -1142,6 +1143,100 @@ $('#my-alert').bind('closed', function () {
   $('.btn').button('complete')
 &lt;/script&gt;
 </pre>
+          </section>
+
+
+
+          <!-- Selects
+          ================================================== -->
+          <section id="selects">
+            <div class="page-header">
+              <h1>{{_i}}Selects{{/i}} <small>bootstrap-select.js</small></h1>
+            </div>
+
+            <h2>{{_i}}Example uses{{/i}}</h2>
+            <p>{{_i}}Do more with selects. Control selected value using next and previous buttons.{{/i}}</p>
+            <div class="bs-docs-example" style="padding-bottom: 24px;">
+              <select data-change="select">
+                <option>{{_i}}Option{{/i}} 1</option>
+                <option selected>{{_i}}Option{{/i}} 2</option>
+                <option>{{_i}}Option{{/i}} 3</option>
+              </select>
+            </div>{{! /example }}
+            <pre class="prettyprint linenums">&lt;select data-change=&quot;select&quot; &gt;
+  &lt;option&gt;Option 1&lt;/option&gt;
+  &lt;option selected=&quot;&quot;&gt;Option 2&lt;/option&gt;
+  &lt;option&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;</pre>
+
+
+            <hr class="bs-docs-separator">
+
+
+            <h2>{{_i}}Usage{{/i}}</h2>
+            <p>{{_i}}Enable selects via JavaScript:{{/i}}</p>
+            <pre class="prettyprint linenums">$().buttonSelect()</pre>
+
+            <h3>{{_i}}Markup{{/i}}</h3>
+            <p>{{_i}}You can activate control buttons by specifying <code>data-change="select"</code> on a select.{{/i}}</p>
+            <pre class="prettyprint linenums">&lt;select data-change=&quot;select&quot; &gt;
+  &lt;option&gt;Option 1&lt;/option&gt;
+  &lt;option selected=&quot;&quot;&gt;Option 2&lt;/option&gt;
+  &lt;option&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;</pre>
+
+            <h3>{{_i}}Options{{/i}}</h3>
+            <p>{{_i}}You can define your own template for generating controll buttons.{{/i}}</p>
+
+            <table class="table table-bordered table-striped">
+              <thead>
+               <tr>
+                 <th style="width: 100px;">{{_i}}Name{{/i}}</th>
+                 <th style="width: 50px;">{{_i}}type{{/i}}</th>
+                 <th style="width: 50px;">{{_i}}default{{/i}}</th>
+                 <th>{{_i}}description{{/i}}</th>
+               </tr>
+              </thead>
+              <tbody>
+               <tr>
+                 <td>{{_i}}next{{/i}}</td>
+                 <td>{{_i}}string{{/i}}</td>
+                 <td>&amp;gt;</td>
+                 <td>{{_i}}Displays as the content of next control button.{{/i}}</td>
+               </tr>
+               <tr>
+                 <td>{{_i}}prev{{/i}}</td>
+                 <td>{{_i}}string{{/i}}</td>
+                 <td>&amp;lt;</td>
+                 <td>{{_i}}Displays as the content of previous control button.{{/i}}</td>
+               </tr>
+              </tbody>
+            </table>
+
+
+            <h3>{{_i}}Methods{{/i}}</h3>
+
+            <h4>.buttonSelect('options')</h4>
+            <p>{{_i}}Initializes the select with an optional options object and change the buttons html.{{/i}}</p>
+
+            <div class="bs-docs-example" style="padding-bottom: 24px;">
+              <select class="select-chevron">
+                <option>{{_i}}Option{{/i}} 1</option>
+                <option selected>{{_i}}Option{{/i}} 2</option>
+                <option>{{_i}}Option{{/i}} 3</option>
+              </select>
+            </div>{{! /example }}
+            <pre class="prettyprint linenums">$('.select-chevron').buttonSelect({
+    next: '&lt;i class=&quot;icon icon-chevron-right&quot;&gt;&lt;/i&gt;'
+  , prev: '&lt;i class=&quot;icon icon-chevron-left&quot;&gt;&lt;/i&gt;'
+})</pre>
+
+            <h4>.buttonSelect('next')</h4>
+            <p>{{_i}}Select next option in select box.{{/i}}</p>
+
+            <h4>$().buttonSelect('prev')</h4>
+            <p>{{_i}}Select previous option in select box.{{/i}}</p>
+
           </section>
 
 

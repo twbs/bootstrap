@@ -95,6 +95,7 @@
           <li><a href="#popovers"><i class="icon-chevron-right"></i> Popover</a></li>
           <li><a href="#alerts"><i class="icon-chevron-right"></i> Alert</a></li>
           <li><a href="#buttons"><i class="icon-chevron-right"></i> Button</a></li>
+          <li><a href="#selects"><i class="icon-chevron-right"></i> Select</a></li>
           <li><a href="#collapse"><i class="icon-chevron-right"></i> Collapse</a></li>
           <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
           <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
@@ -1216,6 +1217,100 @@ $('#my-alert').bind('closed', function () {
 
 
 
+          <!-- Selects
+          ================================================== -->
+          <section id="selects">
+            <div class="page-header">
+              <h1>Selects <small>bootstrap-select.js</small></h1>
+            </div>
+
+            <h2>Example uses</h2>
+            <p>Do more with selects. Control selected value using next and previous buttons.</p>
+            <div class="bs-docs-example" style="padding-bottom: 24px;">
+              <select data-change="select">
+                <option>Option 1</option>
+                <option selected>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <pre class="prettyprint linenums">&lt;select data-change=&quot;select&quot; &gt;
+  &lt;option&gt;Option 1&lt;/option&gt;
+  &lt;option selected=&quot;&quot;&gt;Option 2&lt;/option&gt;
+  &lt;option&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;</pre>
+
+
+            <hr class="bs-docs-separator">
+
+
+            <h2>Usage</h2>
+            <p>Enable selects via JavaScript:</p>
+            <pre class="prettyprint linenums">$().buttonSelect()</pre>
+
+            <h3>Markup</h3>
+            <p>You can activate control buttons by specifying <code>data-change="select"</code> on a select.</p>
+            <pre class="prettyprint linenums">&lt;select data-change=&quot;select&quot; &gt;
+  &lt;option&gt;Option 1&lt;/option&gt;
+  &lt;option selected=&quot;&quot;&gt;Option 2&lt;/option&gt;
+  &lt;option&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;</pre>
+
+            <h3>Options</h3>
+            <p>You can define your own template for generating controll buttons.</p>
+
+            <table class="table table-bordered table-striped">
+              <thead>
+               <tr>
+                 <th style="width: 100px;">Name</th>
+                 <th style="width: 50px;">type</th>
+                 <th style="width: 50px;">default</th>
+                 <th>description</th>
+               </tr>
+              </thead>
+              <tbody>
+               <tr>
+                 <td>next</td>
+                 <td>string</td>
+                 <td>&amp;gt;</td>
+                 <td>Displays as the content of next control button.</td>
+               </tr>
+               <tr>
+                 <td>prev</td>
+                 <td>string</td>
+                 <td>&amp;lt;</td>
+                 <td>Displays as the content of previous control button.</td>
+               </tr>
+              </tbody>
+            </table>
+
+
+            <h3>Methods</h3>
+
+            <h4>.buttonSelect('options')</h4>
+            <p>Initializes the select with an optional options object and change the buttons html.</p>
+
+            <div class="bs-docs-example" style="padding-bottom: 24px;">
+              <select class="select-chevron">
+                <option>Option 1</option>
+                <option selected>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <pre class="prettyprint linenums">$('.select-chevron').buttonSelect({
+    next: '&lt;i class=&quot;icon icon-chevron-right&quot;&gt;&lt;/i&gt;'
+  , prev: '&lt;i class=&quot;icon icon-chevron-left&quot;&gt;&lt;/i&gt;'
+})</pre>
+
+            <h4>.buttonSelect('next')</h4>
+            <p>Select next option in select box.</p>
+
+            <h4>$().buttonSelect('prev')</h4>
+            <p>Select previous option in select box.</p>
+
+          </section>
+
+
+
           <!-- Collapse
           ================================================== -->
           <section id="collapse">
@@ -1731,6 +1826,7 @@ $('[data-spy="affix"]').each(function () {
     <script src="assets/js/bootstrap-tooltip.js"></script>
     <script src="assets/js/bootstrap-popover.js"></script>
     <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-select.js"></script>
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap-typeahead.js"></script>
