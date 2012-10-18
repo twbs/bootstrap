@@ -142,4 +142,12 @@ $(function () {
         ok(!$._data(tooltip[0], 'events').mouseover && !$._data(tooltip[0], 'events').mouseout, 'tooltip does not have any events')
       })
 
+      test("should show tooltip with delegate selector on click", function () {
+        var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
+        var tooltip = div.appendTo('#qunit-fixture')
+                         .tooltip({ selector: 'a[rel=tooltip]',
+                                    trigger: 'click' })
+        div.find('a').trigger('click')
+        ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
+      })
 })
