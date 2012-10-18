@@ -119,7 +119,7 @@
         inside = /in/.test(placement)
 
         $tip
-          .remove()
+          .detach()
           .css({ top: 0, left: 0, display: 'block' })
           .insertAfter(this.$element)
 
@@ -166,18 +166,18 @@
 
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
-          $tip.off($.support.transition.end).remove()
+          $tip.off($.support.transition.end).detach()
         }, 500)
 
         $tip.one($.support.transition.end, function () {
           clearTimeout(timeout)
-          $tip.remove()
+          $tip.detach()
         })
       }
 
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
-        $tip.remove()
+        $tip.detach()
 
       return this
     }
