@@ -337,15 +337,17 @@
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
-        , e = $.Event('slide', {
-            relatedTarget: $next[0]
-          })
+        , e
 
       this.sliding = true
 
       isCycling && this.pause()
 
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+
+      e = $.Event('slide', {
+        relatedTarget: $next[0]
+      })
 
       if ($next.hasClass('active')) return
 
@@ -410,7 +412,7 @@
     $('body').on('click.carousel.data-api', '[data-slide]', function ( e ) {
       var $this = $(this), href
         , $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-        , options = !$target.data('modal') && $.extend({}, $target.data(), $this.data())
+        , options = !$target.data('carousel') && $.extend({}, $target.data(), $this.data())
       $target.carousel(options)
       e.preventDefault()
     })
@@ -1193,8 +1195,9 @@
       this.enabled = !this.enabled
     }
 
-  , toggle: function () {
-      this[this.tip().hasClass('in') ? 'hide' : 'show']()
+  , toggle: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      self[self.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
   , destroy: function () {

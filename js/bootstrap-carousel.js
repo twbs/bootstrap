@@ -94,15 +94,17 @@
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
-        , e = $.Event('slide', {
-            relatedTarget: $next[0]
-          })
+        , e
 
       this.sliding = true
 
       isCycling && this.pause()
 
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+
+      e = $.Event('slide', {
+        relatedTarget: $next[0]
+      })
 
       if ($next.hasClass('active')) return
 

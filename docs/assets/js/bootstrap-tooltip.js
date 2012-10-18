@@ -235,8 +235,9 @@
       this.enabled = !this.enabled
     }
 
-  , toggle: function () {
-      this[this.tip().hasClass('in') ? 'hide' : 'show']()
+  , toggle: function (e) {
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      self[self.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
   , destroy: function () {
