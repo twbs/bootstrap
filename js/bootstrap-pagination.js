@@ -138,12 +138,12 @@
 
   $.fn.pagination.Constructor = Pagination
 
-  $.fn.pagination.defaults = $.extend({} , $.fn.tooltip.defaults, {
+  $.fn.pagination.defaults = {
     pageSize: 3
   , showArrows : true
   , prevText: '&laquo'
   , nextText: '&raquo'
-  })
+  }
 
   /* PAGINATION DATA-API
   * ==================== */
