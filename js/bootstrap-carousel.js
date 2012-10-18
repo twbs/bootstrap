@@ -95,7 +95,8 @@
         , fallback  = type == 'next' ? 'first' : 'last'
         , that = this
         , e = $.Event('slide', {
-            relatedTarget: $next[0]
+            relatedTarget: $next[0],
+            direction: direction
           })
 
       this.sliding = true
