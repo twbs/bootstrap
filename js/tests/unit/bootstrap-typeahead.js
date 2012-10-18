@@ -82,6 +82,61 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+      
+      test("should accept collection of objects as data source", function () {
+        var $input = $('<input />').typeahead({
+              source: function () {
+                return [{'id': '1', 'name': 'aa'}, {'id': '2', 'name': 'ab'}, {'id': '3', 'name': 'ac'}]
+              },
+              matcher: function (item) {
+                return ~item.name.toLowerCase().indexOf(this.query.toLowerCase())
+              },
+              sorter: function (items) {
+                var beginswith = []
+                  , caseSensitive = []
+                  , caseInsensitive = []
+                  , item
+
+                while (item = items.shift()) { 
+                  if (!item.name.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+                  else if (~item.name.indexOf(this.query)) caseSensitive.push(item)
+                  else caseInsensitive.push(item)
+                }
+
+                return beginswith.concat(caseSensitive, caseInsensitive)
+              },
+              highlighter: function (item) {
+                var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+                return item.name.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+                    return '<strong>' + match + '</strong>'
+                })
+              },
+              getter: function(pk) {
+                var source = $.isFunction(this.source) ? this.source() : this.source
+                
+                return $.grep(source, function(item){
+                    return item.id == pk
+                })[0]
+              },
+              setter: function(item) {            
+                return item.id
+              },
+              updater: function (item) {
+                $input.data('value', item.id)
+                return item.name
+              }
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        typeahead.$menu.remove()
+      })
 
       test("should not explode when regex chars are entered", function () {
         var $input = $('<input />').typeahead({
