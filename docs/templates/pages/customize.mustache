@@ -1,32 +1,28 @@
-<!-- Masthead
-================================================== -->
-<header class="jumbotron subhead" id="overview">
-  <div class="container">
-    <h1>{{_i}}Customize and download{{/i}}</h1>
-    <p class="lead">{{_i}}<a href="https://github.com/twitter/bootstrap/zipball/master">Download Bootstrap</a> or customize variables, components, javascript plugins, and more.{{/i}}</p>
-  </div>
-</header>
+<!-- Customizer CSS -->
+<link href="assets/css/docs-customizer.css" rel="stylesheet">
 
+<form>
 
-  <div class="container">
-
-    <!-- Docs nav
-    ================================================== -->
-    <div class="row">
-      <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#components"><i class="icon-chevron-right"></i> {{_i}}1. Choose components{{/i}}</a></li>
-          <li><a href="#plugins"><i class="icon-chevron-right"></i> {{_i}}2. Select jQuery plugins{{/i}}</a></li>
-          <li><a href="#variables"><i class="icon-chevron-right"></i> {{_i}}3. Customize variables{{/i}}</a></li>
-          <li><a href="#download"><i class="icon-chevron-right"></i> {{_i}}4. Download{{/i}}</a></li>
-        </ul>
+  <div class="bsc-sidebar">
+    <h3 class="bsc-heading">Bootjack</h3>
+    <ul class="bsc-accordion">
+      <li>
+        <input type="checkbox" checked> Scaffolding
+      </li>
+    </ul>
+    <div class="bsc-toolbar">
+      <div class="btn-group">
+        <button class="btn" type="button">Download</button>
+        <button class="btn" type="button">Reset</button>
       </div>
-      <div class="span9">
+    </div>
+  </div>
+  <div class="bsc-preview">
+    preview
 
 
         <!-- Customize form
         ================================================== -->
-        <form>
           <section class="download" id="components">
             <div class="page-header">
               <a class="btn btn-small pull-right toggle-all" href="#">{{_i}}Toggle all{{/i}}</a>
@@ -72,6 +68,7 @@
               </div><!-- /span -->
               <div class="span3">
                 <h3>{{_i}}Miscellaneous{{/i}}</h3>
+                <label class="checkbox"><input checked="checked" type="checkbox" value="media.less"> {{_i}}Media object{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="wells.less"> {{_i}}Wells{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="close.less"> {{_i}}Close icon{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> {{_i}}Utilities{{/i}}</label>
@@ -353,11 +350,8 @@
               <p>{{_i}}Downloads include compiled CSS, compiled and minified CSS, and compiled jQuery plugins, all nicely packed up into a zipball for your convenience.{{/i}}</p>
             </div>
           </section><!-- /download -->
-        </form>
 
 
+  </div>
 
-      </div>{{! /span9 }}
-    </div>{{! row}}
-
-  </div>{{! /.container }}
+</form>

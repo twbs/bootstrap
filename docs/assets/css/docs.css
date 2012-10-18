@@ -133,7 +133,7 @@ hr.soften {
 
 /* Download button */
 .masthead .btn {
-  padding: 14px 24px;
+  padding: 19px 24px;
   font-size: 24px;
   font-weight: 200;
   color: #fff; /* redeclare to override the `.jumbotron a` */
