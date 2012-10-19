@@ -57,9 +57,12 @@
     margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
   }
   // Make all grid-sized elements block level again
-  [class*="span"],
-  .uneditable-input[class*="span"], // Makes uneditable inputs full-width when using grid sizing
-  .row-fluid [class*="span"] {
+  [class^="span"],
+  [class*=" span"],
+  .uneditable-input[class^="span"], // Makes uneditable inputs full-width when using grid sizing
+  .uneditable-input[class*=" span"],
+  .row-fluid [class^="span"],
+  .row-fluid [class*=" span"] {
     float: none;
     display: block;
     width: 100%;
@@ -81,21 +84,29 @@
   .input-large,
   .input-xlarge,
   .input-xxlarge,
-  input[class*="span"],
-  select[class*="span"],
-  textarea[class*="span"],
+  input[class^="span"],
+  input[class*=" span"],
+  select[class^="span"],
+  select[class*=" span"],
+  textarea[class^="span"],
+  textarea[class*=" span"],
   .uneditable-input {
     .input-block-level();
   }
   // But don't let it screw up prepend/append inputs
   .input-prepend input,
   .input-append input,
-  .input-prepend input[class*="span"],
-  .input-append input[class*="span"] {
+  .input-prepend input[class^="span"],
+  .input-prepend input[class*=" span"],
+  .input-append input[class^="span"],
+  .input-append input[class*=" span"] {
     display: inline-block; // redeclare so they don't wrap to new lines
     width: auto;
   }
-  .controls-row [class*="span"] + [class*="span"] {
+  .controls-row [class*=" span"] + [class*=" span"],
+  .controls-row [class^="span"] + [class^="span"],
+  .controls-row [class^="span"] + [class*=" span"],
+  .controls-row [class*=" span"] + [class^="span"] {
     margin-left: 0;
   }
 
