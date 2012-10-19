@@ -582,7 +582,7 @@
       .clearfix();
     }
 
-    [class*="span"] {
+    [class^="span"], [class*=" span"] {
       float: left;
       min-height: 1px; // prevent collapsing columns
       margin-left: @gridGutterWidth;
@@ -633,18 +633,21 @@
     .row-fluid {
       width: 100%;
       .clearfix();
-      [class*="span"] {
+      [class^="span"], [class*=" span"] {
         .input-block-level();
         float: left;
         margin-left: @fluidGridGutterWidth;
         *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
       }
-      [class*="span"]:first-child {
+      [class^="span"]:first-child, [class*=" span"]:first-child {
         margin-left: 0;
       }
 
       // Space grid-sized controls properly if multiple per line
-      .controls-row [class*="span"] + [class*="span"] {
+      .controls-row [class^="span"] + [class^="span"],
+      .controls-row [class*=" span"] + [class*=" span"],
+      .controls-row [class^="span"] + [class*=" span"],
+      .controls-row [class*=" span"] + [class^="span"] {
         margin-left: @fluidGridGutterWidth;
       }
 
@@ -674,7 +677,10 @@
     }
 
     // Space grid-sized controls properly if multiple per line
-    .controls-row [class*="span"] + [class*="span"] {
+    .controls-row [class*=" span"] + [class*=" span"],
+    .controls-row [class^="span"] + [class^="span"],
+    .controls-row [class^="span"] + [class*=" span"],
+    .controls-row [class*=" span"] + [class^="span"] {
       margin-left: @gridGutterWidth;
     }
 

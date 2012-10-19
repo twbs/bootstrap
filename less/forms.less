@@ -267,29 +267,47 @@ textarea {
 .input-xxlarge    { width: 530px; }
 
 // Grid style input sizes
-input[class*="span"],
-select[class*="span"],
-textarea[class*="span"],
-.uneditable-input[class*="span"],
+input[class^="span"],
+input[class*=" span"],
+select[class^="span"],
+select[class*=" span"],
+textarea[class^="span"],
+textarea[class*=" span"],
+.uneditable-input[class^="span"],
+.uneditable-input[class*=" span"],
 // Redeclare since the fluid row class is more specific
-.row-fluid input[class*="span"],
-.row-fluid select[class*="span"],
-.row-fluid textarea[class*="span"],
-.row-fluid .uneditable-input[class*="span"] {
+.row-fluid input[class^="span"],
+.row-fluid input[class*=" span"],
+.row-fluid select[class^="span"],
+.row-fluid select[class*=" span"],
+.row-fluid textarea[class^="span"],
+.row-fluid textarea[class*=" span"],
+.row-fluid .uneditable-input[class^="span"],
+.row-fluid .uneditable-input[class*=" span"] {
   float: none;
   margin-left: 0;
 }
 // Ensure input-prepend/append never wraps
-.input-append input[class*="span"],
-.input-append .uneditable-input[class*="span"],
-.input-prepend input[class*="span"],
-.input-prepend .uneditable-input[class*="span"],
-.row-fluid input[class*="span"],
-.row-fluid select[class*="span"],
-.row-fluid textarea[class*="span"],
-.row-fluid .uneditable-input[class*="span"],
-.row-fluid .input-prepend [class*="span"],
-.row-fluid .input-append [class*="span"] {
+.input-append input[class^="span"],
+.input-append input[class*=" span"],
+.input-append .uneditable-input[class^="span"],
+.input-append .uneditable-input[class*=" span"],
+.input-prepend input[class^="span"],
+.input-prepend input[class*=" span"],
+.input-prepend .uneditable-input[class^="span"],
+.input-prepend .uneditable-input[class*=" span"],
+.row-fluid input[class^="span"],
+.row-fluid input[class*=" span"],
+.row-fluid select[class^="span"],
+.row-fluid select[class*=" span"],
+.row-fluid textarea[class^="span"],
+.row-fluid textarea[class*=" span"],
+.row-fluid .uneditable-input[class^="span"],
+.row-fluid .uneditable-input[class*=" span"],
+.row-fluid .input-prepend [class^="span"],
+.row-fluid .input-prepend [class*=" span"],
+.row-fluid .input-append [class^="span"],
+.row-fluid .input-append [class*=" span"] {
   display: inline-block;
 }
 
@@ -307,14 +325,18 @@ textarea[class*="span"],
 }
 
 // Float to collapse white-space for proper grid alignment
-.controls-row [class*="span"],
+.controls-row [class^="span"],
+.controls-row [class*=" span"],
 // Redeclare the fluid grid collapse since we undo the float for inputs
-.row-fluid .controls-row [class*="span"] {
+.row-fluid .controls-row [class^="span"],
+.row-fluid .controls-row [class*=" span"] {
   float: left;
 }
 // Explicity set top padding on all checkboxes/radios, not just first-child
-.controls-row .checkbox[class*="span"],
-.controls-row .radio[class*="span"] {
+.controls-row .checkbox[class^="span"],
+.controls-row .checkbox[class*=" span"],
+.controls-row .radio[class^="span"],
+.controls-row .radio[class*=" span"] {
   padding-top: 5px;
 }
 
