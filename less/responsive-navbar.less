@@ -169,8 +169,9 @@
 
 // DEFAULT DESKTOP
 // ---------------
+@temp: @navbarCollapseWidth + 1;
 
-@media (min-width: 980px) {
+@media (min-width: @temp) {
 
   // Required to make the collapsing navbar work on regular desktops
   .nav-collapse.collapse {
