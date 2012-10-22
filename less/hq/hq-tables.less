@@ -14,6 +14,10 @@
     font-weight: normal;
     position: relative;
 }
+.datatable thead th:nth-child(odd),
+.table-hq thead th:nth-child(odd) {
+    #gradient > .vertical(desaturate(@blue, 60), desaturate(darken(@blue, 10), 20));
+}
 
 .datatable thead th {
     &.headerSortDown [class^="icon-hq-"] {
@@ -22,6 +26,25 @@
     &.headerSortUp [class^="icon-hq-"] {
         background-position: 0  -48px;
     }
+}
+
+.datatable thead th .sideways {
+    transform-origin: 0 0;
+    -webkit-writing-mode:vertical-rl;
+    -moz-writing-mode:vertical-rl;
+    writing-mode:vertical-rl;
+    .rotate(180deg);
+    height:200px;
+    width:50px;
+}
+
+.datatable thead th .expected {
+    #gradient > .vertical(desaturate(lighten(@green, 40), 10), desaturate(lighten(@green, 30), 10));
+    margin-top:10px;
+    color: darken(@green, 20);
+    font-weight: bold;
+    padding: 2px;
+    text-align: center;
 }
 
 .datatable tbody,
