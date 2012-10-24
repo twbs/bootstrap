@@ -47,7 +47,7 @@
   @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
   @include background-clip(padding-box);
   &.fade {
-    @include transition(#{opacity .3s linear, top .3s ease-out});
+    @include transition(opacity .3s linear, top .3s ease-out);
     top: -25%;
   }
   &.fade.in { top: 50%; }
