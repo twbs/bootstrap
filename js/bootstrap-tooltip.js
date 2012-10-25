@@ -166,12 +166,16 @@
 
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
-          $tip.off($.support.transition.end).remove()
+          if (!$tip.hasClass("in")) {
+            $tip.off($.support.transition.end).remove()
+          }
         }, 500)
 
         $tip.one($.support.transition.end, function () {
           clearTimeout(timeout)
-          $tip.remove()
+          if (!$tip.hasClass("in")) {
+            $tip.remove()
+          }
         })
       }
 
