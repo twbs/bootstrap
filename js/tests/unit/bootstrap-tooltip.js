@@ -128,6 +128,22 @@ $(function () {
         }, 200)
       })
 
+      test("should show tooltip if 'in' class is present when delay expires", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ delay: 150 })
+        stop()
+        tooltip.tooltip('show')
+        tooltip.trigger('mouseout')
+        setTimeout(function () {
+          tooltip.trigger('mouseenter')
+          setTimeout(function () {
+            ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
+            start()
+          }, 200)
+        }, 100)
+      })
+
       test("should destroy tooltip", function () {
         var tooltip = $('<div/>').tooltip().on('click.foo', function(){})
         ok(tooltip.data('tooltip'), 'tooltip has data')
