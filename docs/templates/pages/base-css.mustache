@@ -1446,20 +1446,38 @@
           <p>{{_i}}IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.{{/i}}</p>
 
 
-          <h2>{{_i}}Button sizes{{/i}}</h2>
+          <h2>{{_i}}Button sizes and icons{{/i}}</h2>
           <p>{{_i}}Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.{{/i}}</p>
           <div class="bs-docs-example">
             <p>
               <button type="button" class="btn btn-large btn-primary">{{_i}}Large button{{/i}}</button>
               <button type="button" class="btn btn-large">{{_i}}Large button{{/i}}</button>
+              <button type="button" class="btn btn-large btn-primary">
+              	<i class="icon-home icon-white"></i>{{_i}}Large button{{/i}}
+              </button>
+              <button type="button" class="btn btn-large">
+              	<i class="icon-home"></i>{{_i}}Large button{{/i}}
+              </button>
             </p>
             <p>
               <button type="button" class="btn btn-primary">{{_i}}Default button{{/i}}</button>
               <button type="button" class="btn">{{_i}}Default button{{/i}}</button>
+              <button type="button" class="btn btn-primary">
+              	<i class="icon-home icon-white"></i>{{_i}}Default button{{/i}}
+              </button>
+              <button type="button" class="btn">
+              	<i class="icon-home"></i>{{_i}}Default button{{/i}}
+              </button>
             </p>
             <p>
               <button type="button" class="btn btn-small btn-primary">{{_i}}Small button{{/i}}</button>
               <button type="button" class="btn btn-small">{{_i}}Small button{{/i}}</button>
+              <button type="button" class="btn btn-small btn-primary">
+              	<i class="icon-home icon-white"></i>{{_i}}Small button{{/i}}
+              </button>
+              <button type="button" class="btn btn-small">
+              	<i class="icon-home"></i>{{_i}}Small button{{/i}}
+              </button>
             </p>
             <p>
               <button type="button" class="btn btn-mini btn-primary">{{_i}}Mini button{{/i}}</button>
