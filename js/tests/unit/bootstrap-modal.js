@@ -111,4 +111,18 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should fire loaded event", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'><div class='modal-body'></div></div>")
+          .bind("loaded", function () {
+            ok(true, "loaded was called")
+            $(this).remove()
+            start()
+          })
+          .modal({ remote : 'http://example.com' })
+      })
+
+
 })
