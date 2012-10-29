@@ -554,7 +554,7 @@
   $.fn.collapse.defaults = {
     toggle: true
   }
-
+  
   $.fn.collapse.Constructor = Collapse
 
 
@@ -563,11 +563,13 @@
 
   $(function () {
     $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function (e) {
-      var $this = $(this), href
-        , target = $this.attr('data-target')
-          || e.preventDefault()
+        var $this = $(this), href
+        , target = $this.attr('data-target') 
+          || e.preventDefault() 
           || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-        , option = $(target).data('collapse') ? 'toggle' : $this.data()
+        , parent = $this.attr('data-parent'),
+          option = $(target).data('collapse') ? 'toggle' : $this.data()
+      if (parent) $(parent).find('[data-toggle=collapse]').addClass('collapsed')
       $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
       $(target).collapse(option)
     })
@@ -675,8 +677,9 @@
   }
 
   function clearMenus() {
-    getParent($(toggle))
-      .removeClass('open')
+    $(toggle).each(function () {
+      getParent($(this)).removeClass('open')
+    })
   }
 
   function getParent($this) {
