@@ -991,7 +991,7 @@
     position: static;
     top: auto;
     left: auto;
-    display: block;
+    display: none;
     float: none;
     max-width: none;
     padding: 0;
@@ -1004,6 +1004,9 @@
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
+  }
+  .nav-collapse .open > .dropdown-menu {
+    display: block;
   }
   .nav-collapse .dropdown-menu:before,
   .nav-collapse .dropdown-menu:after {
