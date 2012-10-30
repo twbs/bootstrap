@@ -88,7 +88,8 @@ img {
 }
 
 // Prevent max-width from affecting Google Maps
-#map_canvas img {
+#map_canvas img,
+.google-maps img {
   max-width: none;
 }
 
@@ -115,11 +116,11 @@ input::-moz-focus-inner { // Inner padding and border oddities in FF3/4
   border: 0;
 }
 button,
-input[type="button"],
+html input[type="button"], // Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
 input[type="reset"],
 input[type="submit"] {
-  cursor: pointer; // Cursors on all buttons applied consistently
-  -webkit-appearance: button; // Style clickable inputs in iOS
+    -webkit-appearance: button; // Corrects inability to style clickable `input` types in iOS.
+    cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
 }
 input[type="search"] { // Appearance in Safari/Chrome
   -webkit-box-sizing: content-box;

@@ -75,7 +75,7 @@
   .nav-collapse .btn {
     padding: 4px 10px 4px;
     font-weight: normal;
-    .border-radius(4px);
+    .border-radius(@baseBorderRadius);
   }
   .nav-collapse .dropdown-menu li + li a {
     margin-bottom: 2px;
@@ -83,6 +83,10 @@
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover {
     background-color: @navbarBackground;
+  }
+  .navbar-inverse .nav-collapse .nav > li > a,
+  .navbar-inverse .nav-collapse .dropdown-menu a {
+    color: @navbarInverseLinkColor;
   }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:hover {
@@ -99,7 +103,7 @@
     top: auto;
     left: auto;
     float: none;
-    display: block;
+    display: none;
     max-width: none;
     margin: 0 15px;
     padding: 0;
@@ -108,6 +112,10 @@
     .border-radius(0);
     .box-shadow(none);
   }
+  .nav-collapse .open > .dropdown-menu { 
+    display: block; 
+  }
+
   .nav-collapse .dropdown-menu:before,
   .nav-collapse .dropdown-menu:after {
     display: none;
@@ -129,7 +137,7 @@
     margin: (@baseLineHeight / 2) 0;
     border-top: 1px solid @navbarBackground;
     border-bottom: 1px solid @navbarBackground;
-    .box-shadow(inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1));
+    .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)");
   }
   .navbar-inverse .nav-collapse .navbar-form,
   .navbar-inverse .nav-collapse .navbar-search {
@@ -166,7 +174,7 @@
 // DEFAULT DESKTOP
 // ---------------
 
-@media (min-width: 980px) {
+@media (min-width: @navbarCollapseDesktopWidth) {
 
   // Required to make the collapsing navbar work on regular desktops
   .nav-collapse.collapse {

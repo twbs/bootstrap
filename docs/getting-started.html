@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Getting · Twitter Bootstrap</title>
+    <title>Getting · Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -58,7 +58,7 @@
                 <a href="./components.html">Components</a>
               </li>
               <li class="">
-                <a href="./javascript.html">Javascript</a>
+                <a href="./javascript.html">JavaScript</a>
               </li>
               <li class="">
                 <a href="./customize.html">Customize</a>
@@ -138,10 +138,9 @@
   ├── js/
   │   ├── bootstrap.js
   │   ├── bootstrap.min.js
-  ├── img/
-  │   ├── glyphicons-halflings.png
-  │   ├── glyphicons-halflings-white.png
-  └── README.md
+  └── img/
+      ├── glyphicons-halflings.png
+      └── glyphicons-halflings-white.png
 </pre>
           <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
           <p>Please note that all JavaScript plugins require jQuery to be included.</p>
@@ -164,11 +163,11 @@
           <p>Styles for common HTML elements like typography, code, tables, forms, and buttons. Also includes <a href="http://glyphicons.com">Glyphicons</a>, a great little icon set.</p>
           <h4><a href="http://twitter.github.com/bootstrap/components.html">Components</a></h4>
           <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more.</p>
-          <h4><a href="http://twitter.github.com/bootstrap/javascript.html">Javascript plugins</a></h4>
-          <p>Similar to Components, these Javascript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
+          <h4><a href="http://twitter.github.com/bootstrap/javascript.html">JavaScript plugins</a></h4>
+          <p>Similar to Components, these JavaScript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
 
           <h2>List of components</h2>
-          <p>Together, the <strong>Components</strong> and <strong>Javascript plugins</strong> sections provide the following interface elements:</p>
+          <p>Together, the <strong>Components</strong> and <strong>JavaScript plugins</strong> sections provide the following interface elements:</p>
           <ul>
             <li>Button groups</li>
             <li>Button dropdowns</li>
@@ -199,7 +198,7 @@
           <div class="page-header">
             <h1>4. Basic HTML template</h1>
           </div>
-          <p class="lead">With a brief intro into the contents out of the way, we can focus putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
+          <p class="lead">With a brief intro into the contents out of the way, we can focus on putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.</p>
           <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
 <pre class="prettyprint linenums">
 &lt;!DOCTYPE html&gt;
@@ -220,7 +219,7 @@
   &lt;head&gt;
     &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
     &lt;!-- Bootstrap --&gt;
-    &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;link href="css/bootstrap.min.css" rel="stylesheet" media="screen"&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
@@ -243,6 +242,13 @@
           <p class="lead">Move beyond the base template with a few example layouts. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
           <ul class="thumbnails bootstrap-examples">
             <li class="span3">
+              <a class="thumbnail" href="examples/starter-template.html">
+                <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
+              </a>
+              <h4>Starter template</h4>
+              <p>A barebones HTML document with all the Bootstrap CSS and JavaScript included.</p>
+            </li>
+            <li class="span3">
               <a class="thumbnail" href="examples/hero.html">
                 <img src="assets/img/examples/bootstrap-example-hero.jpg" alt="">
               </a>
@@ -256,12 +262,35 @@
               <h4>Fluid layout</h4>
               <p>Uses our new responsive, fluid grid system to create a seamless liquid layout.</p>
             </li>
+
             <li class="span3">
-              <a class="thumbnail" href="examples/starter-template.html">
-                <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
+              <a class="thumbnail" href="examples/marketing-narrow.html">
+                <img src="assets/img/examples/bootstrap-example-marketing-narrow.png" alt="">
               </a>
-              <h4>Starter template</h4>
-              <p>A barebones HTML document with all the Bootstrap CSS and javascript included.</p>
+              <h4>Narrow marketing</h4>
+              <p>Slim, lightweight marketing template for small projects or teams.</p>
+            </li>
+            <li class="span3">
+              <a class="thumbnail" href="examples/signin.html">
+                <img src="assets/img/examples/bootstrap-example-signin.png" alt="">
+              </a>
+              <h4>Sign in</h4>
+              <p>Barebones sign in form with custom, larger form controls and a flexible layout.</p>
+            </li>
+            <li class="span3">
+              <a class="thumbnail" href="examples/sticky-footer.html">
+                <img src="assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
+              </a>
+              <h4>Sticky footer</h4>
+              <p>Pin a fixed-height footer to the bottom of the user's viewport.</p>
+            </li>
+
+            <li class="span3">
+              <a class="thumbnail" href="examples/carousel.html">
+                <img src="assets/img/examples/bootstrap-example-carousel.png" alt="">
+              </a>
+              <h4>Carousel jumbotron</h4>
+              <p>A more interactive riff on the basic marketing site featuring a prominent carousel.</p>
             </li>
           </ul>
         </section>
@@ -295,12 +324,14 @@
     <footer class="footer">
       <div class="container">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
+          <li class="muted">&middot;</li>
           <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
         </ul>
       </div>
