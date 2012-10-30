@@ -10,7 +10,7 @@ To get started, checkout http://getbootstrap.com!
 Quick start
 -----------
 
-Clone the repo, `git clone git://github.com/twitter/bootstrap.git`, [download the latest release](https://github.com/twitter/bootstrap/zipball/master), or install with twitter's [Bower](//twitter.github.com/bower): `bower install bootstrap`.
+Clone the repo, `git clone git://github.com/twitter/bootstrap.git`, [download the latest release](https://github.com/twitter/bootstrap/zipball/master), or install with twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
 
 
 
