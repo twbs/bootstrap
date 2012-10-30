@@ -1973,9 +1973,6 @@ table {
 .table-bordered thead:last-child tr:last-child th:first-child,
 .table-bordered tbody:last-child tr:last-child td:first-child,
 .table-bordered tfoot:last-child tr:last-child td:first-child {
-  -webkit-border-radius: 0 0 0 4px;
-     -moz-border-radius: 0 0 0 4px;
-          border-radius: 0 0 0 4px;
   -webkit-border-bottom-left-radius: 4px;
           border-bottom-left-radius: 4px;
   -moz-border-radius-bottomleft: 4px;
