@@ -1,5 +1,5 @@
 /* =========================================================
- * bootstrap-modal.js v2.1.2
+ * bootstrap-modal.js v2.2.0
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
  * Copyright 2012 Twitter, Inc.
