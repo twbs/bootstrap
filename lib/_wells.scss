@@ -10,7 +10,7 @@
   margin-bottom: 20px;
   background-color: $wellBackground;
   border: 1px solid darken($wellBackground, 7%);
-  @include border-radius(4px);
+  @include border-radius($baseBorderRadius);
   @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
   blockquote {
     border-color: #ddd;
@@ -21,9 +21,9 @@
 // Sizes
 .well-large {
   padding: 24px;
-  @include border-radius(6px);
+  @include border-radius($borderRadiusLarge);
 }
 .well-small {
   padding: 9px;
-  @include border-radius(3px);
+  @include border-radius($borderRadiusSmall);
 }

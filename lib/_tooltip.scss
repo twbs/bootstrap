@@ -27,7 +27,7 @@
   text-align: center;
   text-decoration: none;
   background-color: $tooltipBackground;
-  @include border-radius(4px);
+  @include border-radius($baseBorderRadius);
 }
 
 // Arrows

@@ -149,7 +149,7 @@
 @mixin input-block-level {
   display: block;
   width: 100%;
-  min-height: 30px;                // Make inputs at least the height of their button counterpart
+  min-height: $inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   @include box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
 
@@ -292,6 +292,7 @@
       -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
        -o-transform: skew($x, $y);
           transform: skew($x, $y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
 }
 @mixin translate3d($x, $y, $z) {
   -webkit-transform: translate3d($x, $y, $z);
@@ -457,7 +458,7 @@
 }
 
 // Reset filters for IE
-@mixin gradient-reset-filter() {
+@mixin reset-filter() {
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
@@ -489,7 +490,7 @@
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
   @include gradientBar($startColor, $endColor, $textColor, $textShadow);
   *background-color: $endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  @include gradient-reset-filter();
+  @include reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
@@ -543,7 +544,6 @@
   margin-left: ($gridColumnWidth * $offset) + ($gridGutterWidth * ($offset - 1)) + ($gridGutterWidth * 2);
   width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
 }
-
 
 // The Grid
 @mixin grid-core($gridColumnWidth, $gridGutterWidth) {
@@ -607,6 +607,11 @@
     }
     [class*="span"]:first-child {
       margin-left: 0;
+    }
+
+    // Space grid-sized controls properly if multiple per line
+    .controls-row [class*="span"] + [class*="span"] {
+      margin-left: $fluidGridGutterWidth;
     }
 
     // generate .spanX and .offsetX

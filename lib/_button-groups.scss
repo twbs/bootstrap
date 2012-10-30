@@ -6,6 +6,8 @@
 // Make the div behave like a button
 .btn-group {
   position: relative;
+  display: inline-block;
+  @include ie7-inline-block();
   font-size: 0; // remove as part 1 of font-size inline-block hack
   vertical-align: middle; // match .btn alignment given font-size hack above
   white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
@@ -22,10 +24,6 @@
   font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: $baseLineHeight / 2;
   margin-bottom: $baseLineHeight / 2;
-  .btn-group {
-    display: inline-block;
-    @include ie7-inline-block();
-  }
   .btn + .btn,
   .btn-group + .btn,
   .btn + .btn-group {
@@ -193,8 +191,7 @@
 }
 // Upside down carets for .dropup
 .dropup .btn-large .caret {
-  border-bottom: 5px solid $black;
-  border-top: 0;
+  border-bottom-width: 5px;
 }
 
 
