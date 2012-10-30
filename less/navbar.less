@@ -25,7 +25,7 @@
   padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
-  .border-radius(4px);
+  .border-radius(@baseBorderRadius);
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
@@ -41,6 +41,7 @@
 // Override the default collapsed state
 .nav-collapse.collapse {
   height: auto;
+  overflow: visible;
 }
 
 
@@ -152,7 +153,6 @@
 
 .navbar-static-top {
   position: static;
-  width: 100%;
   margin-bottom: 0; // remove 18px margin for default navbar
   .navbar-inner {
     .border-radius(0);
@@ -202,7 +202,7 @@
 .navbar-fixed-top,
 .navbar-static-top {
   .navbar-inner {
-    .box-shadow(inset 0 -1px 0 rgba(0,0,0,.1), 0 1px 10px rgba(0,0,0,.1));
+    .box-shadow(~"0 1px 10px rgba(0,0,0,.1)");
   }
 }
 
@@ -210,7 +210,7 @@
 .navbar-fixed-bottom {
   bottom: 0;
   .navbar-inner {
-    .box-shadow(inset 0 1px 0 rgba(0,0,0,.1), 0 -1px 10px rgba(0,0,0,.1));
+    .box-shadow(~"0 -1px 10px rgba(0,0,0,.1)");
   }
 }
 
@@ -274,7 +274,7 @@
   margin-left: 5px;
   margin-right: 5px;
   .buttonBackground(darken(@navbarBackgroundHighlight, 5%), darken(@navbarBackground, 5%));
-  .box-shadow(inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075));
+  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
 }
 .navbar .btn-navbar .icon-bar {
   display: block;
@@ -446,7 +446,7 @@
       color: @white;
       background-color: @navbarInverseSearchBackground;
       border-color: @navbarInverseSearchBorder;
-      .box-shadow(inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15));
+      .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
       .transition(none);
       .placeholder(@navbarInverseSearchPlaceholderColor);
 

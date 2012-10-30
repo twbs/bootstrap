@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Customize · Twitter Bootstrap</title>
+    <title>Customize · Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -58,7 +58,7 @@
                 <a href="./components.html">Components</a>
               </li>
               <li class="">
-                <a href="./javascript.html">Javascript</a>
+                <a href="./javascript.html">JavaScript</a>
               </li>
               <li class="active">
                 <a href="./customize.html">Customize</a>
@@ -74,7 +74,7 @@
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <h1>Customize and download</h1>
-    <p class="lead"><a href="https://github.com/twitter/bootstrap/zipball/master">Download Bootstrap</a> or customize variables, components, javascript plugins, and more.</p>
+    <p class="lead"><a href="https://github.com/twitter/bootstrap/zipball/master">Download Bootstrap</a> or customize variables, components, JavaScript plugins, and more.</p>
   </div>
 </header>
 
@@ -133,6 +133,7 @@
                 <label class="checkbox"><input checked="checked" type="checkbox" value="alerts.less"> Alerts</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="progress-bars.less"> Progress bars</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="hero-unit.less"> Hero unit</label>
+                <label class="checkbox"><input checked="checked" type="checkbox" value="media.less"> Media component</label>
                 <h3>JS Components</h3>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="tooltip.less"> Tooltips</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="popovers.less"> Popovers</label>
@@ -143,6 +144,7 @@
               </div><!-- /span -->
               <div class="span3">
                 <h3>Miscellaneous</h3>
+                <label class="checkbox"><input checked="checked" type="checkbox" value="media.less"> Media object</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="wells.less"> Wells</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="close.less"> Close icon</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> Utilities</label>
@@ -297,12 +299,14 @@
                 <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif">
                 <label>@monoFontFamily</label>
                 <input type="text" class="span3" placeholder="Menlo, Monaco, 'Courier New', monospace">
+
                 <label>@baseFontSize</label>
                 <input type="text" class="span3" placeholder="14px">
                 <label>@baseFontFamily</label>
                 <input type="text" class="span3" placeholder="@sansFontFamily">
                 <label>@baseLineHeight</label>
                 <input type="text" class="span3" placeholder="20px">
+
                 <label>@altFontFamily</label>
                 <input type="text" class="span3" placeholder="@serifFontFamily">
                 <label>@headingsFontFamily</label>
@@ -311,6 +315,28 @@
                 <input type="text" class="span3" placeholder="bold">
                 <label>@headingsColor</label>
                 <input type="text" class="span3" placeholder="inherit">
+
+                <label>@fontSizeLarge</label>
+                <input type="text" class="span3" placeholder="@baseFontSize * 1.25">
+                <label>@fontSizeSmall</label>
+                <input type="text" class="span3" placeholder="@baseFontSize * 0.85">
+                <label>@fontSizeMini</label>
+                <input type="text" class="span3" placeholder="@baseFontSize * 0.75">
+
+                <label>@paddingLarge</label>
+                <input type="text" class="span3" placeholder="11px 19px">
+                <label>@paddingSmall</label>
+                <input type="text" class="span3" placeholder="2px 10px">
+                <label>@paddingMini</label>
+                <input type="text" class="span3" placeholder="1px 6px">
+
+                <label>@baseBorderRadius</label>
+                <input type="text" class="span3" placeholder="4px">
+                <label>@borderRadiusLarge</label>
+                <input type="text" class="span3" placeholder="6px">
+                <label>@borderRadiusSmall</label>
+                <input type="text" class="span3" placeholder="3px">
+
                 <label>@heroUnitBackground</label>
                 <input type="text" class="span3" placeholder="@grayLighter">
                 <label>@heroUnitHeadingColor</label>
@@ -397,6 +423,11 @@
                 <label>@navbarSearchPlaceholderColor</label>
                 <input type="text" class="span3" placeholder="#ccc">
 
+                <label>@navbarCollapseWidth</label>
+                <input type="text" class="span3" placeholder="979px">
+                <label>@navbarCollapseDesktopWidth</label>
+                <input type="text" class="span3" placeholder="@navbarCollapseWidth + 1">
+
                 <h3>Dropdowns</h3>
                 <label>@dropdownBackground</label>
                 <input type="text" class="span3" placeholder="@white">
@@ -440,12 +471,14 @@
     <footer class="footer">
       <div class="container">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
+          <li class="muted">&middot;</li>
           <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
         </ul>
       </div>

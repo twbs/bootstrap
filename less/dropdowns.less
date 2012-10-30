@@ -72,7 +72,7 @@
   }
 
   // Links within the dropdown menu
-  a {
+  li > a {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -90,7 +90,6 @@
 .dropdown-submenu:hover > a {
   text-decoration: none;
   color: @dropdownLinkColorHover;
-  background-color: @dropdownLinkBackgroundHover;
   #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
 }
 
@@ -98,10 +97,9 @@
 // ------------
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-  color: @dropdownLinkColorHover;
+  color: @dropdownLinkColorActive;
   text-decoration: none;
   outline: 0;
-  background-color: @dropdownLinkBackgroundActive;
   #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
 }
 
@@ -116,6 +114,7 @@
 .dropdown-menu .disabled > a:hover {
   text-decoration: none;
   background-color: transparent;
+  background-image: none; // Remove CSS gradient
   cursor: default;
 }
 
@@ -163,6 +162,7 @@
 .dropdown-submenu {
   position: relative;
 }
+// Default dropdowns
 .dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
@@ -176,6 +176,18 @@
   display: block;
 }
 
+// Dropups
+.dropup .dropdown-submenu > .dropdown-menu {
+  top: auto;
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: -2px;
+  -webkit-border-radius: 5px 5px 5px 0;
+     -moz-border-radius: 5px 5px 5px 0;
+          border-radius: 5px 5px 5px 0;
+}
+
+// Caret to indicate there is a submenu
 .dropdown-submenu > a:after {
   display: block;
   content: " ";
@@ -193,6 +205,21 @@
   border-left-color: @dropdownLinkColorHover;
 }
 
+// Left aligned submenus
+.dropdown-submenu.pull-left {
+  // Undo the float
+  // Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
+  float: none;
+
+  // Positioning the submenu
+  > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+       -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+  }
+}
 
 // Tweak nav headers
 // -----------------
@@ -206,5 +233,5 @@
 // ---------
 .typeahead {
   margin-top: 2px; // give it some space to breathe
-  .border-radius(4px);
+  .border-radius(@baseBorderRadius);
 }
