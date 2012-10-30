@@ -3,7 +3,7 @@
 <header class="jumbotron subhead" id="overview">
   <div class="container">
     <h1>{{_i}}Customize and download{{/i}}</h1>
-    <p class="lead">{{_i}}<a href="https://github.com/twitter/bootstrap/zipball/master">Download Bootstrap</a> or customize variables, components, javascript plugins, and more.{{/i}}</p>
+    <p class="lead">{{_i}}<a href="https://github.com/twitter/bootstrap/zipball/master">Download Bootstrap</a> or customize variables, components, JavaScript plugins, and more.{{/i}}</p>
   </div>
 </header>
 
@@ -62,6 +62,7 @@
                 <label class="checkbox"><input checked="checked" type="checkbox" value="alerts.less"> {{_i}}Alerts{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="progress-bars.less"> {{_i}}Progress bars{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="hero-unit.less"> {{_i}}Hero unit{{/i}}</label>
+                <label class="checkbox"><input checked="checked" type="checkbox" value="media.less"> {{_i}}Media component{{/i}}</label>
                 <h3>{{_i}}JS Components{{/i}}</h3>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="tooltip.less"> {{_i}}Tooltips{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="popovers.less"> {{_i}}Popovers{{/i}}</label>
@@ -72,6 +73,7 @@
               </div><!-- /span -->
               <div class="span3">
                 <h3>{{_i}}Miscellaneous{{/i}}</h3>
+                <label class="checkbox"><input checked="checked" type="checkbox" value="media.less"> {{_i}}Media object{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="wells.less"> {{_i}}Wells{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="close.less"> {{_i}}Close icon{{/i}}</label>
                 <label class="checkbox"><input checked="checked" type="checkbox" value="utilities.less"> {{_i}}Utilities{{/i}}</label>
@@ -226,12 +228,14 @@
                 <input type="text" class="span3" placeholder="Georgia, 'Times New Roman', Times, serif">
                 <label>@monoFontFamily</label>
                 <input type="text" class="span3" placeholder="Menlo, Monaco, 'Courier New', monospace">
+
                 <label>@baseFontSize</label>
                 <input type="text" class="span3" placeholder="14px">
                 <label>@baseFontFamily</label>
                 <input type="text" class="span3" placeholder="@sansFontFamily">
                 <label>@baseLineHeight</label>
                 <input type="text" class="span3" placeholder="20px">
+
                 <label>@altFontFamily</label>
                 <input type="text" class="span3" placeholder="@serifFontFamily">
                 <label>@headingsFontFamily</label>
@@ -240,6 +244,28 @@
                 <input type="text" class="span3" placeholder="bold">
                 <label>@headingsColor</label>
                 <input type="text" class="span3" placeholder="inherit">
+
+                <label>@fontSizeLarge</label>
+                <input type="text" class="span3" placeholder="@baseFontSize * 1.25">
+                <label>@fontSizeSmall</label>
+                <input type="text" class="span3" placeholder="@baseFontSize * 0.85">
+                <label>@fontSizeMini</label>
+                <input type="text" class="span3" placeholder="@baseFontSize * 0.75">
+
+                <label>@paddingLarge</label>
+                <input type="text" class="span3" placeholder="11px 19px">
+                <label>@paddingSmall</label>
+                <input type="text" class="span3" placeholder="2px 10px">
+                <label>@paddingMini</label>
+                <input type="text" class="span3" placeholder="1px 6px">
+
+                <label>@baseBorderRadius</label>
+                <input type="text" class="span3" placeholder="4px">
+                <label>@borderRadiusLarge</label>
+                <input type="text" class="span3" placeholder="6px">
+                <label>@borderRadiusSmall</label>
+                <input type="text" class="span3" placeholder="3px">
+
                 <label>@heroUnitBackground</label>
                 <input type="text" class="span3" placeholder="@grayLighter">
                 <label>@heroUnitHeadingColor</label>
@@ -325,6 +351,11 @@
                 <input type="text" class="span3" placeholder="darken(@navbarSearchBackground, 30%)">
                 <label>@navbarSearchPlaceholderColor</label>
                 <input type="text" class="span3" placeholder="#ccc">
+
+                <label>@navbarCollapseWidth</label>
+                <input type="text" class="span3" placeholder="979px">
+                <label>@navbarCollapseDesktopWidth</label>
+                <input type="text" class="span3" placeholder="@navbarCollapseWidth + 1">
 
                 <h3>{{_i}}Dropdowns{{/i}}</h3>
                 <label>@dropdownBackground</label>

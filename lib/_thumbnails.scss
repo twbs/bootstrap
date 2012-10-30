@@ -29,7 +29,7 @@
   padding: 4px;
   line-height: $baseLineHeight;
   border: 1px solid #ddd;
-  @include border-radius(4px);
+  @include border-radius($baseBorderRadius);
   @include box-shadow(0 1px 3px rgba(0,0,0,.055));
   @include transition(all .2s ease-in-out);
 }

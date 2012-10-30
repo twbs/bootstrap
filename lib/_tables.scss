@@ -71,7 +71,7 @@ table {
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapse; // IE7 can't round corners anyway
   border-left: 0;
-  @include border-radius(4px);
+  @include border-radius($baseBorderRadius);
   th,
   td {
     border-left: 1px solid $tableBorder;
@@ -133,10 +133,12 @@ table {
   colgroup + tbody tr:first-child td:last-child {
     -webkit-border-top-right-radius: 4px;
             border-top-right-radius: 4px;
-         -moz-border-radius-topleft: 4px;
+         -moz-border-radius-topright: 4px;
   }
 
 }
+
+
 
 
 // ZEBRA-STRIPING
@@ -170,17 +172,20 @@ table {
 // -----------------
 
 // Reset default grid behavior
-table [class*=span],
-.row-fluid table [class*=span] {
+table td[class*="span"],
+table th[class*="span"],
+.row-fluid table td[class*="span"],
+.row-fluid table th[class*="span"] {
   display: table-cell;
   float: none; // undo default grid column styles
   margin-left: 0; // undo default grid column styles
 }
 
 // Change the column widths to account for td/th padding
-.table {
-  @for $i from 1 through 24 {
-    .span#{$i} { @include tableColumns($i); }
+.table td,
+.table th {
+  @for $i from 1 through 12 {
+    &.span#{$i} { @include tableColumns($i); }
   }
 }
 
@@ -204,7 +209,6 @@ table [class*=span],
     background-color: $infoBackground;
   }
 }
-
 
 // Hover states for .table-hover
 .table-hover tbody tr {

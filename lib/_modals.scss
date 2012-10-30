@@ -2,16 +2,6 @@
 // Modals
 // --------------------------------------------------
 
-
-// Recalculate z-index where appropriate,
-// but only apply to elements within modal
-.modal-open .modal {
-  .dropdown-menu {  z-index: $zindexDropdown + $zindexModal; }
-  .dropdown.open { *z-index: $zindexDropdown + $zindexModal; }
-  .popover       {  z-index: $zindexPopover  + $zindexModal; }
-  .tooltip       {  z-index: $zindexTooltip  + $zindexModal; }
-}
-
 // Background
 .modal-backdrop {
   position: fixed;
@@ -46,6 +36,9 @@
   @include border-radius(6px);
   @include box-shadow(0 3px 7px rgba(0,0,0,0.3));
   @include background-clip(padding-box);
+  // Remove focus outline from opened modal
+  outline: none;
+
   &.fade {
     @include transition(opacity .3s linear, top .3s ease-out);
     top: -25%;
@@ -94,5 +87,9 @@
   // but override that for button groups
   .btn-group .btn + .btn {
     margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+    margin-left: 0;
   }
 }

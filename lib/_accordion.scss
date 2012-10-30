@@ -12,7 +12,7 @@
 .accordion-group {
   margin-bottom: 2px;
   border: 1px solid #e5e5e5;
-  @include border-radius(4px);
+  @include border-radius($baseBorderRadius);
 }
 .accordion-heading {
   border-bottom: 0;
