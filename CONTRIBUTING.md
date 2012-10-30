@@ -60,6 +60,16 @@ As of v2.0.0, Bootstrap's documentation is powered by Mustache templates and bui
 
 
 
+## Coding standards: JS
+
+- No semicolons
+- Comma first
+- 2 spaces (no tabs)
+- strict mode
+- "Attractive"
+
+
+
 ## License
 
 By contributing your code, you agree to license your contribution under the terms of the APLv2: https://github.com/twitter/bootstrap/blob/master/LICENSE
