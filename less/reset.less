@@ -123,9 +123,7 @@ input[type="submit"] {
     cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
 }
 input[type="search"] { // Appearance in Safari/Chrome
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
+  .box-sizing(content-box);
   -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,
