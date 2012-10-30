@@ -7,7 +7,8 @@ $(function () {
       })
 
       test("should return element", function () {
-        ok($(document.body).dropdown()[0] == document.body, 'document.body returned')
+        var el = $("<div />")
+        ok(el.dropdown()[0] === el[0], 'same element returned')
       })
 
       test("should not open dropdown if target is disabled", function () {
@@ -100,6 +101,45 @@ $(function () {
         $('body').click()
         ok(!dropdown.parent('.dropdown').hasClass('open'), 'open class removed')
         dropdown.remove()
+      })
+
+      test("should remove open class if body clicked, with multiple drop downs", function () {
+          var dropdownHTML = 
+            '<ul class="nav">'
+            + '    <li><a href="#menu1">Menu 1</a></li>'
+            + '    <li class="dropdown" id="testmenu">'
+            + '      <a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <b class="caret"></b></a>'
+            + '      <ul class="dropdown-menu" role="menu">'
+            + '        <li><a href="#sub1">Submenu 1</a></li>'
+            + '      </ul>'
+            + '    </li>'
+            + '</ul>'
+            + '<div class="btn-group">'
+            + '    <button class="btn">Actions</button>'
+            + '    <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>'
+            + '    <ul class="dropdown-menu">'
+            + '        <li><a href="#">Action 1</a></li>'
+            + '    </ul>'
+            + '</div>'
+          , dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
+          , first = dropdowns.first()
+          , last = dropdowns.last()
+
+        ok(dropdowns.length == 2, "Should be two dropdowns")
+          
+        first.click()
+        ok(first.parents('.open').length == 1, 'open class added on click')
+        ok($('#qunit-fixture .open').length == 1, 'only one object is open')
+        $('body').click()
+        ok($("#qunit-fixture .open").length === 0, 'open class removed')
+
+        last.click()
+        ok(last.parent('.open').length == 1, 'open class added on click')
+        ok($('#qunit-fixture .open').length == 1, 'only one object is open')
+        $('body').click()
+        ok($("#qunit-fixture .open").length === 0, 'open class removed')
+
+        $("#qunit-fixture").html("")
       })
 
 })
