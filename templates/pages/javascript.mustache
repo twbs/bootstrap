@@ -2,7 +2,7 @@
 ================================================== -->
 <header class="jumbotron subhead">
   <div class="container">
-    <h1>{{_i}}JavaScript for Bootstrap{{/i}}</h1>
+    <h1>{{_i}}JavaScript{{/i}}</h1>
     <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.{{/i}}
   </div>
 </header>
@@ -41,7 +41,7 @@
           </div>
 
           <h3>{{_i}}Individual or compiled{{/i}}</h3>
-          <p>{{_i}}If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of the plugins listed on this page.{{/i}}</p>
+          <p>{{_i}}Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.{{/i}}</p>
 
           <h3>{{_i}}Data attributes{{/i}}</h3>
           <p>{{_i}}You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.{{/i}}</p>
@@ -49,7 +49,7 @@
           <p>{{_i}}That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:{{/i}}
           <pre class="prettyprint linenums">$('body').off('.data-api')</pre>
 
-          <p>{{_i}}Alternatively, to target a specific plugin, just include the plugins name as a namespace along with the data-api namespace like this:{{/i}}</p>
+          <p>{{_i}}Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:{{/i}}</p>
           <pre class="prettyprint linenums">$('body').off('.alert.data-api')</pre>
 
           <h3>{{_i}}Programmatic API{{/i}}</h3>
@@ -61,10 +61,10 @@ $("#myModal").modal()                       // initialized with defaults
 $("#myModal").modal({ keyboard: false })   // initialized with no keyboard
 $("#myModal").modal('show')                // initializes and invokes show immediately</p>
 </pre>
-          <p>{{_i}}Each plugin also exposes it's raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.{{/i}}</p>
+          <p>{{_i}}Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.{{/i}}</p>
 
           <h3>{{_i}}Events{{/i}}</h3>
-          <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and it's past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
+          <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
           <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
@@ -117,7 +117,7 @@ $('#myModal').on('show', function (e) {
                 <h3>{{_i}}Modal header{{/i}}</h3>
               </div>
               <div class="modal-body">
-                <p>{{_i}}One fine body…{{/i}}</p>
+                <p>{{_i}}One fine body&hellip;{{/i}}</p>
               </div>
               <div class="modal-footer">
                 <a href="#" class="btn">{{_i}}Close{{/i}}</a>
@@ -132,7 +132,7 @@ $('#myModal').on('show', function (e) {
     &lt;h3&gt;{{_i}}Modal header{{/i}}&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
-    &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
+    &lt;p&gt;{{_i}}One fine body&hellip;{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
     &lt;a href="#" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
@@ -154,7 +154,7 @@ $('#myModal').on('show', function (e) {
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
 
               <h4>{{_i}}Popover in a modal{{/i}}</h4>
-              <p>{{_i}}This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
+              <p>{{_i}}This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.{{/i}}</p>
 
               <h4>{{_i}}Tooltips in a modal{{/i}}</h4>
               <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
@@ -179,17 +179,17 @@ $('#myModal').on('show', function (e) {
             <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">{{_i}}Launch demo modal{{/i}}</a>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;-- Button to trigger modal --&gt;
+&lt!-- Button to trigger modal --&gt;
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;{{_i}}Launch demo modal{{/i}}&lt;/a&gt;
 
-&lt;-- Modal --&gt;
-&lt;div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
+&lt!-- Modal --&gt;
+&lt;div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
-    &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
+    &lt;p&gt;{{_i}}One fine body&hellip;{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
     &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;{{_i}}Close{{/i}}&lt;/button&gt;
@@ -436,8 +436,8 @@ $('#myModal').on('hidden', function () {
           <p><em>{{_i}}None{{/i}}</em></p>
 
           <h3>{{_i}}Methods{{/i}}</h3>
-          <h4>$().dropdown()</h4>
-          <p>{{_i}}A programatic api for activating menus for a given navbar or tabbed navigation.{{/i}}</p>
+          <h4>$().dropdown('toggle')</h4>
+          <p>{{_i}}A programatic api for toggling menus for a given navbar or tabbed navigation.{{/i}}</p>
         </section>
 
 
@@ -734,7 +734,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <tr>
                <td>{{_i}}html{{/i}}</td>
                <td>{{_i}}boolean{{/i}}</td>
-               <td>true</td>
+               <td>false</td>
                <td>{{_i}}Insert html into the tooltip. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.{{/i}}</td>
              </tr>
              <tr>
@@ -855,6 +855,16 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Click to toggle popover{{/i}}</a>
         </div>
 
+        <h4>{{_i}}Four directions{{/i}}</h4>
+        <div class="bs-docs-example tooltip-demo">
+          <ul class="bs-docs-tooltip-examples">
+            <li><a href="#" class="btn" rel="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
+          </ul>
+        </div>{{! /example }}
+
 
         <hr class="bs-docs-separator">
 
@@ -884,7 +894,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            <tr>
              <td>{{_i}}html{{/i}}</td>
              <td>{{_i}}boolean{{/i}}</td>
-             <td>true</td>
+             <td>false</td>
              <td>{{_i}}Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.{{/i}}</td>
            </tr>
            <tr>
@@ -1532,6 +1542,12 @@ $('.carousel').carousel({
                  <td>{{_i}}function{{/i}}</td>
                  <td>{{_i}}exact match,<br> case sensitive,<br> case insensitive{{/i}}</td>
                  <td>{{_i}}Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.{{/i}}</td>
+               </tr>
+               <tr>
+                 <td>{{_i}}updater{{/i}}</td>
+                 <td>{{_i}}function{{/i}}</td>
+                 <td>{{_i}}returns selected item{{/i}}</td>
+                 <td>{{_i}}The method used to return selected item. Accepts a single argument, the <code>item</code> and has the scope of the typeahead instance.{{/i}}</td>
                </tr>
                <tr>
                  <td>{{_i}}highlighter{{/i}}</td>

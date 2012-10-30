@@ -89,14 +89,14 @@
 </pre>
 
           <h3>{{_i}}Bold{{/i}}</h3>
-          <p>{{_i}}For emphasizing a snippet of text with <strong>important</strong>{{/i}}</p>
+          <p>{{_i}}For emphasizing a snippet of text with a heavier font-weight.{{/i}}</p>
           <div class="bs-docs-example">
             <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
           </div>
           <pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
 
           <h3>{{_i}}Italics{{/i}}</h3>
-          <p>{{_i}}For emphasizing a snippet of text with <em>stress</em>{{/i}}</p>
+          <p>{{_i}}For emphasizing a snippet of text with italics.{{/i}}</p>
           <div class="bs-docs-example">
             <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
           </div>
@@ -446,7 +446,7 @@
 
 
           <h2>{{_i}}Optional classes{{/i}}</h2>
-          <p>{{_i}}Add any of the follow classes to the <code>.table</code> base class.{{/i}}</p>
+          <p>{{_i}}Add any of the following classes to the <code>.table</code> base class.{{/i}}</p>
 
           <h3><code>{{_i}}.table-striped{{/i}}</code></h3>
           <p>{{_i}}Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE7-IE8).{{/i}}</p>
@@ -812,25 +812,29 @@
           <h2>{{_i}}Default styles{{/i}}</h2>
           <p>{{_i}}Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.{{/i}}</p>
           <form class="bs-docs-example">
-            <legend>Legend</legend>
-            <label>{{_i}}Label name{{/i}}</label>
-            <input type="text" placeholder="{{_i}}Type something…{{/i}}">
-            <span class="help-block">{{_i}}Example block-level help text here.{{/i}}</span>
-            <label class="checkbox">
-              <input type="checkbox"> {{_i}}Check me out{{/i}}
-            </label>
-            <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
+            <fieldset>
+              <legend>Legend</legend>
+              <label>{{_i}}Label name{{/i}}</label>
+              <input type="text" placeholder="{{_i}}Type something…{{/i}}">
+              <span class="help-block">{{_i}}Example block-level help text here.{{/i}}</span>
+              <label class="checkbox">
+                <input type="checkbox"> {{_i}}Check me out{{/i}}
+              </label>
+              <button type="submit" class="btn">{{_i}}Submit{{/i}}</button>
+            </fieldset>
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form&gt;
-  &lt;legend&gt;{{_i}}Legend{{/i}}&lt;/legend&gt;
-  &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
-  &lt;input type="text" placeholder="{{_i}}Type something…{{/i}}"&gt;
-  &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
-  &lt;label class="checkbox"&gt;
-    &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
-  &lt;/label&gt;
-  &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;{{_i}}Legend{{/i}}&lt;/legend&gt;
+    &lt;label&gt;{{_i}}Label name{{/i}}&lt;/label&gt;
+    &lt;input type="text" placeholder="{{_i}}Type something…{{/i}}"&gt;
+    &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
+    &lt;label class="checkbox"&gt;
+      &lt;input type="checkbox"&gt; {{_i}}Check me out{{/i}}
+    &lt;/label&gt;
+    &lt;button type="submit" class="btn"&gt;{{_i}}Submit{{/i}}&lt;/button&gt;
+  &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
 
@@ -884,7 +888,6 @@
             <li>{{_i}}Wrap any associated controls in <code>.controls</code> for proper alignment{{/i}}</li>
           </ul>
           <form class="bs-docs-example form-horizontal">
-            <legend>Legend</legend>
             <div class="control-group">
               <label class="control-label" for="inputEmail">{{_i}}Email{{/i}}</label>
               <div class="controls">
@@ -1068,20 +1071,22 @@
           <form class="bs-docs-example">
             <div class="input-prepend">
               <span class="add-on">@</span>
-              <input class="span2" id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}">
+              <input class="span2" id="prependedInput" type="text" placeholder="{{_i}}Username{{/i}}">
             </div>
             <br>
             <div class="input-append">
-              <input class="span2" id="appendedInput" size="16" type="text">
+              <input class="span2" id="appendedInput" type="text">
               <span class="add-on">.00</span>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-prepend"&gt;
-  &lt;span class="add-on"&gt;@&lt;/span&gt;&lt;input class="span2" id="prependedInput" size="16" type="text" placeholder="{{_i}}Username{{/i}}"&gt;
+  &lt;span class="add-on"&gt;@&lt;/span&gt;
+  &lt;input class="span2" id="prependedInput" type="text" placeholder="{{_i}}Username{{/i}}"&gt;
 &lt;/div&gt;
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+  &lt;input class="span2" id="appendedInput" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1090,13 +1095,15 @@
           <form class="bs-docs-example form-inline">
             <div class="input-prepend input-append">
               <span class="add-on">$</span>
-              <input class="span2" id="appendedPrependedInput" size="16" type="text">
+              <input class="span2" id="appendedPrependedInput" type="text">
               <span class="add-on">.00</span>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-prepend input-append"&gt;
-  &lt;span class="add-on"&gt;$&lt;/span&gt;&lt;input class="span2" id="appendedPrependedInput" size="16" type="text"&gt;&lt;span class="add-on"&gt;.00&lt;/span&gt;
+  &lt;span class="add-on"&gt;$&lt;/span&gt;
+  &lt;input class="span2" id="appendedPrependedInput" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1104,23 +1111,139 @@
           <p>{{_i}}Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.{{/i}}</p>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input class="span2" id="appendedInputButton" size="16" type="text">
+              <input class="span2" id="appendedInputButton" type="text">
               <button class="btn" type="button">Go!</button>
             </div>
-            <br>
+          </form>
+<pre class="prettyprint linenums">
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButton" type="text"&gt;
+  &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+          <form class="bs-docs-example">
             <div class="input-append">
-              <input class="span2" id="appendedInputButtons" size="16" type="text">
+              <input class="span2" id="appendedInputButtons" type="text">
               <button class="btn" type="button">Search</button>
               <button class="btn" type="button">Options</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInputButton" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+  &lt;input class="span2" id="appendedInputButtons" type="text"&gt;
+  &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
 &lt;/div&gt;
+</pre>
 
+          <h4>{{_i}}Button dropdowns{{/i}}</h4>
+          <p>{{_i}}{{/i}}</p>
+          <form class="bs-docs-example">
+            <div class="input-append">
+              <input class="span2" id="appendedDropdownButton" type="text">
+              <div class="btn-group">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </div><!-- /btn-group -->
+            </div><!-- /input-append -->
+          </form>
+<pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInputButtons" size="16" type="text"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
+  &lt;input class="span2" id="appendedDropdownButton" type="text"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      {{_i}}Action{{/i}}
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+          <form class="bs-docs-example">
+            <div class="input-prepend">
+              <div class="btn-group">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </div><!-- /btn-group -->
+              <input class="span2" id="prependedDropdownButton" type="text">
+            </div><!-- /input-prepend -->
+          </form>
+<pre class="prettyprint linenums">
+&lt;div class="input-prepend"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      {{_i}}Action{{/i}}
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;input class="span2" id="prependedDropdownButton" type="text"&gt;
+&lt;/div&gt;
+</pre>
+
+          <form class="bs-docs-example">
+            <div class="input-prepend input-append">
+              <div class="btn-group">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </div><!-- /btn-group -->
+              <input class="span2" id="appendedPrependedDropdownButton" type="text">
+              <div class="btn-group">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </div><!-- /btn-group -->
+            </div><!-- /input-prepend input-append -->
+          </form>
+<pre class="prettyprint linenums">
+&lt;div class="input-prepend input-append"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      {{_i}}Action{{/i}}
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;input class="span2" id="appendedPrependedDropdownButton" type="text"&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
+      {{_i}}Action{{/i}}
+      &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      ...
+    &lt;/ul&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1150,6 +1273,17 @@
 
           <h3>{{_i}}Control sizing{{/i}}</h3>
           <p>{{_i}}Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.{{/i}}</p>
+
+          <h4>{{_i}}Block level inputs{{/i}}</h4>
+          <p>{{_i}}Make any <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> element behave like a block level element.{{/i}}</p>
+          <form class="bs-docs-example" style="padding-bottom: 15px;">
+            <div class="controls">
+              <input class="input-block-level" type="text" placeholder=".input-block-level">
+            </div>
+          </form>
+<pre class="prettyprint linenums">
+&lt;input class="input-block-level" type="text" placeholder=".input-block-level"&gt;
+</pre>
 
           <h4>{{_i}}Relative sizing{{/i}}</h4>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
@@ -1339,9 +1473,9 @@
               </div>
             </div>
             <div class="control-group info">
-              <label class="control-label" for="inputError">{{_i}}Input with info{{/i}}</label>
+              <label class="control-label" for="inputInfo">{{_i}}Input with info{{/i}}</label>
               <div class="controls">
-                <input type="text" id="inputError">
+                <input type="text" id="inputInfo">
                 <span class="help-inline">{{_i}}Username is taken{{/i}}</span>
               </div>
             </div>
