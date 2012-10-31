@@ -615,6 +615,10 @@ cite {
   color: #999999;
 }
 
+a.muted:hover {
+  color: #808080;
+}
+
 .text-warning {
   color: #c09853;
 }
