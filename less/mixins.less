@@ -503,7 +503,7 @@
   &:hover, &:active, &.active, &.disabled, &[disabled] {
     color: @textColor;
     background-color: @endColor;
-    *background-color: darken(@endColor, 5%);
+    *background-color: darken(@endColor, 5%); /* Buttons in IE7 don't get borders, so darken on hover */
   }
 
   // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
