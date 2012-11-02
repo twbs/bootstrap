@@ -3,7 +3,7 @@
 .pun, .opn, .clo { color: #93a1a1; }
 .fun { color: #dc322f; }
 .str, .atv { color: #D14; }
-.kwd, .linenums .tag { color: #1e347b; }
+.kwd, .prettyprint .tag { color: #1e347b; }
 .typ, .atn, .dec, .var { color: teal; }
 .pln { color: #48484c; }
 
@@ -21,10 +21,10 @@
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
   margin: 0 0 0 33px; /* IE indents via margin-left */
-} 
+}
 ol.linenums li {
   padding-left: 12px;
   color: #bebec5;
-  line-height: 18px;
+  line-height: 20px;
   text-shadow: 0 1px 0 #fff;
 }

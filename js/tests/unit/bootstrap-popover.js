@@ -90,4 +90,18 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
+
+      test("should destroy popover", function () {
+        var popover = $('<div/>').popover({trigger: 'hover'}).on('click.foo', function(){})
+        ok(popover.data('popover'), 'popover has data')
+        ok($._data(popover[0], 'events').mouseover && $._data(popover[0], 'events').mouseout, 'popover has hover event')
+        ok($._data(popover[0], 'events').click[0].namespace == 'foo', 'popover has extra click.foo event')
+        popover.popover('show')
+        popover.popover('destroy')
+        ok(!popover.hasClass('in'), 'popover is hidden')
+        ok(!popover.data('popover'), 'popover does not have data')
+        ok($._data(popover[0],'events').click[0].namespace == 'foo', 'popover still has click.foo')
+        ok(!$._data(popover[0], 'events').mouseover && !$._data(popover[0], 'events').mouseout, 'popover does not have any events')
+      })
+      
 })

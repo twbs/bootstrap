@@ -1,0 +1,25 @@
+{
+    "name": "bootstrap"
+  , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
+  , "version": "2.2.1"
+  , "keywords": ["bootstrap", "css"]
+  , "homepage": "http://twitter.github.com/bootstrap/"
+  , "author": "Twitter Inc."
+  , "scripts": { "test": "make test" }
+  , "repository": {
+      "type": "git"
+    , "url": "https://github.com/twitter/bootstrap.git"
+  }
+  , "licenses": [
+    {
+        "type": "Apache-2.0"
+      , "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ]
+  , "devDependencies": {
+      "uglify-js": "1.2.6"
+    , "jshint": "0.6.1"
+    , "recess": "1.0.3"
+    , "connect": "2.1.3"
+  }
+}

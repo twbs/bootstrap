@@ -1,6 +1,8 @@
-// Reset.less
-// Adapted from Normalize.css http://github.com/necolas/normalize.css
-// ------------------------------------------------------------------------
+//
+// Modals
+// Adapted from http://github.com/necolas/normalize.css
+// --------------------------------------------------
+
 
 // Display in IE6-9 and FF3
 // -------------------------
@@ -75,10 +77,20 @@ sub {
 // -------------------------
 
 img {
-  max-width: 100%;
-  height: auto;
+  /* Responsive images (ensure images don't scale beyond their parents) */
+  max-width: 100%; /* Part 1: Set a maxium relative to the parent */
+  width: auto\9; /* IE7-8 need help adjusting responsive images */
+  height: auto; /* Part 2: Scale the height according to the width, otherwise you get stretching */
+
+  vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
+}
+
+// Prevent max-width from affecting Google Maps
+#map_canvas img,
+.google-maps img {
+  max-width: none;
 }
 
 // Forms
@@ -104,17 +116,17 @@ input::-moz-focus-inner { // Inner padding and border oddities in FF3/4
   border: 0;
 }
 button,
-input[type="button"],
+html input[type="button"], // Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls.
 input[type="reset"],
 input[type="submit"] {
-  cursor: pointer; // Cursors on all buttons applied consistently
-  -webkit-appearance: button; // Style clicable inputs in iOS
+    -webkit-appearance: button; // Corrects inability to style clickable `input` types in iOS.
+    cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
 }
 input[type="search"] { // Appearance in Safari/Chrome
-  -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
           box-sizing: content-box;
+  -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
