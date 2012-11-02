@@ -2,7 +2,7 @@
 ================================================== -->
 <header class="jumbotron subhead">
   <div class="container">
-    <h1>{{_i}}JavaScript for Bootstrap{{/i}}</h1>
+    <h1>{{_i}}JavaScript{{/i}}</h1>
     <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.{{/i}}
   </div>
 </header>
@@ -41,7 +41,7 @@
           </div>
 
           <h3>{{_i}}Individual or compiled{{/i}}</h3>
-          <p>{{_i}}If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of the plugins listed on this page.{{/i}}</p>
+          <p>{{_i}}Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.{{/i}}</p>
 
           <h3>{{_i}}Data attributes{{/i}}</h3>
           <p>{{_i}}You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.{{/i}}</p>
@@ -117,7 +117,7 @@ $('#myModal').on('show', function (e) {
                 <h3>{{_i}}Modal header{{/i}}</h3>
               </div>
               <div class="modal-body">
-                <p>{{_i}}One fine body…{{/i}}</p>
+                <p>{{_i}}One fine body&hellip;{{/i}}</p>
               </div>
               <div class="modal-footer">
                 <a href="#" class="btn">{{_i}}Close{{/i}}</a>
@@ -132,7 +132,7 @@ $('#myModal').on('show', function (e) {
     &lt;h3&gt;{{_i}}Modal header{{/i}}&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
-    &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
+    &lt;p&gt;{{_i}}One fine body&hellip;{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
     &lt;a href="#" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
@@ -189,7 +189,7 @@ $('#myModal').on('show', function (e) {
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
-    &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
+    &lt;p&gt;{{_i}}One fine body&hellip;{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
     &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;{{_i}}Close{{/i}}&lt;/button&gt;
@@ -1549,6 +1549,12 @@ $('.carousel').carousel({
                  <td>{{_i}}Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.{{/i}}</td>
                </tr>
                <tr>
+                 <td>{{_i}}updater{{/i}}</td>
+                 <td>{{_i}}function{{/i}}</td>
+                 <td>{{_i}}returns selected item{{/i}}</td>
+                 <td>{{_i}}The method used to return selected item. Accepts a single argument, the <code>item</code> and has the scope of the typeahead instance.{{/i}}</td>
+               </tr>
+               <tr>
                  <td>{{_i}}highlighter{{/i}}</td>
                  <td>{{_i}}function{{/i}}</td>
                  <td>{{_i}}highlights all default matches{{/i}}</td>
@@ -1616,7 +1622,7 @@ $('[data-spy="affix"]').each(function () {
                <td>{{_i}}offset{{/i}}</td>
                <td>{{_i}}number | function | object{{/i}}</td>
                <td>{{_i}}10{{/i}}</td>
-               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
+               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provide an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
              </tr>
             </tbody>
           </table>

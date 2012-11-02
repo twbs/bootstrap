@@ -110,7 +110,7 @@ hr.soften {
 .jumbotron p {
   font-size: 24px;
   font-weight: 300;
-  line-height: 30px;
+  line-height: 1.25;
   margin-bottom: 30px;
 }
 
@@ -271,7 +271,7 @@ hr.soften {
   margin-bottom: 40px;
   font-size: 20px;
   font-weight: 300;
-  line-height: 25px;
+  line-height: 1.25;
   color: #999;
 }
 .marketing img {
@@ -299,7 +299,10 @@ hr.soften {
 }
 .footer-links li {
   display: inline;
-  margin-right: 10px;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
 }
 
 
@@ -946,11 +949,11 @@ form.bs-docs-example {
 
   /* Downsize the jumbotrons */
   .jumbotron h1 {
-    font-size: 60px;
+    font-size: 45px;
   }
   .jumbotron p,
   .jumbotron .btn {
-    font-size: 20px;
+    font-size: 18px;
   }
   .jumbotron .btn {
     display: block;
@@ -965,7 +968,10 @@ form.bs-docs-example {
 
   /* Marketing on home */
   .marketing h1 {
-    font-size: 40px;
+    font-size: 30px;
+  }
+  .marketing-byline {
+    font-size: 18px;
   }
 
   /* center example sites */
@@ -999,6 +1005,11 @@ form.bs-docs-example {
     left: auto;
   }
 
+  /* Tighten up footer */
+  .footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   /* Unfloat the back to top in footer to prevent odd text wrapping */
   .footer .pull-right {
     float: none;

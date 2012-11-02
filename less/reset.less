@@ -111,10 +111,18 @@ input[type="submit"] {
     -webkit-appearance: button; // Corrects inability to style clickable `input` types in iOS.
     cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
 }
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
+}
 input[type="search"] { // Appearance in Safari/Chrome
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
+  .box-sizing(content-box);
   -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,
