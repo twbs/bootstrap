@@ -21,7 +21,6 @@
 ;!function ($) {
 
   "use strict"; // jshint ;_;
->>>>>>> upstream/master
 
 
  /* CAROUSEL CLASS DEFINITION
