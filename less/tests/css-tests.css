@@ -73,9 +73,7 @@ body {
   width: 100%;
   height: 400px;
   margin: 20px 0;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  border-radius: 5px;
 }
 
 .gradient-horizontal {
