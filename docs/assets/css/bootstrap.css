@@ -2162,8 +2162,9 @@ table th[class*="span"],
 }
 
 [class^="glyphicon-"]:before {
-  display: inline-block;
-  font: normal 12px/1 'Glyphicons Halflings';
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  line-height: 1;
 }
 
 .glyphicon-glass:before {
@@ -3237,16 +3238,13 @@ button.close {
           border-radius: 3px;
 }
 
-.btn-large [class^="glyphicon-"]::before {
-  font-size: 14px;
+.btn [class^="glyphicon-"]::before {
+  vertical-align: -2px;
 }
 
-.btn-small [class^="glyphicon-"]::before {
-  font-size: 10px;
-}
-
+.btn-small [class^="glyphicon-"]::before,
 .btn-mini [class^="glyphicon-"]::before {
-  font-size: 9px;
+  vertical-align: -1px;
 }
 
 .btn-block {
