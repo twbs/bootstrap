@@ -60,12 +60,6 @@
      -moz-background-clip: padding;
           background-clip: padding-box;
 
-  // Aligns the dropdown menu to right
-  &.pull-right {
-    right: 0;
-    left: auto;
-  }
-
   // Dividers (basically an hr) within the dropdown
   .divider {
     .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
@@ -132,6 +126,7 @@
 
 // Right aligned dropdowns
 // ---------------------------
+.dropdown-menu.pull-right,
 .pull-right > .dropdown-menu {
   right: 0;
   left: auto;
@@ -177,14 +172,27 @@
 }
 
 // Dropups
+.dropdown-submenu.dropup > .dropdown-menu,
 .dropup .dropdown-submenu > .dropdown-menu {
   top: auto;
   bottom: 0;
   margin-top: 0;
   margin-bottom: -2px;
-  -webkit-border-radius: 5px 5px 5px 0;
-     -moz-border-radius: 5px 5px 5px 0;
-          border-radius: 5px 5px 5px 0;
+  -webkit-border-radius: 6px 6px 6px 0;
+     -moz-border-radius: 6px 6px 6px 0;
+          border-radius: 6px 6px 6px 0;
+}
+
+// Override the .dropup class with a .dropdown
+.dropdown-submenu.dropdown > .dropdown-menu,
+.dropdown .dropdown-submenu > .dropdown-menu {
+  top: 0;
+  bottom: auto;
+  margin-top: -6px;
+  margin-bottom: 0;
+  -webkit-border-radius: 0 6px 6px 6px;
+     -moz-border-radius: 0 6px 6px 6px;
+          border-radius: 0 6px 6px 6px;
 }
 
 // Caret to indicate there is a submenu
@@ -213,8 +221,10 @@
 
   // Positioning the submenu
   > .dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: -1px;
     -webkit-border-radius: 6px 0 6px 6px;
        -moz-border-radius: 6px 0 6px 6px;
             border-radius: 6px 0 6px 6px;
