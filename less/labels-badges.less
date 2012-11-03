@@ -27,6 +27,14 @@
   .border-radius(9px);
 }
 
+// Empty labels/badges collapse
+.label,
+.badge {
+  &:empty {
+    display: none;
+  }
+}
+
 // Hover state, but only for links
 a {
   &.label:hover,

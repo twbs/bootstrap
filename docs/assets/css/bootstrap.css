@@ -5427,6 +5427,11 @@ a.thumbnail:hover {
           border-radius: 9px;
 }
 
+.label:empty,
+.badge:empty {
+  display: none;
+}
+
 a.label:hover,
 a.badge:hover {
   color: #ffffff;
