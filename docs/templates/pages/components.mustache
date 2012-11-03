@@ -599,18 +599,17 @@
 
 
 
-        <!-- Nav, Tabs, & Pills
+        <!-- Navs
         ================================================== -->
         <section id="navs">
           <div class="page-header">
-            <h1>{{_i}}Nav: tabs, pills, and lists{{/i}}</small></h1>
+            <h1>{{_i}}Navs{{/i}}</small></h1>
           </div>
 
-          <h2>{{_i}}Lightweight defaults{{/i}} <small>{{_i}}Same markup, different classes{{/i}}</small></h2>
-          <p>{{_i}}All nav components here&mdash;tabs, pills, and lists&mdash;<strong>share the same base markup and styles</strong> through the <code>.nav</code> class.{{/i}}</p>
+          <p class="lead">{{_i}}Navs available in Bootstrap have shared markup, starting with the base <code>.nav</code> class, as well as shared states. Swap modifier classes to switch between each style.{{/i}}</p>
 
-          <h3>{{_i}}Basic tabs{{/i}}</h3>
-          <p>{{_i}}Take a regular <code>&lt;ul&gt;</code> of links and add <code>.nav-tabs</code>:{{/i}}</p>
+          <h2>{{_i}}Tabs{{/i}}</h2>
+          <p>{{_i}}Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.{{/i}}</p>
           <div class="bs-docs-example">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
@@ -628,7 +627,26 @@
 &lt;/ul&gt;
 </pre>
 
-          <h3>{{_i}}Basic pills{{/i}}</h3>
+          <h2>{{_i}}List{{/i}}</h2>
+          <p>{{_i}}Swap the tabs class for <code>.nav-list</code>.{{/i}}</p>
+          <div class="bs-docs-example">
+            <ul class="nav nav-list" style="max-width: 300px;">
+              <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+              <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+              <li><a href="#">{{_i}}Messages{{/i}}</a></li>
+            </ul>
+          </div>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-list"&gt;
+  &lt;li class="active"&gt;
+    &lt;a href="#"&gt;{{_i}}Home{{/i}}&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+          <h2>{{_i}}Pills{{/i}}</h2>
           <p>{{_i}}Take that same HTML, but use <code>.nav-pills</code> instead:{{/i}}</p>
           <div class="bs-docs-example">
             <ul class="nav nav-pills">
@@ -646,6 +664,21 @@
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
+          <p>{{_i}}Pills are also vertically stackable. Just add <code>.nav-stacked</code>.{{/i}}</p>
+          <div class="bs-docs-example">
+            <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+              <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
+              <li><a href="#">{{_i}}Profile{{/i}}</a></li>
+              <li><a href="#">{{_i}}Messages{{/i}}</a></li>
+            </ul>
+          </div>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-pills nav-stacked"&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+
+          <h2>{{_i}}Options{{/i}}</h2>
 
           <h3>{{_i}}Disabled state{{/i}}</h3>
           <p>{{_i}}For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.{{/i}}</p>
@@ -666,51 +699,6 @@
 
           <h3>{{_i}}Component alignment{{/i}}</h3>
           <p>{{_i}}To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.{{/i}}</p>
-
-
-          <hr class="bs-docs-separator">
-
-
-          <h2>{{_i}}Stackable{{/i}}</h2>
-          <p>{{_i}}As tabs and pills are horizontal by default, just add a second class, <code>.nav-stacked</code>, to make them appear vertically stacked.{{/i}}</p>
-
-          <h3>{{_i}}Stacked tabs{{/i}}</h3>
-          <div class="bs-docs-example">
-            <ul class="nav nav-tabs nav-stacked">
-              <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-              <li><a href="#">{{_i}}Profile{{/i}}</a></li>
-              <li><a href="#">{{_i}}Messages{{/i}}</a></li>
-            </ul>
-          </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs nav-stacked"&gt;
-  ...
-&lt;/ul&gt;
-</pre>
-
-          <h3>{{_i}}Stacked pills{{/i}}</h3>
-          <div class="bs-docs-example">
-            <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#">{{_i}}Home{{/i}}</a></li>
-              <li><a href="#">{{_i}}Profile{{/i}}</a></li>
-              <li><a href="#">{{_i}}Messages{{/i}}</a></li>
-            </ul>
-          </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills nav-stacked"&gt;
-  ...
-&lt;/ul&gt;
-</pre>
-
-          <h3>{{_i}}Horizontal dividers{{/i}}</h3>
-          <p>{{_i}}Add a horizontal divider by creating an empty list item with the class <code>.divider</code>, like so:{{/i}}</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs nav-stacked"&gt;
-  ...
-  &lt;li class="divider"&gt;&lt;/li&gt;
-  ...
-&lt;/ul&gt;
-</pre>
 
 
           <hr class="bs-docs-separator">
