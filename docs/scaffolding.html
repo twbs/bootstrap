@@ -301,13 +301,21 @@
 </pre>
 
           <h2>Fluid nesting</h2>
-          <p>Nesting with fluid grids is a bit different: the number of nested columns should not match the parent's number of columns. Instead, each level of nested columns are reset because each row takes up 100% of the parent column.</p>
+          <p>Fluid grids utilize nesting differently: each nested level of columns should add up to 12 columns. This is because the fluid grid uses percentages, not pixels, for setting widths.</p>
           <div class="row-fluid show-grid">
             <div class="span12">
               Fluid 12
               <div class="row-fluid show-grid">
                 <div class="span6">
                   Fluid 6
+                  <div class="row-fluid show-grid">
+                    <div class="span6">
+                      Fluid 6
+                    </div>
+                    <div class="span6">
+                      Fluid 6
+                    </div>
+                  </div>
                 </div>
                 <div class="span6">
                   Fluid 6
@@ -320,7 +328,13 @@
   &lt;div class="span12"&gt;
     Fluid 12
     &lt;div class="row-fluid"&gt;
-      &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
+      &lt;div class="span6"&gt;
+        Fluid 6
+        &lt;div class="row-fluid"&gt;
+          &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
+          &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
       &lt;div class="span6"&gt;Fluid 6&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
