@@ -19,7 +19,7 @@ build:
 	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@echo "Compiling LESS with Recess...               ${CHECK} Done"
 	@node docs/build
-	@cp img/* docs/assets/img/
+	@cp fonts/* docs/assets/fonts/
 	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
 	@echo "Compiling documentation...                  ${CHECK} Done"
@@ -60,10 +60,10 @@ clean:
 #
 
 bootstrap:
-	mkdir -p bootstrap/img
+	mkdir -p bootstrap/fonts
 	mkdir -p bootstrap/css
 	mkdir -p bootstrap/js
-	cp img/* bootstrap/img/
+	cp fonts/* bootstrap/fonts/
 	recess --compile ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
 	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
 	cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > bootstrap/js/bootstrap.js

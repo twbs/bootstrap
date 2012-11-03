@@ -62,19 +62,14 @@
 }
 
 
-
 // Button Sizes
-// --------------------------------------------------
+// -------------------------
 
 // Large
 .btn-large {
   padding: @paddingLarge;
   font-size: @fontSizeLarge;
   border-radius: @borderRadiusLarge;
-}
-.btn-large [class^="icon-"],
-.btn-large [class*=" icon-"] {
-  margin-top: 2px;
 }
 
 // Small
@@ -83,10 +78,6 @@
   font-size: @fontSizeSmall;
   border-radius: @borderRadiusSmall;
 }
-.btn-small [class^="icon-"],
-.btn-small [class*=" icon-"] {
-  margin-top: 0;
-}
 
 // Mini
 .btn-mini {
@@ -94,6 +85,14 @@
   font-size: @fontSizeMini;
   border-radius: @borderRadiusSmall;
 }
+
+
+// Icons in buttons
+// -------------------------
+
+.btn [class^="glyphicon-"]::before       { vertical-align: -2px; }
+.btn-small [class^="glyphicon-"]::before,
+.btn-mini [class^="glyphicon-"]::before  { vertical-align: -1px; }
 
 
 // Block button

@@ -536,7 +536,11 @@ h2 + .row {
   width: 25%;
   line-height: 25px;
 }
-.the-icons i:hover {
+.the-icons [class^="glyphicon-"] {
+  vertical-align: middle;
+  margin-right: 3px;
+}
+.the-icons li:hover [class^="glyphicon-"] {
   background-color: rgba(255,0,0,.25);
 }
 
@@ -756,18 +760,19 @@ form.bs-docs-example {
   margin: 30px 0 0;
 }
 /* Chevrons */
-.bs-docs-sidenav .icon-chevron-right {
+.bs-docs-sidenav .glyphicon-chevron-right {
   float: right;
-  margin-top: 2px;
+  margin-top: -2px;
   margin-right: -6px;
   opacity: .25;
+  color: #000;
 }
-.bs-docs-sidenav a:hover .icon-chevron-right {
+.bs-docs-sidenav a:hover .glyphicon-chevron-right {
   opacity: .5;
 }
-.bs-docs-sidenav .active .icon-chevron-right,
-.bs-docs-sidenav .active a:hover .icon-chevron-right {
-  background-image: url(../img/glyphicons-halflings-white.png);
+.bs-docs-sidenav .active .glyphicon-chevron-right,
+.bs-docs-sidenav .active a:hover .glyphicon-chevron-right {
+  color: #fff;
   opacity: 1;
 }
 .bs-docs-sidenav.affix {
