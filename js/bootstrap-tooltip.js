@@ -236,7 +236,8 @@
     }
 
   , toggle: function (e) {
-      this.tip().hasClass('in') ? this.hide() : this.show()
+      var self = (e) ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
+      self.tip().hasClass('in') ? self.hide() : self.show()
     }
 
   , destroy: function () {
