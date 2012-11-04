@@ -3579,6 +3579,40 @@ input[type="button"].btn-block {
   border-bottom-color: transparent;
 }
 
+.nav-pills > li > a {
+  border-radius: 5px;
+}
+
+.nav-pills > li + li > a {
+  margin-left: 2px;
+}
+
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: #ffffff;
+  background-color: #0088cc;
+}
+
+.nav-stacked > li {
+  float: none;
+}
+
+.nav-stacked > li + li > a {
+  margin-top: 2px;
+  margin-left: 0;
+}
+
+.nav-justified {
+  max-height: 37px;
+}
+
+.nav-justified > li {
+  display: table-cell;
+  float: none;
+  width: 1%;
+  text-align: center;
+}
+
 .nav-list {
   background-color: #fff;
   border-radius: 6px;
@@ -3618,29 +3652,6 @@ input[type="button"].btn-block {
   border-width: 0;
   -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1), inset -1px 0 0 rgba(0, 0, 0, 0.1);
           box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1), inset -1px 0 0 rgba(0, 0, 0, 0.1);
-}
-
-.nav-pills > li > a {
-  border-radius: 5px;
-}
-
-.nav-pills > li + li > a {
-  margin-left: 2px;
-}
-
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover {
-  color: #ffffff;
-  background-color: #0088cc;
-}
-
-.nav-stacked > li {
-  float: none;
-}
-
-.nav-stacked > li + li > a {
-  margin-top: 2px;
-  margin-left: 0;
 }
 
 .nav-tabs .dropdown-menu {

@@ -748,6 +748,31 @@
 
           <h2>Options</h2>
 
+          <h3>Justified links</h3>
+          <p>Easily make tabs or pills equal widths of their parent with <code>.nav-justified</code>.</p>
+          <div class="bs-docs-example">
+            <ul class="nav nav-tabs nav-justified">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Messages</a></li>
+            </ul>
+            <br>
+            <ul class="nav nav-pills nav-justified">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Messages</a></li>
+            </ul>
+          </div>
+<pre class="prettyprint linenums">
+&lt;ul class="nav nav-tabs nav-justified"&gt;
+  ...
+&lt;/ul&gt;
+
+&lt;ul class="nav nav-pills nav-justified"&gt;
+  ...
+&lt;/ul&gt;
+</pre>
+
           <h3>Disabled state</h3>
           <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.</p>
           <div class="bs-docs-example">
