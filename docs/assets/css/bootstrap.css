@@ -544,19 +544,16 @@ li {
   line-height: 20px;
 }
 
-ul.unstyled,
-ol.unstyled {
+.list-unstyled {
   margin-left: 0;
   list-style: none;
 }
 
-ul.inline,
-ol.inline {
+.list-inline {
   list-style: none;
 }
 
-ul.inline > li,
-ol.inline > li {
+.list-inline > li {
   display: inline-block;
   padding-right: 5px;
   padding-left: 5px;
