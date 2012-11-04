@@ -550,6 +550,18 @@ ol.unstyled {
   list-style: none;
 }
 
+ul.inline,
+ol.inline {
+  list-style: none;
+}
+
+ul.inline > li,
+ol.inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
 dl {
   margin-bottom: 20px;
 }
