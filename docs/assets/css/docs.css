@@ -177,6 +177,16 @@ hr.soften {
   background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
   opacity: .4;
 }
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1) {
+
+  .jumbotron:after {
+    background-size: 150px 150px;
+  }
+
+}
 
 /* Masthead (docs home)
 ------------------------- */
