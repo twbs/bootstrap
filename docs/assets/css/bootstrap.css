@@ -816,6 +816,7 @@ ol.unstyled {
 
 ul.inline,
 ol.inline {
+  margin-left: 0;
   list-style: none;
 }
 
