@@ -816,33 +816,14 @@ ol.unstyled {
 
 ul.inline,
 ol.inline {
-  *zoom: 1;
-}
-
-ul.inline:before,
-ol.inline:before,
-ul.inline:after,
-ol.inline:after {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-
-ul.inline:after,
-ol.inline:after {
-  clear: both;
+  list-style: none;
 }
 
 ul.inline > li,
 ol.inline > li {
-  float: left;
-  margin-right: 14px;
-  margin-left: 12px;
-}
-
-ul.unstyled.inline > li,
-ol.unstyled.inline > li {
-  padding-left: 0;
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 dl {
