@@ -111,6 +111,21 @@ ol.unstyled {
   margin-left: 0;
   list-style: none;
 }
+ul.inline,
+ol.inline {
+  .clearfix();
+}
+ul.inline > li,
+ol.inline > li {
+  float: left;
+  margin-right: 14px;
+  margin-left: 12px;
+}
+// Reset left padding for unstyled
+ul.unstyled.inline > li,
+ol.unstyled.inline > li {
+  padding-left: 0;
+}
 
 // Description Lists
 dl {
