@@ -81,7 +81,7 @@ bootstrap:
 # MAKE FOR GH-PAGES 4 FAT & MDO ONLY (O_O  )
 #
 
-gh-pages: bootstrap docs
+gh-pages: bootstrap build
 	rm -f docs/assets/bootstrap.zip
 	zip -r docs/assets/bootstrap.zip bootstrap
 	rm -r bootstrap
@@ -98,4 +98,4 @@ watch:
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 
-.PHONY: docs watch gh-pages
+.PHONY: watch gh-pages
