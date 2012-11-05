@@ -1425,10 +1425,22 @@ textarea[readonly] {
   background-color: #eeeeee;
 }
 
+fieldset[disabled] input,
+fieldset[disabled] select,
+fieldset[disabled] textarea {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
 input[type="radio"][readonly],
 input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+
+fieldset[disabled] input[type="radio"],
+fieldset[disabled] input[type="checkbox"] {
   background-color: transparent;
 }
 
@@ -3165,7 +3177,8 @@ button.close {
 .btn:active,
 .btn.active,
 .btn.disabled,
-.btn[disabled] {
+.btn[disabled],
+fieldset[disabled] .btn {
   color: #333333;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
@@ -3206,7 +3219,8 @@ button.close {
 }
 
 .btn.disabled,
-.btn[disabled] {
+.btn[disabled],
+fieldset[disabled] .btn {
   cursor: default;
   background-image: none;
   opacity: 0.65;
@@ -3305,7 +3319,8 @@ input[type="button"].btn-block {
 .btn-primary:active,
 .btn-primary.active,
 .btn-primary.disabled,
-.btn-primary[disabled] {
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary {
   color: #ffffff;
   background-color: #0044cc;
   *background-color: #003bb3;
@@ -3337,7 +3352,8 @@ input[type="button"].btn-block {
 .btn-warning:active,
 .btn-warning.active,
 .btn-warning.disabled,
-.btn-warning[disabled] {
+.btn-warning[disabled],
+fieldset[disabled] .btn-warning {
   color: #ffffff;
   background-color: #f89406;
   *background-color: #df8505;
@@ -3369,7 +3385,8 @@ input[type="button"].btn-block {
 .btn-danger:active,
 .btn-danger.active,
 .btn-danger.disabled,
-.btn-danger[disabled] {
+.btn-danger[disabled],
+fieldset[disabled] .btn-danger {
   color: #ffffff;
   background-color: #bd362f;
   *background-color: #a9302a;
@@ -3401,7 +3418,8 @@ input[type="button"].btn-block {
 .btn-success:active,
 .btn-success.active,
 .btn-success.disabled,
-.btn-success[disabled] {
+.btn-success[disabled],
+fieldset[disabled] .btn-success {
   color: #ffffff;
   background-color: #51a351;
   *background-color: #499249;
@@ -3433,7 +3451,8 @@ input[type="button"].btn-block {
 .btn-info:active,
 .btn-info.active,
 .btn-info.disabled,
-.btn-info[disabled] {
+.btn-info[disabled],
+fieldset[disabled] .btn-info {
   color: #ffffff;
   background-color: #2f96b4;
   *background-color: #2a85a0;
@@ -3465,7 +3484,8 @@ input[type="button"].btn-block {
 .btn-inverse:active,
 .btn-inverse.active,
 .btn-inverse.disabled,
-.btn-inverse[disabled] {
+.btn-inverse[disabled],
+fieldset[disabled] .btn-inverse {
   color: #ffffff;
   background-color: #222222;
   *background-color: #151515;
@@ -3508,7 +3528,8 @@ input[type="submit"].btn.btn-mini {
 
 .btn-link,
 .btn-link:active,
-.btn-link[disabled] {
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
   background-color: transparent;
   background-image: none;
   -webkit-box-shadow: none;
@@ -3531,7 +3552,8 @@ input[type="submit"].btn.btn-mini {
   background-color: transparent;
 }
 
-.btn-link[disabled]:hover {
+.btn-link[disabled]:hover,
+fieldset[disabled] .btn-link:hover {
   color: #333333;
   text-decoration: none;
 }
@@ -4541,7 +4563,8 @@ input[type="submit"].btn.btn-mini {
 .navbar .btn-navbar:active,
 .navbar .btn-navbar.active,
 .navbar .btn-navbar.disabled,
-.navbar .btn-navbar[disabled] {
+.navbar .btn-navbar[disabled],
+fieldset[disabled] .navbar .btn-navbar {
   color: #ffffff;
   background-color: #e5e5e5;
   *background-color: #d9d9d9;
@@ -4786,7 +4809,8 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .btn-navbar:active,
 .navbar-inverse .btn-navbar.active,
 .navbar-inverse .btn-navbar.disabled,
-.navbar-inverse .btn-navbar[disabled] {
+.navbar-inverse .btn-navbar[disabled],
+fieldset[disabled] .navbar-inverse .btn-navbar {
   color: #ffffff;
   background-color: #040404;
   *background-color: #000000;
