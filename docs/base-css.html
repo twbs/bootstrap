@@ -1571,13 +1571,13 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
 </pre>
 
-          <h3>Required inputs</h3>
-          <p>Style inputs via default browser functionality with <code>:valid</code>.</p>
+          <h3>Invalid inputs</h3>
+          <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code> and add the <code>required</code> attribute.</p>
           <form class="bs-docs-example form-inline">
-            <input class="span4" type="text" value="Required input" required>
+            <input class="span3" type="email" placeholder="test@example.com" required>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="span4" type="text" placeholder="Required input" required&gt;
+&lt;input class="span3" type="email" required&gt;
 </pre>
 
           <h3>Disabled inputs</h3>

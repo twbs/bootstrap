@@ -1508,13 +1508,13 @@
 &lt;input class="input-xlarge" id="focusedInput" type="text" value="{{_i}}This is focused...{{/i}}"&gt;
 </pre>
 
-          <h3>{{_i}}Required inputs{{/i}}</h3>
-          <p>{{_i}}Style inputs via default browser functionality with <code>:valid</code>.{{/i}}</p>
+          <h3>{{_i}}Invalid inputs{{/i}}</h3>
+          <p>{{_i}}Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code> and add the <code>required</code> attribute.{{/i}}</p>
           <form class="bs-docs-example form-inline">
-            <input class="span4" type="text" value="{{_i}}Required input{{/i}}" required>
+            <input class="span3" type="email" placeholder="test@example.com" required>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="span4" type="text" placeholder="{{_i}}Required input{{/i}}" required&gt;
+&lt;input class="span3" type="email" required&gt;
 </pre>
 
           <h3>{{_i}}Disabled inputs{{/i}}</h3>
