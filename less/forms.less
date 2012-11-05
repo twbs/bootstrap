@@ -462,7 +462,8 @@ select:focus:required:invalid {
     border: 1px solid #ccc;
   }
   .add-on,
-  .btn {
+  .btn,
+  .btn-group > .dropdown-toggle {
     vertical-align: top;
     .border-radius(0);
   }
@@ -489,7 +490,7 @@ select:focus:required:invalid {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
-    + .btn-group .btn {
+    + .btn-group .btn:last-child {
       .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     }
   }
@@ -499,7 +500,8 @@ select:focus:required:invalid {
     margin-left: -1px;
   }
   .add-on:last-child,
-  .btn:last-child {
+  .btn:last-child,
+  .btn-group:last-child > .dropdown-toggle {
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
