@@ -1323,6 +1323,54 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;/div&gt;
 </pre>
 
+          <h4>Segmented dropdown groups</h4>
+          <form class="bs-docs-example">
+            <div class="input-prepend">
+              <div class="btn-group">
+                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
+              <input type="text">
+            </div>
+            <div class="input-append">
+              <input type="text">
+              <div class="btn-group">
+                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+<pre class="prettyprint linenums">
+&lt;form&gt;
+  &lt;div class="input-prepend"&gt;
+    &lt;div class="btn-group"&gt;...&lt;/div&gt;
+    &lt;input type="text"&gt;
+  &lt;/div&gt;
+  &lt;div class="input-append"&gt;
+    &lt;input type="text"&gt;
+    &lt;div class="btn-group"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+
           <h4>Search form</h4>
           <form class="bs-docs-example form-search">
             <div class="input-append">
@@ -1511,6 +1559,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           </form>
 <pre class="prettyprint linenums">
 &lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
+</pre>
+
+          <h3>Invalid inputs</h3>
+          <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code> and add the <code>required</code> attribute.</p>
+          <form class="bs-docs-example form-inline">
+            <input class="span3" type="email" placeholder="test@example.com" required>
+          </form>
+<pre class="prettyprint linenums">
+&lt;input class="span3" type="email" required&gt;
 </pre>
 
           <h3>Disabled inputs</h3>
