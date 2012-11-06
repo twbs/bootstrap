@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.2.1
+ * Bootstrap v2.2.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -3758,7 +3758,6 @@ input[type="button"].btn-block {
   padding: 0 20px;
   margin-bottom: 20px;
   overflow: visible;
-  color: #777777;
   background-color: #fafafa;
   background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
@@ -3811,6 +3810,7 @@ input[type="button"].btn-block {
 .navbar-text {
   margin-bottom: 0;
   line-height: 44px;
+  color: #777777;
 }
 
 .navbar-link {
@@ -4129,7 +4129,6 @@ input[type="button"].btn-block {
 }
 
 .navbar-inverse {
-  color: #999999;
   background-color: #1b1b1b;
   background-image: -moz-linear-gradient(top, #222222, #111111);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
@@ -4150,6 +4149,10 @@ input[type="button"].btn-block {
 .navbar-inverse .brand:hover,
 .navbar-inverse .nav > li > a:hover {
   color: #ffffff;
+}
+
+.navbar-inverse .navbar-text {
+  color: #999999;
 }
 
 .navbar-inverse .nav > li > a:focus,

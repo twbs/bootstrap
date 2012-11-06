@@ -11,7 +11,6 @@
   overflow: visible;
   padding: 0 20px;
   margin-bottom: @baseLineHeight;
-  color: @navbarText;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
   border-radius: @baseBorderRadius;
@@ -56,6 +55,7 @@
 .navbar-text {
   margin-bottom: 0;
   line-height: @navbarHeight;
+  color: @navbarText;
 }
 
 // Janky solution for now to account for links outside the .nav
@@ -356,7 +356,6 @@
 // -------------------------
 
 .navbar-inverse {
-  color: @navbarInverseText;
   #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
   border-color: @navbarInverseBorder;
 
@@ -367,6 +366,10 @@
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
+  }
+
+  .navbar-text {
+    color: @navbarInverseText;
   }
 
   .nav > li > a:focus,
@@ -444,6 +447,3 @@
   }
 
 }
-
-
-
