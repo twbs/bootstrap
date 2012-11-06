@@ -544,7 +544,11 @@ h2 + .row {
   width: 25%;
   line-height: 25px;
 }
-.the-icons i:hover {
+.the-icons [class^="icon-"] {
+  vertical-align: middle;
+  margin-right: 3px;
+}
+.the-icons li:hover [class^="icon-"] {
   background-color: rgba(255,0,0,.25);
 }
 
