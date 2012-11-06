@@ -32,6 +32,7 @@
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
+    this.autoselect = this.options.autoselect || this.autoselect
     this.updater = this.options.updater || this.updater
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
@@ -44,7 +45,10 @@
     constructor: Typeahead
 
   , select: function () {
+      if (!this.$menu.find('.active').length) return
+
       var val = this.$menu.find('.active').attr('data-value')
+
       this.$element
         .val(this.updater(val))
         .change()
@@ -141,7 +145,10 @@
         return i[0]
       })
 
-      items.first().addClass('active')
+      if (this.options.autoselect) {
+          items.first().addClass('active')
+      }
+
       this.$menu.html(items)
       return this
     }
@@ -151,7 +158,7 @@
         , next = active.next()
 
       if (!next.length) {
-        next = $(this.$menu.find('li')[0])
+        next = $(this.$menu.find('li').first())
       }
 
       next.addClass('active')
@@ -292,6 +299,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , autoselect: true
   }
 
   $.fn.typeahead.Constructor = Typeahead
