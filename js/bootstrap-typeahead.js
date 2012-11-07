@@ -161,6 +161,8 @@
         next = $(this.$menu.find('li').first())
       }
 
+      console.log(next)
+
       next.addClass('active')
     }
 
@@ -223,13 +225,7 @@
       e.stopPropagation()
     }
 
-  , keydown: function (e) {
-      this.suppressKeyPressRepeat = !~$.inArray(e.keyCode, [40,38,9,13,27])
-      this.move(e)
-    }
-
   , keypress: function (e) {
-      if (this.suppressKeyPressRepeat) return
       this.move(e)
     }
 
