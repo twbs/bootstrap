@@ -288,6 +288,7 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: 'parent'
   }
 
 }(window.jQuery);
