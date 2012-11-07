@@ -161,8 +161,6 @@
         next = $(this.$menu.find('li').first())
       }
 
-      console.log(next)
-
       next.addClass('active')
     }
 
