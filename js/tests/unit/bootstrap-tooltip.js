@@ -150,4 +150,30 @@ $(function () {
         div.find('a').trigger('click')
         ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
       })
+      test("should place tooltips inside the body", function () {
+        $.support.transition = false
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').appendTo('#qunit-fixture').tooltip({container:'body'}).tooltip('show')
+        ok($("body > .tooltip").length, 'inside the body')
+        ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
+        tooltip.tooltip('hide')
+      })
+
+      test("should place tooltips inside the parent", function () {
+        $.support.transition = false
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').appendTo('#qunit-fixture').tooltip({container:'parent'}).tooltip('show')
+        ok($("#qunit-fixture > .tooltip").length, 'inside the parent')
+        ok(!$("body > .tooltip").length, 'not found in body')
+        tooltip.tooltip('hide')
+      })
+      test("should place tooltips inside an element", function () {
+        $.support.transition = false
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a><div id="tooltiphere"></div>').appendTo('#qunit-fixture').tooltip({container:'#tooltiphere'}).tooltip('show')
+        ok($("#tooltiphere > .tooltip").length, 'inside the element')
+        ok(!$("body > .tooltip").length, 'not in the body')
+        ok(!$("#qunit-fixture > .tooltip").length, 'not in the parent')
+        tooltip.tooltip('hide')
+      })
+
+
+
 })
