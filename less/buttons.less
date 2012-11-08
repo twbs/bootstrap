@@ -28,6 +28,9 @@
 
   // Hover state
   &:hover {
+    .hover;
+  }
+  .hover() {
     color: @grayDark;
     text-decoration: none;
     background-color: darken(@white, 10%);
@@ -41,6 +44,9 @@
 
   // Focus state for keyboard and accessibility
   &:focus {
+    .focus;
+  }
+  .focus() {
     .tab-focus();
   }
 
@@ -76,10 +82,11 @@
   padding: @paddingLarge;
   font-size: @fontSizeLarge;
   .border-radius(@borderRadiusLarge);
-}
-.btn-large [class^="icon-"],
-.btn-large [class*=" icon-"] {
-  margin-top: 2px;
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    margin-top: 2px;
+  }
 }
 
 // Small
@@ -87,10 +94,11 @@
   padding: @paddingSmall;
   font-size: @fontSizeSmall;
   .border-radius(@borderRadiusSmall);
-}
-.btn-small [class^="icon-"],
-.btn-small [class*=" icon-"] {
-  margin-top: 0;
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    margin-top: 0;
+  }
 }
 
 // Mini
