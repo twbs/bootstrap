@@ -123,7 +123,7 @@
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
         
-        container = this.options.container == '' ? '' : $(this.options.container)
+        container = this.options.container === '' ? '' : $(this.options.container)
         container.length ? $tip.appendTo(container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition(inside)
