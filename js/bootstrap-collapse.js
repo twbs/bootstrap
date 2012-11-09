@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-collapse.js v2.2.0
+ * bootstrap-collapse.js v2.2.1
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -28,7 +28,7 @@
 
   var Collapse = function (element, options) {
     this.$element = $(element)
-    this.options = $.extend({}, $.fn.collapse.defaults, options)
+    this.options = $.extend({}, $.fn.collapse.defaults,{ toggle: typeof this.$element.data('toggle') == 'boolean' && this.$element.data('toggle') }, options)
 
     if (this.options.parent) {
       this.$parent = $(this.options.parent)
