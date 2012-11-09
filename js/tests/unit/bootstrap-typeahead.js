@@ -137,8 +137,17 @@ $(function () {
         equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
         ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is active")
 
+        // simulate entire key pressing event
         $input.trigger({
           type: 'keydown'
+        , keyCode: 40
+        })
+        .trigger({
+          type: 'keypress'
+        , keyCode: 40
+        })
+        .trigger({
+          type: 'keyup'
         , keyCode: 40
         })
 
@@ -147,6 +156,14 @@ $(function () {
 
         $input.trigger({
           type: 'keydown'
+        , keyCode: 38
+        })
+        .trigger({
+          type: 'keypress'
+        , keyCode: 38
+        })
+        .trigger({
+          type: 'keyup'
         , keyCode: 38
         })
 
