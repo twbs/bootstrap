@@ -28,7 +28,7 @@
 
   var Collapse = function (element, options) {
     this.$element = $(element)
-    this.options = $.extend({}, $.fn.collapse.defaults, options)
+    this.options = $.extend({}, $.fn.collapse.defaults,{ toggle: typeof this.$element.data('toggle') == 'boolean' && this.$element.data('toggle') }, options)
 
     if (this.options.parent) {
       this.$parent = $(this.options.parent)
