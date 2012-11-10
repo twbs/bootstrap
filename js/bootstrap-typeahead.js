@@ -77,15 +77,15 @@
     }
 
   , lookup: function (event) {
-      var items
+      var items, source
 
       this.query = this.$element.val()
 
       if (!this.query || this.query.length < this.options.minLength) {
         return this.shown ? this.hide() : this
       }
-
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+      source = $.isFunction(window[this.source]) ? window[this.source] : this.source
+      items = $.isFunction(source) ? source(this.query, $.proxy(this.process, this)) : source
 
       return items ? this.process(items) : this
     }
