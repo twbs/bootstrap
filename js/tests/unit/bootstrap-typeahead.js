@@ -196,4 +196,5 @@ $(function () {
 
         typeahead.$menu.remove()
       })
+
 })
