@@ -138,7 +138,7 @@ $(function () {
         ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is active")
 
         $input.trigger({
-          type: 'keypress'
+          type: 'keydown'
         , keyCode: 40
         })
 
@@ -146,7 +146,7 @@ $(function () {
 
 
         $input.trigger({
-          type: 'keypress'
+          type: 'keydown'
         , keyCode: 38
         })
 
