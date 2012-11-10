@@ -45,8 +45,11 @@
 
   , select: function () {
       var val = this.$menu.find('.active').attr('data-value')
+      if (val) {
+        this.$element
+          .val(this.updater(val))
+      }    
       this.$element
-        .val(this.updater(val))
         .change()
       return this.hide()
     }
@@ -141,7 +144,9 @@
         return i[0]
       })
 
-      items.first().addClass('active')
+      if (this.options.autoselect) {
+        items.first().addClass('active')
+      }
       this.$menu.html(items)
       return this
     }
@@ -292,6 +297,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , autoselect: true
   }
 
   $.fn.typeahead.Constructor = Typeahead
