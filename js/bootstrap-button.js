@@ -31,7 +31,7 @@
     this.options = $.extend({}, $.fn.button.defaults, options)
   }
 
-  Button.prototype.setState = function (state) {
+  Button.prototype.setState = function (state, setDisabled) {
     var d = 'disabled'
       , $el = this.$element
       , data = $el.data()
@@ -44,7 +44,7 @@
 
     // push to event loop to allow forms to submit
     setTimeout(function () {
-      state == 'loadingText' ?
+      state == 'loadingText' || setDisabled == d ?
         $el.addClass(d).attr(d, d) :
         $el.removeClass(d).removeAttr(d)
     }, 0)
@@ -64,14 +64,14 @@
  /* BUTTON PLUGIN DEFINITION
   * ======================== */
 
-  $.fn.button = function (option) {
+  $.fn.button = function (option, setDisabled) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('button')
         , options = typeof option == 'object' && option
       if (!data) $this.data('button', (data = new Button(this, options)))
       if (option == 'toggle') data.toggle()
-      else if (option) data.setState(option)
+      else if (option) data.setState(option, setDisabled)
     })
   }
 

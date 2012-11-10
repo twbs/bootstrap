@@ -23,6 +23,19 @@ $(function () {
         }, 0)
       })
 
+      test("should return set state to complete and be disabled", function () {
+        var btn = $('<button class="btn" data-complete-text="done">mdo</button>')
+        equals(btn.html(), 'mdo', 'btn text equals mdo')
+        btn.button('complete', 'disabled')
+        equals(btn.html(), 'done', 'btn text equals done')
+        stop()
+        setTimeout(function () {
+          ok(btn.attr('disabled'), 'btn is disabled')
+          ok(btn.hasClass('disabled'), 'btn has disabled class')
+          start()
+        }, 0)
+      })
+
       test("should return reset state", function () {
         var btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
         equals(btn.html(), 'mdo', 'btn text equals mdo')
