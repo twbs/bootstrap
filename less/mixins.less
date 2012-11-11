@@ -500,7 +500,7 @@
   .reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active, &.disabled, &[disabled] {
+  &:hover, &:active, &.active, &.disabled, &[disabled], fieldset[disabled] & {
     color: @textColor;
     background-color: @endColor;
     *background-color: darken(@endColor, 5%);

@@ -333,12 +333,28 @@ textarea[readonly] {
   cursor: not-allowed;
   background-color: @inputDisabledBackground;
 }
+// Inputs within a disabled fieldset
+fieldset[disabled] {
+  input,
+  select,
+  textarea {
+    // Same as an individually disabled or read-only input (see above)
+    cursor: not-allowed;
+    background-color: @inputDisabledBackground;
+  }
+}
 // Explicitly reset the colors here
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
 input[type="radio"][readonly],
 input[type="checkbox"][readonly] {
   background-color: transparent;
+}
+fieldset[disabled] {
+  input[type="radio"],
+  input[type="checkbox"] {
+    background-color: transparent;
+  }
 }
 
 
