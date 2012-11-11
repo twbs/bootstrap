@@ -4678,6 +4678,10 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
 }
 
+.navbar-inverse .brand {
+  color: #999999;
+}
+
 .navbar-inverse .navbar-text {
   color: #999999;
 }
