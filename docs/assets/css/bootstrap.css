@@ -4223,7 +4223,7 @@ input[type="submit"].btn.btn-mini {
   font-size: 20px;
   font-weight: 200;
   color: #777777;
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #111111;
 }
 
 .navbar .brand:hover {
@@ -4414,7 +4414,7 @@ input[type="submit"].btn.btn-mini {
   padding: 10px 15px 10px;
   color: #777777;
   text-decoration: none;
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #111111;
 }
 
 .navbar .nav .dropdown-toggle .caret {
