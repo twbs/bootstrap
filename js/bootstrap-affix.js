@@ -88,18 +88,16 @@
  /* AFFIX DATA-API
   * ============== */
 
-  $(window).on('load', function () {
-    $('[data-spy="affix"]').each(function () {
-      var $spy = $(this)
-        , data = $spy.data()
+  $(document).on('[data-spy="affix"]', function () {
+    var $spy = $(this)
+      , data = $spy.data()
 
-      data.offset = data.offset || {}
+    data.offset = data.offset || {}
 
-      data.offsetBottom && (data.offset.bottom = data.offsetBottom)
-      data.offsetTop && (data.offset.top = data.offsetTop)
+    data.offsetBottom && (data.offset.bottom = data.offsetBottom)
+    data.offsetTop && (data.offset.top = data.offsetTop)
 
-      $spy.affix(data)
-    })
+    $spy.affix(data)
   })
 
 
