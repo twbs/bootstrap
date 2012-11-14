@@ -169,10 +169,9 @@
     }
 
   , listen: function () {
-      this.$element
-        .on('blur',     $.proxy(this.blur, this))
-        .on('keypress', $.proxy(this.keypress, this))
-        .on('keyup',    $.proxy(this.keyup, this))
+      $(document).on('blur', this.$element, $.proxy(this.blur, this))
+      $(document).on('keypress', this.$element, $.proxy(this.keypress, this))
+      $(document).on('keyup', this.$element, $.proxy(this.keyup, this))
 
       if (this.eventSupported('keydown')) {
         this.$element.on('keydown', $.proxy(this.keydown, this))
