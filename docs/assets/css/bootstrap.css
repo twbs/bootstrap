@@ -1888,6 +1888,18 @@ table {
   -moz-border-radius-bottomright: 4px;
 }
 
+.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
+  -webkit-border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+}
+
+.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
+  -webkit-border-bottom-right-radius: 0;
+          border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+}
+
 .table-bordered caption + thead tr:first-child th:first-child,
 .table-bordered caption + tbody tr:first-child td:first-child,
 .table-bordered colgroup + thead tr:first-child th:first-child,
@@ -4149,6 +4161,10 @@ input[type="button"].btn-block {
 .navbar-inverse .brand:hover,
 .navbar-inverse .nav > li > a:hover {
   color: #ffffff;
+}
+
+.navbar-inverse .brand {
+  color: #999999;
 }
 
 .navbar-inverse .navbar-text {
