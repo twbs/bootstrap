@@ -136,6 +136,8 @@ input[type="button"] {
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
+.btn-navbar.active,
+.btn-navbar-selected.active,
 .btn-inverse.active {
   color: rgba(255,255,255,.75);
 }
@@ -164,6 +166,12 @@ input[type="button"] {
 // Inverse appears as dark gray
 .btn-inverse {
   .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+}
+.btn-navbar {
+  .buttonBackground(@btnNavbarBackground, @btnNavbarBackgroundHighlight);
+}
+.btn-navbar-selected {
+  .buttonBackground(@btnNavbarSelectedBackground, darken(@btnNavbarSelectedBackground, 20%));
 }
 
 
