@@ -4926,13 +4926,13 @@ a.badge:hover {
   cursor: pointer;
 }
 
-.label-important,
-.badge-important {
+.label-danger,
+.badge-danger {
   background-color: #b94a48;
 }
 
-.label-important[href],
-.badge-important[href] {
+.label-danger[href],
+.badge-danger[href] {
   background-color: #953b39;
 }
 
