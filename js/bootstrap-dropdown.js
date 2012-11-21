@@ -1,5 +1,9 @@
 /* ============================================================
+<<<<<<< HEAD
  * bootstrap-dropdown.js v2.2.1
+=======
+ * bootstrap-dropdown.js v2.2.2
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
  * Copyright 2012 Twitter, Inc.
@@ -80,7 +84,10 @@
 
       isActive = $parent.hasClass('open')
 
-      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
+      if (!isActive || (isActive && e.keyCode == 27)) {
+        if(e.keyCode == 27) $('a[data-toggle=dropdown]', $parent)[0].focus();
+        return $this.click()
+      }
 
       $items = $('[role=menu] li:not(.divider) a', $parent)
 
@@ -95,6 +102,9 @@
       $items
         .eq(index)
         .focus()
+
+       // console.log(e.keyCode)
+      
     }
 
   }

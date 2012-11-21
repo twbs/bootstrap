@@ -94,11 +94,33 @@
 
           <h3>{{_i}}Sub menus on dropdowns{{/i}}</h3>
           <p>{{_i}}Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.{{/i}}</p>
+<<<<<<< HEAD
+          <div class="bs-docs-example">
+            <div class="dropdown clearfix">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">{{_i}}More options{{/i}}</a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                    <li><a tabindex="-1" href="#">{{_i}}Second level link{{/i}}</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="dropup" style="float: left; margin-left: 20px;">
+=======
           <div class="bs-docs-example" style="min-height: 180px;">
 
             <div class="pull-left">
               <p class="muted">Default</p>
               <div class="dropdown clearfix">
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
                   <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
                   <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
@@ -116,6 +138,9 @@
                   </li>
                 </ul>
               </div>
+<<<<<<< HEAD
+            </div>
+=======
             </div>{{! /.pull-left }}
 
             <div class="pull-left" style="margin-left: 20px;">
@@ -162,6 +187,7 @@
               </div>
             </div>{{! /.pull-left }}
 
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
           </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
@@ -648,7 +674,11 @@
 </pre>
 
           <h3>{{_i}}Disabled state{{/i}}</h3>
+<<<<<<< HEAD
+          <p>{{_i}}For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless custom JavaScript is implemented to prevent those clicks.{{/i}}</p>
+=======
           <p>{{_i}}For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.{{/i}}</p>
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
           <div class="bs-docs-example">
             <ul class="nav nav-pills">
               <li><a href="#">{{_i}}Clickable link{{/i}}</a></li>
@@ -1787,6 +1817,9 @@
               </tr>
             </tbody>
           </table>
+
+          <h3>{{_i}}Easily collapsible{{/i}}</h3>
+          <p>{{_i}}For easy implementation, labels and badges will simply collapse (via CSS's <code>:empty</code> selector) when no content exists within.{{/i}}</p>
 
         </section>
 

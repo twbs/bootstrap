@@ -1,5 +1,9 @@
 /* ===================================================
- * bootstrap-transition.js v2.2.1
+<<<<<<< HEAD
+ * bootstrap-transition.js v2.1.2
+=======
+ * bootstrap-transition.js v2.2.2
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
  * http://twitter.github.com/bootstrap/javascript.html#transitions
  * ===================================================
  * Copyright 2012 Twitter, Inc.

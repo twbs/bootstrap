@@ -1,5 +1,9 @@
 /* =============================================================
- * bootstrap-collapse.js v2.2.1
+<<<<<<< HEAD
+ * bootstrap-collapse.js v2.1.2
+=======
+ * bootstrap-collapse.js v2.2.2
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
  * Copyright 2012 Twitter, Inc.
