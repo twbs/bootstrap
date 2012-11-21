@@ -94,11 +94,11 @@
 
   , transition: function (method, startEvent, completeEvent) {
       var that = this
-        , complete = function () {
-            if (that.transitioning) {
-              if (startEvent.type == 'show') that.reset()
-              that.transitioning = 0
-              that.$element.trigger(completeEvent)
+        , complete = function (startEvent, completeEvent) {
+            if (this.transitioning) {
+              if (startEvent.type == 'show') this.reset()
+              this.transitioning = 0
+              this.$element.trigger(completeEvent)
             }
           }
 
@@ -114,10 +114,12 @@
         this.$element[method]('in')
         // guarantee callback invokation
         // timeout is equal to transition time from component-animations.less
-        setTimeout(complete, 350)
+        setTimeout(function() {
+            complete.call(that, startEvent, completeEvent)
+        }, 350)
       } else {
         this.$element[method]('in')
-        complete()
+        complete.call(this, startEvent, completeEvent)
       }
     }
 
