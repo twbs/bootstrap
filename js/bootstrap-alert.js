@@ -1,5 +1,9 @@
 /* ==========================================================
+<<<<<<< HEAD
  * bootstrap-alert.js v2.1.2
+=======
+ * bootstrap-alert.js v2.2.2
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
  * Copyright 2012 Twitter, Inc.
@@ -83,8 +87,6 @@
  /* ALERT DATA-API
   * ============== */
 
-  $(function () {
-    $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
-  })
+  $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
 
 }(window.jQuery);

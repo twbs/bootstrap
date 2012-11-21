@@ -81,11 +81,12 @@ input[type="color"],
   display: inline-block;
   height: @baseLineHeight;
   padding: 4px 6px;
-  margin-bottom: 9px;
+  margin-bottom: @baseLineHeight / 2;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
   .border-radius(@inputBorderRadius);
+  vertical-align: middle;
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -137,7 +138,6 @@ input[type="checkbox"] {
   *margin-top: 0; /* IE7 */
   margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
-  cursor: pointer;
 }
 
 // Reset width of input images, buttons, radios, checkboxes
@@ -154,9 +154,9 @@ input[type="checkbox"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  height: @inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size */
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
-  line-height: 30px;
+  line-height: @inputHeight;
 }
 
 // Make select elements obey height by applying a border
@@ -223,13 +223,13 @@ textarea {
 // Indent the labels to position radios/checkboxes as hanging
 .radio,
 .checkbox {
-  min-height: 18px; // clear the floating input if there is no label text
-  padding-left: 18px;
+  min-height: @baseLineHeight; // clear the floating input if there is no label text
+  padding-left: 20px;
 }
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
   float: left;
-  margin-left: -18px;
+  margin-left: -20px;
 }
 
 // Move the options list down to align with labels
@@ -310,6 +310,14 @@ textarea[class*="span"],
 // Redeclare the fluid grid collapse since we undo the float for inputs
 .row-fluid .controls-row [class*="span"] {
   float: left;
+<<<<<<< HEAD
+=======
+}
+// Explicity set top padding on all checkboxes/radios, not just first-child
+.controls-row .checkbox[class*="span"],
+.controls-row .radio[class*="span"] {
+  padding-top: 5px;
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
 }
 
 
@@ -361,9 +369,9 @@ input[type="checkbox"][readonly] {
 
 // HTML5 invalid states
 // Shares styles with the .control-group.error above
-input:focus:required:invalid,
-textarea:focus:required:invalid,
-select:focus:required:invalid {
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
   &:focus {
@@ -418,8 +426,16 @@ select:focus:required:invalid {
 .input-append,
 .input-prepend {
   margin-bottom: 5px;
-  font-size: 0;
+  font-size: 0; // white space collapse hack
   white-space: nowrap; // Prevent span and input from separating
+
+  // Reset the white space collapse hack
+  input,
+  select,
+  .uneditable-input,
+  .dropdown-menu {
+    font-size: @baseFontSize;
+  }
 
   input,
   select,
@@ -427,7 +443,6 @@ select:focus:required:invalid {
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     margin-bottom: 0; // prevent bottom margin from screwing up alignment in stacked forms
     *margin-left: 0;
-    font-size: @baseFontSize;
     vertical-align: top;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     // Make input on top when focused so blue border and shadow always show
@@ -450,7 +465,8 @@ select:focus:required:invalid {
     border: 1px solid #ccc;
   }
   .add-on,
-  .btn {
+  .btn,
+  .btn-group > .dropdown-toggle {
     vertical-align: top;
     .border-radius(0);
   }
@@ -459,6 +475,7 @@ select:focus:required:invalid {
     border-color: @green;
   }
 }
+
 .input-prepend {
   .add-on,
   .btn {
@@ -466,30 +483,41 @@ select:focus:required:invalid {
   }
   .add-on:first-child,
   .btn:first-child {
+    // FYI, `.btn:first-child` accounts for a button group that's prepended
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
   }
 }
+
 .input-append {
   input,
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    + .btn-group .btn:last-child {
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
   }
   .add-on,
-  .btn {
+  .btn,
+  .btn-group {
     margin-left: -1px;
   }
   .add-on:last-child,
-  .btn:last-child {
+  .btn:last-child,
+  .btn-group:last-child > .dropdown-toggle {
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
+
 // Remove all border-radius for inputs with both prepend and append
 .input-prepend.input-append {
   input,
   select,
   .uneditable-input {
     .border-radius(0);
+    + .btn-group .btn {
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
   }
   .add-on:first-child,
   .btn:first-child {
@@ -501,7 +529,11 @@ select:focus:required:invalid {
     margin-left: -1px;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
+  .btn-group:first-child {
+    margin-left: 0;
+  }
 }
+
 
 
 

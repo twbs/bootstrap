@@ -10,7 +10,6 @@
 .navbar {
   overflow: visible;
   margin-bottom: @baseLineHeight;
-  color: @navbarText;
 
   // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
   *position: relative;
@@ -25,7 +24,7 @@
   padding-right: 20px;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
-  .border-radius(4px);
+  .border-radius(@baseBorderRadius);
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
@@ -41,6 +40,7 @@
 // Override the default collapsed state
 .nav-collapse.collapse {
   height: auto;
+  overflow: visible;
 }
 
 
@@ -66,6 +66,7 @@
 .navbar-text {
   margin-bottom: 0;
   line-height: @navbarHeight;
+  color: @navbarText;
 }
 
 // Janky solution for now to account for links outside the .nav
@@ -122,7 +123,7 @@
   }
   .input-append,
   .input-prepend {
-    margin-top: 6px;
+    margin-top: 5px;
     white-space: nowrap; // preven two  items from separating within a .navbar-form that has .pull-left
     input {
       margin-top: 0; // remove the margin on top since it's on the parent
@@ -201,7 +202,11 @@
 .navbar-fixed-top,
 .navbar-static-top {
   .navbar-inner {
+<<<<<<< HEAD
     .box-shadow(~"inset 0 -1px 0 rgba(0,0,0,.1), 0 1px 10px rgba(0,0,0,.1)");
+=======
+    .box-shadow(~"0 1px 10px rgba(0,0,0,.1)");
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
   }
 }
 
@@ -209,7 +214,11 @@
 .navbar-fixed-bottom {
   bottom: 0;
   .navbar-inner {
+<<<<<<< HEAD
     .box-shadow(~"inset 0 1px 0 rgba(0,0,0,.1), 0 -1px 10px rgba(0,0,0,.1)");
+=======
+    .box-shadow(~"0 -1px 10px rgba(0,0,0,.1)");
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
   }
 }
 
@@ -378,7 +387,6 @@
 // -------------------------
 
 .navbar-inverse {
-  color: @navbarInverseText;
 
   .navbar-inner {
     #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
@@ -392,6 +400,14 @@
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
+  }
+
+  .brand {
+    color: @navbarInverseBrandColor;
+  }
+
+  .navbar-text {
+    color: @navbarInverseText;
   }
 
   .nav > li > a:focus,
@@ -469,6 +485,3 @@
   }
 
 }
-
-
-

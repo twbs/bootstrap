@@ -17,7 +17,7 @@ To target a specific plugin, just include the plugins name as a namespace along 
 
 ---
 
-### PROGRAMATIC API
+### PROGRAMMATIC API
 
 We also believe you should be able to use all plugins provided by Bootstrap purely through the JS API.
 

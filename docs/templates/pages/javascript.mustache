@@ -2,7 +2,7 @@
 ================================================== -->
 <header class="jumbotron subhead">
   <div class="container">
-    <h1>{{_i}}JavaScript for Bootstrap{{/i}}</h1>
+    <h1>{{_i}}JavaScript{{/i}}</h1>
     <p class="lead">{{_i}}Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.{{/i}}
   </div>
 </header>
@@ -41,7 +41,7 @@
           </div>
 
           <h3>{{_i}}Individual or compiled{{/i}}</h3>
-          <p>{{_i}}If you have downloaded the latest version of Bootstrap, both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all of the plugins listed on this page.{{/i}}</p>
+          <p>{{_i}}Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.{{/i}}</p>
 
           <h3>{{_i}}Data attributes{{/i}}</h3>
           <p>{{_i}}You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.{{/i}}</p>
@@ -65,7 +65,11 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 
           <h3>{{_i}}Events{{/i}}</h3>
           <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
+<<<<<<< HEAD
           <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.{{/i}}</p>
+=======
+          <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.{{/i}}</p>
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
@@ -111,13 +115,13 @@ $('#myModal').on('show', function (e) {
           <h3>{{_i}}Static example{{/i}}</h3>
           <p>{{_i}}A rendered modal with header, body, and set of actions in the footer.{{/i}}</p>
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>{{_i}}Modal header{{/i}}</h3>
               </div>
               <div class="modal-body">
-                <p>{{_i}}One fine body…{{/i}}</p>
+                <p>{{_i}}One fine body&hellip;{{/i}}</p>
               </div>
               <div class="modal-footer">
                 <a href="#" class="btn">{{_i}}Close{{/i}}</a>
@@ -132,7 +136,7 @@ $('#myModal').on('show', function (e) {
     &lt;h3&gt;{{_i}}Modal header{{/i}}&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
-    &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
+    &lt;p&gt;{{_i}}One fine body&hellip;{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
     &lt;a href="#" class="btn"&gt;{{_i}}Close{{/i}}&lt;/a&gt;
@@ -154,7 +158,7 @@ $('#myModal').on('show', function (e) {
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
 
               <h4>{{_i}}Popover in a modal{{/i}}</h4>
-              <p>{{_i}}This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on hover.{{/i}}</p>
+              <p>{{_i}}This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.{{/i}}</p>
 
               <h4>{{_i}}Tooltips in a modal{{/i}}</h4>
               <p>{{_i}}<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.{{/i}}</p>
@@ -179,17 +183,21 @@ $('#myModal').on('show', function (e) {
             <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">{{_i}}Launch demo modal{{/i}}</a>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;-- Button to trigger modal --&gt;
+&lt!-- Button to trigger modal --&gt;
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;{{_i}}Launch demo modal{{/i}}&lt;/a&gt;
 
+<<<<<<< HEAD
 &lt;-- Modal --&gt;
+=======
+&lt!-- Modal --&gt;
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
 &lt;div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
   &lt;/div&gt;
   &lt;div class="modal-body"&gt;
-    &lt;p&gt;{{_i}}One fine body…{{/i}}&lt;/p&gt;
+    &lt;p&gt;{{_i}}One fine body&hellip;{{/i}}&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class="modal-footer"&gt;
     &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;{{_i}}Close{{/i}}&lt;/button&gt;
@@ -436,8 +444,8 @@ $('#myModal').on('hidden', function () {
           <p><em>{{_i}}None{{/i}}</em></p>
 
           <h3>{{_i}}Methods{{/i}}</h3>
-          <h4>$().dropdown()</h4>
-          <p>{{_i}}A programatic api for activating menus for a given navbar or tabbed navigation.{{/i}}</p>
+          <h4>$().dropdown('toggle')</h4>
+          <p>{{_i}}A programmatic api for toggling menus for a given navbar or tabbed navigation.{{/i}}</p>
         </section>
 
 
@@ -566,7 +574,7 @@ $('[data-spy="scroll"]').each(function () {
 
 
           <h2>{{_i}}Example tabs{{/i}}</h2>
-          <p>{{_i}}Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.{{/i}}</p>
+          <p>{{_i}}Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.{{/i}}</p>
           <div class="bs-docs-example">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active"><a href="#home" data-toggle="tab">{{_i}}Home{{/i}}</a></li>
@@ -734,7 +742,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <tr>
                <td>{{_i}}html{{/i}}</td>
                <td>{{_i}}boolean{{/i}}</td>
-               <td>true</td>
+               <td>false</td>
                <td>{{_i}}Insert html into the tooltip. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.{{/i}}</td>
              </tr>
              <tr>
@@ -855,6 +863,16 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Click to toggle popover{{/i}}</a>
         </div>
 
+        <h4>{{_i}}Four directions{{/i}}</h4>
+        <div class="bs-docs-example tooltip-demo">
+          <ul class="bs-docs-tooltip-examples">
+            <li><a href="#" class="btn" rel="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
+            <li><a href="#" class="btn" rel="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
+          </ul>
+        </div>{{! /example }}
+
 
         <hr class="bs-docs-separator">
 
@@ -884,7 +902,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            <tr>
              <td>{{_i}}html{{/i}}</td>
              <td>{{_i}}boolean{{/i}}</td>
-             <td>true</td>
+             <td>false</td>
              <td>{{_i}}Insert html into the popover. If false, jquery's <code>text</code> method will be used to insert content into the dom. Use text if you're worried about XSS attacks.{{/i}}</td>
            </tr>
            <tr>
@@ -1534,6 +1552,12 @@ $('.carousel').carousel({
                  <td>{{_i}}Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.{{/i}}</td>
                </tr>
                <tr>
+                 <td>{{_i}}updater{{/i}}</td>
+                 <td>{{_i}}function{{/i}}</td>
+                 <td>{{_i}}returns selected item{{/i}}</td>
+                 <td>{{_i}}The method used to return selected item. Accepts a single argument, the <code>item</code> and has the scope of the typeahead instance.{{/i}}</td>
+               </tr>
+               <tr>
                  <td>{{_i}}highlighter{{/i}}</td>
                  <td>{{_i}}function{{/i}}</td>
                  <td>{{_i}}highlights all default matches{{/i}}</td>
@@ -1601,7 +1625,7 @@ $('[data-spy="affix"]').each(function () {
                <td>{{_i}}offset{{/i}}</td>
                <td>{{_i}}number | function | object{{/i}}</td>
                <td>{{_i}}10{{/i}}</td>
-               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
+               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provide an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
              </tr>
             </tbody>
           </table>

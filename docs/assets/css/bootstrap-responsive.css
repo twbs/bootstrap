@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * Bootstrap Responsive v2.1.2
+=======
+ * Bootstrap Responsive v2.2.2
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -820,6 +824,7 @@
     margin-left: 0;
   }
   [class*="span"],
+  .uneditable-input[class*="span"],
   .row-fluid [class*="span"] {
     display: block;
     float: none;
@@ -871,8 +876,11 @@
     width: auto;
     margin: 0;
   }
+  .modal.fade {
+    top: -100px;
+  }
   .modal.fade.in {
-    top: auto;
+    top: 20px;
   }
 }
 
@@ -903,6 +911,16 @@
   .form-horizontal .form-actions {
     padding-right: 10px;
     padding-left: 10px;
+  }
+  .media .pull-left,
+  .media .pull-right {
+    display: block;
+    float: none;
+    margin-bottom: 10px;
+  }
+  .media-object {
+    margin-right: 0;
+    margin-left: 0;
   }
   .modal {
     top: 10px;
@@ -988,6 +1006,10 @@
   .nav-collapse .dropdown-menu a:hover {
     background-color: #f2f2f2;
   }
+  .navbar-inverse .nav-collapse .nav > li > a,
+  .navbar-inverse .nav-collapse .dropdown-menu a {
+    color: #999999;
+  }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:hover {
     background-color: #111111;
@@ -1000,7 +1022,7 @@
     position: static;
     top: auto;
     left: auto;
-    display: block;
+    display: none;
     float: none;
     max-width: none;
     padding: 0;
@@ -1013,6 +1035,9 @@
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
+  }
+  .nav-collapse .open > .dropdown-menu {
+    display: block;
   }
   .nav-collapse .dropdown-menu:before,
   .nav-collapse .dropdown-menu:after {

@@ -1,7 +1,11 @@
 {
     "name": "bootstrap"
   , "description": "Sleek, intuitive, and powerful front-end framework for faster and easier web development."
+<<<<<<< HEAD
   , "version": "2.1.2"
+=======
+  , "version": "2.2.2"
+>>>>>>> 8b417c39e7d5b10a1ef54c54c225858857cff5e3
   , "keywords": ["bootstrap", "css"]
   , "homepage": "http://twitter.github.com/bootstrap/"
   , "author": "Twitter Inc."

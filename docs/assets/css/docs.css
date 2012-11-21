@@ -114,7 +114,7 @@ hr.soften {
 .jumbotron p {
   font-size: 24px;
   font-weight: 300;
-  line-height: 30px;
+  line-height: 1.25;
   margin-bottom: 30px;
 }
 
@@ -133,7 +133,7 @@ hr.soften {
 
 /* Download button */
 .masthead .btn {
-  padding: 14px 24px;
+  padding: 19px 24px;
   font-size: 24px;
   font-weight: 200;
   color: #fff; /* redeclare to override the `.jumbotron a` */
@@ -176,6 +176,16 @@ hr.soften {
   left: 0;
   background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
   opacity: .4;
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1) {
+
+  .jumbotron:after {
+    background-size: 150px 150px;
+  }
+
 }
 
 /* Masthead (docs home)
@@ -275,7 +285,7 @@ hr.soften {
   margin-bottom: 40px;
   font-size: 20px;
   font-weight: 300;
-  line-height: 25px;
+  line-height: 1.25;
   color: #999;
 }
 .marketing img {
@@ -303,7 +313,10 @@ hr.soften {
 }
 .footer-links li {
   display: inline;
-  margin-right: 10px;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
 }
 
 
@@ -332,7 +345,13 @@ hr.soften {
   margin-bottom: 0;
 }
 .show-grid .show-grid [class*="span"] {
+  margin-top: 5px;
+}
+.show-grid [class*="span"] [class*="span"] {
   background-color: #ccc;
+}
+.show-grid [class*="span"] [class*="span"] [class*="span"] {
+  background-color: #999;
 }
 
 
@@ -754,7 +773,7 @@ form.bs-docs-example {
 }
 .bs-docs-sidenav > li > a {
   display: block;
-  *width: 190px;
+  width: 190px \9;
   margin: 0 0 -1px;
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
@@ -820,6 +839,9 @@ form.bs-docs-example {
   }
   .bs-docs-sidenav {
     width: 258px;
+  }
+  .bs-docs-sidenav > li > a {
+    width: 230px \9; /* Override the previous IE8-9 hack */
   }
 }
 
@@ -941,11 +963,11 @@ form.bs-docs-example {
 
   /* Downsize the jumbotrons */
   .jumbotron h1 {
-    font-size: 60px;
+    font-size: 45px;
   }
   .jumbotron p,
   .jumbotron .btn {
-    font-size: 20px;
+    font-size: 18px;
   }
   .jumbotron .btn {
     display: block;
@@ -960,7 +982,10 @@ form.bs-docs-example {
 
   /* Marketing on home */
   .marketing h1 {
-    font-size: 40px;
+    font-size: 30px;
+  }
+  .marketing-byline {
+    font-size: 18px;
   }
 
   /* center example sites */
@@ -994,6 +1019,11 @@ form.bs-docs-example {
     left: auto;
   }
 
+  /* Tighten up footer */
+  .footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   /* Unfloat the back to top in footer to prevent odd text wrapping */
   .footer .pull-right {
     float: none;
