@@ -65,7 +65,7 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 
           <h3>{{_i}}Events{{/i}}</h3>
           <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
-          <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.{{/i}}</p>
+          <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
@@ -111,7 +111,7 @@ $('#myModal').on('show', function (e) {
           <h3>{{_i}}Static example{{/i}}</h3>
           <p>{{_i}}A rendered modal with header, body, and set of actions in the footer.{{/i}}</p>
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>{{_i}}Modal header{{/i}}</h3>
@@ -314,7 +314,7 @@ $('#myModal').on('hidden', function () {
           </div>
 
 
-          <h2>{{_i}}Examples{{/i}}</h2>
+         <h2>{{_i}}Examples{{/i}}</h2>
           <p>{{_i}}Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.{{/i}}</p>
 
           <h3>{{_i}}Within a navbar{{/i}}</h3>
@@ -327,21 +327,21 @@ $('#myModal').on('hidden', function () {
                     <li class="dropdown">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li><a tabindex="-1" href="http://google.com">{{_i}}Action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#anotherAction">{{_i}}Another action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="http://google.com">{{_i}}Action{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#anotherAction">{{_i}}Another action{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a tabindex="-1"  role="separator" href="#">{{_i}}Separated link{{/i}}</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
                       <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 2 {{/i}}<b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                        <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Action{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a tabindex="-1" role="separator" href="#">{{_i}}Separated link{{/i}}</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -349,11 +349,11 @@ $('#myModal').on('hidden', function () {
                     <li id="fat-menu" class="dropdown">
                       <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                        <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Action{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a tabindex="-1" role="separator" href="#">{{_i}}Separated link{{/i}}</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -369,31 +369,31 @@ $('#myModal').on('hidden', function () {
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
                 <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                  <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a tabindex="-1" role="separator" href="#">{{_i}}Separated link{{/i}}</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 2{{/i}} <b class="caret"></b></a>
                 <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                  <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a tabindex="-1" role="separator" href="#">{{_i}}Separated link{{/i}}</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
                 <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                  <li role="presentation"><a tabindex="-1" role="menuitem" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a tabindex="-1" role="menuitem" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a tabindex="-1" role="separator" href="#">{{_i}}Separated link{{/i}}</a></li>
                 </ul>
               </li>
             </ul> <!-- /tabs -->
@@ -437,7 +437,7 @@ $('#myModal').on('hidden', function () {
 
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().dropdown('toggle')</h4>
-          <p>{{_i}}A programatic api for toggling menus for a given navbar or tabbed navigation.{{/i}}</p>
+          <p>{{_i}}A programmatic api for toggling menus for a given navbar or tabbed navigation.{{/i}}</p>
         </section>
 
 
@@ -566,7 +566,7 @@ $('[data-spy="scroll"]').each(function () {
 
 
           <h2>{{_i}}Example tabs{{/i}}</h2>
-          <p>{{_i}}Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.{{/i}}</p>
+          <p>{{_i}}Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.{{/i}}</p>
           <div class="bs-docs-example">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active"><a href="#home" data-toggle="tab">{{_i}}Home{{/i}}</a></li>
@@ -1617,7 +1617,7 @@ $('[data-spy="affix"]').each(function () {
                <td>{{_i}}offset{{/i}}</td>
                <td>{{_i}}number | function | object{{/i}}</td>
                <td>{{_i}}10{{/i}}</td>
-               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
+               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provide an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
              </tr>
             </tbody>
           </table>
