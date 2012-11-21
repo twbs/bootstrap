@@ -2833,6 +2833,11 @@ table th[class*="span"],
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
 
+.navbar .dropdown-submenu:hover > a {
+    background-image:none;
+    background-color:transparent;    
+}
+
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
   color: #333333;
