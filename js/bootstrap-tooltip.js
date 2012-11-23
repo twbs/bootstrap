@@ -121,7 +121,22 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+
+        switch (this.options.container||'parent') {
+          case "parent":
+            $tip.insertAfter(this.$element)
+            break;
+          case "body":
+            $tip.appendTo(document.body)
+            break;
+          default :
+            var container = $(this.options.container)
+            if (container.length){
+              $tip.appendTo(container)
+            } else {
+              $tip.insertAfter(this.$element)
+            }
+         }
 
         pos = this.getPosition(inside)
 
@@ -271,6 +286,7 @@
   , title: ''
   , delay: 0
   , html: false
+  , container:'parent'
   }
 
 }(window.jQuery);
