@@ -110,7 +110,7 @@ $(function () {
             + '    <li class="dropdown" id="testmenu">'
             + '      <a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <b class="caret"></b></a>'
             + '      <ul class="dropdown-menu" role="menu">'
-            + '        <li><a href="#sub1">Submenu 1</a></li>'
+            + '        <li role="presentation"><a href="#sub1" role="menuitem">Submenu 1</a></li>'
             + '      </ul>'
             + '    </li>'
             + '</ul>'
