@@ -86,6 +86,8 @@
       var $this = $(this)
         , data = $this.data('popover')
         , options = typeof option == 'object' && option
+        , className = options.className || ''
+      options.template = options.template || '<div class="popover '+className+'"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
       if (!data) $this.data('popover', (data = new Popover(this, options)))
       if (typeof option == 'string') data[option]()
     })
@@ -97,7 +99,6 @@
     placement: 'right'
   , trigger: 'click'
   , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
 }(window.jQuery);
