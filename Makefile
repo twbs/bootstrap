@@ -22,7 +22,7 @@ build:
 	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
 	@echo "Compiling LESS with Recess...               ${CHECK} Done"
 	@node docs/build
-	@cp img/* docs/assets/img/
+	@cp fonts/* docs/assets/fonts/
 	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
 	@echo "Compiling documentation...                  ${CHECK} Done"
@@ -63,10 +63,10 @@ clean:
 #
 
 bootstrap:
-	mkdir -p bootstrap/img
+	mkdir -p bootstrap/fonts
 	mkdir -p bootstrap/css
 	mkdir -p bootstrap/js
-	cp img/* bootstrap/img/
+	cp fonts/* bootstrap/fonts/
 	recess --compile ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.css
 	recess --compress ${BOOTSTRAP_LESS} > bootstrap/css/bootstrap.min.css
 	recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > bootstrap/css/bootstrap-responsive.css
@@ -89,13 +89,23 @@ gh-pages: bootstrap docs
 	node docs/build production
 	cp -r docs/* ../bootstrap-gh-pages
 
+
+#
+# COMPILE LESS FILES
+#
+
+recess:
+	@recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
+	@recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
+	@echo "Compiling LESS with Recess...               ${CHECK} Done at ${DATE}."
+
 #
 # WATCH LESS FILES
 #
 
 watch:
-	echo "Watching less files..."; \
-	watchr -e "watch('less/.*\.less') { system 'make' }"
+	@echo "Watching less files..."; \
+	watchr -e "watch('less/.*\.less$$') { system 'make recess' }"
 
 
 .PHONY: docs watch gh-pages
