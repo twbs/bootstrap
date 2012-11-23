@@ -26,7 +26,7 @@
  /* MODAL CLASS DEFINITION
   * ====================== */
 
-  var Modal = function (element, options) {
+  var stack = [], Modal = function (element, options) {
     this.options = options
     this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
@@ -83,7 +83,7 @@
     , hide: function (e) {
         e && e.preventDefault()
 
-        var that = this
+        var that = this, stackPos = $.inArray(this, stack)
 
         e = $.Event('hide')
 
@@ -95,7 +95,12 @@
 
         this.escape()
 
-        $(document).off('focusin.modal')
+        // Just in case modals are programmatically hidden out-of-order
+        if (stackPos > -1) stack.splice(stackPos, 1)
+
+          if (!stack.length) {
+            $(document).off('focusin.modal')
+          }
 
         this.$element
           .removeClass('in')
@@ -107,12 +112,15 @@
       }
 
     , enforceFocus: function () {
-        var that = this
-        $(document).on('focusin.modal', function (e) {
-          if (that.$element[0] !== e.target && !that.$element.has(e.target).length) {
-            that.$element.focus()
-          }
-        })
+        if (!stack.length) {
+          $(document).on('focusin.modal', function (e) {
+            var that = stack[stack.length-1]
+            if (that.$element[0] !== e.target && !that.$element.has(e.target).length) {
+              that.$element.focus()
+            }
+          })
+        }
+        stack.push(this)
       }
 
     , escape: function () {

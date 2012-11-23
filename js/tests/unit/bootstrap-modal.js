@@ -22,9 +22,28 @@ $(function () {
         $.support.transition = false
         $("<div id='modal-test'></div>")
           .bind("shown", function () {
-            ok($('#modal-test').length, 'modal insterted into dom')
+            ok($('#modal-test').length, 'modal inserted into dom')
             $(this).remove()
             start()
+          })
+          .modal("show")
+      })
+
+      test("should be able to insert more than one into dom", function () {
+        stop()
+        $.support.transition = false
+        $("<div id='modal-test'></div>")
+          .bind("shown", function () {
+            ok($('#modal-test').length, 'modal inserted into dom')
+            var that = this;
+            $("<div id='second-modal-test'></div>")
+              .bind("shown", function () {
+                ok($('#second-modal-test').length, 'second modal inserted into dom')
+                $(this).remove()
+                $(that).remove();
+                start()
+              })
+            .modal("show")
           })
           .modal("show")
       })
