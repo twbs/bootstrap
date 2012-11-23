@@ -281,9 +281,10 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   line-height: 1.25;
   color: #999;
 }
-.marketing img {
+.marketing-img {
   display: block;
   margin: 0 auto 30px;
+  max-height: 145px;
 }
 
 
@@ -292,7 +293,8 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 -------------------------------------------------- */
 
 .footer {
-  padding: 70px 0;
+  text-align: center;
+  padding: 30px 0;
   margin-top: 70px;
   border-top: 1px solid #e5e5e5;
   background-color: #f5f5f5;
@@ -987,9 +989,5 @@ form.bs-docs-example {
   .footer {
     padding-top: 20px;
     padding-bottom: 20px;
-  }
-  /* Unfloat the back to top in footer to prevent odd text wrapping */
-  .footer .pull-right {
-    float: none;
   }
 }
