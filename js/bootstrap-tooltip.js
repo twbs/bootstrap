@@ -44,7 +44,7 @@
       if (this.options.trigger == 'click') {
         this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
       } else if (this.options.trigger != 'manual') {
-        if(this.options.trigger == 'hover' || this.options.trigger == 'focus'){
+          if(this.options.trigger == 'hover' || this.options.trigger == 'focus'){
             this.$element.on('mouseenter.' + this.type, this.options.selector, $.proxy(this.enter, this))
             this.$element.on('mouseleave.' + this.type, this.options.selector, $.proxy(this.leave, this))
             this.$element.on('focus.' + this.type, this.options.selector, $.proxy(this.enter, this))
@@ -111,7 +111,7 @@
         if (this.options.animation) {
           $tip.addClass('fade')
         }
-        //console.log();
+
         tooltipid= $tip.attr("id") || "ui-tooltip"
         $tip.attr("id",tooltipid);
         this.$element.attr("aria-describedby",tooltipid)
