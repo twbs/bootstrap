@@ -36,7 +36,6 @@
     constructor: Tooltip
 
   , init: function (type, element, options) {
-
       this.type = type
       this.$element = $(element)
       this.options = this.getOptions(options)
@@ -103,6 +102,7 @@
         , actualHeight
         , placement
         , tp
+        , tooltipid
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
@@ -112,8 +112,9 @@
           $tip.addClass('fade')
         }
         //console.log();
-        $tip.attr("id","ui-tooltip");
-        this.$element.attr("aria-describedby","ui-tooltip")
+        tooltipid= $tip.attr("id") || "ui-tooltip"
+        $tip.attr("id",tooltipid);
+        this.$element.attr("aria-describedby",tooltipid)
 
         placement = typeof this.options.placement == 'function' ?
           this.options.placement.call(this, $tip[0], this.$element[0]) :
