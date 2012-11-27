@@ -121,7 +121,7 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+          .appendTo(inside ? this.$element : document.body)
 
         pos = this.getPosition(inside)
 
