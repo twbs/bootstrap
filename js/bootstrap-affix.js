@@ -50,8 +50,8 @@
      
     if(typeof origin_position=='undefined'){ // recode origin position at first affix.
       this.$element.data('origin_position',position);
-    	this.$element.width(this.$element.width()); // keep width,when add position:fix,not loss it's width.And no need to set width in css
-    	origin_position = position;
+      this.$element.width(this.$element.width()); // keep width,when add position:fix,not loss it's width.And no need to set width in css
+      origin_position = position;
     }
 
     if (typeof offset != 'object') offsetBottom = offsetTop = offset
@@ -59,9 +59,9 @@
     if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
     
     if(scrollTop+offsetTop < origin_position.top){ // not scroll to this element or rescroll to top.
-    	this.affixed = null;
+      this.affixed = null;
       this.$element.removeClass(reset)
-    	return 	
+      return 
     }
 
     affix = this.unpin != null && (scrollTop + this.unpin <= position.top) ?
