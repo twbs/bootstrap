@@ -5316,76 +5316,144 @@ input[type="submit"].btn.btn-mini {
 .popover .arrow,
 .popover .arrow:after {
   position: absolute;
-  display: inline-block;
+  display: block;
   width: 0;
   height: 0;
   border-color: transparent;
   border-style: solid;
 }
 
+.popover .arrow {
+  border-width: 11px;
+}
+
 .popover .arrow:after {
-  z-index: -1;
+  border-width: 10px;
   content: "";
 }
 
+.popover {
+  /*
+  &.top .arrow {
+    bottom: -@popoverArrowWidth;
+    left: 50%;
+    margin-left: -@popoverArrowWidth;
+    border-width: @popoverArrowWidth @popoverArrowWidth 0;
+    //border-top-color: @popoverArrowColor;
+    border-top-color: blue;
+    &:after {
+      border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth 0;
+      //border-top-color: @popoverArrowOuterColor;
+      border-top-color: red;
+      top: -@popoverArrowWidth;
+      //bottom: -1px;
+      left: -@popoverArrowOuterWidth;
+    }
+  }
+  &.right .arrow {
+    top: 50%;
+    left: -@popoverArrowWidth;
+    margin-top: -@popoverArrowWidth;
+    border-width: @popoverArrowWidth @popoverArrowWidth @popoverArrowWidth 0;
+    border-right-color: @popoverArrowColor;
+    &:after {
+      border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth @popoverArrowOuterWidth 0;
+      border-right-color: @popoverArrowOuterColor;
+      bottom: -@popoverArrowOuterWidth;
+      left: -1px;
+    }
+  }
+  &.bottom .arrow {
+    top: -@popoverArrowWidth;
+    left: 50%;
+    margin-left: -@popoverArrowWidth;
+    border-width: 0 @popoverArrowWidth @popoverArrowWidth;
+    border-bottom-color: @popoverArrowColor;
+    &:after {
+      border-width: 0 @popoverArrowOuterWidth @popoverArrowOuterWidth;
+      border-bottom-color: @popoverArrowOuterColor;
+      top: -1px;
+      left: -@popoverArrowOuterWidth;
+    }
+  }
+  &.left .arrow {
+    top: 50%;
+    right: -@popoverArrowWidth;
+    margin-top: -@popoverArrowWidth;
+    border-width: @popoverArrowWidth 0 @popoverArrowWidth @popoverArrowWidth;
+    border-left-color: @popoverArrowColor;
+    &:after {
+      border-width: @popoverArrowOuterWidth 0 @popoverArrowOuterWidth @popoverArrowOuterWidth;
+      border-left-color: @popoverArrowOuterColor;
+      bottom: -@popoverArrowOuterWidth;
+      right: -1px;
+    }
+  }*/
+
+}
+
 .popover.top .arrow {
-  bottom: -10px;
+  bottom: -11px;
   left: 50%;
-  margin-left: -10px;
-  border-top-color: #ffffff;
-  border-width: 10px 10px 0;
+  margin-left: -11px;
+  border-top-color: #999;
+  border-top-color: rgba(0, 0, 0, 0.25);
+  border-bottom-width: 0;
 }
 
 .popover.top .arrow:after {
-  bottom: -1px;
-  left: -11px;
-  border-top-color: rgba(0, 0, 0, 0.25);
-  border-width: 11px 11px 0;
+  bottom: 1px;
+  margin-left: -10px;
+  border-top-color: #ffffff;
+  border-bottom-width: 0;
 }
 
 .popover.right .arrow {
   top: 50%;
-  left: -10px;
-  margin-top: -10px;
-  border-right-color: #ffffff;
-  border-width: 10px 10px 10px 0;
+  left: -11px;
+  margin-top: -11px;
+  border-right-color: #999;
+  border-right-color: rgba(0, 0, 0, 0.25);
+  border-left-width: 0;
 }
 
 .popover.right .arrow:after {
-  bottom: -11px;
-  left: -1px;
-  border-right-color: rgba(0, 0, 0, 0.25);
-  border-width: 11px 11px 11px 0;
+  bottom: -10px;
+  left: 1px;
+  border-right-color: #ffffff;
+  border-left-width: 0;
 }
 
 .popover.bottom .arrow {
-  top: -10px;
+  top: -11px;
   left: 50%;
-  margin-left: -10px;
-  border-bottom-color: #ffffff;
-  border-width: 0 10px 10px;
+  margin-left: -11px;
+  border-bottom-color: #999;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  border-top-width: 0;
 }
 
 .popover.bottom .arrow:after {
-  top: -1px;
-  left: -11px;
-  border-bottom-color: rgba(0, 0, 0, 0.25);
-  border-width: 0 11px 11px;
+  top: 1px;
+  margin-left: -10px;
+  border-bottom-color: #ffffff;
+  border-top-width: 0;
 }
 
 .popover.left .arrow {
   top: 50%;
-  right: -10px;
-  margin-top: -10px;
-  border-left-color: #ffffff;
-  border-width: 10px 0 10px 10px;
+  right: -11px;
+  margin-top: -11px;
+  border-left-color: #999;
+  border-left-color: rgba(0, 0, 0, 0.25);
+  border-right-width: 0;
 }
 
 .popover.left .arrow:after {
-  right: -1px;
-  bottom: -11px;
-  border-left-color: rgba(0, 0, 0, 0.25);
-  border-width: 11px 0 11px 11px;
+  right: 1px;
+  bottom: -10px;
+  border-left-color: #ffffff;
+  border-right-width: 0;
 }
 
 .thumbnails {
