@@ -203,25 +203,25 @@
   display: inline-block; // makes buttons only take up the width they need
   .ie7-inline-block();
 }
-.btn-group-vertical .btn {
+.btn-group-vertical > .btn {
   display: block;
   float: none;
-  width: 100%;
+  max-width: 100%;
   .border-radius(0);
 }
-.btn-group-vertical .btn + .btn {
+.btn-group-vertical > .btn + .btn {
   margin-left: 0;
   margin-top: -1px;
 }
-.btn-group-vertical .btn:first-child {
+.btn-group-vertical > .btn:first-child {
   .border-radius(@baseBorderRadius @baseBorderRadius 0 0);
 }
-.btn-group-vertical .btn:last-child {
+.btn-group-vertical > .btn:last-child {
   .border-radius(0 0 @baseBorderRadius @baseBorderRadius);
 }
-.btn-group-vertical .btn-large:first-child {
+.btn-group-vertical > .btn-large:first-child {
   .border-radius(@borderRadiusLarge @borderRadiusLarge 0 0);
 }
-.btn-group-vertical .btn-large:last-child {
+.btn-group-vertical > .btn-large:last-child {
   .border-radius(0 0 @borderRadiusLarge @borderRadiusLarge);
 }
