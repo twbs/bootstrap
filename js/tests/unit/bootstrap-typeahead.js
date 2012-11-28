@@ -162,17 +162,20 @@ $(function () {
             })
           , typeahead = $input.data('typeahead')
           , changed = false
+          , inputFired = false
 
         $input.val('a')
         typeahead.lookup()
 
-        $input.change(function() { changed = true });
+        $input.change(function() { changed = true })
+        $input.bind('input', function() { inputFired = true })
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
         equals($input.val(), 'ac', 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
         ok(changed, 'a change event was fired')
+        ok(inputFired, 'an input event was fired')
 
         typeahead.$menu.remove()
       })

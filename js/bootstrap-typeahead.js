@@ -48,6 +48,7 @@
       this.$element
         .val(this.updater(val))
         .change()
+        .trigger("input")
       return this.hide()
     }
 
