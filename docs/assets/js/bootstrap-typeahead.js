@@ -171,6 +171,8 @@
     }
 
   , listen: function () {
+      var that = this
+
       this.$element
         .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
@@ -181,7 +183,10 @@
       }
 
       this.$menu
-        .on('click', $.proxy(this.click, this))
+        // Target click and mouseup which matches default browser behavior
+        .on('click mouseup', $.proxy(this.click, this))
+        // Prevent mousedown from firing the blur event on the input
+        .on('mousedown', function () { that.cancelBlur = true })
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
@@ -257,8 +262,13 @@
   }
 
   , blur: function (e) {
-      var that = this
-      setTimeout(function () { that.hide() }, 150)
+      if (this.cancelBlur) {
+        this.$element.focus()
+        this.cancelBlur = false
+      } else {
+        var that = this
+        setTimeout(function () { that.hide() }, 150)
+      }
     }
 
   , click: function (e) {
