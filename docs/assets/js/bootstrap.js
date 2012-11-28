@@ -511,7 +511,7 @@
         , complete = function () {
             if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
-            that.$element.trigger(completeEvent)
+            that.$element[method]('fully').trigger(completeEvent)
           }
 
       this.$element.trigger(startEvent)

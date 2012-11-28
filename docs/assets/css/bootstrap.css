@@ -3110,6 +3110,10 @@ table th[class*="span"],
   height: auto;
 }
 
+.collapse.in.fully {
+  overflow: visible;
+}
+
 .close {
   float: right;
   font-size: 20px;
