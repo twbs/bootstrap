@@ -3591,7 +3591,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .btn-group > .btn,
-.btn-group > .dropdown-menu {
+.btn-group > .dropdown-menu,
+.btn-group > .popover {
   font-size: 14px;
 }
 
