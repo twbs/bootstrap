@@ -3573,9 +3573,9 @@ input[type="submit"].btn.btn-mini {
   font-size: 0;
 }
 
-.btn-toolbar .btn + .btn,
-.btn-toolbar .btn-group + .btn,
-.btn-toolbar .btn + .btn-group {
+.btn-toolbar > .btn + .btn,
+.btn-toolbar > .btn-group + .btn,
+.btn-toolbar > .btn + .btn-group {
   margin-left: 5px;
 }
 
