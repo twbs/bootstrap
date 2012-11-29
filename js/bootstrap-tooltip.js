@@ -275,7 +275,7 @@
     animation: true
   , placement: 'top'
   , selector: false
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
   , title: ''
   , delay: 0
