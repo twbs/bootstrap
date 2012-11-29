@@ -60,6 +60,18 @@ $(function () {
         ok(!$(".tooltip").length, 'tooltip removed')
       })
 
+       test("should have role of tooltip", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip" aria-describedby="ui-tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({ template: '<div class="tooltip" id="ui-tooltip" role="tooltip"><div class="tooltip-arrow"/><div class="tooltip-inner"/></div>'})
+          .tooltip('show')
+
+          equals($('.tooltip').attr('role'), "tooltip", 'Role of tooltip is present')
+          equals(tooltip.attr('aria-describedby') ,$('.tooltip').attr('id'),"Tooltip anchor should be referred by tooltip containter")
+          tooltip.tooltip('hide')
+      })
+           
+
       test("should not show tooltip if leave event occurs before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
