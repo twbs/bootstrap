@@ -200,7 +200,9 @@ table th[class*="span"],
 // -----------------
 // Exact selectors below required to override .table-striped
 
-.table tbody tr {
+.table thead tr,
+.table tbody tr,
+.table tfoot tr {
   &.success td {
     background-color: @successBackground;
   }
@@ -216,7 +218,9 @@ table th[class*="span"],
 }
 
 // Hover states for .table-hover
-.table-hover tbody tr {
+.table-hover thead tr,
+.table-hover tbody tr,
+.table-hover tfoot tr {
   &.success:hover td {
     background-color: darken(@successBackground, 5%);
   }
