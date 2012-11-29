@@ -19,7 +19,7 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -136,7 +136,7 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 
           <h3>Events</h3>
           <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-          <p>All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.</p>
+          <p>All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
@@ -181,7 +181,7 @@ $('#myModal').on('show', function (e) {
           <h3>Static example</h3>
           <p>A rendered modal with header, body, and set of actions in the footer.</p>
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>Modal header</h3>
@@ -507,7 +507,7 @@ $('#myModal').on('hidden', function () {
 
           <h3>Methods</h3>
           <h4>$().dropdown('toggle')</h4>
-          <p>A programatic api for toggling menus for a given navbar or tabbed navigation.</p>
+          <p>A programmatic api for toggling menus for a given navbar or tabbed navigation.</p>
         </section>
 
 
@@ -636,7 +636,7 @@ $('[data-spy="scroll"]').each(function () {
 
 
           <h2>Example tabs</h2>
-          <p>Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.</p>
+          <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
           <div class="bs-docs-example">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
@@ -1137,7 +1137,7 @@ $('#my-alert').bind('closed', function () {
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button>
             </div>
-            <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
+            <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
 
             <h4>Checkbox</h4>
             <p>Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.</p>
@@ -1150,9 +1150,9 @@ $('#my-alert').bind('closed', function () {
             </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
-  &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1167,9 +1167,9 @@ $('#my-alert').bind('closed', function () {
             </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group" data-toggle="buttons-radio"&gt;
-  &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1687,7 +1687,7 @@ $('[data-spy="affix"]').each(function () {
                <td>offset</td>
                <td>number | function | object</td>
                <td>10</td>
-               <td>Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).</td>
+               <td>Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provide an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).</td>
              </tr>
             </tbody>
           </table>
@@ -1706,7 +1706,6 @@ $('[data-spy="affix"]').each(function () {
     ================================================== -->
     <footer class="footer">
       <div class="container">
-        <p class="pull-right"><a href="#">Back to top</a></p>
         <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
         <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
