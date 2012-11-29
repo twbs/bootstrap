@@ -1,5 +1,5 @@
 /* =========================================================
- * bootstrap-modal.js v2.2.1
+ * bootstrap-modal.js v2.2.2
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
  * Copyright 2012 Twitter, Inc.
@@ -140,16 +140,14 @@
       }
 
     , hideModal: function (that) {
-        this.$element
-          .hide()
-          .trigger('hidden')
-
+        this.$element.hide()    
         this.backdrop()
       }
 
     , removeBackdrop: function () {
         this.$backdrop.remove()
         this.$backdrop = null
+        this.$element.trigger('hidden')
       }
 
     , backdrop: function (callback) {

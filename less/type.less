@@ -20,33 +20,27 @@ p {
 // Emphasis & misc
 // -------------------------
 
-small {
-  font-size: 85%; // Ex: 14px base font * 85% = about 12px
-}
-strong {
-  font-weight: bold;
-}
-em {
-  font-style: italic;
-}
-cite {
-  font-style: normal;
-}
+// Ex: 14px base font * 85% = about 12px
+small   { font-size: 85%; }
+
+strong  { font-weight: bold; }
+em      { font-style: italic; }
+cite    { font-style: normal; }
 
 // Utility classes
-.muted {
-  color: @grayLight;
-}
-.text-warning { color: @warningText; }
+.muted               { color: @grayLight; }
+a.muted:hover        { color: darken(@grayLight, 10%); }
+
+.text-warning        { color: @warningText; }
 a.text-warning:hover { color: darken(@warningText, 10%); }
 
-.text-error { color: @errorText; }
-a.text-error:hover { color: darken(@errorText, 10%); }
+.text-error          { color: @errorText; }
+a.text-error:hover   { color: darken(@errorText, 10%); }
 
-.text-info { color: @infoText; }
-a.text-info:hover { color: darken(@infoText, 10%); }
+.text-info           { color: @infoText; }
+a.text-info:hover    { color: darken(@infoText, 10%); }
 
-.text-success { color: @successText; }
+.text-success        { color: @successText; }
 a.text-success:hover { color: darken(@successText, 10%); }
 
 
@@ -112,10 +106,24 @@ ol ul {
 li {
   line-height: @baseLineHeight;
 }
+
+// Remove default list styles
 ul.unstyled,
 ol.unstyled {
   margin-left: 0;
   list-style: none;
+}
+
+// Single-line list items
+ul.inline,
+ol.inline {
+  margin-left: 0;
+  list-style: none;
+  & > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 // Description Lists
