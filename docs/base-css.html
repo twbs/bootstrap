@@ -923,12 +923,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <h3>Search form</h3>
           <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>&lt;input&gt;</code> for an extra-rounded text input.</p>
           <form class="bs-docs-example form-search">
-            <input type="text" class="input-medium search-query">
+            <input type="text" class="span3 search-query">
             <button type="submit" class="btn">Search</button>
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
-  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;input type="text" class="span3 search-query"&gt;
   &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
 &lt;/form&gt;
 </pre>
@@ -936,8 +936,8 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <h3>Inline form</h3>
           <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
           <form class="bs-docs-example form-inline">
-            <input type="text" class="input-small" placeholder="Email">
-            <input type="password" class="input-small" placeholder="Password">
+            <input type="text" class="span3" placeholder="Email">
+            <input type="password" class="span3" placeholder="Password">
             <label class="checkbox">
               <input type="checkbox"> Remember me
             </label>
@@ -945,8 +945,8 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
-  &lt;input type="text" class="input-small" placeholder="Email"&gt;
-  &lt;input type="password" class="input-small" placeholder="Password"&gt;
+  &lt;input type="text" class="span3" placeholder="Email"&gt;
+  &lt;input type="password" class="span3" placeholder="Password"&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; Remember me
   &lt;/label&gt;
@@ -1186,26 +1186,26 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <p>Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.</p>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input id="appendedInputButton" type="text">
+              <input class="span3" id="appendedInputButton" type="text">
               <button class="btn" type="button">Go!</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInputButton" type="text"&gt;
+  &lt;input class="span3" id="appendedInputButton" type="text"&gt;
   &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
 &lt;/div&gt;
 </pre>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input id="appendedInputButtons" type="text">
+              <input class="span3" id="appendedInputButtons" type="text">
               <button class="btn" type="button">Search</button>
               <button class="btn" type="button">Options</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
-  &lt;input id="appendedInputButton" type="text"&gt;
+  &lt;input class="span3" id="appendedInputButton" type="text"&gt;
   &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
   &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
 &lt;/div&gt;
@@ -1215,7 +1215,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <p></p>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input class="span2" id="appendedDropdownButton" type="text">
+              <input class="span3" id="appendedDropdownButton" type="text">
               <div class="btn-group">
                 <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
@@ -1231,7 +1231,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
   &lt;input id="appendedInputButtons" type="text"&gt;
-  &lt;input class="span2" id="appendedDropdownButton" type="text"&gt;
+  &lt;input class="span3" id="appendedDropdownButton" type="text"&gt;
   &lt;div class="btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
       Action
@@ -1339,10 +1339,10 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
                   <li><a href="#">Separated link</a></li>
                 </ul>
               </div>
-              <input type="text">
+              <input type="text" class="span3">
             </div>
             <div class="input-append">
-              <input type="text">
+              <input type="text" class="span3">
               <div class="btn-group">
                 <button class="btn" tabindex="-1">Action</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -1362,10 +1362,10 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;form&gt;
   &lt;div class="input-prepend"&gt;
     &lt;div class="btn-group"&gt;...&lt;/div&gt;
-    &lt;input type="text"&gt;
+    &lt;input type="text" class="span3"&gt;
   &lt;/div&gt;
   &lt;div class="input-append"&gt;
-    &lt;input type="text"&gt;
+    &lt;input type="text" class="span3"&gt;
     &lt;div class="btn-group"&gt;...&lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;
@@ -1374,23 +1374,23 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <h4>Search form</h4>
           <form class="bs-docs-example form-search">
             <div class="input-append">
-              <input type="text" class="search-query">
+              <input type="text" class="search-query span3">
               <button type="submit" class="btn">Search</button>
             </div>
             <div class="input-prepend">
               <button type="submit" class="btn">Search</button>
-              <input type="text" class="search-query">
+              <input type="text" class="search-query span3">
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
   &lt;div class="input-append"&gt;
-    &lt;input type="text" class="search-query"&gt;
+    &lt;input type="text" class="search-query span3"&gt;
     &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="input-prepend"&gt;
     &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
-    &lt;input type="text" class="search-query"&gt;
+    &lt;input type="text" class="search-query span3"&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 </pre>

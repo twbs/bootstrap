@@ -550,11 +550,12 @@
     .offsetX(0) {}
 
     .span(@columns) {
+      // TODO: Figure out how to add this back behind a class
       // Part 1: Since inputs require padding *and* margin, we subtract the grid gutter width, as a percent of the row, from the default column width.
-      width: percentage(@columns / @gridColumns) - percentage(@gridGutterWidth / @gridRowWidth);
+      //width: percentage(@columns / @gridColumns) - percentage(@gridGutterWidth / @gridRowWidth);
       // Part 2: That subtracted width then gets split in half and added to the left and right margins.
-      margin-left: percentage((@gridGutterWidth / 2) / @gridRowWidth);
-      margin-right: percentage((@gridGutterWidth / 2) / @gridRowWidth);
+      // margin-left: percentage((@gridGutterWidth / 2) / @gridRowWidth);
+      // margin-right: percentage((@gridGutterWidth / 2) / @gridRowWidth);
     }
 
     .offset(@columns) {

@@ -863,12 +863,12 @@
           <h3>{{_i}}Search form{{/i}}</h3>
           <p>{{_i}}Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>&lt;input&gt;</code> for an extra-rounded text input.{{/i}}</p>
           <form class="bs-docs-example form-search">
-            <input type="text" class="input-medium search-query">
+            <input type="text" class="span3 search-query">
             <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
-  &lt;input type="text" class="input-medium search-query"&gt;
+  &lt;input type="text" class="span3 search-query"&gt;
   &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
 &lt;/form&gt;
 </pre>
@@ -876,8 +876,8 @@
           <h3>{{_i}}Inline form{{/i}}</h3>
           <p>{{_i}}Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.{{/i}}</p>
           <form class="bs-docs-example form-inline">
-            <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}">
-            <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
+            <input type="text" class="span3" placeholder="{{_i}}Email{{/i}}">
+            <input type="password" class="span3" placeholder="{{_i}}Password{{/i}}">
             <label class="checkbox">
               <input type="checkbox"> {{_i}}Remember me{{/i}}
             </label>
@@ -885,8 +885,8 @@
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
-  &lt;input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}"&gt;
-  &lt;input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}"&gt;
+  &lt;input type="text" class="span3" placeholder="{{_i}}Email{{/i}}"&gt;
+  &lt;input type="password" class="span3" placeholder="{{_i}}Password{{/i}}"&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; {{_i}}Remember me{{/i}}
   &lt;/label&gt;
@@ -1126,26 +1126,26 @@
           <p>{{_i}}Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.{{/i}}</p>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input id="appendedInputButton" type="text">
+              <input class="span3" id="appendedInputButton" type="text">
               <button class="btn" type="button">Go!</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
-  &lt;input class="span2" id="appendedInputButton" type="text"&gt;
+  &lt;input class="span3" id="appendedInputButton" type="text"&gt;
   &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
 &lt;/div&gt;
 </pre>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input id="appendedInputButtons" type="text">
+              <input class="span3" id="appendedInputButtons" type="text">
               <button class="btn" type="button">Search</button>
               <button class="btn" type="button">Options</button>
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
-  &lt;input id="appendedInputButton" type="text"&gt;
+  &lt;input class="span3" id="appendedInputButton" type="text"&gt;
   &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
   &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
 &lt;/div&gt;
@@ -1155,7 +1155,7 @@
           <p>{{_i}}{{/i}}</p>
           <form class="bs-docs-example">
             <div class="input-append">
-              <input class="span2" id="appendedDropdownButton" type="text">
+              <input class="span3" id="appendedDropdownButton" type="text">
               <div class="btn-group">
                 <button class="btn dropdown-toggle" data-toggle="dropdown">{{_i}}Action{{/i}} <span class="caret"></span></button>
                 <ul class="dropdown-menu">
@@ -1171,7 +1171,7 @@
 <pre class="prettyprint linenums">
 &lt;div class="input-append"&gt;
   &lt;input id="appendedInputButtons" type="text"&gt;
-  &lt;input class="span2" id="appendedDropdownButton" type="text"&gt;
+  &lt;input class="span3" id="appendedDropdownButton" type="text"&gt;
   &lt;div class="btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
       {{_i}}Action{{/i}}
@@ -1279,10 +1279,10 @@
                   <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
                 </ul>
               </div>
-              <input type="text">
+              <input type="text" class="span3">
             </div>
             <div class="input-append">
-              <input type="text">
+              <input type="text" class="span3">
               <div class="btn-group">
                 <button class="btn" tabindex="-1">Action</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
@@ -1302,10 +1302,10 @@
 &lt;form&gt;
   &lt;div class="input-prepend"&gt;
     &lt;div class="btn-group"&gt;...&lt;/div&gt;
-    &lt;input type="text"&gt;
+    &lt;input type="text" class="span3"&gt;
   &lt;/div&gt;
   &lt;div class="input-append"&gt;
-    &lt;input type="text"&gt;
+    &lt;input type="text" class="span3"&gt;
     &lt;div class="btn-group"&gt;...&lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;
@@ -1314,23 +1314,23 @@
           <h4>{{_i}}Search form{{/i}}</h4>
           <form class="bs-docs-example form-search">
             <div class="input-append">
-              <input type="text" class="search-query">
+              <input type="text" class="search-query span3">
               <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
             </div>
             <div class="input-prepend">
               <button type="submit" class="btn">{{_i}}Search{{/i}}</button>
-              <input type="text" class="search-query">
+              <input type="text" class="search-query span3">
             </div>
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="form-search"&gt;
   &lt;div class="input-append"&gt;
-    &lt;input type="text" class="search-query"&gt;
+    &lt;input type="text" class="search-query span3"&gt;
     &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
   &lt;/div&gt;
   &lt;div class="input-prepend"&gt;
     &lt;button type="submit" class="btn"&gt;{{_i}}Search{{/i}}&lt;/button&gt;
-    &lt;input type="text" class="search-query"&gt;
+    &lt;input type="text" class="search-query span3"&gt;
   &lt;/div&gt;
 &lt;/form&gt;
 </pre>

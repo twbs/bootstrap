@@ -6,6 +6,7 @@
 // General styles
 // -------------------------
 
+
 form {
   margin: 0 0 @baseLineHeight;
 }
@@ -68,16 +69,19 @@ input[type="color"],
 }
 
 // Reset appearance properties for textual inputs and textarea
-// Declare width for legacy (can't be on input[type=*] selectors or it's too specific)
+// Can't be on input[type=*] selectors or it's too specific
 input,
+select,
 textarea,
 .uneditable-input {
-  width: 220px;
+  width: 100%;
 }
+
 // Reset height since textareas have rows
 textarea {
   height: auto;
 }
+
 // Everything else
 textarea,
 input[type="text"],
@@ -135,8 +139,8 @@ input[type="file"] {
 }
 
 // Make select elements obey height by applying a border
+// TODO: See if this can be part of the above selector stack
 select {
-  width: 220px; // default input width + 10px of padding that doesn't get applied
   border: 1px solid @inputBorder;
 }
 
