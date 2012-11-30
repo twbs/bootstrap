@@ -22,9 +22,9 @@
   font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: @baseLineHeight / 2;
   margin-bottom: @baseLineHeight / 2;
-  .btn + .btn,
-  .btn-group + .btn,
-  .btn + .btn-group {
+  > .btn + .btn,
+  > .btn-group + .btn,
+  > .btn + .btn-group {
     margin-left: 5px;
   }
 }
@@ -38,19 +38,20 @@
   margin-left: -1px;
 }
 .btn-group > .btn,
-.btn-group > .dropdown-menu {
+.btn-group > .dropdown-menu,
+.btn-group > .popover {
   font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
 .btn-group > .btn-mini {
-  font-size: 11px;
+  font-size: @fontSizeMini;
 }
 .btn-group > .btn-small {
-  font-size: 12px;
+  font-size: @fontSizeSmall;
 }
 .btn-group > .btn-large {
-  font-size: 16px;
+  font-size: @fontSizeLarge;
 }
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
@@ -189,13 +190,13 @@
 .btn-group-vertical {
   display: inline-block; // Make buttons only take up the width they need
 }
-.btn-group-vertical .btn {
+.btn-group-vertical > .btn {
   display: block;
   float: none;
-  width: 100%;
   border-radius: 0;
+  max-width: 100%;
 }
-.btn-group-vertical .btn + .btn {
+.btn-group-vertical > .btn + .btn {
   margin-left: 0;
   margin-top: -1px;
 }

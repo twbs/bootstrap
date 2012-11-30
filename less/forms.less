@@ -691,7 +691,10 @@ legend + .control-group {
   // And apply it only to .help-block instances that follow a form control
   input,
   select,
-  textarea {
+  textarea,
+  .uneditable-input,
+  .input-prepend,
+  .input-append {
     + .help-block {
       margin-top: @baseLineHeight / 2;
     }

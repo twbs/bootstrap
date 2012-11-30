@@ -831,6 +831,7 @@ form.bs-docs-example {
   /* When affixed, space properly */
   .bs-docs-sidenav {
     top: 0;
+    width: 218px;
     margin-top: 30px;
     margin-right: 0;
   }
@@ -838,7 +839,7 @@ form.bs-docs-example {
 
 /* Tablet to desktop
 ------------------------- */
-@media (min-width: 768px) and (max-width: 980px) {
+@media (min-width: 768px) and (max-width: 979px) {
   /* Remove any padding from the body */
   body {
     padding-top: 0;
