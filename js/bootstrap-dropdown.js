@@ -140,6 +140,7 @@
    * =================================== */
 
   $(document)
+  	.on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); })
     .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
     .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
