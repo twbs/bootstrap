@@ -3877,6 +3877,10 @@ input[type="submit"].btn.btn-mini {
   background-color: #eeeeee;
 }
 
+.nav > li > a > img {
+  max-width: none;
+}
+
 .nav > .pull-right {
   float: right;
 }
