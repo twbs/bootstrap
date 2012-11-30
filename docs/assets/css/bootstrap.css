@@ -1958,7 +1958,7 @@ legend + .control-group {
 .form-horizontal input + .help-block,
 .form-horizontal select + .help-block,
 .form-horizontal textarea + .help-block,
-.form-horizontal span.uneditable-input + .help-block {
+.form-horizontal .uneditable-input + .help-block {
   margin-top: 10px;
 }
 
