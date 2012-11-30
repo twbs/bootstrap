@@ -182,11 +182,18 @@ textarea {
 
 body {
   margin: 0;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+body,
+input,
+button,
+select,
+textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #333333;
-  background-color: #ffffff;
 }
 
 a {
@@ -743,28 +750,6 @@ legend {
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
-}
-
-legend small {
-  font-size: 15px;
-  color: #999999;
-}
-
-label,
-input,
-button,
-select,
-textarea {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 20px;
-}
-
-input,
-button,
-select,
-textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 label {
