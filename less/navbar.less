@@ -11,8 +11,8 @@
   overflow: visible;
   padding: 0 20px;
   margin-bottom: @line-height-base;
-  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
-  border: 1px solid @navbarBorder;
+  #gradient > .vertical(@navbar-background-highlight, @navbar-background);
+  border: 1px solid @navbar-border;
   border-radius: @border-radius-base;
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
@@ -38,13 +38,13 @@
 .navbar .brand {
   float: left;
   display: block;
-  // Vertically center the text given @navbarHeight
-  padding: ((@navbarHeight - @line-height-base) / 2) 20px ((@navbarHeight - @line-height-base) / 2);
+  // Vertically center the text given @navbar-height
+  padding: ((@navbar-height - @line-height-base) / 2) 20px ((@navbar-height - @line-height-base) / 2);
   margin-left: -20px; // negative indent to left-align the text down the page
   font-size: 20px;
   font-weight: 200;
-  color: @navbarBrandColor;
-  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  color: @navbar-brand-color;
+  text-shadow: 0 1px 0 @navbar-background-highlight;
   &:hover {
     text-decoration: none;
   }
@@ -54,26 +54,26 @@
 // -------------------------
 .navbar-text {
   margin-bottom: 0;
-  line-height: @navbarHeight;
-  color: @navbarText;
+  line-height: @navbar-height;
+  color: @navbar-text;
 }
 
 // Janky solution for now to account for links outside the .nav
 // -------------------------
 .navbar-link {
-  color: @navbarLinkColor;
+  color: @navbar-link-color;
   &:hover {
-    color: @navbarLinkColorHover;
+    color: @navbar-link-color-hover;
   }
 }
 
 // Dividers in navbar
 // -------------------------
 .navbar .divider-vertical {
-  height: @navbarHeight;
+  height: @navbar-height;
   margin: 0 9px;
-  border-left: 1px solid @navbarBackground;
-  border-right: 1px solid @navbarBackgroundHighlight;
+  border-left: 1px solid @navbar-background;
+  border-right: 1px solid @navbar-background-highlight;
 }
 
 // Buttons in navbar
@@ -214,11 +214,11 @@
 // Links
 .navbar .nav > li > a {
   float: none;
-  // Vertically center the text given @navbarHeight
-  padding: ((@navbarHeight - @line-height-base) / 2) 15px ((@navbarHeight - @line-height-base) / 2);
-  color: @navbarLinkColor;
+  // Vertically center the text given @navbar-height
+  padding: ((@navbar-height - @line-height-base) / 2) 15px ((@navbar-height - @line-height-base) / 2);
+  color: @navbar-link-color;
   text-decoration: none;
-  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  text-shadow: 0 1px 0 @navbar-background-highlight;
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
@@ -228,8 +228,8 @@
 // Hover
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
-  color: @navbarLinkColorHover;
+  background-color: @navbar-link-background-hover; // "transparent" is default to differentiate :hover from .active
+  color: @navbar-link-color-hover;
   text-decoration: none;
 }
 
@@ -237,9 +237,9 @@
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
-  color: @navbarLinkColorActive;
+  color: @navbar-link-color-active;
   text-decoration: none;
-  background-color: @navbarLinkBackgroundActive;
+  background-color: @navbar-link-background-active;
   .box-shadow(inset 0 3px 8px rgba(0,0,0,.125));
 }
 
@@ -251,7 +251,7 @@
   padding: 7px 10px;
   margin-left: 5px;
   margin-right: 5px;
-  .buttonBackground(darken(@navbarBackgroundHighlight, 5%), darken(@navbarBackground, 5%));
+  .buttonBackground(darken(@navbar-background-highlight, 5%), darken(@navbar-background, 5%));
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
 }
 .navbar .btn-navbar .icon-bar {
@@ -314,26 +314,26 @@
 
 // Caret should match text color on hover
 .navbar .nav li.dropdown > a:hover .caret {
-  border-top-color: @navbarLinkColorActive;
-  border-bottom-color: @navbarLinkColorActive;
+  border-top-color: @navbar-link-color-active;
+  border-bottom-color: @navbar-link-color-active;
 }
 
 // Remove background color from open dropdown
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-  background-color: @navbarLinkBackgroundActive;
-  color: @navbarLinkColorActive;
+  background-color: @navbar-link-background-active;
+  color: @navbar-link-color-active;
 }
 .navbar .nav li.dropdown > .dropdown-toggle .caret {
-  border-top-color: @navbarLinkColor;
-  border-bottom-color: @navbarLinkColor;
+  border-top-color: @navbar-link-color;
+  border-bottom-color: @navbar-link-color;
 }
 .navbar .nav li.dropdown.open > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.active > .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
-  border-top-color: @navbarLinkColorActive;
-  border-bottom-color: @navbarLinkColorActive;
+  border-top-color: @navbar-link-color-active;
+  border-bottom-color: @navbar-link-color-active;
 }
 
 // Right aligned menus need alt position
@@ -363,84 +363,84 @@
 // -------------------------
 
 .navbar-inverse {
-  #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
-  border-color: @navbarInverseBorder;
+  #gradient > .vertical(@navbar-inverse-background-highlight, @navbar-inverse-background);
+  border-color: @navbar-inverse-border;
 
   .brand,
   .nav > li > a {
-    color: @navbarInverseLinkColor;
+    color: @navbar-inverse-link-color;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     &:hover {
-      color: @navbarInverseLinkColorHover;
+      color: @navbar-inverse-link-color-hover;
     }
   }
 
   .brand {
-    color: @navbarInverseBrandColor;
+    color: @navbar-inverse-brand-color;
   }
 
   .navbar-text {
-    color: @navbarInverseText;
+    color: @navbar-inverse-text;
   }
 
   .nav > li > a:focus,
   .nav > li > a:hover {
-    background-color: @navbarInverseLinkBackgroundHover;
-    color: @navbarInverseLinkColorHover;
+    background-color: @navbar-inverse-link-background-hover;
+    color: @navbar-inverse-link-color-hover;
   }
 
   .nav .active > a,
   .nav .active > a:hover,
   .nav .active > a:focus {
-    color: @navbarInverseLinkColorActive;
-    background-color: @navbarInverseLinkBackgroundActive;
+    color: @navbar-inverse-link-color-active;
+    background-color: @navbar-inverse-link-background-active;
   }
 
   // Inline text links
   .navbar-link {
-    color: @navbarInverseLinkColor;
+    color: @navbar-inverse-link-color;
     &:hover {
-      color: @navbarInverseLinkColorHover;
+      color: @navbar-inverse-link-color-hover;
     }
   }
 
   // Dividers in navbar
   .divider-vertical {
-    border-left-color: @navbarInverseBackground;
-    border-right-color: @navbarInverseBackgroundHighlight;
+    border-left-color: @navbar-inverse-background;
+    border-right-color: @navbar-inverse-background-highlight;
   }
 
   // Dropdowns
   .nav li.dropdown.open > .dropdown-toggle,
   .nav li.dropdown.active > .dropdown-toggle,
   .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: @navbarInverseLinkBackgroundActive;
-    color: @navbarInverseLinkColorActive;
+    background-color: @navbar-inverse-link-background-active;
+    color: @navbar-inverse-link-color-active;
   }
   .nav li.dropdown > a:hover .caret {
-    border-top-color: @navbarInverseLinkColorActive;
-    border-bottom-color: @navbarInverseLinkColorActive;
+    border-top-color: @navbar-inverse-link-color-active;
+    border-bottom-color: @navbar-inverse-link-color-active;
   }
   .nav li.dropdown > .dropdown-toggle .caret {
-    border-top-color: @navbarInverseLinkColor;
-    border-bottom-color: @navbarInverseLinkColor;
+    border-top-color: @navbar-inverse-link-color;
+    border-bottom-color: @navbar-inverse-link-color;
   }
   .nav li.dropdown.open > .dropdown-toggle .caret,
   .nav li.dropdown.active > .dropdown-toggle .caret,
   .nav li.dropdown.open.active > .dropdown-toggle .caret {
-    border-top-color: @navbarInverseLinkColorActive;
-    border-bottom-color: @navbarInverseLinkColorActive;
+    border-top-color: @navbar-inverse-link-color-active;
+    border-bottom-color: @navbar-inverse-link-color-active;
   }
 
   // Navbar search
   .navbar-search {
     .search-query {
       color: #fff;
-      background-color: @navbarInverseSearchBackground;
-      border-color: @navbarInverseSearchBorder;
+      background-color: @navbar-inverse-search-background;
+      border-color: @navbar-inverse-search-border;
       .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
       .transition(none);
-      .placeholder(@navbarInverseSearchPlaceholderColor);
+      .placeholder(@navbar-inverse-search-placeholder-color);
 
       // Focus states (we use .focused since IE8 and down doesn't support :focus)
       &:focus,
@@ -448,7 +448,7 @@
         padding: 5px 15px;
         color: @grayDark;
         text-shadow: 0 1px 0 #fff;
-        background-color: @navbarInverseSearchBackgroundFocus;
+        background-color: @navbar-inverse-search-background-focus;
         border: 0;
         .box-shadow(0 0 3px rgba(0,0,0,.15));
         outline: 0;
@@ -458,7 +458,7 @@
 
   // Navbar collapse button
   .btn-navbar {
-    .buttonBackground(darken(@navbarInverseBackgroundHighlight, 5%), darken(@navbarInverseBackground, 5%));
+    .buttonBackground(darken(@navbar-inverse-background-highlight, 5%), darken(@navbar-inverse-background, 5%));
   }
 
 }
