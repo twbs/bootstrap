@@ -885,16 +885,18 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           </div>
 
           <h2 id="forms-default">Default styles</h2>
-          <p>Individual form controls receive styling, but without any required base class on the <code>&lt;form&gt;</code> or large changes in markup. Results in stacked, left-aligned labels on top of form controls.</p>
+          <p>Individual form controls automatically receive some global styling. By default, inputs are set to <code>width: 100%;</code>.</p>
           <form class="bs-docs-example">
             <fieldset>
               <legend>Legend</legend>
               <label>Label name</label>
               <input type="text" placeholder="Type something…">
-              <span class="help-block">Example block-level help text here.</span>
-              <label class="checkbox">
-                <input type="checkbox"> Check me out
-              </label>
+              <p class="help-block">Example block-level help text here.</p>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Check me out
+                </label>
+              </div>
               <button type="submit" class="btn">Submit</button>
             </fieldset>
           </form>
@@ -905,9 +907,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     &lt;label&gt;Label name&lt;/label&gt;
     &lt;input type="text" placeholder="Type something…"&gt;
     &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
-    &lt;label class="checkbox"&gt;
-      &lt;input type="checkbox"&gt; Check me out
-    &lt;/label&gt;
+    &lt;div class="checkbox"&gt;
+      &lt;label&gt;
+        &lt;input type="checkbox"&gt; Check me out
+      &lt;/label&gt;
+    &lt;/div&gt;
     &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
@@ -938,18 +942,22 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <form class="bs-docs-example form-inline">
             <input type="text" class="span3" placeholder="Email">
             <input type="password" class="span3" placeholder="Password">
-            <label class="checkbox">
-              <input type="checkbox"> Remember me
-            </label>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Remember me
+              </label>
+            </div>
             <button type="submit" class="btn">Sign in</button>
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
   &lt;input type="text" class="span3" placeholder="Email"&gt;
   &lt;input type="password" class="span3" placeholder="Password"&gt;
-  &lt;label class="checkbox"&gt;
-    &lt;input type="checkbox"&gt; Remember me
-  &lt;/label&gt;
+    &lt;div class="checkbox"&gt;
+      &lt;label&gt;
+        &lt;input type="checkbox"&gt; Remember me
+      &lt;/label&gt;
+    &lt;/div&gt;
   &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
 &lt;/form&gt;
 </pre>

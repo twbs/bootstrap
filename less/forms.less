@@ -3,9 +3,8 @@
 // --------------------------------------------------
 
 
-// General styles
+// Non-controls
 // -------------------------
-
 
 form {
   margin: 0 0 @baseLineHeight;
@@ -30,8 +29,9 @@ legend {
 }
 
 label {
-  display: block;
+  display: inline-block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 // Form controls
@@ -65,7 +65,10 @@ input[type="color"],
   color: @gray;
   vertical-align: middle;
   background-color: @inputBackground;
+  border: 1px solid @inputBorder;
   border-radius: @inputBorderRadius;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  .transition(~"border linear .2s, box-shadow linear .2s");
 }
 
 // Reset appearance properties for textual inputs and textarea
@@ -75,6 +78,17 @@ select,
 textarea,
 .uneditable-input {
   width: 100%;
+}
+
+// Reset width of input images, buttons, radios, checkboxes
+input[type="file"],
+input[type="image"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto; // Override of generic input selector
 }
 
 // Reset height since textareas have rows
@@ -99,10 +113,6 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  border: 1px solid @inputBorder;
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border linear .2s, box-shadow linear .2s");
-
   // Focus state
   &:focus {
     border-color: rgba(82,168,236,.8);
@@ -118,17 +128,6 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
-}
-
-// Reset width of input images, buttons, radios, checkboxes
-input[type="file"],
-input[type="image"],
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-input[type="radio"],
-input[type="checkbox"] {
-  width: auto; // Override of generic input selector
 }
 
 // Set the height of select and file controls to match text inputs
@@ -201,8 +200,13 @@ textarea {
 // Indent the labels to position radios/checkboxes as hanging
 .radio,
 .checkbox {
+  display: block;
   min-height: @baseLineHeight; // clear the floating input if there is no label text
   padding-left: 20px;
+}
+.radio label,
+.checkbox label {
+  font-weight: normal;
 }
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
@@ -401,7 +405,7 @@ select:focus:invalid {
 
 .help-block,
 .help-inline {
-  color: lighten(@textColor, 15%); // lighten the text some for contrast
+  color: lighten(@textColor, 25%); // lighten the text some for contrast
 }
 
 .help-block {
@@ -618,9 +622,12 @@ input.search-query {
 .form-search .checkbox,
 .form-inline .radio,
 .form-inline .checkbox {
+  display: inline-block;
   padding-left: 0;
-  margin-bottom: 0;
-  vertical-align: middle;
+  label {
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
 }
 // Remove float and margin, set to inline-block
 .form-search .radio input[type="radio"],
