@@ -57,16 +57,16 @@ input[type="color"],
 .uneditable-input {
   display: inline-block;
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
-  min-height: @inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  min-height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
   margin-bottom: @line-height-base / 2;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
   vertical-align: middle;
-  background-color: @inputBackground;
-  border: 1px solid @inputBorder;
-  border-radius: @inputBorderRadius;
+  background-color: @input-background;
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border linear .2s, box-shadow linear .2s");
 }
@@ -133,14 +133,14 @@ input[type="checkbox"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: @inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
-  line-height: @inputHeight;
+  height: @input-height; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
+  line-height: @input-height;
 }
 
 // Make select elements obey height by applying a border
 // TODO: See if this can be part of the above selector stack
 select {
-  border: 1px solid @inputBorder;
+  border: 1px solid @input-border;
 }
 
 // Make multiple select elements height not fixed
@@ -165,8 +165,8 @@ input[type="checkbox"]:focus {
 .uneditable-input,
 .uneditable-textarea {
   color: @grayLight;
-  background-color: darken(@inputBackground, 1%);
-  border-color: @inputBorder;
+  background-color: darken(@input-background, 1%);
+  border-color: @input-border;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
   cursor: not-allowed;
 }
@@ -337,7 +337,7 @@ input[readonly],
 select[readonly],
 textarea[readonly] {
   cursor: not-allowed;
-  background-color: @inputDisabledBackground;
+  background-color: @input-background-disabled;
 }
 // Explicitly reset the colors here
 input[type="radio"][disabled],
@@ -393,7 +393,7 @@ select:focus:invalid {
   padding: (@line-height-base - 1) 20px @line-height-base;
   margin-top: @line-height-base;
   margin-bottom: @line-height-base;
-  background-color: @formActionsBackground;
+  background-color: @form-actions-background;
   border-top: 1px solid #e5e5e5;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
 }
@@ -447,7 +447,7 @@ select:focus:invalid {
     margin: 0; // Prevent bottom margin from screwing up alignment in stacked forms
     font-size: @font-size-base;
     vertical-align: top;
-    border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
+    border-radius: 0 @input-border-radius @input-border-radius 0;
     // Make input on top when focused so blue border and shadow always show
     &:focus {
       z-index: 2;
@@ -468,7 +468,7 @@ select:focus:invalid {
     font-weight: normal;
     line-height: @line-height-base;
     text-align: center;
-    text-shadow: 0 1px 0 @white;
+    text-shadow: 0 1px 0 #fff;
     background-color: @grayLighter;
     border: 1px solid #ccc;
   }
@@ -492,7 +492,7 @@ select:focus:invalid {
   .add-on:first-child,
   .btn:first-child {
     // FYI, `.btn:first-child` accounts for a button group that's prepended
-    border-radius: @inputBorderRadius 0 0 @inputBorderRadius;
+    border-radius: @input-border-radius 0 0 @input-border-radius;
   }
 }
 
@@ -500,10 +500,10 @@ select:focus:invalid {
   input,
   select,
   .uneditable-input {
-    border-radius: @inputBorderRadius 0 0 @inputBorderRadius;
+    border-radius: @input-border-radius 0 0 @input-border-radius;
     + .btn-group .btn,
     + .btn-group .btn:last-child {
-      border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
+      border-radius: 0 @input-border-radius @input-border-radius 0;
     }
   }
   .add-on,
@@ -514,7 +514,7 @@ select:focus:invalid {
   .add-on:last-child,
   .btn:last-child,
   .btn-group:last-child > .dropdown-toggle {
-    border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
+    border-radius: 0 @input-border-radius @input-border-radius 0;
   }
 }
 
@@ -525,18 +525,18 @@ select:focus:invalid {
   .uneditable-input {
     border-radius: 0;
     + .btn-group .btn {
-      border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
+      border-radius: 0 @input-border-radius @input-border-radius 0;
     }
   }
   .add-on:first-child,
   .btn:first-child {
     margin-right: -1px;
-    border-radius: @inputBorderRadius 0 0 @inputBorderRadius;
+    border-radius: @input-border-radius 0 0 @input-border-radius;
   }
   .add-on:last-child,
   .btn:last-child {
     margin-left: -1px;
-    border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
+    border-radius: 0 @input-border-radius @input-border-radius 0;
   }
   .btn-group:first-child {
     margin-left: 0;
@@ -555,7 +555,7 @@ input.search-query {
   padding-left: 14px;
   padding-left: 4px \9; /* IE8 doesn't have border radius, so don't indent the padding */
   margin-bottom: 0; // Remove the default margin on all inputs
-  border-radius: @inputSearchBorderRadius;
+  border-radius: @input-border-radius-search;
 }
 
 /* Allow for input prepend/append in search forms */
@@ -564,16 +564,16 @@ input.search-query {
   border-radius: 0; // Override due to specificity
 }
 .form-search .input-append .search-query {
-  border-radius: @inputSearchBorderRadius 0 0 @inputSearchBorderRadius;
+  border-radius: @input-border-radius-search 0 0 @input-border-radius-search;
 }
 .form-search .input-append .btn {
-  border-radius: 0 @inputSearchBorderRadius @inputSearchBorderRadius 0;
+  border-radius: 0 @input-border-radius-search @input-border-radius-search 0;
 }
 .form-search .input-prepend .search-query {
-  border-radius: 0 @inputSearchBorderRadius @inputSearchBorderRadius 0;
+  border-radius: 0 @input-border-radius-search @input-border-radius-search 0;
 }
 .form-search .input-prepend .btn {
-  border-radius: @inputSearchBorderRadius 0 0 @inputSearchBorderRadius;
+  border-radius: @input-border-radius-search 0 0 @input-border-radius-search;
 }
 
 

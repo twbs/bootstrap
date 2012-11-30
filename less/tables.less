@@ -5,7 +5,7 @@
 
 table {
   max-width: 100%;
-  background-color: @tableBackground;
+  background-color: @table-background;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -25,7 +25,7 @@ table {
     line-height: @line-height-base;
     text-align: left;
     vertical-align: top;
-    border-top: 1px solid @tableBorder;
+    border-top: 1px solid @table-border;
   }
   th {
     font-weight: bold;
@@ -45,7 +45,7 @@ table {
   }
   // Account for multiple tbody instances
   tbody + tbody {
-    border-top: 2px solid @tableBorder;
+    border-top: 2px solid @table-border;
   }
 }
 
@@ -67,13 +67,13 @@ table {
 // ----------------
 
 .table-bordered {
-  border: 1px solid @tableBorder;
+  border: 1px solid @table-border;
   border-collapse: separate; // Done so we can round those corners!
   border-left: 0;
   border-radius: @border-radius-base;
   th,
   td {
-    border-left: 1px solid @tableBorder;
+    border-left: 1px solid @table-border;
   }
   // Prevent a double border
   caption + thead tr:first-child th,
@@ -143,7 +143,7 @@ table {
   tbody {
     tr:nth-child(odd) td,
     tr:nth-child(odd) th {
-      background-color: @tableBackgroundAccent;
+      background-color: @table-background-accent;
     }
   }
 }
@@ -157,7 +157,7 @@ table {
   tbody {
     tr:hover td,
     tr:hover th {
-      background-color: @tableBackgroundHover;
+      background-color: @table-background-hover;
     }
   }
 }

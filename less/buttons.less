@@ -16,9 +16,9 @@
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
-  border: 1px solid @btnBorder;
-  border-bottom-color: darken(@btnBorder, 10%);
+  .buttonBackground(@btn-background, @btn-background-highlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+  border: 1px solid @btn-border;
+  border-bottom-color: darken(@btn-border, 10%);
   border-radius: @border-radius-base;
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
 
@@ -139,27 +139,27 @@ input[type="button"] {
   border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
 }
 .btn-primary {
-  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  .buttonBackground(@btn-backround-primary, @btn-backround-primary-highlight);
 }
 // Warning appears are orange
 .btn-warning {
-  .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  .buttonBackground(@btn-backround-warning, @btn-backround-warning-highlight);
 }
 // Danger and error appear as red
 .btn-danger {
-  .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+  .buttonBackground(@btn-backround-danger, @btn-backround-danger-highlight);
 }
 // Success appears as green
 .btn-success {
-  .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+  .buttonBackground(@btn-backround-success, @btn-backround-success-highlight);
 }
 // Info appears as a neutral blue
 .btn-info {
-  .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+  .buttonBackground(@btn-backround-info, @btn-backround-info-highlight);
 }
 // Inverse appears as dark gray
 .btn-inverse {
-  .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+  .buttonBackground(@btn-backround-inverse, @btn-backround-inverse-highlight);
 }
 
 
