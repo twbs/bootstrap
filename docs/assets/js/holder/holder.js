@@ -1,6 +1,6 @@
 /*
 
-Holder - 1.4 - client side image placeholders
+Holder - 1.6 - client side image placeholders
 (c) 2012 Ivan Malopinsky / http://imsky.co
 
 Provided under the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
@@ -33,32 +33,160 @@ function selector(a){
 //shallow object property extend
 function extend(a,b){var c={};for(var d in a)c[d]=a[d];for(var e in b)c[e]=b[e];return c}
 
-function draw(ctx, dimensions, template) {
-	var dimension_arr = [dimensions.height, dimensions.width].sort();
+function text_size(width, height, template) {
+	var dimension_arr = [height, width].sort();
 	var maxFactor = Math.round(dimension_arr[1] / 16),
 		minFactor = Math.round(dimension_arr[0] / 16);
 	var text_height = Math.max(template.size, maxFactor);
-	canvas.width = dimensions.width;
-	canvas.height = dimensions.height;
+	return {
+		height: text_height
+	}
+}
+
+function draw(ctx, dimensions, template, ratio) {
+	var ts = text_size(dimensions.width, dimensions.height, template);
+	var text_height = ts.height;
+	var width = dimensions.width * ratio, height = dimensions.height * ratio;
+	canvas.width = width;
+	canvas.height = height;
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
 	ctx.fillStyle = template.background;
-	ctx.fillRect(0, 0, dimensions.width, dimensions.height);
+	ctx.fillRect(0, 0, width, height);
 	ctx.fillStyle = template.foreground;
 	ctx.font = "bold " + text_height + "px sans-serif";
 	var text = template.text ? template.text : (dimensions.width + "x" + dimensions.height);
-	if (Math.round(ctx.measureText(text).width) / dimensions.width > 1) {
-		text_height = Math.max(minFactor, template.size);
+	if (ctx.measureText(text).width / width > 1) {
+		text_height = template.size / (ctx.measureText(text).width / width);
 	}
-	ctx.font = "bold " + text_height + "px sans-serif";
-	ctx.fillText(text, (dimensions.width / 2), (dimensions.height / 2), dimensions.width);
+	ctx.font = "bold " + (text_height * ratio) + "px sans-serif";
+	ctx.fillText(text, (width / 2), (height / 2), width);
 	return canvas.toDataURL("image/png");
 }
+
+function render(mode, el, holder, src) {
+
+	var dimensions = holder.dimensions,
+		theme = holder.theme,
+		text = holder.text;
+	var dimensions_caption = dimensions.width + "x" + dimensions.height;
+	theme = (text ? extend(theme, {
+		text: text
+	}) : theme);
+
+	var ratio = 1;
+	if(window.devicePixelRatio && window.devicePixelRatio > 1){
+		ratio = window.devicePixelRatio;
+	}
+	
+	if (mode == "image") {
+		el.setAttribute("data-src", src);
+		el.setAttribute("alt", text ? text : theme.text ? theme.text + " [" + dimensions_caption + "]" : dimensions_caption);
+		el.style.width = dimensions.width + "px";
+		el.style.height = dimensions.height + "px";
+
+		if (fallback) {
+			el.style.backgroundColor = theme.background;
+		}
+		else{
+			el.setAttribute("src", draw(ctx, dimensions, theme, ratio));
+		}
+	} else {
+		if (!fallback) {
+			el.style.backgroundImage = "url(" + draw(ctx, dimensions, theme, ratio) + ")";
+			el.style.backgroundSize = dimensions.width+"px "+dimensions.height+"px";
+		}
+	}
+};
+
+function fluid(el, holder, src) {
+	var dimensions = holder.dimensions,
+		theme = holder.theme,
+		text = holder.text;
+	var dimensions_caption = dimensions.width + "x" + dimensions.height;
+	theme = (text ? extend(theme, {
+		text: text
+	}) : theme);
+
+	var fluid = document.createElement("table");
+	fluid.setAttribute("cellspacing",0)
+	fluid.setAttribute("cellpadding",0)
+	fluid.setAttribute("border",0)
+
+	var row = document.createElement("tr")
+		.appendChild(document.createElement("td")
+		.appendChild(document.createTextNode(theme.text)));
+
+	fluid.style.backgroundColor = theme.background;
+	fluid.style.color = theme.foreground;
+	fluid.className = el.className + " holderjs-fluid";
+	fluid.style.width = holder.dimensions.width + (holder.dimensions.width.indexOf("%")>0?"":"px");
+	fluid.style.height = holder.dimensions.height + (holder.dimensions.height.indexOf("%")>0?"":"px");
+	fluid.id = el.id;
+
+	var frag = document.createDocumentFragment(),
+		tbody = document.createElement("tbody"),
+		tr = document.createElement("tr"),
+		td = document.createElement("td");
+		tr.appendChild(td);
+		tbody.appendChild(tr);
+		frag.appendChild(tbody);
+	
+	if (theme.text) {
+		td.appendChild(document.createTextNode(theme.text))
+		fluid.appendChild(frag);
+	} else {
+		td.appendChild(document.createTextNode(dimensions_caption))
+		fluid.appendChild(frag);
+		fluid_images.push(fluid);
+		setTimeout(fluid_update, 0);
+	}
+	
+	el.parentNode.replaceChild(fluid, el);
+}
+
+function fluid_update() {
+	for (i in fluid_images) {
+		var el = fluid_images[i];
+		var label = el.getElementsByTagName("td")[0].firstChild;
+		label.data = el.offsetWidth + "x" + el.offsetHeight;
+	}
+}
+
+function parse_flags(flags, options) {
+
+	var ret = {
+		theme: settings.themes.gray
+	}, render = false;
+
+	for (sl = flags.length, j = 0; j < sl; j++) {
+		var flag = flags[j];
+		if (app.flags.dimensions.match(flag)) {
+			render = true;
+			ret.dimensions = app.flags.dimensions.output(flag);
+		} else if (app.flags.fluid.match(flag)) {
+			render = true;
+			ret.dimensions = app.flags.fluid.output(flag);
+			ret.fluid = true;
+		} else if (app.flags.colors.match(flag)) {
+			ret.theme = app.flags.colors.output(flag);
+		} else if (options.themes[flag]) {
+			//If a theme is specified, it will override custom colors
+			ret.theme = options.themes[flag];
+		} else if (app.flags.text.match(flag)) {
+			ret.text = app.flags.text.output(flag);
+		}
+	}
+
+	return render ? ret : false;
+
+};
 
 if (!canvas.getContext) {
 	fallback = true;
 } else {
-	if (canvas.toDataURL("image/png").indexOf("data:image/png") < 0) {
+	if (canvas.toDataURL("image/png")
+		.indexOf("data:image/png") < 0) {
 		//Android doesn't support data URI
 		fallback = true;
 	} else {
@@ -66,54 +194,7 @@ if (!canvas.getContext) {
 	}
 }
 
-function render(mode, el, holder, src){
-
-	var dimensions = holder.dimensions, theme = holder.theme, text = holder.text;
-	var dimensions_caption = dimensions.width + "x" + dimensions.height;
-		theme = (text ? extend(theme, {	text: text	}) : theme);
-
-	if(mode == "image"){
-		el.setAttribute("data-src", src);
-		el.setAttribute("alt", text ? text : theme.text ? theme.text + " [" + dimensions_caption + "]" : dimensions_caption);
-		el.style.width = dimensions.width + "px";
-		el.style.height = dimensions.height + "px";
-		el.style.backgroundColor = theme.background;
-
-		if(!fallback){
-			el.setAttribute("src", draw(ctx, dimensions, theme));
-		}
-	}
-	else {
-		if(!fallback){
-			el.style.backgroundImage = "url("+draw(ctx, dimensions, theme)+")";
-		}
-	}
-
-};
-
-function parse_flags(flags, options){
-
-	var ret = {
-		theme: settings.themes.gray
-		}, render = false;
-
-	for (sl = flags.length, j = 0; j < sl; j++) {
-				if (app.flags.dimensions.match(flags[j])) {
-					render = true;
-					ret.dimensions = app.flags.dimensions.output(flags[j]);
-				} else if (app.flags.colors.match(flags[j])) {
-					ret.theme = app.flags.colors.output(flags[j]);
-				} else if (options.themes[flags[j]]) {
-					//If a theme is specified, it will override custom colors
-					ret.theme = options.themes[flags[j]];
-				} else if (app.flags.text.match(flags[j])) {
-					ret.text = app.flags.text.output(flags[j]);
-				}
-	}
-
-	return render ? ret : false;
-
-};
+var fluid_images = [];
 
 var settings = {
 	domain: "holder.js",
@@ -125,24 +206,25 @@ var settings = {
 			foreground: "#aaa",
 			size: 12
 		},
-		"social": {
+			"social": {
 			background: "#3a5a97",
 			foreground: "#fff",
 			size: 12
 		},
-		"industrial": {
+			"industrial": {
 			background: "#434A52",
 			foreground: "#C2F200",
 			size: 12
 		}
-	}
+	},
+	stylesheet: ".holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;border-collapse:collapse;border:0;vertical-align:middle;margin:0}"
 };
 
 
 app.flags = {
 	dimensions: {
-		regex: /([0-9]+)x([0-9]+)/,
-		output: function(val){
+		regex: /(\d+)x(\d+)/,
+		output: function (val) {
 			var exec = this.regex.exec(val);
 			return {
 				width: +exec[1],
@@ -150,27 +232,37 @@ app.flags = {
 			}
 		}
 	},
-	colors: {
-		regex: /#([0-9a-f]{3,})\:#([0-9a-f]{3,})/i,
-		output: function(val){
+	fluid: {
+		regex: /([0-9%]+)x([0-9%]+)/,
+		output: function (val) {
 			var exec = this.regex.exec(val);
 			return {
-					size: settings.themes.gray.size,
-					foreground: "#" + exec[2],
-					background: "#" + exec[1]
-					}
+				width: exec[1],
+				height: exec[2]
+			}
+		}
+	},
+	colors: {
+		regex: /#([0-9a-f]{3,})\:#([0-9a-f]{3,})/i,
+		output: function (val) {
+			var exec = this.regex.exec(val);
+			return {
+				size: settings.themes.gray.size,
+				foreground: "#" + exec[2],
+				background: "#" + exec[1]
+			}
 		}
 	},
 	text: {
 		regex: /text\:(.*)/,
-		output: function(val){
+		output: function (val) {
 			return this.regex.exec(val)[1];
 		}
 	}
 }
 
-for(var flag in app.flags){
-	app.flags[flag].match = function (val){
+for (var flag in app.flags) {
+	app.flags[flag].match = function (val) {
 		return val.match(this.regex)
 	}
 }
@@ -194,29 +286,43 @@ app.add_image = function (src, el) {
 
 app.run = function (o) {
 	var options = extend(settings, o),
-		images = selector(options.images),
+		images_nodes = selector(options.images),
 		elements = selector(options.elements),
-		preempted = true;
+		preempted = true,
+		images = [];
 
-	var cssregex = new RegExp(options.domain+"\/(.*?)\"?\\)");
+	for (i = 0, l = images_nodes.length; i < l; i++) images.push(images_nodes[i]);
 
-	for(var l = elements.length, i = 0; i < l; i++){
-		var src = window.getComputedStyle(elements[i],null).getPropertyValue("background-image");
+	var holdercss = document.createElement("style");
+	holdercss.type = "text/css";
+	holdercss.styleSheet ? holdercss.styleSheet.cssText = options.stylesheet : holdercss.textContent = options.stylesheet;
+	document.getElementsByTagName("head")[0].appendChild(holdercss);
+
+	var cssregex = new RegExp(options.domain + "\/(.*?)\"?\\)");
+
+	for (var l = elements.length, i = 0; i < l; i++) {
+		var src = window.getComputedStyle(elements[i], null)
+			.getPropertyValue("background-image");
 		var flags = src.match(cssregex);
-		if(flags){
+		if (flags) {
 			var holder = parse_flags(flags[1].split("/"), options);
-			if(holder){
+			if (holder) {
 				render("background", elements[i], holder, src);
 			}
 		}
 	}
 
 	for (var l = images.length, i = 0; i < l; i++) {
-		var src = images[i].getAttribute("data-src") || images[i].getAttribute("src");
-		if (src.indexOf(options.domain)>=0) {
-			var holder = parse_flags(src.substr(src.lastIndexOf(options.domain) + options.domain.length + 1).split("/"), options);
+		var src = images[i].getAttribute("src") || images[i].getAttribute("data-src");
+		if (src != null && src.indexOf(options.domain) >= 0) {
+			var holder = parse_flags(src.substr(src.lastIndexOf(options.domain) + options.domain.length + 1)
+				.split("/"), options);
 			if (holder) {
-				render("image", images[i], holder, src);
+				if (holder.fluid) {
+					fluid(images[i], holder, src);
+				} else {
+					render("image", images[i], holder, src);
+				}
 			}
 		}
 	}
@@ -224,7 +330,13 @@ app.run = function (o) {
 };
 
 contentLoaded(win, function () {
-	preempted || app.run()
+	if (window.addEventListener) {
+		window.addEventListener("resize", fluid_update, false);
+		window.addEventListener("orientationchange", fluid_update, false);
+	} else {
+		window.attachEvent("onresize", fluid_update)
+	}
+	preempted || app.run();
 });
 
 })(Holder, window);
