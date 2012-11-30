@@ -33,6 +33,7 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.delay = this.options.delay || 0
     this.textproperty = this.options.textproperty || this.textproperty
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
@@ -79,18 +80,31 @@
       return this
     }
 
+   , _delaySource: function(query, source, process) {
+      if(this.timeout) {
+          clearTimeout(this.timeout);
+      }
+
+      this.timeout = setTimeout(function() {
+          source(query, process);
+      }, this.delay);
+  }
   , lookup: function (event) {
       var items
 
       this.query = this.$element.val()
 
       if (!this.query || this.query.length < this.options.minLength) {
-        return this.shown ? this.hide() : this
+          return this.shown ? this.hide() : this
       }
 
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
-
-      return items ? this.process(items) : this
+      if ($.isFunction(this.source)) {
+          this._delaySource(this.query, this.source, this.process.bind(this));
+          return this;
+      } else {
+          items = this.source
+          return this.process(items);
+      }
     }
 
   , process: function (items) {
