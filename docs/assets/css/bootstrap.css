@@ -1435,8 +1435,8 @@ select:focus:invalid:focus {
 
 .input-append .active,
 .input-prepend .active {
-  background-color: #a9dba9;
-  border-color: #46a546;
+  background-color: #dff0d8;
+  border-color: #468847;
 }
 
 .input-prepend .add-on,
