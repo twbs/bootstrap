@@ -81,13 +81,19 @@
     }
 
    , _delaySource: function(query, source, process) {
-      if(this.timeout) {
-          clearTimeout(this.timeout);
-      }
+      if(this.calledOnce === undefined)  {
+          this.calledOnce = true;
+          return source(query, process);
+      } else {
+          if(this.timeout) {
+              clearTimeout(this.timeout);
+          }
 
-      this.timeout = setTimeout(function() {
-          source(query, process);
-      }, this.delay);
+          this.timeout = setTimeout(function() {
+              source(query, process);
+          }, this.delay);
+      }
+      
   }
   , lookup: function (event) {
       var items
@@ -98,15 +104,10 @@
           return this.shown ? this.hide() : this
       }
 
-      if ($.isFunction(this.source)) {
-          this._delaySource(this.query, this.source, this.process.bind(this));
-          return this;
-      } else {
-          items = this.source
-          return this.process(items);
-      }
-    }
-
+      items =  ($.isFunction(this.source)) ? this._delaySource(this.query, this.source, $.proxy(this.process, this)) : this.source 
+      
+      return items ? this.process(items) : this
+  }
   , process: function (items) {
       var that = this
 
