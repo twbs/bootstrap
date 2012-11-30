@@ -20,8 +20,8 @@
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
   font-size: 0; // Hack to remove whitespace that results from using inline-block
-  margin-top: @base-line-height / 2;
-  margin-bottom: @base-line-height / 2;
+  margin-top: @line-height-base / 2;
+  margin-bottom: @line-height-base / 2;
   > .btn + .btn,
   > .btn-group + .btn,
   > .btn + .btn-group {
@@ -40,42 +40,42 @@
 .btn-group > .btn,
 .btn-group > .dropdown-menu,
 .btn-group > .popover {
-  font-size: @base-font-size; // redeclare as part 2 of font-size inline-block hack
+  font-size: @font-size-base; // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
 .btn-group > .btn-mini {
-  font-size: @fontSizeMini;
+  font-size: @font-size-mini;
 }
 .btn-group > .btn-small {
-  font-size: @fontSizeSmall;
+  font-size: @font-size-small;
 }
 .btn-group > .btn-large {
-  font-size: @fontSizeLarge;
+  font-size: @font-size-large;
 }
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
-  .border-top-left-radius(@baseBorderRadius);
-  .border-bottom-left-radius(@baseBorderRadius);
+  .border-top-left-radius(@border-radius-base);
+  .border-bottom-left-radius(@border-radius-base);
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
 .btn-group > .dropdown-toggle {
-  .border-top-right-radius(@baseBorderRadius);
-  .border-bottom-right-radius(@baseBorderRadius);
+  .border-top-right-radius(@border-radius-base);
+  .border-bottom-right-radius(@border-radius-base);
 }
 // Reset corners for large buttons
 .btn-group > .btn.large:first-child {
   margin-left: 0;
-  .border-top-left-radius(@borderRadiusLarge);
-  .border-bottom-left-radius(@borderRadiusLarge);
+  .border-top-left-radius(@border-radius-large);
+  .border-bottom-left-radius(@border-radius-large);
 }
 .btn-group > .btn.large:last-child,
 .btn-group > .large.dropdown-toggle {
-  .border-top-right-radius(@borderRadiusLarge);
-  .border-bottom-right-radius(@borderRadiusLarge);
+  .border-top-right-radius(@border-radius-large);
+  .border-bottom-right-radius(@border-radius-large);
 }
 
 // On hover/focus/active, bring the proper btn to front
@@ -201,14 +201,14 @@
   margin-top: -1px;
 }
 .btn-group-vertical .btn:first-child {
-  border-radius: @baseBorderRadius @baseBorderRadius 0 0;
+  border-radius: @border-radius-base @border-radius-base 0 0;
 }
 .btn-group-vertical .btn:last-child {
-  border-radius: 0 0 @baseBorderRadius @baseBorderRadius;
+  border-radius: 0 0 @border-radius-base @border-radius-base;
 }
 .btn-group-vertical .btn-large:first-child {
-  border-radius: @borderRadiusLarge @borderRadiusLarge 0 0;
+  border-radius: @border-radius-large @border-radius-large 0 0;
 }
 .btn-group-vertical .btn-large:last-child {
-  border-radius: 0 0 @borderRadiusLarge @borderRadiusLarge;
+  border-radius: 0 0 @border-radius-large @border-radius-large;
 }

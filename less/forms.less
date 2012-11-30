@@ -7,7 +7,7 @@
 // -------------------------
 
 form {
-  margin: 0 0 @base-line-height;
+  margin: 0 0 @line-height-base;
 }
 
 fieldset {
@@ -20,9 +20,9 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @base-line-height;
-  font-size: @base-font-size * 1.5;
-  line-height: @base-line-height * 2;
+  margin-bottom: @line-height-base;
+  font-size: @font-size-base * 1.5;
+  line-height: @line-height-base * 2;
   color: @grayDark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -59,9 +59,9 @@ input[type="color"],
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
   min-height: @inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
-  margin-bottom: @base-line-height / 2;
-  font-size: @base-font-size;
-  line-height: @base-line-height;
+  margin-bottom: @line-height-base / 2;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
   color: @gray;
   vertical-align: middle;
   background-color: @inputBackground;
@@ -201,7 +201,7 @@ textarea {
 .radio,
 .checkbox {
   display: block;
-  min-height: @base-line-height; // clear the floating input if there is no label text
+  min-height: @line-height-base; // clear the floating input if there is no label text
   padding-left: 20px;
 }
 .radio label,
@@ -257,21 +257,21 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   &.input-large {
-    padding: @paddingLarge;
+    padding: @padding-large;
     padding-left: 14px;
     padding-right: 14px; // TODO: Resolve this override
-    font-size: @fontSizeLarge;
-    border-radius: @borderRadiusLarge;
+    font-size: @font-size-large;
+    border-radius: @border-radius-large;
   }
   &.input-small {
-    padding: @paddingSmall;
-    font-size: @fontSizeSmall;
-    border-radius: @borderRadiusSmall;
+    padding: @padding-small;
+    font-size: @font-size-small;
+    border-radius: @border-radius-small;
   }
   &.input-mini {
-    padding: @paddingMini;
-    font-size: @fontSizeMini;
-    border-radius: @borderRadiusSmall;
+    padding: @padding-mini;
+    font-size: @font-size-mini;
+    border-radius: @border-radius-small;
   }
 }
 
@@ -390,9 +390,9 @@ select:focus:invalid {
 // ------------
 
 .form-actions {
-  padding: (@base-line-height - 1) 20px @base-line-height;
-  margin-top: @base-line-height;
-  margin-bottom: @base-line-height;
+  padding: (@line-height-base - 1) 20px @line-height-base;
+  margin-top: @line-height-base;
+  margin-bottom: @line-height-base;
   background-color: @formActionsBackground;
   border-top: 1px solid #e5e5e5;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
@@ -410,7 +410,7 @@ select:focus:invalid {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-bottom: @base-line-height / 2;
+  margin-bottom: @line-height-base / 2;
 }
 
 .help-inline {
@@ -436,7 +436,7 @@ select:focus:invalid {
   select,
   .uneditable-input,
   .dropdown-menu {
-    font-size: @base-font-size;
+    font-size: @font-size-base;
   }
 
   input,
@@ -445,7 +445,7 @@ select:focus:invalid {
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     float: none; // Undo the float from grid sizing
     margin: 0; // Prevent bottom margin from screwing up alignment in stacked forms
-    font-size: @base-font-size;
+    font-size: @font-size-base;
     vertical-align: top;
     border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
     // Make input on top when focused so blue border and shadow always show
@@ -461,12 +461,12 @@ select:focus:invalid {
   .add-on {
     display: inline-block;
     width: auto;
-    height: @base-line-height;
+    height: @line-height-base;
     min-width: 16px;
     padding: 6px;
-    font-size: @base-font-size;
+    font-size: @font-size-base;
     font-weight: normal;
-    line-height: @base-line-height;
+    line-height: @line-height-base;
     text-align: center;
     text-shadow: 0 1px 0 @white;
     background-color: @grayLighter;
@@ -642,12 +642,12 @@ input.search-query {
 
 // Margin to space out fieldsets
 .control-group {
-  margin-bottom: @base-line-height / 2;
+  margin-bottom: @line-height-base / 2;
 }
 
 // Legend collapses margin, so next element is responsible for spacing
 legend + .control-group {
-  margin-top: @base-line-height;
+  margin-top: @line-height-base;
   -webkit-margin-top-collapse: separate;
 }
 
@@ -657,7 +657,7 @@ legend + .control-group {
 .form-horizontal {
   // Increase spacing between groups
   .control-group {
-    margin-bottom: @base-line-height;
+    margin-bottom: @line-height-base;
     .clearfix();
   }
   // Float the labels left
@@ -683,7 +683,7 @@ legend + .control-group {
   .input-prepend,
   .input-append {
     + .help-block {
-      margin-top: @base-line-height / 2;
+      margin-top: @line-height-base / 2;
     }
   }
   // Move over buttons in .form-actions to align with .controls

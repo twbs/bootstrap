@@ -11,15 +11,15 @@
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0; // For input.btn
-  font-size: @base-font-size;
-  line-height: @base-line-height;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
   border: 1px solid @btnBorder;
   border-bottom-color: darken(@btnBorder, 10%);
-  border-radius: @baseBorderRadius;
+  border-radius: @border-radius-base;
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
 
   // Hover state
@@ -63,23 +63,23 @@
 
 // Large
 .btn-large {
-  padding: @paddingLarge;
-  font-size: @fontSizeLarge;
-  border-radius: @borderRadiusLarge;
+  padding: @padding-large;
+  font-size: @font-size-large;
+  border-radius: @border-radius-large;
 }
 
 // Small
 .btn-small {
-  padding: @paddingSmall;
-  font-size: @fontSizeSmall;
-  border-radius: @borderRadiusSmall;
+  padding: @padding-small;
+  font-size: @font-size-small;
+  border-radius: @border-radius-small;
 }
 
 // Mini
 .btn-mini {
-  padding: @paddingMini;
-  font-size: @fontSizeMini;
-  border-radius: @borderRadiusSmall;
+  padding: @padding-mini;
+  font-size: @font-size-mini;
+  border-radius: @border-radius-small;
 }
 
 

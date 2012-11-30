@@ -8,7 +8,7 @@ code,
 pre {
   padding: 0 3px 2px;
   #font > #family > .monospace;
-  font-size: @base-font-size - 2;
+  font-size: @font-size-base - 2;
   color: @grayDark;
   border-radius: 4px;
 }
@@ -25,10 +25,10 @@ code {
 // Blocks of code
 pre {
   display: block;
-  padding: (@base-line-height - 1) / 2;
-  margin: 0 0 @base-line-height / 2;
-  font-size: @base-font-size - 1; // 14px to 13px
-  line-height: @base-line-height;
+  padding: (@line-height-base - 1) / 2;
+  margin: 0 0 @line-height-base / 2;
+  font-size: @font-size-base - 1; // 14px to 13px
+  line-height: @line-height-base;
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
@@ -36,11 +36,11 @@ pre {
   background-color: #f5f5f5;
   border: 1px solid #ccc; // IE8 fallback
   border: 1px solid rgba(0,0,0,.15);
-  border-radius: @baseBorderRadius;
+  border-radius: @border-radius-base;
 
   // Make prettyprint styles more spaced out for readability
   &.prettyprint {
-    margin-bottom: @base-line-height;
+    margin-bottom: @line-height-base;
   }
 
   // Account for some code outputs that place code tags in pre tags

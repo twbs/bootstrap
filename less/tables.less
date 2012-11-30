@@ -17,12 +17,12 @@ table {
 
 .table {
   width: 100%;
-  margin-bottom: @base-line-height;
+  margin-bottom: @line-height-base;
   // Cells
   th,
   td {
     padding: 8px;
-    line-height: @base-line-height;
+    line-height: @line-height-base;
     text-align: left;
     vertical-align: top;
     border-top: 1px solid @tableBorder;
@@ -70,7 +70,7 @@ table {
   border: 1px solid @tableBorder;
   border-collapse: separate; // Done so we can round those corners!
   border-left: 0;
-  border-radius: @baseBorderRadius;
+  border-radius: @border-radius-base;
   th,
   td {
     border-left: 1px solid @tableBorder;
@@ -90,22 +90,22 @@ table {
   // For first th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:first-child,
   tbody:first-child tr:first-child td:first-child {
-    .border-top-left-radius(@baseBorderRadius);
+    .border-top-left-radius(@border-radius-base);
   }
   thead:first-child tr:first-child th:last-child,
   tbody:first-child tr:first-child td:last-child {
-    .border-top-right-radius(@baseBorderRadius);
+    .border-top-right-radius(@border-radius-base);
   }
   // For first th or td in the last row in the last thead or tbody
   thead:last-child tr:last-child th:first-child,
   tbody:last-child tr:last-child td:first-child,
   tfoot:last-child tr:last-child td:first-child {
-    .border-bottom-left-radius(@baseBorderRadius);
+    .border-bottom-left-radius(@border-radius-base);
   }
   thead:last-child tr:last-child th:last-child,
   tbody:last-child tr:last-child td:last-child,
   tfoot:last-child tr:last-child td:last-child {
-    .border-bottom-right-radius(@baseBorderRadius);
+    .border-bottom-right-radius(@border-radius-base);
   }
 
   // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
@@ -122,13 +122,13 @@ table {
   caption + tbody tr:first-child td:first-child,
   colgroup + thead tr:first-child th:first-child,
   colgroup + tbody tr:first-child td:first-child {
-    .border-top-left-radius(@baseBorderRadius);
+    .border-top-left-radius(@border-radius-base);
   }
   caption + thead tr:first-child th:last-child,
   caption + tbody tr:first-child td:last-child,
   colgroup + thead tr:first-child th:last-child,
   colgroup + tbody tr:first-child td:last-child {
-    .border-top-right-radius(@baseBorderRadius);
+    .border-top-right-radius(@border-radius-base);
   }
 
 }

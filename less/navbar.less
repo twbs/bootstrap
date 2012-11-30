@@ -10,10 +10,10 @@
 .navbar {
   overflow: visible;
   padding: 0 20px;
-  margin-bottom: @base-line-height;
+  margin-bottom: @line-height-base;
   #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
   border: 1px solid @navbarBorder;
-  border-radius: @baseBorderRadius;
+  border-radius: @border-radius-base;
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
@@ -39,7 +39,7 @@
   float: left;
   display: block;
   // Vertically center the text given @navbarHeight
-  padding: ((@navbarHeight - @base-line-height) / 2) 20px ((@navbarHeight - @base-line-height) / 2);
+  padding: ((@navbarHeight - @line-height-base) / 2) 20px ((@navbarHeight - @line-height-base) / 2);
   margin-left: -20px; // negative indent to left-align the text down the page
   font-size: 20px;
   font-weight: 200;
@@ -215,7 +215,7 @@
 .navbar .nav > li > a {
   float: none;
   // Vertically center the text given @navbarHeight
-  padding: ((@navbarHeight - @base-line-height) / 2) 15px ((@navbarHeight - @base-line-height) / 2);
+  padding: ((@navbarHeight - @line-height-base) / 2) 15px ((@navbarHeight - @line-height-base) / 2);
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;

@@ -101,20 +101,20 @@
       font-family: @font-family-monospace;
     }
   }
-  .shorthand(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
+  .shorthand(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .serif(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
+  .serif(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     #font > #family > .serif;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .sans-serif(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
+  .sans-serif(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     #font > #family > .sans-serif;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .monospace(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
+  .monospace(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     #font > #family > .monospace;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
@@ -421,7 +421,7 @@
 // Dividers (basically an hr) within dropdowns and nav lists
 .nav-divider(@top: #e5e5e5, @bottom: @white) {
   height: 1px;
-  margin: ((@base-line-height / 2) - 1) 1px; // 8px 1px
+  margin: ((@line-height-base / 2) - 1) 1px; // 8px 1px
   overflow: hidden;
   background-color: @top;
   border-bottom: 1px solid @bottom;
