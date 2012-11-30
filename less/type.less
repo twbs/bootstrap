@@ -140,13 +140,13 @@ dd {
   .clearfix(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
-    width: @horizontalComponentOffset - 20;
+    width: @component-offset-horizontal - 20;
     clear: left;
     text-align: right;
     .text-overflow();
   }
   dd {
-    margin-left: @horizontalComponentOffset;
+    margin-left: @component-offset-horizontal;
   }
 }
 
@@ -157,7 +157,7 @@ dd {
 hr {
   margin: @line-height-base 0;
   border: 0;
-  border-top: 1px solid @hrBorder;
+  border-top: 1px solid @hr-border;
   border-bottom: 1px solid #fff;
 }
 
