@@ -355,19 +355,19 @@ input[type="checkbox"][readonly] {
 
 // Warning
 .control-group.warning {
-  .formFieldState(@warningText, @warningText, @warningBackground);
+  .formFieldState(@state-warning-text, @state-warning-text, @state-warning-background);
 }
 // Error
 .control-group.error {
-  .formFieldState(@errorText, @errorText, @errorBackground);
+  .formFieldState(@state-error-text, @state-error-text, @state-error-background);
 }
 // Success
 .control-group.success {
-  .formFieldState(@successText, @successText, @successBackground);
+  .formFieldState(@state-success-text, @state-success-text, @state-success-background);
 }
 // Success
 .control-group.info {
-  .formFieldState(@infoText, @infoText, @infoBackground);
+  .formFieldState(@state-info-text, @state-info-text, @state-info-background);
 }
 
 // HTML5 invalid states
@@ -479,8 +479,8 @@ select:focus:invalid {
     border-radius: 0;
   }
   .active {
-    background-color: @successBackground;
-    border-color: @successText;
+    background-color: @state-success-background;
+    border-color: @state-success-text;
   }
 }
 
