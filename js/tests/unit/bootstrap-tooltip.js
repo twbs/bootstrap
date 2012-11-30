@@ -150,4 +150,16 @@ $(function () {
         div.find('a').trigger('click')
         ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
       })
+
+      test("should not show another tooltip when hovering delegated tooltip", function () {
+        var div = $('<div><div class="show-tooltip"><div></div></div></div>')
+        var tooltip = div.appendTo('#qunit-fixture')
+                         .tooltip({ selector: '.show-tooltip > div'
+                                  , title: 'Another tooltip' })
+
+        div.find('.show-tooltip > div').trigger('mouseenter')
+        div.find('.show-tooltip > .tooltip').trigger('mouseenter')
+
+        ok($('.tooltip').length === 1, 'tooltip is not repeated')
+      })
 })
