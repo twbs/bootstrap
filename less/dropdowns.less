@@ -45,9 +45,9 @@
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
   list-style: none;
-  background-color: @dropdownBackground;
+  background-color: @dropdown-background;
   border: 1px solid #ccc; // IE8 fallback
-  border: 1px solid @dropdownBorder;
+  border: 1px solid @dropdown-border;
   border-radius: @border-radius-base;
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
   .background-clip(padding-box);
@@ -60,7 +60,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
+    .nav-divider(@dropdown-divider-top, @dropdown-divider-bottom);
   }
 
   // Links within the dropdown menu
@@ -70,7 +70,7 @@
     clear: both;
     font-weight: normal;
     line-height: @line-height-base;
-    color: @dropdownLinkColor;
+    color: @dropdown-link-color;
     white-space: nowrap;
   }
 }
@@ -81,18 +81,18 @@
 .dropdown-menu li > a:focus,
 .dropdown-submenu:hover > a {
   text-decoration: none;
-  color: @dropdownLinkColorHover;
-  #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
+  color: @dropdown-link-color-hover;
+  #gradient > .vertical(@dropdown-link-background-hover, darken(@dropdown-link-background-hover, 5%));
 }
 
 // Active state
 // ------------
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-  color: @dropdownLinkColorActive;
+  color: @dropdown-link-color-active;
   text-decoration: none;
   outline: 0;
-  #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
+  #gradient > .vertical(@dropdown-link-background-active, darken(@dropdown-link-background-active, 5%));
 }
 
 // Disabled state
@@ -182,12 +182,12 @@
   border-color: transparent;
   border-style: solid;
   border-width: 5px 0 5px 5px;
-  border-left-color: darken(@dropdownBackground, 20%);
+  border-left-color: darken(@dropdown-background, 20%);
   margin-top: 5px;
   margin-right: -10px;
 }
 .dropdown-submenu:hover > a:after {
-  border-left-color: @dropdownLinkColorHover;
+  border-left-color: @dropdown-link-color-hover;
 }
 
 // Left aligned submenus
