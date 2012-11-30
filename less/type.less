@@ -7,13 +7,13 @@
 // -------------------------
 
 p {
-  margin: 0 0 @baseLineHeight / 2;
+  margin: 0 0 @base-line-height / 2;
 }
 .lead {
-  margin-bottom: @baseLineHeight;
-  font-size: @baseFontSize * 1.5;
+  margin-bottom: @base-line-height;
+  font-size: @base-font-size * 1.5;
   font-weight: 200;
-  line-height: @baseLineHeight * 1.5;
+  line-height: @base-line-height * 1.5;
 }
 
 
@@ -48,10 +48,10 @@ a.text-success:hover { color: darken(@successText, 10%); }
 // -------------------------
 
 h1, h2, h3, h4, h5, h6 {
-  margin: (@baseLineHeight / 2) 0;
-  font-family: @headingsFontFamily;
-  font-weight: @headingsFontWeight;
-  line-height: @baseLineHeight;
+  margin: (@base-line-height / 2) 0;
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @base-line-height;
   text-rendering: optimizelegibility; // Fix the character spacing for headings
   small {
     font-weight: normal;
@@ -62,27 +62,27 @@ h1, h2, h3, h4, h5, h6 {
 
 h1,
 h2,
-h3 { line-height: @baseLineHeight * 2; }
+h3 { line-height: @base-line-height * 2; }
 
-h1 { font-size: @baseFontSize * 2.75; } // ~38px
-h2 { font-size: @baseFontSize * 2.25; } // ~32px
-h3 { font-size: @baseFontSize * 1.75; } // ~24px
-h4 { font-size: @baseFontSize * 1.25; } // ~18px
-h5 { font-size: @baseFontSize; }
-h6 { font-size: @baseFontSize * 0.85; } // ~12px
+h1 { font-size: @base-font-size * 2.75; } // ~38px
+h2 { font-size: @base-font-size * 2.25; } // ~32px
+h3 { font-size: @base-font-size * 1.75; } // ~24px
+h4 { font-size: @base-font-size * 1.25; } // ~18px
+h5 { font-size: @base-font-size; }
+h6 { font-size: @base-font-size * 0.85; } // ~12px
 
-h1 small { font-size: @baseFontSize * 1.75; } // ~24px
-h2 small { font-size: @baseFontSize * 1.25; } // ~18px
-h3 small { font-size: @baseFontSize; }
-h4 small { font-size: @baseFontSize; }
+h1 small { font-size: @base-font-size * 1.75; } // ~24px
+h2 small { font-size: @base-font-size * 1.25; } // ~18px
+h3 small { font-size: @base-font-size; }
+h4 small { font-size: @base-font-size; }
 
 
 // Page header
 // -------------------------
 
 .page-header {
-  padding-bottom: (@baseLineHeight / 2) - 1;
-  margin: @baseLineHeight 0 (@baseLineHeight * 1.5);
+  padding-bottom: (@base-line-height / 2) - 1;
+  margin: @base-line-height 0 (@base-line-height * 1.5);
   border-bottom: 1px solid @grayLighter;
 }
 
@@ -94,7 +94,7 @@ h4 small { font-size: @baseFontSize; }
 // Unordered and Ordered lists
 ul, ol {
   padding: 0;
-  margin: 0 0 @baseLineHeight / 2 25px;
+  margin: 0 0 @base-line-height / 2 25px;
 }
 ul ul,
 ul ol,
@@ -103,7 +103,7 @@ ol ul {
   margin-bottom: 0;
 }
 li {
-  line-height: @baseLineHeight;
+  line-height: @base-line-height;
 }
 
 // List options
@@ -123,17 +123,17 @@ li {
 
 // Description Lists
 dl {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @base-line-height;
 }
 dt,
 dd {
-  line-height: @baseLineHeight;
+  line-height: @base-line-height;
 }
 dt {
   font-weight: bold;
 }
 dd {
-  margin-left: @baseLineHeight / 2;
+  margin-left: @base-line-height / 2;
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
@@ -155,7 +155,7 @@ dd {
 
 // Horizontal rules
 hr {
-  margin: @baseLineHeight 0;
+  margin: @base-line-height 0;
   border: 0;
   border-top: 1px solid @hrBorder;
   border-bottom: 1px solid @white;
@@ -176,15 +176,15 @@ abbr.initialism {
 // Blockquotes
 blockquote {
   padding: 0 0 0 15px;
-  margin: 0 0 @baseLineHeight;
+  margin: 0 0 @base-line-height;
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
-    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
+    #font > .shorthand(16px,300,@base-line-height * 1.25);
   }
   small {
     display: block;
-    line-height: @baseLineHeight;
+    line-height: @base-line-height;
     color: @grayLight;
     &:before {
       content: '\2014 \00A0';
@@ -224,7 +224,7 @@ blockquote:after {
 // Addresses
 address {
   display: block;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @base-line-height;
   font-style: normal;
-  line-height: @baseLineHeight;
+  line-height: @base-line-height;
 }

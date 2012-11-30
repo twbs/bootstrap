@@ -8,7 +8,7 @@
 
 .nav {
   margin-left: 0;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @base-line-height;
   list-style: none;
   .clearfix();
 }
@@ -41,7 +41,7 @@
   padding: 3px 15px;
   font-size: 11px;
   font-weight: bold;
-  line-height: @baseLineHeight;
+  line-height: @base-line-height;
   color: @grayLight;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   text-transform: uppercase;
@@ -72,7 +72,7 @@
 // Actual tabs (as links)
 .nav-tabs > li > a {
   margin-right: 2px;
-  line-height: @baseLineHeight;
+  line-height: @base-line-height;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
   &:hover {
@@ -83,7 +83,7 @@
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
   color: @gray;
-  background-color: @bodyBackground;
+  background-color: @body-background;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -106,7 +106,7 @@
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
   color: @white;
-  background-color: @linkColor;
+  background-color: @link-color;
 }
 
 // Stacked pills
@@ -167,7 +167,7 @@
   padding: 9px 15px;
   color: #fff;
   text-shadow: 0 1px 0 rgba(0,0,0,.15);
-  background-color: @linkColor;
+  background-color: @link-color;
   border-width: 0;
   .box-shadow(~"inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1)")
 }
@@ -186,13 +186,13 @@
 // -------------------------
 // Make carets use linkColor to start
 .nav .dropdown-toggle .caret {
-  border-top-color: @linkColor;
-  border-bottom-color: @linkColor;
+  border-top-color: @link-color;
+  border-bottom-color: @link-color;
   margin-top: 8px;
 }
 .nav .dropdown-toggle:hover .caret {
-  border-top-color: @linkColorHover;
-  border-bottom-color: @linkColorHover;
+  border-top-color: @link-color-hover;
+  border-bottom-color: @link-color-hover;
 }
 
 // Active dropdown links

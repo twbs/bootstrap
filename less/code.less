@@ -8,7 +8,7 @@ code,
 pre {
   padding: 0 3px 2px;
   #font > #family > .monospace;
-  font-size: @baseFontSize - 2;
+  font-size: @base-font-size - 2;
   color: @grayDark;
   border-radius: 4px;
 }
@@ -25,10 +25,10 @@ code {
 // Blocks of code
 pre {
   display: block;
-  padding: (@baseLineHeight - 1) / 2;
-  margin: 0 0 @baseLineHeight / 2;
-  font-size: @baseFontSize - 1; // 14px to 13px
-  line-height: @baseLineHeight;
+  padding: (@base-line-height - 1) / 2;
+  margin: 0 0 @base-line-height / 2;
+  font-size: @base-font-size - 1; // 14px to 13px
+  line-height: @base-line-height;
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
@@ -40,7 +40,7 @@ pre {
 
   // Make prettyprint styles more spaced out for readability
   &.prettyprint {
-    margin-bottom: @baseLineHeight;
+    margin-bottom: @base-line-height;
   }
 
   // Account for some code outputs that place code tags in pre tags

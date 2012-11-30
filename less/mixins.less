@@ -92,29 +92,29 @@
 #font {
   #family {
     .serif() {
-      font-family: @serifFontFamily;
+      font-family: @font-family-serif;
     }
     .sans-serif() {
-      font-family: @sansFontFamily;
+      font-family: @font-family-sans-serif;
     }
     .monospace() {
-      font-family: @monoFontFamily;
+      font-family: @font-family-monospace;
     }
   }
-  .shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .shorthand(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .serif(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
     #font > #family > .serif;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .sans-serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .sans-serif(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
     #font > #family > .sans-serif;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .monospace(@size: @base-font-size, @weight: normal, @lineHeight: @base-line-height) {
     #font > #family > .monospace;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
@@ -133,12 +133,12 @@
 
 
 // Mixin for form field states
-.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+.formFieldState(@text-color: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
   // Set the text color
   .control-label,
   .help-block,
   .help-inline {
-    color: @textColor;
+    color: @text-color;
   }
   // Style inputs accordingly
   .checkbox,
@@ -146,7 +146,7 @@
   input,
   select,
   textarea {
-    color: @textColor;
+    color: @text-color;
   }
   input,
   select,
@@ -162,9 +162,9 @@
   // Give a small background color for input-prepend/-append
   .input-prepend .add-on,
   .input-append .add-on {
-    color: @textColor;
+    color: @text-color;
     background-color: @backgroundColor;
-    border-color: @textColor;
+    border-color: @text-color;
   }
 }
 
@@ -421,7 +421,7 @@
 // Dividers (basically an hr) within dropdowns and nav lists
 .nav-divider(@top: #e5e5e5, @bottom: @white) {
   height: 1px;
-  margin: ((@baseLineHeight / 2) - 1) 1px; // 8px 1px
+  margin: ((@base-line-height / 2) - 1) 1px; // 8px 1px
   overflow: hidden;
   background-color: @top;
   border-bottom: 1px solid @bottom;
@@ -429,8 +429,8 @@
 
 // Button backgrounds
 // ------------------
-.buttonBackground(@startColor, @endColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
-  color: @textColor;
+.buttonBackground(@startColor, @endColor, @text-color: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  color: @text-color;
   text-shadow: @textShadow;
   #gradient > .vertical(@startColor, @endColor);
   border-color: @endColor @endColor darken(@endColor, 15%);
@@ -439,7 +439,7 @@
 
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
-    color: @textColor;
+    color: @text-color;
     background-color: @endColor;
   }
 

@@ -7,7 +7,7 @@
 // -------------------------
 
 form {
-  margin: 0 0 @baseLineHeight;
+  margin: 0 0 @base-line-height;
 }
 
 fieldset {
@@ -20,9 +20,9 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @baseLineHeight;
-  font-size: @baseFontSize * 1.5;
-  line-height: @baseLineHeight * 2;
+  margin-bottom: @base-line-height;
+  font-size: @base-font-size * 1.5;
+  line-height: @base-line-height * 2;
   color: @grayDark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -59,9 +59,9 @@ input[type="color"],
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
   min-height: @inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
-  margin-bottom: @baseLineHeight / 2;
-  font-size: @baseFontSize;
-  line-height: @baseLineHeight;
+  margin-bottom: @base-line-height / 2;
+  font-size: @base-font-size;
+  line-height: @base-line-height;
   color: @gray;
   vertical-align: middle;
   background-color: @inputBackground;
@@ -201,7 +201,7 @@ textarea {
 .radio,
 .checkbox {
   display: block;
-  min-height: @baseLineHeight; // clear the floating input if there is no label text
+  min-height: @base-line-height; // clear the floating input if there is no label text
   padding-left: 20px;
 }
 .radio label,
@@ -390,9 +390,9 @@ select:focus:invalid {
 // ------------
 
 .form-actions {
-  padding: (@baseLineHeight - 1) 20px @baseLineHeight;
-  margin-top: @baseLineHeight;
-  margin-bottom: @baseLineHeight;
+  padding: (@base-line-height - 1) 20px @base-line-height;
+  margin-top: @base-line-height;
+  margin-bottom: @base-line-height;
   background-color: @formActionsBackground;
   border-top: 1px solid #e5e5e5;
   .clearfix(); // Adding clearfix to allow for .pull-right button containers
@@ -405,12 +405,12 @@ select:focus:invalid {
 
 .help-block,
 .help-inline {
-  color: lighten(@textColor, 25%); // lighten the text some for contrast
+  color: lighten(@text-color, 25%); // lighten the text some for contrast
 }
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-bottom: @baseLineHeight / 2;
+  margin-bottom: @base-line-height / 2;
 }
 
 .help-inline {
@@ -436,7 +436,7 @@ select:focus:invalid {
   select,
   .uneditable-input,
   .dropdown-menu {
-    font-size: @baseFontSize;
+    font-size: @base-font-size;
   }
 
   input,
@@ -445,7 +445,7 @@ select:focus:invalid {
     position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
     float: none; // Undo the float from grid sizing
     margin: 0; // Prevent bottom margin from screwing up alignment in stacked forms
-    font-size: @baseFontSize;
+    font-size: @base-font-size;
     vertical-align: top;
     border-radius: 0 @inputBorderRadius @inputBorderRadius 0;
     // Make input on top when focused so blue border and shadow always show
@@ -461,12 +461,12 @@ select:focus:invalid {
   .add-on {
     display: inline-block;
     width: auto;
-    height: @baseLineHeight;
+    height: @base-line-height;
     min-width: 16px;
     padding: 6px;
-    font-size: @baseFontSize;
+    font-size: @base-font-size;
     font-weight: normal;
-    line-height: @baseLineHeight;
+    line-height: @base-line-height;
     text-align: center;
     text-shadow: 0 1px 0 @white;
     background-color: @grayLighter;
@@ -642,12 +642,12 @@ input.search-query {
 
 // Margin to space out fieldsets
 .control-group {
-  margin-bottom: @baseLineHeight / 2;
+  margin-bottom: @base-line-height / 2;
 }
 
 // Legend collapses margin, so next element is responsible for spacing
 legend + .control-group {
-  margin-top: @baseLineHeight;
+  margin-top: @base-line-height;
   -webkit-margin-top-collapse: separate;
 }
 
@@ -657,7 +657,7 @@ legend + .control-group {
 .form-horizontal {
   // Increase spacing between groups
   .control-group {
-    margin-bottom: @baseLineHeight;
+    margin-bottom: @base-line-height;
     .clearfix();
   }
   // Float the labels left
@@ -683,7 +683,7 @@ legend + .control-group {
   .input-prepend,
   .input-append {
     + .help-block {
-      margin-top: @baseLineHeight / 2;
+      margin-top: @base-line-height / 2;
     }
   }
   // Move over buttons in .form-actions to align with .controls
