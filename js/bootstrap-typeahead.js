@@ -82,18 +82,25 @@
 
    , _delaySource: function(query, source, process) {
       if(this.calledOnce === undefined)  {
-          this.calledOnce = true;
-          return source(query, process);
-      } else {
-          if(this.timeout) {
-              clearTimeout(this.timeout);
+          this.calledOnce = true
+          var items = source(query, process)
+          if (items) {
+            this.delay = 0
+            return items
           }
+      } else {
+          if (this.delay === 0) {
+            return source(query, process)
+          } else {
+            if(this.timeout) {
+                clearTimeout(this.timeout)
+            }
 
-          this.timeout = setTimeout(function() {
-              source(query, process);
-          }, this.delay);
+            this.timeout = setTimeout(function() {
+                return source(query, process);
+            }, this.delay)  
+          }
       }
-      
   }
   , lookup: function (event) {
       var items
