@@ -223,10 +223,8 @@ a:hover {
   border-radius: 500px;
 }
 
-.container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-  width: 940px;
+.container {
+  max-width: 940px;
 }
 
 .row {
@@ -5458,10 +5456,8 @@ a.badge:hover {
 }
 
 @media (min-width: 1200px) {
-  .container,
-  .navbar-fixed-top .container,
-  .navbar-fixed-bottom .container {
-    width: 1170px;
+  .container {
+    max-width: 1170px;
   }
   .row {
     margin-right: -15px;

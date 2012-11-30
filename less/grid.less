@@ -4,9 +4,9 @@
 
 
 // Set the container width, and override it for fixed navbars in media queries
-.container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container { width: 940px; }
+.container {
+  max-width: 940px;
+}
 
 // Fixed (940px)
 #grid > .core(@gridColumnWidth, @gridGutterWidth, @gridRowWidth);
