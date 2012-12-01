@@ -1,4 +1,3 @@
-
 /* ===========================================================
  * bootstrap-tooltip.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#tooltips

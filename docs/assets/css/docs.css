@@ -210,30 +210,6 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   color: rgba(255,255,255,.25);
 }
 
-/* Social proof buttons from GitHub & Twitter */
-.bs-docs-social {
-  padding: 15px 0;
-  text-align: center;
-  background-color: #f5f5f5;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Quick links on Home */
-.bs-docs-social-buttons {
-  margin-left: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-  list-style: none;
-}
-.bs-docs-social-buttons li {
-  display: inline-block;
-  padding: 5px 8px;
-  line-height: 1;
-  *display: inline;
-  *zoom: 1;
-}
-
 /* Subhead (other pages)
 ------------------------- */
 .subhead {
@@ -295,9 +271,8 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 .footer {
   text-align: center;
   padding: 30px 0;
-  margin-top: 70px;
+  margin-top: 100px;
   border-top: 1px solid #e5e5e5;
-  background-color: #f5f5f5;
 }
 .footer p {
   margin-bottom: 0;
@@ -312,6 +287,32 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 }
 .footer-links li:first-child {
   padding-left: 0;
+}
+
+/* Social proof buttons from GitHub & Twitter */
+.bs-docs-social {
+  margin: -46px 0 30px;
+  text-align: center;
+  border-top: 1px solid #fff;
+}
+/* Quick links on Home */
+.bs-docs-social-buttons {
+  display: inline-block;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+  background-color: #fff;
+}
+.bs-docs-social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+}
+.bs-docs-social-buttons .twitter-follow-button {
+  width: 216px !important;
+}
+.bs-docs-social-buttons .twitter-share-button {
+  width: 98px !important;
 }
 
 
