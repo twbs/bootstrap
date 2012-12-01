@@ -90,30 +90,30 @@ table {
   // For first th or td in the first row in the first thead or tbody
   thead:first-child tr:first-child th:first-child,
   tbody:first-child tr:first-child td:first-child {
-    .border-top-left-radius(@border-radius-base);
+    border-top-left-radius: @border-radius-base;
   }
   thead:first-child tr:first-child th:last-child,
   tbody:first-child tr:first-child td:last-child {
-    .border-top-right-radius(@border-radius-base);
+    border-top-right-radius: @border-radius-base;
   }
   // For first th or td in the last row in the last thead or tbody
   thead:last-child tr:last-child th:first-child,
   tbody:last-child tr:last-child td:first-child,
   tfoot:last-child tr:last-child td:first-child {
-    .border-bottom-left-radius(@border-radius-base);
+    border-bottom-left-radius: @border-radius-base;
   }
   thead:last-child tr:last-child th:last-child,
   tbody:last-child tr:last-child td:last-child,
   tfoot:last-child tr:last-child td:last-child {
-    .border-bottom-right-radius(@border-radius-base);
+    border-bottom-right-radius: @border-radius-base;
   }
 
   // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
   tfoot + tbody:last-child tr:last-child td:first-child {
-    .border-bottom-left-radius(0);
+    border-bottom-left-radius: 0;
   }
   tfoot + tbody:last-child tr:last-child td:last-child {
-    .border-bottom-right-radius(0);
+    border-bottom-right-radius: 0;
   }
 
 
@@ -122,13 +122,13 @@ table {
   caption + tbody tr:first-child td:first-child,
   colgroup + thead tr:first-child th:first-child,
   colgroup + tbody tr:first-child td:first-child {
-    .border-top-left-radius(@border-radius-base);
+    border-top-left-radius: @border-radius-base;
   }
   caption + thead tr:first-child th:last-child,
   caption + tbody tr:first-child td:last-child,
   colgroup + thead tr:first-child th:last-child,
   colgroup + tbody tr:first-child td:last-child {
-    .border-top-right-radius(@border-radius-base);
+    border-top-right-radius: @border-radius-base;
   }
 
 }
