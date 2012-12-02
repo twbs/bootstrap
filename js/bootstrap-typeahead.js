@@ -33,6 +33,8 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.delay = this.options.delay || 0
+    this.textproperty = this.options.textproperty || this.textproperty
     this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
     this.shown = false
@@ -44,15 +46,17 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      var val = this.$menu.find('.active').data('item')
       this.$element
         .val(this.updater(val))
         .change()
       return this.hide()
     }
-
-  , updater: function (item) {
+  , textproperty: function(item) {
       return item
+  }
+  , updater: function (item) {
+      return this.textproperty(item)
     }
 
   , show: function () {
@@ -76,20 +80,41 @@
       return this
     }
 
+   , _delaySource: function(query, source, process) {
+      if(this.calledOnce === undefined)  {
+          this.calledOnce = true
+          var items = source(query, process)
+          if (items) {
+            this.delay = 0
+            return items
+          }
+      } else {
+          if (this.delay === 0) {
+            return source(query, process)
+          } else {
+            if(this.timeout) {
+                clearTimeout(this.timeout)
+            }
+
+            this.timeout = setTimeout(function() {
+                return source(query, process);
+            }, this.delay)  
+          }
+      }
+  }
   , lookup: function (event) {
       var items
 
       this.query = this.$element.val()
 
       if (!this.query || this.query.length < this.options.minLength) {
-        return this.shown ? this.hide() : this
+          return this.shown ? this.hide() : this
       }
 
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
-
+      items =  ($.isFunction(this.source)) ? this._delaySource(this.query, this.source, $.proxy(this.process, this)) : this.source 
+      
       return items ? this.process(items) : this
-    }
-
+  }
   , process: function (items) {
       var that = this
 
@@ -107,7 +132,7 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return ~this.textproperty(item).toLowerCase().indexOf(this.query.toLowerCase())
     }
 
   , sorter: function (items) {
@@ -117,8 +142,9 @@
         , item
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        var itemtext = this.textproperty(item);
+        if (!itemtext.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~itemtext.indexOf(this.query)) caseSensitive.push(item)
         else caseInsensitive.push(item)
       }
 
@@ -127,7 +153,7 @@
 
   , highlighter: function (item) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+      return this.textproperty(item).replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
     }
@@ -136,7 +162,7 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).data('item', item)
         i.find('a').html(that.highlighter(item))
         return i[0]
       })

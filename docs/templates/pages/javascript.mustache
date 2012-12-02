@@ -1520,6 +1520,12 @@ $('.carousel').carousel({
                  <td>{{_i}}The data source to query against. May be an array of strings or a function. The function is passed two arguments, the <code>query</code> value in the input field and the <code>process</code> callback. The function may be used synchronously by returning the data source directly or asynchronously via the <code>process</code> callback's single argument.{{/i}}</td>
                </tr>
                <tr>
+                 <td>{{_i}}delay{{/i}}</td>
+                 <td>{{_i}}number{{/i}}</td>
+                 <td>[ ]</td>
+                 <td>{{_i}}Milliseconds to wait before the <code>source</code> function is called. Note that the first call to <code>source</code> is never delayed. {{/i}}</td>
+               </tr>
+               <tr>
                  <td>{{_i}}items{{/i}}</td>
                  <td>{{_i}}number{{/i}}</td>
                  <td>8</td>
@@ -1554,6 +1560,12 @@ $('.carousel').carousel({
                  <td>{{_i}}function{{/i}}</td>
                  <td>{{_i}}highlights all default matches{{/i}}</td>
                  <td>{{_i}}Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.{{/i}}</td>
+               </tr>
+               <tr>
+                 <td>{{_i}}textproperty{{/i}}</td>
+                 <td>{{_i}}function{{/i}}</td>
+                 <td>[ ]</td>
+                 <td>{{_i}}If your <code>source</code> function returns an array of objects instead of strings provide a <code>textproperty</code> function that returns a string that represents the element. {{/i}}</td>
                </tr>
               </tbody>
             </table>
