@@ -179,7 +179,10 @@
       }
 
       this.$menu
-        .on('click', $.proxy(this.click, this))
+        // Target click and mouseup which matches default browser behavior
+        .on('click mouseup', $.proxy(this.click, this))
+        // Prevent mousedown from firing the blur event on the input
+        .on('mousedown', function (e) { e.preventDefault(); })
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
