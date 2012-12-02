@@ -68,7 +68,7 @@ $(function () {
         target.click()
       })
 
-      test("should remove active class to target when collapse hidden", function () {
+      test("should remove active class from target when collapse hidden", function () {
         $.support.transition = false
         stop()
 
@@ -79,6 +79,61 @@ $(function () {
           .appendTo($('#qunit-fixture'))
           .on('hide', function () {
             ok(target.hasClass('collapsed'))
+            start()
+          })
+
+        target.click()
+      })
+
+      test("should add active class to targets when collapse shown", function () {
+        $.support.transition = false
+        stop()
+
+        var target = $('<a data-toggle="collapse" href="#test1"></a>')
+          .appendTo($('#qunit-fixture'))
+
+        var collapsible = $('<div id="test1"><a data-toggle="collapse" href="#test1"></a></div>')
+          .appendTo($('#qunit-fixture'))
+          .on('show', function () {
+            ok(!target.hasClass('collapsed') && !collapsible.find('a').hasClass('collapsed'))
+            start()
+          })
+
+        target.click()
+      })
+
+      test("should remove active class from targets when collapse hidden", function () {
+        $.support.transition = false
+        stop()
+
+        var target = $('<a data-toggle="collapse" href="#test1"></a>')
+          .appendTo($('#qunit-fixture'))
+
+        var collapsible = $('<div id="test1" class="in"><a data-toggle="collapse" href="#test1"></a></div>')
+          .appendTo($('#qunit-fixture'))
+          .on('hide', function () {
+            ok(target.hasClass('collapsed') && collapsible.find('a').hasClass('collapsed'))
+            start()
+          })
+
+        target.click()
+      })
+
+      test("should not add active class to targets that aren't matched", function () {
+        $.support.transition = false
+        stop()
+
+        var target = $('<a data-toggle="collapse" href="#test1"></a>')
+          .appendTo($('#qunit-fixture'))
+
+        var collapsible = $('<div id="test1" class="in"><a data-toggle="collapse" href="#test1"></a><a href="#test1"></a></div>')
+          .appendTo($('#qunit-fixture'))
+          .on('hide', function () {
+            ok(
+              target.hasClass('collapsed') &&
+              collapsible.find('a[data-toggle="collapse"]').hasClass('collapsed') &&
+              !collapsible.find('a:not([data-toggle="collapse"])').hasClass('collapsed')
+            )
             start()
           })
 
