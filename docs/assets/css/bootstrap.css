@@ -5273,6 +5273,7 @@ input[type="submit"].btn.btn-mini {
   display: none;
   width: 236px;
   padding: 1px;
+  text-align: left;
   white-space: normal;
   background-color: #ffffff;
   border: 1px solid #ccc;
