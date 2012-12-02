@@ -42,6 +42,10 @@
       var $this = $(this)
         , $parent
         , isActive
+        , closeEvent
+        , closedEvent
+        , openEvent
+        , openedEvent
 
       if ($this.is('.disabled, :disabled')) return
 
@@ -52,7 +56,30 @@
       clearMenus()
 
       if (!isActive) {
-        $parent.toggleClass('open')
+        openEvent = $.Event('open')
+        openedEvent = $.Event('opened')
+        closeEvent = $.Event('close')
+        closedEvent = $.Event('closed')
+
+        if ($parent.hasClass('open'))
+        {
+          $this.trigger(closeEvent)
+          if (closeEvent.isDefaultPrevented()) return
+
+          $parent.removeClass('open')
+
+          $this.trigger(closedEvent)
+        }
+        else
+        {
+          $this.trigger(openEvent)
+          if (openEvent.isDefaultPrevented()) return
+
+          $parent.addClass('open')
+
+          $this.trigger(openedEvent)
+        }
+
         $this.focus()
       }
 
@@ -101,7 +128,21 @@
 
   function clearMenus() {
     $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
+      var $this = $(this)
+        , $parent = getParent($this)
+        , closeEvent = $.Event('close')
+        , closedEvent = $.Event('closed')
+
+      if ($parent.hasClass('open'))
+      {
+        $this.trigger(closeEvent)
+
+        if (closeEvent.isDefaultPrevented()) return
+
+        $parent.removeClass('open')
+        $this.trigger(closedEvent)
+
+      }
     })
   }
 
