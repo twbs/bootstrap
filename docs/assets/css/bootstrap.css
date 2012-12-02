@@ -5321,12 +5321,6 @@ input[type="submit"].btn.btn-mini {
   padding: 9px 14px;
 }
 
-.popover-content p,
-.popover-content ul,
-.popover-content ol {
-  margin-bottom: 0;
-}
-
 .popover .arrow,
 .popover .arrow:after {
   position: absolute;
