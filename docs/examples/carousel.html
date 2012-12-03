@@ -28,10 +28,16 @@
 
     /* Special class on .container surrounding .navbar, used for positioning it into place. */
     .navbar-wrapper {
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 10;
       margin-top: 20px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+
     }
 
     /* Remove border and change up box shadow for more contrast */
@@ -71,24 +77,26 @@
     }
 
     .carousel .container {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
+      position: relative;
+      z-index: 10;
     }
 
     .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
       background-color: transparent;
       border: 0;
-      font-size: 120px;
-      margin-top: 0;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
     }
 
     .carousel .item {
       height: 500px;
     }
     .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
       min-width: 100%;
       height: 500px;
     }
@@ -98,7 +106,7 @@
       position: static;
       max-width: 550px;
       padding: 0 20px;
-      margin-bottom: 100px;
+      margin-top: 200px;
     }
     .carousel-caption h1,
     .carousel-caption .lead {
@@ -219,7 +227,7 @@
       .carousel-caption {
         width: 65%;
         padding: 0 70px;
-        margin-bottom: 40px;
+        margin-top: 100px;
       }
       .carousel-caption h1 {
         font-size: 30px;
@@ -263,43 +271,45 @@
 
     <!-- NAVBAR
     ================================================== -->
-    <!-- Wrap the .navbar in .container to center it on the page and provide easy way to target it with .navbar-wrapper. -->
-    <div class="container navbar-wrapper">
+    <div class="navbar-wrapper">
+      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+      <div class="container">
 
-      <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-          <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Project name</a>
-          <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!-- /.navbar-inner -->
-      </div><!-- /.navbar -->
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">Project name</a>
+            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
 
-    </div><!-- /.container -->
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
 
 
 
