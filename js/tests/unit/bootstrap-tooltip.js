@@ -61,7 +61,7 @@ $(function () {
       })
 
        test("should have role of tooltip", function () {
-        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip" aria-describedby="ui-tooltip"></a>')
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
           .tooltip('show')
           equals($('.tooltip').attr('role'), "tooltip", 'Role of tooltip is present')
