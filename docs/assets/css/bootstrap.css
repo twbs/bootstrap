@@ -4859,19 +4859,19 @@ input[type="submit"].btn.btn-mini {
           border-radius: 4px;
 }
 
-.breadcrumb li {
+.breadcrumb > li {
   display: inline-block;
   *display: inline;
   text-shadow: 0 1px 0 #ffffff;
   *zoom: 1;
 }
 
-.breadcrumb .divider {
+.breadcrumb > .divider {
   padding: 0 5px;
   color: #ccc;
 }
 
-.breadcrumb .active {
+.breadcrumb > .active {
   color: #999999;
 }
 
