@@ -245,6 +245,7 @@
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
+
 }
 
 // Hover
@@ -332,6 +333,12 @@
     bottom: -6px;
     top: auto;
   }
+}
+
+// Caret should match text color on hover
+.navbar .nav li.dropdown > a:hover .caret {
+  border-top-color: @navbarLinkColorActive;
+  border-bottom-color: @navbarLinkColorActive;
 }
 
 // Remove background color from open dropdown
@@ -435,6 +442,10 @@
   .nav li.dropdown.open.active > .dropdown-toggle {
     background-color: @navbarInverseLinkBackgroundActive;
     color: @navbarInverseLinkColorActive;
+  }
+  .nav li.dropdown > a:hover .caret {
+    border-top-color: @navbarInverseLinkColorActive;
+    border-bottom-color: @navbarInverseLinkColorActive;
   }
   .nav li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbarInverseLinkColor;
