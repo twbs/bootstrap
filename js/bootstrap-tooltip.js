@@ -46,13 +46,11 @@
 
       if (this.options.trigger == 'click') {
         this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
-      } else if (this.options.trigger != 'manual') {
-          if(this.options.trigger == 'hover' || this.options.trigger == 'focus'){
+      } else if (this.options.trigger != 'manual' && (this.options.trigger == 'hover' || this.options.trigger == 'focus')){
             this.$element.on('mouseenter.' + this.type, this.options.selector, $.proxy(this.enter, this))
             this.$element.on('mouseleave.' + this.type, this.options.selector, $.proxy(this.leave, this))
             this.$element.on('focus.' + this.type, this.options.selector, $.proxy(this.enter, this))
             this.$element.on('blur.' + this.type, this.options.selector, $.proxy(this.leave, this))    
-          } 
       }
 
       this.options.selector ?
@@ -105,7 +103,7 @@
         , actualHeight
         , placement
         , tp
-        , tooltipid
+        , tooltipID
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
@@ -115,9 +113,9 @@
           $tip.addClass('fade')
         }
 
-        tooltipid= $tip.attr("id") || "ui-tooltip"
-        $tip.attr("id",tooltipid);
-        this.$element.attr("aria-describedby",tooltipid)
+        tooltipID = $tip.attr("id") || "ui-tooltip"
+        $tip.attr("id", tooltipID)
+        this.$element.attr("aria-describedby", tooltipID)
 
         placement = typeof this.options.placement == 'function' ?
           this.options.placement.call(this, $tip[0], this.$element[0]) :
@@ -182,7 +180,7 @@
         })
       }
 
-      this.$element.removeAttr("aria-describedby");
+      this.$element.removeAttr("aria-describedby")
 
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
