@@ -103,7 +103,8 @@
       $next = $next.length ? $next : this.$element.find('.item')[fallback]()
 
       e = $.Event('slide', {
-        relatedTarget: $next[0]
+          relatedTarget: $next[0]
+        , direction: direction
       })
 
       if ($next.hasClass('active')) return
