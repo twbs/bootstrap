@@ -50,9 +50,9 @@
       var that = this
       var val = this.$menu.find('.active').attr('data-value')
       var selected = $.grep(this.items, function(item) {
-          if (that.itemKey(item) == val) {
-              return item;
-          }
+        if (that.itemKey(item) == val) {
+          return item
+        }
       }).shift()
       this.$element
         .val(this.updater(selected))
