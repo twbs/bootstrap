@@ -40,15 +40,28 @@
   border-color: @successBorder;
   color: @successText;
 }
+.alert-success h4 {
+  // Specified for the h4 to prevent conflicts of changing @headingsColor
+  color: @successText;
+}
 .alert-danger,
 .alert-error {
   background-color: @errorBackground;
   border-color: @errorBorder;
   color: @errorText;
 }
+.alert-danger h4,
+.alert-error h4 {
+  // Specified for the h4 to prevent conflicts of changing @headingsColor
+  color: @errorText;
+}
 .alert-info {
   background-color: @infoBackground;
   border-color: @infoBorder;
+  color: @infoText;
+}
+.alert-info h4 {
+  // Specified for the h4 to prevent conflicts of changing @headingsColor
   color: @infoText;
 }
 

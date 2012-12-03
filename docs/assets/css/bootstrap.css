@@ -3838,6 +3838,10 @@ input[type="submit"].btn.btn-mini {
   border-color: #d6e9c6;
 }
 
+.alert-success h4 {
+  color: #468847;
+}
+
 .alert-danger,
 .alert-error {
   color: #b94a48;
@@ -3845,10 +3849,19 @@ input[type="submit"].btn.btn-mini {
   border-color: #eed3d7;
 }
 
+.alert-danger h4,
+.alert-error h4 {
+  color: #b94a48;
+}
+
 .alert-info {
   color: #3a87ad;
   background-color: #d9edf7;
   border-color: #bce8f1;
+}
+
+.alert-info h4 {
+  color: #3a87ad;
 }
 
 .alert-block {
