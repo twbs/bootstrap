@@ -8,7 +8,7 @@ To get started, checkout http://getbootstrap.com!
 
 ## Quick start
 
-Four quick start options are available:
+Three quick start options are available:
 
 * [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
 * Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
