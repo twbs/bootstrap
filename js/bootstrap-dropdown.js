@@ -80,8 +80,10 @@
 
       isActive = $parent.hasClass('open')
 
-      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
-
+      if (!isActive || (isActive && e.keyCode == 27)) {
+        if(e.keyCode == 27) $parent.find('a[data-toggle=dropdown]')[0].focus()    //set focus back to parent anchor
+        return $this.click()
+      }  
       $items = $('[role=menu] li:not(.divider) a', $parent)
 
       if (!$items.length) return
