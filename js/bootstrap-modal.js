@@ -140,11 +140,11 @@
       }
 
     , hideModal: function (that) {
+        this.backdrop()
+
         this.$element
           .hide()
           .trigger('hidden')
-
-        this.backdrop()
       }
 
     , removeBackdrop: function () {
