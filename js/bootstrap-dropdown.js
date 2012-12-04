@@ -26,11 +26,11 @@
  /* DROPDOWN CLASS DEFINITION
   * ========================= */
 
-  var toggle = '[data-toggle=dropdown]'
+  var toggle = '[data-toggle="dropdown"]'
     , Dropdown = function (element) {
-        var $el = $(element).on('click.dropdown.data-api', this.toggle)
-        $('html').on('click.dropdown.data-api', function () {
-          $el.parent().removeClass('open')
+        var $el = $(element).on('click.dropdown.data-api touchstart.dropdown.data-api', this.toggle)
+        $(document).on('click.dropdown.data-api touchstart.dropdown.data-api', function () {
+          clearMenus(getParent($el))
         })
       }
 
@@ -51,9 +51,12 @@
 
       clearMenus()
 
+      $parent.data('parent', $this) // For when we close the dropdown
+
+      $this.focus()
+
       if (!isActive) {
         $parent.toggleClass('open')
-        $this.focus()
       }
 
       return false
@@ -66,8 +69,11 @@
         , $parent
         , isActive
         , index
+        , keyMap
+        , pullLeft
+        , dropup
 
-      if (!/(38|40|27)/.test(e.keyCode)) return
+      if (!~$.inArray(e.which, [27, 37, 38, 39, 40])) return
 
       $this = $(this)
 
@@ -80,28 +86,107 @@
 
       isActive = $parent.hasClass('open')
 
-      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
+      if (!isActive || e.which === 27) {
+        return (($parent.is('.dropdown-submenu') ? getParent($parent.parents('.dropdown-menu').last()) : $parent).data('parent') || $this).click()
+      }
 
-      $items = $('[role=menu] li:not(.divider) a', $parent)
+      $items = $parent.find(' > .dropdown-menu > li:visible:not(.divider) > a')
 
       if (!$items.length) return
 
       index = $items.index($items.filter(':focus'))
 
-      if (e.keyCode == 38 && index > 0) index--                                        // up
-      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-      if (!~index) index = 0
+      keyMap       = {}
+      keyMap.up    = 38
+      keyMap.left  = 37
+      keyMap.down  = 40
+      keyMap.right = 39
 
-      $items
-        .eq(index)
-        .focus()
+      pullLeft = (~index ? $items.eq(index) : $this).closest('.dropdown-submenu').is('.pull-left')
+      dropup   = (~index ? $items.eq(index) : $this).closest('.dropdown, .dropup').is('.dropup:not(.dropdown)')
+
+      if (!~index) {
+        if (e.which === keyMap.up) index = -1
+        if (e.which === keyMap.down) index = 0
+      } else {
+        if (e.which === keyMap.up && index > 0) index--
+        if (e.which === keyMap.down && index < $items.length - 1) index++
+      }
+
+      // Reverse left and right buttons if the submenu is pulled to the left
+      if (pullLeft) {
+        keyMap.left  = 39
+        keyMap.right = 37
+      }
+
+      // Left or right arrows
+      if (e.which === keyMap.left || e.which === keyMap.right) {
+        // Cache the result
+        var $submenu
+        // Right arrow and a submenu
+        if (e.which === keyMap.right && (($submenu = $items.eq(index).parent()) && $submenu.hasClass('dropdown-submenu'))) {
+          $submenu
+            .find(' > .dropdown-menu > li:visible:not(.divider) > a')
+              .eq(dropup ? -1 : 0)
+              .focus()
+        } else if (e.which === keyMap.left && $parent.is('.dropdown-submenu')) {
+          $this.children('.dropdown-submenu').removeClass('open')
+          $parent.removeClass('open').children('a').first().focus()
+        }
+      // Up or down arrows
+      } else {
+        $items
+          .eq(index)
+          .focus()
+      }
+
+    }
+
+  , focusin: function (e) {
+      var $this = $(this)
+        , active
+
+      active = $this.parent().filter('.dropdown-submenu').index()
+
+      $this.parent().parent().children()
+        .each(function (index) {
+          $(this)
+            .toggleClass('open', (active === index))
+            .filter('.dropdown-submenu')
+              .find('.dropdown-submenu')
+                .removeClass('open')
+        })
+    }
+
+  , touchstart: function (e) {
+      var $this = $(this)
+        , active
+
+      active = $this.parent().filter('.dropdown-submenu').index()
+
+      if (~active) {
+
+        $this.parent().parent().children()
+          .each(function (index) {
+            $(this)
+              .toggleClass('open', (active === index))
+              .filter('.dropdown-submenu')
+                .find('.dropdown-submenu')
+                  .removeClass('open')
+          })
+
+      } else {
+        $this.click()
+      }
+
+      return false
     }
 
   }
 
-  function clearMenus() {
-    $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
+  function clearMenus($this) {
+    ($this || $(toggle)).each(function () {
+      getParent($(this)).removeClass('open').find('.dropdown-submenu').removeClass('open')
     })
   }
 
@@ -140,9 +225,11 @@
    * =================================== */
 
   $(document)
-    .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
-    .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', function () { clearMenus() })
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('focusin.dropdown.data-api', toggle + ', .dropdown-menu li > a', Dropdown.prototype.focusin)
+    .on('keydown.dropdown.data-api', toggle + ', .dropdown-menu', Dropdown.prototype.keydown)
+    .on('touchstart.dropdown.data-api', '.dropdown-menu li > a', Dropdown.prototype.touchstart)
 
 }(window.jQuery);
