@@ -794,6 +794,14 @@ form.bs-docs-example {
 
 
 
+/* Gallery
+-------------------------------------------------- */
+
+.bs-docs-gallery .thumbnail {
+  margin-bottom: 30px;
+}
+
+
 
 /* Responsive
 -------------------------------------------------- */
