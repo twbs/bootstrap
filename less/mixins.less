@@ -133,7 +133,7 @@
 
 
 // Mixin for form field states
-.formFieldState(@text-color: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+.formFieldState(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
   // Set the text color
   .control-label,
   .help-block,
@@ -151,11 +151,11 @@
   input,
   select,
   textarea {
-    border-color: @borderColor;
+    border-color: @border-color;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
-      border-color: darken(@borderColor, 10%);
-      @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@borderColor, 20%);
+      border-color: darken(@border-color, 10%);
+      @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
       .box-shadow(@shadow);
     }
   }
@@ -163,7 +163,7 @@
   .input-prepend .add-on,
   .input-append .add-on {
     color: @text-color;
-    background-color: @backgroundColor;
+    background-color: @background-color;
     border-color: @text-color;
   }
 }
@@ -297,13 +297,13 @@
 }
 
 // CSS3 Content Columns
-.content-columns(@columnCount, @columnGap: @grid-gutter-width) {
-  -webkit-column-count: @columnCount;
-     -moz-column-count: @columnCount;
-          column-count: @columnCount;
-  -webkit-column-gap: @columnGap;
-     -moz-column-gap: @columnGap;
-          column-gap: @columnGap;
+.content-columns(@column-count, @column-gap: @grid-gutter-width) {
+  -webkit-column-count: @column-count;
+     -moz-column-count: @column-count;
+          column-count: @column-count;
+  -webkit-column-gap: @column-gap;
+     -moz-column-gap: @column-gap;
+          column-gap: @column-gap;
 }
 
 // Optional hyphenation
@@ -345,7 +345,7 @@
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
     background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
-    background-image: linear-gradient(top, @startColor, @endColor); // Standard, IE10
+    background-image: linear-gradient(to bottom, @startColor, @endColor); // Standard, IE10
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
   }
@@ -433,8 +433,8 @@
 // -------------------------
 // Vertically center elements in the navbar.
 // Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
-.navbarVerticalAlign(@elementHeight) {
-  margin-top: (@navbar-height - @elementHeight) / 2;
+.navbarVerticalAlign(@element-height) {
+  margin-top: (@navbar-height - @element-height) / 2;
 }
 
 

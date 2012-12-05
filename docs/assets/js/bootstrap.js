@@ -711,6 +711,7 @@
   $(document)
     .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
     .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
@@ -1269,7 +1270,7 @@
         , content = this.getContent()
 
       $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
-      $tip.find('.popover-content > *')[this.options.html ? 'html' : 'text'](content)
+      $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
 
       $tip.removeClass('fade top bottom left right in')
     }
@@ -1322,10 +1323,11 @@
     placement: 'right'
   , trigger: 'click'
   , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"></div></div></div>'
   })
 
-}(window.jQuery);/* =============================================================
+}(window.jQuery);
+/* =============================================================
  * bootstrap-scrollspy.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#scrollspy
  * =============================================================

@@ -11,6 +11,7 @@
   display: none;
   width: 236px;
   padding: 1px;
+  text-align: left; // Reset given new insertion method
   background-color: @popover-background;
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
@@ -43,9 +44,6 @@
 
 .popover-content {
   padding: 9px 14px;
-  p, ul, ol {
-    margin-bottom: 0;
-  }
 }
 
 // Arrows
@@ -128,62 +126,4 @@
     }
   }
 
-
-
-/*
-  &.top .arrow {
-    bottom: -@popover-arrow-width;
-    left: 50%;
-    margin-left: -@popover-arrow-width;
-    border-width: @popover-arrow-width @popover-arrow-width 0;
-    //border-top-color: @popover-arrow-color;
-    border-top-color: blue;
-    &:after {
-      border-width: @popover-arrow-outer-width @popover-arrow-outer-width 0;
-      //border-top-color: @popover-arrow-outer-color;
-      border-top-color: red;
-      top: -@popover-arrow-width;
-      //bottom: -1px;
-      left: -@popover-arrow-outer-width;
-    }
-  }
-  &.right .arrow {
-    top: 50%;
-    left: -@popover-arrow-width;
-    margin-top: -@popover-arrow-width;
-    border-width: @popover-arrow-width @popover-arrow-width @popover-arrow-width 0;
-    border-right-color: @popover-arrow-color;
-    &:after {
-      border-width: @popover-arrow-outer-width @popover-arrow-outer-width @popover-arrow-outer-width 0;
-      border-right-color: @popover-arrow-outer-color;
-      bottom: -@popover-arrow-outer-width;
-      left: -1px;
-    }
-  }
-  &.bottom .arrow {
-    top: -@popover-arrow-width;
-    left: 50%;
-    margin-left: -@popover-arrow-width;
-    border-width: 0 @popover-arrow-width @popover-arrow-width;
-    border-bottom-color: @popover-arrow-color;
-    &:after {
-      border-width: 0 @popover-arrow-outer-width @popover-arrow-outer-width;
-      border-bottom-color: @popover-arrow-outer-color;
-      top: -1px;
-      left: -@popover-arrow-outer-width;
-    }
-  }
-  &.left .arrow {
-    top: 50%;
-    right: -@popover-arrow-width;
-    margin-top: -@popover-arrow-width;
-    border-width: @popover-arrow-width 0 @popover-arrow-width @popover-arrow-width;
-    border-left-color: @popover-arrow-color;
-    &:after {
-      border-width: @popover-arrow-outer-width 0 @popover-arrow-outer-width @popover-arrow-outer-width;
-      border-left-color: @popover-arrow-outer-color;
-      bottom: -@popover-arrow-outer-width;
-      right: -1px;
-    }
-  }*/
 }
