@@ -66,9 +66,9 @@ $fontSizeLarge:         $baseFontSize * 1.25; // ~18px
 $fontSizeSmall:         $baseFontSize * 0.85; // ~12px
 $fontSizeMini:          $baseFontSize * 0.75; // ~11px
 
-$paddingLarge:          11px 19px; // 44px
-$paddingSmall:          2px 10px;  // 26px
-$paddingMini:           1px 6px;   // 24px
+$paddingLarge:          11px 19px !default; // 44px
+$paddingSmall:          2px 10px !default;  // 26px
+$paddingMini:           1px 6px !default;   // 24px
 
 $baseBorderRadius:      4px !default;
 $borderRadiusLarge:     6px !default;
@@ -167,7 +167,7 @@ $hrBorder:                $grayLighter !default;
 
 // Horizontal forms & lists
 // -------------------------
-$horizontalComponentOffset:       180px;
+$horizontalComponentOffset:       180px !default;
 
 
 // Wells
