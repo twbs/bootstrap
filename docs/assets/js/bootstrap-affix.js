@@ -68,6 +68,8 @@
  /* AFFIX PLUGIN DEFINITION
   * ======================= */
 
+  var old = $.fn.affix
+
   $.fn.affix = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -82,6 +84,15 @@
 
   $.fn.affix.defaults = {
     offset: 0
+  }
+
+
+ /* AFFIX NO CONFLICT
+  * ================= */
+
+  $.fn.affix.noConflict = function () {
+    $.fn.affix = old
+    return this
   }
 
 

@@ -276,6 +276,8 @@
   /* TYPEAHEAD PLUGIN DEFINITION
    * =========================== */
 
+  var old = $.fn.typeahead
+
   $.fn.typeahead = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -297,7 +299,16 @@
   $.fn.typeahead.Constructor = Typeahead
 
 
- /*   TYPEAHEAD DATA-API
+ /* TYPEAHEAD NO CONFLICT
+  * =================== */
+
+  $.fn.typeahead.noConflict = function () {
+    $.fn.typeahead = old
+    return this
+  }
+
+
+ /* TYPEAHEAD DATA-API
   * ================== */
 
   $(document).on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {

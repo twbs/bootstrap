@@ -121,6 +121,8 @@
  /* SCROLLSPY PLUGIN DEFINITION
   * =========================== */
 
+  var old = $.fn.scrollspy
+
   $.fn.scrollspy = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -135,6 +137,15 @@
 
   $.fn.scrollspy.defaults = {
     offset: 10
+  }
+
+
+ /* SCROLLSPY NO CONFLICT
+  * ===================== */
+
+  $.fn.scrollspy.noConflict = function () {
+    $.fn.scrollspy = old
+    return this
   }
 
 

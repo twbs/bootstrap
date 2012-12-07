@@ -63,6 +63,14 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 </pre>
           <p>{{_i}}Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.{{/i}}</p>
 
+          <h3>{{_i}}No Conflict{{/i}}</h3>
+          <p>{{_i}}Sometimes it's neccessary to use bootstrap plugins with other ui frameworks. In these circumstances, occasionally namespace collisions can occur. If this happens, you may call <code>.noCoflict</code> on the plugin you wish to revert the value of.{{/i}}</p>
+
+<pre class="prettyprint linenums">
+var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
+$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
+</pre>
+
           <h3>{{_i}}Events{{/i}}</h3>
           <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
           <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.{{/i}}</p>

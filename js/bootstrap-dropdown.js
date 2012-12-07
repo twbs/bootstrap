@@ -124,6 +124,8 @@
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
+  var old = $.fn.dropdown
+
   $.fn.dropdown = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -134,6 +136,15 @@
   }
 
   $.fn.dropdown.Constructor = Dropdown
+
+
+ /* DROPDOWN NO CONFLICT
+  * ==================== */
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
 
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS

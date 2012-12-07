@@ -110,6 +110,8 @@
  /* TAB PLUGIN DEFINITION
   * ===================== */
 
+  var old = $.fn.tab
+
   $.fn.tab = function ( option ) {
     return this.each(function () {
       var $this = $(this)
@@ -120,6 +122,15 @@
   }
 
   $.fn.tab.Constructor = Tab
+
+
+ /* TAB NO CONFLICT
+  * =============== */
+
+  $.fn.tab.noConflict = function () {
+    $.fn.tab = old
+    return this
+  }
 
 
  /* TAB DATA-API

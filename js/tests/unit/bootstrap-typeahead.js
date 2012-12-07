@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-typeahead")
 
+      test("should provide no conflict", function () {
+        var typeahead = $.fn.typeahead.noConflict()
+        ok(!$.fn.typeahead, 'typeahead was set back to undefined (org value)')
+        $.fn.typeahead = typeahead
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).typeahead, 'alert method is defined')
       })

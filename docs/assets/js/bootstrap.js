@@ -127,6 +127,8 @@
  /* ALERT PLUGIN DEFINITION
   * ======================= */
 
+  var old = $.fn.alert
+
   $.fn.alert = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -137,6 +139,15 @@
   }
 
   $.fn.alert.Constructor = Alert
+
+
+ /* ALERT NO CONFLICT
+  * ================= */
+
+  $.fn.alert.noConflict = function () {
+    $.fn.alert = old
+    return this
+  }
 
 
  /* ALERT DATA-API
@@ -210,6 +221,8 @@
  /* BUTTON PLUGIN DEFINITION
   * ======================== */
 
+  var old = $.fn.button
+
   $.fn.button = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -226,6 +239,15 @@
   }
 
   $.fn.button.Constructor = Button
+
+
+ /* BUTTON NO CONFLICT
+  * ================== */
+
+  $.fn.button.noConflict = function () {
+    $.fn.button = old
+    return this
+  }
 
 
  /* BUTTON DATA-API
@@ -380,6 +402,8 @@
  /* CAROUSEL PLUGIN DEFINITION
   * ========================== */
 
+  var old = $.fn.carousel
+
   $.fn.carousel = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -400,6 +424,14 @@
 
   $.fn.carousel.Constructor = Carousel
 
+
+ /* CAROUSEL NO CONFLICT
+  * ==================== */
+
+  $.fn.carousel.noConflict = function () {
+    $.fn.carousel = old
+    return this
+  }
 
  /* CAROUSEL DATA-API
   * ================= */
@@ -534,8 +566,10 @@
   }
 
 
- /* COLLAPSIBLE PLUGIN DEFINITION
-  * ============================== */
+ /* COLLAPSE PLUGIN DEFINITION
+  * ========================== */
+
+  var old = $.fn.collapse
 
   $.fn.collapse = function (option) {
     return this.each(function () {
@@ -554,8 +588,17 @@
   $.fn.collapse.Constructor = Collapse
 
 
- /* COLLAPSIBLE DATA-API
+ /* COLLAPSE NO CONFLICT
   * ==================== */
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old
+    return this
+  }
+
+
+ /* COLLAPSE DATA-API
+  * ================= */
 
   $(document).on('click.collapse.data-api', '[data-toggle=collapse]', function (e) {
     var $this = $(this), href
@@ -693,6 +736,8 @@
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
+  var old = $.fn.dropdown
+
   $.fn.dropdown = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -703,6 +748,15 @@
   }
 
   $.fn.dropdown.Constructor = Dropdown
+
+
+ /* DROPDOWN NO CONFLICT
+  * ==================== */
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
 
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
@@ -910,6 +964,8 @@
  /* MODAL PLUGIN DEFINITION
   * ======================= */
 
+  var old = $.fn.modal
+
   $.fn.modal = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -928,6 +984,15 @@
   }
 
   $.fn.modal.Constructor = Modal
+
+
+ /* MODAL NO CONFLICT
+  * ================= */
+
+  $.fn.modal.noConflict = function () {
+    $.fn.modal = old
+    return this
+  }
 
 
  /* MODAL DATA-API
@@ -1201,6 +1266,8 @@
  /* TOOLTIP PLUGIN DEFINITION
   * ========================= */
 
+  var old = $.fn.tooltip
+
   $.fn.tooltip = function ( option ) {
     return this.each(function () {
       var $this = $(this)
@@ -1222,6 +1289,15 @@
   , title: ''
   , delay: 0
   , html: false
+  }
+
+
+ /* TOOLTIP NO CONFLICT
+  * =================== */
+
+  $.fn.tooltip.noConflict = function () {
+    $.fn.tooltip = old
+    return this
   }
 
 }(window.jQuery);/* ===========================================================
@@ -1307,6 +1383,8 @@
  /* POPOVER PLUGIN DEFINITION
   * ======================= */
 
+  var old = $.fn.popover
+
   $.fn.popover = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -1326,8 +1404,16 @@
   , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"></div></div></div>'
   })
 
-}(window.jQuery);
-/* =============================================================
+
+ /* POPOVER NO CONFLICT
+  * =================== */
+
+  $.fn.popover.noConflict = function () {
+    $.fn.popover = old
+    return this
+  }
+
+}(window.jQuery);/* =============================================================
  * bootstrap-scrollspy.js v2.2.2
  * http://twitter.github.com/bootstrap/javascript.html#scrollspy
  * =============================================================
@@ -1450,6 +1536,8 @@
  /* SCROLLSPY PLUGIN DEFINITION
   * =========================== */
 
+  var old = $.fn.scrollspy
+
   $.fn.scrollspy = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -1464,6 +1552,15 @@
 
   $.fn.scrollspy.defaults = {
     offset: 10
+  }
+
+
+ /* SCROLLSPY NO CONFLICT
+  * ===================== */
+
+  $.fn.scrollspy.noConflict = function () {
+    $.fn.scrollspy = old
+    return this
   }
 
 
@@ -1589,6 +1686,8 @@
  /* TAB PLUGIN DEFINITION
   * ===================== */
 
+  var old = $.fn.tab
+
   $.fn.tab = function ( option ) {
     return this.each(function () {
       var $this = $(this)
@@ -1599,6 +1698,15 @@
   }
 
   $.fn.tab.Constructor = Tab
+
+
+ /* TAB NO CONFLICT
+  * =============== */
+
+  $.fn.tab.noConflict = function () {
+    $.fn.tab = old
+    return this
+  }
 
 
  /* TAB DATA-API
@@ -1887,6 +1995,8 @@
   /* TYPEAHEAD PLUGIN DEFINITION
    * =========================== */
 
+  var old = $.fn.typeahead
+
   $.fn.typeahead = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -1908,7 +2018,16 @@
   $.fn.typeahead.Constructor = Typeahead
 
 
- /*   TYPEAHEAD DATA-API
+ /* TYPEAHEAD NO CONFLICT
+  * =================== */
+
+  $.fn.typeahead.noConflict = function () {
+    $.fn.typeahead = old
+    return this
+  }
+
+
+ /* TYPEAHEAD DATA-API
   * ================== */
 
   $(document).on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
@@ -1989,6 +2108,8 @@
  /* AFFIX PLUGIN DEFINITION
   * ======================= */
 
+  var old = $.fn.affix
+
   $.fn.affix = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -2003,6 +2124,15 @@
 
   $.fn.affix.defaults = {
     offset: 0
+  }
+
+
+ /* AFFIX NO CONFLICT
+  * ================= */
+
+  $.fn.affix.noConflict = function () {
+    $.fn.affix = old
+    return this
   }
 
 
