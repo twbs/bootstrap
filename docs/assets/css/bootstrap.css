@@ -3258,6 +3258,11 @@ button.close {
   margin-top: 0;
 }
 
+.btn-mini [class^="icon-"],
+.btn-mini [class*=" icon-"] {
+  margin-top: -1px;
+}
+
 .btn-mini {
   padding: 0 6px;
   font-size: 10.5px;
