@@ -2012,6 +2012,10 @@ table {
   border-top: 2px solid #dddddd;
 }
 
+.table .table {
+  background-color: #ffffff;
+}
+
 .table-condensed th,
 .table-condensed td {
   padding: 4px 5px;
@@ -2104,8 +2108,8 @@ table {
   -moz-border-radius-topright: 4px;
 }
 
-.table-striped tbody tr:nth-child(odd) td,
-.table-striped tbody tr:nth-child(odd) th {
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
 }
 
