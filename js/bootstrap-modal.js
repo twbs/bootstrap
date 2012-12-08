@@ -41,7 +41,7 @@
         return this[!this.isShown ? 'show' : 'hide']()
       }
 
-    , show: function () {
+    , show: function (source) {
         var that = this
           , e = $.Event('show')
 
@@ -74,8 +74,8 @@
           that.enforceFocus()
 
           transition ?
-            that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown') }) :
-            that.$element.focus().trigger('shown')
+            that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown', source) }) :
+            that.$element.focus().trigger('shown', source)
 
         })
       }
@@ -195,14 +195,14 @@
 
   var old = $.fn.modal
 
-  $.fn.modal = function (option) {
+  $.fn.modal = function (option, source) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('modal')
         , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
-      else if (options.show) data.show()
+      else if (options.show) data.show(source)
     })
   }
 
@@ -232,11 +232,12 @@
       , href = $this.attr('href')
       , $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
       , option = $target.data('modal') ? 'toggle' : $.extend({ remote:!/#/.test(href) && href }, $target.data(), $this.data())
+      , source = e.target
 
     e.preventDefault()
 
     $target
-      .modal(option)
+      .modal(option, source)
       .one('hide', function () {
         $this.focus()
       })
