@@ -103,6 +103,7 @@
         , actualHeight
         , placement
         , tp
+        , container
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
@@ -121,7 +122,9 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+        
+        container = this.options.container === '' ? '' : $(this.options.container)
+        container.length ? $tip.appendTo(container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition(inside)
 
@@ -236,8 +239,8 @@
     }
 
   , toggle: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
-      self[self.tip().hasClass('in') ? 'hide' : 'show']()
+      var self = (e) ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
+      self.tip().hasClass('in') ? self.hide() : self.show()
     }
 
   , destroy: function () {
@@ -273,6 +276,7 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: ''
   }
 
 
