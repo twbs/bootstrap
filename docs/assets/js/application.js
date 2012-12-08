@@ -1,135 +1,154 @@
-$(document).ready(function(){
+// NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
+// IT'S ALL JUST JUNK FOR OUR DOCS!
+// ++++++++++++++++++++++++++++++++++++++++++
 
-  // Google code prettify
-  // ====================
+!function ($) {
 
-  prettyPrint();
+  $(function(){
 
-  // scroll spy logic
-  // ================
+    var $window = $(window)
 
-  var activeTarget,
-      position = {},
-      $window = $(window),
-      nav = $('body > .topbar li a'),
-      targets = nav.map(function () {
-        return $(this).attr('href');
-      }),
-      offsets = $.map(targets, function (id) {
-        return $(id).offset().top;
-      });
+    // Disable certain links in docs
+    $('section [href^=#]').click(function (e) {
+      e.preventDefault()
+    })
 
-
-  function setButton(id) {
-    nav.parent("li").removeClass('active');
-    $(nav[$.inArray(id, targets)]).parent("li").addClass('active');
-  }
-
-  function processScroll(e) {
-    var scrollTop = $window.scrollTop() + 10, i;
-    for (i = offsets.length; i--;) {
-      if (activeTarget != targets[i] && scrollTop >= offsets[i] && (!offsets[i + 1] || scrollTop <= offsets[i + 1])) {
-        activeTarget = targets[i];
-        setButton(activeTarget);
+    // side bar
+    $('.bs-docs-sidenav').affix({
+      offset: {
+        top: function () { return $window.width() <= 980 ? 290 : 210 }
+      , bottom: 270
       }
+    })
+
+    // make code pretty
+    window.prettyPrint && prettyPrint()
+
+    // add-ons
+    $('.add-on :checkbox').on('click', function () {
+      var $this = $(this)
+        , method = $this.attr('checked') ? 'addClass' : 'removeClass'
+      $(this).parents('.add-on')[method]('active')
+    })
+
+    // add tipsies to grid for scaffolding
+    if ($('#gridSystem').length) {
+      $('#gridSystem').tooltip({
+          selector: '.show-grid > div'
+        , title: function () { return $(this).width() + 'px' }
+      })
+    }
+
+    // tooltip demo
+    $('.tooltip-demo').tooltip({
+      selector: "a[rel=tooltip]"
+    })
+
+    $('.tooltip-test').tooltip()
+    $('.popover-test').popover()
+
+    // popover demo
+    $("a[rel=popover]")
+      .popover()
+      .click(function(e) {
+        e.preventDefault()
+      })
+
+    // button state demo
+    $('#fat-btn')
+      .click(function () {
+        var btn = $(this)
+        btn.button('loading')
+        setTimeout(function () {
+          btn.button('reset')
+        }, 3000)
+      })
+
+    // carousel demo
+    $('#myCarousel').carousel()
+
+    // javascript build logic
+    var inputsComponent = $("#components.download input")
+      , inputsPlugin = $("#plugins.download input")
+      , inputsVariables = $("#variables.download input")
+
+    // toggle all plugin checkboxes
+    $('#components.download .toggle-all').on('click', function (e) {
+      e.preventDefault()
+      inputsComponent.attr('checked', !inputsComponent.is(':checked'))
+    })
+
+    $('#plugins.download .toggle-all').on('click', function (e) {
+      e.preventDefault()
+      inputsPlugin.attr('checked', !inputsPlugin.is(':checked'))
+    })
+
+    $('#variables.download .toggle-all').on('click', function (e) {
+      e.preventDefault()
+      inputsVariables.val('')
+    })
+
+    // request built javascript
+    $('.download-btn').on('click', function () {
+
+      var css = $("#components.download input:checked")
+            .map(function () { return this.value })
+            .toArray()
+        , js = $("#plugins.download input:checked")
+            .map(function () { return this.value })
+            .toArray()
+        , vars = {}
+        , img = ['glyphicons-halflings.png', 'glyphicons-halflings-white.png']
+
+    $("#variables.download input")
+      .each(function () {
+        $(this).val() && (vars[ $(this).prev().text() ] = $(this).val())
+      })
+
+      $.ajax({
+        type: 'POST'
+      , url: /\?dev/.test(window.location) ? 'http://localhost:3000' : 'http://bootstrap.herokuapp.com'
+      , dataType: 'jsonpi'
+      , params: {
+          js: js
+        , css: css
+        , vars: vars
+        , img: img
+      }
+      })
+    })
+  })
+
+// Modified from the original jsonpi https://github.com/benvinegar/jquery-jsonpi
+$.ajaxTransport('jsonpi', function(opts, originalOptions, jqXHR) {
+  var url = opts.url;
+
+  return {
+    send: function(_, completeCallback) {
+      var name = 'jQuery_iframe_' + jQuery.now()
+        , iframe, form
+
+      iframe = $('<iframe>')
+        .attr('name', name)
+        .appendTo('head')
+
+      form = $('<form>')
+        .attr('method', opts.type) // GET or POST
+        .attr('action', url)
+        .attr('target', name)
+
+      $.each(opts.params, function(k, v) {
+
+        $('<input>')
+          .attr('type', 'hidden')
+          .attr('name', k)
+          .attr('value', typeof v == 'string' ? v : JSON.stringify(v))
+          .appendTo(form)
+      })
+
+      form.appendTo('body').submit()
     }
   }
+})
 
-  nav.click(function () {
-    processScroll();
-  });
-
-  processScroll();
-
-  $window.scroll(processScroll);
-
-
-  // Dropdown example for topbar nav
-  // ===============================
-
-  $("body").bind("click", function (e) {
-    $('a.menu').parent("li").removeClass("open");
-  });
-
-  $("a.menu").click(function (e) {
-    var $li = $(this).parent("li").toggleClass('open');
-    return false;
-  });
-
-
-  // table sort example
-  // ==================
-
-  $("#sortTableExample").tablesorter( {sortList: [[1,0]]} );
-
-
-  // add on logic
-  // ============
-
-  $('.add-on :checkbox').click(function() {
-    if ($(this).attr('checked')) {
-      $(this).parents('.add-on').addClass('active');
-    } else {
-      $(this).parents('.add-on').removeClass('active');
-    }
-  });
-
-
-  // Disable certain links in docs
-  // =============================
-
-  $('ul.tabs a, ul.pills a, .pagination a, .well .btn, .actions .btn, .alert-message .btn, a.close').click(function(e) {
-    e.preventDefault();
-  });
-
-  // Copy code blocks in docs
-  $(".copy-code").focus(function() {
-    var el = this;
-    // push select to event loop for chrome :{o
-    setTimeout(function () { $(el).select(); }, 1);
-  });
-
-
-  // POSITION TWIPSIES
-  // =================
-
-  $('.twipsies.well a').each(function () {
-    var type = this.title
-      , $anchor = $(this)
-      , $twipsy = $('.twipsy.' + type)
-
-      , twipsy = {
-          width: $twipsy.width() + 10
-        , height: $twipsy.height() + 10
-        }
-
-      , anchor = {
-          position: $anchor.position()
-        , width: $anchor.width()
-        , height: $anchor.height()
-        }
-
-      , offset = {
-          above: {
-            top: anchor.position.top - twipsy.height
-          , left: anchor.position.left + (anchor.width/2) - (twipsy.width/2)
-          }
-        , below: {
-            top: anchor.position.top + anchor.height
-          , left: anchor.position.left + (anchor.width/2) - (twipsy.width/2)
-          }
-        , left: {
-            top: anchor.position.top + (anchor.height/2) - (twipsy.height/2)
-          , left: anchor.position.left - twipsy.width - 5
-          }
-        , right: {
-            top: anchor.position.top + (anchor.height/2) - (twipsy.height/2)
-          , left: anchor.position.left + anchor.width + 5
-          }
-      }
-
-    $twipsy.css(offset[type])
-
-  });
-
-});
+}(window.jQuery)

@@ -1,0 +1,64 @@
+/*
+ *  Copyright 2011 Twitter, Inc.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+// A wrapper for compatibility with Mustache.js, quirks and all
+
+{{{template}}}
+{{{compiler}}}
+
+var Mustache = (function (Hogan) {
+
+  // Mustache.js has non-spec partial context behavior
+  function mustachePartial(name, context, partials, indent) {
+    var partialScope = this.f(name, context, partials, 0);
+    var cx = context;
+    if (partialScope) {
+      cx = cx.concat(partialScope);
+    }
+
+    return Hogan.Template.prototype.rp.call(this, name, cx, partials, indent);
+  }
+
+  var HoganTemplateWrapper = function(renderFunc, text, compiler){
+    this.rp = mustachePartial;
+    Hogan.Template.call(this, renderFunc, text, compiler);
+  };
+  HoganTemplateWrapper.prototype = Hogan.Template.prototype;
+
+  // Add a wrapper for Hogan's generate method. Mustache and Hogan keep
+  // separate caches, and Mustache returns wrapped templates.
+  var wrapper;
+  var HoganWrapper = function(){
+    this.cache = {};
+    this.generate = function(code, text, options) {
+      return new HoganTemplateWrapper(new Function('c', 'p', 'i', code), text, wrapper);
+    }
+  };
+  HoganWrapper.prototype = Hogan;
+  wrapper = new HoganWrapper();
+
+  return {
+    to_html: function(text, data, partials, sendFun) {
+      var template = wrapper.compile(text);
+      var result = template.render(data, partials);
+      if (!sendFun) {
+        return result;
+      }
+
+      sendFun(result);
+    }
+  }
+
+})(Hogan);
