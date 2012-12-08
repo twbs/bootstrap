@@ -127,7 +127,7 @@
 
           {{! Abbreviations }}
           <h2 id="abbreviations">{{_i}}Abbreviations{{/i}}</h2>
-          <p>{{_i}}Stylized implemenation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.{{/i}}</p>
+          <p>{{_i}}Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.{{/i}}</p>
 
           <h3><code>&lt;abbr&gt;</code></h3>
           <p>{{_i}}For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.{{/i}}</p>
@@ -162,7 +162,7 @@
             </address>
             <address>
               <strong>{{_i}}Full Name{{/i}}</strong><br>
-              <a href="mailto:#">{{_i}}first.last@gmail.com{{/i}}</a>
+              <a href="mailto:#">{{_i}}first.last@example.com{{/i}}</a>
             </address>
           </div>
 <pre class="prettyprint linenums">
@@ -175,7 +175,7 @@
 
 &lt;address&gt;
   &lt;strong&gt;{{_i}}Full Name{{/i}}&lt;/strong&gt;&lt;br&gt;
-  &lt;a href="mailto:#"&gt;{{_i}}first.last@gmail.com{{/i}}&lt;/a&gt;
+  &lt;a href="mailto:#"&gt;{{_i}}first.last@example.com{{/i}}&lt;/a&gt;
 &lt;/address&gt;
 </pre>
 
@@ -287,7 +287,7 @@
 </pre>
 
         <h3>{{_i}}Unstyled{{/i}}</h3>
-        <p>{{_i}}A list of items with no <code>list-style</code> or additional left padding.{{/i}}</p>
+        <p>{{_i}}Remove the default <code>list-style</code> and left padding on list items (immediate children only).{{/i}}</p>
         <div class="bs-docs-example">
           <ul class="unstyled">
             <li>Lorem ipsum dolor sit amet</li>
@@ -309,6 +309,21 @@
         </div>
 <pre class="prettyprint linenums">
 &lt;ul class="unstyled"&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+        <h3>{{_i}}Inline{{/i}}</h3>
+        <p>{{_i}}Place all list items on a single line with <code>inline-block</code> and some light padding.{{/i}}</p>
+        <div class="bs-docs-example">
+          <ul class="inline">
+            <li>Lorem ipsum</li>
+            <li>Phasellus iaculis</li>
+            <li>Nulla volutpat</li>
+          </ul>
+        </div>
+<pre class="prettyprint linenums">
+&lt;ul class="inline"&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
@@ -1247,6 +1262,54 @@
 &lt;/div&gt;
 </pre>
 
+          <h4>{{_i}}Segmented dropdown groups{{/i}}</h4>
+          <form class="bs-docs-example">
+            <div class="input-prepend">
+              <div class="btn-group">
+                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </div>
+              <input type="text">
+            </div>
+            <div class="input-append">
+              <input type="text">
+              <div class="btn-group">
+                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">{{_i}}Action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li><a href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">{{_i}}Separated link{{/i}}</a></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+<pre class="prettyprint linenums">
+&lt;form&gt;
+  &lt;div class="input-prepend"&gt;
+    &lt;div class="btn-group"&gt;...&lt;/div&gt;
+    &lt;input type="text"&gt;
+  &lt;/div&gt;
+  &lt;div class="input-append"&gt;
+    &lt;input type="text"&gt;
+    &lt;div class="btn-group"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+
           <h4>{{_i}}Search form{{/i}}</h4>
           <form class="bs-docs-example form-search">
             <div class="input-append">
@@ -1353,7 +1416,7 @@
 &lt;/select&gt;
 </pre>
 
-          <p>{{_i}}For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and the clears the float.{{/i}}</p>
+          <p>{{_i}}For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and clears the float.{{/i}}</p>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
             <div class="controls">
               <input class="span5" type="text" placeholder=".span5">
@@ -1443,6 +1506,15 @@
           </form>
 <pre class="prettyprint linenums">
 &lt;input class="input-xlarge" id="focusedInput" type="text" value="{{_i}}This is focused...{{/i}}"&gt;
+</pre>
+
+          <h3>{{_i}}Invalid inputs{{/i}}</h3>
+          <p>{{_i}}Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code> and add the <code>required</code> attribute.{{/i}}</p>
+          <form class="bs-docs-example form-inline">
+            <input class="span3" type="email" placeholder="test@example.com" required>
+          </form>
+<pre class="prettyprint linenums">
+&lt;input class="span3" type="email" required&gt;
 </pre>
 
           <h3>{{_i}}Disabled inputs{{/i}}</h3>
@@ -1690,9 +1762,9 @@
 
           <p>{{_i}}Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.{{/i}}</p>
           <div class="bs-docs-example bs-docs-example-images">
-            <img src="http://placehold.it/140x140" class="img-rounded">
-            <img src="http://placehold.it/140x140" class="img-circle">
-            <img src="http://placehold.it/140x140" class="img-polaroid">
+            <img data-src="holder.js/140x140" class="img-rounded">
+            <img data-src="holder.js/140x140" class="img-circle">
+            <img data-src="holder.js/140x140" class="img-polaroid">
           </div>
 <pre class="prettyprint linenums">
 &lt;img src="..." class="img-rounded"&gt;
@@ -1943,14 +2015,17 @@
 &lt;/div&gt;
 </pre>
 
-          <h5>{{_i}}Small button{{/i}}</h5>
+          <h5>{{_i}}Button sizes{{/i}}</h5>
           <div class="bs-docs-example">
-            <a class="btn btn-small" href="#"><i class="icon-star"></i></a>
+            <a class="btn btn-large" href="#"><i class="icon-star"></i> Star</a>
+            <a class="btn btn-small" href="#"><i class="icon-star"></i> Star</a>
+            <a class="btn btn-mini" href="#"><i class="icon-star"></i> Star</a>
           </div>{{! /bs-docs-example }}
 <pre class="prettyprint linenums">
-&lt;a class="btn btn-small" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a class="btn btn-large" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt; Star&lt;/a&gt;
+&lt;a class="btn btn-small" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt; Star&lt;/a&gt;
+&lt;a class="btn btn-mini" href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt; Star&lt;/a&gt;
 </pre>
-
 
           <h4>{{_i}}Navigation{{/i}}</h4>
           <div class="bs-docs-example">

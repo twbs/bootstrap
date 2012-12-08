@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.2.1
+ * Bootstrap Responsive v2.2.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -7,6 +7,10 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+
+@-ms-viewport {
+  width: device-width;
+}
 
 .clearfix {
   *zoom: 1;
