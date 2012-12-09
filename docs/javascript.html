@@ -348,11 +348,11 @@ $('#myModal').modal({
             <tbody>
              <tr>
                <td>show</td>
-               <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+               <td>This event fires immediately when the <code>show</code> instance method is called. If it was triggered by a button, the source button will be passed as the relatedTarget of the event.</td>
              </tr>
              <tr>
                <td>shown</td>
-               <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete).</td>
+               <td>This event is fired when the modal has been made visible to the user (will wait for css transitions to complete). If it was triggered by a button, the source button will be passed as the relatedTarget of the event.</td>
              </tr>
              <tr>
                <td>hide</td>
@@ -367,6 +367,9 @@ $('#myModal').modal({
 <pre class="prettyprint linenums">
 $('#myModal').on('hidden', function () {
   // do something…
+})
+$('#myModal').on('shown', function (e) {
+  // e.relatedTarget is the element that triggered the modal
 })
 </pre>
         </section>

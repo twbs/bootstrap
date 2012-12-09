@@ -37,13 +37,15 @@
 
       constructor: Modal
 
-    , toggle: function () {
-        return this[!this.isShown ? 'show' : 'hide']()
+    , toggle: function (source) {
+        return this[!this.isShown ? 'show' : 'hide'](source)
       }
 
-    , show: function () {
+    , show: function (source) {
         var that = this
           , e = $.Event('show')
+
+        e.relatedTarget = source
 
         this.$element.trigger(e)
 
@@ -55,13 +57,16 @@
 
         this.backdrop(function () {
           var transition = $.support.transition && that.$element.hasClass('fade')
+            , e = $.Event('shown')
+
+          e.relatedTarget = source
 
           if (!that.$element.parent().length) {
             that.$element.appendTo(document.body) //don't move modals dom position
           }
 
           that.$element
-            .show()
+            .show(source)
 
           if (transition) {
             that.$element[0].offsetWidth // force reflow
@@ -74,8 +79,8 @@
           that.enforceFocus()
 
           transition ?
-            that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown') }) :
-            that.$element.focus().trigger('shown')
+            that.$element.one($.support.transition.end, function () { that.$element.focus().trigger(e) }) :
+            that.$element.focus().trigger(e)
 
         })
       }
@@ -193,14 +198,14 @@
  /* MODAL PLUGIN DEFINITION
   * ======================= */
 
-  $.fn.modal = function (option) {
+  $.fn.modal = function (option, source) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('modal')
         , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
-      if (typeof option == 'string') data[option]()
-      else if (options.show) data.show()
+      if (typeof option == 'string') data[option](source)
+      else if (options.show) data.show(source)
     })
   }
 
@@ -221,11 +226,12 @@
       , href = $this.attr('href')
       , $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
       , option = $target.data('modal') ? 'toggle' : $.extend({ remote:!/#/.test(href) && href }, $target.data(), $this.data())
+      , source = e.target
 
     e.preventDefault()
 
     $target
-      .modal(option)
+      .modal(option, source)
       .one('hide', function () {
         $this.focus()
       })
