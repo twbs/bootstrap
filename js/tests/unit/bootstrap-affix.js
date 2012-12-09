@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-affix")
 
+      test("should provide no conflict", function () {
+        var affix = $.fn.affix.noConflict()
+        ok(!$.fn.affix, 'affix was set back to undefined (org value)')
+        $.fn.affix = affix
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).affix, 'affix method is defined')
       })

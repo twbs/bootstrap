@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-buttons")
 
+      test("should provide no conflict", function () {
+        var button = $.fn.button.noConflict()
+        ok(!$.fn.button, 'button was set back to undefined (org value)')
+        $.fn.button = button
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).button, 'button method is defined')
       })
