@@ -24,9 +24,9 @@
   font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: $baseLineHeight / 2;
   margin-bottom: $baseLineHeight / 2;
-  .btn + .btn,
-  .btn-group + .btn,
-  .btn + .btn-group {
+  > .btn + .btn,
+  > .btn-group + .btn,
+  > .btn + .btn-group {
     margin-left: 5px;
   }
 }
@@ -40,59 +40,44 @@
   margin-left: -1px;
 }
 .btn-group > .btn,
-.btn-group > .dropdown-menu {
+.btn-group > .dropdown-menu,
+.btn-group > .popover {
   font-size: $baseFontSize; // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
 .btn-group > .btn-mini {
-  font-size: 11px;
+  font-size: $fontSizeMini;
 }
 .btn-group > .btn-small {
-  font-size: 12px;
+  font-size: $fontSizeSmall;
 }
 .btn-group > .btn-large {
-  font-size: 16px;
+  font-size: $fontSizeLarge;
 }
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
-     -webkit-border-top-left-radius: 4px;
-         -moz-border-radius-topleft: 4px;
-             border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-      -moz-border-radius-bottomleft: 4px;
-          border-bottom-left-radius: 4px;
+  @include border-top-left-radius($baseBorderRadius);
+  @include border-bottom-left-radius($baseBorderRadius);
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
 .btn-group > .dropdown-toggle {
-     -webkit-border-top-right-radius: 4px;
-         -moz-border-radius-topright: 4px;
-             border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-      -moz-border-radius-bottomright: 4px;
-          border-bottom-right-radius: 4px;
+  @include border-top-right-radius($baseBorderRadius);
+  @include border-bottom-right-radius($baseBorderRadius);
 }
 // Reset corners for large buttons
 .btn-group > .btn.large:first-child {
   margin-left: 0;
-     -webkit-border-top-left-radius: 6px;
-         -moz-border-radius-topleft: 6px;
-             border-top-left-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-      -moz-border-radius-bottomleft: 6px;
-          border-bottom-left-radius: 6px;
+  @include border-top-left-radius($borderRadiusLarge);
+  @include border-bottom-left-radius($borderRadiusLarge);
 }
 .btn-group > .btn.large:last-child,
 .btn-group > .large.dropdown-toggle {
-     -webkit-border-top-right-radius: 6px;
-         -moz-border-radius-topright: 6px;
-             border-top-right-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-      -moz-border-radius-bottomright: 6px;
-          border-bottom-right-radius: 6px;
+  @include border-top-right-radius($borderRadiusLarge);
+  @include border-bottom-right-radius($borderRadiusLarge);
 }
 
 // On hover/focus/active, bring the proper btn to front
@@ -218,25 +203,25 @@
   display: inline-block; // makes buttons only take up the width they need
   @include ie7-inline-block();
 }
-.btn-group-vertical .btn {
+.btn-group-vertical > .btn {
   display: block;
   float: none;
-  width: 100%;
+  max-width: 100%;
   @include border-radius(0);
 }
-.btn-group-vertical .btn + .btn {
+.btn-group-vertical > .btn + .btn {
   margin-left: 0;
   margin-top: -1px;
 }
-.btn-group-vertical .btn:first-child {
-  @include border-radius(4px 4px 0 0);
+.btn-group-vertical > .btn:first-child {
+  @include border-radius($baseBorderRadius $baseBorderRadius 0 0);
 }
-.btn-group-vertical .btn:last-child {
-  @include border-radius(0 0 4px 4px);
+.btn-group-vertical > .btn:last-child {
+  @include border-radius(0 0 $baseBorderRadius $baseBorderRadius);
 }
-.btn-group-vertical .btn-large:first-child {
-  @include border-radius(6px 6px 0 0);
+.btn-group-vertical > .btn-large:first-child {
+  @include border-radius($borderRadiusLarge $borderRadiusLarge 0 0);
 }
-.btn-group-vertical .btn-large:last-child {
-  @include border-radius(0 0 6px 6px);
+.btn-group-vertical > .btn-large:last-child {
+  @include border-radius(0 0 $borderRadiusLarge $borderRadiusLarge);
 }

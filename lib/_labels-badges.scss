@@ -27,6 +27,14 @@
   @include border-radius(9px);
 }
 
+// Empty labels/badges collapse
+.label,
+.badge {
+  &:empty {
+    display: none;
+  }
+}
+
 // Hover state, but only for links
 a {
   &.label:hover,
@@ -39,21 +47,23 @@ a {
 
 // Colors
 // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-// Important (red)
-.label-important, .badge-important              { background-color: $errorText; }
-.label-important[href], .badge-important[href]  { background-color: darken($errorText, 10%); }
-// Warnings (orange)
-.label-warning, .badge-warning                  { background-color: $orange; }
-.label-warning[href], .badge-warning[href]      { background-color: darken($orange, 10%); }
-// Success (green)
-.label-success, .badge-success                  { background-color: $successText; }
-.label-success[href], .badge-success[href]      { background-color: darken($successText, 10%); }
-// Info (turquoise)
-.label-info, .badge-info                        { background-color: $infoText; }
-.label-info[href], .badge-info[href]            { background-color: darken($infoText, 10%); }
-// Inverse (black)
-.label-inverse, .badge-inverse                  { background-color: $grayDark; }
-.label-inverse[href], .badge-inverse[href]      { background-color: darken($grayDark, 10%); }
+@each $item in label, badge {
+  // Important (red)
+  .#{$item}-important         { background-color: $errorText; }
+  .#{$item}-important[href]   { background-color: darken($errorText, 10%); }
+  // Warnings (orange)
+  .#{$item}-warning           { background-color: $orange; }
+  .#{$item}-warning[href]     { background-color: darken($orange, 10%); }
+  // Success (green)
+  .#{$item}-success           { background-color: $successText; }
+  .#{$item}-success[href]     { background-color: darken($successText, 10%); }
+  // Info (turquoise)
+  .#{$item}-info              { background-color: $infoText; }
+  .#{$item}-info[href]        { background-color: darken($infoText, 10%); }
+  // Inverse (black)
+  .#{$item}-inverse           { background-color: $grayDark; }
+  .#{$item}-inverse[href]     { background-color: darken($grayDark, 10%); }
+}
 
 // Quick fix for labels/badges in buttons
 .btn {

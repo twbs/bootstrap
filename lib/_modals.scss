@@ -26,7 +26,6 @@
   top: 50%;
   left: 50%;
   z-index: $zindexModal;
-  overflow: auto;
   width: 560px;
   margin: -250px 0 0 -280px;
   background-color: $white;
@@ -59,6 +58,7 @@
 
 // Body (where all modal content resides)
 .modal-body {
+  position: relative;
   overflow-y: auto;
   max-height: 400px;
   padding: 15px;

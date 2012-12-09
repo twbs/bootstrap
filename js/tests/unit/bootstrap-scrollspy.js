@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-scrollspy")
 
+      test("should provide no conflict", function () {
+        var scrollspy = $.fn.scrollspy.noConflict()
+        ok(!$.fn.scrollspy, 'scrollspy was set back to undefined (org value)')
+        $.fn.scrollspy = scrollspy
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).scrollspy, 'scrollspy method is defined')
       })
