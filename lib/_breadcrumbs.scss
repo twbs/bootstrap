@@ -9,14 +9,14 @@
   list-style: none;
   background-color: #f5f5f5;
   @include border-radius($baseBorderRadius);
-  li {
+  > li {
     display: inline-block;
     @include ie7-inline-block();
     text-shadow: 0 1px 0 $white;
-  }
-  .divider {
-    padding: 0 5px;
-    color: #ccc;
+    > .divider {
+      padding: 0 5px;
+      color: #ccc;
+    }
   }
   .active {
     color: $grayLight;

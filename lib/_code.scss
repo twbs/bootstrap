@@ -19,6 +19,7 @@ code {
   color: #d14;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+  white-space: nowrap;
 }
 
 // Blocks of code
@@ -46,6 +47,8 @@ pre {
   code {
     padding: 0;
     color: inherit;
+    white-space: pre;
+    white-space: pre-wrap;
     background-color: transparent;
     border: 0;
   }

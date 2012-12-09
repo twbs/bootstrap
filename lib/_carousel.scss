@@ -15,50 +15,50 @@
   position: relative;
 }
 
-.carousel {
+.carousel-inner {
 
-  .item {
+  > .item {
     display: none;
     position: relative;
     @include transition(.6s ease-in-out left);
   }
 
   // Account for jankitude on images
-  .item > img {
+  > .item > img {
     display: block;
     line-height: 1;
   }
 
-  .active,
-  .next,
-  .prev { display: block; }
+  > .active,
+  > .next,
+  > .prev { display: block; }
 
-  .active {
+  > .active {
     left: 0;
   }
 
-  .next,
-  .prev {
+  > .next,
+  > .prev {
     position: absolute;
     top: 0;
     width: 100%;
   }
 
-  .next {
+  > .next {
     left: 100%;
   }
-  .prev {
+  > .prev {
     left: -100%;
   }
-  .next.left,
-  .prev.right {
+  > .next.left,
+  > .prev.right {
     left: 0;
   }
 
-  .active.left {
+  > .active.left {
     left: -100%;
   }
-  .active.right {
+  > .active.right {
     left: 100%;
   }
 

@@ -111,6 +111,7 @@
   border: 0;
 }
 
+
 // FONTS
 // --------------------------------------------------
 
@@ -158,7 +159,7 @@
 // Mixin for form field states
 @mixin formFieldState($textColor: #555, $borderColor: #ccc, $backgroundColor: #f5f5f5) {
   // Set the text color
-  > label,
+  .control-label,
   .help-block,
   .help-inline {
     color: $textColor;
@@ -256,7 +257,6 @@
        -o-transition: $transition;
           transition: $transition;
 }
-
 @mixin transition-delay($transition-delay) {
   -webkit-transition-delay: $transition-delay;
      -moz-transition-delay: $transition-delay;
@@ -413,7 +413,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=1); // IE9 and down
 }
 @mixin gradient-vertical($startColor: #555, $endColor: #333) {
-  background-color: mix($startColor, $endColor, 62.5%);
+  background-color: mix($startColor, $endColor, 60%);
   background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
   background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
