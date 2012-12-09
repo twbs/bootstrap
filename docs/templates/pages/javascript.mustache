@@ -63,9 +63,17 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 </pre>
           <p>{{_i}}Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.{{/i}}</p>
 
+          <h3>{{_i}}No Conflict{{/i}}</h3>
+          <p>{{_i}}Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances,  namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.{{/i}}</p>
+
+<pre class="prettyprint linenums">
+var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
+$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
+</pre>
+
           <h3>{{_i}}Events{{/i}}</h3>
           <p>{{_i}}Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.{{/i}}</p>
-          <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.{{/i}}</p>
+          <p>{{_i}}All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.{{/i}}</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
@@ -111,7 +119,7 @@ $('#myModal').on('show', function (e) {
           <h3>{{_i}}Static example{{/i}}</h3>
           <p>{{_i}}A rendered modal with header, body, and set of actions in the footer.{{/i}}</p>
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>{{_i}}Modal header{{/i}}</h3>
@@ -437,7 +445,7 @@ $('#myModal').on('hidden', function () {
 
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().dropdown('toggle')</h4>
-          <p>{{_i}}A programatic api for toggling menus for a given navbar or tabbed navigation.{{/i}}</p>
+          <p>{{_i}}A programmatic api for toggling menus for a given navbar or tabbed navigation.{{/i}}</p>
         </section>
 
 
@@ -566,7 +574,7 @@ $('[data-spy="scroll"]').each(function () {
 
 
           <h2>{{_i}}Example tabs{{/i}}</h2>
-          <p>{{_i}}Add quick, dynamic tab functionality to transiton through panes of local content, even via dropdown menus.{{/i}}</p>
+          <p>{{_i}}Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.{{/i}}</p>
           <div class="bs-docs-example">
             <ul id="myTab" class="nav nav-tabs">
               <li class="active"><a href="#home" data-toggle="tab">{{_i}}Home{{/i}}</a></li>
@@ -1054,7 +1062,7 @@ $('#my-alert').bind('closed', function () {
             <p>{{_i}}Do more with buttons. Control button states or create groups of buttons for more components like toolbars.{{/i}}</p>
 
             <h4>{{_i}}Stateful{{/i}}</h4>
-            <p>{{_i}}Add data-loading-text="Loading..." to use a loading state on a button.{{/i}}</p>
+            <p>{{_i}}Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.{{/i}}</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
                 {{_i}}Loading state{{/i}}
@@ -1063,14 +1071,14 @@ $('#my-alert').bind('closed', function () {
             <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;</pre>
 
             <h4>{{_i}}Single toggle{{/i}}</h4>
-            <p>{{_i}}Add data-toggle="button" to activate toggling on a single button.{{/i}}</p>
+            <p>{{_i}}Add <code>data-toggle="button"</code> to activate toggling on a single button.{{/i}}</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" class="btn btn-primary" data-toggle="button">{{_i}}Single Toggle{{/i}}</button>
             </div>{{! /example }}
-            <pre class="prettyprint linenums">&lt;button type="button" class="btn" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
+            <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
 
             <h4>{{_i}}Checkbox{{/i}}</h4>
-            <p>{{_i}}Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.{{/i}}</p>
+            <p>{{_i}}Add <code>data-toggle="buttons-checkbox"</code> for checkbox style toggling on btn-group.{{/i}}</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-checkbox">
                 <button type="button" class="btn btn-primary">{{_i}}Left{{/i}}</button>
@@ -1080,14 +1088,14 @@ $('#my-alert').bind('closed', function () {
             </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="btn-group" data-toggle="buttons-checkbox"&gt;
-  &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
             <h4>{{_i}}Radio{{/i}}</h4>
-            <p>{{_i}}Add data-toggle="buttons-radio" for radio style toggling on btn-group.{{/i}}</p>
+            <p>{{_i}}Add <code>data-toggle="buttons-radio"</code> for radio style toggling on btn-group.{{/i}}</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-radio">
                 <button type="button" class="btn btn-primary">{{_i}}Left{{/i}}</button>
@@ -1097,9 +1105,9 @@ $('#my-alert').bind('closed', function () {
             </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div class="btn-group" data-toggle="buttons-radio"&gt;
-  &lt;button type="button" class="btn"&gt;Left&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Right&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
+  &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1617,7 +1625,7 @@ $('[data-spy="affix"]').each(function () {
                <td>{{_i}}offset{{/i}}</td>
                <td>{{_i}}number | function | object{{/i}}</td>
                <td>{{_i}}10{{/i}}</td>
-               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provide, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provided an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
+               <td>{{_i}}Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and left directions. To listen for a single direction, or multiple unique offsets, just provide an object <code>offset: { x: 10 }</code>. Use a function when you need to dynamically provide an offset (useful for some responsive designs).{{/i}}</td>
              </tr>
             </tbody>
           </table>
