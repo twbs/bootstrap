@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-tabs")
 
+      test("should provide no conflict", function () {
+        var tab = $.fn.tab.noConflict()
+        ok(!$.fn.tab, 'tab was set back to undefined (org value)')
+        $.fn.tab = tab
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).tab, 'tabs method is defined')
       })

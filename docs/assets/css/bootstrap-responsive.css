@@ -8,6 +8,10 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+@-ms-viewport {
+  width: device-width;
+}
+
 .clearfix {
   *zoom: 1;
 }

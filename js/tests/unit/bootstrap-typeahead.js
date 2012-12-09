@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-typeahead")
 
+      test("should provide no conflict", function () {
+        var typeahead = $.fn.typeahead.noConflict()
+        ok(!$.fn.typeahead, 'typeahead was set back to undefined (org value)')
+        $.fn.typeahead = typeahead
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).typeahead, 'alert method is defined')
       })
@@ -32,7 +38,9 @@ $(function () {
       })
 
       test("should show menu when query entered", function () {
-        var $input = $('<input />').typeahead({
+        var $input = $('<input />')
+            .appendTo('body')
+            .typeahead({
               source: ['aa', 'ab', 'ac']
             })
           , typeahead = $input.data('typeahead')
@@ -44,6 +52,7 @@ $(function () {
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
         equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 
@@ -52,7 +61,7 @@ $(function () {
               source: function () {
                 return ['aa', 'ab', 'ac']
               }
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         $input.val('a')
@@ -62,6 +71,7 @@ $(function () {
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
         equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 
@@ -70,7 +80,7 @@ $(function () {
               source: function (query, process) {
                 process(['aa', 'ab', 'ac'])
               }
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         $input.val('a')
@@ -80,13 +90,14 @@ $(function () {
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
         equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 
       test("should not explode when regex chars are entered", function () {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac', 'mdo*', 'fat+']
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         $input.val('+')
@@ -96,6 +107,7 @@ $(function () {
         equals(typeahead.$menu.find('li').length, 1, 'has 1 item in menu')
         equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 
@@ -103,7 +115,7 @@ $(function () {
         stop()
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         $input.val('a')
@@ -120,13 +132,14 @@ $(function () {
           start()
         }, 200)
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 
       test("should set next item when down arrow is pressed", function () {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         $input.val('a')
@@ -137,21 +150,38 @@ $(function () {
         equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
         ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is active")
 
+        // simulate entire key pressing event
         $input.trigger({
           type: 'keydown'
+        , keyCode: 40
+        })
+        .trigger({
+          type: 'keypress'
+        , keyCode: 40
+        })
+        .trigger({
+          type: 'keyup'
         , keyCode: 40
         })
 
         ok(typeahead.$menu.find('li').first().next().hasClass('active'), "second item is active")
 
-
         $input.trigger({
           type: 'keydown'
+        , keyCode: 38
+        })
+        .trigger({
+          type: 'keypress'
+        , keyCode: 38
+        })
+        .trigger({
+          type: 'keyup'
         , keyCode: 38
         })
 
         ok(typeahead.$menu.find('li').first().hasClass('active'), "first item is active")
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 
@@ -159,7 +189,7 @@ $(function () {
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
           , changed = false
 
@@ -174,6 +204,7 @@ $(function () {
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
         ok(changed, 'a change event was fired')
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 
@@ -181,7 +212,7 @@ $(function () {
         var $input = $('<input />').typeahead({
               source: ['aaaa', 'aaab', 'aaac'],
               minLength: 3
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         $input.val('aa')
@@ -194,6 +225,7 @@ $(function () {
 
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 })

@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-dropdowns")
 
+      test("should provide no conflict", function () {
+        var dropdown = $.fn.dropdown.noConflict()
+        ok(!$.fn.dropdown, 'dropdown was set back to undefined (org value)')
+        $.fn.dropdown = dropdown
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).dropdown, 'dropdown method is defined')
       })
@@ -104,7 +110,7 @@ $(function () {
       })
 
       test("should remove open class if body clicked, with multiple drop downs", function () {
-          var dropdownHTML = 
+          var dropdownHTML =
             '<ul class="nav">'
             + '    <li><a href="#menu1">Menu 1</a></li>'
             + '    <li class="dropdown" id="testmenu">'
@@ -126,7 +132,7 @@ $(function () {
           , last = dropdowns.last()
 
         ok(dropdowns.length == 2, "Should be two dropdowns")
-          
+
         first.click()
         ok(first.parents('.open').length == 1, 'open class added on click')
         ok($('#qunit-fixture .open').length == 1, 'only one object is open')

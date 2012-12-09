@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-carousel")
 
+      test("should provide no conflict", function () {
+        var carousel = $.fn.carousel.noConflict()
+        ok(!$.fn.carousel, 'carousel was set back to undefined (org value)')
+        $.fn.carousel = carousel
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).carousel, 'carousel method is defined')
       })
