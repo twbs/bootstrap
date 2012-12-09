@@ -135,7 +135,7 @@ $("#myModal").modal('show')                // initializes and invokes show immed
           <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
           <h3>No Conflict</h3>
-          <p>Sometimes it's neccessary to use bootstrap plugins with other ui frameworks. In these circumstances, occasionally namespace collisions can occur. If this happens, you may call <code>.noCoflict</code> on the plugin you wish to revert the value of.</p>
+          <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances,  namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
 
 <pre class="prettyprint linenums">
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
