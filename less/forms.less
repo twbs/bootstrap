@@ -138,7 +138,6 @@ input[type="checkbox"] {
   *margin-top: 0; /* IE7 */
   margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
-  cursor: pointer;
 }
 
 // Reset width of input images, buttons, radios, checkboxes
@@ -367,9 +366,9 @@ input[type="checkbox"][readonly] {
 
 // HTML5 invalid states
 // Shares styles with the .control-group.error above
-input:focus:required:invalid,
-textarea:focus:required:invalid,
-select:focus:required:invalid {
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
   &:focus {
@@ -463,7 +462,8 @@ select:focus:required:invalid {
     border: 1px solid #ccc;
   }
   .add-on,
-  .btn {
+  .btn,
+  .btn-group > .dropdown-toggle {
     vertical-align: top;
     .border-radius(0);
   }
@@ -490,7 +490,7 @@ select:focus:required:invalid {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
-    + .btn-group .btn {
+    + .btn-group .btn:last-child {
       .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     }
   }
@@ -500,7 +500,8 @@ select:focus:required:invalid {
     margin-left: -1px;
   }
   .add-on:last-child,
-  .btn:last-child {
+  .btn:last-child,
+  .btn-group:last-child > .dropdown-toggle {
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
@@ -671,7 +672,10 @@ legend + .control-group {
   // And apply it only to .help-block instances that follow a form control
   input,
   select,
-  textarea {
+  textarea,
+  .uneditable-input,
+  .input-prepend,
+  .input-append {
     + .help-block {
       margin-top: @baseLineHeight / 2;
     }

@@ -10,7 +10,6 @@
 .navbar {
   overflow: visible;
   margin-bottom: @baseLineHeight;
-  color: @navbarText;
 
   // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
   *position: relative;
@@ -67,6 +66,7 @@
 .navbar-text {
   margin-bottom: 0;
   line-height: @navbarHeight;
+  color: @navbarText;
 }
 
 // Janky solution for now to account for links outside the .nav
@@ -123,7 +123,7 @@
   }
   .input-append,
   .input-prepend {
-    margin-top: 6px;
+    margin-top: 5px;
     white-space: nowrap; // preven two  items from separating within a .navbar-form that has .pull-left
     input {
       margin-top: 0; // remove the margin on top since it's on the parent
@@ -245,6 +245,7 @@
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
+
 }
 
 // Hover
@@ -334,6 +335,12 @@
   }
 }
 
+// Caret should match text color on hover
+.navbar .nav li.dropdown > a:hover .caret {
+  border-top-color: @navbarLinkColorActive;
+  border-bottom-color: @navbarLinkColorActive;
+}
+
 // Remove background color from open dropdown
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
@@ -379,7 +386,6 @@
 // -------------------------
 
 .navbar-inverse {
-  color: @navbarInverseText;
 
   .navbar-inner {
     #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
@@ -393,6 +399,14 @@
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
+  }
+
+  .brand {
+    color: @navbarInverseBrandColor;
+  }
+
+  .navbar-text {
+    color: @navbarInverseText;
   }
 
   .nav > li > a:focus,
@@ -428,6 +442,10 @@
   .nav li.dropdown.open.active > .dropdown-toggle {
     background-color: @navbarInverseLinkBackgroundActive;
     color: @navbarInverseLinkColorActive;
+  }
+  .nav li.dropdown > a:hover .caret {
+    border-top-color: @navbarInverseLinkColorActive;
+    border-bottom-color: @navbarInverseLinkColorActive;
   }
   .nav li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbarInverseLinkColor;
@@ -470,6 +488,3 @@
   }
 
 }
-
-
-

@@ -14,7 +14,6 @@
   margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
-  *line-height: @baseLineHeight;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -30,8 +29,6 @@
   &:hover {
     color: @grayDark;
     text-decoration: none;
-    background-color: darken(@white, 10%);
-    *background-color: darken(@white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
     background-position: 0 -15px;
 
     // transition is only when going to hover, otherwise the background
@@ -47,8 +44,6 @@
   // Active state
   &.active,
   &:active {
-    background-color: darken(@white, 10%);
-    background-color: darken(@white, 15%) e("\9");
     background-image: none;
     outline: 0;
     .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
@@ -58,7 +53,6 @@
   &.disabled,
   &[disabled] {
     cursor: default;
-    background-color: darken(@white, 10%);
     background-image: none;
     .opacity(65);
     .box-shadow(none);
@@ -79,7 +73,7 @@
 }
 .btn-large [class^="icon-"],
 .btn-large [class*=" icon-"] {
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 // Small
@@ -91,6 +85,10 @@
 .btn-small [class^="icon-"],
 .btn-small [class*=" icon-"] {
   margin-top: 0;
+}
+.btn-mini [class^="icon-"],
+.btn-mini [class*=" icon-"] {
+  margin-top: -1px;
 }
 
 // Mini

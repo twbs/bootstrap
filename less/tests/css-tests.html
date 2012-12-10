@@ -22,11 +22,11 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../../docs/assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../docs/assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../docs/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../docs/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../docs/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../../docs/assets/ico/favicon.png">
   </head>
 
   <body>
@@ -107,13 +107,13 @@
 
 <div class="row">
   <div class="span4">
-    <img src="http://placehold.it/600x600" height="200">
+    <img data-src="holder.js/600x600" height="200">
   </div>
   <div class="span4">
-    <img src="http://placehold.it/600x600">
+    <img data-src="holder.js/600x600">
   </div>
   <div class="span4">
-    <img src="http://placehold.it/600x600">
+    <img data-src="holder.js/600x600">
   </div>
 </div>
 
@@ -121,13 +121,13 @@
 
 <div class="row">
   <div class="span4">
-    <img src="http://placehold.it/600x900" style="width: 200px;">
+    <img data-src="holder.js/600x900" style="width: 200px;">
   </div>
   <div class="span4">
-    <img src="http://placehold.it/200x300">
+    <img data-src="holder.js/200x300">
   </div>
   <div class="span4">
-    <img src="http://placehold.it/600x600">
+    <img data-src="holder.js/600x600">
   </div>
 </div>
 
@@ -593,6 +593,55 @@
   </div>
 </div><!--/row-->
 
+<h4>Nesting and striping</h4>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Test</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                test
+              </td>
+              <td>
+                test
+              </td>
+            </tr>
+            <tr>
+              <td>
+                test
+              </td>
+              <td>
+                test
+              </td>
+            </tr>
+            <tr>
+              <td>
+                test
+              </td>
+              <td>
+                test
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h4>Fluid grid sizing</h4>
 <div class="row-fluid">
   <div class="span12">
@@ -996,16 +1045,16 @@
 <h4>Default thumbnails (no grid sizing)</h4>
 <ul class="thumbnails">
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
 </ul>
 
@@ -1014,17 +1063,17 @@
 <ul class="thumbnails">
   <li class="span3 offset3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
 </ul>
@@ -1034,17 +1083,17 @@
 <ul class="thumbnails">
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3 offset3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
 </ul>
@@ -1055,17 +1104,17 @@
     <ul class="thumbnails">
       <li class="span4">
         <a href="#" class="thumbnail">
-          <img src="http://placehold.it/260x180" alt="">
+          <img data-src="holder.js/260x180" alt="">
         </a>
       </li>
       <li class="span4">
         <a href="#" class="thumbnail">
-          <img src="http://placehold.it/260x180" alt="">
+          <img data-src="holder.js/260x180" alt="">
         </a>
       </li>
       <li class="span4">
         <a href="#" class="thumbnail">
-          <img src="http://placehold.it/260x180" alt="">
+          <img data-src="holder.js/260x180" alt="">
         </a>
       </li>
     </ul>

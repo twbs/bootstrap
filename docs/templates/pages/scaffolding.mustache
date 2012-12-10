@@ -52,7 +52,7 @@
           <p>{{_i}}These styles can be found within <strong>scaffolding.less</strong>.{{/i}}</p>
 
           <h3>{{_i}}Reset via Normalize{{/i}}</h3>
-          <p>{{_i}}With Bootstrap 2, the old reset block has been dropped in favor of <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> that also powers the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a>. While we use much of Normalize within our <strong>reset.less</strong>, we have removed some elements specifically for Bootstrap.{{/i}}</p>
+          <p>{{_i}}With Bootstrap 2, the old reset block has been dropped in favor of <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a> that also powers the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a>. While we use much of Normalize within our <strong>reset.less</strong>, we have removed some elements specifically for Bootstrap.{{/i}}</p>
 
         </section>
 
@@ -230,13 +230,21 @@
 </pre>
 
           <h2>{{_i}}Fluid nesting{{/i}}</h2>
-          <p>{{_i}}Nesting with fluid grids is a bit different: the number of nested columns should not match the parent's number of columns. Instead, each level of nested columns are reset because each row takes up 100% of the parent column.{{/i}}</p>
+          <p>{{_i}}Fluid grids utilize nesting differently: each nested level of columns should add up to 12 columns. This is because the fluid grid uses percentages, not pixels, for setting widths.{{/i}}</p>
           <div class="row-fluid show-grid">
             <div class="span12">
               {{_i}}Fluid 12{{/i}}
               <div class="row-fluid show-grid">
                 <div class="span6">
                   {{_i}}Fluid 6{{/i}}
+                  <div class="row-fluid show-grid">
+                    <div class="span6">
+                      {{_i}}Fluid 6{{/i}}
+                    </div>
+                    <div class="span6">
+                      {{_i}}Fluid 6{{/i}}
+                    </div>
+                  </div>
                 </div>
                 <div class="span6">
                   {{_i}}Fluid 6{{/i}}
@@ -249,7 +257,13 @@
   &lt;div class="span12"&gt;
     {{_i}}Fluid 12{{/i}}
     &lt;div class="row-fluid"&gt;
-      &lt;div class="span6"&gt;{{_i}}Fluid 6{{/i}}&lt;/div&gt;
+      &lt;div class="span6"&gt;
+        {{_i}}Fluid 6{{/i}}
+        &lt;div class="row-fluid"&gt;
+          &lt;div class="span6"&gt;{{_i}}Fluid 6{{/i}}&lt;/div&gt;
+          &lt;div class="span6"&gt;{{_i}}Fluid 6{{/i}}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
       &lt;div class="span6"&gt;{{_i}}Fluid 6{{/i}}&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;

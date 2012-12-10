@@ -2,6 +2,12 @@ $(function () {
 
     module("bootstrap-collapse")
 
+      test("should provide no conflict", function () {
+        var collapse = $.fn.collapse.noConflict()
+        ok(!$.fn.collapse, 'collapse was set back to undefined (org value)')
+        $.fn.collapse = collapse
+      })
+
       test("should be defined on jquery object", function () {
         ok($(document.body).collapse, 'collapse method is defined')
       })

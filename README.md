@@ -1,5 +1,4 @@
-[Twitter Bootstrap](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
-=================
+# [Twitter Bootstrap v2.2.2](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
 
@@ -7,15 +6,17 @@ To get started, checkout http://getbootstrap.com!
 
 
 
-Quick start
------------
+## Quick start
 
-Clone the repo, `git clone git://github.com/twitter/bootstrap.git`, [download the latest release](https://github.com/twitter/bootstrap/zipball/master), or install with twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
+Three quick start options are available:
+
+* [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
+* Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
+* Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
 
 
 
-Versioning
-----------
+## Versioning
 
 For transparency and insight into our release cycle, and for striving to maintain backward compatibility, Bootstrap will be maintained under the Semantic Versioning guidelines as much as possible.
 
@@ -33,51 +34,24 @@ For more information on SemVer, please visit http://semver.org/.
 
 
 
-Bug tracker
------------
+## Bug tracker
 
-Have a bug? Please create an issue here on GitHub that conforms with [necolas's guidelines](https://github.com/necolas/issue-guidelines).
-
-https://github.com/twitter/bootstrap/issues
+Have a bug or a feature request? [Please open a new issue](https://github.com/twitter/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
 
 
 
-Twitter account
----------------
+## Community
 
-Keep up to date on announcements and more by following Bootstrap on Twitter, [@TwBootstrap](http://twitter.com/TwBootstrap).
+Keep track of development and community news.
 
-
-
-Blog
-----
-
-Read more detailed announcements, discussions, and more on [The Official Twitter Bootstrap Blog](http://blog.getbootstrap.com).
+* Follow [@twbootstrap on Twitter](http://twitter.com/twbootstrap).
+* Read and subscribe to the [The Official Twitter Bootstrap Blog](http://blog.getbootstrap.com).
+* Have a question that's not a feature request or bug report? [Ask on the mailing list.](http://groups.google.com/group/twitter-bootstrap)
+* Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 
 
 
-Mailing list
-------------
-
-Have a question? Ask on our mailing list!
-
-twitter-bootstrap@googlegroups.com
-
-http://groups.google.com/group/twitter-bootstrap
-
-
-
-IRC
----
-
-Server: irc.freenode.net
-
-Channel: ##twitter-bootstrap (the double ## is not a typo)
-
-
-
-Developers
-----------
+## Developers
 
 We have included a makefile with convenience methods for working with the Bootstrap library.
 
@@ -99,20 +73,20 @@ This is a convenience method for watching just Less files and automatically buil
 
 
 
-Contributing
-------------
+## Contributing
 
-Please submit all pull requests against *-wip branches. If your unit test contains javascript patches or features, you must include relevant unit tests. Thanks!
+Please submit all pull requests against *-wip branches. If your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
+
+Thanks!
 
 
 
-Authors
--------
+## Authors
 
 **Mark Otto**
 
 + http://twitter.com/mdo
-+ http://github.com/markdotto
++ http://github.com/mdo
 
 **Jacob Thornton**
 
@@ -121,8 +95,7 @@ Authors
 
 
 
-Copyright and license
----------------------
+## Copyright and license
 
 Copyright 2012 Twitter, Inc.
 
