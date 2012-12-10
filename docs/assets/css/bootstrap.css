@@ -3744,8 +3744,6 @@ input[type="submit"].btn.btn-mini {
   margin-left: 0;
 }
 
-.btn-mini .caret,
-.btn-small .caret,
 .btn-large .caret {
   margin-top: 6px;
 }
@@ -3754,6 +3752,11 @@ input[type="submit"].btn.btn-mini {
   border-top-width: 5px;
   border-right-width: 5px;
   border-left-width: 5px;
+}
+
+.btn-mini .caret,
+.btn-small .caret {
+  margin-top: 8px;
 }
 
 .dropup .btn-large .caret {
