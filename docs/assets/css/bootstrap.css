@@ -6014,6 +6014,10 @@ a.badge:hover {
   line-height: 30px;
 }
 
+@-ms-viewport {
+  width: device-width;
+}
+
 .pull-right {
   float: right;
 }
