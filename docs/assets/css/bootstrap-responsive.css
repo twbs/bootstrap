@@ -40,6 +40,10 @@
           box-sizing: border-box;
 }
 
+@-ms-viewport {
+  width: device-width;
+}
+
 .hidden {
   display: none;
   visibility: hidden;
