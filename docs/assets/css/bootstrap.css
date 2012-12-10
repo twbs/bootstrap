@@ -903,6 +903,7 @@ textarea::-webkit-input-placeholder {
 
 .radio label,
 .checkbox label {
+  margin-bottom: 0;
   font-weight: normal;
 }
 

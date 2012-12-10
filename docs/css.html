@@ -1185,34 +1185,46 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
           <h4>Default (stacked)</h4>
           <form class="bs-docs-example">
-            <label class="checkbox">
-              <input type="checkbox" value="">
-              Option one is this and that&mdash;be sure to include why it's great
-            </label>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Option one is this and that&mdash;be sure to include why it's great
+              </label>
+            </div>
             <br>
-            <label class="radio">
-              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-              Option one is this and that&mdash;be sure to include why it's great
-            </label>
-            <label class="radio">
-              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-              Option two can be something else and selecting it will deselect option one
-            </label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                Option one is this and that&mdash;be sure to include why it's great
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+              </label>
+            </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;label class="checkbox"&gt;
-  &lt;input type="checkbox" value=""&gt;
-  Option one is this and that&mdash;be sure to include why it's great
-&lt;/label&gt;
+&lt;div class="checkbox"&gt;
+  &lt;label&gt;
+    &lt;input type="checkbox" value=""&gt;
+    Option one is this and that&mdash;be sure to include why it's great
+  &lt;/label&gt;
+&lt;/div&gt;
 
-&lt;label class="radio"&gt;
-  &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
-  Option one is this and that&mdash;be sure to include why it's great
-&lt;/label&gt;
-&lt;label class="radio"&gt;
-  &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
-  Option two can be something else and selecting it will deselect option one
-&lt;/label&gt;
+&lt;div class="radio"&gt;
+  &lt;label&gt;
+    &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
+    Option one is this and that&mdash;be sure to include why it's great
+  &lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="radio"&gt;
+  &lt;label&gt;
+    &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
+    Option two can be something else and selecting it will deselect option one
+  &lt;/label&gt;
+&lt;/div&gt;
 </pre>
 
           <h4>Inline checkboxes</h4>
