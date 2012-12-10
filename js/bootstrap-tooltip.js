@@ -36,8 +36,6 @@
     constructor: Tooltip
 
   , init: function (type, element, options) {
-      var eventIn
-        , eventOut
 
       this.type = type
       this.$element = $(element)
@@ -46,11 +44,11 @@
 
       if (this.options.trigger == 'click') {
         this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
-      } else if (this.options.trigger != 'manual') {
-        eventIn = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
-        eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
-        this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+      } else if (this.options.trigger != 'manual' && (this.options.trigger == 'hover' || this.options.trigger == 'focus')){
+        this.$element.on('mouseenter.' + this.type, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on('mouseleave.' + this.type, this.options.selector, $.proxy(this.leave, this))
+        this.$element.on('focus.' + this.type, this.options.selector, $.proxy(this.enter, this))
+        this.$element.on('blur.' + this.type, this.options.selector, $.proxy(this.leave, this))
       }
 
       this.options.selector ?
@@ -103,6 +101,7 @@
         , actualHeight
         , placement
         , tp
+        , tooltipID
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
@@ -111,6 +110,10 @@
         if (this.options.animation) {
           $tip.addClass('fade')
         }
+
+        tooltipID = $tip.attr("id") || "ui-tooltip"
+        $tip.attr("id", tooltipID)
+        this.$element.attr("aria-describedby", tooltipID)
 
         placement = typeof this.options.placement == 'function' ?
           this.options.placement.call(this, $tip[0], this.$element[0]) :
@@ -174,6 +177,8 @@
           $tip.detach()
         })
       }
+
+      this.$element.removeAttr("aria-describedby")
 
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
@@ -268,7 +273,7 @@
     animation: true
   , placement: 'top'
   , selector: false
-  , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+  , template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
   , title: ''
   , delay: 0
