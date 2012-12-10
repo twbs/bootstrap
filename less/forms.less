@@ -421,273 +421,112 @@ select:focus:invalid {
 
 
 
-// INPUT GROUPS
-// ------------
 
-// Allow us to put symbols and text within the input field for a cleaner look
-.input-append,
-.input-prepend {
-  margin-bottom: 5px;
-  font-size: 0; // white space collapse hack
-  white-space: nowrap; // Prevent span and input from separating
+// Input groups
+// --------------------------------------------------
 
-  // Reset the white space collapse hack
-  input,
-  select,
-  .uneditable-input,
-  .dropdown-menu {
-    font-size: @font-size-base;
+// Base styles
+// -------------------------
+.input-group {
+  display: table;
+
+  // Undo padding and float of grid classes
+  &[class*="span"] {
+    float: none;
+    padding: 0;
   }
 
   input,
   select,
   .uneditable-input {
-    position: relative; // placed here by default so that on :focus we can place the input above the .add-on for full border and box-shadow goodness
-    float: none; // Undo the float from grid sizing
-    margin: 0; // Prevent bottom margin from screwing up alignment in stacked forms
-    font-size: @font-size-base;
-    vertical-align: top;
-    border-radius: 0 @input-border-radius @input-border-radius 0;
-    // Make input on top when focused so blue border and shadow always show
-    &:focus {
-      z-index: 2;
-    }
-  }
-  input[class*="span"],
-  select[class*="span"],
-  .uneditable-input[class*="span"] {
-    margin: 0;
-  }
-  .add-on {
-    display: inline-block;
-    width: auto;
-    height: @line-height-base;
-    min-width: 16px;
-    padding: 6px;
-    font-size: @font-size-base;
-    font-weight: normal;
-    line-height: @line-height-base;
-    text-align: center;
-    text-shadow: 0 1px 0 #fff;
-    background-color: @grayLighter;
-    border: 1px solid #ccc;
-  }
-  .add-on,
-  .btn,
-  .btn-group > .dropdown-toggle {
-    vertical-align: top;
-    border-radius: 0;
-  }
-  .active {
-    background-color: @state-success-background;
-    border-color: @state-success-text;
+    width: 100%;
   }
 }
 
-.input-prepend {
-  .add-on,
-  .btn {
-    margin-right: -1px;
-  }
-  .add-on:first-child,
-  .btn:first-child {
-    // FYI, `.btn:first-child` accounts for a button group that's prepended
-    border-radius: @input-border-radius 0 0 @input-border-radius;
-  }
+// Display as table-cell
+// -------------------------
+.input-group-addon,
+.input-group-btn,
+.input-group input,
+.input-group .uneditable-input {
+  display: table-cell;
+  margin: 0;
+  border-radius: 0;
+}
+// Addon and addon wrapper for buttons
+.input-group-addon,
+.input-group-btn {
+  width: 1%;
+  vertical-align: middle; // Match the inputs
 }
 
-.input-append {
-  input,
-  select,
-  .uneditable-input {
-    border-radius: @input-border-radius 0 0 @input-border-radius;
-    + .btn-group .btn,
-    + .btn-group .btn:last-child {
-      border-radius: 0 @input-border-radius @input-border-radius 0;
-    }
-  }
-  .add-on,
-  .btn,
-  .btn-group {
-    margin-left: -1px;
-  }
-  .add-on:last-child,
-  .btn:last-child,
-  .btn-group:last-child > .dropdown-toggle {
-    border-radius: 0 @input-border-radius @input-border-radius 0;
-  }
+// Text input groups
+// -------------------------
+.input-group-addon {
+  .box-sizing(border-box);
+  padding: 6px 8px;
+  font-size: @font-size-base;
+  font-weight: normal;
+  line-height: @line-height-base;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  background-color: @grayLighter;
+  border: 1px solid #ccc;
 }
 
-// Remove all border-radius for inputs with both prepend and append
-.input-prepend.input-append {
-  input,
-  select,
-  .uneditable-input {
-    border-radius: 0;
-    + .btn-group .btn {
-      border-radius: 0 @input-border-radius @input-border-radius 0;
-    }
-  }
-  .add-on:first-child,
-  .btn:first-child {
-    margin-right: -1px;
-    border-radius: @input-border-radius 0 0 @input-border-radius;
-  }
-  .add-on:last-child,
-  .btn:last-child {
-    margin-left: -1px;
-    border-radius: 0 @input-border-radius @input-border-radius 0;
-  }
-  .btn-group:first-child {
-    margin-left: 0;
-  }
+// Reset rounded corners
+.input-group input:first-child,
+.input-group .uneditable-input:first-child,
+.input-group-addon:first-child {
+  .border-left-radius(@border-radius-base);
+}
+.input-group-addon:first-child {
+  border-right: 0;
+}
+.input-group input:last-child,
+.input-group .uneditable-input:last-child,
+.input-group-addon:last-child {
+  .border-right-radius(@border-radius-base);
+}
+.input-group-addon:last-child {
+  border-left: 0;
 }
 
-
-
-
-// SEARCH FORM
-// -----------
-
-input.search-query {
-  padding-right: 14px;
-  padding-right: 4px \9;
-  padding-left: 14px;
-  padding-left: 4px \9; /* IE8 doesn't have border radius, so don't indent the padding */
-  margin-bottom: 0; // Remove the default margin on all inputs
-  border-radius: @input-border-radius-search;
+// Button input groups
+// -------------------------
+.input-group-btn,
+.input-group-btn .btn {
+  white-space: nowrap;
 }
-
-/* Allow for input prepend/append in search forms */
-.form-search .input-append .search-query,
-.form-search .input-prepend .search-query {
-  border-radius: 0; // Override due to specificity
-}
-.form-search .input-append .search-query {
-  border-radius: @input-border-radius-search 0 0 @input-border-radius-search;
-}
-.form-search .input-append .btn {
-  border-radius: 0 @input-border-radius-search @input-border-radius-search 0;
-}
-.form-search .input-prepend .search-query {
-  border-radius: 0 @input-border-radius-search @input-border-radius-search 0;
-}
-.form-search .input-prepend .btn {
-  border-radius: @input-border-radius-search 0 0 @input-border-radius-search;
-}
-
-
-
-
-// HORIZONTAL & VERTICAL FORMS
-// ---------------------------
-
-// Common properties
-// -----------------
-
-.form-search,
-.form-inline,
-.form-horizontal {
-  input,
-  textarea,
-  select,
-  .help-inline,
-  .uneditable-input,
-  .input-prepend,
-  .input-append {
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
-  // Re-hide hidden elements due to specifity
-  .hide {
-    display: none;
+.input-group-btn > .btn {
+  float: left; // Collapse white-space
+  border-radius: 0;
+  + .btn {
+    border-left: 0;
   }
 }
-.form-search label,
-.form-inline label,
-.form-search .btn-group,
-.form-inline .btn-group {
-  display: inline-block;
+.input-group-btn.btn-group {
+  display: table-cell;
 }
-// Remove margin for input-prepend/-append
-.form-search .input-append,
-.form-inline .input-append,
-.form-search .input-prepend,
-.form-inline .input-prepend {
-  margin-bottom: 0;
-}
-// Inline checkbox/radio labels (remove padding on left)
-.form-search .radio,
-.form-search .checkbox,
-.form-inline .radio,
-.form-inline .checkbox {
-  display: inline-block;
-  padding-left: 0;
-  label {
-    margin-bottom: 0;
-    vertical-align: middle;
+// Prepend
+.input-group-btn {
+  &:first-child > .btn:last-child,
+  &.btn-group:first-child > .btn {
+    border-right: 0;
+  }
+  &:first-child > .btn:first-child,
+  &.btn-group:first-child > .btn {
+    border-radius: @border-radius-base 0 0 @border-radius-base;
   }
 }
-// Remove float and margin, set to inline-block
-.form-search .radio input[type="radio"],
-.form-search .checkbox input[type="checkbox"],
-.form-inline .radio input[type="radio"],
-.form-inline .checkbox input[type="checkbox"] {
-  float: left;
-  margin-right: 3px;
-  margin-left: 0;
-}
-
-
-// Margin to space out fieldsets
-.control-group {
-  margin-bottom: @line-height-base / 2;
-}
-
-// Legend collapses margin, so next element is responsible for spacing
-legend + .control-group {
-  margin-top: @line-height-base;
-  -webkit-margin-top-collapse: separate;
-}
-
-// Horizontal-specific styles
-// --------------------------
-
-.form-horizontal {
-  // Increase spacing between groups
-  .control-group {
-    margin-bottom: @line-height-base;
-    .clearfix();
+// Append
+.input-group-btn {
+  &:last-child > .btn:first-child,
+  &.btn-group:last-child > .btn:first-child {
+    border-left: 0;
   }
-  // Float the labels left
-  .control-label {
-    float: left;
-    width: @component-offset-horizontal - 20;
-    padding-top: 5px;
-    text-align: right;
-  }
-  // Move over all input controls and content
-  .controls {
-    margin-left: @component-offset-horizontal;
-  }
-  // Remove bottom margin on block level help text since that's accounted for on .control-group
-  .help-block {
-    margin-bottom: 0;
-  }
-  // And apply it only to .help-block instances that follow a form control
-  input,
-  select,
-  textarea,
-  .uneditable-input,
-  .input-prepend,
-  .input-append {
-    + .help-block {
-      margin-top: @line-height-base / 2;
-    }
-  }
-  // Move over buttons in .form-actions to align with .controls
-  .form-actions {
-    padding-left: @component-offset-horizontal;
+  &:last-child > .btn:last-child,
+  &.btn-group:last-child > .btn {
+    border-radius: 0 @border-radius-base @border-radius-base 0;
   }
 }
