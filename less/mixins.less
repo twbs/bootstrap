@@ -555,7 +555,7 @@
 // The Grid
 #grid {
 
-  .core (@gridColumnWidth, @gridGutterWidth) {
+  .core (@gridColumnWidth, @gridGutterWidth, @cols: @gridColumns) {
 
     .spanX (@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
@@ -592,11 +592,11 @@
     .container,
     .navbar-static-top .container,
     .navbar-fixed-top .container,
-    .navbar-fixed-bottom .container { .span(@gridColumns); }
+    .navbar-fixed-bottom .container { .span(@cols); }
 
     // generate .spanX and .offsetX
-    .spanX (@gridColumns);
-    .offsetX (@gridColumns);
+    .spanX (@cols);
+    .offsetX (@cols);
 
   }
 
