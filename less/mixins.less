@@ -600,7 +600,7 @@
 
   }
 
-  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
+  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth, @cols: @gridColumns) {
 
     .spanX (@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
@@ -649,8 +649,8 @@
       }
 
       // generate .spanX and .offsetX
-      .spanX (@gridColumns);
-      .offsetX (@gridColumns);
+      .spanX (@cols);
+      .offsetX (@cols);
     }
 
   }
