@@ -655,7 +655,7 @@
 
   }
 
-  .input(@gridColumnWidth, @gridGutterWidth) {
+  .input(@gridColumnWidth, @gridGutterWidth, @cols: @gridColumns) {
 
     .spanX (@index) when (@index > 0) {
       (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
@@ -679,7 +679,7 @@
     }
 
     // generate .spanX
-    .spanX (@gridColumns);
+    .spanX (@cols);
 
   }
 
