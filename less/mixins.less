@@ -534,28 +534,28 @@
 }
 
 // Table columns
-.tableColumns(@columnSpan: 1) {
+.tableColumns(@columnSpan: 1, @columnWidth: @gridColumnWidth, @gutterWidth: @gridGutterWidth) {
   float: none; // undo default grid column styles
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
+  width: ((@columnWidth) * @columnSpan) + (@gutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
   margin-left: 0; // undo default grid column styles
 }
 
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-.makeRow() {
-  margin-left: @gridGutterWidth * -1;
+.makeRow(@gutterWidth: @gridGutterWidth) {
+  margin-left: @gutterWidth * -1;
   .clearfix();
 }
-.makeColumn(@columns: 1, @offset: 0) {
+.makeColumn(@columns: 1, @offset: 0, @columnWidth: @gridColumnWidth, @gutterWidth: @gridGutterWidth) {
   float: left;
-  margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
-  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+  margin-left: (@columnWidth * @offset) + (@gutterWidth * (@offset - 1)) + (@gutterWidth * 2);
+  width: (@columnWidth * @columns) + (@gutterWidth * (@columns - 1));
 }
 
 // The Grid
 #grid {
 
-  .core (@gridColumnWidth, @gridGutterWidth) {
+  .core (@gridColumnWidth, @gridGutterWidth, @cols: @gridColumns) {
 
     .spanX (@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
@@ -592,15 +592,15 @@
     .container,
     .navbar-static-top .container,
     .navbar-fixed-top .container,
-    .navbar-fixed-bottom .container { .span(@gridColumns); }
+    .navbar-fixed-bottom .container { .span(@cols); }
 
     // generate .spanX and .offsetX
-    .spanX (@gridColumns);
-    .offsetX (@gridColumns);
+    .spanX (@cols);
+    .offsetX (@cols);
 
   }
 
-  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
+  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth, @cols: @gridColumns) {
 
     .spanX (@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
@@ -649,13 +649,13 @@
       }
 
       // generate .spanX and .offsetX
-      .spanX (@gridColumns);
-      .offsetX (@gridColumns);
+      .spanX (@cols);
+      .offsetX (@cols);
     }
 
   }
 
-  .input(@gridColumnWidth, @gridGutterWidth) {
+  .input(@gridColumnWidth, @gridGutterWidth, @cols: @gridColumns) {
 
     .spanX (@index) when (@index > 0) {
       (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
@@ -679,7 +679,7 @@
     }
 
     // generate .spanX
-    .spanX (@gridColumns);
+    .spanX (@cols);
 
   }
 
