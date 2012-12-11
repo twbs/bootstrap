@@ -534,9 +534,9 @@
 }
 
 // Table columns
-.tableColumns(@columnSpan: 1) {
+.tableColumns(@columnSpan: 1, @columnWidth: @gridColumnWidth, @gutterWidth: @gridGutterWidth) {
   float: none; // undo default grid column styles
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
+  width: ((@columnWidth) * @columnSpan) + (@gutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
   margin-left: 0; // undo default grid column styles
 }
 
