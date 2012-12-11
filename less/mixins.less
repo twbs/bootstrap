@@ -546,10 +546,10 @@
   margin-left: @gutterWidth * -1;
   .clearfix();
 }
-.makeColumn(@columns: 1, @offset: 0) {
+.makeColumn(@columns: 1, @offset: 0, @columnWidth: @gridColumnWidth, @gutterWidth: @gridGutterWidth) {
   float: left;
-  margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
-  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+  margin-left: (@columnWidth * @offset) + (@gutterWidth * (@offset - 1)) + (@gutterWidth * 2);
+  width: (@columnWidth * @columns) + (@gutterWidth * (@columns - 1));
 }
 
 // The Grid
