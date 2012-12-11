@@ -542,8 +542,8 @@
 
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-.makeRow() {
-  margin-left: @gridGutterWidth * -1;
+.makeRow(@gutterWidth: @gridGutterWidth) {
+  margin-left: @gutterWidth * -1;
   .clearfix();
 }
 .makeColumn(@columns: 1, @offset: 0) {
