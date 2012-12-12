@@ -60,10 +60,10 @@
         height: this.$element[0].offsetHeight
       })
 
-      if (!this.$menu.parent())
+      if (!this.$menu.parent().length)
         this.$menu
           .insertAfter(this.$element)
-      
+
       this.$menu
         .css({
           top: pos.top + pos.height
