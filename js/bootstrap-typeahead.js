@@ -37,6 +37,9 @@
     this.$menu = $(this.options.menu)
     this.shown = false
     this.listen()
+    this.mode = this.options.mode || this.mode
+    this.delimiter = this.options.delimiter || this.delimiter
+    this.selections = []
   }
 
   Typeahead.prototype = {
@@ -44,10 +47,14 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      this.selections[this.selections.length > 0 ? this.selections.length - 1 : this.selections.length] = this.$menu.find('.active').attr('data-value');
+      
+      if ( this.mode === 'multiple' )
+          this.selections[this.selections.length - 1] += this.delimiter
+          
       this.$element
-        .val(this.updater(val))
-        .change()
+        .val(this.updater(this.selections.join( this.delimiter )))
+        .focus()
       return this.hide()
     }
 
@@ -82,6 +89,11 @@
       var items
 
       this.query = this.$element.val()
+      
+      if ( this.mode === 'multiple' ) {
+          this.selections = this.$element.val().split(this.delimiter);
+          this.query = this.selections[this.selections.length - 1];
+      }
 
       if (!this.query || this.query.length < this.options.minLength) {
         return this.shown ? this.hide() : this
