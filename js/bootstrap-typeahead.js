@@ -150,7 +150,7 @@
 
       this.$menu
         .filter('.dropdown-menu')
-        .add(this.$menu.children('.dropdown-menu'))
+        .add(this.$menu.find('.dropdown-menu'))
         .html(items)
 
       return this
