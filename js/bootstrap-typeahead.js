@@ -60,8 +60,11 @@
         height: this.$element[0].offsetHeight
       })
 
+      if (!this.$menu.parent())
+        this.$menu
+          .insertAfter(this.$element)
+      
       this.$menu
-        .insertAfter(this.$element)
         .css({
           top: pos.top + pos.height
         , left: pos.left
@@ -144,7 +147,12 @@
       })
 
       items.first().addClass('active')
-      this.$menu.html(items)
+
+      this.$menu
+        .filter('.dropdown-menu')
+        .add(this.$menu.children('.dropdown-menu'))
+        .html(items)
+
       return this
     }
 
