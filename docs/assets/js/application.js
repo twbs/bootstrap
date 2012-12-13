@@ -151,4 +151,20 @@ $.ajaxTransport('jsonpi', function(opts, originalOptions, jqXHR) {
   }
 })
 
+var items = ["alpha", "beta", "gamma", "delta", "epsilon"];
+
+$('body').on('keyup', '#dropdown-query', function(e){
+  // this is DCC (don't copy code)
+  var list = $(this).parents('li').parent();
+  var query = $(this).val();
+  list.find('li.result').remove();
+  if (query === '') return;
+  var result = items.filter(function(element){
+    return element.indexOf(query) > -1;
+  });
+  for (var i=0; i<result.length; i++) {
+    list.append('<li class="result"><a href="#">' + result[i] + '</a></li>');
+  }
+});
+
 }(window.jQuery)

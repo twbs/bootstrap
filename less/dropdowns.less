@@ -71,8 +71,8 @@
     .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
   }
 
-  // Links within the dropdown menu
-  a {
+  // Links and forms within the dropdown menu
+  a, form {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -80,6 +80,7 @@
     line-height: @baseLineHeight;
     color: @dropdownLinkColor;
     white-space: nowrap;
+    margin: 0;
   }
 }
 
