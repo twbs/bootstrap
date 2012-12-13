@@ -6,19 +6,20 @@
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: @heroUnitBackground;
-  .border-radius(6px);
+  font-size: 18px;
+  font-weight: 200;
+  line-height: @line-height-base * 1.5;
+  color: @hero-lead-color;
+  background-color: @hero-background;
+  border-radius: 6px;
   h1 {
     margin-bottom: 0;
     font-size: 60px;
     line-height: 1;
-    color: @heroUnitHeadingColor;
+    color: @hero-heading-color;
     letter-spacing: -1px;
   }
-  p {
-    font-size: 18px;
-    font-weight: 200;
-    line-height: @baseLineHeight * 1.5;
-    color: @heroUnitLeadColor;
+  li {
+    line-height: @line-height-base * 1.5; // Reset since we specify in type.less
   }
 }

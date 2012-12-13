@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.1.0
+ * Bootstrap v3.0.0
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -18,7 +18,6 @@
 // Grid system and page structure
 @import "scaffolding.less";
 @import "grid.less";
-@import "layouts.less";
 
 // Base CSS
 @import "type.less";
@@ -27,7 +26,7 @@
 @import "tables.less";
 
 // Components: common
-@import "sprites.less";
+@import "glyphicons.less";
 @import "dropdowns.less";
 @import "wells.less";
 @import "component-animations.less";
@@ -36,7 +35,7 @@
 // Components: Buttons & Alerts
 @import "buttons.less";
 @import "button-groups.less";
-@import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+@import "alerts.less";
 
 // Components: Nav
 @import "navs.less";
@@ -52,6 +51,7 @@
 
 // Components: Misc
 @import "thumbnails.less";
+@import "media.less";
 @import "labels-badges.less";
 @import "progress-bars.less";
 @import "accordion.less";
@@ -60,3 +60,29 @@
 
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
+
+
+
+// Responsive
+// -------------------------------------------------------------
+
+// Responsive utility classes
+@import "responsive-utilities.less";
+
+
+// Media queries
+// ------------------
+
+// Large desktops
+@import "responsive-1200px-min.less";
+
+// Tablets to regular desktops
+@import "responsive-768px-979px.less";
+
+// Phones to portrait tablets and narrow desktops
+@import "responsive-767px-max.less";
+
+
+// Responsive navbar
+// From 979px and below, show a button to toggle navbar contents
+@import "responsive-navbar.less";

@@ -5,60 +5,60 @@
 
 .carousel {
   position: relative;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @line-height-base;
   line-height: 1;
 }
 
 .carousel-inner {
+  position: relative;
   overflow: hidden;
   width: 100%;
-  position: relative;
 }
 
-.carousel {
+.carousel-inner {
 
-  .item {
+  > .item {
     display: none;
     position: relative;
     .transition(.6s ease-in-out left);
   }
 
   // Account for jankitude on images
-  .item > img {
+  > .item > img {
     display: block;
     line-height: 1;
   }
 
-  .active,
-  .next,
-  .prev { display: block; }
+  > .active,
+  > .next,
+  > .prev { display: block; }
 
-  .active {
+  > .active {
     left: 0;
   }
 
-  .next,
-  .prev {
+  > .next,
+  > .prev {
     position: absolute;
     top: 0;
     width: 100%;
   }
 
-  .next {
+  > .next {
     left: 100%;
   }
-  .prev {
+  > .prev {
     left: -100%;
   }
-  .next.left,
-  .prev.right {
+  > .next.left,
+  > .prev.right {
     left: 0;
   }
 
-  .active.left {
+  > .active.left {
     left: -100%;
   }
-  .active.right {
+  > .active.right {
     left: 100%;
   }
 
@@ -69,19 +69,10 @@
 
 .carousel-control {
   position: absolute;
-  top: 40%;
-  left: 15px;
-  width: 40px;
-  height: 40px;
-  margin-top: -20px;
-  font-size: 60px;
-  font-weight: 100;
-  line-height: 30px;
-  color: @white;
-  text-align: center;
-  background: @grayDarker;
-  border: 3px solid @white;
-  .border-radius(23px);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 120px;
   .opacity(50);
 
   // we can't have this transition here
@@ -91,19 +82,43 @@
   // ;_;
   // .transition(opacity .2s linear);
 
-  // Reposition the right one
+  // Set gradients for backgrounds
+  &.left {
+    #gradient > .horizontal(rgba(0,0,0,.75), rgba(0,0,0,.001));
+    background-color: transparent;
+  }
   &.right {
     left: auto;
-    right: 15px;
+    right: 0;
+    #gradient > .horizontal(rgba(0,0,0,.001), rgba(0,0,0,.75));
+    background-color: transparent;
   }
 
   // Hover state
   &:hover {
-    color: @white;
+    color: #fff;
     text-decoration: none;
     .opacity(90);
   }
+
+  // Toggles
+  .control {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: block;
+    margin-top: -35px;
+    margin-left: 30px;
+    font-size: 80px;
+    font-weight: 100;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  }
+  &.right .control {
+    margin-left: 70px;
+  }
 }
+
 
 
 // Caption for text below images
@@ -114,16 +129,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 15px;
-  background: @grayDark;
-  background: rgba(0,0,0,.75);
+  z-index: 10;
+  padding: 40px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  max-width: 60%;
 }
-.carousel-caption h4,
+.carousel-caption h3,
 .carousel-caption p {
-  color: @white;
-  line-height: @baseLineHeight;
+  color: #fff;
+  line-height: @line-height-base;
 }
-.carousel-caption h4 {
+.carousel-caption h3 {
   margin: 0 0 5px;
 }
 .carousel-caption p {

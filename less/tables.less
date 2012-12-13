@@ -3,30 +3,29 @@
 // --------------------------------------------------
 
 
-// BASE TABLES
-// -----------------
-
 table {
   max-width: 100%;
-  background-color: @tableBackground;
+  background-color: @table-background;
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+
 
 // BASELINE STYLES
 // ---------------
 
 .table {
   width: 100%;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @line-height-base;
   // Cells
   th,
   td {
     padding: 8px;
-    line-height: @baseLineHeight;
+    line-height: @line-height-base;
     text-align: left;
     vertical-align: top;
-    border-top: 1px solid @tableBorder;
+    border-top: 1px solid @table-border;
   }
   th {
     font-weight: bold;
@@ -46,7 +45,12 @@ table {
   }
   // Account for multiple tbody instances
   tbody + tbody {
-    border-top: 2px solid @tableBorder;
+    border-top: 2px solid @table-border;
+  }
+
+  // Nesting
+  .table {
+    background-color: @body-background;
   }
 }
 
@@ -63,18 +67,18 @@ table {
 }
 
 
+
 // BORDERED VERSION
 // ----------------
 
 .table-bordered {
-  border: 1px solid @tableBorder;
+  border: 1px solid @table-border;
   border-collapse: separate; // Done so we can round those corners!
-  *border-collapse: collapse; // IE7 can't round corners anyway
   border-left: 0;
-  .border-radius(4px);
+  border-radius: @border-radius-base;
   th,
   td {
-    border-left: 1px solid @tableBorder;
+    border-left: 1px solid @table-border;
   }
   // Prevent a double border
   caption + thead tr:first-child th,
@@ -89,33 +93,32 @@ table {
     border-top: 0;
   }
   // For first th or td in the first row in the first thead or tbody
-  thead:first-child tr:first-child th:first-child,
-  tbody:first-child tr:first-child td:first-child {
-    -webkit-border-top-left-radius: 4px;
-            border-top-left-radius: 4px;
-        -moz-border-radius-topleft: 4px;
+  thead:first-child tr:first-child > th:first-child,
+  tbody:first-child tr:first-child > td:first-child {
+    border-top-left-radius: @border-radius-base;
   }
-  thead:first-child tr:first-child th:last-child,
-  tbody:first-child tr:first-child td:last-child {
-    -webkit-border-top-right-radius: 4px;
-            border-top-right-radius: 4px;
-        -moz-border-radius-topright: 4px;
+  thead:first-child tr:first-child > th:last-child,
+  tbody:first-child tr:first-child > td:last-child {
+    border-top-right-radius: @border-radius-base;
   }
-  // For first th or td in the first row in the first thead or tbody
-  thead:last-child tr:last-child th:first-child,
-  tbody:last-child tr:last-child td:first-child,
-  tfoot:last-child tr:last-child td:first-child {
-    .border-radius(0 0 0 4px);
-    -webkit-border-bottom-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        -moz-border-radius-bottomleft: 4px;
+  // For first th or td in the last row in the last thead or tbody
+  thead:last-child tr:last-child > th:first-child,
+  tbody:last-child tr:last-child > td:first-child,
+  tfoot:last-child tr:last-child > td:first-child {
+    border-bottom-left-radius: @border-radius-base;
   }
-  thead:last-child tr:last-child th:last-child,
-  tbody:last-child tr:last-child td:last-child,
-  tfoot:last-child tr:last-child td:last-child {
-    -webkit-border-bottom-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-        -moz-border-radius-bottomright: 4px;
+  thead:last-child tr:last-child > th:last-child,
+  tbody:last-child tr:last-child > td:last-child,
+  tfoot:last-child tr:last-child > td:last-child {
+    border-bottom-right-radius: @border-radius-base;
+  }
+
+  // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
+  tfoot + tbody:last-child tr:last-child > td:first-child {
+    border-bottom-left-radius: 0;
+  }
+  tfoot + tbody:last-child tr:last-child > td:last-child {
+    border-bottom-right-radius: 0;
   }
 
   // Special fixes to round the left border on the first td/th
@@ -123,21 +126,16 @@ table {
   caption + tbody tr:first-child td:first-child,
   colgroup + thead tr:first-child th:first-child,
   colgroup + tbody tr:first-child td:first-child {
-    -webkit-border-top-left-radius: 4px;
-            border-top-left-radius: 4px;
-        -moz-border-radius-topleft: 4px;
+    border-top-left-radius: @border-radius-base;
   }
   caption + thead tr:first-child th:last-child,
   caption + tbody tr:first-child td:last-child,
   colgroup + thead tr:first-child th:last-child,
   colgroup + tbody tr:first-child td:last-child {
-    -webkit-border-top-right-radius: 4px;
-            border-top-right-radius: 4px;
-          -moz-border-right-topleft: 4px;
+    border-top-right-radius: @border-radius-base;
   }
 
 }
-
 
 
 
@@ -147,12 +145,13 @@ table {
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 .table-striped {
   tbody {
-    tr:nth-child(odd) td,
-    tr:nth-child(odd) th {
-      background-color: @tableBackgroundAccent;
+    > tr:nth-child(odd) > td,
+    > tr:nth-child(odd) > th {
+      background-color: @table-background-accent;
     }
   }
 }
+
 
 
 // HOVER EFFECT
@@ -162,64 +161,55 @@ table {
   tbody {
     tr:hover td,
     tr:hover th {
-      background-color: @tableBackgroundHover;
+      background-color: @table-background-hover;
     }
   }
 }
+
 
 
 // TABLE CELL SIZING
 // -----------------
 
 // Reset default grid behavior
-table [class*=span],
-.row-fluid table [class*=span] {
+table td[class*="span"],
+table th[class*="span"] {
   display: table-cell;
   float: none; // undo default grid column styles
   margin-left: 0; // undo default grid column styles
 }
 
-// Change the column widths to account for td/th padding
-table {
-  .span1     { .tableColumns(1); }
-  .span2     { .tableColumns(2); }
-  .span3     { .tableColumns(3); }
-  .span4     { .tableColumns(4); }
-  .span5     { .tableColumns(5); }
-  .span6     { .tableColumns(6); }
-  .span7     { .tableColumns(7); }
-  .span8     { .tableColumns(8); }
-  .span9     { .tableColumns(9); }
-  .span10    { .tableColumns(10); }
-  .span11    { .tableColumns(11); }
-  .span12    { .tableColumns(12); }
-  .span13    { .tableColumns(13); }
-  .span14    { .tableColumns(14); }
-  .span15    { .tableColumns(15); }
-  .span16    { .tableColumns(16); }
-  .span17    { .tableColumns(17); }
-  .span18    { .tableColumns(18); }
-  .span19    { .tableColumns(19); }
-  .span20    { .tableColumns(20); }
-  .span21    { .tableColumns(21); }
-  .span22    { .tableColumns(22); }
-  .span23    { .tableColumns(23); }
-  .span24    { .tableColumns(24); }
-}
-
-
 // TABLE BACKGROUNDS
 // -----------------
 // Exact selectors below required to override .table-striped
 
-.table {
-  tbody tr.success td {
-    background-color: @successBackground;
+.table tbody tr {
+  &.success td {
+    background-color: @state-success-background;
   }
-  tbody tr.error td {
-    background-color: @errorBackground;
+  &.error td {
+    background-color: @state-error-background;
   }
-  tbody tr.info td {
-    background-color: @infoBackground;
+  &.warning td {
+    background-color: @state-warning-background;
+  }
+  &.info td {
+    background-color: @state-info-background;
+  }
+}
+
+// Hover states for .table-hover
+.table-hover tbody tr {
+  &.success:hover td {
+    background-color: darken(@state-success-background, 5%);
+  }
+  &.error:hover td {
+    background-color: darken(@state-error-background, 5%);
+  }
+  &.warning:hover td {
+    background-color: darken(@state-warning-background, 5%);
+  }
+  &.info:hover td {
+    background-color: darken(@state-info-background, 5%);
   }
 }

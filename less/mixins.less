@@ -9,8 +9,7 @@
 // Clearfix
 // --------
 // For clearing floats like a boss h5bp.com/q
-.clearfix {
-  *zoom: 1;
+.clearfix() {
   &:before,
   &:after {
     display: table;
@@ -42,34 +41,9 @@
   margin-right: auto;
 }
 
-// IE7 inline-block
-// ----------------
-.ie7-inline-block() {
-  *display: inline; /* IE7 inline-block hack */
-  *zoom: 1;
-}
-
-// IE7 likes to collapse whitespace on either side of the inline-block elements.
-// Ems because we're attempting to match the width of a space character. Left
-// version is for form buttons, which typically come after other elements, and
-// right version is for icons, which come before. Applying both is ok, but it will
-// mean that space between those elements will be .6em (~2 space characters) in IE7,
-// instead of the 1 space in other browsers.
-.ie7-restore-left-whitespace() {
-  *margin-left: .3em;
-
-  &:first-child {
-    *margin-left: 0;
-  }
-}
-
-.ie7-restore-right-whitespace() {
-  *margin-right: .3em;
-}
-
 // Sizing shortcuts
 // -------------------------
-.size(@height, @width) {
+.size(@width, @height) {
   width: @width;
   height: @height;
 }
@@ -79,7 +53,7 @@
 
 // Placeholder text
 // -------------------------
-.placeholder(@color: @placeholderText) {
+.placeholder(@color: @input-color-placeholder) {
   &:-moz-placeholder {
     color: @color;
   }
@@ -103,7 +77,7 @@
 // CSS image replacement
 // -------------------------
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
-.hide-text {
+.hide-text() {
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
@@ -118,29 +92,29 @@
 #font {
   #family {
     .serif() {
-      font-family: @serifFontFamily;
+      font-family: @font-family-serif;
     }
     .sans-serif() {
-      font-family: @sansFontFamily;
+      font-family: @font-family-sans-serif;
     }
     .monospace() {
-      font-family: @monoFontFamily;
+      font-family: @font-family-monospace;
     }
   }
-  .shorthand(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .shorthand(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     font-size: @size;
     font-weight: @weight;
     line-height: @lineHeight;
   }
-  .serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .serif(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     #font > #family > .serif;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .sans-serif(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .sans-serif(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     #font > #family > .sans-serif;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
-  .monospace(@size: @baseFontSize, @weight: normal, @lineHeight: @baseLineHeight) {
+  .monospace(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
     #font > #family > .monospace;
     #font > .shorthand(@size, @weight, @lineHeight);
   }
@@ -151,22 +125,20 @@
 // --------------------------------------------------
 
 // Block level inputs
-.input-block-level {
+.input-block-level() {
   display: block;
   width: 100%;
-  min-height: 30px;        // Make inputs at least the height of their button counterpart
-  .box-sizing(border-box); // Makes inputs behave like true block-level elements
 }
 
 
 
 // Mixin for form field states
-.formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
+.formFieldState(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
   // Set the text color
-  > label,
+  .control-label,
   .help-block,
   .help-inline {
-    color: @textColor;
+    color: @text-color;
   }
   // Style inputs accordingly
   .checkbox,
@@ -174,23 +146,25 @@
   input,
   select,
   textarea {
-    color: @textColor;
-    border-color: @borderColor;
+    color: @text-color;
+  }
+  input,
+  select,
+  textarea {
+    border-color: @border-color;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
-      border-color: darken(@borderColor, 10%);
-      // Write out in full since the lighten() function isn't easily escaped
-      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@borderColor, 20%);
-         -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@borderColor, 20%);
-              box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@borderColor, 20%);
+      border-color: darken(@border-color, 10%);
+      @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
+      .box-shadow(@shadow);
     }
   }
   // Give a small background color for input-prepend/-append
   .input-prepend .add-on,
   .input-append .add-on {
-    color: @textColor;
-    background-color: @backgroundColor;
-    border-color: @textColor;
+    color: @text-color;
+    background-color: @background-color;
+    border-color: @text-color;
   }
 }
 
@@ -199,57 +173,27 @@
 // CSS3 PROPERTIES
 // --------------------------------------------------
 
-// Border Radius
-.border-radius(@radius) {
-  -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
-          border-radius: @radius;
-}
-
-// Single Corner Border Radius
-.border-top-left-radius(@radius) {
-  -webkit-border-top-left-radius: @radius;
-      -moz-border-radius-topleft: @radius;
-          border-top-left-radius: @radius;
-}
-.border-top-right-radius(@radius) {
-  -webkit-border-top-right-radius: @radius;
-      -moz-border-radius-topright: @radius;
-          border-top-right-radius: @radius;
-}
-.border-bottom-right-radius(@radius) {
-  -webkit-border-bottom-right-radius: @radius;
-      -moz-border-radius-bottomright: @radius;
-          border-bottom-right-radius: @radius;
-}
-.border-bottom-left-radius(@radius) {
-  -webkit-border-bottom-left-radius: @radius;
-      -moz-border-radius-bottomleft: @radius;
-          border-bottom-left-radius: @radius;
-}
-
-// Single Side Border Radius
+// Single side border-radius
 .border-top-radius(@radius) {
-  .border-top-right-radius(@radius);
-  .border-top-left-radius(@radius);
+  border-top-right-radius: @radius;
+   border-top-left-radius: @radius;
 }
 .border-right-radius(@radius) {
-  .border-top-right-radius(@radius);
-  .border-bottom-right-radius(@radius);
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
 }
 .border-bottom-radius(@radius) {
-  .border-bottom-right-radius(@radius);
-  .border-bottom-left-radius(@radius);
+  border-bottom-right-radius: @radius;
+   border-bottom-left-radius: @radius;
 }
 .border-left-radius(@radius) {
-  .border-top-left-radius(@radius);
-  .border-bottom-left-radius(@radius);
+  border-bottom-left-radius: @radius;
+     border-top-left-radius: @radius;
 }
 
 // Drop shadows
 .box-shadow(@shadow) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
           box-shadow: @shadow;
 }
 
@@ -259,6 +203,12 @@
      -moz-transition: @transition;
        -o-transition: @transition;
           transition: @transition;
+}
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+     -moz-transition-delay: @transition-delay;
+       -o-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
 }
 
 // Transformations
@@ -286,9 +236,10 @@
 .skew(@x, @y) {
   -webkit-transform: skew(@x, @y);
      -moz-transform: skew(@x, @y);
-      -ms-transform: skew(@x, @y);
+      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twitter/bootstrap/issues/4885
        -o-transform: skew(@x, @y);
           transform: skew(@x, @y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
 }
 .translate3d(@x, @y, @z) {
   -webkit-transform: translate3d(@x, @y, @z);
@@ -308,7 +259,6 @@
 }
 
 // Background clipping
-// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
 .background-clip(@clip) {
   -webkit-background-clip: @clip;
      -moz-background-clip: @clip;
@@ -316,13 +266,12 @@
 }
 
 // Background sizing
-.background-size(@size){
+.background-size(@size) {
   -webkit-background-size: @size;
      -moz-background-size: @size;
        -o-background-size: @size;
           background-size: @size;
 }
-
 
 // Box sizing
 .box-sizing(@boxmodel) {
@@ -348,13 +297,13 @@
 }
 
 // CSS3 Content Columns
-.content-columns(@columnCount, @columnGap: @gridGutterWidth) {
-  -webkit-column-count: @columnCount;
-     -moz-column-count: @columnCount;
-          column-count: @columnCount;
-  -webkit-column-gap: @columnGap;
-     -moz-column-gap: @columnGap;
-          column-gap: @columnGap;
+.content-columns(@column-count, @column-gap: @grid-gutter-width) {
+  -webkit-column-count: @column-count;
+     -moz-column-count: @column-count;
+          column-count: @column-count;
+  -webkit-column-gap: @column-gap;
+     -moz-column-gap: @column-gap;
+          column-gap: @column-gap;
 }
 
 // Optional hyphenation
@@ -370,33 +319,13 @@
 // Opacity
 .opacity(@opacity) {
   opacity: @opacity / 100;
-  filter: ~"alpha(opacity=@{opacity})";
+  filter: ~"alpha(opacity=@{opacity})"; // IE8
 }
 
 
 
 // BACKGROUNDS
 // --------------------------------------------------
-
-// Add an alphatransparency value to any background or border color (via Elyse Holladay)
-#translucent {
-  .background(@color: @white, @alpha: 1) {
-    background-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-  }
-  .border(@color: @white, @alpha: 1) {
-    border-color: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
-    .background-clip(padding-box);
-  }
-}
-
-// Gradient Bar Colors for buttons and alerts
-.gradientBar(@primaryColor, @secondaryColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
-  color: @textColor;
-  text-shadow: @textShadow;
-  #gradient > .vertical(@primaryColor, @secondaryColor);
-  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-}
 
 // Gradients
 #gradient {
@@ -432,13 +361,13 @@
     background-color: mix(@midColor, @endColor, 80%);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
     background-image: -webkit-linear-gradient(@startColor, @midColor @colorStop, @endColor);
-    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop*100%, @endColor);
+    background-image: -moz-linear-gradient(top, @startColor, @midColor @colorStop, @endColor);
     background-image: -o-linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-image: linear-gradient(@startColor, @midColor @colorStop, @endColor);
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
   }
-  .radial(@innerColor: #555, @outerColor: #333)  {
+  .radial(@innerColor: #555, @outerColor: #333) {
     background-color: @outerColor;
     background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
     background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
@@ -446,7 +375,7 @@
     background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
     background-repeat: no-repeat;
   }
-  .striped(@color, @angle: 45deg) {
+  .striped(@color: #555, @angle: 45deg) {
     background-color: @color;
     background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
     background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
@@ -468,15 +397,9 @@
 // Horizontal dividers
 // -------------------------
 // Dividers (basically an hr) within dropdowns and nav lists
-.nav-divider(@top: #e5e5e5, @bottom: @white) {
-  // IE7 needs a set width since we gave a height. Restricting just
-  // to IE7 to keep the 1px left/right space in other browsers.
-  // It is unclear where IE is getting the extra space that we need
-  // to negative-margin away, but so it goes.
-  *width: 100%;
+.nav-divider(@top: #e5e5e5, @bottom: #fff) {
   height: 1px;
-  margin: ((@baseLineHeight / 2) - 1) 1px; // 8px 1px
-  *margin: -5px 0 5px;
+  margin: ((@line-height-base / 2) - 1) 1px; // 8px 1px
   overflow: hidden;
   background-color: @top;
   border-bottom: 1px solid @bottom;
@@ -484,32 +407,34 @@
 
 // Button backgrounds
 // ------------------
-.buttonBackground(@startColor, @endColor, @textColor: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
-  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
-  .gradientBar(@startColor, @endColor, @textColor, @textShadow);
-  *background-color: @endColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+.buttonBackground(@startColor, @endColor, @text-color: #fff, @textShadow: 0 -1px 0 rgba(0,0,0,.25)) {
+  color: @text-color;
+  text-shadow: @textShadow;
+  #gradient > .vertical(@startColor, @endColor);
+  border-color: @endColor @endColor darken(@endColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
   .reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
-    color: @textColor;
+    color: @text-color;
     background-color: @endColor;
-    *background-color: darken(@endColor, 5%);
   }
 
-  // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
+  // IE8 can't handle box-shadow to show active, so we darken a bit ourselves
   &:active,
   &.active {
     background-color: darken(@endColor, 10%) e("\9");
   }
 }
 
+
 // Navbar vertical align
 // -------------------------
 // Vertically center elements in the navbar.
 // Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
-.navbarVerticalAlign(@elementHeight) {
-  margin-top: (@navbarHeight - @elementHeight) / 2;
+.navbarVerticalAlign(@element-height) {
+  margin-top: (@navbar-height - @element-height) / 2;
 }
 
 
@@ -524,148 +449,103 @@
   .clearfix();
 }
 
-// Table columns
-.tableColumns(@columnSpan: 1) {
-  float: none; // undo default grid column styles
-  width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
-  margin-left: 0; // undo default grid column styles
-}
-
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
 .makeRow() {
-  margin-left: @gridGutterWidth * -1;
+  margin-left: @grid-gutter-width * -1;
   .clearfix();
 }
 .makeColumn(@columns: 1, @offset: 0) {
   float: left;
-  margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
-  width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+  margin-left: (@grid-column-width * @offset) + (@grid-gutter-width * (@offset - 1)) + (@grid-gutter-width * 2);
+  width: (@grid-column-width * @columns) + (@grid-gutter-width * (@columns - 1));
 }
 
 // The Grid
 #grid {
 
-  .core (@gridColumnWidth, @gridGutterWidth) {
+  .core(@grid-column-width, @grid-gutter-width, @grid-row-width) {
 
-    .spanX (@index) when (@index > 0) {
+    .spanX(@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
       .spanX(@index - 1);
     }
-    .spanX (0) {}
+    .spanX(0) {}
 
-    .offsetX (@index) when (@index > 0) {
+    .offsetX(@index) when (@index > 0) {
       (~".offset@{index}") { .offset(@index); }
       .offsetX(@index - 1);
     }
-    .offsetX (0) {}
+    .offsetX(0) {}
 
-    .offset (@columns) {
-      margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+
+    // Base styles
+    .offset(@columns) {
+      margin-left: percentage(@columns / @grid-columns);
     }
-
-    .span (@columns) {
-      width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+    .span(@columns) {
+      width: percentage(@columns / @grid-columns);
     }
 
     .row {
-      margin-left: @gridGutterWidth * -1;
+      // Negative indent the columns so text lines up
+      margin-left: @grid-gutter-width / -2;
+      margin-right: @grid-gutter-width / -2;
+      // Clear the floated columns
       .clearfix();
     }
 
     [class*="span"] {
-      float: left;
-      margin-left: @gridGutterWidth;
+      float: left; // Collapse whitespace
+      min-height: 1px; // Prevent empty columns from collapsing
+      padding-left: @grid-gutter-width / 2;
+      padding-right: @grid-gutter-width / 2;
+      // Proper box-model (padding doesnt' add to width)
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
     }
 
-    // Set the container width, and override it for fixed navbars in media queries
-    .container,
-    .navbar-static-top .container,
-    .navbar-fixed-top .container,
-    .navbar-fixed-bottom .container { .span(@gridColumns); }
-
-    // generate .spanX and .offsetX
-    .spanX (@gridColumns);
-    .offsetX (@gridColumns);
+    // Generate .spanX and .offsetX
+    .spanX(@grid-columns);
+    .offsetX(@grid-columns);
 
   }
 
-  .fluid (@fluidGridColumnWidth, @fluidGridGutterWidth) {
 
-    .spanX (@index) when (@index > 0) {
-      (~".span@{index}") { .span(@index); }
+  .input(@grid-column-width, @grid-gutter-width, @grid-row-width) {
+
+    .spanX(@index) when (@index > 0) {
+      (~"input.span@{index}, textarea.span@{index}, select.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
       .spanX(@index - 1);
     }
-    .spanX (0) {}
+    .spanX(0) {}
 
-    .offsetX (@index) when (@index > 0) {
-      (~'.offset@{index}') { .offset(@index); }
-      (~'.offset@{index}:first-child') { .offsetFirstChild(@index); }
+    .offsetX(@index) when (@index > 0) {
+      (~"input.offset@{index}, textarea.offset@{index}, select.offset@{index}, uneditable-input.offset@{index}") { .offset(@index); }
       .offsetX(@index - 1);
     }
-    .offsetX (0) {}
-
-    .offset (@columns) {
-      margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
-  	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
-    }
-
-    .offsetFirstChild (@columns) {
-      margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
-      *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
-    }
-
-    .span (@columns) {
-      width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
-      *width: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%);
-    }
-
-    .row-fluid {
-      width: 100%;
-      .clearfix();
-      [class*="span"] {
-        .input-block-level();
-        float: left;
-        margin-left: @fluidGridGutterWidth;
-        *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
-      }
-      [class*="span"]:first-child {
-        margin-left: 0;
-      }
-
-      // generate .spanX and .offsetX
-      .spanX (@gridColumns);
-      .offsetX (@gridColumns);
-    }
-
-  }
-
-  .input(@gridColumnWidth, @gridGutterWidth) {
-
-    .spanX (@index) when (@index > 0) {
-      (~"input.span@{index}, textarea.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
-      .spanX(@index - 1);
-    }
-    .spanX (0) {}
+    .offsetX(0) {}
 
     .span(@columns) {
-      width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 14;
+      // TODO: Figure out how to add this back behind a class
+      // Part 1: Since inputs require padding *and* margin, we subtract the grid gutter width, as a percent of the row, from the default column width.
+      //width: percentage(@columns / @grid-columns) - percentage(@grid-gutter-width / @grid-row-width);
+      // Part 2: That subtracted width then gets split in half and added to the left and right margins.
+      // margin-left: percentage((@grid-gutter-width / 2) / @grid-row-width);
+      // margin-right: percentage((@grid-gutter-width / 2) / @grid-row-width);
     }
 
-    input,
-    textarea,
-    .uneditable-input {
-      margin-left: 0; // override margin-left from core grid system
+    .offset(@columns) {
+      // Take the normal offset margin and add an extra gutter's worth.
+      margin-left: percentage(@columns / @grid-columns) + percentage((@grid-gutter-width / 2) / @grid-row-width);
     }
 
-    // Space grid-sized controls properly if multiple per line
-    .controls-row [class*="span"] + [class*="span"] {
-      margin-left: @gridGutterWidth;
-    }
-
-    // generate .spanX
-    .spanX (@gridColumns);
+    // Generate .spanX and .offsetX
+    .spanX(@grid-columns);
+    .offsetX(@grid-columns);
 
   }
+
 
 }

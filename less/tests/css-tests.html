@@ -22,11 +22,11 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../../docs/assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../docs/assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../docs/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../docs/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../docs/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../../docs/assets/ico/favicon.png">
   </head>
 
   <body>
@@ -53,9 +53,116 @@
 </header>
 
 
-<div class="bs-docs-canvas">
 
   <div class="container">
+
+
+
+
+
+<div class="bs-docs-grid">
+  <div class="row show-grid">
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+  </div>
+  <div class="row show-grid">
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+  </div>
+  <div class="row show-grid">
+    <div class="span6">6</div>
+    <div class="span6">6</div>
+  </div>
+  <div class="row show-grid">
+    <div class="span12">12</div>
+  </div>
+</div>
+
+<form class="controls-row">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+  <input class="span1" type="text" placeholder=".span1">
+</form>
+
+<form class="controls-row">
+  <input class="span4" type="text" placeholder=".span4">
+  <input class="span4" type="text" placeholder=".span4">
+  <input class="span4" type="text" placeholder=".span4">
+</form>
+
+<form class="controls-row">
+  <input class="span6" type="text" placeholder=".span6">
+  <input class="span6" type="text" placeholder=".span6">
+</form>
+
+<form class="controls-row">
+  <input class="span12" type="text" placeholder=".span12">
+</form>
+
+<form class="clearfix">
+  <input class="span4" type="text" placeholder=".span4">
+  <input class="span4 offset4" type="text" placeholder=".span4">
+</form>
+
+
+<form class="bs-docs-example form-horizontal">
+  <legend>Horizontal form example</legend>
+  <div class="control-group">
+    <label class="control-label">Name</label>
+    <div class="controls">
+      <input type="text" class="span3" placeholder="First">
+      <input type="text" class="span3" placeholder="Last">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Email</label>
+    <div class="controls">
+      <input type="text" class="span6" placeholder="First">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Password</label>
+    <div class="controls">
+      <input type="password" class="span6" placeholder="Password">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <label class="checkbox">
+        <input type="checkbox"> Remember me
+      </label>
+      <button type="submit" class="btn">Sign in</button>
+    </div>
+  </div>
+</form>
+
+<style>
+.container { background-color: rgba(255,0,0,.1); }
+</style>
+
+
+<br><br><br>
+
 
 
 
@@ -98,237 +205,42 @@
 
 
 
-<!-- Fluid grid
+<!-- Responsive images
 ================================================== -->
 
 <div class="page-header">
-  <h1>Fluid grids</h1>
+  <h1>Responsive images</h1>
 </div>
 
-<div class="fluid-grid">
-  <div class="row">
-    <div class="span12">12
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
+<div class="row">
+  <div class="span4">
+    <img data-src="holder.js/600x600" height="200">
   </div>
-  <div class="row">
-    <div class="span11">11
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
-    <div class="span1">1
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
+  <div class="span4">
+    <img data-src="holder.js/600x600">
   </div>
-  <div class="row">
-    <div class="span10">10
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
-    <div class="span2">2
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
+  <div class="span4">
+    <img data-src="holder.js/600x600">
   </div>
-  <div class="row">
-    <div class="span9">9
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
-    <div class="span3">3
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="span4">
+    <img data-src="holder.js/600x900" style="width: 200px;">
   </div>
-  <div class="row">
-    <div class="span8">8
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
-    <div class="span4">4
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
+  <div class="span4">
+    <img data-src="holder.js/200x300">
   </div>
-  <div class="row">
-    <div class="span7">7
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
-    <div class="span5">5
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
+  <div class="span4">
+    <img data-src="holder.js/600x600">
   </div>
-  <div class="row">
-    <div class="span6">6
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
-    <div class="span6">6
-      <div class="row-fluid">
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-        <div class="span1">1</div>
-      </div>
-    </div>
-  </div>
-</div> <!-- fluid grids -->
+</div>
+
+<br><br>
+
+
 
 
 
@@ -555,39 +467,54 @@
   </div>
 </div><!--/row-->
 
-<h4>Fluid grid sizing</h4>
-<div class="row-fluid">
-  <div class="span12">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th class="span3">1</th>
-          <th class="span4">2</th>
-          <th>3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="2">1 and 2</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td rowspan="2">2</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td rowspan="2">1</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td colspan="2">2 and 3</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div><!--/row-->
-
+<h4>Nesting and striping</h4>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Test</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                test
+              </td>
+              <td>
+                test
+              </td>
+            </tr>
+            <tr>
+              <td>
+                test
+              </td>
+              <td>
+                test
+              </td>
+            </tr>
+            <tr>
+              <td>
+                test
+              </td>
+              <td>
+                test
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 <!-- Forms
@@ -596,6 +523,36 @@
 <div class="page-header">
   <h1>Forms</h1>
 </div>
+
+<h4>Buttons and button groups</h4>
+<form class="form-inline">
+  <button class="btn btn-success">Save</button>
+  <button class="btn btn-info">Add new</button>
+  <div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="icon-user"></i> User
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Profile</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Sign Out</a></li>
+    </ul>
+  </div>
+</form>
+
+<h4>Horizontal form errors</h4>
+<form class="form-horizontal">
+  <div class="control-group error">
+    <label class="control-label" for="inputError">Radio with error</label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" id="inputError"> Oh hai
+      </label>
+      <span class="help-inline">Please correct the error</span>
+    </div>
+  </div>
+</form>
 
 <div class="row">
   <div class="span4">
@@ -622,7 +579,7 @@
       </div>
     </form>
   </div><!--/span-->
-  <div class="span6">
+  <div class="span4">
     <h4>Prepend and append with uneditable</h4>
     <form>
       <div class="input-prepend">
@@ -640,30 +597,26 @@
       </div>
     </form>
   </div><!--/span-->
-</div><!--/row-->
-
-<h4>Fluid prepended and appended inputs</h4>
-<div class="row-fluid">
-  <div class="span6">
-    <form>
-      <div class="controls">
-        <div class="input-prepend">
-          <span class="add-on">@</span><input class="span2" id="prependedInput" size="16" type="text">
-        </div>
-      </div>
-      <div class="controls">
-        <div class="input-append">
-          <input class="span2" id="prependedInput" size="16" type="text"><span class="add-on">@</span>
-        </div>
-      </div>
-      <div class="controls">
-        <div class="input-prepend input-append">
-          <span class="add-on">$</span><input class="span2" id="prependedInput" size="16" type="text"><span class="add-on">.00</span>
-        </div>
+  <div class="span4">
+    <h4>Prepend with type="submit"</h4>
+    <form class="form-search">
+      <div class="input-append">
+        <input type="text" class="span2 search-query" value="" name="q">
+        <input type="submit" value="Search" class="btn">
       </div>
     </form>
-  </div>
-</div>
+    <div class="input-append">
+      <input type="text" class="span2" value="" name="">
+      <input type="submit" value="Button" class="btn">
+    </div>
+    <div class="input-append">
+      <input type="text" size="16" id="appendedInputButtons" class="span2">
+      <input type="submit" value="Search" class="btn">
+      <button type="button" class="btn">Options</button>
+    </div>
+  </div><!--/span-->
+</div><!--/row-->
+
 
 <h4>Fixed row with inputs</h4>
 <p>Inputs should not extend past the light red background, set on their parent, a <code>.span*</code> column.</p>
@@ -731,99 +684,6 @@
   </div><!--/row-->
 </div>
 <br>
-
-<h4>Fluid row with inputs</h4>
-<p>Inputs should not extend past the light red background, set on their parent, a <code>.span*</code> column.</p>
-<div id="fluidRowInputs">
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span1" placeholder="span1">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span2" placeholder="span2">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span3" placeholder="span3">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span4" placeholder="span4">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span5" placeholder="span5">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span6" placeholder="span6">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span7" placeholder="span7">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span8" placeholder="span8">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span9" placeholder="span9">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span10" placeholder="span10">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span11" placeholder="span11">
-    </div><!--/span-->
-  </div><!--/row-->
-  <div class="row-fluid">
-    <div class="span12">
-      <input type="text" class="span12" placeholder="span12">
-    </div><!--/span-->
-  </div><!--/row-->
-</div>
-
-<br>
-
-<h4>Inline form in fluid row</h4>
-
-<div class="row-fluid">
-  <div class="span12">
-    <form class="form-inline">
-      <input type="text" class="span3" placeholder="Email">
-      <input type="password" class="span3" placeholder="Password">
-      <label class="checkbox">
-        <input type="checkbox"> Remember me
-      </label>
-      <button type="submit" class="btn">Sign in</button>
-    </form>
-  </div>
-</div>
-
-
-<br>
-
-
-<h4>Fluid textarea at .span12</h4>
-<div class="row-fluid">
-  <div class="span12">
-    <textarea class="span12"></textarea>
-  </div>
-</div>
 
 
 <br>
@@ -910,16 +770,16 @@
 <h4>Default thumbnails (no grid sizing)</h4>
 <ul class="thumbnails">
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
   <li class="thumbnail">
-    <img src="http://placehold.it/260x180" alt="">
+    <img data-src="holder.js/260x180" alt="">
   </li>
 </ul>
 
@@ -928,17 +788,17 @@
 <ul class="thumbnails">
   <li class="span3 offset3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
 </ul>
@@ -948,44 +808,20 @@
 <ul class="thumbnails">
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3 offset3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
   <li class="span3">
     <a href="#" class="thumbnail">
-      <img src="http://placehold.it/260x180" alt="">
+      <img data-src="holder.js/260x180" alt="">
     </a>
   </li>
 </ul>
-
-<h4>Fluid thumbnails</h4>
-<div class="row-fluid">
-  <div class="span8">
-    <ul class="thumbnails">
-      <li class="span4">
-        <a href="#" class="thumbnail">
-          <img src="http://placehold.it/260x180" alt="">
-        </a>
-      </li>
-      <li class="span4">
-        <a href="#" class="thumbnail">
-          <img src="http://placehold.it/260x180" alt="">
-        </a>
-      </li>
-      <li class="span4">
-        <a href="#" class="thumbnail">
-          <img src="http://placehold.it/260x180" alt="">
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-
 
 
 <!-- Tabs
@@ -1131,6 +967,36 @@
 
 
 
+<!-- Gradients
+================================================== -->
+
+<div class="page-header">
+  <h1>Gradients</h1>
+</div>
+
+<h4>Horizontal</h4>
+<div class="gradient-horizontal"></div>
+
+<h4>Vertical</h4>
+<div class="gradient-vertical"></div>
+
+<h4>Directional</h4>
+<div class="gradient-directional"></div>
+
+<h4>Three colors</h4>
+<div class="gradient-vertical-three"></div>
+
+<h4>Radial</h4>
+<div class="gradient-radial"></div>
+
+<h4>Striped</h4>
+<div class="gradient-striped"></div>
+
+
+
+
+
+
 
     </div><!-- /container -->
 
@@ -1152,7 +1018,6 @@
       </div>
     </footer>
 
-</div>
 
 
     <!-- Le javascript

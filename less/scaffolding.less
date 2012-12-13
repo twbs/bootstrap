@@ -8,11 +8,19 @@
 
 body {
   margin: 0;
-  font-family: @baseFontFamily;
-  font-size: @baseFontSize;
-  line-height: @baseLineHeight;
-  color: @textColor;
-  background-color: @bodyBackground;
+  color: @text-color;
+  background-color: @body-background;
+}
+
+// Reset fonts for revelant elements
+body,
+input,
+button,
+select,
+textarea {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
 }
 
 
@@ -20,11 +28,11 @@ body {
 // -------------------------
 
 a {
-  color: @linkColor;
+  color: @link-color;
   text-decoration: none;
 }
 a:hover {
-  color: @linkColorHover;
+  color: @link-color-hover;
   text-decoration: underline;
 }
 
@@ -32,20 +40,21 @@ a:hover {
 // Images
 // -------------------------
 
+// Rounded corners
 .img-rounded {
-  .border-radius(6px);
+  border-radius: 6px;
 }
 
+// Add polaroid-esque trim
 .img-polaroid {
   padding: 4px;
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0,0,0,.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.1);
-     -moz-box-shadow: 0 1px 3px rgba(0,0,0,.1);
-          box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  .box-shadow(0 1px 3px rgba(0,0,0,.1));
 }
 
+// Perfect circle
 .img-circle {
-  .border-radius(500px);
+  border-radius: 500px; // crank the border-radius so it works with most reasonably sized images
 }
