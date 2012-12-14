@@ -243,29 +243,33 @@ $(function () {
       test("should not show typeahead when disabled", function () {
         var $input = $('<input />').typeahead({
               source: ['aaaaa', 'aaaab', 'aaaac']
-            })
+            }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         $input.val('a')
         $input.trigger({
-          type: 'keyup'
+          type: 'keyup',
+          keyCode: 65
         })
-        ok(typeahead.$menu.is(":visible"), 'the menu is visible')
+        ok(typeahead.$menu.is(':visible'), 'the menu is visible')
 
         typeahead.disable()
         $input.val('aa')
         $input.trigger({
-          type: 'keyup'
+          type: 'keyup',
+          keyCode: 65
         })
-        ok(!typeahead.$menu.is(":visible"), 'the menu is not visible')
+        ok(typeahead.$menu.not(':visible'), 'the menu is not visible')
 
         typeahead.enable()
         $input.val('aaa')
         $input.trigger({
-          type: 'keyup'
+          type: 'keyup',
+          keyCode: 65
         })
-        ok(typeahead.$menu.is(":visible"), 'the menu is visible')
+        ok(typeahead.$menu.is(':visible'), 'the menu is visible')
 
+        $input.remove()
         typeahead.$menu.remove()
       })
 })
