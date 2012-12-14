@@ -103,8 +103,11 @@
         , actualHeight
         , placement
         , tp
+        , e
 
       if (this.hasContent() && this.enabled) {
+        this.$element.trigger(e = $.Event('show'))
+        if (e.isDefaultPrevented()) return
         $tip = this.tip()
         this.setContent()
 
@@ -147,6 +150,8 @@
           .offset(tp)
           .addClass(placement)
           .addClass('in')
+
+        this.$element.trigger('shown')
       }
     }
 
@@ -161,6 +166,10 @@
   , hide: function () {
       var that = this
         , $tip = this.tip()
+        , e
+
+      this.$element.trigger(e = $.Event('hide'))
+      if (e.isDefaultPrevented()) return
 
       $tip.removeClass('in')
 
@@ -178,6 +187,8 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.detach()
+
+      this.$element.trigger('hidden')
 
       return this
     }
