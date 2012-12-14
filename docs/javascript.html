@@ -131,9 +131,17 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 </pre>
           <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
+          <h3>No conflict</h3>
+          <p>Sometimes it's neccessary to use bootstrap plugins with other ui frameworks. In these circumstances, occasionally namespace collisions can occur. If this happens, you may call <code>.noCoflict</code> on the plugin you wish to revert the value of.</p>
+
+<pre class="prettyprint linenums">
+var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
+$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
+</pre>
+
           <h3>Events</h3>
           <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-          <p>All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.</p>
+          <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
@@ -1122,7 +1130,7 @@ $('#my-alert').bind('closed', function () {
             <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
 
             <h4>Stateful</h4>
-            <p>Add data-loading-text="Loading..." to use a loading state on a button.</p>
+            <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
                 Loading state
@@ -1131,14 +1139,14 @@ $('#my-alert').bind('closed', function () {
             <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;</pre>
 
             <h4>Single toggle</h4>
-            <p>Add data-toggle="button" to activate toggling on a single button.</p>
+            <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button>
             </div>
             <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-toggle="button"&gt;Single Toggle&lt;/button&gt;</pre>
 
             <h4>Checkbox</h4>
-            <p>Add data-toggle="buttons-checkbox" for checkbox style toggling on btn-group.</p>
+            <p>Add <code>data-toggle="buttons-checkbox"</code> for checkbox style toggling on btn-group.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-checkbox">
                 <button type="button" class="btn btn-primary">Left</button>
@@ -1155,7 +1163,7 @@ $('#my-alert').bind('closed', function () {
 </pre>
 
             <h4>Radio</h4>
-            <p>Add data-toggle="buttons-radio" for radio style toggling on btn-group.</p>
+            <p>Add <code>data-toggle="buttons-radio"</code> for radio style toggling on btn-group.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <div class="btn-group" data-toggle="buttons-radio">
                 <button type="button" class="btn btn-primary">Left</button>

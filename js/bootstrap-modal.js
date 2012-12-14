@@ -193,6 +193,8 @@
  /* MODAL PLUGIN DEFINITION
   * ======================= */
 
+  var old = $.fn.modal
+
   $.fn.modal = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -211,6 +213,15 @@
   }
 
   $.fn.modal.Constructor = Modal
+
+
+ /* MODAL NO CONFLICT
+  * ================= */
+
+  $.fn.modal.noConflict = function () {
+    $.fn.modal = old
+    return this
+  }
 
 
  /* MODAL DATA-API

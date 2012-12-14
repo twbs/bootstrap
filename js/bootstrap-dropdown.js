@@ -53,8 +53,9 @@
 
       if (!isActive) {
         $parent.toggleClass('open')
-        $this.focus()
       }
+
+      $this.focus()
 
       return false
     }
@@ -82,7 +83,7 @@
 
       if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
 
-      $items = $('[role=menu] li:not(.divider) a', $parent)
+      $items = $('[role=menu] li:not(.divider):visible a', $parent)
 
       if (!$items.length) return
 
@@ -124,6 +125,8 @@
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
+  var old = $.fn.dropdown
+
   $.fn.dropdown = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -134,6 +137,15 @@
   }
 
   $.fn.dropdown.Constructor = Dropdown
+
+
+ /* DROPDOWN NO CONFLICT
+  * ==================== */
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
 
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS

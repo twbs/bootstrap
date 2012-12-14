@@ -47,6 +47,11 @@ table {
   tbody + tbody {
     border-top: 2px solid @table-border;
   }
+
+  // Nesting
+  .table {
+    background-color: @body-background;
+  }
 }
 
 
@@ -88,34 +93,33 @@ table {
     border-top: 0;
   }
   // For first th or td in the first row in the first thead or tbody
-  thead:first-child tr:first-child th:first-child,
-  tbody:first-child tr:first-child td:first-child {
+  thead:first-child tr:first-child > th:first-child,
+  tbody:first-child tr:first-child > td:first-child {
     border-top-left-radius: @border-radius-base;
   }
-  thead:first-child tr:first-child th:last-child,
-  tbody:first-child tr:first-child td:last-child {
+  thead:first-child tr:first-child > th:last-child,
+  tbody:first-child tr:first-child > td:last-child {
     border-top-right-radius: @border-radius-base;
   }
   // For first th or td in the last row in the last thead or tbody
-  thead:last-child tr:last-child th:first-child,
-  tbody:last-child tr:last-child td:first-child,
-  tfoot:last-child tr:last-child td:first-child {
+  thead:last-child tr:last-child > th:first-child,
+  tbody:last-child tr:last-child > td:first-child,
+  tfoot:last-child tr:last-child > td:first-child {
     border-bottom-left-radius: @border-radius-base;
   }
-  thead:last-child tr:last-child th:last-child,
-  tbody:last-child tr:last-child td:last-child,
-  tfoot:last-child tr:last-child td:last-child {
+  thead:last-child tr:last-child > th:last-child,
+  tbody:last-child tr:last-child > td:last-child,
+  tfoot:last-child tr:last-child > td:last-child {
     border-bottom-right-radius: @border-radius-base;
   }
 
   // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
-  tfoot + tbody:last-child tr:last-child td:first-child {
+  tfoot + tbody:last-child tr:last-child > td:first-child {
     border-bottom-left-radius: 0;
   }
-  tfoot + tbody:last-child tr:last-child td:last-child {
+  tfoot + tbody:last-child tr:last-child > td:last-child {
     border-bottom-right-radius: 0;
   }
-
 
   // Special fixes to round the left border on the first td/th
   caption + thead tr:first-child th:first-child,
@@ -141,8 +145,8 @@ table {
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 .table-striped {
   tbody {
-    tr:nth-child(odd) td,
-    tr:nth-child(odd) th {
+    > tr:nth-child(odd) > td,
+    > tr:nth-child(odd) > th {
       background-color: @table-background-accent;
     }
   }
