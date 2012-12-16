@@ -83,7 +83,7 @@
 
       if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
 
-      $items = $('[role=menu] li:not(.divider):visible a', $parent)
+      $items = $('[role=menu] li:not(.divider):visible a, [role=menu] li:not(.divider):visible input', $parent)
 
       if (!$items.length) return
 

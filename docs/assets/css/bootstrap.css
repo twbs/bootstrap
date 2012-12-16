@@ -2527,9 +2527,11 @@ table th[class*="span"] {
   border-bottom: 1px solid #ffffff;
 }
 
-.dropdown-menu li > a {
+.dropdown-menu li > a,
+.dropdown-menu li > form {
   display: block;
   padding: 3px 20px;
+  margin: 0;
   clear: both;
   font-weight: normal;
   line-height: 20px;

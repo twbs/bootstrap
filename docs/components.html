@@ -243,6 +243,34 @@
 &lt;/ul&gt;
 </pre>
 
+          <h3>Search on dropdowns</h3>
+          <p>You may use a search query form to build dynamic dropdown menus.</p>
+          <div class="bs-docs-example">
+            <div class="dropdown clearfix">
+              <ul class="dropdown-menu dropdown" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                <li><a tabindex="-1" href="#">New item</a></li>
+                <li class="divider"></li>
+                <li>
+                  <form class="form-search">
+                    <input id="dropdown-query" tabindex="-1" type="text" class="search-query" placeholder="Search for an item" autocomplete="off">
+                  </form>
+                </li>                
+                <li class="divider begin-result"></li>
+              </ul>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+  ...
+  &lt;li&gt;
+    &lt;form class="form-search"&gt;
+      &lt;input type="text" class="search-query"&gt;
+    &lt;/form&gt;
+  &lt;/li&gt;                
+  ...
+&lt;/ul&gt;
+</pre>
+
         </section>
 
 
