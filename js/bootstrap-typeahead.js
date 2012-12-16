@@ -119,9 +119,14 @@
         , item
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
-        else caseInsensitive.push(item)
+        if (item == this.query) beginswith.unshift(item)
+        else {
+          var index = item.toLowerCase().indexOf(this.query.toLowerCase())
+          if (index === 0 && item.length == this.query.length) beginswith.unshift(item)
+          else if (!index) beginswith.push(item)
+          else if (~item.indexOf(this.query)) caseSensitive.push(item)
+          else caseInsensitive.push(item)
+        }
       }
 
       return beginswith.concat(caseSensitive, caseInsensitive)
