@@ -24,6 +24,17 @@ $(function () {
         ok($._data($input[0], 'events').keyup, 'has a keyup event')
       })
 
+      test("should ignore an input's events", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aaaaa', 'aaaab', 'aaaac']
+            })
+          , typeahead = $input.data('typeahead')
+
+        typeahead.ignore()
+
+        ok(!$input.data('events'), 'does not have bound events')
+      })
+
       test("should create a menu", function () {
         var $input = $('<input />')
         ok($input.typeahead().data('typeahead').$menu, 'has a menu')
@@ -224,6 +235,39 @@ $(function () {
         typeahead.lookup()
 
         equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+
+      test("should not show typeahead when disabled", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aaaaa', 'aaaab', 'aaaac']
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        $input.trigger({
+          type: 'keyup',
+          keyCode: 65
+        })
+        ok(typeahead.$menu.is(':visible'), 'the menu is visible')
+
+        typeahead.disable()
+        $input.val('aa')
+        $input.trigger({
+          type: 'keyup',
+          keyCode: 65
+        })
+        ok(typeahead.$menu.not(':visible'), 'the menu is not visible')
+
+        typeahead.enable()
+        $input.val('aaa')
+        $input.trigger({
+          type: 'keyup',
+          keyCode: 65
+        })
+        ok(typeahead.$menu.is(':visible'), 'the menu is visible')
 
         $input.remove()
         typeahead.$menu.remove()

@@ -1905,6 +1905,17 @@
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
+  , ignore: function () {
+      this.$element
+        .off('blur',     $.proxy(this.blur, this))
+        .off('keypress', $.proxy(this.keypress, this))
+        .off('keyup',    $.proxy(this.keyup, this))
+
+      if ($.browser.chrome || $.browser.webkit || $.browser.msie) {
+        this.$element.off('keydown', $.proxy(this.keydown, this))
+      }
+    }
+
   , eventSupported: function(eventName) {
       var isSupported = eventName in this.$element
       if (!isSupported) {
@@ -1990,6 +2001,15 @@
   , mouseenter: function (e) {
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
+    }
+
+  , enable: function (e) {
+      this.listen()
+    }
+
+  , disable: function (e) {
+      this.hide()
+      this.ignore()
     }
 
   }
