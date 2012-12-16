@@ -48,6 +48,18 @@ $(function () {
         equals($("#qunit-fixture").find('.active').attr('id'), "home")
       })
 
+      test("should keep transition when no active by default", function() {
+        var tabsHTML =
+            '<ul class="tabs">'
+          + '<li><a href="#home">Home</a></li>'
+          + '<li><a href="#profile">Profile</a></li>'
+          + '</ul>'
+
+        $('<ul><li id="home"></li><li id="profile" class="fade"></li></ul>').appendTo("#qunit-fixture")
+
+        $(tabsHTML).find('li:last a').tab('show')
+        ok($("#qunit-fixture").find('.active').hasClass('fade'))
+      })
 
       test("should not fire closed when close is prevented", function () {
         $.support.transition = false
