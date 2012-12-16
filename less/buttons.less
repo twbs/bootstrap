@@ -48,7 +48,8 @@
 
   // Disabled state
   &.disabled,
-  &[disabled] {
+  &[disabled],
+  fieldset[disabled] & {
     cursor: default;
     background-image: none;
     .opacity(65);
@@ -174,7 +175,8 @@ input[type="button"] {
 // Make a button look and behave like a link
 .btn-link,
 .btn-link:active,
-.btn-link[disabled] {
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
   background-color: transparent;
   background-image: none;
   .box-shadow(none);
@@ -190,7 +192,12 @@ input[type="button"] {
   text-decoration: underline;
   background-color: transparent;
 }
-.btn-link[disabled]:hover {
-  color: @grayDark;
-  text-decoration: none;
+.btn-link {
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover {
+      color: @grayDark;
+      text-decoration: none;
+    }
+  }
 }
