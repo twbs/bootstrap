@@ -94,10 +94,12 @@
 
   , transition: function (method, startEvent, completeEvent) {
       var that = this
-        , complete = function () {
-            if (startEvent.type == 'show') that.reset()
-            that.transitioning = 0
-            that.$element.trigger(completeEvent)
+        , complete = function (startEvent, completeEvent) {
+            if (this.transitioning) {
+              if (startEvent.type == 'show') this.reset()
+              this.transitioning = 0
+              this.$element.trigger(completeEvent)
+            }
           }
 
       this.$element.trigger(startEvent)
@@ -106,11 +108,19 @@
 
       this.transitioning = 1
 
-      this.$element[method]('in')
-
-      $.support.transition && this.$element.hasClass('collapse') ?
-        this.$element.one($.support.transition.end, complete) :
-        complete()
+      if ($.support.transition && this.$element.hasClass('collapse')) {
+        // assign callback to transition end event, then start transition
+        this.$element.one($.support.transition.end, complete)
+        this.$element[method]('in')
+        // guarantee callback invokation
+        // timeout is equal to transition time from component-animations.less
+        setTimeout(function() {
+            complete.call(that, startEvent, completeEvent)
+        }, 350)
+      } else {
+        this.$element[method]('in')
+        complete.call(this, startEvent, completeEvent)
+      }
     }
 
   , toggle: function () {
