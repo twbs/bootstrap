@@ -147,10 +147,10 @@
       var $this = $(this)
         , data = $this.data('carousel')
         , options = $.extend({}, $.fn.carousel.defaults, typeof option == 'object' && option)
-        , action = typeof option == 'string' ? option : options.slide
+        , action = options.slide == null ? option : options.slide
       if (!data) $this.data('carousel', (data = new Carousel(this, options)))
-      if (typeof option == 'number') data.to(option)
-      else if (action) data[action]()
+      if (typeof action == 'number') data.to(action)
+      else if (typeof action == 'string') data[action]()
       else if (options.interval) data.cycle()
     })
   }
