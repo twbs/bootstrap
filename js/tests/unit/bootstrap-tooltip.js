@@ -166,7 +166,7 @@ $(function () {
         ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
         tooltip.tooltip('hide')
       })
-	  
+ 
       test("should place tooltips inside the trigger element", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
