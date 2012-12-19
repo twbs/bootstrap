@@ -36,7 +36,7 @@
     this.source = this.options.source
     this.$menu = $(this.options.menu)
     this.shown = false
-    this.timer
+    this.lookupTimer
     this.listen()
   }
 
@@ -87,33 +87,19 @@
       if (!this.query || this.query.length < this.options.minLength) {
         return this.shown ? this.hide() : this
       }
-      
-      if(this.timer) {
-        clearTimeout(this.timer)
-      }
-      
-      if(this.options.delay !== 0) {
-        this.timer = setTimeout($.proxy(this.delayedLookup, this), this.options.delay)
-      }
-      else {
-        items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
-      }
-      
+
+      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+
       return items ? this.process(items) : this
     }
     
-  , delayedLookup: function() {
-      var items
-    
-      clearTimeout(this.timer)
-      
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
-      
-      if(items) {
-        this.process(items)
+  , debounceLookup: function(event) {
+      if(this.lookupTimer) {
+        clearTimeout(this.lookupTimer)
       }
-      
-    }
+
+      this.lookupTimer = setTimeout($.proxy(this.lookup, this), this.options.delay)
+  }
 
   , process: function (items) {
       var that = this
@@ -272,7 +258,7 @@
           break
 
         default:
-          this.lookup()
+          this.options.delay <= 0 ? this.lookup() : this.debounceLookup()
       }
 
       e.stopPropagation()
