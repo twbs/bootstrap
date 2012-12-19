@@ -97,11 +97,9 @@
       }
       else {
         items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
-
-        return items ? this.process(items) : this
       }
       
-      return this
+      return items ? this.process(items) : this
     }
     
   , delayedLookup: function() {
