@@ -277,7 +277,7 @@ $(function () {
         stop()
         expect(1)
         
-        // "a" pressed once
+        // 1st "a" keystroke
         $input.trigger({
           type: 'keydown'
         , keyCode: 65
@@ -291,7 +291,7 @@ $(function () {
         , keyCode: 65
         })
         
-        // "a" pressed twice
+        // 2nd "a" keystroke
         $input.trigger({
           type: 'keydown'
         , keyCode: 65
