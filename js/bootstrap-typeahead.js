@@ -99,7 +99,9 @@
       }
 
       this.lookupTimer = setTimeout($.proxy(this.lookup, this), this.options.delay)
-  }
+      
+      return this
+    }
 
   , process: function (items) {
       var that = this
