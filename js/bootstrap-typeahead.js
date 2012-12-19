@@ -92,7 +92,7 @@
         clearTimeout(this.timer)
       }
       
-      if(this.options.delay != 0) {
+      if(this.options.delay !== 0) {
         this.timer = setTimeout($.proxy(this.delayedLookup, this), this.options.delay)
       }
       else {
