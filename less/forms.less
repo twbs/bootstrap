@@ -501,7 +501,9 @@ select:focus:invalid {
   select,
   .uneditable-input {
     border-radius: @input-border-radius 0 0 @input-border-radius;
-    + .btn-group .btn,
+    + .btn-group .btn {
+      border-radius: 0;
+    }
     + .btn-group .btn:last-child {
       border-radius: 0 @input-border-radius @input-border-radius 0;
     }
