@@ -228,4 +228,50 @@ $(function () {
         $input.remove()
         typeahead.$menu.remove()
       })
+      
+      test("should delay lookup", function() {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac'],
+              delay:50
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+        
+        $input.val('a')
+        typeahead.lookup()
+        
+        equals(typeahead.$menu.find('li').length, 0, 'has 0 items in menu')
+        
+        stop()
+        setTimeout(function () {
+          equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+          start()
+        }, 51)
+        
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+      
+      test("should prevent multiple lookups", function() {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac'],
+              delay:50
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+        
+        //timer that will explode
+        var timer = setTimeout(function() {ok(false, "This should never get called")}, 50)
+        typeahead.timer = timer
+        
+        $input.val('a')
+        typeahead.lookup()
+        
+        stop()
+        setTimeout(function () {
+          equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+          start()
+        }, 51)
+        
+        $input.remove()
+        typeahead.$menu.remove()
+      })
 })
