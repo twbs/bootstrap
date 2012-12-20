@@ -78,8 +78,7 @@
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus,
-.dropdown-submenu:hover > a {
+.dropdown-menu li > a:focus {
   text-decoration: none;
   color: @dropdown-link-color-hover;
   #gradient > .vertical(@dropdown-link-background-hover, darken(@dropdown-link-background-hover, 5%));
@@ -143,64 +142,6 @@
     top: auto;
     bottom: 100%;
     margin-bottom: 1px;
-  }
-}
-
-// Sub menus
-// ---------------------------
-.dropdown-submenu {
-  position: relative;
-}
-// Default dropdowns
-.dropdown-submenu > .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 4px 4px 4px;
-}
-.dropdown-submenu:hover > .dropdown-menu {
-  display: block;
-}
-
-// Dropups
-.dropup .dropdown-submenu > .dropdown-menu {
-  top: auto;
-  bottom: 0;
-  margin-top: 0;
-  margin-bottom: -2px;
-  border-radius: 4px 4px 4px 0;
-}
-
-// Caret to indicate there is a submenu
-.dropdown-submenu > a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: darken(@dropdown-background, 20%);
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover > a:after {
-  border-left-color: @dropdown-link-color-hover;
-}
-
-// Left aligned submenus
-.dropdown-submenu.pull-left {
-  // Undo the float
-  // Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
-  float: none;
-
-  // Positioning the submenu
-  > .dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
-    border-radius: 4px 0 4px 4px;
   }
 }
 
