@@ -97,7 +97,6 @@
         , isCycling = this.interval
         , direction = type == 'next' ? 'left' : 'right'
         , fallback  = type == 'next' ? 'first' : 'last'
-        , $nextIndicator
         , that = this
         , e
 
@@ -116,7 +115,7 @@
       if (this.$indicators.length) {
         this.$indicators.find('.active').removeClass('active')
         this.$element.one('slid', function () {
-          $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
+          var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
           $nextIndicator && $nextIndicator.addClass('active')
         })
       }
