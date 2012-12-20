@@ -240,7 +240,7 @@
           </div>
           <pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
 
-          <p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+          <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
 
           <h3>Emphasis classes</h3>
           <p>Convey meaning through color with a handful of emphasis utility classes.</p>
@@ -507,8 +507,8 @@
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
+        <h5>Auto-truncating</h5>
         <p>
-          <span class="label label-info">Heads up!</span>
           Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
         </p>
       </section>
@@ -541,7 +541,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
 &lt;/pre&gt;
 </pre>
-          <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
           <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
         </section>
 
@@ -1781,7 +1780,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;a href="#" class="btn btn-large disabled"&gt;Link&lt;/a&gt;
 </pre>
           <p>
-            <span class="label label-info">Heads up!</span>
             We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
           </p>
 
@@ -1824,7 +1822,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
             <h1>Images</h1>
           </div>
 
-          <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
+          <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project. Rounded corners are not available in IE8.</p>
           <div class="bs-docs-example bs-docs-example-images">
             <img data-src="holder.js/140x140" class="img-rounded">
             <img data-src="holder.js/140x140" class="img-circle">
@@ -1835,8 +1833,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;img src="..." class="img-circle"&gt;
 &lt;img src="..." class="img-polaroid"&gt;
 </pre>
-          <p><span class="label label-info">Heads up!</span> <code>.img-rounded</code> and <code>.img-circle</code> do not work in IE8 due to lack of <code>border-radius</code> support.</p>
-
 
         </section>
 
@@ -2034,10 +2030,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;i class="glyphicon-search"&gt;&lt;/i&gt;
 </pre>
           <p>Want to change the icon color? Just change the <code>color</code> of the parent element.</p>
-          <p>
-            <span class="label label-info">Heads up!</span>
-            When using beside strings of text, as in buttons or nav links, be sure to leave a space after the icon for proper spacing.
-          </p>
+          <p>When using beside strings of text, as in buttons or nav links, be sure to leave a space after the icon for proper spacing.</p>
 
 
           <hr class="bs-docs-separator">
