@@ -64,7 +64,7 @@
   }
 
   // Links within the dropdown menu
-  li > a {
+  > li > a {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -86,8 +86,8 @@
 
 // Active state
 // ------------
-.dropdown-menu .active > a,
-.dropdown-menu .active > a:hover {
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover {
   color: @dropdown-link-color-active;
   text-decoration: none;
   outline: 0;
@@ -97,12 +97,12 @@
 // Disabled state
 // --------------
 // Gray out text and ensure the hover state remains gray
-.dropdown-menu .disabled > a,
-.dropdown-menu .disabled > a:hover {
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover {
   color: @grayLight;
 }
 // Nuke hover effects
-.dropdown-menu .disabled > a:hover {
+.dropdown-menu > .disabled > a:hover {
   text-decoration: none;
   background-color: transparent;
   background-image: none; // Remove CSS gradient
