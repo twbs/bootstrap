@@ -2589,22 +2589,22 @@ input[type="button"].btn-block {
 .btn {
   color: #555555;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
-  background-color: #dadada;
-  background-image: -moz-linear-gradient(top, #fafafa, #dadada);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#dadada));
-  background-image: -webkit-linear-gradient(top, #fafafa, #dadada);
-  background-image: -o-linear-gradient(top, #fafafa, #dadada);
-  background-image: linear-gradient(to bottom, #fafafa, #dadada);
+  background-color: #eaeaea;
+  background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#eaeaea));
+  background-image: -webkit-linear-gradient(top, #ffffff, #eaeaea);
+  background-image: -o-linear-gradient(top, #ffffff, #eaeaea);
+  background-image: linear-gradient(to bottom, #ffffff, #eaeaea);
   background-repeat: repeat-x;
-  border-color: #c7c7c7;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffafafa', endColorstr='#ffdadada', GradientType=0);
+  border-color: #d7d7d7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeaeaea', GradientType=0);
 }
 
 .btn:hover,
 .btn:active,
 .btn.active {
   color: #555555;
-  background-color: #dadada;
+  background-color: #eaeaea;
   background-position: 0 -15px;
 }
 
@@ -2876,7 +2876,7 @@ fieldset[disabled] .btn-link:hover {
 }
 
 .btn-group.open .btn.dropdown-toggle {
-  background-color: #dadada;
+  background-color: #eaeaea;
 }
 
 .btn-group.open .btn-primary.dropdown-toggle {
