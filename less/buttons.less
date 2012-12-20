@@ -6,6 +6,59 @@
 // Base styles
 // --------------------------------------------------
 
+// Core styles
+.btn {
+  display: inline-block;
+  padding: 7px 13px;
+  margin-bottom: 0; // For input.btn
+  font-size: @font-size-base;
+  font-weight: bold;
+  line-height: @line-height-base;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 0;
+  border-radius: @border-radius-base;
+  //.transition(all .075s ease-in-out);
+
+  &:focus {
+    .tab-focus();
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+  }
+
+  &.disabled,
+  &[disabled] {
+    cursor: default;
+    .opacity(65);
+    .box-shadow(none);
+  }
+
+}
+
+// Default button visuals
+.btn-default {
+  padding: 6px 12px;
+  color: #5a5a5a;
+  background-color: #fff;
+  border: 1px solid #ccc;
+
+  &:hover {
+    color: #fff;
+    background-color: #999;
+    border-color: #999;
+  }
+}
+
+/*
 // Core
 .btn {
   display: inline-block;
@@ -57,7 +110,7 @@
   }
 
 }
-
+*/
 
 // Button Sizes
 // -------------------------
@@ -126,47 +179,21 @@ input[type="button"] {
 // Alternate buttons
 // --------------------------------------------------
 
-// Provide *some* extra contrast for those who can get it
-.btn-primary.active,
-.btn-warning.active,
-.btn-danger.active,
-.btn-success.active,
-.btn-info.active,
-.btn-inverse.active {
-  color: rgba(255,255,255,.75);
-}
-
-// Set the backgrounds
-// -------------------------
-.btn {
-  // reset here as of 2.0.3 due to Recess property order
-  border-color: #c5c5c5;
-  border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
-}
 .btn-primary {
-  .buttonBackground(@btn-backround-primary, @btn-backround-primary-highlight);
+  .buttonBackground(@btn-backround-primary);
 }
 // Warning appears are orange
 .btn-warning {
-  .buttonBackground(@btn-backround-warning, @btn-backround-warning-highlight);
+  .buttonBackground(@btn-backround-warning);
 }
 // Danger and error appear as red
 .btn-danger {
-  .buttonBackground(@btn-backround-danger, @btn-backround-danger-highlight);
+  .buttonBackground(@btn-backround-danger);
 }
 // Success appears as green
 .btn-success {
-  .buttonBackground(@btn-backround-success, @btn-backround-success-highlight);
+  .buttonBackground(@btn-backround-success);
 }
-// Info appears as a neutral blue
-.btn-info {
-  .buttonBackground(@btn-backround-info, @btn-backround-info-highlight);
-}
-// Inverse appears as dark gray
-.btn-inverse {
-  .buttonBackground(@btn-backround-inverse, @btn-backround-inverse-highlight);
-}
-
 
 
 // Link buttons
