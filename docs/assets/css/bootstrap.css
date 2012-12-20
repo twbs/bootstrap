@@ -1424,22 +1424,22 @@ select:focus:invalid:focus {
   display: table-cell;
 }
 
-.input-group-btn:first-child > .btn:last-child,
+.input-group-btn:first-child > .btn,
 .input-group-btn.btn-group:first-child > .btn {
   border-right: 0;
 }
 
-.input-group-btn:first-child > .btn:first-child,
+.input-group-btn:first-child > .btn,
 .input-group-btn.btn-group:first-child > .btn {
   border-radius: 4px 0 0 4px;
 }
 
-.input-group-btn:last-child > .btn:first-child,
+.input-group-btn:last-child > .btn,
 .input-group-btn.btn-group:last-child > .btn:first-child {
   border-left: 0;
 }
 
-.input-group-btn:last-child > .btn:last-child,
+.input-group-btn:last-child > .btn,
 .input-group-btn.btn-group:last-child > .btn {
   border-radius: 0 4px 4px 0;
 }
