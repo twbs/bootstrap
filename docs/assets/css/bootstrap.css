@@ -2953,8 +2953,6 @@ fieldset[disabled] .btn-link:hover {
   margin-left: 0;
 }
 
-.btn-mini .caret,
-.btn-small .caret,
 .btn-large .caret {
   margin-top: 6px;
 }
@@ -2963,6 +2961,11 @@ fieldset[disabled] .btn-link:hover {
   border-top-width: 5px;
   border-right-width: 5px;
   border-left-width: 5px;
+}
+
+.btn-mini .caret,
+.btn-small .caret {
+  margin-top: 8px;
 }
 
 .dropup .btn-large .caret {
@@ -4428,11 +4431,11 @@ a.thumbnail:hover {
   margin: 0 0 5px;
 }
 
-.media .pull-left {
+.media > .pull-left {
   margin-right: 10px;
 }
 
-.media .pull-right {
+.media > .pull-right {
   margin-left: 10px;
 }
 
@@ -4869,6 +4872,31 @@ a.badge:hover {
   margin-left: 70px;
 }
 
+.carousel-indicators {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  margin: 0;
+  list-style: none;
+}
+
+.carousel-indicators li {
+  display: block;
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+  text-indent: -999px;
+  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+}
+
+.carousel-indicators .active {
+  background-color: #fff;
+}
+
 .carousel-caption {
   position: absolute;
   right: 0;
@@ -4962,6 +4990,10 @@ a.badge:hover {
 .control-block-level {
   display: block;
   width: 100%;
+}
+
+@-ms-viewport {
+  width: device-width;
 }
 
 .hidden {
