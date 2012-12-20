@@ -1650,13 +1650,17 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
           <h3>Disabled fieldsets</h3>
-          <p>Add the <code>disabled</code> attribute on a <code>fieldset</code> to disable all the controls within the fieldset at once.</p>
+          <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once. Link buttons (with the <code>&lt;a&gt;</code> element) will be aesthetically disabled, but you will need custom JavaScript to disable their behavior.</p>
           <form class="bs-docs-example form-inline">
             <fieldset disabled>
-              <input type="text" class="span4" placeholder="These controls are all disabled just">
-              <select class="span4">
-                <option>by being under a disabled fieldset</option>
-              </select>
+              <div>
+                <input type="text" class="span4" placeholder="Disabled input">
+              </div>
+              <div>
+                <select class="span4">
+                  <option>Disabled select</option>
+                </select>
+              </div>
               <div class="checkbox">
                 <label>
                   <input type="checkbox"> Can't check this
@@ -1668,9 +1672,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
   &lt;fieldset disabled&gt;
-    &lt;input type="text" class="span4" placeholder="These controls are all disabled just"&gt;
+    &lt;input type="text" class="span4" placeholder="Disabled input"&gt;
     &lt;select class="span4"&gt;
-      &lt;option&gt;by being under a disabled fieldset&lt;/option&gt;
+      &lt;option&gt;Disabled select&lt;/option&gt;
     &lt;/select&gt;
     &lt;div class="checkbox"&gt;
       &lt;label&gt;
@@ -1681,11 +1685,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &lt;/fieldset&gt;
 &lt;/form&gt;
 </pre>
-          <p>
-            <span class="label label-info">Heads up!</span>
-            Contrary to the HTML5 spec, form controls within a <code>fieldset</code>'s <code>legend</code> will also be disabled.<br>
-            Also, <code>&lt;a&gt;</code> buttons within a <code>fieldset[disabled]</code> will be styled like they each had the <code>.disabled</code> class, but this only affects aesthetics; you must use custom JavaScript to actually make such links non-functional.
-          </p>
 
           <h3>Validation states</h3>
           <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>

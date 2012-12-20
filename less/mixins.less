@@ -409,7 +409,7 @@
   color: @text-color;
   text-shadow: @text-shadow;
   #gradient > .vertical(@background-start, @background-end);
-  border-color: darken(@background-end, 5%);
+  border-color: darken(@background-end, 7.5%);
 
   &:hover,
   &:active,
@@ -419,7 +419,10 @@
     background-position: 0 -15px;
   }
   &:active,
-  &.active {
+  &.active,
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
     background-image: none;
   }
 }

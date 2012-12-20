@@ -13,13 +13,10 @@
   margin-bottom: 0; // For input.btn
   font-size: @font-size-base;
   line-height: @line-height-base;
-  color: @gray;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(255,255,255,.75);
   vertical-align: middle;
   cursor: pointer;
-  #gradient > .vertical(@btn-background, @btn-background-highlight);
-  border: 1px solid darken(@btn-background, 20%);
+  border: 1px solid #ccc;
   border-radius: @border-radius-base;
   .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
 
@@ -35,7 +32,7 @@
   &.active {
     outline: 0;
     background-image: none;
-    .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.1)");
+    .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.125), 0 1px 0 rgba(255,255,255,.1)");
   }
 
   &.disabled,
@@ -116,6 +113,10 @@ input[type="button"] {
 // Alternate buttons
 // --------------------------------------------------
 
+.btn {
+  .buttonBackground(@btn-background, @btn-background-highlight, @gray, 0 1px 0 rgba(255,255,255,.75));
+}
+// Primary appears as blue
 .btn-primary {
   .buttonBackground(@btn-background-primary, @btn-background-primary-highlight);
 }
