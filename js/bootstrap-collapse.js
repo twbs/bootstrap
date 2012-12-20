@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-collapse.js v2.2.2
+ * bootstrap-collapse.js v2.2.3
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -52,7 +52,7 @@
         , actives
         , hasData
 
-      if (this.transitioning) return
+      if (this.transitioning || this.$element.hasClass('in')) return
 
       dimension = this.dimension()
       scroll = $.camelCase(['scroll', dimension].join('-'))
