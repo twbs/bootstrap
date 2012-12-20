@@ -2909,7 +2909,7 @@ table th[class*="span"],
   border-bottom: 1px solid #ffffff;
 }
 
-.dropdown-menu li > a {
+.dropdown-menu > li > a {
   display: block;
   padding: 3px 20px;
   clear: both;
@@ -2919,8 +2919,8 @@ table th[class*="span"],
   white-space: nowrap;
 }
 
-.dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a {
   color: #ffffff;
   text-decoration: none;
@@ -2934,8 +2934,8 @@ table th[class*="span"],
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
 
-.dropdown-menu .active > a,
-.dropdown-menu .active > a:hover {
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover {
   color: #ffffff;
   text-decoration: none;
   background-color: #0081c2;
@@ -2949,12 +2949,12 @@ table th[class*="span"],
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
 
-.dropdown-menu .disabled > a,
-.dropdown-menu .disabled > a:hover {
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover {
   color: #999999;
 }
 
-.dropdown-menu .disabled > a:hover {
+.dropdown-menu > .disabled > a:hover {
   text-decoration: none;
   cursor: default;
   background-color: transparent;
