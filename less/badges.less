@@ -4,7 +4,6 @@
 
 
 // Base classes
-.label,
 .badge {
   display: inline-block;
   padding: 2px 4px;
@@ -16,29 +15,17 @@
   white-space: nowrap;
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
   background-color: @grayLight;
-}
-// Set unique padding and border-radii
-.label {
   border-radius: 3px;
-}
-.badge {
-  padding-left: 9px;
-  padding-right: 9px;
-  border-radius: 9px;
-}
 
-// Empty labels/badges collapse
-.label,
-.badge {
+  // Empty labels/badges collapse
   &:empty {
     display: none;
   }
 }
 
 // Hover state, but only for links
-a {
-  &.label:hover,
-  &.badge:hover {
+a.badge {
+  &:hover {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
@@ -47,7 +34,6 @@ a {
 
 // Colors
 // Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
-.label,
 .badge {
   // Important (red)
   &-danger            { background-color: @state-error-text; }
@@ -68,14 +54,12 @@ a {
 
 // Quick fix for labels/badges in buttons
 .btn {
-  .label,
   .badge {
     position: relative;
     top: -1px;
   }
 }
 .btn-mini {
-  .label,
   .badge {
     top: 0;
   }
