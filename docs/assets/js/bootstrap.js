@@ -1779,6 +1779,7 @@
 
   , listen: function () {
       this.$element
+        .on('focus',    $.proxy(this.focus, this))
         .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
@@ -1790,6 +1791,7 @@
       this.$menu
         .on('click', $.proxy(this.click, this))
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+        .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
     }
 
   , eventSupported: function(eventName) {
@@ -1863,9 +1865,13 @@
       e.preventDefault()
   }
 
+  , focus: function (e) {
+      this.focused = true
+    }
+
   , blur: function (e) {
-      var that = this
-      setTimeout(function () { that.hide() }, 150)
+      this.focused = false
+      if (!this.mousedover && this.shown) this.hide()
     }
 
   , click: function (e) {
@@ -1875,8 +1881,14 @@
     }
 
   , mouseenter: function (e) {
+      this.mousedover = true
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
+    }
+
+  , mouseleave: function (e) {
+      this.mousedover = false
+      if (!this.focused && this.shown) this.hide()
     }
 
   }
