@@ -6,51 +6,39 @@
 // Base styles
 // --------------------------------------------------
 
-// Core
+// Core styles
 .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 6px 13px;
   margin-bottom: 0; // For input.btn
   font-size: @font-size-base;
   line-height: @line-height-base;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  .buttonBackground(@btn-background, @btn-background-highlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
-  border: 1px solid @btn-border;
-  border-bottom-color: darken(@btn-border, 10%);
+  border: 1px solid #ccc;
   border-radius: @border-radius-base;
-  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+  .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
 
-  // Hover state
-  &:hover {
-    color: @grayDark;
-    text-decoration: none;
-    background-position: 0 -15px;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
-  }
-
-  // Focus state for keyboard and accessibility
   &:focus {
     .tab-focus();
   }
 
-  // Active state
-  &.active,
-  &:active {
-    background-image: none;
-    outline: 0;
-    .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+  &:hover {
+    text-decoration: none;
   }
 
-  // Disabled state
-  &.disabled,
-  &[disabled] {
-    cursor: default;
+  &:active,
+  &.active {
+    outline: 0;
     background-image: none;
+    .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.125), 0 1px 0 rgba(255,255,255,.1)");
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: default;
     .opacity(65);
     .box-shadow(none);
   }
@@ -125,47 +113,25 @@ input[type="button"] {
 // Alternate buttons
 // --------------------------------------------------
 
-// Provide *some* extra contrast for those who can get it
-.btn-primary.active,
-.btn-warning.active,
-.btn-danger.active,
-.btn-success.active,
-.btn-info.active,
-.btn-inverse.active {
-  color: rgba(255,255,255,.75);
-}
-
-// Set the backgrounds
-// -------------------------
 .btn {
-  // reset here as of 2.0.3 due to Recess property order
-  border-color: #c5c5c5;
-  border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
+  .buttonBackground(@btn-background, @btn-background-highlight, @gray, 0 1px 0 rgba(255,255,255,.75));
 }
+// Primary appears as blue
 .btn-primary {
-  .buttonBackground(@btn-backround-primary, @btn-backround-primary-highlight);
+  .buttonBackground(@btn-background-primary, @btn-background-primary-highlight);
 }
 // Warning appears are orange
 .btn-warning {
-  .buttonBackground(@btn-backround-warning, @btn-backround-warning-highlight);
+  .buttonBackground(@btn-background-warning, @btn-background-warning-highlight);
 }
 // Danger and error appear as red
 .btn-danger {
-  .buttonBackground(@btn-backround-danger, @btn-backround-danger-highlight);
+  .buttonBackground(@btn-background-danger, @btn-background-danger-highlight);
 }
 // Success appears as green
 .btn-success {
-  .buttonBackground(@btn-backround-success, @btn-backround-success-highlight);
+  .buttonBackground(@btn-background-success, @btn-background-success-highlight);
 }
-// Info appears as a neutral blue
-.btn-info {
-  .buttonBackground(@btn-backround-info, @btn-backround-info-highlight);
-}
-// Inverse appears as dark gray
-.btn-inverse {
-  .buttonBackground(@btn-backround-inverse, @btn-backround-inverse-highlight);
-}
-
 
 
 // Link buttons
@@ -174,7 +140,8 @@ input[type="button"] {
 // Make a button look and behave like a link
 .btn-link,
 .btn-link:active,
-.btn-link[disabled] {
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
   background-color: transparent;
   background-image: none;
   .box-shadow(none);
@@ -190,7 +157,12 @@ input[type="button"] {
   text-decoration: underline;
   background-color: transparent;
 }
-.btn-link[disabled]:hover {
-  color: @grayDark;
-  text-decoration: none;
+.btn-link {
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover {
+      color: @grayDark;
+      text-decoration: none;
+    }
+  }
 }

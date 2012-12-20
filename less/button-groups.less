@@ -126,22 +126,16 @@
     background-color: @btn-background-highlight;
   }
   .btn-primary.dropdown-toggle {
-    background-color: @btn-backround-primary-highlight;
+    background-color: @btn-background-primary-highlight;
   }
   .btn-warning.dropdown-toggle {
-    background-color: @btn-backround-warning-highlight;
+    background-color: @btn-background-warning-highlight;
   }
   .btn-danger.dropdown-toggle {
-    background-color: @btn-backround-danger-highlight;
+    background-color: @btn-background-danger-highlight;
   }
   .btn-success.dropdown-toggle {
-    background-color: @btn-backround-success-highlight;
-  }
-  .btn-info.dropdown-toggle {
-    background-color: @btn-backround-info-highlight;
-  }
-  .btn-inverse.dropdown-toggle {
-    background-color: @btn-backround-inverse-highlight;
+    background-color: @btn-background-success-highlight;
   }
 }
 
@@ -152,8 +146,6 @@
   margin-left: 0;
 }
 // Carets in other button sizes
-.btn-mini .caret,
-.btn-small .caret,
 .btn-large .caret {
   margin-top: 6px;
 }
@@ -161,6 +153,10 @@
   border-left-width:  5px;
   border-right-width: 5px;
   border-top-width:   5px;
+}
+.btn-mini .caret,
+.btn-small .caret {
+  margin-top: 8px;
 }
 // Upside down carets for .dropup
 .dropup .btn-large .caret {

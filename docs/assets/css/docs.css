@@ -83,7 +83,7 @@ hr.soften {
 
 /* Base class
 ------------------------- */
-.jumbotron {
+.bs-docs-jumbotron {
   position: relative;
   padding: 40px 0;
   color: #fff;
@@ -101,13 +101,13 @@ hr.soften {
      -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
           box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
 }
-.jumbotron h1 {
+.bs-docs-jumbotron h1 {
   font-size: 80px;
   font-weight: bold;
   letter-spacing: -1px;
   line-height: 1;
 }
-.jumbotron p {
+.bs-docs-jumbotron p {
   font-size: 24px;
   font-weight: 300;
   line-height: 1.25;
@@ -115,14 +115,14 @@ hr.soften {
 }
 
 /* Link styles (used on .masthead-links as well) */
-.jumbotron a {
+.bs-docs-jumbotron a {
   color: #fff;
   color: rgba(255,255,255,.5);
   -webkit-transition: all .2s ease-in-out;
      -moz-transition: all .2s ease-in-out;
           transition: all .2s ease-in-out;
 }
-.jumbotron a:hover {
+.bs-docs-jumbotron a:hover {
   color: #fff;
   text-shadow: 0 0 10px rgba(255,255,255,.25);
 }

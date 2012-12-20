@@ -20,7 +20,7 @@
   width: 0;
   height: 0;
   vertical-align: top;
-  border-top:   4px solid @black;
+  border-top:   4px solid #000;
   border-right: 4px solid transparent;
   border-left:  4px solid transparent;
   content: "";
@@ -64,7 +64,7 @@
   }
 
   // Links within the dropdown menu
-  li > a {
+  > li > a {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -78,8 +78,7 @@
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
-.dropdown-menu li > a:focus,
-.dropdown-submenu:hover > a {
+.dropdown-menu li > a:focus {
   text-decoration: none;
   color: @dropdown-link-color-hover;
   #gradient > .vertical(@dropdown-link-background-hover, darken(@dropdown-link-background-hover, 5%));
@@ -87,8 +86,8 @@
 
 // Active state
 // ------------
-.dropdown-menu .active > a,
-.dropdown-menu .active > a:hover {
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover {
   color: @dropdown-link-color-active;
   text-decoration: none;
   outline: 0;
@@ -98,12 +97,12 @@
 // Disabled state
 // --------------
 // Gray out text and ensure the hover state remains gray
-.dropdown-menu .disabled > a,
-.dropdown-menu .disabled > a:hover {
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover {
   color: @grayLight;
 }
 // Nuke hover effects
-.dropdown-menu .disabled > a:hover {
+.dropdown-menu > .disabled > a:hover {
   text-decoration: none;
   background-color: transparent;
   background-image: none; // Remove CSS gradient
@@ -135,7 +134,7 @@
   // Reverse the caret
   .caret {
     border-top: 0;
-    border-bottom: 4px solid @black;
+    border-bottom: 4px solid #000;
     content: "";
   }
   // Different positioning for bottom up menu
@@ -143,64 +142,6 @@
     top: auto;
     bottom: 100%;
     margin-bottom: 1px;
-  }
-}
-
-// Sub menus
-// ---------------------------
-.dropdown-submenu {
-  position: relative;
-}
-// Default dropdowns
-.dropdown-submenu > .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 4px 4px 4px;
-}
-.dropdown-submenu:hover > .dropdown-menu {
-  display: block;
-}
-
-// Dropups
-.dropup .dropdown-submenu > .dropdown-menu {
-  top: auto;
-  bottom: 0;
-  margin-top: 0;
-  margin-bottom: -2px;
-  border-radius: 4px 4px 4px 0;
-}
-
-// Caret to indicate there is a submenu
-.dropdown-submenu > a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: darken(@dropdown-background, 20%);
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover > a:after {
-  border-left-color: @dropdown-link-color-hover;
-}
-
-// Left aligned submenus
-.dropdown-submenu.pull-left {
-  // Undo the float
-  // Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
-  float: none;
-
-  // Positioning the submenu
-  > .dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
-    border-radius: 4px 0 4px 4px;
   }
 }
 
@@ -216,5 +157,4 @@
 // ---------
 .typeahead {
   z-index: 1051;
-  margin-top: 2px; // give it some space to breathe
 }

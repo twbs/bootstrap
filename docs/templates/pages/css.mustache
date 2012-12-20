@@ -1,6 +1,6 @@
 <!-- Subhead
 ================================================== -->
-<header class="jumbotron subhead" id="overview">
+<header class="bs-docs-jumbotron subhead">
   <div class="container">
     <h1>CSS</h1>
     <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
@@ -240,7 +240,7 @@
           </div>
           <pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
 
-          <p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+          <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
 
           <h3>Emphasis classes</h3>
           <p>Convey meaning through color with a handful of emphasis utility classes.</p>
@@ -507,8 +507,8 @@
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;
 </pre>
+        <h5>Auto-truncating</h5>
         <p>
-          <span class="label label-info">Heads up!</span>
           Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
         </p>
       </section>
@@ -528,7 +528,7 @@
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 <pre class="prettyprint linenums">
-For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.
+For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped as inline.
 </pre>
 
           <h2>Basic block</h2>
@@ -541,7 +541,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
 &lt;/pre&gt;
 </pre>
-          <p><span class="label label-info">Heads up!</span> Be sure to keep code within <code>&lt;pre&gt;</code> tags as close to the left as possible; it will render all tabs.</p>
           <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
         </section>
 
@@ -1000,20 +999,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 
           <h2 id="forms-layouts">Optional layouts</h2>
-          <p>Included with Bootstrap are three optional form layouts for common use cases.</p>
-
-          <h3>Search form</h3>
-          <p>Add <code>.form-search</code> to the form and <code>.search-query</code> to the <code>&lt;input&gt;</code> for an extra-rounded text input.</p>
-          <form class="bs-docs-example form-search">
-            <input type="text" class="span3 search-query">
-            <button type="submit" class="btn">Search</button>
-          </form>{{! /example }}
-<pre class="prettyprint linenums">
-&lt;form class="form-search"&gt;
-  &lt;input type="text" class="span3 search-query"&gt;
-  &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
-&lt;/form&gt;
-</pre>
+          <p>Included with Bootstrap are optional form layouts for common use cases.</p>
 
           <h3>Inline form</h3>
           <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
@@ -1059,13 +1045,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
               <label class="control-label" for="inputPassword">Password</label>
               <div class="controls">
                 <input type="password" id="inputPassword" placeholder="Password">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Remember me
+                  </label>
+                </div>
               </div>
             </div>
             <div class="control-group">
               <div class="controls">
-                <label class="checkbox">
-                  <input type="checkbox"> Remember me
-                </label>
                 <button type="submit" class="btn">Sign in</button>
               </div>
             </div>
@@ -1086,9 +1074,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
     &lt;div class="controls"&gt;
-      &lt;label class="checkbox"&gt;
-        &lt;input type="checkbox"&gt; Remember me
-      &lt;/label&gt;
+      &lt;div class="checkbox"&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox"&gt; Remember me
+        &lt;/label&gt;
+      &lt;/div&gt;
       &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1236,85 +1226,82 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <h2 id="forms-extending">Extending form controls</h2>
           <p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
 
-          <h3>Prepended and appended inputs</h3>
-          <p>Add text or buttons before or after any text-based input. Do note that <code>select</code> elements are not supported here.</p>
-
-          <h4>Default options</h4>
-          <p>Wrap an <code>.add-on</code> and an <code>input</code> with one of two classes to prepend or append text to an input.</p>
+          <h3>Input groups</h3>
+          <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
+          <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
           <form class="bs-docs-example">
-            <div class="input-prepend">
-              <span class="add-on">@</span>
-              <input id="prependedInput" type="text" placeholder="Username">
+            <div class="input-group span9">
+              <span class="input-group-addon">@</span>
+              <input type="text" placeholder="Username">
             </div>
             <br>
-            <div class="input-append">
-              <input id="appendedInput" type="text">
-              <span class="add-on">.00</span>
+            <div class="input-group span6">
+              <input type="text">
+              <span class="input-group-addon">.00</span>
+            </div>
+            <br>
+            <div class="input-group span3">
+              <span class="input-group-addon">$</span>
+              <input type="text">
+              <span class="input-group-addon">.00</span>
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;div class="input-prepend"&gt;
-  &lt;span class="add-on"&gt;@&lt;/span&gt;
-  &lt;input id="prependedInput" type="text" placeholder="Username"&gt;
+&lt;div class="input-group span9"&gt;
+  &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
+  &lt;input type="text" placeholder="Username"&gt;
 &lt;/div&gt;
-&lt;div class="input-append"&gt;
-  &lt;input id="appendedInput" type="text"&gt;
-  &lt;span class="add-on"&gt;.00&lt;/span&gt;
-&lt;/div&gt;
-</pre>
 
-          <h4>Combined</h4>
-          <p>Use both classes and two instances of <code>.add-on</code> to prepend and append an input.</p>
-          <form class="bs-docs-example form-inline">
-            <div class="input-prepend input-append">
-              <span class="add-on">$</span>
-              <input id="appendedPrependedInput" type="text">
-              <span class="add-on">.00</span>
-            </div>
-          </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-prepend input-append"&gt;
-  &lt;span class="add-on"&gt;$&lt;/span&gt;
-  &lt;input id="appendedPrependedInput" type="text"&gt;
-  &lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;div class="input-group span6"&gt;
+  &lt;input type="text"&gt;
+  &lt;span class="input-group-addon"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group span3"&gt;
+  &lt;span class="input-group-addon"&gt;$&lt;/span&gt;
+  &lt;input type="text"&gt;
+  &lt;span class="input-group-addon"&gt;.00&lt;/span&gt;
 &lt;/div&gt;
 </pre>
 
           <h4>Buttons instead of text</h4>
-          <p>Instead of a <code>&lt;span&gt;</code> with text, use a <code>.btn</code> to attach a button (or two) to an input.</p>
+          <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
           <form class="bs-docs-example">
-            <div class="input-append">
-              <input class="span3" id="appendedInputButton" type="text">
-              <button class="btn" type="button">Go!</button>
+            <div class="input-group span7">
+              <span class="input-group-btn">
+                <button class="btn" type="button">Go!</button>
+              </span>
+              <input type="text">
+            </div>
+            <br>
+            <div class="input-group span7">
+              <input type="text">
+              <span class="input-group-btn">
+                <button class="btn" type="button">Go!</button>
+              </span>
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;div class="input-append"&gt;
-  &lt;input class="span3" id="appendedInputButton" type="text"&gt;
-  &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+&lt;div class="input-group span7"&gt;
+  &lt;span class="input-group-btn"&gt;
+    &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+  &lt;/span&gt;
+  &lt;input type="text"&gt;
 &lt;/div&gt;
-</pre>
-          <form class="bs-docs-example">
-            <div class="input-append">
-              <input class="span3" id="appendedInputButtons" type="text">
-              <button class="btn" type="button">Search</button>
-              <button class="btn" type="button">Options</button>
-            </div>
-          </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-append"&gt;
-  &lt;input class="span3" id="appendedInputButton" type="text"&gt;
-  &lt;button class="btn" type="button"&gt;Search&lt;/button&gt;
-  &lt;button class="btn" type="button"&gt;Options&lt;/button&gt;
+
+&lt;div class="input-group span7"&gt;
+  &lt;input type="text"&gt;
+  &lt;span class="input-group-btn"&gt;
+    &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+  &lt;/span&gt;
 &lt;/div&gt;
 </pre>
 
           <h4>Button dropdowns</h4>
           <p></p>
           <form class="bs-docs-example">
-            <div class="input-append">
-              <input class="span3" id="appendedDropdownButton" type="text">
-              <div class="btn-group">
+            <div class="input-group span7">
+              <div class="input-group-btn btn-group">
                 <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
@@ -1324,13 +1311,26 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
                   <li><a href="#">Separated link</a></li>
                 </ul>
               </div><!-- /btn-group -->
-            </div><!-- /input-append -->
+              <input type="text">
+            </div><!-- /input-group -->
+            <br>
+            <div class="input-group span7">
+              <input type="text">
+              <div class="input-group-btn btn-group">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div><!-- /btn-group -->
+            </div><!-- /input-group -->
           </form>
 <pre class="prettyprint linenums">
-&lt;div class="input-append"&gt;
-  &lt;input id="appendedInputButtons" type="text"&gt;
-  &lt;input class="span3" id="appendedDropdownButton" type="text"&gt;
-  &lt;div class="btn-group"&gt;
+&lt;div class="input-group span7"&gt;
+  &lt;div class="input-group-btn btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
       Action
       &lt;span class="caret"&gt;&lt;/span&gt;
@@ -1339,77 +1339,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
       ...
     &lt;/ul&gt;
   &lt;/div&gt;
+  &lt;input type="text"&gt;
 &lt;/div&gt;
-</pre>
 
-          <form class="bs-docs-example">
-            <div class="input-prepend">
-              <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </div><!-- /btn-group -->
-              <input class="span2" id="prependedDropdownButton" type="text">
-            </div><!-- /input-prepend -->
-          </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-prepend"&gt;
-  &lt;div class="btn-group"&gt;
-    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
-      &lt;span class="caret"&gt;&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/div&gt;
-  &lt;input class="span2" id="prependedDropdownButton" type="text"&gt;
-&lt;/div&gt;
-</pre>
-
-          <form class="bs-docs-example">
-            <div class="input-prepend input-append">
-              <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </div><!-- /btn-group -->
-              <input class="span2" id="appendedPrependedDropdownButton" type="text">
-              <div class="btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </div><!-- /btn-group -->
-            </div><!-- /input-prepend input-append -->
-          </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-prepend input-append"&gt;
-  &lt;div class="btn-group"&gt;
-    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
-      &lt;span class="caret"&gt;&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/div&gt;
-  &lt;input class="span2" id="appendedPrependedDropdownButton" type="text"&gt;
-  &lt;div class="btn-group"&gt;
+&lt;div class="input-group span7"&gt;
+  &lt;input type="text"&gt;
+  &lt;div class="input-group-btn btn-group"&gt;
     &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
       Action
       &lt;span class="caret"&gt;&lt;/span&gt;
@@ -1423,8 +1358,8 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
           <h4>Segmented dropdown groups</h4>
           <form class="bs-docs-example">
-            <div class="input-prepend">
-              <div class="btn-group">
+            <div class="input-group span7">
+              <div class="input-group-btn btn-group">
                 <button class="btn" tabindex="-1">Action</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                   <span class="caret"></span>
@@ -1439,9 +1374,12 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
               </div>
               <input type="text" class="span3">
             </div>
-            <div class="input-append">
-              <input type="text" class="span3">
-              <div class="btn-group">
+
+            <br>
+
+            <div class="input-group span7">
+              <input type="text">
+              <div class="input-group-btn btn-group">
                 <button class="btn" tabindex="-1">Action</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                   <span class="caret"></span>
@@ -1457,40 +1395,14 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;form&gt;
-  &lt;div class="input-prepend"&gt;
-    &lt;div class="btn-group"&gt;...&lt;/div&gt;
-    &lt;input type="text" class="span3"&gt;
-  &lt;/div&gt;
-  &lt;div class="input-append"&gt;
-    &lt;input type="text" class="span3"&gt;
-    &lt;div class="btn-group"&gt;...&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
-</pre>
-
-          <h4>Search form</h4>
-          <form class="bs-docs-example form-search">
-            <div class="input-append">
-              <input type="text" class="search-query span3">
-              <button type="submit" class="btn">Search</button>
-            </div>
-            <div class="input-prepend">
-              <button type="submit" class="btn">Search</button>
-              <input type="text" class="search-query span3">
-            </div>
-          </form>{{! /example }}
-<pre class="prettyprint linenums">
-&lt;form class="form-search"&gt;
-  &lt;div class="input-append"&gt;
-    &lt;input type="text" class="search-query span3"&gt;
-    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class="input-prepend"&gt;
-    &lt;button type="submit" class="btn"&gt;Search&lt;/button&gt;
-    &lt;input type="text" class="search-query span3"&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
+&lt;div class="input-prepend"&gt;
+  &lt;div class="btn-group"&gt;...&lt;/div&gt;
+  &lt;input type="text" class="span3"&gt;
+&lt;/div&gt;
+&lt;div class="input-append"&gt;
+  &lt;input type="text" class="span3"&gt;
+  &lt;div class="btn-group"&gt;...&lt;/div&gt;
+&lt;/div&gt;
 </pre>
 
           <h3 id="forms-extending-sizes">Control sizing</h3>
@@ -1677,6 +1589,43 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
 </pre>
 
+          <h3>Disabled fieldsets</h3>
+          <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once. Link buttons (with the <code>&lt;a&gt;</code> element) will be aesthetically disabled, but you will need custom JavaScript to disable their behavior.</p>
+          <form class="bs-docs-example form-inline">
+            <fieldset disabled>
+              <div>
+                <input type="text" class="span4" placeholder="Disabled input">
+              </div>
+              <div>
+                <select class="span4">
+                  <option>Disabled select</option>
+                </select>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Can't check this
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+          </form>
+<pre class="prettyprint linenums">
+&lt;form class="form-inline"&gt;
+  &lt;fieldset disabled&gt;
+    &lt;input type="text" class="span4" placeholder="Disabled input"&gt;
+    &lt;select class="span4"&gt;
+      &lt;option&gt;Disabled select&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div class="checkbox"&gt;
+      &lt;label&gt;
+        &lt;input type="checkbox"&gt; Can't check this
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+
           <h3>Validation states</h3>
           <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
 
@@ -1757,7 +1706,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
             </thead>
             <tbody>
               <tr>
-                <td><button type="button" class="btn">Default</button></td>
+                <td><button type="button" class="btn btn-default">Default</button></td>
                 <td><code>btn</code></td>
                 <td>Standard gray button with gradient</td>
               </tr>
@@ -1765,11 +1714,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
                 <td><button type="button" class="btn btn-primary">Primary</button></td>
                 <td><code>btn btn-primary</code></td>
                 <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-info">Info</button></td>
-                <td><code>btn btn-info</code></td>
-                <td>Used as an alternative to the default styles</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-success">Success</button></td>
@@ -1785,11 +1729,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
                 <td><button type="button" class="btn btn-danger">Danger</button></td>
                 <td><code>btn btn-danger</code></td>
                 <td>Indicates a dangerous or potentially negative action</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-inverse">Inverse</button></td>
-                <td><code>btn btn-inverse</code></td>
-                <td>Alternate dark gray button, not tied to a semantic action or use</td>
               </tr>
               <tr>
                 <td><button type="button" class="btn btn-link">Link</button></td>
@@ -1868,7 +1807,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;a href="#" class="btn btn-large disabled"&gt;Link&lt;/a&gt;
 </pre>
           <p>
-            <span class="label label-info">Heads up!</span>
             We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
           </p>
 
@@ -1911,7 +1849,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
             <h1>Images</h1>
           </div>
 
-          <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project.</p>
+          <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project. Rounded corners are not available in IE8.</p>
           <div class="bs-docs-example bs-docs-example-images">
             <img data-src="holder.js/140x140" class="img-rounded">
             <img data-src="holder.js/140x140" class="img-circle">
@@ -1922,8 +1860,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;img src="..." class="img-circle"&gt;
 &lt;img src="..." class="img-polaroid"&gt;
 </pre>
-          <p><span class="label label-info">Heads up!</span> <code>.img-rounded</code> and <code>.img-circle</code> do not work in IE8 due to lack of <code>border-radius</code> support.</p>
-
 
         </section>
 
@@ -2121,10 +2057,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;i class="glyphicon-search"&gt;&lt;/i&gt;
 </pre>
           <p>Want to change the icon color? Just change the <code>color</code> of the parent element.</p>
-          <p>
-            <span class="label label-info">Heads up!</span>
-            When using beside strings of text, as in buttons or nav links, be sure to leave a space after the icon for proper spacing.
-          </p>
+          <p>When using beside strings of text, as in buttons or nav links, be sure to leave a space after the icon for proper spacing.</p>
 
 
           <hr class="bs-docs-separator">

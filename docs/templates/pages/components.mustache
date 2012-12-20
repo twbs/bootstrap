@@ -1,6 +1,6 @@
 <!-- Subhead
 ================================================== -->
-<header class="jumbotron subhead" id="overview">
+<header class="bs-docs-jumbotron subhead">
   <div class="container">
     <h1>Components</h1>
     <p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
@@ -22,7 +22,7 @@
           <li><a href="#navbar"><i class="glyphicon-chevron-right"></i> Navbar</a></li>
           <li><a href="#breadcrumbs"><i class="glyphicon-chevron-right"></i> Breadcrumbs</a></li>
           <li><a href="#pagination"><i class="glyphicon-chevron-right"></i> Pagination</a></li>
-          <li><a href="#labels-badges"><i class="glyphicon-chevron-right"></i> Labels and badges</a></li>
+          <li><a href="#badges"><i class="glyphicon-chevron-right"></i> Badges</a></li>
           <li><a href="#typography"><i class="glyphicon-chevron-right"></i> Typography</a></li>
           <li><a href="#thumbnails"><i class="glyphicon-chevron-right"></i> Thumbnails</a></li>
           <li><a href="#alerts"><i class="glyphicon-chevron-right"></i> Alerts</a></li>
@@ -91,90 +91,6 @@
   ...
 &lt;/ul&gt;
 </pre>
-
-          <h3>Sub menus on dropdowns</h3>
-          <p>Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.</p>
-          <div class="bs-docs-example bs-docs-example-submenus">
-
-            <div class="pull-left">
-              <p class="muted">Default</p>
-              <div class="dropdown clearfix">
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                  <li><a tabindex="-1" href="#">Action</a></li>
-                  <li><a tabindex="-1" href="#">Another action</a></li>
-                  <li><a tabindex="-1" href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">More options</a>
-                    <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>{{! /.pull-left }}
-
-            <div class="pull-left">
-              <p class="muted">Dropup</p>
-              <div class="dropup">
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                  <li><a tabindex="-1" href="#">Action</a></li>
-                  <li><a tabindex="-1" href="#">Another action</a></li>
-                  <li><a tabindex="-1" href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">More options</a>
-                    <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>{{! /.pull-left }}
-
-            <div class="pull-left">
-              <p class="muted">Left submenu</p>
-              <div class="dropdown">
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                  <li><a tabindex="-1" href="#">Action</a></li>
-                  <li><a tabindex="-1" href="#">Another action</a></li>
-                  <li><a tabindex="-1" href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-submenu pull-left">
-                    <a tabindex="-1" href="#">More options</a>
-                    <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                      <li><a tabindex="-1" href="#">Second level link</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>{{! /.pull-left }}
-
-          </div>{{! /example }}
-<pre class="prettyprint linenums">
-&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
-  ...
-  &lt;li class="dropdown-submenu"&gt;
-    &lt;a tabindex="-1" href="#"&gt;More options&lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
         </section>
 
 
@@ -259,7 +175,7 @@
           <p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the JavaScript docs</a> for that.</p>
 
           <h4>Dropdowns in button groups</h4>
-          <p><span class="label label-info">Heads up!</span> Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
+          <p>Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
         </section>
 
 
@@ -1443,73 +1359,13 @@
 
 
 
-        <!-- Labels and badges
+        <!-- Badges
         ================================================== -->
-        <section id="labels-badges">
+        <section id="badges">
           <div class="page-header">
-            <h1>Labels and badges</h1>
+            <h1>Badges</h1>
           </div>
-          <h3>Labels</h3>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Labels</th>
-                <th>Markup</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <span class="label">Default</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="label label-success">Success</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-success"&gt;Success&lt;/span&gt;</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="label label-warning">Warning</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-warning"&gt;Warning&lt;/span&gt;</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="label label-danger">Danger</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-danger"&gt;Danger&lt;/span&gt;</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="label label-info">Info</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-info"&gt;Info&lt;/span&gt;</code>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="label label-inverse">Inverse</span>
-                </td>
-                <td>
-                  <code>&lt;span class="label label-inverse"&gt;Inverse&lt;/span&gt;</code>
-                </td>
-              </tr>
-            </tbody>
-          </table>
 
-          <h3>Badges</h3>
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -1589,7 +1445,7 @@
           </table>
 
           <h3>Easily collapsible</h3>
-          <p>For easy implementation, labels and badges will simply collapse (via CSS's <code>:empty</code> selector) when no content exists within.</p>
+          <p>For easy implementation, badges will simply collapse (via CSS's <code>:empty</code> selector) when no content exists within.</p>
 
         </section>
 
@@ -1602,17 +1458,17 @@
             <h1>Typographic components</h1>
           </div>
 
-          <h2>Hero unit</h2>
+          <h2>Jumbotron</h2>
           <p>A lightweight, flexible component to showcase key content on your site. It works well on marketing and content-heavy sites.</p>
           <div class="bs-docs-example">
-            <div class="hero-unit">
+            <div class="jumbotron">
               <h1>Hello, world!</h1>
               <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
               <p><a class="btn btn-primary btn-large">Learn more</a></p>
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="hero-unit"&gt;
+&lt;div class="jumbotron"&gt;
   &lt;h1&gt;Heading&lt;/h1&gt;
   &lt;p&gt;Tagline&lt;/p&gt;
   &lt;p&gt;
