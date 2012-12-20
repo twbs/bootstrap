@@ -192,7 +192,6 @@
 
   , getPosition: function () {
       var el = this.$element[0]
-
       return $.extend({}, el.getBoundingClientRect ? el.getBoundingClientRect() : {
         width: el.offsetWidth
       , height: el.offsetHeight

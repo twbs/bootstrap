@@ -726,8 +726,9 @@
       selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
-    $parent = $(selector)
-    $parent.length || ($parent = $this.parent())
+    $parent = selector && $(selector)
+
+    if (!$parent || !$parent.length) $parent = $this.parent()
 
     return $parent
   }
@@ -1208,7 +1209,6 @@
 
   , getPosition: function () {
       var el = this.$element[0]
-
       return $.extend({}, el.getBoundingClientRect ? el.getBoundingClientRect() : {
         width: el.offsetWidth
       , height: el.offsetHeight
