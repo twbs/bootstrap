@@ -2277,7 +2277,7 @@ table th[class*="span"] {
   width: 0;
   height: 0;
   vertical-align: top;
-  border-top: 4px solid #000000;
+  border-top: 4px solid #000;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
@@ -2388,7 +2388,7 @@ table th[class*="span"] {
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
-  border-bottom: 4px solid #000000;
+  border-bottom: 4px solid #000;
   content: "";
 }
 
@@ -2517,14 +2517,14 @@ table th[class*="span"] {
   font-size: 20px;
   font-weight: bold;
   line-height: 20px;
-  color: #000000;
+  color: #000;
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
   filter: alpha(opacity=20);
 }
 
 .close:hover {
-  color: #000000;
+  color: #000;
   text-decoration: none;
   cursor: pointer;
   opacity: 0.4;
@@ -4133,7 +4133,7 @@ input[type="button"].btn-block {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000000;
+  background-color: #000;
 }
 
 .modal-backdrop.fade {
