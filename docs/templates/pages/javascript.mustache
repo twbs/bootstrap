@@ -1352,6 +1352,11 @@ $('#myCollapsible').on('hidden', function () {
             <p>{{_i}}The slideshow below shows a generic plugin and component for cycling through elements like a carousel.{{/i}}</p>
             <div class="bs-docs-example">
               <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
+                  <li class="active"></li>
+                  <li></li>
+                  <li></li>
+                </ol>
                 <div class="carousel-inner">
                   <div class="item active">
                     <img src="assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
@@ -1601,14 +1606,6 @@ $('.carousel').carousel({
             <p>{{_i}}Call the affix plugin via JavaScript:{{/i}}</p>
             <pre class="prettyprint linenums">$('#navbar').affix()</pre>
 
-            <h3>{{_i}}Methods{{/i}}</h3>
-            <h4>.affix('refresh')</h4>
-            <p>{{_i}}When using affix in conjunction with adding or removing of elements from the DOM, you'll want to call the refresh method:{{/i}}</p>
-<pre class="prettyprint linenums">
-$('[data-spy="affix"]').each(function () {
-  $(this).affix('refresh')
-});
-</pre>
           <h3>{{_i}}Options{{/i}}</h3>
           <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">
