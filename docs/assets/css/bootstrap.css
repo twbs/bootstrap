@@ -360,10 +360,6 @@ a:hover {
   margin-left: 8.333333333333332%;
 }
 
-[class*="span"].hide {
-  display: none;
-}
-
 [class*="span"].pull-right {
   float: right;
 }
