@@ -15,11 +15,13 @@
   font-weight: bold;
   line-height: @line-height-base;
   text-align: center;
+  color: @gray;
   vertical-align: middle;
   cursor: pointer;
+  background-color: #eee;
   border: 0;
   border-radius: @border-radius-base;
-  //.transition(all .075s ease-in-out);
+  .transition(all .075s ease-in-out);
 
   &:focus {
     .tab-focus();
@@ -27,12 +29,13 @@
 
   &:hover {
     text-decoration: none;
+    background-color: #ddd;
   }
 
   &:active,
   &.active {
     outline: 0;
-    .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+    .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.1)");
   }
 
   &.disabled,
@@ -44,73 +47,6 @@
 
 }
 
-// Default button visuals
-.btn-default {
-  padding: 6px 12px;
-  color: #5a5a5a;
-  background-color: #fff;
-  border: 1px solid #ccc;
-
-  &:hover {
-    color: #fff;
-    background-color: #999;
-    border-color: #999;
-  }
-}
-
-/*
-// Core
-.btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0; // For input.btn
-  font-size: @font-size-base;
-  line-height: @line-height-base;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  white-space: nowrap;
-  .buttonBackground(@btn-background, @btn-background-highlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
-  border: 1px solid @btn-border;
-  border-bottom-color: darken(@btn-border, 10%);
-  border-radius: @border-radius-base;
-  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
-
-  // Hover state
-  &:hover {
-    color: @grayDark;
-    text-decoration: none;
-    background-position: 0 -15px;
-
-    // transition is only when going to hover, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
-  }
-
-  // Focus state for keyboard and accessibility
-  &:focus {
-    .tab-focus();
-  }
-
-  // Active state
-  &.active,
-  &:active {
-    background-image: none;
-    outline: 0;
-    .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
-  }
-
-  // Disabled state
-  &.disabled,
-  &[disabled] {
-    cursor: default;
-    background-image: none;
-    .opacity(65);
-    .box-shadow(none);
-  }
-
-}
-*/
 
 // Button Sizes
 // -------------------------
