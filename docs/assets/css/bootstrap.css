@@ -4021,6 +4021,7 @@ fieldset[disabled] .navbar-inverse .btn-navbar {
   top: 10%;
   left: 50%;
   z-index: 1050;
+  display: none;
   width: 560px;
   margin-left: -280px;
   background-color: #fff;
@@ -4911,11 +4912,11 @@ a.badge:hover {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .show {
-  display: block;
+  display: block !important;
 }
 
 .invisible {

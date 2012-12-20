@@ -119,7 +119,7 @@ $('#myModal').on('show', function (e) {
           <h3>Static example</h3>
           <p>A rendered modal with header, body, and set of actions in the footer.</p>
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
+            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; display: block; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>Modal header</h3>
@@ -134,7 +134,7 @@ $('#myModal').on('show', function (e) {
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;div class="modal hide fade"&gt;
+&lt;div class="modal fade"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
     &lt;h3&gt;Modal header&lt;/h3&gt;
@@ -152,7 +152,7 @@ $('#myModal').on('show', function (e) {
           <h3>Live demo</h3>
           <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h3 id="myModalLabel">Modal Heading</h3>
@@ -191,7 +191,7 @@ $('#myModal').on('show', function (e) {
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
 
 &lt!-- Modal --&gt;
-&lt;div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
+&lt;div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
   &lt;div class="modal-header"&gt;
     &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
     &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
