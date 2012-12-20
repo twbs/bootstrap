@@ -331,6 +331,9 @@ textarea[class*="span"],
 // --------------
 
 // Disabled and read-only inputs
+// Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+//   disabled if the fieldset is disabled. Due to implementation difficulty,
+//   we don't honor that edge case; we style them as disabled anyway.
 input,
 select,
 textarea {
