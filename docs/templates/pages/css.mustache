@@ -1589,6 +1589,44 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 &lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
 </pre>
 
+          <h3>Disabled fieldsets</h3>
+          <p>Add the <code>disabled</code> attribute on a <code>fieldset</code> to disable all the controls within the fieldset at once.</p>
+          <form class="bs-docs-example form-inline">
+            <fieldset disabled>
+              <input type="text" class="span4" placeholder="These controls are all disabled just">
+              <select class="span4">
+                <option>by being under a disabled fieldset</option>
+              </select>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Can't check this
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+          </form>
+<pre class="prettyprint linenums">
+&lt;form class="form-inline"&gt;
+  &lt;fieldset disabled&gt;
+    &lt;input type="text" class="span4" placeholder="These controls are all disabled just"&gt;
+    &lt;select class="span4"&gt;
+      &lt;option&gt;by being under a disabled fieldset&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div class="checkbox"&gt;
+      &lt;label&gt;
+        &lt;input type="checkbox"&gt; Can't check this
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+          <p>
+            <span class="label label-info">Heads up!</span>
+            Contrary to the HTML5 spec, form controls within a <code>fieldset</code>'s <code>legend</code> will also be disabled.<br>
+            Also, <code>&lt;a&gt;</code> buttons within a <code>fieldset[disabled]</code> will be styled like they each had the <code>.disabled</code> class, but this only affects aesthetics; you must use custom JavaScript to actually make such links non-functional.
+          </p>
+
           <h3>Validation states</h3>
           <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
 
