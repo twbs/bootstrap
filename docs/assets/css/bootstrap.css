@@ -5519,11 +5519,11 @@ a.thumbnail:hover {
   margin: 0 0 5px;
 }
 
-.media .pull-left {
+.media > .pull-left {
   margin-right: 10px;
 }
 
-.media .pull-right {
+.media > .pull-right {
   margin-left: 10px;
 }
 
