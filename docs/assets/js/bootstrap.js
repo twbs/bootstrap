@@ -289,6 +289,7 @@
 
   var Carousel = function (element, options) {
     this.$element = $(element)
+    this.$indicators = this.$element.find('.carousel-indicators')
     this.options = options
     this.options.pause == 'hover' && this.$element
       .on('mouseenter', $.proxy(this.pause, this))
@@ -305,13 +306,17 @@
       return this
     }
 
+  , getActiveIndex: function () {
+      this.$active = this.$element.find('.item.active')
+      this.$items = this.$active.parent().children()
+      return this.$items.index(this.$active)
+    }
+
   , to: function (pos) {
-      var $active = this.$element.find('.item.active')
-        , children = $active.parent().children()
-        , activePos = children.index($active)
+      var activeIndex = this.getActiveIndex()
         , that = this
 
-      if (pos > (children.length - 1) || pos < 0) return
+      if (pos > (this.$items.length - 1) || pos < 0) return
 
       if (this.sliding) {
         return this.$element.one('slid', function () {
@@ -319,11 +324,11 @@
         })
       }
 
-      if (activePos == pos) {
+      if (activeIndex == pos) {
         return this.pause().cycle()
       }
 
-      return this.slide(pos > activePos ? 'next' : 'prev', $(children[pos]))
+      return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
     }
 
   , pause: function (e) {
@@ -367,6 +372,14 @@
       })
 
       if ($next.hasClass('active')) return
+
+      if (this.$indicators.length) {
+        this.$indicators.find('.active').removeClass('active')
+        this.$element.one('slid', function () {
+          var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
+          $nextIndicator && $nextIndicator.addClass('active')
+        })
+      }
 
       if ($.support.transition && this.$element.hasClass('slide')) {
         this.$element.trigger(e)
@@ -726,8 +739,9 @@
       selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
-    $parent = $(selector)
-    $parent.length || ($parent = $this.parent())
+    $parent = selector && $(selector)
+
+    if (!$parent || !$parent.length) $parent = $this.parent()
 
     return $parent
   }
@@ -831,8 +845,7 @@
             that.$element.appendTo(document.body) //don't move modals dom position
           }
 
-          that.$element
-            .show()
+          that.$element.show()
 
           if (transition) {
             that.$element[0].offsetWidth // force reflow
@@ -1113,7 +1126,6 @@
 
   , show: function () {
       var $tip
-        , inside
         , pos
         , actualWidth
         , actualHeight
@@ -1132,19 +1144,17 @@
           this.options.placement.call(this, $tip[0], this.$element[0]) :
           this.options.placement
 
-        inside = /in/.test(placement)
-
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
           .insertAfter(this.$element)
 
-        pos = this.getPosition(inside)
+        pos = this.getPosition()
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
-        switch (inside ? placement.split(' ')[1] : placement) {
+        switch (placement) {
           case 'bottom':
             tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
             break
@@ -1209,11 +1219,12 @@
       return this.getTitle()
     }
 
-  , getPosition: function (inside) {
-      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
-        width: this.$element[0].offsetWidth
-      , height: this.$element[0].offsetHeight
-      })
+  , getPosition: function () {
+      var el = this.$element[0]
+      return $.extend({}, el.getBoundingClientRect ? el.getBoundingClientRect() : {
+        width: el.offsetWidth
+      , height: el.offsetHeight
+      }, this.$element.offset())
     }
 
   , getTitle: function () {
@@ -1891,6 +1902,7 @@
 
   , listen: function () {
       this.$element
+        .on('focus',    $.proxy(this.focus, this))
         .on('blur',     $.proxy(this.blur, this))
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
@@ -1902,6 +1914,7 @@
       this.$menu
         .on('click', $.proxy(this.click, this))
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
+        .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
     }
 
   , eventSupported: function(eventName) {
@@ -1975,9 +1988,13 @@
       e.preventDefault()
   }
 
+  , focus: function (e) {
+      this.focused = true
+    }
+
   , blur: function (e) {
-      var that = this
-      setTimeout(function () { that.hide() }, 150)
+      this.focused = false
+      if (!this.mousedover && this.shown) this.hide()
     }
 
   , click: function (e) {
@@ -1987,8 +2004,14 @@
     }
 
   , mouseenter: function (e) {
+      this.mousedover = true
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
+    }
+
+  , mouseleave: function (e) {
+      this.mousedover = false
+      if (!this.focused && this.shown) this.hide()
     }
 
   }
