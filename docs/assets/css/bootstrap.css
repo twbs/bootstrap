@@ -6053,11 +6053,11 @@ a.badge:hover {
 }
 
 .hide {
-  display: none !important;
+  display: none;
 }
 
 .show {
-  display: block !important;
+  display: block;
 }
 
 .invisible {
