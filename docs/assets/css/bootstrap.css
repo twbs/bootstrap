@@ -232,8 +232,7 @@ a:hover {
 .container:before,
 .container:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .container:after {
@@ -248,8 +247,7 @@ a:hover {
 .row:before,
 .row:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .row:after {
@@ -562,8 +560,7 @@ dd {
 .dl-horizontal:before,
 .dl-horizontal:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .dl-horizontal:after {
@@ -1109,8 +1106,7 @@ textarea[class*="span"],
 .controls-row:before,
 .controls-row:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .controls-row:after {
@@ -1317,8 +1313,7 @@ select:focus:invalid:focus {
 .form-actions:before,
 .form-actions:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .form-actions:after {
@@ -1609,8 +1604,7 @@ legend + .control-group {
 .form-horizontal .control-group:before,
 .form-horizontal .control-group:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .form-horizontal .control-group:after {
@@ -3376,8 +3370,7 @@ input[type="button"].btn-block {
 .nav:before,
 .nav:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .nav:after {
@@ -3586,8 +3579,7 @@ input[type="button"].btn-block {
 .tabbable:before,
 .tabbable:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .tabbable:after {
@@ -3639,8 +3631,7 @@ input[type="button"].btn-block {
 .navbar:before,
 .navbar:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .navbar:after {
@@ -3710,8 +3701,7 @@ input[type="button"].btn-block {
 .navbar-form:before,
 .navbar-form:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .navbar-form:after {
@@ -4292,8 +4282,7 @@ input[type="button"].btn-block {
 .pager:before,
 .pager:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .pager:after {
@@ -4426,8 +4415,7 @@ input[type="button"].btn-block {
 .modal-footer:before,
 .modal-footer:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
 .modal-footer:after {
@@ -5232,14 +5220,13 @@ a.badge:hover {
   line-height: 30px;
 }
 
-.clear:before,
-.clear:after {
+.clearfix:before,
+.clearfix:after {
   display: table;
-  line-height: 0;
-  content: "";
+  content: " ";
 }
 
-.clear:after {
+.clearfix:after {
   clear: both;
 }
 
@@ -5342,8 +5329,7 @@ a.badge:hover {
   .row:before,
   .row:after {
     display: table;
-    line-height: 0;
-    content: "";
+    content: " ";
   }
   .row:after {
     clear: both;
@@ -5439,8 +5425,7 @@ a.badge:hover {
   .row:before,
   .row:after {
     display: table;
-    line-height: 0;
-    content: "";
+    content: " ";
   }
   .row:after {
     clear: both;

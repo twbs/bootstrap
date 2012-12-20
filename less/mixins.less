@@ -3,20 +3,24 @@
 // --------------------------------------------------
 
 
-// UTILITY MIXINS
-// --------------------------------------------------
+// Utilities
+// -------------------------
 
 // Clearfix
-// --------
-// For clearing floats like a boss h5bp.com/q
-.clearfix() {
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+.clear_float() {
   &:before,
   &:after {
-    display: table;
-    content: "";
-    // Fixes Opera/contenteditable bug:
-    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
-    line-height: 0;
+    content: " "; /* 1 */
+    display: table; /* 2 */
   }
   &:after {
     clear: both;
@@ -24,7 +28,6 @@
 }
 
 // Webkit-style focus
-// ------------------
 .tab-focus() {
   // Default
   outline: thin dotted #333;
@@ -34,7 +37,6 @@
 }
 
 // Center-align a block level element
-// ----------------------------------
 .center-block() {
   display: block;
   margin-left: auto;
@@ -42,7 +44,6 @@
 }
 
 // Sizing shortcuts
-// -------------------------
 .size(@width, @height) {
   width: @width;
   height: @height;
@@ -52,7 +53,6 @@
 }
 
 // Placeholder text
-// -------------------------
 .placeholder(@color: @input-color-placeholder) {
   &:-moz-placeholder {
     color: @color;
@@ -66,7 +66,6 @@
 }
 
 // Text overflow
-// -------------------------
 // Requires inline-block or block for proper styling
 .text-overflow() {
   overflow: hidden;
@@ -75,7 +74,6 @@
 }
 
 // CSS image replacement
-// -------------------------
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 .hide-text() {
   font: 0/0 a;
