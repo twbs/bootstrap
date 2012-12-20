@@ -4974,7 +4974,7 @@ a.badge:hover {
   margin-bottom: 0;
 }
 
-.hero-unit {
+.jumbotron {
   padding: 60px;
   margin-bottom: 30px;
   font-size: 18px;
@@ -4985,7 +4985,7 @@ a.badge:hover {
   border-radius: 6px;
 }
 
-.hero-unit h1 {
+.jumbotron h1 {
   margin-bottom: 0;
   font-size: 60px;
   line-height: 1;
@@ -4993,7 +4993,7 @@ a.badge:hover {
   color: inherit;
 }
 
-.hero-unit li {
+.jumbotron li {
   line-height: 30px;
 }
 
