@@ -2070,17 +2070,16 @@ class="muted"
 </pre>
 
           <h4>.clearfix</h4>
-          <p>Clear the <code>float</code> on any element</p>
+          <p>Clear the <code>float</code> on any element.</p>
 <pre class="prettyprint linenums">
 class="clearfix"
 </pre>
 <pre class="prettyprint linenums">
 .clearfix {
-  *zoom: 1;
   &:before,
   &:after {
+    content: " ";
     display: table;
-    content: "";
   }
   &:after {
     clear: both;
