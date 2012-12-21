@@ -11,7 +11,8 @@
   overflow: visible;
   padding: 0 20px;
   margin-bottom: @line-height-base;
-  #gradient > .vertical(@navbar-background-highlight, @navbar-background);
+  background-color: @navbar-background;
+  //#gradient > .vertical(@navbar-background-highlight, @navbar-background);
   border: 1px solid @navbar-border;
   border-radius: @border-radius-base;
   .box-shadow(0 1px 4px rgba(0,0,0,.065));
@@ -362,7 +363,8 @@
 // -------------------------
 
 .navbar-inverse {
-  #gradient > .vertical(@navbar-inverse-background-highlight, @navbar-inverse-background);
+  background-color: @navbar-inverse-background;
+  //#gradient > .vertical(@navbar-inverse-background-highlight, @navbar-inverse-background);
   border-color: @navbar-inverse-border;
 
   .brand,
