@@ -571,12 +571,12 @@ $('#myModal').on('hidden', function () {
           <h2>Usage</h2>
 
           <h3>Via data attributes</h3>
-          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll want to use scrollspy with a <code>.nav</code> component.</p>
+          <p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the body) and <code>data-target=".navbar"</code> to select which nav to use. You'll need to use scrollspy with a <code>.nav</code> component.</p>
           <pre class="prettyprint linenums">&lt;body data-spy="scroll" data-target=".navbar"&gt;...&lt;/body&gt;</pre>
 
           <h3>Via JavaScript</h3>
           <p>Call the scrollspy via JavaScript:</p>
-          <pre class="prettyprint linenums">$('#navbar').scrollspy()</pre>
+          <pre class="prettyprint linenums">$('body').scrollspy(options)</pre>
 
           <div class="alert alert-info">
             <strong>Heads up!</strong>
@@ -604,6 +604,12 @@ $('[data-spy="scroll"]').each(function () {
              </tr>
             </thead>
             <tbody>
+             <tr>
+               <td>target</td>
+               <td>selector</td>
+               <td>'body'</td>
+               <td>Nav target to be updated on scroll. (Scrollspy looks for <code>.nav li > a</code> inside this target.)</td>
+             </tr>
              <tr>
                <td>offset</td>
                <td>number</td>
