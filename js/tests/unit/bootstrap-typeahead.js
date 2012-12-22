@@ -192,17 +192,22 @@ $(function () {
             }).appendTo('body')
           , typeahead = $input.data('typeahead')
           , changed = false
+          , focus = false
+          , blur = false
 
         $input.val('a')
         typeahead.lookup()
 
         $input.change(function() { changed = true });
+        $input.focus(function() { focus = true; blur = false });
+        $input.blur(function() { blur = true; focus = false });
 
         $(typeahead.$menu.find('li')[2]).mouseover().click()
 
         equals($input.val(), 'ac', 'input value was correctly set')
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
         ok(changed, 'a change event was fired')
+        ok(focus && !blur, 'focus is still set')
 
         $input.remove()
         typeahead.$menu.remove()
