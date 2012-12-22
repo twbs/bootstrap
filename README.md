@@ -1,5 +1,5 @@
 <a href="http://getbootstrap.com">
-  <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-docs-readme.png" width="160px">
+  <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-docs-readme.png" width="100px">
 </a>
 
 # [Bootstrap v2.2.3](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
