@@ -156,4 +156,23 @@ $(function () {
         div.find('a').trigger('click')
         ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
       })
+
+      test("should place tooltips inside the body", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({container:'body'})
+          .tooltip('show')
+        ok($("body > .tooltip").length, 'inside the body')
+        ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
+        tooltip.tooltip('hide')
+      })
+ 
+      test("should place tooltips inside the trigger element", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({placement: 'in right'})
+          .tooltip('show')
+        ok($("a[rel=tooltip] > .tooltip").length, 'inside the trigger element')
+        tooltip.tooltip('hide')
+      })
 })

@@ -121,9 +121,10 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
 
-        pos = this.getPosition(inside)
+        inside ? this.$element.append($tip) : this.options.container && $tip.appendTo(this.options.container).length || $tip.insertAfter(this.$element)
+
+        pos = this.getPosition(inside ? inside : '')
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
@@ -143,8 +144,8 @@
             break
         }
 
+        inside ? $tip.css(tp) : $tip.offset(tp)
         $tip
-          .offset(tp)
           .addClass(placement)
           .addClass('in')
       }
@@ -273,6 +274,7 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: ''
   }
 
 
