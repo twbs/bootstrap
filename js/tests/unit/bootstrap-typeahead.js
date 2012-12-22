@@ -228,4 +228,88 @@ $(function () {
         $input.remove()
         typeahead.$menu.remove()
       })
+      
+      test("should delay lookup", function() {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac'],
+              delay:50
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+        
+        //simulate "a" pressed
+        $input.val('a')
+        $input.trigger({
+          type: 'keydown'
+        , keyCode: 65
+        })
+        .trigger({
+          type: 'keypress'
+        , keyCode: 65
+        })
+        .trigger({
+          type: 'keyup'
+        , keyCode: 65
+        })
+        
+        equals(typeahead.$menu.find('li').length, 0, 'has 0 items in menu')
+        
+        stop()
+        setTimeout(function () {
+          equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+          start()
+        }, 51)
+        
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+      
+      test("should debounce keyups", function() {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac'],
+              delay:50
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+        
+        typeahead.lookup = function() {
+          ok(true)
+        }
+        
+        stop()
+        expect(1)
+        
+        // 1st "a" keystroke
+        $input.trigger({
+          type: 'keydown'
+        , keyCode: 65
+        })
+        .trigger({
+          type: 'keypress'
+        , keyCode: 65
+        })
+        .trigger({
+          type: 'keyup'
+        , keyCode: 65
+        })
+        
+        // 2nd "a" keystroke
+        $input.trigger({
+          type: 'keydown'
+        , keyCode: 65
+        })
+        .trigger({
+          type: 'keypress'
+        , keyCode: 65
+        })
+        .trigger({
+          type: 'keyup'
+        , keyCode: 65
+        })
+        
+        setTimeout(function () {
+          start()
+        }, 51)
+        
+        $input.remove()
+        typeahead.$menu.remove()
+      })
 })

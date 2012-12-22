@@ -36,6 +36,7 @@
     this.source = this.options.source
     this.$menu = $(this.options.menu)
     this.shown = false
+    this.lookupTimer
     this.listen()
   }
 
@@ -90,6 +91,16 @@
       items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
 
       return items ? this.process(items) : this
+    }
+    
+  , debounceLookup: function(event) {
+      if(this.lookupTimer) {
+        clearTimeout(this.lookupTimer)
+      }
+
+      this.lookupTimer = setTimeout($.proxy(this.lookup, this), this.options.delay)
+      
+      return this
     }
 
   , process: function (items) {
@@ -251,7 +262,7 @@
           break
 
         default:
-          this.lookup()
+          this.options.delay <= 0 ? this.lookup() : this.debounceLookup()
       }
 
       e.stopPropagation()
@@ -308,6 +319,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , delay: 0
   }
 
   $.fn.typeahead.Constructor = Typeahead
