@@ -369,6 +369,7 @@
 
       e = $.Event('slide', {
         relatedTarget: $next[0]
+      , direction: direction
       })
 
       if ($next.hasClass('active')) return
@@ -2001,6 +2002,7 @@
       e.stopPropagation()
       e.preventDefault()
       this.select()
+      this.$element.focus()
     }
 
   , mouseenter: function (e) {
