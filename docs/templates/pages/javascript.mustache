@@ -1386,6 +1386,11 @@ $('#myCollapsible').on('hidden', function () {
             </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div id="myCarousel" class="carousel slide"&gt;
+  &lt;ol class="carousel-indicators"&gt
+    &lt;li data-target="#myCarousel" data-slide-to="0" class="active"&gt&lt;/li&gt
+    &lt;li data-target="#myCarousel" data-slide-to="1"&gt&lt;/li&gt
+    &lt;li data-target="#myCarousel" data-slide-to="2"&gt&lt;/li&gt
+  &lt;/ol&gt
   &lt;!-- {{_i}}Carousel items{{/i}} --&gt;
   &lt;div class="carousel-inner"&gt;
     &lt;div class="active item"&gt;…&lt;/div&gt;
@@ -1410,14 +1415,14 @@ $('#myCollapsible').on('hidden', function () {
             <h2>{{_i}}Usage{{/i}}</h2>
 
             <h3>{{_i}}Via data attributes{{/i}}</h3>
-            <p>{{_i}}...{{/i}}</p>
+            <p>{{_i}}Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to it's current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which jump's the slide position to a particular index beginning with <code>0</code>.{{/i}}</p>
 
             <h3>{{_i}}Via JavaScript{{/i}}</h3>
             <p>{{_i}}Call carousel manually with:{{/i}}</p>
             <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
 
             <h3>{{_i}}Options{{/i}}</h3>
-            <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.{{/i}}</p>
+            <p>{{_i}}Options can be passed via data attributes or JavaScriptz. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.{{/i}}</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
