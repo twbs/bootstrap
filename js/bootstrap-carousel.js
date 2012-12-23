@@ -31,7 +31,7 @@
     this.$indicators = this.$element.find('.carousel-indicators')
     this.options = options
     this.options.pause == 'hover' && this.$element
-      .on('mouseenter', $.proxy(this.pause, this))
+      .on('mouseenter, mouseover', $.proxy(this.pause, this))
       .on('mouseleave', $.proxy(this.cycle, this))
   }
 
@@ -74,7 +74,6 @@
       if (!e) this.paused = true
       if (this.$element.find('.next, .prev').length && $.support.transition.end) {
         this.$element.trigger($.support.transition.end)
-        this.cycle()
       }
       clearInterval(this.interval)
       this.interval = null
