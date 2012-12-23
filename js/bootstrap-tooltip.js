@@ -110,10 +110,10 @@
         , actualHeight
         , placement
         , tp
-        , e
+        , e = $.Event('show')
 
       if (this.hasContent() && this.enabled) {
-        this.$element.trigger(e = $.Event('show'))
+        this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
         $tip = this.tip()
         this.setContent()
@@ -171,9 +171,9 @@
   , hide: function () {
       var that = this
         , $tip = this.tip()
-        , e
+        , e = $.Event('hide')
 
-      this.$element.trigger(e = $.Event('hide'))
+      this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
 
       $tip.removeClass('in')
