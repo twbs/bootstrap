@@ -164,4 +164,14 @@ $(function () {
           .tooltip('toggle')
         ok($(".tooltip").is('.fade.in'), 'tooltip should be toggled in')
       })
+
+      test("should place tooltips inside the body", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({container:'body'})
+          .tooltip('show')
+        ok($("body > .tooltip").length, 'inside the body')
+        ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
+        tooltip.tooltip('hide')
+      })
 })
