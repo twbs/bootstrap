@@ -127,7 +127,7 @@
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
 
-        this.options.container && $tip.appendTo(this.options.container).length || $tip.insertAfter(this.$element)
+        this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition()
 
