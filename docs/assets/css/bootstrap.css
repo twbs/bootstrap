@@ -4523,22 +4523,6 @@ a.badge:hover {
   background-color: #356635;
 }
 
-.badge-info {
-  background-color: #3a87ad;
-}
-
-.badge-info[href] {
-  background-color: #2d6987;
-}
-
-.badge-inverse {
-  background-color: #333333;
-}
-
-.badge-inverse[href] {
-  background-color: #1a1a1a;
-}
-
 .btn .badge {
   position: relative;
   top: -1px;
