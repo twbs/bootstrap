@@ -30,7 +30,8 @@
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
         $('html').on('click.dropdown.data-api', function () {
-          $el.parent().removeClass('open')
+          $el.parent().removeClass('open');
+          $('html').off('click.dropdown.data-api');
         })
       }
 
@@ -53,8 +54,13 @@
 
       if (!isActive) {
         $parent.toggleClass('open')
+        
+        $('html').on('click.dropdown.data-api', function () {
+          $this.parent().removeClass('open');
+          $('html').off('click.dropdown.data-api');
+        })
       }
-
+    
       $this.focus()
 
       return false
