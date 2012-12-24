@@ -280,7 +280,7 @@
   , title: ''
   , delay: 0
   , html: false
-  , container: ''
+  , container: false
   }
 
 
