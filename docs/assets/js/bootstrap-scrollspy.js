@@ -59,7 +59,7 @@
               , $href = /^#\w/.test(href) && $(href)
             return ( $href
               && $href.length
-              && [[ $href.position().top + self.$scrollElement.scrollTop(), href ]] ) || null
+              && [[ $href.position().top , href ]] ) || null
           })
           .sort(function (a, b) { return a[0] - b[0] })
           .each(function () {
