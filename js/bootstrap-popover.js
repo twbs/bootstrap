@@ -44,8 +44,8 @@
         , content = this.getContent()
 
       title.length < 1 ? 
-	    $tip.find('.popover-title').remove() : 
-		$tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
+        $tip.find('.popover-title').remove() :
+        $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
 
       $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
       $tip.removeClass('fade top bottom left right in')
