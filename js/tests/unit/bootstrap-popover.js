@@ -96,7 +96,7 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
-	  
+  
       test("should remove h3.popover-title", function() {
         $.support.transition = false
         var popover = $('<a href="#">@fat</a>')
