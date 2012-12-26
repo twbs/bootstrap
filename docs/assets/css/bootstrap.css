@@ -4924,11 +4924,6 @@ a.badge:hover {
   position: fixed;
 }
 
-.control-block-level {
-  display: block;
-  width: 100%;
-}
-
 @-ms-viewport {
   width: device-width;
 }
@@ -5213,7 +5208,6 @@ a.badge:hover {
   select[class*="span"],
   textarea[class*="span"],
   .uneditable-input {
-    display: block;
     width: 100%;
   }
   .input-prepend input,
