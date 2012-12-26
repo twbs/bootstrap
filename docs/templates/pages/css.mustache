@@ -1478,7 +1478,33 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
   ...
 &lt;/select&gt;
 </pre>
-          <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with `.row` and `.span*` classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+          <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.span*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+          <form class="bs-docs-example" style="padding-bottom: 15px;">
+            <div class="row">
+              <div class="span4">
+                <input type="text" placeholder=".span4">
+              </div>
+              <div class="span4">
+                <input type="text" placeholder=".span4">
+              </div>
+              <div class="span4">
+                <input type="text" placeholder=".span4">
+              </div>
+            </div>
+          </form>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span4"&gt;
+    &lt;input type="text" placeholder=".span4"&gt;
+  &lt;/div&gt;
+  &lt;div class="span4"&gt;
+    &lt;input type="text" placeholder=".span4"&gt;
+  &lt;/div&gt;
+  &lt;div class="span4"&gt;
+    &lt;input type="text" placeholder=".span4"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
           <h3>Uneditable inputs</h3>
           <p>Present data in a form that's not editable without using actual form markup.</p>
