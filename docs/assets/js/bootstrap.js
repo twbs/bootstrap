@@ -789,7 +789,7 @@
 
   $(document)
     .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
-    .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
@@ -1150,8 +1150,11 @@
         , actualHeight
         , placement
         , tp
+        , e = $.Event('show')
 
       if (this.hasContent() && this.enabled) {
+        this.$element.trigger(e)
+        if (e.isDefaultPrevented()) return
         $tip = this.tip()
         this.setContent()
 
@@ -1166,7 +1169,8 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+
+        this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition()
 
@@ -1192,6 +1196,8 @@
           .offset(tp)
           .addClass(placement)
           .addClass('in')
+
+        this.$element.trigger('shown')
       }
     }
 
@@ -1206,6 +1212,10 @@
   , hide: function () {
       var that = this
         , $tip = this.tip()
+        , e = $.Event('hide')
+
+      this.$element.trigger(e)
+      if (e.isDefaultPrevented()) return
 
       $tip.removeClass('in')
 
@@ -1223,6 +1233,8 @@
       $.support.transition && this.$tip.hasClass('fade') ?
         removeWithAnimation() :
         $tip.detach()
+
+      this.$element.trigger('hidden')
 
       return this
     }
@@ -1282,8 +1294,8 @@
     }
 
   , toggle: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
-      self[self.tip().hasClass('in') ? 'hide' : 'show']()
+      var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
+      self.tip().hasClass('in') ? self.hide() : self.show()
     }
 
   , destroy: function () {
@@ -1319,6 +1331,7 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: false
   }
 
 
@@ -1330,7 +1343,8 @@
     return this
   }
 
-}(window.jQuery);/* ===========================================================
+}(window.jQuery);
+/* ===========================================================
  * bootstrap-popover.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#popovers
  * ===========================================================
