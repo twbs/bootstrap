@@ -1538,39 +1538,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
   ...
 &lt;/select&gt;
 </pre>
-
-          <p>For multiple grid inputs per line, <strong>use the <code>.controls-row</code> modifier class for proper spacing</strong>. It floats the inputs to collapse white-space, sets the proper margins, and the clears the float.</p>
-          <form class="bs-docs-example" style="padding-bottom: 15px;">
-            <div class="controls controls-row">
-              <input class="span5" type="text" placeholder=".span5">
-            </div>
-            <div class="controls controls-row">
-              <input class="span4" type="text" placeholder=".span4">
-              <input class="span1" type="text" placeholder=".span1">
-            </div>
-            <div class="controls controls-row">
-              <input class="span3" type="text" placeholder=".span3">
-              <input class="span2" type="text" placeholder=".span2">
-            </div>
-            <div class="controls controls-row">
-              <input class="span2" type="text" placeholder=".span2">
-              <input class="span3" type="text" placeholder=".span3">
-            </div>
-            <div class="controls controls-row">
-              <input class="span1" type="text" placeholder=".span1">
-              <input class="span4" type="text" placeholder=".span4">
-            </div>
-          </form>
-<pre class="prettyprint linenums">
-&lt;div class="controls"&gt;
-  &lt;input class="span5" type="text" placeholder=".span5"&gt;
-&lt;/div&gt;
-&lt;div class="controls controls-row"&gt;
-  &lt;input class="span4" type="text" placeholder=".span4"&gt;
-  &lt;input class="span1" type="text" placeholder=".span1"&gt;
-&lt;/div&gt;
-...
-</pre>
+          <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with `.row` and `.span*` classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
 
           <h3>Uneditable inputs</h3>
           <p>Present data in a form that's not editable without using actual form markup.</p>

@@ -1088,90 +1088,6 @@ textarea[class*="span"],
   margin-left: 0;
 }
 
-.controls-row input.offset12,
-textarea.offset12,
-select.offset12,
-uneditable-input.offset12 {
-  margin-left: 101.06382978723404%;
-}
-
-.controls-row input.offset11,
-textarea.offset11,
-select.offset11,
-uneditable-input.offset11 {
-  margin-left: 92.7304964539007%;
-}
-
-.controls-row input.offset10,
-textarea.offset10,
-select.offset10,
-uneditable-input.offset10 {
-  margin-left: 84.39716312056738%;
-}
-
-.controls-row input.offset9,
-textarea.offset9,
-select.offset9,
-uneditable-input.offset9 {
-  margin-left: 76.06382978723404%;
-}
-
-.controls-row input.offset8,
-textarea.offset8,
-select.offset8,
-uneditable-input.offset8 {
-  margin-left: 67.7304964539007%;
-}
-
-.controls-row input.offset7,
-textarea.offset7,
-select.offset7,
-uneditable-input.offset7 {
-  margin-left: 59.39716312056738%;
-}
-
-.controls-row input.offset6,
-textarea.offset6,
-select.offset6,
-uneditable-input.offset6 {
-  margin-left: 51.06382978723404%;
-}
-
-.controls-row input.offset5,
-textarea.offset5,
-select.offset5,
-uneditable-input.offset5 {
-  margin-left: 42.73049645390071%;
-}
-
-.controls-row input.offset4,
-textarea.offset4,
-select.offset4,
-uneditable-input.offset4 {
-  margin-left: 34.39716312056737%;
-}
-
-.controls-row input.offset3,
-textarea.offset3,
-select.offset3,
-uneditable-input.offset3 {
-  margin-left: 26.06382978723404%;
-}
-
-.controls-row input.offset2,
-textarea.offset2,
-select.offset2,
-uneditable-input.offset2 {
-  margin-left: 17.730496453900706%;
-}
-
-.controls-row input.offset1,
-textarea.offset1,
-select.offset1,
-uneditable-input.offset1 {
-  margin-left: 9.397163120567374%;
-}
-
 .input-append input[class*="span"],
 .input-append .uneditable-input[class*="span"],
 .input-prepend input[class*="span"],
@@ -1184,25 +1100,6 @@ select[class*="span"],
 textarea[class*="span"],
 .uneditable-input[class*="span"] {
   height: 34px;
-}
-
-.controls-row:before,
-.controls-row:after {
-  display: table;
-  content: " ";
-}
-
-.controls-row:after {
-  clear: both;
-}
-
-.controls-row [class*="span"] {
-  float: left;
-}
-
-.controls-row .checkbox[class*="span"],
-.controls-row .radio[class*="span"] {
-  padding-top: 5px;
 }
 
 input[disabled],
