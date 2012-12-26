@@ -428,7 +428,6 @@ select:focus:invalid {
 
 
 
-
 // Input groups
 // --------------------------------------------------
 
@@ -536,4 +535,32 @@ select:focus:invalid {
   &.btn-group:last-child > .btn {
     border-radius: 0 @border-radius-base @border-radius-base 0;
   }
+}
+
+
+
+// Horizontal forms
+// --------------------------------------------------
+
+.form-horizontal {
+
+  // Increase spacing between groups
+  .control-group {
+    margin-bottom: @line-height-base / 2;
+    .clearfix();
+  }
+
+  // Float the labels left
+  .control-group > .control-label {
+    float: left;
+    width: @component-offset-horizontal - 20;
+    padding-top: 5px;
+    text-align: right;
+  }
+
+  // Move over all input controls and content over
+  .control-group > .controls {
+    margin-left: @component-offset-horizontal;
+  }
+
 }

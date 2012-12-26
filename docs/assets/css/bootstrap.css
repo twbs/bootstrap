@@ -1528,6 +1528,31 @@ select:focus:invalid:focus {
   border-radius: 0 4px 4px 0;
 }
 
+.form-horizontal .control-group {
+  margin-bottom: 10px;
+}
+
+.form-horizontal .control-group:before,
+.form-horizontal .control-group:after {
+  display: table;
+  content: " ";
+}
+
+.form-horizontal .control-group:after {
+  clear: both;
+}
+
+.form-horizontal .control-group > .control-label {
+  float: left;
+  width: 160px;
+  padding-top: 5px;
+  text-align: right;
+}
+
+.form-horizontal .control-group > .controls {
+  margin-left: 180px;
+}
+
 table {
   max-width: 100%;
   background-color: transparent;
