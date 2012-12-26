@@ -1,0 +1,21 @@
+/**
+ * CSS file with CSS classes used by the tagger plugin.
+ */
+.tagger {
+
+}
+.tagger .label {
+    margin-right: 3px;
+    cursor: pointer;
+}
+.tagger .label i.icon-remove {
+    margin-left: 3px;
+}
+
+.tagger-tag-list {
+    margin: 3px;
+}
+
+.tagger-form {
+    
+}
