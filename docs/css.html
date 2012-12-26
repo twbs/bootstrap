@@ -1671,48 +1671,42 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
 
           <form class="bs-docs-example form-horizontal">
-            <div class="control-group warning">
+            <div class="control-group has-warning">
               <label class="control-label" for="inputWarning">Input with warning</label>
               <div class="controls">
-                <input type="text" id="inputWarning">
-                <span class="help-inline">Something may have gone wrong</span>
+                <input type="text" class="input-with-feedback" id="inputWarning">
               </div>
             </div>
-            <div class="control-group error">
+            <div class="control-group has-error">
               <label class="control-label" for="inputError">Input with error</label>
               <div class="controls">
-                <input type="text" id="inputError">
-                <span class="help-inline">Please correct the error</span>
+                <input type="text" class="input-with-feedback" id="inputError">
               </div>
             </div>
-            <div class="control-group success">
+            <div class="control-group has-success">
               <label class="control-label" for="inputSuccess">Input with success</label>
               <div class="controls">
-                <input type="text" id="inputSuccess">
-                <span class="help-inline">Woohoo!</span>
+                <input type="text" class="input-with-feedback" id="inputSuccess">
               </div>
             </div>
           </form>
 <pre class="prettyprint linenums">
-&lt;div class="control-group warning"&gt;
+&lt;div class="control-group has-warning"&gt;
   &lt;label class="control-label" for="inputWarning"&gt;Input with warning&lt;/label&gt;
   &lt;div class="controls"&gt;
-    &lt;input type="text" id="inputWarning"&gt;
-    &lt;span class="help-inline"&gt;Something may have gone wrong&lt;/span&gt;
+    &lt;input type="text" class="input-with-feedback" id="inputWarning"&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="control-group error"&gt;
+&lt;div class="control-group has-error"&gt;
   &lt;label class="control-label" for="inputError"&gt;Input with error&lt;/label&gt;
   &lt;div class="controls"&gt;
-    &lt;input type="text" id="inputError"&gt;
-    &lt;span class="help-inline"&gt;Please correct the error&lt;/span&gt;
+    &lt;input type="text" class="input-with-feedback" id="inputError"&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="control-group success"&gt;
+&lt;div class="control-group has-success"&gt;
   &lt;label class="control-label" for="inputSuccess"&gt;Input with success&lt;/label&gt;
   &lt;div class="controls"&gt;
-    &lt;input type="text" id="inputSuccess"&gt;
-    &lt;span class="help-inline"&gt;Woohoo!&lt;/span&gt;
+    &lt;input type="text" class="input-with-feedback id="inputSuccess""&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>

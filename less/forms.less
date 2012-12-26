@@ -342,15 +342,15 @@ input[type="checkbox"] {
 // --------------------------
 
 // Warning
-.control-group.warning {
+.has-warning {
   .formFieldState(@state-warning-text, @state-warning-text, @state-warning-background);
 }
 // Error
-.control-group.error {
+.has-error {
   .formFieldState(@state-error-text, @state-error-text, @state-error-background);
 }
 // Success
-.control-group.success {
+.has-success {
   .formFieldState(@state-success-text, @state-success-text, @state-success-background);
 }
 
@@ -523,15 +523,23 @@ select:focus:invalid {
 
   // Increase spacing between groups
   .control-group {
-    margin-bottom: @line-height-base / 2;
+    position: relative;
+    margin-bottom: @line-height-base;
     .clearfix();
+
+    input,
+    select,
+    textarea,
+    .uneditable-input {
+      margin-bottom: 0;
+    }
   }
 
   // Float the labels left
   .control-group > .control-label {
     float: left;
     width: @component-offset-horizontal - 20;
-    padding-top: 5px;
+    padding-top: 6px;
     text-align: right;
   }
 

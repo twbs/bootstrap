@@ -1116,115 +1116,55 @@ fieldset[disabled] input[type="checkbox"] {
   background-color: transparent;
 }
 
-.control-group.warning .control-label,
-.control-group.warning .help-block,
-.control-group.warning .help-inline {
+.has-warning .control-label {
   color: #c09853;
 }
 
-.control-group.warning .checkbox,
-.control-group.warning .radio,
-.control-group.warning input,
-.control-group.warning select,
-.control-group.warning textarea {
-  color: #c09853;
-}
-
-.control-group.warning input,
-.control-group.warning select,
-.control-group.warning textarea {
+.has-warning .input-with-feedback {
+  padding-right: 32px;
   border-color: #c09853;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.control-group.warning input:focus,
-.control-group.warning select:focus,
-.control-group.warning textarea:focus {
+.has-warning .input-with-feedback:focus {
   border-color: #a47e3c;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
 }
 
-.control-group.warning .input-prepend .add-on,
-.control-group.warning .input-append .add-on {
-  color: #c09853;
-  background-color: #fcf8e3;
-  border-color: #c09853;
-}
-
-.control-group.error .control-label,
-.control-group.error .help-block,
-.control-group.error .help-inline {
+.has-error .control-label {
   color: #b94a48;
 }
 
-.control-group.error .checkbox,
-.control-group.error .radio,
-.control-group.error input,
-.control-group.error select,
-.control-group.error textarea {
-  color: #b94a48;
-}
-
-.control-group.error input,
-.control-group.error select,
-.control-group.error textarea {
+.has-error .input-with-feedback {
+  padding-right: 32px;
   border-color: #b94a48;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.control-group.error input:focus,
-.control-group.error select:focus,
-.control-group.error textarea:focus {
+.has-error .input-with-feedback:focus {
   border-color: #953b39;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
 }
 
-.control-group.error .input-prepend .add-on,
-.control-group.error .input-append .add-on {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #b94a48;
-}
-
-.control-group.success .control-label,
-.control-group.success .help-block,
-.control-group.success .help-inline {
+.has-success .control-label {
   color: #468847;
 }
 
-.control-group.success .checkbox,
-.control-group.success .radio,
-.control-group.success input,
-.control-group.success select,
-.control-group.success textarea {
-  color: #468847;
-}
-
-.control-group.success input,
-.control-group.success select,
-.control-group.success textarea {
+.has-success .input-with-feedback {
+  padding-right: 32px;
   border-color: #468847;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.control-group.success input:focus,
-.control-group.success select:focus,
-.control-group.success textarea:focus {
+.has-success .input-with-feedback:focus {
   border-color: #356635;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
-}
-
-.control-group.success .input-prepend .add-on,
-.control-group.success .input-append .add-on {
-  color: #468847;
-  background-color: #dff0d8;
-  border-color: #468847;
 }
 
 input:focus:invalid,
@@ -1381,7 +1321,8 @@ select:focus:invalid:focus {
 }
 
 .form-horizontal .control-group {
-  margin-bottom: 10px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .form-horizontal .control-group:before,
@@ -1394,10 +1335,17 @@ select:focus:invalid:focus {
   clear: both;
 }
 
+.form-horizontal .control-group input,
+.form-horizontal .control-group select,
+.form-horizontal .control-group textarea,
+.form-horizontal .control-group .uneditable-input {
+  margin-bottom: 0;
+}
+
 .form-horizontal .control-group > .control-label {
   float: left;
   width: 160px;
-  padding-top: 5px;
+  padding-top: 6px;
   text-align: right;
 }
 

@@ -122,25 +122,14 @@
 // FORMS
 // --------------------------------------------------
 
-// Mixin for form field states
 .formFieldState(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
-  // Set the text color
-  .control-label,
-  .help-block,
-  .help-inline {
+  // Color the label text
+  .control-label {
     color: @text-color;
   }
-  // Style inputs accordingly
-  .checkbox,
-  .radio,
-  input,
-  select,
-  textarea {
-    color: @text-color;
-  }
-  input,
-  select,
-  textarea {
+  // Set the border and box shadow on specific inputs to match
+  .input-with-feedback {
+    padding-right: 32px; // to account for the feedback icon
     border-color: @border-color;
     .box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
     &:focus {
@@ -148,13 +137,6 @@
       @shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten(@border-color, 20%);
       .box-shadow(@shadow);
     }
-  }
-  // Give a small background color for input-prepend/-append
-  .input-prepend .add-on,
-  .input-append .add-on {
-    color: @text-color;
-    background-color: @background-color;
-    border-color: @text-color;
   }
 }
 
