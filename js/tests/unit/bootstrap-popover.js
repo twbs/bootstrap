@@ -96,6 +96,26 @@ $(function () {
         ok(!$('.popover').length, 'popover was removed')
         $('#qunit-fixture').empty()
       })
+  
+      test("should remove h3.popover-title", function() {
+        $.support.transition = false
+        var popover = $('<a href="#">@fat</a>')
+          .appendTo('#qunit-fixture')
+          .popover({
+            title: ''
+          , content: 'Test'
+          , template: '<div class="popover"><div class="arrow"></div><div class="inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+          })
+
+        popover.popover('show')
+
+        ok($('.popover').length, 'popover was inserted')
+        ok($('.popover h3.popover-title').length < 1, 'h3 with title was removed')
+
+        popover.popover('hide')
+        ok(!$('.popover').length, 'popover was removed')
+        $('#qunit-fixture').empty()
+      })
 
       test("should destroy popover", function () {
         var popover = $('<div/>').popover({trigger: 'hover'}).on('click.foo', function(){})
