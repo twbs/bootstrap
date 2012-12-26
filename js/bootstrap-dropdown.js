@@ -81,7 +81,10 @@
 
       isActive = $parent.hasClass('open')
 
-      if (!isActive || (isActive && e.keyCode == 27)) return $this.click()
+      if (!isActive || (isActive && e.keyCode == 27)) {
+        if (e.which == 27) $parent.find(toggle).focus()
+        return $this.click()
+      }
 
       $items = $('[role=menu] li:not(.divider):visible a', $parent)
 
@@ -154,7 +157,7 @@
 
   $(document)
     .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
-    .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
