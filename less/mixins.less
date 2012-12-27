@@ -60,11 +60,19 @@
 
   &:first-child {
     *margin-left: 0;
+    .rtl & {
+      *margin-left: auto;
+      *margin-right: 0;
+    }
   }
 }
 
 .ie7-restore-right-whitespace() {
   *margin-right: .3em;
+  .rtl & {
+    *margin-left: .3em;
+    *margin-right: auto;
+  }
 }
 
 // Sizing shortcuts
@@ -538,17 +546,30 @@
   float: none; // undo default grid column styles
   width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
   margin-left: 0; // undo default grid column styles
+  .rtl & {
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
 
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
 .makeRow() {
   margin-left: @gridGutterWidth * -1;
+  .rtl & {
+    margin-left: auto;
+    margin-right: @gridGutterWidth * -1;
+  }
   .clearfix();
 }
 .makeColumn(@columns: 1, @offset: 0) {
   float: left;
   margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
+  .rtl & {
+    float: right;
+    margin-left: auto;
+    margin-right: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
+  }
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
 }
 
@@ -571,6 +592,10 @@
 
     .offset (@columns) {
       margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+      .rtl & {
+        margin-left: auto;
+        margin-right: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+      }
     }
 
     .span (@columns) {
@@ -579,6 +604,10 @@
 
     .row {
       margin-left: @gridGutterWidth * -1;
+      .rtl & {
+        margin-left: auto;
+        margin-right: @gridGutterWidth * -1;
+      }
       .clearfix();
     }
 
@@ -586,6 +615,11 @@
       float: left;
       min-height: 1px; // prevent collapsing columns
       margin-left: @gridGutterWidth;
+      .rtl & {
+        float: right;
+        margin-left: auto;
+        margin-right: @gridGutterWidth;
+      }
     }
 
     // Set the container width, and override it for fixed navbars in media queries
@@ -618,11 +652,23 @@
     .offset (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
   	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
+      .rtl & {
+        margin-left: auto;
+        *margin-left: auto;
+        margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
+        *margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
+      }
     }
 
     .offsetFirstChild (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
       *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+      .rtl & {
+        margin-left: auto;
+        *margin-left: auto;
+        margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
+        *margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+      }
     }
 
     .span (@columns) {
@@ -638,14 +684,29 @@
         float: left;
         margin-left: @fluidGridGutterWidth;
         *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+        .rtl & {
+          float: right;
+          margin-left: auto;
+          *margin-left: auto;
+          margin-right: @fluidGridGutterWidth;
+          *margin-right: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+        }
       }
       [class*="span"]:first-child {
         margin-left: 0;
+        .rtl & {
+          margin-left: auto;
+          margin-right: 0;
+        }
       }
 
       // Space grid-sized controls properly if multiple per line
       .controls-row [class*="span"] + [class*="span"] {
         margin-left: @fluidGridGutterWidth;
+        .rtl & {
+          margin-left: auto;
+          margin-right: @fluidGridGutterWidth;
+        }
       }
 
       // generate .spanX and .offsetX
@@ -676,6 +737,10 @@
     // Space grid-sized controls properly if multiple per line
     .controls-row [class*="span"] + [class*="span"] {
       margin-left: @gridGutterWidth;
+      .rtl & {
+        margin-left: auto;
+        margin-right: @gridGutterWidth;
+      }
     }
 
     // generate .spanX
