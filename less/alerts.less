@@ -8,6 +8,9 @@
 
 .alert {
   padding: 8px 35px 8px 14px;
+  .rtl & {
+    padding: 8px 14px 8px 35px;
+  }
   margin-bottom: @baseLineHeight;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   background-color: @warningBackground;
@@ -28,6 +31,10 @@
   position: relative;
   top: -2px;
   right: -21px;
+  .rtl & {
+    left: -21px;
+    right: auto;
+  }
   line-height: @baseLineHeight;
 }
 
