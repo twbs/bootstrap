@@ -1543,7 +1543,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <h2>Form control states</h2>
           <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
 
-          <h3>Input focus</h3>
+          <h3 id="forms-input-focus">Input focus</h3>
           <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
           <form class="bs-docs-example form-inline">
             <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused...">
@@ -1552,7 +1552,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 &lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
 </pre>
 
-          <h3>Invalid inputs</h3>
+          <h3 id="forms-invalid-inputs">Invalid inputs</h3>
           <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code> and add the <code>required</code> attribute.</p>
           <form class="bs-docs-example form-inline">
             <input class="span3" type="email" placeholder="test@example.com" required>
@@ -1561,7 +1561,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 &lt;input class="span3" type="email" required&gt;
 </pre>
 
-          <h3>Disabled inputs</h3>
+          <h3 id="forms-disabled-inputs">Disabled inputs</h3>
           <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
           <form class="bs-docs-example form-inline">
             <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
@@ -1570,7 +1570,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 &lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
 </pre>
 
-          <h3>Disabled fieldsets</h3>
+          <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
           <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once. Link buttons (with the <code>&lt;a&gt;</code> element) will be aesthetically disabled, but you will need custom JavaScript to disable their behavior.</p>
           <form class="bs-docs-example form-inline">
             <fieldset disabled>
@@ -1607,8 +1607,13 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 &lt;/form&gt;
 </pre>
 
-          <h3>Validation states</h3>
-          <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use, add the appropriate class to the surrounding <code>.control-group</code>.</p>
+          <h3 id="forms-validation">Validation states</h3>
+          <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use:</p>
+          <ul>
+            <li>Add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element</li>
+            <li>Add .input-with-feedback to the field(s) in question</li>
+          </ul>
+          <p>Validation styles are applied on a per-input basis. With horizontal forms, the <code>&lt;label class="control-label"&gt;</code> will always be styled.</p>
 
           <form class="bs-docs-example form-horizontal">
             <div class="control-group has-warning">
