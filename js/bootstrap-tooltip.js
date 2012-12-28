@@ -109,6 +109,7 @@
         , actualWidth
         , actualHeight
         , placement
+        , container
         , tp
         , e = $.Event('show')
 
@@ -130,7 +131,11 @@
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
 
-        this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
+        container = typeof this.options.container == 'function' ?
+          this.options.container.call(this.$element[0], $tip[0], this.options) :
+          this.options.container
+
+        container ? $tip.appendTo(container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition()
 
