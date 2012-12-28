@@ -111,6 +111,23 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should not explode when non strings are entered", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac', null, undefined]
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 item in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+
       test("should hide menu when query entered", function () {
         stop()
         var $input = $('<input />').typeahead({
