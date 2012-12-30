@@ -26,42 +26,64 @@
  /* AFFIX CLASS DEFINITION
   * ====================== */
 
-  var Affix = function (element, options) {
-    this.options = $.extend({}, $.fn.affix.defaults, options)
-    this.$window = $(window)
-      .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
-      .on('click.affix.data-api',  $.proxy(function () { setTimeout($.proxy(this.checkPosition, this), 1) }, this))
-    this.$element = $(element)
-    this.checkPosition()
-  }
+  var reset = 'affix affix-top affix-bottom'
+    , Affix = function (element, options) {
+      this.options = $.extend({}, $.fn.affix.defaults, options)
+      this.$window = $(window)
+        .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
+        .on('click.affix.data-api',  $.proxy(function () { setTimeout($.proxy(this.checkPosition, this), 1) }, this))
+      this.$element = $(element)
+      this.checkPosition()
+    }
 
-  Affix.prototype.checkPosition = function () {
-    if (!this.$element.is(':visible')) return
+  Affix.prototype = {
 
-    var scrollHeight = $(document).height()
-      , scrollTop = this.$window.scrollTop()
-      , position = this.$element.offset()
-      , offset = this.options.offset
-      , offsetBottom = offset.bottom
-      , offsetTop = offset.top
-      , reset = 'affix affix-top affix-bottom'
-      , affix
+    constructor: Affix
 
-    if (typeof offset != 'object') offsetBottom = offsetTop = offset
-    if (typeof offsetTop == 'function') offsetTop = offset.top()
-    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
+  , checkPosition: function () {
+      if (!this.$element.is(':visible')) return
 
-    affix = this.unpin != null && (scrollTop + this.unpin <= position.top) ?
-      false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
-      'bottom' : offsetTop != null && scrollTop <= offsetTop ?
-      'top'    : false
+      var scrollHeight = $(document).height()
+        , scrollTop = this.$window.scrollTop()
+        , position = this.$element.offset()
+        , offset = this.options.offset
+        , offsetBottom = offset.bottom
+        , offsetTop = offset.top
+        , affix
 
-    if (this.affixed === affix) return
+      if (typeof offset != 'object') offsetBottom = offsetTop = offset
+      if (typeof offsetTop == 'function') offsetTop = offset.top()
+      if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
 
-    this.affixed = affix
-    this.unpin = affix == 'bottom' ? position.top - scrollTop : null
+      affix = this.unpinned != null && (scrollTop + this.unpinned <= position.top) ?
+        false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
+        'bottom' : offsetTop != null && scrollTop <= offsetTop ?
+        'top'    : false
 
-    this.$element.removeClass(reset).addClass('affix' + (affix ? '-' + affix : ''))
+      if (this.affixed === affix) return
+
+      this.affixed = affix
+      this.unpinned = affix == 'bottom' ? position.top - scrollTop : null
+
+      this[affix? 'unpin': 'pin'].call(this, affix)
+    }
+
+  , pin: function () {
+      this.$element
+        .trigger('pin')
+        .removeClass(reset)
+        .addClass('affix')
+        .trigger('pinned')
+    }
+
+  , unpin: function (affix) {
+      this.$element
+        .trigger('unpin')
+        .removeClass(reset)
+        .addClass('affix-' + affix)
+        .trigger('unpinned')
+    }
+
   }
 
 

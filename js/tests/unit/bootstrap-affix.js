@@ -22,4 +22,25 @@ $(function () {
         ok(!$affix.hasClass('affix'), 'affix class was not added')
       })
 
+      test('should fire pin events', function () {
+        $('<div />')
+          .affix()
+          .on({
+            pin: function() {
+              ok(true, 'pin was fired')
+            },
+            pinned: function() {
+              ok(true, 'pinned was fired')
+            },
+            unpin: function() {
+              ok(true, 'unpin was fired')
+            },
+            unpinned: function() {
+              ok(true, 'unpinned was fired')
+            }
+          })
+          .affix('pin')
+          .affix('unpin')
+      })
+
 })
