@@ -1,0 +1,909 @@
+@import "bootstrap.less";
+
+.rtl {
+  direction: rtl;
+}
+
+//
+// variables.less RTL overrides
+// --------------------------------------------------
+
+//
+// mixins.less RTL overrides
+// --------------------------------------------------
+.formFieldState(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
+  .input-with-feedback {
+    .rtl & {
+      padding-left: 32px;
+      padding-right: auto;
+    }
+  }
+}
+
+.makeRow() {
+  .rtl & {
+    margin-left: auto;
+    margin-right: @grid-gutter-width * -1;
+  }
+}
+
+.makeColumn(@columns: 1, @offset: 0) {
+  .rtl & {
+    float: left;
+    margin-left: auto;
+    margin-right: (@grid-column-width * @offset) + (@grid-gutter-width * (@offset - 1)) + (@grid-gutter-width * 2);
+  }
+}
+
+#grid {
+  .core(@grid-column-width, @grid-gutter-width, @grid-row-width) {
+    .rtl & {
+      .offsetX(@index) when (@index > 0) {
+        (~".offset@{index}") { .offset(@index); }
+        .offsetX(@index - 1);
+      }
+      .offsetX(0) {}
+
+      .offset(@columns) {
+        margin-left: auto;
+        margin-right: percentage(@columns / @grid-columns);
+      }
+
+      [class*="span"] {
+        float: right;
+      }
+
+      .offsetX(@grid-columns);
+    }
+  }
+
+  .input(@grid-column-width, @grid-gutter-width, @grid-row-width) {
+    .rtl & {
+      .offsetX(@index) when (@index > 0) {
+        (~"input.offset@{index}, textarea.offset@{index}, select.offset@{index}, uneditable-input.offset@{index}") { .offset(@index); }
+        .offsetX(@index - 1);
+      }
+      
+      .offsetX(0) {}
+    
+      .offset(@columns) {
+        margin-left: auto;
+        margin-right: percentage(@columns / @grid-columns) + percentage((@grid-gutter-width / 2) / @grid-row-width);
+      }
+
+      .offsetX(@grid-columns);
+    }
+  }
+}
+
+//
+// normalize.less RTL overrides
+// --------------------------------------------------
+
+//
+// scaffolding.less RTL overrides
+// --------------------------------------------------
+body {
+  direction: ltr;
+}
+
+//
+// grid.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  &.mirror {
+    [class*="span"].pull-right {
+      float: left;
+    }
+  }
+}
+
+//
+// type.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  ul, ol {
+    margin-left: 0;
+    margin-right: 25px;
+  }
+
+  .list-inline {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .list-unstyled,
+  .list-inline {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  dd {
+    margin-left: auto;
+    margin-right: @line-height-base / 2;
+  }
+
+  .dl-horizontal {
+    dt {
+      float: right;
+      clear: right;
+      text-align: left;
+    }
+
+    dd {
+      margin-left: auto;
+      margin-right: @component-offset-horizontal;
+    }
+  }
+
+  blockquote {
+    padding: 0 15px 0 0;
+    border-left: 0;
+    border-right: 5px solid @grayLighter;
+
+    &.pull-right {
+      float: right;
+      padding-left: 15px;
+      padding-right: 0;
+      border-left: 5px solid @grayLighter;
+      border-right: 0;
+
+      p,
+      small {
+        text-align: left;
+      }
+    }
+  }
+}
+//
+// code.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  code,
+  pre {
+    direction: ltr;
+  }
+}
+
+//
+// forms.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .radio,
+  .checkbox {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+  .radio input[type="radio"],
+  .checkbox input[type="checkbox"] {
+    float: right;
+    margin-left: auto;
+    margin-right: -20px;
+  }
+  .radio.inline + .radio.inline,
+  .checkbox.inline + .checkbox.inline {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
+  .uneditable-input[class*="span"] {
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .help-inline {
+    padding-left: 0;
+    padding-right: 5px;
+  }
+
+  .input-group {
+    &[class*="span"] {
+      float: none;
+      padding: 0;
+    }
+  }
+
+  .input-group input:first-child,
+  .input-group .uneditable-input:first-child,
+  .input-group-addon:first-child {
+    .border-left-radius(0);
+    .border-right-radius(@border-radius-base);
+  }
+  .input-group-addon:first-child {
+    border: 1px solid #ccc;
+    border-left: 0;
+  }
+  .input-group input:last-child,
+  .input-group .uneditable-input:last-child,
+  .input-group-addon:last-child {
+    .border-left-radius(@border-radius-base);
+    .border-right-radius(0);
+  }
+  .input-group-addon:last-child {
+    border: 1px solid #ccc;
+    border-right: 0;
+  }
+
+  .input-group-btn > .btn {
+    float: right;
+    + .btn {
+      border-right: 0;
+    }
+  }
+
+  .input-group-btn {
+    &:first-child > .btn,
+    &.btn-group:first-child > .btn {
+      border: 1px solid #ccc;
+      border-left: 0;
+    }
+    &:first-child > .btn,
+    &.btn-group:first-child > .btn {
+      border-radius: 0 @border-radius-base @border-radius-base 0;
+    }
+  }
+
+  .input-group-btn {
+    &:last-child > .btn,
+    &.btn-group:last-child > .btn:first-child {
+      border: 1px solid #ccc;
+      border-right: 0;
+    }
+    &:last-child > .btn,
+    &.btn-group:last-child > .btn {
+      border-radius: @border-radius-base 0 0 @border-radius-base;
+    }
+  }
+
+  .form-horizontal {
+    .control-group > .control-label {
+      float: right;
+      text-align: left;
+    }
+    .control-group > .controls {
+      margin-left: 0;
+      margin-right: @component-offset-horizontal;
+    }
+  }
+}
+
+//
+// tables.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .table {
+    th,
+    td {
+      text-align: right;
+    }
+  }
+
+  .table-bordered {
+    border: 1px solid @table-border;
+    border-right: 0;
+
+    th,
+    td {
+      border-left: 0;
+      border-right: 1px solid @table-border;
+    }
+
+    // For first th or td in the first row in the first thead or tbody
+    thead:first-child tr:first-child > th:first-child,
+    tbody:first-child tr:first-child > td:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: @border-radius-base;
+    }
+    thead:first-child tr:first-child > th:last-child,
+    tbody:first-child tr:first-child > td:last-child {
+      border-top-left-radius: @border-radius-base;
+      border-top-right-radius: 0;
+    }
+
+    // For first th or td in the last row in the last thead or tbody
+    thead:last-child tr:last-child > th:first-child,
+    tbody:last-child tr:last-child > td:first-child,
+    tfoot:last-child tr:last-child > td:first-child {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: @border-radius-base;
+    }
+    thead:last-child tr:last-child > th:last-child,
+    tbody:last-child tr:last-child > td:last-child,
+    tfoot:last-child tr:last-child > td:last-child {
+      border-bottom-left-radius: @border-radius-base;
+      border-bottom-right-radius: 0;
+    }
+
+    // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
+    tfoot + tbody:last-child tr:last-child > td:first-child {
+      border-bottom-right-radius: 0;
+    }
+    tfoot + tbody:last-child tr:last-child > td:last-child {
+      border-bottom-left-radius: 0;
+    }
+
+    // Special fixes to round the left border on the first td/th
+    caption + thead tr:first-child th:first-child,
+    caption + tbody tr:first-child td:first-child,
+    colgroup + thead tr:first-child th:first-child,
+    colgroup + tbody tr:first-child td:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: @border-radius-base;
+    }
+    caption + thead tr:first-child th:last-child,
+    caption + tbody tr:first-child td:last-child,
+    colgroup + thead tr:first-child th:last-child,
+    colgroup + tbody tr:first-child td:last-child {
+      border-top-left-radius: @border-radius-base;
+      border-top-right-radius: 0;
+    }
+  }
+
+  table td[class*="span"],
+  table th[class*="span"] {
+    float: none;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+//
+// glyphicons.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  &.mirror {
+    [class^="glyphicon-"]:before {
+      unicode-bidi: bidi-override;
+    }
+
+    .glyphicon-align-left:before              { content: "\e054"; }
+    .glyphicon-align-right:before             { content: "\e052"; }
+    .glyphicon-indent-left:before             { content: "\e058"; }
+    .glyphicon-indent-right:before            { content: "\e057"; }
+    .glyphicon-chevron-left:before            { content: "\e080"; }
+    .glyphicon-chevron-right:before           { content: "\e079"; }
+    .glyphicon-arrow-right:before             { content: "\e091"; }
+    .glyphicon-arrow-left:before              { content: "\e092"; }
+    .glyphicon-hand-left:before               { content: "\e127"; }
+    .glyphicon-hand-right:before              { content: "\e128"; }
+    .glyphicon-circle-arrow-left:before       { content: "\e131"; }
+    .glyphicon-circle-arrow-right:before      { content: "\e132"; }
+  }
+}
+
+//
+// dropdowns.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .dropdown .caret {
+    margin-left: auto;
+    margin-right: 2px;
+  }
+
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+//
+// wells.less RTL overrides
+// --------------------------------------------------
+
+//
+// component-animations.less RTL overrides
+// --------------------------------------------------
+
+//
+// close.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .close {
+    float: left;
+  }
+}
+
+//
+// buttons.less RTL overrides
+// --------------------------------------------------
+
+//
+// button-groups.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .btn-group + .btn-group {
+    margin-left: auto;
+    margin-right: 5px;
+  }
+  .btn-toolbar {
+    > .btn + .btn,
+    > .btn-group + .btn,
+    > .btn + .btn-group {
+      margin-left: auto;
+      margin-right: 5px;
+    }
+  }
+  .btn-group > .btn + .btn {
+    margin-left: auto;
+    margin-right: -1px;
+  }
+  .btn-group > .btn {
+    border-radius: 0;
+  }
+  .btn-group > .btn:first-child {
+    margin-left: auto;
+    margin-right: 0;
+    border-top-right-radius: @border-radius-base;
+    border-bottom-right-radius: @border-radius-base;
+  }
+  .btn-group > .btn:last-child,
+  .btn-group > .dropdown-toggle {
+    border-top-left-radius: @border-radius-base;
+    border-bottom-left-radius: @border-radius-base;
+  }
+  .btn-group > .btn.large:first-child {
+    margin-left: auto;
+    margin-right: 0;
+    border-top-right-radius: @border-radius-large;
+    border-bottom-right-radius: @border-radius-large;
+  }
+  .btn-group > .btn.large:last-child,
+  .btn-group > .large.dropdown-toggle {
+    border-top-left-radius: @border-radius-large;
+    border-bottom-left-radius: @border-radius-large;
+  }
+  .btn .caret {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .btn-group-vertical > .btn {
+    float: none;
+  }
+  .btn-group-vertical > .btn + .btn {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .btn-group-vertical .btn:first-child {
+    border-radius: @border-radius-base @border-radius-base 0 0;
+  }
+  .btn-group-vertical .btn:last-child {
+    border-radius: 0 0 @border-radius-base @border-radius-base;
+  }
+  .btn-group-vertical .btn-large:first-child {
+    border-radius: @border-radius-large @border-radius-large 0 0;
+  }
+  .btn-group-vertical .btn-large:last-child {
+    border-radius: 0 0 @border-radius-large @border-radius-large;
+  }
+}
+
+//
+// alerts.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .alert {
+    padding-left: 35px;
+    padding-right: 14px;
+  }
+
+  .alert .close {
+    left: -21px;
+    right: auto;
+  }
+}
+
+
+//
+// navs.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .nav {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .nav > li {
+    float: right;
+  }
+  &.mirror  {
+    .nav > .pull-right {
+      float: left;
+    }
+  }
+  .nav-tabs > li > a {
+    margin-left: 2px;
+    margin-right: auto;
+  }
+  .nav-pills > li + li > a {
+    margin-left: auto;
+    margin-right: 2px;
+  }
+  .nav-stacked > li {
+    float: none;
+  }
+  .nav-stacked > li + li > a {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .nav-justified > li {
+    float: none;
+  }
+  .nav-list > li {
+    float: none;
+  }
+}
+
+//
+// navbar.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .navbar .brand {
+    float: right;
+    margin-left: auto;
+    margin-right: -20px;
+  }
+
+  .navbar .divider-vertical {
+    border-left: 1px solid @navbar-background-highlight;
+    border-right: 1px solid @navbar-background;
+  }
+
+  .navbar-search {
+    float: right;
+  }
+
+  .navbar .nav {
+    left: auto;
+    left: 0;
+    float: right;
+    margin-left: 10px;
+    margin-right: 0;
+  }
+
+  &.mirror {
+    .navbar .nav.pull-right {
+      float: left;
+      margin-left: 0;
+      margin-right: auto;
+    }
+  }
+  
+  .navbar .nav > li {
+    float: right;
+  }
+
+  .navbar .nav > li > a {
+    text-shadow: 0 @navbar-background-highlight 0 1px;
+  }
+
+  .navbar .btn-navbar {
+    float: left;
+  }
+
+  .navbar .nav > li > .dropdown-menu {
+    &:before {
+      left: auto;
+      right: 9px;
+    }
+
+    &:after {
+      left: auto;
+      right: 10px;
+    }
+  }
+
+  .navbar .pull-right > li > .dropdown-menu,
+  .navbar .nav > li > .dropdown-menu.pull-right {
+    right: auto;
+    left: 0;
+
+    &:before {
+      left: 12px;
+      right: auto;
+    }
+
+    &:after {
+      left: 13px;
+      right: auto;
+    }
+
+    .dropdown-menu {
+      left: 100%;
+      right: auto;
+      margin-left: -1px;
+      margin-right: 0;
+      border-radius: 6px 6px 6px 0;
+    }
+  }
+
+  &.mirror {
+    .navbar-inverse {
+      .divider-vertical {
+        border-left-color: @navbar-inverse-background-highlight;
+        border-right-color: @navbar-inverse-background;
+      }
+    }
+  }
+}
+
+//
+// breadcrumbs.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .breadcrumb {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+//
+// pagination.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .pagination ul {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .pagination ul > li > a,
+  .pagination ul > li > span {
+    float: right;
+    border-left-width: 1px;
+    border-right-width: 0;
+  }
+  .pagination ul > li:first-child > a,
+  .pagination ul > li:first-child > span {
+    border-right-width: 1px;
+    .border-left-radius(0);
+    .border-right-radius(@border-radius-base);
+  }
+  .pagination ul > li:last-child > a,
+  .pagination ul > li:last-child > span {
+    .border-left-radius(@border-radius-base);
+    .border-right-radius(0);
+  }
+
+  &.mirror .pagination-right {
+    text-align: left;
+  }
+
+  .pagination-large {
+    ul > li:first-child > a,
+    ul > li:first-child > span {
+      .border-left-radius(0);
+      .border-right-radius(@border-radius-large);
+    }
+    ul > li:last-child > a,
+    ul > li:last-child > span {
+      .border-left-radius(@border-radius-large);
+      .border-right-radius(0);
+    }
+  }
+
+  .pagination-mini,
+  .pagination-small {
+    ul > li:first-child > a,
+    ul > li:first-child > span {
+      .border-left-radius(0);
+      .border-right-radius(@border-radius-small);
+    }
+    ul > li:last-child > a,
+    ul > li:last-child > span {
+      .border-left-radius(@border-radius-small);
+      .border-right-radius(0);
+    }
+  }
+}
+
+//
+// pager.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .pager .next > a,
+  .pager .next > span {
+    float: left;
+  }
+
+  .pager .previous > a,
+  .pager .previous > span {
+    float: right;
+  }
+}
+
+//
+// modals.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .modal {
+    left: auto;
+    right: 50%;
+    margin-left: auto;
+    margin-right: -280px;
+  }
+  .modal-footer {
+    text-align: left;
+    .btn + .btn {
+      margin-left: auto;
+      margin-right: 5px;
+    }
+    .btn-group .btn + .btn {
+      margin-left: auto;
+      margin-right: -1px;
+    }
+    .btn-block + .btn-block {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+}
+
+//
+// tooltip.less RTL overrides
+// --------------------------------------------------
+
+//
+// popovers.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .popover {
+    &.top .arrow,
+    &.bottom .arrow {
+      direction: ltr;
+    }
+  }
+}
+
+//
+// thumbnails.less RTL overrides
+// --------------------------------------------------
+
+//
+// media.less RTL overrides
+// --------------------------------------------------
+.rtl.mirror {
+  .media > .pull-left {
+    margin-left: 10px;
+    margin-right: auto;
+  }
+  .media > .pull-right {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+  .media-list {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+}
+//
+// badges.less RTL overrides
+// --------------------------------------------------
+
+//
+// progress-bars.less RTL overrides
+// --------------------------------------------------
+.rtl .progress .bar {
+  float: right;
+}
+
+//
+// accordion.less RTL overrides
+// --------------------------------------------------
+
+//
+// carousel.less RTL overrides
+// --------------------------------------------------
+.rtl {
+  .carousel-inner {
+
+    > .item {
+      .transition(.6s ease-in-out right);
+    }
+
+    > .active {
+      left: auto;
+      right: 0;
+    }
+
+    > .next {
+      left: auto;
+      right: 100%;
+    }
+
+    > .prev {
+      left: auto;
+      right: -100%;
+    }
+
+    > .next.left,
+    > .prev.right {
+      left: auto;
+      right: 0;
+    }
+
+    > .active.left {
+      left: auto;
+      right: -100%;
+    }
+
+    > .active.right {
+      left: auto;
+      right: 100%;
+    }
+  }
+
+  .carousel-control {
+    left: auto;
+    right: 0;
+    &.left {
+      #gradient > .horizontal(rgba(0,0,0,.75), rgba(0,0,0,.001));
+      background-color: transparent;
+    }
+    &.right {
+      left: 0;
+      right: auto;
+      #gradient > .horizontal(rgba(0,0,0,.001), rgba(0,0,0,.75));
+      background-color: transparent;
+    }
+
+    .control {
+      margin-left: auto;
+      margin-right: 30px;
+    }
+    &.right .control {
+      margin-left: auto;
+      margin-right: 70px;
+    }
+  }
+
+  .carousel-indicators {
+    left: 15px;
+    right: auto;
+
+    li {
+      float: right;
+      margin-left: auto;
+      margin-right: 5px;
+    }
+  }
+}
+
+//
+// jumbotron.less RTL overrides
+// --------------------------------------------------
+
+//
+// utilities.less RTL overrides
+// --------------------------------------------------
+.rtl.mirror .pull-right {
+  float: left;
+}
+.rtl.mirror .pull-left {
+  float: right;
+}
+
+//
+// responsive-utilities.less RTL overrides
+// --------------------------------------------------
+
+//
+// responsive-1200px-min.less RTL overrides
+// --------------------------------------------------
+
+//
+// responsive-768px-979px.less RTL overrides
+// --------------------------------------------------
+
+//
+// responsive-767px-max.less RTL overrides
+// --------------------------------------------------
+
+//
+// responsive-navbar.less RTL overrides
+// --------------------------------------------------
