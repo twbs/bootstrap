@@ -17,7 +17,8 @@
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  outline-color: transparent;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   .buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
   border: 1px solid @btnBorder;
   *border: 0; // Remove the border to prevent IE7's black border on input:focus
