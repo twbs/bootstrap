@@ -154,6 +154,10 @@
       return this.show()
     }
 
+  , itemPostRender: function (item, itemHTML, position) {
+      return itemHTML
+    }
+
   , next: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
         , next = active.next()
