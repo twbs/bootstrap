@@ -13,14 +13,14 @@ build:
 	@echo "\n${HR}"
 	@echo "Building Bootstrap..."
 	@echo "${HR}\n"
-	@echo -n "Running JSHint on javascript..."
+	@printf "Running JSHint on javascript..."
 	@jshint js/*.js --config js/.jshintrc
 	@jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "             ${CHECK} Done"
-	@echo -n "Compiling LESS with Recess..."
+	@printf "Compiling LESS with Recess..."
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@echo "               ${CHECK} Done"
-	@echo -n "Compiling documentation..."
+	@printf "Compiling documentation..."
 	@node docs/build
 	@cp fonts/* docs/assets/fonts/
 	@cp js/*.js docs/assets/js/
@@ -29,7 +29,7 @@ build:
 	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
 	@./node_modules/.bin/uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
 	@echo "/**\n* Bootstrap.js v2.2.3 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
-	@echo -n "Compiling and minifying javascript..."
+	@printf "Compiling and minifying javascript..."
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
 	@echo "       ${CHECK} Done"
