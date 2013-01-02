@@ -1640,6 +1640,12 @@ $('.carousel').carousel({
                  <td>highlights all default matches</td>
                  <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
                </tr>
+               <tr>
+                 <td>itemPostRender</td>
+                 <td>function</td>
+                 <td>returns originally generated HTML for item</td>
+                 <td>Method for customizing item in dropdown. Accepts three arguments: the <code>item</code>, the item's <code>index</code> in the dropdown, and the rendered html. Should return html. </td>
+                </tr>
               </tbody>
             </table>
 

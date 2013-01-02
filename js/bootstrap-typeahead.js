@@ -32,6 +32,7 @@
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
+    this.itemPostRender = this.options.itemPostRender || this.itemPostRender
     this.updater = this.options.updater || this.updater
     this.source = this.options.source
     this.$menu = $(this.options.menu)
@@ -105,7 +106,7 @@
         return this.shown ? this.hide() : this
       }
 
-      return this.render(items.slice(0, this.options.items)).show()
+      return this.render(items.slice(0, this.options.items))
     }
 
   , matcher: function (item) {
@@ -138,14 +139,19 @@
       var that = this
 
       items = $(items).map(function (i, item) {
+        var index = i
         i = $(that.options.item).attr('data-value', item)
         i.find('a').html(that.highlighter(item))
-        return i[0]
+        return that.itemPostRender(item, i[0], index);
       })
+
+      if (!items.length) {
+        return this.shown ? this.hide() : this
+      }
 
       items.first().addClass('active')
       this.$menu.html(items)
-      return this
+      return this.show()
     }
 
   , next: function (event) {
