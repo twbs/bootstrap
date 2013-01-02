@@ -1,5 +1,5 @@
-BOOTSTRAP = ./docs/assets/css/bootstrap.css
-BOOTSTRAP_LESS = ./less/bootstrap.less
+BOOTSTRAP ?= ./docs/assets/css/bootstrap.css
+BOOTSTRAP_LESS ?= ./less/bootstrap.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔\033[39m
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
