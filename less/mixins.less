@@ -305,6 +305,13 @@
        -o-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
 }
+.transform(@props) {
+  -webkit-transform: @props;
+     -moz-transform: @props;
+      -ms-transform: @props;
+       -o-transform: @props;
+          transform: @props;
+}
 
 // Backface visibility
 // Prevent browsers from flickering when using CSS 3D transforms.
