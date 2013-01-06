@@ -36,6 +36,7 @@
     this.source = this.options.source
     this.$menu = $(this.options.menu)
     this.shown = false
+    this.cache = {}
     this.listen()
   }
 
@@ -87,20 +88,31 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+      if(this.options.caching && this.cache[this.query]) {
+        items = this.cache[this.query]
+      } else {
+        items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+      }
 
       return items ? this.process(items) : this
     }
 
   , process: function (items) {
       var that = this
-
-      items = $.grep(items, function (item) {
-        return that.matcher(item)
-      })
-
-      items = this.sorter(items)
-
+        , cache_data = this.cache[this.query]
+        
+      if(this.options.caching && cache_data) {
+        items = cache_data
+      } else {
+        items = $.grep(items, function (item) {
+          return that.matcher(item)
+        })
+        items = this.sorter(items)
+        if(this.options.caching) {
+            this.cache[this.query] = items
+        }
+      }
+      
       if (!items.length) {
         return this.shown ? this.hide() : this
       }
@@ -296,6 +308,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , caching: true
   }
 
   $.fn.typeahead.Constructor = Typeahead
