@@ -929,15 +929,18 @@
 
         if (this.isShown && this.options.backdrop) {
           var doAnimate = $.support.transition && animate
+            , bindClick = function () {
+                that.$backdrop.click(
+                  that.options.backdrop == 'static' ?
+                    $.proxy(that.$element[0].focus, that.$element[0])
+                  : $.proxy(that.hide, that)
+                )
+              }
 
           this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
             .appendTo(document.body)
 
-          this.$backdrop.click(
-            this.options.backdrop == 'static' ?
-              $.proxy(this.$element[0].focus, this.$element[0])
-            : $.proxy(this.hide, this)
-          )
+          doAnimate ? setTimeout(bindClick, 500) : bindClick() // bind to backdrop
 
           if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
