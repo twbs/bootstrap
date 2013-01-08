@@ -5,7 +5,7 @@
 
 // TABLETS AND BELOW
 // -----------------
-@media (max-width: @navbarCollapseWidth) {
+@media (max-width: @navbar-collapse-width) {
 
   // UNFIX THE TOPBAR
   // ----------------
@@ -19,13 +19,13 @@
     position: static;
   }
   .navbar-fixed-top {
-    margin-bottom: @baseLineHeight;
+    margin-bottom: @line-height-base;
   }
   .navbar-fixed-bottom {
-    margin-top: @baseLineHeight;
+    margin-top: @line-height-base;
   }
-  .navbar-fixed-top .navbar-inner,
-  .navbar-fixed-bottom .navbar-inner {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
     padding: 5px;
   }
   .navbar .container {
@@ -48,7 +48,7 @@
   // Block-level the nav
   .nav-collapse .nav {
     float: none;
-    margin: 0 0 (@baseLineHeight / 2);
+    margin: 0 0 (@line-height-base / 2);
   }
   .nav-collapse .nav > li {
     float: none;
@@ -60,7 +60,7 @@
     display: none;
   }
   .nav-collapse .nav .nav-header {
-    color: @navbarText;
+    color: @navbar-text;
     text-shadow: none;
   }
   // Nav and dropdown links in navbar
@@ -68,29 +68,29 @@
   .nav-collapse .dropdown-menu a {
     padding: 9px 15px;
     font-weight: bold;
-    color: @navbarLinkColor;
-    .border-radius(3px);
+    color: @navbar-link-color;
+    border-radius: 3px;
   }
   // Buttons
   .nav-collapse .btn {
     padding: 4px 10px 4px;
     font-weight: normal;
-    .border-radius(@baseBorderRadius);
+    border-radius: @border-radius-base;
   }
   .nav-collapse .dropdown-menu li + li a {
     margin-bottom: 2px;
   }
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover {
-    background-color: @navbarBackground;
+    background-color: @navbar-background;
   }
   .navbar-inverse .nav-collapse .nav > li > a,
   .navbar-inverse .nav-collapse .dropdown-menu a {
-    color: @navbarInverseLinkColor;
+    color: @navbar-inverse-link-color;
   }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:hover {
-    background-color: @navbarInverseBackground;
+    background-color: @navbar-inverse-background;
   }
   // Buttons in the navbar
   .nav-collapse.in .btn-group {
@@ -109,11 +109,11 @@
     padding: 0;
     background-color: transparent;
     border: none;
-    .border-radius(0);
+    border-radius: 0;
     .box-shadow(none);
   }
-  .nav-collapse .open > .dropdown-menu { 
-    display: block; 
+  .nav-collapse .open > .dropdown-menu {
+    display: block;
   }
 
   .nav-collapse .dropdown-menu:before,
@@ -133,16 +133,16 @@
   .nav-collapse .navbar-form,
   .nav-collapse .navbar-search {
     float: none;
-    padding: (@baseLineHeight / 2) 15px;
-    margin: (@baseLineHeight / 2) 0;
-    border-top: 1px solid @navbarBackground;
-    border-bottom: 1px solid @navbarBackground;
+    padding: (@line-height-base / 2) 15px;
+    margin: (@line-height-base / 2) 0;
+    border-top: 1px solid @navbar-background;
+    border-bottom: 1px solid @navbar-background;
     .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)");
   }
   .navbar-inverse .nav-collapse .navbar-form,
   .navbar-inverse .nav-collapse .navbar-search {
-    border-top-color: @navbarInverseBackground;
-    border-bottom-color: @navbarInverseBackground;
+    border-top-color: @navbar-inverse-background;
+    border-bottom-color: @navbar-inverse-background;
   }
   // Pull right (secondary) nav content
   .navbar .nav-collapse .nav.pull-right {
@@ -162,7 +162,7 @@
 
   // STATIC NAVBAR
   // -------------
-  .navbar-static .navbar-inner {
+  .navbar-static {
     padding-left:  10px;
     padding-right: 10px;
   }
@@ -174,7 +174,7 @@
 // DEFAULT DESKTOP
 // ---------------
 
-@media (min-width: @navbarCollapseDesktopWidth) {
+@media (min-width: @navbar-collapse-width-desktop) {
 
   // Required to make the collapsing navbar work on regular desktops
   .nav-collapse.collapse {

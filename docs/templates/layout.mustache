@@ -9,7 +9,6 @@
 
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
@@ -44,39 +43,37 @@
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="{{index}}">
-                <a href="./index.html">{{_i}}Home{{/i}}</a>
-              </li>
-              <li class="{{getting-started}}">
-                <a href="./getting-started.html">{{_i}}Get started{{/i}}</a>
-              </li>
-              <li class="{{scaffolding}}">
-                <a href="./scaffolding.html">{{_i}}Scaffolding{{/i}}</a>
-              </li>
-              <li class="{{base-css}}">
-                <a href="./base-css.html">{{_i}}Base CSS{{/i}}</a>
-              </li>
-              <li class="{{components}}">
-                <a href="./components.html">{{_i}}Components{{/i}}</a>
-              </li>
-              <li class="{{javascript}}">
-                <a href="./javascript.html">{{_i}}JavaScript{{/i}}</a>
-              </li>
-              <li class="{{customize}}">
-                <a href="./customize.html">{{_i}}Customize{{/i}}</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./index.html">Bootstrap</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="{{index}}">
+              <a href="./index.html">{{_i}}Home{{/i}}</a>
+            </li>
+            <li class="{{getting-started}}">
+              <a href="./getting-started.html">{{_i}}Get started{{/i}}</a>
+            </li>
+            <li class="{{css}}">
+              <a href="./css.html">{{_i}}Core CSS{{/i}}</a>
+            </li>
+            <li class="{{components}}">
+              <a href="./components.html">{{_i}}Components{{/i}}</a>
+            </li>
+            <li class="{{javascript}}">
+              <a href="./javascript.html">{{_i}}JavaScript{{/i}}</a>
+            </li>
+            <li class="{{customize}}">
+              <a href="./customize.html">{{_i}}Customize{{/i}}</a>
+            </li>
+            <li class="{{gallery}}">
+              <a href="./gallery.html">{{_i}}Gallery{{/i}}</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -89,6 +86,25 @@
     ================================================== -->
     <footer class="footer">
       <div class="container">
+
+        <div class="bs-docs-social">
+          <ul class="bs-docs-social-buttons">
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            </li>
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
+            </li>
+            <li class="follow-btn">
+              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">{{_i}}Follow @twbootstrap{{/i}}</a>
+            </li>
+            <li class="tweet-btn">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
+            </li>
+          </ul>
+        </div>
+
+
         <p>{{_i}}Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.{{/i}}</p>
         <p>{{_i}}Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.{{/i}}</p>
         <p>{{_i}}<a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.{{/i}}</p>

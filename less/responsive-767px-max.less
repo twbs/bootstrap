@@ -17,10 +17,6 @@
     margin-left: -20px;
     margin-right: -20px;
   }
-  // Remove padding on container given explicit padding set on body
-  .container-fluid {
-    padding: 0;
-  }
 
   // TYPOGRAPHY
   // ----------
@@ -43,49 +39,25 @@
   .container {
     width: auto;
   }
-  // Fluid rows
-  .row-fluid {
-    width: 100%;
-  }
-  // Undo negative margin on rows and thumbnails
-  .row,
-  .thumbnails {
-    margin-left: 0;
-  }
-  .thumbnails > li {
-    float: none;
-    margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
-  }
   // Make all grid-sized elements block level again
   [class*="span"],
-  .uneditable-input[class*="span"], // Makes uneditable inputs full-width when using grid sizing
-  .row-fluid [class*="span"] {
+  // Makes uneditable inputs full-width when using grid sizing
+  .uneditable-input[class*="span"] {
     float: none;
     display: block;
     width: 100%;
     margin-left: 0;
-    .box-sizing(border-box);
   }
-  .span12,
-  .row-fluid .span12 {
-    width: 100%;
-    .box-sizing(border-box);
-  }
-  .row-fluid [class*="offset"]:first-child {
-		margin-left: 0;
-	}
+
 
   // FORM FIELDS
   // -----------
   // Make span* classes full width
-  .input-large,
-  .input-xlarge,
-  .input-xxlarge,
   input[class*="span"],
   select[class*="span"],
   textarea[class*="span"],
   .uneditable-input {
-    .input-block-level();
+    width: 100%;
   }
   // But don't let it screw up prepend/append inputs
   .input-prepend input,
@@ -128,7 +100,7 @@
   // Block level the page header small tag for readability
   .page-header h1 small {
     display: block;
-    line-height: @baseLineHeight;
+    line-height: @line-height-base;
   }
 
   // Update checkboxes for iOS

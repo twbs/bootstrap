@@ -3,19 +3,16 @@
 // --------------------------------------------------
 
 
-// Fixed (940px)
-#grid > .core(@gridColumnWidth, @gridGutterWidth);
-
-// Fluid (940px)
-#grid > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
-
-// Reset utility classes due to specificity
-[class*="span"].hide,
-.row-fluid [class*="span"].hide {
-  display: none;
+// Set the container width, and override it for fixed navbars in media queries
+.container {
+  .container-fixed();
+  max-width: 940px;
 }
 
-[class*="span"].pull-right,
-.row-fluid [class*="span"].pull-right {
+// Fixed (940px)
+#grid > .core(@grid-column-width, @grid-gutter-width, @grid-row-width);
+
+// Reset utility classes due to specificity
+[class*="span"].pull-right {
   float: right;
 }

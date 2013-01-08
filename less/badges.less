@@ -1,0 +1,60 @@
+//
+// Labels and badges
+// --------------------------------------------------
+
+
+// Base classes
+.badge {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: @font-size-base * .846;
+  font-weight: bold;
+  line-height: 14px; // ensure proper line-height if floated
+  color: #fff;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  background-color: @grayLight;
+  border-radius: 3px;
+
+  // Empty labels/badges collapse
+  &:empty {
+    display: none;
+  }
+}
+
+// Hover state, but only for links
+a.badge {
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Colors
+// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
+.badge {
+  // Important (red)
+  &-danger            { background-color: @state-error-text; }
+  &-danger[href]      { background-color: darken(@state-error-text, 10%); }
+  // Warnings (orange)
+  &-warning           { background-color: #f89406; }
+  &-warning[href]     { background-color: darken(#f89406, 10%); }
+  // Success (green)
+  &-success           { background-color: @state-success-text; }
+  &-success[href]     { background-color: darken(@state-success-text, 10%); }
+}
+
+// Quick fix for labels/badges in buttons
+.btn {
+  .badge {
+    position: relative;
+    top: -1px;
+  }
+}
+.btn-mini {
+  .badge {
+    top: 0;
+  }
+}

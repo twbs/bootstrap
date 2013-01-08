@@ -5,24 +5,13 @@
 
 @media (min-width: 1200px) {
 
+  // Set the container width, and override it for fixed navbars in media queries
+  .container {
+    max-width: 1170px;
+  }
+
   // Fixed grid
-  #grid > .core(@gridColumnWidth1200, @gridGutterWidth1200);
-
-  // Fluid grid
-  #grid > .fluid(@fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
-
-  // Input grid
-  #grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);
-
-  // Thumbnails
-  .thumbnails {
-    margin-left: -@gridGutterWidth1200;
-  }
-  .thumbnails > li {
-    margin-left: @gridGutterWidth1200;
-  }
-  .row-fluid .thumbnails {
-    margin-left: 0;
-  }
+  #grid > .core(@grid-column-width-1200, @grid-gutter-width-1200, @grid-row-width-1200);
+  // #grid > .input(@grid-column-width-1200, @grid-gutter-width-1200, @grid-row-width-1200);
 
 }
