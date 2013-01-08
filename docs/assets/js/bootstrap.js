@@ -1824,12 +1824,13 @@
       })
 
       this.$menu
-        .insertAfter(this.$element)
         .css({
           top: pos.top + pos.height
         , left: pos.left
         })
         .show()
+
+      this.options.container ? this.$menu.appendTo(this.options.container) : this.$menu.insertAfter(this.$element)
 
       this.shown = true
       return this
@@ -2072,6 +2073,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , container: false
   }
 
   $.fn.typeahead.Constructor = Typeahead
