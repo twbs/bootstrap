@@ -110,15 +110,9 @@
           left_gap = $el.offset().left - $("body").scrollLeft(),
           right_gap = client_width - left_gap - el_width;
 
-      console.log({
-        tip_width: tip_width,
-        tip_height: tip_height,
-        top_gap: top_gap,
-        left_gap: left_gap,
-        right_gap: right_gap
-      });
-
-      if(top_gap > tip_height + gap){
+      if(top_gap > tip_height + gap && left_gap > tip_width/2 + gap && right_gap > tip_width/2 + gap){
+        return 'top';
+      }
         return 'top';
       }
       if(top_gap > tip_height/2){
