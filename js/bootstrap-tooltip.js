@@ -118,12 +118,24 @@
 
         inside = /in/.test(placement)
 
-        $tip
-          .detach()
-          .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+        if($('#'+this.$element[0].id,$('svg')).length > 0){
+	        $tip
+		      .remove()
+		      .css({ top: 0, left: 0, display: 'block' })
+		      .prependTo(document.body)
 
-        pos = this.getPosition(inside)
+	        pos = $.extend({}, this.$element.offset(), {
+		      width: this.$element[0].getBoundingClientRect().width
+		      , height: this.$element[0].getBoundingClientRect().height
+	        })
+	    } else {
+		     $tip
+			     .detach()
+			     .css({ top: 0, left: 0, display: 'block' })
+			     .insertAfter(this.$element)
+
+		     pos = this.getPosition(inside)
+	    }
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
