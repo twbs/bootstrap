@@ -95,6 +95,36 @@
       }, self.options.delay.hide)
     }
 
+  , getAutoPlacement: function(){
+      var $tip = this.tip();
+      var $el = this.$element;
+
+      var tip_width = $tip.width(),
+          tip_height = $tip.height(),
+          el_width = $el.width(),
+          el_height = $el.height(),
+          client_width = document.body.clientWidth,
+          gap = 20;
+
+      var top_gap = $el.offset().top - $("body").scrollTop() - 40,
+          left_gap = $el.offset().left - $("body").scrollLeft(),
+          right_gap = client_width - left_gap - el_width;
+
+      if(top_gap > tip_height + gap && left_gap > tip_width/2 + gap && right_gap > tip_width/2 + gap){
+        return 'top';
+      }
+        return 'top';
+      }
+      if(top_gap > tip_height/2){
+        if(right_gap > tip_width + gap){
+          return 'right';
+        } else if(left_gap > tip_width + gap) {
+          return 'left';
+        }
+      }
+      return 'bottom';
+    }
+
   , show: function () {
       var $tip
         , inside
@@ -115,14 +145,17 @@
         placement = typeof this.options.placement == 'function' ?
           this.options.placement.call(this, $tip[0], this.$element[0]) :
           this.options.placement
-
-        inside = /in/.test(placement)
-
+        
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
           .insertAfter(this.$element)
 
+        if(placement == 'auto'){
+          this.getAutoPlacement();
+        }
+
+        inside = /in/.test(placement)
         pos = this.getPosition(inside)
 
         actualWidth = $tip[0].offsetWidth
