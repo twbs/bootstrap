@@ -349,6 +349,9 @@
        -o-user-select: @select;
           user-select: @select;
 }
+.user-select (@select) when (@select = none) {
+  -moz-user-select: -moz-none;
+}
 
 // Resize anything
 .resizable(@direction) {
