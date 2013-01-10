@@ -361,6 +361,8 @@
         , that = this
         , e
 
+      if (!this.options.circular && $next.length === 0) return
+
       this.sliding = true
 
       isCycling && this.pause()
@@ -432,6 +434,7 @@
   $.fn.carousel.defaults = {
     interval: 5000
   , pause: 'hover'
+  , circular: true
   }
 
   $.fn.carousel.Constructor = Carousel
@@ -456,7 +459,8 @@
     e.preventDefault()
   })
 
-}(window.jQuery);/* =============================================================
+}(window.jQuery);
+/* =============================================================
  * bootstrap-collapse.js v3.0.0
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
