@@ -1,5 +1,5 @@
 /* =========================================================
- * bootstrap-modal.js v2.2.2
+ * bootstrap-modal.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
  * Copyright 2012 Twitter, Inc.
@@ -60,8 +60,7 @@
             that.$element.appendTo(document.body) //don't move modals dom position
           }
 
-          that.$element
-            .show()
+          that.$element.show()
 
           if (transition) {
             that.$element[0].offsetWidth // force reflow
@@ -83,11 +82,12 @@
     , hide: function (e) {
         e && e.preventDefault()
 
-        var that = this
+        var that = this,
+            action = e && $(e.target).attr('data-action')
 
         e = $.Event('hide')
 
-        this.$element.trigger(e)
+        this.$element.trigger(e, action)
 
         if (!this.isShown || e.isDefaultPrevented()) return
 
