@@ -117,4 +117,23 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should trigger hide event with action when clicking a button with data-dismiss and data-action attr set", function(){
+        stop()
+        $.support.transition = false
+        var div = $("<div id='modal-test'><span class='save' data-dismiss='modal' data-action='save'></span></div>")
+        div
+            .bind("shown", function () {
+                div.find('.save').click()
+            })
+            .bind("hide", function(e, action) {
+                ok(action === 'save', 'action sent')
+            })
+            .bind("hidden", function () {
+                div.remove()
+                start()
+            })
+            .modal("toggle")
+      })
+
 })
