@@ -66,6 +66,83 @@ $(function () {
         ok(!$(".tooltip").length, 'tooltip removed')
       })
 
+      test("should fire show event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("show", function() {
+            ok(true, "show was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should fire shown event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            ok(true, "shown was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should not fire shown event when default prevented", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("show", function(e) {
+            e.preventDefault()
+            ok(true, "show was called")
+            start()
+          })
+          .bind("shown", function() {
+            ok(false, "shown was called")
+          })
+          .tooltip('show')
+      })
+
+      test("should fire hide event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            $(this).tooltip('hide')
+          })
+          .bind("hide", function() {
+            ok(true, "hide was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should fire hidden event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            $(this).tooltip('hide')
+          })
+          .bind("hidden", function() {
+            ok(true, "hidden was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should not fire hidden event when default prevented", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            $(this).tooltip('hide')
+          })
+          .bind("hide", function(e) {
+            e.preventDefault()
+            ok(true, "hide was called")
+            start()
+          })
+          .bind("hidden", function() {
+            ok(false, "hidden was called")
+          })
+          .tooltip('show')
+      })
+
       test("should not show tooltip if leave event occurs before delay expires", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
           .appendTo('#qunit-fixture')
@@ -155,5 +232,23 @@ $(function () {
                                     trigger: 'click' })
         div.find('a').trigger('click')
         ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
+      })
+
+      test("should show tooltip when toggle is called", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="tooltip on toggle"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({trigger: 'manual'})
+          .tooltip('toggle')
+        ok($(".tooltip").is('.fade.in'), 'tooltip should be toggled in')
+      })
+
+      test("should place tooltips inside the body", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({container:'body'})
+          .tooltip('show')
+        ok($("body > .tooltip").length, 'inside the body')
+        ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
+        tooltip.tooltip('hide')
       })
 })
