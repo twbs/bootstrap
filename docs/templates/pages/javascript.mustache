@@ -697,6 +697,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <h2>{{_i}}Examples{{/i}}</h2>
           <p>{{_i}}Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.{{/i}}</p>
+          <p>{{_i}}For performance reasons, the tooltip and popover data-apis are opt in, meaning <strong>you must initialize them yourself</strong>.{{/i}}</p>
           <p>{{_i}}Hover over the links below to see tooltips:{{/i}}</p>
           <div class="bs-docs-example tooltip-demo">
             <p class="muted" style="margin-bottom: 0;">{{_i}}Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.{{/i}}
@@ -795,7 +796,6 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           </div>
 
           <h3>{{_i}}Markup{{/i}}</h3>
-          <p>{{_i}}For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;a href="#" data-toggle="tooltip" title="{{_i}}first tooltip{{/i}}"&gt;{{_i}}hover over me{{/i}}&lt;/a&gt;</pre>
 
           <h3>{{_i}}Methods{{/i}}</h3>
