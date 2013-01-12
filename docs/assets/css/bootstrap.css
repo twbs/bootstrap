@@ -5329,3 +5329,41 @@ a.badge:hover {
     overflow: visible !important;
   }
 }
+
+@media (max-width: 767px) {
+  .row-off-canvas {
+    position: relative;
+    overflow: hidden;
+  }
+  .row-off-canvas.active {
+    overflow: visible;
+  }
+  .row-off-canvas-right.active {
+    right: 336px;
+  }
+  .sidebar-off-canvas {
+    position: absolute;
+    top: 0;
+    width: 336px;
+  }
+  .sidebar-off-canvas-right {
+    right: -336px;
+  }
+}
+
+@media (max-width: 480px) {
+  .row-off-canvas.active {
+    overflow: visible;
+  }
+  .row-off-canvas-right.active {
+    right: 210px;
+  }
+  .sidebar-off-canvas {
+    position: absolute;
+    top: 0;
+    width: 210px;
+  }
+  .sidebar-off-canvas-right {
+    right: -210px;
+  }
+}

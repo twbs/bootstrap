@@ -1,0 +1,54 @@
+//
+// Responsive: Navbar
+// --------------------------------------------------
+
+
+// TABLETS AND BELOW
+// -----------------
+@media (max-width: 767px) {
+
+  .row-off-canvas {
+    position: relative;
+    overflow: hidden;
+    //transition disabled due to an infinite loop happening 
+    //in Chrome at 767px - x, where 0<x<@grid-column-width-768 * 8
+    //.transition(all 0.25s ease-out);
+  }
+  .row-off-canvas.active {
+    overflow: visible;
+  }
+  .row-off-canvas-right.active {
+    right: @grid-column-width-768 * 8;
+  }
+  .sidebar-off-canvas {
+    position: absolute;
+    top: 0;
+    width: @grid-column-width-768 * 8;
+  }
+  .sidebar-off-canvas-right {
+    right: -@grid-column-width-768 * 8;
+  }
+
+}
+
+// UP TO LANDSCAPE PHONE
+// ---------------------
+
+@media (max-width: 480px) {
+
+  .row-off-canvas.active {
+    overflow: visible;
+  }
+  .row-off-canvas-right.active {
+    right: @grid-column-width-768 * 5;
+  }
+  .sidebar-off-canvas {
+    position: absolute;
+    top: 0;
+    width: @grid-column-width-768 * 5;
+  }
+  .sidebar-off-canvas-right {
+    right: -@grid-column-width-768 * 5;
+  }
+
+}
