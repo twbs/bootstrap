@@ -57,7 +57,7 @@
   select[class*="span"],
   textarea[class*="span"],
   .uneditable-input {
-    .input-block-level();
+    width: 100%;
   }
   // But don't let it screw up prepend/append inputs
   .input-prepend input,
@@ -66,9 +66,6 @@
   .input-append input[class*="span"] {
     display: inline-block; // redeclare so they don't wrap to new lines
     width: auto;
-  }
-  .controls-row [class*="span"] + [class*="span"] {
-    margin-left: 0;
   }
 
   // Modals

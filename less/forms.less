@@ -292,10 +292,6 @@ textarea[class*="span"],
   margin-right: 0;
 }
 
-.controls-row {
-  #grid > .input(@grid-column-width, @grid-gutter-width, @grid-row-width);
-}
-
 // Ensure input-prepend/append never wraps
 .input-append input[class*="span"],
 .input-append .uneditable-input[class*="span"],
@@ -310,21 +306,6 @@ textarea[class*="span"],
 .uneditable-input[class*="span"] {
   height: @input-height;
 }
-// Control row for multiple inputs per line
-.controls-row {
-  .clearfix(); // Clear the float from controls
-}
-
-// Float to collapse white-space for proper grid alignment
-.controls-row [class*="span"] {
-  float: left;
-}
-// Explicity set top padding on all checkboxes/radios, not just first-child
-.controls-row .checkbox[class*="span"],
-.controls-row .radio[class*="span"] {
-  padding-top: 5px;
-}
-
 
 
 
@@ -362,20 +343,16 @@ input[type="checkbox"] {
 // --------------------------
 
 // Warning
-.control-group.warning {
+.has-warning {
   .formFieldState(@state-warning-text, @state-warning-text, @state-warning-background);
 }
 // Error
-.control-group.error {
+.has-error {
   .formFieldState(@state-error-text, @state-error-text, @state-error-background);
 }
 // Success
-.control-group.success {
+.has-success {
   .formFieldState(@state-success-text, @state-success-text, @state-success-background);
-}
-// Success
-.control-group.info {
-  .formFieldState(@state-info-text, @state-info-text, @state-info-background);
 }
 
 // HTML5 invalid states
@@ -426,7 +403,6 @@ select:focus:invalid {
   vertical-align: middle;
   padding-left: 5px;
 }
-
 
 
 
@@ -537,4 +513,40 @@ select:focus:invalid {
   &.btn-group:last-child > .btn {
     border-radius: 0 @border-radius-base @border-radius-base 0;
   }
+}
+
+
+
+// Horizontal forms
+// --------------------------------------------------
+
+.form-horizontal {
+
+  // Increase spacing between groups
+  .control-group {
+    position: relative;
+    margin-bottom: @line-height-base;
+    .clearfix();
+
+    input,
+    select,
+    textarea,
+    .uneditable-input {
+      margin-bottom: 0;
+    }
+  }
+
+  // Float the labels left
+  .control-group > .control-label {
+    float: left;
+    width: @component-offset-horizontal - 20;
+    padding-top: 6px;
+    text-align: right;
+  }
+
+  // Move over all input controls and content over
+  .control-group > .controls {
+    margin-left: @component-offset-horizontal;
+  }
+
 }

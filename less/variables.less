@@ -78,17 +78,17 @@
 @btn-background:                     #fff;
 @btn-background-highlight:           #eaeaea;
 
-@btn-background-primary:              @link-color;
-@btn-background-primary-highlight:    darken(@link-color, 10%);
+@btn-background-primary:             @link-color;
+@btn-background-primary-highlight:   darken(@link-color, 10%);
 
-@btn-background-success:              #62c462;
-@btn-background-success-highlight:    #51a351;
+@btn-background-success:             #62c462;
+@btn-background-success-highlight:   #51a351;
 
-@btn-background-warning:              lighten(#f89406, 15%);
-@btn-background-warning-highlight:    #f89406;
+@btn-background-warning:             lighten(#f89406, 15%);
+@btn-background-warning-highlight:   #f89406;
 
-@btn-background-danger:               #ee5f5b;
-@btn-background-danger-highlight:     #bd362f;
+@btn-background-danger:              #ee5f5b;
+@btn-background-danger-highlight:    #bd362f;
 
 
 // Forms
@@ -113,12 +113,12 @@
 
 @dropdown-background:            #fff;
 @dropdown-border:                rgba(0,0,0,.2);
-@dropdown-divider-top:            #e5e5e5;
-@dropdown-divider-bottom:         #fff;
+@dropdown-divider-top:           #e5e5e5;
+@dropdown-divider-bottom:        #fff;
 
-@dropdown-link-color:             @grayDark;
-@dropdown-link-color-hover:        #fff;
-@dropdown-link-color-active:       #fff;
+@dropdown-link-color:            @grayDark;
+@dropdown-link-color-hover:      #fff;
+@dropdown-link-color-active:     #fff;
 
 @dropdown-link-background-active:  @link-color;
 @dropdown-link-background-hover:   @dropdown-link-background-active;
@@ -140,6 +140,11 @@
 @zindex-navbar-fixed:      1030;
 @zindex-modal-background:  1040;
 @zindex-modal:             1050;
+
+
+// Glyphicons font path
+// -------------------------
+@glyphicons-font-path:          "../fonts";
 
 
 // Navbar
@@ -186,8 +191,7 @@
 // -------------------------
 
 @pagination-background:                #fff;
-@pagination-background-active:          #f5f5f5;
-
+@pagination-background-active:         #f5f5f5;
 @pagination-border:                    #ddd;
 
 
@@ -221,32 +225,32 @@
 
 // Tooltips and popovers
 // -------------------------
-@tooltip-color:            #fff;
-@tooltip-background:       rgba(0,0,0,.9);
-@tooltip-arrow-width:      5px;
-@tooltip-arrow-color:      @tooltip-background;
+@tooltip-color:               #fff;
+@tooltip-background:          rgba(0,0,0,.9);
+@tooltip-arrow-width:         5px;
+@tooltip-arrow-color:         @tooltip-background;
 
-@popover-background:       #fff;
-@popover-arrow-width:      10px;
-@popover-arrow-color:      #fff;
-@popover-title-background: darken(@popover-background, 3%);
+@popover-background:          #fff;
+@popover-arrow-width:         10px;
+@popover-arrow-color:         #fff;
+@popover-title-background:    darken(@popover-background, 3%);
 
 // Special enhancement for popovers
-@popover-arrow-outer-width:  @popover-arrow-width + 1;
-@popover-arrow-outer-color:  rgba(0,0,0,.25);
+@popover-arrow-outer-width:   @popover-arrow-width + 1;
+@popover-arrow-outer-color:   rgba(0,0,0,.25);
 
 
 // Miscellaneous
 // -------------------------
 
 // Hr border color
-@hr-border:                     @grayLighter;
+@hr-border:                   @grayLighter;
 
 // Horizontal forms & lists
-@component-offset-horizontal:   180px;
+@component-offset-horizontal: 180px;
 
 // Wells
-@well-background:               #f5f5f5;
+@well-background:             #f5f5f5;
 
 
 
@@ -254,17 +258,17 @@
 // --------------------------------------------------
 
 // Default 940px grid
-@grid-columns:             12;
+@grid-columns:              12;
 @grid-column-width:         60px;
 @grid-gutter-width:         20px;
 @grid-row-width:            (@grid-columns * @grid-column-width) + (@grid-gutter-width * (@grid-columns - 1));
 
 // 1200px min
-@grid-column-width-1200:     70px;
-@grid-gutter-width-1200:     30px;
-@grid-row-width-1200:        (@grid-columns * @grid-column-width-1200) + (@grid-gutter-width-1200 * (@grid-columns - 1));
+@grid-column-width-1200:    70px;
+@grid-gutter-width-1200:    30px;
+@grid-row-width-1200:       (@grid-columns * @grid-column-width-1200) + (@grid-gutter-width-1200 * (@grid-columns - 1));
 
 // 768px-979px
-@grid-column-width-768:      42px;
-@grid-gutter-width-768:      20px;
-@grid-row-width-768:         (@grid-columns * @grid-column-width-768) + (@grid-gutter-width-768 * (@grid-columns - 1));
+@grid-column-width-768:     42px;
+@grid-gutter-width-768:     20px;
+@grid-row-width-768:        (@grid-columns * @grid-column-width-768) + (@grid-gutter-width-768 * (@grid-columns - 1));
