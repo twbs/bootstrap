@@ -109,5 +109,69 @@ $(function () {
         ok($._data(popover[0],'events').click[0].namespace == 'foo', 'popover still has click.foo')
         ok(!$._data(popover[0], 'events').mouseover && !$._data(popover[0], 'events').mouseout, 'popover does not have any events')
       })
+        
+      test("should auto set the placement bottom", function () {
+        $.support.transition = false
+        var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+          .appendTo('body')
+          .offset({
+            top: 10,
+            left: 0
+          })
+          .popover({
+            placement: 'top'
+          })
+          .popover('show')
+        ok($(".popover").hasClass('bottom'), 'the modal placement should be bottom');
+        $('#qunit-fixture').empty()
+      })
+
+      test("should auto set the placement top", function () {
+        $.support.transition = false
+        var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+          .appendTo('body')
+          .offset({
+            top: $(window).scrollTop() + $(window).height() - 10,
+            left: 0
+          })
+          .popover({
+            placement: 'bottom'
+          })
+          .popover('show')
+        ok($(".popover").hasClass('top'), 'the modal placement should be top');
+        $('#qunit-fixture').empty()
+      })
+
+      test("should auto set the placement left", function () {
+        $.support.transition = false
+        var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+          .appendTo('body')
+          .offset({
+            top: 0,
+            left: $(window).width()-10
+          })
+          .popover({
+            placement: 'right'
+          })
+          .popover('show')
+        ok($(".popover").hasClass('left'), 'the modal placement should be left');
+        $('#qunit-fixture').empty()
+      })
+
+      test("should auto set the placement right", function () {
+        $.support.transition = false
+        var popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+          .appendTo('body')
+          .offset({
+            top: 0,
+            left: 10
+          })
+          .popover({
+            placement: 'left'
+          })
+          .popover('show')
+        ok($(".popover").hasClass('right'), 'the modal placement should be right');
+        $('#qunit-fixture').empty()
+      })
 
 })

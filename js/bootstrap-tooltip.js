@@ -103,7 +103,12 @@
         , actualHeight
         , placement
         , tp
-
+        , windowScrollTop
+        , windowHeight
+        , windowWidth
+        , elementOffset
+        , inCls
+        
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
         this.setContent()
@@ -127,6 +132,25 @@
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
+        windowScrollTop = $(window).scrollTop();
+        windowHeight =  $(window).height();
+        windowWidth = $(window).width();
+        elementOffset = this.$element.offset()
+        
+        inCls = inside?'in ':''
+        if (/bottom/.test(placement) && 
+            windowScrollTop + windowHeight < actualHeight + elementOffset.top + this.$element.height()) {
+          placement = inCls + 'top';
+        }else if (/top/.test(placement) &&
+                  windowScrollTop > elementOffset.top - actualHeight) {
+          placement = inCls + 'bottom';
+        }else if (/left/.test(placement) &&
+                  pos.left < actualWidth ) {
+          placement = inCls + 'right'
+        }else if (/right/.test(placement) &&
+                  pos.left + actualWidth + this.$element.width() > windowWidth) {
+          placement = inCls + 'left'
+        }
 
         switch (inside ? placement.split(' ')[1] : placement) {
           case 'bottom':

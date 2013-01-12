@@ -156,4 +156,60 @@ $(function () {
         div.find('a').trigger('click')
         ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
       })
+      
+      test("should auto set tooltips placement top", function () {
+        var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
+        var tooltip = div.appendTo('body')
+                         .tooltip({ selector: 'a[rel=tooltip]',
+                                    trigger: 'click',
+                                    placement: 'in bottom'})
+        div.offset({
+          top: $(window).scrollTop() + $(window).height() - 10,
+          left: 0
+        })                            
+        div.find('a').trigger('click')
+        ok($(".tooltip").hasClass('top'), 'the tooltip placement should be top');
+      })
+      
+      test("should auto set tooltips placement bottom", function () {
+        var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
+        var tooltip = div.appendTo('body')
+                         .tooltip({ selector: 'a[rel=tooltip]',
+                                    trigger: 'click',
+                                    placement: 'top'})
+        div.offset({
+          top: $(window).scrollTop() + 10,
+          left: 0
+        })                            
+        div.find('a').trigger('click')
+        ok($(".tooltip").hasClass('bottom'), 'the tooltip placement should be bottom');
+      })
+      
+      test("should auto set tooltips placement left", function () {
+        var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
+        var tooltip = div.appendTo('body')
+                         .tooltip({ selector: 'a[rel=tooltip]',
+                                    trigger: 'click',
+                                    placement: 'right'})
+        div.offset({
+          top: 0,
+          left: $(window).width()-10
+        })                            
+        div.find('a').trigger('click')
+        ok($(".tooltip").hasClass('left'), 'the tooltip placement should be left');
+      })
+      
+      test("should auto set tooltips placement right", function () {
+        var div = $('<div><a href="#" rel="tooltip" title="Another tooltip"></a></div>')
+        var tooltip = div.appendTo('body')
+                         .tooltip({ selector: 'a[rel=tooltip]',
+                                    trigger: 'click',
+                                    placement: 'left'})
+        div.offset({
+          top: 0,
+          left: 10
+        })                            
+        div.find('a').trigger('click')
+        ok($(".tooltip").hasClass('right'), 'the tooltip placement should be right');
+      })      
 })
