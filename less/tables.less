@@ -93,24 +93,32 @@ table {
   tbody:first-child tr:first-child td {
     border-top: 0;
   }
-  // For first th or td in the first row in the first thead or tbody
+  // For first th/td in the first row in the first thead or tbody
   thead:first-child tr:first-child > th:first-child,
-  tbody:first-child tr:first-child > td:first-child {
+  tbody:first-child tr:first-child > td:first-child,
+  tbody:first-child tr:first-child > th:first-child {
     .border-top-left-radius(@baseBorderRadius);
   }
+  // For last th/td in the first row in the first thead or tbody
   thead:first-child tr:first-child > th:last-child,
-  tbody:first-child tr:first-child > td:last-child {
+  tbody:first-child tr:first-child > td:last-child,
+  tbody:first-child tr:first-child > th:last-child {
     .border-top-right-radius(@baseBorderRadius);
   }
-  // For first th or td in the last row in the last thead or tbody
+  // For first th/td (can be either) in the last row in the last thead, tbody, and tfoot
   thead:last-child tr:last-child > th:first-child,
   tbody:last-child tr:last-child > td:first-child,
-  tfoot:last-child tr:last-child > td:first-child {
+  tbody:last-child tr:last-child > th:first-child,
+  tfoot:last-child tr:last-child > td:first-child,
+  tfoot:last-child tr:last-child > th:first-child {
     .border-bottom-left-radius(@baseBorderRadius);
   }
+  // For last th/td (can be either) in the last row in the last thead, tbody, and tfoot
   thead:last-child tr:last-child > th:last-child,
   tbody:last-child tr:last-child > td:last-child,
-  tfoot:last-child tr:last-child > td:last-child {
+  tbody:last-child tr:last-child > th:last-child,
+  tfoot:last-child tr:last-child > td:last-child,
+  tfoot:last-child tr:last-child > th:last-child {
     .border-bottom-right-radius(@baseBorderRadius);
   }
 
