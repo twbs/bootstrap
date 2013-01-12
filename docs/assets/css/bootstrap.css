@@ -3177,10 +3177,6 @@ fieldset[disabled] .btn-link:hover {
   clear: both;
 }
 
-.tab-content {
-  overflow: auto;
-}
-
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
   display: none;
