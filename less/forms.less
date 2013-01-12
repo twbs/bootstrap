@@ -423,7 +423,8 @@ select:focus:invalid {
 .input-append,
 .input-prepend {
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: @baseLineHeight / 2;
+  vertical-align: middle;
   font-size: 0; // white space collapse hack
   white-space: nowrap; // Prevent span and input from separating
 
