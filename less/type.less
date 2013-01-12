@@ -185,7 +185,9 @@ blockquote {
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
-    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
+    font-size: @baseFontSize * 1.25;
+    font-weight: 300;
+    line-height: 1.25;
   }
   small {
     display: block;
