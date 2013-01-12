@@ -92,6 +92,25 @@
 &lt;/ul&gt;
 </pre>
 
+          <h3>{{_i}}Disabled menu options{{/i}}</h3>
+          <p>{{_i}}Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="dropdown clearfix">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                <li><a tabindex="-1" href="#">{{_i}}Regular link{{/i}}</a></li>
+                <li class="disabled"><a tabindex="-1" href="#">{{_i}}Disabled link{{/i}}</a></li>
+                <li><a tabindex="-1" href="#">{{_i}}Another link{{/i}}</a></li>
+              </ul>
+            </div>
+          </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Regular link{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Disabled link{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Another link{{/i}}&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
           <h3>{{_i}}Sub menus on dropdowns{{/i}}</h3>
           <p>{{_i}}Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.{{/i}}</p>
           <div class="bs-docs-example bs-docs-example-submenus">
