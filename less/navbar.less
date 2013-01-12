@@ -12,10 +12,7 @@
   padding: 0 20px;
   margin-bottom: @line-height-base;
   background-color: @navbar-background;
-  //#gradient > .vertical(@navbar-background-highlight, @navbar-background);
-  border: 1px solid @navbar-border;
   border-radius: @border-radius-base;
-  .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -181,15 +178,10 @@
 .navbar-fixed-top {
   top: 0;
 }
-.navbar-fixed-top,
-.navbar-static-top {
-  .box-shadow(0 1px 10px rgba(0,0,0,.1));
-}
 
 // Fixed to bottom
 .navbar-fixed-bottom {
   bottom: 0;
-  .box-shadow(0 -1px 10px rgba(0,0,0,.1));
 }
 
 
@@ -364,8 +356,6 @@
 
 .navbar-inverse {
   background-color: @navbar-inverse-background;
-  //#gradient > .vertical(@navbar-inverse-background-highlight, @navbar-inverse-background);
-  border-color: @navbar-inverse-border;
 
   .brand,
   .nav > li > a {

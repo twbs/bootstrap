@@ -3058,10 +3058,7 @@ fieldset[disabled] .btn-link:hover {
   margin-bottom: 20px;
   overflow: visible;
   background-color: #f2f2f2;
-  border: 1px solid #d4d4d4;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 }
 
 .navbar:before,
@@ -3225,16 +3222,8 @@ fieldset[disabled] .btn-link:hover {
   top: 0;
 }
 
-.navbar-fixed-top,
-.navbar-static-top {
-  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-}
-
 .navbar-fixed-bottom {
   bottom: 0;
-  -webkit-box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .nav {
@@ -3424,8 +3413,7 @@ fieldset[disabled] .navbar .btn-navbar {
 }
 
 .navbar-inverse {
-  background-color: #111111;
-  border-color: #111111;
+  background-color: #222222;
 }
 
 .navbar-inverse .brand,
@@ -3457,7 +3445,7 @@ fieldset[disabled] .navbar .btn-navbar {
 .navbar-inverse .nav .active > a:hover,
 .navbar-inverse .nav .active > a:focus {
   color: #ffffff;
-  background-color: #111111;
+  background-color: #222222;
 }
 
 .navbar-inverse .navbar-link {
@@ -3470,14 +3458,14 @@ fieldset[disabled] .navbar .btn-navbar {
 
 .navbar-inverse .divider-vertical {
   border-right-color: #222222;
-  border-left-color: #111111;
+  border-left-color: #222222;
 }
 
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   color: #ffffff;
-  background-color: #111111;
+  background-color: #222222;
 }
 
 .navbar-inverse .nav li.dropdown > a:hover .caret {
@@ -3499,8 +3487,8 @@ fieldset[disabled] .navbar .btn-navbar {
 
 .navbar-inverse .navbar-search .search-query {
   color: #fff;
-  background-color: #515151;
-  border-color: #111111;
+  background-color: #626262;
+  border-color: #222222;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15);
           box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.15);
   -webkit-transition: none;
@@ -3536,22 +3524,22 @@ fieldset[disabled] .navbar .btn-navbar {
 .navbar-inverse .btn-navbar {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #040404;
-  background-image: -moz-linear-gradient(top, #151515, #040404);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#040404));
-  background-image: -webkit-linear-gradient(top, #151515, #040404);
-  background-image: -o-linear-gradient(top, #151515, #040404);
-  background-image: linear-gradient(to bottom, #151515, #040404);
+  background-color: #151515;
+  background-image: -moz-linear-gradient(top, #151515, #151515);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#151515));
+  background-image: -webkit-linear-gradient(top, #151515, #151515);
+  background-image: -o-linear-gradient(top, #151515, #151515);
+  background-image: linear-gradient(to bottom, #151515, #151515);
   background-repeat: repeat-x;
-  border-color: #000000;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff151515', endColorstr='#ff040404', GradientType=0);
+  border-color: #020202;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff151515', endColorstr='#ff151515', GradientType=0);
 }
 
 .navbar-inverse .btn-navbar:hover,
 .navbar-inverse .btn-navbar:active,
 .navbar-inverse .btn-navbar.active {
   color: #ffffff;
-  background-color: #040404;
+  background-color: #151515;
   background-position: 0 -15px;
 }
 
@@ -5097,7 +5085,7 @@ a.badge:hover {
   }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
   .navbar-inverse .nav-collapse .dropdown-menu a:hover {
-    background-color: #111111;
+    background-color: #222222;
   }
   .nav-collapse.in .btn-group {
     padding: 0;
@@ -5144,8 +5132,8 @@ a.badge:hover {
   }
   .navbar-inverse .nav-collapse .navbar-form,
   .navbar-inverse .nav-collapse .navbar-search {
-    border-top-color: #111111;
-    border-bottom-color: #111111;
+    border-top-color: #222222;
+    border-bottom-color: #222222;
   }
   .navbar .nav-collapse .nav.pull-right {
     float: none;
