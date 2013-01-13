@@ -114,16 +114,6 @@ hr.soften {
   padding: 19px 24px;
   font-size: 24px;
   color: #fff; /* redeclare to override the `.jumbotron a` */
-  border: 2px solid #fff;
-  background-color: transparent;
-}
-.masthead .btn:hover,
-.masthead .btn:active {
-  color: #333;
-  background-color: #fff;
-}
-.masthead .btn:active {
-  box-shadow: none;
 }
 
 
