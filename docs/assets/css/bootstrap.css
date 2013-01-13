@@ -3223,15 +3223,8 @@ fieldset[disabled] .btn-link:hover {
   right: 0;
   left: 0;
   z-index: 1030;
-  padding-right: 0;
-  padding-left: 0;
   margin-bottom: 0;
-  border-width: 0 0 1px;
   border-radius: 0;
-}
-
-.navbar-fixed-bottom {
-  border-width: 1px 0 0;
 }
 
 .navbar-static-top .container,
