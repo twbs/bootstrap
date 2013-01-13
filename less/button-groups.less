@@ -57,7 +57,8 @@
 }
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
-.btn-group > .btn:first-child {
+.btn-group > .btn:first-child,
+.btn-group input:first-child + .btn {
   margin-left: 0;
   .border-top-left-radius(@baseBorderRadius);
   .border-bottom-left-radius(@baseBorderRadius);
