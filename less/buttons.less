@@ -183,11 +183,15 @@ fieldset[disabled] .btn-link {
   background-image: none;
   .box-shadow(none);
 }
+.btn-link,
+.btn-link:hover,
+.btn-link:active {
+  border-color: transparent;
+}
 .btn-link {
   color: @link-color;
   font-weight: normal;
   cursor: pointer;
-  border-color: transparent;
   border-radius: 0;
 }
 .btn-link:hover {
