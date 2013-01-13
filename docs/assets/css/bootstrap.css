@@ -2417,7 +2417,6 @@ button.close {
   font-weight: bold;
   line-height: 20px;
   text-align: center;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid #a7a9aa;
@@ -2595,6 +2594,11 @@ fieldset[disabled] .btn-link:hover {
   text-decoration: none;
 }
 
+.caret {
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+}
+
 .btn-group {
   position: relative;
   display: inline-block;
@@ -2633,18 +2637,6 @@ fieldset[disabled] .btn-link:hover {
 
 .btn-group > .btn + .btn {
   margin-left: 1px;
-}
-
-.btn-group > .btn-mini {
-  font-size: 10.5px;
-}
-
-.btn-group > .btn-small {
-  font-size: 11.9px;
-}
-
-.btn-group > .btn-large {
-  font-size: 17.5px;
 }
 
 .btn-group > .btn:first-child {
@@ -2727,9 +2719,7 @@ fieldset[disabled] .btn-link:hover {
 }
 
 .btn-large .caret {
-  border-top-width: 5px;
-  border-right-width: 5px;
-  border-left-width: 5px;
+  border-width: 5px;
 }
 
 .btn-mini .caret,
@@ -2739,16 +2729,6 @@ fieldset[disabled] .btn-link:hover {
 
 .dropup .btn-large .caret {
   border-bottom-width: 5px;
-}
-
-.btn-primary .caret,
-.btn-warning .caret,
-.btn-danger .caret,
-.btn-info .caret,
-.btn-success .caret,
-.btn-inverse .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
 }
 
 .btn-group-vertical > .btn {
