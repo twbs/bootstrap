@@ -2430,6 +2430,7 @@ button.close {
 }
 
 .btn:hover {
+  color: #fff;
   text-decoration: none;
 }
 
