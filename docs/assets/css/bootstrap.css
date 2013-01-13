@@ -2689,30 +2689,9 @@ fieldset[disabled] .btn-link:hover {
   padding-left: 12px;
 }
 
-.btn-group.open {
-  /*  .btn.dropdown-toggle {
-    background-color: @btn-background-highlight;
-  }
-  .btn-primary.dropdown-toggle {
-    background-color: @btn-background-primary-highlight;
-  }
-  .btn-warning.dropdown-toggle {
-    background-color: @btn-background-warning-highlight;
-  }
-  .btn-danger.dropdown-toggle {
-    background-color: @btn-background-danger-highlight;
-  }
-  .btn-success.dropdown-toggle {
-    background-color: @btn-background-success-highlight;
-  }
-*/
-
-}
-
 .btn-group.open .dropdown-toggle {
-  background-image: none;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
-          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
 .btn .caret {

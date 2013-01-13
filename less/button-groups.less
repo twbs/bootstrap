@@ -91,32 +91,11 @@
   padding-right: 12px;
 }
 
-.btn-group.open {
-
-  // The clickable button for toggling the menu
-  // Remove the gradient and set the same inset shadow as the :active state
-  .dropdown-toggle {
-    background-image: none;
-    .box-shadow(inset 0 2px 4px rgba(0,0,0,.15));
-  }
-
-  // Keep the hover's background when dropdown is open
-/*  .btn.dropdown-toggle {
-    background-color: @btn-background-highlight;
-  }
-  .btn-primary.dropdown-toggle {
-    background-color: @btn-background-primary-highlight;
-  }
-  .btn-warning.dropdown-toggle {
-    background-color: @btn-background-warning-highlight;
-  }
-  .btn-danger.dropdown-toggle {
-    background-color: @btn-background-danger-highlight;
-  }
-  .btn-success.dropdown-toggle {
-    background-color: @btn-background-success-highlight;
-  }
-*/}
+// The clickable button for toggling the menu
+// Remove the gradient and set the same inset shadow as the :active state
+.btn-group.open .dropdown-toggle {
+  .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+}
 
 
 // Reposition the caret
