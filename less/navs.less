@@ -10,6 +10,9 @@
   margin-left: 0;
   margin-bottom: @baseLineHeight;
   list-style: none;
+  [dir="rtl"] & {
+    margin-right: 0;
+  }
 }
 
 // Make links block level
@@ -31,6 +34,10 @@
 .nav > .pull-right {
   float: right;
 }
+.nav > .pull-left {
+  float: left;
+}
+
 
 // Nav headers (for dropdowns and lists)
 .nav-header {
@@ -95,6 +102,9 @@
 .nav-tabs > li,
 .nav-pills > li {
   float: left;
+  [dir="rtl"] & {
+    float: right;
+  }
 }
 .nav-tabs > li > a,
 .nav-pills > li > a {
@@ -102,6 +112,10 @@
   padding-left: 12px;
   margin-right: 2px;
   line-height: 14px; // keeps the overall height an even number
+  [dir="rtl"] & {
+    margin-left: 2px;
+    margin-right: 0;
+  }
 }
 
 // TABS
@@ -164,9 +178,15 @@
 // Stacked tabs and pills
 .nav-stacked > li {
   float: none;
+  [dir="rtl"] & {
+    float: none;
+  }
 }
 .nav-stacked > li > a {
   margin-right: 0; // no need for the gap between nav items
+  [dir="rtl"] & {
+    margin-left: 0;
+  }
 }
 
 // Tabs
@@ -328,6 +348,9 @@
 .tabs-left > .nav-tabs > li,
 .tabs-right > .nav-tabs > li {
   float: none;
+  [dir="rtl"] & {
+    float: none;
+  }
 }
 .tabs-left > .nav-tabs > li > a,
 .tabs-right > .nav-tabs > li > a {

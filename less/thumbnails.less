@@ -10,10 +10,17 @@
   margin-left: -@gridGutterWidth;
   list-style: none;
   .clearfix();
+  [dir="rtl"] & {
+    margin-right: -@gridGutterWidth;
+    margin-left: 0;
+  }
 }
 // Fluid rows have no left margin
 .row-fluid .thumbnails {
   margin-left: 0;
+  [dir="rtl"] & {
+    margin-right: 0;
+  }
 }
 
 // Float li to make thumbnails appear in a row
@@ -21,6 +28,11 @@
   float: left; // Explicity set the float since we don't require .span* classes
   margin-bottom: @baseLineHeight;
   margin-left: @gridGutterWidth;
+  [dir="rtl"] & {
+    float: right;
+    margin-right: @gridGutterWidth;
+    margin-left: 0;
+  }
 }
 
 // The actual thumbnail (can be `a` or `div`)

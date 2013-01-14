@@ -31,9 +31,13 @@
       clear: none;
       width: auto;
       text-align: left;
+      [dir="rtl"] & {
+        text-align: right;
+      }
     }
     dd {
       margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -51,10 +55,12 @@
   .row,
   .thumbnails {
     margin-left: 0;
+    margin-right: 0;
   }
   .thumbnails > li {
     float: none;
     margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
+    margin-right: 0;
   }
   // Make all grid-sized elements block level again
   [class*="span"],
@@ -64,6 +70,7 @@
     display: block;
     width: 100%;
     margin-left: 0;
+    margin-right: 0;
     .box-sizing(border-box);
   }
   .span12,
@@ -73,6 +80,7 @@
   }
   .row-fluid [class*="offset"]:first-child {
 		margin-left: 0;
+		margin-right: 0;
 	}
 
   // FORM FIELDS
@@ -97,6 +105,7 @@
   }
   .controls-row [class*="span"] + [class*="span"] {
     margin-left: 0;
+    margin-right: 0;
   }
 
   // Modals
@@ -144,10 +153,14 @@
       width: auto;
       padding-top: 0;
       text-align: left;
+      [dir="rtl"] & {
+        text-align: right;
+      }
     }
     // Move over all input controls and content
     .controls {
       margin-left: 0;
+      margin-right: 0;
     }
     // Move the options list down to align with labels
     .control-list {

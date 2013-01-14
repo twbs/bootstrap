@@ -10,32 +10,48 @@
 @-webkit-keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
-}
 
+}
+@-webkit-keyframes progress-bar-stripes-rtl {
+  from  { background-position: -40px 0; }
+  to    { background-position:  0 0; }
+}
 // Firefox
 @-moz-keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
 }
-
+@-moz-keyframes progress-bar-stripes-rtl {
+  from  { background-position: -40px 0; }
+  to    { background-position:  0 0; }
+}
 // IE9
 @-ms-keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
 }
-
+@-ms-keyframes progress-bar-stripes-rtl {
+  from  { background-position: -40px 0; }
+  to    { background-position:  0 0; }
+}
 // Opera
 @-o-keyframes progress-bar-stripes {
   from  { background-position: 0 0; }
   to    { background-position: 40px 0; }
 }
-
+@-o-keyframes progress-bar-stripes-rtl {
+  from  { background-position:  0 0; }
+  to    { background-position: -40px 0; }
+}
 // Spec
 @keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
 }
-
+@keyframes progress-bar-stripes-rtl {
+  from  { background-position: -40px 0; }
+  to    { background-position:  0 0; }
+}
 
 
 // THE BARS
@@ -64,9 +80,15 @@
   .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
   .box-sizing(border-box);
   .transition(width .6s ease);
+  [dir="rtl"] & {
+    float: right;
+  }
 }
 .progress .bar + .bar {
   .box-shadow(~"inset 1px 0 0 rgba(0,0,0,.15), inset 0 -1px 0 rgba(0,0,0,.15)");
+  [dir="rtl"] & {
+    .box-shadow(~"inset -1px 0 0 rgba(0,0,0,.15), inset 0 -1px 0 rgba(0,0,0,.15)");
+  }
 }
 
 // Striped bars
@@ -82,6 +104,13 @@
       -ms-animation: progress-bar-stripes 2s linear infinite;
        -o-animation: progress-bar-stripes 2s linear infinite;
           animation: progress-bar-stripes 2s linear infinite;
+  [dir="rtl"] & {
+  -webkit-animation: progress-bar-stripes-rtl 2s linear infinite;
+     -moz-animation: progress-bar-stripes-rtl 2s linear infinite;
+      -ms-animation: progress-bar-stripes-rtl 2s linear infinite;
+       -o-animation: progress-bar-stripes-rtl 2s linear infinite;
+          animation: progress-bar-stripes-rtl 2s linear infinite;
+  }
 }
 
 

@@ -97,29 +97,51 @@ table {
   thead:first-child tr:first-child > th:first-child,
   tbody:first-child tr:first-child > td:first-child {
     .border-top-left-radius(@baseBorderRadius);
+    [dir="rtl"] & {
+      .border-top-right-radius(@baseBorderRadius);
+      .border-top-left-radius(0);
+    }
   }
   thead:first-child tr:first-child > th:last-child,
   tbody:first-child tr:first-child > td:last-child {
     .border-top-right-radius(@baseBorderRadius);
+    [dir="rtl"] & {
+      .border-top-left-radius(@baseBorderRadius);
+      .border-top-right-radius(0);
+    }
   }
   // For first th or td in the last row in the last thead or tbody
   thead:last-child tr:last-child > th:first-child,
   tbody:last-child tr:last-child > td:first-child,
   tfoot:last-child tr:last-child > td:first-child {
     .border-bottom-left-radius(@baseBorderRadius);
+    [dir="rtl"] & {
+      .border-bottom-right-radius(@baseBorderRadius);
+      .border-bottom-left-radius(0);
+    }
   }
   thead:last-child tr:last-child > th:last-child,
   tbody:last-child tr:last-child > td:last-child,
   tfoot:last-child tr:last-child > td:last-child {
     .border-bottom-right-radius(@baseBorderRadius);
+    [dir="rtl"] & {
+      .border-bottom-left-radius(@baseBorderRadius);
+      .border-bottom-right-radius(0);
+    }
   }
 
   // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
   tfoot + tbody:last-child tr:last-child td:first-child {
     .border-bottom-left-radius(0);
+    [dir="rtl"] & {
+      .border-bottom-right-radius(0);
+    }
   }
   tfoot + tbody:last-child tr:last-child td:last-child {
     .border-bottom-right-radius(0);
+    [dir="rtl"] & {
+      .border-bottom-left-radius(0);
+    }
   }
 
 
@@ -129,12 +151,20 @@ table {
   colgroup + thead tr:first-child th:first-child,
   colgroup + tbody tr:first-child td:first-child {
     .border-top-left-radius(@baseBorderRadius);
+    [dir="rtl"] & {
+      .border-top-right-radius(@baseBorderRadius);
+      .border-top-left-radius(0);
+    }
   }
   caption + thead tr:first-child th:last-child,
   caption + tbody tr:first-child td:last-child,
   colgroup + thead tr:first-child th:last-child,
   colgroup + tbody tr:first-child td:last-child {
     .border-top-right-radius(@baseBorderRadius);
+    [dir="rtl"] & {
+      .border-top-left-radius(@baseBorderRadius);
+      .border-top-right-radius(0);
+    }
   }
 
 }
@@ -180,6 +210,11 @@ table th[class*="span"],
   display: table-cell;
   float: none; // undo default grid column styles
   margin-left: 0; // undo default grid column styles
+  [dir="rtl"] & {
+    margin-right: 0;
+    float: none;
+    display: table-cell;
+  }
 }
 
 // Change the column widths to account for td/th padding

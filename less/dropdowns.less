@@ -34,6 +34,10 @@
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
+  [dir="rtl"] &{
+    margin-right: 2px;
+    margin-left: 0;
+  }
 }
 
 // The dropdown menu (ul)
@@ -59,11 +63,21 @@
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-
+  [dir="rtl"] &{
+    right: 0;
+    left: auto;
+    float: right;
+    *border-left-width: 2px;
+    *border-right-width: 0;
+  }
   // Aligns the dropdown menu to right
   &.pull-right {
     right: 0;
     left: auto;
+  }
+  [dir="rtl"] &.pull-left{
+    right: auto;
+    left: 0;
   }
 
   // Dividers (basically an hr) within the dropdown
@@ -137,7 +151,10 @@
   right: 0;
   left: auto;
 }
-
+[dir="rtl"] .pull-left > .dropdown-menu{
+  right: auto;
+  left: 0;
+}
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // ------------------------------------------------------
 // Just add .dropup after the standard .dropdown class and you're set, bro.
@@ -170,6 +187,13 @@
   margin-top: -6px;
   margin-left: -1px;
   .border-radius(0 6px 6px 6px);
+  [dir="rtl"] & {
+    right: 100%;
+    left: 0;
+    margin-right: -1;
+    margin-left: 0;
+    .border-radius(6px 0 6px 6px);
+  }
 }
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
@@ -182,6 +206,9 @@
   margin-top: 0;
   margin-bottom: -2px;
   .border-radius(5px 5px 5px 0);
+  [dir="rtl"] &{
+    .border-radius(5px 5px 0 5px);
+  }
 }
 
 // Caret to indicate there is a submenu
@@ -197,9 +224,20 @@
   border-left-color: darken(@dropdownBackground, 20%);
   margin-top: 5px;
   margin-right: -10px;
+  [dir="rtl"] &{
+    float: left;
+    border-width: 5px 5px 5px 0;
+    border-right-color: darken(@dropdownBackground, 20%);
+    border-left-color: transparent;
+    margin-left: -10px;
+    margin-right: 0;
+  }
 }
 .dropdown-submenu:hover > a:after {
   border-left-color: @dropdownLinkColorHover;
+  [dir="rtl"] &{
+     border-right-color: @dropdownLinkColorHover;
+  }
 }
 
 // Left aligned submenus
@@ -213,6 +251,18 @@
     left: -100%;
     margin-left: 10px;
     .border-radius(6px 0 6px 6px);
+  }
+}
+[dir="rtl"] &.dropdown-submenu.pull-right {
+  float: none;
+
+  // Positioning the submenu
+  > .dropdown-menu {
+    right: -100%;
+    left: auto;
+    margin-right: 10px;
+    margin-left: 0;
+    .border-radius(0 6px 6px 6px);
   }
 }
 

@@ -112,6 +112,9 @@ ul.unstyled,
 ol.unstyled {
   margin-left: 0;
   list-style: none;
+  [dir="rtl"] & {
+    margin-right: 0;
+  }
 }
 
 // Single-line list items
@@ -123,6 +126,9 @@ ol.inline {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;
+  }
+  [dir="rtl"] & {
+    margin-right: 0;
   }
 }
 
@@ -139,6 +145,10 @@ dt {
 }
 dd {
   margin-left: @baseLineHeight / 2;
+  [dir="rtl"] & {
+    margin-right: @baseLineHeight / 2;
+    margin-left: 0;
+  }
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
@@ -149,9 +159,18 @@ dd {
     clear: left;
     text-align: right;
     .text-overflow();
+      [dir="rtl"] & {
+        float: right;
+        clear: right;
+        text-align: left;
+      }
   }
   dd {
     margin-left: @horizontalComponentOffset;
+    [dir="rtl"] & {
+      margin-right: @horizontalComponentOffset;
+      margin-left: 0;
+    }
   }
 }
 
@@ -183,6 +202,11 @@ blockquote {
   padding: 0 0 0 15px;
   margin: 0 0 @baseLineHeight;
   border-left: 5px solid @grayLighter;
+  [dir="rtl"] & {
+    padding: 0 15px 0 0;
+    border-right: 5px solid @grayLighter;
+    border-left: 0;
+  }
   p {
     margin-bottom: 0;
     #font > .shorthand(16px,300,@baseLineHeight * 1.25);
@@ -206,6 +230,25 @@ blockquote {
     p,
     small {
       text-align: right;
+    }
+    small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014';
+      }
+    }
+  }
+  [dir="rtl"] &.pull-left{
+    float: left;
+    padding-right: 15px;
+    padding-right: 0;
+    border-left: 5px solid @grayLighter;
+    border-right: 0;
+    p,
+    small {
+      text-align: left;
     }
     small {
       &:before {

@@ -48,6 +48,7 @@
 // -------------------------
 .navbar .brand {
   float: left;
+  
   display: block;
   // Vertically center the text given @navbarHeight
   padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
@@ -58,6 +59,11 @@
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
   &:hover {
     text-decoration: none;
+  }
+  [dir="rtl"] & {
+    float: right;
+    margin-right: -20px;
+    margin-left: 0;
   }
 }
 
@@ -144,6 +150,9 @@
     #font > .sans-serif(13px, normal, 1);
     .border-radius(15px); // redeclare because of specificity of the type attribute
   }
+  [dir="rtl"] & {
+    float: right;
+  }
 }
 
 
@@ -225,13 +234,27 @@
   display: block;
   float: left;
   margin: 0 10px 0 0;
+  [dir="rtl"] & {
+    right: 0;
+    left: auto;
+    float: right;
+    margin: 0 0 0 10px;
+  }
 }
 .navbar .nav.pull-right {
   float: right; // redeclare due to specificity
   margin-right: 0; // remove margin on float right nav
 }
+[dir="rtl"] .navbar .nav.pull-left {
+  float: left;
+  margin-left: 0;
+}
+
 .navbar .nav > li {
   float: left;
+  [dir="rtl"] & {
+    float: right;
+  }
 }
 
 // Links
@@ -242,6 +265,9 @@
   color: @navbarLinkColor;
   text-decoration: none;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  [dir="rtl"] & {
+    float: none;
+  }
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
@@ -306,6 +332,11 @@
     position: absolute;
     top: -7px;
     left: 9px;
+    
+    [dir="rtl"] & {
+      right: 9px;
+      left: auto;
+    }
   }
   &:after {
     content: '';
@@ -316,6 +347,10 @@
     position: absolute;
     top: -6px;
     left: 10px;
+    [dir="rtl"] & {
+      right: 10px;
+      left: auto;
+    }
   }
 }
 // Menu position and menu caret support for dropups via extra dropup class
@@ -380,6 +415,26 @@
     .border-radius(6px 0 6px 6px);
   }
 }
+[dir="rtl"] .navbar .pull-left > li > .dropdown-menu,
+[dir="rtl"] .navbar .nav > li > .dropdown-menu.pull-left {
+  right: auto;
+  left: 0;
+  &:before {
+    right: auto;
+    left: 12px;
+  }
+  &:after {
+    right: auto;
+    left: 13px;
+  }
+  .dropdown-menu {
+    right: auto;
+    left: 100%;
+    margin-right: 0;
+    margin-left: -1px;
+    .border-radius(0 6px 6px 6px);
+  }
+}
 
 
 // Inverted navbar
@@ -434,6 +489,10 @@
   .divider-vertical {
     border-left-color: @navbarInverseBackground;
     border-right-color: @navbarInverseBackgroundHighlight;
+    [dir="rtl"] & {
+      border-left-color: @navbarInverseBackgroundHighlight;
+      border-right-color: @navbarInverseBackground;
+    }
   }
 
   // Dropdowns

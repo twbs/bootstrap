@@ -21,6 +21,9 @@
     display: none;
     position: relative;
     .transition(.6s ease-in-out left);
+    [dir="rtl"] & {
+      .transition(.6s ease-in-out right);
+    }
   }
 
   // Account for jankitude on images
@@ -35,6 +38,10 @@
 
   > .active {
     left: 0;
+    [dir="rtl"] & {
+      right: 0;
+      left: auto;
+    }
   }
 
   > .next,
@@ -46,20 +53,40 @@
 
   > .next {
     left: 100%;
+    [dir="rtl"] & {
+      right: 100%;
+      left: auto;
+    }
   }
   > .prev {
     left: -100%;
+    [dir="rtl"] & {
+      right: -100%;
+      left: auto;
+    }
   }
   > .next.left,
   > .prev.right {
     left: 0;
+    [dir="rtl"] & {
+      right: 0;
+      left: auto;
+    }
   }
 
   > .active.left {
     left: -100%;
+    [dir="rtl"] & {
+      right: -100%;
+      left: auto;
+    }
   }
   > .active.right {
     left: 100%;
+    [dir="rtl"] & {
+      right: 100%;
+      left: auto;
+    }
   }
 
 }
@@ -90,11 +117,18 @@
   // in the middle of another animation
   // ;_;
   // .transition(opacity .2s linear);
-
+  [dir="rtl"] & {
+    right: 15px;
+    left: auto;
+  }
   // Reposition the right one
   &.right {
     left: auto;
     right: 15px;
+    [dir="rtl"] & {
+      right: auto;
+      left: 15px;
+    }
   }
 
   // Hover state

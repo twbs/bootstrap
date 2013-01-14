@@ -225,11 +225,20 @@ textarea {
 .checkbox {
   min-height: @baseLineHeight; // clear the floating input if there is no label text
   padding-left: 20px;
+  [dir="rtl"] & {
+    padding-right: 20px;
+    padding-left: 0;
+  }
 }
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
   float: left;
   margin-left: -20px;
+  [dir="rtl"] & {
+    float: right;
+    margin-right: -20px;
+    margin-left: 0;
+  }
 }
 
 // Move the options list down to align with labels
@@ -250,6 +259,10 @@ textarea {
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {
   margin-left: 10px; // space out consecutive inline controls
+  [dir="rtl"] & {
+    margin-right: 10px;
+    margin-left: 0;
+  }
 }
 
 
@@ -277,6 +290,10 @@ textarea[class*="span"],
 .row-fluid .uneditable-input[class*="span"] {
   float: none;
   margin-left: 0;
+  [dir="rtl"] & {
+    margin-right: 0;
+    float: none;
+  }
 }
 // Ensure input-prepend/append never wraps
 .input-append input[class*="span"],
@@ -310,6 +327,9 @@ textarea[class*="span"],
 // Redeclare the fluid grid collapse since we undo the float for inputs
 .row-fluid .controls-row [class*="span"] {
   float: left;
+  [dir="rtl"] & {
+    float: right;
+  }
 }
 // Explicity set top padding on all checkboxes/radios, not just first-child
 .controls-row .checkbox[class*="span"],
@@ -412,6 +432,10 @@ select:focus:invalid {
   .ie7-inline-block();
   vertical-align: middle;
   padding-left: 5px;
+  [dir="rtl"] & {
+    padding-right: 5px;
+    padding-left: 0;
+  }
 }
 
 
@@ -442,6 +466,10 @@ select:focus:invalid {
     *margin-left: 0;
     vertical-align: top;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    [dir="rtl"] & {
+      *margin-right: 0;
+      .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    }
     // Make input on top when focused so blue border and shadow always show
     &:focus {
       z-index: 2;
@@ -463,9 +491,13 @@ select:focus:invalid {
   }
   .add-on,
   .btn,
+  .btn-group:last-child > .btn,
   .btn-group > .dropdown-toggle {
     vertical-align: top;
     .border-radius(0);
+    [dir="rtl"] & {
+      .border-radius(0);
+    }
   }
   .active {
     background-color: lighten(@green, 30);
@@ -475,13 +507,21 @@ select:focus:invalid {
 
 .input-prepend {
   .add-on,
-  .btn {
+  .btn,
+  .btn-group {
     margin-right: -1px;
+    [dir="rtl"] & {
+      margin-left: -1px;
+      margin-right: 0;
+    }
   }
   .add-on:first-child,
   .btn:first-child {
     // FYI, `.btn:first-child` accounts for a button group that's prepended
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    [dir="rtl"] & {
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
   }
 }
 
@@ -490,19 +530,32 @@ select:focus:invalid {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    [dir="rtl"] & {
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
     + .btn-group .btn:last-child {
       .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+      [dir="rtl"] & {
+        .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+      }
     }
   }
   .add-on,
   .btn,
   .btn-group {
     margin-left: -1px;
+    [dir="rtl"] & {
+      margin-right: -1px;
+      margin-left: 0;
+    }
   }
   .add-on:last-child,
   .btn:last-child,
   .btn-group:last-child > .dropdown-toggle {
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    [dir="rtl"] & {
+      .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    }
   }
 }
 
@@ -514,20 +567,35 @@ select:focus:invalid {
     .border-radius(0);
     + .btn-group .btn {
       .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+      [dir="rtl"] & {
+        .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+      }
     }
   }
   .add-on:first-child,
   .btn:first-child {
     margin-right: -1px;
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
+    [dir="rtl"] & {
+      margin-left: -1px;
+      margin-right: 0;
+      .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    }
   }
   .add-on:last-child,
   .btn:last-child {
     margin-left: -1px;
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
+    [dir="rtl"] & {
+      margin-right: -1px;
+      margin-left: 0;
+      .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);}
   }
   .btn-group:first-child {
     margin-left: 0;
+    [dir="rtl"] & {
+      margin-right: 0;
+    }
   }
 }
 
@@ -553,15 +621,27 @@ input.search-query {
 }
 .form-search .input-append .search-query {
   .border-radius(14px 0 0 14px);
+  [dir="rtl"] & {
+    .border-radius(0 14px 14px 0);
+  }
 }
 .form-search .input-append .btn {
   .border-radius(0 14px 14px 0);
+  [dir="rtl"] & {
+    .border-radius(14px 0 0 14px);
+  }
 }
 .form-search .input-prepend .search-query {
   .border-radius(0 14px 14px 0);
+  [dir="rtl"] & {
+    .border-radius(14px 0 0 14px);
+  }
 }
 .form-search .input-prepend .btn {
   .border-radius(14px 0 0 14px);
+  [dir="rtl"] & {
+    .border-radius(0 14px 14px 0);
+  }
 }
 
 
@@ -614,6 +694,9 @@ input.search-query {
   padding-left: 0;
   margin-bottom: 0;
   vertical-align: middle;
+  [dir="rtl"] & {
+    padding-right: 0;
+  }
 }
 // Remove float and margin, set to inline-block
 .form-search .radio input[type="radio"],
@@ -623,6 +706,11 @@ input.search-query {
   float: left;
   margin-right: 3px;
   margin-left: 0;
+  [dir="rtl"] & {
+    float: right;
+    margin-left: 3px;
+    margin-right: 0;
+  }
 }
 
 
@@ -652,6 +740,10 @@ legend + .control-group {
     width: @horizontalComponentOffset - 20;
     padding-top: 5px;
     text-align: right;
+    [dir="rtl"] & {
+      float: right;
+      text-align: left;
+    }
   }
   // Move over all input controls and content
   .controls {
@@ -661,8 +753,19 @@ legend + .control-group {
     *padding-left: 20px;
     margin-left: @horizontalComponentOffset;
     *margin-left: 0;
+    [dir="rtl"] & {
+      *padding-right: 20px;
+      margin-right: @horizontalComponentOffset;
+      *margin-right: 0;
+      *padding-left: 0;
+      margin-left: 0;
+    }
     &:first-child {
       *padding-left: @horizontalComponentOffset;
+      [dir="rtl"] & {
+        *padding-right: @horizontalComponentOffset;
+        *padding-left: 0;
+      }
     }
   }
   // Remove bottom margin on block level help text since that's accounted for on .control-group
@@ -683,5 +786,9 @@ legend + .control-group {
   // Move over buttons in .form-actions to align with .controls
   .form-actions {
     padding-left: @horizontalComponentOffset;
+    [dir="rtl"] & {
+      padding-right: @horizontalComponentOffset;
+      padding-left: 0;
+    }
   }
 }

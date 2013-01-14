@@ -13,6 +13,9 @@
   background-color: @warningBackground;
   border: 1px solid @warningBorder;
   .border-radius(@baseBorderRadius);
+  [dir="rtl"] & {
+    padding: 8px 14px 8px 35px;
+  }
 }
 .alert,
 .alert h4 {
@@ -29,6 +32,10 @@
   top: -2px;
   right: -21px;
   line-height: @baseLineHeight;
+  [dir="rtl"] & {
+    left: -21px;
+    right: auto;
+  }
 }
 
 

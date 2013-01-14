@@ -17,12 +17,23 @@
   // Thumbnails
   .thumbnails {
     margin-left: -@gridGutterWidth1200;
+    [dir="rtl"] & {
+      margin-right: -@gridGutterWidth1200;
+      margin-left: 0;
+    }
   }
   .thumbnails > li {
     margin-left: @gridGutterWidth1200;
+    [dir="rtl"] & {
+      margin-right: @gridGutterWidth1200;
+      margin-left: 0;
+    }
   }
   .row-fluid .thumbnails {
     margin-left: 0;
+    [dir="rtl"] & {
+      margin-right: 0;
+    }
   }
 
 }

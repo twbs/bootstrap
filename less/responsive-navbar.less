@@ -37,6 +37,9 @@
     padding-left: 10px;
     padding-right: 10px;
     margin: 0 0 0 -5px;
+    [dir="rtl"] & {
+      margin: 0 -5px 0 0;
+    }
   }
 
   // COLLAPSIBLE NAVBAR
@@ -102,6 +105,7 @@
     position: static;
     top: auto;
     left: auto;
+    right: auto;
     float: none;
     display: none;
     max-width: none;
@@ -148,6 +152,7 @@
   .navbar .nav-collapse .nav.pull-right {
     float: none;
     margin-left: 0;
+    margin-right: 0;
   }
   // Hide everything in the navbar save .brand and toggle button */
   .nav-collapse,

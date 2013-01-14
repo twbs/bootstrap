@@ -61,10 +61,22 @@
   &:first-child {
     *margin-left: 0;
   }
+  [dir="rtl"] & {
+    *margin-right: .3em;
+    *margin-left: 0;
+    
+    &:first-child {
+      *margin-right: 0;
+    }
+  }
 }
 
 .ie7-restore-right-whitespace() {
   *margin-right: .3em;
+  [dir="rtl"] & {
+    *margin-left: .3em;
+    *margin-right: 0;
+  }
 }
 
 // Sizing shortcuts
@@ -418,6 +430,15 @@
     background-image: linear-gradient(to right, @startColor, @endColor); // Standard, IE10
     background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down
+    
+    [dir="rtl"] & {
+      background-image: -moz-linear-gradient(right, @startColor, @endColor); // FF 3.6+
+      background-image: -webkit-gradient(right, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+      background-image: -webkit-linear-gradient(right, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+      background-image: -o-linear-gradient(right, @startColor, @endColor); // Opera 11.10
+      background-image: linear-gradient(to left, @startColor, @endColor); // Standard, IE10
+      filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@endColor),argb(@startColor))); // IE9 and down
+    }
   }
   .vertical(@startColor: #555, @endColor: #333) {
     background-color: mix(@startColor, @endColor, 60%);
@@ -436,6 +457,13 @@
     background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
     background-image: -o-linear-gradient(@deg, @startColor, @endColor); // Opera 11.10
     background-image: linear-gradient(@deg, @startColor, @endColor); // Standard, IE10
+    
+    [dir="rtl"] & {
+      background-image: -moz-linear-gradient(-@deg, @startColor, @endColor); // FF 3.6+
+      background-image: -webkit-linear-gradient(-@deg, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+      background-image: -o-linear-gradient(-@deg, @startColor, @endColor); // Opera 11.10
+      background-image: linear-gradient(-@deg, @startColor, @endColor); // Standard, IE10
+    }
   }
   .vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 50%, @endColor: #c3325f) {
     background-color: mix(@midColor, @endColor, 80%);
@@ -462,6 +490,14 @@
     background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
     background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
     background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    
+    [dir="rtl"] & {
+      background-image: -webkit-gradient(linear, 100% 0, 0 100%, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+      background-image: -webkit-linear-gradient(-@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+      background-image: -moz-linear-gradient(-@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+      background-image: -o-linear-gradient(-@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+      background-image: linear-gradient(-@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    }
   }
 }
 // Reset filters for IE
@@ -538,18 +574,30 @@
   float: none; // undo default grid column styles
   width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16; // 16 is total padding on left and right of table cells
   margin-left: 0; // undo default grid column styles
+  [dir="rtl"] & {
+    margin-right: 0;
+    float: none;
+  }
 }
-
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
 .makeRow() {
   margin-left: @gridGutterWidth * -1;
+  [dir="rtl"] & {
+    margin-right: @gridGutterWidth * -1;
+    margin-left: 0;
+  }
   .clearfix();
 }
 .makeColumn(@columns: 1, @offset: 0) {
   float: left;
   margin-left: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
   width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+  [dir="rtl"] & {
+    float: right;
+    margin-right: (@gridColumnWidth * @offset) + (@gridGutterWidth * (@offset - 1)) + (@gridGutterWidth * 2);
+    margin-left: 0;
+  }
 }
 
 // The Grid
@@ -571,6 +619,10 @@
 
     .offset (@columns) {
       margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+      [dir="rtl"] & {
+        margin-right: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns + 1));
+        margin-left: 0;
+      }
     }
 
     .span (@columns) {
@@ -579,6 +631,10 @@
 
     .row {
       margin-left: @gridGutterWidth * -1;
+      [dir="rtl"] & {
+        margin-right: @gridGutterWidth * -1;
+        margin-left: 0;
+      }
       .clearfix();
     }
 
@@ -586,6 +642,11 @@
       float: left;
       min-height: 1px; // prevent collapsing columns
       margin-left: @gridGutterWidth;
+      [dir="rtl"] & {
+        float: right;
+        margin-right: @gridGutterWidth;
+        margin-left: 0;
+      }
     }
 
     // Set the container width, and override it for fixed navbars in media queries
@@ -618,11 +679,21 @@
     .offset (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
   	  *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
+      [dir="rtl"] & {
+        margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth*2);
+    	  *margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + (@fluidGridGutterWidth*2) - (.5 / @gridRowWidth * 100 * 1%);
+        margin-left: 0;
+       }
     }
 
     .offsetFirstChild (@columns) {
       margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
       *margin-left: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+      [dir="rtl"] & {
+        margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) + (@fluidGridGutterWidth);
+        *margin-right: (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1)) - (.5 / @gridRowWidth * 100 * 1%) + @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+        margin-left: 0;
+       }
     }
 
     .span (@columns) {
@@ -638,14 +709,27 @@
         float: left;
         margin-left: @fluidGridGutterWidth;
         *margin-left: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+        [dir="rtl"] & {
+          float: right;
+          margin-right: @fluidGridGutterWidth;
+          *margin-right: @fluidGridGutterWidth - (.5 / @gridRowWidth * 100 * 1%);
+          margin-left: 0;
+        }
       }
       [class*="span"]:first-child {
         margin-left: 0;
+        [dir="rtl"] & {
+          margin-right: 0;
+        }
       }
 
       // Space grid-sized controls properly if multiple per line
       .controls-row [class*="span"] + [class*="span"] {
         margin-left: @fluidGridGutterWidth;
+        [dir="rtl"] & {
+          margin-right: @fluidGridGutterWidth;
+          margin-left: 0;
+        }
       }
 
       // generate .spanX and .offsetX
@@ -671,11 +755,18 @@
     textarea,
     .uneditable-input {
       margin-left: 0; // override margin-left from core grid system
+      [dir="rtl"] & {
+        margin-right: 0;
+      }
     }
 
     // Space grid-sized controls properly if multiple per line
     .controls-row [class*="span"] + [class*="span"] {
       margin-left: @gridGutterWidth;
+      [dir="rtl"] & {
+        margin-right: @gridGutterWidth;
+        margin-left: 0;
+      }
     }
 
     // generate .spanX

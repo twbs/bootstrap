@@ -17,6 +17,10 @@
 // Space out series of button groups
 .btn-group + .btn-group {
   margin-left: 5px;
+  [dir="rtl"] & {
+    margin-right: 5px;
+    margin-left: 0;
+  }
 }
 
 // Optional: Group multiple button groups together for a toolbar
@@ -28,6 +32,10 @@
   > .btn-group + .btn,
   > .btn + .btn-group {
     margin-left: 5px;
+    [dir="rtl"] & {
+      margin-right: 5px;
+      margin-left: 0;
+    }
   }
 }
 
@@ -38,6 +46,10 @@
 }
 .btn-group > .btn + .btn {
   margin-left: -1px;
+  [dir="rtl"] & {
+    margin-right: -1px;
+    margin-left: 0;
+  }
 }
 .btn-group > .btn,
 .btn-group > .dropdown-menu,
@@ -59,26 +71,50 @@
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
-  .border-top-left-radius(@baseBorderRadius);
-  .border-bottom-left-radius(@baseBorderRadius);
+  .border-left-radius(@baseBorderRadius);
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
 .btn-group > .dropdown-toggle {
-  .border-top-right-radius(@baseBorderRadius);
-  .border-bottom-right-radius(@baseBorderRadius);
+  .border-right-radius(@baseBorderRadius);
 }
 // Reset corners for large buttons
 .btn-group > .btn.large:first-child {
   margin-left: 0;
-  .border-top-left-radius(@borderRadiusLarge);
-  .border-bottom-left-radius(@borderRadiusLarge);
+  .border-left-radius(@borderRadiusLarge);
 }
 .btn-group > .btn.large:last-child,
 .btn-group > .large.dropdown-toggle {
-  .border-top-right-radius(@borderRadiusLarge);
-  .border-bottom-right-radius(@borderRadiusLarge);
+  .border-right-radius(@borderRadiusLarge);
 }
+
+[dir="rtl"] .btn-group {
+  > .btn {
+    .border-radius(0);
+  }
+  
+  > .btn:first-child {
+    margin-right: 0;
+    .border-right-radius(@baseBorderRadius);
+  }
+  
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-left-radius(@baseBorderRadius);
+  }
+  
+  > .btn.large:first-child {
+    margin-right: 0;
+    .border-right-radius(@borderRadiusLarge);
+  }
+  
+  > .btn.large:last-child,
+  > .btn-group > .large.dropdown-toggle {
+    .border-left-radius(@borderRadiusLarge);
+  }
+}
+
+
 
 // On hover/focus/active, bring the proper btn to front
 .btn-group > .btn:hover,
@@ -162,6 +198,9 @@
 .btn .caret {
   margin-top: 8px;
   margin-left: 0;
+  [dir="rtl"] & {
+    margin-right: 0;
+  }
 }
 // Carets in other button sizes
 .btn-mini .caret,
@@ -212,16 +251,36 @@
 .btn-group-vertical > .btn + .btn {
   margin-left: 0;
   margin-top: -1px;
+  [dir="rtl"] & {
+    margin-right: 0;
+  }
 }
 .btn-group-vertical > .btn:first-child {
-  .border-radius(@baseBorderRadius @baseBorderRadius 0 0);
+  .border-top-radius(@baseBorderRadius);
+  [dir="rtl"] & {
+    .border-top-radius(@borderRadiusLarge);
+    .border-bottom-radius(0);
+  }
 }
 .btn-group-vertical > .btn:last-child {
-  .border-radius(0 0 @baseBorderRadius @baseBorderRadius);
+  .border-bottom-radius(@baseBorderRadius);
+  [dir="rtl"] & {
+    .border-bottom-radius(@borderRadiusLarge);
+    .border-top-radius(0);
+  }
+
 }
 .btn-group-vertical > .btn-large:first-child {
-  .border-radius(@borderRadiusLarge @borderRadiusLarge 0 0);
+  .border-top-radius(@baseBorderRadius);
+  [dir="rtl"] & {
+    .border-top-radius(@borderRadiusLarge);
+    .border-bottom-radius(0);
+  }
 }
 .btn-group-vertical > .btn-large:last-child {
-  .border-radius(0 0 @borderRadiusLarge @borderRadiusLarge);
+  .border-bottom-radius(@baseBorderRadius);
+  [dir="rtl"] & {
+    .border-bottom-radius(@borderRadiusLarge);
+    .border-top-radius(0);
+  }
 }

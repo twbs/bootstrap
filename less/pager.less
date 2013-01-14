@@ -27,10 +27,16 @@
 .pager .next > a,
 .pager .next > span {
   float: right;
+  [dir="rtl"] & {
+    float: left;
+  }
 }
 .pager .previous > a,
 .pager .previous > span {
   float: left;
+  [dir="rtl"] & {
+    float: right;
+  }
 }
 .pager .disabled > a,
 .pager .disabled > a:hover,
