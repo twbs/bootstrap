@@ -5168,39 +5168,43 @@ a.badge:hover {
 }
 
 @media (max-width: 767px) {
-  .row-off-canvas {
+  .row-offcanvas {
     position: relative;
     overflow: hidden;
+    -webkit-transition: all 0.25s ease-out;
+       -moz-transition: all 0.25s ease-out;
+         -o-transition: all 0.25s ease-out;
+            transition: all 0.25s ease-out;
   }
-  .row-off-canvas.active {
+  .row-offcanvas.active {
     overflow: visible;
   }
-  .row-off-canvas-right.active {
+  .row-offcanvas-right.active {
     right: 336px;
   }
-  .sidebar-off-canvas {
+  .sidebar-offcanvas {
     position: absolute;
     top: 0;
     width: 336px;
   }
-  .sidebar-off-canvas-right {
+  .sidebar-offcanvas-right {
     right: -336px;
   }
 }
 
 @media (max-width: 480px) {
-  .row-off-canvas.active {
+  .row-offcanvas.active {
     overflow: visible;
   }
-  .row-off-canvas-right.active {
+  .row-offcanvas-right.active {
     right: 210px;
   }
-  .sidebar-off-canvas {
+  .sidebar-offcanvas {
     position: absolute;
     top: 0;
     width: 210px;
   }
-  .sidebar-off-canvas-right {
+  .sidebar-offcanvas-right {
     right: -210px;
   }
 }

@@ -7,25 +7,25 @@
 // -----------------
 @media (max-width: 767px) {
 
-  .row-off-canvas {
+  .row-offcanvas {
     position: relative;
     overflow: hidden;
-    //transition disabled due to an infinite loop happening 
+    //FIXME! infinite loop happening
     //in Chrome at 767px - x, where 0<x<@grid-column-width-768 * 8
-    //.transition(all 0.25s ease-out);
+    .transition(all 0.25s ease-out);
   }
-  .row-off-canvas.active {
+  .row-offcanvas.active {
     overflow: visible;
   }
-  .row-off-canvas-right.active {
+  .row-offcanvas-right.active {
     right: @grid-column-width-768 * 8;
   }
-  .sidebar-off-canvas {
+  .sidebar-offcanvas {
     position: absolute;
     top: 0;
     width: @grid-column-width-768 * 8;
   }
-  .sidebar-off-canvas-right {
+  .sidebar-offcanvas-right {
     right: -@grid-column-width-768 * 8;
   }
 
@@ -36,18 +36,18 @@
 
 @media (max-width: 480px) {
 
-  .row-off-canvas.active {
+  .row-offcanvas.active {
     overflow: visible;
   }
-  .row-off-canvas-right.active {
+  .row-offcanvas-right.active {
     right: @grid-column-width-768 * 5;
   }
-  .sidebar-off-canvas {
+  .sidebar-offcanvas {
     position: absolute;
     top: 0;
     width: @grid-column-width-768 * 5;
   }
-  .sidebar-off-canvas-right {
+  .sidebar-offcanvas-right {
     right: -@grid-column-width-768 * 5;
   }
 
