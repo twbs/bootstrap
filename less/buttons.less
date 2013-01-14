@@ -9,22 +9,23 @@
 // Core styles
 .btn {
   display: inline-block;
-  padding: 6px 13px;
+  padding: 6px 12px;
   margin-bottom: 0; // For input.btn
   font-size: @font-size-base;
+  font-weight: bold;
   line-height: @line-height-base;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: 1px solid @btn-border;
   border-radius: @border-radius-base;
-  .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
 
   &:focus {
     .tab-focus();
   }
 
   &:hover {
+    color: #fff;
     text-decoration: none;
   }
 
@@ -32,7 +33,7 @@
   &.active {
     outline: 0;
     background-image: none;
-    .box-shadow(~"inset 0 3px 5px rgba(0,0,0,.125), 0 1px 0 rgba(255,255,255,.1)");
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 
   &.disabled,
@@ -114,23 +115,58 @@ input[type="button"] {
 // --------------------------------------------------
 
 .btn {
-  .buttonBackground(@btn-background, @btn-background-highlight, @gray, 0 1px 0 rgba(255,255,255,.75));
+  color: #fff;
+  background-color: @btn-background;
+  border-color: @btn-border;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(@btn-background, 5%);
+        border-color: darken(@btn-border, 10%);
+  }
 }
-// Primary appears as blue
 .btn-primary {
-  .buttonBackground(@btn-background-primary, @btn-background-primary-highlight);
+  background-color: @btn-background-primary;
+      border-color: @btn-border-primary;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(@btn-background-primary, 5%);
+        border-color: darken(@btn-border-primary, 10%);
+  }
 }
 // Warning appears are orange
 .btn-warning {
-  .buttonBackground(@btn-background-warning, @btn-background-warning-highlight);
+  background-color: @btn-background-warning;
+      border-color: @btn-border-warning;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(@btn-background-warning, 5%);
+        border-color: darken(@btn-border-warning, 10%);
+  }
 }
 // Danger and error appear as red
 .btn-danger {
-  .buttonBackground(@btn-background-danger, @btn-background-danger-highlight);
+  background-color: @btn-background-danger;
+      border-color: @btn-border-danger;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(@btn-background-danger, 5%);
+        border-color: darken(@btn-border-danger, 10%);
+  }
 }
 // Success appears as green
 .btn-success {
-  .buttonBackground(@btn-background-success, @btn-background-success-highlight);
+  background-color: @btn-background-success;
+      border-color: @btn-border-success;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(@btn-background-success, 5%);
+        border-color: darken(@btn-border-success, 10%);
+  }
 }
 
 
@@ -146,10 +182,15 @@ fieldset[disabled] .btn-link {
   background-image: none;
   .box-shadow(none);
 }
-.btn-link {
+.btn-link,
+.btn-link:hover,
+.btn-link:active {
   border-color: transparent;
-  cursor: pointer;
+}
+.btn-link {
   color: @link-color;
+  font-weight: normal;
+  cursor: pointer;
   border-radius: 0;
 }
 .btn-link:hover {
