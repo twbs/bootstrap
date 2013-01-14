@@ -37,6 +37,38 @@ $(function () {
         ok($._data($menu[0], 'events').click, 'has a click')
       })
 
+      test("should not destroy inner content with complex menus", function () {
+        var $input = $('<input />')
+            .appendTo('body')
+            .typeahead({
+              source: ['aa', 'ab', 'ac'],
+              menu: '<div class="typeahead"><ul class="dropdown-menu"></ul></div>'
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        equals(typeahead.$menu.find('.dropdown-menu').length, 1, 'inner content is not destroyed')
+        equals(typeahead.$menu.find('.dropdown-menu li').length, 3, 'has 3 items in the dropdown menu')
+      })
+
+      test("should not change the position of the typeahead if it already has a parent", function () {
+        var $input = $('<input />')
+            .appendTo('body')
+            .typeahead({
+              source: ['aa', 'ab', 'ac'],
+              menu: $('<div class="typeahead"><ul class="dropdown-menu"></ul></div>')
+                .appendTo($('<div class="fixed-parent"></div>').appendTo('body'))
+            })
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        equals(typeahead.$menu.parent('.fixed-parent').length, 1, 'is still in the original parent')
+      })
+
       test("should show menu when query entered", function () {
         var $input = $('<input />')
             .appendTo('body')
