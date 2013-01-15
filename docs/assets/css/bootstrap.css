@@ -714,6 +714,18 @@ a.text-success:hover {
   color: #356635;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
 h1,
 h2,
 h3,
@@ -4387,7 +4399,9 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .btn-group .btn,
 .navbar .input-prepend .btn,
-.navbar .input-append .btn {
+.navbar .input-append .btn,
+.navbar .input-prepend .btn-group,
+.navbar .input-append .btn-group {
   margin-top: 0;
 }
 
