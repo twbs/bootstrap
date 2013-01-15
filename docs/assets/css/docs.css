@@ -19,14 +19,19 @@ body {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1.5;
-  color: #333;
+  color: #3a3a3a;
 }
 p {
-  margin: 15px 0;
+  margin: 0 0 10px;
 }
 .lead {
-  font-size: 2rem;
-  font-size: 20px;
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+.page-header {
+  margin-top: 30px;
+  margin-bottom: 19px;
+  border-bottom: 1px solid #ddd;
 }
 
 
@@ -42,7 +47,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 1rem 0;
+  margin: 20px 0 10px;
   color: inherit;
   font-family: inherit;
   font-weight: 500;
@@ -76,10 +81,8 @@ h4 {
 h5 {
   font-size: 16px;
   font-size: 1.6rem;
-  margin-bottom: 1.5em;
 }
 h6 {
-  margin-bottom: 1.5em;
   font-weight: normal;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -95,6 +98,23 @@ ol {
 li ul,
 li ol {
   margin-bottom: 0;
+}
+
+hr {
+  margin: 20px 0 19px;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+pre, code {
+  color: #c7254e;
+}
+code {
+  padding: 1px 3px;
+  font-size: 90%;
+  white-space: nowrap;
+  border-radius: 3px;
+  background-color: #f9f2f4;
 }
 
 
@@ -128,9 +148,39 @@ a:hover {
   display: block;
 }
 .nav > li > a {
+  position: relative;
   display: block;
   padding: 10px 15px;
 }
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+
+.nav-list > li > a {
+  margin-bottom: -1px; /* tuck up the following item to make 1px border */
+  border: 1px solid #ddd;
+}
+.nav-list > li:first-child > a {
+   border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.nav-list > li:last-child > a {
+  margin-bottom: 0; /* undo the tuck */
+   border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.nav-list > .active > a,
+.nav-list > .active > a:hover {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #428bca;
+  z-index: 2; /* Bring active item forward so border sits on top of next element */
+}
+
+
+
 
 
 .navbar {
@@ -141,10 +191,11 @@ a:hover {
 
 .navbar .brand {
   display: inline-block;
-  padding: 4px 15px;
+  padding: 7px 15px;
   font-size: 1.8rem;
   font-size: 18px;
   font-weight: bold;
+  line-height: 1;
 }
 .navbar .brand:hover {
   text-decoration: none;
@@ -155,9 +206,9 @@ a:hover {
   margin-top: 15px; /* space out from .navbar .brand and .btn-navbar */
 }
 .navbar .nav > li > a {
+  line-height: 20px;
 }
 .navbar .nav > li > a:hover {
-  text-decoration: none;
   background-color: #ddd;
 }
 .navbar .nav > .active > a {
@@ -166,21 +217,20 @@ a:hover {
 
 .btn-navbar {
   float: right;
-  margin-top: 3px;
-  padding: 8px 10px;
+  padding: 10px 12px;
   background-color: #ddd;
   border: 0;
   border-radius: 4px;
 }
 .btn-navbar .icon-bar {
   display: block;
-  width: 18px;
-  height: 3px;
+  width: 20px;
+  height: 2px;
   background-color: #fff;
   border-radius: 1px;
 }
 .btn-navbar .icon-bar + .icon-bar {
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 
@@ -204,6 +254,22 @@ a:hover {
 }
 .navbar-inverse .btn-navbar {
   background-color: #444;
+}
+
+
+
+
+
+
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+  overflow: hidden; /* clearfix */
+}
+[class^="span"] {
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-sizing: border-box;
 }
 
 
@@ -232,14 +298,30 @@ a:hover {
   h5 {  }
   h6 {  }
 
+  [class^="span"] {
+    float: left;
+  }
+
+  .span1 { width: 8.3333333%; }
+  .span2 { width: 16.6666667%; }
+  .span3 { width: 25%; }
+  .span4 { width: 33.3333333%; }
+  .span5 { width: 41.666666667%; }
+  .span6 { width: 50%; }
+  .span7 { width: 58.333333333%; }
+  .span8 { width: 66.666666667%; }
+  .span9 { width: 75%; }
+  .span10 { width: 83.333333333%; }
+  .span11 { width: 91.666666667%; }
+
 }
 @media screen and (min-width: 992px) {
 
-  body {
+/*  body {
     font-size: 1.6rem;
     font-size: 16px;
   }
-
+*/
   .container {
     width: 940px;
     margin-left: auto;
@@ -252,8 +334,9 @@ a:hover {
   }
   .navbar .brand {
     float: left;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    margin-left: -15px;
   }
   .navbar .nav {
     overflow: hidden; /* clearfix */
@@ -272,6 +355,7 @@ a:hover {
     display: none;
   }
   .nav-collapse.collapse {
+    float: left;
     height: auto !important;
     overflow: visible !important;
   }
@@ -296,11 +380,39 @@ body > .container {
 ------------------------- */
 .bs-docs-jumbotron {
   position: relative;
-  padding: 15px;
+  margin-bottom: 20px;
+  padding: 30px 15px;
   color: #fff;
   background-color: #b94a48;
 }
 .bs-docs-jumbotron h1 {
+  margin: 0;
 }
 .bs-docs-jumbotron p {
+  margin-bottom: 0;
 }
+
+
+
+
+.bs-docs-example {
+  border: 1px solid #ddd;
+  padding: 14px;
+  margin-bottom: -1px;
+}
+.bs-docs-example + .prettyprint {
+  margin-top: 0;
+}
+
+
+
+
+
+.show-grid [class^="span"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+
+
