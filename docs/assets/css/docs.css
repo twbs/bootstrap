@@ -1,0 +1,306 @@
+
+
+
+/* Page =================================================== */
+html {
+  background-color: #fff;
+  font-size: 62.5%;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: transparent;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #333;
+}
+p {
+  margin: 15px 0;
+}
+.lead {
+  font-size: 2rem;
+  font-size: 20px;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+
+/* Typography =================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1rem 0;
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  text-rendering: optimizelegibility;
+}
+h1 small,
+h2 small {
+  font-weight: normal;
+  color: #bfbfbf;
+}
+h1 {
+  font-size: 40px;
+  font-size: 4rem;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 30px;
+  font-size: 3rem;
+  line-height: 1.2;
+}
+h3 {
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+h4 {
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 1.25;
+}
+h5 {
+  font-size: 16px;
+  font-size: 1.6rem;
+  margin-bottom: 1.5em;
+}
+h6 {
+  margin-bottom: 1.5em;
+  font-weight: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+small {
+  font-size: 80%;
+}
+ul,
+ol {
+  margin: 0 0 .5em;
+  padding: 0 0 0 28px;
+}
+li ul,
+li ol {
+  margin-bottom: 0;
+}
+
+
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+.collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+.collapse.in {
+  height: auto;
+}
+
+
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0; /* override default ul/ol */
+  overflow: hidden; /* clearfix */
+}
+.nav > li {
+  display: block;
+}
+.nav > li > a {
+  display: block;
+  padding: 10px 15px;
+}
+
+
+.navbar {
+  padding: 15px;
+  background-color: #eee;
+  overflow: hidden; /* clearfix */
+}
+
+.navbar .brand {
+  display: inline-block;
+  padding: 4px 15px;
+  font-size: 1.8rem;
+  font-size: 18px;
+  font-weight: bold;
+}
+.navbar .brand:hover {
+  text-decoration: none;
+  background-color: #ddd;
+}
+
+.navbar .nav {
+  margin-top: 15px; /* space out from .navbar .brand and .btn-navbar */
+}
+.navbar .nav > li > a {
+}
+.navbar .nav > li > a:hover {
+  text-decoration: none;
+  background-color: #ddd;
+}
+.navbar .nav > .active > a {
+  background-color: #ddd;
+}
+
+.btn-navbar {
+  float: right;
+  margin-top: 3px;
+  padding: 8px 10px;
+  background-color: #ddd;
+  border: 0;
+  border-radius: 4px;
+}
+.btn-navbar .icon-bar {
+  display: block;
+  width: 18px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 1px;
+}
+.btn-navbar .icon-bar + .icon-bar {
+  margin-top: 2px;
+}
+
+
+.navbar-inverse {
+  background-color: #222;
+}
+.navbar-inverse .brand {
+  color: #fff;
+}
+.navbar-inverse .brand:hover {
+  background-color: #333;
+}
+.navbar-inverse .nav > li > a {
+  color: #fff;
+}
+.navbar-inverse .nav > li > a:hover {
+  background-color: #333;
+}
+.navbar .nav > .active > a {
+  background-color: #333;
+}
+.navbar-inverse .btn-navbar {
+  background-color: #444;
+}
+
+
+
+/* Disable iOS/WinMobile font size changes */
+@media screen and (max-device-width: 480px) {
+  html {
+    -ms-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+  }
+}
+
+
+@media screen and (min-width: 480px) {
+
+}
+@media screen and (min-width: 600px) {
+
+}
+@media screen and (min-width: 768px) {
+
+  h1 {  }
+  h2 {  }
+  h3 {  }
+  h4 {  }
+  h5 {  }
+  h6 {  }
+
+}
+@media screen and (min-width: 992px) {
+
+  body {
+    font-size: 1.6rem;
+    font-size: 16px;
+  }
+
+  .container {
+    width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .navbar .brand {
+    float: left;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  .navbar .nav {
+    overflow: hidden; /* clearfix */
+    margin-top: 0; /* undo top margin to make nav extend full height of navbar */
+  }
+  .navbar .nav > li {
+    float: left;
+  }
+  .navbar .nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* Required to make the collapsing navbar work on regular desktops */
+  .navbar .btn-navbar {
+    display: none;
+  }
+  .nav-collapse.collapse {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+}
+@media screen and (min-width: 1382px) {
+
+}
+
+
+/* Docs =================================================== */
+
+body > .container {
+  padding-left:  15px;
+  padding-right: 15px;
+}
+
+/* Jumbotrons
+-------------------------------------------------- */
+
+/* Base class
+------------------------- */
+.bs-docs-jumbotron {
+  position: relative;
+  padding: 15px;
+  color: #fff;
+  background-color: #b94a48;
+}
+.bs-docs-jumbotron h1 {
+}
+.bs-docs-jumbotron p {
+}
