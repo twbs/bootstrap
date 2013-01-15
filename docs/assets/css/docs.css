@@ -110,8 +110,7 @@ pre, code {
   color: #c7254e;
 }
 code {
-  padding: 1px 3px;
-  font-size: 90%;
+  padding: 2px 4px;
   white-space: nowrap;
   border-radius: 3px;
   background-color: #f9f2f4;
@@ -402,6 +401,9 @@ body > .container {
 }
 .bs-docs-example + .prettyprint {
   margin-top: 0;
+}
+.prettyprint .linenums {
+  margin-left: 0;
 }
 
 
