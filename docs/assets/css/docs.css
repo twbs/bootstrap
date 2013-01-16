@@ -49,6 +49,7 @@ section > ul li {
   margin-bottom: 20px;
   padding: 30px 15px;
   color: #fff;
+  text-align: center;
   background-color: #b94a48;
 }
 .bs-docs-jumbotron h1 {
@@ -86,8 +87,6 @@ section > ul li {
 ------------------------- */
 .masthead {
   /*padding: 70px 0 80px;*/
-  color: #fff;
-  text-align: center;
 }
 .masthead h1 {
   /*font-size: 120px;*/
@@ -109,21 +108,6 @@ section > ul li {
   display: inline;
   padding: 0 10px;
   color: rgba(255,255,255,.25);
-}
-
-/* Subhead (other pages)
-------------------------- */
-.subhead {
-  text-align: left;
-}
-.subhead h1 {
-  font-size: 60px;
-}
-.subhead p {
-  margin-bottom: 20px;
-}
-.subhead .navbar {
-  display: none;
 }
 
 
@@ -180,7 +164,7 @@ section > ul li {
 /* Base class */
 .bs-docs-example {
   position: relative;
-  padding: 14px;
+  padding: 39px 14px 14px;
   margin-bottom: -1px;
   border: 1px solid #ddd;
 }
@@ -207,9 +191,10 @@ section > ul li {
 }
 
 /* Tweak content of examples for optimum awesome */
-.bs-docs-example p:last-child,
-.bs-docs-example ul:last-child,
-.bs-docs-example ol:last-child {
+.bs-docs-example > p:last-child,
+.bs-docs-example > ul:last-child,
+.bs-docs-example > ol:last-child,
+.bs-docs-example > blockquote:last-child {
   margin-bottom: 0;
 }
 
