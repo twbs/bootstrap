@@ -406,7 +406,6 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 10px 0;
   font-family: inherit;
   font-weight: 500;
   line-height: 20px;
@@ -427,7 +426,16 @@ h6 small {
 h1,
 h2,
 h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
   line-height: 40px;
+}
+
+h4,
+h5,
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h1 {
@@ -472,7 +480,7 @@ h4 small {
 
 .page-header {
   padding-bottom: 9px;
-  margin: 20px 0 30px;
+  margin: 40px 0 20px;
   border-bottom: 1px solid #eeeeee;
 }
 

@@ -49,7 +49,6 @@ a.text-success:hover { color: darken(@state-success-text, 10%); }
 // -------------------------
 
 h1, h2, h3, h4, h5, h6 {
-  margin: (@line-height-base / 2) 0;
   font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @line-height-base;
@@ -63,7 +62,17 @@ h1, h2, h3, h4, h5, h6 {
 
 h1,
 h2,
-h3 { line-height: @line-height-base * 2; }
+h3 {
+  margin-top: @line-height-base;
+  margin-bottom: @line-height-base / 2;
+  line-height: @line-height-base * 2;
+}
+h4,
+h5,
+h6 {
+  margin-top: @line-height-base / 2;
+  margin-bottom: @line-height-base / 2;
+}
 
 h1 { font-size: @font-size-base * 2.75; } // ~38px
 h2 { font-size: @font-size-base * 2.25; } // ~32px
@@ -83,7 +92,7 @@ h4 small { font-size: @font-size-base; }
 
 .page-header {
   padding-bottom: (@line-height-base / 2) - 1;
-  margin: @line-height-base 0 (@line-height-base * 1.5);
+  margin: (@line-height-base * 2) 0 @line-height-base;
   border-bottom: 1px solid @grayLighter;
 }
 
