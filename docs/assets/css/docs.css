@@ -169,9 +169,14 @@ section > ul li {
 }
 .bs-docs-sidenav.affix {
   position: static;
-  width: auto;
   top: 0;
 }
+.bs-docs-sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
+
 
 /* Chevrons within each link */
 .bs-docs-sidenav .glyphicon-chevron-right {
@@ -192,20 +197,18 @@ section > ul li {
 
 /* Affix all the things, and set widths because they're positioned, depending on viewport size */
 @media screen and (min-width: 768px) {
+  /* From here, start to affix the nav because we keep columns here */
   .bs-docs-sidenav.affix {
     position: fixed;
     top: 10px;
-    width: 170px;
   }
-  .bs-docs-sidenav.affix-bottom {
-    position: absolute;
-    top: auto;
-    bottom: 270px;
+  .bs-docs-sidenav {
+    width: 189px;
   }
 }
 
 @media screen and (min-width: 992px) {
-  .bs-docs-sidenav.affix {
+  .bs-docs-sidenav {
     width: 220px;
   }
 }
@@ -256,6 +259,40 @@ section > ul li {
 .bs-docs-example > input:last-child,
 .bs-docs-example > select:last-child,
 .bs-docs-example > textarea:last-child {
+  margin-bottom: 0;
+}
+
+/* Navbar examples */
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  height: 90px;
+  overflow: hidden; /* cut the drop shadows off */
+}
+.bs-navbar-top-example .navbar-fixed-top,
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  margin-left: 0;
+  margin-right: 0;
+}
+.bs-navbar-top-example {
+  -webkit-border-radius: 0 0 4px 4px;
+     -moz-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+}
+.bs-navbar-top-example:after {
+  top: auto;
+  bottom: -1px;
+  -webkit-border-radius: 0 4px 0 4px;
+     -moz-border-radius: 0 4px 0 4px;
+          border-radius: 0 4px 0 4px;
+}
+.bs-navbar-bottom-example {
+  -webkit-border-radius: 4px 4px 0 0;
+     -moz-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+.bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
 }
 

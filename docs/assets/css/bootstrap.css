@@ -4705,7 +4705,7 @@ a.badge:hover {
   
   }
   .container {
-    width: 940px;
+    max-width: 940px;
     margin-right: auto;
     margin-left: auto;
   }
