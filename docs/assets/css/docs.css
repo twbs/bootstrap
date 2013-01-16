@@ -197,7 +197,10 @@ section > ul li {
 .bs-docs-example > ul:last-child,
 .bs-docs-example > ol:last-child,
 .bs-docs-example > blockquote:last-child,
-.bs-docs-example > .table:last-child {
+.bs-docs-example > .table:last-child,
+.bs-docs-example > input:last-child,
+.bs-docs-example > select:last-child,
+.bs-docs-example > textarea:last-child {
   margin-bottom: 0;
 }
 
