@@ -213,6 +213,11 @@ section > ul li {
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .bs-docs-sidenav {
+    width: 260px;
+  }
+}
 
 
 

@@ -88,8 +88,6 @@
 */
   .container {
     max-width: 940px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .navbar {
@@ -122,6 +120,19 @@
     float: left;
     height: auto !important;
     overflow: visible !important;
+  }
+
+}
+
+// Responsive: Large desktops and up
+@media screen and (min-width: 1200px) {
+
+  .container {
+    max-width: 1170px;
+  }
+  [class^="span"] {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
 }

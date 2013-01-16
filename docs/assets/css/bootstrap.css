@@ -688,7 +688,6 @@ pre code {
 }
 
 .container {
-  max-width: 940px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -4706,8 +4705,6 @@ a.badge:hover {
   }
   .container {
     max-width: 940px;
-    margin-right: auto;
-    margin-left: auto;
   }
   .navbar {
     padding-top: 0;
@@ -4737,6 +4734,16 @@ a.badge:hover {
     float: left;
     height: auto !important;
     overflow: visible !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+  [class^="span"] {
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 
