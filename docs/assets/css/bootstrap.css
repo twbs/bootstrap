@@ -4589,9 +4589,9 @@ a.badge:hover {
 }
 
 .jumbotron {
-  padding: 60px;
+  padding: 30px;
   margin-bottom: 30px;
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 200;
   line-height: 30px;
   color: inherit;
@@ -4600,15 +4600,21 @@ a.badge:hover {
 }
 
 .jumbotron h1 {
-  margin-bottom: 0;
-  font-size: 60px;
   line-height: 1;
-  letter-spacing: -1px;
   color: inherit;
 }
 
-.jumbotron li {
-  line-height: 30px;
+.jumbotron p {
+  line-height: 1.4;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding: 50px 60px;
+  }
+  .jumbotron h1 {
+    font-size: 60px;
+  }
 }
 
 .clearfix:before,
