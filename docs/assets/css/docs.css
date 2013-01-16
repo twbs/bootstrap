@@ -157,6 +157,39 @@ section > ul li {
 
 
 
+/* Sidenav
+-------------------------------------------------- */
+
+.bs-docs-sidenav {
+  width: 218px;
+  margin: 20px 0 0;
+}
+/* Chevrons */
+.bs-docs-sidenav .glyphicon-chevron-right {
+  float: right;
+  margin-top: 1px;
+  margin-right: -6px;
+  opacity: .25;
+  color: #000;
+}
+.bs-docs-sidenav a:hover .glyphicon-chevron-right {
+  opacity: .5;
+}
+.bs-docs-sidenav .active .glyphicon-chevron-right,
+.bs-docs-sidenav .active a:hover .glyphicon-chevron-right {
+  color: #fff;
+  opacity: 1;
+}
+.bs-docs-sidenav.affix {
+  top: 10px;
+}
+.bs-docs-sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
+
+
 
 /* Bootstrap code examples
 -------------------------------------------------- */
