@@ -160,11 +160,20 @@ section > ul li {
 /* Sidenav
 -------------------------------------------------- */
 
+/* Base styles are not affixable given mobile-first */
 .bs-docs-sidenav {
-  width: 218px;
   margin: 20px 0 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
-/* Chevrons */
+.bs-docs-sidenav.affix {
+  position: static;
+  width: auto;
+  top: 0;
+}
+
+/* Chevrons within each link */
 .bs-docs-sidenav .glyphicon-chevron-right {
   float: right;
   margin-top: 1px;
@@ -180,14 +189,27 @@ section > ul li {
   color: #fff;
   opacity: 1;
 }
-.bs-docs-sidenav.affix {
-  top: 10px;
+
+/* Affix all the things, and set widths because they're positioned, depending on viewport size */
+@media screen and (min-width: 768px) {
+  .bs-docs-sidenav.affix {
+    position: fixed;
+    top: 10px;
+    width: 170px;
+  }
+  .bs-docs-sidenav.affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 270px;
+  }
 }
-.bs-docs-sidenav.affix-bottom {
-  position: absolute;
-  top: auto;
-  bottom: 270px;
+
+@media screen and (min-width: 992px) {
+  .bs-docs-sidenav.affix {
+    width: 220px;
+  }
 }
+
 
 
 
