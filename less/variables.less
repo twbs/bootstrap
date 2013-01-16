@@ -154,34 +154,30 @@
 @navbar-collapse-width-desktop:    @navbar-collapse-width + 1;
 
 @navbar-height:                    44px;
-@navbar-background-highlight:      #ffffff;
-@navbar-background:                darken(@navbar-background-highlight, 5%);
-@navbar-border:                    darken(@navbar-background, 12%);
+@navbar-bg:                        #eee;
 
 @navbar-text:                      #777;
 @navbar-link-color:                #777;
 @navbar-link-color-hover:          @grayDark;
 @navbar-link-color-active:         @gray;
-@navbar-link-background-hover:     transparent;
-@navbar-link-background-active:    darken(@navbar-background, 5%);
+@navbar-link-bg-hover:             transparent;
+@navbar-link-bg-active:            darken(@navbar-bg, 5%);
 
 @navbar-brand-color:               @navbar-link-color;
 
 // Inverted navbar
-@navbar-inverse-background:                #222;
-@navbar-inverse-background-highlight:      #222222;
-@navbar-inverse-border:                    #111111;
+@navbar-inverse-bg:                         #222;
 
 @navbar-inverse-text:                      @grayLight;
 @navbar-inverse-link-color:                @grayLight;
 @navbar-inverse-link-color-hover:          #fff;
 @navbar-inverse-link-color-active:         @navbar-inverse-link-color-hover;
-@navbar-inverse-link-background-hover:     transparent;
-@navbar-inverse-link-background-active:    @navbar-inverse-background;
+@navbar-inverse-link-bg-hover:             transparent;
+@navbar-inverse-link-bg-active:            @navbar-inverse-bg;
 
-@navbar-inverse-search-background:         lighten(@navbar-inverse-background, 25%);
+@navbar-inverse-search-background:         lighten(@navbar-inverse-bg, 25%);
 @navbar-inverse-search-background-focus:   #fff;
-@navbar-inverse-search-border:             @navbar-inverse-background;
+@navbar-inverse-search-border:             @navbar-inverse-bg;
 @navbar-inverse-search-placeholder-color:  #ccc;
 
 @navbar-inverse-brand-color:               @navbar-inverse-link-color;

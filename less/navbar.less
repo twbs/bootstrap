@@ -5,7 +5,7 @@
 // Wrapper and base class
 .navbar {
   padding: 15px;
-  background-color: #eee;
+  background-color: @navbar-bg;
   .clear_float();
 }
 
@@ -16,6 +16,7 @@
   font-size: 18px;
   font-weight: bold;
   line-height: 1;
+  color: @navbar-brand-color;
   &:hover {
     text-decoration: none;
     background-color: #ddd;
@@ -49,19 +50,25 @@
     margin-top: 15px; // space out from .navbar .brand and .btn-navbar
   }
   .nav > li > a {
+    color: @navbar-link-color;
     line-height: 20px;
   }
-  .nav > li > a:hover {
-    background-color: #ddd;
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    color: @navbar-link-color-hover;
+    background-color: @navbar-link-bg-hover;
   }
-  .nav > .active > a {
-    background-color: #ddd;
+  .nav > .active > a,
+  .nav > .active > a:hover,
+  .nav > .active > a:focus {
+    color: @navbar-link-color-active;
+    background-color: @navbar-link-bg-active;
   }
 }
 
 // Inverse navbar
 .navbar-inverse {
-  background-color: #222;
+    background-color: @navbar-inverse-bg;
 
   .brand {
     color: #fff;
@@ -70,13 +77,18 @@
     }
   }
   .nav > li > a {
-    color: #fff;
+    color: @navbar-inverse-link-color;
   }
-  .nav > li > a:hover {
-    background-color: #333;
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    color: @navbar-inverse-link-color-hover;
+    background-color: @navbar-inverse-link-bg-hover;
   }
-  .nav > .active > a {
-    background-color: #333;
+  .nav > .active > a,
+  .nav > .active > a:hover,
+  .nav > .active > a:focus {
+    color: @navbar-inverse-link-color-active;
+    background-color: @navbar-inverse-link-bg-active;
   }
   .btn-navbar {
     background-color: #444;

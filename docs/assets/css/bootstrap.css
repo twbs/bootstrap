@@ -2867,7 +2867,7 @@ button.close {
 
 .navbar {
   padding: 15px;
-  background-color: #eee;
+  background-color: #eeeeee;
 }
 
 .navbar:before,
@@ -2886,6 +2886,7 @@ button.close {
   font-size: 18px;
   font-weight: bold;
   line-height: 1;
+  color: #777777;
 }
 
 .navbar .brand:hover {
@@ -2919,18 +2920,24 @@ button.close {
 
 .navbar .nav > li > a {
   line-height: 20px;
+  color: #777777;
 }
 
-.navbar .nav > li > a:hover {
-  background-color: #ddd;
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a:focus {
+  color: #333333;
+  background-color: transparent;
 }
 
-.navbar .nav > .active > a {
-  background-color: #ddd;
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  color: #555555;
+  background-color: #e1e1e1;
 }
 
 .navbar-inverse {
-  background-color: #222;
+  background-color: #222222;
 }
 
 .navbar-inverse .brand {
@@ -2942,15 +2949,20 @@ button.close {
 }
 
 .navbar-inverse .nav > li > a {
-  color: #fff;
+  color: #999999;
 }
 
-.navbar-inverse .nav > li > a:hover {
-  background-color: #333;
+.navbar-inverse .nav > li > a:hover,
+.navbar-inverse .nav > li > a:focus {
+  color: #ffffff;
+  background-color: transparent;
 }
 
-.navbar-inverse .nav > .active > a {
-  background-color: #333;
+.navbar-inverse .nav > .active > a,
+.navbar-inverse .nav > .active > a:hover,
+.navbar-inverse .nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #222222;
 }
 
 .navbar-inverse .btn-navbar {
