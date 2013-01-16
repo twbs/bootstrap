@@ -337,7 +337,7 @@ p {
   margin-bottom: 20px;
   font-size: 21px;
   font-weight: 200;
-  line-height: 30px;
+  line-height: 1.25;
 }
 
 small {
@@ -440,26 +440,32 @@ h6 {
 
 h1 {
   font-size: 38.5px;
+  font-size: 4rem;
 }
 
 h2 {
   font-size: 31.5px;
+  font-size: 3rem;
 }
 
 h3 {
   font-size: 24.5px;
+  font-size: 2.5rem;
 }
 
 h4 {
   font-size: 17.5px;
+  font-size: 2rem;
 }
 
 h5 {
   font-size: 14px;
+  font-size: 1.6rem;
 }
 
 h6 {
   font-size: 11.9px;
+  font-size: 1.2rem;
 }
 
 h1 small {
@@ -729,7 +735,7 @@ pre code {
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 20px;
   text-align: center;
   vertical-align: middle;

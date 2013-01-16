@@ -1,18 +1,49 @@
+/*
+ * Bootstrap Documentation
+ * Special styles for presenting Bootstrap's documentation and code examples.
+ */
 
 
-/* Docs =================================================== */
 
+/* Key scaffolding
+-------------------------------------------------- */
+
+body {
+  position: relative; /* For scrollyspy */
+}
+
+/*  */
 body > .container,
 .footer .container {
   padding-left:  15px;
   padding-right: 15px;
 }
 
+
+
+/* Sections
+-------------------------------------------------- */
+
+/* Padding for in-page bookmarks */
+section {
+  padding-top: 30px;
+}
+
+/* Few stylistic typography tweaks */
+section > .page-header,
+section > .lead {
+  color: #5a5a5a;
+}
+section > ul li {
+  margin-bottom: 5px;
+}
+
+
+
 /* Jumbotrons
 -------------------------------------------------- */
 
-/* Base class
-------------------------- */
+/* Base class */
 .bs-docs-jumbotron {
   position: relative;
   margin-bottom: 20px;
@@ -21,35 +52,117 @@ body > .container,
   background-color: #b94a48;
 }
 .bs-docs-jumbotron h1 {
-  margin: 0;
-}
-.bs-docs-jumbotron p {
-  margin-bottom: 0;
+  font-size: 50px;
 }
 
-
-
-
-.bs-docs-example {
-  border: 1px solid #ddd;
-  padding: 14px;
-  margin-bottom: -1px;
+/* Link styles (used on .masthead-links as well) */
+.bs-docs-jumbotron a {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
 }
-.bs-docs-example p:last-child,
-.bs-docs-example ul:last-child,
-.bs-docs-example ol:last-child {
-  margin-bottom: 0;
-}
-.bs-docs-example + .prettyprint {
-  margin-top: 0;
-}
-.prettyprint .linenums {
-  margin-left: 0;
+.bs-docs-jumbotron a:hover {
+  color: #fff;
 }
 
+/* Download button */
+.bs-docs-jumbotron .btn {
+  padding: 18px 24px;
+  font-size: 21px;
+  color: #b94a48; /* redeclare to override the `.jumbotron a` */
+  background-color: #fff;
+}
+.bs-docs-jumbotron .btn,
+.bs-docs-jumbotron .btn:hover,
+.bs-docs-jumbotron .btn:active {
+  color: #b94a48; /* redeclare to override the `.jumbotron a` */
+  background-color: #fff;
+  border-color: #fff;
+}
+
+/* Masthead (docs home)
+------------------------- */
+.masthead {
+  /*padding: 70px 0 80px;*/
+  color: #fff;
+  text-align: center;
+}
+.masthead h1 {
+  /*font-size: 120px;*/
+  /*line-height: 1;*/
+  /*letter-spacing: -2px;*/
+}
+.masthead p {
+  /*font-size: 40px;
+  font-weight: 200;
+  line-height: 1.25;*/
+}
+
+/* Textual links in masthead */
+.masthead-links {
+  margin: 20px 0;
+  list-style: none;
+}
+.masthead-links li {
+  display: inline;
+  padding: 0 10px;
+  color: rgba(255,255,255,.25);
+}
+
+/* Subhead (other pages)
+------------------------- */
+.subhead {
+  text-align: left;
+}
+.subhead h1 {
+  font-size: 60px;
+}
+.subhead p {
+  margin-bottom: 20px;
+}
+.subhead .navbar {
+  display: none;
+}
 
 
 
+/* Marketing section of Overview
+-------------------------------------------------- */
+
+.marketing {
+  text-align: center;
+  color: #5a5a5a;
+}
+.marketing h1 {
+  margin: 60px 0 10px;
+  line-height: 1;
+}
+.marketing h2 {
+  margin-bottom: 5px;
+}
+.marketing p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.marketing .marketing-byline {
+  margin-bottom: 40px;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.25;
+  color: #999;
+}
+.marketing-img {
+  display: block;
+  margin: 30px auto 10px;
+  max-height: 145px;
+}
+
+
+
+/* Special grid styles
+-------------------------------------------------- */
 
 .show-grid [class^="span"] {
   padding-top: 10px;
@@ -59,6 +172,46 @@ body > .container,
 }
 
 
+
+
+/* Bootstrap code examples
+-------------------------------------------------- */
+
+/* Base class */
+.bs-docs-example {
+  position: relative;
+  padding: 14px;
+  margin-bottom: -1px;
+  border: 1px solid #ddd;
+}
+/* Echo out a label for the example */
+.bs-docs-example:after {
+  content: "Example";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #9da0a4;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+/* Tweak display of the examples */
+.bs-docs-example + .prettyprint {
+  margin-top: 0;
+}
+.prettyprint .linenums {
+  margin-left: 0;
+}
+
+/* Tweak content of examples for optimum awesome */
+.bs-docs-example p:last-child,
+.bs-docs-example ul:last-child,
+.bs-docs-example ol:last-child {
+  margin-bottom: 0;
+}
 
 
 
