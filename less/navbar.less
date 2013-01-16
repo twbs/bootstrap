@@ -1,7 +1,92 @@
 //
-// Navbars (Redux)
+// Navbars
 // --------------------------------------------------
 
+// Wrapper and base class
+.navbar {
+  padding: 15px;
+  background-color: #eee;
+  .clear_float();
+}
+
+// Brand/project name
+.navbar .brand {
+  display: inline-block;
+  padding: 7px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    text-decoration: none;
+    background-color: #ddd;
+  }
+}
+
+// Responsive navbar button
+.btn-navbar {
+  float: right;
+  padding: 10px 12px;
+  background-color: #ddd;
+  border: 0;
+  border-radius: 4px;
+
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 3px;
+  }
+}
+
+// Nav links
+.navbar {
+  .nav {
+    margin-top: 15px; // space out from .navbar .brand and .btn-navbar
+  }
+  .nav > li > a {
+    line-height: 20px;
+  }
+  .nav > li > a:hover {
+    background-color: #ddd;
+  }
+  .nav > .active > a {
+    background-color: #ddd;
+  }
+}
+
+// Inverse navbar
+.navbar-inverse {
+  background-color: #222;
+
+  .brand {
+    color: #fff;
+    &:hover {
+      background-color: #333;
+    }
+  }
+  .nav > li > a {
+    color: #fff;
+  }
+  .nav > li > a:hover {
+    background-color: #333;
+  }
+  .nav > .active > a {
+    background-color: #333;
+  }
+  .btn-navbar {
+    background-color: #444;
+  }
+}
+
+
+
+
+/*
 
 // COMMON STYLES
 // -------------
@@ -446,3 +531,5 @@
   }
 
 }
+
+*/

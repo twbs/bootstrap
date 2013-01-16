@@ -2,6 +2,7 @@
 
 
 /* Page =================================================== */
+/*
 html {
   background-color: #fff;
   font-size: 62.5%;
@@ -38,9 +39,10 @@ p {
 img {
   max-width: 100%;
 }
-
+*/
 
 /* Typography =================================================== */
+/*
 h1,
 h2,
 h3,
@@ -92,7 +94,7 @@ small {
 }
 ul,
 ol {
-  margin: 0 0 .5em;
+  margin: 0 0 1em;
   padding: 0 0 0 28px;
 }
 li ul,
@@ -124,10 +126,10 @@ a {
 a:hover {
   text-decoration: underline;
 }
+*/
 
 
-
-.collapse {
+/*.collapse {
   position: relative;
   height: 0;
   overflow: hidden;
@@ -135,13 +137,13 @@ a:hover {
 .collapse.in {
   height: auto;
 }
+*/
 
 
-
-.nav {
+/*.nav {
   margin-bottom: 0;
-  padding-left: 0; /* override default ul/ol */
-  overflow: hidden; /* clearfix */
+  padding-left: 0;
+  overflow: hidden;
 }
 .nav > li {
   display: block;
@@ -154,11 +156,11 @@ a:hover {
 .nav > li > a:hover {
   text-decoration: none;
   background-color: #f5f5f5;
-}
+}*/
 
 
-.nav-list > li > a {
-  margin-bottom: -1px; /* tuck up the following item to make 1px border */
+/*.nav-list > li > a {
+  margin-bottom: -1px; // tuck up the following item to make 1px border
   border: 1px solid #ddd;
 }
 .nav-list > li:first-child > a {
@@ -166,7 +168,7 @@ a:hover {
   border-top-right-radius: 5px;
 }
 .nav-list > li:last-child > a {
-  margin-bottom: 0; /* undo the tuck */
+  margin-bottom: 0;  undo the tuck
    border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -175,17 +177,17 @@ a:hover {
   color: #fff;
   background-color: #428bca;
   border-color: #428bca;
-  z-index: 2; /* Bring active item forward so border sits on top of next element */
-}
+  z-index: 2; // Bring active item forward so border sits on top of next element
+}*/
 
 
 
 
 
-.navbar {
+/*.navbar {
   padding: 15px;
   background-color: #eee;
-  overflow: hidden; /* clearfix */
+  overflow: hidden;
 }
 
 .navbar .brand {
@@ -199,10 +201,10 @@ a:hover {
 .navbar .brand:hover {
   text-decoration: none;
   background-color: #ddd;
-}
+}*/
 
-.navbar .nav {
-  margin-top: 15px; /* space out from .navbar .brand and .btn-navbar */
+/*.navbar .nav {
+  margin-top: 15px;
 }
 .navbar .nav > li > a {
   line-height: 20px;
@@ -213,8 +215,8 @@ a:hover {
 .navbar .nav > .active > a {
   background-color: #ddd;
 }
-
-.btn-navbar {
+*/
+/*.btn-navbar {
   float: right;
   padding: 10px 12px;
   background-color: #ddd;
@@ -230,10 +232,10 @@ a:hover {
 }
 .btn-navbar .icon-bar + .icon-bar {
   margin-top: 3px;
-}
+}*/
 
 
-.navbar-inverse {
+/*.navbar-inverse {
   background-color: #222;
 }
 .navbar-inverse .brand {
@@ -253,33 +255,33 @@ a:hover {
 }
 .navbar-inverse .btn-navbar {
   background-color: #444;
-}
+}*/
 
 
 
 
 
 
-.row {
+/*.row {
   margin-left: -10px;
   margin-right: -10px;
-  overflow: hidden; /* clearfix */
+  overflow: hidden;
 }
 [class^="span"] {
   padding-left: 10px;
   padding-right: 10px;
   -webkit-box-sizing: border-box;
-}
+}*/
 
 
 
 /* Disable iOS/WinMobile font size changes */
-@media screen and (max-device-width: 480px) {
+/*@media screen and (max-device-width: 480px) {
   html {
     -ms-text-size-adjust: none;
     -webkit-text-size-adjust: none;
   }
-}
+}*/
 
 
 @media screen and (min-width: 480px) {
@@ -398,6 +400,11 @@ body > .container {
   border: 1px solid #ddd;
   padding: 14px;
   margin-bottom: -1px;
+}
+.bs-docs-example p:last-child,
+.bs-docs-example ul:last-child,
+.bs-docs-example ol:last-child {
+  margin-bottom: 0;
 }
 .bs-docs-example + .prettyprint {
   margin-top: 0;

@@ -9,8 +9,23 @@
   max-width: 940px;
 }
 
+// Mobile-first defaults
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+  .clear_float();
+}
+[class^="span"] {
+  padding-left: 10px;
+  padding-right: 10px;
+  // Proper box-model (padding doesn't add to width)
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 // Fixed (940px)
-#grid > .core(@grid-column-width, @grid-gutter-width, @grid-row-width);
+// #grid > .core(@grid-column-width, @grid-gutter-width, @grid-row-width);
 
 // Reset utility classes due to specificity
 [class*="span"].pull-right {
