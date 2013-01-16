@@ -185,16 +185,19 @@ section > ul li {
 /* Tweak display of the examples */
 .bs-docs-example + .prettyprint {
   margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .prettyprint .linenums {
-  margin-left: 0;
+  /*margin-left: 0;*/
 }
 
 /* Tweak content of examples for optimum awesome */
 .bs-docs-example > p:last-child,
 .bs-docs-example > ul:last-child,
 .bs-docs-example > ol:last-child,
-.bs-docs-example > blockquote:last-child {
+.bs-docs-example > blockquote:last-child,
+.bs-docs-example > .table:last-child {
   margin-bottom: 0;
 }
 
