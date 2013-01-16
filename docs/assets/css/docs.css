@@ -2,7 +2,8 @@
 
 /* Docs =================================================== */
 
-body > .container {
+body > .container,
+.footer .container {
   padding-left:  15px;
   padding-right: 15px;
 }
@@ -58,3 +59,54 @@ body > .container {
 }
 
 
+
+
+
+/* Footer
+-------------------------------------------------- */
+
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 100px;
+  border-top: 1px solid #e5e5e5;
+}
+.footer p {
+  margin-bottom: 0;
+  color: #777;
+}
+.footer-links {
+  margin: 10px 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+/* Social proof buttons from GitHub & Twitter */
+.bs-docs-social {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* Quick links on Home */
+.bs-docs-social-buttons {
+  display: inline-block;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+.bs-docs-social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+}
+.bs-docs-social-buttons .twitter-follow-button {
+  width: 225px !important;
+}
+.bs-docs-social-buttons .twitter-share-button {
+  width: 98px !important;
+}
