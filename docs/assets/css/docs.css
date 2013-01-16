@@ -206,6 +206,41 @@ section > ul li {
 
 
 
+/* Icons
+-------------------------------------------------- */
+
+.the-icons {
+  padding-bottom: 1px;
+  margin-left: 0;
+  list-style: none;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.the-icons li {
+  float: left;
+  width: 100px;
+  height: 110px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  margin: 0 -1px -1px 0;
+}
+.the-icons [class^="glyphicon-"] {
+  display: block;
+  margin: 5px auto;
+  vertical-align: middle;
+  margin-right: 3px;
+  font-size: 24px;
+}
+.the-icons li:hover {
+  background-color: rgba(255,0,0,.1);
+}
+
+
+
 /* Responsive docs
 -------------------------------------------------- */
 
