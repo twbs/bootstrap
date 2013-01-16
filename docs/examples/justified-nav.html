@@ -79,6 +79,31 @@
         border-right: 0;
         border-radius: 0 3px 3px 0;
       }
+      
+      @media (max-width: 480px) {
+        .navbar .nav li {
+          display: block;
+          width: 100%;
+        }
+        
+        .navbar .nav > li > a {
+          border: 0;
+        }
+        
+        .navbar .nav > li + li > a {
+          border-top: 1px solid #e5e5e5;
+        }
+        
+        .navbar .nav > li:first-child > a,
+        .navbar .nav > li:first-child > a:hover {
+          border-radius: 3px 3px 0 0;
+        }
+        
+        .navbar .nav > li:last-child > a,
+        .navbar .nav > li:last-child > a:hover {
+          border-radius: 0 0 3px 3px;
+        }
+      }    
     </style>
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
