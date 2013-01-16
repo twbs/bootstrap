@@ -264,7 +264,8 @@ section > ul li {
 .bs-docs-example > select:last-child,
 .bs-docs-example > textarea:last-child,
 .bs-docs-example > .table:last-child,
-.bs-docs-example > .jumbotron:last-child {
+.bs-docs-example > .jumbotron:last-child,
+.bs-docs-example > .alert:last-child {
   margin-bottom: 0;
 }
 
