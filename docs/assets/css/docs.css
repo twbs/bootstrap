@@ -445,7 +445,7 @@ section > ul li {
   }
 
   /* Tweak display of docs jumbotrons */
-  .bs-docs-jumbotron {
+  .masthead {
     padding-top:    100px;
     padding-bottom: 100px;
   }
@@ -458,6 +458,8 @@ section > ul li {
     margin-right: 10%;
   }
   .subhead {
+    padding-top:    60px;
+    padding-bottom: 60px;
     text-align: left;
   }
 
