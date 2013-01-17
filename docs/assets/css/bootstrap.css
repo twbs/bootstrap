@@ -2882,7 +2882,7 @@ button.close {
 
 .navbar .brand {
   display: inline-block;
-  padding: 15px 15px;
+  padding: 7px 15px;
   font-size: 18px;
   font-weight: bold;
   line-height: 20px;
@@ -2919,10 +2919,6 @@ button.close {
   margin-top: 15px;
 }
 
-.navbar .nav > li {
-  float: left;
-}
-
 .navbar .nav > li > a {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -2943,13 +2939,15 @@ button.close {
   background-color: #d5d5d5;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .navbar {
     padding-top: 0;
     padding-bottom: 0;
   }
   .navbar .brand {
     float: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
     margin-left: -15px;
   }
   .navbar .nav {
@@ -2962,6 +2960,9 @@ button.close {
   }
   .navbar .nav:after {
     clear: both;
+  }
+  .navbar .nav > li {
+    float: left;
   }
   .navbar .btn-navbar {
     display: none;

@@ -16,7 +16,7 @@
 
 .navbar .brand {
   display: inline-block;
-  padding: ((@navbar-height - @line-height-base) / 2) 15px;
+  padding: 7px 15px;
   font-size: 18px;
   font-weight: bold;
   line-height: @line-height-base;
@@ -58,9 +58,6 @@
   .nav {
     margin-top: 15px; // space out from .navbar .brand and .btn-navbar
   }
-  .nav > li {
-    float: left;
-  }
   .nav > li > a {
     padding-top: (@navbar-height - @line-height-base) / 2;
     padding-bottom: (@navbar-height - @line-height-base) / 2;
@@ -79,7 +76,7 @@
     background-color: @navbar-link-bg-active;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
 
   .navbar {
     padding-top: 0;
@@ -87,11 +84,16 @@
   }
   .navbar .brand {
     float: left;
+    padding-top: (@navbar-height - @line-height-base) / 2;
+    padding-bottom: (@navbar-height - @line-height-base) / 2;
     margin-left: -15px;
   }
   .navbar .nav {
     .clear_float();
     margin-top: 0; // undo top margin to make nav extend full height of navbar
+  }
+  .navbar .nav > li {
+    float: left;
   }
 
   // Required to make the collapsing navbar work on regular desktops

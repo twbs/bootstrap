@@ -10,6 +10,7 @@
 
 body {
   position: relative; /* For scrollyspy */
+  padding-top: 62px; /* Default height of navbar */
 }
 
 /*  */
@@ -197,6 +198,9 @@ section > ul li {
 
 /* Affix all the things, and set widths because they're positioned, depending on viewport size */
 @media screen and (min-width: 768px) {
+  body {
+    padding-top: 44px;
+  }
   /* From here, start to affix the nav because we keep columns here */
   .bs-docs-sidenav.affix {
     position: fixed;
