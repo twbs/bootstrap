@@ -1660,7 +1660,6 @@ select:focus:invalid:focus {
 .input-prepend {
   display: inline-block;
   margin-bottom: 10px;
-  font-size: 0;
   white-space: nowrap;
   vertical-align: middle;
 }
@@ -1671,11 +1670,23 @@ select:focus:invalid:focus {
 .input-prepend select,
 .input-append .uneditable-input,
 .input-prepend .uneditable-input,
-.input-append .dropdown-menu,
-.input-prepend .dropdown-menu,
-.input-append .popover,
-.input-prepend .popover {
-  font-size: 14px;
+.input-append .add-on,
+.input-prepend .add-on,
+.input-append .btn,
+.input-prepend .btn,
+.input-append .btn-group,
+.input-prepend .btn-group {
+  float: left;
+}
+
+.input-append:after,
+.input-prepend:after {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+  font: 0/0;
+  content: ".";
 }
 
 .input-append input,
@@ -1709,7 +1720,6 @@ select:focus:invalid:focus {
   height: 20px;
   min-width: 16px;
   padding: 4px 5px;
-  font-size: 14px;
   font-weight: normal;
   line-height: 20px;
   text-align: center;
