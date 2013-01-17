@@ -139,6 +139,9 @@ section > ul li {
 /* Special grid styles
 -------------------------------------------------- */
 
+.show-grid {
+  margin-bottom: 15px;
+}
 .show-grid [class^="span"] {
   padding-top: 10px;
   padding-bottom: 10px;
