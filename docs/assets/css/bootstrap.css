@@ -3046,6 +3046,7 @@ button.close {
     margin-left: -15px;
   }
   .navbar .nav {
+    float: left;
     margin-top: 0;
   }
   .navbar .nav:before,
@@ -3056,6 +3057,9 @@ button.close {
   .navbar .nav:after {
     clear: both;
   }
+  .navbar .nav.pull-right {
+    float: right;
+  }
   .navbar .nav > li {
     float: left;
   }
@@ -3063,7 +3067,6 @@ button.close {
     display: none;
   }
   .nav-collapse.collapse {
-    float: left;
     height: auto !important;
     overflow: visible !important;
   }
