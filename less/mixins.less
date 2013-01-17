@@ -431,20 +431,33 @@
 
 // Make a Grid
 // Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-.makeRow() {
-  margin-left: @grid-gutter-width * -1;
-  .clearfix();
+// .makeRow() {
+//   margin-left: @grid-gutter-width * -1;
+//   .clearfix();
+// }
+// .makeColumn(@columns: 1, @offset: 0) {
+//   float: left;
+//   margin-left: (@grid-column-width * @offset) + (@grid-gutter-width * (@offset - 1)) + (@grid-gutter-width * 2);
+//   width: (@grid-column-width * @columns) + (@grid-gutter-width * (@columns - 1));
+// }
+
+.make-row() {
+
 }
-.makeColumn(@columns: 1, @offset: 0) {
+.make-column(@columns) {
   float: left;
-  margin-left: (@grid-column-width * @offset) + (@grid-gutter-width * (@offset - 1)) + (@grid-gutter-width * 2);
-  width: (@grid-column-width * @columns) + (@grid-gutter-width * (@columns - 1));
+  padding: @grid-gutter-width;
+  width: percentage(@columns / @grid-columns);
 }
+.make-column-offset(@columns) {
+  margin-left: percentage(@columns / @grid-columns);
+}
+
 
 // The Grid
 #grid {
 
-  .core(@grid-column-width, @grid-gutter-width, @grid-row-width) {
+  .core(@grid-column-width, @grid-gutter-width) {
 
     .spanX(@index) when (@index > 0) {
       (~".span@{index}") { .span(@index); }
@@ -458,7 +471,6 @@
     }
     .offsetX(0) {}
 
-
     // Base styles
     .offset(@columns) {
       margin-left: percentage(@columns / @grid-columns);
@@ -467,65 +479,10 @@
       width: percentage(@columns / @grid-columns);
     }
 
-    .row {
-      // Negative indent the columns so text lines up
-      margin-left: @grid-gutter-width / -2;
-      margin-right: @grid-gutter-width / -2;
-      // Clear the floated columns
-      .clearfix();
-    }
-
-    [class*="span"] {
-      float: left; // Collapse whitespace
-      min-height: 1px; // Prevent empty columns from collapsing
-      padding-left: @grid-gutter-width / 2;
-      padding-right: @grid-gutter-width / 2;
-      // Proper box-model (padding doesnt' add to width)
-      -webkit-box-sizing: border-box;
-         -moz-box-sizing: border-box;
-              box-sizing: border-box;
-    }
-
     // Generate .spanX and .offsetX
     .spanX(@grid-columns);
     .offsetX(@grid-columns);
 
   }
-
-
-  .input(@grid-column-width, @grid-gutter-width, @grid-row-width) {
-
-    .spanX(@index) when (@index > 0) {
-      (~"input.span@{index}, textarea.span@{index}, select.span@{index}, .uneditable-input.span@{index}") { .span(@index); }
-      .spanX(@index - 1);
-    }
-    .spanX(0) {}
-
-    .offsetX(@index) when (@index > 0) {
-      (~"input.offset@{index}, textarea.offset@{index}, select.offset@{index}, uneditable-input.offset@{index}") { .offset(@index); }
-      .offsetX(@index - 1);
-    }
-    .offsetX(0) {}
-
-    .span(@columns) {
-      // TODO: Figure out how to add this back behind a class
-      // Part 1: Since inputs require padding *and* margin, we subtract the grid gutter width, as a percent of the row, from the default column width.
-      //width: percentage(@columns / @grid-columns) - percentage(@grid-gutter-width / @grid-row-width);
-      // Part 2: That subtracted width then gets split in half and added to the left and right margins.
-      // margin-left: percentage((@grid-gutter-width / 2) / @grid-row-width);
-      // margin-right: percentage((@grid-gutter-width / 2) / @grid-row-width);
-    }
-
-    .offset(@columns) {
-      // Take the normal offset margin and add an extra gutter's worth.
-      margin-left: percentage(@columns / @grid-columns) + percentage((@grid-gutter-width / 2) / @grid-row-width);
-    }
-
-    // Generate .spanX and .offsetX
-    .spanX(@grid-columns);
-    .offsetX(@grid-columns);
-
-  }
-
 
 }
