@@ -8,22 +8,51 @@
 
 .nav {
   margin-left: 0;
-  margin-bottom: @line-height-base;
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
   list-style: none;
-  .clearfix();
+  .clear_float();
 }
 .nav > li {
-  float: left;
+  display: block;
 }
 .nav > li > a {
+  position: relative;
   display: block;
-  padding: 8px 12px;
+  padding: 10px 15px;
 }
 .nav > li > a:hover {
   text-decoration: none;
   background-color: @grayLighter;
 }
 
+// Lists
+// -------------------------
+
+.nav-list > li > a {
+  margin-bottom: -1px; // pull up the following link for a 1px border between
+  border: 1px solid #e5e5e5;
+}
+.nav-list > li:first-child > a {
+   border-top-left-radius: @border-radius-base;
+  border-top-right-radius: @border-radius-base;
+}
+.nav-list > li:last-child > a {
+   border-bottom-left-radius: @border-radius-base;
+  border-bottom-right-radius: @border-radius-base;
+}
+.nav-list > .active > a,
+.nav-list > .active > a:hover {
+  z-index: 2; // Bring active item forward so border sits on top of next element
+  color: #fff;
+  background-color: @link-color;
+  border-color: @link-color;
+}
+
+
+
+
+/*
 // Prevent IE8 from misplacing imgs
 // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
 .nav > li > a > img {
@@ -55,9 +84,10 @@
 .nav .divider {
   .nav-divider();
 }
+*/
 
 
-
+/*
 // Tabs
 // -------------------------
 
@@ -269,3 +299,4 @@
   background-color: transparent;
   cursor: default;
 }
+*/

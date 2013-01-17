@@ -47,7 +47,7 @@
               <a href="./getting-started.html">Get started</a>
             </li>
             <li class="active">
-              <a href="./css.html">Core CSS</a>
+              <a href="./css.html">CSS</a>
             </li>
             <li class="">
               <a href="./components.html">Components</a>
@@ -83,15 +83,15 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#global"><i class="glyphicon-chevron-right"></i> Global styles</a></li>
-          <li><a href="#gridSystem"><i class="glyphicon-chevron-right"></i> Grid system</a></li>
+          <li><a href="#global"><i class="glyphicon-chevron-right"></i> Global settings</a></li>
           <li><a href="#typography"><i class="glyphicon-chevron-right"></i> Typography</a></li>
           <li><a href="#code"><i class="glyphicon-chevron-right"></i> Code</a></li>
+          <li><a href="#gridSystem"><i class="glyphicon-chevron-right"></i> Grid system</a></li>
           <li><a href="#tables"><i class="glyphicon-chevron-right"></i> Tables</a></li>
           <li><a href="#forms"><i class="glyphicon-chevron-right"></i> Forms</a></li>
           <li><a href="#buttons"><i class="glyphicon-chevron-right"></i> Buttons</a></li>
           <li><a href="#images"><i class="glyphicon-chevron-right"></i> Images</a></li>
-          <li><a href="#icons"><i class="glyphicon-chevron-right"></i> Icons by Glyphicons</a></li>
+          <li><a href="#icons"><i class="glyphicon-chevron-right"></i> Glyphicons</a></li>
           <li><a href="#responsive"><i class="glyphicon-chevron-right"></i> Responsive design</a></li>
         </ul>
       </div>
@@ -105,6 +105,7 @@
           <div class="page-header">
             <h1>Global settings</h1>
           </div>
+          <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
 
           <h3>Requires HTML5 doctype</h3>
           <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
@@ -114,6 +115,12 @@
   ...
 &lt;/html&gt;
 </pre>
+
+          <h3>Mobile first</h3>
+          <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
+          <p>To enable proper mobile styles, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>:</p>
+          <pre class="prettyprint linenums">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+          <p>This meta tag improves rendering of sites on mobile devices and ensures proper touch-based zooming.</p>
 
           <h3>Typography and links</h3>
           <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
@@ -128,107 +135,6 @@
           <h3>Normalize reset</h3>
           <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
-        </section>
-
-
-
-        <!-- Grid system
-        ================================================== -->
-        <section id="gridSystem">
-          <div class="page-header">
-            <h1>Grid system</h1>
-          </div>
-
-          <h2>Live grid example</h2>
-          <p>The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="./scaffolding.html#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</p>
-          <div class="bs-docs-grid">
-            <div class="row show-grid">
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-              <div class="span1">1</div>
-            </div>
-            <div class="row show-grid">
-              <div class="span4">4</div>
-              <div class="span4">4</div>
-              <div class="span4">4</div>
-            </div>
-            <div class="row show-grid">
-              <div class="span6">6</div>
-              <div class="span6">6</div>
-            </div>
-            <div class="row show-grid">
-              <div class="span12">12</div>
-            </div>
-          </div>
-
-          <h3>Basic grid HTML</h3>
-          <p>For a simple two column layout, create a <code>.row</code> and add the appropriate number of <code>.span*</code> columns. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent).</p>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span4"&gt;...&lt;/div&gt;
-  &lt;div class="span8"&gt;...&lt;/div&gt;
-&lt;/div&gt;
-</pre>
-          <p>Given this example, we have <code>.span4</code> and <code>.span8</code>, making for 12 total columns and a complete row.</p>
-
-          <h2>Offsetting columns</h2>
-          <p>Move columns to the right using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
-          <div class="bs-docs-grid">
-            <div class="row show-grid">
-              <div class="span4">4</div>
-              <div class="span4 offset4">4 offset 4</div>
-            </div><!-- /row -->
-            <div class="row show-grid">
-              <div class="span3 offset3">3 offset 3</div>
-              <div class="span3 offset3">3 offset 3</div>
-            </div><!-- /row -->
-            <div class="row show-grid">
-              <div class="span6 offset6">6 offset 6</div>
-            </div><!-- /row -->
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span4"&gt;...&lt;/div&gt;
-  &lt;div class="span4 offset4"&gt;...&lt;/div&gt;
-&lt;/div&gt;
-</pre>
-
-
-          <h2>Nesting columns</h2>
-          <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to the number of columns of its parent.</p>
-          <div class="row show-grid">
-            <div class="span9">
-              Level 1: 9 columns
-              <div class="row show-grid">
-                <div class="span6">
-                  Level 2: 6 columns
-                </div>
-                <div class="span6">
-                  Level 2: 6 columns
-                </div>
-              </div>
-            </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span9"&gt;
-    Level 1: 9 columns
-    &lt;div class="row"&gt;
-      &lt;div class="span6"&gt;Level 2: 6 columns&lt;/div&gt;
-      &lt;div class="span3"&gt;Level 2: 6 columns&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
         </section>
 
 
@@ -270,9 +176,6 @@
 
           <h3>Built with Less</h3>
           <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2 id="emphasis">Emphasis</h2>
@@ -334,9 +237,6 @@
 </pre>
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2 id="abbreviations">Abbreviations</h2>
           <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
 
@@ -353,9 +253,6 @@
             <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
           </div>
           <pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2 id="addresses">Addresses</h2>
@@ -388,9 +285,6 @@
   &lt;a href="mailto:#"&gt;first.last@example.com&lt;/a&gt;
 &lt;/address&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2 id="blockquotes">Blockquotes</h2>
@@ -440,9 +334,6 @@
   ...
 &lt;/blockquote&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <!-- Lists -->
@@ -586,6 +477,106 @@
 
 
 
+        <!-- Grid system
+        ================================================== -->
+        <section id="gridSystem">
+          <div class="page-header">
+            <h1>Grid system</h1>
+          </div>
+
+          <h2>Live grid example</h2>
+          <p>The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="./scaffolding.html#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+            </div>
+            <div class="row show-grid">
+              <div class="span4">4</div>
+              <div class="span4">4</div>
+              <div class="span4">4</div>
+            </div>
+            <div class="row show-grid">
+              <div class="span6">6</div>
+              <div class="span6">6</div>
+            </div>
+          </div>
+
+          <h3>Basic grid HTML</h3>
+          <p>For a simple two column layout, create a <code>.row</code> and add the appropriate number of <code>.span*</code> columns. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent).</p>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span8"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+          <p>Given this example, we have <code>.span4</code> and <code>.span8</code>, making for 12 total columns and a complete row.</p>
+
+          <h2>Offsetting columns</h2>
+          <p>Move columns to the right using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="span4">4</div>
+              <div class="span4 offset4">4 offset 4</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="span3 offset3">3 offset 3</div>
+              <div class="span3 offset3">3 offset 3</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="span6 offset6">6 offset 6</div>
+            </div><!-- /row -->
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span4"&gt;...&lt;/div&gt;
+  &lt;div class="span4 offset4"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+          <h2>Nesting columns</h2>
+          <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+          <div class="row show-grid">
+            <div class="span9">
+              Level 1: 9 columns
+              <div class="row show-grid">
+                <div class="span6">
+                  Level 2: 6 columns
+                </div>
+                <div class="span6">
+                  Level 2: 6 columns
+                </div>
+              </div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span9"&gt;
+    Level 1: 9 columns
+    &lt;div class="row"&gt;
+      &lt;div class="span6"&gt;Level 2: 6 columns&lt;/div&gt;
+      &lt;div class="span3"&gt;Level 2: 6 columns&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+        </section>
+
+
+
+
+
         <!-- Code
         ================================================== -->
         <section id="code">
@@ -663,9 +654,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
   …
 &lt;/table&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>Optional classes</h2>
@@ -834,9 +822,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 </pre>
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2>Optional row classes</h2>
           <p>Use contextual classes to color table rows.</p>
           <table class="table table-bordered table-striped">
@@ -925,9 +910,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
   &lt;/tr&gt;
 ...
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>Supported table markup</h2>
@@ -1066,9 +1048,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 </pre>
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2 id="forms-layouts">Optional layouts</h2>
           <p>Included with Bootstrap are optional form layouts for common use cases.</p>
 
@@ -1157,9 +1136,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 </pre>
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2 id="forms-controls">Supported form controls</h2>
           <p>Examples of standard form controls supported in an example form layout.</p>
 
@@ -1229,26 +1205,26 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 </pre>
 
           <h4>Inline checkboxes</h4>
-          <p>Add the <code>.inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
+          <p>Use <code>.checkbox-inline</code> or <code>.radio-inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
           <form class="bs-docs-example">
-            <label class="checkbox inline">
+            <label class="checkbox-inline">
               <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
             </label>
-            <label class="checkbox inline">
+            <label class="checkbox-inline">
               <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
             </label>
-            <label class="checkbox inline">
+            <label class="checkbox-inline">
               <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
             </label>
           </form>
 <pre class="prettyprint linenums">
-&lt;label class="checkbox inline"&gt;
+&lt;label class="checkbox-inline"&gt;
   &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
 &lt;/label&gt;
-&lt;label class="checkbox inline"&gt;
+&lt;label class="checkbox-inline"&gt;
   &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
 &lt;/label&gt;
-&lt;label class="checkbox inline"&gt;
+&lt;label class="checkbox-inline"&gt;
   &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
 &lt;/label&gt;
 </pre>
@@ -1289,9 +1265,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
   &lt;option&gt;5&lt;/option&gt;
 &lt;/select&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2 id="forms-extending">Extending form controls</h2>
@@ -1608,9 +1581,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 <pre class="prettyprint linenums">
 &lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>Form control states</h2>
@@ -2094,9 +2064,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <p><a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but an arrangement between Bootstrap and the Glyphicons creator have made this possible at no cost to you as developers. As a thank you, we ask you to include an optional link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever practical.</p>
 
 
-          <hr class="bs-docs-separator">
-
-
           <h2>How to use</h2>
           <p>Add the appropriate class to any inline element. All icon classes are prefixed with <code>glyphicon-</code> for easy styling. To use, place the following code just about anywhere:</p>
 <pre class="prettyprint linenums">
@@ -2104,9 +2071,6 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 </pre>
           <p>Want to change the icon color? Just change the <code>color</code> of the parent element.</p>
           <p>When using beside strings of text, as in buttons or nav links, be sure to leave a space after the icon for proper spacing.</p>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>Icon examples</h2>
@@ -2184,14 +2148,12 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 
           <h4>Navigation</h4>
           <div class="bs-docs-example">
-            <div class="well" style="padding: 8px 0; margin-bottom: 0;">
-              <ul class="nav nav-list">
-                <li class="active"><a href="#"><i class="glyphicon-home icon-white"></i> Home</a></li>
-                <li><a href="#"><i class="glyphicon-book"></i> Library</a></li>
-                <li><a href="#"><i class="glyphicon-pencil"></i> Applications</a></li>
-                <li><a href="#"><i class="i"></i> Misc</a></li>
-              </ul>
-            </div>
+            <ul class="nav nav-list">
+              <li class="active"><a href="#"><i class="glyphicon-home icon-white"></i> Home</a></li>
+              <li><a href="#"><i class="glyphicon-book"></i> Library</a></li>
+              <li><a href="#"><i class="glyphicon-pencil"></i> Applications</a></li>
+              <li><a href="#"><i class="i"></i> Misc</a></li>
+            </ul>
           </div>
 <pre class="prettyprint linenums">
 &lt;ul class="nav nav-list"&gt;
@@ -2207,8 +2169,9 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
             <div class="control-group">
               <label class="control-label" for="inputIcon">Email address</label>
               <div class="controls">
-                <div class="input-prepend">
-                  <span class="add-on"><i class="glyphicon-envelope"></i></span><input class="span2" id="inputIcon" type="text">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon-envelope"></i></span>
+                  <input class="span2" id="inputIcon" type="text">
                 </div>
               </div>
             </div>
@@ -2217,8 +2180,8 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 &lt;div class="control-group"&gt;
   &lt;label class="control-label" for="inputIcon"&gt;Email address&lt;/label&gt;
   &lt;div class="controls"&gt;
-    &lt;div class="input-prepend"&gt;
-      &lt;span class="add-on"&gt;&lt;i class="glyphicon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;div class="input-group"&gt;
+      &lt;span class="input-group-addon"&gt;&lt;i class="glyphicon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
       &lt;input class="span2" id="inputIcon" type="text"&gt;
     &lt;/div&gt;
   &lt;/div&gt;

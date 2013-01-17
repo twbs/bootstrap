@@ -46,7 +46,7 @@
 @line-height-base:        20px;
 
 @headings-font-family:    inherit; // empty to use BS default, @font-family-base
-@headings-font-weight:    bold;    // instead of browser default, bold
+@headings-font-weight:    500;
 
 
 // Component sizing
@@ -150,41 +150,50 @@
 // Navbar
 // -------------------------
 
-@navbar-collapse-width:            979px;
-@navbar-collapse-width-desktop:    @navbar-collapse-width + 1;
+// Responsive collapsing
+// @navbar-collapse-width:            979px;
+// @navbar-collapse-width-desktop:    @navbar-collapse-width + 1;
 
-@navbar-height:                    44px;
-@navbar-background-highlight:      #ffffff;
-@navbar-background:                darken(@navbar-background-highlight, 5%);
-@navbar-border:                    darken(@navbar-background, 12%);
-
+// Basics of a navbar
+@navbar-height:                    50px;
 @navbar-text:                      #777;
-@navbar-link-color:                #777;
-@navbar-link-color-hover:          @grayDark;
-@navbar-link-color-active:         @gray;
-@navbar-link-background-hover:     transparent;
-@navbar-link-background-active:    darken(@navbar-background, 5%);
+@navbar-bg:                        #eee;
 
+// Navbar brand label
 @navbar-brand-color:               @navbar-link-color;
+@navbar-brand-color-hover:         darken(@navbar-link-color, 10%);
+@navbar-brand-bg-hover:            transparent;
+
+// Navbar links
+@navbar-link-color:                #777;
+@navbar-link-color-hover:          #333;
+@navbar-link-color-active:         #555;
+@navbar-link-bg-hover:             transparent;
+@navbar-link-bg-active:            darken(@navbar-bg, 10%);
 
 // Inverted navbar
-@navbar-inverse-background:                #222;
-@navbar-inverse-background-highlight:      #222222;
-@navbar-inverse-border:                    #111111;
+@navbar-inverse-text:                       @grayLight;
+@navbar-inverse-bg:                         #222;
 
-@navbar-inverse-text:                      @grayLight;
-@navbar-inverse-link-color:                @grayLight;
-@navbar-inverse-link-color-hover:          #fff;
-@navbar-inverse-link-color-active:         @navbar-inverse-link-color-hover;
-@navbar-inverse-link-background-hover:     transparent;
-@navbar-inverse-link-background-active:    @navbar-inverse-background;
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-color-hover:          darken(@navbar-inverse-link-color, 10%);
+@navbar-inverse-brand-bg-hover:             transparent;
 
-@navbar-inverse-search-background:         lighten(@navbar-inverse-background, 25%);
-@navbar-inverse-search-background-focus:   #fff;
-@navbar-inverse-search-border:             @navbar-inverse-background;
-@navbar-inverse-search-placeholder-color:  #ccc;
+// Inverted navbar links
+@navbar-inverse-link-color:                 @grayLight;
+@navbar-inverse-link-color-hover:           #fff;
+@navbar-inverse-link-color-active:          @navbar-inverse-link-color-hover;
+@navbar-inverse-link-bg-hover:              transparent;
+@navbar-inverse-link-bg-active:             @navbar-inverse-bg;
 
-@navbar-inverse-brand-color:               @navbar-inverse-link-color;
+// Inverted navbar search
+// Normal navbar needs no special styles or vars
+@navbar-inverse-search-background:          lighten(@navbar-inverse-bg, 25%);
+@navbar-inverse-search-background-focus:    #fff;
+@navbar-inverse-search-border:              @navbar-inverse-bg;
+@navbar-inverse-search-placeholder-color:   #ccc;
+
 
 
 // Pagination

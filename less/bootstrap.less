@@ -15,31 +15,27 @@
 // Reset
 @import "normalize.less";
 
-// Grid system and page structure
+// Core CSS
 @import "scaffolding.less";
-@import "grid.less";
-
-// Base CSS
 @import "type.less";
 @import "code.less";
-@import "forms.less";
+@import "grid.less";
+
 @import "tables.less";
+@import "forms.less";
+@import "buttons.less";
 
 // Components: common
+@import "component-animations.less";
 @import "glyphicons.less";
 @import "dropdowns.less";
 @import "wells.less";
-@import "component-animations.less";
 @import "close.less";
-
-// Components: Buttons & Alerts
-@import "buttons.less";
-@import "button-groups.less";
-@import "alerts.less";
 
 // Components: Nav
 @import "navs.less";
 @import "navbar.less";
+@import "button-groups.less";
 @import "breadcrumbs.less";
 @import "pagination.less";
 @import "pager.less";
@@ -50,6 +46,7 @@
 @import "popovers.less";
 
 // Components: Misc
+@import "alerts.less";
 @import "thumbnails.less";
 @import "media.less";
 @import "badges.less";
@@ -60,32 +57,7 @@
 
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
-
-
-
-// Responsive
-// -------------------------------------------------------------
-
-// Responsive utility classes
 @import "responsive-utilities.less";
-
-
-// Media queries
-// ------------------
-
-// Large desktops
-@import "responsive-1200px-min.less";
-
-// Tablets to regular desktops
-@import "responsive-768px-979px.less";
-
-// Phones to portrait tablets and narrow desktops
-@import "responsive-767px-max.less";
-
-
-// Responsive navbar
-// From 979px and below, show a button to toggle navbar contents
-@import "responsive-navbar.less";
 
 // Responsive Off Canvas
 // From 767px and below, can use *-offcanvas

@@ -1,60 +1,195 @@
 //
-// Navbars (Redux)
+// Navbars
 // --------------------------------------------------
 
-
-// COMMON STYLES
-// -------------
-
-// Base class and wrapper
+// Wrapper and base class
 .navbar {
-  overflow: visible;
-  padding: 0 20px;
-  margin-bottom: @line-height-base;
-  background-color: @navbar-background;
+  padding: 15px;
+  background-color: @navbar-bg;
   border-radius: @border-radius-base;
-
   // Prevent floats from breaking the navbar
-  .clearfix();
+  .clear_float();
 }
 
-// Set width to auto for default container
-// We then reset it for fixed navbars in the #gridSystem mixin
-.navbar .container {
-  width: auto;
-}
-
-// Override the default collapsed state
-.nav-collapse.collapse {
-  height: auto;
-  overflow: visible;
-}
-
-
-// Brand: website or project name
+// Brand/project name
 // -------------------------
+
 .navbar .brand {
-  float: left;
-  display: block;
-  // Vertically center the text given @navbar-height
-  padding: ((@navbar-height - @line-height-base) / 2) 20px ((@navbar-height - @line-height-base) / 2);
-  margin-left: -20px; // negative indent to left-align the text down the page
-  font-size: 20px;
-  font-weight: 200;
+  display: inline-block;
+  padding: 7px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: @line-height-base;
   color: @navbar-brand-color;
-  text-shadow: 0 1px 0 @navbar-background-highlight;
   &:hover {
+    color: @navbar-brand-color-hover;
     text-decoration: none;
+    background-color: @navbar-brand-bg-hover;
   }
 }
 
-// Plain text in topbar
+// Responsive navbar button
 // -------------------------
-.navbar-text {
-  margin-bottom: 0;
-  line-height: @navbar-height;
-  color: @navbar-text;
+
+.btn-navbar {
+  float: right;
+  padding: 10px 12px;
+  background-color: #ddd;
+  border: 0;
+  border-radius: 4px;
+
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 3px;
+  }
 }
+
+// Navbar nav links
+// -------------------------
+
+.navbar {
+  .nav {
+    margin-top: 15px; // space out from .navbar .brand and .btn-navbar
+  }
+  .nav > li > a {
+    padding-top: (@navbar-height - @line-height-base) / 2;
+    padding-bottom: (@navbar-height - @line-height-base) / 2;
+    color: @navbar-link-color;
+    line-height: 20px;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    color: @navbar-link-color-hover;
+    background-color: @navbar-link-bg-hover;
+  }
+  .nav > .active > a,
+  .nav > .active > a:hover,
+  .nav > .active > a:focus {
+    color: @navbar-link-color-active;
+    background-color: @navbar-link-bg-active;
+  }
+}
+@media screen and (min-width: 768px) {
+
+  .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .navbar .brand {
+    float: left;
+    padding-top: (@navbar-height - @line-height-base) / 2;
+    padding-bottom: (@navbar-height - @line-height-base) / 2;
+    margin-left: -15px;
+  }
+  .navbar .nav {
+    .clear_float();
+    margin-top: 0; // undo top margin to make nav extend full height of navbar
+  }
+  .navbar .nav > li {
+    float: left;
+  }
+
+  // Required to make the collapsing navbar work on regular desktops
+  .navbar .btn-navbar {
+    display: none;
+  }
+  .nav-collapse.collapse {
+    float: left;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+}
+
+// Inverse navbar
+// -------------------------
+
+.navbar-inverse {
+    background-color: @navbar-inverse-bg;
+
+  .brand {
+    color: @navbar-inverse-brand-color;
+    &:hover {
+      color: @navbar-inverse-brand-color-hover;
+      background-color: @navbar-inverse-brand-bg-hover;
+    }
+  }
+
+  .navbar-text {
+    color: @navbar-inverse-text;
+  }
+
+  .nav > li > a {
+    color: @navbar-inverse-link-color;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    color: @navbar-inverse-link-color-hover;
+    background-color: @navbar-inverse-link-bg-hover;
+  }
+  .nav > .active > a,
+  .nav > .active > a:hover,
+  .nav > .active > a:focus {
+    color: @navbar-inverse-link-color-active;
+    background-color: @navbar-inverse-link-bg-active;
+  }
+  .btn-navbar {
+    background-color: #444;
+  }
+}
+
+
+
+//
+// Navbar alignment options
+// --------------------------------------------------
+
+// Static navbar
+.navbar-static-top {
+  position: static;
+  border-radius: 0;
+}
+
+// Fixed navbar
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindex-navbar-fixed;
+  border-radius: 0;
+}
+.navbar-fixed-top    { top: 0; }
+.navbar-fixed-bottom { bottom: 0; }
+
+
+//
+// Navbar optional components
+// --------------------------------------------------
+
+// Dividers in navbar
+.navbar .divider-vertical {
+  height: 26px;
+  margin: 7px 9px;
+  border-left: 1px solid darken(@navbar-bg, 5%);
+  border-right: 1px solid lighten(@navbar-bg, 5%);
+}
+
+// Navbar form
+.navbar-form {
+  .navbar-vertical-align(32px); // Vertically center in navbar
+}
+
+
+
+/*
 
 // Janky solution for now to account for links outside the .nav
 // -------------------------
@@ -132,126 +267,6 @@
     border-radius: 15px; // redeclare because of specificity of the type attribute
   }
 }
-
-
-
-// Static navbar
-// -------------------------
-
-.navbar-static-top {
-  position: static;
-  margin-bottom: 0; // remove 18px margin for default navbar
-  border-radius: 0;
-}
-
-
-
-// Fixed navbar
-// -------------------------
-
-// Shared (top/bottom) styles
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: @zindex-navbar-fixed;
-  margin-bottom: 0; // remove 18px margin for default navbar
-  border-radius: 0;
-}
-
-// Reset container width
-// Required here as we reset the width earlier on and the grid mixins don't override early enough
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-  #grid > .core > .span(@grid-columns);
-}
-
-// Fixed to top
-.navbar-fixed-top {
-  top: 0;
-}
-
-// Fixed to bottom
-.navbar-fixed-bottom {
-  bottom: 0;
-}
-
-
-
-// NAVIGATION
-// ----------
-
-.navbar .nav {
-  position: relative;
-  left: 0;
-  display: block;
-  float: left;
-  margin: 0 10px 0 0;
-}
-.navbar .nav.pull-right {
-  float: right; // redeclare due to specificity
-  margin-right: 0; // remove margin on float right nav
-}
-.navbar .nav > li {
-  float: left;
-}
-
-// Links
-.navbar .nav > li > a {
-  float: none;
-  // Vertically center the text given @navbar-height
-  padding: ((@navbar-height - @line-height-base) / 2) 15px ((@navbar-height - @line-height-base) / 2);
-  color: @navbar-link-color;
-  text-decoration: none;
-  text-shadow: 0 1px 0 @navbar-background-highlight;
-}
-.navbar .nav .dropdown-toggle .caret {
-  margin-top: 8px;
-}
-
-// Hover
-.navbar .nav > li > a:focus,
-.navbar .nav > li > a:hover {
-  background-color: @navbar-link-background-hover; // "transparent" is default to differentiate :hover from .active
-  color: @navbar-link-color-hover;
-  text-decoration: none;
-}
-
-// Active nav items
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus {
-  color: @navbar-link-color-active;
-  text-decoration: none;
-  background-color: @navbar-link-background-active;
-}
-
-// Navbar button for toggling navbar items in responsive layouts
-// These definitions need to come after '.navbar .btn'
-.navbar .btn-navbar {
-  display: none;
-  float: right;
-  padding: 7px 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  .buttonBackground(darken(@navbar-background-highlight, 5%), darken(@navbar-background, 5%));
-  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)");
-}
-.navbar .btn-navbar .icon-bar {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background-color: #f5f5f5;
-  border-radius: 1px;
-  .box-shadow(0 1px 0 rgba(0,0,0,.25));
-}
-.btn-navbar .icon-bar + .icon-bar {
-  margin-top: 3px;
-}
-
-
 
 // Dropdown menus
 // --------------
@@ -348,51 +363,6 @@
 // -------------------------
 
 .navbar-inverse {
-  background-color: @navbar-inverse-background;
-
-  .brand,
-  .nav > li > a {
-    color: @navbar-inverse-link-color;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    &:hover {
-      color: @navbar-inverse-link-color-hover;
-    }
-  }
-
-  .brand {
-    color: @navbar-inverse-brand-color;
-  }
-
-  .navbar-text {
-    color: @navbar-inverse-text;
-  }
-
-  .nav > li > a:focus,
-  .nav > li > a:hover {
-    background-color: @navbar-inverse-link-background-hover;
-    color: @navbar-inverse-link-color-hover;
-  }
-
-  .nav .active > a,
-  .nav .active > a:hover,
-  .nav .active > a:focus {
-    color: @navbar-inverse-link-color-active;
-    background-color: @navbar-inverse-link-background-active;
-  }
-
-  // Inline text links
-  .navbar-link {
-    color: @navbar-inverse-link-color;
-    &:hover {
-      color: @navbar-inverse-link-color-hover;
-    }
-  }
-
-  // Dividers in navbar
-  .divider-vertical {
-    border-left-color: @navbar-inverse-background;
-    border-right-color: @navbar-inverse-background-highlight;
-  }
 
   // Dropdowns
   .nav li.dropdown.open > .dropdown-toggle,
@@ -440,9 +410,6 @@
     }
   }
 
-  // Navbar collapse button
-  .btn-navbar {
-    .buttonBackground(darken(@navbar-inverse-background-highlight, 5%), darken(@navbar-inverse-background, 5%));
-  }
-
 }
+
+*/
