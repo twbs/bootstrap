@@ -111,6 +111,13 @@ section > ul li {
   color: rgba(255,255,255,.25);
 }
 
+/* Subhead (other docs pages)
+------------------------- */
+
+.subhead {
+  text-align: left;
+}
+
 
 
 /* Marketing section of Overview
@@ -204,10 +211,10 @@ section > ul li {
   /* From here, start to affix the nav because we keep columns here */
   .bs-docs-sidenav.affix {
     position: fixed;
-    top: 10px;
+    top: 54px;
   }
   .bs-docs-sidenav {
-    width: 189px;
+    width: 170px;
   }
 }
 

@@ -115,11 +115,17 @@
     background-color: @navbar-inverse-bg;
 
   .brand {
-    color: #fff;
+    color: @navbar-inverse-brand-color;
     &:hover {
-      background-color: #333;
+      color: @navbar-inverse-brand-color-hover;
+      background-color: @navbar-inverse-brand-bg-hover;
     }
   }
+
+  .navbar-text {
+    color: @navbar-inverse-text;
+  }
+
   .nav > li > a {
     color: @navbar-inverse-link-color;
   }

@@ -171,24 +171,29 @@
 @navbar-link-bg-hover:             transparent;
 @navbar-link-bg-active:            darken(@navbar-bg, 10%);
 
-
-
 // Inverted navbar
+@navbar-inverse-text:                       @grayLight;
 @navbar-inverse-bg:                         #222;
 
-@navbar-inverse-text:                      @grayLight;
-@navbar-inverse-link-color:                @grayLight;
-@navbar-inverse-link-color-hover:          #fff;
-@navbar-inverse-link-color-active:         @navbar-inverse-link-color-hover;
-@navbar-inverse-link-bg-hover:             transparent;
-@navbar-inverse-link-bg-active:            @navbar-inverse-bg;
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-color-hover:          darken(@navbar-inverse-link-color, 10%);
+@navbar-inverse-brand-bg-hover:             transparent;
 
-@navbar-inverse-search-background:         lighten(@navbar-inverse-bg, 25%);
-@navbar-inverse-search-background-focus:   #fff;
-@navbar-inverse-search-border:             @navbar-inverse-bg;
-@navbar-inverse-search-placeholder-color:  #ccc;
+// Inverted navbar links
+@navbar-inverse-link-color:                 @grayLight;
+@navbar-inverse-link-color-hover:           #fff;
+@navbar-inverse-link-color-active:          @navbar-inverse-link-color-hover;
+@navbar-inverse-link-bg-hover:              transparent;
+@navbar-inverse-link-bg-active:             @navbar-inverse-bg;
 
-@navbar-inverse-brand-color:               @navbar-inverse-link-color;
+// Inverted navbar search
+// Normal navbar needs no special styles or vars
+@navbar-inverse-search-background:          lighten(@navbar-inverse-bg, 25%);
+@navbar-inverse-search-background-focus:    #fff;
+@navbar-inverse-search-border:              @navbar-inverse-bg;
+@navbar-inverse-search-placeholder-color:   #ccc;
+
 
 
 // Pagination

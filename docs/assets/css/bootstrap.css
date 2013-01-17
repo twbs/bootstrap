@@ -2979,11 +2979,16 @@ button.close {
 }
 
 .navbar-inverse .brand {
-  color: #fff;
+  color: #999999;
 }
 
 .navbar-inverse .brand:hover {
-  background-color: #333;
+  color: #808080;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-text {
+  color: #999999;
 }
 
 .navbar-inverse .nav > li > a {
