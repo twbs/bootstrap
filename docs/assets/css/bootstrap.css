@@ -4630,28 +4630,57 @@ a.badge:hover {
   position: fixed;
 }
 
-/*
-// Responsive
-// -------------------------------------------------------------
+@-ms-viewport {
+  width: device-width;
+}
 
-// Responsive utility classes
-@import "responsive-utilities.less";
+.hidden {
+  display: none;
+  visibility: hidden;
+}
 
+.visible-phone {
+  display: none !important;
+}
 
-// Media queries
-// ------------------
+.visible-tablet {
+  display: none !important;
+}
 
-// Large desktops
-@import "responsive-1200px-min.less";
+.hidden-desktop {
+  display: none !important;
+}
 
-// Tablets to regular desktops
-@import "responsive-768px-979px.less";
+.visible-desktop {
+  display: inherit !important;
+}
 
-// Phones to portrait tablets and narrow desktops
-@import "responsive-767px-max.less";
+@media (min-width: 768px) and (max-width: 979px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important ;
+  }
+  .visible-tablet {
+    display: inherit !important;
+  }
+  .hidden-tablet {
+    display: none !important;
+  }
+}
 
-
-// Responsive navbar
-// From 979px and below, show a button to toggle navbar contents
-@import "responsive-navbar.less";
-*/
+@media (max-width: 767px) {
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+  .visible-phone {
+    display: inherit !important;
+  }
+  .hidden-phone {
+    display: none !important;
+  }
+}
