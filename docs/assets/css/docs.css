@@ -450,10 +450,12 @@ section > ul li {
     padding-bottom: 100px;
   }
   .masthead h1 {
-    font-size: 80px;
+    font-size: 100px;
   }
   .masthead p {
-    font-size: 24px;
+    font-size: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
   }
   .subhead {
     text-align: left;
