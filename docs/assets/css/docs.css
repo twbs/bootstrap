@@ -455,6 +455,14 @@ input.focused {
        box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
 
+/* Scrollspy demo on fixed height div */
+.scrollspy-example {
+  height: 200px;
+  overflow: auto;
+  position: relative;
+}
+
+
 
 /* Responsive variations
 -------------------------------------------------- */
