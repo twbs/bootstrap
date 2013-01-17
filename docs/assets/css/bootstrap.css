@@ -731,71 +731,77 @@ pre code {
   [class^="span"] {
     float: left;
   }
-  .span1 {
-    width: 8.3333333%;
+  .span12 {
+    width: 100%;
   }
-  .span2 {
-    width: 16.6666667%;
+  .span11 {
+    width: 91.66666666666666%;
   }
-  .span3 {
-    width: 25%;
-  }
-  .span4 {
-    width: 33.3333333%;
-  }
-  .span5 {
-    width: 41.666666667%;
-  }
-  .span6 {
-    width: 50%;
-  }
-  .span7 {
-    width: 58.333333333%;
-  }
-  .span8 {
-    width: 66.666666667%;
+  .span10 {
+    width: 83.33333333333334%;
   }
   .span9 {
     width: 75%;
   }
-  .span10 {
-    width: 83.333333333%;
+  .span8 {
+    width: 66.66666666666666%;
   }
-  .span11 {
-    width: 91.666666667%;
+  .span7 {
+    width: 58.333333333333336%;
   }
-  .offset1 {
-    margin-left: 8.3333333%;
+  .span6 {
+    width: 50%;
   }
-  .offset2 {
-    margin-left: 16.6666667%;
+  .span5 {
+    width: 41.66666666666667%;
   }
-  .offset3 {
-    margin-left: 25%;
+  .span4 {
+    width: 33.33333333333333%;
   }
-  .offset4 {
-    margin-left: 33.3333333%;
+  .span3 {
+    width: 25%;
   }
-  .offset5 {
-    margin-left: 41.666666667%;
+  .span2 {
+    width: 16.666666666666664%;
   }
-  .offset6 {
-    margin-left: 50%;
+  .span1 {
+    width: 8.333333333333332%;
   }
-  .offset7 {
-    margin-left: 58.333333333%;
+  .offset12 {
+    margin-left: 100%;
   }
-  .offset8 {
-    margin-left: 66.666666667%;
+  .offset11 {
+    margin-left: 91.66666666666666%;
+  }
+  .offset10 {
+    margin-left: 83.33333333333334%;
   }
   .offset9 {
     margin-left: 75%;
   }
-  .offset10 {
-    margin-left: 83.333333333%;
+  .offset8 {
+    margin-left: 66.66666666666666%;
   }
-  .offset11 {
-    margin-left: 91.666666667%;
+  .offset7 {
+    margin-left: 58.333333333333336%;
+  }
+  .offset6 {
+    margin-left: 50%;
+  }
+  .offset5 {
+    margin-left: 41.66666666666667%;
+  }
+  .offset4 {
+    margin-left: 33.33333333333333%;
+  }
+  .offset3 {
+    margin-left: 25%;
+  }
+  .offset2 {
+    margin-left: 16.666666666666664%;
+  }
+  .offset1 {
+    margin-left: 8.333333333333332%;
   }
 }
 
