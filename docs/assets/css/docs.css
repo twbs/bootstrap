@@ -270,6 +270,18 @@ section > ul li {
 
 
 
+/* Example templates
+-------------------------------------------------- */
+
+.bs-docs-examples h4 {
+  margin-bottom: 5px;
+}
+.bs-docs-examples p {
+  margin-bottom: 20px;
+}
+
+
+
 /* Icons
 -------------------------------------------------- */
 
