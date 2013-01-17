@@ -11,46 +11,6 @@
   .clear_float();
 }
 
-// Brand/project name
-// -------------------------
-
-.navbar .brand {
-  display: inline-block;
-  padding: 7px 15px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: @line-height-base;
-  color: @navbar-brand-color;
-  &:hover {
-    color: @navbar-brand-color-hover;
-    text-decoration: none;
-    background-color: @navbar-brand-bg-hover;
-  }
-}
-
-// Responsive navbar button
-// -------------------------
-
-.btn-navbar {
-  float: right;
-  padding: 10px 12px;
-  background-color: #ddd;
-  border: 0;
-  border-radius: 4px;
-
-  // Bars
-  .icon-bar {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background-color: #fff;
-    border-radius: 1px;
-  }
-  .icon-bar + .icon-bar {
-    margin-top: 3px;
-  }
-}
-
 // Navbar nav links
 // -------------------------
 
@@ -76,6 +36,135 @@
     background-color: @navbar-link-bg-active;
   }
 }
+
+
+
+//
+// Navbar alignment options
+// --------------------------------------------------
+
+// Static navbar
+.navbar-static-top {
+  position: static;
+  border-radius: 0;
+}
+
+// Fixed navbar
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindex-navbar-fixed;
+  border-radius: 0;
+}
+.navbar-fixed-top    { top: 0; }
+.navbar-fixed-bottom { bottom: 0; }
+
+
+
+//
+// Navbar optional components
+// --------------------------------------------------
+
+// Brand/project name
+.navbar .brand {
+  display: inline-block;
+  padding: 7px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: @line-height-base;
+  color: @navbar-brand-color;
+  &:hover {
+    color: @navbar-brand-color-hover;
+    text-decoration: none;
+    background-color: @navbar-brand-bg-hover;
+  }
+}
+
+// Collapsible navbar toggle
+.btn-navbar {
+  float: right;
+  padding: 10px 12px;
+  background-color: #ddd;
+  border: 0;
+  border-radius: 4px;
+
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 3px;
+  }
+}
+
+// Dividers in navbar
+.navbar .divider-vertical {
+  height: @navbar-height * .6;
+  margin: (@navbar-height * .2) 9px;
+  border-left: 1px solid darken(@navbar-bg, 5%);
+  border-right: 1px solid lighten(@navbar-bg, 5%);
+}
+
+// Navbar form
+.navbar-form {
+  .navbar-vertical-align(32px); // Vertically center in navbar
+}
+
+
+
+// Inverse navbar
+// --------------------------------------------------
+
+.navbar-inverse {
+    background-color: @navbar-inverse-bg;
+
+  .brand {
+    color: @navbar-inverse-brand-color;
+    &:hover {
+      color: @navbar-inverse-brand-color-hover;
+      background-color: @navbar-inverse-brand-bg-hover;
+    }
+  }
+
+  .navbar-text {
+    color: @navbar-inverse-text;
+  }
+
+  .nav > li > a {
+    color: @navbar-inverse-link-color;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    color: @navbar-inverse-link-color-hover;
+    background-color: @navbar-inverse-link-bg-hover;
+  }
+  .nav > .active > a,
+  .nav > .active > a:hover,
+  .nav > .active > a:focus {
+    color: @navbar-inverse-link-color-active;
+    background-color: @navbar-inverse-link-bg-active;
+  }
+
+  .btn-navbar {
+    background-color: #444;
+  }
+
+  .divider-vertical {
+    border-left-color: darken(@navbar-inverse-bg, 5%);
+    border-right-color: lighten(@navbar-inverse-bg, 5%);
+  }
+}
+
+
+
+// Inverse navbar
+// --------------------------------------------------
 
 @media screen and (min-width: 768px) {
   .navbar {
@@ -110,87 +199,6 @@
     overflow: visible !important;
   }
 }
-
-// Inverse navbar
-// -------------------------
-
-.navbar-inverse {
-    background-color: @navbar-inverse-bg;
-
-  .brand {
-    color: @navbar-inverse-brand-color;
-    &:hover {
-      color: @navbar-inverse-brand-color-hover;
-      background-color: @navbar-inverse-brand-bg-hover;
-    }
-  }
-
-  .navbar-text {
-    color: @navbar-inverse-text;
-  }
-
-  .nav > li > a {
-    color: @navbar-inverse-link-color;
-  }
-  .nav > li > a:hover,
-  .nav > li > a:focus {
-    color: @navbar-inverse-link-color-hover;
-    background-color: @navbar-inverse-link-bg-hover;
-  }
-  .nav > .active > a,
-  .nav > .active > a:hover,
-  .nav > .active > a:focus {
-    color: @navbar-inverse-link-color-active;
-    background-color: @navbar-inverse-link-bg-active;
-  }
-  .btn-navbar {
-    background-color: #444;
-  }
-}
-
-
-
-//
-// Navbar alignment options
-// --------------------------------------------------
-
-// Static navbar
-.navbar-static-top {
-  position: static;
-  border-radius: 0;
-}
-
-// Fixed navbar
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: @zindex-navbar-fixed;
-  border-radius: 0;
-}
-.navbar-fixed-top    { top: 0; }
-.navbar-fixed-bottom { bottom: 0; }
-
-
-//
-// Navbar optional components
-// --------------------------------------------------
-
-// Dividers in navbar
-.navbar .divider-vertical {
-  height: 26px;
-  margin: 7px 9px;
-  border-left: 1px solid darken(@navbar-bg, 5%);
-  border-right: 1px solid lighten(@navbar-bg, 5%);
-}
-
-// Navbar form
-.navbar-form {
-  .navbar-vertical-align(32px); // Vertically center in navbar
-}
-
-
 
 /*
 
