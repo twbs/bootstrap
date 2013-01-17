@@ -3068,6 +3068,47 @@ button.close {
   margin-bottom: 9px;
 }
 
+.navbar .nav > li > .dropdown-menu {
+  margin-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.navbar-fixed-bottom .nav > li > .dropdown-menu {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.navbar .nav li.dropdown > a:hover .caret {
+  border-top-color: #333333;
+  border-bottom-color: #333333;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  color: #555555;
+  background-color: #d5d5d5;
+}
+
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: #777777;
+  border-bottom-color: #777777;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  border-top-color: #555555;
+  border-bottom-color: #555555;
+}
+
+.navbar .pull-right > li > .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+
 .navbar-inverse {
   background-color: #222222;
 }
@@ -3109,6 +3150,30 @@ button.close {
 .navbar-inverse .divider-vertical {
   border-right-color: #2f2f2f;
   border-left-color: #151515;
+}
+
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
+.navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+  color: #ffffff;
+  background-color: #222222;
+}
+
+.navbar-inverse .nav li.dropdown > a:hover .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret {
+  border-top-color: #999999;
+  border-bottom-color: #999999;
+}
+
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar-inverse .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 @media screen and (min-width: 768px) {
@@ -3158,15 +3223,6 @@ button.close {
   &:hover {
     color: @navbar-link-color-hover;
   }
-}
-
-// Dividers in navbar
-// -------------------------
-.navbar .divider-vertical {
-  height: @navbar-height;
-  margin: 0 9px;
-  border-left: 1px solid @navbar-background;
-  border-right: 1px solid @navbar-background-highlight;
 }
 
 // Buttons in navbar
@@ -3226,150 +3282,6 @@ button.close {
     #font > .sans-serif(13px, normal, 1);
     border-radius: 15px; // redeclare because of specificity of the type attribute
   }
-}
-
-// Dropdown menus
-// --------------
-
-// Menu position and menu carets
-.navbar .nav > li > .dropdown-menu {
-  &:before {
-    content: '';
-    display: inline-block;
-    border-left:   7px solid transparent;
-    border-right:  7px solid transparent;
-    border-bottom: 7px solid #ccc;
-    border-bottom-color: @dropdown-border;
-    position: absolute;
-    top: -7px;
-    left: 9px;
-  }
-  &:after {
-    content: '';
-    display: inline-block;
-    border-left:   6px solid transparent;
-    border-right:  6px solid transparent;
-    border-bottom: 6px solid @dropdown-background;
-    position: absolute;
-    top: -6px;
-    left: 10px;
-  }
-}
-// Menu position and menu caret support for dropups via extra dropup class
-.navbar-fixed-bottom .nav > li > .dropdown-menu {
-  &:before {
-    border-top: 7px solid #ccc;
-    border-top-color: @dropdown-border;
-    border-bottom: 0;
-    bottom: -7px;
-    top: auto;
-  }
-  &:after {
-    border-top: 6px solid @dropdown-background;
-    border-bottom: 0;
-    bottom: -6px;
-    top: auto;
-  }
-}
-
-// Caret should match text color on hover
-.navbar .nav li.dropdown > a:hover .caret {
-  border-top-color: @navbar-link-color-hover;
-  border-bottom-color: @navbar-link-color-hover;
-}
-
-// Remove background color from open dropdown
-.navbar .nav li.dropdown.open > .dropdown-toggle,
-.navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
-  background-color: @navbar-link-background-active;
-  color: @navbar-link-color-active;
-}
-.navbar .nav li.dropdown > .dropdown-toggle .caret {
-  border-top-color: @navbar-link-color;
-  border-bottom-color: @navbar-link-color;
-}
-.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
-  border-top-color: @navbar-link-color-active;
-  border-bottom-color: @navbar-link-color-active;
-}
-
-// Right aligned menus need alt position
-.navbar .pull-right > li > .dropdown-menu,
-.navbar .nav > li > .dropdown-menu.pull-right {
-  left: auto;
-  right: 0;
-  &:before {
-    left: auto;
-    right: 12px;
-  }
-  &:after {
-    left: auto;
-    right: 13px;
-  }
-  .dropdown-menu {
-    left: auto;
-    right: 100%;
-    margin-left: 0;
-    margin-right: -1px;
-    border-radius: 6px 0 6px 6px;
-  }
-}
-
-
-// Inverted navbar
-// -------------------------
-
-.navbar-inverse {
-
-  // Dropdowns
-  .nav li.dropdown.open > .dropdown-toggle,
-  .nav li.dropdown.active > .dropdown-toggle,
-  .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: @navbar-inverse-link-background-active;
-    color: @navbar-inverse-link-color-active;
-  }
-  .nav li.dropdown > a:hover .caret {
-    border-top-color: @navbar-inverse-link-color-active;
-    border-bottom-color: @navbar-inverse-link-color-active;
-  }
-  .nav li.dropdown > .dropdown-toggle .caret {
-    border-top-color: @navbar-inverse-link-color;
-    border-bottom-color: @navbar-inverse-link-color;
-  }
-  .nav li.dropdown.open > .dropdown-toggle .caret,
-  .nav li.dropdown.active > .dropdown-toggle .caret,
-  .nav li.dropdown.open.active > .dropdown-toggle .caret {
-    border-top-color: @navbar-inverse-link-color-active;
-    border-bottom-color: @navbar-inverse-link-color-active;
-  }
-
-  // Navbar search
-  .navbar-search {
-    .search-query {
-      color: #fff;
-      background-color: @navbar-inverse-search-background;
-      border-color: @navbar-inverse-search-border;
-      .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15)");
-      .transition(none);
-      .placeholder(@navbar-inverse-search-placeholder-color);
-
-      // Focus states (we use .focused since IE8 and down doesn't support :focus)
-      &:focus,
-      &.focused {
-        padding: 5px 15px;
-        color: @grayDark;
-        text-shadow: 0 1px 0 #fff;
-        background-color: @navbar-inverse-search-background-focus;
-        border: 0;
-        .box-shadow(0 0 3px rgba(0,0,0,.15));
-        outline: 0;
-      }
-    }
-  }
-
 }
 
 */
