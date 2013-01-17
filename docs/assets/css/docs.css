@@ -86,18 +86,8 @@ section > ul li {
 
 /* Masthead (docs home)
 ------------------------- */
-.masthead {
-  /*padding: 70px 0 80px;*/
-}
 .masthead h1 {
-  /*font-size: 120px;*/
   line-height: 1;
-  /*letter-spacing: -2px;*/
-}
-.masthead p {
-  /*font-size: 40px;
-  font-weight: 200;
-  line-height: 1.25;*/
 }
 
 /* Textual links in masthead */
@@ -448,6 +438,7 @@ section > ul li {
 
 /* Tablets and up */
 @media screen and (min-width: 768px) {
+
   /* Account for fixed navbar */
   body {
     padding-top: 44px;
