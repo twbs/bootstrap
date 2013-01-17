@@ -1,0 +1,60 @@
+//
+// Off canvas
+// --------------------------------------------------
+.row-offcanvas {
+  position: relative;
+  overflow: hidden;
+  .transition(all 0.25s ease-out);
+}
+.row-offcanvas.active {
+  overflow: visible;
+}
+.row-offcanvas-right.active {
+  right: @grid-column-width-768 * 5;
+}
+.sidebar-offcanvas {
+  position: absolute;
+  top: 0;
+}
+.sidebar-offcanvas-right {
+  right: -@grid-column-width-768 * 5;
+}
+
+@media screen and (max-width: 480px) {
+
+  .sidebar-offcanvas {
+    width: @grid-column-width-768 * 5;
+  }
+
+}
+
+// Landscape phone to tablets
+// --------------------------
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+  .row-offcanvas-right.active {
+    right: @grid-column-width-768 * 8;
+  }
+  .sidebar-offcanvas {
+    width: @grid-column-width-768 * 8;
+  }
+  .sidebar-offcanvas-right {
+    right: -@grid-column-width-768 * 8;
+  }
+
+}
+
+// Tablets & above
+//----------------
+@media screen and (min-width: 768px) {
+
+  .row-offcanvas {
+    position: static;
+    overflow: visible;
+  }
+
+  .sidebar-offcanvas {
+    position: static;
+  }
+
+}
