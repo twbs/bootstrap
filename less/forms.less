@@ -425,16 +425,26 @@ select:focus:invalid {
   display: inline-block;
   margin-bottom: @baseLineHeight / 2;
   vertical-align: middle;
-  font-size: 0; // white space collapse hack
   white-space: nowrap; // Prevent span and input from separating
 
-  // Reset the white space collapse hack
+  // Float inputs nested content
   input,
   select,
   .uneditable-input,
-  .dropdown-menu,
-  .popover {
-    font-size: @baseFontSize;
+  .add-on,
+  .btn,
+  .btn-group {
+    float: left;
+  }
+
+  // Clear the floats
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    font: 0/0;
   }
 
   input,
@@ -456,7 +466,6 @@ select:focus:invalid {
     height: @baseLineHeight;
     min-width: 16px;
     padding: 4px 5px;
-    font-size: @baseFontSize;
     font-weight: normal;
     line-height: @baseLineHeight;
     text-align: center;
