@@ -165,12 +165,6 @@ section > ul li {
   position: static;
   top: 0;
 }
-.bs-docs-sidenav.affix-bottom {
-  position: absolute;
-  top: auto;
-  bottom: 270px;
-}
-
 
 /* Chevrons within each link */
 .bs-docs-sidenav .glyphicon-chevron-right {
@@ -473,6 +467,11 @@ section > ul li {
   }
   .bs-docs-sidenav {
     width: 170px;
+  }
+  .bs-docs-sidenav.affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 270px;
   }
 }
 
