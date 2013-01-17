@@ -91,7 +91,7 @@ section > ul li {
 }
 .masthead h1 {
   /*font-size: 120px;*/
-  /*line-height: 1;*/
+  line-height: 1;
   /*letter-spacing: -2px;*/
 }
 .masthead p {
@@ -109,13 +109,6 @@ section > ul li {
   display: inline;
   padding: 0 10px;
   color: rgba(255,255,255,.25);
-}
-
-/* Subhead (other docs pages)
-------------------------- */
-
-.subhead {
-  text-align: left;
 }
 
 
@@ -201,33 +194,6 @@ section > ul li {
 .bs-docs-sidenav .active a:hover .glyphicon-chevron-right {
   color: #fff;
   opacity: 1;
-}
-
-/* Affix all the things, and set widths because they're positioned, depending on viewport size */
-@media screen and (min-width: 768px) {
-  body {
-    padding-top: 44px;
-  }
-  /* From here, start to affix the nav because we keep columns here */
-  .bs-docs-sidenav.affix {
-    position: fixed;
-    top: 54px;
-  }
-  .bs-docs-sidenav {
-    width: 170px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .bs-docs-sidenav {
-    width: 220px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .bs-docs-sidenav {
-    width: 260px;
-  }
 }
 
 
@@ -473,4 +439,55 @@ section > ul li {
 }
 .bs-docs-social-buttons .twitter-share-button {
   width: 98px !important;
+}
+
+
+
+/* Responsive variations
+-------------------------------------------------- */
+
+/* Tablets and up */
+@media screen and (min-width: 768px) {
+  /* Account for fixed navbar */
+  body {
+    padding-top: 44px;
+  }
+
+  /* Tweak display of docs jumbotrons */
+  .bs-docs-jumbotron {
+    padding-top:    100px;
+    padding-bottom: 100px;
+  }
+  .masthead h1 {
+    font-size: 80px;
+  }
+  .masthead p {
+    font-size: 24px;
+  }
+  .subhead {
+    text-align: left;
+  }
+
+  /* From here, start to affix the nav because we keep columns here */
+  .bs-docs-sidenav.affix {
+    position: fixed;
+    top: 54px;
+  }
+  .bs-docs-sidenav {
+    width: 170px;
+  }
+}
+
+/* Tablets/desktops and up */
+@media screen and (min-width: 992px) {
+  .bs-docs-sidenav {
+    width: 220px;
+  }
+}
+
+/* Large desktops and up */
+@media screen and (min-width: 1200px) {
+  .bs-docs-sidenav {
+    width: 260px;
+  }
 }
