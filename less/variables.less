@@ -150,20 +150,28 @@
 // Navbar
 // -------------------------
 
-@navbar-collapse-width:            979px;
-@navbar-collapse-width-desktop:    @navbar-collapse-width + 1;
+// Responsive collapsing
+// @navbar-collapse-width:            979px;
+// @navbar-collapse-width-desktop:    @navbar-collapse-width + 1;
 
-@navbar-height:                    44px;
+// Basics of a navbar
+@navbar-height:                    50px;
+@navbar-text:                      #777;
 @navbar-bg:                        #eee;
 
-@navbar-text:                      #777;
-@navbar-link-color:                #777;
-@navbar-link-color-hover:          @grayDark;
-@navbar-link-color-active:         @gray;
-@navbar-link-bg-hover:             transparent;
-@navbar-link-bg-active:            darken(@navbar-bg, 5%);
-
+// Navbar brand label
 @navbar-brand-color:               @navbar-link-color;
+@navbar-brand-color-hover:         darken(@navbar-link-color, 10%);
+@navbar-brand-bg-hover:            transparent;
+
+// Navbar links
+@navbar-link-color:                #777;
+@navbar-link-color-hover:          #333;
+@navbar-link-color-active:         #555;
+@navbar-link-bg-hover:             transparent;
+@navbar-link-bg-active:            darken(@navbar-bg, 10%);
+
+
 
 // Inverted navbar
 @navbar-inverse-bg:                         #222;

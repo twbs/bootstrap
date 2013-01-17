@@ -949,10 +949,9 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  display: block;
+  display: inline-block;
   min-height: 34px;
   padding: 6px 9px;
-  margin-bottom: 10px;
   font-size: 14px;
   line-height: 20px;
   color: #555555;
@@ -2868,6 +2867,7 @@ button.close {
 .navbar {
   padding: 15px;
   background-color: #eeeeee;
+  border-radius: 4px;
 }
 
 .navbar:before,
@@ -2882,16 +2882,17 @@ button.close {
 
 .navbar .brand {
   display: inline-block;
-  padding: 7px 15px;
+  padding: 15px 15px;
   font-size: 18px;
   font-weight: bold;
-  line-height: 1;
+  line-height: 20px;
   color: #777777;
 }
 
 .navbar .brand:hover {
+  color: #5e5e5e;
   text-decoration: none;
-  background-color: #ddd;
+  background-color: transparent;
 }
 
 .btn-navbar {
@@ -2918,7 +2919,13 @@ button.close {
   margin-top: 15px;
 }
 
+.navbar .nav > li {
+  float: left;
+}
+
 .navbar .nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
   line-height: 20px;
   color: #777777;
 }
@@ -2933,7 +2940,37 @@ button.close {
 .navbar .nav > .active > a:hover,
 .navbar .nav > .active > a:focus {
   color: #555555;
-  background-color: #e1e1e1;
+  background-color: #d5d5d5;
+}
+
+@media screen and (min-width: 992px) {
+  .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .navbar .brand {
+    float: left;
+    margin-left: -15px;
+  }
+  .navbar .nav {
+    margin-top: 0;
+  }
+  .navbar .nav:before,
+  .navbar .nav:after {
+    display: table;
+    content: " ";
+  }
+  .navbar .nav:after {
+    clear: both;
+  }
+  .navbar .btn-navbar {
+    display: none;
+  }
+  .nav-collapse.collapse {
+    float: left;
+    height: auto !important;
+    overflow: visible !important;
+  }
 }
 
 .navbar-inverse {
@@ -2967,6 +3004,40 @@ button.close {
 
 .navbar-inverse .btn-navbar {
   background-color: #444;
+}
+
+.navbar-static-top {
+  position: static;
+  border-radius: 0;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  border-radius: 0;
+}
+
+.navbar-fixed-top {
+  top: 0;
+}
+
+.navbar-fixed-bottom {
+  bottom: 0;
+}
+
+.navbar .divider-vertical {
+  height: 26px;
+  margin: 7px 9px;
+  border-right: 1px solid #fbfbfb;
+  border-left: 1px solid #e1e1e1;
+}
+
+.navbar-form {
+  margin-top: 9px;
+  margin-bottom: 9px;
 }
 
 /*
@@ -4737,40 +4808,9 @@ a.badge:hover {
       }
     */
   
-    /* Required to make the collapsing navbar work on regular desktops */
-  
   }
   .container {
     max-width: 940px;
-  }
-  .navbar {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .navbar .brand {
-    float: left;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    margin-left: -15px;
-  }
-  .navbar .nav {
-    margin-top: 0;
-    overflow: hidden;
-  }
-  .navbar .nav > li {
-    float: left;
-  }
-  .navbar .nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .navbar .btn-navbar {
-    display: none;
-  }
-  .nav-collapse.collapse {
-    float: left;
-    height: auto !important;
-    overflow: visible !important;
   }
 }
 

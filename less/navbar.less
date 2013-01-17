@@ -6,24 +6,31 @@
 .navbar {
   padding: 15px;
   background-color: @navbar-bg;
+  border-radius: @border-radius-base;
+  // Prevent floats from breaking the navbar
   .clear_float();
 }
 
 // Brand/project name
+// -------------------------
+
 .navbar .brand {
   display: inline-block;
-  padding: 7px 15px;
+  padding: ((@navbar-height - @line-height-base) / 2) 15px;
   font-size: 18px;
   font-weight: bold;
-  line-height: 1;
+  line-height: @line-height-base;
   color: @navbar-brand-color;
   &:hover {
+    color: @navbar-brand-color-hover;
     text-decoration: none;
-    background-color: #ddd;
+    background-color: @navbar-brand-bg-hover;
   }
 }
 
 // Responsive navbar button
+// -------------------------
+
 .btn-navbar {
   float: right;
   padding: 10px 12px;
@@ -44,12 +51,19 @@
   }
 }
 
-// Nav links
+// Navbar nav links
+// -------------------------
+
 .navbar {
   .nav {
     margin-top: 15px; // space out from .navbar .brand and .btn-navbar
   }
+  .nav > li {
+    float: left;
+  }
   .nav > li > a {
+    padding-top: (@navbar-height - @line-height-base) / 2;
+    padding-bottom: (@navbar-height - @line-height-base) / 2;
     color: @navbar-link-color;
     line-height: 20px;
   }
@@ -65,8 +79,36 @@
     background-color: @navbar-link-bg-active;
   }
 }
+@media screen and (min-width: 992px) {
+
+  .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .navbar .brand {
+    float: left;
+    margin-left: -15px;
+  }
+  .navbar .nav {
+    .clear_float();
+    margin-top: 0; // undo top margin to make nav extend full height of navbar
+  }
+
+  // Required to make the collapsing navbar work on regular desktops
+  .navbar .btn-navbar {
+    display: none;
+  }
+  .nav-collapse.collapse {
+    float: left;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+}
 
 // Inverse navbar
+// -------------------------
+
 .navbar-inverse {
     background-color: @navbar-inverse-bg;
 
@@ -97,6 +139,45 @@
 
 
 
+//
+// Navbar alignment options
+// --------------------------------------------------
+
+// Static navbar
+.navbar-static-top {
+  position: static;
+  border-radius: 0;
+}
+
+// Fixed navbar
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindex-navbar-fixed;
+  border-radius: 0;
+}
+.navbar-fixed-top    { top: 0; }
+.navbar-fixed-bottom { bottom: 0; }
+
+
+//
+// Navbar optional components
+// --------------------------------------------------
+
+// Dividers in navbar
+.navbar .divider-vertical {
+  height: 26px;
+  margin: 7px 9px;
+  border-left: 1px solid darken(@navbar-bg, 5%);
+  border-right: 1px solid lighten(@navbar-bg, 5%);
+}
+
+// Navbar form
+.navbar-form {
+  .navbar-vertical-align(32px); // Vertically center in navbar
+}
 
 /*
 

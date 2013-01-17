@@ -55,11 +55,11 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  display: block;
+  display: inline-block;
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
   min-height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
-  margin-bottom: @line-height-base / 2;
+  // margin-bottom: @line-height-base / 2;
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
