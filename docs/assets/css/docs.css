@@ -457,9 +457,10 @@ input.focused {
 
 /* Scrollspy demo on fixed height div */
 .scrollspy-example {
-  height: 200px;
-  overflow: auto;
   position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
 }
 
 
