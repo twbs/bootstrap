@@ -43,6 +43,10 @@ a.text-info:hover    { color: darken(@infoText, 10%); }
 .text-success        { color: @successText; }
 a.text-success:hover { color: darken(@successText, 10%); }
 
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+
 
 // Headings
 // -------------------------
@@ -119,7 +123,7 @@ ul.inline,
 ol.inline {
   margin-left: 0;
   list-style: none;
-  & > li {
+  > li {
     display: inline-block;
     padding-left: 5px;
     padding-right: 5px;
@@ -185,7 +189,9 @@ blockquote {
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
-    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
+    font-size: @baseFontSize * 1.25;
+    font-weight: 300;
+    line-height: 1.25;
   }
   small {
     display: block;

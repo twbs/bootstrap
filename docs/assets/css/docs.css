@@ -552,6 +552,9 @@ h2 + .row {
 
 /* Example page
 ------------------------- */
+.bootstrap-examples h4 {
+  margin: 10px 0 5px;
+}
 .bootstrap-examples p {
   font-size: 13px;
   line-height: 18px;
