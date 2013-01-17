@@ -12,7 +12,7 @@
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- Le HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
       <script src="assets/js/respond/respond.js"></script>
@@ -207,6 +207,16 @@
 &lt;/html&gt;
 </pre>
           <p><strong>And you're set!</strong> With those two files added, you can begin to develop any site or application with Bootstrap.</p>
+
+          <hr>
+
+          <h4>Responsive features in IE8</h4>
+          <p>Internet Explorer 8 lacks support for media queries, the method by which we deliver responsive CSS to folks. To enable that, you need to include a third party tool (which we include in the project repository) called <a href="https://github.com/scottjehl/Respond">Respond.js</a>.</p>
+<pre class="prettyprint linenums">
+&lt;!--[if lt IE 9]&gt;
+  &lt;script src="assets/js/respond/respond.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;
+</pre>
         </section>
 
 
