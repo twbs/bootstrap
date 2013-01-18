@@ -112,6 +112,7 @@ section > ul li {
 }
 .marketing h1 {
   margin: 60px 0 10px;
+  font-size: 50px;
   line-height: 1;
 }
 .marketing h2 {
@@ -265,6 +266,18 @@ section > ul li {
 }
 .bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
+}
+
+
+
+/* Example templates
+-------------------------------------------------- */
+
+.bs-docs-examples h4 {
+  margin-bottom: 5px;
+}
+.bs-docs-examples p {
+  margin-bottom: 20px;
 }
 
 
@@ -426,6 +439,28 @@ section > ul li {
 }
 .bs-docs-social-buttons .twitter-share-button {
   width: 98px !important;
+}
+
+
+
+/* Misc docs stuff
+-------------------------------------------------- */
+
+/* Pseudo :focus state for showing how it looks in the docs */
+input.focused {
+  border-color: rgba(82,168,236,.8);
+  outline: 0;
+  outline: thin dotted \9; /* IE6-9 */
+  -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+       box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+/* Scrollspy demo on fixed height div */
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
 }
 
 

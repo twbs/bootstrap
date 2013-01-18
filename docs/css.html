@@ -12,10 +12,10 @@
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- Le HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="assets/js/respond/respond.js"></script>
+      <script src="assets/js/respond/respond.min.js"></script>
     <![endif]-->
 
     <!-- Le fav and touch icons -->
@@ -567,7 +567,7 @@
     Level 1: 9 columns
     &lt;div class="row"&gt;
       &lt;div class="span6"&gt;Level 2: 6 columns&lt;/div&gt;
-      &lt;div class="span3"&gt;Level 2: 6 columns&lt;/div&gt;
+      &lt;div class="span6"&gt;Level 2: 6 columns&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -1590,10 +1590,10 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <h3 id="forms-input-focus">Input focus</h3>
           <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
           <form class="bs-docs-example form-inline">
-            <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused...">
+            <input class="focused" id="focusedInput" type="text" value="This is focused...">
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="input-xlarge" id="focusedInput" type="text" value="This is focused..."&gt;
+&lt;input id="focusedInput" type="text" value="This is focused..."&gt;
 </pre>
 
           <h3 id="forms-invalid-inputs">Invalid inputs</h3>
@@ -1738,6 +1738,11 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
                 <td>Indicates a successful or positive action</td>
               </tr>
               <tr>
+                <td><button type="button" class="btn btn-info">Info</button></td>
+                <td><code>btn btn-info</code></td>
+                <td>Contextual button for informational alert messages</td>
+              </tr>
+              <tr>
                 <td><button type="button" class="btn btn-warning">Warning</button></td>
                 <td><code>btn btn-warning</code></td>
                 <td>Indicates caution should be taken with this action</td>
@@ -1870,12 +1875,12 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <div class="bs-docs-example bs-docs-example-images">
             <img data-src="holder.js/140x140" class="img-rounded">
             <img data-src="holder.js/140x140" class="img-circle">
-            <img data-src="holder.js/140x140" class="img-polaroid">
+            <img data-src="holder.js/140x140" class="img-thumbnail">
           </div>
 <pre class="prettyprint linenums">
 &lt;img src="..." class="img-rounded"&gt;
 &lt;img src="..." class="img-circle"&gt;
-&lt;img src="..." class="img-polaroid"&gt;
+&lt;img src="..." class="img-thumbnail"&gt;
 </pre>
 
         </section>
