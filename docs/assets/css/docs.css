@@ -473,7 +473,7 @@ input.focused {
 
   /* Account for fixed navbar */
   body {
-    padding-top: 44px;
+    padding-top: 52px;
   }
 
   /* Tweak display of docs jumbotrons */
