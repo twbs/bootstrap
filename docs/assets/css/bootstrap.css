@@ -262,19 +262,6 @@ img {
   border-radius: 6px;
 }
 
-.img-thumbnail {
-  display: block;
-  display: inline-block;
-  padding: 4px;
-  line-height: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: all 0.2s ease-in-out;
-     -moz-transition: all 0.2s ease-in-out;
-       -o-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-}
-
 .img-circle {
   border-radius: 500px;
 }
@@ -3932,8 +3919,8 @@ button.close {
   margin-top: 5px;
 }
 
-.thumbnail {
-  display: block;
+.thumbnail,
+.img-thumbnail {
   padding: 4px;
   line-height: 20px;
   border: 1px solid #ddd;
@@ -3942,6 +3929,14 @@ button.close {
      -moz-transition: all 0.2s ease-in-out;
        -o-transition: all 0.2s ease-in-out;
           transition: all 0.2s ease-in-out;
+}
+
+.thumbnail {
+  display: block;
+}
+
+.img-thumbnail {
+  display: inline-block;
 }
 
 a.thumbnail:hover {

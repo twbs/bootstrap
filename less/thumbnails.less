@@ -3,15 +3,26 @@
 // --------------------------------------------------
 
 
-// The actual thumbnail (can be `a` or `div`)
-.thumbnail {
-  display: block;
+// Base classes
+// For thumbnail block-level composite components and simple image styles
+
+// The actual thumbnailed element
+// Can be `a`, `div`, or `img`
+.thumbnail,
+.img-thumbnail {
   padding: 4px;
   line-height: @line-height-base;
   border: 1px solid #ddd;
   border-radius: @border-radius-base;
   .transition(all .2s ease-in-out);
 }
+.thumbnail {
+  display: block;
+}
+.img-thumbnail {
+  display: inline-block;
+}
+
 // Add a hover state for linked versions only
 a.thumbnail:hover {
   border-color: @link-color;
