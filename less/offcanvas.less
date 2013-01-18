@@ -10,20 +10,20 @@
   overflow: visible;
 }
 .row-offcanvas-right.active {
-  right: @grid-column-width-768 * 5;
+  right: @grid-column-width * 5;
 }
 .sidebar-offcanvas {
   position: absolute;
   top: 0;
 }
 .sidebar-offcanvas-right {
-  right: -@grid-column-width-768 * 5;
+  right: -@grid-column-width * 5;
 }
 
 @media screen and (max-width: 480px) {
 
   .sidebar-offcanvas {
-    width: @grid-column-width-768 * 5;
+    width: @grid-column-width * 5;
   }
 
 }
@@ -33,13 +33,13 @@
 @media screen and (min-width: 481px) and (max-width: 767px) {
 
   .row-offcanvas-right.active {
-    right: @grid-column-width-768 * 8;
+    right: @grid-column-width * 8;
   }
   .sidebar-offcanvas {
-    width: @grid-column-width-768 * 8;
+    width: @grid-column-width * 8;
   }
   .sidebar-offcanvas-right {
-    right: -@grid-column-width-768 * 8;
+    right: -@grid-column-width * 8;
   }
 
 }

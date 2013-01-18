@@ -4502,6 +4502,60 @@ a.badge:hover {
   }
 }
 
+.row-offcanvas {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.25s ease-out;
+     -moz-transition: all 0.25s ease-out;
+       -o-transition: all 0.25s ease-out;
+          transition: all 0.25s ease-out;
+}
+
+.row-offcanvas.active {
+  overflow: visible;
+}
+
+.row-offcanvas-right.active {
+  right: 300px;
+}
+
+.sidebar-offcanvas {
+  position: absolute;
+  top: 0;
+}
+
+.sidebar-offcanvas-right {
+  right: -300px;
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar-offcanvas {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .row-offcanvas-right.active {
+    right: 480px;
+  }
+  .sidebar-offcanvas {
+    width: 480px;
+  }
+  .sidebar-offcanvas-right {
+    right: -480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .row-offcanvas {
+    position: static;
+    overflow: visible;
+  }
+  .sidebar-offcanvas {
+    position: static;
+  }
+}
+
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -4596,59 +4650,5 @@ a.badge:hover {
   }
   .hidden-phone {
     display: none !important;
-  }
-}
-
-.row-offcanvas {
-  position: relative;
-  overflow: hidden;
-  -webkit-transition: all 0.25s ease-out;
-     -moz-transition: all 0.25s ease-out;
-       -o-transition: all 0.25s ease-out;
-          transition: all 0.25s ease-out;
-}
-
-.row-offcanvas.active {
-  overflow: visible;
-}
-
-.row-offcanvas-right.active {
-  right: 210px;
-}
-
-.sidebar-offcanvas {
-  position: absolute;
-  top: 0;
-}
-
-.sidebar-offcanvas-right {
-  right: -210px;
-}
-
-@media screen and (max-width: 480px) {
-  .sidebar-offcanvas {
-    width: 210px;
-  }
-}
-
-@media screen and (min-width: 481px) and (max-width: 767px) {
-  .row-offcanvas-right.active {
-    right: 336px;
-  }
-  .sidebar-offcanvas {
-    width: 336px;
-  }
-  .sidebar-offcanvas-right {
-    right: -336px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .row-offcanvas {
-    position: static;
-    overflow: visible;
-  }
-  .sidebar-offcanvas {
-    position: static;
   }
 }
