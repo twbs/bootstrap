@@ -2688,6 +2688,77 @@ button.close {
   background-color: #eeeeee;
 }
 
+.nav > .pull-right {
+  float: right;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs > li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+
+.nav-tabs > li > a:hover {
+  border-color: #eeeeee #eeeeee #dddddd;
+}
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  color: #555555;
+  cursor: default;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.nav-pills > li {
+  float: left;
+}
+
+.nav-pills > li > a {
+  border-radius: 5px;
+}
+
+.nav-pills > li + li > a {
+  margin-left: 2px;
+}
+
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.nav-stacked > li {
+  float: none;
+}
+
+.nav-stacked > li + li > a {
+  margin-top: 2px;
+  margin-left: 0;
+}
+
+.nav-justified {
+  max-height: 40px;
+}
+
+.nav-justified > li {
+  display: table-cell;
+  float: none;
+  width: 1%;
+  text-align: center;
+}
+
 .nav-list > li > a {
   margin-bottom: -1px;
   border: 1px solid #e5e5e5;
@@ -2711,156 +2782,45 @@ button.close {
   border-color: #428bca;
 }
 
+.nav > .disabled > a {
+  color: #999999;
+}
+
+.nav > .disabled > a:hover {
+  text-decoration: none;
+  cursor: default;
+  background-color: transparent;
+}
+
+.nav-header {
+  display: block;
+  padding: 3px 15px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #999999;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.nav li + .nav-header {
+  margin-top: 9px;
+}
+
+.nav .divider {
+  height: 1px;
+  margin: 9px 1px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #ffffff;
+}
+
 /*
 // Prevent IE8 from misplacing imgs
 // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
 .nav > li > a > img {
   max-width: none;
 }
-
-// Redeclare pull classes because of specifity
-.nav > .pull-right {
-  float: right;
-}
-
-// Nav headers (for dropdowns and lists)
-.nav-header {
-  display: block;
-  padding: 3px 15px;
-  font-size: 11px;
-  font-weight: bold;
-  line-height: @line-height-base;
-  color: @grayLight;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
-  text-transform: uppercase;
-}
-// Space them out when they follow another list item (link)
-.nav li + .nav-header {
-  margin-top: 9px;
-}
-
-// Dividers (basically an hr) within the dropdown
-.nav .divider {
-  .nav-divider();
-}
-*/
-
-/*
-// Tabs
-// -------------------------
-
-// Give the tabs something to sit on
-.nav-tabs {
-  border-bottom: 1px solid #ddd;
-}
-// Make the list-items overlay the bottom border
-.nav-tabs > li {
-  margin-bottom: -1px;
-}
-// Actual tabs (as links)
-.nav-tabs > li > a {
-  margin-right: 2px;
-  line-height: @line-height-base;
-  border: 1px solid transparent;
-  border-radius: @border-radius-base @border-radius-base 0 0;
-  &:hover {
-    border-color: @grayLighter @grayLighter #ddd;
-  }
-}
-// Active state, and it's :hover to override normal :hover
-.nav-tabs > .active > a,
-.nav-tabs > .active > a:hover {
-  color: @gray;
-  background-color: @body-background;
-  border: 1px solid #ddd;
-  border-bottom-color: transparent;
-  cursor: default;
-}
-
-
-
-// Pills
-// -------------------------
-
-// Links rendered as pills
-.nav-pills > li > a {
-  border-radius: 5px;
-}
-.nav-pills > li + li > a {
-  margin-left: 2px;
-}
-
-// Active state
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover {
-  color: #fff;
-  background-color: @link-color;
-}
-
-// Stacked pills
-.nav-stacked > li {
-  float: none;
-}
-.nav-stacked > li + li > a {
-  margin-top: 2px;
-  margin-left: 0; // no need for the gap between nav items
-}
-
-
-
-// Justified navs
-// -------------------------
-
-.nav-justified {
-  // Negative margin doesn't work, so we hack it
-  max-height: 37px;
-}
-.nav-justified > li {
-  float: none;
-  display: table-cell;
-  width: 1%;
-  text-align: center;
-}
-
-
-
-// Lists
-// -------------------------
-
-.nav-list {
-  background-color: #fff;
-  border-radius: 6px;
-  .box-shadow(0 1px 4px rgba(0,0,0,.065))
-}
-.nav-list > li {
-  float: none;
-}
-.nav-list > li > a {
-  margin-bottom: -1px; // pull up the following link for a 1px border between
-  border: 1px solid #e5e5e5;
-}
-.nav-list > li > a:hover {
-  background-color: #f5f5f5;
-}
-.nav-list > li:first-child > a {
-  border-radius: 6px 6px 0 0;
-}
-.nav-list > li:last-child > a {
-  border-radius: 0 0 6px 6px;
-}
-.nav-list > .active > a,
-.nav-list > .active > a:hover {
-  position: relative;
-  z-index: 2;
-  padding: 9px 15px;
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,.15);
-  background-color: @link-color;
-  border-width: 0;
-  .box-shadow(~"inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1)")
-}
-
-
 
 // Dropdowns
 // -------------------------
@@ -2942,21 +2902,6 @@ button.close {
   display: block;
 }
 
-
-
-// Disabled state
-// -------------------------
-
-// Gray out text
-.nav > .disabled > a {
-  color: @grayLight;
-}
-// Nuke hover effects
-.nav > .disabled > a:hover {
-  text-decoration: none;
-  background-color: transparent;
-  cursor: default;
-}
 */
 
 .navbar {
