@@ -14,7 +14,7 @@
 
     <!-- Le HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="assets/js/html5shiv.js"></script>
       <script src="assets/js/respond/respond.min.js"></script>
     <![endif]-->
 
@@ -1019,6 +1019,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
               <p>delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
               <p>If a number is supplied, delay is applied to both hide/show</p>
               <p>Object structure is: <code>delay: { show: 500, hide: 100 }</code></p>
+             </td>
+           </tr>
+           <tr>
+             <td>container</td>
+             <td>string | false</td>
+             <td>false</td>
+             <td>
+              <p>Appends the popover to a specific element <code>container: 'body'</code></p>
              </td>
            </tr>
           </tbody>
