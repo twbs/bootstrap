@@ -168,6 +168,17 @@ input[type="button"] {
         border-color: darken(@btn-border-success, 10%);
   }
 }
+// Info appears as blue-green
+.btn-info {
+  background-color: @btn-background-info;
+      border-color: @btn-border-info;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken(@btn-background-info, 5%);
+        border-color: darken(@btn-border-info, 10%);
+  }
+}
 
 
 // Link buttons

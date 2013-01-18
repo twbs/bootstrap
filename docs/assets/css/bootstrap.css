@@ -1733,6 +1733,18 @@ input[type="button"].btn-block {
   border-color: #449d44;
 }
 
+.btn-info {
+  background-color: #5bc0de;
+  border-color: #5bc0de;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+  background-color: #46b8da;
+  border-color: #31b0d5;
+}
+
 .btn-link,
 .btn-link:active,
 .btn-link[disabled],
