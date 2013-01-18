@@ -111,8 +111,8 @@ input[type="button"] {
 
 // Mixin for darkening only enabled buttons for link states
 .darken-button-states (@background, @border) {
-  &:not([disabled]):not(.disabled),
-  fieldset:not([disabled]) & {
+  fieldset:not([disabled]) &:not([disabled]):not(.disabled),
+  &:not([disabled]):not(.disabled) {
     &:hover,
     &:focus,
     &:active {

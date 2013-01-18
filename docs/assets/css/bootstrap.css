@@ -1661,12 +1661,12 @@ input[type="button"].btn-block {
   border-color: #a7a9aa;
 }
 
+fieldset:not([disabled]) .btn:not([disabled]):not(.disabled):hover,
 .btn:not([disabled]):not(.disabled):hover,
-fieldset:not([disabled]) .btn:hover,
+fieldset:not([disabled]) .btn:not([disabled]):not(.disabled):focus,
 .btn:not([disabled]):not(.disabled):focus,
-fieldset:not([disabled]) .btn:focus,
-.btn:not([disabled]):not(.disabled):active,
-fieldset:not([disabled]) .btn:active {
+fieldset:not([disabled]) .btn:not([disabled]):not(.disabled):active,
+.btn:not([disabled]):not(.disabled):active {
   background-color: #9a9c9d;
   border-color: #8d9091;
 }
@@ -1676,12 +1676,12 @@ fieldset:not([disabled]) .btn:active {
   border-color: #428bca;
 }
 
+fieldset:not([disabled]) .btn-primary:not([disabled]):not(.disabled):hover,
 .btn-primary:not([disabled]):not(.disabled):hover,
-fieldset:not([disabled]) .btn-primary:hover,
+fieldset:not([disabled]) .btn-primary:not([disabled]):not(.disabled):focus,
 .btn-primary:not([disabled]):not(.disabled):focus,
-fieldset:not([disabled]) .btn-primary:focus,
-.btn-primary:not([disabled]):not(.disabled):active,
-fieldset:not([disabled]) .btn-primary:active {
+fieldset:not([disabled]) .btn-primary:not([disabled]):not(.disabled):active,
+.btn-primary:not([disabled]):not(.disabled):active {
   background-color: #357ebd;
   border-color: #3071a9;
 }
@@ -1691,12 +1691,12 @@ fieldset:not([disabled]) .btn-primary:active {
   border-color: #f0ad4e;
 }
 
+fieldset:not([disabled]) .btn-warning:not([disabled]):not(.disabled):hover,
 .btn-warning:not([disabled]):not(.disabled):hover,
-fieldset:not([disabled]) .btn-warning:hover,
+fieldset:not([disabled]) .btn-warning:not([disabled]):not(.disabled):focus,
 .btn-warning:not([disabled]):not(.disabled):focus,
-fieldset:not([disabled]) .btn-warning:focus,
-.btn-warning:not([disabled]):not(.disabled):active,
-fieldset:not([disabled]) .btn-warning:active {
+fieldset:not([disabled]) .btn-warning:not([disabled]):not(.disabled):active,
+.btn-warning:not([disabled]):not(.disabled):active {
   background-color: #eea236;
   border-color: #ec971f;
 }
@@ -1706,12 +1706,12 @@ fieldset:not([disabled]) .btn-warning:active {
   border-color: #d9534f;
 }
 
+fieldset:not([disabled]) .btn-danger:not([disabled]):not(.disabled):hover,
 .btn-danger:not([disabled]):not(.disabled):hover,
-fieldset:not([disabled]) .btn-danger:hover,
+fieldset:not([disabled]) .btn-danger:not([disabled]):not(.disabled):focus,
 .btn-danger:not([disabled]):not(.disabled):focus,
-fieldset:not([disabled]) .btn-danger:focus,
-.btn-danger:not([disabled]):not(.disabled):active,
-fieldset:not([disabled]) .btn-danger:active {
+fieldset:not([disabled]) .btn-danger:not([disabled]):not(.disabled):active,
+.btn-danger:not([disabled]):not(.disabled):active {
   background-color: #d43f3a;
   border-color: #c9302c;
 }
@@ -1721,12 +1721,12 @@ fieldset:not([disabled]) .btn-danger:active {
   border-color: #5cb85c;
 }
 
+fieldset:not([disabled]) .btn-success:not([disabled]):not(.disabled):hover,
 .btn-success:not([disabled]):not(.disabled):hover,
-fieldset:not([disabled]) .btn-success:hover,
+fieldset:not([disabled]) .btn-success:not([disabled]):not(.disabled):focus,
 .btn-success:not([disabled]):not(.disabled):focus,
-fieldset:not([disabled]) .btn-success:focus,
-.btn-success:not([disabled]):not(.disabled):active,
-fieldset:not([disabled]) .btn-success:active {
+fieldset:not([disabled]) .btn-success:not([disabled]):not(.disabled):active,
+.btn-success:not([disabled]):not(.disabled):active {
   background-color: #4cae4c;
   border-color: #449d44;
 }
@@ -1736,12 +1736,12 @@ fieldset:not([disabled]) .btn-success:active {
   border-color: #5bc0de;
 }
 
+fieldset:not([disabled]) .btn-info:not([disabled]):not(.disabled):hover,
 .btn-info:not([disabled]):not(.disabled):hover,
-fieldset:not([disabled]) .btn-info:hover,
+fieldset:not([disabled]) .btn-info:not([disabled]):not(.disabled):focus,
 .btn-info:not([disabled]):not(.disabled):focus,
-fieldset:not([disabled]) .btn-info:focus,
-.btn-info:not([disabled]):not(.disabled):active,
-fieldset:not([disabled]) .btn-info:active {
+fieldset:not([disabled]) .btn-info:not([disabled]):not(.disabled):active,
+.btn-info:not([disabled]):not(.disabled):active {
   background-color: #46b8da;
   border-color: #31b0d5;
 }
