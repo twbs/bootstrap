@@ -3991,60 +3991,38 @@ a.thumbnail:hover {
   list-style: none;
 }
 
-.badge {
+.counter {
   display: inline-block;
-  padding: 2px 4px;
+  min-width: 10px;
+  padding: 2px 7px;
   font-size: 11.844px;
   font-weight: bold;
   line-height: 14px;
   color: #fff;
+  text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   white-space: nowrap;
   vertical-align: baseline;
   background-color: #999999;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 
-.badge:empty {
+.counter:empty {
   display: none;
 }
 
-a.badge:hover {
+a.counter:hover {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.badge-danger {
-  background-color: #b94a48;
-}
-
-.badge-danger[href] {
-  background-color: #953b39;
-}
-
-.badge-warning {
-  background-color: #f89406;
-}
-
-.badge-warning[href] {
-  background-color: #c67605;
-}
-
-.badge-success {
-  background-color: #468847;
-}
-
-.badge-success[href] {
-  background-color: #356635;
-}
-
-.btn .badge {
+.btn .counter {
   position: relative;
   top: -1px;
 }
 
-.btn-mini .badge {
+.btn-mini .counter {
   top: 0;
 }
 
