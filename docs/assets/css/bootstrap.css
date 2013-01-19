@@ -1271,23 +1271,23 @@ input[type="color"].input-small,
   border-radius: 3px;
 }
 
-select.input-mini,
-textarea.input-mini,
-input[type="text"].input-mini,
-input[type="password"].input-mini,
-input[type="datetime"].input-mini,
-input[type="datetime-local"].input-mini,
-input[type="date"].input-mini,
-input[type="month"].input-mini,
-input[type="time"].input-mini,
-input[type="week"].input-mini,
-input[type="number"].input-mini,
-input[type="email"].input-mini,
-input[type="url"].input-mini,
-input[type="search"].input-mini,
-input[type="tel"].input-mini,
-input[type="color"].input-mini,
-.uneditable-input.input-mini {
+select.input-xsmall,
+textarea.input-xsmall,
+input[type="text"].input-xsmall,
+input[type="password"].input-xsmall,
+input[type="datetime"].input-xsmall,
+input[type="datetime-local"].input-xsmall,
+input[type="date"].input-xsmall,
+input[type="month"].input-xsmall,
+input[type="time"].input-xsmall,
+input[type="week"].input-xsmall,
+input[type="number"].input-xsmall,
+input[type="email"].input-xsmall,
+input[type="url"].input-xsmall,
+input[type="search"].input-xsmall,
+input[type="tel"].input-xsmall,
+input[type="color"].input-xsmall,
+.uneditable-input.input-xsmall {
   padding: 0 6px;
   font-size: 10.5px;
   border-radius: 3px;
