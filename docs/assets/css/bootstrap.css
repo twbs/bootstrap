@@ -1673,9 +1673,12 @@ input[type="button"].btn-block {
   border-color: #a7a9aa;
 }
 
-.btn:hover,
-.btn:focus,
-.btn:active {
+fieldset:not([disabled]) .btn:not([disabled]):not(.disabled):hover,
+.btn:not([disabled]):not(.disabled):hover,
+fieldset:not([disabled]) .btn:not([disabled]):not(.disabled):focus,
+.btn:not([disabled]):not(.disabled):focus,
+fieldset:not([disabled]) .btn:not([disabled]):not(.disabled):active,
+.btn:not([disabled]):not(.disabled):active {
   background-color: #9a9c9d;
   border-color: #8d9091;
 }
@@ -1685,9 +1688,12 @@ input[type="button"].btn-block {
   border-color: #428bca;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
+fieldset:not([disabled]) .btn-primary:not([disabled]):not(.disabled):hover,
+.btn-primary:not([disabled]):not(.disabled):hover,
+fieldset:not([disabled]) .btn-primary:not([disabled]):not(.disabled):focus,
+.btn-primary:not([disabled]):not(.disabled):focus,
+fieldset:not([disabled]) .btn-primary:not([disabled]):not(.disabled):active,
+.btn-primary:not([disabled]):not(.disabled):active {
   background-color: #357ebd;
   border-color: #3071a9;
 }
@@ -1697,9 +1703,12 @@ input[type="button"].btn-block {
   border-color: #f0ad4e;
 }
 
-.btn-warning:hover,
-.btn-warning:focus,
-.btn-warning:active {
+fieldset:not([disabled]) .btn-warning:not([disabled]):not(.disabled):hover,
+.btn-warning:not([disabled]):not(.disabled):hover,
+fieldset:not([disabled]) .btn-warning:not([disabled]):not(.disabled):focus,
+.btn-warning:not([disabled]):not(.disabled):focus,
+fieldset:not([disabled]) .btn-warning:not([disabled]):not(.disabled):active,
+.btn-warning:not([disabled]):not(.disabled):active {
   background-color: #eea236;
   border-color: #ec971f;
 }
@@ -1709,9 +1718,12 @@ input[type="button"].btn-block {
   border-color: #d9534f;
 }
 
-.btn-danger:hover,
-.btn-danger:focus,
-.btn-danger:active {
+fieldset:not([disabled]) .btn-danger:not([disabled]):not(.disabled):hover,
+.btn-danger:not([disabled]):not(.disabled):hover,
+fieldset:not([disabled]) .btn-danger:not([disabled]):not(.disabled):focus,
+.btn-danger:not([disabled]):not(.disabled):focus,
+fieldset:not([disabled]) .btn-danger:not([disabled]):not(.disabled):active,
+.btn-danger:not([disabled]):not(.disabled):active {
   background-color: #d43f3a;
   border-color: #c9302c;
 }
@@ -1721,9 +1733,12 @@ input[type="button"].btn-block {
   border-color: #5cb85c;
 }
 
-.btn-success:hover,
-.btn-success:focus,
-.btn-success:active {
+fieldset:not([disabled]) .btn-success:not([disabled]):not(.disabled):hover,
+.btn-success:not([disabled]):not(.disabled):hover,
+fieldset:not([disabled]) .btn-success:not([disabled]):not(.disabled):focus,
+.btn-success:not([disabled]):not(.disabled):focus,
+fieldset:not([disabled]) .btn-success:not([disabled]):not(.disabled):active,
+.btn-success:not([disabled]):not(.disabled):active {
   background-color: #4cae4c;
   border-color: #449d44;
 }
@@ -1733,9 +1748,12 @@ input[type="button"].btn-block {
   border-color: #5bc0de;
 }
 
-.btn-info:hover,
-.btn-info:focus,
-.btn-info:active {
+fieldset:not([disabled]) .btn-info:not([disabled]):not(.disabled):hover,
+.btn-info:not([disabled]):not(.disabled):hover,
+fieldset:not([disabled]) .btn-info:not([disabled]):not(.disabled):focus,
+.btn-info:not([disabled]):not(.disabled):focus,
+fieldset:not([disabled]) .btn-info:not([disabled]):not(.disabled):active,
+.btn-info:not([disabled]):not(.disabled):active {
   background-color: #46b8da;
   border-color: #31b0d5;
 }
