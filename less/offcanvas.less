@@ -9,21 +9,56 @@
 .row-offcanvas.active {
   overflow: visible;
 }
+.row-offcanvas-right {
+  .sidebar-offcanvas {
+    right: -@offcanvas-column-width-base;
+  }
+}
+.row-offcanvas-left {
+  .sidebar-offcanvas {
+    left: -@offcanvas-column-width-base;
+  }
+}
 .row-offcanvas-right.active {
-  right: @grid-column-width * 5;
+  right: @offcanvas-column-width-base;
+}
+.row-offcanvas-left.active {
+  left: @offcanvas-column-width-base;
 }
 .sidebar-offcanvas {
   position: absolute;
   top: 0;
 }
-.sidebar-offcanvas-right {
-  right: -@grid-column-width * 5;
+
+@media screen and (max-width: 319px) {
+  // This is here instead of outside the media queries because when
+  // we exit "mobile land", the sidebar needs to be able to restore its
+  // originally authored ".spanX" width.
+  .sidebar-offcanvas {
+    width: @offcanvas-column-width-base;
+  }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 480px) {
 
+  .row-offcanvas-right {
+    .sidebar-offcanvas {
+      right: -@offcanvas-column-width-phone;
+    }
+  }
+  .row-offcanvas-left {
+    .sidebar-offcanvas {
+      left: -@offcanvas-column-width-phone;
+    }
+  }
+  .row-offcanvas-right.active {
+    right: @offcanvas-column-width-phone;
+  }
+  .row-offcanvas-left.active {
+    left: @offcanvas-column-width-phone;
+  }
   .sidebar-offcanvas {
-    width: @grid-column-width * 5;
+    width: @offcanvas-column-width-phone;
   }
 
 }
@@ -32,14 +67,24 @@
 // --------------------------
 @media screen and (min-width: 481px) and (max-width: 767px) {
 
+  .row-offcanvas-right {
+    .sidebar-offcanvas {
+      right: -@offcanvas-column-width-tablet;
+    }
+  }
+  .row-offcanvas-left {
+    .sidebar-offcanvas {
+    left: -@offcanvas-column-width-tablet;
+    }
+  }
   .row-offcanvas-right.active {
-    right: @grid-column-width * 8;
+    right: @offcanvas-column-width-tablet;
+  }
+  .row-offcanvas-left.active {
+    left: @offcanvas-column-width-tablet;
   }
   .sidebar-offcanvas {
-    width: @grid-column-width * 8;
-  }
-  .sidebar-offcanvas-right {
-    right: -@grid-column-width * 8;
+    width: @offcanvas-column-width-tablet;
   }
 
 }
