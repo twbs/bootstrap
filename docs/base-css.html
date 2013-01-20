@@ -952,7 +952,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <h3>Inline form</h3>
           <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
           <form class="bs-docs-example form-inline">
-            <input type="text" class="input-small" placeholder="Email">
+            <input type="text" class="input-small" placeholder="Email" autocomplete="email">
             <input type="password" class="input-small" placeholder="Password">
             <label class="checkbox">
               <input type="checkbox"> Remember me
@@ -961,7 +961,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           </form>
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
-  &lt;input type="text" class="input-small" placeholder="Email"&gt;
+  &lt;input type="text" class="input-small" placeholder="Email" autocomplete="email"&gt;
   &lt;input type="password" class="input-small" placeholder="Password"&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; Remember me
@@ -982,7 +982,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
             <div class="control-group">
               <label class="control-label" for="inputEmail">Email</label>
               <div class="controls">
-                <input type="text" id="inputEmail" placeholder="Email">
+                <input type="text" id="inputEmail" placeholder="Email" autocomplete="email">
               </div>
             </div>
             <div class="control-group">
@@ -1005,7 +1005,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
   &lt;div class="control-group"&gt;
     &lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="text" id="inputEmail" placeholder="Email"&gt;
+      &lt;input type="text" id="inputEmail" placeholder="Email" autocomplete="email"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
@@ -1587,7 +1587,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <h3>Invalid inputs</h3>
           <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
           <form class="bs-docs-example form-inline">
-            <input class="span3" type="email" placeholder="test@example.com" required>
+            <input class="span3" type="email" placeholder="test@example.com" autocomplete="email" required>
           </form>
 <pre class="prettyprint linenums">
 &lt;input class="span3" type="email" required&gt;
@@ -2138,7 +2138,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <label class="control-label" for="inputIcon">Email address</label>
               <div class="controls">
                 <div class="input-prepend">
-                  <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text">
+                  <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text" autocomplete="email">
                 </div>
               </div>
             </div>
@@ -2149,7 +2149,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
   &lt;div class="controls"&gt;
     &lt;div class="input-prepend"&gt;
       &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
-      &lt;input class="span2" id="inputIcon" type="text"&gt;
+      &lt;input class="span2" id="inputIcon" type="text" autocomplete="email"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
