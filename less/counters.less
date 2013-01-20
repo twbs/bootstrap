@@ -6,18 +6,17 @@
 // Base classes
 .counter {
   display: inline-block;
-  padding: 2px 7px;
-  font-size: @font-size-base * .846;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
   font-weight: bold;
-  line-height: 14px; // ensure proper line-height if floated
   color: #fff;
-  vertical-align: baseline;
+  line-height: 1;
+  vertical-align: middle;
   white-space: nowrap;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  text-align: center;
   background-color: @grayLight;
   border-radius: 10px;
-  min-width: 10px;
-  text-align: center;
 
   // Empty labels/badges collapse
   &:empty {
@@ -45,4 +44,14 @@ a.counter {
   .counter {
     top: 0;
   }
+}
+
+// Account for counters in navs
+.nav-list > .active > a > .counter,
+.nav-pills > .active > a > .counter {
+  color: @link-color;
+  background-color: #fff;
+}
+.nav-pills > li > a > .counter {
+  margin-left: 3px;
 }

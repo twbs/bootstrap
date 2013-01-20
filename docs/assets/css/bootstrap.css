@@ -425,13 +425,13 @@ h6 small {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   margin-top: 20px;
   margin-bottom: 10px;
   line-height: 40px;
 }
 
+h3,
 h4,
 h5,
 h6 {
@@ -4006,15 +4006,14 @@ a.thumbnail:hover {
 .counter {
   display: inline-block;
   min-width: 10px;
-  padding: 2px 7px;
-  font-size: 11.844px;
+  padding: 3px 7px;
+  font-size: 12px;
   font-weight: bold;
-  line-height: 14px;
+  line-height: 1;
   color: #fff;
   text-align: center;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   white-space: nowrap;
-  vertical-align: baseline;
+  vertical-align: middle;
   background-color: #999999;
   border-radius: 10px;
 }
@@ -4036,6 +4035,16 @@ a.counter:hover {
 
 .btn-mini .counter {
   top: 0;
+}
+
+.nav-list > .active > a > .counter,
+.nav-pills > .active > a > .counter {
+  color: #428bca;
+  background-color: #fff;
+}
+
+.nav-pills > li > a > .counter {
+  margin-left: 3px;
 }
 
 @-webkit-keyframes progress-bar-stripes {
