@@ -42,7 +42,6 @@
       //that the previously set interval is unset, so that you don't
       //create lots of unclearable intervals.
       if (this.interval) clearInterval(this.interval);
-
       this.options.interval
         && !this.paused
         && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
