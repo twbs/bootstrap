@@ -1,0 +1,32 @@
+//
+// Jumbotron
+// --------------------------------------------------
+
+
+.jumbotron {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: @line-height-base * 1.5;
+  color: @jumbotron-lead-color;
+  background-color: @jumbotron-background;
+  border-radius: 6px;
+  h1 {
+    line-height: 1;
+    color: @jumbotron-heading-color;
+  }
+  p {
+    line-height: 1.4;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding: 50px 60px;
+
+    h1 {
+      font-size: 60px;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+//
+// Labels and badges
+// --------------------------------------------------
+
+
+// Base classes
+.counter {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: @grayLight;
+  border-radius: 10px;
+
+  // Empty labels/badges collapse
+  &:empty {
+    display: none;
+  }
+}
+
+// Hover state, but only for links
+a.counter {
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Quick fix for labels/badges in buttons
+.btn {
+  .counter {
+    position: relative;
+    top: -1px;
+  }
+}
+.btn-mini {
+  .counter {
+    top: 0;
+  }
+}
+
+// Account for counters in navs
+.nav-list > .active > a > .counter,
+.nav-pills > .active > a > .counter {
+  color: @link-color;
+  background-color: #fff;
+}
+.nav-pills > li > a > .counter {
+  margin-left: 3px;
+}

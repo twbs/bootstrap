@@ -7,18 +7,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
+    <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Le fav and touch icons -->
+    <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -32,39 +34,37 @@
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="./index.html">Home</a>
-              </li>
-              <li class="">
-                <a href="./getting-started.html">Get started</a>
-              </li>
-              <li class="">
-                <a href="./scaffolding.html">Scaffolding</a>
-              </li>
-              <li class="active">
-                <a href="./base-css.html">Base CSS</a>
-              </li>
-              <li class="">
-                <a href="./components.html">Components</a>
-              </li>
-              <li class="">
-                <a href="./javascript.html">JavaScript</a>
-              </li>
-              <li class="">
-                <a href="./customize.html">Customize</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./index.html">Bootstrap</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="">
+              <a href="./index.html">Home</a>
+            </li>
+            <li class="">
+              <a href="./getting-started.html">Get started</a>
+            </li>
+            <li class="">
+              <a href="./css.html">CSS</a>
+            </li>
+            <li class="">
+              <a href="./components.html">Components</a>
+            </li>
+            <li class="">
+              <a href="./javascript.html">JavaScript</a>
+            </li>
+            <li class="">
+              <a href="./customize.html">Customize</a>
+            </li>
+            <li class="">
+              <a href="./gallery.html">Gallery</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -169,6 +169,19 @@
           <pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
 
           <p><span class="label label-info">Heads up!</span> Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+
+          <h3>Alignment classes</h3>
+          <p>Easily realign text to components with text alignment classes.</p>
+          <div class="bs-docs-example">
+            <p class="text-left">Left aligned text.</p>
+            <p class="text-center">Center aligned text.</p>
+            <p class="text-right">Right aligned text.</p>
+          </div>
+<pre class="prettyprint linenums">
+&lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt;
+&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
+&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
+</pre>
 
           <h3>Emphasis classes</h3>
           <p>Convey meaning through color with a handful of emphasis utility classes.</p>
@@ -453,7 +466,7 @@
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
 <pre class="prettyprint linenums">
-For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inline.
+For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped as inline.
 </pre>
 
           <h2>Basic block</h2>
@@ -527,7 +540,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
           <p>Add any of the following classes to the <code>.table</code> base class.</p>
 
           <h3><code>.table-striped</code></h3>
-          <p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE7-IE8).</p>
+          <p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE7-8).</p>
           <div class="bs-docs-example">
             <table class="table table-striped">
               <thead>
@@ -1572,7 +1585,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 </pre>
 
           <h3>Invalid inputs</h3>
-          <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code> and add the <code>required</code> attribute.</p>
+          <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
           <form class="bs-docs-example form-inline">
             <input class="span3" type="email" placeholder="test@example.com" required>
           </form>
@@ -1630,6 +1643,7 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     &lt;span class="help-inline"&gt;Something may have gone wrong&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+
 &lt;div class="control-group error"&gt;
   &lt;label class="control-label" for="inputError"&gt;Input with error&lt;/label&gt;
   &lt;div class="controls"&gt;
@@ -1637,6 +1651,15 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     &lt;span class="help-inline"&gt;Please correct the error&lt;/span&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+
+&lt;div class="control-group info"&gt;
+  &lt;label class="control-label" for="inputInfo"&gt;Input with info&lt;/label&gt;
+  &lt;div class="controls"&gt;
+    &lt;input type="text" id="inputInfo"&gt;
+    &lt;span class="help-inline"&gt;Username is already taken&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;div class="control-group success"&gt;
   &lt;label class="control-label" for="inputSuccess"&gt;Input with success&lt;/label&gt;
   &lt;div class="controls"&gt;
@@ -2041,7 +2064,6 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 <pre class="prettyprint linenums">
 &lt;div class="btn-toolbar"&gt;
   &lt;div class="btn-group"&gt;
-
     &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
     &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
     &lt;a class="btn" href="#"&gt;&lt;i class="icon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
@@ -2148,6 +2170,25 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     ================================================== -->
     <footer class="footer">
       <div class="container">
+
+        <div class="bs-docs-social">
+          <ul class="bs-docs-social-buttons">
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            </li>
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
+            </li>
+            <li class="follow-btn">
+              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
+            </li>
+            <li class="tweet-btn">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
+            </li>
+          </ul>
+        </div>
+
+
         <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
         <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
@@ -2163,10 +2204,9 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
 
 
 
-    <!-- Le javascript
+    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
@@ -2182,11 +2222,11 @@ For example, &lt;code&gt;&lt;section&gt;&lt;/code&gt; should be wrapped as inlin
     <script src="assets/js/bootstrap-typeahead.js"></script>
     <script src="assets/js/bootstrap-affix.js"></script>
 
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/holder/holder.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
 
     <script src="assets/js/application.js"></script>
-
 
 
   </body>

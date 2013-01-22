@@ -7,13 +7,13 @@
 // -------------------------
 
 p {
-  margin: 0 0 @baseLineHeight / 2;
+  margin: 0 0 @line-height-base / 2;
 }
 .lead {
-  margin-bottom: @baseLineHeight;
-  font-size: @baseFontSize * 1.5;
+  margin-bottom: @line-height-base;
+  font-size: @font-size-base * 1.5;
   font-weight: 200;
-  line-height: @baseLineHeight * 1.5;
+  line-height: 1.25;
 }
 
 
@@ -31,28 +31,31 @@ cite    { font-style: normal; }
 .muted               { color: @grayLight; }
 a.muted:hover        { color: darken(@grayLight, 10%); }
 
-.text-warning        { color: @warningText; }
-a.text-warning:hover { color: darken(@warningText, 10%); }
+.text-warning        { color: @state-warning-text; }
+a.text-warning:hover { color: darken(@state-warning-text, 10%); }
 
-.text-error          { color: @errorText; }
-a.text-error:hover   { color: darken(@errorText, 10%); }
+.text-error          { color: @state-error-text; }
+a.text-error:hover   { color: darken(@state-error-text, 10%); }
 
-.text-info           { color: @infoText; }
-a.text-info:hover    { color: darken(@infoText, 10%); }
+.text-success        { color: @state-success-text; }
+a.text-success:hover { color: darken(@state-success-text, 10%); }
 
-.text-success        { color: @successText; }
-a.text-success:hover { color: darken(@successText, 10%); }
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
 
 
 // Headings
 // -------------------------
 
 h1, h2, h3, h4, h5, h6 {
-  margin: (@baseLineHeight / 2) 0;
-  font-family: @headingsFontFamily;
-  font-weight: @headingsFontWeight;
-  line-height: @baseLineHeight;
-  color: @headingsColor;
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @line-height-base;
   text-rendering: optimizelegibility; // Fix the character spacing for headings
   small {
     font-weight: normal;
@@ -62,28 +65,38 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1,
-h2,
-h3 { line-height: @baseLineHeight * 2; }
+h2 {
+  margin-top: @line-height-base;
+  margin-bottom: @line-height-base / 2;
+  line-height: @line-height-base * 2;
+}
+h3,
+h4,
+h5,
+h6 {
+  margin-top: @line-height-base / 2;
+  margin-bottom: @line-height-base / 2;
+}
 
-h1 { font-size: @baseFontSize * 2.75; } // ~38px
-h2 { font-size: @baseFontSize * 2.25; } // ~32px
-h3 { font-size: @baseFontSize * 1.75; } // ~24px
-h4 { font-size: @baseFontSize * 1.25; } // ~18px
-h5 { font-size: @baseFontSize; }
-h6 { font-size: @baseFontSize * 0.85; } // ~12px
+h1 { font-size: @font-size-base * 2.75; font-size: 4rem; } // ~38px
+h2 { font-size: @font-size-base * 2.25; font-size: 3rem; } // ~32px
+h3 { font-size: @font-size-base * 1.75; font-size: 2.5rem; } // ~24px
+h4 { font-size: @font-size-base * 1.25; font-size: 2rem; } // ~18px
+h5 { font-size: @font-size-base; font-size: 1.6rem; }
+h6 { font-size: @font-size-base * 0.85; font-size: 1.2rem; } // ~12px
 
-h1 small { font-size: @baseFontSize * 1.75; } // ~24px
-h2 small { font-size: @baseFontSize * 1.25; } // ~18px
-h3 small { font-size: @baseFontSize; }
-h4 small { font-size: @baseFontSize; }
+h1 small { font-size: @font-size-base * 1.75; } // ~24px
+h2 small { font-size: @font-size-base * 1.25; } // ~18px
+h3 small { font-size: @font-size-base; }
+h4 small { font-size: @font-size-base; }
 
 
 // Page header
 // -------------------------
 
 .page-header {
-  padding-bottom: (@baseLineHeight / 2) - 1;
-  margin: @baseLineHeight 0 (@baseLineHeight * 1.5);
+  padding-bottom: (@line-height-base / 2) - 1;
+  margin: (@line-height-base * 2) 0 @line-height-base;
   border-bottom: 1px solid @grayLighter;
 }
 
@@ -93,9 +106,10 @@ h4 small { font-size: @baseFontSize; }
 // --------------------------------------------------
 
 // Unordered and Ordered lists
-ul, ol {
+ul,
+ol {
   padding: 0;
-  margin: 0 0 @baseLineHeight / 2 25px;
+  margin: 0 0 (@line-height-base / 2) 25px;
 }
 ul ul,
 ul ol,
@@ -104,54 +118,50 @@ ol ul {
   margin-bottom: 0;
 }
 li {
-  line-height: @baseLineHeight;
+  line-height: @line-height-base;
 }
 
-// Remove default list styles
-ul.unstyled,
-ol.unstyled {
+// List options
+// Unstyled keeps list items block level, just removes list-style
+.list-unstyled,
+// Inline turns list items into inline-block
+.list-inline {
   margin-left: 0;
   list-style: none;
 }
-
 // Single-line list items
-ul.inline,
-ol.inline {
-  margin-left: 0;
-  list-style: none;
-  & > li {
-    display: inline-block;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+.list-inline > li {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 // Description Lists
 dl {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @line-height-base;
 }
 dt,
 dd {
-  line-height: @baseLineHeight;
+  line-height: @line-height-base;
 }
 dt {
   font-weight: bold;
 }
 dd {
-  margin-left: @baseLineHeight / 2;
+  margin-left: @line-height-base / 2;
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
-  .clearfix(); // Ensure dl clears floats if empty dd elements present
+  .clear_float(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
-    width: @horizontalComponentOffset - 20;
+    width: @component-offset-horizontal - 20;
     clear: left;
     text-align: right;
     .text-overflow();
   }
   dd {
-    margin-left: @horizontalComponentOffset;
+    margin-left: @component-offset-horizontal;
   }
 }
 
@@ -160,10 +170,10 @@ dd {
 
 // Horizontal rules
 hr {
-  margin: @baseLineHeight 0;
+  margin: @line-height-base 0;
   border: 0;
-  border-top: 1px solid @hrBorder;
-  border-bottom: 1px solid @white;
+  border-top: 1px solid @hr-border;
+  border-bottom: 1px solid #fff;
 }
 
 // Abbreviations and acronyms
@@ -181,15 +191,17 @@ abbr.initialism {
 // Blockquotes
 blockquote {
   padding: 0 0 0 15px;
-  margin: 0 0 @baseLineHeight;
+  margin: 0 0 @line-height-base;
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
-    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
+    font-size: @font-size-base * 1.25;
+    font-weight: 300;
+    line-height: 1.25;
   }
   small {
     display: block;
-    line-height: @baseLineHeight;
+    line-height: @line-height-base;
     color: @grayLight;
     &:before {
       content: '\2014 \00A0';
@@ -229,7 +241,7 @@ blockquote:after {
 // Addresses
 address {
   display: block;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @line-height-base;
   font-style: normal;
-  line-height: @baseLineHeight;
+  line-height: @line-height-base;
 }

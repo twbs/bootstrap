@@ -5,14 +5,14 @@
 
 .carousel {
   position: relative;
-  margin-bottom: @baseLineHeight;
+  margin-bottom: @line-height-base;
   line-height: 1;
 }
 
 .carousel-inner {
+  position: relative;
   overflow: hidden;
   width: 100%;
-  position: relative;
 }
 
 .carousel-inner {
@@ -69,19 +69,10 @@
 
 .carousel-control {
   position: absolute;
-  top: 40%;
-  left: 15px;
-  width: 40px;
-  height: 40px;
-  margin-top: -20px;
-  font-size: 60px;
-  font-weight: 100;
-  line-height: 30px;
-  color: @white;
-  text-align: center;
-  background: @grayDarker;
-  border: 3px solid @white;
-  .border-radius(23px);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 120px;
   .opacity(50);
 
   // we can't have this transition here
@@ -91,17 +82,66 @@
   // ;_;
   // .transition(opacity .2s linear);
 
-  // Reposition the right one
+  // Set gradients for backgrounds
+  &.left {
+    #gradient > .horizontal(rgba(0,0,0,.75), rgba(0,0,0,.001));
+    background-color: transparent;
+  }
   &.right {
     left: auto;
-    right: 15px;
+    right: 0;
+    #gradient > .horizontal(rgba(0,0,0,.001), rgba(0,0,0,.75));
+    background-color: transparent;
   }
 
   // Hover state
   &:hover {
-    color: @white;
+    color: #fff;
     text-decoration: none;
     .opacity(90);
+  }
+
+  // Toggles
+  .control {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: block;
+    margin-top: -35px;
+    margin-left: 30px;
+    font-size: 80px;
+    font-weight: 100;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  }
+  &.right .control {
+    margin-left: 70px;
+  }
+}
+
+// Carousel indicator pips
+// -----------------------------
+.carousel-indicators {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    text-indent: -999px;
+    background-color: #ccc;
+    background-color: rgba(255,255,255,.25);
+    border-radius: 5px;
+  }
+  .active {
+    background-color: #fff;
   }
 }
 
@@ -114,16 +154,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 15px;
-  background: @grayDark;
-  background: rgba(0,0,0,.75);
+  z-index: 10;
+  padding: 40px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  max-width: 60%;
 }
-.carousel-caption h4,
+.carousel-caption h3,
 .carousel-caption p {
-  color: @white;
-  line-height: @baseLineHeight;
+  color: #fff;
+  line-height: @line-height-base;
 }
-.carousel-caption h4 {
+.carousel-caption h3 {
   margin: 0 0 5px;
 }
 .carousel-caption p {
