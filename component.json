@@ -2,7 +2,9 @@
   "name": "bootstrap",
   "version": "2.2.2",
   "scripts": [
-    "./docs/assets/js/bootstrap.js", 
+    "./docs/assets/js/bootstrap.js"
+  ],
+  "styles" : [
     "./docs/assets/css/bootstrap.css"
   ],
   "dependencies": {
