@@ -940,8 +940,7 @@
   body {
     padding-top: 0;
   }
-  .navbar-fixed-top,
-  .navbar-fixed-bottom {
+  .navbar-fixed-top {
     position: static;
   }
   .navbar-fixed-top {
