@@ -2249,6 +2249,26 @@ table th[class*="span"],
   background-color: #d9edf7;
 }
 
+.table-striped tbody tr.success:nth-child(odd) > td,
+.table-striped tbody tr.success:nth-child(odd) > th {
+  background-color: #d9edd1;
+}
+
+.table-striped tbody tr.error:nth-child(odd) > td,
+.table-striped tbody tr.error:nth-child(odd) > th {
+  background-color: #efd7d7;
+}
+
+.table-striped tbody tr.warning:nth-child(odd) > td,
+.table-striped tbody tr.warning:nth-child(odd) > th {
+  background-color: #fbf6da;
+}
+
+.table-striped tbody tr.info:nth-child(odd) > td,
+.table-striped tbody tr.info:nth-child(odd) > th {
+  background-color: #d1e9f5;
+}
+
 .table-hover tbody tr.success:hover > td {
   background-color: #d0e9c6;
 }
