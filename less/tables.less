@@ -227,6 +227,34 @@ table th[class*="span"],
   }
 }
 
+// Zebra-stripe styles for .table-striped
+.table-striped tbody tr {
+  &.success {
+    &:nth-child(odd) > td,
+    &:nth-child(odd) > th {
+    background-color: darken(@successBackground, 2%);
+    }
+  }
+  &.error {
+    &:nth-child(odd) > td,
+    &:nth-child(odd) > th {
+    background-color: darken(@errorBackground, 2%);
+    }
+  }
+  &.warning {
+    &:nth-child(odd) > td,
+    &:nth-child(odd) > th {
+    background-color: darken(@warningBackground, 2%);
+    }
+  }
+  &.info {
+    &:nth-child(odd) > td,
+    &:nth-child(odd) > th {
+    background-color: darken(@infoBackground, 2%);
+    }
+  }
+}
+
 // Hover states for .table-hover
 .table-hover tbody tr {
   &.success:hover > td {
