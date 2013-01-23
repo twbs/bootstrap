@@ -640,9 +640,6 @@
   var toggle = '[data-toggle=dropdown]'
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
-        $('html').on('click.dropdown.data-api', function () {
-          $el.parent().removeClass('open')
-        })
       }
 
   Dropdown.prototype = {
@@ -711,10 +708,16 @@
 
   }
 
-  function clearMenus() {
-    $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
-    })
+  function clearMenus(e) {
+    var stayopen = e ? $(e.target)
+                    .parents('.dropdown-menu')
+                    .data('dropdown-stayopen') : false
+
+    if ( !stayopen ) {
+      $(toggle).each(function () {
+        getParent($(this)).removeClass('open')
+      })
+    }
   }
 
   function getParent($this) {
@@ -1088,7 +1091,12 @@
     }
 
   , enter: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+    if ( this.prevTarget && this.prevTarget !== e.currentTarget ) {
+        $( this.prevTarget )[this.type]( this._options ).data( this.type ).hide()
+      }
+      this.prevTarget = e.currentTarget
+
+      var self = $( e.currentTarget )[this.type]( this._options ).data( this.type )
 
       if (!self.options.delay || !self.options.delay.show) return self.show()
 
@@ -1119,6 +1127,7 @@
         , actualHeight
         , placement
         , tp
+        , container
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
@@ -1137,7 +1146,9 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+
+        container = this.options.container === '' ? '' : $( this.options.container )
+        container.length ? $tip.appendTo( container ) : $tip.insertAfter( this.$element )
 
         pos = this.getPosition(inside)
 
@@ -1252,7 +1263,7 @@
     }
 
   , toggle: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
       self[self.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
@@ -1289,8 +1300,8 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: ''
   }
-
 
  /* TOOLTIP NO CONFLICT
   * =================== */
