@@ -57,7 +57,7 @@
       })
 
     // button state demo
-    $('#fat-btn')
+    $('#fat-btn, #fat-progress-btn')
       .click(function () {
         var btn = $(this)
         btn.button('loading')
