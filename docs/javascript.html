@@ -1148,13 +1148,19 @@ $('#my-alert').bind('closed', function () {
             <p>Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
 
             <h4>Stateful</h4>
-            <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
+            <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button. Use the <code>.btn-progress</code> class to display the button as a progress bar while disabled.</p>
             <div class="bs-docs-example" style="padding-bottom: 24px;">
               <button type="button" id="fat-btn" data-loading-text="loading..." class="btn btn-primary">
                 Loading state
               </button>
+              <button type="button" id="fat-progress-btn" data-loading-text="loading..." class="btn btn-primary btn-progress">
+                Loading state
+              </button>
             </div>
-            <pre class="prettyprint linenums">&lt;button type="button" class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;</pre>
+<pre class="prettyprint linenums">
+&lt;button type="button" class="btn btn-primary" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary btn-progress" data-loading-text="Loading..."&gt;Loading state&lt;/button&gt;
+</pre>
 
             <h4>Single toggle</h4>
             <p>Add <code>data-toggle="button"</code> to activate toggling on a single button.</p>

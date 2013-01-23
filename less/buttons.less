@@ -223,3 +223,46 @@ input[type="submit"].btn {
   color: @grayDark;
   text-decoration: none;
 }
+
+// Progress bar buttons
+// --------------------------------------------------
+
+// Makes a button behave like an infinite progress bar while 
+// is waiting for an action to complete (disabled)
+.btn.disabled, .btn[disabled] {
+  &.btn-progress {
+    background-repeat: repeat;
+    .progress.active .bar;
+    #gradient > .striped(darken(@btnBackgroundHighlight,10%));
+
+    // should be the same size of the progress bar @keyframe
+    // background position (progress-bars.less)
+    .background-size(40px 40px);
+
+    // COLORS
+    // ------
+    &.btn-primary {
+      #gradient > .striped(@btnPrimaryBackground);
+    }
+
+    // Danger (red)
+    &.btn-danger {
+      .progress-danger.progress-striped .bar;
+    }
+
+    // Success (green)
+    &.btn-success {
+      .progress-success.progress-striped .bar;
+    }
+
+    // Info (teal)
+    &.btn-info {
+      .progress-info.progress-striped .bar;
+    }
+
+    // Warning (orange)
+    &.btn-warning {
+      .progress-warning.progress-striped .bar;
+    }
+  }
+}
