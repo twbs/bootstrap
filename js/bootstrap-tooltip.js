@@ -27,8 +27,9 @@
  /* TOOLTIP PUBLIC CLASS DEFINITION
   * =============================== */
 
-  var Tooltip = function (element, options) {
-    this.init('tooltip', element, options)
+  var toolTipType = 'tooltip'
+    , Tooltip = function (element, options) {
+    this.init(toolTipType, element, options)
   }
 
   Tooltip.prototype = {
@@ -45,12 +46,12 @@
       this.enabled = true
 
       if (this.options.trigger == 'click') {
-        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
+        this.$element.on('click.tooltip', this.options.selector, $.proxy(this.toggle, this))
       } else if (this.options.trigger != 'manual') {
         eventIn = this.options.trigger == 'hover' ? 'mouseenter' : 'focus'
         eventOut = this.options.trigger == 'hover' ? 'mouseleave' : 'blur'
-        this.$element.on(eventIn + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
-        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+        this.$element.on(eventIn + '.tooltip' , this.options.selector, $.proxy(this.enter, this))
+        this.$element.on(eventOut + '.tooltip' , this.options.selector, $.proxy(this.leave, this))
       }
 
       this.options.selector ?
@@ -241,7 +242,7 @@
     }
 
   , destroy: function () {
-      this.hide().$element.off('.' + this.type).removeData(this.type)
+      this.hide().$element.off('.tooltip').removeData(this.type)
     }
 
   }
@@ -255,9 +256,9 @@
   $.fn.tooltip = function ( option ) {
     return this.each(function () {
       var $this = $(this)
-        , data = $this.data('tooltip')
+        , data = $this.data(toolTipType)
         , options = typeof option == 'object' && option
-      if (!data) $this.data('tooltip', (data = new Tooltip(this, options)))
+      if (!data) $this.data(toolTipType, (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
@@ -279,8 +280,20 @@
  /* TOOLTIP NO CONFLICT
   * =================== */
 
-  $.fn.tooltip.noConflict = function () {
+  $.fn.tooltip.noConflict = function (newFuncName) {
+    if(!/^[a-zA-Z]+/.test(newFuncName)){
+        throw 'tooltip.noConflict requires the newFuncName to be alpha letters only'
+        return false
+    }
+    //set the new name into the $.fn array, since the Tooltip object looks for things tied to it.
+    $.fn[newFuncName] = this
+    Tooltip.type = newFuncName
+    //set the toolTipType var for future calls to init.
+    toolTipType = newFuncName
     $.fn.tooltip = old
+    //return this for backwards compatibility with v2.2.2, even though I don't think original could possibly have
+    //worked considering the way Tooltip.getOptions expected defaults to be a member of $.fn.tooltip, which may not exist
+    //after running this.
     return this
   }
 

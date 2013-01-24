@@ -3,8 +3,10 @@ $(function () {
     module("bootstrap-tooltip")
 
       test("should provide no conflict", function () {
-        var tooltip = $.fn.tooltip.noConflict()
+        var tooltip = $.fn.tooltip.noConflict('newToolTipName')
         ok(!$.fn.tooltip, 'tooltip was set back to undefined (org value)')
+        ok($.fn.newToolTipName, 'tooltip was moved to newToolTipName as expected')
+        ok($.fn.newToolTipName.defaults, 'and defaults exists for newToolTipName as expected')
         $.fn.tooltip = tooltip
       })
 
