@@ -27,8 +27,8 @@
  /* TOOLTIP PUBLIC CLASS DEFINITION
   * =============================== */
 
-  var toolTipType = 'tooltip',
-      Tooltip = function (element, options) {
+  var toolTipType = 'tooltip'
+    , Tooltip = function (element, options) {
     this.init(toolTipType, element, options)
   }
 
@@ -291,7 +291,7 @@
     //set the toolTipType var for future calls to init.
     toolTipType = newFuncName
     $.fn.tooltip = old
-    //return this for backwards compatibillity with original, even though I don't think original could possibly have
+    //return this for backwards compatibility with v2.2.2, even though I don't think original could possibly have
     //worked considering the way Tooltip.getOptions expected defaults to be a member of $.fn.tooltip, which may not exist
     //after running this.
     return this
