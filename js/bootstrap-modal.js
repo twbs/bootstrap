@@ -30,7 +30,7 @@
     this.options = options
     this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-	  
+
     if (this.options.remote) {
         $.proxy(this.loadBegin, this)();
         this.$element.find('.modal-body').load(this.options.remote, $.proxy(this.loadComplete, this))
@@ -191,7 +191,7 @@
           callback()
         }
       }
-	  
+
 	, loadComplete: function (responseText, textStatus, XMLHttpRequest) {
 		var data = {
 			responseText: responseText, 
@@ -201,7 +201,7 @@
           
 		this.$element.trigger('loaded', [data])
       }
-      
+
 	, loadBegin: function () {
 		this.$element.trigger('loading')
       }
