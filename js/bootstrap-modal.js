@@ -30,7 +30,11 @@
     this.options = options
     this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
-    this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+	  
+    if (this.options.remote) {
+        $.proxy(this.loadBegin, this)();
+        this.$element.find('.modal-body').load(this.options.remote, $.proxy(this.loadComplete, this))
+    }
   }
 
   Modal.prototype = {
@@ -186,6 +190,20 @@
         } else if (callback) {
           callback()
         }
+      }
+	  
+	, loadComplete: function (responseText, textStatus, XMLHttpRequest) {
+		var data = {
+			responseText: responseText, 
+			textStatus: textStatus, 
+			XMLHttpRequest: XMLHttpRequest
+		}
+          
+		this.$element.trigger('loaded', [data])
+      }
+      
+	, loadBegin: function () {
+		this.$element.trigger('loading')
       }
   }
 
