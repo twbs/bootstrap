@@ -97,6 +97,7 @@
         , complete = function () {
             if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
+            that.$element.removeClass('transitioning');
             that.$element.trigger(completeEvent)
           }
 
@@ -105,6 +106,7 @@
       if (startEvent.isDefaultPrevented()) return
 
       this.transitioning = 1
+      this.$element.addClass('transitioning');
 
       this.$element[method]('in')
 
@@ -160,7 +162,7 @@
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
       , option = $(target).data('collapse') ? 'toggle' : $this.data()
-    if ($(target).css("height") !== "auto") $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    if (!$(target).hasClass('transitioning')) $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     $(target).collapse(option)
   })
 
