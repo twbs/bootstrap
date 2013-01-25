@@ -29,9 +29,6 @@
   var toggle = '[data-toggle=dropdown]'
     , Dropdown = function (element) {
         var $el = $(element).on('click.dropdown.data-api', this.toggle)
-        $('html').on('click.dropdown.data-api', function () {
-          $el.parent().removeClass('open')
-        })
       }
 
   Dropdown.prototype = {
@@ -100,10 +97,16 @@
 
   }
 
-  function clearMenus() {
-    $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
-    })
+  function clearMenus(e) {
+    var stayopen = e ? $(e.target)
+                    .parents('.dropdown-menu')
+                    .data('dropdown-stayopen') : false
+
+    if ( !stayopen ) {
+      $(toggle).each(function () {
+        getParent($(this)).removeClass('open')
+      })
+    }
   }
 
   function getParent($this) {

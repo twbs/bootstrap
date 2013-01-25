@@ -72,7 +72,12 @@
     }
 
   , enter: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+    if ( this.prevTarget && this.prevTarget !== e.currentTarget ) {
+        $( this.prevTarget )[this.type]( this._options ).data( this.type ).hide()
+      }
+      this.prevTarget = e.currentTarget
+
+      var self = $( e.currentTarget )[this.type]( this._options ).data( this.type )
 
       if (!self.options.delay || !self.options.delay.show) return self.show()
 
@@ -103,6 +108,7 @@
         , actualHeight
         , placement
         , tp
+        , container
 
       if (this.hasContent() && this.enabled) {
         $tip = this.tip()
@@ -121,7 +127,9 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+
+        container = this.options.container === '' ? '' : $( this.options.container )
+        container.length ? $tip.appendTo( container ) : $tip.insertAfter( this.$element )
 
         pos = this.getPosition(inside)
 
@@ -141,6 +149,12 @@
           case 'right':
             tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
             break
+					case 'bottom-left':
+            tp = { top: pos.top + pos.height - actualHeight, left: pos.left - actualWidth };
+            break;
+          case 'bottom-right':
+            tp = { top: pos.top + pos.height - actualHeight, left: pos.left + pos.width };
+            break;
         }
 
         $tip
@@ -155,7 +169,7 @@
         , title = this.getTitle()
 
       $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-      $tip.removeClass('fade in top bottom left right')
+      $tip.removeClass('fade in top bottom left right bottom-left bottom-right')
     }
 
   , hide: function () {
@@ -236,7 +250,7 @@
     }
 
   , toggle: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
       self[self.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
@@ -273,8 +287,8 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: ''
   }
-
 
  /* TOOLTIP NO CONFLICT
   * =================== */
