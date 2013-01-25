@@ -117,6 +117,7 @@
           this.options.placement
 
         inside = /in/.test(placement)
+        placement = inside ? placement.split(' ')[1] : placement;
 
         $tip
           .detach()
@@ -128,7 +129,7 @@
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 
-        switch (inside ? placement.split(' ')[1] : placement) {
+        switch (placement) {
           case 'bottom':
             tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
             break
@@ -143,12 +144,61 @@
             break
         }
 
-        $tip
-          .offset(tp)
-          .addClass(placement)
-          .addClass('in')
+        this.applyPlacement(tp, placement);
       }
     }
+
+  , applyPlacement: function(offset, placement){
+    var $tip
+      , $arrow
+      , width
+      , height
+      , actualWidth
+      , actualHeight
+      , deltaX
+      , replace = false;
+
+    $tip = this.tip();
+
+    width = $tip[0].offsetWidth;
+    height = $tip[0].offsetHeight;
+
+    $tip
+          .offset(offset)
+          .addClass(placement)
+          .addClass('in');
+
+    actualWidth = $tip[0].offsetWidth;
+    actualHeight = $tip[0].offsetHeight;
+
+    if (placement == "top" && actualHeight != actualWidth){
+      offset.top = offset.top + height - actualHeight;
+      replace = true;
+    }
+
+    if (placement == "bottom" || placement == "top"){
+      deltaX = 0;
+
+      if (offset.left < 0){
+        deltaX = -offset.left * 2;
+        offset.left = 0;
+        $tip.offset(offset);
+        actualWidth = $tip[0].offsetWidth;
+        actualHeight = $tip[0].offsetHeight;
+      }
+
+      deltaX = deltaX - width + actualWidth;
+      $arrow = this.arrow();
+        
+      if (deltaX !==  0){
+        $arrow.css("left", 50 * (1 - deltaX / actualWidth) + "%");
+      }else{
+        $arrow.css("left", "");
+      }
+    }
+
+    if (replace) $tip.offset(offset);
+  }
 
   , setContent: function () {
       var $tip = this.tip()
@@ -214,6 +264,10 @@
   , tip: function () {
       return this.$tip = this.$tip || $(this.options.template)
     }
+
+  , arrow: function(){
+    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow");
+  }
 
   , validate: function () {
       if (!this.$element[0].parentNode) {
