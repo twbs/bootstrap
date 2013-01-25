@@ -190,7 +190,7 @@
       deltaX = deltaX - width + actualWidth;
       $arrow = this.arrow();
         
-      if (deltaX !=  0){
+      if (deltaX !==  0){
         $arrow.css("left", 50 * (1 - deltaX / actualWidth) + "%");
       }else{
         $arrow.css("left", "");
