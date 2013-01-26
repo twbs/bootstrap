@@ -290,5 +290,26 @@ $(function () {
           ok(tooltip.offset().top + tooltip.outerHeight() <= tooltiped.offset().top);
           container.remove();
         }, 100)
-      })
+      });
+
+      test("arrow should point to element", function(){
+        var container = $("<div />").appendTo("body")
+            .css({position: "absolute", bottom: 0, left: 0, textAlign: "right", width: 300, height: 300})
+          , p = $("<p style='margin-top:200px' />").appendTo(container)
+          , tooltiped = $("<a href='#' title='very very very very very very very long tooltip'>Hover me</a>")
+            .css({marginTop: 200})
+            .appendTo(p)
+            .tooltip({placement: "top", animate: false})
+            .tooltip("show");
+
+        stop();
+
+        setTimeout(function(){
+          var arrow = container.find(".tooltip-arrow");
+
+          start();
+          ok(Math.abs(arrow.offset().left - tooltiped.offset().left - tooltiped.outerWidth()/2) <= 1);
+          container.remove();
+        }, 100);
+      });
 })
