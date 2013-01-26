@@ -180,7 +180,7 @@
     actualWidth = $tip[0].offsetWidth;
     actualHeight = $tip[0].offsetHeight;
 
-    if (placement == "top" && actualHeight != actualWidth){
+    if (placement == "top" && actualHeight != height){
       offset.top = offset.top + height - actualHeight;
       replace = true;
     }
@@ -190,7 +190,7 @@
 
       if (offset.left < 0){
         delta = -offset.left * 2;
-        offset.left = .1;
+        offset.left = 0.1;
         $tip.offset(offset);
         actualWidth = $tip[0].offsetWidth;
         actualHeight = $tip[0].offsetHeight;
