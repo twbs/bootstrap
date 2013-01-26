@@ -190,7 +190,7 @@
 
       if (offset.left < 0){
         delta = -offset.left * 2;
-        offset.left = 0;
+        offset.left = .1;
         $tip.offset(offset);
         actualWidth = $tip[0].offsetWidth;
         actualHeight = $tip[0].offsetHeight;

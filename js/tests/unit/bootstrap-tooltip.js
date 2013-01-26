@@ -251,4 +251,22 @@ $(function () {
         ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
         tooltip.tooltip('hide')
       })
+
+      test("should place tooltip inside window", function(){
+        $("#qunit-fixture").show();
+        var tooltip = $("<a href='#' title='Very very very very very very very very long tooltip'></a>")
+          .css({position: "absolute", top:0, left: 0})
+          .appendTo("#qunit-fixture")
+          .tooltip({placement: "top"})
+          .tooltip("show");
+
+        stop();
+
+        setTimeout(function(){
+          ok($(".tooltip").offset().left >= 0);
+
+          start();
+          $("#qunit-fixture").hide();
+        }, 200)
+      });
 })
