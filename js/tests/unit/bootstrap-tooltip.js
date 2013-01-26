@@ -253,11 +253,12 @@ $(function () {
       })
 
       test("should place tooltip inside window", function(){
-        $("#qunit-fixture").show();
-        var tooltip = $("<a href='#' title='Very very very very very very very very long tooltip'></a>")
+        var container = $("<div />").appendTo("body")
+            .css({position: "absolute", width: 200, height: 200, bottom: 0, left: 0})
+          , tooltip = $("<a href='#' title='Very very very very very very very very long tooltip'>Hover me</a>")
           .css({position: "absolute", top:0, left: 0})
-          .appendTo("#qunit-fixture")
-          .tooltip({placement: "top"})
+          .appendTo(container)
+          .tooltip({placement: "top", animate: false})
           .tooltip("show");
 
         stop();
@@ -266,7 +267,28 @@ $(function () {
           ok($(".tooltip").offset().left >= 0);
 
           start();
-          $("#qunit-fixture").hide();
-        }, 200)
+          container.remove();
+        }, 100)
       });
+
+      test("should place tooltip on top of element", function(){
+        var container = $("<div />").appendTo("body")
+              .css({position: "absolute", bottom: 0, left: 0, textAlign: "right", width: 300, height: 300})
+            , p = $("<p style='margin-top:200px' />").appendTo(container)
+            , tooltiped = $("<a href='#' title='very very very very very very very long tooltip'>Hover me</a>")
+              .css({marginTop: 200})
+              .appendTo(p)
+              .tooltip({placement: "top", animate: false})
+              .tooltip("show");
+
+        stop();
+
+        setTimeout(function(){
+          var tooltip = container.find(".tooltip");
+
+          start();
+          ok(tooltip.offset().top + tooltip.outerHeight() <= tooltiped.offset().top);
+          container.remove();
+        }, 100)
+      })
 })
