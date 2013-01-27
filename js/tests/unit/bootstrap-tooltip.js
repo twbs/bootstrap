@@ -259,17 +259,17 @@ $(function () {
           .css({position: "absolute", top:0, left: 0})
           .appendTo(container)
           .tooltip({placement: "top", animate: false})
-          .tooltip("show");
+          .tooltip("show")
 
-        stop();
+        stop()
 
         setTimeout(function(){
-          ok($(".tooltip").offset().left >= 0);
+          ok($(".tooltip").offset().left >= 0)
 
-          start();
-          container.remove();
+          start()
+          container.remove()
         }, 100)
-      });
+      })
 
       test("should place tooltip on top of element", function(){
         var container = $("<div />").appendTo("body")
@@ -279,18 +279,18 @@ $(function () {
               .css({marginTop: 200})
               .appendTo(p)
               .tooltip({placement: "top", animate: false})
-              .tooltip("show");
+              .tooltip("show")
 
-        stop();
+        stop()
 
         setTimeout(function(){
-          var tooltip = container.find(".tooltip");
+          var tooltip = container.find(".tooltip")
 
-          start();
-          ok(tooltip.offset().top + tooltip.outerHeight() <= tooltiped.offset().top);
-          container.remove();
+          start()
+          ok(tooltip.offset().top + tooltip.outerHeight() <= tooltiped.offset().top)
+          container.remove()
         }, 100)
-      });
+      })
 
       test("arrow should point to element", function(){
         var container = $("<div />").appendTo("body")
@@ -300,16 +300,16 @@ $(function () {
             .css({marginTop: 200})
             .appendTo(p)
             .tooltip({placement: "top", animate: false})
-            .tooltip("show");
+            .tooltip("show")
 
-        stop();
+        stop()
 
         setTimeout(function(){
-          var arrow = container.find(".tooltip-arrow");
+          var arrow = container.find(".tooltip-arrow")
 
-          start();
-          ok(Math.abs(arrow.offset().left - tooltiped.offset().left - tooltiped.outerWidth()/2) <= 1);
-          container.remove();
-        }, 100);
-      });
+          start()
+          ok(Math.abs(arrow.offset().left - tooltiped.offset().left - tooltiped.outerWidth()/2) <= 1)
+          container.remove()
+        }, 100)
+      })
 })

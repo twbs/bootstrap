@@ -152,7 +152,7 @@
             break
         }
 
-        this.applyPlacement(tp, placement);
+        this.applyPlacement(tp, placement)
 
         this.$element.trigger('shown')
       }
@@ -165,52 +165,52 @@
       , actualWidth
       , actualHeight
       , delta
-      , replace = false;
+      , replace = false
 
-    $tip = this.tip();
+    $tip = this.tip()
 
-    width = $tip[0].offsetWidth;
-    height = $tip[0].offsetHeight;
+    width = $tip[0].offsetWidth
+    height = $tip[0].offsetHeight
 
     $tip
           .offset(offset)
           .addClass(placement)
-          .addClass('in');
+          .addClass('in')
 
-    actualWidth = $tip[0].offsetWidth;
-    actualHeight = $tip[0].offsetHeight;
+    actualWidth = $tip[0].offsetWidth
+    actualHeight = $tip[0].offsetHeight
 
     if (placement == "top" && actualHeight != height){
-      offset.top = offset.top + height - actualHeight;
-      replace = true;
+      offset.top = offset.top + height - actualHeight
+      replace = true
     }
 
     if (placement == "bottom" || placement == "top"){
-      delta = 0;
+      delta = 0
 
       if (offset.left < 0){
-        delta = -offset.left * 2;
-        offset.left = 0;
-        $tip.offset(offset);
-        actualWidth = $tip[0].offsetWidth;
-        actualHeight = $tip[0].offsetHeight;
+        delta = -offset.left * 2
+        offset.left = 0
+        $tip.offset(offset)
+        actualWidth = $tip[0].offsetWidth
+        actualHeight = $tip[0].offsetHeight
       }
 
-      this.replaceArrow(delta - width + actualWidth, actualWidth, "left");
+      this.replaceArrow(delta - width + actualWidth, actualWidth, "left")
     }else{
-      this.replaceArrow(actualHeight - height, actualHeight, "top");
+      this.replaceArrow(actualHeight - height, actualHeight, "top")
     }
 
-    if (replace) $tip.offset(offset);
+    if (replace) $tip.offset(offset)
   }
 
   , replaceArrow: function(delta, dimension, position){
-    var $arrow = this.arrow();
+    var $arrow = this.arrow()
 
     if (delta !== 0){
-      $arrow.css(position, 50 * (1 - delta / dimension) + "%");
+      $arrow.css(position, 50 * (1 - delta / dimension) + "%")
     }else{
-      $arrow.css(position, "");
+      $arrow.css(position, "")
     }
   }
 
@@ -287,7 +287,7 @@
     }
 
   , arrow: function(){
-    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow");
+    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
   }
 
   , validate: function () {
