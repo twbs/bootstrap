@@ -161,7 +161,7 @@
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
       , option = $(target).data('collapse') ? 'toggle' : $this.data()
     $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
-    if ($(this).parent().children(target))
+    if ($(this).parent().children(target).size() > 0)
       $(this).parent().children(target).collapse(option)
     else
       $(target).collapse(option)
