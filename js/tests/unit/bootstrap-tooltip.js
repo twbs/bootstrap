@@ -22,9 +22,9 @@ $(function () {
         ok(!!$.fn.tooltip.defaults, 'defaults is defined')
       })
 
-      test("should remove title attribute", function () {
+      test("should empty title attribute", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').tooltip()
-        ok(!tooltip.attr('title'), 'title tag was removed')
+        ok(tooltip.attr('title') === '', 'title attribute was emptied')
       })
 
       test("should add data attribute for referencing original title", function () {
