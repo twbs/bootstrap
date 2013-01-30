@@ -264,10 +264,16 @@
 @popoverArrowOuterColor:  rgba(0,0,0,.25);
 
 
+// MEDIA QUERIES  (don't mess here, unless 200% sure)
+// --------------------------------------------------
+@mediaNarrow:       767px;
+@mediaPortraitMin:  @mediaNarrow +1;
+@mediaPortraitMax:  979px;
+@mediaLarge:        1200px;
+
 
 // GRID
 // --------------------------------------------------
-
 
 // Default 940px grid
 // -------------------------
@@ -277,14 +283,14 @@
 @gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // 1200px min
-@gridColumnWidth1200:     70px;
-@gridGutterWidth1200:     30px;
-@gridRowWidth1200:        (@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1));
+@gridColumnWidthLarge:     70px;
+@gridGutterWidthLarge:     30px;
+@gridRowWidthLarge:        (@gridColumns * @gridColumnWidthLarge) + (@gridGutterWidthLarge * (@gridColumns - 1));
 
 // 768px-979px
-@gridColumnWidth768:      42px;
-@gridGutterWidth768:      20px;
-@gridRowWidth768:         (@gridColumns * @gridColumnWidth768) + (@gridGutterWidth768 * (@gridColumns - 1));
+@gridColumnWidthPortrait:      42px;
+@gridGutterWidthPortrait:      20px;
+@gridRowWidthPortrait:         (@gridColumns * @gridColumnWidthPortrait) + (@gridGutterWidthPortrait * (@gridColumns - 1));
 
 
 // Fluid grid
@@ -293,9 +299,9 @@
 @fluidGridGutterWidth:    percentage(@gridGutterWidth/@gridRowWidth);
 
 // 1200px min
-@fluidGridColumnWidth1200:     percentage(@gridColumnWidth1200/@gridRowWidth1200);
-@fluidGridGutterWidth1200:     percentage(@gridGutterWidth1200/@gridRowWidth1200);
+@fluidGridColumnWidthLarge:     percentage(@gridColumnWidthLarge/@gridRowWidthLarge);
+@fluidGridGutterWidthLarge:     percentage(@gridGutterWidthLarge/@gridRowWidthLarge);
 
 // 768px-979px
-@fluidGridColumnWidth768:      percentage(@gridColumnWidth768/@gridRowWidth768);
-@fluidGridGutterWidth768:      percentage(@gridGutterWidth768/@gridRowWidth768);
+@fluidGridColumnWidthPortrait:      percentage(@gridColumnWidthPortrait/@gridRowWidthPortrait);
+@fluidGridGutterWidthPortrait:      percentage(@gridGutterWidthPortrait/@gridRowWidthPortrait);

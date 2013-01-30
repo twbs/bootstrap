@@ -21,7 +21,7 @@
 .visible-desktop   { display: inherit !important; }
 
 // Tablets & small desktops only
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: @mediaPortraitMin) and (max-width: @mediaPortraitMax) {
   // Hide everything else
   .hidden-desktop    { display: inherit !important; }
   .visible-desktop   { display: none !important ; }
@@ -32,7 +32,7 @@
 }
 
 // Phones only
-@media (max-width: 767px) {
+@media (max-width: @mediaNarrow) {
   // Hide everything else
   .hidden-desktop    { display: inherit !important; }
   .visible-desktop   { display: none !important; }
