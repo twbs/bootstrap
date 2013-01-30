@@ -228,4 +228,31 @@ $(function () {
         $input.remove()
         typeahead.$menu.remove()
       })
+
+      test("should accept simple function names", function () {
+        var $input = $('<input />').typeahead({
+              source: 'alert'
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok($.isFunction(typeahead.source), 'source is a function')
+		equals(typeahead.source, alert, 'source function is correctly set')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+
+      test("should accept namespaced function names", function () {
+        var $input = $('<input />').typeahead({
+              source: '$.isFunction'
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok($.isFunction(typeahead.source), 'source is a function')
+		equals(typeahead.source, $.isFunction, 'source function is correctly set')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+
 })
