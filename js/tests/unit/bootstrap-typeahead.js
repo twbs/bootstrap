@@ -231,12 +231,28 @@ $(function () {
 
       test("should accept simple function names", function () {
         var $input = $('<input />').typeahead({
-              source: 'alert'
+              source: 'alert',
+              matcher: 'alert',
+              sorter: 'alert',
+              updater: 'alert',
+              highlighter: 'alert'
             }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         ok($.isFunction(typeahead.source), 'source is a function')
 		equals(typeahead.source, alert, 'source function is correctly set')
+
+        ok($.isFunction(typeahead.matcher), 'matcher is a function')
+		equals(typeahead.matcher, alert, 'matcher function is correctly set')
+
+        ok($.isFunction(typeahead.sorter), 'sorter is a function')
+		equals(typeahead.sorter, alert, 'sorter function is correctly set')
+
+        ok($.isFunction(typeahead.updater), 'updater is a function')
+		equals(typeahead.updater, alert, 'updater function is correctly set')
+
+        ok($.isFunction(typeahead.highlighter), 'highlighter is a function')
+		equals(typeahead.highlighter, alert, 'highlighter function is correctly set')
 
         $input.remove()
         typeahead.$menu.remove()
@@ -244,12 +260,28 @@ $(function () {
 
       test("should accept namespaced function names", function () {
         var $input = $('<input />').typeahead({
-              source: '$.isFunction'
+              source: '$.isFunction',
+              matcher: '$.isFunction',
+              sorter: '$.isFunction',
+              updater: '$.isFunction',
+              highlighter: '$.isFunction'
             }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
         ok($.isFunction(typeahead.source), 'source is a function')
 		equals(typeahead.source, $.isFunction, 'source function is correctly set')
+
+        ok($.isFunction(typeahead.matcher), 'matcher is a function')
+		equals(typeahead.matcher, $.isFunction, 'matcher function is correctly set')
+
+        ok($.isFunction(typeahead.sorter), 'sorter is a function')
+		equals(typeahead.sorter, $.isFunction, 'sorter function is correctly set')
+
+        ok($.isFunction(typeahead.updater), 'updater is a function')
+		equals(typeahead.updater, $.isFunction, 'updater function is correctly set')
+
+        ok($.isFunction(typeahead.highlighter), 'highlighter is a function')
+		equals(typeahead.highlighter, $.isFunction, 'highlighter function is correctly set')
 
         $input.remove()
         typeahead.$menu.remove()
