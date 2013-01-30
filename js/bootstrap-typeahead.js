@@ -29,10 +29,10 @@
   var Typeahead = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
-    this.matcher = this.options.matcher || this.matcher
-    this.sorter = this.options.sorter || this.sorter
-    this.highlighter = this.options.highlighter || this.highlighter
-    this.updater = this.options.updater || this.updater
+    this.matcher = this.asFunction(this.options.matcher || this.matcher)
+    this.sorter = this.asFunction(this.options.sorter || this.sorter)
+    this.highlighter = this.asFunction(this.options.highlighter || this.highlighter)
+    this.updater = this.asFunction(this.options.updater || this.updater)
     this.source = this.asFunction(this.options.source)
     this.$menu = $(this.options.menu)
     this.shown = false
