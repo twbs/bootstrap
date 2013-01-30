@@ -271,6 +271,29 @@
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
     }
+  , asFunction: function getFunction(arg) {
+      var curObj = window
+        , namespaces = typeof arg == "string" ? arg.split('.') : [null]
+        , result
+
+      // functions are of course functions...
+      if ($.isFunction(arg)) return arg
+
+      // Get named object
+      while (namespaces.length) {
+        curObj = curObj[namespaces.shift()]
+        if(!curObj) break
+      }
+
+      // If the current object is a function, return that
+      // If the current object is something else, return a function returning that
+      // Otherwise, return a function returning the passed argument
+      if ($.isFunction(curObj)) result = curObj
+      else if(typeof curObj !== 'undefined') result = function () { return curObj }
+      else result = function () { return arg }
+
+      return result
+    }
 
   }
 
