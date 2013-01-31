@@ -53,9 +53,13 @@
 // -------------------------
 // Based on 14px font-size and 1.5 line-height
 
-@padding-large:           11px 19px; // 44px
+@padding-large:           11px 14px; // 44px
 @padding-small:           2px 10px;  // 26px
 @padding-mini:            0 6px;   // 22px
+
+@padding-large-input:     10px 14px; // 44px
+// firefox hack since it doesn't accept custom line-height for inputs and automatically sets line-height as font-size + 4 px.
+// input-large at 18 + 4 = 22, so I tried to compensate on padding.
 
 @border-radius-base:      4px;
 @border-radius-large:     6px;
@@ -107,7 +111,12 @@
 
 @input-color-placeholder:        @grayLight;
 
-@input-height:                   @line-height-base + 14px; // base line-height + 12px vertical padding + 2px top/bottom border
+@input-height-base:              @line-height-base + 14px; // base line-height + 12px vertical padding + 2px top/bottom border
+@input-height-large:             @line-height-base + 24px; // base line-height + 22px vertical padding + 2px top/bottom border
+@input-height-small:             @line-height-base + 6px;  // base line-height + 4px vertical padding + 2px top/bottom border
+
+// adjust min-height on input sizes
+
 
 @form-actions-background:        #f5f5f5;
 
