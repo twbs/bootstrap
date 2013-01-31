@@ -889,7 +889,7 @@
           <h3>{{_i}}Inline form{{/i}}</h3>
           <p>{{_i}}Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.{{/i}}</p>
           <form class="bs-docs-example form-inline">
-            <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}">
+            <input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}" autocomplete="email">
             <input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}">
             <label class="checkbox">
               <input type="checkbox"> {{_i}}Remember me{{/i}}
@@ -898,7 +898,7 @@
           </form>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;form class="form-inline"&gt;
-  &lt;input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}"&gt;
+  &lt;input type="text" class="input-small" placeholder="{{_i}}Email{{/i}}" autocomplete="email"&gt;
   &lt;input type="password" class="input-small" placeholder="{{_i}}Password{{/i}}"&gt;
   &lt;label class="checkbox"&gt;
     &lt;input type="checkbox"&gt; {{_i}}Remember me{{/i}}
@@ -919,7 +919,7 @@
             <div class="control-group">
               <label class="control-label" for="inputEmail">{{_i}}Email{{/i}}</label>
               <div class="controls">
-                <input type="text" id="inputEmail" placeholder="{{_i}}Email{{/i}}">
+                <input type="text" id="inputEmail" placeholder="{{_i}}Email{{/i}}" autocomplete="email">
               </div>
             </div>
             <div class="control-group">
@@ -942,7 +942,7 @@
   &lt;div class="control-group"&gt;
     &lt;label class="control-label" for="inputEmail"&gt;{{_i}}Email{{/i}}&lt;/label&gt;
     &lt;div class="controls"&gt;
-      &lt;input type="text" id="inputEmail" placeholder="{{_i}}Email{{/i}}"&gt;
+      &lt;input type="text" id="inputEmail" placeholder="{{_i}}Email{{/i}}" autocomplete="email"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="control-group"&gt;
@@ -1524,10 +1524,10 @@
           <h3>{{_i}}Invalid inputs{{/i}}</h3>
           <p>{{_i}}Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.{{/i}}</p>
           <form class="bs-docs-example form-inline">
-            <input class="span3" type="email" placeholder="test@example.com" required>
+            <input class="span3" type="email" placeholder="test@example.com" autocomplete="email" required>
           </form>
 <pre class="prettyprint linenums">
-&lt;input class="span3" type="email" required&gt;
+&lt;input class="span3" type="email" autocomplete="email" required&gt;
 </pre>
 
           <h3>{{_i}}Disabled inputs{{/i}}</h3>
@@ -2075,7 +2075,7 @@
               <label class="control-label" for="inputIcon">{{_i}}Email address{{/i}}</label>
               <div class="controls">
                 <div class="input-prepend">
-                  <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text">
+                  <span class="add-on"><i class="icon-envelope"></i></span><input class="span2" id="inputIcon" type="text" autocomplete="email">
                 </div>
               </div>
             </div>
@@ -2086,7 +2086,7 @@
   &lt;div class="controls"&gt;
     &lt;div class="input-prepend"&gt;
       &lt;span class="add-on"&gt;&lt;i class="icon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
-      &lt;input class="span2" id="inputIcon" type="text"&gt;
+      &lt;input class="span2" id="inputIcon" type="text" autocomplete="email"&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
