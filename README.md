@@ -34,6 +34,21 @@ For more information on SemVer, please visit http://semver.org/.
 
 
 
+## Fontello Generation
+
+Use this method to modify and regenerate the Fontello font icons:
+
+1. Navigate to [fontello](http://fontello.com)
+2. Import the config file (fontello-icon-fonts.config.json)
+3. Change the icon selection
+4. To bypass a problem in Fontello use the third tab to change any codes that are 1Fxxx (3 bytes) to Fxxx (2 bytes)
+5. Download the webfont
+6. Copy css\fontello-icon-fonts.css to bootstrap\less\fontello-icon-fonts.less
+7. Copy the fonts folder to bootstrap\fonts
+8. copy the config.json file to bootstrap\fontello-icon-fonts.config.json
+
+
+
 ## Bug tracker
 
 Have a bug or a feature request? [Please open a new issue](https://github.com/twitter/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
