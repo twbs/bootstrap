@@ -88,6 +88,11 @@
             && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
             && this.activate( targets[i] )
         }
+        
+        if (scrollTop < offsets[0]) {
+          this.activeTarget = false
+          $(this.selector).parent().removeClass('active')
+        }
       }
 
     , activate: function (target) {
