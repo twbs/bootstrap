@@ -2763,6 +2763,7 @@ table th[class*="span"],
 }
 
 .icon-folder-close {
+  width: 16px;
   background-position: -384px -120px;
 }
 
