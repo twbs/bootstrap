@@ -5919,7 +5919,7 @@ a.badge:hover {
 
 .carousel-inner > .item > img,
 .carousel-inner > .item > a,
-.carousel-inner > .item > img > a {
+.carousel-inner > .item > a > img {
   display: block;
   line-height: 1;
 }
