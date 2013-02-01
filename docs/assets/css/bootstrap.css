@@ -1242,9 +1242,8 @@ input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large,
 .uneditable-input.input-large {
-  padding: 11px 19px;
-  padding-right: 14px;
-  padding-left: 14px;
+  min-height: 44px;
+  padding: 10px 14px;
   font-size: 17.5px;
   border-radius: 6px;
 }
@@ -1266,6 +1265,7 @@ input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small,
 .uneditable-input.input-small {
+  min-height: 26px;
   padding: 2px 10px;
   font-size: 11.9px;
   border-radius: 3px;
@@ -1288,6 +1288,7 @@ input[type="search"].input-mini,
 input[type="tel"].input-mini,
 input[type="color"].input-mini,
 .uneditable-input.input-mini {
+  min-height: 26px;
   padding: 0 6px;
   font-size: 10.5px;
   border-radius: 3px;
@@ -1462,6 +1463,20 @@ select:focus:invalid:focus {
   border-radius: 0;
 }
 
+.input-group-addon.input-small,
+.input-group-btn.input-small,
+.input-group input.input-small,
+.input-group .uneditable-input.input-small {
+  border-radius: 0;
+}
+
+.input-group-addon.input-large,
+.input-group-btn.input-large,
+.input-group input.input-large,
+.input-group .uneditable-input.input-large {
+  border-radius: 0;
+}
+
 .input-group-addon,
 .input-group-btn {
   width: 1%;
@@ -1482,11 +1497,39 @@ select:focus:invalid:focus {
           box-sizing: border-box;
 }
 
+.input-group-addon.input-small {
+  padding: 2px 10px;
+  font-size: 11.9px;
+}
+
+.input-group-addon.input-large {
+  padding: 10px 14px;
+  font-size: 17.5px;
+}
+
 .input-group input:first-child,
 .input-group .uneditable-input:first-child,
 .input-group-addon:first-child {
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
+}
+
+.input-group input:first-child.input-small,
+.input-group .uneditable-input:first-child.input-small,
+.input-group-addon:first-child.input-small {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.input-group input:first-child.input-large,
+.input-group .uneditable-input:first-child.input-large,
+.input-group-addon:first-child.input-large {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
 }
 
 .input-group-addon:first-child {
@@ -1498,6 +1541,24 @@ select:focus:invalid:focus {
 .input-group-addon:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.input-group input:last-child.input-small,
+.input-group .uneditable-input:last-child.input-small,
+.input-group-addon:last-child.input-small {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.input-group input:last-child.input-large,
+.input-group .uneditable-input:last-child.input-large,
+.input-group-addon:last-child.input-large {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .input-group-addon:last-child {
@@ -1532,6 +1593,16 @@ select:focus:invalid:focus {
   border-radius: 4px 0 0 4px;
 }
 
+.input-group-btn:first-child > .btn.btn-large,
+.input-group-btn.btn-group:first-child > .btn.btn-large {
+  border-radius: 6px 0 0 6px;
+}
+
+.input-group-btn:first-child > .btn.btn-small,
+.input-group-btn.btn-group:first-child > .btn.btn-small {
+  border-radius: 3px 0 0 3px;
+}
+
 .input-group-btn:last-child > .btn,
 .input-group-btn.btn-group:last-child > .btn:first-child {
   border-left: 0;
@@ -1540,6 +1611,16 @@ select:focus:invalid:focus {
 .input-group-btn:last-child > .btn,
 .input-group-btn.btn-group:last-child > .btn {
   border-radius: 0 4px 4px 0;
+}
+
+.input-group-btn:last-child > .btn.btn-large,
+.input-group-btn.btn-group:last-child > .btn.btn-large {
+  border-radius: 0 6px 6px 0;
+}
+
+.input-group-btn:last-child > .btn.btn-small,
+.input-group-btn.btn-group:last-child > .btn.btn-small {
+  border-radius: 0 3px 3px 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -1616,7 +1697,7 @@ fieldset[disabled] .btn {
 }
 
 .btn-large {
-  padding: 11px 19px;
+  padding: 11px 14px;
   font-size: 17.5px;
   border-radius: 6px;
 }
@@ -3447,7 +3528,7 @@ button.close {
 
 .pagination-large > li > a,
 .pagination-large > li > span {
-  padding: 11px 19px;
+  padding: 11px 14px;
   font-size: 17.5px;
 }
 

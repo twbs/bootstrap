@@ -448,6 +448,12 @@ select:focus:invalid {
   display: table-cell;
   margin: 0;
   border-radius: 0;
+  &.input-small {
+    border-radius: 0;
+  }
+  &.input-large {
+    border-radius: 0;
+  }
 }
 // Addon and addon wrapper for buttons
 .input-group-addon,
@@ -468,6 +474,15 @@ select:focus:invalid {
   text-shadow: 0 1px 0 #fff;
   background-color: @grayLighter;
   border: 1px solid #ccc;
+
+	&.input-small {
+	  padding: @padding-small;
+	  font-size: @font-size-small;
+  }
+	&.input-large {
+		padding: @padding-large-input;
+		font-size: @font-size-large;
+	}
 }
 
 // Reset rounded corners
