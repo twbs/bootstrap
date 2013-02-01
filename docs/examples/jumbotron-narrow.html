@@ -25,8 +25,30 @@
 
     <!-- Custom styles for this template -->
     <style>
+      /* Space out content a bit */
       body {
-        padding-bottom: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      /* Everything but the jumbotron gets side spacing for mobile-first views */
+      .masthead,
+      .marketing,
+      .footer {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      /* Custom page header */
+      .masthead {
+        border-bottom: 1px solid #e5e5e5;
+      }
+      /* Make the masthead heading the same height as the navigation */
+      .masthead h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 19px;
       }
 
       /* Custom container */
@@ -40,7 +62,6 @@
 
       /* Main marketing message and sign up button */
       .jumbotron {
-        margin: 40px 0;
         text-align: center;
       }
       .jumbotron h1 {
@@ -54,10 +75,25 @@
 
       /* Supporting marketing content */
       .marketing {
-        margin: 60px 0;
+        margin: 40px 0;
       }
       .marketing p + h4 {
         margin-top: 28px;
+      }
+
+      /* Responsive: Portrait tablets and up */
+      @media screen and (min-width: 768px) {
+        /* Remove the padding we set earlier */
+        .masthead,
+        .marketing,
+        .footer {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        /* Space out the masthead */
+        .masthead {
+          margin-bottom: 30px;
+        }
       }
     </style>
   </head>
@@ -76,13 +112,10 @@
         <h3 class="muted">Project name</h3>
       </div>
 
-
-      <hr>
-
       <div class="jumbotron">
         <h1>Super awesome marketing speak!</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="#">Sign up today</a>
+        <p><a class="btn btn-large btn-success" href="#">Sign up today</a></p>
       </div>
 
       <div class="row marketing">
