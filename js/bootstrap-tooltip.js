@@ -106,13 +106,13 @@
   , show: function () {
       var $tip
         , pos
-		, doc
-		, body
-		, top
-		, conPos
-		, conLeft
-		, conHeight
-		, conWidth
+        , doc
+        , body
+        , top
+        , conPos
+        , conLeft
+        , conHeight
+        , conWidth
         , actualWidth
         , actualHeight
         , placement
@@ -145,7 +145,7 @@
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
 		
-		if(this.options.dynamicPos){
+        if(this.options.dynamicPos){
 		
           doc = document.documentElement, body = document.body;
           top = (doc && doc.scrollTop  || body && body.scrollTop  || 0);
@@ -163,7 +163,7 @@
           else if(placement == 'top' && (pos.top - top - actualHeight < 0))
             placement = 'bottom';
 		  
-	    }
+        }
 
         switch (placement) {
           case 'bottom':
