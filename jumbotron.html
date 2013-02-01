@@ -25,12 +25,35 @@
 
     <!-- Custom styles for this template -->
     <style>
+      /* Move down content because we have a fixed navbar that is 50px tall */
       body {
-        padding-top: 80px;
+        padding-top: 50px;
+        padding-bottom: 20px;
       }
+
+      /* Set widths on the navbar form inputs since otherwise they're 100% wide */
       .navbar-form input[type="text"],
       .navbar-form input[type="password"] {
         width: 180px;
+      }
+
+      /* Wrapping element */
+      /* Set some basic padding to keep content from hitting the edges */
+      .body-content {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      /* Responsive: Portrait tablets and up */
+      @media screen and (min-width: 768px) {
+        /* Let the jumbotron breathe */
+        .jumbotron {
+          margin-top: 20px;
+        }
+        /* Remove padding from wrapping element since we kick in the grid classes here */
+        .body-content {
+          padding: 0;
+        }
       }
     </style>
   </head>
@@ -81,30 +104,33 @@
         <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div>
 
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+      <div class="body-content">
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+         </div>
+          <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
         </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
+
+        <hr>
+
+        <footer>
+          <p>&copy; Company 2013</p>
+        </footer>
       </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
 
     </div> <!-- /container -->
 
