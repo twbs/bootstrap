@@ -4423,7 +4423,6 @@ a.counter:hover {
   line-height: 30px;
   color: inherit;
   background-color: #eeeeee;
-  border-radius: 6px;
 }
 
 .jumbotron h1 {
@@ -4438,6 +4437,7 @@ a.counter:hover {
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding: 50px 60px;
+    border-radius: 6px;
   }
   .jumbotron h1 {
     font-size: 60px;

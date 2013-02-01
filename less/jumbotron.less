@@ -11,7 +11,6 @@
   line-height: @line-height-base * 1.5;
   color: @jumbotron-lead-color;
   background-color: @jumbotron-background;
-  border-radius: 6px;
   h1 {
     line-height: 1;
     color: @jumbotron-heading-color;
@@ -24,6 +23,7 @@
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding: 50px 60px;
+    border-radius: 6px; // Only round corners at higher resolutions
 
     h1 {
       font-size: 60px;
