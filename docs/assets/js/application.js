@@ -34,12 +34,12 @@
     })
 
     // add tipsies to grid for scaffolding
-    // if ($('#gridSystem').length) {
-    //   $('#gridSystem').tooltip({
-    //       selector: '.show-grid > div:not(.tooltip)'
-    //     , title: function () { return $(this).width() + 'px' }
-    //   })
-    // }
+    if ($('#gridSystem').length) {
+      $('#gridSystem').tooltip({
+          selector: '.show-grid > [class*="span"]'
+        , title: function () { return $(this).width() + 'px' }
+      })
+    }
 
     // tooltip demo
     $('.tooltip-demo').tooltip({

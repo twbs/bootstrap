@@ -149,6 +149,9 @@ section > ul li {
   background-color: #eee;
   border: 1px solid #ddd;
 }
+.show-grid [class*="span"]:hover {
+  background-color: #ddd;
+}
 
 
 
