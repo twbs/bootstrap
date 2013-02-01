@@ -106,6 +106,13 @@
   , show: function () {
       var $tip
         , pos
+		, doc
+		, body
+		, top
+		, conPos
+		, conLeft
+		, conHeight
+		, conWidth
         , actualWidth
         , actualHeight
         , placement
@@ -133,9 +140,30 @@
         this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition()
+		conPos = this.$element.parent().offset()
 
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
+		
+		if(this.options.dynamicPos){
+		
+          doc = document.documentElement, body = document.body;
+          top = (doc && doc.scrollTop  || body && body.scrollTop  || 0);
+		
+          conWidth = this.options.container == 'body' ? window.innerWidth : this.$element.parent().outerWidth();
+          conHeight = this.options.container == 'body' ? window.innerHeight : this.$element.parent().outerHeight();
+          conLeft = this.options.container == 'body' ? 0 : conPos.left;
+		
+          if(placement == 'right' && (pos.right + actualWidth > conWidth))
+            placement = 'left';
+          else if(placement == 'left' && (pos.left - actualWidth < conLeft))
+            placement = 'right';
+          else if(placement == 'bottom' && (pos.top + pos.height + actualHeight - top > conHeight))
+            placement = 'top';
+          else if(placement == 'top' && (pos.top - top - actualHeight < 0))
+            placement = 'bottom';
+		  
+	    }
 
         switch (placement) {
           case 'bottom':
@@ -292,6 +320,7 @@
   , delay: 0
   , html: false
   , container: false
+  , dynamicPos: false
   }
 
 
