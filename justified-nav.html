@@ -27,16 +27,28 @@
     <style>
 
       body {
-        padding-bottom: 30px;
+        padding-top: 20px;
+      }
+
+      /* Everything but the jumbotron gets side spacing for mobile-first views */
+      .masthead,
+      .body-content,
+      .footer {
+        padding-left: 15px;
+        padding-right: 15px;
       }
 
       /* Custom container */
-      .container {
-        margin: 0 auto;
-        max-width: 1000px;
-      }
-      .container > hr {
+/*      .container > hr {
         margin: 60px 0;
+      }
+*/
+
+      .footer {
+        border-top: 1px solid #ddd;
+        margin-top: 30px;
+        padding-top: 29px;
+        padding-bottom: 30px;
       }
 
       /* Main marketing message and sign up button */
@@ -44,27 +56,10 @@
         text-align: center;
         background-color: transparent;
       }
-      .jumbotron h1 {
-        font-size: 100px;
-        line-height: 1;
-      }
-      .jumbotron .lead {
-        font-size: 24px;
-        line-height: 1.25;
-      }
       .jumbotron .btn {
         font-size: 21px;
         padding: 14px 24px;
       }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-
 
       /* Customize the nav-justified links to be fill the entire space of the .navbar */
       .nav-justified {
@@ -106,6 +101,20 @@
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
       }
+
+
+      /* Responsive: Portrait tablets and up */
+      @media screen and (min-width: 768px) {
+        /* Remove the padding we set earlier */
+        .masthead,
+        .marketing,
+        .footer {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        /* Make the nav on the same line */
+      }
+
     </style>
   </head>
 
@@ -130,33 +139,35 @@
       <!-- Jumbotron -->
       <div class="jumbotron">
         <h1>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="#">Get started today</a>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
+        <p><a class="btn btn-large btn-success" href="#">Get started today</a></p>
       </div>
 
-      <hr>
 
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+      <div class="body-content">
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+         </div>
+          <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
         </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
 
-      <hr>
+      </div><!-- /.body-content -->
 
+      <!-- Site footer -->
       <div class="footer">
         <p>&copy; Company 2013</p>
       </div>
