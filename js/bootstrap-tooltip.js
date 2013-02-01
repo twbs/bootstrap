@@ -162,7 +162,7 @@
             placement = 'top';
           else if(placement == 'top' && (pos.top - top - actualHeight < 0))
             placement = 'bottom';
-		  
+
         }
 
         switch (placement) {
