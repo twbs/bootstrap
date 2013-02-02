@@ -18,6 +18,7 @@ figure,
 footer,
 header,
 hgroup,
+main,
 nav,
 section,
 summary {
@@ -59,6 +60,7 @@ a:hover {
 }
 
 h1 {
+  margin: 0.67em 0;
   font-size: 2em;
 }
 
@@ -75,6 +77,12 @@ dfn {
   font-style: italic;
 }
 
+hr {
+  height: 0;
+  -moz-box-sizing: content-box;
+       box-sizing: content-box;
+}
+
 mark {
   color: #000;
   background: #ff0;
@@ -89,8 +97,6 @@ samp {
 }
 
 pre {
-  word-wrap: break-word;
-  white-space: pre;
   white-space: pre-wrap;
 }
 
@@ -153,6 +159,11 @@ textarea {
 button,
 input {
   line-height: normal;
+}
+
+button,
+select {
+  text-transform: none;
 }
 
 button,
