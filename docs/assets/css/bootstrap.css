@@ -1679,7 +1679,7 @@ input[type="button"].btn-block {
 }
 
 .btn {
-  color: #fff;
+  color: #ffffff;
   background-color: #a7a9aa;
   border-color: #a7a9aa;
 }
@@ -2491,7 +2491,7 @@ fieldset[disabled] .btn-link:hover {
   width: 0;
   height: 0;
   vertical-align: top;
-  border-top: 4px solid #000;
+  border-top: 4px solid #ffffff;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
@@ -2601,7 +2601,7 @@ fieldset[disabled] .btn-link:hover {
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0;
-  border-bottom: 4px solid #000;
+  border-bottom: 4px solid #ffffff;
   content: "";
 }
 
@@ -3246,8 +3246,8 @@ button.close {
 */
 
 .caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 .btn-group {
