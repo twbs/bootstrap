@@ -3,9 +3,11 @@
 // --------------------------------------------------
 
 // Button carets
-.caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+.btn .caret {
+  border-top-color: @btn-color;
+}
+.dropup .btn .caret {
+  border-bottom-color: @btn-color;
 }
 
 // Make the div behave like a button
@@ -105,14 +107,7 @@
 }
 // Carets in other button sizes
 .btn-large .caret {
-  margin-top: 6px;
-}
-.btn-large .caret {
   border-width: 5px;
-}
-.btn-mini .caret,
-.btn-small .caret {
-  margin-top: 8px;
 }
 // Upside down carets for .dropup
 .dropup .btn-large .caret {

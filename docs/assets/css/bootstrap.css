@@ -1679,7 +1679,7 @@ input[type="button"].btn-block {
 }
 
 .btn {
-  color: #fff;
+  color: #ffffff;
   background-color: #a7a9aa;
   border-color: #a7a9aa;
 }
@@ -3245,9 +3245,12 @@ button.close {
 
 */
 
-.caret {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+.btn .caret {
+  border-top-color: #ffffff;
+}
+
+.dropup .btn .caret {
+  border-bottom-color: #ffffff;
 }
 
 .btn-group {
@@ -3345,16 +3348,7 @@ button.close {
 }
 
 .btn-large .caret {
-  margin-top: 6px;
-}
-
-.btn-large .caret {
   border-width: 5px;
-}
-
-.btn-mini .caret,
-.btn-small .caret {
-  margin-top: 8px;
 }
 
 .dropup .btn-large .caret {
