@@ -104,11 +104,8 @@
 }
 
 // Dividers in navbar
-.navbar .divider-vertical {
-  height: @navbar-height * .6;
-  margin: (@navbar-height * .2) 9px;
-  border-left: 1px solid darken(@navbar-bg, 5%);
-  border-right: 1px solid lighten(@navbar-bg, 5%);
+.navbar .nav > .divider {
+  .nav-divider(darken(@navbar-bg, 5%), lighten(@navbar-bg, 5%));
 }
 
 // Navbar form
@@ -204,10 +201,10 @@
     background-color: #444;
   }
 
-  // Darken divider borders
-  .divider-vertical {
-    border-left-color: darken(@navbar-inverse-bg, 5%);
-    border-right-color: lighten(@navbar-inverse-bg, 5%);
+  // Darken dividers
+  .nav > .divider {
+    background-color: darken(@navbar-inverse-bg, 5%);
+    border-bottom-color: lighten(@navbar-inverse-bg, 5%);
   }
 
   // Dropdowns
@@ -260,6 +257,20 @@
   }
   .navbar .nav > li {
     float: left;
+  }
+
+  // Dividers go vertical
+  // Change the height and height, disable bottom border, then add right border
+  .navbar .nav > .divider {
+    width: 1px;
+    height: @navbar-height * .6;
+    margin: (@navbar-height * .2) 9px;
+    border-bottom: 0;
+    border-right: 1px solid lighten(@navbar-bg, 5%);
+  }
+  // Since we override the border, we need to specify it again for inverted navbars
+  .navbar-inverse .nav > .divider {
+    border-right-color: lighten(@navbar-inverse-bg, 5%);
   }
 
   // Required to make the collapsing navbar work on regular desktops
