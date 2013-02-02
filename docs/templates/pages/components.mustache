@@ -1546,7 +1546,7 @@
         ================================================== -->
         <section id="progress">
           <div class="page-header">
-            <h1>Progress bars <small>For loading, redirecting, or action status</small></h1>
+            <h1>Progress bars</h1>
           </div>
 
           <h2>Examples and markup</h2>
@@ -1555,12 +1555,12 @@
           <p>Default progress bar with a vertical gradient.</p>
           <div class="bs-docs-example">
             <div class="progress">
-              <div class="bar" style="width: 60%;"></div>
+              <div class="progress-bar" style="width: 60%;"></div>
             </div>
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
-  &lt;div class="bar" style="width: 60%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar" style="width: 60%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1568,12 +1568,12 @@
           <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
           <div class="bs-docs-example">
             <div class="progress progress-striped">
-              <div class="bar" style="width: 20%;"></div>
+              <div class="progress-bar" style="width: 20%;"></div>
             </div>
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped"&gt;
-  &lt;div class="bar" style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar" style="width: 20%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1581,12 +1581,12 @@
           <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
           <div class="bs-docs-example">
             <div class="progress progress-striped active">
-              <div class="bar" style="width: 45%"></div>
+              <div class="progress-bar" style="width: 45%"></div>
             </div>
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress progress-striped active"&gt;
-  &lt;div class="bar" style="width: 40%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1594,16 +1594,16 @@
           <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
           <div class="bs-docs-example">
             <div class="progress">
-              <div class="bar bar-success" style="width: 35%"></div>
-              <div class="bar bar-warning" style="width: 20%"></div>
-              <div class="bar bar-danger" style="width: 10%"></div>
+              <div class="progress-bar progress-bar-success" style="width: 35%"></div>
+              <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
+              <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
             </div>
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="progress"&gt;
-  &lt;div class="bar bar-success" style="width: 35%;"&gt;&lt;/div&gt;
-  &lt;div class="bar bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
-  &lt;div class="bar bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar progress-bar-success" style="width: 35%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar progress-bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar progress-bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1616,62 +1616,62 @@
           <h3>Additional colors</h3>
           <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
           <div class="bs-docs-example">
-            <div class="progress progress-info" style="margin-bottom: 9px;">
-              <div class="bar" style="width: 20%"></div>
+            <div class="progress" style="margin-bottom: 9px;">
+              <div class="progress-bar progress-bar-info" style="width: 20%"></div>
             </div>
-            <div class="progress progress-success" style="margin-bottom: 9px;">
-              <div class="bar" style="width: 40%"></div>
+            <div class="progress" style="margin-bottom: 9px;">
+              <div class="progress-bar progress-bar-success" style="width: 40%"></div>
             </div>
-            <div class="progress progress-warning" style="margin-bottom: 9px;">
-              <div class="bar" style="width: 60%"></div>
+            <div class="progress" style="margin-bottom: 9px;">
+              <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
             </div>
-            <div class="progress progress-danger">
-              <div class="bar" style="width: 80%"></div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-info"&gt;
-  &lt;div class="bar" style="width: 20%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-success"&gt;
-  &lt;div class="bar" style="width: 40%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-warning"&gt;
-  &lt;div class="bar" style="width: 60%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-danger"&gt;
-  &lt;div class="bar" style="width: 80%"&gt;&lt;/div&gt;
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 
           <h3>Striped bars</h3>
           <p>Similar to the solid colors, we have varied striped progress bars.</p>
           <div class="bs-docs-example">
-            <div class="progress progress-info progress-striped" style="margin-bottom: 9px;">
-              <div class="bar" style="width: 20%"></div>
+            <div class="progress progress-striped" style="margin-bottom: 9px;">
+              <div class="progress-bar progress-bar-info" style="width: 20%"></div>
             </div>
-            <div class="progress progress-success progress-striped" style="margin-bottom: 9px;">
-              <div class="bar" style="width: 40%"></div>
+            <div class="progress progress-striped" style="margin-bottom: 9px;">
+              <div class="progress-bar progress-bar-success" style="width: 40%"></div>
             </div>
-            <div class="progress progress-warning progress-striped" style="margin-bottom: 9px;">
-              <div class="bar" style="width: 60%"></div>
+            <div class="progress progress-striped" style="margin-bottom: 9px;">
+              <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
             </div>
-            <div class="progress progress-danger progress-striped">
-              <div class="bar" style="width: 80%"></div>
+            <div class="progress progress-striped">
+              <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
             </div>
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="progress progress-info progress-striped"&gt;
-  &lt;div class="bar" style="width: 20%"&gt;&lt;/div&gt;
+&lt;div class="progress progress-striped"&gt;
+  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-success progress-striped"&gt;
-  &lt;div class="bar" style="width: 40%"&gt;&lt;/div&gt;
+&lt;div class="progress progress-striped"&gt;
+  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-warning progress-striped"&gt;
-  &lt;div class="bar" style="width: 60%"&gt;&lt;/div&gt;
+&lt;div class="progress progress-striped"&gt;
+  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="progress progress-danger progress-striped"&gt;
-  &lt;div class="bar" style="width: 80%"&gt;&lt;/div&gt;
+&lt;div class="progress progress-striped"&gt;
+  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
 

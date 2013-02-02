@@ -9,26 +9,33 @@
 
 // Grays
 // -------------------------
+
 @grayDarker:            #222;
 @grayDark:              #333;
 @gray:                  #555;
 @grayLight:             #999;
 @grayLighter:           #eee;
 
+// Brand colors
+// -------------------------
+
+@brand-primary:         #428bca;
+@brand-success:         #5cb85c;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+@brand-info:            #5bc0de;
 
 // Scaffolding
 // -------------------------
 
-@body-background:         #fff;
-@text-color:              @grayDark;
-
+@body-background:       #fff;
+@text-color:            @grayDark;
 
 // Links
 // -------------------------
 
-@link-color:              #428bca;
-@link-color-hover:        darken(@link-color, 15%);
-
+@link-color:            #428bca;
+@link-color-hover:      darken(@link-color, 15%);
 
 // Typography
 // -------------------------
@@ -78,19 +85,19 @@
 @btn-background:                     #a7a9aa;
 @btn-border:                         @btn-background;
 
-@btn-background-primary:             @link-color;
+@btn-background-primary:             @brand-primary;
 @btn-border-primary:                 @btn-background-primary;
 
-@btn-background-success:             #5cb85c;
+@btn-background-success:             @brand-success;
 @btn-border-success:                 @btn-background-success;
 
-@btn-background-warning:             #f0ad4e;
+@btn-background-warning:             @brand-warning;
 @btn-border-warning:                 @btn-background-warning;
 
-@btn-background-danger:              #d9534f;
+@btn-background-danger:              @brand-danger;
 @btn-border-danger:                  @btn-background-danger;
 
-@btn-background-info:                #5bc0de;
+@btn-background-info:                @brand-info;
 @btn-border-info:                    @btn-background-info;
 
 
@@ -251,6 +258,16 @@
 // Special enhancement for popovers
 @popover-arrow-outer-width:   @popover-arrow-width + 1;
 @popover-arrow-outer-color:   rgba(0,0,0,.25);
+
+
+// Progress bars
+// -------------------------
+@progress-bg:                 #f5f5f5;
+@progress-bar-bg:             @brand-primary;
+@progress-bar-success-bg:     @brand-success;
+@progress-bar-warning-bg:     @brand-warning;
+@progress-bar-danger-bg:      @brand-danger;
+@progress-bar-info-bg:        @brand-info;
 
 
 // Miscellaneous
