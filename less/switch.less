@@ -20,19 +20,16 @@
     margin-left: 100px;
   }
 
-  /* Position the label over all the elements, except the btn-switch
-   * Clicking anywhere on the label will change the switch-state
-   */
+  // Position the label over all the elements, except the btn-switch
+  // Clicking anywhere on the label will change the switch-state
   .checkbox-switch label {
     position: relative;
     z-index: 3;
-    
     display: block;
     width: 100%;
   }
 
-  /* Don't hide the input from screen-readers and keyboard access
-   */
+  // Don't hide the input from screen-readers and keyboard access
   .checkbox-switch input {
     position: absolute;
     opacity: 0;
@@ -53,11 +50,9 @@
     top: 0;
     left: 0;
     z-index: 5;
-    
     display: block;
     width: 50%;
     margin-left: 100px;
-    
     text-align: center;
   }
   
@@ -70,25 +65,24 @@
     right: 0;
     top: 0;
     z-index: 4;
-    
     display: block;
     width: 50%;
     height: 100%;
     padding: 0;
   }
 
-// Radio Switch
-// -------------------------
+  // Radio Switch
+  // -------------------------
   .radio-switch {
     position: relative;
     padding: 0;
   }
-  
+
   .radio-switch input {
     position: absolute;
     opacity: 0;
   }
-  
+
   .radio-switch label {
     position: relative;
     z-index: 2;  
@@ -105,7 +99,6 @@
     left: 0;
     padding: 0;
     z-index: 1;
-    
     width: 50%;
     height: 100%;
   }
@@ -155,11 +148,11 @@
   .radio-switch.switch-five input:checked:nth-of-type(2) ~ .btn-switch {  
     left: 20%;
   }
-  
+
   .radio-switch.switch-five input:checked:nth-of-type(3) ~ .btn-switch {  
     left: 40%;
   }
-  
+
   .radio-switch.switch-five input:checked:nth-of-type(4) ~ .btn-switch {  
     left: 60%;
   }
@@ -167,9 +160,6 @@
   .radio-switch.switch-five input:checked:last-of-type ~ .btn-switch {
     left: 80%;
   }
-
-
-
 
 
 
@@ -193,41 +183,41 @@
     display: block;
     height: 30px;
   }
-  
+
   .radio-switch *,
   .checkbox-switch * {
     .box-sizing(border-box);
   }
-  
+
   .radio-switch .btn-switch,
   .checkbox-switch .btn-switch {
     display: block;
     .transition(all .3s ease-out);
   }
-  
+
   .checkbox-switch label,
   .checkbox-switch p,
   .radio-switch label {
     line-height: 30px;
     vertical-align: middle;
   }
-  
+
   .checkbox-switch input:checked ~ .btn-switch {
     right: 50%;
   }
-  
+
   // Outline the checkbox-switch when the inputs are focused 
   .checkbox-switch input:focus ~ .btn-switch,
   .radio-switch input:focus + label {
     outline: 1px dotted #888;
   }
-  
+
   // Bugfix for older Webkit, including mobile Webkit. Adapted from:
   // http://css-tricks.com/webkit-sibling-bug/
   .radio-switch, .checkbox-switch {
     -webkit-animation: bugfix infinite 1s;
   }
-  
+
   @-webkit-keyframes bugfix { from { position: relative; } to { position: relative; } }
 
 }
