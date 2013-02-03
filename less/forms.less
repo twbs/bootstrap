@@ -57,7 +57,7 @@ input[type="color"],
 .uneditable-input {
   display: inline-block;
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
-  min-height: @input-height; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
   // margin-bottom: @line-height-base / 2;
   font-size: @font-size-base;
@@ -134,8 +134,8 @@ input[type="checkbox"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: @input-height; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
-  line-height: @input-height;
+  height: @input-height-base; /* In IE7, the height of the select element cannot be changed by height, only font-size. TODO: Check if this is still needed when dropping IE7 support */
+  line-height: @input-height-base;
 }
 
 // Make select elements obey height by applying a border
@@ -270,21 +270,22 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   &.input-large {
-    padding: @padding-large;
-    padding-left: 14px;
-    padding-right: 14px; // TODO: Resolve this override
+    padding: @padding-large-input;
     font-size: @font-size-large;
     border-radius: @border-radius-large;
+	min-height: @input-height-large;
   }
   &.input-small {
     padding: @padding-small;
     font-size: @font-size-small;
     border-radius: @border-radius-small;
+	min-height: @input-height-small;
   }
   &.input-mini {
     padding: @padding-mini;
     font-size: @font-size-mini;
     border-radius: @border-radius-small;
+	min-height: @input-height-small;
   }
 }
 
@@ -315,7 +316,7 @@ input[class*="span"],
 select[class*="span"],
 textarea[class*="span"],
 .uneditable-input[class*="span"] {
-  height: @input-height;
+  height: @input-height-base;
 }
 
 
@@ -447,6 +448,12 @@ select:focus:invalid {
   display: table-cell;
   margin: 0;
   border-radius: 0;
+  &.input-small {
+    border-radius: 0;
+  }
+  &.input-large {
+    border-radius: 0;
+  }
 }
 // Addon and addon wrapper for buttons
 .input-group-addon,
@@ -467,6 +474,15 @@ select:focus:invalid {
   text-shadow: 0 1px 0 #fff;
   background-color: @grayLighter;
   border: 1px solid #ccc;
+
+	&.input-small {
+	  padding: @padding-small;
+	  font-size: @font-size-small;
+  }
+	&.input-large {
+		padding: @padding-large-input;
+		font-size: @font-size-large;
+	}
 }
 
 // Reset rounded corners
@@ -474,6 +490,14 @@ select:focus:invalid {
 .input-group .uneditable-input:first-child,
 .input-group-addon:first-child {
   .border-left-radius(@border-radius-base);
+  &.input-small {
+    .border-left-radius(@border-radius-small);
+    .border-right-radius(0);
+  }
+  &.input-large {
+    .border-left-radius(@border-radius-large);
+    .border-right-radius(0);
+  }
 }
 .input-group-addon:first-child {
   border-right: 0;
@@ -482,6 +506,14 @@ select:focus:invalid {
 .input-group .uneditable-input:last-child,
 .input-group-addon:last-child {
   .border-right-radius(@border-radius-base);
+  &.input-small {
+    .border-right-radius(@border-radius-small);
+    .border-left-radius(0);
+  }
+  &.input-large {
+    .border-right-radius(@border-radius-large);
+    .border-left-radius(0);
+  }
 }
 .input-group-addon:last-child {
   border-left: 0;
@@ -512,6 +544,12 @@ select:focus:invalid {
   &:first-child > .btn,
   &.btn-group:first-child > .btn {
     border-radius: @border-radius-base 0 0 @border-radius-base;
+    &.btn-large {
+      border-radius:@border-radius-large 0 0 @border-radius-large;
+    }
+    &.btn-small {
+      border-radius:@border-radius-small 0 0 @border-radius-small;
+    }
   }
 }
 // Append
@@ -523,6 +561,12 @@ select:focus:invalid {
   &:last-child > .btn,
   &.btn-group:last-child > .btn {
     border-radius: 0 @border-radius-base @border-radius-base 0;
+    &.btn-large {
+      border-radius: 0 @border-radius-large @border-radius-large 0;
+    }
+    &.btn-small {
+      border-radius: 0 @border-radius-small @border-radius-small 0;
+    }
   }
 }
 
