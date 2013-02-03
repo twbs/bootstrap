@@ -8,6 +8,11 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
+/*@padding-large-input:     10px 14px; // 44px
+// firefox hack since it doesn't accept custom line-height for inputs and automatically sets line-height as font-size + 4 px.
+// input-large at 18 + 4 = 22, so I tried to compensate on padding.
+*/
+
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 
 article,
@@ -1253,8 +1258,7 @@ input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large,
 .uneditable-input.input-large {
-  min-height: 44px;
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 17.5px;
   border-radius: 6px;
 }
@@ -1279,29 +1283,6 @@ input[type="color"].input-small,
   min-height: 26px;
   padding: 2px 10px;
   font-size: 11.9px;
-  border-radius: 3px;
-}
-
-select.input-mini,
-textarea.input-mini,
-input[type="text"].input-mini,
-input[type="password"].input-mini,
-input[type="datetime"].input-mini,
-input[type="datetime-local"].input-mini,
-input[type="date"].input-mini,
-input[type="month"].input-mini,
-input[type="time"].input-mini,
-input[type="week"].input-mini,
-input[type="number"].input-mini,
-input[type="email"].input-mini,
-input[type="url"].input-mini,
-input[type="search"].input-mini,
-input[type="tel"].input-mini,
-input[type="color"].input-mini,
-.uneditable-input.input-mini {
-  min-height: 26px;
-  padding: 0 6px;
-  font-size: 10.5px;
   border-radius: 3px;
 }
 
@@ -1514,7 +1495,7 @@ select:focus:invalid:focus {
 }
 
 .input-group-addon.input-large {
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 17.5px;
 }
 
@@ -1528,8 +1509,6 @@ select:focus:invalid:focus {
 .input-group input:first-child.input-small,
 .input-group .uneditable-input:first-child.input-small,
 .input-group-addon:first-child.input-small {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
 }
@@ -1537,8 +1516,6 @@ select:focus:invalid:focus {
 .input-group input:first-child.input-large,
 .input-group .uneditable-input:first-child.input-large,
 .input-group-addon:first-child.input-large {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   border-bottom-left-radius: 6px;
   border-top-left-radius: 6px;
 }
@@ -1559,8 +1536,6 @@ select:focus:invalid:focus {
 .input-group-addon:last-child.input-small {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
 }
 
 .input-group input:last-child.input-large,
@@ -1568,8 +1543,6 @@ select:focus:invalid:focus {
 .input-group-addon:last-child.input-large {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
 }
 
 .input-group-addon:last-child {

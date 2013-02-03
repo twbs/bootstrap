@@ -1308,6 +1308,40 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 &lt;/div&gt;
 </pre>
 
+          <h4>Optional sizes</h4>
+          <p>Add the relative form sizing classes to the `.input-group-addon`.</p>
+          <form class="bs-docs-example">
+            <div class="input-group span9">
+              <span class="input-group-addon input-large">@</span>
+              <input type="text" class="input-large" placeholder="Username">
+            </div>
+            <br>
+            <div class="input-group span9">
+              <span class="input-group-addon">@</span>
+              <input type="text" placeholder="Username">
+            </div>
+            <br>
+            <div class="input-group span9">
+              <span class="input-group-addon input-small">@</span>
+              <input type="text" class="input-small" placeholder="Username">
+            </div>
+          </form>
+<pre class="prettyprint linenums">
+&lt;div class="input-group span9"&gt;
+  &lt;span class="input-group-addon input-large"&gt;@&lt;/span&gt;
+  &lt;input type="text" class="input-large" placeholder="Username"&gt;
+&lt;/div&gt;
+&lt;div class="input-group span9"&gt;
+  &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
+  &lt;input type="text" placeholder="Username"&gt;
+&lt;/div&gt;
+&lt;div class="input-group span9"&gt;
+  &lt;span class="input-group-addon input-small"&gt;@&lt;/span&gt;
+  &lt;input type="text" class="input-small" placeholder="Username"&gt;
+&lt;/div&gt;
+</pre>
+
+
           <h4>Buttons instead of text</h4>
           <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
           <form class="bs-docs-example">
@@ -1457,14 +1491,14 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <form class="bs-docs-example" style="padding-bottom: 15px;">
             <div class="controls docs-input-sizes">
               <input class="input-large" type="text" placeholder=".input-large">
+              <input type="text" placeholder="Default input">
               <input class="input-small" type="text" placeholder=".input-small">
-              <input class="input-mini" type="text" placeholder=".input-mini">
             </div>
           </form>
 <pre class="prettyprint linenums">
 &lt;input class="input-large" type="text" placeholder=".input-large"&gt;
+&lt;input type="text" placeholder="Default input"&gt;
 &lt;input class="input-small" type="text" placeholder=".input-small"&gt;
-&lt;input class="input-mini" type="text" placeholder=".input-mini"&gt;
 </pre>
 
           <h4>Column sizing</h4>
