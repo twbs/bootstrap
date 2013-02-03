@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Buttons &middot; Bootstrap</title>
+    <title>Switch &middot; Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -33,9 +33,11 @@
 
     <div class="container">
 
-      <h2>Checkbox Switch</h2>
+      <div class="page-header">
+        <h1>Checkbox Switch</h1>
+      </div>
 
-      <form class="form-horizontal">
+      <form>
         <label class="checkbox checkbox-switch" onclick="">
           <input id="view" type="checkbox" checked />
           <p>
@@ -49,7 +51,7 @@
 
       <hr>
 
-      <form class="form-horizontal">
+      <form>
         <label class="checkbox checkbox-switch" onclick="">
           <input id="view" type="checkbox" checked />
           <p>
@@ -62,114 +64,116 @@
 
       <hr>
 
-      <label class="checkbox checkbox-switch" onclick="">
-        <input id="view" type="checkbox" checked />
-        <p>
-          Label
-          <span>On</span>
-          <span>Off</span>
-        </p>
-        <a class="btn-switch btn btn-success"></a>
-      </label>
-
-      <hr>
-
       <form>
-        <label class="checkbox checkbox-switch" onclick="" style="width: 100px;" >
+        <label class="checkbox checkbox-switch" onclick="" style="width: 120px;">
           <input id="view" type="checkbox" checked />
           <p>
             Label
             <span>On</span>
             <span>Off</span>
           </p>
-          <a class="btn-switch btn btn-info"></a>
+          <a class="btn-switch btn btn-primary"></a>
         </label>
+      </form>
+
+      <div class="page-header">
+        <h1>Radio Switch</h1>
+      </div>
+
+      <div class="radio-switch">
+        <input id="week" name="view" type="radio" checked>
+        <label for="week" onclick="">Week</label>
+        <input id="month" name="view" type="radio">
+        <label for="month" onclick="">Month</label>
+        <span class="btn-switch btn"></span>
+      </div>
+      
+      <hr>
+      
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label">form horizontal</label>
+          <div class="controls radio-switch">
+            <input id="week2" name="view" type="radio" checked>
+            <label for="week2" onclick="">Week</label>
+            <input id="month2" name="view" type="radio">
+            <label for="month2" onclick="">Month</label>
+            <span class="btn-switch btn btn-warning"></span>
+          </div>
+        </div>
+      </form>
+
+      <hr>
+      
+      <form>
+        <div class="control-group">
+          <label class="control-label">2 inputs</label>
+          <div class="controls radio-switch">
+            <input id="week22" name="view" type="radio" checked>
+            <label for="week22" onclick="">Week</label>
+            <input id="month22" name="view" type="radio">
+            <label for="month22" onclick="">Month</label>
+            <span class="btn-switch btn btn-success"></span>
+          </div>
+        </div>
       </form>
 
       <hr>
 
-
-      <h2>Radio Switch</h2>
-
-<div class="radio-switch">
-  <input id="week" name="view" type="radio" checked>
-  <label for="week" onclick="">Week</label>
-  <input id="month" name="view" type="radio">
-  <label for="month" onclick="">Month</label>
-  <span class="btn-switch btn btn-primary"></span>
-</div>
-
-<hr>
-
-<form class="form-horizontal">
-  <div class="control-group">
-    <label class="control-label">Label</label>
-    <div class="controls radio-switch">
-      <input id="week2" name="view" type="radio" checked>
-      <label for="week2" onclick="">Week</label>
-      <input id="month2" name="view" type="radio">
-      <label for="month2" onclick="">Month</label>
-      <span class="btn-switch btn btn-success"></span>
-    </div>
-  </div>
-</form>
-
-<hr>
-
-<form>
-  <div class="control-group">
-    <label class="control-label">Label</label>
-    <div class="controls radio-switch switch-three">
-      <input id="week3" name="view" type="radio" checked>
-      <label for="week3" onclick="">Week</label>
-      <input id="month3" name="view" type="radio">
-      <label for="month3" onclick="">Month</label>
-      <input id="month4" name="view" type="radio">
-      <label for="month4" onclick="">Month</label>
-      <span class="btn-switch btn btn-danger"></span>
-    </div>
-  </div>
-</form>
-
-<hr>
-
-<form>
-  <div class="control-group">
-    <label class="control-label">Label</label>
-    <div class="controls radio-switch switch-four">
-      <input id="week5" name="view" type="radio" checked>
-      <label for="week5" onclick="">Day</label>
-      <input id="month6" name="view" type="radio">
-      <label for="month6" onclick="">Week</label>
-      <input id="month7" name="view" type="radio">
-      <label for="month7" onclick="">Month</label>
-      <input id="month8" name="view" type="radio">
-      <label for="month8" onclick="">Year</label>
-      <span class="btn-switch btn"></span>
-    </div>
-  </div>
-</form>
-
-<hr>
-
-<form class="form-horizontal">
-  <div class="control-group">
-    <label class="control-label">Label</label>
-    <div class="controls radio-switch switch-five">
-      <input id="week9" name="view" type="radio" checked>
-      <label for="week9" onclick="">Day</label>
-      <input id="month10" name="view" type="radio">
-      <label for="month10" onclick="">Week</label>
-      <input id="month11" name="view" type="radio">
-      <label for="month11" onclick="">Month</label>
-      <input id="month12" name="view" type="radio">
-      <label for="month12" onclick="">Year</label>
-      <input id="month13" name="view" type="radio">
-      <label for="month13" onclick="">Decade</label>
-      <span class="btn-switch btn"></span>
-    </div>
-  </div>
-</form>
+      <form>
+        <div class="control-group">
+          <label class="control-label">3 inputs</label>
+          <div class="controls radio-switch switch-three">
+            <input id="week3" name="view" type="radio" checked>
+            <label for="week3" onclick="">Week</label>
+            <input id="month3" name="view" type="radio">
+            <label for="month3" onclick="">Month</label>
+            <input id="month4" name="view" type="radio">
+            <label for="month4" onclick="">Month</label>
+            <span class="btn-switch btn btn-danger"></span>
+          </div>
+        </div>
+      </form>
+      
+      <hr>
+      
+      <form>
+        <div class="control-group">
+          <label class="control-label">4 inputs</label>
+          <div class="controls radio-switch switch-four">
+            <input id="week5" name="view" type="radio" checked>
+            <label for="week5" onclick="">Day</label>
+            <input id="month6" name="view" type="radio">
+            <label for="month6" onclick="">Week</label>
+            <input id="month7" name="view" type="radio">
+            <label for="month7" onclick="">Month</label>
+            <input id="month8" name="view" type="radio">
+            <label for="month8" onclick="">Year</label>
+            <span class="btn-switch btn btn-primary"></span>
+          </div>
+        </div>
+      </form>
+      
+      <hr>
+      
+      <form>
+        <div class="control-group">
+          <label class="control-label">5 inputs</label>
+          <div class="controls radio-switch switch-five">
+            <input id="week9" name="view" type="radio" checked>
+            <label for="week9" onclick="">Day</label>
+            <input id="month10" name="view" type="radio">
+            <label for="month10" onclick="">Week</label>
+            <input id="month11" name="view" type="radio">
+            <label for="month11" onclick="">Month</label>
+            <input id="month12" name="view" type="radio">
+            <label for="month12" onclick="">Year</label>
+            <input id="month13" name="view" type="radio">
+            <label for="month13" onclick="">Decade</label>
+            <span class="btn-switch btn btn-info"></span>
+          </div>
+        </div>
+      </form>
 
     </div> <!-- /container -->
 
