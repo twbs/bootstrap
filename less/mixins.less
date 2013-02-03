@@ -383,30 +383,32 @@
   border-bottom: 1px solid @bottom;
 }
 
-// Button backgrounds
-// ------------------
-.buttonBackground(@background-start, @background-end, @text-color: #fff, @text-shadow: 0 -1px 0 rgba(0,0,0,.25)) {
-  color: @text-color;
-  text-shadow: @text-shadow;
-  #gradient > .vertical(@background-start, @background-end);
-  border-color: darken(@background-end, 7.5%);
+// Button psuedo states
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+.btn-pseudo-states(@background, @border) {
+  background-color: @background;
+  border-color: @border;
 
   &:hover,
-  &:active,
-  &.active {
-    color: @text-color;
-    background-color: @background-end;
-    background-position: 0 -15px;
+  &:focus,
+  &:active {
+    background-color: darken(@background, 5%);
+        border-color: darken(@border, 10%);
   }
-  &:active,
-  &.active,
-  &[disabled],
+
   &.disabled,
+  &[disabled],
   fieldset[disabled] & {
-    background-image: none;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: @background;
+          border-color: @border
+    }
   }
 }
-
 
 // Navbar vertical align
 // -------------------------

@@ -109,64 +109,32 @@ input[type="button"] {
   }
 }
 
-// Mixin for darkening only enabled buttons for link states
-.darken-button-states (@background, @border) {
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken(@background, 5%);
-        border-color: darken(@border, 10%);
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: @background;
-          border-color: @border
-    }
-  }
-}
 
 // Alternate buttons
 // --------------------------------------------------
 
 .btn {
   color: @btn-color;
-  background-color: @btn-background;
-      border-color: @btn-border;
-  .darken-button-states(@btn-background, @btn-border)
+  .btn-pseudo-states(@btn-background, @btn-border);
 }
 .btn-primary {
-  background-color: @btn-background-primary;
-      border-color: @btn-border-primary;
-  .darken-button-states(@btn-background-primary, @btn-border-primary)
+  .btn-pseudo-states(@btn-background-primary, @btn-border-primary);
 }
 // Warning appears as orange
 .btn-warning {
-  background-color: @btn-background-warning;
-      border-color: @btn-border-warning;
-  .darken-button-states(@btn-background-warning, @btn-border-warning)
+  .btn-pseudo-states(@btn-background-warning, @btn-border-warning);
 }
 // Danger and error appear as red
 .btn-danger {
-  background-color: @btn-background-danger;
-      border-color: @btn-border-danger;
-  .darken-button-states(@btn-background-danger, @btn-border-danger)
+  .btn-pseudo-states(@btn-background-danger, @btn-border-danger);
 }
 // Success appears as green
 .btn-success {
-  background-color: @btn-background-success;
-      border-color: @btn-border-success;
-  .darken-button-states(@btn-background-success, @btn-border-success)
+  .btn-pseudo-states(@btn-background-success, @btn-border-success);
 }
 // Info appears as blue-green
 .btn-info {
-  background-color: @btn-background-info;
-      border-color: @btn-border-info;
-  .darken-button-states(@btn-background-info, @btn-border-info)
+  .btn-pseudo-states(@btn-background-info, @btn-border-info);
 }
 
 
