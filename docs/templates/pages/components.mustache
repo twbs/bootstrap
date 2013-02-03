@@ -1321,6 +1321,218 @@
         </section>
 
 
+        <!-- Switch
+        ================================================== -->
+        <section id="switch">
+          <div class="page-header">
+            <h1>Switch</h1>
+          </div>
+          <p>CSS only toggle switches using standard form controls.</p>
+          
+          <h3>Checkbox</h3>
+          <p>For "On/Off" states, use checkboxes.</p>
+          <div class="bs-docs-example">
+            <label class="checkbox checkbox-switch" onclick="">
+              <input id="view" type="checkbox" checked />
+              <p>
+                Label
+                <span>On</span>
+                <span>Off</span>
+              </p>
+              <a class="btn-switch btn"></a>
+            </label>
+          </div>
+<pre class="prettyprint linenums">
+&lt;label class=&quot;checkbox checkbox-switch&quot; onclick=&quot;&quot;&gt;
+  &lt;input id=&quot;view&quot; type=&quot;checkbox&quot; checked /&gt;
+  &lt;p&gt;
+    Label
+    &lt;span&gt;On&lt;/span&gt;
+    &lt;span&gt;Off&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;a class=&quot;btn-switch btn&quot;&gt;&lt;/a&gt;
+&lt;/label&gt;
+</pre>
+          <h3>Radio</h3>
+          <p>If you need different states that are more specific than "On/Off", or more than two of them, use radio buttons.</p>
+          <p>Add up to 5 items. You can create new rules for more items, but with more than 5 items it shouldn't really easy to use a switch.
+          <div class="bs-docs-example">
+            <div class="radio-switch">
+              <input id="week" name="view" type="radio" checked>
+              <label for="week" onclick="">Week</label>
+              <input id="month" name="view" type="radio">
+              <label for="month" onclick="">Month</label>
+              <span class="btn-switch btn btn-primary"></span>
+            </div>
+            
+            <hr>
+            
+            <form class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label">Label</label>
+                <div class="controls radio-switch">
+                  <input id="week2" name="view" type="radio" checked>
+                  <label for="week2" onclick="">Week</label>
+                  <input id="month2" name="view" type="radio">
+                  <label for="month2" onclick="">Month</label>
+                  <span class="btn-switch btn btn-success"></span>
+                </div>
+              </div>
+            </form>
+            
+            <hr>
+            
+            <form>
+              <div class="control-group">
+                <label class="control-label">Label</label>
+                <div class="controls radio-switch switch-three">
+                  <input id="week3" name="view" type="radio" checked>
+                  <label for="week3" onclick="">Week</label>
+                  <input id="month3" name="view" type="radio">
+                  <label for="month3" onclick="">Month</label>
+                  <input id="month4" name="view" type="radio">
+                  <label for="month4" onclick="">Month</label>
+                  <span class="btn-switch btn btn-danger"></span>
+                </div>
+              </div>
+            </form>
+            
+            <hr>
+            
+            <form>
+              <div class="control-group">
+                <label class="control-label">Label</label>
+                <div class="controls radio-switch switch-four">
+                  <input id="week5" name="view" type="radio" checked>
+                  <label for="week5" onclick="">Day</label>
+                  <input id="month6" name="view" type="radio">
+                  <label for="month6" onclick="">Week</label>
+                  <input id="month7" name="view" type="radio">
+                  <label for="month7" onclick="">Month</label>
+                  <input id="month8" name="view" type="radio">
+                  <label for="month8" onclick="">Year</label>
+                  <span class="btn-switch btn"></span>
+                </div>
+              </div>
+            </form>
+            
+            <hr>
+            
+            <form class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label">Label</label>
+                <div class="controls radio-switch switch-five">
+                  <input id="week9" name="view" type="radio" checked>
+                  <label for="week9" onclick="">Day</label>
+                  <input id="month10" name="view" type="radio">
+                  <label for="month10" onclick="">Week</label>
+                  <input id="month11" name="view" type="radio">
+                  <label for="month11" onclick="">Month</label>
+                  <input id="month12" name="view" type="radio">
+                  <label for="month12" onclick="">Year</label>
+                  <input id="month13" name="view" type="radio">
+                  <label for="month13" onclick="">Decade</label>
+                  <span class="btn-switch btn"></span>
+                </div>
+              </div>
+            </form>
+          </div>
+<pre class="prettyprint linenums">
+&lt;form class=&quot;form-horizontal&quot;&gt;
+  &lt;div class=&quot;control-group&quot;&gt;
+    &lt;label class=&quot;control-label&quot;&gt;Label&lt;/label&gt;
+    &lt;div class=&quot;controls radio-switch&quot;&gt;
+      &lt;input id=&quot;week2&quot; name=&quot;view&quot; type=&quot;radio&quot; checked&gt;
+      &lt;label for=&quot;week2&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+      &lt;input id=&quot;month2&quot; name=&quot;view&quot; type=&quot;radio&quot;&gt;
+      &lt;label for=&quot;month2&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+      &lt;span class=&quot;btn-switch btn btn-success&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+
+          
+          
+          
+          
+          <h3>Width</h3>
+          <p>Switches are fluid, you can set any width on it. By default switch will take the width of his parent container</p>
+          <div class="bs-docs-example">
+            <label class="checkbox checkbox-switch" onclick="" style="width: 100px;">
+              <input id="view" type="checkbox" checked />
+              <p>
+                Label
+                <span>On</span>
+                <span>Off</span>
+              </p>
+              <a class="btn-switch btn"></a>
+            </label>
+          </div>
+<pre class="prettyprint linenums">
+&lt;label class=&quot;checkbox checkbox-switch&quot; onclick=&quot;&quot; style=&quot;width: 100px;&quot;&gt;
+  &lt;input id=&quot;view&quot; type=&quot;checkbox&quot; checked /&gt;
+  &lt;p&gt;
+    Label
+    &lt;span&gt;On&lt;/span&gt;
+    &lt;span&gt;Off&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;a class=&quot;btn-switch btn&quot;&gt;&lt;/a&gt;
+&lt;/label&gt;
+</pre>
+          
+          
+          <h3>Switch Button</h3>
+          <p>Switch use the style of default bootstrap btn. You can use any of the default style</p>
+          
+          <div class="bs-docs-example">
+            <div class="radio-switch">
+              <input id="week" name="view" type="radio" checked>
+              <label for="week" onclick="">Week</label>
+              <input id="month" name="view" type="radio">
+              <label for="month" onclick="">Month</label>
+              <span class="btn-switch btn btn-primary"></span>
+            </div>
+
+            <hr>
+
+            <div class="radio-switch">
+              <input id="week" name="view" type="radio" checked>
+              <label for="week" onclick="">Week</label>
+              <input id="month" name="view" type="radio">
+              <label for="month" onclick="">Month</label>
+              <span class="btn-switch btn btn-success"></span>
+            </div>
+
+            <hr>
+
+            <div class="radio-switch">
+              <input id="week" name="view" type="radio" checked>
+              <label for="week" onclick="">Week</label>
+              <input id="month" name="view" type="radio">
+              <label for="month" onclick="">Month</label>
+              <span class="btn-switch btn btn-info"></span>
+            </div>
+            
+            <hr>
+
+            <div class="radio-switch">
+              <input id="week" name="view" type="radio" checked>
+              <label for="week" onclick="">Week</label>
+              <input id="month" name="view" type="radio">
+              <label for="month" onclick="">Month</label>
+              <span class="btn-switch btn btn-danger"></span>
+            </div>
+            
+            <hr>
+          </div>
+<pre class="prettyprint linenums">
+&lt;span class=&quot;btn-switch btn btn-danger&quot;&gt;&lt;/span&gt;
+</pre>
+
+        </section>
+
+
 
         <!-- Typographic components
         ================================================== -->
