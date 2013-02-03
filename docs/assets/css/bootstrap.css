@@ -4195,6 +4195,192 @@ a.counter:hover {
   margin-left: 3px;
 }
 
+.radio-switch .btn-switch,
+.checkbox-switch p span {
+  display: none;
+}
+
+@media only screen {
+  {
+    /* Position the label over all the elements, except the btn-switch
+       * Clicking anywhere on the label will change the switch-state
+       */
+  
+    /* Don't hide the input from screen-readers and keyboard access
+       */
+  
+  }
+  .checkbox-switch {
+    position: relative;
+    padding: 0;
+    margin-left: 100px;
+  }
+  .checkbox-switch label {
+    position: relative;
+    z-index: 3;
+    display: block;
+    width: 100%;
+  }
+  .checkbox-switch input {
+    position: absolute;
+    z-index: 5;
+    opacity: 0;
+  }
+  .checkbox-switch p {
+    position: absolute;
+    left: -100px;
+    width: 100%;
+    padding-right: 100px;
+    margin: 0;
+    text-align: left;
+  }
+  .checkbox-switch p span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: block;
+    width: 50%;
+    margin-left: 100px;
+    text-align: center;
+  }
+  .checkbox-switch p span:last-child {
+    left: 50%;
+  }
+  .checkbox-switch .btn-switch {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    display: block;
+    width: 50%;
+    height: 100%;
+    padding: 0;
+  }
+  .radio-switch {
+    position: relative;
+    padding: 0;
+  }
+  .radio-switch input {
+    position: absolute;
+    opacity: 0;
+  }
+  .radio-switch label {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+  }
+  .radio-switch .btn-switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50%;
+    height: 100%;
+    padding: 0;
+  }
+  .radio-switch input:last-of-type:checked ~ .btn-switch {
+    left: 50%;
+  }
+  .radio-switch.switch-three label,
+  .radio-switch.switch-three .btn-switch {
+    width: 33.3%;
+  }
+  .radio-switch.switch-three input:checked:nth-of-type(2) ~ .btn-switch {
+    left: 33.3%;
+  }
+  .radio-switch.switch-three input:checked:last-of-type ~ .btn-switch {
+    left: 66.6%;
+  }
+  .radio-switch.switch-four label,
+  .radio-switch.switch-four .btn-switch {
+    width: 25%;
+  }
+  .radio-switch.switch-four input:checked:nth-of-type(2) ~ .btn-switch {
+    left: 25%;
+  }
+  .radio-switch.switch-four input:checked:nth-of-type(3) ~ .btn-switch {
+    left: 50%;
+  }
+  .radio-switch.switch-four input:checked:last-of-type ~ .btn-switch {
+    left: 75%;
+  }
+  .radio-switch.switch-five label,
+  .radio-switch.switch-five .btn-switch {
+    width: 20%;
+  }
+  .radio-switch.switch-five input:checked:nth-of-type(2) ~ .btn-switch {
+    left: 20%;
+  }
+  .radio-switch.switch-five input:checked:nth-of-type(3) ~ .btn-switch {
+    left: 40%;
+  }
+  .radio-switch.switch-five input:checked:nth-of-type(4) ~ .btn-switch {
+    left: 60%;
+  }
+  .radio-switch.switch-five input:checked:last-of-type ~ .btn-switch {
+    left: 80%;
+  }
+  .radio-switch,
+  .checkbox-switch {
+    min-height: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  }
+  .checkbox-switch,
+  .radio-switch {
+    display: block;
+    height: 30px;
+  }
+  .radio-switch *,
+  .checkbox-switch * {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .radio-switch .btn-switch,
+  .checkbox-switch .btn-switch {
+    display: block;
+    -webkit-transition: all 0.3s ease-out;
+       -moz-transition: all 0.3s ease-out;
+         -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+  }
+  .checkbox-switch label,
+  .checkbox-switch p,
+  .radio-switch label {
+    line-height: 30px;
+    vertical-align: middle;
+  }
+  .checkbox-switch input:checked ~ .btn-switch {
+    right: 50%;
+  }
+  .checkbox-switch input:focus ~ .btn-switch,
+  .radio-switch input:focus + label {
+    outline: 1px dotted #888;
+  }
+  .radio-switch,
+  .checkbox-switch {
+    -webkit-animation: bugfix infinite 1s;
+  }
+  @-webkit-keyframes bugfix {
+    from {
+      position: relative;
+    }
+    to {
+      position: relative;
+    }
+  }
+}
+
 @-webkit-keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
