@@ -834,7 +834,11 @@
       constructor: Modal
 
     , toggle: function () {
-        return this[!this.isShown ? 'show' : 'hide']()
+        if (this.options.refresh) {
+            return this.refresh()
+        } else {
+            return this[!this.isShown ? 'show' : 'hide']()
+        }
       }
 
     , show: function () {
@@ -873,6 +877,22 @@
             that.$element.focus().trigger('shown')
 
         })
+      }
+
+    , refresh: function (options) {
+        var that = this
+          , e = $.Event('refresh')
+
+        this.$element.trigger(e)
+
+        if (e.isDefaultPrevented()) return
+
+        this.options = $.extend({}, this.options, options)
+        this.options.remote && this.$element.find('.modal-body').load(this.options.remote, function () { that.$element.focus().trigger('refreshed') })
+
+        if (this.isShown) return
+
+        if (this.options.show) this.show()
       }
 
     , hide: function (e) {
@@ -997,6 +1017,7 @@
         , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
       if (!data) $this.data('modal', (data = new Modal(this, options)))
       if (typeof option == 'string') data[option]()
+      else if (options.refresh) data.refresh(options)
       else if (options.show) data.show()
     })
   }
@@ -1005,6 +1026,7 @@
       backdrop: true
     , keyboard: true
     , show: true
+    , refresh: false
   }
 
   $.fn.modal.Constructor = Modal
