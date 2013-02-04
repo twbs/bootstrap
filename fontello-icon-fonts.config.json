@@ -368,6 +368,18 @@
     },
     {
       "search": [
+        "share"
+      ],
+      "code": 59196,
+      "uid": "91426c82d94428a33353e495418435e3",
+      "css": "share",
+      "orig_css": "share",
+      "orig_code": 59196,
+      "src": "entypo",
+      "from": 59196
+    },
+    {
+      "search": [
         "arrow",
         "down"
       ],
@@ -513,6 +525,18 @@
       "orig_code": 61611,
       "src": "fontawesome",
       "from": 61611
+    },
+    {
+      "search": [
+        "filter"
+      ],
+      "code": 61616,
+      "uid": "4109c474ff99cad28fd5a2c38af2ec6f",
+      "css": "filter",
+      "orig_css": "filter",
+      "orig_code": 61616,
+      "src": "fontawesome",
+      "from": 61616
     },
     {
       "search": [
