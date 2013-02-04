@@ -44,8 +44,9 @@ Use this method to modify and regenerate the Fontello font icons:
 4. To bypass a problem in Fontello use the third tab to change any codes that are 1Fxxx (3 bytes) to Fxxx (2 bytes)
 5. Download the webfont
 6. Copy css\fontello-icon-fonts.css to bootstrap\less\fontello-icon-fonts.less
-7. Copy the fonts folder to bootstrap\fonts
-8. copy the config.json file to bootstrap\fontello-icon-fonts.config.json
+7. Change the font opacity in bootstrap\less\fontello-icon-fonts.less from 0.8 to 1
+8. Copy the fonts folder to bootstrap\fonts
+9. Copy the config.json file to bootstrap\fontello-icon-fonts.config.json
 
 
 
