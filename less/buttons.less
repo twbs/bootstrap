@@ -11,7 +11,6 @@
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0; // For input.btn
-  font-size: @font-size-base;
   font-weight: 500;
   line-height: @line-height-base;
   text-align: center;
@@ -19,6 +18,7 @@
   cursor: pointer;
   border: 1px solid @btn-border;
   border-radius: @border-radius-base;
+  .rem-font-size(1.2); // ~12px
 
   &:focus {
     .tab-focus();
@@ -53,15 +53,15 @@
 // Large
 .btn-large {
   padding: @padding-large;
-  font-size: @font-size-large;
   border-radius: @border-radius-large;
+  .rem-font-size(@font-size-large);
 }
 
 // Small
 .btn-small {
   padding: @padding-small;
-  font-size: @font-size-small;
   border-radius: @border-radius-small;
+  .rem-font-size(@font-size-small);
 }
 .btn-mini [class^="icon-"],
 .btn-mini [class*=" icon-"] {
@@ -71,8 +71,8 @@
 // Mini
 .btn-mini {
   padding: @padding-mini;
-  font-size: @font-size-mini;
   border-radius: @border-radius-small;
+  .rem-font-size(@font-size-mini);
 }
 
 

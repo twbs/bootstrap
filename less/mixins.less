@@ -87,6 +87,15 @@
 // FONTS
 // --------------------------------------------------
 
+
+// Fallback for the rem unit
+.rem-font-size (@size) {
+  @px-fallback: round(@size * 10);
+  @rem-size: round(@size, 3);
+  font-size: ~"@{px-fallback}px";
+  font-size: ~"@{rem-size}rem";
+}
+
 #font {
   #family {
     .serif() {
@@ -100,7 +109,7 @@
     }
   }
   .shorthand(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
-    font-size: @size;
+    .rem-font-size (@size);
     font-weight: @weight;
     line-height: @lineHeight;
   }

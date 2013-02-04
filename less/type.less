@@ -11,7 +11,7 @@ p {
 }
 .lead {
   margin-bottom: @line-height-base;
-  font-size: @font-size-base * 1.5;
+  .rem-font-size(@font-size-base * 1.5);
   font-weight: 200;
   line-height: 1.25;
 }
@@ -78,17 +78,17 @@ h6 {
   margin-bottom: @line-height-base / 2;
 }
 
-h1 { font-size: @font-size-base * 2.75; font-size: 4rem; } // ~38px
-h2 { font-size: @font-size-base * 2.25; font-size: 3rem; } // ~32px
-h3 { font-size: @font-size-base * 1.75; font-size: 2.5rem; } // ~24px
-h4 { font-size: @font-size-base * 1.25; font-size: 2rem; } // ~18px
-h5 { font-size: @font-size-base; font-size: 1.6rem; }
-h6 { font-size: @font-size-base * 0.85; font-size: 1.2rem; } // ~12px
+h1 { .rem-font-size(@font-size-base * 2.75); } // ~38px
+h2 { .rem-font-size(@font-size-base * 2.25); } // ~32px
+h3 { .rem-font-size(@font-size-base * 1.75); } // ~24px
+h4 { .rem-font-size(@font-size-base * 1.25); } // ~18px
+h5 { .rem-font-size(@font-size-base); } // ~14px
+h6 { .rem-font-size(@font-size-base * 0.85); } // ~12px
 
-h1 small { font-size: @font-size-base * 1.75; } // ~24px
-h2 small { font-size: @font-size-base * 1.25; } // ~18px
-h3 small { font-size: @font-size-base; }
-h4 small { font-size: @font-size-base; }
+h1 small { .rem-font-size(@font-size-base * 1.75); } // ~24px
+h2 small { .rem-font-size(@font-size-base * 1.25); } // ~18px
+h3 small { .rem-font-size(@font-size-base); }
+h4 small { .rem-font-size(@font-size-base); }
 
 
 // Page header
@@ -195,7 +195,7 @@ blockquote {
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
-    font-size: @font-size-base * 1.25;
+    .rem-font-size(@font-size-base * 1.25);
     font-weight: 300;
     line-height: 1.25;
   }

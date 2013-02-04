@@ -55,7 +55,7 @@
   > li > a,
   > li > span {
     padding: @padding-large;
-    font-size: @font-size-large;
+    .rem-font-size(@font-size-large);
   }
   > li:first-child > a,
   > li:first-child > span {
@@ -85,7 +85,7 @@
   > li > a,
   > li > span {
     padding: @padding-small;
-    font-size: @font-size-small;
+    .rem-font-size(@font-size-small);
   }
 }
 // Mini
@@ -93,6 +93,6 @@
   > li > a,
   > li > span {
     padding: @padding-mini;
-    font-size: @font-size-mini;
+    .rem-font-size(@font-size-mini);
   }
 }
