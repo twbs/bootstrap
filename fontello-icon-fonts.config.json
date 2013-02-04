@@ -516,6 +516,18 @@
     },
     {
       "search": [
+        "filter"
+      ],
+      "code": 61616,
+      "uid": "4109c474ff99cad28fd5a2c38af2ec6f",
+      "css": "filter",
+      "orig_css": "filter",
+      "orig_code": 61616,
+      "src": "fontawesome",
+      "from": 61616
+    },
+    {
+      "search": [
         "table"
       ],
       "code": 61646,
