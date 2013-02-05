@@ -7,10 +7,10 @@
 code,
 pre {
   padding: 0 3px 2px;
-  #font > #family > .monospace;
-  font-size: @font-size-base - 2;
+  #font > #family > .monospace;;
   color: @grayDark;
   border-radius: 4px;
+  .rem-font-size(@font-size-base - 0.2); // ~12px
 }
 
 // Inline code
@@ -27,7 +27,7 @@ pre {
   display: block;
   padding: (@line-height-base - 1) / 2;
   margin: 0 0 @line-height-base / 2;
-  font-size: @font-size-base - 1; // 14px to 13px
+  .rem-font-size(@font-size-base - 0.1); // 14px to 13px
   line-height: @line-height-base;
   word-break: break-all;
   word-wrap: break-word;
