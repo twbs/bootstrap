@@ -1522,8 +1522,9 @@
           <div class="page-header">
             <h1>Progress bars</h1>
           </div>
+          <p class="lead">Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.</p>
 
-          <h2>Examples and markup</h2>
+          <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in IE8-9 or older versions of Firefox. Internet Explorer 10 and below, as well as Opera 12, do not support animations.</p>
 
           <h3>Basic</h3>
           <p>Default progress bar with a vertical gradient.</p>
@@ -1537,55 +1538,6 @@
   &lt;div class="progress-bar" style="width: 60%;"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </pre>
-
-          <h3>Striped</h3>
-          <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
-          <div class="bs-docs-example">
-            <div class="progress progress-striped">
-              <div class="progress-bar" style="width: 20%;"></div>
-            </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar" style="width: 20%;"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
-
-          <h3>Animated</h3>
-          <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
-          <div class="bs-docs-example">
-            <div class="progress progress-striped active">
-              <div class="progress-bar" style="width: 45%"></div>
-            </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress progress-striped active"&gt;
-  &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
-
-          <h3>Stacked</h3>
-          <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
-          <div class="bs-docs-example">
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" style="width: 35%"></div>
-              <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
-              <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
-            </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 35%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
-
-
-          <hr class="bs-docs-separator">
-
-
-          <h2>Options</h2>
 
           <h3>Additional colors</h3>
           <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
@@ -1618,8 +1570,8 @@
 &lt;/div&gt;
 </pre>
 
-          <h3>Striped bars</h3>
-          <p>Similar to the solid colors, we have varied striped progress bars.</p>
+          <h3>Striped</h3>
+          <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
           <div class="bs-docs-example">
             <div class="progress progress-striped" style="margin-bottom: 9px;">
               <div class="progress-bar progress-bar-info" style="width: 20%"></div>
@@ -1649,13 +1601,35 @@
 &lt;/div&gt;
 </pre>
 
+          <h3>Animated</h3>
+          <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
+          <div class="bs-docs-example">
+            <div class="progress progress-striped active">
+              <div class="progress-bar" style="width: 45%"></div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress progress-striped active"&gt;
+  &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
-          <hr class="bs-docs-separator">
-
-
-          <h2>Browser support</h2>
-          <p>Progress bars use CSS3 gradients, transitions, and animations to achieve all their effects. These features are not supported in IE8-9 or older versions of Firefox.</p>
-          <p>Versions earlier than Internet Explorer 10 and Opera 12 do not support animations.</p>
+          <h3>Stacked</h3>
+          <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
+          <div class="bs-docs-example">
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" style="width: 35%"></div>
+              <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
+              <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="progress"&gt;
+  &lt;div class="progress-bar progress-bar-success" style="width: 35%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar progress-bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
+  &lt;div class="progress-bar progress-bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
 
         </section>
 
