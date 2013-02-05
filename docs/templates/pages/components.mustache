@@ -1386,11 +1386,12 @@
         ================================================== -->
         <section id="alerts">
           <div class="page-header">
-            <h1>Alerts <small>Styles for contextual feedback messages</small></h1>
+            <h1>Alerts</h1>
           </div>
+          <p class="lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the <a href="./javascript.html#alerts">alerts jQuery plugin</a>.</p>
 
-          <h2>Default alert</h2>
-          <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message.</p>
+          <h3>Default alert</h3>
+          <p>Wrap any text and an optional dismiss button in <code>.alert</code> for a basic warning alert message. <strong>To ensure proper behavior across all devices</strong>, be sure to use <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
           <div class="bs-docs-example">
             <div class="alert">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -1404,17 +1405,7 @@
 &lt;/div&gt;
 </pre>
 
-          <h3>Dismiss buttons</h3>
-          <p>Mobile Safari and Mobile Opera browsers, in addition to the <code>data-dismiss="alert"</code> attribute, require an <code>href="#"</code> for the dismissal of alerts when using an <code>&lt;a&gt;</code> tag.</p>
-          <pre class="prettyprint linenums">&lt;a href="#" class="close" data-dismiss="alert"&gt;&amp;times;&lt;/a&gt;</pre>
-          <p>Alternatively, you may use a <code>&lt;button&gt;</code> element with the data attribute, which we have opted to do for our docs. When using <code>&lt;button&gt;</code>, you must include <code>type="button"</code> or your forms may not submit.</p>
-          <pre class="prettyprint linenums">&lt;button type="button" class="close" data-dismiss="alert"&gt;&amp;times;&lt;/button&gt;</pre>
-
-          <h3>Dismiss alerts via JavaScript</h3>
-          <p>Use the <a href="./javascript.html#alerts">alerts jQuery plugin</a> for quick and easy dismissal of alerts.</p>
-
-
-          <h2>Options</h2>
+          <h3>Block alerts</h3>
           <p>For longer messages, increase the padding on the top and bottom of the alert wrapper by adding <code>.alert-block</code>.</p>
           <div class="bs-docs-example">
             <div class="alert alert-block">
@@ -1431,10 +1422,8 @@
 &lt;/div&gt;
 </pre>
 
-
-          <h2>Contextual alternatives</h2>
+          <h3>Contextual alternatives</h3>
           <p>Add optional classes to change an alert's connotation.</p>
-
           <div class="bs-docs-example">
             <div class="alert alert-error">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
