@@ -142,3 +142,17 @@
 .btn-group-vertical .btn-large:last-child {
   border-radius: 0 0 @border-radius-large @border-radius-large;
 }
+
+
+// Justified button groups
+// ----------------------
+
+.btn-group-justified {
+  display: table;
+  width: 100%;
+  .btn {
+    float: none;
+    display: table-cell;
+    width: 1%;
+  }
+}

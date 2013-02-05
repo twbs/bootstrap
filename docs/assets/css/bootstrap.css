@@ -3515,6 +3515,17 @@ button.close {
   border-radius: 0 0 6px 6px;
 }
 
+.btn-group-justified {
+  display: table;
+  width: 100%;
+}
+
+.btn-group-justified .btn {
+  display: table-cell;
+  float: none;
+  width: 1%;
+}
+
 .breadcrumb {
   padding: 8px 15px;
   margin: 0 0 20px;

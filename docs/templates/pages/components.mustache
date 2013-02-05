@@ -41,9 +41,10 @@
           <div class="page-header">
             <h1>Dropdown menus</h1>
           </div>
+          <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown JavaScript plugin</a>.</p>
 
-          <h2>Example</h2>
-          <p>Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="./javascript.html#dropdowns">dropdown JavaScript plugin</a>.</p>
+          <h3>Example</h3>
+          <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML.</p>
           <div class="bs-docs-example">
             <div class="dropdown clearfix">
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
@@ -56,22 +57,9 @@
             </div>
           </div>{{! /example }}
 <pre class="prettyprint linenums">
-&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="divider"&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-          <h2>Markup</h2>
-          <p>Looking at just the dropdown menu, here's the required HTML. You need to wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then just create the menu.</p>
-
-<pre class="prettyprint linenums">
 &lt;div class="dropdown"&gt;
   &lt;!-- Link or button to toggle dropdown --&gt;
-  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"&gt;
+  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
     &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
@@ -80,9 +68,6 @@
   &lt;/ul&gt;
 &lt;/div&gt;
 </pre>
-
-          <h2>Options</h2>
-          <p>Align menus to the right and add include additional levels of dropdowns.</p>
 
           <h3>Aligning the menus</h3>
           <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
@@ -122,8 +107,7 @@
             <h1>Button groups</h1>
           </div>
 
-          <h2>Examples</h2>
-          <p>Two basic options, along with two more specific variations.</p>
+          <p class="lead">Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with <a href="./javascript.html#buttons">our buttons plugin</a>.</p>
 
           <h3>Single button group</h3>
           <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
@@ -186,15 +170,21 @@
 &lt;/div&gt;
 </pre>
 
+          <h3>Justified button groups</h3>
+          <p>Make a group of buttons stretch at the same size to span the entire width of its parent. <strong>This only works with <code>&lt;a&gt;</code> elements</strong> as the <code>&lt;button&gt;</code> doesn't pick up these styles.</p>
+          <div class="bs-docs-example">
+            <div class="btn-group btn-group-justified">
+              <a href="#" class="btn">Left</a>
+              <a href="#" class="btn">Right</a>
+              <a href="#" class="btn">Middle</a>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;div class="btn-group btn-group-justified"&gt;
+  ...
+&lt;/div&gt;
+</pre>
 
-          <hr class="bs-docs-separator">
-
-
-          <h4>Checkbox and radio flavors</h4>
-          <p>Button groups can also function as radios, where only one button may be active, or checkboxes, where any number of buttons may be active. View <a href="./javascript.html#buttons">the JavaScript docs</a> for that.</p>
-
-          <h4>Dropdowns in button groups</h4>
-          <p>Buttons with dropdowns must be individually wrapped in their own <code>.btn-group</code> within a <code>.btn-toolbar</code> for proper rendering.</p>
         </section>
 
 
