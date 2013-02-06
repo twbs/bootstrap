@@ -324,6 +324,13 @@ $('#myModal').on('show', function (e) {
                <td><p>If a remote url is provided, content will be loaded via jQuery's <code>load</code> method and injected into the <code>.modal-body</code>. If you're using the data api, you may alternatively use the <code>href</code> tag to specify the remote source. An example of this is shown below:</p>
               <pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="remote.html" data-target="#modal"&gt;click me&lt;/a&gt;</code></pre></td>
              </tr>
+             <tr>
+               <td>refresh</td>
+               <td>boolean</td>
+               <td>false</td>
+               <td><p>Force the modal content to be refreshed. If a remote url is provided, jQuery's <code>load</code> method will be used to load the content again. If using the data api, you may force the content to be refreshed every time the modal is opened. An example of this is shown below:</p>
+              <pre class="prettyprint linenums"><code>&lt;a data-toggle="modal" href="dynamic-remote.php" data-target="#modal" data-refresh="true"&gt;click me&lt;/a&gt;</code></pre></td>
+             </tr>
             </tbody>
           </table>
 
@@ -344,6 +351,9 @@ $('#myModal').modal({
           <h4>.modal('hide')</h4>
           <p>Manually hides a modal.</p>
           <pre class="prettyprint linenums">$('#myModal').modal('hide')</pre>
+          <h4>.modal('refresh')</h4>
+          <p>Manually refreshes a modal.</p>
+          <pre class="prettyprint linenums">$('#myModal').modal('refresh')</pre>
           <h3>Events</h3>
           <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
           <table class="table table-bordered table-striped">
@@ -369,6 +379,14 @@ $('#myModal').modal({
              <tr>
                <td>hidden</td>
                <td>This event is fired when the modal has finished being hidden from the user (will wait for css transitions to complete).</td>
+             </tr>
+             <tr>
+               <td>refresh</td>
+               <td>This event fires immediately when the <code>refresh</code> instance method is called.</td>
+             </tr>
+             <tr>
+               <td>refreshed</td>
+               <td>This event is fired when the modal content has been refreshed.</td>
              </tr>
             </tbody>
           </table>
