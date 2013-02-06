@@ -239,6 +239,10 @@
       .one('hide', function () {
         $this.focus()
       })
-  })
+    })
+
+    var $body = $('body')
+      .on('shown', '.modal', function () { $body.addClass('modal-open') })
+      .on('hidden', '.modal', function () { $body.removeClass('modal-open') })
 
 }(window.jQuery);
