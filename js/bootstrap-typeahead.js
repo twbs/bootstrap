@@ -109,7 +109,8 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return typeof item == 'string' ?
+        ~item.toLowerCase().indexOf(this.query.toLowerCase()) : false
     }
 
   , sorter: function (items) {
