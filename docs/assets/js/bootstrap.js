@@ -1857,10 +1857,10 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
-      this.$element
-        .val(this.updater(val))
-        .change()
+      var val = this.updater(this.$menu.find('.active').attr('data-value'))
+      if (typeof val != 'undefined') {
+        this.$element.val(val).change()
+      }
       return this.hide()
     }
 
@@ -1874,12 +1874,13 @@
       })
 
       this.$menu
-        .insertAfter(this.$element)
         .css({
           top: pos.top + pos.height
         , left: pos.left
         })
         .show()
+
+      this.options.container ? this.$menu.appendTo(this.options.container) : this.$menu.insertAfter(this.$element)
 
       this.shown = true
       return this
@@ -2122,6 +2123,7 @@
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
   , minLength: 1
+  , container: false
   }
 
   $.fn.typeahead.Constructor = Typeahead
