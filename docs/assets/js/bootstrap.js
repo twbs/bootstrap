@@ -539,7 +539,7 @@
 
   , hide: function () {
       var dimension
-      if (this.transitioning) return
+      if (this.transitioning || !this.$element.hasClass('in')) return
       dimension = this.dimension()
       this.reset(this.$element[dimension]())
       this.transition('removeClass', $.Event('hide'), 'hidden')
