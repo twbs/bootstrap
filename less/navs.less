@@ -21,7 +21,8 @@
   display: block;
   padding: 10px 15px;
 }
-.nav > li > a:hover {
+.nav > li > a:hover,
+.nav > li > a:focus {
   text-decoration: none;
   background-color: @grayLighter;
 }
@@ -61,7 +62,8 @@
 }
 // Active state, and it's :hover to override normal :hover
 .nav-tabs > .active > a,
-.nav-tabs > .active > a:hover {
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
   color: @gray;
   background-color: @body-background;
   border: 1px solid #ddd;
@@ -86,7 +88,8 @@
 
 // Active state
 .nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
   color: #fff;
   background-color: @link-color;
 }
@@ -130,7 +133,8 @@
   border-bottom-right-radius: @border-radius-base;
 }
 .nav-list > .active > a,
-.nav-list > .active > a:hover {
+.nav-list > .active > a:hover,
+.nav-list > .active > a:focus {
   z-index: 2; // Bring active item forward so border sits on top of next element
   color: #fff;
   background-color: @link-color;
@@ -150,7 +154,8 @@
   color: @grayLight;
 }
 // Nuke hover effects
-.nav > .disabled > a:hover {
+.nav > .disabled > a:hover,
+.nav > .disabled > a:focus {
   text-decoration: none;
   background-color: transparent;
   cursor: default;

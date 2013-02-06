@@ -75,7 +75,8 @@
   font-weight: 500;
   line-height: @line-height-base;
   color: @navbar-brand-color;
-  &:hover {
+  &:hover,
+  &:focus {
     color: @navbar-brand-color-hover;
     text-decoration: none;
     background-color: @navbar-brand-bg-hover;
@@ -130,7 +131,8 @@
 // Dropdown menu items and carets
 .navbar .nav {
   // Caret should match text color on hover
-  li.dropdown > a:hover .caret {
+  li.dropdown > a:hover .caret,
+  li.dropdown > a:focus .caret {
     border-top-color: @navbar-link-color-hover;
     border-bottom-color: @navbar-link-color-hover;
   }
@@ -171,7 +173,8 @@
 
   .brand {
     color: @navbar-inverse-brand-color;
-    &:hover {
+    &:hover,
+    &:focus {
       color: @navbar-inverse-brand-color-hover;
       background-color: @navbar-inverse-brand-bg-hover;
     }

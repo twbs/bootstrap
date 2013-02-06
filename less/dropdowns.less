@@ -75,7 +75,7 @@
   }
 }
 
-// Hover state
+// Hover/Focus state
 // -----------
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus {
@@ -87,7 +87,8 @@
 // Active state
 // ------------
 .dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover {
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
   color: @dropdown-link-color-active;
   text-decoration: none;
   outline: 0;
@@ -96,13 +97,15 @@
 
 // Disabled state
 // --------------
-// Gray out text and ensure the hover state remains gray
+// Gray out text and ensure the hover/focus state remains gray
 .dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:hover {
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
   color: @grayLight;
 }
-// Nuke hover effects
-.dropdown-menu > .disabled > a:hover {
+// Nuke hover/focus effects
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
   text-decoration: none;
   background-color: transparent;
   background-image: none; // Remove CSS gradient

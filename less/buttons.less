@@ -24,7 +24,8 @@
     .tab-focus();
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
     text-decoration: none;
   }
@@ -152,6 +153,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link,
 .btn-link:hover,
+.btn-link:focus,
 .btn-link:active {
   border-color: transparent;
 }
@@ -161,7 +163,8 @@ fieldset[disabled] .btn-link {
   cursor: pointer;
   border-radius: 0;
 }
-.btn-link:hover {
+.btn-link:hover,
+.btn-link:focus {
   color: @link-color-hover;
   text-decoration: underline;
   background-color: transparent;
@@ -169,7 +172,8 @@ fieldset[disabled] .btn-link {
 .btn-link {
   &[disabled],
   fieldset[disabled] & {
-    &:hover {
+    &:hover,
+    &:focus {
       color: @grayDark;
       text-decoration: none;
     }

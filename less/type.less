@@ -29,20 +29,20 @@ cite    { font-style: normal; }
 
 // Utility classes
 .muted               { color: @grayLight; }
-a.muted:hover        { color: darken(@grayLight, 10%); }
+a.muted:hover,
+a.muted:focus        { color: darken(@grayLight, 10%); }
 
 .text-warning        { color: @state-warning-text; }
-a.text-warning:hover { color: darken(@state-warning-text, 10%); }
+a.text-warning:hover,
+a.text-warning:focus { color: darken(@state-warning-text, 10%); }
 
 .text-error          { color: @state-error-text; }
-a.text-error:hover   { color: darken(@state-error-text, 10%); }
+a.text-error:hover,
+a.text-error:focus   { color: darken(@state-error-text, 10%); }
 
 .text-success        { color: @state-success-text; }
-a.text-success:hover { color: darken(@state-success-text, 10%); }
-
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
+a.text-success:hover,
+a.text-success:focus { color: darken(@state-success-text, 10%); }
 
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }

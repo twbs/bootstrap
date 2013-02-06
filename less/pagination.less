@@ -20,6 +20,7 @@
   border-left-width: 0;
 }
 .pagination > li > a:hover,
+.pagination > li > a:focus,
 .pagination > .active > a,
 .pagination > .active > span {
   background-color: @pagination-background-active;
@@ -31,7 +32,8 @@
 }
 .pagination > .disabled > span,
 .pagination > .disabled > a,
-.pagination > .disabled > a:hover {
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
   color: @grayLight;
   background-color: transparent;
   cursor: default;
