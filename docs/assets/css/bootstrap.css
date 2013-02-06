@@ -3835,7 +3835,6 @@ button.close {
   position: absolute;
   z-index: 1030;
   display: block;
-  padding: 5px;
   font-size: 11px;
   line-height: 1.4;
   opacity: 0;
@@ -3849,18 +3848,22 @@ button.close {
 }
 
 .tooltip.top {
+  padding: 5px 0;
   margin-top: -3px;
 }
 
 .tooltip.right {
+  padding: 0 5px;
   margin-left: 3px;
 }
 
 .tooltip.bottom {
+  padding: 5px 0;
   margin-top: 3px;
 }
 
 .tooltip.left {
+  padding: 0 5px;
   margin-left: -3px;
 }
 
@@ -4700,6 +4703,19 @@ a.counter:focus {
     display: inherit !important;
   }
   .hidden-phone {
+    display: none !important;
+  }
+}
+
+.visible-print {
+  display: none !important;
+}
+
+@media print {
+  .visible-print {
+    display: inherit !important;
+  }
+  .hidden-print {
     display: none !important;
   }
 }
