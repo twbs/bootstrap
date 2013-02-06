@@ -28,7 +28,7 @@
   margin-top: 1px;
 }
 
-/* White icons with optional class, or on hover/active states of certain elements */
+/* White icons with optional class, or on hover/focus/active states of certain elements */
 .icon-white,
 .nav-pills > .active > a > [class^="icon-"],
 .nav-pills > .active > a > [class*=" icon-"],
@@ -37,11 +37,15 @@
 .navbar-inverse .nav > .active > a > [class^="icon-"],
 .navbar-inverse .nav > .active > a > [class*=" icon-"],
 .dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:focus > [class^="icon-"],
 .dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > li > a:focus > [class*=" icon-"],
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"],
 .dropdown-submenu:hover > a > [class^="icon-"],
-.dropdown-submenu:hover > a > [class*=" icon-"] {
+.dropdown-submenu:focus > a > [class^="icon-"],
+.dropdown-submenu:hover > a > [class*=" icon-"],
+.dropdown-submenu:focus > a > [class*=" icon-"] {
   background-image: url("@{iconWhiteSpritePath}");
 }
 
@@ -166,7 +170,7 @@
 .icon-chevron-down       { background-position: -313px -119px; } // 1px, 1px off
 .icon-retweet            { background-position: -336px -120px; }
 .icon-shopping-cart      { background-position: -360px -120px; }
-.icon-folder-close       { background-position: -384px -120px; }
+.icon-folder-close       { background-position: -384px -120px; width: 16px; }
 .icon-folder-open        { background-position: -408px -120px; width: 16px; }
 .icon-resize-vertical    { background-position: -432px -119px; } // 1px, 1px off
 .icon-resize-horizontal  { background-position: -456px -118px; } // 1px, 2px off

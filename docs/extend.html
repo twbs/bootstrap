@@ -15,7 +15,7 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="assets/js/html5shiv.js"></script>
     <![endif]-->
 
     <!-- Le fav and touch icons -->
@@ -136,16 +136,8 @@
 
           <h2>Tools for compiling</h2>
 
-          <h3>Node with makefile</h3>
-          <p>Install the LESS command line compiler, JSHint, Recess, and uglify-js globally with npm by running the following command:</p>
-          <pre>$ npm install -g less jshint recess uglify-js</pre>
-          <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
-          <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
-
           <h3>Command line</h3>
-          <p>Install the LESS command line tool via Node and run the following command:</p>
-          <pre>$ lessc ./less/bootstrap.less > bootstrap.css</pre>
-          <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
+          <p>Follow <a href="https://github.com/twitter/bootstrap#developers">the instructions in the project readme</a> on GitHub for compiling via command line.</p>
 
           <h3>JavaScript</h3>
           <p><a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>&lt;head&gt;</code>.</p>
@@ -253,7 +245,7 @@
           <li class="muted">&middot;</li>
           <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
           <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/blob/master/CHANGELOG.md">Changelog</a></li>
         </ul>
       </div>
     </footer>

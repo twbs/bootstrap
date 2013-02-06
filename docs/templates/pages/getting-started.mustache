@@ -127,17 +127,18 @@
           <div class="page-header">
             <h1>{{_i}}4. Basic HTML template{{/i}}</h1>
           </div>
-          <p class="lead">{{_i}}With a brief intro into the contents out of the way, we can focus on putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="#file-structure">File structure</a>.{{/i}}</p>
+          <p class="lead">{{_i}}With a brief intro into the contents out of the way, we can focus on putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="./getting-started.html#file-structure">File structure</a>.{{/i}}</p>
           <p>{{_i}}Now, here's a look at a <strong>typical HTML file</strong>:{{/i}}</p>
 <pre class="prettyprint linenums">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
-    &lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+    &lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
@@ -147,12 +148,13 @@
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
     &lt;!-- Bootstrap --&gt;
     &lt;link href="css/bootstrap.min.css" rel="stylesheet" media="screen"&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Hello, world!&lt;/h1&gt;
-    &lt;script src="http://code.jquery.com/jquery-latest.js"&gt;&lt;/script&gt;
+    &lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
     &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -172,21 +174,21 @@
           <ul class="thumbnails bootstrap-examples">
             <li class="span3">
               <a class="thumbnail" href="examples/starter-template.html">
-                <img src="assets/img/examples/bootstrap-example-starter.jpg" alt="">
+                <img src="assets/img/examples/bootstrap-example-starter.png" alt="">
               </a>
               <h4>{{_i}}Starter template{{/i}}</h4>
               <p>{{_i}}A barebones HTML document with all the Bootstrap CSS and JavaScript included.{{/i}}</p>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/hero.html">
-                <img src="assets/img/examples/bootstrap-example-hero.jpg" alt="">
+                <img src="assets/img/examples/bootstrap-example-marketing.png" alt="">
               </a>
               <h4>{{_i}}Basic marketing site{{/i}}</h4>
               <p>{{_i}}Featuring a hero unit for a primary message and three supporting elements.{{/i}}</p>
             </li>
             <li class="span3">
               <a class="thumbnail" href="examples/fluid.html">
-                <img src="assets/img/examples/bootstrap-example-fluid.jpg" alt="">
+                <img src="assets/img/examples/bootstrap-example-fluid.png" alt="">
               </a>
               <h4>{{_i}}Fluid layout{{/i}}</h4>
               <p>{{_i}}Uses our new responsive, fluid grid system to create a seamless liquid layout.{{/i}}</p>
@@ -200,12 +202,20 @@
               <p>{{_i}}Slim, lightweight marketing template for small projects or teams.{{/i}}</p>
             </li>
             <li class="span3">
+              <a class="thumbnail" href="examples/justified-nav.html">
+                <img src="assets/img/examples/bootstrap-example-justified-nav.png" alt="">
+              </a>
+              <h4>{{_i}}Justified nav{{/i}}</h4>
+              <p>{{_i}}Marketing page with equal-width navigation links in a modified navbar.{{/i}}</p>
+            </li>
+            <li class="span3">
               <a class="thumbnail" href="examples/signin.html">
                 <img src="assets/img/examples/bootstrap-example-signin.png" alt="">
               </a>
               <h4>{{_i}}Sign in{{/i}}</h4>
               <p>{{_i}}Barebones sign in form with custom, larger form controls and a flexible layout.{{/i}}</p>
             </li>
+
             <li class="span3">
               <a class="thumbnail" href="examples/sticky-footer.html">
                 <img src="assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
@@ -213,7 +223,6 @@
               <h4>{{_i}}Sticky footer{{/i}}</h4>
               <p>{{_i}}Pin a fixed-height footer to the bottom of the user's viewport.{{/i}}</p>
             </li>
-
             <li class="span3">
               <a class="thumbnail" href="examples/carousel.html">
                 <img src="assets/img/examples/bootstrap-example-carousel.png" alt="">
