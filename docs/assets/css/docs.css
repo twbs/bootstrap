@@ -468,6 +468,14 @@ input.focused {
 
 
 
+/* Docs gallery
+-------------------------------------------------- */
+
+.bs-docs-gallery .thumbnail {
+  margin-bottom: 20px;
+}
+
+
 /* Responsive variations
 -------------------------------------------------- */
 
