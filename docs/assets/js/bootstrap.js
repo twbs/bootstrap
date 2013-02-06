@@ -1857,10 +1857,10 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
-      this.$element
-        .val(this.updater(val))
-        .change()
+      var val = this.updater(this.$menu.find('.active').attr('data-value'))
+      if (typeof val != 'undefined') {
+        this.$element.val(val).change()
+      }
       return this.hide()
     }
 
