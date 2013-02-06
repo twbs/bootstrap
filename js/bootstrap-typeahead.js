@@ -29,11 +29,11 @@
   var Typeahead = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
-    this.matcher = this.options.matcher || this.matcher
-    this.sorter = this.options.sorter || this.sorter
-    this.highlighter = this.options.highlighter || this.highlighter
-    this.updater = this.options.updater || this.updater
-    this.source = this.options.source
+    this.matcher = this.asFunction(this.options.matcher || this.matcher)
+    this.sorter = this.asFunction(this.options.sorter || this.sorter)
+    this.highlighter = this.asFunction(this.options.highlighter || this.highlighter)
+    this.updater = this.asFunction(this.options.updater || this.updater)
+    this.source = this.asFunction(this.options.source)
     this.$menu = $(this.options.menu)
     this.shown = false
     this.listen()
@@ -87,7 +87,7 @@
         return this.shown ? this.hide() : this
       }
 
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
+      items = this.source(this.query, $.proxy(this.process, this))
 
       return items ? this.process(items) : this
     }
@@ -270,6 +270,29 @@
   , mouseenter: function (e) {
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
+    }
+  , asFunction: function getFunction(arg) {
+      var curObj = window
+        , namespaces = typeof arg == "string" ? arg.split('.') : [null]
+        , result
+
+      // functions are of course functions...
+      if ($.isFunction(arg)) return arg
+
+      // Get named object
+      while (namespaces.length) {
+        curObj = curObj[namespaces.shift()]
+        if(!curObj) break
+      }
+
+      // If the current object is a function, return that
+      // If the current object is something else, return a function returning that
+      // Otherwise, return a function returning the passed argument
+      if ($.isFunction(curObj)) result = curObj
+      else if(typeof curObj !== 'undefined') result = function () { return curObj }
+      else result = function () { return arg }
+
+      return result
     }
 
   }
