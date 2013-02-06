@@ -315,8 +315,7 @@
 
   $(document).on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
     var $this = $(this)
-    if ($this.data('typeahead')) return
-    e.preventDefault()
+    if ($this.data('typeahead')) return true
     $this.typeahead($this.data())
   })
 
