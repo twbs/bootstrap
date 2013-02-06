@@ -75,11 +75,10 @@ table {
   border: 1px solid @tableBorder;
   border-collapse: separate; // Done so we can round those corners!
   *border-collapse: collapse; // IE7 can't round corners anyway
-  border-left: 0;
   .border-radius(@baseBorderRadius);
   th,
   td {
-    border-left: 1px solid @tableBorder;
+    border-left: none;
   }
   // Prevent a double border
   caption + thead tr:first-child th,
@@ -128,13 +127,13 @@ table {
   caption + tbody tr:first-child td:first-child,
   colgroup + thead tr:first-child th:first-child,
   colgroup + tbody tr:first-child td:first-child {
-    .border-top-left-radius(@baseBorderRadius);
+    .border-top-left-radius(@baseBorderRadius - 1);
   }
   caption + thead tr:first-child th:last-child,
   caption + tbody tr:first-child td:last-child,
   colgroup + thead tr:first-child th:last-child,
   colgroup + tbody tr:first-child td:last-child {
-    .border-top-right-radius(@baseBorderRadius);
+    .border-top-right-radius(@baseBorderRadius - 1);
   }
 
 }
@@ -234,4 +233,16 @@ table th[class*="span"],
   &.info:hover td {
     background-color: darken(@infoBackground, 5%);
   }
+}
+
+// Only required to highlight the problem and prove the solution works.
+// Problem: https://github.com/twitter/bootstrap/issues/6348
+// Solution: http://jsfiddle.net/andrewgunn/gH65M/7/
+table {
+    background-color: red;
+}
+
+th {
+    background-color: blue;
+    color: #fff;
 }
