@@ -23,6 +23,7 @@
           <li><a href="#breadcrumbs"><i class="glyphicon-chevron-right"></i> Breadcrumbs</a></li>
           <li><a href="#pagination"><i class="glyphicon-chevron-right"></i> Pagination</a></li>
           <li><a href="#counters"><i class="glyphicon-chevron-right"></i> Counters</a></li>
+          <li><a href="#switch"><i class="glyphicon-chevron-right"></i> Switch</a></li>
           <li><a href="#typography"><i class="glyphicon-chevron-right"></i> Typography</a></li>
           <li><a href="#thumbnails"><i class="glyphicon-chevron-right"></i> Thumbnails</a></li>
           <li><a href="#alerts"><i class="glyphicon-chevron-right"></i> Alerts</a></li>
@@ -1233,6 +1234,115 @@
   &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
+
+        </section>
+
+
+        <!-- Switch
+        ================================================== -->
+        <section id="switch">
+          <div class="page-header">
+            <h1>Switch</h1>
+          </div>
+          <p>CSS only toggle switches using the standard form controls checkbox and radio input. Switches are fluid, by default it will take the width of his parent container. Otherwise you can easily set any width on it.</p>
+          <p>Switches use the default bootstrap btn for it's slider, you can use any of the btn class as you would with button.</p>
+          <h3>Checkbox</h3>
+          <p>Checkbox input, useful for "On/Off" states situation.</p>
+          <form class="bs-docs-example">
+            <label class="checkbox checkbox-switch" onclick="" style="width: 100px;">
+              <input id="checkbox-switch-demo" type="checkbox" checked />
+              <p>
+                Label
+                <span>On</span>
+                <span>Off</span>
+              </p>
+              <a class="btn-switch btn btn-primary"></a>
+            </label>
+          </form>
+<pre class="prettyprint linenums">
+&lt;label class=&quot;checkbox checkbox-switch&quot; onclick=&quot;&quot;&gt;
+  &lt;input id=&quot;checkbox-switch-demo&quot; type=&quot;checkbox&quot; checked /&gt;
+  &lt;p&gt;
+    Label
+    &lt;span&gt;On&lt;/span&gt;
+    &lt;span&gt;Off&lt;/span&gt;
+  &lt;/p&gt;
+  &lt;a class=&quot;btn-switch btn&quot;&gt;&lt;/a&gt;
+&lt;/label&gt;
+</pre>
+          <h3>Radio</h3>
+          <p>For more complex situation use radio input, add up to 5 items. Just add a class <code>switch-three</code>, <code>switch-four</code>, <code>switch-five</code> to adjust to your numbers of input.</p>
+
+           <div class="bs-docs-example">
+             <form>
+             <div class="radio-switch">
+               <input id="week" name="radio-switch" type="radio" checked>
+               <label for="week" onclick="">Week</label>
+               <input id="month" name="radio-switch" type="radio">
+               <label for="month" onclick="">Month</label>
+               <span class="btn-switch btn btn-primary"></span>
+             </div>
+             </form>
+             
+             <form>
+               <div class="radio-switch switch-three">
+                 <input id="week3" name="radio-switch" type="radio" checked>
+                 <label for="week3" onclick="">Week</label>
+                 <input id="month3" name="radio-switch" type="radio">
+                 <label for="month3" onclick="">Month</label>
+                 <input id="year3" name="radio-switch" type="radio">
+                 <label for="year3" onclick="">Year</label>
+                 <span class="btn-switch btn btn-danger"></span>
+               </div>
+             </form>
+
+             <form>
+               <div class="radio-switch switch-four">
+                 <input id="day4" name="radio-switch" type="radio" checked>
+                 <label for="day4" onclick="">Day</label>
+                 <input id="week4" name="radio-switch" type="radio">
+                 <label for="week4" onclick="">Week</label>
+                 <input id="month4" name="radio-switch" type="radio">
+                 <label for="month4" onclick="">Month</label>
+                 <input id="year4" name="radio-switch" type="radio">
+                 <label for="year4" onclick="">Year</label>
+                 <span class="btn-switch btn btn-warning"></span>
+               </div>
+             </form>
+             
+             <form>
+               <div class="radio-switch switch-five">
+                 <input id="day5" name="radio-switch" type="radio" checked>
+                 <label for="day5" onclick="">Day</label>
+                 <input id="week5" name="radio-switch" type="radio">
+                 <label for="week5" onclick="">Week</label>
+                 <input id="month5" name="radio-switch" type="radio">
+                 <label for="month5" onclick="">Month</label>
+                 <input id="year5" name="radio-switch" type="radio">
+                 <label for="year5" onclick="">Year</label>
+                 <input id="decade5" name="radio-switch" type="radio">
+                 <label for="decade5" onclick="">Decade</label>
+                 <span class="btn-switch btn"></span>
+               </div>
+             </form>
+           </div>
+<pre class="prettyprint linenums">
+&lt;div class=&quot;radio-switch&quot;&gt;
+  &lt;input id=&quot;week&quot; name=&quot;radio-switch-demo&quot; type=&quot;radio&quot; checked&gt;
+  &lt;label for=&quot;week&quot; onclick=&quot;&quot;&gt;Week&lt;/label&gt;
+  &lt;input id=&quot;month&quot; name=&quot;radio-switch-demo&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;month&quot; onclick=&quot;&quot;&gt;Month&lt;/label&gt;
+  &lt;span class=&quot;btn-switch btn btn-primary&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;radio-switch switch-five&quot;&gt;
+  ...
+  &lt;span class=&quot;btn-switch btn&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+
+
 
         </section>
 
