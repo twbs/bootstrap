@@ -167,6 +167,7 @@
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
+      $this.trigger('create.carousel');
     })
   }
 

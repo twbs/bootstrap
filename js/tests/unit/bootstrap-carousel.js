@@ -16,6 +16,21 @@ $(function () {
         ok($(document.body).carousel()[0] == document.body, 'document.body returned')
       })
 
+      test("should fire create.carousel event when a carousel is initialised", 1, function () {
+        var template = '<div id="myCarousel" class="carousel slide"><div class="carousel-inner"><div class="item active"><img alt=""><div class="carousel-caption"><h4>{{_i}}First Thumbnail label{{/i}}</h4><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p></div></div><div class="item"><img alt=""><div class="carousel-caption"><h4>{{_i}}Second Thumbnail label{{/i}}</h4><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p></div></div><div class="item"><img alt=""><div class="carousel-caption"><h4>{{_i}}Third Thumbnail label{{/i}}</h4><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p></div></div></div><a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a><a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a></div>'
+        stop()
+        $(document.body)
+          .append(template)
+          .on('create.carousel', function () {
+            ok(true)
+            $(document.body).off('create.carousel')
+            $('#myCarousel').remove()
+            start()
+          })
+        $.support.transition = false
+        $('#myCarousel').carousel()
+      })
+
       test("should not fire sliden when slide is prevented", function () {
         $.support.transition = false
         stop()
