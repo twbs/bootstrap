@@ -82,11 +82,12 @@
     , hide: function (e) {
         e && e.preventDefault()
 
-        var that = this
+        var that = this,
+            action = e && $(e.target).attr('data-action')
 
         e = $.Event('hide')
 
-        this.$element.trigger(e)
+        this.$element.trigger(e, action)
 
         if (!this.isShown || e.isDefaultPrevented()) return
 
