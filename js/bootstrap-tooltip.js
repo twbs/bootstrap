@@ -152,14 +152,67 @@
             break
         }
 
-        $tip
-          .offset(tp)
-          .addClass(placement)
-          .addClass('in')
+        this.applyPlacement(tp, placement)
 
         this.$element.trigger('shown')
       }
     }
+
+  , applyPlacement: function(offset, placement){
+    var $tip
+      , width
+      , height
+      , actualWidth
+      , actualHeight
+      , delta
+      , replace = false
+
+    $tip = this.tip()
+
+    width = $tip[0].offsetWidth
+    height = $tip[0].offsetHeight
+
+    $tip
+          .offset(offset)
+          .addClass(placement)
+          .addClass('in')
+
+    actualWidth = $tip[0].offsetWidth
+    actualHeight = $tip[0].offsetHeight
+
+    if (placement == "top" && actualHeight != height){
+      offset.top = offset.top + height - actualHeight
+      replace = true
+    }
+
+    if (placement == "bottom" || placement == "top"){
+      delta = 0
+
+      if (offset.left < 0){
+        delta = -offset.left * 2
+        offset.left = 0
+        $tip.offset(offset)
+        actualWidth = $tip[0].offsetWidth
+        actualHeight = $tip[0].offsetHeight
+      }
+
+      this.replaceArrow(delta - width + actualWidth, actualWidth, "left")
+    }else{
+      this.replaceArrow(actualHeight - height, actualHeight, "top")
+    }
+
+    if (replace) $tip.offset(offset)
+  }
+
+  , replaceArrow: function(delta, dimension, position){
+    var $arrow = this.arrow()
+
+    if (delta !== 0){
+      $arrow.css(position, 50 * (1 - delta / dimension) + "%")
+    }else{
+      $arrow.css(position, "")
+    }
+  }
 
   , setContent: function () {
       var $tip = this.tip()
@@ -232,6 +285,10 @@
   , tip: function () {
       return this.$tip = this.$tip || $(this.options.template)
     }
+
+  , arrow: function(){
+    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow")
+  }
 
   , validate: function () {
       if (!this.$element[0].parentNode) {
