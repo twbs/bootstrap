@@ -228,4 +228,34 @@ $(function () {
         $input.remove()
         typeahead.$menu.remove()
       })
+
+      test("should allow objects to be passed as items", function () {
+        var $input = $('<input />').typeahead({
+              source: function () {
+                return [{a: 'aa'}, {a: 'ab'}, {a: 'ac'}]
+              }
+            , matcher: function() { return true }
+            , sorter: function(items) { return items }
+            , updater: function(item) { return item.a }
+            , highlighter: function(item) { return item.a }
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        equals(typeahead.$menu.find('.active').data('value').a, 'aa', 'item object has been stored')
+        equals(typeahead.$menu.find('.active').text(), 'aa', 'item object has been displayed correctly')
+
+        typeahead.select()
+
+        equals($input.val(), 'aa', 'input has been set correctly')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
 })
