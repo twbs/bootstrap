@@ -14,8 +14,8 @@ QUnit.moduleDone = function (opts) {
   }
 }
 
-QUnit.done = function (opts) {
+QUnit.done(function (opts) {
   console.log("\n================================================")
   console.log("Tests completed in " + opts.runtime + " milliseconds")
   console.log(opts.passed + " tests of " + opts.total + " passed, " + opts.failed + " failed.")
-}
+})
