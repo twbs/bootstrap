@@ -276,6 +276,18 @@
     },
     {
       "search": [
+        "plus"
+      ],
+      "code": 10133,
+      "from": 10133,
+      "uid": "4ba33d2607902cf690dd45df09774cb0",
+      "css": "plus-sign",
+      "orig_css": "plus-circle",
+      "orig_code": 10133,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
         "minus"
       ],
       "code": 10134,
@@ -381,6 +393,20 @@
     {
       "search": [
         "arrow",
+        "down",
+        "download"
+      ],
+      "code": 59224,
+      "from": 59224,
+      "uid": "c53068fe21c8410b0a098b4c52c3d37e",
+      "css": "download",
+      "orig_css": "down-circle2",
+      "orig_code": 59224,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
+        "arrow",
         "down"
       ],
       "code": 59228,
@@ -444,6 +470,18 @@
       "css": "list",
       "orig_css": "list",
       "orig_code": 59266,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
+        "road"
+      ],
+      "code": 59279,
+      "from": 59279,
+      "uid": "ecede48deb16179e5ef9a3f8ffae62f4",
+      "css": "road",
+      "orig_css": "road",
+      "orig_code": 59279,
       "src": "fontawesome"
     },
     {
