@@ -848,6 +848,10 @@ table {
   border-spacing: 0;
 }
 
+th {
+  text-align: left;
+}
+
 .table {
   width: 100%;
   margin-bottom: 20px;
@@ -857,13 +861,8 @@ table {
 .table td {
   padding: 8px;
   line-height: 20px;
-  text-align: left;
   vertical-align: top;
   border-top: 1px solid #dddddd;
-}
-
-.table th {
-  font-weight: bold;
 }
 
 .table thead th {

@@ -9,7 +9,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
+th {
+  text-align: left;
+}
 
 
 // BASELINE STYLES
@@ -23,12 +25,8 @@ table {
   td {
     padding: 8px;
     line-height: @line-height-base;
-    text-align: left;
     vertical-align: top;
     border-top: 1px solid @table-border;
-  }
-  th {
-    font-weight: bold;
   }
   // Bottom align for column headings
   thead th {
