@@ -4576,6 +4576,7 @@ a.counter:focus {
   height: 10px;
   margin-left: 5px;
   text-indent: -999px;
+  cursor: pointer;
   background-color: #ccc;
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 5px;
