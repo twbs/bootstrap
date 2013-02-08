@@ -185,20 +185,26 @@ $('#myModal').on('show', function (e) {
 
           <h3>Static example</h3>
           <p>A rendered modal with header, body, and set of actions in the footer.</p>
-          <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; display: block; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>Modal header</h3>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#" class="btn">Close</a>
-                <a href="#" class="btn btn-primary">Save changes</a>
-              </div>
-            </div>
+          <div class="bs-docs-example bs-docs-example-modal">
+
+            <div class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Modal header</h3>
+                  </div>
+                  <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#" class="btn">Close</a>
+                    <a href="#" class="btn btn-primary">Save changes</a>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="modal fade"&gt;
