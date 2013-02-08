@@ -80,7 +80,10 @@
 // Placeholder text
 // -------------------------
 .placeholder(@color: @placeholderText) {
-  &:-moz-placeholder {
+  &:-moz-placeholder { // Mozilla Firefox 4 to 18
+    color: @color;
+  }
+  &::-moz-placeholder { // Mozilla Firefox 19+
     color: @color;
   }
   &:-ms-input-placeholder {
