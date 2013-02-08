@@ -24,10 +24,13 @@
   left: 0;
   z-index: @zindex-modal-background;
   -webkit-overflow-scrolling: touch;
-}
-.modal.fade {
-  top: -25%;
-  .transition(~"opacity 0.3s linear, top 0.3s ease-out");
+
+  // When fading in the modal, animate it to slide down
+  &.fade {
+    top: -25%;
+    .transition(~"opacity 0.3s linear, top 0.3s ease-out");
+  }
+  &.fade.in { top: 0; }
 }
 
 // Shell div to position the modal with bottom padding
@@ -48,17 +51,10 @@
   border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.2);
   border-radius: 6px;
-  .box-shadow(0 3px 10px rgba(0,0,0,0.25));
+  .box-shadow(0 3px 9px rgba(0,0,0,.5));
   .background-clip(padding-box);
   // Remove focus outline from opened modal
   outline: none;
-
-  &.fade {
-    .transition(e('opacity .3s linear, top .3s ease-out'));
-    top: -25%;
-  }
-  &.fade.in { top: 10%; }
-
 }
 
 // Modal background
@@ -69,13 +65,10 @@
   bottom: 0;
   left: 0;
   z-index: @zindex-modal-background - 10;
-  background-color: #fff;
+  background-color: #000;
   // Fade for backdrop
   &.fade { opacity: 0; }
-}
-.modal-backdrop,
-.modal-backdrop.fade.in {
-  .opacity(75);
+  &.fade.in { .opacity(50);}
 }
 
 // Modal header
@@ -99,13 +92,13 @@
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: @modal-inner-padding;
 }
 
 // Footer (for actions)
 .modal-footer {
   margin-top: 15px;
-  padding: 14px 15px 15px;
+  padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
   text-align: right; // right align buttons
   border-top: 1px solid #e5e5e5;
   .clearfix(); // clear it in case folks use .pull-* classes on buttons
@@ -135,6 +128,9 @@
     margin-left: -280px;
     padding-top: 30px;
     padding-bottom: 30px;
+  }
+  .modal-content {
+    .box-shadow(0 5px 15px rgba(0,0,0,.5));
   }
 
 }

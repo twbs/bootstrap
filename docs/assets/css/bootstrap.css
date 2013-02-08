@@ -3745,6 +3745,10 @@ button.close {
           transition: opacity 0.3s linear, top 0.3s ease-out;
 }
 
+.modal.fade.in {
+  top: 0;
+}
+
 .modal-dialog {
   position: relative;
   top: 0;
@@ -3762,23 +3766,11 @@ button.close {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   outline: none;
-  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;
-}
-
-.modal-content.fade {
-  top: -25%;
-  -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
-     -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
-       -o-transition: opacity 0.3s linear, top 0.3s ease-out;
-          transition: opacity 0.3s linear, top 0.3s ease-out;
-}
-
-.modal-content.fade.in {
-  top: 10%;
 }
 
 .modal-backdrop {
@@ -3788,17 +3780,16 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1030;
-  background-color: #fff;
+  background-color: #000;
 }
 
 .modal-backdrop.fade {
   opacity: 0;
 }
 
-.modal-backdrop,
 .modal-backdrop.fade.in {
-  opacity: 0.75;
-  filter: alpha(opacity=75);
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 
 .modal-header {
@@ -3817,11 +3808,11 @@ button.close {
 
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: 20px;
 }
 
 .modal-footer {
-  padding: 14px 15px 15px;
+  padding: 19px 20px 20px;
   margin-top: 15px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
@@ -3858,6 +3849,10 @@ button.close {
     padding-top: 30px;
     padding-bottom: 30px;
     margin-left: -280px;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
 }
 
