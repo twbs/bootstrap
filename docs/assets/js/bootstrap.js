@@ -1039,7 +1039,7 @@
       })
     })
 
-    var $body = $('body')
+    var $body = $(document.body)
       .on('shown', '.modal', function () { $body.addClass('modal-open') })
       .on('hidden', '.modal', function () { $body.removeClass('modal-open') })
 
