@@ -39,8 +39,6 @@
       var $this = $(this)
         , $parent
 
-      if ($this.is('.disabled, :disabled')) return
-
       $parent = $this.parents('.row-offcanvas')
 
       $parent.toggleClass('active')
@@ -59,8 +57,6 @@
 
       e.preventDefault()
       e.stopPropagation()
-
-      if ($this.is('.disabled, :disabled')) return
 
       $parent = $this.parents('.row-offcanvas')
 
