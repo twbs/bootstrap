@@ -48,9 +48,12 @@ a.text-info:focus    { color: darken(@infoText, 10%); }
 a.text-success:hover,
 a.text-success:focus { color: darken(@successText, 10%); }
 
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
+.text-left,
+.table .text-left    { text-align: left; }
+.text-right,
+.table .text-right   { text-align: right; }
+.text-center
+.table .text-center  { text-align: center; }
 
 
 // Headings
