@@ -23,6 +23,7 @@ build:
 	@echo "Compiling LESS with Recess...               ${CHECK} Done"
 	@node docs/build
 	@cp img/* docs/assets/img/
+	@cp font/* docs/assets/font/
 	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
 	@echo "Compiling documentation...                  ${CHECK} Done"
@@ -62,7 +63,7 @@ clean:
 # recess & uglifyjs are required
 #
 
-bootstrap: bootstrap-img bootstrap-css bootstrap-js
+bootstrap: bootstrap-img bootstrap-font bootstrap-css bootstrap-js
 
 
 #
@@ -100,6 +101,16 @@ bootstrap-img: bootstrap/img/*
 bootstrap/img/*: img/*
 	mkdir -p bootstrap/img
 	cp img/* bootstrap/img/
+
+#
+# FONTS
+#
+
+bootstrap-font: bootstrap/font/*
+
+bootstrap/font/*: font/*
+	mkdir -p bootstrap/font
+	cp font/* bootstrap/font/
 
 
 #
