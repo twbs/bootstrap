@@ -1178,6 +1178,11 @@ textarea:-moz-placeholder {
   color: #999999;
 }
 
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #999999;
+}
+
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
   color: #999999;
