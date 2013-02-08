@@ -147,21 +147,22 @@
     
         if(this.options.dynamicPos){
     
-          doc = document.documentElement, body = document.body;
-          top = (doc && doc.scrollTop  || body && body.scrollTop  || 0);
+          doc = document.documentElement
+          body = document.body
+          top = (doc && doc.scrollTop || body && body.scrollTop || 0)
     
-          conWidth = this.options.container == 'body' ? window.innerWidth : this.$element.parent().outerWidth();
-          conHeight = this.options.container == 'body' ? window.innerHeight : this.$element.parent().outerHeight();
-          conLeft = this.options.container == 'body' ? 0 : conPos.left;
+          conWidth = this.options.container == 'body' ? window.innerWidth : this.$element.parent().outerWidth()
+          conHeight = this.options.container == 'body' ? window.innerHeight : this.$element.parent().outerHeight()
+          conLeft = this.options.container == 'body' ? 0 : conPos.left
     
           if(placement == 'right' && (pos.right + actualWidth > conWidth))
-            placement = 'left';
+            placement = 'left'
           else if(placement == 'left' && (pos.left - actualWidth < conLeft))
-            placement = 'right';
+            placement = 'right'
           else if(placement == 'bottom' && (pos.top + pos.height + actualHeight - top > conHeight))
-            placement = 'top';
+            placement = 'top'
           else if(placement == 'top' && (pos.top - top - actualHeight < 0))
-            placement = 'bottom';
+            placement = 'bottom'
 
         }
 
