@@ -3737,6 +3737,14 @@ button.close {
   -webkit-overflow-scrolling: touch;
 }
 
+.modal.fade {
+  top: -25%;
+  -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+     -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+       -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+          transition: opacity 0.3s linear, top 0.3s ease-out;
+}
+
 .modal-dialog {
   position: relative;
   top: 0;
@@ -3751,11 +3759,11 @@ button.close {
   position: relative;
   background-color: #fff;
   border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   outline: none;
-  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;

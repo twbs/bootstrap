@@ -25,6 +25,10 @@
   z-index: @zindex-modal-background;
   -webkit-overflow-scrolling: touch;
 }
+.modal.fade {
+  top: -25%;
+  .transition(~"opacity 0.3s linear, top 0.3s ease-out");
+}
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
@@ -42,9 +46,9 @@
   position: relative;
   background-color: #fff;
   border: 1px solid #999;
-  border: 1px solid rgba(0,0,0,.3);
+  border: 1px solid rgba(0,0,0,.2);
   border-radius: 6px;
-  .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  .box-shadow(0 3px 10px rgba(0,0,0,0.25));
   .background-clip(padding-box);
   // Remove focus outline from opened modal
   outline: none;
@@ -75,7 +79,6 @@
 }
 
 // Modal header
-// -------------------------
 // Top section of the modal w/ title and dismiss
 .modal-header {
   padding: 9px 15px;
@@ -93,7 +96,6 @@
 }
 
 // Modal body
-// -------------------------
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
@@ -123,7 +125,7 @@
   }
 }
 
-
+// Scale up the modal
 @media screen and (min-width: 768px) {
 
   .modal-dialog {

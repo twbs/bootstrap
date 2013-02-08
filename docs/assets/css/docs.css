@@ -283,6 +283,9 @@ section > ul li {
   bottom: auto;
   z-index: 1;
   display: block;
+}
+.bs-docs-example-modal .modal-dialog {
+  left: auto;
   margin-left: auto;
   margin-right: auto;
 }
