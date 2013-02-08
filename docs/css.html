@@ -92,7 +92,7 @@
           <li><a href="#buttons"><i class="glyphicon-chevron-right"></i> Buttons</a></li>
           <li><a href="#images"><i class="glyphicon-chevron-right"></i> Images</a></li>
           <li><a href="#icons"><i class="glyphicon-chevron-right"></i> Glyphicons</a></li>
-          <li><a href="#responsive"><i class="glyphicon-chevron-right"></i> Responsive design</a></li>
+          <li><a href="#responsive-utilities"><i class="glyphicon-chevron-right"></i> Responsive utilities</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -118,9 +118,8 @@
 
           <h3>Mobile first</h3>
           <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
-          <p>To enable proper mobile styles, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>:</p>
+          <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
           <pre class="prettyprint linenums">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
-          <p>This meta tag improves rendering of sites on mobile devices and ensures proper touch-based zooming.</p>
 
           <h3>Typography and links</h3>
           <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
@@ -2234,76 +2233,12 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 
         <!-- Responsive design
         ================================================== -->
-        <section id="responsive">
+        <section id="responsive-utilities">
           <div class="page-header">
-            <h1>Responsive design</h1>
+            <h1>Responsive utilities</h1>
           </div>
+          <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query.</p>
 
-          <h2>Enabling responsive features</h2>
-          <p>Responsive CSS requires the following meta tag in the <code>&lt;head&gt;</code> of your pages.</p>
-<pre class="prettyprint linenums">
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-</pre>
-
-          <h3>Supported devices</h3>
-          <p>Bootstrap supports a handful of media queries to help make your projects more appropriate on different devices and screen resolutions. Here's what's included:</p>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Label</th>
-                <th>Layout width</th>
-                <th>Column width</th>
-                <th>Gutter width</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Large display</td>
-                <td>1200px and up</td>
-                <td>70px</td>
-                <td>30px</td>
-              </tr>
-              <tr>
-                <td>Default</td>
-                <td>980px and up</td>
-                <td>60px</td>
-                <td>20px</td>
-              </tr>
-              <tr>
-                <td>Portrait tablets</td>
-                <td>768px and above</td>
-                <td>42px</td>
-                <td>20px</td>
-              </tr>
-              <tr>
-                <td>Phones to tablets</td>
-                <td>767px and below</td>
-                <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
-              </tr>
-              <tr>
-                <td>Phones</td>
-                <td>480px and below</td>
-                <td class="muted" colspan="2">Fluid columns, no fixed widths</td>
-              </tr>
-            </tbody>
-          </table>
-<pre class="prettyprint linenums">
-/* Large desktop */
-@media (min-width: 1200px) { ... }
-
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { ... }
-
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) { ... }
-
-/* Landscape phones and down */
-@media (max-width: 480px) { ... }
-</pre>
-
-
-          <h2>Responsive utility classes</h2>
-          <p>For faster mobile-friendly development, use these utility classes for showing and hiding content by device. Below is a table of the available classes and their effect on a given media query layout (labeled by device).</p>
           <table class="table table-bordered table-striped responsive-utilities">
             <thead>
               <tr>
