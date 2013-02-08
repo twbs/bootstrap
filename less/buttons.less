@@ -25,13 +25,14 @@
   .ie7-restore-left-whitespace(); // Give IE7 some love
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
 
-  // Hover state
-  &:hover {
+  // Hover/focus state
+  &:hover,
+  &:focus {
     color: @grayDark;
     text-decoration: none;
     background-position: 0 -15px;
 
-    // transition is only when going to hover, otherwise the background
+    // transition is only when going to hover/focus, otherwise the background
     // behind the gradient (there for IE<=9 fallback) gets mismatched
     .transition(background-position .1s linear);
   }
@@ -141,11 +142,6 @@ input[type="button"] {
 
 // Set the backgrounds
 // -------------------------
-.btn {
-  // reset here as of 2.0.3 due to Recess property order
-  border-color: #c5c5c5;
-  border-color: rgba(0,0,0,.15) rgba(0,0,0,.15) rgba(0,0,0,.25);
-}
 .btn-primary {
   .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
 }
@@ -219,12 +215,14 @@ input[type="submit"].btn {
   color: @linkColor;
   .border-radius(0);
 }
-.btn-link:hover {
+.btn-link:hover,
+.btn-link:focus {
   color: @linkColorHover;
   text-decoration: underline;
   background-color: transparent;
 }
-.btn-link[disabled]:hover {
+.btn-link[disabled]:hover,
+.btn-link[disabled]:focus {
   color: @grayDark;
   text-decoration: none;
 }
