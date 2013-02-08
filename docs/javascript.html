@@ -7,18 +7,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
+    <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Le fav and touch icons -->
+    <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -32,46 +34,41 @@
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="./index.html">Home</a>
-              </li>
-              <li class="">
-                <a href="./getting-started.html">Get started</a>
-              </li>
-              <li class="">
-                <a href="./scaffolding.html">Scaffolding</a>
-              </li>
-              <li class="">
-                <a href="./base-css.html">Base CSS</a>
-              </li>
-              <li class="">
-                <a href="./components.html">Components</a>
-              </li>
-              <li class="active">
-                <a href="./javascript.html">JavaScript</a>
-              </li>
-              <li class="">
-                <a href="./customize.html">Customize</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./index.html">Bootstrap</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="">
+              <a href="./index.html">Home</a>
+            </li>
+            <li class="">
+              <a href="./getting-started.html">Get started</a>
+            </li>
+            <li class="">
+              <a href="./css.html">CSS</a>
+            </li>
+            <li class="">
+              <a href="./components.html">Components</a>
+            </li>
+            <li class="active">
+              <a href="./javascript.html">JavaScript</a>
+            </li>
+            <li class="">
+              <a href="./customize.html">Customize</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
 <!-- Subhead
 ================================================== -->
-<header class="jumbotron subhead">
+<header class="bs-docs-jumbotron subhead">
   <div class="container">
     <h1>JavaScript</h1>
     <p class="lead">Bring Bootstrap's components to life&mdash;now with 13 custom jQuery plugins.
@@ -85,20 +82,20 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
-          <li><a href="#transitions"><i class="icon-chevron-right"></i> Transitions</a></li>
-          <li><a href="#modals"><i class="icon-chevron-right"></i> Modal</a></li>
-          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdown</a></li>
-          <li><a href="#scrollspy"><i class="icon-chevron-right"></i> Scrollspy</a></li>
-          <li><a href="#tabs"><i class="icon-chevron-right"></i> Tab</a></li>
-          <li><a href="#tooltips"><i class="icon-chevron-right"></i> Tooltip</a></li>
-          <li><a href="#popovers"><i class="icon-chevron-right"></i> Popover</a></li>
-          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alert</a></li>
-          <li><a href="#buttons"><i class="icon-chevron-right"></i> Button</a></li>
-          <li><a href="#collapse"><i class="icon-chevron-right"></i> Collapse</a></li>
-          <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
-          <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
-          <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
+          <li><a href="#overview"><i class="glyphicon-chevron-right"></i> Overview</a></li>
+          <li><a href="#transitions"><i class="glyphicon-chevron-right"></i> Transitions</a></li>
+          <li><a href="#modals"><i class="glyphicon-chevron-right"></i> Modal</a></li>
+          <li><a href="#dropdowns"><i class="glyphicon-chevron-right"></i> Dropdown</a></li>
+          <li><a href="#scrollspy"><i class="glyphicon-chevron-right"></i> Scrollspy</a></li>
+          <li><a href="#tabs"><i class="glyphicon-chevron-right"></i> Tab</a></li>
+          <li><a href="#tooltips"><i class="glyphicon-chevron-right"></i> Tooltip</a></li>
+          <li><a href="#popovers"><i class="glyphicon-chevron-right"></i> Popover</a></li>
+          <li><a href="#alerts"><i class="glyphicon-chevron-right"></i> Alert</a></li>
+          <li><a href="#buttons"><i class="glyphicon-chevron-right"></i> Button</a></li>
+          <li><a href="#collapse"><i class="glyphicon-chevron-right"></i> Collapse</a></li>
+          <li><a href="#carousel"><i class="glyphicon-chevron-right"></i> Carousel</a></li>
+          <li><a href="#typeahead"><i class="glyphicon-chevron-right"></i> Typeahead</a></li>
+          <li><a href="#affix"><i class="glyphicon-chevron-right"></i> Affix</a></li>
         </ul>
       </div>
       <div class="span9">
@@ -134,8 +131,8 @@ $("#myModal").modal('show')                // initializes and invokes show immed
 </pre>
           <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
 
-          <h3>No Conflict</h3>
-          <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances,  namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
+          <h3>No conflict</h3>
+          <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
 
 <pre class="prettyprint linenums">
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
@@ -144,7 +141,7 @@ $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the boot
 
           <h3>Events</h3>
           <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-          <p>All infinitive events provide preventDefault functionality. This provides the ability to stop the execution of an action before it starts.</p>
+          <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 <pre class="prettyprint linenums">
 $('#myModal').on('show', function (e) {
     if (!data) return e.preventDefault() // stops modal from being shown
@@ -161,7 +158,7 @@ $('#myModal').on('show', function (e) {
             <h1>Transitions <small>bootstrap-transition.js</small></h1>
           </div>
           <h3>About transitions</h3>
-          <p>For simple transition effects, include <strong>bootstrap-transition.js</strong> once alongside the other JS files. If you're using the compiled (or minified) <strong>bootstrap.js</strong>, there is no need to include this&mdash;it's already there.</p>
+          <p>For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
           <h3>Use cases</h3>
           <p>A few examples of the transition plugin:</p>
           <ul>
@@ -188,33 +185,45 @@ $('#myModal').on('show', function (e) {
 
           <h3>Static example</h3>
           <p>A rendered modal with header, body, and set of actions in the footer.</p>
-          <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <div class="modal" style="position: relative; top: auto; left: auto; right: auto; margin: 0 auto 20px; z-index: 1; max-width: 100%;">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>Modal header</h3>
-              </div>
-              <div class="modal-body">
-                <p>One fine body&hellip;</p>
-              </div>
-              <div class="modal-footer">
-                <a href="#" class="btn">Close</a>
-                <a href="#" class="btn btn-primary">Save changes</a>
-              </div>
-            </div>
+          <div class="bs-docs-example bs-docs-example-modal">
+
+            <div class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#" class="btn">Close</a>
+                    <a href="#" class="btn btn-primary">Save changes</a>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+
           </div>
 <pre class="prettyprint linenums">
-&lt;div class="modal hide fade"&gt;
-  &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
-    &lt;h3&gt;Modal header&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-body"&gt;
-    &lt;p&gt;One fine body&hellip;&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-footer"&gt;
-    &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
-    &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+&lt;div class="modal fade"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+
+      &lt;div class="modal-header"&gt;
+        &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
+        &lt;h4 class="modal-title"&gt;Modal title&lt;/h4&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        &lt;p&gt;One fine body&hellip;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
@@ -222,37 +231,43 @@ $('#myModal').on('show', function (e) {
           <h3>Live demo</h3>
           <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
           <!-- sample modal content -->
-          <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h3 id="myModalLabel">Modal Heading</h3>
-            </div>
-            <div class="modal-body">
-              <h4>Text in a modal</h4>
-              <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+          <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
 
-              <h4>Popover in a modal</h4>
-              <p>This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+                </div>
+                <div class="modal-body">
+                  <h4>Text in a modal</h4>
+                  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
 
-              <h4>Tooltips in a modal</h4>
-              <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
+                  <h4>Popover in a modal</h4>
+                  <p>This <a href="#" role="button" class="btn popover-test" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">button</a> should trigger a popover on click.</p>
 
-              <hr>
+                  <h4>Tooltips in a modal</h4>
+                  <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> should have tooltips on hover.</p>
 
-              <h4>Overflowing text to show optional scrollbar</h4>
-              <p>We set a fixed <code>max-height</code> on the <code>.modal-body</code>. Watch it overflow with all this extra lorem ipsum text we've included.</p>
-              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            </div>
-            <div class="modal-footer">
-              <button class="btn" data-dismiss="modal">Close</button>
-              <button class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
+                  <hr>
+
+                  <h4>Overflowing text to show optional scrollbar</h4>
+                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                  <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                  <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal">Close</button>
+                  <button class="btn btn-primary">Save changes</button>
+                </div>
+
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dalog -->
+          </div><!-- /.modal -->
+
           <div class="bs-docs-example" style="padding-bottom: 24px;">
             <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Launch demo modal</a>
           </div>
@@ -261,23 +276,26 @@ $('#myModal').on('show', function (e) {
 &lt;a href="#myModal" role="button" class="btn" data-toggle="modal"&gt;Launch demo modal&lt;/a&gt;
 
 &lt!-- Modal --&gt;
-&lt;div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
-  &lt;div class="modal-header"&gt;
-    &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&times;&lt;/button&gt;
-    &lt;h3 id="myModalLabel"&gt;Modal header&lt;/h3&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-body"&gt;
-    &lt;p&gt;One fine body&hellip;&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="modal-footer"&gt;
-    &lt;button class="btn" data-dismiss="modal" aria-hidden="true"&gt;Close&lt;/button&gt;
-    &lt;button class="btn btn-primary"&gt;Save changes&lt;/button&gt;
+&lt;div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+
+      &lt;div class="modal-header"&gt;
+        &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;
+        &lt;h4 class="modal-title"&gt;Modal title&lt;/h4&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        ...
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;a href="#" class="btn"&gt;Close&lt;/a&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Save changes&lt;/a&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>Usage</h2>
@@ -701,6 +719,7 @@ $('#myTab li:eq(2) a').tab('show'); // Select third tab (0-indexed)
   &lt;li&gt;&lt;a href="#messages" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="#settings" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</pre>
+          <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>.</p>
 
           <h3>Methods</h3>
           <h4>$().tab</h4>
@@ -767,10 +786,9 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <h2>Examples</h2>
           <p>Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.</p>
-          <p>For performance reasons, the tooltip and popover data-apis are opt in, meaning <strong>you must initialize them yourself</strong>.</p>
           <p>Hover over the links below to see tooltips:</p>
           <div class="bs-docs-example tooltip-demo">
-            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
+            <p class="muted" style="margin-bottom: 0;">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
             </p>
           </div>
 
@@ -1450,27 +1468,31 @@ $('#myCollapsible').on('hidden', function () {
                   <div class="item active">
                     <img src="assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
                     <div class="carousel-caption">
-                      <h4>First Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h3>First slide label</h3>
+                      <p>Nulla vitae elit libero, a pharetra augue. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
                     </div>
                   </div>
                   <div class="item">
                     <img src="assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
                     <div class="carousel-caption">
-                      <h4>Second Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h3>Second slide label</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare.</p>
                     </div>
                   </div>
                   <div class="item">
                     <img src="assets/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
                     <div class="carousel-caption">
-                      <h4>Third Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <h3>Third slide label</h3>
+                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
                     </div>
                   </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="control">&lsaquo;</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="control">&rsaquo;</span>
+                </a>
               </div>
             </div>
 <pre class="prettyprint linenums">
@@ -1511,7 +1533,7 @@ $('#myCollapsible').on('hidden', function () {
             <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
 
             <h3>Options</h3>
-            <p>Options can be passed via data attributes or JavaScriptz. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
+            <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1700,8 +1722,17 @@ $('.carousel').carousel({
             <p>Call the affix plugin via JavaScript:</p>
             <pre class="prettyprint linenums">$('#navbar').affix()</pre>
 
+            <h3>Methods</h3>
+            <h4>.affix('refresh')</h4>
+            <p>When using affix in conjunction with adding or removing of elements from the DOM, you'll want to call the refresh method:</p>
+<pre class="prettyprint linenums">
+$('[data-spy="affix"]').each(function () {
+  $(this).affix('refresh')
+});
+</pre>
           <h3>Options</h3>
           <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.</p>
+
           <table class="table table-bordered table-striped">
             <thead>
              <tr>
@@ -1735,6 +1766,25 @@ $('.carousel').carousel({
     ================================================== -->
     <footer class="footer">
       <div class="container">
+
+        <div class="bs-docs-social">
+          <ul class="bs-docs-social-buttons">
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            </li>
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
+            </li>
+            <li class="follow-btn">
+              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
+            </li>
+            <li class="tweet-btn">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
+            </li>
+          </ul>
+        </div>
+
+
         <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
         <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
         <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
@@ -1750,10 +1800,9 @@ $('.carousel').carousel({
 
 
 
-    <!-- Le javascript
+    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
@@ -1769,11 +1818,11 @@ $('.carousel').carousel({
     <script src="assets/js/bootstrap-typeahead.js"></script>
     <script src="assets/js/bootstrap-affix.js"></script>
 
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/holder/holder.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
 
     <script src="assets/js/application.js"></script>
-
 
 
   </body>

@@ -7,24 +7,27 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
+    <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
     <link href="assets/css/docs.css" rel="stylesheet">
     <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Le fav and touch icons -->
+    <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
+    {{! Analytics for Bootstrap docs only }}
     {{#production}}
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -44,39 +47,34 @@
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="{{index}}">
-                <a href="./index.html">{{_i}}Home{{/i}}</a>
-              </li>
-              <li class="{{getting-started}}">
-                <a href="./getting-started.html">{{_i}}Get started{{/i}}</a>
-              </li>
-              <li class="{{scaffolding}}">
-                <a href="./scaffolding.html">{{_i}}Scaffolding{{/i}}</a>
-              </li>
-              <li class="{{base-css}}">
-                <a href="./base-css.html">{{_i}}Base CSS{{/i}}</a>
-              </li>
-              <li class="{{components}}">
-                <a href="./components.html">{{_i}}Components{{/i}}</a>
-              </li>
-              <li class="{{javascript}}">
-                <a href="./javascript.html">{{_i}}JavaScript{{/i}}</a>
-              </li>
-              <li class="{{customize}}">
-                <a href="./customize.html">{{_i}}Customize{{/i}}</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="./index.html">Bootstrap</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="{{index}}">
+              <a href="./index.html">{{_i}}Home{{/i}}</a>
+            </li>
+            <li class="{{getting-started}}">
+              <a href="./getting-started.html">{{_i}}Get started{{/i}}</a>
+            </li>
+            <li class="{{css}}">
+              <a href="./css.html">{{_i}}CSS{{/i}}</a>
+            </li>
+            <li class="{{components}}">
+              <a href="./components.html">{{_i}}Components{{/i}}</a>
+            </li>
+            <li class="{{javascript}}">
+              <a href="./javascript.html">{{_i}}JavaScript{{/i}}</a>
+            </li>
+            <li class="{{customize}}">
+              <a href="./customize.html">{{_i}}Customize{{/i}}</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -89,6 +87,25 @@
     ================================================== -->
     <footer class="footer">
       <div class="container">
+
+        <div class="bs-docs-social">
+          <ul class="bs-docs-social-buttons">
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            </li>
+            <li>
+              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
+            </li>
+            <li class="follow-btn">
+              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">{{_i}}Follow @twbootstrap{{/i}}</a>
+            </li>
+            <li class="tweet-btn">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
+            </li>
+          </ul>
+        </div>
+
+
         <p>{{_i}}Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.{{/i}}</p>
         <p>{{_i}}Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.{{/i}}</p>
         <p>{{_i}}<a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.{{/i}}</p>
@@ -104,10 +121,9 @@
 
 
 
-    <!-- Le javascript
+    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
@@ -123,11 +139,11 @@
     <script src="assets/js/bootstrap-typeahead.js"></script>
     <script src="assets/js/bootstrap-affix.js"></script>
 
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script src="assets/js/holder/holder.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
 
     <script src="assets/js/application.js"></script>
-
 
     {{#production}}
     <!-- Analytics

@@ -20,7 +20,7 @@
 
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
-  margin: 0 0 0 33px; /* IE indents via margin-left */
+  margin: 0 0 0 40px; /* IE indents via margin-left */
 }
 ol.linenums li {
   padding-left: 12px;
