@@ -26,9 +26,9 @@
 
   // Offset the popover to account for the popover arrow
   &.top     { margin-top: -10px; }
-  &.right   { margin-left: 10px; }
+  &.right, &.bottom-right, &.top-right { margin-left: 10px; }
   &.bottom  { margin-top: 10px; }
-  &.left    { margin-left: -10px; }
+  &.left, &.bottom-left, &.top-left { margin-left: -10px; }
 }
 
 .popover-title {
@@ -86,7 +86,7 @@
       border-top-color: @popoverArrowColor;
     }
   }
-  &.right .arrow {
+  &.right .arrow, &.bottom-right .arrow, &.top-right .arrow {
     top: 50%;
     left: -@popoverArrowOuterWidth;
     margin-top: -@popoverArrowOuterWidth;
@@ -114,8 +114,7 @@
       border-bottom-color: @popoverArrowColor;
     }
   }
-
-  &.left .arrow {
+  &.left .arrow, &.bottom-left .arrow, &.top-left .arrow{
     top: 50%;
     right: -@popoverArrowOuterWidth;
     margin-top: -@popoverArrowOuterWidth;
@@ -129,5 +128,10 @@
       bottom: -@popoverArrowWidth;
     }
   }
-
+  &.bottom-right .arrow, &.bottom-left .arrow {
+    top: 80%;
+  }
+  &.top-right .arrow, &.top-left .arrow {
+    top: 17%;
+  }
 }

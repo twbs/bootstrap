@@ -46,7 +46,7 @@
       $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
       $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
 
-      $tip.removeClass('fade top bottom left right bottom-left bottom-right in')
+      $tip.removeClass('fade top bottom left right bottom-left bottom-right top-left top-right in')
     }
 
   , hasContent: function () {
