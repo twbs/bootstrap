@@ -1,8 +1,12 @@
-# [Twitter Bootstrap v2.2.2](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
+<a href="http://getbootstrap.com">
+  <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-docs-readme.png" width="100px">
+</a>
+
+# [Bootstrap v2.3.0](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
 
-To get started, checkout http://getbootstrap.com!
+To get started, checkout [http://getbootstrap.com](http://getbootstrap.com)!
 
 
 
@@ -30,7 +34,7 @@ And constructed with the following guidelines:
 * New additions without breaking backward compatibility bumps the minor (and resets the patch)
 * Bug fixes and misc changes bumps the patch
 
-For more information on SemVer, please visit http://semver.org/.
+For more information on SemVer, please visit [http://semver.org/](http://semver.org/).
 
 
 
@@ -85,13 +89,13 @@ Thanks!
 
 **Mark Otto**
 
-+ http://twitter.com/mdo
-+ http://github.com/mdo
++ [http://twitter.com/mdo](http://twitter.com/mdo)
++ [http://github.com/mdo](http://github.com/mdo)
 
 **Jacob Thornton**
 
-+ http://twitter.com/fat
-+ http://github.com/fat
++ [http://twitter.com/fat](http://twitter.com/fat)
++ [http://github.com/fat](http://github.com/fat)
 
 
 
@@ -103,7 +107,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.
 You may obtain a copy of the License in the LICENSE file, or at:
 
-   http://www.apache.org/licenses/LICENSE-2.0
+  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

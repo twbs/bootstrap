@@ -90,7 +90,7 @@ $('#myModal').on('show', function (e) {
             <h1>{{_i}}Transitions{{/i}} <small>bootstrap-transition.js</small></h1>
           </div>
           <h3>{{_i}}About transitions{{/i}}</h3>
-          <p>{{_i}}For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.{{/i}}</p>
+          <p>{{_i}}For simple transition effects, include <strong>bootstrap-transition.js</strong> once alongside the other JS files. If you're using the compiled (or minified) <strong>bootstrap.js</strong>, there is no need to include this&mdash;it's already there.{{/i}}</p>
           <h3>{{_i}}Use cases{{/i}}</h3>
           <p>{{_i}}A few examples of the transition plugin:{{/i}}</p>
           <ul>
@@ -335,21 +335,21 @@ $('#myModal').on('hidden', function () {
                     <li class="dropdown">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li><a tabindex="-1" href="http://google.com">{{_i}}Action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#anotherAction">{{_i}}Another action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">{{_i}}Action{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">{{_i}}Another action{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
                       <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 2 {{/i}}<b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                        <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -357,11 +357,11 @@ $('#myModal').on('hidden', function () {
                     <li id="fat-menu" class="dropdown">
                       <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                        <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -377,31 +377,31 @@ $('#myModal').on('hidden', function () {
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown{{/i}} <b class="caret"></b></a>
                 <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 2{{/i}} <b class="caret"></b></a>
                 <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">{{_i}}Dropdown 3{{/i}} <b class="caret"></b></a>
                 <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                  <li><a tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Action{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Another action{{/i}}</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Something else here{{/i}}</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">{{_i}}Separated link{{/i}}</a></li>
                 </ul>
               </li>
             </ul> <!-- /tabs -->
@@ -697,22 +697,26 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
           <h2>{{_i}}Examples{{/i}}</h2>
           <p>{{_i}}Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.{{/i}}</p>
+          <p>{{_i}}For performance reasons, the tooltip and popover data-apis are opt in, meaning <strong>you must initialize them yourself</strong>.{{/i}}</p>
           <p>{{_i}}Hover over the links below to see tooltips:{{/i}}</p>
           <div class="bs-docs-example tooltip-demo">
-            <p class="muted" style="margin-bottom: 0;">{{_i}}Tight pants next level keffiyeh <a href="#" rel="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" rel="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" rel="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" rel="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.{{/i}}
+            <p class="muted" style="margin-bottom: 0;">{{_i}}Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="A much longer tooltip belongs right here to demonstrate the max-width we apply.">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.{{/i}}
             </p>
           </div>{{! /example }}
 
           <h3>{{_i}}Four directions{{/i}}</h3>
           <div class="bs-docs-example tooltip-demo">
             <ul class="bs-docs-tooltip-examples">
-              <li><a href="#" rel="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
-              <li><a href="#" rel="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a></li>
-              <li><a href="#" rel="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</a></li>
-              <li><a href="#" rel="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
+              <li><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</a></li>
+              <li><a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</a></li>
+              <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</a></li>
+              <li><a href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</a></li>
             </ul>
           </div>{{! /example }}
 
+
+          <h3>{{_i}}Tooltips in input groups{{/i}}</h3>
+          <p>{{_i}}When using tooltips and popovers with the Bootstrap input groups, you'll have to set the <code>container</code> (documented below) option to avoid unwanted side effects.{{/i}}</p>
 
           <hr class="bs-docs-separator">
 
@@ -747,7 +751,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              </tr>
              <tr>
                <td>{{_i}}placement{{/i}}</td>
-               <td>{{_i}}string|function{{/i}}</td>
+               <td>{{_i}}string | function{{/i}}</td>
                <td>'top'</td>
                <td>{{_i}}how to position the tooltip{{/i}} - top | bottom | left | right</td>
              </tr>
@@ -766,8 +770,8 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <tr>
                <td>{{_i}}trigger{{/i}}</td>
                <td>{{_i}}string{{/i}}</td>
-               <td>'hover'</td>
-               <td>{{_i}}how tooltip is triggered{{/i}} - click | hover | focus | manual</td>
+               <td>'hover focus'</td>
+               <td>{{_i}}how tooltip is triggered{{/i}} - click | hover | focus | manual. {{_i}}Note you case pass trigger mutliple, space seperated, trigger types.{{/i}}</td>
              </tr>
              <tr>
                <td>{{_i}}delay{{/i}}</td>
@@ -779,6 +783,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
                 <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
                </td>
              </tr>
+             <tr>
+               <td>{{_i}}container{{/i}}</td>
+               <td>{{_i}}string | false{{/i}}</td>
+               <td>{{_i}}false{{/i}}</td>
+               <td>
+                <p>{{_i}}Appends the tooltip to a specific element <code>container: 'body'</code>{{/i}}</p>
+               </td>
+             </tr>
             </tbody>
           </table>
           <div class="alert alert-info">
@@ -787,8 +799,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
           </div>
 
           <h3>{{_i}}Markup{{/i}}</h3>
-          <p>{{_i}}For performance reasons, the Tooltip and Popover data-apis are opt in. If you would like to use them just specify a selector option.{{/i}}</p>
-          <pre class="prettyprint linenums">&lt;a href="#" rel="tooltip" title="{{_i}}first tooltip{{/i}}"&gt;{{_i}}hover over me{{/i}}&lt;/a&gt;</pre>
+          <pre class="prettyprint linenums">&lt;a href="#" data-toggle="tooltip" title="{{_i}}first tooltip{{/i}}"&gt;{{_i}}hover over me{{/i}}&lt;/a&gt;</pre>
 
           <h3>{{_i}}Methods{{/i}}</h3>
           <h4>$().tooltip({{_i}}options{{/i}})</h4>
@@ -860,16 +871,16 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 
         <h3>Live demo</h3>
         <div class="bs-docs-example" style="padding-bottom: 24px;">
-          <a href="#" class="btn btn-large btn-danger" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Click to toggle popover{{/i}}</a>
+          <a href="#" class="btn btn-large btn-danger" data-toggle="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">{{_i}}Click to toggle popover{{/i}}</a>
         </div>
 
         <h4>{{_i}}Four directions{{/i}}</h4>
         <div class="bs-docs-example tooltip-demo">
           <ul class="bs-docs-tooltip-examples">
-            <li><a href="#" class="btn" rel="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
-            <li><a href="#" class="btn" rel="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
-            <li><a href="#" class="btn" rel="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
-            <li><a href="#" class="btn" rel="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
+            <li><a href="#" class="btn" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on top">Popover on top</a></li>
+            <li><a href="#" class="btn" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on right">Popover on right</a></li>
+            <li><a href="#" class="btn" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on bottom">Popover on bottom</a></li>
+            <li><a href="#" class="btn" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="Popover on left">Popover on left</a></li>
           </ul>
         </div>{{! /example }}
 
@@ -907,7 +918,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
            </tr>
            <tr>
              <td>{{_i}}placement{{/i}}</td>
-             <td>{{_i}}string|function{{/i}}</td>
+             <td>{{_i}}string | function{{/i}}</td>
              <td>'right'</td>
              <td>{{_i}}how to position the popover{{/i}} - top | bottom | left | right</td>
            </tr>
@@ -943,6 +954,14 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
               <p>{{_i}}delay showing and hiding the popover (ms) - does not apply to manual trigger type{{/i}}</p>
               <p>{{_i}}If a number is supplied, delay is applied to both hide/show{{/i}}</p>
               <p>{{_i}}Object structure is: <code>delay: { show: 500, hide: 100 }</code>{{/i}}</p>
+             </td>
+           </tr>
+           <tr>
+             <td>{{_i}}container{{/i}}</td>
+             <td>{{_i}}string | false{{/i}}</td>
+             <td>{{_i}}false{{/i}}</td>
+             <td>
+              <p>{{_i}}Appends the popover to a specific element <code>container: 'body'</code>{{/i}}</p>
              </td>
            </tr>
           </tbody>
@@ -1352,6 +1371,11 @@ $('#myCollapsible').on('hidden', function () {
             <p>{{_i}}The slideshow below shows a generic plugin and component for cycling through elements like a carousel.{{/i}}</p>
             <div class="bs-docs-example">
               <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
                 <div class="carousel-inner">
                   <div class="item active">
                     <img src="assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
@@ -1381,6 +1405,11 @@ $('#myCollapsible').on('hidden', function () {
             </div>{{! /example }}
 <pre class="prettyprint linenums">
 &lt;div id="myCarousel" class="carousel slide"&gt;
+  &lt;ol class="carousel-indicators"&gt
+    &lt;li data-target="#myCarousel" data-slide-to="0" class="active"&gt&lt;/li&gt
+    &lt;li data-target="#myCarousel" data-slide-to="1"&gt&lt;/li&gt
+    &lt;li data-target="#myCarousel" data-slide-to="2"&gt&lt;/li&gt
+  &lt;/ol&gt
   &lt;!-- {{_i}}Carousel items{{/i}} --&gt;
   &lt;div class="carousel-inner"&gt;
     &lt;div class="active item"&gt;…&lt;/div&gt;
@@ -1405,14 +1434,14 @@ $('#myCollapsible').on('hidden', function () {
             <h2>{{_i}}Usage{{/i}}</h2>
 
             <h3>{{_i}}Via data attributes{{/i}}</h3>
-            <p>{{_i}}...{{/i}}</p>
+            <p>{{_i}}Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to it's current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which jump's the slide position to a particular index beginning with <code>0</code>.{{/i}}</p>
 
             <h3>{{_i}}Via JavaScript{{/i}}</h3>
             <p>{{_i}}Call carousel manually with:{{/i}}</p>
             <pre class="prettyprint linenums">$('.carousel').carousel()</pre>
 
             <h3>{{_i}}Options{{/i}}</h3>
-            <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.{{/i}}</p>
+            <p>{{_i}}Options can be passed via data attributes or JavaScriptz. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.{{/i}}</p>
             <table class="table table-bordered table-striped">
               <thead>
                <tr>
@@ -1495,7 +1524,7 @@ $('.carousel').carousel({
               <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]'>
             </div>{{! /example }}
             <pre class="prettyprint linenums">&lt;input type="text" data-provide="typeahead"&gt;</pre>
-
+            <p>You'll want to set <code>autocomplete="off"</code> to prevent default browser menus from appearing over the Bootstrap typeahead dropdown.</p>
 
             <hr class="bs-docs-separator">
 
@@ -1601,14 +1630,6 @@ $('.carousel').carousel({
             <p>{{_i}}Call the affix plugin via JavaScript:{{/i}}</p>
             <pre class="prettyprint linenums">$('#navbar').affix()</pre>
 
-            <h3>{{_i}}Methods{{/i}}</h3>
-            <h4>.affix('refresh')</h4>
-            <p>{{_i}}When using affix in conjunction with adding or removing of elements from the DOM, you'll want to call the refresh method:{{/i}}</p>
-<pre class="prettyprint linenums">
-$('[data-spy="affix"]').each(function () {
-  $(this).affix('refresh')
-});
-</pre>
           <h3>{{_i}}Options{{/i}}</h3>
           <p>{{_i}}Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.{{/i}}</p>
           <table class="table table-bordered table-striped">

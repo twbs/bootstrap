@@ -1,7 +1,7 @@
 /*
 
-Holder - 1.6 - client side image placeholders
-(c) 2012 Ivan Malopinsky / http://imsky.co
+Holder - 1.9 - client side image placeholders
+(c) 2012-2013 Ivan Malopinsky / http://imsky.co
 
 Provided under the Apache 2.0 License: http://www.apache.org/licenses/LICENSE-2.0
 Commercial use requires attribution.
@@ -33,6 +33,13 @@ function selector(a){
 //shallow object property extend
 function extend(a,b){var c={};for(var d in a)c[d]=a[d];for(var e in b)c[e]=b[e];return c}
 
+//hasOwnProperty polyfill
+if (!Object.prototype.hasOwnProperty)
+	Object.prototype.hasOwnProperty = function(prop) {
+		var proto = this.__proto__ || this.constructor.prototype;
+		return (prop in this) && (!(prop in proto) || proto[prop] !== this[prop]);
+	}
+
 function text_size(width, height, template) {
 	var dimension_arr = [height, width].sort();
 	var maxFactor = Math.round(dimension_arr[1] / 16),
@@ -47,6 +54,7 @@ function draw(ctx, dimensions, template, ratio) {
 	var ts = text_size(dimensions.width, dimensions.height, template);
 	var text_height = ts.height;
 	var width = dimensions.width * ratio, height = dimensions.height * ratio;
+	var font = template.font ? template.font : "sans-serif";
 	canvas.width = width;
 	canvas.height = height;
 	ctx.textAlign = "center";
@@ -54,39 +62,42 @@ function draw(ctx, dimensions, template, ratio) {
 	ctx.fillStyle = template.background;
 	ctx.fillRect(0, 0, width, height);
 	ctx.fillStyle = template.foreground;
-	ctx.font = "bold " + text_height + "px sans-serif";
+	ctx.font = "bold " + text_height + "px "+font;
 	var text = template.text ? template.text : (dimensions.width + "x" + dimensions.height);
 	if (ctx.measureText(text).width / width > 1) {
 		text_height = template.size / (ctx.measureText(text).width / width);
 	}
-	ctx.font = "bold " + (text_height * ratio) + "px sans-serif";
+	//Resetting font size if necessary
+	ctx.font = "bold " + (text_height * ratio) + "px "+font;
 	ctx.fillText(text, (width / 2), (height / 2), width);
 	return canvas.toDataURL("image/png");
 }
 
 function render(mode, el, holder, src) {
-
 	var dimensions = holder.dimensions,
 		theme = holder.theme,
-		text = holder.text;
+		text = holder.text ? decodeURIComponent(holder.text) : holder.text;
 	var dimensions_caption = dimensions.width + "x" + dimensions.height;
-	theme = (text ? extend(theme, {
-		text: text
-	}) : theme);
+	theme = (text ? extend(theme, {	text: text }) : theme);
+	theme = (holder.font ? extend(theme, {font: holder.font}) : theme);
 
 	var ratio = 1;
 	if(window.devicePixelRatio && window.devicePixelRatio > 1){
 		ratio = window.devicePixelRatio;
 	}
-	
+
 	if (mode == "image") {
 		el.setAttribute("data-src", src);
 		el.setAttribute("alt", text ? text : theme.text ? theme.text + " [" + dimensions_caption + "]" : dimensions_caption);
-		el.style.width = dimensions.width + "px";
-		el.style.height = dimensions.height + "px";
+
+		if(fallback || !holder.auto){
+		    el.style.width = dimensions.width + "px";
+		    el.style.height = dimensions.height + "px";
+		}
 
 		if (fallback) {
 			el.style.backgroundColor = theme.background;
+
 		}
 		else{
 			el.setAttribute("src", draw(ctx, dimensions, theme, ratio));
@@ -108,14 +119,7 @@ function fluid(el, holder, src) {
 		text: text
 	}) : theme);
 
-	var fluid = document.createElement("table");
-	fluid.setAttribute("cellspacing",0)
-	fluid.setAttribute("cellpadding",0)
-	fluid.setAttribute("border",0)
-
-	var row = document.createElement("tr")
-		.appendChild(document.createElement("td")
-		.appendChild(document.createTextNode(theme.text)));
+	var fluid = document.createElement("div");
 
 	fluid.style.backgroundColor = theme.background;
 	fluid.style.color = theme.foreground;
@@ -124,31 +128,38 @@ function fluid(el, holder, src) {
 	fluid.style.height = holder.dimensions.height + (holder.dimensions.height.indexOf("%")>0?"":"px");
 	fluid.id = el.id;
 
-	var frag = document.createDocumentFragment(),
-		tbody = document.createElement("tbody"),
-		tr = document.createElement("tr"),
-		td = document.createElement("td");
-		tr.appendChild(td);
-		tbody.appendChild(tr);
-		frag.appendChild(tbody);
-	
+	el.style.width=0;
+	el.style.height=0;
+
 	if (theme.text) {
-		td.appendChild(document.createTextNode(theme.text))
-		fluid.appendChild(frag);
+		fluid.appendChild(document.createTextNode(theme.text))
 	} else {
-		td.appendChild(document.createTextNode(dimensions_caption))
-		fluid.appendChild(frag);
+		fluid.appendChild(document.createTextNode(dimensions_caption))
 		fluid_images.push(fluid);
 		setTimeout(fluid_update, 0);
 	}
-	
-	el.parentNode.replaceChild(fluid, el);
+
+	el.parentNode.insertBefore(fluid, el.nextSibling)
+
+	if(window.jQuery){
+	    jQuery(function($){
+		$(el).on("load", function(){
+		   el.style.width = fluid.style.width;
+		   el.style.height = fluid.style.height;
+		   $(el).show();
+		   $(fluid).remove();
+		});
+	    })
+	}
 }
 
 function fluid_update() {
 	for (i in fluid_images) {
-		var el = fluid_images[i];
-		var label = el.getElementsByTagName("td")[0].firstChild;
+		if(!fluid_images.hasOwnProperty(i)) continue;
+		var el = fluid_images[i],
+			label = el.firstChild;
+
+		el.style.lineHeight = el.offsetHeight+"px";
 		label.data = el.offsetWidth + "x" + el.offsetHeight;
 	}
 }
@@ -175,6 +186,11 @@ function parse_flags(flags, options) {
 			ret.theme = options.themes[flag];
 		} else if (app.flags.text.match(flag)) {
 			ret.text = app.flags.text.output(flag);
+		} else if(app.flags.font.match(flag)){
+			ret.font = app.flags.font.output(flag);
+		}
+		else if(app.flags.auto.match(flag)){
+			ret.auto = true;
 		}
 	}
 
@@ -199,7 +215,7 @@ var fluid_images = [];
 var settings = {
 	domain: "holder.js",
 	images: "img",
-	elements: ".holderjs",
+	bgnodes: ".holderjs",
 	themes: {
 		"gray": {
 			background: "#eee",
@@ -217,13 +233,13 @@ var settings = {
 			size: 12
 		}
 	},
-	stylesheet: ".holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;border-collapse:collapse;border:0;vertical-align:middle;margin:0}"
+	stylesheet: ".holderjs-fluid {font-size:16px;font-weight:bold;text-align:center;font-family:sans-serif;margin:0}"
 };
 
 
 app.flags = {
 	dimensions: {
-		regex: /(\d+)x(\d+)/,
+		regex: /^(\d+)x(\d+)$/,
 		output: function (val) {
 			var exec = this.regex.exec(val);
 			return {
@@ -233,7 +249,7 @@ app.flags = {
 		}
 	},
 	fluid: {
-		regex: /([0-9%]+)x([0-9%]+)/,
+		regex: /^([0-9%]+)x([0-9%]+)$/,
 		output: function (val) {
 			var exec = this.regex.exec(val);
 			return {
@@ -258,10 +274,20 @@ app.flags = {
 		output: function (val) {
 			return this.regex.exec(val)[1];
 		}
+	},
+	font: {
+	    regex: /font\:(.*)/,
+	    output: function(val){
+		return this.regex.exec(val)[1];
+	    }
+	},
+	auto: {
+	    regex: /^auto$/
 	}
 }
 
 for (var flag in app.flags) {
+	if(!app.flags.hasOwnProperty(flag)) continue;
 	app.flags[flag].match = function (val) {
 		return val.match(this.regex)
 	}
@@ -285,29 +311,58 @@ app.add_image = function (src, el) {
 };
 
 app.run = function (o) {
-	var options = extend(settings, o),
-		images_nodes = selector(options.images),
-		elements = selector(options.elements),
-		preempted = true,
-		images = [];
+	var options = extend(settings, o), images = [];
 
-	for (i = 0, l = images_nodes.length; i < l; i++) images.push(images_nodes[i]);
+	if(options.images instanceof window.NodeList){
+	    imageNodes = options.images;
+	}
+	else if(options.images instanceof window.Node){
+	    imageNodes = [options.images];
+	}
+	else{
+	    imageNodes = selector(options.images);
+	}
 
-	var holdercss = document.createElement("style");
-	holdercss.type = "text/css";
-	holdercss.styleSheet ? holdercss.styleSheet.cssText = options.stylesheet : holdercss.textContent = options.stylesheet;
-	document.getElementsByTagName("head")[0].appendChild(holdercss);
+	if(options.elements instanceof window.NodeList){
+	    bgnodes = options.bgnodes;
+	}
+	else if(options.bgnodes instanceof window.Node){
+	    bgnodes = [options.bgnodes];
+	}
+	else{
+	    bgnodes = selector(options.bgnodes);
+	}
+
+	preempted = true;
+
+	for (i = 0, l = imageNodes.length; i < l; i++) images.push(imageNodes[i]);
+
+	var holdercss = document.getElementById("holderjs-style");
+
+	if(!holdercss){
+	    holdercss = document.createElement("style");
+	    holdercss.setAttribute("id", "holderjs-style");
+	    holdercss.type = "text/css";
+	    document.getElementsByTagName("head")[0].appendChild(holdercss);
+	}
+
+	if(holdercss.styleSheet){
+	    holdercss.styleSheet += options.stylesheet;
+	}
+	else{
+	    holdercss.textContent+= options.stylesheet;
+	}
 
 	var cssregex = new RegExp(options.domain + "\/(.*?)\"?\\)");
 
-	for (var l = elements.length, i = 0; i < l; i++) {
-		var src = window.getComputedStyle(elements[i], null)
+	for (var l = bgnodes.length, i = 0; i < l; i++) {
+		var src = window.getComputedStyle(bgnodes[i], null)
 			.getPropertyValue("background-image");
 		var flags = src.match(cssregex);
 		if (flags) {
 			var holder = parse_flags(flags[1].split("/"), options);
 			if (holder) {
-				render("background", elements[i], holder, src);
+				render("background", bgnodes[i], holder, src);
 			}
 		}
 	}
@@ -338,5 +393,9 @@ contentLoaded(win, function () {
 	}
 	preempted || app.run();
 });
+
+if ( typeof define === "function" && define.amd ) {
+	define( "Holder", [], function () { return app; } );
+}
 
 })(Holder, window);

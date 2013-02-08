@@ -339,8 +339,8 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   min-height: 40px;
   line-height: 40px;
 }
-.show-grid:hover [class*="span"] {
-  background: #ddd;
+.show-grid [class*="span"]:hover {
+  background-color: #ddd;
 }
 .show-grid .show-grid {
   margin-top: 0;
@@ -552,6 +552,9 @@ h2 + .row {
 
 /* Example page
 ------------------------- */
+.bootstrap-examples h4 {
+  margin: 10px 0 5px;
+}
 .bootstrap-examples p {
   font-size: 13px;
   line-height: 18px;
