@@ -29,19 +29,28 @@ cite    { font-style: normal; }
 
 // Utility classes
 .muted               { color: @grayLight; }
-a.muted:hover        { color: darken(@grayLight, 10%); }
+a.muted:hover,
+a.muted:focus        { color: darken(@grayLight, 10%); }
 
 .text-warning        { color: @warningText; }
-a.text-warning:hover { color: darken(@warningText, 10%); }
+a.text-warning:hover,
+a.text-warning:focus { color: darken(@warningText, 10%); }
 
 .text-error          { color: @errorText; }
-a.text-error:hover   { color: darken(@errorText, 10%); }
+a.text-error:hover,
+a.text-error:focus   { color: darken(@errorText, 10%); }
 
 .text-info           { color: @infoText; }
-a.text-info:hover    { color: darken(@infoText, 10%); }
+a.text-info:hover,
+a.text-info:focus    { color: darken(@infoText, 10%); }
 
 .text-success        { color: @successText; }
-a.text-success:hover { color: darken(@successText, 10%); }
+a.text-success:hover,
+a.text-success:focus { color: darken(@successText, 10%); }
+
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
 
 
 // Headings
@@ -119,8 +128,9 @@ ul.inline,
 ol.inline {
   margin-left: 0;
   list-style: none;
-  & > li {
+  > li {
     display: inline-block;
+    .ie7-inline-block();
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -185,7 +195,9 @@ blockquote {
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
-    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
+    font-size: @baseFontSize * 1.25;
+    font-weight: 300;
+    line-height: 1.25;
   }
   small {
     display: block;

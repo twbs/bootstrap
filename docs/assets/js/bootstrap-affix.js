@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-affix.js v2.2.2
+ * bootstrap-affix.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#affix
  * ==========================================================
  * Copyright 2012 Twitter, Inc.
