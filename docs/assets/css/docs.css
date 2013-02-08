@@ -271,6 +271,25 @@ section > ul li {
   margin-bottom: 0;
 }
 
+/* Example modals */
+.bs-docs-example-modal {
+  background-color: #f5f5f5;
+}
+.bs-docs-example-modal .modal {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  bottom: auto;
+  z-index: 1;
+  display: block;
+}
+.bs-docs-example-modal .modal-dialog {
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 
 /* Example templates
