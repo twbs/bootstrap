@@ -1,3 +1,29 @@
+## 2.3.0 (February 7, 2013)
+
+Minor release to add carousel indicators, improve tooltips, improve dev setup, and fix hella bugs.
+
+- **Repository changes:**
+  - **Local instead of global dependencies** for our makefile and install process. Now getting started is way easier—just run `npm install`.
+  - Upgraded to jQuery 1.9. No changes were needed, but we did upgrade the included jQuery file to the latest release.
+  - Moved changelog to be within the repo instead of as a wiki page.
+- **New and improved features:**
+  - **Added carousel indicators!** Add the HTML and it automagically works.
+  - **Added `container` option to tooltips.** The default option is still `insertAfter`, but now you may specify where to insert tooltips (and by extension, popovers) with the optional container parameter.
+  - Improved popovers now utilize `max-width` instead of `width`, have been widened from 240px to 280px, and will automatically hide the title if one has not been set via CSS `:empty` selector.
+  - Improved tooltip alignment on edges with [#6713](https://github.com/twitter/bootstrap/pull/6713).
+  - **Improved accessibility for links in all components.** After merging [#6441](https://github.com/twitter/bootstrap/pull/6441), link hover states now apply to the `:focus` state as well. This goes for basic `<a>` tags, as well as buttons, navs, dropdowns, and more.
+  - Added print utility classes to show and hide content between `screen` and `print` via CSS.
+  - Updated input groups to make them behave more like default form controls. Added `display: inline-block;`, increased `margin-bottom`, and added `vertical-align: middle;`  to match `<input>` styles.
+  - Added `.horizontal-three-colors()` gradient mixin (with example in the CSS tests file).
+  - Added `.text-left`, `.text-center`, and `.text-right` utility classes for easy typographic alignment.
+  - Added `@ms-viewport` so IE10 can use responsive CSS when in split-screen mode.
+- **Docs changes:**
+  - Added [new justified navigation example](https://f.cloud.github.com/assets/98681/25869/5e2f812c-4afa-11e2-9293-501cd689232d.png).
+  - Added sticky footer with fixed navbar example.
+
+See more on the [2.3.0 pull request](https://github.com/twitter/bootstrap/pull/6346).
+
+
 ## 2.2.2 (December 8, 2012)
 
 Bugfix release addressing docs, CSS, and some JavaScript issues. Key changes include:
