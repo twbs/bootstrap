@@ -47,11 +47,12 @@ $(function () {
         $.support.transition = false
         var ttContainer = $('<div id="dynamic-tt-test"/>').css({
           'height' : 400
-          , 'left' : 0
           , 'overflow' : 'hidden'
+          , 'position' : 'absolute'
           , 'top' : 0
+          , 'left' : 0
           , 'width' : 600})
-        .appendTo('body')
+          .appendTo('body')
 
         var topTooltip = $('<div style="display: inline-block; position: absolute; left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</div>')
           .appendTo('#dynamic-tt-test')
