@@ -44,7 +44,7 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').data('data-value')
+      var val = this.$menu.find('.active').data('value')
       this.$element
         .val(this.updater(val))
         .change()
