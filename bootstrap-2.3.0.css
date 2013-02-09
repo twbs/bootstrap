@@ -2750,7 +2750,7 @@ table th[class*="span"],
 
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-  color: #333333;
+  color: white;
   text-decoration: none;
   outline: 0;
   background-color: #0081c2;

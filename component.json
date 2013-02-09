@@ -1,8 +1,8 @@
 {
   "name": "sass-bootstrap",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "main": "lib/bootstrap.scss",
   "dependencies": {
-    "jquery": "~1.8.3"
+    "jquery": "~1.8.0"
   }
 }
