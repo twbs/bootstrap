@@ -137,3 +137,14 @@ body {
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
+
+.gradient-horizontal-three {
+  background-color: #00b3ee;
+  background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(#00b3ee), color-stop(50%, #7a43b6), to(#c3325f));
+  background-image: -webkit-linear-gradient(left, #00b3ee, #7a43b6 50%, #c3325f);
+  background-image: -moz-linear-gradient(left, #00b3ee, #7a43b6 50%, #c3325f);
+  background-image: -o-linear-gradient(left, #00b3ee, #7a43b6 50%, #c3325f);
+  background-image: linear-gradient(to right, #00b3ee, #7a43b6 50%, #c3325f);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b3ee', endColorstr='#c3325f', GradientType=0);
+}
