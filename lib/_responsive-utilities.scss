@@ -3,19 +3,11 @@
 // --------------------------------------------------
 
 
-// Clearing floats
-.clearfix {
-  @include clearfix();
-}
-
-// Accessible yet invisible text
-.hide-text {
-  @include hide-text();
-}
-
-// Uses box-sizing mixin, so must be defined here
-.input-block-level {
-  @include input-block-level();
+// IE10 Metro responsive
+// Required for Windows 8 Metro split-screen snapping with IE10
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+@-ms-viewport{
+  width: device-width;
 }
 
 // Hide from screenreaders and browsers
@@ -55,4 +47,28 @@
   .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
   // Hide
   .hidden-phone      { display: none !important; }
+}
+
+// Print utilities
+.visible-print    { display: none !important; }
+.hidden-print     { }
+
+@media print {
+  .visible-print  { display: inherit !important; }
+  .hidden-print   { display: none !important; }
+}
+
+// Clearing floats
+.clearfix {
+  @include clearfix();
+}
+
+// Accessible yet invisible text
+.hide-text {
+  @include hide-text();
+}
+
+// Uses box-sizing mixin, so must be defined here
+.input-block-level {
+  @include input-block-level();
 }

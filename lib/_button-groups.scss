@@ -164,8 +164,6 @@
   margin-left: 0;
 }
 // Carets in other button sizes
-.btn-mini .caret,
-.btn-small .caret,
 .btn-large .caret {
   margin-top: 6px;
 }
@@ -173,6 +171,10 @@
   border-left-width:  5px;
   border-right-width: 5px;
   border-top-width:   5px;
+}
+.btn-mini .caret,
+.btn-small .caret {
+  margin-top: 8px;
 }
 // Upside down carets for .dropup
 .dropup .btn-large .caret {

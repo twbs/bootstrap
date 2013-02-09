@@ -263,6 +263,12 @@
        -o-transition-delay: $transition-delay;
           transition-delay: $transition-delay;
 }
+@mixin transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+     -moz-transition-duration: $transition-duration;
+       -o-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
 
 // Transformations
 @mixin rotate($degrees) {
