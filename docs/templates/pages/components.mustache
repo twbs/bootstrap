@@ -92,6 +92,25 @@
 &lt;/ul&gt;
 </pre>
 
+          <h3>{{_i}}Disabled menu options{{/i}}</h3>
+          <p>{{_i}}Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.{{/i}}</p>
+          <div class="bs-docs-example">
+            <div class="dropdown clearfix">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                <li><a tabindex="-1" href="#">{{_i}}Regular link{{/i}}</a></li>
+                <li class="disabled"><a tabindex="-1" href="#">{{_i}}Disabled link{{/i}}</a></li>
+                <li><a tabindex="-1" href="#">{{_i}}Another link{{/i}}</a></li>
+              </ul>
+            </div>
+          </div>{{! /example }}
+<pre class="prettyprint linenums">
+&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Regular link{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="disabled"&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Disabled link{{/i}}&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;{{_i}}Another link{{/i}}&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
           <h3>{{_i}}Sub menus on dropdowns{{/i}}</h3>
           <p>{{_i}}Add an extra level of dropdown menus, appearing on hover like those of OS X, with some simple markup additions. Add <code>.dropdown-submenu</code> to any <code>li</code> in an existing dropdown menu for automatic styling.{{/i}}</p>
           <div class="bs-docs-example bs-docs-example-submenus">
@@ -201,9 +220,9 @@
           </div>
 <pre class="prettyprint linenums">
 &lt;div class="btn-group"&gt;
-  &lt;button class="btn"&gt;1&lt;/button&gt;
-  &lt;button class="btn"&gt;2&lt;/button&gt;
-  &lt;button class="btn"&gt;3&lt;/button&gt;
+  &lt;button class="btn"&gt;Left&lt;/button&gt;
+  &lt;button class="btn"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn"&gt;Right&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
@@ -1425,6 +1444,7 @@
     &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
@@ -1454,7 +1474,7 @@
 <pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="disabled"&gt;&lt;a href="#"&gt;&amp;laquo;&lt;/a&gt;&lt;/li&gt;
     &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
     ...
   &lt;/ul&gt;
@@ -1464,7 +1484,7 @@
 <pre class="prettyprint linenums">
 &lt;div class="pagination"&gt;
   &lt;ul&gt;
-    &lt;li class="disabled"&gt;&lt;span&gt;Prev&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="disabled"&gt;&lt;span&gt;&amp;laquo;&lt;/span&gt;&lt;/li&gt;
     &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
     ...
   &lt;/ul&gt;
@@ -2417,7 +2437,7 @@
             <p><button class="close" style="float: none;">&times;</button></p>
           </div>
           <pre class="prettyprint linenums">&lt;button class="close"&gt;&amp;times;&lt;/button&gt;</pre>
-          <p>{{_i}}iOS devices require an href="#" for click events if you would rather use an anchor.{{/i}}</p>
+          <p>{{_i}}iOS devices require an <code>href="#"</code> for click events if you would rather use an anchor.{{/i}}</p>
           <pre class="prettyprint linenums">&lt;a class="close" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
 
           <h2>{{_i}}Helper classes{{/i}}</h2>
