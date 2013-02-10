@@ -2711,9 +2711,9 @@ table th[class*="span"],
   -webkit-border-radius: 2px;
      -moz-border-radius: 2px;
           border-radius: 2px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
