@@ -123,7 +123,7 @@
   padding-bottom: 8px;
   line-height: $baseLineHeight;
   border: 1px solid transparent;
-  @inculde border-radius(4px 4px 0 0);
+  @include border-radius(4px 4px 0 0);
   &:hover,
   &:focus {
     border-color: $grayLighter $grayLighter #ddd;
