@@ -3796,7 +3796,9 @@ input[type="submit"].btn.btn-mini {
   padding-bottom: 8px;
   line-height: 20px;
   border: 1px solid transparent;
-  @inculde border-radius(4px 4px 0 0);
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
   border-color: #eeeeee #eeeeee #dddddd;
