@@ -22,7 +22,7 @@
   .ie7-restore-right-whitespace();
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("@{iconSpritePath}");
+  background-image: url(@{iconSpritePath});
   background-position: 14px 14px;
   background-repeat: no-repeat;
   margin-top: 1px;
@@ -46,7 +46,7 @@
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"] {
-  background-image: url("@{iconWhiteSpritePath}");
+  background-image: url(@{iconWhiteSpritePath});
 }
 
 .icon-glass              { background-position: 0      0; }
