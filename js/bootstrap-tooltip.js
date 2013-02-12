@@ -121,7 +121,8 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+
+        this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
         pos = this.getPosition(inside)
 
@@ -271,6 +272,7 @@
   , title: ''
   , delay: 0
   , html: false
+  , container: false
   }
 
 }(window.jQuery);
