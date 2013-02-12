@@ -28,7 +28,7 @@ $(function () {
         $.support.transition = false
         $("<div id='modal-test'></div>")
           .bind("shown", function () {
-            ok($('#modal-test').length, 'modal insterted into dom')
+            ok($('#modal-test').length, 'modal inserted into dom')
             $(this).remove()
             start()
           })
@@ -71,7 +71,7 @@ $(function () {
         $("<div id='modal-test'></div>")
           .bind("shown", function () {
             ok($('#modal-test').is(":visible"), 'modal visible')
-            ok($('#modal-test').length, 'modal insterted into dom')
+            ok($('#modal-test').length, 'modal inserted into dom')
             $(this).modal("hide")
           })
           .bind("hidden", function() {
@@ -89,7 +89,7 @@ $(function () {
         div
           .bind("shown", function () {
             ok($('#modal-test').is(":visible"), 'modal visible')
-            ok($('#modal-test').length, 'modal insterted into dom')
+            ok($('#modal-test').length, 'modal inserted into dom')
             div.modal("toggle")
           })
           .bind("hidden", function() {
@@ -107,7 +107,7 @@ $(function () {
         div
           .bind("shown", function () {
             ok($('#modal-test').is(":visible"), 'modal visible')
-            ok($('#modal-test').length, 'modal insterted into dom')
+            ok($('#modal-test').length, 'modal inserted into dom')
             div.find('.close').click()
           })
           .bind("hidden", function() {
