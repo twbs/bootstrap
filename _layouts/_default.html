@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0, maximum-scale=1">
+    <link href="/public/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+
+    <title>
+      {% if page.title %}{{ page.title }} &middot; {% endif %}
+      And Hyde, a Jekyll theme
+    </title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/hyde.css" type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface" type="text/css">
+
+    {% if page.title %}
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@mdo">
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:description" content="{{ page.summary }}">
+    <meta name="twitter:url" content="http://markdotto.com{{ page.url }}">
+    {% endif %}
+
+  </head>
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1>Hyde</h1>
+        <p>An elegant open source and mobile-first theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>. Made by <a href="http://markdotto.com" target="_blank">@mdo</a>.</p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="https://github.com/mdo/hyde/master/zipball">Download</a>
+            </li>
+            <li>
+              <a href="https://github.com/mdo/hyde">GitHub project</a>
+            </li>
+            <li>Currently v1.0</li>
+          </ul>
+          <p>&copy; 2013. All rights reserved.</p>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="content container">
+      {{ content }}
+    </div>
+
+  </body>
+</html>

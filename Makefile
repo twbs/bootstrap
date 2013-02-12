@@ -18,11 +18,11 @@ build:
 	@echo "Running JSHint on javascript...             ${CHECK} Done"
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@echo "Compiling LESS with Recess...               ${CHECK} Done"
-	@node docs/build
-	@cp fonts/* docs/assets/fonts/
-	@cp js/*.js docs/assets/js/
-	@cp js/tests/vendor/jquery.js docs/assets/js/
-	@echo "Compiling documentation...                  ${CHECK} Done"
+#	@node docs/build
+#	@cp fonts/* docs/assets/fonts/
+#	@cp js/*.js docs/assets/js/
+#	@cp js/tests/vendor/jquery.js docs/assets/js/
+#	@echo "Compiling documentation...                  ${CHECK} Done"
 	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
 	@./node_modules/.bin/uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
 	@echo "/**\n* Bootstrap.js v3.0.0 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js

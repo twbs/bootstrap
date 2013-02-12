@@ -1,0 +1,7 @@
+markdown:     rdiscount
+permalink:    pretty
+pygments:     true
+paginate:     5
+
+destination:  ./documentation
+exclude:      [docs, /fonts, /js, less, node_modules, .travis.yml, CHANGELOG.md, component.json, composer.json, CONTRIBUTING.md, LICENSE, Makefile, package.json, README.md]
