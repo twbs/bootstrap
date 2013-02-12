@@ -1127,7 +1127,7 @@
   , enter: function (e) {
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
-      if (this.options.selector) $.extend(self.options, self.getOptions())
+      if (this.options.selector) $.extend(self.options, this.$element.data())
       if (!self.options.delay || !self.options.delay.show) return self.show()
 
       clearTimeout(this.timeout)
@@ -1141,7 +1141,7 @@
       var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
       if (this.timeout) clearTimeout(this.timeout)
-      if (this.options.selector) $.extend(self.options, self.getOptions())
+      if (this.options.selector) $.extend(self.options, this.$element.data())
       if (!self.options.delay || !self.options.delay.hide) return self.hide()
 
       self.hoverState = 'out'
