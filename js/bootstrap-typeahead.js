@@ -33,6 +33,7 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.render = this.options.render || this.render
     this.source = this.options.source
     this.$menu = $(this.options.menu)
     this.shown = false
