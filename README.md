@@ -55,24 +55,31 @@ Keep track of development and community news.
 
 
 
-## Developers
+## Documentation
 
-We have included a makefile with convenience methods for working with the Bootstrap library.
+Bootstrap's docs are built using Jekyll and hosted on GitHub Pages at http://getbootstrap.com. To view our docs locally, you'll need to [install Jekyll](https://github.com/mojombo/jekyll/wiki/install) to run a local server.
 
-+ **dependencies**
-Our makefile depends on you having recess, connect, uglify.js, and jshint installed. To install, just run the following command in npm:
+Documentation for [previous versions](https://github.com/twitter/bootstrap/tags) is also available via tags.
+
+
+
+## Compiling CSS and JavaScript
+
+Bootstrap includes a makefile with convenient methods for working with the framework. Before getting started, be sure to install the necessary local dependencies:
 
 ```
-$ npm install recess connect uglify-js jshint -g
+$ npm install
 ```
 
-+ **build** - `make`
-Runs the recess compiler to rebuild the `/less` files and compiles the docs pages. Requires recess and uglify-js.
+Once installed, you'll be able to run the various make commands provided:
 
-+ **test** - `make test`
+#### build - `make`
+Runs the recess compiler to rebuild the `/less` files and compiles the docs. Requires recess and uglify-js.
+
+#### test - `make test`
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
 
-+ **watch** - `make watch`
+#### watch - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
 
 
@@ -80,8 +87,6 @@ This is a convenience method for watching just Less files and automatically buil
 ## Contributing
 
 Please submit all pull requests against *-wip branches. If your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
-
-Thanks!
 
 
 
