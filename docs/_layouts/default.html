@@ -7,8 +7,11 @@
     <meta name="author" content="">
 
     <title>
-      {% if page.title %}{{ page.title }} &middot; {% endif %}
-      Bootstrap
+      {% if page.title == "Bootstrap" %}
+        {{ page.title }}
+      {% else if %}
+        {{ page.title }} &middot; Bootstrap
+      {% endif %}
     </title>
 
     <!-- Bootstrap core CSS -->
@@ -57,23 +60,26 @@
         <a class="brand" href="/">Bootstrap</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="{{index}}">
+            <li {% if page.title == "Bootstrap" %}class="active"{% endif %}>
               <a href="/">Home</a>
             </li>
-            <li class="{{getting-started}}">
+            <li {% if page.title == "Getting started" %}class="active"{% endif %}>
               <a href="/getting-started">Get started</a>
             </li>
-            <li class="{{css}}">
+            <li {% if page.title == "CSS" %}class="active"{% endif %}>
               <a href="/css">CSS</a>
             </li>
-            <li class="{{components}}">
+            <li {% if page.title == "Components" %}class="active"{% endif %}>
               <a href="/components">Components</a>
             </li>
-            <li class="{{javascript}}">
+            <li {% if page.title == "JavaScript plugins" %}class="active"{% endif %}>
               <a href="/javascript">JavaScript</a>
             </li>
-            <li class="{{customize}}">
+            <li {% if page.title == "Customize and download" %}class="active"{% endif %}>
               <a href="/customize">Customize</a>
+            </li>
+            <li {% if page.title == "Gallery" %}class="active"{% endif %}>
+              <a href="/gallery">Gallery</a>
             </li>
           </ul>
         </div>

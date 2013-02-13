@@ -5,3 +5,4 @@ paginate:     5
 
 source:       ./docs
 destination:  ./_gh_pages
+auto:         true
