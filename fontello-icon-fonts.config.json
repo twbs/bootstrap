@@ -648,12 +648,12 @@
         "user"
       ],
       "code": 62564,
-      "from": 128100,
-      "uid": "8b80d36d4ef43889db10bc1f0dc9a862",
+      "uid": "bbd66ef66bb8fa9edde54d9a90b89150",
       "css": "user",
       "orig_css": "user",
       "orig_code": 62564,
-      "src": "fontawesome"
+      "src": "entypo",
+      "from": 128100
     },
     {
       "search": [
@@ -755,6 +755,20 @@
       "orig_code": 59392,
       "src": "entypo",
       "from": 128269
+    },
+    {
+      "search": [
+        "lock",
+        "open",
+        "unlock"
+      ],
+      "code": 62739,
+      "uid": "e81fc3a0d39ace6ee735d7b24eedd56d",
+      "css": "lock-open",
+      "orig_css": "lock-open",
+      "orig_code": 62739,
+      "src": "entypo",
+      "from": 128275
     },
     {
       "search": [
