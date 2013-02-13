@@ -54,7 +54,7 @@
   border: 1px solid @dropdownBorder;
   *border-right-width: 2px;
   *border-bottom-width: 2px;
-  .border-radius(6px);
+  .border-radius(@borderRadiusLarge);
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
@@ -173,7 +173,7 @@
   left: 100%;
   margin-top: -6px;
   margin-left: -1px;
-  .border-radius(0 6px 6px 6px);
+  .border-radius(0 @borderRadiusLarge @borderRadiusLarge @borderRadiusLarge);
 }
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
@@ -185,7 +185,7 @@
   bottom: 0;
   margin-top: 0;
   margin-bottom: -2px;
-  .border-radius(5px 5px 5px 0);
+  .border-radius(@borderRadiusLarge @borderRadiusLarge @borderRadiusLarge 0);
 }
 
 // Caret to indicate there is a submenu
@@ -216,7 +216,7 @@
   > .dropdown-menu {
     left: -100%;
     margin-left: 10px;
-    .border-radius(6px 0 6px 6px);
+    .border-radius(@borderRadiusLarge 0 @borderRadiusLarge @borderRadiusLarge);
   }
 }
 
