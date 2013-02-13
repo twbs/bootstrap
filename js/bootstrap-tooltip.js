@@ -293,7 +293,7 @@
     }
 
   , toggle: function (e) {
-      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      var self = e ? $(e.currentTarget)[this.type](this._options).data(this.type) : this
       self[self.tip().hasClass('in') ? 'hide' : 'show']()
     }
 
