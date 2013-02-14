@@ -38,7 +38,7 @@ For more information on SemVer, please visit [http://semver.org/](http://semver.
 
 
 
-## Bug tracker
+## Bugs and feature requests
 
 Have a bug or a feature request? [Please open a new issue](https://github.com/twitter/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
 
@@ -57,7 +57,7 @@ Keep track of development and community news.
 
 ## Documentation
 
-Bootstrap's docs are built using Jekyll and hosted on GitHub Pages at http://getbootstrap.com. To view our docs locally, you'll need to [install Jekyll](https://github.com/mojombo/jekyll/wiki/install) to run a local server.
+Bootstrap's docs are built using [Jekyll](http://jekyllrb.com) and hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). To view our docs locally, you'll need to [install Jekyll](https://github.com/mojombo/jekyll/wiki/install) to run a local server.
 
 Documentation for [previous versions](https://github.com/twitter/bootstrap/tags) is also available via tags.
 
