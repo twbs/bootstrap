@@ -485,6 +485,21 @@ input.focused {
   overflow: auto;
 }
 
+.highlight {
+  margin-bottom: 14px;
+  padding: 14px;
+  border-radius: 5px;
+}
+.highlight pre {
+  padding: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+}
+.highlight pre code {
+  color: #ccc;
+}
+
 
 
 /* Docs gallery
