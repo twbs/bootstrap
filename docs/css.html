@@ -46,17 +46,21 @@ title: CSS
 
           <h3>Requires HTML5 doctype</h3>
           <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
-<pre class="prettyprint linenums">
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
+
+{% highlight html linenos %}
+<!DOCTYPE html>
+<html lang="en">
   ...
-&lt;/html&gt;
-</pre>
+</html>
+{% endhighlight %}
 
           <h3>Mobile first</h3>
           <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
           <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
-          <pre class="prettyprint linenums">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+
+{% highlight html linenos %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endhighlight %}
 
           <h3>Typography and links</h3>
           <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
@@ -103,7 +107,9 @@ title: CSS
             <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
             <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
           </div>
-          <pre class="prettyprint">&lt;p&gt;...&lt;/p&gt;</pre>
+{% highlight html linenos %}
+<p>...</p>
+{% endhighlight %}
 
           <!-- Body copy .lead -->
           <h3>Lead body copy</h3>
@@ -111,7 +117,9 @@ title: CSS
           <div class="bs-docs-example">
             <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
           </div>
-          <pre class="prettyprint">&lt;p class="lead"&gt;...&lt;/p&gt;</pre>
+{% highlight html linenos %}
+<p class="lead">...</p>
+{% endhighlight %}
 
           <!-- Using LESS -->
           <h3>Built with Less</h3>
@@ -127,25 +135,28 @@ title: CSS
           <div class="bs-docs-example">
             <p><small>This line of text is meant to be treated as fine print.</small></p>
           </div>
-<pre class="prettyprint">
-&lt;p&gt;
-  &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
-&lt;/p&gt;
-</pre>
+{% highlight html linenos %}
+<small>This line of text is meant to be treated as fine print.</small>
+{% endhighlight %}
+
 
           <h3>Bold</h3>
           <p>For emphasizing a snippet of text with a heavier font-weight.</p>
           <div class="bs-docs-example">
             <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
           </div>
-          <pre class="prettyprint">&lt;strong&gt;rendered as bold text&lt;/strong&gt;</pre>
+{% highlight html linenos %}
+<strong>rendered as bold text</strong>
+{% endhighlight %}
 
           <h3>Italics</h3>
           <p>For emphasizing a snippet of text with italics.</p>
           <div class="bs-docs-example">
             <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
           </div>
-          <pre class="prettyprint">&lt;em&gt;rendered as italicized text&lt;/em&gt;</pre>
+{% highlight html linenos %}
+<em>rendered as italicized text</em>
+{% endhighlight %}
 
           <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
 
@@ -156,11 +167,11 @@ title: CSS
             <p class="text-center">Center aligned text.</p>
             <p class="text-right">Right aligned text.</p>
           </div>
-<pre class="prettyprint linenums">
-&lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt;
-&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
-&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
-</pre>
+{% highlight html linenos %}
+<p class="text-left">Left aligned text.</p>
+<p class="text-center">Center aligned text.</p>
+<p class="text-right">Right aligned text.</p>
+{% endhighlight %}
 
           <h3>Emphasis classes</h3>
           <p>Convey meaning through color with a handful of emphasis utility classes.</p>
@@ -170,12 +181,13 @@ title: CSS
             <p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
             <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
           </div>
-<pre class="prettyprint linenums">
-&lt;p class="muted"&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/p&gt;
-&lt;p class="text-warning"&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
-&lt;p class="text-error"&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
-&lt;p class="text-success"&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/p&gt;
-</pre>
+{% highlight html linenos %}
+<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+{% endhighlight %}
 
 
           <!-- Abbreviations -->
@@ -187,14 +199,18 @@ title: CSS
           <div class="bs-docs-example">
             <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
           </div>
-          <pre class="prettyprint">&lt;abbr title="attribute"&gt;attr&lt;/abbr&gt;</pre>
+{% highlight html linenos %}
+<abbr title="attribute">attr</abbr>
+{% endhighlight %}
 
           <h3><code>&lt;abbr class="initialism"&gt;</code></h3>
           <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
           <div class="bs-docs-example">
             <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
           </div>
-          <pre class="prettyprint">&lt;abbr title="HyperText Markup Language" class="initialism"&gt;HTML&lt;/abbr&gt;</pre>
+{% highlight html linenos %}
+<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+{% endhighlight %}
 
 
           <!-- Addresses -->
@@ -215,19 +231,19 @@ title: CSS
               <a href="mailto:#">first.last@example.com</a>
             </address>
           </div>
-<pre class="prettyprint linenums">
-&lt;address&gt;
-  &lt;strong&gt;Twitter, Inc.&lt;/strong&gt;&lt;br&gt;
-  795 Folsom Ave, Suite 600&lt;br&gt;
-  San Francisco, CA 94107&lt;br&gt;
-  &lt;abbr title="Phone"&gt;P:&lt;/abbr&gt; (123) 456-7890
-&lt;/address&gt;
+{% highlight html linenos %}
+<address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
 
-&lt;address&gt;
-  &lt;strong&gt;Full Name&lt;/strong&gt;&lt;br&gt;
-  &lt;a href="mailto:#"&gt;first.last@example.com&lt;/a&gt;
-&lt;/address&gt;
-</pre>
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@example.com</a>
+</address>
+{% endhighlight %}
 
 
           <!-- Blockquotes -->
@@ -241,11 +257,11 @@ title: CSS
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
             </blockquote>
           </div>
-<pre class="prettyprint linenums">
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
-&lt;/blockquote&gt;
-</pre>
+{% highlight html linenos %}
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+</blockquote>
+{% endhighlight %}
 
           <h3>Blockquote options</h3>
           <p>Style and content changes for simple variations on a standard blockquote.</p>
@@ -258,12 +274,12 @@ title: CSS
               <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
             </blockquote>
           </div>
-<pre class="prettyprint linenums">
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
-  &lt;small&gt;Someone famous &lt;cite title="Source Title"&gt;Source Title&lt;/cite&gt;&lt;/small&gt;
-&lt;/blockquote&gt;
-</pre>
+{% highlight html linenos %}
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+</blockquote>
+{% endhighlight %}
 
           <h4>Alternate displays</h4>
           <p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
@@ -273,11 +289,11 @@ title: CSS
               <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
             </blockquote>
           </div>
-<pre class="prettyprint linenums">
-&lt;blockquote class="pull-right"&gt;
+{% highlight html linenos %}
+<blockquote class="pull-right">
   ...
-&lt;/blockquote&gt;
-</pre>
+</blockquote>
+{% endhighlight %}
 
 
           <!-- Lists -->
@@ -304,11 +320,11 @@ title: CSS
               <li>Eget porttitor lorem</li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul>
+  <li>...</li>
+</ul>
+{% endhighlight %}
 
           <h3>Ordered</h3>
           <p>A list of items in which the order <em>does</em> explicitly matter.</p>
@@ -324,11 +340,11 @@ title: CSS
               <li>Eget porttitor lorem</li>
             </ol>
           </div>
-<pre class="prettyprint linenums">
-&lt;ol&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ol&gt;
-</pre>
+{% highlight html linenos %}
+<ol>
+  <li>...</li>
+</ol>
+{% endhighlight %}
 
         <h3>Unstyled</h3>
         <p>Remove the default <code>list-style</code> and left padding on list items (immediate children only).</p>
@@ -351,11 +367,11 @@ title: CSS
             <li>Eget porttitor lorem</li>
           </ul>
         </div>
-<pre class="prettyprint linenums">
-&lt;ul class="list-unstyled"&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="list-unstyled">
+  <li>...</li>
+</ul>
+{% endhighlight %}
 
         <h3>Inline</h3>
         <p>Place all list items on a single line with <code>inline-block</code> and some light padding.</p>
@@ -366,11 +382,11 @@ title: CSS
             <li>Nulla volutpat</li>
           </ul>
         </div>
-<pre class="prettyprint linenums">
-&lt;ul class="list-inline"&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="list-inline">
+  <li>...</li>
+</ul>
+{% endhighlight %}
 
         <h3>Description</h3>
         <p>A list of terms with their associated descriptions.</p>
@@ -385,12 +401,12 @@ title: CSS
             <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
           </dl>
         </div>
-<pre class="prettyprint linenums">
-&lt;dl&gt;
-  &lt;dt&gt;...&lt;/dt&gt;
-  &lt;dd&gt;...&lt;/dd&gt;
-&lt;/dl&gt;
-</pre>
+{% highlight html linenos %}
+<dl>
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+{% endhighlight %}
 
         <h4>Horizontal description</h4>
         <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
@@ -407,12 +423,13 @@ title: CSS
             <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
           </dl>
         </div>
-<pre class="prettyprint linenums">
-&lt;dl class="dl-horizontal"&gt;
-  &lt;dt&gt;...&lt;/dt&gt;
-  &lt;dd&gt;...&lt;/dd&gt;
-&lt;/dl&gt;
-</pre>
+{% highlight html linenos %}
+<dl class="dl-horizontal">
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+{% endhighlight %}
+
         <h5>Auto-truncating</h5>
         <p>
           Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.

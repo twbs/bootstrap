@@ -214,7 +214,8 @@ section > ul li {
 }
 
 /* Tweak display of the examples */
-.bs-docs-example + .prettyprint {
+.bs-docs-example + .prettyprint,
+.bs-docs-example + .highlight {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -486,9 +487,12 @@ input.focused {
 }
 
 .highlight {
+  padding: 9px 14px;
   margin-bottom: 14px;
-  padding: 14px;
-  border-radius: 5px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+  box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
 }
 .highlight pre {
   padding: 0;
@@ -497,7 +501,16 @@ input.focused {
   border: 0;
 }
 .highlight pre code {
-  color: #ccc;
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
+}
+.highlight pre .lineno {
+  display: inline-block;
+  width: 18px;
+  padding-right: 5px;
+  margin-right: 10px;
+  text-align: right;
+  color: #bebec5;
 }
 
 
