@@ -475,12 +475,13 @@ title: CSS
 
           <h3>Basic grid HTML</h3>
           <p>For a simple two column layout, create a <code>.row</code> and add the appropriate number of <code>.span*</code> columns. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent).</p>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span4"&gt;...&lt;/div&gt;
-  &lt;div class="span8"&gt;...&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="row">
+  <div class="span8">8</div>
+  <div class="span4">4</div>
+</div>
+{% endhighlight %}
+
           <p>Given this example, we have <code>.span4</code> and <code>.span8</code>, making for 12 total columns and a complete row.</p>
 
           <h2>Offsetting columns</h2>
@@ -498,12 +499,12 @@ title: CSS
               <div class="span6 offset6">6 offset 6</div>
             </div><!-- /row -->
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span4"&gt;...&lt;/div&gt;
-  &lt;div class="span4 offset4"&gt;...&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="row">
+  <div class="span4">...</div>
+  <div class="span4 offset4">...</div>
+</div>
+{% endhighlight %}
 
 
           <h2>Nesting columns</h2>
@@ -521,17 +522,22 @@ title: CSS
               </div>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span9"&gt;
+{% highlight html linenos %}
+<div class="row">
+  <div class="span9">
     Level 1: 9 columns
-    &lt;div class="row"&gt;
-      &lt;div class="span6"&gt;Level 2: 6 columns&lt;/div&gt;
-      &lt;div class="span6"&gt;Level 2: 6 columns&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+    <div class="row">
+      <div class="span6">
+        Level 2: 6 columns
+      </div>
+      <div class="span6">
+        Level 2: 6 columns
+      </div>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
         </section>
 
 

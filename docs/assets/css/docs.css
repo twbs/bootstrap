@@ -198,6 +198,8 @@ section > ul li {
   padding: 39px 14px 14px;
   margin-bottom: -1px;
   border: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 /* Echo out a label for the example */
 .bs-docs-example:after {
@@ -211,6 +213,8 @@ section > ul li {
   color: #9da0a4;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 /* Tweak display of the examples */
