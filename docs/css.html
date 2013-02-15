@@ -556,20 +556,19 @@ title: CSS
 <div class="bs-docs-example">
   For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </div>
-<pre class="prettyprint linenums">
-For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped as inline.
-</pre>
+{% highlight html linenos %}
+For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+{% endhighlight %}
 
           <h2>Basic block</h2>
           <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
 <div class="bs-docs-example">
   <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
 </div>
-<pre class="prettyprint linenums" style="margin-bottom: 9px;">
-&lt;pre&gt;
-  &amp;lt;p&amp;gt;Sample text here...&amp;lt;/p&amp;gt;
-&lt;/pre&gt;
-</pre>
+{% highlight html linenos %}
+<pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+{% endhighlight %}
+
           <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
         </section>
 
@@ -583,7 +582,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           </div>
 
           <h2>Default styles</h2>
-          <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>
+          <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>. It may seem super redundant, but given the widespread use of tables for other plugins like calendars and date pickers, we've opted to isolate our custom table styles.</p>
           <div class="bs-docs-example">
             <table class="table">
               <thead>
@@ -616,11 +615,11 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </tbody>
             </table>
           </div><!-- /example -->
-<pre class="prettyprint linenums">
-&lt;table class="table"&gt;
-  …
-&lt;/table&gt;
-</pre>
+{% highlight html linenos %}
+<table class="table">
+  ...
+</table>
+{% endhighlight %}
 
 
           <h2>Optional classes</h2>
@@ -660,11 +659,11 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </tbody>
             </table>
           </div><!-- /example -->
-<pre class="prettyprint linenums" style="margin-bottom: 18px;">
-&lt;table class="table table-striped"&gt;
-  …
-&lt;/table&gt;
-</pre>
+{% highlight html linenos %}
+<table class="table table-striped">
+  ...
+</table>
+{% endhighlight %}
 
           <h3><code>.table-bordered</code></h3>
           <p>Add borders and rounded corners to the table.</p>
@@ -704,11 +703,11 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </tbody>
             </table>
           </div><!-- /example -->
-<pre class="prettyprint linenums">
-&lt;table class="table table-bordered"&gt;
-  …
-&lt;/table&gt;
-</pre>
+{% highlight html linenos %}
+<table class="table table-bordered">
+  ...
+</table>
+{% endhighlight %}
 
           <h3><code>.table-hover</code></h3>
           <p>Enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
@@ -743,11 +742,12 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </tbody>
             </table>
           </div><!-- /example -->
-<pre class="prettyprint linenums" style="margin-bottom: 18px;">
-&lt;table class="table table-hover"&gt;
-  …
-&lt;/table&gt;
-</pre>
+{% highlight html linenos %}
+<table class="table table-hover">
+  ...
+</table>
+{% endhighlight %}
+
 
           <h3><code>.table-condensed</code></h3>
           <p>Makes tables more compact by cutting cell padding in half.</p>
@@ -782,11 +782,12 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </tbody>
             </table>
           </div><!-- /example -->
-<pre class="prettyprint linenums" style="margin-bottom: 18px;">
-&lt;table class="table table-condensed"&gt;
-  …
-&lt;/table&gt;
-</pre>
+{% highlight html linenos %}
+<table class="table table-condensed">
+  ...
+</table>
+{% endhighlight %}
+
 
 
           <h2>Optional row classes</h2>
@@ -858,25 +859,20 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
                   <td>03/04/2012</td>
                   <td>Pending</td>
                 </tr>
-                <tr class="info">
-                  <td>4</td>
-                  <td>TB - Monthly</td>
-                  <td>04/04/2012</td>
-                  <td>Call in to confirm</td>
-                </tr>
               </tbody>
             </table>
           </div><!-- /example -->
-<pre class="prettyprint linenums">
+{% highlight html linenos %}
 ...
-  &lt;tr class="success"&gt;
-    &lt;td&gt;1&lt;/td&gt;
-    &lt;td&gt;TB - Monthly&lt;/td&gt;
-    &lt;td&gt;01/04/2012&lt;/td&gt;
-    &lt;td&gt;Approved&lt;/td&gt;
-  &lt;/tr&gt;
+<tr class="sucess">
+  <td>1</td>
+  <td>TB - Monthly</td>
+  <td>01/04/2012</td>
+  <td>Approved</td>
+</tr>
 ...
-</pre>
+{% endhighlight %}
+
 
 
           <h2>Supported table markup</h2>
@@ -951,23 +947,25 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </tr>
             </tbody>
           </table>
-<pre class="prettyprint linenums">
-&lt;table&gt;
-  &lt;caption&gt;...&lt;/caption&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;...&lt;/th&gt;
-      &lt;th&gt;...&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;...&lt;/td&gt;
-      &lt;td&gt;...&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</pre>
+{% highlight html linenos %}
+<table>
+  <caption>...</caption>
+  <thead>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+{% endhighlight %}
 
         </section>
 
@@ -996,22 +994,22 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <button type="submit" class="btn">Submit</button>
             </fieldset>
           </form><!-- /example -->
-<pre class="prettyprint linenums">
-&lt;form&gt;
-  &lt;fieldset&gt;
-    &lt;legend&gt;Legend&lt;/legend&gt;
-    &lt;label&gt;Label name&lt;/label&gt;
-    &lt;input type="text" placeholder="Type something…"&gt;
-    &lt;span class="help-block"&gt;Example block-level help text here.&lt;/span&gt;
-    &lt;div class="checkbox"&gt;
-      &lt;label&gt;
-        &lt;input type="checkbox"&gt; Check me out
-      &lt;/label&gt;
-    &lt;/div&gt;
-    &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
+{% highlight html linenos %}
+<form>
+  <fieldset>
+    <legend>Legend</legend>
+    <label>Label name</label>
+    <input type="text" placeholder="Type something…">
+    <p class="help-block">Example block-level help text here.</p>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Check me out
+      </label>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+  </fieldset>
+</form>
+{% endhighlight %}
 
 
           <h2 id="forms-layouts">Optional layouts</h2>
@@ -1029,18 +1027,18 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
             </div>
             <button type="submit" class="btn">Sign in</button>
           </form><!-- /example -->
-<pre class="prettyprint linenums">
-&lt;form class="form-inline"&gt;
-  &lt;input type="text" class="span3" placeholder="Email"&gt;
-  &lt;input type="password" class="span3" placeholder="Password"&gt;
-    &lt;div class="checkbox"&gt;
-      &lt;label&gt;
-        &lt;input type="checkbox"&gt; Remember me
-      &lt;/label&gt;
-    &lt;/div&gt;
-  &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
-&lt;/form&gt;
-</pre>
+{% highlight html linenos %}
+<form class="form-inline">
+  <input type="text" class="span3" placeholder="Email">
+  <input type="password" class="span3" placeholder="Password">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+  </div>
+  <button type="submit" class="btn">Sign in</button>
+</form>
+{% endhighlight %}
 
           <h3>Horizontal form</h3>
           <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
@@ -1074,32 +1072,32 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </div>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;form class="form-horizontal"&gt;
-  &lt;div class="control-group"&gt;
-    &lt;label class="control-label" for="inputEmail"&gt;Email&lt;/label&gt;
-    &lt;div class="controls"&gt;
-      &lt;input type="text" id="inputEmail" placeholder="Email"&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="control-group"&gt;
-    &lt;label class="control-label" for="inputPassword"&gt;Password&lt;/label&gt;
-    &lt;div class="controls"&gt;
-      &lt;input type="password" id="inputPassword" placeholder="Password"&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="control-group"&gt;
-    &lt;div class="controls"&gt;
-      &lt;div class="checkbox"&gt;
-        &lt;label&gt;
-          &lt;input type="checkbox"&gt; Remember me
-        &lt;/label&gt;
-      &lt;/div&gt;
-      &lt;button type="submit" class="btn"&gt;Sign in&lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
-</pre>
+{% highlight html linenos %}
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+      <input type="text" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" placeholder="Password">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Sign in</button>
+    </div>
+  </div>
+</form>
+{% endhighlight %}
 
 
           <h2 id="forms-controls">Supported form controls</h2>
@@ -1111,18 +1109,18 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <form class="bs-docs-example form-inline">
             <input type="text" placeholder="Text input">
           </form>
-<pre class="prettyprint linenums">
-&lt;input type="text" placeholder="Text input"&gt;
-</pre>
+{% highlight html linenos %}
+<input type="text" placeholder="Text input">
+{% endhighlight %}
 
           <h3>Textarea</h3>
           <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
           <form class="bs-docs-example form-inline">
             <textarea rows="3"></textarea>
           </form>
-<pre class="prettyprint linenums">
-&lt;textarea rows="3"&gt;&lt;/textarea&gt;
-</pre>
+{% highlight html linenos %}
+<textarea rows="3"></textarea>
+{% endhighlight %}
 
           <h3>Checkboxes and radios</h3>
           <p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
@@ -1148,27 +1146,21 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </label>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="checkbox"&gt;
-  &lt;label&gt;
-    &lt;input type="checkbox" value=""&gt;
+{% highlight html linenos %}
+<div class="checkbox">
+  <label>
+    <input type="checkbox" value="">
     Option one is this and that&mdash;be sure to include why it's great
-  &lt;/label&gt;
-&lt;/div&gt;
+  </label>
+</div>
 
-&lt;div class="radio"&gt;
-  &lt;label&gt;
-    &lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked&gt;
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
-  &lt;/label&gt;
-&lt;/div&gt;
-&lt;div class="radio"&gt;
-  &lt;label&gt;
-    &lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"&gt;
-    Option two can be something else and selecting it will deselect option one
-  &lt;/label&gt;
-&lt;/div&gt;
-</pre>
+  </label>
+</div>
+{% endhighlight %}
 
           <h4>Inline checkboxes</h4>
           <p>Use <code>.checkbox-inline</code> or <code>.radio-inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
@@ -1183,17 +1175,17 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
             </label>
           </form>
-<pre class="prettyprint linenums">
-&lt;label class="checkbox-inline"&gt;
-  &lt;input type="checkbox" id="inlineCheckbox1" value="option1"&gt; 1
-&lt;/label&gt;
-&lt;label class="checkbox-inline"&gt;
-  &lt;input type="checkbox" id="inlineCheckbox2" value="option2"&gt; 2
-&lt;/label&gt;
-&lt;label class="checkbox-inline"&gt;
-  &lt;input type="checkbox" id="inlineCheckbox3" value="option3"&gt; 3
-&lt;/label&gt;
-</pre>
+{% highlight html linenos %}
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+</label>
+{% endhighlight %}
 
           <h3>Selects</h3>
           <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
@@ -1214,23 +1206,23 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <option>5</option>
             </select>
           </form>
-<pre class="prettyprint linenums">
-&lt;select&gt;
-  &lt;option&gt;1&lt;/option&gt;
-  &lt;option&gt;2&lt;/option&gt;
-  &lt;option&gt;3&lt;/option&gt;
-  &lt;option&gt;4&lt;/option&gt;
-  &lt;option&gt;5&lt;/option&gt;
-&lt;/select&gt;
+{% highlight html linenos %}
+<select>
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
 
-&lt;select multiple="multiple"&gt;
-  &lt;option&gt;1&lt;/option&gt;
-  &lt;option&gt;2&lt;/option&gt;
-  &lt;option&gt;3&lt;/option&gt;
-  &lt;option&gt;4&lt;/option&gt;
-  &lt;option&gt;5&lt;/option&gt;
-&lt;/select&gt;
-</pre>
+<select multiple="multiple">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+{% endhighlight %}
 
 
 
@@ -1242,9 +1234,9 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <form class="bs-docs-example form-inline">
             <input class="focused" id="focusedInput" type="text" value="This is focused...">
           </form>
-<pre class="prettyprint linenums">
-&lt;input id="focusedInput" type="text" value="This is focused..."&gt;
-</pre>
+{% highlight html linenos %}
+<input id="focusedInput" type="text" value="This is focused...">
+{% endhighlight %}
 
           <h3 id="forms-invalid-inputs">Invalid inputs</h3>
           <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
@@ -1252,18 +1244,18 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <form class="bs-docs-example form-inline">
             <input class="span3" type="email" placeholder="test@example.com" required>
           </form>
-<pre class="prettyprint linenums">
-&lt;input class="span3" type="email" required&gt;
-</pre>
+{% highlight html linenos %}
+<input class="span3" type="email" placeholder="test@example.com" required>
+{% endhighlight %}
 
           <h3 id="forms-disabled-inputs">Disabled inputs</h3>
           <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
           <form class="bs-docs-example form-inline">
             <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
           </form>
-<pre class="prettyprint linenums">
-&lt;input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here..." disabled&gt;
-</pre>
+{% highlight html linenos %}
+<input id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+{% endhighlight %}
 
           <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
           <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once. Link buttons (with the <code>&lt;a&gt;</code> element) will be aesthetically disabled, but you will need custom JavaScript to disable their behavior.</p>
@@ -1285,22 +1277,26 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <button type="submit" class="btn btn-primary">Submit</button>
             </fieldset>
           </form>
-<pre class="prettyprint linenums">
-&lt;form class="form-inline"&gt;
-  &lt;fieldset disabled&gt;
-    &lt;input type="text" class="span4" placeholder="Disabled input"&gt;
-    &lt;select class="span4"&gt;
-      &lt;option&gt;Disabled select&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;div class="checkbox"&gt;
-      &lt;label&gt;
-        &lt;input type="checkbox"&gt; Can't check this
-      &lt;/label&gt;
-    &lt;/div&gt;
-    &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
+{% highlight html linenos %}
+<form class="form-inline">
+  <fieldset disabled>
+    <div>
+      <input type="text" class="span4" placeholder="Disabled input">
+    </div>
+    <div>
+      <select class="span4">
+        <option>Disabled select</option>
+      </select>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Can't check this
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+{% endhighlight %}
 
           <h3 id="forms-validation">Validation states</h3>
           <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use:</p>
@@ -1330,26 +1326,26 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </div>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="control-group has-warning"&gt;
-  &lt;label class="control-label" for="inputWarning"&gt;Input with warning&lt;/label&gt;
-  &lt;div class="controls"&gt;
-    &lt;input type="text" class="input-with-feedback" id="inputWarning"&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="control-group has-error"&gt;
-  &lt;label class="control-label" for="inputError"&gt;Input with error&lt;/label&gt;
-  &lt;div class="controls"&gt;
-    &lt;input type="text" class="input-with-feedback" id="inputError"&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="control-group has-success"&gt;
-  &lt;label class="control-label" for="inputSuccess"&gt;Input with success&lt;/label&gt;
-  &lt;div class="controls"&gt;
-    &lt;input type="text" class="input-with-feedback id="inputSuccess""&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="control-group has-warning">
+  <label class="control-label" for="inputWarning">Input with warning</label>
+  <div class="controls">
+    <input type="text" class="input-with-feedback" id="inputWarning">
+  </div>
+</div>
+<div class="control-group has-error">
+  <label class="control-label" for="inputError">Input with error</label>
+  <div class="controls">
+    <input type="text" class="input-with-feedback" id="inputError">
+  </div>
+</div>
+<div class="control-group has-success">
+  <label class="control-label" for="inputSuccess">Input with success</label>
+  <div class="controls">
+    <input type="text" class="input-with-feedback" id="inputSuccess">
+  </div>
+</div>
+{% endhighlight %}
 
 
 
@@ -1376,23 +1372,23 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <span class="input-group-addon">.00</span>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-group span9"&gt;
-  &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
-  &lt;input type="text" placeholder="Username"&gt;
-&lt;/div&gt;
+{% highlight html linenos %}
+<div class="input-group span9">
+  <span class="input-group-addon">@</span>
+  <input type="text" placeholder="Username">
+</div>
 
-&lt;div class="input-group span6"&gt;
-  &lt;input type="text"&gt;
-  &lt;span class="input-group-addon"&gt;.00&lt;/span&gt;
-&lt;/div&gt;
+<div class="input-group span6">
+  <input type="text">
+  <span class="input-group-addon">.00</span>
+</div>
 
-&lt;div class="input-group span3"&gt;
-  &lt;span class="input-group-addon"&gt;$&lt;/span&gt;
-  &lt;input type="text"&gt;
-  &lt;span class="input-group-addon"&gt;.00&lt;/span&gt;
-&lt;/div&gt;
-</pre>
+<div class="input-group span3">
+  <span class="input-group-addon">$</span>
+  <input type="text">
+  <span class="input-group-addon">.00</span>
+</div>
+{% endhighlight %}
 
           <h4>Optional sizes</h4>
           <p>Add the relative form sizing classes to the `.input-group-addon`.</p>
@@ -1412,20 +1408,22 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <input type="text" class="input-small" placeholder="Username">
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-group span9"&gt;
-  &lt;span class="input-group-addon input-large"&gt;@&lt;/span&gt;
-  &lt;input type="text" class="input-large" placeholder="Username"&gt;
-&lt;/div&gt;
-&lt;div class="input-group span9"&gt;
-  &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
-  &lt;input type="text" placeholder="Username"&gt;
-&lt;/div&gt;
-&lt;div class="input-group span9"&gt;
-  &lt;span class="input-group-addon input-small"&gt;@&lt;/span&gt;
-  &lt;input type="text" class="input-small" placeholder="Username"&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="input-group span9">
+  <span class="input-group-addon input-large">@</span>
+  <input type="text" class="input-large" placeholder="Username">
+</div>
+
+<div class="input-group span9">
+  <span class="input-group-addon">@</span>
+  <input type="text" placeholder="Username">
+</div>
+
+<div class="input-group span9">
+  <span class="input-group-addon input-small">@</span>
+  <input type="text" class="input-small" placeholder="Username">
+</div>
+{% endhighlight %}
 
           <h4>Buttons instead of text</h4>
           <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
@@ -1444,21 +1442,21 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </span>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-group span7"&gt;
-  &lt;span class="input-group-btn"&gt;
-    &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
-  &lt;/span&gt;
-  &lt;input type="text"&gt;
-&lt;/div&gt;
+{% highlight html linenos %}
+<div class="input-group span7">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+  <input type="text">
+</div>
 
-&lt;div class="input-group span7"&gt;
-  &lt;input type="text"&gt;
-  &lt;span class="input-group-btn"&gt;
-    &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
-  &lt;/span&gt;
-&lt;/div&gt;
-</pre>
+<div class="input-group span7">
+  <input type="text">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+{% endhighlight %}
 
           <h4>Button dropdowns</h4>
           <p></p>
@@ -1491,33 +1489,35 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </div><!-- /btn-group -->
             </div><!-- /input-group -->
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-group span7"&gt;
-  &lt;div class="input-group-btn btn-group"&gt;
-    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
-      &lt;span class="caret"&gt;&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/div&gt;
-  &lt;input type="text"&gt;
-&lt;/div&gt;
+{% highlight html linenos %}
+<div class="input-group span7">
+  <div class="input-group-btn btn-group">
+    <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div><!-- /btn-group -->
+  <input type="text">
+</div><!-- /input-group -->
 
-&lt;div class="input-group span7"&gt;
-  &lt;input type="text"&gt;
-  &lt;div class="input-group-btn btn-group"&gt;
-    &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-      Action
-      &lt;span class="caret"&gt;&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+<div class="input-group span7">
+  <input type="text">
+  <div class="input-group-btn btn-group">
+    <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div><!-- /btn-group -->
+</div><!-- /input-group -->
+{% endhighlight %}
 
           <h4>Segmented dropdown groups</h4>
           <form class="bs-docs-example">
@@ -1535,7 +1535,7 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
                   <li><a href="#">Separated link</a></li>
                 </ul>
               </div>
-              <input type="text" class="span3">
+              <input type="text">
             </div>
 
             <br>
@@ -1557,16 +1557,21 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </div>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="input-prepend"&gt;
-  &lt;div class="btn-group"&gt;...&lt;/div&gt;
-  &lt;input type="text" class="span3"&gt;
-&lt;/div&gt;
-&lt;div class="input-append"&gt;
-  &lt;input type="text" class="span3"&gt;
-  &lt;div class="btn-group"&gt;...&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="input-group span7">
+  <div class="input-group-btn btn-group">
+    <!-- Button and dropdown menu -->
+  </div>
+  <input type="text">
+</div>
+
+<div class="input-group span7">
+  <input type="text">
+  <div class="input-group-btn btn-group">
+    <!-- Button and dropdown menu -->
+  </div>
+</div>
+{% endhighlight %}
 
           <h3 id="forms-extending-sizes">Control sizing</h3>
           <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
@@ -1580,11 +1585,11 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <input class="input-small" type="text" placeholder=".input-small">
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;input class="input-large" type="text" placeholder=".input-large"&gt;
-&lt;input type="text" placeholder="Default input"&gt;
-&lt;input class="input-small" type="text" placeholder=".input-small"&gt;
-</pre>
+{% highlight html linenos %}
+<input class="input-large" type="text" placeholder=".input-large">
+<input type="text" placeholder="Default input">
+<input class="input-small" type="text" placeholder=".input-small">
+{% endhighlight %}
 
           <h4>Column sizing</h4>
           <p>Use <code>.span1</code> to <code>.span12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
@@ -1616,20 +1621,21 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </select>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;input class="span1" type="text" placeholder=".span1"&gt;
-&lt;input class="span2" type="text" placeholder=".span2"&gt;
-&lt;input class="span3" type="text" placeholder=".span3"&gt;
-&lt;select class="span1"&gt;
+{% highlight html linenos %}
+<input class="span1" type="text" placeholder=".span1">
+<input class="span2" type="text" placeholder=".span2">
+<input class="span3" type="text" placeholder=".span3">
+<select class="span1">
   ...
-&lt;/select&gt;
-&lt;select class="span2"&gt;
+</select>
+<select class="span2">
   ...
-&lt;/select&gt;
-&lt;select class="span3"&gt;
+</select>
+<select class="span3">
   ...
-&lt;/select&gt;
-</pre>
+</select>
+{% endhighlight %}
+
           <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.span*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
           <form class="bs-docs-example" style="padding-bottom: 15px;">
             <div class="row">
@@ -1644,28 +1650,28 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               </div>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span4"&gt;
-    &lt;input type="text" placeholder=".span4"&gt;
-  &lt;/div&gt;
-  &lt;div class="span4"&gt;
-    &lt;input type="text" placeholder=".span4"&gt;
-  &lt;/div&gt;
-  &lt;div class="span4"&gt;
-    &lt;input type="text" placeholder=".span4"&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="row">
+  <div class="span4">
+    <input type="text" placeholder=".span4">
+  </div>
+  <div class="span4">
+    <input type="text" placeholder=".span4">
+  </div>
+  <div class="span4">
+    <input type="text" placeholder=".span4">
+  </div>
+</div>
+{% endhighlight %}
 
           <h3>Uneditable inputs</h3>
           <p>Present data in a form that's not editable without using actual form markup.</p>
           <form class="bs-docs-example">
             <span class="input-xlarge uneditable-input">Some value here</span>
           </form>
-<pre class="prettyprint linenums">
-&lt;span class="input-xlarge uneditable-input"&gt;Some value here&lt;/span&gt;
-</pre>
+{% highlight html linenos %}
+<span class="uneditable-input">Some value here</span>
+{% endhighlight %}
 
           <h3>Form actions</h3>
           <p>End a form with a group of actions (buttons). When placed within a <code>.form-horizontal</code>, the buttons will automatically indent to line up with the form controls.</p>
@@ -1675,12 +1681,12 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <button type="button" class="btn">Cancel</button>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="form-actions"&gt;
-  &lt;button type="submit" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
-  &lt;button type="button" class="btn"&gt;Cancel&lt;/button&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="form-actions">
+  <button type="submit" class="btn btn-primary">Save changes</button>
+  <button type="button" class="btn">Cancel</button>
+</div>
+{% endhighlight %}
 
           <h3>Help text</h3>
           <p>Inline and block level support for help text that appears around form controls.</p>
@@ -1688,18 +1694,20 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <form class="bs-docs-example form-inline">
             <input type="text"> <span class="help-inline">Inline help text</span>
           </form>
-<pre class="prettyprint linenums">
-&lt;input type="text"&gt;&lt;span class="help-inline"&gt;Inline help text&lt;/span&gt;
-</pre>
+{% highlight html linenos %}
+<input type="text">
+<span class="help-inline">Inline help text</span>
+{% endhighlight %}
 
           <h4>Block help</h4>
           <form class="bs-docs-example form-inline">
             <input type="text">
             <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
           </form>
-<pre class="prettyprint linenums">
-&lt;input type="text"&gt;&lt;span class="help-block"&gt;A longer block of help text that breaks onto a new line and may extend beyond one line.&lt;/span&gt;
-</pre>
+{% highlight html linenos %}
+<input type="text">
+<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+{% endhighlight %}
 
         </section>
 
@@ -1785,24 +1793,25 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <button type="button" class="btn btn-mini">Mini button</button>
             </p>
           </div>
-<pre class="prettyprint linenums">
-&lt;p&gt;
-  &lt;button class="btn btn-large btn-primary" type="button"&gt;Large button&lt;/button&gt;
-  &lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
-&lt;/p&gt;
-&lt;p&gt;
-  &lt;button class="btn btn-primary" type="button"&gt;Default button&lt;/button&gt;
-  &lt;button class="btn" type="button"&gt;Default button&lt;/button&gt;
-&lt;/p&gt;
-&lt;p&gt;
-  &lt;button class="btn btn-small btn-primary" type="button"&gt;Small button&lt;/button&gt;
-  &lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
-&lt;/p&gt;
-&lt;p&gt;
-  &lt;button class="btn btn-mini btn-primary" type="button"&gt;Mini button&lt;/button&gt;
-  &lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
-&lt;/p&gt;
-</pre>
+{% highlight html linenos %}
+<p>
+  <button type="button" class="btn btn-large btn-primary">Large button</button>
+  <button type="button" class="btn btn-large">Large button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary">Default button</button>
+  <button type="button" class="btn">Default button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-small btn-primary">Small button</button>
+  <button type="button" class="btn btn-small">Small button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-mini btn-primary">Mini button</button>
+  <button type="button" class="btn btn-mini">Mini button</button>
+</p>
+{% endhighlight %}
+
           <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
           <div class="bs-docs-example">
             <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
@@ -1810,14 +1819,25 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <button type="button" class="btn btn-large btn-block">Block level button</button>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;button class="btn btn-large btn-block btn-primary" type="button"&gt;Block level button&lt;/button&gt;
-&lt;button class="btn btn-large btn-block" type="button"&gt;Block level button&lt;/button&gt;
-</pre>
+{% highlight html linenos %}
+<button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
+<button type="button" class="btn btn-large btn-block">Block level button</button>
+{% endhighlight %}
 
 
           <h2>Disabled state</h2>
           <p>Make buttons look unclickable by fading them back 50%.</p>
+
+          <h3>Button element</h3>
+          <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+          <p class="bs-docs-example">
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+            <button type="button" class="btn btn-large" disabled="disabled">Button</button>
+          </p>
+{% highlight html linenos %}
+<button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+<button type="button" class="btn btn-large" disabled="disabled">Button</button>
+{% endhighlight %}
 
           <h3>Anchor element</h3>
           <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
@@ -1825,24 +1845,13 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
             <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
             <a href="#" class="btn btn-large disabled">Link</a>
           </p>
-<pre class="prettyprint linenums">
-&lt;a href="#" class="btn btn-large btn-primary disabled"&gt;Primary link&lt;/a&gt;
-&lt;a href="#" class="btn btn-large disabled"&gt;Link&lt;/a&gt;
-</pre>
+{% highlight html linenos %}
+<a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+<a href="#" class="btn btn-large disabled">Link</a>
+{% endhighlight %}
           <p>
             We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
           </p>
-
-          <h3>Button element</h3>
-          <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
-          <p class="bs-docs-example">
-            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
-            <button type="button" class="btn btn-large" disabled>Button</button>
-          </p>
-<pre class="prettyprint linenums">
-&lt;button type="button" class="btn btn-large btn-primary disabled" disabled="disabled"&gt;Primary button&lt;/button&gt;
-&lt;button type="button" class="btn btn-large" disabled&gt;Button&lt;/button&gt;
-</pre>
 
 
           <h2>One class, multiple tags</h2>
@@ -1853,13 +1862,13 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
             <input class="btn" type="button" value="Input">
             <input class="btn" type="submit" value="Submit">
           </form>
-<pre class="prettyprint linenums">
-&lt;a class="btn" href=""&gt;Link&lt;/a&gt;
-&lt;button class="btn" type="submit"&gt;Button&lt;/button&gt;
-&lt;input class="btn" type="button" value="Input"&gt;
-&lt;input class="btn" type="submit" value="Submit"&gt;
-</pre>
-          <p>As a best practice, try to match the element for your context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
+{% highlight html linenos %}
+<a class="btn" href="">Link</a>
+<button class="btn" type="submit">Button</button>
+<input class="btn" type="button" value="Input">
+<input class="btn" type="submit" value="Submit">
+{% endhighlight %}
+          <p>As a best practice, <strong>we highly recommend matching using the <code>&lt;button&lt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
 
         </section>
 
@@ -1878,11 +1887,11 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
             <img data-src="holder.js/140x140" class="img-circle">
             <img data-src="holder.js/140x140" class="img-thumbnail">
           </div>
-<pre class="prettyprint linenums">
-&lt;img src="..." class="img-rounded"&gt;
-&lt;img src="..." class="img-circle"&gt;
-&lt;img src="..." class="img-thumbnail"&gt;
-</pre>
+{% highlight html linenos %}
+<img src="..." class="img-rounded">
+<img src="..." class="img-circle">
+<img src="..." class="img-thumbnail">
+{% endhighlight %}
 
         </section>
 
@@ -2073,9 +2082,9 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
 
           <h2>How to use</h2>
           <p>Add the appropriate class to any inline element. All icon classes are prefixed with <code>glyphicon-</code> for easy styling. To use, place the following code just about anywhere:</p>
-<pre class="prettyprint linenums">
-&lt;i class="glyphicon-search"&gt;&lt;/i&gt;
-</pre>
+{% highlight html linenos %}
+<span class="glyphicon-search"></span>
+{% endhighlight %}
           <p>Want to change the icon color? Just change the <code>color</code> of the parent element.</p>
           <p>When using beside strings of text, as in buttons or nav links, be sure to leave a space after the icon for proper spacing.</p>
 
@@ -2089,87 +2098,86 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
           <div class="bs-docs-example">
             <div class="btn-toolbar">
               <div class="btn-group">
-                <a class="btn" href="#"><i class="glyphicon-align-left"></i></a>
-                <a class="btn" href="#"><i class="glyphicon-align-center"></i></a>
-                <a class="btn" href="#"><i class="glyphicon-align-right"></i></a>
-                <a class="btn" href="#"><i class="glyphicon-align-justify"></i></a>
+                <a class="btn" href="#"><span class="glyphicon-align-left"></span></a>
+                <a class="btn" href="#"><span class="glyphicon-align-center"></span></a>
+                <a class="btn" href="#"><span class="glyphicon-align-right"></span></a>
+                <a class="btn" href="#"><span class="glyphicon-align-justify"></span></a>
               </div>
             </div>
           </div><!-- /bs-docs-example -->
-<pre class="prettyprint linenums">
-&lt;div class="btn-toolbar"&gt;
-  &lt;div class="btn-group"&gt;
-
-    &lt;a class="btn" href="#"&gt;&lt;i class="glyphicon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
-    &lt;a class="btn" href="#"&gt;&lt;i class="glyphicon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
-    &lt;a class="btn" href="#"&gt;&lt;i class="glyphicon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
-    &lt;a class="btn" href="#"&gt;&lt;i class="glyphicon-align-justify"&gt;&lt;/i&gt;&lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="btn-toolbar">
+  <div class="btn-group">
+    <a class="btn" href="#"><span class="glyphicon-align-left"></span></a>
+    <a class="btn" href="#"><span class="glyphicon-align-center"></span></a>
+    <a class="btn" href="#"><span class="glyphicon-align-right"></span></a>
+    <a class="btn" href="#"><span class="glyphicon-align-justify"></span></a>
+  </div>
+</div>
+{% endhighlight %}
 
           <h5>Dropdown in a button group</h5>
           <div class="bs-docs-example">
             <div class="btn-group">
-              <a class="btn btn-primary" href="#"><i class="glyphicon-user icon-white"></i> User</a>
+              <a class="btn btn-primary" href="#"><i class="glyphicon-user"></i> User</a>
               <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#"><i class="glyphicon-pencil"></i> Edit</a></li>
                 <li><a href="#"><i class="glyphicon-trash"></i> Delete</a></li>
                 <li><a href="#"><i class="glyphicon-ban-circle"></i> Ban</a></li>
                 <li class="divider"></li>
-                <li><a href="#"><i class="i"></i> Make admin</a></li>
+                <li><a href="#"><i class="glyphicon-"></i> Make admin</a></li>
               </ul>
             </div>
           </div><!-- /bs-docs-example -->
-<pre class="prettyprint linenums">
-&lt;div class="btn-group"&gt;
-  &lt;a class="btn btn-primary" href="#"&gt;&lt;i class="glyphicon-user icon-white"&gt;&lt;/i&gt; User&lt;/a&gt;
-  &lt;a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
-  &lt;ul class="dropdown-menu"&gt;
-    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="glyphicon-pencil"&gt;&lt;/i&gt; Edit&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="glyphicon-trash"&gt;&lt;/i&gt; Delete&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="glyphicon-ban-circle"&gt;&lt;/i&gt; Ban&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="divider"&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Make admin&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="btn-group">
+  <a class="btn btn-primary" href="#"><span class="glyphicon-user"></span> User</a>
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="#"><span class="glyphicon-pencil"></span> Edit</a></li>
+    <li><a href="#"><span class="glyphicon-trash"></span> Delete</a></li>
+    <li><a href="#"><span class="glyphicon-ban-circle"></span> Ban</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><span class="glyphicon-"></span> Make admin</a></li>
+  </ul>
+</div>
+{% endhighlight %}
 
           <h5>Large button</h5>
           <div class="bs-docs-example">
-            <a class="btn btn-large" href="#"><i class="glyphicon-star"></i> Star</a>
+            <a class="btn btn-large" href="#"><span class="glyphicon-star"></span> Star</a>
           </div><!-- /bs-docs-example -->
-<pre class="prettyprint linenums">
-&lt;a class="btn btn-large" href="#"&gt;&lt;i class="glyphicon-star"&gt;&lt;/i&gt; Star&lt;/a&gt;
-</pre>
+{% highlight html linenos %}
+<a class="btn btn-large" href="#"><span class="glyphicon-star"></span> Star</a>
+{% endhighlight %}
 
           <h5>Small button</h5>
           <div class="bs-docs-example">
-            <a class="btn btn-small" href="#"><i class="glyphicon-star"></i></a>
+            <a class="btn btn-small" href="#"><span class="glyphicon-star"></span></a>
           </div><!-- /bs-docs-example -->
-<pre class="prettyprint linenums">
-&lt;a class="btn btn-small" href="#"&gt;&lt;i class="glyphicon-star"&gt;&lt;/i&gt;&lt;/a&gt;
-</pre>
+{% highlight html linenos %}
+<a class="btn btn-small" href="#"><span class="glyphicon-star"></span></a>
+{% endhighlight %}
 
 
           <h4>Navigation</h4>
           <div class="bs-docs-example">
             <ul class="nav nav-list">
-              <li class="active"><a href="#"><i class="glyphicon-home icon-white"></i> Home</a></li>
-              <li><a href="#"><i class="glyphicon-book"></i> Library</a></li>
-              <li><a href="#"><i class="glyphicon-pencil"></i> Applications</a></li>
-              <li><a href="#"><i class="i"></i> Misc</a></li>
+              <li class="active"><a href="#"><span class="glyphicon-home"></span> Home</a></li>
+              <li><a href="#"><span class="glyphicon-book"></span> Library</a></li>
+              <li><a href="#"><span class="glyphicon-pencil"></span> Applications</a></li>
+              <li><a href="#"><span class="glyphicon-"></span> Misc</a></li>
             </ul>
           </div><!-- /bs-docs-example -->
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-list"&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;i class="glyphicon-home icon-white"&gt;&lt;/i&gt; Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="glyphicon-book"&gt;&lt;/i&gt; Library&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="glyphicon-pencil"&gt;&lt;/i&gt; Applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;&lt;i class="i"&gt;&lt;/i&gt; Misc&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="nav nav-list">
+  <li class="active"><a href="#"><span class="glyphicon-home"></span> Home</a></li>
+  <li><a href="#"><span class="glyphicon-book"></span> Library</a></li>
+  <li><a href="#"><span class="glyphicon-pencil"></span> Applications</a></li>
+  <li><a href="#"><span class="glyphicon-"></span> Misc</a></li>
+</ul>
+{% endhighlight %}
 
           <h4>Form fields</h4>
           <form class="bs-docs-example form-horizontal">
@@ -2177,23 +2185,23 @@ For example, &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; should be wrapped 
               <label class="control-label" for="inputIcon">Email address</label>
               <div class="controls">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon-envelope"></i></span>
+                  <span class="input-group-addon"><span class="glyphicon-envelope"></span></span>
                   <input class="span2" id="inputIcon" type="text">
                 </div>
               </div>
             </div>
           </form>
-<pre class="prettyprint linenums">
-&lt;div class="control-group"&gt;
-  &lt;label class="control-label" for="inputIcon"&gt;Email address&lt;/label&gt;
-  &lt;div class="controls"&gt;
-    &lt;div class="input-group"&gt;
-      &lt;span class="input-group-addon"&gt;&lt;i class="glyphicon-envelope"&gt;&lt;/i&gt;&lt;/span&gt;
-      &lt;input class="span2" id="inputIcon" type="text"&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="control-group">
+  <label class="control-label" for="inputIcon">Email address</label>
+  <div class="controls">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon-envelope"></span></span>
+      <input class="span2" id="inputIcon" type="text">
+    </div>
+  </div>
+</div>
+{% endhighlight %}
 
         </section>
 
