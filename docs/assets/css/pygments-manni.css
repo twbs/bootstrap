@@ -6,8 +6,8 @@
 .o { color: #555555 } /* Operator */
 .cm { color: #0099FF; font-style: italic } /* Comment.Multiline */
 .cp { color: #009999 } /* Comment.Preproc */
-.c1 { color: #0099FF; font-style: italic } /* Comment.Single */
-.cs { color: #0099FF;; font-style: italic } /* Comment.Special */
+.c1 { color: #999; } /* Comment.Single */
+.cs { color: #999; } /* Comment.Special */
 .gd { background-color: #FFCCCC; border: 1px solid #CC0000 } /* Generic.Deleted */
 .ge { font-style: italic } /* Generic.Emph */
 .gr { color: #FF0000 } /* Generic.Error */
