@@ -1,8 +1,13 @@
+# Dependencies
 markdown:     rdiscount
-permalink:    pretty
 pygments:     true
+
+# Permalinks
+permalink:    pretty
+
+# Server
+auto:         true
 source:       ./docs
 destination:  ./_gh_pages
-auto:         true
-server_port:  9001
 url:          http://bootstrap.dev:9001
+server_port:  9001
