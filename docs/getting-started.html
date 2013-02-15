@@ -1,70 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Getting · Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Documentation extras -->
-    <link href="assets/css/docs.css" rel="stylesheet">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
-
-  </head>
-
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="./index.html">Bootstrap</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li class="">
-              <a href="./index.html">Home</a>
-            </li>
-            <li class="active">
-              <a href="./getting-started.html">Get started</a>
-            </li>
-            <li class="">
-              <a href="./css.html">CSS</a>
-            </li>
-            <li class="">
-              <a href="./components.html">Components</a>
-            </li>
-            <li class="">
-              <a href="./javascript.html">JavaScript</a>
-            </li>
-            <li class="">
-              <a href="./customize.html">Customize</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+---
+layout: default
+title: Getting started
+description: Overview of the project, its contents, and how to get started with a simple template.
+---
 
 <!-- Subhead
 ================================================== -->
@@ -76,58 +14,59 @@
 </header>
 
 
-  <div class="container">
+<div class="container">
 
-    <!-- Docs nav
-    ================================================== -->
-    <div class="row">
-      <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#download-bootstrap"><i class="glyphicon-chevron-right"></i> Download</a></li>
-          <li><a href="#file-structure"><i class="glyphicon-chevron-right"></i> File structure</a></li>
-          <li><a href="#contents"><i class="glyphicon-chevron-right"></i> What's included</a></li>
-          <li><a href="#html-template"><i class="glyphicon-chevron-right"></i> HTML template</a></li>
-          <li><a href="#examples"><i class="glyphicon-chevron-right"></i> Examples</a></li>
-          <li><a href="#what-next"><i class="glyphicon-chevron-right"></i> What next?</a></li>
-        </ul>
-      </div>
-      <div class="span9">
+  <!-- Docs nav
+  ================================================== -->
+  <div class="row">
+    <div class="span3 bs-docs-sidebar">
+      <ul class="nav nav-list bs-docs-sidenav">
+        <li><a href="#download-bootstrap"><i class="glyphicon-chevron-right"></i> Download</a></li>
+        <li><a href="#file-structure"><i class="glyphicon-chevron-right"></i> File structure</a></li>
+        <li><a href="#contents"><i class="glyphicon-chevron-right"></i> What's included</a></li>
+        <li><a href="#html-template"><i class="glyphicon-chevron-right"></i> HTML template</a></li>
+        <li><a href="#examples"><i class="glyphicon-chevron-right"></i> Examples</a></li>
+        <li><a href="#what-next"><i class="glyphicon-chevron-right"></i> What next?</a></li>
+      </ul>
+    </div>
+    <div class="span9">
 
 
 
-        <!-- Download
-        ================================================== -->
-        <section id="download-bootstrap">
-          <div class="page-header">
-            <h1>1. Download</h1>
+      <!-- Download
+      ================================================== -->
+      <section id="download-bootstrap">
+        <div class="page-header">
+          <h1>1. Download</h1>
+        </div>
+        <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
+
+        <div class="row">
+          <div class="span6">
+            <h2>Download compiled</h2>
+            <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
+            <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);">Download Bootstrap</a></p>
           </div>
-          <p class="lead">Before downloading, be sure to have a code editor (we recommend <a href="http://sublimetext.com/2">Sublime Text 2</a>) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files.</p>
-
-          <div class="row">
-            <div class="span6">
-              <h2>Download compiled</h2>
-              <p><strong>Fastest way to get started:</strong> get the compiled and minified versions of our CSS, JS, and images. No docs or original source files.</p>
-              <p><a class="btn btn-large btn-primary" href="assets/bootstrap.zip" >Download Bootstrap</a></p>
-            </div>
-            <div class="span6">
-              <h2>Download source</h2>
-              <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
-              <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" >Download Bootstrap source</a></p>
-            </div>
+          <div class="span6">
+            <h2>Download source</h2>
+            <p>Get the original files for all CSS and JavaScript, along with a local copy of the docs by downloading the latest version directly from GitHub.</p>
+            <p><a class="btn btn-large" href="https://github.com/twitter/bootstrap/zipball/master" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download Bootstrap source</a></p>
           </div>
-        </section>
+        </div>
+      </section>
 
 
 
-        <!-- File structure
-        ================================================== -->
-        <section id="file-structure">
-          <div class="page-header">
-            <h1>2. File structure</h1>
-          </div>
-          <p class="lead">Within the download you'll find the following file structure and contents, logically grouping common assets and providing both compiled and minified variations.</p>
-          <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
-<pre class="prettyprint">
+      <!-- File structure
+      ================================================== -->
+      <section id="file-structure">
+        <div class="page-header">
+          <h1>2. File structure</h1>
+        </div>
+        <p class="lead">Within the download you'll find the following file structure and contents, logically grouping common assets and providing both compiled and minified variations.</p>
+        <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:</p>
+
+{% highlight bash %}
   bootstrap/
   ├── css/
   │   ├── bootstrap.css
@@ -141,240 +80,177 @@
       ├── glyphiconshalflings-regular.svg
       ├── glyphiconshalflings-regular.ttf
       └── glyphiconshalflings-regular.woff
-</pre>
-          <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
-          <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included.</p>
-        </section>
+{% endhighlight %}
+
+        <p>This is the most basic form of Bootstrap: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>bootstrap.*</code>), as well as compiled and minified CSS and JS (<code>bootstrap.min.*</code>). The image files are compressed using <a href="http://imageoptim.com/">ImageOptim</a>, a Mac app for compressing PNGs.</p>
+        <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included.</p>
+      </section>
 
 
 
-        <!-- Contents
-        ================================================== -->
-        <section id="contents">
-          <div class="page-header">
-            <h1>3. What's included</h1>
-          </div>
-          <p class="lead">Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
-
-          <h2>Docs sections</h2>
-          <p>In addition to the getting started documentation you're reading now, the Bootstrap docs are broken into a few key pages.</p>
-
-          <h4><a href="http://twitter.github.com/bootstrap/css.html">Core CSS</a></h4>
-          <p>Global styles for the body, Normalize, links, grid system, tables, forms, buttons, icons, and more.</p>
-          <h4><a href="http://twitter.github.com/bootstrap/components.html">Components</a></h4>
-          <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more. Head here to see what kind of custom components Bootstrap has to offer beyond basic HTML elements.</p>
-          <h4><a href="http://twitter.github.com/bootstrap/javascript.html">JavaScript plugins</a></h4>
-          <p>Similar to Components, these JavaScript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
-        </section>
-
-
-
-        <!-- HTML template
-        ================================================== -->
-        <section id="html-template">
-          <div class="page-header">
-            <h1>4. Basic HTML template</h1>
-          </div>
-          <p class="lead">With a brief intro into the contents out of the way, we can focus on putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="./getting-started.html#file-structure">File structure</a>.</p>
-          <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
-<pre class="prettyprint linenums">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello, world!&lt;/h1&gt;
-    &lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</pre>
-          <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
-<pre class="prettyprint linenums">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;!-- Bootstrap --&gt;
-    &lt;link href="css/bootstrap.min.css" rel="stylesheet" media="screen"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello, world!&lt;/h1&gt;
-    &lt;script src="http://code.jquery.com/jquery.js"&gt;&lt;/script&gt;
-    &lt;script src="js/bootstrap.min.js"&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</pre>
-          <p><strong>And you're set!</strong> With those two files added, you can begin to develop any site or application with Bootstrap.</p>
-
-          <hr>
-
-          <h4>Responsive features in IE8</h4>
-          <p>Internet Explorer 8 lacks support for media queries, the method by which we deliver responsive CSS to folks. To enable that, you need to include a third party tool (which we include in the project repository) called <a href="https://github.com/scottjehl/Respond">Respond.js</a>.</p>
-<pre class="prettyprint linenums">
-&lt;!--[if lt IE 9]&gt;
-  &lt;script src="assets/js/respond/respond.js"&gt;&lt;/script&gt;
-&lt;![endif]--&gt;
-</pre>
-        </section>
-
-
-
-        <!-- Examples
-        ================================================== -->
-        <section id="examples">
-          <div class="page-header">
-            <h1>5. Examples</h1>
-          </div>
-          <p class="lead">Move beyond the base template with a few example layouts. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
-          <div class="row bs-docs-examples">
-            <div class="span4">
-              <a class="thumbnail" href="examples/starter-template.html">
-                <img src="assets/img/examples/bootstrap-example-starter.png" alt="">
-              </a>
-              <h4>Starter template</h4>
-              <p>A barebones HTML document with all the Bootstrap CSS and JavaScript included.</p>
-            </div>
-            <div class="span4">
-              <a class="thumbnail" href="examples/jumbotron.html">
-                <img src="assets/img/examples/bootstrap-example-marketing.png" alt="">
-              </a>
-              <h4>Basic marketing site</h4>
-              <p>Featuring a hero unit for a primary message and three supporting elements.</p>
-            </div>
-            <div class="span4">
-              <a class="thumbnail" href="examples/jumbotron-narrow.html">
-                <img src="assets/img/examples/bootstrap-example-jumbotron-narrow.png" alt="">
-              </a>
-              <h4>Narrow marketing</h4>
-              <p>Slim, lightweight marketing template for small projects or teams.</p>
-            </div>
-            <div class="span4">
-              <a class="thumbnail" href="examples/justified-nav.html">
-                <img src="assets/img/examples/bootstrap-example-justified-nav.png" alt="">
-              </a>
-              <h4>Justified nav</h4>
-              <p>Marketing page with equal-width navigation links in a modified navbar.</p>
-            </div>
-            <div class="span4">
-              <a class="thumbnail" href="examples/signin.html">
-                <img src="assets/img/examples/bootstrap-example-signin.png" alt="">
-              </a>
-              <h4>Sign in</h4>
-              <p>Barebones sign in form with custom, larger form controls and a flexible layout.</p>
-            </div>
-            <div class="span4">
-              <a class="thumbnail" href="examples/sticky-footer.html">
-                <img src="assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
-              </a>
-              <h4>Sticky footer</h4>
-              <p>Pin a fixed-height footer to the bottom of the user's viewport.</p>
-            </div>
-            <div class="span4">
-              <a class="thumbnail" href="examples/sticky-footer.html">
-                <img src="assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
-              </a>
-              <h4>Sticky footer w/ navbar</h4>
-              <p>Add a fixed navbar to the default sticky footer template.</p>
-            </div>
-            <div class="span4">
-              <a class="thumbnail" href="examples/carousel.html">
-                <img src="assets/img/examples/bootstrap-example-carousel.png" alt="">
-              </a>
-              <h4>Carousel jumbotron</h4>
-              <p>An interactive riff on the basic marketing site featuring a prominent carousel.</p>
-            </div>
-          </div>
-        </section>
-
-
-
-
-        <!-- Next
-        ================================================== -->
-        <section id="what-next">
-          <div class="page-header">
-            <h1>What next?</h1>
-          </div>
-          <p class="lead">Head to the docs for information, examples, and code snippets, or take the next leap and customize Bootstrap for any upcoming project.</p>
-          <a class="btn btn-large btn-primary" href="./css.html" >Visit the Bootstrap docs</a>
-          <a class="btn btn-large" href="./customize.html" style="margin-left: 5px;" >Customize Bootstrap</a>
-        </section>
-
-
-
-
-      </div>
-    </div>
-
-  </div>
-
-
-
-    <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-
-        <div class="bs-docs-social">
-          <ul class="bs-docs-social-buttons">
-            <li>
-              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-            </li>
-            <li>
-              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
-            </li>
-            <li class="follow-btn">
-              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
-            </li>
-            <li class="tweet-btn">
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
-            </li>
-          </ul>
+      <!-- Contents
+      ================================================== -->
+      <section id="contents">
+        <div class="page-header">
+          <h1>3. What's included</h1>
         </div>
+        <p class="lead">Bootstrap comes equipped with HTML, CSS, and JS for all sorts of things, but they can be summarized with a handful of categories visible at the top of the <a href="http://getbootstrap.com">Bootstrap documentation</a>.</p>
 
+        <h2>Docs sections</h2>
+        <p>In addition to the getting started documentation you're reading now, the Bootstrap docs are broken into a few key pages.</p>
 
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/blob/master/CHANGELOG.md">Changelog</a></li>
-        </ul>
-      </div>
-    </footer>
+        <h4><a href="http://twitter.github.com/bootstrap/css.html">Core CSS</a></h4>
+        <p>Global styles for the body, Normalize, links, grid system, tables, forms, buttons, icons, and more.</p>
+        <h4><a href="http://twitter.github.com/bootstrap/components.html">Components</a></h4>
+        <p>Basic styles for common interface components like tabs and pills, navbar, alerts, page headers, and more. Head here to see what kind of custom components Bootstrap has to offer beyond basic HTML elements.</p>
+        <h4><a href="http://twitter.github.com/bootstrap/javascript.html">JavaScript plugins</a></h4>
+        <p>Similar to Components, these JavaScript plugins are interactive components for things like tooltips, popovers, modals, and more.</p>
+      </section>
 
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/bootstrap-affix.js"></script>
+      <!-- HTML template
+      ================================================== -->
+      <section id="html-template">
+        <div class="page-header">
+          <h1>4. Basic HTML template</h1>
+        </div>
+        <p class="lead">With a brief intro into the contents out of the way, we can focus on putting Bootstrap to use. To do that, we'll utilize a basic HTML template that includes everything we mentioned in the <a href="./getting-started.html#file-structure">File structure</a>.</p>
+        <p>Now, here's a look at a <strong>typical HTML file</strong>:</p>
 
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/holder/holder.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-
-    <script src="assets/js/application.js"></script>
-
-
+{% highlight html linenos %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="http://code.jquery.com/jquery.js"></script>
   </body>
 </html>
+{% endhighlight %}
+
+        <p>To make this <strong>a Bootstrapped template</strong>, just include the appropriate CSS and JS files:</p>
+
+{% highlight html linenos %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endhighlight %}
+
+        <p><strong>And you're set!</strong> With those two files added, you can begin to develop any site or application with Bootstrap.</p>
+
+        <hr>
+
+        <h4>Responsive features in IE8</h4>
+        <p>Internet Explorer 8 lacks support for media queries, the method by which we deliver responsive CSS to folks. To enable that, you need to include a third party tool (which we include in the project repository) called <a href="https://github.com/scottjehl/Respond">Respond.js</a>.</p>
+<pre class="prettyprint linenums">
+&lt;!--[if lt IE 9]&gt;
+  &lt;script src="/assets/js/respond/respond.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;
+</pre>
+      </section>
+
+
+
+      <!-- Examples
+      ================================================== -->
+      <section id="examples">
+        <div class="page-header">
+          <h1>5. Examples</h1>
+        </div>
+        <p class="lead">Move beyond the base template with a few example layouts. We encourage folks to iterate on these examples and not simply use them as an end result.</p>
+        <div class="row bs-docs-examples">
+          <div class="span4">
+            <a class="thumbnail" href="/examples/starter-template/">
+              <img src="/assets/img/examples/bootstrap-example-starter.png" alt="">
+            </a>
+            <h4>Starter template</h4>
+            <p>A barebones HTML document with all the Bootstrap CSS and JavaScript included.</p>
+          </div>
+          <div class="span4">
+            <a class="thumbnail" href="/examples/jumbotron/">
+              <img src="/assets/img/examples/bootstrap-example-marketing.png" alt="">
+            </a>
+            <h4>Basic marketing site</h4>
+            <p>Featuring a hero unit for a primary message and three supporting elements.</p>
+          </div>
+          <div class="span4">
+            <a class="thumbnail" href="/examples/jumbotron-narrow/">
+              <img src="/assets/img/examples/bootstrap-example-jumbotron-narrow.png" alt="">
+            </a>
+            <h4>Narrow marketing</h4>
+            <p>Slim, lightweight marketing template for small projects or teams.</p>
+          </div>
+          <div class="span4">
+            <a class="thumbnail" href="/examples/justified-nav/">
+              <img src="/assets/img/examples/bootstrap-example-justified-nav.png" alt="">
+            </a>
+            <h4>Justified nav</h4>
+            <p>Marketing page with equal-width navigation links in a modified navbar.</p>
+          </div>
+          <div class="span4">
+            <a class="thumbnail" href="/examples/signin/">
+              <img src="/assets/img/examples/bootstrap-example-signin.png" alt="">
+            </a>
+            <h4>Sign in</h4>
+            <p>Barebones sign in form with custom, larger form controls and a flexible layout.</p>
+          </div>
+          <div class="span4">
+            <a class="thumbnail" href="/examples/sticky-footer/">
+              <img src="/assets/img/examples/bootstrap-example-sticky-footer.png" alt="">
+            </a>
+            <h4>Sticky footer</h4>
+            <p>Pin a fixed-height footer to the bottom of the user's viewport.</p>
+          </div>
+          <div class="span4">
+            <a class="thumbnail" href="/examples/sticky-footer-navbar/">
+              <img src="/assets/img/examples/bootstrap-example-sticky-footer-navbar.png" alt="">
+            </a>
+            <h4>Sticky footer w/ navbar</h4>
+            <p>Add a fixed navbar to the default sticky footer template.</p>
+          </div>
+          <div class="span4">
+            <a class="thumbnail" href="/examples/carousel/">
+              <img src="/assets/img/examples/bootstrap-example-carousel.png" alt="">
+            </a>
+            <h4>Carousel jumbotron</h4>
+            <p>An interactive riff on the basic marketing site featuring a prominent carousel.</p>
+          </div>
+        </div>
+      </section>
+
+
+
+
+      <!-- Next
+      ================================================== -->
+      <section id="what-next">
+        <div class="page-header">
+          <h1>What next?</h1>
+        </div>
+        <p class="lead">Head to the docs for information, examples, and code snippets, or take the next leap and customize Bootstrap for any upcoming project.</p>
+        <a class="btn btn-large btn-primary" href="./css.html" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Next steps', 'Visit docs']);">Visit the Bootstrap docs</a>
+        <a class="btn btn-large" href="./customize.html" style="margin-left: 5px;" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Next steps', 'Customize']);">Customize Bootstrap</a>
+      </section>
+
+
+
+
+    </div><!-- /span9 -->
+  </div><!-- row -->
+
+</div><!-- /.container -->

@@ -2,7 +2,7 @@
   <img src="http://twitter.github.com/bootstrap/assets/img/bootstrap-docs-readme.png" width="100px">
 </a>
 
-# [Bootstrap v3.0.0](http://twitter.github.com/bootstrap) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
+# [Bootstrap v3.0.0](http://getbootstrap.com) [![Build Status](https://secure.travis-ci.org/twitter/bootstrap.png)](http://travis-ci.org/twitter/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created and maintained by [Mark Otto](http://twitter.com/mdo) and [Jacob Thornton](http://twitter.com/fat).
 
@@ -17,6 +17,8 @@ Three quick start options are available:
 * [Download the latest release](https://github.com/twitter/bootstrap/zipball/master).
 * Clone the repo: `git clone git://github.com/twitter/bootstrap.git`.
 * Install with Twitter's [Bower](http://twitter.github.com/bower): `bower install bootstrap`.
+
+Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
 
 
 
@@ -38,7 +40,7 @@ For more information on SemVer, please visit [http://semver.org/](http://semver.
 
 
 
-## Bug tracker
+## Bugs and feature requests
 
 Have a bug or a feature request? [Please open a new issue](https://github.com/twitter/bootstrap/issues). Before opening any issue, please search for existing issues and read the [Issue Guidelines](https://github.com/necolas/issue-guidelines), written by [Nicolas Gallagher](https://github.com/necolas/).
 
@@ -55,24 +57,31 @@ Keep track of development and community news.
 
 
 
-## Developers
+## Documentation
 
-We have included a makefile with convenience methods for working with the Bootstrap library.
+Bootstrap's docs are built using [Jekyll](http://jekyllrb.com) and hosted on GitHub Pages at [http://getbootstrap.com](http://getbootstrap.com). To view our docs locally, you'll need to [install Jekyll](https://github.com/mojombo/jekyll/wiki/install) to run a local server.
 
-+ **dependencies**
-Our makefile depends on you having recess, connect, uglify.js, and jshint installed. To install, just run the following command in npm:
+Documentation for [previous versions](https://github.com/twitter/bootstrap/tags) is also available via tags.
+
+
+
+## Compiling CSS and JavaScript
+
+Bootstrap includes a makefile with convenient methods for working with the framework. Before getting started, be sure to install the necessary local dependencies:
 
 ```
-$ npm install recess connect uglify-js jshint -g
+$ npm install
 ```
 
-+ **build** - `make`
-Runs the recess compiler to rebuild the `/less` files and compiles the docs pages. Requires recess and uglify-js.
+Once installed, you'll be able to run the various make commands provided:
 
-+ **test** - `make test`
+#### build - `make`
+Runs the recess compiler to rebuild the `/less` files and compiles the docs. Requires recess and uglify-js.
+
+#### test - `make test`
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
 
-+ **watch** - `make watch`
+#### watch - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
 
 
@@ -80,8 +89,6 @@ This is a convenience method for watching just Less files and automatically buil
 ## Contributing
 
 Please submit all pull requests against *-wip branches. If your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](http://github.com/mdo/code-guide), maintained by [Mark Otto](http://github.com/mdo).
-
-Thanks!
 
 
 

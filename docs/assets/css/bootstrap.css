@@ -3254,7 +3254,7 @@ button.close {
 .navbar-inverse .nav > .active > a:hover,
 .navbar-inverse .nav > .active > a:focus {
   color: #ffffff;
-  background-color: #222222;
+  background-color: #080808;
 }
 
 .navbar-inverse .btn-navbar {
@@ -3270,7 +3270,7 @@ button.close {
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
   color: #ffffff;
-  background-color: #222222;
+  background-color: #080808;
 }
 
 .navbar-inverse .nav li.dropdown > a:hover .caret {

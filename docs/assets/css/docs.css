@@ -198,6 +198,8 @@ section > ul li {
   padding: 39px 14px 14px;
   margin-bottom: -1px;
   border: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 /* Echo out a label for the example */
 .bs-docs-example:after {
@@ -211,10 +213,13 @@ section > ul li {
   color: #9da0a4;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 /* Tweak display of the examples */
-.bs-docs-example + .prettyprint {
+.bs-docs-example + .prettyprint,
+.bs-docs-example + .highlight {
   margin-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -483,6 +488,33 @@ input.focused {
   height: 200px;
   margin-top: 10px;
   overflow: auto;
+}
+
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+  box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+}
+.highlight pre {
+  padding: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+}
+.highlight pre code {
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
+}
+.highlight pre .lineno {
+  display: inline-block;
+  width: 18px;
+  padding-right: 5px;
+  margin-right: 10px;
+  text-align: right;
+  color: #bebec5;
 }
 
 

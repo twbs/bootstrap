@@ -1,70 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Components · Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+---
+layout: default
+title: Components
+---
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Documentation extras -->
-    <link href="assets/css/docs.css" rel="stylesheet">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
-
-  </head>
-
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="./index.html">Bootstrap</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li class="">
-              <a href="./index.html">Home</a>
-            </li>
-            <li class="">
-              <a href="./getting-started.html">Get started</a>
-            </li>
-            <li class="">
-              <a href="./css.html">CSS</a>
-            </li>
-            <li class="active">
-              <a href="./components.html">Components</a>
-            </li>
-            <li class="">
-              <a href="./javascript.html">JavaScript</a>
-            </li>
-            <li class="">
-              <a href="./customize.html">Customize</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
 
 <!-- Subhead
 ================================================== -->
@@ -123,27 +61,27 @@
                 <li><a tabindex="-1" href="#">Separated link</a></li>
               </ul>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="dropdown"&gt;
-  &lt;!-- Link or button to toggle dropdown --&gt;
-  &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="divider"&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="dropdown">
+  <!-- Link or button to toggle dropdown -->
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+    <li><a tabindex="-1" href="#">Action</a></li>
+    <li><a tabindex="-1" href="#">Another action</a></li>
+    <li><a tabindex="-1" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+</div>
+{% endhighlight %}
 
           <h3>Aligning the menus</h3>
           <p>Add <code>.pull-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel"&gt;
+{% highlight html linenos %}
+<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
   ...
-&lt;/ul&gt;
-</pre>
+</ul>
+{% endhighlight %}
 
           <h3>Disabled menu options</h3>
           <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
@@ -155,14 +93,14 @@
                 <li><a tabindex="-1" href="#">Another link</a></li>
               </ul>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Regular link&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="disabled"&gt;&lt;a tabindex="-1" href="#"&gt;Disabled link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another link&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+  <li><a tabindex="-1" href="#">Regular link</a></li>
+  <li class="disabled"><a tabindex="-1" href="#">Disabled link</a></li>
+  <li><a tabindex="-1" href="#">Another link</a></li>
+</ul>
+{% endhighlight %}
         </section>
 
 
@@ -180,46 +118,46 @@
           <p>Wrap a series of buttons with <code>.btn</code> in <code>.btn-group</code>.</p>
           <div class="bs-docs-example">
             <div class="btn-group" style="margin: 9px 0 5px;">
-              <button class="btn">Left</button>
-              <button class="btn">Middle</button>
-              <button class="btn">Right</button>
+              <button type="button" class="btn">Left</button>
+              <button type="button" class="btn">Middle</button>
+              <button type="button" class="btn">Right</button>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group"&gt;
-  &lt;button class="btn"&gt;Left&lt;/button&gt;
-  &lt;button class="btn"&gt;Middle&lt;/button&gt;
-  &lt;button class="btn"&gt;Right&lt;/button&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="btn-group">
+  <button type="button" class="btn">Left</button>
+  <button type="button" class="btn">Middle</button>
+  <button type="button" class="btn">Right</button>
+</div>
+{% endhighlight %}
 
           <h3>Multiple button groups</h3>
           <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
-                <button class="btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="btn">4</button>
+                <button type="button" class="btn">1</button>
+                <button type="button" class="btn">2</button>
+                <button type="button" class="btn">3</button>
+                <button type="button" class="btn">4</button>
               </div>
               <div class="btn-group">
-                <button class="btn">5</button>
-                <button class="btn">6</button>
-                <button class="btn">7</button>
+                <button type="button" class="btn">5</button>
+                <button type="button" class="btn">6</button>
+                <button type="button" class="btn">7</button>
               </div>
               <div class="btn-group">
-                <button class="btn">8</button>
+                <button type="button" class="btn">8</button>
               </div>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="btn-toolbar"&gt;
-  &lt;div class="btn-group"&gt;
-    ...
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="btn-toolbar">
+  <div class="btn-group">...</div>
+  <div class="btn-group">...</div>
+  <div class="btn-group">...</div>
+</div>
+{% endhighlight %}
 
           <h3>Vertical button groups</h3>
           <p>Make a set of buttons appear vertically stacked rather than horizontally.</p>
@@ -231,11 +169,11 @@
               <button type="button" class="btn"><i class="glyphicon-align-justify"></i></button>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group btn-group-vertical"&gt;
+{% highlight html linenos %}
+<div class="btn-group btn-group-vertical">
   ...
-&lt;/div&gt;
-</pre>
+</div>
+{% endhighlight %}
 
           <h3>Justified button groups</h3>
           <p>Make a group of buttons stretch at the same size to span the entire width of its parent. <strong>This only works with <code>&lt;a&gt;</code> elements</strong> as the <code>&lt;button&gt;</code> doesn't pick up these styles.</p>
@@ -246,11 +184,11 @@
               <a href="#" class="btn">Middle</a>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group btn-group-justified"&gt;
+{% highlight html linenos %}
+<div class="btn-group btn-group-justified">
   ...
-&lt;/div&gt;
-</pre>
+</div>
+{% endhighlight %}
 
         </section>
 
@@ -378,36 +316,45 @@
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
           </div>
-<pre class="prettyprint linenums">
-&lt;-- Single button --&gt;
-&lt;div class="btn-group"&gt;
-  &lt;button type="button" class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-    Action
-    &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/button&gt;
-  &lt;ul class="dropdown-menu"&gt;
-    &lt;!-- dropdown menu links --&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
+{% highlight html linenos %}
+<!-- Single button -->
+<div class="btn-group">
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
 
-&lt;-- Split button --&gt;
-&lt;div class="btn-group"&gt;
-  &lt;button class="btn"&gt;Action&lt;/button&gt;
-  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-    &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/button&gt;
-  &lt;ul class="dropdown-menu"&gt;
-    &lt;!-- dropdown menu links --&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
+<!-- Split button -->
+<div class="btn-group">
+  <button class="btn">Action</button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+{% endhighlight %}
 
           <h3>Works with all button sizes</h3>
           <p>Button dropdowns work at any size: <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code>.</p>
           <div class="bs-docs-example">
             <div class="btn-toolbar" style="margin: 0;">
               <div class="btn-group">
-                <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Large button <span class="caret"></span></button>
+                <button class="btn btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+                  Large button <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
@@ -417,7 +364,9 @@
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
-                <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Small button <span class="caret"></span></button>
+                <button class="btn btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+                  Small button <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
@@ -427,7 +376,9 @@
                 </ul>
               </div><!-- /btn-group -->
               <div class="btn-group">
-                <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Mini button <span class="caret"></span></button>
+                <button class="btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
+                  Mini button <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
@@ -437,7 +388,38 @@
                 </ul>
               </div><!-- /btn-group -->
             </div><!-- /btn-toolbar -->
-          </div>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<!-- Large button group -->
+<div class="btn-group">
+  <button class="btn btn-large dropdown-toggle" type="button" data-toggle="dropdown">
+    Large button <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+
+<!-- Small button group -->
+<div class="btn-group">
+  <button class="btn btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+    Small button <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+
+<!-- Mini button group -->
+<div class="btn-group">
+  <button class="btn btn-mini dropdown-toggle" type="button" data-toggle="dropdown">
+    Mini button <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    ...
+  </ul>
+</div>
+{% endhighlight %}
 
           <h3>Dropup buttons</h3>
           <p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent.</p>
@@ -466,18 +448,18 @@
                 </ul>
               </div><!-- /btn-group -->
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="btn-group dropup"&gt;
-  &lt;button class="btn"&gt;Dropup&lt;/button&gt;
-  &lt;button class="btn dropdown-toggle" data-toggle="dropdown"&gt;
-    &lt;span class="caret"&gt;&lt;/span&gt;
-  &lt;/button&gt;
-  &lt;ul class="dropdown-menu"&gt;
-    &lt;!-- dropdown menu links --&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="btn-group dropup">
+  <button class="btn">Dropup</button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <!-- Dropdown menu links -->
+  </ul>
+</div>
+{% endhighlight %}
 
         </section>
 
@@ -501,15 +483,13 @@
               <li><a href="#">Messages</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
+{% endhighlight %}
 
           <h2>List</h2>
           <p>Swap the tabs class for <code>.nav-list</code>.</p>
@@ -520,15 +500,13 @@
               <li><a href="#">Messages</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-list"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="nav nav-list">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
+{% endhighlight %}
 
           <h2>Pills</h2>
           <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
@@ -539,15 +517,13 @@
               <li><a href="#">Messages</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
+{% endhighlight %}
           <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
           <div class="bs-docs-example">
             <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
@@ -556,11 +532,11 @@
               <li><a href="#">Messages</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills nav-stacked"&gt;
+{% highlight html linenos %}
+<ul class="nav nav-pills nav-stacked">
   ...
-&lt;/ul&gt;
-</pre>
+</ul>
+{% endhighlight %}
 
           <h2>Options</h2>
 
@@ -579,15 +555,14 @@
               <li><a href="#">Messages</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs nav-justified"&gt;
+{% highlight html linenos %}
+<ul class="nav nav-tabs nav-justified">
   ...
-&lt;/ul&gt;
-
-&lt;ul class="nav nav-pills nav-justified"&gt;
+</ul>
+<ul class="nav nav-pills nav-justified">
   ...
-&lt;/ul&gt;
-</pre>
+</ul>
+{% endhighlight %}
 
           <h3>Disabled state</h3>
           <p>For any nav component (tabs, pills, or list), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>. Links will remain clickable, however, unless you remove the <code>href</code> attribute. Alternatively, you could implement custom JavaScript to prevent those clicks.</p>
@@ -598,13 +573,14 @@
               <li class="disabled"><a href="#">Disabled link</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
+{% highlight html linenos %}
+<ul class="nav nav-tabs">
   ...
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  <li class="disabled"><a href="#">Disabled link</a></li>
   ...
-&lt;/ul&gt;
-</pre>
+</ul>
+{% endhighlight %}
+
 
           <h3>Component alignment</h3>
           <p>To align nav links, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
@@ -622,7 +598,9 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#">Help</a></li>
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Dropdown <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
@@ -633,21 +611,20 @@
               </li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-tabs"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
-       data-toggle="dropdown"
-       href="#"&gt;
-        Dropdown
-        &lt;b class="caret"&gt;&lt;/b&gt;
-      &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      &lt;!-- links --&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="nav nav-tabs">
+  ...
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Dropdown <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      ...
+    </ul>
+  </li>
+  ...
+</ul>
+{% endhighlight %}
 
           <h3>Pills with dropdowns</h3>
           <div class="bs-docs-example">
@@ -655,7 +632,9 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#">Help</a></li>
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  Dropdown <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
@@ -665,22 +644,21 @@
                 </ul>
               </li>
             </ul>
-          </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-pills"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a class="dropdown-toggle"
-       data-toggle="dropdown"
-       href="#"&gt;
-        Dropdown
-        &lt;b class="caret"&gt;&lt;/b&gt;
-      &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      &lt;!-- links --&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<ul class="nav nav-pills">
+  ...
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Dropdown <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      ...
+    </ul>
+  </li>
+  ...
+</ul>
+{% endhighlight %}
 
         </section>
 
@@ -705,21 +683,17 @@
                 <li><a href="#">Link</a></li>
               </ul>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="navbar"&gt;
-  &lt;a class="brand" href="#"&gt;Title&lt;/a&gt;
-  &lt;ul class="nav"&gt;
-    &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</pre>
-
-
-          <hr class="bs-docs-separator">
-
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="navbar">
+  <a class="brand" href="#">Title</a>
+  <ul class="nav">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+</div>
+{% endhighlight %}
 
           <h2>Navbar components</h2>
 
@@ -729,10 +703,10 @@
             <div class="navbar">
               <a class="brand" href="#">Title</a>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
-</pre>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<a class="brand" href="#">Title</a>
+{% endhighlight %}
 
           <h3>Nav links</h3>
           <p>Nav items are simple to add via unordered lists.</p>
@@ -744,16 +718,14 @@
                 <li><a href="#">Link</a></li>
               </ul>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#">Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Link&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<ul class="nav">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Link</a></li>
+  <li><a href="#">Link</a></li>
+</ul>
+{% endhighlight %}
           <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add the appropriate class to <code>&lt;li&gt;</code> elements between links. Dividers will be horizontal to start, but at resolutions above 768px they become vertical with the navigation.</p>
           <div class="bs-docs-example">
             <div class="navbar">
@@ -768,14 +740,14 @@
                 </ul>
               </div>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
+          </div><!-- /example -->
+{% highlight html linenos %}
+<ul class="nav">
   ...
-  &lt;li class="divider"&gt;&lt;/li&gt;
+  <li class="divider"></li>
   ...
-&lt;/ul&gt;
-</pre>
+</ul>
+{% endhighlight %}
 
           <h3>Forms</h3>
           <p>To properly style and position a form within the navbar, add the appropriate classes as shown below. For a default form, include <code>.navbar-form</code> and either <code>.pull-left</code> or <code>.pull-right</code> to properly align it.</p>
@@ -786,39 +758,22 @@
                 <button type="submit" class="btn">Submit</button>
               </form>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;form class="pull-left"&gt;
-  &lt;input type="text" style="width: 200px;"&gt;
-  &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;
-</pre>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<form class="navbar-form pull-left">
+  <input type="text" style="width: 200px;">
+  <button type="submit" class="btn">Submit</button>
+</form>
+{% endhighlight %}
 
           <h3>Component alignment</h3>
           <p>Align nav links, search form, or text, use the <code>.pull-left</code> or <code>.pull-right</code> utility classes. Both classes will add a CSS float in the specified direction.</p>
 
           <h3>Using dropdowns</h3>
           <p>Add dropdowns and dropups to the nav with a bit of markup and the <a href="./javascript.html#dropdowns">dropdowns JavaScript plugin</a>.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="nav"&gt;
-  &lt;li class="dropdown"&gt;
-    &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      Account
-      &lt;b class="caret"&gt;&lt;/b&gt;
-    &lt;/a&gt;
-    &lt;ul class="dropdown-menu"&gt;
-      ...
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-          <p>Visit the <a href="./javascript.html#dropdowns">JavaScript dropdowns documentation</a> for more markup and information on calling dropdowns.</p>
 
           <h3>Text</h3>
           <p>Wrap strings of text in an element with <code>.navbar-text</code>, usually on a <code>&lt;p&gt;</code> tag for proper leading and color.</p>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>Optional display variations</h2>
@@ -837,12 +792,12 @@
                 </ul>
               </div>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-top"&gt;
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="navbar navbar-fixed-top">
   ...
-&lt;/div&gt;
-</pre>
+</div>
+{% endhighlight %}
 
           <h3>Fixed to bottom</h3>
           <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
@@ -857,12 +812,12 @@
                 </ul>
               </div>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-fixed-bottom"&gt;
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="navbar navbar-fixed-bottom">
   ...
-&lt;/div&gt;
-</pre>
+</div>
+{% endhighlight %}
 
           <h3>Static top navbar</h3>
           <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code>. Unlike the <code>.navbar-fixed-top</code> class, you do not need to change any padding on the <code>body</code>.</p>
@@ -877,15 +832,12 @@
                 </ul>
               </div>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-static-top"&gt;
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="navbar navbar-static-top">
   ...
-&lt;/div&gt;
-</pre>
-
-
-          <hr class="bs-docs-separator">
+</div>
+{% endhighlight %}
 
 
           <h2>Responsive navbar</h2>
@@ -935,38 +887,34 @@
                     </li>
                   </ul>
                 </div><!-- /.nav-collapse -->
-              </div>
+              </div><!-- /.container -->
+            </div><!-- /.navbar -->
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="navbar">
+  <div class="container">
 
-            </div><!-- /navbar -->
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="navbar"&gt;
-  &lt;div class="container"&gt;
+    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
 
-    &lt;!-- .btn-navbar is used as the toggle for collapsed navbar content --&gt;
-    &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-    &lt;/a&gt;
+    <!-- Be sure to leave the brand out there if you want it shown -->
+    <a class="brand" href="#">Title</a>
 
-    &lt;!-- Be sure to leave the brand out there if you want it shown --&gt;
-    &lt;a class="brand" href="#"&gt;Project name&lt;/a&gt;
+    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      ...
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+{% endhighlight %}
 
-    &lt;!-- Everything you want hidden at 940px or less, place within here --&gt;
-    &lt;div class="nav-collapse collapse"&gt;
-      &lt;!-- .nav, .navbar-search, .navbar-form, etc --&gt;
-    &lt;/div&gt;
-
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
           <div class="alert alert-info">
             <strong>Heads up!</strong> The responsive navbar requires the <a href="./javascript.html#collapse">collapse plugin</a> and <a href="./scaffolding.html#responsive">responsive Bootstrap CSS file</a>.
           </div>
-
-
-          <hr class="bs-docs-separator">
 
 
           <h2>Inverted variation</h2>
@@ -1018,12 +966,12 @@
                 </div><!-- /.nav-collapse -->
               </div>
             </div><!-- /navbar -->
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="navbar navbar-inverse"&gt;
+          </div><!-- /example -->
+{% highlight html linenos %}
+<div class="navbar navbar-inverse">
   ...
-&lt;/div&gt;
-</pre>
+</div>
+{% endhighlight %}
 
         </section>
 
@@ -1051,13 +999,14 @@
               <li class="active">Data</li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="breadcrumb"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Library&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;Data&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ul>
+{% endhighlight %}
+
 
         </section>
 
@@ -1084,17 +1033,17 @@
               <li><a href="#">&raquo;</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="pagination"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Prev&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+{% endhighlight %}
 
           <h3>Disabled and active states</h3>
           <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
@@ -1109,21 +1058,22 @@
               <li><a href="#">&raquo;</a></li>
            </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="pagination"&gt;
-  &lt;li class="disabled"&gt;&lt;a href="#"&gt;&amp;laquo;&lt;/a&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+{% highlight html linenos %}
+<ul class="pagination">
+  <li class="disabled"><a href="#">&laquo;</a></li>
+  <li class="active"><a href="#">1</a></li>
   ...
-&lt;/ul&gt;
-</pre>
-          <p>You can optionally swap out active or disabled anchors for spans to remove click functionality while retaining intended styles.</p>
-<pre class="prettyprint linenums">
-&lt;ul class="pagination"&gt;
-  &lt;li class="disabled"&gt;&lt;span&gt;&amp;laquo;&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="active"&gt;&lt;span&gt;1&lt;/span&gt;&lt;/li&gt;
+</ul>
+{% endhighlight %}
+          <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code> to remove click functionality while retaining intended styles.</p>
+{% highlight html linenos %}
+<ul class="pagination">
+  <li class="disabled"><span>&laquo;</span></li>
+  <li class="active"><span>1</span></li>
   ...
-&lt;/ul&gt;
-</pre>
+</ul>
+{% endhighlight %}
+
 
           <h3>Sizes</h3>
           <p>Fancy larger or smaller pagination? Add <code>.pagination-large</code>, <code>.pagination-small</code>, or <code>.pagination-mini</code> for additional sizes.</p>
@@ -1173,20 +1123,13 @@
               </ul>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="pagination pagination-large"&gt;
-  ...
-&lt;/ul&gt;
-&lt;ul class="pagination"&gt;
-  ...
-&lt;/ul&gt;
-&lt;ul class="pagination pagination-small"&gt;
-  ...
-&lt;/ul&gt;
-&lt;ul class="pagination pagination-mini"&gt;
-  ...
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="pagination pagination-large">...</ul>
+<ul class="pagination pagination">...</ul>
+<ul class="pagination pagination-small">...</ul>
+<ul class="pagination pagination-mini">...</ul>
+{% endhighlight %}
+
 
           <h2 id="pagination-pager">Pager</h2>
           <p>Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</p>
@@ -1199,12 +1142,12 @@
               <li><a href="#">Next</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Previous&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="pager">
+  <li><a href="#">Previous</a></li>
+  <li><a href="#">Next</a></li>
+</ul>
+{% endhighlight %}
 
           <h3>Aligned links</h3>
           <p>Alternatively, you can align each link to the sides:</p>
@@ -1214,16 +1157,13 @@
               <li class="next"><a href="#">Newer &rarr;</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li class="next"&gt;
-    &lt;a href="#"&gt;Newer &amp;rarr;&lt;/a&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="pager">
+  <li class="previous"><a href="#">&larr; Older</a></li>
+  <li class="next"><a href="#">Newer &rarr;</a></li>
+</ul>
+{% endhighlight %}
+
 
           <h3>Optional disabled state</h3>
           <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
@@ -1233,14 +1173,13 @@
               <li class="next"><a href="#">Newer &rarr;</a></li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="pager"&gt;
-  &lt;li class="previous disabled"&gt;
-    &lt;a href="#"&gt;&amp;larr; Older&lt;/a&gt;
-  &lt;/li&gt;
-  ...
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="pager">
+  <li class="previous disabled"><a href="#">&larr; Older</a></li>
+  <li class="next"><a href="#">Newer &rarr;</a></li>
+</ul>
+{% endhighlight %}
+
 
         </section>
 
@@ -1257,12 +1196,9 @@
           <div class="bs-docs-example">
             <a href="#">Inbox <span class="counter">42</span></a>
           </div>
-<pre class="prettyprint linenums">
-&lt;a href="#"&gt;
-  Inbox
-  &lt;span class="counter"&gt;42&lt;/span&gt;
-&lt;/a&gt;
-</pre>
+{% highlight html linenos %}
+<a href="#">Inbox <span class="counter">42</span></a>
+{% endhighlight %}
 
           <h4>Self collapsing</h4>
           <p>When there are no new or unread items, counters will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
@@ -1292,15 +1228,17 @@
               </li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="nav nav-list"&gt;
-  &lt;li class="active"&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+{% highlight html linenos %}
+<ul class="nav nav-list">
+  <li class="active">
+    <a href="#">
+      <span class="counter pull-right">42</span>
+      Home
+    </a>
+  </li>
+  ...
+</ul>
+{% endhighlight %}
 
         </section>
 
@@ -1322,17 +1260,13 @@
               <p><a class="btn btn-primary btn-large">Learn more</a></p>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="jumbotron"&gt;
-  &lt;h1&gt;Heading&lt;/h1&gt;
-  &lt;p&gt;Tagline&lt;/p&gt;
-  &lt;p&gt;
-    &lt;a class="btn btn-primary btn-large"&gt;
-      Learn more
-    &lt;/a&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-large">Learn more</a></p>
+</div>
+{% endhighlight %}
 
           <h2>Page header</h2>
           <p>A simple shell for an <code>h1</code> to appropriately space out and segment sections of content on a page. It can utilize the <code>h1</code>'s default <code>small</code>, element as well most other components (with additional styles).</p>
@@ -1341,11 +1275,11 @@
               <h1>Example page header <small>Subtext for header</small></h1>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="page-header"&gt;
-  &lt;h1&gt;Example page header &lt;small&gt;Subtext for header&lt;/small&gt;&lt;/h1&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="page-header">
+  <h1>Example page header <small>Subtext for header</small></h1>
+</div>
+{% endhighlight %}
 
         </section>
 
@@ -1384,17 +1318,17 @@
                 </a>
               </div>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span3"&gt;
-    &lt;a href="#" class="thumbnail"&gt;
-      &lt;img src="holder.js/260x180" alt=""&gt;
-    &lt;/a&gt;
-  &lt;/div&gt;
+          </div><!-- /.bs-docs-example -->
+{% highlight html linenos %}
+<div class="row">
+  <div class="span3">
+    <a href="#" class="thumbnail">
+      <img data-src="holder.js/260x180" alt="">
+    </a>
+  </div>
   ...
-&lt;/div&gt;
-</pre>
+</div>
+{% endhighlight %}
 
           <h3>Custom content thumbnails</h3>
           <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
@@ -1431,19 +1365,23 @@
                 </div>
               </div>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="row"&gt;
-  &lt;div class="span4"&gt;
-    &lt;div class="thumbnail"&gt;
-      &lt;img data-src="holder.js/300x200" alt=""&gt;
-      &lt;h3&gt;Thumbnail label&lt;/h3&gt;
-      &lt;p&gt;Thumbnail caption...&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+          </div><!-- /.bs-docs-example -->
+{% highlight html linenos %}
+<div class="row">
+  <div class="span3">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200" alt="">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+      </div>
+    </div>
+  </div>
   ...
-&lt;/div&gt;
-</pre>
+</div>
+{% endhighlight %}
+
 
         </section>
 
@@ -1466,12 +1404,12 @@
               <strong>Warning!</strong> Best check yo self, you're not looking too good.
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="alert"&gt;
-  &lt;button type="button" class="close" data-dismiss="alert"&gt;&amp;times;&lt;/button&gt;
-  &lt;strong&gt;Warning!&lt;/strong&gt; Best check yo self, you're not looking too good.
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+</div>
+{% endhighlight %}
 
           <h3>Block alerts</h3>
           <p>For longer messages, increase the padding on the top and bottom of the alert wrapper by adding <code>.alert-block</code>.</p>
@@ -1482,13 +1420,13 @@
               <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="alert alert-block"&gt;
-  &lt;button type="button" class="close" data-dismiss="alert"&gt;&amp;times;&lt;/button&gt;
-  &lt;h4&gt;Warning!&lt;/h4&gt;
-  Best check yo self, you're not...
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="alert alert-block">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4>Warning!</h4>
+  <p>...</p>
+</div>
+{% endhighlight %}
 
           <h3>Contextual alternatives</h3>
           <p>Add optional classes to change an alert's connotation.</p>
@@ -1506,11 +1444,11 @@
               <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="alert alert-error"&gt;... &lt;/div&gt;
-&lt;div class="alert alert-success"&gt;...&lt;/div&gt;
-&lt;div class="alert alert-info"&gt;...&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="alert alert-error">...</div>
+<div class="alert alert-success">...</div>
+<div class="alert alert-info">...</div>
+{% endhighlight %}
         </section>
 
 
@@ -1533,11 +1471,11 @@
               <div class="progress-bar" style="width: 60%;"></div>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress"&gt;
-  &lt;div class="progress-bar" style="width: 60%;"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="progress">
+  <div class="progress-bar" style="width: 60%;"></div>
+</div>
+{% endhighlight %}
 
           <h3>Additional colors</h3>
           <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
@@ -1555,20 +1493,20 @@
               <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="progress">
+  <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+</div>
+{% endhighlight %}
 
           <h3>Striped</h3>
           <p>Uses a gradient to create a striped effect. Not available in IE8.</p>
@@ -1586,20 +1524,20 @@
               <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-info" style="width: 20%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 40%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 60%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="progress progress-striped"&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 80%"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="progress progress-striped">
+  <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+</div>
+<div class="progress progress-striped">
+  <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+</div>
+<div class="progress progress-striped">
+  <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+</div>
+<div class="progress progress-striped">
+  <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+</div>
+{% endhighlight %}
 
           <h3>Animated</h3>
           <p>Add <code>.active</code> to <code>.progress-striped</code> to animate the stripes right to left. Not available in all versions of IE.</p>
@@ -1608,11 +1546,11 @@
               <div class="progress-bar" style="width: 45%"></div>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress progress-striped active"&gt;
-  &lt;div class="progress-bar" style="width: 40%;"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="progress progress-striped active">
+  <div class="progress-bar" style="width: 45%"></div>
+</div>
+{% endhighlight %}
 
           <h3>Stacked</h3>
           <p>Place multiple bars into the same <code>.progress</code> to stack them.</p>
@@ -1623,13 +1561,13 @@
               <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="progress"&gt;
-  &lt;div class="progress-bar progress-bar-success" style="width: 35%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-warning" style="width: 20%;"&gt;&lt;/div&gt;
-  &lt;div class="progress-bar progress-bar-danger" style="width: 10%;"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: 35%"></div>
+  <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
+  <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+</div>
+{% endhighlight %}
 
         </section>
 
@@ -1674,23 +1612,18 @@
                 </div>
               </div>
             </div>
-          </div>
-<pre class="prettyprint linenums">
-&lt;div class="media"&gt;
-  &lt;a class="pull-left" href="#"&gt;
-    &lt;img class="media-object" data-src="holder.js/64x64"&gt;
-  &lt;/a&gt;
-  &lt;div class="media-body"&gt;
-    &lt;h4 class="media-heading"&gt;Media heading&lt;/h4&gt;
+          </div><!-- /.bs-docs-example -->
+{% highlight html linenos %}
+<div class="media">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="...">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">Media heading</h4>
     ...
-
-    &lt;!-- Nested media object --&gt;
-    &lt;div class="media"&gt;
-      ...
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</pre>
+  </div>
+</div>
+{% endhighlight %}
 
           <h3>Media list</h3>
           <p>With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).</p>
@@ -1746,24 +1679,19 @@
               </li>
             </ul>
           </div>
-<pre class="prettyprint linenums">
-&lt;ul class="media-list"&gt;
-  &lt;li class="media"&gt;
-    &lt;a class="pull-left" href="#"&gt;
-      &lt;img class="media-object" data-src="holder.js/64x64"&gt;
-    &lt;/a&gt;
-    &lt;div class="media-body"&gt;
-      &lt;h4 class="media-heading"&gt;Media heading&lt;/h4&gt;
+{% highlight html linenos %}
+<ul class="media-list">
+  <li class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="...">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">Media heading</h4>
       ...
-
-      &lt;!-- Nested media object --&gt;
-      &lt;div class="media"&gt;
-        ...
-     &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+    </div>
+  </li>
+</ul>
+{% endhighlight %}
 
 </section>
 
@@ -1785,11 +1713,9 @@
               Look, I'm in a well!
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="well"&gt;
-  ...
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="well">...</div>
+{% endhighlight %}
           <h3>Optional classes</h3>
           <p>Control padding and rounded corners with two optional modifier classes.</p>
           <div class="bs-docs-example">
@@ -1797,73 +1723,72 @@
               Look, I'm in a well!
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="well well-large"&gt;
-  ...
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="well well-large">...</div>
+{% endhighlight %}
+
           <div class="bs-docs-example">
             <div class="well well-small">
               Look, I'm in a well!
             </div>
           </div>
-<pre class="prettyprint linenums">
-&lt;div class="well well-small"&gt;
-  ...
-&lt;/div&gt;
-</pre>
+{% highlight html linenos %}
+<div class="well well-small">...</div>
+{% endhighlight %}
+
 
           <h2>Close icon</h2>
           <p>Use the generic close icon for dismissing content like modals and alerts.</p>
           <div class="bs-docs-example">
             <p><button class="close" style="float: none;">&times;</button></p>
           </div>
-          <pre class="prettyprint linenums">&lt;button class="close"&gt;&amp;times;&lt;/button&gt;</pre>
-          <p>iOS devices require an <code>href="#"</code> for click events if you would rather use an anchor.</p>
-          <pre class="prettyprint linenums">&lt;a class="close" href="#"&gt;&amp;times;&lt;/a&gt;</pre>
+{% highlight html linenos %}
+<button class="close" style="float: none;">&times;</button>
+{% endhighlight %}
 
           <h2>Helper classes</h2>
           <p>Simple, focused classes for small display or behavior tweaks.</p>
 
           <h4>.pull-left</h4>
           <p>Float an element left</p>
-<pre class="prettyprint linenums">
-class="pull-left"
-</pre>
-<pre class="prettyprint linenums">
+{% highlight html linenos %}
+<div class="pull-left">...</div>
+{% endhighlight %}
+{% highlight css linenos %}
 .pull-left {
   float: left;
 }
-</pre>
+{% endhighlight %}
 
           <h4>.pull-right</h4>
           <p>Float an element right</p>
-<pre class="prettyprint linenums">
-class="pull-right"
-</pre>
-<pre class="prettyprint linenums">
+{% highlight html linenos %}
+<div class="pull-right">...</div>
+{% endhighlight %}
+{% highlight css linenos %}
 .pull-right {
   float: right;
 }
-</pre>
+{% endhighlight %}
 
           <h4>.muted</h4>
           <p>Change an element's color to <code>#999</code></p>
-<pre class="prettyprint linenums">
-class="muted"
-</pre>
-<pre class="prettyprint linenums">
+{% highlight html linenos %}
+<p class="muted">...</p>
+{% endhighlight %}
+{% highlight css linenos %}
 .muted {
   color: #999;
 }
-</pre>
+{% endhighlight %}
+
 
           <h4>.clearfix</h4>
           <p>Clear the <code>float</code> on any element. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher.</p>
-<pre class="prettyprint linenums">
-class="clearfix"
-</pre>
-<pre class="prettyprint linenums">
+{% highlight html linenos %}
+<div class="clearfix">...</div>
+{% endhighlight %}
+{% highlight css linenos %}
 .clearfix {
   &:before,
   &:after {
@@ -1874,81 +1799,14 @@ class="clearfix"
     clear: both;
   }
 }
-</pre>
+{% endhighlight %}
+
 
         </section>
 
 
 
-      </div>
-    </div>
+      </div><!-- /span9 -->
+    </div><!-- row -->
 
-  </div>
-
-
-
-    <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-
-        <div class="bs-docs-social">
-          <ul class="bs-docs-social-buttons">
-            <li>
-              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-            </li>
-            <li>
-              <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twitter&repo=bootstrap&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
-            </li>
-            <li class="follow-btn">
-              <a href="https://twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
-            </li>
-            <li class="tweet-btn">
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
-            </li>
-          </ul>
-        </div>
-
-
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/blob/master/CHANGELOG.md">Changelog</a></li>
-        </ul>
-      </div>
-    </footer>
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/bootstrap-affix.js"></script>
-
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/holder/holder.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-
-    <script src="assets/js/application.js"></script>
-
-
-  </body>
-</html>
+  </div><!-- /.container -->
