@@ -4437,7 +4437,6 @@ a.counter:focus {
 
 .carousel {
   position: relative;
-  margin-bottom: 20px;
   line-height: 1;
 }
 
@@ -4513,27 +4512,27 @@ a.counter:focus {
 .carousel-control.left {
   background-color: rgba(0, 0, 0, 0.001);
   background-color: transparent;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0.001)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.001));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.001)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf000000', endColorstr='#00000000', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
 
 .carousel-control.right {
   right: 0;
   left: auto;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   background-color: transparent;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.001)), to(rgba(0, 0, 0, 0.75)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.75));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.001)), to(rgba(0, 0, 0, 0.5)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#bf000000', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
 }
 
 .carousel-control:hover,
@@ -4544,42 +4543,45 @@ a.counter:focus {
   filter: alpha(opacity=90);
 }
 
-.carousel-control .control {
+.carousel-control .carousel-control .glyphicon-chevron-left,
+.carousel-control .carousel-control .glyphicon-chevron-right {
   position: absolute;
   top: 50%;
   z-index: 5;
-  display: block;
-  margin-top: -35px;
-  margin-left: 30px;
-  font-size: 80px;
-  font-weight: 100;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: 20px;
+  font-size: 20px;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-.carousel-control.right .control {
-  margin-left: 70px;
+.carousel-control .carousel-control .glyphicon-chevron-right {
+  margin-left: 80px;
 }
 
 .carousel-indicators {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  bottom: 15px;
+  left: 50%;
   z-index: 5;
-  margin: 0;
+  width: 100px;
+  margin: 0 0 0 -50px;
+  text-align: center;
   list-style: none;
 }
 
 .carousel-indicators li {
-  display: block;
-  float: left;
-  width: 10px;
-  height: 10px;
-  margin-left: 5px;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0;
+  margin-left: 0;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #ccc;
-  background-color: rgba(255, 255, 255, 0.25);
+  border: 1px solid #fff;
   border-radius: 5px;
 }
 
@@ -4587,29 +4589,18 @@ a.counter:focus {
   background-color: #fff;
 }
 
-.carousel-caption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-  max-width: 60%;
-  padding: 40px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.carousel-caption h3,
-.carousel-caption p {
-  line-height: 20px;
-  color: #fff;
-}
-
-.carousel-caption h3 {
-  margin: 0 0 5px;
-}
-
-.carousel-caption p {
-  margin-bottom: 0;
+@media screen and (min-width: 768px) {
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .glyphicon-chevron-right {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: 30px;
+    font-size: 30px;
+  }
+  .carousel-control .glyphicon-chevron-right {
+    margin-left: 70px;
+  }
 }
 
 .jumbotron {
