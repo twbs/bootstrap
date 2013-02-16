@@ -244,7 +244,7 @@
 }
 
 // Drop shadows
-@mixin box-shadow($shadow...) { 
+@mixin box-shadow($shadow...) {
   -webkit-box-shadow: $shadow;
      -moz-box-shadow: $shadow;
           box-shadow: $shadow;
@@ -499,7 +499,7 @@
   @include reset-filter();
 
   // in these cases the gradient won't cover the background, so we override
-  &:hover, &:active, &.active, &.disabled, &[disabled] {
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
     color: $textColor;
     background-color: $endColor;
     *background-color: darken($endColor, 5%);
