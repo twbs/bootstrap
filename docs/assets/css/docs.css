@@ -331,7 +331,7 @@ section > ul li {
   -webkit-box-sizing: border-box;
   margin: 0 -1px -1px 0;
 }
-.the-icons [class^="glyphicon-"] {
+.the-icons .glyphicon {
   display: block;
   margin: 5px auto;
   vertical-align: middle;
