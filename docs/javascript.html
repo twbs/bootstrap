@@ -1470,10 +1470,10 @@ $('#myCollapsible').on('hidden', function () {
               <h1>Carousel <small>bootstrap-carousel.js</small></h1>
             </div>
 
-            <h2>Example carousel</h2>
+            <h2>Examples</h2>
             <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
             <div class="bs-docs-example">
-              <div id="myCarousel" class="carousel slide">
+              <div class="carousel slide bs-docs-carousel-example">
                 <ol class="carousel-indicators">
                   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                   <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -1499,7 +1499,7 @@ $('#myCollapsible').on('hidden', function () {
               </div>
             </div><!-- /example -->
 {% highlight html linenos %}
-<div id="myCarousel" class="carousel slide">
+<div class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -1520,18 +1520,64 @@ $('#myCollapsible').on('hidden', function () {
 
   <!-- Controls -->
   <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="control">&lsaquo;</span>
+    <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
   <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="control">&rsaquo;</span>
+    <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
 </div>
 {% endhighlight %}
 
-            <div class="alert alert-warning">
-              <strong>Heads up!</strong>
-              When implementing this carousel, remove the images we have provided and replace them with your own.
-            </div>
+            <h3>Optional captions</h3>
+            <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
+            <div class="bs-docs-example">
+              <div class="carousel slide bs-docs-carousel-example">
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img data-src="holder.js/900x500/auto/#777:#777" alt="">
+                    <div class="carousel-caption">
+                      <h3>First slide label</h3>
+                      <p>Nulla vitae elit libero, a pharetra augue. Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <img data-src="holder.js/900x500/auto/#777:#777" alt="">
+                    <div class="carousel-caption">
+                      <h3>Second slide label</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare.</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <img data-src="holder.js/900x500/auto/#777:#777" alt="">
+                    <div class="carousel-caption">
+                      <h3>Third slide label</h3>
+                      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+              </div>
+            </div><!-- /example -->
+{% highlight html linenos %}
+<div class="item active">
+  <img src="..." alt="">
+  <div class="carousel-caption">
+    <h3>...</h3>
+    <p>...</p>
+  </div>
+</div>
+{% endhighlight %}
+
 
 
             <hr class="bs-docs-separator">

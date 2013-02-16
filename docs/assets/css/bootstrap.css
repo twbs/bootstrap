@@ -4437,7 +4437,6 @@ a.counter:focus {
 
 .carousel {
   position: relative;
-  line-height: 1;
 }
 
 .carousel-inner {
@@ -4504,19 +4503,23 @@ a.counter:focus {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 120px;
+  width: 15%;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
 
 .carousel-control.left {
-  background-color: rgba(0, 0, 0, 0.001);
+  background-color: rgba(0, 0, 0, 0.0001);
   background-color: transparent;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.001)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.001));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0001));
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
@@ -4526,11 +4529,11 @@ a.counter:focus {
   left: auto;
   background-color: rgba(0, 0, 0, 0.5);
   background-color: transparent;
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.001)), to(rgba(0, 0, 0, 0.5)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.5));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001), rgba(0, 0, 0, 0.5));
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
 }
@@ -4543,28 +4546,21 @@ a.counter:focus {
   filter: alpha(opacity=90);
 }
 
-.carousel-control .carousel-control .glyphicon-chevron-left,
-.carousel-control .carousel-control .glyphicon-chevron-right {
+.carousel-control .glyphicon {
   position: absolute;
   top: 50%;
+  left: 50%;
   z-index: 5;
   display: inline-block;
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  margin-left: 20px;
-  font-size: 20px;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.carousel-control .carousel-control .glyphicon-chevron-right {
-  margin-left: 80px;
+  margin-left: -10px;
 }
 
 .carousel-indicators {
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
   left: 50%;
   z-index: 5;
   width: 100px;
@@ -4589,17 +4585,37 @@ a.counter:focus {
   background-color: #fff;
 }
 
+.carousel-caption {
+  position: absolute;
+  right: 20%;
+  bottom: 20px;
+  left: 20%;
+  display: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
 @media screen and (min-width: 768px) {
-  .carousel-control .glyphicon-chevron-left,
-  .carousel-control .glyphicon-chevron-right {
+  .carousel-control .glyphicon {
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-left: 30px;
+    margin-left: -15px;
     font-size: 30px;
   }
-  .carousel-control .glyphicon-chevron-right {
-    margin-left: 70px;
+  .carousel-caption {
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    max-width: 60%;
+    padding: 30px;
+    margin-right: 0;
+    margin-left: 0;
+    text-align: left;
   }
 }
 

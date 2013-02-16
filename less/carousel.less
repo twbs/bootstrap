@@ -6,7 +6,6 @@
 // Wrapper for the slide container and indicators
 .carousel {
   position: relative;
-  line-height: 1;
 }
 
 // Wrap all slides, but only show the active one
@@ -75,8 +74,12 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 120px;
+  width: 15%;
   .opacity(50);
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
 
   // we can't have this transition here
   // because webkit cancels the carousel
@@ -87,13 +90,13 @@
 
   // Set gradients for backgrounds
   &.left {
-    #gradient > .horizontal(rgba(0,0,0,.5), rgba(0,0,0,.001));
+    #gradient > .horizontal(rgba(0,0,0,.5), rgba(0,0,0,.0001));
     background-color: transparent;
   }
   &.right {
     left: auto;
     right: 0;
-    #gradient > .horizontal(rgba(0,0,0,.001), rgba(0,0,0,.5));
+    #gradient > .horizontal(rgba(0,0,0,.0001), rgba(0,0,0,.5));
     background-color: transparent;
   }
 
@@ -106,30 +109,24 @@
   }
 
   // Toggles
-  .carousel-control .glyphicon-chevron-left,
-  .carousel-control .glyphicon-chevron-right {
+  .glyphicon {
     position: absolute;
     top: 50%;
+    left: 50%;
     z-index: 5;
     display: inline-block;
     width:  20px;
     height: 20px;
     margin-top: -10px;
-    margin-left: 20px;
-    font-size: 20px;
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,.6);
-  }
-  .carousel-control .glyphicon-chevron-right {
-    margin-left: 80px;
+    margin-left: -10px;
   }
 }
 
-// Carousel indicator pips
+// Optional indicator pips
 // -----------------------------
 .carousel-indicators {
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
   left: 50%;
   z-index: 5;
   width: 100px;
@@ -153,20 +150,45 @@
   }
 }
 
+// Optional captions
+// -----------------------------
+// Hidden by default for smaller viewports
+.carousel-caption {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: 20px;
+  display: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
 
 // Scale up controls for >768px
 @media screen and (min-width: 768px) {
 
-  .carousel-control .glyphicon-chevron-left,
-  .carousel-control .glyphicon-chevron-right {
+  // Scale up the controls a smidge
+  .carousel-control .glyphicon {
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-left: 30px;
+    margin-left: -15px;
     font-size: 30px;
   }
-  .carousel-control .glyphicon-chevron-right {
-    margin-left: 70px;
-  }
 
+  // Show and left align the captions
+  .carousel-caption {
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: block;
+    max-width: 60%;
+    padding: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
 }
