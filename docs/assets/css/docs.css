@@ -536,7 +536,7 @@ input.focused {
 
   /* Account for fixed navbar (which is static to start) */
   body {
-    padding-top: 62px; /* Default height of navbar */
+    padding-top: 50px; /* Default height of navbar */
   }
 
   /* Tweak display of docs jumbotrons */
