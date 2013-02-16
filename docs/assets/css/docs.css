@@ -523,7 +523,8 @@ input.focused {
 -------------------------------------------------- */
 
 .bs-docs-gallery .thumbnail {
-  margin-bottom: 20px;
+  max-width: 400px;
+  margin: 0 auto 20px;
 }
 
 
