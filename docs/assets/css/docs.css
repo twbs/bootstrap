@@ -10,7 +10,7 @@
 
 body {
   position: relative; /* For scrollyspy */
-  padding-top: 62px; /* Default height of navbar */
+  /* We add the padding to the body for >768px only */
 }
 
 /*  */
@@ -534,9 +534,9 @@ input.focused {
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
-  /* Account for fixed navbar */
+  /* Account for fixed navbar (which is static to start) */
   body {
-    padding-top: 50px;
+    padding-top: 62px; /* Default height of navbar */
   }
 
   /* Tweak display of docs jumbotrons */

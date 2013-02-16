@@ -49,17 +49,11 @@
   border-radius: 0;
 }
 
-// Fixed navbar
+// Fixed navbars aren't fixed to start; that comes at >768px
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: @zindex-navbar-fixed;
   border-radius: 0;
 }
-.navbar-fixed-top    { top: 0; }
-.navbar-fixed-bottom { bottom: 0; }
 
 
 
@@ -275,6 +269,17 @@
   .navbar-inverse .nav > .divider {
     border-right-color: lighten(@navbar-inverse-bg, 5%);
   }
+
+  // Fix the top/bottom navbars when screen real estate supports it
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: @zindex-navbar-fixed;
+  }
+  .navbar-fixed-top    { top: 0; }
+  .navbar-fixed-bottom { bottom: 0; }
 
   // Required to make the collapsing navbar work on regular desktops
   .navbar .btn-navbar {
