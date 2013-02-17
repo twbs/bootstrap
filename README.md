@@ -38,13 +38,13 @@ Documentation for [previous versions](https://github.com/twitter/bootstrap/tags)
 
 ## Compiling CSS and JavaScript
 
-Bootstrap includes a makefile with convenient methods for working with the framework. Before getting started, be sure to install the necessary local dependencies:
+Bootstrap includes a [makefile](Makefile) with convenient methods for working with the framework. Before getting started, be sure to install [the necessary local dependencies](package.json):
 
 ```
 $ npm install
 ```
 
-Once installed, you'll be able to run the various make commands provided:
+When completed, you'll be able to run the various make commands provided:
 
 #### build - `make`
 Runs the recess compiler to rebuild the `/less` files and compiles the docs. Requires recess and uglify-js.
