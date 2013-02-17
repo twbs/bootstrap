@@ -66,8 +66,10 @@ Our makefile depends on you having recess, connect, uglify.js, and jshint instal
 $ npm install recess connect uglify-js jshint -g
 ```
 
-+ **build** - `make`
-Runs the recess compiler to rebuild the `/less` files and compiles the docs pages. Requires recess and uglify-js. <a href="http://twitter.github.com/bootstrap/extend.html#compiling">Read more in our docs &raquo;</a>
++ **build**
+  + `make` - Runs the recess compiler to rebuild the `/less` files and compiles the docs pages. Requires recess and uglify-js. 
+  + `make bootstrap` - Creates  `/bootstrap` folder with deployment only files in it.
+  + <a href="http://twitter.github.com/bootstrap/extend.html#compiling">Read more in our docs &raquo;</a>  
 
 + **test** - `make test`
 Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
