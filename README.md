@@ -55,6 +55,8 @@ Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/p
 #### watch - `make watch`
 This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
 
+Should you encounter problems with installing dependencies or running the makefile commands, be sure to first uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
+
 
 
 ## Contributing
