@@ -1,0 +1,288 @@
+// Typography
+// -------------------------
+
+
+@sansFontFamily:        "Open Sans","Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+
+@headingsFontFamily:    Gotham; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
+
+
+// Buttons
+// -------------------------
+@btnBackground:                     #000;
+@btnBackgroundHighlight:            darken(@white, 10%);
+@btnBorder:                         #CCC;
+
+@btnPrimaryBackground:              #9fc300;
+@btnPrimaryBackgroundHighlight:     #9fc300;
+@btnPrimaryBorder:                  #9fc300;
+
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2293b5;
+@btnInfoBorder:                  #bbb;
+
+@btnSuccessBackground:              #92c82e;
+@btnSuccessBackgroundHighlight:     #6fb622;
+@btnSuccesBorder:                	    #bbb;
+
+
+@btnWarningBackground:              #ffd24d;
+@btnWarningBackgroundHighlight:     #ffd24d;
+@btnWarningBorder:                  #bbb;
+
+@btnDangerBackground:               #e0594b;
+@btnDangerBackgroundHighlight:      #e0594b;
+@btnDangerBorder:      				#e0594b;
+
+@btnInverseBackground:              #222;
+@btnInverseBackgroundHighlight:     @grayDarker;
+@btnInverseBorder:     				@grayDarker;
+
+.btn {
+	border:1px solid transarent;
+}
+
+
+// Core
+
+.btn {
+  position: relative;
+  padding: 4px 12px;
+  margin: 0;
+  color: #333;
+  text-shadow: 0 1px 0 #fff;
+  white-space: nowrap;
+  font-family: @baseFontFamily;
+  font-weight: bold;
+  font-size: @baseFontSize;
+  text-align: center;
+  vertical-align: middle;
+  .background-clip(padding);
+  cursor: pointer;
+  background-color: @btnBackground;
+  #gradient > .vertical(#f5f5f5, #f1f1f1);
+  .border-radius(@baseBorderRadius);
+  .box-shadow(none);
+
+  &:hover {
+    text-shadow: none;
+    border-color: #b0b0b0;
+    .box-shadow(0 1px 1px rgba(0,0,0,0.1));
+    #gradient > .vertical(#f8f8f8, #f1f1f1);
+    background-position: 0 0;
+    .transition(none);
+  }
+
+  &.active,
+  &:active {
+    background-image: none;
+    outline: 0;
+    background: #e8e8e8;
+    .box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.1));
+    #gradient > .vertical(#f6f6f6, #f1f1f1);
+  }
+
+  // Disabled state
+  &.disabled,
+  &.disabled:hover,
+  &.disabled:active,
+  &.disabled.active,
+  &.disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:active,
+  &[disabled].active,
+  &[disabled]:focus {
+    border: 1px solid #dcdcdc;
+    background-color: @btnBackground;
+    #gradient > .vertical(#f5f5f5, #f1f1f1);
+    .box-shadow(none);
+    text-shadow: none;
+  }
+
+  &:focus {
+    /* Blue border on button focus. */
+    border-color: #4d90fe;
+    outline-style: none;
+  }
+}
+// Alternate buttons
+// --------------------------------------------------
+
+// Set text color
+// -------------------------
+.btn-primary,
+.btn-primary:hover,
+.btn-warning,
+.btn-warning:hover,
+.btn-danger,
+.btn-danger:hover,
+.btn-success,
+.btn-success:hover,
+.btn-info,
+.btn-info:hover,
+.btn-inverse,
+.btn-inverse:hover {
+  color: @white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+// Provide *some* extra contrast for those who can get it
+.btn-primary:hover,
+.btn-warning:hover,
+.btn-danger:hover,
+.btn-success:hover,
+.btn-info:hover,
+.btn-inverse:hover {
+  .box-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+}
+.btn-primary:active,
+.btn-primary.active,
+.btn-warning:active,
+.btn-warning.active,
+.btn-danger:active,
+.btn-danger.active,
+.btn-success:active,
+.btn-success.active,
+.btn-info:active,
+.btn-info.active,
+.btn-inverse:active,
+.btn-inverse.active {
+  .box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.btn-primary.active,
+.btn-primary:active,
+.btn-primary:hover,
+.btn-warning.active,
+.btn-warning:active,
+.btn-warning:hover,
+.btn-danger.active,
+.btn-danger:active,
+.btn-danger:hover,
+.btn-success.active,
+.btn-success:active,
+.btn-success:hover,
+.btn-info.active,
+.btn-info:active,
+.btn-info:hover,
+.btn-inverse.active,
+.btn-inverse:active,
+.btn-inverse:hover {
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+
+
+
+// Primary Button
+// -------------------------
+.btn-primary {
+  .btnBackground(#4d90fe, #4787ed, #fff, #4d90fe);
+}
+
+// Danger Button
+// -------------------------
+.btn-danger {
+  .btnBackground(#dd4b39, #d14836, #fff, #dd4b39);
+}
+
+// Warning Button
+// -------------------------
+.btn-warning {
+  .btnBackground(lighten(@orange, 15%), lighten(@orange, 10%), #fff, lighten(@orange, 15%));
+}
+
+// Success Button
+// -------------------------
+.btn-success {
+  .btnBackground(#35aa47, #35aa47, #fff, #359947);
+}
+
+// Info Button
+// -------------------------
+.btn-info {
+  .btnBackground(@btnInfoBackground, @btnInfoBackground, #fff, darken(@btnInfoBackground, 5%));
+}
+
+// Inverse Button
+// -------------------------
+.btn-inverse {
+  .btnBackground(lighten(@btnInverseBackground, 1%), lighten(@btnInverseBackground, 1%), #fff, darken(@btnInverseBackground, 3%));
+}
+
+
+// Link buttons
+// --------------------------------------------------
+
+// Make a button look and behave like a link
+.btn-link,
+.btn-link:active,
+.btn-link[disabled] {
+  background-color: transparent;
+  background-image: none;
+  .box-shadow(none);
+}
+.btn-link {
+  border-color: transparent;
+  cursor: pointer;
+  color: @linkColor;
+  .border-radius(0);
+}
+.btn-link:hover {
+  border-color: transparent;
+  color: @linkColorHover;
+  text-decoration: underline;
+  background-color: transparent;
+  background-image: none;
+  .box-shadow(none);
+}
+.btn-link[disabled]:hover {
+  color: @grayDark;
+  text-decoration: none;
+}
+
+
+
+// Button backgrounds
+// ------------------
+.btnBackground(@startColor, @endColor, @textColor, @borderColor) {
+  border: 1px solid @borderColor;
+  color: @textColor;
+  #gradient > .vertical(@startColor, @endColor);
+  *background-color: @startColor;
+  .reset-filter();
+
+  // in these cases the gradient won't cover the background, so we override
+  &:hover, &:active, &.active {
+    border: 1px solid darken(@borderColor, 15%);
+    color: @textColor;
+    #gradient > .vertical(@startColor, darken(@endColor, 5%));
+    .reset-filter();
+    background-color: darken(@endColor, 5%);
+    background-color: darken(@endColor, 5%) e("\9");
+  }
+  &:active, &.active {
+    border: 1px solid darken(@borderColor, 10%);
+    #gradient > .vertical(@startColor, darken(@endColor, 10%));
+    .reset-filter();
+  }
+  &:focus {
+    border: 1px solid @borderColor;
+    .box-shadow(inset 0 0 0 1px #fff);
+  }
+  &.disabled, &[disabled], 
+  &.disabled:hover, &[disabled]:hover, 
+  &.disabled:active, &[disabled]:active, 
+  &.disabled:focus, &[disabled]:focus {
+    border: 1px solid @borderColor;
+    #gradient > .vertical(@startColor, @endColor);
+    .reset-filter();
+    background-color: @startColor;
+    background-color: @startColor e("\9");
+  }
+}
