@@ -3120,6 +3120,7 @@ button.close {
 */
 
 .navbar {
+  position: relative;
   padding: 10px 15px;
   background-color: #eeeeee;
   border-radius: 4px;
@@ -3160,7 +3161,6 @@ button.close {
 }
 
 .navbar-static-top {
-  position: static;
   border-radius: 0;
 }
 
@@ -3181,40 +3181,51 @@ button.close {
   bottom: 0;
 }
 
-.navbar .brand {
-  display: inline-block;
+.navbar-brand {
+  display: block;
+  max-width: 200px;
   padding: 7px 15px;
+  margin-right: auto;
+  margin-left: auto;
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
   color: #777777;
+  text-align: center;
 }
 
-.navbar .brand:hover,
-.navbar .brand:focus {
+.navbar-brand:hover,
+.navbar-brand:focus {
   color: #5e5e5e;
   text-decoration: none;
   background-color: transparent;
 }
 
-.btn-navbar {
-  float: right;
-  padding: 10px 12px;
-  background-color: #ddd;
-  border: 0;
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.btn-navbar .icon-bar {
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  background-color: #ddd;
+}
+
+.navbar-toggle .icon-bar {
   display: block;
-  width: 20px;
+  width: 22px;
   height: 2px;
   background-color: #fff;
   border-radius: 1px;
 }
 
-.btn-navbar .icon-bar + .icon-bar {
-  margin-top: 3px;
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
 }
 
 .navbar .nav > .divider {
@@ -3276,12 +3287,12 @@ button.close {
   background-color: #222222;
 }
 
-.navbar-inverse .brand {
+.navbar-inverse .navbar-brand {
   color: #999999;
 }
 
-.navbar-inverse .brand:hover,
-.navbar-inverse .brand:focus {
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
   color: #ffffff;
   background-color: transparent;
 }
@@ -3307,8 +3318,13 @@ button.close {
   background-color: #080808;
 }
 
-.navbar-inverse .btn-navbar {
-  background-color: #444;
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #333;
 }
 
 .navbar-inverse .nav > .divider {
@@ -3345,7 +3361,7 @@ button.close {
     padding-top: 0;
     padding-bottom: 0;
   }
-  .navbar .brand {
+  .navbar-brand {
     float: left;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -3379,7 +3395,10 @@ button.close {
   .navbar-inverse .nav > .divider {
     border-right-color: #2f2f2f;
   }
-  .navbar .btn-navbar {
+  .navbar-toggle {
+    position: relative;
+    top: auto;
+    left: auto;
     display: none;
   }
   .nav-collapse.collapse {
