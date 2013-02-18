@@ -2293,7 +2293,6 @@ table th[class*="span"],
   line-height: 1em;
   text-align: center;
   text-decoration: inherit;
-  opacity: 1;
   speak: none;
 }
 
@@ -2638,6 +2637,12 @@ table th[class*="span"],
 }
 
 /* '' */
+
+.icon-lock-open:before {
+  content: '\f513';
+}
+
+/* '' */
 
 .icon-link:before {
   content: '\f517';
@@ -2997,7 +3002,7 @@ button.close {
   background-image: -o-linear-gradient(top, #eeeeee, #e9e9e9);
   background-image: linear-gradient(to bottom, #eeeeee, #e9e9e9);
   background-repeat: repeat-x;
-  border: 1px solid #eeeeee;
+  border: 1px solid #dddddd;
   *border: 0;
   border-color: #e9e9e9 #e9e9e9 #c3c3c3;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);

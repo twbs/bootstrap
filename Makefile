@@ -3,7 +3,13 @@ BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 DATE=$(shell date +%I:%M%p)
-CHECK=\033[32m✔\033[39m
+UNAME = $(shell uname -s)
+ifeq ($(UNAME), MINGW32_NT-6.2)
+  CHECK=
+else
+  CHECK=\033[32m✔\033[39m
+  NEWLINE=\n
+endif
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
 
@@ -12,9 +18,9 @@ HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\
 #
 
 build:
-	@echo "\n${HR}"
+	@echo "${NEWLINE}${HR}"
 	@echo "Building Bootstrap..."
-	@echo "${HR}\n"
+	@echo "${HR}${NEWLINE}"
 	@jshint js/*.js --config js/.jshintrc
 	@jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "Running JSHint on javascript...             ${CHECK} Done"
@@ -29,15 +35,19 @@ build:
 	@echo "Compiling documentation...                  ${CHECK} Done"
 	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
 	@./node_modules/.bin/uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
-	@echo "/**\n* Bootstrap.js v2.3.0 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
+	@echo "/**${NEWLINE}" > docs/assets/js/copyright.js
+	@echo "* Bootstrap.js v2.3.0 by @fat & @mdo${NEWLINE}" >> docs/assets/js/copyright.js
+	@echo "* Copyright 2012 Twitter, Inc.${NEWLINE}" >> docs/assets/js/copyright.js
+	@echo "* http://www.apache.org/licenses/LICENSE-2.0.txt${NEWLINE}" >> docs/assets/js/copyright.js
+	@echo "*/${NEWLINE}" >> docs/assets/js/copyright.js
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
 	@echo "Compiling and minifying javascript...       ${CHECK} Done"
 	@echo "\n${HR}"
 	@echo "Bootstrap successfully built at ${DATE}."
-	@echo "${HR}\n"
+	@echo "${HR}${NEWLINE}"
 	@echo "Thanks for using Bootstrap,"
-	@echo "<3 @mdo and @fat\n"
+	@echo "<3 @mdo and @fat${NEWLINE}"
 
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
