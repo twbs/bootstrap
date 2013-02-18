@@ -34,8 +34,8 @@
     })
 
     // add tipsies to grid for scaffolding
-    if ($('#gridSystem').length) {
-      $('#gridSystem').tooltip({
+    if ($('#grid-system').length) {
+      $('#grid-system').tooltip({
           selector: '.show-grid > [class*="span"]'
         , title: function () { return $(this).width() + 'px' }
       })
