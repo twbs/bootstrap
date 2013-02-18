@@ -1135,10 +1135,6 @@ input[type="file"] {
   line-height: 34px;
 }
 
-select {
-  border: 1px solid #cccccc;
-}
-
 select[multiple],
 select[size] {
   height: auto;
