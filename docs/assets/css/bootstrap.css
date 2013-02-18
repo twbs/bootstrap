@@ -3034,6 +3034,26 @@ button.close {
   border-bottom: 1px solid #ffffff;
 }
 
+.tabbable:before,
+.tabbable:after {
+  display: table;
+  content: " ";
+}
+
+.tabbable:after {
+  clear: both;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+
 /*
 // Prevent IE8 from misplacing imgs
 // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
@@ -3099,26 +3119,6 @@ button.close {
 // Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover {
   border-color: @grayLight;
-}
-
-
-
-// Tabbable tabs
-// -------------------------
-
-// Clear any floats
-.tabbable {
-  .clearfix();
-}
-
-// Show/hide tabbable areas
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-  display: none;
-}
-.tab-content > .active,
-.pill-content > .active {
-  display: block;
 }
 
 */

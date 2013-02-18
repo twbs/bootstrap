@@ -9,6 +9,7 @@
 -------------------------------------------------- */
 
 body {
+  padding-top: 54px;
   position: relative; /* For scrollyspy */
   /* We add the padding to the body for >768px only */
 }
@@ -308,6 +309,11 @@ section > ul li {
 }
 .bs-docs-example-submenu > .pull-left + .pull-left {
   margin-left: 20px;
+}
+
+/* Example tabbable tabs */
+.bs-docs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
 }
 
 
