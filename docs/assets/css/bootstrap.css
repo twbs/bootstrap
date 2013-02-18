@@ -3170,7 +3170,19 @@ button.close {
 
 .navbar-fixed-top,
 .navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
   border-radius: 0;
+}
+
+.navbar-fixed-top {
+  top: 0;
+}
+
+.navbar-fixed-bottom {
+  bottom: 0;
 }
 
 .navbar .brand {
@@ -3370,19 +3382,6 @@ button.close {
   }
   .navbar-inverse .nav > .divider {
     border-right-color: #2f2f2f;
-  }
-  .navbar-fixed-top,
-  .navbar-fixed-bottom {
-    position: fixed;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-  }
-  .navbar-fixed-top {
-    top: 0;
-  }
-  .navbar-fixed-bottom {
-    bottom: 0;
   }
   .navbar .btn-navbar {
     display: none;
