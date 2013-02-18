@@ -4263,7 +4263,7 @@ a.thumbnail:focus {
   list-style: none;
 }
 
-.counter {
+.badge {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
@@ -4278,33 +4278,33 @@ a.thumbnail:focus {
   border-radius: 10px;
 }
 
-.counter:empty {
+.badge:empty {
   display: none;
 }
 
-a.counter:hover,
-a.counter:focus {
+a.badge:hover,
+a.badge:focus {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.btn .counter {
+.btn .badge {
   position: relative;
   top: -1px;
 }
 
-.btn-mini .counter {
+.btn-mini .badge {
   top: 0;
 }
 
-.nav-list > .active > a > .counter,
-.nav-pills > .active > a > .counter {
+.nav-list > .active > a > .badge,
+.nav-pills > .active > a > .badge {
   color: #428bca;
   background-color: #fff;
 }
 
-.nav-pills > li > a > .counter {
+.nav-pills > li > a > .badge {
   margin-left: 3px;
 }
 

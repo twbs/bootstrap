@@ -28,7 +28,7 @@ title: Components
           <li><a href="#navbar"><i class="glyphicon glyphicon-chevron-right"></i> Navbar</a></li>
           <li><a href="#breadcrumbs"><i class="glyphicon glyphicon-chevron-right"></i> Breadcrumbs</a></li>
           <li><a href="#pagination"><i class="glyphicon glyphicon-chevron-right"></i> Pagination</a></li>
-          <li><a href="#counters"><i class="glyphicon glyphicon-chevron-right"></i> Counters</a></li>
+          <li><a href="#badges"><i class="glyphicon glyphicon-chevron-right"></i> Badges</a></li>
           <li><a href="#typography"><i class="glyphicon glyphicon-chevron-right"></i> Typography</a></li>
           <li><a href="#thumbnails"><i class="glyphicon glyphicon-chevron-right"></i> Thumbnails</a></li>
           <li><a href="#alerts"><i class="glyphicon glyphicon-chevron-right"></i> Alerts</a></li>
@@ -1274,44 +1274,44 @@ title: Components
 
 
 
-        <!-- Counters
+        <!-- Badges
         ================================================== -->
-        <section id="counters">
+        <section id="badges">
           <div class="page-header">
-            <h1>Counters</h1>
+            <h1>Badges</h1>
           </div>
-          <p class="lead">Easily highlight new or unread items by adding a <code>&lt;span class="counter"&gt;</code> to links, Bootstrap navs, and more.</p>
+          <p class="lead">Easily highlight new or unread items by adding a <code>&lt;span class="badge"&gt;</code> to links, Bootstrap navs, and more.</p>
 
           <div class="bs-docs-example">
-            <a href="#">Inbox <span class="counter">42</span></a>
+            <a href="#">Inbox <span class="badge">42</span></a>
           </div>
 {% highlight html linenos %}
-<a href="#">Inbox <span class="counter">42</span></a>
+<a href="#">Inbox <span class="badge">42</span></a>
 {% endhighlight %}
 
           <h4>Self collapsing</h4>
-          <p>When there are no new or unread items, counters will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
+          <p>When there are no new or unread items, badges will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
 
           <h4>Adapts to active nav states</h4>
-          <p>Built-in styles are included for placing counters in active states in pill and list navigations.</p>
+          <p>Built-in styles are included for placing badges in active states in pill and list navigations.</p>
           <div class="bs-docs-example">
             <ul class="nav nav-pills">
-              <li class="active"><a href="#">Home <span class="counter">42</span></a></li>
+              <li class="active"><a href="#">Home <span class="badge">42</span></a></li>
               <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages <span class="counter">3</span></a></li>
+              <li><a href="#">Messages <span class="badge">3</span></a></li>
             </ul>
             <br>
             <ul class="nav nav-list" style="max-width: 260px;">
               <li class="active">
                 <a href="#">
-                  <span class="counter pull-right">42</span>
+                  <span class="badge pull-right">42</span>
                   Home
                 </a>
               </li>
               <li><a href="#">Profile</a></li>
               <li>
                 <a href="#">
-                  <span class="counter pull-right">3</span>
+                  <span class="badge pull-right">3</span>
                   Messages
                 </a>
               </li>
@@ -1321,7 +1321,7 @@ title: Components
 <ul class="nav nav-list">
   <li class="active">
     <a href="#">
-      <span class="counter pull-right">42</span>
+      <span class="badge pull-right">42</span>
       Home
     </a>
   </li>
