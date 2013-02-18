@@ -14,8 +14,8 @@ body {
 }
 
 /*  */
-body > .container,
-.footer .container {
+.bs-docs-body > .container,
+.bs-docs-body .footer .container {
   padding-left:  15px;
   padding-right: 15px;
 }
