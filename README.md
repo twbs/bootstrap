@@ -68,8 +68,8 @@ Keep track of development and community news.
 
 
 ## Developers
-We have included a makefile with convenience methods for working with the Bootstrap library. On Windows download [GNU utilities for Win32](http://unxutils.sourceforge.net/) and make sure that make.exe is on your path.
 
+We have included a makefile with convenience methods for working with the Bootstrap library.
 
 + **dependencies**
 Our makefile depends on you having recess, connect, uglify.js, and jshint installed. To install, just run the following command in npm:

@@ -10,7 +10,6 @@
 *.vi
 *~
 *.sass-cache
-web.config
 
 # OS or Editor folders
 .DS_Store
