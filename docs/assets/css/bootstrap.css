@@ -4263,6 +4263,58 @@ a.thumbnail:focus {
   list-style: none;
 }
 
+.label {
+  padding: .25em .6em;
+  font-size: 75%;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #999999;
+  border-radius: .25em;
+}
+
+a.label:hover,
+a.label:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.label-danger {
+  background-color: #d9534f;
+}
+
+.label-danger[href] {
+  background-color: #c9302c;
+}
+
+.label-warning {
+  background-color: #f0ad4e;
+}
+
+.label-warning[href] {
+  background-color: #ec971f;
+}
+
+.label-success {
+  background-color: #5cb85c;
+}
+
+.label-success[href] {
+  background-color: #449d44;
+}
+
+.label-info {
+  background-color: #5bc0de;
+}
+
+.label-info[href] {
+  background-color: #31b0d5;
+}
+
 .badge {
   display: inline-block;
   min-width: 10px;
