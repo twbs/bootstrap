@@ -15,7 +15,7 @@ body {
 
 /*  */
 .bs-docs-body > .container,
-.bs-docs-body .footer .container {
+.bs-docs-footer .container {
   padding-left:  15px;
   padding-right: 15px;
 }
@@ -106,23 +106,23 @@ section > ul li {
 /* Marketing section of Overview
 -------------------------------------------------- */
 
-.marketing {
+.bs-docs-marketing {
   text-align: center;
   color: #5a5a5a;
 }
-.marketing h1 {
+.bs-docs-marketing h1 {
   margin: 60px 0 10px;
   font-size: 50px;
   line-height: 1;
 }
-.marketing h2 {
+.bs-docs-marketing h2 {
   margin-bottom: 5px;
 }
-.marketing p {
+.bs-docs-marketing p {
   font-size: 16px;
   line-height: 1.4;
 }
-.marketing .marketing-byline {
+.bs-docs-marketing .marketing-byline {
   margin-bottom: 40px;
   font-size: 21px;
   font-weight: 300;
@@ -436,13 +436,13 @@ section > ul li {
 /* Footer
 -------------------------------------------------- */
 
-.footer {
+.bs-docs-footer {
   text-align: center;
   padding: 30px 0;
   margin-top: 100px;
   border-top: 1px solid #e5e5e5;
 }
-.footer p {
+.bs-docs-footer p {
   margin-bottom: 0;
   color: #777;
 }
