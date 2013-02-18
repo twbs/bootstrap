@@ -1,0 +1,47 @@
+.zero {
+  variadic: true;
+  zero: 0;
+  one: 1;
+  two: 2;
+  three: 3;
+}
+.one {
+  variadic: true;
+  one: 1;
+  one-req: 1;
+  two: 2;
+  three: 3;
+}
+.two {
+  variadic: true;
+  two: 2;
+  three: 3;
+}
+.three {
+  variadic: true;
+  three-req: 3;
+  three: 3;
+}
+.left {
+  left: 1;
+}
+.right {
+  right: 1;
+}
+.border-right {
+  color: black;
+  border-right: 4px;
+}
+.border-left {
+  color: black;
+  border-left: 4px;
+}
+.only-right {
+  right: 33;
+}
+.only-left {
+  left: 33;
+}
+.left-right {
+  both: 330;
+}

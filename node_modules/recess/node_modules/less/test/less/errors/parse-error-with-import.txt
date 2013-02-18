@@ -1,0 +1,4 @@
+ParseError: Syntax Error on line 8 in {path}parse-error-with-import.less:8:8
+7 
+8 nonsense;
+9 

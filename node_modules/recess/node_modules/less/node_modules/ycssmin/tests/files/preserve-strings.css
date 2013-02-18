@@ -1,0 +1,7 @@
+/* preserving strings */
+.sele {
+  content: "\"keep  \"    me";
+  something: '\\\' .     . ';
+  else: 'empty{}';
+  content: "/* test */"; /* <---- this is not a comment, should be be kept */
+}

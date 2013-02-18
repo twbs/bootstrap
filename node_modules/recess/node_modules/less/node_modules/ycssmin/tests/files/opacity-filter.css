@@ -1,0 +1,14 @@
+/*  example from https://developer.mozilla.org/en/CSS/opacity */
+pre {                               /* make the box translucent (80% opaque) */
+   border: solid red;
+   opacity: 0.8;                    /* Firefox, Safari(WebKit), Opera */
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE 8 */
+   filter: PROGID:DXImageTransform.Microsoft.Alpha(Opacity=80);       /* IE 4-7 */
+   zoom: 1;       /* set "zoom", "width" or "height" to trigger "hasLayout" in IE 7 and lower */ 
+}
+
+/** and again */
+code {
+   -ms-filter: "PROGID:DXImageTransform.Microsoft.Alpha(Opacity=80)"; /* IE 8 */
+   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);       /* IE 4-7 */
+}

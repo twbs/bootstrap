@@ -1,0 +1,133 @@
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h1 p:hover,
+h2 p:hover,
+h3 p:hover {
+  color: red;
+}
+#all {
+  color: blue;
+}
+#the {
+  color: blue;
+}
+#same {
+  color: blue;
+}
+ul,
+li,
+div,
+q,
+blockquote,
+textarea {
+  margin: 0;
+}
+td {
+  margin: 0;
+  padding: 0;
+}
+td,
+input {
+  line-height: 1em;
+}
+a {
+  color: red;
+}
+a:hover {
+  color: blue;
+}
+div a {
+  color: green;
+}
+p a span {
+  color: yellow;
+}
+.foo .bar .qux,
+.foo .baz .qux {
+  display: block;
+}
+.qux .foo .bar,
+.qux .foo .baz {
+  display: inline;
+}
+.qux.foo .bar,
+.qux.foo .baz {
+  display: inline-block;
+}
+.qux .foo .bar .biz,
+.qux .foo .baz .biz {
+  display: none;
+}
+.a.b.c {
+  color: red;
+}
+.c .b.a {
+  color: red;
+}
+.foo .p.bar {
+  color: red;
+}
+.foo.p.bar {
+  color: red;
+}
+.foo + .foo {
+  background: amber;
+}
+.foo + .foo {
+  background: amber;
+}
+.foo + .foo,
+.foo + .bar,
+.bar + .foo,
+.bar + .bar {
+  background: amber;
+}
+.foo a > .foo a,
+.foo a > .bar a,
+.foo a > .foo b,
+.foo a > .bar b,
+.bar a > .foo a,
+.bar a > .bar a,
+.bar a > .foo b,
+.bar a > .bar b,
+.foo b > .foo a,
+.foo b > .bar a,
+.foo b > .foo b,
+.foo b > .bar b,
+.bar b > .foo a,
+.bar b > .bar a,
+.bar b > .foo b,
+.bar b > .bar b {
+  background: amber;
+}
+.other ::fnord {
+  color: #ff0000;
+}
+.other::fnord {
+  color: #ff0000;
+}
+.other ::bnord {
+  color: #ff0000;
+}
+.other::bnord {
+  color: #ff0000;
+}
+.blood {
+  color: red;
+}
+.blood {
+  color: red;
+}
+.bloodred {
+  color: green;
+}
+#blood.blood.red.black {
+  color: black;
+}
+:nth-child(3):nth-child(3) {
+  second-use: deprecated;
+}
+.test:nth-child(odd):not( :nth-child(3)) {
+  color: #ff0000;
+}

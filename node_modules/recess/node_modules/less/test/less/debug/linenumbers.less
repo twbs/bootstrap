@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+@import "import/test.less";
+
+.start() {
+  .test2 {
+      color: red;
+  }
+}
+
+.mix() {
+    color: black;
+}
+
+.test1 {
+  .mix();
+}
+
+.start();
+
+.mixin_import1();
+
+.mixin_import2();

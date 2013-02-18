@@ -1,0 +1,2 @@
+ParseError: missing closing `}` in {path}parse-error-missing-bracket.less:3:0
+2   background-color: #fff;

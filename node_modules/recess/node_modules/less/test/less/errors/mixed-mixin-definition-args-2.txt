@@ -1,0 +1,4 @@
+SyntaxError: Cannot mix ; and , as delimiter types in {path}mixed-mixin-definition-args-2.less:5:25
+4 .mixin-test {
+5     .mixin(@a: 5, @b: 6; @c: 7);
+6 }

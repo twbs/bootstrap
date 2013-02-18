@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+.mixin_import1() {
+    @media all {
+        .tst {
+            color: black;
+            @media screen {
+                color: red;
+                .tst3 {
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.mixin_import2() {
+    .tst2 {
+        color: white;
+    }
+}
+
+.tst3 {
+    color: grey;
+}

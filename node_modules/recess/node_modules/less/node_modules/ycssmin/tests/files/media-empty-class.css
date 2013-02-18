@@ -1,0 +1,16 @@
+/*! preserved */
+emptiness {}
+
+@import "another.css";
+/* I'm empty - delete me */
+empty { ;}
+
+@media print {
+	.noprint { display: none; }
+}
+
+@media screen {
+	/* this rule should be removed, not simply minified.*/
+	.breakme {}
+	.printonly { display: none; }
+}

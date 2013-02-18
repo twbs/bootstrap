@@ -1,0 +1,36 @@
+.mixin (@a: 1px, @b: 50%) {
+  width: @a * 5;
+  height: @b - 1%;
+  args: @arguments;
+}
+.mixin (@a: 1px, @b: 50%) when (@b > 75%){
+  text-align: center;
+}
+ 
+.named-arg {
+  color: blue;
+  .mixin(@b: 100%);
+}
+ 
+.class {
+  @var: 20%;
+  .mixin(@b: @var);
+}
+
+.all-args-wrong-args {
+  .mixin(@b: 10%, @a: 2px);
+}
+
+.mixin2 (@a: 1px, @b: 50%, @c: 50) {
+  width: @a * 5;
+  height: @b - 1%;
+  color: #000000 + @c;
+}
+
+.named-args2 {
+  .mixin2(3px, @c: 100);
+}
+
+.named-args3 {
+  .mixin2(@b: 30%, @c: #123456);
+}

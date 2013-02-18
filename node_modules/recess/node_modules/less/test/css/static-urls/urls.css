@@ -1,0 +1,42 @@
+@import "folder (1)/../css/background.css";
+
+@import "folder (1)/import-test-d.css";
+@font-face {
+  src: url("/fonts/garamond-pro.ttf");
+  src: local(Futura-Medium), url(folder\ \(1\)/fonts.svg#MyGeometricModern) format("svg");
+}
+#shorthands {
+  background: url("http://www.lesscss.org/spec.html") no-repeat 0 4px;
+}
+#misc {
+  background-image: url(folder\ \(1\)/images/image.jpg);
+}
+#data-uri {
+  background: url(data:image/png;charset=utf-8;base64,
+    kiVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/
+    k//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U
+    kg9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC);
+  background-image: url(data:image/x-png,f9difSSFIIGFIFJD1f982FSDKAA9==);
+  background-image: url(http://fonts.googleapis.com/css?family=\"Rokkitt\":\(400\),700);
+}
+#svg-data-uri {
+  background: transparent url('data:image/svg+xml, <svg version="1.1"><g></g></svg>');
+}
+.comma-delimited {
+  background: url(folder\ \(1\)/bg.jpg) no-repeat, url(folder\ \(1\)/bg.png) repeat-x top left, url(folder\ \(1\)/bg);
+}
+.values {
+  url: url('folder (1)/Trebuchet');
+}
+#logo {
+  width: 100px;
+  height: 100px;
+  background: url('folder (1)/../assets/logo.png');
+}
+@font-face {
+  font-family: xecret;
+  src: url('folder (1)/../assets/xecret.ttf');
+}
+#secret {
+  font-family: xecret, sans-serif;
+}

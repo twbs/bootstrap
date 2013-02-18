@@ -1,0 +1,22 @@
+
+.mixin (9) {
+  border: 9 !important;  
+}
+.mixin (@a: 0) {
+  border: @a;
+  boxer: @a;
+  .inner {
+    test: @a;
+  }
+  // comment
+}
+
+.class {
+  .mixin(1);
+  .mixin(2) !important;
+  .mixin(3);
+  .mixin(4) !important;
+  .mixin(5);
+  .mixin !important;
+  .mixin(9);
+}

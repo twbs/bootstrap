@@ -1,0 +1,2 @@
+ParseError: missing opening `{` in {path}parse-error-curly-bracket.less:1:1
+1 }}

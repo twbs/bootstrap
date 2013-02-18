@@ -1,0 +1,75 @@
+html { font-family: "Lucida Grande","Trebuchet MS",sans-serif; font-size: 12pt; }
+body { max-width: 60em; }
+.title  { text-align: center; }
+.todo   { color: red; }
+.done   { color: green; }
+.tag    { background-color:lightblue; font-weight:normal }
+.target { }
+.timestamp { color: grey }
+.timestamp-kwd { color: CadetBlue }
+p.verse { margin-left: 3% }
+pre {
+  border: 1pt solid #AEBDCC;
+  background-color: #F3F5F7;
+  padding: 5pt;
+  font-family: monospace;
+  font-size: 90%;
+  overflow:auto;
+}
+pre.src {
+  background-color: #eee; color: #112; border: 1px solid #000;
+}
+table { border-collapse: collapse; }
+td, th { vertical-align: top; }
+dt { font-weight: bold; }
+div.figure { padding: 0.5em; }
+div.figure p { text-align: center; }
+.linenr { font-size:smaller }
+.code-highlighted {background-color:#ffff00;}
+.org-info-js_info-navigation { border-style:none; }
+#org-info-js_console-label { font-size:10px; font-weight:bold;
+  white-space:nowrap; }
+.org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+  font-weight:bold; }
+
+sup {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.5em;
+  font-size: 80%;
+}
+
+sup a:link, sup a:visited {
+  text-decoration: none;
+  color: #c00;
+}
+
+sup a:before { content: "["; color: #999; }
+sup a:after { content: "]"; color: #999; }
+
+h1.title { border-bottom: 4px solid #000; padding-bottom: 5px; margin-bottom: 2em; }
+
+#postamble {
+  color: #777;
+  font-size: 90%;
+  padding-top: 1em; padding-bottom: 1em; border-top: 1px solid #999;
+  margin-top: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  text-align: right;
+}
+
+#postamble p { margin: 0; }
+
+#footnotes { border-top: 1px solid #000; }
+
+h1 { font-size: 200% }
+h2 { font-size: 175% }
+h3 { font-size: 150% }
+h4 { font-size: 125% }
+
+h1, h2, h3, h4 { font-family: "Bookman",Georgia,"Times New Roman",serif; font-weight: normal; }
+
+@media print {
+  html { font-size: 11pt; }
+}

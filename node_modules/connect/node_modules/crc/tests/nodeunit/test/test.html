@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Nodeunit Test Suite</title>
+    <!--
+      Note this file is only used for 'make browser', when it is copied to
+      dist/browser/test.html for running the browser test suite
+    -->
+    <link rel="stylesheet" href="nodeunit.css" type="text/css" media="screen" />
+    <script src="nodeunit.js"></script>
+    <script src="test-base.js"></script>
+    <script src="test-runmodule.js"></script>
+    <script src="test-runtest.js"></script>
+    <script src="test-testcase.js"></script>
+  </head>
+  <body>
+    <h1 id="nodeunit-header">Nodeunit Test Suite</h1>
+    <script>
+      nodeunit.run({
+        'test-base': test_base,
+        'test-runmodule': test_runmodule,
+        'test-runtest': test_runtest,
+        'test-testcase': test_testcase
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+html>/**/body p{color:blue}

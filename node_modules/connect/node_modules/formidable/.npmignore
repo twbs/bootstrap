@@ -1,0 +1,4 @@
+/test/tmp/
+*.upload
+*.un~
+*.http

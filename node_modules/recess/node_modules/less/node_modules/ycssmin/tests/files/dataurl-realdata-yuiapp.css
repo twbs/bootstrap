@@ -1,0 +1,106 @@
+html {
+    background: #fff;
+    color: #555;
+    height: 100%;
+}
+ 
+#hd, #bd, #ft {
+    padding: 0 50px;
+}
+ 
+#bd {
+    padding-bottom: 50px;
+    border-bottom: 1px solid #006e9c;
+}
+ 
+#ft {
+    background: transparent no-repeat 0% 100%;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAeCAMAAAC/pnaKAAAAwFBMVEUkXIAoYYQoYYQoYYQyao02bpE6cpQ6cpREe51LgqNUiqtUiqtUiqtZj7BckrNlmrtlmrtlmrtroMB3qsp3qsp3qsp+sdCHudiHudiHudiHudiPwN+YyOaYyOaYyOaf0O2g0O6n1vOn1vOn1vOn1vOw3vu45f245f245f3B7f7K9f7K9f7K9f7X/v7X/v7p//7p//79//79//4AAABhAGMAbwBzAC4AcwB0AHIAaQBuAGcAcwABAAAAwIwmGwEAAABQQKFUAAAAQHRSTlP///////////////////////////////////////////////////////////////////8A////////////////0pfSbwAAAdtJREFUOI2NlNGqgzAMhv/ClDlQQcFdKOx4McFCKcH3f7eTtLWr07mFiUvbzz9Nk2LZGRH5937qZTiGyEx0Cr5xQpEd6xzNueCGc9SzUmAzP8cplO1zgRRutBAlM9EhZwknWj1LKXkwbOVojTqMEpKZOfeUD3OnR24VWeJf1OOBTnTgw8zZr3LyOlbdrWrdGlpG6Alz4Ni3RcT4Ldm8wHpOo9Yo5CPsdngM6D3HmLlESrgHD+YvrtEuUeLeMf7x7j23GJVgbJoHs0/cI3B7TNkfON5btsEUrvSdY694U0P9nXMp2mDsdbLmY14CN8XDjtzgo9CuqpYnGoMscDUmn08qsbOn/3Lte6rgP1eM7qQ1YMP+yPhiTmx2laDQspytgJI1MbIzZ7yHfj2/hYYtZ1xMM4dc3iTukjgJyKsrUBEH4uqFXNUh3aXxtWjbC3DpH8LRVPJ8MXLoA8fsz51ue73Q+1z7RkTEF0dWa1o5a8001C6ZbGuzh0bSTo9iS8X+C/NWbfTW5uZ9Vu4QaL20Xv3uhgyrZUXVtI2NfS3fbzgP75dNek/YbrL+k/EykecuZf6ZOzDJYsf9PCV3xhFHq7043mw+H1ylW+5Ab5jpADuPM2Z1P3POLWnUG/sHnIDsqkOjlqoAAAAASUVORK5CYII=);
+    /* image width: 55px */
+    padding: 0 0 40px 0;
+    margin: 50px;
+}
+ 
+#hd, #bd {
+    background: #f9f9f9;
+}
+ 
+body {
+    margin: 0;
+    padding: 0;
+    font: 12px "Helvetica Nueue", Arial, sans-serif;
+}
+ 
+#hd {
+    color: #fff;
+    padding-top: 50px;
+    margin: 0;
+}
+ 
+#hd, h1, h2, p, .color {
+    margin: auto;
+}
+ 
+h1, h2, a {
+    color: #006e9c;
+}
+ 
+h1, h2 {
+    margin-top: 0;
+}
+ 
+h4 .title  {
+    font-weight: bold;
+    letter-spacing: -2px;
+    font-size: 47px;
+    text-shadow: 0 1px 0 #369;
+    background: #006e9d;
+    color: #fff;
+    padding: 0 10px;
+}
+ 
+h4 {
+    display: block;
+    float: right;
+    margin: 0 0 0 20px;
+}
+ 
+h4 .what {
+    display: block;
+    padding: 4px;
+    text-align: center;
+    font-weight: normal;
+}
+ 
+h4 .version {
+    font-size: 11px;
+    color: #ccc;
+}
+ 
+h2 {
+    font-size: 40px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+                 "Helvetica Neue", sans-serif;
+    font-weight: 300;
+}
+ 
+h4, p {
+    padding: 6px 0 6px;
+}
+ 
+#ft p.fine, #ft p.fine a {
+    color: #999;
+}
+ 
+#ft p.intro {
+    font-size: 12px;
+}
+ 
+#bd {
+    font-size: 14px;
+    color: #666;
+}
+ 
+#ft p {
+    font-size: 11px;
+}

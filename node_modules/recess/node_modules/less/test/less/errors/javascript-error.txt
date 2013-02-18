@@ -1,0 +1,4 @@
+SyntaxError: JavaScript evaluation error: 'TypeError: Cannot call method 'toJS' of undefined' in {path}javascript-error.less:2:26
+1 .scope {
+2     var: `this.foo.toJS()`;
+3 }

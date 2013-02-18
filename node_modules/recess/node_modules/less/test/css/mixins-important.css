@@ -1,0 +1,38 @@
+.class {
+  border: 1;
+  boxer: 1;
+  border: 2 !important;
+  boxer: 2 !important;
+  border: 3;
+  boxer: 3;
+  border: 4 !important;
+  boxer: 4 !important;
+  border: 5;
+  boxer: 5;
+  border: 0 !important;
+  boxer: 0 !important;
+  border: 9 !important;
+  border: 9;
+  boxer: 9;
+}
+.class .inner {
+  test: 1;
+}
+.class .inner {
+  test: 2 !important;
+}
+.class .inner {
+  test: 3;
+}
+.class .inner {
+  test: 4 !important;
+}
+.class .inner {
+  test: 5;
+}
+.class .inner {
+  test: 0 !important;
+}
+.class .inner {
+  test: 9;
+}

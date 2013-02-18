@@ -1,0 +1,40 @@
+#strings {
+  background-image: url("http://son-of-a-banana.com");
+  quotes: "~" "~";
+  content: "#*%:&^,)!.(~*})";
+  empty: "";
+  brackets: "{" "}";
+  escapes: "\"hello\" \\world";
+  escapes2: "\"llo";
+}
+#comments {
+  content: "/* hello */ // not-so-secret";
+}
+#single-quote {
+  quotes: "'" "'";
+  content: '""#!&""';
+  empty: '';
+  semi-colon: ';';
+}
+#escaped {
+  filter: DX.Transform.MS.BS.filter(opacity=50);
+}
+#one-line {
+  image: url(http://tooks.com);
+}
+#crazy {
+  image: url(http://), "}", url("http://}");
+}
+#interpolation {
+  url: "http://lesscss.org/dev/image.jpg";
+  url2: "http://lesscss.org/image-256.jpg";
+  url3: "http://lesscss.org#445566";
+  url4: "http://lesscss.org/hello";
+  url5: "http://lesscss.org/54.4px";
+}
+.mix-mul-class {
+  color: #0000ff;
+  color: #ff0000;
+  color: #000000;
+  color: #ffa500;
+}

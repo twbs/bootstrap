@@ -1,0 +1,190 @@
+#!/usr/bin/env node
+
+var path = require('path'),
+    fs = require('fs'),
+    sys = require('util'),
+    os = require('os');
+
+var less = require('../lib/less');
+var args = process.argv.slice(1);
+var options = {
+    compress: false,
+    yuicompress: false,
+    optimization: 1,
+    silent: false,
+    paths: [],
+    color: true,
+    strictImports: false,
+    rootpath: '',
+    relativeUrls: false
+};
+var continueProcessing = true,
+    currentErrorcode;
+
+// calling process.exit does not flush stdout always
+// so use this to set the exit code
+process.on('exit', function() { process.reallyExit(currentErrorcode) });
+
+args = args.filter(function (arg) {
+    var match;
+
+    if (match = arg.match(/^-I(.+)$/)) {
+        options.paths.push(match[1]);
+        return false;
+    }
+
+    if (match = arg.match(/^--?([a-z][0-9a-z-]*)(?:=([^\s]+))?$/i)) { arg = match[1] }
+    else { return arg }
+
+    switch (arg) {
+        case 'v':
+        case 'version':
+            sys.puts("lessc " + less.version.join('.') + " (LESS Compiler) [JavaScript]");
+            continueProcessing = false;
+        case 'verbose':
+            options.verbose = true;
+            break;
+        case 's':
+        case 'silent':
+            options.silent = true;
+            break;
+        case 'strict-imports':
+            options.strictImports = true;
+            break;
+        case 'h':
+        case 'help':
+            require('../lib/less/lessc_helper').printUsage();
+            continueProcessing = false;
+        case 'x':
+        case 'compress':
+            options.compress = true;
+            break;
+        case 'yui-compress':
+            options.yuicompress = true;
+            break;
+        case 'no-color':
+            options.color = false;
+            break;
+        case 'include-path':
+            if (!match[2]) {
+                sys.puts("include-path option requires a parameter");
+                continueProcessing = false;
+            } else {
+                options.paths = match[2].split(os.type().match(/Windows/) ? ';' : ':')
+                    .map(function(p) {
+                        if (p) {
+                            return path.resolve(process.cwd(), p);
+                        }
+                    });
+            }
+            break;
+        case 'O0': options.optimization = 0; break;
+        case 'O1': options.optimization = 1; break;
+        case 'O2': options.optimization = 2; break;
+        case 'line-numbers':
+            options.dumpLineNumbers = match[2];
+            break;
+        case 'rp':
+        case 'rootpath':
+            if (!match[2]) {
+                sys.puts("rootpath option requires a parameter");
+                continueProcessing = false;
+            } else {
+                options.rootpath = path.normalize(match[2] + '/').replace('\\', '/');
+            }
+            break;
+        case "ru":
+        case "relative-urls":
+            options.relativeUrls = true;
+            break;
+    }
+});
+
+if (!continueProcessing) {
+    return;
+}
+
+var input = args[1];
+if (input && input != '-') {
+    input = path.resolve(process.cwd(), input);
+}
+var output = args[2];
+if (output) {
+    output = path.resolve(process.cwd(), output);
+}
+
+if (! input) {
+    sys.puts("lessc: no input files");
+    sys.puts("");
+    require('../lib/less/lessc_helper').printUsage();
+    currentErrorcode = 1;
+    return;
+}
+
+var ensureDirectory = function (filepath) {
+    var dir = path.dirname(filepath),
+        existsSync = fs.existsSync || path.existsSync;
+    if (!existsSync(dir)) {
+        fs.mkdirSync(dir);
+    }
+};
+
+var parseLessFile = function (e, data) {
+    if (e) {
+        sys.puts("lessc: " + e.message);
+        currentErrorcode = 1;
+        return;
+    }
+
+    new(less.Parser)({
+        paths: [path.dirname(input)].concat(options.paths),
+        optimization: options.optimization,
+        filename: input,
+        rootpath: options.rootpath,
+        relativeUrls: options.relativeUrls,
+        strictImports: options.strictImports,
+        dumpLineNumbers: options.dumpLineNumbers
+    }).parse(data, function (err, tree) {
+        if (err) {
+            less.writeError(err, options);
+            currentErrorcode = 1;
+            return;
+        } else {
+            try {
+                var css = tree.toCSS({
+                    compress: options.compress,
+                    yuicompress: options.yuicompress
+                });
+                if (output) {
+                    ensureDirectory(output);
+                    fs.writeFileSync(output, css, 'utf8');
+                    if (options.verbose) {
+                        console.log('lessc: wrote ' + output);
+                    }
+                } else {
+                    sys.print(css);
+                }
+            } catch (e) {
+                less.writeError(e, options);
+                currentErrorcode = 2;
+                return;
+            }
+        }
+    });
+};
+
+if (input != '-') {
+    fs.readFile(input, 'utf8', parseLessFile);
+} else {
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+
+    var buffer = '';
+    process.stdin.on('data', function(data) {
+        buffer += data;
+    });
+
+    process.stdin.on('end', function() {
+        parseLessFile(false, buffer);
+    });
+}

@@ -1,0 +1,111 @@
+#functions {
+  @var: 10;
+  @colors: #000, #fff;
+  color: _color("evil red"); // #660000
+  width: increment(15);
+  height: undefined("self");
+  border-width: add(2, 3);
+  variable: increment(@var);
+  background: linear-gradient(@colors);
+}
+
+#built-in {
+  @r: 32;
+  escaped: e("-Some::weird(#thing, y)");
+  lighten: lighten(#ff0000, 40%);
+  darken: darken(#ff0000, 40%);
+  saturate: saturate(#29332f, 20%);
+  desaturate: desaturate(#203c31, 20%);
+  greyscale: greyscale(#203c31);
+  spin-p: spin(hsl(340, 50%, 50%), 40);
+  spin-n: spin(hsl(30, 50%, 50%), -40);
+  luma-white: luma(#fff);
+  luma-black: luma(#000);
+  luma-black-alpha: luma(rgba(0,0,0,0.5));
+  luma-red: luma(#ff0000);
+  luma-green: luma(#00ff00);
+  luma-blue: luma(#0000ff);
+  luma-yellow: luma(#ffff00);
+  luma-cyan: luma(#00ffff);
+  luma-white-alpha: luma(rgba(255,255,255,0.5));
+  contrast-filter: contrast(30%);
+  contrast-white: contrast(#fff);
+  contrast-black: contrast(#000);
+  contrast-red: contrast(#ff0000);
+  contrast-green: contrast(#00ff00);
+  contrast-blue: contrast(#0000ff);
+  contrast-yellow: contrast(#ffff00);
+  contrast-cyan: contrast(#00ffff);
+  contrast-light: contrast(#fff, #111111, #eeeeee);
+  contrast-dark: contrast(#000, #111111, #eeeeee);
+  contrast-light-thresh: contrast(#fff, #111111, #eeeeee, 0.5);
+  contrast-dark-thresh: contrast(#000, #111111, #eeeeee, 0.5);
+  contrast-high-thresh: contrast(#555, #111111, #eeeeee, 0.6);
+  contrast-low-thresh: contrast(#555, #111111, #eeeeee, 0.1);
+  format: %("rgb(%d, %d, %d)", @r, 128, 64);
+  format-string: %("hello %s", "world");
+  format-multiple: %("hello %s %d", "earth", 2);
+  format-url-encode: %('red is %A', #ff0000);
+  eformat: e(%("rgb(%d, %d, %d)", @r, 128, 64));
+  
+  unitless: unit(12px);
+  unit: unit(13px + 1px, em);
+
+  hue: hue(hsl(98, 12%, 95%));
+  saturation: saturation(hsl(98, 12%, 95%));
+  lightness: lightness(hsl(98, 12%, 95%));
+  red: red(#f00);
+  green: green(#0f0);
+  blue: blue(#00f);
+  rounded: round(@r/3);
+  rounded-two: round(@r/3, 2);
+  roundedpx: round(10px / 3);
+  roundedpx-three: round(10px / 3, 3);
+  rounded-percentage: round(10.2%);
+  ceil: ceil(10.1px);
+  floor: floor(12.9px);
+  percentage: percentage(10px / 50);
+  color: color("#ff0011");
+  tint: tint(#777777, 13);
+  tint-full: tint(#777777, 100);
+  tint-percent: tint(#777777, 13%);
+  shade: shade(#777777, 13);
+  shade-full: shade(#777777, 100);
+  shade-percent: shade(#777777, 13%);
+  
+  hsv: hsv(5, 50%, 30%);
+  hsva: hsva(3, 50%, 30%, 0.2);
+
+  mix: mix(#ff0000, #ffff00, 80);
+  mix-0: mix(#ff0000, #ffff00, 0);
+  mix-100: mix(#ff0000, #ffff00, 100);
+  mix-weightless: mix(#ff0000, #ffff00);
+
+  .is-a {
+    color: iscolor(#ddd);
+    color1: iscolor(red);
+    color2: iscolor(rgb(0, 0, 0));
+    keyword: iskeyword(hello);
+    number: isnumber(32);
+    string: isstring("hello");
+    pixel: ispixel(32px);
+    percent: ispercentage(32%);
+    em: isem(32em);
+  }
+}
+
+#alpha {
+  alpha: darken(hsla(25, 50%, 50%, 0.6), 10%);
+}
+
+#blendmodes {
+  multiply: multiply(#f60000, #f60000);
+  screen: screen(#f60000, #0000f6);
+  overlay: overlay(#f60000, #0000f6);
+  softlight: softlight(#f60000, #ffffff);
+  hardlight: hardlight(#f60000, #0000f6);
+  difference: difference(#f60000, #0000f6);
+  exclusion: exclusion(#f60000, #0000f6);
+  average: average(#f60000, #0000f6);
+  negation: negation(#f60000, #313131);
+}

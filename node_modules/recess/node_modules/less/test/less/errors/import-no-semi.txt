@@ -1,0 +1,2 @@
+ParseError: Syntax Error on line 1 in {path}import-no-semi.less:1:0
+1 @import "this-statement-is-invalid.less"

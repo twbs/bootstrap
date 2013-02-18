@@ -1,0 +1,25 @@
+{
+  "name": "abbrev",
+  "version": "1.0.4",
+  "description": "Like ruby's abbrev module, but in js",
+  "author": {
+    "name": "Isaac Z. Schlueter",
+    "email": "i@izs.me"
+  },
+  "main": "./lib/abbrev.js",
+  "scripts": {
+    "test": "node lib/abbrev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/isaacs/abbrev-js"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/isaacs/abbrev-js/raw/master/LICENSE"
+  },
+  "readme": "# abbrev-js\n\nJust like [ruby's Abbrev](http://apidock.com/ruby/Abbrev).\n\nUsage:\n\n    var abbrev = require(\"abbrev\");\n    abbrev(\"foo\", \"fool\", \"folding\", \"flop\");\n    \n    // returns:\n    { fl: 'flop'\n    , flo: 'flop'\n    , flop: 'flop'\n    , fol: 'folding'\n    , fold: 'folding'\n    , foldi: 'folding'\n    , foldin: 'folding'\n    , folding: 'folding'\n    , foo: 'foo'\n    , fool: 'fool'\n    }\n\nThis is handy for command-line scripts, or other cases where you want to be able to accept shorthands.\n",
+  "readmeFilename": "README.md",
+  "_id": "abbrev@1.0.4",
+  "_from": "abbrev@1"
+}

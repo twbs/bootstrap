@@ -1,0 +1,71 @@
+# watch -- Utilities for watching file trees in node.js
+
+## Install
+
+<pre>
+  npm install watch
+</pre>
+
+## Purpose
+
+The intention of this module is provide tools that make managing the watching of file & directory trees easier.
+
+#### watch.watchTree(root, [options,] callback)
+
+The first argument is the directory root you want to watch. 
+
+The options object is passed to fs.watchFile but can also be used to provide two additional watchTree specific options:
+
+* `'ignoreDotFiles'` - When true this option means that when the file tree is walked it will ignore files that being with "."
+* `'filter'` - You can use this option to provide a function that returns true or false for each file and directory that is walked to decide whether or not that file/directory is included in the watcher.
+
+The callback takes 3 arguments. The first is the file that was modified. The second is the current stat object for that file and the third is the previous stat object. 
+
+When a file is new the previous stat object is null.
+
+When watchTree is finished walking the tree and adding all the listeners it passes the file hash (key if the file/directory names and the values are the current stat objects) as the first argument and null as both the previous and current stat object arguments.
+
+<pre>
+  watch.watchTree('/home/mikeal', function (f, curr, prev) {
+    if (typeof f == "object" && prev === null && curr === null) {
+      // Finished walking the tree
+    } else if (prev === null) {
+      // f is a new file
+    } else if (curr.nlink === 0) {
+      // f was removed
+    } else {
+      // f was changed
+    }
+  })
+</pre>  
+
+### watch.createMonitor(root, [options,] callback)
+
+This function creates an EventEmitter that gives notifications for different changes that happen to the file and directory tree under the given root argument.
+
+The options object is passed to watch.watchTree.
+
+The callback receives the monitor object.
+
+The monitor object contains a property, `files`, which is a hash of files and directories as keys with the current stat object as the value.
+
+The monitor has the following events.
+
+* `'created'` - New file has been created. Two arguments, the filename and the stat object.
+* `'removed'` - A file has been moved or deleted. Two arguments, the filename and the stat object for the fd.
+* `'changed'` - A file has been changed. Three arguments, the filename, the current stat object, and the previous stat object.
+
+<pre>
+  watch.createMonitor('/home/mikeal', function (monitor) {
+    monitor.files['/home/mikeal/.zshrc'] // Stat object for my zshrc.
+    monitor.on("created", function (f, stat) {
+      // Handle file changes
+    })
+    monitor.on("changed", function (f, curr, prev) {
+      // Handle new files
+    })
+    monitor.on("removed", function (f, stat) {
+      // Handle removed files
+    })
+  }  
+</pre>  

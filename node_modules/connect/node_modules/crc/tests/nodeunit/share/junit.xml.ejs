@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<% for (var i=0; i < suites.length; i++) { %>
+  <% var suite=suites[i]; %>
+  <testsuite name="<%= suite.name %>"
+             errors="<%= suite.errorCount %>"
+             failures="<%= suite.failureCount %>"
+             tests="<%= suite.tests %>">
+    <% for (var j=0; j < suite.testcases.length; j++) { %>
+      <% var testcase=suites[i].testcases[j]; %>
+      <testcase name="<%= testcase.name %>">
+        <% if (testcase.failure) { %>
+          <failure message="<%= testcase.failure.message %>">
+            <% if (testcase.failure.backtrace) { %><%= testcase.failure.backtrace %><% } %>
+          </failure>
+        <% } %>
+      </testcase>
+    <% } %>
+  </testsuite>
+<% } %>

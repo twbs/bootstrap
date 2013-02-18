@@ -1,0 +1,36 @@
+{
+  "author": {
+    "name": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me"
+  },
+  "name": "graceful-fs",
+  "description": "fs monkey-patching to avoid EMFILE and other problems",
+  "version": "1.2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/isaacs/node-graceful-fs.git"
+  },
+  "main": "graceful-fs.js",
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "keywords": [
+    "fs",
+    "EMFILE",
+    "error",
+    "handling",
+    "monkeypatch"
+  ],
+  "license": "BSD",
+  "readme": "Just like node's `fs` module, but it does an incremental back-off when\nEMFILE is encountered.\n\nUseful in asynchronous situations where one needs to try to open lots\nand lots of files.\n",
+  "readmeFilename": "README.md",
+  "_id": "graceful-fs@1.2.0",
+  "_from": "graceful-fs@~1.2.0"
+}

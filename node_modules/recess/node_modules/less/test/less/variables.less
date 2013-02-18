@@ -1,0 +1,53 @@
+@a: 2;
+@x: @a * @a;
+@y: @x + 1;
+@z: @x * 2 + @y;
+
+.variables {
+  width: @z + 1cm; // 14cm
+}
+
+@b: @a * 10;
+@c: #888;
+
+@fonts: "Trebuchet MS", Verdana, sans-serif;
+@f: @fonts;
+
+@quotes: "~" "~";
+@q: @quotes;
+
+.variables {
+  height: @b + @x + 0px; // 24px
+  color: @c;
+  font-family: @f;
+  quotes: @q;
+}
+
+.redefinition {
+    @var: 4;
+    @var: 2;
+    @var: 3;
+    three: @var;
+}
+
+.values {
+    @a: 'Trebuchet';
+    @multi: 'A', B, C;
+    font-family: @a, @a, @a;
+    color: @c !important;
+    multi: something @multi, @a;
+}
+
+.variable-names {
+    @var: 'hello';
+    @name: 'var';
+    name: @@name;
+}
+.alpha {
+    @var: 42;
+    filter: alpha(opacity=@var);
+}
+
+a:nth-child(@a) {
+    border: 1px;
+}

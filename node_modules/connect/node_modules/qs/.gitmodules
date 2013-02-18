@@ -1,0 +1,6 @@
+[submodule "support/expresso"]
+	path = support/expresso
+	url = git://github.com/visionmedia/expresso.git
+[submodule "support/should"]
+	path = support/should
+	url = git://github.com/visionmedia/should.js.git

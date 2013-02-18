@@ -1,0 +1,5 @@
+/* Ignore the next rule in IE mac \*/
+.selector {
+   color: khaki;
+}
+/* Stop ignoring in IE mac */

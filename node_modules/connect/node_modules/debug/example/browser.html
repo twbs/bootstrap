@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>debug()</title>
+    <script src="../debug.js"></script>
+    <script>
+      // type debug.enable('*') in
+      // the console and refresh :)
+
+      a = debug('worker:a');
+      b = debug('worker:b');
+
+      setInterval(function(){
+        a('doing some work');
+      }, 1000);
+
+      setInterval(function(){
+        a('doing some work');
+      }, 1200);
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>

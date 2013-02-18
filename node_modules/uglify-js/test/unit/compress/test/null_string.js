@@ -1,0 +1,1 @@
+var nullString = "\0"

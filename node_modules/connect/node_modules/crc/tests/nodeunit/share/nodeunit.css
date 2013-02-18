@@ -1,0 +1,70 @@
+/*!
+ * Styles taken from qunit.css
+ */
+
+h1#nodeunit-header, h1.nodeunit-header {
+    padding: 15px;
+    font-size: large;
+    background-color: #06b;
+    color: white;
+    font-family: 'trebuchet ms', verdana, arial;
+    margin: 0;
+}
+
+h1#nodeunit-header a {
+    color: white;
+}
+
+h2#nodeunit-banner {
+    height: 2em;
+    border-bottom: 1px solid white;
+    background-color: #eee;
+    margin: 0;
+    font-family: 'trebuchet ms', verdana, arial;
+}
+h2#nodeunit-banner.pass {
+    background-color: green;
+}
+h2#nodeunit-banner.fail {
+    background-color: red;
+}
+
+h2#nodeunit-userAgent, h2.nodeunit-userAgent {
+    padding: 10px;
+    background-color: #eee;
+    color: black;
+    margin: 0;
+    font-size: small;
+    font-weight: normal;
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 10pt;
+}
+
+div#nodeunit-testrunner-toolbar {
+    background: #eee;
+    border-top: 1px solid black;
+    padding: 10px;
+    font-family: 'trebuchet ms', verdana, arial;
+    margin: 0;
+    font-size: 10pt;
+}
+
+ol#nodeunit-tests {
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 10pt;
+}
+ol#nodeunit-tests li strong {
+    cursor:pointer;
+}
+ol#nodeunit-tests .pass {
+    color: green;
+} 
+ol#nodeunit-tests .fail {
+    color: red;
+} 
+
+p#nodeunit-testresult {
+    margin-left: 1em;
+    font-size: 10pt;
+    font-family: 'trebuchet ms', verdana, arial;
+}

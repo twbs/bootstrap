@@ -1,0 +1,95 @@
+#hidden {
+  color: transparent;
+}
+#hidden1 {
+  color: transparent;
+}
+.two-args {
+  color: blue;
+  width: 10px;
+  height: 99%;
+  border: 2px dotted #000000;
+}
+.one-arg {
+  width: 15px;
+  height: 49%;
+}
+.no-parens {
+  width: 5px;
+  height: 49%;
+}
+.no-args {
+  width: 5px;
+  height: 49%;
+}
+.var-args {
+  width: 45;
+  height: 17%;
+}
+.multi-mix {
+  width: 10px;
+  height: 29%;
+  margin: 4;
+  padding: 5;
+}
+body {
+  padding: 30px;
+  color: #ff0000;
+}
+.scope-mix {
+  width: 8;
+}
+.content {
+  width: 600px;
+}
+.content .column {
+  margin: 600px;
+}
+#same-var-name {
+  radius: 5px;
+}
+#var-inside {
+  width: 10px;
+}
+.arguments {
+  border: 1px solid #000000;
+  width: 1px;
+}
+.arguments2 {
+  border: 0px;
+  width: 0px;
+}
+.arguments3 {
+  border: 0px;
+  width: 0px;
+}
+.arguments4 {
+  border: 0 1 2 3 4;
+  rest: 1 2 3 4;
+  width: 0;
+}
+.edge-case {
+  border: "{";
+  width: "{";
+}
+.comma-vs-semi-colon {
+  one: a;
+  two: b, c;
+  one: d, e;
+  two: f;
+  one: g;
+  one: h;
+  one: i;
+  one: j;
+  one: k;
+  two: l;
+  one: m, n;
+  one: o, p;
+  two: q;
+  one: r, s;
+  two: t;
+}
+#named-conflict {
+  four: a, 11, 12, 13;
+  four: a, 21, 22, 23;
+}
