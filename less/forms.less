@@ -12,9 +12,33 @@ form {
 }
 
 fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
+  position: relative;
+  margin: 15px 0;
+  padding: 39px 19px 14px;
+  *padding-top: 19px;
+  background-color: @bodyBackground;
+  border: 1px solid @tableBorder;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+fieldset legend {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  border: 1px solid @tableBorder;
+  color: #9da0a4;
+  -webkit-border-radius: 4px 0 4px 0;
+  -moz-border-radius: 4px 0 4px 0;
+  border-radius: 4px 0 4px 0;
+  line-height: inherit;
+  width: auto;
+  margin-bottom: 0;
 }
 
 // Groups of fields with labels on top (legends)
