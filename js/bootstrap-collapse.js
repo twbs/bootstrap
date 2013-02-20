@@ -99,9 +99,8 @@
             that.transitioning = 0
             that.$element.trigger(completeEvent)
           }
-
-      var $toggle = that.$element.parent().find('.accordion-toggle'),
-        $toggles = $toggle.closest('.accordion').find('.accordion-toggle')
+        , $toggle = that.$element.parent().find('.accordion-toggle')
+        , $toggles = $toggle.closest('.accordion').find('.accordion-toggle')
 
       $toggle[that.$element.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
 
