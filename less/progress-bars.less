@@ -70,13 +70,13 @@
 }
 
 // Striped bars
-.progress-striped .bar {
+.progress-striped .bar, .progress .bar-striped {
   #gradient > .striped(#149bdf);
   .background-size(40px 40px);
 }
 
 // Call animation for the active one
-.progress.active .bar {
+.progress.active .bar, .progress .bar.active {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
      -moz-animation: progress-bar-stripes 2s linear infinite;
       -ms-animation: progress-bar-stripes 2s linear infinite;
@@ -93,7 +93,8 @@
 .progress-danger .bar, .progress .bar-danger {
   #gradient > .vertical(#ee5f5b, #c43c35);
 }
-.progress-danger.progress-striped .bar, .progress-striped .bar-danger {
+.progress-danger.progress-striped .bar, .progress-striped .bar-danger,
+.progress-danger .bar-striped, .progress .bar-striped.bar-danger {
   #gradient > .striped(#ee5f5b);
 }
 
@@ -101,7 +102,8 @@
 .progress-success .bar, .progress .bar-success {
   #gradient > .vertical(#62c462, #57a957);
 }
-.progress-success.progress-striped .bar, .progress-striped .bar-success {
+.progress-success.progress-striped .bar, .progress-striped .bar-success,
+.progress-success .bar-striped, .progress .bar-striped.bar-success {
   #gradient > .striped(#62c462);
 }
 
@@ -109,7 +111,8 @@
 .progress-info .bar, .progress .bar-info {
   #gradient > .vertical(#5bc0de, #339bb9);
 }
-.progress-info.progress-striped .bar, .progress-striped .bar-info {
+.progress-info.progress-striped .bar, .progress-striped .bar-info,
+.progress-info .bar-striped, .progress .bar-striped.bar-info {
   #gradient > .striped(#5bc0de);
 }
 
@@ -117,6 +120,7 @@
 .progress-warning .bar, .progress .bar-warning {
   #gradient > .vertical(lighten(@orange, 15%), @orange);
 }
-.progress-warning.progress-striped .bar, .progress-striped .bar-warning {
+.progress-warning.progress-striped .bar, .progress-striped .bar-warning,
+.progress-warning .bar-striped, .progress .bar-striped.bar-warning {
   #gradient > .striped(lighten(@orange, 15%));
 }

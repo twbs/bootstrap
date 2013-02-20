@@ -5821,7 +5821,8 @@ a.badge:focus {
           box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
-.progress-striped .bar {
+.progress-striped .bar,
+.progress .bar-striped {
   background-color: #149bdf;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5834,7 +5835,8 @@ a.badge:focus {
           background-size: 40px 40px;
 }
 
-.progress.active .bar {
+.progress.active .bar,
+.progress .bar.active {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
      -moz-animation: progress-bar-stripes 2s linear infinite;
       -ms-animation: progress-bar-stripes 2s linear infinite;
@@ -5855,7 +5857,9 @@ a.badge:focus {
 }
 
 .progress-danger.progress-striped .bar,
-.progress-striped .bar-danger {
+.progress-striped .bar-danger,
+.progress-danger .bar-striped,
+.progress .bar-striped.bar-danger {
   background-color: #ee5f5b;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5877,7 +5881,9 @@ a.badge:focus {
 }
 
 .progress-success.progress-striped .bar,
-.progress-striped .bar-success {
+.progress-striped .bar-success,
+.progress-success .bar-striped,
+.progress .bar-striped.bar-success {
   background-color: #62c462;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5899,7 +5905,9 @@ a.badge:focus {
 }
 
 .progress-info.progress-striped .bar,
-.progress-striped .bar-info {
+.progress-striped .bar-info,
+.progress-info .bar-striped,
+.progress .bar-striped.bar-info {
   background-color: #5bc0de;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5921,7 +5929,9 @@ a.badge:focus {
 }
 
 .progress-warning.progress-striped .bar,
-.progress-striped .bar-warning {
+.progress-striped .bar-warning,
+.progress-warning .bar-striped,
+.progress .bar-striped.bar-warning {
   background-color: #fbb450;
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
