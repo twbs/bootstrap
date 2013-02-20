@@ -99,8 +99,11 @@
             that.transitioning = 0
             that.$element.trigger(completeEvent)
           }
-        , $toggle = that.$element.parent().find('.accordion-toggle')
-        , $toggles = $toggle.closest('.accordion').find('.accordion-toggle')
+        , $toggle = $('a[href$="#' + that.$element.attr('id') + '"]')
+
+      if ($toggle.length == 0) $toggle = $("[data-target='#" + that.$element.attr('id') + "']")
+		
+	  var $toggles = $toggle.closest('.accordion').find('.accordion-toggle')
 
       $toggle[that.$element.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
 
