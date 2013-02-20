@@ -819,16 +819,14 @@ title: Components
           <p>You can easily add dividers to your nav links with an empty list item and a simple class. Just add the appropriate class to <code>&lt;li&gt;</code> elements between links. Dividers will be horizontal to start, but at resolutions above 768px they become vertical with the navigation.</p>
           <div class="bs-docs-example">
             <div class="navbar">
-              <div class="navbar-inner">
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Link</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Link</a></li>
-                  <li class="divider"></li>
-                </ul>
-              </div>
+              <ul class="nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Link</a></li>
+                <li class="divider"></li>
+              </ul>
             </div>
           </div><!-- /example -->
 {% highlight html linenos %}
@@ -872,7 +870,7 @@ title: Components
           <h3>Fixed to top</h3>
           <p>Add <code>.navbar-fixed-top</code> and remember to account for the hidden area underneath it by adding at least 40px <code>padding</code> to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
           <div class="bs-docs-example bs-navbar-top-example">
-            <div class="navbar navbar-fixed-top" style="position: absolute;">
+            <div class="navbar navbar-fixed-top" style="position: absolute; top: -1px;">
               <div class="container" style="width: auto;">
                 <a class="navbar-brand" href="#">Title</a>
                 <ul class="nav">
@@ -892,7 +890,7 @@ title: Components
           <h3>Fixed to bottom</h3>
           <p>Add <code>.navbar-fixed-bottom</code> instead.</p>
           <div class="bs-docs-example bs-navbar-bottom-example">
-            <div class="navbar navbar-fixed-bottom" style="position: absolute;">
+            <div class="navbar navbar-fixed-bottom" style="position: absolute; bottom: -1px;">
               <div class="container" style="width: auto;">
                 <a class="navbar-brand" href="#">Title</a>
                 <ul class="nav">
@@ -959,8 +957,8 @@ title: Components
                       </ul>
                     </li>
                   </ul>
-                  <form class="navbar-search pull-left" action="">
-                    <input type="text" class="search-query span2" placeholder="Search">
+                  <form class="navbar-form pull-left" action="">
+                    <input type="text" class="span8" placeholder="Search">
                   </form>
                   <ul class="nav pull-right">
                     <li><a href="#">Link</a></li>
@@ -1036,8 +1034,8 @@ title: Components
                       </ul>
                     </li>
                   </ul>
-                  <form class="navbar-search pull-left" action="">
-                    <input type="text" class="search-query span2" placeholder="Search">
+                  <form class="navbar-form pull-left" action="">
+                    <input type="text" class="span8" placeholder="Search">
                   </form>
                   <ul class="nav pull-right">
                     <li><a href="#">Link</a></li>
