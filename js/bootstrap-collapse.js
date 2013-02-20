@@ -72,7 +72,8 @@
 
   , hide: function () {
       var dimension
-      if (this.transitioning || !this.$element.hasClass('in')) return
+      if (this.transitioning || !this.$element.hasClass('in')) return	  
+	  
       dimension = this.dimension()
       this.reset(this.$element[dimension]())
       this.transition('removeClass', $.Event('hide'), 'hidden')
@@ -97,9 +98,16 @@
         , complete = function () {
             if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
-            that.$element.trigger(completeEvent)
-          }
+            that.$element.trigger(completeEvent)		
+          }	
 
+	  var $toggle = that.$element.parent().find('.accordion-toggle'),
+		$toggles = $toggle.closest('.accordion').find('.accordion-toggle')
+		 
+	  $toggle[that.$element.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')	 
+	  
+	  if ($toggle.attr('data-parent')) $toggles.not($toggle).addClass('collapsed') 		  
+		  
       this.$element.trigger(startEvent)
 
       if (startEvent.isDefaultPrevented()) return
@@ -159,9 +167,9 @@
       , target = $this.attr('data-target')
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-      , option = $(target).data('collapse') ? 'toggle' : $this.data()
-    $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
-    $(target).collapse(option)
+      , option = $(target).data('collapse') ? 'toggle' : $this.data();
+    
+	$(target).collapse(option)
   })
 
 }(window.jQuery);
