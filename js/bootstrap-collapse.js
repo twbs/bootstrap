@@ -100,6 +100,13 @@
             that.$element.trigger(completeEvent)
           }
 
+      var $toggle = that.$element.parent().find('.accordion-toggle'),
+        $toggles = $toggle.closest('.accordion').find('.accordion-toggle')
+
+      $toggle[that.$element.hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+
+      if ($toggle.attr('data-parent')) $toggles.not($toggle).addClass('collapsed')
+
       this.$element.trigger(startEvent)
 
       if (startEvent.isDefaultPrevented()) return
@@ -160,7 +167,6 @@
         || e.preventDefault()
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
       , option = $(target).data('collapse') ? 'toggle' : $this.data()
-    $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
     $(target).collapse(option)
   })
 
