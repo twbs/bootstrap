@@ -39,23 +39,26 @@
     constructor: Dropdown
 
   , toggle: function (e) {
-      var $this = $(this)
-        , $parent
-        , isActive
-
-      if ($this.is('.disabled, :disabled')) return
-
-      $parent = getParent($this)
-
-      isActive = $parent.hasClass('open')
-
-      clearMenus()
-
-      if (!isActive) {
-        $parent.toggleClass('open')
+      if(!e || e.which<=1)
+      {
+        var $this = $(this)
+          , $parent
+          , isActive
+  
+        if ($this.is('.disabled, :disabled')) return
+  
+        $parent = getParent($this)
+  
+        isActive = $parent.hasClass('open')
+  
+        clearMenus()
+  
+        if (!isActive) {
+          $parent.toggleClass('open')
+        }
+  
+        $this.focus()
       }
-
-      $this.focus()
 
       return false
     }
@@ -103,10 +106,13 @@
 
   }
 
-  function clearMenus() {
-    $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
-    })
+  function clearMenus(e) {
+    if(!e || e.which<=1)
+    {
+      $(toggle).each(function () {
+        getParent($(this)).removeClass('open')
+      })
+    }
   }
 
   function getParent($this) {
@@ -155,11 +161,11 @@
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */
 
-  $(document)
-    .on('click.dropdown.data-api', clearMenus)
-    .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('.dropdown-menu', function (e) { e.stopPropagation() })
-    .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+$(document)
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
+    .on('click.dropdown.data-api touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() })
+    .on('click.dropdown.data-api touchstart.dropdown.data-api' , toggle, Dropdown.prototype.toggle)
+    .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
 }(window.jQuery);
