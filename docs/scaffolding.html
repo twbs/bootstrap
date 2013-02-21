@@ -541,7 +541,38 @@
             <li>Tablet<span class="hidden-tablet">&#10004; Tablet</span></li>
             <li>Desktop<span class="hidden-desktop">&#10004; Desktop</span></li>
           </ul>
+          
+          <br>
+          <h2>Print utility classes</h2>
+          <p>Use these utility classes for showing and hiding content printed on your webpage. Below is a table of the available classes and their effect on printed content. They can be found in <code>responsive_utilities.less</code>.</p>
+          <table class="table table-bordered table-striped responsive-utilities">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Browser</th>
+                <th>Print Preview</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><code>.visible-print</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-print</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+            </tbody>
+          </table>
 
+		<h3>Print utilities examples</h3>
+		<p>Use this example to verify the integrity of the print utility classes.The text visible below utilizes the <code>.hidden-print</code> class:</p>
+		<h4 class="visible-print">This should be visible during Print Preview</h4>
+		<h4 class="hidden-print">This should be visible on the browser</h4>
+		<p>Access Print Preview in order to see hidden text utilizing the <code>.visible-print</code> class.</p>
+		<input class="btn" type="button" value="Print Preview" onclick="window.print();" />
         </section>
 
 
