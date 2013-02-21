@@ -121,4 +121,4 @@ watch:
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 
-.PHONY: docs watch gh-pages bootstrap-img bootstrap-css bootstrap-js
+.PHONY: build test clean bootstrap bootstrap-js bootstrap-css bootstrap-fonts gh-pages watch
