@@ -117,7 +117,7 @@ gh-pages: bootstrap
 #
 
 watch:
-	echo "Watching less files..."; \
+	@echo "Watching less files..."; \
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 
