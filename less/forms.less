@@ -22,7 +22,6 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: @baseLineHeight * 1.5;
   font-size: @baseFontSize * 1.5;
   line-height: @baseLineHeight * 2;
   color: @grayDark;
@@ -513,10 +512,11 @@ select:focus:required:invalid {
   margin-bottom: @baseLineHeight / 2;
 }
 
+
 // Legend collapses margin, so next element is responsible for spacing
-legend + .control-group {
-  margin-top: @baseLineHeight;
-  -webkit-margin-top-collapse: separate;
+legend + * {
+   margin-top: @baseLineHeight;
+   -webkit-margin-top-collapse: separate;
 }
 
 // Horizontal-specific styles
