@@ -1,1 +1,0 @@
-.foo,#AABBCC{background-color:#abc;border-color:#e6a #abcdef #feab2c;filter:chroma(color = #FFFFFF);filter:chroma(color="#AABBCC");filter:chroma(color='#BBDDEE');color:#123}

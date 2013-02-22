@@ -1,9 +1,0 @@
-.class {
-  width: 99px;
-}
-.overwrite {
-  width: 99px;
-}
-.nested .class {
-  width: 5px;
-}

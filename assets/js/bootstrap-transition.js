@@ -1,5 +1,5 @@
 /* ===================================================
- * bootstrap-transition.js v2.0.4
+ * bootstrap-transition.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#transitions
  * ===================================================
  * Copyright 2012 Twitter, Inc.
@@ -20,13 +20,13 @@
 
 !function ($) {
 
+  "use strict"; // jshint ;_;
+
+
+  /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
+   * ======================================================= */
+
   $(function () {
-
-    "use strict"; // jshint ;_;
-
-
-    /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
-     * ======================================================= */
 
     $.support.transition = (function () {
 
@@ -36,8 +36,7 @@
           , transEndEventNames = {
                'WebkitTransition' : 'webkitTransitionEnd'
             ,  'MozTransition'    : 'transitionend'
-            ,  'OTransition'      : 'oTransitionEnd'
-            ,  'msTransition'     : 'MSTransitionEnd'
+            ,  'OTransition'      : 'oTransitionEnd otransitionend'
             ,  'transition'       : 'transitionend'
             }
           , name

@@ -1,3 +1,0 @@
-RuntimeError: No matching definition was found for `.mixin(@a:trumpete)` in {path}mixin-not-matched2.less:6:0
-5 
-6 .mixin(@a: @saxofon);

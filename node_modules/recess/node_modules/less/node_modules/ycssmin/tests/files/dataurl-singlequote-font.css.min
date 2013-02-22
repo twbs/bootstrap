@@ -1,3 +1,0 @@
-.y-ff-1{font-family:"Foo Bar",Helvetica,Arial;text-rendering:optimizeLegibility}.ua-op .y-ff-1{font-family:Helvetica,Arial}@font-face{font-family:"Foo Bar";src:url('data:font/truetype;base64,gRbIUFAIrsQNGditEWbAUKwAA') format("truetype"),url("http://yuilibrary.com/fonts/foo-bar.svg#webfontse22fewwr") format("svg");font-weight:normal;font-style:normal}
-
-

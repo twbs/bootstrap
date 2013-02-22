@@ -1,2 +1,0 @@
-ParseError: Syntax Error on line 1 in {path}comment-in-selector.less:1:20
-1 #gaga /* Comment */ span { color: red }

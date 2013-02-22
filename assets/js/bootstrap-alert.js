@@ -1,5 +1,5 @@
 /* ==========================================================
- * bootstrap-alert.js v2.0.4
+ * bootstrap-alert.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
  * Copyright 2012 Twitter, Inc.
@@ -68,6 +68,8 @@
  /* ALERT PLUGIN DEFINITION
   * ======================= */
 
+  var old = $.fn.alert
+
   $.fn.alert = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -80,11 +82,18 @@
   $.fn.alert.Constructor = Alert
 
 
+ /* ALERT NO CONFLICT
+  * ================= */
+
+  $.fn.alert.noConflict = function () {
+    $.fn.alert = old
+    return this
+  }
+
+
  /* ALERT DATA-API
   * ============== */
 
-  $(function () {
-    $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
-  })
+  $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
 
 }(window.jQuery);

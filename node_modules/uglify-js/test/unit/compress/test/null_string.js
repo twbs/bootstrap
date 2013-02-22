@@ -1,1 +1,0 @@
-var nullString = "\0"

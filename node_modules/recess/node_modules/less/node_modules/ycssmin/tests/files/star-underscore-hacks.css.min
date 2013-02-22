@@ -1,1 +1,0 @@
-#elementarr{width:1px;*width:3pt;_width:2em}

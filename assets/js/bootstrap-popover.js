@@ -1,5 +1,5 @@
 /* ===========================================================
- * bootstrap-popover.js v2.0.4
+ * bootstrap-popover.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#popovers
  * ===========================================================
  * Copyright 2012 Twitter, Inc.
@@ -26,7 +26,7 @@
  /* POPOVER PUBLIC CLASS DEFINITION
   * =============================== */
 
-  var Popover = function ( element, options ) {
+  var Popover = function (element, options) {
     this.init('popover', element, options)
   }
 
@@ -43,8 +43,8 @@
         , title = this.getTitle()
         , content = this.getContent()
 
-      $tip.find('.popover-title')[this.isHTML(title) ? 'html' : 'text'](title)
-      $tip.find('.popover-content > *')[this.isHTML(content) ? 'html' : 'text'](content)
+      $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
+      $tip.find('.popover-content')[this.options.html ? 'html' : 'text'](content)
 
       $tip.removeClass('fade top bottom left right in')
     }
@@ -58,8 +58,8 @@
         , $e = this.$element
         , o = this.options
 
-      content = $e.attr('data-content')
-        || (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
+      content = (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
+        || $e.attr('data-content')
 
       return content
     }
@@ -71,11 +71,17 @@
       return this.$tip
     }
 
+  , destroy: function () {
+      this.hide().$element.off('.' + this.type).removeData(this.type)
+    }
+
   })
 
 
  /* POPOVER PLUGIN DEFINITION
   * ======================= */
+
+  var old = $.fn.popover
 
   $.fn.popover = function (option) {
     return this.each(function () {
@@ -91,8 +97,18 @@
 
   $.fn.popover.defaults = $.extend({} , $.fn.tooltip.defaults, {
     placement: 'right'
+  , trigger: 'click'
   , content: ''
-  , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+  , template: '<div class="popover"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
   })
+
+
+ /* POPOVER NO CONFLICT
+  * =================== */
+
+  $.fn.popover.noConflict = function () {
+    $.fn.popover = old
+    return this
+  }
 
 }(window.jQuery);

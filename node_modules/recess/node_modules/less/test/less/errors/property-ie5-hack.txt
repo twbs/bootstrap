@@ -1,4 +1,0 @@
-ParseError: Syntax Error on line 2 in {path}property-ie5-hack.less:2:2
-1 .test {
-2   display/*/: block; /*sorry for IE5*/
-3 }
