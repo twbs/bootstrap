@@ -224,12 +224,12 @@
 
       function removeWithAnimation() {
         var timeout = setTimeout(function () {
-          $tip.off($.support.transition.end).detach()
+          $tip.filter(':not(.in)').off($.support.transition.end).detach()
         }, 500)
 
         $tip.one($.support.transition.end, function () {
           clearTimeout(timeout)
-          $tip.detach()
+          $tip.filter(':not(.in)').detach()
         })
       }
 
