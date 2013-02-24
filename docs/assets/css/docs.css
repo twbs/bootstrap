@@ -243,6 +243,31 @@ section > ul li {
   margin-bottom: 0;
 }
 
+/* Typography */
+.bs-docs-example-type .table td {
+  color: #999;
+  vertical-align: middle;
+  border-color: ;
+}
+.bs-docs-example-type .table td,
+.bs-docs-example-type .table th {
+  padding: 15px 0;
+  border-color: #eee;
+}
+.bs-docs-example-type .table tr:first-child td,
+.bs-docs-example-type .table tr:first-child th {
+  border-top: 0;
+}
+.bs-docs-example-type h1,
+.bs-docs-example-type h2,
+.bs-docs-example-type h3,
+.bs-docs-example-type h4,
+.bs-docs-example-type h5,
+.bs-docs-example-type h6 {
+  margin: 0;
+}
+
+
 /* Navbar examples */
 .bs-navbar-top-example,
 .bs-navbar-bottom-example {
