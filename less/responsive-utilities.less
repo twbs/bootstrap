@@ -5,10 +5,17 @@
 
 // IE10 Metro responsive
 // Required for Windows 8 Metro split-screen snapping with IE10
-// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
-@-ms-viewport{
+// Added future compatibility for other browsers as well
+// Source: http://trentwalton.com/2013/01/16/windows-phone-8-viewport-fix/
+
+@-moz-viewport,
+@-webkit-viewport,
+@-o-viewport,
+@-ms-viewport,
+@viewport {
   width: device-width;
 }
+  
 
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
