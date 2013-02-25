@@ -35,6 +35,8 @@
     this.checkPosition()
   }
 
+  Affix.VERSION = "2.3.0"
+
   Affix.prototype.checkPosition = function () {
     if (!this.$element.is(':visible')) return
 

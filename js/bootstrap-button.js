@@ -31,6 +31,8 @@
     this.options = $.extend({}, $.fn.button.defaults, options)
   }
 
+  Button.VERSION = "2.3.0"
+
   Button.prototype.setState = function (state) {
     var d = 'disabled'
       , $el = this.$element

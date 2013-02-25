@@ -35,6 +35,8 @@
       .on('mouseleave', $.proxy(this.cycle, this))
   }
 
+  Carousel.VERSION = "2.3.0"
+
   Carousel.prototype = {
 
     cycle: function (e) {

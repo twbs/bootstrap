@@ -40,6 +40,8 @@
     this.process()
   }
 
+  ScrollSpy.VERSION = '2.3.0'
+
   ScrollSpy.prototype = {
 
       constructor: ScrollSpy

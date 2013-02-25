@@ -78,4 +78,10 @@ $(function () {
         ok($('#myCarousel').data('carousel').options.interval == 1814, "attributes should be read only on intitialization");
         $('#myCarousel').remove();
       })
+
+      test("Version should be accessible", function () {
+        var version = $.fn.carousel.Constructor.VERSION;
+        ok(!!version, "Version is something");
+        ok("2.3.0" === version, "Specifically, it is 2.3.0");
+      });
 })

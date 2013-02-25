@@ -33,6 +33,8 @@
     this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
   }
 
+  Modal.VERSION = '2.3.0'
+
   Modal.prototype = {
 
       constructor: Modal

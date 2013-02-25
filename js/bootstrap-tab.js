@@ -30,6 +30,8 @@
     this.element = $(element)
   }
 
+  Tab.VERSION = '2.3.0'
+
   Tab.prototype = {
 
     constructor: Tab

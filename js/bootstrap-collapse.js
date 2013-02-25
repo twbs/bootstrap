@@ -37,6 +37,8 @@
     this.options.toggle && this.toggle()
   }
 
+  Collapse.VERSION = '2.3.0'
+
   Collapse.prototype = {
 
     constructor: Collapse
