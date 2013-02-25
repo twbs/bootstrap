@@ -2273,13 +2273,28 @@ table th[class*="span"],
   background-color: #c4e3f3;
 }
 
+@charset "UTF-8";
+
 @font-face {
   font-family: 'fontello-icon-fonts';
   font-style: normal;
   font-weight: normal;
-  src: url("../font/fontello-icon-fonts.eot");
-  src: url("../font/fontello-icon-fonts.eot?#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff") format('woff'), url("../font/fontello-icon-fonts.ttf") format('truetype'), url("../font/fontello-icon-fonts.svg#fontello-icon-fonts") format('svg');
+  src: url("../font/fontello-icon-fonts.eot?45940895");
+  src: url("../font/fontello-icon-fonts.eot?45940895#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff?45940895") format('woff'), url("../font/fontello-icon-fonts.ttf?45940895") format('truetype'), url("../font/fontello-icon-fonts.svg?45940895#fontello-icon-fonts") format('svg');
 }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello-icon-fonts';
+    src: url('../font/fontello-icon-fonts.svg?45940895#fontello-icon-fonts') format('svg');
+  }
+}
+*/
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -2326,11 +2341,23 @@ table th[class*="span"],
 
 /* '⎉' */
 
+.icon-up-dir:before {
+  content: '\25b4';
+}
+
+/* '▴' */
+
 .icon-play:before {
   content: '\25b6';
 }
 
 /* '▶' */
+
+.icon-down-dir:before {
+  content: '\25be';
+}
+
+/* '▾' */
 
 .icon-th-list:before {
   content: '\2630';
@@ -2349,6 +2376,12 @@ table th[class*="span"],
 }
 
 /* '⚑' */
+
+.icon-tools:before {
+  content: '\2692';
+}
+
+/* '⚒' */
 
 .icon-cog:before {
   content: '\2699';
@@ -2566,6 +2599,12 @@ table th[class*="span"],
 
 /* '' */
 
+.icon-upload-cloud:before {
+  content: '\f0ee';
+}
+
+/* '' */
+
 .icon-spinner:before {
   content: '\f110';
 }
@@ -2590,7 +2629,7 @@ table th[class*="span"],
 
 /* '' */
 
-.icon-group:before {
+.icon-users:before {
   content: '\f465';
 }
 
@@ -2613,6 +2652,12 @@ table th[class*="span"],
 }
 
 /* '' */
+
+.icon-chart-line:before {
+  content: '📈';
+}
+
+/* '\1f4c8' */
 
 .icon-book:before {
   content: '\f4d5';

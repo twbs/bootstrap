@@ -1,10 +1,22 @@
+@charset "UTF-8";
+
 @font-face {
   font-family: 'fontello-icon-fonts';
-  src: url("../font/fontello-icon-fonts.eot");
-  src: url("../font/fontello-icon-fonts.eot?#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff") format('woff'), url("../font/fontello-icon-fonts.ttf") format('truetype'), url("../font/fontello-icon-fonts.svg#fontello-icon-fonts") format('svg');
+  src: url("../font/fontello-icon-fonts.eot?45940895");
+  src: url("../font/fontello-icon-fonts.eot?45940895#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff?45940895") format('woff'), url("../font/fontello-icon-fonts.ttf?45940895") format('truetype'), url("../font/fontello-icon-fonts.svg?45940895#fontello-icon-fonts") format('svg');
   font-weight: normal;
   font-style: normal;
 }
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello-icon-fonts';
+    src: url('../font/fontello-icon-fonts.svg?45940895#fontello-icon-fonts') format('svg');
+  }
+}
+*/
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: 'fontello-icon-fonts';
@@ -33,10 +45,13 @@
 .icon-arrow-right:before { content: '\2192'; } /* '→' */
 .icon-fork:before { content: '\2387'; } /* '⎇' */
 .icon-pause:before { content: '\2389'; } /* '⎉' */
+.icon-up-dir:before { content: '\25b4'; } /* '▴' */
 .icon-play:before { content: '\25b6'; } /* '▶' */
+.icon-down-dir:before { content: '\25be'; } /* '▾' */
 .icon-th-list:before { content: '\2630'; } /* '☰' */
 .icon-th:before { content: '\268f'; } /* '⚏' */
 .icon-flag:before { content: '\2691'; } /* '⚑' */
+.icon-tools:before { content: '\2692'; } /* '⚒' */
 .icon-cog:before { content: '\2699'; } /* '⚙' */
 .icon-warning-sign:before { content: '\26a0'; } /* '⚠' */
 .icon-cogs:before { content: '\26ef'; } /* '⛯' */
@@ -73,14 +88,16 @@
 .icon-filter:before { content: '\f0b0'; } /* '' */
 .icon-table:before { content: '\f0ce'; } /* '' */
 .icon-sitemap:before { content: '\f0e8'; } /* '' */
+.icon-upload-cloud:before { content: '\f0ee'; } /* '' */
 .icon-spinner:before { content: '\f110'; } /* '' */
 .icon-picture:before { content: '\f304'; } /* '' */
 .icon-gift:before { content: '\f381'; } /* '' */
 .icon-user:before { content: '\f464'; } /* '' */
-.icon-group:before { content: '\f465'; } /* '' */
+.icon-users:before { content: '\f465'; } /* '' */
 .icon-save:before { content: '\f4be'; } /* '' */
 .icon-folder-open:before { content: '\f4c2'; } /* '' */
 .icon-calendar:before { content: '\f4c5'; } /* '' */
+.icon-chart-line:before { content: '📈'; } /* '\1f4c8' */
 .icon-book:before { content: '\f4d5'; } /* '' */
 .icon-download-alt:before { content: '\f4e5'; } /* '' */
 .icon-random:before { content: '\f500'; } /* '' */

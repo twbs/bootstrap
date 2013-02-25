@@ -69,6 +69,19 @@
     },
     {
       "search": [
+        "up",
+        "arrow"
+      ],
+      "code": 9652,
+      "from": 9652,
+      "uid": "80cd1022bd9ea151d554bec1fa05f2de",
+      "css": "up-dir",
+      "orig_css": "up-dir",
+      "orig_code": 9652,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
         "play",
         "player"
       ],
@@ -78,6 +91,19 @@
       "css": "play",
       "orig_css": "play",
       "orig_code": 9654,
+      "src": "fontawesome"
+    },
+    {
+      "search": [
+        "down",
+        "arrow"
+      ],
+      "code": 9662,
+      "from": 9662,
+      "uid": "2d6150442079cbda7df64522dc24f482",
+      "css": "down-dir",
+      "orig_css": "down-dir",
+      "orig_code": 9662,
       "src": "fontawesome"
     },
     {
@@ -117,6 +143,18 @@
       "orig_css": "flag",
       "orig_code": 9873,
       "src": "fontawesome"
+    },
+    {
+      "search": [
+        "tools"
+      ],
+      "code": 9874,
+      "uid": "6a7b9d4863bb7e6c79e9457a72d689b6",
+      "css": "tools",
+      "orig_css": "tools",
+      "orig_code": 9874,
+      "src": "entypo",
+      "from": 9874
     },
     {
       "search": [
@@ -602,6 +640,19 @@
     },
     {
       "search": [
+        "upload",
+        "cloud"
+      ],
+      "code": 61678,
+      "uid": "de2fc7a5c986ab8c622f63455d7cf814",
+      "css": "upload-cloud",
+      "orig_css": "upload-cloud",
+      "orig_code": 61678,
+      "src": "fontawesome",
+      "from": 61678
+    },
+    {
+      "search": [
         "spinner"
       ],
       "code": 61712,
@@ -662,12 +713,12 @@
         "friends"
       ],
       "code": 62565,
-      "from": 128101,
-      "uid": "31972e4e9d080eaa796290349ae6c1fd",
-      "css": "group",
+      "uid": "ecf8edb95c3f45eb433b4cce7ba9f740",
+      "css": "users",
       "orig_css": "users",
       "orig_code": 62565,
-      "src": "fontawesome"
+      "src": "entypo",
+      "from": 128101
     },
     {
       "search": [
@@ -706,6 +757,21 @@
       "orig_css": "calendar",
       "orig_code": 62661,
       "src": "fontawesome"
+    },
+    {
+      "search": [
+        "chart",
+        "graph",
+        "line",
+        "diagram"
+      ],
+      "code": 128200,
+      "uid": "7184d8171b6a9b18eabbace94cca21db",
+      "css": "chart-line",
+      "orig_css": "chart-line",
+      "orig_code": 128200,
+      "src": "entypo",
+      "from": 128200
     },
     {
       "search": [
