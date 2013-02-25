@@ -56,7 +56,8 @@
   font-weight: 200;
   color: @navbarBrandColor;
   text-shadow: 0 1px 0 @navbarBackgroundHighlight;
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 }
@@ -73,7 +74,8 @@
 // -------------------------
 .navbar-link {
   color: @navbarLinkColor;
-  &:hover {
+  &:hover,
+  &:focus {
     color: @navbarLinkColorHover;
   }
 }
@@ -95,7 +97,9 @@
 }
 .navbar .btn-group .btn,
 .navbar .input-prepend .btn,
-.navbar .input-append .btn {
+.navbar .input-append .btn,
+.navbar .input-prepend .btn-group,
+.navbar .input-append .btn-group {
   margin-top: 0; // then undo the margin here so we don't accidentally double it
 }
 
@@ -245,13 +249,12 @@
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
-
 }
 
-// Hover
+// Hover/focus
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
+  background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover/:focus from .active
   color: @navbarLinkColorHover;
   text-decoration: none;
 }
@@ -335,10 +338,11 @@
   }
 }
 
-// Caret should match text color on hover
-.navbar .nav li.dropdown > a:hover .caret {
-  border-top-color: @navbarLinkColorActive;
-  border-bottom-color: @navbarLinkColorActive;
+// Caret should match text color on hover/focus
+.navbar .nav li.dropdown > a:hover .caret,
+.navbar .nav li.dropdown > a:focus .caret {
+  border-top-color: @navbarLinkColorHover;
+  border-bottom-color: @navbarLinkColorHover;
 }
 
 // Remove background color from open dropdown
@@ -396,7 +400,8 @@
   .nav > li > a {
     color: @navbarInverseLinkColor;
     text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-    &:hover {
+    &:hover,
+    &:focus {
       color: @navbarInverseLinkColorHover;
     }
   }
@@ -425,7 +430,8 @@
   // Inline text links
   .navbar-link {
     color: @navbarInverseLinkColor;
-    &:hover {
+    &:hover,
+    &:focus {
       color: @navbarInverseLinkColorHover;
     }
   }
@@ -443,7 +449,8 @@
     background-color: @navbarInverseLinkBackgroundActive;
     color: @navbarInverseLinkColorActive;
   }
-  .nav li.dropdown > a:hover .caret {
+  .nav li.dropdown > a:hover .caret,
+  .nav li.dropdown > a:focus .caret {
     border-top-color: @navbarInverseLinkColorActive;
     border-bottom-color: @navbarInverseLinkColorActive;
   }

@@ -21,12 +21,13 @@
     display: none;
     position: relative;
     .transition(.6s ease-in-out left);
-  }
 
-  // Account for jankitude on images
-  > .item > img {
-    display: block;
-    line-height: 1;
+    // Account for jankitude on images
+    > img,
+    > a > img {
+      display: block;
+      line-height: 1;
+    }
   }
 
   > .active,
@@ -97,14 +98,40 @@
     right: 15px;
   }
 
-  // Hover state
-  &:hover {
+  // Hover/focus state
+  &:hover,
+  &:focus {
     color: @white;
     text-decoration: none;
     .opacity(90);
   }
 }
 
+// Carousel indicator pips
+// -----------------------------
+.carousel-indicators {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    text-indent: -999px;
+    background-color: #ccc;
+    background-color: rgba(255,255,255,.25);
+    border-radius: 5px;
+  }
+  .active {
+    background-color: #fff;
+  }
+}
 
 // Caption for text below images
 // -----------------------------

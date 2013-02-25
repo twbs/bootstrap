@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Responsive v2.2.2
+ * Bootstrap Responsive v2.3.0
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -7,10 +7,6 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-
-@-ms-viewport  {
-  width: device-width;
-}
 
 .clearfix {
   *zoom: 1;
@@ -42,6 +38,10 @@
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+@-ms-viewport {
+  width: device-width;
 }
 
 .hidden {
@@ -91,6 +91,19 @@
     display: inherit !important;
   }
   .hidden-phone {
+    display: none !important;
+  }
+}
+
+.visible-print {
+  display: none !important;
+}
+
+@media print {
+  .visible-print {
+    display: inherit !important;
+  }
+  .hidden-print {
     display: none !important;
   }
 }
@@ -995,23 +1008,27 @@
   .nav-collapse .btn {
     padding: 4px 10px 4px;
     font-weight: normal;
-    -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
   }
   .nav-collapse .dropdown-menu li + li a {
     margin-bottom: 2px;
   }
   .nav-collapse .nav > li > a:hover,
-  .nav-collapse .dropdown-menu a:hover {
-    background-color: #f2f2f2;
+  .nav-collapse .nav > li > a:focus,
+  .nav-collapse .dropdown-menu a:hover,
+  .nav-collapse .dropdown-menu a:focus {
+    background-color: #e9e9e9;
   }
   .navbar-inverse .nav-collapse .nav > li > a,
   .navbar-inverse .nav-collapse .dropdown-menu a {
     color: #999999;
   }
   .navbar-inverse .nav-collapse .nav > li > a:hover,
-  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
+  .navbar-inverse .nav-collapse .nav > li > a:focus,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:focus {
     background-color: #111111;
   }
   .nav-collapse.in .btn-group {
@@ -1055,8 +1072,8 @@
     float: none;
     padding: 10px 15px;
     margin: 10px 0;
-    border-top: 1px solid #f2f2f2;
-    border-bottom: 1px solid #f2f2f2;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);

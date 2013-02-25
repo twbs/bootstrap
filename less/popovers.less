@@ -9,7 +9,7 @@
   left: 0;
   z-index: @zindexPopover;
   display: none;
-  width: 236px;
+  max-width: 276px;
   padding: 1px;
   text-align: left; // Reset given new insertion method
   background-color: @popoverBackground;
@@ -26,9 +26,9 @@
 
   // Offset the popover to account for the popover arrow
   &.top     { margin-top: -10px; }
-  &.right   { margin-left: 10px; }
+  &.right, &.bottom-right, &.top-right { margin-left: 10px; }
   &.bottom  { margin-top: 10px; }
-  &.left    { margin-left: -10px; }
+  &.left, &.bottom-left, &.top-left { margin-left: -10px; }
 }
 
 .popover-title {
@@ -40,6 +40,10 @@
   background-color: @popoverTitleBackground;
   border-bottom: 1px solid darken(@popoverTitleBackground, 5%);
   .border-radius(5px 5px 0 0);
+
+  &:empty {
+    display: none;
+  }
 }
 
 .popover-content {
@@ -82,7 +86,7 @@
       border-top-color: @popoverArrowColor;
     }
   }
-  &.right .arrow {
+  &.right .arrow, &.bottom-right .arrow, &.top-right .arrow {
     top: 50%;
     left: -@popoverArrowOuterWidth;
     margin-top: -@popoverArrowOuterWidth;
@@ -110,8 +114,7 @@
       border-bottom-color: @popoverArrowColor;
     }
   }
-
-  &.left .arrow {
+  &.left .arrow, &.bottom-left .arrow, &.top-left .arrow{
     top: 50%;
     right: -@popoverArrowOuterWidth;
     margin-top: -@popoverArrowOuterWidth;
@@ -125,5 +128,10 @@
       bottom: -@popoverArrowWidth;
     }
   }
-
+  &.bottom-right .arrow, &.bottom-left .arrow {
+    top: 80%;
+  }
+  &.top-right .arrow, &.top-left .arrow {
+    top: 17%;
+  }
 }
