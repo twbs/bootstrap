@@ -117,4 +117,10 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("Version should be accessible", function () {
+        var version = $.fn.modal.Constructor.VERSION;
+        ok(!!version, "Version is something");
+        ok("2.3.0" === version, "Specifically, it is 2.3.0");
+      });
 })

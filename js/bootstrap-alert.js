@@ -31,6 +31,8 @@
         $(el).on('click', dismiss, this.close)
       }
 
+  Alert.VERSION = "2.3.0"
+
   Alert.prototype.close = function (e) {
     var $this = $(this)
       , selector = $this.attr('data-target')

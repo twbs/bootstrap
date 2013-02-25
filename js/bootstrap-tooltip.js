@@ -31,6 +31,8 @@
     this.init('tooltip', element, options)
   }
 
+  Tooltip.VERSION = '2.3.0'
+
   Tooltip.prototype = {
 
     constructor: Tooltip

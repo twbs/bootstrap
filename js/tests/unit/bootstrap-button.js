@@ -99,4 +99,10 @@ $(function () {
         ok(btn2.hasClass('active'), 'btn2 has active class')
       })
 
+      test("Version should be accessible", function () {
+        var version = $.fn.button.Constructor.VERSION;
+        ok(!!version, "Version is something");
+        ok("2.3.0" === version, "Specifically, it is 2.3.0");
+      });
+
 })
