@@ -3,6 +3,7 @@ BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 DATE=$(shell date +%I:%M%p)
+TEST_PORT ?= 3000
 CHECK=\033[32m✔\033[39m
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
@@ -43,12 +44,13 @@ build:
 #
 
 test:
-	./node_modules/.bin/jshint js/*.js --config js/.jshintrc
-	./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
-	node js/tests/server.js &
-	phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"
-	kill -9 `cat js/tests/pid.txt`
-	rm js/tests/pid.txt
+	@ ./node_modules/.bin/jshint js/*.js --config js/.jshintrc
+	@ ./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
+	@ PORT=$(TEST_PORT) node js/tests/server.js &
+	@ ./node_modules/.bin/phantomjs js/tests/phantom.js \
+		"http://localhost:$(TEST_PORT)/js/tests"
+	@ kill -9 `cat js/tests/pid.txt`
+	@ rm js/tests/pid.txt
 
 #
 # CLEANS THE ROOT DIRECTORY OF PRIOR BUILDS
