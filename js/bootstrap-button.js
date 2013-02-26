@@ -47,6 +47,7 @@
       state == 'loadingText' ?
         $el.addClass(d).attr(d, d) :
         $el.removeClass(d).removeAttr(d)
+        $el.trigger('set:state:' + state)
     }, 0)
   }
 
