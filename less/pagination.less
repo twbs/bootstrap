@@ -37,18 +37,16 @@
 .pagination ul > .active > span {
   background-color: @paginationActiveBackground;
 }
+.pagination ul > .disabled > span,
+.pagination ul > .disabled > a,
 .pagination ul > .active > a,
 .pagination ul > .active > span {
   color: @grayLight;
   cursor: default;
 }
-.pagination ul > .disabled > span,
-.pagination ul > .disabled > a,
 .pagination ul > .disabled > a:hover,
 .pagination ul > .disabled > a:focus {
-  color: @grayLight;
-  background-color: transparent;
-  cursor: default;
+  background-color: @paginationBackground;
 }
 .pagination ul > li:first-child > a,
 .pagination ul > li:first-child > span {
