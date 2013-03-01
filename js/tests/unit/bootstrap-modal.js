@@ -115,6 +115,8 @@ $(function () {
             div.remove()
             start()
           })
-          .modal("toggle")
+
+        div.modal("toggle")
+        div.modal({backdrop: false}).modal("toggle")
       })
 })
