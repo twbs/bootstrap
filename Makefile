@@ -67,7 +67,10 @@ test:
 #
 
 clean:
+	-rm ${BOOTSTRAP}
 	-rm js/.lastbuilt
+	-rm ${DOCS_FONTS}
+	-rm ${DOCS_JS}
 	-rm -r bootstrap
 
 #
