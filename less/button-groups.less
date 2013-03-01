@@ -16,7 +16,17 @@
   display: inline-block;
   vertical-align: middle; // match .btn alignment given font-size hack above
   > .btn {
+    position: relative;
     float: left;
+    // Prevent double borders when buttons are next to each other
+    + btn {
+      margin-left: -1px;
+    }
+    // Bring the "active" button to the front
+    &:hover,
+    &:active {
+      z-index: 2;
+    }
   }
 }
 
@@ -116,13 +126,14 @@
 .btn-group-vertical > .btn {
   display: block;
   float: none;
-  border-radius: 0;
   max-width: 100%;
 }
 .btn-group-vertical .btn:first-child {
+  border-radius: 0; // Needs to be here for specificity since we're not zeroing them out again
   .border-top-radius(@border-radius-base);
 }
 .btn-group-vertical .btn:last-child {
+  border-radius: 0; // Needs to be here for specificity since we're not zeroing them out again
   .border-bottom-radius(@border-radius-base);
 }
 .btn-group-vertical .btn-large:first-child {

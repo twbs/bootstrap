@@ -503,52 +503,43 @@ select:focus:invalid {
 
 // Button input groups
 // -------------------------
-.input-group-btn,
-.input-group-btn .btn {
+.input-group-btn {
+  position: relative;
   white-space: nowrap;
 }
 .input-group-btn > .btn {
+  position: relative;
   float: left; // Collapse white-space
   border-radius: 0;
   + .btn {
-    border-left: 0;
+    margin-left: -1px;
+  }
+  // Bring the "active" button to the front
+  &:hover,
+  &:active {
+    z-index: 2;
   }
 }
-.input-group-btn.btn-group {
-  display: table-cell;
-}
-// Prepend
-.input-group-btn {
-  &:first-child > .btn,
-  &.btn-group:first-child > .btn {
-    border-right: 0;
-  }
-  &:first-child > .btn,
-  &.btn-group:first-child > .btn {
-    border-radius: @border-radius-base 0 0 @border-radius-base;
-    &.btn-large {
-      border-radius:@border-radius-large 0 0 @border-radius-large;
-    }
-    &.btn-small {
-      border-radius:@border-radius-small 0 0 @border-radius-small;
-    }
+
+// Prepended buttons
+.input-group-btn:first-child {
+  // Round the left corners only
+  > .btn:first-child,
+  > .dropdown-toggle:first-child {
+    .border-left-radius(@border-radius-base);
+    &.btn-large { .border-left-radius(@border-radius-large); }
+    &.btn-small { .border-left-radius(@border-radius-small); }
   }
 }
-// Append
-.input-group-btn {
-  &:last-child > .btn,
-  &.btn-group:last-child > .btn:first-child {
-    border-left: 0;
-  }
-  &:last-child > .btn,
-  &.btn-group:last-child > .btn {
-    border-radius: 0 @border-radius-base @border-radius-base 0;
-    &.btn-large {
-      border-radius: 0 @border-radius-large @border-radius-large 0;
-    }
-    &.btn-small {
-      border-radius: 0 @border-radius-small @border-radius-small 0;
-    }
+
+// Appended buttons
+.input-group-btn:last-child {
+  // Round the right corners only
+  > .btn:last-child,
+  > .dropdown-toggle {
+    .border-right-radius(@border-radius-base);
+    &.btn-large { .border-right-radius(@border-radius-large); }
+    &.btn-small { .border-right-radius(@border-radius-small); }
   }
 }
 
@@ -556,7 +547,6 @@ select:focus:invalid {
 
 // Horizontal forms
 // --------------------------------------------------
-
 
 @media screen and (min-width: 768px) {
 
