@@ -148,7 +148,9 @@
       }
 
     , removeBackdrop: function () {
-        this.$backdrop.remove()
+        if (this.$backdrop !== undefined) {
+          this.$backdrop.remove()
+        }
         this.$backdrop = null
       }
 
