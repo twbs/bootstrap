@@ -62,7 +62,7 @@
       }
 
       this.options.selector ?
-        (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
+        (this._options = $.extend({}, options, { trigger: 'manual', selector: '' })) :
         this.fixTitle()
     }
 
