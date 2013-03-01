@@ -6,6 +6,7 @@ Patch release for @fat's n00bery
 - fix delegated data-attrs for popover/tooltip
 - make carousel actually pause when you click cycle
 - fix jshint ref in makefile
+- fix trying to remove backdrop when no backdrop
 
 ## 2.3.0 (February 7, 2013)
 
