@@ -12,21 +12,29 @@ UGLIFYJS_BIN=$(BIN_PREFIX)uglifyjs
 # BUILD DOCS
 #
 
-build: splash js/.lastbuilt ${BOOTSTRAP}
-	@cp fonts/* docs/assets/fonts/
-	@cp js/*.js docs/assets/js/
-	@cp js/tests/vendor/jquery.js docs/assets/js/
-	@echo "Prepping fonts and JavaScript...            ${CHECK}"
-	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
+FONTS=${wildcard fonts/*}
+DOCS_FONTS=${patsubst fonts/%,docs/assets/fonts/%,${FONTS}}
+JS=${wildcard js/*.js} js/tests/vendor/jquery.js
+DOCS_JS=${patsubst js/%,docs/assets/js/%,${wildcard js/*.js}} docs/assets/js/jquery.js
+
+build: splash js/.lastbuilt ${BOOTSTRAP} ${DOCS_FONTS} ${DOCS_JS} docs/assets/js/bootstrap.js docs/assets/js/bootstrap.min.js
+	@echo "${HR}"
+	@echo "\033[36mSuccess!\n\033[39m"
+	@echo "\033[37mThanks for using Bootstrap,"
+	@echo "<3 @mdo and @fat\n\033[39m"
+
+docs/assets/js/bootstrap.js docs/assets/js/bootstrap.min.js: ${JS}
+	@cat ${JS} > docs/assets/js/bootstrap.js
 	@$(UGLIFYJS_BIN) -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
 	@echo "/**\n* Bootstrap.js v3.0.0 by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > docs/assets/js/copyright.js
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
 	@echo "Compiling and minifying javascript...       ${CHECK}"
-	@echo "${HR}"
-	@echo "\033[36mSuccess!\n\033[39m"
-	@echo "\033[37mThanks for using Bootstrap,"
-	@echo "<3 @mdo and @fat\n\033[39m"
+
+${DOCS_FONTS} ${DOCS_JS}: ${FONTS} ${JS}
+	@cp ${FONTS} docs/assets/fonts/
+	@cp ${JS} docs/assets/js/
+	@echo "Prepping fonts and JavaScript...            ${CHECK}"
 
 splash:
 	@echo "\n\n"
