@@ -1,3 +1,12 @@
+## 2.3.1 (February 28, 2013)
+
+Patch release for @fat's n00bery
+
+- fix missing event type in dropdown
+- fix delegated data-attrs for popover/tooltip
+- make carousel actually pause when you click cycle
+- fix jshint ref in makefile
+
 ## 2.3.0 (February 7, 2013)
 
 Minor release to add carousel indicators, improve tooltips, improve dev setup, and fix hella bugs.
@@ -21,7 +30,7 @@ Minor release to add carousel indicators, improve tooltips, improve dev setup, a
   - Added [new justified navigation example](https://f.cloud.github.com/assets/98681/25869/5e2f812c-4afa-11e2-9293-501cd689232d.png).
   - Added sticky footer with fixed navbar example.
 
-See more on the [2.3.0 pull request](https://github.com/twitter/bootstrap/pull/6346).
+See more on the [2.3.1 pull request](https://github.com/twitter/bootstrap/pull/6346).
 
 
 ## 2.2.2 (December 8, 2012)
