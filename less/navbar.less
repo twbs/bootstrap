@@ -37,6 +37,12 @@
     color: @navbar-link-color-active;
     background-color: @navbar-link-bg-active;
   }
+  .nav > .disabled > a,
+  .nav > .disabled > a:hover,
+  .nav > .disabled > a:focus {
+    color: @navbar-link-color-disabled;
+    background-color: @navbar-link-bg-disabled;
+  }
 }
 
 
@@ -209,6 +215,12 @@
   .nav > .active > a:focus {
     color: @navbar-inverse-link-color-active;
     background-color: @navbar-inverse-link-bg-active;
+  }
+  .nav > .disabled > a,
+  .nav > .disabled > a:hover,
+  .nav > .disabled > a:focus {
+    color: @navbar-inverse-link-color-disabled;
+    background-color: @navbar-inverse-link-bg-disabled;
   }
 
   // Darken the responsive nav toggle

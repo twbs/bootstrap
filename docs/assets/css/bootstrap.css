@@ -2991,6 +2991,7 @@ button.close {
 
 .nav > .disabled > a:hover,
 .nav > .disabled > a:focus {
+  color: #999999;
   text-decoration: none;
   cursor: default;
   background-color: transparent;
@@ -3149,6 +3150,13 @@ button.close {
   background-color: #d5d5d5;
 }
 
+.navbar .nav > .disabled > a,
+.navbar .nav > .disabled > a:hover,
+.navbar .nav > .disabled > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}
+
 .navbar-static-top {
   border-radius: 0;
 }
@@ -3305,6 +3313,13 @@ button.close {
 .navbar-inverse .nav > .active > a:focus {
   color: #ffffff;
   background-color: #080808;
+}
+
+.navbar-inverse .nav > .disabled > a,
+.navbar-inverse .nav > .disabled > a:hover,
+.navbar-inverse .nav > .disabled > a:focus {
+  color: #444444;
+  background-color: transparent;
 }
 
 .navbar-inverse .navbar-toggle {
