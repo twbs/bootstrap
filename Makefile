@@ -3,6 +3,7 @@ BOOTSTRAP_LESS = ./less/bootstrap.less
 DATE=$(shell date +%I:%M%p)
 CHECK=\033[32m✔ Done\033[39m
 HR=\033[37m--------------------------------------------------\033[39m
+TEST_PORT ?= 3000
 
 #
 # BUILD DOCS
@@ -37,12 +38,13 @@ build:
 #
 
 test:
-	./node_modules/.bin/jshint js/*.js --config js/.jshintrc
-	./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
-	node js/tests/server.js &
-	phantomjs js/tests/phantom.js "http://localhost:3000/js/tests"
-	kill -9 `cat js/tests/pid.txt`
-	rm js/tests/pid.txt
+	@ ./node_modules/.bin/jshint js/*.js --config js/.jshintrc
+	@ ./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
+	@ PORT=$(TEST_PORT) node js/tests/server.js &
+	@ ./node_modules/.bin/phantomjs js/tests/phantom.js \
+		"http://localhost:$(TEST_PORT)/js/tests"
+	@ kill -9 `cat js/tests/pid.txt`
+	@ rm js/tests/pid.txt
 
 #
 # CLEANS THE ROOT DIRECTORY OF PRIOR BUILDS
