@@ -12,9 +12,7 @@ UGLIFYJS_BIN=$(BIN_PREFIX)uglifyjs
 # BUILD DOCS
 #
 
-	@$(RECESS_BIN) --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
-	@echo "Compiling LESS with Recess...               ${CHECK}"
-build: splash js/.lastbuilt
+build: splash js/.lastbuilt ${BOOTSTRAP}
 	@cp fonts/* docs/assets/fonts/
 	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
@@ -40,6 +38,10 @@ js/.lastbuilt: js/*.js
 	@$(JSHINT_BIN) js/tests/unit/*.js --config js/.jshintrc
 	@touch js/.lastbuilt
 	@echo "Running JSHint on javascript...             ${CHECK}"
+
+${BOOTSTRAP}: ${BOOTSTRAP_LESS}
+	@$(RECESS_BIN) --compile $^ > $@
+	@echo "Compiling LESS with Recess...               ${CHECK}"
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
 #
