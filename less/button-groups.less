@@ -16,7 +16,17 @@
   display: inline-block;
   vertical-align: middle; // match .btn alignment given font-size hack above
   > .btn {
+    position: relative;
     float: left;
+    // Prevent double borders when buttons are next to each other
+    + btn {
+      margin-left: -1px;
+    }
+    // Bring the "active" button to the front
+    &:hover,
+    &:active {
+      z-index: 2;
+    }
   }
 }
 
@@ -41,32 +51,26 @@
   position: relative;
   border-radius: 0;
 }
-.btn-group > .btn + .btn {
-  margin-left: 1px;
-}
+
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
-  border-top-left-radius: @border-radius-base;
-  border-bottom-left-radius: @border-radius-base;
+  .border-left-radius(@border-radius-base);
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
 .btn-group > .dropdown-toggle {
-  border-top-right-radius: @border-radius-base;
-  border-bottom-right-radius: @border-radius-base;
+  .border-right-radius(@border-radius-base);
 }
 // Reset corners for large buttons
 .btn-group > .btn.large:first-child {
   margin-left: 0;
-  border-top-left-radius: @border-radius-large;
-  border-bottom-left-radius: @border-radius-large;
+  .border-left-radius(@border-radius-large);
 }
 .btn-group > .btn.large:last-child,
 .btn-group > .large.dropdown-toggle {
-  border-top-right-radius: @border-radius-large;
-  border-bottom-right-radius: @border-radius-large;
+  .border-right-radius(@border-radius-large);
 }
 
 // On active and open, don't show outline
@@ -119,29 +123,24 @@
 // Vertical button groups
 // ----------------------
 
-.btn-group-vertical {
-}
 .btn-group-vertical > .btn {
   display: block;
   float: none;
-  border-radius: 0;
   max-width: 100%;
 }
-.btn-group-vertical > .btn + .btn {
-  margin-left: 0;
-  margin-top: 1px;
-}
 .btn-group-vertical .btn:first-child {
-  border-radius: @border-radius-base @border-radius-base 0 0;
+  border-radius: 0; // Needs to be here for specificity since we're not zeroing them out again
+  .border-top-radius(@border-radius-base);
 }
 .btn-group-vertical .btn:last-child {
-  border-radius: 0 0 @border-radius-base @border-radius-base;
+  border-radius: 0; // Needs to be here for specificity since we're not zeroing them out again
+  .border-bottom-radius(@border-radius-base);
 }
 .btn-group-vertical .btn-large:first-child {
-  border-radius: @border-radius-large @border-radius-large 0 0;
+  .border-top-radius(@border-radius-large);
 }
 .btn-group-vertical .btn-large:last-child {
-  border-radius: 0 0 @border-radius-large @border-radius-large;
+  .border-bottom-radius(@border-radius-large);
 }
 
 

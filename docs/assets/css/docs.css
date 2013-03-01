@@ -9,13 +9,14 @@
 -------------------------------------------------- */
 
 body {
+  padding-top: 54px;
   position: relative; /* For scrollyspy */
   /* We add the padding to the body for >768px only */
 }
 
 /*  */
-body > .container,
-.footer .container {
+.bs-docs-body > .container,
+.bs-docs-footer .container {
   padding-left:  15px;
   padding-right: 15px;
 }
@@ -37,6 +38,22 @@ section > .lead {
 }
 section > ul li {
   margin-bottom: 5px;
+}
+
+
+
+/* Navbar
+-------------------------------------------------- */
+
+.bs-docs-navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc; /* IE8 */
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.bs-docs-navbar .nav > .active > a,
+.bs-docs-navbar .nav > .active > a:hover {
+  font-weight: 500;
+  background-color: transparent;
 }
 
 
@@ -106,23 +123,23 @@ section > ul li {
 /* Marketing section of Overview
 -------------------------------------------------- */
 
-.marketing {
+.bs-docs-marketing {
   text-align: center;
   color: #5a5a5a;
 }
-.marketing h1 {
+.bs-docs-marketing h1 {
   margin: 60px 0 10px;
   font-size: 50px;
   line-height: 1;
 }
-.marketing h2 {
+.bs-docs-marketing h2 {
   margin-bottom: 5px;
 }
-.marketing p {
+.bs-docs-marketing p {
   font-size: 16px;
   line-height: 1.4;
 }
-.marketing .marketing-byline {
+.bs-docs-marketing .marketing-byline {
   margin-bottom: 40px;
   font-size: 21px;
   font-weight: 300;
@@ -242,6 +259,31 @@ section > ul li {
   margin-bottom: 0;
 }
 
+/* Typography */
+.bs-docs-example-type .table td {
+  color: #999;
+  vertical-align: middle;
+  border-color: ;
+}
+.bs-docs-example-type .table td,
+.bs-docs-example-type .table th {
+  padding: 15px 0;
+  border-color: #eee;
+}
+.bs-docs-example-type .table tr:first-child td,
+.bs-docs-example-type .table tr:first-child th {
+  border-top: 0;
+}
+.bs-docs-example-type h1,
+.bs-docs-example-type h2,
+.bs-docs-example-type h3,
+.bs-docs-example-type h4,
+.bs-docs-example-type h5,
+.bs-docs-example-type h6 {
+  margin: 0;
+}
+
+
 /* Navbar examples */
 .bs-navbar-top-example,
 .bs-navbar-bottom-example {
@@ -308,6 +350,11 @@ section > ul li {
 }
 .bs-docs-example-submenu > .pull-left + .pull-left {
   margin-left: 20px;
+}
+
+/* Example tabbable tabs */
+.bs-docs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
 }
 
 
@@ -436,13 +483,13 @@ section > ul li {
 /* Footer
 -------------------------------------------------- */
 
-.footer {
+.bs-docs-footer {
   text-align: center;
   padding: 30px 0;
   margin-top: 100px;
   border-top: 1px solid #e5e5e5;
 }
-.footer p {
+.bs-docs-footer p {
   margin-bottom: 0;
   color: #777;
 }
@@ -544,6 +591,16 @@ input.focused {
 
 /* Responsive variations
 -------------------------------------------------- */
+
+/* Hide code snippets on mobile devices */
+@media screen and (max-width: 480px) {
+  .bs-docs-example {
+    border-radius: 4px;
+  }
+  .highlight {
+    display: none;
+  }
+}
 
 /* Tablets and up */
 @media screen and (min-width: 768px) {

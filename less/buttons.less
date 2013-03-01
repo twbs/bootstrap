@@ -19,6 +19,7 @@
   cursor: pointer;
   border: 1px solid @btn-border;
   border-radius: @border-radius-base;
+  white-space: nowrap;
 
   &:focus {
     .tab-focus();
@@ -41,7 +42,7 @@
   &[disabled],
   fieldset[disabled] & {
     cursor: default;
-    .opacity(65);
+    .opacity(.65);
     .box-shadow(none);
   }
 
@@ -64,10 +65,6 @@
   font-size: @font-size-small;
   border-radius: @border-radius-small;
 }
-.btn-mini [class^="icon-"],
-.btn-mini [class*=" icon-"] {
-  margin-top: -1px;
-}
 
 // Mini
 .btn-mini {
@@ -80,10 +77,7 @@
 // Icons in buttons
 // -------------------------
 
-.btn [class^="glyphicon-"]::before       { vertical-align: -2px; }
-.btn-small [class^="glyphicon-"]::before,
-.btn-mini [class^="glyphicon-"]::before  { vertical-align: -1px; }
-
+// TODO: figure this shit out
 
 // Block button
 // -------------------------

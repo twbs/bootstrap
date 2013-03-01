@@ -23,7 +23,7 @@ title: CSS
           <li><a href="#global"><i class="glyphicon glyphicon-chevron-right"></i> Global settings</a></li>
           <li><a href="#typography"><i class="glyphicon glyphicon-chevron-right"></i> Typography</a></li>
           <li><a href="#code"><i class="glyphicon glyphicon-chevron-right"></i> Code</a></li>
-          <li><a href="#gridSystem"><i class="glyphicon glyphicon-chevron-right"></i> Grid system</a></li>
+          <li><a href="#grid-system"><i class="glyphicon glyphicon-chevron-right"></i> Grid system</a></li>
           <li><a href="#tables"><i class="glyphicon glyphicon-chevron-right"></i> Tables</a></li>
           <li><a href="#forms"><i class="glyphicon glyphicon-chevron-right"></i> Forms</a></li>
           <li><a href="#buttons"><i class="glyphicon glyphicon-chevron-right"></i> Buttons</a></li>
@@ -90,7 +90,39 @@ title: CSS
           <!-- Headings -->
           <h2 id="headings">Headings</h2>
           <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
-          <div class="bs-docs-example">
+
+          <div class="bs-docs-example bs-docs-example-type">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th><h1>Bootstrap heading</h1></th>
+                  <td>Semibold 38px</td>
+                </tr>
+                <tr>
+                  <th><h2>Bootstrap heading</h2></th>
+                  <td>Semibold 32px</td>
+                </tr>
+                <tr>
+                  <th><h3>Bootstrap heading</h3></th>
+                  <td>Semibold 24px</td>
+                </tr>
+                <tr>
+                  <th><h4>Bootstrap heading</h4></th>
+                  <td>Semibold 18px</td>
+                </tr>
+                <tr>
+                  <th><h5>Bootstrap heading</h5></th>
+                  <td>Semibold 16px</td>
+                </tr>
+                <tr>
+                  <th><h6>Bootstrap heading</h6></th>
+                  <td>Semibold 12px</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+<!--           <div class="bs-docs-example">
             <h1>h1. Heading 1</h1>
             <h2>h2. Heading 2</h2>
             <h3>h3. Heading 3</h3>
@@ -98,7 +130,7 @@ title: CSS
             <h5>h5. Heading 5</h5>
             <h6>h6. Heading 6</h6>
           </div>
-
+ -->
           <!-- Body copy -->
           <h2 id="body-copy">Body copy</h2>
           <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).</p>
@@ -130,7 +162,7 @@ title: CSS
           <h2 id="emphasis">Emphasis</h2>
           <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
 
-          <h3><code>&lt;small&gt;</code></h3>
+          <h3>Small text</h3>
           <p>For de-emphasizing inline or blocks of text, <small>use the small tag.</small></p>
           <div class="bs-docs-example">
             <p><small>This line of text is meant to be treated as fine print.</small></p>
@@ -182,11 +214,10 @@ title: CSS
             <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
           </div>
 {% highlight html linenos %}
-<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
-<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
-<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+<p class="muted">...</p>
+<p class="text-warning">...</p>
+<p class="text-error">...</p>
+<p class="text-success">...</p>
 {% endhighlight %}
 
 
@@ -194,8 +225,8 @@ title: CSS
           <h2 id="abbreviations">Abbreviations</h2>
           <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
 
-          <h3><code>&lt;abbr&gt;</code></h3>
-          <p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute.</p>
+          <h3>Basic abbreviation</h3>
+          <p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute with the <code>&lt;abbr&gt;</code> element.</p>
           <div class="bs-docs-example">
             <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
           </div>
@@ -203,7 +234,7 @@ title: CSS
 <abbr title="attribute">attr</abbr>
 {% endhighlight %}
 
-          <h3><code>&lt;abbr class="initialism"&gt;</code></h3>
+          <h3>Initialism</h3>
           <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
           <div class="bs-docs-example">
             <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
@@ -215,10 +246,7 @@ title: CSS
 
           <!-- Addresses -->
           <h2 id="addresses">Addresses</h2>
-          <p>Present contact information for the nearest ancestor or the entire body of work.</p>
-
-          <h3><code>&lt;address&gt;</code></h3>
-          <p>Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
+          <p>Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
           <div class="bs-docs-example">
             <address>
               <strong>Twitter, Inc.</strong><br>
@@ -440,7 +468,7 @@ title: CSS
 
         <!-- Grid system
         ================================================== -->
-        <section id="gridSystem">
+        <section id="grid-system">
           <div class="page-header">
             <h1>Grid system</h1>
           </div>
@@ -625,8 +653,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <h2>Optional classes</h2>
           <p>Add any of the following classes to the <code>.table</code> base class.</p>
 
-          <h3><code>.table-striped</code></h3>
-          <p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE8).</p>
+          <h3>Striped</h3>
+          <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE8).</p>
           <div class="bs-docs-example">
             <table class="table table-striped">
               <thead>
@@ -665,8 +693,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </table>
 {% endhighlight %}
 
-          <h3><code>.table-bordered</code></h3>
-          <p>Add borders and rounded corners to the table.</p>
+          <h3>Bordered</h3>
+          <p>Add <code>.table-bordered</code> for borders and rounded corners.</p>
           <div class="bs-docs-example">
             <table class="table table-bordered">
               <thead>
@@ -709,8 +737,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 </table>
 {% endhighlight %}
 
-          <h3><code>.table-hover</code></h3>
-          <p>Enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
+          <h3>Hover rows</h3>
+          <p>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
           <div class="bs-docs-example">
             <table class="table table-hover">
               <thead>
@@ -749,8 +777,8 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endhighlight %}
 
 
-          <h3><code>.table-condensed</code></h3>
-          <p>Makes tables more compact by cutting cell padding in half.</p>
+          <h3>Condensed</h3>
+          <p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
           <div class="bs-docs-example">
             <table class="table table-condensed">
               <thead>
@@ -1462,7 +1490,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <p></p>
           <form class="bs-docs-example">
             <div class="input-group span7">
-              <div class="input-group-btn btn-group">
+              <div class="input-group-btn">
                 <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
@@ -1477,7 +1505,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <br>
             <div class="input-group span7">
               <input type="text">
-              <div class="input-group-btn btn-group">
+              <div class="input-group-btn">
                 <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
@@ -1491,7 +1519,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </form>
 {% highlight html linenos %}
 <div class="input-group span7">
-  <div class="input-group-btn btn-group">
+  <div class="input-group-btn">
     <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
     <ul class="dropdown-menu">
       <li><a href="#">Action</a></li>
@@ -1506,7 +1534,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 <div class="input-group span7">
   <input type="text">
-  <div class="input-group-btn btn-group">
+  <div class="input-group-btn">
     <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
     <ul class="dropdown-menu">
       <li><a href="#">Action</a></li>
@@ -1522,7 +1550,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <h4>Segmented dropdown groups</h4>
           <form class="bs-docs-example">
             <div class="input-group span7">
-              <div class="input-group-btn btn-group">
+              <div class="input-group-btn">
                 <button class="btn" tabindex="-1">Action</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                   <span class="caret"></span>
@@ -1542,7 +1570,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
             <div class="input-group span7">
               <input type="text">
-              <div class="input-group-btn btn-group">
+              <div class="input-group-btn">
                 <button class="btn" tabindex="-1">Action</button>
                 <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
                   <span class="caret"></span>
@@ -1559,7 +1587,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </form>
 {% highlight html linenos %}
 <div class="input-group span7">
-  <div class="input-group-btn btn-group">
+  <div class="input-group-btn">
     <!-- Button and dropdown menu -->
   </div>
   <input type="text">
@@ -1722,52 +1750,37 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
           <h2>Default buttons</h2>
           <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Button</th>
-                <th>class=""</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><button type="button" class="btn btn-default">Default</button></td>
-                <td><code>btn</code></td>
-                <td>Standard gray button with gradient</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-primary">Primary</button></td>
-                <td><code>btn btn-primary</code></td>
-                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-success">Success</button></td>
-                <td><code>btn btn-success</code></td>
-                <td>Indicates a successful or positive action</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-info">Info</button></td>
-                <td><code>btn btn-info</code></td>
-                <td>Contextual button for informational alert messages</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-warning">Warning</button></td>
-                <td><code>btn btn-warning</code></td>
-                <td>Indicates caution should be taken with this action</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-danger">Danger</button></td>
-                <td><code>btn btn-danger</code></td>
-                <td>Indicates a dangerous or potentially negative action</td>
-              </tr>
-              <tr>
-                <td><button type="button" class="btn btn-link">Link</button></td>
-                <td><code>btn btn-link</code></td>
-                <td>Deemphasize a button by making it look like a link while maintaining button behavior</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="bs-docs-example">
+            <button type="button" class="btn btn-default">Default</button>
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-success">Success</button>
+            <button type="button" class="btn btn-info">Info</button>
+            <button type="button" class="btn btn-warning">Warning</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-link">Link</button>
+          </div>
+{% highlight html linenos %}
+<!-- Standard gray button with gradient -->
+<button type="button" class="btn btn-default">Default</button>
+
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<button type="button" class="btn btn-primary">Primary</button>
+
+<!-- Indicates a successful or positive action -->
+<button type="button" class="btn btn-success">Success</button>
+
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="btn btn-info">Info</button>
+
+<!-- Indicates caution should be taken with this action -->
+<button type="button" class="btn btn-warning">Warning</button>
+
+<!-- Indicates a dangerous or potentially negative action -->
+<button type="button" class="btn btn-danger">Danger</button>
+
+<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<button type="button" class="btn btn-link">Link</button>
+{% endhighlight %}
 
           <h4>Cross browser compatibility</h4>
           <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
@@ -2215,7 +2228,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </div>
           <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query.</p>
 
-          <table class="table table-bordered table-striped responsive-utilities">
+          <table class="table table-bordered table-striped responsive-utilities hidden-phone">
             <thead>
               <tr>
                 <th>Class</th>
