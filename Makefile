@@ -12,8 +12,8 @@ build:
 	@echo "\n\n"
 	@echo "\033[36mBuilding Bootstrap...\033[39m"
 	@echo "${HR}"
-	@jshint js/*.js --config js/.jshintrc
-	@jshint js/tests/unit/*.js --config js/.jshintrc
+	@./node_modules/.bin/jshint js/*.js --config js/.jshintrc
+	@./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "Running JSHint on javascript...             ${CHECK}"
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@echo "Compiling LESS with Recess...               ${CHECK}"
