@@ -592,6 +592,16 @@ input.focused {
 /* Responsive variations
 -------------------------------------------------- */
 
+/* Hide code snippets on mobile devices */
+@media screen and (max-width: 480px) {
+  .bs-docs-example {
+    border-radius: 4px;
+  }
+  .highlight {
+    display: none;
+  }
+}
+
 /* Tablets and up */
 @media screen and (min-width: 768px) {
 
