@@ -1,3 +1,13 @@
+## 2.3.1 (February 28, 2013)
+
+Patch release for @fat's n00bery
+
+- fix missing event type in dropdown
+- fix delegated data-attrs for popover/tooltip
+- make carousel actually pause when you click cycle
+- fix jshint ref in makefile
+- fix trying to remove backdrop when no backdrop
+
 ## 2.3.0 (February 7, 2013)
 
 Minor release to add carousel indicators, improve tooltips, improve dev setup, and fix hella bugs.
