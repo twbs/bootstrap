@@ -117,4 +117,21 @@ $(function () {
           })
           .modal("toggle")
       })
+
+      test("should allow modal close with 'backdrop:false'", function () {
+        stop()
+        $.support.transition = false
+        var div = $("<div>", { id: 'modal-test', "data-backdrop": false })
+        div
+          .bind("shown", function () {
+            ok($('#modal-test').is(":visible"), 'modal visible')
+            div.modal("hide")
+          })
+          .bind("hidden", function() {
+            ok(!$('#modal-test').is(":visible"), 'modal hidden')
+            div.remove()
+            start()
+          })
+          .modal("show")
+      })
 })

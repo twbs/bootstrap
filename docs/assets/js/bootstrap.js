@@ -946,7 +946,7 @@
       }
 
     , removeBackdrop: function () {
-        this.$backdrop.remove()
+        this.$backdrop && this.$backdrop.remove()
         this.$backdrop = null
       }
 
