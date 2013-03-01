@@ -3095,7 +3095,7 @@ button.close {
 .nav li.dropdown.open a:hover .caret {
   border-top-color: #fff;
   border-bottom-color: #fff;
-  .opacity(100);
+  .opacity(1);
 }
 
 // Dropdowns in stacked tabs
@@ -3839,6 +3839,7 @@ button.close {
 
 .modal-backdrop.fade {
   opacity: 0;
+  filter: alpha(opacity=0);
 }
 
 .modal-backdrop.fade.in {
