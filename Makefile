@@ -12,15 +12,9 @@ UGLIFYJS_BIN=$(BIN_PREFIX)uglifyjs
 # BUILD DOCS
 #
 
-build:
-	@echo "\n\n"
-	@echo "\033[36mBuilding Bootstrap...\033[39m"
-	@echo "${HR}"
-	@$(JSHINT_BIN) js/*.js --config js/.jshintrc
-	@$(JSHINT_BIN) js/tests/unit/*.js --config js/.jshintrc
-	@echo "Running JSHint on javascript...             ${CHECK}"
 	@$(RECESS_BIN) --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@echo "Compiling LESS with Recess...               ${CHECK}"
+build: splash js/.lastbuilt
 	@cp fonts/* docs/assets/fonts/
 	@cp js/*.js docs/assets/js/
 	@cp js/tests/vendor/jquery.js docs/assets/js/
@@ -36,6 +30,16 @@ build:
 	@echo "\033[37mThanks for using Bootstrap,"
 	@echo "<3 @mdo and @fat\n\033[39m"
 
+splash:
+	@echo "\n\n"
+	@echo "\033[36mBuilding Bootstrap...\033[39m"
+	@echo "${HR}"
+
+js/.lastbuilt: js/*.js
+	@$(JSHINT_BIN) js/*.js --config js/.jshintrc
+	@$(JSHINT_BIN) js/tests/unit/*.js --config js/.jshintrc
+	@touch js/.lastbuilt
+	@echo "Running JSHint on javascript...             ${CHECK}"
 #
 # RUN JSHINT & QUNIT TESTS IN PHANTOMJS
 #
@@ -53,6 +57,7 @@ test:
 #
 
 clean:
+	-rm js/.lastbuilt
 	-rm -r bootstrap
 
 #
@@ -121,4 +126,4 @@ watch:
 	watchr -e "watch('less/.*\.less') { system 'make' }"
 
 
-.PHONY: build test clean bootstrap bootstrap-js bootstrap-css bootstrap-fonts gh-pages watch
+.PHONY: build test clean bootstrap bootstrap-js bootstrap-css bootstrap-fonts gh-pages watch splash
