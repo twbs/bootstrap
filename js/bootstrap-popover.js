@@ -30,6 +30,8 @@
     this.init('popover', element, options)
   }
 
+  Popover.VERSION = '2.3.0'
+
 
   /* NOTE: POPOVER EXTENDS BOOTSTRAP-TOOLTIP.js
      ========================================== */

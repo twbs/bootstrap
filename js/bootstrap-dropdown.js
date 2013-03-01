@@ -34,6 +34,8 @@
         })
       }
 
+  Dropdown.VERSION = '2.3.0'
+
   Dropdown.prototype = {
 
     constructor: Dropdown

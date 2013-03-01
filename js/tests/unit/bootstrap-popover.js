@@ -110,4 +110,9 @@ $(function () {
         ok(!$._data(popover[0], 'events').mouseover && !$._data(popover[0], 'events').mouseout, 'popover does not have any events')
       })
 
+      test("Version should be accessible", function () {
+        var version = $.fn.popover.Constructor.VERSION;
+        ok(!!version, "Version is something");
+        ok("2.3.0" === version, "Specifically, it is 2.3.0");
+      });
 })

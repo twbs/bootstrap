@@ -39,6 +39,8 @@
     this.listen()
   }
 
+  Typeahead.VERSION = '2.3.0'
+
   Typeahead.prototype = {
 
     constructor: Typeahead

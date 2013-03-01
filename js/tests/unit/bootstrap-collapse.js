@@ -91,4 +91,10 @@ $(function () {
         target.click()
       })
 
+      test("Version should be accessible", function () {
+        var version = $.fn.collapse.Constructor.VERSION;
+        ok(!!version, "Version is something");
+        ok("2.3.0" === version, "Specifically, it is 2.3.0");
+      });
+
 })
