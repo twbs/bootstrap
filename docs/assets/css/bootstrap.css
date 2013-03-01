@@ -1943,6 +1943,7 @@ fieldset[disabled] .btn-link:focus {
 
 .collapse.in {
   height: auto;
+  overflow: visible;
 }
 
 @font-face {
