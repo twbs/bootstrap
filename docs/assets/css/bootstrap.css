@@ -975,11 +975,15 @@ th {
   background-color: #f5f5f5;
 }
 
-table td[class*="span"],
-table th[class*="span"] {
+table col[class^="span"] {
+  display: table-column;
+  float: none;
+}
+
+table td[class^="span"],
+table th[class^="span"] {
   display: table-cell;
   float: none;
-  margin-left: 0;
 }
 
 .table tbody tr.success > td {

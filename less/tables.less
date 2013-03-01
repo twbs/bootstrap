@@ -177,12 +177,15 @@ th {
 // TABLE CELL SIZING
 // -----------------
 
-// Reset default grid behavior
-table td[class*="span"],
-table th[class*="span"] {
+// Reset default table behavior
+table col[class^="span"] {
+  float: none;
+  display: table-column;
+}
+table td[class^="span"],
+table th[class^="span"] {
+  float: none;
   display: table-cell;
-  float: none; // undo default grid column styles
-  margin-left: 0; // undo default grid column styles
 }
 
 // TABLE BACKGROUNDS
