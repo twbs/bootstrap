@@ -97,10 +97,10 @@
         , complete = function () {
             if (startEvent.type == 'show') that.reset()
             that.transitioning = 0
-            that.$element.trigger(completeEvent)
+            that.$element.trigger(completeEvent).removeClass("transitioning")
           }
 
-      this.$element.trigger(startEvent)
+      this.$element.trigger(startEvent).addClass("transitioning")
 
       if (startEvent.isDefaultPrevented()) return
 
