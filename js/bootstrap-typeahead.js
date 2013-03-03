@@ -232,8 +232,16 @@
 
   , keyup: function (e) {
       switch(e.keyCode) {
+        case 37: // left arrow
+        case 39: // right arrow
+          return
+          break
+
         case 40: // down arrow
         case 38: // up arrow
+          if (!this.shown) return
+          break
+
         case 16: // shift
         case 17: // ctrl
         case 18: // alt

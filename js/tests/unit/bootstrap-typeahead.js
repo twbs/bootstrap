@@ -185,6 +185,68 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should release control when arrows are pressed and menu is hidden", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac']
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+          , keyup_test = $('<div id="keyup_test">').appendTo('body')
+
+        $(document).on('keyup', $input, function(e) {
+          $('#keyup_test').text(e.keyCode)
+        })
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+
+        $.each([38, 40], function(i, keyCode) {
+          // simulate entire key pressing event
+          $input.trigger({
+            type: 'keydown'
+          , keyCode: keyCode
+          })
+          .trigger({
+            type: 'keypress'
+          , keyCode: keyCode
+          })
+          .trigger({
+            type: 'keyup'
+          , keyCode: keyCode
+          })
+
+          equals(keyup_test.text(), '', 'typeahead handles arrow key when menu is visible')
+        })
+
+        $input.val('abc')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":hidden"), 'typeahead is hidden')
+
+        $.each([37, 38, 39, 40], function(i, keyCode) {
+          // simulate entire key pressing event
+          $input.trigger({
+            type: 'keydown'
+          , keyCode: keyCode
+          })
+          .trigger({
+            type: 'keypress'
+          , keyCode: keyCode
+          })
+          .trigger({
+            type: 'keyup'
+          , keyCode: keyCode
+          })
+
+          equals(keyup_test.text(), keyCode.toString(), 'typeahead releases control for arrow key when menu is hidden')
+        })
+
+        $input.remove()
+        typeahead.$menu.remove()
+        keyup_test.remove()
+      })
+
 
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
