@@ -2279,8 +2279,8 @@ table th[class*="span"],
   font-family: 'fontello-icon-fonts';
   font-style: normal;
   font-weight: normal;
-  src: url("../font/fontello-icon-fonts.eot?45940895");
-  src: url("../font/fontello-icon-fonts.eot?45940895#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff?45940895") format('woff'), url("../font/fontello-icon-fonts.ttf?45940895") format('truetype'), url("../font/fontello-icon-fonts.svg?45940895#fontello-icon-fonts") format('svg');
+  src: url("../font/fontello-icon-fonts.eot?59837903");
+  src: url("../font/fontello-icon-fonts.eot?59837903#iefix") format('embedded-opentype'), url("../font/fontello-icon-fonts.woff?59837903") format('woff'), url("../font/fontello-icon-fonts.ttf?59837903") format('truetype'), url("../font/fontello-icon-fonts.svg?59837903#fontello-icon-fonts") format('svg');
 }
 
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
@@ -2291,7 +2291,7 @@ table th[class*="span"],
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello-icon-fonts';
-    src: url('../font/fontello-icon-fonts.svg?45940895#fontello-icon-fonts') format('svg');
+    src: url('../font/fontello-icon-fonts.svg?59837903#fontello-icon-fonts') format('svg');
   }
 }
 */
@@ -2472,6 +2472,12 @@ table th[class*="span"],
 }
 
 /* '⟳' */
+
+.icon-list-add:before {
+  content: '\e003';
+}
+
+/* '' */
 
 .icon-remove-circle:before {
   content: '\e703';
