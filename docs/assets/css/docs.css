@@ -390,6 +390,8 @@ section > ul li {
   line-height: 1.25;
   text-align: center;
   -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0 -1px -1px 0;
 }
 .the-icons .glyphicon {
@@ -646,6 +648,12 @@ input.focused {
 
 /* Tablets/desktops and up */
 @media screen and (min-width: 992px) {
+
+  /* Icons */
+  .the-icons li {
+    width: 12.5%;
+  }
+
   .bs-docs-sidenav {
     width: 220px;
   }
