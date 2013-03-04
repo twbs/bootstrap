@@ -826,6 +826,10 @@ pre code {
   .container {
     max-width: 1170px;
   }
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
   [class^="span"] {
     padding-right: 15px;
     padding-left: 15px;
