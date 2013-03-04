@@ -1167,7 +1167,7 @@
         , actualHeight
         , placement
         , tp
-        , e = $.Event('show')
+        , e = $.Event('tooltipshow')
 
       if (this.hasContent() && this.enabled) {
         this.$element.trigger(e)
@@ -1210,7 +1210,7 @@
         }
 
         this.applyPlacement(tp, placement)
-        this.$element.trigger('shown')
+        this.$element.trigger('tooltipshown')
       }
     }
 
@@ -1272,7 +1272,7 @@
   , hide: function () {
       var that = this
         , $tip = this.tip()
-        , e = $.Event('hide')
+        , e = $.Event('tooltiphide')
 
       this.$element.trigger(e)
       if (e.isDefaultPrevented()) return
@@ -1294,7 +1294,7 @@
         removeWithAnimation() :
         $tip.detach()
 
-      this.$element.trigger('hidden')
+      this.$element.trigger('tooltiphidden')
 
       return this
     }
