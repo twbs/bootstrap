@@ -66,79 +66,79 @@ $(function () {
         ok(!$(".tooltip").length, 'tooltip removed')
       })
 
-      test("should fire show event", function () {
+      test("should fire tooltipshow event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("show", function() {
-            ok(true, "show was called")
+          .bind("tooltipshow", function() {
+            ok(true, "tooltipshow received")
             start()
           })
           .tooltip('show')
       })
 
-      test("should fire shown event", function () {
+      test("should fire tooltipshown event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
-            ok(true, "shown was called")
+          .bind("tooltipshown", function() {
+            ok(true, "tooltipshown received")
             start()
           })
           .tooltip('show')
       })
 
-      test("should not fire shown event when default prevented", function () {
+      test("should not fire tooltipshown event when default prevented", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("show", function(e) {
+          .bind("tooltipshow", function(e) {
             e.preventDefault()
-            ok(true, "show was called")
+            ok(true, "tooltipshow received")
             start()
           })
-          .bind("shown", function() {
-            ok(false, "shown was called")
+          .bind("tooltipshown", function() {
+            ok(false, "tooltipshown received")
           })
           .tooltip('show')
       })
 
-      test("should fire hide event", function () {
+      test("should fire tooltiphide event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
+          .bind("tooltipshown", function() {
             $(this).tooltip('hide')
           })
-          .bind("hide", function() {
-            ok(true, "hide was called")
-            start()
-          })
-          .tooltip('show')
-      })
-
-      test("should fire hidden event", function () {
-        stop()
-        var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
-            $(this).tooltip('hide')
-          })
-          .bind("hidden", function() {
-            ok(true, "hidden was called")
+          .bind("tooltiphide", function() {
+            ok(true, "tooltiphide received")
             start()
           })
           .tooltip('show')
       })
 
-      test("should not fire hidden event when default prevented", function () {
+      test("should fire tooltiphidden event", function () {
         stop()
         var tooltip = $('<div title="tooltip title"></div>')
-          .bind("shown", function() {
+          .bind("tooltipshown", function() {
             $(this).tooltip('hide')
           })
-          .bind("hide", function(e) {
+          .bind("tooltiphidden", function() {
+            ok(true, "tooltiphidden received")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should not fire tooltiphidden event when default prevented", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("tooltipshown", function() {
+            $(this).tooltip('hide')
+          })
+          .bind("tooltiphide", function(e) {
             e.preventDefault()
-            ok(true, "hide was called")
+            ok(true, "tooltiphide received")
             start()
           })
-          .bind("hidden", function() {
-            ok(false, "hidden was called")
+          .bind("tooltiphidden", function() {
+            ok(false, "tooltiphidden received")
           })
           .tooltip('show')
       })
