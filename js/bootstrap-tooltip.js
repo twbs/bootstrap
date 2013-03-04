@@ -84,7 +84,7 @@
         , options = {}
         , self
 
-      if (this._options) options = $.extend({}, defaults, this._options);
+      if (this._options) options = $.extend({}, defaults, this._options, $(e.currentTarget).data());
 
       self = $(e.currentTarget)[this.type](options).data(this.type)
 
