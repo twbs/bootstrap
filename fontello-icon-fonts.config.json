@@ -366,6 +366,19 @@
     },
     {
       "search": [
+        "add",
+        "list"
+      ],
+      "code": 57347,
+      "uid": "97bd5542ed3e143d2ee9b60e14487615",
+      "css": "list-add",
+      "orig_css": "list-add",
+      "orig_code": 57347,
+      "src": "entypo",
+      "from": 57347
+    },
+    {
+      "search": [
         "close",
         "cancel",
         "reject"
