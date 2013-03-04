@@ -53,8 +53,7 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"],
-.uneditable-input {
+input[type="color"] {
   display: inline-block;
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
   min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
@@ -75,8 +74,7 @@ input[type="color"],
 // Can't be on input[type=*] selectors or it's too specific
 input,
 select,
-textarea,
-.uneditable-input {
+textarea {
   width: 100%;
 }
 
@@ -111,8 +109,7 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"],
-.uneditable-input {
+input[type="color"] {
   // Focus state
   &:focus {
     border-color: rgba(82,168,236,.8);
@@ -150,32 +147,6 @@ input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   .tab-focus();
-}
-
-
-// Uneditable inputs
-// -------------------------
-
-// Make uneditable inputs look inactive
-.uneditable-input,
-.uneditable-textarea {
-  color: @grayLight;
-  background-color: darken(@input-background, 1%);
-  border-color: @input-border;
-  .box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
-  cursor: not-allowed;
-}
-
-// For text that needs to appear as an input but should not be an input
-.uneditable-input {
-  overflow: hidden; // prevent text from wrapping, but still cut it off like an input does
-  white-space: nowrap;
-}
-
-// Make uneditable textareas behave like a textarea
-.uneditable-textarea {
-  width: auto;
-  height: auto;
 }
 
 
@@ -260,8 +231,7 @@ input[type="email"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
-input[type="color"],
-.uneditable-input {
+input[type="color"] {
   &.input-large {
     padding: @padding-large;
     font-size: @font-size-large;
@@ -283,8 +253,7 @@ input[type="color"],
 // Grid style input sizes
 input[class*="span"],
 select[class*="span"],
-textarea[class*="span"],
-.uneditable-input[class*="span"] {
+textarea[class*="span"] {
   float: none;
   margin-left: 0;
   margin-right: 0;
@@ -292,16 +261,13 @@ textarea[class*="span"],
 
 // Ensure input-prepend/append never wraps
 .input-append input[class*="span"],
-.input-append .uneditable-input[class*="span"],
-.input-prepend input[class*="span"],
-.input-prepend .uneditable-input[class*="span"] {
+.input-prepend input[class*="span"] {
   display: inline-block;
 }
 
 input[class*="span"],
 select[class*="span"],
-textarea[class*="span"],
-.uneditable-input[class*="span"] {
+textarea[class*="span"] {
   height: @input-height-base;
 }
 
@@ -419,8 +385,7 @@ select:focus:invalid {
   }
 
   input,
-  select,
-  .uneditable-input {
+  select {
     width: 100%;
   }
 }
@@ -429,8 +394,7 @@ select:focus:invalid {
 // -------------------------
 .input-group-addon,
 .input-group-btn,
-.input-group input,
-.input-group .uneditable-input {
+.input-group input {
   display: table-cell;
   margin: 0;
   border-radius: 0;
@@ -473,7 +437,6 @@ select:focus:invalid {
 
 // Reset rounded corners
 .input-group input:first-child,
-.input-group .uneditable-input:first-child,
 .input-group-addon:first-child {
   .border-left-radius(@border-radius-base);
   &.input-small {
@@ -487,7 +450,6 @@ select:focus:invalid {
   border-right: 0;
 }
 .input-group input:last-child,
-.input-group .uneditable-input:last-child,
 .input-group-addon:last-child {
   .border-right-radius(@border-radius-base);
   &.input-small {
@@ -560,8 +522,7 @@ select:focus:invalid {
 
       input,
       select,
-      textarea,
-      .uneditable-input {
+      textarea {
         margin-bottom: 0;
       }
     }
