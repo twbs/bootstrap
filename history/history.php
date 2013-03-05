@@ -33,7 +33,7 @@ class less2css {
 
   public static function compile($email) {
 
-    $variables = mysql_query("SELECT  `values` FROM  `bootstrap_compiled` WHERE email = $email");
+    $variables = mysql_query("SELECT  `values` FROM  `bootstrap_compiled` WHERE email = $email ORDER BY `id` DESC LIMIT 1");
 
     $vars = array();
     foreach ($variables as $variable) {
