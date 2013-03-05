@@ -85,7 +85,7 @@
       }
       this.prevTarget = e.currentTarget
 
-      self = $(e.currentTarget)[this.type](this._options).data(this.type)
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
       if (this.options.selector) $.extend(self.options, this.$element.data())
       if (!self.options.delay || !self.options.delay.show) return self.show()
