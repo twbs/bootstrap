@@ -148,4 +148,32 @@ $(function () {
         $("#qunit-fixture").html("")
       })
 
+      test("should fire show and hide event", function () {
+        var dropdownHTML = '<ul class="tabs">'
+          + '<li class="dropdown">'
+          + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+          + '<ul class="dropdown-menu">'
+          + '<li><a href="#">Secondary link</a></li>'
+          + '<li><a href="#">Something else here</a></li>'
+          + '<li class="divider"></li>'
+          + '<li><a href="#">Another link</a></li>'
+          + '</ul>'
+          + '</li>'
+          + '</ul>'
+          , dropdown = $(dropdownHTML)
+            .find('[data-toggle="dropdown"]')
+            .dropdown()
+
+        stop()
+
+        dropdown.parent('.dropdown').bind('show', function () {
+          ok(true, 'show was called')
+        }).bind('hide', function () {
+          ok(true, 'hide was called')
+          start()
+        })
+
+        dropdown.click()
+        $('body').click()
+      })
 })
