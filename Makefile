@@ -6,6 +6,9 @@ DATE=$(shell date +%I:%M%p)
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), MINGW32_NT-6.2)
   CHECK=
+endif
+ifeq ($(UNAME), MINGW32_NT-6.1)
+  CHECK=
 else
   CHECK=\033[32m✔\033[39m
   NEWLINE=\n
@@ -21,8 +24,8 @@ build:
 	@echo "${NEWLINE}${HR}"
 	@echo "Building Bootstrap..."
 	@echo "${HR}${NEWLINE}"
-	@jshint js/*.js --config js/.jshintrc
-	@jshint js/tests/unit/*.js --config js/.jshintrc
+	@./node_modules/.bin/jshint js/*.js --config js/.jshintrc
+	@./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "Running JSHint on javascript...             ${CHECK} Done"
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_RESPONSIVE_LESS} > ${BOOTSTRAP_RESPONSIVE}
@@ -36,7 +39,7 @@ build:
 	@cat js/bootstrap-transition.js js/bootstrap-alert.js js/bootstrap-button.js js/bootstrap-carousel.js js/bootstrap-collapse.js js/bootstrap-dropdown.js js/bootstrap-modal.js js/bootstrap-tooltip.js js/bootstrap-popover.js js/bootstrap-scrollspy.js js/bootstrap-tab.js js/bootstrap-typeahead.js js/bootstrap-affix.js > docs/assets/js/bootstrap.js
 	@./node_modules/.bin/uglifyjs -nc docs/assets/js/bootstrap.js > docs/assets/js/bootstrap.min.tmp.js
 	@echo "/**${NEWLINE}" > docs/assets/js/copyright.js
-	@echo "* Bootstrap.js v2.3.0 by @fat & @mdo${NEWLINE}" >> docs/assets/js/copyright.js
+	@echo "* Bootstrap.js v2.3.1 by @fat & @mdo${NEWLINE}" >> docs/assets/js/copyright.js
 	@echo "* Copyright 2012 Twitter, Inc.${NEWLINE}" >> docs/assets/js/copyright.js
 	@echo "* http://www.apache.org/licenses/LICENSE-2.0.txt${NEWLINE}" >> docs/assets/js/copyright.js
 	@echo "*/${NEWLINE}" >> docs/assets/js/copyright.js
