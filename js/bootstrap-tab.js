@@ -139,7 +139,7 @@
   $(document).on('click.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
     e.preventDefault()
     $(this).tab('show')
-    this.blue()
+    this.blur()
   })
 
 }(window.jQuery);
