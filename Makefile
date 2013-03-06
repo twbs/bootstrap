@@ -3,15 +3,17 @@ BOOTSTRAP_LESS = ./less/bootstrap.less
 BOOTSTRAP_RESPONSIVE = ./docs/assets/css/bootstrap-responsive.css
 BOOTSTRAP_RESPONSIVE_LESS = ./less/responsive.less
 DATE=$(shell date +%I:%M%p)
+CHECK=\033[32m✔\033[39m
+NEWLINE=\n
 UNAME = $(shell uname -s)
-ifeq ($(UNAME), MINGW32_NT-6.2)
+
+ifeq ($(UNAME), MINGW32_NT-6.2) # Windows 8
   CHECK=
+  NEWLINE=
 endif
-ifeq ($(UNAME), MINGW32_NT-6.1)
+ifeq ($(UNAME), MINGW32_NT-6.1) # Windows 7
   CHECK=
-else
-  CHECK=\033[32m✔\033[39m
-  NEWLINE=\n
+  NEWLINE=
 endif
 HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
@@ -19,7 +21,6 @@ HR=\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\
 #
 # BUILD DOCS
 #
-
 build:
 	@echo "${NEWLINE}${HR}"
 	@echo "Building Bootstrap..."
@@ -46,7 +47,7 @@ build:
 	@cat docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js > docs/assets/js/bootstrap.min.js
 	@rm docs/assets/js/copyright.js docs/assets/js/bootstrap.min.tmp.js
 	@echo "Compiling and minifying javascript...       ${CHECK} Done"
-	@echo "\n${HR}"
+	@echo "${NEWLINE}${HR}"
 	@echo "Bootstrap successfully built at ${DATE}."
 	@echo "${HR}${NEWLINE}"
 	@echo "Thanks for using Bootstrap,"
