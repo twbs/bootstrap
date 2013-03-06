@@ -3115,8 +3115,8 @@ button.close {
 .btn[disabled] {
   cursor: default;
   background-image: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
+  opacity: 0.4;
+  filter: alpha(opacity=40);
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
@@ -5319,7 +5319,6 @@ input[type="submit"].btn.btn-mini {
 .popover.right .arrow,
 .popover.bottom-right .arrow,
 .popover.top-right .arrow {
-  top: 50%;
   left: -11px;
   margin-top: -11px;
   border-right-color: #999;
@@ -5355,7 +5354,6 @@ input[type="submit"].btn.btn-mini {
 .popover.left .arrow,
 .popover.bottom-left .arrow,
 .popover.top-left .arrow {
-  top: 50%;
   right: -11px;
   margin-top: -11px;
   border-left-color: #999;
@@ -5372,14 +5370,19 @@ input[type="submit"].btn.btn-mini {
   border-right-width: 0;
 }
 
+.popover.left .arrow,
+.popover.right .arrow {
+  top: 50%;
+}
+
 .popover.bottom-right .arrow,
 .popover.bottom-left .arrow {
-  top: 80%;
+  bottom: 4px;
 }
 
 .popover.top-right .arrow,
 .popover.top-left .arrow {
-  top: 17%;
+  top: 15px;
 }
 
 .thumbnails {

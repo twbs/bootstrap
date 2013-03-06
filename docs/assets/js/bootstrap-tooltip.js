@@ -84,15 +84,8 @@
         $(this.prevTarget)[this.type](this._options).data(this.type).hide()
       }
       this.prevTarget = e.currentTarget
-      var defaults = $.fn[this.type].defaults
-        , options = {}
-        , self
 
-      this._options && $.each(this._options, function (key, value) {
-        if (defaults[key] != value) options[key] = value
-      }, this)
-
-      self = $(e.currentTarget)[this.type](options).data(this.type)
+      var self = $(e.currentTarget)[this.type](this._options).data(this.type)
 
       if (this.options.selector) $.extend(self.options, this.$element.data())
       if (!self.options.delay || !self.options.delay.show) return self.show()

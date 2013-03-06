@@ -87,7 +87,6 @@
     }
   }
   &.right .arrow, &.bottom-right .arrow, &.top-right .arrow {
-    top: 50%;
     left: -@popoverArrowOuterWidth;
     margin-top: -@popoverArrowOuterWidth;
     border-left-width: 0;
@@ -115,7 +114,6 @@
     }
   }
   &.left .arrow, &.bottom-left .arrow, &.top-left .arrow{
-    top: 50%;
     right: -@popoverArrowOuterWidth;
     margin-top: -@popoverArrowOuterWidth;
     border-right-width: 0;
@@ -128,10 +126,13 @@
       bottom: -@popoverArrowWidth;
     }
   }
+  &.left .arrow, &.right .arrow {
+    top: 50%;
+  }
   &.bottom-right .arrow, &.bottom-left .arrow {
-    top: 80%;
+    bottom: 4px;
   }
   &.top-right .arrow, &.top-left .arrow {
-    top: 17%;
+    top: 15px;
   }
 }
