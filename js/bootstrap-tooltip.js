@@ -161,6 +161,7 @@
         }
 
         this.applyPlacement(tp, placement)
+        if(this.options.fixclass != null) { $tip.addClass(this.options.fixclass) }
         this.$element.trigger('shown')
       }
     }
@@ -246,7 +247,8 @@
         $tip.detach()
 
       this.$element.trigger('hidden')
-
+      if(this.options.fixclass != null) { $tip.removeClass(this.options.fixclass) }
+      
       return this
     }
 
