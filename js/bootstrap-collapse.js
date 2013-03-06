@@ -67,7 +67,7 @@
 
       this.$element[dimension](0)
       this.transition('addClass', $.Event('show'), 'shown')
-      $.support.transition && this.$element[dimension](this.$element[0][scroll])
+      $.support.transition && this.$element[dimension]('auto')
     }
 
   , hide: function () {
