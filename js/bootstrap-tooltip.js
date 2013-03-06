@@ -161,7 +161,7 @@
         }
 
         this.applyPlacement(tp, placement)
-        $tip.addClass(this.options.class)
+        $tip.addClass(this.options.fixclass)
         this.$element.trigger('shown')
       }
     }
@@ -246,7 +246,7 @@
         removeWithAnimation() :
         $tip.detach()
 
-      $tip.removeClass(this.options.class)
+      $tip.removeClass(this.options.fixclass)
       this.$element.trigger('hidden')
 
       return this
