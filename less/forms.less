@@ -21,8 +21,8 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: @line-height-base;
-  font-size: @font-size-base * 1.5;
-  line-height: @line-height-base * 2;
+  font-size: (@font-size-base * 1.5);
+  line-height: (@line-height-base * 2);
   color: @grayDark;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
@@ -58,7 +58,7 @@ input[type="color"] {
   .box-sizing(border-box); // Makes inputs behave like true block-level elements
   min-height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: 6px 9px;
-  // margin-bottom: @line-height-base / 2;
+  // margin-bottom: (@line-height-base / 2);
   font-size: @font-size-base;
   line-height: @line-height-base;
   color: @gray;
@@ -168,7 +168,7 @@ textarea {
 .checkbox {
   display: block;
   min-height: @line-height-base; // clear the floating input if there is no label text
-  margin-bottom: @line-height-base / 2;
+  margin-bottom: (@line-height-base / 2);
   padding-left: 20px;
   label {
     display: inline;
@@ -186,7 +186,7 @@ textarea {
 }
 .radio + .radio,
 .checkbox + .checkbox {
-  margin-top: (@line-height-base / 4) * -1;
+  margin-top: ((@line-height-base / 4) * -1);
 }
 
 // Move the options list down to align with labels
@@ -359,7 +359,7 @@ select:focus:invalid {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-bottom: @line-height-base / 2;
+  margin-bottom: (@line-height-base / 2);
 }
 
 .help-inline {
@@ -530,7 +530,7 @@ select:focus:invalid {
     // Float the labels left
     .control-group > .control-label {
       float: left;
-      width: @component-offset-horizontal - 20;
+      width: (@component-offset-horizontal - 20);
       padding-top: 6px;
       text-align: right;
     }
