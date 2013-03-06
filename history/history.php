@@ -10,7 +10,7 @@ class less2css {
     mysql_select_db($database);
     mysql_query("SET NAMES UTF8");
 
-  public static function write_less() {
+  public function write_less() {
 
     if($_POST['posted_values']) {
       
@@ -31,7 +31,7 @@ class less2css {
   return true;
 }
 
-  public static function compile($email) {
+  public function compile($email) {
 
     $variables = mysql_query("SELECT  `values` FROM  `bootstrap_compiled` WHERE email = $email ORDER BY `id` DESC LIMIT 1");
 
