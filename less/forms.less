@@ -91,7 +91,7 @@ input[type="color"],
 
 // Reset appearance properties for textual inputs and textarea
 // Declare width for legacy (can't be on input[type=*] selectors or it's too specific)
-input,
+html input, // Avoid the WebKit bug in Android 4.0.* where (2) hide native `audio` and `video` controls.
 textarea,
 .uneditable-input {
   width: 206px; // plus 12px padding and 2px border
@@ -145,7 +145,7 @@ input[type="file"],
 input[type="image"],
 input[type="submit"],
 input[type="reset"],
-input[type="button"],
+html input[type="button"], // Avoid the WebKit bug in Android 4.0.* where (2) hide native `audio` and `video` controls.
 input[type="radio"],
 input[type="checkbox"] {
   width: auto; // Override of generic input selector
