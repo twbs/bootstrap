@@ -178,13 +178,16 @@ And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 * explicitly provide .clearfix, .hide-text and .input-block-level for compatibility with LESS output
 * pass grid-* mixin arguments to generators, because otherwise the generator mixins will use the default variables pull transition definition into variable
 
-## Installation
+
+
+## SASS: Installation via composer
 
 If you already use Composer, install sass-twitter-bootstrap is as simple as typing :
 ```shell
 composer.phar require jlong/sass-twitter-bootstrap:x.y.z
 ```
 This will install version x.y.z from packagist.org
+
 
 
 ## Copyright and license
