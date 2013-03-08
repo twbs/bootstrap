@@ -180,7 +180,7 @@ And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 
 
 
-## SASS: Installation via composer
+## SASS: Installation via Composer
 
 If you already use Composer, install sass-twitter-bootstrap is as simple as typing :
 ```shell
