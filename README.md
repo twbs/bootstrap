@@ -182,7 +182,8 @@ And [others](https://github.com/jlong/sass-twitter-bootstrap/contributors)
 
 ## SASS: Installation via Composer
 
-If you already use Composer, installing sass-twitter-bootstrap is as simple as typing :
+If you already use Composer, the php dependency manager, installing
+sass-twitter-bootstrap is as simple as typing :
 ```shell
 composer.phar require jlong/sass-twitter-bootstrap:x.y.z
 ```
