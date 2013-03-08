@@ -195,7 +195,7 @@ composer.phar require jlong/sass-twitter-bootstrap:~x.y.z
 ```
 or like this:
 ```shell
-composer.phar require jlong/sass-twitter-bootstrap:~x.y.z
+composer.phar require jlong/sass-twitter-bootstrap:x.y.*
 ```
 
 
