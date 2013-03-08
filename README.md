@@ -189,6 +189,15 @@ composer.phar require jlong/sass-twitter-bootstrap:x.y.z
 ```
 This will install version x.y.z from packagist.org
 
+You'll probably want to make sure you get minor updates, like this:
+```shell
+composer.phar require jlong/sass-twitter-bootstrap:~x.y.z
+```
+or like this:
+```shell
+composer.phar require jlong/sass-twitter-bootstrap:~x.y.z
+```
+
 
 
 ## Copyright and license
