@@ -1,0 +1,34 @@
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-fixed-top bs-docs-navbar">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Bootstrap</a>
+    <div class="nav-collapse collapse">
+      <ul class="nav">
+        <li {% if page.title == "Bootstrap" %}class="active"{% endif %}>
+          <a href="/">Home</a>
+        </li>
+        <li {% if page.title == "Getting started" %}class="active"{% endif %}>
+          <a href="/getting-started">Get started</a>
+        </li>
+        <li {% if page.title == "CSS" %}class="active"{% endif %}>
+          <a href="/css">CSS</a>
+        </li>
+        <li {% if page.title == "Components" %}class="active"{% endif %}>
+          <a href="/components">Components</a>
+        </li>
+        <li {% if page.title == "JavaScript plugins" %}class="active"{% endif %}>
+          <a href="/javascript">JavaScript</a>
+        </li>
+        <li {% if page.title == "Customize and download" %}class="active"{% endif %}>
+          <a href="/customize">Customize</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
