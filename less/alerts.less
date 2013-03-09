@@ -6,10 +6,18 @@
 // Base styles
 // -------------------------
 
+.alertTextShadow (@textColor) {
+  .alertTextShadowWithShadowColor(contrast(@textColor));
+}
+
+.alertTextShadowWithShadowColor (@shadowColor) {
+  text-shadow: 0 1px 0 rgba(red(@shadowColor),green(@shadowColor),blue(@shadowColor),.5);
+}
+
 .alert {
   padding: 8px 35px 8px 14px;
   margin-bottom: @baseLineHeight;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  .alertTextShadow(@warningText);
   background-color: @warningBackground;
   border: 1px solid @warningBorder;
   .border-radius(@baseBorderRadius);
@@ -39,6 +47,7 @@
   background-color: @successBackground;
   border-color: @successBorder;
   color: @successText;
+  .alertTextShadow(@successText);
 }
 .alert-success h4 {
   color: @successText;
@@ -48,6 +57,7 @@
   background-color: @errorBackground;
   border-color: @errorBorder;
   color: @errorText;
+  .alertTextShadow(@errorText);
 }
 .alert-danger h4,
 .alert-error h4 {
@@ -57,6 +67,7 @@
   background-color: @infoBackground;
   border-color: @infoBorder;
   color: @infoText;
+  .alertTextShadow(@infoText);
 }
 .alert-info h4 {
   color: @infoText;
