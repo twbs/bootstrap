@@ -265,6 +265,12 @@ table {
   }
 }
 
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
   -webkit-overflow-scrolling: touch;
@@ -730,9 +736,6 @@ pre code {
   min-height: 1px;
   padding-right: 10px;
   padding-left: 10px;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 @media screen and (min-width: 768px) {
@@ -1065,9 +1068,6 @@ input[type="color"] {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
      -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
        -o-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -1663,9 +1663,6 @@ fieldset[disabled] .btn {
   width: 100%;
   padding-right: 0;
   padding-left: 0;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .btn-block + .btn-block {
@@ -4419,9 +4416,6 @@ a.badge:focus {
   background-color: #428bca;
   -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
           box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
   -webkit-transition: width 0.6s ease;
      -moz-transition: width 0.6s ease;
        -o-transition: width 0.6s ease;
