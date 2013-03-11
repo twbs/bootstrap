@@ -233,4 +233,51 @@ $(function () {
         $input.remove()
         typeahead.$menu.remove()
       })
+
+      test("should show menu when query entered as text in a contenteditable div", function () {
+        var $div = $('<div contenteditable="true" />')
+            .appendTo('body')
+            .typeahead({
+              source: ['aa', 'ab', 'ac']
+            })
+          , typeahead = $div.data('typeahead')
+
+        $div.text('a')
+        typeahead.lookup()
+
+        ok(typeahead.$menu.is(":visible"), 'typeahead is visible')
+        equals(typeahead.$menu.find('li').length, 3, 'has 3 items in menu')
+        equals(typeahead.$menu.find('.active').length, 1, 'one item is active')
+
+        $div.remove()
+        typeahead.$menu.remove()
+      })
+
+      test("should set div text to selected item when using contenteditable div", function () {
+        var $div = $('<div contenteditable="true"  />').typeahead({
+              source: ['aa', 'ab', 'ac']
+            }).appendTo('body')
+          , typeahead = $div.data('typeahead')
+          , changed = false
+          , focus = false
+          , blur = false
+
+        $div.text('a')
+        typeahead.lookup()
+
+        $div.change(function() { changed = true });
+        $div.focus(function() { focus = true; blur = false });
+        $div.blur(function() { blur = true; focus = false });
+
+        $(typeahead.$menu.find('li')[2]).mouseover().click()
+
+        equals($div.text(), 'ac', 'input value was correctly set')
+        ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
+        ok(changed, 'a change event was fired')
+        ok(focus && !blur, 'focus is still set')
+
+        $div.remove()
+        typeahead.$menu.remove()
+      })
+
 })
