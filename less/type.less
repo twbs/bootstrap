@@ -7,11 +7,11 @@
 // -------------------------
 
 p {
-  margin: 0 0 @line-height-base / 2;
+  margin: 0 0 (@line-height-base / 2);
 }
 .lead {
   margin-bottom: @line-height-base;
-  font-size: @font-size-base * 1.5;
+  font-size: (@font-size-base * 1.5);
   font-weight: 200;
   line-height: 1.25;
 }
@@ -68,28 +68,28 @@ h1,
 h2,
 h3 {
   margin-top: @line-height-base;
-  margin-bottom: @line-height-base / 2;
-  line-height: @line-height-base * 2;
+  margin-bottom: (@line-height-base / 2);
+  line-height: (@line-height-base * 2);
 }
 h3 {
-  line-height: @line-height-base * 1.5;
+  line-height: (@line-height-base * 1.5);
 }
 h4,
 h5,
 h6 {
-  margin-top: @line-height-base / 2;
-  margin-bottom: @line-height-base / 2;
+  margin-top: (@line-height-base / 2);
+  margin-bottom: (@line-height-base / 2);
 }
 
-h1 { font-size: @font-size-base * 2.75; font-size: 4rem; } // ~38px
-h2 { font-size: @font-size-base * 2.25; font-size: 3rem; } // ~32px
-h3 { font-size: @font-size-base * 1.75; font-size: 2.5rem; } // ~24px
-h4 { font-size: @font-size-base * 1.25; font-size: 2rem; } // ~18px
-h5 { font-size: @font-size-base; font-size: 1.6rem; }
-h6 { font-size: @font-size-base * 0.85; font-size: 1.2rem; } // ~12px
+h1 { font-size: (@font-size-base * 2.75); font-size: 4rem; } // ~38px
+h2 { font-size: (@font-size-base * 2.25); font-size: 3rem; } // ~32px
+h3 { font-size: (@font-size-base * 1.75); font-size: 2.5rem; } // ~24px
+h4 { font-size: (@font-size-base * 1.25); font-size: 2rem; } // ~18px
+h5 { font-size:  @font-size-base; font-size: 1.6rem; }
+h6 { font-size: (@font-size-base * 0.85); font-size: 1.2rem; } // ~12px
 
-h1 small { font-size: @font-size-base * 1.75; } // ~24px
-h2 small { font-size: @font-size-base * 1.25; } // ~18px
+h1 small { font-size: (@font-size-base * 1.75); } // ~24px
+h2 small { font-size: (@font-size-base * 1.25); } // ~18px
 h3 small { font-size: @font-size-base; }
 h4 small { font-size: @font-size-base; }
 
@@ -98,7 +98,7 @@ h4 small { font-size: @font-size-base; }
 // -------------------------
 
 .page-header {
-  padding-bottom: (@line-height-base / 2) - 1;
+  padding-bottom: ((@line-height-base / 2) - 1);
   margin: (@line-height-base * 2) 0 @line-height-base;
   border-bottom: 1px solid @grayLighter;
 }
@@ -151,14 +151,14 @@ dt {
   font-weight: bold;
 }
 dd {
-  margin-left: @line-height-base / 2;
+  margin-left: (@line-height-base / 2);
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
   .clear_float(); // Ensure dl clears floats if empty dd elements present
   dt {
     float: left;
-    width: @component-offset-horizontal - 20;
+    width: (@component-offset-horizontal - 20);
     clear: left;
     text-align: right;
     .text-overflow();
@@ -198,7 +198,7 @@ blockquote {
   border-left: 5px solid @grayLighter;
   p {
     margin-bottom: 0;
-    font-size: @font-size-base * 1.25;
+    font-size: (@font-size-base * 1.25);
     font-weight: 300;
     line-height: 1.25;
   }
