@@ -161,6 +161,7 @@
         || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
       , option = $(target).data('collapse') ? 'toggle' : $this.data()
     $this[$(target).hasClass('in') ? 'addClass' : 'removeClass']('collapsed')
+    $this.parents('.accordion').find('.accordion-toggle[href!=' + target +']').addClass('collapsed')
     $(target).collapse(option)
   })
 
