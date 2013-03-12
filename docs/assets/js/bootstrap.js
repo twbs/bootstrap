@@ -240,7 +240,7 @@
         , options = typeof option == 'object' && option
       if (!data) $this.data('button', (data = new Button(this, options)))
       if (option == 'toggle') data.toggle()
-      else if (option == 'untoggle') data.untoggle()
+      if (option == 'untoggle') data.untoggle()
       else if (option) data.setState(option)
     })
   }
