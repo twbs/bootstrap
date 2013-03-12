@@ -1,103 +1,269 @@
-/*  Font Awesome
-    the iconic font designed for use with Twitter Bootstrap
-    -------------------------------------------------------
-    The full suite of pictographic icons, examples, and documentation
-    can be found at: http://fortawesome.github.com/Font-Awesome/
+/*!
+ *  Font Awesome 3.0.2
+ *  the iconic font designed for use with Twitter Bootstrap
+ *  -------------------------------------------------------
+ *  The full suite of pictographic icons, examples, and documentation
+ *  can be found at: http://fortawesome.github.com/Font-Awesome/
+ *
+ *  License
+ *  -------------------------------------------------------
+ *  - The Font Awesome font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL
+ *  - Font Awesome CSS, LESS, and SASS files are licensed under the MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - The Font Awesome pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/
+ *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
+ *    "Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome"
 
-    License
-    -------------------------------------------------------
-    The Font Awesome webfont, CSS, and LESS files are licensed under CC BY 3.0:
-    http://creativecommons.org/licenses/by/3.0/ A mention of
-    'Font Awesome - http://fortawesome.github.com/Font-Awesome' in human-readable
-    source code is considered acceptable attribution (most common on the web).
-    If human readable source code is not available to the end user, a mention in
-    an 'About' or 'Credits' screen is considered acceptable (most common in desktop
-    or mobile software).
+ *  Contact
+ *  -------------------------------------------------------
+ *  Email: dave@davegandy.com
+ *  Twitter: http://twitter.com/fortaweso_me
+ *  Work: Lead Product Designer @ http://kyruus.com
+ */
 
-    Contact
-    -------------------------------------------------------
-    Email: dave@davegandy.com
-    Twitter: http://twitter.com/fortaweso_me
-    Work: Lead Product Designer @ http://kyruus.com
-
-    */
-
-@import 'font-awesome-codes.less';
-@fontAwesomePath: '../font';
+@FontAwesomePath:   "../font";
+@borderColor:       #eee;
+@iconMuted:         #eee;
+.border-radius(@radius) { -webkit-border-radius: @radius; -moz-border-radius: @radius; border-radius: @radius; }
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url('@{fontAwesomePath}/fontawesome-webfont.eot');
-  src: url('@{fontAwesomePath}/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
-    url('@{fontAwesomePath}/fontawesome-webfont.woff') format('woff'),
-    url('@{fontAwesomePath}/fontawesome-webfont.ttf') format('truetype'),
-    url('@{fontAwesomePath}/fontawesome-webfont.svg#FontAwesome') format('svg');
+  src: url('@{FontAwesomePath}/fontawesome-webfont.eot?v=3.0.1');
+  src: url('@{FontAwesomePath}/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),
+    url('@{FontAwesomePath}/fontawesome-webfont.woff?v=3.0.1') format('woff'),
+    url('@{FontAwesomePath}/fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+//    url('@{FontAwesomePath}/fontawesome-webfont.svg#fontawesomeregular?v=3.0.1') format('svg');
+
+//  src: url('@{FontAwesomePath}/FontAwesome.otf') format('opentype');
+
   font-weight: normal;
   font-style: normal;
 }
 
 /*  Font Awesome styles
     ------------------------------------------------------- */
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
+[class^="icon-"],
+[class*=" icon-"] {
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
-  display: inline-block;
   text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+
+/* sprites.less reset */
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  margin-top: 0;
 }
 
-a [class^="icon-"],
-a [class*=" icon-"] {
-  display: inline-block;
+/* more sprites.less reset */
+.icon-white,
+.nav-pills > .active > a > [class^="icon-"],
+.nav-pills > .active > a > [class*=" icon-"],
+.nav-list > .active > a > [class^="icon-"],
+.nav-list > .active > a > [class*=" icon-"],
+.navbar-inverse .nav > .active > a > [class^="icon-"],
+.navbar-inverse .nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"],
+.dropdown-submenu:hover > a > [class^="icon-"],
+.dropdown-submenu:hover > a > [class*=" icon-"] {
+  background-image: none;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
   text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+}
+
+/* makes sure icons active on rollover in links */
+a {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    display: inline-block;
+  }
 }
 
 /* makes the font 33% larger relative to the icon container */
 .icon-large:before {
-  vertical-align: middle;
+  vertical-align: -10%;
   font-size: 4/3em;
 }
 
-.btn, .nav-tabs {
+.btn, .nav {
   [class^="icon-"],
   [class*=" icon-"] {
-  /* keeps button heights with and without icons the same */
-    line-height: .9em;
+    display: inline;
+    /* keeps button heights with and without icons the same */
+    &.icon-large { line-height: .9em; }
+    &.icon-spin { display: inline-block; }
   }
 }
 
-li {
+.nav-tabs, .nav-pills {
+  [class^="icon-"],
+  [class*=" icon-"] {
+  /* keeps button heights with and without icons the same */
+    &, &.icon-large { line-height: .9em; }
+  }
+}
+
+li, .nav li {
   [class^="icon-"],
   [class*=" icon-"] {
     display: inline-block;
     width: 1.25em;
     text-align: center;
-  }
-  .icon-large:before,
-  .icon-large:before {
-    /* 1.5 increased font size for icon-large * 1.25 width */
-    width: 1.5*1.25em;
+    &.icon-large {
+      /* increased font size for icon-large */
+      width: 1.25*1.25em;
+    }
   }
 }
 
 ul.icons {
   list-style-type: none;
-  margin-left: 2em;
-  text-indent: -.8em;
+  text-indent: -.75em;
 
   li {
     [class^="icon-"],
     [class*=" icon-"] {
-      width: .8em;
-    }
-    .icon-large:before,
-    .icon-large:before {
-      /* 1.5 increased font size for icon-large * 1.25 width */
-      vertical-align: initial;
-//      width: 1.5*1.25em;
+      width: .75em;
     }
   }
+}
+
+.icon-muted {
+  color: @iconMuted;
+}
+
+// Icon Borders
+// -------------------------
+
+.icon-border {
+  border: solid 1px @borderColor;
+  padding: .2em .25em .15em;
+  .border-radius(3px);
+}
+
+// Icon Sizes
+// -------------------------
+
+.icon-2x {
+  font-size: 2em;
+  &.icon-border {
+    border-width: 2px;
+    .border-radius(4px);
+  }
+}
+.icon-3x {
+  font-size: 3em;
+  &.icon-border {
+    border-width: 3px;
+    .border-radius(5px);
+  }
+}
+.icon-4x {
+  font-size: 4em;
+  &.icon-border {
+    border-width: 4px;
+    .border-radius(6px);
+  }
+}
+
+// Floats
+// -------------------------
+
+// Quick floats
+.pull-right { float: right; }
+.pull-left { float: left; }
+
+[class^="icon-"],
+[class*=" icon-"] {
+  &.pull-left {
+    margin-right: .3em;
+  }
+  &.pull-right {
+    margin-left: .3em;
+  }
+}
+
+.btn {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    &.pull-left, &.pull-right {
+      &.icon-2x { margin-top: .18em; }
+    }
+    &.icon-spin.icon-large { line-height: .8em; }
+  }
+}
+
+.btn.btn-small {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    &.pull-left, &.pull-right {
+      &.icon-2x { margin-top: .25em; }
+    }
+  }
+}
+
+.btn.btn-large {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    margin-top: 0; // overrides bootstrap default
+    &.pull-left, &.pull-right {
+      &.icon-2x { margin-top: .05em; }
+    }
+    &.pull-left.icon-2x { margin-right: .2em; }
+    &.pull-right.icon-2x { margin-left: .2em; }
+  }
+}
+
+
+.icon-spin {
+  display: inline-block;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(359deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); }
+}
+@-o-keyframes spin {
+  0% { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(359deg); }
+}
+@-ms-keyframes spin {
+  0% { -ms-transform: rotate(0deg); }
+  100% { -ms-transform: rotate(359deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}
+
+@-moz-document url-prefix() {
+  .icon-spin { height: .9em; }
+  .btn .icon-spin { height: auto; }
+  .icon-spin.icon-large { height: 1.25em; }
+  .btn .icon-spin.icon-large { height: .75em; }
 }
 
 /*  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
@@ -326,5 +492,46 @@ ul.icons {
 .icon-sitemap:before              { content: "\f0e8"; }
 .icon-umbrella:before             { content: "\f0e9"; }
 .icon-paste:before                { content: "\f0ea"; }
+.icon-lightbulb:before            { content: "\f0eb"; }
+.icon-exchange:before             { content: "\f0ec"; }
+.icon-cloud-download:before       { content: "\f0ed"; }
+.icon-cloud-upload:before         { content: "\f0ee"; }
 
-.icon-user-md:before              { content: "\f200"; }
+.icon-user-md:before              { content: "\f0f0"; }
+.icon-stethoscope:before          { content: "\f0f1"; }
+.icon-suitcase:before             { content: "\f0f2"; }
+.icon-bell-alt:before             { content: "\f0f3"; }
+.icon-coffee:before               { content: "\f0f4"; }
+.icon-food:before                 { content: "\f0f5"; }
+.icon-file-alt:before             { content: "\f0f6"; }
+.icon-building:before             { content: "\f0f7"; }
+.icon-hospital:before             { content: "\f0f8"; }
+.icon-ambulance:before            { content: "\f0f9"; }
+.icon-medkit:before               { content: "\f0fa"; }
+.icon-fighter-jet:before          { content: "\f0fb"; }
+.icon-beer:before                 { content: "\f0fc"; }
+.icon-h-sign:before               { content: "\f0fd"; }
+.icon-plus-sign-alt:before        { content: "\f0fe"; }
+
+.icon-double-angle-left:before    { content: "\f100"; }
+.icon-double-angle-right:before   { content: "\f101"; }
+.icon-double-angle-up:before      { content: "\f102"; }
+.icon-double-angle-down:before    { content: "\f103"; }
+.icon-angle-left:before           { content: "\f104"; }
+.icon-angle-right:before          { content: "\f105"; }
+.icon-angle-up:before             { content: "\f106"; }
+.icon-angle-down:before           { content: "\f107"; }
+.icon-desktop:before              { content: "\f108"; }
+.icon-laptop:before               { content: "\f109"; }
+.icon-tablet:before               { content: "\f10a"; }
+.icon-mobile-phone:before         { content: "\f10b"; }
+.icon-circle-blank:before         { content: "\f10c"; }
+.icon-quote-left:before           { content: "\f10d"; }
+.icon-quote-right:before          { content: "\f10e"; }
+
+.icon-spinner:before              { content: "\f110"; }
+.icon-circle:before               { content: "\f111"; }
+.icon-reply:before                { content: "\f112"; }
+.icon-github-alt:before           { content: "\f113"; }
+.icon-folder-close-alt:before     { content: "\f114"; }
+.icon-folder-open-alt:before      { content: "\f115"; }

@@ -1,21 +1,85 @@
-[class^="icon-"],
-[class*=" icon-"] {
-	font-family: FontAwesome;
-	font-style: normal;
-	font-weight: normal;
-}
+/*!
+ *  Font Awesome 3.0.2
+ *  the iconic font designed for use with Twitter Bootstrap
+ *  -------------------------------------------------------
+ *  The full suite of pictographic icons, examples, and documentation
+ *  can be found at: http://fortawesome.github.com/Font-Awesome/
+ *
+ *  License
+ *  -------------------------------------------------------
+ *  - The Font Awesome font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL
+ *  - Font Awesome CSS, LESS, and SASS files are licensed under the MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - The Font Awesome pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/
+ *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
+ *    "Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome"
 
-.btn.dropdown-toggle [class^="icon-"], .btn.dropdown-toggle [class*=" icon-"] {
-/* keeps button heights with and without icons the same */
-	line-height: 1.4em;
-}
+ *  Contact
+ *  -------------------------------------------------------
+ *  Email: dave@davegandy.com
+ *  Twitter: http://twitter.com/fortaweso_me
+ *  Work: Lead Product Designer @ http://kyruus.com
+ */
 
 .icon-large {
-	font-size: 1.3333em;
+  font-size: 4/3em;
+  margin-top: -4px;
+  padding-top: 3px;
+  margin-bottom: -4px;
+  padding-bottom: 3px;
+  vertical-align: middle;
 }
 
+.nav {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    vertical-align: inherit;
+    margin-top: -4px;
+    padding-top: 3px;
+    margin-bottom: -4px;
+    padding-bottom: 3px;
+    &.icon-large {
+      vertical-align: -25%;
+    }
+  }
+}
+
+.nav-pills, .nav-tabs {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    &.icon-large {
+      line-height: .75em;
+      margin-top: -7px;
+      padding-top: 5px;
+      margin-bottom: -5px;
+      padding-bottom: 4px;
+    }
+  }
+}
+
+.btn {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    &.pull-left, &.pull-right { vertical-align: inherit; }
+    &.icon-large {
+      margin-top: -.5em;
+    }
+  }
+}
+
+a [class^="icon-"],
+a [class*=" icon-"] {
+  cursor: pointer;
+}
+
+ul.icons {
+  text-indent: -1.5em;
+  margin-left: 3em;
+}
+
+
 .ie7icon(@inner) {
-	*zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '@{inner}&nbsp;')";
+  *zoom: ~"expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '@{inner}')";
 }
 
 .icon-glass                { .ie7icon('&#xf000;'); }
@@ -241,5 +305,46 @@
 .icon-sitemap              { .ie7icon('&#xf0e8;'); }
 .icon-umbrella             { .ie7icon('&#xf0e9;'); }
 .icon-paste                { .ie7icon('&#xf0ea;'); }
+.icon-lightbulb            { .ie7icon('&#xf0eb;'); }
+.icon-exchange             { .ie7icon('&#xf0ec;'); }
+.icon-cloud-download       { .ie7icon('&#xf0ed;'); }
+.icon-cloud-upload         { .ie7icon('&#xf0ee;'); }
 
-.icon-user-md              { .ie7icon('&#xf200;'); }
+.icon-user-md              { .ie7icon('&#xf0f0;'); }
+.icon-stethoscope          { .ie7icon('&#xf0f1;'); }
+.icon-suitcase             { .ie7icon('&#xf0f2;'); }
+.icon-bell-alt             { .ie7icon('&#xf0f3;'); }
+.icon-coffee               { .ie7icon('&#xf0f4;'); }
+.icon-food                 { .ie7icon('&#xf0f5;'); }
+.icon-file-alt             { .ie7icon('&#xf0f6;'); }
+.icon-building             { .ie7icon('&#xf0f7;'); }
+.icon-hospital             { .ie7icon('&#xf0f8;'); }
+.icon-ambulance            { .ie7icon('&#xf0f9;'); }
+.icon-medkit               { .ie7icon('&#xf0fa;'); }
+.icon-fighter-jet          { .ie7icon('&#xf0fb;'); }
+.icon-beer                 { .ie7icon('&#xf0fc;'); }
+.icon-h-sign               { .ie7icon('&#xf0fd;'); }
+.icon-plus-sign-alt        { .ie7icon('&#xf0fe;'); }
+
+.icon-double-angle-left    { .ie7icon('&#xf100;'); }
+.icon-double-angle-right   { .ie7icon('&#xf101;'); }
+.icon-double-angle-up      { .ie7icon('&#xf102;'); }
+.icon-double-angle-down    { .ie7icon('&#xf103;'); }
+.icon-angle-left           { .ie7icon('&#xf104;'); }
+.icon-angle-right          { .ie7icon('&#xf105;'); }
+.icon-angle-up             { .ie7icon('&#xf106;'); }
+.icon-angle-down           { .ie7icon('&#xf107;'); }
+.icon-desktop              { .ie7icon('&#xf108;'); }
+.icon-laptop               { .ie7icon('&#xf109;'); }
+.icon-tablet               { .ie7icon('&#xf10a;'); }
+.icon-mobile-phone         { .ie7icon('&#xf10b;'); }
+.icon-circle-blank         { .ie7icon('&#xf10c;'); }
+.icon-quote-left           { .ie7icon('&#xf10d;'); }
+.icon-quote-right          { .ie7icon('&#xf10e;'); }
+
+.icon-spinner              { .ie7icon('&#xf110;'); }
+.icon-circle               { .ie7icon('&#xf111;'); }
+.icon-reply                { .ie7icon('&#xf112;'); }
+.icon-github-alt           { .ie7icon('&#xf113;'); }
+.icon-folder-close-alt     { .ie7icon('&#xf114;'); }
+.icon-folder-open-alt      { .ie7icon('&#xf115;'); }
