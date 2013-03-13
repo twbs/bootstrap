@@ -146,7 +146,8 @@
     },
     {
       "search": [
-        "tools"
+        "tools",
+        "params"
       ],
       "code": 9874,
       "uid": "6a7b9d4863bb7e6c79e9457a72d689b6",
@@ -160,7 +161,8 @@
       "search": [
         "settings",
         "cog",
-        "gear"
+        "gear",
+        "params"
       ],
       "code": 9881,
       "from": 9881,
@@ -188,7 +190,8 @@
       "search": [
         "settings",
         "cog",
-        "gear"
+        "gear",
+        "params"
       ],
       "code": 9967,
       "from": 9967,
@@ -376,6 +379,32 @@
       "orig_code": 57347,
       "src": "entypo",
       "from": 57347
+    },
+    {
+      "search": [
+        "arrow",
+        "up"
+      ],
+      "code": 57518,
+      "uid": "cbb11c546600a92fde108476faf5d337",
+      "css": "up",
+      "orig_css": "up",
+      "orig_code": 57518,
+      "src": "elusive",
+      "from": 57518
+    },
+    {
+      "search": [
+        "arrow",
+        "down"
+      ],
+      "code": 57557,
+      "uid": "a79ef2d6f102af86440aa80238d5f4b0",
+      "css": "down",
+      "orig_css": "down",
+      "orig_code": 57557,
+      "src": "elusive",
+      "from": 57557
     },
     {
       "search": [
@@ -865,7 +894,8 @@
       "search": [
         "wrench",
         "tools",
-        "settings"
+        "settings",
+        "params"
       ],
       "code": 62759,
       "from": 128295,
