@@ -150,7 +150,7 @@ th {
 
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 .table-striped {
-  tbody {
+  > tbody {
     > tr:nth-child(odd) > td,
     > tr:nth-child(odd) > th {
       background-color: @table-background-accent;
@@ -162,11 +162,12 @@ th {
 
 // HOVER EFFECT
 // ------------
+
 // Placed here since it has to come after the potential zebra striping
 .table-hover {
-  tbody {
-    tr:hover > td,
-    tr:hover > th {
+  > tbody {
+    > tr:hover > td,
+    > tr:hover > th {
       background-color: @table-background-hover;
     }
   }
@@ -192,7 +193,7 @@ table th[class^="span"] {
 // -----------------
 // Exact selectors below required to override .table-striped
 
-.table tbody tr {
+.table > tbody > tr {
   &.success > td {
     background-color: @state-success-background;
   }
@@ -205,7 +206,7 @@ table th[class^="span"] {
 }
 
 // Hover states for .table-hover
-.table-hover tbody tr {
+.table-hover > tbody > tr {
   &.success:hover > td {
     background-color: darken(@state-success-background, 5%);
   }
