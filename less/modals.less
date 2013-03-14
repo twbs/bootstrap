@@ -41,7 +41,7 @@
   right: 0;
   width: auto;
   padding: 10px;
-  z-index: @zindex-modal-background + 10;
+  z-index: (@zindex-modal-background + 10);
 }
 
 // Actual modal
@@ -64,7 +64,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: @zindex-modal-background - 10;
+  z-index: (@zindex-modal-background - 10);
   background-color: #000;
   // Fade for backdrop
   &.fade { .opacity(0); }

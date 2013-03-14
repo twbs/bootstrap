@@ -46,9 +46,9 @@
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
-@font-size-large:         @font-size-base * 1.25; // ~18px
-@font-size-small:         @font-size-base * 0.85; // ~12px
-@font-size-mini:          @font-size-base * 0.75; // ~11px
+@font-size-large:         (@font-size-base * 1.25); // ~18px
+@font-size-small:         (@font-size-base * 0.85); // ~12px
+@font-size-mini:          (@font-size-base * 0.75); // ~11px
 
 @line-height-base:        20px;
 
@@ -115,9 +115,9 @@
 
 @input-color-placeholder:        @grayLight;
 
-@input-height-base:              @line-height-base + 14px; // base line-height + 12px vertical padding + 2px top/bottom border
-@input-height-large:             @line-height-base + 24px; // base line-height + 22px vertical padding + 2px top/bottom border
-@input-height-small:             @line-height-base + 6px;  // base line-height + 4px vertical padding + 2px top/bottom border
+@input-height-base:              (@line-height-base + 14px); // base line-height + 12px vertical padding + 2px top/bottom border
+@input-height-large:             (@line-height-base + 24px); // base line-height + 22px vertical padding + 2px top/bottom border
+@input-height-small:             (@line-height-base + 6px);  // base line-height + 4px vertical padding + 2px top/bottom border
 
 // adjust min-height on input sizes
 
@@ -266,7 +266,7 @@
 @popover-title-background:    darken(@popover-background, 3%);
 
 // Special enhancement for popovers
-@popover-arrow-outer-width:   @popover-arrow-width + 1;
+@popover-arrow-outer-width:   (@popover-arrow-width + 1);
 @popover-arrow-outer-color:   rgba(0,0,0,.25);
 
 
@@ -315,4 +315,4 @@
 @grid-columns:              12;
 @grid-column-width:         60px;
 @grid-gutter-width:         20px;
-@grid-row-width:            (@grid-columns * @grid-column-width) + (@grid-gutter-width * (@grid-columns - 1));
+@grid-row-width:            ((@grid-columns * @grid-column-width) + (@grid-gutter-width * (@grid-columns - 1)));

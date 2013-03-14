@@ -293,7 +293,7 @@
 .opacity(@opacity) {
   opacity: @opacity;
   // IE8 filter
-  @opacity-ie: @opacity * 100;
+  @opacity-ie: (@opacity * 100);
   filter: ~"alpha(opacity=@{opacity-ie})";
 }
 
@@ -423,8 +423,8 @@
 // Vertically center elements in the navbar.
 // Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
 .navbar-vertical-align(@element-height) {
-  margin-top: (@navbar-height - @element-height) / 2;
-  margin-bottom: (@navbar-height - @element-height) / 2;
+  margin-top: ((@navbar-height - @element-height) / 2);
+  margin-bottom: ((@navbar-height - @element-height) / 2);
 }
 
 
@@ -471,22 +471,22 @@
 
     .spanX (@index) when (@index > 0) {
       .span@{index} { .span(@index); }
-      .spanX(@index - 1);
+      .spanX((@index - 1));
     }
     .spanX(0) {}
 
     .offsetX (@index) when (@index > 0) {
       .offset@{index} { .offset(@index); }
-      .offsetX(@index - 1);
+      .offsetX((@index - 1));
     }
     .offsetX (0) {}
 
     // Base styles
     .offset(@columns) {
-      margin-left: percentage(@columns / @grid-columns);
+      margin-left: percentage((@columns / @grid-columns));
     }
     .span(@columns) {
-      width: percentage(@columns / @grid-columns);
+      width: percentage((@columns / @grid-columns));
     }
 
     // Generate .spanX and .offsetX
