@@ -23,7 +23,7 @@ Read the [Getting Started page](http://getbootstrap.com/getting-started/) for in
 
 ## Using Bootstrap elsewhere
 
-Beyond getting started with the Bootstrap core, there are plenty of ways to use Bootstrap in other tools and services:
+Beyond getting started with the Bootstrap core, there are ways to use Bootstrap in other tools and services:
 
 * [Roots WordPress theme](https://github.com/retlehs/roots) - A WordPress starter theme based on HTML5 Boilerplate & Bootstrap from Twitter.
 
