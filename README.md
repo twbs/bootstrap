@@ -21,7 +21,7 @@ Three quick start options are available:
 Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
 
 
-## Using Bootstrap elsewhere
+## Bootstrap elsewhere
 
 Beyond getting started with the Bootstrap core, there are ways to use Bootstrap in other tools and services:
 
