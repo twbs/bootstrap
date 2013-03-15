@@ -416,7 +416,13 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 20px;
@@ -428,7 +434,13 @@ h2 small,
 h3 small,
 h4 small,
 h5 small,
-h6 small {
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small {
   font-weight: normal;
   line-height: 1;
   color: #999999;
@@ -453,49 +465,59 @@ h6 {
   margin-bottom: 10px;
 }
 
-h1 {
+h1,
+.h1 {
   font-size: 38.5px;
   font-size: 4rem;
 }
 
-h2 {
+h2,
+.h2 {
   font-size: 31.5px;
   font-size: 3rem;
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 24.5px;
   font-size: 2.5rem;
 }
 
-h4 {
+h4,
+.h4 {
   font-size: 17.5px;
   font-size: 2rem;
 }
 
-h5 {
+h5,
+.h5 {
   font-size: 14px;
   font-size: 1.6rem;
 }
 
-h6 {
+h6,
+.h6 {
   font-size: 11.9px;
   font-size: 1.2rem;
 }
 
-h1 small {
+h1 small,
+.h1 small {
   font-size: 24.5px;
 }
 
-h2 small {
+h2 small,
+.h2 small {
   font-size: 17.5px;
 }
 
-h3 small {
+h3 small,
+.h3 small {
   font-size: 14px;
 }
 
-h4 small {
+h4 small,
+.h4 small {
   font-size: 14px;
 }
 
@@ -580,6 +602,7 @@ hr {
   border: 0;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 abbr[title],
@@ -740,7 +763,7 @@ pre code {
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 758px;
+    max-width: 728px;
   }
   [class^="span"] {
     float: left;
@@ -821,13 +844,13 @@ pre code {
 
 @media screen and (min-width: 992px) {
   .container {
-    max-width: 970px;
+    max-width: 940px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .container {
-    max-width: 1200px;
+    max-width: 1170px;
   }
   .row {
     margin-right: -15px;
@@ -4139,7 +4162,11 @@ button.close {
   color: inherit;
 }
 
-.alert .close {
+.alert hr {
+  border-top-color: #f8e5be;
+}
+
+.close {
   position: relative;
   top: -2px;
   right: -21px;
@@ -4153,6 +4180,10 @@ button.close {
   border-color: #d6e9c6;
 }
 
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+
 .alert-danger,
 .alert-error {
   color: #b94a48;
@@ -4160,10 +4191,19 @@ button.close {
   border-color: #eed3d7;
 }
 
+.alert-danger hr,
+.alert-error hr {
+  border-top-color: #e6c1c7;
+}
+
 .alert-info {
   color: #3a87ad;
   background-color: #d9edf7;
   border-color: #bce8f1;
+}
+
+.alert-info hr {
+  border-top-color: #a6e1ec;
 }
 
 .alert-block {
