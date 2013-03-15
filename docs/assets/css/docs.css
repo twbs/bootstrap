@@ -558,7 +558,7 @@ input.focused {
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
   border-radius: 4px;
-  box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+  box-shadow: inset 44px 0 0 #fbfbfc, inset 45px 0 0 #ececf0;
 }
 .highlight pre {
   padding: 0;
@@ -572,7 +572,7 @@ input.focused {
 }
 .highlight pre .lineno {
   display: inline-block;
-  width: 18px;
+  width: 22px;
   padding-right: 5px;
   margin-right: 10px;
   text-align: right;
