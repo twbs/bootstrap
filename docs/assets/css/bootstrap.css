@@ -740,7 +740,7 @@ pre code {
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 728px;
+    max-width: 758px;
   }
   [class^="span"] {
     float: left;
@@ -821,13 +821,13 @@ pre code {
 
 @media screen and (min-width: 992px) {
   .container {
-    max-width: 940px;
+    max-width: 970px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 1200px;
   }
   .row {
     margin-right: -15px;
