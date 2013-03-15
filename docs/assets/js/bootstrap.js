@@ -884,11 +884,13 @@
 
         e = $.Event('hide')
 
-        this.$element.trigger(e)
+        if ($("div.modal.in").length <= 1) this.$element.trigger(e)
 
         if (!this.isShown || e.isDefaultPrevented()) return
 
         this.isShown = false
+
+        if ($("div.modal.in").length <= 1) $('body').removeClass('modal-open')
 
         this.escape()
 
@@ -1190,7 +1192,7 @@
         actualWidth = $tip[0].offsetWidth
         actualHeight = $tip[0].offsetHeight
     
-        if(this.options.dynamicPos){
+        if (this.options.dynamicPos) {
     
           doc = document.documentElement
           body = document.body
@@ -1200,13 +1202,13 @@
           conHeight = this.options.container == 'body' ? window.innerHeight : this.$element.parent().outerHeight()
           conLeft = this.options.container == 'body' ? 0 : conPos.left
     
-          if(placement == 'right' && (pos.right + actualWidth > conWidth))
+          if (placement == 'right' && (pos.right + actualWidth > conWidth))
             placement = 'left'
-          else if(placement == 'left' && (pos.left - actualWidth < conLeft))
+          else if (placement == 'left' && (pos.left - actualWidth < conLeft))
             placement = 'right'
-          else if(placement == 'bottom' && (pos.top + pos.height + actualHeight - top > conHeight))
+          else if (placement == 'bottom' && (pos.top + pos.height + actualHeight - top > conHeight))
             placement = 'top'
-          else if(placement == 'top' && (pos.top - top - actualHeight < 0))
+          else if (placement == 'top' && (pos.top - top - actualHeight < 0))
             placement = 'bottom'
 
         }
