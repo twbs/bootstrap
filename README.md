@@ -21,6 +21,15 @@ Three quick start options are available:
 Read the [Getting Started page](http://getbootstrap.com/getting-started/) for information on the framework contents, basic template guidelines, and more.
 
 
+## Using Bootstrap elsewhere
+
+Beyond getting started with the Bootstrap core, there are plenty of ways to use Bootstrap in other tools and services:
+
+* [Roots WordPress theme](https://github.com/retlehs/roots) - A WordPress starter theme based on HTML5 Boilerplate & Bootstrap from Twitter.
+
+Have suggestions? Let us know with a [new issue](https://github.com/twitter/bootstrap/issues).
+
+
 
 ## Bugs and feature requests
 
@@ -75,8 +84,6 @@ Keep track of development and community news.
 * Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##twitter-bootstrap` channel.
 
 
-
-##
 
 
 ## Versioning
