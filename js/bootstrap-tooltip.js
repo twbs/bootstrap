@@ -116,13 +116,46 @@
       }, self.options.delay.hide)
     }
 
-  , show: function () {
-      var $tip
-        , pos
+  , getPlacement: function () {
+      var $tip = this.tip()
+
+      return typeof this.options.placement == 'function' ?
+          this.options.placement.call(this, $tip[0], this.$element[0]) :
+          this.options.placement
+    }
+
+  , reposition: function ($tip) {
+      var pos  = this.getPosition()
+        , placement = this.getPlacement()
         , actualWidth
         , actualHeight
-        , placement
-        , tp
+        , o
+
+      $tip || ($tip = this.tip())
+      actualWidth = $tip[0].offsetWidth
+      actualHeight = $tip[0].offsetHeight
+
+      switch (placement) {
+        case 'bottom':
+          o = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
+          break
+        case 'top':
+          o = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
+          break
+        case 'left':
+          o = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
+          break
+        case 'right':
+          o = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
+          break
+      }
+
+      this.applyPlacement(o, placement)
+      this.$element.trigger('positioned')
+    }
+
+  , show: function () {
+      var $tip
         , e = $.Event('show')
 
       if (this.hasContent() && this.enabled) {
@@ -135,37 +168,14 @@
           $tip.addClass('fade')
         }
 
-        placement = typeof this.options.placement == 'function' ?
-          this.options.placement.call(this, $tip[0], this.$element[0]) :
-          this.options.placement
-
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
 
         this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
 
-        pos = this.getPosition()
+        this.reposition($tip)
 
-        actualWidth = $tip[0].offsetWidth
-        actualHeight = $tip[0].offsetHeight
-
-        switch (placement) {
-          case 'bottom':
-            tp = {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'top':
-            tp = {top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2}
-            break
-          case 'left':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth}
-            break
-          case 'right':
-            tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width}
-            break
-        }
-
-        this.applyPlacement(tp, placement)
         this.$element.trigger('shown')
       }
     }
@@ -181,6 +191,7 @@
 
       $tip
         .offset(offset)
+        .removeClass('top right bottom left')
         .addClass(placement)
         .addClass('in')
 
