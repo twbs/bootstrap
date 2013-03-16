@@ -161,7 +161,7 @@
     }
 
   , sortInsensitive: function (item, sensitive, insensitive) {
-      return ~item.indexOf(insensitive)
+      return ~item.toLowerCase().indexOf(insensitive)
     }
 
   , sortAny: function (item, sensitive, insensitive) {
