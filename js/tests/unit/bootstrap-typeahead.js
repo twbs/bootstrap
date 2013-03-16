@@ -233,4 +233,101 @@ $(function () {
         $input.remove()
         typeahead.$menu.remove()
       })
+
+      test("should match beginning of item case insensitively", function () {
+        var $input = $('<input />').typeahead({
+              source: []
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok(typeahead.sortBeginsWith('abcd', 'A', 'a'), "abcd begins with a")
+        ok(typeahead.sortBeginsWith('ABCD', 'A', 'a'), "ABCD begins with a")
+        ok(!typeahead.sortBeginsWith('bcde', 'A', 'a'), "bcde does not begin with a")
+        ok(!typeahead.sortBeginsWith('BCDE', 'A', 'a'), "BCDE does not begin with a")
+
+        $input.remove()
+      })
+
+      test("should match item case sensitively anywhere in the string", function () {
+        var $input = $('<input />').typeahead({
+              source: []
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok(!typeahead.sortSensitive('abcd', 'A', 'a'), "abcd does not contain A")
+        equals(typeahead.sortSensitive('ABCD', 'A', 'a'), -1, "ABCD contains A")
+        equals(typeahead.sortSensitive('ABCD', 'C', 'c'), -3, "ABCD contains C")
+        ok(!typeahead.sortSensitive('bcde', 'A', 'a'), "bcde does not contain A")
+        ok(!typeahead.sortSensitive('BCDE', 'A', 'a'), "BCDE does not contain A")
+
+        $input.remove()
+      })
+      
+      test("should match item case insensitively anywhere in the string", function () {
+        var $input = $('<input />').typeahead({
+              source: []
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok(typeahead.sortInsensitive('abcd', 'A', 'a'), "abcd contains a")
+        ok(typeahead.sortInsensitive('ABCD', 'A', 'a'), "ABCD contains a")
+        ok(typeahead.sortInsensitive('ABCD', 'C', 'c'), "ABCD contains c")
+        ok(!typeahead.sortInsensitive('bcde', 'A', 'a'), "bcde does not contain a")
+        ok(!typeahead.sortInsensitive('BCDE', 'A', 'a'), "BCDE does not contain a")
+
+        $input.remove()
+      })
+
+      test("should match any item", function () {
+        var $input = $('<input />').typeahead({
+              source: []
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok(typeahead.sortAny(), "always returns true")
+
+        $input.remove()
+      })
+
+      test("sorter should only request query values once", function () {
+        var sensitive = 0
+          , insensitive = 10
+          , values = ['a', 'b']
+          , $input = $('<input />').typeahead({
+              source: [],
+              querySensitive: function() { 
+                return sensitive++
+              },
+              queryInsensitive: function() {
+                return insensitive++
+              },
+              sortBeginsWith: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
+                return false
+              },
+              sortSensitive: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
+                return false
+              },
+              sortInsensitive: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
+                return false
+              },
+              sortAny: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
+                return true
+              }
+            }).appendTo('body')
+          , sorted = $input.data('typeahead').sorter(values)
+
+        equals(sensitive, 1, "querySensitive only called once")
+        equals(insensitive, 11, "queryInsensitive only called once")
+        equals(sorted.length, 2, "both items appropriately returned")
+
+        $input.remove()
+      })
 })

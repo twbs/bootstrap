@@ -29,10 +29,23 @@
   var Typeahead = function (element, options) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
+    this.lookup = this.options.lookup || this.lookup
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
+    this.querySensitive = this.options.querySensitive || this.querySensitive
+    this.queryInsensitive = this.options.queryInsensitive || this.queryInsensitive
+    this.sortBeginsWith = this.options.sortBeginsWith || this.sortBeginsWith
+    this.sortSensitive = this.options.sortSensitive || this.sortSensitive
+    this.sortInsensitive = this.options.sortInsensitive || this.sortInsensitive
+    this.sortAny = this.options.sortAny || this.sortAny
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.show = this.options.show || this.show
+    this.showMenu = this.options.showMenu || this.showMenu
+    this.hide = this.options.hide || this.hide
+    this.focus = this.options.focus || this.focus
+    this.blur = this.options.blur || this.blur
+    this.click = this.options.click || this.click
     this.source = this.options.source
     this.$menu = $(this.options.menu)
     this.shown = false
@@ -44,7 +57,7 @@
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
+      var val = this.$menu.find('.active').data('value')
       this.$element
         .val(this.updater(val))
         .change()
@@ -56,6 +69,12 @@
     }
 
   , show: function () {
+      this.showMenu()
+      this.shown = true
+      return this
+    }
+
+  , showMenu: function () {
       var pos = $.extend({}, this.$element.position(), {
         height: this.$element[0].offsetHeight
       })
@@ -67,9 +86,6 @@
         , left: pos.left
         })
         .show()
-
-      this.shown = true
-      return this
     }
 
   , hide: function () {
@@ -113,18 +129,46 @@
     }
 
   , sorter: function (items) {
-      var beginswith = []
+      var beginsWith = []
         , caseSensitive = []
         , caseInsensitive = []
+        , any = []
+        , sensitive = this.querySensitive()
+        , insensitive = this.queryInsensitive()
         , item
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
-        else caseInsensitive.push(item)
+        if (this.sortBeginsWith(item, sensitive, insensitive)) beginsWith.push(item)
+        else if (this.sortSensitive(item, sensitive, insensitive)) caseSensitive.push(item)
+        else if (this.sortInsensitive(item, sensitive, insensitive)) caseInsensitive.push(item)
+        else if (this.sortAny(item, sensitive, insensitive)) any.push(item)
       }
 
-      return beginswith.concat(caseSensitive, caseInsensitive)
+      return beginsWith.concat(caseSensitive, caseInsensitive, any)
+    }
+  
+  , querySensitive: function () {
+      return this.query
+    }
+  
+  , queryInsensitive: function () {
+      return this.query.toLowerCase()
+    }
+
+  , sortBeginsWith: function (item, sensitive, insensitive) {
+      return !item.toLowerCase().indexOf(insensitive)
+    }
+
+  , sortSensitive: function (item, sensitive, insensitive) {
+      return ~item.indexOf(sensitive)
+    }
+
+  , sortInsensitive: function (item, sensitive, insensitive) {
+      return ~item.toLowerCase().indexOf(insensitive)
+    }
+
+  , sortAny: function (item, sensitive, insensitive) {
+      return true
     }
 
   , highlighter: function (item) {
@@ -138,7 +182,7 @@
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).data('value', item)
         i.find('a').html(that.highlighter(item))
         return i[0]
       })
