@@ -1771,7 +1771,8 @@ input[type="button"].btn-block {
 
 .btn:hover,
 .btn:focus,
-.btn:active {
+.btn:active,
+.btn.active {
   background-color: #9a9c9d;
   border-color: #8d9091;
 }
@@ -1784,7 +1785,10 @@ fieldset[disabled] .btn:hover,
 fieldset[disabled] .btn:focus,
 .btn.disabled:active,
 .btn[disabled]:active,
-fieldset[disabled] .btn:active {
+fieldset[disabled] .btn:active,
+.btn.disabled.active,
+.btn[disabled].active,
+fieldset[disabled] .btn.active {
   background-color: #a7a9aa;
   border-color: #a7a9aa;
 }
@@ -1796,7 +1800,8 @@ fieldset[disabled] .btn:active {
 
 .btn-primary:hover,
 .btn-primary:focus,
-.btn-primary:active {
+.btn-primary:active,
+.btn-primary.active {
   background-color: #357ebd;
   border-color: #3071a9;
 }
@@ -1809,7 +1814,10 @@ fieldset[disabled] .btn-primary:hover,
 fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled:active,
 .btn-primary[disabled]:active,
-fieldset[disabled] .btn-primary:active {
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
   background-color: #428bca;
   border-color: #428bca;
 }
@@ -1821,7 +1829,8 @@ fieldset[disabled] .btn-primary:active {
 
 .btn-warning:hover,
 .btn-warning:focus,
-.btn-warning:active {
+.btn-warning:active,
+.btn-warning.active {
   background-color: #eea236;
   border-color: #ec971f;
 }
@@ -1834,7 +1843,10 @@ fieldset[disabled] .btn-warning:hover,
 fieldset[disabled] .btn-warning:focus,
 .btn-warning.disabled:active,
 .btn-warning[disabled]:active,
-fieldset[disabled] .btn-warning:active {
+fieldset[disabled] .btn-warning:active,
+.btn-warning.disabled.active,
+.btn-warning[disabled].active,
+fieldset[disabled] .btn-warning.active {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
 }
@@ -1846,7 +1858,8 @@ fieldset[disabled] .btn-warning:active {
 
 .btn-danger:hover,
 .btn-danger:focus,
-.btn-danger:active {
+.btn-danger:active,
+.btn-danger.active {
   background-color: #d43f3a;
   border-color: #c9302c;
 }
@@ -1859,7 +1872,10 @@ fieldset[disabled] .btn-danger:hover,
 fieldset[disabled] .btn-danger:focus,
 .btn-danger.disabled:active,
 .btn-danger[disabled]:active,
-fieldset[disabled] .btn-danger:active {
+fieldset[disabled] .btn-danger:active,
+.btn-danger.disabled.active,
+.btn-danger[disabled].active,
+fieldset[disabled] .btn-danger.active {
   background-color: #d9534f;
   border-color: #d9534f;
 }
@@ -1871,7 +1887,8 @@ fieldset[disabled] .btn-danger:active {
 
 .btn-success:hover,
 .btn-success:focus,
-.btn-success:active {
+.btn-success:active,
+.btn-success.active {
   background-color: #4cae4c;
   border-color: #449d44;
 }
@@ -1884,7 +1901,10 @@ fieldset[disabled] .btn-success:hover,
 fieldset[disabled] .btn-success:focus,
 .btn-success.disabled:active,
 .btn-success[disabled]:active,
-fieldset[disabled] .btn-success:active {
+fieldset[disabled] .btn-success:active,
+.btn-success.disabled.active,
+.btn-success[disabled].active,
+fieldset[disabled] .btn-success.active {
   background-color: #5cb85c;
   border-color: #5cb85c;
 }
@@ -1896,7 +1916,8 @@ fieldset[disabled] .btn-success:active {
 
 .btn-info:hover,
 .btn-info:focus,
-.btn-info:active {
+.btn-info:active,
+.btn-info.active {
   background-color: #46b8da;
   border-color: #31b0d5;
 }
@@ -1909,7 +1930,10 @@ fieldset[disabled] .btn-info:hover,
 fieldset[disabled] .btn-info:focus,
 .btn-info.disabled:active,
 .btn-info[disabled]:active,
-fieldset[disabled] .btn-info:active {
+fieldset[disabled] .btn-info:active,
+.btn-info.disabled.active,
+.btn-info[disabled].active,
+fieldset[disabled] .btn-info.active {
   background-color: #5bc0de;
   border-color: #5bc0de;
 }
@@ -3669,6 +3693,11 @@ button.close {
   display: table-cell;
   float: none;
   width: 1%;
+}
+
+.btn-group[data-toggle="buttons-radio"] > .btn > input[type="radio"],
+.btn-group[data-toggle="buttons-checkbox"] > .btn > input[type="checkbox"] {
+  display: none;
 }
 
 .breadcrumb {

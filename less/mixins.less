@@ -401,7 +401,8 @@
 
   &:hover,
   &:focus,
-  &:active {
+  &:active,
+  &.active {
     background-color: darken(@background, 5%);
         border-color: darken(@border, 10%);
   }
@@ -411,7 +412,8 @@
   fieldset[disabled] & {
     &:hover,
     &:focus,
-    &:active {
+    &:active,
+    &.active {
       background-color: @background;
           border-color: @border
     }
