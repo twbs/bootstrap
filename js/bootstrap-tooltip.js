@@ -75,6 +75,11 @@
         , hide: options.delay
         }
       }
+      if (typeof options.cachable === 'boolean') {
+        options.cachable = {
+          title: options.cachable
+        }
+      }
 
       return options
     }
@@ -277,6 +282,8 @@
       title = $e.attr('data-original-title')
         || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
+      o.cachable.title && (o.title = title)
+
       return title
     }
 
@@ -347,6 +354,7 @@
   , delay: 0
   , html: false
   , container: false
+  , cachable: false
   }
 
 

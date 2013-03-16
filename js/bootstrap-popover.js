@@ -38,6 +38,17 @@
 
     constructor: Popover
 
+  , getOptions: function(options) {
+      var cachable = (options && options.cachable)
+        , ret = $.fn.tooltip.Constructor.prototype.getOptions.call(this, options)
+
+      if (cachable !== null && typeof cachable === 'boolean') {
+        ret.cachable.content = cachable
+      }
+      
+      return ret
+    }
+
   , setContent: function () {
       var $tip = this.tip()
         , title = this.getTitle()
@@ -60,6 +71,8 @@
 
       content = (typeof o.content == 'function' ? o.content.call($e[0]) :  o.content)
         || $e.attr('data-content')
+
+      o.cachable.content && (o.content = content)
 
       return content
     }

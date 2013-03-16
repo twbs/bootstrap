@@ -291,4 +291,40 @@ $(function () {
           container.remove()
         }, 100)
       })
+
+      test("Should get title from function where supplied", function() {
+        var opts = {title: function () { return 'generated title' }}
+          , tooltip = $('<a href="#" rel="tooltip" ></a>').tooltip(opts)
+        
+        tooltip.appendTo('#qunit-fixture').tooltip('show')
+
+        equal($('#qunit-fixture .tooltip-inner').text(), 'generated title');
+      })
+
+      test("Should get a new title each time shown", function() {
+        var n = 0
+          , opts = {title: function () { return 'shown ' + (++n) + ' times' }}
+          , tooltip = $('<a href="#" rel="tooltip" ></a>').tooltip(opts)
+        
+        tooltip.appendTo('#qunit-fixture')
+               .tooltip('show').tooltip('hide').tooltip('show')
+
+        notEqual($('#qunit-fixture .tooltip-inner').text(), 'shown 1 times');
+        equal($('#qunit-fixture .tooltip-inner').text(), 'shown ' + n + ' times');
+      })
+
+      test("Should cache titles when asked", function() {
+        var n = 0
+          , opts = {
+            cachable: true
+            , title: function () { return 'shown ' + (++n) + ' times' }
+          }
+          , tooltip = $('<a href="#" rel="tooltip" ></a>').tooltip(opts)
+        
+        tooltip.appendTo('#qunit-fixture')
+               .tooltip('show').tooltip('hide').tooltip('show')
+
+        equal($('#qunit-fixture .tooltip-inner').text(), 'shown 1 times');
+      })
+
 })

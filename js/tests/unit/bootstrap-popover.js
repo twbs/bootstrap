@@ -110,4 +110,39 @@ $(function () {
         ok(!$._data(popover[0], 'events').mouseover && !$._data(popover[0], 'events').mouseout, 'popover does not have any events')
       })
 
+      test("Should get content from function where supplied", function() {
+        var opts = {content: function () { return 'generated content' }}
+          , a = $('<a href="#"></a>').popover(opts)
+        
+        a.appendTo('#qunit-fixture').popover('show')
+
+        equal($('#qunit-fixture .popover-content').text(), 'generated content');
+      })
+
+      test("Should get new content each time shown", function() {
+        var n = 0
+          , opts = {content: function () { return 'shown ' + (++n) + ' times' }}
+          , a = $('<a href="#"></a>').popover(opts)
+        
+        a.appendTo('#qunit-fixture')
+         .popover('show').popover('hide').popover('show')
+
+        notEqual($('#qunit-fixture .popover-content').text(), 'shown 1 times');
+        equal($('#qunit-fixture .popover-content').text(), 'shown ' + n + ' times');
+      })
+
+      test("Should cache titles when asked", function() {
+        var n = 0
+          , opts = {
+            cachable: true
+            , content: function () { return 'shown ' + (++n) + ' times' }
+          }
+          , a = $('<a href="#"></a>').popover(opts)
+        
+        a.appendTo('#qunit-fixture')
+         .popover('show').popover('hide').popover('show')
+
+        equal($('#qunit-fixture .popover-content').text(), 'shown 1 times');
+      })
+
 })
