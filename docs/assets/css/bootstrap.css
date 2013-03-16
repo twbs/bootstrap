@@ -3659,6 +3659,7 @@ button.close {
 .btn-group-vertical > .btn {
   display: block;
   float: none;
+  width: 100%;
   max-width: 100%;
 }
 
