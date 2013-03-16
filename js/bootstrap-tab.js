@@ -37,7 +37,7 @@
   , show: function () {
       var $this = this.element
         , $ul = $this.closest('ul:not(.dropdown-menu)')
-        , selector = $this.attr('data-target')
+        , selector = ($this.attr('data-target') || $this.data('target'))
         , previous
         , $target
         , e

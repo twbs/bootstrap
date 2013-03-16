@@ -32,22 +32,17 @@ $(function () {
         equals($("#qunit-fixture").find('.active').attr('id'), "home")
       })
 
-      test("should activate element by tab id", function () {
-        var pillsHTML =
-            '<ul class="pills">'
-          + '<li><a href="#home">Home</a></li>'
-          + '<li><a href="#profile">Profile</a></li>'
-          + '</ul>'
+      test("should allow tab definition by data('target')", function () {
+        var $pill = $('<a href="#">Dummy</a>')
+          , $pane = $('<div>Some content</div>')
+          , $fixture = $('#qunit-fixture')
 
-        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo("#qunit-fixture")
+        $pill.data({target: $pane})
+        $fixture.append($pill).append($pane)
+        $pill.tab('show')
 
-        $(pillsHTML).find('li:last a').tab('show')
-        equals($("#qunit-fixture").find('.active').attr('id'), "profile")
-
-        $(pillsHTML).find('li:first a').tab('show')
-        equals($("#qunit-fixture").find('.active').attr('id'), "home")
+        equals($fixture.find('div.active').text(), 'Some content')
       })
-
 
       test("should not fire closed when close is prevented", function () {
         $.support.transition = false
