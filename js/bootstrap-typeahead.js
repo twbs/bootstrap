@@ -32,8 +32,8 @@
     this.lookup = this.options.lookup || this.lookup
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
-    this.sortQuerySensitive = this.options.sortQuerySensitive || this.sortQuerySensitive
-    this.sortQueryInsensitive = this.options.sortQueryInsensitive || this.sortQueryInsensitive
+    this.querySensitive = this.options.querySensitive || this.querySensitive
+    this.queryInsensitive = this.options.queryInsensitive || this.queryInsensitive
     this.sortBeginsWith = this.options.sortBeginsWith || this.sortBeginsWith
     this.sortSensitive = this.options.sortSensitive || this.sortSensitive
     this.sortInsensitive = this.options.sortInsensitive || this.sortInsensitive
