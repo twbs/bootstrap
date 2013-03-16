@@ -558,7 +558,6 @@ input.focused {
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
   border-radius: 4px;
-  box-shadow: inset 44px 0 0 #fbfbfc, inset 45px 0 0 #ececf0;
 }
 .highlight pre {
   padding: 0;
