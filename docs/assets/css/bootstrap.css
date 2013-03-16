@@ -263,6 +263,9 @@ table {
   h3 {
     page-break-after: avoid;
   }
+  .navbar-toggle {
+    display: none;
+  }
 }
 
 * {
