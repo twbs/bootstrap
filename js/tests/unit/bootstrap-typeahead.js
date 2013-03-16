@@ -234,17 +234,31 @@ $(function () {
         typeahead.$menu.remove()
       })
 
-      test("should match item case insensitively anywhere in the string", function () {
+      test("should match beginning of item case insensitively", function () {
         var $input = $('<input />').typeahead({
               source: []
             }).appendTo('body')
           , typeahead = $input.data('typeahead')
 
-        ok(typeahead.sortInsensitive('abcd', 'A', 'a'), "abcd contains a")
-        ok(typeahead.sortInsensitive('ABCD', 'A', 'a'), "ABCD contains a")
-        ok(typeahead.sortInsensitive('ABCD', 'C', 'c'), "ABCD contains c")
-        ok(!typeahead.sortInsensitive('bcde', 'A', 'a'), "bcde does not contain a")
-        ok(!typeahead.sortInsensitive('BCDE', 'A', 'a'), "BCDE does not contain a")
+        ok(typeahead.sortBeginsWith('abcd', 'A', 'a'), "abcd begins with a")
+        ok(typeahead.sortBeginsWith('ABCD', 'A', 'a'), "ABCD begins with a")
+        ok(!typeahead.sortBeginsWith('bcde', 'A', 'a'), "bcde does not begin with a")
+        ok(!typeahead.sortBeginsWith('BCDE', 'A', 'a'), "BCDE does not begin with a")
+
+        $input.remove()
+      })
+
+      test("should match item case sensitively anywhere in the string", function () {
+        var $input = $('<input />').typeahead({
+              source: []
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok(!typeahead.sortSensitive('abcd', 'A', 'a'), "abcd does not contain A")
+        equals(typeahead.sortSensitive('ABCD', 'A', 'a'), -1, "ABCD contains A")
+        equals(typeahead.sortSensitive('ABCD', 'C', 'c'), -3, "ABCD contains C")
+        ok(!typeahead.sortSensitive('bcde', 'A', 'a'), "bcde does not contain A")
+        ok(!typeahead.sortSensitive('BCDE', 'A', 'a'), "BCDE does not contain A")
 
         $input.remove()
       })
