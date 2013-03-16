@@ -472,9 +472,10 @@ title: CSS
           <div class="page-header">
             <h1>Grid system</h1>
           </div>
+          <p class="lead">Bootstrap utilizes a responsive, percent-based grid system, that scales up appropriately as devices and viewport sizes increase. In other words, it's mobile first.</p>
 
-          <h2>Live grid example</h2>
-          <p>The default Bootstrap grid system utilizes <strong>12 columns</strong>, making for a 940px wide container without <a href="./scaffolding.html#responsive">responsive features</a> enabled. With the responsive CSS file added, the grid adapts to be 724px and 1170px wide depending on your viewport. Below 767px viewports, the columns become fluid and stack vertically.</p>
+          <h3>Grid example</h3>
+          <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.span*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
           <div class="bs-docs-grid">
             <div class="row show-grid">
               <div class="span1">1</div>
@@ -500,17 +501,31 @@ title: CSS
               <div class="span6">6</div>
             </div>
           </div>
-
-          <h3>Basic grid HTML</h3>
-          <p>For a simple two column layout, create a <code>.row</code> and add the appropriate number of <code>.span*</code> columns. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent).</p>
 {% highlight html linenos %}
 <div class="row">
-  <div class="span8">8</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+</div>
+<div class="row">
+  <div class="span4">4</div>
+  <div class="span4">4</div>
   <div class="span4">4</div>
 </div>
+<div class="row">
+  <div class="span6">6</div>
+  <div class="span6">6</div>
+</div>
 {% endhighlight %}
-
-          <p>Given this example, we have <code>.span4</code> and <code>.span8</code>, making for 12 total columns and a complete row.</p>
 
           <h2>Offsetting columns</h2>
           <p>Move columns to the right using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
