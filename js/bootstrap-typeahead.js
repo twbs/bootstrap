@@ -69,6 +69,12 @@
     }
 
   , show: function () {
+      this.showMenu()
+      this.shown = true
+      return this
+    }
+
+  , showMenu: function () {
       var pos = $.extend({}, this.$element.position(), {
         height: this.$element[0].offsetHeight
       })
@@ -80,9 +86,6 @@
         , left: pos.left
         })
         .show()
-
-      this.shown = true
-      return this
     }
 
   , hide: function () {
