@@ -439,59 +439,96 @@
   .clear_float();
 }
 
-// Make a Grid
-// Use .makeRow and .makeColumn to assign semantic layouts grid system behavior
-// .makeRow() {
-//   margin-left: @grid-gutter-width * -1;
-//   .clearfix();
-// }
-// .makeColumn(@columns: 1, @offset: 0) {
-//   float: left;
-//   margin-left: (@grid-column-width * @offset) + (@grid-gutter-width * (@offset - 1)) + (@grid-gutter-width * 2);
-//   width: (@grid-column-width * @columns) + (@grid-gutter-width * (@columns - 1));
-// }
+// Make a grid
 
+// Creates a wrapper for a series of columns
 .make-row() {
-
+  // Negative margin the row out to align the content of columns
+  margin-left:  (@grid-gutter-width / -2);
+  margin-right: (@grid-gutter-width / -2);
+  // Then clear the floated columns
+  .clear_float();
 }
+// Generate the columns
 .make-column(@columns) {
-  float: left;
-  padding: @grid-gutter-width;
-  width: percentage(@columns / @grid-columns);
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    // Calculate width based on number of columns available
+    width: percentage(@columns / @grid-columns);
+  }
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Set inner padding as gutters instead of margin
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
 }
+// Generate the column offsets
 .make-column-offset(@columns) {
-  margin-left: percentage(@columns / @grid-columns);
+  @media (min-width: @grid-float-breakpoint) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
 }
+.make-column-push(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    left: percentage((@columns / @grid-columns));
+  }
+}
+.make-column-pull(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    right: percentage((@columns / @grid-columns));
+  }
+}
+
 
 
 // The Grid
-#grid {
+.generate-grid-columns(@grid-columns) {
 
-  .core(@grid-column-width, @grid-gutter-width) {
-
-    .spanX (@index) when (@index > 0) {
-      .span@{index} { .span(@index); }
-      .spanX((@index - 1));
-    }
-    .spanX(0) {}
-
-    .offsetX (@index) when (@index > 0) {
-      .offset@{index} { .offset(@index); }
-      .offsetX((@index - 1));
-    }
-    .offsetX (0) {}
-
-    // Base styles
-    .offset(@columns) {
-      margin-left: percentage((@columns / @grid-columns));
-    }
-    .span(@columns) {
-      width: percentage((@columns / @grid-columns));
-    }
-
-    // Generate .spanX and .offsetX
-    .spanX(@grid-columns);
-    .offsetX(@grid-columns);
-
+  // Default columns
+  .spanX (@index) when (@index > 0) {
+    .span@{index} { .span(@index); }
+    .spanX((@index - 1));
   }
+  .spanX(0) {}
+
+  // Offsets (gaps between columns)
+  .offsetX (@index) when (@index > 0) {
+    .offset@{index} { .offset(@index); }
+    .offsetX((@index - 1));
+  }
+  .offsetX (0) {}
+
+  // Source ordering
+  .pushX (@index) when (@index > 0) {
+    .push@{index} { .push(@index); }
+    .pushX((@index - 1));
+  }
+  .pushX (0) {}
+
+  // Source ordering
+  .pullX (@index) when (@index > 0) {
+    .pull@{index} { .pull(@index); }
+    .pullX((@index - 1));
+  }
+  .pullX (0) {}
+
+  // Apply the styles
+  .span(@columns) {
+    width: percentage((@columns / @grid-columns));
+  }
+  .offset(@columns) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+  .push(@columns) {
+    left: percentage((@columns / @grid-columns));
+  }
+  .pull(@columns) {
+    right: percentage((@columns / @grid-columns));
+  }
+
+  // Generate .spanX and .offsetX
+  .spanX(@grid-columns);
+  .offsetX(@grid-columns);
+  .pushX(@grid-columns);
+  .pullX(@grid-columns);
 }

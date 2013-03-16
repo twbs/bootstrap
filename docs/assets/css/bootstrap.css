@@ -741,8 +741,8 @@ pre code {
 }
 
 .row {
-  margin-right: -10px;
-  margin-left: -10px;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .row:before,
@@ -756,9 +756,10 @@ pre code {
 }
 
 [class^="span"] {
+  position: relative;
   min-height: 1px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 @media screen and (min-width: 768px) {
@@ -840,6 +841,78 @@ pre code {
   .offset1 {
     margin-left: 8.333333333333332%;
   }
+  .push12 {
+    left: 100%;
+  }
+  .push11 {
+    left: 91.66666666666666%;
+  }
+  .push10 {
+    left: 83.33333333333334%;
+  }
+  .push9 {
+    left: 75%;
+  }
+  .push8 {
+    left: 66.66666666666666%;
+  }
+  .push7 {
+    left: 58.333333333333336%;
+  }
+  .push6 {
+    left: 50%;
+  }
+  .push5 {
+    left: 41.66666666666667%;
+  }
+  .push4 {
+    left: 33.33333333333333%;
+  }
+  .push3 {
+    left: 25%;
+  }
+  .push2 {
+    left: 16.666666666666664%;
+  }
+  .push1 {
+    left: 8.333333333333332%;
+  }
+  .pull12 {
+    right: 100%;
+  }
+  .pull11 {
+    right: 91.66666666666666%;
+  }
+  .pull10 {
+    right: 83.33333333333334%;
+  }
+  .pull9 {
+    right: 75%;
+  }
+  .pull8 {
+    right: 66.66666666666666%;
+  }
+  .pull7 {
+    right: 58.333333333333336%;
+  }
+  .pull6 {
+    right: 50%;
+  }
+  .pull5 {
+    right: 41.66666666666667%;
+  }
+  .pull4 {
+    right: 33.33333333333333%;
+  }
+  .pull3 {
+    right: 25%;
+  }
+  .pull2 {
+    right: 16.666666666666664%;
+  }
+  .pull1 {
+    right: 8.333333333333332%;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -851,14 +924,6 @@ pre code {
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
-  }
-  .row {
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  [class^="span"] {
-    padding-right: 15px;
-    padding-left: 15px;
   }
 }
 
