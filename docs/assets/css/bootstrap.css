@@ -1721,6 +1721,7 @@ select:focus:invalid:focus {
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {
+  pointer-events: none;
   cursor: default;
   opacity: 0.65;
   filter: alpha(opacity=65);
@@ -4261,6 +4262,12 @@ button.close {
   border-top-color: #f8e5be;
 }
 
+.alert > a,
+.alert > p > a {
+  font-weight: 500;
+  color: #a47e3c;
+}
+
 .close {
   position: relative;
   top: -2px;
@@ -4279,6 +4286,11 @@ button.close {
   border-top-color: #c9e2b3;
 }
 
+.alert-success > a,
+.alert-success > p > a {
+  color: #356635;
+}
+
 .alert-danger,
 .alert-error {
   color: #b94a48;
@@ -4291,6 +4303,13 @@ button.close {
   border-top-color: #e6c1c7;
 }
 
+.alert-danger > a,
+.alert-error > a,
+.alert-danger > p > a,
+.alert-error > p > a {
+  color: #953b39;
+}
+
 .alert-info {
   color: #3a87ad;
   background-color: #d9edf7;
@@ -4299,6 +4318,11 @@ button.close {
 
 .alert-info hr {
   border-top-color: #a6e1ec;
+}
+
+.alert-info > a,
+.alert-info > p > a {
+  color: #2d6987;
 }
 
 .alert-block {

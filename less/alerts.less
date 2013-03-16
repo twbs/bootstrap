@@ -24,6 +24,12 @@
   hr {
     border-top-color: darken(@state-warning-border, 5%);
   }
+  // Inherit color for immediate links and bolden them some
+  > a,
+  > p > a {
+    font-weight: 500;
+    color: darken(@state-warning-text, 10%);
+  }
 }
 
 // Adjust close link position
@@ -45,6 +51,10 @@
   hr {
     border-top-color: darken(@state-success-border, 5%);
   }
+  > a,
+  > p > a {
+    color: darken(@state-success-text, 10%);
+  }
 }
 .alert-danger,
 .alert-error {
@@ -54,6 +64,10 @@
   hr {
     border-top-color: darken(@state-error-border, 5%);
   }
+  > a,
+  > p > a {
+    color: darken(@state-error-text, 10%);
+  }
 }
 .alert-info {
   background-color: @state-info-background;
@@ -61,6 +75,10 @@
   color: @state-info-text;
   hr {
     border-top-color: darken(@state-info-border, 5%);
+  }
+  > a,
+  > p > a {
+    color: darken(@state-info-text, 10%);
   }
 }
 
