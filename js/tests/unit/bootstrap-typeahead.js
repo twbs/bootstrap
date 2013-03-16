@@ -302,30 +302,30 @@ $(function () {
                 return insensitive++
               },
               sortBeginsWith: function(item, sensitive, insensitive) {
-                ok(sensitive == 0, "sensitive matches querySensitive")
-                ok(insensitive == 10, "insensitive matches queryInsensitive")
+                equals(sensitive, 0, "sensitive matches querySensitive")
+                equals(insensitive, 10, "insensitive matches queryInsensitive")
                 return false
               },
               sortSensitive: function(item, sensitive, insensitive) {
-                ok(sensitive == 0, "sensitive matches querySensitive")
-                ok(insensitive == 10, "insensitive matches queryInsensitive")
+                equals(sensitive, 0, "sensitive matches querySensitive")
+                equals(insensitive, 10, "insensitive matches queryInsensitive")
                 return false
               },
               sortInsensitive: function(item, sensitive, insensitive) {
-                ok(sensitive == 0, "sensitive matches querySensitive")
-                ok(insensitive == 10, "insensitive matches queryInsensitive")
+                equals(sensitive, 0, "sensitive matches querySensitive")
+                equals(insensitive, 10, "insensitive matches queryInsensitive")
                 return false
               },
               sortAny: function(item, sensitive, insensitive) {
-                ok(sensitive == 0, "sensitive matches querySensitive")
-                ok(insensitive == 10, "insensitive matches queryInsensitive")
+                equals(sensitive, 0, "sensitive matches querySensitive")
+                equals(insensitive, 10, "insensitive matches queryInsensitive")
                 return true
               }
             }).appendTo('body')
           , sorted = $input.data('typeahead').sorter(values)
 
-        ok(sensitive == 1, "querySensitive only called once")
-        ok(insensitive == 11, "queryInsensitive only called once")
+        equals(sensitive, 1, "querySensitive only called once")
+        equals(insensitive, 11, "queryInsensitive only called once")
 
         $input.remove()
       })
