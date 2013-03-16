@@ -255,8 +255,8 @@ $(function () {
           , typeahead = $input.data('typeahead')
 
         ok(!typeahead.sortSensitive('abcd', 'A', 'a'), "abcd does not contain A")
-        ok(typeahead.sortSensitive('ABCD', 'A', 'a'), "ABCD contains A")
-        ok(typeahead.sortSensitive('ABCD', 'C', 'c'), "ABCD contains C")
+        equals(typeahead.sortSensitive('ABCD', 'A', 'a'), -1, "ABCD contains A")
+        equals(typeahead.sortSensitive('ABCD', 'C', 'c'), -3, "ABCD contains C")
         ok(!typeahead.sortSensitive('bcde', 'A', 'a'), "bcde does not contain A")
         ok(!typeahead.sortSensitive('BCDE', 'A', 'a'), "BCDE does not contain A")
 
@@ -301,24 +301,24 @@ $(function () {
               queryInsensitive: function() {
                 return insensitive++
               },
-              sortBeginsWith: function(item, sensitive, insensitive) {
-                equals(sensitive, 0, "sensitive matches querySensitive")
-                equals(insensitive, 10, "insensitive matches queryInsensitive")
+              sortBeginsWith: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
                 return false
               },
-              sortSensitive: function(item, sensitive, insensitive) {
-                equals(sensitive, 0, "sensitive matches querySensitive")
-                equals(insensitive, 10, "insensitive matches queryInsensitive")
+              sortSensitive: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
                 return false
               },
-              sortInsensitive: function(item, sensitive, insensitive) {
-                equals(sensitive, 0, "sensitive matches querySensitive")
-                equals(insensitive, 10, "insensitive matches queryInsensitive")
+              sortInsensitive: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
                 return false
               },
-              sortAny: function(item, sensitive, insensitive) {
-                equals(sensitive, 0, "sensitive matches querySensitive")
-                equals(insensitive, 10, "insensitive matches queryInsensitive")
+              sortAny: function(item, cs, ci) {
+                equals(cs, 0, "sensitive matches querySensitive")
+                equals(ci, 10, "insensitive matches queryInsensitive")
                 return true
               }
             }).appendTo('body')
@@ -326,6 +326,7 @@ $(function () {
 
         equals(sensitive, 1, "querySensitive only called once")
         equals(insensitive, 11, "queryInsensitive only called once")
+        equals(sorted.length, 2, "both items appropriately returned")
 
         $input.remove()
       })
