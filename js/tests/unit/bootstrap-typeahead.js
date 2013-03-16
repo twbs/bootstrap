@@ -234,6 +234,21 @@ $(function () {
         typeahead.$menu.remove()
       })
 
+      test("should match item case insensitively anywhere in the string", function () {
+        var $input = $('<input />').typeahead({
+              source: []
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        ok(typeahead.sortInsensitive('abcd', 'A', 'a'), "abcd contains a")
+        ok(typeahead.sortInsensitive('ABCD', 'A', 'a'), "ABCD contains a")
+        ok(typeahead.sortInsensitive('ABCD', 'C', 'c'), "ABCD contains c")
+        ok(!typeahead.sortInsensitive('bcde', 'A', 'a'), "bcde does not contain a")
+        ok(!typeahead.sortInsensitive('BCDE', 'A', 'a'), "BCDE does not contain a")
+
+        $input.remove()
+      })
+
       test("should match any item", function () {
         var $input = $('<input />').typeahead({
               source: []
