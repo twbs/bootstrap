@@ -1,5 +1,5 @@
 .hll { background-color: #ffffcc }
- { background: #f0f3f3; }
+ /*{ background: #f0f3f3; }*/
 .c { color: #999; } /* Comment */
 .err { color: #AA0000; background-color: #FFAAAA } /* Error */
 .k { color: #006699; } /* Keyword */
@@ -60,3 +60,7 @@
 .vg { color: #003333 } /* Name.Variable.Global */
 .vi { color: #003333 } /* Name.Variable.Instance */
 .il { color: #FF6600 } /* Literal.Number.Integer.Long */
+
+.css .o,
+.css .o + .nt,
+.css .nt + .nt { color: #999; }
