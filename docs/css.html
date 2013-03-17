@@ -2323,8 +2323,9 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           <div class="page-header">
             <h1>Responsive utilities</h1>
           </div>
-          <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query.</p>
+          <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
 
+          <h3>Responsive classes</h3>
           <table class="table table-bordered table-striped responsive-utilities hidden-phone">
             <thead>
               <tr>
@@ -2374,10 +2375,33 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             </tbody>
           </table>
 
+          <h3>Print classes</h3>
+          <table class="table table-bordered table-striped responsive-utilities">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Browser</th>
+                <th>Print</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><code>.visible-print</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-print</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+            </tbody>
+          </table>
+
           <h3>When to use</h3>
           <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.</p>
 
-          <h3>Responsive utilities test case</h3>
+          <h3>Test case</h3>
           <p>Resize your browser or load on different devices to test the above classes.</p>
           <h4>Visible on...</h4>
           <p>Green checkmarks indicate that class is visible in your current viewport.</p>
