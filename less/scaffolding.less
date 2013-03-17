@@ -30,12 +30,7 @@ html {
 }
 
 body {
-  margin: 0;
   color: @text-color;
-  font-family: @font-family-base;
-  font-size: 14px;
-  font-size: 1.4rem;
-  line-height: 1.5;
   background-color: @body-background;
 }
 
@@ -46,7 +41,7 @@ button,
 select,
 textarea {
   font-family: @font-family-base;
-  font-size: @font-size-base;
+  .font-size();
   line-height: @line-height-base;
 }
 

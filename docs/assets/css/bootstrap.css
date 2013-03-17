@@ -288,11 +288,6 @@ html {
 }
 
 body {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-size: 1.4rem;
-  line-height: 1.5;
   color: #333333;
   background-color: #ffffff;
 }
@@ -304,6 +299,7 @@ select,
 textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  font-size: 1.4rem;
   line-height: 20px;
 }
 
@@ -346,6 +342,7 @@ p {
 .lead {
   margin-bottom: 20px;
   font-size: 21px;
+  font-size: 2.1rem;
   font-weight: 200;
   line-height: 1.25;
 }
@@ -470,58 +467,58 @@ h6 {
 
 h1,
 .h1 {
-  font-size: 38.5px;
+  font-size: 38.5;
   font-size: 4rem;
 }
 
 h2,
 .h2 {
-  font-size: 31.5px;
+  font-size: 31.5;
   font-size: 3rem;
 }
 
 h3,
 .h3 {
-  font-size: 24.5px;
+  font-size: 24.5;
   font-size: 2.5rem;
 }
 
 h4,
 .h4 {
-  font-size: 17.5px;
+  font-size: 17.5;
   font-size: 2rem;
 }
 
 h5,
 .h5 {
-  font-size: 14px;
+  font-size: 14;
   font-size: 1.6rem;
 }
 
 h6,
 .h6 {
-  font-size: 11.9px;
+  font-size: 11.9;
   font-size: 1.2rem;
 }
 
 h1 small,
 .h1 small {
-  font-size: 24.5px;
+  font-size: 24.5;
 }
 
 h2 small,
 .h2 small {
-  font-size: 17.5px;
+  font-size: 17.5;
 }
 
 h3 small,
 .h3 small {
-  font-size: 14px;
+  font-size: 14;
 }
 
 h4 small,
 .h4 small {
-  font-size: 14px;
+  font-size: 14;
 }
 
 .page-header {
@@ -627,7 +624,7 @@ blockquote {
 
 blockquote p {
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 17.5;
   font-weight: 300;
   line-height: 1.25;
 }
@@ -681,7 +678,7 @@ code,
 pre {
   padding: 0 3px 2px;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-size: 12px;
+  font-size: 12;
   color: #333333;
   border-radius: 4px;
 }
@@ -698,7 +695,7 @@ pre {
   display: block;
   padding: 9.5px;
   margin: 0 0 10px;
-  font-size: 13px;
+  font-size: 13;
   line-height: 20px;
   word-break: break-all;
   word-wrap: break-word;
@@ -1118,7 +1115,7 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: 20px;
-  font-size: 21px;
+  font-size: 21;
   line-height: 40px;
   color: #333333;
   border: 0;
@@ -1150,7 +1147,7 @@ input[type="color"] {
   display: inline-block;
   min-height: 34px;
   padding: 6px 9px;
-  font-size: 14px;
+  font-size: 14;
   line-height: 20px;
   color: #555555;
   vertical-align: middle;
@@ -1326,7 +1323,7 @@ input[type="search"].input-large,
 input[type="tel"].input-large,
 input[type="color"].input-large {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 17.5;
   border-radius: 6px;
 }
 
@@ -1348,7 +1345,7 @@ input[type="tel"].input-small,
 input[type="color"].input-small {
   min-height: 26px;
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 11.9;
   border-radius: 3px;
 }
 
@@ -1535,7 +1532,7 @@ select:focus:invalid:focus {
 
 .input-group-addon {
   padding: 6px 8px;
-  font-size: 14px;
+  font-size: 14;
   font-weight: normal;
   line-height: 20px;
   text-align: center;
@@ -1549,12 +1546,12 @@ select:focus:invalid:focus {
 
 .input-group-addon.input-small {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 11.9;
 }
 
 .input-group-addon.input-large {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 17.5;
 }
 
 .input-group input:first-child,
@@ -1690,7 +1687,7 @@ select:focus:invalid:focus {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 14;
   font-weight: 500;
   line-height: 20px;
   text-align: center;
@@ -1734,19 +1731,19 @@ fieldset[disabled] .btn {
 
 .btn-large {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 17.5;
   border-radius: 6px;
 }
 
 .btn-small {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 11.9;
   border-radius: 3px;
 }
 
 .btn-mini {
   padding: 0 6px;
-  font-size: 10.5px;
+  font-size: 10.5;
   border-radius: 3px;
 }
 
@@ -3788,7 +3785,7 @@ button.close {
 .pagination-large > li > a,
 .pagination-large > li > span {
   padding: 11px 14px;
-  font-size: 17.5px;
+  font-size: 17.5;
 }
 
 .pagination-large > li:first-child > a,
@@ -3822,13 +3819,13 @@ button.close {
 .pagination-small > li > a,
 .pagination-small > li > span {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 11.9;
 }
 
 .pagination-mini > li > a,
 .pagination-mini > li > span {
   padding: 0 6px;
-  font-size: 10.5px;
+  font-size: 10.5;
 }
 
 .pager {
