@@ -79,41 +79,6 @@
 }
 
 
-// FONTS
-// --------------------------------------------------
-
-#font {
-  #family {
-    .serif() {
-      font-family: @font-family-serif;
-    }
-    .sans-serif() {
-      font-family: @font-family-sans-serif;
-    }
-    .monospace() {
-      font-family: @font-family-monospace;
-    }
-  }
-  .shorthand(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
-    font-size: @size;
-    font-weight: @weight;
-    line-height: @lineHeight;
-  }
-  .serif(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
-    #font > #family > .serif;
-    #font > .shorthand(@size, @weight, @lineHeight);
-  }
-  .sans-serif(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
-    #font > #family > .sans-serif;
-    #font > .shorthand(@size, @weight, @lineHeight);
-  }
-  .monospace(@size: @font-size-base, @weight: normal, @lineHeight: @line-height-base) {
-    #font > #family > .monospace;
-    #font > .shorthand(@size, @weight, @lineHeight);
-  }
-}
-
-
 
 // CSS3 PROPERTIES
 // --------------------------------------------------
