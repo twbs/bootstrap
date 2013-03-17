@@ -996,7 +996,12 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
              <td>selector</td>
              <td>string</td>
              <td>false</td>
-             <td>if a selector is provided, tooltip objects will be delegated to the specified targets</td>
+             <td>
+                if a selector is provided, tooltip objects will be delegated to the specified targets.
+                in practice, this is used to enable dynamic HTML content to have popovers added. 
+                See <a href="https://github.com/twitter/bootstrap/issues/4215">this</a> and
+                <a href="http://jsfiddle.net/KPeKS/4/">an informative example</a>.
+             </td>
            </tr>
            <tr>
              <td>trigger</td>
