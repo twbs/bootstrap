@@ -65,16 +65,16 @@ $ npm install
 
 When completed, you'll be able to run the various make commands provided:
 
-#### build - `make`
-Runs the recess compiler to rebuild the `/less` files and compiles the docs. Requires recess and uglify-js.
+#### build - `make` or `make bootstrap`
+`make` runs the Recess compiler to rebuild the `/less` files and compile the docs. `make bootstrap` creates the `/bootstrap` directory with compiled files. **Requires recess and uglify-js.**
 
 #### test - `make test`
-Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). Depends on having phantomjs installed.
+Runs jshint and qunit tests headlessly in [phantomjs](http://code.google.com/p/phantomjs/) (used for ci). **Requires phantomjs.**
 
 #### watch - `make watch`
-This is a convenience method for watching just Less files and automatically building them whenever you save. Requires the Watchr gem.
+This is a convenience method for watching just Less files and automatically building them whenever you save. **Requires the Watchr gem.**
 
-Should you encounter problems with installing dependencies or running the makefile commands, be sure to first uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
+Should you encounter problems with installing dependencies or running the makefile commands, uninstall any previous versions (global and local) you may have installed, and then rerun `npm install`.
 
 
 
