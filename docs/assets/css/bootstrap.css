@@ -1076,26 +1076,38 @@ table th[class^="span"] {
   float: none;
 }
 
+.table > tbody > tr > td.success,
+.table > tbody > tr > th.success,
 .table > tbody > tr.success > td {
   background-color: #dff0d8;
 }
 
+.table > tbody > tr > td.error,
+.table > tbody > tr > th.error,
 .table > tbody > tr.error > td {
   background-color: #f2dede;
 }
 
+.table > tbody > tr > td.warning,
+.table > tbody > tr > th.warning,
 .table > tbody > tr.warning > td {
   background-color: #fcf8e3;
 }
 
+.table-hover > tbody > tr > td.success:hover,
+.table-hover > tbody > tr > th.success:hover,
 .table-hover > tbody > tr.success:hover > td {
   background-color: #d0e9c6;
 }
 
+.table-hover > tbody > tr > td.error:hover,
+.table-hover > tbody > tr > th.error:hover,
 .table-hover > tbody > tr.error:hover > td {
   background-color: #ebcccc;
 }
 
+.table-hover > tbody > tr > td.warning:hover,
+.table-hover > tbody > tr > th.warning:hover,
 .table-hover > tbody > tr.warning:hover > td {
   background-color: #faf2cc;
 }
