@@ -1080,36 +1080,42 @@ table th[class^="span"] {
 .table > tbody > tr > th.success,
 .table > tbody > tr.success > td {
   background-color: #dff0d8;
+  border-color: #d6e9c6;
 }
 
 .table > tbody > tr > td.error,
 .table > tbody > tr > th.error,
 .table > tbody > tr.error > td {
   background-color: #f2dede;
+  border-color: #eed3d7;
 }
 
 .table > tbody > tr > td.warning,
 .table > tbody > tr > th.warning,
 .table > tbody > tr.warning > td {
   background-color: #fcf8e3;
+  border-color: #fbeed5;
 }
 
 .table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover,
 .table-hover > tbody > tr.success:hover > td {
   background-color: #d0e9c6;
+  border-color: #c9e2b3;
 }
 
 .table-hover > tbody > tr > td.error:hover,
 .table-hover > tbody > tr > th.error:hover,
 .table-hover > tbody > tr.error:hover > td {
   background-color: #ebcccc;
+  border-color: #e6c1c7;
 }
 
 .table-hover > tbody > tr > td.warning:hover,
 .table-hover > tbody > tr > th.warning:hover,
 .table-hover > tbody > tr.warning:hover > td {
   background-color: #faf2cc;
+  border-color: #f8e5be;
 }
 
 form {
