@@ -504,10 +504,12 @@
 
 // Generate rem font-sizes with pixel fallbacks
 // By default uses `@font-size-base` with an initial value of 14 (1.4rem or 14px)
-.font-size(@font-size: @font-size-base) {
-  @rem-size: (@font-size / 10);
-  font-size: ~"@{font-size}px";
+.font-size (@px-font-size: @font-size-base) {
+  @em-size: unit(@px-font-size / @font-size-base);
+  @rem-size: @em-size; //needs revision.  We need a way to address rems...
   font-size: ~"@{rem-size}rem";
+  font-size: ~"@{em-size}em";
+  font-size: ~"@{px-font-size}px";
 }
 
 // Generate form validation states

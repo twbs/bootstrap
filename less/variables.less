@@ -2,6 +2,8 @@
 // Variables
 // --------------------------------------------------
 
+// Multipliers (kind of like modular scale)
+// -------------------------
 
 // Global values
 // --------------------------------------------------
@@ -44,13 +46,14 @@
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
-
+@em:                      1em;
 @font-size-base:          14;
-@font-size-large:         (@font-size-base * 1.25); // ~18px
-@font-size-small:         (@font-size-base * 0.85); // ~12px
-@font-size-mini:          (@font-size-base * 0.75); // ~11px
 
-@line-height-base:        20px;
+@font-size-large:         unit(@em * 1.25); // ~18px
+@font-size-small:         unit(@em * 0.85); // ~12px
+@font-size-mini:          unit(@em * 0.75); // ~11px
+
+@line-height-base:        1.4;
 
 @headings-font-family:    inherit; // empty to use BS default, @font-family-base
 @headings-font-weight:    500;
