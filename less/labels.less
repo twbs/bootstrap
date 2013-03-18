@@ -1,0 +1,46 @@
+//
+// Labels
+// --------------------------------------------------
+
+
+// Base classes
+.label {
+  padding: .25em .6em;
+  font-size: 75%;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: @grayLight;
+  border-radius: .25em;
+}
+
+// Hover state, but only for links
+a.label {
+  &:hover,
+  &:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Colors
+// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
+.label {
+  // Danger (red)
+  &-danger            { background-color: @label-danger-background; }
+  &-danger[href]      { background-color: darken(@label-danger-background, 10%); }
+  // Warnings (orange)
+  &-warning           { background-color: @label-warning-background; }
+  &-warning[href]     { background-color: darken(@label-warning-background, 10%); }
+  // Success (green)
+  &-success           { background-color: @label-success-background; }
+  &-success[href]     { background-color: darken(@label-success-background, 10%); }
+  // Info (turquoise)
+  &-info              { background-color: @label-info-background; }
+  &-info[href]        { background-color: darken(@label-info-background, 10%); }
+}
+
