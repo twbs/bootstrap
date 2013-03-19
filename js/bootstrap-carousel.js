@@ -73,10 +73,6 @@
 
   , pause: function () {
       this.paused = true
-      if (this.$element.find('.next, .prev').length && $.support.transition.end && !this.sliding) {
-        this.$element.trigger($.support.transition.end)
-        this.cycle()
-      }
       clearInterval(this.interval)
       this.interval = null
       return this
