@@ -37,8 +37,8 @@
 
   Carousel.prototype = {
 
-    cycle: function (e) {
-      if (!e) this.paused = false
+    cycle: function () {
+      this.paused = false
       if (this.interval) clearInterval(this.interval);
       this.options.interval
         && !this.paused
@@ -71,11 +71,11 @@
       return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
     }
 
-  , pause: function (e) {
-      if (!e) this.paused = true
-      if (this.$element.find('.next, .prev').length && $.support.transition.end) {
+  , pause: function () {
+      this.paused = true
+      if (this.$element.find('.next, .prev').length && $.support.transition.end && !this.sliding) {
         this.$element.trigger($.support.transition.end)
-        this.cycle(true)
+        this.cycle()
       }
       clearInterval(this.interval)
       this.interval = null
@@ -115,8 +115,8 @@
       if ($next.hasClass('active')) return
 
       if (this.$indicators.length) {
-        this.$indicators.find('.active').removeClass('active')
         this.$element.one('slid', function () {
+          that.$indicators.find('.active').removeClass('active')
           var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
           $nextIndicator && $nextIndicator.addClass('active')
         })
@@ -198,7 +198,7 @@
     $target.carousel(options)
 
     if (slideIndex = $this.attr('data-slide-to')) {
-      $target.data('carousel').pause().to(slideIndex).cycle()
+      $target.data('carousel').pause().to(slideIndex)
     }
 
     e.preventDefault()
