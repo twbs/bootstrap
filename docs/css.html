@@ -1,0 +1,2428 @@
+---
+layout: default
+title: CSS
+---
+
+<!-- Subhead
+================================================== -->
+<header class="bs-docs-jumbotron subhead">
+  <div class="container">
+    <h1>CSS</h1>
+    <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
+  </div>
+</header>
+
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#global"><i class="glyphicon glyphicon-chevron-right"></i> Global settings</a></li>
+          <li><a href="#typography"><i class="glyphicon glyphicon-chevron-right"></i> Typography</a></li>
+          <li><a href="#code"><i class="glyphicon glyphicon-chevron-right"></i> Code</a></li>
+          <li><a href="#grid"><i class="glyphicon glyphicon-chevron-right"></i> Grid system</a></li>
+          <li><a href="#tables"><i class="glyphicon glyphicon-chevron-right"></i> Tables</a></li>
+          <li><a href="#forms"><i class="glyphicon glyphicon-chevron-right"></i> Forms</a></li>
+          <li><a href="#buttons"><i class="glyphicon glyphicon-chevron-right"></i> Buttons</a></li>
+          <li><a href="#images"><i class="glyphicon glyphicon-chevron-right"></i> Images</a></li>
+          <li><a href="#icons"><i class="glyphicon glyphicon-chevron-right"></i> Glyphicons</a></li>
+          <li><a href="#responsive-utilities"><i class="glyphicon glyphicon-chevron-right"></i> Responsive utilities</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+
+
+
+        <!-- Global Bootstrap settings
+        ================================================== -->
+        <section id="global">
+          <div class="page-header">
+            <h1>Global settings</h1>
+          </div>
+          <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
+
+          <h3>Requires HTML5 doctype</h3>
+          <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
+
+{% highlight html linenos %}
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+{% endhighlight %}
+
+          <h3>Mobile first</h3>
+          <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
+          <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
+
+{% highlight html linenos %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endhighlight %}
+
+          <h3>Typography and links</h3>
+          <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
+          <ul>
+            <li>Remove <code>margin</code> on the body</li>
+            <li>Set <code>background-color: white;</code> on the <code>body</code></li>
+            <li>Use the <code>@font-family-base</code>, <code>@font-size-base</code>, and <code>@line-height-base</code> attributes as our typographic base</li>
+            <li>Set the global link color via <code>@link-color</code> and apply link underlines only on <code>:hover</code></li>
+          </ul>
+          <p>These styles can be found within <strong>scaffolding.less</strong>.</p>
+
+          <h3>Normalize reset</h3>
+          <p>For improved cross-browser rendering, we use <a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize</a>, a project by <a href="http://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="http://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
+
+        </section>
+
+
+
+
+        <!-- Typography
+        ================================================== -->
+        <section id="typography">
+          <div class="page-header">
+            <h1>Typography</h1>
+          </div>
+
+          <!-- Headings -->
+          <h2 id="headings">Headings</h2>
+          <p>All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code> are available.</p>
+
+          <div class="bs-docs-example bs-docs-example-type">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th><h1>Bootstrap heading</h1></th>
+                  <td>Semibold 38px</td>
+                </tr>
+                <tr>
+                  <th><h2>Bootstrap heading</h2></th>
+                  <td>Semibold 32px</td>
+                </tr>
+                <tr>
+                  <th><h3>Bootstrap heading</h3></th>
+                  <td>Semibold 24px</td>
+                </tr>
+                <tr>
+                  <th><h4>Bootstrap heading</h4></th>
+                  <td>Semibold 18px</td>
+                </tr>
+                <tr>
+                  <th><h5>Bootstrap heading</h5></th>
+                  <td>Semibold 16px</td>
+                </tr>
+                <tr>
+                  <th><h6>Bootstrap heading</h6></th>
+                  <td>Semibold 12px</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+<!--           <div class="bs-docs-example">
+            <h1>h1. Heading 1</h1>
+            <h2>h2. Heading 2</h2>
+            <h3>h3. Heading 3</h3>
+            <h4>h4. Heading 4</h4>
+            <h5>h5. Heading 5</h5>
+            <h6>h6. Heading 6</h6>
+          </div>
+ -->
+          <!-- Body copy -->
+          <h2 id="body-copy">Body copy</h2>
+          <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>20px</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their line-height (10px by default).</p>
+          <div class="bs-docs-example">
+            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+          </div>
+{% highlight html linenos %}
+<p>...</p>
+{% endhighlight %}
+
+          <!-- Body copy .lead -->
+          <h3>Lead body copy</h3>
+          <p>Make a paragraph stand out by adding <code>.lead</code>.</p>
+          <div class="bs-docs-example">
+            <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+          </div>
+{% highlight html linenos %}
+<p class="lead">...</p>
+{% endhighlight %}
+
+          <!-- Using LESS -->
+          <h3>Built with Less</h3>
+          <p>The typographic scale is based on two LESS variables in <strong>variables.less</strong>: <code>@font-size-base</code> and <code>@line-height-base</code>. The first is the base font-size used throughout and the second is the base line-height. We use those variables and some simple math to create the margins, paddings, and line-heights of all our type and more. Customize them and Bootstrap adapts.</p>
+
+
+          <!-- Emphasis -->
+          <h2 id="emphasis">Emphasis</h2>
+          <p>Make use of HTML's default emphasis tags with lightweight styles.</p>
+
+          <h3>Small text</h3>
+          <p>For de-emphasizing inline or blocks of text, <small>use the small tag.</small></p>
+          <div class="bs-docs-example">
+            <p><small>This line of text is meant to be treated as fine print.</small></p>
+          </div>
+{% highlight html linenos %}
+<small>This line of text is meant to be treated as fine print.</small>
+{% endhighlight %}
+
+
+          <h3>Bold</h3>
+          <p>For emphasizing a snippet of text with a heavier font-weight.</p>
+          <div class="bs-docs-example">
+            <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+          </div>
+{% highlight html linenos %}
+<strong>rendered as bold text</strong>
+{% endhighlight %}
+
+          <h3>Italics</h3>
+          <p>For emphasizing a snippet of text with italics.</p>
+          <div class="bs-docs-example">
+            <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+          </div>
+{% highlight html linenos %}
+<em>rendered as italicized text</em>
+{% endhighlight %}
+
+          <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+
+          <h3>Alignment classes</h3>
+          <p>Easily realign text to components with text alignment classes.</p>
+          <div class="bs-docs-example">
+            <p class="text-left">Left aligned text.</p>
+            <p class="text-center">Center aligned text.</p>
+            <p class="text-right">Right aligned text.</p>
+          </div>
+{% highlight html linenos %}
+<p class="text-left">Left aligned text.</p>
+<p class="text-center">Center aligned text.</p>
+<p class="text-right">Right aligned text.</p>
+{% endhighlight %}
+
+          <h3>Emphasis classes</h3>
+          <p>Convey meaning through color with a handful of emphasis utility classes.</p>
+          <div class="bs-docs-example">
+            <p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+            <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+            <p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+          </div>
+{% highlight html linenos %}
+<p class="muted">...</p>
+<p class="text-warning">...</p>
+<p class="text-error">...</p>
+<p class="text-success">...</p>
+{% endhighlight %}
+
+
+          <!-- Abbreviations -->
+          <h2 id="abbreviations">Abbreviations</h2>
+          <p>Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a <code>title</code> attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover.</p>
+
+          <h3>Basic abbreviation</h3>
+          <p>For expanded text on long hover of an abbreviation, include the <code>title</code> attribute with the <code>&lt;abbr&gt;</code> element.</p>
+          <div class="bs-docs-example">
+            <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+          </div>
+{% highlight html linenos %}
+<abbr title="attribute">attr</abbr>
+{% endhighlight %}
+
+          <h3>Initialism</h3>
+          <p>Add <code>.initialism</code> to an abbreviation for a slightly smaller font-size.</p>
+          <div class="bs-docs-example">
+            <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr> is the best thing since sliced bread.</p>
+          </div>
+{% highlight html linenos %}
+<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+{% endhighlight %}
+
+
+          <!-- Addresses -->
+          <h2 id="addresses">Addresses</h2>
+          <p>Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with <code>&lt;br&gt;</code>.</p>
+          <div class="bs-docs-example">
+            <address>
+              <strong>Twitter, Inc.</strong><br>
+              795 Folsom Ave, Suite 600<br>
+              San Francisco, CA 94107<br>
+              <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+            <address>
+              <strong>Full Name</strong><br>
+              <a href="mailto:#">first.last@example.com</a>
+            </address>
+          </div>
+{% highlight html linenos %}
+<address>
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:#">first.last@example.com</a>
+</address>
+{% endhighlight %}
+
+
+          <!-- Blockquotes -->
+          <h2 id="blockquotes">Blockquotes</h2>
+          <p>For quoting blocks of content from another source within your document.</p>
+
+          <h3>Default blockquote</h3>
+          <p>Wrap <code>&lt;blockquote&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes we recommend a <code>&lt;p&gt;</code>.</p>
+          <div class="bs-docs-example">
+            <blockquote>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            </blockquote>
+          </div>
+{% highlight html linenos %}
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+</blockquote>
+{% endhighlight %}
+
+          <h3>Blockquote options</h3>
+          <p>Style and content changes for simple variations on a standard blockquote.</p>
+
+          <h4>Naming a source</h4>
+          <p>Add <code>&lt;small&gt;</code> tag for identifying the source. Wrap the name of the source work in <code>&lt;cite&gt;</code>.</p>
+          <div class="bs-docs-example">
+            <blockquote>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+              <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+            </blockquote>
+          </div>
+{% highlight html linenos %}
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+</blockquote>
+{% endhighlight %}
+
+          <h4>Alternate displays</h4>
+          <p>Use <code>.pull-right</code> for a floated, right-aligned blockquote.</p>
+          <div class="bs-docs-example" style="overflow: hidden;">
+            <blockquote class="pull-right">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+              <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+            </blockquote>
+          </div>
+{% highlight html linenos %}
+<blockquote class="pull-right">
+  ...
+</blockquote>
+{% endhighlight %}
+
+
+          <!-- Lists -->
+          <h2 id="lists">Lists</h2>
+
+          <h3>Unordered</h3>
+          <p>A list of items in which the order does <em>not</em> explicitly matter.</p>
+          <div class="bs-docs-example">
+            <ul>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Consectetur adipiscing elit</li>
+              <li>Integer molestie lorem at massa</li>
+              <li>Facilisis in pretium nisl aliquet</li>
+              <li>Nulla volutpat aliquam velit
+                <ul>
+                  <li>Phasellus iaculis neque</li>
+                  <li>Purus sodales ultricies</li>
+                  <li>Vestibulum laoreet porttitor sem</li>
+                  <li>Ac tristique libero volutpat at</li>
+                </ul>
+              </li>
+              <li>Faucibus porta lacus fringilla vel</li>
+              <li>Aenean sit amet erat nunc</li>
+              <li>Eget porttitor lorem</li>
+            </ul>
+          </div>
+{% highlight html linenos %}
+<ul>
+  <li>...</li>
+</ul>
+{% endhighlight %}
+
+          <h3>Ordered</h3>
+          <p>A list of items in which the order <em>does</em> explicitly matter.</p>
+          <div class="bs-docs-example">
+            <ol>
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Consectetur adipiscing elit</li>
+              <li>Integer molestie lorem at massa</li>
+              <li>Facilisis in pretium nisl aliquet</li>
+              <li>Nulla volutpat aliquam velit</li>
+              <li>Faucibus porta lacus fringilla vel</li>
+              <li>Aenean sit amet erat nunc</li>
+              <li>Eget porttitor lorem</li>
+            </ol>
+          </div>
+{% highlight html linenos %}
+<ol>
+  <li>...</li>
+</ol>
+{% endhighlight %}
+
+        <h3>Unstyled</h3>
+        <p>Remove the default <code>list-style</code> and left padding on list items (immediate children only).</p>
+        <div class="bs-docs-example">
+          <ul class="list-unstyled">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing elit</li>
+            <li>Integer molestie lorem at massa</li>
+            <li>Facilisis in pretium nisl aliquet</li>
+            <li>Nulla volutpat aliquam velit
+              <ul>
+                <li>Phasellus iaculis neque</li>
+                <li>Purus sodales ultricies</li>
+                <li>Vestibulum laoreet porttitor sem</li>
+                <li>Ac tristique libero volutpat at</li>
+              </ul>
+            </li>
+            <li>Faucibus porta lacus fringilla vel</li>
+            <li>Aenean sit amet erat nunc</li>
+            <li>Eget porttitor lorem</li>
+          </ul>
+        </div>
+{% highlight html linenos %}
+<ul class="list-unstyled">
+  <li>...</li>
+</ul>
+{% endhighlight %}
+
+        <h3>Inline</h3>
+        <p>Place all list items on a single line with <code>inline-block</code> and some light padding.</p>
+        <div class="bs-docs-example">
+          <ul class="list-inline">
+            <li>Lorem ipsum</li>
+            <li>Phasellus iaculis</li>
+            <li>Nulla volutpat</li>
+          </ul>
+        </div>
+{% highlight html linenos %}
+<ul class="list-inline">
+  <li>...</li>
+</ul>
+{% endhighlight %}
+
+        <h3>Description</h3>
+        <p>A list of terms with their associated descriptions.</p>
+        <div class="bs-docs-example">
+          <dl>
+            <dt>Description lists</dt>
+            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Euismod</dt>
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+            <dt>Malesuada porta</dt>
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+          </dl>
+        </div>
+{% highlight html linenos %}
+<dl>
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+{% endhighlight %}
+
+        <h4>Horizontal description</h4>
+        <p>Make terms and descriptions in <code>&lt;dl&gt;</code> line up side-by-side.</p>
+        <div class="bs-docs-example">
+          <dl class="dl-horizontal">
+            <dt>Description lists</dt>
+            <dd>A description list is perfect for defining terms.</dd>
+            <dt>Euismod</dt>
+            <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+            <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+            <dt>Malesuada porta</dt>
+            <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+            <dt>Felis euismod semper eget lacinia</dt>
+            <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+          </dl>
+        </div>
+{% highlight html linenos %}
+<dl class="dl-horizontal">
+  <dt>...</dt>
+  <dd>...</dd>
+</dl>
+{% endhighlight %}
+
+        <h5>Auto-truncating</h5>
+        <p>
+          Horizontal description lists will truncate terms that are too long to fit in the left column fix <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.
+        </p>
+      </section>
+
+
+
+        <!-- Grid system
+        ================================================== -->
+        <section id="grid">
+          <div class="page-header">
+            <h1>Grid system</h1>
+          </div>
+          <p class="lead">Bootstrap includes a responsive, percent-based grid system that appropriately scales up to 12 columns as the device or viewport size increases&mdash;in other words, it's mobile first. It includes <a href="#grid-example">predefined classes</a> for this, as well as powerful <a href="#grid-less">mixins for generating semantic layouts</a>.</p>
+
+          <h3 id="grid-example">Grid example</h3>
+          <p>On mobile devices, the grid starts out stacked. Above 768px, it becomes horizontal as media queries kick in to apply <code>float</code>s and <code>width</code>s. To create a basic grid layout, wrap a series of <code>.span*</code> elements within a <code>.row</code>. As this is a 12-column grid, each <code>.span*</code> spans a number of those 12 columns, and should always add up to 12 for each row (or the number of columns in the parent), even at mobile resolutions.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+              <div class="span1">1</div>
+            </div>
+            <div class="row show-grid">
+              <div class="span4">4</div>
+              <div class="span4">4</div>
+              <div class="span4">4</div>
+            </div>
+            <div class="row show-grid">
+              <div class="span6">6</div>
+              <div class="span6">6</div>
+            </div>
+          </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+  <div class="span1">1</div>
+</div>
+<div class="row">
+  <div class="span4">4</div>
+  <div class="span4">4</div>
+  <div class="span4">4</div>
+</div>
+<div class="row">
+  <div class="span6">6</div>
+  <div class="span6">6</div>
+</div>
+{% endhighlight %}
+
+          <h3 id="grid-offsetting">Offsetting columns</h3>
+          <p>Move columns to the right using <code>.offset*</code> classes. Each class increases the left margin of a column by a whole column. For example, <code>.offset4</code> moves <code>.span4</code> over four columns.</p>
+          <div class="bs-docs-grid">
+            <div class="row show-grid">
+              <div class="span4">4</div>
+              <div class="span4 offset4">4 offset 4</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="span3 offset3">3 offset 3</div>
+              <div class="span3 offset3">3 offset 3</div>
+            </div><!-- /row -->
+            <div class="row show-grid">
+              <div class="span6 offset6">6 offset 6</div>
+            </div><!-- /row -->
+          </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="span4">...</div>
+  <div class="span4 offset4">...</div>
+</div>
+{% endhighlight %}
+
+
+          <h3 id="grid-nesting">Nesting columns</h3>
+          <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.span*</code> columns within an existing <code>.span*</code> column. Nested rows should include a set of columns that add up to 12.</p>
+          <div class="row show-grid">
+            <div class="span9">
+              Level 1: 9 columns
+              <div class="row show-grid">
+                <div class="span6">
+                  Level 2: 6 columns
+                </div>
+                <div class="span6">
+                  Level 2: 6 columns
+                </div>
+              </div>
+            </div>
+          </div>
+{% highlight html linenos %}
+<div class="row">
+  <div class="span9">
+    Level 1: 9 columns
+    <div class="row">
+      <div class="span6">
+        Level 2: 6 columns
+      </div>
+      <div class="span6">
+        Level 2: 6 columns
+      </div>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+          <h3 id="grid-column-ordering">Column ordering</h3>
+          <p>Easily change the order of our built-in grid columns with <code>.push*</code> and <code>.pull*</code> modifier classes.</p>
+<div class="row show-grid">
+  <div class="span9 push3">9</div>
+  <div class="span3 pull9">3</div>
+</div>
+
+{% highlight html linenos %}
+<div class="row show-grid">
+  <div class="span9 push3">9</div>
+  <div class="span3 pull9">3</div>
+</div>
+{% endhighlight %}
+
+          <h3 id="grid-less">LESS mixins and variables</h3>
+          <p>In addition to <a href="#grid-example">prebuilt grid classes</a> for fast layouts, Bootstrap includes LESS variables and mixins for quickly generating your own simple, semantic layouts.</p>
+
+          <h4>Variables</h4>
+          <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
+{% highlight css linenos %}
+@grid-columns:              12;
+@grid-gutter-width:         30px;
+@grid-float-breakpoint:     768px;
+{% endhighlight %}
+
+          <h4>Mixins</h4>
+          <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
+{% highlight css linenos %}
+// Creates a wrapper for a series of columns
+.make-row() {
+  // Negative margin the row out to align the content of columns
+  margin-left:  (@grid-gutter-width / -2);
+  margin-right: (@grid-gutter-width / -2);
+  // Then clear the floated columns
+  .clear_float();
+}
+
+// Generate the columns
+.make-column(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    // Calculate width based on number of columns available
+    width: percentage(@columns / @grid-columns);
+  }
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Set inner padding as gutters instead of margin
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
+
+// Generate the column offsets
+.make-column-offset(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+{% endhighlight %}
+
+          <h4>Example usage</h4>
+          <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
+{% highlight css linenos %}
+.wrapper {
+  .make-row();
+}
+.content-main {
+  .make-column(8);
+}
+.content-secondary {
+  .make-column(3);
+  .make-column-offset(1);
+}
+{% endhighlight %}
+{% highlight html linenos %}
+<div class="wrapper">
+  <div class="content-main">...</div>
+  <div class="content-secondary">...</div>
+</div>
+{% endhighlight %}
+
+
+
+        </section>
+
+
+
+
+
+        <!-- Code
+        ================================================== -->
+        <section id="code">
+          <div class="page-header">
+            <h1>Code</h1>
+          </div>
+
+          <h2>Inline</h2>
+          <p>Wrap inline snippets of code with <code>&lt;code&gt;</code>.</p>
+<div class="bs-docs-example">
+  For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+</div>
+{% highlight html linenos %}
+For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+{% endhighlight %}
+
+          <h2>Basic block</h2>
+          <p>Use <code>&lt;pre&gt;</code> for multiple lines of code. Be sure to escape any angle brackets in the code for proper rendering.</p>
+<div class="bs-docs-example">
+  <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+</div>
+{% highlight html linenos %}
+<pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+{% endhighlight %}
+
+          <p>You may optionally add the <code>.pre-scrollable</code> class which will set a max-height of 350px and provide a y-axis scrollbar.</p>
+        </section>
+
+
+
+        <!-- Tables
+        ================================================== -->
+        <section id="tables">
+          <div class="page-header">
+            <h1>Tables</h1>
+          </div>
+
+          <h2>Default styles</h2>
+          <p>For basic styling&mdash;light padding and only horizontal dividers&mdash;add the base class <code>.table</code> to any <code>&lt;table&gt;</code>. It may seem super redundant, but given the widespread use of tables for other plugins like calendars and date pickers, we've opted to isolate our custom table styles.</p>
+          <div class="bs-docs-example">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<table class="table">
+  ...
+</table>
+{% endhighlight %}
+
+
+          <h2>Optional classes</h2>
+          <p>Add any of the following classes to the <code>.table</code> base class.</p>
+
+          <h3>Striped</h3>
+          <p>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE8).</p>
+          <div class="bs-docs-example">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<table class="table table-striped">
+  ...
+</table>
+{% endhighlight %}
+
+          <h3>Bordered</h3>
+          <p>Add <code>.table-bordered</code> for borders and rounded corners.</p>
+          <div class="bs-docs-example">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="2">1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@TwBootstrap</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<table class="table table-bordered">
+  ...
+</table>
+{% endhighlight %}
+
+          <h3>Hover rows</h3>
+          <p>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</p>
+          <div class="bs-docs-example">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<table class="table table-hover">
+  ...
+</table>
+{% endhighlight %}
+
+
+          <h3>Condensed</h3>
+          <p>Add <code>.table-condensed</code> to make tables more compact by cutting cell padding in half.</p>
+          <div class="bs-docs-example">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /example -->
+{% highlight html linenos %}
+<table class="table table-condensed">
+  ...
+</table>
+{% endhighlight %}
+
+
+
+          <h2>Optional row classes</h2>
+          <p>Use contextual classes to color table rows.</p>
+          <table class="table table-bordered table-striped">
+            <colgroup>
+              <col class="span1">
+              <col class="span7">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>.success</code>
+                </td>
+                <td>Indicates a successful or positive action.</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>.error</code>
+                </td>
+                <td>Indicates a dangerous or potentially negative action.</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>.warning</code>
+                </td>
+                <td>Indicates a warning that might need attention.</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>.info</code>
+                </td>
+                <td>Used as an alternative to the default styles.</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="bs-docs-example">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Product</th>
+                  <th>Payment Taken</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="success">
+                  <td>1</td>
+                  <td>TB - Monthly</td>
+                  <td>01/04/2012</td>
+                  <td>Approved</td>
+                </tr>
+                <tr class="error">
+                  <td>2</td>
+                  <td>TB - Monthly</td>
+                  <td>02/04/2012</td>
+                  <td>Declined</td>
+                </tr>
+                <tr class="warning">
+                  <td>3</td>
+                  <td>TB - Monthly</td>
+                  <td>03/04/2012</td>
+                  <td>Pending</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /example -->
+{% highlight html linenos %}
+...
+<tr class="success">
+  <td>1</td>
+  <td>TB - Monthly</td>
+  <td>01/04/2012</td>
+  <td>Approved</td>
+</tr>
+...
+{% endhighlight %}
+
+
+
+          <h2>Supported table markup</h2>
+          <p>List of supported table HTML elements and how they should be used.</p>
+          <table class="table table-bordered table-striped">
+            <colgroup>
+              <col class="span1">
+              <col class="span7">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>&lt;table&gt;</code>
+                </td>
+                <td>
+                  Wrapping element for displaying data in a tabular format
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>&lt;thead&gt;</code>
+                </td>
+                <td>
+                  Container element for table header rows (<code>&lt;tr&gt;</code>) to label table columns
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>&lt;tbody&gt;</code>
+                </td>
+                <td>
+                  Container element for table rows (<code>&lt;tr&gt;</code>) in the body of the table
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>&lt;tr&gt;</code>
+                </td>
+                <td>
+                  Container element for a set of table cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>) that appears on a single row
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>&lt;td&gt;</code>
+                </td>
+                <td>
+                  Default table cell
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>&lt;th&gt;</code>
+                </td>
+                <td>
+                  Special table cell for column (or row, depending on scope and placement) labels
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>&lt;caption&gt;</code>
+                </td>
+                <td>
+                  Description or summary of what the table holds, especially useful for screen readers
+                </td>
+              </tr>
+            </tbody>
+          </table>
+{% highlight html linenos %}
+<table>
+  <caption>...</caption>
+  <thead>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+{% endhighlight %}
+
+        </section>
+
+
+
+        <!-- Forms
+        ================================================== -->
+        <section id="forms">
+          <div class="page-header">
+            <h1>Forms</h1>
+          </div>
+
+          <h2 id="forms-default">Default styles</h2>
+          <p>Individual form controls automatically receive some global styling. By default, inputs are set to <code>width: 100%;</code>.</p>
+          <form class="bs-docs-example">
+            <fieldset>
+              <legend>Legend</legend>
+              <label>Label name</label>
+              <input type="text" placeholder="Type something…">
+              <p class="help-block">Example block-level help text here.</p>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Check me out
+                </label>
+              </div>
+              <button type="submit" class="btn">Submit</button>
+            </fieldset>
+          </form><!-- /example -->
+{% highlight html linenos %}
+<form>
+  <fieldset>
+    <legend>Legend</legend>
+    <label>Label name</label>
+    <input type="text" placeholder="Type something…">
+    <p class="help-block">Example block-level help text here.</p>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Check me out
+      </label>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+  </fieldset>
+</form>
+{% endhighlight %}
+
+
+          <h2 id="forms-layouts">Optional layouts</h2>
+          <p>Included with Bootstrap are optional form layouts for common use cases.</p>
+
+          <h3>Inline form</h3>
+          <p>Add <code>.form-inline</code> for left-aligned labels and inline-block controls for a compact layout.</p>
+          <form class="bs-docs-example form-inline">
+            <input type="text" class="span3" placeholder="Email">
+            <input type="password" class="span3" placeholder="Password">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Remember me
+              </label>
+            </div>
+            <button type="submit" class="btn">Sign in</button>
+          </form><!-- /example -->
+{% highlight html linenos %}
+<form class="form-inline">
+  <input type="text" class="span3" placeholder="Email">
+  <input type="password" class="span3" placeholder="Password">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Remember me
+    </label>
+  </div>
+  <button type="submit" class="btn">Sign in</button>
+</form>
+{% endhighlight %}
+
+          <h3>Horizontal form</h3>
+          <p>Right align labels and float them to the left to make them appear on the same line as controls. Requires the most markup changes from a default form:</p>
+          <ul>
+            <li>Add <code>.form-horizontal</code> to the form</li>
+            <li>Wrap labels and controls in <code>.control-group</code></li>
+            <li>Add <code>.control-label</code> to the label</li>
+            <li>Wrap any associated controls in <code>.controls</code> for proper alignment</li>
+          </ul>
+          <form class="bs-docs-example form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="inputEmail">Email</label>
+              <div class="controls">
+                <input type="text" id="inputEmail" placeholder="Email">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputPassword">Password</label>
+              <div class="controls">
+                <input type="password" id="inputPassword" placeholder="Password">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Remember me
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn">Sign in</button>
+              </div>
+            </div>
+          </form>
+{% highlight html linenos %}
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+      <input type="text" id="inputEmail" placeholder="Email">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" placeholder="Password">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Sign in</button>
+    </div>
+  </div>
+</form>
+{% endhighlight %}
+
+
+          <h2 id="forms-controls">Supported form controls</h2>
+          <p>Examples of standard form controls supported in an example form layout.</p>
+
+          <h3>Inputs</h3>
+          <p>Most common form control, text-based input fields. Includes support for all HTML5 types: text, password, datetime, datetime-local, date, month, time, week, number, email, url, search, tel, and color.</p>
+          <p>Requires the use of a specified <code>type</code> at all times.</p>
+          <form class="bs-docs-example form-inline">
+            <input type="text" placeholder="Text input">
+          </form>
+{% highlight html linenos %}
+<input type="text" placeholder="Text input">
+{% endhighlight %}
+
+          <h3>Textarea</h3>
+          <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
+          <form class="bs-docs-example form-inline">
+            <textarea rows="3"></textarea>
+          </form>
+{% highlight html linenos %}
+<textarea rows="3"></textarea>
+{% endhighlight %}
+
+          <h3>Checkboxes and radios</h3>
+          <p>Checkboxes are for selecting one or several options in a list while radios are for selecting one option from many.</p>
+          <h4>Default (stacked)</h4>
+          <form class="bs-docs-example">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="">
+                Option one is this and that&mdash;be sure to include why it's great
+              </label>
+            </div>
+            <br>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                Option one is this and that&mdash;be sure to include why it's great
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+              </label>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="checkbox">
+  <label>
+    <input type="checkbox" value="">
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+{% endhighlight %}
+
+          <h4>Inline checkboxes</h4>
+          <p>Use <code>.checkbox-inline</code> or <code>.radio-inline</code> class to a series of checkboxes or radios for controls appear on the same line.</p>
+          <form class="bs-docs-example">
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+            </label>
+          </form>
+{% highlight html linenos %}
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+</label>
+<label class="checkbox-inline">
+  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+</label>
+{% endhighlight %}
+
+          <h3>Selects</h3>
+          <p>Use the default option or specify a <code>multiple="multiple"</code> to show multiple options at once.</p>
+          <form class="bs-docs-example">
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+            <br>
+            <select multiple="multiple">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </form>
+{% highlight html linenos %}
+<select>
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+
+<select multiple="multiple">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+{% endhighlight %}
+
+
+
+          <h2>Form control states</h2>
+          <p>Provide feedback to users or visitors with basic feedback states on form controls and labels.</p>
+
+          <h3 id="forms-input-focus">Input focus</h3>
+          <p>We remove the default <code>outline</code> styles on some form controls and apply a <code>box-shadow</code> in its place for <code>:focus</code>.</p>
+          <form class="bs-docs-example form-inline">
+            <input class="focused" id="focusedInput" type="text" value="This is focused...">
+          </form>
+{% highlight html linenos %}
+<input id="focusedInput" type="text" value="This is focused...">
+{% endhighlight %}
+
+          <h3 id="forms-invalid-inputs">Invalid inputs</h3>
+          <p>Style inputs via default browser functionality with <code>:invalid</code>. Specify a <code>type</code>, add the <code>required</code> attribute if the field is not optional, and (if applicable) specify a <code>pattern</code>.</p>
+          <p>This is not available in versions of Internet Explorer 7-9 due to lack of support for CSS pseudo selectors.</p>
+          <form class="bs-docs-example form-inline">
+            <input class="span3" type="email" placeholder="test@example.com" required>
+          </form>
+{% highlight html linenos %}
+<input class="span3" type="email" placeholder="test@example.com" required>
+{% endhighlight %}
+
+          <h3 id="forms-disabled-inputs">Disabled inputs</h3>
+          <p>Add the <code>disabled</code> attribute on an input to prevent user input and trigger a slightly different look.</p>
+          <form class="bs-docs-example form-inline">
+            <input class="input-xlarge" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
+          </form>
+{% highlight html linenos %}
+<input id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+{% endhighlight %}
+
+          <h3 id="forms-disabled-fieldsets">Disabled fieldsets</h3>
+          <p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset&gt;</code> to disable all the controls within the <code>&lt;fieldset&gt;</code> at once. Link buttons (with the <code>&lt;a&gt;</code> element) will be aesthetically disabled, but you will need custom JavaScript to disable their behavior.</p>
+          <form class="bs-docs-example form-inline">
+            <fieldset disabled>
+              <div>
+                <input type="text" class="span4" placeholder="Disabled input">
+              </div>
+              <div>
+                <select class="span4">
+                  <option>Disabled select</option>
+                </select>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Can't check this
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+          </form>
+{% highlight html linenos %}
+<form class="form-inline">
+  <fieldset disabled>
+    <div>
+      <input type="text" class="span4" placeholder="Disabled input">
+    </div>
+    <div>
+      <select class="span4">
+        <option>Disabled select</option>
+      </select>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Can't check this
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+{% endhighlight %}
+
+          <h3 id="forms-validation">Validation states</h3>
+          <p>Bootstrap includes validation styles for error, warning, info, and success messages. To use:</p>
+          <ul>
+            <li>Add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element</li>
+            <li>Add .input-with-feedback to the field(s) in question</li>
+          </ul>
+          <p>Validation styles are applied on a per-input basis. With horizontal forms, the <code>&lt;label class="control-label"&gt;</code> will always be styled.</p>
+
+          <form class="bs-docs-example form-horizontal">
+            <div class="control-group has-warning">
+              <label class="control-label" for="inputWarning">Input with warning</label>
+              <div class="controls">
+                <input type="text" class="input-with-feedback" id="inputWarning">
+              </div>
+            </div>
+            <div class="control-group has-error">
+              <label class="control-label" for="inputError">Input with error</label>
+              <div class="controls">
+                <input type="text" class="input-with-feedback" id="inputError">
+              </div>
+            </div>
+            <div class="control-group has-success">
+              <label class="control-label" for="inputSuccess">Input with success</label>
+              <div class="controls">
+                <input type="text" class="input-with-feedback" id="inputSuccess">
+              </div>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="control-group has-warning">
+  <label class="control-label" for="inputWarning">Input with warning</label>
+  <div class="controls">
+    <input type="text" class="input-with-feedback" id="inputWarning">
+  </div>
+</div>
+<div class="control-group has-error">
+  <label class="control-label" for="inputError">Input with error</label>
+  <div class="controls">
+    <input type="text" class="input-with-feedback" id="inputError">
+  </div>
+</div>
+<div class="control-group has-success">
+  <label class="control-label" for="inputSuccess">Input with success</label>
+  <div class="controls">
+    <input type="text" class="input-with-feedback" id="inputSuccess">
+  </div>
+</div>
+{% endhighlight %}
+
+
+
+          <h2 id="forms-extending">Extending form controls</h2>
+          <p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
+
+          <h3>Input groups</h3>
+          <p>Add text or buttons before, after, or on both sides of any text-based input. Use <code>.input-group</code> with a <code>.add-on</code> to prepend or append elements to an <code>&lt;input&gt;</code>.</p>
+          <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
+          <form class="bs-docs-example">
+            <div class="input-group span9">
+              <span class="input-group-addon">@</span>
+              <input type="text" placeholder="Username">
+            </div>
+            <br>
+            <div class="input-group span6">
+              <input type="text">
+              <span class="input-group-addon">.00</span>
+            </div>
+            <br>
+            <div class="input-group span3">
+              <span class="input-group-addon">$</span>
+              <input type="text">
+              <span class="input-group-addon">.00</span>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="input-group span9">
+  <span class="input-group-addon">@</span>
+  <input type="text" placeholder="Username">
+</div>
+
+<div class="input-group span6">
+  <input type="text">
+  <span class="input-group-addon">.00</span>
+</div>
+
+<div class="input-group span3">
+  <span class="input-group-addon">$</span>
+  <input type="text">
+  <span class="input-group-addon">.00</span>
+</div>
+{% endhighlight %}
+
+          <h4>Optional sizes</h4>
+          <p>Add the relative form sizing classes to the `.input-group-addon`.</p>
+          <form class="bs-docs-example">
+            <div class="input-group span9">
+              <span class="input-group-addon input-large">@</span>
+              <input type="text" class="input-large" placeholder="Username">
+            </div>
+            <br>
+            <div class="input-group span9">
+              <span class="input-group-addon">@</span>
+              <input type="text" placeholder="Username">
+            </div>
+            <br>
+            <div class="input-group span9">
+              <span class="input-group-addon input-small">@</span>
+              <input type="text" class="input-small" placeholder="Username">
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="input-group span9">
+  <span class="input-group-addon input-large">@</span>
+  <input type="text" class="input-large" placeholder="Username">
+</div>
+
+<div class="input-group span9">
+  <span class="input-group-addon">@</span>
+  <input type="text" placeholder="Username">
+</div>
+
+<div class="input-group span9">
+  <span class="input-group-addon input-small">@</span>
+  <input type="text" class="input-small" placeholder="Username">
+</div>
+{% endhighlight %}
+
+          <h4>Buttons instead of text</h4>
+          <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
+          <form class="bs-docs-example">
+            <div class="input-group span7">
+              <span class="input-group-btn">
+                <button class="btn" type="button">Go!</button>
+              </span>
+              <input type="text">
+            </div>
+            <br>
+            <div class="input-group span7">
+              <input type="text">
+              <span class="input-group-btn">
+                <button class="btn" type="button">Go!</button>
+              </span>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="input-group span7">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+  <input type="text">
+</div>
+
+<div class="input-group span7">
+  <input type="text">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+{% endhighlight %}
+
+          <h4>Button dropdowns</h4>
+          <p></p>
+          <form class="bs-docs-example">
+            <div class="input-group span7">
+              <div class="input-group-btn">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div><!-- /btn-group -->
+              <input type="text">
+            </div><!-- /input-group -->
+            <br>
+            <div class="input-group span7">
+              <input type="text">
+              <div class="input-group-btn">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+          </form>
+{% highlight html linenos %}
+<div class="input-group span7">
+  <div class="input-group-btn">
+    <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div><!-- /btn-group -->
+  <input type="text">
+</div><!-- /input-group -->
+
+<div class="input-group span7">
+  <input type="text">
+  <div class="input-group-btn">
+    <button class="btn dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div><!-- /btn-group -->
+</div><!-- /input-group -->
+{% endhighlight %}
+
+          <h4>Segmented dropdown groups</h4>
+          <form class="bs-docs-example">
+            <div class="input-group span7">
+              <div class="input-group-btn">
+                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
+              <input type="text">
+            </div>
+
+            <br>
+
+            <div class="input-group span7">
+              <input type="text">
+              <div class="input-group-btn">
+                <button class="btn" tabindex="-1">Action</button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="input-group span7">
+  <div class="input-group-btn">
+    <!-- Button and dropdown menu -->
+  </div>
+  <input type="text">
+</div>
+
+<div class="input-group span7">
+  <input type="text">
+  <div class="input-group-btn btn-group">
+    <!-- Button and dropdown menu -->
+  </div>
+</div>
+{% endhighlight %}
+
+          <h3 id="forms-extending-sizes">Control sizing</h3>
+          <p>Use relative sizing classes like <code>.input-large</code> or match your inputs to the grid column sizes using <code>.span*</code> classes.</p>
+
+          <h4>Relative sizing</h4>
+          <p>Create larger or smaller form controls that match button sizes.</p>
+          <form class="bs-docs-example" style="padding-bottom: 15px;">
+            <div class="controls docs-input-sizes">
+              <input class="input-large" type="text" placeholder=".input-large">
+              <input type="text" placeholder="Default input">
+              <input class="input-small" type="text" placeholder=".input-small">
+            </div>
+          </form>
+{% highlight html linenos %}
+<input class="input-large" type="text" placeholder=".input-large">
+<input type="text" placeholder="Default input">
+<input class="input-small" type="text" placeholder=".input-small">
+{% endhighlight %}
+
+          <h4>Column sizing</h4>
+          <p>Use <code>.span1</code> to <code>.span12</code> for setting widths on inputs that match Bootstrap's grid system.</p>
+          <form class="bs-docs-example" style="padding-bottom: 15px;">
+            <div class="controls docs-input-sizes">
+              <input class="span1" type="text" placeholder=".span1">
+              <input class="span2" type="text" placeholder=".span2">
+              <input class="span3" type="text" placeholder=".span3">
+              <select class="span1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <select class="span2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <select class="span3">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </form>
+{% highlight html linenos %}
+<input class="span1" type="text" placeholder=".span1">
+<input class="span2" type="text" placeholder=".span2">
+<input class="span3" type="text" placeholder=".span3">
+<select class="span1">
+  ...
+</select>
+<select class="span2">
+  ...
+</select>
+<select class="span3">
+  ...
+</select>
+{% endhighlight %}
+
+          <p>If you need multiple inputs on the same line, wrap them in the standard grid markup (with <code>.row</code> and <code>.span*</code> classes). Each input should have it's own column and will expand to fill the available width automatically.</p>
+          <form class="bs-docs-example" style="padding-bottom: 15px;">
+            <div class="row">
+              <div class="span4">
+                <input type="text" placeholder=".span4">
+              </div>
+              <div class="span4">
+                <input type="text" placeholder=".span4">
+              </div>
+              <div class="span4">
+                <input type="text" placeholder=".span4">
+              </div>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="row">
+  <div class="span4">
+    <input type="text" placeholder=".span4">
+  </div>
+  <div class="span4">
+    <input type="text" placeholder=".span4">
+  </div>
+  <div class="span4">
+    <input type="text" placeholder=".span4">
+  </div>
+</div>
+{% endhighlight %}
+
+          <h3>Uneditable inputs</h3>
+          <p>Present data in a form that's not editable without using actual form markup.</p>
+          <form class="bs-docs-example">
+            <span class="input-xlarge uneditable-input">Some value here</span>
+          </form>
+{% highlight html linenos %}
+<span class="uneditable-input">Some value here</span>
+{% endhighlight %}
+
+          <h3>Form actions</h3>
+          <p>End a form with a group of actions (buttons). When placed within a <code>.form-horizontal</code>, the buttons will automatically indent to line up with the form controls.</p>
+          <form class="bs-docs-example">
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn">Cancel</button>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="form-actions">
+  <button type="submit" class="btn btn-primary">Save changes</button>
+  <button type="button" class="btn">Cancel</button>
+</div>
+{% endhighlight %}
+
+          <h3>Help text</h3>
+          <p>Inline and block level support for help text that appears around form controls.</p>
+          <h4>Inline help</h4>
+          <form class="bs-docs-example form-inline">
+            <input type="text"> <span class="help-inline">Inline help text</span>
+          </form>
+{% highlight html linenos %}
+<input type="text">
+<span class="help-inline">Inline help text</span>
+{% endhighlight %}
+
+          <h4>Block help</h4>
+          <form class="bs-docs-example form-inline">
+            <input type="text">
+            <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+          </form>
+{% highlight html linenos %}
+<input type="text">
+<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+{% endhighlight %}
+
+        </section>
+
+
+
+        <!-- Buttons
+        ================================================== -->
+        <section id="buttons">
+          <div class="page-header">
+            <h1>Buttons</h1>
+          </div>
+
+          <h2>Default buttons</h2>
+          <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
+          <div class="bs-docs-example">
+            <button type="button" class="btn btn-default">Default</button>
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-success">Success</button>
+            <button type="button" class="btn btn-info">Info</button>
+            <button type="button" class="btn btn-warning">Warning</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-link">Link</button>
+          </div>
+{% highlight html linenos %}
+<!-- Standard gray button with gradient -->
+<button type="button" class="btn btn-default">Default</button>
+
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<button type="button" class="btn btn-primary">Primary</button>
+
+<!-- Indicates a successful or positive action -->
+<button type="button" class="btn btn-success">Success</button>
+
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="btn btn-info">Info</button>
+
+<!-- Indicates caution should be taken with this action -->
+<button type="button" class="btn btn-warning">Warning</button>
+
+<!-- Indicates a dangerous or potentially negative action -->
+<button type="button" class="btn btn-danger">Danger</button>
+
+<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<button type="button" class="btn btn-link">Link</button>
+{% endhighlight %}
+
+          <h4>Cross browser compatibility</h4>
+          <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
+
+
+          <h2>Button sizes</h2>
+          <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
+          <div class="bs-docs-example">
+            <p>
+              <button type="button" class="btn btn-large btn-primary">Large button</button>
+              <button type="button" class="btn btn-large">Large button</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-primary">Default button</button>
+              <button type="button" class="btn">Default button</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-small btn-primary">Small button</button>
+              <button type="button" class="btn btn-small">Small button</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-mini btn-primary">Mini button</button>
+              <button type="button" class="btn btn-mini">Mini button</button>
+            </p>
+          </div>
+{% highlight html linenos %}
+<p>
+  <button type="button" class="btn btn-large btn-primary">Large button</button>
+  <button type="button" class="btn btn-large">Large button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-primary">Default button</button>
+  <button type="button" class="btn">Default button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-small btn-primary">Small button</button>
+  <button type="button" class="btn btn-small">Small button</button>
+</p>
+<p>
+  <button type="button" class="btn btn-mini btn-primary">Mini button</button>
+  <button type="button" class="btn btn-mini">Mini button</button>
+</p>
+{% endhighlight %}
+
+          <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
+          <div class="bs-docs-example">
+            <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+              <button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
+              <button type="button" class="btn btn-large btn-block">Block level button</button>
+            </div>
+          </div>
+{% highlight html linenos %}
+<button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
+<button type="button" class="btn btn-large btn-block">Block level button</button>
+{% endhighlight %}
+
+
+          <h2>Disabled state</h2>
+          <p>Make buttons look unclickable by fading them back 50%.</p>
+
+          <h3>Button element</h3>
+          <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+          <p class="bs-docs-example">
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+            <button type="button" class="btn btn-large" disabled="disabled">Button</button>
+          </p>
+{% highlight html linenos %}
+<button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+<button type="button" class="btn btn-large" disabled="disabled">Button</button>
+{% endhighlight %}
+
+          <h3>Anchor element</h3>
+          <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+          <p class="bs-docs-example">
+            <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+            <a href="#" class="btn btn-large disabled">Link</a>
+          </p>
+{% highlight html linenos %}
+<a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+<a href="#" class="btn btn-large disabled">Link</a>
+{% endhighlight %}
+          <p>
+            We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
+          </p>
+
+
+          <h2>One class, multiple tags</h2>
+          <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+          <form class="bs-docs-example">
+            <a class="btn" href="">Link</a>
+            <button class="btn" type="submit">Button</button>
+            <input class="btn" type="button" value="Input">
+            <input class="btn" type="submit" value="Submit">
+          </form>
+{% highlight html linenos %}
+<a class="btn" href="">Link</a>
+<button class="btn" type="submit">Button</button>
+<input class="btn" type="button" value="Input">
+<input class="btn" type="submit" value="Submit">
+{% endhighlight %}
+          <p>As a best practice, <strong>we highly recommend matching using the <code>&lt;button&lt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+
+        </section>
+
+
+
+        <!-- Images
+        ================================================== -->
+        <section id="images">
+          <div class="page-header">
+            <h1>Images</h1>
+          </div>
+
+          <p>Add classes to an <code>&lt;img&gt;</code> element to easily style images in any project. Rounded corners are not available in IE8.</p>
+          <div class="bs-docs-example bs-docs-example-images">
+            <img data-src="holder.js/140x140" class="img-rounded">
+            <img data-src="holder.js/140x140" class="img-circle">
+            <img data-src="holder.js/140x140" class="img-thumbnail">
+          </div>
+{% highlight html linenos %}
+<img src="..." class="img-rounded">
+<img src="..." class="img-circle">
+<img src="..." class="img-thumbnail">
+{% endhighlight %}
+
+        </section>
+
+
+
+        <!-- Icons
+        ================================================== -->
+        <section id="icons">
+          <div class="page-header">
+            <h1>Icons font <small>by <a href="http://glyphicons.com" target="_blank">Glyphicons</a></small></h1>
+          </div>
+
+          <h2>Included glyphs</h2>
+          <p>Bootstrap comes with all 160 of <a href="http://glyphicons.com" target="_blank">Glyphicons</a> Halflings set, all available in font formats for easy coloring, sizing, and placement.</p>
+
+          <ul class="the-icons clearfix">
+            <li><i class="glyphicon glyphicon-glass"></i> glyphicon-glass</li>
+            <li><i class="glyphicon glyphicon-music"></i> glyphicon-music</li>
+            <li><i class="glyphicon glyphicon-search"></i> glyphicon-search</li>
+            <li><i class="glyphicon glyphicon-envelope"></i> glyphicon-envelope</li>
+            <li><i class="glyphicon glyphicon-heart"></i> glyphicon-heart</li>
+            <li><i class="glyphicon glyphicon-star"></i> glyphicon-star</li>
+            <li><i class="glyphicon glyphicon-star-empty"></i> glyphicon-star-empty</li>
+            <li><i class="glyphicon glyphicon-user"></i> glyphicon-user</li>
+            <li><i class="glyphicon glyphicon-film"></i> glyphicon-film</li>
+            <li><i class="glyphicon glyphicon-th-large"></i> glyphicon-th-large</li>
+            <li><i class="glyphicon glyphicon-th"></i> glyphicon-th</li>
+            <li><i class="glyphicon glyphicon-th-list"></i> glyphicon-th-list</li>
+            <li><i class="glyphicon glyphicon-ok"></i> glyphicon-ok</li>
+            <li><i class="glyphicon glyphicon-remove"></i> glyphicon-remove</li>
+            <li><i class="glyphicon glyphicon-zoom-in"></i> glyphicon-zoom-in</li>
+            <li><i class="glyphicon glyphicon-zoom-out"></i> glyphicon-zoom-out</li>
+            <li><i class="glyphicon glyphicon-off"></i> glyphicon-off</li>
+            <li><i class="glyphicon glyphicon-signal"></i> glyphicon-signal</li>
+            <li><i class="glyphicon glyphicon-cog"></i> glyphicon-cog</li>
+            <li><i class="glyphicon glyphicon-trash"></i> glyphicon-trash</li>
+            <li><i class="glyphicon glyphicon-home"></i> glyphicon-home</li>
+            <li><i class="glyphicon glyphicon-file"></i> glyphicon-file</li>
+            <li><i class="glyphicon glyphicon-time"></i> glyphicon-time</li>
+            <li><i class="glyphicon glyphicon-road"></i> glyphicon-road</li>
+            <li><i class="glyphicon glyphicon-download-alt"></i> glyphicon-download-alt</li>
+            <li><i class="glyphicon glyphicon-download"></i> glyphicon-download</li>
+            <li><i class="glyphicon glyphicon-upload"></i> glyphicon-upload</li>
+            <li><i class="glyphicon glyphicon-inbox"></i> glyphicon-inbox</li>
+
+            <li><i class="glyphicon glyphicon-play-circle"></i> glyphicon-play-circle</li>
+            <li><i class="glyphicon glyphicon-repeat"></i> glyphicon-repeat</li>
+            <li><i class="glyphicon glyphicon-refresh"></i> glyphicon-refresh</li>
+            <li><i class="glyphicon glyphicon-list-alt"></i> glyphicon-list-alt</li>
+            <li><i class="glyphicon glyphicon-lock"></i> glyphicon-lock</li>
+            <li><i class="glyphicon glyphicon-flag"></i> glyphicon-flag</li>
+            <li><i class="glyphicon glyphicon-headphones"></i> glyphicon-headphones</li>
+            <li><i class="glyphicon glyphicon-volume-off"></i> glyphicon-volume-off</li>
+            <li><i class="glyphicon glyphicon-volume-down"></i> glyphicon-volume-down</li>
+            <li><i class="glyphicon glyphicon-volume-up"></i> glyphicon-volume-up</li>
+            <li><i class="glyphicon glyphicon-qrcode"></i> glyphicon-qrcode</li>
+            <li><i class="glyphicon glyphicon-barcode"></i> glyphicon-barcode</li>
+            <li><i class="glyphicon glyphicon-tag"></i> glyphicon-tag</li>
+            <li><i class="glyphicon glyphicon-tags"></i> glyphicon-tags</li>
+            <li><i class="glyphicon glyphicon-book"></i> glyphicon-book</li>
+            <li><i class="glyphicon glyphicon-bookmark"></i> glyphicon-bookmark</li>
+            <li><i class="glyphicon glyphicon-print"></i> glyphicon-print</li>
+            <li><i class="glyphicon glyphicon-camera"></i> glyphicon-camera</li>
+            <li><i class="glyphicon glyphicon-font"></i> glyphicon-font</li>
+            <li><i class="glyphicon glyphicon-bold"></i> glyphicon-bold</li>
+            <li><i class="glyphicon glyphicon-italic"></i> glyphicon-italic</li>
+            <li><i class="glyphicon glyphicon-text-height"></i> glyphicon-text-height</li>
+            <li><i class="glyphicon glyphicon-text-width"></i> glyphicon-text-width</li>
+            <li><i class="glyphicon glyphicon-align-left"></i> glyphicon-align-left</li>
+            <li><i class="glyphicon glyphicon-align-center"></i> glyphicon-align-center</li>
+            <li><i class="glyphicon glyphicon-align-right"></i> glyphicon-align-right</li>
+            <li><i class="glyphicon glyphicon-align-justify"></i> glyphicon-align-justify</li>
+            <li><i class="glyphicon glyphicon-list"></i> glyphicon-list</li>
+
+            <li><i class="glyphicon glyphicon-indent-left"></i> glyphicon-indent-left</li>
+            <li><i class="glyphicon glyphicon-indent-right"></i> glyphicon-indent-right</li>
+            <li><i class="glyphicon glyphicon-facetime-video"></i> glyphicon-facetime-video</li>
+            <li><i class="glyphicon glyphicon-picture"></i> glyphicon-picture</li>
+            <li><i class="glyphicon glyphicon-pencil"></i> glyphicon-pencil</li>
+            <li><i class="glyphicon glyphicon-map-marker"></i> glyphicon-map-marker</li>
+            <li><i class="glyphicon glyphicon-adjust"></i> glyphicon-adjust</li>
+            <li><i class="glyphicon glyphicon-tint"></i> glyphicon-tint</li>
+            <li><i class="glyphicon glyphicon-edit"></i> glyphicon-edit</li>
+            <li><i class="glyphicon glyphicon-share"></i> glyphicon-share</li>
+            <li><i class="glyphicon glyphicon-check"></i> glyphicon-check</li>
+            <li><i class="glyphicon glyphicon-move"></i> glyphicon-move</li>
+            <li><i class="glyphicon glyphicon-step-backward"></i> glyphicon-step-backward</li>
+            <li><i class="glyphicon glyphicon-fast-backward"></i> glyphicon-fast-backward</li>
+            <li><i class="glyphicon glyphicon-backward"></i> glyphicon-backward</li>
+            <li><i class="glyphicon glyphicon-play"></i> glyphicon-play</li>
+            <li><i class="glyphicon glyphicon-pause"></i> glyphicon-pause</li>
+            <li><i class="glyphicon glyphicon-stop"></i> glyphicon-stop</li>
+            <li><i class="glyphicon glyphicon-forward"></i> glyphicon-forward</li>
+            <li><i class="glyphicon glyphicon-fast-forward"></i> glyphicon-fast-forward</li>
+            <li><i class="glyphicon glyphicon-step-forward"></i> glyphicon-step-forward</li>
+            <li><i class="glyphicon glyphicon-eject"></i> glyphicon-eject</li>
+            <li><i class="glyphicon glyphicon-chevron-left"></i> glyphicon-chevron-left</li>
+            <li><i class="glyphicon glyphicon-chevron-right"></i> glyphicon-chevron-right</li>
+            <li><i class="glyphicon glyphicon-plus-sign"></i> glyphicon-plus-sign</li>
+            <li><i class="glyphicon glyphicon-minus-sign"></i> glyphicon-minus-sign</li>
+            <li><i class="glyphicon glyphicon-remove-sign"></i> glyphicon-remove-sign</li>
+            <li><i class="glyphicon glyphicon-ok-sign"></i> glyphicon-ok-sign</li>
+
+            <li><i class="glyphicon glyphicon-question-sign"></i> glyphicon-question-sign</li>
+            <li><i class="glyphicon glyphicon-info-sign"></i> glyphicon-info-sign</li>
+            <li><i class="glyphicon glyphicon-screenshot"></i> glyphicon-screenshot</li>
+            <li><i class="glyphicon glyphicon-remove-circle"></i> glyphicon-remove-circle</li>
+            <li><i class="glyphicon glyphicon-ok-circle"></i> glyphicon-ok-circle</li>
+            <li><i class="glyphicon glyphicon-ban-circle"></i> glyphicon-ban-circle</li>
+            <li><i class="glyphicon glyphicon-arrow-left"></i> glyphicon-arrow-left</li>
+            <li><i class="glyphicon glyphicon-arrow-right"></i> glyphicon-arrow-right</li>
+            <li><i class="glyphicon glyphicon-arrow-up"></i> glyphicon-arrow-up</li>
+            <li><i class="glyphicon glyphicon-arrow-down"></i> glyphicon-arrow-down</li>
+            <li><i class="glyphicon glyphicon-share-alt"></i> glyphicon-share-alt</li>
+            <li><i class="glyphicon glyphicon-resize-full"></i> glyphicon-resize-full</li>
+            <li><i class="glyphicon glyphicon-resize-small"></i> glyphicon-resize-small</li>
+            <li><i class="glyphicon glyphicon-plus"></i> glyphicon-plus</li>
+            <li><i class="glyphicon glyphicon-minus"></i> glyphicon-minus</li>
+            <li><i class="glyphicon glyphicon-asterisk"></i> glyphicon-asterisk</li>
+            <li><i class="glyphicon glyphicon-exclamation-sign"></i> glyphicon-exclamation-sign</li>
+            <li><i class="glyphicon glyphicon-gift"></i> glyphicon-gift</li>
+            <li><i class="glyphicon glyphicon-leaf"></i> glyphicon-leaf</li>
+            <li><i class="glyphicon glyphicon-fire"></i> glyphicon-fire</li>
+            <li><i class="glyphicon glyphicon-eye-open"></i> glyphicon-eye-open</li>
+            <li><i class="glyphicon glyphicon-eye-close"></i> glyphicon-eye-close</li>
+            <li><i class="glyphicon glyphicon-warning-sign"></i> glyphicon-warning-sign</li>
+            <li><i class="glyphicon glyphicon-plane"></i> glyphicon-plane</li>
+            <li><i class="glyphicon glyphicon-calendar"></i> glyphicon-calendar</li>
+            <li><i class="glyphicon glyphicon-random"></i> glyphicon-random</li>
+            <li><i class="glyphicon glyphicon-comment"></i> glyphicon-comment</li>
+            <li><i class="glyphicon glyphicon-magnet"></i> glyphicon-magnet</li>
+
+            <li><i class="glyphicon glyphicon-chevron-up"></i> glyphicon-chevron-up</li>
+            <li><i class="glyphicon glyphicon-chevron-down"></i> glyphicon-chevron-down</li>
+            <li><i class="glyphicon glyphicon-retweet"></i> glyphicon-retweet</li>
+            <li><i class="glyphicon glyphicon-shopping-cart"></i> glyphicon-shopping-cart</li>
+            <li><i class="glyphicon glyphicon-folder-close"></i> glyphicon-folder-close</li>
+            <li><i class="glyphicon glyphicon-folder-open"></i> glyphicon-folder-open</li>
+            <li><i class="glyphicon glyphicon-resize-vertical"></i> glyphicon-resize-vertical</li>
+            <li><i class="glyphicon glyphicon-resize-horizontal"></i> glyphicon-resize-horizontal</li>
+            <li><i class="glyphicon glyphicon-hdd"></i> glyphicon-hdd</li>
+            <li><i class="glyphicon glyphicon-bullhorn"></i> glyphicon-bullhorn</li>
+            <li><i class="glyphicon glyphicon-bell"></i> glyphicon-bell</li>
+            <li><i class="glyphicon glyphicon-certificate"></i> glyphicon-certificate</li>
+            <li><i class="glyphicon glyphicon-thumbs-up"></i> glyphicon-thumbs-up</li>
+            <li><i class="glyphicon glyphicon-thumbs-down"></i> glyphicon-thumbs-down</li>
+            <li><i class="glyphicon glyphicon-hand-right"></i> glyphicon-hand-right</li>
+            <li><i class="glyphicon glyphicon-hand-left"></i> glyphicon-hand-left</li>
+            <li><i class="glyphicon glyphicon-hand-up"></i> glyphicon-hand-up</li>
+            <li><i class="glyphicon glyphicon-hand-down"></i> glyphicon-hand-down</li>
+            <li><i class="glyphicon glyphicon-circle-arrow-right"></i> glyphicon-circle-arrow-right</li>
+            <li><i class="glyphicon glyphicon-circle-arrow-left"></i> glyphicon-circle-arrow-left</li>
+            <li><i class="glyphicon glyphicon-circle-arrow-up"></i> glyphicon-circle-arrow-up</li>
+            <li><i class="glyphicon glyphicon-circle-arrow-down"></i> glyphicon-circle-arrow-down</li>
+            <li><i class="glyphicon glyphicon-globe"></i> glyphicon-globe</li>
+            <li><i class="glyphicon glyphicon-wrench"></i> glyphicon-wrench</li>
+            <li><i class="glyphicon glyphicon-tasks"></i> glyphicon-tasks</li>
+            <li><i class="glyphicon glyphicon-filter"></i> glyphicon-filter</li>
+            <li><i class="glyphicon glyphicon-briefcase"></i> glyphicon-briefcase</li>
+            <li><i class="glyphicon glyphicon-fullscreen"></i> glyphicon-fullscreen</li>
+
+            <li><i class="glyphicon glyphicon-dashboard"></i> glyphicon-dashboard</li>
+            <li><i class="glyphicon glyphicon-paperclip"></i> glyphicon-paperclip</li>
+            <li><i class="glyphicon glyphicon-heart-empty"></i> glyphicon-heart-empty</li>
+            <li><i class="glyphicon glyphicon-link"></i> glyphicon-link</li>
+            <li><i class="glyphicon glyphicon-phone"></i> glyphicon-phone</li>
+            <li><i class="glyphicon glyphicon-pushpin"></i> glyphicon-pushpin</li>
+            <li><i class="glyphicon glyphicon-euro"></i> glyphicon-euro</li>
+            <li><i class="glyphicon glyphicon-usd"></i> glyphicon-usd</li>
+            <li><i class="glyphicon glyphicon-gbp"></i> glyphicon-gbp</li>
+            <li><i class="glyphicon glyphicon-sort"></i> glyphicon-sort</li>
+            <li><i class="glyphicon glyphicon-sort-by-alphabet"></i> glyphicon-sort-by-alphabet</li>
+            <li><i class="glyphicon glyphicon-sort-by-alphabet-alt"></i> glyphicon-sort-by-alphabet-alt</li>
+            <li><i class="glyphicon glyphicon-sort-by-order"></i> glyphicon-sort-by-order</li>
+            <li><i class="glyphicon glyphicon-sort-by-order-alt"></i> glyphicon-sort-by-order-alt</li>
+            <li><i class="glyphicon glyphicon-sort-by-attributes"></i> glyphicon-sort-by-attributes</li>
+            <li><i class="glyphicon glyphicon-sort-by-attributes-alt"></i> glyphicon-sort-by-attributes-alt</li>
+            <li><i class="glyphicon glyphicon-unchecked"></i> glyphicon-unchecked</li>
+            <li><i class="glyphicon glyphicon-expand"></i> glyphicon-expand</li>
+            <li><i class="glyphicon glyphicon-collapse"></i> glyphicon-collapse</li>
+            <li><i class="glyphicon glyphicon-collapse-top"></i> glyphicon-collapse-top</li>
+
+          </ul>
+
+          <h3>Glyphicons attribution</h3>
+          <p><a href="http://glyphicons.com/">Glyphicons</a> Halflings are normally not available for free, but an arrangement between Bootstrap and the Glyphicons creator have made this possible at no cost to you as developers. As a thank you, we ask you to include an optional link back to <a href="http://glyphicons.com/">Glyphicons</a> whenever practical.</p>
+
+
+          <h2>How to use</h2>
+          <p>Add the appropriate class to any inline element. All icon classes are prefixed with <code>glyphicon-</code> for easy styling. To use, place the following code just about anywhere:</p>
+{% highlight html linenos %}
+<span class="glyphicon glyphicon-search"></span>
+{% endhighlight %}
+          <p>Want to change the icon color? Just change the <code>color</code> of the parent element.</p>
+          <p>When using beside strings of text, as in buttons or nav links, be sure to leave a space after the icon for proper spacing.</p>
+
+
+          <h2>Icon examples</h2>
+          <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
+
+          <h4>Buttons</h4>
+
+          <h5>Button group in a button toolbar</h5>
+          <div class="bs-docs-example">
+            <div class="btn-toolbar">
+              <div class="btn-group">
+                <a class="btn" href="#"><span class="glyphicon glyphicon-align-left"></span></a>
+                <a class="btn" href="#"><span class="glyphicon glyphicon-align-center"></span></a>
+                <a class="btn" href="#"><span class="glyphicon glyphicon-align-right"></span></a>
+                <a class="btn" href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
+              </div>
+            </div>
+          </div><!-- /bs-docs-example -->
+{% highlight html linenos %}
+<div class="btn-toolbar">
+  <div class="btn-group">
+    <a class="btn" href="#"><span class="glyphicon glyphicon-align-left"></span></a>
+    <a class="btn" href="#"><span class="glyphicon glyphicon-align-center"></span></a>
+    <a class="btn" href="#"><span class="glyphicon glyphicon-align-right"></span></a>
+    <a class="btn" href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
+  </div>
+</div>
+{% endhighlight %}
+
+          <h5>Dropdown in a button group</h5>
+          <div class="bs-docs-example">
+            <div class="btn-group">
+              <a class="btn btn-primary" href="#"><i class="glyphicon glyphicon-user"></i> User</a>
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="glyphicon glyphicon-pencil"></i> Edit</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-trash"></i> Delete</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-ban-circle"></i> Ban</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="glyphicon glyphicon-"></i> Make admin</a></li>
+              </ul>
+            </div>
+          </div><!-- /bs-docs-example -->
+{% highlight html linenos %}
+<div class="btn-group">
+  <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-user"></span> User</a>
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
+    <li><a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a></li>
+    <li><a href="#"><span class="glyphicon glyphicon-ban-circle"></span> Ban</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><span class="glyphicon glyphicon-"></span> Make admin</a></li>
+  </ul>
+</div>
+{% endhighlight %}
+
+          <h5>Large button</h5>
+          <div class="bs-docs-example">
+            <a class="btn btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+          </div><!-- /bs-docs-example -->
+{% highlight html linenos %}
+<a class="btn btn-large" href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+{% endhighlight %}
+
+          <h5>Small button</h5>
+          <div class="bs-docs-example">
+            <a class="btn btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
+          </div><!-- /bs-docs-example -->
+{% highlight html linenos %}
+<a class="btn btn-small" href="#"><span class="glyphicon glyphicon-star"></span></a>
+{% endhighlight %}
+
+
+          <h4>Navigation</h4>
+          <div class="bs-docs-example">
+            <ul class="nav nav-list">
+              <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-book"></span> Library</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Applications</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-"></span> Misc</a></li>
+            </ul>
+          </div><!-- /bs-docs-example -->
+{% highlight html linenos %}
+<ul class="nav nav-list">
+  <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-book"></span> Library</a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Applications</a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-"></span> Misc</a></li>
+</ul>
+{% endhighlight %}
+
+          <h4>Form fields</h4>
+          <form class="bs-docs-example form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="inputIcon">Email address</label>
+              <div class="controls">
+                <div class="input-group">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                  <input class="span2" id="inputIcon" type="text">
+                </div>
+              </div>
+            </div>
+          </form>
+{% highlight html linenos %}
+<div class="control-group">
+  <label class="control-label" for="inputIcon">Email address</label>
+  <div class="controls">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+      <input class="span2" id="inputIcon" type="text">
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+        </section>
+
+
+
+        <!-- Responsive design
+        ================================================== -->
+        <section id="responsive-utilities">
+          <div class="page-header">
+            <h1>Responsive utilities</h1>
+          </div>
+          <p class="lead">For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.</p>
+
+          <h3>Responsive classes</h3>
+          <table class="table table-bordered table-striped responsive-utilities hidden-phone">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Phones <small>767px and below</small></th>
+                <th>Tablets <small>979px to 768px</small></th>
+                <th>Desktops <small>Default</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><code>.visible-phone</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+              <tr>
+                <th><code>.visible-tablet</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+              <tr>
+                <th><code>.visible-desktop</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-phone</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-tablet</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-desktop</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Print classes</h3>
+          <table class="table table-bordered table-striped responsive-utilities">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Browser</th>
+                <th>Print</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><code>.visible-print</code></th>
+                <td class="is-hidden">Hidden</td>
+                <td class="is-visible">Visible</td>
+              </tr>
+              <tr>
+                <th><code>.hidden-print</code></th>
+                <td class="is-visible">Visible</td>
+                <td class="is-hidden">Hidden</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>When to use</h3>
+          <p>Use on a limited basis and avoid creating entirely different versions of the same site. Instead, use them to complement each device's presentation. Responsive utilities should not be used with tables, and as such are not supported.</p>
+
+          <h3>Test case</h3>
+          <p>Resize your browser or load on different devices to test the above classes.</p>
+          <h4>Visible on...</h4>
+          <p>Green checkmarks indicate that class is visible in your current viewport.</p>
+          <ul class="responsive-utilities-test">
+            <li>Phone<span class="visible-phone">&#10004; Phone</span></li>
+            <li>Tablet<span class="visible-tablet">&#10004; Tablet</span></li>
+            <li>Desktop<span class="visible-desktop">&#10004; Desktop</span></li>
+          </ul>
+          <h4>Hidden on...</h4>
+          <p>Here, green checkmarks indicate that class is hidden in your current viewport.</p>
+          <ul class="responsive-utilities-test hidden-on">
+            <li>Phone<span class="hidden-phone">&#10004; Phone</span></li>
+            <li>Tablet<span class="hidden-tablet">&#10004; Tablet</span></li>
+            <li>Desktop<span class="hidden-desktop">&#10004; Desktop</span></li>
+          </ul>
+
+        </section>
+
+
+
+      </div><!-- /span9 -->
+    </div><!-- row -->
+
+  </div><!-- /.container -->
