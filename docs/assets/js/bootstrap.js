@@ -1861,6 +1861,7 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
+    this.autoselect = typeof this.options.autoselect !== 'undefined' ? this.options.autoselect : true
     this.source = this.options.source
     this.$menu = $(this.options.menu)
     this.shown = false
@@ -1971,7 +1972,8 @@
         return i[0]
       })
 
-      items.first().addClass('active')
+      if (this.autoselect) items.first().addClass('active')
+
       this.$menu.html(items)
       return this
     }
