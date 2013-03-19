@@ -185,7 +185,6 @@ $(function () {
         typeahead.$menu.remove()
       })
 
-
       test("should set input value to selected item", function () {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac']
@@ -208,6 +207,22 @@ $(function () {
         ok(!typeahead.$menu.is(':visible'), 'the menu was hidden')
         ok(changed, 'a change event was fired')
         ok(focus && !blur, 'focus is still set')
+
+        $input.remove()
+        typeahead.$menu.remove()
+      })
+
+      test("should not select first element after rendering if autoselect is false", function () {
+        var $input = $('<input />').typeahead({
+              source: ['aa', 'ab', 'ac'],
+              autoselect: false
+            }).appendTo('body')
+          , typeahead = $input.data('typeahead')
+
+        $input.val('a')
+        typeahead.lookup()
+
+        ok(!typeahead.$menu.find('li').first().hasClass('active'), "first item is inactive")
 
         $input.remove()
         typeahead.$menu.remove()
