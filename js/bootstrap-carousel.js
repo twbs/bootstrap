@@ -65,7 +65,7 @@
       }
 
       if (activeIndex == pos) {
-        return this.pause().cycle()
+        return this.pause()
       }
 
       return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
