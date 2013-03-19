@@ -212,10 +212,6 @@ $(function () {
         typeahead.$menu.remove()
       })
 
-
-
-
-
       test("should not select first element after rendering if autoselect is false", function () {
         var $input = $('<input />').typeahead({
               source: ['aa', 'ab', 'ac'],
@@ -231,9 +227,6 @@ $(function () {
         $input.remove()
         typeahead.$menu.remove()
       })
-
-
-
 
       test("should start querying when minLength is met", function () {
         var $input = $('<input />').typeahead({

@@ -145,7 +145,6 @@
       })
 
       if (this.autoselect) items.first().addClass('active')
-
       this.$menu.html(items)
       return this
     }
