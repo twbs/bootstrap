@@ -422,7 +422,9 @@ select:focus:invalid {
 // Allow us to put symbols and text within the input field for a cleaner look
 .input-append,
 .input-prepend {
-  margin-bottom: 5px;
+  display: inline-block;
+  margin-bottom: @baseLineHeight / 2;
+  vertical-align: middle;
   font-size: 0; // white space collapse hack
   white-space: nowrap; // Prevent span and input from separating
 
@@ -430,7 +432,8 @@ select:focus:invalid {
   input,
   select,
   .uneditable-input,
-  .dropdown-menu {
+  .dropdown-menu,
+  .popover {
     font-size: @baseFontSize;
   }
 
