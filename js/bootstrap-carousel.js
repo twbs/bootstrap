@@ -111,8 +111,8 @@
       if ($next.hasClass('active')) return
 
       if (this.$indicators.length) {
+        this.$indicators.find('.active').removeClass('active')
         this.$element.one('slid', function () {
-          that.$indicators.find('.active').removeClass('active')
           var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
           $nextIndicator && $nextIndicator.addClass('active')
         })
