@@ -1,61 +1,36 @@
-/* Add additional stylesheets below
--------------------------------------------------- */
 /*
-  Bootstrap's documentation styles
-  Special styles for presenting Bootstrap's documentation and examples
-*/
+ * Bootstrap Documentation
+ * Special styles for presenting Bootstrap's documentation and code examples.
+ */
 
 
 
-/* Body and structure
+/* Key scaffolding
 -------------------------------------------------- */
 
 body {
-  position: relative;
-  padding-top: 40px;
+  padding-top: 54px;
+  position: relative; /* For scrollyspy */
+  /* We add the padding to the body for >768px only */
 }
 
-/* Code in headings */
-h3 code {
-  font-size: 14px;
-  font-weight: normal;
+/*  */
+.bs-docs-footer {
+  padding-left:  15px;
+  padding-right: 15px;
 }
 
-
-
-/* Tweak navbar brand link to be super sleek
--------------------------------------------------- */
-
-body > .navbar {
-  font-size: 13px;
-}
-
-/* Change the docs' brand */
-body > .navbar .brand {
-  padding-right: 0;
-  padding-left: 0;
-  margin-left: 20px;
-  float: right;
-  font-weight: bold;
-  color: #000;
-  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
-  -webkit-transition: all .2s linear;
-     -moz-transition: all .2s linear;
-          transition: all .2s linear;
-}
-body > .navbar .brand:hover {
-  text-decoration: none;
-  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
-}
 
 
 /* Sections
 -------------------------------------------------- */
 
-/* padding for in-page bookmarks and fixed navbar */
+/* Padding for in-page bookmarks */
 section {
   padding-top: 30px;
 }
+
+/* Few stylistic typography tweaks */
 section > .page-header,
 section > .lead {
   color: #5a5a5a;
@@ -64,20 +39,20 @@ section > ul li {
   margin-bottom: 5px;
 }
 
-/* Separators (hr) */
-.bs-docs-separator {
-  margin: 40px 0 39px;
-}
 
-/* Faded out hr */
-hr.soften {
-  height: 1px;
-  margin: 70px 0;
-  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
-  border: 0;
+
+/* Navbar
+-------------------------------------------------- */
+
+.bs-docs-navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc; /* IE8 */
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.bs-docs-navbar .nav > .active > a,
+.bs-docs-navbar .nav > .active > a:hover {
+  font-weight: 500;
+  background-color: transparent;
 }
 
 
@@ -85,130 +60,55 @@ hr.soften {
 /* Jumbotrons
 -------------------------------------------------- */
 
-/* Base class
-------------------------- */
-.jumbotron {
+/* Base class */
+.bs-docs-jumbotron {
   position: relative;
-  padding: 40px 0;
+  margin-bottom: 20px;
+  padding: 30px 15px;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
-  background: #020031; /* Old browsers */
-  background: -moz-linear-gradient(45deg,  #020031 0%, #6d3353 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* IE10+ */
-  background: linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-          box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+  background-color: #b94a48;
 }
-.jumbotron h1 {
-  font-size: 80px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  line-height: 1;
-}
-.jumbotron p {
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 1.25;
-  margin-bottom: 30px;
+.bs-docs-jumbotron h1 {
+  font-size: 50px;
 }
 
 /* Link styles (used on .masthead-links as well) */
-.jumbotron a {
+.bs-docs-jumbotron a {
   color: #fff;
   color: rgba(255,255,255,.5);
   -webkit-transition: all .2s ease-in-out;
      -moz-transition: all .2s ease-in-out;
           transition: all .2s ease-in-out;
 }
-.jumbotron a:hover {
+.bs-docs-jumbotron a:hover {
   color: #fff;
-  text-shadow: 0 0 10px rgba(255,255,255,.25);
 }
 
 /* Download button */
-.masthead .btn {
-  padding: 19px 24px;
-  font-size: 24px;
-  font-weight: 200;
-  color: #fff; /* redeclare to override the `.jumbotron a` */
-  border: 0;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-  -webkit-transition: none;
-     -moz-transition: none;
-          transition: none;
+.bs-docs-jumbotron .btn {
+  padding: 18px 24px;
+  font-size: 21px;
+  color: #b94a48; /* redeclare to override the `.jumbotron a` */
+  background-color: #fff;
 }
-.masthead .btn:hover {
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-}
-.masthead .btn:active {
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-          box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-}
-
-
-/* Pattern overlay
-------------------------- */
-.jumbotron .container {
-  position: relative;
-  z-index: 2;
-}
-.jumbotron:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
-  opacity: .4;
-}
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1) {
-
-  .jumbotron:after {
-    background-size: 150px 150px;
-  }
-
+.bs-docs-jumbotron .btn,
+.bs-docs-jumbotron .btn:hover,
+.bs-docs-jumbotron .btn:active {
+  color: #b94a48; /* redeclare to override the `.jumbotron a` */
+  background-color: #fff;
+  border-color: #fff;
 }
 
 /* Masthead (docs home)
 ------------------------- */
-.masthead {
-  padding: 70px 0 80px;
-  margin-bottom: 0;
-  color: #fff;
-}
 .masthead h1 {
-  font-size: 120px;
   line-height: 1;
-  letter-spacing: -2px;
-}
-.masthead p {
-  font-size: 40px;
-  font-weight: 200;
-  line-height: 1.25;
 }
 
 /* Textual links in masthead */
 .masthead-links {
-  margin: 0;
+  margin: 20px 0;
   list-style: none;
 }
 .masthead-links li {
@@ -217,108 +117,38 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
   color: rgba(255,255,255,.25);
 }
 
-/* Social proof buttons from GitHub & Twitter */
-.bs-docs-social {
-  padding: 15px 0;
-  text-align: center;
-  background-color: #f5f5f5;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Quick links on Home */
-.bs-docs-social-buttons {
-  margin-left: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-  list-style: none;
-}
-.bs-docs-social-buttons li {
-  display: inline-block;
-  padding: 5px 8px;
-  line-height: 1;
-  *display: inline;
-  *zoom: 1;
-}
-
-/* Subhead (other pages)
-------------------------- */
-.subhead {
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-.subhead h1 {
-  font-size: 60px;
-}
-.subhead p {
-  margin-bottom: 20px;
-}
-.subhead .navbar {
-  display: none;
-}
-
 
 
 /* Marketing section of Overview
 -------------------------------------------------- */
 
-.marketing {
+.bs-docs-marketing {
   text-align: center;
   color: #5a5a5a;
 }
-.marketing h1 {
+.bs-docs-marketing h1 {
   margin: 60px 0 10px;
-  font-size: 60px;
-  font-weight: 200;
+  font-size: 50px;
   line-height: 1;
-  letter-spacing: -1px;
 }
-.marketing h2 {
-  font-weight: 200;
+.bs-docs-marketing h2 {
   margin-bottom: 5px;
 }
-.marketing p {
+.bs-docs-marketing p {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
-.marketing .marketing-byline {
+.bs-docs-marketing .marketing-byline {
   margin-bottom: 40px;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 300;
   line-height: 1.25;
   color: #999;
 }
 .marketing-img {
   display: block;
-  margin: 0 auto 30px;
+  margin: 30px auto 10px;
   max-height: 145px;
-}
-
-
-
-/* Footer
--------------------------------------------------- */
-
-.footer {
-  text-align: center;
-  padding: 30px 0;
-  margin-top: 70px;
-  border-top: 1px solid #e5e5e5;
-  background-color: #f5f5f5;
-}
-.footer p {
-  margin-bottom: 0;
-  color: #777;
-}
-.footer-links {
-  margin: 10px 0;
-}
-.footer-links li {
-  display: inline;
-  padding: 0 2px;
-}
-.footer-links li:first-child {
-  padding-left: 0;
 }
 
 
@@ -327,241 +157,50 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 -------------------------------------------------- */
 
 .show-grid {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
-.show-grid [class*="span"] {
+.show-grid [class^="span"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: #eee;
-  text-align: center;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-  min-height: 40px;
-  line-height: 40px;
+  border: 1px solid #ddd;
 }
 .show-grid [class*="span"]:hover {
   background-color: #ddd;
 }
-.show-grid .show-grid {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.show-grid .show-grid [class*="span"] {
-  margin-top: 5px;
-}
-.show-grid [class*="span"] [class*="span"] {
-  background-color: #ccc;
-}
-.show-grid [class*="span"] [class*="span"] [class*="span"] {
-  background-color: #999;
-}
 
 
 
-/* Mini layout previews
--------------------------------------------------- */
-.mini-layout {
-  border: 1px solid #ddd;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-          box-shadow: 0 1px 2px rgba(0,0,0,.075);
-}
-.mini-layout,
-.mini-layout .mini-layout-body,
-.mini-layout.fluid .mini-layout-sidebar {
-  height: 300px;
-}
-.mini-layout {
-  margin-bottom: 20px;
-  padding: 9px;
-}
-.mini-layout div {
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-.mini-layout .mini-layout-body {
-  background-color: #dceaf4;
-  margin: 0 auto;
-  width: 70%;
-}
-.mini-layout.fluid .mini-layout-sidebar,
-.mini-layout.fluid .mini-layout-header,
-.mini-layout.fluid .mini-layout-body {
-  float: left;
-}
-.mini-layout.fluid .mini-layout-sidebar {
-  background-color: #bbd8e9;
-  width: 20%;
-}
-.mini-layout.fluid .mini-layout-body {
-  width: 77.5%;
-  margin-left: 2.5%;
-}
-
-
-
-/* Download page
+/* Sidenav
 -------------------------------------------------- */
 
-.download .page-header {
-  margin-top: 36px;
+/* Base styles are not affixable given mobile-first */
+.bs-docs-sidenav {
+  margin: 20px 0 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
-.page-header .toggle-all {
-  margin-top: 5px;
-}
-
-/* Space out h3s when following a section */
-.download h3 {
-  margin-bottom: 5px;
-}
-.download-builder input + h3,
-.download-builder .checkbox + h3 {
-  margin-top: 9px;
+.bs-docs-sidenav.affix {
+  position: static;
+  top: 0;
 }
 
-/* Fields for variables */
-.download-builder input[type=text] {
-  margin-bottom: 9px;
-  font-family: Menlo, Monaco, "Courier New", monospace;
-  font-size: 12px;
-  color: #d14;
+/* Chevrons within each link */
+.bs-docs-sidenav .glyphicon-chevron-right {
+  float: right;
+  margin-top: 1px;
+  margin-right: -6px;
+  opacity: .25;
+  color: #000;
 }
-.download-builder input[type=text]:focus {
-  background-color: #fff;
+.bs-docs-sidenav a:hover .glyphicon-chevron-right {
+  opacity: .5;
 }
-
-/* Custom, larger checkbox labels */
-.download .checkbox {
-  padding: 6px 10px 6px 25px;
-  font-size: 13px;
-  line-height: 18px;
-  color: #555;
-  background-color: #f9f9f9;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-  cursor: pointer;
-}
-.download .checkbox:hover {
-  color: #333;
-  background-color: #f5f5f5;
-}
-.download .checkbox small {
-  font-size: 12px;
-  color: #777;
-}
-
-/* Variables section */
-#variables label {
-  margin-bottom: 0;
-}
-
-/* Giant download button */
-.download-btn {
-  margin: 36px 0 108px;
-}
-#download p,
-#download h4 {
-  max-width: 50%;
-  margin: 0 auto;
-  color: #999;
-  text-align: center;
-}
-#download h4 {
-  margin-bottom: 0;
-}
-#download p {
-  margin-bottom: 18px;
-}
-.download-btn .btn {
-  display: block;
-  width: auto;
-  padding: 19px 24px;
-  margin-bottom: 27px;
-  font-size: 30px;
-  line-height: 1;
-  text-align: center;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-}
-
-
-
-/* Misc
--------------------------------------------------- */
-
-/* Make tables spaced out a bit more */
-h2 + table,
-h3 + table,
-h4 + table,
-h2 + .row {
-  margin-top: 5px;
-}
-
-/* Example sites showcase */
-.example-sites {
-  xmargin-left: 20px;
-}
-.example-sites img {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.scrollspy-example {
-  height: 200px;
-  overflow: auto;
-  position: relative;
-}
-
-
-/* Fake the :focus state to demo it */
-.focused {
-  border-color: rgba(82,168,236,.8);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-     -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-          box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
-  outline: 0;
-}
-
-/* For input sizes, make them display block */
-.docs-input-sizes select,
-.docs-input-sizes input[type=text] {
-  display: block;
-  margin-bottom: 9px;
-}
-
-/* Icons
-------------------------- */
-.the-icons {
-  margin-left: 0;
-  list-style: none;
-}
-.the-icons li {
-  float: left;
-  width: 25%;
-  line-height: 25px;
-}
-.the-icons i:hover {
-  background-color: rgba(255,0,0,.25);
-}
-
-/* Example page
-------------------------- */
-.bootstrap-examples h4 {
-  margin: 10px 0 5px;
-}
-.bootstrap-examples p {
-  font-size: 13px;
-  line-height: 18px;
-}
-.bootstrap-examples .thumbnail {
-  margin-bottom: 9px;
-  background-color: #fff;
+.bs-docs-sidenav .active .glyphicon-chevron-right,
+.bs-docs-sidenav .active a:hover .glyphicon-chevron-right {
+  color: #fff;
+  opacity: 1;
 }
 
 
@@ -572,16 +211,12 @@ h2 + .row {
 /* Base class */
 .bs-docs-example {
   position: relative;
-  margin: 15px 0;
-  padding: 39px 19px 14px;
-  *padding-top: 19px;
-  background-color: #fff;
+  padding: 39px 14px 14px;
+  margin-bottom: -1px;
   border: 1px solid #ddd;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
-
 /* Echo out a label for the example */
 .bs-docs-example:after {
   content: "Example";
@@ -591,39 +226,64 @@ h2 + .row {
   padding: 3px 7px;
   font-size: 12px;
   font-weight: bold;
+  color: #9da0a4;
   background-color: #f5f5f5;
   border: 1px solid #ddd;
-  color: #9da0a4;
-  -webkit-border-radius: 4px 0 4px 0;
-     -moz-border-radius: 4px 0 4px 0;
-          border-radius: 4px 0 4px 0;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
-/* Remove spacing between an example and it's code */
-.bs-docs-example + .prettyprint {
-  margin-top: -20px;
-  padding-top: 15px;
+/* Tweak display of the examples */
+.bs-docs-example + .prettyprint,
+.bs-docs-example + .highlight {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.prettyprint .linenums {
+  /*margin-left: 0;*/
 }
 
-/* Tweak examples
-------------------------- */
-.bs-docs-example > p:last-child {
+/* Tweak content of examples for optimum awesome */
+.bs-docs-example > p:last-child,
+.bs-docs-example > ul:last-child,
+.bs-docs-example > ol:last-child,
+.bs-docs-example > blockquote:last-child,
+.bs-docs-example > input:last-child,
+.bs-docs-example > select:last-child,
+.bs-docs-example > textarea:last-child,
+.bs-docs-example > .table:last-child,
+.bs-docs-example > .jumbotron:last-child,
+.bs-docs-example > .alert:last-child {
   margin-bottom: 0;
 }
-.bs-docs-example .table,
-.bs-docs-example .progress,
-.bs-docs-example .well,
-.bs-docs-example .alert,
-.bs-docs-example .hero-unit,
-.bs-docs-example .pagination,
-.bs-docs-example .navbar,
-.bs-docs-example > .nav,
-.bs-docs-example blockquote {
-  margin-bottom: 5px;
+
+/* Typography */
+.bs-docs-example-type .table td {
+  color: #999;
+  vertical-align: middle;
+  border-color: ;
 }
-.bs-docs-example .pagination {
-  margin-top: 0;
+.bs-docs-example-type .table td,
+.bs-docs-example-type .table th {
+  padding: 15px 0;
+  border-color: #eee;
 }
+.bs-docs-example-type .table tr:first-child td,
+.bs-docs-example-type .table tr:first-child th {
+  border-top: 0;
+}
+.bs-docs-example-type h1,
+.bs-docs-example-type h2,
+.bs-docs-example-type h3,
+.bs-docs-example-type h4,
+.bs-docs-example-type h5,
+.bs-docs-example-type h6 {
+  margin: 0;
+}
+
+
+/* Navbar examples */
 .bs-navbar-top-example,
 .bs-navbar-bottom-example {
   z-index: 1;
@@ -656,59 +316,104 @@ h2 + .row {
 .bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
 }
-form.bs-docs-example {
-  padding-bottom: 19px;
-}
 
-/* Images */
-.bs-docs-example-images img {
-  margin: 10px;
-  display: inline-block;
+/* Example modals */
+.bs-docs-example-modal {
+  background-color: #f5f5f5;
 }
-
-/* Tooltips */
-.bs-docs-tooltip-examples {
-  text-align: center;
-  margin: 0 0 10px;
-  list-style: none;
-}
-.bs-docs-tooltip-examples li {
-  display: inline;
-  padding: 0 10px;
-}
-
-/* Popovers */
-.bs-docs-example-popover {
-  padding-bottom: 24px;
-  background-color: #f9f9f9;
-}
-.bs-docs-example-popover .popover {
+.bs-docs-example-modal .modal {
   position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  bottom: auto;
+  z-index: 1;
   display: block;
-  float: left;
-  width: 260px;
-  margin: 20px;
+}
+.bs-docs-example-modal .modal-dialog {
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Dropdowns */
-.bs-docs-example-submenus {
+/* Example dropdowns */
+.bs-docs-example > .dropdown > .dropdown-menu,
+.bs-docs-example-submenu > .pull-left > .dropup > .dropdown-menu,
+.bs-docs-example-submenu > .pull-left > .dropdown > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 5px;
+}
+.bs-docs-example-submenu {
   min-height: 180px;
 }
-.bs-docs-example-submenus > .pull-left + .pull-left {
+.bs-docs-example-submenu > .pull-left + .pull-left {
   margin-left: 20px;
 }
-.bs-docs-example-submenus .dropup > .dropdown-menu,
-.bs-docs-example-submenus .dropdown > .dropdown-menu {
-  display: block;
-  position: static;
+
+/* Example tabbable tabs */
+.bs-docs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+
+
+/* Example templates
+-------------------------------------------------- */
+
+.bs-docs-examples h4 {
   margin-bottom: 5px;
-  *width: 180px;
+}
+.bs-docs-examples p {
+  margin-bottom: 20px;
+}
+
+
+
+/* Icons
+-------------------------------------------------- */
+
+.the-icons {
+  padding-bottom: 1px;
+  margin-left: 0;
+  list-style: none;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.the-icons li {
+  float: left;
+  width: 100px;
+  height: 110px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 -1px -1px 0;
+}
+.the-icons .glyphicon {
+  display: block;
+  margin: 5px auto;
+  vertical-align: middle;
+  margin-right: 3px;
+  font-size: 24px;
+}
+.the-icons li:hover {
+  background-color: rgba(255,0,0,.1);
 }
 
 
 
 /* Responsive docs
 -------------------------------------------------- */
+
+/* Related: responsive utilities tables */
+.table code {
+  font-size: 13px;
+  font-weight: normal;
+}
 
 /* Utility classes table
 ------------------------- */
@@ -776,292 +481,185 @@ form.bs-docs-example {
 
 
 
-/* Sidenav for Docs
+/* Footer
 -------------------------------------------------- */
 
-.bs-docs-sidenav {
-  width: 228px;
-  margin: 30px 0 0;
-  padding: 0;
-  background-color: #fff;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
-          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+.bs-docs-footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 100px;
+  border-top: 1px solid #e5e5e5;
 }
-.bs-docs-sidenav > li > a {
-  display: block;
-  width: 190px \9;
-  margin: 0 0 -1px;
-  padding: 8px 14px;
-  border: 1px solid #e5e5e5;
+.bs-docs-footer p {
+  margin-bottom: 0;
+  color: #777;
 }
-.bs-docs-sidenav > li:first-child > a {
-  -webkit-border-radius: 6px 6px 0 0;
-     -moz-border-radius: 6px 6px 0 0;
-          border-radius: 6px 6px 0 0;
+.footer-links {
+  margin: 10px 0;
 }
-.bs-docs-sidenav > li:last-child > a {
-  -webkit-border-radius: 0 0 6px 6px;
-     -moz-border-radius: 0 0 6px 6px;
-          border-radius: 0 0 6px 6px;
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
 }
-.bs-docs-sidenav > .active > a {
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+/* Social proof buttons from GitHub & Twitter */
+.bs-docs-social {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* Quick links on Home */
+.bs-docs-social-buttons {
+  display: inline-block;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+.bs-docs-social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+}
+.bs-docs-social-buttons .twitter-follow-button {
+  width: 225px !important;
+}
+.bs-docs-social-buttons .twitter-share-button {
+  width: 98px !important;
+}
+
+
+
+/* Misc docs stuff
+-------------------------------------------------- */
+
+/* Pseudo :focus state for showing how it looks in the docs */
+input.focused {
+  border-color: rgba(82,168,236,.8);
+  outline: 0;
+  outline: thin dotted \9; /* IE6-9 */
+  -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+       box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+/* Scrollspy demo on fixed height div */
+.scrollspy-example {
   position: relative;
-  z-index: 2;
-  padding: 9px 15px;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-bottom: 0;
+  background-color: transparent;
   border: 0;
-  text-shadow: 0 1px 0 rgba(0,0,0,.15);
-  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
-/* Chevrons */
-.bs-docs-sidenav .icon-chevron-right {
-  float: right;
-  margin-top: 2px;
-  margin-right: -6px;
-  opacity: .25;
+.highlight pre code {
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
 }
-.bs-docs-sidenav > li > a:hover {
-  background-color: #f5f5f5;
-}
-.bs-docs-sidenav a:hover .icon-chevron-right {
-  opacity: .5;
-}
-.bs-docs-sidenav .active .icon-chevron-right,
-.bs-docs-sidenav .active a:hover .icon-chevron-right {
-  background-image: url(../img/glyphicons-halflings-white.png);
-  opacity: 1;
-}
-.bs-docs-sidenav.affix {
-  top: 40px;
-}
-.bs-docs-sidenav.affix-bottom {
-  position: absolute;
-  top: auto;
-  bottom: 270px;
+.highlight pre .lineno {
+  display: inline-block;
+  width: 22px;
+  padding-right: 5px;
+  margin-right: 10px;
+  text-align: right;
+  color: #bebec5;
 }
 
 
 
-
-/* Responsive
+/* Docs gallery
 -------------------------------------------------- */
 
-/* Desktop large
-------------------------- */
-@media (min-width: 1200px) {
-  .bs-docs-container {
-    max-width: 970px;
+.bs-docs-gallery .thumbnail {
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+
+/* Responsive variations
+-------------------------------------------------- */
+
+/* Hide code snippets on mobile devices */
+@media screen and (max-width: 480px) {
+  .bs-docs-example {
+    border-radius: 4px;
   }
-  .bs-docs-sidenav {
-    width: 258px;
-  }
-  .bs-docs-sidenav > li > a {
-    width: 230px \9; /* Override the previous IE8-9 hack */
+  .highlight {
+    display: none;
   }
 }
 
-/* Desktop
-------------------------- */
-@media (max-width: 980px) {
-  /* Unfloat brand */
-  body > .navbar-fixed-top .brand {
-    float: left;
-    margin-left: 0;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+/* Tablets and up */
+@media screen and (min-width: 768px) {
 
-  /* Inline-block quick links for more spacing */
-  .quick-links li {
-    display: inline-block;
-    margin: 5px;
-  }
-
-  /* When affixed, space properly */
-  .bs-docs-sidenav {
-    top: 0;
-    width: 218px;
-    margin-top: 30px;
-    margin-right: 0;
-  }
-}
-
-/* Tablet to desktop
-------------------------- */
-@media (min-width: 768px) and (max-width: 979px) {
-  /* Remove any padding from the body */
+  /* Account for fixed navbar (which is static to start) */
   body {
-    padding-top: 0;
-  }
-  /* Widen masthead and social buttons to fill body padding */
-  .jumbotron {
-    margin-top: -20px; /* Offset bottom margin on .navbar */
-  }
-  /* Adjust sidenav width */
-  .bs-docs-sidenav {
-    width: 166px;
-    margin-top: 20px;
-  }
-  .bs-docs-sidenav.affix {
-    top: 0;
-  }
-}
-
-/* Tablet
-------------------------- */
-@media (max-width: 767px) {
-  /* Remove any padding from the body */
-  body {
-    padding-top: 0;
+    padding-top: 50px; /* Default height of navbar */
   }
 
-  /* Widen masthead and social buttons to fill body padding */
-  .jumbotron {
-    padding: 40px 20px;
-    margin-top:   -20px; /* Offset bottom margin on .navbar */
-    margin-right: -20px;
-    margin-left:  -20px;
+  /* Tweak display of docs jumbotrons */
+  .masthead {
+    padding-top:    100px;
+    padding-bottom: 100px;
   }
   .masthead h1 {
-    font-size: 90px;
+    font-size: 100px;
   }
-  .masthead p,
-  .masthead .btn {
-    font-size: 24px;
+  .masthead p {
+    font-size: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
   }
-  .marketing .span4 {
-    margin-bottom: 40px;
-  }
-  .bs-docs-social {
-    margin: 0 -20px;
-  }
-
-  /* Space out the show-grid examples */
-  .show-grid [class*="span"] {
-    margin-bottom: 5px;
+  .subhead {
+    padding-top:    60px;
+    padding-bottom: 60px;
+    text-align: left;
   }
 
-  /* Sidenav */
-  .bs-docs-sidenav {
-    width: auto;
-    margin-bottom: 20px;
-  }
+  /* From here, start to affix the nav because we keep columns here */
   .bs-docs-sidenav.affix {
-    position: static;
-    width: auto;
-    top: 0;
+    position: fixed;
+    top: 54px;
   }
-
-  /* Unfloat the back to top link in footer */
-  .footer {
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
+  .bs-docs-sidenav {
+    width: 170px;
   }
-  .footer p {
-    margin-bottom: 9px;
+  .bs-docs-sidenav.affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 270px;
   }
 }
 
-/* Landscape phones
-------------------------- */
-@media (max-width: 480px) {
-  /* Remove padding above jumbotron */
-  body {
-    padding-top: 0;
+/* Tablets/desktops and up */
+@media screen and (min-width: 992px) {
+
+  /* Icons */
+  .the-icons li {
+    width: 12.5%;
   }
 
-  /* Change up some type stuff */
-  h2 small {
-    display: block;
+  .bs-docs-sidenav {
+    width: 220px;
   }
+}
 
-  /* Downsize the jumbotrons */
-  .jumbotron h1 {
-    font-size: 45px;
-  }
-  .jumbotron p,
-  .jumbotron .btn {
-    font-size: 18px;
-  }
-  .jumbotron .btn {
-    display: block;
-    margin: 0 auto;
-  }
-
-  /* center align subhead text like the masthead */
-  .subhead h1,
-  .subhead p {
-    text-align: center;
-  }
-
-  /* Marketing on home */
-  .marketing h1 {
-    font-size: 30px;
-  }
-  .marketing-byline {
-    font-size: 18px;
-  }
-
-  /* center example sites */
-  .example-sites {
-    margin-left: 0;
-  }
-  .example-sites > li {
-    float: none;
-    display: block;
-    max-width: 280px;
-    margin: 0 auto 18px;
-    text-align: center;
-  }
-  .example-sites .thumbnail > img {
-    max-width: 270px;
-  }
-
-  /* Do our best to make tables work in narrow viewports */
-  table code {
-    white-space: normal;
-    word-wrap: break-word;
-    word-break: break-all;
-  }
-
-  /* Examples: dropdowns */
-  .bs-docs-example-submenus > .pull-left {
-    float: none;
-    clear: both;
-  }
-  .bs-docs-example-submenus > .pull-left,
-  .bs-docs-example-submenus > .pull-left + .pull-left {
-    margin-left: 0;
-  }
-  .bs-docs-example-submenus p {
-    margin-bottom: 0;
-  }
-  .bs-docs-example-submenus .dropup > .dropdown-menu,
-  .bs-docs-example-submenus .dropdown > .dropdown-menu {
-    margin-bottom: 10px;
-    float: none;
-    max-width: 180px;
-  }
-
-  /* Examples: modal */
-  .modal-example .modal {
-    position: relative;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-  }
-
-  /* Tighten up footer */
-  .footer {
-    padding-top: 20px;
-    padding-bottom: 20px;
+/* Large desktops and up */
+@media screen and (min-width: 1200px) {
+  .bs-docs-sidenav {
+    width: 260px;
   }
 }
