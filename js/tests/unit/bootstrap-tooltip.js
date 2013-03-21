@@ -22,9 +22,9 @@ $(function () {
         ok(!!$.fn.tooltip.defaults, 'defaults is defined')
       })
 
-      test("should remove title attribute", function () {
+      test("should empty title attribute", function () {
         var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>').tooltip()
-        ok(!tooltip.attr('title'), 'title tag was removed')
+        ok(tooltip.attr('title') === '', 'title attribute was emptied')
       })
 
       test("should add data attribute for referencing original title", function () {
@@ -64,6 +64,83 @@ $(function () {
         ok($('.tooltip').hasClass('some-class'), 'custom class is present')
         tooltip.tooltip('hide')
         ok(!$(".tooltip").length, 'tooltip removed')
+      })
+
+      test("should fire show event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("show", function() {
+            ok(true, "show was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should fire shown event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            ok(true, "shown was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should not fire shown event when default prevented", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("show", function(e) {
+            e.preventDefault()
+            ok(true, "show was called")
+            start()
+          })
+          .bind("shown", function() {
+            ok(false, "shown was called")
+          })
+          .tooltip('show')
+      })
+
+      test("should fire hide event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            $(this).tooltip('hide')
+          })
+          .bind("hide", function() {
+            ok(true, "hide was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should fire hidden event", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            $(this).tooltip('hide')
+          })
+          .bind("hidden", function() {
+            ok(true, "hidden was called")
+            start()
+          })
+          .tooltip('show')
+      })
+
+      test("should not fire hidden event when default prevented", function () {
+        stop()
+        var tooltip = $('<div title="tooltip title"></div>')
+          .bind("shown", function() {
+            $(this).tooltip('hide')
+          })
+          .bind("hide", function(e) {
+            e.preventDefault()
+            ok(true, "hide was called")
+            start()
+          })
+          .bind("hidden", function() {
+            ok(false, "hidden was called")
+          })
+          .tooltip('show')
       })
 
       test("should not show tooltip if leave event occurs before delay expires", function () {
@@ -155,5 +232,63 @@ $(function () {
                                     trigger: 'click' })
         div.find('a').trigger('click')
         ok($(".tooltip").is('.fade.in'), 'tooltip is faded in')
+      })
+
+      test("should show tooltip when toggle is called", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="tooltip on toggle"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({trigger: 'manual'})
+          .tooltip('toggle')
+        ok($(".tooltip").is('.fade.in'), 'tooltip should be toggled in')
+      })
+
+      test("should place tooltips inside the body", function () {
+        var tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"></a>')
+          .appendTo('#qunit-fixture')
+          .tooltip({container:'body'})
+          .tooltip('show')
+        ok($("body > .tooltip").length, 'inside the body')
+        ok(!$("#qunit-fixture > .tooltip").length, 'not found in parent')
+        tooltip.tooltip('hide')
+      })
+
+      test("should place tooltip inside window", function(){
+        var container = $("<div />").appendTo("body")
+            .css({position: "absolute", width: 200, height: 200, bottom: 0, left: 0})
+          , tooltip = $("<a href='#' title='Very very very very very very very very long tooltip'>Hover me</a>")
+          .css({position: "absolute", top:0, left: 0})
+          .appendTo(container)
+          .tooltip({placement: "top", animate: false})
+          .tooltip("show")
+
+        stop()
+
+        setTimeout(function(){
+          ok($(".tooltip").offset().left >= 0)
+
+          start()
+          container.remove()
+        }, 100)
+      })
+
+      test("should place tooltip on top of element", function(){
+        var container = $("<div />").appendTo("body")
+              .css({position: "absolute", bottom: 0, left: 0, textAlign: "right", width: 300, height: 300})
+            , p = $("<p style='margin-top:200px' />").appendTo(container)
+            , tooltiped = $("<a href='#' title='very very very very very very very long tooltip'>Hover me</a>")
+              .css({marginTop: 200})
+              .appendTo(p)
+              .tooltip({placement: "top", animate: false})
+              .tooltip("show")
+
+        stop()
+
+        setTimeout(function(){
+          var tooltip = container.find(".tooltip")
+
+          start()
+          ok(tooltip.offset().top + tooltip.outerHeight() <= tooltiped.offset().top)
+          container.remove()
+        }, 100)
       })
 })
