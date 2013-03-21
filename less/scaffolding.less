@@ -3,16 +3,46 @@
 // --------------------------------------------------
 
 
+// Reset the box-sizing
+// -------------------------
+
+* {
+  .box-sizing(border-box);
+}
+
+
 // Body reset
 // -------------------------
 
+html {
+  font-size: 62.5%;
+  // Touch the Mobile Magic™
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+// Disable iOS/WinMobile font size changes
+@media screen and (max-device-width: 480px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+  }
+}
+
 body {
-  margin: 0;
-  font-family: @baseFontFamily;
-  font-size: @baseFontSize;
-  line-height: @baseLineHeight;
-  color: @textColor;
-  background-color: @bodyBackground;
+  color: @text-color;
+  background-color: @body-background;
+}
+
+// Reset fonts for revelant elements
+body,
+input,
+button,
+select,
+textarea {
+  font-family: @font-family-base;
+  .font-size();
+  line-height: @line-height-base;
 }
 
 
@@ -20,34 +50,41 @@ body {
 // -------------------------
 
 a {
-  color: @linkColor;
+  color: @link-color;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: @linkColorHover;
+  color: @link-color-hover;
   text-decoration: underline;
+}
+a:focus {
+  .tab-focus();
 }
 
 
 // Images
 // -------------------------
 
-// Rounded corners
-.img-rounded {
-  .border-radius(6px);
+img {
+  // Responsive images (ensure images don't scale beyond their parents)
+  max-width: 100%; // Part 1: Set a maxium relative to the parent
+  width: auto\9; // IE8 need help adjusting responsive images
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+
+  // Match vertical alignment with other comment elements
+  vertical-align: middle;
 }
 
-// Add polaroid-esque trim
-.img-polaroid {
-  padding: 4px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0,0,0,.2);
-  .box-shadow(0 1px 3px rgba(0,0,0,.1));
+// Rounded corners
+.img-rounded {
+  border-radius: 6px;
 }
+
+// Image thumbnails
+// See thumbnails.less for `.img-thumbnail`
 
 // Perfect circle
 .img-circle {
-  .border-radius(500px); // crank the border-radius so it works with most reasonably sized images
+  border-radius: 500px; // crank the border-radius so it works with most reasonably sized images
 }
