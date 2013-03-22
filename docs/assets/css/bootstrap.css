@@ -475,7 +475,11 @@ input[type="button"].btn-block {
 
 .btn-navbar:hover,
 .btn-navbar:focus {
-  text-decoration: none;
+  background-image: -webkit-linear-gradient(bottom, #708f16 0%, #708f16 49%, #99bf12 50%, #99bf12 100%);
+  background-image: -moz-linear-gradient(bottom, #708f16 0%, #708f16 49%, #99bf12 50%, #99bf12 100%);
+  background-image: -ms-linear-gradient(bottom, #708f16 0%, #708f16 49%, #99bf12 50%, #99bf12 100%);
+  background-image: -o-linear-gradient(bottom, #708f16 0%, #708f16 49%, #99bf12 50%, #99bf12 100%);
+  background-image: linear-gradient(bottom, #708f16 0%, #708f16 49%, #99bf12 50%, #99bf12 100%);
   background-position: 0 0;
 }
 
@@ -528,7 +532,6 @@ input[type="button"].btn-block {
 
 .btn-navbar-selected:hover,
 .btn-navbar-selected:focus {
-  text-decoration: none;
   background-position: 0 0;
 }
 
