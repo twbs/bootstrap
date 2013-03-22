@@ -175,7 +175,11 @@ input[type="button"] {
   background-image: linear-gradient(bottom, @btnNavbarBackgroundHighlight 0%, @btnNavbarBackgroundHighlight 49%,@btnNavbarBackground 50%,@btnNavbarBackground 100%);
   &:hover,
   &:focus {
-    text-decoration: none;
+    background-image: -webkit-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: -moz-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: -ms-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: -o-linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
+    background-image: linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
     background-position: 0 0px;
   }
   &.active,
@@ -196,7 +200,6 @@ input[type="button"] {
   background-image: linear-gradient(bottom, @btnNavbarSelectedBackgroundHighlight 0%, @btnNavbarSelectedBackgroundHighlight 49%, @btnNavbarSelectedBackground 50%, @btnNavbarSelectedBackground 100%);
   &:hover,
   &:focus {
-    text-decoration: none;
     background-position: 0 0px;
   }
   &.active,
